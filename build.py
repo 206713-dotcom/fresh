@@ -14,27 +14,37 @@ GROUPS = {
 
 
 def page(title, description, main, prefix="", script=""):
+    is_home = not prefix
+    brand = "Fresh" if is_home else "Study Commons"
+    mark = ('<img src="fresh.svg" width="40" height="40" alt="">' if is_home
+            else '<span class="logo" aria-hidden="true">✦</span>')
+    home_assets = (
+        '<link rel="stylesheet" href="home.css">\n'
+        '<link rel="icon" href="fresh.svg" type="image/svg+xml">\n'
+        if is_home else ""
+    )
+    body = '<body class="fresh-home">' if is_home else '<body>'
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{escape(description)}">
-<title>{escape(title)} | Study Commons</title>
+<title>{escape(title)} | {brand}</title>
 <link rel="stylesheet" href="{prefix}style.css">
-{script}
+{home_assets}{script}
 </head>
-<body>
+{body}
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap topbar" aria-label="Main navigation">
-    <a class="brand" href="{prefix}index.html"><span class="logo" aria-hidden="true">✦</span> Study Commons</a>
+    <a class="brand" href="{prefix}index.html">{mark} {brand}</a>
     <a href="{prefix}index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
 <main id="main" class="wrap">{main}</main>
 <footer class="wrap footer">
-  <span>Study Commons · Independent IGCSE revision</span>
+  <span>{brand} · Independent IGCSE revision</span>
   <a href="{CAMBRIDGE}">Cambridge subject directory ↗</a>
 </footer>
 </body>
@@ -60,15 +70,15 @@ def home():
     return f"""
 <section class="hero">
   <div class="hero-copy">
-    <p class="eyebrow"><span aria-hidden="true">✦</span> THE IGCSE STUDY HUB</p>
-    <h1>A better place<br>to <em>revise.</em></h1>
-    <p>Pick a subject, review the essentials, and see what you remember with quick practice questions.</p>
+    <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
+    <h1>A fresh take<br>on <em>revision.</em></h1>
+    <p>Find clear revision notes and quick practice questions for 12 IGCSE subjects.</p>
     <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
   </div>
   <div class="hero-art" aria-hidden="true">
-    <div class="sheet sheet-back"></div>
-    <div class="sheet sheet-front"><span>REVISION CLUB</span><b>✦</b><i></i><i></i><i></i></div>
-    <span class="sticker">12<br><small>SUBJECTS</small></span>
+    <div class="art-grid"></div>
+    <div class="art-tile"><img src="fresh.svg" width="192" height="192" alt=""></div>
+    <span class="art-index"><b>12</b><span>IGCSE<br>SUBJECTS</span></span>
   </div>
 </section>
 <section class="directory" id="subjects" aria-labelledby="directory-title">

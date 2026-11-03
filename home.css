@@ -1,0 +1,101 @@
+.fresh-home {
+  --paper: #f5f7fb;
+  --white: #fff;
+  --ink: #14264b;
+  --muted: #4a5873;
+  --line: #d9e0ec;
+  --lime: #cde66b;
+  --red: #ef6d65;
+  background: var(--paper);
+  color: var(--ink);
+}
+.fresh-home .site-header { background: var(--white); }
+.fresh-home .topbar { min-height: 70px; }
+.fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
+.fresh-home .brand img { display: block; }
+.fresh-home .topbar > a:last-child { color: var(--ink); font-size: .87rem; }
+.fresh-home .hero {
+  grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr);
+  min-height: 420px;
+  padding: clamp(2.25rem, 5vw, 4.2rem);
+  border-radius: 1.35rem;
+  background: linear-gradient(118deg, #112142 20%, #192f59 100%);
+  box-shadow: 0 12px 32px #14264b14;
+}
+.fresh-home .hero-copy { position: relative; z-index: 1; }
+.fresh-home .hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1.2rem;
+  color: #e0e8fa;
+}
+.fresh-home .hero .eyebrow span { width: .48rem; height: .48rem; border-radius: 50%; background: var(--lime); }
+.fresh-home h1, .fresh-home h2 { font-family: inherit; font-weight: 800; }
+.fresh-home .hero h1 { font-size: clamp(3.05rem, 6.3vw, 5.45rem); letter-spacing: -.078em; line-height: .96; }
+.fresh-home .hero em { color: var(--lime); font-style: normal; }
+.fresh-home .hero-copy > p:not(.eyebrow) { color: #dce5f5; margin-block: 1.3rem 1.6rem; }
+.fresh-home .button { background: var(--lime); color: #172745; padding: .85rem 1.05rem; }
+.fresh-home .button:hover { background: #e4f3a0; }
+.fresh-home .hero-art { min-height: 290px; }
+.fresh-home .art-grid {
+  position: absolute;
+  inset: -12% -20% -12% -4%;
+  background-image: linear-gradient(#a5b9dd20 1px, transparent 1px), linear-gradient(90deg, #a5b9dd20 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse, black 35%, transparent 74%);
+}
+.fresh-home .art-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(80%, 230px);
+  aspect-ratio: 1;
+  border: 1px solid #a5b9dd60;
+  border-radius: 2.15rem;
+  background: #203861;
+  transform: rotate(-11deg);
+  box-shadow: 12px 13px 0 #0b183663, 20px 24px 42px #0b183665;
+}
+.fresh-home .art-tile::before, .fresh-home .art-tile::after { content: ''; position: absolute; height: 10px; border-radius: 2px; transform: skewX(-30deg); }
+.fresh-home .art-tile::before { top: -20px; right: 5px; width: 48px; background: var(--red); }
+.fresh-home .art-tile::after { left: -26px; bottom: 12px; width: 54px; background: var(--lime); }
+.fresh-home .art-tile img { display: block; width: 82%; height: auto; border-radius: 25%; }
+.fresh-home .art-index {
+  position: absolute;
+  right: 1%;
+  bottom: 8%;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .62rem .82rem;
+  border-radius: .55rem;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 6px 20px #0b183650;
+}
+.fresh-home .art-index b { font-size: 1.9rem; letter-spacing: -.085em; line-height: 1; }
+.fresh-home .art-index span { font-size: .59rem; font-weight: 800; letter-spacing: .08em; line-height: 1.15; }
+.fresh-home .directory { margin-top: 3rem; }
+.fresh-home .section-top .eyebrow { color: #3d527d; }
+.fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
+.fresh-home .count { background: #e9eef7; color: #263c65; font-weight: 700; }
+.fresh-home .filters { gap: .9rem; }
+.fresh-home input, .fresh-home select { min-height: 44px; }
+.fresh-home input::placeholder { color: #52617b; }
+.fresh-home .technology { --tint: #e3ebff; --accent: #466bb5; }
+.fresh-home .science { --tint: #e9f3cf; --accent: #637e31; }
+.fresh-home .humanities { --tint: #fbe6e3; --accent: #a84c46; }
+.fresh-home .business { --tint: #f4ebd7; --accent: #826522; }
+.fresh-home .card { border-top: 3px solid var(--accent); box-shadow: 0 3px 12px #14264b08; }
+.fresh-home .card a { padding: 1.15rem 1.2rem; }
+.fresh-home .card a:hover { box-shadow: 0 8px 22px #14264b18; }
+.fresh-home .card-link { color: #263f70; }
+.fresh-home :focus-visible { outline-color: #a8453d; }
+.fresh-home .hero :focus-visible { outline-color: var(--lime); }
+@media (max-width: 630px) {
+  .fresh-home .hero { min-height: 0; padding: 2rem 1.3rem 2.15rem; }
+  .fresh-home .hero h1 { font-size: clamp(2.55rem, 10vw, 3.7rem); }
+  .fresh-home .topbar { min-height: 61px; }
+  .fresh-home .directory { margin-top: 2.25rem; }
+}
