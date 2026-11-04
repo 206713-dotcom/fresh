@@ -327,22 +327,7 @@ export function Header({
                 )}
               </div>
 
-              {/* TOP TAB BUTTON: 2D Boss Battle Fighting Game */}
-              <button
-                type="button"
-                onClick={() => handleSelectTab("boss-battle")}
-                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer text-xs sm:text-sm font-semibold ${
-                  activeTab === "boss-battle"
-                    ? "bg-rose-600 text-white shadow-xs"
-                    : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30"
-                }`}
-                title="Boss Battle Arena: 2D Arcade with Cambridge Question Attacks & Armour Upgrades"
-              >
-                <Swords className="w-3.5 h-3.5" />
-                <span>Boss Battle ⚔️</span>
-              </button>
-
-
+  
           {/* HIGH-VISIBILITY STUDY SPACE BUTTON IN CENTER NAV */}
           {onOpenStudySpace && (
             <button
