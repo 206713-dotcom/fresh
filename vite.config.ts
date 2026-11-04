@@ -142,11 +142,17 @@ export default defineConfig(() => {
         '@': path.resolve(import.meta.dirname || '.', '.'),
       },
     },
+    base: './',
     publicDir: path.resolve(import.meta.dirname || '.', 'subjects/business/public'),
     build: {
       chunkSizeWarningLimit: 8000,
       outDir: 'dist',
       rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name].js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
         input: {
           main: path.resolve(import.meta.dirname || '.', 'index.html'),
           business: path.resolve(import.meta.dirname || '.', 'subjects/business/index.html'),
