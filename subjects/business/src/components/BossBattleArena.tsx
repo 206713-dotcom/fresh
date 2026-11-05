@@ -571,6 +571,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const lastBossNormalAttackTimeRef = useRef<number>(Date.now());
   const screenShakeRef = useRef<number>(0); // Screen shake intensity (in pixels)
   const bossHitFlashRef = useRef<number>(0); // Boss flash counter
+  const playerInvincibleUntilRef = useRef<number>(0); // Grace period i-frames
+  const jumpHoldStartRef = useRef<number | null>(null); // Track Space / tap hold for Jetpack
+  const jetpackTriggeredByHoldRef = useRef<boolean>(false);
 
   // Periodic timer for jetpack countdown & cooldown precision
   useEffect(() => {
@@ -684,17 +687,32 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const handleJump = () => {
     if (gameState !== "playing") return;
     if (!playerRef.current.isJumping) {
-      playerRef.current.vy = -13.5;
+      playerRef.current.vy = -14.2; // Crisp jump with high clearance over ground obstacles
       playerRef.current.isJumping = true;
       playJumpSound();
     }
+  };
+
+  // Jump Start (For Long-Press Jetpack detection via keyboard, mouse, or touch)
+  const handleJumpStart = () => {
+    if (gameState !== "playing") return;
+    if (!jumpHoldStartRef.current) {
+      jumpHoldStartRef.current = Date.now();
+      jetpackTriggeredByHoldRef.current = false;
+      handleJump();
+    }
+  };
+
+  const handleJumpEnd = () => {
+    jumpHoldStartRef.current = null;
+    jetpackTriggeredByHoldRef.current = false;
   };
 
   // Player Shoot
   const handleShoot = () => {
     if (gameState !== "playing") return;
     if (ammo <= 0) {
-      addFloatingText("NO AMMO! Refill with Coins 🎯", 150, 100, "#f59e0b");
+      addFloatingText("NO AMMO! Press [R] to Refill 🎯", 150, 100, "#f59e0b");
       return;
     }
     setAmmo((prev) => prev - 1);
@@ -702,26 +720,32 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
     playerProjectilesRef.current.push({
       x: playerRef.current.x + playerRef.current.width,
-      y: playerRef.current.y + 20,
-      vx: 13,
+      y: playerRef.current.y + 18,
+      vx: 14,
       color: "#38bdf8",
       id: Math.random(),
     });
   };
 
-  // Refill Ammo with Coins
+  // Refill Ammo with Coins or Emergency Supply (Triggered by 'R' Key or Button)
   const handleRefillAmmo = () => {
+    if (gameState !== "playing" && gameState !== "question_attack") return;
     const refillCost = 15;
-    if (coins < refillCost) {
-      addFloatingText("Need 15 Coins to Refill!", 150, 100, "#ef4444");
-      return;
+    if (coins >= refillCost) {
+      const newCoins = coins - refillCost;
+      setCoins(newCoins);
+      localStorage.setItem("ecbiz_study_coins", String(newCoins));
+      setAmmo(maxAmmo);
+      // Also restore +25 HP to heal up!
+      setPlayerHp((prev) => Math.min(maxPlayerHp, prev + 25));
+      playCritSound();
+      addFloatingText(`+${maxAmmo} Ammo & +25 HP Refilled! 🎯 [R]`, 100, 110, "#10b981");
+    } else {
+      // Free emergency ammo refill so player is NEVER softlocked
+      setAmmo(maxAmmo);
+      playCritSound();
+      addFloatingText(`Emergency +${maxAmmo} Ammo Supplied! ⚡ [R]`, 100, 110, "#38bdf8");
     }
-    const newCoins = coins - refillCost;
-    setCoins(newCoins);
-    localStorage.setItem("ecbiz_study_coins", String(newCoins));
-    setAmmo(maxAmmo);
-    playCritSound();
-    addFloatingText(`+${maxAmmo} Ammo Refilled! 🎯`, 100, 120, "#10b981");
   };
 
   // Trigger Prodigy Question Attack (strictly from 129 Business Studies question bank!)
@@ -816,23 +840,42 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     }
   };
 
-  // Keyboard controls listener (Space/Up: Jump, F/Enter: Shoot, Shift/W/J: Jetpack)
+  // Keyboard controls listener (Space/Up: Jump & Hold for Jetpack, R: Refill, F/Enter: Shoot)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't intercept typing if user is in an input
+      if ((e.target as HTMLElement)?.tagName === "INPUT" || (e.target as HTMLElement)?.tagName === "TEXTAREA") {
+        return;
+      }
+
       if (e.code === "Space" || e.code === "ArrowUp") {
         e.preventDefault();
-        handleJump();
+        handleJumpStart();
       } else if (e.code === "KeyF" || e.code === "Enter") {
         e.preventDefault();
         handleShoot();
+      } else if (e.code === "KeyR" || e.key === "r" || e.key === "R") {
+        e.preventDefault();
+        handleRefillAmmo();
       } else if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "KeyW" || e.code === "KeyJ") {
         e.preventDefault();
         handleActivateJetpack();
       }
     };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.code === "Space" || e.code === "ArrowUp") {
+        handleJumpEnd();
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [gameState, ammo, hasJetpack]);
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [gameState, ammo, hasJetpack, coins, maxAmmo, maxPlayerHp]);
 
   // Question Attack countdown timer
   useEffect(() => {
@@ -920,6 +963,19 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         jetpackCooldownEndRef.current = now + 7000;
       }
 
+      // Check Long-Press (Space / tap held >= 260ms) to trigger Jetpack
+      if (jumpHoldStartRef.current && !jetpackTriggeredByHoldRef.current) {
+        const holdDuration = now - jumpHoldStartRef.current;
+        if (holdDuration >= 260) {
+          jetpackTriggeredByHoldRef.current = true;
+          if (hasJetpack) {
+            handleActivateJetpack();
+          } else {
+            addFloatingText("🚀 Hold to Fly! Get Jetpack in Shop (200🪙)", p.x, p.y - 25, "#f59e0b");
+          }
+        }
+      }
+
       if (isFlying) {
         // Quantum Jetpack Flight Mode: Overrides gravity and flies above ground & mid hazards
         const targetHoverY = 72;
@@ -954,6 +1010,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       ctx.save();
       ctx.translate(p.x + p.width / 2, p.y + p.height / 2);
       ctx.rotate(p.rotation);
+
+      // Flashing opacity during invulnerability frames
+      if (now < playerInvincibleUntilRef.current) {
+        ctx.globalAlpha = Math.sin(now / 40) > 0 ? 0.35 : 0.85;
+      }
 
       const runBob = p.isJumping ? 0 : Math.sin(Date.now() / 80) * 2;
 
@@ -1083,7 +1144,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       ctx.fillText(activeBoss.icon, bossX, bossY + 30);
       ctx.restore();
 
-      // 6. BOSS FIRES MOVING ATTACK PROJECTILES (MULTI-TIER HEIGHTS)
+      // 6. BOSS FIRES MOVING ATTACK PROJECTILES (MULTI-TIER HEIGHTS, CLEAR & FAIR)
       const timeSinceNormalAttack = Date.now() - lastBossNormalAttackTimeRef.current;
       if (timeSinceNormalAttack >= activeBoss.attackCadenceMs) {
         lastBossNormalAttackTimeRef.current = Date.now();
@@ -1094,39 +1155,48 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           if (!forceTier) {
             const r = Math.random();
             if (selectedDifficulty === "foundation") {
-              tier = r < 0.45 ? "low" : r < 0.78 ? "mid" : "high";
+              // Foundation: clear choice: low (jump!) or high (duck/stand safely)
+              tier = r < 0.55 ? "low" : "high";
             } else if (selectedDifficulty === "higher") {
-              tier = r < 0.32 ? "low" : r < 0.62 ? "mid" : r < 0.82 ? "high" : "wave";
+              tier = r < 0.45 ? "low" : r < 0.75 ? "high" : "mid";
             } else {
-              tier = r < 0.25 ? "low" : r < 0.5 ? "mid" : r < 0.75 ? "high" : "wave";
+              tier = r < 0.35 ? "low" : r < 0.65 ? "high" : r < 0.85 ? "mid" : "wave";
             }
           }
 
-          let projectileY = groundY - 26; // low ground hugger
-          let baseY = groundY - 26;
-          let waveAmp = 38;
-          let waveFreq = 0.035;
+          // Fair, intuitive, and readable heights:
+          // groundY = 230. Standing player head is at y = 186.
+          // Jump height: player rises to y <= 50!
+          let projectileY = groundY - 20; // Low: ground hazard. JUMP cleanly clears by 70+ px!
+          let baseY = groundY - 20;
+          let waveAmp = 22;
+          let waveFreq = 0.025;
 
-          if (tier === "mid") {
-            projectileY = groundY - 62; // torso height
-            baseY = groundY - 62;
-          } else if (tier === "high") {
-            projectileY = groundY - 110; // high overhead swooper
-            baseY = groundY - 110;
+          if (tier === "high") {
+            // High: Flies high overhead at y = 134.
+            // Standing player head is at 186, so high flies 32px safely over player's head!
+            // Player stays grounded and projectile passes harmlessly!
+            projectileY = groundY - 96;
+            baseY = groundY - 96;
+          } else if (tier === "mid") {
+            // Mid: Torso level. Can be destroyed by shooting 'F' or flown over with Jetpack!
+            projectileY = groundY - 50;
+            baseY = groundY - 50;
           } else if (tier === "wave") {
-            baseY = groundY - 68; // undulating sinusoidal wave
+            // Wave: Smooth, gentle sinusoidal wave
+            baseY = groundY - 60;
             projectileY = baseY;
-            waveAmp = 38 + Math.random() * 10;
-            waveFreq = 0.035;
+            waveAmp = 22;
+            waveFreq = 0.025;
           }
 
           bossAttacksRef.current.push({
             x: bossX - 25,
             y: projectileY,
             baseY,
-            vx: -activeBoss.projectileSpeed,
-            width: 28,
-            height: 28,
+            vx: -Math.min(activeBoss.projectileSpeed, 6.0), // readable, dodgeable velocity
+            width: 24,
+            height: 20,
             icon: activeBoss.projectileIcon,
             id: Math.random(),
             rotation: 0,
@@ -1138,22 +1208,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
         spawnProjectile();
 
-        // Staggered Salvo on Higher / Nightmare or Stage >= 2
-        const salvoChance =
-          selectedDifficulty === "nightmare"
-            ? 0.42
-            : selectedDifficulty === "higher"
-            ? 0.28
-            : activeBoss.stage >= 3
-            ? 0.18
-            : 0;
-        if (Math.random() < salvoChance) {
+        // Staggered Salvo only on Nightmare Tier and spaced by 1400ms so it is never an unfair wall
+        if (selectedDifficulty === "nightmare" && Math.random() < 0.2) {
           const compTier: ProjectileHeightTier = Math.random() < 0.5 ? "high" : "low";
           setTimeout(() => {
             if (gameState === "playing") {
               spawnProjectile(compTier);
             }
-          }, 300);
+          }, 1400);
         }
       }
 
@@ -1161,17 +1223,17 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       for (let i = bossAttacksRef.current.length - 1; i >= 0; i--) {
         const ba = bossAttacksRef.current[i];
         ba.x += ba.vx;
-        ba.rotation += 0.15;
+        ba.rotation += 0.12;
 
         if (ba.tier === "wave") {
-          const waveDist = (canvas.width - ba.x) * (ba.waveFreq || 0.035);
-          ba.y = ba.baseY + Math.sin(waveDist) * (ba.waveAmp || 38);
+          const waveDist = (canvas.width - ba.x) * (ba.waveFreq || 0.025);
+          ba.y = ba.baseY + Math.sin(waveDist) * (ba.waveAmp || 22);
         }
 
         // Draw Telemetry Trail based on Height Tier
         ctx.save();
         if (ba.tier === "low") {
-          // Low ground skimmer: fiery ground friction sparks
+          // Low ground skimmer: fiery ground friction sparks (JUMP TO CLEAR!)
           ctx.strokeStyle = "rgba(239, 68, 68, 0.75)";
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -1179,14 +1241,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           ctx.lineTo(ba.x + ba.width + 16, groundY - 2);
           ctx.stroke();
         } else if (ba.tier === "mid") {
-          // Mid torso: orange energy rings
+          // Mid torso: shootable orange energy rings (SHOOT WITH 'F' OR FLY!)
           ctx.strokeStyle = "rgba(245, 158, 11, 0.6)";
           ctx.lineWidth = 1.5;
           ctx.beginPath();
           ctx.arc(ba.x + ba.width + 6, ba.y + ba.height / 2, 8, -Math.PI / 2, Math.PI / 2);
           ctx.stroke();
         } else if (ba.tier === "high") {
-          // High swooper: cyan aerodynamic wind trails
+          // High swooper: cyan aerodynamic wind trails (SAFE TO STAND UNDER!)
           ctx.strokeStyle = "rgba(6, 182, 212, 0.65)";
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -1201,7 +1263,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           for (let k = 0; k <= 24; k += 6) {
             const tx = ba.x + ba.width + k;
             const ty =
-              ba.baseY + Math.sin((canvas.width - tx) * (ba.waveFreq || 0.035)) * (ba.waveAmp || 38) + ba.height / 2;
+              ba.baseY + Math.sin((canvas.width - tx) * (ba.waveFreq || 0.025)) * (ba.waveAmp || 22) + ba.height / 2;
             if (k === 0) ctx.moveTo(tx, ty);
             else ctx.lineTo(tx, ty);
           }
@@ -1221,39 +1283,56 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         else if (ba.tier === "wave") auraColor = "#c084fc";
 
         ctx.shadowColor = auraColor;
-        ctx.shadowBlur = 14;
-        ctx.font = "24px sans-serif";
+        ctx.shadowBlur = 12;
+        ctx.font = "22px sans-serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(ba.icon, 0, 0);
         ctx.restore();
 
-        // Collision with Player
-        if (
-          p.x < ba.x + ba.width &&
-          p.x + p.width > ba.x &&
-          p.y < ba.y + ba.height &&
-          p.y + p.height > ba.y
-        ) {
-          bossAttacksRef.current.splice(i, 1);
-          playHitSound();
+        // Fair Core Hurtbox Collision Detection (with Grace Period i-frames)
+        const isInvincible = now < playerInvincibleUntilRef.current;
+        if (!isInvincible) {
+          const pHurt = {
+            x: p.x + 8,
+            y: p.y + 6,
+            w: p.width - 16,
+            h: p.height - 12,
+          };
+          const bHit = {
+            x: ba.x + 4,
+            y: ba.y + 4,
+            w: ba.width - 8,
+            h: ba.height - 8,
+          };
 
-          const dmg = currentArmour.damagePerHit;
-          setPlayerHp((prev) => {
-            const next = Math.max(0, prev - dmg);
-            if (next <= 0) {
-              if (extraLives > 0) {
-                setExtraLives((el) => el - 1);
-                addFloatingText("REVIVED BY EXTRA LIFE! ❤️", 150, 100, "#10b981");
-                return maxPlayerHp;
-              } else {
-                setGameState("game_over");
+          if (
+            pHurt.x < bHit.x + bHit.w &&
+            pHurt.x + pHurt.w > bHit.x &&
+            pHurt.y < bHit.y + bHit.h &&
+            pHurt.y + pHurt.h > bHit.y
+          ) {
+            bossAttacksRef.current.splice(i, 1);
+            playerInvincibleUntilRef.current = now + 850; // 0.85s grace period
+            playHitSound();
+
+            const dmg = currentArmour.damagePerHit;
+            setPlayerHp((prev) => {
+              const next = Math.max(0, prev - dmg);
+              if (next <= 0) {
+                if (extraLives > 0) {
+                  setExtraLives((el) => el - 1);
+                  addFloatingText("REVIVED BY EXTRA LIFE! ❤️", 150, 100, "#10b981");
+                  return maxPlayerHp;
+                } else {
+                  setGameState("game_over");
+                }
               }
-            }
-            return next;
-          });
-          addFloatingText(`-${dmg} HP! (Armour: ${currentArmour.name})`, p.x, p.y - 12, "#ef4444");
-          continue;
+              return next;
+            });
+            addFloatingText(`-${dmg} HP! (Armour: ${currentArmour.name})`, p.x, p.y - 12, "#ef4444");
+            continue;
+          }
         }
 
         if (ba.x + ba.width < 0) {
@@ -1262,63 +1341,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         }
       }
 
-      // 8. Ground Obstacle Hazards
-      if (Math.random() < 0.012 && obstaclesRef.current.length < 2) {
-        obstaclesRef.current.push({
-          x: canvas.width,
-          y: groundY - 30,
-          width: 24,
-          height: 30,
-          speed: 4.8,
-          id: Math.random(),
-        });
-      }
-
-      for (let i = obstaclesRef.current.length - 1; i >= 0; i--) {
-        const obs = obstaclesRef.current[i];
-        obs.x -= obs.speed;
-
-        ctx.save();
-        ctx.fillStyle = "#ef4444";
-        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-        ctx.strokeStyle = "#fca5a5";
-        ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
-        ctx.font = "14px sans-serif";
-        ctx.fillText("⚠️", obs.x + 2, obs.y + 20);
-        ctx.restore();
-
-        if (
-          p.x < obs.x + obs.width &&
-          p.x + p.width > obs.x &&
-          p.y < obs.y + obs.height &&
-          p.y + p.height > obs.y
-        ) {
-          obstaclesRef.current.splice(i, 1);
-          playHitSound();
-          const dmg = currentArmour.damagePerHit;
-          setPlayerHp((prev) => {
-            const next = Math.max(0, prev - dmg);
-            if (next <= 0) {
-              if (extraLives > 0) {
-                setExtraLives((el) => el - 1);
-                addFloatingText("REVIVED BY EXTRA LIFE! ❤️", 150, 100, "#10b981");
-                return maxPlayerHp;
-              } else {
-                setGameState("game_over");
-              }
-            }
-            return next;
-          });
-          addFloatingText(`-${dmg} HP!`, p.x, p.y - 10, "#ef4444");
-          continue;
-        }
-
-        if (obs.x + obs.width < 0) {
-          obstaclesRef.current.splice(i, 1);
-        }
-      }
-
-      // 9. Update & Draw Player Projectiles (Ink Darts)
+      // 8. Update & Draw Player Projectiles (Ink Darts) + Counter-Fire Deflection!
       for (let i = playerProjectilesRef.current.length - 1; i >= 0; i--) {
         const proj = playerProjectilesRef.current[i];
         proj.x += proj.vx;
@@ -1331,6 +1354,23 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         ctx.arc(proj.x, proj.y, 6, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
+
+        // Check Counter-Fire Deflection: Player shot destroys incoming boss projectile!
+        let deflected = false;
+        for (let j = bossAttacksRef.current.length - 1; j >= 0; j--) {
+          const ba = bossAttacksRef.current[j];
+          const dist = Math.hypot(proj.x - (ba.x + ba.width / 2), proj.y - (ba.y + ba.height / 2));
+          if (dist < 24) {
+            bossAttacksRef.current.splice(j, 1);
+            playerProjectilesRef.current.splice(i, 1);
+            playHitSound();
+            addFloatingText("DEFLECTED! 💥", ba.x, ba.y - 12, "#38bdf8");
+            setScore((s) => s + 30);
+            deflected = true;
+            break;
+          }
+        }
+        if (deflected) continue;
 
         // Hit Boss!
         if (proj.x >= bossX - 25) {
@@ -1947,7 +1987,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               ref={canvasRef}
               width={760}
               height={270}
-              className="w-full h-[270px] sm:h-[300px] block"
+              className="w-full h-[270px] sm:h-[300px] block cursor-pointer"
+              onMouseDown={handleJumpStart}
+              onMouseUp={handleJumpEnd}
+              onTouchStart={handleJumpStart}
+              onTouchEnd={handleJumpEnd}
+              title="Click or Tap to Jump · Long Press / Hold for Jetpack 🚀"
             />
 
             {/* Active Jetpack Flight HUD Status */}
@@ -2170,15 +2215,22 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           {/* ONSCREEN CONTROLS */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
             <button
+              onMouseDown={handleJumpStart}
+              onMouseUp={handleJumpEnd}
+              onTouchStart={handleJumpStart}
+              onTouchEnd={handleJumpEnd}
               onClick={handleJump}
               className="py-3 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-neutral-700 cursor-pointer active:scale-95 shadow-sm"
+              title="Tap or Space to Jump · Hold or Long Press for Jetpack 🚀"
             >
               <span>⬆️ Space: JUMP</span>
+              <span className="text-[10px] text-cyan-400 font-mono">(Hold 🚀)</span>
             </button>
 
             <button
               onClick={handleShoot}
               className="py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
+              title="Press 'F' or click to Shoot (Can destroy enemy projectiles!)"
             >
               <Crosshair className="w-4 h-4" />
               <span>'F': SHOOT ({ammo})</span>
@@ -2196,7 +2248,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                     ? "bg-neutral-800/80 text-neutral-400 border-neutral-700 cursor-not-allowed opacity-75"
                     : "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border-cyan-400/50"
                 }`}
-                title="Activate 3-second sustained rocket flight! Keys: Shift or W"
+                title="Activate 3-second sustained rocket flight! (Hold Space or click)"
               >
                 <Rocket className={`w-3.5 h-3.5 ${jetpackActive ? "animate-bounce" : ""}`} />
                 <span>
@@ -2204,7 +2256,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                     ? `FLYING (${jetpackTimeLeft}s)`
                     : jetpackCooldown > 0
                     ? `Cooldown (${jetpackCooldown}s)`
-                    : "🚀 JETPACK (3s)"}
+                    : "🚀 JETPACK (Hold Space)"}
                 </span>
               </button>
             ) : (
@@ -2221,9 +2273,10 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             <button
               onClick={handleRefillAmmo}
               className="py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-sm"
+              title="Press 'R' key to refill ammo and heal HP!"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>Refill (15 🪙)</span>
+              <span>[R] Refill (15 🪙)</span>
             </button>
 
             <button
