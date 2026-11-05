@@ -15,6 +15,7 @@
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../fresh.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
@@ -43,9 +44,10 @@
         } catch (e) {}
       })();
     </script>
+    <link rel="stylesheet" href="./assets/business.css" />
   </head>
   <body class="min-h-full flex flex-col bg-[#FAF9F6] dark:bg-black text-[#1C1917] dark:text-white selection:bg-[#E2E8F0] selection:text-[#0F172A] transition-colors">
-    <div id="root" class="min-h-full flex flex-col"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <div id="root" class="min-h-full flex flex-col" data-initial-subject="business"></div>
+    <script type="module" src="./assets/business.js"></script>
   </body>
 </html>
