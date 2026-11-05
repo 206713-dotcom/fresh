@@ -54,8 +54,9 @@ def page(title, description, main, prefix="", script=""):
 
 def subject_card(subject):
     slug, name, code, group, symbol, description, _ = subject
+    href = "https://econ-atlas-0455.bentferry4.chatgpt.site/#home" if slug == "economics" else f"subjects/{slug}.html"
     return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}">
-  <a href="subjects/{slug}.html">
+  <a href="{href}">
     <span class="card-top"><span class="symbol" aria-hidden="true">{escape(symbol)}</span><span class="code">{code}</span></span>
     <h3>{escape(name)}</h3>
     <p>{escape(description)}</p>
