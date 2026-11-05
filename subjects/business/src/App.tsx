@@ -336,7 +336,7 @@ export default function App() {
           onOpenAchievements={() => setShowAchievementsModal(true)}
         />
 
-        {/* View Routing for Business Studies */}
+        {/* View Routing for Business */}
         {selectedSubject === "business" && (
           <main>
             {businessTab === "practice" && (
@@ -376,7 +376,7 @@ export default function App() {
                       Cambridge 0264 Active Recall
                     </div>
                     <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white">
-                      Business Studies Quick Quiz
+                      Business Quick Quiz
                     </h1>
                     <p className="text-sm text-[#57534E] dark:text-neutral-400">
                       Master essential 2-mark definitions with randomized 3-question active recall drills.
@@ -472,7 +472,7 @@ export default function App() {
             <span aria-hidden="true">·</span>
             <span>
               {selectedSubject === "business"
-                ? "Cambridge Business Studies (0264 / 0450) Studio"
+                ? "Cambridge Business (0264) Studio"
                 : "Cambridge Economics (0455 / 2281) Studio"}
             </span>
           </div>

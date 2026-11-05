@@ -8,13 +8,13 @@ interface Metadata {
 }
 
 export const metadata: Metadata = {
-  title: "EcBiz Study — CIE Cambridge 0264 / 0450 Business & Economics",
+  title: "EcBiz Study — CIE Cambridge 0264 Business & Economics",
   description:
-    "Zero-cost, CIE Cambridge-aligned Business Studies & Economics practice platform featuring 0264 syllabus glossary, verified question bank, two-pass blueprint generator, and instant AO1-AO4 assessment engine.",
+    "Zero-cost, CIE Cambridge-aligned Business & Economics practice platform featuring 0264 syllabus glossary, verified question bank, two-pass blueprint generator, and instant AO1-AO4 assessment engine.",
   openGraph: {
-    title: "EcBiz Study — CIE Cambridge 0264 / 0450 Business & Economics",
+    title: "EcBiz Study — CIE Cambridge 0264 Business & Economics",
     description:
-      "Zero-cost, CIE Cambridge-aligned Business Studies & Economics practice platform featuring 0264 syllabus glossary, verified question bank, two-pass blueprint generator, and instant AO1-AO4 assessment engine.",
+      "Zero-cost, CIE Cambridge-aligned Business & Economics practice platform featuring 0264 syllabus glossary, verified question bank, two-pass blueprint generator, and instant AO1-AO4 assessment engine.",
     type: "website",
   },
 };

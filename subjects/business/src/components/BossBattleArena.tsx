@@ -748,7 +748,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     }
   };
 
-  // Trigger Prodigy Question Attack (strictly from 129 Business Studies question bank!)
+  // Trigger Prodigy Question Attack (strictly from 129 Business question bank!)
   const triggerQuestionAttack = () => {
     setGameState("question_attack");
     setQuestionFeedback(null);
@@ -1523,7 +1523,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] font-mono font-bold uppercase tracking-wider">
-                Cambridge 0264 / 0450 Arena
+                Cambridge 0264 Arena
               </span>
               <span className="text-xs text-neutral-500 font-mono">129 Business Questions Bank</span>
             </div>
@@ -2156,7 +2156,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               <div className="py-4">
                 <div className="text-xs font-mono text-sky-400 mb-1 flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800 font-bold">
-                    0264 / 0450 Business
+                    0264 Business
                   </span>
                   <span>{activeQuestion.chapter}</span>
                 </div>

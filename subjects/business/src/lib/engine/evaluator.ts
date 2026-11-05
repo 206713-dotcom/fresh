@@ -715,7 +715,7 @@ function evaluateWithInstantExaminer(
     improvements.push("Extend your chain of analysis using 'this leads to... as a result...'.");
   }
 
-  let examinerNotes = `CIE 0264/0450 Assessment: Awarded ${totalScore}/${marks} marks (${percentage}%). `;
+  let examinerNotes = `CIE 0264 Assessment: Awarded ${totalScore}/${marks} marks (${percentage}%). `;
   if (ruleEnforcement.ao2CappedToZero) {
     examinerNotes += "AO2 was capped at 0 because valid application words were missing. ";
   }

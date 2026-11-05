@@ -663,7 +663,7 @@ export function PracticeStudio({
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              CIE Cambridge 0264 / 0450 Practice Platform
+              CIE Cambridge 0264 Practice Platform
             </span>
           </div>
           <h1 className="font-academic-serif text-2xl sm:text-3xl font-bold text-[#0F2042] dark:text-white">
@@ -1225,7 +1225,7 @@ export function PracticeStudio({
             <div className="flex items-center gap-2.5">
               <span className="p-1 rounded-md bg-blue-600 text-white font-bold text-xs shrink-0">🏛</span>
               <span className="text-blue-950 dark:text-blue-200">
-                <strong>Separate Official Past Papers Archive (189 Questions):</strong> Authentic Cambridge examination questions from official past papers (0450 / 0264) with actual exam codes (e.g. 0450/11/M/J/22). (Use the <em>Topical Questions Database</em> tab above for Section 1 & 2 case study scenario sets).
+                <strong>Separate Official Past Papers Archive (189 Questions):</strong> Authentic Cambridge examination questions from official past papers (0264) with actual exam codes (e.g. 0264/11/M/J/22). (Use the <em>Topical Questions Database</em> tab above for Section 1 & 2 case study scenario sets).
               </span>
             </div>
             <button

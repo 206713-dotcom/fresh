@@ -22,7 +22,7 @@ export function DocumentArchive() {
       isSpecimen: true,
     },
     {
-      title: "Cambridge IGCSE Business Studies 0264 Syllabus (2027–2029)",
+      title: "Cambridge IGCSE Business 0264 Syllabus (2027–2029)",
       description: "Complete qualification curriculum syllabus document detailing Assessment Objectives AO1–AO4, subject content, and grading.",
       category: "Official Syllabus",
       url: "/assets/aistudio/718123-2027-2029-syllabus_74cc6921.pdf",
@@ -36,7 +36,7 @@ export function DocumentArchive() {
       isLocal: false,
     },
     {
-      title: "CAIE IGCSE Business Studies Revision Guide",
+      title: "CAIE IGCSE Business Revision Guide",
       description: "Comprehensive structured revision summary of all chapters and CIE examination technique guidelines.",
       category: "Revision Guide",
       url: "/assets/aistudio/CAIE_-_IGCSE_-_Business_Studies__1__c3cb68cc.pdf",

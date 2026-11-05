@@ -451,7 +451,7 @@ export function DailyQuickQuiz({ onOpenFullGlossary, onOpenStudySpace }: DailyQu
               </div>
               <p className="text-[#475569] dark:text-neutral-300 text-xs leading-relaxed">
                 <strong>Examiner Guidance: </strong>
-                In Cambridge Business Studies (0264 / 0450), mark schemes penalise colloquial or vague phrasing. You must remember the specific technical characteristics (e.g. factors of production, separate legal identity, contribution, or opportunity cost).
+                In Cambridge Business (0264), mark schemes penalise colloquial or vague phrasing. You must remember the specific technical characteristics (e.g. factors of production, separate legal identity, contribution, or opportunity cost).
               </p>
             </div>
           )}

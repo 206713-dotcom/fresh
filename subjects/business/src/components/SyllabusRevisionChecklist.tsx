@@ -194,7 +194,7 @@ export function SyllabusRevisionChecklist({
 
   // Reset ratings for current subject
   const handleResetRatings = () => {
-    if (confirm(`Reset all memory ratings (Hard/Moderate/Easy) for ${activeSubject === "business" ? "Business Studies (0264)" : "Economics"}?`)) {
+    if (confirm(`Reset all memory ratings (Hard/Moderate/Easy) for ${activeSubject === "business" ? "Business (0264)" : "Economics"}?`)) {
       const nextRatings = { ...ratings };
       allGranularPoints.forEach((p) => {
         delete nextRatings[p.id];
@@ -322,7 +322,7 @@ export function SyllabusRevisionChecklist({
                   : "text-[#57534E] dark:text-neutral-400 hover:text-black dark:hover:text-white"
               }`}
             >
-              Business (0264 / 0450)
+              Business (0264)
             </button>
             <button
               onClick={() => setActiveSubject("econs")}

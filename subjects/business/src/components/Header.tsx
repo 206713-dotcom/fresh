@@ -139,7 +139,7 @@ export function Header({
               {isBusiness ? "EcBiz · Business" : "EcBiz · Economics"}
             </span>
             <span className="text-[11px] font-mono text-[#78716C] dark:text-neutral-400 border-l border-[#D6D3D1] dark:border-neutral-700 pl-2 hidden sm:inline">
-              {isBusiness ? "0264 / 0450" : "0455 / 2281"}
+              {isBusiness ? "0264" : "0455"}
             </span>
           </button>
         </div>

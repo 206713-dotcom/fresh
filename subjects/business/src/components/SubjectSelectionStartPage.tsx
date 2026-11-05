@@ -129,13 +129,13 @@ export function SubjectSelectionStartPage({
         {/* Two-Column Grid: Business Studies on the Left, Economics on the Right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch mb-6">
           {/* ========================================================= */}
-          {/* LEFT CARD: BUSINESS STUDIES                               */}
+          {/* LEFT CARD: BUSINESS                                       */}
           {/* ========================================================= */}
           <div className="flex flex-col justify-between bg-white dark:bg-neutral-900 border-2 border-[#0F2042] dark:border-white rounded-xl p-5 shadow-xs">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="px-2 py-0.5 rounded-full bg-[#0F2042] text-white dark:bg-white dark:text-black text-[10px] font-mono font-bold uppercase tracking-wider">
-                  CIE Cambridge 0264 / 0450
+                  CIE Cambridge 0264
                 </span>
                 <span className="text-[10px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -144,7 +144,7 @@ export function SubjectSelectionStartPage({
               </div>
 
               <h2 className="font-serif text-lg sm:text-xl font-bold text-[#0F2042] dark:text-white mb-1">
-                Business Studies
+                Business
               </h2>
               <p className="text-xs text-[#57534E] dark:text-neutral-400 leading-relaxed mb-3">
                 80 authentic case scenarios across Sections 1 to 4 with 320 verified prompts and Senior Examiner AI evaluation.
@@ -172,7 +172,7 @@ export function SubjectSelectionStartPage({
                 onClick={onSelectBusiness}
                 className="w-full py-2 px-4 rounded-lg bg-[#0F2042] dark:bg-white text-white dark:text-black font-semibold text-xs shadow-xs hover:bg-[#1E3A8A] dark:hover:bg-neutral-200 transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <span>Enter Business Studies Studio</span>
+                <span>Enter Business Studio</span>
                 <span>→</span>
               </button>
 
@@ -273,7 +273,7 @@ export function SubjectSelectionStartPage({
 
         {/* Compact Footer */}
         <div className="pt-3 border-t border-[#E7E5E4] dark:border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#78716C] dark:text-neutral-500">
-          <div>EcBiz Study · CIE Cambridge 0264 Business Studies &amp; 0455 Economics</div>
+          <div>EcBiz Study · CIE Cambridge 0264 Business &amp; 0455 Economics</div>
           <a
             href="https://forms.gle/6X2CAR1LkSQGRBx68"
             target="_blank"
