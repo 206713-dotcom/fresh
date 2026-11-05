@@ -15,8 +15,8 @@ body.dark {
 
 @layer base {
   :root {
-    --font-serif: "Source Serif 4", "Playfair Display", Georgia, serif;
-    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: Georgia, "Source Serif 4", "Playfair Display", serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
   }
 
@@ -28,7 +28,6 @@ body.dark {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Academic paper styling */
   .font-academic-serif {
     font-family: var(--font-serif);
   }
