@@ -12,6 +12,7 @@ import {
 } from "../lib/types";
 import { AOHighlightViewer } from "./AOHighlightViewer";
 import { MarkOverrideModal } from "./MarkOverrideModal";
+import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
 import {
   PAPER1_DATABASE,
   Paper1ScenarioSet,
@@ -1615,6 +1616,12 @@ export function PracticeStudio({
           onResetOverride={handleResetOverride}
         />
       )}
+
+      {/* Factors of Production & Factor Rewards Diagram Modal */}
+      <FactorsOfProductionDiagram
+        isOpen={showFactorsDiagramModal}
+        onClose={() => setShowFactorsDiagramModal(false)}
+      />
     </div>
   );
 }

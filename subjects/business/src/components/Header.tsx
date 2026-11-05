@@ -24,10 +24,10 @@ import {
 import { getStudyCoins } from "../lib/cookies";
 
 interface HeaderProps {
-  currentSubject?: "business";
+  currentSubject: "business" | "econs";
   activeTab: string;
   setActiveTab: (tab: any) => void;
-  onSwitchSubject?: () => void;
+  onSwitchSubject: () => void;
   theme: "light" | "dark";
   onToggleTheme: () => void;
   submissionCount: number;
@@ -37,8 +37,10 @@ interface HeaderProps {
 }
 
 export function Header({
+  currentSubject,
   activeTab,
   setActiveTab,
+  onSwitchSubject,
   theme,
   onToggleTheme,
   submissionCount,
@@ -46,6 +48,8 @@ export function Header({
   onOpenAvatarCustomizer,
   onOpenAchievements,
 }: HeaderProps) {
+  const isBusiness = currentSubject === "business";
+
   // Dropdown open states for desktop & mobile
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -114,32 +118,30 @@ export function Header({
   };
 
   // Check if active tab belongs to a category
-  const isPracticeActive = ["practice", "quick-quiz", "sections"].includes(activeTab);
-  const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
+  const isPracticeActive = isBusiness && ["practice", "quick-quiz", "sections"].includes(activeTab);
+  const isResourcesActive = isBusiness && ["glossary", "archive", "progress"].includes(activeTab);
+  const isEconsStudioActive = !isBusiness && ["econs-practice", "econs-diagrams"].includes(activeTab);
+  const isEconsCurriculumActive = !isBusiness && ["econs-glossary", "econs-branch"].includes(activeTab);
 
   return (
     <header className="sticky top-0 z-40 bg-[#FAF9F6]/95 dark:bg-black/95 backdrop-blur-md border-b border-[#E7E5E4] dark:border-neutral-800 px-4 sm:px-6 py-2.5 transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         {/* ========================================================= */}
-        {/* ZONE 1: BRAND / WORDMARK & FRESH HUB LINK */}
+        {/* ZONE 1: BRAND / WORDMARK */}
         {/* ========================================================= */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <a
-            href="../index.html#subjects"
-            title="Return to Fresh IGCSE Hub (All 12 Subjects)"
-            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-neutral-200 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors shadow-xs"
+        <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={onSwitchSubject}
+            title="Return to Subject Selection"
+            className="text-left group flex items-center gap-2 focus:outline-none cursor-pointer"
           >
-            <span aria-hidden="true">←</span>
-            <span>Fresh Hub</span>
-          </a>
-          <div className="flex items-center gap-2">
             <span className="font-academic-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#0F2042] dark:text-white whitespace-nowrap">
-              EcBiz · Business
+              {isBusiness ? "EcBiz · Business" : "EcBiz · Economics"}
             </span>
             <span className="text-[11px] font-mono text-[#78716C] dark:text-neutral-400 border-l border-[#D6D3D1] dark:border-neutral-700 pl-2 hidden sm:inline">
-              0264 / 0450
+              {isBusiness ? "0264 / 0450" : "0455 / 2281"}
             </span>
-          </div>
+          </button>
         </div>
 
         {/* ========================================================= */}
@@ -149,8 +151,10 @@ export function Header({
           ref={navRef}
           className="hidden md:flex items-center gap-2 lg:gap-3 text-xs sm:text-sm font-medium"
         >
-          {/* DROPDOWN 1: Practice & Questions */}
-          <div
+          {isBusiness ? (
+            <>
+              {/* DROPDOWN 1: Practice & Questions */}
+              <div
                 className="relative"
                 onMouseEnter={() => handleMouseEnter("practice")}
                 onMouseLeave={handleMouseLeave}
@@ -326,8 +330,142 @@ export function Header({
                   </div>
                 )}
               </div>
+            </>
+          ) : (
+            <>
+              {/* ECONOMICS DROPDOWN 1 */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter("econs-studio")}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  type="button"
+                  onClick={() => handleToggleClick("econs-studio")}
+                  className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
+                    isEconsStudioActive
+                      ? "bg-[#0F2042]/10 dark:bg-white/10 text-[#0F2042] dark:text-white font-semibold"
+                      : "text-[#57534E] dark:text-neutral-300 hover:text-[#0F2042] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                  }`}
+                >
+                  <span>Studio & Diagrams</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      openDropdown === "econs-studio" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-  
+                {openDropdown === "econs-studio" && (
+                  <div className="absolute top-full left-0 mt-1 w-56 p-2 rounded-2xl bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-700 shadow-xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <button
+                      onClick={() => handleSelectTab("econs-practice")}
+                      className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2 transition cursor-pointer ${
+                        activeTab === "econs-practice"
+                          ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold"
+                          : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                      }`}
+                    >
+                      <Layers className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
+                      <div>
+                        <div className="text-xs font-semibold">Economics Studio</div>
+                        <div className="text-[10px] opacity-70">Questions & prompt evaluation</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => handleSelectTab("econs-diagrams")}
+                      className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2 transition cursor-pointer mt-1 ${
+                        activeTab === "econs-diagrams"
+                          ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold"
+                          : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                      }`}
+                    >
+                      <BarChart3 className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
+                      <div>
+                        <div className="text-xs font-semibold">Market Diagrams</div>
+                        <div className="text-[10px] opacity-70">Supply, demand, and graphs</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* ECONOMICS DROPDOWN 2 */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter("econs-curriculum")}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  type="button"
+                  onClick={() => handleToggleClick("econs-curriculum")}
+                  className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
+                    isEconsCurriculumActive
+                      ? "bg-[#0F2042]/10 dark:bg-white/10 text-[#0F2042] dark:text-white font-semibold"
+                      : "text-[#57534E] dark:text-neutral-300 hover:text-[#0F2042] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                  }`}
+                >
+                  <span>Curriculum & Glossary</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      openDropdown === "econs-curriculum" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {openDropdown === "econs-curriculum" && (
+                  <div className="absolute top-full left-0 mt-1 w-56 p-2 rounded-2xl bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-700 shadow-xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <button
+                      onClick={() => handleSelectTab("econs-glossary")}
+                      className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2 transition cursor-pointer ${
+                        activeTab === "econs-glossary"
+                          ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold"
+                          : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                      }`}
+                    >
+                      <BookOpen className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
+                      <div>
+                        <div className="text-xs font-semibold">0455 Glossary</div>
+                        <div className="text-[10px] opacity-70">Economics terms & definitions</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => handleSelectTab("econs-branch")}
+                      className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2 transition cursor-pointer mt-1 ${
+                        activeTab === "econs-branch"
+                          ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold"
+                          : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                      }`}
+                    >
+                      <Layers className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
+                      <div>
+                        <div className="text-xs font-semibold">Branch Overview</div>
+                        <div className="text-[10px] opacity-70">Micro & Macroeconomics maps</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* TOP TAB BUTTON: 2D Boss Battle Fighting Game for Economics */}
+              <button
+                type="button"
+                onClick={() => handleSelectTab("boss-battle")}
+                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer text-xs sm:text-sm font-semibold ${
+                  activeTab === "boss-battle"
+                    ? "bg-rose-600 text-white shadow-xs"
+                    : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30"
+                }`}
+                title="Boss Battle Arena: 2D Arcade with Cambridge Question Attacks & Armour Upgrades"
+              >
+                <Swords className="w-3.5 h-3.5" />
+                <span>Boss Battle ⚔️</span>
+              </button>
+            </>
+          )}
+
           {/* HIGH-VISIBILITY STUDY SPACE BUTTON IN CENTER NAV */}
           {onOpenStudySpace && (
             <button
@@ -406,6 +544,15 @@ export function Header({
             {theme === "dark" ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-slate-700" />}
           </button>
 
+          {/* Switch Subject Button */}
+          <button
+            onClick={onSwitchSubject}
+            className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors whitespace-nowrap cursor-pointer"
+            title="Switch between Business and Economics"
+          >
+            <ArrowLeftRight className="w-3 h-3 text-[#0F2042] dark:text-white" />
+            <span className="hidden sm:inline">Subject</span>
+          </button>
 
           {/* Mobile Menu Hamburger Button */}
           <button
@@ -423,14 +570,6 @@ export function Header({
       {/* ========================================================= */}
       {mobileMenuOpen && (
         <div className="md:hidden pt-3 pb-2 border-t border-[#E7E5E4] dark:border-neutral-800 mt-2.5 space-y-2 animate-in fade-in duration-150">
-          {/* Link back to Fresh IGCSE Hub */}
-          <a
-            href="../index.html#subjects"
-            className="w-full py-2 px-3 rounded-xl border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs"
-          >
-            <span>← All Subjects (Fresh IGCSE Hub)</span>
-          </a>
-
           {/* Study Space Banner for Mobile */}
           {onOpenStudySpace && (
             <button
@@ -459,8 +598,9 @@ export function Header({
             </button>
           )}
 
-          <div className="space-y-1 text-xs">
-            <div className="text-[10px] font-mono uppercase font-bold text-slate-400 px-2 pt-1">
+          {isBusiness ? (
+            <div className="space-y-1 text-xs">
+              <div className="text-[10px] font-mono uppercase font-bold text-slate-400 px-2 pt-1">
                 Practice & Drills
               </div>
               <button
@@ -568,6 +708,72 @@ export function Header({
                 <span>Progress Ledger ({submissionCount})</span>
               </button>
             </div>
+          ) : (
+            <div className="space-y-1 text-xs">
+              <div className="text-[10px] font-mono uppercase font-bold text-slate-400 px-2 pt-1">
+                Studio & Diagrams
+              </div>
+              <button
+                onClick={() => handleSelectTab("econs-practice")}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
+                  activeTab === "econs-practice"
+                    ? "bg-[#0F2042] text-white font-semibold"
+                    : "text-slate-800 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Economics Studio</span>
+              </button>
+              <button
+                onClick={() => handleSelectTab("econs-diagrams")}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
+                  activeTab === "econs-diagrams"
+                    ? "bg-[#0F2042] text-white font-semibold"
+                    : "text-slate-800 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>Market Diagrams</span>
+              </button>
+
+              <div className="text-[10px] font-mono uppercase font-bold text-slate-400 px-2 pt-2">
+                Curriculum & Glossary
+              </div>
+              <button
+                onClick={() => handleSelectTab("econs-glossary")}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
+                  activeTab === "econs-glossary"
+                    ? "bg-[#0F2042] text-white font-semibold"
+                    : "text-slate-800 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>0455 Glossary</span>
+              </button>
+              <button
+                onClick={() => handleSelectTab("econs-branch")}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
+                  activeTab === "econs-branch"
+                    ? "bg-[#0F2042] text-white font-semibold"
+                    : "text-slate-800 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Branch Overview</span>
+              </button>
+              <button
+                onClick={() => handleSelectTab("boss-battle")}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
+                  activeTab === "boss-battle"
+                    ? "bg-rose-600 text-white font-bold"
+                    : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-semibold"
+                }`}
+              >
+                <Swords className="w-3.5 h-3.5" />
+                <span>🎮 2D Boss Battle Fighting Game</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>
