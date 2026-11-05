@@ -141,10 +141,10 @@ export default defineConfig(() => {
       dedupe: ['react', 'react-dom'],
       alias: {
         '@': path.resolve(import.meta.dirname || '.', '.'),
-        'react': path.resolve(import.meta.dirname || '.', 'node_modules/react'),
-        'react-dom': path.resolve(import.meta.dirname || '.', 'node_modules/react-dom'),
-        'react/jsx-runtime': path.resolve(import.meta.dirname || '.', 'node_modules/react/jsx-runtime'),
-        'react/jsx-dev-runtime': path.resolve(import.meta.dirname || '.', 'node_modules/react/jsx-dev-runtime'),
+        'react': path.resolve(import.meta.dirname || '.', '../../node_modules/react'),
+        'react-dom': path.resolve(import.meta.dirname || '.', '../../node_modules/react-dom'),
+        'react/jsx-runtime': path.resolve(import.meta.dirname || '.', '../../node_modules/react/jsx-runtime'),
+        'react/jsx-dev-runtime': path.resolve(import.meta.dirname || '.', '../../node_modules/react/jsx-dev-runtime'),
       },
     },
     optimizeDeps: {
@@ -156,41 +156,16 @@ export default defineConfig(() => {
         'react/jsx-dev-runtime',
       ],
     },
-    base: './',
-    publicDir: path.resolve(import.meta.dirname || '.', 'subjects/business/public'),
     build: {
       chunkSizeWarningLimit: 8000,
       outDir: 'dist',
-      rollupOptions: {
-        output: {
-          entryFileNames: 'assets/[name].js',
-          chunkFileNames: 'assets/[name].js',
-          assetFileNames: 'assets/[name].[ext]',
-        },
-        input: {
-          main: path.resolve(import.meta.dirname || '.', 'index.html'),
-          business: path.resolve(import.meta.dirname || '.', 'subjects/business/index.html'),
-          economics: path.resolve(import.meta.dirname || '.', 'subjects/economics.html'),
-          biology: path.resolve(import.meta.dirname || '.', 'subjects/biology.html'),
-          chemistry: path.resolve(import.meta.dirname || '.', 'subjects/chemistry.html'),
-          computerscience: path.resolve(import.meta.dirname || '.', 'subjects/computer-science.html'),
-          englishlanguage: path.resolve(import.meta.dirname || '.', 'subjects/english-language.html'),
-          englishliterature: path.resolve(import.meta.dirname || '.', 'subjects/english-literature.html'),
-          geography: path.resolve(import.meta.dirname || '.', 'subjects/geography.html'),
-          history: path.resolve(import.meta.dirname || '.', 'subjects/history.html'),
-          ict: path.resolve(import.meta.dirname || '.', 'subjects/ict.html'),
-          mathematics: path.resolve(import.meta.dirname || '.', 'subjects/mathematics.html'),
-          physics: path.resolve(import.meta.dirname || '.', 'subjects/physics.html'),
-        },
-      },
     },
     server: {
-      allowedHosts: true as true,
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-    preview: {
-      allowedHosts: true as true,
     },
   };
 });
