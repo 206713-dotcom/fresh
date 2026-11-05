@@ -448,21 +448,6 @@ export function Header({
                   </div>
                 )}
               </div>
-
-              {/* TOP TAB BUTTON: 2D Boss Battle Fighting Game for Economics */}
-              <button
-                type="button"
-                onClick={() => handleSelectTab("boss-battle")}
-                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer text-xs sm:text-sm font-semibold ${
-                  activeTab === "boss-battle"
-                    ? "bg-rose-600 text-white shadow-xs"
-                    : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30"
-                }`}
-                title="Boss Battle Arena: 2D Arcade with Cambridge Question Attacks & Armour Upgrades"
-              >
-                <Swords className="w-3.5 h-3.5" />
-                <span>Boss Battle ⚔️</span>
-              </button>
             </>
           )}
 
@@ -760,17 +745,6 @@ export function Header({
               >
                 <Layers className="w-3.5 h-3.5" />
                 <span>Branch Overview</span>
-              </button>
-              <button
-                onClick={() => handleSelectTab("boss-battle")}
-                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 ${
-                  activeTab === "boss-battle"
-                    ? "bg-rose-600 text-white font-bold"
-                    : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-semibold"
-                }`}
-              >
-                <Swords className="w-3.5 h-3.5" />
-                <span>🎮 2D Boss Battle Fighting Game</span>
               </button>
             </div>
           )}
