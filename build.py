@@ -54,9 +54,8 @@ def page(title, description, main, prefix="", script=""):
 
 def subject_card(subject):
     slug, name, code, group, symbol, description, _ = subject
-    href = "https://econ-atlas-0455.bentferry4.chatgpt.site/#home" if slug == "economics" else f"subjects/{slug}.html"
     return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}">
-  <a href="{href}">
+  <a href="subjects/{slug}.html">
     <span class="card-top"><span class="symbol" aria-hidden="true">{escape(symbol)}</span><span class="code">{code}</span></span>
     <h3>{escape(name)}</h3>
     <p>{escape(description)}</p>
@@ -111,6 +110,8 @@ def topic_card(index, topic):
 
 def subject_page(subject, next_subject):
     slug, name, code, group, symbol, description, topics = subject
+    if slug == "economics":
+        return
     links = "".join(f'<li><a href="#topic-{index}">{escape(topic[0])}</a></li>'
                     for index, topic in enumerate(topics, 1))
     cards = "\n".join(topic_card(index, topic) for index, topic in enumerate(topics, 1))
