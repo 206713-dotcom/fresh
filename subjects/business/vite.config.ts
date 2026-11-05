@@ -138,9 +138,23 @@ export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss(), studySpaceApiPlugin()],
     resolve: {
+      dedupe: ['react', 'react-dom'],
       alias: {
         '@': path.resolve(import.meta.dirname || '.', '.'),
+        'react': path.resolve(import.meta.dirname || '.', '../../node_modules/react'),
+        'react-dom': path.resolve(import.meta.dirname || '.', '../../node_modules/react-dom'),
+        'react/jsx-runtime': path.resolve(import.meta.dirname || '.', '../../node_modules/react/jsx-runtime'),
+        'react/jsx-dev-runtime': path.resolve(import.meta.dirname || '.', '../../node_modules/react/jsx-dev-runtime'),
       },
+    },
+    optimizeDeps: {
+      include: [
+        'react',
+        'react-dom',
+        'react-dom/client',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+      ],
     },
     build: {
       chunkSizeWarningLimit: 8000,
