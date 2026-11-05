@@ -156,7 +156,6 @@ export default defineConfig(() => {
         input: {
           main: path.resolve(import.meta.dirname || '.', 'index.html'),
           business: path.resolve(import.meta.dirname || '.', 'subjects/business/index.html'),
-          businessSubject: path.resolve(import.meta.dirname || '.', 'subjects/Business.html'),
           economics: path.resolve(import.meta.dirname || '.', 'subjects/economics.html'),
           biology: path.resolve(import.meta.dirname || '.', 'subjects/biology.html'),
           chemistry: path.resolve(import.meta.dirname || '.', 'subjects/chemistry.html'),
