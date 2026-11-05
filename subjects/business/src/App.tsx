@@ -46,7 +46,7 @@ export default function App() {
 
   // Tab state within active subject
   // Business tabs: "practice" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle"
-  // Economics tabs: "econs-practice" | "econs-diagrams" | "econs-glossary" | "econs-branch" | "boss-battle"
+  // Economics tabs: "econs-practice" | "econs-diagrams" | "econs-glossary" | "econs-branch"
   const [businessTab, setBusinessTab] = useState<"practice" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle">(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("ecbiz_business_tab");
@@ -56,7 +56,7 @@ export default function App() {
     }
     return "practice";
   });
-  const [econsTab, setEconsTab] = useState<"econs-practice" | "econs-diagrams" | "econs-glossary" | "econs-branch" | "boss-battle">("econs-practice");
+  const [econsTab, setEconsTab] = useState<"econs-practice" | "econs-diagrams" | "econs-glossary" | "econs-branch">("econs-practice");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -452,12 +452,6 @@ export default function App() {
               econsTab === "econs-glossary") && <EconomicsStudio />}
 
             {econsTab === "econs-branch" && <EconomicsCoOp />}
-
-            {econsTab === "boss-battle" && (
-              <BossBattleArena
-                onBackToStudio={() => setEconsTab("econs-practice")}
-              />
-            )}
           </main>
         )}
       </div>
