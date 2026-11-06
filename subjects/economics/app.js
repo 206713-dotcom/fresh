@@ -20,16 +20,25 @@ function home() {
   ];
   return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
 }
+function studyHero(label, title, description, stats, kind) {
+  return '<section class="study-hero"><div><p class="eyebrow">'+label+'</p><h1>'+title+'</h1><p class="study-intro">'+description+'</p><div class="study-stats">'+stats.map(([n,label])=>'<span><strong>'+n+'</strong> '+label+'</span>').join('')+'</div></div><div class="study-art '+kind+'" aria-hidden="true"><span class="art-orbit"></span><span class="art-sheet sheet-back"></span><span class="art-sheet sheet-front">'+(kind==='card-art'?'Q.<i>think it through.</i>':'E.<i>ideas into understanding.</i>')+'</span><small>'+(kind==='card-art'?'A little recall. A lot of progress.':'Your Economics study collection')+'</small></div></section>';
+}
+function chapterGallery() {
+  return '<div class="chapter-collection">'+catalog.map((c,i)=>{
+    const chapterLessons=lessons.filter(l=>l.chapter===i);
+    return '<a class="chapter-cover" href="#chapter/'+i+'" style="--chapter-tint:'+(['#dcebe2','#f0e1cb','#dfe4ed','#e8dfeb','#e5e8ce','#f1dcd1','#e0e9e5'][i])+'"><div class="cover-top"><span class="cover-number">'+(i<6?pad(i+1):'✎')+'</span><span class="cover-arrow" aria-hidden="true">↗</span></div><div><small>'+(i<6?'Chapter '+(i+1):'The exam collection')+'</small><h2>'+escapeHtml(c.title)+'</h2></div><div class="cover-bottom"><span>'+chapterLessons.length+' lessons</span><span>Explore notes →</span></div></a>';
+  }).join('')+'</div>';
+}
 function library() {
-  return heading('Course library','Lessons','Browse by chapter or search the lesson index.')+'<label class="field">Find a lesson<input id="search" type="search" placeholder="Try demand or inflation"></label><div id="results">'+tiles(true)+'</div>';
+  return studyHero('The notes collection','Make every idea<br><em>make sense.</em>','Explore the course through clear explanations, key points and diagrams. Pick a chapter and settle into your next lesson.',[[6,'chapters'],[lessons.length,'lessons'],['2027–29','syllabus']],'notes-art')+'<section class="collection-toolbar"><div><p class="eyebrow">Find your next lesson</p><h2>Your Economics library</h2></div><label class="study-search"><span>Search lessons</span><input id="search" type="search" placeholder="Search demand, inflation, opportunity cost…"></label></section><div id="results">'+chapterGallery()+'</div>';
 }
 function lessonLink(l) {
   return '<a class="lesson-link" href="#lesson/'+l.id+'"><span>'+escapeHtml(l.title)+'</span><small>'+(flashcardDecks[l.id] ? 'Notes + cards' : 'Source lesson')+' ↗</small></a>';
 }
 function chapter(index) {
   const c = catalog[index];
-  if (!c) return home();
-  return '<p class="crumb"><a href="#library">Lessons</a> / '+(index < 6 ? 'Chapter '+pad(index+1) : 'Exam skills')+'</p>'+heading('Course library',escapeHtml(c.title),'Choose a lesson to open its study page.')+c.groups.map(g=>'<section class="group"><h2>'+escapeHtml(g.title)+'</h2>'+g.lessons.map(lessonLink).join('')+'</section>').join('');
+  if (!c) return library();
+  return '<p class="crumb"><a href="#library">Notes library</a><span>/</span>'+(index<6?'Chapter '+pad(index+1):'Exam skills')+'</p><header class="lesson-heading"><p class="eyebrow">'+(index<6?'Chapter '+pad(index+1):'Exam collection')+' · '+lessons.filter(l=>l.chapter===index).length+' lessons</p><h1>'+escapeHtml(c.title)+'</h1><p>Start with a lesson, then use its flashcards to make the ideas stick.</p></header><div class="chapter-lessons">'+c.groups.map((g,i)=>'<section class="chapter-topic"><div class="topic-heading"><span>'+pad(i+1)+'</span><h2>'+escapeHtml(g.title)+'</h2></div><div>'+g.lessons.map(lessonLink).join('')+'</div></section>').join('')+'</div>';
 }
 function diagram(shift) {
   return '<figure><svg class="figure" viewBox="0 0 380 235" role="img" aria-label="'+(shift?'A PPC shifting outward increases productive capacity.':'A point inside the PPC is attainable with idle resources. A point on the curve is efficient. A point outside the curve is unattainable.')+'"><path d="M55 35v155h285" stroke="#394d80" stroke-width="2" fill="none"/><path d="M55 63C151 68 236 97 258 190" stroke="#304eb0" stroke-width="3" fill="none"/>'+ (shift ? '<path d="M55 43C182 42 288 72 310 190" stroke="#a34920" stroke-width="3" fill="none"/><text x="257" y="88">New PPC</text><text x="202" y="146">Original PPC</text>' : '<circle cx="112" cy="144" r="5" fill="#304eb0"/><text x="123" y="148">Inside</text><circle cx="211" cy="113" r="5" fill="#304eb0"/><text x="174" y="133">On curve</text><circle cx="266" cy="74" r="5" fill="#a34920"/><text x="277" y="78">Outside</text>')+'<text x="50" y="24">Output A</text><text x="280" y="211">Output B</text></svg><figcaption class="muted">'+(shift?'An outward shift makes more combinations attainable.':'Where a point lies relative to the PPC shows what the economy can produce.')+'</figcaption></figure>';
@@ -39,22 +48,34 @@ function revisionNotes(id) {
   const points = lessonPoints[id] || foundationPoints[id];
   const worked = workedNotes[id];
   const detail = syllabusNotes[id];
-  const detailedSection = detail ? '<section class="syllabus-detail"><p class="eyebrow">Cambridge 0455 · '+escapeHtml(detail.codes.join(' · '))+'</p><h2>'+escapeHtml(detail.title)+'</h2>'+detail.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+(id===2879?equilibriumSchedule():'')+syllabusVisuals(id)+'</section>' : '';
-  return '<article class="panel revision-notes"><section><h2>'+escapeHtml(title)+'</h2>'+paragraphs.map(paragraph=>'<p>'+escapeHtml(paragraph)+'</p>').join('')+lessonVisual(id)+'</section>'+
-    detailedSection+'<section class="remember"><h2>Key points to remember</h2><ul>'+points.map(([label,description])=>'<li><strong>'+escapeHtml(label)+'</strong><p>'+escapeHtml(description)+'</p></li>').join('')+'</ul></section>'+
-    (worked ? '<section class="worked-note"><h2>'+escapeHtml(worked[0])+'</h2><p>'+escapeHtml(worked[1])+'</p></section>' : '')+
+  const detailedSection = detail ? '<section class="syllabus-detail" id="note-syllabus"><p class="eyebrow">Cambridge 0455 · '+escapeHtml(detail.codes.join(' · '))+'</p><h2>'+escapeHtml(detail.title)+'</h2>'+detail.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join('')+(id===2879?equilibriumSchedule():'')+syllabusVisuals(id)+'</section>' : '';
+  return '<article class="panel revision-notes"><section id="note-overview"><h2>'+escapeHtml(title)+'</h2>'+paragraphs.map(paragraph=>'<p>'+escapeHtml(paragraph)+'</p>').join('')+lessonVisual(id)+'</section>'+
+    detailedSection+'<section class="remember" id="note-key-points"><h2>Key points to remember</h2><ul>'+points.map(([label,description])=>'<li><strong>'+escapeHtml(label)+'</strong><p>'+escapeHtml(description)+'</p></li>').join('')+'</ul></section>'+
+    (worked ? '<section class="worked-note" id="note-worked"><h2>'+escapeHtml(worked[0])+'</h2><p>'+escapeHtml(worked[1])+'</p></section>' : '')+
     '</article>';
 }
 function lesson(id, cardsMode) {
-  const l = lessons.find(l=>l.id===id);
-  if (!l) return library();
-  const cards = flashcardDecks[id];
-  return '<p class="crumb"><a href="#library">Lessons</a> / <a href="#chapter/'+l.chapter+'">'+escapeHtml(catalog[l.chapter].title)+'</a></p>'+heading('Lesson',escapeHtml(l.title),cards?'Read the explanation, review the key points and test your recall.':'Open the corresponding Save My Exams lesson for the full notes.')+
-  (cards ? '<div class="tabs">'+link('Revision notes','#lesson/'+id)+link('Flashcards ('+cards.length+')','#lesson/'+id+'/cards')+'</div>' + (cardsMode ? '<section class="panel" id="deck"></section>' : '<div class="note-layout">'+revisionNotes(id)+'<aside class="study-aside"><div class="eyebrow">Your next steps</div><h2>Learn → Recall → Apply</h2><p>Read the explanation, test yourself with flashcards, and finish with a practice question.</p>'+link('Study flashcards →','#lesson/'+id+'/cards','button primary')+link('Practice questions','#practice/'+l.chapter)+'<p class="muted">'+escapeHtml(catalog[l.chapter].title)+'</p></aside></div>') : '')+
-  '<div class="row">'+link('Open Save My Exams ↗',l.url||notesUrl)+'</div>';
+  const l=lessons.find(l=>l.id===id);
+  if(!l)return library();
+  const cards=flashcardDecks[id];
+  const position=lessons.findIndex(item=>item.id===id);
+  const sections=[['note-overview','The explanation'],...(syllabusNotes[id]?[['note-syllabus','Syllabus detail']]:[]),['note-key-points','Key points to remember'],...(workedNotes[id]?[['note-worked',workedNotes[id][0]]]:[])];
+  const sibling=(item,direction)=>item?'<a class="lesson-sibling" href="#lesson/'+item.id+(cardsMode?'/cards':'')+'"><small>'+direction+'</small><span>'+escapeHtml(item.title)+'</span></a>':'<span></span>';
+  return '<p class="crumb"><a href="#library">Notes library</a><span>/</span><a href="#chapter/'+l.chapter+'">'+escapeHtml(catalog[l.chapter].title)+'</a></p><header class="lesson-heading"><p class="eyebrow">'+(l.chapter<6?'Chapter '+pad(l.chapter+1):'Exam skills')+' · '+(cardsMode?'Active recall':'Revision notes')+'</p><h1>'+escapeHtml(l.title)+'</h1><p>'+(cardsMode?'A question at a time. Recall the answer, then turn the card to check.':'Read at your own pace. Follow the explanation, explore the diagrams and keep the key ideas close.')+'</p></header>'+
+    (cards?'<div class="lesson-study-tabs tabs">'+link('▤  Revision notes','#lesson/'+id)+link('▣  Flashcards · '+cards.length,'#lesson/'+id+'/cards')+'</div>'+(cardsMode?'<div class="recall-layout"><section class="panel" id="deck"></section><aside class="recall-guide"><span class="mini-icon" aria-hidden="true">✦</span><p class="eyebrow">Make it stick</p><h2>Pause. Recall.<br>Then reveal.</h2><ol><li>Read the prompt.</li><li>Form your answer before flipping.</li><li>Check it, then move to the next card.</li></ol>'+link('Revisit the notes →','#lesson/'+id,'text-link')+'</aside></div>':'<div class="note-layout">'+revisionNotes(id)+'<aside class="study-aside"><p class="eyebrow">In this lesson</p><nav aria-label="On this page">'+sections.map(([target,title],i)=>'<button type="button" data-note-target="'+target+'"><span>'+pad(i+1)+'</span>'+escapeHtml(title)+'</button>').join('')+'</nav><div class="aside-recall"><span class="mini-icon" aria-hidden="true">▣</span><h2>Know it?<br>Test your recall.</h2><p>'+cards.length+' cards to help you remember this lesson.</p>'+link('Study flashcards →','#lesson/'+id+'/cards','button primary')+'</div>'+link('Practise this chapter ↗','#practice/'+l.chapter,'text-link')+'</aside></div>'):'')+
+    '<div class="lesson-end"><div><span class="eyebrow">Keep exploring</span><p>Build on what you have just studied.</p></div>'+link('Source lesson on Save My Exams ↗',l.url||notesUrl,'text-link')+'</div><nav class="lesson-pagination" aria-label="Adjacent lessons">'+sibling(lessons[position-1],'← Previous lesson')+sibling(lessons[position+1],'Next lesson →')+'</nav>';
+}
+function deckGallery(query='', chapterIndex='') {
+  const matching=lessons.filter(l=>(chapterIndex===''||l.chapter===Number(chapterIndex))&&(l.title+' '+catalog[l.chapter].title).toLowerCase().includes(query.toLowerCase().trim()));
+  if(!matching.length)return '<p class="collection-empty" role="status">No decks found. Try another topic or choose all chapters.</p>';
+  return '<p class="collection-count" role="status">'+matching.length+' decks to explore</p>'+catalog.map((c,i)=>{
+    const chapterLessons=matching.filter(l=>l.chapter===i);
+    return chapterLessons.length?'<section class="deck-chapter"><div class="deck-chapter-heading"><span class="chapter-tag">'+(i<6?pad(i+1):'✎')+'</span><h2>'+escapeHtml(c.title)+'</h2><span>'+chapterLessons.length+' decks</span></div><div class="deck-grid">'+chapterLessons.map(l=>'<a class="deck-cover" href="#lesson/'+l.id+'/cards"><span class="deck-cover-icon" aria-hidden="true">▣</span><small>Lesson deck</small><h3>'+escapeHtml(l.title)+'</h3><div><span>'+flashcardDecks[l.id].length+' cards</span><span>Study →</span></div></a>').join('')+'</div></section>':'';
+  }).join('');
 }
 function flashcards() {
-  return heading('Active recall','Flashcards','Choose a deck to practise online or export it as a CSV.')+'<section class="group"><h2>Glossary</h2><p>Definition cards for syllabus topics are in the matching lessons. Additional ZNotes terms are grouped separately.</p>'+link('Supplementary glossary · '+supplementaryGlossary.length+' cards','#glossary')+'</section>'+catalog.map((c,index)=>'<details class="group" '+(index===0?'open':'')+'><summary>'+escapeHtml(c.title)+'</summary>'+lessons.filter(l=>l.chapter===index).map(l=>'<a class="lesson-link" href="#lesson/'+l.id+'/cards"><span>'+escapeHtml(l.title)+'</span><small>'+flashcardDecks[l.id].length+' cards ↗</small></a>').join('')+'</details>').join('');
+  const total=Object.values(flashcardDecks).flat().length;
+  return studyHero('The recall collection','Small cards.<br><em>Lasting knowledge.</em>','Choose a lesson deck, test what you remember and turn uncertainty into understanding. Every deck is also available to download.',[[lessons.length,'lesson decks'],[total,'lesson cards'],['CSV','downloads']],'card-art')+'<section class="collection-toolbar deck-filters"><div><p class="eyebrow">Your next recall session</p><h2>Find your deck</h2></div><label class="study-search"><span>Search flashcard decks</span><input id="deck-search" type="search" placeholder="Search a lesson or topic…"></label><label class="chapter-select"><span>Chapter</span><select id="deck-chapter"><option value="">All chapters</option>'+catalog.map((c,i)=>'<option value="'+i+'">'+escapeHtml(c.title)+'</option>').join('')+'</select></label></section><div id="deck-results">'+deckGallery()+'</div><section class="glossary-banner"><span class="mini-icon" aria-hidden="true">Aa</span><div><h2>A little more vocabulary</h2><p>Lesson definitions are in their matching decks. Explore '+supplementaryGlossary.length+' additional supplied terms in the supplementary glossary.</p></div>'+link('Open glossary →','#glossary','button')+'</section>';
 }
 function glossary() {
   return heading('Extra vocabulary','Supplementary glossary','This deck includes additional terms from the supplied glossary. Use the lesson decks for Cambridge 0455 syllabus revision.')+
@@ -66,17 +87,25 @@ function setupDeck(id) {
   if (!deck) return;
   const cards = id === 'glossary' ? supplementaryGlossary : flashcardDecks[id];
   let index=0, flipped=false;
-  deck.innerHTML='<p class="eyebrow counter" aria-live="polite"></p><button class="flash" type="button"></button><div class="row" style="margin-top:16px"><button data-step="-1">← Previous</button><button data-step="1">Next →</button><button id="export">Download CSV</button></div>';
+  deck.innerHTML='<div class="deck-topline"><p class="eyebrow counter" aria-live="polite"></p><button id="export" class="deck-download">↓ Download CSV</button></div><div class="deck-progress" aria-hidden="true"><span></span></div><button class="flash" type="button"></button><p class="deck-hint">Click the card or press Space to flip. Use ← and → to move between cards.</p><div class="deck-controls"><button data-step="-1" aria-label="Previous card">← Previous</button><button id="flip-card" class="primary">Reveal answer ↻</button><button data-step="1" aria-label="Next card">Next →</button></div>';
   const flash=deck.querySelector('.flash');
   const stepButtons=[...deck.querySelectorAll('[data-step]')];
   function update() {
     deck.querySelector('.counter').textContent='Card '+(index+1)+' of '+cards.length;
     flash.classList.toggle('reveal',flipped);
+    deck.querySelector('.deck-progress span').style.width=((index+1)/cards.length*100)+'%';
+    deck.querySelector('#flip-card').textContent=flipped?'Show question ↻':'Reveal answer ↻';
+    flash.setAttribute('aria-label',(flipped?'Answer: ':'Question: ')+cards[index][Number(flipped)]+'. Activate to flip.');
     flash.innerHTML='<small>'+(flipped?'Answer · click to see prompt':'Prompt · click to reveal')+'</small><span class="flash-text">'+escapeHtml(cards[index][Number(flipped)])+'</span>';
     stepButtons[0].disabled=index===0;
     stepButtons[1].disabled=index===cards.length-1;
   }
   flash.onclick=()=>{flipped=!flipped;update()};
+  deck.querySelector('#flip-card').onclick=flash.onclick;
+  deck.onkeydown=event=>{
+    const direction=event.key==='ArrowLeft'?-1:event.key==='ArrowRight'?1:0;
+    if(direction&&index+direction>=0&&index+direction<cards.length){event.preventDefault();index+=direction;flipped=false;update()}
+  };
   stepButtons.forEach(button=>button.onclick=()=>{index+=Number(button.dataset.step);flipped=false;update();if(button.disabled)flash.focus()});
   deck.querySelector('#export').onclick=()=>{
     const csv=[['Question','Answer'],...cards].map(row=>row.map(cell=>'"'+cell.replaceAll('"','""')+'"').join(',')).join('\r\n');
@@ -240,6 +269,7 @@ function sources() {
 function render() {
   const [page='home', id, mode] = location.hash.slice(1).split('/');
   main.classList.toggle('practice-page',page==='practice');
+  main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
   const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(id===undefined?null:Number(id),Number(mode)),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
   const active=page==='glossary'?'flashcards':page==='chapter'||page==='lesson'?(mode==='cards'?'flashcards':'library'):page||'home';
@@ -251,8 +281,12 @@ function render() {
   if(search) search.oninput=()=>{
     const query=search.value.toLowerCase().trim();
     const matches=lessons.filter(l=>l.title.toLowerCase().includes(query));
-    document.querySelector('#results').innerHTML=!query?tiles(true):matches.length?'<section class="group">'+matches.map(lessonLink).join('')+'</section>':'<p class="muted" role="status">No lessons match your search.</p>';
+    document.querySelector('#results').innerHTML=!query?chapterGallery():matches.length?'<section class="group">'+matches.map(lessonLink).join('')+'</section>':'<p class="muted" role="status">No lessons match your search.</p>';
   };
+  const deckSearch=document.querySelector('#deck-search');
+  const deckChapter=document.querySelector('#deck-chapter');
+  if(deckSearch)deckSearch.oninput=deckChapter.onchange=()=>{document.querySelector('#deck-results').innerHTML=deckGallery(deckSearch.value,deckChapter.value)};
+  document.querySelectorAll('[data-note-target]').forEach(button=>button.onclick=()=>document.getElementById(button.dataset.noteTarget).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));
   setupDeck(page==='glossary'?'glossary':Number(id));
   setupPractice();
 }

@@ -239,3 +239,194 @@ details.group[open] > summary { margin-bottom: 10px }
 
 main.practice-page { display: block; margin-left: 175px; padding: 0; border-top: 0; font-size: 15px; color: var(--ink) }
 @media (max-width: 700px) { main.practice-page { margin-left: 0 } }
+
+/* Notes and recall collections */
+main.learning-page { display: block; margin-left: 175px; padding: 0; border: 0; font-size: 15px; color: var(--ink) }
+.learning-page .wrap { width: min(1240px, 100%); padding: 36px clamp(22px, 3.5vw, 48px) 64px }
+body:has(main.learning-page) footer { margin-left: 175px }
+.study-hero { display: grid; grid-template-columns: 1.4fr .8fr; align-items: center; gap: 36px; padding: 24px 0 38px; border-bottom: 1px solid var(--line) }
+.study-hero h1 { font: 400 clamp(38px, 4.4vw, 60px)/1.06 Georgia, serif; letter-spacing: -2px; margin: 18px 0 }
+.study-hero h1 em { color: #267c65; font-weight: 400 }
+.study-intro { max-width: 53ch; font-size: 15px; line-height: 1.85; color: var(--muted) }
+.study-stats { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 24px; font-size: 12px; color: var(--muted) }
+.study-stats strong { color: var(--ink); font-size: 16px; margin-right: 4px }
+.study-art { isolation: isolate; position: relative; height: 280px; border-radius: 22px; background: #e0e9df; overflow: hidden }
+.card-art { background: #e6dfd2 }
+.art-orbit { position: absolute; border: 1px solid #9daf9b; width: 240px; height: 240px; border-radius: 50%; left: 48%; top: -40px; box-shadow: 0 0 0 30px #ffffff26, 0 0 0 62px #ffffff18 }
+.art-sheet { position: absolute; width: 150px; height: 185px; border-radius: 9px; left: calc(50% - 75px); top: 35px; background: #f9f6ec; border: 1px solid #d9dfd2; box-shadow: 0 12px 25px #294a3820 }
+.sheet-back { transform: rotate(-14deg); background: #b0cbb8; left: calc(50% - 89px) }
+.sheet-front { transform: rotate(9deg); display: flex; flex-direction: column; justify-content: center; padding: 20px; color: #255849; font: 55px Georgia, serif }
+.sheet-front i { font: italic 13px/1.5 Georgia, serif; margin-top: 16px }
+.study-art > small { position: absolute; bottom: 18px; left: 12px; right: 12px; text-align: center; color: #486651; font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase }
+.collection-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 20px; margin: 30px 0 24px }
+.collection-toolbar > div { margin-right: auto }
+.collection-toolbar h2 { font: 400 27px/1.2 Georgia, serif; letter-spacing: -.6px; margin: 8px 0 0 }
+.collection-toolbar .eyebrow { margin: 0; font-size: 10px }
+.study-search, .chapter-select { display: grid; gap: 8px; font-size: 11px; font-weight: 700; color: var(--muted) }
+.study-search { flex: 0 1 340px }
+.study-search input, .chapter-select select { min-height: 46px; border-color: #d8dfd5; background: #fffef9; font-size: 13px; width: 100% }
+.learning-page #search { width: 100% }
+.chapter-collection { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px }
+.chapter-cover { min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 25px; background: #fffdf7; border: 1px solid #dedfd3; border-top: 5px solid var(--chapter-tint); border-radius: 16px; text-decoration: none; transition: transform .18s, box-shadow .18s }
+.chapter-cover:hover { transform: translateY(-3px); box-shadow: 0 12px 24px #30423c0d; border-color: #acc1ad }
+.cover-top, .cover-bottom { display: flex; justify-content: space-between; gap: 10px; align-items: center }
+.cover-number { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--chapter-tint); font: 23px Georgia, serif }
+.cover-arrow { color: #728474; font-size: 20px }
+.chapter-cover small { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1.3px }
+.chapter-cover h2 { font: 400 23px/1.2 Georgia, serif; letter-spacing: -.5px; margin: 10px 0 0 }
+.cover-bottom { border-top: 1px solid var(--line); padding-top: 16px; font-size: 11px; color: #466d59 }
+.cover-bottom span:last-child { font-weight: 700 }
+.learning-page .crumb { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; line-height: 1.6; margin-bottom: 24px }
+.learning-page .crumb a { text-decoration-color: #bec9b9; text-underline-offset: 4px }
+.lesson-heading { max-width: 850px; padding-bottom: 12px }
+.lesson-heading .eyebrow { display: inline-block; background: #e8eee3; border-radius: 6px; padding: 7px 10px; font-size: 10px; margin: 0 }
+.lesson-heading h1 { font: 400 clamp(32px, 4vw, 46px)/1.14 Georgia, serif; letter-spacing: -1.4px; margin: 18px 0 14px }
+.lesson-heading > p:last-child { color: var(--muted); line-height: 1.8; max-width: 70ch; font-size: 14px }
+.learning-page .lesson-study-tabs { margin: 12px 0 30px; border-bottom: 1px solid var(--line); gap: 25px }
+.lesson-study-tabs .button { background: transparent; border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: 14px 0; color: var(--muted); font-size: 13px }
+.lesson-study-tabs .button[aria-current] { background: transparent; color: #217e69; border-color: #217e69 }
+.learning-page .note-layout { grid-template-columns: minmax(0, 1fr) 225px; gap: 28px }
+.learning-page .revision-notes { background: #fffef9; border: 1px solid #e0e2d7; border-radius: 18px; margin: 0; padding: clamp(24px, 3vw, 40px); font-size: 15px; line-height: 1.9; box-shadow: 0 8px 25px #30423c04 }
+.learning-page .revision-notes h2 { font-size: clamp(24px, 2.7vw, 31px); line-height: 1.25; margin-bottom: 18px }
+.learning-page .revision-notes p { margin: 1em 0; max-width: 66ch }
+.learning-page .revision-notes section { scroll-margin-top: 25px }
+.learning-page .revision-notes section + section { margin-top: 36px }
+.learning-page .syllabus-detail { padding-top: 32px }
+.learning-page .revision-notes .remember { border: 1px solid #dbe5d8; background: #eef4e9; border-radius: 14px; padding: 24px }
+.learning-page .remember ul { padding-left: 20px }
+.learning-page .remember li { padding-left: 5px; margin-block: 20px }
+.learning-page .remember li strong { color: #245a47 }
+.learning-page .remember li p { font-size: 14px; margin: 6px 0 }
+.learning-page .worked-note { background: #faf0de; border: 1px solid #eddfc6; border-left: 4px solid #b69d66; border-radius: 12px; padding: 25px }
+.learning-page .revision-notes figure { background: #f5f7f0; border: 1px solid #e5e9dc; border-radius: 14px; padding: 18px; overflow-x: auto }
+.learning-page .revision-notes .figure { display: block; margin-inline: auto; background: transparent; max-width: 100% }
+.learning-page .revision-notes figcaption { font-size: 12px; line-height: 1.7; padding-top: 10px; border-top: 1px solid #e1e6da }
+.learning-page .study-aside { position: sticky; top: 28px; padding: 0; margin: 0; background: transparent; border-radius: 0 }
+.study-aside > .eyebrow { font-size: 10px; margin: 8px 0 14px }
+.study-aside nav { display: grid; gap: 4px; border-left: 1px solid #d9e1d2; padding-left: 10px }
+.study-aside nav button { border: 0; background: transparent; justify-content: start; text-align: left; padding: 10px 6px; gap: 9px; font-size: 12px; font-weight: 500; line-height: 1.5 }
+.study-aside nav button:hover { background: #e8eee1 }
+.study-aside nav button span { color: #71947b; font-size: 10px }
+.aside-recall { background: #e7eedf; padding: 22px; border-radius: 15px; margin: 24px 0 18px }
+.mini-icon { display: inline-grid; place-items: center; width: 36px; height: 36px; background: #d7e5cf; border-radius: 10px; color: #386548; font-size: 19px }
+.aside-recall h2 { margin: 16px 0 10px }
+.aside-recall p { margin-bottom: 18px }
+.aside-recall .primary { background: #285844; border-color: #285844 }
+.text-link { color: #287657; font-size: 12px; font-weight: 700; text-decoration: none; line-height: 1.6 }
+.text-link:hover { text-decoration: underline; text-underline-offset: 4px }
+.lesson-end { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 32px 0 20px; padding: 24px 0; border-bottom: 1px solid var(--line) }
+.lesson-end p { color: var(--muted); margin-bottom: 0; font-size: 13px }
+.lesson-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 18px }
+.lesson-sibling { display: grid; gap: 10px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; background: #fbfaf3 }
+.lesson-sibling:last-child { text-align: right }
+.lesson-sibling:hover { border-color: #90b09c }
+.lesson-sibling small { color: #65856f; font-size: 10px; text-transform: uppercase; letter-spacing: .8px }
+.lesson-sibling span { font: 18px/1.4 Georgia, serif }
+.chapter-lessons { display: grid; gap: 18px; margin-top: 20px }
+.chapter-topic { display: grid; grid-template-columns: .7fr 1.3fr; gap: 28px; padding: 26px; border: 1px solid var(--line); border-radius: 15px; background: #fffdf7 }
+.topic-heading { display: flex; gap: 12px; align-items: start }
+.topic-heading > span { color: #649478; font: 22px Georgia, serif }
+.topic-heading h2 { font: 24px/1.25 Georgia, serif; margin: 0 }
+.chapter-topic .lesson-link { padding: 16px 0; align-items: center; font-size: 14px; line-height: 1.5 }
+.chapter-topic .lesson-link:first-child { border-top: 0; padding-top: 0 }
+.chapter-topic .lesson-link small { background: #eef2e8; padding: 5px 7px; border-radius: 5px; font-size: 10px }
+.deck-filters .study-search { flex: 1 1 230px; max-width: 330px }
+.chapter-select { flex: 1 1 200px; max-width: 250px; min-width: 0 }
+.collection-count { color: var(--muted); font-size: 12px; margin: 0 0 28px }
+.deck-chapter { margin: 0 0 36px }
+.deck-chapter-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 18px }
+.chapter-tag { color: #679078; font: 25px Georgia, serif }
+.deck-chapter-heading h2 { margin: 0; font: 26px/1.3 Georgia, serif; letter-spacing: -.5px }
+.deck-chapter-heading > span:last-child { margin-left: auto; font-size: 11px; color: var(--muted); white-space: nowrap }
+.deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
+.deck-cover { position: relative; display: flex; flex-direction: column; align-items: start; gap: 12px; min-height: 230px; padding: 23px; border: 1px solid #dce1d5; border-radius: 16px; background: #fffef9; text-decoration: none; transition: transform .18s, box-shadow .18s }
+.deck-cover:hover { transform: translateY(-3px); border-color: #8fb69e; box-shadow: 0 10px 20px #2846340a }
+.deck-cover-icon { display: grid; place-items: center; background: #edf2e7; color: #41765a; height: 35px; width: 35px; border-radius: 9px; font-size: 22px }
+.deck-cover > small { color: #7c897a; text-transform: uppercase; letter-spacing: 1.2px; font-size: 9px }
+.deck-cover h3 { font: 400 21px/1.3 Georgia, serif; margin: 0 0 12px; letter-spacing: -.35px }
+.deck-cover > div { display: flex; justify-content: space-between; gap: 10px; width: 100%; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); color: #55715d; font-size: 11px }
+.deck-cover > div span:last-child { font-weight: 700; color: #287657 }
+.glossary-banner { display: flex; align-items: center; gap: 24px; border: 1px solid #dedfcf; border-radius: 16px; padding: 26px; background: #ececdd; margin-top: 32px }
+.glossary-banner > div { flex: 1 }
+.glossary-banner h2 { font: 26px Georgia, serif; margin: 0 0 10px }
+.glossary-banner p { color: var(--muted); font-size: 13px; line-height: 1.75; margin: 0 }
+.glossary-banner .button { white-space: nowrap }
+.collection-empty { padding: 40px; text-align: center; border: 1px dashed #b7c7b1; border-radius: 14px; color: var(--muted) }
+.recall-layout { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 30px; align-items: start }
+.learning-page #deck { width: 100%; max-width: none; margin: 0; padding: 0 }
+.deck-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px }
+.learning-page #deck .counter { margin: 0; font-size: 10px; text-align: left }
+.deck-download { font-size: 11px; padding: 8px 12px; min-height: 36px; background: #faf9f0; border-radius: 8px }
+.deck-progress { height: 4px; border-radius: 4px; background: #dfe7d7; margin: 0 0 24px; overflow: hidden }
+.deck-progress span { display: block; height: 100%; background: #478769; border-radius: inherit; transition: width .2s }
+.learning-page .flash { min-height: 340px; padding: 36px; border: 1px solid #cddac7; border-radius: 22px; background: #fffdf5; color: #2d4937; box-shadow: 0 7px 0 -2px #e5e9dc, 0 14px 0 -5px #eff0e5, 0 18px 32px #30423c09; font: 400 clamp(22px, 2.7vw, 31px)/1.5 Georgia, serif }
+.learning-page .flash small { font: 700 10px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: 1.3px; color: #76917b; margin-bottom: 24px }
+.learning-page .flash.reveal { color: #f2f5e8; background: #285540; border-color: #285540 }
+.learning-page .flash.reveal small { color: #c7ddbe }
+.deck-hint { text-align: center; color: #74836e; font-size: 11px; line-height: 1.6; margin: 28px 0 18px }
+.deck-controls { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap }
+.deck-controls button { padding: 12px 16px; font-size: 12px }
+.deck-controls .primary { background: #285540; border-color: #285540 }
+.recall-guide { padding: 24px; background: #e9edde; border-radius: 16px; margin-top: 54px }
+.recall-guide .eyebrow { margin: 16px 0 10px; font-size: 9px }
+.recall-guide h2 { font: 26px/1.25 Georgia, serif; letter-spacing: -.5px; margin: 0 0 20px }
+.recall-guide ol { padding-left: 18px; font-size: 12px; line-height: 1.8; color: var(--muted) }
+.recall-guide li { padding-left: 4px; margin: 12px 0 }
+@media (max-width: 1100px) {
+  .chapter-collection, .deck-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .learning-page .note-layout { grid-template-columns: minmax(0, 1fr) 200px; gap: 20px }
+  .recall-layout { grid-template-columns: minmax(0, 1fr) }
+  .recall-guide { margin-top: 0 }
+  .recall-guide ol { display: flex; flex-wrap: wrap; gap: 8px 30px }
+}
+@media (max-width: 900px) {
+  .study-hero { grid-template-columns: 1fr .7fr; gap: 20px }
+  .study-art { height: 250px }
+  .learning-page .note-layout { display: flex; flex-direction: column }
+  .learning-page .study-aside { position: static; width: 100%; order: -1; padding: 15px 18px; background: #edf0e5; border-radius: 12px }
+  .study-aside nav { display: flex; flex-wrap: wrap; border: 0; padding: 0; gap: 5px 15px }
+  .study-aside .aside-recall, .study-aside > .text-link { display: none }
+  .chapter-topic { grid-template-columns: minmax(0, 1fr) }
+}
+@media (max-width: 700px) {
+  main.learning-page, body:has(main.learning-page) footer { margin-left: 0 }
+  .learning-page .wrap { padding: 28px 20px 45px }
+  .study-hero h1 { font-size: 43px }
+  .study-hero { gap: 16px }
+  .study-art { height: 230px }
+  .art-sheet { width: 115px; height: 155px; left: calc(50% - 57px); font-size: 43px }
+  .sheet-back { left: calc(50% - 68px) }
+  .sheet-front i { font-size: 11px }
+  .lesson-pagination { gap: 10px }
+  .lesson-sibling { padding: 15px }
+  .glossary-banner { flex-wrap: wrap }
+  .glossary-banner > div { flex-basis: 70% }
+}
+@media (max-width: 480px) {
+  .study-hero { grid-template-columns: 1fr; padding-top: 0 }
+  .study-art { display: none }
+  .study-hero h1 { font-size: 43px }
+  .study-stats { gap: 12px }
+  .collection-toolbar { align-items: start }
+  .study-search, .deck-filters .study-search, .chapter-select { flex-basis: 100%; max-width: none }
+  .chapter-collection, .deck-grid { grid-template-columns: minmax(0, 1fr) }
+  .chapter-cover { min-height: 230px }
+  .deck-cover { min-height: 200px }
+  .deck-chapter-heading h2 { font-size: 23px }
+  .deck-chapter-heading { gap: 8px; align-items: start }
+  .deck-chapter-heading > span:last-child { display: none }
+  .lesson-heading h1 { font-size: 33px }
+  .learning-page .lesson-study-tabs { gap: 18px }
+  .lesson-study-tabs .button { font-size: 12px }
+  .learning-page .revision-notes { padding: 22px; font-size: 15px }
+  .learning-page .revision-notes .remember { padding: 18px }
+  .learning-page .flash { padding: 25px; min-height: 300px; font-size: 23px }
+  .deck-controls { justify-content: center }
+  .deck-controls button { flex: 1 1 auto; padding: 12px 10px }
+  .deck-controls .primary { order: -1; flex-basis: 100% }
+  .lesson-end { align-items: start; flex-direction: column; gap: 14px }
+  .lesson-sibling span { font-size: 16px }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-cover, .deck-cover, .deck-progress span { transition: none }
+}
