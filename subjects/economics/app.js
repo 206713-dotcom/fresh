@@ -9,12 +9,16 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&am
 const link = (label, href, cls = 'button') => '<a class="' + cls + '" href="' + escapeHtml(href) + '">' + escapeHtml(label) + '</a>';
 const heading = (label, title, desc) => '<div class="eyebrow">' + label + '</div><h1 class="page-title">' + title + '</h1><p class="muted">' + desc + '</p>';
 const pad = n => String(n).padStart(2,'0');
-const heroArt = '<svg class="hero-art" viewBox="0 0 460 300" aria-hidden="true"><defs><pattern id="grid" width="27" height="27" patternUnits="userSpaceOnUse"><path d="M27 0H0V27" fill="none" stroke="#53649d" stroke-width=".7"/></pattern></defs><rect x="40" y="18" width="392" height="252" rx="19" fill="#263972" stroke="#6479b5"/><rect x="58" y="35" width="356" height="218" fill="url(#grid)"/><path d="M86 62v164h303" fill="none" stroke="#aebfe9"/><path d="M94 82c84 9 170 72 279 122" fill="none" stroke="#ffd2ab" stroke-width="3"/><path d="M94 207c88-15 161-72 274-134" fill="none" stroke="#93b7ff" stroke-width="3"/><path d="M231 143v83M86 143h145" stroke="#aebfe9" stroke-dasharray="4 5"/><circle cx="231" cy="143" r="8" fill="#ffd2ab" stroke="#263972" stroke-width="3"/><g fill="#dde6ff" font-family="system-ui" font-size="11" letter-spacing="1"><text x="91" y="57">PRICE</text><text x="308" y="246">QUANTITY</text><text x="246" y="139">EQUILIBRIUM</text></g></svg>';
 function tiles(includeExam) {
   return '<div class="grid">' + catalog.slice(0,includeExam ? catalog.length : 6).map((c,i) => '<a class="tile" style="--tone:'+ (colors[i] || colors[0]) +'" href="#chapter/'+i+'"><span class="icon" aria-hidden="true">'+icons[i]+'</span><div class="tile-copy"><h3>'+escapeHtml(c.title)+'</h3><small>'+ (i<6 ? 'CHAPTER '+pad(i+1) : 'EXAM SKILLS') +' · '+lessons.filter(l=>l.chapter===i).length+' lessons</small></div><span class="arrow" aria-hidden="true">→</span></a>').join('')+'</div>';
 }
 function home() {
-  return '<section class="hero"><div class="hero-copy"><div class="eyebrow">IGCSE ECONOMICS / FIRST EXAMS 2027</div><h1>Economics<br><em>revision.</em></h1><p>Find your next lesson, test your recall, and practise answering economics questions.</p><div class="actions">'+link('Browse lessons →','#library','button primary')+link('Practice questions','#practice','button ghost')+'</div></div>'+heroArt+'</section><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div>'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div>'+tiles(false)+'</section>';
+  const tools = [
+    ['▤','Chapter notes','Build understanding through clear explanations.','Start reading →','#library'],
+    ['▣','Flashcards','Recall key concepts and strengthen memory.','Review cards →','#flashcards'],
+    ['☑','Exam practice','Answer questions and review the supplied mark schemes.','Start practice →','#practice']
+  ];
+  return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
 }
 function library() {
   return heading('Course library','Lessons','Browse by chapter or search the lesson index.')+'<label class="field">Find a lesson<input id="search" type="search" placeholder="Try demand or inflation"></label><div id="results">'+tiles(true)+'</div>';
@@ -46,7 +50,7 @@ function lesson(id, cardsMode) {
   if (!l) return library();
   const cards = flashcardDecks[id];
   return '<p class="crumb"><a href="#library">Lessons</a> / <a href="#chapter/'+l.chapter+'">'+escapeHtml(catalog[l.chapter].title)+'</a></p>'+heading('Lesson',escapeHtml(l.title),cards?'Read the explanation, review the key points and test your recall.':'Open the corresponding Save My Exams lesson for the full notes.')+
-  (cards ? '<div class="tabs">'+link('Revision notes','#lesson/'+id)+link('Flashcards ('+cards.length+')','#lesson/'+id+'/cards')+'</div>' + (cardsMode ? '<section class="panel" id="deck"></section>' : revisionNotes(id)) : '')+
+  (cards ? '<div class="tabs">'+link('Revision notes','#lesson/'+id)+link('Flashcards ('+cards.length+')','#lesson/'+id+'/cards')+'</div>' + (cardsMode ? '<section class="panel" id="deck"></section>' : '<div class="note-layout">'+revisionNotes(id)+'<aside class="study-aside"><div class="eyebrow">Your next steps</div><h2>Learn → Recall → Apply</h2><p>Read the explanation, test yourself with flashcards, and finish with a practice question.</p>'+link('Study flashcards →','#lesson/'+id+'/cards','button primary')+link('Practice questions','#practice/'+l.chapter)+'<p class="muted">'+escapeHtml(catalog[l.chapter].title)+'</p></aside></div>') : '')+
   '<div class="row">'+link('Open Save My Exams ↗',l.url||notesUrl)+'</div>';
 }
 function flashcards() {
@@ -67,6 +71,7 @@ function setupDeck(id) {
   const stepButtons=[...deck.querySelectorAll('[data-step]')];
   function update() {
     deck.querySelector('.counter').textContent='Card '+(index+1)+' of '+cards.length;
+    flash.classList.toggle('reveal',flipped);
     flash.innerHTML='<small>'+(flipped?'Answer · click to see prompt':'Prompt · click to reveal')+'</small><span class="flash-text">'+escapeHtml(cards[index][Number(flipped)])+'</span>';
     stepButtons[0].disabled=index===0;
     stepButtons[1].disabled=index===cards.length-1;
@@ -206,3 +211,4 @@ function render() {
 }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
 render();
+
