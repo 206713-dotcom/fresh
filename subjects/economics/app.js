@@ -90,7 +90,7 @@ function setupDeck(id) {
   update();
 }
 function practice(chapterIndex) {
-  return heading('Original practice','Practice Questions','Choose a chapter or topic, then work through one question at a time.')+
+  return heading('Original practice','Practice Questions','Standalone questions: answer directly using your economics knowledge. Choose a chapter or topic to practise.')+
     '<section class="practice-filters" aria-label="Filter questions"><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
@@ -214,8 +214,9 @@ function setupPractice() {
     feedback.hidden=false;
     feedback.innerHTML=q.options
       ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
-      : '<strong>Supplied mark scheme · '+q.marks+' marks</strong><div class="mark-scheme">'+escapeHtml(q.scheme)+'</div>'+
+      : '<strong>Practice mark scheme · '+q.marks+' marks</strong><div class="mark-scheme">'+escapeHtml(q.scheme)+'</div>'+
         (q.note?'<p><strong>Marking guidance</strong></p><p>'+escapeHtml(q.note)+'</p>':'')+
+        (q.marks===8?'<section class="discussion-rubric"><h3>8-mark discussion rubric</h3><ul><li><strong>6–8:</strong> Both sides are developed through sound economic analysis, with a reasoned assessment of the issue.</li><li><strong>3–5:</strong> Relevant economic reasoning, but the discussion has limited depth or mainly develops one side.</li><li><strong>1–2:</strong> Relevant ideas or definitions with little explanation.</li><li><strong>0:</strong> No creditworthy response.</li></ul><p>EcBiz summary based on <a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge’s 2027 specimen marking guidance, Table A</a>.</p></section>':'')+
         '<label class="field">Your self-assessed mark<select data-score><option value="">Choose a score</option>'+Array.from({length:q.marks+1},(_,n)=>'<option value="'+n+'">'+n+'</option>').join('')+'</select></label><p class="self-score-result"></p>';
     attempts.set(index,{answer,feedback:feedback.innerHTML});
     renderNavigator();
@@ -234,7 +235,7 @@ function syllabusGuide() {
     '<section class="group"><h2>Assessment guidance</h2>'+lessons.filter(lesson=>lesson.chapter===6).map(lessonLink).join('')+'</section>';
 }
 function sources() {
-  return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' questions imported from the supplied original practice file. MCQs use its answer keys. Structured questions provide the supplied mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
+  return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' original questions. Structured questions have been adapted from the supplied practice file to be answered without a separate case study. MCQs use the original answer keys. Structured questions include revised practice mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
 }
 function render() {
   const [page='home', id, mode] = location.hash.slice(1).split('/');
