@@ -95,7 +95,7 @@ function practice(chapterIndex) {
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
     '<div class="row"><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
-    '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
+    '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-scope" class="eyebrow"></p><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
     '<section class="question-work"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
 function setupPractice() {
@@ -110,7 +110,14 @@ function setupPractice() {
   const search=document.querySelector('#filter-search');
   const list=document.querySelector('#question-list');
   const listPages=document.querySelector('#list-pages');
-  let page=0;
+  const filterKey='ecbiz-practice-filters';
+  let savedFilters={};
+  try {savedFilters=JSON.parse(sessionStorage.getItem(filterKey))||{}} catch {}
+  if(!location.hash.split('/')[1])chapter.value=savedFilters.chapter||'';
+  type.value=savedFilters.type||'';
+  marks.value=savedFilters.marks||'';
+  search.value=savedFilters.search||'';
+  let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
   let matches=[];
   const size=20;
 
@@ -127,6 +134,10 @@ function setupPractice() {
       (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
     page=Math.max(0,Math.min(page,matches.length-1));
     document.querySelector('#question-count').textContent=matches.length+' matching questions';
+    const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
+    const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
+    document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
+    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,page}))} catch {}
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
@@ -148,6 +159,7 @@ function setupPractice() {
   }
   function reset() {page=0;renderQuestions()}
   renderTopics();
+  if([...topic.options].some(option=>option.value===savedFilters.topic))topic.value=savedFilters.topic;
   chapter.onchange=()=>{renderTopics();reset()};
   topic.onchange=type.onchange=marks.onchange=reset;
   search.oninput=reset;
