@@ -9,10 +9,7 @@ import {
   DetailedSubtopic,
   SyllabusBulletPoint,
 } from "../lib/data/detailed-syllabus-0264";
-import {
-  ECONS_SYLLABUS_SECTIONS,
-  SyllabusSection,
-} from "../lib/data/syllabus-topics";
+
 import {
   loadRevisedTopics,
   saveRevisedTopics,
@@ -23,6 +20,7 @@ import {
   awardBonusStudyCoins,
 } from "../lib/cookies";
 import { GLOSSARY_TERMS } from "../lib/data/glossary";
+import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
 import {
   Check,
   RotateCcw,
@@ -47,12 +45,12 @@ export interface GranularPointItem {
   subtopicCode: string; // e.g. "1.2.1"
   subtopicTitle: string; // e.g. "Types of economic sector"
   text: string; // e.g. "primary, secondary and tertiary sectors"
-  subject: "business" | "econs";
+  subject: "business";
 }
 
 interface SyllabusRevisionChecklistProps {
-  onSelectTopicForPractice?: (subject: "business" | "econs", sectionCode: string, topicCode: string) => void;
-  initialSubject?: "business" | "econs";
+  onSelectTopicForPractice?: (subject: "business", sectionCode: string, topicCode: string) => void;
+  initialSubject?: "business";
   className?: string;
 }
 
@@ -61,7 +59,7 @@ export function SyllabusRevisionChecklist({
   initialSubject = "business",
   className = "",
 }: SyllabusRevisionChecklistProps) {
-  const [activeSubject, setActiveSubject] = useState<"business" | "econs">(initialSubject);
+  const [activeSubject] = useState<"business">("business");
   const [revisedTopicCodes, setRevisedTopicCodes] = useState<string[]>([]);
   const [ratings, setRatings] = useState<SyllabusRatingsMap>({});
   const [filterRating, setFilterRating] = useState<"all" | "hard" | "moderate" | "easy" | "unrated">("all");
@@ -94,6 +92,7 @@ export function SyllabusRevisionChecklist({
 
   const [drillAnswer, setDrillAnswer] = useState<string>("");
   const [showMarkScheme, setShowMarkScheme] = useState<boolean>(false);
+  const [showFactorsModal, setShowFactorsModal] = useState<boolean>(false);
 
   // Load ratings and checked topics on mount
   useEffect(() => {
@@ -101,53 +100,32 @@ export function SyllabusRevisionChecklist({
     setRatings(loadSyllabusRatings());
   }, []);
 
-  // Flatten all granular bullet points for the active subject
+  // Flatten all granular bullet points for Cambridge 0264 Business Studies
   const allGranularPoints: GranularPointItem[] = useMemo(() => {
     const list: GranularPointItem[] = [];
 
-    if (activeSubject === "business") {
-      DETAILED_0264_SYLLABUS.forEach((sec) => {
-        sec.topics.forEach((top) => {
-          top.subtopics.forEach((sub) => {
-            sub.bulletPoints.forEach((pt) => {
-              list.push({
-                id: pt.id,
-                sectionCode: sec.code,
-                sectionTitle: sec.title,
-                topicCode: top.code,
-                topicTitle: top.title,
-                subtopicCode: sub.code,
-                subtopicTitle: sub.title,
-                text: pt.text,
-                subject: "business",
-              });
-            });
-          });
-        });
-      });
-    } else {
-      // Economics 0455
-      ECONS_SYLLABUS_SECTIONS.forEach((sec) => {
-        sec.topics.forEach((top) => {
-          top.keyConcepts.forEach((kc, idx) => {
+    DETAILED_0264_SYLLABUS.forEach((sec) => {
+      sec.topics.forEach((top) => {
+        top.subtopics.forEach((sub) => {
+          sub.bulletPoints.forEach((pt) => {
             list.push({
-              id: `${top.code}-kc-${idx + 1}`,
+              id: pt.id,
               sectionCode: sec.code,
               sectionTitle: sec.title,
               topicCode: top.code,
               topicTitle: top.title,
-              subtopicCode: top.code,
-              subtopicTitle: top.title,
-              text: kc,
-              subject: "econs",
+              subtopicCode: sub.code,
+              subtopicTitle: sub.title,
+              text: pt.text,
+              subject: "business",
             });
           });
         });
       });
-    }
+    });
 
     return list;
-  }, [activeSubject]);
+  }, []);
 
   // Categorize points by rating
   const hardPoints = useMemo(() => allGranularPoints.filter((p) => ratings[p.id] === "hard"), [allGranularPoints, ratings]);
@@ -194,7 +172,7 @@ export function SyllabusRevisionChecklist({
 
   // Reset ratings for current subject
   const handleResetRatings = () => {
-    if (confirm(`Reset all memory ratings (Hard/Moderate/Easy) for ${activeSubject === "business" ? "Business (0264)" : "Economics"}?`)) {
+    if (confirm("Reset all memory ratings (Hard/Moderate/Easy) for Business Studies (0264)?")) {
       const nextRatings = { ...ratings };
       allGranularPoints.forEach((p) => {
         delete nextRatings[p.id];
@@ -311,30 +289,11 @@ export function SyllabusRevisionChecklist({
           </p>
         </div>
 
-        {/* Subject Switcher */}
+        {/* Cambridge 0264 Syllabus Badge */}
         <div className="flex items-center gap-2 self-start md:self-center">
-          <div className="flex items-center p-1 rounded-xl bg-[#FAF9F6] dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800">
-            <button
-              onClick={() => setActiveSubject("business")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeSubject === "business"
-                  ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                  : "text-[#57534E] dark:text-neutral-400 hover:text-black dark:hover:text-white"
-              }`}
-            >
-              Business (0264)
-            </button>
-            <button
-              onClick={() => setActiveSubject("econs")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeSubject === "econs"
-                  ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                  : "text-[#57534E] dark:text-neutral-400 hover:text-black dark:hover:text-white"
-              }`}
-            >
-              Economics (0455)
-            </button>
-          </div>
+          <span className="px-3.5 py-1.5 rounded-xl bg-[#0F2042] dark:bg-white text-white dark:text-black font-semibold text-xs shadow-xs font-mono">
+            Cambridge 0264 / 0450
+          </span>
         </div>
       </div>
 
@@ -764,8 +723,7 @@ export function SyllabusRevisionChecklist({
       {/* SECTIONS, SUBTOPICS & GRANULAR BULLET POINTS              */}
       {/* ========================================================= */}
       <div className="space-y-4">
-        {activeSubject === "business" ? (
-          DETAILED_0264_SYLLABUS.map((section) => {
+        {DETAILED_0264_SYLLABUS.map((section) => {
             const isSecExpanded = expandedSections[section.code] ?? true;
 
             // Filter topics by search and rating
@@ -849,6 +807,19 @@ export function SyllabusRevisionChecklist({
                             </div>
 
                             <div className="flex items-center gap-3">
+                              {topic.code === "1.1" && (
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowFactorsModal(true);
+                                  }}
+                                  className="text-[11px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2 py-0.5 rounded-md hover:bg-amber-100 dark:hover:bg-amber-900/60 flex items-center gap-1 cursor-pointer"
+                                  title="Open interactive Factors of Production & Rewards diagram"
+                                >
+                                  <span>📊 Factors Diagram</span>
+                                </button>
+                              )}
                               {onSelectTopicForPractice && (
                                 <button
                                   type="button"
@@ -1018,98 +989,7 @@ export function SyllabusRevisionChecklist({
                 )}
               </div>
             );
-          })
-        ) : (
-          /* Economics (0455) Fallback Section List */
-          ECONS_SYLLABUS_SECTIONS.map((section) => {
-            const isSecExpanded = expandedSections[section.code] ?? true;
-
-            return (
-              <div
-                key={section.code}
-                className="rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden shadow-xs"
-              >
-                <div
-                  onClick={() => toggleSectionAccordion(section.code)}
-                  className="p-3.5 sm:p-4 flex items-center justify-between gap-3 bg-[#FAF9F6]/80 dark:bg-black/40 border-b border-[#E7E5E4] dark:border-neutral-800 cursor-pointer select-none"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                    <h3 className="font-academic-serif font-bold text-sm sm:text-base text-[#0F2042] dark:text-white">
-                      {section.title}
-                    </h3>
-                  </div>
-                  <span className={`text-slate-400 transition-transform ${isSecExpanded ? "rotate-180" : ""}`}>
-                    ▾
-                  </span>
-                </div>
-
-                {isSecExpanded && (
-                  <div className="p-3 sm:p-4 space-y-3">
-                    {section.topics.map((topic) => (
-                      <div
-                        key={topic.code}
-                        className="p-3 rounded-xl border border-slate-200 dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black/40"
-                      >
-                        <div className="flex items-center justify-between gap-2 mb-2">
-                          <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                            {topic.code} {topic.title}
-                          </span>
-                        </div>
-                        <div className="space-y-1.5">
-                          {topic.keyConcepts.map((kc, idx) => {
-                            const pointId = `${topic.code}-kc-${idx + 1}`;
-                            const currentRating = ratings[pointId];
-
-                            return (
-                              <div
-                                key={pointId}
-                                className="min-h-[38px] px-2.5 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 flex items-center justify-between gap-2.5"
-                              >
-                                <div className="flex items-center gap-2 flex-1 min-w-0">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-neutral-500 shrink-0" />
-                                  <span className="text-xs text-[#1C1917] dark:text-neutral-200">
-                                    {kc}
-                                  </span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <button
-                                    onClick={() => handleRatePoint(pointId, "hard")}
-                                    className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold ${
-                                      currentRating === "hard" ? "bg-rose-600 text-white" : "text-rose-600 border border-rose-200"
-                                    }`}
-                                  >
-                                    Hard
-                                  </button>
-                                  <button
-                                    onClick={() => handleRatePoint(pointId, "moderate")}
-                                    className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold ${
-                                      currentRating === "moderate" ? "bg-amber-500 text-black" : "text-amber-600 border border-amber-200"
-                                    }`}
-                                  >
-                                    Moderate
-                                  </button>
-                                  <button
-                                    onClick={() => handleRatePoint(pointId, "easy")}
-                                    className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold ${
-                                      currentRating === "easy" ? "bg-emerald-600 text-white" : "text-emerald-600 border border-emerald-200"
-                                    }`}
-                                  >
-                                    Easy
-                                  </button>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })
-        )}
+          })}
       </div>
 
       {/* Footer feedback link */}
@@ -1127,6 +1007,12 @@ export function SyllabusRevisionChecklist({
           <ExternalLink className="w-3 h-3" />
         </a>
       </div>
+
+      {/* Factors of Production Modal (Chapter 1) */}
+      <FactorsOfProductionDiagram
+        isOpen={showFactorsModal}
+        onClose={() => setShowFactorsModal(false)}
+      />
     </div>
   );
 }

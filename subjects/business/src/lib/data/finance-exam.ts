@@ -70,9 +70,9 @@ export interface FinanceExamSpec {
 
 export const FINANCE_EXAM_PAPER_2_SPEC: FinanceExamSpec = {
   id: "cie-business-finance-p2-5-1-5-2",
-  title: "CIE Business 0264 — Paper 2 Finance Examination",
+  title: "CIE Business Studies 0264 / 0450 — Paper 2 Finance Examination",
   paperName: "Paper 2 Case Study (Topics 5.1 & 5.2)",
-  syllabus: "Cambridge IGCSE 0264",
+  syllabus: "Cambridge IGCSE 0264 / 0450",
   topicsCovered: [
     "5.1 Business finance: needs and sources (Internal vs External, Bank loans, Shares, Debtors)",
     "5.2 Cash-flow forecasting and working capital (Cash vs profit, Cash flow tables, Liquidity remedies)",

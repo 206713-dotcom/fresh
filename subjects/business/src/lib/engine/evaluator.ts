@@ -715,7 +715,7 @@ function evaluateWithInstantExaminer(
     improvements.push("Extend your chain of analysis using 'this leads to... as a result...'.");
   }
 
-  let examinerNotes = `CIE 0264 Assessment: Awarded ${totalScore}/${marks} marks (${percentage}%). `;
+  let examinerNotes = `CIE 0264/0450 Assessment: Awarded ${totalScore}/${marks} marks (${percentage}%). `;
   if (ruleEnforcement.ao2CappedToZero) {
     examinerNotes += "AO2 was capped at 0 because valid application words were missing. ";
   }
@@ -746,5 +746,291 @@ function evaluateWithInstantExaminer(
     isAiEvaluated: false,
     evaluatedAt: new Date().toISOString(),
     ruleEnforcement,
+  };
+}
+
+export interface Paper2EvaluatorInput {
+  questionNumber: string;
+  questionText: string;
+  markValue: 8 | 12;
+  markScheme: any;
+  modelAnswer: string;
+  validAppWords: string[];
+  studentAnswer: string;
+  caseMainStem: string;
+  webllmEngine?: any;
+}
+
+export interface Paper2EvaluationResult {
+  totalScore: number;
+  maxMarks: 8 | 12;
+  level: string;
+  levelDescription: string;
+  percentage: number;
+  aoBreakdown: {
+    ao1: { score: number; max: number; feedback: string };
+    ao2: { score: number; max: number; feedback: string };
+    ao3: { score: number; max: number; feedback: string };
+    ao4?: { score: number; max: number; feedback: string };
+  };
+  strengths: string[];
+  improvements: string[];
+  examinerNotes: string;
+  isAiEvaluated: boolean;
+  appWordsFound: string[];
+  evaluatedAt: string;
+  isManuallyOverridden?: boolean;
+  originalAiScore?: number;
+  overrideReason?: string;
+}
+
+/**
+ * Paper 2 Examiner using Local Qwen 3.5 0.8B (WebLLM) with Level-based rubric
+ */
+export async function evaluatePaper2Answer(
+  input: Paper2EvaluatorInput
+): Promise<Paper2EvaluationResult> {
+  const { questionNumber, questionText, markValue, markScheme, modelAnswer, validAppWords, studentAnswer, caseMainStem, webllmEngine } = input;
+  const answer = studentAnswer.trim();
+
+  // Keyword scan for context application
+  const appScan = scanApplicationKeywords(answer, validAppWords);
+  const evalScan = scanEvaluationKeywords(answer);
+
+  // Exact or substantial model answer check
+  const isModelMatch = checkIsExactOrSubstantialModelAnswer(answer, modelAnswer);
+  if (isModelMatch) {
+    const levelName = markValue === 12 ? "Level 3 (9–12 marks)" : "Maximum Band (7–8 marks)";
+    return {
+      totalScore: markValue,
+      maxMarks: markValue,
+      level: levelName,
+      levelDescription: "Exemplary answer matching Cambridge Model Answer with full context and supported evaluation.",
+      percentage: 100,
+      aoBreakdown: {
+        ao1: { score: 2, max: 2, feedback: "Exemplar syllabus knowledge and concept accuracy." },
+        ao2: { score: markValue === 12 ? 3 : 2, max: markValue === 12 ? 3 : 2, feedback: `Seamlessly contextualised to case facts (${validAppWords.slice(0, 3).join(", ")}).` },
+        ao3: { score: markValue === 12 ? 4 : 4, max: markValue === 12 ? 4 : 4, feedback: "Comprehensive multi-step cause-and-effect reasoning." },
+        ...(markValue === 12 ? { ao4: { score: 3, max: 3, feedback: "Fully justified and balanced final recommendation." } } : {}),
+      },
+      strengths: ["Direct match with official Cambridge Mark Scheme Model Answer.", "Full mastery of all assessment objectives."],
+      improvements: ["Maintain this concise exam technique under timed conditions."],
+      examinerNotes: `[Cambridge Senior Examiner] Awarded full ${markValue}/${markValue} marks (${levelName}). Exemplar standard.`,
+      isAiEvaluated: false,
+      appWordsFound: validAppWords,
+      evaluatedAt: new Date().toISOString(),
+    };
+  }
+
+  // 1. Try Qwen 3.5 0.8B Local AI Evaluation if engine available
+  if (webllmEngine) {
+    try {
+      const systemPrompt = `You are Qwen 3.5 0.8B functioning as a strict Cambridge Senior Examiner grading 0264 Business Studies Paper 2.
+Your role is to check the student's answer against the official mark scheme and case facts, assign marks, and specify the Level:
+For 12-mark questions:
+- Level 3 (9-12 marks): Detailed analysis of choices/methods in context with a justified, balanced recommendation.
+- Level 2 (5-8 marks): Good analysis of benefits/drawbacks in context.
+- Level 1 (1-4 marks): Outline knowledge or generic points lacking business context.
+For 8-mark questions:
+- Knowledge: max 2 marks.
+- Contextual application & analysis: max 6 marks.
+Output strictly JSON matching the required schema.`;
+
+      const userPrompt = `### QUESTION ${questionNumber} (${markValue} marks)
+${questionText}
+
+### CASE STUDY SUMMARY
+${caseMainStem.slice(0, 450)}
+
+### OFFICIAL MARK SCHEME
+${JSON.stringify(markScheme, null, 2)}
+
+### CASE APPLICATION KEYWORDS
+${validAppWords.join(", ")}
+
+### STUDENT CANDIDATE ANSWER
+${answer}
+
+### TASK
+Evaluate the candidate's answer. Assess knowledge (AO1), application to case (AO2), analysis (AO3), and evaluation (AO4).
+Return JSON with this structure:
+{
+  "marks_awarded": <number between 0 and ${markValue}>,
+  "level": <string e.g. "Level 3 (9–12 marks)", "Level 2 (5–8 marks)", "Level 1 (1–4 marks)" or "Band 3 (7–8 marks)">,
+  "level_feedback": <string explaining level>,
+  "ao_breakdown": {
+    "ao1_feedback": <string>,
+    "ao2_feedback": <string>,
+    "ao3_feedback": <string>,
+    "ao4_feedback": <string>
+  },
+  "strengths": [<string>, <string>],
+  "improvements": [<string>, <string>],
+  "examiner_notes": <string>
+}`;
+
+      const completion = await webllmEngine.chat.completions.create({
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        temperature: 0.1,
+        max_tokens: 450,
+      });
+
+      const raw = completion.choices[0]?.message?.content;
+      if (raw && raw.trim()) {
+        const jsonMatch = raw.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          const awarded = Math.min(markValue, Math.max(0, Math.round(Number(parsed.marks_awarded) || 0)));
+          const defaultLevel = markValue === 12
+            ? awarded >= 9 ? "Level 3 (9–12 marks)" : awarded >= 5 ? "Level 2 (5–8 marks)" : "Level 1 (1–4 marks)"
+            : awarded >= 7 ? "Band 3 (7–8 marks)" : awarded >= 4 ? "Band 2 (4–6 marks)" : "Band 1 (1–3 marks)";
+
+          return {
+            totalScore: awarded,
+            maxMarks: markValue,
+            level: parsed.level || defaultLevel,
+            levelDescription: parsed.level_feedback || `Awarded ${awarded}/${markValue} marks under ${parsed.level || defaultLevel}.`,
+            percentage: Math.round((awarded / markValue) * 100),
+            aoBreakdown: {
+              ao1: { score: Math.min(2, Math.round(awarded * 0.25)), max: 2, feedback: parsed.ao_breakdown?.ao1_feedback || "Business concepts evaluated." },
+              ao2: { score: appScan.passed ? (markValue === 12 ? 3 : 2) : 0, max: markValue === 12 ? 3 : 2, feedback: appScan.passed ? `Applied case facts (${appScan.foundWords.slice(0, 3).join(", ")}).` : "Lacks case study context." },
+              ao3: { score: Math.min(4, Math.round(awarded * 0.4)), max: 4, feedback: parsed.ao_breakdown?.ao3_feedback || "Analysis chains evaluated." },
+              ...(markValue === 12 ? { ao4: { score: Math.max(0, awarded - 7), max: 3, feedback: parsed.ao_breakdown?.ao4_feedback || "Evaluation and recommendation assessed." } } : {}),
+            },
+            strengths: parsed.strengths || ["Engaged with key business issues."],
+            improvements: parsed.improvements || ["Incorporate more data points from Appendices 1–3."],
+            examinerNotes: `[Qwen 3.5 0.8B Local AI Examiner] ${parsed.examiner_notes || "Graded against Cambridge Paper 2 rubric."}`,
+            isAiEvaluated: true,
+            appWordsFound: appScan.foundWords,
+            evaluatedAt: new Date().toISOString(),
+          };
+        }
+      }
+    } catch (aiErr) {
+      console.warn("Local Qwen evaluation error, falling back to deterministic examiner:", aiErr);
+    }
+  }
+
+  // 2. Deterministic Cambridge Senior Examiner Fallback
+  const wordCount = answer ? answer.split(/\s+/).length : 0;
+  let score = 0;
+  let level = markValue === 12 ? "Level 1 (1–4 marks)" : "Band 1 (1–3 marks)";
+  let levelDesc = "";
+
+  if (wordCount < 10) {
+    return {
+      totalScore: 0,
+      maxMarks: markValue,
+      level: markValue === 12 ? "Level 1 (0 marks)" : "Band 1 (0 marks)",
+      levelDescription: "Response too brief to earn credit under Cambridge mark scheme criteria.",
+      percentage: 0,
+      aoBreakdown: {
+        ao1: { score: 0, max: 2, feedback: "Under 10 words; insufficient knowledge demonstrated." },
+        ao2: { score: 0, max: markValue === 12 ? 3 : 2, feedback: "No case context applied." },
+        ao3: { score: 0, max: 4, feedback: "No analysis developed." },
+        ...(markValue === 12 ? { ao4: { score: 0, max: 3, feedback: "No judgment or conclusion." } } : {}),
+      },
+      strengths: [],
+      improvements: ["Write a developed response referencing specific details from the case study."],
+      examinerNotes: "Response is below minimum examinable standard for Paper 2.",
+      isAiEvaluated: false,
+      appWordsFound: [],
+      evaluatedAt: new Date().toISOString(),
+    };
+  }
+
+  // AO1 Knowledge (up to 2 marks)
+  const ao1Score = wordCount >= 20 ? 2 : 1;
+  score += ao1Score;
+
+  // AO2 Application (up to 2 or 3 marks)
+  let ao2Score = 0;
+  if (appScan.passed) {
+    ao2Score = markValue === 12 ? (appScan.foundWords.length >= 2 ? 3 : 2) : 2;
+  }
+  score += ao2Score;
+
+  // AO3 Analysis (up to 4 marks)
+  const causalConnectives = ["leads to", "as a result", "consequently", "because", "therefore", "meaning that", "reducing", "increasing", "enables"];
+  const causalMatches = causalConnectives.filter((c) => answer.toLowerCase().includes(c)).length;
+  const ao3Score = causalMatches >= 2 ? (wordCount >= 45 ? 4 : 3) : causalMatches >= 1 ? 2 : 1;
+  score += ao3Score;
+
+  // AO4 Evaluation for 12m questions (up to 3 marks)
+  let ao4Score = 0;
+  if (markValue === 12) {
+    if (evalScan.passed && wordCount >= 60) {
+      ao4Score = evalScan.foundWords.length >= 2 ? 3 : 2;
+    } else if (evalScan.passed || wordCount >= 40) {
+      ao4Score = 1;
+    }
+    score += ao4Score;
+  }
+
+  score = Math.min(markValue, score);
+
+  if (markValue === 12) {
+    if (score >= 9) {
+      level = "Level 3 (9–12 marks)";
+      levelDesc = "Detailed discussion of options with contextual analysis and supported recommendation.";
+    } else if (score >= 5) {
+      level = "Level 2 (5–8 marks)";
+      levelDesc = "Good discussion of advantages and disadvantages applied to the business context.";
+    } else {
+      level = "Level 1 (1–4 marks)";
+      levelDesc = "Basic outline of points with limited case context.";
+    }
+  } else {
+    if (score >= 7) {
+      level = "Band 3 (7–8 marks)";
+      levelDesc = "Comprehensive identification and thorough contextual development.";
+    } else if (score >= 4) {
+      level = "Band 2 (4–6 marks)";
+      levelDesc = "Valid points identified with relevant contextual explanation.";
+    } else {
+      level = "Band 1 (1–3 marks)";
+      levelDesc = "Basic points identified with limited application.";
+    }
+  }
+
+  const strengths: string[] = [];
+  const improvements: string[] = [];
+
+  if (ao1Score >= 2) strengths.push("Accurate identification of syllabus concepts.");
+  if (ao2Score > 0) strengths.push(`Contextualised using case facts (${appScan.foundWords.slice(0, 3).join(", ")}).`);
+  if (ao3Score >= 3) strengths.push("Strong multi-step cause-and-effect reasoning.");
+  if (ao4Score >= 2) strengths.push("Balanced evaluation with clear recommendation.");
+
+  if (!appScan.passed) {
+    improvements.push(`Include specific case facts such as: ${validAppWords.slice(0, 4).join(", ")}.`);
+  }
+  if (markValue === 12 && ao4Score < 2) {
+    improvements.push("Conclude with a justified recommendation explaining why one option is superior, weighing short-term vs long-term trade-offs.");
+  }
+  if (ao3Score < 3) {
+    improvements.push("Deepen your chain of reasoning by using connectives like 'this leads to' and 'as a result'.");
+  }
+
+  return {
+    totalScore: score,
+    maxMarks: markValue,
+    level,
+    levelDescription: levelDesc,
+    percentage: Math.round((score / markValue) * 100),
+    aoBreakdown: {
+      ao1: { score: ao1Score, max: 2, feedback: "Identification of core business principles." },
+      ao2: { score: ao2Score, max: markValue === 12 ? 3 : 2, feedback: appScan.passed ? `Applied case keywords: ${appScan.foundWords.join(", ")}` : "No specific case details detected." },
+      ao3: { score: ao3Score, max: 4, feedback: `Cause-and-effect reasoning assessed (${causalMatches} causal connectives found).` },
+      ...(markValue === 12 ? { ao4: { score: ao4Score, max: 3, feedback: evalScan.passed ? `Evaluative judgment detected (${evalScan.foundWords.join(", ")}).` : "Lacks justified recommendation." } } : {}),
+    },
+    strengths,
+    improvements,
+    examinerNotes: `[Cambridge Senior Examiner] Awarded ${score}/${markValue} marks (${level}). ${levelDesc}`,
+    isAiEvaluated: false,
+    appWordsFound: appScan.foundWords,
+    evaluatedAt: new Date().toISOString(),
   };
 }

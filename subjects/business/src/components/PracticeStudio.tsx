@@ -81,9 +81,11 @@ export function PracticeStudio({
   // PAPER 1 AUTHENTIC DATABASE STATES
   // ==========================================
   const [activeScenarioId, setActiveScenarioId] = useState<string>(() => {
+    if (initialSectionCode === "6") return "P1_U6_SET_01";
+    if (initialSectionCode === "5") return "P1_U5_SET_01";
     if (initialSectionCode === "4") return "P1_U4_SET_01";
     if (initialSectionCode === "3") return "P1_U3_SET_01";
-    if (initialSectionCode === "2") return "P1_U2_SET_21";
+    if (initialSectionCode === "2") return "P1_U2_SET_01";
     return "P1_U1_SET_01";
   });
 
@@ -91,19 +93,21 @@ export function PracticeStudio({
     return PAPER1_DATABASE.find((s) => s.scenario_id === activeScenarioId) || PAPER1_DATABASE[0];
   }, [activeScenarioId]);
 
-  const selectedUnit: 1 | 2 | 3 | 4 = useMemo(() => {
+  const selectedUnit: 1 | 2 | 3 | 4 | 5 | 6 = useMemo(() => {
+    if (activePaper1Scenario.unit.includes("Unit 6")) return 6;
+    if (activePaper1Scenario.unit.includes("Unit 5")) return 5;
     if (activePaper1Scenario.unit.includes("Unit 4")) return 4;
     if (activePaper1Scenario.unit.includes("Unit 3")) return 3;
     if (activePaper1Scenario.unit.includes("Unit 2")) return 2;
     return 1;
   }, [activePaper1Scenario]);
 
-  // Scenarios belonging to current unit (strictly isolated 20 scenarios per section)
+  // Scenarios belonging to current unit
   const currentUnitScenarios = useMemo(() => {
     return PAPER1_DATABASE.filter((s) => s.unit.includes(`Unit ${selectedUnit}`));
   }, [selectedUnit]);
 
-  // Current index in current unit (0 to 19)
+  // Current index in current unit
   const currentIndexInUnit = useMemo(() => {
     const idx = currentUnitScenarios.findIndex((s) => s.scenario_id === activeScenarioId);
     return idx >= 0 ? idx : 0;
@@ -117,12 +121,16 @@ export function PracticeStudio({
 
   // Sync initial section code from parent if provided
   useEffect(() => {
-    if (initialSectionCode === "4") {
+    if (initialSectionCode === "6") {
+      setActiveScenarioId("P1_U6_SET_01");
+    } else if (initialSectionCode === "5") {
+      setActiveScenarioId("P1_U5_SET_01");
+    } else if (initialSectionCode === "4") {
       setActiveScenarioId("P1_U4_SET_01");
     } else if (initialSectionCode === "3") {
       setActiveScenarioId("P1_U3_SET_01");
     } else if (initialSectionCode === "2") {
-      setActiveScenarioId("P1_U2_SET_21");
+      setActiveScenarioId("P1_U2_SET_01");
     } else if (initialSectionCode === "1") {
       setActiveScenarioId("P1_U1_SET_01");
     }
@@ -428,11 +436,13 @@ export function PracticeStudio({
     setTimerRunning(false);
   };
 
-  const handleSelectUnit = (unitNum: 1 | 2 | 3 | 4) => {
+  const handleSelectUnit = (unitNum: 1 | 2 | 3 | 4 | 5 | 6) => {
     let targetScenarioId = "P1_U1_SET_01";
-    if (unitNum === 2) targetScenarioId = "P1_U2_SET_21";
+    if (unitNum === 2) targetScenarioId = "P1_U2_SET_01";
     if (unitNum === 3) targetScenarioId = "P1_U3_SET_01";
     if (unitNum === 4) targetScenarioId = "P1_U4_SET_01";
+    if (unitNum === 5) targetScenarioId = "P1_U5_SET_01";
+    if (unitNum === 6) targetScenarioId = "P1_U6_SET_01";
 
     const target = PAPER1_DATABASE.find((s) => s.scenario_id === targetScenarioId) ||
       PAPER1_DATABASE.find((s) => s.unit.includes(`Unit ${unitNum}`)) ||
@@ -663,7 +673,7 @@ export function PracticeStudio({
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              CIE Cambridge 0264 Practice Platform
+              CIE Cambridge 0264 / 0450 Practice Platform
             </span>
           </div>
           <h1 className="font-academic-serif text-2xl sm:text-3xl font-bold text-[#0F2042] dark:text-white">
@@ -676,15 +686,6 @@ export function PracticeStudio({
 
         {/* Engine & Timer Controls */}
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Factors of Production Diagram Drawer Button */}
-          <button
-            onClick={() => setShowFactorsDiagramModal(true)}
-            className="px-3.5 py-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
-            title="Interactive Diagram & Visuals: Land -> Rent, Labour -> Wages, Capital -> Interest, Enterprise -> Profit"
-          >
-            <span>📊 Factors of Production & Rewards</span>
-          </button>
-
           {onOpenStudySpace && (
             <button
               onClick={onOpenStudySpace}
@@ -815,7 +816,7 @@ export function PracticeStudio({
                       : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
                   }`}
                 >
-                  Section 1: Business Activity (1–20)
+                  Section 1: Business Activity (1–40)
                 </button>
                 <button
                   type="button"
@@ -826,7 +827,7 @@ export function PracticeStudio({
                       : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
                   }`}
                 >
-                  Section 2: People in Business (1–20)
+                  Section 2: People in Business (1–40)
                 </button>
                 <button
                   type="button"
@@ -837,7 +838,7 @@ export function PracticeStudio({
                       : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
                   }`}
                 >
-                  Section 3: Marketing (1–20)
+                  Section 3: Marketing (1–40)
                 </button>
                 <button
                   type="button"
@@ -848,7 +849,29 @@ export function PracticeStudio({
                       : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
                   }`}
                 >
-                  Section 4: Operations (1–20)
+                  Section 4: Operations (1–40)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelectUnit(5)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    selectedUnit === 5
+                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
+                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
+                  }`}
+                >
+                  Section 5: Finance (1–40)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelectUnit(6)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    selectedUnit === 6
+                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
+                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
+                  }`}
+                >
+                  Section 6: External Influences (1–40)
                 </button>
               </div>
 
@@ -1225,7 +1248,7 @@ export function PracticeStudio({
             <div className="flex items-center gap-2.5">
               <span className="p-1 rounded-md bg-blue-600 text-white font-bold text-xs shrink-0">🏛</span>
               <span className="text-blue-950 dark:text-blue-200">
-                <strong>Separate Official Past Papers Archive (189 Questions):</strong> Authentic Cambridge examination questions from official past papers (0264) with actual exam codes (e.g. 0264/11/M/J/22). (Use the <em>Topical Questions Database</em> tab above for Section 1 & 2 case study scenario sets).
+                <strong>Separate Official Past Papers Archive (189 Questions):</strong> Authentic Cambridge examination questions from official past papers (0450 / 0264) with actual exam codes (e.g. 0450/11/M/J/22). (Use the <em>Topical Questions Database</em> tab above for Section 1 & 2 case study scenario sets).
               </span>
             </div>
             <button

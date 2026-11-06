@@ -1,5 +1,5 @@
-// CIE Cambridge 0264 Paper 1 Authentic Database (Sections 1, 2, 3, and 4)
-// 80 Comprehensive Scenario Sets (20 Unit 1, 20 Unit 2, 20 Unit 3, 20 Unit 4) with 320 verified questions (2m, 4m, 6m, 8m)
+// CIE Cambridge 0264 / 0450 Paper 1 Authentic Database (Sections 1 to 6)
+// 240 Comprehensive Scenario Sets (40 Unit 1, 40 Unit 2, 40 Unit 3, 40 Unit 4, 40 Unit 5, 40 Unit 6) with 960 verified questions (2m, 4m, 6m, 8m)
 
 import rawDatabase from "./paper1-database.json";
 
@@ -38,7 +38,7 @@ export interface Paper1ScenarioSet {
 
 export const PAPER1_DATABASE: Paper1ScenarioSet[] = rawDatabase as Paper1ScenarioSet[];
 
-export function getPaper1ScenariosByUnit(unitNum: 1 | 2 | 3 | 4): Paper1ScenarioSet[] {
+export function getPaper1ScenariosByUnit(unitNum: 1 | 2 | 3 | 4 | 5 | 6): Paper1ScenarioSet[] {
   const matchStr = `Unit ${unitNum}`;
   return PAPER1_DATABASE.filter((s) => s.unit.includes(matchStr));
 }
@@ -47,7 +47,7 @@ export function getPaper1ScenarioById(id: string): Paper1ScenarioSet | undefined
   return PAPER1_DATABASE.find((s) => s.scenario_id === id);
 }
 
-export function getRandomPaper1Scenario(unitNum?: 1 | 2 | 3 | 4): Paper1ScenarioSet {
+export function getRandomPaper1Scenario(unitNum?: 1 | 2 | 3 | 4 | 5 | 6): Paper1ScenarioSet {
   const pool = unitNum ? getPaper1ScenariosByUnit(unitNum) : PAPER1_DATABASE;
   const randomIndex = Math.floor(Math.random() * pool.length);
   return pool[randomIndex] || PAPER1_DATABASE[0];

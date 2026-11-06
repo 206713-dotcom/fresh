@@ -710,7 +710,7 @@ export function FinanceExamStudio({
                   Final Result: Grade {gradeInfo.grade} ({gradeInfo.label})
                 </h2>
                 <p className="text-sm text-[#57534E] dark:text-neutral-400 mt-1">
-                  CIE Business 0264 · Paper 2 Finance Examination (40 Marks)
+                  CIE Business Studies 0264 / 0450 · Paper 2 Finance Examination (40 Marks)
                 </p>
               </div>
 

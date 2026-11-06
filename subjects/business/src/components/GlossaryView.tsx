@@ -82,7 +82,7 @@ export function GlossaryView({
               Official Quizlet Folder Available
             </div>
             <p className="text-sm text-[#1E3A8A] dark:text-[#93C5FD]">
-              Study Jayden_TAN53's curated Cambridge Business 0264 digital flashcard sets and spaced repetition decks on Quizlet.
+              Study Jayden_TAN53's curated Cambridge Business Studies 0264 digital flashcard sets and spaced repetition decks on Quizlet.
             </p>
           </div>
 

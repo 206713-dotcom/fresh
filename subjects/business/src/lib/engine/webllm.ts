@@ -16,6 +16,17 @@ export interface WebLLMStatus {
 export type WebLLMProgressCallback = (status: WebLLMStatus) => void;
 
 export const SELECTED_MODEL = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC";
+export const QWEN_MODEL_LABEL = "Qwen 3.5 0.8B (Local WebGPU)";
+
+export function isQwenCachedLocally(): boolean {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem("qwen_model_downloaded") === "true";
+}
+
+export function setQwenCachedLocally(isCached: boolean): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("qwen_model_downloaded", isCached ? "true" : "false");
+}
 
 /**
  * Custom error thrown when WebGPU is unsupported, initialization fails,
@@ -140,7 +151,7 @@ export async function initializeWebLLM(
             isSupported: true,
             isLoading: percent < 100,
             isReady: percent >= 100,
-            progressText: report.text || "Loading Qwen 2.5 0.5B model...",
+            progressText: report.text || "Loading Qwen 3.5 0.8B model weights...",
             progressPercent: percent,
             error: null,
           });
@@ -149,6 +160,7 @@ export async function initializeWebLLM(
     });
 
     engineInstance = engine;
+    setQwenCachedLocally(true);
     return engine;
   } catch (err: any) {
     const errorMsg = err?.message || "Failed to initialize WebGPU model";

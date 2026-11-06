@@ -1,5 +1,5 @@
 /**
- * Cambridge IGCSE Business (0264) Complete Granular Syllabus Breakdown
+ * Cambridge IGCSE Business (0264 / 0450) Complete Granular Syllabus Breakdown
  * 100% authentic to the official Cambridge International Examinations Syllabus.
  * Contains every Section, Topic, Subtopic (e.g. 1.2.1 Types of economic sector),
  * and granular learning points.

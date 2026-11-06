@@ -88,7 +88,6 @@ export function loadSubmissions(): StudentSubmissionRecord[] {
 const DRAFT_PREFIX = "ecbiz_draft_";
 const FINANCE_EXAM_DRAFT_KEY = "ecbiz_finance_exam_draft";
 const PRACTICE_STATE_KEY = "ecbiz_practice_session_state";
-const ECONS_DRAFT_PREFIX = "ecbiz_econs_draft_";
 const QUICK_QUIZ_KEY = "ecbiz_quickquiz_state";
 
 /**
@@ -133,7 +132,7 @@ export interface PracticeSessionState {
   practiceMode?: "paper1_database" | "paper2_case_study" | "verified_archive";
   activeScenarioId?: string;
   activePart?: "a" | "b" | "c" | "d";
-  selectedUnit?: 1 | 2 | 3 | 4;
+  selectedUnit?: 1 | 2 | 3 | 4 | 5 | 6;
   activePaper2QIndex?: number;
   currentVerifiedIndex?: number;
   verifiedMarkFilter?: number;
@@ -191,32 +190,7 @@ export function clearFinanceExamDraft(): void {
   } catch {}
 }
 
-export function saveEconomicsDraft(blueprintId: string, answer: string): void {
-  if (typeof window === "undefined" || !blueprintId) return;
-  try {
-    if (!answer || !answer.trim()) {
-      localStorage.removeItem(`${ECONS_DRAFT_PREFIX}${blueprintId}`);
-    } else {
-      localStorage.setItem(`${ECONS_DRAFT_PREFIX}${blueprintId}`, answer);
-    }
-  } catch {}
-}
 
-export function loadEconomicsDraft(blueprintId: string): string {
-  if (typeof window === "undefined" || !blueprintId) return "";
-  try {
-    return localStorage.getItem(`${ECONS_DRAFT_PREFIX}${blueprintId}`) || "";
-  } catch {
-    return "";
-  }
-}
-
-export function removeEconomicsDraft(blueprintId: string): void {
-  if (typeof window === "undefined" || !blueprintId) return;
-  try {
-    localStorage.removeItem(`${ECONS_DRAFT_PREFIX}${blueprintId}`);
-  } catch {}
-}
 
 export function saveQuickQuizDraft(data: any): void {
   if (typeof window === "undefined") return;
@@ -309,14 +283,12 @@ export function loadTheme(): "light" | "dark" {
   return t === "dark" ? "dark" : "light";
 }
 
-export function saveSelectedSubject(subject: "business" | "econs" | null): void {
-  setPermanentCookie("selected_subject", subject || "");
+export function saveSelectedSubject(subject: "business" | null): void {
+  setPermanentCookie("selected_subject", subject || "business");
 }
 
-export function loadSelectedSubject(): "business" | "econs" | null {
-  const s = getPermanentCookie("selected_subject");
-  if (s === "business" || s === "econs") return s;
-  return null;
+export function loadSelectedSubject(): "business" {
+  return "business";
 }
 
 // ========================================================

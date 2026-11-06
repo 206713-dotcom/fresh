@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { SYLLABUS_SECTIONS, SyllabusSection, SyllabusTopic } from "../lib/data/syllabus-topics";
 import { loadRevisedTopics, toggleRevisedTopic } from "../lib/cookies";
+import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
 
 interface SectionBreakdownBoxProps {
   activeSectionCode: string;
@@ -22,6 +23,7 @@ export function SectionBreakdownBox({
   className = "",
 }: SectionBreakdownBoxProps) {
   const [revisedCodes, setRevisedCodes] = useState<string[]>([]);
+  const [showFactorsModal, setShowFactorsModal] = useState<boolean>(false);
 
   useEffect(() => {
     setRevisedCodes(loadRevisedTopics());
@@ -92,8 +94,18 @@ export function SectionBreakdownBox({
           </p>
         </div>
 
-        {/* At the side next to the header: Consolidation Document Link for each section (leave section 6 blank) */}
+        {/* At the side next to the header: Consolidation Document Link for each section & Special Tools */}
         <div className="shrink-0 flex flex-wrap items-center gap-2.5">
+          {currentSection.code === "1" && (
+            <button
+              onClick={() => setShowFactorsModal(true)}
+              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-200 font-semibold text-xs transition-all shadow-sm cursor-pointer"
+            >
+              <span className="text-sm">📊</span>
+              <span>Factors of Production & Rewards</span>
+            </button>
+          )}
+
           {currentSection.code === "5" && onOpenFinanceExam && (
             <button
               onClick={onOpenFinanceExam}
@@ -225,6 +237,12 @@ export function SectionBreakdownBox({
           })}
         </div>
       </div>
+
+      {/* Factors of Production Modal (Chapter 1) */}
+      <FactorsOfProductionDiagram
+        isOpen={showFactorsModal}
+        onClose={() => setShowFactorsModal(false)}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-// Cambridge 0264 Business Verified Active Recall MCQ Question Bank
+// Cambridge 0264 / 0450 Business Studies Verified Active Recall MCQ Question Bank
 // Generated from verified syllabus question specifications
 
 export interface MCQItem {

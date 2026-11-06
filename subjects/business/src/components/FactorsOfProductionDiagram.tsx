@@ -44,7 +44,7 @@ export function FactorsOfProductionDiagram({
         occupational: "Occupationally mobile to a degree (e.g. farm land can be repurposed to build factories or housing estates).",
       },
       examTip:
-        "CIE Warning: In Economics & Business, 'Land' is NOT just soil. It includes underground minerals, oceans, and natural atmospheric resources. Capital goods (like tractors or irrigation pipes) are NOT land—they are capital!",
+        "CIE Warning: In Business Studies, 'Land' is NOT just soil. It includes underground minerals, oceans, and natural atmospheric resources. Capital goods (like tractors or irrigation pipes) are NOT land—they are capital!",
     },
     labour: {
       title: "Labour",
@@ -136,7 +136,7 @@ export function FactorsOfProductionDiagram({
                 Cambridge Syllabus Core 1.1 / Unit 1
               </span>
               <span className="text-xs text-blue-200 font-mono hidden sm:inline">
-                Syllabus 0264 · 0455
+                Syllabus 0264 · 0450
               </span>
             </div>
             <h2 className="font-academic-serif text-xl sm:text-2xl font-bold text-white mt-0.5">
@@ -429,7 +429,7 @@ export function FactorsOfProductionDiagram({
           <div className="bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-2xl p-6 shadow-xs space-y-6">
             <div>
               <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-1">
-                Cambridge 0455 & 0264 High-Mark Topic
+                Cambridge 0264 High-Mark Topic
               </span>
               <h3 className="font-academic-serif text-2xl font-bold text-[#0F2042] dark:text-white">
                 Mobility of the Factors of Production

@@ -1,4 +1,4 @@
-export type SyllabusCode = "0264" | "0450" | "0455";
+export type SyllabusCode = "0264" | "0450";
 
 export type MarkTier = 2 | 4 | 6 | 8 | 12;
 
@@ -145,7 +145,7 @@ export interface EconsGlossaryTerm {
 }
 
 export interface UserPreferences {
-  activeSubject: "business" | "econs" | null;
+  activeSubject: "business" | null;
   theme: "light" | "dark";
   lastMarkTier: MarkTier;
   timerEnabled: boolean;
