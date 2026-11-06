@@ -90,13 +90,13 @@ function setupDeck(id) {
   update();
 }
 function practice(chapterIndex) {
-  return heading('Original practice','Practice Questions','2,490 questions from your supplied practice bank, organised by syllabus chapter.')+
-    '<div class="grid practice-chapters">'+catalog.slice(0,6).map((chapter,i)=>'<a class="tile" href="#practice/'+i+'"><div><strong>Chapter '+(i+1)+'</strong><h3>'+escapeHtml(chapter.title)+'</h3><small>415 questions · 300 MCQs · 115 structured</small></div></a>').join('')+'</div>'+
-    '<div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
+  return heading('Original practice','Practice Questions','Choose a chapter or topic, then work through one question at a time.')+
+    '<section class="practice-filters" aria-label="Filter questions"><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<p class="muted">MCQs score automatically. Submit a structured answer to reveal its supplied mark scheme and record your self-assessed score.</p>'+
-    '<p id="question-count" class="muted" aria-live="polite"></p><div id="questions"></div><div class="row pagination" id="question-pages"></div>';
+    '<div class="row"><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
+    '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
+    '<section class="question-work"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
 function setupPractice() {
   const chapter=document.querySelector('#filter-chapter');
@@ -107,23 +107,28 @@ function setupPractice() {
   const target=document.querySelector('#questions');
   const pages=document.querySelector('#question-pages');
   const attempts=new Map();
+  const search=document.querySelector('#filter-search');
+  const list=document.querySelector('#question-list');
+  const listPages=document.querySelector('#list-pages');
   let page=0;
-  const size=8;
+  let matches=[];
+  const size=20;
 
   function renderTopics() {
     const topics=new Map(questions.filter(q=>chapter.value===''||q.c===Number(chapter.value)).map(q=>[q.topic,q.topicName]));
-    topic.innerHTML='<option value="">All topics</option>'+[...topics].map(([code,name])=>'<option value="'+code+'">'+code+' · '+escapeHtml(name)+'</option>').join('');
+    topic.innerHTML='<option value="">All topics</option>'+[...topics].sort(([a],[b])=>a.localeCompare(b,undefined,{numeric:true})).map(([code,name])=>'<option value="'+code+'">'+code+' · '+escapeHtml(name)+'</option>').join('');
   }
   function renderQuestions() {
-    const matches=questions.map((q,i)=>({q,i})).filter(({q})=>
+    matches=questions.map((q,i)=>({q,i})).filter(({q})=>
       (chapter.value===''||q.c===Number(chapter.value))&&
       (!topic.value||q.topic===topic.value)&&
       (!type.value||type.value===(q.options?'mcq':'structured'))&&
-      (!marks.value||q.marks===Number(marks.value)));
-    const start=page*size;
-    const end=Math.min(start+size,matches.length);
-    document.querySelector('#question-count').textContent=matches.length?'Showing '+(start+1)+'–'+end+' of '+matches.length+' questions':'No questions match these filters.';
-    target.innerHTML=matches.slice(start,end).map(({q,i})=>{
+      (!marks.value||q.marks===Number(marks.value))&&
+      (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
+    page=Math.max(0,Math.min(page,matches.length-1));
+    document.querySelector('#question-count').textContent=matches.length+' matching questions';
+    renderNavigator();
+    target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
       const answer=saved.answer||'';
       return '<form class="panel" data-question="'+i+'"><div class="eyebrow">Chapter '+(q.c+1)+' · '+q.topic+' · '+q.marks+' '+(q.marks===1?'mark':'marks')+'</div><p class="question-id">'+escapeHtml(q.id)+'</p>'+
@@ -132,18 +137,44 @@ function setupPractice() {
         (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):'<label class="field">Your answer<textarea name="answer" required>'+escapeHtml(answer)+'</textarea></label>')+
         '<button class="primary">'+(q.options?'Check answer':'Submit and view mark scheme')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
-    pages.innerHTML=matches.length>size?'<button data-page="-1" '+(page===0?'disabled':'')+'>← Previous page</button><span>Page '+(page+1)+' of '+Math.ceil(matches.length/size)+'</span><button data-page="1" '+(end===matches.length?'disabled':'')+'>Next page →</button>':'';
+    pages.innerHTML=matches.length?'<button type="button" data-page="-1" '+(page===0?'disabled':'')+'>← Previous</button><label class="jump-label">Question <input id="question-jump" aria-label="Go to question number" type="number" min="1" max="'+matches.length+'" value="'+(page+1)+'"> of '+matches.length+'</label><button type="button" data-page="1" '+(page===matches.length-1?'disabled':'')+'>Next →</button>':'';
+    if(!matches.length)target.innerHTML='<div class="panel"><h2>No matching questions</h2><p>Try a broader search or clear the filters.</p></div>';
+  }
+  function renderNavigator() {
+    const start=Math.floor(page/size)*size;
+    list.innerHTML=matches.slice(start,start+size).map(({q,i},offset)=>
+      '<button type="button" data-question-position="'+(start+offset)+'" '+(start+offset===page?'aria-current="step"':'')+'><span class="question-number">'+(start+offset+1)+'</span><span><strong>'+escapeHtml(q.q)+'</strong><small>Ch '+(q.c+1)+' · '+q.topic+' · '+(q.options?'MCQ':q.marks+' marks')+(attempts.get(i)?.answer?' · ● Started':'')+'</small></span></button>').join('');
+    listPages.innerHTML=matches.length>size?'<button type="button" data-list-page="-1" '+(start===0?'disabled':'')+'>← List</button><small>'+(start+1)+'–'+Math.min(start+size,matches.length)+'</small><button type="button" data-list-page="1" '+(start+size>=matches.length?'disabled':'')+'>List →</button>':'';
   }
   function reset() {page=0;renderQuestions()}
   renderTopics();
   chapter.onchange=()=>{renderTopics();reset()};
   topic.onchange=type.onchange=marks.onchange=reset;
+  search.oninput=reset;
+  document.querySelector('#clear-filters').onclick=()=>{
+    chapter.value=topic.value=type.value=marks.value=search.value='';
+    renderTopics();
+    reset();
+  };
+  function moveTo(position,scroll=false) {
+    page=Math.max(0,Math.min(position,matches.length-1));
+    renderQuestions();
+    if(scroll)document.querySelector('.question-work').scrollIntoView({block:'start'});
+  }
+  list.onclick=event=>{
+    const button=event.target.closest('[data-question-position]');
+    if(button)moveTo(Number(button.dataset.questionPosition),window.innerWidth<901);
+  };
+  listPages.onclick=event=>{
+    const button=event.target.closest('[data-list-page]');
+    if(button)moveTo(Math.floor(page/size)*size+Number(button.dataset.listPage)*size);
+  };
   pages.onclick=event=>{
     const button=event.target.closest('[data-page]');
-    if (!button) return;
-    page+=Number(button.dataset.page);
-    renderQuestions();
-    target.scrollIntoView({block:'start'});
+    if(button)moveTo(page+Number(button.dataset.page));
+  };
+  pages.onchange=event=>{
+    if(event.target.id==='question-jump'&&event.target.value)moveTo(Number(event.target.value)-1);
   };
   target.oninput=event=>{
     const form=event.target.closest('form');
@@ -158,6 +189,7 @@ function setupPractice() {
     }
     attempts.set(index,{answer:event.target.value});
     form.querySelector('.feedback').hidden=true;
+    renderNavigator();
   };
   target.onsubmit=event=>{
     event.preventDefault();
@@ -174,6 +206,7 @@ function setupPractice() {
         (q.note?'<p><strong>Marking guidance</strong></p><p>'+escapeHtml(q.note)+'</p>':'')+
         '<label class="field">Your self-assessed mark<select data-score><option value="">Choose a score</option>'+Array.from({length:q.marks+1},(_,n)=>'<option value="'+n+'">'+n+'</option>').join('')+'</select></label><p class="self-score-result"></p>';
     attempts.set(index,{answer,feedback:feedback.innerHTML});
+    renderNavigator();
   };
   renderQuestions();
 }
@@ -193,6 +226,7 @@ function sources() {
 }
 function render() {
   const [page='home', id, mode] = location.hash.slice(1).split('/');
+  main.classList.toggle('practice-page',page==='practice');
   const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(id===undefined?null:Number(id),Number(mode)),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
   const active=page==='glossary'?'flashcards':page==='chapter'||page==='lesson'?(mode==='cards'?'flashcards':'library'):page||'home';
@@ -211,4 +245,5 @@ function render() {
 }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
 render();
+
 
