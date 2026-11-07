@@ -36,6 +36,8 @@ import {
   removeAnswerDraft,
   savePracticeSessionState,
   loadPracticeSessionState,
+  savePaper1Position,
+  loadPaper1Position,
   awardBonusStudyCoins,
 } from "../lib/cookies";
 
@@ -81,6 +83,14 @@ export function PracticeStudio({
   // PAPER 1 AUTHENTIC DATABASE STATES
   // ==========================================
   const [activeScenarioId, setActiveScenarioId] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = loadPaper1Position();
+      if (saved?.scenarioId && PAPER1_DATABASE.some((s) => s.scenario_id === saved.scenarioId)) {
+        if (!initialSectionCode || saved.sectionCode === initialSectionCode) {
+          return saved.scenarioId;
+        }
+      }
+    }
     if (initialSectionCode === "6") return "P1_U6_SET_01";
     if (initialSectionCode === "5") return "P1_U5_SET_01";
     if (initialSectionCode === "4") return "P1_U4_SET_01";
@@ -113,26 +123,37 @@ export function PracticeStudio({
     return idx >= 0 ? idx : 0;
   }, [currentUnitScenarios, activeScenarioId]);
 
-  // Active Part: "a" (2m) | "b" (4m) | "c" (6m) | "d" (8m)
-  const [activePart, setActivePart] = useState<"a" | "b" | "c" | "d">("b");
+  // Active Part: "a" (2m) | "b" (4m) | "c" (6m) | "d" (8m) (loaded from storage if available)
+  const [activePart, setActivePart] = useState<"a" | "b" | "c" | "d">(() => {
+    if (typeof window !== "undefined") {
+      const saved = loadPaper1Position();
+      if (saved?.part && ["a", "b", "c", "d"].includes(saved.part)) {
+        return saved.part;
+      }
+    }
+    return "b";
+  });
   const activePaper1Question: Paper1Question = useMemo(() => {
     return activePaper1Scenario.questions.find((q) => q.part === activePart) || activePaper1Scenario.questions[1];
   }, [activePaper1Scenario, activePart]);
 
-  // Sync initial section code from parent if provided
+  // Persist Paper 1 active position whenever scenario or part changes
   useEffect(() => {
-    if (initialSectionCode === "6") {
-      setActiveScenarioId("P1_U6_SET_01");
-    } else if (initialSectionCode === "5") {
-      setActiveScenarioId("P1_U5_SET_01");
-    } else if (initialSectionCode === "4") {
-      setActiveScenarioId("P1_U4_SET_01");
-    } else if (initialSectionCode === "3") {
-      setActiveScenarioId("P1_U3_SET_01");
-    } else if (initialSectionCode === "2") {
-      setActiveScenarioId("P1_U2_SET_01");
-    } else if (initialSectionCode === "1") {
-      setActiveScenarioId("P1_U1_SET_01");
+    savePaper1Position({
+      scenarioId: activeScenarioId,
+      part: activePart,
+      sectionCode: String(selectedUnit),
+    });
+  }, [activeScenarioId, activePart, selectedUnit]);
+
+  // Sync initial section code from parent if explicitly requested and different
+  useEffect(() => {
+    if (!initialSectionCode) return;
+    const currentUnitStr = `Unit ${initialSectionCode}`;
+    if (activePaper1Scenario.unit.includes(currentUnitStr)) return;
+    const target = PAPER1_DATABASE.find((s) => s.unit.includes(currentUnitStr));
+    if (target) {
+      setActiveScenarioId(target.scenario_id);
     }
   }, [initialSectionCode]);
 

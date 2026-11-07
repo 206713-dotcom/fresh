@@ -18,6 +18,7 @@ import {
   Palette,
   Trophy,
   Cpu,
+  ExternalLink,
 } from "lucide-react";
 import { getStudyCoins } from "../lib/cookies";
 
@@ -118,22 +119,13 @@ export function Header({
         {/* ========================================================= */}
         {/* ZONE 1: BRAND / WORDMARK */}
         {/* ========================================================= */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <a
-            href="../index.html#subjects"
-            title="Return to Fresh IGCSE Hub (All Subjects)"
-            className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-neutral-200 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors shadow-xs"
-          >
-            <span aria-hidden="true">←</span>
-            <span className="hidden sm:inline">Fresh Hub</span>
-            <span className="sm:hidden">Fresh</span>
-          </a>
+        <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={() => handleSelectTab("practice")}
-            title="EcBiz — Business Studies (0264 / 0450)"
+            title="EcBiz"
             className="text-left group flex items-center gap-2 focus:outline-none cursor-pointer"
           >
-            <span className="font-academic-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#0F2042] dark:text-white whitespace-nowrap">
+            <span className="font-academic-serif text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-[#0F2042] dark:text-white whitespace-nowrap">
               EcBiz
             </span>
           </button>
@@ -347,6 +339,23 @@ export function Header({
                     <div className="text-[10px] opacity-80">1-min timed recall drill</div>
                   </div>
                 </button>
+
+                {/* Bug / Suggestion Link in Resources */}
+                <a
+                  href="https://forms.gle/6X2CAR1LkSQGRBx68"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer mt-1 text-amber-800 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/30 border-t border-neutral-100 dark:border-neutral-800 pt-2"
+                >
+                  <span className="text-sm mt-0.5 shrink-0">💡</span>
+                  <div>
+                    <div className="text-xs font-semibold flex items-center gap-1">
+                      <span>Bug / Suggestion</span>
+                      <ExternalLink className="w-3 h-3 opacity-60" />
+                    </div>
+                    <div className="text-[10px] opacity-75">Send feedback or report an issue ↗</div>
+                  </div>
+                </a>
               </div>
             )}
           </div>
@@ -356,6 +365,20 @@ export function Header({
         {/* ZONE 3: ACTIONS & UTILITIES */}
         {/* ========================================================= */}
         <div className="flex items-center gap-2">
+          {/* Bug / Suggestion Button at Top */}
+          <a
+            href="https://forms.gle/6X2CAR1LkSQGRBx68"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-700/80 bg-amber-50/90 hover:bg-amber-100 dark:bg-amber-950/50 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-200 transition-colors text-xs font-semibold flex items-center gap-1.5 shadow-2xs group cursor-pointer"
+            title="Report a bug or suggest an improvement (Google Forms)"
+          >
+            <span className="text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">💡</span>
+            <span className="hidden sm:inline">Bug / Suggestion</span>
+            <span className="sm:hidden">Bug</span>
+            <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
+          </a>
+
           {/* Study Coins Pill */}
           <div
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100/70 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800/80 text-amber-800 dark:text-amber-300 font-mono text-xs font-bold shadow-2xs"
@@ -424,6 +447,23 @@ export function Header({
       {/* ========================================================= */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-3 pt-3 border-t border-[#E7E5E4] dark:border-neutral-800 space-y-1.5">
+          {/* Bug / Suggestion Link in Mobile Menu */}
+          <a
+            href="https://forms.gle/6X2CAR1LkSQGRBx68"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold flex items-center justify-between bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-200 shadow-2xs mb-2 cursor-pointer"
+          >
+            <span className="flex items-center gap-2">
+              <span className="text-sm">💡</span>
+              <span>Report Bug / Suggestion</span>
+            </span>
+            <span className="text-[10px] opacity-75 font-mono flex items-center gap-1">
+              <span>Feedback ↗</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
+          </a>
+
           {/* Questions Group */}
           <div className="px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-400">
             Questions

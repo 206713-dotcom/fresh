@@ -1510,18 +1510,27 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
   return (
     <div className="max-w-6xl mx-auto px-3 sm:px-6 py-6 font-sans">
-      {/* Top Section Header & Status */}
+      {/* Top Banner Navigation & Status */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] font-mono font-bold uppercase tracking-wider">
-              Cambridge 0264 / 0450 Arena
-            </span>
-            <span className="text-xs text-neutral-500 font-mono">129 Business Questions Bank</span>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onBackToStudio}
+            className="p-2 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 transition"
+            title="Return to Studio"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] font-mono font-bold uppercase tracking-wider">
+                Cambridge 0264 / 0450 Arena
+              </span>
+              <span className="text-xs text-neutral-500 font-mono">129 Business Questions Bank</span>
+            </div>
+            <h1 className="font-academic-serif text-2xl sm:text-3xl font-extrabold text-[#0F2042] dark:text-white">
+              Boss Battle Arena ⚔️
+            </h1>
           </div>
-          <h1 className="font-academic-serif text-2xl sm:text-3xl font-extrabold text-[#0F2042] dark:text-white">
-            Boss Battle Arena ⚔️
-          </h1>
         </div>
 
         {/* Player Stats Pills & Studio Buttons */}
@@ -1536,6 +1545,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             <span className="text-[10px] font-mono opacity-80">(+{Math.round((studyStats.damageMultiplier - 1) * 100)}% DMG)</span>
           </div>
 
+          {/* Study Coins */}
+          <div className="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs font-bold font-mono flex items-center gap-1.5 shadow-xs">
+            <span>🪙 {coins} Coins</span>
+          </div>
+
           {/* Live Tokens (3 Tokens = 1 Life) */}
           <div
             className="px-3 py-1.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold flex items-center gap-1.5"
@@ -1547,6 +1561,16 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               ❤️ {extraLives} Lives
             </span>
           </div>
+
+          {/* Character Avatar Customizer Button */}
+          <button
+            onClick={() => setShowCustomizerModal(true)}
+            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md active:scale-95 cursor-pointer"
+            title="Open Scholar Avatar Wardrobe & Customizer"
+          >
+            <Palette className="w-3.5 h-3.5" />
+            <span>Avatar Wardrobe</span>
+          </button>
 
           {/* Sound Toggle */}
           <button
@@ -1564,16 +1588,6 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Armour Shop</span>
-          </button>
-
-          {/* Return to Practice Studio */}
-          <button
-            onClick={onBackToStudio}
-            className="px-3 py-1.5 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-xs font-semibold text-neutral-700 dark:text-neutral-200 transition flex items-center gap-1 cursor-pointer"
-            title="Return to Topical Practice Studio"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Studio</span>
           </button>
         </div>
       </div>

@@ -559,5 +559,108 @@ export function incrementCompletedFocusSessions(): number {
   }
 }
 
+// ==========================================
+// PAPER 1 & PAPER 2 POSITION PERSISTENCE
+// ==========================================
+const P1_LAST_POSITION_KEY = "ecbiz_p1_last_position";
+const P2_LAST_POSITION_KEY = "ecbiz_p2_last_position";
+const P2_ANSWERS_PREFIX = "ecbiz_p2_answers_";
+
+export interface Paper1LastPosition {
+  scenarioId: string;
+  part: "a" | "b" | "c" | "d";
+  sectionCode?: string;
+  updatedAt: number;
+}
+
+export function savePaper1Position(data: { scenarioId: string; part: "a" | "b" | "c" | "d"; sectionCode?: string }): void {
+  if (typeof window === "undefined") return;
+  try {
+    const payload: Paper1LastPosition = { ...data, updatedAt: Date.now() };
+    localStorage.setItem(P1_LAST_POSITION_KEY, JSON.stringify(payload));
+    setPermanentCookie("p1_scenario", data.scenarioId);
+    setPermanentCookie("p1_part", data.part);
+    if (data.sectionCode) {
+      setPermanentCookie("p1_section", data.sectionCode);
+    }
+  } catch {}
+}
+
+export function loadPaper1Position(): Paper1LastPosition | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(P1_LAST_POSITION_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.scenarioId) return parsed;
+    }
+    const cookieScenario = getPermanentCookie("p1_scenario");
+    const cookiePart = (getPermanentCookie("p1_part") as "a" | "b" | "c" | "d") || "b";
+    const cookieSection = getPermanentCookie("p1_section") || undefined;
+    if (cookieScenario) {
+      return { scenarioId: cookieScenario, part: cookiePart, sectionCode: cookieSection, updatedAt: Date.now() };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export interface Paper2LastPosition {
+  scenarioId: string;
+  questionIdx: number;
+  updatedAt: number;
+}
+
+export function savePaper2Position(data: { scenarioId: string; questionIdx: number }): void {
+  if (typeof window === "undefined") return;
+  try {
+    const payload: Paper2LastPosition = { ...data, updatedAt: Date.now() };
+    localStorage.setItem(P2_LAST_POSITION_KEY, JSON.stringify(payload));
+    setPermanentCookie("p2_scenario", data.scenarioId);
+    setPermanentCookie("p2_qidx", String(data.questionIdx));
+  } catch {}
+}
+
+export function loadPaper2Position(): Paper2LastPosition | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(P2_LAST_POSITION_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.scenarioId) return parsed;
+    }
+    const cookieScenario = getPermanentCookie("p2_scenario");
+    const cookieQIdx = getPermanentCookie("p2_qidx");
+    if (cookieScenario) {
+      return {
+        scenarioId: cookieScenario,
+        questionIdx: cookieQIdx ? parseInt(cookieQIdx, 10) || 0 : 0,
+        updatedAt: Date.now(),
+      };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export function savePaper2Answers(scenarioId: string, answers: Record<number, string>): void {
+  if (typeof window === "undefined" || !scenarioId) return;
+  try {
+    localStorage.setItem(`${P2_ANSWERS_PREFIX}${scenarioId}`, JSON.stringify(answers));
+  } catch {}
+}
+
+export function loadPaper2Answers(scenarioId: string): Record<number, string> {
+  if (typeof window === "undefined" || !scenarioId) return {};
+  try {
+    const raw = localStorage.getItem(`${P2_ANSWERS_PREFIX}${scenarioId}`);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
 
 

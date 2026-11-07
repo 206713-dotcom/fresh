@@ -390,23 +390,8 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black py-4 px-6 text-xs text-[#78716C] dark:text-neutral-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>EcBiz • Powered by Local in-Browser Qwen 3.5 0.8B AI · Cambridge Business Studies (0264 / 0450)</p>
-          <div className="flex items-center gap-4">
-            <a href="../index.html#subjects" className="text-[#0F2042] dark:text-[#38BDF8] hover:underline font-semibold">
-              ← All IGCSE Subjects
-            </a>
-            <a
-              href="https://forms.gle/6X2CAR1LkSQGRBx68"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              Report Bug / Feedback ↗
-            </a>
-          </div>
-        </div>
+      <footer className="border-t border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black py-4 px-6 text-center text-xs text-[#78716C] dark:text-neutral-500">
+        <p>EcBiz • Powered by Local in-Browser Qwen 3.5 0.8B AI</p>
       </footer>
     </div>
   );

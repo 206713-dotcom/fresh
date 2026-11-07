@@ -40,9 +40,14 @@ import {
   setQwenCachedLocally,
   checkWebGPUSupport,
   WebLLMStatus,
-  QWEN_MODEL_LABEL,
 } from "../lib/engine/webllm";
-import { awardBonusStudyCoins } from "../lib/cookies";
+import {
+  awardBonusStudyCoins,
+  savePaper2Position,
+  loadPaper2Position,
+  savePaper2Answers,
+  loadPaper2Answers,
+} from "../lib/cookies";
 
 interface Paper2PracticeViewProps {
   initialScenarioId?: string;
@@ -53,8 +58,16 @@ export function Paper2PracticeView({
   initialScenarioId = "P2_SET_01",
   onOpenStudySpace,
 }: Paper2PracticeViewProps) {
-  // Active Scenario from the 100 available sets
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>(initialScenarioId);
+  // Active Scenario from the 100 available sets (resumes from saved position)
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const saved = loadPaper2Position();
+      if (saved?.scenarioId && PAPER2_DATABASE.some((s) => s.scenario_id === saved.scenarioId)) {
+        return saved.scenarioId;
+      }
+    }
+    return initialScenarioId || "P2_SET_01";
+  });
   const activeScenario: Paper2Scenario = useMemo(() => {
     return PAPER2_DATABASE.find((s) => s.scenario_id === selectedScenarioId) || PAPER2_DATABASE[0];
   }, [selectedScenarioId]);
@@ -62,14 +75,29 @@ export function Paper2PracticeView({
   // Case Study Pane tab: "main" | "app1" | "app2" | "app3"
   const [caseTab, setCaseTab] = useState<"main" | "app1" | "app2" | "app3">("main");
 
-  // Step-by-step sequential questions: index 0 to 7 (1a, 1b, 2a, 2b, 3a, 3b, 4a, 4b)
-  const [currentQuestionIdx, setCurrentQuestionIdx] = useState<number>(0);
+  // Step-by-step sequential questions: index 0 to 7 (1a, 1b, 2a, 2b, 3a, 3b, 4a, 4b) (resumes from saved position)
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      const saved = loadPaper2Position();
+      if (typeof saved?.questionIdx === "number" && saved.questionIdx >= 0 && saved.questionIdx < 8) {
+        return saved.questionIdx;
+      }
+    }
+    return 0;
+  });
   const activeQuestion: Paper2Question = useMemo(() => {
     return activeScenario.questions[currentQuestionIdx] || activeScenario.questions[0];
   }, [activeScenario, currentQuestionIdx]);
 
-  // Candidate answers stored per question index
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  // Candidate answers stored per question index (loaded from storage for this scenario)
+  const [answers, setAnswers] = useState<Record<number, string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = loadPaper2Position();
+      const scenId = saved?.scenarioId || initialScenarioId || "P2_SET_01";
+      return loadPaper2Answers(scenId);
+    }
+    return {};
+  });
   // Evaluations stored per question index
   const [evaluations, setEvaluations] = useState<Record<number, Paper2EvaluationResult>>({});
   // Completed questions tracking (submitted)
@@ -411,13 +439,40 @@ export function Paper2PracticeView({
   const handleSelectScenario = (id: string) => {
     setSelectedScenarioId(id);
     setCurrentQuestionIdx(0);
-    setAnswers({});
+    const savedAnswers = loadPaper2Answers(id);
+    setAnswers(savedAnswers);
     setEvaluations({});
     setCompletedIndices([]);
     setShowModelAnswer(false);
+    setShowMarkSchemeRubric(false);
+    setShowOverridePanel(false);
     setShowScenarioPicker(false);
     setCaseTab("main");
   };
+
+  // Jump to a random scenario set (matching Paper 1 random capability)
+  const handleRandomScenario = () => {
+    const total = PAPER2_DATABASE.length;
+    if (total <= 1) return;
+    let rand = Math.floor(Math.random() * total);
+    if (rand === currentScenarioIdx) {
+      rand = (rand + 1) % total;
+    }
+    handleSelectScenario(PAPER2_DATABASE[rand].scenario_id);
+  };
+
+  // Persist Paper 2 position to cookies and localStorage
+  useEffect(() => {
+    savePaper2Position({
+      scenarioId: selectedScenarioId,
+      questionIdx: currentQuestionIdx,
+    });
+  }, [selectedScenarioId, currentQuestionIdx]);
+
+  // Persist candidate answers for the current scenario
+  useEffect(() => {
+    savePaper2Answers(selectedScenarioId, answers);
+  }, [selectedScenarioId, answers]);
 
   // Filtered scenarios for search
   const filteredScenarios = useMemo(() => {
@@ -552,7 +607,7 @@ export function Paper2PracticeView({
             </div>
           </div>
 
-          {/* Right: Stepper and Dropdown */}
+          {/* Right: Stepper (Prev / X of 100 / Next) + Random + Search (matches Paper 1 style) */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
@@ -563,19 +618,10 @@ export function Paper2PracticeView({
               ← Prev
             </button>
 
-            {/* Dropdown for Set 1 to 100 */}
-            <select
-              value={selectedScenarioId}
-              onChange={(e) => handleSelectScenario(e.target.value)}
-              className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-neutral-700 bg-white dark:bg-black text-xs font-mono font-bold text-[#0F2042] dark:text-white cursor-pointer focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white focus:outline-none max-w-[155px] sm:max-w-[210px] truncate"
-              aria-label="Select Paper 2 Set (1 to 100)"
-            >
-              {PAPER2_DATABASE.map((s, idx) => (
-                <option key={s.scenario_id} value={s.scenario_id}>
-                  {`Set ${idx + 1} (${idx + 1} / 100)`}
-                </option>
-              ))}
-            </select>
+            {/* Set Indicator: X / 100 (matching Paper 1 style) */}
+            <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 text-[#0F2042] dark:text-white min-w-[76px] text-center shadow-2xs">
+              {currentScenarioIdx + 1} / {PAPER2_DATABASE.length}
+            </span>
 
             <button
               type="button"
@@ -586,12 +632,22 @@ export function Paper2PracticeView({
               Next →
             </button>
 
+            {/* Random Set Button (matches Paper 1 style) */}
+            <button
+              type="button"
+              onClick={handleRandomScenario}
+              className="px-2.5 py-1.5 rounded-lg border border-purple-200 dark:border-purple-800/80 bg-purple-50/70 hover:bg-purple-100 dark:bg-purple-950/40 text-purple-800 dark:text-purple-300 text-xs font-semibold transition cursor-pointer flex items-center gap-1"
+              title="Jump to a random Case Study Set"
+            >
+              <span>🎲 Random</span>
+            </button>
+
             {/* Search drawer toggle button */}
             <button
               type="button"
               onClick={() => setShowScenarioPicker(true)}
               className="p-1.5 rounded-lg border border-slate-300 dark:border-neutral-700 bg-white dark:bg-black text-neutral-600 dark:text-neutral-300 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 cursor-pointer"
-              title="Search all 100 questions"
+              title="Search and browse all 100 sets"
             >
               <Search className="w-4 h-4" />
             </button>

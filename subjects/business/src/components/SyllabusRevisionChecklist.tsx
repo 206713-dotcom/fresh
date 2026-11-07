@@ -289,11 +289,22 @@ export function SyllabusRevisionChecklist({
           </p>
         </div>
 
-        {/* Cambridge 0264 Syllabus Badge */}
-        <div className="flex items-center gap-2 self-start md:self-center">
+        {/* Cambridge 0264 Syllabus Badge & Top Feedback Link */}
+        <div className="flex flex-wrap items-center gap-2 self-start md:self-center">
           <span className="px-3.5 py-1.5 rounded-xl bg-[#0F2042] dark:bg-white text-white dark:text-black font-semibold text-xs shadow-xs font-mono">
             Cambridge 0264 / 0450
           </span>
+          <a
+            href="https://forms.gle/6X2CAR1LkSQGRBx68"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200 font-semibold text-xs transition-all shadow-2xs inline-flex items-center gap-1.5 cursor-pointer"
+            title="Report a bug or suggest an improvement"
+          >
+            <span>💡</span>
+            <span>Bug / Suggestion</span>
+            <ExternalLink className="w-3 h-3 opacity-70" />
+          </a>
         </div>
       </div>
 
