@@ -112,6 +112,10 @@ export function Header({
 
   const isQuestionsActive = ["practice", "paper2", "quick-quiz"].includes(activeTab);
   const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
+  const freshHubHref =
+    typeof window !== "undefined" && /Business\.html$/i.test(window.location.pathname)
+      ? "../index.html#subjects"
+      : "../../index.html#subjects";
 
   return (
     <header className="sticky top-0 z-40 bg-[#FAF9F6]/95 dark:bg-black/95 backdrop-blur-md border-b border-[#E7E5E4] dark:border-neutral-800 px-4 sm:px-6 py-2.5 transition-colors">
@@ -119,7 +123,15 @@ export function Header({
         {/* ========================================================= */}
         {/* ZONE 1: BRAND / WORDMARK */}
         {/* ========================================================= */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <a
+            href={freshHubHref}
+            title="Return to Fresh"
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-neutral-200 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors"
+          >
+            <span aria-hidden="true">←</span>
+            <span className="hidden sm:inline">Fresh</span>
+          </a>
           <button
             onClick={() => handleSelectTab("practice")}
             title="EcBiz"
@@ -447,6 +459,13 @@ export function Header({
       {/* ========================================================= */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-3 pt-3 border-t border-[#E7E5E4] dark:border-neutral-800 space-y-1.5">
+          <a
+            href={freshHubHref}
+            className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 border border-[#D6D3D1] dark:border-neutral-700 text-[#0F2042] dark:text-neutral-200"
+          >
+            <span aria-hidden="true">←</span>
+            <span>Fresh</span>
+          </a>
           {/* Bug / Suggestion Link in Mobile Menu */}
           <a
             href="https://forms.gle/6X2CAR1LkSQGRBx68"
