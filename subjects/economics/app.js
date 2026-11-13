@@ -18,7 +18,7 @@ function home() {
     ['▣','Flashcards','Recall key concepts and strengthen memory.','Review cards →','#flashcards'],
     ['☑','Exam practice','Answer questions and review the supplied mark schemes.','Start practice →','#practice']
   ];
-  return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
+  return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Revision tools ↗','#revision')+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
 }
 function studyHero(label, title, description, stats, kind) {
   return '<section class="study-hero"><div><p class="eyebrow">'+label+'</p><h1>'+title+'</h1><p class="study-intro">'+description+'</p><div class="study-stats">'+stats.map(([n,label])=>'<span><strong>'+n+'</strong> '+label+'</span>').join('')+'</div></div><div class="study-art '+kind+'" aria-hidden="true"><span class="art-orbit"></span><span class="art-sheet sheet-back"></span><span class="art-sheet sheet-front">'+(kind==='card-art'?'Q.<i>think it through.</i>':'E.<i>ideas into understanding.</i>')+'</span><small>'+(kind==='card-art'?'A little recall. A lot of progress.':'Your Economics study collection')+'</small></div></section>';
@@ -267,6 +267,14 @@ function sources() {
   return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' original questions. Structured questions have been adapted from the supplied practice file to be answered without a separate case study. MCQs use the original answer keys. Structured questions include revised practice mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
 }
 function render() {
+  const [revisionPage, revisionId] = location.hash.slice(1).split('/');
+  if (Object.hasOwn(revisionRoutes, revisionPage)) {
+    main.classList.remove('practice-page', 'learning-page');
+    main.innerHTML = '<div class="wrap">' + revisionRoutes[revisionPage](revisionId) + '</div>';
+    document.querySelectorAll('.top nav a').forEach(a => a.removeAttribute('aria-current'));
+    revisionSetups[revisionPage]?.(revisionId);
+    return;
+  }
   const [page='home', id, mode] = location.hash.slice(1).split('/');
   main.classList.toggle('practice-page',page==='practice');
   main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
@@ -291,6 +299,4 @@ function render() {
   setupPractice();
 }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
-render();
-
-
+document.addEventListener('DOMContentLoaded', render, {once:true});
