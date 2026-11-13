@@ -155,7 +155,6 @@ function renderRevisionTool(page, id) {
 function revisionHub() {
   const groups = [
     ['Review the syllabus', [
-      ['✓', 'Syllabus checklist', 'Track your progress across all 36 topics and open related lessons.', '#revision-checklist'],
       ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics'],
       ['◇', 'Teach Jojo', 'Explain a concept in your own words and compare it with worked reasoning.', '#revision-teach']
     ]],

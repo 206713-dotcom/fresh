@@ -273,8 +273,9 @@ function render() {
   if (isRevision) {
     main.classList.remove('practice-page', 'learning-page');
     main.innerHTML = '<div class="wrap">' + renderRevisionTool(revisionPage, revisionId) + '</div>';
+    const activeRevisionNav = revisionPage === 'revision-checklist' ? '#revision-checklist' : '#revision';
     document.querySelectorAll('.top nav a').forEach(a => {
-      if (a.hash === '#revision') a.setAttribute('aria-current', 'page');
+      if (a.hash === activeRevisionNav) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
     revisionSetups[revisionPage]?.(revisionId);
