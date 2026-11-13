@@ -508,48 +508,170 @@ const officialSyllabusChapters = [
   topics: topics.map((title, topic) => ({code: (chapter + 1) + '.' + (topic + 1), title}))
 }));
 
+const checklistOutcomes = [
+  ["1.1.1","Finite resources and infinite wants                                                            • definition of the basic economic problem                             • the concept of scarcity                                                                           • examples of the basic economic problem in the context of:                                                                                                                      – consumers                                                                                      – workers                                                                                                                      – producers/firms                                                                                   – governments"],
+  ["1.1.2","Resource allocation decisions\nThe three basic economic questions which determine resource allocation:\n• what to produce\n• how to produce\n• who to produce for"],
+  ["1.1.3","Economic goods and free goods                                                  • the difference between economic goods and free goods"],
+  ["1.2.1","Factors of production and their rewards\n• definitions of factors of production: land, labour, capital and enterprise\n• rewards to factors of production: rent, wages, interest and profit"],
+  ["1.2.2","Quantity and quality of factors of production\n• causes of changes in the quantity and quality of factors of production"],
+  ["1.3.1","Opportunity cost\n• definition of opportunity cost\n• examples of opportunity cost in different contexts"],
+  ["1.3.2","The influence of opportunity cost on decision-making\n• decisions made by consumers, workers, producers/firms and governments when allocating their resources"],
+  ["1.4.1","Production possibility curves (PPC)\n• definition\n• drawing and interpretation of the PPC diagram"],
+  ["1.4.2","Points under, on and beyond a PPC\n• the significance of the location of different production points"],
+  ["1.4.3","Movements along a PPC\n• the significance of movements along a PPC and opportunity cost"],
+  ["1.4.4","Shifts of a PPC\n• causes and consequences of shifts of a PPC in terms of an economy’s growth"],
+  ["2.1.1","How markets work\n• definition of a market\n• examples of markets\n• roles of buyers and sellers"],
+  ["2.2.1","Individual and market demand\n• definition of demand\n• link between individual demand and market demand\n• drawing and interpretation of the demand diagram"],
+  ["2.2.2","Movements along a demand curve\n• causes of extensions and contractions in demand\n• diagrams that illustrate movements along a demand curve"],
+  ["2.2.3","Shifts of a demand curve\n• causes of decreases and increases in demand\n• diagrams that illustrate shifts of a demand curve"],
+  ["2.3.1","Individual and market supply\n• definition of supply\n• link between individual supply and market supply\n• drawing and interpretation of the supply diagram"],
+  ["2.3.2","Movements along a supply curve\n• causes of extensions and contractions in supply\n• diagrams that illustrate movements along a supply curve"],
+  ["2.3.3","Shifts of a supply curve\n• causes of decreases and increases in supply\n• diagrams that illustrate shifts of a supply curve"],
+  ["2.4.1","Price mechanism\n• how the price mechanism provides answers to the basic resource allocation decisions of what, how and for whom to produce"],
+  ["2.4.2","Market equilibrium\n• equilibrium price and equilibrium quantity in a market:\n– definition of market equilibrium\n– interpretation of equilibrium using demand and supply schedules\n– drawing and interpretation of equilibrium using demand and supply curves"],
+  ["2.4.3","Market disequilibrium\n• disequilibrium prices and quantities:\n– definition of market disequilibrium\n– interpretation of disequilibrium using demand and supply schedules\n– drawing and interpretation of disequilibrium using demand and supply curves\n• shortages (demand exceeding supply) and surpluses (supply exceeding demand)"],
+  ["2.5.1","Causes of price changes\n• how price changes are caused by changes in demand and supply"],
+  ["2.5.2","Consequences of price changes\n• effect of price changes on sales\n• use of demand and supply diagrams to illustrate the impact of changes in market conditions"],
+  ["2.6.1","Definition of PED"],
+  ["2.6.2","Calculation of PED\n• calculation of PED using the formula\n• interpretation of the significance of the PED value: perfectly inelastic, inelastic, unitary, elastic, perfectly elastic\n• drawing and interpretation of demand curve diagrams to show different PED"],
+  ["2.6.3","Determinants of PED\n• main influences on whether demand is elastic or inelastic"],
+  ["2.6.4","PED, consumer expenditure and firms’ revenue\n• effect of price changes on the amount spent by consumers and revenue raised by firms, shown both in a diagram and as a calculation\n• relationship between PED and the amount spent by consumers and revenue raised by firms"],
+  ["2.6.5","Significance of PED\n• implications of PED for decision-making by consumers, workers, producers/firms and government"],
+  ["2.7.1","Definition of PES"],
+  ["2.7.2","Calculation of PES\n• calculation of PES using the formula\n• interpretation of the significance of the PES value: perfectly inelastic, inelastic, unitary, elastic, perfectly elastic\n• drawing and interpretation of supply curve diagrams to show different PES"],
+  ["2.7.3","Determinants of PES\n• main influences on whether supply is elastic or inelastic"],
+  ["2.8.1","Definition of the market economic system"],
+  ["2.8.2","Arguments for and against the market economic system\n• advantages of the market economic system\n• disadvantages of the market economic system"],
+  ["2.9.1","Definition of market failure"],
+  ["2.9.2","Definitions of terms associated with market failure:\n• public goods, merit goods, demerit goods, private benefits, external benefits, social benefits,\nprivate costs, external costs, social costs, monopoly"],
+  ["2.9.3","Causes of market failure\n• causes relating to public goods, merit goods, demerit goods, external costs and external benefits, abuse of monopoly power"],
+  ["2.9.4","Consequences of market failure\n• implications of misallocation of resources in relation to:\n– the over-consumption of demerit goods and goods with external costs\n– the under-consumption of merit goods and goods with external benefits\n– the non-provision of public goods\n– restricted supply causing higher prices under a monopoly\nNote: demand and supply diagrams relating to market failure are not required."],
+  ["2.10.1","Definition of the mixed economic system"],
+  ["2.10.2","Arguments for and against the mixed economic system\n• advantages of the mixed economic system\n• disadvantages of the mixed economic system"],
+  ["2.10.3","Government intervention to address market failure\n• definitions, drawing and interpretation of diagrams, advantages and disadvantages of:\n– maximum and minimum prices in product markets\n– indirect taxation\n– subsidies\n• definitions, advantages and disadvantages of:\n– regulation\n– privatisation\n– nationalisation\n– direct provision of goods and services\n– quotas, e.g. for the extraction of natural resources"],
+  ["3.1.1","Money\n• forms, functions and characteristics of money"],
+  ["3.1.2","Banking\n• role and importance of central banks\n• role and importance of commercial banks"],
+  ["3.2.1","Influences on households’ spending, saving and borrowing\n• income\n• rate of interest\n• confidence\n• age\n• culture"],
+  ["3.3.1","Factors affecting an individual’s choice of occupation\n• wage and non-wage factors"],
+  ["3.3.2","Wage determination\n• influences of the demand for labour and the supply of labour\n• trade unions and their relative bargaining power\n• government policy, including national minimum wage (NMW)\n• drawing and interpretation of diagrams that illustrate the effects of:\n– changes in demand and supply in the labour market\n– national minimum wages"],
+  ["3.3.3","Reasons for differences in wages\n• reasons for differences:\n– demand for and supply of labour\n– relative bargaining strengths\n– discrimination, e.g. male/female\n– government policy\n• how these reasons influence the wages of workers, depending on:\n– level of skills of workers\n– economic sector workers operate in: primary/secondary/tertiary\n– discrimination between workers, e.g. male/female\n– whether the worker is working in the private sector or public sector"],
+  ["3.3.4","Mobility of labour\n• causes of changes in the occupational and geographical mobility of labour\n• consequences of changes in the occupational and geographical mobility of labour"],
+  ["3.3.5","Division of labour\n• definition of division of labour (worker specialisation)\n• advantages and disadvantages of division of labour"],
+  ["3.4.1","Different types of firms\n• primary/secondary/tertiary sector firms\n• private sector/public sector firms\n• advantages and disadvantages of small and large firms"],
+  ["3.4.2","Mergers\n• definitions, examples, advantages and disadvantages of different types of mergers: horizontal, vertical and conglomerate"],
+  ["3.4.3","Economies and diseconomies of scale\n• how internal and external economies and diseconomies of scale can affect a firm/industry as the scale of production changes\n• drawing and interpretation of average total cost (ATC) diagrams to illustrate economies and diseconomies of scale"],
+  ["3.5.1","Demand for factors of production\n• influences to include demand for the product, the price of different factors of production, their availability and their productivity"],
+  ["3.5.2","Labour-intensive and capital-intensive production\n• reasons for adopting the different forms of production\n• advantages and disadvantages of the different forms of production"],
+  ["3.5.3","Production and productivity\n• the difference between production and productivity\n• influences on production and productivity\n• effects of changes in investment on productivity"],
+  ["3.6.1","Definitions of costs of production\n• total cost (TC), average total cost (ATC), fixed cost (FC), average fixed cost (AFC), variable cost (VC), average variable cost (AVC)"],
+  ["3.6.2","Calculation of costs of production\n• calculation of TC, ATC, FC, AFC, VC and AVC\n• drawing and interpretation of diagrams that show how changes in output affect costs of production"],
+  ["3.6.3","Definition of revenue\n• definitions of total revenue (TR) and average revenue (AR)"],
+  ["3.6.4","Calculation of revenue\n• calculation of TR and AR\n• the influence of sales on revenue"],
+  ["3.6.5","Objectives of firms\n• survival, social welfare, profit maximisation and growth"],
+  ["3.7.1","Competitive markets\n• characteristics, advantages and disadvantages of competitive markets\n• effect of having a high number of firms on price, quality, choice, profit\nNote: diagrams / perfect or imperfect competition theory are not required."],
+  ["3.7.2","Monopoly markets\n• characteristics, advantages and disadvantages of monopoly markets\n• effect of having only one firm on price, quality, choice, profit\nNote: diagrams are not required."],
+  ["4.1.1","Macroeconomic aims\n• the macroeconomic aims of government:\n– economic growth\n– full employment/low unemployment\n– stable prices/low inflation\n– balance of payments stability\n– redistribution of income\n– environmental sustainability\n• reasons behind the choice of aims and the criteria that governments may set for meeting each aim\n• possible conflicts between macroeconomic aims:\n– full employment and stable prices\n– economic growth and environmental sustainability\n– full employment and balance of payments stability"],
+  ["4.2.1","Government budget\n• definitions of:\n– government budget\n– government budget deficit\n– government budget surplus\n• calculations of the size of a government budget deficit/surplus"],
+  ["4.2.2","Reasons for government spending\n• main areas of government spending and the reasons for and effects of spending in these areas"],
+  ["4.2.3","Taxation\n• reasons for taxation: raising revenue, discouraging consumption of demerit goods, reducing\nimports, redistributing income, influencing total demand, encouraging environmental sustainability\n• examples of the different classifications of tax: progressive, regressive, proportional; direct, indirect\n• impact of taxation on consumers, workers, producers/firms, the government and the economy"],
+  ["4.2.4","Definition of fiscal policy"],
+  ["4.2.5","Fiscal policy measures\n• changes in:\n– taxes\n– government spending"],
+  ["4.2.6","Effects of fiscal policy on government macroeconomic aims\n• how fiscal policy measures may enable a government to achieve its macroeconomic aims"],
+  ["4.3.1","Definitions of money supply and monetary policy"],
+  ["4.3.2","Monetary policy measures\n• changes in:\n– interest rate\n– money supply\n– foreign exchange rate"],
+  ["4.3.3","Effect of monetary policy on government macroeconomic aims\n• how monetary policy measures may enable a government to achieve its macroeconomic aims"],
+  ["4.4.1","Definition of supply-side policy"],
+  ["4.4.2","Supply-side policy measures\n• education and training\n• infrastructure spending\n• labour market reforms\n• lower direct taxes\n• deregulation\n• improving incentives to work and invest\n• privatisation"],
+  ["4.4.3","ffects of supply-side policy measures on government macroeconomic aims\n• how supply-side policy measures may enable a government to achieve its macroeconomic aims"],
+  ["4.5.1","Definition of economic growth"],
+  ["4.5.2","Measurement of economic growth\n• real Gross Domestic Product (GDP)"],
+  ["4.5.3","Causes and consequences of economic growth\n• how economic growth may be caused by an increase in total demand, an increase in the quantity of resources or an increase in the quality of resources\n• advantages and disadvantages of economic growth"],
+  ["4.5.4","Causes and consequences of recession\n• definition of recession\n• how a recession may be caused by a decrease in total demand, a decrease in the quantity of resources or a decrease in the quality of resources\n• consequences of recession for consumers, workers, producers/firms and the government"],
+  ["4.5.5","Policies to promote economic growth\n• the range of policies available to promote economic growth and their effectiveness"],
+  ["4.6.1","Definitions of employment, unemployment and full employment"],
+  ["4.6.2","Measurement of unemployment\n• how unemployment is measured (labour force survey)\n• formula for the unemployment rate"],
+  ["4.6.3","Causes/types of unemployment\n• frictional unemployment\n• structural unemployment\n• cyclical unemployment\n• seasonal unemployment"],
+  ["4.6.4","Consequences of unemployment\n• consequences of unemployment for the individual, producers/firms, the government and the economy"],
+  ["4.6.5","Policies to reduce unemployment\n• the range of policies available to reduce unemployment and their effectiveness"],
+  ["4.7.1","Definitions of inflation and deflation"],
+  ["4.7.2","Measurement of inflation\n• measurement of inflation using the Consumer Prices Index (CPI)"],
+  ["4.7.3","Causes of inflation\n• demand-pull\n• cost-push"],
+  ["4.7.4","Consequences of inflation\n• how inflation affects savers, lenders and borrowers\n• consequences of inflation for consumers, workers, producers/firms and the economy"],
+  ["4.7.5","Policies to control inflation\n• the range of policies available to control inflation and their effectiveness"],
+  ["5.1.1","Indicators of living standards\n• real Gross Domestic Product (GDP) per head\n• Human Development Index (HDI) and its components\n• advantages and disadvantages of real GDP per head and HDI as indicators"],
+  ["5.1.2","Comparing living standards and income distribution\n• reasons for differences in living standards and income distribution within and between countries"],
+  ["5.2.1","Definitions of absolute and relative poverty\n• difference between absolute poverty and relative poverty"],
+  ["5.2.2","Causes of poverty\n• unemployment\n• low wages\n• illness\n• age\n• environmental factors"],
+  ["5.2.3","Policies to alleviate poverty and redistribute income\n• promoting economic growth\n• improved education\n• improved healthcare provision\n• more generous state benefits\n• progressive taxation\n• national minimum wage (NMW)"],
+  ["5.3.1","Factors that affect population growth\n• definitions of:\n– birth rate\n– death rate\n– net migration, immigration and emigration\n• how birth rates, death rates and net migration can vary between countries\n• reasons why birth rates, death rates and net migration rates can vary between countries"],
+  ["5.3.2","The effects of changes in the size and structure of populations\n• the concept of an optimum population\n• the effects of increases and decreases in population size and changes in the age and gender distribution of population"],
+  ["5.4.1","Causes and consequences of international differences\n• differences in:\n– income\n– productivity\n– population growth\n– size of primary, secondary and tertiary sectors\n– saving and investment\n– education\n– healthcare\n– natural resources"],
+  ["6.1.1","Specialisation by country\n• definition of specialisation by country\n• the basis for specialisation by country in terms of the best resource allocation and/or low-cost production\n• advantages and disadvantages of specialisation"],
+  ["6.1.2","Free trade\n• definition of free trade\n• advantages and disadvantages of free trade"],
+  ["6.2.1","Definition of globalisation"],
+  ["6.2.2","Causes and consequences of changes in globalisation\n• causes of changes in globalisation:\n– changes in trade restrictions\n– changes in transport costs\n– changes in communication costs\n– movement of multinational companies (MNCs)\n• effects of changes in globalisation on:\n– international trade\n– competition\n– the environment\n– migration\n– income distribution\n– economic development"],
+  ["6.2.3"," Role of multinational companies (MNCs)\n• MNCs and their advantages and disadvantages to host countries and home countries"],
+  ["6.2.4","Types of trade restrictions / methods of protection\n• tariffs\n• import quotas\n• subsidies\n• embargoes"],
+  ["6.2.5","Reasons for trade restrictions\n• protect infant (sunrise) industries\n• protect declining (sunset) industries\n• protect strategic industries\n• avoid dumping\n• reduce a deficit on the current account of the balance of payments\n• raise tax revenue\n• restrict the import of demerit goods\n• promote environmental sustainability"],
+  ["6.2.6","Consequences of trade restrictions\n• impact of trade restrictions on the home country and its trading partners\n• advantages and disadvantages of restricting free trade"],
+  ["6.3.1","Definition of foreign exchange rate"],
+  ["6.3.2","Reasons for buying and selling foreign currencies\n• trade in goods and services\n• speculation\n• government intervention in currency markets\n• payment of profit, interest and dividends between countries\n• workers’ remittances\n• investment in capital goods between countries"],
+  ["6.3.3","Determination of foreign exchange rate in foreign exchange market\n• definitions of floating exchange rate, appreciation and depreciation\n• the demand for and supply of a currency\n• the determination of the equilibrium foreign exchange rate\n• causes of foreign exchange rate fluctuations\n– changes in demand for exports and imports\n– changes in the interest rate\n– speculation"],
+  ["6.3.4"," Consequences of changes in foreign exchange rates\n• effects of changes in foreign exchange rates on prices and demand for exports and imports"],
+  ["6.4.1","Structure of the current account of the balance of payments\n• components of the current account of the balance of payments:\n– trade in goods\n– trade in services\n– primary income\n– secondary income\n• calculation of deficits and surpluses on the current account of the balance of payments and its component sections "],
+  ["6.4.2","Causes of current account deficit and surplus\n• reasons for current account deficits and surpluses"],
+  ["6.4.3","Consequences of current account deficit and surplus\n• impact on GDP, employment, inflation and foreign exchange rate"],
+  ["6.4.4","Policies to achieve balance of payments stability\n• the range of policies available to achieve balance of payments stability and their effectiveness"]
+];
+const checklistColumns = ["Theory reviewed","Summary notes/flashcards completed","Past paper questions practised"];
+const checklistKey = 'checklist-0455-workbook';
+
 function revisionChecklist() {
-  const checked = new Set(revisionState('checklist-0455-2027', []));
-  const total = officialSyllabusChapters.reduce((sum, chapter) => sum + chapter.topics.length, 0);
-  const count = officialSyllabusChapters.flatMap(chapter => chapter.topics).filter(topic => checked.has(topic.code)).length;
+  const previous = new Set(revisionState('checklist-0455-2027', []));
+  const checked = new Set(revisionState(checklistKey, null) ??
+    checklistOutcomes.filter(([code]) => previous.has(code.split('.').slice(0, 2).join('.')))
+      .map(([code]) => code + ':0'));
+  const total = checklistOutcomes.length * checklistColumns.length;
+  const count = checklistOutcomes.reduce((sum, [code]) =>
+    sum + checklistColumns.filter((_, column) => checked.has(code + ':' + column)).length, 0);
   return revisionHeading('Cambridge IGCSE · 0455', 'Syllabus checklist',
-    'Tick off topics from the official 2027–2029 syllabus as you revise. Progress is saved in this browser.') +
+    'Track theory, summary notes or flashcards, and past-paper practice for each syllabus item. Progress is saved in this browser.') +
     '<section class="panel checklist-progress"><div><h2>Overall progress</h2><p id="checklist-count" role="status">' +
-    count + ' of ' + total + ' topics revised</p></div>' +
-    '<progress id="checklist-progress" aria-label="Topics revised" value="' + count + '" max="' + total + '"></progress>' +
+    count + ' of ' + total + ' tasks complete</p></div>' +
+    '<progress id="checklist-progress" aria-label="Checklist tasks complete" value="' + count + '" max="' + total + '"></progress>' +
     link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
-    '<div id="syllabus-checklist" class="revision-collection">' +
-    officialSyllabusChapters.map(chapter => {
-      const chapterTopics = chapter.topics;
-      const done = chapterTopics.filter(topic => checked.has(topic.code)).length;
-      return '<section class="panel checklist-chapter"><h2>' + escapeHtml(chapter.title) +
-        '</h2><p class="checklist-chapter-count">' + done + ' of ' + chapterTopics.length + ' revised</p><ul>' +
-        chapterTopics.map(topic => '<li><label><input type="checkbox" value="' + topic.code + '"' +
-          (checked.has(topic.code) ? ' checked' : '') + '><span><small>' + topic.code + '</small> ' +
-          escapeHtml(topic.title) + '</span></label><details><summary>Resources<span class="checklist-visually-hidden"> for ' +
-          escapeHtml(topic.title) + '</span></summary><div class="row">' +
+    '<div id="syllabus-checklist">' + officialSyllabusChapters.map(chapter =>
+      '<section class="panel checklist-chapter"><h2>' + escapeHtml(chapter.title) + '</h2>' +
+      chapter.topics.map(topic => {
+        const items = checklistOutcomes.filter(([code]) => code.startsWith(topic.code + '.'));
+        return '<details class="workbook-topic"><summary>' + topic.code + ' ' + escapeHtml(topic.title) + '</summary>' +
+          '<ul>' + items.map(([code, wording]) =>
+            '<li><div class="workbook-outcome"><strong>' + code + '</strong><div class="workbook-wording">' +
+            escapeHtml(wording.replace(/ {3,}(?=[•–])/g, '\n').trim()) +
+            '</div></div><div class="workbook-ticks" role="group" aria-label="Progress for ' + code + '">' +
+            checklistColumns.map((label, column) => {
+              const value = code + ':' + column;
+              return '<label><input type="checkbox" value="' + value + '"' +
+                (checked.has(value) ? ' checked' : '') + '><span>' + escapeHtml(label) + '</span></label>';
+            }).join('') + '</div></li>').join('') + '</ul><div class="row">' +
           link('Quick recap and check', '#revision-topics/' + topic.code) + revisionNotesLinks(topic.code) +
-          '</div></details></li>').join('') + '</ul></section>';
-    }).join('') + '</div>';
+          '</div></details>';
+      }).join('') + '</section>'
+    ).join('') + '</div>';
 }
 
 function setupRevisionChecklist() {
   const checklist = document.querySelector('#syllabus-checklist');
   if (!checklist) return;
   checklist.onchange = event => {
-    const checkbox = event.target;
-    if (!checkbox.matches('input[type="checkbox"]')) return;
+    if (!event.target.matches('input[type="checkbox"]')) return;
     const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
     document.querySelector('#revision-save-status').textContent = '';
-    saveRevisionState('checklist-0455-2027', checked);
+    saveRevisionState(checklistKey, checked);
     const progress = document.querySelector('#checklist-progress');
     progress.value = checked.length;
     document.querySelector('#checklist-count').textContent =
-      checked.length + ' of ' + progress.max + ' topics revised';
-    const chapter = checkbox.closest('.checklist-chapter');
-    chapter.querySelector('.checklist-chapter-count').textContent =
-      chapter.querySelectorAll('input:checked').length + ' of ' +
-      chapter.querySelectorAll('input[type="checkbox"]').length + ' revised';
+      checked.length + ' of ' + progress.max + ' tasks complete';
   };
 }
 

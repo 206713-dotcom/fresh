@@ -171,3 +171,10 @@ body:has(main.revision-page) footer { margin-left: 175px; }
   .checklist-progress { grid-template-columns: 1fr; }
   .revision-hub .revision-tool-group { grid-auto-rows: auto; }
 }
+
+.revision-workspace .checklist-chapter .workbook-topic { margin: 0; padding: 12px 0; border-top: 1px solid var(--line); }
+.workbook-topic > summary { font-size: 15px; font-weight: 700; }
+.workbook-outcome { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; }
+.workbook-wording { white-space: pre-line; overflow-wrap: anywhere; }
+.workbook-ticks { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 4px 60px; font-size: 13px; }
+@media (max-width: 510px) { .workbook-ticks { margin-left: 0; } }
