@@ -495,19 +495,32 @@ function setupRevisionRetry(id) {
   };
 }
 
+// Cambridge 0455, 2027–2029 syllabus, page 8.
+const officialSyllabusChapters = [
+  ["The basic economic problem", "The nature of the basic economic problem", "Factors of production", "Opportunity cost", "Production possibility curve (PPC) diagrams"],
+  ["The allocation of resources", "The role of markets in allocating resources", "Demand", "Supply", "Price determination", "Price changes", "Price elasticity of demand (PED)", "Price elasticity of supply (PES)", "Market economic system", "Market failure", "Mixed economic system"],
+  ["Microeconomic decision-makers", "Money and banking", "Households", "Workers", "Firms", "Firms and production", "Firms’ costs, revenue and objectives", "Types of markets"],
+  ["Government and the macroeconomy", "Government macroeconomic intervention", "Fiscal policy", "Monetary policy", "Supply-side policy", "Economic growth", "Employment and unemployment", "Inflation"],
+  ["Economic development", "Living standards", "Poverty", "Population", "Differences in economic development between countries"],
+  ["International trade and globalisation", "Specialisation and free trade", "Globalisation and trade restrictions", "Foreign exchange rates", "Current account of the balance of payments"]
+].map(([title, ...topics], chapter) => ({
+  title,
+  topics: topics.map((title, topic) => ({code: (chapter + 1) + '.' + (topic + 1), title}))
+}));
+
 function revisionChecklist() {
   const checked = new Set(revisionState('checklist-0455-2027', []));
-  const topics = revisionLab.topics;
-  const count = topics.filter(topic => checked.has(topic.code)).length;
+  const total = officialSyllabusChapters.reduce((sum, chapter) => sum + chapter.topics.length, 0);
+  const count = officialSyllabusChapters.flatMap(chapter => chapter.topics).filter(topic => checked.has(topic.code)).length;
   return revisionHeading('Cambridge IGCSE · 0455', 'Syllabus checklist',
-    'Tick each topic once you’ve revised it. Your progress is saved in this browser.') +
+    'Tick off topics from the official 2027–2029 syllabus as you revise. Progress is saved in this browser.') +
     '<section class="panel checklist-progress"><div><h2>Overall progress</h2><p id="checklist-count" role="status">' +
-    count + ' of ' + topics.length + ' topics revised</p></div>' +
-    '<progress id="checklist-progress" aria-label="Topics revised" value="' + count + '" max="' + topics.length + '"></progress>' +
+    count + ' of ' + total + ' topics revised</p></div>' +
+    '<progress id="checklist-progress" aria-label="Topics revised" value="' + count + '" max="' + total + '"></progress>' +
     link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
     '<div id="syllabus-checklist" class="revision-collection">' +
-    catalog.slice(0, 6).map((chapter, index) => {
-      const chapterTopics = topics.filter(topic => topic.code.startsWith((index + 1) + '.'));
+    officialSyllabusChapters.map(chapter => {
+      const chapterTopics = chapter.topics;
       const done = chapterTopics.filter(topic => checked.has(topic.code)).length;
       return '<section class="panel checklist-chapter"><h2>' + escapeHtml(chapter.title) +
         '</h2><p class="checklist-chapter-count">' + done + ' of ' + chapterTopics.length + ' revised</p><ul>' +
