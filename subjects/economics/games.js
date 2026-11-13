@@ -264,6 +264,10 @@ function changePage() {
   window.scrollTo(0,0);
 }
 function render() {
+  renderGameContent();
+  window.renderGameGui(activeGame);
+}
+function renderGameContent() {
   if (!activeGame) {
     root.innerHTML='<div class="hero"><h1>Economics Games</h1><p>Run an island, move markets and solve economic puzzles using fictional scenarios.</p></div><div class="grid">'+
       Object.entries(games).map(([slug,[name,icon,description,tag]])=>{
@@ -328,6 +332,9 @@ root.addEventListener('submit',event=>{
   }
   render();
   save(activeGame,state);
+  const destination = root.querySelector('.feedback') ?? root.querySelector('#game-turn legend');
+  destination?.setAttribute('tabindex','-1');
+  destination?.focus();
 });
 root.addEventListener('click',event=>{
   const action=event.target.closest('button')?.id;
@@ -356,8 +363,9 @@ root.addEventListener('click',event=>{
   }
   render();
   save(activeGame,state??savedSession);
-  root.querySelector('h1').setAttribute('tabindex','-1');
-  root.querySelector('h1').focus();
+  const nextFocus = root.querySelector('#game-continue') ?? root.querySelector('#game-turn legend') ?? root.querySelector('.game-scene h1');
+  nextFocus?.setAttribute('tabindex','-1');
+  nextFocus?.focus();
 });
 window.addEventListener('hashchange',changePage);
-changePage();
+document.addEventListener('DOMContentLoaded', changePage, {once:true});

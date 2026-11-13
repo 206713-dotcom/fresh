@@ -135,3 +135,24 @@ body[data-game="escape"] #game-turn details.clue{background:#f6ecfb;border:1px s
  .room-books span{font-size:29px}
 }
 @media(prefers-reduced-motion:reduce){.game-switcher a,#game-root article.card[data-game-card]{transition:none}}
+
+/* The artwork and the real controls share one game screen. */
+#game-root > .game-scene { display:block; }
+.game-scene > .actions { margin-bottom:12px; }
+.game-scene > .hero { margin:0 0 20px; padding:20px; }
+.scene-dashboard { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; align-items:center; }
+.scene-controls { margin-top:20px; color:#16323b; min-width:0; }
+.scene-controls > .panel { box-shadow:0 7px 20px #173b3910; }
+.scene-controls > .stats { margin:0 0 12px; }
+.scene-controls .feedback + .actions { margin-top:12px; }
+.scene-controls #game-turn fieldset { margin-inline:0; }
+.scene-controls #game-turn input[type=number] { display:block; margin-top:5px; }
+.scene-controls #storage-status:empty { display:none; }
+body[data-phase="playing"][data-game="market"] .market-visual { display:none; }
+body[data-phase="playing"][data-game="market"] .scene-dashboard { grid-template-columns:1fr; }
+@media(max-width:820px) { .scene-dashboard { grid-template-columns:1fr; gap:14px; } }
+@media(max-width:540px) {
+  .game-scene > .hero { padding:16px; }
+  .scene-controls > .panel { padding:12px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
