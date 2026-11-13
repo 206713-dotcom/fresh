@@ -430,3 +430,44 @@ body:has(main.learning-page) footer { margin-left: 175px }
 @media (prefers-reduced-motion: reduce) {
   .chapter-cover, .deck-cover, .deck-progress span { transition: none }
 }
+
+/* Economics revision navigation and hub */
+.top #revision-notes-index { display: block; margin: 0; }
+.notes-index summary { cursor: pointer; overflow-wrap: anywhere; }
+.notes-index > summary { font-size: 13px; font-weight: 750; color: #25463e; padding: 8px 0; }
+.notes-chapter { border-top: 1px solid var(--line); }
+.notes-chapter > summary { font-size: 12px; line-height: 1.4; font-weight: 650; padding: 9px 0; }
+.notes-group { margin: 6px 0 12px; padding-left: 9px; border-left: 2px solid #d1dbcb; }
+.notes-group p { margin: 0 0 2px; color: #495e52; font-size: 11px; font-weight: 750; }
+.top .notes-group a { display: block; padding: 6px 4px; border: 0; font-size: 11px; line-height: 1.4; }
+.top .notes-group a[aria-current] { color: #10483c; background: #dcebe0; border-radius: 4px; }
+.revision-hero { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 18px; padding: clamp(24px, 5vw, 62px); border-radius: 24px; background: linear-gradient(115deg, #142f40, #214f51); color: #f9f8ee; }
+.revision-hero .eyebrow { color: #b1e5cf; }
+.revision-hero h1 { margin: 8px 0 12px; font: 400 clamp(36px, 6vw, 74px)/1 Georgia, serif; letter-spacing: -.045em; }
+.revision-hero p:last-child { max-width: 45ch; margin: 0; color: #e2eee8; }
+.revision-edition { border: 1px solid #7aa89d; border-radius: 24px; padding: 7px 12px; color: #e0f4ea; font-size: 12px; }
+.revision-tool-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); margin-top: 32px; }
+.revision-tool-group { display: grid; grid-template-rows: auto 1fr 1fr; gap: 14px; --card-accent: #dcefe4; }
+.revision-tool-group:nth-child(2) { --card-accent: #e4ebf5; }
+.revision-tool-group:nth-child(3) { --card-accent: #f2e7d4; }
+.revision-tool-group h2 { margin: 0; font: 400 24px/1.2 Georgia, serif; }
+.revision-tool-card { display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; min-height: 182px; padding: 19px; border: 1px solid #d9dfd3; border-radius: 16px; background: #fffdf7; text-decoration: none; }
+.revision-tool-card:hover { border-color: #658a78; box-shadow: 0 8px 22px #25453612; }
+.revision-tool-card h3, .revision-tool-card p { margin: 0; }
+.revision-tool-card h3 { font: 400 22px/1.18 Georgia, serif; }
+.revision-tool-card p { color: var(--muted); font-size: 13px; }
+.revision-tool-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--card-accent); color: #173e3e; font-size: 21px; }
+.revision-tool-arrow { justify-self: end; color: #1c6755; font-size: 19px; }
+@media (max-width: 900px) {
+  .revision-tool-groups { grid-template-columns: 1fr; }
+  .revision-tool-group { grid-template: auto 1fr / repeat(2, minmax(0, 1fr)); }
+  .revision-tool-group h2 { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .top #revision-notes-index { width: 100%; }
+  .notes-index { max-height: 48vh; overflow: auto; }
+}
+@media (max-width: 440px) {
+  .revision-tool-group { grid-template: auto / 1fr; }
+  .revision-tool-card { min-height: auto; }
+}
