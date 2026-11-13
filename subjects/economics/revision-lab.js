@@ -135,19 +135,54 @@ function revisionNotesLinks(code) {
     .map(lesson => link(lesson.title, '#lesson/' + lesson.id)).join('');
 }
 
+function buildRevisionNotesIndex() {
+  const index = document.querySelector('#revision-notes-index');
+  if (!index) return;
+  index.innerHTML = '<details class="notes-index"><summary>Revision notes</summary>' +
+    catalog.map((chapter, position) => '<details class="notes-chapter" data-notes-chapter="' + position +
+      '"><summary>' + escapeHtml(chapter.title) + '</summary>' +
+      chapter.groups.map(group => '<div class="notes-group"><p>' + escapeHtml(group.title) + '</p>' +
+        group.lessons.map(lesson => link(lesson.title, '#lesson/' + lesson.id, 'notes-index-link')).join('') +
+        '</div>').join('') + '</details>').join('') + '</details>';
+}
+
+function updateRevisionNotesIndex() {
+  const index = document.querySelector('#revision-notes-index');
+  if (!index) return;
+  index.querySelector('[aria-current]')?.removeAttribute('aria-current');
+  const [page, id, mode] = location.hash.slice(1).split('/');
+  if (page !== 'lesson' || mode === 'cards') return;
+  const lesson = lessons.find(item => item.id === Number(id));
+  if (!lesson) return;
+  index.querySelector('.notes-index').open = true;
+  const chapter = index.querySelector('[data-notes-chapter="' + lesson.chapter + '"]');
+  chapter.open = true;
+  chapter.querySelector('a[href="#lesson/' + lesson.id + '"]').setAttribute('aria-current', 'page');
+}
+
 function revisionHub() {
-  const tools = [
-    ['Cheatsheets and interactive checks', 'Review a topic, make a prediction and check the reasoning.', '#revision-topics'],
-    ['Test builder and original mocks', 'Build a quiz from the practice bank or sit a timed mock.', '#revision-test'],
-    ['Mistakes log', 'Retry questions missed in topic checks and submitted tests.', '#revision-mistakes'],
-    ['Past papers and specimen materials', 'Open Cambridge papers, mark schemes and the 2027 specifications.', '#revision-papers'],
-    ['Written-answer review', 'Compare your answer with a question-specific mark scheme.', '#revision-writing'],
-    ['Teach Jojo', 'Explain a concept and compare it with a worked reasoning check.', '#revision-teach']
+  const groups = [
+    ['Review the syllabus', [
+      ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics'],
+      ['◇', 'Teach Jojo', 'Explain a concept in your own words and compare it with worked reasoning.', '#revision-teach']
+    ]],
+    ['Practise for the exam', [
+      ['◷', 'Test builder and original mocks', 'Build a custom quiz or sit a timed 2027-style paper.', '#revision-test'],
+      ['↗', 'Past papers and specimen materials', 'Find Cambridge’s specimen papers, mark schemes and past-paper directory.', '#revision-papers']
+    ]],
+    ['Improve your answers', [
+      ['↺', 'Mistakes log', 'Retry questions you missed in topic checks and submitted tests.', '#revision-mistakes'],
+      ['✎', 'Written-answer review', 'Compare your response with a mark scheme and save your revisions.', '#revision-writing']
+    ]]
   ];
-  return heading('Economics 0455', 'Revision tools', 'Cambridge IGCSE Economics · Exams from 2027') +
-    '<div class="study-tools">' + tools.map(([title, description, href]) =>
-      '<a class="study-tool" href="' + href + '"><strong>' + escapeHtml(title) + '</strong><span class="muted">' +
-      escapeHtml(description) + '</span></a>').join('') + '</div>';
+  return '<div class="revision-hub"><header class="revision-hero"><div><p class="eyebrow">Cambridge IGCSE · 0455</p>' +
+    '<h1>Revision Tools</h1><p>Review the six syllabus chapters, practise under exam conditions and revisit questions you missed.</p>' +
+    '</div><span class="revision-edition">2027–2029 syllabus</span></header><div class="revision-tool-groups">' +
+    groups.map(([title, tools]) => '<section class="revision-tool-group"><h2>' + escapeHtml(title) + '</h2>' +
+      tools.map(([symbol, name, description, href]) => '<a class="revision-tool-card" href="' + href + '">' +
+        '<span class="revision-tool-icon" aria-hidden="true">' + symbol + '</span><h3>' + escapeHtml(name) + '</h3>' +
+        '<p>' + escapeHtml(description) + '</p><span class="revision-tool-arrow" aria-hidden="true">→</span></a>').join('') +
+      '</section>').join('') + '</div></div>';
 }
 
 function revisionTopics(code) {
