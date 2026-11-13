@@ -1,0 +1,137 @@
+/* Economics Arcade: five distinctive game GUIs. Scoped to the games page. */
+:root{--arcade-navy:#102d3b;--arcade-mint:#b8f3d7}
+html{scroll-behavior:smooth}
+body[data-game]{background:#f4f8f5}
+.game-switcher{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 23px}
+.game-switcher a{display:grid;align-content:center;justify-items:start;gap:5px;min-height:85px;padding:12px 14px;text-decoration:none;background:#fff;border:1px solid #d4e5dd;border-radius:14px;color:#24434b;transition:transform .18s,border-color .18s,background .18s}
+.game-switcher a:hover{transform:translateY(-2px);border-color:#48b69b}
+.game-switcher a[aria-current=page]{background:#dcf9e9;border-color:#30a98b;box-shadow:0 4px 14px #154e3720}
+.game-switcher a span{font-size:20px;line-height:1.2}
+.game-switcher a strong{font-size:12px;line-height:1.4}
+#game-root .hero{margin-top:0}
+.game-scene{display:grid;grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);align-items:center;gap:20px;min-height:290px;margin:0 0 20px;padding:23px;border-radius:22px;overflow:hidden;position:relative}
+.game-scene h2{font:700 clamp(23px,3vw,34px)/1.16 Georgia,serif;letter-spacing:-.03em;margin:9px 0 10px}
+.game-scene p{max-width:57ch;margin:0 0 14px;line-height:1.6}
+.scene-copy{position:relative;z-index:1;min-width:0}
+.scene-eyebrow{font-size:10px;letter-spacing:.17em;font-weight:900;line-height:1.4}
+.scene-mini-stats{display:flex;gap:9px;flex-wrap:wrap}
+.scene-mini-stats>span{display:grid;gap:3px;padding:9px 12px;border-radius:10px;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.scene-mini-stats strong{font-size:14px;letter-spacing:0}
+.game-scene .live-dot{display:inline-block;width:8px;height:8px;border-radius:100%;background:#8dffd9;box-shadow:0 0 0 4px #8dffd927;margin-right:9px}
+body[data-game="hub"] #game-root>.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr))}
+#game-root article.card[data-game-card]{position:relative;overflow:hidden;min-height:295px;box-shadow:0 10px 25px #153a3010;transition:transform .18s,box-shadow .18s}
+#game-root article.card[data-game-card]:hover{transform:translateY(-4px);box-shadow:0 16px 34px #153a3023}
+#game-root article.card[data-game-card]::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--accent,#5aa78a)}
+#game-root article.card[data-game-card="island"]{--accent:#46ac76;background:#f8fff8}
+#game-root article.card[data-game-card="market"]{--accent:#62bfea;background:#edf6fc}
+#game-root article.card[data-game-card="policy"]{--accent:#d5a24a;background:#fffaf1}
+#game-root article.card[data-game-card="trade"]{--accent:#29a9b2;background:#f2ffff}
+#game-root article.card[data-game-card="escape"]{--accent:#ae8dca;background:#faf5ff}
+#game-root .card-kicker{font-size:10px;font-weight:900;letter-spacing:.13em;color:#46766e;margin-bottom:8px}
+#game-root article.card .symbol{width:56px;height:56px;font-size:29px}
+body[data-game="island"] .hero{background:linear-gradient(115deg,#154f42,#267c61)}
+body[data-game="island"] .game-scene{background:linear-gradient(130deg,#e4f9e8,#d3f4e5);color:#184638;border:1px solid #b8dfcb}
+body[data-game="island"] .scene-eyebrow{color:#278660}
+body[data-game="island"] .scene-mini-stats>span{background:#f9fff9;border:1px solid #bce2c9}
+.island-sea{height:254px;position:relative;overflow:hidden;border-radius:19px;background:radial-gradient(ellipse at 45% 36%,#72d9cd,#33a9b0);border:2px solid #a3e2d8;box-shadow:inset 0 0 45px #0c77952d}
+.island-sea:before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(ellipse at 30% 50%,transparent 0 24px,#ddfffd2a 26px 28px,transparent 30px 56px)}
+.island-land{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;place-items:center;width:min(75%,320px);margin:26px auto 0;padding:25px 28px;background:#c4e6a3;border:9px solid #fff1ae;border-radius:43% 53% 46% 42% / 40% 43% 52% 48%;transform:rotate(-5deg);box-shadow:10px 15px 0 #206e5c24}
+.island-land span{display:grid;place-items:center;width:100%;min-height:36px;border-radius:8px;background:#a1d18a;font-size:22px;transform:rotate(5deg)}
+.island-watermark{position:absolute;bottom:10px;right:12px;color:#eefffc;font-weight:900;letter-spacing:.17em;font-size:9px}
+body[data-game="island"] #game-turn fieldset{border-color:#9fcfb4}
+body[data-game="island"] #game-turn .primary{background:#147554;border-color:#147554}
+body[data-game="market"]{background:#eff5f8}
+body[data-game="market"] .hero{background:linear-gradient(115deg,#0b2039,#143f63)}
+body[data-game="market"] .game-scene{background:radial-gradient(ellipse at 80% 5%,#174b71,#091d34 70%);color:#eafaff;border:1px solid #285579}
+body[data-game="market"] .scene-eyebrow{color:#7dd3e7}
+body[data-game="market"] .scene-copy>p{color:#a9d0dd}
+body[data-game="market"] .scene-mini-stats>span{background:#173f59;border:1px solid #326b82;color:#9dc8d8}
+body[data-game="market"] .scene-mini-stats strong{color:#b2f4dc}
+.market-visual{background:#0b2942;border:1px solid #376380;border-radius:15px;padding:10px;box-shadow:inset 0 0 24px #082033}
+.market-visual svg{display:block;width:100%;height:185px}
+.terminal-top,.terminal-caption{font-size:10px;color:#8fd9e0;letter-spacing:.13em;font-weight:900;display:flex;align-items:center;gap:7px}
+.terminal-top>span:last-child{margin-left:auto;color:#a7f8d5}
+.terminal-caption{border-top:1px solid #315774;padding-top:7px}
+body[data-game="market"] #game-root>.panel,body[data-game="market"] #game-root>.stats+section.panel{border-color:#b2cedb}
+body[data-game="market"] #game-turn .primary{background:#174e69;border-color:#174e69}
+body[data-game="policy"] .hero{background:linear-gradient(115deg,#55482d,#8d7647)}
+body[data-game="policy"] .game-scene{background:linear-gradient(120deg,#fffaf0,#f6edd9);color:#453923;border:1px solid #eadab8}
+body[data-game="policy"] .scene-eyebrow{color:#9f782d}
+.policy-dials{display:flex;gap:8px;flex-wrap:wrap}
+.policy-dials>div{flex:1 1 100px;min-width:95px;padding:10px 12px;background:#fffdf8;border:1px solid #eaddc3;border-radius:11px}
+.policy-dials span{display:block;color:#9a8256;font-size:11px;font-weight:800}
+.policy-dials strong{display:block;font-size:22px;margin:3px 0;color:#4c442e}
+.policy-dials i{display:block;height:4px;width:80%;background:#d7b66b;border-radius:20px}
+.policy-dials>div:nth-child(2) i{width:55%;background:#bb996f}
+.policy-dials>div:nth-child(3) i{width:40%;background:#8ab38f}
+.policy-visual{min-height:230px;display:grid;place-items:center;position:relative;background:repeating-linear-gradient(115deg,#9878580b 0 3px,transparent 3px 27px);border-radius:16px}
+.briefing-paper{position:relative;background:#fffdfa;border:1px solid #dac99e;box-shadow:6px 9px 0 #a080542d;width:min(83%,320px);height:187px;transform:rotate(-4deg);padding:19px 22px}
+.briefing-paper>span{font:700 15px Georgia,serif;color:#57462d}
+.briefing-stamp{margin-top:14px;width:max-content;padding:5px 8px;border:2px solid #bc806d;transform:rotate(-7deg);color:#b07460;font-weight:900;font-size:12px;letter-spacing:.1em}
+.briefing-lines{height:45px;margin-top:15px;background:repeating-linear-gradient(0deg,transparent 0 10px,#d7d0bf 10px 11px)}
+.briefing-seal{position:absolute;right:22px;bottom:17px;font-size:25px;color:#ae8b58}
+.desk-pen{position:absolute;font-size:60px;right:10%;bottom:0;color:#685234;transform:rotate(-25deg)}
+body[data-game="policy"] #game-turn .primary{background:#615036;border-color:#615036}
+body[data-game="trade"] .hero{background:linear-gradient(115deg,#125568,#178b8d)}
+body[data-game="trade"] .game-scene{background:linear-gradient(140deg,#d8f8f3,#e2f8ec);color:#164d57;border:1px solid #b4dcd5}
+body[data-game="trade"] .scene-eyebrow{color:#268b88}
+body[data-game="trade"] .scene-mini-stats>span{background:#f3fffa;border:1px solid #b4dfd6}
+.trade-map{position:relative;border-radius:18px;background:linear-gradient(#2f9eb1,#18758e);border:2px solid #8cdbd7;padding:10px 10px 6px}
+.trade-map svg{display:block;width:100%;height:210px}
+.map-strip{font-size:9px;letter-spacing:.06em;font-weight:900;display:flex;justify-content:space-between;gap:8px;color:#e0ffff}
+.map-strip span{color:#b1e8e6}
+body[data-game="trade"] #game-turn .primary{background:#0b7582;border-color:#0b7582}
+body[data-game="escape"]{background:#f7f3f9}
+body[data-game="escape"] .hero{background:linear-gradient(115deg,#30213d,#604c71)}
+body[data-game="escape"] .game-scene{background:radial-gradient(ellipse at 60% 35%,#42314e,#1e192b);color:#fbf1e4;border:1px solid #564365}
+body[data-game="escape"] .scene-eyebrow{color:#cba7ec}
+body[data-game="escape"] .scene-copy>p{color:#e0cdde}
+body[data-game="escape"] .scene-mini-stats>span{background:#47384f;border:1px solid #735b79;color:#e6d9ed}
+.escape-hotspots{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.escape-hotspots button{background:#4d3e59;color:#f1e5fe;border:1px solid #9e7fb0;padding:8px 10px;font-size:11px;min-height:36px}
+.escape-hotspots button:hover{background:#635070}
+.escape-room-art{position:relative;height:240px;overflow:hidden;border-radius:17px;background:linear-gradient(110deg,#33283d,#5c4250);border:7px solid #765b61;box-shadow:inset 0 0 40px #170e24}
+.escape-room-art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 49px,#1f182c41 50px 52px)}
+.room-lantern{position:absolute;top:10px;left:22px;color:#ffe7ad;font-size:42px;text-shadow:0 0 22px #ffe29a;z-index:2}
+.room-books{position:absolute;left:6%;top:90px;width:36%;height:90px;border-bottom:12px solid #684b40;color:#b38a60;font-size:38px;display:flex;align-items:center;justify-content:space-between}
+.room-books span{font-size:39px}
+.room-door{position:absolute;right:18%;top:20px;bottom:15px;width:27%;background:linear-gradient(90deg,#392c32,#6c4f4b);border:9px ridge #a48568;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;box-shadow:0 0 0 7px #211b2d}
+.room-door span{color:#ffdb89;font-size:27px}
+.room-door strong{font-size:11px;letter-spacing:.15em;color:#e8d1a7}
+.room-floor{position:absolute;bottom:0;width:100%;height:11px;background:#8a6b64}
+body[data-game="escape"] #game-turn .primary{background:#58436e;border-color:#58436e}
+body[data-game="escape"] #game-turn details.clue{background:#f6ecfb;border:1px solid #ded0e8;cursor:pointer}
+#game-root #game-turn .board{border-radius:15px}
+#game-root #game-turn .stats{gap:8px}
+#game-root #game-turn .stats span{border:1px solid #c8dfd3}
+#game-root #game-turn fieldset{padding:17px;border-radius:14px}
+#game-root #game-turn label{font-weight:650;color:#33515a}
+#game-root #game-turn select{max-width:100%;width:min(100%,410px);display:block;margin-top:5px}
+#game-root #game-turn input[type=range]{display:block;margin-top:6px}
+#game-root .feedback{border-left:4px solid #28795b;padding:14px}
+#game-root .hero{border-radius:20px}
+#game-root .hero h1{font-size:clamp(31px,4vw,50px)}
+#game-root>.panel{box-shadow:0 7px 20px #173b3910}
+@media(max-width:820px){
+ .game-switcher{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .game-scene{grid-template-columns:1fr;gap:14px}
+ .island-sea,.market-visual,.trade-map,.escape-room-art{max-width:100%}
+}
+@media(max-width:540px){
+ .game-switcher{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .game-switcher a{min-height:70px;padding:9px}
+ .game-switcher a strong{font-size:11px}
+ .game-scene{padding:16px;border-radius:16px}
+ .game-scene h2{font-size:24px}
+ .island-sea{height:226px}
+ .island-land{margin-top:23px;padding:15px}
+ .island-land span{min-height:31px;font-size:20px}
+ .market-visual svg{height:140px}
+ .policy-visual{min-height:190px}
+ .briefing-paper{height:160px;padding:12px}
+ .trade-map svg{height:170px}
+ .escape-room-art{height:210px}
+ .room-books{font-size:24px}
+ .room-books span{font-size:29px}
+}
+@media(prefers-reduced-motion:reduce){.game-switcher a,#game-root article.card[data-game-card]{transition:none}}
