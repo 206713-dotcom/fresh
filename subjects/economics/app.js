@@ -267,11 +267,12 @@ function sources() {
   return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' original questions. Structured questions have been adapted from the supplied practice file to be answered without a separate case study. MCQs use the original answer keys. Structured questions include revised practice mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
 }
 function render() {
-  updateRevisionNotesIndex();
   const [revisionPage, revisionId] = location.hash.slice(1).split('/');
-  if (Object.hasOwn(revisionRoutes, revisionPage)) {
+  const isRevision = Object.hasOwn(revisionRoutes, revisionPage);
+  main.classList.toggle('revision-page', isRevision);
+  if (isRevision) {
     main.classList.remove('practice-page', 'learning-page');
-    main.innerHTML = '<div class="wrap">' + revisionRoutes[revisionPage](revisionId) + '</div>';
+    main.innerHTML = '<div class="wrap">' + renderRevisionTool(revisionPage, revisionId) + '</div>';
     document.querySelectorAll('.top nav a').forEach(a => {
       if (a.hash === '#revision') a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
@@ -304,6 +305,5 @@ function render() {
 }
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
 document.addEventListener('DOMContentLoaded', () => {
-  buildRevisionNotesIndex();
   render();
 }, {once:true});

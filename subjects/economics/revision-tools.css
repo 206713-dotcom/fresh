@@ -1,0 +1,154 @@
+/* Layout shared by Economics revision tools and their activity screens. */
+main.revision-page {
+  display: block;
+  margin-left: 175px;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  font-size: 15px;
+}
+body:has(main.revision-page) footer { margin-left: 175px; }
+.revision-workspace {
+  --tool-accent: #23665a;
+  --tool-soft: #e3f0e7;
+  --tool-dark: #153d39;
+  min-width: 0;
+}
+.revision-workspace[data-tool="revision-test"],
+.revision-workspace[data-tool="revision-papers"] {
+  --tool-accent: #315e82;
+  --tool-soft: #e5eef6;
+  --tool-dark: #183754;
+}
+.revision-workspace[data-tool="revision-mistakes"],
+.revision-workspace[data-tool="revision-retry"],
+.revision-workspace[data-tool="revision-writing"] {
+  --tool-accent: #825432;
+  --tool-soft: #f4eadb;
+  --tool-dark: #543923;
+}
+.revision-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.revision-back { color: var(--tool-dark); font-size: 13px; font-weight: 700; text-underline-offset: 4px; }
+.revision-workspace-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: var(--tool-dark);
+  background: var(--tool-soft);
+  font-size: 24px;
+}
+.revision-heading {
+  padding: clamp(22px, 4vw, 44px);
+  margin: 12px 0 24px;
+  border-radius: 20px;
+  background: linear-gradient(115deg, #142f40, var(--tool-dark));
+  color: #fcfaf2;
+}
+.revision-heading .eyebrow { color: #c9e5df; }
+.revision-heading h1 {
+  margin: 8px 0 10px;
+  font: 400 clamp(34px, 5vw, 62px)/1.04 Georgia, serif;
+  letter-spacing: -.035em;
+}
+.revision-heading p { max-width: 70ch; margin: 0; line-height: 1.55; }
+.revision-columns, .revision-collection {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.revision-columns { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+.revision-writing-columns { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.revision-workspace .panel, .revision-workspace .group {
+  min-width: 0;
+  margin: 0 0 18px;
+  padding: clamp(16px, 2.8vw, 28px);
+  border: 1px solid #d9dfd4;
+  border-radius: 17px;
+  background: #fffdf7;
+  box-shadow: 0 6px 20px #183d3910;
+}
+.revision-columns > .panel, .revision-collection > .panel, .revision-collection > .group { margin: 0; }
+.revision-workspace .group h2, .revision-workspace .panel h2 {
+  margin: 0 0 12px;
+  font: 400 clamp(22px, 2.2vw, 28px)/1.22 Georgia, serif;
+}
+.revision-workspace .panel p { line-height: 1.6; }
+.revision-workspace .group a, .revision-resource a, .revision-queue li a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--tool-soft);
+  color: var(--tool-dark);
+  text-decoration: none;
+}
+.revision-workspace .group a + a, .revision-queue li + li { margin-top: 8px; }
+.revision-workspace .group a:hover, .revision-resource a:hover, .revision-queue a:hover { text-decoration: underline; }
+.revision-workspace ul { padding-left: 21px; }
+.revision-queue ul, .revision-resource ul { list-style: none; padding: 0; }
+.revision-workspace .revision-resource { margin-top: 18px; }
+.revision-resource li + li { margin-top: 8px; }
+.revision-workspace .revision-recap { background: var(--tool-soft); }
+.revision-workspace .choice {
+  border: 1px solid #d8e1d7;
+  border-radius: 10px;
+  margin: 10px 0;
+  background: #fffefa;
+}
+.revision-workspace .choice:has(input:checked) { border-color: var(--tool-accent); background: var(--tool-soft); }
+.revision-workspace input { accent-color: var(--tool-accent); }
+.revision-workspace :is(textarea, select, input[type="number"]) {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #a9b7af;
+  border-radius: 9px;
+  background: #fffefa;
+  color: var(--ink);
+}
+.revision-workspace textarea { min-height: 140px; resize: vertical; }
+.revision-workspace .field { display: grid; gap: 6px; }
+.revision-workspace .primary { margin-top: 12px; background: var(--tool-dark); border-color: var(--tool-dark); }
+.revision-workspace :focus-visible { outline: 3px solid var(--tool-accent); outline-offset: 3px; }
+.revision-workspace .feedback, .revision-workspace .mark-scheme {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--tool-soft);
+  color: var(--tool-dark);
+}
+.revision-workspace .feedback a { overflow-wrap: anywhere; }
+.revision-workspace .panel details { padding: 10px 0; border-top: 1px solid var(--line); }
+.revision-workspace .panel summary { cursor: pointer; }
+.revision-empty { padding: 18px; text-align: center; }
+.revision-spec { color: var(--tool-dark); font-weight: 700; }
+.revision-mock-options { display: grid; gap: 10px; }
+.revision-mock-options button {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-align: left;
+  background: var(--tool-soft);
+  color: var(--tool-dark);
+}
+#revision-test-builder .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
+#revision-attempt fieldset { min-width: 0; border: 1px solid #b8c9c2; border-radius: 10px; }
+#revision-attempt > button + button { margin-left: 8px; }
+#revision-clock { position: sticky; top: 12px; z-index: 1; width: fit-content; margin: 0 0 16px auto; padding: 10px 14px; border-radius: 9px; background: var(--tool-dark); color: #fff; font-variant-numeric: tabular-nums; }
+#revision-save-status:empty { display: none; }
+@media (max-width: 850px) {
+  .revision-columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  main.revision-page, body:has(main.revision-page) footer { margin-left: 0; }
+}
+@media (max-width: 510px) {
+  .revision-collection, #revision-test-builder .row { grid-template-columns: 1fr; }
+}

@@ -135,29 +135,21 @@ function revisionNotesLinks(code) {
     .map(lesson => link(lesson.title, '#lesson/' + lesson.id)).join('');
 }
 
-function buildRevisionNotesIndex() {
-  const index = document.querySelector('#revision-notes-index');
-  if (!index) return;
-  index.innerHTML = '<details class="notes-index"><summary>Revision notes</summary>' +
-    catalog.map((chapter, position) => '<details class="notes-chapter" data-notes-chapter="' + position +
-      '"><summary>' + escapeHtml(chapter.title) + '</summary>' +
-      chapter.groups.map(group => '<div class="notes-group"><p>' + escapeHtml(group.title) + '</p>' +
-        group.lessons.map(lesson => link(lesson.title, '#lesson/' + lesson.id, 'notes-index-link')).join('') +
-        '</div>').join('') + '</details>').join('') + '</details>';
+function revisionHeading(label, title, description) {
+  return '<header class="revision-heading"><p class="eyebrow">' + label + '</p><h1>' + title +
+    '</h1><p>' + description + '</p></header>';
 }
 
-function updateRevisionNotesIndex() {
-  const index = document.querySelector('#revision-notes-index');
-  if (!index) return;
-  index.querySelector('[aria-current]')?.removeAttribute('aria-current');
-  const [page, id, mode] = location.hash.slice(1).split('/');
-  if (page !== 'lesson' || mode === 'cards') return;
-  const lesson = lessons.find(item => item.id === Number(id));
-  if (!lesson) return;
-  index.querySelector('.notes-index').open = true;
-  const chapter = index.querySelector('[data-notes-chapter="' + lesson.chapter + '"]');
-  chapter.open = true;
-  chapter.querySelector('a[href="#lesson/' + lesson.id + '"]').setAttribute('aria-current', 'page');
+function renderRevisionTool(page, id) {
+  if (page === 'revision') return revisionHub();
+  const icons = {
+    'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
+    'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎', 'revision-teach': '◇'
+  };
+  return '<div class="revision-workspace" data-tool="' + page + '">' +
+    '<div class="revision-toolbar">' + link('← Revision Tools', '#revision', 'revision-back') +
+    '<span class="revision-workspace-icon" aria-hidden="true">' + icons[page] + '</span></div>' +
+    revisionRoutes[page](id) + '</div>';
 }
 
 function revisionHub() {
@@ -188,19 +180,19 @@ function revisionHub() {
 function revisionTopics(code) {
   const topic = revisionLab.topics.find(item => item.code === code);
   if (!topic) {
-    return heading('Quick revision', 'Cheatsheets and interactive checks', 'Pick a topic to review and try an application question.') +
-      catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
+    return revisionHeading('Quick revision', 'Cheatsheets and interactive checks', 'Pick a topic to review and try an application question.') +
+      '<div class="revision-collection">' + catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
         revisionLab.topics.filter(item => item.code.startsWith(index + 1 + '.')).map(item =>
-          link(item.code + ' · ' + item.title, '#revision-topics/' + item.code, 'coverage-link')).join('') + '</section>').join('');
+          link(item.code + ' · ' + item.title, '#revision-topics/' + item.code, 'coverage-link')).join('') + '</section>').join('') + '</div>';
   }
   const complete = revisionState('topics', {})[code] === true;
   return link('← All topics', '#revision-topics', 'text-link') +
-    heading('Syllabus topic ' + topic.code, escapeHtml(topic.title), complete ? 'Application check completed' : 'Cheatsheet and application check') +
-    '<article class="panel"><h2>Quick recap</h2><p>' + escapeHtml(topic.summary) + '</p><div class="row">' + revisionNotesLinks(code) + '</div></article>' +
+    revisionHeading('Syllabus topic ' + topic.code, escapeHtml(topic.title), complete ? 'Application check completed' : 'Cheatsheet and application check') +
+    '<div class="revision-columns"><article class="panel revision-recap"><h2>Quick recap</h2><p>' + escapeHtml(topic.summary) + '</p><div class="row">' + revisionNotesLinks(code) + '</div></article>' +
     '<form id="revision-topic-form" class="panel"><h2>' + escapeHtml(topic.prompt) + '</h2>' +
     topic.options.map(([option], index) => '<label class="choice"><input required type="radio" name="answer" value="' + index + '"> ' +
       escapeHtml(option) + '</label>').join('') +
-    '<button class="primary">Check answer</button><div class="feedback" role="status" hidden></div><p id="revision-save-status" role="status"></p></form>';
+    '<button class="primary">Check answer</button><div class="feedback" role="status" hidden></div><p id="revision-save-status" role="status"></p></form></div>';
 }
 
 function recordRevisionMistake(id, text, href, missed) {
@@ -229,34 +221,38 @@ function setupRevisionTopic(code) {
 
 function revisionMistakes() {
   const entries = Object.values(revisionState('mistakes', {}));
-  return heading('Review', 'Mistakes log', 'This browser stores missed topic checks and multiple-choice test answers.') +
-    '<section class="panel">' + (entries.length ? '<ul>' + entries.map(item =>
-      '<li>' + link(item.text, item.href, 'text-link') + '</li>').join('') + '</ul>' : '<p>No missed questions to review yet.</p>') + '</section>';
+  return revisionHeading('Review', 'Mistakes log', 'This browser stores missed topic checks and multiple-choice test answers.') +
+    '<section class="panel revision-queue">' + (entries.length ? '<h2>' + entries.length + (entries.length === 1 ? ' question to retry' : ' questions to retry') + '</h2><ul>' + entries.map(item =>
+      '<li>' + link(item.text, item.href, 'text-link') + '</li>').join('') + '</ul>' : '<div class="revision-empty"><h2>No missed questions to review yet</h2>' + link('Try a topic check', '#revision-topics') + '</div>') + '</section>';
 }
 
 function revisionPapers() {
-  return heading('Cambridge 0455', 'Past papers and specimens', 'Use the specimens to practise the 2027 format. Older papers can have different timings, marks and content.') +
-    '<section class="panel"><h2>From 2027</h2><p>Paper 1: 40 marks in 60 minutes. Paper 2: 80 marks in 120 minutes. Complete the compulsory Section A and three of the four Section B questions.</p><ul>' +
-    revisionSources.slice(0, 5).map(([title, href]) => '<li>' + link(title, href, 'text-link') + '</li>').join('') +
-    '</ul><h2>Further reading and practice</h2><ul>' + revisionSources.slice(5).map(([title, href]) =>
-      '<li>' + link(title, href, 'text-link') + '</li>').join('') + '</ul></section>';
+  const resource = ([title, href]) => '<li>' + link(title + ' ↗', href, 'text-link') + '</li>';
+  const specimen = (title, format, start) => '<section class="panel"><h2>' + title +
+    '</h2><p class="revision-spec">' + format + '</p><ul>' +
+    revisionSources.slice(start, start + 2).map(resource).join('') + '</ul></section>';
+  return revisionHeading('Cambridge 0455', 'Past papers and specimens', 'Use the specimens to practise the 2027 format. Older papers can have different timings, marks and content.') +
+    '<div class="revision-collection">' + specimen('Paper 1', 'Multiple choice · 40 marks · 60 minutes', 1) +
+    specimen('Paper 2', 'Structured questions · 80 marks · 120 minutes', 3) + '</div>' +
+    '<section class="panel revision-resource"><h2>Further reading and practice</h2><ul>' +
+    [revisionSources[0], ...revisionSources.slice(5)].map(resource).join('') + '</ul></section>';
 }
 
 function revisionWriting(id) {
   const selected = questions.find(question => question.id === id && !question.options);
   if (!selected) {
-    return heading('Self-assessment', 'Written-answer review', 'Choose a question to write, compare and revise your answer.') +
-      catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
+    return revisionHeading('Self-assessment', 'Written-answer review', 'Choose a question to write, compare and revise your answer.') +
+      '<div class="revision-collection">' + catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
         [2, 4, 6, 8].map(marks => questions.find(question => question.c === index && question.marks === marks && !question.options))
-          .filter(Boolean).map(question => link(question.marks + ' marks · ' + question.q, '#revision-writing/' + question.id, 'coverage-link')).join('') + '</section>').join('');
+          .filter(Boolean).map(question => link(question.marks + ' marks · ' + question.q, '#revision-writing/' + question.id, 'coverage-link')).join('') + '</section>').join('') + '</div>';
   }
   const versions = revisionState('writing-' + id, []);
   return link('← Choose another question', '#revision-writing', 'text-link') +
-    heading('Self-assessment · ' + selected.marks + ' marks', 'Review your answer', escapeHtml(selected.q)) +
-    '<form class="panel" id="revision-writing-form">' + (selected.case ? '<p>' + escapeHtml(selected.case) + '</p>' : '') +
+    revisionHeading('Self-assessment · ' + selected.marks + ' marks', 'Review your answer', escapeHtml(selected.q)) +
+    '<div class="revision-columns revision-writing-columns"><form class="panel" id="revision-writing-form">' + (selected.case ? '<p>' + escapeHtml(selected.case) + '</p>' : '') +
     '<label class="field">Your response<textarea name="response" required>' + escapeHtml(versions.at(-1) || '') + '</textarea></label>' +
     '<button class="primary">Save version and view guidance</button><p id="revision-save-status" role="status"></p></form>' +
-    '<div id="revision-writing-guide">' + (versions.length ? revisionWritingGuide(selected, versions) : '') + '</div>';
+    '<div id="revision-writing-guide">' + (versions.length ? revisionWritingGuide(selected, versions) : '<section class="panel revision-empty"><h2>Mark scheme</h2><p>Save an answer to see the marking guidance here.</p></section>') + '</div></div>';
 }
 
 function revisionWritingGuide(question, versions) {
@@ -284,7 +280,7 @@ function setupRevisionWriting(id) {
 
 function revisionTeach(code) {
   const topic = revisionLab.topics.find(item => item.code === code);
-  return heading('Explain in your own words', 'Teach Jojo', 'Write your reasoning, then use the worked check to review your explanation.') +
+  return revisionHeading('Explain in your own words', 'Teach Jojo', 'Write your reasoning, then use the worked check to review your explanation.') +
     '<form class="panel" id="revision-teach-form"><label class="field">Topic<select name="topic">' +
     revisionLab.topics.map(item => '<option value="' + item.code + '"' + (item === topic ? ' selected' : '') + '>' +
       escapeHtml(item.title) + '</option>').join('') + '</select></label>' +
@@ -317,17 +313,17 @@ const revisionMockModes = { p1: 60, p2: 120 };
 function revisionTest() {
   const state = revisionState('test', null);
   if (state) return revisionAttempt(state);
-  return heading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
-    '<section class="panel"><h2>2027 mock papers</h2><p>Paper 1 uses 40 questions selected from the EcBiz bank. Paper 2 uses an original case and four structured choices.</p>' +
-    '<div class="row"><button type="button" data-revision-mock="p1">Paper 1 · 60 minutes</button>' +
-    '<button type="button" data-revision-mock="p2">Paper 2 · 120 minutes</button></div></section>' +
+  return revisionHeading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
+    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Paper 1 uses 40 questions selected from the EcBiz bank. Paper 2 uses an original case and four structured choices.</p>' +
+    '<div class="revision-mock-options"><button type="button" data-revision-mock="p1"><strong>Paper 1</strong><span>40 marks · 60 minutes</span></button>' +
+    '<button type="button" data-revision-mock="p2"><strong>Paper 2</strong><span>80 marks · 120 minutes</span></button></div></section>' +
     '<form class="panel" id="revision-test-builder"><h2>Custom practice</h2><div class="row">' +
     '<label class="field">Topic<select name="topic"><option value="">All topics</option>' +
     revisionLab.topics.map(topic => '<option value="' + topic.code + '">' + escapeHtml(topic.title) + '</option>').join('') +
     '</select></label><label class="field">Format<select name="format"><option value="mcq">Multiple choice</option><option value="written">Structured</option></select></label>' +
     '<label class="field">Questions<input name="count" type="number" min="1" max="40" value="10" required></label>' +
     '<label class="field">Minutes (0 for untimed)<input name="minutes" type="number" min="0" max="180" value="0" required></label></div>' +
-    '<button class="primary">Start test</button><p id="revision-save-status" role="status"></p></form>';
+    '<button class="primary">Start test</button><p id="revision-save-status" role="status"></p></form></div>';
 }
 
 function revisionAttempt(state) {
@@ -363,9 +359,9 @@ function revisionAttempt(state) {
     reviewScheme(question.options ? 'Correct answer: ' + question.options[question.answer] + '\n' + question.why : question.scheme) +
     '</section>').join('');
   const title = state.mode === 'p1' ? 'EcBiz Paper 1 mock' : mock2 ? 'EcBiz Paper 2 mock' : 'Custom practice test';
-  return heading('Original EcBiz practice', title, marks + ' marks' + (review && mcqs ? ' · Score ' + score + '/' + mcqs : '')) +
+  return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review && mcqs ? ' · Score ' + score + '/' + mcqs : '')) +
     (mock2 ? '<p>Answer all of Section A and choose three Section B questions.</p>' : '') +
-    (!review && state.deadline ? '<p id="revision-clock"></p>' : '') +
+    (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
     (review ? '<button id="revision-test-reset" type="button">Build another test</button>' : '') +
     '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
     (!review ? '<button class="primary">Finish and review</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
@@ -478,7 +474,7 @@ function revisionRetry(id) {
   const question = questions.find(q => q.id === id && q.options);
   if (!question) return revisionMistakes();
   return link('← Mistakes log', '#revision-mistakes', 'text-link') +
-    heading('Retry', 'Try the question again', escapeHtml(question.q)) +
+    revisionHeading('Retry', 'Try the question again', escapeHtml(question.q)) +
     '<form id="revision-retry-form" class="panel">' + (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') + question.options.map((option, index) =>
       '<label class="choice"><input type="radio" name="answer" value="' + index + '" required> ' +
       escapeHtml(option) + '</label>').join('') +
