@@ -143,7 +143,7 @@ function revisionHeading(label, title, description) {
 function renderRevisionTool(page, id) {
   if (page === 'revision') return revisionHub();
   const icons = {
-    'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
+    'revision-checklist': '✓', 'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
     'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎', 'revision-teach': '◇'
   };
   return '<div class="revision-workspace" data-tool="' + page + '">' +
@@ -155,6 +155,7 @@ function renderRevisionTool(page, id) {
 function revisionHub() {
   const groups = [
     ['Review the syllabus', [
+      ['✓', 'Syllabus checklist', 'Track your progress across all 36 topics and open related lessons.', '#revision-checklist'],
       ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics'],
       ['◇', 'Teach Jojo', 'Explain a concept in your own words and compare it with worked reasoning.', '#revision-teach']
     ]],
@@ -495,12 +496,59 @@ function setupRevisionRetry(id) {
   };
 }
 
+function revisionChecklist() {
+  const checked = new Set(revisionState('checklist-0455-2027', []));
+  const topics = revisionLab.topics;
+  const count = topics.filter(topic => checked.has(topic.code)).length;
+  return revisionHeading('Cambridge IGCSE · 0455', 'Syllabus checklist',
+    'Tick each topic once you’ve revised it. Your progress is saved in this browser.') +
+    '<section class="panel checklist-progress"><div><h2>Overall progress</h2><p id="checklist-count" role="status">' +
+    count + ' of ' + topics.length + ' topics revised</p></div>' +
+    '<progress id="checklist-progress" aria-label="Topics revised" value="' + count + '" max="' + topics.length + '"></progress>' +
+    link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
+    '<div id="syllabus-checklist" class="revision-collection">' +
+    catalog.slice(0, 6).map((chapter, index) => {
+      const chapterTopics = topics.filter(topic => topic.code.startsWith((index + 1) + '.'));
+      const done = chapterTopics.filter(topic => checked.has(topic.code)).length;
+      return '<section class="panel checklist-chapter"><h2>' + escapeHtml(chapter.title) +
+        '</h2><p class="checklist-chapter-count">' + done + ' of ' + chapterTopics.length + ' revised</p><ul>' +
+        chapterTopics.map(topic => '<li><label><input type="checkbox" value="' + topic.code + '"' +
+          (checked.has(topic.code) ? ' checked' : '') + '><span><small>' + topic.code + '</small> ' +
+          escapeHtml(topic.title) + '</span></label><details><summary>Resources<span class="checklist-visually-hidden"> for ' +
+          escapeHtml(topic.title) + '</span></summary><div class="row">' +
+          link('Quick recap and check', '#revision-topics/' + topic.code) + revisionNotesLinks(topic.code) +
+          '</div></details></li>').join('') + '</ul></section>';
+    }).join('') + '</div>';
+}
+
+function setupRevisionChecklist() {
+  const checklist = document.querySelector('#syllabus-checklist');
+  if (!checklist) return;
+  checklist.onchange = event => {
+    const checkbox = event.target;
+    if (!checkbox.matches('input[type="checkbox"]')) return;
+    const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
+    document.querySelector('#revision-save-status').textContent = '';
+    saveRevisionState('checklist-0455-2027', checked);
+    const progress = document.querySelector('#checklist-progress');
+    progress.value = checked.length;
+    document.querySelector('#checklist-count').textContent =
+      checked.length + ' of ' + progress.max + ' topics revised';
+    const chapter = checkbox.closest('.checklist-chapter');
+    chapter.querySelector('.checklist-chapter-count').textContent =
+      chapter.querySelectorAll('input:checked').length + ' of ' +
+      chapter.querySelectorAll('input[type="checkbox"]').length + ' revised';
+  };
+}
+
 const revisionRoutes = {
+  'revision-checklist': revisionChecklist,
   revision: revisionHub, 'revision-topics': revisionTopics, 'revision-mistakes': revisionMistakes,
   'revision-papers': revisionPapers, 'revision-writing': revisionWriting, 'revision-teach': revisionTeach,
   'revision-test': revisionTest, 'revision-retry': revisionRetry
 };
 const revisionSetups = {
+  'revision-checklist': setupRevisionChecklist,
   'revision-topics': setupRevisionTopic, 'revision-writing': setupRevisionWriting,
   'revision-teach': setupRevisionTeach, 'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry
 };
