@@ -6,8 +6,11 @@ const banks = new Map();
 function questionBank() {
   if (banks.size) return banks;
   const read = file => readFileSync(resolve('subjects/economics', file), 'utf8');
-  const study = read('study.js').trim();
-  const practice = JSON.parse(study.slice(study.indexOf('['), study.lastIndexOf(']') + 1));
+  const questionRows = file => {
+    const source = read(file);
+    return JSON.parse(source.slice(source.indexOf('['), source.lastIndexOf(']') + 1));
+  };
+  const practice = [...questionRows('study.js'), ...questionRows('exam-practice.js')];
   const revision = read('revision-lab.js').split('\nconst revisionSources =')[0];
   const { revisionPaper2, revisionLab } = runInNewContext(revision + '\n({ revisionPaper2, revisionLab })');
   for (const { id, q, marks, case: context, scheme, note, options } of practice) {

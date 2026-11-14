@@ -1,3 +1,5 @@
+questions.push(...examPracticeQuestions);
+
 const main = document.querySelector('main');
 const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-notes/';
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
@@ -123,7 +125,7 @@ function practice(chapterIndex) {
     '<section class="practice-filters" aria-label="Filter questions"><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
+    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
     '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-scope" class="eyebrow"></p><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
     '<section class="question-work"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
@@ -137,6 +139,7 @@ function setupPractice() {
   const pages=document.querySelector('#question-pages');
   const attempts=new Map();
   const search=document.querySelector('#filter-search');
+  const questionSet=document.querySelector('#filter-set');
   const list=document.querySelector('#question-list');
   const listPages=document.querySelector('#list-pages');
   const filterKey='ecbiz-practice-filters';
@@ -146,6 +149,7 @@ function setupPractice() {
   type.value=savedFilters.type||'';
   marks.value=savedFilters.marks||'';
   search.value=savedFilters.search||'';
+  questionSet.value=savedFilters.questionSet||'';
   let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
   let matches=[];
   const size=20;
@@ -160,13 +164,14 @@ function setupPractice() {
       (!topic.value||q.topic===topic.value)&&
       (!type.value||type.value===(q.options?'mcq':'structured'))&&
       (!marks.value||q.marks===Number(marks.value))&&
+      (!questionSet.value||Boolean(q.reference))&&
       (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
     page=Math.max(0,Math.min(page,matches.length-1));
     document.querySelector('#question-count').textContent=matches.length+' matching questions';
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
     document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
-    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,page}))} catch {}
+    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
@@ -190,10 +195,10 @@ function setupPractice() {
   renderTopics();
   if([...topic.options].some(option=>option.value===savedFilters.topic))topic.value=savedFilters.topic;
   chapter.onchange=()=>{renderTopics();reset()};
-  topic.onchange=type.onchange=marks.onchange=reset;
+  topic.onchange=type.onchange=marks.onchange=questionSet.onchange=reset;
   search.oninput=reset;
   document.querySelector('#clear-filters').onclick=()=>{
-    chapter.value=topic.value=type.value=marks.value=search.value='';
+    chapter.value=topic.value=type.value=marks.value=search.value=questionSet.value='';
     renderTopics();
     reset();
   };
@@ -248,6 +253,10 @@ function setupPractice() {
       state.feedback=q.options
         ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
         : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer),q.marks)+ecbizMarking.scheme(q);
+      if(q.reference) {
+        state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
+          escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';
+      }
     } catch(error) {
       state.feedback='<p>'+escapeHtml(error.message)+'</p>';
     } finally {
