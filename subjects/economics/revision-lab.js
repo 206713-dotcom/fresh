@@ -164,7 +164,7 @@ function revisionHub() {
     ]],
     ['Improve your answers', [
       ['↺', 'Mistakes log', 'Retry questions you missed in topic checks and submitted tests.', '#revision-mistakes'],
-      ['✎', 'Written-answer review', 'Compare your response with a mark scheme and save your revisions.', '#revision-writing']
+      ['✎', 'Written-answer review', 'Get a mark and feedback for each saved version.', '#revision-writing']
     ]]
   ];
   return '<div class="revision-hub"><header class="revision-hero"><div><p class="eyebrow">Cambridge IGCSE · 0455</p>' +
@@ -241,51 +241,70 @@ function revisionPapers() {
 function revisionWriting(id) {
   const selected = questions.find(question => question.id === id && !question.options);
   if (!selected) {
-    return revisionHeading('Self-assessment', 'Written-answer review', 'Choose a question to write, compare and revise your answer.') +
+    return revisionHeading('Automatic marking', 'Written-answer review', 'Choose a question to answer and revise with feedback.') +
       '<div class="revision-collection">' + catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
         [2, 4, 6, 8].map(marks => questions.find(question => question.c === index && question.marks === marks && !question.options))
           .filter(Boolean).map(question => link(question.marks + ' marks · ' + question.q, '#revision-writing/' + question.id, 'coverage-link')).join('') + '</section>').join('') + '</div>';
   }
   const versions = revisionState('writing-' + id, []);
   return link('← Choose another question', '#revision-writing', 'text-link') +
-    revisionHeading('Self-assessment · ' + selected.marks + ' marks', 'Review your answer', escapeHtml(selected.q)) +
+    revisionHeading('Automatic marking · ' + selected.marks + ' marks', 'Review your answer', escapeHtml(selected.q)) +
     '<div class="revision-columns revision-writing-columns"><form class="panel" id="revision-writing-form">' + (selected.case ? '<p>' + escapeHtml(selected.case) + '</p>' : '') +
-    '<label class="field">Your response<textarea name="response" required>' + escapeHtml(versions.at(-1) || '') + '</textarea></label>' +
-    '<button class="primary">Save version and view guidance</button><p id="revision-save-status" role="status"></p></form>' +
-    '<div id="revision-writing-guide">' + (versions.length ? revisionWritingGuide(selected, versions) : '<section class="panel revision-empty"><h2>Mark scheme</h2><p>Save an answer to see the marking guidance here.</p></section>') + '</div></div>';
+    '<label class="field">Your response<textarea name="response" maxlength="8000" required>' + escapeHtml(versions.at(-1)?.answer ?? versions.at(-1) ?? '') + '</textarea></label>' +
+    '<button class="primary">Mark and save version</button><p id="revision-save-status" role="status"></p></form>' +
+    '<div id="revision-writing-guide">' + (versions.length ? revisionWritingGuide(selected, versions) : '<section class="panel revision-empty"><h2>Mark scheme</h2><p>Submit an answer to see your mark and feedback.</p></section>') + '</div></div>';
 }
 
 function revisionWritingGuide(question, versions) {
   return '<section class="panel"><h2>Question-specific mark scheme</h2><div class="mark-scheme">' + escapeHtml(question.scheme) +
     '</div>' + (question.note ? '<p>' + escapeHtml(question.note) + '</p>' : '') +
     '<h3>Compare your versions</h3>' + versions.map((version, index) => '<details><summary>Version ' + (index + 1) +
-      '</summary><p class="mark-scheme">' + escapeHtml(version) + '</p></details>').join('') + '</section>';
+      '</summary><p class="mark-scheme">' + escapeHtml(version.answer ?? version) + '</p>' +
+      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks) + '</div>' : '') + '</details>').join('') + '</section>';
 }
 
 function setupRevisionWriting(id) {
   const form = document.querySelector('#revision-writing-form');
   if (!form) return;
-  form.onsubmit = event => {
+  form.onsubmit = async event => {
     event.preventDefault();
     const response = new FormData(form).get('response').trim();
-    if (!response) return;
+    const button = form.querySelector('button.primary');
+    if (!response || button.disabled) return;
     const key = 'writing-' + id;
+    const status = form.querySelector('#revision-save-status');
     const versions = revisionState(key, []);
-    if (response !== versions.at(-1)) versions.push(response);
-    saveRevisionState(key, versions);
-    document.querySelector('#revision-writing-guide').innerHTML =
-      revisionWritingGuide(questions.find(question => question.id === id), versions);
+    const latest = versions.at(-1);
+    button.disabled = true;
+    status.textContent = 'Marking your answer…';
+    try {
+      if (latest?.answer !== response || !latest.grade) {
+        const grade = await ecbizMarking.grade(id, response);
+        if (latest === response) versions.pop();
+        versions.push({ answer: response, grade });
+        if (!saveRevisionState(key, versions)) return;
+      }
+      if (!form.isConnected) return;
+      status.textContent = 'Answer marked and saved.';
+      const guide = document.querySelector('#revision-writing-guide');
+      guide.innerHTML = revisionWritingGuide(questions.find(question => question.id === id), versions);
+      guide.querySelector('details:last-child').open = true;
+    } catch (error) {
+      status.textContent = error.message;
+    } finally {
+      button.disabled = false;
+    }
   };
 }
 
 function revisionTeach(code) {
   const topic = revisionLab.topics.find(item => item.code === code);
-  return revisionHeading('Explain in your own words', 'Teach Jojo', 'Write your reasoning, then use the worked check to review your explanation.') +
+  return revisionHeading('Explain in your own words', 'Teach Jojo', 'Submit your explanation to get a mark out of 2 and feedback.') +
     '<form class="panel" id="revision-teach-form"><label class="field">Topic<select name="topic">' +
     revisionLab.topics.map(item => '<option value="' + item.code + '"' + (item === topic ? ' selected' : '') + '>' +
       escapeHtml(item.title) + '</option>').join('') + '</select></label>' +
-    (topic ? '<h2>' + escapeHtml(topic.prompt) + '</h2><label class="field">Your explanation<textarea required name="explanation"></textarea></label>' +
-      '<button class="primary">Compare my reasoning</button><div class="feedback" role="status" hidden></div>' :
+    (topic ? '<h2>' + escapeHtml(topic.prompt) + '</h2><label class="field">Your explanation<textarea maxlength="8000" required name="explanation"></textarea></label>' +
+      '<button class="primary">Mark my explanation</button><div class="feedback" role="status" hidden></div>' :
       '<button class="primary">Open explanation task</button>') + '</form>';
 }
 
@@ -294,17 +313,27 @@ function setupRevisionTeach(code) {
   if (!form) return;
   const select = form.elements.namedItem('topic');
   select.onchange = () => { location.hash = '#revision-teach/' + select.value; };
-  form.onsubmit = event => {
+  form.onsubmit = async event => {
     event.preventDefault();
     if (!code) { location.hash = '#revision-teach/' + select.value; return; }
     const topic = revisionLab.topics.find(item => item.code === code);
-    if (!topic || !form.elements.namedItem('explanation').value.trim()) return;
-    const [answer, reason] = topic.options[topic.answer];
+    const explanation = form.elements.namedItem('explanation').value.trim();
+    const button = form.querySelector('button.primary');
+    if (!topic || !explanation || button.disabled) return;
     const feedback = form.querySelector('.feedback');
+    const [answer, reason] = topic.options[topic.answer];
+    button.disabled = true;
     feedback.hidden = false;
-    feedback.innerHTML = '<h3>Worked reasoning</h3><p><strong>' + escapeHtml(answer) + '</strong> — ' + escapeHtml(reason) +
-      '</p><p>Check that your answer states the outcome and explains the economic link. Change one assumption and explain whether your conclusion still holds.</p>' +
-      revisionNotesLinks(code);
+    feedback.textContent = 'Marking your explanation…';
+    try {
+      const grade = await ecbizMarking.grade('teach-' + code, explanation);
+      feedback.innerHTML = ecbizMarking.feedback(grade, 2) +
+        ecbizMarking.scheme({ scheme: answer + '\n' + reason }) + revisionNotesLinks(code);
+    } catch (error) {
+      feedback.textContent = error.message;
+    } finally {
+      button.disabled = false;
+    }
   };
 }
 
@@ -326,6 +355,61 @@ function revisionTest() {
     '<button class="primary">Start test</button><p id="revision-save-status" role="status"></p></form></div>';
 }
 
+const pendingRevisionTests = new Map();
+
+function revisionWrittenItems(state) {
+  if (state.mode === 'p2') {
+    return revisionPaper2.flatMap((group, index) => index === 0 || state.selection.includes(index)
+      ? group.parts.map(([marks], part) => ({ key: index + '-' + part, id: 'mock-' + index + '-' + part, marks }))
+      : []);
+  }
+  return state.ids.map(id => questions.find(question => question.id === id))
+    .filter(question => question && !question.options)
+    .map(({ id, marks }) => ({ key: id, id, marks }));
+}
+
+function markRevisionTest(state, status, retry) {
+  const items = revisionWrittenItems(state).filter(({ key }) => !state.grades?.[key] &&
+    (state.answers[key]?.trim() || state.images?.[key]));
+  if (!items.length) return;
+  const attemptId = state.attemptId;
+  status.textContent = 'Marking ' + items.length + ' written answers…';
+  retry.hidden = true;
+
+  if (!pendingRevisionTests.has(attemptId)) {
+    const run = async () => {
+      let next = 0;
+      async function worker() {
+        while (next < items.length) {
+          const { key, id } = items[next++];
+          try {
+            const grade = await ecbizMarking.grade(id, state.answers[key]?.trim() || '', state.images?.[key]);
+            const current = revisionState('test', null);
+            if (!current || current.attemptId !== attemptId) return;
+            current.grades = { ...current.grades, [key]: grade };
+            if (!saveRevisionState('test', current)) return;
+          } catch {
+            // Leave unsuccessful items pending so the saved answers can be retried.
+          }
+        }
+      }
+      await Promise.all(Array.from({ length: Math.min(3, items.length) }, worker));
+    };
+    pendingRevisionTests.set(attemptId, run().finally(() => pendingRevisionTests.delete(attemptId)));
+  }
+  pendingRevisionTests.get(attemptId).then(() => {
+    if (!status.isConnected) return;
+    const latest = revisionState('test', null);
+    if (!latest) return;
+    if (items.some(({ key }) => latest.grades?.[key])) {
+      render(false);
+    } else {
+      status.textContent = 'Some written answers could not be marked. Your answers are saved.';
+      retry.hidden = false;
+    }
+  });
+}
+
 function revisionAttempt(state) {
   const review = state.finished;
   const mock2 = state.mode === 'p2';
@@ -333,9 +417,16 @@ function revisionAttempt(state) {
   const bank = state.ids.map(id => questions.find(question => question.id === id)).filter(Boolean);
   const selected = mock2 ? groups.filter(group => group.index === 0 || state.selection.includes(group.index)) : [];
   const score = bank.filter(q => q.options && state.answers[q.id] === String(q.answer)).length;
-  const mcqs = bank.filter(q => q.options).length;
   const marks = mock2 ? 80 : bank.reduce((total, question) => total + question.marks, 0);
-  const input = (id, value) => '<label class="field">Your answer<textarea name="' + escapeHtml(id) + '"' +
+  const written = revisionWrittenItems(state);
+  const isPending = key => !state.grades?.[key] && (state.answers[key]?.trim() || state.images?.[key]);
+  const pending = written.filter(({ key }) => isPending(key)).length;
+  const earned = score + written.reduce((total, { key }) => total + (state.grades?.[key]?.score ?? 0), 0);
+  const writtenFeedback = (key, max, scheme) => review
+    ? '<div class="feedback">' + (isPending(key) ? '<p>Awaiting marking.</p>' :
+      ecbizMarking.feedback(state.grades?.[key] ?? ecbizMarking.blank, max) + ecbizMarking.scheme({ scheme })) + '</div>'
+    : '';
+  const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';
   const reviewScheme = text => review ? '<div class="feedback mark-scheme">' + escapeHtml(text) + '</div>' : '';
   const body = mock2 ? (review ? selected : groups).map(group => {
@@ -347,8 +438,11 @@ function revisionAttempt(state) {
       group.parts.map(([points, prompt, guide], part) => {
         const key = group.index + '-' + part;
         return '<p><strong>' + String.fromCharCode(97 + part) + '.</strong> ' + escapeHtml(prompt) + ' [' + points + ']</p>' +
-          (group.index === 0 && part === 3 && !review ? '<p>Draw your diagram on paper and describe the key changes here.</p>' : '') +
-          input(key, state.answers[key]) + reviewScheme(guide);
+          (group.index === 0 && part === 3 ? (review
+            ? (state.images?.[key] ? '<p>Submitted diagram</p><img style="max-width:100%" alt="Your submitted diagram" src="' + escapeHtml(state.images[key]) + '">' : '')
+            : '<label class="field">Upload a photo of your diagram<input type="file" accept="image/png,image/jpeg,image/webp" id="revision-diagram" aria-describedby="revision-diagram-status"></label><p id="revision-diagram-status" role="status">' +
+              (state.images?.[key] ? 'Diagram saved with your answer.' : '') + '</p>') : '') +
+          input(key, state.answers[key]) + writtenFeedback(key, points, guide);
       }).join('') + '</fieldset></section>';
   }).join('') : bank.map((question, index) =>
     '<section class="panel"><h2>' + (index + 1) + '. ' + escapeHtml(question.q) + ' [' + question.marks + ']</h2>' +
@@ -356,19 +450,22 @@ function revisionAttempt(state) {
     (question.options ? question.options.map((option, i) => '<label class="choice"><input type="radio" name="' +
       escapeHtml(question.id) + '" value="' + i + '"' + (state.answers[question.id] === String(i) ? ' checked' : '') +
       (review ? ' disabled' : '') + '> ' + escapeHtml(option) + '</label>').join('') : input(question.id, state.answers[question.id])) +
-    reviewScheme(question.options ? 'Correct answer: ' + question.options[question.answer] + '\n' + question.why : question.scheme) +
+    (question.options ? reviewScheme((state.answers[question.id] === String(question.answer) ? 'Correct · 1/1' : '0/1') +
+      '\nCorrect answer: ' + question.options[question.answer] + '\n' + question.why) :
+      writtenFeedback(question.id, question.marks, question.scheme)) +
     '</section>').join('');
   const title = state.mode === 'p1' ? 'EcBiz Paper 1 mock' : mock2 ? 'EcBiz Paper 2 mock' : 'Custom practice test';
-  return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review && mcqs ? ' · Score ' + score + '/' + mcqs : '')) +
+  return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review ? (pending ? ' · ' + pending + ' awaiting marking' : ' · Score ' + earned + '/' + marks) : '')) +
     (mock2 ? '<p>Answer all of Section A and choose three Section B questions.</p>' : '') +
     (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
-    (review ? '<button id="revision-test-reset" type="button">Build another test</button>' : '') +
+    (review ? '<button id="revision-test-reset" type="button">Build another test</button>' +
+      (pending ? '<button id="revision-test-retry" type="button" hidden>Retry marking</button>' : '') : '') +
     '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
-    (!review ? '<button class="primary">Finish and review</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
+    (!review ? '<button class="primary">Finish and mark</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
     '</form>' + (review && mock2 ? '<section class="panel"><h2>8-mark discussion bands</h2><p>6–8 for developed analysis of both sides, 3–5 for some developed reasoning with limited depth or balance, 1–2 for relevant undeveloped points, 0 for no creditworthy material.</p></section>' : '');
 }
 
-function setupRevisionTest() {
+function setupRevisionTest(_id, autoMark = true) {
   const builder = document.querySelector('#revision-test-builder');
   function start(mode, pool, count, minutes) {
     if (pool.length < count) {
@@ -380,7 +477,7 @@ function setupRevisionTest() {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    const state = { mode, ids: shuffled.slice(0, count).map(q => q.id), answers: {}, selection: [],
+    const state = { mode, attemptId: crypto.randomUUID(), ids: shuffled.slice(0, count).map(q => q.id), answers: {}, selection: [],
       deadline: minutes ? Date.now() + minutes * 60000 : null, finished: false };
     if (saveRevisionState('test', state)) render();
   }
@@ -417,8 +514,63 @@ function setupRevisionTest() {
   reset.onclick = () => {
     if ((state.finished || confirm('Discard this test and its answers?')) && saveRevisionState('test', null)) render();
   };
-  if (state.finished) return;
+  if (state.finished) {
+    const retry = document.querySelector('#revision-test-retry');
+    if (!retry) return;
+    if (!state.attemptId) {
+      state.attemptId = crypto.randomUUID();
+      if (!saveRevisionState('test', state)) return;
+    }
+    const status = document.querySelector('#revision-save-status');
+    retry.onclick = () => markRevisionTest(revisionState('test', state), status, retry);
+    if (autoMark) retry.click();
+    else {
+      status.textContent = 'Some written answers could not be marked. Your answers are saved.';
+      retry.hidden = false;
+    }
+    return;
+  }
   const form = document.querySelector('#revision-attempt');
+  const diagram = form.querySelector('#revision-diagram');
+  let loadingDiagram = false;
+  if (diagram) diagram.onchange = async () => {
+    const file = diagram.files[0];
+    if (!file) return;
+    const status = form.querySelector('#revision-diagram-status');
+    loadingDiagram = true;
+    diagram.disabled = true;
+    status.textContent = 'Preparing diagram…';
+    try {
+      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 12000000) {
+        throw new Error('Choose a JPEG, PNG or WebP image under 12 MB.');
+      }
+      const bitmap = await createImageBitmap(file);
+      const scale = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      const image = canvas.toDataURL('image/jpeg', 0.78);
+      if (image.length > 530000) throw new Error('Choose a smaller or more tightly cropped image.');
+      if (!form.isConnected) return;
+      const images = { ...state.images, '0-3': image };
+      if (saveRevisionState('test', { ...state, images })) {
+        state.images = images;
+        status.textContent = 'Diagram saved with your answer.';
+      } else {
+        status.textContent = 'The diagram could not be saved in this browser.';
+      }
+    } catch (error) {
+      status.textContent = 'Diagram could not be attached. ' + error.message;
+    } finally {
+      loadingDiagram = false;
+      diagram.disabled = false;
+    }
+  };
   const clock = document.querySelector('#revision-clock');
   function finish() {
     if (!saveRevisionState('test', {...state, finished: true})) return;
@@ -452,6 +604,10 @@ function setupRevisionTest() {
   };
   form.onsubmit = event => {
     event.preventDefault();
+    if (loadingDiagram) {
+      document.querySelector('#revision-save-status').textContent = 'Wait for the diagram to finish attaching.';
+      return;
+    }
     if (state.mode === 'p2' && state.selection.length !== 3) {
       document.querySelector('#revision-save-status').textContent = 'Choose three Section B questions before submitting.';
       return;
@@ -463,7 +619,7 @@ function setupRevisionTest() {
       if (!clock.isConnected) return;
       const left = Math.max(0, Math.ceil((state.deadline - Date.now()) / 1000));
       clock.textContent = 'Time remaining ' + Math.floor(left / 60) + ':' + pad(left % 60);
-      if (left) window.setTimeout(tick, 250);
+      if (left || loadingDiagram) window.setTimeout(tick, 250);
       else finish();
     }
     tick();
