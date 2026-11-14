@@ -7,6 +7,7 @@ import { defineConfig } from 'vite';
 // database or API middleware in this project.
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

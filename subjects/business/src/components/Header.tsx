@@ -30,6 +30,7 @@ import {
   UserRound,
   Paintbrush,
   Check,
+  ArrowLeft,
 } from "lucide-react";
 import { deductStudyCoins, getStudyCoins } from "../lib/cookies";
 import { clearSession, getSession } from "../lib/auth";
@@ -285,7 +286,15 @@ export function Header({
         {/* ========================================================= */}
         {/* ZONE 1: BRAND / WORDMARK */}
         {/* ========================================================= */}
-        <div className="shrink-0">
+        <div className="shrink-0 flex items-center gap-2">
+          <a
+            href="../../index.html"
+            title="Back to Fresh"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 px-2.5 py-1.5 text-sm font-medium text-[#1C1917] dark:text-white hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors"
+          >
+            <ArrowLeft size={16} strokeWidth={2} />
+            <span className="whitespace-nowrap">Fresh</span>
+          </a>
           <button
             onClick={() => handleSelectTab("practice")}
             title="EcBiz"
