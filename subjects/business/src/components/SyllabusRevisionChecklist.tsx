@@ -21,6 +21,7 @@ import {
 } from "../lib/cookies";
 import { GLOSSARY_TERMS } from "../lib/data/glossary";
 import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
+import { SECTION_VISUAL_LABELS, SectionConceptDiagram } from "./SectionConceptDiagram";
 import {
   Check,
   RotateCcw,
@@ -93,6 +94,7 @@ export function SyllabusRevisionChecklist({
   const [drillAnswer, setDrillAnswer] = useState<string>("");
   const [showMarkScheme, setShowMarkScheme] = useState<boolean>(false);
   const [showFactorsModal, setShowFactorsModal] = useState<boolean>(false);
+  const [visualSection, setVisualSection] = useState<string | null>(null);
 
   // Load ratings and checked topics on mount
   useEffect(() => {
@@ -779,6 +781,18 @@ export function SyllabusRevisionChecklist({
                     <span className="text-xs font-mono text-[#78716C] dark:text-neutral-400">
                       ({section.topics.length} topics)
                     </span>
+                    {SECTION_VISUAL_LABELS[section.code] && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setVisualSection(section.code);
+                        }}
+                        className="text-[11px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 px-2 py-0.5 rounded-md hover:bg-amber-100 dark:hover:bg-amber-900/60 cursor-pointer"
+                      >
+                        📊 {SECTION_VISUAL_LABELS[section.code]}
+                      </button>
+                    )}
                   </div>
 
                   <button
@@ -1024,6 +1038,14 @@ export function SyllabusRevisionChecklist({
         isOpen={showFactorsModal}
         onClose={() => setShowFactorsModal(false)}
       />
+      {visualSection && (
+        <SectionConceptDiagram
+          key={visualSection}
+          sectionCode={visualSection}
+          isOpen
+          onClose={() => setVisualSection(null)}
+        />
+      )}
     </div>
   );
 }

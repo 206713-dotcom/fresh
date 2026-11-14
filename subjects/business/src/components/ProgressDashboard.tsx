@@ -49,14 +49,14 @@ export function ProgressDashboard({
     max > 0 ? Math.round((earned / max) * 100) : 0;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 transition-colors">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div className="study-page">
+      <div className="study-page-heading">
         <div>
-          <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white">
+          <h1 className="study-title">
             Candidate Progress Ledger
           </h1>
-          <p className="text-sm text-[#57534E] dark:text-neutral-400">
-            Permanently stored locally via client cookies · No login or password required
+          <p className="study-description">
+            Saved to your browser and synced to the class Google Sheet when you sign in
           </p>
         </div>
 

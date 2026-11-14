@@ -1,6 +1,6 @@
 /**
  * WebLLM Browser AI Assessment Engine
- * Runs Qwen 2.5 0.5B Instruct locally in-browser via WebGPU at $0 server cost.
+ * Runs Qwen 3.5 0.8B locally in-browser via WebGPU at $0 server cost.
  * Evaluates candidate essays as a strict CIE Senior Examiner.
  */
 
@@ -179,7 +179,7 @@ export async function initializeWebLLM(
 }
 
 /**
- * Evaluates candidate essay using Qwen2.5-0.5B-Instruct in-browser via WebLLM.
+ * Evaluates candidate essay using Qwen 3.5 0.8B in-browser via WebLLM.
  * Acts as a strict CIE Senior Examiner grading candidate essays.
  *
  * Pre-processes statistical metrics in JavaScript (wordCount, paragraphCount).
@@ -211,7 +211,7 @@ export async function evaluateEssayWebLLM(
 
     // 3. System & User Prompt Structure
     const systemPrompt =
-      "You are Qwen 2.5 0.5B functioning as a CIE Business Examiner for interpretation. Read the candidate's text and confirm whether they understood the core business concepts (AO1 Knowledge) and developed causal reasoning (AO3 Analysis). The website code automatically evaluates case keywords (AO2) and evaluation rules (AO4). Output valid JSON matching the schema.";
+      "You are Qwen 3.5 0.8B functioning as a CIE Business Examiner for interpretation. Read the candidate's text and confirm whether they understood the core business concepts (AO1 Knowledge) and developed causal reasoning (AO3 Analysis). The website code automatically evaluates case keywords (AO2) and evaluation rules (AO4). Output valid JSON matching the schema.";
 
     const userPrompt = `### EXAM QUESTION
 ${examQuestion}

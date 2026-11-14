@@ -4,13 +4,15 @@ import React, { useState, useEffect } from "react";
 import { SYLLABUS_SECTIONS, SyllabusSection, SyllabusTopic } from "../lib/data/syllabus-topics";
 import { loadRevisedTopics, toggleRevisedTopic } from "../lib/cookies";
 import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
+import { SECTION_VISUAL_LABELS, SectionConceptDiagram } from "./SectionConceptDiagram";
 
 interface SectionBreakdownBoxProps {
   activeSectionCode: string;
   onSelectSection: (sectionCode: string) => void;
   activeTopicCode?: string;
   onSelectTopic?: (topicCode: string) => void;
-  onOpenFinanceExam?: () => void;
+  onOpenOnePageSheet?: (sectionCode: string) => void;
+  onOpenCompare?: (sectionCode: string) => void;
   className?: string;
 }
 
@@ -19,15 +21,22 @@ export function SectionBreakdownBox({
   onSelectSection,
   activeTopicCode,
   onSelectTopic,
-  onOpenFinanceExam,
+  onOpenOnePageSheet,
+  onOpenCompare,
   className = "",
 }: SectionBreakdownBoxProps) {
   const [revisedCodes, setRevisedCodes] = useState<string[]>([]);
   const [showFactorsModal, setShowFactorsModal] = useState<boolean>(false);
+  const [showSectionVisual, setShowSectionVisual] = useState<boolean>(false);
 
   useEffect(() => {
     setRevisedCodes(loadRevisedTopics());
   }, []);
+
+  useEffect(() => {
+    setShowSectionVisual(false);
+    setShowFactorsModal(false);
+  }, [activeSectionCode]);
 
   const handleToggleRevised = (code: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -77,15 +86,15 @@ export function SectionBreakdownBox({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-[#E7E5E4] dark:border-neutral-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#0F2042]/10 dark:bg-[#38BDF8]/10 text-[#0F2042] dark:text-[#38BDF8] uppercase">
+            <span className="business-category text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg border border-[#d4d9cf] uppercase">
               Section {currentSection.code} Breakdown
             </span>
-            <span className="text-xs text-[#78716C] dark:text-neutral-400">
+            <span className="text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
               {currentSection.topics.length} Key Syllabus Topics
             </span>
           </div>
 
-          <h3 className="font-academic-serif text-xl sm:text-2xl font-bold text-[#0F2042] dark:text-white">
+          <h3 className="font-academic-serif text-xl sm:text-2xl font-bold text-[var(--green,#203e32)] dark:text-white">
             {currentSection.title}
           </h3>
 
@@ -94,50 +103,118 @@ export function SectionBreakdownBox({
           </p>
         </div>
 
-        {/* At the side next to the header: Consolidation Document Link for each section & Special Tools */}
-        <div className="shrink-0 flex flex-wrap items-center gap-2.5">
-          {currentSection.code === "1" && (
-            <button
-              onClick={() => setShowFactorsModal(true)}
-              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-200 font-semibold text-xs transition-all shadow-sm cursor-pointer"
-            >
-              <span className="text-sm">📊</span>
-              <span>Factors of Production & Rewards</span>
-            </button>
-          )}
+        {/* Main Section Options: Compact Stacked 2-Row Layout */}
+        <div className="shrink-0 w-full sm:w-auto sm:max-w-[340px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
+            {/* ROW 1 (Top Left): Advantages & Disadvantages */}
+            {onOpenCompare ? (
+              <button
+                type="button"
+                onClick={() => onOpenCompare(currentSection.code)}
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 border border-rose-200 dark:border-rose-800/80 text-rose-800 dark:text-rose-200 font-semibold transition-all shadow-2xs cursor-pointer text-left w-full min-w-0"
+              >
+                <span className="text-sm shrink-0">⚖️</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-bold text-[11px] sm:text-xs leading-tight truncate">
+                    Advantages & Disadvantages
+                  </span>
+                  <span className="block text-[9.5px] font-normal opacity-75 truncate">
+                    Section {currentSection.code} revision
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <div />
+            )}
 
-          {currentSection.code === "5" && onOpenFinanceExam && (
-            <button
-              onClick={onOpenFinanceExam}
-              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold text-xs transition-all shadow-sm"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Finance Exam Pop-up (5.1 & 5.2) 📝</span>
-            </button>
-          )}
+            {/* ROW 1 (Top Right): 1-Page Sheet */}
+            {onOpenOnePageSheet ? (
+              <button
+                type="button"
+                onClick={() => onOpenOnePageSheet(currentSection.code)}
+                className="btn-primary inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-semibold transition-all shadow-2xs cursor-pointer text-left w-full min-w-0"
+              >
+                <span className="text-sm shrink-0">📋</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-bold text-[11px] sm:text-xs leading-tight truncate">
+                    1-Page Sheet
+                  </span>
+                  <span className="block text-[9.5px] font-normal opacity-80 truncate">
+                    Section {currentSection.code} sheet
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <div />
+            )}
 
-          {currentSection.consolidationDocUrl ? (
-            <a
-              href={currentSection.consolidationDocUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 font-semibold text-xs transition-all shadow-sm group"
-            >
-              <span className="text-sm">📄</span>
-              <div className="text-left">
-                <span className="block font-bold leading-tight group-hover:underline">
-                  Consolidation Document
-                </span>
-                <span className="block text-[10px] text-blue-600 dark:text-blue-300 font-normal">
-                  Google Docs · Section {currentSection.code} ↗
-                </span>
+            {/* ROW 2 (Bottom Left): Factors of Production & Rewards (or Section Concept Visuals for sections 2-6) */}
+            {currentSection.code === "1" ? (
+              <button
+                type="button"
+                onClick={() => setShowFactorsModal(true)}
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-200 font-semibold transition-all shadow-2xs cursor-pointer text-left w-full min-w-0"
+              >
+                <span className="text-sm shrink-0">📊</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-bold text-[11px] sm:text-xs leading-tight truncate">
+                    Factors of Production & Rewards
+                  </span>
+                  <span className="block text-[9.5px] font-normal opacity-75 truncate">
+                    Interactive 1.1 Diagram
+                  </span>
+                </div>
+              </button>
+            ) : SECTION_VISUAL_LABELS[currentSection.code] ? (
+              <button
+                type="button"
+                onClick={() => setShowSectionVisual(true)}
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-200 font-semibold transition-all shadow-2xs cursor-pointer text-left w-full min-w-0"
+              >
+                <span className="text-sm shrink-0">📊</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-bold text-[11px] sm:text-xs leading-tight truncate">
+                    {SECTION_VISUAL_LABELS[currentSection.code]}
+                  </span>
+                  <span className="block text-[9.5px] font-normal opacity-75 truncate">
+                    Interactive Visual
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <div />
+            )}
+
+            {/* ROW 2 (Bottom Right): Consolidation Document */}
+            {currentSection.consolidationDocUrl ? (
+              <a
+                href={currentSection.consolidationDocUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 font-semibold transition-all shadow-2xs group text-left w-full min-w-0"
+              >
+                <span className="text-sm shrink-0">📄</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-bold text-[11px] sm:text-xs leading-tight group-hover:underline truncate">
+                    Consolidation Document
+                  </span>
+                  <span className="block text-[9.5px] text-blue-600 dark:text-blue-300 font-normal truncate">
+                    Google Docs ↗
+                  </span>
+                </div>
+              </a>
+            ) : (
+              <div className="inline-flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-[#FAF9F6] dark:bg-black border border-dashed border-[#D6D3D1] dark:border-neutral-700 text-[#78716C] dark:text-[#64748B] italic text-left w-full min-w-0">
+                <span className="text-sm opacity-40 shrink-0">📄</span>
+                <div className="min-w-0 flex-1">
+                  <span className="block font-semibold text-[11px] sm:text-xs leading-tight truncate">
+                    Consolidation Document
+                  </span>
+                  <span className="block text-[9.5px] truncate">Blank for now</span>
+                </div>
               </div>
-            </a>
-          ) : (
-            <div className="px-3.5 py-2 rounded-xl bg-[#FAF9F6] dark:bg-black border border-dashed border-[#D6D3D1] dark:border-neutral-700 text-xs text-[#78716C] dark:text-[#64748B] italic">
-              Consolidation Document: Blank for now
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
@@ -242,6 +319,12 @@ export function SectionBreakdownBox({
       <FactorsOfProductionDiagram
         isOpen={showFactorsModal}
         onClose={() => setShowFactorsModal(false)}
+      />
+      <SectionConceptDiagram
+        key={currentSection.code}
+        sectionCode={currentSection.code}
+        isOpen={showSectionVisual}
+        onClose={() => setShowSectionVisual(false)}
       />
     </div>
   );

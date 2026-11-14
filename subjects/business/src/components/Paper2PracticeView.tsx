@@ -536,67 +536,54 @@ export function Paper2PracticeView({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 transition-colors">
+    <div className="study-page">
       {/* Top Banner / Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#0F2042] text-white dark:bg-[#38BDF8] dark:text-black">
-              PAPER 2 SIMULATOR
-            </span>
-            <span className="text-xs text-[#57534E] dark:text-neutral-400 font-medium">
-              100 Authentic Case Studies (Q1–Q100)
-            </span>
-          </div>
-          <h1 className="font-academic-serif text-2xl sm:text-3xl font-bold text-[#0F2042] dark:text-white flex items-center gap-2">
-            Paper 2 Practice Studio
-          </h1>
-          <p className="text-xs sm:text-sm text-[#57534E] dark:text-neutral-400">
-            Split-screen case study analysis with Appendices 1, 2, and 3. Sequential submission with local Qwen 3.5 0.8B level evaluation.
+      <header className="study-hero">
+        <div className="study-hero-content">
+          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+          <h1 className="study-title">Paper 2 <span>Practice Studio</span></h1>
+          <p className="study-description">
+            Work through 100 case studies with appendices and step-by-step questions.
           </p>
+          <div className="study-hero-actions">
+            <button
+              type="button"
+              onClick={() => {
+                if (!webllmEngine) {
+                  handleDownloadQwenModel();
+                }
+              }}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
+                webllmEngine || isModelDownloaded
+                  ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800"
+                  : webllmStatus.isLoading
+                  ? "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-800"
+                  : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50"
+              }`}
+              title="Local in-browser Qwen 3.5 0.8B AI model status"
+            >
+              <Cpu className="w-3.5 h-3.5" />
+              <span>
+                {webllmEngine
+                  ? "Qwen 3.5 0.8B Active"
+                  : isModelDownloaded
+                  ? "Qwen 3.5 0.8B Cached"
+                  : webllmStatus.isLoading
+                  ? `Downloading (${webllmStatus.progressPercent}%)`
+                  : "Download Qwen 3.5 0.8B"}
+              </span>
+              {(webllmEngine || isModelDownloaded) && <Check className="w-3.5 h-3.5 text-emerald-500" />}
+            </button>
+          </div>
         </div>
-
-        {/* AI Model Status Badge */}
-        <div className="flex items-center gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={() => {
-              if (!webllmEngine) {
-                handleDownloadQwenModel();
-              }
-            }}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-              webllmEngine || isModelDownloaded
-                ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800"
-                : webllmStatus.isLoading
-                ? "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-800"
-                : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50"
-            }`}
-            title="Local in-browser Qwen 3.5 0.8B AI model status"
-          >
-            <Cpu className="w-3.5 h-3.5" />
-            <span>
-              {webllmEngine
-                ? "Qwen 3.5 0.8B Active"
-                : isModelDownloaded
-                ? "Qwen 3.5 0.8B Cached"
-                : webllmStatus.isLoading
-                ? `Downloading (${webllmStatus.progressPercent}%)`
-                : "Download Qwen 3.5 0.8B"}
-            </span>
-            {(webllmEngine || isModelDownloaded) && <Check className="w-3.5 h-3.5 text-emerald-500" />}
-          </button>
-        </div>
-      </div>
+        <div className="study-hero-image" aria-hidden="true" />
+      </header>
 
       {/* Scenario Navigator: Stepper (Prev / Next) + Dropdown (Q1 to Q100) */}
-      <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-3 sm:p-4 shadow-xs mb-6">
+      <div className="study-studio study-paper-two-toolbar">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           {/* Left: Case study descriptor and quick indicator */}
           <div className="flex items-center gap-2.5 min-w-0">
-            <span className="px-2.5 py-1 rounded-md bg-[#0F2042] text-white dark:bg-white dark:text-black font-mono font-bold text-xs shrink-0">
-              {currentScenarioIdx + 1} / 100
-            </span>
             <div className="text-xs truncate">
               <span className="font-bold text-[#0F2042] dark:text-white mr-1.5 font-mono">
                 Set {currentScenarioIdx + 1}
@@ -608,7 +595,7 @@ export function Paper2PracticeView({
           </div>
 
           {/* Right: Stepper (Prev / X of 100 / Next) + Random + Search (matches Paper 1 style) */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={handlePrevScenario}
@@ -657,7 +644,7 @@ export function Paper2PracticeView({
 
       {/* Model Loading Progress Bar (if loading) */}
       {webllmStatus.isLoading && (
-        <div className="mb-6 p-4 rounded-xl border border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30">
+        <div className="p-4 border-x border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30">
           <div className="flex items-center justify-between text-xs font-medium text-amber-800 dark:text-amber-300 mb-2">
             <span className="flex items-center gap-2">
               <Download className="w-3.5 h-3.5 animate-bounce" />
@@ -678,17 +665,15 @@ export function Paper2PracticeView({
       )}
 
       {/* Main Split-Screen Workspace */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="study-studio study-columns study-paper-two-columns">
         {/* ======================================================== */}
         {/* LEFT COLUMN (COL 1-5): CASE STUDY AREA WITH APPENDIX TABS */}
         {/* ======================================================== */}
-        <div className="lg:col-span-5 bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-2xl shadow-xs overflow-hidden flex flex-col h-[750px]">
+        <section className="study-paper-two-case" aria-labelledby="paper-two-case-title">
           {/* Header Bar with Case ID and Appendix Navigation Buttons */}
-          <div className="p-3.5 border-b border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black/40">
-            <div className="flex items-center justify-between mb-2.5">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-[#38BDF8]">
-                Set {currentScenarioIdx + 1} ({currentScenarioIdx + 1} / 100) · CASE STUDY INSERT
-              </span>
+          <div className="study-panel-padding border-b border-line dark:border-neutral-800">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h2 id="paper-two-case-title" className="study-panel-title">Case study insert</h2>
               <button
                 type="button"
                 onClick={() => setShowScenarioPicker(true)}
@@ -699,10 +684,11 @@ export function Paper2PracticeView({
             </div>
 
             {/* Case Study & Appendix Buttons */}
-            <div className="grid grid-cols-4 gap-1 p-1 bg-neutral-200/60 dark:bg-neutral-800 rounded-lg">
+            <div className="grid grid-cols-2 min-[360px]:grid-cols-4 gap-1 p-1 bg-neutral-200/60 dark:bg-neutral-800 rounded-lg">
               <button
                 type="button"
                 onClick={() => setCaseTab("main")}
+                aria-pressed={caseTab === "main"}
                 className={`py-1.5 px-2 text-[11px] font-bold rounded-md transition-all cursor-pointer truncate ${
                   caseTab === "main"
                     ? "bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white shadow-xs"
@@ -715,6 +701,7 @@ export function Paper2PracticeView({
               <button
                 type="button"
                 onClick={() => setCaseTab("app1")}
+                aria-pressed={caseTab === "app1"}
                 className={`py-1.5 px-2 text-[11px] font-bold rounded-md transition-all cursor-pointer truncate ${
                   caseTab === "app1"
                     ? "bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white shadow-xs"
@@ -727,6 +714,7 @@ export function Paper2PracticeView({
               <button
                 type="button"
                 onClick={() => setCaseTab("app2")}
+                aria-pressed={caseTab === "app2"}
                 className={`py-1.5 px-2 text-[11px] font-bold rounded-md transition-all cursor-pointer truncate ${
                   caseTab === "app2"
                     ? "bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white shadow-xs"
@@ -739,6 +727,7 @@ export function Paper2PracticeView({
               <button
                 type="button"
                 onClick={() => setCaseTab("app3")}
+                aria-pressed={caseTab === "app3"}
                 className={`py-1.5 px-2 text-[11px] font-bold rounded-md transition-all cursor-pointer truncate ${
                   caseTab === "app3"
                     ? "bg-white dark:bg-neutral-900 text-[#0F2042] dark:text-white shadow-xs"
@@ -752,7 +741,7 @@ export function Paper2PracticeView({
           </div>
 
           {/* Scrollable Content Body */}
-          <div className="flex-1 overflow-y-auto p-5 space-y-4 font-sans text-neutral-800 dark:text-neutral-200">
+          <div className="study-panel-padding flex-1 overflow-auto space-y-4 text-neutral-800 dark:text-neutral-200">
             {caseTab === "main" && (
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
@@ -817,25 +806,24 @@ export function Paper2PracticeView({
               </div>
             )}
           </div>
-        </div>
+        </section>
 
         {/* ======================================================== */}
         {/* RIGHT COLUMN (COL 6-12): STEP-BY-STEP QUESTION INTERFACE */}
         {/* ======================================================== */}
-        <div className="lg:col-span-7 space-y-4">
+        <div className="study-question-column study-paper-two-editor">
           {/* Question Sequence Nav (1a, 1b, 2a, 2b, 3a, 3b, 4a, 4b) */}
-          <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-3 shadow-xs">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-neutral-600 dark:text-neutral-400">
-                Step-by-Step Questions (Submit each before proceeding):
-              </span>
+          <section className="study-panel-padding" aria-labelledby="paper-two-questions-title">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h2 id="paper-two-questions-title" className="study-panel-title">Questions</h2>
               <div className="flex items-center gap-2 text-xs font-mono font-medium text-neutral-500">
                 <Clock className="w-3.5 h-3.5" />
                 <span>{formatTime(timerSeconds)}</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-8 gap-1.5">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Submit each answer before moving to the next question.</p>
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5">
               {activeScenario.questions.map((q, idx) => {
                 const isSelected = idx === currentQuestionIdx;
                 const isCompleted = completedIndices.includes(idx);
@@ -846,6 +834,7 @@ export function Paper2PracticeView({
                   <button
                     key={idx}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => {
                       setCurrentQuestionIdx(idx);
                       setShowModelAnswer(false);
@@ -873,10 +862,10 @@ export function Paper2PracticeView({
                 );
               })}
             </div>
-          </div>
+          </section>
 
-          {/* Active Question Box */}
-          <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
+          {/* Active Question Box (Practice Container) */}
+          <div className="study-answer space-y-4">
             {/* Question Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E7E5E4] dark:border-neutral-800 pb-3">
               <div className="flex items-center gap-2">
@@ -913,19 +902,20 @@ export function Paper2PracticeView({
             </div>
 
             {/* Question Prompt */}
-            <h2 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white leading-snug">
+            <h2 className="study-prompt">
               {activeQuestion.question_text}
             </h2>
 
             {/* Candidate Response Textarea */}
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
-                <span>Write your response below:</span>
+              <div className="study-answer-meta">
+                <label htmlFor="paper-two-response">Your response</label>
                 <span className="font-mono">
                   {((answers[currentQuestionIdx] || "").trim().split(/\s+/).filter(Boolean).length)} words
                 </span>
               </div>
               <textarea
+                id="paper-two-response"
                 value={answers[currentQuestionIdx] || ""}
                 onChange={(e) => {
                   const val = e.target.value;
@@ -937,7 +927,7 @@ export function Paper2PracticeView({
                 disabled={isEvaluating}
                 rows={7}
                 placeholder={`Draft your structured answer here for ${activeQuestion.mark_value} marks. Use specific case data and causal connectives...`}
-                className="w-full p-4 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-black/50 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-[#38BDF8] text-sm leading-relaxed resize-y font-sans"
+                className="study-response"
               />
             </div>
 
@@ -948,7 +938,7 @@ export function Paper2PracticeView({
                   type="button"
                   onClick={handleSubmitCurrentQuestion}
                   disabled={isEvaluating || !(answers[currentQuestionIdx] || "").trim()}
-                  className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-black hover:bg-[#1E3A8A] dark:hover:bg-[#0284C7] disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer shadow-sm flex items-center gap-2"
+                  className="btn-primary px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer shadow-sm flex items-center gap-2"
                 >
                   {isEvaluating ? (
                     <>

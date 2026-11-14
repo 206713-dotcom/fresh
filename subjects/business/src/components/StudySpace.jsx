@@ -42,6 +42,7 @@ import {
   deductStudyCoins,
   incrementCompletedFocusSessions,
 } from '../lib/cookies';
+import { getStudentCode, flushProgress } from '../lib/sheetSync';
 
 
 // Visual themes definition with Roblox study game aesthetic
@@ -254,73 +255,40 @@ export default function StudySpace({
     }, duration);
   }, []);
 
-  // Sync state to Supabase API
-  const syncToSupabase = useCallback(async (codeToSync, currentCoins, currentStreak, currentThemes) => {
-    if (!codeToSync) return;
-    try {
-      setIsSyncing(true);
-      const res = await fetch('/api/study-space', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_code: codeToSync,
-          coins: currentCoins,
-          streak: currentStreak,
-          unlocked_themes: currentThemes,
-        }),
-      });
-
-      if (!res.ok) {
-        console.warn('API sync returned non-200 status');
-      }
-    } catch (err) {
-      console.warn('Could not sync to API:', err.message);
-    } finally {
-      setIsSyncing(false);
-    }
+  // Persist progress to the student's row in the Google Sheet.
+  // The snapshot sync in ../lib/sheetSync captures every ecbiz_* key, so this
+  // only needs to trigger a flush.
+  const syncProgress = useCallback(() => {
+    flushProgress();
   }, []);
 
-  // Fetch session data from Supabase API
-  const fetchSessionData = useCallback(async (code) => {
-    if (!code) return;
+  // The Sheet snapshot is restored once at startup by startSheetSync(); here
+  // we just re-read the values it left in localStorage.
+  const fetchSessionData = useCallback(() => {
+    const localCoins = getStudyCoins();
+    setCoins(localCoins);
+
+    const localStreak = parseInt(
+      localStorage.getItem('ecbiz_study_streak') || '0',
+      10
+    );
+    setStreak(Number.isFinite(localStreak) ? localStreak : 0);
+
+    let themes = ['default'];
     try {
-      setIsSyncing(true);
-      const res = await fetch(`/api/study-space?code=${encodeURIComponent(code)}`);
-      const contentType = res.headers.get('content-type') || '';
-      if (!res.ok || !contentType.includes('application/json')) {
-        throw new Error('Server returned non-JSON response');
-      }
-      const data = await res.json();
+      const parsed = JSON.parse(
+        localStorage.getItem('ecbiz_study_themes') || '["default"]'
+      );
+      if (Array.isArray(parsed) && parsed.length > 0) themes = parsed;
+    } catch {}
+    setUnlockedThemes(themes);
 
-      if (data) {
-        // Never wipe local coins with 0; take the maximum of local and remote
-        const localCoins = getStudyCoins();
-        const remoteCoins = typeof data.coins === 'number' ? data.coins : 0;
-        const bestCoins = Math.max(localCoins, remoteCoins);
-        setCoins(bestCoins);
-        setStreak(data.streak ?? 0);
-        const themes = Array.isArray(data.unlocked_themes) && data.unlocked_themes.length > 0 
-          ? data.unlocked_themes 
-          : ['default'];
-        setUnlockedThemes(themes);
-
-        // Save local backup safely
-        try {
-          localStorage.setItem('ecbiz_study_code', code);
-          localStorage.setItem('ecbiz_study_coins', String(bestCoins));
-          localStorage.setItem('ecbiz_study_streak', String(data.streak ?? 0));
-          localStorage.setItem('ecbiz_study_themes', JSON.stringify(themes));
-        } catch {}
-
-        showToast(`Connected profile: ${code}`);
-      }
-    } catch (err) {
-      console.warn('[StudySpace sync notice]:', err?.message || 'Using local profile');
-      showToast('Loaded local study profile');
-    } finally {
-      setIsSyncing(false);
+    const activeTheme =
+      localStorage.getItem('ecbiz_study_active_theme') || 'default';
+    if (THEMES[activeTheme]) {
+      setActiveThemeId(activeTheme);
     }
-  }, [showToast]);
+  }, []);
 
   // Synchronize coins across components whenever ecbiz_coins_updated event is dispatched
   useEffect(() => {
@@ -335,11 +303,14 @@ export default function StudySpace({
     return () => window.removeEventListener('ecbiz_coins_updated', handleCoinsEvent);
   }, []);
 
-  // Initial load: check localStorage for existing code or generate a fresh one
+  // Initial load: use the signed-in student's number when available, otherwise
+  // fall back to this browser's local token.
   useEffect(() => {
-    let savedCode = '';
+    let savedCode = getStudentCode() || '';
     try {
-      savedCode = localStorage.getItem('ecbiz_study_code') || '';
+      if (!savedCode) {
+        savedCode = localStorage.getItem('ecbiz_study_code') || '';
+      }
     } catch {}
 
     if (!savedCode) {
@@ -376,7 +347,7 @@ export default function StudySpace({
       setActiveThemeId(savedActiveTheme);
     }
 
-    // Attempt remote sync with Supabase
+    // Attempt remote sync with the Google Sheet
     fetchSessionData(savedCode);
   }, [fetchSessionData]);
 
@@ -510,7 +481,7 @@ export default function StudySpace({
     localStorage.setItem('ecbiz_study_themes', JSON.stringify(['default']));
     localStorage.setItem('ecbiz_study_active_theme', 'default');
 
-    syncToSupabase(fresh, existingCoins, 0, ['default']);
+    syncProgress(fresh, existingCoins, 0, ['default']);
     showToast(`Generated new anonymous token: ${fresh}`);
     setIsProfileOpen(false);
   };
@@ -666,7 +637,7 @@ export default function StudySpace({
             awardBonusStudyCoins(1);
             const activeCoins = getStudyCoins();
             setCoins(activeCoins);
-            syncToSupabase(accessCode, activeCoins, streak, unlockedThemes);
+            syncProgress(accessCode, activeCoins, streak, unlockedThemes);
             showToast('+1 Study Coin earned for focused study! ✨');
           }
         }
@@ -684,7 +655,7 @@ export default function StudySpace({
         setStreak(newStreak);
 
         localStorage.setItem('ecbiz_study_streak', String(newStreak));
-        syncToSupabase(accessCode, activeCoins, newStreak, unlockedThemes);
+        syncProgress(accessCode, activeCoins, newStreak, unlockedThemes);
 
         showToast(`🎉 Focus Session Complete! +25 Coins & Streak increased to ${newStreak}!`);
         setTimerMode('break');
@@ -699,7 +670,7 @@ export default function StudySpace({
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [isRunning, timeLeft, timerMode, coins, streak, accessCode, unlockedThemes, syncToSupabase, showToast, focusMinutes, breakMinutes]);
+  }, [isRunning, timeLeft, timerMode, coins, streak, accessCode, unlockedThemes, syncProgress, showToast, focusMinutes, breakMinutes]);
 
   // Timer controls
   const handleStartPause = () => {
@@ -784,7 +755,7 @@ export default function StudySpace({
     localStorage.setItem('ecbiz_study_themes', JSON.stringify(updatedThemes));
     localStorage.setItem('ecbiz_study_active_theme', themeId);
 
-    syncToSupabase(accessCode, updatedCoins, streak, updatedThemes);
+    syncProgress(accessCode, updatedCoins, streak, updatedThemes);
     showToast(`Unlocked and equipped ${theme.name}! 🎉`);
   };
 
@@ -1584,8 +1555,8 @@ export default function StudySpace({
                 </div>
 
                 <p className="text-xs text-white/60 mb-6 leading-relaxed">
-                  No logins, emails, or personal data required. Your progress, coins, and themes are safely
-                  tied to this anonymous token on Supabase.
+                  No email or personal details needed. Sign in with your 6-digit student number to save
+                  your progress, coins, and themes to the class Google Sheet.
                 </p>
 
                 <div className="p-4 rounded-2xl bg-black/40 border border-white/15 flex items-center justify-between mb-6">

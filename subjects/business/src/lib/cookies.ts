@@ -135,7 +135,9 @@ export interface PracticeSessionState {
   selectedUnit?: 1 | 2 | 3 | 4 | 5 | 6;
   activePaper2QIndex?: number;
   currentVerifiedIndex?: number;
-  verifiedMarkFilter?: number;
+  verifiedMarkFilter?: number | "all";
+  verifiedUnitFilter?: string;
+  verifiedPaperFilter?: number | "all";
 }
 
 /**
@@ -272,15 +274,6 @@ export function loadUserPreferences(): UserPreferences {
   } catch {
     return defaultPrefs;
   }
-}
-
-export function saveTheme(theme: "light" | "dark"): void {
-  setPermanentCookie("theme", theme);
-}
-
-export function loadTheme(): "light" | "dark" {
-  const t = getPermanentCookie("theme");
-  return t === "dark" ? "dark" : "light";
 }
 
 export function saveSelectedSubject(subject: "business" | null): void {

@@ -29,13 +29,6 @@ export function DocumentArchive() {
       isLocal: true,
     },
     {
-      title: "Cambridge IGCSE and O Level Business Sixth Edition Textbook",
-      description: "Core approved textbook resource covering all units: business activity, people, marketing, operations, finance, and external influences.",
-      category: "Core Textbook",
-      url: "https://drive.google.com/file/d/1rXshxk0VuDQBny9pVhUbVnAwDzS3gWoI/view?usp=drive_link",
-      isLocal: false,
-    },
-    {
       title: "CAIE IGCSE Business Studies Revision Guide",
       description: "Comprehensive structured revision summary of all chapters and CIE examination technique guidelines.",
       category: "Revision Guide",
@@ -45,14 +38,14 @@ export function DocumentArchive() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
-      <div className="max-w-3xl mb-10">
-        <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white mb-3">
-          Cambridge Examination Document Archive
-        </h1>
-        <p className="text-sm text-[#57534E] dark:text-neutral-400 leading-relaxed">
-          Zero-cost access to official Cambridge International Education (CIE) 0264 specimen papers, mark schemes, case inserts, syllabus specifications, and textbook references.
-        </p>
+    <div className="study-page">
+      <div className="study-page-heading">
+        <div>
+          <h1 className="study-title">Cambridge Examination Document Archive</h1>
+          <p className="study-description">
+            Zero-cost access to official Cambridge International Education (CIE) 0264 specimen papers, mark schemes, case inserts, and syllabus specifications.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

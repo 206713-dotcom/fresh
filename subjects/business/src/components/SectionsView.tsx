@@ -2,28 +2,45 @@
 
 import React, { useState } from "react";
 import { SectionBreakdownBox } from "./SectionBreakdownBox";
+import { OnePageSheets } from "./OnePageSheets";
 import { SYLLABUS_SECTIONS } from "../lib/data/syllabus-topics";
 
 interface SectionsViewProps {
   onSelectTopicForPractice: (sectionCode: string, topicCode: string) => void;
-  onOpenFinanceExam: () => void;
   onReturnToPractice: () => void;
+  onOpenCompare?: (sectionCode: string) => void;
   initialSectionCode?: string;
 }
 
 export function SectionsView({
   onSelectTopicForPractice,
-  onOpenFinanceExam,
   onReturnToPractice,
+  onOpenCompare,
   initialSectionCode = "1",
 }: SectionsViewProps) {
   const [activeSectionCode, setActiveSectionCode] = useState<string>(initialSectionCode);
-  const [viewMode, setViewMode] = useState<"focused" | "all">("focused");
+  const [viewMode, setViewMode] = useState<"focused" | "all" | "sheets">("focused");
+  const [sheetSection, setSheetSection] = useState(initialSectionCode);
+
+  const openSheet = (code: string) => {
+    setSheetSection(code);
+    setActiveSectionCode(code);
+    setViewMode("sheets");
+  };
+
+  if (viewMode === "sheets") {
+    return (
+      <OnePageSheets
+        initialSectionCode={sheetSection}
+        onBack={() => setViewMode("focused")}
+      />
+    );
+  }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 transition-colors">
+    <div className="study-page">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="study-page-heading">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2 h-2 rounded-full bg-[#0F2042] dark:bg-[#38BDF8]" />
@@ -31,15 +48,23 @@ export function SectionsView({
               Cambridge 0264 / 0450 Syllabus Directory
             </span>
           </div>
-          <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white">
+          <h1 className="study-title">
             Sections & Chapters Breakdown
           </h1>
-          <p className="text-sm text-[#57534E] dark:text-neutral-400 mt-0.5">
+          <p className="study-description">
             Access official consolidation documents, core chapter concepts, and targeted practice questions.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => openSheet(activeSectionCode)}
+            className="px-3.5 py-2 text-xs font-semibold rounded-lg border border-[#0F2042]/30 dark:border-[#38BDF8]/40 bg-white dark:bg-neutral-900 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#0F2042] dark:text-[#38BDF8] transition-colors"
+          >
+            1-page sheets
+          </button>
+
           <button
             onClick={() => setViewMode(viewMode === "focused" ? "all" : "focused")}
             className="px-3.5 py-2 text-xs font-semibold rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#57534E] dark:text-neutral-300 transition-colors"
@@ -63,7 +88,8 @@ export function SectionsView({
             activeSectionCode={activeSectionCode}
             onSelectSection={setActiveSectionCode}
             onSelectTopic={(topicCode) => onSelectTopicForPractice(activeSectionCode, topicCode)}
-            onOpenFinanceExam={onOpenFinanceExam}
+            onOpenOnePageSheet={openSheet}
+            onOpenCompare={onOpenCompare}
           />
         </div>
       ) : (
@@ -75,7 +101,8 @@ export function SectionsView({
               activeSectionCode={sec.code}
               onSelectSection={setActiveSectionCode}
               onSelectTopic={(topicCode) => onSelectTopicForPractice(sec.code, topicCode)}
-              onOpenFinanceExam={onOpenFinanceExam}
+              onOpenOnePageSheet={openSheet}
+              onOpenCompare={onOpenCompare}
             />
           ))}
         </div>

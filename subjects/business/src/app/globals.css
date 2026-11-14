@@ -2,6 +2,42 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ========================================================= */
+/* 1. GLOBAL CSS ROOT VARIABLES                              */
+/* ========================================================= */
+:root {
+  --paper: #f6f4ed;            /* Primary page background */
+  --ink: #192e28;              /* Primary text color */
+  --muted: #4b5c54;            /* Secondary text, descriptions, and footers */
+  --line: #d4d9cf;             /* Borders, dividers, and card outlines */
+  --green: #203e32;            /* Deep accent for logo, main headers, and hero banners */
+  --white: #fffefa;            /* Card, input, and container backgrounds */
+  --business: #f5e4e8;         /* Business Category Theme: Dusty Rose / Blush Pink */
+  --business-theme: #f5e4e8;   /* Alias for business category */
+  --focus-outline: #97532b;    /* Focus States: Rust Orange */
+  --primary-btn-bg: #e4eeb2;   /* Primary Buttons default: Pale Chartreuse */
+  --primary-btn-text: #213b30; /* Primary Buttons text: Dark Green */
+  --primary-btn-hover: #f2f7da;/* Primary Buttons hover/focus: Light Chartreuse */
+  --sticker-badge: #f6bb83;    /* Sticker Badges: Sandy Orange */
+  --practice-bg: #edf2e7;      /* Practice Blocks: Light Olive Tint */
+
+  --font-serif: "Source Serif 4", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+}
+
+@theme {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-white: var(--white);
+  --color-business: var(--business);
+  --color-sticker: var(--sticker-badge);
+  --color-practice: var(--practice-bg);
+}
+
 html.dark,
 .dark {
   color-scheme: dark;
@@ -9,29 +45,132 @@ html.dark,
 
 html.dark body,
 body.dark {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: #0d1613 !important;
+  color: #f6f4ed !important;
 }
 
 @layer base {
-  :root {
-    --font-serif: "Source Serif 4", "Playfair Display", Georgia, serif;
-    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
-  }
-
   body {
-    background-color: #faf9f6;
-    color: #1c1917;
+    background-color: var(--paper, #f6f4ed);
+    color: var(--ink, #192e28);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Academic paper styling */
   .font-academic-serif {
     font-family: var(--font-serif);
   }
+}
+
+/* ========================================================= */
+/* 2. COMPONENT-SPECIFIC UI STYLING                          */
+/* ========================================================= */
+
+/* Focus States: #97532b (Rust Orange) thick high-contrast outline */
+:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #97532b !important;
+  outline-offset: 2px !important;
+}
+
+/* Primary Buttons: Default #e4eeb2 (Pale Chartreuse) with text #213b30 (Dark Green).
+   Hover and focus-visible: #f2f7da */
+.btn-primary,
+button.btn-primary,
+.primary-btn,
+button.primary-btn,
+button[data-primary="true"] {
+  background-color: #e4eeb2 !important;
+  color: #213b30 !important;
+  border: 1px solid #d4d9cf !important;
+  font-weight: 700 !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+.primary-btn:hover,
+button.primary-btn:hover,
+button[data-primary="true"]:hover,
+.btn-primary:focus-visible,
+button.btn-primary:focus-visible,
+.primary-btn:focus-visible,
+button.primary-btn:focus-visible,
+button[data-primary="true"]:focus-visible {
+  background-color: #f2f7da !important;
+  color: #213b30 !important;
+}
+
+/* Sticker Badges: Round accent badge/sticker elements with Sandy Orange (#f6bb83) */
+.sticker-badge,
+.badge-sticker,
+.sticker,
+[data-sticker] {
+  background-color: #f6bb83 !important;
+  color: #192e28 !important;
+  border-radius: 9999px !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Practice Blocks (.practice): Light Olive Tint (#edf2e7) for interactive quiz & practice containers */
+.practice,
+[data-practice],
+.practice-container,
+.practice-block {
+  background-color: #edf2e7 !important;
+  border-color: #d4d9cf !important;
+}
+
+/* Business Category Theme: Dusty Rose / Blush Pink (#f5e4e8) for business section headers and accents */
+.business-category,
+.business-theme,
+.bg-business {
+  background-color: #f5e4e8 !important;
+  color: #192e28 !important;
+}
+.border-business {
+  border-color: #f5e4e8 !important;
+}
+.text-business {
+  color: #192e28 !important;
+}
+
+/* Theme color mappings */
+.bg-\[\#FAF9F6\] {
+  background-color: var(--paper, #f6f4ed) !important;
+}
+.text-\[\#0F2042\] {
+  color: var(--green, #203e32) !important;
+}
+.bg-\[\#0F2042\] {
+  background-color: var(--green, #203e32) !important;
+}
+.border-\[\#0F2042\] {
+  border-color: var(--green, #203e32) !important;
+}
+.text-\[\#1C1917\],
+.text-\[\#1c1917\] {
+  color: var(--ink, #192e28) !important;
+}
+.text-\[\#78716C\],
+.text-\[\#57534E\],
+.text-\[\#44403C\] {
+  color: var(--muted, #4b5c54) !important;
+}
+.border-\[\#E7E5E4\],
+.border-\[\#D6D3D1\] {
+  border-color: var(--line, #d4d9cf) !important;
 }
 
 /* Custom subtle scrollbar */
@@ -43,14 +182,14 @@ body.dark {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d3d1;
+  background: #d4d9cf;
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
   background: #262626;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a29e;
+  background: #4b5c54;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #404040;

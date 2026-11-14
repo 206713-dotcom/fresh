@@ -1,28 +1,84 @@
 @import "tailwindcss";
+@import "./study-layout.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ========================================================= */
+/* 1. GLOBAL CSS ROOT VARIABLES                              */
+/* ========================================================= */
+:root {
+  --paper: #f6f4ed;            /* Primary page background */
+  --ink: #192e28;              /* Primary text color */
+  --muted: #4b5c54;            /* Secondary text, descriptions, and footers */
+  --line: #d4d9cf;             /* Borders, dividers, and card outlines */
+  --green: #203e32;            /* Deep accent for logo, main headers, and hero banners */
+  --white: #fffefa;            /* Card, input, and container backgrounds */
+  --business: #f5e4e8;         /* Business Category Theme: Dusty Rose / Blush Pink */
+  --business-theme: #f5e4e8;   /* Alias for business category */
+  --focus-outline: #97532b;    /* Focus States: Rust Orange */
+  --primary-btn-bg: #e4eeb2;   /* Primary Buttons default: Pale Chartreuse */
+  --primary-btn-text: #213b30; /* Primary Buttons text: Dark Green */
+  --primary-btn-hover: #f2f7da;/* Primary Buttons hover/focus: Light Chartreuse */
+  --sticker-badge: #f6bb83;    /* Sticker Badges: Sandy Orange */
+  --practice-bg: #edf2e7;      /* Practice Blocks: Light Olive Tint */
+  --card: #fffefa;             /* Card surfaces inside themed pages */
+
+  /* Visual study sheets: card surfaces, diagram fills and chart accents */
+  --sheet-surface: #fbfaf5;
+  --sheet-surface-strong: #f3f0e6;
+  --sheet-blush: #f5e4e8;
+  --sheet-blush-line: #e4c6cc;
+  --sheet-sage: #edf2e7;
+  --sheet-sage-line: #c9d6b9;
+  --sheet-sand: #f7eedf;
+  --sheet-sand-line: #e4d0af;
+  --sheet-rose: #fbefef;
+  --sheet-rose-line: #e8c9cd;
+  --sheet-ink-soft: #6d4a51;
+
+  --font-serif: "Source Serif 4", Georgia, "Playfair Display", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+}
+
+@theme {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-white: var(--white);
+  --color-business: var(--business);
+  --color-sticker: var(--sticker-badge);
+  --color-practice: var(--practice-bg);
+}
 
 html.dark,
 .dark {
   color-scheme: dark;
+  --sheet-surface: #151b17;
+  --sheet-surface-strong: #1b221d;
+  --sheet-blush: #35262b;
+  --sheet-blush-line: #4d343b;
+  --sheet-sage: #1b2a17;
+  --sheet-sage-line: #3c4f33;
+  --sheet-sand: #2e271c;
+  --sheet-sand-line: #4b3f2d;
+  --sheet-rose: #2d1d1f;
+  --sheet-rose-line: #4c2e32;
+  --sheet-ink-soft: #e7c9cf;
 }
 
 html.dark body,
 body.dark {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: #0d1613 !important;
+  color: #f6f4ed !important;
 }
 
 @layer base {
-  :root {
-    --font-serif: Georgia, "Source Serif 4", "Playfair Display", serif;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
-  }
-
   body {
-    background-color: #faf9f6;
-    color: #1c1917;
+    background-color: var(--paper, #f6f4ed);
+    color: var(--ink, #192e28);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -33,7 +89,245 @@ body.dark {
   }
 }
 
-/* Custom subtle scrollbar */
+/* ========================================================= */
+/* 2. COMPONENT-SPECIFIC UI STYLING                          */
+/* ========================================================= */
+
+/* Focus States: #97532b (Rust Orange) thick high-contrast outline */
+:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #97532b !important;
+  outline-offset: 2px !important;
+}
+
+/* Primary Buttons: Default #e4eeb2 (Pale Chartreuse) with text #213b30 (Dark Green).
+   Hover and focus-visible: #f2f7da */
+.btn-primary,
+button.btn-primary,
+.primary-btn,
+button.primary-btn,
+button[data-primary="true"] {
+  background-color: var(--primary-btn-bg, #e4eeb2) !important;
+  color: var(--primary-btn-text, #213b30) !important;
+  border: 1px solid var(--line, #d4d9cf) !important;
+  font-weight: 700 !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover,
+button.btn-primary:hover,
+.primary-btn:hover,
+button.primary-btn:hover,
+button[data-primary="true"]:hover,
+.btn-primary:focus-visible,
+button.btn-primary:focus-visible,
+.primary-btn:focus-visible,
+button.primary-btn:focus-visible,
+button[data-primary="true"]:focus-visible {
+  background-color: var(--primary-btn-hover, #f2f7da) !important;
+  color: var(--primary-btn-text, #213b30) !important;
+}
+
+/* Sticker Badges: Round accent badge/sticker elements with Sandy Orange (#f6bb83) */
+.sticker-badge,
+.badge-sticker,
+.sticker,
+[data-sticker] {
+  background-color: var(--sticker-badge, #f6bb83) !important;
+  color: var(--ink, #192e28) !important;
+  border-radius: 9999px !important;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Practice Blocks (.practice): Light Olive Tint (#edf2e7) for interactive quiz & practice containers */
+.practice,
+[data-practice],
+.practice-container,
+.practice-block {
+  background-color: var(--practice-bg, #edf2e7) !important;
+  border-color: var(--line, #d4d9cf) !important;
+}
+
+/* Interactive Lessons: hidden terms revealed by hint */
+@keyframes lesson-term-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson-revealed-term {
+  animation: lesson-term-reveal 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-revealed-term {
+    animation: none;
+  }
+}
+
+/* Business Category Theme: Dusty Rose / Blush Pink (#f5e4e8) for business section headers and accents */
+.business-category,
+.business-theme,
+.bg-business {
+  background-color: var(--business, #f5e4e8) !important;
+  color: var(--ink, #192e28) !important;
+}
+.border-business {
+  border-color: var(--business, #f5e4e8) !important;
+}
+.text-business {
+  color: var(--ink, #192e28) !important;
+}
+
+/* ========================================================= */
+/* 3. THEME SYSTEM COLOR REPLACEMENTS                        */
+/* ========================================================= */
+.bg-\[\#FAF9F6\] {
+  background-color: var(--paper, #f6f4ed) !important;
+}
+.text-\[\#0F2042\] {
+  color: var(--green, #203e32) !important;
+}
+.bg-\[\#0F2042\] {
+  background-color: var(--green, #203e32) !important;
+}
+.border-\[\#0F2042\] {
+  border-color: var(--green, #203e32) !important;
+}
+.text-\[\#1C1917\],
+.text-\[\#1c1917\] {
+  color: var(--ink, #192e28) !important;
+}
+.text-\[\#78716C\],
+.text-\[\#57534E\],
+.text-\[\#44403C\] {
+  color: var(--muted, #4b5c54) !important;
+}
+.border-\[\#E7E5E4\],
+.border-\[\#D6D3D1\] {
+  border-color: var(--line, #d4d9cf) !important;
+}
+
+/* Brand green used directly in components follows the active theme. */
+.bg-\[\#203e32\] {
+  background-color: var(--green, #203e32) !important;
+}
+.text-\[\#203e32\] {
+  color: var(--green, #203e32) !important;
+}
+.border-\[\#203e32\] {
+  border-color: var(--green, #203e32) !important;
+}
+
+/* Card surfaces pick up a theme tint, but never inside dark mode. */
+html:not(.dark) .bg-white,
+html:not(.dark) .bg-\[\#FAF9F6\] {
+  background-color: var(--card, #fffefa) !important;
+}
+html:not(.dark) .bg-\[\#FAF9F6\]\/95 {
+  background-color: color-mix(in srgb, var(--card, #fffefa) 95%, transparent) !important;
+}
+
+/* ========================================================= */
+/* 3b. COIN-UNLOCKED APP THEMES (see src/lib/themes.ts)      */
+/* ========================================================= */
+html[data-theme="sepia"] {
+  --paper: #f2e7cf;
+  --card: #fbf5e6;
+  --ink: #372a17;
+  --muted: #6a5840;
+  --line: #d9c49c;
+  --green: #4c3a16;
+  --sticker-badge: #e9b871;
+  --practice-bg: #efe2c4;
+  --business: #f0ded6;
+  --business-theme: #f0ded6;
+  --primary-btn-bg: #e9dfb0;
+  --primary-btn-text: #372a17;
+  --primary-btn-hover: #f3eccb;
+  --sheet-surface: #f8efd9;
+  --sheet-surface-strong: #f1e3c1;
+  --sheet-blush: #f0ded6;
+  --sheet-blush-line: #ddbfb4;
+  --sheet-sage: #eee4c4;
+  --sheet-sage-line: #d6c49a;
+  --sheet-sand: #f6e9c9;
+  --sheet-sand-line: #ddc79b;
+  --sheet-rose: #f7e7dd;
+  --sheet-rose-line: #e0c6b4;
+  --sheet-ink-soft: #6a4a3a;
+}
+
+html[data-theme="blueprint"] {
+  --paper: #eaf2fb;
+  --card: #f4f9ff;
+  --ink: #12314a;
+  --muted: #4a6580;
+  --line: #c4d8ec;
+  --green: #174a6b;
+  --sticker-badge: #9cc8f5;
+  --practice-bg: #e2eefb;
+  --business: #e8e2f6;
+  --business-theme: #e8e2f6;
+  --primary-btn-bg: #d7e8fa;
+  --primary-btn-text: #12314a;
+  --primary-btn-hover: #e9f3fd;
+  --sheet-surface: #f3f8fe;
+  --sheet-surface-strong: #e6f0fb;
+  --sheet-blush: #e8e2f6;
+  --sheet-blush-line: #cfc4e6;
+  --sheet-sage: #e3effa;
+  --sheet-sage-line: #c0d6ea;
+  --sheet-sand: #f1ecdf;
+  --sheet-sand-line: #d8ccae;
+  --sheet-rose: #f7e9ea;
+  --sheet-rose-line: #e2c4c8;
+  --sheet-ink-soft: #3e5a76;
+}
+
+html[data-theme="sakura"] {
+  --paper: #fdf0f4;
+  --card: #fff8fa;
+  --ink: #3f1f2a;
+  --muted: #7a5561;
+  --line: #f0cfd9;
+  --green: #7a2f45;
+  --sticker-badge: #f8b7c7;
+  --practice-bg: #fbe8f0;
+  --business: #f6e0ea;
+  --business-theme: #f6e0ea;
+  --primary-btn-bg: #f9dbe6;
+  --primary-btn-text: #4a2130;
+  --primary-btn-hover: #fceaf1;
+  --sheet-surface: #fff7f9;
+  --sheet-surface-strong: #fbe9ef;
+  --sheet-blush: #fbe4eb;
+  --sheet-blush-line: #efc3d1;
+  --sheet-sage: #f6ecf0;
+  --sheet-sage-line: #e6cfd8;
+  --sheet-sand: #fbf0e2;
+  --sheet-sand-line: #e6d3b9;
+  --sheet-rose: #fdecef;
+  --sheet-rose-line: #f2c8d2;
+  --sheet-ink-soft: #8a4a5c;
+}
+
+/* Subtle custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -42,15 +336,55 @@ body.dark {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d3d1;
+  background: #d4d9cf;
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
   background: #262626;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a29e;
+  background: #4b5c54;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #404040;
+}
+
+/* ========================================================= */
+/* 4. AUTHENTIC A4 REVISION SHEET DIMENSIONS & PRINT STYLES  */
+/* ========================================================= */
+.a4-sheet-container {
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  box-shadow:
+    0 20px 50px -14px rgba(25, 46, 40, 0.22),
+    0 4px 12px -2px rgba(25, 46, 40, 0.08),
+    0 0 0 1px rgba(25, 46, 40, 0.06);
+}
+
+.dark .a4-sheet-container {
+  box-shadow:
+    0 22px 54px -14px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+  .sheet-chrome {
+    display: none !important;
+  }
+  .one-page-sheet-root {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .screen-sheet-document {
+    max-width: 100% !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
 }

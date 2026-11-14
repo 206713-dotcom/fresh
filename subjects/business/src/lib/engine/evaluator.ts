@@ -284,7 +284,7 @@ export function checkKnowledgePointMatches(
  * • Website Code handles the Rules:
  *   - Evaluates valid_app_words list. If missing, sets Application score to 0 automatically.
  *   - Evaluates if_no_eval_word rule. If missing, sets Evaluation score to 0 automatically.
- * • Qwen 0.5B / Instant Examiner handles the Interpretation:
+ * • Qwen 3.5 0.8B / Instant Examiner handles the Interpretation:
  *   - Reads student text and confirms if they understood core business concepts (AO1) and causal reasoning (AO3).
  * • Website Code calculates the Total:
  *   - Combines results from keyword scan and AI response to save the final score.
@@ -400,7 +400,7 @@ export async function evaluateStudentEssay(
     ruleNotes,
   };
 
-  // 2. AI Interpretation Pass (Qwen 0.5B via WebLLM if loaded)
+  // 2. AI Interpretation Pass (Qwen 3.5 0.8B via WebLLM if loaded)
   if (webllmEngine) {
     try {
       const markSchemeLines = [
@@ -428,7 +428,7 @@ export async function evaluateStudentEssay(
         engine: webllmEngine,
       });
 
-      // Qwen 0.5B Interpretation: extracts raw conceptual understanding
+      // Qwen 3.5 0.8B Interpretation: extracts raw conceptual understanding
       const ratio = marks > 0 ? Math.min(1, Math.max(0, llmResult.marks_awarded / marks)) : 0;
       
       // 1. Knowledge (AO1): check mark scheme alignment + LLM feedback
@@ -485,7 +485,7 @@ export async function evaluateStudentEssay(
         improvements.push("Continue sharpening multi-step economic chains under timed exam conditions.");
       }
 
-      let examinerNotes = `[Qwen 0.5B Interpretation + Website Code Rule Engine] ${llmResult.examiner_notes}`;
+      let examinerNotes = `[Qwen 3.5 0.8B Local AI Examiner + Rule Engine] ${llmResult.examiner_notes}`;
       if (ao2CappedToZero) {
         examinerNotes += " (AO2 Application was capped to 0 marks because required case study keywords were missing).";
       }

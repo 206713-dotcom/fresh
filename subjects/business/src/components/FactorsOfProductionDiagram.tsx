@@ -19,7 +19,7 @@ export function FactorsOfProductionDiagram({
   const isModalMode = isModal || isOpen !== undefined;
 
   const [selectedFactor, setSelectedFactor] = useState<"land" | "labour" | "capital" | "enterprise">("land");
-  const [activeTab, setActiveTab] = useState<"factors" | "circular" | "mobility">("factors");
+  const [activeTab, setActiveTab] = useState<"factors" | "circular">("factors");
 
   const factorsData = {
     land: {
@@ -39,10 +39,6 @@ export function FactorsOfProductionDiagram({
       ],
       rewardExplanation:
         "Rent is the financial payment made to landowners or resource proprietors for the productive use of natural resources and commercial land plots.",
-      mobility: {
-        geographical: "Completely geographically immobile (cannot physically move a farm, mineral mine, or river).",
-        occupational: "Occupationally mobile to a degree (e.g. farm land can be repurposed to build factories or housing estates).",
-      },
       examTip:
         "CIE Warning: In Business Studies, 'Land' is NOT just soil. It includes underground minerals, oceans, and natural atmospheric resources. Capital goods (like tractors or irrigation pipes) are NOT land—they are capital!",
     },
@@ -63,12 +59,8 @@ export function FactorsOfProductionDiagram({
       ],
       rewardExplanation:
         "Wages (time-rate, piece-rate, or hourly pay) and salaries (fixed monthly compensation) represent the return earned by workers for their productive labor time and human capital.",
-      mobility: {
-        geographical: "Limited by family ties, housing costs, language barriers, and visa/immigration legal restrictions.",
-        occupational: "Limited by lack of qualifications, training requirements, and specialized skills (e.g. an accountant cannot instantly become a surgeon).",
-      },
       examTip:
-        "CIE Exam Tip: Quality of labour is known as 'human capital'. Investment in education, apprenticeships, and healthcare shifts the PPC (Production Possibility Curve) outward by boosting labour productivity.",
+        "Labour is human effort used in production. In a definition, say what the worker does, and name wages as the reward. Do not treat money itself as labour.",
     },
     capital: {
       title: "Capital",
@@ -87,10 +79,6 @@ export function FactorsOfProductionDiagram({
       ],
       rewardExplanation:
         "Interest is the financial reward paid to investors or financial institutions for loaning funds used to purchase capital equipment, or the return earned on capital investment capital.",
-      mobility: {
-        geographical: "Varies widely: computers and delivery vans are highly mobile; specialized steel blast furnaces or chemical refineries are fixed and geographically immobile.",
-        occupational: "Varies: general office computers and vans are occupationally mobile across industries; a specialized semiconductor lithography machine cannot produce shoes.",
-      },
       examTip:
         "CIE Warning: MONEY IS NOT A FACTOR OF PRODUCTION. Money facilitates transactions, but money itself cannot produce anything. Capital refers strictly to real physical capital goods (machines, factories, tools).",
     },
@@ -111,10 +99,6 @@ export function FactorsOfProductionDiagram({
       ],
       rewardExplanation:
         "Profit is the residual return earned by the entrepreneur after all other costs (Rent for land, Wages for labour, Interest for capital) have been fully paid. It is the reward for successful risk-taking.",
-      mobility: {
-        geographical: "Often highly mobile; skilled entrepreneurs can establish businesses globally where market opportunities and tax laws are favorable.",
-        occupational: "Highly occupationally mobile; entrepreneurial decision-making, strategic coordination, and risk management skills transfer across diverse industries.",
-      },
       examTip:
         "CIE Exam Tip: In Paper 1 (2-mark definitions), always mention both key elements: (1) combining the other 3 factors of production, and (2) taking the financial risk of business failure.",
     },
@@ -167,16 +151,6 @@ export function FactorsOfProductionDiagram({
               }`}
             >
               Flow Diagram
-            </button>
-            <button
-              onClick={() => setActiveTab("mobility")}
-              className={`px-3 py-1.5 rounded-md transition-all cursor-pointer ${
-                activeTab === "mobility"
-                  ? "bg-white text-[#0F2042] font-bold shadow-xs"
-                  : "text-blue-100 hover:text-white"
-              }`}
-            >
-              Factor Mobility
             </button>
           </div>
 
@@ -349,13 +323,13 @@ export function FactorsOfProductionDiagram({
           <div className="bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-2xl p-6 shadow-xs space-y-6">
             <div>
               <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block mb-1">
-                Macroeconomic & Business Interaction
+                Syllabus 1.1 · Factors and their rewards
               </span>
               <h3 className="font-academic-serif text-2xl font-bold text-[#0F2042] dark:text-white">
-                Circular Flow of Factor Inputs & Factor Rewards
+                Who supplies each factor, and what they are paid
               </h3>
               <p className="text-xs text-[#57534E] dark:text-neutral-400 mt-1 max-w-2xl leading-relaxed">
-                How firms hire the 4 factors of production from households in factor markets, and pay rent, wages, interest, and profit in return.
+                Households supply land, labour, capital and enterprise. Firms use them to produce goods and services, and pay rent, wages, interest and profit.
               </p>
             </div>
 
@@ -420,101 +394,6 @@ export function FactorsOfProductionDiagram({
                   </marker>
                 </defs>
               </svg>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 3: Factor Mobility Analysis */}
-        {activeTab === "mobility" && (
-          <div className="bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-2xl p-6 shadow-xs space-y-6">
-            <div>
-              <span className="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-1">
-                Cambridge 0264 High-Mark Topic
-              </span>
-              <h3 className="font-academic-serif text-2xl font-bold text-[#0F2042] dark:text-white">
-                Mobility of the Factors of Production
-              </h3>
-              <p className="text-xs text-[#57534E] dark:text-neutral-400 mt-1 max-w-2xl leading-relaxed">
-                Mobility refers to the ease with which factors of production can move between different geographic areas or different occupations.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 text-lg">🌍</span>
-                  <h4 className="font-academic-serif text-lg font-bold text-[#0F2042] dark:text-white">
-                    Geographical Mobility
-                  </h4>
-                </div>
-                <p className="text-xs text-[#57534E] dark:text-neutral-400 leading-relaxed">
-                  The ability and willingness of factors of production to move from one physical location to another.
-                </p>
-                <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-neutral-800 text-xs">
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      🏞️ Land:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Physically immobile. A forest, mineral mine, or parcel of real estate cannot change location.
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      👷 Labour:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Limited by housing costs, family ties, schooling, language barriers, and visa restrictions.
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      🏭 Capital:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Vans, laptop tools, and light machinery are mobile; factories and blast furnaces are immobile.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-5 rounded-xl bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-600 text-lg">🔄</span>
-                  <h4 className="font-academic-serif text-lg font-bold text-[#0F2042] dark:text-white">
-                    Occupational Mobility
-                  </h4>
-                </div>
-                <p className="text-xs text-[#57534E] dark:text-neutral-400 leading-relaxed">
-                  The ability of a factor of production to change its use or switch between different industrial activities.
-                </p>
-                <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-neutral-800 text-xs">
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      🏞️ Land:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Moderately mobile (agricultural land can be rezoned to build solar farms or distribution hubs).
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      👷 Labour:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Restricted by specialization and training. Unskilled labour is more occupationally mobile than specialized doctors or pilots.
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-neutral-800">
-                    <strong className="block text-slate-800 dark:text-neutral-200 font-mono text-[11px]">
-                      🚀 Enterprise:
-                    </strong>
-                    <span className="text-slate-600 dark:text-neutral-400">
-                      Highly mobile. Strategic leadership, market identification, and organizational skills transfer across tech, retail, and manufacturing.
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         )}

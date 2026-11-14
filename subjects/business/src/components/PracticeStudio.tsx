@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import confetti from "canvas-confetti";
+import { BookOpen, ChevronLeft, ChevronRight, FileText, Headphones, Landmark, Search, Timer, Zap } from "lucide-react";
 import {
   EvaluationResult,
   ManualOverrideData,
@@ -27,8 +28,13 @@ import {
   Paper2QuestionPart,
 } from "../lib/data/paper2-case-studies";
 import { VERIFIED_QUESTIONS, VerifiedQuestion } from "../lib/data/verified-questions";
+import {
+  getVerifiedCaseStudy,
+  getVerifiedFullContextText,
+  VerifiedCaseStudy,
+} from "../lib/data/verified-case-studies";
 import { evaluateStudentEssay, scanApplicationKeywords, scanEvaluationKeywords } from "../lib/engine/evaluator";
-import { checkWebGPUSupport, initializeWebLLM, WebLLMStatus } from "../lib/engine/webllm";
+import { checkWebGPUSupport, initializeWebLLM, WebLLMStatus, isQwenCachedLocally } from "../lib/engine/webllm";
 import { formatTime } from "../lib/utils";
 import {
   saveAnswerDraft,
@@ -49,6 +55,7 @@ interface PracticeStudioProps {
   onOpenQuickQuiz?: () => void;
   onOpenSections?: () => void;
   onOpenStudySpace?: () => void;
+  onOpenMockExam?: () => void;
   initialSectionCode?: string;
   initialTopicCode?: string;
   initialPracticeMode?: "paper1_database" | "paper2_case_study" | "verified_archive";
@@ -62,6 +69,7 @@ export function PracticeStudio({
   onOpenQuickQuiz,
   onOpenSections,
   onOpenStudySpace,
+  onOpenMockExam,
   initialSectionCode,
   initialPracticeMode,
 }: PracticeStudioProps) {
@@ -170,10 +178,59 @@ export function PracticeStudio({
     activeCaseStudy.questions[activePaper2QIndex] || activeCaseStudy.questions[0];
 
   // ==========================================
-  // VERIFIED ARCHIVE STATES
+  // VERIFIED ARCHIVE STATES (OFFICIAL PAST PAPERS)
   // ==========================================
   const [currentVerifiedIndex, setCurrentVerifiedIndex] = useState<number>(0);
-  const [verifiedMarkFilter, setVerifiedMarkFilter] = useState<MarkTier>(4);
+  const [verifiedMarkFilter, setVerifiedMarkFilter] = useState<MarkTier | "all">("all");
+  const [verifiedUnitFilter, setVerifiedUnitFilter] = useState<string>(() =>
+    initialSectionCode && ["1", "2", "3", "4", "5", "6"].includes(initialSectionCode)
+      ? initialSectionCode
+      : "all"
+  );
+  const [verifiedPaperFilter, setVerifiedPaperFilter] = useState<1 | 2 | "all">("all");
+  const [activeVerifiedCaseTab, setActiveVerifiedCaseTab] = useState<"main" | number>("main");
+
+  const filteredVerifiedQuestions: VerifiedQuestion[] = useMemo(() => {
+    return VERIFIED_QUESTIONS.filter((q) => {
+      if (verifiedUnitFilter !== "all" && !q.unit.includes(`Unit ${verifiedUnitFilter}`)) {
+        return false;
+      }
+      if (verifiedPaperFilter !== "all" && q.paper !== verifiedPaperFilter) {
+        return false;
+      }
+      if (verifiedMarkFilter !== "all" && q.marks !== verifiedMarkFilter) {
+        return false;
+      }
+      return true;
+    });
+  }, [verifiedUnitFilter, verifiedPaperFilter, verifiedMarkFilter]);
+
+  const safeVerifiedIndex =
+    filteredVerifiedQuestions.length > 0
+      ? currentVerifiedIndex % filteredVerifiedQuestions.length
+      : 0;
+  const activeVerifiedQuestion: VerifiedQuestion | null =
+    filteredVerifiedQuestions[safeVerifiedIndex] ?? null;
+
+  const activeVerifiedCaseStudy: VerifiedCaseStudy | null = useMemo(
+    () => (activeVerifiedQuestion ? getVerifiedCaseStudy(activeVerifiedQuestion) : null),
+    [activeVerifiedQuestion]
+  );
+
+  // Reset case study tab back to main story when navigating to another paper/question
+  useEffect(() => {
+    setActiveVerifiedCaseTab("main");
+  }, [activeVerifiedQuestion?.id]);
+
+  const extractVerifiedAppWords = (cs: VerifiedCaseStudy | null, vq: VerifiedQuestion | null): string[] => {
+    if (!cs || !vq) return [];
+    const tokens = new Set<string>();
+    const titleMatches = cs.businessTitle.match(/\b[A-Z][A-Za-z0-9&]{1,}\b/g) || [];
+    titleMatches.forEach((w) => tokens.add(w));
+    const numMatches = (cs.mainCase + " " + (cs.table || "")).match(/\$?\d[\d,.]*(?:\s*(?:million|m|%|workers|employees|shops|cafes|units))?/gi) || [];
+    numMatches.slice(0, 8).forEach((n) => tokens.add(n.trim()));
+    return Array.from(tokens).slice(0, 12);
+  };
 
   // ==========================================
   // ACTIVE QUESTION DETERMINATION & DRAFT STORAGE
@@ -185,10 +242,14 @@ export function PracticeStudio({
     if (practiceMode === "paper2_case_study") {
       return activePaper2Question.id;
     }
-    const list = VERIFIED_QUESTIONS.filter((q) => q.marks === verifiedMarkFilter);
-    const vq = list[currentVerifiedIndex % list.length] || VERIFIED_QUESTIONS[0];
-    return `vq_${vq.id || currentVerifiedIndex}`;
-  }, [practiceMode, activePaper1Scenario.scenario_id, activePaper1Question.part, activePaper2Question.id, verifiedMarkFilter, currentVerifiedIndex]);
+    return activeVerifiedQuestion ? `vq_${activeVerifiedQuestion.id}` : "vq_empty";
+  }, [
+    practiceMode,
+    activePaper1Scenario.scenario_id,
+    activePaper1Question.part,
+    activePaper2Question.id,
+    activeVerifiedQuestion,
+  ]);
 
   // Student answer initialized from localStorage draft
   const [studentAnswer, setStudentAnswer] = useState<string>(() => {
@@ -197,7 +258,9 @@ export function PracticeStudio({
         ? `${activeScenarioId}_${activePart}`
         : practiceMode === "paper2_case_study"
         ? activePaper2Question.id
-        : `vq_0`
+        : activeVerifiedQuestion
+        ? `vq_${activeVerifiedQuestion.id}`
+        : "vq_empty"
     );
   });
 
@@ -384,8 +447,20 @@ export function PracticeStudio({
       activePaper2QIndex,
       currentVerifiedIndex,
       verifiedMarkFilter,
+      verifiedUnitFilter,
+      verifiedPaperFilter,
     });
-  }, [practiceMode, activeScenarioId, activePart, selectedUnit, activePaper2QIndex, currentVerifiedIndex, verifiedMarkFilter]);
+  }, [
+    practiceMode,
+    activeScenarioId,
+    activePart,
+    selectedUnit,
+    activePaper2QIndex,
+    currentVerifiedIndex,
+    verifiedMarkFilter,
+    verifiedUnitFilter,
+    verifiedPaperFilter,
+  ]);
 
   // Handle student answer input & immediately persist to localStorage
   const handleAnswerChange = (val: string) => {
@@ -404,8 +479,10 @@ export function PracticeStudio({
   const [timerSeconds, setTimerSeconds] = useState<number>(0);
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
-  // Engine: Instant CIE Examiner vs Local Qwen 2.5 0.5B (WebLLM)
-  const [aiEngineType, setAiEngineType] = useState<"instant" | "webllm">("instant");
+  // Engine: Instant CIE Examiner vs Local Qwen 3.5 0.8B (WebLLM)
+  const [aiEngineType, setAiEngineType] = useState<"instant" | "webllm">(() => {
+    return isQwenCachedLocally() ? "webllm" : "webllm";
+  });
   const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>({
     isSupported: false,
     isLoading: false,
@@ -416,10 +493,20 @@ export function PracticeStudio({
   });
   const [webllmEngine, setWebllmEngine] = useState<any>(null);
 
-  // Initialize WebGPU detection
+  // Initialize WebGPU detection and auto-load Qwen 3.5 0.8B if supported/cached
   useEffect(() => {
     checkWebGPUSupport().then((supported) => {
       setWebllmStatus((prev) => ({ ...prev, isSupported: supported }));
+      if (supported && isQwenCachedLocally()) {
+        initializeWebLLM((status) => setWebllmStatus(status))
+          .then((engine) => {
+            if (engine) {
+              setWebllmEngine(engine);
+              setAiEngineType("webllm");
+            }
+          })
+          .catch((err) => console.warn("Qwen 3.5 0.8B initial check skipped:", err));
+      }
     });
   }, []);
 
@@ -434,9 +521,14 @@ export function PracticeStudio({
     return () => clearInterval(interval);
   }, [timerRunning]);
 
-  // Load WebLLM
+  // Load WebLLM (Qwen 3.5 0.8B)
   const handleLoadWebLLM = async () => {
     try {
+      setWebllmStatus((prev) => ({
+        ...prev,
+        isLoading: true,
+        progressText: "Loading Qwen 3.5 0.8B weights...",
+      }));
       const engine = await initializeWebLLM((status) => {
         setWebllmStatus(status);
       });
@@ -607,27 +699,48 @@ export function PracticeStudio({
           sampleStrongPoint: activePaper2Question.rubric.sampleStrongAnswer,
         };
       } else {
-        const vq = VERIFIED_QUESTIONS.filter((q) => q.marks === verifiedMarkFilter)[currentVerifiedIndex] || VERIFIED_QUESTIONS[0];
+        const vq = activeVerifiedQuestion || VERIFIED_QUESTIONS[0];
+        const vqCase = activeVerifiedCaseStudy || getVerifiedCaseStudy(vq);
         title = `${vq.syllabus} ${vq.paper_code} Q${vq.question} (${vq.marks} marks)`;
         prompt = vq.question_paraphrase;
-        context = vq.case_context || "General Cambridge business scenario.";
+        context = getVerifiedFullContextText(vq);
         questionId = vq.id;
         unit = vq.unit;
         targetMarks = vq.marks as MarkTier;
+        if (targetMarks >= 4) {
+          validAppWords = extractVerifiedAppWords(vqCase, vq);
+        }
+        const ao1Max = 2;
+        const ao2Max = targetMarks >= 4 ? 2 : 0;
+        const ao3Max = targetMarks >= 12 ? 4 : targetMarks === 8 && vq.paper === 2 ? 4 : targetMarks >= 6 ? 2 : 0;
+        const ao4Max = targetMarks >= 12 ? 4 : targetMarks === 8 && vq.paper === 1 ? 2 : 0;
         rubric = {
           totalMarks: targetMarks,
-          ao1Max: 2,
-          ao2Max: targetMarks >= 4 ? 2 : 0,
-          ao3Max: targetMarks >= 6 ? 2 : 0,
-          ao4Max: targetMarks >= 8 ? 2 : 0,
+          ao1Max,
+          ao2Max,
+          ao3Max,
+          ao4Max,
           descriptors: {
-            ao1: ["Demonstrates syllabus knowledge."],
-            ao2: ["Applies context."],
-            ao3: ["Analyzes outcomes."],
+            ao1: ["Demonstrates accurate Cambridge syllabus knowledge."],
+            ao2: [`Explicitly applies answer to ${vqCase?.businessTitle || "the named case study"} context and figures.`],
+            ao3: ["Develops causal analytical chains explaining business impact."],
+            ...(ao4Max > 0 ? { ao4: ["Weighs trade-offs and gives a justified conclusion/recommendation."] } : {}),
           },
           indicativeContent: [vq.question_paraphrase],
-          sampleStrongPoint: "Clear explanation with relevant Cambridge terminology.",
+          sampleStrongPoint: "Clear explanation grounded in the case study data with relevant Cambridge terminology.",
         };
+      }
+
+      let engineToUse = webllmEngine;
+      if (aiEngineType === "webllm" && !engineToUse && webllmStatus.isSupported) {
+        try {
+          engineToUse = await initializeWebLLM((status) => setWebllmStatus(status));
+          if (engineToUse) {
+            setWebllmEngine(engineToUse);
+          }
+        } catch (e) {
+          console.warn("Could not initialize Qwen 3.5 0.8B, using fallback examiner:", e);
+        }
       }
 
       const result = await evaluateStudentEssay({
@@ -637,7 +750,7 @@ export function PracticeStudio({
         marks: targetMarks,
         rubric,
         studentAnswer,
-        webllmEngine: aiEngineType === "webllm" ? webllmEngine : undefined,
+        webllmEngine: aiEngineType === "webllm" ? (engineToUse || undefined) : undefined,
         validAppWords,
         deterministicRules,
         modelAnswer,
@@ -652,8 +765,16 @@ export function PracticeStudio({
         questionId,
         questionTitle: title,
         marks: targetMarks,
-        paper: practiceMode === "paper2_case_study" ? 2 : 1,
-        syllabus: "0264",
+        paper:
+          practiceMode === "paper2_case_study"
+            ? 2
+            : practiceMode === "verified_archive" && activeVerifiedQuestion
+            ? (activeVerifiedQuestion.paper as PaperNumber)
+            : 1,
+        syllabus:
+          practiceMode === "verified_archive" && activeVerifiedQuestion
+            ? activeVerifiedQuestion.syllabus
+            : "0264",
         unit,
         studentAnswer,
         wordCount: studentAnswer.trim().split(/\s+/).length,
@@ -687,352 +808,479 @@ export function PracticeStudio({
   const isBookmarked = bookmarkedIds.includes(currentActiveId);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 transition-colors">
+    <div className="study-page">
       {/* Top Header & Quick Launcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
-              CIE Cambridge 0264 / 0450 Practice Platform
-            </span>
-          </div>
-          <h1 className="font-academic-serif text-2xl sm:text-3xl font-bold text-[#0F2042] dark:text-white">
-            Paper 1 Examination Studio
-          </h1>
-          <p className="text-xs sm:text-sm text-[#57534E] dark:text-neutral-400">
-            Paper 1 Topical Case Studies · 2, 4, 6, 8 Mark Prompts · Rule-Based Application & Qwen 0.5B Interpretation
+      <header className="study-hero">
+        <div className="study-hero-content">
+          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+          <h1 className="study-title">Paper 1 <span>Examination Studio</span></h1>
+          <p className="study-description">
+            Practise 2-, 4-, 6- and 8-mark questions using business case studies.
           </p>
+          <div className="study-hero-actions">
+            {onOpenMockExam && (
+              <button
+                onClick={onOpenMockExam}
+                className="study-action btn-primary"
+                title="Open the timed Paper 1 or Paper 2 mock exam chooser with full case study and appendices"
+              >
+                <Timer size={16} aria-hidden="true" />
+                <span>Start Mock Exam</span>
+              </button>
+            )}
+
+            {onOpenStudySpace && (
+              <button
+                onClick={onOpenStudySpace}
+                className="study-action study-secondary-action"
+                title="Launch Aesthetic Study Space & Focus Pomodoro Timer"
+              >
+                <Headphones size={16} aria-hidden="true" />
+                <span>Study Space</span>
+              </button>
+            )}
+          </div>
+
         </div>
+        <div className="study-hero-image" aria-hidden="true" />
+      </header>
 
-        {/* Engine & Timer Controls */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          {onOpenStudySpace && (
+      <div className="study-studio">
+        <div className="study-mode-bar">
+          <div role="group" aria-label="Practice mode" className="study-mode-options">
             <button
-              onClick={onOpenStudySpace}
-              className="px-3.5 py-1.5 rounded-lg border border-indigo-500/40 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 hover:from-indigo-500/20 hover:to-purple-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
-              title="Launch Aesthetic Study Space & Focus Pomodoro Timer"
+              onClick={() => setPracticeMode("paper1_database")}
+              aria-pressed={practiceMode === "paper1_database"}
+              className="study-mode-button"
             >
-              <span>🎧 Study Space & Timer</span>
+              <Search size={17} aria-hidden="true" />
+              Topical Questions
             </button>
-          )}
 
-          {/* AI Engine Switcher */}
-          <div className="flex items-center gap-1.5 bg-[#F5F5F4] dark:bg-neutral-900 p-1 rounded-lg border border-[#E7E5E4] dark:border-neutral-700 text-xs">
             <button
-              onClick={() => setAiEngineType("instant")}
-              className={`px-3 py-1.5 font-medium rounded-md transition-colors whitespace-nowrap cursor-pointer ${
-                aiEngineType === "instant"
-                  ? "bg-white dark:bg-black text-[#0F2042] dark:text-white shadow-xs font-semibold"
-                  : "text-[#57534E] dark:text-neutral-400 hover:text-[#1C1917] dark:hover:text-white"
-              }`}
+              onClick={() => setPracticeMode("verified_archive")}
+              aria-pressed={practiceMode === "verified_archive"}
+              className="study-mode-button"
             >
-              Instant Examiner
+              <Landmark size={17} aria-hidden="true" />
+              Official Past Papers
             </button>
+
+            <button
+              onClick={() => setPracticeMode("paper2_case_study")}
+              aria-pressed={practiceMode === "paper2_case_study"}
+              className="study-mode-button"
+            >
+              <FileText size={17} aria-hidden="true" />
+              Paper 2 Specimen Insert
+            </button>
+          </div>
+
+          <div role="group" aria-label="Marking engine" className="study-engine">
             <button
               onClick={() => {
                 if (!webllmEngine && webllmStatus.isSupported) {
                   handleLoadWebLLM();
-                } else if (webllmEngine) {
+                } else {
                   setAiEngineType("webllm");
                 }
               }}
-              className={`px-3 py-1.5 font-medium rounded-md transition-colors whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-                aiEngineType === "webllm"
-                  ? "bg-white dark:bg-black text-[#0F2042] dark:text-white shadow-xs font-semibold"
-                  : "text-[#57534E] dark:text-neutral-400 hover:text-[#1C1917] dark:hover:text-white"
-              }`}
+              aria-pressed={aiEngineType === "webllm"}
+              className="study-engine-option"
             >
-              <span>Local Qwen 0.5B</span>
+              <span>Local Qwen 3.5 0.8B</span>
               {webllmStatus.isLoading && (
                 <span className="text-[10px] text-amber-500 font-mono animate-pulse">({webllmStatus.progressPercent}%)</span>
               )}
+              {webllmStatus.isReady && (
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Qwen 3.5 0.8B Active" />
+              )}
+            </button>
+            <button
+              onClick={() => setAiEngineType("instant")}
+              aria-pressed={aiEngineType === "instant"}
+              className="study-engine-option"
+            >
+              Instant Examiner
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Paper & Mode Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-1.5 bg-[#F5F5F4] dark:bg-neutral-900 rounded-xl border border-[#E7E5E4] dark:border-neutral-800 mb-6 text-xs font-medium">
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => setPracticeMode("paper1_database")}
-            className={`px-4 py-2.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
-              practiceMode === "paper1_database"
-                ? "bg-[#0F2042] dark:bg-white text-white dark:text-black font-bold shadow-xs"
-                : "text-[#57534E] dark:text-neutral-400 hover:text-[#1C1917] dark:hover:text-white"
-            }`}
-          >
-            <span>🔍 Topical Questions</span>
-            <span className="px-1.5 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 font-bold">
-              Topical Case Studies
-            </span>
-          </button>
-
-          <button
-            onClick={() => setPracticeMode("verified_archive")}
-            className={`px-4 py-2.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
-              practiceMode === "verified_archive"
-                ? "bg-[#0F2042] dark:bg-white text-white dark:text-black font-bold shadow-xs"
-                : "text-[#57534E] dark:text-neutral-400 hover:text-[#1C1917] dark:hover:text-white"
-            }`}
-          >
-            <span>🏛 Official Past Papers (Separate Archive)</span>
-            <span className="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-800 dark:text-blue-300 font-bold">
-              189 Questions
-            </span>
-          </button>
-
-          <button
-            onClick={() => setPracticeMode("paper2_case_study")}
-            className={`px-4 py-2.5 rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
-              practiceMode === "paper2_case_study"
-                ? "bg-[#0F2042] dark:bg-white text-white dark:text-black font-bold shadow-xs"
-                : "text-[#57534E] dark:text-neutral-400 hover:text-[#1C1917] dark:hover:text-white"
-            }`}
-          >
-            <span>📋 Paper 2 Specimen Insert</span>
-            <span className="px-1.5 py-0.5 rounded text-[10px] bg-slate-200 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300">
-              Tasty Treats (TT)
-            </span>
-          </button>
-        </div>
-
-        <div className="flex items-center gap-2 ml-auto">
-          {onOpenSections && (
-            <button
-              onClick={onOpenSections}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900 text-sky-800 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-900/60"
-            >
-              📑 Syllabus Chapters (1–6)
-            </button>
-          )}
-          {onOpenQuickQuiz && (
-            <button
-              onClick={onOpenQuickQuiz}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-900/60"
-            >
-              ⚡ Quick Quiz
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* ======================================================== */}
-      {/* MODE 1: PAPER 1 AUTHENTIC DATABASE (SECTIONS 1, 2, 3 & 4) */}
-      {/* ======================================================== */}
-      {practiceMode === "paper1_database" && (
-        <div className="space-y-6">
-          {/* Scenario Navigator: Concise Question X of 20 with Section Toggles */}
-          <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-4 sm:p-5 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              {/* Unit Toggles for Sections 1, 2, 3, and 4 */}
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(1)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 1
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 1: Business Activity (1–40)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(2)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 2
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 2: People in Business (1–40)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(3)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 3
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 3: Marketing (1–40)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(4)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 4
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 4: Operations (1–40)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(5)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 5
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 5: Finance (1–40)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSelectUnit(6)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedUnit === 6
-                      ? "bg-[#0F2042] dark:bg-white text-white dark:text-black shadow-xs"
-                      : "bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 border border-[#E7E5E4] dark:border-neutral-800 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  Section 6: External Influences (1–40)
-                </button>
-              </div>
-
-              {/* Stable Question Navigation: Prev / Next with fixed indicator */}
-              <div className="flex items-center gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={handlePrevScenario}
-                  className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-neutral-700 bg-white dark:bg-black text-xs font-semibold hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#1C1917] dark:text-white cursor-pointer transition-colors active:scale-95"
-                  title="Previous question"
-                >
-                  ← Prev
-                </button>
-                <span className="text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 text-[#0F2042] dark:text-white min-w-[72px] text-center">
-                  {currentIndexInUnit + 1} / {currentUnitScenarios.length}
-                </span>
-                <button
-                  type="button"
-                  onClick={handleNextScenario}
-                  className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-neutral-700 bg-white dark:bg-black text-xs font-semibold hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#1C1917] dark:text-white cursor-pointer transition-colors active:scale-95"
-                  title="Next question"
-                >
-                  Next →
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* ======================================================== */}
-          {/* TWO-COLUMN LAYOUT: CASE STUDY ON LEFT, QUESTIONS ON RIGHT */}
-          {/* ======================================================== */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* LEFT COLUMN: FULL VISIBLE CASE STUDY CONTEXT */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="bg-white dark:bg-neutral-900 border border-slate-300 dark:border-neutral-800 rounded-xl p-5 shadow-xs space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-[#E7E5E4] dark:border-neutral-800">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded bg-[#0F2042] text-white dark:bg-white dark:text-black font-mono font-bold text-xs">
-                      Question {currentIndexInUnit + 1}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-[#57534E] dark:text-neutral-400">
-                      {activePaper1Scenario.unit.split(":")[0]}
-                    </span>
-                  </div>
-                  <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-mono text-[11px] font-bold">
-                    {activePaper1Scenario.scenario_stem.split(/\s+/).length} Words (Case Study)
-                  </span>
-                </div>
-
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-neutral-400 block mb-2 font-bold">
-                    Authentic Cambridge Scenario Narrative:
-                  </span>
-                  {/* Full Case Study Stem Paragraphs */}
-                  <div className="text-sm sm:text-base leading-relaxed text-[#1C1917] dark:text-neutral-100 font-academic-serif whitespace-pre-line bg-[#FAF9F6] dark:bg-black p-4 sm:p-5 rounded-lg border border-slate-200 dark:border-neutral-800 shadow-inner">
-                    {activePaper1Scenario.scenario_stem}
-                  </div>
+        <div className="study-workspace">
+          <aside className="study-section-rail" aria-label="Practice navigation">
+            {practiceMode === "paper1_database" && (
+              <div>
+                <h2 className="study-panel-kicker">Syllabus sections</h2>
+                <div role="group" aria-label="Syllabus sections" className="study-sections">
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(1)}
+                    aria-pressed={selectedUnit === 1}
+                    className="study-section-button"
+                  >
+                    <span>01</span> Business Activity
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(2)}
+                    aria-pressed={selectedUnit === 2}
+                    className="study-section-button"
+                  >
+                    <span>02</span> People in Business
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(3)}
+                    aria-pressed={selectedUnit === 3}
+                    className="study-section-button"
+                  >
+                    <span>03</span> Marketing
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(4)}
+                    aria-pressed={selectedUnit === 4}
+                    className="study-section-button"
+                  >
+                    <span>04</span> Operations
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(5)}
+                    aria-pressed={selectedUnit === 5}
+                    className="study-section-button"
+                  >
+                    <span>05</span> Finance
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectUnit(6)}
+                    aria-pressed={selectedUnit === 6}
+                    className="study-section-button"
+                  >
+                    <span>06</span> External Influences
+                  </button>
                 </div>
               </div>
-            </div>
+            )}
 
-            {/* RIGHT COLUMN: 4 QUESTIONS ON TOP, THEN ACTIVE QUESTION ANSWERING CARD */}
-            <div className="lg:col-span-7 space-y-4">
-              {/* All 4 Questions for this Case Study */}
-              <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-4 shadow-xs">
-                <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-[#E7E5E4] dark:border-neutral-800">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-white">
-                    All 4 Questions for this Case Study:
-                  </span>
-                  <span className="text-[11px] text-[#78716C] dark:text-neutral-400 font-medium">
-                    Click to answer
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {activePaper1Scenario.questions.map((q) => {
-                    const isCurrent = activePart === q.part;
+            {practiceMode === "verified_archive" && (
+              <div>
+                <h2 className="study-panel-kicker">Topical filter</h2>
+                <div role="group" aria-label="Official past papers topical filter" className="study-sections">
+                  {[
+                    { code: "all", num: "All", label: "All Topics" },
+                    { code: "1", num: "01", label: "Business Activity" },
+                    { code: "2", num: "02", label: "People in Business" },
+                    { code: "3", num: "03", label: "Marketing" },
+                    { code: "4", num: "04", label: "Operations" },
+                    { code: "5", num: "05", label: "Finance" },
+                    { code: "6", num: "06", label: "External Influences" },
+                  ].map((item) => {
+                    const count = VERIFIED_QUESTIONS.filter((q) => {
+                      if (item.code !== "all" && !q.unit.includes(`Unit ${item.code}`)) return false;
+                      if (verifiedPaperFilter !== "all" && q.paper !== verifiedPaperFilter) return false;
+                      if (verifiedMarkFilter !== "all" && q.marks !== verifiedMarkFilter) return false;
+                      return true;
+                    }).length;
                     return (
                       <button
-                        key={q.part}
+                        key={item.code}
                         type="button"
-                        onClick={() => handleSelectPart(q.part)}
-                        className={`p-3 rounded-lg border text-left cursor-pointer transition-all ${
-                          isCurrent
-                            ? "bg-[#0F2042]/5 dark:bg-neutral-800 border-[#0F2042] dark:border-white ring-1 ring-[#0F2042] dark:ring-white"
-                            : "bg-[#FAF9F6] dark:bg-black border-slate-200 dark:border-neutral-800 hover:border-slate-400 dark:hover:border-neutral-600"
-                        }`}
+                        onClick={() => {
+                          setVerifiedUnitFilter(item.code);
+                          setCurrentVerifiedIndex(0);
+                        }}
+                        aria-pressed={verifiedUnitFilter === item.code}
+                        className="study-section-button"
                       >
-                        <div className="flex items-center justify-between gap-1 mb-1">
-                          <span className="font-mono font-bold text-xs text-[#0F2042] dark:text-white">
-                            Part ({q.part.toUpperCase()}) — {q.mark_value} Marks
-                          </span>
-                          {isCurrent && (
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-emerald-600 text-white">
-                              CURRENT QUESTION
-                            </span>
-                          )}
+                        <span>{item.num}</span>
+                        <div className="min-w-0 flex-1 flex items-center justify-between gap-1.5">
+                          <strong className="font-semibold text-[12px] leading-tight truncate text-left">
+                            {item.label}
+                          </strong>
+                          <small className="font-mono text-[10px] opacity-70 tabular-nums shrink-0">
+                            {count}
+                          </small>
                         </div>
-                        <p className="font-academic-serif text-xs text-[#1C1917] dark:text-neutral-200 line-clamp-2 leading-snug">
-                          {q.question_text}
-                        </p>
                       </button>
                     );
                   })}
                 </div>
               </div>
-              <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-5 sm:p-6 shadow-xs space-y-4">
-                {/* Header info */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E7E5E4] dark:border-neutral-800">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded bg-[#0F2042]/10 dark:bg-white/10 text-[#0F2042] dark:text-white text-xs font-bold font-mono">
-                      Part ({activePaper1Question.part.toUpperCase()})
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900 text-xs font-bold font-mono">
-                      {activePaper1Question.mark_value} Marks Total
-                    </span>
-                  </div>
+            )}
 
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => onToggleBookmark(currentActiveId)}
-                      className={`text-xs px-2.5 py-1 rounded border transition-colors cursor-pointer ${
-                        isBookmarked
-                          ? "bg-amber-50 dark:bg-amber-950 text-amber-600 border-amber-300"
-                          : "border-[#E7E5E4] dark:border-neutral-700 text-[#78716C] dark:text-neutral-400"
-                      }`}
-                    >
-                      {isBookmarked ? "★ Bookmarked" : "☆ Bookmark"}
-                    </button>
+            <div className="study-mode-shortcuts">
+              {onOpenSections && (
+                <button onClick={onOpenSections} className="study-shortcut">
+                  <BookOpen size={16} aria-hidden="true" /> Syllabus Chapters
+                </button>
+              )}
+              {onOpenQuickQuiz && (
+                <button onClick={onOpenQuickQuiz} className="study-shortcut">
+                  <Zap size={16} aria-hidden="true" /> Quick Quiz
+                </button>
+              )}
+            </div>
+          </aside>
+
+          <div className="min-w-0">
+            {practiceMode === "paper1_database" && (
+              <div className="study-columns study-paper-one-columns">
+                <section className="study-case-panel" aria-labelledby="paper-one-case-title">
+                  <div className="study-panel-header">
+                    <div>
+                      <p className="study-panel-kicker">{activePaper1Scenario.unit}</p>
+                      <h2 id="paper-one-case-title" className="study-panel-title">Case study</h2>
+                    </div>
+                    <div role="group" aria-label="Case study navigation" className="study-pager">
+                      <button
+                        type="button"
+                        onClick={handlePrevScenario}
+                        className="study-pager-button"
+                        aria-label="Previous question"
+                        title="Previous question"
+                      >
+                        <ChevronLeft size={18} aria-hidden="true" />
+                      </button>
+                      <span className="study-page-count">
+                        {currentIndexInUnit + 1} / {currentUnitScenarios.length}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleNextScenario}
+                        className="study-pager-button"
+                        aria-label="Next question"
+                        title="Next question"
+                      >
+                        <ChevronRight size={18} aria-hidden="true" />
+                      </button>
+                    </div>
                   </div>
+                  <div className="study-case-text">{activePaper1Scenario.scenario_stem}</div>
+                </section>
+
+                <div className="study-paper-one-editor">
+                  <section className="study-answer space-y-4" aria-labelledby="paper-one-active-question">
+                    <div className="study-question-header">
+                      <h2 className="study-panel-title">Questions</h2>
+                      <button
+                        type="button"
+                        onClick={() => onToggleBookmark(currentActiveId)}
+                        aria-pressed={isBookmarked}
+                        className="study-bookmark"
+                      >
+                        {isBookmarked ? "★ Bookmarked" : "☆ Bookmark"}
+                      </button>
+                    </div>
+                    <div role="group" aria-label="Question parts" className="study-question-options">
+                      {activePaper1Scenario.questions.map((q) => {
+                        const isCurrent = activePart === q.part;
+                        return (
+                          <button
+                            key={q.part}
+                            type="button"
+                            onClick={() => handleSelectPart(q.part)}
+                            aria-pressed={isCurrent}
+                            aria-label={`Part ${q.part.toUpperCase()}, ${q.mark_value} marks. ${q.question_text}`}
+                            title={q.question_text}
+                            className="study-question-button"
+                          >
+                            <strong>Part {q.part.toUpperCase()}</strong>
+                            <small>{q.mark_value} marks</small>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {/* Question Text */}
+                    <h2 id="paper-one-active-question" className="study-prompt">
+                      {activePaper1Question.question_text}
+                    </h2>
+
+                    {/* Answer Editor Area */}
+                    <div className="space-y-2">
+                      <div className="study-answer-meta">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <label htmlFor="paper-one-response">Your response</label>
+                          {studentAnswer.trim() ? (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              Draft auto-saved locally
+                            </span>
+                          ) : null}
+                        </div>
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono">
+                          <span>Words: {wordCount}</span>
+                          <span>Time: {formatTime(timerSeconds)}</span>
+                          {studentAnswer.trim() && (
+                            <button
+                              type="button"
+                              onClick={handleClearDraft}
+                              className="text-[11px] text-slate-400 hover:text-rose-500 cursor-pointer underline transition-colors"
+                              title="Clear your current draft response"
+                            >
+                              Clear Draft
+                            </button>
+                          )}
+                          {!timerRunning ? (
+                            <button
+                              type="button"
+                              onClick={() => setTimerRunning(true)}
+                              className="text-xs font-semibold text-blue-600 dark:text-sky-400 cursor-pointer"
+                            >
+                              ▶ Start Timer
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => setTimerRunning(false)}
+                              className="text-xs font-semibold text-amber-600 dark:text-amber-400 cursor-pointer"
+                            >
+                              ⏸ Pause Timer
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <textarea
+                        id="paper-one-response"
+                        value={studentAnswer}
+                        onChange={(e) => handleAnswerChange(e.target.value)}
+                        placeholder={
+                          activePaper1Question.mark_value === 2
+                            ? "Write the textbook definition here..."
+                            : activePaper1Question.mark_value === 4
+                            ? "State Reason 1 and apply to the case facts [k + app], then state Reason 2 and apply [k + app]..."
+                            : activePaper1Question.mark_value === 6
+                            ? "Explain Benefit 1 with case application and causal analysis ('this leads to... as a result...') [k + app + an], then Benefit 2..."
+                            : "Analyze the advantages with case facts [k + app + an], analyze the disadvantages [k + app + an], then provide a justified overall conclusion weighing the trade-offs [eval]..."
+                        }
+                        rows={activePaper1Question.mark_value >= 6 ? 9 : 5}
+                        className="study-response"
+                      />
+                    </div>
+
+                    {/* Bottom Actions Bar */}
+                    <div className="study-answer-actions">
+                      <button
+                        type="button"
+                        onClick={() => setShowMarkScheme(!showMarkScheme)}
+                        className="study-action study-secondary-action"
+                      >
+                        {showMarkScheme ? "Hide mark scheme" : "View mark scheme"}
+                      </button>
+
+                      <button
+                        type="button"
+                        disabled={isEvaluating || !studentAnswer.trim()}
+                        onClick={handleSubmitEvaluation}
+                        className="study-action btn-primary disabled:opacity-40"
+                      >
+                        {isEvaluating ? "Assessing response…" : "Submit for assessment"}
+                      </button>
+                    </div>
+                  </section>
+                  {/* Mark Scheme Preview (if requested) */}
+                  {showMarkScheme && (
+                    <div className="p-4 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-xl text-xs space-y-3">
+                      <div>
+                        <strong className="text-slate-900 dark:text-slate-100 block mb-1 font-mono uppercase text-[11px]">
+                          Cambridge Mark Scheme Outline ({activePaper1Question.mark_value} Marks):
+                        </strong>
+                        <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
+                          {activePaper1Question.mark_scheme.knowledge_max_2 && (
+                            <li>
+                              <strong>AO1 Knowledge (max 2):</strong> {activePaper1Question.mark_scheme.knowledge_max_2.join("; ")}
+                            </li>
+                          )}
+                          {activePaper1Question.mark_scheme.application_max_2 && (
+                            <li>
+                              <strong>AO2 Application (max 2):</strong> {activePaper1Question.mark_scheme.application_max_2.join("; ")}
+                            </li>
+                          )}
+                          {activePaper1Question.mark_scheme.analysis_max_2 && (
+                            <li>
+                              <strong>AO3 Analysis (max 2):</strong> {activePaper1Question.mark_scheme.analysis_max_2.join("; ")}
+                            </li>
+                          )}
+                          {activePaper1Question.mark_scheme.evaluation_max_2 && (
+                            <li>
+                              <strong>AO4 Evaluation (max 2):</strong> {activePaper1Question.mark_scheme.evaluation_max_2.join("; ")}
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+
+                      <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
+                        <strong className="text-emerald-900 dark:text-emerald-300 block mb-1">
+                          Exemplar Model Answer:
+                        </strong>
+                        <p className="italic text-slate-800 dark:text-slate-200 leading-relaxed">
+                          "{activePaper1Question.model_answer}"
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ======================================================== */}
+            {/* MODE 2: PAPER 2 CASE STUDY SPECIMEN INSERT               */}
+            {/* ======================================================== */}
+            {practiceMode === "paper2_case_study" && (
+              <div className="study-alternate-mode space-y-6">
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-xl text-xs text-blue-950 dark:text-blue-200 flex items-center justify-between">
+                  <div>
+                    <strong>Paper 2 Case Study Mode:</strong> The full Paper 1 database (Sections 1 & 2) is active above. Paper 2 full database will be added when provided.
+                  </div>
+                  <button
+                    onClick={() => setPracticeMode("paper1_database")}
+                    className="px-3 py-1 bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322] font-bold rounded-lg shrink-0 ml-3"
+                  >
+                    Switch to Paper 1 Database →
+                  </button>
                 </div>
 
-                {/* Question Text */}
-                <h2 className="font-academic-serif text-lg sm:text-xl font-bold text-[#1C1917] dark:text-white leading-relaxed">
-                  {activePaper1Question.question_text}
-                </h2>
+                <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-2xl p-6 lg:p-8 shadow-xs">
+                  <h2 className="font-academic-serif text-2xl font-bold text-[#0F2042] dark:text-white mb-2">
+                    {activeCaseStudy.title}
+                  </h2>
+                  <p className="text-xs text-[#57534E] dark:text-neutral-400 mb-4">
+                    Business: {activeCaseStudy.businessName} · Sector: {activeCaseStudy.industry} · {activeCaseStudy.session}
+                  </p>
 
-                {/* Answer Editor Area */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs text-[#78716C] dark:text-neutral-400">
+                  <div className="p-4 bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-slate-800 rounded-xl text-sm leading-relaxed mb-6 font-academic-serif whitespace-pre-line">
+                    {activeCaseStudy.backgroundStory}
+                    {"\n\n"}
+                    {activeCaseStudy.operationsAndWorkforce}
+                  </div>
+
+                  {/* Questions for Paper 2 */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {activeCaseStudy.questions.map((q, idx) => (
+                      <button
+                        key={q.id}
+                        onClick={() => {
+                          setActivePaper2QIndex(idx);
+                          setEvaluationResult(null);
+                        }}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-colors ${
+                          idx === activePaper2QIndex
+                            ? "bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322]"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                        }`}
+                      >
+                        {q.partNumber} ({q.marks}m)
+                      </button>
+                    ))}
+                  </div>
+
+                  <h3 className="font-academic-serif text-lg font-bold mb-4">
+                    {activePaper2Question.questionText}
+                  </h3>
+
+                  <div className="flex items-center justify-between text-xs text-[#78716C] dark:text-neutral-400 mb-2">
                     <div className="flex items-center gap-2">
                       <span>Student Response:</span>
                       {studentAnswer.trim() ? (
@@ -1042,34 +1290,15 @@ export function PracticeStudio({
                         </span>
                       ) : null}
                     </div>
-                    <div className="flex items-center gap-3 font-mono">
-                      <span>Words: {wordCount}</span>
-                      <span>Time: {formatTime(timerSeconds)}</span>
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono">Words: {wordCount}</span>
                       {studentAnswer.trim() && (
                         <button
                           type="button"
                           onClick={handleClearDraft}
                           className="text-[11px] text-slate-400 hover:text-rose-500 cursor-pointer underline transition-colors"
-                          title="Clear your current draft response"
                         >
                           Clear Draft
-                        </button>
-                      )}
-                      {!timerRunning ? (
-                        <button
-                          type="button"
-                          onClick={() => setTimerRunning(true)}
-                          className="text-xs font-semibold text-blue-600 dark:text-sky-400 cursor-pointer"
-                        >
-                          ▶ Start Timer
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => setTimerRunning(false)}
-                          className="text-xs font-semibold text-amber-600 dark:text-amber-400 cursor-pointer"
-                        >
-                          ⏸ Pause Timer
                         </button>
                       )}
                     </div>
@@ -1078,307 +1307,362 @@ export function PracticeStudio({
                   <textarea
                     value={studentAnswer}
                     onChange={(e) => handleAnswerChange(e.target.value)}
-                    placeholder={
-                      activePaper1Question.mark_value === 2
-                        ? "Write the textbook definition here..."
-                        : activePaper1Question.mark_value === 4
-                        ? "State Reason 1 and apply to the case facts [k + app], then state Reason 2 and apply [k + app]..."
-                        : activePaper1Question.mark_value === 6
-                        ? "Explain Benefit 1 with case application and causal analysis ('this leads to... as a result...') [k + app + an], then Benefit 2..."
-                        : "Analyze the advantages with case facts [k + app + an], analyze the disadvantages [k + app + an], then provide a justified overall conclusion weighing the trade-offs [eval]..."
-                    }
-                    rows={activePaper1Question.mark_value >= 6 ? 9 : 5}
+                    placeholder="Write your Paper 2 answer..."
+                    rows={8}
                     className="w-full p-4 bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 rounded-xl text-sm leading-relaxed text-[#1C1917] dark:text-white focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white focus:outline-none transition-all font-sans"
                   />
-                </div>
 
-                {/* Bottom Actions Bar */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3.5 border-t border-[#E7E5E4] dark:border-neutral-800">
-                  <button
-                    type="button"
-                    onClick={() => setShowMarkScheme(!showMarkScheme)}
-                    className="px-3.5 py-1.5 text-xs font-semibold rounded-lg border border-[#E7E5E4] dark:border-neutral-700 text-[#57534E] dark:text-neutral-300 hover:bg-[#FAF9F6] dark:hover:bg-neutral-800 transition-colors cursor-pointer"
-                  >
-                    {showMarkScheme ? "Hide Mark Scheme Tips" : "Preview Cambridge Mark Scheme & Model Answer"}
-                  </button>
-
-                  <button
-                    type="button"
-                    disabled={isEvaluating || !studentAnswer.trim()}
-                    onClick={handleSubmitEvaluation}
-                    className="w-full sm:w-auto px-6 py-2.5 text-xs font-bold rounded-lg bg-[#0F2042] dark:bg-white text-white dark:text-black hover:opacity-95 disabled:opacity-40 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    {isEvaluating ? "Evaluating with Rules & Qwen Interpretation..." : "Submit for Assessment ✓"}
-                  </button>
-                </div>
-
-            {/* Mark Scheme Preview (if requested) */}
-            {showMarkScheme && (
-              <div className="p-4 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-xl text-xs space-y-3">
-                <div>
-                  <strong className="text-slate-900 dark:text-slate-100 block mb-1 font-mono uppercase text-[11px]">
-                    Cambridge Mark Scheme Outline ({activePaper1Question.mark_value} Marks):
-                  </strong>
-                  <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
-                    {activePaper1Question.mark_scheme.knowledge_max_2 && (
-                      <li>
-                        <strong>AO1 Knowledge (max 2):</strong> {activePaper1Question.mark_scheme.knowledge_max_2.join("; ")}
-                      </li>
-                    )}
-                    {activePaper1Question.mark_scheme.application_max_2 && (
-                      <li>
-                        <strong>AO2 Application (max 2):</strong> {activePaper1Question.mark_scheme.application_max_2.join("; ")}
-                      </li>
-                    )}
-                    {activePaper1Question.mark_scheme.analysis_max_2 && (
-                      <li>
-                        <strong>AO3 Analysis (max 2):</strong> {activePaper1Question.mark_scheme.analysis_max_2.join("; ")}
-                      </li>
-                    )}
-                    {activePaper1Question.mark_scheme.evaluation_max_2 && (
-                      <li>
-                        <strong>AO4 Evaluation (max 2):</strong> {activePaper1Question.mark_scheme.evaluation_max_2.join("; ")}
-                      </li>
-                    )}
-                  </ul>
-                </div>
-
-                <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
-                  <strong className="text-emerald-900 dark:text-emerald-300 block mb-1">
-                    Exemplar Model Answer:
-                  </strong>
-                  <p className="italic text-slate-800 dark:text-slate-200 leading-relaxed">
-                    "{activePaper1Question.model_answer}"
-                  </p>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      disabled={isEvaluating || !studentAnswer.trim()}
+                      onClick={handleSubmitEvaluation}
+                      className="px-6 py-2.5 text-xs font-bold rounded-lg bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322] disabled:opacity-40 cursor-pointer shadow-xs"
+                    >
+                      {isEvaluating ? "Evaluating..." : "Submit Answer ✓"}
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
+
+            {/* ======================================================== */}
+            {/* MODE 3: OFFICIAL PAST PAPERS ARCHIVE WITH CASE STUDIES   */}
+            {/* ======================================================== */}
+            {practiceMode === "verified_archive" && (
+              <div className="flex flex-col">
+                {/* Paper & Mark Tier Filter Bar */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--sheet-surface)] dark:bg-neutral-900/60 px-4 py-3 text-xs">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex items-center gap-1" role="group" aria-label="Filter by paper">
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--muted)] mr-1">
+                        Paper:
+                      </span>
+                      {(["all", 1, 2] as const).map((p) => (
+                        <button
+                          key={String(p)}
+                          type="button"
+                          onClick={() => {
+                            setVerifiedPaperFilter(p);
+                            setCurrentVerifiedIndex(0);
+                          }}
+                          aria-pressed={verifiedPaperFilter === p}
+                          className={`px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
+                            verifiedPaperFilter === p
+                              ? "bg-[var(--green)] text-white"
+                              : "bg-[var(--white)] dark:bg-neutral-800 border border-[var(--line)] text-[var(--ink)] dark:text-neutral-200 hover:bg-[var(--practice-bg)]"
+                          }`}
+                        >
+                          {p === "all" ? "All Papers" : `Paper ${p}`}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center gap-1" role="group" aria-label="Filter by marks">
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--muted)] mr-1">
+                        Marks:
+                      </span>
+                      {(["all", 2, 4, 6, 8, 12] as const).map((m) => (
+                        <button
+                          key={String(m)}
+                          type="button"
+                          onClick={() => {
+                            setVerifiedMarkFilter(m as MarkTier | "all");
+                            setCurrentVerifiedIndex(0);
+                          }}
+                          aria-pressed={verifiedMarkFilter === m}
+                          className={`px-2 py-1 rounded-md font-mono font-bold transition-colors cursor-pointer ${
+                            verifiedMarkFilter === m
+                              ? "bg-[var(--green)] text-white"
+                              : "bg-[var(--white)] dark:bg-neutral-800 border border-[var(--line)] text-[var(--ink)] dark:text-neutral-200 hover:bg-[var(--practice-bg)]"
+                          }`}
+                        >
+                          {m === "all" ? "All" : `${m}m`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-[11px] text-[var(--muted)] tabular-nums">
+                    {filteredVerifiedQuestions.length} of {VERIFIED_QUESTIONS.length} questions
+                  </div>
+                </div>
+
+                {activeVerifiedQuestion ? (
+                  <div className="study-columns study-paper-one-columns">
+                    {/* LEFT COLUMN: FULL CASE STUDY & APPENDICES */}
+                    <section className="study-case-panel" aria-labelledby="verified-case-title">
+                      <div className="study-panel-header">
+                        <div className="min-w-0">
+                          <p className="study-panel-kicker">
+                            {activeVerifiedQuestion.syllabus} · {activeVerifiedQuestion.paper_code} ·{" "}
+                            {activeVerifiedQuestion.series} {activeVerifiedQuestion.year}
+                          </p>
+                          <h2 id="verified-case-title" className="study-panel-title">
+                            {activeVerifiedCaseStudy?.businessTitle || "Case Study"}
+                          </h2>
+                        </div>
+                        <div role="group" aria-label="Past paper question navigation" className="study-pager">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCurrentVerifiedIndex((i) =>
+                                filteredVerifiedQuestions.length > 0
+                                  ? (i - 1 + filteredVerifiedQuestions.length) % filteredVerifiedQuestions.length
+                                  : 0
+                              )
+                            }
+                            className="study-pager-button"
+                            aria-label="Previous question"
+                            title="Previous question"
+                          >
+                            <ChevronLeft size={18} aria-hidden="true" />
+                          </button>
+                          <span className="study-page-count">
+                            {safeVerifiedIndex + 1} / {filteredVerifiedQuestions.length}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCurrentVerifiedIndex((i) =>
+                                filteredVerifiedQuestions.length > 0
+                                  ? (i + 1) % filteredVerifiedQuestions.length
+                                  : 0
+                              )
+                            }
+                            className="study-pager-button"
+                            aria-label="Next question"
+                            title="Next question"
+                          >
+                            <ChevronRight size={18} aria-hidden="true" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Appendix Tabs for Paper 2 Case Studies */}
+                      {activeVerifiedCaseStudy?.appendices && activeVerifiedCaseStudy.appendices.length > 0 && (
+                        <div className="px-4 sm:px-6 pb-3 flex flex-wrap gap-1.5" role="tablist" aria-label="Case study documents">
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={activeVerifiedCaseTab === "main"}
+                            onClick={() => setActiveVerifiedCaseTab("main")}
+                            className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
+                              activeVerifiedCaseTab === "main"
+                                ? "bg-[var(--green)] text-white"
+                                : "bg-[var(--paper)] dark:bg-neutral-800 border border-[var(--line)] text-[var(--ink)] dark:text-neutral-200 hover:bg-[var(--practice-bg)]"
+                            }`}
+                          >
+                            Case Study
+                          </button>
+                          {activeVerifiedCaseStudy.appendices.map((app, idx) => (
+                            <button
+                              key={app.label}
+                              type="button"
+                              role="tab"
+                              aria-selected={activeVerifiedCaseTab === idx}
+                              onClick={() => setActiveVerifiedCaseTab(idx)}
+                              className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
+                                activeVerifiedCaseTab === idx
+                                  ? "bg-[var(--green)] text-white"
+                                  : "bg-[var(--paper)] dark:bg-neutral-800 border border-[var(--line)] text-[var(--ink)] dark:text-neutral-200 hover:bg-[var(--practice-bg)]"
+                              }`}
+                            >
+                              {app.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Case Study Narrative / Appendix Content */}
+                      <div className="study-case-text space-y-3">
+                        {activeVerifiedCaseTab === "main" ? (
+                          <>
+                            <div>{activeVerifiedCaseStudy?.mainCase || activeVerifiedQuestion.case_context}</div>
+                            {activeVerifiedCaseStudy?.table && (
+                              <div className="mt-3 overflow-x-auto rounded-lg border border-[var(--line)] bg-[var(--paper)] dark:bg-neutral-900 p-3">
+                                <pre className="font-mono text-[11px] sm:text-xs leading-relaxed text-[var(--ink)] dark:text-neutral-200 whitespace-pre">
+                                  {activeVerifiedCaseStudy.table}
+                                </pre>
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          activeVerifiedCaseStudy?.appendices?.[activeVerifiedCaseTab] && (
+                            <div className="overflow-x-auto rounded-lg border border-[var(--line)] bg-[var(--paper)] dark:bg-neutral-900 p-3.5">
+                              <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--muted)] mb-2">
+                                {activeVerifiedCaseStudy.appendices[activeVerifiedCaseTab].label}
+                              </div>
+                              <pre className="font-mono text-[11px] sm:text-xs leading-relaxed text-[var(--ink)] dark:text-neutral-200 whitespace-pre-wrap">
+                                {activeVerifiedCaseStudy.appendices[activeVerifiedCaseTab].body}
+                              </pre>
+                            </div>
+                          )
+                        )}
+
+                        {(activeVerifiedQuestion.question_pdf || activeVerifiedQuestion.insert_pdf || activeVerifiedQuestion.mark_scheme_pdf) && (
+                          <div className="pt-3 border-t border-dashed border-[var(--line)] flex flex-wrap gap-3 font-mono text-[11px]">
+                            {activeVerifiedQuestion.question_pdf && (
+                              <a
+                                href={activeVerifiedQuestion.question_pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-[var(--green)] dark:text-[#e4eeb2] hover:underline"
+                              >
+                                Question Paper PDF ↗
+                              </a>
+                            )}
+                            {activeVerifiedQuestion.insert_pdf && (
+                              <a
+                                href={activeVerifiedQuestion.insert_pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-[var(--green)] dark:text-[#e4eeb2] hover:underline"
+                              >
+                                Case Insert PDF ↗
+                              </a>
+                            )}
+                            {activeVerifiedQuestion.mark_scheme_pdf && (
+                              <a
+                                href={activeVerifiedQuestion.mark_scheme_pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-[#97532b] dark:text-[#e6b39b] hover:underline"
+                              >
+                                Mark Scheme PDF ↗
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </section>
+
+                    {/* RIGHT COLUMN: QUESTION PROMPT & ANSWER EDITOR */}
+                    <div className="study-paper-one-editor">
+                      <section className="study-answer space-y-4" aria-labelledby="verified-active-question">
+                        <div className="study-question-header">
+                          <div className="text-xs font-mono font-semibold text-[var(--muted)]">
+                            {activeVerifiedQuestion.unit} · Question {activeVerifiedQuestion.question} ·{" "}
+                            <strong className="text-[var(--ink)] dark:text-white">
+                              {activeVerifiedQuestion.marks} marks
+                            </strong>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => onToggleBookmark(currentActiveId)}
+                            aria-pressed={isBookmarked}
+                            className="study-bookmark"
+                          >
+                            {isBookmarked ? "★ Bookmarked" : "☆ Bookmark"}
+                          </button>
+                        </div>
+
+                        <h2 id="verified-active-question" className="study-prompt">
+                          {activeVerifiedQuestion.question_paraphrase}
+                        </h2>
+
+                        <div className="space-y-2">
+                          <div className="study-answer-meta">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <label htmlFor="verified-archive-response">Your response</label>
+                              {studentAnswer.trim() ? (
+                                <span className="font-mono text-[11px] text-[var(--muted)]">
+                                  · Draft saved locally
+                                </span>
+                              ) : null}
+                            </div>
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono">
+                              <span>Words: {wordCount}</span>
+                              <span>Time: {formatTime(timerSeconds)}</span>
+                              {studentAnswer.trim() && (
+                                <button
+                                  type="button"
+                                  onClick={handleClearDraft}
+                                  className="text-[11px] text-slate-400 hover:text-rose-500 cursor-pointer underline transition-colors"
+                                >
+                                  Clear Draft
+                                </button>
+                              )}
+                              {!timerRunning ? (
+                                <button
+                                  type="button"
+                                  onClick={() => setTimerRunning(true)}
+                                  className="text-xs font-semibold text-blue-600 dark:text-sky-400 cursor-pointer"
+                                >
+                                  ▶ Start Timer
+                                </button>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => setTimerRunning(false)}
+                                  className="text-xs font-semibold text-amber-600 dark:text-amber-400 cursor-pointer"
+                                >
+                                  ⏸ Pause Timer
+                                </button>
+                              )}
+                            </div>
+                          </div>
+
+                          <textarea
+                            id="verified-archive-response"
+                            value={studentAnswer}
+                            onChange={(e) => handleAnswerChange(e.target.value)}
+                            placeholder={
+                              activeVerifiedQuestion.marks <= 2
+                                ? "Write a clear, precise definition or state the required points..."
+                                : activeVerifiedQuestion.marks === 4
+                                ? `State Point 1 applied to ${activeVerifiedCaseStudy?.businessTitle || "the case"}, then Point 2 applied to the case...`
+                                : activeVerifiedQuestion.marks <= 8
+                                ? `Apply each point to ${activeVerifiedCaseStudy?.businessTitle || "the case facts & figures"} and develop causal chains ('this leads to... as a result...')...`
+                                : `Compare each option using ${activeVerifiedCaseStudy?.businessTitle || "case facts and appendix figures"}, weigh trade-offs, and finish with a justified recommendation...`
+                            }
+                            rows={activeVerifiedQuestion.marks >= 8 ? 9 : 6}
+                            className="study-response"
+                          />
+                        </div>
+
+                        <div className="study-answer-actions">
+                          <div className="font-mono text-[11px] text-[var(--muted)]">
+                            {activeVerifiedQuestion.paper === 2
+                              ? "Use case study & appendices in your answer"
+                              : "Refer directly to the business context"}
+                          </div>
+                          <button
+                            type="button"
+                            disabled={isEvaluating || !studentAnswer.trim()}
+                            onClick={handleSubmitEvaluation}
+                            className="study-action btn-primary disabled:opacity-40"
+                          >
+                            {isEvaluating ? "Assessing response…" : "Submit for assessment"}
+                          </button>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-8 text-center space-y-3">
+                    <p className="text-sm font-semibold text-[var(--ink)] dark:text-white">
+                      No past paper questions match the selected topic, paper, and mark filters.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setVerifiedUnitFilter("all");
+                        setVerifiedPaperFilter("all");
+                        setVerifiedMarkFilter("all");
+                        setCurrentVerifiedIndex(0);
+                      }}
+                      className="study-action btn-primary"
+                    >
+                      Reset filters
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
           </div>
         </div>
       </div>
-    </div>
-  )}
-
-      {/* ======================================================== */}
-      {/* MODE 2: PAPER 2 CASE STUDY SPECIMEN INSERT               */}
-      {/* ======================================================== */}
-      {practiceMode === "paper2_case_study" && (
-        <div className="space-y-6">
-          <div className="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-xl text-xs text-blue-950 dark:text-blue-200 flex items-center justify-between">
-            <div>
-              <strong>Paper 2 Case Study Mode:</strong> The full Paper 1 database (Sections 1 & 2) is active above. Paper 2 full database will be added when provided.
-            </div>
-            <button
-              onClick={() => setPracticeMode("paper1_database")}
-              className="px-3 py-1 bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322] font-bold rounded-lg shrink-0 ml-3"
-            >
-              Switch to Paper 1 Database →
-            </button>
-          </div>
-
-          <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-2xl p-6 lg:p-8 shadow-xs">
-            <h2 className="font-academic-serif text-2xl font-bold text-[#0F2042] dark:text-white mb-2">
-              {activeCaseStudy.title}
-            </h2>
-            <p className="text-xs text-[#57534E] dark:text-neutral-400 mb-4">
-              Business: {activeCaseStudy.businessName} · Sector: {activeCaseStudy.industry} · {activeCaseStudy.session}
-            </p>
-
-            <div className="p-4 bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-slate-800 rounded-xl text-sm leading-relaxed mb-6 font-academic-serif whitespace-pre-line">
-              {activeCaseStudy.backgroundStory}
-              {"\n\n"}
-              {activeCaseStudy.operationsAndWorkforce}
-            </div>
-
-            {/* Questions for Paper 2 */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {activeCaseStudy.questions.map((q, idx) => (
-                <button
-                  key={q.id}
-                  onClick={() => {
-                    setActivePaper2QIndex(idx);
-                    setEvaluationResult(null);
-                  }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-colors ${
-                    idx === activePaper2QIndex
-                      ? "bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322]"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  {q.partNumber} ({q.marks}m)
-                </button>
-              ))}
-            </div>
-
-            <h3 className="font-academic-serif text-lg font-bold mb-4">
-              {activePaper2Question.questionText}
-            </h3>
-
-            <div className="flex items-center justify-between text-xs text-[#78716C] dark:text-neutral-400 mb-2">
-              <div className="flex items-center gap-2">
-                <span>Student Response:</span>
-                {studentAnswer.trim() ? (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Draft auto-saved locally
-                  </span>
-                ) : null}
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="font-mono">Words: {wordCount}</span>
-                {studentAnswer.trim() && (
-                  <button
-                    type="button"
-                    onClick={handleClearDraft}
-                    className="text-[11px] text-slate-400 hover:text-rose-500 cursor-pointer underline transition-colors"
-                  >
-                    Clear Draft
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <textarea
-              value={studentAnswer}
-              onChange={(e) => handleAnswerChange(e.target.value)}
-              placeholder="Write your Paper 2 answer..."
-              rows={8}
-              className="w-full p-4 bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 rounded-xl text-sm leading-relaxed text-[#1C1917] dark:text-white focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white focus:outline-none transition-all font-sans"
-            />
-
-            <div className="flex justify-end mt-4">
-              <button
-                disabled={isEvaluating || !studentAnswer.trim()}
-                onClick={handleSubmitEvaluation}
-                className="px-6 py-2.5 text-xs font-bold rounded-lg bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322] disabled:opacity-40 cursor-pointer shadow-xs"
-              >
-                {isEvaluating ? "Evaluating..." : "Submit Answer ✓"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ======================================================== */}
-      {/* MODE 3: SEPARATE OFFICIAL PAST PAPERS ARCHIVE            */}
-      {/* ======================================================== */}
-      {practiceMode === "verified_archive" && (
-        <div className="space-y-6">
-          {/* Header Notice explicitly stating this is separate from the topical database */}
-          <div className="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-xl text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5">
-              <span className="p-1 rounded-md bg-blue-600 text-white font-bold text-xs shrink-0">🏛</span>
-              <span className="text-blue-950 dark:text-blue-200">
-                <strong>Separate Official Past Papers Archive (189 Questions):</strong> Authentic Cambridge examination questions from official past papers (0450 / 0264) with actual exam codes (e.g. 0450/11/M/J/22). (Use the <em>Topical Questions Database</em> tab above for Section 1 & 2 case study scenario sets).
-              </span>
-            </div>
-            <button
-              onClick={() => setPracticeMode("paper1_database")}
-              className="px-3 py-1.5 bg-white dark:bg-neutral-900 border border-blue-300 dark:border-blue-800 text-blue-800 dark:text-blue-300 font-bold rounded-lg shrink-0 cursor-pointer hover:bg-blue-50"
-            >
-              Topical Database →
-            </button>
-          </div>
-
-          <div className="flex items-center justify-between p-4 bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl text-xs">
-            <div className="flex items-center gap-2">
-              <span className="font-bold">Filter Marks:</span>
-              {([2, 4, 6, 8] as MarkTier[]).map((m) => (
-                <button
-                  key={m}
-                  onClick={() => {
-                    setVerifiedMarkFilter(m);
-                    setCurrentVerifiedIndex(0);
-                  }}
-                  className={`px-2.5 py-1 rounded font-mono font-bold ${
-                    verifiedMarkFilter === m
-                      ? "bg-[#0F2042] text-white dark:bg-[#38BDF8] dark:text-[#0C1322]"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                  }`}
-                >
-                  {m}m
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                disabled={currentVerifiedIndex === 0}
-                onClick={() => setCurrentVerifiedIndex((i) => i - 1)}
-                className="px-3 py-1 rounded border disabled:opacity-40"
-              >
-                ← Prev
-              </button>
-              <button
-                onClick={() => setCurrentVerifiedIndex((i) => i + 1)}
-                className="px-3 py-1 rounded bg-[#0F2042] text-white dark:bg-[#38BDF8] dark:text-[#0C1322]"
-              >
-                Next →
-              </button>
-            </div>
-          </div>
-
-          {(() => {
-            const list = VERIFIED_QUESTIONS.filter((q) => q.marks === verifiedMarkFilter);
-            const vq = list[currentVerifiedIndex % list.length] || VERIFIED_QUESTIONS[0];
-            return (
-              <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-2xl p-6 shadow-xs space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono font-bold text-[#0F2042] dark:text-[#38BDF8]">
-                  <span>{vq.syllabus} {vq.paper_code} Q{vq.question} ({vq.marks} marks)</span>
-                  <span>{vq.unit}</span>
-                </div>
-                {vq.case_context && (
-                  <p className="text-xs italic text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg">
-                    Context: {vq.case_context}
-                  </p>
-                )}
-                <h3 className="font-academic-serif text-lg font-bold">
-                  {vq.question_paraphrase}
-                </h3>
-                <div className="flex items-center justify-between text-xs text-[#78716C] dark:text-neutral-400">
-                  <div className="flex items-center gap-2">
-                    <span>Student Response:</span>
-                    {studentAnswer.trim() ? (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        Draft auto-saved locally
-                      </span>
-                    ) : null}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono">Words: {wordCount}</span>
-                    {studentAnswer.trim() && (
-                      <button
-                        type="button"
-                        onClick={handleClearDraft}
-                        className="text-[11px] text-slate-400 hover:text-rose-500 cursor-pointer underline transition-colors"
-                      >
-                        Clear Draft
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                <textarea
-                  value={studentAnswer}
-                  onChange={(e) => handleAnswerChange(e.target.value)}
-                  placeholder="Write your answer..."
-                  rows={6}
-                  className="w-full p-4 bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 rounded-xl text-sm leading-relaxed text-[#1C1917] dark:text-white focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white focus:outline-none transition-all font-sans"
-                />
-                <div className="flex justify-end">
-                  <button
-                    disabled={isEvaluating || !studentAnswer.trim()}
-                    onClick={handleSubmitEvaluation}
-                    className="px-6 py-2.5 text-xs font-bold rounded-lg bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322] disabled:opacity-40 cursor-pointer shadow-xs"
-                  >
-                    Submit Response ✓
-                  </button>
-                </div>
-              </div>
-            );
-          })()}
-        </div>
-      )}
 
       {/* ======================================================== */}
       {/* ASSESSMENT RESULTS DRAWER (RULE SCAN + QWEN INTERPRET)   */}
@@ -1430,7 +1714,7 @@ export function PracticeStudio({
               </button>
 
               <span className="px-3 py-1.5 rounded-xl bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 text-xs font-mono font-bold text-[#0F2042] dark:text-white">
-                {evaluationResult.isAiEvaluated ? "Qwen 0.5B WebGPU + Rules" : "Website Rules + CIE Examiner"}
+                {evaluationResult.isAiEvaluated ? "Qwen 3.5 0.8B WebGPU + Rules" : "Website Rules + CIE Examiner"}
               </span>
             </div>
           </div>

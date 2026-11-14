@@ -5,25 +5,32 @@ import { Paper2PracticeView } from "./components/Paper2PracticeView";
 import { GlossaryView } from "./components/GlossaryView";
 import { DocumentArchive } from "./components/DocumentArchive";
 import { ProgressDashboard } from "./components/ProgressDashboard";
-import { FinanceExamStudio } from "./components/FinanceExamStudio";
 import { DailyQuickQuiz } from "./components/DailyQuickQuiz";
 import { SectionsView } from "./components/SectionsView";
 import { SyllabusRevisionChecklist } from "./components/SyllabusRevisionChecklist";
+import { CompareNotesView } from "./components/CompareNotesView";
+import { InteractiveLessonsView } from "./components/InteractiveLessonsView";
 import { BossBattleArena } from "./components/BossBattleArena";
 import { AvatarCustomizerModal } from "./components/AvatarCustomizerModal";
 import { AchievementsModal } from "./components/AchievementsModal";
+import { MockExamMode } from "./components/MockExamMode";
 import StudySpace from "./components/StudySpace";
 import { GLOSSARY_TERMS } from "./lib/data/glossary";
 import {
   loadBookmarkedQuestionIds,
   loadMasteredTerms,
   loadSubmissions,
-  loadTheme,
   saveBookmarkedQuestionIds,
   saveMasteredTerms,
   saveSubmissions,
-  saveTheme,
 } from "./lib/cookies";
+import {
+  getTheme,
+  isThemeUsable,
+  loadThemeId,
+  saveThemeId,
+  type ThemeId,
+} from "./lib/themes";
 import { StudentSubmissionRecord } from "./lib/types";
 
 export type BusinessTab =
@@ -35,17 +42,20 @@ export type BusinessTab =
   | "glossary"
   | "archive"
   | "progress"
-  | "boss-battle";
+  | "boss-battle"
+  | "compare"
+  | "lessons";
 
 export default function App() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
+  const [theme, setTheme] = useState<ThemeId>(() => {
     if (typeof window !== "undefined") {
-      return loadTheme();
+      const saved = loadThemeId();
+      return isThemeUsable(saved) ? saved : "daylight";
     }
-    return "light";
+    return "daylight";
   });
 
-  // Business Tab state: "practice" | "paper2" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle"
+  // Business Tab state: "practice" | "paper2" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle" | "compare" | "lessons"
   const [businessTab, setBusinessTab] = useState<BusinessTab>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("ecbiz_business_tab");
@@ -61,6 +71,8 @@ export default function App() {
           "archive",
           "progress",
           "boss-battle",
+          "compare",
+          "lessons",
         ].includes(saved)
       ) {
         return saved as BusinessTab;
@@ -81,9 +93,9 @@ export default function App() {
   );
 
   // Modals & Study Space State
-  const [showFinanceExamModal, setShowFinanceExamModal] = useState<boolean>(false);
   const [showAvatarCustomizerModal, setShowAvatarCustomizerModal] = useState<boolean>(false);
   const [showAchievementsModal, setShowAchievementsModal] = useState<boolean>(false);
+  const [isMockExamMode, setIsMockExamMode] = useState<boolean>(false);
   const [isStudySpaceExpanded, setIsStudySpaceExpanded] = useState<boolean>(false);
   const [isStudySpaceActive, setIsStudySpaceActive] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
@@ -108,6 +120,7 @@ export default function App() {
     }
   };
 
+  const [compareSection, setCompareSection] = useState<string>("1");
   const [selectedPracticeSection, setSelectedPracticeSection] = useState<string>("1");
   const [selectedPracticeTopic, setSelectedPracticeTopic] = useState<string | undefined>("1.1");
 
@@ -118,16 +131,12 @@ export default function App() {
 
   // Synchronize documentElement, body, and storage with theme
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.body.classList.add("dark");
-      document.documentElement.style.colorScheme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.body.classList.remove("dark");
-      document.documentElement.style.colorScheme = "light";
-    }
-    saveTheme(theme);
+    const active = getTheme(theme);
+    document.documentElement.classList.toggle("dark", active.dark);
+    document.body.classList.toggle("dark", active.dark);
+    document.documentElement.style.colorScheme = active.dark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    saveThemeId(theme);
   }, [theme]);
 
   // Load records from cookies/storage on mount and handle URL routing params
@@ -142,6 +151,8 @@ export default function App() {
         const openParam = params.get("open") || params.get("tab");
         if (openParam === "paper2") {
           setBusinessTab("paper2");
+        } else if (openParam === "lessons") {
+          setBusinessTab("lessons");
         } else if (openParam === "practice") {
           setBusinessTab("practice");
         } else if (openParam === "glossary") {
@@ -150,6 +161,12 @@ export default function App() {
           handleOpenStudySpace();
         } else if (openParam === "quiz" || openParam === "challenge") {
           setBusinessTab("quick-quiz");
+        } else if (openParam === "compare") {
+          setBusinessTab("compare");
+          const sectionParam = params.get("section");
+          if (sectionParam && ["1", "2", "3", "4", "5", "6"].includes(sectionParam)) {
+            setCompareSection(sectionParam);
+          }
         }
       } catch {}
     }
@@ -159,7 +176,6 @@ export default function App() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (showFinanceExamModal) setShowFinanceExamModal(false);
         if (showAvatarCustomizerModal) setShowAvatarCustomizerModal(false);
         if (showAchievementsModal) setShowAchievementsModal(false);
         if (isStudySpaceExpanded) setIsStudySpaceExpanded(false);
@@ -167,11 +183,11 @@ export default function App() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [showFinanceExamModal, showAvatarCustomizerModal, showAchievementsModal, isStudySpaceExpanded]);
+  }, [showAvatarCustomizerModal, showAchievementsModal, isStudySpaceExpanded]);
 
-  const handleToggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  // Keep the wrapper in sync with the active theme's dark flag so Tailwind
+  // dark: variants work even on the root container.
+  const themeIsDark = getTheme(theme).dark;
 
   const handleSelectBusinessSection = (sectionCode: string, topicCode?: string) => {
     setSelectedPracticeSection(sectionCode);
@@ -224,10 +240,16 @@ export default function App() {
     saveSubmissions([]);
   };
 
+  // Timed Mock Exam Mode deliberately strips away all navigation, study-space
+  // widgets and modals so the student sits the paper under strict conditions.
+  if (isMockExamMode) {
+    return <MockExamMode onExit={() => setIsMockExamMode(false)} />;
+  }
+
   return (
     <div
-      className={`min-h-screen flex flex-col justify-between bg-[#FAF9F6] dark:bg-black text-[#1C1917] dark:text-white transition-colors ${
-        theme === "dark" ? "dark" : ""
+      className={`min-h-screen flex flex-col justify-between bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] text-[var(--ink,#192e28)] dark:text-white transition-colors ${
+        themeIsDark ? "dark" : ""
       }`}
     >
       <div>
@@ -236,11 +258,16 @@ export default function App() {
           activeTab={businessTab}
           setActiveTab={(tab) => setBusinessTab(tab)}
           theme={theme}
-          onToggleTheme={handleToggleTheme}
+          onSelectTheme={(id) => setTheme(id)}
           submissionCount={submissions.length}
           onOpenStudySpace={handleOpenStudySpace}
           onOpenAvatarCustomizer={() => setShowAvatarCustomizerModal(true)}
           onOpenAchievements={() => setShowAchievementsModal(true)}
+          onOpenCompare={(sectionCode) => {
+            setCompareSection(sectionCode);
+            setBusinessTab("compare");
+          }}
+          onStartMockExam={() => setIsMockExamMode(true)}
         />
 
         {/* View Routing for Business Studies Platform */}
@@ -251,19 +278,32 @@ export default function App() {
               onSaveSubmission={handleSaveSubmission}
               bookmarkedIds={bookmarkedIds}
               onToggleBookmark={handleToggleBookmark}
-              onOpenFinanceTest={() => setShowFinanceExamModal(true)}
               onOpenQuickQuiz={() => setBusinessTab("quick-quiz")}
               onOpenSections={() => setBusinessTab("sections")}
               initialSectionCode={selectedPracticeSection}
               initialTopicCode={selectedPracticeTopic}
               initialPracticeMode={practiceMode}
               onOpenStudySpace={handleOpenStudySpace}
+              onOpenMockExam={() => setIsMockExamMode(true)}
             />
           )}
 
           {/* TAB 2: Dedicated Paper 2 Practice Studio (100 Case Studies, Appendices 1-3, Qwen 3.5 0.8B) */}
           {businessTab === "paper2" && (
             <Paper2PracticeView onOpenStudySpace={handleOpenStudySpace} />
+          )}
+
+          {/* TAB: Interactive Lessons (24 guided concept + practice cards) */}
+          {businessTab === "lessons" && (
+            <InteractiveLessonsView
+              onOpenPractice={(sectionCode) => {
+                setSelectedPracticeSection(sectionCode);
+                setSelectedPracticeTopic(undefined);
+                setPracticeMode("paper1_database");
+                setBusinessTab("practice");
+              }}
+              onOpenChecklist={() => setBusinessTab("checklist")}
+            />
           )}
 
           {/* TAB 3: Sections & Chapters Breakdown (Sections 1-6) */}
@@ -275,59 +315,34 @@ export default function App() {
                 setSelectedPracticeTopic(topicCode);
                 setBusinessTab("practice");
               }}
-              onOpenFinanceExam={() => setShowFinanceExamModal(true)}
               onReturnToPractice={() => setBusinessTab("practice")}
+              onOpenCompare={(sectionCode) => {
+                setCompareSection(sectionCode);
+                setBusinessTab("compare");
+              }}
             />
           )}
 
           {/* TAB 4: Daily Quick Quiz */}
           {businessTab === "quick-quiz" && (
-            <div className="max-w-4xl mx-auto px-6 py-10 transition-colors">
-              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <div className="text-xs font-mono font-semibold text-[#8B1E1E] dark:text-[#F87171] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#8B1E1E] dark:bg-[#EF4444]"></span>
-                    Cambridge 0264 Active Recall
-                  </div>
-                  <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white">
-                    EcBiz Quick Quiz
-                  </h1>
-                  <p className="text-sm text-[#57534E] dark:text-neutral-400">
-                    Master essential definitions with randomized active recall drills.
-                  </p>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <button
-                    onClick={() => setBusinessTab("glossary")}
-                    className="px-3.5 py-2 bg-white dark:bg-neutral-900 border border-[#D6D3D1] dark:border-neutral-700 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-xs font-semibold rounded-lg text-[#0F2042] dark:text-[#38BDF8] transition-colors"
-                  >
-                    0264 Flashcards 🎴
-                  </button>
-                  <button
-                    onClick={() => setBusinessTab("practice")}
-                    className="px-3.5 py-2 bg-[#0F2042] hover:bg-[#1E3A8A] dark:bg-[#38BDF8] dark:hover:bg-[#0284C7] text-white dark:text-[#0F172A] text-xs font-semibold rounded-lg transition-colors"
-                  >
-                    Practice Studio →
-                  </button>
-                </div>
-              </div>
-
-              <DailyQuickQuiz
-                onOpenFullGlossary={() => setBusinessTab("glossary")}
-                onOpenStudySpace={handleOpenStudySpace}
-              />
-            </div>
+            <DailyQuickQuiz
+              onOpenFullGlossary={() => setBusinessTab("glossary")}
+              onOpenStudySpace={handleOpenStudySpace}
+              onOpenPractice={() => setBusinessTab("practice")}
+            />
           )}
 
           {/* TAB 5: 0264 Syllabus Revision Checklist */}
           {businessTab === "checklist" && (
-            <SyllabusRevisionChecklist
-              onSelectTopicForPractice={(_subj, secCode, topCode) => {
-                setSelectedPracticeSection(secCode);
-                setSelectedPracticeTopic(topCode);
-                setBusinessTab("practice");
-              }}
-            />
+            <div className="study-page">
+              <SyllabusRevisionChecklist
+                onSelectTopicForPractice={(_subj, secCode, topCode) => {
+                  setSelectedPracticeSection(secCode);
+                  setSelectedPracticeTopic(topCode);
+                  setBusinessTab("practice");
+                }}
+              />
+            </div>
           )}
 
           {/* TAB 6: Key Terms & Glossary */}
@@ -357,6 +372,13 @@ export default function App() {
           {businessTab === "boss-battle" && (
             <BossBattleArena onBackToStudio={() => setBusinessTab("practice")} />
           )}
+
+          {businessTab === "compare" && (
+            <CompareNotesView
+              section={compareSection}
+              onSectionChange={setCompareSection}
+            />
+          )}
         </main>
 
         {/* Persistent Study Space Floating Realm or Movable Mini Widget */}
@@ -380,18 +402,16 @@ export default function App() {
           onClose={() => setShowAchievementsModal(false)}
         />
 
-        {/* Finance Exam Pop-up Modal */}
-        {showFinanceExamModal && (
-          <FinanceExamStudio
-            onReturnToPractice={() => setShowFinanceExamModal(false)}
-            onSaveSubmission={handleSaveSubmission}
-          />
-        )}
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black py-4 px-6 text-center text-xs text-[#78716C] dark:text-neutral-500">
-        <p>EcBiz • Powered by Local in-Browser Qwen 3.5 0.8B AI</p>
+      <footer className="border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
+        <p>
+          EcBiz • Powered by Local in-Browser Qwen 3.5 0.8B AI •{" "}
+          <a href="/dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
+            Student Dashboard
+          </a>
+        </p>
       </footer>
     </div>
   );

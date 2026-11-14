@@ -1,0 +1,73 @@
+# Paper 1 Question Paper Index (case/business contexts)
+
+| # | Syllabus | Year | Session | Paper | Variant | Filename | QualifiedQuest/Papa URL |
+|---|---|---|---|---|---|---|---|
+| 1 | 0450 | 2017 | Feb/Mar | 1 | 12 | 0450_m17_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_m17_qp_12.pdf |
+| 2 | 0450 | 2017 | May/Jun | 1 | 11 | 0450_s17_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_s17_qp_11.pdf |
+| 3 | 0450 | 2017 | May/Jun | 1 | 12 | 0450_s17_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_s17_qp_12.pdf |
+| 4 | 0450 | 2017 | May/Jun | 1 | 13 | 0450_s17_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_s17_qp_13.pdf |
+| 5 | 0450 | 2017 | Oct/Nov | 1 | 11 | 0450_w17_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_w17_qp_11.pdf |
+| 6 | 0450 | 2017 | Oct/Nov | 1 | 12 | 0450_w17_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_w17_qp_12.pdf |
+| 7 | 0450 | 2017 | Oct/Nov | 1 | 13 | 0450_w17_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2017/0450_w17_qp_13.pdf |
+| 8 | 0450 | 2018 | Feb/Mar | 1 | 12 | 0450_m18_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_m18_qp_12.pdf |
+| 9 | 0450 | 2018 | May/Jun | 1 | 11 | 0450_s18_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_s18_qp_11.pdf |
+| 10 | 0450 | 2018 | May/Jun | 1 | 12 | 0450_s18_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_s18_qp_12.pdf |
+| 11 | 0450 | 2018 | May/Jun | 1 | 13 | 0450_s18_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_s18_qp_13.pdf |
+| 12 | 0450 | 2018 | Oct/Nov | 1 | 11 | 0450_w18_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_w18_qp_11.pdf |
+| 13 | 0450 | 2018 | Oct/Nov | 1 | 12 | 0450_w18_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_w18_qp_12.pdf |
+| 14 | 0450 | 2018 | Oct/Nov | 1 | 13 | 0450_w18_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2018/0450_w18_qp_13.pdf |
+| 15 | 0450 | 2019 | Feb/Mar | 1 | 12 | 0450_m19_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_m19_qp_12.pdf |
+| 16 | 0450 | 2019 | May/Jun | 1 | 11 | 0450_s19_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_s19_qp_11.pdf |
+| 17 | 0450 | 2019 | May/Jun | 1 | 12 | 0450_s19_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_s19_qp_12.pdf |
+| 18 | 0450 | 2019 | May/Jun | 1 | 13 | 0450_s19_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_s19_qp_13.pdf |
+| 19 | 0450 | 2019 | Oct/Nov | 1 | 11 | 0450_w19_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_w19_qp_11.pdf |
+| 20 | 0450 | 2019 | Oct/Nov | 1 | 12 | 0450_w19_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_w19_qp_12.pdf |
+| 21 | 0450 | 2019 | Oct/Nov | 1 | 13 | 0450_w19_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2019/0450_w19_qp_13.pdf |
+| 22 | 0450 | 2020 | Feb/Mar | 1 | 12 | 0450_m20_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_m20_qp_12.pdf |
+| 23 | 0450 | 2020 | May/Jun | 1 | 11 | 0450_s20_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_s20_qp_11.pdf |
+| 24 | 0450 | 2020 | May/Jun | 1 | 12 | 0450_s20_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_s20_qp_12.pdf |
+| 25 | 0450 | 2020 | May/Jun | 1 | 13 | 0450_s20_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_s20_qp_13.pdf |
+| 26 | 0450 | 2020 | Oct/Nov | 1 | 11 | 0450_w20_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_w20_qp_11.pdf |
+| 27 | 0450 | 2020 | Oct/Nov | 1 | 12 | 0450_w20_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_w20_qp_12.pdf |
+| 28 | 0450 | 2020 | Oct/Nov | 1 | 13 | 0450_w20_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2020/0450_w20_qp_13.pdf |
+| 29 | 0450 | 2021 | Feb/Mar | 1 | 12 | 0450_m21_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_m21_qp_12.pdf |
+| 30 | 0450 | 2021 | May/Jun | 1 | 11 | 0450_s21_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_s21_qp_11.pdf |
+| 31 | 0450 | 2021 | May/Jun | 1 | 12 | 0450_s21_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_s21_qp_12.pdf |
+| 32 | 0450 | 2021 | May/Jun | 1 | 13 | 0450_s21_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_s21_qp_13.pdf |
+| 33 | 0450 | 2021 | Oct/Nov | 1 | 11 | 0450_w21_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_w21_qp_11.pdf |
+| 34 | 0450 | 2021 | Oct/Nov | 1 | 12 | 0450_w21_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_w21_qp_12.pdf |
+| 35 | 0450 | 2021 | Oct/Nov | 1 | 13 | 0450_w21_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2021/0450_w21_qp_13.pdf |
+| 36 | 0450 | 2022 | Feb/Mar | 1 | 12 | 0450_m22_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_m22_qp_12.pdf |
+| 37 | 0450 | 2022 | May/Jun | 1 | 11 | 0450_s22_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_s22_qp_11.pdf |
+| 38 | 0450 | 2022 | May/Jun | 1 | 12 | 0450_s22_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_s22_qp_12.pdf |
+| 39 | 0450 | 2022 | May/Jun | 1 | 13 | 0450_s22_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_s22_qp_13.pdf |
+| 40 | 0450 | 2022 | Oct/Nov | 1 | 11 | 0450_w22_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_w22_qp_11.pdf |
+| 41 | 0450 | 2022 | Oct/Nov | 1 | 12 | 0450_w22_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_w22_qp_12.pdf |
+| 42 | 0450 | 2022 | Oct/Nov | 1 | 13 | 0450_w22_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2022/0450_w22_qp_13.pdf |
+| 43 | 0450 | 2023 | Feb/Mar | 1 | 12 | 0450_m23_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_m23_qp_12.pdf |
+| 44 | 0450 | 2023 | May/Jun | 1 | 11 | 0450_s23_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_s23_qp_11.pdf |
+| 45 | 0450 | 2023 | May/Jun | 1 | 12 | 0450_s23_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_s23_qp_12.pdf |
+| 46 | 0450 | 2023 | May/Jun | 1 | 13 | 0450_s23_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_s23_qp_13.pdf |
+| 47 | 0450 | 2023 | Oct/Nov | 1 | 11 | 0450_w23_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_w23_qp_11.pdf |
+| 48 | 0450 | 2023 | Oct/Nov | 1 | 12 | 0450_w23_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_w23_qp_12.pdf |
+| 49 | 0450 | 2023 | Oct/Nov | 1 | 13 | 0450_w23_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2023/0450_w23_qp_13.pdf |
+| 50 | 0450 | 2024 | Feb/Mar | 1 | 12 | 0450_m24_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_m24_qp_12.pdf |
+| 51 | 0450 | 2024 | May/Jun | 1 | 11 | 0450_s24_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_s24_qp_11.pdf |
+| 52 | 0450 | 2024 | May/Jun | 1 | 12 | 0450_s24_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_s24_qp_12.pdf |
+| 53 | 0450 | 2024 | May/Jun | 1 | 13 | 0450_s24_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_s24_qp_13.pdf |
+| 54 | 0450 | 2024 | Oct/Nov | 1 | 11 | 0450_w24_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_w24_qp_11.pdf |
+| 55 | 0450 | 2024 | Oct/Nov | 1 | 12 | 0450_w24_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_w24_qp_12.pdf |
+| 56 | 0450 | 2024 | Oct/Nov | 1 | 13 | 0450_w24_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2024/0450_w24_qp_13.pdf |
+| 57 | 0450 | 2025 | Feb/Mar | 1 | 12 | 0450_m25_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_m25_qp_12.pdf |
+| 58 | 0450 | 2025 | May/Jun | 1 | 11 | 0450_s25_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_s25_qp_11.pdf |
+| 59 | 0450 | 2025 | May/Jun | 1 | 12 | 0450_s25_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_s25_qp_12.pdf |
+| 60 | 0450 | 2025 | May/Jun | 1 | 13 | 0450_s25_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_s25_qp_13.pdf |
+| 61 | 0450 | 2025 | Oct/Nov | 1 | 11 | 0450_w25_qp_11.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_w25_qp_11.pdf |
+| 62 | 0450 | 2025 | Oct/Nov | 1 | 12 | 0450_w25_qp_12.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_w25_qp_12.pdf |
+| 63 | 0450 | 2025 | Oct/Nov | 1 | 13 | 0450_w25_qp_13.pdf | https://cdn.qualifiedquest.com/papers/igcse-o-level/business-studies-0450/2025/0450_w25_qp_13.pdf |
+| 64 | 0450 | 2026 | Feb/Mar | 1 | 12 | 0450_m26_qp_12.pdf | https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/0450_m26_qp_12.pdf |
+| 65 | 0450 | 2026 | May/Jun | 1 | 11 | 0450_s26_qp_11.pdf | https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/0450_s26_qp_11.pdf |
+| 66 | 0450 | 2026 | May/Jun | 1 | 12 | 0450_s26_qp_12.pdf | https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/0450_s26_qp_12.pdf |
+| 67 | 0450 | 2026 | May/Jun | 1 | 13 | 0450_s26_qp_13.pdf | https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/0450_s26_qp_13.pdf |
+
+Total Paper 1 variants: 67

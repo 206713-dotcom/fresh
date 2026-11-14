@@ -36,6 +36,7 @@ import {
   Layers,
   ChevronRight,
   Gauge,
+  RotateCcw,
 } from "lucide-react";
 
 export type DifficultyTier = "foundation" | "higher" | "nightmare";
@@ -90,6 +91,9 @@ export const DIFFICULTY_TIERS: Record<DifficultyTier, DifficultyConfig> = {
 
 export const JETPACK_COST = 200;
 export const JETPACK_FLIGHT_SECONDS = 3.0;
+
+// Revive trial: survive death by answering this many questions correctly in a row.
+export const REVIVE_REQUIRED_CORRECT = 10;
 
 interface ArmourItem {
   id: string;
@@ -540,14 +544,35 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const [liveTokens, setLiveTokens] = useState<number>(0);
   const [extraLives, setExtraLives] = useState<number>(1);
 
+  // Correct-answer streak, run escalation, and the revive trial
+  const [streak, setStreak] = useState<number>(0);
+  const [bestStreak, setBestStreak] = useState<number>(0);
+  const [rageLevel, setRageLevel] = useState<number>(0);
+  const [reviveUsed, setReviveUsed] = useState<boolean>(false);
+  const [reviveCorrect, setReviveCorrect] = useState<number>(0);
+  const streakMultiplier = 1 + Math.min(streak, 10) * 0.2;
+
   // Game flow states
-  const [gameState, setGameState] = useState<"idle" | "playing" | "question_attack" | "game_over" | "boss_defeated" | "shop">("idle");
+  const [gameState, setGameState] = useState<"idle" | "playing" | "question_attack" | "revive_challenge" | "game_over" | "boss_defeated" | "shop">("idle");
   const [activeQuestion, setActiveQuestion] = useState<BossActiveQuestion | null>(null);
   const [questionTimer, setQuestionTimer] = useState<number>(15);
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; text: string } | null>(null);
   const [score, setScore] = useState<number>(0);
   const [bossAttackCharging, setBossAttackCharging] = useState<boolean>(false);
   const [floatingDamage, setFloatingDamage] = useState<{ id: number; text: string; x: number; y: number; color: string }[]>([]);
+
+  // Live escalation: every correct answer enrages the boss, so the fight keeps getting harder.
+  const combatBoss = useMemo(() => {
+    const rage = Math.min(rageLevel, 15);
+    return {
+      ...activeBoss,
+      projectileSpeed: Number(
+        Math.min(10.5, activeBoss.projectileSpeed * (1 + rage * 0.05)).toFixed(2),
+      ),
+      attackCadenceMs: Math.max(850, Math.round(activeBoss.attackCadenceMs / (1 + rage * 0.055))),
+      attackIntervalMs: Math.max(4200, Math.round(activeBoss.attackIntervalMs / (1 + rage * 0.035))),
+    };
+  }, [activeBoss, rageLevel]);
 
   // 2D Canvas Runner state
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -621,7 +646,13 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     setAmmo(maxAmmo);
     setGameState("playing");
     setQuestionFeedback(null);
+    setActiveQuestion(null);
     setBossAttackCharging(false);
+    setStreak(0);
+    setBestStreak(0);
+    setRageLevel(0);
+    setReviveUsed(false);
+    setReviveCorrect(0);
     playerProjectilesRef.current = [];
     bossAttacksRef.current = [];
     obstaclesRef.current = [];
@@ -758,17 +789,87 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     playTone(380, "square", 0.35, 0.2);
   };
 
+  // Begin the 10-in-a-row revive trial after a strong run ends in defeat
+  const startReviveChallenge = () => {
+    if (reviveUsed) return;
+    setReviveCorrect(0);
+    setGameState("revive_challenge");
+    setQuestionFeedback(null);
+    setQuestionTimer(15);
+    setActiveQuestion(getBusinessBossQuestion());
+    playTone(440, "square", 0.4, 0.2);
+  };
+
   // Answer question attack
   const handleSelectQuestionOption = (selectedIndex: number) => {
     if (!activeQuestion || questionFeedback) return;
 
+    // ---- Revive trial: all 10 answers must be correct ----
+    if (gameState === "revive_challenge") {
+      if (selectedIndex === activeQuestion.correctIndex) {
+        const nextCorrect = reviveCorrect + 1;
+        setReviveCorrect(nextCorrect);
+        playCritSound();
+
+        if (nextCorrect >= REVIVE_REQUIRED_CORRECT) {
+          setReviveUsed(true);
+          setQuestionFeedback({
+            isCorrect: true,
+            text: `REVIVE COMPLETE! ${REVIVE_REQUIRED_CORRECT}/${REVIVE_REQUIRED_CORRECT} correct in a row. You claw your way back at full HP!`,
+          });
+          setTimeout(() => {
+            setQuestionFeedback(null);
+            setActiveQuestion(null);
+            setReviveCorrect(0);
+            setPlayerHp(maxPlayerHp);
+            setStreak(0);
+            setGameState("playing");
+            lastQuestionAttackTimeRef.current = Date.now();
+            lastBossNormalAttackTimeRef.current = Date.now();
+            playerInvincibleUntilRef.current = Date.now() + 2000;
+            addFloatingText("SECOND WIND! FULL HP RESTORED ❤️", 150, 100, "#10b981");
+          }, 1800);
+        } else {
+          setQuestionFeedback({
+            isCorrect: true,
+            text: `Revive trial ${nextCorrect}/${REVIVE_REQUIRED_CORRECT} correct. One mistake still ends the run!`,
+          });
+          setTimeout(() => {
+            setQuestionFeedback(null);
+            setQuestionTimer(15);
+            setActiveQuestion(getBusinessBossQuestion());
+          }, 1000);
+        }
+      } else {
+        playHitSound();
+        setReviveUsed(true);
+        setReviveCorrect(0);
+        setQuestionFeedback({
+          isCorrect: false,
+          text: `REVIVE FAILED — the trial needs ${REVIVE_REQUIRED_CORRECT} correct in a row. ${activeQuestion.explanation}`,
+        });
+        setTimeout(() => {
+          setQuestionFeedback(null);
+          setActiveQuestion(null);
+          setGameState("game_over");
+        }, 2600);
+      }
+      return;
+    }
+
     if (selectedIndex === activeQuestion.correctIndex) {
-      // Correct answer! Screen shake + massive boss hit + Live Token
+      // Correct answer! Screen shake + scaling streak multiplier + boss hit + Live Token
       playCritSound();
       screenShakeRef.current = 10; // Trigger dramatic screen shake
       bossHitFlashRef.current = 8; // Flash boss white
 
-      const critDamage = Math.round(55 * studyStats.damageMultiplier);
+      const nextStreak = streak + 1;
+      const nextMultiplier = 1 + Math.min(nextStreak, 10) * 0.2;
+      setStreak(nextStreak);
+      setBestStreak((prev) => Math.max(prev, nextStreak));
+      setRageLevel((prev) => Math.min(15, prev + 1));
+
+      const critDamage = Math.round(55 * studyStats.damageMultiplier * nextMultiplier);
       const newBossHp = Math.max(0, bossHp - critDamage);
       setBossHp(newBossHp);
 
@@ -785,14 +886,16 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       }
       setLiveTokens(finalTokens);
 
-      const earnedCoins = 35;
+      const earnedCoins = Math.round(35 * nextMultiplier);
       const updatedTotalCoins = awardBonusStudyCoins(earnedCoins);
       setCoins(updatedTotalCoins);
-      setScore((prev) => prev + 300);
+      setScore((prev) => prev + Math.round(300 * nextMultiplier));
 
       setQuestionFeedback({
         isCorrect: true,
-        text: `CRITICAL COUNTER-STRIKE! -${critDamage} HP dealt! +${earnedCoins} Coins & +1 Live Token earned! ${
+        text: `CRITICAL COUNTER-STRIKE! -${critDamage} HP dealt! Streak ${nextStreak} → ${nextMultiplier.toFixed(
+          1,
+        )}x damage. +${earnedCoins} Coins & +1 Live Token! ${
           extraLivesAdded > 0 ? "✨ 3 TOKENS FORGED +1 EXTRA LIFE!" : ""
         }`,
       });
@@ -807,8 +910,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         }
       }, 1800);
     } else {
-      // Incorrect answer or timeout
+      // Incorrect answer or timeout — the streak breaks and the boss keeps its rage
       playHitSound();
+      setStreak(0);
       const rawDamage = 40;
       const mitigatedDamage = Math.max(5, rawDamage - (30 - currentArmour.damagePerHit));
       const nextPlayerHp = Math.max(0, playerHp - mitigatedDamage);
@@ -816,7 +920,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
       setQuestionFeedback({
         isCorrect: false,
-        text: `INCORRECT! Boss struck through defense! -${mitigatedDamage} HP. (Armour absorbed ${
+        text: `INCORRECT! Streak reset to 0. Boss struck through defense! -${mitigatedDamage} HP. (Armour absorbed ${
           rawDamage - mitigatedDamage
         } damage). ${activeQuestion.explanation}`,
       });
@@ -880,7 +984,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   // Question Attack countdown timer
   useEffect(() => {
     let timer: any = null;
-    if (gameState === "question_attack" && questionTimer > 0 && !questionFeedback) {
+    if (
+      (gameState === "question_attack" || gameState === "revive_challenge") &&
+      questionTimer > 0 &&
+      !questionFeedback
+    ) {
       timer = setInterval(() => {
         setQuestionTimer((prev) => {
           if (prev <= 1) {
@@ -1146,7 +1254,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
       // 6. BOSS FIRES MOVING ATTACK PROJECTILES (MULTI-TIER HEIGHTS, CLEAR & FAIR)
       const timeSinceNormalAttack = Date.now() - lastBossNormalAttackTimeRef.current;
-      if (timeSinceNormalAttack >= activeBoss.attackCadenceMs) {
+      if (timeSinceNormalAttack >= combatBoss.attackCadenceMs) {
         lastBossNormalAttackTimeRef.current = Date.now();
         playBossAttackSound();
 
@@ -1194,10 +1302,10 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             x: bossX - 25,
             y: projectileY,
             baseY,
-            vx: -Math.min(activeBoss.projectileSpeed, 6.0), // readable, dodgeable velocity
+            vx: -Math.min(combatBoss.projectileSpeed, 9.5), // scales with boss rage, still dodgeable
             width: 24,
             height: 20,
-            icon: activeBoss.projectileIcon,
+            icon: combatBoss.projectileIcon,
             id: Math.random(),
             rotation: 0,
             tier,
@@ -1403,13 +1511,13 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
       // 10. Check Boss Special Attack Interval -> Triggers Question Attack
       const timeSinceLastQuestion = Date.now() - lastQuestionAttackTimeRef.current;
-      if (timeSinceLastQuestion >= activeBoss.attackIntervalMs) {
+      if (timeSinceLastQuestion >= combatBoss.attackIntervalMs) {
         lastQuestionAttackTimeRef.current = Date.now();
         triggerQuestionAttack();
         return;
       }
 
-      if (timeSinceLastQuestion >= activeBoss.attackIntervalMs - 2200) {
+      if (timeSinceLastQuestion >= combatBoss.attackIntervalMs - 2200) {
         setBossAttackCharging(true);
       } else {
         setBossAttackCharging(false);
@@ -1443,6 +1551,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     hasJetpack,
     selectedDifficulty,
     stageCount,
+    combatBoss,
   ]);
 
   // Mod Purchase Handlers
@@ -1507,6 +1616,8 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const bossGhostHpPercent = Math.max(0, Math.min(100, (bossGhostHp / activeBoss.maxHp) * 100));
   const isEnraged = bossHpPercent <= 60 && bossHpPercent > 30;
   const isCritical = bossHpPercent <= 30;
+  // A strong run (3+ streak or boss pushed below 40% HP) unlocks one revive trial.
+  const canRevive = !reviveUsed && (bestStreak >= 3 || bossHpPercent <= 40);
 
   return (
     <div className="max-w-6xl mx-auto px-3 sm:px-6 py-6 font-sans">
@@ -1559,6 +1670,22 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             <span>Tokens: {liveTokens}/3</span>
             <span className="text-[10px] bg-purple-500/20 px-1.5 py-0.5 rounded-full font-mono">
               ❤️ {extraLives} Lives
+            </span>
+          </div>
+
+          {/* Correct-answer streak multiplier */}
+          <div
+            className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+              streak > 0
+                ? "bg-orange-500/15 border-orange-500/40 text-orange-700 dark:text-orange-300"
+                : "bg-neutral-500/10 border-neutral-500/30 text-neutral-600 dark:text-neutral-400"
+            }`}
+            title="Consecutive correct answers raise your damage multiplier. A wrong answer resets it."
+          >
+            <Flame className={`w-4 h-4 ${streak > 0 ? "text-orange-500" : "text-neutral-400"}`} />
+            <span>Streak {streak}</span>
+            <span className="text-[10px] font-mono opacity-80">
+              {streakMultiplier.toFixed(1)}x DMG
             </span>
           </div>
 
@@ -1810,6 +1937,18 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               <span className="text-[10px] px-2 py-0.5 rounded bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 font-bold">
                 ∞ Infinite Mode
               </span>
+              <button
+                onClick={() => {
+                  if (confirm("Reset your run back to Stage 1 and clear the saved stage?")) {
+                    handleStartGame(1, selectedDifficulty);
+                  }
+                }}
+                className="px-2.5 py-1 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 font-bold hover:border-rose-400 hover:text-rose-600 transition flex items-center gap-1 cursor-pointer"
+                title="Reset run to Stage 1"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Reset Run</span>
+              </button>
             </div>
           </div>
 
@@ -1874,6 +2013,16 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                         STAGE {stageCount} · LOOP {activeBoss.loop}
                       </span>
                     )}
+                    <span
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold font-mono border ${
+                        rageLevel > 0
+                          ? "bg-orange-500/20 text-orange-400 border-orange-500/40"
+                          : "bg-neutral-700/40 text-neutral-400 border-neutral-600"
+                      }`}
+                      title="Every correct answer enrages the boss: faster projectiles and shorter attack intervals."
+                    >
+                      ⚡ THREAT LV {rageLevel}
+                    </span>
                   </div>
                   <div className="text-[11px] text-neutral-400 font-mono">
                     {activeBoss.scaledTitle}
@@ -2054,16 +2203,42 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
             {/* GAME OVER OVERLAY */}
             {gameState === "game_over" && (
-              <div className="absolute inset-0 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-white animate-fade-in">
-                <div className="text-5xl mb-2">💀</div>
+              <div className="absolute inset-0 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-4 text-center text-white animate-fade-in overflow-y-auto">
+                <div className="text-4xl mb-1">💀</div>
                 <div className="text-[10px] font-mono uppercase tracking-widest text-rose-400 font-bold mb-1">
                   STAGE {stageCount} · LOOP {activeBoss.loop}
                 </div>
-                <h3 className="text-2xl font-black text-rose-500 mb-1">DEFEATED BY {activeBoss.name.toUpperCase()}</h3>
-                <p className="text-xs text-neutral-300 max-w-md mb-4">
-                  Your business barrier broke! Upgrade your armour or equip the Quantum Jetpack to soar over hazardous projectiles.
-                </p>
-                <div className="flex items-center gap-3">
+                <h3 className="text-xl sm:text-2xl font-black text-rose-500 mb-1">
+                  DEFEATED BY {activeBoss.name.toUpperCase()}
+                </h3>
+
+                {canRevive ? (
+                  <div className="mb-3 w-full max-w-md rounded-xl border border-emerald-500/50 bg-emerald-950/70 p-3 shadow-lg">
+                    <div className="flex items-center justify-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-300">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Second Wind Available
+                    </div>
+                    <p className="mt-1 text-[11px] leading-snug text-emerald-100/90">
+                      Best streak {bestStreak} · Boss at {Math.round(bossHpPercent)}% HP. Answer{" "}
+                      <strong>{REVIVE_REQUIRED_CORRECT} questions in a row</strong> correctly to
+                      revive at full HP. One mistake ends the run for good.
+                    </p>
+                    <button
+                      onClick={startReviveChallenge}
+                      className="mt-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold text-[11px] sm:text-xs rounded-xl shadow-lg transition transform active:scale-95 cursor-pointer"
+                    >
+                      ⚡ Revive Trial · {REVIVE_REQUIRED_CORRECT} Correct in a Row
+                    </button>
+                  </div>
+                ) : (
+                  <p className="max-w-md text-[11px] leading-snug text-neutral-400 mb-3">
+                    {reviveUsed
+                      ? "Revive trial already used this run."
+                      : "Build a 3+ answer streak or push the boss below 40% HP to unlock a revive trial."}
+                  </p>
+                )}
+
+                <div className="flex flex-wrap items-center justify-center gap-2">
                   <button
                     onClick={() => handleStartGame(stageCount, selectedDifficulty)}
                     className="px-5 py-2.5 bg-white text-black hover:bg-neutral-200 font-bold text-xs rounded-xl transition cursor-pointer"
@@ -2124,17 +2299,31 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           </div>
 
           {/* TIMED PRODIGY QUESTION ATTACK MODAL / OVERLAY (FROM 129 BUSINESS BANK) */}
-          {gameState === "question_attack" && activeQuestion && (
-            <div className="bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border-2 border-rose-500 rounded-2xl p-5 sm:p-6 text-white shadow-2xl animate-in zoom-in-95 duration-150">
+          {(gameState === "question_attack" || gameState === "revive_challenge") && activeQuestion && (
+            <div
+              className={`bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border-2 rounded-2xl p-5 sm:p-6 text-white shadow-2xl animate-in zoom-in-95 duration-150 ${
+                gameState === "revive_challenge" ? "border-emerald-500" : "border-rose-500"
+              }`}
+            >
               <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl animate-bounce">⚡</span>
+                  <span className="text-2xl animate-bounce">
+                    {gameState === "revive_challenge" ? "❤️" : "⚡"}
+                  </span>
                   <div>
-                    <div className="text-[10px] font-mono text-rose-400 font-bold uppercase tracking-wider">
-                      CAMBRIDGE BUSINESS QUESTION ATTACK · #{activeQuestion.questionNumber} / 129
+                    <div
+                      className={`text-[10px] font-mono font-bold uppercase tracking-wider ${
+                        gameState === "revive_challenge" ? "text-emerald-400" : "text-rose-400"
+                      }`}
+                    >
+                      {gameState === "revive_challenge"
+                        ? `REVIVE TRIAL · ${reviveCorrect}/${REVIVE_REQUIRED_CORRECT} CORRECT · Q#${activeQuestion.questionNumber}`
+                        : `CAMBRIDGE BUSINESS QUESTION ATTACK · #${activeQuestion.questionNumber} / ${MCQ_BANK.length}`}
                     </div>
                     <div className="text-xs font-semibold text-neutral-300">
-                      Answer correctly to deplete the boss health bar & earn +35 Coins + 1 Live Token!
+                      {gameState === "revive_challenge"
+                        ? `Every answer must be correct. One mistake ends the run for good.`
+                        : `Answer correctly to build your streak multiplier, deplete boss HP & earn Coins + Live Tokens!`}
                     </div>
                   </div>
                 </div>
@@ -2163,6 +2352,18 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                 <h3 className="font-academic-serif text-base sm:text-lg font-bold text-white leading-snug">
                   {activeQuestion.question}
                 </h3>
+                {gameState === "revive_challenge" && (
+                  <div className="mt-3 flex items-center gap-1">
+                    {Array.from({ length: REVIVE_REQUIRED_CORRECT }).map((_, index) => (
+                      <span
+                        key={index}
+                        className={`h-1.5 flex-1 rounded-full transition-colors ${
+                          index < reviveCorrect ? "bg-emerald-400" : "bg-neutral-700"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Question Options */}

@@ -26,6 +26,129 @@ interface AvatarCustomizerModalProps {
   onCoinsUpdated?: (newCoins: number) => void;
 }
 
+/**
+ * Hair is drawn per style. Previously every style used the same cap, so the
+ * ponytail (hair-5) looked identical to the default cut and its tail never
+ * appeared.
+ */
+function AvatarHair({ hairId, color }: { hairId: string; color: string }) {
+  const cap = (
+    <path
+      d="M 58 36 C 58 16, 102 16, 102 36 C 102 24, 94 20, 80 20 C 66 20, 58 24, 58 36 Z"
+      fill={color}
+    />
+  );
+
+  switch (hairId) {
+    case "hair-2": // Academic Neat Crop
+      return (
+        <g>
+          {cap}
+          <path d="M 61 33 Q 80 24 99 33 L 97 29 Q 80 22 63 29 Z" fill={color} />
+        </g>
+      );
+
+    case "hair-3": // Messy Revision Curls
+      return (
+        <g>
+          <path d="M 56 34 C 52 16 68 9 80 13 C 92 7 108 14 104 34 Z" fill={color} />
+          <circle cx="61" cy="23" r="6" fill={color} />
+          <circle cx="73" cy="16" r="6.5" fill={color} />
+          <circle cx="87" cy="15" r="6.5" fill={color} />
+          <circle cx="99" cy="24" r="6" fill={color} />
+        </g>
+      );
+
+    case "hair-4": // Modern Textured Quiff
+      return (
+        <g>
+          {cap}
+          <path d="M 59 30 C 64 13 87 7 101 22 C 96 15 78 14 70 21 C 66 25 62 27 59 30 Z" fill={color} />
+        </g>
+      );
+
+    case "hair-5": // Sleek High Ponytail
+      return (
+        <g>
+          {/* Tail falls behind the right shoulder */}
+          <path
+            d="M 97 29 C 114 29 122 45 116 61 C 112 72 105 80 99 87 C 110 72 109 55 100 44 Z"
+            fill={color}
+          />
+          {cap}
+          <path d="M 58 30 Q 70 20 86 28 Q 72 24 58 34 Z" fill={color} />
+          {/* Exam ribbon at the base of the ponytail */}
+          <ellipse cx="99" cy="31" rx="4.5" ry="3" fill="#BE123C" />
+        </g>
+      );
+
+    case "hair-6": // Curly High-Top Fade
+      return (
+        <g>
+          {cap}
+          <path d="M 62 19 Q 80 1 98 19 L 96 27 Q 80 13 64 27 Z" fill={color} />
+          <circle cx="68" cy="18" r="4" fill={color} />
+          <circle cx="80" cy="12" r="4.5" fill={color} />
+          <circle cx="92" cy="18" r="4" fill={color} />
+        </g>
+      );
+
+    case "hair-7": // Spiky Anime Protagonist
+      return (
+        <g>
+          {cap}
+          <path
+            d="M 59 24 L 65 7 L 70 20 L 77 3 L 82 20 L 90 5 L 94 21 L 101 11 L 101 29 Z"
+            fill={color}
+          />
+        </g>
+      );
+
+    case "hair-8": // Regal Braided Crown
+      return (
+        <g>
+          {cap}
+          <path
+            d="M 58 32 Q 59 17 72 13 Q 82 9 92 15 Q 102 19 102 32"
+            stroke={color}
+            strokeWidth="5.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray="2 5"
+          />
+        </g>
+      );
+
+    case "hair-9": // Platinum Valedictorian
+      return (
+        <g>
+          <path
+            d="M 56 34 C 51 17 66 7 80 9 C 94 7 109 17 104 34 L 107 68 C 99 58 100 44 98 36 L 62 36 C 60 44 61 58 53 68 Z"
+            fill={color}
+          />
+          {cap}
+        </g>
+      );
+
+    case "hair-10": // Cyber Matrix Mohawk
+      return (
+        <g>
+          {cap}
+          <path d="M 71 21 C 73 3 87 3 89 21 Z" fill={color} />
+          <path d="M 75 15 L 80 1 L 85 15 Z" fill={color} />
+        </g>
+      );
+
+    default: // hair-1 Scholar Side-Part
+      return (
+        <g>
+          {cap}
+          <path d="M 58 30 Q 70 20 86 28 Q 72 24 58 34 Z" fill={color} />
+        </g>
+      );
+  }
+}
+
 export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
   isOpen,
   onClose,
@@ -266,12 +389,7 @@ export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
                 <path d="M 74 44 Q 80 49 86 44" stroke="#1E293B" strokeWidth="1.8" fill="none" strokeLinecap="round" />
 
                 {/* 7. Hair */}
-                <path
-                  d="M 58 36 C 58 16, 102 16, 102 36 C 102 24, 94 20, 80 20 C 66 20, 58 24, 58 36 Z"
-                  fill={currentHair.previewColor}
-                />
-                {/* Hair Side Fringe */}
-                <path d="M 58 30 Q 70 20 86 28 Q 72 24 58 34 Z" fill={currentHair.previewColor} />
+                <AvatarHair hairId={customization.hairId} color={currentHair.previewColor} />
               </svg>
             </div>
 

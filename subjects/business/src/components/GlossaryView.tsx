@@ -34,15 +34,15 @@ export function GlossaryView({
   const currentFlashcard: GlossaryTerm | undefined = filteredTerms[flashcardIndex];
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 transition-colors">
+    <div className="study-page">
       {/* Editorial Header */}
       <div className="mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <div className="study-page-heading">
           <div>
-            <h1 className="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white">
+            <h1 className="study-title">
               Cambridge 0264 Syllabus Glossary
             </h1>
-            <p className="text-sm text-[#57534E] dark:text-neutral-400">
+            <p className="study-description">
               Official textbook key terminology, 2-mark definitions, and calculation formulae
             </p>
           </div>
