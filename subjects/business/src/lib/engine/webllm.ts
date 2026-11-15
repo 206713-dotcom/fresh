@@ -276,6 +276,9 @@ export function getActiveQwenConfig(tier?: QwenModelTier): QwenModelConfig {
 
 /**
  * Verifies real WebGPU adapter availability (not just presence of navigator.gpu).
+ * GitHub Pages cannot send custom headers, and first-time adapter requests can
+ * be slow while the GPU process initializes, so we try the default adapter
+ * first with a generous timeout, then fall back to powerPreference.
  */
 export async function checkWebGPUSupport(): Promise<boolean> {
   if (typeof window === "undefined" || typeof navigator === "undefined") {
@@ -285,15 +288,20 @@ export async function checkWebGPUSupport(): Promise<boolean> {
   if (!gpu || typeof gpu.requestAdapter !== "function") {
     return false;
   }
-  try {
-    const adapter = await Promise.race([
-      gpu.requestAdapter(),
-      new Promise<null>((resolve) => setTimeout(() => resolve(null), 2500)),
-    ]);
-    return Boolean(adapter);
-  } catch {
-    return false;
-  }
+  const attempt = async (options?: { powerPreference: "high-performance" }) => {
+    try {
+      const adapter = await Promise.race([
+        gpu.requestAdapter(options),
+        new Promise<null>((resolve) => setTimeout(() => resolve(null), 10000)),
+      ]);
+      return adapter ?? null;
+    } catch {
+      return null;
+    }
+  };
+  const adapter =
+    (await attempt()) || (await attempt({ powerPreference: "high-performance" }));
+  return Boolean(adapter);
 }
 
 export class WebLLMEvaluationError extends Error {
@@ -622,7 +630,13 @@ async function loadSpecificTier(
   env.allowLocalModels = false;
   env.useBrowserCache = true;
   if (env.backends?.onnx?.wasm) {
+    // GitHub Pages cannot send Cross-Origin-Opener-Policy / Cross-Origin-Embedder-Policy
+    // headers, so `crossOriginIsolated` is false and SharedArrayBuffer may be unavailable.
+    // Force single-threaded WASM: it works without cross-origin isolation, and WebGPU
+    // inference does not need SharedArrayBuffer. (ORT also auto-falls back to 1, but we
+    // set it explicitly so the deployed Pages build behaves deterministically.)
     env.backends.onnx.wasm.proxy = false;
+    env.backends.onnx.wasm.numThreads = 1;
   }
 
   const progressCallback = (info: any) => {
