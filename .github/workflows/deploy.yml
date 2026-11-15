@@ -31,6 +31,8 @@ jobs:
 
       - name: Build Business Studies app
         working-directory: subjects/business
+        env:
+          VITE_APPS_SCRIPT_URL: ${{ secrets.VITE_APPS_SCRIPT_URL }}
         run: |
           npm install
           npm run build
