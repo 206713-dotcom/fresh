@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { viewHref } from "../lib/routes";
 import {
   ChevronDown,
   Menu,
@@ -766,7 +765,7 @@ export function Header({
               </>
             ) : (
               <a
-                href={viewHref("sign-in")}
+                href="./Business.html?open=signin"
                 className="h-11 w-11 rounded-full bg-[#203e32] dark:bg-emerald-800 hover:bg-[#1a332a] dark:hover:bg-emerald-700 text-white ring-2 ring-[#dce7d2] dark:ring-emerald-900 shadow-sm transition-all flex items-center justify-center cursor-pointer"
                 title="Sign in with your 6-digit student number"
               >
@@ -1084,7 +1083,7 @@ export function Header({
             </div>
           ) : (
             <a
-              href={viewHref("sign-in")}
+              href="./Business.html?open=signin"
               className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold flex items-center justify-between bg-[#203e32] dark:bg-emerald-800 text-white mb-2"
             >
               <span className="flex items-center gap-2">

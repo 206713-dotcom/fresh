@@ -6,12 +6,6 @@
 export const APPS_SCRIPT_URL =
   (import.meta.env.VITE_APPS_SCRIPT_URL as string | undefined)?.trim() || null;
 
-export function getAppBaseUrl(): string {
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
-  const base = import.meta.env.BASE_URL || "/";
-  return origin + base;
-}
-
 export interface ScriptResponse<T = unknown> {
   success?: boolean;
   error?: string;
@@ -31,7 +25,7 @@ export async function requestScript<T = unknown>(
   const timer = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
 
   try {
-    const res = await fetch(url, { ...init, signal: controller.signal, redirect: "follow" });
+    const res = await fetch(url, { ...init, signal: controller.signal });
 
     const contentType = res.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {

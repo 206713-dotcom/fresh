@@ -160,6 +160,16 @@ export interface DailyQuizQuestion {
   examAdvice: string;
 }
 
+export interface EconsGlossaryTerm {
+  id: string;
+  term: string;
+  definition: string;
+  unit: string;
+  diagramName?: string;
+  formula?: string;
+  examAdvice: string;
+}
+
 export interface UserPreferences {
   activeSubject: "business" | null;
   theme: "light" | "dark";

@@ -422,7 +422,7 @@ export default function App() {
       <footer className="border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
         <p>
           EcBiz • Powered by Local in-Browser {QWEN_MODELS[qwenStatus.activeTier].footerLabel} •{" "}
-          <a href="/dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
+          <a href="./Business.html?open=dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
             Student Dashboard
           </a>
         </p>

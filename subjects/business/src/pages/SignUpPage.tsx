@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { AuthShell } from "../components/AuthShell";
 import { getSession, register } from "../lib/auth";
-import { viewHref } from "../lib/routes";
 
 const inputClass =
   "w-full rounded-lg border border-[#d4d9cf] bg-[#fffefa] px-3 py-2 text-sm text-[#192e28] outline-none focus:border-[#8B1E1E] focus:ring-2 focus:ring-[#8B1E1E]/20";
@@ -16,7 +15,7 @@ export default function SignUpPage() {
 
   useEffect(() => {
     if (getSession()) {
-      window.location.replace(viewHref("dashboard"));
+      window.location.replace("./Business.html?open=dashboard");
     }
   }, []);
 
@@ -32,7 +31,7 @@ export default function SignUpPage() {
     setBusy(true);
     const result = await register(code, name, password);
     if (result.ok) {
-      window.location.replace(viewHref("dashboard"));
+      window.location.replace("./Business.html?open=dashboard");
       return;
     }
 
@@ -130,7 +129,7 @@ export default function SignUpPage() {
         <p className="mt-4 text-center text-sm text-[#57534E]">
           Already have an account?{" "}
           <a
-            href={viewHref("sign-in")}
+            href="./Business.html?open=signin"
             className="font-semibold text-[#8B1E1E] hover:underline"
           >
             Sign in

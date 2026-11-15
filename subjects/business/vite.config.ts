@@ -1,32 +1,23 @@
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { fileURLToPath } from 'node:url';
 
-// Progress is stored in Google Sheets (apps-script/Code.gs) — there is no
-// database or API middleware in this project.
-export default defineConfig(() => {
-  return {
-    base: '/fresh/subjects/business/',
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(import.meta.dirname || '.', '.'),
+export default defineConfig({
+  base: './',
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./Business.html', import.meta.url)),
       },
     },
-    optimizeDeps: {
-      exclude: ['@huggingface/transformers'],
-    },
-    build: {
-      chunkSizeWarningLimit: 8000,
-      outDir: 'dist',
-    },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-  };
+  },
 });

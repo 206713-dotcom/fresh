@@ -25,14 +25,14 @@ export function DocumentArchive() {
       title: "Cambridge IGCSE Business Studies 0264 Syllabus (2027–2029)",
       description: "Complete qualification curriculum syllabus document detailing Assessment Objectives AO1–AO4, subject content, and grading.",
       category: "Official Syllabus",
-      url: "/assets/aistudio/718123-2027-2029-syllabus_74cc6921.pdf",
+      url: "./assets/aistudio/718123-2027-2029-syllabus_74cc6921.pdf",
       isLocal: true,
     },
     {
       title: "CAIE IGCSE Business Studies Revision Guide",
       description: "Comprehensive structured revision summary of all chapters and CIE examination technique guidelines.",
       category: "Revision Guide",
-      url: "/assets/aistudio/CAIE_-_IGCSE_-_Business_Studies__1__c3cb68cc.pdf",
+      url: "./assets/aistudio/CAIE_-_IGCSE_-_Business_Studies__1__c3cb68cc.pdf",
       isLocal: true,
     },
   ];

@@ -4,7 +4,6 @@ import {
   type StudentRecord,
 } from "../hooks/useStudentDatabase";
 import { clearSession, getSession } from "../lib/auth";
-import { viewHref } from "../lib/routes";
 
 type ScoreKey =
   | "two_mark_scores"
@@ -21,7 +20,7 @@ export default function StudyDashboard() {
   // Protect this page: signed-out students go to the sign-in page.
   useEffect(() => {
     if (!getSession()) {
-      window.location.replace(viewHref("sign-in"));
+      window.location.replace("./Business.html?open=signin");
     }
   }, []);
 
@@ -71,7 +70,7 @@ export default function StudyDashboard() {
 
   const handleSignOut = () => {
     clearSession();
-    window.location.replace(viewHref("sign-in"));
+    window.location.replace("./Business.html?open=signin");
   };
 
   const completedQuestions =
@@ -86,7 +85,7 @@ export default function StudyDashboard() {
       <header className="border-b border-[#d4d9cf] bg-[#fffefa]">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <a
-            href={viewHref("app")}
+            href="./Business.html"
             className="text-sm font-semibold text-[#8B1E1E] hover:underline"
           >
             ← Back to EcBiz

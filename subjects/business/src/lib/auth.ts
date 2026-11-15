@@ -4,7 +4,7 @@
  * session token.
  */
 
-import { APPS_SCRIPT_URL, postToScript, getAppBaseUrl } from "./appsScript";
+import { APPS_SCRIPT_URL, postToScript } from "./appsScript";
 
 const TOKEN_KEY = "ecbiz_session_token";
 const CODE_KEY = "ecbiz_student_code";
@@ -106,7 +106,6 @@ export async function login(code: string, password: string): Promise<AuthResult>
     action: "login",
     access_code: cleanCode,
     password,
-    return_url: getAppBaseUrl(),
   });
 
   if (!res.success || !res.token) {
@@ -148,7 +147,6 @@ export async function register(
     access_code: cleanCode,
     name: normalise(name),
     password,
-    return_url: getAppBaseUrl(),
   });
 
   if (!res.success || !res.token) {

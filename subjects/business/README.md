@@ -10,7 +10,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-typed-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![WebLLM](https://img.shields.io/badge/AI-WebLLM_·_WebGPU-FF6F00)](https://github.com/mlc-ai/web-llm)
+[![Transformers.js](https://img.shields.io/badge/AI-Transformers.js_·_WebGPU-FF6F00)](https://huggingface.co/docs/transformers.js)
 [![Google Sheets](https://img.shields.io/badge/Progress-Google_Sheets-34A853?logo=googlesheets&logoColor=white)](#accounts-progress-and-privacy)
 [![Licence: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](#licence)
 
@@ -102,7 +102,7 @@ Third, I realised that feedback is only useful if it is **visible over time**. S
 | **Curriculum** | Mapped the 0264 syllabus into 255 granular statements, 61 subtopics and 29 topics. Structured 24 lessons around the six sections and the Sixth Edition textbook sequence. |
 | **Content** | Built 240 Paper 1 scenario sets and 100 Paper 2 case studies with appendices, 6,000 MCQs with explanations, 275 glossary terms, 165 comparison notes, and 189 verified past-paper questions with provenance metadata. |
 | **Assessment** | Designed the AO1–AO4 breakdown, deterministic application/evaluation rules, level-band descriptors, mark-scheme viewers, model-answer matching, manual overrides with an audit trail, and a fallback heuristic examiner. |
-| **AI** | Integrated a small Qwen model through WebLLM and WebGPU so essay feedback can run on the student's own device, with a strict JSON schema, deterministic temperature, validation, and a non-AI fallback. |
+| **AI** | Built a local in-browser examiner on Transformers.js and WebGPU: one Qwen 3.5 0.8B text decoder, a strict paragraph-audit JSON schema, deterministic TypeScript mark arithmetic, and a non-AI fallback examiner. |
 | **Front end** | Built the whole interface in React 19, TypeScript, Vite 8 and Tailwind CSS 4: lessons, practice studios, mock exams, dashboards, glossary, checklist, archive, game, modals and responsive layouts. |
 | **Back end** | Wrote the Google Apps Script service that handles registration, login, salted password hashing, HMAC-signed sessions, lockouts, row-level reads/writes and progress snapshots into Google Sheets — with no external database. |
 | **Product & writing** | Wrote the teaching copy, exam guidance, mark-scheme language, onboarding, error states, empty states, accessibility labels and the feedback loop with classmates. |
@@ -168,9 +168,11 @@ For every question you get:
 - a model answer;
 - a live timer and a locally auto-saved draft, so a closed tab does not lose the paragraph you were midway through;
 - bookmarks for questions you want to revisit;
-- a choice of marking engine: **Instant** (heuristic, no download) or **Qwen** (local AI, more nuanced feedback).
+- a choice of marking engine: **Instant** (heuristic, no download) or **Qwen 3.5 0.8B** (local WebGPU, more nuanced paragraph feedback).
 
 The deterministic rules are deliberately strict. If the question requires case application and your answer contains none of the case's valid application keywords, AO2 is capped at zero. If an 8-mark evaluation question contains no evaluative judgement language, AO4 is capped at zero. The reasoning is shown in the feedback, so the cap teaches the rule instead of feeling arbitrary.
+
+Two-mark questions are a special case: they are pure knowledge. The engine forces the breakdown to `K: 0–2` and zero for Application, Analysis and Evaluation, then awards one Knowledge mark per distinct accurate defining characteristic. A definition of a private limited company that mentions both "shares sold privately / not on the stock exchange" and "limited liability" therefore scores 2/2, and the results screen shows a single Knowledge card rather than asking for application the question never set.
 
 ### 4. Apply: the Paper 2 case-study simulator
 
@@ -182,7 +184,9 @@ Paper 2 is a different skill: read an unseen business, use the appendices, and w
 - **Appendix 3** — external environment and economic context;
 - four topic pairs, each containing one 8-mark and one 12-mark question.
 
-That is **800 questions** in total, split evenly between 8 and 12 marks. The 8-mark questions use band descriptors from "Basic" to "Maximum"; the 12-mark questions use Cambridge-style Level 1, 2 and 3 descriptors with a supported recommendation at the top level.
+That is **800 questions** in total, split evenly between 8 and 12 marks. The 8-mark questions use band descriptors from "Basic" to "Maximum"; the 12-mark questions use the official Cambridge Level 3, Level 2, Level 1 and Level 0 descriptors with a supported recommendation at the top level.
+
+For 12 marks, the result screen is deliberately Levels-based: it shows the Level badge, the mark out of 12 and qualitative paragraph diagnostics ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It does not show an AO1–AO4 card grid or per-paragraph `X/Y` totals, because those would imply a points-based scheme that the question does not use. Numeric paragraph scoring appears only on the 4-, 6- and 8-mark questions, where it is the correct model.
 
 You can move sequentially, jump to a set by number, or pick a random case. Answers can be evaluated by the local model or by the built-in heuristic examiner. A manual override modal records the original AI score, the new score, the reason and whether benefit of the doubt was applied, so a class discussion can correct a mark without erasing what the machine said.
 
@@ -264,10 +268,10 @@ Student answer
       │
       ▼
 ┌───────────────────────────────────────────────┐
-│ 2. Local Qwen model (WebLLM / WebGPU)         │
-│    temperature 0.1 · max 350 tokens           │
-│    strict JSON schema · clamped to max marks  │
-│    returns AO1/AO2/AO3 feedback + notes       │
+│ 2. Local Qwen 3.5 0.8B (Transformers.js)      │
+│    temperature 0.0 · adaptive token budget    │
+│    strict JSON schema · per-paragraph audit   │
+│    diagnostics only — no score arithmetic     │
 └───────────────────────────────────────────────┘
       │
       ├── WebGPU unavailable / invalid JSON
@@ -292,6 +296,81 @@ Why this shape?
 - **The fallback is honest.** If WebGPU is unavailable, the app still marks. The UI tells you which engine is active.
 - **The human stays in charge.** Manual overrides preserve the original AI score and the reason, so a teacher or student can correct a harsh or generous result without destroying the record.
 
+### What the local model is actually allowed to decide
+
+The model is a **paragraph reader**, not a calculator. It returns a small JSON object per paragraph — `k_score`, `app_score`, `an_score`, `eval_score`, a short `critique`, and the verbatim `isolated_quote` it judged — and that is all. TypeScript owns every number that reaches the student:
+
+- the per-paragraph subtotal and its maximum;
+- the AO1–AO4 totals and their caps;
+- the deterministic 2-mark, 4-mark, 6-mark and 8-mark arithmetic;
+- the official Paper 2 Level band and the final mark out of 8 or 12;
+- the rule-enforcement record shown in the feedback panel.
+
+That separation is why the engine can be strict even with a small model. The model supplies judgement about *wording and business reasoning*; the code supplies *arithmetic and rubric enforcement*. When the two disagree, the code wins.
+
+### The six problems behind a sub-1B examiner
+
+Getting a 0.8B model to behave like a Cambridge examiner was not a single integration task. It took six separate engineering problems, each with its own failure mode, plus a lot of iteration after the first version "worked" but still marked unfairly. These are the ones that mattered.
+
+#### 1. Running AI entirely on the device, without API keys or a 2B fallback
+
+**The problem.** External APIs meant server cost, rate limits and exposed keys. Supporting a second, larger model also doubled the download matrix, added memory pressure, and encouraged a false trade-off: "use the bigger model when the small one struggles." In practice, the 2B tier did not remove the need for deterministic guards — it just hid their absence behind a heavier download.
+
+**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the 2B tier completely, and standardised on **Qwen 3.5 0.8B** (`onnx-community/Qwen3.5-0.8B-ONNX`). The model loads through `AutoModelForCausalLM`, so only the text decoder is fetched (skipping the ~350 MB vision encoder), weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the deterministic **Instant Cambridge 0264 Examiner** rather than showing a dead end.
+
+**Why it mattered.** One model means one download (~560 MB), one cache key and one behaviour to test. The app now has to earn its accuracy in TypeScript instead of buying it with parameters — which turned out to be the more reliable design anyway.
+
+#### 2. Small-model overload, `<think>` exhaustion and arithmetic drift
+
+**The problem.** Asking a 0.8B model to score AO1–AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3.5's default `<think>...</think>` blocks also consumed the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
+
+**What I changed.** I disabled thinking mode (`enable_thinking: false`), added `extractJsonObjectString()` to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. I then removed all score arithmetic from the AI: the model returns paragraph diagnostics, and `evaluateStudentEssay` / `computePaper2Scores` compute every subtotal, AO total and Level band in TypeScript. The token budget is now adaptive (`computeRecommendedMaxTokens`, roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
+
+**Why it mattered.** The same answer now produces the same mark far more often. It also fixed a subtler bug: the model could "award" a mark the rubric did not contain. Because maxima live in code, a hallucinated sixth mark on a 4-mark question is now impossible.
+
+#### 3. Cross-paragraph "halo" effects and point repetition
+
+**The problem.** Standard LLM grading let strong context or analysis in Paragraph 1 bleed into weak later paragraphs. Students could also double-dip by repeating — or lightly paraphrasing — the same syllabus point or case fact in a second paragraph and collecting the marks twice.
+
+**What I changed.** I built **Anti-Halo Paragraph Isolation** (`splitResponsePoints`, `evaluateIsolatedSegment`, `auditPaper2BodyParagraph`), so each paragraph is audited in a vacuum with its own quote and its own scores. On top of that I added an **Anti-Repetition Ledger** (`createKnowledgeCreditLedger`, `findFreshAppDetails`) that records every credited syllabus concept and every credited case-study detail. A repeated concept earns zero K; a reused case fact earns zero App; a paragraph whose sentences are more than **0.70 Jaccard similarity** to an earlier paragraph is treated as a duplicate and earns no new credit. The Paper 2 conclusion is separately checked against the option paragraphs so a recommendation cannot simply restate them.
+
+**Why it mattered.** Halo effects are the single biggest source of over-marking in AI examiners. Isolating paragraphs made the feedback more useful too, because the student can see exactly which paragraph was thin rather than receiving one vague holistic judgement.
+
+#### 4. AO2 Application: narrow keyword lists versus proper-noun name-dropping
+
+**The problem.** Static `valid_app_words` lists were sometimes too narrow and capped valid answers at zero. The naive fix — counting capitalised words as application — created the opposite failure, letting a student earn AO2 simply by writing the company or owner's name.
+
+**What I changed.** I built `detectCaseContext()` and `extractCaseContextFacts()` to read the scenario stem automatically. They pull concrete, defensible context: currencies, percentages, ratios, quantities and other quantified figures, plus domain nouns that belong to the case. `extractCompanyNames()` identifies standalone company names, brands and acronyms so that name-dropping can be detected and excluded from the evidence pool. Curated `valid_app_words` are still used, but as one signal among several rather than a hard gate.
+
+**Why it mattered.** AO2 is supposed to test whether a student can *use* the case, not whether they can memorise a keyword list. Automatic fact extraction made marking fairer across the 340+ scenarios without hand-maintaining a keyword list for every case.
+
+#### 5. Over-crediting vague "yapping" in AO3 Analysis
+
+**The problem.** Small models — and simple connective-word checks — were fooled by wordy paragraphs that used *"because"* or *"therefore"* while merely restating a knowledge point or summarising case facts. The paragraph looked analytical without explaining a commercial consequence.
+
+**What I changed.** I enforced a strict business-consequence gate. `hasClearBusinessConsequenceChain()` and `scanPaper2CausalChains()` require both a causal link **and** a real business outcome — cash flow, unit costs, risk, efficiency, productivity, revenue, profit, survival or decision-making. Restatements, bare cost claims and speed claims without a mechanism are rejected. On Paper 2, the scan distinguishes single-step reasons from developed two-step chains, so a list of six isolated reasons cannot masquerade as a top-band analysis.
+
+**Why it mattered.** AO3 was where the early engine was most generous. Requiring a named consequence made the feedback more specific ("you said it would be cheaper, but not why that matters to the business") and brought the mark distribution much closer to a real mark scheme.
+
+#### 6. AO4 evaluation and official Paper 2 Level bands
+
+**The problem.** A 0.8B model struggled to separate a one-sided assertion from a balanced, justified conclusion, and it applied the official Level 1–3 descriptors inconsistently on 8-mark and 12-mark questions. Adding the AI's paragraph scores together also produced totals that contradicted the Level, and — on 2-mark definitions — it kept trying to award Application marks that the question does not assess.
+
+**What I changed.** I moved AO4 evaluation and Paper 2 Level gating out of the LLM and into deterministic TypeScript (`evaluateDeterministicAo4`, `computePaper2Scores`). The engine isolates the final conclusion (`extractFinalParagraph`) and checks for a clear recommendation, two-sided contrast, case-specific justification, comparison against the rejected alternative, and mitigation/contingency reasoning. Level 3, Level 2, Level 1 and Level 0 now use the official Cambridge wording; the final mark is gated by the Level rather than by paragraph addition. I also fixed two rubric mismatches:
+
+- **2-mark definitions are pure knowledge.** `evaluateStudentEssay` forces `ao1Max: 2` and App/An/Eval to zero, so "Define…" and "What is meant by…" award K:1 per distinct accurate characteristic and never ask for application. The results UI hides the non-assessed AO cards for these questions.
+- **12-mark results are Levels-based.** The UI shows the Level badge, the exact mark out of 12 and qualitative paragraph tags ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It deliberately does **not** show an AO1–AO4 card grid or per-paragraph `X/Y` counters for 12-mark questions, because those numbers would imply a points-based total that Cambridge does not use. Numeric paragraph scoring remains for 4-, 6- and 8-mark questions, where it is correct.
+
+**Why it mattered.** The displayed result now matches the mark scheme the student is being taught. There is no contradiction between "AO4: 0/3" at the top and "Eval: 1/3" below, and no paragraph arithmetic pretending to be a Level.
+
+### How much effort this really took
+
+The first version of the local examiner worked in the narrow sense that it returned a number. It was not trustworthy. The work that followed was mostly **subtraction**: removing scoring authority from the model, removing the 2B tier, removing paragraph totals from 12-mark results, removing App marks from 2-mark definitions, and removing the assumption that a bigger model would fix a rubric the code should have enforced.
+
+Each fix came from a concrete failure: a definition that scored 1/2 despite two correct points, a 12-mark conclusion that showed two different evaluation scores, a repeated case fact earning application twice, a paragraph full of "therefore" with no consequence. I reproduced each one, wrote it into `scripts/test-grading.ts`, and kept it there. The suite now runs **122 assertions across 35 numbered cases**, covering causal-chain detection, AO maxima, Level gating, anti-halo clamping, 2-mark pure-knowledge scoring, 12-mark AO4 synchronisation, and the duplicate-paragraph rules.
+
+That regression suite is the part I am most pleased with. A small model will always be a little unpredictable; the tests are what stop that unpredictability from becoming a marking policy. When I changed the 12-mark UI and removed the AO cards, the suite caught the conclusion-audit inconsistency that would otherwise have shipped.
+
 The model runs on the student's device. Once the weights are cached, essay text is not uploaded by the app. The first download is large, so the UI treats it as an explicit action and caches the result.
 
 ---
@@ -302,17 +381,17 @@ The model runs on the student's device. Once the weights are cached, essay text 
 ┌──────────────────────────────────────────────────────────────────┐
 │ Browser                                                          │
 │                                                                  │
-│  React 19 · TypeScript · Vite 8 · Tailwind CSS 4                │
+│  React 19 · TypeScript · Vite 8 · Tailwind CSS 4                 │
 │                                                                  │
 │  Study UI ──► ecbiz_* localStorage ──► sheetSync (debounced)     │
 │      │                    │                                      │
 │      │                    └──► Google Apps Script Web App        │
-│      │                                  │                       │
-│      │                                  ▼                       │
-│      │                          Google Sheet                      │
+│      │                                  │                        │
+│      │                                  ▼                        │
+│      │                          Google Sheet                     │
 │      │                    Users · Students · Progress            │
 │      │                                                           │
-│      └──► WebLLM (WebGPU) ──► local Qwen model                   │
+│      └──► Transformers.js (WebGPU) ──► Qwen 3.5 0.8B             │
 │              no essay upload                                     │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -414,8 +493,25 @@ interface EvaluationResult {
   modelAnswerSnippet: string;
   isAiEvaluated: boolean;
   evaluatedAt: string;
+  questionType?: "paper1_2m" | "paper1_4m" | "paper1_6m" | "paper1_8m" | "paper2_8m_a" | "paper2_12m_b";
+  paragraphAudits?: ParagraphAuditItem[];
   ruleEnforcement?: RuleEnforcementResult;
   manualOverride?: ManualOverrideData;
+}
+
+interface ParagraphAuditItem {
+  paragraph_number: number;
+  role?: "body_point" | "option" | "conclusion";
+  isolated_quote: string;   // the exact paragraph the model judged
+  k_score: number;
+  app_score: number;
+  an_score: number;
+  eval_score?: number;      // conclusion paragraph only
+  subtotal: number;
+  max_subtotal?: number;
+  critique: string;
+  is_duplicate?: boolean;
+  has_detailed_an?: boolean;
 }
 ```
 
@@ -519,6 +615,7 @@ No API key, build server or external database is required. The app runs without 
 | `npm run build` | Production build into `dist/` |
 | `npm run preview` | Preview the production build |
 | `npm run lint` | Type-check with `tsc --noEmit` |
+| `npm test` | Run the marking-engine regression suite (`scripts/test-grading.ts`) |
 | `npm run clean` | Remove `dist/` and the legacy `server.js` |
 
 ### First run
@@ -604,8 +701,8 @@ EcBiz/
 │   │   └── MarkOverrideModal.tsx
 │   ├── lib/
 │   │   ├── engine/
-│   │   │   ├── evaluator.ts        # Rule scans, AI call, fallback
-│   │   │   └── webllm.ts           # WebGPU model, schema, validation
+│   │   │   ├── evaluator.ts        # Rule scans, anti-halo isolation, deterministic AO4 + Levels
+│   │   │   └── webllm.ts           # Qwen 3.5 0.8B WebGPU loader, prompt, JSON parser
 │   │   ├── data/
 │   │   │   ├── mcq-bank-section1..6.ts
 │   │   │   ├── paper1-database.json
@@ -629,7 +726,7 @@ EcBiz/
 │   └── index.css                   # Design tokens, themes, layout
 ├── apps-script/Code.gs             # Accounts, tokens, Sheet persistence
 ├── public/assets/                  # Syllabus and revision documents
-├── scripts/                        # Local preview helpers
+├── scripts/                        # Preview helpers + marking regression suite
 ├── .env.example
 ├── vercel.json                     # SPA rewrites + Vite deployment
 ├── vite.config.ts
@@ -646,14 +743,25 @@ EcBiz is checked in layers:
 | Gate | What it does |
 |---|---|
 | `npm run lint` | Runs `tsc --noEmit`, catching type errors across components, data and the marking engine |
+| `npm test` | Runs the marking-engine regression suite: 122 assertions across 35 numbered cases |
 | `npm run build` | Produces the production bundle and catches bundler/import failures |
 | Browser pass | Every tab, filter, quiz size, lesson, mock format, modal and responsive breakpoint is exercised manually |
 | Content provenance | Verified questions carry source, verification and mark-scheme status fields |
 | Failure paths | WebGPU unavailable, invalid model JSON, expired sessions, failed Sheet pulls and missing drafts all degrade to a usable state |
 
-There is **no automated test suite yet**. That is the most important gap in the project, and it is the first item on the roadmap. The right tests are not screenshot tests; they are tests for the marking rules (AO2/AO4 caps), the fallback examiner, the sync conflict policy, the data integrity of 7,000+ question records, and the authentication helpers.
+The marking engine has a real regression suite. `scripts/test-grading.ts` runs headlessly through `tsx` — no browser, no downloaded weights — because the rules that decide marks are deterministic TypeScript. It covers:
 
-The marking rules are deterministic functions and were written to be testable. `scanApplicationKeywords`, `scanEvaluationKeywords`, `checkIsExactOrSubstantialModelAnswer` and `checkKnowledgePointMatches` can be exercised without a browser or a model, which makes the next step straightforward.
+- causal-chain detection, including single-step versus developed two-step reasons;
+- AO maxima for every paper and mark tier (`AO1:2`, `AO2:3`, `AO3:4`, `AO4:3` on 12-mark questions);
+- official Level 3 / Level 2 / Level 1 / Level 0 gating and the AO4-to-conclusion-audit sync;
+- anti-halo clamping when the model over-credits a weak second paragraph;
+- 2-mark pure-knowledge definitions, including the `K:2` private-limited-company example;
+- duplicate-paragraph and repeated-point rejection at Jaccard `> 0.70`;
+- the mock Qwen `paragraphs[]` path for both conservative and full-credit audits.
+
+The suite is not decoration. Several of the fixes described above were caught by it rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the tests were what proved the displayed result still matched the rubric.
+
+What is still missing is coverage outside the marking engine: the Sheet sync conflict policy, the authentication helpers, and the structural integrity of the 7,000+ question records. Those are the remaining test targets on the roadmap. The deterministic helpers are already exported and browser-free — `scanApplicationKeywords`, `scanEvaluationKeywords`, `checkIsExactOrSubstantialModelAnswer` and `checkKnowledgePointMatches` — so adding them is a matter of writing the cases, not untangling the code.
 
 ---
 
@@ -677,7 +785,11 @@ The platform grew a written-answer studio: 240 Paper 1 scenario sets, 100 Paper 
 
 ### The feedback build — AO rules and a local examiner
 
-The marking engine was rebuilt around AO1–AO4. Deterministic keyword scans enforce application and evaluation before the model sees the answer. A local Qwen model through WebLLM provides AO1/AO3 interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
+The marking engine was rebuilt around AO1–AO4. Deterministic keyword scans enforce application and evaluation before the model sees the answer. A local Qwen model through Transformers.js provides paragraph-level interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
+
+### The examiner-hardening build — anti-halo, anti-repetition and deterministic Levels
+
+The first local examiner returned marks; this build made them defensible. Paragraph isolation removed the halo effect, the credit ledger removed repetition, and AO4 plus the Paper 2 Level bands moved entirely into TypeScript. The 2B tier was deleted in favour of a single Qwen 3.5 0.8B model, 2-mark definitions were locked to pure knowledge, and 12-mark results were rebuilt around the official Cambridge Level descriptors instead of paragraph arithmetic. The regression suite grew alongside each fix.
 
 ### The classroom build — lessons, accounts and visibility
 
@@ -687,7 +799,8 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 
 ## Roadmap
 
-- [ ] Add automated tests for the marking rules, fallback examiner, sync policy, auth helpers and content integrity.
+- [x] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
+- [ ] Extend automated coverage to the sync policy, auth helpers, fallback examiner and content integrity.
 - [ ] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
@@ -705,7 +818,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Apps Script and Google Sheets** — the only persistence layer, chosen because external databases were not permitted.
 - **React, Vite, TypeScript, Tailwind CSS, Lucide, Motion and canvas-confetti** — the front-end stack.
-- **WebLLM and the Qwen model family** — local, in-browser essay interpretation.
+- **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3.5 0.8B text decoder.
 - **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge and the confidence ratings all came from those conversations.
 
 ---

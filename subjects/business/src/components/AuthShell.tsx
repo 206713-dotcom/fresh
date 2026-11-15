@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { viewHref } from "../lib/routes";
 
 export function AuthShell({
   title,
@@ -54,7 +53,7 @@ export function AuthShell({
 
           <div className="mt-8 border-t border-[#d4d9cf] pt-5 text-center">
             <a
-              href={viewHref("app")}
+              href="./Business.html"
               aria-label="Skip signing in and go to the study app"
               className="inline-flex items-center gap-2 rounded-lg border border-[#d4d9cf] bg-[#fffefa] px-4 py-2 text-sm font-semibold text-[#57534E] hover:bg-[#f6f4ed] hover:text-[#8B1E1E]"
             >
