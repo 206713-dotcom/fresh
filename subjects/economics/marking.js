@@ -19,7 +19,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const workerURL = new URL('marking-worker.js?v=3', document.currentScript.src);
+  const workerURL = new URL('marking-worker.js?v=4', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
@@ -100,12 +100,36 @@ const ecbizMarking = (() => {
     }
   }
 
+  function gradeListedItems(question, answer) {
+    // Only unambiguous one-mark-per-item schemes and short lists of named items qualify.
+    if (question.marks !== 2 || !/^Identify two\b/i.test(question.prompt)) return;
+    const match = /^Award 1 mark each for the ([a-z][a-z -]*?) and the ([a-z][a-z -]*?)\./i.exec(question.scheme);
+    if (!match) return;
+    const names = match.slice(1).map(name => name.toLowerCase());
+    const items = answer.toLowerCase().replace(/[.!?]+$/g, '')
+      .replace(/\band\b/g, ',').split(/[,;\n]+/)
+      .map(item => item.trim().replace(/^(?:the|a|an)\s+/, '')).filter(Boolean);
+    if (!items.length || items.length > 2 || items.some(item => !names.includes(item))) return;
+    const credited = [...new Set(items)];
+    const remaining = names.filter(name => !credited.includes(name));
+    return {
+      score: credited.length,
+      band: 'point-based',
+      credits: credited.map(name => ({ criterion: 'Identified a listed item', evidence: name })),
+      feedback: credited.length === 2 ? 'You identified both items in the mark scheme.' : 'You identified one of the two required items.',
+      nextStep: remaining.length ? 'The other item in the mark scheme is the ' + remaining[0] + '.' :
+        'Keep naming each item as precisely as you did here.'
+    };
+  }
+
   function grade(id, answer, image, report) {
     const question = questionBank().get(id);
     const response = answer.trim();
     if (!question?.scheme || response.length > 8000 || (!response && !image) || (image && !question.diagram)) {
       return Promise.reject(new Error('Check the question, answer length or diagram and try again.'));
     }
+    const listedGrade = !image && gradeListedItems(question, response);
+    if (listedGrade) return Promise.resolve(listedGrade);
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
       report?.('Waiting for the on-device marker…');
