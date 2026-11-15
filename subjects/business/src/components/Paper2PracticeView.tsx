@@ -38,7 +38,6 @@ import type { ParagraphAuditItem } from "../lib/types";
 import {
   initializeWebLLM,
   isQwenCachedLocally,
-  setQwenCachedLocally,
   checkWebGPUSupport,
   getLoadedQwenEngine,
   getQwenStatusSnapshot,
@@ -160,13 +159,9 @@ export function Paper2PracticeView({
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Qwen AI Engine State
-  const [webllmEngine, setWebllmEngine] = useState<any>(() => getLoadedQwenEngine());
   const [isWebGPUSupported, setIsWebGPUSupported] = useState<boolean>(true);
-  const [isModelDownloaded, setIsModelDownloaded] = useState<boolean>(() => {
-    return isQwenCachedLocally();
-  });
-  const [showDownloadPromptModal, setShowDownloadPromptModal] = useState<boolean>(false);
   const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
+  const [useLocalAI, setUseLocalAI] = useState(true);
   const [isEvaluating, setIsEvaluating] = useState<boolean>(false);
 
   // Timer
@@ -175,28 +170,12 @@ export function Paper2PracticeView({
 
   // Check WebGPU capability and subscribe to global Qwen tier changes on mount
   useEffect(() => {
-    const unsubscribe = subscribeQwenStatus((status) => {
-      setWebllmStatus(status);
-      const loaded = getLoadedQwenEngine();
-      if (status.isReady && loaded) {
-        setWebllmEngine(loaded);
-        setIsModelDownloaded(true);
-      } else if (!status.isLoading) {
-        setWebllmEngine(loaded);
-      }
-    });
+    const unsubscribe = subscribeQwenStatus(setWebllmStatus);
 
     checkWebGPUSupport().then((supported) => {
       setIsWebGPUSupported(supported);
       if (supported && isQwenCachedLocally() && !getLoadedQwenEngine()) {
-        initializeWebLLM((status) => setWebllmStatus(status))
-          .then((engine) => {
-            if (engine) {
-              setWebllmEngine(engine);
-              setIsModelDownloaded(true);
-            }
-          })
-          .catch((err) => console.warn("Paper 2 local Qwen auto-init skipped:", err));
+        initializeWebLLM().catch((err) => console.warn("Paper 2 local Qwen auto-init skipped:", err));
       }
     });
 
@@ -221,40 +200,12 @@ export function Paper2PracticeView({
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
-  // Handler to start loading the local Qwen 3.5 0.8B model
+  // Handler to start loading the local Qwen 3 0.6B model
   const handleDownloadQwenModel = async () => {
     try {
-      setShowDownloadPromptModal(false);
-      const targetCfg = QWEN_MODELS[webllmStatus.activeTier];
-      setWebllmStatus((prev) => ({
-        ...prev,
-        isLoading: true,
-        progressText: `Initiating ${targetCfg.shortLabel} download...`,
-        progressPercent: 5,
-      }));
-
-      const engine = await initializeWebLLM((status) => {
-        setWebllmStatus(status);
-        if (status.isReady) {
-          setIsModelDownloaded(true);
-          setQwenCachedLocally(true, status.activeTier);
-        }
-      });
-
-      setWebllmEngine(engine);
-      setIsModelDownloaded(true);
-      setQwenCachedLocally(true, engine.tier);
-    } catch (err: any) {
-      console.error("Failed to load Qwen model:", err);
-      setWebllmStatus((prev) => ({
-        ...prev,
-        isSupported: false,
-        isLoading: false,
-        isReady: false,
-        progressText: "Could not initialize WebGPU pipeline.",
-        progressPercent: 0,
-        error: err?.message || "WebGPU initialization failed.",
-      }));
+      await initializeWebLLM();
+    } catch (error) {
+      console.error("Failed to load Qwen model:", error);
     }
   };
 
@@ -267,7 +218,7 @@ export function Paper2PracticeView({
     setTimerActive(false);
 
     try {
-      const engineToUse = webllmEngine || getLoadedQwenEngine();
+      const engineToUse = useLocalAI ? getLoadedQwenEngine() : null;
 
       const ins = activeScenario.case_study_insert;
       const finSummary = ins.appendix_2_financial_data?.rows
@@ -606,43 +557,10 @@ export function Paper2PracticeView({
       <header className="study-hero">
         <div className="study-hero-content">
           <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
-          <h1 className="study-title">Paper 2 <span>Practice Studio</span></h1>
+          <h1 className="study-title">Paper 2 <span>Case studies</span></h1>
           <p className="study-description">
             Work through 100 case studies with appendices and step-by-step questions.
           </p>
-          <div className="study-hero-actions">
-            <button
-              type="button"
-              onClick={() => {
-                if (!webllmEngine && !getLoadedQwenEngine()) {
-                  handleDownloadQwenModel();
-                }
-              }}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                webllmEngine || isModelDownloaded
-                  ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800"
-                  : webllmStatus.isLoading
-                  ? "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-800"
-                  : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50"
-              }`}
-              title={
-                webllmStatus.fallbackReason ||
-                `Local in-browser ${QWEN_MODELS[webllmStatus.activeTier].label} WebGPU status`
-              }
-            >
-              <Cpu className="w-3.5 h-3.5" />
-              <span>
-                {webllmEngine
-                  ? webllmStatus.activeLabel
-                  : isModelDownloaded
-                  ? `${QWEN_MODELS[webllmStatus.activeTier].shortLabel} Cached`
-                  : webllmStatus.isLoading
-                  ? `Downloading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel} (${webllmStatus.progressPercent}%)`
-                  : `Download ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`}
-              </span>
-              {(webllmEngine || isModelDownloaded) && <Check className="w-3.5 h-3.5 text-emerald-500" />}
-            </button>
-          </div>
         </div>
         <div className="study-hero-image" aria-hidden="true" />
       </header>
@@ -710,6 +628,32 @@ export function Paper2PracticeView({
         </div>
       </div>
 
+      <div className="study-paper-two-engine" role="group" aria-label="Marking engine">
+        <button
+          type="button"
+          className="study-engine-option"
+          aria-pressed={webllmStatus.isReady && useLocalAI}
+          disabled={webllmStatus.isLoading || !isWebGPUSupported}
+          title={`First use downloads ${QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize}`}
+          onClick={() => {
+            setUseLocalAI(true);
+            if (!getLoadedQwenEngine()) void handleDownloadQwenModel();
+          }}
+        >
+          <Cpu size={15} aria-hidden="true" />
+          {webllmStatus.isReady ? "Local AI ready" : webllmStatus.isLoading ? "Loading local AI"
+            : !isWebGPUSupported ? "Local AI unavailable" : webllmStatus.error ? "Retry local AI" : "Enable local AI"}
+        </button>
+        <button
+          type="button"
+          className="study-engine-option"
+          aria-pressed={!webllmStatus.isReady || !useLocalAI}
+          onClick={() => setUseLocalAI(false)}
+        >
+          Instant Examiner
+        </button>
+      </div>
+
       {/* Model Loading Progress Bar (if loading) */}
       {webllmStatus.isLoading && (
         <div className="p-4 border-x border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30">
@@ -733,7 +677,7 @@ export function Paper2PracticeView({
       )}
 
       {!webllmStatus.isLoading && webllmStatus.error && (
-        <div className="px-4 py-2.5 border-x border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30 text-xs text-amber-800 dark:text-amber-300 flex items-center justify-between gap-2">
+        <div role="status" className="px-4 py-2.5 border-x border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30 text-xs text-amber-800 dark:text-amber-300 flex items-center justify-between gap-2">
           <span>{webllmStatus.error} Instant CIE 0264 Examiner remains active for marking.</span>
         </div>
       )}
@@ -1018,7 +962,7 @@ export function Paper2PracticeView({
                     <>
                       <Sparkles className="w-4 h-4 animate-spin" />
                       <span>
-                        {webllmEngine || getLoadedQwenEngine()
+                        {webllmStatus.isReady && useLocalAI
                           ? `Assessing with ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}...`
                           : "Assessing with CIE 0264 Examiner..."}
                       </span>
@@ -1837,57 +1781,7 @@ export function Paper2PracticeView({
       {/* ======================================================== */}
       {/* QWEN 3.5 LOCAL AI DOWNLOAD PROMPT MODAL                  */}
       {/* ======================================================== */}
-      {showDownloadPromptModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-2xl w-full max-w-lg p-6 shadow-2xl space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center text-[#0F2042] dark:text-[#38BDF8]">
-                <Cpu className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-academic-serif text-lg font-bold text-neutral-900 dark:text-white">
-                  Download Local AI Model: {QWEN_MODELS[webllmStatus.activeTier].shortLabel}
-                </h3>
-                <p className="text-xs text-neutral-500">
-                  Text-only WebGPU (q4f16, skips vision weights) • Zero server cost
-                </p>
-              </div>
-            </div>
 
-            <div className="p-3.5 rounded-xl bg-[#FAF9F6] dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-700 dark:text-neutral-300 space-y-2">
-              <p>
-                Paper 2 Senior Examiner uses the local in-browser <strong>{QWEN_MODELS["0.8b"].label}</strong> model to mark your answers against Cambridge 0264 mark schemes.
-              </p>
-              <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-medium">
-                <Check className="w-4 h-4 shrink-0" />
-                <span>Once downloaded ({QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize}), weights stay cached permanently in browser storage.</span>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center gap-2 pt-2">
-              <button
-                type="button"
-                onClick={handleDownloadQwenModel}
-                className="w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-black hover:bg-[#1E3A8A] transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-xs"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download {QWEN_MODELS[webllmStatus.activeTier].shortLabel} ({QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize})</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  localStorage.setItem("qwen_prompt_dismissed", "true");
-                  setShowDownloadPromptModal(false);
-                  handleSubmitCurrentQuestion();
-                }}
-                className="w-full sm:w-auto py-2.5 px-4 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
-              >
-                Instant Examiner (No Download)
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,20 +1,20 @@
 // Post-build step for the static GitHub Pages deployment.
 // `npm run build` compiles into dist/, then this script makes the built app the
 // committed site root that GitHub Pages serves:
-//   dist/index.html -> Business.html   (the file linked from the hub page)
+//   dist/app.html   -> index.html and Business.html
 //   dist/assets/    -> assets/         (compiled JS/CSS/images)
 //   any other dist/ files (e.g. 404.html copied from public/) -> copied too
-import { cpSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
+import { cpSync, copyFileSync, readdirSync, renameSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
 // Remove stale compiled assets from the previous build.
 rmSync('assets', { recursive: true, force: true });
 
-// Business.html is the compiled entry; index.html stays as the source template.
+// Serve compiled JavaScript both from the directory URL and from existing Business.html links.
+renameSync('dist/app.html', 'dist/index.html');
 copyFileSync('dist/index.html', 'Business.html');
 
-// Copy everything Vite emitted (assets/, 404.html, ...) into the site root.
+// Copy the compiled index, assets and the other public files into the Pages checkout.
 for (const entry of readdirSync('dist')) {
-  if (entry === 'index.html') continue;
   cpSync(join('dist', entry), join('.', entry), { recursive: true, force: true });
 }

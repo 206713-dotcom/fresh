@@ -66,10 +66,10 @@ Exhibiting at trade fairs showcases bioreactor prototypes to pharma buyers, incr
 Recommendation
 BCT should choose Direct technical interviews with bioprocess directors. While interviews take longer, confirming specifications prevents failure before spending $1,700,000, whereas trade fairs are too expensive given $0.1m cash and $0.5m overdraft and rival websites lack client order feedback.`;
 
-function createMockWebLLMEngine(tier: "0.8b", jsonPayload: Record<string, unknown>) {
+function createMockWebLLMEngine(tier: "0.6b", jsonPayload: Record<string, unknown>) {
   return {
     tier,
-    modelId: "onnx-community/Qwen3.5-0.8B-ONNX",
+    modelId: "onnx-community/Qwen3-0.6B-ONNX-OPT",
     chat: {
       completions: {
         create: async () => ({
@@ -133,8 +133,8 @@ async function runTests() {
   assert.equal(detResult.aoBreakdown.ao4?.score, 2, `Expected strong Level 3 AO4 = 2/3 without mitigation, got ${detResult.aoBreakdown.ao4?.score}`);
   assert.equal(detResult.totalScore, 10, `Expected strong 4-para BCT essay to land at 10/12, got ${detResult.totalScore}`);
 
-  // 3. Conservative Qwen 3.5 0.8B Anti-Halo paragraphs[] path (should NOT pull 4-para essay down to Level 2)
-  const mock08B = createMockWebLLMEngine("0.8b", {
+  // 3. Conservative Qwen 3 0.6B Anti-Halo paragraphs[] path (should NOT pull 4-para essay down to Level 2)
+  const mock06B = createMockWebLLMEngine("0.6b", {
     question_type: "paper2_12m_b",
     paragraphs: [
       {
@@ -172,19 +172,19 @@ async function runTests() {
     validAppWords: BCT_1B_VALID_APP_WORDS,
     studentAnswer: BCT_4_PARA_ESSAY_CROSS_SENTENCE,
     caseMainStem: BCT_CASE_STEM,
-    webllmEngine: mock08B,
+    webllmEngine: mock06B,
   });
-  console.log("0.8B path BCT result:", {
+  console.log("0.6B path BCT result:", {
     total: res08B.totalScore,
     level: res08B.level,
     ao3: res08B.aoBreakdown.ao3.score,
     ao4: res08B.aoBreakdown.ao4?.score,
   });
-  assert.ok(res08B.level.includes("Level 3"), `0.8B path expected Level 3, got ${res08B.level}`);
-  assert.equal(res08B.totalScore, 10, `0.8B path expected 10/12, got ${res08B.totalScore}`);
+  assert.ok(res08B.level.includes("Level 3"), `0.6B path expected Level 3, got ${res08B.level}`);
+  assert.equal(res08B.totalScore, 10, `0.6B path expected 10/12, got ${res08B.totalScore}`);
 
-  // 4. Full-credit Qwen 3.5 0.8B Anti-Halo paragraphs[] path
-  const mockFullCredit = createMockWebLLMEngine("0.8b", {
+  // 4. Full-credit Qwen 3 0.6B Anti-Halo paragraphs[] path
+  const mockFullCredit = createMockWebLLMEngine("0.6b", {
     question_type: "paper2_12m_b",
     paragraphs: [
       {
@@ -246,14 +246,14 @@ async function runTests() {
     caseMainStem: BCT_CASE_STEM,
     webllmEngine: mockFullCredit,
   });
-  console.log("Full-credit 0.8B path BCT result:", {
+  console.log("Full-credit 0.6B path BCT result:", {
     total: resFullCredit.totalScore,
     level: resFullCredit.level,
     ao3: resFullCredit.aoBreakdown.ao3.score,
     ao4: resFullCredit.aoBreakdown.ao4?.score,
   });
-  assert.ok(resFullCredit.level.includes("Level 3"), `Full-credit 0.8B path expected Level 3, got ${resFullCredit.level}`);
-  assert.equal(resFullCredit.totalScore, 10, `Full-credit 0.8B path expected 10/12 without mitigation, got ${resFullCredit.totalScore}`);
+  assert.ok(resFullCredit.level.includes("Level 3"), `Full-credit 0.6B path expected Level 3, got ${resFullCredit.level}`);
+  assert.equal(resFullCredit.totalScore, 10, `Full-credit 0.6B path expected 10/12 without mitigation, got ${resFullCredit.totalScore}`);
 
   // 4b. Top-Band Paper 2 12-mark calibration:
   // Adding contextual mitigation in Recommendation unlocks AO4 = 3/3 -> 11/12 when option chains are single-step
@@ -985,6 +985,15 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
     ],
     "overall_critique": "Develop P2."
   }`;
+  const twoParagraphs = "Lower costs improve margins.\n\nLocal suppliers reduce delivery delays.";
+  const compact = '{"paragraphs":[[1,1,0,1,0,"Use a case fact"],[2,1,1,0,0,"Explain the effect on sales"]]}';
+  const compactAudit = parseParagraphAuditResponse(compact, "paper1_6m", twoParagraphs);
+  assert.equal(compactAudit.paragraphs[1].isolated_quote, "Local suppliers reduce delivery delays.");
+  assert.equal(compactAudit.paragraphs[1].subtotal, 2);
+  assert.throws(
+    () => parseParagraphAuditResponse('{"paragraphs":[[1,1,0,1,0,"Use a case fact"]]}', "paper1_6m", twoParagraphs),
+    /did not mark every paragraph/
+  );
   const parsedAudit = parseParagraphAuditResponse(rawWithWrongSubtotal, "paper1_6m");
   assert.equal(parsedAudit.paragraphs[0].eval_score, 0, "eval_score must clamp to 0 for paper1_6m");
   assert.equal(parsedAudit.paragraphs[0].subtotal, 3, "subtotal must be recomputed in TS (1+1+1+0 = 3)");
@@ -998,7 +1007,7 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   assert.equal(legacyCompat.ao3_chain2, false);
 
   // 13c. evaluateEssayWebLLM computes Paper 1 marks strictly via sum(p.subtotal)
-  const mockArithmeticBug = createMockWebLLMEngine("0.8b", {
+  const mockArithmeticBug = createMockWebLLMEngine("0.6b", {
     question_type: "paper1_8m",
     total_score: 8,
     paragraphs: [
@@ -1052,7 +1061,7 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   );
 
   // 13d. Anti-Halo Clamping in evaluateStudentEssay: even if Qwen suffers halo effect and awards P2 App+An for a generic sentence, evaluator clamps P2 to K-only (1/3)
-  const haloInfectedAiEngine = createMockWebLLMEngine("0.8b", {
+  const haloInfectedAiEngine = createMockWebLLMEngine("0.6b", {
     question_type: "paper1_8m",
     paragraphs: [
       {

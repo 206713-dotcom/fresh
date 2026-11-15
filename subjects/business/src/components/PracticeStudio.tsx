@@ -505,14 +505,14 @@ export function PracticeStudio({
   const [timerSeconds, setTimerSeconds] = useState<number>(0);
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
-  // Engine: Instant CIE Examiner vs Local Qwen 3.5 0.8B
+  // Engine: Instant CIE Examiner vs Local Qwen 3 0.6B
   const [aiEngineType, setAiEngineType] = useState<"instant" | "webllm">(() =>
     getLoadedQwenEngine() ? "webllm" : "instant"
   );
   const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
   const [webllmEngine, setWebllmEngine] = useState<any>(() => getLoadedQwenEngine());
 
-  // Subscribe to global Qwen status/tier changes and auto-load if already cached for Qwen 3.5
+  // Subscribe to global Qwen status/tier changes and auto-load if the current model is already cached
   useEffect(() => {
     const unsubscribe = subscribeQwenStatus((status) => {
       setWebllmStatus(status);
@@ -522,6 +522,7 @@ export function PracticeStudio({
         setAiEngineType("webllm");
       } else if (!status.isLoading) {
         setWebllmEngine(loaded);
+        setAiEngineType("instant");
       }
     });
 
@@ -552,7 +553,7 @@ export function PracticeStudio({
     return () => clearInterval(interval);
   }, [timerRunning]);
 
-  // Load the Local Qwen 3.5 0.8B model in the background
+  // Load the Local Qwen 3 0.6B model in the background
   const handleLoadWebLLM = async () => {
     try {
       const cfg = QWEN_MODELS[webllmStatus.activeTier];
@@ -886,7 +887,7 @@ export function PracticeStudio({
       <header className="study-hero">
         <div className="study-hero-content">
           <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
-          <h1 className="study-title">Paper 1 <span>Examination Studio</span></h1>
+          <h1 className="study-title">Paper 1 <span>Practice</span></h1>
           <p className="study-description">
             Practise 2-, 4-, 6- and 8-mark questions using business case studies.
           </p>
@@ -959,6 +960,7 @@ export function PracticeStudio({
                   setAiEngineType("webllm");
                 }
               }}
+              disabled={webllmStatus.isLoading || !webllmStatus.isSupported}
               aria-pressed={aiEngineType === "webllm"}
               className="study-engine-option"
               title={
@@ -973,8 +975,12 @@ export function PracticeStudio({
                 {webllmStatus.isReady
                   ? webllmStatus.activeLabel
                   : webllmStatus.isLoading
-                    ? `Loading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`
-                    : `Load ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`}
+                    ? "Loading local AI"
+                    : !webllmStatus.isSupported
+                      ? "Local AI unavailable"
+                      : webllmStatus.error
+                        ? "Retry local AI"
+                        : "Enable local AI"}
               </span>
               {webllmStatus.isLoading && (
                 <span className="text-[10px] text-amber-500 font-mono animate-pulse">({webllmStatus.progressPercent}%)</span>
@@ -995,13 +1001,14 @@ export function PracticeStudio({
 
         {(webllmStatus.isLoading || webllmStatus.error) && (
           <div
+            role={webllmStatus.error ? "status" : undefined}
             className={`mt-2 px-3 py-2 rounded-xl border text-xs flex flex-wrap items-center justify-between gap-2 ${
               webllmStatus.error
                 ? "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300"
                 : "bg-sky-50/80 dark:bg-sky-950/30 border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200"
             }`}
           >
-            <span className="truncate">
+            <span>
               {webllmStatus.error
                 ? `${webllmStatus.error} You can still mark answers immediately with Instant Examiner.`
                 : `${webllmStatus.progressText || `Loading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}...`} (You can still mark answers immediately!)`}
@@ -1955,7 +1962,7 @@ export function PracticeStudio({
 
               <span className="px-3 py-1.5 rounded-xl bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 text-xs font-mono font-bold text-[#0F2042] dark:text-white">
                 {evaluationResult.isAiEvaluated
-                  ? `${QWEN_MODELS["0.8b"].shortLabel} WebGPU + Rules`
+                  ? `${QWEN_MODELS["0.6b"].shortLabel} WebGPU + Rules`
                   : "Website Rules + CIE Examiner"}
               </span>
             </div>

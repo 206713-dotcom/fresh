@@ -1,14 +1,14 @@
 /**
  * Local In-Browser Transformers.js (WebGPU) AI Assessment Engine
  * Cambridge IGCSE Business (0264) — Anti-Halo Paragraph Isolation Grader
- * Uses AutoModelForCausalLM (text-only Qwen3_5ForCausalLM, skipping vision_encoder ~350MB)
- * Runs the single Qwen 3.5 0.8B (q4f16) text decoder on every capable device.
+ * Runs the quantized text-only Qwen 3 0.6B model on WebGPU.
  */
 
 import type { GradingQuestionType, ParagraphAuditItem } from "../types";
+import { splitResponsePoints } from "./paragraphs";
 
-export type QwenModelTier = "0.8b";
-export type QwenTierPreference = "auto" | "0.8b";
+export type QwenModelTier = "0.6b";
+export type QwenTierPreference = "auto" | "0.6b";
 
 export interface QwenModelConfig {
   tier: QwenModelTier;
@@ -21,19 +21,19 @@ export interface QwenModelConfig {
 }
 
 export const QWEN_MODELS: Record<QwenModelTier, QwenModelConfig> = {
-  "0.8b": {
-    tier: "0.8b",
-    id: "onnx-community/Qwen3.5-0.8B-ONNX",
-    label: "Qwen 3.5 0.8B (Local WebGPU)",
-    shortLabel: "Qwen 3.5 0.8B",
-    activeLabel: "Qwen 3.5 0.8B Active",
-    footerLabel: "Qwen 3.5 0.8B AI",
-    approxDownloadSize: "~560 MB",
+  "0.6b": {
+    tier: "0.6b",
+    id: "onnx-community/Qwen3-0.6B-ONNX-OPT",
+    label: "Qwen 3 0.6B (Local WebGPU)",
+    shortLabel: "Qwen 3 0.6B",
+    activeLabel: "Qwen 3 0.6B Active",
+    footerLabel: "Qwen 3 0.6B AI",
+    approxDownloadSize: "about 360–405 MB",
   },
 };
 
-export const SELECTED_MODEL = QWEN_MODELS["0.8b"].id;
-export const QWEN_MODEL_LABEL = "Qwen 3.5 0.8B (Local WebGPU)";
+export const SELECTED_MODEL = QWEN_MODELS["0.6b"].id;
+export const QWEN_MODEL_LABEL = "Qwen 3 0.6B (Local WebGPU)";
 
 export interface DeviceTierInfo {
   deviceMemoryGB: number;
@@ -51,7 +51,7 @@ export function getDeviceTierInfo(): DeviceTierInfo {
       isIOSMobile: false,
       isMacDesktopSafari: false,
       isLowMemory: false,
-      recommendedTier: "0.8b",
+      recommendedTier: "0.6b",
       reason: "Desktop WebGPU environment",
     };
   }
@@ -77,7 +77,7 @@ export function getDeviceTierInfo(): DeviceTierInfo {
       isIOSMobile: true,
       isMacDesktopSafari: false,
       isLowMemory: true,
-      recommendedTier: "0.8b",
+      recommendedTier: "0.6b",
       reason: "iOS / iPadOS Safari memory cap (< 2 GB tab limit)",
     };
   }
@@ -88,7 +88,7 @@ export function getDeviceTierInfo(): DeviceTierInfo {
       isIOSMobile: false,
       isMacDesktopSafari,
       isLowMemory: true,
-      recommendedTier: "0.8b",
+      recommendedTier: "0.6b",
       reason: `Device RAM (${deviceMemoryGB} GB)`,
     };
   }
@@ -98,7 +98,7 @@ export function getDeviceTierInfo(): DeviceTierInfo {
     isIOSMobile: false,
     isMacDesktopSafari,
     isLowMemory: false,
-    recommendedTier: "0.8b",
+    recommendedTier: "0.6b",
     reason: isMacDesktopSafari
       ? "macOS Safari Desktop WebGPU"
       : `Desktop WebGPU (${deviceMemoryGB} GB RAM)`,
@@ -107,20 +107,20 @@ export function getDeviceTierInfo(): DeviceTierInfo {
 
 const PREF_STORAGE_KEY = "ecbiz_qwen_preferred_tier";
 // Versioned cache keys so legacy WebLLM Qwen2.5 flags don't trigger unintended auto-downloads
-const CACHE_STORAGE_KEY = "ecbiz_qwen35_cached_v2";
-const CACHE_TIER_KEY = "ecbiz_qwen35_cached_tier_v2";
+const CACHE_STORAGE_KEY = "ecbiz_qwen3_cached_v1";
+const CACHE_TIER_KEY = "ecbiz_qwen3_cached_tier_v1";
 
 export function getPreferredQwenTier(): QwenTierPreference {
   if (typeof window === "undefined") return "auto";
   const saved = localStorage.getItem(PREF_STORAGE_KEY);
   // Legacy "2b" preferences silently collapse to the single 0.8B tier.
-  if (saved === "0.8b") return saved;
+  if (saved === "0.6b") return saved;
   return "auto";
 }
 
 export function resolveTargetQwenTier(overrideTier?: QwenModelTier): QwenModelTier {
   if (overrideTier) return overrideTier;
-  return "0.8b";
+  return "0.6b";
 }
 
 export function isQwenCachedLocally(): boolean {
@@ -129,7 +129,7 @@ export function isQwenCachedLocally(): boolean {
   const savedTier = localStorage.getItem(CACHE_TIER_KEY);
   // Ignore a legacy cache entry from the removed 2B tier so we never trigger a
   // silent re-download: only the 0.8B weights are considered cached.
-  return !savedTier || savedTier === "0.8b";
+  return !savedTier || savedTier === "0.6b";
 }
 
 export function setQwenCachedLocally(isCached: boolean, tier?: QwenModelTier): void {
@@ -141,7 +141,7 @@ export function setQwenCachedLocally(isCached: boolean, tier?: QwenModelTier): v
 }
 
 export function getCachedQwenTier(): QwenModelTier {
-  return "0.8b";
+  return "0.6b";
 }
 
 export interface WebLLMStatus {
@@ -184,8 +184,12 @@ export interface QwenEngineWrapper {
   modelId: string;
   label: string;
   activeLabel: string;
-  model: any;
-  tokenizer: any;
+  generate: (
+    systemPrompt: string,
+    userPrompt: string,
+    maxNewTokens: number,
+    timeoutMs: number
+  ) => Promise<string>;
   dispose: () => Promise<void>;
   chat: {
     completions: {
@@ -496,7 +500,7 @@ export async function runQwenChatCompletion(opts: {
     systemPrompt,
     userPrompt,
     maxNewTokens = 760,
-    timeoutMs = 40000,
+    timeoutMs = 90000,
     temperature = 0.0,
   } = opts;
 
@@ -504,95 +508,23 @@ export async function runQwenChatCompletion(opts: {
     throw new WebLLMEvaluationError("Qwen model engine is not loaded.");
   }
 
-  if (!engine.model || !engine.tokenizer) {
-    if (engine.chat?.completions?.create) {
-      const legacy = await engine.chat.completions.create({
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
-        ],
-        temperature,
-        max_tokens: maxNewTokens,
-        enable_thinking: false,
-      } as any);
-      const legacyContent = legacy?.choices?.[0]?.message?.content || "";
-      return legacyContent.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
-    }
-    throw new WebLLMEvaluationError("Invalid Qwen engine instance.");
+  if (engine.generate) {
+    const content = await engine.generate(systemPrompt, userPrompt, maxNewTokens, timeoutMs);
+    return content.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
   }
-
-  const { model, tokenizer } = engine;
-  const messages = [
-    { role: "system" as const, content: systemPrompt },
-    { role: "user" as const, content: userPrompt },
-  ];
-
-  // Disable Qwen 3.5 thinking mode so the model outputs JSON directly without <think> blocks
-  const promptText = tokenizer.apply_chat_template(messages, {
-    tokenize: false,
-    add_generation_prompt: true,
-    enable_thinking: false,
-  } as any);
-
-  const inputs = tokenizer(promptText, { return_tensor: true });
-  const promptTokenCount = Number(inputs?.input_ids?.dims?.[1] ?? 0);
-
-  let outputs: any = null;
-  let generatedOnly: any = null;
-
-  try {
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    try {
-      outputs = await Promise.race([
-        model.generate({
-          ...inputs,
-          max_new_tokens: maxNewTokens,
-          do_sample: false,
-          temperature: 0.0,
-          return_dict_in_generate: false,
-        } as any),
-        new Promise<never>((_, reject) => {
-          timer = setTimeout(
-            () => reject(new WebLLMEvaluationError(`Qwen inference timed out after ${timeoutMs}ms`)),
-            timeoutMs
-          );
-        }),
-      ]);
-    } finally {
-      if (timer) clearTimeout(timer);
-    }
-
-    const outTensor = Array.isArray(outputs) ? outputs[0] : outputs;
-    if (
-      outTensor &&
-      typeof outTensor.slice === "function" &&
-      Array.isArray(outTensor.dims) &&
-      outTensor.dims.length >= 2 &&
-      promptTokenCount > 0 &&
-      outTensor.dims[1] > promptTokenCount
-    ) {
-      generatedOnly = outTensor.slice(null, [promptTokenCount, null]);
-    } else {
-      generatedOnly = outTensor;
-    }
-
-    const decodedList = tokenizer.batch_decode(generatedOnly, {
-      skip_special_tokens: true,
+  if (engine.chat?.completions?.create) {
+    const legacy = await engine.chat.completions.create({
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature,
+      max_tokens: maxNewTokens,
+      enable_thinking: false,
     });
-    const rawText = (Array.isArray(decodedList) ? decodedList[0] : String(decodedList || "")) || "";
-    return rawText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
-  } finally {
-    try {
-      inputs?.input_ids?.dispose?.();
-      inputs?.attention_mask?.dispose?.();
-      if (generatedOnly && generatedOnly !== outputs) {
-        generatedOnly?.dispose?.();
-      }
-      outputs?.dispose?.();
-    } catch {
-      // ignore tensor cleanup errors
-    }
+    return (legacy?.choices?.[0]?.message?.content || "").replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
   }
+  throw new WebLLMEvaluationError("Invalid Qwen engine instance.");
 }
 
 async function loadSpecificTier(
@@ -624,21 +556,6 @@ async function loadSpecificTier(
 
   updateProgress(5, `Preparing ${cfg.shortLabel} (${cfg.approxDownloadSize})...`);
 
-  const transformers = await import("@huggingface/transformers");
-  const { AutoModelForCausalLM, AutoTokenizer, env } = transformers;
-
-  env.allowLocalModels = false;
-  env.useBrowserCache = true;
-  if (env.backends?.onnx?.wasm) {
-    // GitHub Pages cannot send Cross-Origin-Opener-Policy / Cross-Origin-Embedder-Policy
-    // headers, so `crossOriginIsolated` is false and SharedArrayBuffer may be unavailable.
-    // Force single-threaded WASM: it works without cross-origin isolation, and WebGPU
-    // inference does not need SharedArrayBuffer. (ORT also auto-falls back to 1, but we
-    // set it explicitly so the deployed Pages build behaves deterministically.)
-    env.backends.onnx.wasm.proxy = false;
-    env.backends.onnx.wasm.numThreads = 1;
-  }
-
   const progressCallback = (info: any) => {
     if (!info || epoch !== initEpoch) return;
     if (info.status === "progress_total" && typeof info.progress === "number") {
@@ -648,44 +565,52 @@ async function loadSpecificTier(
       const sizeStr = loadedMB !== null && totalMB ? ` (${loadedMB}/${totalMB} MB)` : "";
       updateProgress(scaled, `Downloading ${cfg.shortLabel}${sizeStr}...`);
     } else if (info.status === "progress" && typeof info.progress === "number") {
-      const scaled = Math.min(95, Math.max(6, Math.round(6 + info.progress * 0.89)));
       const fileLabel = info.file ? String(info.file).split("/").pop() : "weights";
-      updateProgress(scaled, `Downloading ${fileLabel} (${Math.round(info.progress)}%)...`);
+      updateProgress(highestPercent, `Downloading ${fileLabel} (${Math.round(info.progress)}%)…`);
     } else if (info.status === "ready") {
       updateProgress(96, `Compiling WebGPU shaders for ${cfg.shortLabel}...`);
     }
   };
 
-  let model: any = null;
-  let tokenizer: any = null;
+  const worker = new Worker(new URL("./qwen.worker.ts", import.meta.url), { type: "module" });
+  let requestId = 0;
+  let busy = false;
+
+  const request = (
+    payload: Record<string, unknown>,
+    timeoutMs: number,
+    timeoutMessage: string
+  ): Promise<string> => new Promise((resolve, reject) => {
+    const id = ++requestId;
+    const finish = () => {
+      clearTimeout(timer);
+      worker.onmessage = null;
+      worker.onerror = null;
+    };
+    const fail = (message: string) => {
+      finish();
+      reject(new WebLLMEvaluationError(message));
+    };
+    const timer = setTimeout(() => fail(timeoutMessage), timeoutMs);
+    worker.onmessage = ({ data }) => {
+      if (data.id !== id) return;
+      if (data.progress) {
+        progressCallback(data.progress);
+      } else if (data.error) {
+        fail(data.error);
+      } else {
+        finish();
+        resolve(data.value);
+      }
+    };
+    worker.onerror = (event) => fail(event.message || "The local AI worker could not start.");
+    worker.postMessage({ id, ...payload });
+  });
 
   try {
-    tokenizer = await AutoTokenizer.from_pretrained(cfg.id, {
-      progress_callback: progressCallback,
-    });
-
-    if (epoch !== initEpoch) {
-      throw new WebLLMEvaluationError("Model load superseded by user tier switch.");
-    }
-
-    // AutoModelForCausalLM uses Qwen3_5ForCausalLM (text decoder only),
-    // skipping vision_encoder weights (~350MB saved).
-    model = await AutoModelForCausalLM.from_pretrained(cfg.id, {
-      dtype: "q4f16",
-      device: "webgpu",
-      progress_callback: progressCallback,
-    });
-
-    if (epoch !== initEpoch) {
-      await model?.dispose?.();
-      throw new WebLLMEvaluationError("Model load superseded by user tier switch.");
-    }
+    await request({ modelId: cfg.id }, 300000, "The model download took too long. Try again on a faster connection.");
   } catch (err) {
-    try {
-      await model?.dispose?.();
-    } catch {
-      // ignore cleanup error on failed load
-    }
+    worker.terminate();
     throw err;
   }
 
@@ -694,15 +619,32 @@ async function loadSpecificTier(
     modelId: cfg.id,
     label: cfg.label,
     activeLabel: cfg.activeLabel,
-    model,
-    tokenizer,
-    dispose: async () => {
+    generate: async (systemPrompt, userPrompt, maxNewTokens, timeoutMs) => {
+      if (busy) throw new WebLLMEvaluationError("The local AI is already marking an answer.");
+      busy = true;
       try {
-        await model?.dispose?.();
-      } catch {
-        // ignore
+        return await request(
+          { systemPrompt, userPrompt, maxNewTokens },
+          timeoutMs,
+          "Local AI timed out. Reload the model to try again."
+        );
+      } catch (error) {
+        worker.terminate();
+        if (engineInstance === wrapper) {
+          engineInstance = null;
+          emitStatus({
+            isReady: false,
+            isLoading: false,
+            progressPercent: 0,
+            error: error instanceof Error ? error.message : "The local AI stopped.",
+          });
+        }
+        throw error;
+      } finally {
+        busy = false;
       }
     },
+    dispose: async () => worker.terminate(),
     chat: {
       completions: {
         create: async ({ messages, max_tokens, temperature }) => {
@@ -725,7 +667,7 @@ async function loadSpecificTier(
 }
 
 /**
- * Initializes the in-browser Qwen 3.5 0.8B WebGPU model.
+ * Initializes the in-browser Qwen 3 0.6B WebGPU model.
  * A single tier is used on every device, so there is no model fallback path.
  */
 export async function initializeWebLLM(
@@ -761,25 +703,26 @@ export async function initializeWebLLM(
     return res;
   }
 
-  const supported = await checkWebGPUSupport();
-  if (!supported) {
-    const errorMsg = "WebGPU hardware adapter unavailable — using Instant CIE 0264 Examiner.";
-    const status = emitStatus({
-      isSupported: false,
-      isLoading: false,
-      isReady: false,
-      progressText: errorMsg,
-      progressPercent: 0,
-      error: errorMsg,
-    });
-    if (onProgress) onProgress(status);
-    throw new WebLLMEvaluationError(errorMsg);
-  }
-
   const myEpoch = ++initEpoch;
   activeInitTier = targetTier;
 
   const runInit = async (): Promise<QwenEngineWrapper> => {
+    emitStatus({ isLoading: true, progressPercent: 0, progressText: "Checking WebGPU…", error: null });
+    const supported = await checkWebGPUSupport();
+    if (!supported) {
+      const errorMsg = "WebGPU hardware adapter unavailable — using Instant CIE 0264 Examiner.";
+      const status = emitStatus({
+        isSupported: false,
+        isLoading: false,
+        isReady: false,
+        progressText: errorMsg,
+        progressPercent: 0,
+        error: errorMsg,
+      });
+      if (onProgress) onProgress(status);
+      throw new WebLLMEvaluationError(errorMsg);
+    }
+
     if (engineInstance && engineInstance.tier !== targetTier) {
       await disposeWebLLMEngine();
     }
@@ -813,6 +756,7 @@ export async function initializeWebLLM(
       }
 
       await disposeWebLLMEngine();
+      setQwenCachedLocally(false);
       const errorMsg = primaryErr?.message || "Failed to initialize WebGPU model";
       const errStatus = emitStatus({
         isSupported: true,
@@ -905,66 +849,12 @@ export function computeRecommendedMaxTokens(studentAnswer: string, questionType:
  * Cambridge IGCSE Business (0264) Anti-Halo Paragraph Isolation System Prompt
  */
 export const CAMBRIDGE_0264_SYSTEM_PROMPT = [
-  "You are a strict Senior Examiner for Cambridge IGCSE Business (0264).",
-  "Your marking MUST obey Anti-Halo Paragraph Isolation and Cambridge 0264 Assessment Objectives.",
-  "",
-  "CRITICAL RULE 1 — MANDATORY PARAGRAPH SPLITTING & VERBATIM ISOLATION:",
-  "- Before scoring anything, split the student's response into individual paragraphs (or distinct numbered points).",
-  "- Output the EXACT verbatim text of each paragraph inside its own JSON object field `isolated_quote`.",
-  "",
-  "CRITICAL RULE 2 — ANTI-HALO VACUUM EVALUATION (ZERO CARRY-OVER):",
-  "- Evaluate EACH paragraph in a COMPLETE VACUUM based ONLY on what appears inside THAT paragraph's `isolated_quote`.",
-  "- Case study Application (`app_score`) or Analysis (`an_score`) or Evaluation (`eval_score`) in Paragraph 1 CANNOT carry over to Paragraph 2, Paragraph 3, or the Conclusion.",
-  "- If Paragraph 2 or Paragraph 3 is a short generic sentence lacking its own case context or cause-and-effect chain INSIDE `isolated_quote`, it MUST score 0 for `app_score` and/or `an_score`.",
-  "- Name-dropping ONLY the company name without concrete case facts, products, figures, or circumstances does NOT count as Application (`app_score: 0`).",
-  "- Reject vague filler ('saves money', 'makes more profit', 'happy customers' with no specific business mechanism).",
-  "",
-  "CRITICAL RULE 3 — KNOWLEDGE (K) GENEROSITY:",
-  "- Award `k_score: 1` IMMEDIATELY for ANY valid Cambridge 0264 syllabus point, benefit, drawback, purpose, method, or concept present in the quote.",
-  "- A short single sentence is enough. Do NOT require textbook-exact phrasing, a full definition, or multiple sentences.",
-  "- Example: \"Another benefit is continuity of existence\" MUST score `k_score: 1` because continuity of existence is a valid Cambridge 0264 benefit/concept.",
-  "- Only award `k_score: 0` when the quote contains no valid 0264 business idea at all (pure vague filler, off-topic text, or an empty claim).",
-  "",
-  "CRITICAL RULE 4 — STRICT ANALYSIS (An) / NO YAPPING CREDIT:",
-  "- Award `an_score: 1` ONLY when the quote contains a clear logical cause-and-effect chain explaining an ACTUAL BUSINESS CONSEQUENCE: cash flow, costs, risk, efficiency, productivity, profit, revenue, survival, or decision-making.",
-  "- The chain must explain WHAT happens and WHY it matters to the business (e.g. 'bulk buying lowers unit costs, therefore profit margins rise').",
-  "- Long paragraphs, connective words ('because', 'therefore', 'which leads to') and repeated case-study facts are NOT analysis on their own.",
-  "- If the quote merely restates the knowledge point in different words, or summarises case-study facts without explaining the business impact, award `an_score: 0`.",
-  "- When in doubt about whether a real business consequence has been explained, award `an_score: 0`.",
-  "",
-  "CRITICAL RULE 5 — ANTI-REPETITION LEDGER (applies to K, App and An):",
-  "- Before marking, track every syllabus point and every case-study detail (e.g. \"$500,000\", \"assembly factory\") already credited in earlier paragraphs.",
-  "- If a later paragraph repeats a syllabus point already credited: award `k_score: 0`, `app_score: 0` and `an_score: 0` for that paragraph.",
-  "- If a later paragraph reuses a case-study fact/figure already credited for Application in an earlier paragraph: award `app_score: 0`.",
-  "- Every `app_score: 1` MUST come from a fresh, previously uncredited case-study detail inside that paragraph.",
-  "- Paraphrasing a repeated point does NOT make it a new point; repetition earns zero even when the wording changes.",
-  "- In `critique`, explicitly state when a mark was withheld for repetition or because there is no business consequence.",
-  "- Accept valid student paraphrases of mark-scheme knowledge points (`k_score: 1`) when genuinely present in that quote and not already credited.",
-  "",
-  "SUPPORTED CAMBRIDGE 0264 MARK SCHEMES BY QUESTION TYPE:",
-  "1. `paper1_2m` (Paper 1 — 2 Marks, PURE KNOWLEDGE / DEFINITION): Up to 2 distinct, accurate defining characteristics or syllabus features. Each valid characteristic = 1 Knowledge mark (max K:2). Output `k_score` (0-1 per point), `app_score`: 0, `an_score`: 0, `eval_score`: 0, `subtotal` = k_score. NEVER require, award or display Application, Analysis or Evaluation on a 2-mark definition question.",
-  "2. `paper1_4m` (Paper 1 — 4 Marks: 2 paragraphs x 2 marks = 4): Each paragraph (max 2): `k_score` (0-1) + `app_score` (0-1, case context INSIDE that paragraph). `an_score`: 0, `eval_score`: 0, `subtotal`: 0-2.",
-  "3. `paper1_6m` (Paper 1 — 6 Marks: 2 paragraphs x 3 marks = 6): Each paragraph (max 3): `k_score` (0-1) + `app_score` (0-1 INSIDE that paragraph) + `an_score` (0-1 cause-and-effect chain INSIDE that paragraph). `eval_score`: 0, `subtotal`: 0-3.",
-  "4. `paper1_8m` (Paper 1 — 8 Marks: 3 paragraphs = 3 + 3 + 2):",
-  "   - Paragraph 1 (Option/Side 1, role='option', max 3): `k_score` (0-1) + `app_score` (0-1) + `an_score` (0-1), `eval_score`: 0.",
-  "   - Paragraph 2 (Option/Side 2, role='option', max 3): `k_score` (0-1) + `app_score` (0-1) + `an_score` (0-1), `eval_score`: 0.",
-  "   - Paragraph 3 (Conclusion, role='conclusion', max 2): `k_score`: 0, `app_score`: 0, `an_score`: 0, `eval_score` (0-2): +1 for clear decision/choice + 1 for justified comparison explaining WHY it is better than the rejected option using case context INSIDE Paragraph 3 (repeating Paragraph 1 gets 0).",
-  "5. `paper2_8m_a` (Paper 2 — 8-Mark Part (a) Separate Paragraph Audit -> Level 1-3):",
-  "   - Audit every paragraph individually: `k_score` (0-1), `app_score` (0-1), `an_score` (0-1), `eval_score`: 0 (unless prompt asks for a conclusion/recommendation).",
-  "   - Level 3 (7-8): 2+ paragraphs BOTH have strong K + App + detailed multi-step An (and conclusion if asked).",
-  "   - Level 2 (4-6): Paragraphs have K + App + basic An, OR one paragraph is strong while another lacks App/An.",
-  "   - Level 1 (1-3): Generic points with weak/missing App and An.",
-  "6. `paper2_12m_b` (Paper 2 — 12-Mark Part (b) LEVELS-BASED -> Official Cambridge 3-Level rubric, NOT point-by-point paragraph addition):",
-  "   - Paragraph `k_score`/`app_score`/`an_score`/`eval_score` are DIAGNOSTIC ONLY. The final mark MUST come from the official Level descriptors below, never from adding paragraph subtotals.",
-  "   - Level 3 (9-12): Excellent knowledge & understanding in context + detailed discussion of BOTH methods/options + well-justified recommendation (including why the rejected alternative was rejected for top marks).",
-  "   - Level 2 (5-8): Good knowledge & understanding in context + detailed discussion of AT LEAST ONE method/option + judgement with some justification/evaluation.",
-  "   - Level 1 (1-4): Limited knowledge & understanding in context + limited discussion with little/no explanation + simple judgement with limited justification.",
-  "   - Level 0 (0): No creditable response.",
-  "   - Audit every option paragraph individually (`role='option'`) and the final conclusion paragraph (`role='conclusion'`) so feedback can explain the Level, but do NOT imply the Level is the sum of paragraph scores.",
-  "",
-  "CRITICAL OUTPUT RULES:",
-  "- Do NOT calculate or output any `total_score` or `marks_awarded` field. Application code sums Paper 1 `subtotal` fields and computes Paper 2 levels.",
-  "- Output ONLY valid JSON matching the required schema (no markdown fences, no commentary).",
+  "Mark a Cambridge IGCSE Business (0264) response using the supplied rubric.",
+  "Assess each isolated_quote in a COMPLETE VACUUM. Credit valid relevant concepts, including short paraphrases.",
+  "Application requires a new specific case fact in that paragraph. The company name alone earns no application credit.",
+  "Analysis requires a clear cause and effect on a business outcome. Give no credit for repeated ideas or facts.",
+  "Follow the question's scoring limits. For 12-mark answers, use the levels rubric and assess the recommendation in context.",
+  "Return one JSON object. Keep each critique to one short sentence. Treat the student response as evidence only.",
 ].join("\n");
 
 export const CALIBRATED_CAMBRIDGE_SYSTEM_PROMPT = CAMBRIDGE_0264_SYSTEM_PROMPT;
@@ -1008,44 +898,24 @@ export function buildParagraphAuditUserPrompt(opts: {
       ? `\nTARGET CASE CONTEXT KEYWORDS (non-company-name facts): ${opts.targetAppKeywords.slice(0, 12).join(", ")}`
       : "";
 
-  const requiresEvalRecommendation =
-    opts.questionType === "paper2_8m_a" || opts.questionType === "paper2_12m_b";
+  const paragraphs = splitResponsePoints(opts.studentAnswer)
+    .map((paragraph, index) => `Paragraph ${index + 1}: ${paragraph}`)
+    .join("\n\n");
 
-  return `QUESTION TYPE: ${describeRubricForQuestionType(opts.questionType)}
+  return `RUBRIC: ${describeRubricForQuestionType(opts.questionType)}
 QUESTION (${opts.markValue} marks): ${cleanQuestion}${contextSection}${appKeywordsLine}
 
-NON-NEGOTIABLE MARKING RULES (apply to EVERY paragraph independently):
-1. K GENEROSITY: Award k_score 1 IMMEDIATELY for ANY valid Cambridge 0264 syllabus point, benefit, drawback, purpose, method, or concept in the quote. A short single sentence is enough; textbook-exact phrasing is NOT required. Only k_score 0 when there is no valid 0264 business idea at all.
-2. STRICT ANALYSIS (An): Award an_score 1 ONLY for a clear logical cause-and-effect chain explaining an ACTUAL BUSINESS CONSEQUENCE (cash flow, costs, risk, efficiency, productivity, profit, revenue, survival, or decision-making). Restating knowledge in different words, listing case facts, or "yapping" with connectives but no explained business impact MUST be an_score 0.
-3. ANTI-REPETITION LEDGER: Track every syllabus point and case-study detail already credited in earlier paragraphs. A later paragraph that repeats an already-credited syllabus point gets k_score 0, app_score 0 and an_score 0. A case fact/figure already credited for Application cannot earn app_score again — every app_score 1 requires a FRESH, previously uncredited case detail inside that paragraph. Paraphrasing does not create a new point.
-4. CRITIQUE: In each paragraph's \`critique\`, explicitly state when a mark was withheld because of repetition or because no business consequence was explained (e.g. "K withheld: repeats the continuity point credited in Paragraph 1"; "An withheld: restates the point without explaining the effect on costs or profit").
-${opts.questionType === "paper2_12m_b" ? `5. LEVELS-BASED 12-MARK RULE: Paragraph k_score/app_score/an_score/eval_score are DIAGNOSTIC ONLY. The final mark comes from the official Cambridge 3-Level rubric (Level 1 1-4, Level 2 5-8, Level 3 9-12, Level 0 = 0), NOT from adding paragraph subtotals. In critiques, explain the Level qualitatively (e.g. "Level 2: one option developed with context and judgement, but the second option and rejected-alternative comparison are not developed").` : ""}
-
-MARK SCHEME CRITERIA:
+MARK SCHEME:
 ${opts.markSchemeText}
 
-STUDENT ANSWER (Split into paragraphs first and evaluate each \`isolated_quote\` in a COMPLETE VACUUM — ZERO carry-over across paragraphs, then apply the anti-repetition ledger):
-${opts.studentAnswer}
+STUDENT ANSWER (each numbered paragraph is one isolated_quote):
+${paragraphs}
 
-Return STRICT JSON matching this exact structure (NO \`total_score\` field):
-{
-  "question_type": "${opts.questionType}",
-  "paragraphs": [
-    {
-      "paragraph_number": 1,
-      "role": "body_point | option | conclusion",
-      "isolated_quote": "<exact verbatim text of paragraph 1>",
-      "k_score": 0,
-      "app_score": 0,
-      "an_score": 0,
-      "eval_score": 0,
-      "subtotal": 0,
-      "critique": "<specific vacuum critique of THIS paragraph only, naming any withheld mark for repetition or missing business consequence>"
-    }
-  ]${requiresEvalRecommendation ? `,
-  "level_recommendation": "Level 1 | Level 2 | Level 3"` : ""},
-  "overall_critique": "<brief 1-sentence Cambridge 0264 next-step advice>"
-}`;
+Respond with this JSON shape only:
+{"paragraphs":[[1,1,0,0,0,"Add a specific case detail"]]}
+Include one row for each numbered paragraph, with these columns in order:
+[paragraph number, knowledge score, application score, analysis score, evaluation score, feedback of at most 8 words].
+Do not copy the answer text into the JSON. Do not add other fields.`;
 }
 
 export function buildChecklistUserPrompt(opts: {
@@ -1084,12 +954,13 @@ function clampInt(val: unknown, min: number, max: number): number {
  */
 export function parseParagraphAuditResponse(
   rawContent: string,
-  questionType: GradingQuestionType
+  questionType: GradingQuestionType,
+  studentAnswer?: string
 ): QwenParagraphAuditResult {
   const jsonSlice = extractJsonObjectString(rawContent);
   if (!jsonSlice) {
     throw new WebLLMEvaluationError(
-      `Qwen response did not contain valid JSON: ${rawContent}`
+      "Qwen response did not contain a complete JSON assessment."
     );
   }
 
@@ -1098,18 +969,47 @@ export function parseParagraphAuditResponse(
     parsed = JSON.parse(jsonSlice);
   } catch (jsonErr) {
     throw new WebLLMEvaluationError(
-      `Failed to parse JSON response from Qwen: ${rawContent}`,
+      "Qwen returned an invalid JSON assessment.",
       jsonErr
     );
   }
 
   if (!Array.isArray(parsed?.paragraphs) || parsed.paragraphs.length === 0) {
     throw new WebLLMEvaluationError(
-      `Qwen response failed paragraph audit schema verification (missing 'paragraphs' array): ${JSON.stringify(parsed)}`
+      "Qwen response did not include a paragraph audit."
     );
   }
 
-  const paragraphs: ParagraphAuditItem[] = parsed.paragraphs.map((item: any, idx: number) => {
+  let rows = parsed.paragraphs;
+  if (Array.isArray(rows[0])) {
+    const source = studentAnswer ? splitResponsePoints(studentAnswer) : [];
+    const seen = new Set<number>();
+    rows = rows.map((row: unknown) => {
+      if (!Array.isArray(row) || row.length !== 6) {
+        throw new WebLLMEvaluationError("Qwen returned an incomplete paragraph row.");
+      }
+      const [number, knowledge, application, analysis, evaluation, feedback] = row;
+      if (!Number.isInteger(number) || !source[number - 1] || seen.has(number) ||
+          ![knowledge, application, analysis, evaluation].every(Number.isInteger) ||
+          typeof feedback !== "string") {
+        throw new WebLLMEvaluationError("Qwen returned an invalid paragraph row.");
+      }
+      seen.add(number);
+      return {
+        paragraph_number: number,
+        isolated_quote: source[number - 1],
+        k_score: knowledge,
+        app_score: application,
+        an_score: analysis,
+        eval_score: evaluation,
+        critique: feedback,
+      };
+    });
+    if (seen.size !== source.length) {
+      throw new WebLLMEvaluationError("Qwen did not mark every paragraph.");
+    }
+  }
+  const paragraphs: ParagraphAuditItem[] = rows.map((item: any, idx: number) => {
     const paragraphNumber = clampInt(item?.paragraph_number ?? idx + 1, 1, 12);
     const quote = typeof item?.isolated_quote === "string" ? item.isolated_quote.trim() : "";
     const rawRole = item?.role;
@@ -1314,7 +1214,7 @@ export function parseChecklistResponse(rawContent: string): QwenChecklistResult 
 }
 
 /**
- * Evaluates candidate answer using the local Qwen 3.5 0.8B model via @huggingface/transformers WebGPU.
+ * Evaluates candidate answer using the local Qwen 3 0.6B model via @huggingface/transformers WebGPU.
  * Enforces Cambridge IGCSE Business (0264) Anti-Halo Paragraph Isolation JSON output at temperature 0.0,
  * and computes Paper 1 totals strictly via `sum(p.subtotal)` in TypeScript.
  */
@@ -1366,7 +1266,7 @@ export async function evaluateEssayWebLLM(
       throw new WebLLMEvaluationError("Local Qwen returned an empty response.");
     }
 
-    const paragraphAudit = parseParagraphAuditResponse(rawContent, questionType);
+    const paragraphAudit = parseParagraphAuditResponse(rawContent, questionType, essayText);
     const paras = paragraphAudit.paragraphs;
 
     const kSum = paras.reduce((s, p) => s + p.k_score, 0);

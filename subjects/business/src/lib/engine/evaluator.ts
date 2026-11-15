@@ -20,6 +20,9 @@ import {
   WebLLMEvaluationError,
 } from "./webllm";
 import { Paper1DeterministicRules } from "../data/paper1-database";
+import { splitEssayParagraphs, splitResponsePoints } from "./paragraphs";
+
+export { splitEssayParagraphs, splitResponsePoints } from "./paragraphs";
 
 export interface EvaluatorInput {
   questionTitle: string;
@@ -914,85 +917,6 @@ function scanCausalAnalysis(text: string): {
   }
 
   return { strongChains, basicReasons, matchedChains };
-}
-
-/**
- * Splits a candidate essay into logical paragraphs, merging standalone short headings
- * (e.g. "Recommendation", "Conclusion:") with their following paragraph body.
- */
-export function splitEssayParagraphs(answer: string): string[] {
-  const doubleNewlineBlocks = answer
-    .split(/\n\s*\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-
-  const rawBlocks =
-    doubleNewlineBlocks.length >= 2
-      ? doubleNewlineBlocks
-      : answer
-          .split(/\n+/)
-          .map((p) => p.trim())
-          .filter(Boolean);
-
-  const merged: string[] = [];
-  for (let i = 0; i < rawBlocks.length; i++) {
-    const block = rawBlocks[i];
-    const words = block.split(/\s+/).filter(Boolean).length;
-    const isShortHeading =
-      words <= 5 &&
-      i + 1 < rawBlocks.length &&
-      (/^(?:recommendation|conclusion|summary|option\s*\d+|method\s*\d+|choice|final\s+decision)\b/i.test(block) ||
-        /:$/.test(block));
-
-    if (isShortHeading) {
-      merged.push(`${block}\n${rawBlocks[i + 1]}`);
-      i++;
-    } else {
-      merged.push(block);
-    }
-  }
-  return merged;
-}
-
-const CONCLUSION_HEADING_START_REGEX =
-  /^(?:recommendation|conclusion|in conclusion|to conclude|to sum up|in summary|overall|on balance|ultimately|summary|final\s+decision|choice)\b/i;
-
-const POINT_LABEL_PREFIX_REGEX =
-  /^(?:(?:\(\d{1,2}\)|\d{1,2}[.)])\s+|(?:point|reason|benefit|advantage|disadvantage|drawback|limitation|factor|method|way|option)\s*\d{1,2}\s*[:.-]\s+)/i;
-
-/**
- * Splits a student response into independent evaluable point/paragraph segments by:
- * - paragraph/newline breaks (merging short standalone headings with their body)
- * - inline numbered lists (1. / 2. / 3. / 4.)
- * - inline labeled points ("Benefit 1:", "Reason 2:", "Point 1:", "Advantage 1:", etc.)
- * Preserves conclusion headings ("Recommendation", "Conclusion:") attached to their body,
- * and strips inline point-number/label prefixes from body segments.
- */
-export function splitResponsePoints(answer: string): string[] {
-  const baseParagraphs = splitEssayParagraphs(answer);
-  const inlineSplitRegex =
-    /(?:^|(?<=[.!?;]\s+|\n))(?=(?:\(\d{1,2}\)\s+|\d{1,2}[.)]\s+|(?:point|reason|benefit|advantage|disadvantage|drawback|limitation|factor|method|way|option)\s*\d{1,2}\s*[:.-]\s+))/gi;
-
-  const segments: string[] = [];
-  for (const block of baseParagraphs) {
-    const subParts = block
-      .split(inlineSplitRegex)
-      .map((s) => s.trim())
-      .filter(Boolean);
-
-    const partsToProcess = subParts.length > 0 ? subParts : [block];
-    for (const part of partsToProcess) {
-      if (CONCLUSION_HEADING_START_REGEX.test(part)) {
-        segments.push(part);
-      } else {
-        const cleaned = part.replace(POINT_LABEL_PREFIX_REGEX, "").trim();
-        if (cleaned) {
-          segments.push(cleaned);
-        }
-      }
-    }
-  }
-  return segments;
 }
 
 /**
@@ -2656,7 +2580,7 @@ function findFreshAppDetails(foundWords: string[], credited: Set<string>): strin
 
 /**
  * Strict Cambridge 0264/0450 Paper 1 & Short-Response Evaluation Engine
- * Combines Qwen 3.5 (2B / 0.8B) boolean checklist evaluation with strict 0264 deterministic
+ * Combines Qwen 3 0.6B boolean checklist evaluation with strict 0264 deterministic
  * AO2/AO3/AO4 verification so paraphrased understanding is credited fairly while vague filler,
  * repeated sentences, simple lists, and standalone company name-dropping are not over-scored.
  */
@@ -3821,7 +3745,7 @@ export async function evaluateStudentEssay(
 
   const p1QuestionType: GradingQuestionType = resolveGradingQuestionType(marks, 1);
 
-  // 2. AI Anti-Halo Paragraph Audit Pass (Qwen 3.5 0.8B via WebGPU if loaded)
+  // 2. AI Anti-Halo Paragraph Audit Pass (Qwen 3 0.6B via WebGPU if loaded)
   if (webllmEngine) {
     try {
       const markSchemeBullets: string[] = [];
@@ -4092,6 +4016,10 @@ export async function evaluateStudentEssay(
     else examinerNotes += "Below target standard; review the mark scheme points and model answer carefully.";
   }
 
+  if (webllmEngine) {
+    examinerNotes = `Local AI could not complete this assessment. Instant Examiner marked your answer. ${examinerNotes}`;
+  }
+
   const breakdown: AssessmentObjectivesBreakdown = {
     ao1: {
       score: finalAo1,
@@ -4210,7 +4138,7 @@ function formatPaper2MarkSchemeBullets(markScheme: any): string {
 }
 
 /**
- * Calibrated Cambridge IGCSE Business (0264) Paper 2 Examiner (Local Qwen 3.5 0.8B + Anti-Halo Paragraph Isolation)
+ * Calibrated Cambridge IGCSE Business (0264) Paper 2 Examiner (Local Qwen 3 0.6B + Anti-Halo Paragraph Isolation)
  * - 8-mark Part (a): Separate Paragraph Audit -> Level 1 (1–3), Level 2 (4–6), Level 3 (7–8)
  * - 12-mark Part (b): 3 Option Paragraphs + 1 Conclusion Paragraph -> Level 1 (1–4), Level 2 (5–8), Level 3 (9–12)
  */
@@ -5286,7 +5214,7 @@ export async function evaluatePaper2Answer(
     };
   };
 
-  // 1. Try the Local Qwen 3.5 0.8B AI Anti-Halo Paragraph Audit if engine available
+  // 1. Try the Local Qwen 3 0.6B AI Anti-Halo Paragraph Audit if engine available
   if (webllmEngine) {
     try {
       const userPrompt = buildParagraphAuditUserPrompt({
@@ -5308,7 +5236,7 @@ export async function evaluatePaper2Answer(
       });
 
       if (raw && raw.trim()) {
-        const aiAudit = parseParagraphAuditResponse(raw, questionType);
+        const aiAudit = parseParagraphAuditResponse(raw, questionType, answer);
         const computed = computePaper2Scores(aiAudit);
         return buildPaper2Result(computed, true, aiAudit);
       }
@@ -5319,5 +5247,9 @@ export async function evaluatePaper2Answer(
 
   // 2. Deterministic Cambridge 0264 Anti-Halo Examiner Fallback
   const fallbackComputed = computePaper2Scores();
-  return buildPaper2Result(fallbackComputed, false);
+  const result = buildPaper2Result(fallbackComputed, false);
+  if (webllmEngine) {
+    result.examinerNotes = `Local AI could not complete this assessment. Instant Examiner marked your answer. ${result.examinerNotes}`;
+  }
+  return result;
 }

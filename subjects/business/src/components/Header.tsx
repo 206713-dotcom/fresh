@@ -3,13 +3,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
   ChevronDown,
+  ArrowLeft,
+  Zap,
   Menu,
   X,
   BookOpen,
   Sparkles,
   FileText,
   BarChart3,
-  Layers,
   HelpCircle,
   Sun,
   Moon,
@@ -65,6 +66,13 @@ interface HeaderProps {
   onStartMockExam?: () => void;
 }
 
+const primaryNavigation = [
+  { tab: "practice", label: "Paper 1", Icon: FileText },
+  { tab: "paper2", label: "Paper 2", Icon: BookOpen },
+  { tab: "lessons", label: "Lessons", Icon: GraduationCap },
+  { tab: "quick-quiz", label: "Quick Quiz", Icon: Zap },
+] as const;
+
 export function Header({
   activeTab,
   setActiveTab,
@@ -85,7 +93,6 @@ export function Header({
   const accountRef = useRef<HTMLDivElement>(null);
   const themeRef = useRef<HTMLDivElement>(null);
   const aiModelRef = useRef<HTMLDivElement>(null);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [accountOpen, setAccountOpen] = useState<boolean>(false);
   const [aiModelMenuOpen, setAiModelMenuOpen] = useState<boolean>(false);
   const [qwenStatus, setQwenStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
@@ -200,20 +207,6 @@ export function Header({
     };
   }, [mobileMenuOpen]);
 
-  const handleMouseEnter = (menuName: string) => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-    setOpenDropdown(menuName);
-  };
-
-  const handleMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 150);
-  };
-
   const handleToggleClick = (menuName: string) => {
     setOpenDropdown((prev) => (prev === menuName ? null : menuName));
   };
@@ -272,7 +265,6 @@ export function Header({
     }
   };
 
-  const isQuestionsActive = ["practice", "paper2", "quick-quiz", "lessons"].includes(activeTab);
   const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
   const isChecklistActive = ["checklist", "compare", "sections"].includes(activeTab);
 
@@ -329,137 +321,22 @@ export function Header({
         {/* ZONE 2: DESKTOP NAVIGATION BAR */}
         {/* ========================================================= */}
         <nav
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setOpenDropdown(null);
+          }}
           ref={navRef}
           aria-label="Study navigation"
           className="hidden lg:flex items-center gap-1.5 text-sm font-medium"
         >
-          {/* DROPDOWN 1: Questions (Topical Questions, Paper 2, Quick Quiz) */}
-          <div
-            className="relative"
-            onMouseEnter={() => handleMouseEnter("questions")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              type="button"
-              onClick={() => handleToggleClick("questions")}
-              aria-expanded={openDropdown === "questions"}
-              className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
-                isQuestionsActive
-                  ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
-                  : "text-[#57534E] dark:text-neutral-300 hover:text-[#0F2042] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>Questions</span>
-              <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  openDropdown === "questions" ? "rotate-180" : ""
-                }`}
-              />
+          {onStartMockExam && (
+            <button type="button" onClick={onStartMockExam} className="business-mock-link">
+              <Timer size={15} aria-hidden="true" /> Mock exam
             </button>
-
-            {openDropdown === "questions" && (
-              <div className="absolute top-full left-0 mt-1 w-64 p-2 rounded-2xl bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-700 shadow-xl backdrop-blur-xl z-50 animate-in fade-in zoom-in-95 duration-150">
-                <button
-                  onClick={() => handleSelectTab("lessons")}
-                  className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer ${
-                    activeTab === "lessons"
-                      ? "bg-[#203e32] text-white font-semibold"
-                      : "text-[#1C1917] dark:text-neutral-200 hover:bg-[#f4f8ec] dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  <GraduationCap
-                    className={`w-4 h-4 mt-0.5 shrink-0 ${
-                      activeTab === "lessons"
-                        ? "text-[#e4eeb2]"
-                        : "text-[#5f7d4a] dark:text-[#b9d3a3]"
-                    }`}
-                  />
-                  <div>
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span>Interactive Lessons</span>
-                      <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-[#e4eeb2] text-[#213b30] font-mono">
-                        24
-                      </span>
-                    </div>
-                    <div className="text-[10px] opacity-75">
-                      Guided concept + practice cards (Sections 1–6)
-                    </div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleSelectTab("practice")}
-                  className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer ${
-                    activeTab === "practice"
-                      ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold"
-                      : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  <Layers className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
-                  <div>
-                    <div className="text-xs font-bold">Topical Questions</div>
-                    <div className="text-[10px] opacity-75">Paper 1 · 1–40 sets (Sections 1–6)</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleSelectTab("paper2")}
-                  className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer mt-1 ${
-                    activeTab === "paper2"
-                      ? "bg-purple-700 text-white font-semibold"
-                      : "text-[#1C1917] dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800"
-                  }`}
-                >
-                  <FileText className="w-4 h-4 mt-0.5 shrink-0 text-purple-600 dark:text-purple-400" />
-                  <div>
-                    <div className="text-xs font-bold flex items-center gap-1.5">
-                      <span>Paper 2 Practice</span>
-                      <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-mono">
-                        Sets 1–100
-                      </span>
-                    </div>
-                    <div className="text-[10px] opacity-75">Case studies with Appendices 1–3</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleSelectTab("quick-quiz")}
-                  className={`w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer mt-1 text-[#8B1E1E] dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 ${
-                    activeTab === "quick-quiz" ? "bg-rose-50 dark:bg-rose-950/50 font-semibold" : ""
-                  }`}
-                >
-                  <Sparkles className="w-4 h-4 mt-0.5 shrink-0" />
-                  <div>
-                    <div className="text-xs font-bold">⚡ Daily Challenge & Quick Quiz</div>
-                    <div className="text-[10px] opacity-80">1-min timed active recall drill</div>
-                  </div>
-                </button>
-
-                {onStartMockExam && (
-                  <button
-                    onClick={() => {
-                      handleSelectTab("practice");
-                      onStartMockExam();
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl flex items-start gap-2.5 transition cursor-pointer mt-1 text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/30 border-t border-neutral-100 dark:border-neutral-800 pt-2"
-                  >
-                    <Timer className="w-4 h-4 mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">Mock Exam</div>
-                      <div className="text-[10px] opacity-75">Timed Paper 1 / Paper 2 under exam conditions</div>
-                    </div>
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
+          )}
 
           {/* DROPDOWN: Checklist (Syllabus Checklist + Sections + Advantages & Disadvantages) */}
           <div
             className="relative"
-            onMouseEnter={() => handleMouseEnter("checklist")}
-            onMouseLeave={handleMouseLeave}
           >
             <button
               type="button"
@@ -583,8 +460,6 @@ export function Header({
           {/* DROPDOWN: Resources & Archive */}
           <div
             className="relative"
-            onMouseEnter={() => handleMouseEnter("resources")}
-            onMouseLeave={handleMouseLeave}
           >
             <button
               type="button"
@@ -806,10 +681,10 @@ export function Header({
               <Cpu className="w-3.5 h-3.5 shrink-0" />
               <span className="font-mono text-[11px] font-bold whitespace-nowrap">
                 {qwenStatus.isLoading
-                  ? `Qwen 3.5 0.8B (${qwenStatus.progressPercent}%)`
+                  ? `Qwen 3 0.6B (${qwenStatus.progressPercent}%)`
                   : qwenStatus.isReady
                     ? qwenStatus.activeLabel
-                    : "Qwen 3.5 0.8B"}
+                    : "Qwen 3 0.6B"}
               </span>
               {qwenStatus.isReady && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -836,7 +711,7 @@ export function Header({
                     Device Profile: {qwenStatus.deviceInfo.reason}
                   </div>
                   <div className="text-[10px] text-[#78716C] dark:text-neutral-400">
-                    {QWEN_MODELS["0.8b"].shortLabel}
+                    {QWEN_MODELS["0.6b"].shortLabel}
                     {qwenStatus.isReady ? ` · Active: ${qwenStatus.activeLabel}` : " · Not loaded"}
                   </div>
                 </div>
@@ -850,7 +725,7 @@ export function Header({
                 <div className="space-y-1">
                   <button
                     type="button"
-                    onClick={() => handleSelectQwenTier("0.8b")}
+                    onClick={() => handleSelectQwenTier("0.6b")}
                     disabled={qwenStatus.isReady || qwenStatus.isLoading}
                     className={`w-full text-left px-2.5 py-2 rounded-xl border flex items-center justify-between gap-2 transition-colors ${
                       qwenStatus.isReady
@@ -860,10 +735,10 @@ export function Header({
                   >
                     <div className="min-w-0">
                       <div className="text-xs font-bold text-[#1C1917] dark:text-white flex items-center gap-1.5">
-                        <span>{QWEN_MODELS["0.8b"].label}</span>
+                        <span>{QWEN_MODELS["0.6b"].label}</span>
                       </div>
                       <div className="text-[10px] text-[#78716C] dark:text-neutral-400 font-mono">
-                        Desktop, laptop and mobile · {QWEN_MODELS["0.8b"].approxDownloadSize}
+                        WebGPU · {QWEN_MODELS["0.6b"].approxDownloadSize}
                       </div>
                     </div>
                     <span className="shrink-0 text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
@@ -1041,11 +916,35 @@ export function Header({
         </div>
       </div>
 
+      <nav className="business-nav" aria-label="Business study tools">
+        <div className="business-nav-inner">
+          <a className="business-nav-home" href="../../index.html">
+            <ArrowLeft size={16} aria-hidden="true" /> Fresh
+          </a>
+          <div className="business-nav-tools">
+            {primaryNavigation.map(({ tab, label, Icon }) => (
+              <button
+                key={tab}
+                type="button"
+                aria-current={activeTab === tab ? "page" : undefined}
+                onClick={() => {
+                  handleSelectTab(tab);
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <Icon size={16} aria-hidden="true" />
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* ========================================================= */}
       {/* MOBILE EXPANDED MENU                                     */}
       {/* ========================================================= */}
       {mobileMenuOpen && (
-        <nav aria-label="Study navigation" className="site-mobile-navigation lg:hidden pt-3 border-t border-[#E7E5E4] dark:border-neutral-800 space-y-1.5 overscroll-contain max-h-[calc(100dvh-4.5rem)] overflow-y-auto">
+        <nav aria-label="Study navigation" className="site-mobile-navigation lg:hidden pt-3 border-t border-[#E7E5E4] dark:border-neutral-800 space-y-1.5 overscroll-contain max-h-[calc(100dvh-10rem)] overflow-y-auto">
           {/* Bug / Suggestion Link in Mobile Menu */}
           <a
             href="https://forms.gle/6X2CAR1LkSQGRBx68"
@@ -1110,7 +1009,7 @@ export function Header({
             <div>
               <button
                 type="button"
-                onClick={() => handleSelectQwenTier("0.8b")}
+                onClick={() => handleSelectQwenTier("0.6b")}
                 disabled={qwenStatus.isReady || qwenStatus.isLoading}
                 className={`w-full px-2 py-1.5 rounded-lg text-[11px] font-bold border transition-colors ${
                   qwenStatus.isReady
@@ -1119,10 +1018,10 @@ export function Header({
                 }`}
               >
                 {qwenStatus.isReady
-                  ? "Qwen 3.5 0.8B Active"
+                  ? "Qwen 3 0.6B Active"
                   : qwenStatus.isLoading
-                    ? `Loading Qwen 3.5 0.8B (${qwenStatus.progressPercent}%)`
-                    : "Load Qwen 3.5 0.8B"}
+                    ? `Loading Qwen 3 0.6B (${qwenStatus.progressPercent}%)`
+                    : "Load Qwen 3 0.6B"}
               </button>
             </div>
           </div>

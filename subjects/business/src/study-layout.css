@@ -850,3 +850,118 @@
     justify-content: space-between;
   }
 }
+
+/* Business navigation and marking controls */
+.business-nav {
+  border-top: 1px solid var(--line);
+  background: var(--card);
+}
+
+.business-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2.5vw, 2rem);
+  width: min(calc(100% - 2 * clamp(0.875rem, 3.5vw, 3rem)), 83rem);
+  min-height: 3.5rem;
+  margin-inline: auto;
+}
+
+.business-nav-home,
+.business-nav-tools button,
+.business-mock-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.55rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.business-nav-home {
+  color: var(--muted);
+  padding-inline-start: 0;
+}
+
+.business-nav-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.business-nav-tools button {
+  color: var(--ink);
+}
+
+.business-nav-tools button[aria-current="page"],
+.business-nav-tools button:hover,
+.business-mock-link:hover {
+  background: var(--practice-bg);
+  color: var(--green);
+}
+
+.business-nav-tools button[aria-current="page"] {
+  box-shadow: inset 0 -2px var(--green);
+}
+
+.business-nav :focus-visible, .business-mock-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.business-skip-link {
+  position: fixed;
+  z-index: 60;
+  top: 0.5rem;
+  left: 0.5rem;
+  transform: translateY(-180%);
+  padding: 0.6rem 0.9rem;
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 0.5rem;
+}
+
+.business-skip-link:focus { transform: none; }
+#business-content { scroll-margin-top: 8rem; }
+
+.study-page .study-hero {
+  border: 1px solid color-mix(in srgb, var(--hero-bg) 75%, var(--surface-line));
+  border-radius: 1.2rem;
+  box-shadow: 0 0.55rem 1.65rem color-mix(in srgb, var(--hero-bg) 12%, transparent);
+}
+
+.study-page .study-hero .study-title span { display: inline; }
+
+.study-paper-two-engine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--surface-line);
+  background: var(--surface);
+}
+
+.study-engine-option:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.dark .business-nav { background: var(--sheet-surface); border-color: var(--sheet-sage-line); }
+.dark .business-nav-home, .dark .business-nav-tools button { color: #f6f4ed; }
+.dark .business-nav-tools button[aria-current="page"],
+.dark .business-nav-tools button:hover,
+.dark .business-mock-link:hover { background: var(--sheet-sage); color: #f6f4ed; }
+.dark .business-nav-tools button[aria-current="page"] { box-shadow: inset 0 -2px var(--primary-btn-bg); }
+
+@media (max-width: 580px) {
+  #business-content { scroll-margin-top: 10rem; }
+  .business-nav-inner { align-items: start; padding-block: 0.45rem; }
+  .business-nav-tools { display: grid; flex: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-nav-tools button { justify-content: flex-start; padding-inline: 0.5rem; }
+}

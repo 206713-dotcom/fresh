@@ -32,13 +32,6 @@ import {
   type ThemeId,
 } from "./lib/themes";
 import { StudentSubmissionRecord } from "./lib/types";
-import {
-  QWEN_MODELS,
-  getQwenStatusSnapshot,
-  subscribeQwenStatus,
-  type WebLLMStatus,
-} from "./lib/engine/webllm";
-
 export type BusinessTab =
   | "practice"
   | "paper2"
@@ -60,14 +53,6 @@ export default function App() {
     }
     return "daylight";
   });
-
-  const [qwenStatus, setQwenStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
-
-  useEffect(() => {
-    return subscribeQwenStatus((status) => {
-      setQwenStatus(status);
-    });
-  }, []);
 
   // Business Tab state: "practice" | "paper2" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle" | "compare" | "lessons"
   const [businessTab, setBusinessTab] = useState<BusinessTab>(() => {
@@ -267,6 +252,7 @@ export default function App() {
       }`}
     >
       <div>
+        <a href="#business-content" className="business-skip-link">Skip to study content</a>
         {/* Top Navigation Bar */}
         <Header
           activeTab={businessTab}
@@ -284,8 +270,7 @@ export default function App() {
           onStartMockExam={() => setIsMockExamMode(true)}
         />
 
-        {/* View Routing for Business Studies Platform */}
-        <main>
+        <main id="business-content">
           {/* TAB 1: Topical Questions (Sections 1-6) */}
           {businessTab === "practice" && (
             <PracticeStudio
@@ -302,7 +287,7 @@ export default function App() {
             />
           )}
 
-          {/* TAB 2: Dedicated Paper 2 Practice Studio (100 Case Studies, Appendices 1-3, Qwen 3.5 0.8B) */}
+          {/* TAB 2: Dedicated Paper 2 Practice Studio (100 Case Studies, Appendices 1-3, Qwen 3 0.6B) */}
           {businessTab === "paper2" && (
             <Paper2PracticeView onOpenStudySpace={handleOpenStudySpace} />
           )}
@@ -421,7 +406,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
         <p>
-          EcBiz • Powered by Local in-Browser {QWEN_MODELS[qwenStatus.activeTier].footerLabel} •{" "}
+          EcBiz · IGCSE Business ·{" "}
           <a href="./Business.html?open=dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
             Student Dashboard
           </a>
