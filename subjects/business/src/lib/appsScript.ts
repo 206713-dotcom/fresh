@@ -4,7 +4,9 @@
  */
 
 export const APPS_SCRIPT_URL =
-  (import.meta.env.VITE_APPS_SCRIPT_URL as string | undefined)?.trim() || null;
+  (import.meta.env.VITE_APPS_SCRIPT_URL as string | undefined)?.trim() ||
+  // Default for the static GitHub Pages deployment (no .env.local / secrets needed).
+  "https://script.google.com/macros/s/AKfycbwfXrpMOYjYqwEhkG9_jReOPoGZxsChLXLz8yuwOiL_oL8tBXXVHlKJJey8sVzhh8U/exec";
 
 export interface ScriptResponse<T = unknown> {
   success?: boolean;

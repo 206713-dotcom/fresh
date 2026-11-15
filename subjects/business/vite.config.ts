@@ -16,7 +16,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: fileURLToPath(new URL('./Business.html', import.meta.url)),
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
       },
     },
   },
