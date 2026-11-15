@@ -36,7 +36,12 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp -r index.html 404.html style.css home.css search.js fresh.svg subjects _site/
+          for item in *; do
+            case "$item" in
+              _site) ;;
+              *) cp -r "$item" _site/ ;;
+            esac
+          done
           rm -rf _site/subjects/business/node_modules _site/subjects/business/src _site/subjects/business/dist _site/subjects/business/.env.local _site/subjects/business/scripts
           cp -r subjects/business/dist/* _site/subjects/business/
 
