@@ -19,12 +19,70 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const workerURL = new URL('marking-worker.js?v=4', document.currentScript.src);
+  const scriptUrl = document.currentScript.src;
+  const workerURL = new URL('marking-worker.js?v=4', scriptUrl);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
   let task;
   let nextId = 0;
+
+  let endpointLookup;
+  function hostedEndpoint() {
+    endpointLookup ??= (async () => {
+      const file = new URL('marking-config.json', scriptUrl);
+      const config = await fetch(file, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+      if (!config.ok) throw new Error('Could not read AI marking settings. Please try again.');
+      const { endpoint } = await config.json();
+      if (endpoint === null) {
+        return location.hostname.endsWith('.vercel.app') ? new URL('/api/ecbiz-mark', location.href) : null;
+      }
+      const url = new URL(endpoint);
+      if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/api/ecbiz-mark' || url.search || url.hash) {
+        throw new Error('The hosted AI marking address is invalid.');
+      }
+      return url;
+    })().catch(error => {
+      endpointLookup = undefined;
+      throw error;
+    });
+    return endpointLookup;
+  }
+
+  async function gradeHosted(endpoint, id, answer, image, question, report) {
+    const message = 'Marking with hosted AI…';
+    status.hidden = false;
+    status.textContent = message;
+    report?.(message);
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, answer, image }),
+        signal: AbortSignal.timeout(65000)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Hosted AI marking is unavailable. Please try again.');
+      const { grade } = data;
+      if (!Number.isInteger(grade?.score) || grade.score < 0 || grade.score > question.marks ||
+          !Array.isArray(grade.credits) || typeof grade.feedback !== 'string' || typeof grade.nextStep !== 'string') {
+        throw new Error('Hosted AI returned an invalid mark. Please try again.');
+      }
+      return grade;
+    } catch (error) {
+      if (error.name === 'TimeoutError' || error instanceof TypeError) {
+        throw new Error('Could not reach hosted AI marking. Your answer is still here. Please try again.');
+      }
+      throw error;
+    } finally {
+      status.hidden = true;
+      status.textContent = '';
+    }
+  }
+
+  hostedEndpoint().then(endpoint => {
+    document.querySelector('#marking-privacy').hidden = !endpoint;
+  }).catch(() => {});
 
   async function evaluate(question, answer, image, report) {
     if (!navigator.gpu || typeof Worker !== 'function') {
@@ -132,8 +190,12 @@ const ecbizMarking = (() => {
     if (listedGrade) return Promise.resolve(listedGrade);
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
-      report?.('Waiting for the on-device marker…');
-      const request = queue.then(() => evaluate(question, response, image, report));
+      report?.('Waiting for AI marking…');
+      const request = queue.then(async () => {
+        const endpoint = await hostedEndpoint();
+        return endpoint ? gradeHosted(endpoint, id, response, image, question, report) :
+          evaluate(question, response, image, report);
+      });
       queue = request.catch(() => {});
       pending.set(key, request);
       const clear = () => pending.delete(key);
