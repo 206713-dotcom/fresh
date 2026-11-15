@@ -898,23 +898,50 @@ export function buildParagraphAuditUserPrompt(opts: {
       ? `\nTARGET CASE CONTEXT KEYWORDS (non-company-name facts): ${opts.targetAppKeywords.slice(0, 12).join(", ")}`
       : "";
 
-  const paragraphs = splitResponsePoints(opts.studentAnswer)
-    .map((paragraph, index) => `Paragraph ${index + 1}: ${paragraph}`)
-    .join("\n\n");
-
-  return `RUBRIC: ${describeRubricForQuestionType(opts.questionType)}
+  const context = `RUBRIC: ${describeRubricForQuestionType(opts.questionType)}
 QUESTION (${opts.markValue} marks): ${cleanQuestion}${contextSection}${appKeywordsLine}
 
 MARK SCHEME:
-${opts.markSchemeText}
+${opts.markSchemeText}`;
+
+  const paragraphs = splitResponsePoints(opts.studentAnswer);
+  if (opts.questionType.startsWith("paper1_") && paragraphs.length <= 3 && opts.studentAnswer.length <= 1000) {
+    return `${context}
+
+STUDENT ANSWER (split into paragraphs and assess each isolated_quote separately):
+${opts.studentAnswer}
+
+Return only this JSON object. Include one object per paragraph. Copy each paragraph into isolated_quote.
+{
+  "question_type": "${opts.questionType}",
+  "paragraphs": [
+    {
+      "paragraph_number": 1,
+      "role": "body_point | option | conclusion",
+      "isolated_quote": "<exact text of paragraph 1>",
+      "k_score": 0,
+      "app_score": 0,
+      "an_score": 0,
+      "eval_score": 0,
+      "critique": "<specific feedback for this paragraph>"
+    }
+  ],
+  "overall_critique": "<one sentence of advice>"
+}`;
+  }
+
+  const numberedAnswer = paragraphs
+    .map((paragraph, index) => `Paragraph ${index + 1}: ${paragraph}`)
+    .join("\n\n");
+  return `${context}
 
 STUDENT ANSWER (each numbered paragraph is one isolated_quote):
-${paragraphs}
+${numberedAnswer}
 
 Respond with this JSON shape only:
 {"paragraphs":[[1,1,0,0,0,"Add a specific case detail"]]}
-Include one row for each numbered paragraph, with these columns in order:
-[paragraph number, knowledge score, application score, analysis score, evaluation score, feedback of at most 8 words].
+Return exactly ${paragraphs.length} rows, one for each numbered paragraph.
+The columns are [paragraph number, knowledge score, application score, analysis score, evaluation score, feedback of at most 8 words].
 Do not copy the answer text into the JSON. Do not add other fields.`;
 }
 

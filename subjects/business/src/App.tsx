@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
+import { BusinessOverview } from "./components/BusinessOverview";
 import { PracticeStudio } from "./components/PracticeStudio";
 import { Paper2PracticeView } from "./components/Paper2PracticeView";
 import { GlossaryView } from "./components/GlossaryView";
@@ -33,6 +34,7 @@ import {
 } from "./lib/themes";
 import { StudentSubmissionRecord } from "./lib/types";
 export type BusinessTab =
+  | "overview"
   | "practice"
   | "paper2"
   | "quick-quiz"
@@ -61,6 +63,7 @@ export default function App() {
       if (
         saved &&
         [
+          "overview",
           "practice",
           "paper2",
           "quick-quiz",
@@ -77,7 +80,7 @@ export default function App() {
         return saved as BusinessTab;
       }
     }
-    return "practice";
+    return "overview";
   });
 
   useEffect(() => {
@@ -148,7 +151,9 @@ export default function App() {
       try {
         const params = new URLSearchParams(window.location.search);
         const openParam = params.get("open") || params.get("tab");
-        if (openParam === "paper2") {
+        if (openParam === "overview") {
+          setBusinessTab("overview");
+        } else if (openParam === "paper2") {
           setBusinessTab("paper2");
         } else if (openParam === "lessons") {
           setBusinessTab("lessons");
@@ -271,6 +276,16 @@ export default function App() {
         />
 
         <main id="business-content">
+          {businessTab === "overview" && (
+            <BusinessOverview
+              onNavigate={(tab) => {
+                setBusinessTab(tab);
+                window.scrollTo(0, 0);
+              }}
+              onStartMockExam={() => setIsMockExamMode(true)}
+            />
+          )}
+
           {/* TAB 1: Topical Questions (Sections 1-6) */}
           {businessTab === "practice" && (
             <PracticeStudio

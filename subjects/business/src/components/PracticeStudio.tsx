@@ -919,7 +919,7 @@ export function PracticeStudio({
         <div className="study-hero-image" aria-hidden="true" />
       </header>
 
-      <div className="study-studio">
+      <div className="study-studio study-paper-one-studio">
         <div className="study-mode-bar">
           <div role="group" aria-label="Practice mode" className="study-mode-options">
             <button
@@ -1171,6 +1171,7 @@ export function PracticeStudio({
                     </div>
                   </div>
                   <div className="study-case-text">{activePaper1Scenario.scenario_stem}</div>
+                  <a className="study-answer-jump" href="#paper-one-response">Go to your answer ↓</a>
                 </section>
 
                 <div className="study-paper-one-editor">

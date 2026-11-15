@@ -965,3 +965,156 @@
   .business-nav-tools { display: grid; flex: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .business-nav-tools button { justify-content: flex-start; padding-inline: 0.5rem; }
 }
+
+/* Business overview */
+.business-overview .business-overview-hero {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  min-height: clamp(23rem, 34vw, 31rem);
+  margin-bottom: 2.35rem;
+  border-radius: 1.5rem;
+}
+
+.business-overview .study-hero-content { padding: clamp(1.65rem, 5vw, 4.5rem); }
+.business-overview .business-overview-hero .study-title {
+  font-size: clamp(3.4rem, 6.6vw, 6.75rem);
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+  margin-block: 0.6rem 1rem;
+}
+
+.business-overview .study-description { max-width: 35ch; }
+.business-overview .study-hero-actions { margin-top: 1.4rem; }
+.business-overview .study-hero-image { background-position: center 58%; }
+
+.business-overview-section + .business-overview-section { margin-top: 1.85rem; }
+.business-overview-section h2 {
+  margin-bottom: 0.85rem;
+  font: 650 clamp(1.625rem, 3vw, 2.25rem)/1.1 var(--font-serif);
+  letter-spacing: -0.03em;
+}
+
+.business-overview-papers,
+.business-overview-tools {
+  display: grid;
+  gap: clamp(0.7rem, 1.75vw, 1.15rem);
+}
+
+.business-overview-papers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.business-overview-tools { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.business-overview-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.65rem, 2vw, 1.1rem);
+  min-width: 0;
+  border: 1px solid var(--surface-line);
+  border-radius: 1rem;
+  background: var(--surface);
+  padding: clamp(1rem, 2.4vw, 1.65rem);
+  color: var(--surface-text);
+  cursor: pointer;
+  text-align: left;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.business-paper-card {
+  align-items: center;
+  min-height: 9rem;
+  background: linear-gradient(125deg, var(--surface) 30%, var(--surface-practice));
+}
+.business-overview-card:hover {
+  border-color: var(--surface-accent);
+  box-shadow: 0 0.45rem 1.4rem color-mix(in srgb, var(--surface-accent) 13%, transparent);
+}
+.business-overview-card:focus-visible { outline: 2px solid var(--surface-accent); outline-offset: 3px; }
+.business-overview-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  border-radius: 0.75rem;
+  background: var(--surface-practice);
+  color: var(--surface-accent);
+}
+.business-paper-card .business-overview-icon {
+  width: 3.4rem;
+  background: var(--surface-accent);
+  color: var(--hero-text);
+}
+.dark .business-paper-card .business-overview-icon { color: var(--primary-btn-text); }
+.business-overview-card-copy { display: grid; flex: 1 1 auto; gap: 0.35rem; }
+.business-overview-card-copy strong { font-size: 1rem; line-height: 1.25; }
+.business-paper-card strong { font: 650 clamp(1.32rem, 2.25vw, 1.85rem)/1.16 var(--font-serif); }
+.business-overview-card-copy > span { color: var(--surface-muted); font-size: 0.875rem; line-height: 1.55; }
+.business-overview-arrow { flex: 0 0 auto; align-self: center; color: var(--surface-accent); }
+
+/* The case and response have separate surfaces throughout both papers. */
+.study-paper-one-studio,
+.study-paper-two-columns {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.study-paper-one-studio .study-mode-bar,
+.study-paper-one-studio .study-section-rail,
+.study-paper-one-studio .study-case-panel,
+.study-paper-one-studio .study-paper-one-editor,
+.study-paper-one-studio .study-alternate-mode,
+.study-paper-two-case,
+.study-paper-two-editor {
+  border: 1px solid var(--surface-line);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+.study-paper-one-studio .study-mode-bar { margin-bottom: 0.875rem; }
+.study-paper-one-studio .study-workspace,
+.study-paper-one-studio .study-paper-one-columns,
+.study-paper-two-columns { gap: clamp(0.7rem, 1.45vw, 1.15rem); align-items: start; }
+.study-paper-one-studio .study-workspace { grid-template-columns: clamp(9.75rem, 14vw, 12rem) minmax(0, 1fr); }
+.study-paper-one-studio .study-section-rail { background: var(--surface-practice); }
+.study-paper-one-studio .study-section-button:is(:hover, [aria-pressed="true"]) { background: var(--surface); }
+.study-paper-one-studio .study-case-panel,
+.study-paper-two-case { background: color-mix(in srgb, var(--surface) 93%, var(--surface-practice)); }
+.study-paper-two-toolbar,
+.study-paper-two-engine { border-radius: 0.9rem; margin-bottom: 0.65rem; }
+.study-paper-two-columns { margin-top: 0.9rem; }
+.study-response:focus-visible { outline: 2px solid var(--surface-accent); outline-offset: 2px; }
+.study-answer-jump {
+  display: none;
+  color: var(--surface-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-underline-offset: 0.2rem;
+  text-decoration: underline;
+}
+.study-response { scroll-margin-top: 10rem; }
+
+@media (max-width: 63.99rem) {
+  .study-paper-one-studio .study-workspace { grid-template-columns: minmax(0, 1fr); }
+  .study-paper-two-case .study-answer-jump { display: inline-block; }
+}
+
+@media (max-width: 48rem) {
+  .business-overview .business-overview-hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto clamp(8rem, 27vw, 12rem);
+    min-height: 0;
+    margin-bottom: 1.55rem;
+  }
+  .business-overview .business-overview-hero .study-title { font-size: clamp(3rem, 11vw, 4.75rem); }
+  .business-overview-tools { grid-template-columns: minmax(0, 1fr); }
+  .study-paper-one-studio .study-case-panel .study-answer-jump {
+    display: inline-block;
+    margin: 0 1rem 1rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .business-overview-papers { grid-template-columns: minmax(0, 1fr); }
+  .business-paper-card { min-height: 0; }
+  .business-nav-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.15rem; }
+  .business-nav-tools { display: contents; }
+  .business-nav-home, .business-nav-tools button { justify-content: flex-start; padding-inline: 0.45rem; font-size: 0.8rem; }
+}

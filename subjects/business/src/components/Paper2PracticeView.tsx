@@ -692,6 +692,7 @@ export function Paper2PracticeView({
           <div className="study-panel-padding border-b border-line dark:border-neutral-800">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
               <h2 id="paper-two-case-title" className="study-panel-title">Case study insert</h2>
+              <a className="study-answer-jump" href="#paper-two-response">Go to your answer ↓</a>
               <button
                 type="button"
                 onClick={() => setShowScenarioPicker(true)}

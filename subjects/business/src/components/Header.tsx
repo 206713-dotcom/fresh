@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   ChevronDown,
   ArrowLeft,
+  Headphones,
+  LayoutGrid,
   Zap,
   Menu,
   X,
@@ -67,6 +69,7 @@ interface HeaderProps {
 }
 
 const primaryNavigation = [
+  { tab: "overview", label: "Overview", Icon: LayoutGrid },
   { tab: "practice", label: "Paper 1", Icon: FileText },
   { tab: "paper2", label: "Paper 2", Icon: BookOpen },
   { tab: "lessons", label: "Lessons", Icon: GraduationCap },
@@ -265,7 +268,7 @@ export function Header({
     }
   };
 
-  const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
+  const isResourcesActive = ["glossary", "archive", "progress", "boss-battle"].includes(activeTab);
   const isChecklistActive = ["checklist", "compare", "sections"].includes(activeTab);
 
   const openCompare = (sectionCode: string) => {
@@ -306,8 +309,8 @@ export function Header({
         {/* ========================================================= */}
         <div className="shrink-0">
           <button
-            onClick={() => handleSelectTab("practice")}
-            title="EcBiz"
+            onClick={() => handleSelectTab("overview")}
+            aria-label="EcBiz overview"
             className="site-brand"
           >
             <span className="site-brand-icon" aria-hidden="true"><BookOpen size={18} strokeWidth={1.8} /></span>
@@ -325,7 +328,7 @@ export function Header({
             if (event.key === "Escape") setOpenDropdown(null);
           }}
           ref={navRef}
-          aria-label="Study navigation"
+          aria-label="More Business tools"
           className="hidden lg:flex items-center gap-1.5 text-sm font-medium"
         >
           {onStartMockExam && (
@@ -335,12 +338,11 @@ export function Header({
           )}
 
           {/* DROPDOWN: Checklist (Syllabus Checklist + Sections + Advantages & Disadvantages) */}
-          <div
-            className="relative"
-          >
+          <div className="relative">
             <button
               type="button"
               onClick={() => handleToggleClick("checklist")}
+              aria-expanded={openDropdown === "checklist"}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
                 isChecklistActive
                   ? "bg-[#0F2042] text-white dark:bg-white dark:text-black font-semibold shadow-xs"
@@ -443,27 +445,12 @@ export function Header({
             )}
           </div>
 
-          {/* TAB 5: 2D Boss Battle Fighting Game */}
-          <button
-            type="button"
-            onClick={() => handleSelectTab("boss-battle")}
-            className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer text-xs sm:text-sm font-semibold ${
-              activeTab === "boss-battle"
-                ? "bg-rose-600 text-white shadow-xs"
-                : "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30"
-            }`}
-          >
-            <Swords className="w-3.5 h-3.5" />
-            <span>Boss Battle ⚔️</span>
-          </button>
-
           {/* DROPDOWN: Resources & Archive */}
-          <div
-            className="relative"
-          >
+          <div className="relative">
             <button
               type="button"
               onClick={() => handleToggleClick("resources")}
+              aria-expanded={openDropdown === "resources"}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer ${
                 isResourcesActive
                   ? "bg-[#0F2042]/10 dark:bg-white/10 text-[#0F2042] dark:text-white font-semibold"
@@ -523,6 +510,15 @@ export function Header({
                     <div className="text-xs font-semibold">Progress Ledger</div>
                     <div className="text-[10px] opacity-70">{submissionCount} evaluated answers</div>
                   </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleSelectTab("boss-battle")}
+                  className="w-full text-left px-3 py-2 rounded-xl flex items-center gap-2.5 transition cursor-pointer hover:bg-[#edf2e7] dark:hover:bg-neutral-800"
+                >
+                  <Swords size={15} aria-hidden="true" />
+                  <span className="text-xs font-semibold">Boss Battle</span>
                 </button>
 
                 {/* Bug / Suggestion Link in Resources */}
@@ -649,19 +645,6 @@ export function Header({
             )}
           </div>
 
-          {/* Bug / Suggestion Button at Top */}
-          <a
-            href="https://forms.gle/6X2CAR1LkSQGRBx68"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden 2xl:flex px-2.5 py-1.5 rounded-lg border border-amber-300 dark:border-amber-700/80 bg-amber-50/90 hover:bg-amber-100 dark:bg-amber-950/50 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-200 transition-colors text-xs font-semibold items-center gap-1.5 group cursor-pointer"
-            title="Report a bug or suggest an improvement (Google Forms)"
-          >
-            <span className="text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">💡</span>
-            <span>Bug / Suggestion</span>
-            <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
-          </a>
-
           {/* Local Qwen AI Model Badge & Manual Tier Toggle */}
           <div ref={aiModelRef} className="relative hidden sm:block">
             <button
@@ -681,10 +664,10 @@ export function Header({
               <Cpu className="w-3.5 h-3.5 shrink-0" />
               <span className="font-mono text-[11px] font-bold whitespace-nowrap">
                 {qwenStatus.isLoading
-                  ? `Qwen 3 0.6B (${qwenStatus.progressPercent}%)`
+                  ? `AI ${qwenStatus.progressPercent}%`
                   : qwenStatus.isReady
-                    ? qwenStatus.activeLabel
-                    : "Qwen 3 0.6B"}
+                    ? "AI ready"
+                    : "Local AI"}
               </span>
               {qwenStatus.isReady && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -702,7 +685,7 @@ export function Header({
                     Local AI Grader (WebGPU)
                   </span>
                   <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">
-                    q4f16 · Text-Only
+                    4-bit · Text only
                   </span>
                 </div>
 
@@ -771,7 +754,7 @@ export function Header({
               title="Open Focus Realm & Ambient Sounds"
               aria-label="Study Space"
             >
-              <span>🎧</span>
+              <Headphones size={16} aria-hidden="true" />
               <span className="hidden 2xl:inline">Study Space</span>
             </button>
           )}
