@@ -1,3 +1,5 @@
+questions.push(...examPracticeQuestions);
+
 const main = document.querySelector('main');
 const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-notes/';
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
@@ -16,7 +18,7 @@ function home() {
   const tools = [
     ['▤','Chapter notes','Build understanding through clear explanations.','Start reading →','#library'],
     ['▣','Flashcards','Recall key concepts and strengthen memory.','Review cards →','#flashcards'],
-    ['☑','Exam practice','Answer questions and review the supplied mark schemes.','Start practice →','#practice']
+    ['☑','Exam practice','Get a mark and feedback when you submit an answer.','Start practice →','#practice']
   ];
   return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
 }
@@ -123,7 +125,7 @@ function practice(chapterIndex) {
     '<section class="practice-filters" aria-label="Filter questions"><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
+    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
     '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-scope" class="eyebrow"></p><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
     '<section class="question-work"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
@@ -137,6 +139,7 @@ function setupPractice() {
   const pages=document.querySelector('#question-pages');
   const attempts=new Map();
   const search=document.querySelector('#filter-search');
+  const questionSet=document.querySelector('#filter-set');
   const list=document.querySelector('#question-list');
   const listPages=document.querySelector('#list-pages');
   const filterKey='ecbiz-practice-filters';
@@ -146,6 +149,7 @@ function setupPractice() {
   type.value=savedFilters.type||'';
   marks.value=savedFilters.marks||'';
   search.value=savedFilters.search||'';
+  questionSet.value=savedFilters.questionSet||'';
   let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
   let matches=[];
   const size=20;
@@ -160,13 +164,14 @@ function setupPractice() {
       (!topic.value||q.topic===topic.value)&&
       (!type.value||type.value===(q.options?'mcq':'structured'))&&
       (!marks.value||q.marks===Number(marks.value))&&
+      (!questionSet.value||Boolean(q.reference))&&
       (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
     page=Math.max(0,Math.min(page,matches.length-1));
     document.querySelector('#question-count').textContent=matches.length+' matching questions';
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
     document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
-    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,page}))} catch {}
+    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
@@ -174,8 +179,8 @@ function setupPractice() {
       return '<form class="panel" data-question="'+i+'"><div class="eyebrow">Chapter '+(q.c+1)+' · '+q.topic+' · '+q.marks+' '+(q.marks===1?'mark':'marks')+'</div><p class="question-id">'+escapeHtml(q.id)+'</p>'+
         (q.case?'<div class="case-study"><strong>Case study</strong><p>'+escapeHtml(q.case)+'</p></div>':'')+
         '<h2>'+escapeHtml(q.q)+'</h2>'+
-        (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):'<label class="field">Your answer<textarea name="answer" required>'+escapeHtml(answer)+'</textarea></label>')+
-        '<button class="primary">'+(q.options?'Check answer':'Submit and view mark scheme')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
+        (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):'<label class="field">Your answer<textarea name="answer" maxlength="8000" required>'+escapeHtml(answer)+'</textarea></label>')+
+        '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
     pages.innerHTML=matches.length?'<button type="button" data-page="-1" '+(page===0?'disabled':'')+'>← Previous</button><label class="jump-label">Question <input id="question-jump" aria-label="Go to question number" type="number" min="1" max="'+matches.length+'" value="'+(page+1)+'"> of '+matches.length+'</label><button type="button" data-page="1" '+(page===matches.length-1?'disabled':'')+'>Next →</button>':'';
     if(!matches.length)target.innerHTML='<div class="panel"><h2>No matching questions</h2><p>Try a broader search or clear the filters.</p></div>';
@@ -190,10 +195,10 @@ function setupPractice() {
   renderTopics();
   if([...topic.options].some(option=>option.value===savedFilters.topic))topic.value=savedFilters.topic;
   chapter.onchange=()=>{renderTopics();reset()};
-  topic.onchange=type.onchange=marks.onchange=reset;
+  topic.onchange=type.onchange=marks.onchange=questionSet.onchange=reset;
   search.oninput=reset;
   document.querySelector('#clear-filters').onclick=()=>{
-    chapter.value=topic.value=type.value=marks.value=search.value='';
+    chapter.value=topic.value=type.value=marks.value=search.value=questionSet.value='';
     renderTopics();
     reset();
   };
@@ -221,34 +226,44 @@ function setupPractice() {
     const form=event.target.closest('form');
     if(!form)return;
     const index=Number(form.dataset.question);
-    if(event.target.matches('[data-score]')) {
-      const state=attempts.get(index);
-      const value=event.target.value;
-      form.querySelector('.self-score-result').textContent=value===''?'':'Self-assessed score · '+value+'/'+questions[index].marks;
-      if(state)state.feedback=form.querySelector('.feedback').innerHTML.replace(/<option value="(\d+)"(?: selected)?/g,(match,n)=>'<option value="'+n+'"'+(n===value?' selected':''));
-      return;
-    }
     attempts.set(index,{answer:event.target.value});
     form.querySelector('.feedback').hidden=true;
+    form.querySelector('button.primary').disabled=false;
     renderNavigator();
   };
-  target.onsubmit=event=>{
+  target.onsubmit=async event=>{
     event.preventDefault();
     const form=event.target;
     const index=Number(form.dataset.question);
     const q=questions[index];
     const answer=String(new FormData(form).get('answer')??'').trim();
-    if(!answer)return;
-    const feedback=form.querySelector('.feedback');
-    feedback.hidden=false;
-    feedback.innerHTML=q.options
-      ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
-      : '<strong>Practice mark scheme · '+q.marks+' marks</strong><div class="mark-scheme">'+escapeHtml(q.scheme)+'</div>'+
-        (q.note?'<p><strong>Marking guidance</strong></p><p>'+escapeHtml(q.note)+'</p>':'')+
-        (q.marks===8?'<section class="discussion-rubric"><h3>8-mark discussion rubric</h3><ul><li><strong>6–8:</strong> Both sides are developed through sound economic analysis, with a reasoned assessment of the issue.</li><li><strong>3–5:</strong> Relevant economic reasoning, but the discussion has limited depth or mainly develops one side.</li><li><strong>1–2:</strong> Relevant ideas or definitions with little explanation.</li><li><strong>0:</strong> No creditworthy response.</li></ul><p>EcBiz summary based on <a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge’s 2027 specimen marking guidance, Table A</a>.</p></section>':'')+
-        '<label class="field">Your self-assessed mark<select data-score><option value="">Choose a score</option>'+Array.from({length:q.marks+1},(_,n)=>'<option value="'+n+'">'+n+'</option>').join('')+'</select></label><p class="self-score-result"></p>';
-    attempts.set(index,{answer,feedback:feedback.innerHTML});
-    renderNavigator();
+    if(!answer || attempts.get(index)?.pending)return;
+    const state={answer,pending:!q.options,feedback:'Marking your answer…'};
+    attempts.set(index,state);
+    const showFeedback=()=>{
+      const current=target.querySelector('form[data-question="'+index+'"]');
+      if(!current || attempts.get(index)!==state)return;
+      const feedback=current.querySelector('.feedback');
+      feedback.hidden=false;
+      feedback.innerHTML=state.feedback;
+      current.querySelector('button.primary').disabled=state.pending;
+    };
+    showFeedback();
+    try {
+      state.feedback=q.options
+        ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
+        : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer),q.marks)+ecbizMarking.scheme(q);
+      if(q.reference) {
+        state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
+          escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';
+      }
+    } catch(error) {
+      state.feedback='<p>'+escapeHtml(error.message)+'</p>';
+    } finally {
+      state.pending=false;
+      showFeedback();
+      renderNavigator();
+    }
   };
   renderQuestions();
 }
@@ -266,7 +281,7 @@ function syllabusGuide() {
 function sources() {
   return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' original questions. Structured questions have been adapted from the supplied practice file to be answered without a separate case study. MCQs use the original answer keys. Structured questions include revised practice mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
 }
-function render() {
+function render(autoMark = true) {
   const [revisionPage, revisionId] = location.hash.slice(1).split('/');
   const isRevision = Object.hasOwn(revisionRoutes, revisionPage);
   main.classList.toggle('revision-page', isRevision);
@@ -278,7 +293,7 @@ function render() {
       if (a.hash === activeRevisionNav) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
-    revisionSetups[revisionPage]?.(revisionId);
+    revisionSetups[revisionPage]?.(revisionId, autoMark);
     return;
   }
   const [page='home', id, mode] = location.hash.slice(1).split('/');
