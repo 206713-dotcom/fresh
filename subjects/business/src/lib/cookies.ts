@@ -9,7 +9,8 @@ const MAX_AGE_SECONDS = 34560000; // 400 days (RFC 6265bis maximum allowed)
 export function setPermanentCookie(name: string, value: string): void {
   if (typeof document === "undefined") return;
   const encoded = encodeURIComponent(value);
-  document.cookie = `${COOKIE_PREFIX}${name}=${encoded}; path=/; max-age=${MAX_AGE_SECONDS}; SameSite=Lax`;
+  const cookiePath = import.meta.env.BASE_URL || "/";
+  document.cookie = `${COOKIE_PREFIX}${name}=${encoded}; path=${cookiePath}; max-age=${MAX_AGE_SECONDS}; SameSite=Lax`;
   try {
     localStorage.setItem(`${COOKIE_PREFIX}${name}`, value);
   } catch {
