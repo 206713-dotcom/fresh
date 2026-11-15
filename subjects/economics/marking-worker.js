@@ -41,15 +41,18 @@ function validate(grade, question) {
 self.onmessage = async ({ data: { id, question, answer, image } }) => {
   const progress = text => self.postMessage({ id, progress: text });
   try {
+    progress('Checking WebGPU support…');
     const adapter = await navigator.gpu?.requestAdapter();
     if (!adapter) throw new Error('WebGPU is unavailable. Try a supported browser or device with hardware acceleration enabled.');
-    const family = image ? 'Phi-3.5-vision' : 'Phi-3.5-mini';
+    const family = image ? 'Phi-3.5-vision-instruct' : 'Llama-3.2-1B-Instruct';
     const precision = adapter.features.has('shader-f16') ? 'q4f16_1' : 'q4f32_1';
-    const model = family + '-instruct-' + precision + '-MLC';
+    const model = family + '-' + precision + '-MLC';
     engine ??= new MLCEngine();
-    engine.setInitProgressCallback(({ progress: ratio }) => {
+    engine.setInitProgressCallback(({ progress: ratio, text }) => {
       const percent = Math.max(0, Math.min(100, Math.round((ratio || 0) * 100)));
-      progress('Loading the local ' + (image ? 'diagram' : 'written-answer') + ' model… ' + percent + '%');
+      progress(percent > 0 && percent < 100
+        ? 'Downloading the local ' + (image ? 'diagram' : 'written-answer') + ' model… ' + percent + '%'
+        : text?.includes('shader') ? 'Preparing the graphics engine…' : 'Preparing local model files…');
     });
     if (loadedModel !== model) {
       progress('Loading the model. The first download may take several minutes.');
