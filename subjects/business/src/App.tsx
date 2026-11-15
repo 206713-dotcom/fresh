@@ -153,6 +153,8 @@ export default function App() {
         const openParam = params.get("open") || params.get("tab");
         if (openParam === "overview") {
           setBusinessTab("overview");
+        } else if (openParam === "boss-battle") {
+          setBusinessTab("boss-battle");
         } else if (openParam === "checklist") {
           setBusinessTab("checklist");
         } else if (openParam === "paper2") {
@@ -383,7 +385,7 @@ export default function App() {
 
           {/* TAB 9: 2D Boss Battle Fighting Game */}
           {businessTab === "boss-battle" && (
-            <BossBattleArena onBackToStudio={() => setBusinessTab("practice")} />
+            <BossBattleArena onBackToStudio={() => { setBusinessTab("overview"); window.scrollTo(0, 0); }} />
           )}
 
           {businessTab === "compare" && (

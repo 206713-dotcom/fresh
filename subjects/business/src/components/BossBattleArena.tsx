@@ -32,12 +32,15 @@ import {
   AlertTriangle,
   Rocket,
   Zap,
-  TrendingUp,
-  Layers,
   ChevronRight,
-  Gauge,
   RotateCcw,
+  ArrowRight,
+  Heart,
+  Pause,
+  Play,
+  Swords,
 } from "lucide-react";
+import "../boss-battle.css";
 
 export type DifficultyTier = "foundation" | "higher" | "nightmare";
 
@@ -503,7 +506,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const [stageCount, setStageCount] = useState<number>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("ecbiz_boss_stage");
-      return saved ? parseInt(saved, 10) || 1 : 1;
+      return Math.max(1, parseInt(saved || "", 10) || 1);
     }
     return 1;
   });
@@ -526,6 +529,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
   const maxPlayerHp = 100 + studyStats.maxHpBonus;
   const [playerHp, setPlayerHp] = useState<number>(maxPlayerHp);
+  const playerHpRef = useRef(maxPlayerHp);
+  const updatePlayerHp = (value: number) => {
+    playerHpRef.current = value;
+    setPlayerHp(value);
+  };
 
   // Dynamic Boss Health with Animated Ghost Bar (Delayed trailing recoil)
   const [bossHp, setBossHp] = useState<number>(activeBoss.maxHp);
@@ -553,8 +561,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const streakMultiplier = 1 + Math.min(streak, 10) * 0.2;
 
   // Game flow states
-  const [gameState, setGameState] = useState<"idle" | "playing" | "question_attack" | "revive_challenge" | "game_over" | "boss_defeated" | "shop">("idle");
+  const [gameState, setGameState] = useState<"idle" | "playing" | "paused" | "question_attack" | "revive_challenge" | "game_over" | "boss_defeated" | "shop">("idle");
   const [activeQuestion, setActiveQuestion] = useState<BossActiveQuestion | null>(null);
+  const [questionEta, setQuestionEta] = useState(Math.ceil(activeBoss.attackIntervalMs / 1000));
   const [questionTimer, setQuestionTimer] = useState<number>(15);
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; text: string } | null>(null);
   const [score, setScore] = useState<number>(0);
@@ -576,6 +585,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
   // 2D Canvas Runner state
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const questionRef = useRef<HTMLElement>(null);
+  const continueRef = useRef<HTMLButtonElement>(null);
+  const resumeRef = useRef<HTMLButtonElement>(null);
+  const feedbackActionRef = useRef<(() => void) | null>(null);
+  const answerLockedRef = useRef(false);
+  const victoryAwardedRef = useRef(false);
+  const pausedAtRef = useRef(0);
+  const salvoTimerRef = useRef<number | null>(null);
   const playerRef = useRef({
     x: 80,
     y: 190,
@@ -628,19 +645,66 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     }, 1300);
   };
 
+  const selectMatch = (stage: number, difficulty: DifficultyTier) => {
+    setStageCount(stage);
+    setSelectedDifficulty(difficulty);
+    localStorage.setItem("ecbiz_boss_stage", String(stage));
+    localStorage.setItem("ecbiz_boss_difficulty", difficulty);
+  };
+
+  const finishStage = () => {
+    if (victoryAwardedRef.current) return;
+    victoryAwardedRef.current = true;
+    const multiplier = DIFFICULTY_TIERS[selectedDifficulty].rewardMult;
+    setCoins(awardBonusStudyCoins(Math.round((70 + stageCount * 25) * multiplier)));
+    setScore((previous) => previous + Math.round((600 + stageCount * 180) * multiplier));
+    setGameState("boss_defeated");
+  };
+
+  const pauseBattle = () => {
+    pausedAtRef.current = Date.now();
+    handleJumpEnd();
+    setGameState("paused");
+  };
+
+  const resumeBattle = () => {
+    const pausedFor = Date.now() - pausedAtRef.current;
+    lastQuestionAttackTimeRef.current += pausedFor;
+    lastBossNormalAttackTimeRef.current += pausedFor;
+    playerInvincibleUntilRef.current += pausedFor;
+    if (jetpackActiveRef.current) jetpackEndTimeRef.current += pausedFor;
+    if (jetpackCooldownEndRef.current > pausedAtRef.current) jetpackCooldownEndRef.current += pausedFor;
+    setGameState("playing");
+  };
+
+  const continueQuestion = () => {
+    const action = feedbackActionRef.current;
+    feedbackActionRef.current = null;
+    action?.();
+  };
+
+  const returnToFight = () => {
+    setQuestionFeedback(null);
+    setActiveQuestion(null);
+    setGameState("playing");
+    lastQuestionAttackTimeRef.current = Date.now();
+    lastBossNormalAttackTimeRef.current = Date.now();
+    setQuestionEta(Math.ceil(combatBoss.attackIntervalMs / 1000));
+  };
+
   // Start / Restart Battle (Scales boss health, velocity, and rewards per stage & difficulty)
-  const handleStartGame = (stageTarget: number = stageCount, diffTarget: DifficultyTier = selectedDifficulty) => {
-    setStageCount(stageTarget);
-    setSelectedDifficulty(diffTarget);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("ecbiz_boss_stage", String(stageTarget));
-      localStorage.setItem("ecbiz_boss_difficulty", diffTarget);
-    }
+  const handleStartGame = (stageTarget = stageCount, diffTarget = selectedDifficulty, continueRun = false) => {
+    selectMatch(stageTarget, diffTarget);
+    answerLockedRef.current = false;
+    feedbackActionRef.current = null;
+    victoryAwardedRef.current = false;
+    if (salvoTimerRef.current !== null) window.clearTimeout(salvoTimerRef.current);
 
     const baseBoss = BASE_BOSSES[(stageTarget - 1) % BASE_BOSSES.length];
     const scaled = computeScaledBoss(baseBoss, stageTarget, diffTarget);
 
-    setPlayerHp(maxPlayerHp);
+    updatePlayerHp(maxPlayerHp);
+    setQuestionEta(Math.ceil(scaled.attackIntervalMs / 1000));
     setBossHp(scaled.maxHp);
     setBossGhostHp(scaled.maxHp);
     setAmmo(maxAmmo);
@@ -653,11 +717,24 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     setRageLevel(0);
     setReviveUsed(false);
     setReviveCorrect(0);
+    if (!continueRun) {
+      setScore(0);
+      setLiveTokens(0);
+      setExtraLives(1);
+    }
+    setFloatingDamage([]);
+    playerInvincibleUntilRef.current = 0;
+    jetpackCooldownEndRef.current = 0;
+    screenShakeRef.current = 0;
+    bossHitFlashRef.current = 0;
+    handleJumpEnd();
     playerProjectilesRef.current = [];
     bossAttacksRef.current = [];
     obstaclesRef.current = [];
     playerRef.current.y = 190;
     playerRef.current.vy = 0;
+    playerRef.current.isJumping = false;
+    playerRef.current.rotation = 0;
     jetpackActiveRef.current = false;
     setJetpackActive(false);
     lastQuestionAttackTimeRef.current = Date.now();
@@ -746,7 +823,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       addFloatingText("NO AMMO! Press [R] to Refill 🎯", 150, 100, "#f59e0b");
       return;
     }
-    setAmmo((prev) => prev - 1);
+    setAmmo((prev) => Math.max(0, prev - 1));
     playShootSound();
 
     playerProjectilesRef.current.push({
@@ -768,7 +845,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       localStorage.setItem("ecbiz_study_coins", String(newCoins));
       setAmmo(maxAmmo);
       // Also restore +25 HP to heal up!
-      setPlayerHp((prev) => Math.min(maxPlayerHp, prev + 25));
+      updatePlayerHp(Math.min(maxPlayerHp, playerHpRef.current + 25));
       playCritSound();
       addFloatingText(`+${maxAmmo} Ammo & +25 HP Refilled! 🎯 [R]`, 100, 110, "#10b981");
     } else {
@@ -781,6 +858,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
   // Trigger Prodigy Question Attack (strictly from 129 Business Studies question bank!)
   const triggerQuestionAttack = () => {
+    answerLockedRef.current = false;
+    handleJumpEnd();
+    setBossAttackCharging(false);
     setGameState("question_attack");
     setQuestionFeedback(null);
     setQuestionTimer(15);
@@ -792,6 +872,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   // Begin the 10-in-a-row revive trial after a strong run ends in defeat
   const startReviveChallenge = () => {
     if (reviveUsed) return;
+    answerLockedRef.current = false;
     setReviveCorrect(0);
     setGameState("revive_challenge");
     setQuestionFeedback(null);
@@ -802,7 +883,8 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
   // Answer question attack
   const handleSelectQuestionOption = (selectedIndex: number) => {
-    if (!activeQuestion || questionFeedback) return;
+    if (!activeQuestion || answerLockedRef.current || (gameState !== "question_attack" && gameState !== "revive_challenge")) return;
+    answerLockedRef.current = true;
 
     // ---- Revive trial: all 10 answers must be correct ----
     if (gameState === "revive_challenge") {
@@ -817,28 +899,25 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             isCorrect: true,
             text: `REVIVE COMPLETE! ${REVIVE_REQUIRED_CORRECT}/${REVIVE_REQUIRED_CORRECT} correct in a row. You claw your way back at full HP!`,
           });
-          setTimeout(() => {
-            setQuestionFeedback(null);
-            setActiveQuestion(null);
+          feedbackActionRef.current = () => {
             setReviveCorrect(0);
-            setPlayerHp(maxPlayerHp);
+            updatePlayerHp(maxPlayerHp);
             setStreak(0);
-            setGameState("playing");
-            lastQuestionAttackTimeRef.current = Date.now();
-            lastBossNormalAttackTimeRef.current = Date.now();
+            returnToFight();
             playerInvincibleUntilRef.current = Date.now() + 2000;
             addFloatingText("SECOND WIND! FULL HP RESTORED ❤️", 150, 100, "#10b981");
-          }, 1800);
+          };
         } else {
           setQuestionFeedback({
             isCorrect: true,
             text: `Revive trial ${nextCorrect}/${REVIVE_REQUIRED_CORRECT} correct. One mistake still ends the run!`,
           });
-          setTimeout(() => {
+          feedbackActionRef.current = () => {
             setQuestionFeedback(null);
             setQuestionTimer(15);
+            answerLockedRef.current = false;
             setActiveQuestion(getBusinessBossQuestion());
-          }, 1000);
+          };
         }
       } else {
         playHitSound();
@@ -848,11 +927,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           isCorrect: false,
           text: `REVIVE FAILED — the trial needs ${REVIVE_REQUIRED_CORRECT} correct in a row. ${activeQuestion.explanation}`,
         });
-        setTimeout(() => {
+        feedbackActionRef.current = () => {
           setQuestionFeedback(null);
           setActiveQuestion(null);
           setGameState("game_over");
-        }, 2600);
+        };
       }
       return;
     }
@@ -893,115 +972,139 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
       setQuestionFeedback({
         isCorrect: true,
-        text: `CRITICAL COUNTER-STRIKE! -${critDamage} HP dealt! Streak ${nextStreak} → ${nextMultiplier.toFixed(
-          1,
-        )}x damage. +${earnedCoins} Coins & +1 Live Token! ${
-          extraLivesAdded > 0 ? "✨ 3 TOKENS FORGED +1 EXTRA LIFE!" : ""
-        }`,
+        text: `You dealt ${critDamage} damage and earned ${earnedCoins} coins. ${extraLivesAdded ? "You earned an extra life. " : ""}${activeQuestion.explanation}`,
       });
 
-      setTimeout(() => {
+      feedbackActionRef.current = () => {
         if (newBossHp <= 0) {
-          setGameState("boss_defeated");
+          setQuestionFeedback(null);
+          setActiveQuestion(null);
+          finishStage();
         } else {
-          setGameState("playing");
-          lastQuestionAttackTimeRef.current = Date.now();
-          lastBossNormalAttackTimeRef.current = Date.now();
+          returnToFight();
         }
-      }, 1800);
+      };
     } else {
       // Incorrect answer or timeout — the streak breaks and the boss keeps its rage
       playHitSound();
       setStreak(0);
       const rawDamage = 40;
       const mitigatedDamage = Math.max(5, rawDamage - (30 - currentArmour.damagePerHit));
-      const nextPlayerHp = Math.max(0, playerHp - mitigatedDamage);
-      setPlayerHp(nextPlayerHp);
+      const nextPlayerHp = Math.max(0, playerHpRef.current - mitigatedDamage);
+      updatePlayerHp(nextPlayerHp);
 
       setQuestionFeedback({
         isCorrect: false,
-        text: `INCORRECT! Streak reset to 0. Boss struck through defense! -${mitigatedDamage} HP. (Armour absorbed ${
+        text: `${selectedIndex === -1 ? "Time ran out." : "Incorrect."} Streak reset to 0. Boss struck through defense! -${mitigatedDamage} HP. (Armour absorbed ${
           rawDamage - mitigatedDamage
         } damage). ${activeQuestion.explanation}`,
       });
 
-      setTimeout(() => {
-        if (nextPlayerHp <= 0) {
-          if (extraLives > 0) {
-            setExtraLives((prev) => prev - 1);
-            setPlayerHp(maxPlayerHp);
-            setGameState("playing");
-            addFloatingText("REVIVED BY EXTRA LIFE! ❤️", 150, 100, "#10b981");
-          } else {
-            setGameState("game_over");
-          }
+      feedbackActionRef.current = () => {
+        if (nextPlayerHp > 0) {
+          returnToFight();
+        } else if (extraLives > 0) {
+          setExtraLives((previous) => previous - 1);
+          updatePlayerHp(maxPlayerHp);
+          playerInvincibleUntilRef.current = Date.now() + 1200;
+          returnToFight();
+          addFloatingText("Extra life used", 150, 100, "#10b981");
         } else {
-          setGameState("playing");
-          lastQuestionAttackTimeRef.current = Date.now();
-          lastBossNormalAttackTimeRef.current = Date.now();
+          setQuestionFeedback(null);
+          setActiveQuestion(null);
+          setGameState("game_over");
         }
-      }, 2600);
+      };
     }
   };
 
-  // Keyboard controls listener (Space/Up: Jump & Hold for Jetpack, R: Refill, F/Enter: Shoot)
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't intercept typing if user is in an input
-      if ((e.target as HTMLElement)?.tagName === "INPUT" || (e.target as HTMLElement)?.tagName === "TEXTAREA") {
+    if (gameState === "playing") canvasRef.current?.focus({ preventScroll: true });
+    if (gameState === "paused") resumeRef.current?.focus({ preventScroll: true });
+    if (gameState === "question_attack" || gameState === "revive_challenge") {
+      questionRef.current?.focus({ preventScroll: true });
+      questionRef.current?.scrollIntoView({ block: "nearest" });
+    }
+  }, [gameState, activeQuestion]);
+
+  useEffect(() => {
+    if (questionFeedback) continueRef.current?.focus({ preventScroll: true });
+  }, [questionFeedback]);
+
+  useEffect(() => {
+    if (gameState !== "playing") {
+      if (salvoTimerRef.current !== null) window.clearTimeout(salvoTimerRef.current);
+      return;
+    }
+    const onVisibilityChange = () => {
+      if (document.hidden) pauseBattle();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      if (salvoTimerRef.current !== null) window.clearTimeout(salvoTimerRef.current);
+    };
+  }, [gameState]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement) || event.ctrlKey || event.altKey || event.metaKey) return;
+
+      if (gameState === "question_attack" || gameState === "revive_challenge") {
+        if (!questionRef.current?.contains(target) || target.matches("input, textarea, select, [contenteditable=true]") || event.repeat) return;
+        const key = event.key.toLowerCase();
+        const index = /^[1-4]$/.test(key) ? Number(key) - 1 : "abcd".indexOf(key);
+        if (index >= 0 && key.length === 1) {
+          event.preventDefault();
+          handleSelectQuestionOption(index);
+        }
         return;
       }
 
-      if (e.code === "Space" || e.code === "ArrowUp") {
-        e.preventDefault();
+      if (gameState !== "playing" || target.closest("button, a, input, textarea, select, [contenteditable=true]")) return;
+      if (event.code === "Space" || event.code === "ArrowUp") {
+        event.preventDefault();
         handleJumpStart();
-      } else if (e.code === "KeyF" || e.code === "Enter") {
-        e.preventDefault();
+      } else if (event.code === "KeyF" && !event.repeat) {
+        event.preventDefault();
         handleShoot();
-      } else if (e.code === "KeyR" || e.key === "r" || e.key === "R") {
-        e.preventDefault();
+      } else if (event.code === "KeyR" && !event.repeat) {
+        event.preventDefault();
         handleRefillAmmo();
-      } else if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "KeyW" || e.code === "KeyJ") {
-        e.preventDefault();
+      } else if (["ShiftLeft", "ShiftRight", "KeyW", "KeyJ"].includes(event.code) && !event.repeat) {
+        event.preventDefault();
         handleActivateJetpack();
+      } else if (event.code === "Escape" || event.code === "KeyP") {
+        event.preventDefault();
+        pauseBattle();
       }
     };
 
-    const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.code === "Space" || e.code === "ArrowUp") {
-        handleJumpEnd();
-      }
+    const onKeyUp = (event: KeyboardEvent) => {
+      if (event.code === "Space" || event.code === "ArrowUp") handleJumpEnd();
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("blur", handleJumpEnd);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", handleJumpEnd);
     };
-  }, [gameState, ammo, hasJetpack, coins, maxAmmo, maxPlayerHp]);
+  });
 
-  // Question Attack countdown timer
   useEffect(() => {
-    let timer: any = null;
-    if (
-      (gameState === "question_attack" || gameState === "revive_challenge") &&
-      questionTimer > 0 &&
-      !questionFeedback
-    ) {
-      timer = setInterval(() => {
-        setQuestionTimer((prev) => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            handleSelectQuestionOption(-1);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timer);
-  }, [gameState, questionTimer, questionFeedback]);
+    if ((gameState !== "question_attack" && gameState !== "revive_challenge") || questionTimer <= 0 || questionFeedback) return;
+    const timer = window.setInterval(() => {
+      if (document.hidden) return;
+      window.clearInterval(timer);
+      if (questionTimer === 1) handleSelectQuestionOption(-1);
+      setQuestionTimer(questionTimer - 1);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [gameState, questionTimer, questionFeedback, activeQuestion]);
 
   // Main 2D Canvas Loop (Dino Runner & Boss Arcade)
   useEffect(() => {
@@ -1018,7 +1121,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     if (!ctx) return;
 
     let running = true;
+    let remainingBossHp = bossHp;
     const groundY = 230;
+    const sky = ctx.createLinearGradient(0, 0, canvas.width, groundY);
+    sky.addColorStop(0, "#090f19");
+    sky.addColorStop(1, "#280d1a");
+    const floor = ctx.createLinearGradient(0, groundY, 0, canvas.height);
+    floor.addColorStop(0, "#291726");
+    floor.addColorStop(1, "#0c1018");
 
     const gameLoop = () => {
       if (!running) return;
@@ -1036,12 +1146,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       // 1. Clear Canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 2. Arena Background
-      ctx.fillStyle = "#070b14";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Grid Floor Lines with movement
-      ctx.strokeStyle = "rgba(56, 189, 248, 0.12)";
+      // Draw the arena and the moving floor grid beneath both combatants.
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, canvas.width, groundY);
+      ctx.fillStyle = floor;
+      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+      ctx.strokeStyle = "rgba(244, 117, 129, 0.22)";
       ctx.lineWidth = 1;
       const scrollOffset = (Date.now() / 20) % 30;
       for (let x = -30; x < canvas.width + 30; x += 30) {
@@ -1050,12 +1160,8 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         ctx.lineTo(x - scrollOffset - 25, canvas.height);
         ctx.stroke();
       }
-
-      // Ground Line
-      ctx.fillStyle = "#111827";
-      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
-      ctx.strokeStyle = "#38bdf8";
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#ef647c";
+      ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(0, groundY);
       ctx.lineTo(canvas.width, groundY);
@@ -1319,11 +1425,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         // Staggered Salvo only on Nightmare Tier and spaced by 1400ms so it is never an unfair wall
         if (selectedDifficulty === "nightmare" && Math.random() < 0.2) {
           const compTier: ProjectileHeightTier = Math.random() < 0.5 ? "high" : "low";
-          setTimeout(() => {
-            if (gameState === "playing") {
-              spawnProjectile(compTier);
-            }
-          }, 1400);
+          salvoTimerRef.current = window.setTimeout(() => spawnProjectile(compTier), 1400);
         }
       }
 
@@ -1425,19 +1527,19 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             playHitSound();
 
             const dmg = currentArmour.damagePerHit;
-            setPlayerHp((prev) => {
-              const next = Math.max(0, prev - dmg);
-              if (next <= 0) {
-                if (extraLives > 0) {
-                  setExtraLives((el) => el - 1);
-                  addFloatingText("REVIVED BY EXTRA LIFE! ❤️", 150, 100, "#10b981");
-                  return maxPlayerHp;
-                } else {
-                  setGameState("game_over");
-                }
-              }
-              return next;
-            });
+            const health = Math.max(0, playerHpRef.current - dmg);
+            if (health > 0) {
+              updatePlayerHp(health);
+            } else if (extraLives > 0) {
+              setExtraLives((lives) => lives - 1);
+              updatePlayerHp(maxPlayerHp);
+              addFloatingText("Extra life used", 150, 100, "#10b981");
+            } else {
+              updatePlayerHp(0);
+              setGameState("game_over");
+              ctx.restore();
+              return;
+            }
             addFloatingText(`-${dmg} HP! (Armour: ${currentArmour.name})`, p.x, p.y - 12, "#ef4444");
             continue;
           }
@@ -1486,19 +1588,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           playBossHurtSound();
           bossHitFlashRef.current = 3;
           const baseDamage = Math.round(18 * studyStats.damageMultiplier);
-          const nextBossHp = Math.max(0, bossHp - baseDamage);
-          setBossHp(nextBossHp);
+          remainingBossHp = Math.max(0, remainingBossHp - baseDamage);
+          setBossHp(remainingBossHp);
           setScore((s) => s + 35);
           addFloatingText(`-${baseDamage} Hit!`, bossX - 20, bossY - 20, "#38bdf8");
 
-          if (nextBossHp <= 0) {
-            const diffCfg = DIFFICULTY_TIERS[selectedDifficulty];
-            const coinsEarned = Math.round((70 + stageCount * 25) * diffCfg.rewardMult);
-            const scoreEarned = Math.round((600 + stageCount * 180) * diffCfg.rewardMult);
-            awardBonusStudyCoins(coinsEarned);
-            setCoins(getStudyCoins());
-            setScore((s) => s + scoreEarned);
-            setGameState("boss_defeated");
+          if (remainingBossHp <= 0) {
+            finishStage();
+            ctx.restore();
             return;
           }
           continue;
@@ -1514,9 +1611,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
       if (timeSinceLastQuestion >= combatBoss.attackIntervalMs) {
         lastQuestionAttackTimeRef.current = Date.now();
         triggerQuestionAttack();
+        ctx.restore();
         return;
       }
 
+      setQuestionEta(Math.max(0, Math.ceil((combatBoss.attackIntervalMs - timeSinceLastQuestion) / 1000)));
       if (timeSinceLastQuestion >= combatBoss.attackIntervalMs - 2200) {
         setBossAttackCharging(true);
       } else {
@@ -1619,105 +1718,86 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   // A strong run (3+ streak or boss pushed below 40% HP) unlocks one revive trial.
   const canRevive = !reviveUsed && (bestStreak >= 3 || bossHpPercent <= 40);
 
+  const isQuestionRound = gameState === "question_attack" || gameState === "revive_challenge";
+
   return (
-    <div className="max-w-6xl mx-auto px-3 sm:px-6 py-6 font-sans">
-      {/* Top Banner Navigation & Status */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={onBackToStudio}
-            className="p-2 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 transition"
-            title="Return to Studio"
-          >
-            <ArrowLeft className="w-5 h-5" />
+    <div className="boss-page">
+      <header className="boss-topbar">
+        <button type="button" className="boss-quiet" onClick={onBackToStudio}>
+          <ArrowLeft size={16} aria-hidden="true" /> Business overview
+        </button>
+        <div className="boss-topbar-actions">
+          <span className="boss-coins" aria-label={`${coins} study coins`}>◎ {coins} coins</span>
+          <button type="button" className="boss-quiet" aria-label={soundEnabled ? "Mute game audio" : "Unmute game audio"} onClick={() => setSoundEnabled(!soundEnabled)}>
+            {soundEnabled ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}
           </button>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-600 dark:text-rose-400 text-[10px] font-mono font-bold uppercase tracking-wider">
-                Cambridge 0264 / 0450 Arena
-              </span>
-              <span className="text-xs text-neutral-500 font-mono">129 Business Questions Bank</span>
+          {(gameState === "idle" || gameState === "shop") && (
+            <button type="button" className="boss-quiet" onClick={() => setGameState(gameState === "shop" ? "idle" : "shop")}>
+              <ShoppingBag size={16} aria-hidden="true" /> {gameState === "shop" ? "Battle lobby" : "Armour shop"}
+            </button>
+          )}
+        </div>
+      </header>
+
+      {gameState === "idle" && (
+        <>
+          <section className="boss-lobby-hero" aria-labelledby="boss-lobby-title">
+            <div className="boss-hero-copy">
+              <p>IGCSE BUSINESS</p>
+              <h1 id="boss-lobby-title">Boss Battle</h1>
+              <div>Dodge attacks and answer Business questions to deal damage and earn Study Coins.</div>
+              <button type="button" className="boss-cta" onClick={() => handleStartGame()}>
+                <Swords size={20} aria-hidden="true" /> Start battle <ArrowRight size={19} aria-hidden="true" />
+              </button>
             </div>
-            <h1 className="font-academic-serif text-2xl sm:text-3xl font-extrabold text-[#0F2042] dark:text-white">
-              Boss Battle Arena ⚔️
-            </h1>
+          </section>
+
+          <div className="boss-lobby-grid">
+            <section className="boss-lobby-panel" aria-labelledby="boss-picker-title">
+              <div className="boss-panel-heading">
+                <h2 id="boss-picker-title">Choose a boss</h2>
+                {activeBoss.loop > 1 && <span>Loop {activeBoss.loop}</span>}
+              </div>
+              <div role="group" aria-label="Select boss" className="boss-picker">
+                {BASE_BOSSES.map((boss, index) => {
+                  const stage = index + 1 + (activeBoss.loop - 1) * BASE_BOSSES.length;
+                  return (
+                    <button key={boss.id} type="button" aria-pressed={currentBossIndex === index} onClick={() => selectMatch(stage, selectedDifficulty)}>
+                      <span className="boss-picker-icon" aria-hidden="true">{boss.icon}</span>
+                      <span><strong>{boss.name}</strong><small>Stage {stage}</small></span>
+                      <ChevronRight size={16} aria-hidden="true" />
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section className="boss-lobby-panel" aria-labelledby="boss-difficulty-title">
+              <div className="boss-panel-heading"><h2 id="boss-difficulty-title">Difficulty</h2></div>
+              <div className="boss-difficulty" role="group" aria-label="Battle difficulty">
+                {Object.values(DIFFICULTY_TIERS).map((difficulty) => (
+                  <button key={difficulty.id} type="button" aria-pressed={difficulty.id === selectedDifficulty} onClick={() => selectMatch(stageCount, difficulty.id)}>
+                    <span style={{ backgroundColor: difficulty.color }} aria-hidden="true" />
+                    <strong>{difficulty.label}</strong>
+                    <small>{difficulty.rewardMult}× rewards</small>
+                  </button>
+                ))}
+              </div>
+              <p className="boss-difficulty-hint">{DIFFICULTY_TIERS[selectedDifficulty].description}</p>
+              <div className="boss-selected-match">
+                <span>{activeBoss.icon} <strong>{activeBoss.name}</strong></span>
+                <span>{activeBoss.maxHp} HP</span>
+              </div>
+              <div className="boss-lobby-actions">
+                <button type="button" className="boss-quiet" onClick={() => setShowCustomizerModal(true)}><Palette size={16} aria-hidden="true" /> Wardrobe</button>
+                {stageCount > 1 && (
+                  <button type="button" className="boss-quiet" onClick={() => selectMatch(1, selectedDifficulty)}><RotateCcw size={16} aria-hidden="true" /> Select Stage 1</button>
+                )}
+              </div>
+            </section>
           </div>
-        </div>
-
-        {/* Player Stats Pills & Studio Buttons */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Study XP Pokemon Level Boost */}
-          <div
-            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/15 to-orange-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-semibold flex items-center gap-1.5"
-            title={`Studied ${studyStats.totalStudyMinutes} mins on this site! +${Math.round((studyStats.damageMultiplier - 1) * 100)}% Attack Power`}
-          >
-            <Sparkles className="w-4 h-4 text-amber-500" />
-            <span>Scholar Lv. {studyStats.scholarLevel}</span>
-            <span className="text-[10px] font-mono opacity-80">(+{Math.round((studyStats.damageMultiplier - 1) * 100)}% DMG)</span>
-          </div>
-
-          {/* Study Coins */}
-          <div className="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs font-bold font-mono flex items-center gap-1.5 shadow-xs">
-            <span>🪙 {coins} Coins</span>
-          </div>
-
-          {/* Live Tokens (3 Tokens = 1 Life) */}
-          <div
-            className="px-3 py-1.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold flex items-center gap-1.5"
-            title="Answer Cambridge Business questions to earn Live Tokens! 3 tokens = 1 Extra Life"
-          >
-            <Award className="w-4 h-4 text-purple-500" />
-            <span>Tokens: {liveTokens}/3</span>
-            <span className="text-[10px] bg-purple-500/20 px-1.5 py-0.5 rounded-full font-mono">
-              ❤️ {extraLives} Lives
-            </span>
-          </div>
-
-          {/* Correct-answer streak multiplier */}
-          <div
-            className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-              streak > 0
-                ? "bg-orange-500/15 border-orange-500/40 text-orange-700 dark:text-orange-300"
-                : "bg-neutral-500/10 border-neutral-500/30 text-neutral-600 dark:text-neutral-400"
-            }`}
-            title="Consecutive correct answers raise your damage multiplier. A wrong answer resets it."
-          >
-            <Flame className={`w-4 h-4 ${streak > 0 ? "text-orange-500" : "text-neutral-400"}`} />
-            <span>Streak {streak}</span>
-            <span className="text-[10px] font-mono opacity-80">
-              {streakMultiplier.toFixed(1)}x DMG
-            </span>
-          </div>
-
-          {/* Character Avatar Customizer Button */}
-          <button
-            onClick={() => setShowCustomizerModal(true)}
-            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md active:scale-95 cursor-pointer"
-            title="Open Scholar Avatar Wardrobe & Customizer"
-          >
-            <Palette className="w-3.5 h-3.5" />
-            <span>Avatar Wardrobe</span>
-          </button>
-
-          {/* Sound Toggle */}
-          <button
-            onClick={() => setSoundEnabled(!soundEnabled)}
-            className="p-2 rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-300 transition cursor-pointer"
-            title={soundEnabled ? "Mute Game Audio" : "Unmute Game Audio"}
-          >
-            {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-          </button>
-
-          {/* Mod Shop Toggle */}
-          <button
-            onClick={() => setGameState(gameState === "shop" ? "idle" : "shop")}
-            className="px-3 py-1.5 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-black text-xs font-bold transition flex items-center gap-1.5 shadow-sm cursor-pointer"
-          >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span>Armour Shop</span>
-          </button>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* MOD UPGRADE SHOP VIEW */}
       {gameState === "shop" ? (
@@ -1894,92 +1974,28 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             </div>
           </div>
         </div>
-      ) : (
-        /* MAIN BATTLE DISPLAY */
-        <div className="space-y-4">
-          {/* Top Controls: Difficulty Tiers & Infinite Stage Progression */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
-            {/* Difficulty Selector Tabs */}
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 overflow-x-auto scrollbar-none">
-              {(["foundation", "higher", "nightmare"] as DifficultyTier[]).map((tierKey) => {
-                const cfg = DIFFICULTY_TIERS[tierKey];
-                const isSel = selectedDifficulty === tierKey;
-                return (
-                  <button
-                    key={tierKey}
-                    onClick={() => {
-                      setSelectedDifficulty(tierKey);
-                      localStorage.setItem("ecbiz_boss_difficulty", tierKey);
-                      handleStartGame(stageCount, tierKey);
-                    }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
-                      isSel
-                        ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-xs"
-                        : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-                    }`}
-                  >
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: cfg.color }} />
-                    <span>{cfg.label}</span>
-                    <span className="text-[10px] font-mono opacity-70">({cfg.rewardMult}x)</span>
-                  </button>
-                );
-              })}
+      ) : gameState !== "idle" && (
+        <div className="boss-match">
+          <div className="boss-match-bar">
+            <div>
+              <p className="boss-match-meta">Stage {stageCount} · {DIFFICULTY_TIERS[selectedDifficulty].label}</p>
+              <h1>{activeBoss.name}</h1>
             </div>
-
-            {/* Stage & Loop Progression Info */}
-            <div className="flex items-center gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-bold border border-neutral-200 dark:border-neutral-700 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-sky-500" />
-                <span>Stage {stageCount}</span>
-                <span className="text-neutral-400 dark:text-neutral-500">·</span>
-                <span>Loop {activeBoss.loop}</span>
-              </span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 font-bold">
-                ∞ Infinite Mode
-              </span>
-              <button
-                onClick={() => {
-                  if (confirm("Reset your run back to Stage 1 and clear the saved stage?")) {
-                    handleStartGame(1, selectedDifficulty);
-                  }
-                }}
-                className="px-2.5 py-1 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-300 font-bold hover:border-rose-400 hover:text-rose-600 transition flex items-center gap-1 cursor-pointer"
-                title="Reset run to Stage 1"
-              >
-                <RotateCcw className="w-3 h-3" />
-                <span>Reset Run</span>
-              </button>
+            <div className="boss-match-actions">
+              <span>{score.toLocaleString()} score</span>
+              {gameState === "playing" && (
+                <button type="button" className="boss-quiet" onClick={pauseBattle}><Pause size={16} aria-hidden="true" /> Pause</button>
+              )}
+              {(gameState === "game_over" || gameState === "boss_defeated") && (
+                <button type="button" className="boss-quiet" onClick={() => setGameState("idle")}>Battle lobby</button>
+              )}
             </div>
           </div>
-
-          {/* Boss Stage Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-            {BASE_BOSSES.map((boss, idx) => {
-              const isActive = currentBossIndex === idx;
-              return (
-                <button
-                  key={boss.id}
-                  onClick={() => handleStartGame(idx + 1 + (activeBoss.loop - 1) * BASE_BOSSES.length)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap border cursor-pointer ${
-                    isActive
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 border-transparent shadow-md"
-                      : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400"
-                  }`}
-                >
-                  <span className="text-base">{boss.icon}</span>
-                  <span>{boss.name}</span>
-                  <span className="text-[10px] opacity-75 font-mono">
-                    Lv.{idx + 1 + (activeBoss.loop - 1) * BASE_BOSSES.length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
+          <div className="boss-match-hud">
           {/* ============================================================ */}
           {/* PROMINENT VISUAL BOSS HEALTH BAR (DECREASES DYNAMICALLY)      */}
           {/* ============================================================ */}
-          <div className="relative bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 border-2 border-rose-500/40 rounded-3xl p-4 sm:p-5 shadow-2xl overflow-hidden text-white">
+          <div className="boss-enemy-hud relative overflow-hidden text-white">
             {/* Background animated boss aura */}
             <div
               className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full blur-3xl opacity-20 pointer-events-none transition-all duration-500"
@@ -2042,7 +2058,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             </div>
 
             {/* DUAL-LAYER VISUAL BOSS HEALTH BAR */}
-            <div className="relative w-full h-6 sm:h-7 bg-neutral-950 rounded-2xl overflow-hidden border border-neutral-700/80 shadow-inner p-0.5">
+            <div role="progressbar" aria-label="Boss health" aria-valuemin={0} aria-valuemax={activeBoss.maxHp} aria-valuenow={bossHp} className="relative w-full h-6 sm:h-7 bg-neutral-950 rounded-2xl overflow-hidden border border-neutral-700/80 shadow-inner p-0.5">
               {/* Segment markers (25%, 50%, 75%) */}
               <div className="absolute inset-0 pointer-events-none z-20 flex justify-between px-[25%] opacity-40">
                 <div className="w-0.5 h-full bg-white/40 shadow-xs" />
@@ -2082,12 +2098,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                   <span>Next Special Strike: Timed Business Question</span>
                 )}
               </span>
-              <span className="text-[11px] text-neutral-400">Score: {score}</span>
+              <span className="text-[11px] text-neutral-400">{isQuestionRound ? "Question round" : `Next question in ${questionEta}s`}</span>
             </div>
           </div>
 
           {/* Player Mini Status */}
-          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-3.5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="boss-player-hud">
             <div className="flex items-center gap-2">
               <span className="text-xl">{currentChar.icon}</span>
               <div>
@@ -2124,24 +2140,28 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                 )}
               </div>
 
-              <div className="text-purple-600 dark:text-purple-400 font-bold font-mono">
-                ❤️ x{extraLives}
-              </div>
+              <div className="boss-player-lives"><Heart size={16} aria-hidden="true" /> {extraLives} {extraLives === 1 ? "extra life" : "extra lives"} · {liveTokens}/3 tokens</div>
             </div>
           </div>
 
+          </div>
+
           {/* 2D CANVAS ARENA VIEW */}
-          <div className="relative rounded-2xl overflow-hidden border-2 border-neutral-800 shadow-2xl bg-black">
+          <div className="boss-canvas-wrap" hidden={isQuestionRound}>
             <canvas
               ref={canvasRef}
               width={760}
               height={270}
-              className="w-full h-[270px] sm:h-[300px] block cursor-pointer"
-              onMouseDown={handleJumpStart}
-              onMouseUp={handleJumpEnd}
-              onTouchStart={handleJumpStart}
-              onTouchEnd={handleJumpEnd}
-              title="Click or Tap to Jump · Long Press / Hold for Jetpack 🚀"
+              className="boss-canvas"
+              tabIndex={gameState === "playing" ? 0 : -1}
+              aria-label="Battle arena. Space jumps, F shoots, R refills, and Escape pauses."
+              onPointerDown={(event) => {
+                event.currentTarget.setPointerCapture(event.pointerId);
+                handleJumpStart();
+              }}
+              onPointerUp={handleJumpEnd}
+              onLostPointerCapture={handleJumpEnd}
+              onPointerCancel={handleJumpEnd}
             />
 
             {/* Active Jetpack Flight HUD Status */}
@@ -2178,25 +2198,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               </div>
             ))}
 
-            {/* IDLE / START OVERLAY */}
-            {gameState === "idle" && (
-              <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center text-white">
-                <div className="text-5xl mb-3">{activeBoss.icon}</div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-sky-400 font-bold mb-1">
-                  STAGE {stageCount} · LOOP {activeBoss.loop} · {DIFFICULTY_TIERS[selectedDifficulty].label}
-                </div>
-                <h3 className="text-2xl font-black mb-1">{activeBoss.name}</h3>
-                <p className="text-xs text-neutral-300 max-w-md mb-4">
-                  Dodge multi-height attacks (Ground skimmers, Torso beams, High swoopers, and Sinusoidal waves)! Answer authentic Cambridge 0264 questions to deplete boss HP!
-                </p>
-                <button
-                  onClick={() => handleStartGame(stageCount, selectedDifficulty)}
-                  className="px-6 py-3 bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-black text-sm rounded-xl shadow-lg transform active:scale-95 transition cursor-pointer"
-                >
-                  START BOSS FIGHT ⚔️
-                </button>
-                <div className="mt-4 text-[11px] text-neutral-400 font-mono">
-                  Space / Tap: Jump · 'F': Shoot · Shift / W: Jetpack (3s) · Refill with Coins
+            {gameState === "paused" && (
+              <div className="boss-pause">
+                <h2>Battle paused</h2>
+                <div>
+                  <button type="button" ref={resumeRef} className="boss-cta" onClick={resumeBattle}><Play size={16} aria-hidden="true" /> Resume battle</button>
+                  <button type="button" className="boss-quiet" onClick={() => setGameState("idle")}>Leave fight</button>
                 </div>
               </div>
             )}
@@ -2275,7 +2282,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   <button
-                    onClick={() => handleStartGame(stageCount + 1, selectedDifficulty)}
+                    onClick={() => handleStartGame(stageCount + 1, selectedDifficulty, true)}
                     className="px-6 py-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-xl transition transform active:scale-95 cursor-pointer flex items-center gap-2"
                   >
                     <span>Ascend to Stage {stageCount + 1} (Harder Boss)</span>
@@ -2300,8 +2307,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
 
           {/* TIMED PRODIGY QUESTION ATTACK MODAL / OVERLAY (FROM 129 BUSINESS BANK) */}
           {(gameState === "question_attack" || gameState === "revive_challenge") && activeQuestion && (
-            <div
-              className={`bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border-2 rounded-2xl p-5 sm:p-6 text-white shadow-2xl animate-in zoom-in-95 duration-150 ${
+            <section
+              ref={questionRef}
+              tabIndex={-1}
+              aria-labelledby="boss-question-title"
+              className={`boss-question bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border-2 rounded-2xl p-5 sm:p-6 text-white shadow-2xl ${
                 gameState === "revive_challenge" ? "border-emerald-500" : "border-rose-500"
               }`}
             >
@@ -2318,12 +2328,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                     >
                       {gameState === "revive_challenge"
                         ? `REVIVE TRIAL · ${reviveCorrect}/${REVIVE_REQUIRED_CORRECT} CORRECT · Q#${activeQuestion.questionNumber}`
-                        : `CAMBRIDGE BUSINESS QUESTION ATTACK · #${activeQuestion.questionNumber} / ${MCQ_BANK.length}`}
+                        : "Business question"}
                     </div>
                     <div className="text-xs font-semibold text-neutral-300">
                       {gameState === "revive_challenge"
                         ? `Every answer must be correct. One mistake ends the run for good.`
-                        : `Answer correctly to build your streak multiplier, deplete boss HP & earn Coins + Live Tokens!`}
+                        : "A correct answer hits the boss. Choose A–D or press 1–4."}
                     </div>
                   </div>
                 </div>
@@ -2349,9 +2359,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                   </span>
                   <span>{activeQuestion.chapter}</span>
                 </div>
-                <h3 className="font-academic-serif text-base sm:text-lg font-bold text-white leading-snug">
+                <h2 id="boss-question-title" className="font-academic-serif text-lg sm:text-2xl font-bold text-white leading-snug">
                   {activeQuestion.question}
-                </h3>
+                </h2>
                 {gameState === "revive_challenge" && (
                   <div className="mt-3 flex items-center gap-1">
                     {Array.from({ length: REVIVE_REQUIRED_CORRECT }).map((_, index) => (
@@ -2398,6 +2408,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               {/* Feedback Banner */}
               {questionFeedback && (
                 <div
+                  role="status"
                   className={`mt-4 p-3.5 rounded-xl border text-xs leading-relaxed animate-fade-in ${
                     questionFeedback.isCorrect
                       ? "bg-emerald-950/60 border-emerald-500 text-emerald-200"
@@ -2405,27 +2416,34 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                   }`}
                 >
                   <strong className="block font-bold mb-0.5">
-                    {questionFeedback.isCorrect ? "🎯 CRITICAL PARRY SUCCESS! BOSS HP STRUCK!" : "💥 ATTACK CONNECTED!"}
+                    {questionFeedback.isCorrect ? "Correct" : "Correct answer highlighted above"}
                   </strong>
-                  <span>{questionFeedback.text}</span>
+                  <p>{questionFeedback.text}</p>
+                  <button type="button" ref={continueRef} className="boss-cta boss-continue" onClick={continueQuestion}>
+                    Continue <ArrowRight size={16} aria-hidden="true" />
+                  </button>
                 </div>
               )}
-            </div>
+            </section>
           )}
 
           {/* ONSCREEN CONTROLS */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
+          {gameState === "playing" && (
+          <div className="boss-controls" role="group" aria-label="Combat controls">
             <button
-              onMouseDown={handleJumpStart}
-              onMouseUp={handleJumpEnd}
-              onTouchStart={handleJumpStart}
-              onTouchEnd={handleJumpEnd}
-              onClick={handleJump}
+              type="button"
+              onPointerDown={(event) => {
+                event.currentTarget.setPointerCapture(event.pointerId);
+                handleJumpStart();
+              }}
+              onPointerUp={handleJumpEnd}
+              onLostPointerCapture={handleJumpEnd}
+              onPointerCancel={handleJumpEnd}
+              onClick={(event) => { if (event.detail === 0) handleJump(); }}
               className="py-3 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-neutral-700 cursor-pointer active:scale-95 shadow-sm"
               title="Tap or Space to Jump · Hold or Long Press for Jetpack 🚀"
             >
-              <span>⬆️ Space: JUMP</span>
-              <span className="text-[10px] text-cyan-400 font-mono">(Hold 🚀)</span>
+              <span>Jump</span><kbd>Space</kbd>
             </button>
 
             <button
@@ -2434,7 +2452,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               title="Press 'F' or click to Shoot (Can destroy enemy projectiles!)"
             >
               <Crosshair className="w-4 h-4" />
-              <span>'F': SHOOT ({ammo})</span>
+              <span>Shoot · {ammo}</span><kbd>F</kbd>
             </button>
 
             {/* Quantum Scholar Jetpack Button */}
@@ -2477,17 +2495,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               title="Press 'R' key to refill ammo and heal HP!"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>[R] Refill (15 🪙)</span>
+              <span>Refill</span><kbd>R</kbd>
             </button>
 
-            <button
-              onClick={() => setShowCustomizerModal(true)}
-              className="py-3 bg-gradient-to-r from-indigo-700 to-purple-700 hover:from-indigo-600 hover:to-purple-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-sm col-span-2 sm:col-span-1"
-            >
-              <Palette className="w-3.5 h-3.5" />
-              <span>Wardrobe</span>
-            </button>
           </div>
+          )}
         </div>
       )}
 

@@ -267,7 +267,7 @@ export function Header({
     }
   };
 
-  const isResourcesActive = ["glossary", "archive", "progress", "boss-battle"].includes(activeTab);
+  const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
   const isChecklistActive = ["checklist", "compare", "sections"].includes(activeTab);
 
   const openCompare = (sectionCode: string) => {
@@ -509,15 +509,6 @@ export function Header({
                     <div className="text-xs font-semibold">Progress Ledger</div>
                     <div className="text-[10px] opacity-70">{submissionCount} evaluated answers</div>
                   </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleSelectTab("boss-battle")}
-                  className="w-full text-left px-3 py-2 rounded-xl flex items-center gap-2.5 transition cursor-pointer hover:bg-[#edf2e7] dark:hover:bg-neutral-800"
-                >
-                  <Swords size={15} aria-hidden="true" />
-                  <span className="text-xs font-semibold">Boss Battle</span>
                 </button>
 
                 {/* Bug / Suggestion Link in Resources */}
@@ -919,6 +910,17 @@ export function Header({
               </button>
             ))}
           </div>
+          <button
+            type="button"
+            className="boss-cta boss-nav-button"
+            aria-current={activeTab === "boss-battle" ? "page" : undefined}
+            onClick={() => {
+              handleSelectTab("boss-battle");
+              window.scrollTo(0, 0);
+            }}
+          >
+            <Swords size={19} aria-hidden="true" /> Boss Battle
+          </button>
         </div>
       </nav>
 

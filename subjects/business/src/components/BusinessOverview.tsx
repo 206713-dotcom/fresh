@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, ClipboardCheck, FileText, GraduationCap, Timer, Zap } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardCheck, FileText, GraduationCap, Swords, Timer, Zap } from "lucide-react";
 import type { BusinessTab } from "../App";
 
 const papers = [
@@ -38,6 +38,12 @@ export function BusinessOverview({ onNavigate, onStartMockExam }: BusinessOvervi
         </div>
         <div className="study-hero-image" aria-hidden="true" />
       </header>
+
+      <button type="button" className="boss-cta boss-overview-button" onClick={() => onNavigate("boss-battle")}>
+        <Swords size={25} aria-hidden="true" />
+        <span><strong>Boss Battle</strong><small>Fight with Business questions and earn Study Coins.</small></span>
+        <ArrowRight size={23} aria-hidden="true" />
+      </button>
 
       <section className="business-overview-section" aria-labelledby="business-papers">
         <h2 id="business-papers">Exam practice</h2>
