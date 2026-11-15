@@ -19,7 +19,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const workerURL = new URL('marking-worker.js?v=2', document.currentScript.src);
+  const workerURL = new URL('marking-worker.js?v=3', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
@@ -56,13 +56,13 @@ const ecbizMarking = (() => {
         const id = ++nextId;
         let idleTimer;
         const idle = () => task.reject(new Error(
-          stage === 'Marking on your device…'
+          /Marking on|Checking the local marking/.test(stage)
             ? 'The device took too long to mark this answer. Try again with a shorter answer.'
             : 'The local model stopped loading. Check your connection and try again.'
         ));
         const resetIdle = () => {
           clearTimeout(idleTimer);
-          idleTimer = setTimeout(idle, stage === 'Marking on your device…' ? 120000 : 90000);
+          idleTimer = setTimeout(idle, /Marking on|Checking the local marking/.test(stage) ? 120000 : 90000);
         };
         const overall = setTimeout(() => task.reject(new Error('The local model took too long. Please try again.')), 300000);
         const settle = (callback, value) => {
