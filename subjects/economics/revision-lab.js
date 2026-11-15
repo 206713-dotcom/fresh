@@ -379,6 +379,7 @@ function markRevisionTest(state, status, retry) {
   if (!pendingRevisionTests.has(attemptId)) {
     const run = async () => {
       let next = 0;
+      let markingError;
       async function worker() {
         while (next < items.length) {
           const { key, id } = items[next++];
@@ -388,23 +389,27 @@ function markRevisionTest(state, status, retry) {
             if (!current || current.attemptId !== attemptId) return;
             current.grades = { ...current.grades, [key]: grade };
             if (!saveRevisionState('test', current)) return;
-          } catch {
-            // Leave unsuccessful items pending so the saved answers can be retried.
+          } catch (error) {
+            markingError ??= error.message;
           }
         }
       }
-      await Promise.all(Array.from({ length: Math.min(3, items.length) }, worker));
+      await worker();
+      return markingError;
     };
     pendingRevisionTests.set(attemptId, run().finally(() => pendingRevisionTests.delete(attemptId)));
   }
-  pendingRevisionTests.get(attemptId).then(() => {
+  pendingRevisionTests.get(attemptId).then(markingError => {
     if (!status.isConnected) return;
     const latest = revisionState('test', null);
     if (!latest) return;
     if (items.some(({ key }) => latest.grades?.[key])) {
       render(false);
+      if (markingError && document.querySelector('#revision-test-retry')) {
+        document.querySelector('#revision-save-status').textContent = markingError + ' Your answers are saved.';
+      }
     } else {
-      status.textContent = 'Some written answers could not be marked. Your answers are saved.';
+      status.textContent = (markingError || 'Some written answers could not be marked.') + ' Your answers are saved.';
       retry.hidden = false;
     }
   });
@@ -545,14 +550,16 @@ function setupRevisionTest(_id, autoMark = true) {
         throw new Error('Choose a JPEG, PNG or WebP image under 12 MB.');
       }
       const bitmap = await createImageBitmap(file);
-      const scale = Math.min(1, 1400 / Math.max(bitmap.width, bitmap.height));
+      const size = 768;
+      const scale = Math.min(1, size / Math.max(bitmap.width, bitmap.height));
       const canvas = document.createElement('canvas');
-      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
-      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      canvas.width = canvas.height = size;
       const ctx = canvas.getContext('2d');
       ctx.fillStyle = '#fff';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      const width = bitmap.width * scale;
+      const height = bitmap.height * scale;
+      ctx.drawImage(bitmap, (size - width) / 2, (size - height) / 2, width, height);
       bitmap.close();
       const image = canvas.toDataURL('image/jpeg', 0.78);
       if (image.length > 530000) throw new Error('Choose a smaller or more tightly cropped image.');
