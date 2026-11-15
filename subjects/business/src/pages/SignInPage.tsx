@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthShell } from "../components/AuthShell";
 import { getSession, login } from "../lib/auth";
+import { viewHref } from "../lib/routes";
 
 const inputClass =
   "w-full rounded-lg border border-[#d4d9cf] bg-[#fffefa] px-3 py-2 text-sm text-[#192e28] outline-none focus:border-[#8B1E1E] focus:ring-2 focus:ring-[#8B1E1E]/20";
@@ -14,7 +15,7 @@ export default function SignInPage() {
   // Already signed in? Go straight through.
   useEffect(() => {
     if (getSession()) {
-      window.location.replace("/dashboard");
+      window.location.replace(viewHref("dashboard"));
     }
   }, []);
 
@@ -25,7 +26,7 @@ export default function SignInPage() {
 
     const result = await login(code, password);
     if (result.ok) {
-      window.location.replace("/dashboard");
+      window.location.replace(viewHref("dashboard"));
       return;
     }
 
@@ -98,7 +99,7 @@ export default function SignInPage() {
         <p className="mt-4 text-center text-sm text-[#57534E]">
           Don&apos;t have an account?{" "}
           <a
-            href="/sign-up"
+            href={viewHref("sign-up")}
             className="font-semibold text-[#8B1E1E] hover:underline"
           >
             Sign up

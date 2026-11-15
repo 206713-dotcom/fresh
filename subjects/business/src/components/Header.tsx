@@ -30,7 +30,6 @@ import {
   UserRound,
   Paintbrush,
   Check,
-  ArrowLeft,
 } from "lucide-react";
 import { deductStudyCoins, getStudyCoins } from "../lib/cookies";
 import { clearSession, getSession } from "../lib/auth";
@@ -42,6 +41,14 @@ import {
   unlockTheme,
   type ThemeId,
 } from "../lib/themes";
+import {
+  QWEN_MODELS,
+  getQwenStatusSnapshot,
+  subscribeQwenStatus,
+  switchQwenTier,
+  type QwenModelTier,
+  type WebLLMStatus,
+} from "../lib/engine/webllm";
 
 interface HeaderProps {
   currentSubject?: "business";
@@ -77,8 +84,11 @@ export function Header({
   const navRef = useRef<HTMLDivElement>(null);
   const accountRef = useRef<HTMLDivElement>(null);
   const themeRef = useRef<HTMLDivElement>(null);
+  const aiModelRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [accountOpen, setAccountOpen] = useState<boolean>(false);
+  const [aiModelMenuOpen, setAiModelMenuOpen] = useState<boolean>(false);
+  const [qwenStatus, setQwenStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
 
   // Theme shop: which looks the student owns, and any purchase message.
   const [themeShopOpen, setThemeShopOpen] = useState<boolean>(false);
@@ -141,6 +151,19 @@ export function Header({
     return () => window.removeEventListener("ecbiz_coins_updated", handleCoinsChange);
   }, []);
 
+  useEffect(() => {
+    return subscribeQwenStatus((status) => {
+      setQwenStatus(status);
+    });
+  }, []);
+
+  const handleSelectQwenTier = (tier: QwenModelTier) => {
+    setAiModelMenuOpen(false);
+    switchQwenTier(tier).catch((err) => {
+      console.warn("Manual Qwen tier switch failed:", err);
+    });
+  };
+
   // Close dropdowns (and the account popover) when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -153,6 +176,9 @@ export function Header({
       }
       if (themeRef.current && !themeRef.current.contains(target)) {
         setThemeShopOpen(false);
+      }
+      if (aiModelRef.current && !aiModelRef.current.contains(target)) {
+        setAiModelMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -286,15 +312,7 @@ export function Header({
         {/* ========================================================= */}
         {/* ZONE 1: BRAND / WORDMARK */}
         {/* ========================================================= */}
-        <div className="shrink-0 flex items-center gap-2">
-          <a
-            href="../../index.html"
-            title="Back to Fresh"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 px-2.5 py-1.5 text-sm font-medium text-[#1C1917] dark:text-white hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 transition-colors"
-          >
-            <ArrowLeft size={16} strokeWidth={2} />
-            <span className="whitespace-nowrap">Fresh</span>
-          </a>
+        <div className="shrink-0">
           <button
             onClick={() => handleSelectTab("practice")}
             title="EcBiz"
@@ -769,6 +787,98 @@ export function Header({
             <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
           </a>
 
+          {/* Local Qwen AI Model Badge & Manual Tier Toggle */}
+          <div ref={aiModelRef} className="relative hidden sm:block">
+            <button
+              type="button"
+              onClick={() => setAiModelMenuOpen((prev) => !prev)}
+              aria-haspopup="menu"
+              aria-expanded={aiModelMenuOpen}
+              className={`px-2.5 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                qwenStatus.isReady
+                  ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50/90 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300"
+                  : qwenStatus.isLoading
+                    ? "border-amber-300 dark:border-amber-800 bg-amber-50/90 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300"
+                    : "border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#57534E] dark:text-neutral-300 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
+              }`}
+              title={`Local WebGPU Grader: ${qwenStatus.activeLabel} (${qwenStatus.deviceInfo.reason})`}
+            >
+              <Cpu className="w-3.5 h-3.5 shrink-0" />
+              <span className="font-mono text-[11px] font-bold whitespace-nowrap">
+                {qwenStatus.isLoading
+                  ? `Qwen 3.5 0.8B (${qwenStatus.progressPercent}%)`
+                  : qwenStatus.isReady
+                    ? qwenStatus.activeLabel
+                    : "Qwen 3.5 0.8B"}
+              </span>
+              {qwenStatus.isReady && (
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              )}
+              <ChevronDown className="w-3 h-3 opacity-60 shrink-0" />
+            </button>
+
+            {aiModelMenuOpen && (
+              <div
+                role="menu"
+                className="absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-1.75rem)] rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-neutral-950 shadow-xl p-2 z-50"
+              >
+                <div className="px-2 py-1.5 flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                    Local AI Grader (WebGPU)
+                  </span>
+                  <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">
+                    q4f16 · Text-Only
+                  </span>
+                </div>
+
+                <div className="mx-1 mb-2 rounded-xl bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 px-2.5 py-2 text-[11px] text-[#57534E] dark:text-neutral-300 space-y-0.5">
+                  <div className="font-semibold text-[#1C1917] dark:text-white">
+                    Device Profile: {qwenStatus.deviceInfo.reason}
+                  </div>
+                  <div className="text-[10px] text-[#78716C] dark:text-neutral-400">
+                    {QWEN_MODELS["0.8b"].shortLabel}
+                    {qwenStatus.isReady ? ` · Active: ${qwenStatus.activeLabel}` : " · Not loaded"}
+                  </div>
+                </div>
+
+                {qwenStatus.fallbackReason && (
+                  <div className="mx-1 mb-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 px-2.5 py-1.5 text-[10px] text-amber-800 dark:text-amber-300 leading-snug">
+                    {qwenStatus.fallbackReason}
+                  </div>
+                )}
+
+                <div className="space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => handleSelectQwenTier("0.8b")}
+                    disabled={qwenStatus.isReady || qwenStatus.isLoading}
+                    className={`w-full text-left px-2.5 py-2 rounded-xl border flex items-center justify-between gap-2 transition-colors ${
+                      qwenStatus.isReady
+                        ? "border-emerald-500/40 dark:border-emerald-700 bg-emerald-50/70 dark:bg-emerald-950/50 cursor-default"
+                        : "border-transparent hover:bg-white dark:hover:bg-neutral-900 cursor-pointer"
+                    }`}
+                  >
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-[#1C1917] dark:text-white flex items-center gap-1.5">
+                        <span>{QWEN_MODELS["0.8b"].label}</span>
+                      </div>
+                      <div className="text-[10px] text-[#78716C] dark:text-neutral-400 font-mono">
+                        Desktop, laptop and mobile · {QWEN_MODELS["0.8b"].approxDownloadSize}
+                      </div>
+                    </div>
+                    <span className="shrink-0 text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                      {qwenStatus.isReady
+                        ? "Active"
+                        : qwenStatus.isLoading
+                          ? `${qwenStatus.progressPercent}%`
+                          : "Load"}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Study Coins Sticker Badge */}
           <div
             className="site-coin-balance sticker-badge font-mono text-xs font-bold cursor-default"
@@ -983,6 +1093,39 @@ export function Header({
               <span className="text-[10px] opacity-80 font-mono">6 digits</span>
             </a>
           )}
+
+          {/* Local AI Grader Switcher in Mobile Menu */}
+          <div className="rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/70 p-2.5 mb-2 space-y-2">
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5" />
+                <span>AI Model: {qwenStatus.isReady ? qwenStatus.activeLabel : QWEN_MODELS[qwenStatus.activeTier].shortLabel}</span>
+              </span>
+              {qwenStatus.isLoading && (
+                <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
+                  {qwenStatus.progressPercent}%
+                </span>
+              )}
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={() => handleSelectQwenTier("0.8b")}
+                disabled={qwenStatus.isReady || qwenStatus.isLoading}
+                className={`w-full px-2 py-1.5 rounded-lg text-[11px] font-bold border transition-colors ${
+                  qwenStatus.isReady
+                    ? "bg-[#203e32] text-white border-[#203e32] dark:bg-emerald-800 dark:border-emerald-700"
+                    : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-[#D6D3D1] dark:border-neutral-700 cursor-pointer"
+                }`}
+              >
+                {qwenStatus.isReady
+                  ? "Qwen 3.5 0.8B Active"
+                  : qwenStatus.isLoading
+                    ? `Loading Qwen 3.5 0.8B (${qwenStatus.progressPercent}%)`
+                    : "Load Qwen 3.5 0.8B"}
+              </button>
+            </div>
+          </div>
 
           {/* Questions Group */}
           <div className="px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-400">

@@ -34,11 +34,16 @@ import {
   evaluatePaper2Answer,
   Paper2EvaluationResult,
 } from "../lib/engine/evaluator";
+import type { ParagraphAuditItem } from "../lib/types";
 import {
   initializeWebLLM,
   isQwenCachedLocally,
   setQwenCachedLocally,
   checkWebGPUSupport,
+  getLoadedQwenEngine,
+  getQwenStatusSnapshot,
+  QWEN_MODELS,
+  subscribeQwenStatus,
   WebLLMStatus,
 } from "../lib/engine/webllm";
 import {
@@ -52,6 +57,44 @@ import {
 interface Paper2PracticeViewProps {
   initialScenarioId?: string;
   onOpenStudySpace?: () => void;
+}
+
+/**
+ * Cambridge 0264 12-mark questions are Levels-based. Paragraph cards show qualitative
+ * diagnostic tags only — never K/App/An/Eval or X/Y counters that can sum differently
+ * from the official Level mark.
+ */
+function getTwelveMarkParagraphStatusTags(p: ParagraphAuditItem): string[] {
+  if (p.is_duplicate) return ["Repeated Point — No Additional Credit"];
+
+  if (p.role === "conclusion") {
+    const evalScore = p.eval_score ?? 0;
+    if (evalScore >= 2) return ["Justified Judgement — Weighs Trade-offs"];
+    if (evalScore === 1) return ["Basic Judgement — Weigh Trade-offs"];
+    return ["Needs Contextual Judgement"];
+  }
+
+  const tags: string[] = [];
+  if (p.k_score >= 1 && p.app_score >= 1) tags.push("Knowledge & Context Shown");
+  else if (p.k_score >= 1) tags.push("Knowledge Shown — Needs Case Context");
+  else tags.push("Needs Knowledge");
+
+  if (p.an_score >= 1) {
+    tags.push(p.has_detailed_an ? "Developed Consequence Chain" : "Basic Consequence Chain");
+  } else {
+    tags.push("Needs Consequence Chain");
+  }
+  return tags;
+}
+
+function getTwelveMarkTagClasses(tag: string): string {
+  if (tag.startsWith("Repeated")) {
+    return "bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200 border-rose-300 dark:border-rose-800";
+  }
+  if (tag.startsWith("Needs")) {
+    return "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-200 border-amber-300 dark:border-amber-800";
+  }
+  return "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 border-emerald-300 dark:border-emerald-800";
 }
 
 export function Paper2PracticeView({
@@ -117,31 +160,47 @@ export function Paper2PracticeView({
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Qwen AI Engine State
-  const [webllmEngine, setWebllmEngine] = useState<any>(null);
+  const [webllmEngine, setWebllmEngine] = useState<any>(() => getLoadedQwenEngine());
   const [isWebGPUSupported, setIsWebGPUSupported] = useState<boolean>(true);
   const [isModelDownloaded, setIsModelDownloaded] = useState<boolean>(() => {
     return isQwenCachedLocally();
   });
   const [showDownloadPromptModal, setShowDownloadPromptModal] = useState<boolean>(false);
-  const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>({
-    isSupported: true,
-    isLoading: false,
-    isReady: false,
-    progressText: "",
-    progressPercent: 0,
-    error: null,
-  });
+  const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
   const [isEvaluating, setIsEvaluating] = useState<boolean>(false);
 
   // Timer
   const [timerSeconds, setTimerSeconds] = useState<number>(0);
   const [timerActive, setTimerActive] = useState<boolean>(false);
 
-  // Check WebGPU capability on mount
+  // Check WebGPU capability and subscribe to global Qwen tier changes on mount
   useEffect(() => {
+    const unsubscribe = subscribeQwenStatus((status) => {
+      setWebllmStatus(status);
+      const loaded = getLoadedQwenEngine();
+      if (status.isReady && loaded) {
+        setWebllmEngine(loaded);
+        setIsModelDownloaded(true);
+      } else if (!status.isLoading) {
+        setWebllmEngine(loaded);
+      }
+    });
+
     checkWebGPUSupport().then((supported) => {
       setIsWebGPUSupported(supported);
+      if (supported && isQwenCachedLocally() && !getLoadedQwenEngine()) {
+        initializeWebLLM((status) => setWebllmStatus(status))
+          .then((engine) => {
+            if (engine) {
+              setWebllmEngine(engine);
+              setIsModelDownloaded(true);
+            }
+          })
+          .catch((err) => console.warn("Paper 2 local Qwen auto-init skipped:", err));
+      }
     });
+
+    return unsubscribe;
   }, []);
 
   // Timer interval
@@ -162,14 +221,15 @@ export function Paper2PracticeView({
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
-  // Handler to start loading Qwen 3.5 0.8B
+  // Handler to start loading the local Qwen 3.5 0.8B model
   const handleDownloadQwenModel = async () => {
     try {
       setShowDownloadPromptModal(false);
+      const targetCfg = QWEN_MODELS[webllmStatus.activeTier];
       setWebllmStatus((prev) => ({
         ...prev,
         isLoading: true,
-        progressText: "Initiating Qwen 3.5 0.8B download...",
+        progressText: `Initiating ${targetCfg.shortLabel} download...`,
         progressPercent: 5,
       }));
 
@@ -177,49 +237,53 @@ export function Paper2PracticeView({
         setWebllmStatus(status);
         if (status.isReady) {
           setIsModelDownloaded(true);
-          setQwenCachedLocally(true);
+          setQwenCachedLocally(true, status.activeTier);
         }
       });
 
       setWebllmEngine(engine);
       setIsModelDownloaded(true);
-      setQwenCachedLocally(true);
-      setWebllmStatus({
-        isSupported: true,
-        isLoading: false,
-        isReady: true,
-        progressText: "Qwen 3.5 0.8B Cached and Ready",
-        progressPercent: 100,
-        error: null,
-      });
+      setQwenCachedLocally(true, engine.tier);
     } catch (err: any) {
       console.error("Failed to load Qwen model:", err);
-      setWebllmStatus({
+      setWebllmStatus((prev) => ({
+        ...prev,
         isSupported: false,
         isLoading: false,
         isReady: false,
         progressText: "Could not initialize WebGPU pipeline.",
         progressPercent: 0,
         error: err?.message || "WebGPU initialization failed.",
-      });
+      }));
     }
   };
 
-  // Trigger evaluation
+  // Trigger evaluation — always marks immediately (uses Qwen if loaded in memory, otherwise CIE 0264 Examiner)
   const handleSubmitCurrentQuestion = async () => {
     const text = (answers[currentQuestionIdx] || "").trim();
     if (!text) return;
-
-    // If Qwen is not loaded yet, prompt student once
-    if (!webllmEngine && !isModelDownloaded && !localStorage.getItem("qwen_prompt_dismissed")) {
-      setShowDownloadPromptModal(true);
-      return;
-    }
 
     setIsEvaluating(true);
     setTimerActive(false);
 
     try {
+      const engineToUse = webllmEngine || getLoadedQwenEngine();
+
+      const ins = activeScenario.case_study_insert;
+      const finSummary = ins.appendix_2_financial_data?.rows
+        ? ins.appendix_2_financial_data.rows
+            .map((r: Array<string | number>) => `${r[0]} ($${r[r.length - 1]}m)`)
+            .join(", ")
+        : "";
+      const fullCaseContext = [
+        ins.main_stem,
+        ins.appendix_1_marketing_ops,
+        finSummary ? `${ins.appendix_2_financial_data?.title || "Financials"}: ${finSummary}` : "",
+        ins.appendix_3_external_environment,
+      ]
+        .filter(Boolean)
+        .join("\n");
+
       const evalRes = await evaluatePaper2Answer({
         questionNumber: activeQuestion.number,
         questionText: activeQuestion.question_text,
@@ -228,8 +292,8 @@ export function Paper2PracticeView({
         modelAnswer: activeQuestion.model_answer,
         validAppWords: activeQuestion.qwen_marking_keys?.valid_app_words || [],
         studentAnswer: text,
-        caseMainStem: activeScenario.case_study_insert.main_stem,
-        webllmEngine: webllmEngine,
+        caseMainStem: fullCaseContext,
+        webllmEngine: engineToUse || undefined,
       });
 
       setEvaluations((prev) => ({ ...prev, [currentQuestionIdx]: evalRes }));
@@ -487,6 +551,7 @@ export function Paper2PracticeView({
 
   const currentEval = evaluations[currentQuestionIdx];
   const isCurrentQuestionCompleted = completedIndices.includes(currentQuestionIdx);
+  const isTwelveMarkQuestion = activeQuestion.mark_value === 12;
 
   // Render Appendix 2 table nicely if formatted as table
   const renderAppendix2Content = (data: any) => {
@@ -549,7 +614,7 @@ export function Paper2PracticeView({
             <button
               type="button"
               onClick={() => {
-                if (!webllmEngine) {
+                if (!webllmEngine && !getLoadedQwenEngine()) {
                   handleDownloadQwenModel();
                 }
               }}
@@ -560,17 +625,20 @@ export function Paper2PracticeView({
                   ? "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-800"
                   : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50"
               }`}
-              title="Local in-browser Qwen 3.5 0.8B AI model status"
+              title={
+                webllmStatus.fallbackReason ||
+                `Local in-browser ${QWEN_MODELS[webllmStatus.activeTier].label} WebGPU status`
+              }
             >
               <Cpu className="w-3.5 h-3.5" />
               <span>
                 {webllmEngine
-                  ? "Qwen 3.5 0.8B Active"
+                  ? webllmStatus.activeLabel
                   : isModelDownloaded
-                  ? "Qwen 3.5 0.8B Cached"
+                  ? `${QWEN_MODELS[webllmStatus.activeTier].shortLabel} Cached`
                   : webllmStatus.isLoading
-                  ? `Downloading (${webllmStatus.progressPercent}%)`
-                  : "Download Qwen 3.5 0.8B"}
+                  ? `Downloading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel} (${webllmStatus.progressPercent}%)`
+                  : `Download ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`}
               </span>
               {(webllmEngine || isModelDownloaded) && <Check className="w-3.5 h-3.5 text-emerald-500" />}
             </button>
@@ -648,7 +716,7 @@ export function Paper2PracticeView({
           <div className="flex items-center justify-between text-xs font-medium text-amber-800 dark:text-amber-300 mb-2">
             <span className="flex items-center gap-2">
               <Download className="w-3.5 h-3.5 animate-bounce" />
-              {webllmStatus.progressText || "Downloading Qwen 3.5 0.8B AI model weights into persistent browser cache..."}
+              {webllmStatus.progressText || `Downloading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel} text-decoder weights into browser cache...`}
             </span>
             <span className="font-mono font-bold">{webllmStatus.progressPercent}%</span>
           </div>
@@ -659,8 +727,14 @@ export function Paper2PracticeView({
             />
           </div>
           <p className="text-[11px] text-amber-700 dark:text-amber-400 mt-1.5">
-            Once downloaded, model weights stay cached permanently in your browser storage. You won't have to download them again!
+            Downloading in the background — you can still click Submit anytime to mark immediately with Instant CIE 0264 Examiner!
           </p>
+        </div>
+      )}
+
+      {!webllmStatus.isLoading && webllmStatus.error && (
+        <div className="px-4 py-2.5 border-x border-amber-200 dark:border-amber-800/60 bg-amber-50/70 dark:bg-amber-950/30 text-xs text-amber-800 dark:text-amber-300 flex items-center justify-between gap-2">
+          <span>{webllmStatus.error} Instant CIE 0264 Examiner remains active for marking.</span>
         </div>
       )}
 
@@ -943,7 +1017,11 @@ export function Paper2PracticeView({
                   {isEvaluating ? (
                     <>
                       <Sparkles className="w-4 h-4 animate-spin" />
-                      <span>Assessing with Qwen 3.5 0.8B...</span>
+                      <span>
+                        {webllmEngine || getLoadedQwenEngine()
+                          ? `Assessing with ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}...`
+                          : "Assessing with CIE 0264 Examiner..."}
+                      </span>
                     </>
                   ) : (
                     <>
@@ -1417,7 +1495,9 @@ export function Paper2PracticeView({
                         </span>
                       ) : (
                         <span className="text-xs text-neutral-500 font-medium">
-                          {currentEval.isAiEvaluated ? "Evaluated with Qwen 3.5 0.8B Local AI" : "Evaluated with Cambridge Senior Examiner"}
+                          {currentEval.isAiEvaluated
+                            ? `Evaluated with ${QWEN_MODELS[webllmStatus.activeTier].shortLabel} Local AI`
+                            : "Evaluated with Cambridge Senior Examiner"}
                         </span>
                       )}
 
@@ -1477,7 +1557,9 @@ export function Paper2PracticeView({
                   </div>
                 </div>
 
-                {/* AO Breakdown Grid */}
+                {/* AO Breakdown Grid — point-marked questions only.
+                    12-mark questions are Levels-based, so AO sub-score cards are not shown. */}
+                {!isTwelveMarkQuestion && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="p-3 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-center justify-between text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1">
@@ -1491,10 +1573,22 @@ export function Paper2PracticeView({
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                  <div
+                    className={`p-3 rounded-xl border ${
+                      currentEval.aoBreakdown.ao2.score === 0 && currentEval.aoBreakdown.ao2.max > 0
+                        ? "bg-rose-50/70 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
+                        : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"
+                    }`}
+                  >
                     <div className="flex items-center justify-between text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1">
                       <span>AO2: Application</span>
-                      <span className="font-mono text-[#0F2042] dark:text-[#38BDF8]">
+                      <span
+                        className={`font-mono ${
+                          currentEval.aoBreakdown.ao2.score === 0 && currentEval.aoBreakdown.ao2.max > 0
+                            ? "text-rose-600 dark:text-rose-400"
+                            : "text-[#0F2042] dark:text-[#38BDF8]"
+                        }`}
+                      >
                         {currentEval.aoBreakdown.ao2.score} / {currentEval.aoBreakdown.ao2.max}
                       </span>
                     </div>
@@ -1516,10 +1610,26 @@ export function Paper2PracticeView({
                   </div>
 
                   {currentEval.aoBreakdown.ao4 && (
-                    <div className="p-3 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                    <div
+                      className={`p-3 rounded-xl border ${
+                        currentEval.aoBreakdown.ao4.score === 0
+                          ? "bg-rose-50/70 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
+                          : currentEval.aoBreakdown.ao4.score < currentEval.aoBreakdown.ao4.max
+                          ? "bg-amber-50/60 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900"
+                          : "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900"
+                      }`}
+                    >
                       <div className="flex items-center justify-between text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-1">
                         <span>AO4: Evaluation</span>
-                        <span className="font-mono text-[#0F2042] dark:text-[#38BDF8]">
+                        <span
+                          className={`font-mono ${
+                            currentEval.aoBreakdown.ao4.score === 0
+                              ? "text-rose-600 dark:text-rose-400"
+                              : currentEval.aoBreakdown.ao4.score < currentEval.aoBreakdown.ao4.max
+                              ? "text-amber-700 dark:text-amber-400"
+                              : "text-emerald-700 dark:text-emerald-400"
+                          }`}
+                        >
                           {currentEval.aoBreakdown.ao4.score} / {currentEval.aoBreakdown.ao4.max}
                         </span>
                       </div>
@@ -1529,6 +1639,99 @@ export function Paper2PracticeView({
                     </div>
                   )}
                 </div>
+                )}
+
+                {/* Anti-Halo Paragraph Audit Breakdown */}
+                {currentEval.paragraphAudits && currentEval.paragraphAudits.length > 0 && (
+                  <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-2.5">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-300 font-mono">
+                        Cambridge 0264 Anti-Halo Paragraph Audit
+                      </h4>
+                      <span className="text-[11px] font-mono text-neutral-500">
+                        {isTwelveMarkQuestion
+                          ? "Qualitative diagnostics only — official mark is the Level score above"
+                          : "Zero carry-over between paragraphs"}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      {currentEval.paragraphAudits.map((p) => (
+                        <div
+                          key={p.paragraph_number}
+                          className={`p-3 rounded-lg border space-y-1 text-xs ${
+                            p.is_duplicate || p.subtotal === 0
+                              ? "bg-rose-50/60 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
+                              : p.max_subtotal && p.subtotal >= p.max_subtotal
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900"
+                              : "bg-[#FAF9F6] dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800"
+                          }`}
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">
+                                Paragraph {p.paragraph_number}
+                              </span>
+                              <span className="px-2 py-0.5 rounded bg-neutral-200/80 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-mono text-[10px] uppercase">
+                                {p.role === "conclusion"
+                                  ? "Conclusion"
+                                  : p.role === "option"
+                                  ? "Option"
+                                  : "Body Point"}
+                              </span>
+                              {p.is_duplicate && (
+                                <span className="px-2 py-0.5 rounded bg-rose-200 dark:bg-rose-900/70 text-rose-900 dark:text-rose-200 font-mono text-[10px] font-bold">
+                                  {isTwelveMarkQuestion
+                                    ? "Repeated Point — No Additional Credit"
+                                    : "Duplicate (0 marks)"}
+                                </span>
+                              )}
+                            </div>
+
+                            {isTwelveMarkQuestion ? (
+                              <div className="flex flex-wrap items-center gap-1.5">
+                                {getTwelveMarkParagraphStatusTags(p).map((tag) => (
+                                  <span
+                                    key={tag}
+                                    className={`px-2 py-0.5 rounded border text-[10px] font-semibold ${getTwelveMarkTagClasses(tag)}`}
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                                {p.role === "conclusion" ? (
+                                  <span className="text-neutral-700 dark:text-neutral-300">
+                                    Eval:{p.eval_score ?? 0}/{p.max_subtotal ?? 3}
+                                  </span>
+                                ) : (
+                                  <span className="text-neutral-700 dark:text-neutral-300">
+                                    K:{p.k_score} · App:{p.app_score} · An:{p.an_score}
+                                    {p.has_detailed_an ? "+" : ""}
+                                  </span>
+                                )}
+                                <span className="px-2 py-0.5 rounded bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-black font-bold">
+                                  {p.subtotal}/{p.max_subtotal ?? 3}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+
+                          {p.isolated_quote && (
+                            <blockquote className="text-[11px] italic text-neutral-600 dark:text-neutral-400 border-l-2 border-neutral-300 dark:border-neutral-700 pl-2.5 line-clamp-3">
+                              "{p.isolated_quote}"
+                            </blockquote>
+                          )}
+
+                          <p className="text-[11px] text-neutral-800 dark:text-neutral-200">
+                            {p.critique}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Examiner Commentary */}
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-2">
@@ -1632,7 +1835,7 @@ export function Paper2PracticeView({
       )}
 
       {/* ======================================================== */}
-      {/* QWEN 3.5 0.8B DOWNLOAD PROMPT MODAL                     */}
+      {/* QWEN 3.5 LOCAL AI DOWNLOAD PROMPT MODAL                  */}
       {/* ======================================================== */}
       {showDownloadPromptModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
@@ -1643,21 +1846,21 @@ export function Paper2PracticeView({
               </div>
               <div>
                 <h3 className="font-academic-serif text-lg font-bold text-neutral-900 dark:text-white">
-                  Download Local AI Model: Qwen 3.5 0.8B
+                  Download Local AI Model: {QWEN_MODELS[webllmStatus.activeTier].shortLabel}
                 </h3>
                 <p className="text-xs text-neutral-500">
-                  Runs 100% locally in-browser via WebGPU • Zero server cost
+                  Text-only WebGPU (q4f16, skips vision weights) • Zero server cost
                 </p>
               </div>
             </div>
 
             <div className="p-3.5 rounded-xl bg-[#FAF9F6] dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-700 dark:text-neutral-300 space-y-2">
               <p>
-                Paper 2 Senior Examiner uses local in-browser <strong>Qwen 3.5 0.8B</strong> to mark your answers directly against Cambridge mark schemes and determine your Level (Level 1, Level 2, or Level 3).
+                Paper 2 Senior Examiner uses the local in-browser <strong>{QWEN_MODELS["0.8b"].label}</strong> model to mark your answers against Cambridge 0264 mark schemes.
               </p>
               <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-medium">
                 <Check className="w-4 h-4 shrink-0" />
-                <span>Once downloaded (~320 MB), weights stay cached permanently so you never have to re-download.</span>
+                <span>Once downloaded ({QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize}), weights stay cached permanently in browser storage.</span>
               </div>
             </div>
 
@@ -1668,7 +1871,7 @@ export function Paper2PracticeView({
                 className="w-full sm:flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-black hover:bg-[#1E3A8A] transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-xs"
               >
                 <Download className="w-4 h-4" />
-                <span>Download Qwen 3.5 0.8B (~320MB)</span>
+                <span>Download {QWEN_MODELS[webllmStatus.activeTier].shortLabel} ({QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize})</span>
               </button>
               <button
                 type="button"

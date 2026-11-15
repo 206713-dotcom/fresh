@@ -32,6 +32,12 @@ import {
   type ThemeId,
 } from "./lib/themes";
 import { StudentSubmissionRecord } from "./lib/types";
+import {
+  QWEN_MODELS,
+  getQwenStatusSnapshot,
+  subscribeQwenStatus,
+  type WebLLMStatus,
+} from "./lib/engine/webllm";
 
 export type BusinessTab =
   | "practice"
@@ -54,6 +60,14 @@ export default function App() {
     }
     return "daylight";
   });
+
+  const [qwenStatus, setQwenStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
+
+  useEffect(() => {
+    return subscribeQwenStatus((status) => {
+      setQwenStatus(status);
+    });
+  }, []);
 
   // Business Tab state: "practice" | "paper2" | "quick-quiz" | "sections" | "checklist" | "glossary" | "archive" | "progress" | "boss-battle" | "compare" | "lessons"
   const [businessTab, setBusinessTab] = useState<BusinessTab>(() => {
@@ -407,7 +421,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
         <p>
-          EcBiz • Powered by Local in-Browser Qwen 3.5 0.8B AI •{" "}
+          EcBiz • Powered by Local in-Browser {QWEN_MODELS[qwenStatus.activeTier].footerLabel} •{" "}
           <a href="/dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
             Student Dashboard
           </a>

@@ -33,8 +33,17 @@ import {
   getVerifiedFullContextText,
   VerifiedCaseStudy,
 } from "../lib/data/verified-case-studies";
-import { evaluateStudentEssay, scanApplicationKeywords, scanEvaluationKeywords } from "../lib/engine/evaluator";
-import { checkWebGPUSupport, initializeWebLLM, WebLLMStatus, isQwenCachedLocally } from "../lib/engine/webllm";
+import { detectCaseContext, evaluateStudentEssay } from "../lib/engine/evaluator";
+import {
+  checkWebGPUSupport,
+  getLoadedQwenEngine,
+  getQwenStatusSnapshot,
+  initializeWebLLM,
+  isQwenCachedLocally,
+  QWEN_MODELS,
+  subscribeQwenStatus,
+  WebLLMStatus,
+} from "../lib/engine/webllm";
 import { formatTime } from "../lib/utils";
 import {
   saveAnswerDraft,
@@ -223,11 +232,28 @@ export function PracticeStudio({
   }, [activeVerifiedQuestion?.id]);
 
   const extractVerifiedAppWords = (cs: VerifiedCaseStudy | null, vq: VerifiedQuestion | null): string[] => {
-    if (!cs || !vq) return [];
+    if (!vq) return [];
     const tokens = new Set<string>();
-    const titleMatches = cs.businessTitle.match(/\b[A-Z][A-Za-z0-9&]{1,}\b/g) || [];
-    titleMatches.forEach((w) => tokens.add(w));
-    const numMatches = (cs.mainCase + " " + (cs.table || "")).match(/\$?\d[\d,.]*(?:\s*(?:million|m|%|workers|employees|shops|cafes|units))?/gi) || [];
+    const stopCaps = new Set([
+      "The", "This", "That", "In", "On", "At", "To", "For", "From", "With", "By", "As",
+      "An", "And", "But", "Or", "If", "It", "Its", "Each", "Country", "Business", "Company",
+    ]);
+    const sourceText = cs
+      ? `${cs.businessTitle} ${cs.mainCase} ${cs.table || ""}`
+      : vq.case_context || "";
+    if (cs?.businessTitle) {
+      const titleMatches = cs.businessTitle.match(/\b[A-Z][A-Za-z0-9&]{1,}\b/g) || [];
+      titleMatches.forEach((w) => {
+        if (!stopCaps.has(w)) tokens.add(w);
+      });
+    } else if (vq.case_context) {
+      const capMatches = vq.case_context.match(/\b[A-Z][A-Za-z0-9&]{1,}\b/g) || [];
+      capMatches.forEach((w) => {
+        if (!stopCaps.has(w)) tokens.add(w);
+      });
+    }
+    const numMatches =
+      sourceText.match(/\$?\d[\d,.]*(?:\s*(?:million|m|%|workers|employees|staff|shops|cafes|units|mines|children))?/gi) || [];
     numMatches.slice(0, 8).forEach((n) => tokens.add(n.trim()));
     return Array.from(tokens).slice(0, 12);
   };
@@ -479,25 +505,28 @@ export function PracticeStudio({
   const [timerSeconds, setTimerSeconds] = useState<number>(0);
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
-  // Engine: Instant CIE Examiner vs Local Qwen 3.5 0.8B (WebLLM)
-  const [aiEngineType, setAiEngineType] = useState<"instant" | "webllm">(() => {
-    return isQwenCachedLocally() ? "webllm" : "webllm";
-  });
-  const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>({
-    isSupported: false,
-    isLoading: false,
-    isReady: false,
-    progressText: "",
-    progressPercent: 0,
-    error: null,
-  });
-  const [webllmEngine, setWebllmEngine] = useState<any>(null);
+  // Engine: Instant CIE Examiner vs Local Qwen 3.5 0.8B
+  const [aiEngineType, setAiEngineType] = useState<"instant" | "webllm">(() =>
+    getLoadedQwenEngine() ? "webllm" : "instant"
+  );
+  const [webllmStatus, setWebllmStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
+  const [webllmEngine, setWebllmEngine] = useState<any>(() => getLoadedQwenEngine());
 
-  // Initialize WebGPU detection and auto-load Qwen 3.5 0.8B if supported/cached
+  // Subscribe to global Qwen status/tier changes and auto-load if already cached for Qwen 3.5
   useEffect(() => {
+    const unsubscribe = subscribeQwenStatus((status) => {
+      setWebllmStatus(status);
+      const loaded = getLoadedQwenEngine();
+      if (status.isReady && loaded) {
+        setWebllmEngine(loaded);
+        setAiEngineType("webllm");
+      } else if (!status.isLoading) {
+        setWebllmEngine(loaded);
+      }
+    });
+
     checkWebGPUSupport().then((supported) => {
-      setWebllmStatus((prev) => ({ ...prev, isSupported: supported }));
-      if (supported && isQwenCachedLocally()) {
+      if (supported && isQwenCachedLocally() && !getLoadedQwenEngine()) {
         initializeWebLLM((status) => setWebllmStatus(status))
           .then((engine) => {
             if (engine) {
@@ -505,9 +534,11 @@ export function PracticeStudio({
               setAiEngineType("webllm");
             }
           })
-          .catch((err) => console.warn("Qwen 3.5 0.8B initial check skipped:", err));
+          .catch((err) => console.warn("Local Qwen initial check skipped:", err));
       }
     });
+
+    return unsubscribe;
   }, []);
 
   // Timer interval
@@ -521,13 +552,15 @@ export function PracticeStudio({
     return () => clearInterval(interval);
   }, [timerRunning]);
 
-  // Load WebLLM (Qwen 3.5 0.8B)
+  // Load the Local Qwen 3.5 0.8B model in the background
   const handleLoadWebLLM = async () => {
     try {
+      const cfg = QWEN_MODELS[webllmStatus.activeTier];
       setWebllmStatus((prev) => ({
         ...prev,
         isLoading: true,
-        progressText: "Loading Qwen 3.5 0.8B weights...",
+        error: null,
+        progressText: `Loading ${cfg.shortLabel} weights...`,
       }));
       const engine = await initializeWebLLM((status) => {
         setWebllmStatus(status);
@@ -537,7 +570,7 @@ export function PracticeStudio({
         setAiEngineType("webllm");
       }
     } catch (e) {
-      console.error("WebLLM load error:", e);
+      console.error("Local Qwen load error:", e);
     }
   };
 
@@ -607,18 +640,47 @@ export function PracticeStudio({
     setTimerRunning(false);
   };
 
-  // Live Rule Matching Preview as student types
-  const liveAppScan = useMemo(() => {
-    if (practiceMode !== "paper1_database") return { passed: true, foundWords: [] };
-    return scanApplicationKeywords(studentAnswer, activePaper1Question.qwen_marking_keys?.valid_app_words);
-  }, [studentAnswer, activePaper1Question, practiceMode]);
-
-  const liveEvalScan = useMemo(() => {
-    if (practiceMode !== "paper1_database" || activePaper1Question.mark_value !== 8) {
-      return { passed: true, foundWords: [] };
+  // Shared AO2 Case Context configuration across all PracticeStudio modes
+  const activeAoContext = useMemo(() => {
+    if (practiceMode === "paper1_database") {
+      return {
+        validAppWords: activePaper1Question.qwen_marking_keys?.valid_app_words || [],
+        caseContext: activePaper1Scenario.scenario_stem,
+        ao2Max: activePaper1Question.mark_value >= 4 ? 2 : 0,
+      };
     }
-    return scanEvaluationKeywords(studentAnswer);
-  }, [studentAnswer, activePaper1Question, practiceMode]);
+    if (practiceMode === "paper2_case_study") {
+      return {
+        validAppWords: activePaper2Question.rubric.indicativeContent || [],
+        caseContext: `${activeCaseStudy.businessName} (${activeCaseStudy.businessType}, ${activeCaseStudy.industry}). ${activeCaseStudy.overviewSummary}\n${activeCaseStudy.backgroundStory}\n${activeCaseStudy.operationsAndWorkforce}`,
+        ao2Max: activePaper2Question.rubric.ao2Max,
+      };
+    }
+    const vq = activeVerifiedQuestion;
+    const vqCase = activeVerifiedCaseStudy;
+    const marks = vq?.marks ?? 0;
+    return {
+      validAppWords: vq && marks >= 4 ? extractVerifiedAppWords(vqCase, vq) : [],
+      caseContext: vq ? getVerifiedFullContextText(vq) : "",
+      ao2Max: marks >= 12 ? 3 : marks >= 4 ? 2 : 0,
+    };
+  }, [
+    practiceMode,
+    activePaper1Question,
+    activePaper1Scenario,
+    activePaper2Question,
+    activeCaseStudy,
+    activeVerifiedQuestion,
+    activeVerifiedCaseStudy,
+  ]);
+
+  // Live AO2 Case Context scan synchronized 1:1 with the AO2 grading scanner
+  const liveCaseContextDetection = useMemo(() => {
+    if (activeAoContext.ao2Max === 0) {
+      return { passed: false, foundWords: [], spans: [], activeKeywords: [] };
+    }
+    return detectCaseContext(studentAnswer, activeAoContext);
+  }, [studentAnswer, activeAoContext]);
 
   // Submit Answer for Assessment
   const handleSubmitEvaluation = async () => {
@@ -711,9 +773,13 @@ export function PracticeStudio({
           validAppWords = extractVerifiedAppWords(vqCase, vq);
         }
         const ao1Max = 2;
-        const ao2Max = targetMarks >= 4 ? 2 : 0;
+        const ao2Max = targetMarks >= 12 ? 3 : targetMarks >= 4 ? 2 : 0;
         const ao3Max = targetMarks >= 12 ? 4 : targetMarks === 8 && vq.paper === 2 ? 4 : targetMarks >= 6 ? 2 : 0;
-        const ao4Max = targetMarks >= 12 ? 4 : targetMarks === 8 && vq.paper === 1 ? 2 : 0;
+        const ao4Max = targetMarks >= 12 ? 3 : targetMarks === 8 && vq.paper === 1 ? 2 : 0;
+        deterministicRules = {
+          ...(validAppWords?.length ? { if_app_words_missing: "Cap AO2 Application score at 0" } : {}),
+          ...(ao4Max > 0 ? { if_no_eval_word: "Cap AO4 Evaluation score at 0" } : {}),
+        };
         rubric = {
           totalMarks: targetMarks,
           ao1Max,
@@ -731,16 +797,18 @@ export function PracticeStudio({
         };
       }
 
-      let engineToUse = webllmEngine;
-      if (aiEngineType === "webllm" && !engineToUse && webllmStatus.isSupported) {
-        try {
-          engineToUse = await initializeWebLLM((status) => setWebllmStatus(status));
-          if (engineToUse) {
-            setWebllmEngine(engineToUse);
-          }
-        } catch (e) {
-          console.warn("Could not initialize Qwen 3.5 0.8B, using fallback examiner:", e);
-        }
+      // Never block essay grading on a multi-hundred-MB model download:
+      // use local Qwen immediately if ready in memory, otherwise mark instantly with CIE 0264 rules.
+      const readyEngine = aiEngineType === "webllm" ? (webllmEngine || getLoadedQwenEngine()) : null;
+      if (aiEngineType === "webllm" && !readyEngine && webllmStatus.isSupported && !webllmStatus.isLoading) {
+        initializeWebLLM((status) => setWebllmStatus(status))
+          .then((engine) => {
+            if (engine) {
+              setWebllmEngine(engine);
+              setAiEngineType("webllm");
+            }
+          })
+          .catch((e) => console.warn("Background Qwen initialization failed:", e));
       }
 
       const result = await evaluateStudentEssay({
@@ -750,7 +818,7 @@ export function PracticeStudio({
         marks: targetMarks,
         rubric,
         studentAnswer,
-        webllmEngine: aiEngineType === "webllm" ? (engineToUse || undefined) : undefined,
+        webllmEngine: readyEngine || undefined,
         validAppWords,
         deterministicRules,
         modelAnswer,
@@ -806,6 +874,11 @@ export function PracticeStudio({
 
   const wordCount = studentAnswer.trim() ? studentAnswer.trim().split(/\s+/).length : 0;
   const isBookmarked = bookmarkedIds.includes(currentActiveId);
+  // Paper 1 2-mark definitions are pure knowledge: K only, never App/An/Eval.
+  const isTwoMarkKnowledgeOnly = Boolean(
+    evaluationResult &&
+      (evaluationResult.maxMarks === 2 || evaluationResult.questionType === "paper1_2m")
+  );
 
   return (
     <div className="study-page">
@@ -879,21 +952,35 @@ export function PracticeStudio({
           <div role="group" aria-label="Marking engine" className="study-engine">
             <button
               onClick={() => {
-                if (!webllmEngine && webllmStatus.isSupported) {
+                const loaded = webllmEngine || getLoadedQwenEngine();
+                if (!loaded && webllmStatus.isSupported && !webllmStatus.isLoading) {
                   handleLoadWebLLM();
-                } else {
+                } else if (loaded) {
                   setAiEngineType("webllm");
                 }
               }}
               aria-pressed={aiEngineType === "webllm"}
               className="study-engine-option"
+              title={
+                webllmStatus.error ||
+                webllmStatus.fallbackReason ||
+                (webllmStatus.isReady
+                  ? webllmStatus.activeLabel
+                  : `Click to load ${QWEN_MODELS[webllmStatus.activeTier].shortLabel} (${QWEN_MODELS[webllmStatus.activeTier].approxDownloadSize}) in background`)
+              }
             >
-              <span>Local Qwen 3.5 0.8B</span>
+              <span>
+                {webllmStatus.isReady
+                  ? webllmStatus.activeLabel
+                  : webllmStatus.isLoading
+                    ? `Loading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`
+                    : `Load ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}`}
+              </span>
               {webllmStatus.isLoading && (
                 <span className="text-[10px] text-amber-500 font-mono animate-pulse">({webllmStatus.progressPercent}%)</span>
               )}
               {webllmStatus.isReady && (
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Qwen 3.5 0.8B Active" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" title={webllmStatus.activeLabel} />
               )}
             </button>
             <button
@@ -905,6 +992,25 @@ export function PracticeStudio({
             </button>
           </div>
         </div>
+
+        {(webllmStatus.isLoading || webllmStatus.error) && (
+          <div
+            className={`mt-2 px-3 py-2 rounded-xl border text-xs flex flex-wrap items-center justify-between gap-2 ${
+              webllmStatus.error
+                ? "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300"
+                : "bg-sky-50/80 dark:bg-sky-950/30 border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200"
+            }`}
+          >
+            <span className="truncate">
+              {webllmStatus.error
+                ? `${webllmStatus.error} You can still mark answers immediately with Instant Examiner.`
+                : `${webllmStatus.progressText || `Loading ${QWEN_MODELS[webllmStatus.activeTier].shortLabel}...`} (You can still mark answers immediately!)`}
+            </span>
+            {webllmStatus.isLoading && (
+              <span className="font-mono font-bold shrink-0">{webllmStatus.progressPercent}%</span>
+            )}
+          </div>
+        )}
 
         <div className="study-workspace">
           <aside className="study-section-rail" aria-label="Practice navigation">
@@ -1158,6 +1264,50 @@ export function PracticeStudio({
                         rows={activePaper1Question.mark_value >= 6 ? 9 : 5}
                         className="study-response"
                       />
+
+                      {activeAoContext.ao2Max > 0 && (
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                          <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+                            <span
+                              className={`px-2 py-0.5 rounded font-bold border ${
+                                liveCaseContextDetection.foundWords.length > 0
+                                  ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
+                                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-700"
+                              }`}
+                            >
+                              {liveCaseContextDetection.foundWords.length} AO2 Case Context Facts
+                            </span>
+                            {liveCaseContextDetection.foundWords.slice(0, 4).map((kw) => (
+                              <span
+                                key={kw}
+                                className="px-1.5 py-0.5 rounded bg-emerald-100/70 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-[10px]"
+                              >
+                                {kw}
+                              </span>
+                            ))}
+                          </div>
+                          {studentAnswer.trim() && (
+                            <button
+                              type="button"
+                              onClick={() => setShowLiveStudentAoHighlight(!showLiveStudentAoHighlight)}
+                              className="text-[11px] font-mono font-semibold text-sky-700 dark:text-sky-300 hover:underline cursor-pointer"
+                            >
+                              {showLiveStudentAoHighlight ? "Hide Live AO Highlighter" : "Show Live AO Highlighter"}
+                            </button>
+                          )}
+                        </div>
+                      )}
+
+                      {showLiveStudentAoHighlight && studentAnswer.trim() && !evaluationResult && (
+                        <AOHighlightViewer
+                          title="Live Draft — AO Structure & Case Context Highlighter"
+                          text={studentAnswer}
+                          isStudentAnswer={true}
+                          validAppWords={activeAoContext.validAppWords}
+                          caseContext={activeAoContext.caseContext}
+                          ao2Max={activeAoContext.ao2Max}
+                        />
+                      )}
                     </div>
 
                     {/* Bottom Actions Bar */}
@@ -1311,6 +1461,52 @@ export function PracticeStudio({
                     rows={8}
                     className="w-full p-4 bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 rounded-xl text-sm leading-relaxed text-[#1C1917] dark:text-white focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white focus:outline-none transition-all font-sans"
                   />
+
+                  {activeAoContext.ao2Max > 0 && (
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-2">
+                      <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+                        <span
+                          className={`px-2 py-0.5 rounded font-bold border ${
+                            liveCaseContextDetection.foundWords.length > 0
+                              ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-700"
+                          }`}
+                        >
+                          {liveCaseContextDetection.foundWords.length} AO2 Case Context Facts
+                        </span>
+                        {liveCaseContextDetection.foundWords.slice(0, 4).map((kw) => (
+                          <span
+                            key={kw}
+                            className="px-1.5 py-0.5 rounded bg-emerald-100/70 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-[10px]"
+                          >
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                      {studentAnswer.trim() && (
+                        <button
+                          type="button"
+                          onClick={() => setShowLiveStudentAoHighlight(!showLiveStudentAoHighlight)}
+                          className="text-[11px] font-mono font-semibold text-sky-700 dark:text-sky-300 hover:underline cursor-pointer"
+                        >
+                          {showLiveStudentAoHighlight ? "Hide Live AO Highlighter" : "Show Live AO Highlighter"}
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {showLiveStudentAoHighlight && studentAnswer.trim() && !evaluationResult && (
+                    <div className="mt-2">
+                      <AOHighlightViewer
+                        title="Live Draft — AO Structure & Case Context Highlighter"
+                        text={studentAnswer}
+                        isStudentAnswer={true}
+                        validAppWords={activeAoContext.validAppWords}
+                        caseContext={activeAoContext.caseContext}
+                        ao2Max={activeAoContext.ao2Max}
+                      />
+                    </div>
+                  )}
 
                   <div className="flex justify-end mt-4">
                     <button
@@ -1618,6 +1814,50 @@ export function PracticeStudio({
                             rows={activeVerifiedQuestion.marks >= 8 ? 9 : 6}
                             className="study-response"
                           />
+
+                          {activeAoContext.ao2Max > 0 && (
+                            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                              <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+                                <span
+                                  className={`px-2 py-0.5 rounded font-bold border ${
+                                    liveCaseContextDetection.foundWords.length > 0
+                                      ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
+                                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-700"
+                                  }`}
+                                >
+                                  {liveCaseContextDetection.foundWords.length} AO2 Case Context Facts
+                                </span>
+                                {liveCaseContextDetection.foundWords.slice(0, 4).map((kw) => (
+                                  <span
+                                    key={kw}
+                                    className="px-1.5 py-0.5 rounded bg-emerald-100/70 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-[10px]"
+                                  >
+                                    {kw}
+                                  </span>
+                                ))}
+                              </div>
+                              {studentAnswer.trim() && (
+                                <button
+                                  type="button"
+                                  onClick={() => setShowLiveStudentAoHighlight(!showLiveStudentAoHighlight)}
+                                  className="text-[11px] font-mono font-semibold text-sky-700 dark:text-sky-300 hover:underline cursor-pointer"
+                                >
+                                  {showLiveStudentAoHighlight ? "Hide Live AO Highlighter" : "Show Live AO Highlighter"}
+                                </button>
+                              )}
+                            </div>
+                          )}
+
+                          {showLiveStudentAoHighlight && studentAnswer.trim() && !evaluationResult && (
+                            <AOHighlightViewer
+                              title="Live Draft — AO Structure & Case Context Highlighter"
+                              text={studentAnswer}
+                              isStudentAnswer={true}
+                              validAppWords={activeAoContext.validAppWords}
+                              caseContext={activeAoContext.caseContext}
+                              ao2Max={activeAoContext.ao2Max}
+                            />
+                          )}
                         </div>
 
                         <div className="study-answer-actions">
@@ -1714,13 +1954,15 @@ export function PracticeStudio({
               </button>
 
               <span className="px-3 py-1.5 rounded-xl bg-[#FAF9F6] dark:bg-black border border-[#E7E5E4] dark:border-neutral-700 text-xs font-mono font-bold text-[#0F2042] dark:text-white">
-                {evaluationResult.isAiEvaluated ? "Qwen 3.5 0.8B WebGPU + Rules" : "Website Rules + CIE Examiner"}
+                {evaluationResult.isAiEvaluated
+                  ? `${QWEN_MODELS["0.8b"].shortLabel} WebGPU + Rules`
+                  : "Website Rules + CIE Examiner"}
               </span>
             </div>
           </div>
 
           {/* Rule Enforcement Status Cards */}
-          {evaluationResult.ruleEnforcement && (
+          {evaluationResult.ruleEnforcement && !isTwoMarkKnowledgeOnly && (
             <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
               <strong className="text-slate-900 dark:text-slate-100 block font-mono text-[11px] uppercase tracking-wider">
                 Website Code Rules Enforcement Audit:
@@ -1765,21 +2007,31 @@ export function PracticeStudio({
                 {evaluationResult.ruleEnforcement.evalWordRequired ? (
                   <div
                     className={`p-3 rounded-lg border ${
-                      evaluationResult.ruleEnforcement.evalWordPassed
+                      evaluationResult.ruleEnforcement.evalWordPassed && evaluationResult.aoBreakdown.ao4.score > 0
                         ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200"
+                        : evaluationResult.ruleEnforcement.evalWordPassed
+                        ? "bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 text-amber-950 dark:text-amber-200"
                         : "bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-950 dark:text-rose-200"
                     }`}
                   >
                     <div className="font-bold flex items-center justify-between">
                       <span>AO4 Evaluation Judgment Scan:</span>
                       <span>
-                        {evaluationResult.ruleEnforcement.evalWordPassed ? "✓ Rule Passed" : "✕ Capped to 0"}
+                        {evaluationResult.ruleEnforcement.evalWordPassed && evaluationResult.aoBreakdown.ao4.score > 0
+                          ? `✓ Rule Passed (${evaluationResult.aoBreakdown.ao4.score}/${evaluationResult.aoBreakdown.ao4.max})`
+                          : evaluationResult.ruleEnforcement.evalWordPassed
+                          ? "Needs Justification (0/" + evaluationResult.aoBreakdown.ao4.max + ")"
+                          : "✕ Capped to 0"}
                       </span>
                     </div>
                     <div className="mt-1 text-[11px]">
-                      {evaluationResult.ruleEnforcement.evalWordPassed ? (
+                      {evaluationResult.ruleEnforcement.evalWordPassed && evaluationResult.aoBreakdown.ao4.score > 0 ? (
                         <span>
-                          Found judgment phrasing: <strong className="font-mono">[{evaluationResult.ruleEnforcement.evalWordsFound?.join(", ")}]</strong>. Awarded AO4 evaluation marks ({evaluationResult.aoBreakdown.ao4.score}/{evaluationResult.aoBreakdown.ao4.max}).
+                          Found judgment phrasing: <strong className="font-mono">[{evaluationResult.ruleEnforcement.evalWordsFound?.join(", ")}]</strong>. Awarded {evaluationResult.aoBreakdown.ao4.score}/{evaluationResult.aoBreakdown.ao4.max} AO4 evaluation marks.
+                        </span>
+                      ) : evaluationResult.ruleEnforcement.evalWordPassed ? (
+                        <span>
+                          Found phrasing <strong className="font-mono">[{evaluationResult.ruleEnforcement.evalWordsFound?.join(", ")}]</strong>, but more developed trade-off justification is needed to earn AO4 marks (0/{evaluationResult.aoBreakdown.ao4.max}).
                         </span>
                       ) : (
                         <span>
@@ -1801,7 +2053,11 @@ export function PracticeStudio({
           )}
 
           {/* Assessment Objectives Breakdown (AO1, AO2, AO3, AO4) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
+          <div
+            className={`grid gap-3 font-mono text-xs ${
+              isTwoMarkKnowledgeOnly ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-4"
+            }`}
+          >
             <div className="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
               <span className="text-[10px] text-slate-500 block">AO1 Knowledge</span>
               <strong className="text-lg text-slate-800 dark:text-slate-200">
@@ -1812,29 +2068,65 @@ export function PracticeStudio({
               </p>
             </div>
 
+            {!isTwoMarkKnowledgeOnly && (
             <div
               className={`p-3 rounded-xl border ${
-                evaluationResult.ruleEnforcement?.ao2CappedToZero
+                evaluationResult.ruleEnforcement?.ao2CappedToZero ||
+                (evaluationResult.aoBreakdown.ao2.max > 0 && evaluationResult.aoBreakdown.ao2.score === 0)
                   ? "bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900"
+                  : evaluationResult.aoBreakdown.ao2.max === 0
+                  ? "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
                   : "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-900"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] text-blue-500 block">AO2 Application</span>
-                {evaluationResult.ruleEnforcement?.ao2CappedToZero && (
-                  <span className="text-[9px] font-bold text-rose-600 dark:text-rose-400 uppercase">
-                    Capped
-                  </span>
-                )}
+                <span
+                  className={`text-[10px] block ${
+                    evaluationResult.ruleEnforcement?.ao2CappedToZero ||
+                    (evaluationResult.aoBreakdown.ao2.max > 0 && evaluationResult.aoBreakdown.ao2.score === 0)
+                      ? "text-rose-600 dark:text-rose-400"
+                      : evaluationResult.aoBreakdown.ao2.max === 0
+                      ? "text-slate-500"
+                      : "text-blue-500"
+                  }`}
+                >
+                  AO2 Application
+                </span>
+                {evaluationResult.aoBreakdown.ao2.max > 0 &&
+                  (evaluationResult.ruleEnforcement?.ao2CappedToZero || evaluationResult.aoBreakdown.ao2.score === 0) && (
+                    <span className="text-[9px] font-bold text-rose-600 dark:text-rose-400 uppercase">
+                      {evaluationResult.ruleEnforcement?.ao2CappedToZero ? "Capped" : "0 Awarded"}
+                    </span>
+                  )}
               </div>
-              <strong className="text-lg text-blue-800 dark:text-blue-200">
+              <strong
+                className={`text-lg ${
+                  evaluationResult.ruleEnforcement?.ao2CappedToZero ||
+                  (evaluationResult.aoBreakdown.ao2.max > 0 && evaluationResult.aoBreakdown.ao2.score === 0)
+                    ? "text-rose-800 dark:text-rose-200"
+                    : evaluationResult.aoBreakdown.ao2.max === 0
+                    ? "text-slate-700 dark:text-slate-300"
+                    : "text-blue-800 dark:text-blue-200"
+                }`}
+              >
                 {evaluationResult.aoBreakdown.ao2.score} / {evaluationResult.aoBreakdown.ao2.max}
               </strong>
-              <p className="text-[11px] font-sans text-blue-600 dark:text-blue-400 mt-1">
+              <p
+                className={`text-[11px] font-sans mt-1 ${
+                  evaluationResult.ruleEnforcement?.ao2CappedToZero ||
+                  (evaluationResult.aoBreakdown.ao2.max > 0 && evaluationResult.aoBreakdown.ao2.score === 0)
+                    ? "text-rose-700 dark:text-rose-300"
+                    : evaluationResult.aoBreakdown.ao2.max === 0
+                    ? "text-slate-500 dark:text-slate-400"
+                    : "text-blue-600 dark:text-blue-400"
+                }`}
+              >
                 {evaluationResult.aoBreakdown.ao2.feedback}
               </p>
             </div>
+            )}
 
+            {!isTwoMarkKnowledgeOnly && (
             <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-900">
               <span className="text-[10px] text-amber-500 block">AO3 Analysis</span>
               <strong className="text-lg text-amber-800 dark:text-amber-200">
@@ -1844,30 +2136,148 @@ export function PracticeStudio({
                 {evaluationResult.aoBreakdown.ao3.feedback}
               </p>
             </div>
+            )}
 
+            {!isTwoMarkKnowledgeOnly && (
             <div
               className={`p-3 rounded-xl border ${
-                evaluationResult.ruleEnforcement?.ao4CappedToZero
+                evaluationResult.aoBreakdown.ao4.max === 0
+                  ? "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800"
+                  : evaluationResult.aoBreakdown.ao4.score === 0 || evaluationResult.ruleEnforcement?.ao4CappedToZero
                   ? "bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900"
+                  : evaluationResult.aoBreakdown.ao4.score < evaluationResult.aoBreakdown.ao4.max
+                  ? "bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900"
                   : "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-900"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] text-emerald-500 block">AO4 Evaluation</span>
-                {evaluationResult.ruleEnforcement?.ao4CappedToZero && (
+                <span
+                  className={`text-[10px] block ${
+                    evaluationResult.aoBreakdown.ao4.max === 0
+                      ? "text-slate-500"
+                      : evaluationResult.aoBreakdown.ao4.score === 0 || evaluationResult.ruleEnforcement?.ao4CappedToZero
+                      ? "text-rose-600 dark:text-rose-400"
+                      : evaluationResult.aoBreakdown.ao4.score < evaluationResult.aoBreakdown.ao4.max
+                      ? "text-amber-600 dark:text-amber-400"
+                      : "text-emerald-600 dark:text-emerald-400"
+                  }`}
+                >
+                  AO4 Evaluation
+                </span>
+                {evaluationResult.aoBreakdown.ao4.max > 0 && (evaluationResult.ruleEnforcement?.ao4CappedToZero || evaluationResult.aoBreakdown.ao4.score === 0) && (
                   <span className="text-[9px] font-bold text-rose-600 dark:text-rose-400 uppercase">
-                    Capped
+                    {evaluationResult.ruleEnforcement?.ao4CappedToZero ? "Capped" : "0 Awarded"}
                   </span>
                 )}
               </div>
-              <strong className="text-lg text-emerald-800 dark:text-emerald-200">
+              <strong
+                className={`text-lg ${
+                  evaluationResult.aoBreakdown.ao4.max === 0
+                    ? "text-slate-700 dark:text-slate-300"
+                    : evaluationResult.aoBreakdown.ao4.score === 0 || evaluationResult.ruleEnforcement?.ao4CappedToZero
+                    ? "text-rose-800 dark:text-rose-200"
+                    : evaluationResult.aoBreakdown.ao4.score < evaluationResult.aoBreakdown.ao4.max
+                    ? "text-amber-800 dark:text-amber-200"
+                    : "text-emerald-800 dark:text-emerald-200"
+                }`}
+              >
                 {evaluationResult.aoBreakdown.ao4.score} / {evaluationResult.aoBreakdown.ao4.max}
               </strong>
-              <p className="text-[11px] font-sans text-emerald-600 dark:text-emerald-400 mt-1">
+              <p
+                className={`text-[11px] font-sans mt-1 ${
+                  evaluationResult.aoBreakdown.ao4.max === 0
+                    ? "text-slate-500 dark:text-slate-400"
+                    : evaluationResult.aoBreakdown.ao4.score === 0 || evaluationResult.ruleEnforcement?.ao4CappedToZero
+                    ? "text-rose-700 dark:text-rose-300"
+                    : evaluationResult.aoBreakdown.ao4.score < evaluationResult.aoBreakdown.ao4.max
+                    ? "text-amber-700 dark:text-amber-300"
+                    : "text-emerald-700 dark:text-emerald-300"
+                }`}
+              >
                 {evaluationResult.aoBreakdown.ao4.feedback}
               </p>
             </div>
+            )}
           </div>
+
+          {/* Anti-Halo Paragraph Audit Breakdown */}
+          {evaluationResult.paragraphAudits && evaluationResult.paragraphAudits.length > 0 && (
+            <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-3 text-xs">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <strong className="text-slate-900 dark:text-slate-100 font-mono text-[11px] uppercase tracking-wider">
+                  Cambridge 0264 Anti-Halo Paragraph Isolation Audit
+                </strong>
+                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                  Evaluated in vacuum · Total = Σ paragraph subtotals
+                </span>
+              </div>
+
+              <div className="space-y-2.5">
+                {evaluationResult.paragraphAudits.map((p) => (
+                  <div
+                    key={p.paragraph_number}
+                    className={`p-3 rounded-lg border space-y-1.5 ${
+                      p.is_duplicate || p.subtotal === 0
+                        ? "bg-rose-50/60 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
+                        : p.max_subtotal && p.subtotal >= p.max_subtotal
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900"
+                        : "bg-white dark:bg-neutral-900 border-slate-200 dark:border-slate-800"
+                    }`}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono font-bold text-slate-900 dark:text-slate-100">
+                          Paragraph {p.paragraph_number}
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px] uppercase">
+                          {p.role === "conclusion"
+                            ? "Conclusion"
+                            : p.role === "option"
+                            ? "Option"
+                            : "Body Point"}
+                        </span>
+                        {p.is_duplicate && (
+                          <span className="px-2 py-0.5 rounded bg-rose-200 dark:bg-rose-900/70 text-rose-900 dark:text-rose-200 font-mono text-[10px] font-bold">
+                            Duplicate (0 marks)
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                        {isTwoMarkKnowledgeOnly ? (
+                          <span className="text-slate-700 dark:text-slate-300">
+                            K: {p.k_score}/{p.max_subtotal ?? 2}
+                          </span>
+                        ) : p.role === "conclusion" ? (
+                          <span className="text-slate-700 dark:text-slate-300">
+                            Eval: {p.eval_score ?? 0}/{p.max_subtotal ?? 2}
+                          </span>
+                        ) : (
+                          <span className="text-slate-700 dark:text-slate-300">
+                            K:{p.k_score} · App:{p.app_score}
+                            {evaluationResult.aoBreakdown.ao3.max > 0 ? ` · An:${p.an_score}` : ""}
+                          </span>
+                        )}
+                        <span className="px-2 py-0.5 rounded bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-black font-bold">
+                          {p.subtotal}/{p.max_subtotal ?? 3}
+                        </span>
+                      </div>
+                    </div>
+
+                    {p.isolated_quote && (
+                      <blockquote className="text-[11px] italic text-slate-600 dark:text-slate-400 border-l-2 border-slate-300 dark:border-slate-700 pl-2.5 line-clamp-3">
+                        "{p.isolated_quote}"
+                      </blockquote>
+                    )}
+
+                    <p className="text-[11px] font-sans text-slate-800 dark:text-slate-200">
+                      {p.critique}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Strengths & Improvements */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -1921,6 +2331,9 @@ export function PracticeStudio({
                 title="Your Submitted Response — Live AO Structure Analysis"
                 text={studentAnswer}
                 isStudentAnswer={true}
+                validAppWords={activeAoContext.validAppWords}
+                caseContext={activeAoContext.caseContext}
+                ao2Max={evaluationResult.aoBreakdown.ao2.max}
               />
             )}
           </div>
@@ -1930,6 +2343,9 @@ export function PracticeStudio({
             title="Official Cambridge Model Answer Outline"
             text={evaluationResult.modelAnswerSnippet}
             isStudentAnswer={false}
+            validAppWords={activeAoContext.validAppWords}
+            caseContext={activeAoContext.caseContext}
+            ao2Max={evaluationResult.aoBreakdown.ao2.max}
           />
         </div>
       )}

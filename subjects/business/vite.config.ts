@@ -14,6 +14,9 @@ export default defineConfig(() => {
         '@': path.resolve(import.meta.dirname || '.', '.'),
       },
     },
+    optimizeDeps: {
+      exclude: ['@huggingface/transformers'],
+    },
     build: {
       chunkSizeWarningLimit: 8000,
       outDir: 'dist',

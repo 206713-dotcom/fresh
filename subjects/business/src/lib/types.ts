@@ -83,6 +83,30 @@ export interface ManualOverrideData {
   };
 }
 
+export type GradingQuestionType =
+  | "paper1_2m"
+  | "paper1_4m"
+  | "paper1_6m"
+  | "paper1_8m"
+  | "paper2_8m_a"
+  | "paper2_12m_b";
+
+export interface ParagraphAuditItem {
+  paragraph_number: number;
+  role?: "body_point" | "option" | "conclusion";
+  isolated_quote: string;
+  k_score: number;
+  app_score: number;
+  an_score: number;
+  eval_score?: number;
+  subtotal: number;
+  max_subtotal?: number;
+  critique: string;
+  is_duplicate?: boolean;
+  app_words_found?: string[];
+  has_detailed_an?: boolean;
+}
+
 export interface EvaluationResult {
   totalScore: number;
   maxMarks: number;
@@ -94,6 +118,8 @@ export interface EvaluationResult {
   modelAnswerSnippet: string;
   isAiEvaluated: boolean;
   evaluatedAt: string;
+  questionType?: GradingQuestionType;
+  paragraphAudits?: ParagraphAuditItem[];
   ruleEnforcement?: RuleEnforcementResult;
   manualOverride?: ManualOverrideData;
 }
@@ -131,16 +157,6 @@ export interface DailyQuizQuestion {
   correctDefinition: string;
   options: string[];
   unit: string;
-  examAdvice: string;
-}
-
-export interface EconsGlossaryTerm {
-  id: string;
-  term: string;
-  definition: string;
-  unit: string;
-  diagramName?: string;
-  formula?: string;
   examAdvice: string;
 }
 
