@@ -252,7 +252,10 @@ function setupPractice() {
     try {
       state.feedback=q.options
         ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
-        : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer),q.marks)+ecbizMarking.scheme(q);
+        : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer,undefined,message=>{
+          state.feedback='<p>'+escapeHtml(message)+'</p>';
+          showFeedback();
+        }),q.marks)+ecbizMarking.scheme(q);
       if(q.reference) {
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
           escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';

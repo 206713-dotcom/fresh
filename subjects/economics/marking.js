@@ -19,14 +19,14 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const workerURL = new URL('marking-worker.js?v=1', document.currentScript.src);
+  const workerURL = new URL('marking-worker.js?v=2', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
   let task;
   let nextId = 0;
 
-  async function evaluate(question, answer, image) {
+  async function evaluate(question, answer, image, report) {
     if (!navigator.gpu || typeof Worker !== 'function') {
       throw new Error('On-device marking needs a browser and device with WebGPU. Your answer is still here.');
     }
@@ -34,7 +34,7 @@ const ecbizMarking = (() => {
       worker = new Worker(workerURL, { type: 'module' });
       worker.onmessage = ({ data }) => {
         if (!task || data.id !== task.id) return;
-        if (data.progress) status.textContent = data.progress;
+        if (data.progress) task.progress(data.progress);
         else if (data.error) task.reject(new Error(data.error));
         else task.resolve(data.grade);
       };
@@ -44,16 +44,45 @@ const ecbizMarking = (() => {
       worker.onmessageerror = () => task?.reject(new Error('The local marker returned an unreadable result. Try again.'));
     }
     status.hidden = false;
-    status.textContent = 'Preparing on-device marking…';
+    let stage = 'Starting the on-device marker…';
+    function showProgress(message) {
+      stage = message;
+      status.textContent = message;
+      report?.(message);
+    }
+    showProgress(stage);
     try {
       return await new Promise((resolve, reject) => {
         const id = ++nextId;
-        const timeout = setTimeout(() => reject(new Error('On-device marking timed out. Check your connection and try again.')), 600000);
+        let idleTimer;
+        const idle = () => task.reject(new Error(
+          stage === 'Marking on your device…'
+            ? 'The device took too long to mark this answer. Try again with a shorter answer.'
+            : 'The local model stopped loading. Check your connection and try again.'
+        ));
+        const resetIdle = () => {
+          clearTimeout(idleTimer);
+          idleTimer = setTimeout(idle, stage === 'Marking on your device…' ? 120000 : 90000);
+        };
+        const overall = setTimeout(() => task.reject(new Error('The local model took too long. Please try again.')), 300000);
+        const settle = (callback, value) => {
+          clearTimeout(idleTimer);
+          clearTimeout(overall);
+          callback(value);
+        };
         task = {
           id,
-          resolve: grade => { clearTimeout(timeout); resolve(grade); },
-          reject: error => { clearTimeout(timeout); reject(error); }
+          progress(message) {
+            if (stage !== message) resetIdleAfterProgress(message);
+          },
+          resolve: grade => settle(resolve, grade),
+          reject: error => settle(reject, error)
         };
+        function resetIdleAfterProgress(message) {
+          showProgress(message);
+          resetIdle();
+        }
+        resetIdle();
         try {
           worker.postMessage({ id, question, answer, image });
         } catch (error) {
@@ -71,7 +100,7 @@ const ecbizMarking = (() => {
     }
   }
 
-  function grade(id, answer, image) {
+  function grade(id, answer, image, report) {
     const question = questionBank().get(id);
     const response = answer.trim();
     if (!question?.scheme || response.length > 8000 || (!response && !image) || (image && !question.diagram)) {
@@ -79,7 +108,8 @@ const ecbizMarking = (() => {
     }
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
-      const request = queue.then(() => evaluate(question, response, image));
+      report?.('Waiting for the on-device marker…');
+      const request = queue.then(() => evaluate(question, response, image, report));
       queue = request.catch(() => {});
       pending.set(key, request);
       const clear = () => pending.delete(key);
