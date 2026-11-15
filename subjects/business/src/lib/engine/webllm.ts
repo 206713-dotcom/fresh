@@ -423,8 +423,8 @@ export interface WebLLMEvaluationOutput {
 }
 
 /**
- * Strips any <think>...</think> blocks and extracts the substring between
- * the first '{' and last '}' so extra conversational text never breaks JSON.parse().
+ * Extracts the first complete JSON object after any thinking output.
+ * Quoted braces and a second object in trailing text do not affect the boundary.
  */
 export function extractJsonObjectString(raw: string): string | null {
   if (!raw || typeof raw !== "string") return null;
@@ -432,10 +432,26 @@ export function extractJsonObjectString(raw: string): string | null {
     .replace(/<think>[\s\S]*?<\/think>/gi, "")
     .replace(/<think>[\s\S]*$/gi, "")
     .trim();
-  const firstBrace = withoutThink.indexOf("{");
-  const lastBrace = withoutThink.lastIndexOf("}");
-  if (firstBrace === -1 || lastBrace <= firstBrace) return null;
-  return withoutThink.slice(firstBrace, lastBrace + 1);
+  const start = withoutThink.indexOf("{");
+  if (start === -1) return null;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = start; index < withoutThink.length; index++) {
+    const char = withoutThink[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (char === "\\") escaped = true;
+      else if (char === '"') inString = false;
+    } else if (char === '"') {
+      inString = true;
+    } else if (char === "{") {
+      depth++;
+    } else if (char === "}" && --depth === 0) {
+      return withoutThink.slice(start, index + 1);
+    }
+  }
+  return null;
 }
 
 export function formatRulePreScanForPrompt(preScan?: RulePreScanContext): string {
@@ -940,8 +956,8 @@ ${numberedAnswer}
 
 Respond with this JSON shape only:
 {"paragraphs":[[1,1,0,0,0,"Add a specific case detail"]]}
-Return exactly ${paragraphs.length} rows, one for each numbered paragraph.
-The columns are [paragraph number, knowledge score, application score, analysis score, evaluation score, feedback of at most 8 words].
+Include one row for each numbered paragraph, with these columns in order:
+[paragraph number, knowledge score, application score, analysis score, evaluation score, feedback of at most 8 words].
 Do not copy the answer text into the JSON. Do not add other fields.`;
 }
 

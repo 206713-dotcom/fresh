@@ -987,7 +987,7 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   }`;
   const twoParagraphs = "Lower costs improve margins.\n\nLocal suppliers reduce delivery delays.";
   const compact = '{"paragraphs":[[1,1,0,1,0,"Use a case fact"],[2,1,1,0,0,"Explain the effect on sales"]]}';
-  const compactAudit = parseParagraphAuditResponse(compact, "paper1_6m", twoParagraphs);
+  const compactAudit = parseParagraphAuditResponse(`${compact}\n{"extra":"trailing output"}`, "paper1_6m", twoParagraphs);
   assert.equal(compactAudit.paragraphs[1].isolated_quote, "Local suppliers reduce delivery delays.");
   assert.equal(compactAudit.paragraphs[1].subtotal, 2);
   assert.throws(
