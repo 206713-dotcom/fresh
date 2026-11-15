@@ -1902,7 +1902,7 @@ export const DETAILED_0264_SYLLABUS: DetailedSection[] = [
       },
       {
         "code": "5.2",
-        "title": "Cash ffow forecast",
+        "title": "Cash flow forecast",
         "subtopics": [
           {
             "code": "5.2.1",

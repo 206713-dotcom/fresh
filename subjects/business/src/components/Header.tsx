@@ -6,7 +6,6 @@ import {
   ArrowLeft,
   Headphones,
   LayoutGrid,
-  Zap,
   Menu,
   X,
   BookOpen,
@@ -73,7 +72,7 @@ const primaryNavigation = [
   { tab: "practice", label: "Paper 1", Icon: FileText },
   { tab: "paper2", label: "Paper 2", Icon: BookOpen },
   { tab: "lessons", label: "Lessons", Icon: GraduationCap },
-  { tab: "quick-quiz", label: "Quick Quiz", Icon: Zap },
+  { tab: "checklist", label: "Checklist", Icon: CheckSquare },
 ] as const;
 
 export function Header({
@@ -350,7 +349,7 @@ export function Header({
               }`}
             >
               <CheckSquare className="w-3.5 h-3.5" />
-              <span>Checklist</span>
+              <span>Syllabus</span>
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${
                   openDropdown === "checklist" ? "rotate-180" : ""

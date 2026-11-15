@@ -153,6 +153,8 @@ export default function App() {
         const openParam = params.get("open") || params.get("tab");
         if (openParam === "overview") {
           setBusinessTab("overview");
+        } else if (openParam === "checklist") {
+          setBusinessTab("checklist");
         } else if (openParam === "paper2") {
           setBusinessTab("paper2");
         } else if (openParam === "lessons") {
@@ -195,7 +197,8 @@ export default function App() {
 
   const handleSelectBusinessSection = (sectionCode: string, topicCode?: string) => {
     setSelectedPracticeSection(sectionCode);
-    if (topicCode) setSelectedPracticeTopic(topicCode);
+    setSelectedPracticeTopic(topicCode);
+    window.scrollTo(0, 0);
     setBusinessTab("practice");
     if (["1", "2", "3", "4", "5", "6"].includes(sectionCode)) {
       setPracticeMode("paper1_database");
@@ -350,11 +353,7 @@ export default function App() {
           {businessTab === "checklist" && (
             <div className="study-page">
               <SyllabusRevisionChecklist
-                onSelectTopicForPractice={(_subj, secCode, topCode) => {
-                  setSelectedPracticeSection(secCode);
-                  setSelectedPracticeTopic(topCode);
-                  setBusinessTab("practice");
-                }}
+                onSelectTopicForPractice={handleSelectBusinessSection}
               />
             </div>
           )}
