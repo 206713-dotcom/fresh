@@ -4,7 +4,7 @@
 
 **EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264 / 0450).** It turns the syllabus into a loop: learn the idea, answer the exact command word, get marked against AO1–AO4, find the gap, and come back to it later.
 
-[Browse the source](https://github.com/205737-cmyk/EcBiz) · [Report an issue](https://forms.gle/6X2CAR1LkSQGRBx68) · [Run it locally](#run-ecbiz-locally) · [Deploy your own](#deploy-ecbiz)
+[Source on GitHub (Fresh hub)](https://github.com/206713-dotcom/fresh) · [Report an issue](https://forms.gle/6X2CAR1LkSQGRBx68) · [Run it locally](#run-ecbiz-locally) · [Deploy your own](#deploy-ecbiz)
 
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-typed-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -38,7 +38,6 @@
 16. [Roadmap](#roadmap)
 17. [Credits](#credits)
 18. [Licence](#licence)
-
 ---
 
 ## Why EcBiz exists
@@ -71,7 +70,7 @@ The goal: give every student the same thing a well-resourced candidate gets — 
 | Granular syllabus statements | **255**, across 61 subtopics and 29 topics | `src/lib/data/detailed-syllabus-0264.ts` |
 | Glossary terms | **275** | `src/lib/data/glossary.ts` |
 | Advantages/disadvantages notes | **165** | `src/lib/data/compare-notes.ts` |
-| One-page revision sheets | **6** sections, **28** topic blocks | `src/lib/data/one-page-sheets.ts` |
+| Chapter summaries | **6** sections, **28** topic blocks | `src/lib/data/one-page-sheets.ts` |
 | Mock exam formats | **3** (Paper 1, Paper 2 full, Paper 2 short) | `src/components/MockExamMode.tsx` |
 | Achievements | **14** | `src/components/AchievementsModal.tsx` |
 | Themes | **5** (2 free, 3 coin-unlocked) | `src/lib/themes.ts` |
@@ -102,7 +101,7 @@ Third, I realised that feedback is only useful if it is **visible over time**. S
 | **Curriculum** | Mapped the 0264 syllabus into 255 granular statements, 61 subtopics and 29 topics. Structured 24 lessons around the six sections and the Sixth Edition textbook sequence. |
 | **Content** | Built 240 Paper 1 scenario sets and 100 Paper 2 case studies with appendices, 6,000 MCQs with explanations, 275 glossary terms, 165 comparison notes, and 189 verified past-paper questions with provenance metadata. |
 | **Assessment** | Designed the AO1–AO4 breakdown, deterministic application/evaluation rules, level-band descriptors, mark-scheme viewers, model-answer matching, manual overrides with an audit trail, and a fallback heuristic examiner. |
-| **AI** | Built a local in-browser examiner on Transformers.js and WebGPU: one Qwen 3.5 0.8B text decoder, a strict paragraph-audit JSON schema, deterministic TypeScript mark arithmetic, and a non-AI fallback examiner. |
+| **AI** | Built a local in-browser examiner on Transformers.js and WebGPU: one Qwen 3 0.6B text decoder, a strict paragraph-audit JSON schema, deterministic TypeScript mark arithmetic, and a non-AI fallback examiner. |
 | **Front end** | Built the whole interface in React 19, TypeScript, Vite 8 and Tailwind CSS 4: lessons, practice studios, mock exams, dashboards, glossary, checklist, archive, game, modals and responsive layouts. |
 | **Back end** | Wrote the Google Apps Script service that handles registration, login, salted password hashing, HMAC-signed sessions, lockouts, row-level reads/writes and progress snapshots into Google Sheets — with no external database. |
 | **Product & writing** | Wrote the teaching copy, exam guidance, mark-scheme language, onboarding, error states, empty states, accessibility labels and the feedback loop with classmates. |
@@ -168,7 +167,7 @@ For every question you get:
 - a model answer;
 - a live timer and a locally auto-saved draft, so a closed tab does not lose the paragraph you were midway through;
 - bookmarks for questions you want to revisit;
-- a choice of marking engine: **Instant** (heuristic, no download) or **Qwen 3.5 0.8B** (local WebGPU, more nuanced paragraph feedback).
+- a choice of marking engine: **Instant** (heuristic, no download) or **Qwen 3 0.6B** (local WebGPU, more nuanced paragraph feedback).
 
 The deterministic rules are deliberately strict. If the question requires case application and your answer contains none of the case's valid application keywords, AO2 is capped at zero. If an 8-mark evaluation question contains no evaluative judgement language, AO4 is capped at zero. The reasoning is shown in the feedback, so the cap teaches the rule instead of feeling arbitrary.
 
@@ -229,18 +228,34 @@ The question banks are the engine. The rest of the platform is the reason studen
 
 **Advantages and disadvantages.** 165 comparison notes organised by section and topic, written in the "on the one hand / on the other hand" shape that evaluation questions reward.
 
-**One-page sheets.** Six A4-style revision sheets covering 28 topic blocks, with structured points, visuals and exam framing. They are reachable from Sections & Chapters.
+**Chapter summaries.** A full-size, full-width revision view of every chapter: all topic blocks, visuals and exam takeaways on one scrollable document. Reachable from Sections & Chapters, the overview page, and the revision pack.
 
-**Sections & Chapters.** A syllabus-first view of all six sections that links every topic into the practice studio, the comparison notes or the one-page sheet.
+**Sections & Chapters.** A syllabus-first view of all six sections that links every topic into the practice studio, the comparison notes or the chapter summary.
 
 ### 8. Make it yours: coins, themes, focus space and the arena
 
 - **Study Coins** are earned across quizzes, lessons, challenges and the game.
 - **Themes** are pure CSS-variable swaps: Daylight and Midnight are free; Vintage Scholar, Blueprint and Sakura are bought with coins.
-- **Avatar customiser** includes 7 skin tones and 10 options each for hair, tops, bottoms and shoes.
+- **Avatar customiser** includes 7 skin tones and 15 options each for hair, tops, bottoms and shoes.
 - **Study Space** is a draggable focus widget with a Pomodoro timer, custom durations, ambient sound mixing and a "ghost mode" that keeps the numbers visible while fading the panel.
 - **Achievements** include 14 milestones for first submissions, context mastery, high marks, syllabus triage, focus sessions and glossary work.
-- **Boss Battle Arena** is a 2D canvas game with six business-themed bosses, question attacks, damage multipliers, armour tiers, extra lives and a shop. It is deliberately silly; it is also another retrieval loop.
+- **Boss Battle Arena** is a 2D canvas game with six business-themed bosses. It includes unit, subsection and focus filters (all subjects, wrong-only, definitions, calculations, application), spaced repetition that weights previously missed questions, armour tiers with real effects, extra lives, a shop with 9 character skins, 7 armour tiers up to Grandmaster Mantle, coin upgrades up to 100-ammo capacity, and distinct hair styles that render in-game. The top nav always has an **MCQ** entry for the 6,000-question drill.
+- **MCQ tab** in the top navigation opens the full 6,000-question drill bank instantly from any screen.
+
+### 9. Report issues from inside the app
+
+Every question view across Topical Practice, Official Past Papers, Paper 2 case studies and Boss Battle carries a subtle **Flag** button. Tap it and a compact dialog opens with:
+
+- four issue reasons: **Typo in question** · **Mark scheme issue** · **Wrong unit / tag** · **Other**
+- a confidence pill selector: **Pretty sure** (default) · **Very confident** · **100% certain**
+- an optional note field (up to 240 characters)
+- a single-submit guard so the same question cannot be reported twice in one session
+
+Reports land in a `Flagged_Questions` tab in the connected Google Sheet with the student's access code, name, timestamp and the exact question metadata. The identity fields are inherited by the signed-in session; guests are recorded as `guest`.
+
+### 10. Progressive difficulty and spaced repetition (Boss Battle)
+
+Boss Battle questions ramp by stage: early rounds hit definition and recall questions, later stages hit application and analysis. On higher difficulties the timer tightens further. The question pool respects the unit, subsection and focus filters you pick on the setup screen, and previously missed questions are drawn back into the rotation more often — with even more weight the more you miss them — until you answer them correctly.
 
 ---
 
@@ -268,7 +283,7 @@ Student answer
       │
       ▼
 ┌───────────────────────────────────────────────┐
-│ 2. Local Qwen 3.5 0.8B (Transformers.js)      │
+│ 2. Local Qwen 3 0.6B (Transformers.js)      │
 │    temperature 0.0 · adaptive token budget    │
 │    strict JSON schema · per-paragraph audit   │
 │    diagnostics only — no score arithmetic     │
@@ -310,19 +325,19 @@ That separation is why the engine can be strict even with a small model. The mod
 
 ### The six problems behind a sub-1B examiner
 
-Getting a 0.8B model to behave like a Cambridge examiner was not a single integration task. It took six separate engineering problems, each with its own failure mode, plus a lot of iteration after the first version "worked" but still marked unfairly. These are the ones that mattered.
+Getting a 0.6B model to behave like a Cambridge examiner was not a single integration task. It took six separate engineering problems, each with its own failure mode, plus a lot of iteration after the first version "worked" but still marked unfairly. These are the ones that mattered.
 
 #### 1. Running AI entirely on the device, without API keys or a 2B fallback
 
 **The problem.** External APIs meant server cost, rate limits and exposed keys. Supporting a second, larger model also doubled the download matrix, added memory pressure, and encouraged a false trade-off: "use the bigger model when the small one struggles." In practice, the 2B tier did not remove the need for deterministic guards — it just hid their absence behind a heavier download.
 
-**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the 2B tier completely, and standardised on **Qwen 3.5 0.8B** (`onnx-community/Qwen3.5-0.8B-ONNX`). The model loads through `AutoModelForCausalLM`, so only the text decoder is fetched (skipping the ~350 MB vision encoder), weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the deterministic **Instant Cambridge 0264 Examiner** rather than showing a dead end.
+**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the 2B tier completely, and standardised on **Qwen 3 0.6B** (`onnx-community/Qwen3-0.6B-ONNX-OPT`). The model loads through `AutoModelForCausalLM`, so only the text decoder is fetched, weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the deterministic **Instant Cambridge 0264 Examiner** rather than showing a dead end.
 
-**Why it mattered.** One model means one download (~560 MB), one cache key and one behaviour to test. The app now has to earn its accuracy in TypeScript instead of buying it with parameters — which turned out to be the more reliable design anyway.
+**Why it mattered.** One model means one download (~380 MB), one cache key and one behaviour to test. The app now has to earn its accuracy in TypeScript instead of buying it with parameters — which turned out to be the more reliable design anyway.
 
 #### 2. Small-model overload, `<think>` exhaustion and arithmetic drift
 
-**The problem.** Asking a 0.8B model to score AO1–AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3.5's default `<think>...</think>` blocks also consumed the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
+**The problem.** Asking a 0.6B model to score AO1-AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3 0.6B's default `<think>...</think>` blocks also consumed the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
 
 **What I changed.** I disabled thinking mode (`enable_thinking: false`), added `extractJsonObjectString()` to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. I then removed all score arithmetic from the AI: the model returns paragraph diagnostics, and `evaluateStudentEssay` / `computePaper2Scores` compute every subtotal, AO total and Level band in TypeScript. The token budget is now adaptive (`computeRecommendedMaxTokens`, roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
 
@@ -354,7 +369,7 @@ Getting a 0.8B model to behave like a Cambridge examiner was not a single integr
 
 #### 6. AO4 evaluation and official Paper 2 Level bands
 
-**The problem.** A 0.8B model struggled to separate a one-sided assertion from a balanced, justified conclusion, and it applied the official Level 1–3 descriptors inconsistently on 8-mark and 12-mark questions. Adding the AI's paragraph scores together also produced totals that contradicted the Level, and — on 2-mark definitions — it kept trying to award Application marks that the question does not assess.
+**The problem.** A 0.6B model struggled to separate a one-sided assertion from a balanced, justified conclusion, and it applied the official Level 1–3 descriptors inconsistently on 8-mark and 12-mark questions. Adding the AI's paragraph scores together also produced totals that contradicted the Level, and — on 2-mark definitions — it kept trying to award Application marks that the question does not assess.
 
 **What I changed.** I moved AO4 evaluation and Paper 2 Level gating out of the LLM and into deterministic TypeScript (`evaluateDeterministicAo4`, `computePaper2Scores`). The engine isolates the final conclusion (`extractFinalParagraph`) and checks for a clear recommendation, two-sided contrast, case-specific justification, comparison against the rejected alternative, and mitigation/contingency reasoning. Level 3, Level 2, Level 1 and Level 0 now use the official Cambridge wording; the final mark is gated by the Level rather than by paragraph addition. I also fixed two rubric mismatches:
 
@@ -391,7 +406,7 @@ The model runs on the student's device. Once the weights are cached, essay text 
 │      │                          Google Sheet                     │
 │      │                    Users · Students · Progress            │
 │      │                                                           │
-│      └──► Transformers.js (WebGPU) ──► Qwen 3.5 0.8B             │
+│      └──► Transformers.js (WebGPU) ──► Qwen 3 0.6B             │
 │              no essay upload                                     │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -549,7 +564,7 @@ This is a school-project security model, not audited production cryptography. Do
 - **Signed out:** everything stays in `localStorage`. No account, no upload.
 - **Signed in:** the app snapshots `ecbiz_*` keys to the teacher's Sheet. That includes quiz history, wrong-question IDs, drafts, lesson progress and coin balances.
 - **AI marking:** the model runs locally. Essay text is not sent to a third-party API by the app.
-- **Hosting:** the deployment imports Vercel Analytics for aggregate page views. Remove the `<Analytics />` component in `src/main.tsx` if you do not want it.
+- **Hosting:** hosted on GitHub Pages at [gisfresh.me](https://gisfresh.me/). No analytics or third-party tracking is included in the build.
 
 The sync layer is deliberately defensive: a failed pull reports an error instead of overwriting local data, and a stale Sheet row can never take coins away from a student mid-session.
 
@@ -562,7 +577,7 @@ The sync layer is deliberately defensive: a failed pull reports an error instead
 - The **verified archive** links to inspected Cambridge and Cambridge-branded PDFs and records its provenance. It is the closest thing to "the real thing" in the app.
 - The **large practice banks** are Cambridge-style questions written for revision. They follow the syllabus, command words and mark-scheme shape, but they are not past papers and should not be quoted as official.
 - The **AI examiner** produces practice feedback, not an official grade. It can be harsh, generous or wrong. Use the mark scheme, the model answer and your teacher's judgement.
-- The **lesson, glossary and one-page** material is original teaching copy mapped to the 0264 syllabus and the Sixth Edition textbook sequence. It is a study aid, not a replacement for the textbook or your teacher.
+- The **lesson, glossary and chapter summary** material is original teaching copy mapped to the 0264 syllabus and the Sixth Edition textbook sequence. It is a study aid, not a replacement for the textbook or your teacher.
 
 Some of the bulk content was drafted with AI assistance and then structured, checked and edited into the app. The verified archive exists precisely because generated practice should never be confused with a real paper. If you spot an error, use the feedback link at the top of the README.
 
@@ -596,8 +611,8 @@ Original source code, interface text and teaching notes are MIT licensed. Offici
 ### Install and run
 
 ```bash
-git clone https://github.com/205737-cmyk/EcBiz.git
-cd EcBiz
+git clone https://github.com/206713-dotcom/fresh.git
+cd fresh/subjects/business
 npm install
 cp .env.example .env.local   # optional: add your Apps Script URL
 npm run dev                  # Vite dev server on http://localhost:3000
@@ -643,7 +658,14 @@ VITE_APPS_SCRIPT_URL=https://script.google.com/macros/s/your-deployment-id/exec
 
 7. Restart the dev server.
 
-The script creates the `Users`, `Students` and `Progress` tabs on first use. A teacher can open the Sheet and see the class roster, coin balances, streaks, completed MCQs, wrong-question IDs and score bands without opening a separate admin tool. Coins can be raised directly in the Sheet; the app refreshes them on focus and once a minute.
+The script creates the `Users`, `Students` and `Progress` tabs on first use, plus two more:
+
+| Tab | Purpose |
+|---|---|
+| `Boss_Wrong_Questions` | Log of every wrong-answer MCQ from the app, with miss count and spaced-repetition weight. The app reads it to weight future Boss Battle question selection. |
+| `Flagged_Questions` | Reports submitted through the in-app flag/report workflow across all question modes. Teachers can see the exact question, the reason, the student's confidence and an optional note. |
+
+A teacher can open the Sheet and see the class roster, coin balances, streaks, completed MCQs, wrong-question IDs and score bands without opening a separate admin tool. Coins can be raised directly in the Sheet; the app refreshes them on focus and once a minute.
 
 If you leave the variable unset, the app stays local-only. Nothing breaks.
 
@@ -651,21 +673,17 @@ If you leave the variable unset, the app stays local-only. Nothing breaks.
 
 ## Deploy EcBiz
 
-EcBiz is a static site. The tested path is Vercel, because `vercel.json` already rewrites every route to `index.html` so `/sign-in`, `/sign-up` and `/dashboard` work on refresh.
+EcBiz is a static site. It is hosted on **GitHub Pages** at [gisfresh.me/subjects/business/Business.html](https://gisfresh.me/subjects/business/Business.html) as part of the broader Fresh hub.
 
-### Vercel
+### GitHub Pages (live)
 
-1. Push the repository to GitHub.
-2. Import it into Vercel.
-3. Framework preset: **Vite**.
-4. Build command: `npm run build`.
-5. Output directory: `dist`.
-6. Add `VITE_APPS_SCRIPT_URL` if you want the Sheet backend.
-7. Deploy.
+1. Build: `npm run build` from `subjects/business/`
+2. The build output (`index.html`, `Business.html`, `assets/`) is committed to the repo alongside the rest of Fresh.
+3. GitHub Pages serves it at `https://gisfresh.me/subjects/business/Business.html` with all assets resolved relatively (`./assets/…`) — no absolute paths, no Vercel dependency.
 
 ### Any static host
 
-Upload `dist/`. The host must support an SPA fallback to `index.html`; otherwise deep links such as `/dashboard` will 404. GitHub Pages needs an explicit fallback or a hash-based router, which this project does not currently use.
+Upload `subjects/business/` (or the parent Fresh repo). All asset references are relative (`./assets/…`) so it works under any path on any domain. Deep links like `?open=dashboard` work because the app reads query parameters, not browser routes.
 
 The app uses Google Fonts for typography. If you need a fully self-contained deployment, vendor the fonts locally and update `index.html`.
 
@@ -702,7 +720,7 @@ EcBiz/
 │   ├── lib/
 │   │   ├── engine/
 │   │   │   ├── evaluator.ts        # Rule scans, anti-halo isolation, deterministic AO4 + Levels
-│   │   │   └── webllm.ts           # Qwen 3.5 0.8B WebGPU loader, prompt, JSON parser
+│   │   │   └── webllm.ts           # Qwen 3 0.6B WebGPU loader, prompt, JSON parser
 │   │   ├── data/
 │   │   │   ├── mcq-bank-section1..6.ts
 │   │   │   ├── paper1-database.json
@@ -728,7 +746,6 @@ EcBiz/
 ├── public/assets/                  # Syllabus and revision documents
 ├── scripts/                        # Preview helpers + marking regression suite
 ├── .env.example
-├── vercel.json                     # SPA rewrites + Vite deployment
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
@@ -789,19 +806,19 @@ The marking engine was rebuilt around AO1–AO4. Deterministic keyword scans enf
 
 ### The examiner-hardening build — anti-halo, anti-repetition and deterministic Levels
 
-The first local examiner returned marks; this build made them defensible. Paragraph isolation removed the halo effect, the credit ledger removed repetition, and AO4 plus the Paper 2 Level bands moved entirely into TypeScript. The 2B tier was deleted in favour of a single Qwen 3.5 0.8B model, 2-mark definitions were locked to pure knowledge, and 12-mark results were rebuilt around the official Cambridge Level descriptors instead of paragraph arithmetic. The regression suite grew alongside each fix.
+The first local examiner returned marks; this build made them defensible. Paragraph isolation removed the halo effect, the credit ledger removed repetition, and AO4 plus the Paper 2 Level bands moved entirely into TypeScript. The 2B tier was deleted in favour of a single Qwen 3 0.6B model, 2-mark definitions were locked to pure knowledge, and 12-mark results were rebuilt around the official Cambridge Level descriptors instead of paragraph arithmetic. The regression suite grew alongside each fix.
 
 ### The classroom build — lessons, accounts and visibility
 
-Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary, 165 comparison notes, six one-page sheets and a verified past-paper archive completed the study surface. Optional accounts and the Sheet roster gave teachers a view without introducing a database. The current platform is the sum of those releases: a complete learn → practise → sit → review loop.
+Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary, 165 comparison notes, six chapter summaries and a verified past-paper archive completed the study surface. Optional accounts and the Sheet roster gave teachers a view without introducing a database. The current platform is the sum of those releases: a complete learn → practise → sit → review loop.
 
 ---
 
 ## Roadmap
 
-- [ ] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
+- [x] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
 - [ ] Extend automated coverage to the sync policy, auth helpers, fallback examiner and content integrity.
-- [ ] Add a review workflow for flagging and correcting a question from inside the app.
+- [x] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
 - [ ] Add exportable progress reports for teachers and parents.
@@ -818,7 +835,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Apps Script and Google Sheets** — the only persistence layer, chosen because external databases were not permitted.
 - **React, Vite, TypeScript, Tailwind CSS, Lucide, Motion and canvas-confetti** — the front-end stack.
-- **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3.5 0.8B text decoder.
+- **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B text decoder.
 - **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge and the confidence ratings all came from those conversations.
 
 ---
