@@ -92,26 +92,42 @@ function pointAlternatives(point) {
     : alternative)];
 }
 
+function definitionAlternatives(point) {
+  const alternatives = pointAlternatives(point);
+  if (point === 'Forgone / given up when making a choice') {
+    for (const verb of ['forgone', 'given up', 'sacrificed']) {
+      for (const context of ['when making a choice', 'when a choice is made',
+        'when making an economic decision', 'when an economic decision is made']) {
+        alternatives.push(verb + ' ' + context);
+      }
+    }
+  }
+  return alternatives;
+}
+
 function answerClauses(answer) {
   return answer.split(/[\n;→]+|(?<=[.!?])\s+(?=[A-Z])|(?<=\(1\))\s+(?=[A-Z])/)
     .map(clause => normalizePoint(clause.replace(/\(1\)(?=[.!?,:]?\s*$)/g, '')))
     .filter(Boolean);
 }
 
-function exactEvidence(points, clause) {
+function exactEvidence(points, clause, definition = false) {
+  const separator = definition
+    ? /^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+|\s+)/
+    : /^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+)/;
   // The entire clause must be explainable by scheme wording before it can earn direct credit.
-  const alternatives = points.flatMap(point => pointAlternatives(point)
+  const alternatives = points.flatMap(point => definitionAlternatives(point)
     .map(normalizePoint).filter(Boolean).map(text => ({ point, text })));
   const hits = [];
   let rest = clause;
   while (rest) {
     const match = alternatives.filter(({ text }) => rest === text ||
-      /^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+)/.test(rest.slice(text.length)) &&
+      separator.test(rest.slice(text.length)) &&
       rest.startsWith(text)).sort((a, b) => b.text.length - a.text.length)[0];
     if (!match) return [];
     hits.push(match.point);
     rest = rest.slice(match.text.length)
-      .replace(/^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+)/, '');
+      .replace(separator, '');
   }
   return hits;
 }
@@ -153,7 +169,7 @@ function exactRouteGrade(question, answer) {
 async function markDefinition(points, answer, report) {
   report('Checking your wording against the mark scheme…');
   const clauses = answerClauses(answer);
-  const exact = new Set(clauses.flatMap(clause => exactEvidence(points, clause)));
+  const exact = new Set(clauses.flatMap(clause => exactEvidence(points, clause, true)));
   const matches = points.map(point => exact.has(point));
   const unmatched = points.filter(point => !exact.has(point));
   if (unmatched.length) {
