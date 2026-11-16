@@ -1,0 +1,50 @@
+name: Build EcBiz Economics marker
+on:
+  push:
+    branches: [ecbiz-economics-model-build]
+    paths: ['.github/workflows/ecbiz-economics-model.yml', 'model-source/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ecbiz-economics-model-v1
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install export dependencies
+        run: |
+          python -m pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install transformers==5.23.0 peft==0.21.3 gguf==0.19.0 sentencepiece
+          git init "$RUNNER_TEMP/llama"
+          git -C "$RUNNER_TEMP/llama" fetch --depth=1 https://github.com/ggml-org/llama.cpp.git adf554d2392ab490a0552abbbbe88a1d317c1a2e
+          git -C "$RUNNER_TEMP/llama" checkout --detach FETCH_HEAD
+      - name: Merge and export the trained marker
+        env:
+          HF_HUB_DISABLE_PROGRESS_BARS: '1'
+        run: |
+          work="$RUNNER_TEMP/ecbiz"
+          mkdir -p "$work/adapter" "$work/assets"
+          cp model-source/adapter_config.json "$work/adapter/"
+          cat model-source/checkpoint.part-* > "$work/adapter/adapter_model.safetensors"
+          echo "f88a1d975ebc9631a4a52aa66c2962b26d7547baa4d362938295f6c04ace3fff  $work/adapter/adapter_model.safetensors" | sha256sum -c -
+          python model-source/export.py "$work"
+          python "$RUNNER_TEMP/llama/convert_hf_to_gguf.py" "$work/merged" --outtype q8_0 --outfile "$work/model.gguf"
+          split -b 48M -d -a 2 "$work/model.gguf" "$work/assets/model.part-"
+          cd "$work/assets"
+          sha256sum model.part-* > SHA256SUMS
+      - name: Publish the downloadable model
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --orphan ecbiz-economics-model-v1
+          mkdir -p ecbiz-model
+          cp "$RUNNER_TEMP/ecbiz/assets/"* ecbiz-model/
+          git add ecbiz-model
+          git commit -m "Publish the trained EcBiz Economics model"
+          git push origin HEAD:refs/heads/ecbiz-economics-model-v1
