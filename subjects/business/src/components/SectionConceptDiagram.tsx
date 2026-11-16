@@ -765,11 +765,55 @@ function BreakEvenSimulatorVisual() {
   const [currentOutput, setCurrentOutput] = useState<number>(1000);
 
   const contribution = Math.max(1, sellingPrice - variableCost);
-  const breakEvenUnits = Math.round(fixedCosts / contribution);
+  // Break-even in exact units (float) — used for precise chart geometry
+  const breakEvenExact = fixedCosts / contribution;
+  const breakEvenUnits = Math.round(breakEvenExact);
   const marginOfSafety = currentOutput - breakEvenUnits;
   const totalRevenue = currentOutput * sellingPrice;
   const totalCost = fixedCosts + currentOutput * variableCost;
   const profitOrLoss = totalRevenue - totalCost;
+
+  // ---- Live chart geometry: everything is derived from the slider state ----
+  const W = 650;
+  const H = 270;
+  const padL = 52;
+  const padR = 16;
+  const padT = 18;
+  const padB = 30;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+
+  // X domain must comfortably fit the break-even point, current output and a profit runway
+  const maxOutput = Math.max(
+    2500,
+    Math.ceil((breakEvenExact * 2.2) / 500) * 500,
+    Math.ceil((currentOutput * 1.25) / 500) * 500
+  );
+  const maxValue =
+    Math.max(maxOutput * sellingPrice, fixedCosts + maxOutput * variableCost) * 1.1;
+
+  const x = (units: number) => padL + (units / maxOutput) * innerW;
+  const y = (value: number) => padT + innerH - (value / maxValue) * innerH;
+
+  const bepX = x(Math.min(breakEvenExact, maxOutput));
+  const bepValue = sellingPrice * breakEvenExact;
+  const bepY = y(Math.min(bepValue, maxValue));
+
+  // Loss triangle: zero output → break-even point (Total Cost above Total Revenue)
+  const lossPoly = `${x(0)},${y(fixedCosts)} ${bepX},${bepY} ${x(0)},${y(0)}`;
+  // Profit triangle: break-even point → end of chart (Total Revenue above Total Cost)
+  const profitPoly = `${bepX},${bepY} ${x(maxOutput)},${y(maxOutput * sellingPrice)} ${x(maxOutput)},${y(
+    fixedCosts + maxOutput * variableCost
+  )}`;
+
+  const yTicks = [0.25, 0.5, 0.75, 1].map((fraction) => maxValue * fraction);
+  const xTicks = [0, Math.round(maxOutput / 2 / 500) * 500, maxOutput];
+
+  const currentX = x(currentOutput);
+  const currentProfitDotY = y(currentOutput * sellingPrice);
+  const bracketLeft = x(Math.min(breakEvenExact, currentOutput));
+  const bracketRight = x(Math.max(breakEvenExact, currentOutput));
+  const aboveBreakEven = currentOutput >= breakEvenExact;
 
   return (
     <div className="space-y-4">
@@ -794,7 +838,7 @@ function BreakEvenSimulatorVisual() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <div>
             <div className="flex justify-between font-semibold mb-1">
               <span>Fixed Costs:</span>
@@ -842,6 +886,22 @@ function BreakEvenSimulatorVisual() {
               className="w-full accent-amber-600 cursor-pointer"
             />
           </div>
+
+          <div>
+            <div className="flex justify-between font-semibold mb-1">
+              <span>Current Output:</span>
+              <span className="font-mono text-violet-600 dark:text-violet-400">{currentOutput.toLocaleString()} units</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max={Math.max(3000, Math.ceil(breakEvenExact * 2.5))}
+              step="50"
+              value={currentOutput}
+              onChange={(e) => setCurrentOutput(Number(e.target.value))}
+              className="w-full accent-violet-600 cursor-pointer"
+            />
+          </div>
         </div>
       </div>
 
@@ -876,39 +936,81 @@ function BreakEvenSimulatorVisual() {
         </div>
       </div>
 
-      {/* Break-Even Visual Diagram */}
+      {/* Break-Even Visual Diagram — every line is computed live from the sliders */}
       <div className="p-4 bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-neutral-800 shadow-xs">
-        <svg viewBox="0 0 650 250" className="w-full h-auto">
-          {/* Shaded Loss & Profit Areas */}
-          <polygon points="50,150 280,105 50,220" fill="#FEE2E2" opacity="0.6" />
-          <polygon points="280,105 600,20 600,60" fill="#DCFCE7" opacity="0.6" />
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-2 text-[11px] font-mono text-slate-500 dark:text-neutral-400">
+          <span>● Live chart — drag the sliders and the lines move</span>
+          <span>Break-even where Total Revenue = Total Cost</span>
+        </div>
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={`Break-even chart. Total cost line starts at $${fixedCosts.toLocaleString()} fixed costs and rises by $${variableCost} per unit. Total revenue line rises by $${sellingPrice} per unit. Break-even at ${breakEvenUnits.toLocaleString()} units.`}>
+          {/* Shaded Loss & Profit areas (computed) */}
+          <polygon points={lossPoly} fill="#FEE2E2" opacity="0.75" />
+          <polygon points={profitPoly} fill="#DCFCE7" opacity="0.75" />
+
+          {/* Gridlines + Y axis tick labels */}
+          {yTicks.map((tick) => (
+            <g key={tick}>
+              <line x1={padL} y1={y(tick)} x2={W - padR} y2={y(tick)} stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" className="dark:stroke-neutral-800" />
+              <text x={padL - 6} y={y(tick) + 3.5} fontSize="9" textAnchor="end" className="fill-slate-400 dark:fill-neutral-500 font-mono">
+                ${Math.round(tick / 1000).toLocaleString()}k
+              </text>
+            </g>
+          ))}
 
           {/* Axes */}
-          <line x1="50" y1="220" x2="620" y2="220" stroke="#94A3B8" strokeWidth="2" />
-          <line x1="50" y1="20" x2="50" y2="220" stroke="#94A3B8" strokeWidth="2" />
+          <line x1={padL} y1={y(0)} x2={W - padR} y2={y(0)} stroke="#94A3B8" strokeWidth="2" />
+          <line x1={padL} y1={padT} x2={padL} y2={y(0)} stroke="#94A3B8" strokeWidth="2" />
 
-          {/* Fixed Cost Line (horizontal) */}
-          <line x1="50" y1="150" x2="600" y2="150" stroke="#D97706" strokeWidth="2" strokeDasharray="5 4" />
-          <text x="605" y="154" fontSize="11" fontWeight="bold" fill="#D97706">Fixed Cost</text>
+          {/* X axis tick labels */}
+          {xTicks.map((tick) => (
+            <text key={tick} x={x(tick)} y={y(0) + 13} fontSize="9" textAnchor="middle" className="fill-slate-400 dark:fill-neutral-500 font-mono">
+              {tick.toLocaleString()}
+            </text>
+          ))}
+          <text x={x(maxOutput)} y={H - 1} fontSize="8" textAnchor="end" className="fill-slate-400 dark:fill-neutral-500 font-mono uppercase">
+            Units of output
+          </text>
 
-          {/* Total Cost Line */}
-          <line x1="50" y1="150" x2="600" y2="60" stroke="#1E3A8A" strokeWidth="2.5" />
-          <text x="605" y="64" fontSize="11" fontWeight="bold" fill="#1E3A8A">Total Cost</text>
+          {/* Fixed Cost Line (horizontal, moves with fixedCosts) */}
+          <line x1={padL} y1={y(fixedCosts)} x2={W - padR} y2={y(fixedCosts)} stroke="#D97706" strokeWidth="2" strokeDasharray="6 4" />
+          <text x={padL + 4} y={y(fixedCosts) + 12} fontSize="9" fontWeight="bold" fill="#D97706" textAnchor="start">
+            FC (fixed)
+          </text>
 
-          {/* Total Revenue Line */}
-          <line x1="50" y1="220" x2="600" y2="20" stroke="#059669" strokeWidth="2.5" />
-          <text x="605" y="24" fontSize="11" fontWeight="bold" fill="#059669">Total Revenue</text>
+          {/* Total Cost Line (starts at fixed cost, slope = variable cost) */}
+          <line x1={x(0)} y1={y(fixedCosts)} x2={x(maxOutput)} y2={y(fixedCosts + maxOutput * variableCost)} stroke="#1E3A8A" strokeWidth="2.5" />
+
+          {/* Total Revenue Line (slope = selling price) */}
+          <line x1={x(0)} y1={y(0)} x2={x(maxOutput)} y2={y(maxOutput * sellingPrice)} stroke="#059669" strokeWidth="3" />
+
+          {/* Line labels at the right edge */}
+          <text x={W - padR - 2} y={y(fixedCosts + maxOutput * variableCost) - 6} fontSize="9" fontWeight="bold" fill="#1E3A8A" textAnchor="end">
+            Total Cost
+          </text>
+          <text x={W - padR - 2} y={Math.max(padT + 8, y(maxOutput * sellingPrice) - 6)} fontSize="9" fontWeight="bold" fill="#059669" textAnchor="end">
+            Total Revenue
+          </text>
+
+          {/* Dashed guides to the break-even point */}
+          <line x1={bepX} y1={bepY} x2={bepX} y2={y(0)} stroke="#DC2626" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
+          <line x1={padL} y1={bepY} x2={bepX} y2={bepY} stroke="#DC2626" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
 
           {/* Break-Even Point */}
-          <circle cx="280" cy="105" r="5.5" fill="#DC2626" />
-          <text x="290" y="100" fontSize="11" fontWeight="bold" fill="#DC2626">Break-Even Point</text>
+          <circle cx={bepX} cy={bepY} r="5.5" fill="#DC2626" stroke="#ffffff" strokeWidth="1.5" />
+          <text x={bepX} y={Math.max(padT + 2, bepY - 10)} fontSize="9.5" fontWeight="bold" fill="#DC2626" textAnchor="middle">
+            BEP: {breakEvenUnits.toLocaleString()} u
+          </text>
 
-          {/* Margin of Safety Bracket */}
-          <line x1="280" y1="220" x2="280" y2="230" stroke="#2563EB" strokeWidth="1.5" />
-          <line x1="450" y1="220" x2="450" y2="230" stroke="#2563EB" strokeWidth="1.5" />
-          <line x1="280" y1="230" x2="450" y2="230" stroke="#2563EB" strokeWidth="1.5" />
-          <text x="365" y="242" fontSize="10" textAnchor="middle" fontWeight="bold" fill="#2563EB">
-            Margin of Safety Bracket
+          {/* Current output marker + dot on the revenue line */}
+          <line x1={currentX} y1={padT} x2={currentX} y2={y(0)} stroke="#7C3AED" strokeWidth="1.5" strokeDasharray="2 3" opacity="0.75" />
+          <circle cx={currentX} cy={currentProfitDotY} r="4" fill="#7C3AED" stroke="#ffffff" strokeWidth="1.5" />
+
+          {/* Margin of Safety bracket under the axis */}
+          <line x1={bracketLeft} y1={y(0) + 15} x2={bracketLeft} y2={y(0) + 21} stroke={aboveBreakEven ? "#2563EB" : "#DC2626"} strokeWidth="1.5" />
+          <line x1={bracketRight} y1={y(0) + 15} x2={bracketRight} y2={y(0) + 21} stroke={aboveBreakEven ? "#2563EB" : "#DC2626"} strokeWidth="1.5" />
+          <line x1={bracketLeft} y1={y(0) + 17.5} x2={bracketRight} y2={y(0) + 17.5} stroke={aboveBreakEven ? "#2563EB" : "#DC2626"} strokeWidth="1.5" />
+          <text x={(bracketLeft + bracketRight) / 2} y={y(0) + 27.5} fontSize="8.5" textAnchor="middle" fontWeight="bold" fill={aboveBreakEven ? "#2563EB" : "#DC2626"}>
+            {aboveBreakEven ? `Margin of Safety: ${marginOfSafety.toLocaleString()} u` : `Below break-even by ${Math.abs(marginOfSafety).toLocaleString()} u`}
           </text>
         </svg>
       </div>
