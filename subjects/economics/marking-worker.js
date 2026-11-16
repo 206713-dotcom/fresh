@@ -50,7 +50,7 @@ function validate(grade, question) {
   return { ...grade, band: question.marks === 8 ? expectedBand : 'point-based' };
 }
 
-self.onmessage = async ({ data: { id, question, answer, image } }) => {
+self.onmessage = async ({ data: { id, question, answer, image, loadOnly } }) => {
   const progress = text => self.postMessage({ id, progress: text });
   try {
     progress('Checking WebGPU support…');
@@ -77,6 +77,10 @@ self.onmessage = async ({ data: { id, question, answer, image } }) => {
       loadedModel = model;
     }
 
+    if (loadOnly) {
+      self.postMessage({ id, ready: true });
+      return;
+    }
     const input = JSON.stringify({ ...question, answer });
     const content = image ? [{ type: 'text', text: input },
       { type: 'image_url', image_url: { url: image } }] : input;

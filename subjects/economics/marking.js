@@ -19,70 +19,12 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const scriptUrl = document.currentScript.src;
-  const workerURL = new URL('marking-worker.js?v=4', scriptUrl);
+  const workerURL = new URL('marking-worker.js?v=download-1', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
   let task;
   let nextId = 0;
-
-  let endpointLookup;
-  function hostedEndpoint() {
-    endpointLookup ??= (async () => {
-      const file = new URL('marking-config.json', scriptUrl);
-      const config = await fetch(file, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
-      if (!config.ok) throw new Error('Could not read AI marking settings. Please try again.');
-      const { endpoint } = await config.json();
-      if (endpoint === null) {
-        return location.hostname.endsWith('.vercel.app') ? new URL('/api/ecbiz-mark', location.href) : null;
-      }
-      const url = new URL(endpoint);
-      if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/api/ecbiz-mark' || url.search || url.hash) {
-        throw new Error('The hosted AI marking address is invalid.');
-      }
-      return url;
-    })().catch(error => {
-      endpointLookup = undefined;
-      throw error;
-    });
-    return endpointLookup;
-  }
-
-  async function gradeHosted(endpoint, id, answer, image, question, report) {
-    const message = 'Marking with hosted AI…';
-    status.hidden = false;
-    status.textContent = message;
-    report?.(message);
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, answer, image }),
-        signal: AbortSignal.timeout(65000)
-      });
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.error || 'Hosted AI marking is unavailable. Please try again.');
-      const { grade } = data;
-      if (!Number.isInteger(grade?.score) || grade.score < 0 || grade.score > question.marks ||
-          !Array.isArray(grade.credits) || typeof grade.feedback !== 'string' || typeof grade.nextStep !== 'string') {
-        throw new Error('Hosted AI returned an invalid mark. Please try again.');
-      }
-      return grade;
-    } catch (error) {
-      if (error.name === 'TimeoutError' || error instanceof TypeError) {
-        throw new Error('Could not reach hosted AI marking. Your answer is still here. Please try again.');
-      }
-      throw error;
-    } finally {
-      status.hidden = true;
-      status.textContent = '';
-    }
-  }
-
-  hostedEndpoint().then(endpoint => {
-    document.querySelector('#marking-privacy').hidden = !endpoint;
-  }).catch(() => {});
 
   async function evaluate(question, answer, image, report) {
     if (!navigator.gpu || typeof Worker !== 'function') {
@@ -94,7 +36,7 @@ const ecbizMarking = (() => {
         if (!task || data.id !== task.id) return;
         if (data.progress) task.progress(data.progress);
         else if (data.error) task.reject(new Error(data.error));
-        else task.resolve(data.grade);
+        else task.resolve(data.grade ?? data.ready);
       };
       worker.onerror = () => {
         task?.reject(new Error('The local marker could not start. Check your connection and try again.'));
@@ -102,7 +44,7 @@ const ecbizMarking = (() => {
       worker.onmessageerror = () => task?.reject(new Error('The local marker returned an unreadable result. Try again.'));
     }
     status.hidden = false;
-    let stage = 'Starting the on-device marker…';
+    let stage = question ? 'Starting the on-device marker…' : 'Preparing model download…';
     function showProgress(message) {
       stage = message;
       status.textContent = message;
@@ -142,7 +84,7 @@ const ecbizMarking = (() => {
         }
         resetIdle();
         try {
-          worker.postMessage({ id, question, answer, image });
+          worker.postMessage({ id, question, answer, image, loadOnly: !question });
         } catch (error) {
           task.reject(error);
         }
@@ -190,18 +132,48 @@ const ecbizMarking = (() => {
     if (listedGrade) return Promise.resolve(listedGrade);
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
-      report?.('Waiting for AI marking…');
-      const request = queue.then(async () => {
-        const endpoint = await hostedEndpoint();
-        return endpoint ? gradeHosted(endpoint, id, response, image, question, report) :
-          evaluate(question, response, image, report);
-      });
-      queue = request.catch(() => {});
+      report?.('Waiting for the on-device marker…');
+      const request = enqueue(() => evaluate(question, response, image, report));
       pending.set(key, request);
       const clear = () => pending.delete(key);
       request.then(clear, clear);
     }
     return pending.get(key);
+  }
+
+  function enqueue(operation) {
+    const request = queue.then(operation);
+    queue = request.catch(() => {});
+    return request;
+  }
+
+  const setup = document.querySelector('#marking-model');
+  const download = setup.querySelector('button');
+  const downloadStatus = setup.querySelector('[role="status"]');
+  function showModelSetup() {
+    setup.hidden = !/^#(?:practice|revision)(?:[-/]|$)/.test(location.hash);
+  }
+  window.addEventListener('hashchange', showModelSetup);
+  showModelSetup();
+
+  if (!navigator.gpu || typeof Worker !== 'function') {
+    download.disabled = true;
+    downloadStatus.textContent = 'A WebGPU-capable browser and device are required for local AI marking.';
+  } else {
+    download.onclick = async () => {
+      download.disabled = true;
+      downloadStatus.textContent = 'Preparing download…';
+      const report = message => { downloadStatus.textContent = message; };
+      try {
+        await enqueue(() => evaluate(null, '', undefined, report));
+        download.textContent = 'Local AI ready';
+        downloadStatus.textContent = 'You can now mark written answers on this device.';
+      } catch (error) {
+        download.disabled = false;
+        download.textContent = 'Retry AI download';
+        downloadStatus.textContent = error.message;
+      }
+    };
   }
 
   function feedback(result, marks) {
