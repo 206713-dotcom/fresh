@@ -30,6 +30,7 @@ import {
   Paper2Question,
   Paper2AppendixTable,
 } from "../lib/data/paper2-database";
+import { FlagQuestionButton } from "./FlagQuestionButton";
 import {
   evaluatePaper2Answer,
   Paper2EvaluationResult,
@@ -899,6 +900,7 @@ export function Paper2PracticeView({
                     Level 1–3 Marked
                   </span>
                 )}
+                <FlagQuestionButton questionId={`${activeScenario.scenario_id}_${activeQuestion.number}`} />
               </div>
 
               {isCurrentQuestionCompleted && currentEval && (

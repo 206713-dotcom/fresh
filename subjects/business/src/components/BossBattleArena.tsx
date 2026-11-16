@@ -33,6 +33,7 @@ import {
   SHOE_DESIGNS,
 } from "../lib/data/customizer-items";
 import { AvatarCustomizerModal } from "./AvatarCustomizerModal";
+import { FlagQuestionButton } from "./FlagQuestionButton";
 import {
   ArrowLeft,
   Shield,
@@ -2841,9 +2842,12 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                     {questionFeedback.isCorrect ? "Correct" : "Correct answer highlighted above"}
                   </strong>
                   <p>{questionFeedback.text}</p>
-                  <button type="button" ref={continueRef} className="boss-cta boss-continue" onClick={continueQuestion}>
-                    Continue <ArrowRight size={16} aria-hidden="true" />
-                  </button>
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <FlagQuestionButton questionId={activeQuestion.id} />
+                    <button type="button" ref={continueRef} className="boss-cta boss-continue" onClick={continueQuestion}>
+                      Continue <ArrowRight size={16} aria-hidden="true" />
+                    </button>
+                  </div>
                 </div>
               )}
             </section>
