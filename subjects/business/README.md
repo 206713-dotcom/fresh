@@ -799,7 +799,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 
 ## Roadmap
 
-- [x] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
+- [ ] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
 - [ ] Extend automated coverage to the sync policy, auth helpers, fallback examiner and content integrity.
 - [ ] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
