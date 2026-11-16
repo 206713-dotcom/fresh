@@ -89,6 +89,15 @@ export default function App() {
     }
   }, [businessTab]);
 
+  // Quick Quiz initial study mode: "challenge" (daily/weekly) | "drill" (chapter active recall drills)
+  const [quickQuizMode, setQuickQuizMode] = useState<"challenge" | "drill">("challenge");
+
+  const handleOpenActiveRecallDrills = () => {
+    setQuickQuizMode("drill");
+    setBusinessTab("quick-quiz");
+    window.scrollTo(0, 0);
+  };
+
   // Practice Studio initial mode: "paper1_database" (topical) | "verified_archive" (official past papers) | "paper2_case_study"
   const [practiceMode, setPracticeMode] = useState<"paper1_database" | "paper2_case_study" | "verified_archive">(
     "paper1_database"
@@ -168,6 +177,10 @@ export default function App() {
         } else if (openParam === "studyspace") {
           handleOpenStudySpace();
         } else if (openParam === "quiz" || openParam === "challenge") {
+          setQuickQuizMode("challenge");
+          setBusinessTab("quick-quiz");
+        } else if (openParam === "drill") {
+          setQuickQuizMode("drill");
           setBusinessTab("quick-quiz");
         } else if (openParam === "compare") {
           setBusinessTab("compare");
@@ -288,6 +301,7 @@ export default function App() {
                 window.scrollTo(0, 0);
               }}
               onStartMockExam={() => setIsMockExamMode(true)}
+              onOpenActiveRecallDrills={handleOpenActiveRecallDrills}
             />
           )}
 
@@ -348,6 +362,7 @@ export default function App() {
               onOpenFullGlossary={() => setBusinessTab("glossary")}
               onOpenStudySpace={handleOpenStudySpace}
               onOpenPractice={() => setBusinessTab("practice")}
+              initialMode={quickQuizMode}
             />
           )}
 

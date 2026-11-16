@@ -23,6 +23,8 @@ interface DailyQuickQuizProps {
   onOpenFullGlossary?: () => void;
   onOpenStudySpace?: () => void;
   onOpenPractice?: () => void;
+  /** Which study mode to open in. Defaults to "challenge" (Daily & Weekly Challenge). */
+  initialMode?: "challenge" | "drill";
 }
 
 export interface QuizQuestionInstance {
@@ -101,8 +103,9 @@ export function DailyQuickQuiz({
   onOpenFullGlossary,
   onOpenStudySpace,
   onOpenPractice,
+  initialMode = "challenge",
 }: DailyQuickQuizProps) {
-  const [activeMode, setActiveMode] = useState<"challenge" | "drill">("challenge");
+  const [activeMode, setActiveMode] = useState<"challenge" | "drill">(initialMode);
 
   const savedDraft = useMemo(() => loadQuickQuizDraft(), []);
 

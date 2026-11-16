@@ -1,5 +1,11 @@
-import { ArrowRight, BookOpen, ClipboardCheck, FileText, GraduationCap, Swords, Timer, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, BookOpen, ClipboardCheck, ExternalLink, FileText, GraduationCap, Swords, Target, Timer, X, Zap } from "lucide-react";
 import type { BusinessTab } from "../App";
+import { SYLLABUS_SECTIONS } from "../lib/data/syllabus-topics";
+import { MCQ_BANK } from "../lib/data/mcq-bank";
+import { OnePageSheets } from "./OnePageSheets";
+import { SectionConceptDiagram } from "./SectionConceptDiagram";
+import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
 
 const papers = [
   { tab: "practice", title: "Paper 1 practice", description: "Choose a syllabus topic and work through short, structured questions.", Icon: FileText },
@@ -15,9 +21,37 @@ const revisionTools = [
 interface BusinessOverviewProps {
   onNavigate: (tab: BusinessTab) => void;
   onStartMockExam: () => void;
+  onOpenActiveRecallDrills: () => void;
 }
 
-export function BusinessOverview({ onNavigate, onStartMockExam }: BusinessOverviewProps) {
+const sectionShortTitle = (title: string) => title.replace(/^\d+\.\s*/, "");
+
+export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveRecallDrills }: BusinessOverviewProps) {
+  // Section revision pack: 1-page summaries, per-section diagrams, consolidation documents and MCQ practice
+  const [summarySection, setSummarySection] = useState<string | null>(null);
+  const [diagramSection, setDiagramSection] = useState<string>("1");
+  const [diagramTarget, setDiagramTarget] = useState<string | null>(null);
+  const [consolidationSection, setConsolidationSection] = useState<string>("1");
+
+  const openDiagram = (code: string) => setDiagramTarget(code);
+  const selectedConsolidation = SYLLABUS_SECTIONS.find((section) => section.code === consolidationSection);
+
+  // Close the 1-page summary overlay with Escape and lock body scroll while open
+  useEffect(() => {
+    if (!summarySection) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSummarySection(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [summarySection]);
+
+
   return (
     <div className="study-page business-overview">
       <header className="study-hero business-overview-hero">
@@ -70,6 +104,126 @@ export function BusinessOverview({ onNavigate, onStartMockExam }: BusinessOvervi
           ))}
         </div>
       </section>
+
+      <section className="business-overview-section" aria-labelledby="business-revision-pack">
+        <h2 id="business-revision-pack">Section revision pack</h2>
+        <div className="business-revision-pack">
+          {/* Bottom left: 1-page summary */}
+          <div className="business-pack-card">
+            <span className="business-overview-icon"><FileText size={22} aria-hidden="true" /></span>
+            <span className="business-pack-copy">
+              <strong>1-Page Summary</strong>
+              <span>Six A4 visual revision sheets — one for each section of the syllabus.</span>
+            </span>
+            <button type="button" className="business-pack-action" onClick={() => setSummarySection("1")}>
+              Open 1-page summaries <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
+
+          {/* Middle: section diagrams with a dropdown picker */}
+          <div className="business-pack-card">
+            <span className="business-overview-icon"><GraduationCap size={22} aria-hidden="true" /></span>
+            <span className="business-pack-copy">
+              <strong>Section Diagrams</strong>
+              <span>Interactive diagram for each section. Choose a section below.</span>
+            </span>
+            <label className="business-pack-field">
+              <span className="business-pack-label">Choose a section</span>
+              <select
+                className="business-pack-select"
+                value={diagramSection}
+                onChange={(event) => setDiagramSection(event.target.value)}
+                aria-label="Choose which section diagram to open"
+              >
+                {SYLLABUS_SECTIONS.map((section) => (
+                  <option key={section.code} value={section.code}>
+                    Section {section.code} — {sectionShortTitle(section.title)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="button" className="business-pack-action" onClick={() => openDiagram(diagramSection)}>
+              Open diagram <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
+
+          {/* Bottom right: consolidation documents — same picker format as the diagram card */}
+          <div className="business-pack-card">
+            <span className="business-overview-icon"><BookOpen size={22} aria-hidden="true" /></span>
+            <span className="business-pack-copy">
+              <strong>Consolidation Documents</strong>
+              <span>Official Google Docs consolidation sheet for the section you pick.</span>
+            </span>
+            <label className="business-pack-field">
+              <span className="business-pack-label">Choose a section</span>
+              <select
+                className="business-pack-select"
+                value={consolidationSection}
+                onChange={(event) => setConsolidationSection(event.target.value)}
+                aria-label="Choose which section's consolidation document to open"
+              >
+                {SYLLABUS_SECTIONS.map((section) => (
+                  <option key={section.code} value={section.code}>
+                    Section {section.code} — {sectionShortTitle(section.title)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {selectedConsolidation?.consolidationDocUrl ? (
+              <a
+                className="business-pack-action"
+                href={selectedConsolidation.consolidationDocUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open consolidation document <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            ) : (
+              <span className="business-pack-action business-pack-action-static business-pack-action-disabled" aria-disabled="true">
+                Consolidation doc coming soon
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* MCQ knowledge practice — links to Chapter Active Recall Drills in Quick Quiz */}
+        <button type="button" className="business-mcq-link" onClick={onOpenActiveRecallDrills}>
+          <span className="business-overview-icon business-mcq-link-icon"><Target size={24} aria-hidden="true" /></span>
+          <span className="business-mcq-link-copy">
+            <strong>MCQ Knowledge Practice</strong>
+            <span>
+              Chapter Active Recall Drills — {MCQ_BANK.length.toLocaleString()} syllabus MCQs across all six
+              sections, with instant feedback and a Wrong-Only mode.
+            </span>
+          </span>
+          <span className="business-pack-action business-pack-action-static">
+            Start Active Recall Drills <ArrowRight size={16} aria-hidden="true" />
+          </span>
+        </button>
+      </section>
+
+      {/* 1-Page Summary overlay (A4 sheets) */}
+      {summarySection && (
+        <div className="business-pack-sheet-overlay" role="dialog" aria-modal="true" aria-label="1-page summaries">
+          <button type="button" className="business-pack-sheet-close" onClick={() => setSummarySection(null)} aria-label="Close 1-page summaries">
+            <X size={20} aria-hidden="true" />
+          </button>
+          <OnePageSheets initialSectionCode={summarySection} onBack={() => setSummarySection(null)} />
+        </div>
+      )}
+
+      {/* Section diagram overlays (section 1 uses the Factors of Production visual) */}
+      {diagramTarget === "1" && (
+        <FactorsOfProductionDiagram isOpen onClose={() => setDiagramTarget(null)} />
+      )}
+      {diagramTarget && diagramTarget !== "1" && (
+        <SectionConceptDiagram
+          key={diagramTarget}
+          sectionCode={diagramTarget}
+          isOpen
+          onClose={() => setDiagramTarget(null)}
+        />
+      )}
     </div>
   );
 }
