@@ -77,33 +77,107 @@ function independentDefinitionPoints(question) {
   if (points.length === question.marks && points.every(Boolean)) return points;
 }
 
+function normalizePoint(text) {
+  return text.normalize('NFKC').toLowerCase()
+    .replace(/[’‘]/g, "'").replace(/[‐‑–—]/g, '-')
+    .replace(/^\s*(?:[•*-]|\d+[.)])\s*/, '')
+    .replace(/\s*\(1\)\s*$/, '').replace(/[.!?,:]+$/, '')
+    .replace(/\s+/g, ' ').trim();
+}
+
+function pointAlternatives(point) {
+  const [first, ...rest] = point.split(' / ');
+  return [point, first, ...rest.map(alternative => /^\w+$/.test(alternative)
+    ? first.replace(/\w+$/, alternative)
+    : alternative)];
+}
+
+function answerClauses(answer) {
+  return answer.split(/[\n;→]+|(?<=[.!?])\s+(?=[A-Z])|(?<=\(1\))\s+(?=[A-Z])/)
+    .map(clause => normalizePoint(clause.replace(/\(1\)(?=[.!?,:]?\s*$)/g, '')))
+    .filter(Boolean);
+}
+
+function exactEvidence(points, clause) {
+  // The entire clause must be explainable by scheme wording before it can earn direct credit.
+  const alternatives = points.flatMap(point => pointAlternatives(point)
+    .map(normalizePoint).filter(Boolean).map(text => ({ point, text })));
+  const hits = [];
+  let rest = clause;
+  while (rest) {
+    const match = alternatives.filter(({ text }) => rest === text ||
+      /^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+)/.test(rest.slice(text.length)) &&
+      rest.startsWith(text)).sort((a, b) => b.text.length - a.text.length)[0];
+    if (!match) return [];
+    hits.push(match.point);
+    rest = rest.slice(match.text.length)
+      .replace(/^(?:,?\s+(?:and|so|therefore|which means|while|as a result)\s+|,\s+)/, '');
+  }
+  return hits;
+}
+
+function exactRouteGrade(question, answer) {
+  const header = question.scheme.split('\n')[0];
+  const linked = /^Maximum [46] marks\..*Credit two distinct (?:explanations|analytical routes), up to [23] marks/i.test(header);
+  const chooseOne = question.marks === 2 && /\bChoose one route\b/i.test(question.note ?? '');
+  if (!linked && !chooseOne) return;
+  const lines = question.scheme.split('\n').filter(line => linked ? /^\d+\.\s/.test(line) : line.startsWith('• '));
+  const routes = lines.map(line => line.replace(/^(?:\d+\.|•)\s+/, '').split(linked ? ' → ' : ';')
+    .map(part => /^(.*?)\s+\(1\)\.?$/.exec(part.trim())?.[1]));
+  if (routes.length < 2 || routes.some(route => route.length < 2 || route.some(point => !point))) return;
+  const clauses = answerClauses(answer);
+  const evidence = clauses.map(clause => exactEvidence(routes.flat(), clause));
+  if (!evidence.length || evidence.some(points => !points.length)) return;
+  const matched = evidence.flat();
+  const routeLimit = linked ? question.marks / 2 : 2;
+  const scores = routes.map(route => {
+    const credited = [];
+    let last = -1;
+    for (const point of route.slice(0, routeLimit)) {
+      const index = matched.indexOf(point, last + 1);
+      if (index < 0) break;
+      credited.push(point);
+      last = index;
+    }
+    return credited;
+  }).sort((a, b) => b.length - a.length);
+  const earned = [...new Set(scores.slice(0, linked ? 2 : 1).flat())];
+  // Only settle complete answers here. The full rubric remains necessary for alternative developments.
+  if (earned.length !== question.marks) return;
+  return { score: earned.length,
+    feedback: 'Your answer covers the required linked points in the mark scheme.',
+    credits: earned.map(point => ({ criterion: point, evidence: point })),
+    provisional: true };
+}
+
 async function markDefinition(points, answer, report) {
   report('Checking your wording against the mark scheme…');
-  meaningChecker ??= await loadMeaningChecker();
-  const { tokenizer, model, entailment } = meaningChecker;
-  const hypotheses = points.map(point => {
-    const alternatives = point.split(' / ');
-    const [first, ...rest] = alternatives;
-    return [first, ...rest.map(alternative => /^\w+$/.test(alternative)
-      ? first.replace(/\w+$/, alternative)
-      : alternative)];
-  });
-  const pairs = hypotheses.flat();
-  const inputs = tokenizer(pairs.map(() => answer), {
-    text_pair: pairs, padding: true, truncation: true, max_length: 512
-  });
-  const { logits } = await model(inputs);
-  const predictions = logits.tolist();
-  let offset = 0;
-  const matches = hypotheses.map(alternatives => {
-    const rows = predictions.slice(offset, offset += alternatives.length);
-    return rows.some(row => {
-      const best = Math.max(...row);
-      const probability = Math.exp(row[entailment] - best) /
-        row.reduce((total, value) => total + Math.exp(value - best), 0);
-      return probability >= 0.75;
+  const clauses = answerClauses(answer);
+  const exact = new Set(clauses.flatMap(clause => exactEvidence(points, clause)));
+  const matches = points.map(point => exact.has(point));
+  const unmatched = points.filter(point => !exact.has(point));
+  if (unmatched.length) {
+    meaningChecker ??= await loadMeaningChecker();
+    const { tokenizer, model, entailment } = meaningChecker;
+    const hypotheses = unmatched.map(point => [...new Set(pointAlternatives(point).slice(1))]);
+    const pairs = hypotheses.flat();
+    const inputs = tokenizer(pairs.map(() => answer), {
+      text_pair: pairs, padding: true, truncation: true, max_length: 512
     });
-  });
+    const { logits } = await model(inputs);
+    const predictions = logits.tolist();
+    let offset = 0;
+    for (const [index, alternatives] of hypotheses.entries()) {
+      const rows = predictions.slice(offset, offset + alternatives.length);
+      offset += alternatives.length;
+      matches[points.indexOf(unmatched[index])] = rows.some(row => {
+        const best = Math.max(...row);
+        const probability = Math.exp(row[entailment] - best) /
+          row.reduce((total, value) => total + Math.exp(value - best), 0);
+        return probability >= 0.75;
+      });
+    }
+  }
   const earned = points.filter((_, index) => matches[index]);
   const missing = points.filter((_, index) => !matches[index]);
   return {
@@ -120,6 +194,8 @@ export async function evaluate(question, answer, report) {
   if (question) {
     const points = independentDefinitionPoints(question);
     if (points) return markDefinition(points, answer, report);
+    const exact = exactRouteGrade(question, answer);
+    if (exact) return exact;
   }
   engine ??= await openModel(report);
   if (!question) return;
