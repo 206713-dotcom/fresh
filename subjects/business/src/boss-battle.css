@@ -78,7 +78,7 @@
   margin-bottom: var(--boss-page-gap);
   border: 1px solid #6c202b;
   border-radius: 1.3rem;
-  background: #1b0c11 url("/assets/boss-kraken.webp") 74% 44% / cover no-repeat;
+  background: #1b0c11 url("./assets/boss-kraken.webp") 74% 44% / cover no-repeat;
   box-shadow: 0 0.75rem 2rem #4c132633;
   color: #fff5ec;
 }
@@ -150,6 +150,71 @@
 .boss-difficulty button > span { width: 0.52rem; height: 0.52rem; border-radius: 50%; outline: 1px solid #36252d4a; }
 .boss-difficulty-hint { margin-top: 0.56rem; font-size: 0.77rem; color: var(--muted); }
 .dark .boss-difficulty-hint { color: #e9cbc8; }
+
+/* Question focus panel (unit / subsection / focus mode) */
+.boss-filters-panel { margin-top: var(--boss-page-gap); }
+.boss-filters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: end;
+}
+.boss-filter-fieldset { border: 0; padding: 0; margin: 0; }
+.boss-filter-fieldset legend {
+  font: 600 0.74rem var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  padding-bottom: 0.35rem;
+}
+.boss-filter-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.boss-filter-chip {
+  min-width: 2.3rem;
+  padding: 0.32rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+.boss-filter-chip:hover { border-color: #b3293f; color: #a52135; }
+.boss-filter-chip.is-on { background: #a52135; border-color: #a52135; color: #fff7ed; }
+.dark .boss-filter-chip { background: #20191b; color: #fff2ed; border-color: #5c4145; }
+.dark .boss-filter-chip.is-on { background: #a52135; border-color: #a52135; color: #fff7ed; }
+.boss-filter-field { display: grid; gap: 0.32rem; min-width: min(16rem, 100%); }
+.boss-filter-field > span {
+  font: 600 0.74rem var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+.boss-filter-select {
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 0.85rem;
+  padding: 0.45rem 0.55rem;
+  max-width: 100%;
+}
+.boss-filter-select:focus-visible,
+.boss-filter-chip:focus-visible { outline: 2px solid #dc5b61; outline-offset: 2px; }
+.boss-filters-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.boss-filter-warning { color: #b45309; font-weight: 600; }
+.dark .boss-filter-warning { color: #fbbf24; }
 .boss-selected-match { justify-content: space-between; margin-block: 0.8rem; padding-block: 0.56rem; border-block: 1px solid var(--line); font-size: 0.83rem; }
 .dark .boss-selected-match { border-color: #523139; }
 

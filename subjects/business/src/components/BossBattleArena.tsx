@@ -10,6 +10,22 @@ import {
 } from "../lib/cookies";
 import { MCQ_BANK, MCQItem } from "../lib/data/mcq-bank";
 import {
+  TIER_LABELS,
+  UNIT_OPTIONS,
+  buildPool,
+  drawBossQuestion,
+  getSubsections,
+  loadBossFilter,
+  loadBossWrongQuestions,
+  questionSecondsForStage,
+  recordBossHit,
+  recordBossMiss,
+  saveBossFilter,
+  type BossFilter,
+  type BossFocusMode,
+} from "../lib/boss-battle";
+import { logBossWrongToSheet, markBossMasteredToSheet } from "../lib/sheetSync";
+import {
   SKIN_TONES,
   HAIR_DESIGNS,
   TOP_DESIGNS,
@@ -112,6 +128,9 @@ const ARMOUR_TIERS: ArmourItem[] = [
   { id: "bronze", name: "Prefect Blazer", icon: "🛡️", damagePerHit: 22, cost: 40, description: "Sturdy woven blazer. Takes 22 damage per hit." },
   { id: "iron", name: "Kevlar Formula Sheet", icon: "📜", damagePerHit: 14, cost: 100, description: "Laminated business ratios absorb kinetic impact. Takes 14 damage." },
   { id: "diamond", name: "Cambridge Diamond Robe", icon: "💎", damagePerHit: 6, cost: 220, description: "Mythic examiner regalia. Deflects almost all damage (6 damage)." },
+  { id: "graphene", name: "Graphene Exosuit", icon: "🦾", damagePerHit: 3, cost: 340, description: "Lab-grown carbon lattice. Takes 3 damage per hit." },
+  { id: "nova", name: "Nova Chairman Plate", icon: "🌟", damagePerHit: 1, cost: 460, description: "Stellar forged plate. Takes 1 damage per hit." },
+  { id: "grandmaster", name: "Grandmaster Mantle", icon: "🏛️", damagePerHit: 0, cost: 640, description: "Zero damage taken. You are the examiner now." },
 ];
 
 interface CharacterSkin {
@@ -129,6 +148,10 @@ const CHARACTERS: CharacterSkin[] = [
   { id: "knight", name: "Business Knight", icon: "🤺", cost: 30, flipSprite: true },
   { id: "analyst", name: "Chief Financial Mage", icon: "🧙‍♂️", cost: 80, flipSprite: true },
   { id: "cyber", name: "Audit Cyborg", icon: "🤖", cost: 150, flipSprite: false },
+  { id: "lion", name: "Audit Lion", icon: "🦁", cost: 220, flipSprite: true },
+  { id: "phoenix", name: "Phoenix Rising Intern", icon: "🦅", cost: 260, flipSprite: true },
+  { id: "phantom", name: "Cambridge Phantom", icon: "👻", cost: 380, flipSprite: true },
+  { id: "dean", name: "The Dean", icon: "🎓", cost: 520, flipSprite: true },
 ];
 
 interface BossConfig {
@@ -280,10 +303,13 @@ export interface BossActiveQuestion {
   options: string[];
   correctIndex: number;
   explanation: string;
+  unit: string;
+  subsection: string;
+  difficulty: DifficultyTier;
+  item: MCQItem;
 }
 
-function getBusinessBossQuestion(): BossActiveQuestion {
-  const target: MCQItem = MCQ_BANK[Math.floor(Math.random() * MCQ_BANK.length)];
+function buildDistractors(target: MCQItem): string[] {
   const otherItems = MCQ_BANK.filter((item) => item.id !== target.id && item.correctAnswer !== target.correctAnswer);
 
   const sameChapter = otherItems.filter((item) => item.chapter === target.chapter);
@@ -312,9 +338,13 @@ function getBusinessBossQuestion(): BossActiveQuestion {
     }
   }
 
-  const options = [target.correctAnswer, ...distractors.slice(0, 3)];
-  const shuffledOptions = [...options].sort(() => 0.5 - Math.random());
+  return distractors;
+}
+
+function toBossQuestion(target: MCQItem, difficulty: DifficultyTier): BossActiveQuestion {
+  const shuffledOptions = [target.correctAnswer, ...buildDistractors(target).slice(0, 3)].sort(() => 0.5 - Math.random());
   const correctIndex = shuffledOptions.indexOf(target.correctAnswer);
+  const subsection = target.chapter.split(" ")[0] ?? target.chapter;
 
   return {
     id: target.id,
@@ -324,6 +354,10 @@ function getBusinessBossQuestion(): BossActiveQuestion {
     options: shuffledOptions,
     correctIndex,
     explanation: `Cambridge Mark Scheme: "${target.correctAnswer}"`,
+    unit: target.section,
+    subsection,
+    difficulty,
+    item: target,
   };
 }
 
@@ -552,6 +586,30 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const [liveTokens, setLiveTokens] = useState<number>(0);
   const [extraLives, setExtraLives] = useState<number>(1);
 
+  // Question focus filters (units / subsection / focus mode), persisted locally and synced via `ecbiz_*`
+  const [bossFilter, setBossFilter] = useState<BossFilter>(() => loadBossFilter());
+  const updateFilter = (patch: Partial<BossFilter>) => {
+    setBossFilter((current) => {
+      const next = { ...current, ...patch };
+      saveBossFilter(next);
+      return next;
+    });
+  };
+  const subsections = useMemo(() => getSubsections(bossFilter.units), [bossFilter.units]);
+  const poolCount = useMemo(() => buildPool(bossFilter).items.length, [bossFilter]);
+
+  // Missed-questions state — the spaced-repetition map from localStorage
+  const [bossWrongMap, setBossWrongMap] = useState(() => loadBossWrongQuestions());
+  const missedCount = Object.keys(bossWrongMap).length;
+  const refreshWrongMap = () => setBossWrongMap(loadBossWrongQuestions());
+
+  // Recently drawn question ids so the same question never repeats back-to-back
+  const recentQuestionRef = useRef<string[]>([]);
+
+  // Draw the next question, applying the difficulty curve and spaced repetition.
+  // Must be declared before the timer constants so effects can read it.
+  const questionSeconds = questionSecondsForStage(selectedDifficulty, stageCount);
+
   // Correct-answer streak, run escalation, and the revive trial
   const [streak, setStreak] = useState<number>(0);
   const [bestStreak, setBestStreak] = useState<number>(0);
@@ -560,11 +618,23 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const [reviveCorrect, setReviveCorrect] = useState<number>(0);
   const streakMultiplier = 1 + Math.min(streak, 10) * 0.2;
 
+  const drawQuestion = (): BossActiveQuestion => {
+    const target = drawBossQuestion({
+      filter: bossFilter,
+      wrong: loadBossWrongQuestions(),
+      stage: stageCount,
+      rage: rageLevel,
+      recentIds: recentQuestionRef.current,
+    });
+    recentQuestionRef.current = [...recentQuestionRef.current, target.id].slice(-6);
+    return toBossQuestion(target, selectedDifficulty);
+  };
+
   // Game flow states
   const [gameState, setGameState] = useState<"idle" | "playing" | "paused" | "question_attack" | "revive_challenge" | "game_over" | "boss_defeated" | "shop">("idle");
   const [activeQuestion, setActiveQuestion] = useState<BossActiveQuestion | null>(null);
   const [questionEta, setQuestionEta] = useState(Math.ceil(activeBoss.attackIntervalMs / 1000));
-  const [questionTimer, setQuestionTimer] = useState<number>(15);
+  const [questionTimer, setQuestionTimer] = useState<number>(questionSeconds);
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; text: string } | null>(null);
   const [score, setScore] = useState<number>(0);
   const [bossAttackCharging, setBossAttackCharging] = useState<boolean>(false);
@@ -863,8 +933,8 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     setBossAttackCharging(false);
     setGameState("question_attack");
     setQuestionFeedback(null);
-    setQuestionTimer(15);
-    const businessQ = getBusinessBossQuestion();
+    setQuestionTimer(questionSeconds);
+    const businessQ = drawQuestion();
     setActiveQuestion(businessQ);
     playTone(380, "square", 0.35, 0.2);
   };
@@ -876,15 +946,42 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     setReviveCorrect(0);
     setGameState("revive_challenge");
     setQuestionFeedback(null);
-    setQuestionTimer(15);
-    setActiveQuestion(getBusinessBossQuestion());
+    setQuestionTimer(questionSeconds);
+    setActiveQuestion(drawQuestion());
     playTone(440, "square", 0.4, 0.2);
   };
 
   // Answer question attack
+  // Mirror a miss/hit into the spaced-repetition store and the Google Sheet
+  const recordBossOutcome = (wasCorrect: boolean, question: BossActiveQuestion, selectedIndex: number) => {
+    if (wasCorrect) {
+      const hadMiss = Boolean(loadBossWrongQuestions()[question.id]);
+      const updated = recordBossHit(question.id);
+      if (hadMiss && !updated) {
+        // Came back from "missed" to zero → mark Mastered in the sheet
+        markBossMasteredToSheet(question.id);
+      }
+      refreshWrongMap();
+      return;
+    }
+    recordBossMiss(question.item, selectedDifficulty);
+    logBossWrongToSheet({
+      questionId: question.id,
+      unit: question.unit,
+      subsection: question.subsection,
+      difficulty: selectedDifficulty,
+      questionPrompt: question.question,
+      userAnswer: selectedIndex === -1 ? "Time ran out" : question.options[selectedIndex] ?? "",
+      correctAnswer: question.options[question.correctIndex] ?? "",
+    });
+    refreshWrongMap();
+  };
+
   const handleSelectQuestionOption = (selectedIndex: number) => {
     if (!activeQuestion || answerLockedRef.current || (gameState !== "question_attack" && gameState !== "revive_challenge")) return;
     answerLockedRef.current = true;
+
+    recordBossOutcome(selectedIndex === activeQuestion.correctIndex, activeQuestion, selectedIndex);
 
     // ---- Revive trial: all 10 answers must be correct ----
     if (gameState === "revive_challenge") {
@@ -914,9 +1011,9 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
           });
           feedbackActionRef.current = () => {
             setQuestionFeedback(null);
-            setQuestionTimer(15);
+            setQuestionTimer(questionSeconds);
             answerLockedRef.current = false;
-            setActiveQuestion(getBusinessBossQuestion());
+            setActiveQuestion(drawQuestion());
           };
         }
       } else {
@@ -1262,13 +1359,178 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
         ctx.arc(3, -15 + runBob, 1.6, 0, Math.PI * 2);
         ctx.fill();
 
-        // Hair Design
-        ctx.fillStyle = activeHair.previewColor;
-        ctx.beginPath();
-        ctx.arc(0, -17 + runBob, 9, Math.PI, Math.PI * 2);
-        ctx.fill();
-        // Hair fringe
-        ctx.fillRect(-2, -21 + runBob, 10, 4);
+        // Hair Design — each wardrobe style is drawn with its own silhouette
+        {
+          const hy = runBob;
+          const hairColor = activeHair.previewColor;
+          const hairDark = activeHair.secondaryColor ?? "rgba(0,0,0,0.4)";
+          ctx.fillStyle = hairColor;
+
+          switch (activeHair.id) {
+            case "hair-1": // Scholar Side-Part — neat dome with a side sweep and part line
+              ctx.beginPath();
+              ctx.ellipse(0, -16 + hy, 9.3, 6.9, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.fillStyle = hairDark;
+              ctx.fillRect(-4.6, -22.6 + hy, 1.7, 5.6); // side part line
+              break;
+            case "hair-2": // Academic Neat Crop — flat tapered crop
+              ctx.beginPath();
+              ctx.roundRect(-8.6, -22.4 + hy, 17.2, 5.6, 2.4);
+              ctx.fill();
+              ctx.fillRect(-8.6, -18 + hy, 17.2, 2.4);
+              break;
+            case "hair-3": // Messy Revision Curls — cluster of coils
+              [[-8, -16, 3.6], [-4.6, -20.4, 3.8], [0.2, -22.4, 4], [4.9, -20.4, 3.8], [8.8, -16.2, 3.5]].forEach(([x, y, r]) => {
+                ctx.beginPath();
+                ctx.arc(x, y + hy, r, 0, Math.PI * 2);
+                ctx.fill();
+              });
+              ctx.beginPath();
+              ctx.ellipse(0, -13.4 + hy, 9.3, 4.7, 0, Math.PI, 0);
+              ctx.fill();
+              break;
+            case "hair-4": // Modern Textured Quiff — high swept-back wedge
+              ctx.beginPath();
+              ctx.ellipse(0, -16 + hy, 9.2, 6.3, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(-8.4, -17.2 + hy);
+              ctx.quadraticCurveTo(-1, -27.5 + hy, 10, -19.5 + hy);
+              ctx.quadraticCurveTo(2.5, -22.4 + hy, -8.4, -13.6 + hy);
+              ctx.closePath();
+              ctx.fill();
+              break;
+            case "hair-5": // Sleek High Ponytail — dome plus tail falling behind + exam ribbon
+              ctx.beginPath();
+              ctx.ellipse(0, -16 + hy, 9, 6.7, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath(); // tail
+              ctx.moveTo(8.3, -17.6 + hy);
+              ctx.quadraticCurveTo(14.5, -13 + hy, 11.2, -2.5 + hy);
+              ctx.quadraticCurveTo(8.6, -10.5 + hy, 5.4, -14 + hy);
+              ctx.closePath();
+              ctx.fill();
+              ctx.fillStyle = "#BE123C"; // ribbon
+              ctx.beginPath();
+              ctx.ellipse(8.3, -18 + hy, 2.4, 1.5, 0.3, 0, Math.PI * 2);
+              ctx.fill();
+              break;
+            case "hair-6": // Curly High-Top Fade — tall flat-top block with coils on top
+              ctx.beginPath();
+              ctx.roundRect(-7.6, -25 + hy, 15.2, 9.6, 3);
+              ctx.fill();
+              [[-5.4, -24.6, 2.4], [0, -25.9, 2.6], [5.4, -24.6, 2.4]].forEach(([x, y, r]) => {
+                ctx.beginPath();
+                ctx.arc(x, y + hy, r, 0, Math.PI * 2);
+                ctx.fill();
+              });
+              break;
+            case "hair-7": // Spiky Anime Protagonist — row of crimson spikes
+              ctx.beginPath();
+              ctx.ellipse(0, -15 + hy, 9.2, 5.2, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(-9.4, -16.6 + hy);
+              [-7.2, -4.4, -1.6, 1.4, 4.2, 7.1].forEach((x, i) => {
+                ctx.lineTo(x + 1, (-22.5 - (i % 2) * 4) + hy);
+                ctx.lineTo(x + 2.2, -16.6 + hy);
+              });
+              ctx.closePath();
+              ctx.fill();
+              break;
+            case "hair-8": // Regal Braided Crown — beaded braid arc over the crown
+              ctx.beginPath();
+              ctx.ellipse(0, -15.5 + hy, 9.2, 6.1, 0, Math.PI, 0);
+              ctx.fill();
+              for (let i = 0; i <= 10; i += 1) {
+                const angle = Math.PI - (i / 10) * Math.PI;
+                const bx = Math.cos(angle) * 7.5;
+                const by = -15.5 + hy - Math.sin(angle) * 6.1;
+                ctx.beginPath();
+                ctx.arc(bx, by, 1.5, 0, Math.PI * 2);
+                ctx.fillStyle = i % 2 === 0 ? hairDark : hairColor;
+                ctx.fill();
+              }
+              ctx.fillStyle = hairColor;
+              break;
+            case "hair-9": // Platinum Valedictorian — long flowing panels both sides
+              ctx.beginPath();
+              ctx.ellipse(0, -16 + hy, 9.5, 7.1, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.fillRect(-9.6, -15 + hy, 4.5, 16); // left panel
+              ctx.fillRect(5.1, -15 + hy, 4.5, 16); // right panel
+              break;
+            case "hair-10": // Cyber Matrix Mohawk — standing center fin
+              ctx.beginPath();
+              ctx.ellipse(0, -14.8 + hy, 9.2, 4.8, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(-2.6, -17 + hy);
+              ctx.lineTo(-2.2, -27.5 + hy);
+              ctx.lineTo(0, -20.5 + hy);
+              ctx.lineTo(2.2, -29 + hy);
+              ctx.lineTo(4.4, -17 + hy);
+              ctx.closePath();
+              ctx.fill();
+              break;
+            case "hair-11": // Crimson Comet Side-Sweep — blazing swept fringe
+              ctx.beginPath();
+              ctx.ellipse(0, -16 + hy, 9.3, 6.6, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(-9.2, -16 + hy);
+              ctx.quadraticCurveTo(-2, -25 + hy, 10.2, -19 + hy);
+              ctx.lineTo(10.2, -16 + hy);
+              ctx.quadraticCurveTo(0, -20.8 + hy, -9.2, -12.6 + hy);
+              ctx.closePath();
+              ctx.fill();
+              break;
+            case "hair-12": // Examiner's Silver Sweep — polished angled flat-top sweep
+              ctx.beginPath();
+              ctx.roundRect(-8.8, -22.6 + hy, 17.6, 6.4, 1.6);
+              ctx.fill();
+              ctx.fillRect(-8.8, -17.6 + hy, 17.6, 2.2);
+              break;
+            case "hair-13": // Chairman's Platinum Wave — layered swept waves
+              ctx.beginPath();
+              ctx.ellipse(0, -16.4 + hy, 9.4, 6.8, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.beginPath();
+              ctx.moveTo(-9, -18.5 + hy);
+              ctx.quadraticCurveTo(-4.5, -25.5 + hy, 0.5, -19.5 + hy);
+              ctx.quadraticCurveTo(5.5, -25.5 + hy, 9.4, -18 + hy);
+              ctx.lineTo(9.4, -15.5 + hy);
+              ctx.quadraticCurveTo(4.5, -20.5 + hy, 0.5, -15 + hy);
+              ctx.quadraticCurveTo(-4.5, -20.5 + hy, -9, -14.5 + hy);
+              ctx.closePath();
+              ctx.fill();
+              break;
+            case "hair-14": // Obsidian Twilight Perm — dense dark coil crown
+              [[-8.4, -15.6, 3.4], [-5.2, -20, 3.9], [-0.8, -22.2, 4.2], [3.8, -20.4, 4], [8, -15.8, 3.6]].forEach(([x, y, r]) => {
+                ctx.beginPath();
+                ctx.arc(x, y + hy, r, 0, Math.PI * 2);
+                ctx.fill();
+              });
+              ctx.beginPath();
+              ctx.ellipse(0, -13.6 + hy, 9.3, 4.8, 0, Math.PI, 0);
+              ctx.fill();
+              break;
+            case "hair-15": // Quantum Gradient Fade — sharp high-top glow block
+              ctx.shadowColor = "#22D3EE";
+              ctx.shadowBlur = 6;
+              ctx.beginPath();
+              ctx.roundRect(-7.4, -25.5 + hy, 14.8, 10.5, 2.6);
+              ctx.fill();
+              ctx.shadowBlur = 0;
+              break;
+            default: // Fallback — neat dome with a fringe sweep
+              ctx.beginPath();
+              ctx.ellipse(0, -16.5 + hy, 9.2, 6.8, 0, Math.PI, 0);
+              ctx.fill();
+              ctx.fillRect(-2, -21 + hy, 10, 4);
+          }
+        }
       } else {
         // Emoji Sprite Character (Flipped to face right)
         if (currentChar.flipSprite) {
@@ -1696,14 +1958,23 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     playJumpSound();
   };
 
+  const AMMO_LADDER: { from: number; to: number; cost: number }[] = [
+    { from: 20, to: 35, cost: 60 },
+    { from: 35, to: 50, cost: 140 },
+    { from: 50, to: 65, cost: 240 },
+    { from: 65, to: 80, cost: 340 },
+    { from: 80, to: 100, cost: 480 },
+  ];
+  const nextAmmoTier = AMMO_LADDER.find((tier) => tier.from === maxAmmo);
+
   const handleUpgradeMaxAmmo = () => {
-    const cost = maxAmmo === 20 ? 60 : 140;
-    if (coins < cost) return;
-    const newCoins = coins - cost;
+    if (!nextAmmoTier) return;
+    if (coins < nextAmmoTier.cost) return;
+    const newCoins = coins - nextAmmoTier.cost;
     setCoins(newCoins);
     localStorage.setItem("ecbiz_study_coins", String(newCoins));
 
-    const newMax = maxAmmo + 15;
+    const newMax = nextAmmoTier.to;
     setMaxAmmo(newMax);
     localStorage.setItem("ecbiz_max_ammo", String(newMax));
     setAmmo(newMax);
@@ -1796,6 +2067,95 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
               </div>
             </section>
           </div>
+
+          {/* Question focus panel — unit / subsection / focus mode filters */}
+          <section className="boss-lobby-panel boss-filters-panel" aria-labelledby="boss-filters-title">
+            <div className="boss-panel-heading">
+              <h2 id="boss-filters-title">Question focus</h2>
+              <span>{bossFilter.focus === "missed" ? `${missedCount.toLocaleString()} missed questions` : `${poolCount.toLocaleString()} in the pool`}</span>
+            </div>
+
+            <div className="boss-filters-grid">
+              <fieldset className="boss-filter-fieldset">
+                <legend>Units</legend>
+                <div className="boss-filter-chips" role="group" aria-label="Filter by unit">
+                  <button
+                    type="button"
+                    className={`boss-filter-chip${bossFilter.units.length === 0 ? " is-on" : ""}`}
+                    aria-pressed={bossFilter.units.length === 0}
+                    onClick={() => updateFilter({ units: [], subsection: "all" })}
+                  >
+                    All
+                  </button>
+                  {UNIT_OPTIONS.map((unit) => {
+                    const pressed = bossFilter.units.includes(unit.code);
+                    return (
+                      <button
+                        key={unit.code}
+                        type="button"
+                        className={`boss-filter-chip${pressed ? " is-on" : ""}`}
+                        aria-pressed={pressed}
+                        title={unit.label}
+                        onClick={() => {
+                          const next = pressed
+                            ? bossFilter.units.filter((u) => u !== unit.code)
+                            : [...bossFilter.units, unit.code].sort((a, b) => Number(a) - Number(b));
+                          updateFilter({ units: next, subsection: "all" });
+                        }}
+                      >
+                        U{unit.code}
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+
+              <label className="boss-filter-field">
+                <span>Subsection</span>
+                <select
+                  className="boss-filter-select"
+                  value={bossFilter.subsection}
+                  onChange={(event) => updateFilter({ subsection: event.target.value })}
+                >
+                  <option value="all">All subsections ({subsections.reduce((total, s) => total + s.count, 0).toLocaleString()})</option>
+                  {subsections.map((sub) => (
+                    <option key={sub.code} value={sub.code}>
+                      {sub.chapter} ({sub.count})
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="boss-filter-field">
+                <span>Focus mode</span>
+                <select
+                  className="boss-filter-select"
+                  value={bossFilter.focus}
+                  onChange={(event) => updateFilter({ focus: event.target.value as BossFocusMode })}
+                >
+                  <option value="all">All questions</option>
+                  <option value="missed">Previously missed{missedCount > 0 ? ` (${missedCount})` : ""}</option>
+                  <option value="definitions">Definitions &amp; key terms</option>
+                  <option value="calculations">Calculations &amp; formulas</option>
+                  <option value="application">Application &amp; analysis</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="boss-filters-foot">
+              <span>{questionSeconds}s per question on {TIER_LABELS[selectedDifficulty]} (tightens each stage) · questions escalate as the stage rises</span>
+              {poolCount < 20 && (
+                <span className="boss-filter-warning" role="status">
+                  Only {poolCount.toLocaleString()} question{poolCount === 1 ? "" : "s"} match — broaden the filters for a varied fight.
+                </span>
+              )}
+              {bossFilter.focus === "missed" && missedCount === 0 && (
+                <span className="boss-filter-warning" role="status">
+                  No missed questions yet — misses are banked here and resurface until you master them.
+                </span>
+              )}
+            </div>
+          </section>
         </>
       )}
 
@@ -1885,6 +2245,68 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
             </div>
           </div>
 
+          {/* Characters & Skins Shop */}
+          <div className="space-y-3 pt-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+              🎭 Character Skins (Who You Play As)
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {CHARACTERS.map((char) => {
+                const isUnlocked = unlockedChars.includes(char.id);
+                const isEquipped = equippedCharId === char.id;
+                const canAfford = coins >= char.cost;
+
+                return (
+                  <div
+                    key={char.id}
+                    className={`p-4 rounded-xl border transition-all flex flex-col justify-between ${
+                      isEquipped
+                        ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 shadow-md ring-2 ring-emerald-500/20"
+                        : isUnlocked
+                          ? "border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40"
+                          : "border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 opacity-90"
+                    }`}
+                  >
+                    <div>
+                      <div className="text-4xl mb-2">{char.icon}</div>
+                      <div className="font-bold text-sm text-neutral-900 dark:text-white">{char.name}</div>
+                      {char.id === "custom" && (
+                        <p className="text-[11px] text-sky-600 dark:text-sky-300 mt-1">Customise in the Wardrobe (top bar / after battle)</p>
+                      )}
+                    </div>
+
+                    <div className="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+                      {isEquipped ? (
+                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                          ✓ Equipped
+                        </span>
+                      ) : isUnlocked ? (
+                        <button
+                          onClick={() => handleEquipChar(char.id)}
+                          className="px-3 py-1 bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-xs font-semibold rounded-lg text-neutral-900 dark:text-white transition cursor-pointer"
+                        >
+                          Equip
+                        </button>
+                      ) : (
+                        <button
+                          disabled={!canAfford}
+                          onClick={() => handleBuyCharacter(char)}
+                          className={`px-3 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer ${
+                            canAfford
+                              ? "bg-amber-500 hover:bg-amber-600 text-white shadow-xs"
+                              : "bg-neutral-200 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed"
+                          }`}
+                        >
+                          <span>Buy for {char.cost} 🪙</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Ammo & Bandolier Shop */}
           <div className="space-y-3 pt-2">
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
@@ -1900,15 +2322,15 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                     </span>
                   </div>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-                    Increases maximum carried ink darts by +15 per upgrade.
+                    Increases maximum carried ink darts. Upgrades climb to 100 (+15 each tier, prices rise).
                   </p>
                 </div>
                 <button
-                  disabled={coins < (maxAmmo === 20 ? 60 : 140)}
+                  disabled={!nextAmmoTier || coins < nextAmmoTier.cost}
                   onClick={handleUpgradeMaxAmmo}
                   className="px-4 py-2 bg-sky-600 hover:bg-sky-700 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shrink-0 ml-4 cursor-pointer"
                 >
-                  Upgrade (+15) · {maxAmmo === 20 ? 60 : 140} 🪙
+                  {nextAmmoTier ? `Upgrade (+${nextAmmoTier.to - nextAmmoTier.from}) · ${nextAmmoTier.cost} 🪙` : "Maxed out · 100 🎉"}
                 </button>
               </div>
 

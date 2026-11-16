@@ -1,7 +1,8 @@
-var U='Users',S='Students',P='Progress';
+var U='Users',S='Students',P='Progress',BW='Boss_Wrong_Questions';
 var UH=['access_code','name','password_hash','salt','failed_attempts','locked_until','created_at','updated_at'];
 var SH=['access_code','student_id','name','coins','streak','time_spent_sec','mcq_completed','mcq_errors','two_mark_scores','four_mark_scores','six_mark_scores','eight_mark_scores','twelve_mark_scores','missed_marks_breakdown','topical_log','recommended_focus','updated_at'];
 var PH=['access_code','coins','streak','unlocked_themes','progress_json','updated_at'];
+var BWH=['access_code','name','updated_at','question_id','unit','subsection','difficulty','question_prompt','user_answer','correct_answer','miss_count','status'];
 var J=['mcq_errors','two_mark_scores','four_mark_scores','six_mark_scores','eight_mark_scores','twelve_mark_scores','missed_marks_breakdown','topical_log','unlocked_themes','progress_json'];
 var N=['coins','streak','time_spent_sec','mcq_completed'];
 var TTL=2592000,ITER=250,MAX=5,LOCK=15,MIN=6;
@@ -12,7 +13,9 @@ function s(v){return v==null?'':String(v).trim();}
 function doGet(e){
   var p=e.parameter||{},a=p.action||'student',c=tok(p.token);
   if(!c)return out({success:false,error:'unauthorized'});
-  return out({success:true,data:read(a=='progress'?P:S,a=='progress'?PH:SH,c)});
+  if(a=='progress')return out({success:true,data:read(P,PH,c)});
+  if(a=='bosswrong')return out({success:true,data:readBoss(c)});
+  return out({success:true,data:read(S,SH,c)});
 }
 
 function doPost(e){
@@ -21,7 +24,10 @@ function doPost(e){
   if(a=='login')return log(b);
   var c=tok(b.token);
   if(!c)return out({success:false,error:'unauthorized'});
-  if(a=='progress')up(P,PH,c,b);else up(S,SH,c,b);
+  if(a=='progress')up(P,PH,c,b);
+  else if(a=='bosswrong')bossLog(c,b);
+  else if(a=='bossmastered')bossMark(c,b);
+  else up(S,SH,c,b);
   return out({success:true});
 }
 
@@ -65,6 +71,7 @@ function tok(t){if(!t)return null;var p=String(t).split('.');if(p.length!=2)retu
 
 function get(n,h){var ss=SpreadsheetApp.getActiveSpreadsheet(),sh=ss.getSheetByName(n);if(!sh)sh=ss.insertSheet(n);var r=sh.getRange(1,1,1,h.length).getValues()[0],ok=true;for(var i=0;i<h.length;i++)if(String(r[i]||'').trim()!==h[i])ok=false;if(!ok){sh.getRange(1,1,1,h.length).setValues([h]);sh.setFrozenRows(1);}return sh;}
 function find(sh,c){var n=sh.getLastRow();if(n<2)return -1;var v=sh.getRange(2,1,n-1,1).getValues();for(var i=0;i<v.length;i++)if(s(v[i][0])===c)return i+2;return -1;}
+function findRow(sh,c,qid){var n=sh.getLastRow();if(n<2)return -1;var v=sh.getRange(2,1,n-1,4).getValues();for(var i=0;i<v.length;i++)if(s(v[i][0])===c&&s(v[i][3])===qid)return i+2;return -1;}
 function obj(sh,h,r){var v=sh.getRange(r,1,1,h.length).getValues()[0],o={};for(var i=0;i<h.length;i++){var k=h[i],x=v[i];o[k]=J.indexOf(k)>=0?pj(x,k):N.indexOf(k)>=0?(x===''?0:Number(x)):x;}return o;}
 function pj(x,k){if(x===''||x==null)return k=='topical_log'||k=='progress_json'?{}:[];if(typeof x!='string')return x;try{return JSON.parse(x);}catch(e){return x;}}
 function read(n,h,c){var sh=get(n,h),r=find(sh,c);return r<0?null:obj(sh,h,r);}
@@ -72,3 +79,55 @@ function sv(k,v){if(J.indexOf(k)>=0)return typeof v=='string'?v:JSON.stringify(v
 function add(sh,h,c,rec){var now=new Date().toISOString();sh.appendRow(h.map(function(k){if(k=='access_code')return c;if(k=='updated_at')return rec[k]||now;var v=rec[k];return v==null?'':sv(k,v);}));}
 function put(sh,h,r,c,p){var old=sh.getRange(r,1,1,h.length).getValues()[0],now=new Date().toISOString();sh.getRange(r,1,1,h.length).setValues([h.map(function(k,i){if(k=='access_code')return c;if(p[k]!=null)return sv(k,p[k]);if(k=='updated_at')return now;return old[i];})]);}
 function up(n,h,c,b){var sh=get(n,h),lk=LockService.getScriptLock();lk.waitLock(15000);try{var r=find(sh,c),p={};for(var k in b)if(b.hasOwnProperty(k)&&k!='action'&&k!='token'&&k!='access_code')p[k]=b[k];if(r<0)add(sh,h,c,p);else put(sh,h,r,c,p);}finally{lk.releaseLock();}}
+
+/* ---- Boss Battle wrong questions: append to Boss_Wrong_Questions and mirror ids into Students.mcq_errors ---- */
+function readName(c){var st=read(S,SH,c);return (st&&st.name)?st.name:'Student';}
+
+function appendMcqError(stsh,c,qid){
+  var r=find(stsh,c),now=new Date().toISOString();
+  var errs=[];
+  if(r>=0){var sh=obj(stsh,SH,r);errs=Array.isArray(sh.mcq_errors)?sh.mcq_errors:[];}
+  if(errs.indexOf(qid)>=0)return;
+  errs.push(qid);
+  if(r<0)add(stsh,SH,c,{name:'Student',coins:0,streak:0,time_spent_sec:0,mcq_completed:0,mcq_errors:errs,updated_at:now});
+  else put(stsh,SH,r,c,{mcq_errors:errs,updated_at:now});
+}
+
+function bossLog(c,b){
+  var sh=get(BW,BWH),stsh=get(S,SH),lk=LockService.getScriptLock();lk.waitLock(15000);
+  try{
+    var qid=s(b.question_id);if(!qid)throw new Error('question_id is required');
+    var nm=readName(c);
+    var r=findRow(sh,c,qid),now=new Date().toISOString();
+    if(r<0){
+      var rec={question_id:qid,name:nm,updated_at:now,unit:s(b.unit),subsection:s(b.subsection||b.chapter),difficulty:s(b.difficulty)||'foundation',question_prompt:s(b.question_prompt),user_answer:s(b.user_answer),correct_answer:s(b.correct_answer),miss_count:1,status:'Needs Review'};
+      add(sh,BWH,c,rec);
+    }else{
+      var old=sh.getRange(r,1,1,BWH.length).getValues()[0];
+      var mc=Number(BWH[10]!=null&&old[BWH.indexOf('miss_count')]!==''?old[BWH.indexOf('miss_count')]:0)+1;
+      sh.getRange(r,1,1,BWH.length).setValues([BWH.map(function(k,i){if(k=='access_code')return c;if(k=='name')return nm;if(k=='question_id')return qid;if(k=='unit')return s(b.unit)||s(old[i]);if(k=='subsection')return s(b.subsection||b.chapter)||s(old[i]);if(k=='difficulty')return s(b.difficulty)||s(old[i]);if(k=='question_prompt')return s(b.question_prompt)||s(old[i]);if(k=='user_answer')return s(b.user_answer)||s(old[i]);if(k=='correct_answer')return s(b.correct_answer)||s(old[i]);if(k=='miss_count')return mc;if(k=='status')return 'Needs Review';if(k=='updated_at')return now;return old[i];})]);
+    }
+    appendMcqError(stsh,c,qid);
+    return out({success:true});
+  }catch(err){return out({success:false,error:String(err)});}finally{lk.releaseLock();}
+}
+
+function bossMark(c,b){
+  var sh=get(BW,BWH),lk=LockService.getScriptLock();lk.waitLock(15000);
+  try{
+    var qid=s(b.question_id);if(!qid)return out({success:false,error:'question_id is required'});
+    var r=findRow(sh,c,qid),now=new Date().toISOString();
+    if(r>=0){
+      var old=sh.getRange(r,1,1,BWH.length).getValues()[0];
+      sh.getRange(r,1,1,BWH.length).setValues([BWH.map(function(k,i){if(k=='status')return 'Mastered';if(k=='updated_at')return now;return old[i];})]);
+    }
+    return out({success:true});
+  }finally{lk.releaseLock();}
+}
+
+function readBoss(c){
+  var sh=get(BW,BWH),n=sh.getLastRow();if(n<2)return [];
+  var rows=sh.getRange(2,1,n-1,BWH.length).getValues(),out_=[];
+  for(var i=0;i<rows.length;i++){if(s(rows[i][0])!==c)continue;var o={};for(var j=0;j<BWH.length;j++)o[BWH[j]]=rows[i][j];out_.push(o);}
+  return out_;
+}

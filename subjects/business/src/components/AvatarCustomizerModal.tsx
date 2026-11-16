@@ -139,6 +139,51 @@ function AvatarHair({ hairId, color }: { hairId: string; color: string }) {
         </g>
       );
 
+    case "hair-11": // Crimson Comet Side-Sweep
+      return (
+        <g>
+          {cap}
+          <path d="M 56 33 Q 64 16 88 19 Q 102 22 102 33 Q 84 25 56 37 Z" fill={color} />
+        </g>
+      );
+
+    case "hair-12": // Examiner's Silver Sweep
+      return (
+        <g>
+          <path d="M 58 32 L 57 20 Q 80 11 102 20 L 101 32 Q 80 25 58 32 Z" fill={color} />
+          <path d="M 57 28 Q 80 18 102 28 L 101 33 Q 80 24 58 33 Z" fill={color} />
+        </g>
+      );
+
+    case "hair-13": // Chairman's Platinum Wave
+      return (
+        <g>
+          {cap}
+          <path d="M 56 34 Q 62 14 76 17 Q 70 8 86 12 Q 82 6 96 13 Q 106 17 103 33 Q 92 22 80 24 Q 66 24 56 34 Z" fill={color} />
+        </g>
+      );
+
+    case "hair-14": // Obsidian Twilight Perm
+      return (
+        <g>
+          <circle cx="60" cy="26" r="6" fill={color} />
+          <circle cx="71" cy="17" r="7" fill={color} />
+          <circle cx="84" cy="15" r="7.5" fill={color} />
+          <circle cx="96" cy="18" r="6.5" fill={color} />
+          <circle cx="103" cy="27" r="5.5" fill={color} />
+          {cap}
+        </g>
+      );
+
+    case "hair-15": // Quantum Gradient Fade
+      return (
+        <g>
+          {cap}
+          <rect x="59" y="7" width="42" height="14" rx="3.5" fill={color} />
+          <rect x="63" y="4" width="34" height="5" rx="2.5" fill={color} opacity="0.75" />
+        </g>
+      );
+
     default: // hair-1 Scholar Side-Part
       return (
         <g>
@@ -443,7 +488,7 @@ export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
                 }`}
               >
                 <Scissors className="w-3.5 h-3.5" />
-                <span>Hairstyles (10)</span>
+                <span>Hairstyles ({HAIR_DESIGNS.length})</span>
               </button>
 
               <button
@@ -455,7 +500,7 @@ export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
                 }`}
               >
                 <Shirt className="w-3.5 h-3.5" />
-                <span>Clothing / Tops (10)</span>
+                <span>Clothing / Tops ({TOP_DESIGNS.length})</span>
               </button>
 
               <button
@@ -467,7 +512,7 @@ export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
                 }`}
               >
                 <span>👖</span>
-                <span>Pants / Bottoms (10)</span>
+                <span>Pants / Bottoms ({BOTTOM_DESIGNS.length})</span>
               </button>
 
               <button
@@ -479,7 +524,7 @@ export const AvatarCustomizerModal: React.FC<AvatarCustomizerModalProps> = ({
                 }`}
               >
                 <Footprints className="w-3.5 h-3.5" />
-                <span>Shoes (10)</span>
+                <span>Shoes ({SHOE_DESIGNS.length})</span>
               </button>
             </div>
 

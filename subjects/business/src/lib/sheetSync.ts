@@ -431,6 +431,54 @@ export function flushProgress() {
   void pushProgress();
 }
 
+/* ------------------------------------------------------------------ */
+/* Boss Battle wrong-question logging (Boss_Wrong_Questions tab)      */
+/* ------------------------------------------------------------------ */
+
+export interface BossWrongLog {
+  questionId: string;
+  unit: string;
+  subsection: string;
+  difficulty: string;
+  questionPrompt: string;
+  userAnswer: string;
+  correctAnswer: string;
+}
+
+/** Best-effort log of a question missed in Boss Battle. */
+export function logBossWrongToSheet(entry: BossWrongLog): void {
+  const session = getSession();
+  if (!session || !APPS_SCRIPT_URL) return;
+  void postToScript({
+    action: "bosswrong",
+    token: session.token,
+    access_code: session.code,
+    name: session.name || "Student",
+    question_id: entry.questionId,
+    unit: entry.unit,
+    subsection: entry.subsection,
+    difficulty: entry.difficulty,
+    question_prompt: entry.questionPrompt,
+    user_answer: entry.userAnswer,
+    correct_answer: entry.correctAnswer,
+  }).then((res) => {
+    if (!res.success && res.error === "unauthorized") handleExpiredSession();
+  });
+}
+
+/** Mark a previously-missed Boss Battle question as Mastered in the Sheet. */
+export function markBossMasteredToSheet(questionId: string): void {
+  const session = getSession();
+  if (!session || !APPS_SCRIPT_URL) return;
+  void postToScript({
+    action: "bossmastered",
+    token: session.token,
+    question_id: questionId,
+  }).then((res) => {
+    if (!res.success && res.error === "unauthorized") handleExpiredSession();
+  });
+}
+
 function patchStorage() {
   const originalSetItem = Storage.prototype.setItem;
   Storage.prototype.setItem = function (key: string, value: string) {

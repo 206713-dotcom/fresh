@@ -26,6 +26,8 @@ export const SKIN_TONES: SkinToneItem[] = [
   { id: "skin-5", name: "Deep Amber", color: "#7B4B27", cost: 0, description: "Deep radiant amber tone (Free)" },
   { id: "skin-6", name: "Espresso", color: "#4B2810", cost: 0, description: "Deep polished espresso tone (Free)" },
   { id: "skin-7", name: "Cyberpunk Azure", color: "#38BDF8", cost: 150, description: "Synthetic blue holographic android tone" },
+  { id: "skin-8", name: "Celestial Gold", color: "#FDE047", cost: 320, description: "Legendary gilded valedictorian complexion" },
+  { id: "skin-9", name: "Void Onyx", color: "#0F0A1E", cost: 320, description: "Legendary deep cosmic void complexion" },
 ];
 
 export const HAIR_DESIGNS: CosmeticItem[] = [
@@ -39,6 +41,11 @@ export const HAIR_DESIGNS: CosmeticItem[] = [
   { id: "hair-8", name: "Regal Braided Crown", category: "hair", cost: 180, previewColor: "#78350F", description: "Intricately woven braids wrapped over crown", rarity: "epic", icon: "👑" },
   { id: "hair-9", name: "Platinum Valedictorian", category: "hair", cost: 250, previewColor: "#F1F5F9", description: "Striking silver-platinum flowing locks", rarity: "legendary", icon: "⚡" },
   { id: "hair-10", name: "Cyber Matrix Mohawk", category: "hair", cost: 350, previewColor: "#06B6D4", description: "Glowing neon cyan holographic mohawk", rarity: "legendary", icon: "🤖" },
+  { id: "hair-11", name: "Crimson Comet Side-Sweep", category: "hair", cost: 420, previewColor: "#B91C1C", description: "Blazing crimson side-swept fringe", rarity: "epic", icon: "☄️" },
+  { id: "hair-12", name: "Examiner's Silver Sweep", category: "hair", cost: 460, previewColor: "#E2E8F0", description: "Polished silver sweep of a master examiner", rarity: "epic", icon: "📏" },
+  { id: "hair-13", name: "Chairman's Platinum Wave", category: "hair", cost: 520, previewColor: "#CBD5E1", secondaryColor: "#FDE047", description: "Flowing platinum waves of a boardroom legend", rarity: "legendary", icon: "🌊" },
+  { id: "hair-14", name: "Obsidian Twilight Perm", category: "hair", cost: 580, previewColor: "#2E1065", secondaryColor: "#A78BFA", description: "Deep violet twilight curls from late-night study", rarity: "legendary", icon: "🌙" },
+  { id: "hair-15", name: "Quantum Gradient Fade", category: "hair", cost: 650, previewColor: "#22D3EE", description: "Holographic cyan fade that shifts hue", rarity: "legendary", icon: "⚛️" },
 ];
 
 export const TOP_DESIGNS: CosmeticItem[] = [
@@ -52,6 +59,11 @@ export const TOP_DESIGNS: CosmeticItem[] = [
   { id: "top-8", name: "Wall Street Silk Waistcoat", category: "top", cost: 220, previewColor: "#1E293B", secondaryColor: "#FBBF24", description: "Charcoal damask vest with antique gold pocket chain", rarity: "epic", icon: "📈" },
   { id: "top-9", name: "Royal Valedictorian Robe", category: "top", cost: 320, previewColor: "#991B1B", secondaryColor: "#FDE047", description: "Crimson ceremonial velvet robe with gold satin trim", rarity: "legendary", icon: "🎓" },
   { id: "top-10", name: "Quantum Cyber Carbon Plate", category: "top", cost: 480, previewColor: "#06B6D4", secondaryColor: "#A855F7", description: "Glowing reactive nanofiber chest armor with neon lights", rarity: "legendary", icon: "🛡️" },
+  { id: "top-11", name: "Midnight Velvet Dinner Jacket", category: "top", cost: 500, previewColor: "#312E81", secondaryColor: "#E0E7FF", description: "Midnight velvet with silk lapel piping", rarity: "epic", icon: "🎷" },
+  { id: "top-12", name: "Ivy League Ceremonial Blazer", category: "top", cost: 560, previewColor: "#064E3B", secondaryColor: "#FDE68A", description: "Emerald ceremonial blazer with gold trim", rarity: "epic", icon: "🏛️" },
+  { id: "top-13", name: "Neon Circuit Hoodie", category: "top", cost: 620, previewColor: "#0F172A", secondaryColor: "#22D3EE", description: "Matte techwear hoodie with pulsing circuits", rarity: "epic", icon: "💡" },
+  { id: "top-14", name: "Chairman's Silk Ceremony Suit", category: "top", cost: 720, previewColor: "#1C1917", secondaryColor: "#FDE047", description: "Black silk suit with gold-thread family crest", rarity: "legendary", icon: "👔" },
+  { id: "top-15", name: "Genoma Quantum Suit", category: "top", cost: 850, previewColor: "#0E7490", secondaryColor: "#67E8F9", description: "Living reactive-fibre business suit", rarity: "legendary", icon: "🧬" },
 ];
 
 export const BOTTOM_DESIGNS: CosmeticItem[] = [
@@ -65,6 +77,11 @@ export const BOTTOM_DESIGNS: CosmeticItem[] = [
   { id: "bot-8", name: "Retro High-Waist Trousers", category: "bottom", cost: 200, previewColor: "#78350F", description: "1950s scholastic wide-leg camel wool trousers", rarity: "epic", icon: "🕰️" },
   { id: "bot-9", name: "Tuxedo Satin-Stripe Slacks", category: "bottom", cost: 280, previewColor: "#020617", secondaryColor: "#E2E8F0", description: "Midnight black formal trousers with silk side-braid", rarity: "legendary", icon: "🤵" },
   { id: "bot-10", name: "Cyber Neon Matrix Joggers", category: "bottom", cost: 420, previewColor: "#0369A1", secondaryColor: "#06B6D4", description: "Matte graphite techwear with pulsating neon piping", rarity: "legendary", icon: "⚡" },
+  { id: "bot-11", name: "Midnight Tux Satin Trousers", category: "bottom", cost: 450, previewColor: "#111827", secondaryColor: "#E2E8F0", description: "Satin-stripe midnight tux trousers", rarity: "epic", icon: "🤵" },
+  { id: "bot-12", name: "Crimson Tartan Ceremony Slacks", category: "bottom", cost: 510, previewColor: "#991B1B", secondaryColor: "#111827", description: "Deep crimson ceremonial tartan check", rarity: "epic", icon: "🏴" },
+  { id: "bot-13", name: "Zero-G Flight Trousers", category: "bottom", cost: 580, previewColor: "#1E293B", secondaryColor: "#38BDF8", description: "Anti-grav courier cargo with cyan piping", rarity: "epic", icon: "🚀" },
+  { id: "bot-14", name: "Aurum Chairman Trousers", category: "bottom", cost: 700, previewColor: "#422006", secondaryColor: "#FBBF24", description: "Gold-braided charcoal ceremonial trousers", rarity: "legendary", icon: "⚜️" },
+  { id: "bot-15", name: "Liquid Mercury Slim", category: "bottom", cost: 800, previewColor: "#334E68", secondaryColor: "#E2E8F0", description: "Liquid-alloy weave slim trousers", rarity: "legendary", icon: "🪙" },
 ];
 
 export const SHOE_DESIGNS: CosmeticItem[] = [
@@ -78,4 +95,9 @@ export const SHOE_DESIGNS: CosmeticItem[] = [
   { id: "shoe-8", name: "Royal Gold Wingtip Slippers", category: "shoe", cost: 230, previewColor: "#CA8A04", secondaryColor: "#FEF08A", description: "Gold thread embroidered velvet ceremonial loafers", rarity: "epic", icon: "✨" },
   { id: "shoe-9", name: "Anti-Gravity Hover-Jets", category: "shoe", cost: 340, previewColor: "#0284C7", secondaryColor: "#38BDF8", description: "Magnetic levitation boots that float 2 inches up", rarity: "legendary", icon: "🚀" },
   { id: "shoe-10", name: "Mythic Diamond Striders", category: "shoe", cost: 500, previewColor: "#38BDF8", secondaryColor: "#F0FDFA", description: "Custom diamond-encrusted soles that leave sparkle trails", rarity: "legendary", icon: "💎" },
+  { id: "shoe-11", name: "Jet Black Oxfords", category: "shoe", cost: 430, previewColor: "#0B0B0F", description: "Immaculate mirror-shine black oxfords", rarity: "epic", icon: "👞" },
+  { id: "shoe-12", name: "Crimson Velvet Loafers", category: "shoe", cost: 500, previewColor: "#7F1D1D", secondaryColor: "#FDE68A", description: "Crimson velvet with gold embroidery", rarity: "epic", icon: "👡" },
+  { id: "shoe-13", name: "Quantum Hover Runners", category: "shoe", cost: 600, previewColor: "#082F49", secondaryColor: "#38BDF8", description: "Magnetic-sole runners with an ion wake", rarity: "epic", icon: "🛰️" },
+  { id: "shoe-14", name: "Ember Steel Derbies", category: "shoe", cost: 680, previewColor: "#1F2937", secondaryColor: "#F97316", description: "Forged ember-steel panel derbies", rarity: "legendary", icon: "🥾" },
+  { id: "shoe-15", name: "Celestial Dragon Stompers", category: "shoe", cost: 780, previewColor: "#134E4A", secondaryColor: "#34D399", description: "Emerald jade dragon-scale stompers", rarity: "legendary", icon: "🐉" },
 ];
