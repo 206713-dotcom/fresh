@@ -24,6 +24,7 @@ import {
   Scale,
   Timer,
   GraduationCap,
+  Target,
   LogIn,
   LogOut,
   CloudCheck,
@@ -65,6 +66,10 @@ interface HeaderProps {
   onOpenAchievements?: () => void;
   onOpenCompare?: (sectionCode: string) => void;
   onStartMockExam?: () => void;
+  /** Opens Quick Quiz straight into Chapter Active Recall Drills (MCQ) mode. */
+  onOpenMcq?: () => void;
+  /** True while the student is on Quick Quiz in MCQ drill mode. */
+  isMcqActive?: boolean;
 }
 
 const primaryNavigation = [
@@ -86,6 +91,8 @@ export function Header({
   onOpenAchievements,
   onOpenCompare,
   onStartMockExam,
+  onOpenMcq,
+  isMcqActive = false,
 }: HeaderProps) {
   // Dropdown open states for desktop & mobile
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -219,6 +226,14 @@ export function Header({
     setAccountOpen(false);
     setThemeShopOpen(false);
     setMobileMenuOpen(false);
+  };
+
+  const handleOpenMcq = () => {
+    setOpenDropdown(null);
+    setAccountOpen(false);
+    setThemeShopOpen(false);
+    setMobileMenuOpen(false);
+    onOpenMcq?.();
   };
 
   /**
@@ -909,6 +924,21 @@ export function Header({
                 {label}
               </button>
             ))}
+            {onOpenMcq && (
+              <button
+                type="button"
+                aria-current={isMcqActive ? "page" : undefined}
+                aria-label="MCQ — Chapter Active Recall Drills"
+                title="MCQ — Chapter Active Recall Drills"
+                onClick={() => {
+                  handleOpenMcq();
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <Target size={16} aria-hidden="true" />
+                MCQ
+              </button>
+            )}
           </div>
           <button
             type="button"
@@ -1060,11 +1090,31 @@ export function Header({
           <button
             onClick={() => handleSelectTab("quick-quiz")}
             className={`w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-rose-600 dark:text-rose-400 ${
-              activeTab === "quick-quiz" ? "bg-rose-50 dark:bg-rose-950/40" : ""
+              activeTab === "quick-quiz" && !isMcqActive ? "bg-rose-50 dark:bg-rose-950/40" : ""
             }`}
           >
             ⚡ Daily Challenge & Quick Quiz
           </button>
+
+          {onOpenMcq && (
+            <button
+              onClick={handleOpenMcq}
+              aria-pressed={isMcqActive}
+              className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold flex items-center justify-between ${
+                isMcqActive
+                  ? "bg-[#0F2042] text-white dark:bg-[#38BDF8] dark:text-[#0F172A]"
+                  : "text-[#0F2042] dark:text-sky-300 hover:bg-sky-50 dark:hover:bg-sky-950/40"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Target className="w-3.5 h-3.5" aria-hidden="true" />
+                MCQ — Chapter Active Recall Drills
+              </span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300 font-mono">
+                6,000
+              </span>
+            </button>
+          )}
 
           {onStartMockExam && (
             <button

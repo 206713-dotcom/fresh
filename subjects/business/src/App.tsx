@@ -291,6 +291,8 @@ export default function App() {
             setBusinessTab("compare");
           }}
           onStartMockExam={() => setIsMockExamMode(true)}
+          onOpenMcq={handleOpenActiveRecallDrills}
+          isMcqActive={businessTab === "quick-quiz" && quickQuizMode === "drill"}
         />
 
         <main id="business-content">
