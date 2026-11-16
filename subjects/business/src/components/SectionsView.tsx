@@ -62,7 +62,7 @@ export function SectionsView({
             onClick={() => openSheet(activeSectionCode)}
             className="px-3.5 py-2 text-xs font-semibold rounded-lg border border-[#0F2042]/30 dark:border-[#38BDF8]/40 bg-white dark:bg-neutral-900 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#0F2042] dark:text-[#38BDF8] transition-colors"
           >
-            1-page sheets
+            Chapter summaries
           </button>
 
           <button

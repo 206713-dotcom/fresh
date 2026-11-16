@@ -127,7 +127,7 @@ export function SectionBreakdownBox({
               <div />
             )}
 
-            {/* ROW 1 (Top Right): 1-Page Sheet */}
+            {/* ROW 1 (Top Right): Chapter Summary */}
             {onOpenOnePageSheet ? (
               <button
                 type="button"
@@ -137,10 +137,10 @@ export function SectionBreakdownBox({
                 <span className="text-sm shrink-0">📋</span>
                 <div className="min-w-0 flex-1">
                   <span className="block font-bold text-[11px] sm:text-xs leading-tight truncate">
-                    1-Page Sheet
+                    Chapter Summary
                   </span>
                   <span className="block text-[9.5px] font-normal opacity-80 truncate">
-                    Section {currentSection.code} sheet
+                    Section {currentSection.code} summary
                   </span>
                 </div>
               </button>

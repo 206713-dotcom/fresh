@@ -1218,27 +1218,10 @@
   position: fixed;
   inset: 0;
   z-index: 60;
-  overflow-y: auto;
+  overflow: auto;
   background: var(--paper, #f6f4ed);
 }
 .dark .business-pack-sheet-overlay { background: #0d1613; }
-.business-pack-sheet-close {
-  position: fixed;
-  top: 0.85rem;
-  right: 0.85rem;
-  z-index: 70;
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  aspect-ratio: 1;
-  border: 1px solid var(--surface-line);
-  border-radius: 9999px;
-  background: var(--surface);
-  color: var(--surface-text);
-  cursor: pointer;
-}
-.business-pack-sheet-close:hover { border-color: var(--surface-accent); color: var(--surface-accent); }
-
 @media (max-width: 48rem) {
   .business-revision-pack { grid-template-columns: minmax(0, 1fr); }
 }

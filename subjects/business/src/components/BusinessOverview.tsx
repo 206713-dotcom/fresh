@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, ClipboardCheck, ExternalLink, FileText, GraduationCap, Swords, Target, Timer, X, Zap } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardCheck, ExternalLink, FileText, GraduationCap, Swords, Target, Timer, Zap } from "lucide-react";
 import type { BusinessTab } from "../App";
 import { SYLLABUS_SECTIONS } from "../lib/data/syllabus-topics";
 import { MCQ_BANK } from "../lib/data/mcq-bank";
@@ -27,7 +27,7 @@ interface BusinessOverviewProps {
 const sectionShortTitle = (title: string) => title.replace(/^\d+\.\s*/, "");
 
 export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveRecallDrills }: BusinessOverviewProps) {
-  // Section revision pack: 1-page summaries, per-section diagrams, consolidation documents and MCQ practice
+  // Section revision pack: chapter summaries, per-section diagrams, consolidation documents and MCQ practice
   const [summarySection, setSummarySection] = useState<string | null>(null);
   const [diagramSection, setDiagramSection] = useState<string>("1");
   const [diagramTarget, setDiagramTarget] = useState<string | null>(null);
@@ -36,7 +36,7 @@ export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveReca
   const openDiagram = (code: string) => setDiagramTarget(code);
   const selectedConsolidation = SYLLABUS_SECTIONS.find((section) => section.code === consolidationSection);
 
-  // Close the 1-page summary overlay with Escape and lock body scroll while open
+  // Close the chapter summary overlay with Escape and lock body scroll while open
   useEffect(() => {
     if (!summarySection) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -108,15 +108,15 @@ export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveReca
       <section className="business-overview-section" aria-labelledby="business-revision-pack">
         <h2 id="business-revision-pack">Section revision pack</h2>
         <div className="business-revision-pack">
-          {/* Bottom left: 1-page summary */}
+          {/* Bottom left: chapter summary */}
           <div className="business-pack-card">
             <span className="business-overview-icon"><FileText size={22} aria-hidden="true" /></span>
             <span className="business-pack-copy">
-              <strong>1-Page Summary</strong>
-              <span>Six A4 visual revision sheets — one for each section of the syllabus.</span>
+              <strong>Chapter Summary</strong>
+              <span>A full visual summary of each section — every topic, key idea, diagram and exam takeaway.</span>
             </span>
             <button type="button" className="business-pack-action" onClick={() => setSummarySection("1")}>
-              Open 1-page summaries <ArrowRight size={16} aria-hidden="true" />
+              Open chapter summaries <ArrowRight size={16} aria-hidden="true" />
             </button>
           </div>
 
@@ -202,12 +202,9 @@ export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveReca
         </button>
       </section>
 
-      {/* 1-Page Summary overlay (A4 sheets) */}
+      {/* Chapter Summary overlay */}
       {summarySection && (
-        <div className="business-pack-sheet-overlay" role="dialog" aria-modal="true" aria-label="1-page summaries">
-          <button type="button" className="business-pack-sheet-close" onClick={() => setSummarySection(null)} aria-label="Close 1-page summaries">
-            <X size={20} aria-hidden="true" />
-          </button>
+        <div className="business-pack-sheet-overlay" role="dialog" aria-modal="true" aria-label="Chapter summaries">
           <OnePageSheets initialSectionCode={summarySection} onBack={() => setSummarySection(null)} />
         </div>
       )}

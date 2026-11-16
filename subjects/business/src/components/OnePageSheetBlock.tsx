@@ -1513,12 +1513,12 @@ export function OnePageSheetBlockCard({ block }: { block: SheetBlock }) {
           ))}
         </ul>
 
-        <div className="mt-2 flex items-start gap-2 rounded-lg border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)] px-2.5 py-1.5">
-          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--green)] text-[#e4eeb2]">
-            <Lightbulb className="h-3 w-3" aria-hidden="true" />
+        <div className="mt-2 flex items-stretch gap-2 rounded-lg border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)] py-1.5 pl-2.5 pr-2.5">
+          <span className="my-auto flex h-6 w-6 shrink-0 items-center justify-center self-center rounded-full bg-[var(--green)] text-[#e4eeb2]">
+            <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
-          <div className="min-w-0">
-            <span className="mr-1.5 font-mono text-[7.5px] font-bold uppercase tracking-[0.12em] text-[#4f6b3a] dark:text-[#c9dfb2]">
+          <div className="flex min-w-0 items-center">
+            <span className="mr-1.5 font-mono text-[7.5px] font-bold uppercase leading-none tracking-[0.12em] text-[#4f6b3a] dark:text-[#c9dfb2]">
               Exam takeaway:
             </span>
             <SheetRichText

@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Lightbulb,
+  Printer,
   Search,
   Sparkles,
   X,
@@ -69,7 +70,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
   };
 
   return (
-    <div className="one-page-sheet-root mx-auto w-full max-w-[210mm] px-3 py-6 transition-colors sm:px-4 sm:py-8">
+    <div className="one-page-sheet-root mx-auto w-full max-w-7xl px-3 py-6 transition-colors sm:px-4 sm:py-8">
       {/* ========================================================= */}
       {/* 1. BRAND HEADER & CONTROLS                                */}
       {/* ========================================================= */}
@@ -83,7 +84,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
                     EcBiz
                   </span>
                   <span className="font-mono text-[9px] font-bold uppercase tracking-wide text-[var(--sheet-ink-soft)]">
-                    · 1-Page Summary · A4 Visual Revision Sheet
+                    · Chapter Summary · Visual Revision Document
                   </span>
                 </div>
                 <span className="mt-0.5 font-mono text-[9px] text-[var(--muted)] dark:text-neutral-400">
@@ -102,6 +103,15 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
             </div>
 
             <div className="flex w-full items-center gap-2 sm:w-auto">
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-[var(--green)] px-2.5 py-1.5 text-[10px] font-semibold text-white transition-colors hover:opacity-90 dark:bg-[#e4eeb2] dark:text-[#203e32]"
+                title="Print this chapter summary or save it as a PDF"
+              >
+                <Printer className="h-3.5 w-3.5" />
+                <span>Print summary</span>
+              </button>
               <div className="relative flex-1 sm:w-56">
                 <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[var(--muted)] dark:text-neutral-400" />
                 <input
@@ -132,6 +142,16 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
                 <ArrowLeft className="h-3.5 w-3.5" />
                 <span>Back to Sections</span>
               </button>
+
+              <button
+                type="button"
+                onClick={onBack}
+                aria-label="Close chapter summaries"
+                title="Close (Esc)"
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--white)] text-[var(--muted)] transition-colors hover:bg-[var(--sheet-surface)] hover:text-[var(--ink)] dark:bg-neutral-900 dark:text-neutral-300 dark:hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
           </div>
         </div>
@@ -140,7 +160,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
         <div className="rounded-xl border border-[var(--line)] bg-[var(--white)] p-2 shadow-xs dark:bg-neutral-900">
           <div className="flex items-center justify-between px-1.5 pb-1.5">
             <span className="font-mono text-[8px] font-bold uppercase tracking-[0.12em] text-[var(--muted)] dark:text-neutral-400">
-              Six visual A4 summary sheets
+              Six visual chapter summaries
             </span>
             <span className="hidden font-mono text-[8px] font-bold uppercase tracking-[0.12em] text-[var(--muted)] dark:text-neutral-400 sm:inline">
               {activeSheet.blocks.length} sub-topics · {visualCount} diagrams
@@ -196,147 +216,147 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
       </div>
 
       {/* ========================================================= */}
-      {/* 2. AUTHENTIC CENTERED A4 REVISION SHEET                   */}
+      {/* 2. THE CHAPTER SUMMARY DOCUMENT                            */}
       {/* ========================================================= */}
-      <article className="screen-sheet-document a4-sheet-container mx-auto flex w-full max-w-[210mm] min-h-[297mm] flex-col justify-between overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--white)] dark:bg-[#111915]">
-        {/* Top A4 Printed Sheet Header */}
-        <header className="relative border-b-2 border-[var(--green)] bg-[var(--sheet-surface)] px-4 pb-2.5 pt-3.5 dark:bg-neutral-900 sm:px-5">
-          <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[var(--green)] via-[var(--sheet-blush)] to-[var(--sheet-sage)]" />
-          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-1.5 font-mono text-[8px] font-bold uppercase tracking-[0.12em]">
-                <span className="rounded bg-[var(--sheet-blush)] px-1.5 py-0.5 text-[var(--sheet-ink-soft)]">
-                  EcBiz · Section {activeSheet.code} of 6
-                </span>
-                <span className="text-[var(--muted)] dark:text-neutral-400">
-                  Cambridge IGCSE Business 0264 / 0450
-                </span>
+      {filteredBlocks.length > 0 ? (
+        <article className="chapter-summary-page screen-sheet-document mx-auto flex w-full flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--white)] shadow-xl dark:bg-[#111915]">
+          {/* Masthead */}
+          <header className="relative shrink-0 border-b-2 border-[var(--green)] bg-[var(--sheet-surface)] px-5 pb-3 pt-5 sm:px-7 dark:bg-neutral-900">
+            <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[var(--green)] via-[var(--sheet-blush)] to-[var(--sheet-sage)]" />
+            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-1.5 font-mono text-[8px] font-bold uppercase tracking-[0.12em]">
+                  <span className="rounded bg-[var(--sheet-blush)] px-1.5 py-0.5 text-[var(--sheet-ink-soft)]">
+                    EcBiz · Section {activeSheet.code} of 6
+                  </span>
+                  <span className="text-[var(--muted)] dark:text-neutral-400">
+                    Cambridge IGCSE Business 0264 / 0450
+                  </span>
+                </div>
+                <h1 className="mt-1 font-academic-serif text-xl font-bold leading-tight tracking-tight text-[var(--green)] dark:text-white sm:text-[26px]">
+                  {activeSheet.title}
+                </h1>
+                <p className="mt-0.5 max-w-2xl text-[10.5px] leading-snug text-[var(--muted)] dark:text-neutral-300">
+                  {activeSheet.strap}
+                </p>
               </div>
-              <h1 className="mt-1 font-academic-serif text-xl font-bold leading-tight tracking-tight text-[var(--green)] dark:text-white sm:text-[24px]">
-                {activeSheet.title}
-              </h1>
-              <p className="mt-0.5 max-w-2xl text-[10px] leading-snug text-[var(--muted)] dark:text-neutral-300">
-                {activeSheet.strap}
-              </p>
+
+              <div className="grid shrink-0 grid-cols-3 gap-1.5 sm:flex">
+                <div className="min-w-[50px] rounded-md border border-[var(--sheet-blush-line)] bg-[var(--sheet-blush)] px-2 py-1 text-center">
+                  <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#e7c9cf]">
+                    0{activeSheet.code}
+                    <span className="text-[9.5px] opacity-70">/06</span>
+                  </div>
+                  <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[var(--sheet-ink-soft)]">
+                    Section
+                  </div>
+                </div>
+                <div className="min-w-[50px] rounded-md border border-[var(--sheet-sand-line)] bg-[var(--sheet-sand)] px-2 py-1 text-center">
+                  <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#e0c58f]">
+                    {visualCount}
+                  </div>
+                  <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[#8a6a33] dark:text-[#e0c58f]">
+                    Visuals
+                  </div>
+                </div>
+                <div className="min-w-[50px] rounded-md border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)] px-2 py-1 text-center">
+                  <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#c9dfb2]">
+                    {activeSheet.blocks.length}
+                  </div>
+                  <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[#4f6b3a] dark:text-[#c9dfb2]">
+                    Topics
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="grid shrink-0 grid-cols-3 gap-1.5 sm:flex">
-              <div className="min-w-[50px] rounded-md border border-[var(--sheet-blush-line)] bg-[var(--sheet-blush)] px-2 py-1 text-center">
-                <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#e7c9cf]">
-                  0{activeSheet.code}
-                  <span className="text-[9.5px] opacity-70">/06</span>
-                </div>
-                <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[var(--sheet-ink-soft)]">
-                  Section
-                </div>
-              </div>
-              <div className="min-w-[50px] rounded-md border border-[var(--sheet-sand-line)] bg-[var(--sheet-sand)] px-2 py-1 text-center">
-                <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#e0c58f]">
-                  {visualCount}
-                </div>
-                <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[#8a6a33] dark:text-[#e0c58f]">
-                  Visuals
-                </div>
-              </div>
-              <div className="min-w-[50px] rounded-md border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)] px-2 py-1 text-center">
-                <div className="font-academic-serif text-base font-bold leading-none tabular-nums text-[var(--green)] dark:text-[#c9dfb2]">
-                  {activeSheet.blocks.length}
-                </div>
-                <div className="mt-0.5 font-mono text-[6.5px] font-bold uppercase tracking-wide text-[#4f6b3a] dark:text-[#c9dfb2]">
-                  Topics
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* A4 Color Key Bar */}
-          <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-[var(--line)] pt-2 font-mono text-[7.5px] font-bold uppercase tracking-wide text-[var(--muted)] dark:text-neutral-400">
-            <span className="inline-flex items-center gap-1">
-              <Sparkles className="h-2.5 w-2.5 shrink-0 text-[#97532b]" />
-              {hasCharts
-                ? "Interactive stages & pyramid tiers"
-                : "Visual formulas & exam comparisons"}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-sm border border-[var(--sheet-blush-line)] bg-[var(--sheet-blush)]" />
-              Blush = topic header
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-sm border border-[var(--sheet-sand-line)] bg-[var(--sheet-sand)]" />
-              Sand = concepts
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-sm border border-[var(--sheet-rose-line)] bg-[var(--sheet-rose)]" />
-              Rose = risks
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-sm border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)]" />
-              Sage = exam takeaway
-            </span>
-            <span className="ml-auto hidden font-mono text-[7.5px] text-[var(--muted)] sm:inline">
-              A4 · 210 × 297 mm
-            </span>
-          </div>
-        </header>
-
-        {/* A4 Sheet Body */}
-        <div className="flex-1 bg-[var(--white)] px-3.5 py-3 dark:bg-[#111915] sm:px-5 sm:py-3.5">
-          {searchQuery && (
-            <div
-              role="status"
-              aria-live="polite"
-              className="mb-2.5 flex items-center justify-between gap-3 rounded-lg border border-[var(--line)] bg-[var(--sheet-surface)] px-3 py-1.5 text-[9.5px] text-[var(--muted)] dark:bg-neutral-900 dark:text-neutral-400"
-            >
-              <span>
-                {filteredBlocks.length} of {activeSheet.blocks.length} sub-topics
-                match &ldquo;{searchQuery}&rdquo;
+            {/* Color Key Bar */}
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-[var(--line)] pt-2 font-mono text-[7.5px] font-bold uppercase tracking-wide text-[var(--muted)] dark:text-neutral-400">
+              <span className="inline-flex items-center gap-1">
+                <Sparkles className="h-2.5 w-2.5 shrink-0 text-[#97532b]" />
+                {hasCharts
+                  ? "Interactive stages & pyramid tiers"
+                  : "Visual formulas & exam comparisons"}
               </span>
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="font-semibold text-[#97532b] hover:underline dark:text-[#e6b39b]"
-              >
-                Clear
-              </button>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2 w-2 rounded-sm border border-[var(--sheet-blush-line)] bg-[var(--sheet-blush)]" />
+                Blush = topic header
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2 w-2 rounded-sm border border-[var(--sheet-sand-line)] bg-[var(--sheet-sand)]" />
+                Sand = concepts
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2 w-2 rounded-sm border border-[var(--sheet-rose-line)] bg-[var(--sheet-rose)]" />
+                Rose = risks
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2 w-2 rounded-sm border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)]" />
+                Sage = exam takeaway
+              </span>
+              <span className="ml-auto hidden font-mono text-[7.5px] text-[var(--muted)] sm:inline">
+                Complete chapter coverage
+              </span>
             </div>
-          )}
+          </header>
 
-          {filteredBlocks.length > 0 ? (
+          {/* Body */}
+          <div className="chapter-summary-body bg-[var(--white)] px-4 py-4 dark:bg-[#111915] sm:px-6 sm:py-5 lg:px-8">
+            {searchQuery && (
+              <div
+                role="status"
+                aria-live="polite"
+                className="mb-3 flex items-center justify-between gap-3 rounded-lg border border-[var(--line)] bg-[var(--sheet-surface)] px-3 py-1.5 text-[9.5px] text-[var(--muted)] dark:bg-neutral-900 dark:text-neutral-400"
+              >
+                <span>
+                  {filteredBlocks.length} of {activeSheet.blocks.length} sub-topics
+                  match &ldquo;{searchQuery}&rdquo;
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="font-semibold text-[#97532b] hover:underline dark:text-[#e6b39b]"
+                >
+                  Clear
+                </button>
+              </div>
+            )}
             <div className="space-y-3">
               {filteredBlocks.map((block) => (
                 <OnePageSheetBlockCard key={block.code} block={block} />
               ))}
             </div>
-          ) : (
-            <div className="rounded-lg border border-dashed border-[var(--line)] bg-[var(--sheet-surface)] px-5 py-10 text-center dark:bg-neutral-900">
-              <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[var(--sheet-sage)] text-[var(--green)] dark:text-[#dce9c8]">
-                <Search className="h-4 w-4" />
-              </div>
-              <p className="mt-2 text-xs font-semibold text-[var(--ink)] dark:text-white">
-                No sub-topics matched &ldquo;{searchQuery}&rdquo;.
-              </p>
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="mt-2 text-[10px] font-semibold text-[#97532b] hover:underline dark:text-[#e6b39b]"
-              >
-                Clear search filter
-              </button>
-            </div>
-          )}
-        </div>
+          </div>
 
-        {/* Bottom A4 Printed Sheet Footer */}
-        <footer className="mt-auto flex flex-col items-center justify-between gap-1 border-t border-[var(--green)]/30 bg-[var(--sheet-surface)] px-4 py-2 font-mono text-[7.5px] text-[var(--muted)] dark:bg-neutral-900 dark:text-neutral-400 sm:flex-row sm:px-5">
-          <span>
-            EcBiz · Section {activeSheet.code} A4 Study Sheet · Cambridge IGCSE™ Business 0264 / 0450
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Lightbulb className="h-2.5 w-2.5 text-[#97532b]" />
-            {ideaCount} key ideas · Define · Explain · Calculate · Recommend · Page 1 of 1
-          </span>
-        </footer>
-      </article>
+          {/* Footer */}
+          <footer className="flex shrink-0 flex-row items-center justify-between gap-2 border-t border-[var(--green)]/30 bg-[var(--sheet-surface)] px-5 py-2.5 font-mono text-[7.5px] text-[var(--muted)] dark:bg-neutral-900 dark:text-neutral-400 sm:px-7">
+            <span className="truncate">
+              EcBiz · Section {activeSheet.code} Chapter Summary · Cambridge IGCSE™ Business 0264 / 0450
+            </span>
+            <span className="inline-flex shrink-0 items-center gap-1.5">
+              <Lightbulb className="h-3 w-3 text-[#97532b]" />
+              <span className="hidden sm:inline">{ideaCount} key ideas · </span>
+              Study &amp; revise
+            </span>
+          </footer>
+        </article>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--sheet-surface)] px-5 py-10 text-center dark:bg-neutral-900">
+          <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[var(--sheet-sage)] text-[var(--green)] dark:text-[#dce9c8]">
+            <Search className="h-4 w-4" />
+          </div>
+          <p className="mt-2 text-xs font-semibold text-[var(--ink)] dark:text-white">
+            No sub-topics matched &ldquo;{searchQuery}&rdquo;.
+          </p>
+          <button
+            type="button"
+            onClick={() => setSearchQuery("")}
+            className="mt-2 text-[10px] font-semibold text-[#97532b] hover:underline dark:text-[#e6b39b]"
+          >
+            Clear search filter
+          </button>
+        </div>
+      )}
 
       {/* ========================================================= */}
       {/* 3. PAGER                                                  */}
