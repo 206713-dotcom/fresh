@@ -19,6 +19,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
+  const trainedMarkerURL = new URL('trained-marker.js?v=1', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -27,6 +28,22 @@ const ecbizMarking = (() => {
   let nextId = 0;
 
   async function evaluate(question, answer, image, report) {
+    if (!image) {
+      const progress = message => {
+        status.hidden = false;
+        status.textContent = message;
+        report?.(message);
+      };
+      progress(question ? 'Starting the on-device marker…' : 'Preparing model download…');
+      try {
+        const marker = await import(trainedMarkerURL);
+        return await marker.evaluate(question, answer, progress);
+      } finally {
+        status.hidden = true;
+        status.textContent = '';
+      }
+    }
+
     if (!navigator.gpu || typeof Worker !== 'function') {
       throw new Error('On-device marking needs a browser and device with WebGPU. Your answer is still here.');
     }
@@ -156,9 +173,9 @@ const ecbizMarking = (() => {
   window.addEventListener('hashchange', showModelSetup);
   showModelSetup();
 
-  if (!navigator.gpu || typeof Worker !== 'function') {
+  if (!globalThis.WebAssembly || typeof Worker !== 'function') {
     download.disabled = true;
-    downloadStatus.textContent = 'A WebGPU-capable browser and device are required for local AI marking.';
+    downloadStatus.textContent = 'This browser does not support on-device AI marking.';
   } else {
     download.onclick = async () => {
       download.disabled = true;
@@ -178,6 +195,7 @@ const ecbizMarking = (() => {
 
   function feedback(result, marks) {
     return '<strong>' + result.score + '/' + marks + ' marks' +
+      (result.provisional ? ' · Provisional AI mark' : '') +
       (result.band && result.band !== 'point-based' ? ' · Band ' + escapeHtml(result.band) : '') +
       '</strong><p>' + escapeHtml(result.feedback) + '</p>' +
       (result.credits?.length ? '<ul>' + result.credits.map(credit =>
