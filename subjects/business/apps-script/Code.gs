@@ -1,9 +1,8 @@
-var U='Users',S='Students',P='Progress',BW='Boss_Wrong_Questions',FQ='Flagged_Questions';
+var U='Users',S='Students',P='Progress',BW='Boss_Wrong_Questions';
 var UH=['access_code','name','password_hash','salt','failed_attempts','locked_until','created_at','updated_at'];
 var SH=['access_code','student_id','name','coins','streak','time_spent_sec','mcq_completed','mcq_errors','two_mark_scores','four_mark_scores','six_mark_scores','eight_mark_scores','twelve_mark_scores','missed_marks_breakdown','topical_log','recommended_focus','updated_at'];
 var PH=['access_code','coins','streak','unlocked_themes','progress_json','updated_at'];
 var BWH=['access_code','name','updated_at','question_id','unit','subsection','difficulty','question_prompt','user_answer','correct_answer','miss_count','status'];
-var FQH=['timestamp','access_code','name','question_id','reason','confidence','note','status'];
 var J=['mcq_errors','two_mark_scores','four_mark_scores','six_mark_scores','eight_mark_scores','twelve_mark_scores','missed_marks_breakdown','topical_log','unlocked_themes','progress_json'];
 var N=['coins','streak','time_spent_sec','mcq_completed'];
 var TTL=2592000,ITER=250,MAX=5,LOCK=15,MIN=6;
@@ -23,7 +22,6 @@ function doPost(e){
   var b=JSON.parse((e.postData||{}).contents||'{}'),a=b.action||'';
   if(a=='register')return reg(b);
   if(a=='login')return log(b);
-  if(a=='flag_question')return flagQuestion(b);
   var c=tok(b.token);
   if(!c)return out({success:false,error:'unauthorized'});
   if(a=='progress')up(P,PH,c,b);
@@ -132,22 +130,4 @@ function readBoss(c){
   var rows=sh.getRange(2,1,n-1,BWH.length).getValues(),out_=[];
   for(var i=0;i<rows.length;i++){if(s(rows[i][0])!==c)continue;var o={};for(var j=0;j<BWH.length;j++)o[BWH[j]]=rows[i][j];out_.push(o);}
   return out_;
-}
-
-/* ---- Flag/question report: appends to the Flagged_Questions tab. Token optional — guests can flag. ---- */
-var REASONS=['Typo in question','Mark scheme issue','Wrong unit / tag','Other'];
-var CONFIDENCES=['Pretty sure','Very confident','100% certain'];
-
-function flagQuestion(b){
-  var c=tok(b.token),name='Guest';
-  if(c){var st=read(S,SH,c);name=(st&&st.name)||'Student';}
-  var qid=s(b.question_id);
-  if(!qid)return out({success:false,error:'question_id is required.'});
-  var reason=s(b.reason);if(REASONS.indexOf(reason)<0)reason='Other';
-  var conf=s(b.confidence);if(CONFIDENCES.indexOf(conf)<0)conf='Pretty sure';
-  var sh=get(FQ,FQH),lk=LockService.getScriptLock();lk.waitLock(15000);
-  try{
-    add(sh,FQH,c||'guest',{timestamp:new Date().toISOString(),access_code:c||'guest',name:name,question_id:qid,reason:reason,confidence:conf,note:s(b.note),status:'Open'});
-    return out({success:true});
-  }finally{lk.releaseLock();}
 }

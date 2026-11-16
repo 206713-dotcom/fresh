@@ -422,107 +422,6 @@ function scheduleSave() {
   }, DEBOUNCE_MS);
 }
 
-/* ------------------------------------------------------------------ */
-/* Question flag/report sync (Flagged_Questions tab)                   */
-/* ------------------------------------------------------------------ */
-
-const FLAG_OUTBOX_KEY = "ecbiz_flag_outbox";
-
-export interface FlagOutboxItem {
-  timestamp: string;
-  question_id: string;
-  reason: string;
-  confidence: string;
-  note: string;
-}
-
-function readFlagOutbox(): FlagOutboxItem[] {
-  try {
-    const raw = localStorage.getItem(FLAG_OUTBOX_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as FlagOutboxItem[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeFlagOutbox(items: FlagOutboxItem[]) {
-  try {
-    if (items.length === 0) {
-      localStorage.removeItem(FLAG_OUTBOX_KEY);
-    } else {
-      localStorage.setItem(FLAG_OUTBOX_KEY, JSON.stringify(items));
-    }
-  } catch {
-    /* storage unavailable */
-  }
-}
-
-/** Drain the offline flag outbox. Safe to call at any time. */
-export async function flushFlagOutbox(): Promise<void> {
-  if (!APPS_SCRIPT_URL) return;
-  const outbox = readFlagOutbox();
-  if (outbox.length === 0) return;
-
-  const session = getSession();
-  const remaining: FlagOutboxItem[] = [];
-
-  for (const item of outbox) {
-    const sent = await postToScript({
-      action: "flag_question",
-      token: session?.token,
-      question_id: item.question_id,
-      reason: item.reason,
-      confidence: item.confidence,
-      note: item.note,
-    }).then((res) => res.success);
-    if (!sent) remaining.push(item);
-  }
-
-  writeFlagOutbox(remaining);
-}
-
-/**
- * Send a flag report to the shared Google Sheet. Falls back to a localStorage
- * outbox (flushed whenever the app comes online / starts) when the network or
- * the Script endpoint is unavailable.
- */
-export async function logFlaggedQuestion(entry: {
-  questionId: string;
-  reason: string;
-  confidence: string;
-  note: string;
-}): Promise<void> {
-  const item: FlagOutboxItem = {
-    timestamp: new Date().toISOString(),
-    question_id: entry.questionId,
-    reason: entry.reason,
-    confidence: entry.confidence,
-    note: entry.note,
-  };
-
-  if (APPS_SCRIPT_URL && navigator.onLine !== false) {
-    const session = getSession();
-    const res = await postToScript({
-      action: "flag_question",
-      token: session?.token,
-      question_id: item.question_id,
-      reason: item.reason,
-      confidence: item.confidence,
-      note: item.note,
-    });
-    if (res.success) {
-      // Opportunistically flush anything queued from before
-      void flushFlagOutbox();
-      return;
-    }
-  }
-
-  // Offline or rejected: queue locally and retry later
-  writeFlagOutbox([...readFlagOutbox(), item]);
-}
-
 /** Force an immediate save (used when the tab is hidden or study ends). */
 export function flushProgress() {
   if (saveTimer) {
@@ -629,7 +528,6 @@ export function startSheetSync() {
   void ensureStudentRow();
 
   window.addEventListener("pagehide", () => flushProgress());
-  window.addEventListener("online", () => flushFlagOutbox());
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") flushProgress();
   });
@@ -642,9 +540,6 @@ export function startSheetSync() {
   window.setInterval(() => {
     if (document.visibilityState === "visible") void refreshCoinsFromSheet();
   }, REFRESH_MS);
-
-  // Deliver any reports flagged while offline since the last online moment.
-  void flushFlagOutbox();
 
   void (async () => {
     const result = await pullProgress();

@@ -13,7 +13,6 @@ import {
 } from "../lib/types";
 import { AOHighlightViewer } from "./AOHighlightViewer";
 import { MarkOverrideModal } from "./MarkOverrideModal";
-import { FlagQuestionButton } from "./FlagQuestionButton";
 import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
 import {
   PAPER1_DATABASE,
@@ -1187,7 +1186,6 @@ export function PracticeStudio({
                       >
                         {isBookmarked ? "★ Bookmarked" : "☆ Bookmark"}
                       </button>
-                      <FlagQuestionButton questionId={currentActiveId} />
                     </div>
                     <div role="group" aria-label="Question parts" className="study-question-options">
                       {activePaper1Scenario.questions.map((q) => {
@@ -1760,7 +1758,6 @@ export function PracticeStudio({
                           >
                             {isBookmarked ? "★ Bookmarked" : "☆ Bookmark"}
                           </button>
-                          <FlagQuestionButton questionId={currentActiveId} />
                         </div>
 
                         <h2 id="verified-active-question" className="study-prompt">

@@ -282,7 +282,7 @@
 .boss-controls button { touch-action: none; }
 .boss-controls kbd { padding: 0.15rem 0.28rem; border: 1px solid #f8dbdc70; border-radius: 0.25rem; font: 500 0.68rem var(--font-mono); }
 .boss-question { scroll-margin-top: 9rem; }
-.boss-continue { min-height: 2.45rem; }
+.boss-continue { min-height: 2.45rem; margin-top: 0.65rem; }
 
 @media(max-width: 48rem) {
   .boss-lobby-grid, .boss-match-hud { grid-template-columns: minmax(0,1fr); }

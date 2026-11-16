@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import App from "./App.tsx";
 import SignInPage from "./pages/SignInPage.tsx";
 import SignUpPage from "./pages/SignUpPage.tsx";
@@ -34,5 +35,6 @@ function Root() {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Root />
+    <Analytics />
   </StrictMode>
 );
