@@ -502,10 +502,9 @@ export async function disposeWebLLMEngine(): Promise<void> {
 
 /**
  * Runs fast JSON text generation via @huggingface/transformers' text-generation pipeline
- * with enable_thinking: false and a safety timeout so WebGPU stalls never freeze marking.
- * Note: max_new_tokens is fixed at 350 inside qwen.worker.ts (deterministic fine-tuned
- * SemiLunarz/qwen3-0.6b-igcse-0264-onnx config); the maxNewTokens argument is retained
- * for API compatibility and is not forwarded to the pipeline.
+ * with enable_thinking: false and a heartbeat-reset inactivity timeout so WebGPU stalls
+ * never freeze marking, while active token streaming never times out mid-response.
+ * maxNewTokens is forwarded to the worker (see computeRecommendedMaxTokens).
  */
 export async function runQwenChatCompletion(opts: {
   engine: QwenEngineWrapper | any;
@@ -602,6 +601,7 @@ async function loadSpecificTier(
     timeoutMessage: string
   ): Promise<string> => new Promise((resolve, reject) => {
     const id = ++requestId;
+    let timer: ReturnType<typeof setTimeout>;
     const finish = () => {
       clearTimeout(timer);
       worker.onmessage = null;
@@ -611,11 +611,20 @@ async function loadSpecificTier(
       finish();
       reject(new WebLLMEvaluationError(message));
     };
-    const timer = setTimeout(() => fail(timeoutMessage), timeoutMs);
+    // Inactivity timeout: any worker message (download progress or a generation
+    // heartbeat) resets the clock, so an actively-streaming model never gets cut off.
+    const resetTimer = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => fail(timeoutMessage), timeoutMs);
+    };
+    timer = setTimeout(() => fail(timeoutMessage), timeoutMs);
     worker.onmessage = ({ data }) => {
       if (data.id !== id) return;
+      resetTimer();
       if (data.progress) {
         progressCallback(data.progress);
+      } else if (data.heartbeat) {
+        // Token-stream keep-alive from the worker; nothing to render.
       } else if (data.error) {
         fail(data.error);
       } else {
