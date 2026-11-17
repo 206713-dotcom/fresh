@@ -329,7 +329,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     showFeedback();
     try {
       state.feedback=q.options
-        ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><p>'+escapeHtml(q.why)+'</p>'
+        ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>'
         : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer,undefined,message=>{
           state.feedback='<p>'+escapeHtml(message)+'</p>';
           showFeedback();
