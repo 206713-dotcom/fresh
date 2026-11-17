@@ -377,6 +377,33 @@ function checkDiscussionRelevance(question, answer) {
     'Give 1 if at least one such claim is made.', 1);
 }
 
+function findDiscussionSides(question, answer) {
+  // Only use clearly labelled groups of indicative arguments for this corroboration.
+  const groups = /(?:^|\n)(?:Indicative economic analysis|Arguments supporting the proposal:)\s*\n([\s\S]+?)\n(?:Further arguments and conditions|Arguments against[^\n]*:)\s*\n([\s\S]+)/i.exec(question.scheme || '');
+  if (!groups) return;
+  const routes = groups.slice(1).map(group => group.split('\n')
+    .filter(line => /^\s*(?:•|\d+\.)/.test(line) && !/\b(?:depends on|effect varies)\b/i.test(line))
+    .map(line => new Set(relevanceTokens(line))));
+  if (routes.some(side => !side.length)) return;
+
+  const common = new Set([...routes[1].flatMap(words => [...words])]
+    .filter(word => routes[0].some(words => words.has(word))));
+  relevanceTokens(question.prompt).forEach(word => common.add(word));
+  const passages = answer.split(/\n\s*\n|(?<=[.!?])\s+(?=(?:however|conversely|in contrast|on the other hand|against this|furthermore|in addition|in conclusion|overall)\b)/i)
+    .map(passage => passage.trim()).filter(Boolean);
+  const specificMatches = (words, route) => [...words].filter(word => !common.has(word) && route.has(word)).length;
+  const candidates = routes.map((side, index) => passages.map(passage => {
+    const words = new Set(relevanceTokens(passage));
+    const match = Math.max(...side.map(route => specificMatches(words, route)));
+    const oppositeMatch = Math.max(...routes[1 - index].map(route => specificMatches(words, route)));
+    const links = (passage.match(/\b(?:because|therefore|so|due to|since|leads?|results?|raises?|lowers?|reduces?|increases?|causes?|means|giving|making|enabl\w*)\b/gi) || []).length;
+    return { passage, match, oppositeMatch, links };
+  }).filter(({ match, oppositeMatch, links }) => match >= 2 && match > oppositeMatch && links)
+    .sort((a, b) => b.match - a.match || b.links - a.links));
+  const [support, oppose] = candidates.map(side => side[0]?.passage);
+  return support && oppose ? { support, oppose } : undefined;
+}
+
 async function markDiscussion(question, answer, report) {
   report('Marking on your device · checking relevance…');
   answer = await filterDiscussionAnswer(question, answer);
@@ -410,12 +437,25 @@ async function markDiscussion(question, answer, report) {
       '3 = well-developed analysis with a chain of links or a significant condition. ' +
       'Ignore the opposite side. Generic mentions of costs, trade-offs or opportunity cost earn 0. ' +
       'Do not infer a missing link. Indicative guidance (other valid arguments can earn credit): ' + question.scheme, 3) : 0;
-    const supporting = await assessSide('for', supportingAnswer);
-    const opposing = await assessSide('against', opposingAnswer);
-    if (supporting >= 2 && opposing >= 2 && await hasDistinctDiscussionEvidence(question, answer)) {
-      score = 6 + (supporting - 2) + (opposing - 2);
+    let supporting = await assessSide('for', supportingAnswer);
+    let opposing = await assessSide('against', opposingAnswer);
+    const corroboration = findDiscussionSides(question, answer);
+    let developedBoth = false;
+    if (corroboration) {
+      const positiveEvidence = await assessSide('for', corroboration.support);
+      const negativeEvidence = await assessSide('against', corroboration.oppose);
+      developedBoth = positiveEvidence >= 2 && negativeEvidence >= 2;
+      if (developedBoth) {
+        supporting = Math.max(supporting, positiveEvidence);
+        opposing = Math.max(opposing, negativeEvidence);
+      }
     }
-    else if (Math.max(supporting, opposing) >= 2) {
+    if (!developedBoth && supporting >= 2 && opposing >= 2) {
+      developedBoth = await hasDistinctDiscussionEvidence(question, answer);
+    }
+    if (developedBoth) {
+      score = 6 + (supporting - 2) + (opposing - 2);
+    } else if (Math.max(supporting, opposing) >= 2) {
       score = 3 + (Math.max(supporting, opposing) - 2) + Number(Math.min(supporting, opposing) === 1);
     } else {
       score = supporting === 1 && opposing === 1 ? 2 : 1;
