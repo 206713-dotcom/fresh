@@ -1,6 +1,8 @@
 questions.push(...examPracticeQuestions);
 
 const main = document.querySelector('main');
+const markingControls = document.querySelector('#local-marking-controls');
+const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-teach', 'revision-retry']);
 const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-notes/';
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
 const papers = 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-economics-0455/past-papers/';
@@ -15,15 +17,56 @@ function tiles(includeExam) {
   return '<div class="grid">' + catalog.slice(0,includeExam ? catalog.length : 6).map((c,i) => '<a class="tile" style="--tone:'+ (colors[i] || colors[0]) +'" href="#chapter/'+i+'"><span class="icon" aria-hidden="true">'+icons[i]+'</span><div class="tile-copy"><h3>'+escapeHtml(c.title)+'</h3><small>'+ (i<6 ? 'CHAPTER '+pad(i+1) : 'EXAM SKILLS') +' · '+lessons.filter(l=>l.chapter===i).length+' lessons</small></div><span class="arrow" aria-hidden="true">→</span></a>').join('')+'</div>';
 }
 function home() {
-  const tools = [
-    ['▤','Chapter notes','Build understanding through clear explanations.','Start reading →','#library'],
-    ['▣','Flashcards','Recall key concepts and strengthen memory.','Review cards →','#flashcards'],
-    ['☑','Exam practice','Get a mark and feedback when you submit an answer.','Start practice →','#practice']
+  const exam = [
+    ['Ⅰ', 'Paper 1 practice', 'Work through multiple-choice questions by topic.', '#practice/mcq'],
+    ['Ⅱ', 'Paper 2 practice', 'Practise structured answers and review your feedback.', '#practice/structured'],
   ];
-  return '<div class="eyebrow">EcBiz / The Economics Library</div><section class="editorial"><div class="hero-copy"><div class="eyebrow">Ideas worth understanding</div><h1>Understand the world.<br><em>One idea at a time.</em></h1><p class="muted">Read deeply, recall actively and practise confidently. Your Cambridge IGCSE Economics 0455 library for exams from 2027.</p>'+link('Explore the library ↗','#library','button primary')+'</div><div class="journal-art" aria-hidden="true"><small>The Economics Collection</small><b>E.</b><small>Learn / Recall / Apply</small></div></section><h2 class="paths-title">Three paths to understanding</h2><div class="study-tools">'+tools.map(([symbol,title,description,label,href])=>'<a class="study-tool" href="'+href+'"><span class="symbol" aria-hidden="true">'+symbol+'</span><strong>'+title+'</strong><span class="muted">'+description+'</span><em>'+label+'</em></a>').join('')+'</div><div class="band"><span><strong>6</strong> chapters</span><span><strong>'+lessons.length+'</strong> lessons with notes</span><span><strong>'+(Object.values(flashcardDecks).flat().length + supplementaryGlossary.length)+'</strong> flashcards</span><span><strong>'+questions.length+'</strong> original questions</span></div><section><div class="section-head"><div><div class="eyebrow">Course library</div><h2>Explore the chapters</h2></div><div class="row">'+link('Syllabus coverage','#syllabus')+link('All lessons ↗','#library')+'</div></div>'+tiles(false)+'</section>';
+  const revision = [
+    ['▤', 'Lessons', 'Read notes and work through diagrams.', '#library'],
+    ['▣', 'Flashcards', 'Test yourself on definitions and concepts.', '#flashcards'],
+    ['✦', 'All revision tools', 'Try timed tests, cheatsheets and mistake review.', '#revision'],
+  ];
+  const cards = items => items.map(([symbol, title, description, href]) => `
+    <a class="overview-card" href="${href}">
+      <span class="overview-icon" aria-hidden="true">${symbol}</span>
+      <span class="overview-card-copy"><strong>${title}</strong><span>${description}</span></span>
+      <span class="overview-arrow" aria-hidden="true">→</span>
+    </a>`).join('');
+  return `
+    <header class="economics-hero">
+      <div class="economics-hero-copy">
+        <p class="eyebrow">Cambridge IGCSE · 0455</p>
+        <h1>Economics</h1>
+        <p>Explore how markets work, revise the syllabus, and practise exam questions one topic at a time.</p>
+        <div class="actions">
+          ${link('Start practice →', '#practice', 'button hero-primary')}
+          ${link('Browse lessons', '#library', 'button hero-secondary')}
+        </div>
+      </div>
+    </header>
+    <a class="checklist-callout" href="#revision-checklist">
+      <span class="overview-icon" aria-hidden="true">✓</span>
+      <span class="overview-card-copy"><strong>Syllabus checklist</strong><span>Track what you’ve covered and choose what to revise next.</span></span>
+      <span class="overview-arrow" aria-hidden="true">→</span>
+    </a>
+    <section class="overview-section" aria-labelledby="overview-exam">
+      <h2 id="overview-exam">Exam practice</h2>
+      <div class="overview-exam-grid">${cards(exam)}</div>
+    </section>
+    <section class="overview-section" aria-labelledby="overview-revision">
+      <h2 id="overview-revision">Revision tools</h2>
+      <div class="overview-revision-grid">${cards(revision)}</div>
+    </section>
+    <section class="overview-section" aria-labelledby="overview-chapters">
+      <div class="section-head">
+        <h2 id="overview-chapters">Explore the chapters</h2>
+        ${link('Syllabus coverage →', '#syllabus', 'text-link')}
+      </div>
+      ${tiles(false)}
+    </section>`;
 }
 function studyHero(label, title, description, stats, kind) {
-  return '<section class="study-hero"><div><p class="eyebrow">'+label+'</p><h1>'+title+'</h1><p class="study-intro">'+description+'</p><div class="study-stats">'+stats.map(([n,label])=>'<span><strong>'+n+'</strong> '+label+'</span>').join('')+'</div></div><div class="study-art '+kind+'" aria-hidden="true"><span class="art-orbit"></span><span class="art-sheet sheet-back"></span><span class="art-sheet sheet-front">'+(kind==='card-art'?'Q.<i>think it through.</i>':'E.<i>ideas into understanding.</i>')+'</span><small>'+(kind==='card-art'?'A little recall. A lot of progress.':'Your Economics study collection')+'</small></div></section>';
+  return '<section class="study-hero"><div><p class="eyebrow">'+label+'</p><h1>'+title+'</h1><p class="study-intro">'+description+'</p><div class="study-stats">'+stats.map(([n,label])=>'<span><strong>'+n+'</strong> '+label+'</span>').join('')+'</div></div><div class="study-art '+kind+'" aria-hidden="true"><span class="art-orbit"></span><span class="art-sheet sheet-back"></span><span class="art-sheet sheet-front">'+(kind==='card-art'?'Q.':'E.')+'</span></div></section>';
 }
 function chapterGallery() {
   return '<div class="chapter-collection">'+catalog.map((c,i)=>{
@@ -32,7 +75,7 @@ function chapterGallery() {
   }).join('')+'</div>';
 }
 function library() {
-  return studyHero('The notes collection','Make every idea<br><em>make sense.</em>','Explore the course through clear explanations, key points and diagrams. Pick a chapter and settle into your next lesson.',[[6,'chapters'],[lessons.length,'lessons'],['2027–29','syllabus']],'notes-art')+'<section class="collection-toolbar"><div><p class="eyebrow">Find your next lesson</p><h2>Your Economics library</h2></div><label class="study-search"><span>Search lessons</span><input id="search" type="search" placeholder="Search demand, inflation, opportunity cost…"></label></section><div id="results">'+chapterGallery()+'</div>';
+  return studyHero('Cambridge IGCSE · 0455','Economics lessons','Browse the syllabus by chapter or search for a specific concept. Lessons include notes, diagrams and key points.',[[6,'chapters'],[lessons.length,'lessons'],['2027–29','syllabus']],'notes-art')+'<section class="collection-toolbar"><div><h2>Browse chapters</h2></div><label class="study-search"><span>Search lessons</span><input id="search" type="search" placeholder="Search demand, inflation, opportunity cost…"></label></section><div id="results">'+chapterGallery()+'</div>';
 }
 function lessonLink(l) {
   return '<a class="lesson-link" href="#lesson/'+l.id+'"><span>'+escapeHtml(l.title)+'</span><small>'+(flashcardDecks[l.id] ? 'Notes + cards' : 'Source lesson')+' ↗</small></a>';
@@ -77,7 +120,7 @@ function deckGallery(query='', chapterIndex='') {
 }
 function flashcards() {
   const total=Object.values(flashcardDecks).flat().length;
-  return studyHero('The recall collection','Small cards.<br><em>Lasting knowledge.</em>','Choose a lesson deck, test what you remember and turn uncertainty into understanding. Every deck is also available to download.',[[lessons.length,'lesson decks'],[total,'lesson cards'],['CSV','downloads']],'card-art')+'<section class="collection-toolbar deck-filters"><div><p class="eyebrow">Your next recall session</p><h2>Find your deck</h2></div><label class="study-search"><span>Search flashcard decks</span><input id="deck-search" type="search" placeholder="Search a lesson or topic…"></label><label class="chapter-select"><span>Chapter</span><select id="deck-chapter"><option value="">All chapters</option>'+catalog.map((c,i)=>'<option value="'+i+'">'+escapeHtml(c.title)+'</option>').join('')+'</select></label></section><div id="deck-results">'+deckGallery()+'</div><section class="glossary-banner"><span class="mini-icon" aria-hidden="true">Aa</span><div><h2>A little more vocabulary</h2><p>Lesson definitions are in their matching decks. Explore '+supplementaryGlossary.length+' additional supplied terms in the supplementary glossary.</p></div>'+link('Open glossary →','#glossary','button')+'</section>';
+  return studyHero('Cambridge IGCSE · 0455','Economics flashcards','Choose a lesson deck, recall each answer, then flip the card to check it.',[[lessons.length,'lesson decks'],[total,'cards'],['CSV','downloads']],'card-art')+'<section class="collection-toolbar deck-filters"><div><h2>Find a deck</h2></div><label class="study-search"><span>Search flashcard decks</span><input id="deck-search" type="search" placeholder="Search a lesson or topic…"></label><label class="chapter-select"><span>Chapter</span><select id="deck-chapter"><option value="">All chapters</option>'+catalog.map((c,i)=>'<option value="'+i+'">'+escapeHtml(c.title)+'</option>').join('')+'</select></label></section><div id="deck-results">'+deckGallery()+'</div><section class="glossary-banner"><span class="mini-icon" aria-hidden="true">Aa</span><div><h2>Supplementary glossary</h2><p>Review '+supplementaryGlossary.length+' additional Economics terms.</p></div>'+link('Open glossary →','#glossary','button')+'</section>';
 }
 function glossary() {
   return heading('Extra vocabulary','Supplementary glossary','This deck includes additional terms from the supplied glossary. Use the lesson decks for Cambridge 0455 syllabus revision.')+
@@ -121,15 +164,16 @@ function setupDeck(id) {
   update();
 }
 function practice(chapterIndex) {
-  return heading('Original practice','Practice Questions','Standalone questions: answer directly using your economics knowledge. Choose a chapter or topic to practise.')+
-    '<section class="practice-filters" aria-label="Filter questions"><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
+  const expanded = matchMedia('(min-width: 901px)').matches ? ' open' : '';
+  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p class="muted">Choose a chapter or topic, then pick a question from the list.</p></header><div id="practice-marking"></div>'+
+    '<details class="practice-filters"'+expanded+'><summary>Filter questions</summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></section>'+
-    '<div class="practice-workspace"><aside class="question-browser" aria-label="Question navigator"><p id="question-scope" class="eyebrow"></p><p id="question-count" class="muted" aria-live="polite"></p><p class="navigator-hint">Choose a question. A dot means you have started an answer.</p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></aside>'+
-    '<section class="question-work"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
+    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></details>'+
+    '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
+    '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
-function setupPractice() {
+function setupPractice(paper) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
   const topic=document.querySelector('#filter-topic');
@@ -144,9 +188,11 @@ function setupPractice() {
   const listPages=document.querySelector('#list-pages');
   const filterKey='ecbiz-practice-filters';
   let savedFilters={};
-  try {savedFilters=JSON.parse(sessionStorage.getItem(filterKey))||{}} catch {}
+  if (!paper) {
+    try {savedFilters=JSON.parse(sessionStorage.getItem(filterKey))||{}} catch {}
+  }
   if(!location.hash.split('/')[1])chapter.value=savedFilters.chapter||'';
-  type.value=savedFilters.type||'';
+  type.value=paper||savedFilters.type||'';
   marks.value=savedFilters.marks||'';
   search.value=savedFilters.search||'';
   questionSet.value=savedFilters.questionSet||'';
@@ -171,7 +217,9 @@ function setupPractice() {
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
     document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
-    try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
+    if (!paper) {
+      try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
+    }
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
@@ -205,11 +253,18 @@ function setupPractice() {
   function moveTo(position,scroll=false) {
     page=Math.max(0,Math.min(position,matches.length-1));
     renderQuestions();
-    if(scroll)document.querySelector('.question-work').scrollIntoView({block:'start'});
+    if (scroll) {
+      const work = target.closest('.question-work');
+      work.focus({ preventScroll: true });
+      work.scrollIntoView({ block: 'start' });
+    }
   }
   list.onclick=event=>{
     const button=event.target.closest('[data-question-position]');
-    if(button)moveTo(Number(button.dataset.questionPosition),window.innerWidth<901);
+    if (!button) return;
+    const compact = window.innerWidth < 901;
+    if (compact) list.closest('details').open = false;
+    moveTo(Number(button.dataset.questionPosition), compact || event.detail === 0);
   };
   listPages.onclick=event=>{
     const button=event.target.closest('[data-list-page]');
@@ -284,18 +339,24 @@ function syllabusGuide() {
 function sources() {
   return heading('Reference desk','Sources and coverage','Use the source lessons for full coverage and the official papers to practise under exam conditions.')+'<article class="panel"><h2>Lesson library</h2><p>All '+lessons.length+' indexed lessons include concise notes, downloadable flashcards and a link to Save My Exams for further reading.</p>'+link('Save My Exams lesson index ↗',notesUrl)+'<h2>Cambridge 0455 from 2027</h2><ul><li>Paper 1 · Multiple choice · 40 marks · 1 hour</li><li>Paper 2 · Structured questions · 80 marks · 2 hours</li></ul><p>The practice bank contains '+questions.length+' original questions. Structured questions have been adapted from the supplied practice file to be answered without a separate case study. MCQs use the original answer keys. Structured questions include revised practice mark schemes for self-assessment. Cambridge publishes selected past papers, official mark schemes and specimen materials.</p><div class="row">'+link('Syllabus coverage','#syllabus')+link('Official syllabus ↗',syllabus)+link('Papers and mark schemes ↗',papers)+'</div></article>';
 }
+function setActiveSection(active) {
+  document.querySelectorAll('.economics-links [data-section]').forEach(link => {
+    if (link.dataset.section === active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+}
+
 function render(autoMark = true) {
   const [revisionPage, revisionId] = location.hash.slice(1).split('/');
   const isRevision = Object.hasOwn(revisionRoutes, revisionPage);
   main.classList.toggle('revision-page', isRevision);
+  main.after(markingControls);
+  markingControls.hidden = !markingPages.has(revisionPage);
   if (isRevision) {
     main.classList.remove('practice-page', 'learning-page');
     main.innerHTML = '<div class="wrap">' + renderRevisionTool(revisionPage, revisionId) + '</div>';
-    const activeRevisionNav = revisionPage === 'revision-checklist' ? '#revision-checklist' : '#revision';
-    document.querySelectorAll('.top nav a').forEach(a => {
-      if (a.hash === activeRevisionNav) a.setAttribute('aria-current', 'page');
-      else a.removeAttribute('aria-current');
-    });
+    if (!markingControls.hidden) main.querySelector('.revision-heading')?.after(markingControls);
+    setActiveSection(revisionPage === 'revision-checklist' ? 'revision-checklist' : 'revision');
     revisionSetups[revisionPage]?.(revisionId, autoMark);
     return;
   }
@@ -304,10 +365,10 @@ function render(autoMark = true) {
   main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
   const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(id===undefined?null:Number(id),Number(mode)),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
-  const active=page==='glossary'?'flashcards':page==='chapter'||page==='lesson'?(mode==='cards'?'flashcards':'library'):page||'home';
-  document.querySelectorAll('.top nav:not(#revision-notes-index) a,.tabs a').forEach(a=>{
-    const current=a.closest('.tabs')?a.hash===location.hash:a.hash==='#'+active;
-    if(current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+  const active = page === 'glossary' ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
+  setActiveSection(Object.hasOwn(routes, page) ? active : 'home');
+  document.querySelectorAll('.tabs a').forEach(a=>{
+    if(a.hash===location.hash)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
   });
   const search=document.querySelector('#search');
   if(search) search.oninput=()=>{
@@ -320,9 +381,21 @@ function render(autoMark = true) {
   if(deckSearch)deckSearch.oninput=deckChapter.onchange=()=>{document.querySelector('#deck-results').innerHTML=deckGallery(deckSearch.value,deckChapter.value)};
   document.querySelectorAll('[data-note-target]').forEach(button=>button.onclick=()=>document.getElementById(button.dataset.noteTarget).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));
   setupDeck(page==='glossary'?'glossary':Number(id));
-  setupPractice();
+  if (page === 'practice') {
+    main.querySelector('#practice-marking').replaceWith(markingControls);
+    setupPractice(id === 'mcq' || id === 'structured' ? id : '');
+  }
 }
-window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
+window.addEventListener('hashchange', () => {
+  render();
+  main.focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+});
 document.addEventListener('DOMContentLoaded', () => {
   render();
+  document.querySelector('.skip').addEventListener('click', event => {
+    event.preventDefault();
+    main.focus();
+    main.scrollIntoView({ block: 'start' });
+  });
 }, {once:true});

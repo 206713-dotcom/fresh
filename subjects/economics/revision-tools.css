@@ -1,13 +1,5 @@
 /* Layout shared by Economics revision tools and their activity screens. */
-main.revision-page {
-  display: block;
-  margin-left: 175px;
-  padding: 0;
-  border: 0;
-  color: var(--ink);
-  font-size: 15px;
-}
-body:has(main.revision-page) footer { margin-left: 175px; }
+.revision-page { font-size: 15px; }
 .revision-workspace {
   --tool-accent: #23665a;
   --tool-soft: #e3f0e7;
@@ -141,13 +133,10 @@ body:has(main.revision-page) footer { margin-left: 175px; }
 #revision-test-builder .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
 #revision-attempt fieldset { min-width: 0; border: 1px solid #b8c9c2; border-radius: 10px; }
 #revision-attempt > button + button { margin-left: 8px; }
-#revision-clock { position: sticky; top: 12px; z-index: 1; width: fit-content; margin: 0 0 16px auto; padding: 10px 14px; border-radius: 9px; background: var(--tool-dark); color: #fff; font-variant-numeric: tabular-nums; }
+#revision-clock { position: sticky; top: calc(var(--economics-nav-height) + 12px); z-index: 1; width: fit-content; margin: 0 0 16px auto; padding: 10px 14px; border-radius: 9px; background: var(--tool-dark); color: #fff; font-variant-numeric: tabular-nums; }
 #revision-save-status:empty { display: none; }
 @media (max-width: 850px) {
   .revision-columns { grid-template-columns: 1fr; }
-}
-@media (max-width: 700px) {
-  main.revision-page, body:has(main.revision-page) footer { margin-left: 0; }
 }
 @media (max-width: 510px) {
   .revision-collection, #revision-test-builder .row { grid-template-columns: 1fr; }
@@ -156,6 +145,13 @@ body:has(main.revision-page) footer { margin-left: 175px; }
 .checklist-progress { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
 .checklist-progress progress { grid-column: 1 / -1; grid-row: 2; width: 100%; height: 14px; accent-color: var(--tool-accent); }
 .checklist-progress p, .checklist-chapter-count { margin: 0; color: var(--tool-dark); }
+.revision-workspace .checklist-progress { max-width: none; background: #eef2e6; }
+.checklist-jump { margin: 0 0 23px; }
+.checklist-jump h2 { margin: 0 0 10px; font: 400 25px/1.2 Georgia, serif; }
+.checklist-jump .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.checklist-jump button { justify-content: start; gap: 8px; text-align: left; }
+.checklist-jump button span { color: var(--tool-accent); font-variant-numeric: tabular-nums; }
+.revision-workspace .checklist-chapter { max-width: none; scroll-margin-top: calc(var(--economics-nav-height) + 16px); }
 .checklist-chapter ul { list-style: none; padding: 0; margin: 12px 0 0; }
 .checklist-chapter li { padding: 10px 0; border-top: 1px solid var(--line); }
 .checklist-chapter label { display: flex; align-items: baseline; gap: 9px; cursor: pointer; }
@@ -169,6 +165,7 @@ body:has(main.revision-page) footer { margin-left: 175px; }
 @media (max-width: 900px) { .revision-hub .revision-tool-group { grid-template-rows: auto; } }
 @media (max-width: 510px) {
   .checklist-progress { grid-template-columns: 1fr; }
+  .checklist-jump .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .revision-hub .revision-tool-group { grid-auto-rows: auto; }
 }
 

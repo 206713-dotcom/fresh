@@ -803,8 +803,10 @@ function revisionChecklist() {
     count + ' of ' + total + ' tasks complete</p></div>' +
     '<progress id="checklist-progress" aria-label="Checklist tasks complete" value="' + count + '" max="' + total + '"></progress>' +
     link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
-    '<div id="syllabus-checklist">' + officialSyllabusChapters.map(chapter =>
-      '<section class="panel checklist-chapter"><h2>' + escapeHtml(chapter.title) + '</h2>' +
+    '<nav class="checklist-jump" aria-labelledby="checklist-jump-title"><h2 id="checklist-jump-title">Jump to a chapter</h2><div class="row">' +
+    officialSyllabusChapters.map((chapter, i) => '<button type="button" data-checklist-target="checklist-chapter-' + i + '"><span aria-hidden="true">' + (i + 1) + '</span>' + escapeHtml(chapter.title) + '</button>').join('') +
+    '</div></nav><div id="syllabus-checklist">' + officialSyllabusChapters.map((chapter, i) =>
+      '<section class="panel checklist-chapter" id="checklist-chapter-' + i + '" tabindex="-1" aria-labelledby="checklist-heading-' + i + '"><h2 id="checklist-heading-' + i + '">' + escapeHtml(chapter.title) + '</h2>' +
       chapter.topics.map(topic => {
         const items = checklistOutcomes.filter(([code]) => code.startsWith(topic.code + '.'));
         return '<details class="workbook-topic"><summary>' + topic.code + ' ' + escapeHtml(topic.title) + '</summary>' +
@@ -826,6 +828,13 @@ function revisionChecklist() {
 function setupRevisionChecklist() {
   const checklist = document.querySelector('#syllabus-checklist');
   if (!checklist) return;
+  document.querySelector('.checklist-jump').onclick = event => {
+    const button = event.target.closest('[data-checklist-target]');
+    if (!button) return;
+    const chapter = document.getElementById(button.dataset.checklistTarget);
+    chapter.focus({ preventScroll: true });
+    chapter.scrollIntoView({ block: 'start' });
+  };
   checklist.onchange = event => {
     if (!event.target.matches('input[type="checkbox"]')) return;
     const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
