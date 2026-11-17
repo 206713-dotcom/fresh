@@ -19,7 +19,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=8', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=9', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -132,6 +132,7 @@ const ecbizMarking = (() => {
     return {
       score: credited.length,
       band: 'point-based',
+      modelResponse: names.map(name => 'The ' + name).join(' and ').replace(' and The ', ' and the ') + '.',
       credits: credited.map(name => ({ criterion: 'Identified a listed item', evidence: name })),
       feedback: credited.length === 2 ? 'You identified both items in the mark scheme.' : 'You identified one of the two required items.',
       nextStep: remaining.length ? 'The other item in the mark scheme is the ' + remaining[0] + '.' :
@@ -150,7 +151,16 @@ const ecbizMarking = (() => {
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
       report?.('Waiting for the on-device marker…');
-      const request = enqueue(() => evaluate(question, response, image, report));
+      const request = enqueue(async () => {
+        const result = await evaluate(question, response, image, report);
+        if (!image) return result;
+        try {
+          const marker = await import(trainedMarkerURL);
+          return await marker.review(question, '', result, message => report?.(message));
+        } catch {
+          return { ...result, reviewUnavailable: true };
+        }
+      });
       pending.set(key, request);
       const clear = () => pending.delete(key);
       request.then(clear, clear);
@@ -194,6 +204,10 @@ const ecbizMarking = (() => {
   }
 
   function feedback(result, marks) {
+    const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
+      escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
+    const section = (title, value) => value ? '<h3>' + title + '</h3>' + paragraphs(value) : '';
+    const coaching = result.coaching;
     return '<strong>' + result.score + '/' + marks + ' marks' +
       (result.provisional ? ' · Provisional AI mark' : '') +
       (result.band && result.band !== 'point-based' ? ' · Band ' + escapeHtml(result.band) : '') +
@@ -201,7 +215,15 @@ const ecbizMarking = (() => {
       (result.credits?.length ? '<ul>' + result.credits.map(credit =>
         '<li><strong>' + escapeHtml(credit.criterion) + '</strong> · ' +
         escapeHtml(credit.evidence) + '</li>').join('') + '</ul>' : '') +
-      (result.nextStep ? '<p><strong>Next step</strong> ' + escapeHtml(result.nextStep) + '</p>' : '');
+      section('What worked', coaching?.strengths) +
+      section('What to improve', coaching?.gaps) +
+      section('How to reach full marks', coaching?.next || result.nextStep) +
+      section(result.diagram ? 'Model diagram instructions' : 'Model response', result.modelResponse) +
+      (result.generatedModelResponse ? '<p class="muted">AI-generated example. Check it against the question’s mark scheme.</p>' : '') +
+      (result.modelPlan ? '<h3>Mark-scheme answer plan</h3><p>The AI could not verify a complete model response. Use these points to build your answer.</p><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
+      (result.reviewUnavailable && !result.modelPlan ? '<p>AI review was unavailable. Use the question’s mark scheme for the required points.</p>' : '') +
+      (coaching || result.modelResponse || result.modelPlan ? '<p><a href="https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf" target="_blank" rel="noopener noreferrer">Cambridge 0455 syllabus</a> · ' +
+        '<a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge specimen mark scheme</a></p>' : '');
   }
 
   function scheme(prompt) {
