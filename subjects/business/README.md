@@ -2,7 +2,9 @@
 
 ### Cambridge IGCSE Business Studies, practised properly.
 
-**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264 / 0450).** It turns the syllabus into a loop: learn the idea, answer the exact command word, get marked against AO1–AO4, find the gap, and come back to it later.
+**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264 / 0450).** It turns the syllabus into a loop: learn the idea, answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
+
+**Where it stands:** EcBiz has been tested with my classmates and submitted to my school for review. It is not widely used yet, and I am not claiming that it is. It is a real project used by real classmates, still early.
 
 [Source on GitHub (Fresh hub)](https://github.com/206713-dotcom/fresh) · [Report an issue](https://forms.gle/6X2CAR1LkSQGRBx68) · [Run it locally](#run-ecbiz-locally) · [Deploy your own](#deploy-ecbiz)
 
@@ -21,10 +23,10 @@
 ## Contents
 
 1. [Why EcBiz exists](#why-ecbiz-exists)
-2. [By the numbers](#by-the-numbers)
-3. [What I built and what it taught me](#what-i-built-and-what-it-taught-me)
+2. [My role, honestly](#my-role-honestly)
+3. [By the numbers](#by-the-numbers)
 4. [What is inside](#what-is-inside)
-5. [How the marking engine works](#how-the-marking-engine-works)
+5. [How the marking works](#how-the-marking-works)
 6. [Architecture](#architecture)
 7. [Data model](#data-model)
 8. [Accounts, progress and privacy](#accounts-progress-and-privacy)
@@ -34,24 +36,37 @@
 12. [Deploy EcBiz](#deploy-ecbiz)
 13. [Project structure](#project-structure)
 14. [Quality and verification](#quality-and-verification)
-15. [Release milestones](#release-milestones)
+15. [How this grew](#how-this-grew)
 16. [Roadmap](#roadmap)
 17. [Credits](#credits)
 18. [Licence](#licence)
+
 ---
 
 ## Why EcBiz exists
 
-I am a student taking Cambridge IGCSE Business Studies. The syllabus is enormous: six sections, more than twenty-five chapters, hundreds of definitions, formulas, case-study skills, and four assessment objectives that all have to appear in the right proportion. The exam rewards **exact** wording. A vague answer can lose the mark even when the underlying idea is correct.
+I am a Year 11 student taking Cambridge IGCSE Business Studies. The syllabus is huge: six sections, more than twenty-five chapters, hundreds of definitions, formulas and case-study skills, and four assessment objectives that all have to show up in the right proportion. The exam rewards **exact** wording. A vague answer can lose the mark even when the idea behind it is right.
 
 Most revision material I could find fell into two camps:
 
 - **Passive** — read a textbook, watch a video, highlight notes. Comfortable, but it never tests whether you can *produce* the Cambridge wording under pressure.
-- **One-shot** — a single worksheet you complete once and throw away. No repetition, no tracking, no sense of progress.
+- **One-shot** — a worksheet you complete once and throw away. No repetition, no tracking, no sense of progress.
 
-EcBiz started as a **Social and Emotional Learning (SEL) wellbeing activity** — a small "build something that helps your classmates" project. A handful of flashcards for a few friends grew, week by week, into a full revision platform once I realised how many students were quietly struggling for practice material. The moment a classmate told me *"I finally feel ready for Paper 1"* was the moment I decided to take it seriously and ship it properly.
+EcBiz started as a **Social and Emotional Learning (SEL) wellbeing activity** — a small "build something that helps your classmates" project. A handful of flashcards for a few friends grew, week by week, into a full revision platform once I saw how many students were quietly struggling for practice material.
 
-The goal: give every student the same thing a well-resourced candidate gets — thousands of exam-style questions, instant "is this the Cambridge wording?" feedback, a clear record of what they have actually mastered, and a teacher-visible progress trail — for free, in a browser, with no paywall.
+The goal: give every student the same thing a well-resourced candidate gets — thousands of exam-style questions, instant feedback on wording, a clear record of what they have actually mastered, and a progress trail a teacher can see — for free, in a browser, with no paywall.
+
+---
+
+## My role, honestly
+
+I want to be upfront about how this was actually built, because the person reading this (a teacher, a scholarship interviewer, a classmate) deserves a straight answer.
+
+- **I designed, built, tested and maintain EcBiz, working with AI coding tools.** I am not pretending this was typed out entirely by hand, and I am not pretending the AI did my thinking for me either. The product decisions, the feature design, the layout, the marking logic and the testing were mine. The code was written with AI assistants that I prompted, reviewed, ran and debugged.
+- **The practice question bank was generated with Gemini, using Cambridge model answers as the source material.** The questions follow the syllabus and the mark-scheme shape, but they are practice questions, not past papers. I checked and edited them, but they are not official Cambridge documents.
+- **What I personally focused on:** designing the features, fixing confusing layouts based on feedback from my classmates, and testing the AI marker against Cambridge marking criteria until it scored fairly. The local AI grader went through many rounds of me marking test answers, comparing its mark to the real mark scheme, finding where it was wrong, and fixing the rules.
+- **What I can confidently explain in person:** every feature listed below, why it exists, how marking works in plain English, where the content came from, what the app does well, and what it does badly. If you ask me something deeper than that, the honest answer is "the AI helped with that part and I tested it" — which is the whole point of testing it.
+- **Testing so far:** EcBiz has been used and tested by my classmates, and it has been submitted to my school for review. It does not have widespread adoption, a user base, or official endorsement. The feedback link at the top is a real way to report mistakes.
 
 ---
 
@@ -78,42 +93,7 @@ The goal: give every student the same thing a well-resourced candidate gets — 
 
 That is **6,000 multiple-choice questions**, **1,760 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
 
----
-
-## What I built and what it taught me
-
-### The story
-
-EcBiz did not begin as a software project. It began as a wellbeing activity: make something that helps someone else. The first version had 129 hand-written multiple-choice questions and a chapter filter. It was useful, but small.
-
-Then three things happened.
-
-First, I realised that a question bank is only valuable if it is **big enough to revisit**. A student who has seen all 120 questions has not practised; they have memorised a worksheet. So the bank grew to 6,000 questions, split by section and sub-topic, with an explanation for every option.
-
-Second, I realised that multiple-choice questions do not train the part of the exam that actually hurts: **writing**. Paper 1 asks for 2, 4, 6 and 8 marks. Paper 2 asks for 8 and 12 marks in a case-study context. So EcBiz gained a full written-answer studio with mark schemes, model answers, AO-by-AO feedback, keyword rules, and a local AI examiner.
-
-Third, I realised that feedback is only useful if it is **visible over time**. So the platform gained a progress ledger, a syllabus checklist, a glossary mastery loop, a wrong-only drill mode, a teacher spreadsheet, and a set of small motivations — coins, themes, achievements, a focus space and a boss battle — that make coming back feel less like homework.
-
-### What I actually built
-
-| Area | Work |
-|---|---|
-| **Curriculum** | Mapped the 0264 syllabus into 255 granular statements, 61 subtopics and 29 topics. Structured 24 lessons around the six sections and the Sixth Edition textbook sequence. |
-| **Content** | Built 240 Paper 1 scenario sets and 100 Paper 2 case studies with appendices, 6,000 MCQs with explanations, 275 glossary terms, 165 comparison notes, and 189 verified past-paper questions with provenance metadata. |
-| **Assessment** | Designed the AO1–AO4 breakdown, deterministic application/evaluation rules, level-band descriptors, mark-scheme viewers, model-answer matching, manual overrides with an audit trail, and a fallback heuristic examiner. |
-| **AI** | Built a local in-browser examiner on Transformers.js and WebGPU: one Qwen 3 0.6B text decoder, a strict paragraph-audit JSON schema, deterministic TypeScript mark arithmetic, and a non-AI fallback examiner. |
-| **Front end** | Built the whole interface in React 19, TypeScript, Vite 8 and Tailwind CSS 4: lessons, practice studios, mock exams, dashboards, glossary, checklist, archive, game, modals and responsive layouts. |
-| **Back end** | Wrote the Google Apps Script service that handles registration, login, salted password hashing, HMAC-signed sessions, lockouts, row-level reads/writes and progress snapshots into Google Sheets — with no external database. |
-| **Product & writing** | Wrote the teaching copy, exam guidance, mark-scheme language, onboarding, error states, empty states, accessibility labels and the feedback loop with classmates. |
-
-### What this project demonstrates
-
-- **Curriculum design under real constraints.** Every feature is tied to a syllabus outcome, a command word or an assessment objective — not added because it looked impressive.
-- **Assessment design.** Marking is not "ask an LLM for a number". It is a pipeline: deterministic keyword guards first, then model interpretation, then schema validation, then a human override if the result is obviously wrong.
-- **Full-stack thinking without a traditional backend.** Accounts, persistence and teacher visibility are built on a Google Sheet and Apps Script, because that was the constraint I had to design around.
-- **Local-first AI.** The interesting part is not that a model runs in the browser; it is that the product still works when it does not.
-- **Data engineering at scale.** Six thousand questions cannot live in one file or one render path. The bank is split, typed, filtered and cached deliberately.
-- **Shipping for real people.** A classmate opening the site on a school laptop is a harder test than a local build passing.
+One honest caveat: the large practice banks were generated with AI (Gemini) using Cambridge model answers as the basis, then checked and edited by me. They are built to *match* the syllabus, not to be official material. The separate verified archive (see section 5 below) is the part of the app built from inspected Cambridge past papers.
 
 ---
 
@@ -146,11 +126,11 @@ The Quick Quiz is the fast, low-friction loop:
 
 Wrong answers are written to `ecbiz_mcq_wrong`. When you later answer the same question correctly, it leaves the list. The list is also mirrored to the teacher spreadsheet, which turns a private study habit into a visible intervention signal.
 
-The quiz also includes a **Daily Blitz** and **Weekly Master** challenge. The prompt is selected deterministically from the UTC date or week, so every student sees the same question. Both are timed at 60 seconds and award 50 or 150 bonus coins.
+The quiz also includes a **Daily Blitz** and **Weekly Master** challenge. The prompt is picked from the UTC date or week, so every student sees the same question on the same day. Both are timed at 60 seconds and award 50 or 150 bonus coins.
 
 ### 3. Write: the Paper 1 topical studio
 
-Paper 1 is where definitions and case application meet. The studio contains **240 scenario sets**, 40 per section, each with a full case stem and four structured parts:
+Paper 1 is where definitions and case application meet. The studio contains **240 scenario sets**, 40 per section, each with a full case and four structured parts:
 
 | Part | Marks | What it tests |
 |---|---:|---|
@@ -167,11 +147,11 @@ For every question you get:
 - a model answer;
 - a live timer and a locally auto-saved draft, so a closed tab does not lose the paragraph you were midway through;
 - bookmarks for questions you want to revisit;
-- a choice of marking engine: **Instant** (heuristic, no download) or **Qwen 3 0.6B** (local WebGPU, more nuanced paragraph feedback).
+- a choice of marking engine: **Instant** (works on any computer, no download) or **Qwen 3 0.6B** (a small AI model that runs locally in the browser, gives more nuanced feedback).
 
-The deterministic rules are deliberately strict. If the question requires case application and your answer contains none of the case's valid application keywords, AO2 is capped at zero. If an 8-mark evaluation question contains no evaluative judgement language, AO4 is capped at zero. The reasoning is shown in the feedback, so the cap teaches the rule instead of feeling arbitrary.
+The marking rules are deliberately strict. If the question needs you to apply to the case and your answer mentions none of the case's application keywords, your Application (AO2) mark is capped at zero. If an 8-mark evaluation question contains no evaluation language, your AO4 mark is capped at zero. The reasoning is shown in the feedback, so the cap teaches the rule instead of feeling random.
 
-Two-mark questions are a special case: they are pure knowledge. The engine forces the breakdown to `K: 0–2` and zero for Application, Analysis and Evaluation, then awards one Knowledge mark per distinct accurate defining characteristic. A definition of a private limited company that mentions both "shares sold privately / not on the stock exchange" and "limited liability" therefore scores 2/2, and the results screen shows a single Knowledge card rather than asking for application the question never set.
+Two-mark questions are a special case: they are pure knowledge. The engine forces the breakdown to `K: 0–2` and zeroes Application, Analysis and Evaluation, then awards one Knowledge mark per distinct correct defining point. A definition of a private limited company that mentions both "shares sold privately / not on the stock exchange" and "limited liability" therefore scores 2/2, and the results screen shows a single Knowledge card instead of asking for application the question never set.
 
 ### 4. Apply: the Paper 2 case-study simulator
 
@@ -185,9 +165,9 @@ Paper 2 is a different skill: read an unseen business, use the appendices, and w
 
 That is **800 questions** in total, split evenly between 8 and 12 marks. The 8-mark questions use band descriptors from "Basic" to "Maximum"; the 12-mark questions use the official Cambridge Level 3, Level 2, Level 1 and Level 0 descriptors with a supported recommendation at the top level.
 
-For 12 marks, the result screen is deliberately Levels-based: it shows the Level badge, the mark out of 12 and qualitative paragraph diagnostics ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It does not show an AO1–AO4 card grid or per-paragraph `X/Y` totals, because those would imply a points-based scheme that the question does not use. Numeric paragraph scoring appears only on the 4-, 6- and 8-mark questions, where it is the correct model.
+For 12 marks, the result screen shows the Level badge, the mark out of 12 and short qualitative tags per paragraph ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It does not show an AO1–AO4 card grid or per-paragraph marks, because those would imply a points-based scheme that the question does not use. Numeric per-paragraph marks only appear on the 4-, 6- and 8-mark questions, where they are the correct model.
 
-You can move sequentially, jump to a set by number, or pick a random case. Answers can be evaluated by the local model or by the built-in heuristic examiner. A manual override modal records the original AI score, the new score, the reason and whether benefit of the doubt was applied, so a class discussion can correct a mark without erasing what the machine said.
+You can move sequentially, jump to a set by number, or pick a random case. Answers can be marked by the local model or by the built-in Instant examiner. A manual override modal records the original AI score, the new score, the reason and whether benefit of the doubt was applied, so a class discussion can correct a mark without erasing what the machine said.
 
 ### 5. Verify: the official past-paper archive
 
@@ -259,9 +239,9 @@ Boss Battle questions ramp by stage: early rounds hit definition and recall ques
 
 ---
 
-## How the marking engine works
+## How the marking works
 
-The marking pipeline is the most interesting engineering in the project. It is designed around a simple rule: **do not let a language model be the only thing standing between a student and a mark.**
+The core design rule: **do not let a language model be the only thing standing between a student and a mark.**
 
 ```text
 Student answer
@@ -275,9 +255,9 @@ Student answer
       │
       ▼
 ┌───────────────────────────────────────────────┐
-│ 1. Deterministic rule scans                   │
+│ 1. Fixed rule scans                           │
 │    • case-application keywords → AO2          │
-│    • evaluative judgement words → AO4         │
+│    • evaluation judgement words → AO4         │
 │    Missing required evidence? cap to zero.    │
 └───────────────────────────────────────────────┘
       │
@@ -292,7 +272,7 @@ Student answer
       ├── WebGPU unavailable / invalid JSON
       ▼
 ┌───────────────────────────────────────────────┐
-│ 3. Heuristic fallback examiner                │
+│ 3. Instant (built-in) examiner                │
 │    word-count, paragraph, keyword and         │
 │    structure signals — never a blank screen   │
 └───────────────────────────────────────────────┘
@@ -306,87 +286,89 @@ Student answer
 
 Why this shape?
 
-- **The rules are transparent.** A student can see *why* AO2 was capped: the answer did not mention the case. That is a teachable moment, not a black box.
-- **The model is constrained.** It receives the question, mark scheme, rubric and statistical metrics, and returns a strict shape. If it returns invalid JSON, the app does not guess; it falls back.
-- **The fallback is honest.** If WebGPU is unavailable, the app still marks. The UI tells you which engine is active.
+- **The rules are visible.** A student can see *why* AO2 was capped: the answer did not mention the case. That is a teachable moment, not a mystery.
+- **The model is kept on a tight leash.** It gets the question, mark scheme and rubric, and it returns a strict shape. If it returns invalid JSON, the app does not guess; it falls back to the built-in examiner.
+- **The fallback always works.** If the computer does not support WebGPU, the app still marks. The UI tells you which engine is active.
 - **The human stays in charge.** Manual overrides preserve the original AI score and the reason, so a teacher or student can correct a harsh or generous result without destroying the record.
 
 ### What the local model is actually allowed to decide
 
-The model is a **paragraph reader**, not a calculator. It returns a small JSON object per paragraph — `k_score`, `app_score`, `an_score`, `eval_score`, a short `critique`, and the verbatim `isolated_quote` it judged — and that is all. TypeScript owns every number that reaches the student:
+The model is a **paragraph reader**, not a calculator. It returns a small JSON object per paragraph — `k_score`, `app_score`, `an_score`, `eval_score`, a short `critique`, and the exact quote it judged — and that is all. The code owns every number that reaches the student:
 
 - the per-paragraph subtotal and its maximum;
 - the AO1–AO4 totals and their caps;
-- the deterministic 2-mark, 4-mark, 6-mark and 8-mark arithmetic;
+- the mark totals for 2-, 4-, 6- and 8-mark questions;
 - the official Paper 2 Level band and the final mark out of 8 or 12;
 - the rule-enforcement record shown in the feedback panel.
 
-That separation is why the engine can be strict even with a small model. The model supplies judgement about *wording and business reasoning*; the code supplies *arithmetic and rubric enforcement*. When the two disagree, the code wins.
+That separation is why the engine can be strict even with a small model. The model supplies judgement about *wording and business reasoning*; the code supplies *the maths and the rubric rules*. When the two disagree, the code wins.
 
-### The six problems behind a sub-1B examiner
+### The grading problems I had to solve
 
-Getting a 0.6B model to behave like a Cambridge examiner was not a single integration task. It took six separate engineering problems, each with its own failure mode, plus a lot of iteration after the first version "worked" but still marked unfairly. These are the ones that mattered.
+Getting a 0.6B (very small) model to behave like a Cambridge examiner was not one task. It was six separate problems, each with its own failure mode, plus a lot of iteration after the first version "worked" but still marked unfairly.
 
-#### 1. Running AI entirely on the device, without API keys or a 2B fallback
+#### 1. Running AI entirely on the device, with no API keys
 
-**The problem.** External APIs meant server cost, rate limits and exposed keys. Supporting a second, larger model also doubled the download matrix, added memory pressure, and encouraged a false trade-off: "use the bigger model when the small one struggles." In practice, the 2B tier did not remove the need for deterministic guards — it just hid their absence behind a heavier download.
+**The problem.** External APIs meant server cost, rate limits and keys that could be exposed. Supporting a second, larger model also doubled the download and added memory pressure — and in practice the bigger model did not remove the need for the coded marking rules, it just hid their absence behind a heavier download.
 
-**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the 2B tier completely, and standardised on **Qwen 3 0.6B** (`onnx-community/Qwen3-0.6B-ONNX-OPT`). The model loads through `AutoModelForCausalLM`, so only the text decoder is fetched, weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the deterministic **Instant Cambridge 0264 Examiner** rather than showing a dead end.
+**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the larger 2B model completely, and standardised on **Qwen 3 0.6B** (`onnx-community/Qwen3-0.6B-ONNX-OPT`). The model loads through `AutoModelForCausalLM`, weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the built-in Instant examiner instead of showing a dead end.
 
-**Why it mattered.** One model means one download (~380 MB), one cache key and one behaviour to test. The app now has to earn its accuracy in TypeScript instead of buying it with parameters — which turned out to be the more reliable design anyway.
+**Why it mattered.** One model means one download (~380 MB), one cache key and one behaviour to test. The app has to earn its accuracy in code instead of buying it with a bigger download — which turned out to be the more reliable design anyway.
 
-#### 2. Small-model overload, `<think>` exhaustion and arithmetic drift
+#### 2. The small model kept muddling the maths
 
-**The problem.** Asking a 0.6B model to score AO1-AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3 0.6B's default `<think>...</think>` blocks also consumed the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
+**The problem.** Asking a 0.6B model to score AO1–AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3 0.6B's default `<think>...</think>` blocks also ate the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
 
-**What I changed.** I disabled thinking mode (`enable_thinking: false`), added `extractJsonObjectString()` to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. I then removed all score arithmetic from the AI: the model returns paragraph diagnostics, and `evaluateStudentEssay` / `computePaper2Scores` compute every subtotal, AO total and Level band in TypeScript. The token budget is now adaptive (`computeRecommendedMaxTokens`, roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
+**What I changed.** I disabled thinking mode (`enable_thinking: false`), added a step to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. Then I removed all of the adding-up from the AI: the model returns per-paragraph judgements, and the TypeScript code computes every subtotal, AO total and Level band. The token budget is now adaptive (roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
 
-**Why it mattered.** The same answer now produces the same mark far more often. It also fixed a subtler bug: the model could "award" a mark the rubric did not contain. Because maxima live in code, a hallucinated sixth mark on a 4-mark question is now impossible.
+**Why it mattered.** The same answer now produces the same mark far more often. It also fixed a subtler bug: the model could "award" a mark the rubric did not contain. Because the maxima live in code, a hallucinated sixth mark on a 4-mark question is now impossible.
 
-#### 3. Cross-paragraph "halo" effects and point repetition
+#### 3. The AI was too kind to later paragraphs — and students could double-count points
 
-**The problem.** Standard LLM grading let strong context or analysis in Paragraph 1 bleed into weak later paragraphs. Students could also double-dip by repeating — or lightly paraphrasing — the same syllabus point or case fact in a second paragraph and collecting the marks twice.
+**The problem.** Standard AI marking let strong context or analysis in paragraph 1 bleed into weak later paragraphs. Students could also double-dip by repeating — or lightly rewording — the same syllabus point or case fact in a second paragraph and collect the marks twice.
 
-**What I changed.** I built **Anti-Halo Paragraph Isolation** (`splitResponsePoints`, `evaluateIsolatedSegment`, `auditPaper2BodyParagraph`), so each paragraph is audited in a vacuum with its own quote and its own scores. On top of that I added an **Anti-Repetition Ledger** (`createKnowledgeCreditLedger`, `findFreshAppDetails`) that records every credited syllabus concept and every credited case-study detail. A repeated concept earns zero K; a reused case fact earns zero App; a paragraph whose sentences are more than **0.70 Jaccard similarity** to an earlier paragraph is treated as a duplicate and earns no new credit. The Paper 2 conclusion is separately checked against the option paragraphs so a recommendation cannot simply restate them.
+**What I changed.** I rewrote marking so **each paragraph is checked separately, on its own, so students don't get double marks for repeating points.** Each paragraph is audited in isolation with its own quote and its own scores. On top of that, a running **ledger of already-credited points** records every syllabus concept and every case-study detail that has already earned marks. A repeated concept earns zero Knowledge marks; a reused case fact earns zero Application marks; a paragraph whose sentences are too similar to an earlier paragraph is treated as a duplicate and earns no new credit. The Paper 2 conclusion is also checked against the other paragraphs so a recommendation cannot simply restate them.
 
-**Why it mattered.** Halo effects are the single biggest source of over-marking in AI examiners. Isolating paragraphs made the feedback more useful too, because the student can see exactly which paragraph was thin rather than receiving one vague holistic judgement.
+**Why it mattered.** Marking later paragraphs too generously was the single biggest source of over-marking. Checking paragraphs separately also made the feedback more useful, because the student can see exactly which paragraph was thin rather than getting one vague overall judgement.
 
-#### 4. AO2 Application: narrow keyword lists versus proper-noun name-dropping
+#### 4. Application: keyword lists versus name-dropping
 
-**The problem.** Static `valid_app_words` lists were sometimes too narrow and capped valid answers at zero. The naive fix — counting capitalised words as application — created the opposite failure, letting a student earn AO2 simply by writing the company or owner's name.
+**The problem.** Fixed lists of "valid application words" were sometimes too narrow and capped valid answers at zero. The obvious fix — counting capitalised words as application — created the opposite failure, letting a student earn Application marks just by writing the company's name.
 
-**What I changed.** I built `detectCaseContext()` and `extractCaseContextFacts()` to read the scenario stem automatically. They pull concrete, defensible context: currencies, percentages, ratios, quantities and other quantified figures, plus domain nouns that belong to the case. `extractCompanyNames()` identifies standalone company names, brands and acronyms so that name-dropping can be detected and excluded from the evidence pool. Curated `valid_app_words` are still used, but as one signal among several rather than a hard gate.
+**What I changed.** I built automatic reading of the case stem. It pulls concrete, defensible context: currencies, percentages, ratios, quantities and other figures, plus domain nouns that belong to the case. It also identifies standalone company names, brands and acronyms so name-dropping can be detected and excluded from the evidence pool. Curated keyword lists are still used, but as one signal among several rather than a hard gate.
 
 **Why it mattered.** AO2 is supposed to test whether a student can *use* the case, not whether they can memorise a keyword list. Automatic fact extraction made marking fairer across the 340+ scenarios without hand-maintaining a keyword list for every case.
 
-#### 5. Over-crediting vague "yapping" in AO3 Analysis
+#### 5. Over-crediting wordy "analysis"
 
-**The problem.** Small models — and simple connective-word checks — were fooled by wordy paragraphs that used *"because"* or *"therefore"* while merely restating a knowledge point or summarising case facts. The paragraph looked analytical without explaining a commercial consequence.
+**The problem.** Small models — and simple connective-word checks — were fooled by wordy paragraphs that used "because" or "therefore" while merely restating a knowledge point or summarising case facts. The paragraph looked analytical without explaining a commercial consequence.
 
-**What I changed.** I enforced a strict business-consequence gate. `hasClearBusinessConsequenceChain()` and `scanPaper2CausalChains()` require both a causal link **and** a real business outcome — cash flow, unit costs, risk, efficiency, productivity, revenue, profit, survival or decision-making. Restatements, bare cost claims and speed claims without a mechanism are rejected. On Paper 2, the scan distinguishes single-step reasons from developed two-step chains, so a list of six isolated reasons cannot masquerade as a top-band analysis.
+**What I changed.** I added a strict consequence test. The code requires both a causal link **and** a real business outcome — cash flow, unit costs, risk, efficiency, productivity, revenue, profit, survival or decision-making — before crediting analysis. Restatements, bare cost claims and speed claims without a mechanism are rejected. On Paper 2, the scan distinguishes single-step reasons from developed two-step chains, so a list of six isolated reasons cannot pass as top-band analysis.
 
 **Why it mattered.** AO3 was where the early engine was most generous. Requiring a named consequence made the feedback more specific ("you said it would be cheaper, but not why that matters to the business") and brought the mark distribution much closer to a real mark scheme.
 
-#### 6. AO4 evaluation and official Paper 2 Level bands
+#### 6. Evaluation (AO4) and the official Paper 2 Level bands
 
-**The problem.** A 0.6B model struggled to separate a one-sided assertion from a balanced, justified conclusion, and it applied the official Level 1–3 descriptors inconsistently on 8-mark and 12-mark questions. Adding the AI's paragraph scores together also produced totals that contradicted the Level, and — on 2-mark definitions — it kept trying to award Application marks that the question does not assess.
+**The problem.** A 0.6B model struggled to separate a one-sided assertion from a balanced, justified conclusion, and it applied the official Level 1–3 descriptors inconsistently on 8- and 12-mark questions. Adding the AI's paragraph scores together also produced totals that contradicted the Level, and — on 2-mark definitions — it kept trying to award Application marks the question does not assess.
 
-**What I changed.** I moved AO4 evaluation and Paper 2 Level gating out of the LLM and into deterministic TypeScript (`evaluateDeterministicAo4`, `computePaper2Scores`). The engine isolates the final conclusion (`extractFinalParagraph`) and checks for a clear recommendation, two-sided contrast, case-specific justification, comparison against the rejected alternative, and mitigation/contingency reasoning. Level 3, Level 2, Level 1 and Level 0 now use the official Cambridge wording; the final mark is gated by the Level rather than by paragraph addition. I also fixed two rubric mismatches:
+**What I changed.** I moved AO4 evaluation and Paper 2 Level gating out of the AI and into code. The engine isolates the final conclusion and checks for a clear recommendation, two-sided contrast, case-specific justification, comparison against the rejected alternative, and mitigation or contingency reasoning. Level 3, Level 2, Level 1 and Level 0 now use the official Cambridge wording; the final mark is decided by the Level, not by paragraph addition. I also fixed two marking mismatches:
 
-- **2-mark definitions are pure knowledge.** `evaluateStudentEssay` forces `ao1Max: 2` and App/An/Eval to zero, so "Define…" and "What is meant by…" award K:1 per distinct accurate characteristic and never ask for application. The results UI hides the non-assessed AO cards for these questions.
-- **12-mark results are Levels-based.** The UI shows the Level badge, the exact mark out of 12 and qualitative paragraph tags ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It deliberately does **not** show an AO1–AO4 card grid or per-paragraph `X/Y` counters for 12-mark questions, because those numbers would imply a points-based total that Cambridge does not use. Numeric paragraph scoring remains for 4-, 6- and 8-mark questions, where it is correct.
+- **2-mark definitions are pure knowledge.** `evaluateStudentEssay` forces `ao1Max: 2` and Application/Analysis/Evaluation to zero, so "Define…" and "What is meant by…" award one Knowledge mark per distinct accurate characteristic and never ask for application. The results UI hides the non-assessed AO cards for these questions.
+- **12-mark results are Levels-based.** The UI shows the Level badge, the exact mark out of 12 and short qualitative paragraph tags. It deliberately does **not** show an AO1–AO4 card grid or per-paragraph mark counters for 12-mark questions, because those numbers would imply a points-based total that Cambridge does not use. Numeric per-paragraph scoring remains for 4-, 6- and 8-mark questions, where it is correct.
 
 **Why it mattered.** The displayed result now matches the mark scheme the student is being taught. There is no contradiction between "AO4: 0/3" at the top and "Eval: 1/3" below, and no paragraph arithmetic pretending to be a Level.
 
-### How much effort this really took
+### How I kept it honest
 
-The first version of the local examiner worked in the narrow sense that it returned a number. It was not trustworthy. The work that followed was mostly **subtraction**: removing scoring authority from the model, removing the 2B tier, removing paragraph totals from 12-mark results, removing App marks from 2-mark definitions, and removing the assumption that a bigger model would fix a rubric the code should have enforced.
+The first version of the local examiner returned a number. It was not trustworthy. Most of the later work was **subtraction**: removing scoring power from the model, removing the bigger model tier, removing paragraph totals from 12-mark results, removing Application marks from 2-mark definitions, and removing the assumption that a bigger model would fix a marking problem the code should have enforced.
 
-Each fix came from a concrete failure: a definition that scored 1/2 despite two correct points, a 12-mark conclusion that showed two different evaluation scores, a repeated case fact earning application twice, a paragraph full of "therefore" with no consequence. I reproduced each one, wrote it into `scripts/test-grading.ts`, and kept it there. The suite now runs **122 assertions across 35 numbered cases**, covering causal-chain detection, AO maxima, Level gating, anti-halo clamping, 2-mark pure-knowledge scoring, 12-mark AO4 synchronisation, and the duplicate-paragraph rules.
+Each fix came from a concrete failure I found while testing: a definition that scored 1/2 despite two correct points, a 12-mark conclusion that showed two different evaluation scores, a repeated case fact earning application twice, a paragraph full of "therefore" with no consequence. I reproduced each one and wrote it into `scripts/test-grading.ts`. The suite now holds **122 checks across 35 numbered cases** — automated checks to make sure updates don't break the grading rules. They cover consequence detection, AO maxima, Level gating, paragraph-isolation clamping, 2-mark pure-knowledge scoring, 12-mark AO4 sync, and the duplicate-paragraph rules.
 
-That regression suite is the part I am most pleased with. A small model will always be a little unpredictable; the tests are what stop that unpredictability from becoming a marking policy. When I changed the 12-mark UI and removed the AO cards, the suite caught the conclusion-audit inconsistency that would otherwise have shipped.
+Those automated checks are the part I am most pleased with. A small model will always be a little unpredictable; the checks are what stop that unpredictability from becoming a marking policy. When I changed the 12-mark UI and removed the AO cards, the checks caught the conclusion-audit inconsistency that would otherwise have shipped.
 
 The model runs on the student's device. Once the weights are cached, essay text is not uploaded by the app. The first download is large, so the UI treats it as an explicit action and caches the result.
+
+One more honest note: the AI marker is a practice tool, not an examiner. It can be harsh, generous or just wrong. Use the mark scheme, the model answer and your teacher's judgement.
 
 ---
 
@@ -418,7 +400,7 @@ Key design decisions:
 - **Prefix-based snapshot.** Every progress key starts with `ecbiz_`, so the sync layer can snapshot the whole surface without knowing what each key means.
 - **Debounced writes.** Saves are scheduled 4 seconds after a change and flushed when the tab is hidden. A minute-by-minute refresh lets a teacher raise coins in the Sheet and have them appear without a reload.
 - **Local-first AI.** The model is downloaded once and cached in the browser. Marking continues without a server.
-- **Deterministic challenges.** Daily and weekly prompts are seeded from the UTC date/week, so no server coordination is required.
+- **Seeded daily/weekly challenges.** Daily and weekly prompts are picked from the UTC date/week, so no server coordination is required.
 
 ---
 
@@ -548,7 +530,7 @@ The backend is `apps-script/Code.gs` and creates three tabs automatically:
 | `Students` | Roster and headline figures: coins, streak, time spent, MCQs completed, wrong-question IDs, mark-band scores, topical log, recommended focus |
 | `Progress` | One row per student with the full `ecbiz_*` snapshot as JSON |
 
-### Security model
+### How the login is protected
 
 - Passwords are hashed with a per-user salt and 250 iterations of SHA-256, then compared in constant time.
 - Sessions are HMAC-SHA256 signed tokens with a 30-day expiry and the student number as the subject.
@@ -557,7 +539,7 @@ The backend is `apps-script/Code.gs` and creates three tabs automatically:
 - Writes use `LockService` to avoid concurrent-write corruption.
 - Requests use `Content-Type: text/plain` to avoid a CORS preflight that Apps Script cannot answer.
 
-This is a school-project security model, not audited production cryptography. Do not reuse an important password, and treat the Sheet as a classroom record rather than a hardened student-information system.
+To be clear: this is a school-project security model, not audited production cryptography. Do not reuse an important password, and treat the Sheet as a classroom record rather than a hardened student-information system.
 
 ### What is private
 
@@ -574,12 +556,12 @@ The sync layer is deliberately defensive: a failed pull reports an error instead
 
 ### What is official and what is practice
 
-- The **verified archive** links to inspected Cambridge and Cambridge-branded PDFs and records its provenance. It is the closest thing to "the real thing" in the app.
-- The **large practice banks** are Cambridge-style questions written for revision. They follow the syllabus, command words and mark-scheme shape, but they are not past papers and should not be quoted as official.
+- The **verified archive** links to inspected Cambridge and Cambridge-branded PDFs and records where each item came from. It is the closest thing to "the real thing" in the app.
+- The **large practice banks** are Cambridge-style questions written for revision. They follow the syllabus, command words and mark-scheme shape, but they are not past papers and should not be quoted as official. Most of this bulk content was generated with Gemini using Cambridge model answers as the basis, then structured, checked and edited by me.
 - The **AI examiner** produces practice feedback, not an official grade. It can be harsh, generous or wrong. Use the mark scheme, the model answer and your teacher's judgement.
 - The **lesson, glossary and chapter summary** material is original teaching copy mapped to the 0264 syllabus and the Sixth Edition textbook sequence. It is a study aid, not a replacement for the textbook or your teacher.
 
-Some of the bulk content was drafted with AI assistance and then structured, checked and edited into the app. The verified archive exists precisely because generated practice should never be confused with a real paper. If you spot an error, use the feedback link at the top of the README.
+The verified archive exists precisely because AI-generated practice should never be confused with a real paper. If you spot an error, use the feedback link at the top of the README.
 
 ### Scope
 
@@ -630,7 +612,7 @@ No API key, build server or external database is required. The app runs without 
 | `npm run build` | Production build into `dist/` |
 | `npm run preview` | Preview the production build |
 | `npm run lint` | Type-check with `tsc --noEmit` |
-| `npm test` | Run the marking-engine regression suite (`scripts/test-grading.ts`) |
+| `npm test` | Run the marking-engine automated checks (`scripts/test-grading.ts`) |
 | `npm run clean` | Remove `dist/` and the legacy `server.js` |
 
 ### First run
@@ -719,7 +701,7 @@ EcBiz/
 │   │   └── MarkOverrideModal.tsx
 │   ├── lib/
 │   │   ├── engine/
-│   │   │   ├── evaluator.ts        # Rule scans, anti-halo isolation, deterministic AO4 + Levels
+│   │   │   ├── evaluator.ts        # Rule scans, paragraph-by-paragraph marking, AO4 + Levels
 │   │   │   └── webllm.ts           # Qwen 3 0.6B WebGPU loader, prompt, JSON parser
 │   │   ├── data/
 │   │   │   ├── mcq-bank-section1..6.ts
@@ -744,7 +726,7 @@ EcBiz/
 │   └── index.css                   # Design tokens, themes, layout
 ├── apps-script/Code.gs             # Accounts, tokens, Sheet persistence
 ├── public/assets/                  # Syllabus and revision documents
-├── scripts/                        # Preview helpers + marking regression suite
+├── scripts/                        # Preview helpers + marking automated checks
 ├── .env.example
 ├── vite.config.ts
 ├── tsconfig.json
@@ -760,29 +742,29 @@ EcBiz is checked in layers:
 | Gate | What it does |
 |---|---|
 | `npm run lint` | Runs `tsc --noEmit`, catching type errors across components, data and the marking engine |
-| `npm test` | Runs the marking-engine regression suite: 122 assertions across 35 numbered cases |
+| `npm test` | Runs the marking-engine automated checks: 122 checks across 35 numbered cases |
 | `npm run build` | Produces the production bundle and catches bundler/import failures |
 | Browser pass | Every tab, filter, quiz size, lesson, mock format, modal and responsive breakpoint is exercised manually |
 | Content provenance | Verified questions carry source, verification and mark-scheme status fields |
 | Failure paths | WebGPU unavailable, invalid model JSON, expired sessions, failed Sheet pulls and missing drafts all degrade to a usable state |
 
-The marking engine has a real regression suite. `scripts/test-grading.ts` runs headlessly through `tsx` — no browser, no downloaded weights — because the rules that decide marks are deterministic TypeScript. It covers:
+The marking engine has real automated checks. `scripts/test-grading.ts` runs headlessly through `tsx` — no browser, no downloaded model weights — because the rules that decide marks live in plain TypeScript code. It covers:
 
-- causal-chain detection, including single-step versus developed two-step reasons;
+- consequence-chain detection, including single-step versus developed two-step reasons;
 - AO maxima for every paper and mark tier (`AO1:2`, `AO2:3`, `AO3:4`, `AO4:3` on 12-mark questions);
 - official Level 3 / Level 2 / Level 1 / Level 0 gating and the AO4-to-conclusion-audit sync;
-- anti-halo clamping when the model over-credits a weak second paragraph;
+- paragraph-by-paragraph clamping when the model over-credits a weak second paragraph;
 - 2-mark pure-knowledge definitions, including the `K:2` private-limited-company example;
-- duplicate-paragraph and repeated-point rejection at Jaccard `> 0.70`;
+- duplicate-paragraph and repeated-point rejection;
 - the mock Qwen `paragraphs[]` path for both conservative and full-credit audits.
 
-The suite is not decoration. Several of the fixes described above were caught by it rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the tests were what proved the displayed result still matched the rubric.
+The checks are not decoration. Several of the fixes described above were caught by them rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the checks were what proved the displayed result still matched the rubric.
 
-What is still missing is coverage outside the marking engine: the Sheet sync conflict policy, the authentication helpers, and the structural integrity of the 7,000+ question records. Those are the remaining test targets on the roadmap. The deterministic helpers are already exported and browser-free — `scanApplicationKeywords`, `scanEvaluationKeywords`, `checkIsExactOrSubstantialModelAnswer` and `checkKnowledgePointMatches` — so adding them is a matter of writing the cases, not untangling the code.
+To be honest about what is **not** covered yet: there are no automated checks for the Sheet sync conflict policy, the authentication helpers, or the integrity of the 7,000+ question records. Those are the remaining targets on the roadmap.
 
 ---
 
-## Release milestones
+## How this grew
 
 ### First release — 129 questions and a Google Sheet
 
@@ -794,7 +776,7 @@ Gamification arrived: Study Coins, streaks, a daily challenge, a weekly challeng
 
 ### Third release — the 6,000-question bank
 
-The 129-question bank was replaced with 6,000 Cambridge-style questions across six sections, split into six typed files. Cascading Section → Sub-topic filters, Wrong Only mode, wrong-question tracking and per-student `mcq_errors` arrived at the same time. The README was rewritten around the new scale.
+The 129-question bank was replaced with 6,000 Cambridge-style questions across six sections, split into six typed files. Cascading Section → Sub-topic filters, Wrong Only mode, wrong-question tracking and per-student `mcq_errors` arrived at the same time.
 
 ### The exam-room build — Paper 1, Paper 2 and mocks
 
@@ -802,11 +784,11 @@ The platform grew a written-answer studio: 240 Paper 1 scenario sets, 100 Paper 
 
 ### The feedback build — AO rules and a local examiner
 
-The marking engine was rebuilt around AO1–AO4. Deterministic keyword scans enforce application and evaluation before the model sees the answer. A local Qwen model through Transformers.js provides paragraph-level interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
+The marking engine was rebuilt around AO1–AO4. Keyword scans written in code enforce application and evaluation before the model sees the answer. A local Qwen model through Transformers.js provides paragraph-level interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
 
-### The examiner-hardening build — anti-halo, anti-repetition and deterministic Levels
+### The examiner-hardening build — paragraph-by-paragraph marking and coded Levels
 
-The first local examiner returned marks; this build made them defensible. Paragraph isolation removed the halo effect, the credit ledger removed repetition, and AO4 plus the Paper 2 Level bands moved entirely into TypeScript. The 2B tier was deleted in favour of a single Qwen 3 0.6B model, 2-mark definitions were locked to pure knowledge, and 12-mark results were rebuilt around the official Cambridge Level descriptors instead of paragraph arithmetic. The regression suite grew alongside each fix.
+The first local examiner returned marks; this build made them defensible. Each paragraph is marked separately with its own quote so answers cannot double-count points, the AO4 rules and the Paper 2 Level bands moved entirely into code, and the 2-mark definitions were locked to pure knowledge. The regression checks grew alongside each fix.
 
 ### The classroom build — lessons, accounts and visibility
 
@@ -816,7 +798,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 
 ## Roadmap
 
-- [x] Add regression tests for the marking rules, AO caps and Level gating (`npm test`).
+- [x] Add automated checks for the marking rules, AO caps and Level gating (`npm test`).
 - [ ] Extend automated coverage to the sync policy, auth helpers, fallback examiner and content integrity.
 - [x] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
@@ -824,7 +806,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - [ ] Add exportable progress reports for teachers and parents.
 - [ ] Run a formal accessibility audit and close the gaps.
 - [ ] Add more Paper 2 case studies beyond the current 100.
-- [ ] Improve the AI examiner's rubric awareness while keeping the deterministic guards.
+- [ ] Improve the AI examiner's rubric awareness while keeping the coded marking rules.
 
 ---
 
@@ -833,10 +815,12 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - **Cambridge IGCSE Business Studies (0264 / 0450)** — syllabus structure, assessment objectives and command-word expectations. EcBiz is independent and not endorsed by Cambridge.
 - **Borrington & Stimpson, *Cambridge IGCSE & O Level Business*, Sixth Edition** — chapter sequence used to organise the 24 lessons.
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
+- **Google Gemini** — used to generate the bulk practice question banks (MCQs and Paper 1/2-style practice) from Cambridge model answers, which I then checked and edited.
 - **Google Apps Script and Google Sheets** — the only persistence layer, chosen because external databases were not permitted.
 - **React, Vite, TypeScript, Tailwind CSS, Lucide, Motion and canvas-confetti** — the front-end stack.
 - **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B text decoder.
-- **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge and the confidence ratings all came from those conversations.
+- **AI coding tools** — used throughout to help write, refactor and debug the code. I made the product decisions, reviewed the code, and tested it.
+- **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge, the confidence ratings and most of the layout fixes all came from those conversations.
 
 ---
 
@@ -848,4 +832,4 @@ Official Cambridge syllabi, specimen papers and mark schemes remain the property
 
 ---
 
-Built by **Jayden Tan** for Cambridge IGCSE Business Studies students who, like me, just wanted enough practice to walk into the exam confident. If this helps you, drill one sub-topic a day — and pass.
+Built by **Jayden Tan**, a Year 11 IGCSE student, for other students who, like me, just wanted enough practice to walk into the exam confident. EcBiz has been tested with classmates and submitted to my school for review. If you find a mistake, flag it in the app or open an issue on GitHub — I would rather fix it than have a classmate learn the wrong thing.
