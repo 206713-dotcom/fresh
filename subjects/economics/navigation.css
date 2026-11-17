@@ -48,7 +48,9 @@
   min-width: 0;
 }
 
-.economics-links a, .economics-subjects {
+.economics-nav-actions { display: flex; justify-content: end; align-items: center; gap: 7px; }
+
+.economics-links a, .economics-subjects, #topic-search-open {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -61,21 +63,28 @@
   text-decoration: none;
 }
 
-.economics-links a:hover, .economics-subjects:hover { background: #f0f0e6; }
+.economics-links a:hover, .economics-subjects:hover, #topic-search-open:hover { background: #f0f0e6; }
 .economics-links a[aria-current="page"] { background: #e4eddb; color: #1c4534; }
 .economics-subjects { border: 1px solid #dce3d6; }
 .economics-subjects img { border-radius: 5px; }
+#topic-search-open { gap: 8px; color: #234232; background: #edf1e5; border-color: #dce3d6; }
+.search-icon { position: relative; width: 12px; height: 12px; margin-right: 2px; border: 1.6px solid currentColor; border-radius: 50%; }
+.search-icon::after { content: ''; position: absolute; width: 6px; height: 1.6px; background: currentColor; transform: rotate(45deg); right: -4px; bottom: -2px; border-radius: 2px; }
 
-@media (max-width: 860px) {
+@media (min-width: 971px) and (max-width: 1160px), (max-width: 374px) {
+  #topic-search-open { min-width: 42px; }
+  #topic-search-open span:last-child { display: none; }
+}
+@media (max-width: 970px) {
   :root { --economics-nav-height: 104px; }
   .economics-nav-inner {
     grid-template-columns: 1fr auto;
-    grid-template-areas: 'brand subjects' 'links links';
+    grid-template-areas: 'brand actions' 'links links';
     grid-template-rows: 56px auto;
     padding-bottom: 7px;
   }
   .economics-brand { grid-area: brand; }
-  .economics-subjects { grid-area: subjects; }
+  .economics-nav-actions { grid-area: actions; }
   .economics-links { grid-area: links; }
 }
 
@@ -87,7 +96,7 @@
   .economics-links a:nth-child(6) { grid-column: span 2; }
 }
 
-@media (max-height: 460px) and (max-width: 860px) {
+@media (max-height: 460px) and (max-width: 970px) {
   :root { --economics-nav-height: 0px; }
   .economics-nav { position: static; }
   .economics-nav-inner { min-height: 104px; }

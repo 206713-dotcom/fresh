@@ -128,11 +128,12 @@ function saveRevisionState(key, value) {
   }
 }
 
+function syllabusTopicLessons(code) {
+  return lessons.filter(lesson => syllabusNotes[lesson.id]?.codes.some(id => id.startsWith(code + '.')));
+}
+
 function revisionNotesLinks(code) {
-  return Object.entries(syllabusNotes).filter(([, note]) => note.codes.some(id => id.startsWith(code + '.')))
-    .map(([id]) => lessons.find(lesson => lesson.id === Number(id)))
-    .filter(Boolean)
-    .map(lesson => link(lesson.title, '#lesson/' + lesson.id)).join('');
+  return syllabusTopicLessons(code).map(lesson => link(lesson.title, '#lesson/' + lesson.id)).join('');
 }
 
 function revisionHeading(label, title, description) {
@@ -803,13 +804,14 @@ function revisionChecklist() {
     count + ' of ' + total + ' tasks complete</p></div>' +
     '<progress id="checklist-progress" aria-label="Checklist tasks complete" value="' + count + '" max="' + total + '"></progress>' +
     link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
-    '<nav class="checklist-jump" aria-labelledby="checklist-jump-title"><h2 id="checklist-jump-title">Jump to a chapter</h2><div class="row">' +
-    officialSyllabusChapters.map((chapter, i) => '<button type="button" data-checklist-target="checklist-chapter-' + i + '"><span aria-hidden="true">' + (i + 1) + '</span>' + escapeHtml(chapter.title) + '</button>').join('') +
-    '</div></nav><div id="syllabus-checklist">' + officialSyllabusChapters.map((chapter, i) =>
+    '<nav class="checklist-jump" aria-labelledby="checklist-jump-title"><div class="checklist-jump-heading"><h2 id="checklist-jump-title">Chapter progress</h2>' +
+    '<label class="checklist-filter"><input type="checkbox" id="checklist-unfinished"> Show unfinished topics only</label></div><div class="row">' +
+    officialSyllabusChapters.map((chapter, i) => '<button type="button" data-checklist-target="checklist-chapter-' + i + '"><span class="checklist-chapter-number" aria-hidden="true">' + (i + 1) + '</span><span><strong>' + escapeHtml(chapter.title) + '</strong><small class="checklist-chapter-tally"></small></span></button>').join('') +
+    '</div><p id="checklist-empty" role="status" hidden>All checklist topics are complete.</p></nav><div id="syllabus-checklist">' + officialSyllabusChapters.map((chapter, i) =>
       '<section class="panel checklist-chapter" id="checklist-chapter-' + i + '" tabindex="-1" aria-labelledby="checklist-heading-' + i + '"><h2 id="checklist-heading-' + i + '">' + escapeHtml(chapter.title) + '</h2>' +
       chapter.topics.map(topic => {
         const items = checklistOutcomes.filter(([code]) => code.startsWith(topic.code + '.'));
-        return '<details class="workbook-topic"><summary>' + topic.code + ' ' + escapeHtml(topic.title) + '</summary>' +
+        return '<details class="workbook-topic" id="checklist-topic-' + topic.code + '"><summary><span><span class="checklist-topic-code">' + topic.code + '</span> ' + escapeHtml(topic.title) + '</span><span class="checklist-topic-tally"></span></summary>' +
           '<ul>' + items.map(([code, wording]) =>
             '<li><div class="workbook-outcome"><strong>' + code + '</strong><div class="workbook-wording">' +
             escapeHtml(wording.replace(/ {3,}(?=[•–])/g, '\n').trim()) +
@@ -825,10 +827,43 @@ function revisionChecklist() {
     ).join('') + '</div>';
 }
 
-function setupRevisionChecklist() {
+function setupRevisionChecklist(selectedTopic) {
   const checklist = document.querySelector('#syllabus-checklist');
   if (!checklist) return;
-  document.querySelector('.checklist-jump').onclick = event => {
+  const jump = document.querySelector('.checklist-jump');
+  const filter = document.querySelector('#checklist-unfinished');
+  const progress = document.querySelector('#checklist-progress');
+  const chapters = [...checklist.querySelectorAll('.checklist-chapter')];
+  const chapterButtons = [...jump.querySelectorAll('[data-checklist-target]')];
+
+  function updateProgress() {
+    let completed = 0;
+    chapters.forEach((chapter, index) => {
+      let chapterDone = 0;
+      let chapterTotal = 0;
+      chapter.querySelectorAll('.workbook-topic').forEach(topic => {
+        const boxes = [...topic.querySelectorAll('input')];
+        const done = boxes.filter(box => box.checked).length;
+        const finished = done === boxes.length;
+        const tally = topic.querySelector('.checklist-topic-tally');
+        tally.textContent = finished ? 'Complete' : done + '/' + boxes.length + ' done';
+        tally.classList.toggle('is-complete', finished);
+        topic.hidden = filter.checked && finished;
+        chapterDone += done;
+        chapterTotal += boxes.length;
+      });
+      const button = chapterButtons[index];
+      const tally = button.querySelector('.checklist-chapter-tally');
+      tally.textContent = chapterDone + '/' + chapterTotal + ' tasks done';
+      chapter.hidden = button.hidden = filter.checked && chapterDone === chapterTotal;
+      completed += chapterDone;
+    });
+    progress.value = completed;
+    document.querySelector('#checklist-count').textContent = completed + ' of ' + progress.max + ' tasks complete';
+    document.querySelector('#checklist-empty').hidden = !filter.checked || completed !== progress.max;
+  }
+
+  jump.onclick = event => {
     const button = event.target.closest('[data-checklist-target]');
     if (!button) return;
     const chapter = document.getElementById(button.dataset.checklistTarget);
@@ -840,11 +875,23 @@ function setupRevisionChecklist() {
     const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
     document.querySelector('#revision-save-status').textContent = '';
     saveRevisionState(checklistKey, checked);
-    const progress = document.querySelector('#checklist-progress');
-    progress.value = checked.length;
-    document.querySelector('#checklist-count').textContent =
-      checked.length + ' of ' + progress.max + ' tasks complete';
+    updateProgress();
+    if (event.target.closest('.workbook-topic').hidden) {
+      (checklist.querySelector('.workbook-topic:not([hidden]) summary') || filter).focus();
+    }
   };
+  filter.onchange = updateProgress;
+  updateProgress();
+
+  const topic = document.getElementById('checklist-topic-' + selectedTopic);
+  if (topic) {
+    topic.open = true;
+    requestAnimationFrame(() => {
+      if (!topic.isConnected) return;
+      topic.querySelector('summary').focus({ preventScroll: true });
+      topic.scrollIntoView({ block: 'start' });
+    });
+  }
 }
 
 const revisionRoutes = {

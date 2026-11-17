@@ -7,9 +7,9 @@
   <meta name="description" content="An independent revision workspace for Cambridge IGCSE Economics 0455.">
   <title>Economics · EcBiz</title>
   <link rel="icon" href="../fresh.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="economics/style.css?v=20261117-overview">
-  <link rel="stylesheet" href="economics/navigation.css?v=1">
-  <link rel="stylesheet" href="economics/revision-tools.css?v=4">
+  <link rel="stylesheet" href="economics/style.css?v=20261117-topics">
+  <link rel="stylesheet" href="economics/navigation.css?v=2">
+  <link rel="stylesheet" href="economics/revision-tools.css?v=5">
   <script defer src="economics/catalog.js"></script>
   <script defer src="economics/lesson-points.js"></script>
   <script defer src="economics/flashcard-decks.js"></script>
@@ -19,9 +19,10 @@
   <script defer src="economics/note-visuals.js"></script>
   <script defer src="economics/syllabus-notes.js"></script>
   <script defer src="economics/syllabus-visuals.js"></script>
-  <script defer src="economics/app.js?v=20261117-overview"></script>
+  <script defer src="economics/app.js?v=20261117-topics"></script>
   <script defer src="economics/local-marker.js?v=trained-6"></script>
-  <script defer src="economics/revision-lab.js?v=20261117-overview"></script>
+  <script defer src="economics/revision-lab.js?v=20261117-topics"></script>
+  <script defer src="economics/topic-search.js?v=1"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -40,10 +41,25 @@
         <a data-section="revision" href="#revision">Revision tools</a>
         <a href="economics-games.html#games">Games</a>
       </nav>
-      <a class="economics-subjects" href="../index.html#subjects"><img src="../fresh.svg" width="20" height="20" alt=""> All subjects</a>
+      <div class="economics-nav-actions">
+        <button type="button" id="topic-search-open" aria-label="Find a topic" aria-haspopup="dialog" aria-keyshortcuts="/">
+          <span class="search-icon" aria-hidden="true"></span><span>Find a topic</span>
+        </button>
+        <a class="economics-subjects" href="../index.html#subjects"><img src="../fresh.svg" width="20" height="20" alt=""> All subjects</a>
+      </div>
     </div>
   </header>
   <main id="main" tabindex="-1"></main>
+  <dialog id="topic-search" aria-labelledby="topic-search-title">
+    <div class="topic-search-heading">
+      <h2 id="topic-search-title">Find an Economics topic</h2>
+      <form method="dialog"><button type="submit" aria-label="Close topic search">×</button></form>
+    </div>
+    <label class="topic-search-field" for="topic-search-input">Search by topic or syllabus code</label>
+    <input type="search" id="topic-search-input" placeholder="Try opportunity cost, PED or 4.7" autocomplete="off" autofocus>
+    <p id="topic-search-status" role="status"></p>
+    <ol id="topic-search-results" aria-label="Search results"></ol>
+  </dialog>
   <div id="local-marking-controls" class="wrap">
     <section id="marking-model" aria-label="Local AI marking" hidden>
       <button type="button" class="primary">Download local AI</button>

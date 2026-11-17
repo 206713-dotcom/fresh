@@ -104,10 +104,17 @@ function lesson(id, cardsMode) {
   if(!l)return library();
   const cards=flashcardDecks[id];
   const position=lessons.findIndex(item=>item.id===id);
+  const practiceTopic = syllabusNotes[id]?.codes[0]?.split('.').slice(0, 2).join('.');
+  const practiceHref = practiceTopic ? '#practice/topic/' + practiceTopic : '#practice/' + l.chapter;
+  const studyTabs = cards ? `<nav class="lesson-study-tabs tabs" aria-label="Study this lesson">
+    ${link('▤  Revision notes', '#lesson/' + id)}
+    ${link('▣  Flashcards · ' + cards.length, '#lesson/' + id + '/cards')}
+    ${link(practiceTopic ? 'Practice this topic →' : 'Chapter practice →', practiceHref)}
+  </nav>` : '';
   const sections=[['note-overview','The explanation'],...(syllabusNotes[id]?[['note-syllabus','Syllabus detail']]:[]),['note-key-points','Key points to remember'],...(workedNotes[id]?[['note-worked',workedNotes[id][0]]]:[])];
   const sibling=(item,direction)=>item?'<a class="lesson-sibling" href="#lesson/'+item.id+(cardsMode?'/cards':'')+'"><small>'+direction+'</small><span>'+escapeHtml(item.title)+'</span></a>':'<span></span>';
   return '<p class="crumb"><a href="#library">Notes library</a><span>/</span><a href="#chapter/'+l.chapter+'">'+escapeHtml(catalog[l.chapter].title)+'</a></p><header class="lesson-heading"><p class="eyebrow">'+(l.chapter<6?'Chapter '+pad(l.chapter+1):'Exam skills')+' · '+(cardsMode?'Active recall':'Revision notes')+'</p><h1>'+escapeHtml(l.title)+'</h1><p>'+(cardsMode?'A question at a time. Recall the answer, then turn the card to check.':'Read at your own pace. Follow the explanation, explore the diagrams and keep the key ideas close.')+'</p></header>'+
-    (cards?'<div class="lesson-study-tabs tabs">'+link('▤  Revision notes','#lesson/'+id)+link('▣  Flashcards · '+cards.length,'#lesson/'+id+'/cards')+'</div>'+(cardsMode?'<div class="recall-layout"><section class="panel" id="deck"></section><aside class="recall-guide"><span class="mini-icon" aria-hidden="true">✦</span><p class="eyebrow">Make it stick</p><h2>Pause. Recall.<br>Then reveal.</h2><ol><li>Read the prompt.</li><li>Form your answer before flipping.</li><li>Check it, then move to the next card.</li></ol>'+link('Revisit the notes →','#lesson/'+id,'text-link')+'</aside></div>':'<div class="note-layout">'+revisionNotes(id)+'<aside class="study-aside"><p class="eyebrow">In this lesson</p><nav aria-label="On this page">'+sections.map(([target,title],i)=>'<button type="button" data-note-target="'+target+'"><span>'+pad(i+1)+'</span>'+escapeHtml(title)+'</button>').join('')+'</nav><div class="aside-recall"><span class="mini-icon" aria-hidden="true">▣</span><h2>Know it?<br>Test your recall.</h2><p>'+cards.length+' cards to help you remember this lesson.</p>'+link('Study flashcards →','#lesson/'+id+'/cards','button primary')+'</div>'+link('Practise this chapter ↗','#practice/'+l.chapter,'text-link')+'</aside></div>'):'')+
+    (cards?studyTabs+(cardsMode?'<div class="recall-layout"><section class="panel" id="deck"></section><aside class="recall-guide"><span class="mini-icon" aria-hidden="true">✦</span><h2>Pause. Recall.<br>Then reveal.</h2><ol><li>Read the prompt.</li><li>Form your answer before flipping.</li><li>Check it, then move to the next card.</li></ol>'+link('Revisit the notes →','#lesson/'+id,'text-link')+'</aside></div>':'<div class="note-layout">'+revisionNotes(id)+'<aside class="study-aside"><p class="eyebrow">In this lesson</p><nav aria-label="On this page">'+sections.map(([target,title],i)=>'<button type="button" data-note-target="'+target+'"><span>'+pad(i+1)+'</span>'+escapeHtml(title)+'</button>').join('')+'</nav><div class="aside-recall"><span class="mini-icon" aria-hidden="true">▣</span><h2>Know it?<br>Test your recall.</h2><p>'+cards.length+' cards to help you remember this lesson.</p>'+link('Study flashcards →','#lesson/'+id+'/cards','button primary')+'</div></aside></div>'):'')+
     '<div class="lesson-end"><div><span class="eyebrow">Keep exploring</span><p>Build on what you have just studied.</p></div>'+link('Source lesson on Save My Exams ↗',l.url||notesUrl,'text-link')+'</div><nav class="lesson-pagination" aria-label="Adjacent lessons">'+sibling(lessons[position-1],'← Previous lesson')+sibling(lessons[position+1],'Next lesson →')+'</nav>';
 }
 function deckGallery(query='', chapterIndex='') {
@@ -163,9 +170,18 @@ function setupDeck(id) {
   };
   update();
 }
+function practicePreset(id, mode) {
+  const match = id === 'topic' ? questions.find(question => question.topic === mode) : undefined;
+  return {
+    chapterIndex: match?.c ?? (id && /^[0-5]$/.test(id) ? Number(id) : null),
+    paper: id === 'mcq' || id === 'structured' ? id : '',
+    topic: match?.topic ?? '',
+  };
+}
+
 function practice(chapterIndex) {
   const expanded = matchMedia('(min-width: 901px)').matches ? ' open' : '';
-  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p class="muted">Choose a chapter or topic, then pick a question from the list.</p></header><div id="practice-marking"></div>'+
+  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a></header><div id="practice-marking"></div>'+
     '<details class="practice-filters"'+expanded+'><summary>Filter questions</summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
@@ -173,7 +189,7 @@ function practice(chapterIndex) {
     '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
     '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
-function setupPractice(paper) {
+function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
   const topic=document.querySelector('#filter-topic');
@@ -186,12 +202,15 @@ function setupPractice(paper) {
   const questionSet=document.querySelector('#filter-set');
   const list=document.querySelector('#question-list');
   const listPages=document.querySelector('#list-pages');
+  const context = document.querySelector('#practice-context');
+  const checklistLink = document.querySelector('#practice-checklist');
   const filterKey='ecbiz-practice-filters';
   let savedFilters={};
-  if (!paper) {
+  const useSavedFilters = !paper && !initialTopic;
+  if (useSavedFilters) {
     try {savedFilters=JSON.parse(sessionStorage.getItem(filterKey))||{}} catch {}
   }
-  if(!location.hash.split('/')[1])chapter.value=savedFilters.chapter||'';
+  if (chapterIndex === null) chapter.value = savedFilters.chapter || '';
   type.value=paper||savedFilters.type||'';
   marks.value=savedFilters.marks||'';
   search.value=savedFilters.search||'';
@@ -217,7 +236,10 @@ function setupPractice(paper) {
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
     document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
-    if (!paper) {
+    context.textContent = topic.value || type.value ? topicLabel + ' · ' + typeLabel : 'Choose a chapter or topic, then pick a question from the list.';
+    checklistLink.hidden = !topic.value;
+    if (topic.value) checklistLink.href = '#revision-checklist/' + topic.value;
+    if (useSavedFilters) {
       try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
     }
     renderNavigator();
@@ -241,7 +263,8 @@ function setupPractice(paper) {
   }
   function reset() {page=0;renderQuestions()}
   renderTopics();
-  if([...topic.options].some(option=>option.value===savedFilters.topic))topic.value=savedFilters.topic;
+  const selectedTopic = initialTopic || savedFilters.topic;
+  if ([...topic.options].some(option => option.value === selectedTopic)) topic.value = selectedTopic;
   chapter.onchange=()=>{renderTopics();reset()};
   topic.onchange=type.onchange=marks.onchange=questionSet.onchange=reset;
   search.oninput=reset;
@@ -363,7 +386,8 @@ function render(autoMark = true) {
   const [page='home', id, mode] = location.hash.slice(1).split('/');
   main.classList.toggle('practice-page',page==='practice');
   main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
-  const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(id===undefined?null:Number(id),Number(mode)),syllabus:syllabusGuide,sources};
+  const preset = page === 'practice' ? practicePreset(id, mode) : null;
+  const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
   const active = page === 'glossary' ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
   setActiveSection(Object.hasOwn(routes, page) ? active : 'home');
@@ -383,7 +407,7 @@ function render(autoMark = true) {
   setupDeck(page==='glossary'?'glossary':Number(id));
   if (page === 'practice') {
     main.querySelector('#practice-marking').replaceWith(markingControls);
-    setupPractice(id === 'mcq' || id === 'structured' ? id : '');
+    setupPractice(preset);
   }
 }
 window.addEventListener('hashchange', () => {

@@ -147,10 +147,15 @@
 .checklist-progress p, .checklist-chapter-count { margin: 0; color: var(--tool-dark); }
 .revision-workspace .checklist-progress { max-width: none; background: #eef2e6; }
 .checklist-jump { margin: 0 0 23px; }
-.checklist-jump h2 { margin: 0 0 10px; font: 400 25px/1.2 Georgia, serif; }
+.checklist-jump-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 13px; }
+.checklist-jump h2 { margin: 0; font: 400 25px/1.2 Georgia, serif; }
+.checklist-filter { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font-weight: 700; font-size: 13px; padding-block: 8px; }
+.checklist-filter input { width: 16px; height: 16px; }
 .checklist-jump .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.checklist-jump button { justify-content: start; gap: 8px; text-align: left; }
-.checklist-jump button span { color: var(--tool-accent); font-variant-numeric: tabular-nums; }
+.checklist-jump button { justify-content: start; align-items: center; gap: 10px; text-align: left; min-height: 70px; }
+.checklist-chapter-number { display: grid; place-items: center; flex: 0 0 28px; min-height: 28px; border-radius: 7px; color: var(--tool-dark); background: var(--tool-soft); }
+.checklist-chapter-tally { display: block; margin-top: 4px; color: #53675a; font-size: 11px; font-weight: 650; }
+.checklist-jump button[hidden], .checklist-chapter[hidden], .workbook-topic[hidden] { display: none; }
 .revision-workspace .checklist-chapter { max-width: none; scroll-margin-top: calc(var(--economics-nav-height) + 16px); }
 .checklist-chapter ul { list-style: none; padding: 0; margin: 12px 0 0; }
 .checklist-chapter li { padding: 10px 0; border-top: 1px solid var(--line); }
@@ -170,7 +175,13 @@
 }
 
 .revision-workspace .checklist-chapter .workbook-topic { margin: 0; padding: 12px 0; border-top: 1px solid var(--line); }
-.workbook-topic > summary { font-size: 15px; font-weight: 700; }
+.workbook-topic { scroll-margin-top: calc(var(--economics-nav-height) + 16px); }
+.workbook-topic > summary { display: flex; align-items: baseline; gap: 9px; font-size: 15px; font-weight: 700; }
+.workbook-topic > summary::after { content: '▾'; color: var(--tool-accent); }
+.workbook-topic[open] > summary::after { transform: rotate(180deg); }
+.checklist-topic-code { display: inline-flex; margin-right: 4px; color: var(--tool-accent); }
+.checklist-topic-tally { margin-left: auto; flex-shrink: 0; padding: 3px 7px; color: #4c6153; background: #edf0e7; border-radius: 7px; font-size: 11px; white-space: nowrap; }
+.checklist-topic-tally.is-complete { color: #21513e; background: #d8ebd4; }
 .workbook-outcome { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; }
 .workbook-wording { white-space: pre-line; overflow-wrap: anywhere; }
 .workbook-ticks { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 4px 60px; font-size: 13px; }

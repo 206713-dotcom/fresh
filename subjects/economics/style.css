@@ -235,6 +235,7 @@ details.group[open] > summary { margin-bottom: 10px }
 
 .practice-heading { padding: clamp(19px, 3vw, 38px); border-radius: 18px; background: #e9eee1; }
 .practice-heading p { margin-bottom: 0; }
+#practice-checklist:not([hidden]) { display: inline-block; margin-top: 11px; }
 #local-marking-controls:not(:has(#marking-model:not([hidden]), #marking-status:not([hidden]))) { display: none; }
 main #local-marking-controls { width: 100%; margin: 16px 0; padding: 0; }
 #marking-model:not([hidden]) { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; border: 1px solid #d5dfce; border-radius: 12px; background: #edf2e7; }
@@ -482,6 +483,37 @@ main #local-marking-controls { width: 100%; margin: 16px 0; padding: 0; }
 .revision-tool-card p { color: var(--muted); font-size: 13px; }
 .revision-tool-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--card-accent); color: #173e3e; font-size: 21px; }
 .revision-tool-arrow { justify-self: end; color: #1c6755; font-size: 19px; }
+
+#topic-search {
+  width: min(calc(100% - 24px), 590px);
+  max-width: none;
+  max-height: min(80dvh, 680px);
+  margin: clamp(18px, 6vh, 64px) auto auto;
+  padding: clamp(15px, 3.4vw, 28px);
+  color: var(--ink);
+  background: #fffdf7;
+  border: 1px solid #d2decb;
+  border-radius: 21px;
+  box-shadow: 0 25px 80px #142d3166;
+}
+#topic-search[open] { display: flex; flex-direction: column; }
+#topic-search::backdrop { background: #172e26a8; }
+.topic-search-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; }
+.topic-search-heading h2 { margin: 0; font: 400 clamp(24px, 4vw, 31px)/1.2 Georgia, serif; }
+.topic-search-heading button { min-width: 42px; padding: 0; font-size: 23px; line-height: 1; }
+.topic-search-field { margin-bottom: 7px; color: var(--muted); font-weight: 700; font-size: 13px; }
+#topic-search-input { width: 100%; min-height: 46px; border-color: #8ea99a; flex-shrink: 0; }
+#topic-search-status { margin: 15px 0 8px; color: var(--muted); font-size: 13px; }
+#topic-search-results { display: grid; gap: 8px; overflow: auto; overscroll-behavior: contain; padding: 4px; margin: -4px; list-style: none; }
+#topic-search-results li { padding: 12px; border: 1px solid #dce4d6; border-radius: 13px; background: #f4f5ec; }
+.topic-result-title { display: flex; align-items: baseline; gap: 8px; margin-bottom: 9px; }
+.topic-result-title > span { color: #38624b; font-size: 13px; font-variant-numeric: tabular-nums; }
+.topic-result-title strong { font: 700 19px/1.2 Georgia, serif; }
+.topic-result-links { display: flex; gap: 5px; flex-wrap: wrap; }
+.topic-result-links .button { flex: 0 1 auto; min-height: 38px; padding: 5px 9px; }
+@media (max-width: 410px) {
+  .topic-result-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
   .revision-tool-groups { grid-template-columns: 1fr; }
   .revision-tool-group { grid-template: auto 1fr / repeat(2, minmax(0, 1fr)); }
