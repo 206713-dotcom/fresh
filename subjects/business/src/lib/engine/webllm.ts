@@ -608,6 +608,8 @@ async function loadSpecificTier(
       worker.onerror = null;
     };
     const fail = (message: string) => {
+      // Surface the hidden WebGPU/worker failure in the main-thread console too.
+      console.error(`[QwenWebGPU] Worker request ${id} failed:`, message);
       finish();
       reject(new WebLLMEvaluationError(message));
     };
