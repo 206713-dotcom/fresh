@@ -69,7 +69,7 @@ BCT should choose Direct technical interviews with bioprocess directors. While i
 function createMockWebLLMEngine(tier: "0.6b", jsonPayload: Record<string, unknown>) {
   return {
     tier,
-    modelId: "onnx-community/Qwen3-0.6B-ONNX-OPT",
+    modelId: "SemiLunarz/qwen3-0.6b-igcse-0264-onnx",
     chat: {
       completions: {
         create: async () => ({

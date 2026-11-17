@@ -311,7 +311,7 @@ Getting a 0.6B (very small) model to behave like a Cambridge examiner was not on
 
 **The problem.** External APIs meant server cost, rate limits and keys that could be exposed. Supporting a second, larger model also doubled the download and added memory pressure — and in practice the bigger model did not remove the need for the coded marking rules, it just hid their absence behind a heavier download.
 
-**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the larger 2B model completely, and standardised on **Qwen 3 0.6B** (`onnx-community/Qwen3-0.6B-ONNX-OPT`). The model loads through `AutoModelForCausalLM`, weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the built-in Instant examiner instead of showing a dead end.
+**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the larger 2B model completely, and standardised on **Qwen 3 0.6B** — now the fine-tuned `SemiLunarz/qwen3-0.6b-igcse-0264-onnx` (single self-contained `onnx/model_q4f16.onnx`, ~535 MB). The model loads through the `text-generation` pipeline (`dtype: 'q4f16'`, `device: 'webgpu'`) with `enable_thinking: false`, weight caching is enabled with `env.useBrowserCache = true`, and generation is 4-bit (`q4f16`). Devices without WebGPU fall back to the built-in Instant examiner instead of showing a dead end.
 
 **Why it mattered.** One model means one download (~380 MB), one cache key and one behaviour to test. The app has to earn its accuracy in code instead of buying it with a bigger download — which turned out to be the more reliable design anyway.
 

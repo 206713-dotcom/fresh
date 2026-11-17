@@ -1,7 +1,7 @@
-import { AutoModelForCausalLM, AutoTokenizer, env } from "@huggingface/transformers";
+import { pipeline, env } from "@huggingface/transformers";
+import type { TextGenerationPipeline } from "@huggingface/transformers";
 
-let model: Awaited<ReturnType<typeof AutoModelForCausalLM.from_pretrained>>;
-let tokenizer: Awaited<ReturnType<typeof AutoTokenizer.from_pretrained>>;
+let grader: TextGenerationPipeline | null = null;
 
 type Request =
   | { id: number; modelId: string }
@@ -20,12 +20,12 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
 
       const adapter = await navigator.gpu?.requestAdapter();
       if (!adapter) throw new Error("WebGPU is unavailable in the AI worker.");
-      const dtype = adapter.features.has("shader-f16") ? "q4f16" : "q4";
-      const progress_callback: NonNullable<Parameters<typeof AutoTokenizer.from_pretrained>[1]>["progress_callback"] =
-        (progress) => self.postMessage({ id, progress });
-      tokenizer = await AutoTokenizer.from_pretrained(data.modelId, { progress_callback });
-      model = await AutoModelForCausalLM.from_pretrained(data.modelId, {
-        dtype,
+      const progress_callback: NonNullable<
+        Parameters<typeof pipeline>[2]
+      >["progress_callback"] = (progress: any) => self.postMessage({ id, progress });
+      // Single self-contained onnx/model_q4f16.onnx (~535 MB) — no external data format needed.
+      grader = await pipeline("text-generation", data.modelId, {
+        dtype: "q4f16",
         device: "webgpu",
         progress_callback,
       });
@@ -33,39 +33,28 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
       return;
     }
 
+    if (!grader) throw new Error("The Qwen WebGPU grader is not loaded yet.");
+
+    const messages = [
+      { role: "system" as const, content: data.systemPrompt },
+      { role: "user" as const, content: data.userPrompt },
+    ];
     const templateOptions = {
       tokenize: false as const,
       add_generation_prompt: true,
       enable_thinking: false,
     };
-    const prompt = tokenizer.apply_chat_template([
-      { role: "system", content: data.systemPrompt },
-      { role: "user", content: data.userPrompt },
-    ], templateOptions);
+    const prompt = grader.tokenizer.apply_chat_template(messages, templateOptions);
     if (typeof prompt !== "string") throw new Error("The Qwen chat template did not return text.");
 
-    const inputs = tokenizer(prompt, { return_tensor: true });
-    let outputs: Awaited<ReturnType<typeof model.generate>> | undefined;
-    let generated;
-    try {
-      outputs = await model.generate({
-        ...inputs,
-        max_new_tokens: data.maxNewTokens,
-        do_sample: false,
-        return_dict_in_generate: false,
-      });
-      if (!("slice" in outputs)) throw new Error("Qwen did not return generated tokens.");
-      const promptLength = inputs.input_ids.dims[1];
-      if (outputs.dims[1] <= promptLength) throw new Error("Qwen returned an empty assessment.");
-      generated = outputs.slice(null, [promptLength, outputs.dims[1]]);
-      const [value] = tokenizer.batch_decode(generated, { skip_special_tokens: true });
-      self.postMessage({ id, value });
-    } finally {
-      inputs.input_ids.dispose();
-      inputs.attention_mask?.dispose();
-      generated?.dispose();
-      if (outputs && "dispose" in outputs) outputs.dispose();
-    }
+    const output = await grader(prompt, {
+      max_new_tokens: 350,
+      do_sample: false,
+      return_full_text: false,
+    });
+    const rawGrading = output[0].generated_text;
+    if (typeof rawGrading !== "string") throw new Error("Qwen did not return generated text.");
+    self.postMessage({ id, value: rawGrading });
   } catch (error) {
     self.postMessage({ id, error: error instanceof Error ? error.message : String(error) });
   }

@@ -23,12 +23,12 @@ export interface QwenModelConfig {
 export const QWEN_MODELS: Record<QwenModelTier, QwenModelConfig> = {
   "0.6b": {
     tier: "0.6b",
-    id: "onnx-community/Qwen3-0.6B-ONNX-OPT",
+    id: "SemiLunarz/qwen3-0.6b-igcse-0264-onnx",
     label: "Qwen 3 0.6B (Local WebGPU)",
     shortLabel: "Qwen 3 0.6B",
     activeLabel: "Qwen 3 0.6B Active",
     footerLabel: "Qwen 3 0.6B AI",
-    approxDownloadSize: "about 360–405 MB",
+    approxDownloadSize: "~535 MB",
   },
 };
 
@@ -106,9 +106,10 @@ export function getDeviceTierInfo(): DeviceTierInfo {
 }
 
 const PREF_STORAGE_KEY = "ecbiz_qwen_preferred_tier";
-// Versioned cache keys so legacy WebLLM Qwen2.5 flags don't trigger unintended auto-downloads
-const CACHE_STORAGE_KEY = "ecbiz_qwen3_cached_v1";
-const CACHE_TIER_KEY = "ecbiz_qwen3_cached_tier_v1";
+// Versioned cache keys so a stale cached flag from the previous base model never
+// triggers an unintended background download of the ~535 MB fine-tuned model.
+const CACHE_STORAGE_KEY = "ecbiz_qwen3_cached_v2";
+const CACHE_TIER_KEY = "ecbiz_qwen3_cached_tier_v2";
 
 export function getPreferredQwenTier(): QwenTierPreference {
   if (typeof window === "undefined") return "auto";
@@ -127,8 +128,8 @@ export function isQwenCachedLocally(): boolean {
   if (typeof window === "undefined") return false;
   if (localStorage.getItem(CACHE_STORAGE_KEY) !== "true") return false;
   const savedTier = localStorage.getItem(CACHE_TIER_KEY);
-  // Ignore a legacy cache entry from the removed 2B tier so we never trigger a
-  // silent re-download: only the 0.8B weights are considered cached.
+  // Ignore any legacy cache entry so we never trigger a silent re-download: only the
+  // current 0.6B fine-tuned weights (SemiLunarz/qwen3-0.6b-igcse-0264-onnx) count as cached.
   return !savedTier || savedTier === "0.6b";
 }
 
@@ -500,8 +501,11 @@ export async function disposeWebLLMEngine(): Promise<void> {
 }
 
 /**
- * Runs fast JSON text generation via @huggingface/transformers AutoModelForCausalLM
+ * Runs fast JSON text generation via @huggingface/transformers' text-generation pipeline
  * with enable_thinking: false and a safety timeout so WebGPU stalls never freeze marking.
+ * Note: max_new_tokens is fixed at 350 inside qwen.worker.ts (deterministic fine-tuned
+ * SemiLunarz/qwen3-0.6b-igcse-0264-onnx config); the maxNewTokens argument is retained
+ * for API compatibility and is not forwarded to the pipeline.
  */
 export async function runQwenChatCompletion(opts: {
   engine: QwenEngineWrapper | any;
