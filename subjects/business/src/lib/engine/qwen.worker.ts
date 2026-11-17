@@ -39,13 +39,13 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
       { role: "system" as const, content: data.systemPrompt },
       { role: "user" as const, content: data.userPrompt },
     ];
-    const templateOptions = {
-      tokenize: false as const,
-      add_generation_prompt: true,
-      enable_thinking: false,
-    };
-    const prompt = grader.tokenizer.apply_chat_template(messages, templateOptions);
-    if (typeof prompt !== "string") throw new Error("The Qwen chat template did not return text.");
+    // tokenizer_config.json for SemiLunarz/qwen3-0.6b-igcse-0264-onnx has no chat_template,
+    // so render Qwen3 ChatML directly. The empty <think> block mirrors enable_thinking: false,
+    // making the model emit the grading block immediately.
+    const prompt =
+      messages
+        .map((m) => `<|im_start|>${m.role}\n${m.content}<|im_end|>\n`)
+        .join("") + "<|im_start|>assistant\n<think>\n\n</think>\n\n";
 
     const output = await grader(prompt, {
       max_new_tokens: 350,
