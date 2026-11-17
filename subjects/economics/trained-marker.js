@@ -291,12 +291,96 @@ async function hasDistinctDiscussionEvidence(question, answer) {
   return supporting && opposing && !supporting.includes(opposing) && !opposing.includes(supporting);
 }
 
-async function markDiscussion(question, answer, report) {
-  report('Marking on your device · checking relevance…');
-  const relevance = await discussionAssessment(question, answer,
+const relevanceStopWords = new Set(('a an the to and or but for of on in at is are was were be been it they them that this these those will would should could can may might by as with about from into when if whether so not does do more less higher lower how which discuss decision proposal economic economics benefits benefit disadvantages disadvantage effects effect outcomes outcome increase increasing decrease decreasing reduce reducing lead leads cause causes make makes people country government firms households market policy policies relevant credit mark marks arguments argument development answer earn maximum explain change changes likely other there their while have has had some all').split(' '));
+const relevanceEconomicWords = new Set(('allocative elasticity fiscal macroeconomic microeconomic welfare efficiency growth inflation productivity employment unemployment wages income GDP scarcity opportunity incentives cost costs demand supply tax subsidy tariffs exports imports currency exchange investment capital resources consumers producers spending recession prices price output distribution trade wages borrowing lending savings labour technology customer producer revenue profit losses transport food treatment health illness disease jobs education training competition pollution infrastructure services rent enterprise entrepreneurship industry budget spending inequality poverty bank').toLowerCase().split(' '));
+const relevanceUnrelatedWords = new Set(('penguin penguins dragon dragons pizza banana bananas unicorn unicorns purple triangle wizard wizards minecraft football soccer basketball moon cheese homework alien aliens volcano sandwich gummy rubber spaghetti giraffe kangaroo rainbow goalkeeper goalkeeper guitar telescope broccoli dinosaur walrus space spaceship photographs recipe recipe cartoon keyboard bacon').split(' '));
+const relevanceJargon = /\b(?:wider economic context|stakeholder welfare|policy environment|fiscal pressures|complex policy|socioeconomic perspective|strategic reallocation|a range of factors|there are (?:both )?(?:benefits|disadvantages)|macroeconomic stability|economic implications|allocative efficiency|economic framework|economic considerations)\b/gi;
+
+function relevanceStem(token) {
+  return token.replace(/ies$/, 'y').replace(/(?:ing|ed|s)$/, '');
+}
+
+function relevanceTokens(text) {
+  return (text.toLowerCase().match(/[a-z]+/g) || []).filter(token =>
+    token.length > 2 && !relevanceStopWords.has(token)).map(relevanceStem);
+}
+
+function relevanceFeatures(question, answer) {
+  const tokens = answer.toLowerCase().match(/[a-z]+/g) || [];
+  const content = new Set(relevanceTokens(answer));
+  const questionWords = new Set(relevanceTokens(question.prompt + ' ' + (question.context || '')));
+  const scheme = (question.scheme || '').replace(/^Maximum[^\n]+\n/, '');
+  const schemeWords = new Set(relevanceTokens(scheme));
+  const overlap = set => [...content].filter(word => set.has(word)).length;
+  const direct = overlap(questionWords);
+  const indirect = overlap(schemeWords);
+  const economic = tokens.filter(word => relevanceEconomicWords.has(word)).length;
+  const unrelated = tokens.filter(word => relevanceUnrelatedWords.has(word)).length;
+  const odd = tokens.filter(word => /[bcdfghjklmnpqrstvwxyz]{5}|([a-z])\1{3}/.test(word)).length;
+  const characters = answer.replace(/\s/g, '').length;
+  const letters = (answer.match(/\p{L}/gu) || []).length;
+  const count = Math.max(tokens.length, 1);
+  return [
+    Math.min(direct, 5), Math.min(indirect, 10) / 2, Math.min(economic, 8) / 2,
+    direct / Math.max(content.size, 1), indirect / Math.max(content.size, 1),
+    Math.min(unrelated, 5), unrelated / count, odd / count,
+    1 - letters / Math.max(characters, 1), Math.min(count, 30) / 10,
+    Math.min((answer.match(relevanceJargon) || []).length, 5),
+    /\b(?:because|therefore|so|means|causes?|leads?|result|when|which|giving|allowing)\b/i.test(answer) ? 1 : 0,
+    new Set(tokens).size / count,
+    /\b(?:ignore (?:all |the |previous )*instructions|give (?:me )?(?:full marks|[0-9]+ marks)|return score)\b/i.test(answer) ? 1 : 0
+  ];
+}
+
+// Fitted on 1694 labelled question/passage pairs. Only reject high-confidence negatives.
+const discussionRelevanceWeights = [0.313949, 1.614263, 0.087613, 0.035434, 0.457894, -0.101952, -0.010772, -0.009440, -0.013555, 0.084338, -0.049711, 0.170770, -0.031070, -0.009290];
+const discussionRelevanceBias = -4.858906;
+
+function discussionRelevanceProbability(features) {
+  const logit = features.reduce((score, feature, index) =>
+    score + feature * discussionRelevanceWeights[index], discussionRelevanceBias);
+  return 1 / (1 + Math.exp(-logit));
+}
+
+async function filterDiscussionAnswer(question, answer) {
+  const paragraphs = answer.split(/\n\s*\n/);
+  const cleaned = [];
+  let checks = 0;
+  for (const paragraph of paragraphs) {
+    const passages = paragraph.split(/(?<=[.!?])\s+(?=[A-Z0-9])|\n+/).map(value => value.trim()).filter(Boolean);
+    const retained = [];
+    for (const passage of passages) {
+      const features = relevanceFeatures(question, passage);
+      const probability = discussionRelevanceProbability(features);
+      const [questionOverlap, , , , , unrelatedWords, , , , length] = features;
+      // A connecting sentence can develop an earlier argument without repeating its subject.
+      const continuation = retained.length && unrelatedWords === 0 && /^(?:this|that|these|they|therefore|so|as a result|consequently|which|it)\b/i.test(passage);
+      if (!continuation && probability < 0.04) continue;
+      const ambiguous = !continuation && (paragraphs.length > 1 || passages.length > 1) &&
+        probability < 0.30 && questionOverlap === 0 && length >= 0.8;
+      if (ambiguous && checks < 4) {
+        checks += 1;
+        const relevant = await checkDiscussionRelevance(question, passage);
+        if (!relevant) continue;
+      }
+      retained.push(passage);
+    }
+    if (retained.length) cleaned.push(retained.join(' '));
+  }
+  return cleaned.join('\n\n');
+}
+
+function checkDiscussionRelevance(question, answer) {
+  return discussionAssessment(question, answer,
     'Give 0 if the answer contains no correct and specific economic claim about the proposal and outcome in this question. ' +
     'Vague terms, unrelated economics and claims that merely repeat the question earn 0. ' +
     'Give 1 if at least one such claim is made.', 1);
+}
+
+async function markDiscussion(question, answer, report) {
+  report('Marking on your device · checking relevance…');
+  answer = await filterDiscussionAnswer(question, answer);
+  const relevance = answer && await checkDiscussionRelevance(question, answer);
   let score = 0;
   if (relevance) {
     report('Marking on your device · checking the Cambridge rubric…');
