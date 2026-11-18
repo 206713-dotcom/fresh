@@ -206,19 +206,20 @@ const ecbizMarking = (() => {
   function feedback(result, marks) {
     const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
       escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
-    const section = (title, value) => value ? '<h3>' + title + '</h3>' + paragraphs(value) : '';
+    const section = (title, value, kind = '') => value ? '<section class="review-section ' + kind + '"><h3>' + title + '</h3>' + paragraphs(value) + '</section>' : '';
     const coaching = result.coaching;
-    return '<strong>' + result.score + '/' + marks + ' marks' +
-      (result.provisional ? ' · Provisional AI mark' : '') +
-      (result.band && result.band !== 'point-based' ? ' · Band ' + escapeHtml(result.band) : '') +
-      '</strong><p>' + escapeHtml(result.feedback) + '</p>' +
-      (result.credits?.length ? '<ul>' + result.credits.map(credit =>
+    return '<div class="review-summary"><div><span class="review-eyebrow">Answer review</span><h3>Your feedback</h3>' +
+      (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
+      (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
+      '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
+      '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>' +
+      (result.credits?.length ? '<section class="review-section review-credits"><h3>Marks awarded</h3><ul>' + result.credits.map(credit =>
         '<li><strong>' + escapeHtml(credit.criterion) + '</strong> · ' +
-        escapeHtml(credit.evidence) + '</li>').join('') + '</ul>' : '') +
-      section('What worked', coaching?.strengths) +
-      section('What to improve', coaching?.gaps) +
-      section('How to reach full marks', coaching?.next || result.nextStep) +
-      section(result.diagram ? 'Model diagram instructions' : 'Model response', result.modelResponse) +
+        escapeHtml(credit.evidence) + '</li>').join('') + '</ul></section>' : '') +
+      '<div class="review-coaching">' + section('What worked', coaching?.strengths, 'review-strengths') +
+      section('What to improve', coaching?.gaps, 'review-gaps') + '</div>' +
+      section('How to reach full marks', coaching?.next || result.nextStep, 'review-next') +
+      section(result.diagram ? 'Model diagram instructions' : 'Model response', result.modelResponse, 'review-model') +
       (result.generatedModelResponse ? '<p class="muted">AI-generated example. Check it against the question’s mark scheme.</p>' : '') +
       (result.modelPlan ? '<h3>Mark-scheme answer plan</h3><p>The AI could not verify a complete model response. Use these points to build your answer.</p><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
       (result.reviewUnavailable && !result.modelPlan ? '<p>AI review was unavailable. Use the question’s mark scheme for the required points.</p>' : '') +
@@ -234,3 +235,4 @@ const ecbizMarking = (() => {
 
   return { grade, feedback, scheme, blank: { score: 0, feedback: 'No answer submitted.' } };
 })();
+

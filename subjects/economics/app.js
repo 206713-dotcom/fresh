@@ -246,10 +246,14 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
       const answer=saved.answer||'';
+      const wordCount=answer.trim()?answer.trim().split(/\s+/).length:0;
       return '<form class="panel" data-question="'+i+'"><div class="eyebrow">Chapter '+(q.c+1)+' · '+q.topic+' · '+q.marks+' '+(q.marks===1?'mark':'marks')+'</div><p class="question-id">'+escapeHtml(q.id)+'</p>'+
         (q.case?'<div class="case-study"><strong>Case study</strong><p>'+escapeHtml(q.case)+'</p></div>':'')+
         '<h2>'+escapeHtml(q.q)+'</h2>'+
-        (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):'<label class="field">Your answer<textarea name="answer" maxlength="8000" required>'+escapeHtml(answer)+'</textarea></label>')+
+        (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):
+          '<div class="answer-composer"><div class="answer-heading"><label for="practice-answer">Your answer</label><span>Written practice</span></div>'+
+          '<textarea id="practice-answer" name="answer" maxlength="8000" required aria-describedby="answer-hint" placeholder="Start with your key point, then develop your reasoning…">'+escapeHtml(answer)+'</textarea>'+
+          '<div class="answer-footer"><span id="answer-hint">Use clear economic reasoning and relevant examples.</span><span class="answer-count">'+wordCount+' '+(wordCount===1?'word':'words')+'</span></div></div>')+
         '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
     pages.innerHTML=matches.length?'<button type="button" data-page="-1" '+(page===0?'disabled':'')+'>← Previous</button><label class="jump-label">Question <input id="question-jump" aria-label="Go to question number" type="number" min="1" max="'+matches.length+'" value="'+(page+1)+'"> of '+matches.length+'</label><button type="button" data-page="1" '+(page===matches.length-1?'disabled':'')+'>Next →</button>':'';
@@ -305,6 +309,11 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     if(!form)return;
     const index=Number(form.dataset.question);
     attempts.set(index,{answer:event.target.value});
+    const count=form.querySelector('.answer-count');
+    if(count) {
+      const words=event.target.value.trim()?event.target.value.trim().split(/\s+/).length:0;
+      count.textContent=words+' '+(words===1?'word':'words');
+    }
     form.querySelector('.feedback').hidden=true;
     form.querySelector('button.primary').disabled=false;
     renderNavigator();
@@ -423,3 +432,4 @@ document.addEventListener('DOMContentLoaded', () => {
     main.scrollIntoView({ block: 'start' });
   });
 }, {once:true});
+
