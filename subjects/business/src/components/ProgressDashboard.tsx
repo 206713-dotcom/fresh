@@ -12,6 +12,8 @@ interface ProgressDashboardProps {
   totalTermsCount: number;
   onClearSubmissions: () => void;
   onSelectPractice: () => void;
+  onSelectChecklist: () => void;
+  onSelectGlossary: () => void;
 }
 
 export function ProgressDashboard({
@@ -20,6 +22,8 @@ export function ProgressDashboard({
   totalTermsCount,
   onClearSubmissions,
   onSelectPractice,
+  onSelectChecklist,
+  onSelectGlossary,
 }: ProgressDashboardProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [exportError, setExportError] = useState("");
@@ -55,7 +59,7 @@ export function ProgressDashboard({
       <div className="study-page-heading">
         <div>
           <h1 className="study-title">
-            Candidate Progress Ledger
+            My progress
           </h1>
           <p className="study-description">
             Progress is saved in this browser. Clearing site data removes it. Use the same browser and device to continue.
@@ -85,8 +89,15 @@ export function ProgressDashboard({
       </div>
       {exportError && <p role="alert" className="mb-4 text-sm text-rose-700 dark:text-rose-300">{exportError}</p>}
 
+      <nav className="progress-shortcuts" aria-label="Progress sections">
+        <a href="#progress-summary">Summary</a>
+        <a href="#progress-skills">Skills breakdown</a>
+        <a href="#progress-history">Saved answers</a>
+        <button type="button" onClick={onSelectChecklist}>Syllabus checklist →</button>
+      </nav>
+
       {/* KPI Cards Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+      <section id="progress-summary" tabIndex={-1} aria-label="Progress summary" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
         <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-5 shadow-sm">
           <span className="text-xs font-mono uppercase text-[#78716C] dark:text-neutral-400">
             Questions Practiced
@@ -97,6 +108,7 @@ export function ProgressDashboard({
           <span className="text-[11px] text-[#57534E] dark:text-neutral-400 mt-1 block">
             Across 2, 4, 6, 8, and 12-mark tiers
           </span>
+          <a href="#progress-history" className="progress-stat-link">Review saved answers →</a>
         </div>
 
         <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-5 shadow-sm">
@@ -109,6 +121,7 @@ export function ProgressDashboard({
           <span className="text-[11px] text-[#57534E] dark:text-neutral-400 mt-1 block">
             {totalEarned} / {totalMax} total marks earned
           </span>
+          <a href="#progress-skills" className="progress-stat-link">See marks by skill →</a>
         </div>
 
         <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-5 shadow-sm">
@@ -121,6 +134,7 @@ export function ProgressDashboard({
           <span className="text-[11px] text-[#57534E] dark:text-neutral-400 mt-1 block">
             {totalAttempts > 0 ? getGradeFromPercentage(averagePercentage).label : "Complete 1 practice"}
           </span>
+          <button type="button" onClick={onSelectPractice} className="progress-stat-link">Continue exam practice →</button>
         </div>
 
         <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-5 shadow-sm">
@@ -133,13 +147,14 @@ export function ProgressDashboard({
           <span className="text-[11px] text-[#57534E] dark:text-neutral-400 mt-1 block">
             {Math.round((masteredTermsCount / (totalTermsCount || 1)) * 100)}% syllabus vocabulary mastered
           </span>
+          <button type="button" onClick={onSelectGlossary} className="progress-stat-link">Open glossary →</button>
         </div>
-      </div>
+      </section>
 
       {/* AO Performance Matrix */}
-      <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-6 shadow-sm mb-10">
-        <h2 className="font-academic-serif text-xl font-bold text-[#0F2042] dark:text-white mb-4">
-          Assessment Objectives (AO) Competency Mastery
+      <section id="progress-skills" tabIndex={-1} aria-labelledby="progress-skills-title" className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-6 shadow-sm mb-10">
+        <h2 id="progress-skills-title" className="font-academic-serif text-xl font-bold text-[#0F2042] dark:text-white mb-4">
+          Skills breakdown
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -207,12 +222,12 @@ export function ProgressDashboard({
             </span>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Submission Log Table */}
-      <div className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-6 shadow-sm">
-        <h2 className="font-academic-serif text-xl font-bold text-[#0F2042] dark:text-white mb-4">
-          Submission History & Examiner Feedback
+      <section id="progress-history" tabIndex={-1} aria-labelledby="progress-history-title" className="bg-white dark:bg-neutral-900 border border-[#E7E5E4] dark:border-neutral-800 rounded-xl p-6 shadow-sm">
+        <h2 id="progress-history-title" className="font-academic-serif text-xl font-bold text-[#0F2042] dark:text-white mb-4">
+          Saved answers and feedback
         </h2>
 
         {submissions.length === 0 ? (
@@ -319,7 +334,7 @@ export function ProgressDashboard({
             })}
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }

@@ -44,6 +44,11 @@ function home() {
         </div>
       </div>
     </header>
+    <a class="progress-overview-link" href="#progress">
+      <span class="overview-icon" aria-hidden="true">▥</span>
+      <span class="overview-card-copy"><strong>My progress</strong><span>View your saved answers, checklist progress and CSV download.</span></span>
+      <span class="overview-arrow" aria-hidden="true">→</span>
+    </a>
     <a class="checklist-callout" href="#revision-checklist">
       <span class="overview-icon" aria-hidden="true">✓</span>
       <span class="overview-card-copy"><strong>Syllabus checklist</strong><span>Track what you’ve covered and choose what to revise next.</span></span>
@@ -177,11 +182,12 @@ function setupDeck(id) {
   update();
 }
 function practicePreset(id, mode) {
-  const match = id === 'topic' ? questions.find(question => question.topic === mode) : undefined;
+  const match = questions.find(question => id === 'topic' ? question.topic === mode : id === 'question' && question.id === mode);
   return {
     chapterIndex: match?.c ?? (id && /^[0-5]$/.test(id) ? Number(id) : null),
     paper: id === 'mcq' || id === 'structured' ? id : '',
     topic: match?.topic ?? '',
+    questionId: id === 'question' ? match?.id ?? '' : '',
   };
 }
 
@@ -195,7 +201,14 @@ function practice(chapterIndex) {
     '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
     '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
-function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
+function readPracticeAnswers() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('ecbiz-economics-practice-answers') || '{}');
+    return saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {};
+  } catch { return {}; }
+}
+
+function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId }) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
   const topic=document.querySelector('#filter-topic');
@@ -213,7 +226,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
   const saveStatus = document.querySelector('#practice-save-status');
   const answersKey = 'ecbiz-economics-practice-answers';
   try {
-    const saved = JSON.parse(localStorage.getItem(answersKey) || '{}');
+    const saved = readPracticeAnswers();
     questions.forEach((question, index) => {
       const entry = saved?.[question.id];
       if (typeof entry?.answer === 'string') {
@@ -224,8 +237,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
 
   function saveAttempt(index, state) {
     try {
-      const parsed = JSON.parse(localStorage.getItem(answersKey) || '{}');
-      const saved = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+      const saved = readPracticeAnswers();
       saved[questions[index].id] = { answer: state.answer, feedback: state.pending ? '' : state.feedback || '' };
       localStorage.setItem(answersKey, JSON.stringify(saved));
       saveStatus.textContent = 'Saved in this browser.';
@@ -245,6 +257,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
   search.value=savedFilters.search||'';
   questionSet.value=savedFilters.questionSet||'';
   let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
+  let requestedQuestion = questionId;
   let matches=[];
   const size=20;
 
@@ -260,6 +273,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
       (!marks.value||q.marks===Number(marks.value))&&
       (!questionSet.value||Boolean(q.reference))&&
       (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
+    if (requestedQuestion) {
+      page = matches.findIndex(({q}) => q.id === requestedQuestion);
+      requestedQuestion = '';
+    }
     page=Math.max(0,Math.min(page,matches.length-1));
     document.querySelector('#question-count').textContent=matches.length+' matching questions';
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
@@ -428,7 +445,7 @@ function render(autoMark = true) {
   main.classList.toggle('practice-page',page==='practice');
   main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
   const preset = page === 'practice' ? practicePreset(id, mode) : null;
-  const routes={home,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
+  const routes={home,progress:economicsProgress,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
   const active = page === 'glossary' ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
   setActiveSection(Object.hasOwn(routes, page) ? active : 'home');

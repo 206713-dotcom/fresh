@@ -71,11 +71,11 @@
 .search-icon { position: relative; width: 12px; height: 12px; margin-right: 2px; border: 1.6px solid currentColor; border-radius: 50%; }
 .search-icon::after { content: ''; position: absolute; width: 6px; height: 1.6px; background: currentColor; transform: rotate(45deg); right: -4px; bottom: -2px; border-radius: 2px; }
 
-@media (min-width: 971px) and (max-width: 1160px), (max-width: 374px) {
+@media (min-width: 1101px) and (max-width: 1320px), (max-width: 374px) {
   #topic-search-open { min-width: 42px; }
   #topic-search-open span:last-child { display: none; }
 }
-@media (max-width: 970px) {
+@media (max-width: 1100px) {
   :root { --economics-nav-height: 104px; }
   .economics-nav-inner {
     grid-template-columns: 1fr auto;
@@ -93,10 +93,9 @@
   .economics-nav-inner { width: calc(100% - 28px); }
   .economics-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
   .economics-links a { min-height: 38px; padding-inline: 3px; font-size: 12px; white-space: normal; }
-  .economics-links a:nth-child(6) { grid-column: span 2; }
 }
 
-@media (max-height: 460px) and (max-width: 970px) {
+@media (max-height: 460px) and (max-width: 1100px) {
   :root { --economics-nav-height: 0px; }
   .economics-nav { position: static; }
   .economics-nav-inner { min-height: 104px; }

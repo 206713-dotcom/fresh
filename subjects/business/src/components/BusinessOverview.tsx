@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, ClipboardCheck, ExternalLink, FileText, GraduationCap, Swords, Target, Timer, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, BookOpen, ClipboardCheck, ExternalLink, FileText, GraduationCap, Swords, Target, Timer, Zap } from "lucide-react";
 import type { BusinessTab } from "../App";
 import { SYLLABUS_SECTIONS } from "../lib/data/syllabus-topics";
 import { MCQ_BANK } from "../lib/data/mcq-bank";
@@ -72,6 +72,12 @@ export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveReca
         </div>
         <div className="study-hero-image" aria-hidden="true" />
       </header>
+
+      <button type="button" className="progress-overview-link" onClick={() => onNavigate("progress")}>
+        <BarChart3 size={24} aria-hidden="true" />
+        <span><strong>My progress</strong><small>View your marks, skills breakdown, saved answers and CSV download.</small></span>
+        <ArrowRight size={22} aria-hidden="true" />
+      </button>
 
       <button type="button" className="boss-cta boss-overview-button" onClick={() => onNavigate("boss-battle")}>
         <Swords size={25} aria-hidden="true" />

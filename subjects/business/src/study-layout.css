@@ -929,6 +929,47 @@
 .business-skip-link:focus { transform: none; }
 #business-content { scroll-margin-top: 8rem; }
 
+.progress-overview-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 19px 23px;
+  margin-bottom: 20px;
+  border: 1px solid var(--surface-line);
+  border-radius: 15px;
+  background: var(--surface-practice);
+  color: var(--surface-text);
+  cursor: pointer;
+  text-align: left;
+}
+.progress-overview-link > span { flex: 1; }
+.progress-overview-link strong, .progress-overview-link small { display: block; }
+.progress-overview-link strong { font: 700 23px/1.2 var(--font-serif); }
+.progress-overview-link small { margin-top: 4px; font-size: 13px; color: var(--surface-muted); }
+.progress-overview-link:hover { border-color: var(--surface-accent); }
+.progress-shortcuts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.progress-shortcuts > :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 13px;
+  border: 1px solid var(--surface-line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--surface-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.progress-shortcuts > :is(a, button):hover { background: var(--surface-practice); }
+.progress-stat-link { display: block; margin-top: 15px; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left; }
+:is(#progress-summary, #progress-skills, #progress-history) { scroll-margin-top: 160px; }
+@media (max-width: 580px) {
+  :is(#progress-summary, #progress-skills, #progress-history) { scroll-margin-top: 275px; }
+}
+
 .study-page .study-hero {
   border: 1px solid color-mix(in srgb, var(--hero-bg) 75%, var(--surface-line));
   border-radius: 1.2rem;

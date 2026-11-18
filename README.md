@@ -12,7 +12,7 @@ Fresh is an independent revision hub for 12 Cambridge IGCSE subjects. Find your 
 
 Business Studies and Economics save progress locally in the current browser. Students can study immediately. Use the same browser and device to continue, and keep site data to retain progress.
 
-Download a progress CSV from **Business → Local progress** or **Economics → Checklist → Export progress CSV**. Downloads are saved to the student's device.
+Open **My progress** in either subject’s main navigation to find your stats, saved answers and **Export progress CSV**. Downloads are saved to the student's device.
 
 ## Run Fresh locally
 

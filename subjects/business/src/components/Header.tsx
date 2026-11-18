@@ -67,6 +67,7 @@ interface HeaderProps {
 
 const primaryNavigation = [
   { tab: "overview", label: "Overview", Icon: LayoutGrid },
+  { tab: "progress", label: "My progress", Icon: BarChart3 },
   { tab: "practice", label: "Paper 1", Icon: FileText },
   { tab: "paper2", label: "Paper 2", Icon: BookOpen },
   { tab: "lessons", label: "Lessons", Icon: GraduationCap },
@@ -451,7 +452,7 @@ export function Header({
                 >
                   <BarChart3 className="w-4 h-4 mt-0.5 shrink-0 opacity-70" />
                   <div>
-                    <div className="text-xs font-semibold">Progress Ledger</div>
+                    <div className="text-xs font-semibold">My progress</div>
                     <div className="text-[10px] opacity-70">{submissionCount} evaluated answers</div>
                   </div>
                 </button>
@@ -481,17 +482,6 @@ export function Header({
         {/* ZONE 3: ACTIONS & UTILITIES */}
         {/* ========================================================= */}
         <div className="site-utilities">
-          <button
-            type="button"
-            onClick={() => handleSelectTab("progress")}
-            className="site-utility-button flex items-center gap-2 rounded-xl border border-[var(--line)] px-2.5 py-2 text-xs font-semibold text-[var(--ink)]"
-            title="Progress stays in this browser. Clearing site data removes it."
-            aria-label="Local progress"
-          >
-            <HardDrive className="h-4 w-4" aria-hidden="true" />
-            <span className="hidden xl:inline">Local progress</span>
-          </button>
-
           {/* Local Qwen AI Model Badge & Manual Tier Toggle */}
           <div ref={aiModelRef} className="relative hidden sm:block">
             <button
@@ -823,7 +813,7 @@ export function Header({
             className="mb-2 flex w-full items-center gap-2 rounded-xl bg-[#203e32] px-3 py-2.5 text-left text-xs font-bold text-white"
           >
             <HardDrive className="h-4 w-4" aria-hidden="true" />
-            Progress on this device
+            My progress
           </button>
           <p className="mb-3 text-xs text-[var(--muted)]">Progress stays in this browser. Clearing site data removes it.</p>
 
@@ -1040,7 +1030,7 @@ export function Header({
                 : "text-neutral-800 dark:text-neutral-200"
             }`}
           >
-            Progress Ledger ({submissionCount})
+            My progress ({submissionCount})
           </button>
         </nav>
       )}

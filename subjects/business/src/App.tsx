@@ -398,7 +398,9 @@ export default function App() {
               masteredTermsCount={masteredTerms.length}
               totalTermsCount={GLOSSARY_TERMS.length}
               onClearSubmissions={handleClearSubmissions}
-              onSelectPractice={() => setBusinessTab("practice")}
+              onSelectPractice={() => { setBusinessTab("practice"); window.scrollTo(0, 0); }}
+              onSelectChecklist={() => { setBusinessTab("checklist"); window.scrollTo(0, 0); }}
+              onSelectGlossary={() => { setBusinessTab("glossary"); window.scrollTo(0, 0); }}
             />
           )}
 
