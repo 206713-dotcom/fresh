@@ -14,6 +14,7 @@ import {
   evaluateEssayWebLLM,
   getActiveQwenConfig,
   parseParagraphAuditResponse,
+  completeParagraphAudit,
   QwenParagraphAuditResult,
   resolveGradingQuestionType,
   runQwenChatCompletion,
@@ -5236,7 +5237,32 @@ export async function evaluatePaper2Answer(
       });
 
       if (raw && raw.trim()) {
-        const aiAudit = parseParagraphAuditResponse(raw, questionType, answer);
+        let aiAudit: QwenParagraphAuditResult;
+        try {
+          aiAudit = parseParagraphAuditResponse(raw, questionType, answer);
+        } catch (parseErr) {
+          console.warn(
+            "[QwenEngine] Initial Paper 2 paragraph audit unusable — re-auditing per paragraph:",
+            parseErr instanceof Error ? parseErr.message : parseErr
+          );
+          aiAudit = {
+            question_type: questionType,
+            paragraphs: [],
+            overall_critique:
+              "Local Qwen audit incomplete — paragraphs were re-audited individually.",
+          };
+        }
+        aiAudit = await completeParagraphAudit({
+          engine: webllmEngine,
+          paragraphAudit: aiAudit,
+          studentAnswer: answer,
+          questionType,
+          questionText: `${questionNumber ? `${questionNumber}: ` : ""}${questionText}`,
+          markValue,
+          markSchemeText: formatPaper2MarkSchemeBullets(markScheme),
+          caseContextSummary: caseMainStem,
+          targetAppKeywords: effectiveAppWords,
+        });
         const computed = computePaper2Scores(aiAudit);
         return buildPaper2Result(computed, true, aiAudit);
       }

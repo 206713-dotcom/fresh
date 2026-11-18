@@ -20,6 +20,7 @@ import {
   evaluateEssayWebLLM,
   CAMBRIDGE_0264_SYSTEM_PROMPT,
   CAMBRIDGE_0264_PARAGRAPH_JSON_SCHEMA,
+  completeParagraphAudit,
 } from "../src/lib/engine/webllm";
 
 const BCT_CASE_STEM =
@@ -990,10 +991,10 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   const compactAudit = parseParagraphAuditResponse(`${compact}\n{"extra":"trailing output"}`, "paper1_6m", twoParagraphs);
   assert.equal(compactAudit.paragraphs[1].isolated_quote, "Local suppliers reduce delivery delays.");
   assert.equal(compactAudit.paragraphs[1].subtotal, 2);
-  assert.throws(
-    () => parseParagraphAuditResponse('{"paragraphs":[[1,1,0,1,0,"Use a case fact"]]}', "paper1_6m", twoParagraphs),
-    /did not mark every paragraph/
-  );
+  const singleTupleAudit = parseParagraphAuditResponse('{"paragraphs":[[1,1,0,1,0,"Use a case fact"]]}', "paper1_6m", twoParagraphs);
+  assert.equal(singleTupleAudit.paragraphs.length, 1, "Partial Qwen response must parse with its single valid tuple");
+  assert.equal(singleTupleAudit.paragraphs[0].paragraph_number, 1);
+  assert.equal(singleTupleAudit.paragraphs[0].k_score, 1);
   const parsedAudit = parseParagraphAuditResponse(rawWithWrongSubtotal, "paper1_6m");
   assert.equal(parsedAudit.paragraphs[0].eval_score, 0, "eval_score must clamp to 0 for paper1_6m");
   assert.equal(parsedAudit.paragraphs[0].subtotal, 3, "subtotal must be recomputed in TS (1+1+1+0 = 3)");
@@ -1009,6 +1010,66 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   assert.equal(repairedAudit.paragraphs[0].k_score, 1, "k_score must be 1 after auto-closing the missing ]");
   assert.equal(repairedAudit.paragraphs[0].critique, "Add a specific case detail");
   assert.equal(repairedAudit.paragraphs[0].subtotal, 1, "subtotal must be recomputed in TS (1+0+0+0 = 1)");
+
+  // 13b-iii. Multi-paragraph answer with heading-only lines and a single Qwen tuple:
+  // header slots score 0 with no inference, substantive slots are re-audited/backfilled.
+  const headingHeavyAnswer = [
+    "Advantage 1",
+    "Venture capital funds growth because investors bring contacts and expertise.",
+    "Disadvantage 2 (1/2 marks)",
+    "The bank loan charges interest which raises monthly costs for the factory.",
+  ].join("\n\n");
+  const headingSegments = splitResponsePoints(headingHeavyAnswer);
+  assert.equal(headingSegments.length, 4, `Expected 4 split segments, got ${JSON.stringify(headingSegments)}`);
+  const headerSeeded = parseParagraphAuditResponse(
+    '{"paragraphs":[[2,1,1,1,0,"Case fact applied"]]}',
+    "paper1_6m",
+    headingHeavyAnswer
+  );
+  assert.equal(headerSeeded.paragraphs.length, 1, "A single tuple must no longer throw; it yields one row");
+  assert.equal(headerSeeded.paragraphs[0].k_score, 1);
+  // Deterministic backfill path (no engine): headers zeroed, every slot filled, totals recomputed in TS
+  const deterministicHydrated = await completeParagraphAudit({
+    paragraphAudit: headerSeeded,
+    studentAnswer: headingHeavyAnswer,
+    questionType: "paper1_6m",
+    questionText: "Explain advantages and disadvantages of venture capital to BCT.",
+    markValue: 6,
+    markSchemeText: "K 1 + App 1 + An 1 per point",
+    caseContextSummary: "BCT manufactures bioreactors for pharma labs.",
+    targetAppKeywords: ["venture capital"],
+  });
+  assert.equal(deterministicHydrated.paragraphs.length, 4, "Every split segment must get a paragraph row");
+  assert.equal(deterministicHydrated.paragraphs[0].subtotal, 0, "Header 'Advantage 1' must score 0");
+  assert.equal(deterministicHydrated.paragraphs[2].subtotal, 0, "Header 'Disadvantage 2 (1/2 marks)' must score 0");
+  assert.equal(deterministicHydrated.paragraphs[0].critique, "Section header — 0 marks (no substantive 0264 content inside this line).");
+  assert.equal(deterministicHydrated.paragraphs[1].k_score, 1, "Qwen's tuple for paragraph 2 must be kept");
+  assert.ok(
+    deterministicHydrated.paragraphs[3].critique.startsWith("Deterministic CIE 0264 paragraph audit"),
+    "Paragraph 4 must be backfilled deterministically when Qwen returns nothing for it"
+  );
+  const hydratedTotal = deterministicHydrated.paragraphs.reduce((s, p) => s + p.subtotal, 0);
+  assert.ok(hydratedTotal >= deterministicHydrated.paragraphs[1].subtotal, "Totals must be recomputed from completed rows");
+  // Per-paragraph Qwen loop path (mock engine returns a full tuple per call): no slot is left deterministic
+  const singleTupleMock = createMockWebLLMEngine("0.6b", {
+    question_type: "paper1_6m",
+    paragraphs: [[1, 1, 1, 1, 0, "K+App+An credited"]],
+  });
+  const perParagraphHydrated = await completeParagraphAudit({
+    engine: singleTupleMock,
+    paragraphAudit: headerSeeded,
+    studentAnswer: headingHeavyAnswer,
+    questionType: "paper1_6m",
+    questionText: "Explain advantages and disadvantages of venture capital to BCT.",
+    markValue: 6,
+    markSchemeText: "K 1 + App 1 + An 1 per point",
+    caseContextSummary: "BCT manufactures bioreactors for pharma labs.",
+    targetAppKeywords: ["venture capital"],
+  });
+  assert.equal(perParagraphHydrated.paragraphs.length, 4, "Per-paragraph Qwen loop must complete all slots");
+  assert.equal(perParagraphHydrated.paragraphs[0].subtotal, 0, "Header 'Advantage 1' scores 0 without inference");
+  assert.equal(perParagraphHydrated.paragraphs[2].subtotal, 0, "Header 'Disadvantage 2 (1/2 marks)' scores 0 without inference");
+  assert.equal(perParagraphHydrated.paragraphs[3].k_score, 1, "Paragraph 4 must receive a Qwen tuple from the per-paragraph loop");
 
   // Legacy parseChecklistResponse backwards compatibility with paragraphs[] output
   const legacyCompat = parseChecklistResponse(rawWithWrongSubtotal);

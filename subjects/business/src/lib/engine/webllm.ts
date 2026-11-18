@@ -6,6 +6,12 @@
 
 import type { GradingQuestionType, ParagraphAuditItem } from "../types";
 import { splitResponsePoints } from "./paragraphs";
+// Deterministic CIE 0264 paragraph-scorer building blocks used for the AI backfill.
+import {
+  hasClearBusinessConsequenceChain,
+  looksLikeValidCambridgeKnowledgePoint,
+  scanApplicationKeywords,
+} from "./evaluator";
 
 export type QwenModelTier = "0.6b";
 export type QwenTierPreference = "auto" | "0.6b";
@@ -547,6 +553,266 @@ export function extractJsonObjectString(raw: string): string | null {
   }
   // Unbalanced braces: model output was truncated by the token limit — try to repair it.
   return salvageTruncatedJsonObject(withoutThink);
+}
+
+// ============================================================================
+// Section-header detection & paragraph-audit completion (never trust coverage gaps)
+// ============================================================================
+// Short heading-only lines (e.g. "Advantage 1", "Disadvantage 2 (1/2 marks)",
+// "Conclusion:") carry no substantive 0264 content and must score 0 without any
+// inference call and without breaking Qwen's coverage of the substantive paragraphs.
+const SECTION_HEADER_LINE_REGEX =
+  /^(?:(?:advantage|disadvantage|benefit|drawback|drawbacks|limitation|point|reason|factor|option|method|way|step|part)\s*\d{0,2}\s*(?:\([^)\n]*\))?|(?:conclusion|recommendation|summary|in\s+conclusion|in\s+summary|final\s+(?:decision|verdict)|overall))\s*:?\.?$/i;
+
+export function isSectionHeaderOnlyLine(text: string): boolean {
+  const trimmed = (text ?? "").trim();
+  if (!trimmed) return true;
+  const words = trimmed.split(/\s+/).filter(Boolean).length;
+  if (words > 7) return false;
+  // A trailing colon is fine ("Conclusion:"), but sentence-ending punctuation means real body text.
+  if (/[.!?;,]/.test(trimmed.replace(/:\s*$/, ""))) return false;
+  return SECTION_HEADER_LINE_REGEX.test(trimmed);
+}
+
+/** 1-based source segment indices that carry substantive (non-header) content. */
+export function getSubstantiveParagraphIndices(segments: string[]): number[] {
+  const out: number[] = [];
+  segments.forEach((seg, i) => {
+    if (!isSectionHeaderOnlyLine(seg)) out.push(i + 1);
+  });
+  return out;
+}
+
+const CONCLUSION_HEADING_LIKE =
+  /^(?:recommendation|conclusion|in conclusion|to conclude|to sum up|in summary|overall|on balance|ultimately|i recommend|we recommend|the deciding factor)\b/i;
+
+const EVAL_JUDGMENT_RE =
+  /(recommend|overall|in conclusion|to conclude|on balance|ultimately|deciding factor|outweigh|better option|best option|more suitable|preferable|i conclude|we recommend|justified)/i;
+const EVAL_COMPARISON_RE =
+  /(whereas|rather than|instead of|outweigh|compared|trade.?off|on the one hand|greater than|advantages are greater|disadvantages are greater)/i;
+const EVAL_MITIGATION_RE =
+  /(mitigat|provided that|contingency|deal with|overcome|manage this|depends on)/i;
+
+function conclusionRoleFor(quote: string, questionType: GradingQuestionType): "conclusion" | "option" | "body_point" {
+  if (CONCLUSION_HEADING_LIKE.test(quote.trim())) return "conclusion";
+  return questionType === "paper1_8m" || questionType === "paper2_12m_b" || questionType === "paper2_8m_a"
+    ? "option"
+    : "body_point";
+}
+
+function maxSubtotalFor(role: "body_point" | "option" | "conclusion", questionType: GradingQuestionType): number {
+  if (role === "conclusion") return questionType === "paper2_12m_b" ? 3 : 2;
+  if (questionType === "paper1_2m" || questionType === "paper1_4m") return 2;
+  return 3;
+}
+
+export function zeroParagraphItem(
+  index: number,
+  quote: string,
+  questionType: GradingQuestionType
+): ParagraphAuditItem {
+  const role = conclusionRoleFor(quote, questionType);
+  return {
+    paragraph_number: index + 1,
+    role,
+    isolated_quote: quote.trim(),
+    k_score: 0,
+    app_score: 0,
+    an_score: 0,
+    eval_score: 0,
+    subtotal: 0,
+    max_subtotal: maxSubtotalFor(role, questionType),
+    critique: "Section header — 0 marks (no substantive 0264 content inside this line).",
+  };
+}
+
+/**
+ * Deterministic CIE 0264 paragraph scorer — used to backfill paragraph slots that
+ * neither the initial Qwen response nor the per-paragraph re-audit produced.
+ */
+export function deterministicParagraphBackfill(
+  index: number,
+  quote: string,
+  questionType: GradingQuestionType,
+  opts: { caseContextSummary?: string; targetAppKeywords?: string[] } = {}
+): ParagraphAuditItem {
+  const trimmed = quote.trim();
+  const words = trimmed.split(/\s+/).filter(Boolean).length;
+  const role = conclusionRoleFor(trimmed, questionType);
+  const isConclusionSlot =
+    role === "conclusion" &&
+    (questionType === "paper1_8m" || questionType === "paper2_8m_a" || questionType === "paper2_12m_b");
+
+  let kScore = 0, appScore = 0, anScore = 0, evalScore = 0;
+
+  if (isConclusionSlot) {
+    const maxEval = questionType === "paper2_12m_b" ? 3 : 2;
+    evalScore =
+      (EVAL_JUDGMENT_RE.test(trimmed) ? 1 : 0) +
+      (EVAL_COMPARISON_RE.test(trimmed) ? 1 : 0) +
+      (questionType === "paper2_12m_b" && EVAL_MITIGATION_RE.test(trimmed) ? 1 : 0);
+    evalScore = Math.min(evalScore, maxEval);
+  } else {
+    const sentences = trimmed
+      .split(/(?<=[.!?])\s+|\n+/)
+      .map((s) => s.trim())
+      .filter((s) => s.length > 3);
+    if (questionType === "paper1_2m") {
+      const knowledgeSentences = sentences.filter((s) => looksLikeValidCambridgeKnowledgePoint(s)).length;
+      kScore = Math.min(2, knowledgeSentences || (looksLikeValidCambridgeKnowledgePoint(trimmed) ? 1 : 0));
+    } else {
+      kScore = looksLikeValidCambridgeKnowledgePoint(trimmed) && words >= 4 ? 1 : 0;
+      const appWords = opts.targetAppKeywords ?? [];
+      const appHits =
+        appWords.length > 0
+          ? scanApplicationKeywords(trimmed, appWords, opts.caseContextSummary).foundWords.length
+          : 0;
+      appScore = appHits > 0 ? 1 : 0;
+      anScore =
+        questionType === "paper1_4m" ? 0 : hasClearBusinessConsequenceChain(trimmed).passed ? 1 : 0;
+    }
+  }
+
+  const maxSubtotal = maxSubtotalFor(role, questionType);
+  const subtotal = kScore + appScore + anScore + evalScore;
+  const credited = [
+    kScore ? "K" : "",
+    appScore ? "App" : "",
+    anScore ? "An" : "",
+    evalScore ? "Eval" : "",
+  ].filter(Boolean);
+  const critique =
+    credited.length > 0
+      ? `Deterministic CIE 0264 paragraph audit (AI backfill): credited ${credited.join(" + ")}.`
+      : "Deterministic CIE 0264 paragraph audit (AI backfill): no creditable AO evidence inside this paragraph.";
+
+  return {
+    paragraph_number: index + 1,
+    role,
+    isolated_quote: trimmed,
+    k_score: kScore,
+    app_score: appScore,
+    an_score: anScore,
+    eval_score: evalScore,
+    subtotal,
+    max_subtotal: maxSubtotal,
+    critique,
+  };
+}
+
+export interface CompleteParagraphAuditOptions {
+  engine?: any;
+  paragraphAudit: QwenParagraphAuditResult;
+  studentAnswer: string;
+  questionType: GradingQuestionType;
+  questionText: string;
+  markValue: number;
+  markSchemeText: string;
+  caseContextSummary?: string;
+  targetAppKeywords?: string[];
+  timeoutMs?: number;
+}
+
+/**
+ * Guarantees a complete paragraph audit for every split segment of the student answer:
+ *   1. Keeps every valid Qwen paragraph row (numbering them against the split segments).
+ *   2. Zeroes pure section-header segments without spending an inference call.
+ *   3. Re-audits each missing substantive segment individually with the Qwen worker.
+ *   4. Backfills any slot the Qwen worker still could not produce with the deterministic
+ *      CIE 0264 paragraph scorer — never discards what Qwen did produce.
+ * Subtotals are always recomputed in TypeScript.
+ */
+export async function completeParagraphAudit(
+  opts: CompleteParagraphAuditOptions
+): Promise<QwenParagraphAuditResult> {
+  const segments = splitResponsePoints(opts.studentAnswer);
+  if (segments.length === 0) return opts.paragraphAudit;
+
+  const slots: Array<ParagraphAuditItem | null> = segments.map(() => null);
+  for (const item of opts.paragraphAudit?.paragraphs ?? []) {
+    const idx = (item?.paragraph_number ?? 0) - 1;
+    if (idx >= 0 && idx < segments.length && !slots[idx]) {
+      slots[idx] = {
+        ...item,
+        paragraph_number: idx + 1,
+        isolated_quote: item.isolated_quote?.trim() ? item.isolated_quote : segments[idx],
+      };
+    }
+  }
+
+  // 2. Header-only lines score 0 without any inference.
+  const headerSlot = segments.map(isSectionHeaderOnlyLine);
+  for (let i = 0; i < segments.length; i++) {
+    if (!slots[i] && headerSlot[i]) slots[i] = zeroParagraphItem(i, segments[i], opts.questionType);
+  }
+
+  // 3. Per-paragraph Qwen re-audit for substantive slots the initial response missed.
+  const missing = segments
+    .map((_, i) => i)
+    .filter((i) => !slots[i] && !headerSlot[i]);
+  for (const i of missing) {
+    const segment = segments[i];
+    let filled = false;
+    if (opts.engine) {
+      try {
+        const userPrompt = buildParagraphAuditUserPrompt({
+          questionType: opts.questionType,
+          questionText: opts.questionText,
+          markValue: opts.markValue,
+          markSchemeText: opts.markSchemeText,
+          studentAnswer: segment,
+          caseContextSummary: opts.caseContextSummary,
+          targetAppKeywords: opts.targetAppKeywords,
+        });
+        const raw = await runQwenChatCompletion({
+          engine: opts.engine,
+          systemPrompt: CAMBRIDGE_0264_SYSTEM_PROMPT,
+          userPrompt,
+          maxNewTokens: 350,
+          timeoutMs: opts.timeoutMs ?? 60000,
+        });
+        const single = parseParagraphAuditResponse(raw, opts.questionType, segment);
+        const p0 = single.paragraphs[0];
+        if (p0) {
+          const subtotal = p0.k_score + p0.app_score + p0.an_score + (p0.eval_score ?? 0);
+          slots[i] = {
+            ...p0,
+            paragraph_number: i + 1,
+            isolated_quote: segment,
+            subtotal,
+          };
+          filled = true;
+        }
+      } catch (err) {
+        console.warn(
+          `[QwenEngine] Per-paragraph audit failed for paragraph ${i + 1} — using deterministic backfill:`,
+          err instanceof Error ? err.message : err
+        );
+      }
+    }
+    // 4. Deterministic safety net.
+    if (!filled) {
+      slots[i] = deterministicParagraphBackfill(i, segment, opts.questionType, {
+        caseContextSummary: opts.caseContextSummary,
+        targetAppKeywords: opts.targetAppKeywords,
+      });
+    }
+  }
+
+  const paragraphs = slots.map((item, i) => {
+    const p = item ?? zeroParagraphItem(i, segments[i], opts.questionType);
+    const subtotal = p.k_score + p.app_score + p.an_score + (p.eval_score ?? 0);
+    return { ...p, paragraph_number: i + 1, isolated_quote: segments[i], subtotal };
+  });
+
+  return {
+    ...opts.paragraphAudit,
+    question_type: opts.questionType,
+    paragraphs,
+    overall_critique:
+      opts.paragraphAudit?.overall_critique ||
+      "Paragraphs graded individually under Cambridge IGCSE Business (0264) Anti-Halo scoring.",
+  };
 }
 
 export function formatRulePreScanForPrompt(preScan?: RulePreScanContext): string {
@@ -1133,77 +1399,88 @@ export function parseParagraphAuditResponse(
   }
 
   let rows = parsed.paragraphs;
+  const source = studentAnswer ? splitResponsePoints(studentAnswer) : [];
   if (Array.isArray(rows[0])) {
-    const source = studentAnswer ? splitResponsePoints(studentAnswer) : [];
     const seen = new Set<number>();
-    let allNumbered = rows.length > 0;
-    rows = rows.map((row: unknown, idx: number) => {
-      const fail = (msg: string): never => {
-        throw new WebLLMEvaluationError(msg);
-      };
-      if (!Array.isArray(row)) fail("Qwen returned an incomplete paragraph row.");
-      const values = row as unknown[];
-      const feedback = values[values.length - 1];
-      const scoreFields = values.slice(0, -1);
-      if (typeof feedback !== "string" || !scoreFields.every(Number.isInteger)) {
-        fail("Qwen returned an invalid paragraph row.");
-      }
-      let paragraph_number = idx + 1;
-      let knowledge = 0, application = 0, analysis = 0, evaluation = 0;
-      let numbered = false;
-      // Supported tuple shapes (feedback is always the last, string element):
-      //   [paragraph, k, app, an, ev, feedback]                     (6 elements)
-      //   [paragraph, k, app, an, feedback] | [k, app, an, ev, feedback]  (5 elements)
-      //   [k, app, an, feedback]                                    (4 elements)
-      if (values.length === 6) {
-        [paragraph_number, knowledge, application, analysis, evaluation] = values as number[];
-        numbered = true;
-      } else if (values.length === 5) {
-        const first = values[0] as number;
-        if (
-          Number.isInteger(first) &&
-          first >= 1 &&
-          (source.length === 0 || source[first - 1] !== undefined) &&
-          !seen.has(first)
-        ) {
-          paragraph_number = first;
-          [knowledge, application, analysis] = values.slice(1, 4) as number[];
-          evaluation = 0;
+    const normalized: any[] = [];
+    for (const [idx, row] of rows.entries()) {
+      try {
+        const values = row as unknown[];
+        if (!Array.isArray(row)) throw new WebLLMEvaluationError("Qwen returned an incomplete paragraph row.");
+        const feedback = values[values.length - 1];
+        const scoreFields = values.slice(0, -1);
+        if (typeof feedback !== "string" || !scoreFields.every(Number.isInteger)) {
+          throw new WebLLMEvaluationError("Qwen returned an invalid paragraph row.");
+        }
+        let paragraph_number = idx + 1;
+        let knowledge = 0, application = 0, analysis = 0, evaluation = 0;
+        let numbered = false;
+        // Supported tuple shapes (feedback is always the last, string element):
+        //   [paragraph, k, app, an, ev, feedback]                     (6 elements)
+        //   [paragraph, k, app, an, feedback] | [k, app, an, ev, feedback]  (5 elements)
+        //   [k, app, an, feedback]                                    (4 elements)
+        if (values.length === 6) {
+          [paragraph_number, knowledge, application, analysis, evaluation] = values as number[];
           numbered = true;
-        } else {
+        } else if (values.length === 5) {
+          const first = values[0] as number;
+          if (
+            Number.isInteger(first) &&
+            first >= 1 &&
+            (source.length === 0 || source[first - 1] !== undefined) &&
+            !seen.has(first)
+          ) {
+            paragraph_number = first;
+            [knowledge, application, analysis] = values.slice(1, 4) as number[];
+            evaluation = 0;
+            numbered = true;
+          } else {
+            paragraph_number = idx + 1;
+            [knowledge, application, analysis, evaluation] = values.slice(0, 4) as number[];
+          }
+        } else if (values.length === 4) {
           paragraph_number = idx + 1;
-          [knowledge, application, analysis, evaluation] = values.slice(0, 4) as number[];
+          [knowledge, application, analysis] = values.slice(0, 3) as number[];
+          evaluation = 0;
+        } else {
+          throw new WebLLMEvaluationError("Qwen returned an incomplete paragraph row.");
         }
-      } else if (values.length === 4) {
-        paragraph_number = idx + 1;
-        [knowledge, application, analysis] = values.slice(0, 3) as number[];
-        evaluation = 0;
-      } else {
-        fail("Qwen returned an incomplete paragraph row.");
+        if (numbered) {
+          if (source.length > 0 && !source[paragraph_number - 1]) {
+            throw new WebLLMEvaluationError("Qwen returned an invalid paragraph row.");
+          }
+          if (paragraph_number < 1 || seen.has(paragraph_number)) {
+            throw new WebLLMEvaluationError("Qwen returned an invalid paragraph row.");
+          }
+          seen.add(paragraph_number);
+        }
+        normalized.push({
+          paragraph_number,
+          isolated_quote: source[paragraph_number - 1] ?? "",
+          k_score: knowledge,
+          app_score: application,
+          an_score: analysis,
+          eval_score: evaluation,
+          critique: feedback,
+        });
+      } catch (rowErr) {
+        console.warn(
+          `[QwenEngine] Dropped invalid Qwen tuple row ${idx + 1}:`,
+          rowErr instanceof Error ? rowErr.message : rowErr
+        );
       }
-      if (numbered) {
-        if (source.length > 0 && !source[paragraph_number - 1]) {
-          fail("Qwen returned an invalid paragraph row.");
-        }
-        if (paragraph_number < 1 || seen.has(paragraph_number)) {
-          fail("Qwen returned an invalid paragraph row.");
-        }
-        seen.add(paragraph_number);
-      } else {
-        allNumbered = false;
+    }
+    rows = normalized;
+    if (source.length > 0) {
+      const covered = new Set(normalized.map((row) => row.paragraph_number));
+      const missing = source
+        .map((_, i) => i + 1)
+        .filter((n) => !covered.has(n) && !isSectionHeaderOnlyLine(source[n - 1]));
+      if (missing.length > 0) {
+        console.warn(
+          `[QwenEngine] Qwen did not mark paragraph(s) ${missing.join(", ")} — slots will be re-audited individually or backfilled deterministically.`
+        );
       }
-      return {
-        paragraph_number,
-        isolated_quote: source[paragraph_number - 1] ?? "",
-        k_score: knowledge,
-        app_score: application,
-        an_score: analysis,
-        eval_score: evaluation,
-        critique: feedback,
-      };
-    });
-    if (allNumbered && source.length > 0 && seen.size !== source.length) {
-      throw new WebLLMEvaluationError("Qwen did not mark every paragraph.");
     }
   }
   const paragraphs: ParagraphAuditItem[] = rows.map((item: any, idx: number) => {
@@ -1274,10 +1551,21 @@ export function parseParagraphAuditResponse(
       }
     }
 
+    // Pure section-header lines (e.g. "Disadvantage 2 (1/2 marks)") earn 0 regardless of what Qwen said.
+    const sourceSegment = source[paragraphNumber - 1];
+    if (sourceSegment && isSectionHeaderOnlyLine(sourceSegment)) {
+      kScore = 0;
+      appScore = 0;
+      anScore = 0;
+      evalScore = 0;
+    }
+
     // Recompute subtotal strictly in TypeScript (never trust AI arithmetic)
     const subtotal = kScore + appScore + anScore + evalScore;
-    const critique =
-      typeof item?.critique === "string" && item.critique.trim()
+    const isHeaderSlot = Boolean(sourceSegment && isSectionHeaderOnlyLine(sourceSegment));
+    const critique = isHeaderSlot
+      ? "Section header — 0 marks (no substantive 0264 content inside this line)."
+      : typeof item?.critique === "string" && item.critique.trim()
         ? item.critique.trim()
         : subtotal === maxSubtotal
         ? "Criteria satisfied inside this isolated paragraph."
@@ -1463,7 +1751,32 @@ export async function evaluateEssayWebLLM(
       throw new WebLLMEvaluationError("Local Qwen returned an empty response.");
     }
 
-    const paragraphAudit = parseParagraphAuditResponse(rawContent, questionType, essayText);
+    let paragraphAudit: QwenParagraphAuditResult;
+    try {
+      paragraphAudit = parseParagraphAuditResponse(rawContent, questionType, essayText);
+    } catch (parseErr) {
+      console.warn(
+        "[QwenEngine] Initial paragraph audit unusable — paragraphs will be re-audited individually:",
+        parseErr instanceof Error ? parseErr.message : parseErr
+      );
+      paragraphAudit = {
+        question_type: questionType,
+        paragraphs: [],
+        overall_critique:
+          "Local Qwen audit incomplete — paragraphs were re-audited individually.",
+      };
+    }
+    paragraphAudit = await completeParagraphAudit({
+      engine,
+      paragraphAudit,
+      studentAnswer: essayText,
+      questionType,
+      questionText: examQuestion,
+      markValue: maxMarks,
+      markSchemeText: markScheme,
+      caseContextSummary,
+      targetAppKeywords,
+    });
     const paras = paragraphAudit.paragraphs;
 
     const kSum = paras.reduce((s, p) => s + p.k_score, 0);
