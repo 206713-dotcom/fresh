@@ -433,19 +433,43 @@ function closeJsonFragment(body: string): string {
   const stack: string[] = [];
   let inString = false;
   let escaped = false;
+  let out = "";
   for (const ch of body) {
     if (inString) {
+      out += ch;
       if (escaped) escaped = false;
       else if (ch === "\\") escaped = true;
       else if (ch === '"') inString = false;
       continue;
     }
-    if (ch === '"') inString = true;
-    else if (ch === "{") stack.push("}");
-    else if (ch === "[") stack.push("]");
-    else if (ch === "}" || ch === "]") stack.pop();
+    if (ch === '"') {
+      inString = true;
+      out += ch;
+      continue;
+    }
+    if (ch === "{" || ch === "[") {
+      stack.push(ch === "{" ? "}" : "]");
+      out += ch;
+      continue;
+    }
+    if (ch === "}") {
+      // Auto-close any still-open arrays before this object's closing brace, e.g.
+      // { "paragraphs": [ [1,1,0,0,0,"fb"] } -> ... ] ] }
+      while (stack.length > 0 && stack[stack.length - 1] === "]") {
+        out += "]";
+        stack.pop();
+      }
+      if (stack.length > 0 && stack[stack.length - 1] === "}") stack.pop();
+      out += ch;
+      continue;
+    }
+    if (ch === "]") {
+      if (stack.length > 0 && stack[stack.length - 1] === "]") stack.pop();
+      out += ch;
+      continue;
+    }
+    out += ch;
   }
-  let out = body;
   if (escaped) out = out.slice(0, -1); // drop dangling escape backslash
   if (inString) out += '"'; // salvage the partial string (e.g. truncated feedback text)
   out = out.replace(/\s+$/, "");
@@ -515,7 +539,10 @@ export function extractJsonObjectString(raw: string): string | null {
     } else if (char === "{") {
       depth++;
     } else if (char === "}" && --depth === 0) {
-      return withoutThink.slice(start, index + 1);
+      // Braces are balanced, but nested arrays may still be open (the fine-tuned model
+      // sometimes omits a "]" before the closing "}"). closeJsonFragment is the identity
+      // function for already-balanced JSON, so always normalise through it.
+      return closeJsonFragment(withoutThink.slice(start, index + 1));
     }
   }
   // Unbalanced braces: model output was truncated by the token limit — try to repair it.
@@ -1109,20 +1136,65 @@ export function parseParagraphAuditResponse(
   if (Array.isArray(rows[0])) {
     const source = studentAnswer ? splitResponsePoints(studentAnswer) : [];
     const seen = new Set<number>();
-    rows = rows.map((row: unknown) => {
-      if (!Array.isArray(row) || row.length !== 6) {
-        throw new WebLLMEvaluationError("Qwen returned an incomplete paragraph row.");
+    let allNumbered = rows.length > 0;
+    rows = rows.map((row: unknown, idx: number) => {
+      const fail = (msg: string): never => {
+        throw new WebLLMEvaluationError(msg);
+      };
+      if (!Array.isArray(row)) fail("Qwen returned an incomplete paragraph row.");
+      const values = row as unknown[];
+      const feedback = values[values.length - 1];
+      const scoreFields = values.slice(0, -1);
+      if (typeof feedback !== "string" || !scoreFields.every(Number.isInteger)) {
+        fail("Qwen returned an invalid paragraph row.");
       }
-      const [number, knowledge, application, analysis, evaluation, feedback] = row;
-      if (!Number.isInteger(number) || !source[number - 1] || seen.has(number) ||
-          ![knowledge, application, analysis, evaluation].every(Number.isInteger) ||
-          typeof feedback !== "string") {
-        throw new WebLLMEvaluationError("Qwen returned an invalid paragraph row.");
+      let paragraph_number = idx + 1;
+      let knowledge = 0, application = 0, analysis = 0, evaluation = 0;
+      let numbered = false;
+      // Supported tuple shapes (feedback is always the last, string element):
+      //   [paragraph, k, app, an, ev, feedback]                     (6 elements)
+      //   [paragraph, k, app, an, feedback] | [k, app, an, ev, feedback]  (5 elements)
+      //   [k, app, an, feedback]                                    (4 elements)
+      if (values.length === 6) {
+        [paragraph_number, knowledge, application, analysis, evaluation] = values as number[];
+        numbered = true;
+      } else if (values.length === 5) {
+        const first = values[0] as number;
+        if (
+          Number.isInteger(first) &&
+          first >= 1 &&
+          (source.length === 0 || source[first - 1] !== undefined) &&
+          !seen.has(first)
+        ) {
+          paragraph_number = first;
+          [knowledge, application, analysis] = values.slice(1, 4) as number[];
+          evaluation = 0;
+          numbered = true;
+        } else {
+          paragraph_number = idx + 1;
+          [knowledge, application, analysis, evaluation] = values.slice(0, 4) as number[];
+        }
+      } else if (values.length === 4) {
+        paragraph_number = idx + 1;
+        [knowledge, application, analysis] = values.slice(0, 3) as number[];
+        evaluation = 0;
+      } else {
+        fail("Qwen returned an incomplete paragraph row.");
       }
-      seen.add(number);
+      if (numbered) {
+        if (source.length > 0 && !source[paragraph_number - 1]) {
+          fail("Qwen returned an invalid paragraph row.");
+        }
+        if (paragraph_number < 1 || seen.has(paragraph_number)) {
+          fail("Qwen returned an invalid paragraph row.");
+        }
+        seen.add(paragraph_number);
+      } else {
+        allNumbered = false;
+      }
       return {
-        paragraph_number: number,
-        isolated_quote: source[number - 1],
+        paragraph_number,
+        isolated_quote: source[paragraph_number - 1] ?? "",
         k_score: knowledge,
         app_score: application,
         an_score: analysis,
@@ -1130,7 +1202,7 @@ export function parseParagraphAuditResponse(
         critique: feedback,
       };
     });
-    if (seen.size !== source.length) {
+    if (allNumbered && source.length > 0 && seen.size !== source.length) {
       throw new WebLLMEvaluationError("Qwen did not mark every paragraph.");
     }
   }

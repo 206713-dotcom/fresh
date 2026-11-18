@@ -999,6 +999,17 @@ Furthermore, venture capitalists bring valuable expertise and business contacts.
   assert.equal(parsedAudit.paragraphs[0].subtotal, 3, "subtotal must be recomputed in TS (1+1+1+0 = 3)");
   assert.equal(parsedAudit.paragraphs[1].subtotal, 1, "subtotal must be recomputed in TS (1+0+0+0 = 1), overriding AI '3'");
 
+  // 13b-ii. Model omitted the closing "]" before the final "}" — auto-close and parse cleanly
+  const missingArrayBracket = '{ "paragraphs": [ [1,1,0,0,0,"Add a specific case detail"] }';
+  const repairedAudit = parseParagraphAuditResponse(
+    missingArrayBracket,
+    "paper1_6m",
+    "Venture capital funds growth because investors bring expertise and contacts."
+  );
+  assert.equal(repairedAudit.paragraphs[0].k_score, 1, "k_score must be 1 after auto-closing the missing ]");
+  assert.equal(repairedAudit.paragraphs[0].critique, "Add a specific case detail");
+  assert.equal(repairedAudit.paragraphs[0].subtotal, 1, "subtotal must be recomputed in TS (1+0+0+0 = 1)");
+
   // Legacy parseChecklistResponse backwards compatibility with paragraphs[] output
   const legacyCompat = parseChecklistResponse(rawWithWrongSubtotal);
   assert.equal(legacyCompat.ao1_point1, true);
