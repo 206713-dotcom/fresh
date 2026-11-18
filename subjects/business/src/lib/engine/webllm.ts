@@ -424,8 +424,74 @@ export interface WebLLMEvaluationOutput {
 }
 
 /**
+ * Closes any open string/array/object delimiters in a truncated JSON fragment.
+ * Drops a dangling escape, closes an unterminated string (salvaging partial
+ * numeric/feedback fields), removes a dangling `"key":` pair with no value, then
+ * appends the missing closers in stack order.
+ */
+function closeJsonFragment(body: string): string {
+  const stack: string[] = [];
+  let inString = false;
+  let escaped = false;
+  for (const ch of body) {
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (ch === "\\") escaped = true;
+      else if (ch === '"') inString = false;
+      continue;
+    }
+    if (ch === '"') inString = true;
+    else if (ch === "{") stack.push("}");
+    else if (ch === "[") stack.push("]");
+    else if (ch === "}" || ch === "]") stack.pop();
+  }
+  let out = body;
+  if (escaped) out = out.slice(0, -1); // drop dangling escape backslash
+  if (inString) out += '"'; // salvage the partial string (e.g. truncated feedback text)
+  out = out.replace(/\s+$/, "");
+  // Remove "key": with no value yet, then the dangling key itself. Only when a colon dangles,
+  // so a trailing complete value string ("feedback": "partial text") is NOT dropped.
+  if (/:\s*$/.test(out)) {
+    out = out.replace(/[\s,]*:[\s]*$/, "");
+    out = out.replace(/,?\s*"(?:[^"\\]|\\.)*"\s*$/, "");
+  }
+  out = out.replace(/[\s,]+$/, "");
+  while (stack.length > 0) out += stack.pop();
+  return out;
+}
+
+/**
+ * Salvages a JSON object truncated by the token limit: starts at the first "{",
+ * iteratively closes open delimiters and, if the candidate still does not parse,
+ * trims the body to the last comma and tries again. Returns the closed candidate
+ * string, or null if it cannot be repaired.
+ */
+function salvageTruncatedJsonObject(withoutThink: string): string | null {
+  const start = withoutThink.indexOf("{");
+  if (start === -1) return null;
+  let body = withoutThink.slice(start).replace(/\\$/, "");
+  for (let attempt = 0; attempt < 50 && body.length > 0; attempt++) {
+    const candidate = closeJsonFragment(body);
+    try {
+      JSON.parse(candidate);
+      console.warn(
+        "[QwenEngine] Salvaged a truncated JSON grading block (model hit the token limit)."
+      );
+      return candidate;
+    } catch {
+      const cut = body.lastIndexOf(",");
+      if (cut <= 0) return null;
+      body = body.slice(0, cut);
+    }
+  }
+  return null;
+}
+
+/**
  * Extracts the first complete JSON object after any thinking output.
  * Quoted braces and a second object in trailing text do not affect the boundary.
+ * If generation was truncated before the final "}" (token limit), attempts to
+ * repair the partial object instead of returning null.
  */
 export function extractJsonObjectString(raw: string): string | null {
   if (!raw || typeof raw !== "string") return null;
@@ -452,7 +518,8 @@ export function extractJsonObjectString(raw: string): string | null {
       return withoutThink.slice(start, index + 1);
     }
   }
-  return null;
+  // Unbalanced braces: model output was truncated by the token limit — try to repair it.
+  return salvageTruncatedJsonObject(withoutThink);
 }
 
 export function formatRulePreScanForPrompt(preScan?: RulePreScanContext): string {

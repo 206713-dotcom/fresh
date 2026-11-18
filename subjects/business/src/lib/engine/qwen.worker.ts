@@ -89,19 +89,19 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
       { role: "system" as const, content: data.systemPrompt },
       { role: "user" as const, content: data.userPrompt },
     ];
-    // tokenizer_config.json for SemiLunarz/qwen3-0.6b-igcse-0264-onnx has no chat_template,
-    // so render Qwen3 ChatML directly. The empty <think> block mirrors enable_thinking: false,
-    // making the model emit the grading block immediately.
+    // Marking starts inside the JSON object: prefill "{" so the model emits the grading
+    // JSON immediately and can never ramble before the root object. The InterruptableStoppingCriteria
+    // starts at brace depth 1 (this prefilled "{") and halts at the matching top-level "}".
     const prompt =
       messages
         .map((m) => `<|im_start|>${m.role}\n${m.content}<|im_end|>\n`)
-        .join("") + "<|im_start|>assistant\n<think>\n\n</think>\n\n";
+        .join("") + "<|im_start|>assistant\n<think>\n\n</think>\n{";
 
     const generateStart = performance.now();
 
     // Stop as soon as the root JSON grading object closes: track brace depth outside of
     // strings while the streamer decodes, and interrupt generation at the final top-level "}".
-    let braceDepth = 0;
+    let braceDepth = 1; // the assistant prompt prefills the opening "{" of the grading JSON
     let inString = false;
     let escaped = false;
     let rootJsonClosed = false;
@@ -143,7 +143,7 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
 
     console.log("[QwenWorker] 3. Running inference...");
     const output = await grader(prompt, {
-      max_new_tokens: data.maxNewTokens,
+      max_new_tokens: Math.max(data.maxNewTokens ?? 750, 750),
       do_sample: false,
       return_full_text: false,
       eos_token_id: [151645, 151643],
@@ -158,7 +158,10 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
     console.log(`[QwenWorker] Grading finished in ${Math.round(performance.now() - generateStart)}ms`);
     const rawGrading = output[0].generated_text;
     if (typeof rawGrading !== "string") throw new Error("Qwen did not return generated text.");
-    self.postMessage({ id, value: rawGrading });
+    // The "{" lives in the prefilled prompt, so put it back on the decoded text.
+    const finalOutput = rawGrading.trimStart().startsWith("{") ? rawGrading : `{${rawGrading}`;
+    console.log("[QwenWorker] Raw output:", finalOutput);
+    self.postMessage({ id, value: finalOutput });
   } catch (error) {
     console.error("[QwenWorker] Request failed:", error);
     self.postMessage({ id, error: error instanceof Error ? error.message : String(error) });
