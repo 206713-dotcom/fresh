@@ -790,11 +790,15 @@ const checklistOutcomes = [
 const checklistColumns = ["Theory reviewed","Summary notes/flashcards completed","Past paper questions practised"];
 const checklistKey = 'checklist-0455-workbook';
 
-function revisionChecklist() {
+function checklistProgress() {
   const previous = new Set(revisionState('checklist-0455-2027', []));
-  const checked = new Set(revisionState(checklistKey, null) ??
+  return new Set(revisionState(checklistKey, null) ??
     checklistOutcomes.filter(([code]) => previous.has(code.split('.').slice(0, 2).join('.')))
       .map(([code]) => code + ':0'));
+}
+
+function revisionChecklist() {
+  const checked = checklistProgress();
   const total = checklistOutcomes.length * checklistColumns.length;
   const count = checklistOutcomes.reduce((sum, [code]) =>
     sum + checklistColumns.filter((_, column) => checked.has(code + ':' + column)).length, 0);
@@ -803,7 +807,7 @@ function revisionChecklist() {
     '<section class="panel checklist-progress"><div><h2>Overall progress</h2><p id="checklist-count" role="status">' +
     count + ' of ' + total + ' tasks complete</p></div>' +
     '<progress id="checklist-progress" aria-label="Checklist tasks complete" value="' + count + '" max="' + total + '"></progress>' +
-    link('Official 2027–2029 syllabus ↗', syllabus) + '<p id="revision-save-status" role="status"></p></section>' +
+    '<div class="row">' + link('Official 2027–2029 syllabus ↗', syllabus) + '<button type="button" data-export-economics>Export progress CSV</button></div><p id="revision-save-status" role="status"></p></section>' +
     '<nav class="checklist-jump" aria-labelledby="checklist-jump-title"><div class="checklist-jump-heading"><h2 id="checklist-jump-title">Chapter progress</h2>' +
     '<label class="checklist-filter"><input type="checkbox" id="checklist-unfinished"> Show unfinished topics only</label></div><div class="row">' +
     officialSyllabusChapters.map((chapter, i) => '<button type="button" data-checklist-target="checklist-chapter-' + i + '"><span class="checklist-chapter-number" aria-hidden="true">' + (i + 1) + '</span><span><strong>' + escapeHtml(chapter.title) + '</strong><small class="checklist-chapter-tally"></small></span></button>').join('') +

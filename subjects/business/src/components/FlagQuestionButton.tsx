@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Check, Flag, Loader2, X } from "lucide-react";
-import { isQuestionFlagged, markQuestionFlagged } from "../lib/flags";
-import { logFlaggedQuestion } from "../lib/sheetSync";
+import { isQuestionFlagged, saveLocalQuestionFlag } from "../lib/flags";
 
 const REASONS = [
   "Typo in question",
@@ -50,10 +49,10 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
     if (state === "sending" || flagged) return;
     setState("sending");
     try {
-      await logFlaggedQuestion({ questionId, reason, confidence, note: note.trim().slice(0, MAX_NOTE) });
-      markQuestionFlagged(questionId);
+      saveLocalQuestionFlag({ questionId, reason, confidence, note: note.trim().slice(0, MAX_NOTE) });
       setFlagged(true);
       setState("done");
+      setOpen(false);
     } catch {
       setState("error");
     }
@@ -63,7 +62,7 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
   if (flagged && state !== "done") {
     return (
       <span className="inline-flex items-center gap-1 rounded-md border border-emerald-300 bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300" role="status">
-        <Check className="h-3 w-3" aria-hidden="true" /> Reported
+        <Check className="h-3 w-3" aria-hidden="true" /> Flagged locally
       </span>
     );
   }
@@ -71,7 +70,7 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
   if (state === "done") {
     return (
       <span className="inline-flex items-center gap-1 rounded-md border border-emerald-300 bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300" role="status">
-        <Check className="h-3 w-3" aria-hidden="true" /> Reported — thanks!
+        <Check className="h-3 w-3" aria-hidden="true" /> Flag saved on this device
       </span>
     );
   }
@@ -81,7 +80,7 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        title="Report an issue with this question"
+        title="Save an issue note on this device"
         aria-haspopup="dialog"
         aria-expanded={open}
         className="inline-flex items-center gap-1 rounded-md border border-transparent px-2 py-1 text-[11px] font-semibold text-[var(--muted)] transition-colors hover:border-[var(--line)] hover:bg-[var(--sheet-surface)] hover:text-[var(--ink)] dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
@@ -104,7 +103,7 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
           >
             <div className="flex items-center justify-between gap-3 border-b border-neutral-200 pb-3 dark:border-neutral-800">
               <h3 id="flag-question-title" className="flex items-center gap-2 font-academic-serif text-base font-bold text-[var(--green)] dark:text-white">
-                <Flag className="h-4 w-4" aria-hidden="true" /> Report question issue
+                <Flag className="h-4 w-4" aria-hidden="true" /> Flag question locally
               </h3>
               <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="rounded-lg p-1.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100">
                 <X className="h-4 w-4" />
@@ -114,6 +113,7 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
             <p className="mt-2 font-mono text-[10px] uppercase tracking-wide text-neutral-400 dark:text-neutral-500">
               {questionId}
             </p>
+            <p className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">This note is saved in this browser for your reference.</p>
 
             {/* Reason */}
             <fieldset className="mt-3">
@@ -190,14 +190,14 @@ export function FlagQuestionButton({ questionId }: { questionId: string }) {
                   className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--green)] px-3.5 py-1.5 text-xs font-bold text-white transition-colors hover:opacity-90 disabled:opacity-50"
                 >
                   {state === "sending" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Flag className="h-3.5 w-3.5" />}
-                  {state === "sending" ? "Sending…" : "Send report"}
+                  {state === "sending" ? "Saving…" : "Save on this device"}
                 </button>
               </div>
             </div>
 
             {state === "error" && (
               <p role="alert" className="mt-2 text-[10px] font-semibold text-rose-600 dark:text-rose-400">
-                Could not send the report — it has been saved locally and will retry automatically when you're online.
+                This browser could not save your note. Check whether site storage is available, then try again.
               </p>
             )}
           </div>

@@ -64,7 +64,7 @@ export const BOSS_WRONG_KEY = "ecbiz_boss_wrong_questions";
 export const BOSS_FILTER_KEY = "ecbiz_boss_filters";
 
 /* ------------------------------------------------------------------ */
-/* Wrong-question persistence (localStorage, synced via `ecbiz_*`)     */
+/* Wrong-question persistence in this browser's localStorage.          */
 /* ------------------------------------------------------------------ */
 
 export function loadBossWrongQuestions(): BossWrongMap {

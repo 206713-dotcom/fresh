@@ -10,6 +10,10 @@ Fresh is an independent revision hub for 12 Cambridge IGCSE subjects. Find your 
 - **Economics** has syllabus notes, flashcards, exam practice, and revision games. [Open Economics](https://gisfresh.me/subjects/economics.html)
 - **Other subjects** have starter revision notes and practice questions. Search by subject name or syllabus code in the [subject directory](https://gisfresh.me/#subjects).
 
+Business Studies and Economics save progress locally in the current browser. Students can study immediately. Use the same browser and device to continue, and keep site data to retain progress.
+
+Download a progress CSV from **Business → Local progress** or **Economics → Checklist → Export progress CSV**. Downloads are saved to the student's device.
+
 ## Run Fresh locally
 
 From the repository root, start a local server with Python 3.

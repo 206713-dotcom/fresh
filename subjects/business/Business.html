@@ -24,18 +24,7 @@
     <script>
       (function () {
         try {
-          var cookies = document.cookie.split(";");
-          var theme = null;
-          for (var i = 0; i < cookies.length; i++) {
-            var c = cookies[i].trim();
-            if (c.indexOf("ecbiz_theme=") === 0) {
-              theme = decodeURIComponent(c.substring("ecbiz_theme=".length));
-              break;
-            }
-          }
-          if (!theme) {
-            theme = localStorage.getItem("ecbiz_theme");
-          }
+          var theme = localStorage.getItem("ecbiz_theme");
           if (theme === "dark") {
             document.documentElement.classList.add("dark");
             document.documentElement.style.colorScheme = "dark";
@@ -43,10 +32,10 @@
         } catch (e) {}
       })();
     </script>
-    <script type="module" crossorigin src="./assets/main-DqmjIKw6.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-C2-2DMkF.css">
+    <script type="module" crossorigin src="./assets/main-CYmhRxwN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-BHvv6fNB.css">
   </head>
   <body class="min-h-full flex flex-col bg-[#FAF9F6] dark:bg-black text-[#1C1917] dark:text-white selection:bg-[#E2E8F0] selection:text-[#0F172A] transition-colors">
-    <div id="root" class="min-h-full flex flex-col"></div>
+    <div id="root" class="min-h-full flex flex-col"></div>
   </body>
 </html>

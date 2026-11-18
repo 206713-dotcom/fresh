@@ -25,18 +25,11 @@ import {
   Timer,
   GraduationCap,
   Target,
-  LogIn,
-  LogOut,
-  CloudCheck,
-  AlertTriangle,
-  RefreshCw,
-  UserRound,
+  HardDrive,
   Paintbrush,
   Check,
 } from "lucide-react";
 import { deductStudyCoins, getStudyCoins } from "../lib/cookies";
-import { clearSession, getSession } from "../lib/auth";
-import { getSyncSnapshot, type SyncSnapshot } from "../lib/sheetSync";
 import {
   APP_THEMES,
   getTheme,
@@ -99,10 +92,8 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [chaptersOpen, setChaptersOpen] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const accountRef = useRef<HTMLDivElement>(null);
   const themeRef = useRef<HTMLDivElement>(null);
   const aiModelRef = useRef<HTMLDivElement>(null);
-  const [accountOpen, setAccountOpen] = useState<boolean>(false);
   const [aiModelMenuOpen, setAiModelMenuOpen] = useState<boolean>(false);
   const [qwenStatus, setQwenStatus] = useState<WebLLMStatus>(() => getQwenStatusSnapshot());
 
@@ -113,43 +104,10 @@ export function Header({
     loadUnlockedThemes()
   );
 
-  // Signed-in student (6-digit number). Read from localStorage on mount.
-  const [session, setSession] = useState(() => getSession());
-
-  // Live Google Sheet save status, so a failed save is never silent.
-  const [sync, setSync] = useState<SyncSnapshot>(() => getSyncSnapshot());
-
-  useEffect(() => {
-    const onSyncState = (event: Event) => {
-      const detail = (event as CustomEvent<SyncSnapshot>).detail;
-      setSync(detail ?? getSyncSnapshot());
-      // An `unauthorized` reply clears the session; reflect that immediately.
-      setSession(getSession());
-    };
-    const refreshSession = () => setSession(getSession());
-
-    window.addEventListener("ecbiz_sync_state", onSyncState);
-    window.addEventListener("focus", refreshSession);
-    window.addEventListener("storage", refreshSession);
-    return () => {
-      window.removeEventListener("ecbiz_sync_state", onSyncState);
-      window.removeEventListener("focus", refreshSession);
-      window.removeEventListener("storage", refreshSession);
-    };
-  }, []);
-
   // Collapse the chapter list whenever the Checklist dropdown closes.
   useEffect(() => {
     if (openDropdown !== "checklist") setChaptersOpen(false);
   }, [openDropdown]);
-
-  const handleSignOut = () => {
-    clearSession();
-    setSession(null);
-    setAccountOpen(false);
-    setMobileMenuOpen(false);
-    setActiveTab("practice");
-  };
 
   // Live coins balance across all activities
   const [studyCoins, setStudyCoins] = useState<number>(() => {
@@ -180,15 +138,12 @@ export function Header({
     });
   };
 
-  // Close dropdowns (and the account popover) when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node;
       if (navRef.current && !navRef.current.contains(target)) {
         setOpenDropdown(null);
-      }
-      if (accountRef.current && !accountRef.current.contains(target)) {
-        setAccountOpen(false);
       }
       if (themeRef.current && !themeRef.current.contains(target)) {
         setThemeShopOpen(false);
@@ -223,14 +178,12 @@ export function Header({
   const handleSelectTab = (tab: string) => {
     setActiveTab(tab);
     setOpenDropdown(null);
-    setAccountOpen(false);
     setThemeShopOpen(false);
     setMobileMenuOpen(false);
   };
 
   const handleOpenMcq = () => {
     setOpenDropdown(null);
-    setAccountOpen(false);
     setThemeShopOpen(false);
     setMobileMenuOpen(false);
     onOpenMcq?.();
@@ -291,29 +244,6 @@ export function Header({
     if (onOpenCompare) onOpenCompare(sectionCode);
     else setActiveTab("compare");
   };
-
-  // Shared copy for the avatar dot and its popover.
-  const syncLabel =
-    sync.state === "error"
-      ? "Not saved"
-      : sync.state === "syncing"
-        ? "Saving…"
-        : sync.state === "saved"
-          ? "Synced"
-          : "Signed in";
-
-  const syncDetail =
-    sync.state === "error"
-      ? sync.message || "Could not save to the Google Sheet."
-      : sync.state === "syncing"
-        ? "Saving your progress to the Google Sheet…"
-        : sync.state === "saved"
-          ? `Saved to the Google Sheet${
-              sync.lastSyncedAt
-                ? ` at ${new Date(sync.lastSyncedAt).toLocaleTimeString()}`
-                : ""
-            }`
-          : "Signed in — waiting for the first save";
 
   return (
     <header className="site-header sticky top-0 z-40 border-b backdrop-blur-md">
@@ -551,104 +481,16 @@ export function Header({
         {/* ZONE 3: ACTIONS & UTILITIES */}
         {/* ========================================================= */}
         <div className="site-utilities">
-          {/* Account: a round avatar showing the 6-digit student number.
-              Ordered last so it sits at the far right of the header. */}
-          <div ref={accountRef} className="site-account relative order-last">
-            {session ? (
-              <>
-                <button
-                  type="button"
-                  onClick={() => setAccountOpen((prev) => !prev)}
-                  aria-haspopup="menu"
-                  aria-expanded={accountOpen}
-                  className="relative h-11 w-11 rounded-full bg-gradient-to-br from-[#203e32] to-[#356b55] dark:from-emerald-700 dark:to-emerald-950 text-[#f4f8ee] ring-2 ring-[#dce7d2] dark:ring-emerald-900 hover:ring-[#c4d7b4] dark:hover:ring-emerald-700 shadow-sm transition-all flex items-center justify-center cursor-pointer"
-                  title={`Student ${session.code} — open your account menu`}
-                >
-                  <span className="font-mono text-[11px] font-bold leading-none tracking-[-0.06em]">
-                    {session.code}
-                  </span>
-                  <span
-                    className={`absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-[#FAF9F6] dark:border-black ${
-                      sync.state === "error"
-                        ? "bg-rose-500"
-                        : sync.state === "syncing"
-                          ? "bg-amber-400 animate-pulse"
-                          : sync.state === "saved"
-                            ? "bg-emerald-500"
-                            : "bg-neutral-300 dark:bg-neutral-500"
-                    }`}
-                  />
-                </button>
-
-                {accountOpen && (
-                  <div
-                    role="menu"
-                    className="absolute right-0 top-full mt-2 w-64 rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-neutral-950 shadow-xl p-2 z-50"
-                  >
-                    <div className="flex items-center gap-2.5 px-2 py-2">
-                      <span className="h-9 w-9 shrink-0 rounded-full bg-[#edf2e7] dark:bg-emerald-950/60 text-[#203e32] dark:text-emerald-200 flex items-center justify-center">
-                        <UserRound className="w-4 h-4" />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-xs font-bold text-[#1C1917] dark:text-white truncate">
-                          {session.name || "Student"}
-                        </span>
-                        <span className="block text-[11px] font-mono text-[#78716C] dark:text-neutral-400">
-                          Student {session.code}
-                        </span>
-                      </span>
-                    </div>
-
-                    <div
-                      title={syncDetail}
-                      className={`mx-1 mb-1 flex items-start gap-2 rounded-xl px-2 py-1.5 text-[11px] font-semibold ${
-                        sync.state === "error"
-                          ? "bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                          : "bg-white dark:bg-neutral-900 text-[#57534E] dark:text-neutral-300"
-                      }`}
-                    >
-                      {sync.state === "error" ? (
-                        <AlertTriangle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                      ) : sync.state === "syncing" ? (
-                        <RefreshCw className="w-3.5 h-3.5 mt-0.5 shrink-0 animate-spin" />
-                      ) : (
-                        <CloudCheck className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                      )}
-                      <span className="min-w-0 break-words">{syncDetail}</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      role="menuitem"
-                      onClick={() => handleSelectTab("progress")}
-                      className="w-full text-left px-2 py-2 rounded-xl text-xs font-semibold text-[#203e32] dark:text-emerald-200 hover:bg-[#edf2e7] dark:hover:bg-emerald-950/50 flex items-center gap-2 cursor-pointer"
-                    >
-                      <BarChart3 className="w-3.5 h-3.5" />
-                      Progress Ledger
-                    </button>
-
-                    <button
-                      type="button"
-                      role="menuitem"
-                      onClick={handleSignOut}
-                      className="w-full text-left px-2 py-2 rounded-xl text-xs font-semibold text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 flex items-center gap-2 cursor-pointer"
-                    >
-                      <LogOut className="w-3.5 h-3.5" />
-                      Sign out
-                    </button>
-                  </div>
-                )}
-              </>
-            ) : (
-              <a
-                href="./Business.html?open=signin"
-                className="h-11 w-11 rounded-full bg-[#203e32] dark:bg-emerald-800 hover:bg-[#1a332a] dark:hover:bg-emerald-700 text-white ring-2 ring-[#dce7d2] dark:ring-emerald-900 shadow-sm transition-all flex items-center justify-center cursor-pointer"
-                title="Sign in with your 6-digit student number"
-              >
-                <LogIn className="w-4 h-4" />
-              </a>
-            )}
-          </div>
+          <button
+            type="button"
+            onClick={() => handleSelectTab("progress")}
+            className="site-utility-button flex items-center gap-2 rounded-xl border border-[var(--line)] px-2.5 py-2 text-xs font-semibold text-[var(--ink)]"
+            title="Progress stays in this browser. Clearing site data removes it."
+            aria-label="Local progress"
+          >
+            <HardDrive className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden xl:inline">Local progress</span>
+          </button>
 
           {/* Local Qwen AI Model Badge & Manual Tier Toggle */}
           <div ref={aiModelRef} className="relative hidden sm:block">
@@ -884,8 +726,7 @@ export function Header({
                   </p>
                 )}
                 <p className="px-2 pt-1.5 pb-1 text-[10px] leading-snug text-neutral-500 dark:text-neutral-400">
-                  Unlock a look once and it stays yours. Themes sync with your
-                  progress to the Google Sheet.
+                  Theme unlocks are saved in this browser alongside your progress.
                 </p>
               </div>
             )}
@@ -976,36 +817,15 @@ export function Header({
             </span>
           </a>
 
-          {/* Account row in mobile menu */}
-          {session ? (
-            <div className="flex gap-2 mb-2">
-              <button
-                onClick={() => handleSelectTab("progress")}
-                className="flex-1 text-left px-3 py-2 rounded-xl text-xs font-bold bg-[#edf2e7] dark:bg-emerald-950/40 border border-[#203e32]/20 dark:border-emerald-800 text-[#203e32] dark:text-emerald-200 flex items-center gap-2"
-              >
-                <BarChart3 className="w-3.5 h-3.5" />
-                Progress Ledger · <span className="font-mono">{session.code}</span>
-              </button>
-              <button
-                onClick={handleSignOut}
-                className="px-3 py-2 rounded-xl text-xs font-semibold border border-[#D6D3D1] dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 flex items-center gap-1.5"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                Sign out
-              </button>
-            </div>
-          ) : (
-            <a
-              href="./Business.html?open=signin"
-              className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold flex items-center justify-between bg-[#203e32] dark:bg-emerald-800 text-white mb-2"
-            >
-              <span className="flex items-center gap-2">
-                <LogIn className="w-3.5 h-3.5" />
-                Sign in with your student number
-              </span>
-              <span className="text-[10px] opacity-80 font-mono">6 digits</span>
-            </a>
-          )}
+          <button
+            type="button"
+            onClick={() => handleSelectTab("progress")}
+            className="mb-2 flex w-full items-center gap-2 rounded-xl bg-[#203e32] px-3 py-2.5 text-left text-xs font-bold text-white"
+          >
+            <HardDrive className="h-4 w-4" aria-hidden="true" />
+            Progress on this device
+          </button>
+          <p className="mb-3 text-xs text-[var(--muted)]">Progress stays in this browser. Clearing site data removes it.</p>
 
           {/* Local AI Grader Switcher in Mobile Menu */}
           <div className="rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/70 p-2.5 mb-2 space-y-2">

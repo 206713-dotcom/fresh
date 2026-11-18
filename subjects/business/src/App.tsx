@@ -162,6 +162,8 @@ export default function App() {
         const openParam = params.get("open") || params.get("tab");
         if (openParam === "overview") {
           setBusinessTab("overview");
+        } else if (["progress", "dashboard", "signin", "sign-in", "signup", "sign-up"].includes(openParam || "")) {
+          setBusinessTab("progress");
         } else if (openParam === "boss-battle") {
           setBusinessTab("boss-battle");
         } else if (openParam === "checklist") {
@@ -440,8 +442,8 @@ export default function App() {
       <footer className="border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400">
         <p>
           EcBiz · IGCSE Business ·{" "}
-          <a href="./Business.html?open=dashboard" className="font-semibold underline hover:text-[#8B1E1E]">
-            Student Dashboard
+          <a href="./Business.html?open=progress" className="font-semibold underline hover:text-[#8B1E1E]">
+            Progress on this device
           </a>
         </p>
       </footer>

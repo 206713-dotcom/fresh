@@ -7,8 +7,7 @@
  * knowing a theme exists.
  *
  * The two base themes are free; the rest are bought with Study Coins. Unlocks
- * live in localStorage, which `sheetSync` already snapshots to the Sheet, so a
- * purchase survives a cache clear on another device.
+ * live in this browser's localStorage alongside other study progress.
  */
 
 export type ThemeId = "daylight" | "midnight" | "sepia" | "blueprint" | "sakura";

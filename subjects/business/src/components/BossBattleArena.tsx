@@ -24,7 +24,6 @@ import {
   type BossFilter,
   type BossFocusMode,
 } from "../lib/boss-battle";
-import { logBossWrongToSheet, markBossMasteredToSheet } from "../lib/sheetSync";
 import {
   SKIN_TONES,
   HAIR_DESIGNS,
@@ -953,28 +952,14 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   };
 
   // Answer question attack
-  // Mirror a miss/hit into the spaced-repetition store and the Google Sheet
-  const recordBossOutcome = (wasCorrect: boolean, question: BossActiveQuestion, selectedIndex: number) => {
+  // Save practice outcomes in the browser's spaced-repetition store.
+  const recordBossOutcome = (wasCorrect: boolean, question: BossActiveQuestion) => {
     if (wasCorrect) {
-      const hadMiss = Boolean(loadBossWrongQuestions()[question.id]);
-      const updated = recordBossHit(question.id);
-      if (hadMiss && !updated) {
-        // Came back from "missed" to zero → mark Mastered in the sheet
-        markBossMasteredToSheet(question.id);
-      }
+      recordBossHit(question.id);
       refreshWrongMap();
       return;
     }
     recordBossMiss(question.item, selectedDifficulty);
-    logBossWrongToSheet({
-      questionId: question.id,
-      unit: question.unit,
-      subsection: question.subsection,
-      difficulty: selectedDifficulty,
-      questionPrompt: question.question,
-      userAnswer: selectedIndex === -1 ? "Time ran out" : question.options[selectedIndex] ?? "",
-      correctAnswer: question.options[question.correctIndex] ?? "",
-    });
     refreshWrongMap();
   };
 
@@ -982,7 +967,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
     if (!activeQuestion || answerLockedRef.current || (gameState !== "question_attack" && gameState !== "revive_challenge")) return;
     answerLockedRef.current = true;
 
-    recordBossOutcome(selectedIndex === activeQuestion.correctIndex, activeQuestion, selectedIndex);
+    recordBossOutcome(selectedIndex === activeQuestion.correctIndex, activeQuestion);
 
     // ---- Revive trial: all 10 answers must be correct ----
     if (gameState === "revive_challenge") {

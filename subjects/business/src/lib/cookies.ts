@@ -1,15 +1,55 @@
 import { StudentSubmissionRecord, UserPreferences } from "./types";
 
 const COOKIE_PREFIX = "ecbiz_";
-const MAX_AGE_SECONDS = 34560000; // 400 days (RFC 6265bis maximum allowed)
+const RETIRED_SESSION_KEYS = [
+  "ecbiz_session_token",
+  "ecbiz_student_code",
+  "ecbiz_student_name",
+  "ecbiz_study_code",
+  "ecbiz_roster_seeded",
+  "ecbiz_sheet_hydrated",
+];
 
 /**
- * Write a permanent cookie with 400-day expiry and Lax SameSite
+ * Move earlier cookie-based progress to localStorage and remove old session
+ * credentials. Existing localStorage progress takes precedence over cookies.
  */
-export function setPermanentCookie(name: string, value: string): void {
+export function initializeLocalProgress(): void {
   if (typeof document === "undefined") return;
-  const encoded = encodeURIComponent(value);
-  document.cookie = `${COOKIE_PREFIX}${name}=${encoded}; path=/; max-age=${MAX_AGE_SECONDS}; SameSite=Lax`;
+  const paths = new Set(["/", "/subjects/business", "/subjects/business/", "/fresh/subjects/business", "/fresh/subjects/business/"]);
+  const parts = location.pathname.split("/").filter(Boolean);
+  parts.pop();
+  while (parts.length) {
+    const path = "/" + parts.join("/");
+    paths.add(path);
+    paths.add(path + "/");
+    parts.pop();
+  }
+  for (const cookie of document.cookie.split(";")) {
+    const separator = cookie.indexOf("=");
+    const name = cookie.slice(0, separator).trim();
+    if (separator < 0 || !name.startsWith(COOKIE_PREFIX)) continue;
+    try {
+      if (!RETIRED_SESSION_KEYS.includes(name) && localStorage.getItem(name) === null) {
+        localStorage.setItem(name, decodeURIComponent(cookie.slice(separator + 1)));
+      }
+      for (const path of paths) document.cookie = `${name}=; path=${path}; max-age=0; SameSite=Lax`;
+    } catch {
+      // Retain the cookie so its progress can be recovered when storage works.
+    }
+  }
+  for (const key of RETIRED_SESSION_KEYS) {
+    try {
+      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
+    } catch {
+      // The study site also works when browser storage is unavailable.
+    }
+  }
+}
+
+/** Save a preference locally. The name is retained for existing callers. */
+export function setPermanentCookie(name: string, value: string): void {
   try {
     localStorage.setItem(`${COOKIE_PREFIX}${name}`, value);
   } catch {
@@ -18,24 +58,29 @@ export function setPermanentCookie(name: string, value: string): void {
 }
 
 /**
- * Read a permanent cookie with localStorage fallback
+ * Read a local preference, with recovery of pre-migration cookies.
  */
 export function getPermanentCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
+  try {
+    const saved = localStorage.getItem(`${COOKIE_PREFIX}${name}`);
+    if (saved !== null) return saved;
+  } catch {
+    // Recover earlier progress from a cookie when localStorage is unavailable.
+  }
   const cookieName = `${COOKIE_PREFIX}${name}=`;
   const cookies = document.cookie.split(";");
   for (let cookie of cookies) {
     cookie = cookie.trim();
     if (cookie.indexOf(cookieName) === 0) {
-      return decodeURIComponent(cookie.substring(cookieName.length));
+      try {
+        return decodeURIComponent(cookie.substring(cookieName.length));
+      } catch {
+        return null;
+      }
     }
   }
-  // Fallback to localStorage if cookie was stripped
-  try {
-    return localStorage.getItem(`${COOKIE_PREFIX}${name}`);
-  } catch {
-    return null;
-  }
+  return null;
 }
 
 /**
@@ -52,10 +97,6 @@ export function saveSubmissions(submissions: StudentSubmissionRecord[]): void {
       // Ignore storage quota
     }
   }
-  // Also write top 20 to cookie as lightweight fallback
-  try {
-    setPermanentCookie("submissions", JSON.stringify(trimmed.slice(0, 20)));
-  } catch {}
 }
 
 /**
@@ -67,7 +108,7 @@ export function loadSubmissions(): StudentSubmissionRecord[] {
       const local = localStorage.getItem(`${COOKIE_PREFIX}submissions`);
       if (local) {
         const parsed = JSON.parse(local);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }

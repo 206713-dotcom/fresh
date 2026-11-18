@@ -235,6 +235,7 @@ details.group[open] > summary { margin-bottom: 10px }
 
 .practice-heading { padding: clamp(19px, 3vw, 38px); border-radius: 18px; background: #e9eee1; }
 .practice-heading p { margin-bottom: 0; }
+#practice-save-status { font-size: 12px; color: var(--muted); margin-top: 12px; }
 #practice-checklist:not([hidden]) { display: inline-block; margin-top: 11px; }
 #local-marking-controls:not(:has(#marking-model:not([hidden]), #marking-status:not([hidden]))) { display: none; }
 main #local-marking-controls { width: 100%; margin: 16px 0; padding: 0; }

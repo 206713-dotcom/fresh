@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { StudentSubmissionRecord } from "../lib/types";
 import { getGradeFromPercentage, formatTime, formatDate } from "../lib/utils";
+import { exportBusinessProgress } from "../lib/progress-export";
 
 
 interface ProgressDashboardProps {
@@ -21,6 +22,7 @@ export function ProgressDashboard({
   onSelectPractice,
 }: ProgressDashboardProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [exportError, setExportError] = useState("");
 
   const totalAttempts = submissions.length;
   const totalEarned = submissions.reduce((acc, s) => acc + s.result.totalScore, 0);
@@ -56,10 +58,18 @@ export function ProgressDashboard({
             Candidate Progress Ledger
           </h1>
           <p className="study-description">
-            Saved to your browser and synced to the class Google Sheet when you sign in
+            Progress is saved in this browser. Clearing site data removes it. Use the same browser and device to continue.
           </p>
         </div>
 
+        <button type="button" className="study-action btn-primary" onClick={() => {
+          try {
+            exportBusinessProgress(submissions);
+            setExportError("");
+          } catch {
+            setExportError("This browser could not export your progress. Check whether site storage and downloads are available.");
+          }
+        }}>Export progress CSV</button>
         {totalAttempts > 0 && (
           <button
             onClick={() => {
@@ -73,6 +83,7 @@ export function ProgressDashboard({
           </button>
         )}
       </div>
+      {exportError && <p role="alert" className="mb-4 text-sm text-rose-700 dark:text-rose-300">{exportError}</p>}
 
       {/* KPI Cards Strip */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">

@@ -13,7 +13,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Transformers.js](https://img.shields.io/badge/AI-Transformers.js_·_WebGPU-FF6F00)](https://huggingface.co/docs/transformers.js)
-[![Google Sheets](https://img.shields.io/badge/Progress-Google_Sheets-34A853?logo=googlesheets&logoColor=white)](#accounts-progress-and-privacy)
+[![Local progress](https://img.shields.io/badge/Progress-This_browser-203e32)](#local-progress-and-privacy)
 [![Licence: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](#licence)
 
 > **Independent student project.** EcBiz is not affiliated with, endorsed by, or connected to Cambridge International. It is a revision aid, not an official qualification resource. Always check the official syllabus and mark scheme.
@@ -29,17 +29,16 @@
 5. [How the marking works](#how-the-marking-works)
 6. [Architecture](#architecture)
 7. [Data model](#data-model)
-8. [Accounts, progress and privacy](#accounts-progress-and-privacy)
+8. [Local progress and privacy](#local-progress-and-privacy)
 9. [Content and accuracy](#content-and-accuracy)
 10. [Run EcBiz locally](#run-ecbiz-locally)
-11. [Connect the Google Sheet (optional)](#connect-the-google-sheet-optional)
-12. [Deploy EcBiz](#deploy-ecbiz)
-13. [Project structure](#project-structure)
-14. [Quality and verification](#quality-and-verification)
-15. [How this grew](#how-this-grew)
-16. [Roadmap](#roadmap)
-17. [Credits](#credits)
-18. [Licence](#licence)
+11. [Deploy EcBiz](#deploy-ecbiz)
+12. [Project structure](#project-structure)
+13. [Quality and verification](#quality-and-verification)
+14. [How this grew](#how-this-grew)
+15. [Roadmap](#roadmap)
+16. [Credits](#credits)
+17. [Licence](#licence)
 
 ---
 
@@ -54,7 +53,7 @@ Most revision material I could find fell into two camps:
 
 EcBiz started as a **Social and Emotional Learning (SEL) wellbeing activity** — a small "build something that helps your classmates" project. A handful of flashcards for a few friends grew, week by week, into a full revision platform once I saw how many students were quietly struggling for practice material.
 
-The goal: give every student the same thing a well-resourced candidate gets — thousands of exam-style questions, instant feedback on wording, a clear record of what they have actually mastered, and a progress trail a teacher can see — for free, in a browser, with no paywall.
+The goal: give every student the same thing a well-resourced candidate gets — thousands of exam-style questions, instant feedback on wording, a clear record of what they have actually mastered, and a progress trail they can review on their device — for free, in a browser, with no paywall.
 
 ---
 
@@ -231,7 +230,7 @@ Every question view across Topical Practice, Official Past Papers, Paper 2 case 
 - an optional note field (up to 240 characters)
 - a single-submit guard so the same question cannot be reported twice in one session
 
-Reports land in a `Flagged_Questions` tab in the connected Google Sheet with the student's access code, name, timestamp and the exact question metadata. The identity fields are inherited by the signed-in session; guests are recorded as `guest`.
+Question flags are saved in this browser with the question ID, reason, confidence, note and timestamp. They remain available on the current device.
 
 ### 10. Progressive difficulty and spaced repetition (Boss Battle)
 
@@ -374,33 +373,9 @@ One more honest note: the AI marker is a practice tool, not an examiner. It can 
 
 ## Architecture
 
-```text
-┌──────────────────────────────────────────────────────────────────┐
-│ Browser                                                          │
-│                                                                  │
-│  React 19 · TypeScript · Vite 8 · Tailwind CSS 4                 │
-│                                                                  │
-│  Study UI ──► ecbiz_* localStorage ──► sheetSync (debounced)     │
-│      │                    │                                      │
-│      │                    └──► Google Apps Script Web App        │
-│      │                                  │                        │
-│      │                                  ▼                        │
-│      │                          Google Sheet                     │
-│      │                    Users · Students · Progress            │
-│      │                                                           │
-│      └──► Transformers.js (WebGPU) ──► Qwen 3 0.6B             │
-│              no essay upload                                     │
-└──────────────────────────────────────────────────────────────────┘
-```
+The React study interface saves drafts, submissions, checklist ratings, lessons, coins and themes directly to the current browser's localStorage. The AI model is downloaded to the browser and marks answers on the device.
 
-Key design decisions:
-
-- **No external database.** The school forbids one. The app is fully usable without a backend; the Sheet is a mirror, not a dependency.
-- **Optional accounts.** The study app works signed out. Signing in adds sync and teacher visibility; it does not gate the content.
-- **Prefix-based snapshot.** Every progress key starts with `ecbiz_`, so the sync layer can snapshot the whole surface without knowing what each key means.
-- **Debounced writes.** Saves are scheduled 4 seconds after a change and flushed when the tab is hidden. A minute-by-minute refresh lets a teacher raise coins in the Sheet and have them appear without a reload.
-- **Local-first AI.** The model is downloaded once and cached in the browser. Marking continues without a server.
-- **Seeded daily/weekly challenges.** Daily and weekly prompts are picked from the UTC date/week, so no server coordination is required.
+Students can open the site and begin studying immediately. Returning to the same browser and device restores saved work.
 
 ---
 
@@ -516,39 +491,21 @@ The `ruleEnforcement` object is what makes the marking explainable: it records t
 
 ---
 
-## Accounts, progress and privacy
+## Local progress and privacy
 
-### The optional account system
+Business Studies and Economics save progress in the current browser. Clearing site data or using another browser or device starts a separate study record.
 
-The platform is usable without an account. If a teacher wants a class roster, they deploy the Apps Script backend and set `VITE_APPS_SCRIPT_URL`. Students can then sign up with a **6-digit student number** and a password of at least 6 characters.
+- Business Studies stores answer drafts, submissions, checklist ratings, lessons, quiz history, Boss Battle mistakes, coins and themes in localStorage.
+- Economics stores practice answers and feedback, flashcard positions, checklist tasks, revision activities and game progress in localStorage.
+- Question flags in Business Studies are saved as local notes for the student.
+- The progress page downloads a CSV of submissions, checklist ratings, lesson progress, Boss Battle review and answer drafts. Economics provides its progress CSV on the syllabus checklist page.
+- The Business app migrates earlier progress cookies to localStorage and removes old session credentials from browser storage.
+- AI marking runs on the device. Model downloads require an internet connection.
+- The site is hosted on GitHub Pages at [gisfresh.me](https://gisfresh.me/).
 
-The backend is `apps-script/Code.gs` and creates three tabs automatically:
+The former account screens and Google Sheets connection have been removed. Visiting an old sign-in, sign-up or dashboard query link opens the local progress page.
 
-| Tab | Purpose |
-|---|---|
-| `Users` | Student number, name, salted password hash, failed attempts, lockout, timestamps |
-| `Students` | Roster and headline figures: coins, streak, time spent, MCQs completed, wrong-question IDs, mark-band scores, topical log, recommended focus |
-| `Progress` | One row per student with the full `ecbiz_*` snapshot as JSON |
-
-### How the login is protected
-
-- Passwords are hashed with a per-user salt and 250 iterations of SHA-256, then compared in constant time.
-- Sessions are HMAC-SHA256 signed tokens with a 30-day expiry and the student number as the subject.
-- Five failed login attempts trigger a 15-minute lockout.
-- Reads and writes require a valid token; a student can only access their own row.
-- Writes use `LockService` to avoid concurrent-write corruption.
-- Requests use `Content-Type: text/plain` to avoid a CORS preflight that Apps Script cannot answer.
-
-To be clear: this is a school-project security model, not audited production cryptography. Do not reuse an important password, and treat the Sheet as a classroom record rather than a hardened student-information system.
-
-### What is private
-
-- **Signed out:** everything stays in `localStorage`. No account, no upload.
-- **Signed in:** the app snapshots `ecbiz_*` keys to the teacher's Sheet. That includes quiz history, wrong-question IDs, drafts, lesson progress and coin balances.
-- **AI marking:** the model runs locally. Essay text is not sent to a third-party API by the app.
-- **Hosting:** hosted on GitHub Pages at [gisfresh.me](https://gisfresh.me/). No analytics or third-party tracking is included in the build.
-
-The sync layer is deliberately defensive: a failed pull reports an error instead of overwriting local data, and a stale Sheet row can never take coins away from a student mid-session.
+Any records previously uploaded to a Google Sheet require separate removal from that Sheet by its owner.
 
 ---
 
@@ -588,7 +545,6 @@ Original source code, interface text and teaching notes are MIT licensed. Offici
 
 - **Node.js 22+**
 - A modern browser
-- Optional: a Google account if you want the Sheet backend
 
 ### Install and run
 
@@ -596,13 +552,11 @@ Original source code, interface text and teaching notes are MIT licensed. Offici
 git clone https://github.com/206713-dotcom/fresh.git
 cd fresh/subjects/business
 npm install
-cp .env.example .env.local   # optional: add your Apps Script URL
 npm run dev                  # Vite dev server on http://localhost:3000
 ```
 
-On Windows PowerShell, use `Copy-Item .env.example .env.local` instead of `cp`.
 
-No API key, build server or external database is required. The app runs without the backend; you only need `VITE_APPS_SCRIPT_URL` for accounts and sync.
+Progress is saved in the browser. The study app runs as a static site.
 
 ### Scripts
 
@@ -621,35 +575,7 @@ No API key, build server or external database is required. The app runs without 
 2. Start with **Interactive Lessons** if you are learning a topic for the first time.
 3. Use **Topical Questions** for Paper 1 and **Paper 2** for case-study writing.
 4. Use **Quick Quiz** for fast retrieval and **Mock Exam** when you want the clock on.
-5. Sign in only if you want your progress mirrored to a Sheet.
-
----
-
-## Connect the Google Sheet (optional)
-
-1. Create a Google Sheet. Call it whatever you like.
-2. Open **Extensions → Apps Script**.
-3. Replace the default file with the contents of [`apps-script/Code.gs`](./apps-script/Code.gs).
-4. Deploy it as a **Web App** with access set to **Anyone**.
-5. Copy the `/exec` URL.
-6. Put it in `.env.local`:
-
-```bash
-VITE_APPS_SCRIPT_URL=https://script.google.com/macros/s/your-deployment-id/exec
-```
-
-7. Restart the dev server.
-
-The script creates the `Users`, `Students` and `Progress` tabs on first use, plus two more:
-
-| Tab | Purpose |
-|---|---|
-| `Boss_Wrong_Questions` | Log of every wrong-answer MCQ from the app, with miss count and spaced-repetition weight. The app reads it to weight future Boss Battle question selection. |
-| `Flagged_Questions` | Reports submitted through the in-app flag/report workflow across all question modes. Teachers can see the exact question, the reason, the student's confidence and an optional note. |
-
-A teacher can open the Sheet and see the class roster, coin balances, streaks, completed MCQs, wrong-question IDs and score bands without opening a separate admin tool. Coins can be raised directly in the Sheet; the app refreshes them on focus and once a minute.
-
-If you leave the variable unset, the app stays local-only. Nothing breaks.
+5. Refresh the page to check that your progress is restored in the same browser.
 
 ---
 
@@ -677,7 +603,7 @@ The app uses Google Fonts for typography. If you need a fully self-contained dep
 EcBiz/
 ├── src/
 │   ├── App.tsx                     # Tab routing, modals, theme, submissions
-│   ├── main.tsx                    # Entry point, /sign-in, /sign-up, /dashboard
+│   ├── main.tsx                    # Study app and local progress migration
 │   ├── components/
 │   │   ├── PracticeStudio.tsx      # Paper 1 + verified archive + Paper 2 entry
 │   │   ├── Paper2PracticeView.tsx  # 100-case Paper 2 simulator
@@ -714,20 +640,12 @@ EcBiz/
 │   │   │   ├── glossary.ts
 │   │   │   ├── compare-notes.ts
 │   │   │   └── one-page-sheets.ts
-│   │   ├── auth.ts                 # Session decode, login, register
-│   │   ├── sheetSync.ts            # Debounced localStorage ↔ Sheet sync
 │   │   ├── cookies.ts              # Progress helpers
 │   │   ├── lessons-progress.ts     # Lesson, hint and confidence storage
 │   │   └── themes.ts               # Coin-unlocked themes
-│   ├── pages/
-│   │   ├── SignInPage.tsx
-│   │   ├── SignUpPage.tsx
-│   │   └── StudyDashboard.tsx
 │   └── index.css                   # Design tokens, themes, layout
-├── apps-script/Code.gs             # Accounts, tokens, Sheet persistence
 ├── public/assets/                  # Syllabus and revision documents
 ├── scripts/                        # Preview helpers + marking automated checks
-├── .env.example
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
@@ -790,16 +708,16 @@ The marking engine was rebuilt around AO1–AO4. Keyword scans written in code e
 
 The first local examiner returned marks; this build made them defensible. Each paragraph is marked separately with its own quote so answers cannot double-count points, the AO4 rules and the Paper 2 Level bands moved entirely into code, and the 2-mark definitions were locked to pure knowledge. The regression checks grew alongside each fix.
 
-### The classroom build — lessons, accounts and visibility
+### The classroom build — lessons and local progress
 
-Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary, 165 comparison notes, six chapter summaries and a verified past-paper archive completed the study surface. Optional accounts and the Sheet roster gave teachers a view without introducing a database. The current platform is the sum of those releases: a complete learn → practise → sit → review loop.
+Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary, comparison notes, revision sheets and a verified archive support the study workflow. Progress is saved locally in the current browser.
 
 ---
 
 ## Roadmap
 
 - [x] Add automated checks for the marking rules, AO caps and Level gating (`npm test`).
-- [ ] Extend automated coverage to the sync policy, auth helpers, fallback examiner and content integrity.
+- [ ] Extend automated coverage to local persistence, the fallback examiner and content integrity.
 - [x] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
@@ -816,7 +734,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - **Borrington & Stimpson, *Cambridge IGCSE & O Level Business*, Sixth Edition** — chapter sequence used to organise the 24 lessons.
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Gemini** — used to generate the bulk practice question banks (MCQs and Paper 1/2-style practice) from Cambridge model answers, which I then checked and edited.
-- **Google Apps Script and Google Sheets** — the only persistence layer, chosen because external databases were not permitted.
+- **Browser localStorage** — saves study progress on the current device.
 - **React, Vite, TypeScript, Tailwind CSS, Lucide, Motion and canvas-confetti** — the front-end stack.
 - **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B text decoder.
 - **AI coding tools** — used throughout to help write, refactor and debug the code. I made the product decisions, reviewed the code, and tested it.

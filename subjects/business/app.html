@@ -24,18 +24,7 @@
     <script>
       (function () {
         try {
-          var cookies = document.cookie.split(";");
-          var theme = null;
-          for (var i = 0; i < cookies.length; i++) {
-            var c = cookies[i].trim();
-            if (c.indexOf("ecbiz_theme=") === 0) {
-              theme = decodeURIComponent(c.substring("ecbiz_theme=".length));
-              break;
-            }
-          }
-          if (!theme) {
-            theme = localStorage.getItem("ecbiz_theme");
-          }
+          var theme = localStorage.getItem("ecbiz_theme");
           if (theme === "dark") {
             document.documentElement.classList.add("dark");
             document.documentElement.style.colorScheme = "dark";

@@ -240,7 +240,7 @@ export function DailyQuickQuiz({
     const current = questions[currentIndex];
     const isCorrect = option === current.correctAnswer;
 
-    // Track MCQ progress for Google Sheet sync
+    // Track MCQ progress in this browser.
     try {
       const completed = Number(localStorage.getItem("ecbiz_mcq_completed") || "0") + 1;
       localStorage.setItem("ecbiz_mcq_completed", String(completed));

@@ -138,11 +138,17 @@ function setupDeck(id) {
   const deck = document.querySelector('#deck');
   if (!deck) return;
   const cards = id === 'glossary' ? supplementaryGlossary : flashcardDecks[id];
+  const positionKey = 'ecbiz-economics-flashcard-' + id;
   let index=0, flipped=false;
+  try {
+    const saved = Number(localStorage.getItem(positionKey));
+    if (Number.isInteger(saved) && saved >= 0 && saved < cards.length) index = saved;
+  } catch {}
   deck.innerHTML='<div class="deck-topline"><p class="eyebrow counter" aria-live="polite"></p><button id="export" class="deck-download">↓ Download CSV</button></div><div class="deck-progress" aria-hidden="true"><span></span></div><button class="flash" type="button"></button><p class="deck-hint">Click the card or press Space to flip. Use ← and → to move between cards.</p><div class="deck-controls"><button data-step="-1" aria-label="Previous card">← Previous</button><button id="flip-card" class="primary">Reveal answer ↻</button><button data-step="1" aria-label="Next card">Next →</button></div>';
   const flash=deck.querySelector('.flash');
   const stepButtons=[...deck.querySelectorAll('[data-step]')];
   function update() {
+    try { localStorage.setItem(positionKey, String(index)); } catch {}
     deck.querySelector('.counter').textContent='Card '+(index+1)+' of '+cards.length;
     flash.classList.toggle('reveal',flipped);
     deck.querySelector('.deck-progress span').style.width=((index+1)/cards.length*100)+'%';
@@ -181,7 +187,7 @@ function practicePreset(id, mode) {
 
 function practice(chapterIndex) {
   const expanded = matchMedia('(min-width: 901px)').matches ? ' open' : '';
-  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a></header><div id="practice-marking"></div>'+
+  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a><p id="practice-save-status" role="status">Progress saves in this browser.</p></header><div id="practice-marking"></div>'+
     '<details class="practice-filters"'+expanded+'><summary>Filter questions</summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
@@ -204,11 +210,34 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
   const listPages=document.querySelector('#list-pages');
   const context = document.querySelector('#practice-context');
   const checklistLink = document.querySelector('#practice-checklist');
+  const saveStatus = document.querySelector('#practice-save-status');
+  const answersKey = 'ecbiz-economics-practice-answers';
+  try {
+    const saved = JSON.parse(localStorage.getItem(answersKey) || '{}');
+    questions.forEach((question, index) => {
+      const entry = saved?.[question.id];
+      if (typeof entry?.answer === 'string') {
+        attempts.set(index, { answer: entry.answer, feedback: typeof entry.feedback === 'string' ? entry.feedback : '' });
+      }
+    });
+  } catch {}
+
+  function saveAttempt(index, state) {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(answersKey) || '{}');
+      const saved = parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+      saved[questions[index].id] = { answer: state.answer, feedback: state.pending ? '' : state.feedback || '' };
+      localStorage.setItem(answersKey, JSON.stringify(saved));
+      saveStatus.textContent = 'Saved in this browser.';
+    } catch {
+      saveStatus.textContent = 'This browser could not save your progress. Check whether site storage is available.';
+    }
+  }
   const filterKey='ecbiz-practice-filters';
   let savedFilters={};
   const useSavedFilters = !paper && !initialTopic;
   if (useSavedFilters) {
-    try {savedFilters=JSON.parse(sessionStorage.getItem(filterKey))||{}} catch {}
+    try {savedFilters=JSON.parse(localStorage.getItem(filterKey) || sessionStorage.getItem(filterKey))||{}} catch {}
   }
   if (chapterIndex === null) chapter.value = savedFilters.chapter || '';
   type.value=paper||savedFilters.type||'';
@@ -240,7 +269,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     checklistLink.hidden = !topic.value;
     if (topic.value) checklistLink.href = '#revision-checklist/' + topic.value;
     if (useSavedFilters) {
-      try {sessionStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
+      try {localStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
     }
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
@@ -309,6 +338,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     if(!form)return;
     const index=Number(form.dataset.question);
     attempts.set(index,{answer:event.target.value});
+    saveAttempt(index, attempts.get(index));
     const count=form.querySelector('.answer-count');
     if(count) {
       const words=event.target.value.trim()?event.target.value.trim().split(/\s+/).length:0;
@@ -327,6 +357,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
     if(!answer || attempts.get(index)?.pending)return;
     const state={answer,pending:!q.options,feedback:'Marking your answer…'};
     attempts.set(index,state);
+    saveAttempt(index, state);
     const showFeedback=()=>{
       const current=target.querySelector('form[data-question="'+index+'"]');
       if(!current || attempts.get(index)!==state)return;
@@ -351,6 +382,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic }) {
       state.feedback='<p>'+escapeHtml(error.message)+'</p>';
     } finally {
       state.pending=false;
+      if (attempts.get(index) === state) saveAttempt(index, state);
       showFeedback();
       renderNavigator();
     }

@@ -11,11 +11,8 @@ import {
   ShoppingBag,
   Flame,
   Coins,
-  KeyRound,
   Check,
-  Copy,
   ChevronRight,
-  RefreshCw,
   Sliders,
   Music,
   CloudRain,
@@ -42,7 +39,6 @@ import {
   deductStudyCoins,
   incrementCompletedFocusSessions,
 } from '../lib/cookies';
-import { getStudentCode, flushProgress } from '../lib/sheetSync';
 
 
 // Visual themes definition with Roblox study game aesthetic
@@ -126,16 +122,6 @@ const SOUND_TRACKS = [
   },
 ];
 
-// Helper to generate a random 6-character study token (e.g., STUDY-X9F2)
-const generateRandomToken = () => {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let rand = '';
-  for (let i = 0; i < 4; i++) {
-    rand += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return `STUDY-${rand}`;
-};
-
 export default function StudySpace({
   isExpanded: externalIsExpanded,
   onToggleExpand,
@@ -194,10 +180,6 @@ export default function StudySpace({
     return false;
   });
 
-  // Session & anonymous access code state
-  const [accessCode, setAccessCode] = useState('');
-  const [codeInput, setCodeInput] = useState('');
-  // Synchronized study coins balance - starts with standard getStudyCoins() so it never shows 0 when user has coins
   const [coins, setCoins] = useState(() => getStudyCoins());
   const [streak, setStreak] = useState(0);
   const [unlockedThemes, setUnlockedThemes] = useState(['default']);
@@ -205,11 +187,8 @@ export default function StudySpace({
 
   // UI Panels state
   const [isStoreOpen, setIsStoreOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSoundMixerOpen, setIsSoundMixerOpen] = useState(false);
-  const [isSyncing, setIsSyncing] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
-  const [copiedCode, setCopiedCode] = useState(false);
 
   // Focus Timer state - supports arbitrary custom times (12m, 13m, 15m, etc.)
   const [focusMinutes, setFocusMinutes] = useState(() => {
@@ -255,41 +234,6 @@ export default function StudySpace({
     }, duration);
   }, []);
 
-  // Persist progress to the student's row in the Google Sheet.
-  // The snapshot sync in ../lib/sheetSync captures every ecbiz_* key, so this
-  // only needs to trigger a flush.
-  const syncProgress = useCallback(() => {
-    flushProgress();
-  }, []);
-
-  // The Sheet snapshot is restored once at startup by startSheetSync(); here
-  // we just re-read the values it left in localStorage.
-  const fetchSessionData = useCallback(() => {
-    const localCoins = getStudyCoins();
-    setCoins(localCoins);
-
-    const localStreak = parseInt(
-      localStorage.getItem('ecbiz_study_streak') || '0',
-      10
-    );
-    setStreak(Number.isFinite(localStreak) ? localStreak : 0);
-
-    let themes = ['default'];
-    try {
-      const parsed = JSON.parse(
-        localStorage.getItem('ecbiz_study_themes') || '["default"]'
-      );
-      if (Array.isArray(parsed) && parsed.length > 0) themes = parsed;
-    } catch {}
-    setUnlockedThemes(themes);
-
-    const activeTheme =
-      localStorage.getItem('ecbiz_study_active_theme') || 'default';
-    if (THEMES[activeTheme]) {
-      setActiveThemeId(activeTheme);
-    }
-  }, []);
-
   // Synchronize coins across components whenever ecbiz_coins_updated event is dispatched
   useEffect(() => {
     const handleCoinsEvent = (e) => {
@@ -303,25 +247,8 @@ export default function StudySpace({
     return () => window.removeEventListener('ecbiz_coins_updated', handleCoinsEvent);
   }, []);
 
-  // Initial load: use the signed-in student's number when available, otherwise
-  // fall back to this browser's local token.
+  // Restore Study Space from this browser.
   useEffect(() => {
-    let savedCode = getStudentCode() || '';
-    try {
-      if (!savedCode) {
-        savedCode = localStorage.getItem('ecbiz_study_code') || '';
-      }
-    } catch {}
-
-    if (!savedCode) {
-      savedCode = generateRandomToken();
-      try {
-        localStorage.setItem('ecbiz_study_code', savedCode);
-      } catch {}
-    }
-    setAccessCode(savedCode);
-    setCodeInput(savedCode);
-
     // Load active coins consistently using getStudyCoins()
     const activeCoins = getStudyCoins();
     setCoins(activeCoins);
@@ -347,9 +274,7 @@ export default function StudySpace({
       setActiveThemeId(savedActiveTheme);
     }
 
-    // Attempt remote sync with the Google Sheet
-    fetchSessionData(savedCode);
-  }, [fetchSessionData]);
+  }, []);
 
   // Ghost mode toggle and tap-to-wake handlers
   const toggleGhostMode = useCallback((e) => {
@@ -453,45 +378,6 @@ export default function StudySpace({
 
     window.addEventListener('pointermove', handlePointerMove);
     window.addEventListener('pointerup', handlePointerUp);
-  };
-
-  // Switch access code handler
-  const handleConnectCode = () => {
-    const clean = codeInput.trim().toUpperCase();
-    if (!clean) return;
-    setAccessCode(clean);
-    localStorage.setItem('ecbiz_study_code', clean);
-    fetchSessionData(clean);
-    setIsProfileOpen(false);
-  };
-
-  // Generate a brand new anonymous code
-  const handleGenerateNewCode = () => {
-    const fresh = generateRandomToken();
-    setCodeInput(fresh);
-    setAccessCode(fresh);
-    const existingCoins = getStudyCoins();
-    setCoins(existingCoins);
-    setStreak(0);
-    setUnlockedThemes(['default']);
-    setActiveThemeId('default');
-    localStorage.setItem('ecbiz_study_code', fresh);
-    localStorage.setItem('ecbiz_study_coins', String(existingCoins));
-    localStorage.setItem('ecbiz_study_streak', '0');
-    localStorage.setItem('ecbiz_study_themes', JSON.stringify(['default']));
-    localStorage.setItem('ecbiz_study_active_theme', 'default');
-
-    syncProgress(fresh, existingCoins, 0, ['default']);
-    showToast(`Generated new anonymous token: ${fresh}`);
-    setIsProfileOpen(false);
-  };
-
-  // Copy code to clipboard
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(accessCode);
-    setCopiedCode(true);
-    setTimeout(() => setCopiedCode(false), 2000);
-    showToast('Token copied to clipboard!');
   };
 
   // Audio mixer: Web Audio synth fallback
@@ -632,12 +518,11 @@ export default function StudySpace({
         if (timerMode === 'focus') {
           elapsedSecondCounter.current += 1;
 
-          // Every 60 active seconds: award 1 coin via awardBonusStudyCoins and sync
+          // Every 60 active seconds: award 1 coin locally
           if (elapsedSecondCounter.current % 60 === 0) {
             awardBonusStudyCoins(1);
             const activeCoins = getStudyCoins();
             setCoins(activeCoins);
-            syncProgress(accessCode, activeCoins, streak, unlockedThemes);
             showToast('+1 Study Coin earned for focused study! ✨');
           }
         }
@@ -655,7 +540,6 @@ export default function StudySpace({
         setStreak(newStreak);
 
         localStorage.setItem('ecbiz_study_streak', String(newStreak));
-        syncProgress(accessCode, activeCoins, newStreak, unlockedThemes);
 
         showToast(`🎉 Focus Session Complete! +25 Coins & Streak increased to ${newStreak}!`);
         setTimerMode('break');
@@ -670,7 +554,7 @@ export default function StudySpace({
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [isRunning, timeLeft, timerMode, coins, streak, accessCode, unlockedThemes, syncProgress, showToast, focusMinutes, breakMinutes]);
+  }, [isRunning, timeLeft, timerMode, coins, streak, unlockedThemes, showToast, focusMinutes, breakMinutes]);
 
   // Timer controls
   const handleStartPause = () => {
@@ -755,7 +639,6 @@ export default function StudySpace({
     localStorage.setItem('ecbiz_study_themes', JSON.stringify(updatedThemes));
     localStorage.setItem('ecbiz_study_active_theme', themeId);
 
-    syncProgress(accessCode, updatedCoins, streak, updatedThemes);
     showToast(`Unlocked and equipped ${theme.name}! 🎉`);
   };
 
@@ -1212,16 +1095,6 @@ export default function StudySpace({
                   <Sliders className="w-4 h-4" />
                 </button>
 
-                {/* Anonymous Profile Access Button */}
-                <button
-                  onClick={() => setIsProfileOpen(true)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 text-xs sm:text-sm font-medium transition active:scale-95 cursor-pointer"
-                  title="Anonymous Token Profile"
-                >
-                  <KeyRound className="w-4 h-4 text-cyan-300" />
-                  <span className="font-mono text-xs hidden md:inline">{accessCode || 'CODE'}</span>
-                </button>
-
                 {/* SHRINK / MINIMIZE BUTTON */}
                 <button
                   onClick={() => handleSetExpanded(false)}
@@ -1532,82 +1405,6 @@ export default function StudySpace({
                       </div>
                     );
                   })}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Anonymous Profile Modal */}
-          {isProfileOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
-              <div className={`w-full max-w-md p-6 sm:p-8 rounded-3xl border ${currentTheme.card} shadow-2xl`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <KeyRound className="w-5 h-5 text-cyan-400" />
-                    <h3 className="font-bold text-lg">Anonymous Profile Token</h3>
-                  </div>
-                  <button
-                    onClick={() => setIsProfileOpen(false)}
-                    className="text-white/50 hover:text-white text-xs px-2.5 py-1 rounded-xl bg-white/10"
-                  >
-                    Close
-                  </button>
-                </div>
-
-                <p className="text-xs text-white/60 mb-6 leading-relaxed">
-                  No email or personal details needed. Sign in with your 6-digit student number to save
-                  your progress, coins, and themes to the class Google Sheet.
-                </p>
-
-                <div className="p-4 rounded-2xl bg-black/40 border border-white/15 flex items-center justify-between mb-6">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-white/40 block">
-                      Your Active Token
-                    </span>
-                    <span className="font-mono text-xl font-bold tracking-wider text-cyan-300">
-                      {accessCode}
-                    </span>
-                  </div>
-                  <button
-                    onClick={handleCopyCode}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium transition active:scale-95"
-                  >
-                    {copiedCode ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                    <span>{copiedCode ? 'Copied' : 'Copy'}</span>
-                  </button>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <label className="text-xs font-semibold text-white/70 block">
-                    Load Old Token or Sync Another Device
-                  </label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={codeInput}
-                      onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
-                      placeholder="e.g. STUDY-X9F2"
-                      className="flex-1 px-4 py-2.5 rounded-2xl bg-black/30 border border-white/15 text-white placeholder-white/30 font-mono text-sm uppercase focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
-                    />
-                    <button
-                      onClick={handleConnectCode}
-                      disabled={isSyncing}
-                      className="px-4 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-xs sm:text-sm text-white transition active:scale-95 flex items-center gap-1.5"
-                    >
-                      <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
-                      <span>Sync</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-white/50">Want a clean slate?</span>
-                  <button
-                    onClick={handleGenerateNewCode}
-                    className="text-xs font-semibold text-rose-400 hover:text-rose-300 transition"
-                  >
-                    Create New Token
-                  </button>
                 </div>
               </div>
             </div>
