@@ -1,0 +1,1186 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_91",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Saffron Dune Spices is a private limited company in Country X that blends and packs saffron-based spice jars. It sells 42,000 jars a year at $6.50 each, generating $273,000 in revenue, and employs 18 workers. Domestic sales have slipped since two supermarkets launched own-brand blends at lower prices, cutting Saffron Dune's market share from 15% to 11%.\n\nA distributor in neighbouring Country Y has offered to sell 60,000 jars a year at $5.20 per jar if Saffron Dune licences its brand to a local bottler, or enters a joint venture with a Country Y importer. Country Y charges a 12% import tariff on finished spice jars and customers there prefer milder flavours. Saffron Dune must decide whether to stay purely domestic, licence its brand or form the joint venture.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'licensing'.",
+        "model_answer": "An agreement where a business (the licensor) grants another business (the licensee) the right to produce or sell its product using its brand, patent or process, usually in exchange for a fee or royalty [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one business grants another the right to use its brand/patent/process",
+            "in exchange for a fee or royalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two opportunities for Saffron Dune Spices of expanding into Country Y.",
+        "model_answer": "Opportunity 1: Entering Country Y gives Saffron Dune access to a much larger customer base [k], because the distributor could sell 60,000 jars a year at $5.20, worth about $312,000 in extra revenue [app]. Opportunity 2: Selling abroad reduces dependence on the domestic market [k], which matters because Saffron Dune's domestic market share has already slipped from 15% to 11% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to a larger market / more customers abroad",
+            "spreads risk / reduces reliance on the domestic market"
+          ],
+          "application_max_2": [
+            "60,000 jars a year at $5.20 / about $312,000 extra revenue",
+            "domestic share fell from 15% to 11% / revenue $273,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "60,000 jars",
+            "$5.20",
+            "Country Y",
+            "15%",
+            "11%",
+            "42,000 jars",
+            "$273,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Saffron Dune Spices could face if it expands into Country Y.",
+        "model_answer": "Problem 1: Country Y shoppers prefer milder flavours [k], so the existing saffron blends may not appeal and recipes may need reformulating to win buyers [app], increasing costs and risking a launch that fails to cover the entry investment [an]. Problem 2: The 12% import tariff on finished spice jars [k] would add about $0.62 to each $5.20 jar [app], cutting margins or pushing prices up so local competitors stay cheaper [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cultural differences / tastes differ between countries",
+            "tariffs raise the cost of selling abroad"
+          ],
+          "application_max_2": [
+            "Country Y prefers milder flavours / recipes need reformulating",
+            "12% import tariff on $5.20 jar / about $0.62 added per jar"
+          ],
+          "analysis_max_2": [
+            "higher costs / launch may fail to cover entry investment",
+            "margins squeezed or prices raised / lose competitiveness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "milder",
+            "12% import tariff",
+            "$5.20",
+            "saffron",
+            "$6.50",
+            "Country Y",
+            "42,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saffron Dune Spices should enter Country Y through licensing or a joint venture? Justify your answer.",
+        "model_answer": "Licensing its brand to a local bottler would let Saffron Dune sell in Country Y without paying the 12% import tariff, because the jars would be filled locally [k], and could generate 60,000 jars at $5.20, about $312,000 a year, with little capital at risk [app]. However, licensing gives limited control over quality and over the milder recipe adaptation [an]. A joint venture with the Country Y importer would share the risk and bring market knowledge for the milder-flavour demand [k], while giving closer oversight and shared decision-making over the 60,000-jar plan [app], yet it locks capital into a long-term partnership and exposes Saffron Dune to the partner's performance [an]. Overall, licensing is the better first step given the share slide to 11% at home, because it is quick and low-risk [eval]; if Country Y orders exceed 60,000 jars a year, converting to a joint venture would then protect the brand [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "licensing = local firm produces/sells for a fee, low capital risk",
+            "joint venture = shared ownership/risk with local partner and shared knowledge"
+          ],
+          "application_max_2": [
+            "60,000 jars at $5.20 / about $312,000 a year for licensing",
+            "12% import tariff avoided locally / milder flavours / share fell to 11%"
+          ],
+          "analysis_max_2": [
+            "licensing avoids tariff and keeps capital free but weakens quality control",
+            "joint venture shares risk and adds local knowledge but locks capital in"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two entry methods",
+            "conditions/sequence suggested (license first, convert to JV if successful)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "60,000 jars",
+            "$5.20",
+            "12% import tariff",
+            "milder",
+            "11%",
+            "Country Y"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_92",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Tandoori Flame is a private limited company that runs 6 fast-casual tandoori restaurants in Country X, two in the capital and four in regional towns. Each outlet averages $410,000 in annual revenue, so the chain generated about $2.46 million last year and employs 84 staff across the six sites. Growth has slowed across Country X and two rival chains have opened competing restaurants near its two best-performing locations.\n\nA group of investors in Country Z has asked to open Tandoori Flame outlets there under an international franchise agreement costing an upfront $40,000 per outlet plus 6% of annual sales. A company-owned Country Z restaurant would cost about $320,000 to open, and local customers prefer milder spice levels and different side dishes. The board must choose between the franchise programme and opening its own outlet.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'international franchising'.",
+        "model_answer": "A business (the franchisor) allows entrepreneurs in a foreign country (franchisees) to trade there using its brand, format and support in return for upfront fees and ongoing royalties [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "franchisee in another country trades under the franchisor's brand/system",
+            "in return for upfront fees and ongoing royalty payments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Tandoori Flame might use international franchising to expand into Country Z.",
+        "model_answer": "Reason 1: Franchising allows rapid expansion abroad without Tandoori Flame funding each outlet itself [k], avoiding the roughly $320,000 opening cost of its own Country Z restaurant [app]. Reason 2: Each franchisee pays an upfront $40,000 fee plus 6% of annual sales [k], giving Tandoori Flame a steady royalty income on top of the $2.46 million domestic revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fast growth abroad with less capital investment",
+            "upfront fees and ongoing royalty income for the franchisor"
+          ],
+          "application_max_2": [
+            "avoids about $320,000 cost of own outlet",
+            "$40,000 upfront plus 6% of annual sales / on top of $2.46 million"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$40,000",
+            "6%",
+            "$320,000",
+            "$2.46 million",
+            "Country Z",
+            "$410,000",
+            "84 staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Tandoori Flame could face if it expands into Country Z.",
+        "model_answer": "Problem 1: Country Z customers prefer milder spice levels and different side dishes [k], so the menu must change from the format that works in Country X [app], risking weak sales and food waste if the adaptation is judged wrongly [an]. Problem 2: Operating in Country Z means unfamiliar local laws and regulations [k], such as different food hygiene and employment rules that franchisees must follow [app], adding compliance delays and unexpected costs against the $410,000 average outlet revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cultural differences / tastes and preferences differ abroad",
+            "unfamiliar laws and regulations / compliance burden"
+          ],
+          "application_max_2": [
+            "milder spice levels and different side dishes",
+            "franchisees must follow local rules / $410,000 average outlet revenue"
+          ],
+          "analysis_max_2": [
+            "weak sales and food waste if menu is wrong",
+            "compliance delays and added costs squeeze margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "milder spice levels",
+            "side dishes",
+            "Country Z",
+            "$410,000",
+            "$2.46 million",
+            "6 fast-casual"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tandoori Flame should use international franchising or open its own outlet in Country Z? Justify your answer.",
+        "model_answer": "International franchising would deliver $40,000 per outlet upfront plus 6% of annual sales [k], giving Tandoori Flame fee income without paying the $320,000 needed for its own restaurant [app], which also spreads risk across local franchisees rather than one $320,000 bet [an]. A company-owned outlet would give full control over the milder menu adaptation, service and standards [k], but the $320,000 cost would concentrate all losses in Tandoori Flame in an unfamiliar country [app], and any mistake on compliance or sourcing would hit the chain directly [an]. Overall, franchising is the better route now, because local partners understand Country Z tastes and share the risk while regular royalties build on the $2.46 million domestic base [eval]; a company-owned outlet should only follow once outlet sales prove the brand travels well [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "franchising = fees plus royalties, low capital commitment, shared risk",
+            "own outlet = full control over quality/service but full cost and risk"
+          ],
+          "application_max_2": [
+            "$40,000 upfront plus 6% royalties per franchised outlet",
+            "$320,000 to open own outlet / built on $2.46 million base"
+          ],
+          "analysis_max_2": [
+            "franchise spreads risk and earns ongoing royalty income",
+            "own outlet concentrates cost and loss risk on Tandoori Flame"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two options",
+            "conditions for a later company-owned move (proven outlet demand)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$40,000",
+            "6%",
+            "$320,000",
+            "milder",
+            "Country Z",
+            "$2.46 million",
+            "$410,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_93",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Kestrel Cycles is a private limited company in Country X manufacturing steel-frame commuter bicycles. It produces 8,000 bicycles a year at $340 each, generating $2.72 million in revenue, and employs 46 workers across welding, assembly and finishing. Domestic cycling commuter numbers have fallen since the pandemic boom ended, reducing sales by 9% over the past 2 years.\n\nCountry W has 120,000 cycling commuters and its distributors want to stock Kestrel bicycles, but riders there prefer lighter aluminium frames over steel designs. Redesigning the range would cost $400,000 and add $55 to the unit cost, while a 14% import tariff applies to finished bicycles entering Country W. The board must choose between localising the product range and exporting the current model.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'localising products'.",
+        "model_answer": "Adapting a product, such as its design, features, ingredients or packaging, to suit the tastes, laws and conditions of a foreign market rather than selling an identical product everywhere [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "product adapted to suit local tastes/laws/conditions",
+            "rather than selling an identical product in every market"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two opportunities for Kestrel Cycles of entering Country W.",
+        "model_answer": "Opportunity 1: Country W has 120,000 cycling commuters [k], a much larger potential market than the shrinking domestic one [app]. Opportunity 2: Establishing itself abroad diversifies revenue away from Country X [k], where sales fell 9% over the past 2 years, helping secure demand and jobs for the 46 workers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger market / more potential customers abroad",
+            "diversification / less reliance on domestic demand"
+          ],
+          "application_max_2": [
+            "120,000 cycling commuters in Country W",
+            "domestic sales fell 9% over 2 years / 46 workers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "120,000",
+            "9%",
+            "$2.72 million",
+            "8,000",
+            "Country W",
+            "46 workers",
+            "$340"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kestrel Cycles could face if it enters Country W.",
+        "model_answer": "Problem 1: Country W riders prefer lighter aluminium frames [k], so current steel models are unlikely to sell and Kestrel would need a $400,000 redesign [app], delaying entry and adding $55 to every unit cost [an]. Problem 2: A 14% import tariff on finished bicycles [k] would add about $48 to each $340 bike [app], forcing higher prices that could make Kestrel uncompetitive against local Country W brands [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "different consumer tastes / preferences abroad (cultural differences)",
+            "tariffs raise the landed cost of exports"
+          ],
+          "application_max_2": [
+            "riders prefer lighter aluminium frames / steel models unsuitable",
+            "14% tariff adds about $48 to each $340 bike"
+          ],
+          "analysis_max_2": [
+            "redesign delays entry and raises unit costs by $55",
+            "higher prices make Kestrel uncompetitive locally"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "aluminium",
+            "$400,000",
+            "$55",
+            "14%",
+            "$340",
+            "120,000",
+            "8,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kestrel Cycles should localise its bicycles for Country W or export its current model? Justify your answer.",
+        "model_answer": "Localising the range would match Country W riders' preference for lighter aluminium frames [k], making the bicycles far more attractive across a commuter population of 120,000 [app], and it avoids the commercial failure of shipping steel models that dealers expect to remain unsold [an]. Exporting the current steel range avoids the $400,000 redesign and $55 higher unit cost [k], but a 14% tariff lifts each $340 bike by about $48 [app], and steel frames clash with local tastes, so volumes may be too low to profit [an]. Overall, localisation is the stronger option because $400,000 is only about 15% of annual revenue and unlocks the much larger Country W market [eval], while simply exporting the current model risks unsold stock and tariff-inflated prices [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "localising adapts the product to local tastes and conditions",
+            "exporting sells the standard product abroad (with tariff cost)"
+          ],
+          "application_max_2": [
+            "aluminium-frame preference / 120,000 commuters",
+            "$400,000 redesign, $55 extra unit cost, 14% tariff adds about $48 to $340"
+          ],
+          "analysis_max_2": [
+            "localising raises appeal and avoids unsold stock",
+            "exporting keeps costs down but tariff and tastes suppress demand"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two options",
+            "weighs redesign cost (~15% of revenue) against market size"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "aluminium",
+            "120,000",
+            "$400,000",
+            "$55",
+            "14%",
+            "$340",
+            "$2.72 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_94",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Amber Brook Cheese is a private limited company in Country X producing artisan hard cheeses. It makes 24,000 wheels a year at $28 each, generating $672,000 in revenue, and employs 25 workers across the dairy, rind-washing and maturation cellar. Domestic sales have been flat for 3 years and milk costs have risen by 18% since the last harvest.\n\nA supermarket chain in nearby Country V will stock 15,000 wheels a year at $24 per wheel if Amber Brook meets its food-safety certification requirements within 9 months. Exporting would expose the business to a 10% import duty, freight costs of $3 per wheel and unfamiliar labelling rules. The board must decide whether to start exporting to Country V or focus on the domestic market and existing delis.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'exporting'.",
+        "model_answer": "Selling goods or services produced in one country to buyers located in another country [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling goods or services to buyers in another country",
+            "cross-border trade rather than domestic sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two opportunities for Amber Brook Cheese of exporting to Country V.",
+        "model_answer": "Opportunity 1: Exporting brings a firm order for 15,000 wheels a year [k], roughly $360,000 in extra revenue on top of its flat $672,000 domestic sales [app]. Opportunity 2: Selling in a second country spreads risk [k], so a downturn in Country X would no longer leave the 25 workers wholly dependent on the home market [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger market / additional sales revenue abroad",
+            "diversification / less dependence on the domestic economy"
+          ],
+          "application_max_2": [
+            "15,000 wheels a year at $24 / about $360,000 extra revenue",
+            "domestic revenue flat at $672,000 / 25 workers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15,000 wheels",
+            "$24",
+            "$672,000",
+            "$28",
+            "25 workers",
+            "Country V",
+            "24,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Amber Brook Cheese could face if it exports to Country V.",
+        "model_answer": "Problem 1: A 10% import duty plus $3 freight per wheel [k] would cut the $24 export price to an effective $18.60 [app], squeezing margins at exactly the time milk costs have risen 18% [an]. Problem 2: Country V requires its own food-safety certification and labelling rules [k], which take up to 9 months to complete [app], delaying the first export order and tying up cash in compliance before any revenue arrives [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tariffs/import duties and transport costs reduce margins",
+            "foreign markets have unfamiliar regulations and standards"
+          ],
+          "application_max_2": [
+            "10% duty plus $3 freight / $24 reduced to about $18.60",
+            "food-safety certification and labelling rules / up to 9 months"
+          ],
+          "analysis_max_2": [
+            "margins squeezed when milk costs already up 18%",
+            "compliance delays cash inflow and adds cost before sales begin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "10% import duty",
+            "$3",
+            "$24",
+            "18%",
+            "food-safety certification",
+            "9 months",
+            "Country V"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Amber Brook Cheese should export to Country V or focus on the domestic market? Justify your answer.",
+        "model_answer": "Exporting would add $360,000 a year from 15,000 wheels [k], lifting revenue from $672,000 to roughly $1.03 million [app], vital while domestic sales have been flat for 3 years [an]. However, the 10% duty ($2.40 per wheel) and $3 freight leave about $18.60 per wheel [k], far below the $28 domestic price [app], and milk costs up 18% could make each export wheel barely profitable [an]. Overall, exporting is still worth pursuing if certification is secured within 9 months, because the extra volume should absorb fixed costs and offset the 18% milk-cost rise [eval]; if freight or duty terms cannot be improved, Amber Brook should delay exports and fix domestic sales first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "exporting gains extra revenue and volume in a new market",
+            "duties and freight reduce the effective export price and margin"
+          ],
+          "application_max_2": [
+            "15,000 wheels / about $360,000 extra revenue (~$1.03 million total)",
+            "$2.40 duty and $3 freight / about $18.60 vs $28 domestic"
+          ],
+          "analysis_max_2": [
+            "extra volume helps absorb fixed costs and offset 18% milk-cost rise",
+            "weaker margin and certification delay risk cash flow"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation with conditions",
+            "recommendation sensitive to duty/freight negotiations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15,000 wheels",
+            "$24",
+            "$672,000",
+            "10%",
+            "$3",
+            "18%",
+            "9 months"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_95",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Lumen Haircare is a private limited company in Country X selling premium shampoos and conditioners through 14 retail stores. Revenue last year was $884,000 from 13,000 customers spending an average of $68 a year. Repeat purchase rates are 45%, but a rival brand has launched a similar range priced 15% below Lumen's products and is advertising heavily on television and online.\n\nThe marketing manager must recommend a new marketing strategy. Option A is a national social media influencer campaign costing $60,000 to attract new customers across the country. Option B is a $25,000 customer loyalty programme offering points and discounts to existing buyers. Cash is limited, so both options must be judged on lifting sales and protecting margins this year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'marketing strategy'.",
+        "model_answer": "A long-term plan for how a business will use the marketing mix to reach its chosen target market and achieve its marketing objectives, such as gaining share or loyalty [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term plan for using the marketing mix",
+            "aims at a target market and marketing objectives"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Lumen Haircare needs a clear marketing strategy before choosing between the two options.",
+        "model_answer": "Reason 1: A marketing strategy sets out which customers and which mix to target [k], so the $60,000 campaign and the $25,000 loyalty scheme are aimed deliberately rather than wastefully [app]. Reason 2: A planned strategy links promotion to measurable sales objectives [k], letting the 14 retail stores track whether either option lifts revenue above $884,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "strategy identifies the target market and marketing mix",
+            "strategy sets measurable objectives and direction"
+          ],
+          "application_max_2": [
+            "the $60,000 campaign vs $25,000 loyalty scheme differ",
+            "target is to lift revenue above $884,000 across 14 retail stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$25,000",
+            "14 retail stores",
+            "$884,000",
+            "13,000 customers",
+            "15%",
+            "$68"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a well-chosen marketing strategy could help Lumen Haircare counter the rival's 15% lower prices.",
+        "model_answer": "Way 1: A loyalty programme rewarding repeat purchases [k] would raise the 45% repeat-purchase rate by giving existing customers a reason to stay despite the rival's discount [app], defending the base of 13,000 customers rather than rebuying lost ones at great cost [an]. Way 2: Consistent, high-quality premium marketing [k] could strengthen Lumen's brand image so shoppers feel its price is justified [app], reducing pressure to match the rival's 15% price cut across the 14 retail stores [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyalty/relationship marketing retains existing customers",
+            "strong brand image differentiates from lower-priced rivals"
+          ],
+          "application_max_2": [
+            "45% repeat-purchase rate / base of 13,000 customers",
+            "rival priced 15% below / across 14 retail stores"
+          ],
+          "analysis_max_2": [
+            "higher repeat rate defends revenue without matching price cuts",
+            "premium image supports price and protects margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "45%",
+            "13,000",
+            "15%",
+            "14 retail stores",
+            "Lumen",
+            "loyalty"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Lumen Haircare should choose the influencer campaign or the loyalty programme? Justify your answer.",
+        "model_answer": "The influencer campaign costing $60,000 [k] could reach a far wider audience than the 13,000 current customers [app], building awareness and winning new buyers away from the rival [an]. The loyalty programme costs less than half as much at $25,000 [k], and by lifting the 45% repeat-purchase rate it protects the customers who already spend about $68 a year [app], which is cheaper than replacing customers lost to the rival [an]. Overall, the loyalty programme is the better first move because its $25,000 cost is affordable given limited cash and it directly defends Lumen's most profitable relationships [eval]; the influencer campaign should follow once retention improves and awareness converts into loyal buyers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "influencer campaign builds awareness and reach at higher cost",
+            "loyalty programme retains existing customers at lower cost"
+          ],
+          "application_max_2": [
+            "$60,000 campaign vs $25,000 loyalty programme",
+            "45% repeat-purchase rate / $68 average annual spend / 13,000 customers"
+          ],
+          "analysis_max_2": [
+            "campaign widens reach and wins new customers",
+            "loyalty defence is cheaper than replacing churned customers"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two options",
+            "sensible sequencing suggested (loyalty first, campaign later)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$25,000",
+            "45%",
+            "13,000",
+            "$68",
+            "$884,000",
+            "15%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_96",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "The Paper Lantern Bookshop is a private limited company that runs 2 independent bookshops in Country X, selling 19,000 books a year at an average price of $17. Revenue last year was $323,000 and the business employs 9 staff across the two shops. Online rivals have cut footfall by 22% over 3 years, and customers often enquire about events and recommendations before buying.\n\nThe owners must decide whether to employ a part-time marketing assistant for $14,000 a year to identify customer needs and build customer relationships, or keep spending unchanged. Option A grows the customer base through author events, reading groups and local promotion. Option B protects cash while the bookshop's remaining debts of $26,500 are repaid over the next 12 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two roles of marketing.",
+        "model_answer": "Identifying and satisfying customer needs and wants [1]; maintaining customer loyalty and building customer relationships [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "identifying and satisfying customer needs and wants",
+            "maintaining customer loyalty / building customer relationships"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways a marketing assistant could help The Paper Lantern Bookshop identify and satisfy customer needs.",
+        "model_answer": "Way 1: The assistant could run simple questionnaires and chat with shoppers about the books they want [k], turning direct feedback from the 19,000-book customer base into better stock decisions [app]. Way 2: The assistant could organise events such as author signings and reading groups [k], satisfying the enquiries about events and recommendations that online rivals ignore [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "market research (e.g. questionnaires) identifies customer needs",
+            "events/activations satisfy needs and build relationships"
+          ],
+          "application_max_2": [
+            "feedback from the 19,000-book customer base",
+            "customers ask about events and recommendations / online rivals ignore this"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "19,000 books",
+            "$17",
+            "$323,000",
+            "9 staff",
+            "22%",
+            "events",
+            "The Paper Lantern Bookshop"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two consequences for The Paper Lantern Bookshop if it does not respond to changing customer needs.",
+        "model_answer": "Consequence 1: Footfall, already down 22% over 3 years [k], would keep falling as customers choose rivals that meet their needs better [app], pushing annual revenue below $323,000 [an]. Consequence 2: Without understanding customer needs [k], the bookshop may stock unwanted titles and miss requests for events and recommendations [app], wasting shelf space and cash while customers defect to online sellers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ignoring needs loses sales and customers to rivals",
+            "poor marketing leads to wasted stock and missed opportunities"
+          ],
+          "application_max_2": [
+            "footfall down 22% over 3 years / revenue $323,000",
+            "customers want events and recommendations / online rivals"
+          ],
+          "analysis_max_2": [
+            "revenue falls further without a response",
+            "wasted stock and cash; customers defect to online sellers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "22%",
+            "3 years",
+            "$323,000",
+            "19,000",
+            "online",
+            "footfall"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think The Paper Lantern Bookshop should employ a part-time marketing assistant? Justify your answer.",
+        "model_answer": "Employing an assistant for $14,000 a year [k] would put someone in place to identify customer needs and organise events and recommendations [app], directly tackling the 22% footfall decline and building customer loyalty [an]. However, the bookshop still owes $26,500 and wages cannot be used to repay that debt [k], so the $14,000 adds a fixed cost before any extra sales arrive [app], and if sales do not respond the hire strains cash further [an]. Overall, hiring the assistant is justified because $14,000 is under 4.5% of the $323,000 revenue and directly reverses the 22% slide by rebuilding the relationships that keep bookshops alive [eval]; the owners should set a 6-month sales target and review it to protect cash [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "marketing builds loyalty and relationships that defend sales",
+            "extra wages are a fixed cost and compete with debt repayment"
+          ],
+          "application_max_2": [
+            "$14,000 a year assistant / tackles 22% footfall decline",
+            "debts of $26,500 / $323,000 revenue (under 4.5%)"
+          ],
+          "analysis_max_2": [
+            "assistant reverses footfall decline and builds loyalty",
+            "hire strains cash if sales do not respond"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation",
+            "sensible safeguard suggested (6-month sales target review)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14,000",
+            "$26,500",
+            "22%",
+            "$323,000",
+            "events",
+            "9 staff",
+            "3 years"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_97",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Summit Grill Co is a private limited company in Country X manufacturing charcoal barbecues. Last year it sold 9,500 units at $95 each, generating $902,500 in revenue, and employs 31 workers at its assembly plant and packaging line. Its advertisements claim the grills are smoke-free, yet consumers report significant smoke in independent tests, and the advertising regulator has warned that the claim is misleading, carrying a possible $50,000 fine if not removed.\n\nThe board must choose between two options: keep the slogan and contest the regulator, risking the fine and reputation damage, or withdraw the campaign and launch an honest low-smoke advertisement costing $12,000 to reprint adverts and redesign packaging. The marketing manager believes honest promotion would build customer trust and loyalty over time.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'misleading promotion'.",
+        "model_answer": "Advertising, packaging or other promotion that is false or exaggerated, or leaves out important information, so consumers are deceived about a product's qualities, price or performance [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "promotion that is false or exaggerated",
+            "leaves out important information so consumers are deceived"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Summit Grill Co must obey legal controls over marketing.",
+        "model_answer": "Reason 1: Misleading claims can trigger a fine of up to $50,000 [k], more than four times the $12,000 cost of an honest campaign [app]. Reason 2: Legal controls protect consumers from being deceived [k], so complying preserves the public trust on which $902,500 of annual barbecue sales depend [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "legal controls prevent false/misleading claims to consumers",
+            "compliance avoids fines and reputational damage"
+          ],
+          "application_max_2": [
+            "$50,000 fine vs $12,000 cost of honest campaign",
+            "$902,500 annual revenue depends on consumer trust"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$50,000",
+            "$12,000",
+            "$902,500",
+            "9,500",
+            "$95",
+            "misleading",
+            "smoke-free"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Summit Grill Co could face if it keeps the smoke-free claim.",
+        "model_answer": "Problem 1: The regulator could impose a $50,000 fine [k], equivalent to roughly 526 barbecues at $95 each [app], cancelling a large slice of annual profit [an]. Problem 2: Customers who discover the smoke-free claim is false may stop trusting the brand [k], cutting the 9,500 units sold last year [app], damaging reputation and making an honest relaunch far harder [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "regulators can fine businesses for misleading promotion",
+            "misleading claims destroy consumer trust and loyalty"
+          ],
+          "application_max_2": [
+            "$50,000 fine / about 526 units at $95 each",
+            "9,500 units sold last year at risk"
+          ],
+          "analysis_max_2": [
+            "fine wipes out profit on hundreds of units",
+            "lost trust cuts sales and complicates relaunch"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$50,000",
+            "$95",
+            "9,500",
+            "smoke-free",
+            "$902,500",
+            "31 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Summit Grill Co should withdraw the smoke-free campaign? Justify your answer.",
+        "model_answer": "Withdrawing the campaign and launching an honest low-smoke advertisement costs $12,000 [k], affordable against $902,500 of revenue and removing the threat of a $50,000 fine [app], which is more than four times the relaunch cost [an]. Keeping the slogan would save $12,000 today [k], but Summit Grill would risk the fine, possible legal action and a collapse in customer trust across its 31-worker operation [app], cutting into sales of 9,500 units [an]. Overall, withdrawing is clearly the right decision because honest promotion with redesigned packaging builds the trust and loyalty needed to protect future sales [eval]; the $12,000 is far cheaper than the regulator's fine and the long-term cost of a deceived customer base [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "withdrawing and correcting misleading claims restores trust",
+            "keeping misleading claims risks fines and reputational damage"
+          ],
+          "application_max_2": [
+            "$12,000 reprint/redesign vs $50,000 fine against $902,500 revenue",
+            "9,500 units / 31 workers at stake"
+          ],
+          "analysis_max_2": [
+            "fine is over four times the relaunch cost; withdrawal is low risk",
+            "keeping the claim risks sales collapse and harder recovery"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation",
+            "honest low-smoke positioning builds long-term trust and loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$12,000",
+            "$50,000",
+            "$902,500",
+            "9,500",
+            "smoke-free",
+            "31 workers",
+            "$95"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_98",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Fable & Flint Fine Stationery is a private limited company in Country X producing hand-bound notebooks sold through 5 premium stationery shops. It makes 6,000 notebooks a year at $45 each, generating $270,000 in revenue, and employs 11 skilled bookbinders and packers. Domestic growth has slowed and the owners have identified Country V, with 400,000 potential buyers, as a promising overseas market.\n\nThey must recommend a marketing strategy for Country V: either position the notebooks as a luxury niche product sold in 12 exclusive shops at $60 each, or sell them through supermarkets and department stores at $32 each for the mass market. Labelling in the local language is required either way before launch. The two owners disagree about which positioning best fits the brand.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'target market'.",
+        "model_answer": "The specific group of consumers a business aims its marketing mix at, identified through market research as most likely to buy the product [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the specific group of consumers aimed at",
+            "identified through market research as likely buyers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Fable & Flint Fine Stationery of identifying a clear target market for Country V.",
+        "model_answer": "Benefit 1: A defined target market focuses promotion and budget where it works best [k], so the $60 luxury positioning reaches the hand-bound buyers among the 400,000 potential buyers rather than everyone [app]. Benefit 2: Knowing the target market helps match product and price to customer needs [k], such as offering premium notebooks at $60 in 12 exclusive shops for affluent professionals [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "marketing resources are used more efficiently",
+            "product/price can be tailored to the intended buyers"
+          ],
+          "application_max_2": [
+            "$60 luxury positioning / 400,000 potential buyers",
+            "12 exclusive shops / affluent professionals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "400,000",
+            "$60",
+            "12 exclusive shops",
+            "$45",
+            "Country V",
+            "$270,000",
+            "6,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Fable & Flint could face when entering Country V.",
+        "model_answer": "Problem 1: Country V requires labelling in the local language [k], so every notebook and box must be reprinted before sale [app], adding cost and delaying the launch while stock sits ready but unsellable [an]. Problem 2: Choosing the wrong positioning [k], for example pushing a $60 luxury notebook through supermarkets to mass-market shoppers not seeking hand-bound quality [app], would waste the marketing budget and blur the premium image built through the 5 premium stationery shops [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "unfamiliar local regulations/language requirements abroad",
+            "wrong positioning wastes marketing spend and damages brand image"
+          ],
+          "application_max_2": [
+            "labelling in the local language required",
+            "$60 luxury product misplaced in supermarkets / image built in 5 shops"
+          ],
+          "analysis_max_2": [
+            "reprinting adds cost and delays launch",
+            "confused positioning erodes brand and wastes budget"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "local language",
+            "$60",
+            "$32",
+            "supermarkets",
+            "hand-bound",
+            "5 premium stationery shops",
+            "$45"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fable & Flint should enter Country V with the luxury niche strategy or the mass-market strategy? Justify your answer.",
+        "model_answer": "The luxury niche option, $60 notebooks in 12 exclusive shops [k], matches the hand-bound positioning that earned $270,000 from 6,000 notebooks at $45 in Country X [app], protecting the premium brand image and preserving margins [an]. The mass-market option, supermarkets at $32 [k], could reach far more of the 400,000 potential buyers [app], but selling at $32, well below the domestic $45, risks cheapening the brand and undermining loyalty [an]. Overall, the luxury niche route is the stronger recommendation because it plays to Fable & Flint's craftsmanship, keeps the $45-to-$60 price ladder and avoids discounting [eval]; a limited supermarket line could follow later once Country V demand is proven [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "niche strategy targets a small premium segment with premium pricing",
+            "mass-market strategy targets the whole market with low prices"
+          ],
+          "application_max_2": [
+            "12 exclusive shops at $60 / brand built at $45, 6,000 notebooks",
+            "supermarkets at $32 vs 400,000 potential buyers"
+          ],
+          "analysis_max_2": [
+            "niche protects brand image and margins",
+            "mass-market maximises reach but risks brand erosion"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two strategies",
+            "sensible sequencing suggested (prove niche first, expand later)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60",
+            "$45",
+            "$32",
+            "400,000",
+            "12 exclusive shops",
+            "supermarkets",
+            "6,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_99",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Hearthside Foods is a private limited company in Country X producing chilled ready meals sold through 9 supermarkets. Last year it sold 250,000 meals at $5.40 each, generating $1.35 million in revenue, and employs 27 workers at its kitchen and cold-chain dispatch. The business wants to enter Country U, a neighbouring market three times the size of Country X, through an import distributor it has already signed.\n\nThe marketing manager must devise the marketing mix for Country U: either a premium range at $6.80 per meal targeted at affluent urban households, with gift-style packaging in specialist shops, or a family value range at $4.40 per meal aimed at price-sensitive shoppers in large supermarket chains. The distributor favours the family value option for the launch.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'marketing mix'.",
+        "model_answer": "The combination of elements a business uses to market its products, usually product, price, place and promotion, to achieve its marketing objectives [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "combination of elements used to market products",
+            "product, price, place and promotion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two elements of the marketing mix Hearthside Foods should consider for Country U.",
+        "model_answer": "Element 1: Price — the premium option charges $6.80 per meal while the family value option charges $4.40 [k], and Country U shoppers are reported to be price-sensitive, so pricing must match the target segment [app]. Element 2: Place — the meals could go through specialist shops or large supermarket chains [k], with the family value range gaining reach across a market three times the size of Country X [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price must reflect costs and what the target segment will pay",
+            "place/distribution must reach the target customers"
+          ],
+          "application_max_2": [
+            "$6.80 premium vs $4.40 family value / price-sensitive shoppers",
+            "specialist shops vs supermarket chains / market three times the size"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.80",
+            "$4.40",
+            "three times",
+            "supermarket",
+            "$5.40",
+            "$1.35 million",
+            "9 supermarkets"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Hearthside Foods could face entering Country U.",
+        "model_answer": "Problem 1: Country U shoppers are price-sensitive [k], so premium $6.80 meals may sell slowly and stock could build up in the distributor's freezers [app], cutting margins and potentially ending the trial with unsold inventory [an]. Problem 2: Relying on a single import distributor [k] gives that partner control over pricing and shelf placement [app], so Hearthside loses direct contact with Country U customers and may struggle to build its brand or gather feedback [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price-sensitivity limits demand for premium prices abroad",
+            "intermediaries control distribution and customer access"
+          ],
+          "application_max_2": [
+            "$6.80 premium meals may not sell to price-sensitive shoppers",
+            "single import distributor controls pricing/placement"
+          ],
+          "analysis_max_2": [
+            "excess stock and markdowns destroy trial economics",
+            "weak brand-building and no direct customer feedback"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "price-sensitive",
+            "$6.80",
+            "distributor",
+            "$4.40",
+            "Country U",
+            "supermarket"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hearthside Foods should launch the premium or the family value range in Country U? Justify your answer.",
+        "model_answer": "The family value range at $4.40 per meal [k] matches Country U's price-sensitive shoppers and the distributor's plan to list in supermarket chains [app], giving the best chance of high volume in a market three times the size of Country X [an]. The premium range at $6.80 [k] protects margins and suits affluent urban households, but the distributor doubts demand at that price and freezer stock could pile up unsold [app], forcing markdowns that destroy the premium positioning [an]. Overall, launching family value is the sensible first move because it maximises reach and builds operational scale in Country U, generating cash and brand recognition [eval]; a premium gift line can follow once the brand is established [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "family value range fits price-sensitive mass markets",
+            "premium range protects margins but limits volume"
+          ],
+          "application_max_2": [
+            "$4.40 family value / distributor favours it / supermarket chains",
+            "$6.80 premium / affluent urban households / doubts over demand"
+          ],
+          "analysis_max_2": [
+            "family value maximises volume and reach at scale",
+            "premium risks unsold stock and markdowns"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two options",
+            "sensible sequencing suggested (value range first, premium later)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4.40",
+            "$6.80",
+            "price-sensitive",
+            "supermarket",
+            "three times",
+            "$1.35 million",
+            "250,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_100",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Ironwood Smokehouse is a private limited company in Country X producing smoked sausages and cured meats sold through 11 delicatessens. Revenue last year was $420,000 from 168,000 packs sold at $2.50 each, and the business employs 14 workers across smoking, curing and packing. A food importer in Country S has shown strong interest in stocking Ironwood products in delicatessens and gourmet shops across that country.\n\nThe importer offers to buy 20,000 packs a year at $2.20 each, but exporting would cost $90,000 to set up and require local labelling in the partner's language. The owners are unsure whether this beats spending $30,000 on a domestic loyalty scheme and tasting evenings to deepen relationships with delicatessen partners and shoppers across the region.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'brand loyalty'.",
+        "model_answer": "The tendency of customers to keep buying the same brand repeatedly rather than switching to rivals, usually because of trust, satisfaction or attachment to it [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customers repeatedly buy the same brand",
+            "rather than switching to rival brands / because of trust or satisfaction"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways a domestic loyalty scheme could help Ironwood Smokehouse build customer loyalty.",
+        "model_answer": "Way 1: Points or discounts for repeat purchases [k] reward the habit behind 168,000 pack sales a year [app]. Way 2: Tasting evenings for loyal customers [k] build personal relationships and give shoppers direct reasons to keep choosing the brand at $2.50 per pack over rivals [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rewards/discounts encourage repeat purchases",
+            "events build relationships and deepen attachment to the brand"
+          ],
+          "application_max_2": [
+            "168,000 pack sales a year / 11 delicatessens",
+            "$2.50 per pack / shoppers choose it over rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "168,000 packs",
+            "11 delicatessens",
+            "$2.50",
+            "$420,000",
+            "loyalty",
+            "Ironwood",
+            "168,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Ironwood Smokehouse could face if it exports to Country S.",
+        "model_answer": "Problem 1: The $90,000 export setup cost [k] equals over a fifth of annual revenue, about 21% of $420,000 [app], consuming cash before a single pack is sold abroad and stretching the 14-worker operation [an]. Problem 2: The importer offers just $2.20 per pack [k], 30 cents below the domestic price of $2.50 [app], so margins thin exactly when new-market costs rise, risking losses on every export order [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "entering foreign markets requires significant upfront investment",
+            "exporters often accept lower prices/margins from intermediaries"
+          ],
+          "application_max_2": [
+            "$90,000 setup / about 21% of $420,000 revenue / 14 workers",
+            "$2.20 importer price / 30 cents below the domestic $2.50"
+          ],
+          "analysis_max_2": [
+            "cash drained before overseas sales begin",
+            "thin margins risk losses on export volume"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$2.20",
+            "$2.50",
+            "$420,000",
+            "Country S",
+            "14 workers",
+            "20,000 packs"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ironwood Smokehouse should export to Country S or invest in a domestic loyalty scheme? Justify your answer.",
+        "model_answer": "Exporting offers 20,000 packs a year at $2.20, about $44,000 in extra revenue [k], opening a new market beyond the 11 delicatessens [app], but the $90,000 setup would take more than 2 years of export revenue to recover [an]. The loyalty scheme costs just $30,000 [k] and should raise repeat purchases from the existing 168,000-pack base while deepening relationships with delicatessen partners [app], delivering steadier returns at lower risk [an]. Overall, investing in the domestic loyalty scheme is the better recommendation now [eval], because protecting and deepening the local 168,000-pack franchise is cheaper, faster and builds exactly the relationships that would make exporting viable later [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "exporting enters a new market but at high setup cost and lower price",
+            "loyalty scheme retains and deepens existing customers more cheaply"
+          ],
+          "application_max_2": [
+            "20,000 packs at $2.20 / about $44,000 extra revenue / $90,000 setup",
+            "$30,000 loyalty scheme / existing 168,000-pack base / 11 delicatessens"
+          ],
+          "analysis_max_2": [
+            "export investment recovers in over 2 years at $44,000 a year",
+            "loyalty delivers steadier returns at lower risk"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation between the two options",
+            "sequencing suggested (local loyalty now, export later)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$2.20",
+            "20,000 packs",
+            "$30,000",
+            "168,000",
+            "$420,000",
+            "11 delicatessens"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

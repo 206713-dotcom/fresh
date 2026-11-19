@@ -1,0 +1,982 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_81",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Harborlight Bakery is a sole trader business opened 6 years ago by Priya Raman, baking fresh sourdough loaves and buttery pastries in a rented high-street shop in a busy commuter town. The bakery employs 4 part-time assistants, sells to early-morning office workers and generated $180,000 in sales last year. Priya invested $25,000 of her own savings, works 60 hours a week and carries unlimited liability for all business debts, including the shop's second-hand oven and display cabinets.\n\nPriya's close friend Sofia Marino, a qualified pastry chef, wants to invest $20,000 to become an equal partner taking half of all future profits. Priya must decide whether to remain a sole trader or form a partnership, weighing the extra capital, new recipe ideas and shared workload against sharing profits and losing full control of daily decisions.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'sole trader'.",
+        "model_answer": "A business owned and controlled by one person who keeps all the profits but bears unlimited liability for the business's debts [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business owned and controlled by one person",
+            "keeps all profits / unlimited liability for debts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Priya Raman of remaining a sole trader rather than forming a partnership.",
+        "model_answer": "Advantage 1: Priya keeps all the profits [k], retaining the full benefit of $180,000 in annual sales rather than giving half to Sofia [app]. Advantage 2: She keeps complete control of the business [k], deciding menu, opening hours and suppliers herself without needing Sofia's agreement [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "keeps all profits rather than sharing them",
+            "full control of decisions / no partner agreement needed"
+          ],
+          "application_max_2": [
+            "$180,000 annual sales retained in full",
+            "equal partner taking half of profits",
+            "menu, opening hours and suppliers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$180,000", "Priya", "Sofia", "sourdough", "pastries", "bakery", "$25,000"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Priya Raman of remaining a sole trader.",
+        "model_answer": "Disadvantage 1: Unlimited liability [k], meaning her $25,000 savings and personal possessions could be seized to pay business debts if the bakery fails [app], leaving her in severe financial difficulty [an]. Disadvantage 2: Limited access to capital [k], because she can only invest what she has and cannot invite outside investors or issue shares [app], so expansion such as buying a second-hand oven is hard to fund [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "unlimited liability / personal assets at risk",
+            "limited access to capital for expansion"
+          ],
+          "application_max_2": [
+            "$25,000 of her own savings",
+            "unlimited liability for all business debts",
+            "second-hand oven and display cabinets"
+          ],
+          "analysis_max_2": [
+            "personal assets could be seized to pay creditors",
+            "restricted ability to fund expansion and grow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$25,000", "unlimited liability", "bakery", "$180,000", "60 hours", "part-time", "second-hand oven"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Priya Raman should form a partnership with Sofia Marino? Justify your answer.",
+        "model_answer": "An advantage of a partnership is the extra capital [k], since Sofia's $20,000 investment would raise total funds to $45,000 for new ovens and recipe development [app], spreading the financial risk across two owners [an]. A disadvantage is the loss of full control and shared profits [k], because Sofia would take half of future profits and a say in menu and hour decisions [app], reducing Priya's independence over the bakery she built over 6 years [an]. Overall, Priya should form the partnership [eval] because the $20,000 injection and Sofia's pastry expertise would ease the 60 hours workload and strengthen sales beyond $180,000 more than losing sole control would cost her [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra capital and shared risk from partnership",
+            "loss of sole control / profits shared with partner"
+          ],
+          "application_max_2": [
+            "Sofia's $20,000 investment",
+            "60 hours workload",
+            "$180,000 in sales",
+            "6 years of building the bakery"
+          ],
+          "analysis_max_2": [
+            "shared risk eases financial pressure on Priya",
+            "loss of independence and half of profits retained"
+          ],
+          "evaluation_max_2": [
+            "weighs extra capital and skills against reduced control and shared profits in her bakery context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$20,000", "Sofia", "pastry", "$180,000", "60 hours", "$25,000", "bakery"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_82",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Kestrel Cycle Works is a bicycle repair and assembly partnership run by brothers Danny and Aaron Cole for 7 years on a suburban industrial estate. The workshop employs 6 mechanics assembling mountain and commuter bikes for local retailers, generated $240,000 in sales last year and the brothers split profits equally between them. They remain personally liable for all business debts, including the lift equipment and any rent arrears.\n\nThe brothers want to open a second workshop across town costing $90,000, but the bank wants more security before approving the loan. They must decide whether to remain a partnership using a $45,000 bank loan, or instead incorporate as a private limited company and issue shares to raise the $90,000 needed for the expansion.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'partnership'.",
+        "model_answer": "A business owned by two or more people (usually up to 20) who share capital, profits, workload and liability, commonly governed by a deed of partnership [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owned by two or more people",
+            "shared profits, workload and liability / deed of partnership"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to the brothers of remaining a partnership rather than incorporating.",
+        "model_answer": "Advantage 1: The brothers keep all the profits between them [k], splitting the $240,000 in sales revenue equally rather than paying dividends to outside shareholders [app]. Advantage 2: A partnership has few legal formalities [k], so it is cheap to run without registering a company or filing public accounts [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profits kept and shared only between partners",
+            "few legal formalities / no public filing of accounts"
+          ],
+          "application_max_2": [
+            "$240,000 in sales split equally",
+            "incorporation would require filed accounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Danny", "Aaron", "$240,000", "partnership", "Kestrel", "$90,000", "mechanics"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to the brothers of remaining a partnership.",
+        "model_answer": "Disadvantage 1: They remain personally liable for all business debts [k], so Danny and Aaron's personal savings and property could be used to pay the lift equipment and rent arrears [app], risking serious personal financial loss [an]. Disadvantage 2: Difficulty raising large sums of capital [k], so funding the $90,000 second workshop through a single $45,000 loan is risky [app], potentially leaving the expansion underfunded or abandoned [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "partners personally/unlimited liable for debts",
+            "difficulty raising large capital sums"
+          ],
+          "application_max_2": [
+            "lift equipment and rent arrears",
+            "$90,000 second workshop cost",
+            "$45,000 bank loan"
+          ],
+          "analysis_max_2": [
+            "personal assets exposed to business creditors",
+            "expansion may be underfunded or cancelled"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$90,000", "$45,000", "personally liable", "Danny", "Aaron", "second workshop", "Kestrel"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the brothers should convert Kestrel Cycle Works into a private limited company? Justify your answer.",
+        "model_answer": "An advantage of incorporating is limited liability [k], because Danny and Aaron would risk only their investment and shares could raise the full $90,000 without further personal borrowing [app], protecting their homes while funding the second workshop [an]. A disadvantage is the extra legal paperwork and disclosure [k], because private limited companies must register and file accounts [app], adding costs that eat into profits from $240,000 of sales [an]. Overall, the brothers should incorporate [eval] because the expansion depends on raising $90,000 and limited liability protects them if the new workshop fails in its first year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets",
+            "extra formalities / filed accounts and costs"
+          ],
+          "application_max_2": [
+            "$90,000 second workshop cost",
+            "$45,000 bank loan",
+            "$240,000 of sales",
+            "Danny and Aaron Cole"
+          ],
+          "analysis_max_2": [
+            "personal homes protected while expansion proceeds",
+            "compliance costs reduce profits available for reinvestment"
+          ],
+          "evaluation_max_2": [
+            "weighs funding need and liability protection against disclosure and compliance costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$90,000", "$45,000", "$240,000", "Kestrel", "Danny", "second workshop", "private limited company"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_83",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Saffron Thread Textiles is a private limited company founded 10 years ago by the Rahman family, weaving cotton fabrics for garment exporters in a purpose-built mill with two production sheds and its own dyeing unit. The company employs 85 factory workers, made $420,000 profit last year and its 400,000 shares are held by 12 family members. The family wants to buy 2 modern weaving machines costing $1,800,000 in total this year to meet a large export order from a national retail chain.\n\nThe directors are debating whether to remain a private limited company and pay for the machines using retained profit over several years, or become a public limited company selling shares on the Stock Exchange to raise $2,500,000 from outside investors in a single public issue.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'shareholder'.",
+        "model_answer": "A person or organisation that owns at least one share in a company and is entitled to vote at meetings and to a share of profits as dividends [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owns at least one share in a company",
+            "entitled to vote and receive dividends"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to the Rahman family of remaining a private limited company.",
+        "model_answer": "Advantage 1: The family keeps full control [k], as the 400,000 shares are held by only 12 family members who decide every major issue [app]. Advantage 2: Retained profits can be reinvested [k], so the $420,000 made last year can build toward the $1,800,000 machines without paying interest to a bank [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "family retains control and voting power",
+            "retained profit reinvested without interest payments"
+          ],
+          "application_max_2": [
+            "400,000 shares held by 12 family members",
+            "$420,000 profit retained",
+            "$1,800,000 machines"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Rahman", "400,000", "12 family members", "$420,000", "Saffron", "$1,800,000", "weaving machines"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to the Rahman family of remaining a private limited company.",
+        "model_answer": "Disadvantage 1: Limited access to capital [k], because $420,000 profit is less than a quarter of the $1,800,000 needed for the weaving machines [app], delaying modernisation and the export order [an]. Disadvantage 2: Shares cannot be traded on the Stock Exchange [k], making it slow and difficult for the family to raise cash by selling shares [app], restricting future growth options [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited access to large-scale capital",
+            "shares cannot be sold on the Stock Exchange"
+          ],
+          "application_max_2": [
+            "$420,000 profit versus $1,800,000 machines",
+            "export order at risk",
+            "Stock Exchange mentioned in stem"
+          ],
+          "analysis_max_2": [
+            "modernisation delayed and export order endangered",
+            "restricted ability to raise cash and grow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$1,800,000", "$420,000", "Stock Exchange", "weaving machines", "85 factory workers", "garment exporters", "$2,500,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saffron Thread Textiles should become a public limited company? Justify your answer.",
+        "model_answer": "An advantage of going public is the large capital raised [k], because selling shares on the Stock Exchange could raise $2,500,000 from outside investors [app], funding the two weaving machines immediately and meeting the export order [an]. A disadvantage is the loss of control [k], because the 12 family members would share ownership and voting rights with outside investors [app], weakening family influence over strategy and creating pressure to pay dividends [an]. Overall, the family should remain a private limited company [eval] because retaining control plus reinvesting $420,000 retained profit, with a bank loan if needed, protects family ownership even if the machines take longer to buy [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large capital from public share issue",
+            "loss of control / pressure to pay dividends"
+          ],
+          "application_max_2": [
+            "$2,500,000 public issue",
+            "$1,800,000 machines",
+            "12 family members",
+            "$420,000 retained profit"
+          ],
+          "analysis_max_2": [
+            "immediate funding meets export order and modernises the mill",
+            "family influence and profits diluted by outside shareholders"
+          ],
+          "evaluation_max_2": [
+            "weighs loss of family control against immediate capital and the export order opportunity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$2,500,000", "$1,800,000", "12 family members", "$420,000", "Rahman", "Stock Exchange", "weaving machines"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_84",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Copper Kettle Cafe is an independent coffee shop in a university district run by owner Marcus Lee for 4 years. It employs 5 baristas, sells around 90,000 cups a year at an average price of $3.50 and generated $310,000 in revenue last year from students and university staff. Marcus has heard about the Bean & Brew franchise, which charges a $45,000 initial fee plus 6% royalty on all sales, paid monthly to head office.\n\nThe franchisor offers a recognised brand name, staff training and national marketing support aimed at students. Marcus must decide whether to stay independent or pay the franchise fees, weighing the marketing advantages, training and proven menu against higher costs and restrictions on menu changes, opening hours and pricing.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'franchisor'.",
+        "model_answer": "The owner of a brand and business model that grants franchisees the right to trade under its name and systems in return for fees and ongoing royalty payments [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owner of the brand and business model",
+            "grants right to trade under its name for fees / royalties"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Marcus of buying the Bean & Brew franchise rather than staying independent.",
+        "model_answer": "Advantage 1: A recognised brand attracts customers [k], so Marcus could capture more of the 90,000 cups a year he already sells and win new student customers [app]. Advantage 2: Training and marketing support are provided [k], helping his 5 baristas work consistently and gain visibility through national advertising [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "recognised brand attracts more customers",
+            "franchisor provides training and marketing support"
+          ],
+          "application_max_2": [
+            "90,000 cups a year already sold",
+            "5 baristas",
+            "national marketing support aimed at students"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Marcus", "90,000 cups", "Bean & Brew", "5 baristas", "$310,000", "university district", "Copper Kettle"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Marcus of buying the franchise.",
+        "model_answer": "Disadvantage 1: High initial fee [k], because $45,000 is a large upfront payment for a cafe that generated $310,000 in revenue [app], reducing the cash Marcus holds to pay rent, wages and suppliers [an]. Disadvantage 2: Ongoing royalty payments [k], because 6% of $310,000 revenue equals $18,600 a year paid to the franchisor [app], continually reducing profit available for reinvestment [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high initial franchise fee",
+            "ongoing royalties charged on sales revenue"
+          ],
+          "application_max_2": [
+            "$45,000 initial fee",
+            "6% royalty on $310,000 revenue",
+            "$18,600 a year payable to franchisor"
+          ],
+          "analysis_max_2": [
+            "upfront fee reduces working capital for rent and wages",
+            "royalties reduce profit available for reinvestment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$45,000", "6%", "$310,000", "90,000", "Marcus", "baristas", "$3.50"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marcus should buy the Bean & Brew franchise? Justify your answer.",
+        "model_answer": "An advantage of buying the franchise is proven support and brand pull [k], because a recognised name with staff training could push sales beyond $310,000 and reduce mistakes in a competitive university district [app], giving Marcus a faster route to consistent revenue [an]. A disadvantage is the combined cost [k], because the $45,000 fee plus $18,600 a year in royalties (6% of $310,000) would consume much of any extra profit [app], leaving little reward for the higher sales he works to achieve [an]. Overall, Marcus should remain independent [eval] because the $18,600 annual royalties plus the $45,000 fee outweigh the marketing benefit when his revenue was $310,000 last year and his own menu already attracts students [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "franchisor support, brand and training advantages",
+            "initial fee and ongoing royalty costs"
+          ],
+          "application_max_2": [
+            "$45,000 initial fee",
+            "$18,600 annual royalty (6% of $310,000)",
+            "$310,000 revenue last year",
+            "university district competition"
+          ],
+          "analysis_max_2": [
+            "brand could lift sales and reduce errors",
+            "royalties and fee consume the extra profit"
+          ],
+          "evaluation_max_2": [
+            "compares royalty cost against marketing benefit at his current revenue level"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$45,000", "$310,000", "90,000", "6%", "university district", "baristas", "Bean & Brew"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_85",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Redbank Cement is a private limited company established 18 years ago by the Okafor family, operating a cement packing plant outside the capital city with its own rail siding and warehouse. It employs 70 workers, produces 60,000 tonnes of cement a year and earned $5,400,000 in revenue last year from domestic buyers. Haiphong Materials, a construction group from abroad, wants to form a 50/50 joint venture with Redbank to build a $6,000,000 export grinding plant for overseas markets.\n\nThe overseas partner would bring modern grinding technology, shipping links and half the capital. Redbank must decide whether to accept the joint venture and share profits equally, or expand alone using a $3,000,000 bank loan that keeps full ownership but doubles its debt burden.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two reasons why two businesses might form a joint venture.",
+        "model_answer": "To share the costs and risks of a large project [1]; to combine each partner's technology or local market knowledge [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share costs and risks of a large project",
+            "combine technology / expertise / local knowledge"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Redbank Cement of accepting the joint venture offer from Haiphong Materials.",
+        "model_answer": "Advantage 1: The $6,000,000 plant can be funded with shared capital [k], so Redbank only needs to find $3,000,000 rather than finance the whole project alone [app]. Advantage 2: Access to Haiphong's technology and shipping links [k], giving Redbank's 60,000 tonnes of cement a year a route into overseas construction markets [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "costs and capital of project shared",
+            "partner brings technology, expertise and market access"
+          ],
+          "application_max_2": [
+            "$6,000,000 grinding plant cost",
+            "$3,000,000 Redbank share",
+            "60,000 tonnes of cement",
+            "Haiphong shipping links"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Redbank", "$6,000,000", "$3,000,000", "60,000 tonnes", "Haiphong", "Okafor", "rail siding"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Redbank Cement of accepting the joint venture.",
+        "model_answer": "Disadvantage 1: Profits are shared equally [k], so half of all export profit must pass to Haiphong Materials [app], reducing the return the Okafor family keeps from their own plant [an]. Disadvantage 2: Possible disagreements between partners [k], which could delay the $6,000,000 plant and overseas shipments [app], threatening supply contracts and future revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profits shared with the partner",
+            "risk of disputes or slower joint decisions"
+          ],
+          "application_max_2": [
+            "50/50 profit split",
+            "$6,000,000 grinding plant",
+            "Haiphong Materials as partner"
+          ],
+          "analysis_max_2": [
+            "family keeps only half of export profits",
+            "delays could lose supply contracts and revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["50/50", "$6,000,000", "Haiphong", "grinding plant", "$5,400,000", "70 workers", "export"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redbank Cement should form the joint venture with Haiphong Materials? Justify your answer.",
+        "model_answer": "An advantage of the joint venture is half the capital burden [k], because Haiphong would bring $3,000,000 and shipping links for the $6,000,000 export grinding plant [app], letting Redbank enter overseas markets without doubling its debt burden [an]. A disadvantage is shared ownership and profits [k], because a 50/50 split means the family gives up half the rewards and half the control of the plant [app], risking conflict over decisions and dividend policy [an]. Overall, Redbank should accept the joint venture [eval] because the export plant takes it beyond 60,000 tonnes of domestic sales and the debt-free route protects its $5,400,000 revenue base [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital and risk shared with partner",
+            "shared control and halved profits"
+          ],
+          "application_max_2": [
+            "$3,000,000 Haiphong contribution",
+            "$6,000,000 export grinding plant",
+            "50/50 split",
+            "$5,400,000 current revenue"
+          ],
+          "analysis_max_2": [
+            "export expansion without extra debt",
+            "conflict risk and halved rewards for the family"
+          ],
+          "evaluation_max_2": [
+            "weighs shared profit and control against debt-free export expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$6,000,000", "$3,000,000", "50/50", "60,000 tonnes", "$5,400,000", "Haiphong", "joint venture"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_86",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Brightpath Electrical Services is an unincorporated business run by electrician Tom Okoro for 9 years, installing wiring and repairing circuits for homes and small shops across one busy regional town. He employs 3 apprentices, invoiced $150,000 last year and operates as a sole trader without a separate legal identity from himself, meaning his house and savings stand behind every contract he signs with customers in town.\n\nTom wants to take on bigger commercial contracts worth up to $400,000 for new shop fit-outs, but larger clients want proof of liability protection and valid insurance certificates before signing any agreement with him. He must decide whether to remain unincorporated or register as a private limited company with limited liability and separate legal status.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'incorporated business'.",
+        "model_answer": "A business registered as a separate legal entity from its owners, able to own property, sue and be sued, with owners protected by limited liability [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "registered as separate legal entity from owners",
+            "owners enjoy limited liability / can own property, sue and be sued"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Tom Okoro of registering Brightpath Electrical Services as a private limited company.",
+        "model_answer": "Advantage 1: Limited liability [k], so Tom's house and savings would be protected if a contract worth up to $400,000 runs into trouble [app]. Advantage 2: A separate legal identity [k], which reassures commercial clients who already want proof of liability protection before signing fit-out contracts [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets",
+            "separate legal identity / greater client credibility"
+          ],
+          "application_max_2": [
+            "$400,000 commercial fit-out contracts",
+            "clients want proof of liability protection"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Tom Okoro", "$400,000", "Brightpath", "$150,000", "3 apprentices", "9 years", "unincorporated"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Tom Okoro of becoming a private limited company.",
+        "model_answer": "Disadvantage 1: Extra costs and paperwork [k], because registration fees and annual filed accounts reduce the $150,000 he invoiced last year [app], leaving less cash for wages and tools [an]. Disadvantage 2: Loss of privacy [k], because rival electricians can view his filed accounts showing his margins [app], making it easier for them to undercut his prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "registration and filing costs / paperwork burden",
+            "accounts filed publicly / reduced privacy"
+          ],
+          "application_max_2": [
+            "$150,000 invoiced last year",
+            "3 apprentices",
+            "regional town competition"
+          ],
+          "analysis_max_2": [
+            "less cash available for wages and tools",
+            "rivals can undercut his prices"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$150,000", "Tom Okoro", "3 apprentices", "9 years", "unincorporated", "fit-outs", "Brightpath"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tom Okoro should incorporate Brightpath Electrical Services as a private limited company? Justify your answer.",
+        "model_answer": "An advantage of incorporation is limited liability [k], because clients demanding proof of protection could sign contracts up to $400,000, nearly three times the $150,000 invoiced last year [app], without risking Tom's home for every job [an]. A disadvantage is the added cost and disclosure [k], because registering and filing accounts adds fees and reduces privacy [app], eating into profits just as he expands [an]. Overall, Tom should incorporate [eval] because the $400,000 commercial contracts he wants are only safely possible with limited liability and separate legal status [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability / separate legal status advantages",
+            "registration fees and public disclosure disadvantages"
+          ],
+          "application_max_2": [
+            "$400,000 commercial fit-out contracts",
+            "$150,000 invoiced last year",
+            "clients want liability protection proof"
+          ],
+          "analysis_max_2": [
+            "home and savings protected while turnover grows",
+            "fees and disclosure reduce confidentiality and cash"
+          ],
+          "evaluation_max_2": [
+            "weighs protection and credibility against fees and disclosure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$400,000", "$150,000", "Tom Okoro", "Brightpath", "liability protection", "unincorporated", "3 apprentices"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_87",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Larkspur Dairy is a family partnership operated for 12 years by sisters Hannah and Ruth Whitmore, farming 180 dairy cows and bottling fresh milk that it sells to 25 local shops and a weekly farmers' market each Saturday morning. The partnership employs 8 workers, generated $380,000 in sales last year and the sisters share all profits equally and carry unlimited liability for the dairy's debts, including feed supplier bills and vet fees.\n\nA regional retailer has offered Larkspur a $200,000 supply contract over 3 years, but the sisters need new pasteurising equipment costing $120,000. They must decide whether to fund the equipment personally as partners or form a private limited company giving them limited liability protection for their homes and savings.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'limited liability'.",
+        "model_answer": "The protection enjoyed by owners of incorporated companies, who can only lose the money they invested and are not personally responsible for the company's debts [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owners can only lose invested money",
+            "not personally responsible for business debts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to the Whitmore sisters of forming a private limited company.",
+        "model_answer": "Advantage 1: Their homes and savings are protected [k], so if the $120,000 pasteurising equipment debt cannot be repaid, creditors can only claim company assets [app]. Advantage 2: The $200,000 supply contract looks more credible [k], as a limited company reassures the regional retailer they are a reliable, established supplier [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets",
+            "greater credibility with larger customers"
+          ],
+          "application_max_2": [
+            "$120,000 pasteurising equipment",
+            "$200,000 supply contract",
+            "regional retailer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Larkspur", "$120,000", "$200,000", "pasteurising", "Whitmore", "3 years", "180 dairy cows"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to the Whitmore sisters of forming a private limited company.",
+        "model_answer": "Disadvantage 1: More paperwork and filing duties [k], so annual accounts and registration costs reduce the $380,000 sales revenue [app], leaving less for wages, feed and vet fees [an]. Disadvantage 2: Loss of privacy and informality [k], as the shops and rival dairies could view filed accounts showing their margins [app], weakening their negotiating position on milk prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "compliance paperwork and filing costs",
+            "accounts publicly available / reduced privacy"
+          ],
+          "application_max_2": [
+            "$380,000 sales revenue",
+            "25 local shops",
+            "feed supplier bills and vet fees"
+          ],
+          "analysis_max_2": [
+            "less cash for daily running costs",
+            "weaker negotiating position with shops"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$380,000", "25 local shops", "Larkspur", "$200,000", "$120,000", "Whitmore", "12 years"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think limited liability is the most important reason for the Whitmore sisters to form a private limited company? Justify your answer.",
+        "model_answer": "Limited liability does protect the sisters [k], because under unlimited liability their homes would back the $120,000 equipment loan and any shortfall on the $200,000 contract [app], risking family security for the business [an]. However, other reasons also matter [k], because a limited company's separate identity can win bigger retail contracts and easier bank finance [app], not just liability protection [an]. Overall, limited liability is the main reason in this case [eval] because the sisters' homes are directly exposed by the $120,000 purchase and the 3 years commitment, so incorporation is worthwhile [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects home and personal savings",
+            "other incorporation benefits (credibility, finance access) also exist"
+          ],
+          "application_max_2": [
+            "$120,000 equipment loan",
+            "$200,000 supply contract",
+            "3 years commitment",
+            "unlimited liability in stem"
+          ],
+          "analysis_max_2": [
+            "personal assets directly at risk without incorporation",
+            "credibility and finance gains are helpful but secondary"
+          ],
+          "evaluation_max_2": [
+            "judges personal asset exposure as the decisive factor over status and finance benefits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$120,000", "$200,000", "3 years", "limited liability", "Whitmore", "homes", "Larkspur"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_88",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Alderney Freight is a private limited company founded 15 years ago by the Duarte family, operating a fleet of 28 trucks carrying building materials and steel coils nationwide for construction firms and suppliers. It employs 55 drivers and dispatch staff, earned $720,000 profit last year and its 60 shareholders hold 300,000 shares between them in equal proportions. TransGlobal Freight Plc, a national carrier, has offered to buy all the shares for $4,200,000, a 10% premium on the current market value.\n\nThe Duarte family must decide whether to accept the takeover offer, cashing in their shares with the premium, or reject it and keep Alderney as an independent private company managed daily by the family. The premium offer expires in 30 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'dividend'.",
+        "model_answer": "A payment made to shareholders from a company's profits as a return on their investment, usually expressed per share and decided by the directors [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "payment to shareholders from profits",
+            "return on investment / per share / decided by directors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to the Duarte family of rejecting TransGlobal's offer and remaining a private limited company.",
+        "model_answer": "Advantage 1: The family keeps full control and independence [k], continuing to run the 28 trucks and national deliveries as it chooses [app]. Advantage 2: They keep future profits [k], retaining the $720,000 earned last year rather than exchanging it for one lump-sum offer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained control and strategic independence",
+            "retain future profits"
+          ],
+          "application_max_2": [
+            "28 trucks nationwide",
+            "$720,000 profit last year",
+            "$4,200,000 one-off offer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Alderney", "$4,200,000", "$720,000", "28 trucks", "Duarte", "300,000 shares", "TransGlobal"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to shareholders of rejecting the TransGlobal offer.",
+        "model_answer": "Disadvantage 1: Missing a 10% premium [k], so refusing $4,200,000 now means shareholders forgo a guaranteed instant gain [app], with no certainty future profits will match that sum [an]. Disadvantage 2: Competing as a small firm [k], with only 28 trucks against TransGlobal's national network [app], price competition could cut the $720,000 profit and shareholder returns [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "missing the premium / opportunity cost of rejection",
+            "smaller scale versus a national competitor"
+          ],
+          "application_max_2": [
+            "10% premium on $4,200,000",
+            "28 trucks versus national network",
+            "$720,000 profit",
+            "30 days to decide"
+          ],
+          "analysis_max_2": [
+            "forgone certain gain against uncertain future profits",
+            "price pressure erodes profit and returns"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["10% premium", "$4,200,000", "28 trucks", "55 drivers", "$720,000", "30 days", "TransGlobal"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Duarte family should sell Alderney Freight to TransGlobal Freight Plc? Justify your answer.",
+        "model_answer": "An advantage of selling is a guaranteed, premium payout [k], because $4,200,000 including a 10% premium gives immediate, risk-free value to all shareholders [app], freeing the family from fleet and driver risks [an]. A disadvantage is losing control and future upside [k], because Alderney earned $720,000 last year and independence lets the family keep growing it [app], surrendering that potential to TransGlobal [an]. Overall, the family should reject the offer [eval] because $720,000 annual profit and family control suggest lasting value greater than the one-off $4,200,000, although the 30 days deadline means they must decide quickly [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "guaranteed payout with premium",
+            "loss of control and future earnings potential"
+          ],
+          "application_max_2": [
+            "$4,200,000 including 10% premium",
+            "$720,000 annual profit",
+            "30 days deadline",
+            "28 trucks"
+          ],
+          "analysis_max_2": [
+            "risk-free immediate value for shareholders",
+            "independence preserves future growth and profits"
+          ],
+          "evaluation_max_2": [
+            "weighs guaranteed payout against control and future earnings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$4,200,000", "10% premium", "$720,000", "28 trucks", "30 days", "TransGlobal", "Duarte"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_89",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Northgate Water Corporation is a public corporation supplying water to 240,000 households and 9,000 businesses across a coastal region covering three districts and two islands. It employs 600 staff, spent $50,000,000 last year upgrading pipes and treatment plants and its prices are set by the government water regulator to keep bills affordable for low-income families in the region. The government is considering selling the corporation to private investors.\n\nPrivate buyers say they would invest $80,000,000 over 4 years to cut leakage by 30%, but warn bills may rise for households and businesses in some areas. The board and union leaders want to keep Northgate in public ownership, arguing water is an essential service that should not be run for private profit.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'public corporation'.",
+        "model_answer": "A business owned and controlled by the government on behalf of the public, usually created by law to provide essential services without the aim of maximising profit [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owned and controlled by the government on behalf of the public",
+            "provides essential services / not for profit maximisation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to the region of Northgate remaining in public ownership.",
+        "model_answer": "Advantage 1: Prices can be kept affordable [k], so the government water regulator can hold down bills for 240,000 households and 9,000 businesses [app]. Advantage 2: Investment focuses on service, not dividends [k], so the $50,000,000 spent on pipes and treatment plants prioritises reliability over shareholder returns [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "regulated affordable prices",
+            "investment for service rather than profit"
+          ],
+          "application_max_2": [
+            "240,000 households and 9,000 businesses",
+            "$50,000,000 pipe and treatment upgrades",
+            "government water regulator"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Northgate", "240,000", "9,000 businesses", "$50,000,000", "regulator", "600 staff", "coastal region"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to the region of Northgate remaining in public ownership.",
+        "model_answer": "Disadvantage 1: Limited access to capital [k], so the promised $80,000,000 private investment across 4 years could not come from public funds [app], slowing the planned 30% leakage cut [an]. Disadvantage 2: Risk of inefficiency [k], because public corporations face weak competitive pressure and bureaucratic delays [app], leaving 600 staff potentially underdeployed and costs high [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited public capital for investment",
+            "inefficiency / weak competitive pressure and bureaucracy"
+          ],
+          "application_max_2": [
+            "$80,000,000 over 4 years",
+            "30% leakage cut",
+            "600 staff"
+          ],
+          "analysis_max_2": [
+            "leakage cut delayed, water loss and costs rise",
+            "high costs passed to taxpayers and households"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$80,000,000", "4 years", "30%", "600 staff", "public ownership", "$50,000,000", "240,000 households"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northgate Water Corporation should remain in public ownership? Justify your answer.",
+        "model_answer": "An argument for public ownership is fairness of access [k], because a government-owned corporation can price water affordably for 240,000 households and 9,000 businesses [app], preventing the bill rises private buyers have warned about [an]. An argument for sale is faster funding [k], because $80,000,000 of private investment over 4 years could cut leakage by 30% far sooner [app], modernising ageing pipes quicker [an]. Overall, Northgate should remain in public ownership [eval] because water is an essential service and the regulator plus $50,000,000 of recent public upgrades show public delivery can work without private profit motives [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "affordable pricing / universal service under public ownership",
+            "private investment and efficiency argument for sale"
+          ],
+          "application_max_2": [
+            "240,000 households and 9,000 businesses",
+            "$80,000,000 over 4 years",
+            "30% leakage cut",
+            "$50,000,000 recent upgrades"
+          ],
+          "analysis_max_2": [
+            "public ownership prevents profit-driven bill rises",
+            "sale could modernise pipes faster"
+          ],
+          "evaluation_max_2": [
+            "weighs affordability and accountability against funding and efficiency from a sale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["240,000", "9,000", "$80,000,000", "4 years", "30%", "$50,000,000", "public ownership"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_90",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Eastvale City Council runs its own refuse collection as a municipal service, employing 120 council workers and collecting waste and recycling from 95,000 households each week across 14 districts and housing estates. The service cost taxpayers $9,600,000 last year and missed 8% of scheduled collections during a staff shortage last winter, leaving streets overflowing for several days in some districts. CleanRight Ltd, a private waste company, has offered to run the service for $8,400,000 a year with strict performance targets and fines for missed collections.\n\nThe council must decide by December whether to keep refuse collection as a municipal service or contract it to CleanRight, balancing potential savings of $1,200,000 a year against possible job losses, lower local wages and reduced local accountability to residents.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two types of business organisation in the public sector.",
+        "model_answer": "Public corporations [1]; municipal services run by local authorities [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "public corporations",
+            "municipal services (run by local authorities/councils)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Eastvale residents of keeping refuse collection as a municipal service.",
+        "model_answer": "Advantage 1: Direct accountability to residents [k], because the council must answer to voters at elections for the service used by 95,000 households [app]. Advantage 2: Local control of standards and jobs [k], so the 120 council workers can be directed to fix the 8% missed collections quickly [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "direct democratic accountability to residents",
+            "local control of standards and employment"
+          ],
+          "application_max_2": [
+            "95,000 households",
+            "120 council workers",
+            "8% missed collections"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Eastvale", "95,000 households", "120 council workers", "8%", "municipal service", "$9,600,000", "refuse collection"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Eastvale City Council of keeping refuse collection in-house.",
+        "model_answer": "Disadvantage 1: Higher cost to taxpayers [k], because $9,600,000 a year is $1,200,000 more than CleanRight's $8,400,000 offer [app], money unavailable for roads and parks [an]. Disadvantage 2: Capacity and staffing problems [k], shown by 8% missed collections during the staff shortage [app], damaging residents' health and satisfaction [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher cost than private alternative",
+            "staffing and capacity shortfalls"
+          ],
+          "application_max_2": [
+            "$9,600,000 in-house cost",
+            "$8,400,000 CleanRight offer",
+            "$1,200,000 annual difference",
+            "8% missed collections"
+          ],
+          "analysis_max_2": [
+            "less money available for other council services",
+            "health and resident satisfaction damage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$9,600,000", "$8,400,000", "$1,200,000", "8%", "CleanRight", "120 council workers", "Eastvale"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Eastvale City Council should contract refuse collection to CleanRight Ltd? Justify your answer.",
+        "model_answer": "An advantage of contracting out is the clear saving [k], because the $1,200,000 a year difference between $9,600,000 and $8,400,000 frees money for other services [app], and strict performance targets with fines should end missed collections [an]. A disadvantage is the loss of local control [k], because CleanRight is a private firm whose main aim is profit [app], risking job cuts, lower wages and weaker accountability to 95,000 households [an]. Overall, the council should contract to CleanRight [eval] because the $1,200,000 annual saving plus penalty-backed targets directly fix the 8% missed collections, provided the contract protects the 120 workers and service levels [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost saving with performance targets",
+            "loss of local control / private profit motive"
+          ],
+          "application_max_2": [
+            "$1,200,000 annual saving",
+            "$9,600,000 versus $8,400,000",
+            "8% missed collections",
+            "120 council workers"
+          ],
+          "analysis_max_2": [
+            "targets and fines should restore reliable collections",
+            "risk of job losses and weaker accountability"
+          ],
+          "evaluation_max_2": [
+            "weighs savings and performance targets against accountability and job risks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["CleanRight", "$1,200,000", "$9,600,000", "$8,400,000", "8%", "95,000 households", "120 council workers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

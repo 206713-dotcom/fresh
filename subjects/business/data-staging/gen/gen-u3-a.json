@@ -1,0 +1,1221 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_41",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Amber Grove Juices is a private limited company in Country X that presses cold-pressed mango and passionfruit juice. Sales of its signature mango juice have risen from 40,000 bottles in 2023 to 68,000 bottles in 2025, a growth-stage product life cycle. The owner, Lena Duarte, employs 14 staff and sells mainly through 30 independent grocers and one supermarket chain across two regions.\n\nThe supermarket has offered to stock mango juice in 45 more stores if Amber Grove installs a second bottling line costing $90,000. Alternatively, Lena could spend $18,000 on a regional television and social media advertising campaign to lift sales further. Either option risks stretching cash flow this year, and the mango juice is entering late growth, so she must decide quickly before summer demand peaks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'growth stage' of the product life cycle.",
+        "model_answer": "The growth stage is the stage of the product life cycle when sales rise rapidly and the product becomes more widely known, so revenue and usually profit increase [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sales rise rapidly after introduction as the product gains acceptance",
+            "revenue and profit increase as sales grow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Amber Grove Juices of its mango juice being in the growth stage.",
+        "model_answer": "Benefit 1: Rising sales grow revenue [k], because bottle sales rose from 40,000 in 2023 to 68,000 in 2025 [app]. Benefit 2: A strong growth-stage product attracts bigger distribution deals [k], shown by the supermarket offer to stock mango juice in 45 more stores [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "growth stage brings rising revenue/profit",
+            "growth-stage popularity attracts distributors, retailers and wider acceptance"
+          ],
+          "application_max_2": [
+            "bottle sales rose from 40,000 in 2023 to 68,000 in 2025",
+            "supermarket offer to stock mango juice in 45 more stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "mango juice",
+            "40,000",
+            "68,000",
+            "2023",
+            "2025",
+            "45 more stores",
+            "supermarket",
+            "growth-stage"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Amber Grove Juices might face as its mango juice enters late growth.",
+        "model_answer": "Problem 1: Production capacity may not keep pace with demand [k], because sales rose from 40,000 to 68,000 bottles a year on one line [app], risking empty shelves that could cost the new supermarket contract and the 30 grocers [an]. Problem 2: Cash flow could be stretched by expansion [k], because the $90,000 bottling line and $18,000 campaign both absorb cash this year [app], leaving Amber Grove short of working capital before summer demand peaks [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rapid growth strains capacity/production",
+            "growth-stage expansion pressures cash flow/working capital"
+          ],
+          "application_max_2": [
+            "sales rose from 40,000 to 68,000 bottles",
+            "$90,000 bottling line and $18,000 campaign absorb cash this year"
+          ],
+          "analysis_max_2": [
+            "risk losing the new supermarket contract and existing 30 grocers if stock runs out",
+            "short of working capital before summer demand peaks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "40,000",
+            "68,000",
+            "$90,000",
+            "$18,000",
+            "supermarket",
+            "cash flow",
+            "45 more stores",
+            "late growth"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Amber Grove Juices should install the second bottling line rather than spend $18,000 on advertising? Justify your answer.",
+        "model_answer": "One side is that the second bottling line locks in growth [k], because the supermarket will stock mango juice in 45 more stores once it is installed [app], turning current capacity into supply for over two regions and converting 68,000-bottle sales into lasting profit [an]. On the other hand, advertising is far cheaper [k]: $18,000 spreads the word across the region without borrowing and keeps options open if growth slows [app], making it a lower-risk way to push mango juice before it exits late growth [an]. Overall, the bottling line is the better choice because $90,000 unlocks 45 more stores of guaranteed distribution, a much larger prize than the $18,000 campaign can deliver [eval], although Amber Grove should only proceed if cash flow stays positive and sales hold above 60,000 bottles a year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bottling line secures distribution and capacity for growth",
+            "advertising is cheaper and flexible but less certain"
+          ],
+          "application_max_2": [
+            "supermarket offer of 45 more stores tied to installing the line",
+            "$18,000 advertising option vs $90,000 bottling line cost"
+          ],
+          "analysis_max_2": [
+            "guaranteed extra distribution could convert growth-stage sales into lasting profit",
+            "advertising spreads awareness with less debt but does not add capacity"
+          ],
+          "evaluation_max_2": [
+            "weighs guaranteed distribution against cheaper flexible spending",
+            "justified choice with a cash-flow safeguard condition"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$18,000",
+            "45 more stores",
+            "supermarket",
+            "68,000",
+            "late growth",
+            "mango juice",
+            "cash flow"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_42",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Old Harbour Biscuits is a partnership in Country X making digestive and ginger biscuits since 2004. Its best-selling digestive biscuit sells 120,000 packs a year at $2.40 each; after years of maturity, sales have been flat for 3 years and the market is saturated. The two partners employ 22 staff and supply 55 independent grocers and 8 cafes across the southern region, with profits easing from $96,000 to $70,000 a year.\n\nThe partners are considering two options: relaunching the digestive biscuit with three new flavours and a modern wrapper costing $45,000, or cutting the price by 15% to $2.04 to stimulate sales. Their main competitor cut prices last year and gained 8% market share. They cannot afford both options and must decide by the end of the month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'saturation' in the product life cycle.",
+        "model_answer": "Saturation is the stage of the product life cycle when the market is full of the product, sales stop rising and competition is intense, so revenue flattens [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "market is full / market no longer growing",
+            "sales flatten and competition is intense"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems a saturated market creates for Old Harbour Biscuits.",
+        "model_answer": "Problem 1: Flat sales cap revenue [k], because digestive biscuit sales have been stuck at 120,000 packs a year for 3 years [app]. Problem 2: Rivals undercut and take share [k], because the main competitor cut prices and gained 8% market share [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "saturation means flat/plateauing sales and revenue",
+            "saturation means intense competition eroding share"
+          ],
+          "application_max_2": [
+            "digestive biscuit sales stuck at 120,000 packs a year for 3 years",
+            "competitor price cut gained it 8% market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "120,000 packs",
+            "$2.40",
+            "3 years",
+            "saturated",
+            "8%",
+            "market share",
+            "digestive"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Old Harbour Biscuits of relaunching with three new flavours and new packaging.",
+        "model_answer": "Benefit 1: A relaunch can re-stimulate demand [k], because three new flavours and a modern wrapper give existing buyers a reason to try the biscuits again [app], which can reverse 3 years of flat sales supplied to 55 grocers and 8 cafes [an]. Benefit 2: Fresh packaging can support a better price [k], because buyers link modern packaging with improved quality [app], lifting margins as profits eased from $96,000 to $70,000 and offsetting the $45,000 wrapper cost [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extension strategies such as new flavours re-stimulate demand",
+            "rebranding/repackaging can refresh product appeal and support pricing"
+          ],
+          "application_max_2": [
+            "three new flavours and a modern wrapper for $45,000",
+            "profits eased from $96,000 to $70,000 a year"
+          ],
+          "analysis_max_2": [
+            "can reverse flat sales and protect supply to 55 grocers and 8 cafes",
+            "higher perceived quality offsets wrapper costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "three new flavours",
+            "modern wrapper",
+            "$45,000",
+            "$96,000",
+            "$70,000",
+            "55 independent grocers",
+            "8 cafes",
+            "flat"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Old Harbour Biscuits should relaunch with new flavours rather than cut the price by 15%? Justify your answer.",
+        "model_answer": "One side is that relaunching refreshes the product [k], because three new flavours and a modern wrapper costing $45,000 give buyers a reason to repurchase [app], reviving the 120,000-pack-a-year business and rebuilding profits that eased from $96,000 to $70,000 [an]. On the other hand, the 15% price cut to $2.04 is simpler and faster [k]: it directly answers the competitor that gained 8% market share and could lift volume quickly [app], but each pack earns $0.36 less, so profit per pack falls [an]. Overall, the relaunch is the better choice because cutting price only matches a rival and erodes margins, while new flavours defend share properly and could restore the $96,000 peak profit level [eval], but the partners should track sales weekly and switch to pricing action if the relaunch has not lifted packs within 3 months [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extension strategy (new flavours/packaging) refreshes a maturing product",
+            "price cuts stimulate volume but reduce margin per unit"
+          ],
+          "application_max_2": [
+            "relaunch costs $45,000 vs 15% price cut to $2.04",
+            "competitor gained 8% market share after a price cut"
+          ],
+          "analysis_max_2": [
+            "new flavours can revive demand and rebuild profits from $70,000 toward $96,000",
+            "price cuts win volume at the cost of $0.36 per pack margin"
+          ],
+          "evaluation_max_2": [
+            "weighs brand refresh against reactive price matching",
+            "justified choice plus a measurable review condition"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$45,000",
+            "15%",
+            "$2.04",
+            "$2.40",
+            "120,000",
+            "8%",
+            "three new flavours",
+            "$96,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_43",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Everline Audio is a private limited company in Country X that has manufactured DVD players and MP3 players for 11 years. Sales peaked at 30,000 units in 2021 and fell to 9,000 units in 2025, placing both products in the decline stage of the product life cycle. The business employs 38 staff, holds $260,000 of unsold stock, and annual revenue has halved from $2.4 million to $1.2 million over three years.\n\nThe directors are considering either an extension strategy, releasing a combined DVD/MP3 media centre with smart streaming for $120,000 of retooling, or discontinuing the range and selling the factory machinery to raise about $180,000. Either decision will affect the 38 employees, and the shareholders will vote on the plan next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'decline stage' of the product life cycle.",
+        "model_answer": "The decline stage is when sales fall steadily because the product is outdated or replaced by alternatives, and revenue and profit shrink [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sales fall steadily",
+            "product is outdated/replaced so revenue and profit shrink"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Everline Audio's products are in the decline stage.",
+        "model_answer": "Reason 1: Technology is outdated [k], because DVD players and MP3 players have been replaced by streaming and online content [app]. Reason 2: Unit sales keep shrinking [k], with sales falling from 30,000 units in 2021 to 9,000 units in 2025 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "products become outdated as technology moves on",
+            "sales fall steadily in the decline stage"
+          ],
+          "application_max_2": [
+            "DVD/MP3 players replaced by modern alternatives",
+            "sales fell from 30,000 units in 2021 to 9,000 units in 2025"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "DVD players",
+            "MP3 players",
+            "30,000 units",
+            "9,000 units",
+            "2021",
+            "2025",
+            "decline stage",
+            "11 years"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Everline Audio of launching the media centre as an extension strategy.",
+        "model_answer": "Benefit 1: It can win back lapsed customers [k], because a DVD/MP3 media centre with smart streaming updates the old range for existing owners [app], slowing the slide from 30,000 units to 9,000 units a year and protecting the 38 staff [an]. Benefit 2: It keeps the factory productive [k], because $120,000 of retooling reuses the plant and 11 years of manufacturing experience [app], preserving $1.2 million of annual revenue instead of shutting down for a machinery sale [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extension strategies extend a declining product life",
+            "extension reuses existing resources/knowhow"
+          ],
+          "application_max_2": [
+            "media centre with smart streaming for $120,000 of retooling",
+            "reuses factory built over 11 years"
+          ],
+          "analysis_max_2": [
+            "can slow the sales slide and protect jobs and revenue",
+            "cheaper than starting from scratch; keeps plant productive"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "media centre",
+            "DVD/MP3",
+            "smart streaming",
+            "30,000",
+            "9,000",
+            "38 employees",
+            "extension strategy"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Everline Audio should launch the media centre rather than discontinue the range? Justify your answer.",
+        "model_answer": "One side is that the extension strategy buys time [k], because the media centre with smart streaming refreshes an outdated range for only $120,000 of retooling [app], which could recover some of the fall from 30,000 units in 2021 to 9,000 units and keep the 38 staff employed [an]. On the other hand, discontinuing is cleaner [k], because selling the machinery for about $180,000 frees cash and ends the $260,000 unsold-stock problem [app], letting shareholders redeploy money instead of backing a shrinking DVD/MP3 market [an]. Overall, Everline should discontinue the range because four years of decline, down to 9,000 units from a 30,000 peak, show demand is structurally gone; taking the $180,000 is safer than risking $120,000 of further losses [eval], but if confirmed pre-orders for the media centre top 12,000 units the board should approve the launch instead [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extension strategies can prolong but not reverse structural decline",
+            "discontinuing releases cash and ends losses"
+          ],
+          "application_max_2": [
+            "$120,000 retooling vs selling machinery for about $180,000",
+            "sales fell from 30,000 units (2021) to 9,000 (2025); $260,000 of unsold stock"
+          ],
+          "analysis_max_2": [
+            "media centre may recover some demand but DVD/MP3 market keeps shrinking",
+            "discontinuing frees $180,000 and stops cash drain on dead stock"
+          ],
+          "evaluation_max_2": [
+            "weighs extension risk against clean exit",
+            "justified exit recommendation with a clear trigger for reversal"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "$180,000",
+            "$260,000",
+            "media centre",
+            "smart streaming",
+            "9,000",
+            "38 employees",
+            "extension strategy"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_44",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Butterwick Creamery is a private limited company in Country X producing natural yogurt, selling 150,000 pots a month at $1.80 each, worth $270,000 a month. It employs 26 staff and its existing range is popular but flat. A supermarket chain wants Butterwick to supply a new sugar-free yogurt, with new product development costing $140,000 over 12 months, including testing, market research and packaging design.\n\nIf successful, the supermarket estimates the sugar-free yogurt could sell 60,000 pots a month at $2.20 per pot within a year. The creamery has $90,000 in the bank and would need to borrow the rest as a bank loan at 9% interest over 5 years. Owner Elena Vasquez must decide whether the new product is worth the cost and risk.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'new product development'.",
+        "model_answer": "New product development is the process of researching, designing, testing and launching a new product before it is sold to customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "researching/designing and testing a new product before launch",
+            "investing in a product before it earns revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Butterwick Creamery of developing new products.",
+        "model_answer": "Benefit 1: New products reach new customers [k], because the sugar-free yogurt targets health-conscious shoppers the current range misses [app]. Benefit 2: They add a second revenue stream [k], spreading risk beyond the existing 150,000 pots of natural yogurt a month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new products attract new customers/segments",
+            "new products diversify revenue and spread risk"
+          ],
+          "application_max_2": [
+            "sugar-free yogurt targets health-conscious shoppers missed by current range",
+            "existing natural yogurt sells 150,000 pots a month and is flat"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sugar-free",
+            "150,000",
+            "$1.80",
+            "natural yogurt",
+            "new product development",
+            "supermarket",
+            "60,000 pots",
+            "existing range"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Butterwick Creamery might face with new product development.",
+        "model_answer": "Problem 1: High up-front costs [k], because development costs $140,000 over 12 months including testing, research and packaging design [app], which must be paid before any sugar-free sales arrive [an]. Problem 2: It needs debt [k], because the creamery has only $90,000 in the bank and must borrow the rest at 9% over 5 years [app], so repayments strain the cash flow from flat $1.80-pot revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new product development requires heavy up-front investment",
+            "funding gaps force borrowing and interest costs"
+          ],
+          "application_max_2": [
+            "development costs $140,000 over 12 months",
+            "only $90,000 in bank, so $50,000 at 9% over 5 years"
+          ],
+          "analysis_max_2": [
+            "money spent before sugar-free sales start strains cash flow",
+            "interest and repayments eat into margins on flat natural-yogurt sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$140,000",
+            "$90,000",
+            "$1.80",
+            "sugar-free",
+            "12 months",
+            "150,000",
+            "60,000 pots",
+            "$2.20"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Butterwick Creamery should develop the new sugar-free yogurt? Justify your answer.",
+        "model_answer": "One side is that the sugar-free yogurt is a major opportunity [k], because the supermarket estimates 60,000 pots a month at $2.20, about $132,000 of extra monthly revenue [app], which would repay borrowing many times over and freshen a flat range of 150,000 pots [an]. On the other hand, the risk is real [k], because $140,000 of development with only $90,000 in the bank means borrowing about $50,000 at 9% over 5 years [app], so failure would still leave loan repayments to be met from natural-yogurt cash flow [an]. Overall, Butterwick should develop the yogurt because the supermarket estimate implies $132,000 of monthly revenue against a $50,000 loan, an exceptional payback if even 50% of forecast is achieved [eval], but only after securing written supermarket volumes and staged loan drawdowns to cap losses if demand disappoints [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new products can capture growth segments and refresh flat ranges",
+            "new product development carries cost and failure risk"
+          ],
+          "application_max_2": [
+            "60,000 pots a month at $2.20 ≈ $132,000 extra monthly revenue",
+            "$140,000 development vs $90,000 in bank; $50,000 borrowed at 9% over 5 years"
+          ],
+          "analysis_max_2": [
+            "extra revenue dwarfs the loan if the supermarket forecast holds",
+            "failure still leaves fixed repayments from natural-yogurt cash flow"
+          ],
+          "evaluation_max_2": [
+            "weighs projected $132,000 monthly upside against $50,000 debt risk",
+            "justified yes with staged-funding safeguard"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sugar-free",
+            "$140,000",
+            "$90,000",
+            "60,000 pots",
+            "$2.20",
+            "$1.80",
+            "12 months",
+            "supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_45",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Silvermist Teas is a private limited company in Country X selling premium whole-leaf teas since 2016. Its flagship Silver Dragon tea sells 22,000 boxes a year at $9.60 per box, well above supermarket teas at $3.20 a box. Repeat customers account for 70% of sales, built on its strong brand image and consistent quality. The business employs 17 staff and exports to 6 countries across Europe and Asia.\n\nA large retailer has asked Silvermist to cut the Silver Dragon price to $7.00 per box to match rivals, or invest $35,000 in a brand campaign to defend premium pricing. Sales fell 6% last year after a rival copied the foil packaging. The directors must decide before the spring selling season begins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two benefits of a strong brand image for a business.",
+        "model_answer": "A strong brand image builds customer loyalty and repeat purchases [1]; it lets the business charge premium prices above competitors [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "builds loyalty/repeat purchases",
+            "supports premium pricing above rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Silvermist's strong brand image increases customer loyalty.",
+        "model_answer": "Reason 1: Customers trust consistent quality [k], because whole-leaf tea kept the promise, leaving 70% of sales with repeat customers [app]. Reason 2: A distinct image is hard for rivals to copy [k], because the Silver Dragon brand took since 2016 to build through packaging and export reputation [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "strong brand image builds trust and repeat buying",
+            "distinct branding creates loyalty that rivals find hard to copy"
+          ],
+          "application_max_2": [
+            "70% of sales come from repeat customers",
+            "Silver Dragon brand built since 2016 with a distinctive image"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "70%",
+            "Silver Dragon",
+            "$9.60",
+            "whole-leaf",
+            "brand image",
+            "since 2016",
+            "22,000",
+            "repeat customers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems for Silvermist Teas of cutting the Silver Dragon price to $7.00.",
+        "model_answer": "Problem 1: It weakens the premium image [k], because dropping from $9.60 to $7.00 a box tells loyal buyers the tea is no longer superior [app], risking the loss of the 70% repeat base to supermarket teas at $3.20 [an]. Problem 2: It cuts margins sharply [k], because each box earns $2.60 less than at $9.60 [app], which on 22,000 boxes a year removes about $57,200 of annual revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price cuts contradict premium positioning",
+            "lower price per unit reduces revenue and margin"
+          ],
+          "application_max_2": [
+            "$9.60 to $7.00 cut vs supermarket teas at $3.20",
+            "$2.60 less per box on 22,000 boxes a year"
+          ],
+          "analysis_max_2": [
+            "erodes the 70% repeat-purchase loyalty built on image",
+            "about $57,200 of annual revenue removed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9.60",
+            "$7.00",
+            "$3.20",
+            "70%",
+            "22,000",
+            "Silver Dragon",
+            "premium",
+            "brand image"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Silvermist Teas should cut the Silver Dragon price to $7.00 rather than invest $35,000 in a brand campaign? Justify your answer.",
+        "model_answer": "One side is that the price cut defends volume [k], because matching rivals at $7.00 keeps the large retailer on side and could recover the 6% of sales lost last year [app], protecting revenue across 22,000 boxes a year even at lower margin [an]. On the other hand, the brand campaign defends the premium position [k], because $35,000 invested in reinforcing the Silver Dragon image protects the $9.60 price and the 70% repeat-purchase base [app], which funds exports to 6 countries and premium margins [an]. Overall, Silvermist should invest in the brand campaign because a price cut to $7.00 sacrifices about $57,200 a year of margin and cheapens the image that took since 2016 to build, whereas $35,000 is a fraction of one year revenue [eval], though if a signed retail deal guarantees more than 30,000 boxes a year the $7.00 price could be reconsidered [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price cuts win volume but erode premium image and margin",
+            "brand campaigns protect premium positioning and loyalty"
+          ],
+          "application_max_2": [
+            "$7.00 cut vs $35,000 brand campaign investment",
+            "70% repeat base; 22,000 boxes a year; 6% sales fell last year"
+          ],
+          "analysis_max_2": [
+            "cutting to $7.00 removes about $57,200 annual margin and cheapens loyalty",
+            "campaign defends $9.60 positioning and export margins in 6 countries"
+          ],
+          "evaluation_max_2": [
+            "weighs short-term volume defense against long-term premium equity",
+            "justified campaign choice with a volume-based exception threshold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7.00",
+            "$9.60",
+            "$35,000",
+            "70%",
+            "22,000",
+            "6%",
+            "Silver Dragon",
+            "6 countries"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_46",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Petal & Thyme Organic Teas is a partnership in Country X selling herbal infusions in 12 flavours since 2019. A foil pouch redesign 2 years ago lifted chamomile infusion sales by 45% while other flavours stayed flat. Packaging currently costs $0.34 per pouch and protects the herbs from light, moisture and air. The partners employ 9 staff and sell through 24 farm shops and weekend markets across two counties.\n\nThey are choosing between two redesigns: a premium matte-black pouch with a resealable zip costing $0.52 per pouch, or a cheaper recyclable paper pouch at $0.28 per pouch for eco-conscious buyers and younger customers. Packaging is printed in batches of 20,000, and the chosen design will be on shelves for 3 years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'packaging'.",
+        "model_answer": "Packaging is the material and container used to wrap, protect and present a product for sale, often carrying the brand name and product information [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "wraps and protects the product",
+            "presents the product and carries branding/information"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two roles of packaging for Petal & Thyme's herbal teas.",
+        "model_answer": "Role 1: Protection [k], because the current foil pouch keeps light, moisture and air away from the herbs [app]. Role 2: Promotion [k], because the redesigned pouch lifted chamomile infusion sales by 45% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "packaging protects the product",
+            "packaging promotes the product and attracts buyers"
+          ],
+          "application_max_2": [
+            "foil pouch keeps light, moisture and air from herbs",
+            "redesign lifted chamomile sales by 45%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "foil pouch",
+            "45%",
+            "$0.34",
+            "chamomile",
+            "packaging",
+            "resealable",
+            "light",
+            "organic"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Petal & Thyme of choosing the premium matte-black pouch.",
+        "model_answer": "Benefit 1: It supports premium pricing [k], because a matte-black finish with a resealable zip signals quality to buyers [app], allowing a higher price despite the pouch costing $0.52 instead of $0.28 [an]. Benefit 2: It could re-energise weak flavours [k], because the last redesign lifted chamomile sales by 45% [app], and across a 3-year shelf life that lift would outweigh the extra $0.24 per pouch [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "premium packaging supports higher pricing/margins",
+            "distinctive packaging can lift sales (extension strategy via presentation)"
+          ],
+          "application_max_2": [
+            "$0.52 matte-black pouch with resealable zip vs $0.28 paper pouch",
+            "previous redesign lifted chamomile sales by 45%"
+          ],
+          "analysis_max_2": [
+            "higher price points offset the extra cost",
+            "45% sales lift over 3 years outweighs $0.24 per pouch extra"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "matte-black",
+            "$0.52",
+            "$0.28",
+            "resealable",
+            "45%",
+            "chamomile",
+            "3 years",
+            "20,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Petal & Thyme should choose the premium matte-black pouch rather than the recyclable paper pouch? Justify your answer.",
+        "model_answer": "One side is that the premium pouch strengthens positioning [k], because matte-black with a resealable zip costs $0.52 per pouch but signals luxury and could repeat the 45% chamomile sales lift [app], supporting margin on a range sold through 24 farm shops and weekend markets [an]. On the other hand, the recyclable paper pouch is cheaper and greener [k], because at $0.28 it saves $0.24 per pouch and targets eco-conscious buyers and younger customers [app], aligning the organic identity with sustainability values [an]. Overall, the premium pouch is the better choice because the packaging response is proven (45% lift) and the 3-year shelf-life commitment rewards a distinctive look over the saving [eval], but the paper pouch should win if management wants to lead with sustainability or if buyers will only pay $0.30 more per pouch, not $0.60 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "premium packaging differentiates and supports higher prices",
+            "recyclable packaging appeals to eco-conscious buyers at lower cost"
+          ],
+          "application_max_2": [
+            "$0.52 matte-black resealable pouch vs $0.28 recyclable paper pouch",
+            "proven 45% chamomile sales lift from previous redesign"
+          ],
+          "analysis_max_2": [
+            "premium look can lift sales and margin over a 3-year print run of 20,000",
+            "paper pouch saves $0.24 per unit and matches organic/eco positioning"
+          ],
+          "evaluation_max_2": [
+            "weighs proven sales response against cost and eco appeal",
+            "justified premium choice with a clear fallback trigger"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.52",
+            "$0.28",
+            "45%",
+            "resealable",
+            "matte-black",
+            "recyclable",
+            "24 farm shops",
+            "3 years"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_47",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Redcurrent Energy is a private limited company in Country X founded in 2024 to launch a low-sugar energy drink for students aged 16 to 24. It has already spent $210,000 on development, including $60,000 on lab testing and $80,000 on can design, before any sales are made. The founder, Yusuf Rahman, employs 8 staff and plans a launch at 1,200 university stores and campuses nationwide.\n\nEarly feedback from 300 trial students was positive, with 78% saying they would buy the drink. Launch advertising will cost $95,000 nationwide, while canning and distribution add $0.60 per can to the $1.50 selling price. Yusuf must choose between launching nationwide this autumn or starting in one region with a $30,000 campaign, then expanding after 6 months of sales data.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'introduction stage' of the product life cycle.",
+        "model_answer": "The introduction stage is when a new product is launched, sales start from zero and heavy promotion is needed to build awareness [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "product is launched and sales start from zero",
+            "heavy promotion needed to build awareness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems a business faces during the introduction stage.",
+        "model_answer": "Problem 1: High launch costs with little revenue [k], because Redcurrent has spent $210,000 on development and now faces $95,000 of nationwide advertising [app]. Problem 2: Uncertain customer acceptance [k], because buyers must be persuaded to try an unknown drink, shown by the need to test 300 trial students first [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "introduction stage has high costs before sales",
+            "customer acceptance is uncertain at launch"
+          ],
+          "application_max_2": [
+            "$210,000 development already spent plus $95,000 launch advertising",
+            "300 trial students used to test acceptance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$210,000",
+            "$95,000",
+            "300 trial students",
+            "development",
+            "$1.50",
+            "2024",
+            "low-sugar",
+            "1,200 university stores"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Redcurrent Energy of launching first in one region.",
+        "model_answer": "Benefit 1: It cuts launch cost and risk [k], because a one-region campaign costs $30,000 instead of $95,000 nationwide [app], conserving cash after $210,000 of development [an]. Benefit 2: It provides real sales feedback before scaling [k], because 6 months of regional data reveal whether a $1.50 can with $0.60 of canning and distribution sells at volume [app], letting Redcurrent fix problems before reaching 1,200 campuses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "regional launches limit cost and risk of new product failure",
+            "regional launches give real market evidence before expansion"
+          ],
+          "application_max_2": [
+            "$30,000 one-region campaign vs $95,000 nationwide advertising",
+            "$1.50 price with $0.60 canning and distribution cost"
+          ],
+          "analysis_max_2": [
+            "conserves cash after $210,000 of unrecovered development spend",
+            "6 months of data shows whether per-can economics work at scale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$30,000",
+            "$95,000",
+            "$1.50",
+            "6 months",
+            "one region",
+            "16 to 24",
+            "$0.60",
+            "78%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redcurrent Energy should launch nationwide rather than start in one region? Justify your answer.",
+        "model_answer": "One side is that the nationwide launch maximises impact [k], because 1,200 university stores and campuses reach the 16 to 24 student market immediately [app], with $95,000 of advertising building rapid awareness while Redcurrent is first mover [an]. On the other hand, the one-region launch protects cash [k], because a $30,000 campaign limits risk after $210,000 of development and only 300 students of trial evidence [app], letting Redcurrent refine the $1.50 price and $0.60 per-can cost before national exposure [an]. Overall, Redcurrent should start in one region because unrecovered development of $210,000 and uncertain acceptance mean $95,000 should only be committed after 6 months of real sales data prove demand [eval], but if early sales beat 70% of target within 3 months the rollout nationwide should follow immediately [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "national launch builds fast awareness but risks cash",
+            "regional launch limits risk and provides market proof"
+          ],
+          "application_max_2": [
+            "$95,000 nationwide advertising vs $30,000 regional campaign",
+            "$210,000 development already spent; reach via 1,200 university stores"
+          ],
+          "analysis_max_2": [
+            "full launch spends before demand is proven",
+            "regional data verifies $1.50 pricing and $0.60 per-can economics"
+          ],
+          "evaluation_max_2": [
+            "weighs speed and scale vs risk and evidence",
+            "justified regional-first choice with a numeric escalation trigger"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$30,000",
+            "$210,000",
+            "1,200 university stores",
+            "$1.50",
+            "300 trial students",
+            "6 months",
+            "78%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_48",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Harvest Crown Cereals is a public limited company in Country X making the nation's best-selling corn flakes since 2001. Sales fell from 95,000 boxes a week in 2022 to 58,000 boxes a week in 2025 as rivals launched new variants and ran price promotions. The business employs 240 staff across 2 factories and holds 19% market share, down from 26% three years ago.\n\nManagement wants an extension strategy to revive the brand. Option one is a $500,000 relaunch with high-protein and honey variants and a new box design, with $310,000 allocated to design and factory changeover. Option two is a $180,000 promotional drive of free samples and price reductions for 8 weeks. Both aim to extend the product life cycle and defend the 19% share.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two extension strategies a business could use.",
+        "model_answer": "Two extension strategies are relaunching the product with new variants or additional features [1]; running sales promotions such as free samples or price reductions to revive demand [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relaunch with new variants/features/flavours",
+            "sales promotions such as free samples or price reductions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Harvest Crown Corn Flakes may have moved towards decline.",
+        "model_answer": "Reason 1: Changing consumer tastes [k], because buyers shifted towards high-protein and healthier cereals offered by rivals [app]. Reason 2: Stronger rival products [k], because rivals launched new variants and promotions, cutting Harvest Crown share from 26% to 19% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "consumer tastes change away from the product",
+            "rival new entrants/variants erode demand"
+          ],
+          "application_max_2": [
+            "buyers want high-protein/healthier cereals",
+            "market share fell from 26% to 19% as rivals launched new variants and promotions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "corn flakes",
+            "26%",
+            "19%",
+            "58,000",
+            "95,000",
+            "2001",
+            "rivals",
+            "extension strategy"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Harvest Crown of the $500,000 relaunch with new variants.",
+        "model_answer": "Benefit 1: It attracts buyers back [k], because high-protein and honey variants meet current health trends [app], reversing the slide from 95,000 to 58,000 boxes a week [an]. Benefit 2: A new box design refreshes shelf presence [k], because packaging that stands out stops rivals dominating the display [app], helping rebuild the 19% market share towards the previous 26% [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extension strategies (new variants) attract returning and new buyers",
+            "extension strategies refresh packaging and shelf appeal"
+          ],
+          "application_max_2": [
+            "high-protein and honey variants for $500,000 including new box design",
+            "sales fell from 95,000 to 58,000 boxes a week"
+          ],
+          "analysis_max_2": [
+            "can reverse weekly sales decline and protect 240 jobs",
+            "can rebuild 19% share towards earlier 26% level"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500,000",
+            "high-protein",
+            "honey",
+            "95,000",
+            "58,000",
+            "19%",
+            "new variants",
+            "box design"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Harvest Crown Cereals should relaunch with new variants rather than run the promotional drive? Justify your answer.",
+        "model_answer": "One side is that the relaunch can permanently refresh demand [k], because high-protein and honey variants with a new box design cost $500,000 but extend the life cycle properly [app], reversing the slide from 95,000 to 58,000 boxes a week and rebuilding 19% share towards 26% [an]. On the other hand, the $180,000 promotional drive is cheaper and faster [k], because free samples and 8 weeks of price reductions spike weekly volume immediately [app], costing less than the $310,000 design and changeover portion of the relaunch and defending share while deeper plans are prepared [an]. Overall, Harvest Crown should relaunch with new variants because the decline is structural, not seasonal; the promotion only rents demand for 8 weeks while the relaunch rebuilds the brand for the next decade [eval], but if board cash is tight, running the $180,000 drive first to fund the relaunch is a sensible bridge [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relaunch (real extension strategy) addresses structural decline",
+            "promotion gives short-term volume spike but no permanent fix"
+          ],
+          "application_max_2": [
+            "$500,000 relaunch with $310,000 design and changeover vs $180,000 promotional drive",
+            "sales fell from 95,000 (2022) to 58,000 boxes a week (2025); share 26% to 19%"
+          ],
+          "analysis_max_2": [
+            "new variants can rebuild weekly sales and share durably",
+            "promotion rents demand for 8 weeks at lower cost and risk"
+          ],
+          "evaluation_max_2": [
+            "weighs durable brand revival against cheap quick volume",
+            "justified relaunch with a funding-bridge exception"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500,000",
+            "$180,000",
+            "$310,000",
+            "95,000",
+            "58,000",
+            "19%",
+            "26%",
+            "high-protein"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_49",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Northpeak Outdoor is a private limited company in Country X making hiking jackets since 2013. Its Northpeak Pro jacket sells 8,500 units a year at $145, with 45% of buyers reordering from 40 specialist outdoor shops across the highlands. The brand is known for its durability and a premium image built over 13 years, and the business employs 31 staff across design, sewing and distribution centres.\n\nA budget rival entered at $95 per jacket and Northpeak sales fell 18% last quarter. The directors debate cutting the Northpeak Pro to $110 to defend sales volume against the rival, or keeping $145 and spending $60,000 on athlete sponsorship and a 'buy once, last forever' campaign to reinforce the premium brand image among loyal customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'brand awareness'.",
+        "model_answer": "Brand awareness is the extent to which customers recognise and recall a brand when thinking about a product category [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extent customers recognise the brand",
+            "recall of the brand in the product category"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Northpeak Outdoor benefits from its premium brand image.",
+        "model_answer": "Way 1: It supports premium pricing [k], because buyers pay $145 per jacket versus the rival at $95, trusting Northpeak durability [app]. Way 2: It drives repeat purchase [k], because 45% of buyers reorder, a loyal base rivals find hard to win [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "strong brand image supports premium pricing",
+            "strong brand image builds loyalty and repeat purchases"
+          ],
+          "application_max_2": [
+            "$145 Northpeak Pro vs $95 rival price",
+            "45% of buyers reorder from Northpeak"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$145",
+            "$95",
+            "45%",
+            "Northpeak Pro",
+            "premium",
+            "8,500",
+            "40 specialist outdoor shops",
+            "durability"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems for Northpeak Outdoor of cutting the price to $110.",
+        "model_answer": "Problem 1: It undermines the premium image [k], because dropping from $145 to $110 signals the jacket is now a mid-market product [app], risking the loyalty of the 45% reorder base towards the $95 rival [an]. Problem 2: It removes margin per unit [k], because each jacket earns $35 less than at $145 [app], which across 8,500 units a year strips about $297,500 of revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price cuts contradict premium positioning",
+            "lower per-unit price reduces revenue/margin"
+          ],
+          "application_max_2": [
+            "$145 to $110 vs $95 rival",
+            "$35 less per unit on 8,500 units a year"
+          ],
+          "analysis_max_2": [
+            "erodes 45% reorder loyalty and invites rival share gains",
+            "about $297,500 of annual revenue removed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$145",
+            "$110",
+            "$95",
+            "45%",
+            "8,500",
+            "Northpeak Pro",
+            "premium",
+            "highlands"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northpeak Outdoor should cut the Northpeak Pro price to $110 rather than spend $60,000 on the brand campaign? Justify your answer.",
+        "model_answer": "One side is that cutting to $110 defends volume [k], because a $35 gap to the $95 rival may recover the 18% of sales lost last quarter [app], holding revenue on 8,500 units a year before the rival entrenches further [an]. On the other hand, cutting price undermines the premium image [k], because buyers who pay $145 trust durability, and $60,000 of athlete sponsorship plus a buy once, last forever campaign reinforces the 45% reorder loyalty [app], protecting lifetime margin across the 40 specialist shops [an]. Overall, Northpeak should keep $145 and run the $60,000 campaign because the premium image is the core asset and a $110 cut invites a price war the brand would lose [eval], but if rival share keeps growing for two more quarters, a controlled one-season discount may be required to stabilise volume [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price cuts defend volume but damage premium positioning",
+            "brand campaigns protect loyalty and lifetime value"
+          ],
+          "application_max_2": [
+            "$110 price cut vs $60,000 athlete sponsorship campaign",
+            "45% reorder rate; 18% sales fell last quarter; 8,500 units a year"
+          ],
+          "analysis_max_2": [
+            "price cut may win back some volume from the $95 rival but destroys margin",
+            "campaign protects the premium ecosystem across 40 specialist shops"
+          ],
+          "evaluation_max_2": [
+            "weighs short-term volume defense against long-term brand equity",
+            "justified campaign choice with a review trigger"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$110",
+            "$145",
+            "$95",
+            "$60,000",
+            "45%",
+            "8,500",
+            "18%",
+            "buy once, last forever"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_50",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Velvet Cocoa Chocolatiers is a partnership in Country X making hand-crafted chocolate truffles for gifting since 2015. It sells 14,000 boxes a year at $18 per box, worth $252,000 in annual sales, and employs 12 staff across the kitchen, packing and retail counter. The partners plan a winter gift range in recyclable, plastic-free boxes costing $1.40 per box, up from $0.85 for the current boxes.\n\nA trial of 400 customers showed 62% prefer recyclable packaging and would pay $20 per box. Developing the range needs $75,000 for new moulds and packaging design. Alternatively, the partners could refresh the existing range for $25,000 with new flavours but keep plastic packaging for existing corporate buyers. Autumn orders to corporate buyers are due in 10 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two stages in the development of a new product.",
+        "model_answer": "Two stages are generating and screening ideas for the new product [1], and designing, testing and planning the launch before full production [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "generating/screening ideas",
+            "designing, testing and launching the product"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two costs of developing the new winter gift range for Velvet Cocoa Chocolatiers.",
+        "model_answer": "Cost 1: High development spend [k], because $75,000 is needed for new moulds and packaging design before any sales are made [app]. Cost 2: Higher unit packaging cost [k], because the plastic-free box costs $1.40 instead of $0.85, adding $0.55 per box [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "up-front development costs before revenue",
+            "ongoing higher unit costs (e.g. packaging)"
+          ],
+          "application_max_2": [
+            "$75,000 for new moulds and packaging design",
+            "$1.40 per plastic-free box vs $0.85 current, adding $0.55"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$75,000",
+            "$1.40",
+            "$0.85",
+            "winter gift range",
+            "plastic-free",
+            "$252,000",
+            "14,000 boxes",
+            "$18 per box"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the recyclable plastic-free packaging for Velvet Cocoa Chocolatiers.",
+        "model_answer": "Benefit 1: It matches proven customer preference [k], because 62% of 400 trial customers prefer recyclable packaging and would pay $20 per box [app], supporting a $2 price rise over today $18 [an]. Benefit 2: It strengthens the eco-friendly gifting image [k], because plastic-free boxes suit corporate buyers with sustainability policies [app], potentially winning more autumn corporate orders due in 10 weeks [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "packaging matching customer preferences lifts sales/acceptance",
+            "eco packaging strengthens brand image and wins corporate buyers"
+          ],
+          "application_max_2": [
+            "62% of 400 trial customers prefer recyclable packaging at $20 per box",
+            "plastic-free boxes appeal to corporate buyers; autumn orders due in 10 weeks"
+          ],
+          "analysis_max_2": [
+            "supports a $2 per box price rise boosting margin",
+            "wins eco-conscious corporate gifting contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "recyclable",
+            "plastic-free",
+            "62%",
+            "400 customers",
+            "$20 per box",
+            "$18 per box",
+            "$1.40",
+            "corporate buyers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Velvet Cocoa Chocolatiers should launch the recyclable gift range rather than refresh the existing range? Justify your answer.",
+        "model_answer": "One side is that the recyclable range meets proven demand [k], because 62% of 400 trial customers would pay $20 per box [app], lifting revenue per box from $18 to $20 and strengthening the eco image ahead of corporate autumn orders [an]. On the other hand, the $25,000 refresh is cheaper and faster [k], because new flavours keep plastic packaging and current corporate buyers happy [app], avoiding the $75,000 mould investment and the 10-week deadline pressure [an]. Overall, Velvet Cocoa should launch the recyclable range because the trial data is strong and plastic-free gifting wins corporate contracts worth far more than saving $50,000 on development [eval], but only if moulds arrive within 10 weeks; otherwise it should ship the refresh this autumn and launch recyclable boxes next season [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new range on proven preference can raise price/sales",
+            "the refresh is cheaper, faster and protects existing buyers"
+          ],
+          "application_max_2": [
+            "$75,000 new range vs $25,000 refresh",
+            "62% of 400 customers prefer recyclable; corporate orders due in 10 weeks"
+          ],
+          "analysis_max_2": [
+            "recyclable range lifts revenue per box from $18 to $20 and wins corporate eco contracts",
+            "refresh protects the $0.85 unit cost and existing plastic-preferring buyers"
+          ],
+          "evaluation_max_2": [
+            "weighs proven eco demand against cost and deadline risk",
+            "justified launch with a clear 10-week feasibility condition"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$75,000",
+            "$25,000",
+            "$20 per box",
+            "62%",
+            "400 customers",
+            "corporate buyers",
+            "$252,000",
+            "10 weeks"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

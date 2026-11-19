@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U6_SET_81",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Suncrest Olive Estate is a private limited company in Country X producing gourmet olive oil for export. It sells 400,000 bottles a year at $9 each, earning $3.6 million, and 60% of sales (240,000 bottles) go to buyers in Country W. The Country X dollar has appreciated by 12% against the Country W currency, so Suncrest's bottles now cost Country W buyers the equivalent of $10.08 each unless it cuts prices.\n\nManaging Director Lena Ortiz must set the June price list before orders for the next season close. Option A is to cut the Country W price to $8.10 a bottle, taking 10% off, to keep order volumes steady. Option B is to hold the $9 price and accept that Country W orders may fall sharply, shifting marketing towards domestic supermarkets instead.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'appreciation'.",
+        "model_answer": "Appreciation is a rise in the value of one currency compared with other currencies, so a currency buys more foreign currency than before [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A rise in the value of a currency",
+            "Compared with other currencies / buys more foreign currency than before"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the 12% appreciation on Suncrest Olive Estate.",
+        "model_answer": "First, appreciation makes Suncrest's oil more expensive for buyers abroad [k]. Each $9 bottle now costs Country W customers the equivalent of $10.08, so demand for the 240,000 bottles a year they buy may fall [app]. Second, appreciation weakens Suncrest's competitiveness against rival suppliers [k]. Country W supermarkets may switch to locally bottled olive oil instead, so Suncrest risks losing listings and part of its $3.6 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Appreciation makes exports more expensive abroad",
+            "Appreciation reduces export competitiveness versus foreign rivals"
+          ],
+          "application_max_2": [
+            "Reference to $10.08 equivalent / 12% / $9 price",
+            "Reference to Country W 240,000 bottles / $3.6 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12%",
+            "240,000",
+            "$9",
+            "$10.08",
+            "Suncrest Olive Estate",
+            "Country W"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Suncrest Olive Estate might face if it chooses Option A.",
+        "model_answer": "First, cutting the price by 10% reduces the revenue earned on every Country W bottle [k]. At $8.10 instead of $9, Suncrest loses 90 cents on each of its 240,000 Country W bottles, which is $216,000 a year less export revenue [app]. If volumes do not rise enough to replace this, profit falls and less money is available to reinvest in groves and bottling lines [an]. Second, a lower export price can trigger a price war with Country W rivals [k]. Rival producers may match the $8.10 offer to keep their supermarket listings, so Suncrest gains little extra shelf space [app]. Margins then stay permanently lower across a market that takes 60% of sales, making the business less able to absorb future cost rises [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cutting price reduces revenue per unit",
+            "Lower prices risk competitor price matching / price war"
+          ],
+          "application_max_2": [
+            "Reference to $8.10 vs $9 / 90 cents x 240,000 = $216,000",
+            "Reference to Country W / 60% of sales / supermarket listings"
+          ],
+          "analysis_max_2": [
+            "Chain from lower price to lower revenue to reduced profit and less funds for reinvestment",
+            "Chain from rival price matching to no extra volume and permanently lower margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$8.10",
+            "$9",
+            "240,000",
+            "Country W",
+            "10%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Suncrest Olive Estate should cut the Country W price to $8.10 (Option A)? Justify your answer.",
+        "model_answer": "Option A cuts the Country W price by 10% to $8.10 to hold order volumes steady [k]. This keeps Suncrest competitive now that its bottles cost Country W buyers the equivalent of $10.08, helping to protect the 240,000-bottle order book that supplies 60% of its $3.6 million revenue [app]. Retaining shelf space prevents listings being lost to local Country W rivals, which would be hard and expensive to win back [an]. However, Option B holds the $9 price [k]. Refusing to discount protects the 90-cent margin on each bottle, so Suncrest avoids the $216,000 annual revenue loss built into Option A and keeps strong cash flow for the supermarkets [app]. The danger is that orders fall sharply as the 12% appreciation pushes Country W buyers towards cheaper local oil [an]. Overall, I think Suncrest should choose Option A [eval] because the appreciation was caused by currency markets rather than by Suncrest, and volume and shelf presence in Country W matter more than the margin; it can review the $8.10 price each season and raise it if the dollar weakens [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: cut price by 10% to $8.10 to defend volume",
+            "Option B: hold $9 and protect margin"
+          ],
+          "application_max_2": [
+            "Reference to $10.08 equivalent / 12% appreciation / 10% price cut",
+            "Reference to 240,000 bottles / 60% of sales / $3.6 million revenue / $216,000"
+          ],
+          "analysis_max_2": [
+            "Chain from price cut to retained competitiveness and protected Country W shelf space",
+            "Chain from holding price to preserved margin but risk of order losses to local rivals"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($8.10 vs $9, $216,000, 240,000 bottles)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$8.10",
+            "$9",
+            "$10.08",
+            "240,000",
+            "60%",
+            "$3.6 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_82",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Foxglove Denim Co is a private limited company in Country X weaving denim at its Glendale mill. It imports 30 tonnes of raw cotton a month from Country Z at $4,000 per tonne, costing $120,000 a month. The Country X dollar has depreciated by 15% against the Country Z currency, pushing the cotton price to $4,600 per tonne or $138,000 a month.\n\nManaging Director Pavel Dvorak must decide on pricing by 1 August. Option A is to raise the wholesale price of jeans from $45 to $48 to protect profit margins, passing the $18,000 monthly increase to retailers. Option B is to keep prices at $45 and absorb the extra $216,000 a year, hoping cotton costs fall back or export sales to Country Z grow. 40% of Foxglove's jeans are exported.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'depreciation'.",
+        "model_answer": "Depreciation is a fall in the value of one currency compared with other currencies, so the currency buys less foreign currency than before [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A fall in the value of a currency",
+            "Compared with other currencies / buys less foreign currency than before"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the 15% depreciation on Foxglove Denim Co.",
+        "model_answer": "First, depreciation raises the cost of imported cotton [k]. Cotton now costs $4,600 per tonne, so the monthly bill has jumped from $120,000 to $138,000, an extra $18,000 a month [app]. Second, depreciation makes Foxglove's jeans cheaper for overseas buyers [k]. With 40% of jeans exported to Country Z, the finished garments cost Country Z retailers fewer Country Z units, so export orders may rise and partly offset the higher cotton bill [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Depreciation raises the dollar cost of imports",
+            "Depreciation makes exports cheaper abroad"
+          ],
+          "application_max_2": [
+            "Reference to $4,600 per tonne / $138,000 vs $120,000 / $18,000",
+            "Reference to 40% exported to Country Z"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15%",
+            "$4,600",
+            "$138,000",
+            "$120,000",
+            "40%",
+            "Country Z"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Foxglove Denim Co might face if it chooses Option B.",
+        "model_answer": "First, absorbing the increase squeezes profit margins on every pair of jeans [k]. The extra $216,000 a year must come out of the margin on jeans sold at $45, leaving less for repairs, machinery or wages at the Glendale mill [app]. Lower retained profit means less money available for future investment, such as replacing weaving looms, which weakens competitiveness [an]. Second, Foxglove cannot know when cotton costs will fall back [k]. If the Country X dollar keeps depreciating beyond 15%, the $138,000 monthly cotton bill could rise further, so a fixed $45 price leaves the firm exposed to open-ended cost growth [app]. Continued absorption would eventually push certain lines into loss-making months, forcing emergency price changes or borrowing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Absorbing costs squeezes profit margins",
+            "Currency costs may keep rising / future is uncertain"
+          ],
+          "application_max_2": [
+            "Reference to $216,000 a year / $138,000 monthly / $45 price",
+            "Reference to Glendale mill / further depreciation beyond 15%"
+          ],
+          "analysis_max_2": [
+            "Chain from absorbed costs to lower retained profit to weaker investment capacity",
+            "Chain from ongoing depreciation to open-ended cost growth to losses and forced price changes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option B",
+            "$45",
+            "$216,000",
+            "$138,000",
+            "$4,600",
+            "Glendale"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Foxglove Denim Co should raise its wholesale jean price from $45 to $48 (Option A)? Justify your answer.",
+        "model_answer": "Option A raises the price by $3 to $48, passing the $18,000 monthly cotton increase on to retailers [k]. This restores margins without raising Foxglove's costs, which matters because depreciation lifted its bill from $120,000 to $138,000 a month [app]. Protecting $216,000 a year of margin lets Foxglove keep upgrading the Glendale mill and keeps its export pricing stable in Country Z terms [an]. However, Option B keeps prices at $45 [k]. Holding price may retain retailer loyalty and sales volume at home, and with 40% of jeans exported, stronger export volumes could offset the $216,000 absorbed [app]. The risk is that cotton costs keep rising if the dollar weakens further, so $45 may become unsustainable [an]. Overall, I think Foxglove should choose Option A [eval] because a $3 rise is only about 6.7% on a wholesale price and is caused by an external currency movement, so retailers are likely to accept it rather than lose supply; it should review the price each season in case cotton costs fall back [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: pass on cost via $3 rise to $48",
+            "Option B: hold $45 to protect loyalty and volume"
+          ],
+          "application_max_2": [
+            "Reference to $18,000 monthly increase / $216,000 a year / $45 to $48",
+            "Reference to 40% exports to Country Z / $120,000 to $138,000"
+          ],
+          "analysis_max_2": [
+            "Chain from price rise to restored margin to sustained investment",
+            "Chain from held price to volume retention but open-ended cost exposure"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($45 vs $48, $216,000, 40%)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$45",
+            "$48",
+            "$18,000",
+            "$216,000",
+            "40%",
+            "Glendale"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_83",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Ridgemont Electronics Ltd is a private limited company in Country X assembling smartphone accessories at its Darnwell factory, employing 85 workers on two production lines. It imports circuit boards from Country W, paying €90,000 a month under a rolling supply agreement. The exchange rate has moved from $1.30 per euro to $1.45 per euro, so the dollar now buys fewer euros than six months ago.\n\nFinance Director Mark Delgado must decide before the October supply contract is signed. Option A is to switch to a Country X circuit board supplier charging $135,000 a month, invoiced in dollars, with a 12-month fixed price. Option B is to keep importing from Country W at the current $130,500 a month and hope the rate swings back, accepting the uncertainty.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the dollar cost of the monthly €90,000 payment before and after the rate change.",
+        "model_answer": "Before: €90,000 x $1.30 = $117,000. After: €90,000 x $1.45 = $130,500. The depreciation raises the monthly cost by $13,500 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "€90,000 x $1.30 = $117,000",
+            "€90,000 x $1.45 = $130,500 (an increase of $13,500)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the exchange-rate movement on Ridgemont Electronics Ltd.",
+        "model_answer": "First, the depreciation of the dollar raises the cost of imported circuit boards [k]. The monthly bill has increased from $117,000 to $130,500, an extra $13,500 a month that Ridgemont must absorb or pass on to customers [app]. Second, the movement reduces the reliability of Ridgemont's cost planning [k]. If the rate moves beyond $1.45 per euro, the $130,500 monthly import cost rises further, so the firm cannot confidently fix prices in its October supply contract [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A weaker dollar makes imports dearer",
+            "Rate uncertainty makes cost planning difficult"
+          ],
+          "application_max_2": [
+            "Reference to $117,000 to $130,500 / $13,500 a month / €90,000",
+            "Reference to October supply contract / $130,500 vs $135,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.30",
+            "$1.45",
+            "€90,000",
+            "$130,500",
+            "$135,000",
+            "October"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Ridgemont Electronics Ltd might face if it chooses Option B.",
+        "model_answer": "First, the import cost is unpredictable month to month [k]. If the dollar weakens past $1.45 per euro, the €90,000 payment will exceed the current $130,500 and could approach the $135,000 charged by the Country X supplier [app]. Open-ended cost growth makes it hard to quote firm prices to customers, risking lost orders [an]. Second, continued importing keeps Ridgemont dependent on one foreign supplier and its lead times [k]. Any delay or disruption at the Country W factory would halt the Darnwell line that employs 85 workers [app]. A line stoppage would push up costs and damage reputation with accessory customers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Import costs can keep rising beyond current levels",
+            "Single foreign supplier creates dependency and lead-time risk"
+          ],
+          "application_max_2": [
+            "Reference to $1.45 per euro / $130,500 vs $135,000",
+            "Reference to Darnwell factory / 85 workers / October supply contract"
+          ],
+          "analysis_max_2": [
+            "Chain from further depreciation to import cost above $135,000 to eroded margin and lost orders",
+            "Chain from single-source dependency to line stoppage to costs and reputation damage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option B",
+            "$130,500",
+            "$135,000",
+            "$1.45",
+            "Darnwell",
+            "85 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ridgemont Electronics Ltd should switch to the Country X supplier (Option A)? Justify your answer.",
+        "model_answer": "Option A switches to a local supplier charging $135,000 a month with a 12-month fixed price in dollars [k]. For roughly $4,500 a month more than the current $130,500, Ridgemont buys certainty: its October supply contract can be priced firmly and its 85 Darnwell workers face no supply interruption [app]. Locking $135,000 removes the risk that the dollar weakens to $1.50 per euro, at which point €90,000 would cost $135,000 anyway [an]. However, Option B keeps the lower import price [k]. If the rate swings back towards $1.30 per euro, the import bill returns to $117,000, saving Ridgemont $13,500 a month, or $162,000 a year, against the fixed contract [app]. The saving is not guaranteed and costs remain unpredictable in the meantime [an]. Overall, I think Ridgemont should choose Option A [eval] because fixed costs remove the guesswork from the October contract and a domestic supplier also shortens lead times; it can revisit the decision when the 12-month contract expires [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: fixed-price local supplier at $135,000",
+            "Option B: keep cheaper import at $130,500 / $117,000 if rate returns to $1.30"
+          ],
+          "application_max_2": [
+            "Reference to €90,000 / October supply contract / 12-month fixed price",
+            "Reference to $130,500 vs $135,000 / Darnwell / 85 workers"
+          ],
+          "analysis_max_2": [
+            "Chain from fixed price to firm October pricing and no supply interruption",
+            "Chain from swinging rate to possible $162,000 annual saving forgone"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($135,000 vs $130,500, $1.30/$1.45)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$135,000",
+            "$130,500",
+            "$1.30",
+            "$1.45",
+            "October",
+            "Darnwell"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_84",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Carrowmore Cider Co is a private limited company in Country X's northern vale pressing craft cider from 300 tonnes of apples a year. Half of its 150,000 cases a year are exported to Country W at €20 a case, invoiced in euros. The exchange rate has moved from $1.45 per euro to $1.30 per euro, so the dollar buys more euros than before.\n\nOwner Gareth Rowe must set the export price list for January. Option A is to cut the Country W price by 10% to €18 a case to defend volume of 75,000 cases a year. Option B is to hold €20 and accept orders falling to 60,000 cases, increasing focus on domestic sales through farm shops and supermarkets instead.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the dollar value of the annual export payments before and after the rate change.",
+        "model_answer": "Annual exports: 75,000 cases x €20 = €1,500,000. Before: €1,500,000 x $1.45 = $2,175,000. After: €1,500,000 x $1.30 = $1,950,000. The appreciation cuts dollar export revenue by $225,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "75,000 x €20 = €1,500,000; x $1.45 = $2,175,000",
+            "€1,500,000 x $1.30 = $1,950,000 (a fall of $225,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the exchange-rate movement on Carrowmore Cider Co.",
+        "model_answer": "First, the appreciation cuts the dollar value of Carrowmore's euro export sales [k]. The same 75,000 cases at €20 now convert to $1,950,000 rather than $2,175,000, so dollar export revenue falls by $225,000 [app]. Second, the appreciation makes it harder to recover that revenue by raising the export price [k]. Lifting the €20 price to claw back the shortfall would make Country W buyers switch to cheaper local cider, so Gareth must plan marketing carefully [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Appreciation lowers the dollar value of euro receipts",
+            "Raising foreign prices to recover revenue weakens competitiveness"
+          ],
+          "application_max_2": [
+            "Reference to €1,500,000 / $2,175,000 to $1,950,000 / $225,000",
+            "Reference to Country W buyers / €20 a case / local cider rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.30",
+            "€20",
+            "75,000",
+            "150,000",
+            "Carrowmore Cider Co",
+            "Country W"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Carrowmore Cider Co might face if it chooses Option B.",
+        "model_answer": "First, holding price means giving up export volume [k]. Orders fall from 75,000 to 60,000 cases, so euro export revenue drops from €1,500,000 to €1,200,000, a loss of €300,000 a year [app]. Lower export volume may leave cider stockpiled for the domestic market, forcing farm-gate discounting [an]. Second, Option B shrinks Carrowmore's presence in Country W [k]. Once listings are lost to Country W rivals, winning them back is expensive, and farm shops and supermarkets at home may not absorb the extra 15,000 cases [app]. Domestic sales growth could lag, leaving the pressing plant underused and unsold stock [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Holding price loses export volume and revenue",
+            "Lost listings are hard to recover / domestic market may not absorb displaced volume"
+          ],
+          "application_max_2": [
+            "Reference to 60,000 vs 75,000 cases / €300,000 loss",
+            "Reference to farm shops and supermarkets / Hereford vale / 15,000 cases"
+          ],
+          "analysis_max_2": [
+            "Chain from lower export volume to unsold stock and farm-gate discounting",
+            "Chain from lost listings to higher re-entry cost and underused capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option B",
+            "€20",
+            "60,000",
+            "75,000",
+            "Country W",
+            "farm shops"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Carrowmore Cider Co should cut its Country W price to €18 a case (Option A)? Justify your answer.",
+        "model_answer": "Option A cuts the export price by 10% to €18 to defend the 75,000-case order book [k]. Keeping 75,000 cases at €18 raises €1,350,000, which converts to $1,755,000 at the new $1.30 rate, well ahead of the 60,000-case alternative, and it keeps Carrowmore's cider listed in Country W stores [app]. Volume and shelf presence protect the brand abroad and spread fixed costs over more cases [an]. However, Option B holds €20 [k]. Orders fall to 60,000 cases, worth €1,200,000 or $1,560,000, but the margin per case is higher and the firm avoids cheapening its craft brand in its main overseas market [app]. The danger is losing momentum at the moment domestic farm shops and supermarkets are being asked to absorb extra cases [an]. Overall, I think Carrowmore should choose Option A [eval] because keeping 75,000 cases in front of Country W shoppers protects long-term export relationships while the firm builds domestic sales; it can restore €20 once the rate improves [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: cut price by 10% to €18",
+            "Option B: hold €20, export volume falls to 60,000 cases"
+          ],
+          "application_max_2": [
+            "Reference to 75,000 vs 60,000 cases / €1,350,000 vs €1,200,000",
+            "Reference to $1,755,000 vs $1,560,000 at $1.30"
+          ],
+          "analysis_max_2": [
+            "Chain from lower price to defended volume and protected shelf space and brand",
+            "Chain from holding price to higher per-case margin but lost listings and domestic pressure"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures (€18 vs €20, 75,000 vs 60,000 cases)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "€18",
+            "€20",
+            "75,000",
+            "60,000",
+            "$1.30",
+            "Country W"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_85",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Wren & Willow Fashion is a private limited company running 6 womenswear shops across Country X, employing 34 full-time and part-time staff. It imports 4,000 winter coats a year from Country W at €40 a coat, invoiced in euros. The Country X dollar has appreciated from $1.45 to $1.30 per euro, cutting the dollar cost of each coat from $58 to $52.\n\nBuying Director Ines Duarte must decide the winter range prices before the January sales planning meeting. Option A is to cut the ticket price of imported coats by $6 to boost footfall and market share across the 6 shops. Option B is to keep ticket prices unchanged and keep the extra $24,000 a year, 4,000 coats at $6, as profit to refurbish 2 shops.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two effects of a stronger currency on businesses that import goods.",
+        "model_answer": "Imported goods become cheaper in the home currency; importers can cut their selling prices or enjoy higher profit margins [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Imports cost less in the home currency",
+            "Importers can cut prices or raise margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the appreciation for Wren & Willow Fashion.",
+        "model_answer": "First, each imported coat now costs $52 instead of $58, saving $6 [k]. On 4,000 winter coats a year the total saving is $24,000, which can fund refurbishment or wage rises [app]. Second, cheaper coats let Wren & Willow compete on price without cutting its margin [k]. Passing on the $6 would keep relative value attractive to Country X shoppers while protecting the mark-up the shops need to pay 34 staff for 6 stores [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cheaper import costs in home currency",
+            "Scope to cut retail prices or boost margins"
+          ],
+          "application_max_2": [
+            "Reference to $52 vs $58 / $6 a coat / $24,000",
+            "Reference to 4,000 coats / 34 staff / 6 shops"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$52",
+            "$58",
+            "$6",
+            "$24,000",
+            "4,000",
+            "34 full-time and part-time staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Wren & Willow Fashion might face if it chooses Option A.",
+        "model_answer": "First, cutting the ticket price sacrifices margin headroom [k]. Passing on the entire $6 import saving leaves no extra profit from the appreciation, so the $24,000 stays locked in lower prices rather than funding refurbishment of 2 shops [app]. If sales do not rise enough to offset the lower price, the business forgoes profit the currency change already delivered [an]. Second, price promotions can be matched by rival shops [k]. Competing Country X retailers importing from Country W will also face a $6 cost fall, so all may cut ticket prices together, leaving Wren & Willow with lower prices but little extra footfall [app]. Market-wide price cuts reduce revenue per coat and can squeeze cash flow during the crucial winter season [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Passing on all the savings removes extra profit",
+            "Rivals can match price cuts"
+          ],
+          "application_max_2": [
+            "Reference to $6 / $24,000 / refurbish 2 shops",
+            "Reference to Country X retailers importing from Country W / winter season"
+          ],
+          "analysis_max_2": [
+            "Chain from full price pass-through to forgone profit if volume flat",
+            "Chain from rival price matching to market-wide margin squeeze and weaker cash flow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$6",
+            "$24,000",
+            "4,000",
+            "Country X",
+            "winter coats"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wren & Willow Fashion should cut the ticket price of the imported coats by $6 (Option A)? Justify your answer.",
+        "model_answer": "Option A passes the $6 saving straight to customers as lower ticket prices [k]. This makes the 4,000 imported coats noticeably better value, which should boost footfall across the 6 shops and lift market share before the winter peak [app]. Higher volume spreads fixed costs such as rent and wages over more coats and builds loyalty for the rest of the range [an]. However, Option B keeps ticket prices and banks the $24,000 [k]. The shops keep their margin, and the money could refurbish 2 of the 6 stores to improve customer experience without touching price [app]. The risk is that rivals cut prices first, leaving Wren & Willow uncompetitive on the high street despite the $6 saving being available [an]. Overall, I think Wren & Willow should choose Option A [eval] because the $6 saving was a currency windfall rather than genuine efficiency, and giving it back as value wins loyalty and share while margins stay at their pre-appreciation level [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: cut ticket prices by $6",
+            "Option B: hold prices and keep $24,000"
+          ],
+          "application_max_2": [
+            "Reference to $6 a coat / $24,000 / 4,000 coats",
+            "Reference to 6 shops / 2 shop refurbishment / 34 staff"
+          ],
+          "analysis_max_2": [
+            "Chain from cut prices to footfall, market share and loyalty",
+            "Chain from held prices to funded refurbishment but risk of rivals undercutting"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($6, $24,000, 4,000 coats)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$6",
+            "$24,000",
+            "4,000",
+            "6 shops",
+            "refurbish 2",
+            "Country W"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_86",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Brannock Construction Ltd is a private limited company building 40 homes a year around Millbrook in Country X, mostly starter homes for young families. It imports structural steel and timber worth $1.2 million a year from Country W. The Country X dollar has depreciated by 8%, adding about $96,000 a year to material costs, and rates could move further either way.\n\nManaging Director Rosa Ibanez must secure supplies before the spring building season begins on site. Option A is to sign with Country X steel and timber suppliers at 10% above import prices, totalling $1.32 million a year, but in stable dollars. Option B is to keep importing and raise homebuyers' prices to cover the extra $96,000 a year on top of site costs.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two ways a business can plan for exchange-rate fluctuations.",
+        "model_answer": "Monitor exchange-rate movements and adjust prices or sourcing in advance; agree contracts priced in the home currency or keep a contingency fund [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Monitor rate movements and adjust prices or sourcing",
+            "Contract in home currency / keep contingency funds or reserves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the 8% depreciation on Brannock Construction Ltd.",
+        "model_answer": "First, the depreciation raises the cost of imported steel and timber [k]. The $1.2 million annual import bill now costs about $96,000 more, putting pressure on the margins of the 40 homes it builds a year [app]. Second, the depreciation squeezes Brannock's building economics unless home prices change [k]. Adding $96,000 across 40 homes means roughly $2,400 extra cost per home, which Brannock must absorb or recover through pricing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Depreciation raises the dollar cost of imports",
+            "Higher input costs squeeze margins / must recover through prices"
+          ],
+          "application_max_2": [
+            "Reference to $96,000 / $1.2 million / 8%",
+            "Reference to 40 homes / $2,400 per home / spring building season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8%",
+            "$96,000",
+            "$1.2 million",
+            "40",
+            "Brannock Construction Ltd",
+            "Millbrook"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Brannock Construction Ltd might face if it chooses Option A.",
+        "model_answer": "First, domestic supplies cost $120,000 a year more than even the current import bill [k]. At $1.32 million against $1.2 million, Brannock pays a premium of $120,000, which is more than the $96,000 the depreciation added [app]. Higher material costs cut the margin on each of the 40 homes unless house prices rise [an]. Second, Country X steel and timber suppliers may not meet Brannock's volume or quality needs [k]. Millbrook builders all want local supplies at once, so lead times for domestic steel could run past the spring start, delaying the 40 homes [app]. Delays trigger penalty clauses in buyer contracts and raise site overhead, eroding the benefit of fixed prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Domestic suppliers charge more than imports",
+            "Local capacity and lead-time constraints"
+          ],
+          "application_max_2": [
+            "Reference to $1.32 million vs $1.2 million / $120,000 vs $96,000",
+            "Reference to 40 homes / spring building season / Millbrook"
+          ],
+          "analysis_max_2": [
+            "Chain from domestic premium to lower margin per home",
+            "Chain from local capacity limits to delays, penalties and overhead strain"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$1.32 million",
+            "$1.2 million",
+            "$96,000",
+            "40 homes",
+            "Millbrook"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brannock Construction Ltd should source steel and timber from Country X suppliers (Option A)? Justify your answer.",
+        "model_answer": "Option A locks in Country X supplies at $1.32 million a year with no exchange-rate risk [k]. Because Brannock sells homes on fixed prices, a further depreciation beyond 8% would otherwise destroy its margin on 40 homes, and $1.32 million gives complete cost certainty for the spring programme [app]. Certain costs make cash flow and profit planning reliable, protecting the business from open-ended import bills [an]. However, Option B keeps the cheaper import route [k]. The current $96,000 increase is smaller than Option A's $120,000 premium, and raising homebuyers' prices by about $2,400 a home might cover the extra while keeping imported materials [app]. Relying on homebuyers absorbing rises is risky if competing builders keep prices lower or the rate moves further against the dollar [an]. Overall, I think Brannock should choose Option A [eval] because its buyers have fixed-price contracts and cost certainty protects profit better than chasing a $24,000 saving that could vanish with one more rate move; it can return to imports if the dollar recovers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: domestic supplies at $1.32 million, fixed",
+            "Option B: keep imports and raise home prices by about $2,400"
+          ],
+          "application_max_2": [
+            "Reference to $120,000 vs $96,000 premium / 8%",
+            "Reference to 40 homes / $2,400 per home / spring building season"
+          ],
+          "analysis_max_2": [
+            "Chain from fixed domestic costs to reliable planning and protected margins",
+            "Chain from homebuyer price rises to risk of losing sales to rivals"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($1.32 million vs $1.2 million, $96,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$1.32 million",
+            "$1.2 million",
+            "$96,000",
+            "40 homes",
+            "spring",
+            "Country X"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_87",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Thistledown Coffee Roasters is a private limited company in Country X importing 80 tonnes of green coffee a year from Country W at €2,800 a tonne, invoiced in euros, roasting them for independent cafe chains. The exchange rate has appreciated from $1.45 to $1.30 per euro, cutting the annual bean bill from $324,800 to $291,200 and saving $33,600.\n\nFounder Marta Kowal must choose how to buy next year's beans before the new season arrives. Option A is to sign a 12-month fixed-price contract at €2,800 a tonne with the Country W supplier, locking costs regardless of rate movements. Option B is to keep buying monthly at spot rates and save even more if the dollar strengthens to $1.25 per euro, a bill of $280,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define what is meant by a 'stronger currency'.",
+        "model_answer": "A stronger currency is one that has risen in value against other currencies, so it buys more foreign currency than before [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Currency has risen in value",
+            "Buys more foreign currency than before"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the appreciation for Thistledown Coffee Roasters.",
+        "model_answer": "First, the appreciation cuts the annual green coffee bill [k]. At the new rate, 80 tonnes cost $291,200 rather than $324,800, saving $33,600 a year [app]. Second, the cheaper euros give Thistledown more room to compete and invest [k]. The $33,600 saving can be kept as extra profit or reinvested in roasting capacity without raising bean prices for cafe customers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Import bill falls in the home currency",
+            "Savings can be kept as profit or reinvested"
+          ],
+          "application_max_2": [
+            "Reference to $291,200 vs $324,800 / $33,600 saving",
+            "Reference to 80 tonnes / €2,800 a tonne / cafe customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$291,200",
+            "$324,800",
+            "$33,600",
+            "80 tonnes",
+            "€2,800",
+            "Thistledown Coffee Roasters"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Thistledown Coffee Roasters might face if it chooses Option A.",
+        "model_answer": "First, the contract locks the cost even if the dollar keeps strengthening [k]. If the rate reaches $1.25 per euro, spot buyers would pay only $280,000 a year, so Thistledown would overpay by $11,200 against spot purchases [app]. Overpaying weakens the margin on every bag of beans and wastes funds that could finance growth [an]. Second, a 12-month fixed contract removes flexibility to switch suppliers [k]. If the Country W supplier's quality or reliability slips, Thistledown cannot easily move its 80 tonnes to a rival roaster without renegotiating, and it is exposed for a full year [app]. Being locked in limits negotiating power on quality, delivery and payment terms during the peak season [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed contract overpays if the currency keeps strengthening",
+            "Long contracts reduce flexibility to switch suppliers"
+          ],
+          "application_max_2": [
+            "Reference to $280,000 at $1.25 / $11,200 gap vs $291,200",
+            "Reference to 80 tonnes / €2,800 a tonne / Country W supplier"
+          ],
+          "analysis_max_2": [
+            "Chain from locked price to overpaying vs spot to weaker margin and wasted funds",
+            "Chain from reduced flexibility to weaker negotiating power and supplier risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$280,000",
+            "$1.25",
+            "$33,600",
+            "$291,200",
+            "80 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thistledown Coffee Roasters should sign the 12-month fixed-price contract (Option A)? Justify your answer.",
+        "model_answer": "Option A signs a 12-month fixed-price contract at €2,800 a tonne [k]. This locks the bill at $291,200 equivalent regardless of rate movements, so planning, pricing and cash flow are predictable for the whole year [app]. Certainty matters because the bean bill is Thistledown's biggest cost, and locking it protects margin if the dollar weakens back towards $1.45, which would lift the bill to $324,800 [an]. However, Option B keeps monthly spot buying [k]. If the dollar strengthens to $1.25 per euro, the annual bill falls to $280,000, saving $11,200 more than the contract, and buying monthly avoids being locked into one supplier [app]. The trade-off is exposure to sudden reversals, which could add tens of thousands of dollars of cost overnight [an]. Overall, I think Thistledown should choose Option A [eval] because predictable input costs protect the business's narrow roaster margins and support firm pricing with cafe customers; the $11,200 possible extra saving is not worth the risk of a reversal [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: 12-month fixed-price contract at €2,800 a tonne",
+            "Option B: spot buying saves more if the dollar strengthens to $1.25"
+          ],
+          "application_max_2": [
+            "Reference to $291,200 / €2,800 a tonne / 12-month contract",
+            "Reference to $280,000 at $1.25 / $324,800 at $1.45"
+          ],
+          "analysis_max_2": [
+            "Chain from certainty to predictable planning and protected margin",
+            "Chain from spot buying to extra saving but exposure to sudden reversals"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($291,200, $280,000, $1.25/$1.45)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$291,200",
+            "$280,000",
+            "$324,800",
+            "$1.25",
+            "$1.45",
+            "€2,800"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_88",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Brinemare Fisheries is a private limited company fishing the cold waters off Country X's north coast, employing 60 crew and 12 factory staff. It exports 2,400 tonnes of frozen prawns a year, 70% of the catch to Country W supermarkets, at $4,000 a tonne, earning $9.6 million. The Country X dollar has depreciated by 10%, making its prawns cheaper in Country W shops.\n\nOperations Director Sam Okoro must plan capacity for next year. Country W orders have risen by 25% to 3,000 tonnes, exceeding the 2,400-tonne freezing capacity. Option A is to invest $250,000 in a second blast freezer adding 800 tonnes of capacity. Option B is to hold output at 2,400 tonnes and quote new buyers higher prices and later delivery dates.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two types of business that benefit when a currency depreciates.",
+        "model_answer": "Exporting businesses benefit because their goods become cheaper abroad; home businesses competing with imports benefit because imports become dearer [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Exporters benefit (goods cheaper abroad)",
+            "Home businesses competing with imports benefit (imports dearer)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the depreciation for Brinemare Fisheries.",
+        "model_answer": "First, depreciation makes Brinemare's prawns cheaper for Country W supermarkets [k]. Orders have already risen by 25% to 3,000 tonnes, worth up to $12 million a year if the extra volume is met [app]. Second, the weaker dollar strengthens Brinemare's competitiveness against Country W prawn suppliers [k]. Country X product now undercuts rivals in Country W shops, so Brinemare can win longer-term listings rather than one-off orders on its 70% export share [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Exports become cheaper abroad",
+            "Competitiveness against foreign rivals improves"
+          ],
+          "application_max_2": [
+            "Reference to orders up 25% to 3,000 tonnes / $4,000 a tonne / $12 million",
+            "Reference to 70% of catch to Country W supermarkets / $9.6 million"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "25%",
+            "3,000",
+            "$4,000",
+            "$9.6 million",
+            "70%",
+            "Country W"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Brinemare Fisheries might face if it chooses Option A.",
+        "model_answer": "First, the $250,000 investment is a heavy up-front cash outlay [k]. Brinemare earns $9.6 million a year, so $250,000 is about 2.6% of revenue, and it must be financed before the extra 800 tonnes can be handled [app]. If the money is borrowed, interest payments raise costs until the freezer pays back [an]. Second, the extra capacity depends on export demand lasting [k]. The 10% depreciation could be reversed, and a 25% order surge might fade; an 800-tonne freezer running half empty would burden Brinemare with labour and running costs [app]. Idle capacity would eat the profit from core 2,400 tonnes and could leave the firm overstretched [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large up-front investment must be financed",
+            "Demand surge may not last if the rate reverses"
+          ],
+          "application_max_2": [
+            "Reference to $250,000 / $9.6 million / 800 tonnes",
+            "Reference to 25% order rise / 10% depreciation / 2,400-tonne capacity"
+          ],
+          "analysis_max_2": [
+            "Chain from investment to finance costs and payback pressure",
+            "Chain from rate reversal to idle capacity and wasted running costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$250,000",
+            "$9.6 million",
+            "800 tonnes",
+            "2,400-tonne",
+            "10%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brinemare Fisheries should invest in a second blast freezer (Option A)? Justify your answer.",
+        "model_answer": "Option A invests $250,000 in a second blast freezer adding 800 tonnes of capacity [k]. Demand has already risen 25% to 3,000 tonnes, so the investment would let Brinemare capture up to $12 million a year of prawn sales instead of turning customers away [app]. Extra volume spreads the fixed costs of 60 crew and the factory over more tonnes, improving profit per tonne [an]. However, Option B holds capacity at 2,400 tonnes and manages scarcity with higher prices and later delivery dates [k]. This protects margins on current sales without new finance, and higher prices could lift revenue per tonne from the fixed 2,400 tonnes [app]. The risk is that Country W buyers turned away now sign with rival suppliers and do not return when the capacity arrives [an]. Overall, I think Brinemare should choose Option A [eval] because refusing orders above capacity risks the permanent loss of Country W listings, while $250,000 is recoverable through the margin on extra tonnes; it can phase the investment over two fishing seasons to limit the cash risk [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: invest $250,000 in 800 tonnes extra capacity",
+            "Option B: hold 2,400 tonnes, use higher prices and later deliveries"
+          ],
+          "application_max_2": [
+            "Reference to 3,000 tonnes vs 2,400 / $12 million potential",
+            "Reference to $250,000 / $4,000 a tonne / 70% Country W"
+          ],
+          "analysis_max_2": [
+            "Chain from new capacity to captured volume and spread fixed costs",
+            "Chain from refusing orders to permanent loss of listings"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($250,000, 3,000 vs 2,400 tonnes)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$250,000",
+            "800 tonnes",
+            "2,400-tonne",
+            "3,000",
+            "$9.6 million",
+            "$4,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_89",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Alderney Motors is a private limited company selling cars in Country X's capital city from a showroom near the ring road. It imports 18 cars a month from Country W at €26,000 each, invoiced in euros. The Country X dollar has appreciated from $1.45 to $1.30 per euro, so each car now costs $33,800 instead of $37,700, a saving of $3,900 per car or $842,400 a year.\n\nSales Director Ruth Adler must set showroom prices for the new plate month. Option A is to cut prices by $2,000 per car to attract buyers and increase monthly sales volume. Option B is to keep prices unchanged and keep the extra $70,200 a month in profit, using it to expand the service department instead.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two ways consumers benefit when their country's currency appreciates.",
+        "model_answer": "Imported goods become cheaper in home-currency terms; foreign holidays and imported products become more affordable [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Imported goods become cheaper",
+            "Foreign travel and imported products become more affordable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the appreciation for Alderney Motors.",
+        "model_answer": "First, each imported car costs $3,900 less [k]. The monthly saving on 18 cars is $70,200, equal to $842,400 a year at the new rate [app]. Second, Alderney can choose how to use the saving [k]. A modest price cut of $2,000 a car would still leave most of the $3,900 saving intact while winning price-sensitive buyers from rival showrooms [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower import costs in home currency",
+            "Flexibility to cut prices or keep margin"
+          ],
+          "application_max_2": [
+            "Reference to $3,900 a car / $70,200 a month / $842,400",
+            "Reference to 18 cars / €26,000 / $33,800 vs $37,700"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,900",
+            "$70,200",
+            "$842,400",
+            "18 cars",
+            "€26,000",
+            "$33,800"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Alderney Motors might face if it chooses Option A.",
+        "model_answer": "First, the price cut gives back $36,000 a month of the $70,200 saving immediately [k]. The margin per car falls from $3,900 to $1,900, so Alderney keeps only half the windfall and volumes may not rise enough to compensate [app]. Weaker margins squeeze the cash available for staff, stock and the showroom, risking losses if sales stay flat [an]. Second, rival dealers will also see the appreciation lift their margins [k]. If they match a $2,000 cut, no showroom gains share, and Alderney's prices fall with no extra cars sold [app]. Market-wide discounting lowers revenue across the whole market and trains customers to wait for promotions rather than buy [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cutting prices sacrifices margin without guaranteed volume",
+            "Rivals likely to match the cut"
+          ],
+          "application_max_2": [
+            "Reference to $2,000 / $36,000 of the $70,200 / $1,900 remaining margin",
+            "Reference to 18 cars / rival showrooms / the capital city"
+          ],
+          "analysis_max_2": [
+            "Chain from margin sacrifice to weaker cash flow if volumes stay flat",
+            "Chain from price matching to market-wide discounting and customers waiting for deals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "$2,000",
+            "$70,200",
+            "$3,900",
+            "18 cars",
+            "$33,800"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Alderney Motors should cut showroom prices by $2,000 per car (Option A)? Justify your answer.",
+        "model_answer": "Option A cuts showroom prices by $2,000 a car to win buyers [k]. Because import costs fell to $33,800 from $37,700, this still leaves $1,900 of extra margin per car, and lower sticker prices should increase footfall and sales of the 18-car monthly quota [app]. More volume spreads overheads such as showroom staff and service bays, improving overall profit if sales respond [an]. However, Option B keeps prices unchanged and keeps the extra $70,200 a month [k]. Alderney banks a full $842,400 a year with zero risk to margin, which can expand the service department and deepen customer relationships after the sale [app]. The danger is that price-sensitive buyers drift to rivals who advertise lower prices, costing Alderney volume and long-term service work [an]. Overall, I think Alderney should choose Option B [eval] because the $70,200 monthly saving is certain while the volume gain from a $2,000 cut is not guaranteed; funding the service department strengthens the whole business, and selective promotions can target fence-sitters without a blanket cut [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: cut prices by $2,000 to boost volume",
+            "Option B: hold prices and keep $70,200 a month"
+          ],
+          "application_max_2": [
+            "Reference to $37,700 to $33,800 / $3,900 saving / $1,900 cushion",
+            "Reference to $842,400 a year / 18 cars / service department"
+          ],
+          "analysis_max_2": [
+            "Chain from price cut to uncertain volume response and spread overheads",
+            "Chain from held prices to certain $842,400 margin funding service expansion"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($2,000, $70,200, $842,400)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$2,000",
+            "$70,200",
+            "$842,400",
+            "$33,800",
+            "$37,700",
+            "18 cars"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_90",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Tarnmoor Medical Supplies is a private limited company in Country X making surgical gloves for hospitals and clinics. It exports 500,000 boxes a year to Country W, invoiced in euros, worth about €9 million a year, which is 70% of its revenue. The exchange rate has swung between $1.30 and $1.45 per euro over the last 12 months.\n\nManaging Director Helen Varga must sign next year's supply deal with Country W distributors before the tender deadline. Option A is to fix the euro export price at €18 a box under a 12-month contract, with pricing built around $1.40 per euro. Option B is to re-quote prices every quarter at the spot rate, passing exchange-rate risk on to Country W buyers each time.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline why many businesses prefer exchange rates to remain stable.",
+        "model_answer": "Stable rates let businesses plan and budget with confidence because the home-currency value of export receipts and import costs does not keep changing [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Predictable planning and budgeting",
+            "No unexpected shifts in export revenue or import costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Tarnmoor Medical Supplies is worried about exchange-rate swings.",
+        "model_answer": "First, most of Tarnmoor's revenue comes from Country W exports [k]. With €9 million, 70% of revenue, invoiced in euros, a swing from $1.45 to $1.30 cuts export income from $13.05 million to $11.7 million, a loss of $1.35 million [app]. Second, the swing makes it hard to set prices and budgets [k]. Its costs in Country X, such as wages and materials, stay in dollars, so a $1.35 million revenue swing lands straight on profit, making the next year's plan unreliable [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Most revenue is in foreign currency",
+            "Dollar costs against euro revenue create planning uncertainty"
+          ],
+          "application_max_2": [
+            "Reference to €9 million / 70% of revenue / $1.30 vs $1.45",
+            "Reference to 500,000 boxes / $13.05 million vs $11.7 million / $1.35 million swing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "€9 million",
+            "70%",
+            "$1.30",
+            "$1.45",
+            "500,000",
+            "Country W"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Tarnmoor Medical Supplies might face if it chooses Option B.",
+        "model_answer": "First, quarterly re-quoting pushes risk onto Country W buyers but burdens them with uncertainty [k]. Buyers signing hospital supply contracts may switch to rivals offering fixed prices, especially as the rate swung a 15-cent range within a year [app]. Losing tendered contracts would damage Tarnmoor's market share precisely when it needs stable export income [an]. Second, re-quoting every quarter creates administrative work and disputes [k]. Four price lists a year, credit notes and contract changes would strain the small finance team, and buyers may query invoices whenever the $1.30 to $1.45 band bites [app]. Time spent renegotiating diverts management from production, and delayed or disputed payments would squeeze working capital while orders ship [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Customers dislike unpredictable prices / risk of losing contracts",
+            "Admin burden and disputes from frequent re-quoting"
+          ],
+          "application_max_2": [
+            "Reference to quarterly re-quotes / Option B / Country W buyers",
+            "Reference to $1.30 to $1.45 / 500,000 boxes / hospital supply contracts"
+          ],
+          "analysis_max_2": [
+            "Chain from quarterly price changes to lost fixed-price tenders and export share",
+            "Chain from repeated renegotiation to admin strain and disputed payments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option B",
+            "$1.30",
+            "$1.45",
+            "€9 million",
+            "500,000",
+            "Country W"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tarnmoor Medical Supplies should sign the 12-month fixed-price contract (Option A)? Justify your answer.",
+        "model_answer": "Option A fixes the euro export price at €18 a box under a 12-month contract built around $1.40 per euro [k]. Hospitals get one stable price all year, which protects Tarnmoor's 500,000-box order book and keeps its position against rivals in Country W [app]. Stable pricing encourages buyers to commit annual volumes rather than shop around every quarter, supporting reliable cash flow [an]. However, Option B re-quotes every quarter at the spot rate and pushes risk onto buyers [k]. If the dollar rises to $1.45, Tarnmoor would collect $13.05 million for the same €9 million, keeping $1.35 million more than at $1.30 [app]. But buyers may resist and demand fixed prices, so this theoretical gain may rarely be realised [an]. Overall, I think Tarnmoor should choose Option A [eval] because certainty wins long-term medical contracts and protects 70% of its revenue; $1.40 sits comfortably inside the $1.30-$1.45 band, so the deal is fair to both sides across a full year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option A: 12-month fixed price at €18, built around $1.40",
+            "Option B: quarterly spot re-quotes, risk passed to buyers"
+          ],
+          "application_max_2": [
+            "Reference to 500,000 boxes / €9 million / 70% of revenue",
+            "Reference to $1.30-$1.45 band / $13.05 million vs $11.7 million / $1.35 million"
+          ],
+          "analysis_max_2": [
+            "Chain from stable pricing to committed buyers and steady cash flow",
+            "Chain from quarterly re-quoting to buyer resistance and forgone certain volume"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures (€18, $1.40, $1.30/$1.45)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "€18",
+            "$1.40",
+            "$1.45",
+            "$1.30",
+            "500,000",
+            "€9 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

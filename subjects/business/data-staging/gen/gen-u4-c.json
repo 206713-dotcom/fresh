@@ -1,0 +1,882 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_61",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Meridian Ceramic Tiles is a private limited company founded 6 years ago by founder Priya Raman, manufacturing glazed ceramic floor tiles at a factory outside Capital City, Country X. Each box of tiles sells for $30, with variable costs of $18 per box. Annual fixed costs are $72,000. The factory produces 9,000 boxes a year and employs 24 workers.\n\nPriya is considering investing $40,000 in a new kiln that would cut variable costs to $14 per box but raise annual fixed costs to $96,000. Alternatively, she could keep the current kiln and raise the selling price to $33 per box. She worries about how high output must be before the business breaks even under each option, and whether the price rise would put off regular builders' merchants.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'total costs'.",
+        "model_answer": "Total costs are the full cost of producing a given level of output, found by adding fixed costs to total variable costs (Meridian's $72,000 fixed costs plus the variable cost of every box made). [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed costs do not change with output, e.g. rent and salaries",
+            "Total costs = fixed costs + (variable cost per unit x output)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits for Priya of calculating break-even output before deciding on the new kiln.",
+        "model_answer": "Benefit 1: break-even output shows Priya the minimum number of boxes she must sell before making a profit [k]; with the new kiln, fixed costs of $96,000 divided by the $16 contribution gives 6,000 boxes, so she can check whether the current 9,000 boxes a year still leaves a safe cushion [app]. Benefit 2: it lets her compare the options on equal terms [k]; keeping the current kiln needs $72,000 divided by $12 = 6,000 boxes, while the $33 selling price option needs $72,000 divided by $15 = 4,800 boxes, so she can see which option leaves the biggest margin of safety [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output identifies the output needed to cover all costs",
+            "Break-even can be used to compare options / assess risk before investing"
+          ],
+          "application_max_2": [
+            "Applies figures: $96,000 fixed costs, $16 contribution, 6,000 boxes break-even",
+            "Applies figures: $72,000 / $12 = 6,000 boxes; $72,000 / $15 = 4,800 boxes at the $33 price"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$96,000", "9,000 boxes", "$72,000", "$33", "new kiln", "$14 per box"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for Priya's investment decision.",
+        "model_answer": "Limitation 1: break-even analysis assumes all output is sold, which may not happen [k]; if builders' merchants buy fewer boxes than the 9,000 a year forecast, revenue will fall short while the $96,000 fixed costs of the new kiln remain unchanged, so the calculated break-even output gives false comfort [app][an]. Limitation 2: break-even analysis assumes costs and revenue move in straight lines [k]; if the new kiln cuts variable costs to $14 per box only at full efficiency, or if discounts push the $33 selling price lower than expected, the $16 contribution would shrink and the true break-even output would be higher than the 6,000 boxes calculated [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes all output is sold",
+            "Break-even assumes linear (straight-line) costs and revenue"
+          ],
+          "application_max_2": [
+            "Applies to builders' merchants buying fewer than 9,000 boxes with fixed costs unchanged",
+            "Applies to the $14 per box variable cost and $33 price risk shifting the $16 contribution"
+          ],
+          "analysis_max_2": [
+            "Explains that unsold output means the break-even figure overstates safety",
+            "Explains that a lower contribution pushes the break-even output above 6,000 boxes"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$96,000", "9,000 boxes", "$14 per box", "$33", "builders' merchants", "$72,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Priya should invest in the new kiln? Justify your answer.",
+        "model_answer": "Priya could invest in the new kiln because it lowers the cost of every box made [k]. Cutting variable costs to $14 per box lifts contribution to $16, so break-even output stays at 6,000 boxes ($96,000 divided by $16) and profit rises from $36,000 to $48,000 a year (9,000 boxes x $16, minus $96,000) [app][an]. However, the $40,000 must be paid up front and fixed costs would rise to $96,000; if sales slip below 6,000 boxes the loss would be deeper than before, and the 3,000-box margin of safety is thin [app][an]. Conversely, keeping the current kiln and raising the price to $33 would cut break-even output to 4,800 boxes ($72,000 divided by $15) and could yield $63,000 profit (9,000 x $15, minus $72,000), but only if builders' merchants accept the higher price [k][eval]. Overall, because variable-cost savings are under Priya's control while a price rise depends on uncertain demand in a competitive market, the evidence favours the kiln - provided she is confident of holding at least 9,000 boxes of annual sales; otherwise the safer short-term move is the price rise, whose 4,800-box break-even output is more forgiving [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "New kiln: contribution $16, break-even $96,000 / $16 = 6,000 boxes",
+            "Price rise: contribution $15, break-even $72,000 / $15 = 4,800 boxes, profit potential $63,000"
+          ],
+          "application_max_2": [
+            "New kiln profit $48,000 vs current $36,000 at 9,000 boxes",
+            "Current kiln fixed costs $72,000 and 3,000-box margin of safety"
+          ],
+          "analysis_max_2": [
+            "Identifies that higher fixed costs deepen losses if sales fall below 6,000 boxes",
+            "Analyses that the price-rise option depends on demand holding at $33"
+          ],
+          "evaluation_max_2": [
+            "Justified overall recommendation tied to Priya's demand confidence and control over costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$14 per box", "$96,000", "$40,000", "9,000 boxes", "$33", "new kiln", "$18 per box"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_62",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Copper Kettle Preserves is a partnership opened 3 years ago by founders Nadia and Theo Barlow, making artisan strawberry jam in a small kitchen in Millbrook, Country X. Each jar sells for $6, variable costs are $2.50 per jar, and fixed costs are $21,000 a year. The business currently makes 7,000 jars a year and sells them at farmers' markets and local shops.\n\nNadia and Theo are deciding whether to supply a national supermarket chain with 10,000 jars a year at a bulk price of $4.50 per jar. Theo fears the lower price would squeeze contribution per jar, while Nadia argues the extra volume would spread fixed costs over more jars and lift the margin of safety. They want a break-even calculation before signing anything.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the break-even output for Copper Kettle Preserves. You are advised to show your working.",
+        "model_answer": "Break-even output = Fixed costs / (Price - Variable cost) = $21,000 / ($6.00 - $2.50) = $21,000 / $3.50 = 6,000 jars per year. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even formula: fixed costs divided by contribution per unit",
+            "Contribution per jar = $6.00 - $2.50 = $3.50"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Nadia and Theo should calculate the margin of safety before signing the supermarket contract.",
+        "model_answer": "Reason 1: the margin of safety shows how far sales can fall before the partnership makes a loss [k]; at 7,000 jars a year and a break-even output of 6,000 jars, the cushion is only 1,000 jars, so relying on the bulk contract's lower price could be risky if the supermarket cuts orders [app]. Reason 2: it tests whether the contract improves security [k]; selling 17,000 jars in total (7,000 plus the 10,000 bulk jars) against the same 6,000-jar break-even output would lift the margin of safety to 11,000 jars, reducing the chance of losses [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Margin of safety = actual output - break-even output",
+            "A larger margin of safety means lower risk of losses"
+          ],
+          "application_max_2": [
+            "Applies figures: 7,000 - 6,000 = 1,000 jars current cushion",
+            "Applies figures: combined 17,000 jars gives an 11,000-jar margin of safety"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["7,000 jars", "10,000 jars", "margin of safety", "$2.50 per jar", "national supermarket chain", "$21,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using break-even analysis for the contract decision.",
+        "model_answer": "Benefit 1: break-even analysis shows the output at which total revenue equals total costs [k]; the $4.50 bulk jar leaves only $2.00 contribution ($4.50 - $2.50), so 10,500 jars at the bulk price alone would be needed to cover the $21,000 fixed costs - warning the partners that the deal is only worthwhile alongside their existing sales [app][an]. Benefit 2: break-even analysis supports a like-for-like comparison of options [k]; selling 10,000 bulk jars adds $20,000 contribution (10,000 x $2.00) to the current $3,500 profit (7,000 x $3.50 - $21,000), showing the total profit would rise to $23,500 [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even compares fixed and variable costs with revenue",
+            "Break-even allows objective comparison of options"
+          ],
+          "application_max_2": [
+            "Applies figures: $2.00 contribution, 10,500 bulk jars to cover $21,000 fixed costs",
+            "Applies figures: $20,000 added contribution, profit rising from $3,500 to $23,500"
+          ],
+          "analysis_max_2": [
+            "Explains the bulk deal only covers fixed costs if existing premium sales continue",
+            "Explains the contract lifts total profit despite a lower per-jar margin"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$4.50 per jar", "$21,000", "$2.50 per jar", "10,000 jars", "contribution per jar", "7,000 jars"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copper Kettle Preserves should accept the supermarket contract? Justify your answer.",
+        "model_answer": "Accepting the contract would secure a guaranteed weekly outlet for 10,000 jars and spread the $21,000 fixed costs over far more units [k]. Selling 10,000 bulk jars at $4.50 adds $20,000 contribution (10,000 x $2.00) to the current $3,500 profit, lifting the total to around $23,500, and the combined margin of safety would rise to 11,000 jars [app][an]. However, the bulk price of $4.50 leaves only $2.00 contribution per jar, far below the $3.50 earned on premium jars; 10,500 bulk jars would be needed merely to cover the $21,000 fixed costs, and the supermarket may demand an even lower price after the first year [app][an]. Conversely, keeping only premium farmers' market sales protects the brand but caps growth and leaves the 1,000-jar margin of safety exposed to poor weather and festival cancellations [k][eval]. Overall, the partnership should accept the contract only if production capacity and jar quality can be maintained at 17,000 jars a year and the $4.50 price and shelf-life terms are written into a fixed two-year agreement; if the supermarket's price or volume is uncertain, Nadia and Theo should negotiate first rather than sign [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Bulk contribution $2.00 per jar vs $3.50 premium contribution",
+            "Bulk break-even 10,500 jars; current profit $3,500"
+          ],
+          "application_max_2": [
+            "Applies figures: 10,000 x $2.00 = $20,000 added contribution, profit ~$23,500",
+            "Applies figures: combined 17,000 jars gives 11,000-jar margin of safety"
+          ],
+          "analysis_max_2": [
+            "Analyses that fixed costs are spread thinner at 17,000 jars but the margin per jar falls",
+            "Analyses the risk of price pressure or order cuts from the supermarket"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation conditional on capacity, quality and a fixed contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$4.50 per jar", "$21,000", "10,000 jars", "$2.50 per jar", "margin of safety", "7,000 jars", "supermarket"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_63",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Silverline Window Frames is a public limited company listed on the Country X stock exchange, operating a single factory in Riverside Industrial Estate for 8 years. It sells each triple-glazed window unit for $450, with variable costs of $270 per unit. Yearly fixed costs are $810,000. Last year it sold 6,000 units to housebuilders across Country X.\n\nThe board is debating an automated cutting line that would raise annual fixed costs to $1,050,000 but cut variable costs to $240 per unit and lift capacity to 7,500 units. Some directors favour the machine for its lower unit cost; others fear higher break-even output if sales slip. The finance director has asked for break-even figures for both options before the board votes.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State what is meant by 'average cost'.",
+        "model_answer": "Average cost is the total cost of producing a given output divided by the number of units produced - the cost per unit (at 6,000 units with total costs of $2,430,000, the average cost is $405). [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Average cost = total cost / output",
+            "Average cost includes both fixed and variable elements per unit"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the board wants break-even figures for both options.",
+        "model_answer": "Reason 1: to judge the extra risk from higher fixed costs before approving the machine [k]; the automated cutting line raises fixed costs to $1,050,000, so break-even output climbs to 5,000 units ($1,050,000 / $210) compared with 4,500 units today ($810,000 / $180), showing sales must hold above 5,000 units [app]. Reason 2: to protect shareholders' funds and dividends [k]; at 6,000 units the margin of safety would fall from 1,500 units to 1,000 units, so the board can decide whether the risk of dividend cuts is acceptable [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even figures reveal the sales needed to avoid losses",
+            "Higher fixed costs raise break-even output and risk"
+          ],
+          "application_max_2": [
+            "Applies figures: $1,050,000 / $210 = 5,000 units vs $810,000 / $180 = 4,500 units",
+            "Applies figures: margin of safety falls from 1,500 to 1,000 units at 6,000 sales"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$1,050,000", "$810,000", "6,000 units", "$450", "$240 per unit", "7,500 units"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two ways the board could use a break-even chart to present the options.",
+        "model_answer": "Way 1: the chart's total revenue line (units sold x $450) and total cost line show exactly where they cross for each option [k]; the machine option's cost line starts at $1,050,000 and rises less steeply (variable cost $240 vs $270), so the crossing moves from 4,500 to 5,000 units, and directors can see the shift at a glance [app][an]. Way 2: the vertical gap between the two lines at 6,000 units shows profit and margin of safety [k]; the current set-up shows a profit of $270,000 at 6,000 units against $210,000 with the machine, and the loss zone above 5,000 units is visible immediately, making the comparison persuasive to shareholders [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even chart plots total revenue and total cost against output",
+            "The intersection shows break-even output; the gap shows profit or loss"
+          ],
+          "application_max_2": [
+            "Applies figures: revenue line $450 per unit, cost line rising $240 vs $270 per unit",
+            "Applies figures: profit $270,000 current vs $210,000 with machine at 6,000 units"
+          ],
+          "analysis_max_2": [
+            "Explains why the flatter cost line moves the intersection right to 5,000 units",
+            "Explains that the chart makes profit differences visible to non-financial directors"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$450", "$270 per unit", "$240 per unit", "6,000 units", "$1,050,000", "$810,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the board should approve the automated cutting line? Justify your answer.",
+        "model_answer": "The board could approve the line because it cuts variable costs to $240 per unit and lifts capacity to 7,500 units, helping Silverline win larger housebuilder contracts [k]. At full capacity of 7,500 units the machine would earn $525,000 profit (7,500 x $210 contribution, minus $1,050,000 fixed costs) compared with about $540,000 today at the same volume - so the case rests on winning more orders, not on lower costs alone [app][an]. However, at the current 6,000 units the machine would cut profit from $270,000 to $210,000, average cost rises from $405 to $415, and break-even output climbs to 5,000 units with only a 1,000-unit margin of safety [app][an]. Conversely, approve the line too late and a rival with cheaper units could undercut Silverline, whose current $405 average cost and thin 1,500-unit cushion leave little room against leaner competitors [k][eval]. Overall, the board should not approve the line now: the figures show it only beats the current option above 8,000 units, which exceeds its own 7,500-unit capacity, so no realistic output justifies it yet; the directors should wait until housebuilders sign firm orders for at least 7,000 units a year, or renegotiate the machine's price or financing, before voting in favour [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Machine option: contribution $210, break-even 5,000 units, profit $210,000 at 6,000",
+            "Current option: contribution $180, break-even 4,500 units, profit $270,000 at 6,000"
+          ],
+          "application_max_2": [
+            "Applies figures: machine profit at 7,500 units = $525,000",
+            "Applies figures: average cost $405 current vs $415 with machine"
+          ],
+          "analysis_max_2": [
+            "Identifies the indifference output of 8,000 units lies beyond the 7,500-unit capacity",
+            "Links higher fixed costs to a deeper loss zone below 5,000 units"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: delay approval until contracted volume or price improves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$240 per unit", "$270 per unit", "6,000 units", "7,500 units", "$1,050,000", "$810,000", "$450"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_64",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Wanderlust Caravan Park is a family-run partnership in Sunnyvale, Country X, operating 60 tourer pitches since 2015. Pitch fees are $25 per night, variable costs such as utilities and laundry are $9 per pitch per night, and fixed costs are $64,000 a year. Last season the park logged 5,500 occupied pitch-nights, mainly from visiting families and retirees.\n\nThe owners are weighing two expansion ideas for next season: building 20 new pitches, which would raise fixed costs to $114,000, or adding a heated swimming pool that would raise fixed costs to $80,000 and allow fees to rise to $29 per night. They want to know how many extra bookings each option needs to cover its costs before committing their own money.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'total revenue'.",
+        "model_answer": "Total revenue is the money a business receives from selling its output, calculated as price per unit multiplied by quantity sold (at Wanderlust last season, 5,500 pitch-nights x $25 = $137,500). [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total revenue = price x quantity sold",
+            "Total revenue is the top-line income before any costs are deducted"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the owners could use total revenue and total cost figures to choose between the two options.",
+        "model_answer": "Way 1: compare the break-even outputs of the two options [k]; the 20 new pitches need $114,000 covered, meaning 7,125 pitch-nights at $16 contribution, whereas the pool option needs only 4,000 pitch-nights at $20 contribution ($80,000 / $20), so the pool requires fewer extra bookings [app]. Way 2: compare profit at last season's 5,500 pitch-nights [k]; the pool option would earn 5,500 x $20 - $80,000 = $30,000 profit, while the pitch-building option would make 5,500 x $16 - $114,000 = a $26,000 loss, showing revenue alone does not decide the choice when costs differ so sharply [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs / contribution per unit",
+            "Profit = total revenue - total costs"
+          ],
+          "application_max_2": [
+            "Applies figures: new pitches 7,125 pitch-nights vs pool 4,000 pitch-nights",
+            "Applies figures: pool profit $30,000 vs pitch option $26,000 loss at 5,500 pitch-nights"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["5,500", "$25 per night", "$29 per night", "$114,000", "$80,000", "20 new pitches"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for a seasonal caravan park.",
+        "model_answer": "Limitation 1: break-even analysis assumes all output is sold at the stated price [k]; caravan occupancy is seasonal and weather-dependent, so the 5,500 pitch-nights of last season may not repeat, and fixed costs of $64,000 must still be paid when pitches stand empty, making the 4,000 pitch-night break-even point unreliable [app][an]. Limitation 2: break-even analysis assumes variable costs and prices stay constant [k]; the $9 per pitch cost of utilities and laundry could rise in peak months and peak fees might need discounting to attract families, shifting the break-even point for either expansion option and invalidating precisely the calculation the owners need [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes all output is sold",
+            "Break-even assumes constant costs and prices (linearity)"
+          ],
+          "application_max_2": [
+            "Applies figures: 5,500 pitch-nights may not repeat; $64,000 fixed costs continue off-season",
+            "Applies figures: $9 per pitch variable cost and fee discounting would shift break-even"
+          ],
+          "analysis_max_2": [
+            "Explains empty pitches still incur fixed costs so calculated safety is overstated",
+            "Explains changing costs invalidate the linear chart used for the decision"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["5,500", "$64,000", "$9 per pitch per night", "$25 per night", "60 tourer pitches", "last season"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the owners should build the 20 new pitches? Justify your answer.",
+        "model_answer": "The owners could build the pitches and unlock capacity they cannot currently offer in the busy summer weeks [k]; the option raises fixed costs to $114,000, giving a break-even output of 7,125 pitch-nights ($114,000 / $16) - but at full 80-pitch occupancy about 7,300 pitch-nights would be possible, suggesting strong demand could make it profitable [app][an]. However, last season the park took 5,500 pitch-nights, so at current demand the pitch option would turn a $26,000 loss (5,500 x $16 - $114,000), and the park would need roughly 1,600 more pitch-nights a year (+29%) just to break even on the expansion [app][an]. Conversely, the swimming pool option raises fixed costs to only $80,000, keeps break-even at 4,000 pitch-nights, lifts fees to $29 per night and would have earned about $30,000 profit last season - $6,000 more than the park actually made - while attracting precisely the families and retirees who already visit [k][eval]. Overall, on the evidence the owners should not build the new pitches now: the pool option is cheaper, lowers risk, raises fees, improves last season's profit by $6,000 and keeps break-even at 4,000 pitch-nights, whereas the pitches gamble $114,000 on demand rising well beyond anything yet achieved; only if they secure advance bookings above 7,125 pitch-nights for next season should the pitch plan proceed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Pitch option: break-even 7,125 pitch-nights vs current 5,500 taken",
+            "Pool option: break-even 4,000 pitch-nights, fees $29, profit $30,000"
+          ],
+          "application_max_2": [
+            "Applies figures: 5,500 x $16 - $114,000 = $26,000 loss on pitch option",
+            "Applies figures: pool profit $30,000 vs $24,000 current profit"
+          ],
+          "analysis_max_2": [
+            "Links the $114,000 fixed-cost commitment to needing 29% more pitch-nights",
+            "Explains the pool raises revenue per existing night without needing extra occupancy"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: pool preferred unless contracted bookings exceed 7,125 pitch-nights"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$114,000", "$80,000", "5,500", "$29 per night", "20 new pitches", "heated swimming pool", "$25 per night"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_65",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "RedRock Brickworks is a private limited company that has fired clay bricks for housebuilders near Quarrying Town, Country X, for 14 years under managing director Sofia Andrade. Each pack of 500 bricks sells for $180, variable costs are $120 per pack, and fixed costs are $360,000 a year. Last year the yard sold 8,000 packs to builders across the south of the country.\n\nSofia is considering switching to a cheaper clay source that would cut variable costs to $105 per pack but add $45,000 a year for transport and storage. The alternative is a two-year supply deal with a national builder guaranteeing 9,500 packs a year at $170 per pack. She wants break-even outputs for both options calculated before the board meets.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'break-even chart'.",
+        "model_answer": "A break-even chart is a graph plotting total revenue and total cost against output; the point where the two lines intersect is the break-even output, above which the business makes a profit and below which it makes a loss. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even chart plots total revenue and total cost lines against output",
+            "The intersection shows break-even output; profit above, loss below"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Sofia wants break-even outputs for both options.",
+        "model_answer": "Reason 1: to compare the riskiness of the two options on one measure [k]; the cheaper clay source lifts fixed costs to $405,000 but cuts variable costs to $105 per pack, giving break-even output of 5,400 packs ($405,000 / $75) against 6,000 packs today, while the bulk deal needs 7,200 packs ($360,000 / $50) - showing which option leaves more safety margin [app]. Reason 2: to support a sound pricing and capacity negotiation [k]; the supply deal guarantees 9,500 packs at $170, giving margin of safety of 2,300 packs over its 7,200-pack break-even, so Sofia can negotiate transport, storage and payment terms from a position of knowledge [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output identifies the sales needed to cover costs",
+            "Break-even comparison of options reveals which is safer"
+          ],
+          "application_max_2": [
+            "Applies figures: cheaper clay $405,000 / $75 = 5,400 packs; deal $360,000 / $50 = 7,200 packs",
+            "Applies figures: 9,500 packs guaranteed gives 2,300-pack margin of safety"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$105 per pack", "$170 per pack", "9,500 packs", "8,000 packs", "two-year supply deal", "$360,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two limitations of relying only on break-even analysis for this decision.",
+        "model_answer": "Limitation 1: break-even analysis assumes costs behave in straight lines [k]; the cheaper clay adds a flat $45,000 for transport and storage regardless of volume, and clay, diesel or wage costs could jump mid-contract, so the 5,400-pack break-even would no longer hold and RedRock could face losses at output it believed was safe [app][an]. Limitation 2: break-even analysis assumes all output is sold at a single constant price [k]; the supply deal locks 9,500 packs at $170, but builders may squeeze the price at renewal or order less in a housing slump, and last year's actual sales of 8,000 packs might already have been uneven across the year, so margin-of-safety figures flatter or misstate the risk [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes linear costs and revenue",
+            "Break-even assumes constant price and single-product sales"
+          ],
+          "application_max_2": [
+            "Applies figures: flat $45,000 transport/storage and cost jumps undermining 5,400-pack break-even",
+            "Applies figures: $170 per pack contract price may be cut at renewal; 8,000 packs sold unevenly"
+          ],
+          "analysis_max_2": [
+            "Explains non-linear costs push true break-even above the calculated 5,400 packs",
+            "Explains price and volume risk makes margins of safety over-optimistic"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$45,000", "$170 per pack", "9,500 packs", "8,000 packs", "$120 per pack", "$180"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think RedRock Brickworks should sign the two-year supply deal? Justify your answer.",
+        "model_answer": "Sofia could sign the deal because it guarantees orders for 9,500 packs a year for two years, giving the kiln and workforce a stable, predictable workload [k]; at $170 per pack the deal contributes $50 per pack, giving a 7,200-pack break-even ($360,000 / $50) and a 2,300-pack margin of safety, revenue of $1,615,000 and profit of about $115,000 a year [app][an]. However, that profit of $115,000 is below the $120,000 RedRock earned last year on 8,000 packs, and far below the $195,000 available from the cheaper clay source (8,000 packs x $75 - $405,000 fixed costs), which also has the lower 5,400-pack break-even output and a 2,600-pack margin of safety [app][an]. Conversely, the cheaper clay route exposes RedRock to volatile transport costs and an unproven supplier for two years, whereas the national builder's contract de-risks planning, staffing and any bank loan for the yard [k][eval]. Overall, Sofia should not sign the deal as it stands: it offers less profit than the clay switch and less profit than current operations, and its 7,200-pack break-even exceeds the 6,000 packs currently comfortable; she should pursue the cheaper clay supply first, keeping the $170-per-pack deal as a fallback only if the clay trial fails or the builder raises the offer towards $180 per pack [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Deal: $50 contribution, 7,200-pack break-even, profit $115,000",
+            "Clay switch: $75 contribution, 5,400-pack break-even, profit $195,000"
+          ],
+          "application_max_2": [
+            "Applies figures: deal profit $115,000 vs current $120,000 vs clay $195,000",
+            "Applies figures: clay option fixed costs $405,000 with $45,000 transport/storage"
+          ],
+          "analysis_max_2": [
+            "Analyses the deal's guaranteed volume against its lower per-pack return",
+            "Analyses that clay risk must be weighed against contract certainty"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: clay preferred; deal only as fallback or at a higher price"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$170 per pack", "9,500 packs", "$105 per pack", "$45,000", "8,000 packs", "two-year supply deal", "$180"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_66",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "RedKite Adventure Park is an outdoor adventure business opened 4 years ago by founder Marcus Bell in Country X's Lake District. Entry tickets cost $15 per visitor, variable costs such as instructor wages and equipment upkeep are $6 per visitor, and fixed costs are $54,000 a year. The park welcomed 6,750 visitors last year, mostly school groups and families during the summer season.\n\nMarcus is deciding between two improvements for next year: new safety harnesses that add $9,000 a year to fixed costs, or a cafe that adds $13,500 to fixed costs and lets him charge $3 extra per entry. He must show his co-owner that the chosen option keeps the park comfortably above break-even output at current visitor numbers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the break-even output and the margin of safety for RedKite Adventure Park. You are advised to show your working.",
+        "model_answer": "Break-even output = $54,000 / ($15 - $6) = $54,000 / $9 = 6,000 visitors; margin of safety = 6,750 - 6,000 = 750 visitors per year. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs / contribution per unit; contribution = $9",
+            "Margin of safety = actual output - break-even output"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Marcus needs to know the margin of safety.",
+        "model_answer": "Reason 1: the margin of safety shows how far visitor numbers can fall before the park starts making losses [k]; with 6,750 visitors against a 6,000-visitor break-even point, the cushion is only 750 visitors, so one poor summer month or a cancelled school-group contract could push the park into loss [app]. Reason 2: it tests whether the improvements are affordable [k]; adding the harnesses raises fixed costs to $63,000 and break-even output to 7,000 visitors - 250 above last year's attendance - whereas the cafe option gives a 1,125-visitor cushion, so Marcus can judge which choice is safest for the park [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Margin of safety = actual output - break-even output",
+            "A small margin of safety means a small sales drop creates a loss"
+          ],
+          "application_max_2": [
+            "Applies figures: 6,750 - 6,000 = 750-visitor cushion",
+            "Applies figures: harnesses raise break-even to 7,000; cafe option gives 1,125 cushion"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["6,750 visitors", "$54,000", "$15 per visitor", "$6 per visitor", "$9,000", "$13,500", "break-even output"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using break-even analysis to choose between the two improvements.",
+        "model_answer": "Benefit 1: break-even analysis quantifies the minimum attendance each option requires [k]; the harness option lifts fixed costs to $63,000 and breaks even at 7,000 visitors ($63,000 / $9), 250 more than last year, while the cafe option breaks even at 5,625 visitors ($67,500 / $12), comfortably below current demand, so the choice becomes measurable rather than a guess [app][an]. Benefit 2: break-even analysis shows the profit effect at current attendance [k]; the cafe option yields 6,750 x $12 contribution - $67,500 = $13,500 profit, versus $6,750 profit today (6,750 x $9 - $54,000), giving Marcus a clear figure to present to his co-owner [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs / contribution per unit",
+            "Lower break-even output and higher profit are preferred"
+          ],
+          "application_max_2": [
+            "Applies figures: harnesses 7,000 visitors vs cafe 5,625 visitors break-even",
+            "Applies figures: cafe profit $13,500 vs current $6,750"
+          ],
+          "analysis_max_2": [
+            "Explains quantified break-even turns a judgement call into a measurable comparison",
+            "Explains profit at 6,750 visitors shows the cafe option clearly outperforms today's position"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["6,750 visitors", "$13,500", "$9,000", "$3 extra", "$6 per visitor", "$15 per visitor", "$54,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marcus should buy the new safety harnesses? Justify your answer.",
+        "model_answer": "Marcus could buy the harnesses because safety should not be traded off against cost; they protect visitors, staff morale and the park's reputation against the serious risk of a harness failure [k]; they add only $9,000 a year to fixed costs, which is modest next to the $54,000 already committed, and could lower insurance claims and premiums [app][an]. However, buying the harnesses alone lifts break-even output to 7,000 visitors ($63,000 / $9), which is 250 more than the 6,750 visitors of last year; the margin of safety would turn negative, so at current demand the park would lose about $2,250 and the improvement would not pay for itself [app][an]. Conversely, funding the harnesses through the cafe option - extra fixed costs of $13,500 but $3 extra per entry, contribution $12, break-even 5,625 visitors and an $18 entry price - would produce about $13,500 profit at 6,750 visitors, easily covering the harness cost and keeping a 1,125-visitor cushion [k][eval]. Overall, Marcus should buy the harnesses, but not in isolation: the park must introduce the cafe (or an equivalent price rise) in the same season, because harnesses alone push break-even output 250 visitors above proven attendance; buying them together keeps safety non-negotiable while keeping RedKite profitable and comfortably above break-even [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Harness option alone: fixed costs $63,000, break-even 7,000 visitors, 250 above current demand",
+            "Cafe option: contribution $12, break-even 5,625 visitors, profit $13,500"
+          ],
+          "application_max_2": [
+            "Applies figures: harness-only profit about -$2,250 at 6,750 visitors",
+            "Applies figures: cafe option leaves 1,125-visitor margin of safety"
+          ],
+          "analysis_max_2": [
+            "Links rising fixed costs to break-even output exceeding proven demand",
+            "Identifies that combining both options funds safety while restoring a safe margin of safety"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: buy harnesses only together with the cafe or a price rise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$9,000", "$13,500", "6,750 visitors", "$3 extra", "new safety harnesses", "$15 per visitor", "$54,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_67",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Amber Valley Candle Co is a small private limited company making soy candles in Ashford, Country X, owned by sisters Lena and Maja Okoro. A large candle sells for $12, variable costs are $5 per candle, and fixed costs are $42,000 a year. Candles are sold through local boutiques and gift shops, and last year 7,500 were sold.\n\nThe sisters are comparing two sales channels for next year: a hotel chain willing to buy 6,000 candles at $10 per candle, or launching an online shop that adds $7,000 a year to fixed costs while keeping the $12 price. They want both options' break-even outputs compared, and to know how many extra candles the online shop must sell to cover its costs.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'break-even analysis'.",
+        "model_answer": "Break-even analysis is a technique that compares a business's fixed costs and variable costs with its revenue to find the output at which total revenue equals total costs, so the business makes neither a profit nor a loss. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Compares total costs and total revenue",
+            "Finds the output at which profit is zero"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the sisters want break-even outputs for both options.",
+        "model_answer": "Reason 1: to see which option clears the $42,000 fixed costs most easily [k]; the online shop keeps the $12 price and $7 contribution but lifts fixed costs to $49,000, so break-even output rises to 7,000 candles ($49,000 / $7) against 6,000 candles today, whereas the hotel deal, at only $10 per candle, gives $5 contribution and an 8,400-candle break-even - a much heavier target [app]. Reason 2: to judge whether the hotel's guaranteed volume is worth the lower price [k]; 6,000 candles at $5 contribution add only $30,000 towards the $42,000 fixed costs, so the sisters can see the hotel offer alone cannot carry the business [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even identifies the output covering all costs",
+            "Comparing options on break-even output shows which is safer or needier of volume"
+          ],
+          "application_max_2": [
+            "Applies figures: online $49,000 / $7 = 7,000 candles; hotel $5 contribution, 8,400 candles",
+            "Applies figures: 6,000 candles x $5 = $30,000 contribution vs $42,000 fixed costs"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$42,000", "$10 per candle", "6,000 candles", "$12", "$7,000", "hotel chain"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for the candle business.",
+        "model_answer": "Limitation 1: break-even analysis assumes all produced candles are sold at the marked price [k]; if the hotel cuts its order below 6,000 candles or boutiques reduce stock after a slow season, the $42,000 fixed costs remain while revenue falls, so the calculated 6,000-candle break-even and 1,500-candle margin of safety would overstate the business's real safety [app][an]. Limitation 2: break-even analysis assumes costs and prices stay fixed and move in straight lines [k]; soy wax, jars and fragrance can rise in price and Amber Valley may need to discount candles in quieter gift-shop months, which would narrow the $7 contribution, shift break-even output upward and make the single-chart comparison between the online shop and the hotel misleading [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes all output is sold",
+            "Break-even assumes constant costs, prices and linear relationships"
+          ],
+          "application_max_2": [
+            "Applies figures: hotel order below 6,000 leaves $42,000 fixed costs uncovered",
+            "Applies figures: rising input costs narrow the $7 contribution and lift break-even"
+          ],
+          "analysis_max_2": [
+            "Explains unsold stock turns the paper margin of safety into a loss",
+            "Explains cost or price changes invalidate the straight-line chart comparison"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$42,000", "6,000 candles", "$12", "$5 per candle", "7,500", "hotel chain"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the sisters should open the online shop? Justify your answer.",
+        "model_answer": "The sisters could open the online shop because it widens their market beyond Ashford and keeps the healthy $12 price [k]; the shop adds $7,000 a year to fixed costs, lifting break-even output to 7,000 candles ($49,000 / $7), which is just 500 below last year's 7,500 sales, so it needs only about 1,000 extra candles a year to justify itself [app][an]. However, if online sales merely match the 7,500 candles sold today, profit would fall from $10,500 to $3,500 (7,500 x $7 - $49,000), and any delivery problems or website costs could erase even that [app][an]. Conversely, the hotel option looks worse on paper - $5 contribution per candle, an 8,400-candle break-even, and only $30,000 contribution from the promised 6,000 candles - so online is clearly the stronger of the two growth routes despite thinner online margins after postage [k][eval]. Overall, the sisters should open the online shop, but only with a modest digital marketing push and a clear sales target of at least 1,000 extra candles a year; if they cannot commit to that volume, they should stay with the boutique channel and treat the online plan as a six-month trial, so a weak online launch cannot absorb the $7,000 fixed costs [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Online option: fixed costs $49,000, break-even 7,000 candles",
+            "Hotel option: $5 contribution, 8,400-candle break-even"
+          ],
+          "application_max_2": [
+            "Applies figures: flat sales yield $3,500 profit vs $10,500 today",
+            "Applies figures: 1,000 extra candles needed to cover the $7,000 extra fixed costs"
+          ],
+          "analysis_max_2": [
+            "Analyses that online sales barely below today's 7,500 erase most profit",
+            "Analyses the hotel offer cannot carry the $42,000 fixed costs on its own"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: proceed online with a 1,000-candle target or a limited trial"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$7,000", "$12", "6,000 candles", "online shop", "$10 per candle", "$42,000", "7,500"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_68",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Maplewood Mattress Co is a private limited company in Country X producing pocket-sprung mattresses in a single factory owned by managing director Owen Hartley. Each mattress sells for $320, variable costs are $190 per mattress, and fixed costs are $780,000 a year. Output last year was 6,500 mattresses, sold to furniture retailers and bed specialists across the region and built a loyal base.\n\nOwen is weighing a redesigned spring unit that would add $100,000 to fixed costs but cut variable costs to $160 per mattress. Alternatively, a marketing campaign costing $65,000 a year would, he hopes, lift sales to 7,200 mattresses at the current price. He wants both options' break-even outputs and margins of safety compared before deciding which route to take this year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'total contribution'.",
+        "model_answer": "Total contribution is the amount left from total revenue after variable costs are deducted - contribution per unit multiplied by units sold (Maplewood: 6,500 x $130 = $845,000) - which first covers fixed costs and then becomes profit. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total contribution = contribution per unit x units sold",
+            "Contribution goes towards fixed costs, then profit"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Owen wants break-even outputs and margins of safety compared for the two options.",
+        "model_answer": "Reason 1: to test whether committing $100,000 of extra fixed costs is safe [k]; the spring unit lowers break-even output from 6,000 to 5,500 mattresses ($880,000 / $160), doubling the margin of safety to 1,000 mattresses at last year's output, so Owen can see the risk has actually fallen [app]. Reason 2: to test the campaign's gamble honestly [k]; the campaign raises fixed costs to $845,000 and break-even output to 6,500 mattresses ($845,000 / $130), and only the hoped-for 7,200 sales would leave a 700-mattress cushion, which is riskier than the spring unit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher fixed costs raise break-even output; lower variable costs lower it",
+            "Margin of safety measures the cushion above break-even"
+          ],
+          "application_max_2": [
+            "Applies figures: spring unit 5,500 mattresses break-even, 1,000 margin of safety",
+            "Applies figures: campaign 6,500 mattresses break-even, 700 cushion only at 7,200 sales"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$780,000", "$100,000", "$65,000", "6,500 mattresses", "$160 per mattress", "7,200 mattresses"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two effects the redesigned spring unit would have on Maplewood's costs and break-even output.",
+        "model_answer": "Effect 1: variable cost per mattress falls from $190 to $160 [k]; each sale then contributes $160 instead of $130, so a larger share of every order goes towards the $880,000 fixed costs and profit, meaning each additional mattress beyond break-even is worth $30 more to the business [app][an]. Effect 2: break-even output falls from 6,000 to 5,500 mattresses ($880,000 / $160) [k]; Owen's risk of losses at weak demand shrinks, the margin of safety doubles to 1,000 mattresses, and profit at 6,500 mattresses rises from $65,000 (6,500 x $130 - $780,000) to $160,000 (6,500 x $160 - $880,000), although the $100,000 extra fixed cost must be paid whatever sales do [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Redesigned unit lowers variable cost per unit, raising contribution",
+            "Break-even output = fixed costs / contribution per unit"
+          ],
+          "application_max_2": [
+            "Applies figures: contribution $160 vs $130; $880,000 fixed costs",
+            "Applies figures: break-even 5,500; profit $160,000 vs $65,000 at 6,500 mattresses"
+          ],
+          "analysis_max_2": [
+            "Explains each extra sale contributes $30 more after the redesign",
+            "Explains lower break-even deepens safety but the $100,000 fixed cost is unavoidable"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$190 per mattress", "$160 per mattress", "redesigned spring unit", "$780,000", "6,500 mattresses", "$100,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Owen should choose the redesigned spring unit? Justify your answer.",
+        "model_answer": "Owen could choose the spring unit because it cuts variable costs by $30 per mattress and gives certain, controllable savings rather than hoped-for sales [k]; break-even output falls to 5,500 mattresses, the margin of safety doubles to 1,000, profit at last year's 6,500 mattresses rises from $65,000 to $160,000, and the saving applies to every future mattress sold [app][an]. However, the unit adds $100,000 to fixed costs, which must be paid even in a bad year; if sales fell below 5,500 mattresses the loss would be larger than today, and the 1,000-mattress cushion, though doubled, is still modest for a big-ticket product [app][an]. Conversely, the campaign option could lift sales to 7,200 mattresses and produce $91,000 profit (7,200 x $130 - $845,000), so it offers growth the spring unit alone cannot unlock - but its 6,500-mattress break-even exactly equals last year's output, leaving zero cushion unless the 7,200 sales actually materialise [k][eval]. Overall, Owen should choose the redesigned spring unit: it reduces break-even output, doubles the margin of safety, raises profit by $95,000 at current volumes and does not depend on an advertising bet; if the campaign is run later from that stronger position, any growth in sales would stack further profit on top, whereas committing to the campaign first risks an empty cushion of zero at last year's output [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Spring unit: contribution $160, break-even 5,500, margin of safety 1,000, profit $160,000",
+            "Campaign: fixed costs $845,000, break-even 6,500, profit $91,000 at 7,200 sales"
+          ],
+          "application_max_2": [
+            "Applies figures: current profit $65,000 rises to $160,000 with the spring unit",
+            "Applies figures: campaign break-even of 6,500 equals last year's sales"
+          ],
+          "analysis_max_2": [
+            "Analyses that fixed $100,000 commitment deepens losses below 5,500 mattresses",
+            "Analyses the campaign's dependence on uncertain demand for its 700-mattress cushion"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: spring unit chosen; campaign can follow later"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$160 per mattress", "$190 per mattress", "$100,000", "6,500 mattresses", "$65,000", "7,200 mattresses", "redesigned spring unit"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_69",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Northgate Paper Bags is a partnership founded 5 years ago by founders Ben and Idris Whitmore in Country X, producing recycled paper shopping bags for supermarkets. Each thousand-bag batch sells for $90, variable costs are $55 per batch, and fixed costs are $52,500 a year. Last year the workshop sold 2,500 batches across the north of the country and employed nine full-time staff members.\n\nThe partners are debating a larger premises costing $17,500 extra a year in fixed costs, allowing annual output to rise to 3,200 batches, or accepting a six-month bulk order from a wholesaler at $80 per batch. Both options carry risk, and they want to know how each affects break-even output and the margin of safety before committing.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State what is meant by 'total fixed cost'.",
+        "model_answer": "Total fixed cost is the sum of all costs that do not vary with output in the short run, such as rent, insurance and salaries - Northgate's $52,500 a year stays the same whether 1 or 3,200 batches are made. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed costs do not change with output in the short run",
+            "Examples include rent, insurance and salaries"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the partners should calculate break-even output for the two options.",
+        "model_answer": "Reason 1: to see how the extra premises cost changes the sales needed to avoid losses [k]; the larger site lifts fixed costs to $70,000, so break-even output rises to 2,000 batches ($70,000 / $35) against 1,500 batches today, showing the business must gain around 500 extra batches just to stand still [app]. Reason 2: to compare the bulk order honestly [k]; at $80 per batch contribution is only $25, giving a 2,100-batch break-even ($52,500 / $25), so the partners can see that filling the order with bulk sales alone would leave only a thin cushion at 2,500 batches [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs / contribution per unit",
+            "Comparison of break-even across options reveals relative risk"
+          ],
+          "application_max_2": [
+            "Applies figures: larger premises $70,000 / $35 = 2,000 batches vs 1,500 today",
+            "Applies figures: bulk order contribution $25, break-even 2,100 batches"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$52,500", "$17,500", "2,500 batches", "$90", "$80 per batch", "$55 per batch", "3,200 batches"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis when comparing the premises and the bulk order.",
+        "model_answer": "Limitation 1: break-even analysis assumes output is sold at one constant price, yet the two options use different prices [k]; blending $90 supermarket batches with $80 wholesale batches changes the average contribution, so a single break-even figure misleads the partners about true safety ($25 contribution on bulk batches versus $35 normally) [app][an]. Limitation 2: break-even analysis assumes all output is sold and costs stay linear [k]; moving to a larger premises assumes supermarkets actually buy 3,200 batches, and costs such as transport, storage and extra power on a bigger site may rise faster than output, so the 2,000-batch break-even is only a guide and unsold batches would turn the expansion into a loss [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes constant price; multiple products/prices distort it",
+            "Break-even assumes all output sells and costs are linear"
+          ],
+          "application_max_2": [
+            "Applies figures: $25 bulk contribution vs $35 normal contribution",
+            "Applies figures: 3,200 batches assumed; larger-site costs may exceed $70,000"
+          ],
+          "analysis_max_2": [
+            "Explains blended pricing makes one break-even figure unreliable for the mix",
+            "Explains demand shortfall at 3,200 batches or non-linear costs create losses"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$80 per batch", "$90", "3,200 batches", "$17,500", "six-month bulk order", "$52,500"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northgate Paper Bags should move to the larger premises? Justify your answer.",
+        "model_answer": "The partners could move because supermarket demand is growing and capacity is the constraint [k]; the larger premises raises fixed costs to $70,000 and lifts capacity to 3,200 batches, giving a 2,000-batch break-even output and, at 3,200 batches, a margin of safety of 1,200 batches and profit of $42,000 (3,200 x $35 - $70,000) [app][an]. However, at last year's 2,500 batches the bigger site would earn only $17,500 profit (2,500 x $35 - $70,000), halving the current $35,000 profit, and the partners would need around 3,000 batches just to match today's earnings - unproven demand for a business employing nine staff [app][an]. Conversely, the six-month bulk order at $80 per batch is safer in the short run: contribution of $25 per batch still beats doing nothing new, and it would build the cash and track record needed to support the premises move later, without betting $17,500 extra every year on untested capacity [k][eval]. Overall, the partners should move to the larger premises only if at least one or two supermarkets sign volume commitments consistent with 3,000-3,200 batches a year; if not, they should take the bulk order first, bank the $25-per-batch contribution, and revisit the move in 12 months when the extra demand is proven rather than hoped for [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger premises: fixed costs $70,000, break-even 2,000 batches, profit $42,000 at 3,200",
+            "Bulk order: contribution $25, break-even 2,100 batches"
+          ],
+          "application_max_2": [
+            "Applies figures: profit halves to $17,500 at 2,500 batches on the larger site",
+            "Applies figures: ~3,000 batches needed to match the current $35,000 profit"
+          ],
+          "analysis_max_2": [
+            "Analyses the jump from fixed-cost certainty to demand-dependent returns",
+            "Analyses the bulk order as a lower-risk bridge to finance expansion"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: move only with contracted volume; otherwise take the bulk order first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$17,500", "3,200 batches", "2,500 batches", "$80 per batch", "larger premises", "$52,500", "$55 per batch"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_70",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Hillybrook Honey Farm is a family business in Country X's hill country, bottling wildflower honey in 500g jars since 2012. Each jar sells for $8, variable costs are $3.00 per jar, and fixed costs are $36,000 a year. The farm filled 9,000 jars last year and sells them at farm shops, markets and a small online store.\n\nThe owners are considering a new bottling line that raises fixed costs to $60,000 but cuts variable costs to $2.00 per jar, or raising the jar price to $9 to fund a quality certification. A poor, wet summer this year has made them cautious. They also wonder whether break-even figures can be trusted when honey sales swing with the weather and tourism numbers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'total variable cost'.",
+        "model_answer": "Total variable cost is the sum of all costs that change directly with output, found by multiplying variable cost per unit by units made (Hillybrook last year: $3.00 x 9,000 jars = $27,000 - more jars means proportionally higher variable costs). [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Variable costs change directly with output",
+            "Total variable cost = variable cost per unit x output"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the owners want break-even figures for the new bottling line.",
+        "model_answer": "Reason 1: to check whether the line is affordable at current demand [k]; the bottling line raises fixed costs to $60,000 and cuts variable costs to $2.00 per jar, so contribution becomes $6.00 and break-even output jumps to 10,000 jars ($60,000 / $6.00) - 1,000 jars more than the 9,000 filled last year [app]. Reason 2: to compare the line fairly against the certification price rise [k]; raising the price to $9 also gives $6.00 contribution but keeps fixed costs at $36,000, so break-even output would be 6,000 jars - a far safer cushion than the line offers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs / contribution per unit",
+            "Higher fixed costs raise break-even output even when variable costs fall"
+          ],
+          "application_max_2": [
+            "Applies figures: line break-even $60,000 / $6.00 = 10,000 jars vs 9,000 filled",
+            "Applies figures: $9 price gives $6.00 contribution, break-even 6,000 jars"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$2.00 per jar", "$60,000", "9,000 jars", "$9", "$36,000", "new bottling line"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why break-even analysis has limitations for a weather-dependent honey farm.",
+        "model_answer": "Limitation 1: break-even analysis assumes all jars produced are sold [k]; a wet summer reduces both the honey crop and tourist footfall at farm shops and markets, so if only, say, 6,000 jars are sold, the $36,000 fixed costs would outstrip revenue and the calculated 7,200-jar break-even would never reveal that risk [app][an]. Limitation 2: break-even analysis assumes prices and unit costs stay constant [k]; a poor harvest raises honey cost per jar, and discounting to shift slow-moving stock narrows the $5.00 contribution, dragging break-even above 7,200 jars and eroding the 1,800-jar margin of safety precisely when demand is weakest [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even assumes all output is sold",
+            "Break-even assumes constant prices and costs (straight lines)"
+          ],
+          "application_max_2": [
+            "Applies figures: weak sales of 6,000 jars leave $36,000 fixed costs uncovered",
+            "Applies figures: narrower $5.00 contribution lifts break-even above 7,200 jars"
+          ],
+          "analysis_max_2": [
+            "Explains weather losses make the static chart overstate safety",
+            "Explains cost increases and price discounting push the true break-even upwards"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["$36,000", "9,000 jars", "$8", "$3.00 per jar", "weather", "tourism"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the owners should buy the new bottling line? Justify your answer.",
+        "model_answer": "The owners could buy the line because it cuts variable costs to $2.00 per jar, lifting contribution to $6.00 and preparing Hillybrook for growth if honey demand recovers or tourism rises [k]; it also improves consistency and speed for online-store orders, and every future jar carries a lower unit cost [app][an]. However, at last year's 9,000 jars the line would raise fixed costs to $60,000 and give break-even output of 10,000 jars ($60,000 / $6.00), producing a loss of about $6,000 (9,000 x $6.00 - $60,000) and a negative margin of safety of 1,000 jars - it cannot pay for itself without finding 1,000 extra jars a year [app][an]. Conversely, raising the jar price to $9 to fund quality certification also yields $6.00 contribution but keeps fixed costs at $36,000, so break-even output falls to 6,000 jars, the margin of safety widens to 3,000 jars and profit rises from $9,000 to $18,000 at unchanged volume [k][eval]. Overall, the owners should not buy the bottling line at present - with a poor, wet summer and fragile tourism, committing to $60,000 fixed costs with break-even 1,000 jars above proven sales is too risky; they should raise the jar price to $9 and pursue certification first, and revisit the line only when annual sales are demonstrably above 10,000 jars or the line's cost falls substantially [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Bottling line: fixed costs $60,000, contribution $6.00, break-even 10,000 jars",
+            "Price rise to $9: contribution $6.00, break-even 6,000 jars, profit $18,000"
+          ],
+          "application_max_2": [
+            "Applies figures: line yields ~$6,000 loss at 9,000 jars, margin of safety -1,000",
+            "Applies figures: $9 price doubles profit from $9,000 to $18,000 at 9,000 jars"
+          ],
+          "analysis_max_2": [
+            "Analyses that break-even 1,000 jars above proven sales makes the line unsafe this year",
+            "Analyses that the $9 price route reaches the same contribution without extra fixed costs"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation: price rise and certification first; line only above 10,000-jar sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["$60,000", "$2.00 per jar", "9,000 jars", "$9", "new bottling line", "$36,000", "honey sales"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,1207 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_41",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Wrenford Bakery is a private limited company running 4 bakery shops in Country X, founded 7 years ago by the Wren family. The business made a profit after tax of $210,000 in 2025 and the directors are deciding how to use it. Shareholders have requested a dividend of $58,000 for this year, while the family wants to open a 5th shop costing $260,000. The board holds a $92,000 contingency reserve used only for emergencies.\n\nThe directors are comparing two options: reinvesting $152,000 of retained profit towards the 5th shop, or paying the full dividend and financing the expansion later. Two fitting contractors have quoted for the shop fit-out, differing by $18,000, and the new shop is expected to add $95,000 a year to operating profit once trading begins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'retained profit'.",
+        "model_answer": "Retained profit is the profit kept in the business after tax and after dividends or drawings have been paid, available for reinvestment [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit kept within the business",
+            "after tax and after dividends/drawings have been paid"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of using retained profit to finance the new shop.",
+        "model_answer": "Advantage 1: Retained profit is an internal source, so no external lender needs to be approached [k]; the Wren family avoids interest charges on the $260,000 expansion [app]. Advantage 2: Reinvesting keeps ownership and control with the Wren family [k]; the business does not need to issue new shares to open the 5th shop [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "internal source: no repayment or interest obligation",
+            "retains ownership and control, no new shares needed"
+          ],
+          "application_max_2": [
+            "avoids interest on the $260,000 expansion",
+            "no new shares required for the 5th shop"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Wrenford Bakery",
+            "retained profit",
+            "$260,000",
+            "5th shop",
+            "Wren family",
+            "$210,000",
+            "$152,000",
+            "dividend"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of reinvesting $152,000 of retained profit in the 5th shop.",
+        "model_answer": "Disadvantage 1: Retained profit is limited by past profits [k]; the business made $210,000 after tax and investing $152,000 leaves little surplus, so the $92,000 contingency reserve could be stretched [app] if the opening is delayed [an]. Disadvantage 2: Reinvesting means shareholders may receive no dividend [k]; they were expecting $58,000 this year [app] and missing the payment could damage the Wren family's relationship with shareholders [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited by the amount of past profit retained",
+            "opportunity cost: shareholders receive no dividend"
+          ],
+          "application_max_2": [
+            "$152,000 reinvested out of $210,000 after-tax profit",
+            "shareholders expecting $58,000 dividend"
+          ],
+          "analysis_max_2": [
+            "contingency reserve could be stretched if opening slips",
+            "risk of damaging shareholder relationships / future funding support"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$210,000",
+            "$152,000",
+            "$92,000",
+            "$58,000",
+            "retained profit",
+            "contingency reserve",
+            "dividend"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wrenford Bakery should reinvest $152,000 of retained profit in the 5th shop or pay the dividend? Justify your answer.",
+        "model_answer": "Reinvesting the $152,000 [k] would fund most of the 5th shop, avoiding outside finance and interest on the $260,000 expansion [app], and the new shop is expected to add $95,000 a year to operating profit, quickly rebuilding the reserves [an]. However, paying the $58,000 dividend [k] rewards shareholders who have backed the business for 7 years and keeps the family shareholders satisfied [app]; the shop could be financed later once the $18,000 difference between the two contractor quotes is resolved [an]. On balance, reinvestment is the stronger choice [eval], because the expected $95,000 extra annual profit is worth more than a one-off $58,000 dividend once the shop is open [eval]; the $92,000 contingency reserve should stay untouched for emergencies.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reinvestment keeps control and avoids external interest",
+            "dividends reward and retain shareholders"
+          ],
+          "application_max_2": [
+            "$152,000 reinvested towards the $260,000 shop cost",
+            "$58,000 dividend vs $95,000 expected extra annual profit"
+          ],
+          "analysis_max_2": [
+            "extra profit rebuilds reserves quickly after opening",
+            "delaying expansion keeps options open on the two quotes differing by $18,000"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation weighing dividend against expansion",
+            "recommendation references relative size of $95,000 profit vs $58,000 dividend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Wrenford Bakery",
+            "$152,000",
+            "5th shop",
+            "$260,000",
+            "$58,000",
+            "$92,000",
+            "$95,000",
+            "$18,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_42",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Sundial Soap Co is a start-up making handmade lavender soaps in Country X, founded 11 months ago by two friends, Priya and Dele. They invested $9,000 of their own savings and sales have reached $6,500 a month. To move from the kitchen to a rented workshop they need $24,000 for a curing rack, packaging and raw materials. The workshop would allow batch curing of up to 1,200 bars a month and secure their first stockist order with a boutique chain.\n\nA local lender offers a micro-finance loan of $24,000 at 14% annual interest over 3 years. Separately, a government start-up grant of $8,000 is available only to rural businesses that create 4 local jobs within 2 years. The friends could also delay the move by 6 months and save $3,500 a month from profits.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'start-up capital'.",
+        "model_answer": "Start-up capital is the money needed to set up and begin trading a new business, covering items such as premises, equipment and initial stock [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "money needed to set up and start trading a new business",
+            "covers initial assets and early operating costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Sundial Soap Co needs start-up capital.",
+        "model_answer": "Reason 1: The move to a rented workshop requires physical assets such as the curing rack [k]; without this equipment the soap cannot be cured at the volumes already selling for $6,500 a month [app]. Reason 2: The workshop adds raw materials and packaging costs [k]; the business needs $24,000 before operations can begin outside the home kitchen [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital equipment and premises required to start trading",
+            "initial working costs such as materials and stock"
+          ],
+          "application_max_2": [
+            "curing rack and workshop equipment required",
+            "$24,000 needed with sales already at $6,500 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sundial Soap Co",
+            "$24,000",
+            "curing rack",
+            "$6,500",
+            "workshop",
+            "$9,000",
+            "11 months"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of a micro-finance loan for Sundial Soap Co.",
+        "model_answer": "Advantage 1: Micro-finance is designed for very small start-ups like Sundial Soap Co [k]; lenders will consider a $24,000 request that banks may treat as too small or too risky for a new business [app]; this gives Priya and Dele access to funds they might otherwise lack [an]. Advantage 2: A micro-finance loan keeps the owners in full control [k]; repaying $24,000 over 3 years at 14% means the friends keep all their shares and decision-making power [app]; the 14% rate is predictable and can be budgeted at about $3,360 a year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "micro-finance serves very small or excluded borrowers",
+            "loan preserves ownership and control, unlike share issue"
+          ],
+          "application_max_2": [
+            "$24,000 loan sized for a micro business",
+            "3 years at 14% with full ownership retained by the friends"
+          ],
+          "analysis_max_2": [
+            "access to funds unavailable from banks",
+            "predictable repayment of about $3,360 a year aids budgeting"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "micro-finance",
+            "$24,000",
+            "14%",
+            "3 years",
+            "Sundial Soap Co",
+            "$9,000",
+            "$6,500",
+            "Priya and Dele"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sundial Soap Co should take the micro-finance loan or apply for the government grant? Justify your answer.",
+        "model_answer": "Taking the micro-finance loan of $24,000 [k] would let the friends move into the workshop now and fulfil the boutique stockist order while sales are $6,500 a month [app]; at 14% over 3 years the interest is about $3,360 a year, roughly $10,080 in total, which strong sales could absorb [an]. Applying for the $8,000 government grant [k] would bring money that never needs repaying and could create the 4 local jobs required [app]; however it would cover only a third of the $24,000 needed, forcing a long delay or other finance anyway [an]. On balance, the business should take the micro-finance loan and pursue the grant at the same time [eval], because delaying the move by 6 months to save $3,500 a month sacrifices the boutique order and the chance of the $8,000 grant [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loan provides immediate full funding but costs interest",
+            "grant is free money but conditional and smaller"
+          ],
+          "application_max_2": [
+            "$24,000 covers the full workshop move at $6,500 monthly sales",
+            "$8,000 grant needs 4 local jobs and covers only part of the cost"
+          ],
+          "analysis_max_2": [
+            "about $3,360 a year interest (roughly $10,080 over 3 years) is absorbable",
+            "grant alone is insufficient, cover only a third of need"
+          ],
+          "evaluation_max_2": [
+            "overall recommendation weighing interest cost against grant conditions",
+            "recommendation considers the cost of delaying six months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "micro-finance",
+            "$24,000",
+            "14%",
+            "$8,000",
+            "4 local jobs",
+            "$6,500",
+            "grant",
+            "$3,500"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_43",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Boxhaven Packaging Ltd is a private limited company making cardboard boxes for 3 food manufacturers in Country X. Last year the business earned operating profit of $185,000 and it holds $140,000 in retained profit. The directors want to buy a $160,000 box-folding machine, which would raise output by 25% and cut labour costs by $2,800 a month. One of the food manufacturers accounts for 60% of sales, and demand is rising ahead of the busy season.\n\nWages and raw materials absorb $48,000 a month, and the business must always keep enough cash for the next payroll. The directors must choose between buying the machine now, draining most of the retained profit, or delaying the purchase by 12 months while the balance rebuilds through monthly profits of about $15,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital expenditure'.",
+        "model_answer": "Capital expenditure is spending on non-current assets that will benefit the business for more than one year, such as machinery, vehicles and buildings [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "spending on long-term / non-current assets",
+            "assets used for more than one year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two needs for finance that Boxhaven Packaging Ltd has.",
+        "model_answer": "Need 1: The $160,000 box-folding machine is capital expenditure [k]; buying it now would raise output by 25% and cut labour costs by $2,800 a month [app]. Need 2: Day-to-day running costs must still be met [k]; wages and raw materials absorb $48,000 a month, so the business needs working capital to cover every payroll [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital expenditure need: long-term asset purchase",
+            "working capital need: day-to-day running costs"
+          ],
+          "application_max_2": [
+            "$160,000 machine raising output by 25% with $2,800 monthly labour saving",
+            "$48,000 a month on wages and raw materials must be covered"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Boxhaven Packaging Ltd",
+            "$160,000",
+            "$48,000",
+            "box-folding machine",
+            "25%",
+            "$2,800",
+            "payroll"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of using retained profit to buy the machine now.",
+        "model_answer": "Disadvantage 1: Spending the $140,000 retained profit leaves almost no internal cushion [k]; with wages and raw materials costing $48,000 a month, one late payment from the largest customer could strain the payroll [app], forcing the directors to borrow quickly at short notice [an]. Disadvantage 2: Buying now commits the business before the busy season is fully tested [k]; if orders from the 3 food manufacturers soften, the extra 25% capacity may go unused [app], wasting part of the $160,000 outlay [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "drains internal funds, leaving little reserve for working capital",
+            "commits capital before demand is confirmed"
+          ],
+          "application_max_2": [
+            "$140,000 retained profit against $48,000 monthly wage and material costs",
+            "extra 25% capacity relies on the 3 food manufacturers"
+          ],
+          "analysis_max_2": [
+            "late customer payment could force emergency short-term borrowing",
+            "unused capacity would waste part of the $160,000 spent"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$140,000",
+            "$48,000",
+            "$160,000",
+            "retained profit",
+            "Boxhaven Packaging Ltd",
+            "payroll",
+            "25%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Boxhaven Packaging Ltd should buy the box-folding machine now or delay 12 months? Justify your answer.",
+        "model_answer": "Buying now [k] would capture the $2,800 monthly labour saving, about $33,600 a year, and raise output by 25% precisely when the busy season arrives [app]; with operating profit of $185,000 last year, the extra capacity could be funded from retained profit without external borrowing [an]. Delaying 12 months [k] would let the retained profit balance rebuild through monthly profits of about $15,000, keeping the payroll safe [app]; however, the business would forgo the full year of labour savings, roughly $33,600, and risk disappointing the largest customer that accounts for 60% of sales [an]. On balance, the business should buy now [eval], because the annual saving and protected customer base outweigh the strain on reserves, provided a separate payroll buffer is ring-fenced [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "buying now gains labour savings and capacity immediately",
+            "delaying preserves working capital and internal reserves"
+          ],
+          "application_max_2": [
+            "$2,800 a month labour saving (about $33,600 a year) with 25% more output",
+            "$185,000 operating profit vs $140,000 retained profit and monthly payroll protection"
+          ],
+          "analysis_max_2": [
+            "extra capacity matches rising demand and the largest 60%-of-sales customer",
+            "delaying forgoes about $33,600 of labour savings over the year"
+          ],
+          "evaluation_max_2": [
+            "overall justified judgement balancing savings against reserve risk",
+            "recommendation references the trade-off with a ring-fenced payroll buffer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$160,000",
+            "$140,000",
+            "$48,000",
+            "$2,800",
+            "25%",
+            "box-folding machine",
+            "3 food manufacturers",
+            "retained profit"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_44",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Indigo Barbers is a sole-trader barber shop in Country X run by Danilo Petrov for 5 years. The shop has one barber chair, and Danilo recently completed a barbering course costing $800. He now wants to hire a second barber and add a second chair costing $7,500, serving up to 60 more customers a month at an average spend of $14. The shop is open 6 days a week and loyalty among local customers is strong.\n\nDanilo has $11,000 in personal savings, and the shop holds $4,200 in the business bank account. His wife works part-time and the family rely on those savings as a buffer against illness. The alternative is to fund the second chair gradually from the business account over 6 months and keep his savings untouched.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'owners' savings'.",
+        "model_answer": "Owners' savings are the personal money invested in the business by the owner from their own private funds, used to finance business activity without borrowing [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "personal money invested by the owner",
+            "internal source — does not require repayment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages for Indigo Barbers of using owners' savings to fund the second chair.",
+        "model_answer": "Advantage 1: Owners' savings do not need to be repaid with interest [k], so Danilo keeps borrowing costs at zero while the $7,500 chair is paid for [app]. Advantage 2: The money is available immediately [k], so the second chair can be fitted without waiting for the $4,200 business account to build up over time [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "internal source: no interest or repayment",
+            "immediate availability, no approval delays"
+          ],
+          "application_max_2": [
+            "no interest charged on the $7,500 chair cost",
+            "available now rather than relying on the $4,200 business account"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "personal savings",
+            "$7,500",
+            "$11,000",
+            "$4,200",
+            "Indigo Barbers",
+            "second chair"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of using owners' savings in this situation.",
+        "model_answer": "Disadvantage 1: Owners' savings are limited in amount [k]; spending $7,500 of the $11,000 leaves Danilo only $3,500, so the family's buffer against illness would be severely reduced [app], which could force withdrawals from the shop at short notice if a crisis hit [an]. Disadvantage 2: Savings represent the reward for past sacrifice and carry an opportunity cost [k]; the family might otherwise use the money for their own security, and $800 has already gone on the barbering course [app], leaving the household with little margin if Danilo fell ill [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited amount of funds available",
+            "opportunity cost to the owner's household security"
+          ],
+          "application_max_2": [
+            "$7,500 of the $11,000 savings leaves only $3,500 for the family buffer",
+            "$800 already spent on the barbering course reduces the cushion further"
+          ],
+          "analysis_max_2": [
+            "reduced illness buffer could force emergency withdrawals from the shop",
+            "household exposure increases if Danilo becomes ill"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$11,000",
+            "$7,500",
+            "$800",
+            "personal savings",
+            "Danilo",
+            "buffer against illness",
+            "barbering course"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Danilo should use his owners' savings to fund the second chair or spread the cost from the business account over 6 months? Justify your answer.",
+        "model_answer": "Using owners' savings [k] would let Danilo install the second chair immediately and serve up to 60 more customers a month at $14 each, roughly $840 extra revenue a month [app]; the extra takings would restore his $11,000 within about 9 months of opening [an]. Funding the chair gradually from the business account [k] protects the family buffer and keeps the savings intact [app]; however, the account holds only $4,200, so the $7,500 chair would take far longer to fund and the $840 monthly upside would be lost meanwhile [an]. On balance, Danilo should spread the cost from the business account over 6 months and keep his savings untouched [eval], because the family's buffer against illness matters more than gaining a few months of extra revenue [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "savings give immediate expansion and faster extra revenue",
+            "business account spreading protects personal financial security"
+          ],
+          "application_max_2": [
+            "$11,000 savings would fund the $7,500 chair immediately with about $840 extra revenue a month",
+            "business account holds only $4,200, insufficient for the $7,500 chair"
+          ],
+          "analysis_max_2": [
+            "extra takings would restore the savings within about 9 months",
+            "delay means losing months of the $840 monthly upside while the buffer stays safe"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation balancing growth against household security",
+            "judgement reflects the family buffer against illness risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "personal savings",
+            "$7,500",
+            "$4,200",
+            "$11,000",
+            "second chair",
+            "60 more customers",
+            "$14",
+            "barber"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_45",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Oldmill Removals is a private limited company in Country X running 3 removal lorries from a warehouse. The business has just won a 3-year supermarket contract worth $240,000 a year, but it must buy a refrigerated lorry costing $95,000 within 18 months of the first delivery. The supermarket pays 60 days after delivery, and Oldmill Removals employs 14 staff.\n\nThe directors hold retained profit of $60,000 and own two unused assets: a flatbed trailer valued at $28,000 and a small warehouse unit valued at $70,000. Selling both assets would raise $98,000, while combining retained profit with the trailer sale would raise $88,000, leaving a $7,000 gap. The warehouse unit has stood empty since 2023 and the trailer has not been used for 2 years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sale of existing assets'.",
+        "model_answer": "Sale of existing assets is an internal source of finance where a business raises money by selling assets it no longer needs, such as old vehicles, equipment or property [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raising money by selling unused or unwanted business assets",
+            "internal source — funds come from the business itself"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of selling both unused assets to fund the refrigerated lorry.",
+        "model_answer": "Advantage 1: Selling both assets would raise $98,000 [k], covering the $95,000 lorry in full with $3,000 to spare [app]. Advantage 2: It is an internal source of finance [k], so no interest is paid and the business keeps full ownership while delivering the supermarket contract worth $240,000 a year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raises full funding internally without borrowing",
+            "no interest or repayment obligation, ownership unchanged"
+          ],
+          "application_max_2": [
+            "$98,000 raised covers the $95,000 lorry with $3,000 to spare",
+            "supermarket contract worth $240,000 a year secured without lender involvement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Oldmill Removals",
+            "$98,000",
+            "$95,000",
+            "$240,000",
+            "warehouse unit",
+            "flatbed trailer",
+            "retained profit",
+            "$7,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of relying on retained profit plus the trailer sale alone.",
+        "model_answer": "Disadvantage 1: The $88,000 raised falls short of the $95,000 needed for the refrigerated lorry [k], leaving a $7,000 gap that must be found elsewhere [app], which could delay first deliveries and risk the 3-year supermarket contract [an]. Disadvantage 2: Using all $60,000 retained profit removes the safety cushion [k]; with 14 staff and lorry running costs, one major repair or late supermarket payment could force emergency borrowing [app], raising costs precisely when the contract demands reliability [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "internal funds raised are insufficient to meet the requirement",
+            "retained profit acts as a safety cushion that would be exhausted"
+          ],
+          "application_max_2": [
+            "$88,000 raised vs $95,000 lorre cost, leaving a $7,000 gap",
+            "$60,000 retained profit used up, leaving 14 staff and lorries unprotected"
+          ],
+          "analysis_max_2": [
+            "gap could delay deliveries and put the supermarket contract at risk",
+            "emergency borrowing at short notice raises costs and pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$88,000",
+            "$95,000",
+            "$7,000",
+            "$60,000",
+            "retained profit",
+            "14 staff",
+            "$240,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Oldmill Removals should sell both assets or keep the warehouse unit and combine retained profit with the trailer sale? Justify your answer.",
+        "model_answer": "Selling both assets raises $98,000 [k], covering the $95,000 refrigerated lorry with $3,000 to spare and keeping the $60,000 retained profit untouched [app]; this protects the 14 staff and guarantees the delivery schedule for the supermarket contract worth $240,000 a year [an]. Keeping the warehouse unit [k] preserves a property that might appreciate and provides storage [app]; but it leaves a $7,000 gap on the $88,000 raised, before the supermarket's first payment 60 days after delivery arrives [an]. On balance, selling both assets is the safer decision [eval], because the unit has stood empty since 2023 and the confirmed $240,000 annual contract matters more than a speculative rise in property value [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale of both assets fully funds the lorry and protects retained profit",
+            "keeping the unit preserves a potentially appreciating asset and storage"
+          ],
+          "application_max_2": [
+            "$98,000 covers the $95,000 lorry with $3,000 to spare; $60,000 retained profit stays intact",
+            "keeping the unit leaves $88,000 raised and a $7,000 gap before first payment 60 days later"
+          ],
+          "analysis_max_2": [
+            "full funding guarantees deliveries for the $240,000 a year contract and 14 staff",
+            "first supermarket payment arrives 60 days after delivery, so cash must not be tight"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation weighing unused property against contract security",
+            "judgement notes the unit has been empty since 2023"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$98,000",
+            "$95,000",
+            "$88,000",
+            "$7,000",
+            "$60,000",
+            "warehouse unit",
+            "flatbed trailer",
+            "$240,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_46",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Baobab Sewing Cooperative is a rural start-up in Country X founded 8 months ago by 9 women making school uniforms. The cooperative sells 210 uniforms a month at $18 each and wants to buy an industrial sewing machine costing $5,400 to take a contract with a local school for 500 uniforms a term. Demand rises sharply before the autumn term, and the cooperative works from a donated room in the village clinic.\n\nA government enterprise grant of $2,000 is available for rural start-ups that create at least 3 jobs. A micro-finance institution also offers $5,400 over 24 months at 12% annual interest. The cooperative's members have saved $900 so far and add about $300 a month from profits. Members work part-time around farming commitments.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'micro-finance'.",
+        "model_answer": "Micro-finance is the provision of very small loans and financial services to people who cannot access traditional bank finance, typically to start or grow a very small business [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "very small loans for people excluded from bank finance",
+            "aimed at micro-businesses and start-ups"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the government enterprise grant for the cooperative.",
+        "model_answer": "Advantage 1: The $2,000 grant does not need to be repaid [k], so it directly reduces the amount the cooperative must borrow for the $5,400 machine [app]. Advantage 2: The grant supports rural start-ups that create jobs [k], helping the cooperative fund its plan to hire at least 3 local women when it signs the school contract [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grant is not repayable — free funding",
+            "grant encourages job creation in rural areas"
+          ],
+          "application_max_2": [
+            "$2,000 reduces the $5,400 machine cost needing finance",
+            "at least 3 local jobs requirement links to the school contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "government enterprise grant",
+            "$2,000",
+            "$5,400",
+            "local school",
+            "Baobab Sewing Cooperative",
+            "500 uniforms",
+            "rural start-ups"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of relying only on the cooperative's own savings.",
+        "model_answer": "Limitation 1: The members' savings total only $900 [k], exactly one sixth of the $5,400 machine [app], so saving alone cannot fund the school contract in time and the cooperative risks losing the 500-uniform order [an]. Limitation 2: Accumulating savings is slow [k]; even with the $2,000 grant, covering the remaining $3,400 at $300 a month would take about 11 months, and 18 months without the grant [app], by which time the school may have sourced its uniforms elsewhere [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "savings accumulated are small relative to the requirement",
+            "slow accumulation delays the purchase and the contract"
+          ],
+          "application_max_2": [
+            "$900 saved vs $5,400 machine cost — one sixth of the requirement",
+            "$300 a month surplus: about 11 months with the grant, 18 months without"
+          ],
+          "analysis_max_2": [
+            "school may lose patience and source uniforms elsewhere",
+            "500-uniform contract would be lost, undermining the whole plan"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900",
+            "$5,400",
+            "$300",
+            "grant",
+            "500 uniforms",
+            "local school",
+            "$2,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the cooperative should take the micro-finance loan or wait and save from profits? Justify your answer.",
+        "model_answer": "Taking the micro-finance loan of $5,400 [k] would let the cooperative buy the machine now and deliver the 500-uniform school contract, worth about $9,000 a term at $18 per uniform [app]; at 12% interest the cost is about $648 a year, manageable against sales of about $3,780 a month, and the machine pays for itself quickly [an]. Waiting to save $300 a month [k] avoids all interest and keeps the cooperative debt-free [app]; but saving the full amount would take 18 months, and even after the $2,000 grant about 11 months, risking the school contract entirely [an]. On balance, the cooperative should take the micro-finance loan and still apply for the $2,000 grant [eval], because the machine's revenue gain far outweighs roughly $1,296 of interest over 2 years [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loan buys the machine immediately and earns revenue sooner",
+            "saving is interest-free but slow and risky"
+          ],
+          "application_max_2": [
+            "$5,400 machine delivers the 500-uniform contract worth about $9,000 a term at $18 each",
+            "saving $300 a month takes 18 months (about 11 with the $2,000 grant)"
+          ],
+          "analysis_max_2": [
+            "$648 a year interest is absorbable against about $3,780 monthly sales",
+            "waiting risks losing the contract; interest over 2 years is only about $1,296"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation combining loan and grant application",
+            "judgement weighs contract revenue against interest cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "micro-finance",
+            "$5,400",
+            "12%",
+            "$2,000",
+            "500 uniforms",
+            "$18",
+            "$300",
+            "grant"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_47",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Elm & Iron Furniture is a new workshop in Country X founded 14 months ago by Rosa Marlowe making oak coffee tables. She invested $16,000 of her own savings and the workshop now sells 25 tables a month at $260 each. She wants to buy a $19,000 industrial sander to increase output. She employs 2 full-time carpenters, and her waiting list has grown to 40 tables. A home-decor magazine recently featured her best-selling oak coffee table.\n\nA government training grant of $6,000 is available if the business employs and trains 5 apprentices for 2 years and submits quarterly progress reports. A micro-finance lender offers $19,000 over 3 years at 13% annual interest. Rosa worries the grant conditions will stretch her management time.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline two conditions attached to the government training grant.",
+        "model_answer": "The business must employ and train 5 apprentices for 2 years [1] and must submit quarterly progress reports [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employ and train 5 apprentices for 2 years",
+            "submit quarterly progress reports"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages for Elm & Iron Furniture of accepting the government training grant.",
+        "model_answer": "Advantage 1: The $6,000 grant never needs to be repaid [k], so it covers nearly a third of the $19,000 sander with no interest to pay [app]. Advantage 2: The grant pays for apprenticeships [k], helping the workshop train workers who can later raise output above 25 tables a month and clear the waiting list of 40 tables [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grant is free, non-repayable funding",
+            "grant funds training, building workforce skills"
+          ],
+          "application_max_2": [
+            "$6,000 towards the $19,000 sander without interest",
+            "trained apprentices can help clear the 40-table waiting list beyond 25 tables a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "government training grant",
+            "$6,000",
+            "$19,000",
+            "apprentices",
+            "25 tables",
+            "Elm & Iron Furniture",
+            "industrial sander"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of the grant for Elm & Iron Furniture.",
+        "model_answer": "Disadvantage 1: The grant conditions are demanding [k]; employing and training 5 apprentices for 2 years adds wage costs on top of the $16,000 Rosa already invested [app], stretching the workshop's cash before the sander even arrives [an]. Disadvantage 2: Quarterly progress reports add administrative work [k]; Rosa, who already manages sales of 25 tables a month and 2 carpenters, would lose time she cannot easily spare [app], reducing the hours available for production and supervision of the apprentices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "conditions add significant ongoing obligations and costs",
+            "reporting requirements consume management time"
+          ],
+          "application_max_2": [
+            "5 apprentices for 2 years on top of the $16,000 already invested",
+            "Rosa already runs 25 tables a month with 2 carpenters"
+          ],
+          "analysis_max_2": [
+            "cash strain before the $19,000 sander is even delivered",
+            "time lost to reports reduces production and supervision capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6,000",
+            "$19,000",
+            "5 apprentices",
+            "quarterly progress reports",
+            "$16,000",
+            "25 tables",
+            "2 full-time carpenters"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Rosa should accept the government training grant or take the micro-finance loan? Justify your answer.",
+        "model_answer": "Accepting the grant [k] would give the workshop $6,000 that never needs repaying, cutting the borrowed amount for the $19,000 sander to $13,000 [app]; the 5 apprentices would also lift output beyond 25 tables a month and support the waiting list of 40 tables [an]. Taking the micro-finance loan alone at 13% [k] over 3 years costs about $2,470 a year, roughly $7,410 of interest, but avoids every grant condition and report [app]; Rosa keeps full control of her time and can focus on production [an]. On balance, Rosa should accept the grant [eval], because $6,000 of free money plus trained apprentices outweigh the administration, provided the extra wages fit the budget [eval]; if the conditions prove unmanageable, the loan remains the fallback.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grant is free funding but conditional and adds obligations",
+            "loan is flexible but adds interest cost"
+          ],
+          "application_max_2": [
+            "$6,000 grant cuts the $19,000 sander requirement to $13,000",
+            "13% over 3 years costs about $2,470 a year (roughly $7,410 total)"
+          ],
+          "analysis_max_2": [
+            "apprentices could raise output and clear the 40-table waiting list",
+            "loan preserves Rosa's time but adds about $7,410 of interest"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation weighing free money against conditions",
+            "judgement identifies the fallback if conditions become unmanageable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "government training grant",
+            "$6,000",
+            "$19,000",
+            "13%",
+            "5 apprentices",
+            "25 tables",
+            "industrial sander",
+            "$16,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_48",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Redwood Retail Group runs 11 discount stores in Country X. It plans two moves this year: a $350,000 refit of its largest store over 18 months and an $80,000 bulk purchase of stock before the December trading season. The largest store employs 85 staff and anchors a regional shopping centre. The business made a profit after tax of $420,000 last year and holds retained profit of $260,000.\n\nThe directors must choose between using retained profit for the December stock and funding the refit with a long-term route, or using retained profit for the refit and covering the stock from short-term sources. Suppliers offer 60 days' trade credit on stock, and bank loans for refits are available at 8% annual interest over 6 years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two factors a business should consider when choosing a source of finance.",
+        "model_answer": "The factors include the cost of the finance, such as interest or dividend obligations [1], and the period over which the money is needed, short-term or long-term [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost of finance (interest/dividends/fees)",
+            "period required — short-term vs long-term"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why short-term finance suits the December stock purchase better than long-term finance.",
+        "model_answer": "Reason 1: The December stock is needed for only a few weeks [k]; a short-term source such as 60 days' trade credit matches this, as the stock will sell before the refit finishes [app]. Reason 2: Short-term finance avoids paying 8% interest for 6 years on a purchase recovered within weeks [k]; the $80,000 stock will generate cash during December, making a 6-year loan wasteful [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "period of finance should match the life of the need",
+            "short-term finance avoids unnecessary long-term interest cost"
+          ],
+          "application_max_2": [
+            "60 days' trade credit matches the December selling window",
+            "$80,000 stock recovered within weeks vs 8% for 6 years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "December stock",
+            "$80,000",
+            "trade credit",
+            "60 days",
+            "8%",
+            "6 years",
+            "Redwood Retail Group",
+            "December trading season"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two factors the directors should weigh before using retained profit for the store refit.",
+        "model_answer": "Factor 1: Amount required [k]; the $350,000 refit would absorb all $260,000 of retained profit and still leave $90,000 to find [app], so the December stock purchase could lose its planned funding source [an]. Factor 2: Control [k]; using retained profit keeps ownership fully with the existing shareholders [app], whereas outside long-term finance could dilute control or add conditions [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "amount of finance required vs amount available",
+            "control — retained profit avoids dilution or conditions"
+          ],
+          "application_max_2": [
+            "$350,000 refit exceeds $260,000 retained profit leaving $90,000 to find",
+            "retained profit avoids dilution or conditions from outside lenders"
+          ],
+          "analysis_max_2": [
+            "December stock could lose retained-profit funding",
+            "outside finance risks control, ownership or lender conditions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$350,000",
+            "$260,000",
+            "retained profit",
+            "largest store",
+            "December stock",
+            "Redwood Retail Group",
+            "$420,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redwood Retail Group should use retained profit for the December stock or for the store refit? Justify your answer.",
+        "model_answer": "Using retained profit for the $80,000 December stock [k] matches a short-term need with internal finance and leaves $180,000 of retained profit for other uses; the 60 days' trade credit could cover the stock anyway [app], freeing cash while the stock sells during the December trading season [an]. Using retained profit for the $350,000 refit [k] would exhaust the $260,000 and still leave $90,000 to find, leaving nothing for the stock [app]; the 18-month capital project also matches the long-term route offered by the 8%, 6-year bank loan instead [an]. On balance, retained profit should fund the $80,000 stock, not the refit [eval], because matching short-term finance to short-term needs keeps control and cash flexibility [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "short-term needs match short-term internal sources",
+            "long-term capital projects suit long-term borrowing of matching period"
+          ],
+          "application_max_2": [
+            "$80,000 stock covered by retained profit leaving $180,000 or by 60 days' trade credit",
+            "$350,000 refit exhausts $260,000 retained profit leaving $90,000 to find"
+          ],
+          "analysis_max_2": [
+            "stock cash returns during December, quickly replenishing reserves",
+            "8% over 6 years matches an 18-month refit's long-term benefit"
+          ],
+          "evaluation_max_2": [
+            "overall recommendation justified on period matching",
+            "judgement weighs preserving cash flexibility and control"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$80,000",
+            "December stock",
+            "$260,000",
+            "$350,000",
+            "8%",
+            "6 years",
+            "trade credit"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_49",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Anchorline Hotel is a private limited company in Country X with 48 guest rooms. Last year the hotel reported revenue of $1,150,000 and a profit after tax of $230,000. Occupancy averaged 74% across the year, with weekend peaks. The board paid a dividend of $85,000 to shareholders. The hotel now wants to refurbish the restaurant kitchen costing $140,000 and replace its shuttle vans costing $54,000. The vans are used mainly for airport transfers.\n\nThe finance manager suggests funding the kitchen from retained profit and selling the 2 old shuttle vans for $14,000 towards the new ones. Shareholders are divided: some want a higher dividend, others prefer the investment. The hotel also holds $96,000 of retained profit brought forward from earlier years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the retained profit Anchorline Hotel added this year. Show your working.",
+        "model_answer": "Retained profit = Profit after tax − Dividends paid = $230,000 − $85,000 = $145,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "correct formula: profit after tax − dividends",
+            "$145,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of using retained profit to fund the kitchen refurbishment.",
+        "model_answer": "Advantage 1: Retained profit is an internal source of finance [k], so the hotel avoids interest charges on the $140,000 kitchen cost [app]. Advantage 2: Reinvesting retained profit keeps ownership unchanged [k]; no new shares need to be issued and existing shareholders retain full control [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "internal source: no interest or repayment required",
+            "ownership and control remain unchanged"
+          ],
+          "application_max_2": [
+            "no interest on the $140,000 kitchen cost",
+            "no new shares issued; control stays with current shareholders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$140,000",
+            "Anchorline Hotel",
+            "profit after tax",
+            "48 guest rooms",
+            "dividend",
+            "kitchen"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of relying only on retained profit to fund both projects.",
+        "model_answer": "Disadvantage 1: The two projects total $194,000 [k], more than this year's $145,000 retained profit [app], so the hotel must draw on its $96,000 brought-forward balance, leaving nothing in reserve for next year [an]. Disadvantage 2: Retained profit is finite and may disappoint shareholders [k]; the board already paid $85,000 [app], and shareholders expecting an increase may resent an unchanged or lower dividend while funds are locked into the kitchen and vans [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit is limited in amount and may be insufficient",
+            "using retained profit may reduce or prevent a dividend"
+          ],
+          "application_max_2": [
+            "projects total $194,000 vs $145,000 retained profit this year",
+            "existing $85,000 dividend already paid and shareholders divided"
+          ],
+          "analysis_max_2": [
+            "drawing on the $96,000 brought-forward leaves no reserve for next year",
+            "shareholder dissatisfaction could damage relations with owners"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$140,000",
+            "$54,000",
+            "$85,000",
+            "profit after tax",
+            "$230,000",
+            "$96,000",
+            "retained profit",
+            "shuttle vans"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Anchorline Hotel should fund both projects from retained profit or pay a higher dividend? Justify your answer.",
+        "model_answer": "Funding both projects from retained profit [k] gives the hotel a refurbished kitchen and new shuttle vans, protecting the $1,150,000 revenue from its 48 rooms [app]; the projects cost $194,000 and this year's retained profit is $145,000, so the $96,000 brought forward would comfortably cover the gap [an]. Paying a higher dividend [k] would reward shareholders who backed a 74% occupancy year and satisfy those shareholders wanting immediate returns [app]; however, it would leave the kitchen and vans unfunded, pushing the board towards borrowing or delaying investment that grows future profits [an]. On balance, the projects should be funded from retained profit [eval], because the refurbishment and vans should raise future earnings more than a one-off dividend rise would satisfy owners [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reinvestment strengthens future earning capacity",
+            "dividends reward shareholders in the short term"
+          ],
+          "application_max_2": [
+            "projects cost $194,000; $145,000 retained profit plus $96,000 brought forward covers it",
+            "dividend increase would reward 74%-occupancy performance but leaves kitchen and vans unfunded"
+          ],
+          "analysis_max_2": [
+            "$96,000 brought forward comfortably covers the shortfall on both projects",
+            "delaying or borrowing increases cost and slows investment for future profit"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation balancing reinvestment against dividends",
+            "judgement weighs long-term earnings growth against immediate shareholder return"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$96,000",
+            "kitchen",
+            "shuttle vans",
+            "$1,150,000",
+            "$85,000",
+            "dividend",
+            "48 guest rooms"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_50",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Foxglove Lodge is a guest house in Country X founded 3 years ago by Mark and Leanne Doyle, with 14 letting rooms. The lodge earned revenue of $310,000 last year and employs 6 part-time staff. Bookings peak in summer and the lodge advertises through travel websites. The owners want to add a self-catering annexe costing $120,000, which would add 8 family rooms, and repair the kitchen roof at $26,000.\n\nThey must keep enough cash to pay wages of $9,400 a month. The lodge holds $74,000 in retained profit, an unused minibus valued at $22,000, and the couple's personal savings of $30,000. Both owners work full-time in the business, and they are deciding which project to fund first and which source to use.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two needs for finance that Foxglove Lodge has.",
+        "model_answer": "Capital expenditure for the annexe and the kitchen roof repair [1] and working capital to pay the monthly wages [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital expenditure (annexe / roof repair)",
+            "working capital for day-to-day costs such as wages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two internal sources of finance available to Foxglove Lodge.",
+        "model_answer": "Source 1: Retained profit [k]; the lodge has accumulated $74,000 from past profits, which could pay the $26,000 roof repair in full and still leave $48,000 towards the annexe [app]. Source 2: Sale of the unused minibus [k] would raise $22,000 towards the project without borrowing or repaying interest [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit — internal reinvestment of past earnings",
+            "sale of existing assets — selling unused property or equipment"
+          ],
+          "application_max_2": [
+            "$74,000 covers the $26,000 roof and leaves $48,000",
+            "minibus valued at $22,000 sold to fund part of the annexe"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$74,000",
+            "minibus",
+            "$22,000",
+            "$26,000",
+            "Foxglove Lodge",
+            "annexe"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems the owners face when choosing between these sources.",
+        "model_answer": "Problem 1: Each source is finite [k]; internal sources total $126,000 but the annexe and the roof cost $146,000 together, a shortfall of $20,000 [app], so something must be delayed, reduced or financed from outside the business [an]. Problem 2: Using personal savings carries a heavy opportunity cost [k]; the $30,000 is also the family's safety cushion [app], and spending it on the annexe would leave them exposed if bookings fell or another repair was needed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "internal sources combined may be insufficient for both needs",
+            "personal savings involve opportunity cost and lost security"
+          ],
+          "application_max_2": [
+            "$74,000 + $22,000 + $30,000 = $126,000 vs $120,000 + $26,000 = $146,000, a $20,000 gap",
+            "$30,000 personal savings double as the family safety cushion"
+          ],
+          "analysis_max_2": [
+            "projects cannot both be funded internally — delay, cut scope or borrow",
+            "spending savings leaves the family exposed to falling bookings or emergencies"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$74,000",
+            "$22,000",
+            "$30,000",
+            "annexe",
+            "roof",
+            "personal savings",
+            "minibus",
+            "Mark and Leanne"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Doyles should build the annexe now or delay it and repair only the roof? Justify your answer.",
+        "model_answer": "Building the annexe now [k] would add 8 family rooms and could lift revenue beyond the $310,000 earned last year [app]; internal sources total $126,000, so after the $26,000 roof repair the couple could put $100,000 towards the $120,000 annexe, leaving only $20,000 to find [an]. Delaying the annexe and repairing only the roof [k] would protect the $30,000 personal savings and keep wages of $9,400 a month secure [app]; however, the lodge would forfeit a full summer of extra family-room income and might lose guests to rival guest houses [an]. On balance, the Doyles should build the annexe now [eval], using retained profit, the minibus sale and savings, and covering the $20,000 gap with a small short-term bank loan only if strictly needed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "building now captures new revenue and growth",
+            "delaying protects personal security and cash stability"
+          ],
+          "application_max_2": [
+            "8 new family rooms could lift revenue beyond $310,000",
+            "$126,000 internal sources; $100,000 available after the $26,000 roof, leaving a $20,000 gap"
+          ],
+          "analysis_max_2": [
+            "extra summer bookings would be forfeited by delaying",
+            "savings and $9,400 monthly wages stay protected if the annexe waits"
+          ],
+          "evaluation_max_2": [
+            "overall justified recommendation with a clear order of preference",
+            "judgement covers how the $20,000 gap would be handled"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "annexe",
+            "$120,000",
+            "$26,000",
+            "$74,000",
+            "$22,000",
+            "$30,000",
+            "$310,000",
+            "14 letting rooms"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

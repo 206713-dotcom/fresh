@@ -1,0 +1,1194 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_71",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Hartwell Flour Milling Co is a private limited company founded 9 years ago by Daniel Whitmore, operating a flour mill in Country X. It employs 45 workers and mills 600 tonnes of flour a month. Last year revenue was $3.6 million and profit was $420,000. Daniel is considering expanding output to 900 tonnes a month to win a long-term contract with a national bakery chain.\n\nOption A is to sign the contract and buy grain in bulk at $240 a tonne instead of the usual $310, saving $70 a tonne. Option B is to keep output at 600 tonnes and serve small local bakeries. Widening the mill warehouse costs $95,000, which Daniel would need to finance before the first delivery arrives in 4 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'purchasing economies of scale'.",
+        "model_answer": "Purchasing economies of scale are the cost advantages a business gains by buying inputs in large quantities, because suppliers offer bulk discounts so the cost of each unit of materials purchased falls [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying inputs in large quantities / bulk",
+            "Suppliers offer discounts, so cost per unit of materials falls"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Hartwell Flour Milling Co of purchasing economies of scale.",
+        "model_answer": "One benefit is lower grain costs [k]. Buying at $240 a tonne instead of $310 saves $70 a tonne, a saving of $63,000 a month on 900 tonnes, which cuts Hartwell's average cost per tonne of flour [app]. A second benefit is stronger competitiveness [k]. With cheaper flour, Hartwell can price its bid for the national bakery chain contract more aggressively than its larger rival, protecting its $3.6 million revenue base [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying in bulk lowers the cost of inputs",
+            "Lower input costs can improve competitiveness / prices"
+          ],
+          "application_max_2": [
+            "Reference to $240 a tonne vs $310, saving $70 a tonne",
+            "Reference to $63,000 a month saved on 900 tonnes / national bakery chain contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hartwell Flour Milling Co",
+            "$240",
+            "$310",
+            "$70",
+            "$3.6 million",
+            "national bakery chain",
+            "900 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Hartwell Flour Milling Co might face if it expands output to 900 tonnes a month.",
+        "model_answer": "One problem is the strain on cash [k]. Widening the mill warehouse costs $95,000, and grain must be paid for before the first delivery arrives, so Hartwell's cash position could tighten even though profit was $420,000 last year [app], and if the contract start is delayed the mill would carry the extra debt without the expected revenue [an]. A second problem is diseconomies of scale [k]. Running at 900 tonnes means more lorries, more staff and busier shifts each day [app], and without additional supervisors, miscommunication could raise flour waste and breach the bakery chain's quality requirements [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large expansion strains cash / requires upfront finance",
+            "Diseconomies of scale: coordination and communication problems as output rises"
+          ],
+          "application_max_2": [
+            "Reference to $95,000 warehouse cost / payment before first delivery",
+            "Reference to 900 tonnes output / $420,000 profit last year"
+          ],
+          "analysis_max_2": [
+            "Chain from $95,000 upfront spend to tight cash to risk if contract delayed",
+            "Chain from larger scale to miscommunication/waste to quality risk with national bakery chain"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "900 tonnes",
+            "$420,000",
+            "Hartwell",
+            "national bakery chain",
+            "$70",
+            "warehouse"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hartwell Flour Milling Co should sign the contract and expand to 900 tonnes a month? Justify your answer.",
+        "model_answer": "On one hand, signing the contract gives Hartwell a reliable national customer and protects its $3.6 million revenue base [k]. Bulk grain at $240 a tonne instead of $310 saves $70 a tonne, worth $63,000 a month on 900 tonnes [app]. Lower input costs create purchasing economies of scale, so average cost falls and profit can rise above the $420,000 earned last year, making Hartwell more competitive against its rival [an]. However, expanding is not risk-free [k]. Widening the warehouse costs $95,000 before the first delivery in 4 months, cash must be found while the mill pays for grain up front, and running a bigger mill could bring poor communication and flour waste [app]. If the bakery chain delays or cancels, Hartwell would carry high fixed costs with sales below 900 tonnes, squeezing profit and possibly threatening the mill's future [an]. Overall, I think Hartwell should sign the contract [eval]. The $63,000 monthly saving is large next to the $95,000 one-off warehouse cost, which would be recovered in about 6 weeks of running at the new volume, and purchasing economies at this size clearly outweigh the coordination risks for a well-established mill [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Purchasing economies of scale reduce average cost when buying in bulk",
+            "Growth carries risks such as diseconomies of scale and cash strain"
+          ],
+          "application_max_2": [
+            "Reference to $240 vs $310 a tonne, $70 saving worth $63,000 a month on 900 tonnes",
+            "Reference to $95,000 warehouse cost, delivery in 4 months, $3.6 million revenue, $420,000 profit"
+          ],
+          "analysis_max_2": [
+            "Chain from bulk saving to lower average cost to higher profit and competitiveness",
+            "Chain from $95,000 upfront spend and bigger scale to cash strain or waste to risk if contract lost"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on signing the contract",
+            "Weighs both options using stem figures ($63,000 saving vs $95,000 cost and 4-month delay)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hartwell Flour Milling Co",
+            "$240",
+            "$310",
+            "$70",
+            "$95,000",
+            "$420,000",
+            "900 tonnes",
+            "national bakery chain"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_72",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Sunvale Soft Drinks is a private limited company based in Country X, producing premium sparkling fruit drinks. It employs 38 workers, makes 2 million bottles a year and earned revenue of $3.1 million last year with a profit of $280,000. Its advertising budget last year was $150,000, spent on radio adverts in three cities. The managing director, Priya Raman, wants Sunvale to become a national brand rather than a regional favourite.\n\nOption A is a national television and billboard campaign costing $600,000, expected to add 1.2 million bottles of annual sales worth about $1.8 million in extra revenue. Option B is a regional campaign costing $120,000, expected to add 400,000 bottles worth about $600,000 in extra revenue. The board has 3 months to decide before the summer season begins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'marketing economies of scale'.",
+        "model_answer": "Marketing economies of scale are cost advantages where the cost of advertising and promotion is spread over a larger volume of sales, so the marketing cost per unit falls as the business grows [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Advertising/promotion cost is spread over more units sold",
+            "Marketing cost per unit falls as output and sales rise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Sunvale Soft Drinks of using a national campaign.",
+        "model_answer": "One benefit is a much wider audience [k]. A $600,000 national television and billboard campaign would put Sunvale's drinks in front of customers across the whole country, far more than the $150,000 a year now spent on three cities [app]. A second benefit is spreading the advertising cost over more sales [k]. Adding 1.2 million bottles to the 2 million already sold would spread the campaign cost over far more units, lowering the marketing cost per bottle [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "National advertising reaches a much wider audience",
+            "Marketing cost is spread over more units sold / cost per unit falls"
+          ],
+          "application_max_2": [
+            "Reference to $600,000 national campaign vs $150,000 spent on three cities",
+            "Reference to 1.2 million extra bottles added to 2 million current sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sunvale Soft Drinks",
+            "$600,000",
+            "$150,000",
+            "national television",
+            "1.2 million bottles",
+            "2 million",
+            "$1.8 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Sunvale Soft Drinks might face if it spends $600,000 on the television and billboard campaign.",
+        "model_answer": "One problem is the high upfront cost [k]. Paying $600,000 is four times Sunvale's $150,000 advertising budget and more than twice its $280,000 profit, so financial strain is a serious risk [app]. If sales do not rise as expected, cash flow would suffer and other investment plans would be delayed [an]. A second problem is poor targeting [k]. A national television and billboard campaign cannot be tailored to specific towns or income groups [app], so money could be wasted on viewers who never buy premium fruit drinks, lowering the return on the campaign spend [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A large upfront campaign strains cash flow and profit",
+            "Mass campaigns cannot be targeted precisely / risk wasted spend"
+          ],
+          "application_max_2": [
+            "Reference to $600,000 vs $150,000 budget and $280,000 profit",
+            "Reference to national television and billboard campaign / premium sparkling fruit drinks"
+          ],
+          "analysis_max_2": [
+            "Chain from $600,000 spend to cash-flow strain to delayed investment if sales disappoint",
+            "Chain from broad targeting to wasted spend to lower return on the campaign"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$280,000",
+            "television and billboard campaign",
+            "$150,000",
+            "2 million bottles",
+            "Sunvale"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sunvale Soft Drinks should launch the national campaign? Justify your answer.",
+        "model_answer": "On one hand, the $600,000 campaign could transform Sunvale from a regional seller into a national brand [k]. It would add about 1.2 million bottles a year, worth $1.8 million in extra revenue, three times the campaign cost [app], and the higher volume would spread advertising and fixed costs over more units, lowering the marketing cost per bottle through marketing economies of scale [an]. On the other hand, the risk is real [k]. The campaign costs four times the $150,000 advertising budget of last year and over twice the $280,000 profit Sunvale earned, so if extra sales fall short of 1.2 million bottles the money would be wasted and cash flow could be damaged [app]. A safer route is the $120,000 regional campaign, expected to add 400,000 bottles worth $600,000 in extra revenue, growing the brand without crippling the business [an]. Overall, I think Sunvale should launch the national campaign [eval]. The expected $1.8 million extra revenue dwarfs the $600,000 cost, and without national visibility the brand may never escape regional obscurity; spend can be trimmed later if the response disappoints [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Marketing economies of scale: cost per unit falls as advertising is spread over more sales",
+            "Large campaigns carry cash-flow and targeting risks"
+          ],
+          "application_max_2": [
+            "Reference to $600,000 cost, 1.2 million extra bottles, $1.8 million expected revenue",
+            "Reference to $150,000 budget, $280,000 profit, $120,000 regional alternative with 400,000 extra bottles"
+          ],
+          "analysis_max_2": [
+            "Chain from higher volume to marketing cost spread over more units to lower cost per bottle",
+            "Chain from $600,000 upfront cost to cash-flow risk to potential harm if sales disappoint"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on the national campaign",
+            "Weighs both options using stem figures ($1.8 million vs $600,000; $120,000 alternative)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sunvale Soft Drinks",
+            "$600,000",
+            "$1.8 million",
+            "$150,000",
+            "$280,000",
+            "1.2 million bottles",
+            "$120,000",
+            "400,000 bottles"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_73",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Wexford Steel Co is a private limited company in Country X supplying rolled steel to builders and fabricators. It employs 84 staff at one depot and produced 4,000 tonnes of steel product last year, with revenue of $11.5 million and profit of $900,000. Director Aaron Blake wants to install a new electric furnace to lift capacity to 6,500 tonnes a year and cut unit costs.\n\nWexford's bank will lend $2.5 million at 7% interest a year, while smaller rivals typically pay 11%. Option A is to borrow the $2.5 million now and fit the furnace; the extra 2,500 tonnes would be sold under a 5-year supply deal. Option B is to decline the loan, keep producing 4,000 tonnes a year and avoid $175,000 of annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'financial economies of scale'.",
+        "model_answer": "Financial economies of scale are cost advantages where large businesses can borrow money at lower interest rates and on better terms than smaller businesses, because lenders view them as less risky [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large businesses pay lower interest rates on loans",
+            "Lenders see larger, safer businesses as less risky"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Wexford Steel Co of financial economies of scale.",
+        "model_answer": "One benefit is cheaper borrowing [k]. Wexford would pay 7% interest rather than the 11% typical for smaller rivals, saving $100,000 a year on a $2.5 million loan [app]. A second benefit is funding expansion from outside savings [k]. Access to a $2.5 million loan lets Wexford buy the electric furnace and raise output from 4,000 to 6,500 tonnes without waiting years to save the cash from revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger firms borrow at lower interest rates",
+            "Cheaper, easier finance funds growth and investment"
+          ],
+          "application_max_2": [
+            "Reference to 7% vs 11%, saving $100,000 a year on $2.5 million",
+            "Reference to electric furnace / capacity lifted from 4,000 to 6,500 tonnes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Wexford Steel Co",
+            "7%",
+            "11%",
+            "$2.5 million",
+            "4,000",
+            "6,500 tonnes",
+            "electric furnace"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two risks to Wexford Steel Co of borrowing $2.5 million at 7% interest.",
+        "model_answer": "One risk is the fixed interest cost [k]. Interest of $175,000 a year must be paid even in a downturn [app], so if steel orders fall, Wexford could struggle to cover payments and last year's $900,000 profit would shrink fast, raising the danger of insolvency [an]. A second risk is over-committing to one customer [k]. The 5-year supply deal depends on the extra 2,500 tonnes being sold [app], and if demand does not materialise, Wexford would be left paying for an underused furnace while still owing the bank $2.5 million [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Interest must be paid regardless of trading conditions",
+            "Debt creates repayment/insolvency risk if revenue falls"
+          ],
+          "application_max_2": [
+            "Reference to $175,000 a year interest / $900,000 profit last year",
+            "Reference to 5-year supply deal / extra 2,500 tonnes / $2.5 million loan"
+          ],
+          "analysis_max_2": [
+            "Chain from fixed interest to pressure on profit to risk of insolvency in a downturn",
+            "Chain from reliance on one deal to underused capacity to cash strain while still owing the bank"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.5 million",
+            "7%",
+            "$175,000",
+            "$900,000",
+            "5-year supply deal",
+            "2,500 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wexford Steel Co should borrow the $2.5 million? Justify your answer.",
+        "model_answer": "On one hand, borrowing at 7% shows a clear financial economy of scale [k]. Paying $175,000 interest a year instead of $275,000 at the 11% rate rivals typically pay saves $100,000 a year, and the furnace lifts capacity from 4,000 to 6,500 tonnes under a 5-year supply deal [app]. That extra scale would spread fixed costs, such as the depot and management, over more tonnes, lowering average cost and helping Wexford win further building-sector contracts [an]. On the other hand, debt adds pressure [k]. Even at 7%, Wexford commits $175,000 a year for many years, and profit of $900,000 last year could evaporate if construction demand falls or the 5-year deal is renegotiated smaller [app]. Staying at 4,000 tonnes avoids any risk to the 84 staff and keeps Wexford flexible if orders drop [an]. Overall, I think Wexford should borrow the $2.5 million [eval]. The guaranteed 5-year supply deal secures the extra 2,500 tonnes of sales, and the four percentage point interest advantage saves $100,000 a year, making expansion decisively worthwhile for an established supplier [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Financial economies of scale: larger firms borrow at lower interest rates",
+            "Debt increases fixed financial commitments and risk"
+          ],
+          "application_max_2": [
+            "Reference to 7% vs 11%, $175,000 vs $275,000 interest, saving $100,000 a year",
+            "Reference to 5-year supply deal, 6,500 tonnes vs 4,000 tonnes, $900,000 profit, 84 staff"
+          ],
+          "analysis_max_2": [
+            "Chain from lower interest and extra scale to lower average cost to more competitiveness",
+            "Chain from fixed interest commitments to pressure on $900,000 profit to insolvency risk if demand falls"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on borrowing the $2.5 million",
+            "Weighs both options using stem figures ($100,000 saving vs fixed $175,000 interest risk)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Wexford Steel Co",
+            "$2.5 million",
+            "7%",
+            "11%",
+            "$175,000",
+            "4,000",
+            "6,500 tonnes",
+            "5-year supply deal"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_74",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Carrick Pharmaceuticals is a private limited company in Country X making generic painkillers. It employs 120 workers and produces 80,000 packs a year, earning revenue of $8.4 million and profit of $950,000. Late deliveries and missed orders have doubled since last year. Output has outgrown the office; general managers now cover marketing, production planning and finance at the same time.\n\nOption A is to appoint three specialists, a marketing director, a production manager and a finance analyst, at a combined cost of $260,000 a year. They would aim to cut pack wastage from 9%, roughly $90,000 lost a year, to 3%. Option B is to keep the current generalist structure and postpone hiring until annual profit passes $1.1 million. The two owners disagree about the risk.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'managerial economies of scale'.",
+        "model_answer": "Managerial economies of scale are cost advantages where a larger business can afford specialist managers for particular functions, whose expertise reduces waste and improves decisions as the business grows [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large businesses can afford specialist managers",
+            "Specialist expertise reduces waste and improves decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Carrick Pharmaceuticals of hiring specialist managers.",
+        "model_answer": "One benefit is better decisions in each function [k]. A dedicated marketing director, production manager and finance analyst would each give expert attention to their area instead of roles being covered by stretched generalists at a business employing 120 workers [app]. A second benefit is lower wastage [k]. Targeting wastage from 9% to 3% would cut roughly $60,000 of the $90,000 lost each year, protecting part of the $950,000 profit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialist managers make better decisions in their function",
+            "Specialists reduce waste and errors in the business"
+          ],
+          "application_max_2": [
+            "Reference to 120 workers / general managers covering marketing, production planning and finance",
+            "Reference to wastage cut from 9% to 3% / $90,000 lost a year / $950,000 profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Carrick Pharmaceuticals",
+            "marketing director",
+            "production manager",
+            "finance analyst",
+            "120 workers",
+            "9%",
+            "$90,000",
+            "$950,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Carrick Pharmaceuticals might face from hiring the three specialists.",
+        "model_answer": "One problem is the salary cost [k]. The three specialists cost $260,000 a year, which would cut profit from $950,000 to roughly $690,000 before any savings are made [app]. If wastage does not fall as planned, Carrick would carry the extra payroll with no financial benefit in return [an]. A second problem is duplicated authority [k]. Adding a production manager above existing supervisors could create conflict over who makes decisions [app], and slow early coordination between new and existing managers could delay the very efficiency gains the hires are meant to deliver [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Senior specialists are expensive and reduce short-term profit",
+            "New managers can create conflict or duplication of authority"
+          ],
+          "application_max_2": [
+            "Reference to $260,000 combined annual salaries / profit $950,000 to about $690,000",
+            "Reference to a production manager above existing supervisors / current generalist structure"
+          ],
+          "analysis_max_2": [
+            "Chain from $260,000 salary cost to lower profit to pressure if savings do not materialise",
+            "Chain from overlapping authority to conflict or slow coordination to delayed efficiency gains"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "$950,000",
+            "specialists",
+            "120 workers",
+            "$90,000",
+            "wastage"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Carrick Pharmaceuticals should hire the three specialists now? Justify your answer.",
+        "model_answer": "On one hand, managerial economies of scale apply as Carrick grows [k]. At 120 workers producing 80,000 packs a year, general managers are stretched across marketing, production planning and finance; specialists could cut wastage from 9% to 3%, saving about $60,000 a year of the $90,000 now lost [app]. Expert coordination would also reduce late deliveries and missed orders, protecting the $8.4 million revenue and supporting further efficient growth [an]. On the other hand, the cost is heavy [k]. Paying $260,000 a year would drop profit from $950,000 to about $690,000, and the two owners disagree; if savings fall short, waiting until annual profit passes $1.1 million, as Option B suggests, would be the safer route [app]. Duplicated authority and slow decisions between new and existing managers are also possible at this size [an]. Overall, I think Carrick should hire the three specialists now [eval]. The wastage saving plus better marketing and financial control make $260,000 good value against a $950,000 profit, and postponing to $1.1 million simply lets more waste accumulate [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Managerial economies of scale: specialists improve decisions and reduce waste as firms grow",
+            "Hiring costs reduce short-term profit and carries integration risks"
+          ],
+          "application_max_2": [
+            "Reference to 120 workers, 80,000 packs, wastage cut from 9% to 3%, about $60,000 of the $90,000 saved",
+            "Reference to $260,000 salaries, profit $950,000 to about $690,000, Option B threshold of $1.1 million, $8.4 million revenue"
+          ],
+          "analysis_max_2": [
+            "Chain from specialist expertise to less waste and fewer errors to protected revenue and margin",
+            "Chain from $260,000 payroll to lower profit to risk if savings fall short / postponed hiring"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on hiring now versus Option B",
+            "Weighs both options using stem figures ($260,000 vs $950,000 profit and 9% to 3% wastage)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Carrick Pharmaceuticals",
+            "$260,000",
+            "$950,000",
+            "120 workers",
+            "80,000 packs",
+            "$90,000",
+            "9%",
+            "3%",
+            "$8.4 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_75",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Silverline Electronics is a private limited company in Country X assembling home circuit-breaker panels. It employs 30 workers on manual assembly at $11 an hour, working 40 hours a week, producing 6,000 units a month; manual labour costs about $13,200 a week. Revenue last year was $5.6 million and profit was $700,000. Demand now exceeds capacity. Chloe Navarro, the managing director, believes the line would pay for itself through lower labour cost per unit, while the production manager fears defects during installation.\n\nOption A is to buy an automated assembly line costing $1.8 million, run it with 8 operators, and raise output to 14,000 units a month. Option B is to stay with manual assembly, hire 12 extra workers at $11 an hour, and raise output to 8,500 units a month. The directors want the decision within 6 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'technical economies of scale'.",
+        "model_answer": "Technical economies of scale are cost advantages where a large business can afford advanced machinery and production techniques that lower the average cost per unit as output rises [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large businesses can afford advanced/automated machinery",
+            "Specialist techniques lower average cost per unit as output rises"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Silverline Electronics of buying the automated assembly line.",
+        "model_answer": "One benefit is higher output from fewer workers [k]. The line runs with 8 operators instead of 30 workers on manual assembly, lifting output from 6,000 to 14,000 units a month [app]. A second benefit is lower labour cost per unit [k]. Labour would fall from about $13,200 a week to about $3,520 a week, so the labour cost of each circuit-breaker panel would drop sharply as volume rises [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automated machinery raises output with fewer workers",
+            "Labour cost per unit falls as volume rises"
+          ],
+          "application_max_2": [
+            "Reference to 8 operators vs 30 workers / output 6,000 to 14,000 units a month",
+            "Reference to $13,200 a week labour vs about $3,520 a week / $11 an hour"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Silverline Electronics",
+            "8 operators",
+            "30 workers",
+            "6,000",
+            "14,000 units",
+            "$1.8 million",
+            "$11"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Silverline Electronics might face if it buys the automated assembly line.",
+        "model_answer": "One problem is the purchase price [k]. Paying $1.8 million would consume a large share of cash and is more than twice last year's $700,000 profit, so Silverline would likely need a loan or director funding [app]. If faults appear during installation, Silverline could pay interest while producing nothing, threatening profit [an]. A second problem is training and reliability [k]. The 8 operators must learn new controls, and a breakdown would halt production of up to 14,000 units a month [app], so one technical failure could cost far more than manual assembly ever would [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Advanced machinery is expensive and strains cash flow",
+            "Automation brings training needs and breakdown risk"
+          ],
+          "application_max_2": [
+            "Reference to $1.8 million cost vs $700,000 profit last year",
+            "Reference to 8 operators needing training / 14,000 units a month at risk"
+          ],
+          "analysis_max_2": [
+            "Chain from $1.8 million spend to reliance on borrowing to profit pressure if installation fails",
+            "Chain from breakdown or poor training to halted production to heavy cost of failure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.8 million",
+            "$700,000",
+            "14,000 units",
+            "automated assembly line",
+            "6,000",
+            "circuit-breaker"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Silverline Electronics should buy the automated assembly line? Justify your answer.",
+        "model_answer": "On one hand, technical economies of scale strongly favour the purchase [k]. The $1.8 million line raises output from 6,000 to 14,000 units a month, more than double, while manual labour falls from 30 workers to 8 operators [app]. Spreading fixed costs, such as factory rent and management, over more units lowers average cost per unit, and demand already exceeds capacity, so the extra panels can be sold without deep discounting [an]. On the other hand, the price tag is heavy [k]. At $1.8 million, the line is more than twice last year's $700,000 profit and would probably need borrowed money or director funding [app]. Option B, hiring 12 extra workers at $11 an hour to reach 8,500 units a month, is cheaper now, keeps flexibility and avoids installation defects that the production manager fears [an]. Overall, I think Silverline should buy the automated assembly line [eval]. Demand exceeds capacity and technical economies scale so well that the extra output of 5,500 units a month over Option B would quickly justify the $1.8 million, while Option B cannot match the fall in average cost per unit [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Technical economies of scale: automation lowers average cost per unit as output rises",
+            "Automation requires heavy upfront investment and carries installation risk"
+          ],
+          "application_max_2": [
+            "Reference to $1.8 million line, output 6,000 to 14,000 units, 30 workers to 8 operators",
+            "Reference to $700,000 profit, Option B of 12 extra workers at $11 an hour for 8,500 units"
+          ],
+          "analysis_max_2": [
+            "Chain from automation to spread fixed costs over more units to lower average cost per unit",
+            "Chain from $1.8 million upfront cost to financing risk to possible harm if installation fails"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on buying the automated line",
+            "Weighs both options using stem figures (14,000 vs 8,500 units; $1.8 million vs $700,000 profit)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Silverline Electronics",
+            "$1.8 million",
+            "6,000",
+            "14,000 units",
+            "30 workers",
+            "8 operators",
+            "$700,000",
+            "8,500 units"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_76",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "The Meadowlark Dairy Co-operative in Country X is owned by 60 member farms. It collects and processes 150,000 litres of milk a day and employs 55 staff; the co-operative pays members $0.42 per litre collected. Last year revenue was $9.8 million and the surplus paid to members was $640,000. The board is weighing how to scale up processing capacity.\n\nOption A is to build a new central plant costing $4 million, cutting average cost from $0.58 to $0.49 per litre and lifting capacity to 240,000 litres a day. Option B is to upgrade the existing line for $1.2 million, raising capacity to 190,000 litres a day. Members are split on whether a bigger plant risks paying farmers late; some fear coordination problems and slow decisions across a doubled site.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'scale of production'.",
+        "model_answer": "Scale of production is the size of a business's output, meaning how large the operation is and the volume of goods or services it produces [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Scale of production refers to the size of output / the volume produced",
+            "It shows how large the business operation is"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Meadowlark of increasing its scale of production.",
+        "model_answer": "One benefit is lower average cost [k]. A new central plant would cut average cost from $0.58 to $0.49 per litre, saving 9 cents on every one of 240,000 litres processed each day [app]. A second benefit is greater capacity for member farms [k]. Capacity rising from 150,000 to 240,000 litres a day means all 60 member farms can sell more milk through the co-operative instead of seeking outside buyers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger scale can reduce average cost per unit",
+            "Larger scale gives more capacity and output"
+          ],
+          "application_max_2": [
+            "Reference to average cost $0.58 to $0.49 per litre / 9 cents saved",
+            "Reference to capacity 150,000 to 240,000 litres a day / 60 member farms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Meadowlark Dairy Co-operative",
+            "$0.58",
+            "$0.49",
+            "240,000 litres",
+            "150,000 litres",
+            "60 member farms",
+            "$4 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two diseconomies of scale Meadowlark might face at a large central plant.",
+        "model_answer": "One diseconomy is poor communication [k]. A bigger site with more drivers, engineers and member farms means messages travel further, and a quality problem in one shift could reach the board days late [app]. Slow reaction would waste more milk than the current 150,000-litres-a-day operation, hitting the $9.8 million revenue [an]. A second diseconomy is slow decision-making [k]. More layers of approval at a plant nearly twice the size mean routine decisions, such as buying parts or changing shifts, take longer [app], so the co-operative becomes sluggish just as larger rivals cut their prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Poor communication as organisations grow larger",
+            "Slow decision-making as more layers of management are added"
+          ],
+          "application_max_2": [
+            "Reference to doubled/larger site vs current 150,000 litres a day / $9.8 million revenue",
+            "Reference to central plant / 60 member farms / more layers of approval"
+          ],
+          "analysis_max_2": [
+            "Chain from longer message routes to delayed response to wasted milk and lost revenue",
+            "Chain from more approval layers to slower decisions to sluggish response to rivals' price cuts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "150,000 litres",
+            "240,000 litres",
+            "$4 million",
+            "60 member farms",
+            "Meadowlark Dairy Co-operative",
+            "$0.49"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Meadowlark Dairy Co-operative should build the large central plant? Justify your answer.",
+        "model_answer": "On one hand, bigger scale brings real economies [k]. The $4 million plant lifts capacity from 150,000 to 240,000 litres a day and cuts average cost from $0.58 to $0.49 per litre; on 240,000 litres a day, that 9-cent saving is about $21,600 a day [app]. Purchasing power for packaging, fuel and milk-collection logistics would also improve, supporting the $9.8 million revenue and the $640,000 surplus paid to members [an]. On the other hand, co-operatives fail when members feel ignored [k]. A plant 60% larger could bring poor communication and slower decisions across 60 farms, and if 240,000 litres cannot be sold profitably, member milk could be paid late, as some members fear [app]. Option B, upgrading the existing line for $1.2 million to reach 190,000 litres a day, is a cheaper and safer step that still adds capacity and avoids a doubled site [an]. Overall, I think Meadowlark should build the central plant [eval]. The $0.49 average cost and an extra 90,000 litres of daily capacity offer savings far beyond the $1.2 million upgrade, provided the board appoints extra supervisors to keep communication clear [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger scale of production can deliver economies of scale and lower average cost",
+            "Diseconomies of scale: poor communication and slow decision-making in large organisations"
+          ],
+          "application_max_2": [
+            "Reference to $4 million plant, $0.58 to $0.49 per litre, capacity 150,000 to 240,000 litres a day",
+            "Reference to $1.2 million upgrade to 190,000 litres, $9.8 million revenue, $640,000 surplus, 60 member farms"
+          ],
+          "analysis_max_2": [
+            "Chain from lower average cost and scale to better member surplus and competitiveness",
+            "Chain from larger, doubled site to coordination problems to risk of late payment to members"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on building the central plant",
+            "Weighs both options using stem figures ($21,600 a day saving vs $1.2 million cheaper upgrade)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Meadowlark Dairy Co-operative",
+            "$4 million",
+            "$0.58",
+            "$0.49",
+            "240,000 litres",
+            "150,000 litres",
+            "$640,000",
+            "$1.2 million",
+            "60 member farms"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_77",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Quickhaul Courier Services is a private limited company in Country X delivering parcels for online retailers. It has grown from 40 employees 18 months ago to 210 today, handling 15,000 parcels a day, with revenue of $6.3 million last year. Late deliveries have risen from 5% to 12% and two major clients have complained. Drivers report that messages from head office arrive too late to act on, and meeting notes are lost between depots.\n\nOption A is to sign a national contract worth $1.4 million a year, pushing the workforce to about 400. Option B is to split Quickhaul into 3 regional divisions of around 70 staff, each with its own operations manager. The founder, Jess Marino, must decide before the contract signing deadline in 6 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two diseconomies of scale.",
+        "model_answer": "Poor communication, such as instructions from head office arriving late or being lost between depots [1]; slow decision-making, as more layers of management delay each approval [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Poor communication as the business grows larger",
+            "Slow decision-making as more management layers are added"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Quickhaul Courier Services of splitting into regional divisions.",
+        "model_answer": "One benefit is better communication [k]. Divisions of around 70 staff would have shorter chains of command, so messages between depots and drivers would arrive on time and fewer parcels would be missed [app]. A second benefit is faster decision-making [k]. Each division's operations manager could approve routes and shifts without waiting for head office, helping to cut the 12% late-delivery rate back toward 5% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Smaller divisions shorten communication channels",
+            "Delegated decisions are made faster at division level"
+          ],
+          "application_max_2": [
+            "Reference to divisions of around 70 staff / lost messages between depots",
+            "Reference to 12% late deliveries vs 5% / operations manager per division"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Quickhaul Courier Services",
+            "70 staff",
+            "12%",
+            "5%",
+            "210",
+            "15,000 parcels"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Quickhaul Courier Services of signing the national contract.",
+        "model_answer": "One benefit is secure revenue [k]. The national contract is worth $1.4 million a year, giving Quickhaul predictable income on top of its current $6.3 million revenue [app]. Guaranteed volume would spread fixed costs, such as vehicles and depots, over more parcels a day, lowering average cost per delivery [an]. A second benefit is stronger market position [k]. With about 400 staff and 15,000-plus parcels a day, Quickhaul could win more online-retail contracts from rival couriers [app], and greater scale could unlock purchasing economies when buying fuel, tyres and packaging [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A large contract secures predictable revenue",
+            "Greater scale spreads fixed costs and unlocks purchasing economies"
+          ],
+          "application_max_2": [
+            "Reference to $1.4 million a year contract / $6.3 million revenue",
+            "Reference to about 400 staff / 15,000 parcels a day"
+          ],
+          "analysis_max_2": [
+            "Chain from guaranteed volume to spread fixed costs to lower average cost per delivery",
+            "Chain from national scale to purchasing economies and stronger negotiating position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.4 million",
+            "national contract",
+            "15,000 parcels a day",
+            "about 400",
+            "Quickhaul Courier Services"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Quickhaul Courier Services should sign the national contract worth $1.4 million a year? Justify your answer.",
+        "model_answer": "On one hand, signing the contract secures $1.4 million of annual revenue [k]. It would push the workforce from 210 to about 400 and lock in a large online retailer, helping Quickhaul spread fixed costs over 15,000-plus parcels a day and benefit from purchasing economies on fuel and vehicle parts [app]. This scale could secure Quickhaul's position as a national courier and lift profit above its current level [an]. On the other hand, growing to about 400 staff risks serious diseconomies of scale [k]. Deliveries are already 12% late, up from 5%, and drivers say head-office messages arrive too late; expanding to near double today's 210 as one organisation would likely worsen communication further [app]. Splitting into 3 regional divisions of around 70 staff, each with its own operations manager, would shorten chains of command and speed up decisions before capacity is stretched [an]. Overall, I think Quickhaul should sign the national contract only after splitting into regional divisions [eval]. The $1.4 million revenue is too valuable to refuse, but the rise from 5% to 12% late shows the current structure is already failing; divisions protect service quality while keeping the contract's scale [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large contracts secure revenue and scale economies (purchasing, fixed cost spreading)",
+            "Diseconomies of scale: poor communication and slow decisions as firms grow"
+          ],
+          "application_max_2": [
+            "Reference to $1.4 million a year contract, workforce 210 to about 400, 15,000 parcels a day",
+            "Reference to deliveries 5% to 12% late, 3 regional divisions of around 70 staff"
+          ],
+          "analysis_max_2": [
+            "Chain from contract volume to fixed costs spread over more parcels to lower average cost and higher profit",
+            "Chain from larger single organisation to worse communication to rising late deliveries"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation combining or choosing between the options",
+            "Weighs both options using stem figures ($1.4 million vs 5% to 12% late deliveries)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Quickhaul Courier Services",
+            "$1.4 million",
+            "210",
+            "about 400",
+            "12%",
+            "5%",
+            "70 staff",
+            "3 regional divisions"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_78",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Driftwood Timber Co is a private limited company in Country X turning pine logs into fence panels. It employs 64 workers and produced 120,000 panels last year, with revenue of $1.92 million and a profit of $210,000. Total production costs were $1.71 million, equal to an average cost of $14.25 per panel. Driftwood's customers are two national builders' merchants who want 30% more panels next year.\n\nOption A is to invest $350,000 in a larger kiln and an automated panel conveyor, lifting output to 200,000 panels a year and cutting waste from 12% of timber to 5%; the bank will lend at 8%. Option B is to keep current methods and repair the existing kiln for $40,000. The owner, Ruth Ellison, worries a bigger works may strain supervision.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'efficiency'.",
+        "model_answer": "Efficiency is producing the maximum possible output from a given amount of inputs, or minimising waste of time, materials and money in the production process [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Efficiency means maximum output from given inputs",
+            "Efficiency means minimising waste of resources"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Driftwood Timber Co could improve its efficiency.",
+        "model_answer": "One way is investing in a larger kiln and conveyor [k]. Automating the movement of panels would lift output from 120,000 to 200,000 panels a year using the same 64 workers [app]. A second way is cutting timber waste [k]. Reducing waste from 12% to 5% of timber would get far more panels from each log, so the same raw materials would produce more saleable output [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automation can raise output from the same inputs",
+            "Reducing waste increases usable output from the same materials"
+          ],
+          "application_max_2": [
+            "Reference to output lifted from 120,000 to 200,000 panels / 64 workers unchanged",
+            "Reference to waste cut from 12% to 5% of timber"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Driftwood Timber Co",
+            "120,000",
+            "200,000 panels",
+            "64 workers",
+            "12%",
+            "5%",
+            "$350,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Driftwood Timber Co might face if it expands to 200,000 panels a year.",
+        "model_answer": "One problem is higher supervisory strain [k]. A works operating at two-thirds more output needs tighter supervision, and without it the quality of fence panels could fall [app]. Defects found by the two national builders' merchants would damage Driftwood's reputation and future orders [an]. A second problem is larger fixed costs [k]. The $350,000 kiln and conveyor add to overheads at a works that currently earns $210,000 profit, and if demand from builders' merchants falls short of target, the extra capacity would be underused [app], leaving high fixed costs spread over fewer panels and raising average cost instead of lowering it [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rapid growth strains supervision and can reduce quality",
+            "Extra capacity raises fixed costs, which must be justified by demand"
+          ],
+          "application_max_2": [
+            "Reference to two national builders' merchants / output rose 120,000 to 200,000 panels",
+            "Reference to $350,000 investment vs $210,000 profit"
+          ],
+          "analysis_max_2": [
+            "Chain from weaker supervision to defects to damaged reputation and lost orders",
+            "Chain from extra capacity to underused fixed costs to rising average cost if demand disappoints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "200,000 panels",
+            "$350,000",
+            "$210,000",
+            "$14.25",
+            "120,000 panels",
+            "builders' merchants"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Driftwood Timber Co should invest $350,000 in the kiln and conveyor? Justify your answer.",
+        "model_answer": "On one hand, the investment lifts efficiency at a bigger scale [k]. Output would rise from 120,000 to 200,000 panels a year and waste would fall from 12% to 5%, so far more usable timber comes from each log and the average cost of $14.25 per panel should fall [app]. Technical economies like this lower average cost as output rises, and the bank would lend at 8% under Option A, so the extra capacity can be financed affordably [an]. On the other hand, expansion carries real risk [k]. Driftwood earned only $210,000 profit on revenue of $1.92 million, so $350,000 is about 1.7 times last year's profit [app]. If the two national builders' merchants do not take the extra 30% of panels, fixed costs would be spread over too few panels, profit would fall and the loan would be hard to repay [an]. Overall, I think Driftwood should invest the $350,000 [eval]. The 12% to 5% waste saving and automated output gain are decisive for a business facing a 30% demand increase, and the 8% bank loan is affordable; Option B only delays an inevitable decision [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Technical economies of scale lower average cost as output rises",
+            "Large investments raise fixed costs and financing risk"
+          ],
+          "application_max_2": [
+            "Reference to 120,000 to 200,000 panels, waste 12% to 5%, average cost $14.25, bank lends at 8%",
+            "Reference to $350,000 vs $210,000 profit, $1.92 million revenue, 30% more panels wanted by two builders' merchants"
+          ],
+          "analysis_max_2": [
+            "Chain from waste reduction and automation to lower average cost to higher profit",
+            "Chain from underused capacity to fixed costs spread over fewer panels to falling profit and loan pressure"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on the $350,000 investment",
+            "Weighs both options using stem figures (waste 12% to 5% vs $350,000 cost and 30% demand rise)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Driftwood Timber Co",
+            "$350,000",
+            "120,000",
+            "200,000 panels",
+            "$14.25",
+            "12%",
+            "5%",
+            "$210,000",
+            "30%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_79",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Saltmarsh Chemicals Ltd is a private limited company in Country X producing industrial cleaning granules. It employs 150 workers and last year output was 220,000 kg, with revenue of $1.9 million, total costs of $1.32 million and a profit of $580,000. The present average cost is $6.00 per kg (total cost $1.32 million divided by 220,000 kg), and managers already report slow decisions between the two halls.\n\nOption A is to spend $2.2 million on a third production hall to lift output to 330,000 kg a year, projecting average cost near $5.10 per kg. Option B is to keep two halls, keep output at 220,000 kg and protect the $580,000 profit. Bank lending for Option A would run for 8 years at 6%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the average cost per kg last year when total costs were $1.32 million and output was 220,000 kg.",
+        "model_answer": "Average cost = total cost / output = $1,320,000 / 220,000 kg = $6.00 per kg [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Average cost = total cost divided by output",
+            "Correct substitution: $1,320,000 / 220,000 = $6.00 per kg"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Saltmarsh Chemicals Ltd of building the third production hall.",
+        "model_answer": "One benefit is lower average cost [k]. Lifting output from 220,000 to 330,000 kg a year would spread fixed costs over 50% more units, projecting average cost near $5.10 per kg instead of $6.00 [app]. A second benefit is greater capacity to accept orders [k]. A third hall would let Saltmarsh take on larger contracts from industrial customers without turning work away to rival suppliers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger scale spreads fixed costs, lowering average cost",
+            "More capacity enables larger orders / new customers"
+          ],
+          "application_max_2": [
+            "Reference to output 220,000 to 330,000 kg / average cost $6.00 to $5.10 per kg",
+            "Reference to third production hall / industrial cleaning granules customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Saltmarsh Chemicals Ltd",
+            "220,000 kg",
+            "330,000 kg",
+            "$5.10",
+            "$6.00",
+            "third production hall"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two diseconomies of scale Saltmarsh Chemicals Ltd might face after building the third production hall.",
+        "model_answer": "One diseconomy is slow decision-making [k]. With three halls, approvals for maintenance, shifts and purchases would pass through more managers, so routine decisions take longer [app]. That could delay urgent repairs and cut availability of the halls below plan [an]. A second diseconomy is poor communication [k]. A workforce expanding beyond 150 workers would need clearer reporting lines [app], and without them mistakes in handling industrial cleaning granules could cause accidents or rejected batches [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Slow decision-making as more management layers are added",
+            "Poor communication as the workforce grows larger"
+          ],
+          "application_max_2": [
+            "Reference to three halls / more managers for decisions",
+            "Reference to 150 workers / handling industrial cleaning granules"
+          ],
+          "analysis_max_2": [
+            "Chain from more approval layers to slower decisions to delayed repairs and lost output",
+            "Chain from unclear reporting lines to mistakes/accidents to rejected batches and higher cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "third production hall",
+            "220,000 kg",
+            "150 workers",
+            "Saltmarsh Chemicals Ltd",
+            "$5.10",
+            "industrial cleaning granules"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saltmarsh Chemicals Ltd should build the third production hall? Justify your answer.",
+        "model_answer": "On one hand, greater scale would cut average cost [k]. Output would rise from 220,000 to 330,000 kg a year, with average cost projected near $5.10 per kg against $6.00 now; on 330,000 kg that is roughly $297,000 saved each year [app]. The 6% bank loan over 8 years is manageable against a $580,000 profit, and the extra capacity strengthens Saltmarsh's position with industrial buyers [an]. On the other hand, the risk is concentrated [k]. Paying $2.2 million for the hall with only $580,000 a year of profit means it pays for itself slowly, and fixed interest of about $132,000 a year at 6% would bite hard if orders stall [app]. Diseconomies such as slow decisions across three halls and weaker communication could also erode the projected $5.10 saving [an]. Overall, I think Saltmarsh should build the third hall [eval]. The $297,000 annual saving is about half of the $580,000 profit, the 6% loan is affordable and Option B locks in $6.00 average cost forever; with clear reporting lines, the risks are controllable [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher scale of production lowers average cost through economies of scale",
+            "Large investments raise fixed financial commitments and financing risk"
+          ],
+          "application_max_2": [
+            "Reference to output 220,000 to 330,000 kg, average cost $6.00 to $5.10, saving about $297,000 a year",
+            "Reference to $2.2 million cost, $580,000 profit, 6% loan over 8 years"
+          ],
+          "analysis_max_2": [
+            "Chain from lower average cost at larger scale to about $297,000 annual saving to stronger profit",
+            "Chain from fixed interest of about $132,000 a year to pressure on profit if orders stall"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on building the third hall",
+            "Weighs both options using stem figures ($297,000 saving vs $2.2 million cost and $580,000 profit)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Saltmarsh Chemicals Ltd",
+            "$2.2 million",
+            "220,000 kg",
+            "330,000 kg",
+            "$5.10",
+            "$6.00",
+            "$580,000",
+            "6%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_80",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Clayborne Tiles Ltd is a private limited company in Country X making ceramic floor tiles. It employs 92 workers and produces 400,000 tiles a year. Fixed costs are $480,000 and the variable cost is $2.60 a tile. Revenue last year was $1.6 million and profit was $80,000. Demand from builders is rising by 20% a year and the order book is full until spring.\n\nOption A is to build a fourth kiln for $1.5 million, lifting output to 550,000 tiles; fixed costs would rise to $640,000 and variable cost would hold at $2.60, giving an average cost of about $3.76 a tile. Option B is to keep three kilns, use overtime, raise output to 460,000 tiles at a variable cost of $2.85, giving an average cost near $3.89. The directors must decide within a month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the total variable cost when output is 400,000 tiles and the variable cost is $2.60 per tile.",
+        "model_answer": "Total variable cost = variable cost per unit x output = $2.60 x 400,000 = $1,040,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total variable cost = variable cost per unit multiplied by output",
+            "Correct calculation: $2.60 x 400,000 = $1,040,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Clayborne Tiles Ltd of building the fourth kiln.",
+        "model_answer": "One benefit is lower average cost [k]. Holding variable cost at $2.60 while fixed costs rise only to $640,000 gives an average cost of about $3.76 a tile, below Option B's $3.89 [app]. A second benefit is extra capacity to fill the order book [k]. Output of 550,000 tiles a year would let Clayborne meet builder demand growing by 20% a year without turning orders away [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher output with stable variable cost lowers average cost",
+            "Extra capacity allows the business to accept more orders"
+          ],
+          "application_max_2": [
+            "Reference to $2.60 variable cost held / fixed costs $640,000 / $3.76 vs $3.89",
+            "Reference to output 550,000 tiles / demand rising 20% a year / order book full until spring"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Clayborne Tiles Ltd",
+            "$2.60",
+            "$640,000",
+            "$3.76",
+            "$3.89",
+            "550,000 tiles",
+            "fourth kiln"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Clayborne Tiles Ltd might face if it keeps three kilns and uses overtime under Option B.",
+        "model_answer": "One problem is the higher variable cost [k]. Overtime raises the variable cost from $2.60 to $2.85 a tile, adding 25 cents on every one of 460,000 tiles, about $115,000 a year of extra cost [app]. That would wipe out the $80,000 profit unless prices rise, which could lose sales to rivals [an]. A second problem is worker fatigue and low morale [k]. Sustained overtime lowers motivation and concentration [app], so defects could rise and deliveries to builders could slip, damaging Clayborne's reputation just as the order book is fullest [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Overtime raises variable cost per unit",
+            "Overtime lowers morale and motivation, risking defects and delays"
+          ],
+          "application_max_2": [
+            "Reference to variable cost $2.60 to $2.85 / 25 cents x 460,000 tiles / about $115,000 a year",
+            "Reference to $80,000 profit / order book full until spring / three kilns"
+          ],
+          "analysis_max_2": [
+            "Chain from higher variable cost to $115,000 extra cost to loss of the $80,000 profit or higher prices",
+            "Chain from overtime fatigue to defects and late deliveries to damaged reputation with builders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.85",
+            "$2.60",
+            "460,000 tiles",
+            "$80,000",
+            "overtime",
+            "Option B"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Clayborne Tiles Ltd should build the fourth kiln? Justify your answer.",
+        "model_answer": "On one hand, the fourth kiln delivers real economies of scale [k]. Output rises from 400,000 to 550,000 tiles, fixed costs climb from $480,000 to $640,000, yet average cost falls to about $3.76 a tile against $3.80 now and $3.89 under overtime [app]. Spreading higher fixed costs over 37.5% more tiles lowers average cost, and $1.5 million buys durable capacity for a business whose orders are full until spring and whose demand is growing 20% a year [an]. On the other hand, $1.5 million is a large commitment for a firm earning $80,000 profit [k]. The fourth kiln probably needs borrowing, and if builder demand slows, output near 550,000 tiles would not materialise, leaving Clayborne with underused fixed costs of $640,000 [app]. Option B costs nothing up front, keeps flexibility and lifts output to 460,000 tiles, though at $2.85 a tile its average cost is worse [an]. Overall, I think Clayborne should build the fourth kiln [eval]. Average cost of $3.76 against $3.89, plus capacity for 20% annual demand growth, outweighs the $1.5 million outlay; the firm should negotiate the loan before committing [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Larger scale spreads fixed costs, lowering average cost (economies of scale)",
+            "Large investments raise financing risk and fixed cost commitments"
+          ],
+          "application_max_2": [
+            "Reference to output 400,000 to 550,000 tiles, fixed costs $480,000 to $640,000, average cost $3.76 vs $3.89, $1.5 million kiln",
+            "Reference to $80,000 profit, demand rising 20% a year, order book full until spring, Option B with overtime at $2.85"
+          ],
+          "analysis_max_2": [
+            "Chain from fixed costs spread over 37.5% more tiles to lower average cost to stronger profit per tile",
+            "Chain from $1.5 million outlay to financing strain to risk if demand slows and capacity lies underused"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation on building the fourth kiln",
+            "Weighs both options using stem figures ($3.76 vs $3.89 average cost; $1.5 million vs $80,000 profit)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Clayborne Tiles Ltd",
+            "$1.5 million",
+            "$480,000",
+            "$640,000",
+            "400,000",
+            "550,000 tiles",
+            "$3.76",
+            "$2.85"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

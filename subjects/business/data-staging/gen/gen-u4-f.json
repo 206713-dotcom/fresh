@@ -1,0 +1,1193 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_91",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Redbank Brickworks Ltd has manufactured clay bricks for housebuilders in Country X for 9 years. It currently operates one kiln on a 3-hectare site 38 km from its clay quarry, and pays $420,000 each year in fuel and road transport for 17,000 tonnes of clay. Sales reached $2.6 million last year across 210 customers, but rising diesel prices are squeezing margins.\n\nThe quarry owner offered the company a 5-hectare plot beside the quarry at a subsidised rent of $30,000 a year, 25% below the current site rent. However, the quarry plot is 60 km from the main motorway, and wages there would be $1,700 a month compared with $2,100 at the current site. The board must decide whether to relocate the kiln beside the quarry or remain at the current site.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'raw materials'.",
+        "model_answer": "Raw materials are the basic inputs a business buys in and uses in the production of its goods or services, for example clay used to make bricks [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raw materials are the basic inputs used in production",
+            "they are transformed into finished goods or services"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Redbank Brickworks might relocate the kiln beside the quarry.",
+        "model_answer": "Reason 1: Locating beside the quarry removes the 38 km haulage of 17,000 tonnes of clay each year, cutting the $420,000 fuel and road transport bill [k], which matters because diesel prices are rising and squeezing margins [app]. Reason 2: The quarry plot costs just $30,000 a year in rent, 25% below the current site, and wages there are $1,700 a month against $2,100 at the current site [k], saving money every month the kiln operates [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "removes or reduces transport costs of raw materials",
+            "lower rent or lower wages near the supplier"
+          ],
+          "application_max_2": [
+            "$420,000 transport per year / 17,000 tonnes of clay / 38 km",
+            "$30,000 rent, 25% below current site / $1,700 vs $2,100 wages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "17,000",
+            "$420,000",
+            "38 km",
+            "$30,000",
+            "$1,700",
+            "$2,100",
+            "clay quarry"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Redbank Brickworks could face if it relocates beside the quarry.",
+        "model_answer": "Problem 1: The quarry plot is 60 km from the main motorway [k], so delivering finished bricks to 210 customers may take longer and cost more in fuel than today [app], eating into the $30,000 rent saving and squeezing the already-thin margins [an]. Problem 2: Moving an operating kiln means a costly shutdown and rebuild [k], during which Redbank could fail to deliver bricks to its 210 customers for weeks [app], risking lost orders and damage to customer relationships built over 9 years [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "longer delivery distances to customers from the remote site",
+            "shutdown and relocation costs / disruption to production"
+          ],
+          "application_max_2": [
+            "60 km from the main motorway / 210 customers",
+            "kiln move / 9 years of customer relationships"
+          ],
+          "analysis_max_2": [
+            "higher transport costs erode the $30,000 rent saving and margins",
+            "missed deliveries risk lost orders and reputational damage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "60 km",
+            "210 customers",
+            "$30,000",
+            "9 years",
+            "clay quarry",
+            "$420,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redbank Brickworks should relocate the kiln beside the quarry? Justify your answer.",
+        "model_answer": "Relocating beside the quarry would eliminate 38 km of clay haulage per trip and cut the $420,000 annual transport bill on 17,000 tonnes of clay [k], while the subsidised $30,000 rent and $1,700 monthly wages add further savings [app]. However, staying put keeps the kiln close to the motorway and to the 210 customers, protecting delivery times [k], and it avoids the 60 km stretch to the motorway absorbing the $30,000 rent saving [app]. Relocation could strengthen competitiveness as diesel prices rise [an], but a kiln rebuild would halt production in the short term [an]. On balance, Redbank should relocate, because the $420,000 yearly transport saving outweighs the one-off move costs and the motorway distance [eval]; it should plan the move in stages to guarantee customer deliveries throughout [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation removes transport and lowers rent and wages",
+            "staying preserves customer proximity and avoids disruption"
+          ],
+          "application_max_2": [
+            "$420,000 transport, 17,000 tonnes of clay, 38 km / $30,000 rent, $1,700 wages",
+            "210 customers, 60 km from the motorway"
+          ],
+          "analysis_max_2": [
+            "savings improve competitiveness as diesel prices rise",
+            "rebuild halts production and threatens customer deliveries"
+          ],
+          "evaluation_max_2": [
+            "weighs $420,000 yearly transport saving against one-off move costs and motorway risk",
+            "justified recommendation with a staged move to protect deliveries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$420,000",
+            "17,000",
+            "38 km",
+            "$30,000",
+            "$1,700",
+            "210 customers",
+            "60 km",
+            "9 years"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_92",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Harbor & Finch Accountants is a partnership of 14 accountants serving 260 small business clients in Country X. It is deciding between renewing the lease on its city-centre office at $95,000 a year and moving to a business park on the edge of town at $58,000 a year. Walk-in enquiries generated 60 new clients last year, and the city-centre office is a 5-minute walk from the main bank branch and clients’ lawyers.\n\nThe business park offers free parking, faster internet and 40% lower rent, but is 12 km from the financial district. Staff travel would rise by 25 minutes each way, and the partners must choose where to base the firm from next April. The decision will affect walk-in trade, staff morale and overheads for years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'accessibility'.",
+        "model_answer": "Accessibility is how easily customers, employees and suppliers can reach a business's premises, including road access, parking and public transport links [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "how easily a location can be reached by customers/staff/suppliers",
+            "includes road access, parking and transport links"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Harbor & Finch might move to the business park.",
+        "model_answer": "Reason 1: Moving would cut rent from $95,000 to $58,000 a year, a saving of $37,000 at 40% lower rent [k], freeing cash to invest in faster internet and better client software [app]. Reason 2: The business park offers free parking and faster internet [k], which suits 260 small business clients who drive to appointments instead of using the congested city centre [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower rent reduces fixed costs",
+            "free parking / faster internet improves client and staff access"
+          ],
+          "application_max_2": [
+            "$95,000 to $58,000 saving / 40% lower rent",
+            "free parking and faster internet / 260 small business clients"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$58,000",
+            "40% lower rent",
+            "free parking",
+            "260 small business clients",
+            "business park"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Harbor & Finch could face if it moves to the business park.",
+        "model_answer": "Problem 1: The city-centre office generated 60 walk-in clients last year [k]; moving 12 km away to the edge of town could lose much of this spontaneous trade [app], reducing revenue from new client acquisition in the first year after the move [an]. Problem 2: Staff face 25 minutes extra travel each way [k], which may lower morale and make recruiting qualified accountants harder [app], threatening the service quality that 260 small business clients expect from 14 partners [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loss of walk-in/passing trade away from the city centre",
+            "longer commute reduces morale and recruitment appeal"
+          ],
+          "application_max_2": [
+            "60 walk-in clients / 12 km to the edge of town",
+            "25 minutes extra travel each way / 260 small business clients / 14 partners"
+          ],
+          "analysis_max_2": [
+            "lost walk-in trade cuts new client revenue",
+            "longer journeys weaken recruitment and client service quality"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "60",
+            "12 km",
+            "25 minutes",
+            "260 small business clients",
+            "edge of town",
+            "$95,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Harbor & Finch should move to the business park? Justify your answer.",
+        "model_answer": "Moving saves $37,000 a year, 40% off the $95,000 rent, and brings free parking and faster internet for the 260 small business clients who visit in person [k], improving cash flow and productivity after the move [app]. However, it risks losing the 60 walk-in clients generated last year, a key source of new business from the city centre [k], and staff face 25 minutes of extra travel each way, which may hurt morale and recruitment [app]. Keeping the city-centre office preserves walk-in trade and easy access to the banks and lawyers that 260 small business clients use [an], while the move could lift margins if even half the walk-in work were replaced [an]. On balance, the partnership should move to the business park, because the $37,000 annual saving outweighs the walk-in risk if local marketing replaces it [eval]; it should keep a small city-centre meeting room for client visits [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "move cuts fixed costs and adds parking and faster internet",
+            "staying preserves walk-in trade and central access"
+          ],
+          "application_max_2": [
+            "$95,000 rent / 40% lower / free parking and faster internet / 260 small business clients",
+            "60 walk-in clients last year / 25 minutes extra travel"
+          ],
+          "analysis_max_2": [
+            "city centre preserves walk-in trade and bank/lawyer access",
+            "move lifts margins if walk-in work is replaced"
+          ],
+          "evaluation_max_2": [
+            "weighs $37,000 yearly saving against 60 lost walk-in clients",
+            "justified recommendation to move, with conditions to replace walk-in trade"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$58,000",
+            "40% lower rent",
+            "60",
+            "260 small business clients",
+            "25 minutes",
+            "free parking",
+            "business park"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_93",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Lumen & Co Fashion runs 6 stores in Country X and is choosing the site for a new flagship. Retail rents in the capital rose 6% last year. Site A is on the busy high street with footfall of 9,500 people a day, but rent is $14,000 a month and just 45 parking spaces are nearby. Site B is an out-of-town retail park unit with rent of $8,500 a month, 320 free parking spaces and a cinema next door, but footfall is only 2,200 a day.\n\nBoth options would need $180,000 of fit-out costs. Site A sits two doors from a direct competitor, while Site B has none nearby. The board must decide where to open the new flagship in March, balancing footfall, rent, parking and competition carefully.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'footfall'.",
+        "model_answer": "Footfall is the number of people passing through or visiting a retail location during a given period, indicating the potential customer traffic for a shop [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "number of people passing through/visiting a location",
+            "indicates potential customer traffic for a shop"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Site A might suit the new flagship.",
+        "model_answer": "Reason 1: Site A offers footfall of 9,500 people a day against just 2,200 at Site B [k], giving the flagship far more natural exposure to fashion shoppers at no extra marketing cost [app]. Reason 2: Site A sits two doors from a direct competitor [k], so opening there lets Lumen defend its share of high street shoppers in the capital and respond to rival promotions [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high footfall brings more potential customers",
+            "proximity to competitor supports defensive positioning"
+          ],
+          "application_max_2": [
+            "9,500 people a day vs 2,200 at Site B",
+            "two doors from a direct competitor / high street / capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9,500",
+            "2,200",
+            "Site A",
+            "two doors",
+            "direct competitor",
+            "high street",
+            "6 stores"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of opening at Site A.",
+        "model_answer": "Drawback 1: Site A's rent of $14,000 a month exceeds Site B's $8,500 by $5,500 [k], adding $66,000 a year of extra fixed costs before the first garment is sold [app], which raises the sales the flagship needs to break even on its $180,000 fit-out [an]. Drawback 2: With only 45 parking spaces nearby, car-borne shoppers may choose Site B's 320 free spaces instead [k], diverting customers to the retail park with the cinema next door [app], weakening the flagship's early sales in March [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher rent raises fixed costs and break-even point",
+            "limited parking deters car-borne customers"
+          ],
+          "application_max_2": [
+            "$14,000 vs $8,500, i.e. $5,500 more per month / $66,000 a year",
+            "45 parking spaces vs 320 at Site B / cinema next door / $180,000 fit-out"
+          ],
+          "analysis_max_2": [
+            "higher break-even sales needed to cover the fit-out",
+            "lost car-borne customers weaken early sales in March"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14,000",
+            "$8,500",
+            "45 parking spaces",
+            "320 free parking spaces",
+            "$180,000",
+            "9,500",
+            "March"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Lumen & Co Fashion should open the flagship at Site A? Justify your answer.",
+        "model_answer": "Site A delivers footfall of 9,500 people a day, more than four times Site B's 2,200 [k], which should drive far stronger walk-in sales for a fashion flagship investing $180,000 in fit-out [app]. However, Site A costs $14,000 a month in rent, $66,000 a year more than Site B's $8,500, and only 45 parking spaces may frustrate car-borne shoppers [k], who could defect to Site B's 320 free spaces and cinema destination [app]. Site A's two-door proximity to a direct competitor risks constant price comparison and discounting [an], while Site B offers lower overheads and exclusive trade nearby but far fewer passing shoppers [an]. On balance, Lumen should open at Site A, because footfall is the strongest driver of fashion retail revenue and outweighs the rent gap if the fit-out attracts attention [eval]; it should negotiate a rent reduction and arrange evening parking for shoppers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "footfall advantage of Site A",
+            "rent and parking disadvantages of Site A"
+          ],
+          "application_max_2": [
+            "9,500 vs 2,200 footfall / $180,000 fit-out",
+            "$14,000 vs $8,500 rent / 45 vs 320 parking spaces / two doors from a direct competitor / cinema next door"
+          ],
+          "analysis_max_2": [
+            "competitor proximity forces price comparison and discounting",
+            "Site B offers lower overheads but far less passing trade"
+          ],
+          "evaluation_max_2": [
+            "weighs 9,500 daily footfall against $66,000 extra yearly rent and 45 parking spaces",
+            "justified recommendation for Site A conditional on rent negotiation and parking solutions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9,500",
+            "2,200",
+            "$14,000",
+            "$8,500",
+            "45 parking spaces",
+            "320 free parking spaces",
+            "$180,000",
+            "two doors"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_94",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Goldengrain Bakery Ltd operates a large bakery in a residential area of Country X, employing 85 workers and producing 11,000 loaves a day for 140 local shops. Night shifts run from 10 p.m. to 6 a.m. Neighbours complained about overnight noise from the ovens and delivery lorries. The local council has warned it will enforce noise limits of 45 decibels at the site boundary after 9 p.m. unless the company invests in acoustic insulation costing $120,000 or relocates.\n\nThe current site has good road access and cheap power at $0.09 per kWh. The alternative site on the industrial estate costs $35,000 a year more in rent but already meets the noise rules. The board must decide between upgrading the current site and moving to the estate.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'planning permission'.",
+        "model_answer": "Planning permission is the formal approval granted by a local authority for a building or change of use, confirming the development complies with rules such as planning, noise and environmental controls [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "formal approval from a local authority for building/change of use",
+            "confirms compliance with planning and noise controls"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Goldengrain Bakery might choose acoustic insulation over relocation.",
+        "model_answer": "Reason 1: Acoustic insulation costs $120,000 once, far less than buying and fitting out a new bakery [k], and it keeps the current site's cheap power at $0.09 per kWh and its established position near 140 local shops [app]. Reason 2: Upgrading avoids any shutdown of the 11,000 loaves a day output [k], so customer deliveries to 140 local shops continue uninterrupted overnight [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one-off upgrade costs less than relocation",
+            "avoids shutdown and preserves current site advantages"
+          ],
+          "application_max_2": [
+            "$120,000 acoustic insulation / $0.09 per kWh power",
+            "11,000 loaves a day / 140 local shops / overnight delivery"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "$0.09",
+            "140 local shops",
+            "11,000",
+            "acoustic insulation",
+            "industrial estate"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Goldengrain Bakery could face if it relocates to the industrial estate.",
+        "model_answer": "Problem 1: The estate site costs $35,000 a year more in rent [k], which squeezes the margin on every one of the 11,000 loaves produced daily [app], reducing cash available to replace ovens and maintain quality standards [an]. Problem 2: Relocating 85 workers and the delivery fleet would interrupt nightly production [k], so orders may be missed for weeks while the new site is commissioned [app], risking lost contracts with the 140 local shops [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher rent adds to annual fixed costs",
+            "relocation disrupts production and distribution"
+          ],
+          "application_max_2": [
+            "$35,000 a year more in rent / 11,000 loaves a day",
+            "85 workers / 140 local shops / nightly production"
+          ],
+          "analysis_max_2": [
+            "lower margins reduce cash for reinvestment",
+            "missed deliveries risk losing contracts with the 140 local shops"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$35,000",
+            "11,000",
+            "85 workers",
+            "140 local shops",
+            "9 p.m.",
+            "industrial estate"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Goldengrain Bakery should install acoustic insulation rather than relocate? Justify your answer.",
+        "model_answer": "Acoustic insulation at $120,000 is a one-off cost that keeps 11,000 loaves a day flowing overnight [k], protecting the $0.09 per kWh power advantage and the location near 140 local shops [app]. However, the council's 45 decibels limit may tighten further, and insulation may not solve noise from 10 p.m. delivery lorries [k], exposing the bakery to enforcement action if limits are breached [app]. Relocating to the industrial estate guarantees legal compliance and removes neighbour complaints permanently [an], but costs $35,000 a year extra for years and risks lost customers during the move [an]. On balance, Goldengrain should install the insulation first, since $120,000 once breaks even against $35,000 of extra annual rent in about 3.4 years [eval]; moving remains sensible only if noise still exceeds 45 decibels after the upgrade [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "insulation is a one-off cost preserving the site",
+            "moving guarantees compliance but adds rent and disruption"
+          ],
+          "application_max_2": [
+            "$120,000 insulation / $0.09 per kWh / 140 local shops / 11,000 loaves",
+            "45 decibels limit / 10 p.m. delivery lorries / $35,000 extra rent"
+          ],
+          "analysis_max_2": [
+            "moving guarantees compliance but adds $35,000 yearly and disruption",
+            "enforcement risk remains if noise persists after insulation"
+          ],
+          "evaluation_max_2": [
+            "weighs $120,000 one-off vs $35,000 a year (break-even ~3.4 years)",
+            "justified recommendation to insulate first, relocate only if limits still breached"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "45 decibels",
+            "11,000",
+            "$0.09",
+            "$35,000",
+            "140 local shops",
+            "10 p.m.",
+            "industrial estate"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_95",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "VoltEdge Assembly Ltd is a private limited company in Country X assembling 140,000 phone chargers a year for domestic retailers, employing 230 workers with average wages of $520 a month. A competitor relocated to Country Z last year and cut labour costs by 55%, undercutting VoltEdge on price and winning 12 new retail contracts. VoltEdge supplies chargers within 48 hours of order.\n\nVoltEdge is now considering moving production to Country Z, where wages average $230 a month, but the new legal environment requires extra safety inspections costing $90,000 a year, and import tariffs of 8% would apply to chargers brought back into Country X. Shelf space with the retailers would take 6 months to win back. The chief executive must recommend staying put or relocating.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'wage costs'.",
+        "model_answer": "Wage costs are the total payments a business makes to its workforce in return for their labour, including hourly wages, salaries, overtime and bonuses [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "total payments made to the workforce",
+            "includes wages, salaries and overtime"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why VoltEdge might relocate production to Country Z.",
+        "model_answer": "Reason 1: Wages average $230 a month in Country Z compared with $520 in Country X [k], cutting the monthly wage bill across 230 workers by about $66,700 [app]. Reason 2: The competitor that moved cut labour costs by 55% [k], so relocating would help VoltEdge match rival prices and win back the 12 retail contracts lost to the competition [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower wage costs reduce expenses",
+            "competitor relocation creates pressure to match prices"
+          ],
+          "application_max_2": [
+            "$230 vs $520 wages / 230 workers / about $66,700 a month",
+            "competitor cut labour costs by 55% / 12 retail contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$230",
+            "$520",
+            "230 workers",
+            "55%",
+            "Country Z",
+            "12 new retail contracts",
+            "140,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems VoltEdge could face if it relocates to Country Z.",
+        "model_answer": "Problem 1: Chargers brought back into Country X would face 8% import tariffs [k], which would raise the landed cost of the 140,000 chargers sold to domestic retailers [app], potentially erasing much of the monthly wage saving of about $66,700 [an]. Problem 2: The new legal environment demands safety inspections costing $90,000 a year [k], adding compliance work and management time beyond the current Country X regime [app], which could delay production ramp-up and weaken VoltEdge's 48-hour delivery promise in the first year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "import tariffs raise landed cost of goods",
+            "new legal environment adds inspection and compliance costs"
+          ],
+          "application_max_2": [
+            "8% import tariffs / 140,000 chargers a year",
+            "$90,000 a year inspections / 48-hour delivery promise"
+          ],
+          "analysis_max_2": [
+            "tariffs could wipe out the wage saving on domestic sales",
+            "compliance delays weaken service and ramp-up"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8%",
+            "140,000",
+            "$90,000",
+            "Country Z",
+            "48 hours",
+            "legal environment",
+            "230 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think VoltEdge should relocate production to Country Z? Justify your answer.",
+        "model_answer": "Relocating would cut wages from $520 to $230 a month, saving about $66,700 every month across 230 workers [k], and would help VoltEdge match the competitor that cut labour costs by 55% to win back 12 new retail contracts [app]. However, 8% import tariffs would apply to chargers brought back into Country X [k], adding duty on the 140,000 units sold to domestic retailers each year [app]. The wage saving of roughly $800,400 a year dwarfs the $90,000 inspection cost, but tariffs could still squeeze margins if buyers resist higher prices [an], while relocating risks disrupting the 48-hour delivery that won VoltEdge its contracts [an]. On balance, VoltEdge should relocate gradually, moving half of production first to test tariff and compliance costs [eval]; if Country X sales hold up, it can shift fully and capture the savings [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "wage saving is the main benefit of relocating",
+            "tariffs and inspections are the main costs of relocating"
+          ],
+          "application_max_2": [
+            "$230 vs $520, about $66,700 a month / 230 workers / 55% cut by competitor / 12 new retail contracts",
+            "8% tariffs / 140,000 chargers / $90,000 inspections / 48-hour delivery"
+          ],
+          "analysis_max_2": [
+            "$800,400 yearly wage saving dwarfs $90,000 inspection cost",
+            "tariffs may squeeze margins and disrupt 48-hour deliveries"
+          ],
+          "evaluation_max_2": [
+            "weighs $66,700 monthly saving and 55% competitor advantage against 8% tariffs and $90,000 inspections",
+            "justified recommendation to relocate gradually with a half-first trial"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$520",
+            "$230",
+            "55%",
+            "8%",
+            "140,000",
+            "$90,000",
+            "Country Z",
+            "48 hours"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_96",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Crumb & Co Bakehouse supplies 180 supermarket stores in Country X, selling around 24 million rolls a year. Ahead of the December peak, the company must decide whether to build up an inventory of 400,000 extra frozen rolls in October, costing $0.06 per roll per month to store, or rely on just-in-time deliveries from daily production, which risks empty shelves if demand spikes. Last year, empty shelves cost an estimated $95,000 of lost sales.\n\nStorage at its chilled warehouse costs $6,800 a month and capacity is limited to 500,000 rolls. The bakery currently runs 2 production lines and could increase output by 30% in November. The owner wants to avoid both stockouts during the peak and excess storage costs, and must set the festive plan soon.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'inventory'.",
+        "model_answer": "Inventory is the stock of goods and materials a business holds to support production or sale, including raw materials, work in progress and finished goods [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stock of goods and materials held by a business",
+            "includes raw materials, work in progress and finished goods"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Crumb & Co might build a festive inventory of 400,000 rolls.",
+        "model_answer": "Reason 1: Building an inventory of 400,000 extra rolls meets the sudden surge in December demand across 180 supermarket stores [k], avoiding stockouts that cost an estimated $95,000 of lost sales last year [app]. Reason 2: Holding finished rolls in chilled storage smooths production across the 2 lines [k], letting the bakery run steadily instead of chasing just-in-time orders daily at peak time [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventories meet sudden or seasonal demand spikes",
+            "finished goods stock smooths production and avoids stoppages"
+          ],
+          "application_max_2": [
+            "400,000 extra rolls / 180 supermarket stores / $95,000 lost sales",
+            "2 production lines / December peak / just-in-time deliveries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "400,000",
+            "180 supermarket stores",
+            "$95,000",
+            "2 production lines",
+            "just-in-time",
+            "24 million rolls",
+            "500,000 rolls"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs of holding the extra festive inventory.",
+        "model_answer": "Problem 1: Chilled storage costs $6,800 a month, and holding 400,000 rolls adds $0.06 per roll per month, about $24,000 a month [k], so the pre-Christmas build could add more than $30,000 of storage costs before January [app], cutting the margin on festive sales [an]. Problem 2: Storage capacity is limited to 500,000 rolls and unsold rolls tie up cash [k], so if December demand disappoints, rolls may be left in chilled storage needing to be sold later at a discount [app], reducing cash available for flour and January wages [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "storage and handling costs of holding inventories",
+            "cash tied up / risk of unsold stock needing discounting"
+          ],
+          "application_max_2": [
+            "$6,800 a month / $0.06 per roll per month / about $24,000 a month",
+            "capacity 500,000 rolls / 400,000 extra rolls"
+          ],
+          "analysis_max_2": [
+            "storage costs above $30,000 erode festive margins",
+            "unsold rolls tie up cash needed for January expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.06",
+            "$6,800",
+            "400,000",
+            "500,000 rolls",
+            "$95,000",
+            "180 supermarket stores"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Crumb & Co should build the festive inventory rather than rely on just-in-time deliveries? Justify your answer.",
+        "model_answer": "Building the 400,000-roll inventory protects the 180 stores from December stockouts [k], and last year empty shelves cost $95,000 of lost sales, far above the roughly $30,000 storage cost for the period [app]. However, relying on just-in-time production of around 24 million rolls a year would keep storage costs near zero and make the bakery leaner [k], leaving only the chilled warehouse's $6,800 a month within its 500,000-roll capacity [app]. A partial build covering the peak, combined with 30% higher output from the 2 lines in November, meets surge demand and limits excess stock [an], but if stores over-order, chilled capacity is wasted and cash is tied up in unsold rolls [an]. On balance, Crumb & Co should build the festive inventory, because the $95,000 loss risk outweighs about $30,000 of storage and capacity can absorb the surge [eval]; it should scale the order to each store's December forecast [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventory guards against stockouts during demand spikes",
+            "just-in-time keeps inventory costs minimal"
+          ],
+          "application_max_2": [
+            "400,000-roll inventory / $95,000 lost sales / 180 stores",
+            "just-in-time / 24 million rolls a year / $6,800 a month / 500,000-roll capacity"
+          ],
+          "analysis_max_2": [
+            "partial build with 30% extra November output meets the surge efficiently",
+            "over-ordering wastes chilled capacity and ties up cash"
+          ],
+          "evaluation_max_2": [
+            "weighs $95,000 stockout risk against about $30,000 storage cost and 500,000-roll capacity",
+            "justified recommendation to build stock scaled to store-level forecasts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "400,000",
+            "$95,000",
+            "$6,800",
+            "500,000 rolls",
+            "180 supermarket stores",
+            "24 million rolls",
+            "just-in-time",
+            "$0.06"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_97",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Stonebridge Builders Merchants holds inventories of cement, blocks and timber for 320 trade customers in Country X. Its supplier offered an 8% discount on orders above 900 tonnes of cement, but the company currently stores only 260 tonnes in a warehouse rented at $2,400 a month. Extra security and insurance for the larger stock would cost $1,150 a month. The merchant also holds $210,000 of goods insured under one policy.\n\nCement older than 90 days hardens and must be written off, and the business turns over around 300 tonnes each month. Cash tied up in the bigger inventory would be $74,000, delaying a planned forklift replacement budgeted at $28,000. The owner must decide whether to accept the supplier’s discount or keep smaller, more frequent orders.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'obsolescence'.",
+        "model_answer": "Obsolescence is the process by which items lose usefulness or value because they become outdated or spoiled, for example cement hardening if stored too long [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "items lose usefulness/value over time",
+            "caused by becoming outdated or spoiled"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Stonebridge might accept the 8% bulk-buy discount.",
+        "model_answer": "Reason 1: An 8% discount on 900 tonnes lowers the price of the merchant's key input for its 320 trade customers [k], improving margins or allowing it to pass savings on as sharper trade prices [app]. Reason 2: Buying in bulk reduces the frequency of deliveries and admin per tonne [k], freeing staff to serve trade counter customers during busy mornings [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bulk-buying lowers average purchase cost",
+            "fewer, larger deliveries reduce admin and handling"
+          ],
+          "application_max_2": [
+            "8% discount on 900 tonnes / 320 trade customers",
+            "260 tonnes currently stored / cement trade"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8%",
+            "900 tonnes",
+            "320 trade customers",
+            "260 tonnes",
+            "cement",
+            "$2,400"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs of holding 900 tonnes of cement at Stonebridge.",
+        "model_answer": "Problem 1: Extra security and insurance cost $1,150 a month on top of $2,400 a month of warehouse rent [k], so carrying the larger stock adds $3,550 a month of holding costs [app], which erodes the 8% discount if cement turns over slowly [an]. Problem 2: Cement older than 90 days hardens and must be written off [k], so stock bought in bulk could spoil before the merchant sells through its usual 300 tonnes a month [app], turning part of the $74,000 cash investment into waste [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "storage, security and insurance costs rise with stock size",
+            "perishable inventories can spoil and be written off"
+          ],
+          "application_max_2": [
+            "$1,150 extra security and insurance / $2,400 rent / $3,550 total",
+            "cement older than 90 days / 300 tonnes each month / $74,000 cash tied up"
+          ],
+          "analysis_max_2": [
+            "holding costs erode the 8% discount if turnover slows",
+            "spoiled cement wastes the $74,000 investment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,150",
+            "$2,400",
+            "900 tonnes",
+            "90 days",
+            "300 tonnes",
+            "$74,000",
+            "8%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Stonebridge should accept the 8% bulk-buy discount? Justify your answer.",
+        "model_answer": "Accepting the discount on 900 tonnes could cut the cost of cement for 320 trade customers and lift margins [k], and with turnover of around 300 tonnes each month, the store could clear 90 days' worth of stock if sales hold up [app]. However, extra security and insurance of $1,150 a month plus $2,400 rent make $3,550 a month of carrying costs [k], and cement older than 90 days hardens and must be written off [app]. The discount only pays if sales stay near 300 tonnes a month and stock moves within 90 days [an], but a slow quarter would leave Stonebridge paying $3,550 monthly for unsellable cement, while $74,000 of cash tied up would delay the $28,000 forklift replacement [an]. On balance, Stonebridge should accept the discount only with phased deliveries [eval]; if the supplier cannot split the order, it should keep smaller orders rather than risk spoilage [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bulk discount improves margin if turnover is steady",
+            "holding costs and spoilage risk can wipe out the saving"
+          ],
+          "application_max_2": [
+            "8% discount on 900 tonnes / 320 trade customers / 300 tonnes a month / 90 days",
+            "$1,150 security and insurance + $2,400 rent = $3,550 a month / $74,000 cash tied up / $28,000 forklift"
+          ],
+          "analysis_max_2": [
+            "discount viable only if sales hold near 300 tonnes a month and stock moves within 90 days",
+            "slow quarter leaves unsellable cement and $3,550 monthly costs"
+          ],
+          "evaluation_max_2": [
+            "weighs 8% discount and margin gain against $3,550 monthly carrying costs and 90-day spoilage risk",
+            "justified recommendation for phased deliveries or smaller orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8%",
+            "900 tonnes",
+            "300 tonnes",
+            "90 days",
+            "$74,000",
+            "$28,000",
+            "$1,150",
+            "320 trade customers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_98",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Delta Foods Cannery exports canned tomatoes from Country X to 5 countries inside the Arca trade bloc, paying tariffs of 12% on each shipment. Sales reached $3.4 million last year, but growth has stalled as overseas buyers seek cheaper suppliers. Last year tariffs cost the business $408,000, and tomato purchases alone cost $1.3 million. The board is considering building a $2.1 million canning plant inside the bloc, which would eliminate tariffs and cut delivery times from 21 days to 4 days.\n\nThe alternative is expanding the existing Country X factory for $700,000 and continuing to pay tariffs on every shipment. Wages inside the bloc are 30% higher than in Country X. The directors must decide which plan to fund at next month’s board meeting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'trade bloc'.",
+        "model_answer": "A trade bloc is a group of countries that agree to reduce or remove tariffs and trade barriers between member countries to encourage trade between them [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "group of countries with reduced or removed trade barriers",
+            "created to encourage trade between members"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Delta Foods might build the plant inside the trade bloc.",
+        "model_answer": "Reason 1: Building inside the bloc eliminates the 12% tariff on each of its 5 bloc-country markets [k], saving the $408,000 a year paid in duties last year [app]. Reason 2: Delivery times would fall from 21 days to 4 days [k], giving overseas buyers fresher canned tomatoes and more reliable supply than Country X competitors can offer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "eliminates tariffs on exports to member countries",
+            "shorter delivery times improve reliability and freshness"
+          ],
+          "application_max_2": [
+            "12% tariff / $408,000 last year / 5 countries",
+            "21 days to 4 days delivery / bloc-country markets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12%",
+            "$408,000",
+            "21 days to 4 days",
+            "trade bloc",
+            "$3.4 million",
+            "5 countries"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of the bloc plant compared with the domestic expansion.",
+        "model_answer": "Problem 1: The $2.1 million bloc plant costs $1.4 million more than the $700,000 domestic expansion [k], tying up far more capital before the first tariff-free can is exported [app], which raises financial risk if bloc growth does not resume [an]. Problem 2: Wages inside the bloc run 30% higher than in Country X [k], permanently raising the cost of every can produced for the 5 bloc markets [app], which erodes the $408,000 of tariff savings if buyers resist higher prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "much higher capital cost vs domestic expansion",
+            "higher wage costs inside the bloc"
+          ],
+          "application_max_2": [
+            "$2.1 million vs $700,000, i.e. $1.4 million more",
+            "30% higher wages / 5 bloc markets / $408,000 tariff saving"
+          ],
+          "analysis_max_2": [
+            "extra capital raises financial risk if growth stays stalled",
+            "higher wages erode the $408,000 tariff saving"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.1 million",
+            "$700,000",
+            "30% higher",
+            "$408,000",
+            "5 countries",
+            "Country X"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Delta Foods should build the plant inside the trade bloc? Justify your answer.",
+        "model_answer": "The bloc plant would remove the 12% tariffs that cost $408,000 last year and cut delivery from 21 days to 4 days across the 5 bloc markets [k], helping the stalled $3.4 million export business grow again [app]. However, it costs $2.1 million against $700,000 for domestic expansion, a difference of $1.4 million before the first can is exported [k], and 30% higher wages inside the bloc permanently raise running costs [app]. If Delta can pass on savings, the plant could pay back within several years [an], but if growth stays stalled, the larger debt and wage bill could outweigh the saving [an]. On balance, Delta should build the bloc plant, provided projected bloc sales rise above $3.4 million within two years [eval]; if orders do not materialise, the cheaper domestic expansion is the safer choice [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bloc plant removes tariffs and speeds delivery",
+            "domestic expansion costs far less capital"
+          ],
+          "application_max_2": [
+            "12% tariffs / $408,000 last year / 21 days to 4 days / 5 bloc markets",
+            "$2.1 million vs $700,000 / 30% higher wages / $3.4 million sales"
+          ],
+          "analysis_max_2": [
+            "payback possible if savings are passed on and sales recover",
+            "stalled growth leaves larger debt and wage bill unaffordable"
+          ],
+          "evaluation_max_2": [
+            "weighs $408,000 tariff saving and faster delivery against $1.4 million extra capital and 30% higher wages",
+            "justified recommendation conditional on sales exceeding $3.4 million within two years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12%",
+            "$408,000",
+            "$2.1 million",
+            "$700,000",
+            "30% higher",
+            "$3.4 million",
+            "21 days to 4 days",
+            "5 countries"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_99",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Polar Toy Co sells educational toys in 9 stores across Country X. Last year’s festive sales reached $520,000, and it ran out of its 3 best-selling puzzles and action figures in week 1 last December, losing an estimated $86,000 of sales, while other lines remained unsold in January and needed 20% price cuts to clear after the season had ended.\n\nStore managers want to triple the pre-Christmas inventory order to $240,000, storing surplus stock in 2 distribution hubs at $3,100 per month each, already rented for the 3-month season. The finance director worries that cash would be tied up until January. The board meets this month to set the festive inventory order and decide how much to store in advance.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline two reasons why businesses hold inventories.",
+        "model_answer": "Businesses hold inventories to avoid production or sales stopping when supplies are delayed [1], and to meet sudden or seasonal increases in customer demand [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoids interruption to production or sales if supplies are delayed",
+            "meets sudden or seasonal increases in demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Polar Toy Co might triple its festive inventory order to $240,000.",
+        "model_answer": "Reason 1: It ran out of its 3 best-selling puzzles and action figures in week 1 last December [k], so a $240,000 order should keep the 9 stores stocked through the peak [app]. Reason 2: Lost sales were estimated at $86,000 last year [k], so extra inventory should recover far more than the $3,100 per month storage cost of the 2 distribution hubs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventory prevents stockouts during peak demand",
+            "avoids losing sales from running out of best-sellers"
+          ],
+          "application_max_2": [
+            "3 best-selling puzzles and action figures / week 1 / $86,000 lost sales",
+            "$240,000 order / 9 stores / $3,100 per month hubs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$240,000",
+            "9 stores",
+            "$86,000",
+            "$3,100",
+            "week 1",
+            "3 best-selling",
+            "$520,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with tripling the festive inventory order.",
+        "model_answer": "Problem 1: Cash would be tied up in $240,000 of stock until January [k], leaving less money for January costs while each of the 2 distribution hubs adds $3,100 per month [app], raising the risk of a short-term cash shortfall [an]. Problem 2: Unsold toys may need 20% price cuts to clear [k], and lines that did not sell last year sat in storage after the season ended [app], cutting the margin on the whole festive range [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cash tied up in unsold inventory / storage costs add up",
+            "unsold stock may need discounting to clear"
+          ],
+          "application_max_2": [
+            "$240,000 tied up until January / 2 distribution hubs at $3,100 per month each",
+            "20% price cuts / last year's unsold lines / $520,000 festive sales"
+          ],
+          "analysis_max_2": [
+            "cash shortfall risk in January",
+            "discounting erodes margins on the festive range"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$240,000",
+            "$3,100",
+            "20%",
+            "January",
+            "2 distribution hubs",
+            "$86,000",
+            "9 stores"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Polar Toy Co should triple the festive inventory order? Justify your answer.",
+        "model_answer": "Tripling the order to $240,000 would protect the week-1 peak that cost an estimated $86,000 of lost sales [k] and keep the 9 stores stocked in their 3 best-selling puzzles and action figures, supporting festive sales above last year's $520,000 [app]. However, tying up $240,000 until January strains cash flow just when the 2 distribution hubs add $3,100 per month each [k], and unsold lines would need 20% price cuts to clear [app]. If demand matches last year, the extra stock sells and cash recycles quickly [an], but over-ordering leaves the hubs full of discounted toys and exposes the cash warning [an]. On balance, Polar Toy should raise the order but by a smaller, forecast-based amount rather than tripling blindly [eval]; it should set reorder triggers and cap the order at predicted best-seller demand [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger order prevents stockouts in best-sellers",
+            "larger order strains cash flow and risks discounting"
+          ],
+          "application_max_2": [
+            "$240,000 order / $86,000 lost sales / 3 best-selling puzzles and action figures / 9 stores",
+            "week 1 peak / $520,000 last year / 2 distribution hubs at $3,100 per month / 20% price cuts"
+          ],
+          "analysis_max_2": [
+            "if demand matches last year, cash recycles quickly",
+            "over-ordering forces discounting and strains cash"
+          ],
+          "evaluation_max_2": [
+            "weighs $86,000 stockout risk and $520,000 festive revenue against $240,000 tied-up cash and 20% discounting",
+            "justified recommendation to raise, not triple, the order, based on sales forecasts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$240,000",
+            "$86,000",
+            "9 stores",
+            "$520,000",
+            "$3,100",
+            "20%",
+            "week 1",
+            "2 distribution hubs"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_100",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Silkharbour Garments Ltd manufactures 420,000 shirts a year in Country X, exporting 70% of output to buyers in Asia and Europe. The dollar has strengthened by 14% this year, making exports 14% more expensive for overseas buyers and squeezing profit margins from 11% to 6% over the last 12 months. Asian orders have fallen by 18% since the spring peak.\n\nThe board is deciding whether to relocate one of its 3 factories to Country Y, where the currency is 20% weaker and wages are 35% lower, or to keep all 3 factories in Country X and negotiate new contracts with buyers. Remaining at home keeps access to domestic suppliers who deliver within 3 days. The chief executive must recommend one option.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'legal environment'.",
+        "model_answer": "The legal environment refers to the laws and regulations of a country, such as employment, safety and product standards, which a business relocating abroad must comply with [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "laws and regulations of a country a business must follow",
+            "includes employment, safety and product standards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Silkharbour might relocate one factory to Country Y.",
+        "model_answer": "Reason 1: The currency in Country Y is 20% weaker [k], which would make shirts made there cheaper for Asia and Europe buyers and help restore margins lost when the dollar strengthened by 14% [app]. Reason 2: Wages are 35% lower in Country Y [k], significantly cutting labour cost on the relocated factory's share of the 420,000 shirts produced each year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "weaker foreign currency lowers export prices",
+            "lower wages reduce production costs"
+          ],
+          "application_max_2": [
+            "20% weaker currency / 14% dollar strengthening / margins 11% to 6%",
+            "35% lower wages / 420,000 shirts a year / Asia and Europe buyers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "20% weaker",
+            "35% lower",
+            "14%",
+            "420,000",
+            "Country Y",
+            "Asia and Europe",
+            "70%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of relocating one factory to Country Y.",
+        "model_answer": "Problem 1: Moving one of 3 factories means new permits, quality checks and management systems in Country Y [k], which could disrupt the 3-day domestic supplier deliveries and shipments to Asia and Europe buyers [app], risking penalties under existing buyer contracts [an]. Problem 2: The dollar's 14% strengthening may reverse [k], so relocating could prove premature if the currency falls back and export competitiveness returns [app], leaving the new factory underused with higher fixed costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation disrupts supply chains and compliance",
+            "exchange rates can reverse, making relocation premature"
+          ],
+          "application_max_2": [
+            "3 factories / 3 days domestic supplier delivery / Asia and Europe buyers",
+            "14% dollar strengthening / Country Y currency is 20% weaker"
+          ],
+          "analysis_max_2": [
+            "disruption risks buyer penalties and lost orders",
+            "reversed currency leaves the new factory underused and costly"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 factories",
+            "3 days",
+            "14%",
+            "Country Y",
+            "420,000",
+            "Asia and Europe",
+            "70%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Silkharbour should relocate one factory to Country Y? Justify your answer.",
+        "model_answer": "Relocating one factory would let Silkharbour produce in a currency 20% weaker with wages 35% lower, directly countering the 14% dollar strengthening that squeezed margins from 11% to 6% [k], and would help defend its 70% export share to Asia and Europe buyers [app]. However, keeping all 3 factories in Country X preserves 3-day delivery from domestic suppliers [k], and relocating before the dollar move proves lasting could freeze capital in a factory that later proves unnecessary [app]. The relocation hedges against further dollar strength and restores export competitiveness [an], but the 18% fall in Asian orders could reflect changing buyer demand, which a new factory would not fix [an]. On balance, Silkharbour should relocate one factory, not all 3 [eval], because it diversifies currency risk while keeping a Country X base close to domestic suppliers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation hedges currency and wage costs",
+            "keeping factories preserves supply reliability"
+          ],
+          "application_max_2": [
+            "20% weaker currency / wages 35% lower / 14% dollar strengthening / margins 11% to 6%",
+            "70% export share / 3 factories / 3-day domestic deliveries / 18% fall in Asian orders"
+          ],
+          "analysis_max_2": [
+            "relocation hedges further dollar strength and restores competitiveness",
+            "Asian order fall may reflect demand, not just currency, so a factory alone may not fix it"
+          ],
+          "evaluation_max_2": [
+            "weighs currency and wage advantage against 3-day supply security and risk of premature move",
+            "justified recommendation to relocate one factory, keeping Country X as a domestic supplier base"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "20% weaker",
+            "35% lower",
+            "14%",
+            "11% to 6%",
+            "70%",
+            "3 factories",
+            "18%",
+            "Country X"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

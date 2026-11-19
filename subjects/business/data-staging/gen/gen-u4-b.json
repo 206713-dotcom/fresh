@@ -1,0 +1,932 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_51",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Brackenhill Biscuits Ltd is a family-owned biscuit manufacturer in Country X that has produced shortbread and cream crackers for 11 years. Last year the business invested $480,000 in an automated wrapping and packing line using robotic arms, capable of sealing 120 packs per minute. The new equipment replaced 3 manual packing benches and 15 jobs. The owning family wants the business to stay cost-competitive against larger rivals importing cheaper biscuits.\n\nSince the line began operating in March, output has risen from 38,000 to 52,000 packs per week, and faulty seals have fallen from 4% to 1% of packs. The operations manager estimates the investment will pay for itself in under 3 years, although the 15 redundant packers received only statutory pay and morale among the remaining 60 factory workers has dipped.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'automation'.",
+        "model_answer": "Automation is the use of machines and technology to control and carry out production processes with little or no human input [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Use of machines/technology to carry out tasks or control processes",
+            "Little or no human involvement or intervention in the process"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Brackenhill Biscuits of automating its packing line.",
+        "model_answer": "First, the line raised productivity [k], sealing 120 packs per minute and lifting weekly output from 38,000 to 52,000 packs [app]. Second, product quality improved [k], as faulty seals fell from 4% to 1% of packs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher productivity/output per period",
+            "Improved and more consistent product quality or fewer errors"
+          ],
+          "application_max_2": [
+            "Line seals 120 packs per minute and weekly output rose from 38,000 to 52,000 packs",
+            "Faulty seals fell from 4% to 1% of packs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackenhill Biscuits", "$480,000", "120 packs per minute", "38,000", "52,000", "4% to 1%", "packing line"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages for Brackenhill Biscuits of introducing the automated line.",
+        "model_answer": "First, redundancies [k]: the business made 15 packers redundant, so they received only statutory pay [app], and lower morale among the remaining 60 factory workers could raise absenteeism and errors [an]. Second, high capital outlay [k]: $480,000 had to be spent before the estimated payback of under 3 years [app], so if weekly output falls short of 52,000 packs the family may struggle to recover the cost and stay competitive against imports [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Redundancies and loss of jobs",
+            "High initial capital cost of the investment"
+          ],
+          "application_max_2": [
+            "15 packers made redundant and paid only statutory pay; morale dipped among the remaining 60 factory workers",
+            "$480,000 was invested with payback estimated at under 3 years"
+          ],
+          "analysis_max_2": [
+            "Poorer morale could increase absenteeism and mistakes on the line",
+            "If demand or output falls below 52,000 packs per week, repaying the investment becomes harder and threatens competitiveness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackenhill Biscuits", "$480,000", "redundant packers", "statutory pay", "60 factory workers", "under 3 years", "52,000 packs"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackenhill Biscuits should invest in automated mixing and baking equipment as well? Justify your answer.",
+        "model_answer": "Yes, further automation should raise productivity [k]; the packing line lifted output from 38,000 to 52,000 packs per week and cut faulty seals from 4% to 1% [app]; extending the same technology to mixing and baking could remove more errors, lower unit costs and keep biscuits cheaper than imports [an]. However, automation destroyed jobs [k]; this project cost $480,000, made the 15 redundant packers leave on statutory pay and soured morale among the remaining 60 factory workers [app]; repeating that scale of disruption in mixing and baking, where timing and temperature need judgement, could deepen absenteeism and hurt consistency [an]. Overall I recommend phased investment in automated mixing first, with skilled staff retrained and supervising [eval]; baking should keep human oversight for now, so automating both stages fully would be premature given the morale damage already seen [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automation raises productivity and reduces errors",
+            "Automation causes redundancies, high capital cost and morale problems"
+          ],
+          "application_max_2": [
+            "Output rose from 38,000 to 52,000 packs per week; faulty seals fell from 4% to 1%",
+            "$480,000 invested, 15 packers redundant on statutory pay, morale dipped among 60 remaining workers"
+          ],
+          "analysis_max_2": [
+            "More automation could cut unit costs and errors and improve competitiveness against imports",
+            "Over-automation in baking could damage morale and product consistency, risking mistakes"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision (phased approach) supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackenhill Biscuits", "$480,000", "38,000", "52,000", "4% to 1%", "redundant packers", "60 factory workers", "under 3 years"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_52",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Cinderford Brickworks is a brick manufacturer in Country X that has supplied builders for 14 years, producing facing and engineering bricks for housebuilders across the region. Two years ago the owners spent $250,000 installing a mechanised extrusion machine and automatic wire-cutter, allowing operators to feed clay rather than mould bricks by hand. The yard now employs 74 workers, 30 of whom run the machines.\n\nOutput has risen from 140,000 to 210,000 bricks per week, and reject bricks have fallen from 7% to 3%. Hourly wages of $11.50 for machine operators tempt the business to recruit 6 more workers this year, but clay prices have climbed 12%. The kilns are now the production bottleneck, and the owners have delayed a planned wage rise until 2027 while they repay the machine loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'mechanisation'.",
+        "model_answer": "Mechanisation is the use of machines to carry out work that was previously done by hand, with workers still operating or controlling the machines [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Use of machines to replace or assist manual labour",
+            "Human operators still control or supervise the machines"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Cinderford Brickworks introduced mechanised machines.",
+        "model_answer": "First, to raise output [k]; the mechanised extruder and wire-cutter lifted production from 140,000 to 210,000 bricks per week [app]. Second, to cut waste [k]; reject bricks fell from 7% to 3% after the machines were installed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "To increase output/productivity",
+            "To reduce waste, rejects and human error"
+          ],
+          "application_max_2": [
+            "Production rose from 140,000 to 210,000 bricks per week",
+            "Reject bricks fell from 7% to 3%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Cinderford Brickworks", "$250,000", "mechanised extrusion machine", "140,000", "210,000", "7% to 3%", "74 workers"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Cinderford Brickworks may face from its mechanisation.",
+        "model_answer": "First, dependence on skilled operators [k]: the business relies on 30 of its 74 workers to run the machines at $11.50 per hour [app], so any absence or breakdown could stop extrusion and widen the kiln bottleneck [an]. Second, rising input costs [k]: clay prices have climbed 12% [app], squeezing margins and making it harder to recover the $250,000 outlay without raising brick prices for builders [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dependence on specialist operators and machine breakdowns",
+            "Higher costs or repayment burden after investment"
+          ],
+          "application_max_2": [
+            "30 of 74 workers run the machines at $11.50 per hour",
+            "Clay prices have climbed 12% after $250,000 was spent"
+          ],
+          "analysis_max_2": [
+            "Absences or breakdowns halt output and delay deliveries to builders",
+            "Squeezed margins limit funds for kiln upgrades and may force price rises that risk losing customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Cinderford Brickworks", "$250,000", "run the machines", "$11.50", "12%", "210,000 bricks per week", "140,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cinderford Brickworks should now invest in mechanising the kilns as well? Justify your answer.",
+        "model_answer": "Yes, mechanising the kilns would attack the bottleneck [k]; the yard already lifted output from 140,000 to 210,000 bricks per week and cut rejects from 7% to 3% by mechanising extrusion [app]; applying the same approach to firing could raise capacity and stabilise quality while builder demand keeps growing [an]. However, machines reduce rather than increase labour needs [k]; the business has already spent $250,000 and pays operators $11.50 per hour amid a 12% clay price rise [app], and another large outlay plus recruiting 6 more workers risks overstretching cash if the housing market slows [an]. Overall I recommend phased kiln mechanisation funded largely from retained profit, because the proven 50% output gain outweighs the cost risk, provided the new recruits are trained to operate the machines before phase two begins [eval]; if clay costs keep climbing, phase two should be delayed rather than debt-financed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Mechanisation raises capacity and reduces rejects",
+            "High capital cost and cash-flow strain"
+          ],
+          "application_max_2": [
+            "Output rose from 140,000 to 210,000 bricks per week; rejects fell from 7% to 3%",
+            "$250,000 already spent, $11.50 hourly wages, clay prices up 12%, plan to recruit 6 more workers"
+          ],
+          "analysis_max_2": [
+            "Mechanised kilns could remove the bottleneck and meet growing builder demand with consistent quality",
+            "Extra capital spending could strain cash and threaten the business if housing demand slows or clay costs rise further"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Cinderford Brickworks", "$250,000", "140,000", "210,000", "7% to 3%", "12%", "$11.50", "6 more workers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_53",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Halyard Lighting Co is a manufacturer of decorative ceiling lamps, wall lights and brass fittings in Country X, trading for 9 years. Its design team of 6 uses CAD software that cost $95,000 to create and modify lamp designs on screen before any prototype is built. Design revisions that once took 3 weeks can now be completed in 4 days.\n\nSales last year reached $2.1 million. Prototyping waste fell by 40%, but the finance director warns the software licence is due for renewal at $18,000 per year and two senior designers were hired on $42,000 salaries to run it. The board values the design edge CAD gives against copycat rivals, yet must now decide whether to buy 2 more CAD licences or hire another designer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'CAD (computer-aided design)'.",
+        "model_answer": "CAD is the use of computer software to create, modify and test product designs digitally before any prototype is built [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Computer software is used to design products",
+            "Designs can be created, modified and tested digitally before manufacture"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Halyard Lighting of using CAD in its design work.",
+        "model_answer": "First, design speed improved [k]; revisions that once took 3 weeks can now be completed in 4 days [app]. Second, material waste fell [k]; prototyping waste dropped by 40% because errors are spotted on screen [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Faster design and revision process",
+            "Reduced waste and errors before prototyping"
+          ],
+          "application_max_2": [
+            "Revisions completed in 4 days instead of 3 weeks",
+            "Prototyping waste fell by 40%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Halyard Lighting Co", "$95,000", "3 weeks", "4 days", "40%", "CAD", "design team of 6"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs or drawbacks of CAD for Halyard Lighting Co.",
+        "model_answer": "First, ongoing licence costs [k]: the software licence is due for renewal at $18,000 per year [app], so the $95,000 purchase is not a one-off cost and profits will be reduced every year [an]. Second, dependence on skilled staff [k]: two senior designers on $42,000 salaries were hired to run it [app], so the business faces retraining costs and disruption if they leave or the software is replaced [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "High purchase and recurring licence/maintenance costs",
+            "Need for trained specialist staff and risk of dependency"
+          ],
+          "application_max_2": [
+            "Licence due for renewal at $18,000 per year after the $95,000 purchase",
+            "Two senior designers hired on $42,000 salaries to run it"
+          ],
+          "analysis_max_2": [
+            "Annual renewal reduces profit and commits the business to the software",
+            "Losing trained staff or software support disrupts the design team and delays new lamp ranges"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Halyard Lighting Co", "$95,000", "$18,000", "$42,000", "two senior designers", "licence", "$2.1 million"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Halyard Lighting Co should buy 2 more CAD licences instead of hiring another designer? Justify your answer.",
+        "model_answer": "Yes, more licences extend a proven advantage [k]; CAD already cut design revisions from 3 weeks to 4 days and prototyping waste by 40% [app]; giving the existing design team of 6 more licences would let everyone work simultaneously, cutting revision queues and supporting the $2.1 million sales pipeline [an]. However, licences alone cannot originate ideas [k]; the licence costs $18,000 per year on top of $95,000 already spent, and two senior designers already earn $42,000 salaries [app]; another designer would add fresh creative capacity, share the workload at peaks and reduce over-reliance on the software [an]. Overall I recommend buying the 2 licences first, because the 4-day revision turnaround and 40% waste saving show CAD is delivering value [eval]; if design orders keep growing, hire a designer later rather than carry both costs at once [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "CAD speeds design and cuts waste",
+            "Specialist staff and recurring licence costs"
+          ],
+          "application_max_2": [
+            "Revisions fell from 3 weeks to 4 days; waste fell 40%; sales reached $2.1 million",
+            "$95,000 purchase plus $18,000 licence renewal; two senior designers on $42,000"
+          ],
+          "analysis_max_2": [
+            "Extra licences raise design capacity and support the sales pipeline",
+            "A new designer adds creative capacity and reduces dependence on licences/software"
+          ],
+          "evaluation_max_2": [
+            "Weighs both options and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Halyard Lighting Co", "$95,000", "$18,000", "$42,000", "3 weeks", "4 days", "40%", "$2.1 million"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_54",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Dunmere Plastics Ltd is an injection-moulding business in Country X producing plastic housings for washing machines, lawnmowers and dishwashers, trading for 8 years. The factory runs two 8-hour shifts, five days a week. It recently installed CAM software costing $320,000 to control its 8 moulding machines directly from programs written by the production office. CAM programs also log every machine fault automatically.\n\nMachine set-up time has fallen from 45 minutes to 12 minutes, and scrap has fallen from 9% to 4% of output. Annual output is now 950,000 housings, exported to 3 countries. Orders from 2 washing-machine plants account for 80% of output. The managing director is considering extending CAM to the final assembly robot, which would displace 12 of the 120 employees.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'CAM (computer-aided manufacturing)'.",
+        "model_answer": "CAM is the use of computer software to control machines and manufacturing processes directly during production [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Computer software controls machines/processes",
+            "Used to plan and run manufacturing directly in production"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of CAM for Dunmere Plastics Ltd.",
+        "model_answer": "First, faster set-ups [k]; machine set-up time fell from 45 minutes to 12 minutes [app]. Second, less waste [k]; scrap fell from 9% to 4% of output [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Reduced machine set-up/changeover time",
+            "Reduced scrap/waste and errors"
+          ],
+          "application_max_2": [
+            "Set-up time fell from 45 minutes to 12 minutes",
+            "Scrap fell from 9% to 4% of output"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunmere Plastics Ltd", "$320,000", "45 minutes", "12 minutes", "9% to 4%", "950,000 housings", "8 moulding machines"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Dunmere Plastics may face if it extends CAM to the final assembly robot.",
+        "model_answer": "First, job losses and morale [k]: extending CAM to assembly would displace 12 of the 120 employees [app], which could damage motivation, raise turnover and harm the business's reputation as an employer [an]. Second, high extra cost and risk [k]: after spending $320,000 on moulding CAM, another system must be bought and integrated [app], so if exports to the 3 countries slow, the investment may take longer to repay and strain cash flow [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Redundancies/job losses harming morale and reputation",
+            "High additional capital cost and repayment risk"
+          ],
+          "application_max_2": [
+            "Assembly CAM would displace 12 of the 120 employees",
+            "$320,000 already spent on the moulding CAM system"
+          ],
+          "analysis_max_2": [
+            "Displaced workers may leave, reducing goodwill and raising training costs for remaining staff",
+            "Extra investment is risky if export demand in the 3 countries weakens, delaying payback"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunmere Plastics Ltd", "$320,000", "12 of the 120 employees", "950,000 housings", "3 countries", "8 moulding machines", "80% of output"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dunmere Plastics should extend CAM to the final assembly robot? Justify your answer.",
+        "model_answer": "Yes, assembly CAM would compound the gains [k]; moulding CAM already cut set-ups from 45 to 12 minutes and scrap from 9% to 4%, with 950,000 housings exported to 3 countries [app]; extending computer control to assembly could deliver the same consistency at the final stage and help win larger export contracts [an]. However, assembly CAM would displace 12 of the 120 employees [app]; the moulding system already cost $320,000 [k], and forcing 12 redundancies could lower morale, raise absenteeism and increase long-run labour costs among those remaining [an]. Overall I recommend extending CAM to assembly only if the 12 affected workers are retrained or redeployed [eval]; the quality and export benefits justify the move, but rushing it without reskilling would risk the workforce goodwill the business still needs [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "CAM improves consistency, speed and waste reduction",
+            "Redundancies harm morale and reputation"
+          ],
+          "application_max_2": [
+            "Set-up fell 45 to 12 minutes; scrap fell 9% to 4%; 950,000 housings exported to 3 countries",
+            "Assembly robot would displace 12 of 120 employees; moulding CAM cost $320,000"
+          ],
+          "analysis_max_2": [
+            "Consistent final assembly could win larger export contracts and cut customer complaints",
+            "Forcing 12 redundancies could reduce morale and raise long-run labour costs"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunmere Plastics Ltd", "$320,000", "12 of the 120 employees", "45 minutes", "12 minutes", "9% to 4%", "950,000 housings", "3 countries"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_55",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Aldercroft Auto Components is a private limited company in Country X producing suspension brackets and exhaust flanges for 2 car assembly plants. It employs 240 workers at a single factory on an industrial estate. Two years ago the business invested $1.2 million in a CIM system linking its design office, 14 CNC machines, quality scanners and a stock control database.\n\nThe system passes CAD designs straight to CAM files, schedules machine use automatically and flags defects on the line. Defective brackets fell from 6% to 1.5%, and average lead time dropped from 21 to 9 days, helping both assembly plants cut buffer stock. However, CIM needs 2 full-time IT technicians on $38,000 salaries, and the $1.2 million was financed by a bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'CIM (computer-integrated manufacturing)'.",
+        "model_answer": "CIM is the use of a single computer system to link and control all stages of production, from design through manufacture to quality and stock control [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Computer systems link and control production stages together",
+            "Covers design, manufacture, quality and stock/inventory control in one integrated system"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of CIM for Aldercroft Auto Components.",
+        "model_answer": "First, better product quality [k]; defective brackets fell from 6% to 1.5% after the system was installed [app]. Second, faster delivery [k]; average lead time dropped from 21 to 9 days, helping both assembly plants cut buffer stock [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Improved quality/fewer defects",
+            "Faster lead time/quicker deliveries"
+          ],
+          "application_max_2": [
+            "Defective brackets fell from 6% to 1.5%",
+            "Average lead time dropped from 21 to 9 days"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Aldercroft Auto Components", "$1.2 million", "6% to 1.5%", "21 to 9 days", "14 CNC machines", "240 workers", "2 car assembly plants"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two risks or costs of CIM for Aldercroft Auto Components.",
+        "model_answer": "First, dependence on specialist staff [k]: CIM needs 2 full-time IT technicians on $38,000 salaries [app], so if they leave, the whole production line could stall until replacements are found and trained [an]. Second, financial risk [k]: the $1.2 million was financed by a bank loan [app], so the business must keep the 2 assembly plants' orders profitable enough to meet interest payments, or face cash-flow pressure if orders fall [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dependence on scarce specialist IT staff",
+            "High capital cost financed by borrowing"
+          ],
+          "application_max_2": [
+            "2 full-time IT technicians required on $38,000 salaries",
+            "$1.2 million financed by a bank loan"
+          ],
+          "analysis_max_2": [
+            "If technicians leave or the system fails, production stops and deliveries to both assembly plants are jeopardised",
+            "Loan repayments strain cash flow; falling orders would make the debt harder to service"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Aldercroft Auto Components", "$1.2 million", "$38,000", "2 full-time IT technicians", "14 CNC machines", "2 car assembly plants", "6% to 1.5%"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aldercroft Auto Components should roll CIM out to a second production hall? Justify your answer.",
+        "model_answer": "Yes, rolling CIM out to a second hall would replicate proven gains [k]; defective brackets fell from 6% to 1.5% and lead time dropped from 21 to 9 days [app]; a second hall could cut buffer stocks for both assembly plants, win more orders and spread the fixed costs of the CIM system [an]. However, the first $1.2 million was financed by a bank loan and the system already needs 2 IT technicians on $38,000 salaries [app]; duplicating it doubles loan pressure, and one technical failure could halt even more limited IT capacity [an], even though integration usually lifts productivity [k]. Overall I recommend a phased second-hall rollout funded from operating surplus rather than new borrowing [eval], because the 4.5-point defect fall and 12-day lead-time cut are compelling, but only once the 2 technicians confirm the system is stable [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "CIM raises quality and speed across production",
+            "High capital cost and dependence on specialist staff"
+          ],
+          "application_max_2": [
+            "Defects fell from 6% to 1.5%; lead time dropped from 21 to 9 days",
+            "$1.2 million financed by bank loan; 2 IT technicians on $38,000 salaries"
+          ],
+          "analysis_max_2": [
+            "Second hall would spread fixed costs, cut buffer stock and win more assembly-plant orders",
+            "New borrowing or a single system failure could strain cash and halt production"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Aldercroft Auto Components", "$1.2 million", "$38,000", "6% to 1.5%", "21 to 9 days", "2 car assembly plants", "14 CNC machines", "240 workers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_56",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Dorchester Village Stores operates 6 grocery supermarkets in Country X, employing 145 staff. Last year it spent $180,000 installing EPOS tills in all 6 stores. Each checkout now scans barcodes, records sales by the hour and updates a central stock database automatically. The head office believes EPOS will free staff from manual stock counts.\n\nEPOS data shows fresh-food wastage fell from 12% to 7% of stock within 4 months. The system flags when any of 400 key product lines drop below 2 weeks of expected sales. Trading on a Saturday can reach $38,000 per store, so managers worry automatic orders may over-buy perishables before quiet weekdays. The board is debating whether EPOS should place automatic reorders or whether store managers should approve all orders above $5,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'EPOS (electronic point of sale)'.",
+        "model_answer": "EPOS is a computerised checkout system that records sales and stock information electronically when goods are scanned at the till [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Computerised checkout/till system",
+            "Records sales and stock data electronically at point of sale"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of EPOS for Dorchester Village Stores.",
+        "model_answer": "First, reduced wastage [k]; fresh-food wastage fell from 12% to 7% of stock within 4 months [app]. Second, better reordering [k]; the system flags when any of 400 key product lines drop below 2 weeks of expected sales [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower wastage/better stock control",
+            "Automatic reordering and sales data capture"
+          ],
+          "application_max_2": [
+            "Fresh-food wastage fell from 12% to 7% within 4 months",
+            "EPOS flags product lines below 2 weeks of expected sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dorchester Village Stores", "$180,000", "12% to 7%", "EPOS", "400 key product lines", "2 weeks of expected sales", "$5,000"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Dorchester Village Stores holds inventories.",
+        "model_answer": "First, to meet customer demand without running out [k]; EPOS flags when any of 400 key product lines drop below 2 weeks of expected sales [app], so holding enough stock prevents lost sales and protects customer loyalty on busy Saturdays [an]. Second, to balance wastage against availability [k]; fresh-food wastage fell from 12% to 7% after EPOS began tracking sales [app], showing that accurate stock data lets the business hold the right amount instead of over-ordering perishables [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Meets customer demand and avoids stockouts",
+            "Supports efficient purchasing and reduces waste"
+          ],
+          "application_max_2": [
+            "EPOS flags product lines below 2 weeks of expected sales",
+            "Fresh-food wastage fell from 12% to 7% within 4 months"
+          ],
+          "analysis_max_2": [
+            "Avoiding stockouts prevents lost sales and supports customer loyalty, especially on Saturdays",
+            "Accurate sales data reduces over-ordering of perishables, cutting waste and improving profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dorchester Village Stores", "EPOS", "400 key product lines", "2 weeks of expected sales", "12% to 7%", "$5,000", "145 staff"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dorchester Village Stores should let EPOS place automatic reorders rather than keep manual approval? Justify your answer.",
+        "model_answer": "Yes, automatic reorders match stock to real demand [k]; EPOS already cut fresh-food wastage from 12% to 7% and records sales hourly [app]; automatic replenishment of the 400 key lines below 2 weeks of expected sales would prevent stockouts on busy Saturdays, when each store can take $38,000 [an]. However, managers fear over-ordering perishables [k]; the board is split on whether orders above $5,000 need manual sign-off [app], and a system error could multiply across 6 stores before anyone notices, wasting cash and shelf space [an]. Overall I recommend automatic reorders for dry goods, keeping manual approval only above $5,000 for fresh lines [eval]; this captures most efficiency gains while protecting cash where wastage is most costly [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automatic ordering links stock to real-time demand",
+            "Manual checks reduce risk of over-ordering and system errors"
+          ],
+          "application_max_2": [
+            "EPOS cut wastage from 12% to 7% and flags 400 key lines below 2 weeks of expected sales",
+            "Debate over whether orders above $5,000 need manual sign-off; Saturday trading can reach $38,000 per store"
+          ],
+          "analysis_max_2": [
+            "Automatic reordering prevents lost sales and frees staff from manual stock counts",
+            "A system error multiplied across 6 stores could waste cash on perishables before it is detected"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Hybrid/conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dorchester Village Stores", "EPOS", "12% to 7%", "$5,000", "400 key product lines", "$180,000", "2 weeks of expected sales", "$38,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_57",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Tannersley Glassworks is a glass bottle manufacturer in Country X that has supplied soft-drink bottlers for 16 years. Its 120 workers produced 240,000 bottles per week, an average of 2,000 bottles per worker per week. After installing 2 new furnaces and an extra forming machine costing $900,000, the factory made 288,000 bottles per week with 96 workers. The factory operates three shifts, six days a week.\n\nThat equals 3,000 bottles per worker per week, a 50% rise in productivity, and annual output is now about 15 million bottles, up from 12.5 million. The $900,000 was borrowed from a bank. Overtime would cost $16 per hour time-and-a-half, while a furnace would take 18 months to install but last 25 years. Bottlers want an extra 40,000 bottles a week under contract.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'productivity'.",
+        "model_answer": "Productivity is the output produced per worker, or per other input, over a given time period [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Output per worker/per input",
+            "Measured over a period of time"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two differences between production and productivity.",
+        "model_answer": "First, what they measure [k]; production is total output, which rose from 240,000 to 288,000 bottles per week, while productivity is output per worker, which rose from 2,000 to 3,000 bottles per worker [app]. Second, how each is increased [k]; production can be raised by adding workers or overtime, while productivity rose because 96 workers replaced 120 after the new machines arrived [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Production = total output; productivity = output per worker/per input",
+            "Production can be raised by more inputs; productivity by more efficient use of inputs"
+          ],
+          "application_max_2": [
+            "Total output rose from 240,000 to 288,000 bottles per week",
+            "Output per worker rose from 2,000 to 3,000 after the workforce fell from 120 to 96"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Tannersley Glassworks", "240,000 bottles", "288,000 bottles", "2,000 bottles", "3,000 bottles", "120 workers", "96 workers"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Tannersley Glassworks of the rise in productivity.",
+        "model_answer": "First, lower labour cost per bottle [k]; output rose from 240,000 to 288,000 bottles per week while the workforce fell from 120 to 96 [app], so fixed costs are spread over more units and the business can improve profit to help repay the $900,000 loan [an]. Second, stronger competitiveness [k]; each of the 96 remaining workers now produces 3,000 bottles per week [app], so unit costs fall and Tannersley can undercut rivals to win the contract for an extra 40,000 bottles a week [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher output per worker lowers average cost per unit",
+            "Improved efficiency and competitiveness"
+          ],
+          "application_max_2": [
+            "Output rose 240,000 to 288,000 bottles per week while staff fell from 120 to 96",
+            "Each worker now produces 3,000 bottles per week"
+          ],
+          "analysis_max_2": [
+            "Fixed costs are spread over more bottles, improving profit and ability to repay the bank loan",
+            "Lower unit costs strengthen competitiveness and support winning the extra 40,000 bottles contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Tannersley Glassworks", "240,000", "288,000", "120 workers", "3,000 bottles", "$900,000", "40,000 bottles"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tannersley Glassworks should raise output further by overtime or by buying a third furnace? Justify your answer.",
+        "model_answer": "Yes, a third furnace would replicate the gains [k]; productivity already rose from 2,000 to 3,000 bottles per worker after the 2 new furnaces were installed [app]; a third furnace would last 25 years and help supply bottlers the extra 40,000 bottles a week under contract [an]. However, overtime is more flexible right now [k]; the $900,000 was borrowed and overtime at $16 per hour time-and-a-half adds capacity without new long-term debt [app]; but overtime raises labour cost per bottle and cannot match machine efficiency or consistent quality [an]. Overall I recommend buying the third furnace, financed partly from retained profit, because the proven 50% productivity rise shows machines outperform overtime [eval]; if demand softens before contracts are signed, delay the furnace and use overtime as a stop-gap [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Investment in capital machinery raises productivity long term",
+            "Overtime adds capacity quickly but at higher unit cost"
+          ],
+          "application_max_2": [
+            "Productivity rose from 2,000 to 3,000 bottles per worker after 2 new furnaces",
+            "$900,000 loan outstanding; overtime at $16 per hour time-and-a-half; furnace would take 18 months and last 25 years"
+          ],
+          "analysis_max_2": [
+            "A third furnace locks in capacity and consistency to fulfil the 40,000 bottles weekly contract",
+            "Overtime protects cash flow now but erodes unit economics and quality consistency"
+          ],
+          "evaluation_max_2": [
+            "Weighs both options and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Tannersley Glassworks", "$900,000", "240,000", "288,000", "2,000", "3,000", "50%", "$16 per hour"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_58",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Dunnock Cheese Co is a private limited company in Country X making cheddar from milk supplied by 26 local farms. Sales are made to supermarkets across the northern region. It employs 40 workers and runs 3 pasteurising vats in a converted barn on the edge of the market town. Each month it produces 18,000 kg of cheese from 180,000 litres of milk bought at $0.42 per litre.\n\nMonthly revenue is $198,000 against production costs of $171,000, leaving a profit of $27,000. The company currently turns down orders worth $9,000 a month because the vats are fully booked. The directors are considering a fourth vat costing $150,000 to raise capacity by 25%, but supplies of raw milk and skilled cheesemakers are both limited locally.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'production'.",
+        "model_answer": "Production is the process of converting inputs such as land, labour, capital and enterprise into goods and services [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Converting inputs into outputs",
+            "Inputs include land, labour, capital and enterprise; outputs are goods and services"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Dunnock Cheese Co could increase production.",
+        "model_answer": "First, add capacity [k]; a fourth vat costing $150,000 would raise capacity by 25%, taking output from 18,000 kg towards 22,500 kg a month [app]. Second, secure more inputs [k]; buying more milk from the 26 local farms or signing new suppliers would let the 3 existing vats run closer to full capacity [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Increase capacity/capital equipment",
+            "Secure more inputs (raw materials, labour) or use existing capacity fully"
+          ],
+          "application_max_2": [
+            "Fourth vat costing $150,000 would raise capacity by 25% (18,000 kg to 22,500 kg)",
+            "Milk comes from 26 local farms via 3 pasteurising vats"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunnock Cheese Co", "18,000 kg", "3 pasteurising vats", "fourth vat", "$150,000", "25%", "26 local farms"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Dunnock Cheese Co could use its resources more effectively.",
+        "model_answer": "First, reduce milk waste and improve yields [k]; each month 180,000 litres of milk are bought at $0.42 per litre [app], so better pasteurising yields would cut the $75,600 monthly milk bill or raise output of 18,000 kg [an]. Second, plan labour and vats better [k]; with 40 workers and full order books [app], scheduling vat runs around milk deliveries could lift output without the $150,000 vat purchase [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Reducing waste/improving input efficiency",
+            "Better planning and scheduling of labour and capital"
+          ],
+          "application_max_2": [
+            "180,000 litres of milk bought at $0.42 per litre each month",
+            "40 workers and 3 vats in use; orders worth $9,000 a month turned away"
+          ],
+          "analysis_max_2": [
+            "Better yields spread the milk cost over more cheese, raising profit per kg",
+            "Smarter scheduling raises output without new capital spending, easing pressure on the $150,000 decision"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunnock Cheese Co", "180,000 litres", "$0.42", "3 pasteurising vats", "18,000 kg", "40 workers", "26 local farms", "$150,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dunnock Cheese Co should buy the fourth vat now? Justify your answer.",
+        "model_answer": "Yes, the fourth vat would capture lost sales [k]; the vats are fully booked and the business turns down orders worth $9,000 a month [app]; a 25% capacity increase to 22,500 kg would lift revenue above $198,000 and push profit beyond $27,000 [an]. However, milk and cheesemaker supplies are limited [k]; the 26 local farms already supply 180,000 litres a month, and hiring skilled cheesemakers locally is hard [app]; spending $150,000 without guaranteed inputs could leave an expensive vat idle and strain cash [an]. Overall I recommend buying the fourth vat only after securing extra milk contracts and at least one cheesemaker [eval]; demand clearly exists, but the vat will not pay for itself if inputs stay capped [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capacity investment captures unmet demand",
+            "Input constraints (raw materials, labour) can idle new capital"
+          ],
+          "application_max_2": [
+            "Turns down orders worth $9,000 a month; sales $198,000, profit $27,000",
+            "26 farms supply 180,000 litres at $0.42; cheesemaker supply limited; vat costs $150,000"
+          ],
+          "analysis_max_2": [
+            "A 25% capacity rise to 22,500 kg would lift revenue and profit",
+            "Without extra milk or labour the vat sits idle, wasting $150,000 and worsening cash flow"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dunnock Cheese Co", "$150,000", "25%", "$198,000", "$27,000", "180,000 litres", "26 local farms", "$0.42"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_59",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Montclair Electronics Plc is a public limited company in Country X manufacturing printed circuit boards for washing machines and televisions. The company sells to appliance makers in 5 countries and exports 70% of output. In 2024 it invested $2.6 million in surface-mount placement machines and automated inspection equipment, moving 60% of assembly from hand soldering to automation.\n\nMonthly output rose from 90,000 to 130,000 boards and the defect rate fell from 5% to 0.8%. The changes made 150 of the 400 hand-soldering jobs redundant at a cost of $1.9 million. Remaining workers now tend placement machines and earn $14 per hour. The board sees final testing as the last manual bottleneck and debates automating it; the testing line employs 48 workers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two ways in which technology has changed production.",
+        "model_answer": "Technology has raised productivity and output per worker [1]; it has reduced defects and made quality more consistent [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher productivity/output per worker",
+            "Fewer defects/more consistent quality (also accept: lower long-term costs, fewer errors)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits Montclair Electronics Plc gained from automation.",
+        "model_answer": "First, much higher output [k]; monthly production rose from 90,000 to 130,000 boards [app]. Second, much better quality [k]; the defect rate fell from 5% to 0.8% after automation [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher output/productivity",
+            "Lower defect rate/improved consistency"
+          ],
+          "application_max_2": [
+            "Monthly output rose from 90,000 to 130,000 boards",
+            "Defect rate fell from 5% to 0.8%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Montclair Electronics Plc", "$2.6 million", "90,000", "130,000", "5% to 0.8%", "60% of assembly", "printed circuit boards"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of Montclair's automation for the business.",
+        "model_answer": "First, mass redundancies [k]: 150 of the 400 hand-soldering jobs were made redundant at a cost of $1.9 million [app], damaging morale among the remaining 250 workers and raising the risk of further turnover [an]. Second, high capital risk [k]: the business invested $2.6 million in 2024 [app], and if appliance demand falls, the fixed cost of placement machines cannot be reduced quickly, squeezing profit margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Redundancies/job losses and morale damage",
+            "High capital cost and inflexible fixed costs"
+          ],
+          "application_max_2": [
+            "150 of 400 hand-soldering jobs made redundant at a cost of $1.9 million",
+            "$2.6 million invested in surface-mount placement machines and automated inspection"
+          ],
+          "analysis_max_2": [
+            "Redundancies damage morale and can increase turnover and disruption",
+            "Fixed automation costs are hard to cut when demand falls, squeezing margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Montclair Electronics Plc", "$2.6 million", "$1.9 million", "150 of the 400", "hand-soldering jobs", "5% to 0.8%", "60% of assembly"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Montclair Electronics Plc should automate the final testing line as well? Justify your answer.",
+        "model_answer": "Yes, testing automation would extend the quality gains [k]; the defect rate already fell from 5% to 0.8% after 60% of assembly moved to automation, and output rose from 90,000 to 130,000 boards [app]; automating final testing could catch faults even earlier and protect contracts with appliance makers in 5 countries [an]. However, the social cost is heavy [k]; automation already cost 150 jobs at $1.9 million, and the testing line employs 48 workers [app]; losing 48 more jobs would damage the remaining workforce's morale and the company's public reputation [an]. Overall I recommend automating testing only with a redeployment and retraining package for the 48 workers [eval]; the 0.8% defect rate justifies the investment, but the company should not repeat the disruption of 2024 without protecting staff [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automation improves quality and reduces errors",
+            "Automation destroys jobs and harms morale/reputation"
+          ],
+          "application_max_2": [
+            "Defect rate fell from 5% to 0.8%; output rose from 90,000 to 130,000 boards",
+            "150 jobs lost costing $1.9 million; testing line employs 48 workers"
+          ],
+          "analysis_max_2": [
+            "Automated testing could catch faults earlier and protect appliance-maker contracts",
+            "Losing 48 more jobs would further damage morale and reputation"
+          ],
+          "evaluation_max_2": [
+            "Weighs both sides and reaches a clear, justified recommendation",
+            "Conditional decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Montclair Electronics Plc", "$2.6 million", "$1.9 million", "90,000", "130,000", "5% to 0.8%", "48 workers", "60% of assembly"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_60",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Quillbrook Pens Ltd is a small manufacturer in Country X producing luxury brass fountain pens, employing 28 workers. Pens retail at $180 each and are popular with corporate gift buyers. Designs are drawn using CAD and batches of 500 pens are made to order before the November gift season. The business holds 3 months of raw materials — brass rods, ink and polished barrels — at a storage cost of $7,500 per month. Storage space is limited to 900 square metres.\n\nEPOS sales data from 40 stockist shops shows demand spikes sharply in November, so running out of stock in October would lose the season's sales. The directors are debating whether to build inventory to 4 months' supply or arrange faster deliveries from the brass supplier.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'inventory'.",
+        "model_answer": "Inventory is the stock of raw materials, work in progress and finished goods held by a business for production or sale [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Stock of raw materials, work in progress and finished goods",
+            "Held for production or sale"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Quillbrook Pens Ltd holds inventories.",
+        "model_answer": "First, to meet seasonal demand [k]; EPOS sales data from 40 stockist shops shows November demand spikes sharply [app]. Second, to avoid lost sales [k]; running out of stock in October would lose the season's sales [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Meet expected/seasonal demand and avoid stockouts",
+            "Keep production running between deliveries"
+          ],
+          "application_max_2": [
+            "EPOS data from 40 stockist shops shows November demand spikes",
+            "Running out of stock in October would lose the season's sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Quillbrook Pens Ltd", "November", "500 pens", "3 months of raw materials", "EPOS sales data", "40 stockist shops", "$7,500"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of holding too much inventory for Quillbrook Pens Ltd.",
+        "model_answer": "First, storage cost [k]: 3 months of brass rods, ink and polished barrels already cost $7,500 per month to store [app], and building to 4 months' supply would push that higher while pens wait for the November rush [an]. Second, cash tied up [k]: money spent on raw materials cannot be used elsewhere [app], and if November demand disappoints, the excess stock of polished barrels and ink may never be used, risking obsolescence [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Storage/warehousing costs",
+            "Cash tied up and risk of obsolescence/damage"
+          ],
+          "application_max_2": [
+            "Storage costs $7,500 per month for 3 months of materials",
+            "Space limited to 900 square metres; storage includes polished barrels and ink"
+          ],
+          "analysis_max_2": [
+            "Higher storage costs reduce profit, especially if demand disappoints",
+            "Cash tied up in stock cannot fund other needs; unsold ink or barrels may become obsolete"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Quillbrook Pens Ltd", "$7,500", "3 months of raw materials", "4 months' supply", "polished barrels", "40 stockist shops", "900 square metres"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Quillbrook Pens Ltd should build inventory to 4 months' supply or arrange faster deliveries from the brass supplier? Justify your answer.",
+        "model_answer": "Yes, higher inventory protects the season [k]; EPOS sales data from 40 stockist shops shows November demand spikes, and running out of stock in October would lose the season's sales [app]; 4 months' supply would let the factory run batches of 500 pens ahead of orders [an]. However, faster deliveries may be smarter [k]; 3 months of raw materials already cost $7,500 per month to store in 900 square metres [app], and tighter deliveries would cut storage cost and obsolescence risk without tying up more cash, provided the brass supplier can deliver within days [an]. Overall I recommend negotiating faster deliveries as the primary plan, keeping 3 months of stock as the November buffer [eval]; this secures the season while avoiding a permanent storage burden, with 4 months' supply used only as a one-off for the busiest weeks [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Holding inventory avoids stockouts and lost seasonal sales",
+            "Faster replenishment reduces storage cost and cash tied up"
+          ],
+          "application_max_2": [
+            "EPOS data shows November spikes; October stockouts would lose the season's sales",
+            "Storage costs $7,500 per month; space limited to 900 square metres; 3 months of materials on hand"
+          ],
+          "analysis_max_2": [
+            "4 months' supply secures production ahead of the November gift season",
+            "Faster deliveries cut storage cost and free working capital without stockout risk"
+          ],
+          "evaluation_max_2": [
+            "Weighs both options and reaches a clear, justified recommendation",
+            "Conditional/hybrid decision supported by stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Quillbrook Pens Ltd", "$7,500", "3 months of raw materials", "4 months' supply", "40 stockist shops", "500 pens", "November", "900 square metres"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

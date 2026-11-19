@@ -1,0 +1,2442 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_01",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A commercial gym network operates 4 health centers as a Private Limited Company, employing 12 location managers and 48 hourly-paid fitness trainers. Founded 6 years ago, the business generates $1.2m in annual sales revenue, with labor expenses accounting for $450,000 of total operating costs. However, annual trainer turnover has reached 30% due to heavy reliance on unpredictable hourly wages without guaranteed income security.\n\nFitness trainers report feeling demotivated during off-peak seasons when fewer gym classes are scheduled, leading to poor customer engagement and frequent member complaints regarding class cancellations. The HR director is evaluating whether to replace hourly wages with a fixed monthly salary or introduce an 'Employee of the Month' bonus scheme offering a $50 monetary award. Additionally, expansion plans to open 2 new gym centers require appointing new head trainers while maintaining high customer service standards across all branches.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job enrichment'.",
+        "model_answer": "Adding tasks that require higher responsibility and complexity to make work more rewarding [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "adding higher responsibility/complexity tasks",
+            "making work more rewarding"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why high employee turnover might be a problem for this business.",
+        "model_answer": "Reason 1: Increased recruitment expenses [k] to advertise and hire replacement fitness trainers [app]. Reason 2: Reduced customer satisfaction [k] as gym members lose familiarity with class instructors [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increased recruitment expenses",
+            "reduced customer satisfaction/service quality"
+          ],
+          "application_max_2": [
+            "fitness trainers",
+            "gym members",
+            "class instructors",
+            "4 health centers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "trainers",
+            "gym",
+            "hourly",
+            "health centers",
+            "fitness",
+            "turnover",
+            "30%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of offering fixed monthly salaries instead of hourly wages.",
+        "model_answer": "Benefit 1: Improved income security for instructors [k], reducing financial anxiety during off-peak gym seasons [app], which increases motivation and lowers resignation rates [an]. Benefit 2: Better budget predictability [k], allowing labor expenses of $450,000 to be calculated accurately across 4 health centers [app], reducing cash flow uncertainty [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "income security/predictable pay",
+            "better financial predictability/budgeting"
+          ],
+          "application_max_2": [
+            "off-peak gym seasons",
+            "4 health centers",
+            "$450,000 labor expenses",
+            "instructors"
+          ],
+          "analysis_max_2": [
+            "increases motivation/lowers resignations",
+            "reduces cash flow uncertainty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gym",
+            "fitness",
+            "wages",
+            "salary",
+            "off-peak",
+            "$450,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think introducing fixed monthly salaries is a better motivation method for this business than an 'Employee of the Month' bonus scheme? Justify your answer.",
+        "model_answer": "A fixed monthly salary provides guaranteed income security [k], motivating hourly-paid gym trainers during off-peak seasons [app] and reducing trainer turnover costs [an]. However, an 'Employee of the Month' bonus scheme creates competitive drive [k] for individual instructors teaching gym classes [app], but may demotivate non-winning staff who feel the $50 award is unfairly distributed [an]. Overall, fixed salaries are better because 30% turnover stems from basic financial insecurity [eval], which a small $50 bonus cannot resolve [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "guaranteed income security",
+            "competitive drive/demotivation of non-winners"
+          ],
+          "application_max_2": [
+            "gym trainers",
+            "off-peak seasons",
+            "30% turnover",
+            "$50 bonus"
+          ],
+          "analysis_max_2": [
+            "reduces turnover costs",
+            "creates demotivation/jealousy among staff"
+          ],
+          "evaluation_max_2": [
+            "weighs basic financial security against small individual bonus in high-turnover gym context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "trainers",
+            "gym",
+            "turnover",
+            "bonus",
+            "salary",
+            "$50",
+            "off-peak"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_02",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A custom furniture manufacturing enterprise operates as a Partnership with 2 workshop facilities, employing 35 skilled carpenters and 10 warehouse staff. Operating for 8 years, the firm generates $2.1m in annual revenue and pays carpenters using a piece-rate system ($45 per completed wooden table). While daily output volume is high, customer product returns due to poor finishing and flawed wood assembly have increased by 25% over the past year.\n\nCarpenters rush through assembly work to maximize individual piece-rate earnings, ignoring safety guidelines and quality inspection checks. According to Herzberg's two-factor theory, hygiene factors like workplace safety and working conditions are failing, while motivators like job recognition are absent. The partners must decide whether to replace piece-rate wages with profit-sharing schemes or implement job enrichment by giving carpenters full responsibility for entire furniture design and assembly projects from raw timber to final polish.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'piece-rate payment'.",
+        "model_answer": "A payment system where workers are paid a fixed amount for each unit of output produced [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fixed payment per unit produced",
+            "wage tied directly to output volume"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two hygiene factors according to Herzberg's theory that might be demotivating workers in this workshop.",
+        "model_answer": "Factor 1: Poor working conditions and safety [k], as carpenters ignore safety guidelines in workshop facilities [app]. Factor 2: Unfair wage structure [k], as $45 piece-rate wages encourage rushing rather than fair compensation for quality woodworking [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working conditions/safety",
+            "wage structure/pay conditions"
+          ],
+          "application_max_2": [
+            "workshop facilities",
+            "$45 piece-rate",
+            "carpenters",
+            "wooden tables"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "carpenters",
+            "workshop",
+            "$45",
+            "piece-rate",
+            "wooden",
+            "timber"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of introducing job enrichment for its carpenters.",
+        "model_answer": "Benefit 1: Higher job satisfaction and pride in work [k], as carpenters oversee entire custom furniture projects from raw timber to final polish [app], leading to greater attention to detail and higher craftsmanship quality [an]. Benefit 2: Reduced customer returns [k] by eliminating rushed assembly of wooden tables [app], which lowers waste expenses and protects business reputation [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher job satisfaction/pride in craftsmanship",
+            "reduced product returns/waste"
+          ],
+          "application_max_2": [
+            "raw timber to final polish",
+            "wooden tables",
+            "carpenters",
+            "custom furniture"
+          ],
+          "analysis_max_2": [
+            "improves craftsmanship quality",
+            "lowers waste expenses/protects reputation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "carpenters",
+            "timber",
+            "polish",
+            "furniture",
+            "returns"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think this business should replace piece-rate wages with profit-sharing schemes or implement job enrichment to reduce product quality returns? Justify your answer.",
+        "model_answer": "Implementing job enrichment gives carpenters responsibility for full furniture design and assembly [k], encouraging pride in completed wooden tables [app] and reducing product return rates [an]. Replacing piece-rate pay with profit-sharing encourages teamwork and quality focus [k] across 35 workshop staff [app], but individual workers may feel their personal effort does not directly alter total firm profit [an]. Overall, job enrichment is better because the 25% increase in product returns stems directly from rushed work under piece-rate pay [eval], making complete project responsibility more effective at restoring craftsmanship than sharing annual profits [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "encourages pride in craftsmanship/reduces defects",
+            "promotes teamwork/lack of direct link to individual effort"
+          ],
+          "application_max_2": [
+            "wooden tables",
+            "35 workshop staff",
+            "25% return rate",
+            "carpenters"
+          ],
+          "analysis_max_2": [
+            "reduces customer returns",
+            "dilutes individual accountability for quality"
+          ],
+          "evaluation_max_2": [
+            "weighs direct quality ownership against collective financial incentives in craft manufacturing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "carpenters",
+            "furniture",
+            "piece-rate",
+            "profit-sharing",
+            "enrichment",
+            "returns"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_03",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An electronics manufacturing company operates 2 factories as a Public Limited Company, employing 120 assembly line workers managed by 4 floor supervisors. Established 10 years ago, the firm generates $5.5m in annual revenue. The organizational structure features a very wide span of control, with each supervisor overseeing 30 workers, alongside a tall hierarchy of 6 management levels.\n\nConsequently, assembly line workers experience long delays when seeking approval for circuit board repairs, leading to production line downtime and severe operational bottlenecks. Workers complain about a strict autocratic leadership style, where upper management issues top-down commands without delegating operational authority. The board of directors is considering restructuring the hierarchy by delegating quality control authority directly to assembly line teams or adopting a democratic leadership style to improve worker participation and assembly line speed.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'span of control'.",
+        "model_answer": "The number of subordinates directly working under and reporting to a manager or supervisor [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "number of subordinates reporting directly to a manager/supervisor"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Outline two problems for this business of having a tall organizational hierarchy.",
+        "model_answer": "Problem 1: Slow communication and decision-making [k] through 6 management levels when reporting circuit board repairs [app]. Problem 2: High managerial salary overheads [k] required to maintain multiple management tiers across 2 factories [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "slow decision-making/communication delays",
+            "high managerial salary overheads"
+          ],
+          "application_max_2": [
+            "6 management levels",
+            "circuit board repairs",
+            "2 factories",
+            "30 workers per supervisor"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "circuit board",
+            "repairs",
+            "factories",
+            "supervisors",
+            "assembly",
+            "hierarchy"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of delegating quality control authority to assembly line workers.",
+        "model_answer": "Benefit 1: Faster problem resolution on the factory floor [k], as 120 assembly workers fix faulty circuit boards immediately without supervisor approval [app], reducing production line downtime [an]. Benefit 2: Increased worker motivation and job satisfaction [k] from trust and added responsibility [app], reducing absenteeism and operational delays [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster problem resolution/reduced downtime",
+            "increased worker motivation/job satisfaction"
+          ],
+          "application_max_2": [
+            "120 assembly workers",
+            "circuit boards",
+            "supervisor approval",
+            "factory floor"
+          ],
+          "analysis_max_2": [
+            "reduces production line downtime",
+            "lowers absenteeism and operational delays"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "assembly",
+            "supervisors",
+            "downtime",
+            "circuit board",
+            "quality control",
+            "120"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think adopting a democratic leadership style is better for this electronics firm than delegating quality control authority to assembly line teams? Justify your answer.",
+        "model_answer": "Adopting a democratic leadership style encourages worker participation [k], allowing floor supervisors to consult 120 assembly workers on production targets [app] and boosting workforce morale [an]. However, delegating quality control authority grants direct operational power [k] to fix circuit board defects immediately [app], directly eliminating factory downtime bottlenecks [an]. Overall, delegating authority is better because operational delays stem from waiting for approvals across a wide span of 30 workers per supervisor [eval]; direct delegation solves downtime instantly, whereas democratic consultation alone cannot speed up technical repair approvals [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "boosts morale/worker participation",
+            "direct operational empowerment/instant bottleneck resolution"
+          ],
+          "application_max_2": [
+            "120 assembly workers",
+            "circuit board defects",
+            "30 workers per supervisor",
+            "factory downtime"
+          ],
+          "analysis_max_2": [
+            "improves employee morale and input",
+            "eliminates factory downtime bottlenecks"
+          ],
+          "evaluation_max_2": [
+            "weighs consultative leadership against direct operational empowerment in high-volume assembly context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "assembly",
+            "circuit board",
+            "supervisors",
+            "autocratic",
+            "democratic",
+            "downtime"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_04",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A boutique hotel chain operates 3 luxury properties as a Private Limited Company, employing 60 hotel staff including front-desk receptionists, housekeepers, and kitchen staff. Operating for 5 years, the company generates $3.2m in annual revenue, with wage overheads totaling $1.1m. The organizational structure is currently flat, with each hotel general manager holding a wide span of control over 20 staff members across multiple operational departments.\n\nRecent customer satisfaction ratings have fallen significantly because general managers are overwhelmed with routine administrative tasks, leaving them insufficient time to supervise guest room services or respond to customer complaints. Managing directors are analyzing whether to create a taller organizational hierarchy by appointing departmental supervisors or increase delegation by empowering front-desk receptionists and housekeeping staff to resolve guest complaints independently.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'chain of command'.",
+        "model_answer": "The structure within an organization through which orders and information are passed down from senior management to lower ranks [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "pathway through which authority/instructions pass down",
+            "from top management to lower level employees"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Outline two disadvantages to this business of general managers having a wide span of control.",
+        "model_answer": "Disadvantage 1: Loss of supervisory control [k] when overseeing 20 staff across reception, housekeeping, and kitchen departments [app]. Disadvantage 2: Work overload for general managers [k], leading to delayed responses to guest complaints in luxury properties [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loss of supervisory control/lack of close supervision",
+            "work overload for managers/delayed decisions"
+          ],
+          "application_max_2": [
+            "20 staff per manager",
+            "reception/housekeeping/kitchen",
+            "luxury properties",
+            "guest complaints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "receptionists",
+            "housekeepers",
+            "kitchen",
+            "span of control",
+            "hotel",
+            "guest"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this hotel business of increasing delegation to front-desk receptionists.",
+        "model_answer": "Benefit 1: Faster response to customer complaints [k], as receptionists resolve guest room issues immediately without manager sign-off [app], improving hotel customer satisfaction ratings [an]. Benefit 2: Reduced workload for general managers [k], freeing time from administrative tasks across 3 luxury properties [app] to focus on strategic hotel expansion [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quicker complaint resolution/better customer service",
+            "reduced manager workload/time for strategic tasks"
+          ],
+          "application_max_2": [
+            "front-desk receptionists",
+            "guest room issues",
+            "3 luxury properties",
+            "administrative tasks"
+          ],
+          "analysis_max_2": [
+            "improves customer satisfaction ratings",
+            "allows focus on strategic hotel expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "receptionists",
+            "housekeeping",
+            "guest",
+            "hotel",
+            "delegation",
+            "managers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think appointing departmental supervisors (creating a taller hierarchy) is better for this hotel chain than increasing delegation to front-desk staff? Justify your answer.",
+        "model_answer": "Appointing departmental supervisors provides close supervision [k] over housekeepers and kitchen staff across 3 properties [app], ensuring consistent room cleaning standards and reducing guest service errors [an]. However, adding a layer of middle management increases wage overheads beyond $1.1m [k] and lengthens the chain of command [app], slowing down decision speed [an]. Overall, increasing delegation to front-desk staff is better because it resolves guest complaints instantly at zero extra wage cost [eval], directly addressing falling satisfaction ratings without swelling management overheads [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "close supervision/consistent standards",
+            "increased management wage costs/slower communication"
+          ],
+          "application_max_2": [
+            "housekeepers and kitchen staff",
+            "3 properties",
+            "$1.1m wage overheads",
+            "front-desk staff"
+          ],
+          "analysis_max_2": [
+            "ensures consistent room standards",
+            "increases wage overheads and lengthens chain of command"
+          ],
+          "evaluation_max_2": [
+            "weighs close supervisory control against cost savings and rapid service response in luxury hospitality context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "receptionists",
+            "supervisors",
+            "housekeepers",
+            "hotel",
+            "hierarchy",
+            "delegation",
+            "wage"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_05",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A food processing factory operates as a Private Limited Company, employing 80 production line workers and 8 quality control managers. Founded 12 years ago, the enterprise generates $4.8m in annual sales revenue supplying packaged canned foods to supermarket chains. Following the unexpected retirement of 3 senior quality control managers, the factory faces critical leadership vacancies that threaten operational continuity.\n\nSenior executive managers are debating recruitment strategies to fill these positions quickly to maintain food safety standards. External recruitment through specialized employment agencies would attract experienced food technicians with fresh industry ideas, but involves high recruitment agency fees ($15,000 per hire) and lengthy advertising delays. Alternatively, internal recruitment would promote existing production line workers, boosting workforce morale and reducing recruitment costs, but requires extensive retraining in technical quality assurance procedures.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job specification'.",
+        "model_answer": "A document that outlines the qualifications, skills, experience, and personal qualities required for a specific job [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "document detailing qualifications/skills/experience required",
+            "for a specific job candidate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why this factory might create a job description before recruiting quality control managers.",
+        "model_answer": "Reason 1: Clarifies specific duties and responsibilities [k], such as inspecting canned food packaging and monitoring hygiene standards [app]. Reason 2: Helps draft accurate job advertisements [k] to attract suitable applicants with food safety experience [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "clarifies duties/responsibilities",
+            "helps draft accurate job advertisements/attract suitable candidates"
+          ],
+          "application_max_2": [
+            "canned food packaging",
+            "hygiene standards",
+            "food safety",
+            "quality control managers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "canned",
+            "food",
+            "quality control",
+            "factory",
+            "production line",
+            "supermarket"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of using internal recruitment to fill quality control manager vacancies.",
+        "model_answer": "Benefit 1: Cost and time savings [k], avoiding $15,000 per hire agency fees and long advertising delays [app], allowing vacancies to be filled rapidly [an]. Benefit 2: Known abilities and familiarity [k], as existing line workers already understand factory safety rules [app], reducing the risk of appointing unsuitable candidates [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost/time savings in recruitment",
+            "candidate is known to business/familiar with culture"
+          ],
+          "application_max_2": [
+            "$15,000 agency fee",
+            "production line workers",
+            "factory safety rules",
+            "canned food"
+          ],
+          "analysis_max_2": [
+            "allows rapid vacancy filling",
+            "reduces risk of hiring unsuitable staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "production line",
+            "$15,000",
+            "canned food",
+            "internal recruitment",
+            "factory",
+            "agency"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think this food processing factory should use external recruitment agencies or internal recruitment to fill the quality control manager vacancies? Justify your answer.",
+        "model_answer": "External recruitment brings in experienced food technicians with fresh industry ideas [k], ensuring advanced food safety standards for canned products [app] without requiring extensive internal retraining [an]. However, external agencies charge $15,000 per hire [k] and take months to recruit [app], increasing cash outflows and delaying vacancy replacement [an]. Overall, internal recruitment is better because promoting existing line workers boosts factory morale and saves $45,000 in agency fees [eval], while existing staff's prior knowledge of canned food assembly lines ensures smoother operational transition [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fresh ideas/external expertise",
+            "lower recruitment costs/boosts workforce morale"
+          ],
+          "application_max_2": [
+            "food technicians",
+            "canned products",
+            "$15,000 per hire",
+            "assembly lines"
+          ],
+          "analysis_max_2": [
+            "ensures advanced safety without retraining",
+            "increases recruitment cash outflows and delays vacancy filling"
+          ],
+          "evaluation_max_2": [
+            "weighs agency fees and recruitment speed against external technical expertise in food processing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "technicians",
+            "canned",
+            "food",
+            "$15,000",
+            "recruitment",
+            "agency",
+            "internal",
+            "morale"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_06",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A software development studio operates as a Private Limited Company, employing 40 software engineers and 5 technical project managers. Operating for 4 years, the business generates $2.8m in annual sales revenue developing mobile application software, paying engineers fixed annual salaries of $65,000. Rapid expansion and new client contracts require hiring 10 additional senior software developers within two months.\n\nThe HR department must design an effective candidate selection process to evaluate applicant competence. Management is debating whether to rely primarily on structured job interviews combined with curriculum vitae (CV) screening or implement practical coding assessment centers where candidates build live software prototypes. HR managers must balance recruitment speed and candidate screening costs against the risk of hiring underqualified developers who could introduce coding bugs and delay software delivery schedules.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two items typically included in a curriculum vitae (CV).",
+        "model_answer": "1. Educational qualifications [1].\n2. Previous work experience [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "educational qualifications",
+            "work experience/employment history",
+            "contact details",
+            "skills/referees"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Outline two reasons why using person specifications is important when hiring software developers.",
+        "model_answer": "Reason 1: Identifies essential technical skills [k], such as proficiency in mobile app coding languages [app]. Reason 2: Enables objective screening of candidates [k] to filter through applications for $65,000 salary roles efficiently [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "identifies essential skills/qualifications",
+            "enables objective screening/filtering of candidates"
+          ],
+          "application_max_2": [
+            "mobile app coding",
+            "$65,000 salary",
+            "software developers",
+            "engineers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "software",
+            "engineers",
+            "developers",
+            "coding",
+            "$65,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to this software studio of using job interviews during candidate selection.",
+        "model_answer": "Benefit 1: Assesses communication skills and personality fit [k], evaluating how developers interact with project managers on mobile app projects [app], ensuring good team collaboration [an]. Benefit 2: Low-cost and fast screening [k] compared to hosting coding assessment centers [app], allowing 10 developers to be hired quickly to meet client deadlines [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "assesses interpersonal skills/personality fit",
+            "low cost and fast screening method"
+          ],
+          "application_max_2": [
+            "project managers",
+            "mobile app projects",
+            "coding assessment centers",
+            "10 developers"
+          ],
+          "analysis_max_2": [
+            "ensures effective team collaboration",
+            "allows meeting tight client project deadlines"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "developers",
+            "engineers",
+            "software",
+            "interviews",
+            "coding",
+            "assessment center"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think this software studio should use practical coding assessment centers or structured job interviews to select 10 new software developers? Justify your answer.",
+        "model_answer": "Practical coding assessment centers test real technical competency [k], ensuring applicants can write bug-free mobile app code [app] and reducing project delivery failure risks [an]. On the other hand, structured job interviews are quicker and cheaper to organize [k] for 40-engineer firms [app], helping recruit 10 developers within the two-month target [an]. Overall, coding assessment centers are better because hiring underqualified engineers at $65,000 salaries creates severe financial damage through software bugs [eval]; practical testing ensures technical capability before offering expensive contracts [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "verifies technical competency/reduces performance risk",
+            "faster and cheaper selection process"
+          ],
+          "application_max_2": [
+            "bug-free mobile app code",
+            "10 developers in 2 months",
+            "$65,000 salaries",
+            "software bugs"
+          ],
+          "analysis_max_2": [
+            "reduces project failure risks",
+            "meets tight hiring deadlines"
+          ],
+          "evaluation_max_2": [
+            "weighs selection speed/cost against technical competency verification in software development context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "developers",
+            "coding",
+            "assessment center",
+            "interviews",
+            "$65,000",
+            "bugs",
+            "software"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_07",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A retail supermarket chain operates 6 store locations as a Public Limited Company, employing 150 checkout cashiers and floor assistants. Operating for 9 years, the company generates $8.5m in annual sales revenue. The business recently invested $400,000 in modern self-service checkout terminals and automated inventory scanning systems to lower store operating expenses and improve checkout speed.\n\nHowever, cashiers are making frequent operating errors on the new barcode scanners, causing long customer queues and frequent system freezes. The HR director must decide on the most effective training method to upskill retail staff. Options include implementing on-the-job training led by experienced store supervisors during daily trading hours or enrolling cashiers in off-the-job training courses hosted at an external technical training center during non-working days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'on-the-job training'.",
+        "model_answer": "Training that takes place at the workplace while the employee is actively performing their normal job duties [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training conducted at the workplace/job site",
+            "while actively performing normal work duties"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why training employees is important for this supermarket business.",
+        "model_answer": "Reason 1: Reduces operational error rates [k] when cashiers scan barcodes on self-service checkout terminals [app]. Reason 2: Improves customer service standards [k] by reducing cashier delays and checkout queue times [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces operational errors/improves accuracy",
+            "improves customer service quality/speed"
+          ],
+          "application_max_2": [
+            "barcode scanners",
+            "self-service checkouts",
+            "cashiers",
+            "checkout queues"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cashiers",
+            "barcode",
+            "scanners",
+            "supermarket",
+            "queues"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of providing off-the-job training at an external technical center.",
+        "model_answer": "Benefit 1: Training is delivered by specialized instructors [k], ensuring cashiers master complex $400,000 scanning technology without work distractions [app], leading to higher scanning accuracy [an]. Benefit 2: Prevents customer disruption [k] because staff learn terminal software outside trading hours [app], maintaining normal supermarket store operations [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "expert instruction/focused learning environment",
+            "prevents workplace disruption during training"
+          ],
+          "application_max_2": [
+            "$400,000 scanning technology",
+            "supermarket trading hours",
+            "cashiers",
+            "terminal software"
+          ],
+          "analysis_max_2": [
+            "increases scanning accuracy/reduces errors",
+            "maintains normal store trading operations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cashiers",
+            "off-the-job",
+            "scanners",
+            "supermarket",
+            "terminals"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think on-the-job training led by store supervisors is better for this supermarket chain than off-the-job training at an external center? Justify your answer.",
+        "model_answer": "On-the-job training is cost-effective and practical [k], as 150 cashiers practice scanning items directly at store checkouts [app], lowering training travel expenses [an]. However, training during daily trading hours distracts store supervisors [k] and slows down customer queues [app], increasing customer dissatisfaction [an]. Overall, off-the-job training at an external center is better because learning complex $400,000 self-service technology requires dedicated focus away from busy checkout lanes [eval], preventing cashier mistakes during live store trading [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower costs/learning in real work context",
+            "supervisor distraction/workplace disruption"
+          ],
+          "application_max_2": [
+            "150 cashiers",
+            "store checkouts",
+            "customer queues",
+            "$400,000 self-service technology"
+          ],
+          "analysis_max_2": [
+            "lowers travel and venue expenses",
+            "causes cashier delays and customer queue congestion"
+          ],
+          "evaluation_max_2": [
+            "weighs cost efficiency against distraction-free learning environment for new technology implementation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cashiers",
+            "supervisors",
+            "on-the-job",
+            "off-the-job",
+            "scanners",
+            "queues"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_08",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An express logistics and courier company operates a central parcel distribution depot as a Private Limited Company, employing 90 delivery drivers and warehouse handlers. Operating for 7 years, the firm generates $6.0m in annual revenue. Annual staff turnover among newly hired delivery drivers has reached 40% within their first 3 months of employment, creating operational disruption across urban delivery routes.\n\nExit interviews reveal that new drivers receive minimal initial job guidance, leading to frequent parcel delivery errors, traffic accidents, and severe job stress. Executive managers are evaluating whether to introduce a comprehensive 3-day induction training program covering depot safety procedures and route navigation software or implement a 2-week on-the-job mentorship scheme pairing new drivers with senior delivery staff during active delivery shifts.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'induction training'.",
+        "model_answer": "An introductory training program given to new employees to familiarize them with the business, working environment, safety rules, and colleagues [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "introductory training for new employees",
+            "familiarizes staff with workplace/culture/safety/colleagues"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two consequences for this logistics company of providing inadequate employee training.",
+        "model_answer": "Consequence 1: High driver turnover rates [k], reaching 40% among new drivers in urban delivery routes [app]. Consequence 2: Increased operational errors [k], leading to mislaid parcel deliveries and traffic accidents [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high employee turnover/resignation rates",
+            "increased operational errors/accident risks"
+          ],
+          "application_max_2": [
+            "40% turnover",
+            "urban delivery routes",
+            "mislaid parcels",
+            "traffic accidents"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "drivers",
+            "delivery",
+            "depot",
+            "routes",
+            "turnover"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this express courier firm of implementing an on-the-job mentorship scheme.",
+        "model_answer": "Benefit 1: Practical navigation learning [k], as senior drivers guide recruits through complex urban delivery routes during live shifts [app], reducing parcel delivery errors [an]. Benefit 2: Immediate feedback and support [k], helping new drivers manage job stress [app], which increases worker confidence and lowers early resignation rates [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "practical learning in real work environment",
+            "immediate feedback/support from senior staff"
+          ],
+          "application_max_2": [
+            "urban delivery routes",
+            "parcel delivery errors",
+            "senior drivers",
+            "live shifts"
+          ],
+          "analysis_max_2": [
+            "reduces parcel delivery errors",
+            "boosts worker confidence and lowers early resignations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "drivers",
+            "mentorship",
+            "courier",
+            "routes",
+            "depot"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think introducing a 3-day induction training program is better for this logistics company than a 2-week on-the-job mentorship scheme? Justify your answer.",
+        "model_answer": "A 3-day induction training program quickly familiarizes new drivers with depot safety procedures and navigation software [k], settling recruits fast [app] and reducing initial job anxiety [an]. However, induction training alone lacks extended real-world driving practice [k] on busy urban delivery routes [app], which may not prevent parcel loading errors [an]. Overall, a 2-week on-the-job mentorship scheme is better because 40% driver turnover is driven by daily route stress [eval]; pairing recruits with senior drivers on live delivery shifts provides ongoing support that builds long-term competence [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quick orientation/software familiarity",
+            "ongoing practical guidance/stress reduction"
+          ],
+          "application_max_2": [
+            "depot safety procedures",
+            "navigation software",
+            "urban delivery routes",
+            "40% driver turnover"
+          ],
+          "analysis_max_2": [
+            "reduces initial job anxiety",
+            "provides practical support on live delivery shifts"
+          ],
+          "evaluation_max_2": [
+            "weighs introductory orientation against sustained practical mentoring in high-stress logistics context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "drivers",
+            "induction",
+            "mentorship",
+            "depot",
+            "routes",
+            "turnover"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_09",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An architectural design firm operates as a Partnership, employing 25 architects and 10 administrative assistants across 2 regional office locations. Operating for 11 years, the firm generates $3.6m in annual fee revenue. Internal communication barriers between senior partners and project architects have caused severe project delays and costly blueprint errors on commercial building designs.\n\nPartners currently rely on formal written memos and lengthy email chains to communicate client design changes, leading to information overload and technical misunderstandings regarding building specifications. Architects report feeling isolated and demotivated due to one-way, top-down communication without opportunities for immediate feedback. The partners are deciding whether to replace formal written memos with weekly face-to-face staff meetings or introduce a digital instant messaging software platform to streamline project communications.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'communication barrier'.",
+        "model_answer": "Anything that prevents or hinders the clear transmission and understanding of a message between sender and receiver [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "factor preventing/hindering clear transmission or understanding of messages",
+            "between sender and receiver"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why effective internal communication is important for this architectural firm.",
+        "model_answer": "Reason 1: Reduces design errors [k] when communicating client blueprint changes to 25 architects [app]. Reason 2: Improves project completion speed [k] across 2 regional office locations [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces operational/design errors",
+            "improves decision speed/coordination across offices"
+          ],
+          "application_max_2": [
+            "client blueprint changes",
+            "25 architects",
+            "2 regional offices",
+            "commercial building designs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "architects",
+            "memos",
+            "building designs",
+            "partners",
+            "blueprint",
+            "email",
+            "specifications"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems caused by relying on formal written memos and email chains in this firm.",
+        "model_answer": "Problem 1: Information overload and technical misunderstandings [k], as complex building specifications sent in lengthy emails are misread [app], resulting in expensive blueprint revisions [an]. Problem 2: Lack of immediate feedback [k], leaving architects feeling isolated [app], which demotivates staff and delays project completion [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "information overload/misunderstandings",
+            "lack of two-way feedback/demotivation"
+          ],
+          "application_max_2": [
+            "building specifications",
+            "lengthy emails",
+            "architects",
+            "blueprint revisions"
+          ],
+          "analysis_max_2": [
+            "results in expensive redesign costs",
+            "demotivates staff and delays project completion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "architects",
+            "memos",
+            "specifications",
+            "communication",
+            "email",
+            "blueprint",
+            "overload"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think holding weekly face-to-face staff meetings is a better communication method for this architectural firm than introducing a digital instant messaging platform? Justify your answer.",
+        "model_answer": "Weekly face-to-face meetings allow direct two-way discussion [k], enabling architects to clarify complex building specifications directly with partners [app] and reducing blueprint errors [an]. However, scheduling physical meetings across 2 regional offices requires travel time [k] for 25 architects [app], taking time away from client design work [an]. Overall, digital instant messaging is better because architectural project changes occur daily [eval]; messaging software enables instant multi-office sharing of updated blueprints, providing faster clarification than waiting for weekly meetings [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "allows immediate two-way discussion/clarification",
+            "instant real-time communication/no travel time"
+          ],
+          "application_max_2": [
+            "building specifications",
+            "2 regional offices",
+            "25 architects",
+            "updated blueprints"
+          ],
+          "analysis_max_2": [
+            "reduces technical blueprint errors",
+            "saves productive design time and travel costs"
+          ],
+          "evaluation_max_2": [
+            "weighs face-to-face depth against instant digital accessibility in multi-office professional service context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "architects",
+            "meetings",
+            "messaging",
+            "memos",
+            "specifications"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_10",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A commercial airline catering supplier operates a processing facility near an international airport as a Private Limited Company, employing 110 kitchen preparation workers and delivery drivers. Operating for 8 years, the company generates $7.2m in annual sales revenue supplying flight meals to long-haul and short-haul commercial airlines. Internal communication breakdowns between night-shift kitchen staff and morning delivery drivers have resulted in incorrect meal trolley loadings, flight departure delays, and $120,000 in annual food waste expenses.\n\nJargon-heavy written shift schedules and language barriers among multicultural kitchen workers cause meal preparation instructions to be misunderstood. Executive directors are evaluating solutions: installing visual digital noticeboards displaying real-time meal assembly graphics in food preparation areas or conducting daily face-to-face shift briefing meetings between shift supervisors and delivery driver teams.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two internal communication channels a business could use.",
+        "model_answer": "1. Face-to-face briefing meetings [1].\n2. Visual noticeboards / digital displays [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "face-to-face meetings/briefings",
+            "visual noticeboards/displays",
+            "company emails",
+            "written memos/reports"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two communication barriers present in this catering supplier.",
+        "model_answer": "Barrier 1: Language barriers [k] among multicultural kitchen preparation staff [app]. Barrier 2: Use of technical jargon [k] in written flight meal shift schedules [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "language barriers/multicultural workforce",
+            "use of jargon/complex language"
+          ],
+          "application_max_2": [
+            "multicultural kitchen staff",
+            "flight meal shift schedules",
+            "catering facility",
+            "trolley loadings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "kitchen",
+            "flight meals",
+            "catering",
+            "trolley",
+            "drivers",
+            "jargon",
+            "shift schedules"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two consequences to this catering business of poor internal communication between shift teams.",
+        "model_answer": "Consequence 1: Increased operational waste expenses [k], as incorrect meal trolley loadings cause $120,000 in spoiled flight food [app], lowering profit margins [an]. Consequence 2: Service delivery delays [k], causing flight departure disruptions at the airport [app], damaging client relationships with commercial airlines [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increased financial waste/expenses",
+            "service delays/damaged client relationships"
+          ],
+          "application_max_2": [
+            "$120,000 food waste",
+            "meal trolley loadings",
+            "flight departure disruptions",
+            "commercial airlines"
+          ],
+          "analysis_max_2": [
+            "lowers business profit margins",
+            "damages client relationships with airline customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "meals",
+            "$120,000",
+            "trolley",
+            "flight",
+            "catering",
+            "waste",
+            "drivers",
+            "kitchen"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think installing visual digital noticeboards displaying meal graphics is a better communication method for this catering business than conducting daily face-to-face shift briefing meetings? Justify your answer.",
+        "model_answer": "Visual digital noticeboards display clear graphics [k], overcoming language barriers for multicultural kitchen workers [app] and reducing $120,000 food waste expenses [an]. However, noticeboards provide one-way communication [k] and cannot answer immediate questions from delivery drivers loading meal trolleys [app], risking unaddressed confusion [an]. Overall, visual digital noticeboards are better because technical jargon and language barriers cause miscommunication during meal preparation [eval]; graphics provide universally understood, continuous instructions on the kitchen floor without needing spoken translations [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overcomes language barriers through visual clarity",
+            "lacks immediate two-way feedback/questions"
+          ],
+          "application_max_2": [
+            "multicultural kitchen workers",
+            "$120,000 food waste",
+            "delivery drivers loading meal trolleys",
+            "visual graphics"
+          ],
+          "analysis_max_2": [
+            "reduces food waste expenses",
+            "risks unaddressed worker confusion"
+          ],
+          "evaluation_max_2": [
+            "weighs universal visual clarity against verbal two-way feedback in multicultural manufacturing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "noticeboards",
+            "kitchen",
+            "drivers",
+            "flight meals",
+            "jargon",
+            "$120,000",
+            "trolley"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_11",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An automobile dealership operates 3 showroom locations as a Private Limited Company, employing 22 sales consultants and 8 finance managers. Operating for 7 years, the business generates $4.5m in annual sales revenue selling luxury electric vehicles and maintenance packages. Sales consultants are paid purely on a commission basis ($1,200 per vehicle sold), with total annual commission payouts reaching $800,000.\n\nHowever, reliance on commission pay has created aggressive internal competition, where sales consultants pressure customers and refuse to share showroom duties. Customer service ratings have dropped by 35%, and annual staff turnover among sales consultants has reached 40%. According to Taylor's scientific management theory, financial rewards drive effort, but sales staff report severe income insecurity during low-demand winter months. The HR director must decide whether to replace pure commission pay with a basic fixed salary plus lower sales bonuses or introduce a team profit-sharing scheme based on quarterly showroom targets.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'commission'.",
+        "model_answer": "Payment made to an employee based on a percentage of sales value or number of units sold [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "payment based on percentage of sales value",
+            "payment per unit/vehicle sold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two disadvantages to this dealership of paying sales consultants purely on commission.",
+        "model_answer": "Disadvantage 1: Income insecurity during low-demand periods [k], as sales consultants earn lower commission in winter months when electric vehicle sales drop [app]. Disadvantage 2: Poor customer service quality [k], as sales staff rush customers to close sales quickly rather than explaining maintenance packages [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "income insecurity/unpredictable pay",
+            "poor customer service/aggressive tactics"
+          ],
+          "application_max_2": [
+            "electric vehicle sales",
+            "maintenance packages",
+            "winter months",
+            "sales consultants"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "consultants",
+            "electric vehicles",
+            "showroom",
+            "winter",
+            "commission",
+            "dealership"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of introducing a basic fixed salary alongside lower sales bonuses.",
+        "model_answer": "Benefit 1: Improved job and income security [k], reducing financial anxiety for 22 sales consultants during slow winter months [app], which lowers annual staff turnover rates [an]. Benefit 2: Encourages better customer engagement [k], as staff are willing to perform non-selling showroom duties [app], raising customer satisfaction ratings and brand loyalty [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "income security/lower staff turnover",
+            "encourages non-selling duties/better customer service"
+          ],
+          "application_max_2": [
+            "22 sales consultants",
+            "showroom duties",
+            "winter months",
+            "customer satisfaction ratings"
+          ],
+          "analysis_max_2": [
+            "lowers staff turnover rates",
+            "raises customer satisfaction and brand loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "consultants",
+            "salary",
+            "bonuses",
+            "showroom",
+            "winter",
+            "turnover"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think introducing a basic fixed salary plus lower bonuses is better for this dealership than a team profit-sharing scheme? Justify your answer.",
+        "model_answer": "A basic fixed salary plus bonuses provides guaranteed financial stability [k], reducing 40% consultant turnover during slow sales periods [app] and lowering recruitment expenses [an]. On the other hand, a team profit-sharing scheme encourages teamwork across 3 showrooms [k], motivating consultants to share vehicle lead details [app], but individual high-performing staff may feel unrewarded if team profits fall [an]. Overall, a basic salary plus lower bonuses is better because pure commission creates severe income anxiety [eval]; providing basic financial security directly resolves the 40% staff turnover problem while preserving individual incentive [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "guaranteed financial stability/lower turnover",
+            "promotes teamwork/lack of individual reward link"
+          ],
+          "application_max_2": [
+            "40% consultant turnover",
+            "3 showrooms",
+            "electric vehicle sales",
+            "commission payouts"
+          ],
+          "analysis_max_2": [
+            "lowers recruitment expenses",
+            "demotivates top sales performers"
+          ],
+          "evaluation_max_2": [
+            "weighs basic income security against collective team incentives in high-value retail context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "consultants",
+            "salary",
+            "bonuses",
+            "profit-sharing",
+            "turnover",
+            "commission"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_12",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A commercial bakery enterprise operates 2 production facilities as a Partnership, employing 30 bakery line workers and 6 delivery drivers. Operating for 5 years, the business generates $1.8m in annual sales revenue producing artisan sourdough bread and baked pastries, with wage overheads totaling $600,000.\n\nBakery line workers perform repetitive slicing and packaging tasks while paid hourly wages ($18 per hour). Due to extreme boredom and lack of job satisfaction, worker absenteeism has reached 18%, and production line flours and dough are frequently wasted due to careless handling. Applying Herzberg's two-factor theory, hygiene factors like basic hourly pay are satisfied, but motivators like achievement and meaningful work are lacking. The partners are evaluating whether to introduce job rotation across mixing, baking, and packaging stations or implement job enrichment by training line workers to create new pastry recipes and manage quality assurance inspections.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job rotation'.",
+        "model_answer": "Swapping workers between different tasks of similar difficulty levels to reduce monotony and boredom [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "swapping workers between different tasks",
+            "tasks at similar skill/responsibility level to reduce boredom"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two motivators according to Herzberg's theory that are missing for bakery line workers in this business.",
+        "model_answer": "Motivator 1: Meaningful work and responsibility [k], as workers perform repetitive slicing and packaging of sourdough bread without decision-making input [app]. Motivator 2: Sense of achievement and recognition [k], as line staff receive no praise for reducing flour waste in the bakery [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "meaningful work/responsibility",
+            "sense of achievement/recognition"
+          ],
+          "application_max_2": [
+            "sourdough bread",
+            "slicing and packaging",
+            "bakery line workers",
+            "flour waste"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bakery",
+            "sourdough",
+            "bread",
+            "pastries",
+            "slicing",
+            "packaging",
+            "flour"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this bakery business of implementing job rotation.",
+        "model_answer": "Benefit 1: Reduced workplace boredom and monotony [k], as 30 line workers rotate between dough mixing, baking, and packaging stations [app], lowering the 18% absenteeism rate [an]. Benefit 2: Greater workforce flexibility [k], allowing line staff to cover for absent colleagues across both production facilities [app], preventing bakery output delays [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces boredom/monotony",
+            "increases workforce flexibility/multiskilling"
+          ],
+          "application_max_2": [
+            "30 line workers",
+            "mixing, baking, packaging",
+            "18% absenteeism",
+            "production facilities"
+          ],
+          "analysis_max_2": [
+            "lowers absenteeism rates",
+            "prevents output delays and production bottlenecks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "baking",
+            "mixing",
+            "packaging",
+            "bakery",
+            "rotation",
+            "absenteeism"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think implementing job enrichment is better for this bakery partnership than introducing job rotation? Justify your answer.",
+        "model_answer": "Job enrichment grants higher responsibility [k], empowering workers to design pastry recipes and manage quality checks [app], which increases pride in work and cuts flour waste [an]. However, job rotation swaps staff across mixing and packaging stations [k], reducing task boredom for 30 line workers [app] without requiring expensive retraining expenses [an]. Overall, job enrichment is better because simple task rotation does not add true responsibility [eval]; giving workers genuine ownership over baking quality directly provides Herzberg motivators, solving high absenteeism and dough waste [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "adds genuine responsibility/pride in craftsmanship",
+            "reduces boredom at low cost/increases flexibility"
+          ],
+          "application_max_2": [
+            "pastry recipes",
+            "quality assurance checks",
+            "mixing and packaging stations",
+            "18% absenteeism"
+          ],
+          "analysis_max_2": [
+            "cuts raw material flour waste",
+            "avoids expensive retraining overheads"
+          ],
+          "evaluation_max_2": [
+            "weighs psychological job ownership against low-cost task variety in food production context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bakery",
+            "enrichment",
+            "rotation",
+            "pastries",
+            "recipes",
+            "mixing",
+            "packaging",
+            "absenteeism"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_13",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An architectural engineering consultancy operates as a Private Limited Company, employing 35 senior structural engineers and 10 junior CAD draftsmen. Operating for 8 years, the firm generates $5.2m in annual fee revenue providing building designs and structural audits for commercial construction developers.\n\nThe managing director practices a strict autocratic leadership style, insisting on approving every structural drawing and CAD blueprint personally. This central authority creates severe project bottlenecks, delaying client deliverables by an average of 4 weeks and causing $150,000 in penalty fees over the past year. Senior structural engineers report feeling demotivated and undervalued because their professional expertise is ignored. The board of directors is considering two options: transitioning to a democratic leadership style through weekly consultative design meetings or delegating formal blueprint sign-off authority directly to senior engineering project leads.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'delegation'.",
+        "model_answer": "Passing authority down the organizational hierarchy to subordinates to perform tasks and make decisions [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "passing authority down organizational hierarchy",
+            "to subordinates to make decisions/perform tasks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two features of an autocratic leadership style in this consultancy firm.",
+        "model_answer": "Feature 1: Centralized decision-making [k], as the managing director insists on personally approving every CAD blueprint [app]. Feature 2: One-way communication [k], where top-down instructions are issued to 35 senior engineers without consulting their technical opinions [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "centralized decision-making/no worker input",
+            "one-way top-down communication"
+          ],
+          "application_max_2": [
+            "CAD blueprint approval",
+            "35 senior structural engineers",
+            "structural audits",
+            "managing director"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "CAD",
+            "autocratic",
+            "consultancy",
+            "blueprint",
+            "managing director",
+            "35"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of delegating blueprint sign-off authority to senior engineering leads.",
+        "model_answer": "Benefit 1: Faster operational decision-making [k], allowing senior leads to approve CAD drawings immediately without waiting for director sign-off [app], eliminating 4-week project delays [an]. Benefit 2: Increased engineer motivation and job satisfaction [k] from added trust and professional responsibility [app], reducing staff resignation rates [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster decision-making/reduced bottlenecks",
+            "increased worker motivation/job satisfaction"
+          ],
+          "application_max_2": [
+            "CAD drawings",
+            "4-week project delays",
+            "senior engineering leads",
+            "structural audits"
+          ],
+          "analysis_max_2": [
+            "eliminates project delays and penalty fees",
+            "reduces staff resignation rates"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "CAD",
+            "blueprint",
+            "sign-off",
+            "4 weeks",
+            "$150,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think delegating blueprint sign-off authority to senior engineering leads is better for this consultancy than adopting a democratic leadership style? Justify your answer.",
+        "model_answer": "Delegating sign-off authority empowers senior engineers directly [k], enabling instant sign-off on structural drawings [app] and eliminating $150,000 in late delivery penalty fees [an]. Conversely, adopting a democratic leadership style introduces consultative weekly design meetings [k], gathering ideas from 35 structural engineers [app], but group discussions can slow down urgent decision-making [an]. Overall, delegating sign-off authority is better because project bottlenecks stem from centralized approval delays [eval]; passing authority directly to qualified leads solves delivery delays immediately without waiting for weekly meetings [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "direct empowerment/instant bottleneck resolution",
+            "consultative input/risk of slow group decisions"
+          ],
+          "application_max_2": [
+            "structural drawings",
+            "$150,000 penalty fees",
+            "weekly design meetings",
+            "35 structural engineers"
+          ],
+          "analysis_max_2": [
+            "eliminates late delivery penalty fees",
+            "slows down urgent decision-making through group discussion"
+          ],
+          "evaluation_max_2": [
+            "weighs direct operational authority against consultative leadership in time-sensitive professional service context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "democratic",
+            "autocratic",
+            "sign-off",
+            "blueprint",
+            "$150,000",
+            "weekly"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_14",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A regional department store chain operates 5 retail stores as a Public Limited Company, employing 200 shop floor assistants and 25 middle managers across 5 hierarchical management levels. Operating for 15 years, the company generates $12m in annual sales revenue, but fixed wage overheads have surged to $4.2m.\n\nDue to aggressive price competition from online e-commerce retailers, store profits have fallen by 20%. The tall organizational hierarchy results in a long chain of command and narrow spans of control (4 subordinates per manager), causing customer feedback on product pricing to take weeks to reach executive directors. Store managers report being micro-managed and unable to launch local sales promotions without head-office authorization. To lower fixed costs and speed up market response, the board is evaluating delayering (removing 2 middle management levels to flatten the structure) versus downsizing shop floor assistants.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'delayering'.",
+        "model_answer": "Removing one or more management levels from an organizational hierarchy to create a flatter structure [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "removing management levels/layers",
+            "creating a flatter organizational structure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems for this business of having a long chain of command.",
+        "model_answer": "Problem 1: Slow communication speed [k], as customer feedback on pricing takes weeks to pass through 5 management levels [app]. Problem 2: Message distortion [k], as instructions regarding local sales promotions are altered as they pass down to 200 shop floor staff [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "slow communication speed",
+            "message distortion/misinterpretation"
+          ],
+          "application_max_2": [
+            "pricing feedback",
+            "5 management levels",
+            "local sales promotions",
+            "200 shop floor staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "chain of command",
+            "shop floor",
+            "middle managers",
+            "hierarchy",
+            "pricing"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this retail business of delayering its management structure.",
+        "model_answer": "Benefit 1: Substantial reduction in fixed wage expenses [k], as removing 2 middle management tiers cuts redundant executive salaries from $4.2m overheads [app], directly improving store profitability [an]. Benefit 2: Wider spans of control and greater delegation [k], allowing store managers to approve local promotions quickly [app], improving responsiveness to e-commerce competitors [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces management salary costs",
+            "shortens communication chain/speeds up decision-making"
+          ],
+          "application_max_2": [
+            "2 middle management tiers",
+            "$4.2m wage overheads",
+            "local sales promotions",
+            "e-commerce competitors"
+          ],
+          "analysis_max_2": [
+            "directly improves store profitability",
+            "improves competitive responsiveness to e-commerce rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "delayering",
+            "middle managers",
+            "wage overheads",
+            "retail",
+            "stores"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think delayering middle management is better for this department store chain than downsizing shop floor assistants to cut wage expenses? Justify your answer.",
+        "model_answer": "Delayering middle management removes expensive salary layers [k], directly reducing $4.2m wage overheads while widening spans of control [app] and speeding up pricing decisions [an]. On the other hand, downsizing shop floor assistants cuts lower-wage headcount [k], reducing floor coverage across 5 retail stores [app], but leads to longer customer queues and poorer service quality [an]. Overall, delayering middle management is better because falling profits stem from bureaucratic delay against e-commerce competitors [eval]; cutting middle managers lowers wage costs without damaging direct shop floor customer service [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cuts expensive overheads/speeds up decisions",
+            "lowers headcount costs/damages customer service"
+          ],
+          "application_max_2": [
+            "$4.2m wage overheads",
+            "5 retail stores",
+            "shop floor coverage",
+            "e-commerce competitors"
+          ],
+          "analysis_max_2": [
+            "speeds up pricing decisions",
+            "causes customer queues and poorer service quality"
+          ],
+          "evaluation_max_2": [
+            "weighs administrative cost reduction against customer-facing operational impact in retail sector"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "delayering",
+            "downsizing",
+            "middle managers",
+            "shop floor",
+            "assistants",
+            "wage overheads",
+            "stores"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_15",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A medical equipment manufacturing plant operates as a Private Limited Company, employing 90 factory technicians and 6 research scientists. Operating for 10 years, the business generates $6.8m in annual sales revenue producing specialized surgical tools and diagnostic imaging devices.\n\nFollowing the unexpected resignation of the Chief Research Scientist, the company faces an urgent need to hire a qualified replacement offering an annual salary package of $95,000. Executive directors are preparing a person specification detailing required qualifications, including a doctorate in biomedical engineering and at least 5 years of diagnostic product development experience. Management is debating recruitment strategies: using internal recruitment to promote an existing senior research scientist or external recruitment via specialized executive headhunter agencies to attract candidates from competitor medical device firms.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'person specification'.",
+        "model_answer": "A document listing the required qualifications, skills, experience, and personal qualities for a job candidate [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "document detailing candidate requirements",
+            "qualifications, skills, experience, personal qualities needed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two items that should be included in the person specification for the Chief Research Scientist role.",
+        "model_answer": "Item 1: Specialized educational qualification [k], specifically a doctorate degree in biomedical engineering [app]. Item 2: Specific work experience [k], requiring at least 5 years developing diagnostic imaging devices [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "educational qualifications",
+            "relevant work experience/technical skills"
+          ],
+          "application_max_2": [
+            "doctorate in biomedical engineering",
+            "5 years diagnostic product experience",
+            "surgical tools",
+            "Chief Research Scientist"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "doctorate",
+            "biomedical",
+            "scientists",
+            "diagnostic",
+            "surgical",
+            "specification"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this medical firm of using internal recruitment to fill the scientist vacancy.",
+        "model_answer": "Benefit 1: Lower recruitment costs and time savings [k], avoiding expensive executive headhunter agency fees for the $95,000 role [app], allowing rapid replacement [an]. Benefit 2: Known abilities and culture fit [k], as promoting an existing research scientist ensures prior understanding of surgical tool production safety standards [app], reducing performance risk [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower recruitment costs/time savings",
+            "candidate capability is known/familiar with culture"
+          ],
+          "application_max_2": [
+            "$95,000 salary package",
+            "existing research scientist",
+            "surgical tool safety standards",
+            "headhunter fees"
+          ],
+          "analysis_max_2": [
+            "allows rapid vacancy replacement",
+            "reduces candidate failure/performance risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "scientists",
+            "internal recruitment",
+            "$95,000",
+            "surgical",
+            "biomedical",
+            "headhunter"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think this medical equipment firm should use external recruitment agencies or internal recruitment to fill the Chief Research Scientist position? Justify your answer.",
+        "model_answer": "External recruitment brings in fresh industry ideas and specialized diagnostic expertise [k], attracting top talent from rival medical firms [app] and driving new product innovation [an]. However, external headhunter agencies charge high placement fees [k] for $95,000 salary roles [app], and external hires take months to adapt to factory operations [an]. Overall, external recruitment is better because developing cutting-edge medical devices requires top-tier scientific expertise [eval]; bringing in fresh biomedical innovation outweighs agency recruitment fees when developing patented medical devices [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "brings fresh ideas/external technical expertise",
+            "high recruitment agency fees/longer induction time"
+          ],
+          "application_max_2": [
+            "rival medical firms",
+            "$95,000 salary package",
+            "diagnostic devices",
+            "biomedical innovation"
+          ],
+          "analysis_max_2": [
+            "drives new product innovation",
+            "increases cash outflows and extends induction period"
+          ],
+          "evaluation_max_2": [
+            "weighs external technical innovation against recruitment cost and onboarding delays in high-tech manufacturing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "scientists",
+            "external recruitment",
+            "internal recruitment",
+            "$95,000",
+            "headhunter",
+            "diagnostic",
+            "biomedical"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_16",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A commercial banking network operates 12 regional branch offices as a Public Limited Company, employing 140 bank tellers and customer service representatives. Operating for 14 years, the financial institution generates $11.5m in annual revenue providing personal bank accounts and commercial mortgage loans.\n\nRecent internal compliance audits revealed a 25% increase in loan processing errors and customer complaints regarding incorrect financial advice. To solve these operational quality issues, the bank is recruiting 15 new financial advisory specialists ($48,000 annual salary). The HR manager must select an effective selection procedure. Option 1 involves conducting short, structured job interviews combined with cv screening. Option 2 involves running 2-day selection assessment centers featuring role-play financial advice scenarios, numerical aptitude tests, and group problem-solving exercises. HR must balance selection costs and recruitment speed against compliance risks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two selection methods a business could use when hiring employees.",
+        "model_answer": "1. Job interviews [1].\n2. Selection assessment centers / Aptitude testing [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job interviews",
+            "assessment centers",
+            "aptitude/psychometric testing",
+            "CV/application screening"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why thorough candidate selection is important for this banking institution.",
+        "model_answer": "Reason 1: Reduces financial loan processing errors [k], ensuring advisory specialists comply with mortgage regulations across 12 branch offices [app]. Reason 2: Improves customer satisfaction [k] by providing accurate advice on personal bank accounts [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces operational errors/regulatory breach risks",
+            "improves customer service quality/satisfaction"
+          ],
+          "application_max_2": [
+            "loan processing errors",
+            "12 branch offices",
+            "mortgage regulations",
+            "personal bank accounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bank",
+            "advisory",
+            "mortgage",
+            "tellers",
+            "loan processing",
+            "compliance"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to this bank of using selection assessment centers with role-play scenarios.",
+        "model_answer": "Benefit 1: Tests practical problem-solving and communication skills under pressure [k], evaluating how applicants handle realistic financial advice scenarios [app], reducing compliance failure risks [an]. Benefit 2: Measures numerical and analytical accuracy [k] through aptitude tests [app], ensuring candidates possess required competence for $48,000 advisory roles [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "evaluates practical skills under pressure",
+            "accurately measures numerical/analytical competence"
+          ],
+          "application_max_2": [
+            "role-play financial advice scenarios",
+            "numerical aptitude tests",
+            "$48,000 advisory roles",
+            "loan compliance"
+          ],
+          "analysis_max_2": [
+            "reduces compliance failure risks",
+            "ensures candidates possess necessary technical competence"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bank",
+            "assessment centers",
+            "role-play",
+            "aptitude",
+            "advisory",
+            "mortgage"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think using selection assessment centers is better for this bank than relying on structured job interviews? Justify your answer.",
+        "model_answer": "Selection assessment centers rigorously evaluate candidate competence through role-play advice scenarios and aptitude tests [k], selecting candidates who avoid loan processing errors [app] and lowering compliance risks [an]. However, assessment centers are expensive and time-consuming to organize [k] across 12 branch locations [app], taking weeks longer than short interviews [an]. Overall, assessment centers are better because loan processing errors have increased by 25% [eval]; thorough testing of financial advice competence justifies higher selection costs to protect bank compliance reputation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rigorous skills evaluation/reduces compliance risks",
+            "high financial cost/slow recruitment process"
+          ],
+          "application_max_2": [
+            "role-play scenarios",
+            "25% error increase",
+            "12 branch locations",
+            "mortgage advice"
+          ],
+          "analysis_max_2": [
+            "lowers compliance breach risks",
+            "delays recruitment completion"
+          ],
+          "evaluation_max_2": [
+            "weighs selection rigor against time and financial expense in regulated financial services context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "assessment centers",
+            "interviews",
+            "bank",
+            "advisory",
+            "mortgage",
+            "compliance",
+            "role-play"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_17",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An industrial robotics manufacturing plant operates as a Private Limited Company, employing 70 assembly line technicians and 12 mechanical engineers. Operating for 6 years, the enterprise generates $8.4m in annual sales revenue manufacturing automated assembly arms for commercial car manufacturers, paying technicians fixed annual salaries of $52,000.\n\nThe plant recently invested $1.5m in advanced 3D laser-welding technology to increase factory output speed. However, technicians lack technical experience with the new equipment, leading to high defect rates (12% of welded robotic arms fail quality control) and frequent emergency machine shutdowns. The HR director must implement a comprehensive technical training strategy. Option 1 is implementing on-the-job training led by senior mechanical engineers on the factory floor during active shifts. Option 2 is enrolling technicians in off-the-job training courses hosted at an external engineering technical institute.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'off-the-job training'.",
+        "model_answer": "Training that takes place away from the normal workplace, such as at a college or external training center [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training taking place away from normal work station",
+            "at external college, training institute, or venue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to this business of training its assembly line technicians.",
+        "model_answer": "Benefit 1: Reduced product defect rates [k] when operating 3D laser-welding machinery to build automated robotic arms [app]. Benefit 2: Improved workplace safety and reduced shutdowns [k], preventing emergency machine downtime on $52,000 salary production lines [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces defect rates/improves quality",
+            "improves workplace safety/reduces machine downtime"
+          ],
+          "application_max_2": [
+            "3D laser-welding machinery",
+            "robotic arms",
+            "emergency machine shutdowns",
+            "technicians"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "technicians",
+            "welding",
+            "robotic arms",
+            "laser-welding",
+            "factory"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to this robotics plant of using on-the-job training on the factory floor.",
+        "model_answer": "Disadvantage 1: Disruption to active production [k], as senior mechanical engineers must pause welding automated arms to instruct technicians [app], slowing factory output [an]. Disadvantage 2: Risk of bad working habits being passed on [k] if senior engineers use informal shortcuts on $1.5m laser-welding equipment [app], causing ongoing product defects [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "workplace disruption/slower production during training",
+            "risk of passing on bad habits/informal shortcuts"
+          ],
+          "application_max_2": [
+            "senior mechanical engineers",
+            "welding automated arms",
+            "$1.5m laser-welding equipment",
+            "factory floor"
+          ],
+          "analysis_max_2": [
+            "slows overall factory production output",
+            "causes ongoing product defects and quality failures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "technicians",
+            "on-the-job",
+            "engineers",
+            "welding",
+            "robotic arms",
+            "factory floor"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think enrolling technicians in off-the-job training at an external technical institute is better for this robotics firm than providing on-the-job training? Justify your answer.",
+        "model_answer": "Off-the-job training provides expert instruction in a dedicated environment [k], allowing 70 technicians to master complex 3D laser-welding software without work distractions [app], directly lowering 12% defect rates [an]. On the other hand, on-the-job training is cheaper and practical [k], as technicians practice directly on car robotic assembly arms [app], but disrupts senior engineers during active shifts [an]. Overall, off-the-job training at an external institute is better because $1.5m welding equipment requires precise technical mastery [eval]; dedicated training eliminates expensive quality defects before technicians operate factory machinery [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "expert instruction/no workplace disruption",
+            "lower cost/learning in real work environment"
+          ],
+          "application_max_2": [
+            "70 technicians",
+            "12% defect rates",
+            "3D laser-welding software",
+            "robotic assembly arms"
+          ],
+          "analysis_max_2": [
+            "lowers product defect rates",
+            "disrupts senior engineers during active factory shifts"
+          ],
+          "evaluation_max_2": [
+            "weighs specialized external instruction against cost and disruption in high-tech manufacturing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "technicians",
+            "off-the-job",
+            "on-the-job",
+            "welding",
+            "robotic arms",
+            "institute"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_18",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A customer service call center operates as a Private Limited Company, employing 180 customer support agents and 15 team leaders. Operating for 4 years, the company generates $5.0m in annual revenue handling telecommunications account queries, with wage expenses totaling $2.2m.\n\nThe call center suffers from a 50% agent turnover rate within the first 60 days of employment. Exit interviews reveal that new hires receive minimal initial orientation, leading to confusion over billing software, customer complaints, and job stress. Simultaneously, the introduction of automated AI chat systems requires downsizing workforce numbers by 30 agents. The HR director must resolve two pressing issues: evaluating whether to implement a structured 1-week induction training program to reduce new agent resignations and selecting criteria for voluntary vs compulsory redundancy to downsize the workforce fairly.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'redundancy'.",
+        "model_answer": "When an employee's job position is no longer needed by the business, leading to termination of employment [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "when a job position is no longer required",
+            "employee is dismissed because job role ceases to exist"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two contents that should be included in an induction training program for customer support agents.",
+        "model_answer": "Content 1: Navigation of company software [k], teaching recruits how to operate telecommunications billing software [app]. Content 2: Overview of health and safety and workplace facilities [k], introducing agents to call center emergency procedures and team leaders [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "company software/systems instruction",
+            "health & safety/workplace rules and facilities orientation"
+          ],
+          "application_max_2": [
+            "telecommunications billing software",
+            "call center emergency procedures",
+            "15 team leaders",
+            "support agents"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "agents",
+            "billing",
+            "telecommunications",
+            "call center",
+            "induction",
+            "software"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of implementing a structured 1-week induction training program.",
+        "model_answer": "Benefit 1: Settles new recruits quickly [k], helping 180 support agents navigate telecommunications billing software efficiently [app], reducing initial job stress and early resignations [an]. Benefit 2: Improves customer service accuracy [k], reducing handling errors during account queries [app], which increases client retention and lowers recruitment expenses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "settles recruits quickly/reduces early turnover",
+            "improves service accuracy/customer satisfaction"
+          ],
+          "application_max_2": [
+            "180 support agents",
+            "telecommunications billing software",
+            "account queries",
+            "50% turnover rate"
+          ],
+          "analysis_max_2": [
+            "reduces job stress and early resignations",
+            "lowers recruitment expenses and improves retention"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "agents",
+            "induction",
+            "billing",
+            "telecommunications",
+            "turnover",
+            "queries"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think offering voluntary redundancy packages is a better method for downsizing 30 call center agents than compulsory redundancy? Justify your answer.",
+        "model_answer": "Offering voluntary redundancy allows staff to choose to leave in exchange for financial payout [k], preserving morale among remaining telecommunications agents [app] and maintaining goodwill [an]. However, voluntary redundancy may lead to top-performing agents leaving [k], depriving the call center of experienced support staff [app] and increasing severance payout expenses [an]. Overall, voluntary redundancy is better because compulsory layoffs cause widespread anxiety and union resistance [eval]; voluntary packages protect workforce motivation among remaining agents operating alongside new AI chat systems [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "protects workforce morale/avoids union conflict",
+            "risk of losing key skilled staff/higher severance costs"
+          ],
+          "application_max_2": [
+            "telecommunications agents",
+            "30 agents",
+            "AI chat systems",
+            "$2.2m wage expenses"
+          ],
+          "analysis_max_2": [
+            "maintains goodwill and remaining staff morale",
+            "deprives business of experienced support staff"
+          ],
+          "evaluation_max_2": [
+            "weighs workforce morale protection against loss of key skilled personnel in call center downsizing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "agents",
+            "redundancy",
+            "voluntary",
+            "compulsory",
+            "telecommunications",
+            "call center",
+            "AI"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_19",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "An international seaport logistics company operates across 4 container terminals as a Public Limited Company, employing 160 dock supervisors and crane operators. Operating for 12 years, the business generates $14m in annual revenue loading and offloading maritime cargo vessels.\n\nInternal communication breakdowns between seaport logistics managers and crane operators have caused severe container loading delays, resulting in $300,000 in annual port penalty fees. Managers currently rely on formal written memos and lengthy technical email chains to communicate cargo loading schedules. Operators report information overload and technical misunderstandings regarding container weight specifications. Language barriers among multicultural dock workers further aggravate miscommunication. The board of directors is deciding between two communication solutions: introducing daily 15-minute face-to-face shift briefing meetings or equipping crane operators with 2-way digital radio headsets for instant verbal communication.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'internal communication'.",
+        "model_answer": "The exchange of information and messages between people or departments within the same business [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "exchange of information/messages",
+            "between employees/departments inside the same business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two communication barriers present in this seaport logistics company.",
+        "model_answer": "Barrier 1: Information overload and technical jargon [k], as lengthy email chains containing complex container weight specifications confuse operators [app]. Barrier 2: Language barriers [k], as multicultural dock workers misinterpret written shift memos [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "information overload/technical jargon",
+            "language barriers/multicultural workforce"
+          ],
+          "application_max_2": [
+            "container weight specifications",
+            "lengthy email chains",
+            "multicultural dock workers",
+            "written shift memos"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "seaport",
+            "crane operators",
+            "memos",
+            "container",
+            "dock workers",
+            "cargo"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two consequences to this company of ineffective internal communication.",
+        "model_answer": "Consequence 1: Increased financial penalty expenses [k], as container loading delays result in $300,000 in annual port fees [app], reducing profit margins [an]. Consequence 2: Operational inefficiency and cargo delays [k], causing maritime cargo vessels to miss departure windows [app], damaging relationships with shipping clients [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increased penalty costs/financial loss",
+            "operational delays/damaged customer relationships"
+          ],
+          "application_max_2": [
+            "$300,000 port penalty fees",
+            "container loading delays",
+            "maritime cargo vessels",
+            "shipping clients"
+          ],
+          "analysis_max_2": [
+            "reduces business profit margins",
+            "damages client relationships with shipping firms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$300,000",
+            "penalty",
+            "crane operators",
+            "container",
+            "cargo",
+            "seaport",
+            "delays"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think equipping crane operators with 2-way digital radio headsets is a better communication method for this seaport firm than holding daily face-to-face shift briefings? Justify your answer.",
+        "model_answer": "Equipping crane operators with 2-way digital radios allows real-time verbal communication [k], enabling immediate clarification of container weight changes while operating cranes [app] and reducing $300,000 port delays [an]. However, radio headsets can be disrupted by loud seaport machinery noise [k] across 4 terminals [app], leading to misheard verbal commands [an]. Overall, 2-way digital radio headsets are better because container loading is a continuous, real-time operation [eval]; instant verbal updates while operating cranes prevent costly delays far better than a single briefing held before the shift starts [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "real-time instant communication/no delay",
+            "background noise disruption/risk of mishearing"
+          ],
+          "application_max_2": [
+            "2-way digital radios",
+            "container weight changes",
+            "$300,000 port delays",
+            "4 terminals"
+          ],
+          "analysis_max_2": [
+            "prevents container loading delays",
+            "causes misheard verbal commands in noisy dock environments"
+          ],
+          "evaluation_max_2": [
+            "weighs real-time operational feedback against static pre-shift briefings in fast-paced logistics context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "headsets",
+            "crane operators",
+            "seaport",
+            "container",
+            "cargo",
+            "$300,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_20",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "A hospital equipment maintenance business operates as a Private Limited Company, employing 45 field service engineers and 8 customer dispatch controllers. Operating for 9 years, the company generates $4.1m in annual sales revenue repairing MRI scanners and X-ray machines for public hospitals.\n\nField service engineers operate remotely across the country, paid hourly rates ($35 per hour). Inadequate external communication between dispatch controllers and field engineers has caused severe service delays. Dispatchers currently send emergency repair orders via written SMS text messages, but engineers frequently miss messages while working inside shielded hospital imaging rooms. Hospital clients complain that emergency breakdown response times exceed 6 hours, breaching service contracts. Management is deciding between launching a dedicated mobile service app with automated push notifications or establishing a 24/7 centralized telephone call dispatch center.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'external communication'.",
+        "model_answer": "The exchange of information and messages between a business and external individuals or organizations [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "exchange of information/messages",
+            "between business and outside stakeholders/customers/suppliers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two communication barriers present in this equipment maintenance business.",
+        "model_answer": "Barrier 1: Physical environment barriers [k], as MRI scanner shielded rooms block mobile phone signals for field engineers [app]. Barrier 2: Inappropriate communication medium [k], as unread SMS text messages fail to alert staff to emergency hospital repairs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "physical environment/technical signal barriers",
+            "inappropriate choice of communication medium"
+          ],
+          "application_max_2": [
+            "MRI scanner shielded rooms",
+            "45 field engineers",
+            "unread SMS text messages",
+            "emergency hospital repairs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "MRI",
+            "X-ray",
+            "SMS",
+            "hospital",
+            "dispatch"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two consequences to this maintenance firm of poor communication between dispatchers and field engineers.",
+        "model_answer": "Consequence 1: Service level contract breaches [k], as emergency repair response times exceed 6 hours for hospital clients [app], leading to financial penalty fines [an]. Consequence 2: Loss of customer goodwill and contracts [k], as public hospitals cancel maintenance agreements for X-ray machines [app], reducing annual sales revenue below $4.1m [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "contractual breaches/financial penalties",
+            "loss of customer goodwill/cancelled contracts"
+          ],
+          "application_max_2": [
+            "6-hour response times",
+            "public hospital clients",
+            "X-ray machines",
+            "$4.1m sales revenue"
+          ],
+          "analysis_max_2": [
+            "results in financial penalty fines",
+            "reduces annual sales revenue and market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "MRI",
+            "X-ray",
+            "hospitals",
+            "$4.1m",
+            "dispatch",
+            "contract"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching a dedicated mobile service app with push notifications is better for this business than establishing a 24/7 centralized telephone dispatch center? Justify your answer.",
+        "model_answer": "Launching a mobile service app provides automated push notifications and job tracking [k], sending job alerts to 45 engineers instantly when they leave hospital imaging rooms [app] and lowering response times below 6 hours [an]. However, a mobile app still relies on cellular data connections [k] inside hospital buildings [app], which may delay urgent breakdown alerts [an]. Overall, a 24/7 centralized telephone dispatch center is better because direct telephone calls allow personal confirmation [eval]; dispatchers can verbally confirm an engineer has received an emergency MRI repair order, ensuring immediate response without relying solely on unread app notifications [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "instant automated tracking/lower operating cost",
+            "verbal confirmation/direct two-way contact"
+          ],
+          "application_max_2": [
+            "45 field engineers",
+            "hospital imaging rooms",
+            "6-hour response times",
+            "MRI repair orders"
+          ],
+          "analysis_max_2": [
+            "lowers emergency response times",
+            "ensures immediate confirmation of urgent jobs"
+          ],
+          "evaluation_max_2": [
+            "weighs automated digital notifications against direct verbal confirmation in critical medical repair context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "engineers",
+            "app",
+            "telephone",
+            "dispatch",
+            "MRI",
+            "X-ray",
+            "hospitals",
+            "notifications"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 // CIE Cambridge 0264 / 0450 Paper 1 Authentic Database (Sections 1 to 6)
-// 240 Comprehensive Scenario Sets (40 Unit 1, 40 Unit 2, 40 Unit 3, 40 Unit 4, 40 Unit 5, 40 Unit 6) with 960 verified questions (2m, 4m, 6m, 8m)
+// 600 Comprehensive Scenario Sets (100 Unit 1, 100 Unit 2, 100 Unit 3, 100 Unit 4, 100 Unit 5, 100 Unit 6) with 2,400 verified questions (2m, 4m, 6m, 8m)
 
 import rawDatabase from "./paper1-database.json";
 

@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_81",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Hazelmere Chocolates Ltd is a private limited company founded 9 years ago by the Ferreira family in Country X. It employs 42 workers making premium boxed chocolates at its Bellport factory. Last year it sold 1.4 million boxes at $8 each, earning revenue of $11.2 million. Recently, complaints about broken pralines have risen to 240 a month, and 18% of boxes failed final inspection in May.\n\nManaging Director Carla Ferreira must decide between two options before the Christmas gifting range ships in 10 weeks. Option A is quality control: adding an end-of-line inspection team to catch faulty boxes before dispatch, costing $60,000 a year. Option B is quality assurance: building checks into every production stage and training 30 workers to inspect recipes, enrobing and packaging, costing $95,000 to set up but cutting rework.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'quality assurance'.",
+        "model_answer": "Quality assurance is a system of building quality into every stage of production, from raw materials to dispatch, so that faults are prevented rather than just detected [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality is built into every stage of production",
+            "Faults are prevented rather than just detected"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why quality is important to Hazelmere Chocolates Ltd.",
+        "model_answer": "First, quality is important because high-quality chocolates satisfy customers and build loyalty [k]. With complaints already at 240 a month, fixing quality would protect the Christmas gifting range and encourage shoppers to reorder Hazelmere boxes [app]. Second, quality is important because poor quality wastes resources [k]. The 18% of boxes failing final inspection contain wasted ingredients and labour, so improving quality lowers costs and protects the $11.2 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality builds customer satisfaction and loyalty",
+            "Quality reduces waste, rework and costs"
+          ],
+          "application_max_2": [
+            "Reference to 240 complaints a month / Christmas gifting range",
+            "Reference to 18% failing final inspection / $11.2 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "240",
+            "18%",
+            "$11.2 million",
+            "Hazelmere Chocolates Ltd",
+            "1.4 million boxes",
+            "Christmas gifting range"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Hazelmere Chocolates Ltd might face if it introduces quality control (Option A).",
+        "model_answer": "First, quality control checks products at the end of production, so faults are only detected after costs have been added [k]. With 18% of boxes already failing final inspection, even a larger inspection team would simply find more faulty boxes without stopping them being made, raising rework and scrap [app]. This would increase costs rather than remove the root cause of the defect problem, squeezing profit [an]. Second, quality control adds a permanent wage bill for inspectors [k]. The extra team costs $60,000 a year on top of existing wages for 42 workers, and that money cannot also train 30 production workers [app]. The ongoing expense reduces funds available for improvements such as Option B, limiting long-term competitiveness [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality control checks at the end of production; faults detected late",
+            "Quality control adds a permanent staffing cost"
+          ],
+          "application_max_2": [
+            "Reference to 18% failing final inspection",
+            "Reference to $60,000 a year / 42 workers / 30 workers to train"
+          ],
+          "analysis_max_2": [
+            "Chain from late detection to rework and scrap to higher costs and squeezed profit",
+            "Chain from inspector wages to fewer funds for training to weaker long-term competitiveness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality control",
+            "$60,000",
+            "18%",
+            "42 workers",
+            "end-of-line inspection",
+            "final inspection"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hazelmere Chocolates Ltd should introduce quality assurance (Option B) rather than quality control (Option A)? Justify your answer.",
+        "model_answer": "Option A, quality control, would catch faulty boxes at the end of the line, protecting customers quickly before dispatch [k]. At $60,000 a year it is cheaper up front and would visibly cut complaints during the 10 weeks before the Christmas gifting range ships [app]. This rapid protection is valuable given the reputation risk at peak season [an]. However, Option B, quality assurance, prevents defects at every stage rather than detecting them afterwards [k]. Training 30 of the 42 workers to check recipes, enrobing and packaging costs $95,000 to set up, but it attacks the rework behind the 18% failure rate directly [app]. Preventing faults earlier reduces wasted ingredients, rework and complaints, protecting Hazelmere's $11.2 million revenue more sustainably than end-of-line checks [an]. Overall, I think Hazelmere Chocolates Ltd should choose Option B [eval] because prevention is cheaper than failure: the $95,000 is less than two years of Option A at $60,000 a year, after which Option B is cheaper and errors fall further [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality control detects faults at end of production",
+            "Quality assurance prevents faults at every stage"
+          ],
+          "application_max_2": [
+            "Reference to Option A: $60,000 a year / 10 weeks / Christmas gifting range",
+            "Reference to Option B: $95,000 / 30 of 42 workers / 18% failure rate / $11.2 million revenue"
+          ],
+          "analysis_max_2": [
+            "Chain from end-of-line detection to rapid reputation protection at peak season",
+            "Chain from prevention at source to less rework/waste to protected revenue and lower long-run cost"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($60,000 vs $95,000, 18% failure, 240 complaints)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "quality control",
+            "$60,000",
+            "$95,000",
+            "240",
+            "18%",
+            "Christmas gifting range",
+            "$11.2 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_82",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Driftwood Toy Co is a private limited company owned by Daniel Reyes, designing wooden trains and puzzles at its Ashfield workshop in Country X. It employs 68 workers and exports toys to 6 countries through independent shops. Last year it produced 900,000 units selling at an average of $8 each, earning $7.2 million. Export returns caused by a paint defect reached 5% of shipments, and one retailer threatened to cancel a $400,000 order.\n\nDaniel must decide in 8 weeks, before the retailer's order review. Option A: introduce Total Quality Management across the business, making every worker responsible for quality with weekly improvement meetings and a suggestion scheme, costing $30,000 in training. Option B: keep the current system of 4 end-of-line inspectors checking finished toys, which adds no new cost but leaves export returns unchanged.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'Total Quality Management (TQM)'.",
+        "model_answer": "Total Quality Management is a business-wide approach in which every employee is responsible for quality, with continuous improvement of processes and products until zero defects are achieved [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Every employee in the business is responsible for quality",
+            "Continuous improvement aiming for zero defects"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Driftwood Toy Co of producing high-quality toys.",
+        "model_answer": "First, high quality builds reputation and customer loyalty [k]. Export retailers in 6 countries rely on safe, well-made toys, so a good record would help secure the $400,000 order now at risk of cancellation [app]. Second, high quality reduces returns and rework costs [k]. With paint defects causing 5% of shipments to be returned, better quality would cut replacement costs and protect the $7.2 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality builds reputation and customer loyalty",
+            "Quality reduces returns, rework and replacement costs"
+          ],
+          "application_max_2": [
+            "Reference to 6 export countries / $400,000 order at risk",
+            "Reference to 5% paint defect returns / $7.2 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$400,000",
+            "6 countries",
+            "5%",
+            "$7.2 million",
+            "Driftwood Toy Co",
+            "900,000 units"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of introducing Total Quality Management (Option A) at Driftwood Toy Co.",
+        "model_answer": "First, TQM makes every worker responsible for quality [k]. Under weekly improvement meetings, all 68 workers can spot paint defects during production rather than after dispatch [app]. Catching faults at source reduces waste and rework, lowering production costs and raising profit margins [an]. Second, TQM encourages continuous improvement and employee involvement [k]. The suggestion scheme lets workers closest to the toys propose fixes, improving morale and ownership [app]. A motivated workforce checks its own work more carefully, so the 5% return rate falls and the $400,000 retailer order is protected [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Every employee is responsible for quality; faults found at source",
+            "Continuous improvement / employee involvement through suggestions"
+          ],
+          "application_max_2": [
+            "Reference to 68 workers / weekly improvement meetings",
+            "Reference to suggestion scheme / 5% returns / $400,000 order"
+          ],
+          "analysis_max_2": [
+            "Chain from shared responsibility to fewer faults to lower waste and rework costs",
+            "Chain from employee involvement to morale to fewer returns and a secured order"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "$30,000",
+            "68 workers",
+            "5%",
+            "suggestion scheme",
+            "$400,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Driftwood Toy Co should introduce Total Quality Management (Option A)? Justify your answer.",
+        "model_answer": "Option A costs $30,000 to train all 68 workers, but TQM builds quality into every stage, so paint defects would be prevented before toys reach export markets [k]. This directly addresses the root cause of the 5% return rate and would reassure the retailer ahead of the $400,000 order review [app]. Preventing defects also cuts rework and scrap, improving profit over time rather than just inspecting faults after they occur [an]. However, Option B keeps 4 end-of-line inspectors at no extra cost, so Daniel could redeploy the $30,000 to sales or new toy designs [k]. Inspection does catch faulty toys before dispatch, but returns would likely stay at 5% and the retailer could still cancel the $400,000 order [app]. Losing that order would cost far more than $30,000, and it does nothing to fix the paint process itself [an]. Overall, I think Daniel should choose Option A [eval] because $30,000 is small next to the $400,000 order and the $7.2 million revenue at stake; prevention beats detection [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "TQM builds quality into each stage / all employees responsible",
+            "End-of-line inspection detects faults but does not prevent them"
+          ],
+          "application_max_2": [
+            "Reference to Option A: $30,000 / 68 workers / weekly meetings / suggestion scheme",
+            "Reference to Option B: no extra cost / 4 inspectors / 5% returns / $400,000 order"
+          ],
+          "analysis_max_2": [
+            "Chain from TQM prevention to fewer returns to protected profit and contract",
+            "Chain from inspection-only to persistent 5% returns to risk of losing $400,000"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($30,000 vs $400,000, 5% returns, $7.2 million revenue)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "$30,000",
+            "5%",
+            "$400,000",
+            "$7.2 million",
+            "end-of-line inspectors",
+            "suggestion scheme"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_83",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Timberline Joinery is a partnership owned by brothers Adam and Eli Kovac, manufacturing fitted wardrobes and kitchens at its Kilndown workshop in Country X. It employs 25 workers, producing 1,150 units last year and earning revenue of $3.6 million. Rework caused by finish flaws affects 9% of units, and a national housebuilder has offered a contract worth $900,000 a year if consistent quality can be evidenced by independent assessment.\n\nThe partners must decide in 6 weeks, before signing the housebuilder contract. Option A: pay $70,000 for an external quality audit and a 12-month certification, renewable each year, proving standards to buyers and reducing the need to prove quality for every new order. Option B: keep weekend in-house checks costing $5,000, with no external validation and no proof to show the housebuilder, but immediate savings.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'quality control'.",
+        "model_answer": "Quality control is the inspection of finished goods at the end of production to check they meet required standards, allowing faulty items to be removed or reworked before sale [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Inspection of finished goods at the end of production",
+            "Faulty items are removed or reworked before sale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Timberline Joinery of winning the housebuilder contract.",
+        "model_answer": "First, the contract would raise revenue and profit [k]. At $900,000 a year it is a 25% uplift on the $3.6 million earned last year, adding significant sales income [app]. Second, the contract would secure regular orders and market presence [k]. Supplying a national housebuilder across its developments would raise Timberline's profile and reputation in Country X, attracting further large buyers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Increased revenue and profit",
+            "Reputation / regular orders / market presence"
+          ],
+          "application_max_2": [
+            "Reference to $900,000 a year / $3.6 million revenue",
+            "Reference to national housebuilder"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$3.6 million",
+            "housebuilder",
+            "1,150 units",
+            "9%",
+            "25 workers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Timberline Joinery of paying for external certification (Option A).",
+        "model_answer": "First, certification gives independent proof that quality standards are met [k]. The housebuilder requires evidence of consistent quality, and a 12-month certificate from external auditors satisfies that demand without repeated checks for every order [app]. Securing this independent approval makes the $900,000 contract far more likely, lifting revenue by a quarter [an]. Second, external audits identify weaknesses in production processes [k]. Auditors would examine how the 25 workers prepare, fit and finish each unit and flag the flaws causing 9% rework [app]. Fixing these weaknesses would cut waste and rework costs, improving efficiency and protecting profit margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Independent / external proof of quality standards",
+            "Audits identify process weaknesses to correct"
+          ],
+          "application_max_2": [
+            "Reference to 12-month certification / housebuilder's requirement for evidence",
+            "Reference to 25 workers / 9% rework / $900,000 contract"
+          ],
+          "analysis_max_2": [
+            "Chain from certification to accepted evidence to contract secured",
+            "Chain from audit findings to less rework and waste to lower costs and higher profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "external quality audit",
+            "$900,000",
+            "9%",
+            "25 workers",
+            "$70,000",
+            "housebuilder"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Timberline Joinery should pay $70,000 for external certification (Option A)? Justify your answer.",
+        "model_answer": "Option A costs $70,000 for a 12-month certification, renewable each year, but it provides independent proof of quality standards [k]. The housebuilder has explicitly offered $900,000 a year if quality can be evidenced, so certification converts directly into a contract worth 25% of the $3.6 million earned last year [app]. Winning it would stabilise the order book for 25 workers and build a reputation attracting further buyers [an]. However, Option B keeps weekend in-house checks at only $5,000, saving $65,000 in the short run and preserving cash for materials and wages [k]. The $5,000 checks can still reduce some finish flaws, but they offer no external validation, so the housebuilder may award the contract elsewhere [app]. Losing $900,000 of annual revenue to save $65,000 would be poor financial logic for the Kovac brothers [an]. Overall, I think Timberline Joinery should choose Option A [eval] because the $70,000 cost is outweighed many times over by the $900,000 contract and the lasting credibility certification brings [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Certification = independent external proof of quality standards",
+            "In-house checks are cheaper but unverified externally"
+          ],
+          "application_max_2": [
+            "Reference to Option A: $70,000 / 12-month certification / renewable annually",
+            "Reference to Option B: $5,000 weekend checks / no external validation / $900,000 contract at risk"
+          ],
+          "analysis_max_2": [
+            "Chain from certification to evidence to secured contract and sales pipeline",
+            "Chain from weak validation to contract lost to lost $900,000 revenue exceeding $65,000 saved"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($70,000 vs $5,000, $900,000 contract, $3.6 million revenue)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$70,000",
+            "$5,000",
+            "$900,000",
+            "$3.6 million",
+            "housebuilder",
+            "9%",
+            "25 workers",
+            "12-month certification"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_84",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Rosedale Knitwear is a private limited company producing knitwear for retailers in Country X. It employs 110 workers at its Rivergate factory and knitted 600,000 garments last year, selling at an average of $15 each for revenue of $9 million. Complaints and returns over stitching faults reached 12,000 garments last quarter, and its main overseas customer, a fashion retail group taking 60% of output, has demanded a corrective action plan.\n\nManaging Director Sara Okafor must act within 5 weeks, ahead of the retailer's supplier audit. Option A: hire 6 more inspectors for $54,000 a year to double-check finished garments. Option B: introduce quality assurance at every stage, from yarn inspection to knitting, linking and pressing, with retraining for all 110 workers, costing $80,000 as a one-off.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'quality'.",
+        "model_answer": "Quality is the extent to which a product meets or exceeds customer expectations and requirements, consistently and without faults [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality is meeting customer expectations and requirements",
+            "Quality means consistency / absence of faults or defects"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Rosedale Knitwear should reduce the number of faulty garments.",
+        "model_answer": "First, faulty garments create rework and returns costs [k]. With returns at 12,000 garments last quarter, each faulty item wastes yarn, machine time and labour, so fewer faults would lower production costs [app]. Second, faults damage reputation with customers [k]. The overseas fashion retail group taking 60% of output has demanded a corrective action plan, so persistent faults could lose Rosedale its largest customer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Faults create rework, returns and waste costs",
+            "Faults damage reputation and customer relationships"
+          ],
+          "application_max_2": [
+            "Reference to 12,000 garments returned last quarter",
+            "Reference to 60% of output / overseas fashion retail group"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12,000",
+            "60%",
+            "$9 million",
+            "110 workers",
+            "Rosedale Knitwear",
+            "600,000 garments"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Rosedale Knitwear might face if it hires 6 more inspectors (Option A).",
+        "model_answer": "First, inspection at the end of production only detects faults; it does not prevent them [k]. Double-checking finished garments would not stop stitching faults occurring during linking, so the 12,000 returns might continue [app]. Rework and scrap costs would persist, squeezing profit margins [an]. Second, hiring 6 inspectors raises costs without fixing processes [k]. The extra $54,000 a year is a permanent wage bill that does not reduce the fault rate itself [app]. Higher overheads reduce funds for training and could force price rises, weakening competitiveness against rival suppliers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "End-of-line inspection detects but does not prevent faults",
+            "Additional permanent staffing cost"
+          ],
+          "application_max_2": [
+            "Reference to 12,000 returns / stitching faults in linking",
+            "Reference to $54,000 a year / 6 more inspectors"
+          ],
+          "analysis_max_2": [
+            "Chain from late detection to persistent defects to continuing rework costs and lower profit",
+            "Chain from higher overheads to less training funds / price rises to weaker competitiveness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$54,000",
+            "12,000",
+            "6 more inspectors",
+            "quality assurance",
+            "110 workers",
+            "stitching faults"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Rosedale Knitwear should introduce quality assurance (Option B)? Justify your answer.",
+        "model_answer": "Option B builds quality into every stage, from yarn inspection to pressing, preventing stitching faults rather than catching them afterwards [k]. Retraining all 110 workers costs $80,000 as a one-off but attacks the root cause of the 12,000 returns, protecting the relationship with the retail group taking 60% of output [app]. Fewer returns would cut rework costs and safeguard the $9 million revenue earned last year [an]. However, Option A hires 6 inspectors at $54,000 a year, is simpler to introduce within 5 weeks and would intercept faulty garments before they reach the retailer [k]. But the fault rate itself would persist, and two years of $54,000 totals $108,000 — more than Option B's single $80,000 payment [app]. Only Option B permanently reduces the 60% customer's risk of lost trust and meets its demand for a corrective action plan [an]. Overall, I think Rosedale Knitwear should choose Option B [eval], because prevention aligns with the audit and is cheaper over two years [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality assurance prevents faults at source at every stage",
+            "Quality control detects faults after production / at the end"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $80,000 one-off / retraining 110 workers / every stage",
+            "Reference to Option A: $54,000 a year / 6 inspectors / 5 weeks / 12,000 returns"
+          ],
+          "analysis_max_2": [
+            "Chain from prevention to fewer returns to protected retailer relationship and revenue",
+            "Chain from annual inspection wages to higher 2-year cost ($108,000) vs one-off $80,000"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($54,000 vs $80,000, 12,000 returns, 60% of output)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$80,000",
+            "$54,000",
+            "12,000",
+            "60%",
+            "$9 million",
+            "110 workers",
+            "5 weeks"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_85",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Bramblewick Honey is a sole trader business owned by Yusuf Rahman on his 22-hectare farm in Country X, bottling honey from 80 hives delivered weekly. He produces 36,000 jars a year sold at $5 each, giving revenue of $180,000, through farmers' markets and 14 local shops. A supermarket chain wants to list his honey in 30 stores but requires batch testing before each delivery, following two complaints of incorrectly blended honey.\n\nYusuf must decide within 4 weeks. Option A: pay a laboratory to test every delivery batch for $8,000 a year, a quality control approach of checking finished jars. Option B: buy a refractometer and jarring equipment for $6,000 as a one-off and introduce quality assurance checklists for extraction, straining and jarring at each stage.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two costs of poor quality to a business.",
+        "model_answer": "Poor quality leads to customer complaints and returns, raising costs [1]. It damages reputation, losing customers and sales [1]. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Complaints, returns or rework costs",
+            "Damaged reputation / lost customers and sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Bramblewick Honey of improving quality before supplying the supermarket chain.",
+        "model_answer": "First, higher quality would help secure the new contract [k]. Listing in 30 stores would massively expand sales beyond his 14 local shops, multiplying market reach [app]. Second, consistent quality protects reputation [k]. With complaints of incorrectly blended honey already recorded, proving reliable jars to the supermarket would earn repeat, larger orders [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality helps secure new contracts / sales growth",
+            "Quality protects and builds reputation"
+          ],
+          "application_max_2": [
+            "Reference to 30 supermarket stores vs 14 local shops",
+            "Reference to incorrectly blended honey complaints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 stores",
+            "14 local shops",
+            "$180,000",
+            "36,000 jars",
+            "incorrectly blended honey",
+            "supermarket chain"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Yusuf might face if he relies on laboratory testing of finished batches alone (Option A).",
+        "model_answer": "First, testing finished batches detects faults but does not prevent them [k]. Blending and straining errors would already have happened by the time the laboratory approves a batch, so jars of incorrectly blended honey could still slip through to the 30 stores [app]. A rejected batch would destroy honey he has already paid to produce and jar [an]. Second, the laboratory fee is a permanent annual cost [k]. Paying $8,000 a year cuts into the $180,000 revenue from jars sold at $5 each, eroding his small margin [app]. Over two years the $16,000 total exceeds the $6,000 cost of Option B's equipment [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Finished-product testing detects faults but does not prevent them",
+            "Laboratory testing is an ongoing annual cost"
+          ],
+          "application_max_2": [
+            "Reference to 30 stores / incorrectly blended honey / extraction, straining and jarring stages",
+            "Reference to $8,000 a year / $180,000 revenue / $5 per jar"
+          ],
+          "analysis_max_2": [
+            "Chain from late detection to spoiled produced stock to lost value",
+            "Chain from $8,000 fee to lower margin to $16,000 two-year cost exceeding Option B"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$8,000",
+            "$6,000",
+            "30 stores",
+            "$180,000",
+            "laboratory",
+            "incorrectly blended honey",
+            "$5 each"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Yusuf Rahman should choose quality assurance (Option B)? Justify your answer.",
+        "model_answer": "Option B costs $6,000 once and introduces quality assurance checklists at extraction, straining and jarring, preventing faults at source [k]. This directly prevents the incorrectly blended honey problem before jars reach the 30 stores, and the equipment remains his indefinitely with no recurring fee [app]. Over two years Option A costs $16,000 against $6,000 for Option B, leaving more cash for Yusuf to fund growth [an]. However, Option A uses an independent laboratory, which may reassure the supermarket more than self-checks [k]. Independent test certificates give the chain objective proof that each delivery meets its batch requirements, though waiting for approval could delay dispatch to stores [app]. The $8,000 a year fee is also ongoing, and a failed batch wastes both the fee and the production cost of that batch [an]. Overall, I think Yusuf should choose Option B [eval], provided the supermarket accepts documented QA procedures: it prevents faults, saves $10,000 over two years and builds lasting capability [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality assurance prevents faults at source at each stage",
+            "Independent laboratory testing offers objective third-party proof"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $6,000 one-off / extraction, straining, jarring checklists / refractometer",
+            "Reference to Option A: $8,000 a year laboratory / 30 stores / batch testing requirement"
+          ],
+          "analysis_max_2": [
+            "Chain from QA checklists to prevention to fewer rejected batches and protected sales",
+            "Chain from independent testing to supermarket confidence vs recurring $8,000 fee and wasted batches"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($6,000 vs $8,000 a year, 30 stores, $180,000 revenue)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$6,000",
+            "$8,000",
+            "$180,000",
+            "30 stores",
+            "14 local shops",
+            "extraction",
+            "incorrectly blended honey"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_86",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Starling Cosmetics is a private limited company formulating organic skincare creams at its Harborne laboratory facility in Country X. It employs 54 workers and sold 210,000 jars at $30 each last year, earning $6.3 million. Complaints of skin irritation reached 320 in 6 months, and a contaminated batch of face cream forced a recall of 4,000 jars costing $90,000, attracting regulator attention.\n\nDirector Priya Nair must decide within 8 weeks, ahead of the regulator's audit. Option A: add 2 laboratory technicians to test every batch before release, a quality control approach costing $48,000 a year. Option B: introduce Total Quality Management across all departments, covering formulation, filling, packaging and warehousing, with staff quality targets, monthly review meetings and a suggestion scheme, costing $75,000 to implement.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'customer satisfaction'.",
+        "model_answer": "Customer satisfaction is the degree to which customers are pleased with a product or service and feel their needs and expectations have been met [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Customers are pleased with a product or service",
+            "Their needs and expectations are met"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why high quality is important to Starling Cosmetics.",
+        "model_answer": "First, high quality protects customers' health and avoids recalls [k]. The contaminated face cream already forced a recall of 4,000 jars costing $90,000, and more recalls would destroy trust in the brand [app]. Second, high quality protects reputation and sales [k]. With 320 complaints of skin irritation in 6 months, quality failures would deter new buyers and cut the $6.3 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality protects customer safety / prevents recalls",
+            "Quality protects reputation and sales"
+          ],
+          "application_max_2": [
+            "Reference to recall of 4,000 jars / $90,000 recall cost",
+            "Reference to 320 complaints / $6.3 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "4,000 jars",
+            "$90,000",
+            "320",
+            "$6.3 million",
+            "skin irritation",
+            "Starling Cosmetics"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of introducing Total Quality Management (Option B) at Starling Cosmetics.",
+        "model_answer": "First, TQM involves every department in quality [k]. Targets and monthly review meetings across formulation, filling, packaging and warehousing would catch errors such as contamination before batches are filled [app]. Preventing faults at source would cut recalls and scrap, saving money and protecting the brand [an]. Second, TQM encourages continuous improvement and employee suggestions [k]. The suggestion scheme empowers 54 workers to report risks and propose safer handling [app]. Engaged workers take greater care, reducing the 320 complaints and satisfying the regulator ahead of its audit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "TQM involves every department / all employees share responsibility for quality",
+            "TQM encourages continuous improvement and employee suggestions"
+          ],
+          "application_max_2": [
+            "Reference to formulation, filling, packaging and warehousing / monthly review meetings",
+            "Reference to suggestion scheme / 54 workers / 320 complaints"
+          ],
+          "analysis_max_2": [
+            "Chain from cross-department targets to early error detection to fewer recalls and lower cost",
+            "Chain from worker involvement to greater care to fewer complaints and regulator confidence"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "suggestion scheme",
+            "$75,000",
+            "320",
+            "formulation",
+            "54 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Starling Cosmetics should introduce Total Quality Management (Option B)? Justify your answer.",
+        "model_answer": "Option B costs $75,000 to implement, more than the $48,000 a year cost of Option A, but TQM prevents defects across every department rather than only catching them in the laboratory before release [k]. Monthly review meetings and quality targets shared by 54 workers would tackle why the contaminated batch reached 4,000 jars in the first place [app]. Preventing contamination protects the $6.3 million revenue and helps satisfy the regulator at the 8-week audit, avoiding forced withdrawal or fines [an]. However, Option A, quality control, is quicker and cheaper in year one, adding 2 technicians who pass or fail every batch independently [k]. Laboratory testing would intercept faulty batches before dispatch, but the $48,000 fee recurs each year and does nothing to stop errors in filling or packaging [app]. Over two years Option A costs $96,000, exceeding Option B's $75,000, while Option B leaves the business a permanent quality culture [an]. Overall, I think Starling Cosmetics should choose Option B [eval] because TQM removes causes of failure system-wide and costs less over two years [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "TQM prevents defects across all departments / whole business approach",
+            "Quality control detects defects before release / at the end of production"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $75,000 / 54 workers / monthly review meetings / suggestion scheme",
+            "Reference to Option A: $48,000 a year / 2 technicians / batch testing / 8-week audit"
+          ],
+          "analysis_max_2": [
+            "Chain from cross-department prevention to fewer contaminated batches to protected revenue and regulator confidence",
+            "Chain from recurring $48,000 lab fee to $96,000 over two years exceeding $75,000 to Option B better value"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($48,000 vs $75,000, 4,000 jars, $6.3 million revenue)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "$75,000",
+            "$48,000",
+            "4,000 jars",
+            "$90,000",
+            "$6.3 million",
+            "suggestion scheme",
+            "320"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_87",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Ferndale Tiles is a private limited company manufacturing ceramic wall and floor tiles at its Kilnvally factory in Country X. It employs 85 workers, producing 2.2 million tiles last year at an average of $2 each, giving revenue of $4.4 million. A hotel group has offered a $600,000 contract if quality can be proven, after 2 container loads were returned because tiles cracked in transit and 4% of tiles failed finish inspection.\n\nThe owners must decide in 6 weeks before the hotel group expects a decision. Option A: pay $45,000 for an external audit and a 12-month certification, renewable annually. Option B: build Ferndale's own documented quality assurance system for clay preparation, glazing, firing and packing, costing $22,000 plus $5,000 a year to maintain.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline the difference between quality control and quality assurance.",
+        "model_answer": "Quality control checks finished products at the end of production and removes faulty items [1]. Quality assurance builds quality into every stage of production so faults are prevented before they occur [1]. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality control = checks finished goods / removes faulty items at the end",
+            "Quality assurance = builds quality into every stage / prevents faults"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Ferndale Tiles of obtaining external certification (Option A).",
+        "model_answer": "First, certification proves quality objectively to buyers [k]. The hotel group offering $600,000 wants proof before placing orders, and an external audit provides independent evidence [app]. Second, certification strengthens reputation and competitiveness [k]. Winning the $600,000 contract would lift revenue above the $4.4 million earned last year and open further large hotel projects [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Independent proof/evidence of quality standards",
+            "Stronger reputation / competitive advantage"
+          ],
+          "application_max_2": [
+            "Reference to $600,000 hotel group contract",
+            "Reference to $4.4 million revenue / 2.2 million tiles"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$4.4 million",
+            "hotel group",
+            "12-month certification",
+            "$45,000",
+            "2.2 million tiles"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Ferndale Tiles of building its own quality assurance system (Option B).",
+        "model_answer": "First, quality assurance prevents faults at source [k]. Checking clay preparation, glazing, firing and packing would catch the flaws causing tiles to crack, rather than discovering them after dispatch [app]. Preventing the 4% finish failures would cut returns and rework, raising profit [an]. Second, a documented system makes quality consistent and trainable [k]. Written procedures let all 85 workers follow the same checks every shift, so quality does not depend on memory [app]. Consistent routines lower waste and help Ferndale keep the hotel contract worth $600,000 year after year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality assurance prevents faults at source at each stage",
+            "Documented procedures make quality consistent and trainable"
+          ],
+          "application_max_2": [
+            "Reference to clay preparation, glazing, firing and packing / 4% finish failures",
+            "Reference to 85 workers / $600,000 hotel contract"
+          ],
+          "analysis_max_2": [
+            "Chain from stage-by-stage checks to fewer cracks/rejects to lower rework cost and higher profit",
+            "Chain from written procedures to consistent quality to lower waste and a stable $600,000 contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$22,000",
+            "clay preparation",
+            "4%",
+            "$600,000",
+            "85 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ferndale Tiles should pay for external certification (Option A) rather than build its own quality assurance system (Option B)? Justify your answer.",
+        "model_answer": "Option A costs $45,000 and provides independent, audit-verified certification that the hotel group can trust as proof of consistent quality [k]. Because the hotel wants quality proven, the 12-month certificate converts directly into the $600,000 contract and renews credibility with other large buyers [app]. Securing $600,000 of annual revenue against $45,000 spent is a strong commercial return [an]. However, Option B costs $22,000 plus $5,000 a year and tackles the actual causes of the 4% finish failures and cracked tiles, rather than just reporting on them [k]. Owning the system keeps procedures for clay preparation to packing in-house permanently, and over three years Option B costs $37,000, less than the first $45,000 year of Option A [app]. Building internal capability also raises staff ownership of quality, not just audit paperwork [an]. Overall, I think Ferndale Tiles should choose Option B [eval], because it prevents faults permanently and costs less, unless the hotel group rejects uncertified systems, in which case Option A is a necessary $45,000 investment to secure the $600,000 contract [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Certification = independent external audit of quality",
+            "Own QA system = prevention-focused, held in-house"
+          ],
+          "application_max_2": [
+            "Reference to Option A: $45,000 / external audit / 12-month certification / renewable annually",
+            "Reference to Option B: $22,000 plus $5,000 a year / clay preparation, glazing, firing, packing / 4% finish failures"
+          ],
+          "analysis_max_2": [
+            "Chain from certification to audit-proof to contract win and repeat credibility",
+            "Chain from own QA system to lower 3-year cost ($37,000) and fault prevention to sustainable quality"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($45,000 vs $22,000 + $5,000 a year, $600,000 contract, 4% failures)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$45,000",
+            "$22,000",
+            "$5,000",
+            "$600,000",
+            "4%",
+            "$4.4 million",
+            "hotel group",
+            "clay preparation"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_88",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Amberleigh Dairies is a private limited company processing 90,000 litres of milk a week at its Kilndown site in Country X, supplying pasteurised milk and yoghurt to 40 shops and 8 cafes. It employs 26 staff and earned revenue of $2.9 million last year. Three deliveries were found to contain sour milk last month, 2% of yoghurt pots came in below weight, and its largest customer, a 10-shop chain, is reviewing its supplier list.\n\nThe owners must decide within 5 weeks. Option A: hire 2 inspectors to test finished batches at packing, a quality control approach costing $30,000 a year. Option B: install quality assurance controls, covering temperature and time checks in pasteurisation, calibrated filling machines and hygiene training, costing $40,000 as a one-off.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'zero defects'.",
+        "model_answer": "Zero defects is the quality target that every product produced should have no faults, so production is right first time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Producing goods with no faults at all",
+            "Being right first time / continuous effort to eliminate errors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why quality is important to Amberleigh Dairies.",
+        "model_answer": "First, quality is vital for food safety [k]. Sour milk in three deliveries last month risks making customers ill, which could lead to fines, product seizures and prosecution [app]. Second, quality protects customer relationships and sales [k]. The 10-shop chain, its largest customer, is reviewing suppliers, and repeated faults would push it to switch to a rival dairy [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality protects customer safety / avoids fines",
+            "Quality protects customer relationships and sales"
+          ],
+          "application_max_2": [
+            "Reference to sour milk in three deliveries last month",
+            "Reference to 10-shop chain reviewing suppliers / $2.9 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sour milk",
+            "10-shop chain",
+            "40 shops",
+            "2%",
+            "$2.9 million",
+            "Amberleigh Dairies"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Amberleigh Dairies might face if it relies on inspection of finished batches alone (Option A).",
+        "model_answer": "First, checking finished batches detects faults only after they occur [k]. Pasteurisation errors and underweight filling happen upstream, so inspectors would find but not fix the 2% below-weight pots [app]. Scrapped pots waste milk already processed, raising costs [an]. Second, sampling at packing can miss faulty items in a large batch [k]. With 90,000 litres processed weekly, sour milk could still slip through in untested pots reaching 40 shops and 8 cafes [app]. One case of food poisoning could cost the dairy its 10-shop chain and permanently damage its reputation [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Finished-batch checks detect faults late / after value is added",
+            "Sampling can miss defective items in a batch"
+          ],
+          "application_max_2": [
+            "Reference to 2% below-weight pots / pasteurisation upstream",
+            "Reference to 90,000 litres weekly / 40 shops and 8 cafes / 10-shop chain risk"
+          ],
+          "analysis_max_2": [
+            "Chain from late detection to scrapped pots to wasted milk and higher costs",
+            "Chain from undetected faulty batch to food poisoning to loss of largest customer and reputation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$30,000",
+            "2%",
+            "90,000 litres",
+            "10-shop chain",
+            "sour milk",
+            "8 cafes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Amberleigh Dairies should choose quality assurance (Option B)? Justify your answer.",
+        "model_answer": "Option B costs $40,000 once and prevents faults at source: pasteurisation temperature and time checks, calibrated filling machines and hygiene training remove the causes of sour milk and below-weight pots [k]. Preventing failures before packing protects the 40 shops, 8 cafes and the 10-shop chain whose review is due within 5 weeks [app]. Over two years Option B costs $40,000 while Option A costs $60,000, so prevention is both safer and cheaper [an]. However, Option A hires 2 inspectors for $30,000 a year and starts immediately, giving early warning on every finished batch as an independent checkpoint [k]. But Option A recurs at $60,000 over two years, detects rather than prevents, and leaves pasteurisation faults unchecked at source [app]. A single missed batch could still end the 10-shop chain relationship, threatening $2.9 million of revenue [an]. Overall, I think Amberleigh Dairies should choose Option B [eval] because it addresses root causes, costs $20,000 less over two years and directly defends the largest customer contract [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option B = quality assurance preventing faults at source",
+            "Option A = inspection of finished batches / quality control"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $40,000 one-off / temperature and time checks / calibrated filling machines / hygiene training",
+            "Reference to Option A: $30,000 a year / 2 inspectors / finished batches at packing"
+          ],
+          "analysis_max_2": [
+            "Chain from prevention to fewer sour batches and below-weight pots to protected contracts",
+            "Chain from recurring $30,000 fee to $60,000 two-year cost exceeding $40,000 plus unaddressed root cause"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($30,000 vs $40,000, 10-shop chain, $2.9 million revenue)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$40,000",
+            "$30,000",
+            "10-shop chain",
+            "40 shops",
+            "90,000 litres",
+            "$2.9 million",
+            "sour milk"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_89",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Osprey Electronics is a private limited company assembling smart-home control panels for property developers at its Eastholme production unit in Country X. It employs 64 workers and produced 24,000 units last year at $250 each, earning $6 million. Bench tests show 7% of units fail, costing $180,000 a year in rework, and warranty claims are rising. A developer considering an order of 8,000 panels wants evidence of a defect-reduction plan.\n\nThe owners must decide in 6 weeks before the developer decides on the order. Option A: add tester overtime for $25,000 a year to clear the inspection backlog, keeping the current end-of-line quality control. Option B: adopt Total Quality Management over 12 months, forming cross-functional teams, a suggestion scheme and a supplier quality programme, costing $85,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two costs a business might incur to improve quality.",
+        "model_answer": "Installing inspection and testing equipment is one cost of improving quality [1]. Training workers to check their own work at each stage is another cost [1]. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Testing or inspection equipment / laboratory fees",
+            "Training costs for staff on quality checks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why reducing the failure rate matters to Osprey Electronics.",
+        "model_answer": "First, a lower failure rate cuts rework costs [k]. Failures already cost $180,000 a year, so fixing processes would release funds for wages and materials [app]. Second, fewer defects build customer trust and win orders [k]. The developer weighing an 8,000-panel order, worth $2 million at $250 each, will favour a supplier with a credible defect-reduction plan [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower defects cut rework / waste costs",
+            "Lower defects build trust and help win orders"
+          ],
+          "application_max_2": [
+            "Reference to $180,000 a year rework cost",
+            "Reference to developer's 8,000-panel order / $250 per unit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "defect-reduction plan",
+            "$180,000",
+            "8,000 panels",
+            "$250",
+            "7%",
+            "Osprey Electronics"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of adopting Total Quality Management (Option B) at Osprey Electronics.",
+        "model_answer": "First, TQM prevents defects at source by making everyone responsible for quality [k]. Cross-functional teams covering assembly, testing and dispatch would find why 7% of units fail before panels are built [app]. Eliminating root causes would shrink the $180,000 rework bill and free capacity for new orders [an]. Second, TQM extends into the supply chain [k]. The supplier quality programme audits bought-in components, stopping faulty inputs reaching the test bench [app]. Fewer incoming faults raise first-pass test rates and strengthen the bid for the 8,000-panel order [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "TQM prevents defects at source / all employees responsible",
+            "TQM extends quality into supplier relationships"
+          ],
+          "application_max_2": [
+            "Reference to cross-functional teams / 7% unit failures / suggestion scheme",
+            "Reference to supplier quality programme / 8,000-panel order"
+          ],
+          "analysis_max_2": [
+            "Chain from root-cause elimination to lower rework bill to freed capacity and orders",
+            "Chain from supplier audits to fewer incoming faults to higher first-pass pass rates and contract wins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "$85,000",
+            "cross-functional teams",
+            "suggestion scheme",
+            "supplier quality programme",
+            "7%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Osprey Electronics should adopt Total Quality Management (Option B)? Justify your answer.",
+        "model_answer": "Option B costs $85,000 over 12 months, more than the $25,000 a year of Option A, but it prevents defects at source through cross-functional teams, a suggestion scheme and supplier checks [k]. The 7% failure rate and $180,000 rework cost both point to process faults, and only TQM removes those causes rather than managing a backlog [app]. Eliminating rework quickly offsets the $85,000 programme and makes the 8,000-panel, $2 million developer order far more secure [an]. However, Option A keeps end-of-line control with overtime at $25,000 a year, cheaper immediately and clears the inspection backlog within weeks [k]. But a year of $25,000 still leaves the 7% fail rate untouched, the $180,000 rework bill standing and customer confidence flat [app]. Clearing a backlog is not the same as curing the process disease, and the developer wants evidence of reduction that inspection alone does not provide [an]. Overall, I think Osprey Electronics should adopt Option B [eval], with Option A only as a temporary supplement; the $85,000 buys prevention, the $2 million contract and falling rework costs [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "TQM = prevention across the whole business incl. suppliers",
+            "Quality control / inspection = detects faults at the end / short-run relief"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $85,000 / 12 months / cross-functional teams / supplier quality programme",
+            "Reference to Option A: $25,000 a year / tester overtime / inspection backlog / 7% failures"
+          ],
+          "analysis_max_2": [
+            "Chain from root-cause prevention to lower rework to protected developer contract ($2 million)",
+            "Chain from inspection-only to unchanged 7% failure and $180,000 rework to weak customer confidence"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($25,000 vs $85,000, 7% failures, $180,000 rework, 8,000 panels)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Total Quality Management",
+            "$85,000",
+            "$25,000",
+            "7%",
+            "$180,000",
+            "8,000 panels",
+            "$6 million",
+            "suggestion scheme"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_90",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Thornhill Vineyards is a family-owned wine estate at its Kilmara site in Country X, producing 140,000 bottles a year from 60 hectares of vines and employing 30 staff. Wines sell at $14 a bottle, earning revenue of $1.96 million. Inconsistent fermentation means 6% of bottles are rejected at bottling, and two vintages scored poorly with critics. A supermarket chain has proposed an own-label listing worth $800,000 a year, conditional on consistent quality and an annual external audit.\n\nThe family must decide in 9 weeks. Option A: hire a full-time quality manager for $45,000 a year to run end-of-line quality control at bottling. Option B: implement winery-wide quality assurance with TQM principles, covering vine-to-bottle procedures, staff training and lab checks at each stage, costing $70,000 to set up.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'repeat business'.",
+        "model_answer": "Repeat business is when customers return to buy from the same business again, usually driven by satisfaction with the quality and service received [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Customers return to buy from the same business again",
+            "Driven by satisfaction with quality and service"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why consistent quality is important for the supermarket listing at Thornhill Vineyards.",
+        "model_answer": "First, the supermarket listing would provide reliable, high-volume sales [k]. It is worth $800,000 a year, nearly a 41% uplift on the $1.96 million revenue, and guarantees a route to market for part of the 140,000 bottles [app]. Second, consistent quality protects reputation [k]. Two poorly scored vintages and a 6% rejection rate show how quickly standards can slip, risking withdrawal of the listing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Consistent quality secures large, stable sales contracts",
+            "Consistent quality protects reputation and avoids losing listings"
+          ],
+          "application_max_2": [
+            "Reference to $800,000 a year own-label listing / $1.96 million revenue",
+            "Reference to 6% rejected at bottling / poorly scored vintages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$800,000",
+            "supermarket chain",
+            "6%",
+            "$1.96 million",
+            "140,000 bottles",
+            "Thornhill Vineyards"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of relying on end-of-line quality control at bottling only (Option A).",
+        "model_answer": "First, bottling-stage checks detect faults after they have been created [k]. Fermentation and vineyard problems arise months earlier, so rejecting faulty bottles at the end still wastes wine, glass and labour [app]. 6% of 140,000 bottles is 8,400 bottles lost every year [an]. Second, a single quality manager is a single point of failure [k]. One hire cannot continuously cover vineyard, cellar and bottling, so errors outside those hours go unchecked [app]. Poor processes persist, critic scores stay low and the supermarket may cancel the $800,000 own-label deal [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "End-of-line control detects faults after they occur / after value added",
+            "Reliance on one manager creates a single point of failure / limited coverage"
+          ],
+          "application_max_2": [
+            "Reference to fermentation / vine-to-bottle stages / 6% rejection / 140,000 bottles",
+            "Reference to $800,000 own-label listing / critics / end-of-line quality control"
+          ],
+          "analysis_max_2": [
+            "Chain from late rejection to 8,400 wasted bottles a year to lost revenue and profit",
+            "Chain from incomplete coverage to unchecked faults to poor critic scores and lost listing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$45,000",
+            "6%",
+            "140,000 bottles",
+            "end-of-line quality control",
+            "$800,000",
+            "fermentation"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thornhill Vineyards should implement quality assurance and Total Quality Management (Option B)? Justify your answer.",
+        "model_answer": "Option B costs $70,000 once and rebuilds quality from vine to bottle, with procedures, staff training and lab checks at each stage, so fermentation faults are caught before bottling [k]. This directly targets the 6% rejection rate, 8,400 bottles a year, and gives the supermarket an audit-ready record for the $800,000 own-label listing [app]. Preventing rejects also saves wine, bottles and labour, protecting the $1.96 million revenue [an]. However, Option A hires a quality manager for $45,000 a year, $90,000 over two years, to run end-of-line checks at bottling and is simple to start within 9 weeks [k]. But it only filters faulty bottles after months of wasted work, leaves fermentation uncontrolled and does nothing for critic confidence [app]. The listing depends on an annual external audit, which a bottling-only filter cannot support [an]. Overall, I think Thornhill Vineyards should choose Option B [eval] because it removes the causes of rejects, satisfies the audit and costs less than two years of Option A [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Option B = quality assurance / TQM across the whole process",
+            "Option A = end-of-line quality control / filtering at bottling"
+          ],
+          "application_max_2": [
+            "Reference to Option B: $70,000 / vine-to-bottle / staff training / lab checks",
+            "Reference to Option A: $45,000 a year / end-of-line checks / 9 weeks / critic scores"
+          ],
+          "analysis_max_2": [
+            "Chain from vine-to-bottle prevention to fewer rejects (8,400 bottles) to protected $1.96 million revenue and listing",
+            "Chain from bottling-only filter to uncontrolled fermentation to failed annual audit and jeopardised $800,000 deal"
+          ],
+          "evaluation_max_2": [
+            "Makes a clear, justified recommendation between Option A and Option B",
+            "Weighs both options using stem figures ($70,000 vs $45,000 a year, 6% rejection, $800,000 listing)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "TQM principles",
+            "$70,000",
+            "$45,000",
+            "6%",
+            "$800,000",
+            "140,000 bottles",
+            "fermentation"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

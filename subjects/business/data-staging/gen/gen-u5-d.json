@@ -1,0 +1,1212 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_71",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fennick & Grey Foods Ltd is a private limited company in Country X that mills oats into breakfast cereal for supermarket chains. For the year ended 30 April 2026 the income statement showed Revenue of $486,000, Cost of Sales of $312,000, Gross Profit of $174,000, Expenses of $96,000 and Profit for the year of $78,000. A dividend of $30,000 was paid to shareholders, leaving a Retained Profit of $48,000.\n\nThe statement of financial position at 30 April 2026 shows non-current assets of $540,000, current assets of $210,000 and current liabilities of $90,000, giving working capital of $120,000 and capital employed of $660,000. Non-current liabilities are $160,000, so shareholders' equity is $500,000. Directors must decide between Option 1, a special dividend of $20,000, and Option 2, using the $48,000 retained profit towards a new dehuller costing $120,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Revenue'.",
+        "model_answer": "Revenue is the total income a business earns from selling its goods or services during a trading period, before deducting any costs [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total income earned from selling goods and/or services",
+            "Earned during a trading period, before any costs are deducted"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why profit is important to Fennick & Grey Foods Ltd.",
+        "model_answer": "Reason 1: Profit can be retained and reinvested, funding growth such as the new dehuller without extra borrowing [k], and the $48,000 Retained Profit shows that such funds are genuinely available [app]. Reason 2: Profit rewards shareholders for their risk, enabling the $30,000 dividend paid this year [k], which helps maintain investor confidence in the $500,000 of equity [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit can be retained and reinvested to fund growth without borrowing",
+            "Profit rewards owners/shareholders and enables dividends to be paid"
+          ],
+          "application_max_2": [
+            "$48,000 Retained Profit is available towards the dehuller",
+            "$30,000 dividend paid, rewarding shareholders in a company with $500,000 equity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Fennick & Grey Foods Ltd",
+            "$48,000",
+            "dehuller",
+            "$30,000",
+            "Retained Profit",
+            "$500,000",
+            "supermarket chains"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the income statement is useful to the directors when choosing between the special dividend and the dehuller.",
+        "model_answer": "Reason 1: The income statement confirms the company earned a Profit for the year of $78,000 after Expenses of $96,000, so the business is genuinely profitable and not just cash-rich [k], which tells directors that either option is genuinely affordable rather than a gamble on one good quarter [app][an]. Reason 2: It shows Retained Profit of $48,000 after the ordinary dividend of $30,000, indicating exactly how much could be committed towards the dehuller [k], so directors know Option 2 would use only two-fifths of the machine's cost and a further funding route would still be needed [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Confirms the business is profitable after deducting expenses",
+            "Shows retained profit available after dividends"
+          ],
+          "application_max_2": [
+            "$78,000 profit after $96,000 Expenses",
+            "$48,000 Retained Profit vs the dehuller's $120,000 cost"
+          ],
+          "analysis_max_2": [
+            "Sustainable profit means either option is affordable, not dependent on a windfall",
+            "$48,000 covers only two-fifths of the cost, so a further funding plan is required"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "income statement",
+            "$78,000",
+            "$96,000",
+            "$48,000",
+            "$30,000",
+            "dehuller",
+            "Retained Profit"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should pay the $20,000 special dividend (Option 1) or use the retained profit towards the dehuller (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 rewards shareholders for their risk and signals confidence in the company, returning part of the profit directly to investors [k], and it would be affordable given current assets of $210,000 and working capital of $120,000 [app], which should keep shareholders loyal ahead of the expansion [an]. Option 2 keeps the $48,000 inside the business and directs it towards the dehuller, protecting the future Gross Profit base rather than distributing it once [k][app][an]. Overall, Option 2 is the stronger choice because the dehuller should improve milling efficiency and lift future profits for every shareholder, whereas the special dividend is a one-off reward that shrinks the funds available for growth; the directors can revisit a dividend next year once the machine's returns are proven [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dividends reward and retain shareholders",
+            "Retained profit can fund productive investment for long-term growth"
+          ],
+          "application_max_2": [
+            "Option 1 special dividend of $20,000 affordable from $210,000 current assets / $120,000 working capital",
+            "Option 2 keeps $48,000 retained towards the $120,000 dehuller"
+          ],
+          "analysis_max_2": [
+            "Dividend boosts loyalty now but leaves nothing for the machine",
+            "Dehuller should improve efficiency and protect/lift future Gross Profit"
+          ],
+          "evaluation_max_2": [
+            "For: immediate reward and signal of strength / option 2 costs shareholders cash",
+            "Against/Overall: Option 2 maximises long-term value; dividends can be paid once returns are proven"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "special dividend",
+            "$20,000",
+            "Option 2",
+            "dehuller",
+            "$48,000",
+            "working capital",
+            "$120,000",
+            "current assets"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_72",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fenwick Refrigeration Ltd is a private limited company in Country X that services refrigeration units for supermarket and restaurant chains. In the year ended 31 March 2026 it earned Revenue of $1,150,000, with Cost of Sales of $690,000, Gross Profit of $460,000, Expenses of $350,000 and Profit for the year of $110,000. The company paid an ordinary dividend of $40,000 and retained the remaining $70,000.\n\nThe statement of financial position at 31 March 2026 shows non-current assets of $820,000, current assets of $300,000 (including inventories of $95,000) and current liabilities of $130,000. Working capital is $170,000 and capital employed is $990,000. Non-current liabilities comprise a $300,000 long-term bank loan, so shareholders' equity is $690,000. The bank will waive $6,000 of interest if $100,000 is repaid early (Option 1), or the business could buy a new delivery van for $92,000 (Option 2).",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Current Assets'.",
+        "model_answer": "Current assets are assets a business expects to convert into cash, sell or use within one year, such as inventories, trade receivables and cash at bank [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assets expected to be sold, used or turned into cash within 12 months",
+            "Examples: inventories, trade receivables, cash at bank"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why positive working capital is important to Fenwick Refrigeration Ltd.",
+        "model_answer": "Reason 1: Working capital pays the day-to-day running costs such as engineers' wages and supplier invoices, and Fenwick's $170,000 of working capital keeps its service visits operating smoothly [k][app]. Reason 2: Working capital shows whether current assets exceed current liabilities, and with $300,000 against $130,000 the company can meet its short-term debts on time [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Covers day-to-day operating outflows such as wages and supplier bills",
+            "Indicates ability to meet short-term debts as they fall due"
+          ],
+          "application_max_2": [
+            "$170,000 working capital funds the servicing operation",
+            "$300,000 current assets exceed $130,000 current liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Fenwick Refrigeration Ltd",
+            "$170,000",
+            "working capital",
+            "$300,000",
+            "$130,000",
+            "supermarket",
+            "restaurant chains",
+            "inventories"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the bank would study this statement of financial position before restructuring the loan.",
+        "model_answer": "Reason 1: The bank checks whether current assets can absorb an early $100,000 repayment, and with $300,000 available (including $95,000 of inventories) the cover looks adequate [k][app][an]. Reason 2: The bank assesses how the $300,000 long-term loan sits against the $990,000 capital employed and the $690,000 of shareholders' equity backing it, judging whether rescheduling keeps the loan secure [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Bank assesses liquidity/capacity to absorb extra or early repayments",
+            "Bank checks solvency: loan size relative to capital employed and equity"
+          ],
+          "application_max_2": [
+            "$300,000 current assets including $95,000 inventories vs $100,000 repayment",
+            "$300,000 loan within $990,000 capital employed / $690,000 equity"
+          ],
+          "analysis_max_2": [
+            "After repayment, roughly $200,000 of current assets would remain, still ahead of $130,000 current liabilities",
+            "Equity of $690,000 gives the bank confidence restructuring adds no meaningful default risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "statement of financial position",
+            "$300,000",
+            "inventories",
+            "$95,000",
+            "$990,000",
+            "$690,000",
+            "bank loan",
+            "$100,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fenwick Refrigeration Ltd should repay $100,000 of the loan early (Option 1) or buy the delivery van (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 would cut non-current liabilities from $300,000 and save $6,000 of interest, improving the balance sheet the bank assesses and freeing future cash flow for debt service [k][app][an]. Option 2's van would let the company reach more supermarket and restaurant contracts, protecting the $1,150,000 Revenue base and the servicing margin it generates [k][app][an]. Overall, Option 2 is the better decision because the guaranteed $6,000 saving is modest beside the Revenue the van could win, and with $300,000 of current assets covering $130,000 of current liabilities a $92,000 purchase still leaves working capital positive; the loan can be rebalanced next year once retained profits have rebuilt equity [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Early repayment cuts interest costs and improves the balance sheet",
+            "Investing in assets can generate additional revenue"
+          ],
+          "application_max_2": [
+            "Option 1 saves $6,000 on a $300,000 loan",
+            "Option 2 costs $92,000 and supports the $1,150,000 Revenue base"
+          ],
+          "analysis_max_2": [
+            "Lower debt improves future cash flow and bank relations",
+            "Van increases capacity to service more contracts; purchase still leaves working capital positive"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: guaranteed $6,000 saving and lower risk / frees no new income",
+            "Overall: Option 2 wins on revenue generation; balance sheet remains healthy afterwards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$100,000",
+            "$92,000",
+            "$6,000",
+            "delivery van",
+            "$1,150,000",
+            "working capital"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_73",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Carrowmore Weavers Ltd is a private limited company in Country X weaving wool fabrics for made-to-measure tailoring businesses. In the year ended 31 January 2026 it recorded Revenue of $380,000, Cost of Sales of $228,000, Gross Profit of $152,000, Expenses of $87,000 and Profit for the year of $65,000. Despite this profit, the company held only $18,000 in its bank account.\n\nCurrent assets total $208,000, including $120,000 owed by customers (one major customer settles around 60 days late) and inventories of $70,000. Current liabilities are $150,000, including $112,000 owed to suppliers, so working capital is $58,000. Non-current assets are valued at $410,000 and non-current liabilities at $150,000, giving capital employed of $468,000 and shareholders' equity of $318,000. Directors must choose between Option 1, an overdraft from the bank, and Option 2, asking suppliers to extend payment terms by 30 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline the difference between profit and cash.",
+        "model_answer": "Profit is the surplus remaining after all costs are deducted from Revenue in the income statement, whereas cash is the money actually received and paid; a credit sale counts as profit before the cash arrives [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit = Revenue minus all costs, as reported in the income statement",
+            "Cash = money actually received and paid; timing differences make the two diverge"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Carrowmore Weavers Ltd is profitable but short of cash.",
+        "model_answer": "Reason 1: Much of its earnings is tied up as $120,000 owed by customers, some of whom pay around 60 days late, so Revenue is recognised before the cash arrives [k][app]. Reason 2: The company must still pay Expenses of $87,000 and suppliers the $112,000 it owes, so cash goes out before the corresponding income is collected [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Credit sales create profit before cash is received",
+            "Costs must be paid when incurred, regardless of when cash arrives"
+          ],
+          "application_max_2": [
+            "$120,000 owed by customers, one pays about 60 days late",
+            "$87,000 expenses and $112,000 owed to suppliers still must be paid"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Carrowmore Weavers Ltd",
+            "$120,000",
+            "60 days",
+            "$87,000",
+            "$112,000",
+            "$18,000",
+            "$65,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the statement of financial position shows how Carrowmore Weavers Ltd could improve its cash position.",
+        "model_answer": "Reason 1: The $120,000 of receivables inside current assets could be collected faster with firmer payment terms, immediately lifting the $18,000 cash balance without any new finance [k][app][an]. Reason 2: Suppliers are owed $112,000, so Option 2's extra 30 days would defer cash outflow, protecting working capital of $58,000 while the receivables are collected [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Convert receivables to cash faster through stronger credit control",
+            "Defer payments to suppliers by negotiation"
+          ],
+          "application_max_2": [
+            "$120,000 receivables vs only $18,000 in the bank",
+            "$112,000 owed to suppliers could be stretched 30 days under Option 2"
+          ],
+          "analysis_max_2": [
+            "Faster collection rebuilds the cash balance with no borrowing cost",
+            "Deferring outflow bridges the timing gap, keeping the business solvent month to month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current assets",
+            "$120,000",
+            "$18,000",
+            "$112,000",
+            "Option 2",
+            "working capital",
+            "$58,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should take the overdraft (Option 1) or ask suppliers to extend terms by 30 days (Option 2)? Justify your answer.",
+        "model_answer": "An overdraft would cover the immediate gap and is simple to arrange, but it is repayable on demand and its interest would eat into the $65,000 profit [k][app][an]. Option 2 defers the $112,000 supplier outflow at no direct cost and suits a profitable company with $58,000 of working capital waiting on $120,000 of receivables [k][app][an]. Overall, Option 2 is preferable in the short term because Carrowmore is profitable and its problem is timing, not solvency; the directors should chase the $120,000 receivables firmly and keep the overdraft only as a backup if a major customer defaults [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Overdrafts give immediate cash but are repayable on demand and carry interest",
+            "Extending supplier terms is cost-free short-term finance"
+          ],
+          "application_max_2": [
+            "Overdraft interest would reduce the $65,000 profit",
+            "Option 2 stretches the $112,000 supplier bill while awaiting $120,000 of receivables"
+          ],
+          "analysis_max_2": [
+            "Option 1 solves the gap quickly but increases financing cost and dependency",
+            "Option 2 aligns outflow with expected inflow, stabilising the $58,000 working capital"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: certainty and immediacy / for Option 2: no cost but relies on supplier goodwill",
+            "Overall: Option 2, with the overdraft as backup — collect receivables and the cash crisis passes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "overdraft",
+            "$112,000",
+            "$120,000",
+            "$58,000",
+            "$65,000",
+            "30 days"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_74",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Hollyhock Nurseries Ltd is a private limited company in Country X that grows ornamental plants and sells them to garden centres across the region. In the year ended 30 June 2026 it recorded Revenue of $240,000, Cost of Sales of $110,000, Gross Profit of $130,000, Expenses of $62,000 and Profit for the year of $68,000. A dividend of $25,000 is proposed, leaving Retained Profit of $43,000.\n\nThe statement of financial position shows non-current assets of $350,000, current assets of $160,000 (including cash of $55,000) and current liabilities of $70,000, giving working capital of $90,000 and capital employed of $440,000. Non-current liabilities are $120,000, so shareholders' equity is $320,000. To fund a $200,000 expansion the board is choosing between Option 1, issuing new shares to a small group of investors, and Option 2, expanding gradually from retained profits of about $43,000 a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Shareholders' Equity'.",
+        "model_answer": "Shareholders' equity (shareholders' funds) is the owners' stake in the business, equal to capital employed minus non-current liabilities, made up of share capital plus retained profit and reserves [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "The owners'/shareholders' stake in the business",
+            "Equals share capital + retained profit, or capital employed − non-current liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why retained profit is an attractive way to fund the expansion.",
+        "model_answer": "Reason 1: Retained profit is finance the business already owns, so it does not have to be repaid — keeping non-current liabilities at $120,000 unchanged [k][app]. Reason 2: Using retained profit avoids issuing new shares, so existing shareholders keep their proportional control of the $320,000 of equity [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Retained profit is permanent, internal finance — not repayable",
+            "Retained profit avoids diluting existing shareholders' control"
+          ],
+          "application_max_2": [
+            "Non-current liabilities stay at $120,000",
+            "Existing $320,000 equity remains in the same hands"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hollyhock Nurseries Ltd",
+            "retained profit",
+            "$120,000",
+            "$320,000",
+            "new shares",
+            "expansion",
+            "garden centres"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two effects on shareholders' equity and on the expansion if Option 1 is chosen rather than Option 2.",
+        "model_answer": "Point 1: Issuing new shares for $200,000 would raise shareholders' equity immediately from $320,000 to $520,000, providing the whole expansion fund at once [k][app][an]. Point 2: Option 2 adds only about $43,000 to equity each year, so building a similar fund would take around five years of retained profits while the expansion waits [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A new share issue increases share capital and equity by the amount raised",
+            "Retained profit builds equity gradually through reserves"
+          ],
+          "application_max_2": [
+            "Equity would jump from $320,000 to $520,000 under Option 1",
+            "$43,000 a year means around five years to approach $200,000 under Option 2"
+          ],
+          "analysis_max_2": [
+            "Option 1 lets the expansion proceed immediately and shares risk with new investors",
+            "Option 2 delays the project and keeps ownership unchanged, but growth is slow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$200,000",
+            "$320,000",
+            "shareholders' equity",
+            "retained profits",
+            "$43,000",
+            "new shares"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the board should issue new shares (Option 1) or expand gradually from retained profits (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 provides the full $200,000 immediately, letting Hollyhock respond to garden centre demand at once and lifting shareholders' equity to $520,000 without adding interest-bearing debt [k][app][an]. Option 2 avoids dilution and keeps every decision with the current owners, but at $43,000 a year the company would need roughly five years to match the fund, risking lost seasonal sales [k][app][an]. Overall, Option 1 is justified because Profit of $68,000 and Retained Profit of $43,000 prove trading strength, but not enough speed to seize the opportunity; new investors would enlarge the equity that backs the expansion and share the risk, so long as dividend expectations are negotiated carefully to protect existing owners [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "New share issues raise finance quickly and share risk with investors",
+            "Retained profit is the cheapest internal finance and preserves control"
+          ],
+          "application_max_2": [
+            "Option 1 raises $200,000 immediately; equity becomes $520,000",
+            "Option 2 yields about $43,000 a year — around five years to build a similar fund"
+          ],
+          "analysis_max_2": [
+            "Option 1 enables immediate expansion and faster growth in Revenue",
+            "Option 2 preserves control but loses the timing advantage of the opportunity"
+          ],
+          "evaluation_max_2": [
+            "Against Option 1: dilution and dividend expectations may pressure profits",
+            "Overall: Option 1, since retained profits alone are too slow to fund a time-sensitive expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$200,000",
+            "$43,000",
+            "$68,000",
+            "shareholders' equity",
+            "Retained Profit",
+            "new shares"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_75",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Redhall Textiles Ltd is a private limited company in Country X weaving upholstery fabric for furniture manufacturers. In the year ended 31 August 2025 Revenue was $500,000, Cost of Sales $300,000, Gross Profit $200,000, Expenses $120,000 and Profit for the year $80,000. In the year ended 31 August 2026 Revenue rose to $650,000, but Cost of Sales jumped to $455,000, leaving Gross Profit of $195,000 and, after Expenses of $140,000, Profit for the year of only $55,000.\n\nThe directors are deciding between Option 1, raising the average selling price by 8% from September 2026, and Option 2, switching to a cheaper yarn supplier who would cut Cost of Sales by 10% but may reduce fabric quality. The company holds $40,000 in cash, owes $95,000 in current liabilities and has working capital of $85,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two components of an income statement.",
+        "model_answer": "Any two of: Revenue, Cost of Sales, Gross Profit, Expenses, Profit for the year, Retained Profit [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Any one valid income statement component, e.g. Revenue or Gross Profit",
+            "Any second valid component, e.g. Expenses, Profit for the year or Retained Profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Gross Profit fell even though Revenue rose.",
+        "model_answer": "Reason 1: Cost of Sales grew by about 52%, from $300,000 to $455,000, much faster than Revenue's 30% rise from $500,000 to $650,000, squeezing Gross Profit from $200,000 to $195,000 [k][app]. Reason 2: Higher yarn and material costs raised the cost of each metre of fabric, so although the company sold more, every sale contributed a lower margin [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "When cost of sales grows faster than revenue, gross profit is squeezed",
+            "Higher direct input costs reduce the surplus on each unit sold"
+          ],
+          "application_max_2": [
+            "Cost of Sales up from $300,000 to $455,000 (+52%) vs Revenue's 30% rise",
+            "Gross Profit fell from $200,000 to $195,000 despite higher sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Redhall Textiles Ltd",
+            "$455,000",
+            "$650,000",
+            "Gross Profit",
+            "$195,000",
+            "Cost of Sales",
+            "$300,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems the falling Gross Profit creates for the directors.",
+        "model_answer": "Reason 1: With Expenses already at $140,000, the smaller Gross Profit of $195,000 leaves Profit for the year of only $55,000, so there is almost no cushion if input costs rise further [k][app][an]. Reason 2: Less Gross Profit means less is available to retain from earnings, so while working capital is only $85,000 against $95,000 of current liabilities, funding growth or replacing looms becomes very difficult [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower gross profit leaves less to cover expenses and absorb shocks",
+            "Lower retained profit restricts internal funding for growth"
+          ],
+          "application_max_2": [
+            "$195,000 Gross Profit less $140,000 Expenses leaves only $55,000 Profit",
+            "Only $85,000 working capital against $95,000 of current liabilities"
+          ],
+          "analysis_max_2": [
+            "A further cost increase could push the business into losses",
+            "Without retained profit the business may need bank finance just to stand still"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Gross Profit",
+            "$195,000",
+            "$140,000",
+            "$55,000",
+            "$85,000",
+            "$95,000",
+            "working capital",
+            "Expenses"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should raise the selling price by 8% (Option 1) or switch to the cheaper yarn supplier (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 would lift Revenue to about $702,000 if sales volume holds, restoring Gross Profit to roughly $247,000 with no change in fabric quality [k][app][an]. Option 2 would cut Cost of Sales by about $45,500 a year (10% of $455,000), lifting Gross Profit to roughly $240,500 but risking the quality reputation that wins upholstery contracts [k][app][an]. Overall, Option 1 is the safer recommendation because Expenses of $140,000 and the falling $55,000 Profit leave no room for returns or complaints; working capital of $85,000 cannot absorb a quality dispute with a furniture manufacturer, so protecting the product matters more than the modest $6,500 difference in year-one Gross Profit [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Raising prices increases revenue per unit but may reduce demand",
+            "Cheaper inputs cut cost of sales (raising margin) but may damage quality"
+          ],
+          "application_max_2": [
+            "Option 1: Revenue about $702,000 and Gross Profit about $247,000 (if volume holds)",
+            "Option 2: about $45,500 saved, Gross Profit about $240,500"
+          ],
+          "analysis_max_2": [
+            "Option 1 protects quality and brand, sustaining long-term contracts",
+            "Option 2 saves money but quality failures could cost more than the saving"
+          ],
+          "evaluation_max_2": [
+            "Against Option 1: higher prices may lose price-sensitive furniture manufacturers",
+            "Overall: Option 1 — quality protection outweighs the small year-one margin difference"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "8%",
+            "10%",
+            "Cost of Sales",
+            "$455,000",
+            "Revenue",
+            "working capital"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_76",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Dunmore Cheese Co Ltd is a private limited company in Country X making farmhouse cheese from locally collected milk. In the year ended 30 September 2026 it recorded Revenue of $520,000, Cost of Sales of $286,000, Gross Profit of $234,000, Expenses of $164,000 and Profit for the year of $70,000. The company paid a dividend of $20,000 and retained the remaining $50,000.\n\nThe statement of financial position shows non-current assets of $470,000, inventories of $85,000, trade receivables of $95,000 and cash of $10,000. Current liabilities have risen to $150,000, so current assets of $190,000 produce working capital of only $40,000, down from $95,000 a year earlier. Non-current liabilities are $180,000, so capital employed is $510,000 and shareholders' equity is $330,000. Directors are considering Option 1, cutting inventories to $55,000, or Option 2, asking the bank to convert a $60,000 overdraft into a long-term loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Non-current Liabilities'.",
+        "model_answer": "Non-current liabilities are long-term debts a business does not need to repay within the next 12 months, such as bank loans and debentures [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Long-term obligations/debts of the business",
+            "Not repayable within 12 months, e.g. bank loans, debentures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the fall in working capital is a concern for Dunmore Cheese Co Ltd.",
+        "model_answer": "Reason 1: Working capital of just $40,000, down from $95,000 a year earlier, may be too small to pay the $150,000 of current liabilities as they fall due, risking damaged supplier goodwill [k][app]. Reason 2: With cash of only $10,000 the company could struggle to buy milk and packaging ahead of the winter cheese season, threatening production itself [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Falling working capital risks inability to pay short-term creditors on time",
+            "Low cash restricts the ability to fund operations and seasonal buying"
+          ],
+          "application_max_2": [
+            "Working capital just $40,000 (from $95,000) vs $150,000 current liabilities",
+            "Cash of only $10,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Dunmore Cheese Co Ltd",
+            "working capital",
+            "$40,000",
+            "$95,000",
+            "$150,000",
+            "$10,000",
+            "current liabilities"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two warning signs in the statement of financial position.",
+        "model_answer": "Point 1: Current assets of $190,000 only just cover current liabilities of $150,000, so working capital of $40,000 leaves the business almost no slack for unexpected bills [k][app][an]. Point 2: Most of the current assets are tied up as $85,000 of inventories and $95,000 of trade receivables, leaving $10,000 of cash, so one slow-paying customer could create an immediate cash crisis [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Working capital near zero shows acute short-term strain",
+            "Current assets dominated by inventories and receivables rather than cash signals weak liquidity"
+          ],
+          "application_max_2": [
+            "Current assets $190,000 vs current liabilities $150,000 — only $40,000 spare",
+            "$85,000 inventories and $95,000 receivables vs $10,000 cash"
+          ],
+          "analysis_max_2": [
+            "Any unexpected expense could make the business unable to pay on time",
+            "If the $95,000 owed is not collected promptly the business faces insolvency despite being profitable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "statement of financial position",
+            "$190,000",
+            "$150,000",
+            "$40,000",
+            "$85,000",
+            "$95,000",
+            "$10,000",
+            "working capital"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should cut inventories to $55,000 (Option 1) or ask the bank to convert the $60,000 overdraft into a long-term loan (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 releases about $30,000 of cash from inventories without new debt and reduces storage and spoilage costs on perishable cheese, but it does not by itself lift working capital above $40,000 [k][app][an]. Option 2 would cut current liabilities to $90,000, raising working capital to $100,000 and removing an overdraft repayable on demand, at the price of a longer commitment and interest [k][app][an]. Overall, Option 2 is the stronger recommendation because the statement of financial position reveals a structural shortfall of long-term finance rather than simply surplus stock; converting the overdraft restores a safe working capital position, and the released cash plus Option 1's efficiency gains would compound [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cutting inventories frees cash without new finance but does not change working capital composition fundamentally",
+            "Converting short-term debt to long-term debt directly raises working capital"
+          ],
+          "application_max_2": [
+            "Option 1 frees about $30,000 ($85,000 → $55,000)",
+            "Option 2: current liabilities $150,000 → $90,000; working capital $40,000 → $100,000"
+          ],
+          "analysis_max_2": [
+            "Option 1 improves cash and lowers waste but leaves the balance sheet fragile",
+            "Option 2 fixes the structural mismatch and removes on-demand repayment risk"
+          ],
+          "evaluation_max_2": [
+            "Against Option 2: interest and a longer commitment / against Option 1: stockouts risk losing orders",
+            "Overall: Option 2 — the problem is structural, and it can be paired with Option 1 for full effect"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$55,000",
+            "$60,000",
+            "overdraft",
+            "working capital",
+            "$40,000",
+            "$95,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_77",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Hedgerow Launderette Ltd is a private limited company in Country X operating two high-street launderettes. In the year ended 31 July 2026 it recorded Revenue of $310,000, Cost of Sales of $96,000, Gross Profit of $214,000, Expenses of $139,000 and Profit for the year of $75,000, compared with $52,000 the previous year. All profit is retained and no dividend is paid.\n\nThe board is choosing between Option 1, opening a third launderette costing $150,000 funded from accumulated retained profits, and Option 2, keeping a $150,000 cash reserve in case the two existing shops suffer a downturn. The statement of financial position shows non-current assets of $280,000, current assets of $190,000 (including cash of $130,000) and current liabilities of $75,000. Working capital is $115,000, capital employed is $395,000, there are no non-current liabilities and shareholders' equity is $395,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline why profit is important to a business.",
+        "model_answer": "Profit is the reward to owners for taking the risk of investing; it provides internal funds for growth, enables dividends to be paid and creates a cushion against future losses [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rewards owners/shareholders for the risk they take (return on investment)",
+            "Provides internal funds for growth and a buffer against losses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits profit has brought Hedgerow Launderette Ltd.",
+        "model_answer": "Reason 1: Profit rose from $52,000 to $75,000, an increase of about 44%, showing the two shops are trading increasingly successfully [k][app]. Reason 2: Because no dividend is paid, all profit is retained — building the $130,000 cash balance and the $395,000 of shareholders' equity that could fund future growth [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit can be retained to finance growth internally",
+            "Retained profit strengthens reserves, equity and the cash position"
+          ],
+          "application_max_2": [
+            "Profit up from $52,000 to $75,000 (+44%)",
+            "All profit retained, building $130,000 cash and $395,000 equity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hedgerow Launderette Ltd",
+            "$75,000",
+            "$52,000",
+            "$130,000",
+            "shareholders' equity",
+            "cash",
+            "two high-street launderettes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why profit figures alone cannot tell the board whether Option 1 is safe.",
+        "model_answer": "Reason 1: Profit is not cash — the company records $75,000 of annual profit but holds only $130,000 of cash, and the $150,000 cost of a third shop exceeds that balance [k][app][an]. Reason 2: Paying for Option 1 would drain working capital of $115,000, since current assets of $190,000 would no longer comfortably cover current liabilities of $75,000 once the cash is spent [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit differs from cash — it is an accounting figure, not spendable money",
+            "Spending funds reduces liquidity shown in the statement of financial position"
+          ],
+          "application_max_2": [
+            "$150,000 cost vs only $130,000 cash held",
+            "Working capital $115,000 and current assets $190,000 would be drained against $75,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "The board would need at least $20,000 of extra finance for the gap",
+            "After spending, the business could not absorb a downturn in either existing shop"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$75,000",
+            "$130,000",
+            "$150,000",
+            "Option 1",
+            "working capital",
+            "$115,000",
+            "current liabilities",
+            "$190,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the board should open the third launderette now (Option 1) or build up a cash reserve (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 would extend a proven, profitable concept — Profit jumped to $75,000 — and would create a third income stream funded from accumulated retained profits rather than new debt [k][app][an]. Option 2 protects the position, keeping $130,000 of cash, $190,000 of current assets and working capital of $115,000 available if either existing shop suffers a downturn [k][app][an]. Overall, Option 2 is the more responsible decision now because Option 1 costs $150,000 against $130,000 of cash, so opening immediately would strain liquidity when current liabilities of $75,000 already absorb part of the assets; the board should build the reserve first and fund the third shop in a year or two from retained profits [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Expansion can raise future profit if the concept is proven",
+            "Cash reserves protect the business against downturns"
+          ],
+          "application_max_2": [
+            "Option 1 costs $150,000 vs $130,000 cash",
+            "Option 2 preserves $190,000 current assets and $115,000 working capital"
+          ],
+          "analysis_max_2": [
+            "Option 1 risks liquidity strain and may need external finance",
+            "Option 2 forfeits early growth but guarantees the existing shops survive a shock"
+          ],
+          "evaluation_max_2": [
+            "Against Option 2: idle cash earns little and competitors may move first",
+            "Overall: Option 2 first — rebuild cash, then expand from retained profits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$150,000",
+            "$130,000",
+            "$190,000",
+            "$115,000",
+            "current assets",
+            "$75,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_78",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Tamarind Soap Co Ltd is a private limited company in Country X making handmade botanical soaps. In the year ended 31 May 2026 it recorded Revenue of $260,000, Cost of Sales of $92,000, Gross Profit of $168,000, Expenses of $118,000 and Profit for the year of $50,000. A national supermarket chain has offered a one-year contract to buy 40,000 bars at $1.50 each, adding $60,000 of Revenue in exchange for $38,000 of extra materials.\n\nThe directors are choosing between Option 1, accepting the supermarket contract, which would lift total Revenue to $320,000 and Gross Profit to $190,000, and Option 2, continuing boutique sales and developing a premium gift range expected to add $30,000 to Gross Profit at no extra capital cost. Current assets are $120,000, current liabilities are $48,000 and non-current assets are $300,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Cost of Sales'.",
+        "model_answer": "Cost of sales is the direct cost of producing or purchasing the goods a business sells during the period, such as raw materials and direct labour [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Direct costs directly linked to the goods/services sold",
+            "Examples: raw materials, components, direct labour"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of Tamarind Soap Co Ltd's high Gross Profit.",
+        "model_answer": "Reason 1: Gross Profit of $168,000 — about 65% of Revenue — comfortably covers Expenses of $118,000 and still leaves Profit of $50,000 [k][app]. Reason 2: A strong Gross Profit shows each product creates substantial added value, giving the business room to fund the premium gift range without external finance [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "High gross profit covers expenses and secures net profit",
+            "Shows products create real added value, enabling self-funding of projects"
+          ],
+          "application_max_2": [
+            "$168,000 gross profit vs $118,000 expenses leaves $50,000 profit",
+            "~65% margin gives headroom to fund the gift range internally"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Tamarind Soap Co Ltd",
+            "$168,000",
+            "$118,000",
+            "$50,000",
+            "Gross Profit",
+            "premium gift range",
+            "boutique"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two implications of the supermarket contract for the income statement.",
+        "model_answer": "Point 1: Revenue would rise by $60,000 to $320,000, but Cost of Sales would rise by $38,000 too, so Gross Profit would reach only $190,000 [k][app][an]. Point 2: The contract earns just $22,000 of Gross Profit on $60,000 of Revenue — about 37%, well below the boutique margin — so the company's overall Gross Profit margin would fall even as total profit rises [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Both revenue and cost of sales rise under a new contract; gross profit is the difference",
+            "A contract margin below the business average dilutes overall margin"
+          ],
+          "application_max_2": [
+            "Revenue $320,000 and Gross Profit $190,000 under Option 1",
+            "Contract contributes about $22,000 on $60,000 (~37% vs ~65% boutique margin)"
+          ],
+          "analysis_max_2": [
+            "Total profit rises while margin percentage falls — volume growth at low margin",
+            "Each contract sale generates less cash to cover Expenses and risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$320,000",
+            "$38,000",
+            "$190,000",
+            "supermarket chain",
+            "Gross Profit",
+            "$260,000",
+            "$168,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should accept the supermarket contract (Option 1) or develop the premium gift range (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 guarantees Revenue of $320,000 and Gross Profit of $190,000, securing volume for the soap room and using spare capacity at low added capital cost [k][app][an]. Option 2 should add $30,000 of Gross Profit at the full boutique margin with no extra materials risk, lifting Gross Profit towards $198,000 while preserving exclusivity [k][app][an]. Overall, Option 2 is the better fit for this business because it protects the ~65% margin that defines the brand, requires no $38,000 materials outlay against current liabilities of $48,000, and keeps the premium positioning that supermarket own-label supply would gradually erode [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Guaranteed volume raises revenue but at a lower margin",
+            "Developing premium lines protects brand and margin"
+          ],
+          "application_max_2": [
+            "Option 1: $320,000 Revenue and $190,000 Gross Profit",
+            "Option 2: about $30,000 extra Gross Profit (towards $198,000) with no capital cost"
+          ],
+          "analysis_max_2": [
+            "Option 1 dilutes margin and brand positioning; needs extra materials cash",
+            "Option 2 preserves margin, requires no extra materials, sustains brand exclusivity"
+          ],
+          "evaluation_max_2": [
+            "Against Option 2: demand for a gift range is uncertain / Option 1 is guaranteed volume",
+            "Overall: Option 2 — margin and brand protection outweigh the safer-but-thinner contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$320,000",
+            "$190,000",
+            "$30,000",
+            "$38,000",
+            "$48,000",
+            "boutique"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_79",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Hazelbeck Vegetables Co Ltd is a private limited company in Country X packing frozen mixed vegetables for supermarket own-label ranges. It employs 34 people across two packing lines. In the year ended 30 November 2026, Revenue was $900,000, Cost of Sales was $560,000 and Gross Profit was $340,000. Expenses of $300,000 included $70,000 of advertising and $85,000 of freezer electricity, leaving Profit for the year of only $40,000.\n\nThe directors are choosing between Option 1, cutting the advertising budget by $28,000, and Option 2, spending $32,000 on freezer insulation expected to reduce electricity costs by $24,000 a year. The statement of financial position so far shows current assets of $260,000, current liabilities of $130,000 and non-current assets of $400,000, so working capital is $130,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Expenses'.",
+        "model_answer": "Expenses are the indirect running costs of a business not included in the cost of goods sold, such as rent, administrative wages, utilities and advertising [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Indirect/overhead costs of running the business",
+            "Not part of cost of sales — e.g. utilities, administration, advertising"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Hazelbeck Vegetables Co Ltd's expenses are a concern.",
+        "model_answer": "Reason 1: Expenses of $300,000 absorb almost all of the $340,000 Gross Profit, leaving only $40,000 of profit and almost no room for error [k][app]. Reason 2: Two of the largest expenses — $70,000 of advertising and $85,000 of freezer electricity — may be controllable, so targeted cuts could protect profit without touching product quality or safety [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Expenses consume gross profit, leaving minimal net profit",
+            "Large individual expenses may be controllable and reducible"
+          ],
+          "application_max_2": [
+            "$300,000 expenses vs $340,000 gross profit, leaving $40,000",
+            "$70,000 advertising and $85,000 electricity are specific targets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hazelbeck Vegetables Co Ltd",
+            "$300,000",
+            "$340,000",
+            "$40,000",
+            "$70,000",
+            "$85,000",
+            "advertising",
+            "freezer"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the Option 1 and Option 2 proposals would improve the business.",
+        "model_answer": "Point 1: Cutting advertising by $28,000 under Option 1 would lift Profit from $40,000 to $68,000 with no capital outlay at all [k][app][an]. Point 2: Insulation under Option 2 cuts the $85,000 electricity bill by $24,000 a year, a saving that recurs every year after the one-off $32,000 cost, leaving Profit around $64,000 [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Reducing expenses directly raises profit",
+            "One-off capital costs differ from recurring cost savings"
+          ],
+          "application_max_2": [
+            "Option 1 lifts Profit from $40,000 to $68,000 with no outlay",
+            "Option 2 saves $24,000 a year ($85,000 → $61,000)"
+          ],
+          "analysis_max_2": [
+            "Option 1 is immediate, reversible and costless in cash terms",
+            "Option 2 has a lasting benefit though it needs $32,000 up front"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$28,000",
+            "$40,000",
+            "$85,000",
+            "$24,000",
+            "$32,000",
+            "advertising"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should cut the advertising budget (Option 1) or invest in freezer insulation (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 raises profit to $68,000 immediately and needs no cash outlay, preserving the $130,000 of working capital when current liabilities of $130,000 already absorb half of current assets [k][app][an]. Option 2 costs $32,000 and saves only $24,000 a year, boosting profit less, but it protects the advertising that secures supermarket own-label listings and the $900,000 Revenue base [k][app][an]. Overall, Option 1 is the better short-term choice on the numbers — $28,000 a year saved at zero capital cost — but the board should first test how productive the advertising really is, since cutting it blindly could damage the contracts behind the entire Revenue [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Direct cost cuts raise profit immediately with no investment",
+            "Investment can produce recurring savings but ties up cash"
+          ],
+          "application_max_2": [
+            "Option 1: +$28,000 profit per year, no outlay",
+            "Option 2: $32,000 cost for $24,000 a year saved"
+          ],
+          "analysis_max_2": [
+            "Option 1 is riskier to revenue if advertising drives listings; Option 2 is safer for sales",
+            "Option 2's recurring saving compounds, Option 1's saving may hit sales"
+          ],
+          "evaluation_max_2": [
+            "Against Option 1: could damage supermarket relationships and Revenue",
+            "Overall: Option 1, conditional on verifying advertising effectiveness first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$28,000",
+            "$24,000",
+            "$32,000",
+            "working capital",
+            "$130,000",
+            "$900,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_80",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Wrenmore Garage Ltd is a private limited company in Country X operating an independent car repair workshop, mainly servicing family cars and small vans. In the year ended 31 October 2026 it recorded Revenue of $780,000, Cost of Sales of $300,000, Gross Profit of $480,000, Expenses of $350,000 and Profit for the year of $130,000. A dividend of $50,000 was paid and $80,000 of profit was retained.\n\nThe statement of financial position shows non-current assets of $520,000, current assets of $230,000 (including inventories of $80,000) and current liabilities of $110,000. Working capital is $120,000 and capital employed is $640,000. Non-current liabilities are $200,000 and shareholders' equity is $440,000. The landlord has offered to sell the freehold of the workshop for $640,000; the board is choosing between Option 1, a further $550,000 long-term bank loan plus $90,000 of cash, and Option 2, continuing to rent at $60,000 a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Retained Profit'.",
+        "model_answer": "Retained profit is the profit left in the business after dividends (and tax) have been paid, accumulated over time in reserves as part of shareholders' equity [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit kept in the business after dividends/tax are paid",
+            "Accumulates in reserves within shareholders' equity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why capital employed is a useful figure for anyone judging Wrenmore Garage Ltd.",
+        "model_answer": "Reason 1: Capital employed of $640,000 shows the total long-term funds invested in the business — non-current assets of $520,000 plus working capital of $120,000 [k][app]. Reason 2: Comparing Profit of $130,000 with capital employed of $640,000 indicates how effectively the invested funds are being used to generate returns for investors [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shows the total long-term finance invested (non-current assets + working capital)",
+            "Enables judging how effectively invested funds generate profit"
+          ],
+          "application_max_2": [
+            "$640,000 = $520,000 non-current assets + $120,000 working capital",
+            "$130,000 profit relative to $640,000 capital employed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Wrenmore Garage Ltd",
+            "capital employed",
+            "$640,000",
+            "$520,000",
+            "working capital",
+            "$120,000",
+            "$130,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two effects on the statement of financial position if the directors buy the freehold (Option 1).",
+        "model_answer": "Point 1: Non-current assets would rise by $640,000 to $1,160,000 and non-current liabilities by $550,000 to $750,000, so capital employed would rise to $1,190,000 [k][app][an]. Point 2: Using $90,000 of cash cuts current assets to $140,000 while current liabilities stay at $110,000, so working capital falls to just $30,000 — a very thin cushion [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying property increases non-current assets and total assets",
+            "Financing the purchase with a loan increases non-current liabilities and capital employed"
+          ],
+          "application_max_2": [
+            "Non-current assets $520,000 → $1,160,000; non-current liabilities $200,000 → $750,000",
+            "Cash −$90,000 leaves current assets $140,000 and working capital $30,000"
+          ],
+          "analysis_max_2": [
+            "The statement of financial position still balances: $1,190,000 employed = $750,000 loan + $440,000 equity",
+            "Working capital of $30,000 against $110,000 current liabilities leaves almost no short-term slack"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "non-current assets",
+            "$640,000",
+            "$550,000",
+            "$90,000",
+            "current assets",
+            "$110,000",
+            "working capital"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should buy the freehold using the loan (Option 1) or continue to rent (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 secures the workshop for the long term, removes the risk of rent increases and turns the $640,000 freehold into a company asset, though non-current liabilities rise to $750,000 and working capital falls towards $30,000 [k][app][an]. Option 2 keeps $230,000 of current assets and $120,000 of working capital intact, avoids extra interest and preserves flexibility, but the $60,000 annual rent never builds ownership [k][app][an]. Overall, continuing to rent (Option 2) is the wiser short-term decision because Profit of $130,000 covers the rent comfortably, and the thin $30,000 of working capital after purchase would leave the garage unable to absorb a shock; the board can revisit buying once retained profits rebuild the cash position [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying property builds ownership and fixes premises cost long term",
+            "Renting preserves liquidity and flexibility but builds no asset"
+          ],
+          "application_max_2": [
+            "Option 1: non-current liabilities rise to $750,000; working capital about $30,000",
+            "Option 2: keeps $230,000 current assets and $120,000 working capital"
+          ],
+          "analysis_max_2": [
+            "Option 1 adds ownership and stability but concentrates risk in a thinner liquidity position",
+            "Option 2 avoids interest and preserves cash, but rent is a permanent cost with no equity built"
+          ],
+          "evaluation_max_2": [
+            "Against Option 2: rent never converts to ownership and may rise",
+            "Overall: Option 2 now — rebuild cash from retained profits, then buy later"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$640,000",
+            "$550,000",
+            "$90,000",
+            "$60,000",
+            "$230,000",
+            "$120,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

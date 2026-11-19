@@ -1,0 +1,1265 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_51",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Northgate Fashion Stores is a retail clothing chain operating 5 stores across a regional shopping district, employing 26 full-time sales assistants and 4 store managers. Annual revenue stands at $3.1m, and assistants are paid a time-rate wage of $13 per hour. Last year staff turnover among assistants reached 28%, and customer feedback cited slow fitting-room service and unhelpful styling advice.\n\nThe directors are deciding between two options for next year's peak season. Option one is a 4% commission on each assistant's monthly sales, which would lift top sellers' pay by around $300 a month but cut low sellers' pay. Option two keeps the time-rate wage and adds non-financial methods: job enrichment through window-display styling, teamworking incentives, and training leading to promotion to supervisor. The board meets in 3 weeks and wants a clear recommendation.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'motivation'.",
+        "model_answer": "Motivation is the willingness of people to work hard and apply effort in their jobs, driven by internal and external factors [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees' willingness to work hard and apply effort",
+            "driven by internal and external factors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Northgate Fashion Stores of introducing a 4% commission for sales assistants.",
+        "model_answer": "Advantage 1: Higher sales revenue [k], as commission-based pay pushes assistants to sell more in the 5 stores during the peak season [app]. Advantage 2: Lower fixed wage cost for weak sellers [k], as 4% commission lifts top sellers' pay by $300 a month while poor performers earn less than the $13 per hour wage [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher sales revenue",
+            "pay linked to output lowers fixed wage cost"
+          ],
+          "application_max_2": [
+            "5 stores",
+            "peak season",
+            "$300 a month",
+            "$13 per hour"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.1m",
+            "5 stores",
+            "4% commission",
+            "$300",
+            "$13 per hour",
+            "peak season",
+            "time-rate wage"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to this business of the non-financial package instead of commission.",
+        "model_answer": "Benefit 1: Improved customer service [k], as training and window-display styling give assistants the skills customers asked for in feedback [app], which should lift customer satisfaction and loyalty [an]. Benefit 2: Better retention and a promotion pipeline [k], as job enrichment and training leading to promotion to supervisor motivate ambitious assistants [app], reducing the 28% staff turnover and its recruitment costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "improved customer service skills",
+            "better retention and promotion pathway"
+          ],
+          "application_max_2": [
+            "customer feedback",
+            "window-display styling",
+            "promotion to supervisor",
+            "28% staff turnover"
+          ],
+          "analysis_max_2": [
+            "raises customer satisfaction and loyalty",
+            "reduces recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job enrichment",
+            "window-display styling",
+            "training",
+            "promotion to supervisor",
+            "28%",
+            "teamworking incentives",
+            "customer feedback"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northgate Fashion Stores should introduce the 4% commission rather than keep the time-rate wage with the non-financial package? Justify your answer.",
+        "model_answer": "Commission rewards high sellers [k], lifting top pay by around $300 a month and driving sales across the 5 stores during the peak season [app], which could push revenue beyond $3.1m [an]. On the other hand, the non-financial package attacks the root causes [k]: job enrichment, teamworking incentives and training leading to promotion address the feedback about styling advice [app], building loyalty and cutting the 28% turnover [an]. Overall, Northgate should keep the time-rate wage with the non-financial package rather than introduce commission [eval], because its service and retention problems stem from low engagement rather than low pay; the package protects experienced assistants and the $3.1m revenue base more reliably than commission pressure, though a small peak-season bonus could be added later to sharpen effort [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission drives sales but income varies",
+            "non-financial package tackles engagement and retention"
+          ],
+          "application_max_2": [
+            "$300 a month",
+            "$3.1m",
+            "28% turnover",
+            "5 stores",
+            "peak season"
+          ],
+          "analysis_max_2": [
+            "could push revenue beyond $3.1m",
+            "cutting turnover reduces recruitment costs"
+          ],
+          "evaluation_max_2": [
+            "weighs engagement-led problems against pay-led incentives; recommends retention-first approach with optional seasonal bonus"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "4% commission",
+            "$300",
+            "$3.1m",
+            "28%",
+            "5 stores",
+            "non-financial methods",
+            "job enrichment",
+            "promotion to supervisor"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_52",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Copperpot Coffee House is an independent café chain operating 4 shops in a busy city centre, employing 17 part-time baristas and 3 shift managers. Monthly revenue averages $54,000, around $13,500 per shop, and the average customer spend is $4.60. Staff turnover has reached 33% this year, and wastage of milk and pastries runs at 9% of stock purchased.\n\nOwner Priya Nair must decide how to motivate the baristas before the festive rush. One proposal is a monthly bonus of $150 for every barista in any shop that beats $14,500 in sales while keeping wastage below 8%. The alternative is a non-financial approach: rotating baristas between counter, espresso and baking duties, fortnightly training in latte art and customer service, and a lead barista promotion after 12 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'bonus'.",
+        "model_answer": "A bonus is an extra payment made to employees in addition to their basic pay, usually linked to reaching targets or strong performance [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra payment on top of basic pay",
+            "linked to targets or performance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the monthly bonus proposal for Copperpot Coffee House.",
+        "model_answer": "Advantage 1: Clear target focus [k], as every barista in a shop beating $14,500 in sales with wastage below 8% earns the $150 bonus [app]. Advantage 2: Higher productivity and less waste [k], as staff concentrate on upselling above the average customer spend of $4.60 and reducing milk and pastry waste from 9% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "focus on agreed targets",
+            "higher productivity and lower wastage"
+          ],
+          "application_max_2": [
+            "$14,500",
+            "$150 bonus",
+            "8% wastage",
+            "$4.60 spend",
+            "9% stock waste"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150",
+            "$14,500",
+            "8%",
+            "$4.60",
+            "9%",
+            "festive rush",
+            "baristas"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the non-financial approach for this business.",
+        "model_answer": "Benefit 1: Greater flexibility and skill coverage [k], as rotating baristas between counter, espresso and baking duties lets the 4 shops cover absences [app], keeping service fast during the festive rush [an]. Benefit 2: Improved retention and loyalty [k], as fortnightly latte art training and a lead barista promotion after 12 months give staff a career path [app], reducing the 33% turnover rate and hiring costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flexible multi-skilled workforce",
+            "retention and loyalty through career progression"
+          ],
+          "application_max_2": [
+            "rotating baristas",
+            "counter, espresso and baking duties",
+            "latte art training",
+            "lead barista promotion after 12 months",
+            "33% turnover"
+          ],
+          "analysis_max_2": [
+            "keeps service fast when staff are absent",
+            "cuts turnover and hiring costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "rotating baristas",
+            "espresso",
+            "latte art",
+            "12 months",
+            "33%",
+            "festive rush",
+            "4 shops"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copperpot Coffee House should introduce the $150 monthly bonus rather than the non-financial approach? Justify your answer.",
+        "model_answer": "The bonus scheme links pay directly to results [k], rewarding baristas when their shop beats $14,500 in sales with wastage below 8% [app], which should lift the average $4.60 spend and trim the 9% wastage [an]. The non-financial approach instead builds lasting commitment [k]: rotating duties, fortnightly latte art training and a lead barista promotion after 12 months give the 17 part-time baristas variety and progression [app], tackling the 33% turnover that drives recruitment costs [an]. Overall, the non-financial approach is the better choice for Copperpot [eval], because its problems are skills, variety and retention rather than effort; however, the owner could keep a modest version of the bonus as a short-term festive incentive on top of the rotation plan [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bonus links pay to results",
+            "non-financial builds commitment and retention"
+          ],
+          "application_max_2": [
+            "$14,500",
+            "$150",
+            "$4.60",
+            "9% wastage",
+            "33% turnover",
+            "latte art"
+          ],
+          "analysis_max_2": [
+            "lifts spend and trims wastage",
+            "tackles turnover and recruitment costs"
+          ],
+          "evaluation_max_2": [
+            "judges effort vs skills issues; recommends non-financial core with optional short-term bonus"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150",
+            "$14,500",
+            "8%",
+            "$4.60",
+            "33%",
+            "latte art",
+            "rotating baristas",
+            "festive rush"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_53",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Seabreeze Grand Hotel is a 120-room coastal resort operating year-round, employing 46 housekeepers, 18 front-desk staff and 6 departmental managers. The resort is fully booked for 26 weeks a year at an average nightly rate of $240. Last year the hotel made a profit of $210,000 on revenue of $1.9m. Housekeeper turnover has reached 31%, and guest reviews criticise room cleanliness and late turndown service.\n\nGeneral manager Sofia Marin is weighing two proposals and must decide before the summer season in 8 weeks. Proposal one introduces profit sharing: 5% of annual profit ($10,500) would be split equally among the 70 full-time staff, about $150 each. Proposal two introduces job enrichment: senior housekeepers become quality captains who inspect rooms, mentor new staff and join weekly operations briefings, supported by a $9,600 training budget for inspection skills.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'profit sharing'.",
+        "model_answer": "Profit sharing is a financial reward where employees receive a share of the business's profits, paid in addition to their normal wages or salaries [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees receive a share of business profits",
+            "paid in addition to normal pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of profit sharing for Seabreeze Grand Hotel.",
+        "model_answer": "Advantage 1: Staff goals align with hotel performance [k], as 5% of annual profit ($10,500) would be split equally among the 70 full-time staff, about $150 each [app]. Advantage 2: Improved retention potential [k], as housekeepers benefit when the hotel exceeds the $210,000 profit needed to fund bigger payouts [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "aligns employee goals with business performance",
+            "can improve retention and loyalty"
+          ],
+          "application_max_2": [
+            "$10,500 split among 70 staff",
+            "$150 each",
+            "$210,000 profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit sharing",
+            "$210,000",
+            "$10,500",
+            "$150",
+            "31%",
+            "70 full-time staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two benefits of the job enrichment proposal for this hotel.",
+        "model_answer": "Benefit 1: Higher room standards and fewer complaints [k], as quality captains inspect rooms, mentor new housekeepers and join weekly briefings [app], directly answering the guest reviews criticising room cleanliness and late turndown service [an]. Benefit 2: Stronger motivation through added responsibility [k], as senior housekeepers gain ownership of quality and mentoring supported by the $9,600 training budget [app], reducing the 31% housekeeper turnover [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher standards through responsibility and mentoring",
+            "motivation through job enrichment"
+          ],
+          "application_max_2": [
+            "quality captains",
+            "room cleanliness reviews",
+            "late turndown service",
+            "$9,600 training budget",
+            "31% turnover"
+          ],
+          "analysis_max_2": [
+            "reduces cleanliness complaints and protects reputation",
+            "cuts turnover and recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality captains",
+            "turndown service",
+            "$9,600",
+            "31%",
+            "inspect rooms",
+            "weekly operations briefings",
+            "120-room"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Seabreeze Grand Hotel should introduce job enrichment rather than profit sharing? Justify your answer.",
+        "model_answer": "Profit sharing would give each of the 70 full-time staff roughly $150 based on last year's $210,000 profit [k], a modest sum unlikely to change day-to-day behaviour [app], so the cleanliness and turndown complaints may persist despite a $10,500 payout [an]. Job enrichment tackles the underlying service problems [k]: quality captains, mentoring and weekly briefings confront the late turndown and cleanliness criticisms [app], lifting review scores and protecting the $1.9m revenue base of the 120-room resort [an]. Overall, Seabreeze should introduce job enrichment rather than profit sharing [eval], because the hotel's weaknesses are service quality and turnover, not purely financial demotivation; if profits rise in future years, a modest share scheme could complement the quality captains programme [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit sharing may have only modest behavioural impact",
+            "job enrichment tackles service quality directly"
+          ],
+          "application_max_2": [
+            "$150 each",
+            "$210,000 profit",
+            "$10,500 payout",
+            "turndown service",
+            "$1.9m revenue",
+            "120-room"
+          ],
+          "analysis_max_2": [
+            "complaints may persist with small payouts",
+            "protects review scores and revenue base"
+          ],
+          "evaluation_max_2": [
+            "recommends enrichment justified by quality root cause; suggests share scheme as later complement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit sharing",
+            "$10,500",
+            "$150",
+            "$210,000",
+            "quality captains",
+            "turndown service",
+            "$1.9m",
+            "31%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_54",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Maple Grove Supermarket is an independent grocery chain operating 2 stores, employing 34 checkout cashiers and 6 shelf-stacking supervisors. Cashiers are paid a time-rate wage of $12.50 per hour and work a 38-hour week. Weekly payroll for the cashiers totals $16,150, and scan rates range from 41 items per minute at one till to 55 items per minute at another.\n\nOwner Dale Kovac is considering replacing the time-rate with a piece rate of $1.60 per 100 items scanned, arguing it would lift productivity. Alternatively, he could keep time-rate pay and add teamworking incentives: a $200 monthly bonus for the fastest-scanning shift, plus training so cashiers can rotate between tills and the customer service desk. He wants a decision within 4 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the weekly wage of one cashier working 38 hours at $12.50 per hour.",
+        "model_answer": "38 hours x $12.50 per hour = $475 per week [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "38 x 12.50 = 475",
+            "weekly wage of $475"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of switching to a piece rate of $1.60 per 100 items scanned.",
+        "model_answer": "Advantage 1: Higher scan productivity [k], as pay of $1.60 per 100 items pushes cashiers toward the 55 items per minute pace seen at the fastest till rather than 41 [app]. Advantage 2: Wages vary with output [k], so labour costs only rise when tills process more items, protecting the weekly $16,150 cashier payroll budget [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher productivity/output-linked pay",
+            "labour cost varies with workload"
+          ],
+          "application_max_2": [
+            "$1.60 per 100 items",
+            "55 items per minute",
+            "41 items per minute",
+            "$16,150 payroll"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "piece rate",
+            "$1.60",
+            "55 items per minute",
+            "41 items per minute",
+            "$16,150",
+            "38-hour week"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of keeping time-rate pay with teamworking incentives.",
+        "model_answer": "Benefit 1: Stronger team motivation [k], as the $200 monthly bonus rewards the fastest-scanning shift collectively [app], lifting scan rates across both stores [an]. Benefit 2: Greater labour flexibility and service quality [k], as trained cashiers rotate between tills and the customer service desk [app], keeping queues short and complaints low at busy periods [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "team motivation and cooperation",
+            "labour flexibility and better service"
+          ],
+          "application_max_2": [
+            "$200 monthly bonus",
+            "fastest-scanning shift",
+            "customer service desk",
+            "rotate between tills"
+          ],
+          "analysis_max_2": [
+            "lifts scan rates across both stores",
+            "shorter queues and fewer complaints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$200",
+            "fastest-scanning shift",
+            "tills",
+            "customer service desk",
+            "teamworking incentives",
+            "$12.50"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Maple Grove Supermarket should keep time-rate pay with teamworking incentives rather than switch to a piece rate? Justify your answer.",
+        "model_answer": "Keeping time-rate pay with teamworking incentives protects service quality [k]: cashiers paid $12.50 per hour can slow down to help customers without losing pay [app], preserving goodwill and accuracy at the tills [an]. A piece rate of $1.60 per 100 items would speed scanning [k], rewarding pace over care and risking errors and ignored customer service desk duties [app], which could harm the 2 stores' reputations [an]. Overall, Maple Grove should keep time-rate pay with teamworking incentives [eval], because the gap between 41 and 55 items per minute shows skills can improve without piece pay, and supermarket tills need accuracy and courtesy; the $200 team bonus plus rotation suits this far better than an individual piece rate [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "time-rate protects service quality and accuracy",
+            "piece rate rewards pace but risks errors"
+          ],
+          "application_max_2": [
+            "$12.50 per hour",
+            "$1.60 per 100 items",
+            "2 stores",
+            "41 to 55 items per minute",
+            "$200 team bonus"
+          ],
+          "analysis_max_2": [
+            "preserves goodwill and accuracy",
+            "pace may cause errors and ignored service duties"
+          ],
+          "evaluation_max_2": [
+            "recommends time-rate plus teamworking justified by accuracy and courtesy needs of retail checkout"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "time-rate",
+            "teamworking incentives",
+            "$12.50",
+            "piece rate",
+            "$1.60",
+            "customer service desk",
+            "41",
+            "55"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_55",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Curl & Co Hair Studio is a unisex salon on a busy shopping street, employing 11 stylists and 2 receptionists. The salon moved to this location 2 years ago. Annual revenue is $420,000, of which retail product sales account for 15%. Stylists currently earn 6% commission on every cut, colour and treatment, averaging $1,900 a month, but takings fall to $650 in quiet months. Stylist turnover reached 27% last year.\n\nOwner Lena Ortiz wants to raise motivation before the summer wedding season. Option one increases commission to 9% and adds a quarterly bonus of $250 for the top-selling stylist. Option two keeps 6% commission but introduces a teamworking culture: shared stylist stations, joint client consultations, weekly training in new colour techniques, and a pathway to senior stylist promotion after 18 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'teamworking'.",
+        "model_answer": "Teamworking is organising employees into groups to work cooperatively on shared tasks or goals, rather than working entirely alone [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees organised into groups",
+            "working cooperatively towards shared goals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of raising commission to 9% with the $250 quarterly bonus.",
+        "model_answer": "Advantage 1: Stronger individual selling incentive [k], as 9% commission on cuts, colour and treatments lifts earnings above the current $1,900 average month [app]. Advantage 2: Extra reward for top performers [k], as the quarterly $250 bonus singles out the top-selling stylist and pushes everyone to compete for it [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stronger individual incentive",
+            "reward for top performers"
+          ],
+          "application_max_2": [
+            "9% commission",
+            "$1,900 average month",
+            "$250 quarterly bonus",
+            "top-selling stylist"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "6% commission",
+            "9%",
+            "$1,900",
+            "$250",
+            "$650",
+            "11 stylists"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of option two for Curl & Co Hair Studio.",
+        "model_answer": "Benefit 1: Better client experience and loyalty [k], as shared stylist stations and joint client consultations help the 11 stylists share ideas and solve problems together [app], encouraging repeat visits and extra retail sales [an]. Benefit 2: Lower stylist turnover [k], as weekly training in colour techniques plus promotion to senior stylist after 18 months give staff a future [app], reducing the 27% turnover rate and recruitment costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "better client experience through cooperation",
+            "improved retention through training and promotion"
+          ],
+          "application_max_2": [
+            "shared stylist stations",
+            "joint client consultations",
+            "colour techniques training",
+            "promotion after 18 months",
+            "27% turnover"
+          ],
+          "analysis_max_2": [
+            "repeat visits and extra retail sales",
+            "cuts turnover and recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shared stylist stations",
+            "joint client consultations",
+            "teamworking",
+            "18 months",
+            "27%",
+            "11 stylists",
+            "colour techniques"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Curl & Co Hair Studio should choose the teamworking option rather than raise commission to 9%? Justify your answer.",
+        "model_answer": "Raising commission to 9% would boost individual earnings [k], lifting sellers above the $1,900 monthly average and rewarding colour treatment sales [app], which could lift takings during busy weeks [an]. However, quiet months already see takings fall to $650 [k], and a bigger commission plus the $250 bonus may widen rivalry between the 11 stylists rather than cooperation [app], doing little to fix the 27% turnover rate [an]. Overall, Curl & Co should choose the teamworking option rather than raise commission to 9% [eval], because low, unpredictable income and 27% turnover point to disengagement rather than weak incentives; shared stations, joint consultations, weekly training and promotion after 18 months protect loyalty and client experience while the 6% base commission keeps some link between pay and effort [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission boosts individual effort",
+            "turnover suggests disengagement needing non-financial action"
+          ],
+          "application_max_2": [
+            "$1,900 monthly average",
+            "$650 quiet months",
+            "$250 bonus",
+            "27% turnover",
+            "18 months"
+          ],
+          "analysis_max_2": [
+            "lifts takings in busy weeks",
+            "rivalry may worsen turnover and cooperation"
+          ],
+          "evaluation_max_2": [
+            "recommends teamworking justified by income variability and turnover root cause"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9%",
+            "$1,900",
+            "$650",
+            "27%",
+            "$250",
+            "11 stylists",
+            "18 months",
+            "6% commission"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_56",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Horizon Travel Agency is an independent travel services business operating 2 branches, employing 14 travel consultants and 3 booking clerks. The agency has traded for 9 years and holds a customer database of 6,400 households. Consultants are paid a salary of $1,400 per month plus 2.5% commission on package sales, and the average consultant closes $38,000 of sales a year. Staff turnover is 22%, and competitors are recruiting experienced agents with sign-on bonuses.\n\nManager Yusuf Rahman must choose how to keep and attract consultants, and both branches also face 3 local rival agencies. Option one raises commission to 4% and pays a $500 annual loyalty bonus. Option two keeps pay unchanged but creates two senior consultant posts with opportunities for promotion, fortnightly sales and product training, and a guaranteed performance review after 6 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'promotion'.",
+        "model_answer": "Promotion is the advancement of an employee to a higher-level role with greater responsibility, status and usually higher pay [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "advancement to a higher-level role",
+            "greater responsibility, status and higher pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of raising commission to 4% and paying the $500 loyalty bonus.",
+        "model_answer": "Advantage 1: Higher earnings for strong sellers [k], as 4% commission on the average $38,000 of annual package sales lifts take-home pay for the 14 consultants [app]. Advantage 2: Better defence against rival offers [k], as the $500 annual loyalty bonus rewards consultants who stay despite competitors' sign-on bonuses [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher earnings linked to output",
+            "improved retention against competitors"
+          ],
+          "application_max_2": [
+            "4% commission",
+            "$38,000 of sales",
+            "$500 loyalty bonus",
+            "sign-on bonuses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2.5% commission",
+            "4%",
+            "$38,000",
+            "$500",
+            "22%",
+            "sign-on bonuses",
+            "$1,400"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two benefits of option two for Horizon Travel Agency.",
+        "model_answer": "Benefit 1: Clearer career path and stronger loyalty [k], as two senior consultant posts give ambitious consultants a reason to stay [app], reducing the 22% staff turnover and associated recruitment costs [an]. Benefit 2: Better customer advice and higher conversion [k], as fortnightly sales and product training deepen package knowledge across the 2 branches [app], increasing customer confidence and closing more of the $38,000 annual package sales per consultant [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "career progression drives loyalty",
+            "training improves sales capability"
+          ],
+          "application_max_2": [
+            "senior consultant posts",
+            "22% staff turnover",
+            "fortnightly sales and product training",
+            "2 branches",
+            "$38,000"
+          ],
+          "analysis_max_2": [
+            "reduces turnover and recruitment costs",
+            "raises customer confidence and sales conversion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "senior consultant posts",
+            "22%",
+            "product training",
+            "2 branches",
+            "$38,000",
+            "promotion",
+            "6 months"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Horizon Travel Agency should choose option two (promotion and training) rather than raising commission to 4%? Justify your answer.",
+        "model_answer": "Raising commission to 4% would directly reward high performers [k], lifting a consultant selling close to $38,000 a year and narrowing the gap with rivals' sign-on offers [app], which might retain revenue-generating staff in the short term [an]. However, higher commission raises costs every year and ignores the 22% turnover caused by limited progression [k], so the 2 branches could still lose experienced agents to competitors who promise careers [app], worsening hiring costs [an]. Overall, Horizon should choose option two [eval], because two senior consultant posts, fortnightly training and a guaranteed review after 6 months attack the real reason consultants leave; pay stays at $1,400 plus 2.5% commission, which is fair, while the development path differentiates the agency and builds long-term loyalty [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission rewards performance directly",
+            "promotion tackles progression-driven turnover"
+          ],
+          "application_max_2": [
+            "$38,000",
+            "4%",
+            "22% turnover",
+            "2 branches",
+            "$1,400",
+            "2.5% commission"
+          ],
+          "analysis_max_2": [
+            "short-term retention but higher permanent cost",
+            "career path builds long-term loyalty"
+          ],
+          "evaluation_max_2": [
+            "recommends option two justified by turnover cause and competitive positioning"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "4%",
+            "$38,000",
+            "22%",
+            "2 branches",
+            "$1,400",
+            "2.5% commission",
+            "senior consultant posts",
+            "6 months"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_57",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Ember & Oak Bistro is a licensed restaurant in a market town, employing 24 staff including 9 front-of-house servers, 10 kitchen brigade members and 5 managers. The bistro serves around 340 covers a week across lunch and dinner service. Annual staff turnover is 29%, and chefs report feeling underappreciated despite working 46-hour weeks. Last year the bistro earned a profit of $96,000.\n\nOwner Marta Ellison is considering two retention proposals and must answer her management team within 3 weeks. Proposal one offers share ownership: 3% of the company's shares distributed to staff with at least 2 years of service, valued at $28,800 in total. Proposal two pays a one-off loyalty bonus of $500 to every staff member with at least 1 year of service, costing $9,000 for the 18 eligible staff.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'share ownership'.",
+        "model_answer": "Share ownership is a financial reward where employees receive shares in the business, giving them a stake in its performance and sometimes dividends [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees receive shares in the business",
+            "stake in performance and possible dividends"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the share ownership proposal for Ember & Oak Bistro.",
+        "model_answer": "Advantage 1: Long-term commitment and loyalty [k], as only staff with at least 2 years of service receive shares valued at $28,800 in total [app]. Advantage 2: Aligned incentives with profit [k], as employee-shareholders benefit when the bistro's $96,000 profit grows [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "builds long-term commitment and loyalty",
+            "aligns employee interests with profit"
+          ],
+          "application_max_2": [
+            "2 years of service",
+            "$28,800 in shares",
+            "$96,000 profit",
+            "3% of shares"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share ownership",
+            "3%",
+            "2 years",
+            "$28,800",
+            "$96,000",
+            "29%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the one-off $500 loyalty bonus for this bistro.",
+        "model_answer": "Benefit 1: Immediate morale boost [k], as every staff member with at least 1 year of service feels valued straight away [app], easing tension after busy 46-hour weeks [an]. Benefit 2: Lower, predictable cost [k], as $9,000 for the 18 eligible staff is far cheaper than the $28,800 share distribution [app], protecting cash for kitchen repairs and menu upgrades [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "immediate morale improvement",
+            "low and predictable cost"
+          ],
+          "application_max_2": [
+            "$500 bonus",
+            "1 year of service",
+            "46-hour weeks",
+            "$9,000 cost",
+            "18 eligible staff",
+            "$28,800 share distribution"
+          ],
+          "analysis_max_2": [
+            "eases tension in busy periods",
+            "protects cash for kitchen repairs and menu upgrades"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500",
+            "$9,000",
+            "18 eligible staff",
+            "46-hour weeks",
+            "$28,800",
+            "1 year"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ember & Oak Bistro should offer share ownership rather than the one-off $500 loyalty bonus? Justify your answer.",
+        "model_answer": "The one-off $500 loyalty bonus is cheap and certain [k], costing $9,000 for the 18 eligible staff this year [app], which lifts mood quickly while turnover sits at 29% [an]. Share ownership is slower to feel [k], yet it binds experienced staff into the bistro's future: 3% of shares worth $28,800 rewards those with 2 years of service [app], aligning the team with the $96,000 profit and deepening the loyalty the kitchen and front-of-house lack [an]. Overall, Ember & Oak should offer share ownership rather than only a one-off bonus [eval], because a one-off payment fades quickly and does not change why staff leave; tying a stake to tenure targets the 29% turnover directly, although pairing it with modest annual recognition would be sensible [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bonus is quick, cheap and certain",
+            "shares build long-term loyalty and alignment"
+          ],
+          "application_max_2": [
+            "$500",
+            "$9,000",
+            "18 eligible staff",
+            "3% of shares",
+            "$28,800",
+            "29% turnover",
+            "$96,000 profit"
+          ],
+          "analysis_max_2": [
+            "bonus lifts mood fast but fades",
+            "ownership targets turnover and aligns with profit"
+          ],
+          "evaluation_max_2": [
+            "recommends share ownership targeting retention root cause; suggests pairing with annual recognition"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500",
+            "$9,000",
+            "18 eligible staff",
+            "29%",
+            "3%",
+            "$28,800",
+            "2 years",
+            "$96,000",
+            "share ownership"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_58",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Tranquil Waters Spa is an independent day spa in a coastal resort, employing 16 therapists and 4 reception staff. The spa has traded for 6 years and runs 14 treatment rooms seven days a week. Therapist turnover has reached 35% this year, and exit interviews cite low pay and limited career growth. Average treatment revenue per therapist is $52,000 a year.\n\nManager Dana Whitmore must choose between two incentives for the new year and present her plan at the board meeting on the 10th of next month. Option one pays a $200 quarterly bonus to any therapist generating $13,500 or more in treatment revenue per quarter. Option two spends $1,500 per therapist on certified massage and aromatherapy training, plus a clear progression from junior to senior therapist, aiming to cut turnover below 20%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'financial reward'.",
+        "model_answer": "A financial reward is a monetary payment or benefit given to employees in return for their work, such as wages, salaries, bonuses or commission [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "monetary payment or benefit for work",
+            "examples include wages, salaries, bonuses, commission"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the $200 quarterly bonus for Tranquil Waters Spa.",
+        "model_answer": "Advantage 1: Focus on measurable results [k], as only therapists generating $13,500 or more in treatment revenue per quarter qualify for the $200 payout [app]. Advantage 2: Pay linked to output [k], so the spa only rewards revenue above the quarterly threshold [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "focuses effort on measurable targets",
+            "cost controlled as pay linked to output"
+          ],
+          "application_max_2": [
+            "$200 quarterly bonus",
+            "$13,500 threshold",
+            "treatment revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$200",
+            "$13,500",
+            "35%",
+            "$52,000",
+            "therapists"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of option two for this business.",
+        "model_answer": "Benefit 1: Higher-value skills and treatments [k], as certified massage and aromatherapy training improves what the 16 therapists deliver [app], supporting the $52,000 average revenue per therapist [an]. Benefit 2: Better retention and loyalty [k], as a clear junior to senior progression gives therapists career growth [app], cutting the 35% turnover rate and its recruitment costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training raises skills and treatment quality",
+            "career progression improves retention"
+          ],
+          "application_max_2": [
+            "aromatherapy training",
+            "16 therapists",
+            "$52,000 average revenue",
+            "junior to senior progression",
+            "35% turnover"
+          ],
+          "analysis_max_2": [
+            "supports per-therapist revenue",
+            "cuts turnover and recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "aromatherapy",
+            "16 therapists",
+            "$52,000",
+            "junior to senior",
+            "35%",
+            "$1,500"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tranquil Waters Spa should choose option two (training and progression) rather than the quarterly bonus? Justify your answer.",
+        "model_answer": "The $200 quarterly bonus is cheap and immediate [k], rewarding any therapist generating $13,500 of treatment revenue per quarter [app], which may nudge revenue up quickly [an]. However, exit interviews cite low pay and limited career growth [k], so an $800-a-year bonus will not fix the 35% turnover and the loss of experienced therapists [app], and short-term pushes may even rush consultations [an]. Overall, Tranquil Waters should choose option two [eval], because turnover at 35% and the exit-interview themes point to development and progression needs rather than a small bonus; the $1,500-per-therapist investment should lift retention toward the 20% target and protect the spa's skilled reputation, though a small bonus could be kept for exceptional quarters [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bonus rewards measurable output quickly",
+            "training addresses career-growth complaints at root"
+          ],
+          "application_max_2": [
+            "$200 quarterly bonus",
+            "$13,500 per quarter",
+            "35% turnover",
+            "$52,000 average revenue",
+            "20% target"
+          ],
+          "analysis_max_2": [
+            "bonus may nudge revenue but not retention",
+            "training protects skilled reputation and cuts turnover"
+          ],
+          "evaluation_max_2": [
+            "recommends option two justified by exit interviews; optional small bonus for exceptional quarters"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$200",
+            "$13,500",
+            "35%",
+            "$1,500",
+            "20%",
+            "junior to senior",
+            "aromatherapy",
+            "$52,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_59",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Greenfield Community Pharmacy is an independent chemist in a suburban parade of shops, employing 2 pharmacists, 7 dispensing technicians and 2 counter assistants. The pharmacy has served the neighbourhood for 11 years and dispenses 1,900 prescriptions each month. Technicians are paid $14 per hour on a 40-hour week. Waiting times at the counter have risen to 12 minutes, and technician turnover is 24%.\n\nOwner Dr Helen Park must choose how to motivate the technicians before the winter flu season. Option one raises their pay to $15.50 per hour, costing the pharmacy about $21,840 a year. Option two keeps wages at $14 and introduces non-financial motivation: job rotation between dispensary, counter and home-delivery duties, weekly huddles of 15 minutes, and training technicians as pharmacy accuracy checkers with a pay step on qualification.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'non-financial motivation'.",
+        "model_answer": "Non-financial motivation means motivating employees without extra monetary payment, using methods such as job enrichment, job rotation, teamworking, training or promotion [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "motivating without extra monetary payment",
+            "methods include job enrichment, rotation, teamworking, training, promotion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of raising technician pay to $15.50 per hour.",
+        "model_answer": "Advantage 1: Stronger recruitment and retention [k], as $15.50 per hour beats the current $14 and may cut the 24% technician turnover [app]. Advantage 2: Simple, predictable cost [k], as the rise costs about $21,840 a year for all 7 technicians, which is easy to budget [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "improves recruitment and retention",
+            "simple and budgetable cost"
+          ],
+          "application_max_2": [
+            "$15.50 per hour",
+            "$14 current pay",
+            "24% turnover",
+            "$21,840 a year",
+            "7 technicians"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14 per hour",
+            "$15.50",
+            "24%",
+            "$21,840",
+            "7 dispensing technicians",
+            "40-hour week"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Analyse two benefits of option two for Greenfield Community Pharmacy.",
+        "model_answer": "Benefit 1: Greater flexibility across the pharmacy [k], as job rotation between dispensary, counter and home-delivery duties lets technicians cover each other [app], cutting the 12-minute counter waiting times [an]. Benefit 2: Higher competence and loyalty [k], as training technicians as pharmacy accuracy checkers with a pay step motivates them to qualify [app], lowering errors and reducing the 24% turnover [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rotation creates flexible multi-skilled cover",
+            "training and qualification motivate and raise competence"
+          ],
+          "application_max_2": [
+            "job rotation",
+            "dispensary, counter and home-delivery",
+            "12-minute waiting times",
+            "pharmacy accuracy checkers",
+            "24% turnover"
+          ],
+          "analysis_max_2": [
+            "shorter queues at the counter",
+            "fewer errors and lower turnover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job rotation",
+            "dispensary",
+            "home-delivery",
+            "12 minutes",
+            "pharmacy accuracy checkers",
+            "24%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Greenfield Community Pharmacy should choose option two (non-financial motivation) rather than raise pay to $15.50 per hour? Justify your answer.",
+        "model_answer": "Raising pay to $15.50 per hour is certain and simple [k], costing about $21,840 a year and lifting the 7 technicians above the current $14 rate [app], which may ease the 24% turnover quickly [an]. However, money alone does not fix monotony [k]: the 12-minute counter queues and turnover suggest technicians need variety and progression [app], which a flat pay rise will not deliver [an]. Option two keeps wages at $14 and adds job rotation, weekly huddles and accuracy-checker training with a pay step. Overall, Greenfield should choose option two [eval], because it develops multi-skilled technicians and a qualification pathway far more cheaply than $21,840 a year, directly attacking boredom and the retention problem; if turnover still lags after a review period, the owner can revisit the $1.50 rise [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "pay rise is certain and simple",
+            "non-financial tackles monotony and progression"
+          ],
+          "application_max_2": [
+            "$15.50 per hour",
+            "$21,840 a year",
+            "$14 current rate",
+            "12-minute queues",
+            "24% turnover",
+            "accuracy-checker"
+          ],
+          "analysis_max_2": [
+            "quick ease of turnover but no variety delivered",
+            "multi-skilling cuts queues and cost"
+          ],
+          "evaluation_max_2": [
+            "recommends option two justified by cost and cause of turnover; allows pay review if it fails"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$15.50",
+            "$21,840",
+            "$14",
+            "24%",
+            "12 minutes",
+            "job rotation",
+            "accuracy checkers",
+            "pharmacists"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_60",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Pemberton & Price Estate Agency is an independent agency operating 3 branches in a growing commuter belt, employing 8 sales negotiators and 2 branch managers. The agency has traded for 7 years and handles roughly 260 property sales a year. Negotiators are paid 2% commission only, averaging $9,600 a month each. Average property values have risen to $310,000, and the 2 busiest negotiators generate 60% of sales.\n\nOwner Gina Pemberton is reviewing pay ahead of the spring market. Option one raises commission to 3.5%, which would lift a negotiator selling $480,000 of property in a month from $9,600 to $16,800. Option two keeps 2% commission and creates opportunities for promotion: two senior negotiator posts, monthly coaching, a $300 referral bonus for landlord introductions, and shared lead pools to stop hoarding between branches.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the commission earned by a negotiator who sells $480,000 of property in a month at the current 2% rate.",
+        "model_answer": "2% x $480,000 = $9,600 commission [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "2% x 480,000 = 9,600",
+            "commission of $9,600"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of raising commission to 3.5% for Pemberton & Price Estate Agency.",
+        "model_answer": "Advantage 1: Larger reward for closing sales [k], as the same $480,000 month moves from $9,600 to $16,800 commission [app]. Advantage 2: Helps keep top performers [k], as the 2 busiest negotiators generating 60% of sales gain most from the higher rate and may resist rival approaches [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger reward for output",
+            "helps retain top performers"
+          ],
+          "application_max_2": [
+            "$480,000 month",
+            "$9,600 to $16,800",
+            "2 busiest negotiators",
+            "60% of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2% commission",
+            "3.5%",
+            "$9,600",
+            "$16,800",
+            "$480,000",
+            "60%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of option two for this business.",
+        "model_answer": "Benefit 1: Better cooperation across the 3 branches [k], as shared lead pools stop negotiators hoarding instructions [app], increasing total agency sales and mutual support [an]. Benefit 2: Cheaper growth of new business [k], as the $300 referral bonus rewards landlord introductions for lettings [app], expanding revenue at low marketing cost [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cooperation across branches through shared resources",
+            "low-cost growth of referral revenue"
+          ],
+          "application_max_2": [
+            "3 branches",
+            "shared lead pools",
+            "$300 referral bonus",
+            "landlord introductions"
+          ],
+          "analysis_max_2": [
+            "increases total agency sales",
+            "expands revenue at low marketing cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 branches",
+            "shared lead pools",
+            "$300 referral bonus",
+            "landlord introductions",
+            "senior negotiator posts",
+            "monthly coaching"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Pemberton & Price Estate Agency should keep 2% commission with promotion and coaching rather than raise commission to 3.5%? Justify your answer.",
+        "model_answer": "Keeping 2% with promotion and coaching protects the agency's margins [k]: two senior negotiator posts, monthly coaching and a $300 referral bonus cost far less than 1.5% extra on every $310,000 average sale [app], so the owner's profit is preserved while skills rise [an]. Raising commission to 3.5% would excite the busiest closers [k], taking a $480,000 month from $9,600 to $16,800 [app], which might keep the 2 negotiators who generate 60% of sales but raises cost on all 8 negotiators' sales [an]. Overall, Pemberton & Price should keep 2% commission with promotion and coaching [eval], because the concentration of 60% of sales in 2 people is the key risk and retention should come from career progression and coaching rather than a blanket rise; if the two stars still threaten to leave, a targeted senior package would be cheaper than a universal 3.5% rate [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "promotion and coaching protect margins",
+            "3.5% excites top closers at a permanent extra cost"
+          ],
+          "application_max_2": [
+            "senior negotiator posts",
+            "$300 referral bonus",
+            "$310,000 average sale",
+            "$9,600 to $16,800",
+            "60% of sales"
+          ],
+          "analysis_max_2": [
+            "protects owner profit while skills rise",
+            "blanket rise raises cost across all negotiators"
+          ],
+          "evaluation_max_2": [
+            "recommends option two; targeted senior packages cheaper if stars threaten to leave"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2% commission",
+            "3.5%",
+            "$9,600",
+            "$16,800",
+            "$480,000",
+            "$310,000",
+            "60%",
+            "senior negotiator posts",
+            "$300 referral bonus"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,1222 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_61",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "CarePlus Pharmacies is a regional pharmacy chain of 6 branches in Country X, employing 38 pharmacists and assistants. The business generated $720,000 in revenue last year and holds an 8% share of the local prescription market. Repeat prescription sales account for 70% of turnover. Following the introduction of a new home-delivery prescription service for elderly customers, the marketing director must promote it to 9,000 regular patients aged over 65.\n\nThe branch manager can spend $6,000 on informative advertising through newspaper notices and local radio announcements explaining how the delivery service works, its $3 delivery charge and the sign-up process. Alternatively, the same $6,000 could fund persuasive advertising using emotional television commercials showing grandparents receiving medicines at home. The board wants strong sign-up numbers within 3 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'informative advertising'.",
+        "model_answer": "Advertising that provides factual information to consumers about a product, such as its features, price, availability or how to use it [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "advertising that provides factual information to consumers",
+            "covers features, price, availability or how to use the product"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why informative advertising may suit the new home-delivery prescription service offered by CarePlus Pharmacies.",
+        "model_answer": "Reason 1: Informative advertising provides the factual details customers need before adopting an unfamiliar service [k], such as the $3 delivery charge and sign-up process for elderly patients aged over 65 [app]. Reason 2: It suits older audiences who rely on local newspapers and radio [k], helping CarePlus reach its 9,000 regular patients across 6 branches in Country X [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides factual details customers need about an unfamiliar service",
+            "suits older audiences who use local newspapers and radio"
+          ],
+          "application_max_2": [
+            "$3 delivery charge and sign-up process",
+            "elderly patients aged over 65",
+            "9,000 regular patients",
+            "6 branches in Country X"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "CarePlus Pharmacies",
+            "$3",
+            "9,000",
+            "elderly",
+            "sign-up",
+            "radio"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to CarePlus Pharmacies of using local radio and newspapers for this campaign.",
+        "model_answer": "Benefit 1: Local radio and newspapers reach a geographically targeted audience [k], matching the pharmacy's local prescription market and its 6 branches in Country X [app], which should generate more sign-ups among the 9,000 regular patients and raise revenue [an]. Benefit 2: These media cost much less per placement than television [k], stretching the limited $6,000 budget further than TV commercials would [app], allowing the campaign to run longer and hold local awareness until the 3-month deadline [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reach a geographically targeted local audience",
+            "cheaper per placement than television"
+          ],
+          "application_max_2": [
+            "local prescription market",
+            "6 branches in Country X",
+            "$6,000 budget",
+            "9,000 regular patients"
+          ],
+          "analysis_max_2": [
+            "generates more sign-ups and raises revenue",
+            "budget stretched further, campaign runs longer and holds awareness until the 3-month deadline"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6,000",
+            "Country X",
+            "local radio",
+            "newspaper",
+            "sign-up",
+            "elderly"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think informative advertising is a better way to promote the new delivery service than persuasive advertising? Justify your answer.",
+        "model_answer": "Informative advertising suits seniors who need clear facts about the $3 delivery charge and sign-up process [k], reaching them through trusted local newspapers and radio rather than costly TV slots [app], which should convert the 9,000 regular patients aged over 65 into subscribers faster [an]. However, persuasive advertising creates emotional impact [k], showing grandparents receiving medicines at home to elderly viewers across Country X [app], building stronger brand warmth and reaching households beyond the current 8% market share [an]. Overall, informative advertising is better here because the service is new and simple to explain [eval], so factual clarity will drive sign-ups within the 3-month window more reliably than emotional appeals [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "seniors need clear facts about charge and sign-up process",
+            "persuasive advertising creates emotional impact and brand warmth"
+          ],
+          "application_max_2": [
+            "$3 delivery charge",
+            "9,000 regular patients aged over 65",
+            "grandparents receiving medicines at home",
+            "8% share of the local prescription market"
+          ],
+          "analysis_max_2": [
+            "converts regular patients into subscribers faster",
+            "builds brand warmth and reaches households beyond the current market share"
+          ],
+          "evaluation_max_2": [
+            "weighs factual clarity against emotional appeal for an unfamiliar, simple-to-explain service",
+            "judges the fit to an elderly audience and the 3-month sign-up window"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3",
+            "9,000",
+            "$6,000",
+            "elderly",
+            "radio",
+            "newspaper"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_62",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Aurora Cosmetics is a private limited company that has manufactured natural skincare for 5 years, employing 24 staff at its factory in Country X. Annual revenue reached $1.4 million last year, with its new anti-ageing face cream accounting for $380,000 of sales across 11 pharmacy chains. Its loyal customers cite natural ingredients as the main purchase reason, yet growth of the cream has slowed sharply this year. The marketing team is preparing the relaunch campaign, backed by a $90,000 promotional budget.\n\nThe marketing manager must choose between persuasive advertising and informative advertising. Persuasive television commercials featuring a well-known celebrity would cost $60,000 and reach 1.2 million viewers per week. Continuing the previous informative approach would list ingredients and clinical test results in glossy magazines, at $12,000 per issue, leaving budget for several insertions.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'persuasive advertising'.",
+        "model_answer": "Advertising designed to convince consumers to buy a product by appealing to emotions, image or desires rather than factual information alone [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "advertising designed to convince consumers to buy",
+            "appeals to emotions, image or desires rather than facts alone"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Aurora Cosmetics of using persuasive advertising for the relaunched anti-ageing cream.",
+        "model_answer": "Reason 1: Persuasive advertising can create desire and emotional attachment to a beauty product [k], which matters for an anti-ageing cream bought for self-image and confidence, as dramatised by the celebrity endorsement [app]. Reason 2: It can make the brand memorable quickly [k], and with 1.2 million weekly viewers reachable on television the relaunch would be seen far beyond the 11 pharmacy chains already stocking the cream [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "creates desire and emotional attachment to the product",
+            "makes the brand memorable quickly"
+          ],
+          "application_max_2": [
+            "anti-ageing cream bought for self-image and confidence",
+            "celebrity endorsement",
+            "1.2 million weekly viewers",
+            "11 pharmacy chains already stocking the cream"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Aurora Cosmetics",
+            "anti-ageing",
+            "$60,000",
+            "1.2 million",
+            "11 pharmacy chains",
+            "celebrity"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Aurora Cosmetics of continuing with informative advertising alone.",
+        "model_answer": "Disadvantage 1: Informative advertising tells but does not create emotional desire [k], so listing ingredients and clinical test results in glossy magazines at $12,000 per issue may inform readers without persuading them to switch brands [app], potentially limiting sales of the relaunched cream [an]. Disadvantage 2: It can struggle to differentiate the brand in a crowded skincare market [k], since rival firms also advertise in the same magazines their target readers see [app], meaning Aurora's $90,000 budget may deliver weaker awareness and slower sales growth [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "informs but does not create emotional desire",
+            "can struggle to differentiate the brand in a crowded market"
+          ],
+          "application_max_2": [
+            "glossy magazines at $12,000 per issue",
+            "ingredients and clinical test results",
+            "same magazines rival firms advertise in",
+            "$90,000 promotional budget"
+          ],
+          "analysis_max_2": [
+            "informs readers without persuading them to switch brands, limiting relaunch sales",
+            "weaker awareness and slower sales growth for the $90,000 budget"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "glossy magazines",
+            "$12,000",
+            "ingredients",
+            "clinical",
+            "$90,000",
+            "anti-ageing"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think persuasive advertising is a better choice than informative advertising for the relaunched cream? Justify your answer.",
+        "model_answer": "Persuasive advertising via celebrity television commercials would reach 1.2 million viewers per week [k], matching a $90,000 budget that can carry a $60,000 prime-time campaign and leave $30,000 for follow-up [app], building rapid awareness that should lift the cream's $380,000 of annual sales in its pharmacy chains [an]. However, informative advertising in glossy magazines at $12,000 per issue costs far less per insertion [k], letting Aurora explain ingredients and clinical test results in depth to an engaged skincare readership [app], reaching credibility-seeking buyers without relying on celebrity fame [an]. Overall, persuasive TV advertising is the better choice for a relaunch aimed at rapid awareness because the cream sells on image and 1.2 million weekly viewers outnumber niche magazine readers [eval], although pairing it later with informative print would strengthen credibility among cautious buyers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "persuasive TV reaches 1.2 million viewers per week and lifts awareness fast",
+            "informative print costs less per insertion and builds credibility in depth"
+          ],
+          "application_max_2": [
+            "$90,000 promotional budget with $60,000 for prime time",
+            "glossy magazines at $12,000 per issue",
+            "$380,000 of annual sales",
+            "11 pharmacy chains"
+          ],
+          "analysis_max_2": [
+            "rapid awareness should lift sales through the pharmacy chains",
+            "magazine readership receives deep ingredient and clinical detail, building credibility"
+          ],
+          "evaluation_max_2": [
+            "weighs speed and scale of persuasive TV against depth and credibility of informative print",
+            "judges fit to an image-led skincare relaunch and notes the value of combining both"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$60,000",
+            "1.2 million",
+            "$380,000",
+            "$12,000",
+            "celebrity"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_63",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "BrightBuy Supermarkets operates 14 stores across Country X, employing 420 workers and generating $9.6 million in annual revenue. The weekly marketing budget is $18,000. Cereal is a key traffic-driving aisle for weekly family grocery shops and BrightBuy wants to win it back from rivals. To lift slow cereal sales, currently 300 boxes per store per week and 25% below target, the marketing manager must choose between two sales promotions for the own-brand cornflakes range.\n\nOption 1 is BOGOF (buy one, get one free) on own-brand cornflakes, costing an estimated $7,500 per week and expected to double unit sales. Option 2 is a 20% price reduction from $4.00 to $3.20 per box, costing around $5,800 per week with only modest sales growth expected. The board wants higher sales volume while protecting profit margins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sales promotion'.",
+        "model_answer": "Short-term incentives designed to encourage customers to purchase a product, such as price reductions, BOGOF offers, competitions or free gifts [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "short-term incentives to encourage product purchase",
+            "examples include price reductions, BOGOF offers, competitions or free gifts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why BrightBuy Supermarkets might use sales promotion to increase breakfast cereal sales.",
+        "model_answer": "Reason 1: Sales promotion can encourage immediate purchases and product trial [k], helping the supermarket lift its 300 boxes per store per week, currently 25% below target across 14 stores [app]. Reason 2: Promotions can pull customers away from rival supermarkets [k], which matters when BrightBuy generates $9.6 million in revenue and wants to protect its share of household grocery spending [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "encourages immediate purchases and product trial",
+            "pulls customers away from rival supermarkets"
+          ],
+          "application_max_2": [
+            "300 boxes per store per week",
+            "25% below target",
+            "14 stores across Country X",
+            "$9.6 million annual revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "300 boxes",
+            "25%",
+            "14 stores",
+            "$9.6 million",
+            "cereal",
+            "BOGOF"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to BrightBuy Supermarkets of using BOGOF on its own-brand cornflakes.",
+        "model_answer": "Disadvantage 1: BOGOF reduces the profit earned on each promotional sale [k], because the second box is given free, and with cornflakes priced at $4.00 per box the supermarket sacrifices half the revenue per promotional pack [app], squeezing the margin that covers store and staffing costs [an]. Disadvantage 2: Customers may become conditioned to expect free offers [k], damaging sales of regular-priced lines once the $7,500 weekly promotion ends [app], leaving the 25% shortfall to reappear without continual discounting [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces profit per promotional sale because the second unit is free",
+            "customers become conditioned to expect free offers"
+          ],
+          "application_max_2": [
+            "$4.00 per box price",
+            "$7,500 weekly promotion cost",
+            "own-brand cornflakes",
+            "25% below target"
+          ],
+          "analysis_max_2": [
+            "squeezes the margin that covers store and staffing costs",
+            "post-promotion sales drop back without continual discounting"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "BOGOF",
+            "$4.00",
+            "$7,500",
+            "own-brand",
+            "cornflakes",
+            "25%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think a BOGOF offer or a 20% price reduction to $3.20 is the better sales promotion for this supermarket? Justify your answer.",
+        "model_answer": "BOGOF is widely understood and doubles the perceived value of each pack [k], and at an estimated $7,500 per week it should lift cereal volume well above 300 boxes per store per week across the 14 stores [app], clearing slow stock and closing the 25% gap to target [an]. However, a 20% price reduction from $4.00 to $3.20 costs only $5,800 per week [k], is simpler to operate on shelf and keeps customers paying something for every box [app], preserving more margin than giving a full box away [an]. Overall, BOGOF is the better promotion because the board's key objective is restoring sales volume, and the extra $1,700 per week is justified if double-unit sales are achieved [eval], though a shorter trial period would limit the conditioned-expectation risk [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "BOGOF doubles perceived value and is easy to understand",
+            "price reduction is simpler, cheaper and preserves per-unit margin"
+          ],
+          "application_max_2": [
+            "$7,500 per week BOGOF cost",
+            "20% price reduction to $3.20",
+            "300 boxes per store per week",
+            "14 stores across Country X"
+          ],
+          "analysis_max_2": [
+            "lifts volume, clears slow stock and closes the 25% target gap",
+            "protects margin and avoids customers expecting free goods"
+          ],
+          "evaluation_max_2": [
+            "weighs volume-driving impact of BOGOF against margin protection of the price cut",
+            "justifies the choice against the board's volume objective while noting the extra cost risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "BOGOF",
+            "$7,500",
+            "$5,800",
+            "300 boxes",
+            "$4.00",
+            "$3.20"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_64",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Crunchy Harvest Snacks is a partnership producing baked oat bars stocked by 8 supermarket chains in Country X. It employs 16 workers and sales reached $640,000 last year. Early tasting trials with 300 shoppers scored the new flavour 4.5 out of 5, above the partnership's launch threshold. To launch a new peanut-butter oat bar the partners have a $15,000 promotional budget and must choose between two sales promotions.\n\nOption 1 is free samples: staff handing out 10,000 sample bars at store entrances over 4 weekends. Option 2 is a gift promotion: a free reusable lunchbox with every 6-bar multipack, costing $9,000 for 5,000 lunchboxes. The partners expect samples to convert at a 20% trial-to-purchase rate, while lunchbox multipacks should lift multipack sales by 30% during the 6-week campaign.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'free sample'.",
+        "model_answer": "A small quantity of a product given to consumers at no cost so they can try it before deciding to buy [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "small quantity of a product given at no cost",
+            "lets consumers try the product before buying"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Crunchy Harvest Snacks of giving away free samples of the new oat bar.",
+        "model_answer": "Reason 1: Free samples let unsure customers taste the bar at no risk [k], which suits a new peanut-butter flavour buyers have not yet tried, handed out at supermarket entrances [app]. Reason 2: They can convert trial into repeat purchase [k], and at an expected 20% trial-to-purchase rate on 10,000 samples the partners could gain around 2,000 new buyers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lets customers taste a new product at no risk",
+            "converts trial into repeat purchase"
+          ],
+          "application_max_2": [
+            "new peanut-butter flavour",
+            "10,000 samples at supermarket entrances",
+            "20% trial-to-purchase rate",
+            "8 supermarket chains in Country X"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "peanut-butter",
+            "10,000",
+            "20%",
+            "supermarket",
+            "Crunchy Harvest",
+            "free samples"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Crunchy Harvest Snacks of promoting the new bar with a reusable lunchbox gift.",
+        "model_answer": "Disadvantage 1: Gifts add cost to every multipack sale [k], because $9,000 buys 5,000 lunchboxes, cutting the profit per 6-bar multipack just as the campaign launches [app], directly shrinking the margin that funds the $15,000 budget [an]. Disadvantage 2: Some customers may buy only to collect the gift [k], so when the 6-week campaign ends and the 30% uplift fades, underlying repeat demand may be far lower [app], wasting much of the $9,000 gift spend [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "gifts add cost per sale and cut profit margin",
+            "customers may buy only to collect the gift"
+          ],
+          "application_max_2": [
+            "$9,000 for 5,000 lunchboxes",
+            "6-bar multipack",
+            "6-week campaign",
+            "30% uplift"
+          ],
+          "analysis_max_2": [
+            "shrinks the margin funding the $15,000 budget",
+            "post-campaign repeat demand may be weak, wasting the gift spend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9,000",
+            "5,000",
+            "6-bar",
+            "6-week",
+            "30%",
+            "$15,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think free samples or the lunchbox gift promotion is the better choice for the new oat bar? Justify your answer.",
+        "model_answer": "Free samples put the product directly into shoppers' hands [k], and with 10,000 samples over 4 weekends at busy supermarket entrances and a 20% conversion rate, the partners could gain around 2,000 new peanut-butter bar buyers [app], building genuine product awareness at manageable cost within the $15,000 budget [an]. However, the lunchbox gift with the 6-bar multipack should lift multipack sales by 30% during the 6-week campaign [k], appealing to family shoppers already buying Crunchy Harvest products across the 8 supermarket chains [app], which may lift immediate revenue more than small samples [an]. Overall, free samples are the better choice because a new flavour depends on taste acceptance, and mouth-to-mouth persuasion drives repeat purchase better than a giveaway [eval], although briefly running both would maximise launch impact [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "samples put the product directly into shoppers' hands",
+            "gift promotion should lift multipack sales by 30% and appeal to families"
+          ],
+          "application_max_2": [
+            "10,000 samples over 4 weekends",
+            "20% conversion rate",
+            "6-bar multipack and 6-week campaign",
+            "8 supermarket chains in Country X"
+          ],
+          "analysis_max_2": [
+            "builds genuine product awareness within the $15,000 budget",
+            "lifts immediate multipack revenue during the campaign"
+          ],
+          "evaluation_max_2": [
+            "weighs taste-acceptance trial against short-term multipack revenue uplift",
+            "judges new-flavour launch risk and considers combining both promotions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "10,000",
+            "20%",
+            "$15,000",
+            "$9,000",
+            "30%",
+            "6-week"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_65",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Sunny Dairy Co is a private limited company producing children's yoghurt drinks sold in 600 supermarkets across Country X. It employs 32 workers and sales reached $2.1 million last year. Summer holidays are peak season for children's yoghurt drinks and the launch must capture that window. To boost sales of the new berry flavour the marketing manager controls a $24,000 promotional budget and must choose between two sales promotions.\n\nOption 1 is an on-pack competition: buyers enter to win a family holiday to a theme park, costing $14,000 in prizes and printing. Option 2 is point-of-sale displays: shelf units and fridge-end displays in 400 stores, costing $16,000 for production and fitting. The manager expects displays to lift impulse purchases by 15%, while the competition could double customer entries over the 8-week campaign.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'point-of-sale display'.",
+        "model_answer": "Display material placed where purchases are made, such as shelf stands or fridge-end displays, designed to attract shopper attention and stimulate impulse buying [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "display material placed at the location where purchases are made",
+            "designed to attract attention and encourage impulse purchases"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Sunny Dairy Co of using point-of-sale displays for the berry yoghurt drink.",
+        "model_answer": "Reason 1: Displays attract shopper attention exactly where buying decisions are made [k], so fridge-end units in 400 stores would showcase the new berry flavour at the moment shoppers reach for chilled drinks [app]. Reason 2: They can stimulate impulse, unplanned purchases [k], helping Sunny Dairy lift sales of the launch flavour across 600 supermarkets [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "attracts shopper attention where buying decisions are made",
+            "stimulates impulse, unplanned purchases"
+          ],
+          "application_max_2": [
+            "fridge-end units in 400 stores",
+            "new berry flavour",
+            "chilled drinks cabinet",
+            "600 supermarkets across Country X"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "fridge-end",
+            "400 stores",
+            "berry",
+            "600 supermarkets",
+            "point-of-sale",
+            "Sunny Dairy"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Sunny Dairy Co of running an on-pack competition for the berry yoghurt drink.",
+        "model_answer": "Benefit 1: A competition can engage customers and create excitement around the brand [k], because entering to win a family holiday to a theme park gives parents a strong reason to pick the berry flavour over rivals [app], increasing repeat purchases during the 8-week campaign [an]. Benefit 2: Competitions can lift short-term sales and gather buyer contact details [k], and with prizes costing $14,000 the manager expects customer entries to double over the 8 weeks [app], strengthening Sunny Dairy's negotiating position with stocking supermarkets [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "engages customers and creates excitement around the brand",
+            "lifts short-term sales and gathers customer contact details"
+          ],
+          "application_max_2": [
+            "family holiday to a theme park prize",
+            "prizes costing $14,000",
+            "new berry flavour",
+            "expects customer entries to double over the 8 weeks"
+          ],
+          "analysis_max_2": [
+            "repeat purchases increase during the 8-week campaign",
+            "stronger negotiating position with stocking supermarkets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14,000",
+            "family holiday",
+            "theme park",
+            "8-week",
+            "berry",
+            "competition"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think an on-pack competition or point-of-sale displays is the better promotion for the berry yoghurt drink? Justify your answer.",
+        "model_answer": "Point-of-sale displays place the new flavour directly in the shopper's eyeline [k], and at $16,000 for production and fitting across 400 stores they target the expected 15% uplift in impulse purchases exactly where the buying decision happens [app], delivering a durable asset that keeps working after the campaign ends [an]. However, an on-pack competition costing $14,000 could double customer entries and generate buzz around the theme park holiday prize [k], motivating parents to choose the berry flavour repeatedly during the 8-week window [app], producing a sharper short-term sales spike than static displays [an]. Overall, the point-of-sale displays are the better option because yoghurt is an impulse-buy category and supermarket shelf visibility is decisive for a new flavour [eval], although adding a short competition later in the campaign could complement them [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "displays place the product in the shopper's eyeline where the buying decision happens",
+            "on-pack competition doubles entries and generates theme park prize buzz"
+          ],
+          "application_max_2": [
+            "$16,000 for production and fitting in 400 stores",
+            "expected 15% uplift in impulse purchases",
+            "theme park holiday prize",
+            "8-week campaign"
+          ],
+          "analysis_max_2": [
+            "durable visibility asset that outlasts the campaign",
+            "sharper short-term sales spike during the 8-week window"
+          ],
+          "evaluation_max_2": [
+            "weighs durable display visibility against the competition's short-term buzz",
+            "judges fit to impulse-buy yoghurt category and suggests combining both"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$16,000",
+            "400 stores",
+            "15%",
+            "$14,000",
+            "8-week",
+            "theme park"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_66",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Titan Industrial Tools is a private limited company manufacturing heavy-duty pressure washers for garages and farms. It employs 45 workers at one factory in Country X and generated $3.8 million in revenue last year. Existing dealer satisfaction stands at 92%, but brand awareness remains low outside its present dealer network. Each TX-900 washer sells for $2,500 and dealer contracts average $40,000 per year.\n\nThe sales director must decide how to launch the new TX-900. Option 1 is personal selling: hiring 6 commission-paid sales representatives to visit garages, give demonstrations and negotiate contracts, costing $120,000 in salaries and travel for 12 months. Option 2 is advertising in national trade magazines and on industry websites, costing $45,000 for a one-year campaign reaching an estimated 30,000 potential business buyers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'personal selling'.",
+        "model_answer": "Face-to-face communication between a salesperson and a potential buyer in which the salesperson explains, demonstrates and negotiates to secure a sale [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "face-to-face communication between salesperson and potential buyer",
+            "aims to explain, demonstrate and negotiate a sale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Titan Industrial Tools of using personal selling for the TX-900.",
+        "model_answer": "Reason 1: Sales representatives can demonstrate a complex technical product in person [k], showing garage and farm owners how the TX-900 outperforms rival pressure washers on heavy-duty jobs [app]. Reason 2: Personal contact lets the business build long-term relationships and negotiate large orders [k], which fits dealer contracts averaging $40,000 a year and washers retailing at $2,500 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "demonstrates a complex technical product in person",
+            "builds long-term relationships and negotiates large orders"
+          ],
+          "application_max_2": [
+            "garage and farm owners",
+            "TX-900 pressure washers",
+            "dealer contracts averaging $40,000 a year",
+            "$2,500 washers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "TX-900",
+            "garage",
+            "farm",
+            "$40,000",
+            "$2,500",
+            "personal selling"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Titan Industrial Tools of relying on personal selling alone.",
+        "model_answer": "Disadvantage 1: Personal selling is very expensive per customer contact [k], because 6 commission-paid representatives and 12 months of salaries and travel would cost $120,000 before any sale is closed [app], absorbing much of the launch budget for one model [an]. Disadvantage 2: Reach is limited by the number of visits representatives can make [k], so the TX-900 could miss the 30,000 potential business buyers exposed to a $45,000 magazine and website campaign [app], slowing industry-wide awareness of the new model [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "very expensive per customer contact",
+            "limited reach compared with advertising"
+          ],
+          "application_max_2": [
+            "6 commission-paid representatives for 12 months",
+            "$120,000 salaries and travel",
+            "30,000 potential business buyers",
+            "$45,000 magazine and website campaign"
+          ],
+          "analysis_max_2": [
+            "launch budget absorbed before any sale is closed",
+            "industry-wide awareness of the new model grows slowly"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "commission-paid",
+            "$45,000",
+            "30,000",
+            "12 months",
+            "TX-900"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think personal selling or trade advertising is the better way to launch the TX-900? Justify your answer.",
+        "model_answer": "Personal selling allows face-to-face demonstrations and technical questioning [k], which suits a $2,500 industrial machine where dealer contracts average $40,000 a year and trust is decisive [app], enabling representatives to close high-value orders that a magazine advert cannot negotiate [an]. However, advertising in trade magazines and on industry websites for $45,000 reaches an estimated 30,000 potential business buyers at a fraction of the $120,000 personal selling cost [k], creating broad awareness of the TX-900 across the industry within a single campaign [app], feeding the sales pipeline before representatives visit [an]. Overall, personal selling is the better core launch strategy because high-value industrial machines are bought on relationships and demonstrations rather than adverts [eval], although a small $45,000 advertising budget would usefully support lead generation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "personal selling enables face-to-face demonstrations and contract negotiation",
+            "advertising creates broad awareness of the TX-900 at lower cost"
+          ],
+          "application_max_2": [
+            "$2,500 industrial machine",
+            "dealer contracts averaging $40,000 a year",
+            "$45,000 for 30,000 potential buyers",
+            "$120,000 for 12 months of representatives"
+          ],
+          "analysis_max_2": [
+            "closes high-value orders adverts cannot negotiate",
+            "builds industry-wide awareness and feeds the pipeline before visits"
+          ],
+          "evaluation_max_2": [
+            "weighs relationship-based closing power against low-cost mass reach",
+            "judges fit to high-value B2B launch and recommends combining both"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2,500",
+            "$40,000",
+            "$45,000",
+            "$120,000",
+            "30,000",
+            "TX-900"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_67",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Riverbank Grand Hotel is a 3-star business hotel in Country X with 120 rooms, employing 85 staff. Occupancy averaged 62% last year and revenue reached $2.6 million. The hotel has faced criticism on social media after 3 key guests complained publicly about poor breakfast service. The general manager has $20,000 remaining in this year's promotional budget for repairing the hotel's image.\n\nOption 1 is a public relations offensive: hosting a charity dinner for 150 local business leaders and travel journalists with a press release offering the hotel's response, costing $12,000. Option 2 is a newspaper advertising campaign of four full-page adverts promising improved breakfasts across the city, costing $15,000 and designed purely to reach new customers rather than opinion leaders.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'public relations'.",
+        "model_answer": "Communication activities that build and maintain a positive image and goodwill between a business and the public — such as the media, customers and the local community — rather than direct paid advertising [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "builds and maintains a positive image and goodwill with the public",
+            "targets the media, customers and the local community rather than selling directly"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Riverbank Grand Hotel might use public relations to repair its image.",
+        "model_answer": "Reason 1: Public relations can rebuild trust and credibility after criticism more cheaply than advertising [k], which matters after 3 key guests complained publicly about the poor breakfast service [app]. Reason 2: Positive press coverage is often seen as more believable than paid advertising [k], and a well-handled story for the 150 local business leaders and journalists at the charity dinner could reframe the hotel's reputation [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rebuilds trust and credibility more cheaply than advertising",
+            "positive press coverage seen as more believable than paid advertising"
+          ],
+          "application_max_2": [
+            "3 key guests complaining publicly about breakfast service",
+            "poor breakfast service",
+            "150 local business leaders and journalists",
+            "charity dinner"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "breakfast",
+            "3 key guests",
+            "150",
+            "charity dinner",
+            "public relations",
+            "Riverbank Grand Hotel"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to Riverbank Grand Hotel of hosting a charity dinner for journalists and business leaders.",
+        "model_answer": "Benefit 1: The dinner associates the hotel with a good cause, generating favourable publicity [k], and hosting 150 local business leaders and travel journalists for $12,000 creates many influential voices likely to recommend the hotel [app], repairing the breakfast-service damage through word-of-mouth [an]. Benefit 2: It reaches opinion leaders directly at relatively low cost [k], because at $12,000 it is cheaper than the $15,000 newspaper campaign and its coverage could exceed the printed audience [app], helping lift occupancy above the current 62% average [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "associates the hotel with a good cause and generates favourable publicity",
+            "reaches opinion leaders directly at relatively low cost"
+          ],
+          "application_max_2": [
+            "150 local business leaders and travel journalists",
+            "$12,000 charity dinner cost",
+            "$15,000 newspaper campaign",
+            "62% average occupancy"
+          ],
+          "analysis_max_2": [
+            "repairs breakfast-service damage through word-of-mouth recommendations",
+            "coverage could exceed the printed audience, lifting occupancy above 62%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$12,000",
+            "$15,000",
+            "150",
+            "62%",
+            "charity dinner",
+            "breakfast"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think public relations or newspaper advertising is the better use of the remaining promotional budget? Justify your answer.",
+        "model_answer": "Public relations addresses the real problem: damaged trust after the breakfast complaints [k], and the $12,000 charity dinner for 150 local business leaders and travel journalists could generate independent, credible coverage [app], turning critics into advocates and lifting the hotel's 62% occupancy [an]. However, four full-page newspaper adverts at $15,000 would reach a broad general audience directly [k], putting the improved-breakfast promise in front of thousands of potential guests across Country X with a clear, controlled message [app], something a press release cannot guarantee [an]. Overall, public relations is the better option because image damage needs credible third-party voices, not more paid promises, and it leaves $8,000 spare for follow-up activity [eval], although visible breakfast improvements must convince the complaining guests first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "PR rebuilds damaged trust through independent, credible coverage",
+            "newspaper adverts reach a broad audience with a controlled message"
+          ],
+          "application_max_2": [
+            "$12,000 charity dinner with 150 opinion leaders",
+            "four full-page adverts at $15,000",
+            "62% average occupancy",
+            "breakfast complaints from 3 key guests"
+          ],
+          "analysis_max_2": [
+            "credible third-party coverage turns critics into advocates and lifts occupancy",
+            "direct advertising guarantees controlled reach but cannot buy credibility"
+          ],
+          "evaluation_max_2": [
+            "weighs third-party editorial credibility against controllable mass-reach advertising",
+            "judges fit to an image-repair problem and notes the $8,000 follow-up headroom"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$12,000",
+            "$15,000",
+            "62%",
+            "150",
+            "breakfast",
+            "$2.6 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_68",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Summit Sports is a public limited company producing football boots and kits, employing 210 workers at 2 factories in Country X. Annual revenue is $14 million and the new Thunder boot range launches in 6 months. The promotion manager controls a $500,000 launch budget and must decide how to allocate it.\n\nOption 1 is sponsorship: paying $350,000 to become headline kit sponsor of the Country X national football team for 2 years, with the Thunder logo on shirts and training wear. Option 2 is a $350,000 television and online advertising campaign during football matches, reaching an estimated 2 million viewers per match and running for 1 season. Early sales forecasts show the Thunder boot could generate $4 million in its first year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sponsorship'.",
+        "model_answer": "Providing money or resources to an event, team or individual, for example a sports team, in return for promotional benefits such as brand exposure [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides money or resources in return for promotional benefits",
+            "linked to events, teams or individuals, for example sports sponsorship"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Summit Sports of becoming headline kit sponsor of the national football team.",
+        "model_answer": "Reason 1: Sponsorship exposes the brand to huge audiences at every match [k], so the Thunder logo on shirts and training wear would be seen across Country X during the 6-month build-up and the full 2-year term [app]. Reason 2: Association with a successful national team transfers positive feelings to the brand [k], strengthening the image of the new Thunder boot range among young football buyers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "exposes the brand to huge audiences at matches",
+            "transfers positive feelings from a successful team to the brand"
+          ],
+          "application_max_2": [
+            "Thunder logo on shirts and training wear",
+            "6-month build-up",
+            "2-year sponsorship term",
+            "new Thunder boot range"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Thunder",
+            "national football team",
+            "6 months",
+            "2 years",
+            "Summit Sports",
+            "headline kit sponsor"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Summit Sports of sponsoring the national team for 2 years.",
+        "model_answer": "Disadvantage 1: Sponsorship is a long-term, high-cost commitment [k], because $350,000 over 2 years absorbs over half of the $500,000 launch budget before a single boot is sold [app], straining cash at a critical launch stage [an]. Disadvantage 2: If the team performs poorly or suffers a scandal, the brand image suffers [k], damaging the Thunder range's launch just as $4 million of first-year sales is forecast [app], threatening the revenue projections underpinning the deal [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term, high-cost commitment that strains launch-stage cash",
+            "brand image suffers if the team performs poorly or faces a scandal"
+          ],
+          "application_max_2": [
+            "$350,000 over 2 years",
+            "$500,000 launch budget",
+            "Thunder range launch",
+            "$4 million first-year sales forecast"
+          ],
+          "analysis_max_2": [
+            "launch-stage cash strained before any boot is sold",
+            "revenue projections underpinning the deal threatened by poor team form"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$350,000",
+            "$500,000",
+            "2 years",
+            "$4 million",
+            "Thunder",
+            "6 months"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think sponsorship of the national team or match-time advertising is the better use of the $350,000? Justify your answer.",
+        "model_answer": "Sponsorship gives exclusive, repeated brand exposure for 2 years [k], placing the Thunder logo on shirts and training wear in front of millions of supporters and defining the new boot range's identity [app], which should strengthen brand loyalty far beyond the launch window [an]. However, match-time television and online advertising for 1 season reaches an estimated 2 million viewers per match with full message control [k], costing the same $350,000 but concentrating spend exactly during the 6-month countdown [app], delivering faster awareness with measurable reach [an]. Overall, sponsorship is the better option if Summit Sports wants a durable brand asset and is confident in the team's profile, since a 2-year deal outlasts a single advert burst [eval], though match-time advertising is safer if rapid early sales are needed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sponsorship gives exclusive, repeated exposure with a defined brand identity",
+            "match-time advertising gives full message control and measurable 1-season reach"
+          ],
+          "application_max_2": [
+            "$350,000 2-year sponsorship versus 1-season advertising",
+            "Thunder logo on shirts and training wear",
+            "2 million viewers per match",
+            "6-month launch countdown"
+          ],
+          "analysis_max_2": [
+            "brand loyalty strengthened beyond the launch window",
+            "faster awareness with measurable reach concentrated at launch"
+          ],
+          "evaluation_max_2": [
+            "weighs durable sponsorship identity against concentrated, controllable advertising",
+            "judges fit to a 6-month launch while noting team-performance and speed trade-offs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Thunder",
+            "$350,000",
+            "2 million",
+            "6 months",
+            "2 years",
+            "$4 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_69",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Volt Energy Drinks is a private limited company launching a mango-flavoured caffeine drink aimed at 16 to 28 year-olds. It employs 28 workers, sells through corner shops and gyms in Country X and had turnover of $980,000 last year. Volt previously spent $30,000 on bus-shelter adverts with disappointing results. The marketing manager has $50,000 for the 8-week launch campaign.\n\nOption 1 is viral marketing: a short, humorous video challenge designed to be shared on social media, produced for $18,000 and promoted by 3 micro-influencers with a combined 900,000 followers. Option 2 is a national television campaign costing $45,000 for 2 weeks of evening slots, expected to reach 1.5 million viewers. Viral videos spread only if viewers choose to share them, which is uncertain.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'viral marketing'.",
+        "model_answer": "Creating online promotional content that users choose to share through social media, spreading the message rapidly and cheaply from person to person [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "online promotional content shared voluntarily by users",
+            "spreads rapidly and cheaply through social media"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Volt Energy Drinks of using viral marketing for the mango launch.",
+        "model_answer": "Reason 1: Viral campaigns can reach huge audiences at very low cost per viewer [k], because an $18,000 video shared by 3 micro-influencers with 900,000 combined followers could outreach costlier paid slots [app]. Reason 2: Social content resonates strongly with the target demographic [k], and 16 to 28 year-olds who frequent corner shops and gyms are heavy social media sharers likely to react to a humorous challenge [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reaches huge audiences at very low cost per viewer",
+            "resonates with the target demographic on social media"
+          ],
+          "application_max_2": [
+            "$18,000 video with 3 micro-influencers",
+            "900,000 combined followers",
+            "16 to 28 year-olds",
+            "corner shops and gyms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18,000",
+            "900,000",
+            "micro-influencers",
+            "corner shops",
+            "gyms",
+            "viral"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Volt Energy Drinks of relying on viral marketing alone.",
+        "model_answer": "Disadvantage 1: Viral success is unpredictable and cannot be guaranteed [k], because the video spreads only if viewers choose to share it during the 8-week campaign [app], risking a muted launch if the challenge falls flat [an]. Disadvantage 2: Negative reactions can spread as fast as positive ones [k], and a clumsy mango-flavoured stunt could generate viral criticism among health-conscious young buyers [app], harming the brand before any controlled TV alternative could correct the story [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "viral success is unpredictable and cannot be guaranteed",
+            "negative reactions can spread as fast as positive ones"
+          ],
+          "application_max_2": [
+            "spreads only if viewers choose to share",
+            "8-week launch campaign",
+            "mango-flavoured drink",
+            "national television campaign alternative"
+          ],
+          "analysis_max_2": [
+            "muted launch if the challenge falls flat",
+            "brand harmed by viral criticism before any corrective message"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8-week",
+            "mango-flavoured",
+            "viral",
+            "$18,000",
+            "$45,000",
+            "social media"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think viral marketing or national television advertising is the better way to launch the mango-flavoured drink? Justify your answer.",
+        "model_answer": "Viral marketing targets exactly the 16 to 28 year-old gym and corner-shop audience [k], and for $18,000 the video with 3 micro-influencers and 900,000 combined followers offer enormous reach per dollar during the 8-week campaign [app], potentially generating free word-of-mouth that money cannot buy [an]. However, the $45,000 national television campaign guarantees exposure to 1.5 million viewers over 2 weeks of evening slots [k], providing certainty, reach beyond existing followers and a controlled brand message for the launch [app], which reduces the gamble inherent in asking viewers to share voluntarily [an]. Overall, viral marketing is the better option given the tight $50,000 budget and young target market [eval], but the failure risk means pairing it with a small paid social spend as insurance would be prudent [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "viral marketing targets 16 to 28 year-olds with enormous reach per dollar",
+            "TV campaign guarantees 1.5 million viewer exposure with a controlled message"
+          ],
+          "application_max_2": [
+            "$18,000 with 3 micro-influencers and 900,000 followers",
+            "8-week campaign",
+            "$45,000 for 2 weeks of evening slots",
+            "$50,000 launch budget"
+          ],
+          "analysis_max_2": [
+            "free word-of-mouth the money cannot buy",
+            "certainty and controlled message reduce the sharing gamble"
+          ],
+          "evaluation_max_2": [
+            "weighs low-cost targeted viral reach against guaranteed TV exposure",
+            "judges fit to the tight budget and young demographic and recommends risk insurance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18,000",
+            "$45,000",
+            "900,000",
+            "1.5 million",
+            "8-week",
+            "$50,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_70",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "PureWeight Foods is a private limited company producing 'LeanLine' weight-loss biscuits promoted as 'clinically proven to burn belly fat'. It employs 60 workers, sales reached $1.8 million last year, and Trading Standards has flagged the pack claim as potentially misleading promotion. A routine inspection also found 500g packets averaging only 450g, breaching weights and measures law.\n\nThe managing director must choose between two options. Option 1 is to withdraw all LeanLine stock, reprint packaging with revised claims and recalibrate the filling machinery at a cost of $80,000, halting the promotion for 2 months. Option 2 is to continue selling current stock with the existing promotion unchanged and contest the ruling, risking fines and compensation claims with legal costs estimated at $25,000, but protecting $600,000 of near-term sales.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'misleading promotion'.",
+        "model_answer": "Promotion that gives consumers a false or deceptive impression about a product, such as untrue claims about what it can do, which consumer protection law prohibits [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "promotion giving a false or deceptive impression about a product",
+            "prohibited by consumer protection legislation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two legal controls that PureWeight Foods must comply with regarding LeanLine biscuits.",
+        "model_answer": "Control 1: Weights and measures law requires packets to contain the stated weight [k], so 500g packs filled to an average of only 450g break the law and can trigger enforcement by Trading Standards [app]. Control 2: Misleading promotion law forbids untrue or unproven product claims [k], so the claim that LeanLine is 'clinically proven to burn belly fat' is unlawful unless the company holds genuine clinical evidence [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "weights and measures law requires packets to contain the stated weight",
+            "misleading promotion law forbids untrue or unproven claims"
+          ],
+          "application_max_2": [
+            "500g packs filled to an average of 450g",
+            "Trading Standards enforcement",
+            "'clinically proven to burn belly fat' claim",
+            "LeanLine weight-loss biscuits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "500g",
+            "450g",
+            "Trading Standards",
+            "LeanLine",
+            "weights and measures",
+            "clinically proven"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to PureWeight Foods of withdrawing and reprinting the LeanLine packaging immediately.",
+        "model_answer": "Benefit 1: Immediate withdrawal stops the unlawful promotion at once [k], avoiding fines and compensation claims that could exceed the $80,000 reprint cost [app], protecting the $600,000 of near-term sales from being frozen by enforcement action [an]. Benefit 2: Revised claims restore consumer trust and legal safety [k], reassuring buyers that reformulated packaging with honest weight-loss wording is compliant [app], safeguarding the brand while $1.8 million of annual revenue is at stake [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "immediate withdrawal stops the unlawful promotion and avoids fines",
+            "revised claims restore consumer trust and legal safety"
+          ],
+          "application_max_2": [
+            "$80,000 reprint cost",
+            "$600,000 of near-term sales",
+            "LeanLine packaging with revised claims",
+            "$1.8 million of annual revenue"
+          ],
+          "analysis_max_2": [
+            "avoids enforcement freezing near-term sales",
+            "safeguards brand reputation while $1.8 million of annual revenue is at stake"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$80,000",
+            "$600,000",
+            "$1.8 million",
+            "Trading Standards",
+            "LeanLine",
+            "packaging"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think PureWeight Foods should withdraw and reprint now, or contest the Trading Standards ruling? Justify your answer.",
+        "model_answer": "Withdrawing and reprinting stops the breach immediately [k], sacrificing only $80,000 and 2 months of promotion to avoid fines, compensation claims and a stop on $600,000 of sales [app], and it signals to regulators and customers that PureWeight takes consumer protection seriously [an]. However, contesting the ruling could keep the strong 'clinically proven to burn belly fat' promotion in place and defend $600,000 in near-term sales for legal costs of about $25,000 [k], which is commercially tempting if the clinical claim is genuinely defensible [app], but a known loss would bring heavier penalties and lasting reputational damage [an]. Overall, withdrawal is the better option because breaching weights and measures and misleading promotion laws risks prosecution, recalls and destroyed consumer trust, far outweighing $25,000 of legal savings [eval], and a compliant relaunch can retain most sales with an honest message [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "withdrawal stops the breach and avoids fines and reputational damage",
+            "contesting could keep the promotion running for around $25,000 legal costs"
+          ],
+          "application_max_2": [
+            "$80,000 reprint and 2 months without promotion",
+            "$600,000 of near-term sales",
+            "'clinically proven to burn belly fat' claim",
+            "$25,000 estimated legal costs"
+          ],
+          "analysis_max_2": [
+            "signals consumer protection commitment and avoids enforcement freezes",
+            "a known loss brings heavier penalties and lasting reputational damage"
+          ],
+          "evaluation_max_2": [
+            "weighs $25,000 legal saving against prosecution, recall and trust-destruction risk",
+            "judges fit to legal reality: honest relaunch can retain most near-term sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$80,000",
+            "$25,000",
+            "$600,000",
+            "2 months",
+            "Trading Standards",
+            "LeanLine"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

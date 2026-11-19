@@ -1,0 +1,2323 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_21",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An organic farm and food distribution enterprise operates as a Private Limited Company, growing and packing organic vegetables for national supermarket chains. Financial statements show annual sales revenue of $4,200,000, cost of sales of $2,520,000 (seeds, organic fertilizers, and packaging), and operating expenses of $1,050,000 (farm machinery maintenance, labor wages, and fuel). Gross profit is $1,680,000 (40% Gross Profit Margin) and net profit before tax is $630,000 (15% Net Profit Margin).\n\nNet profit after tax is $500,000, with $300,000 paid as dividends and $200,000 retained. Balance sheet data presents non-current assets of $2,400,000 and non-current liabilities of $900,000 in bank loans. To fund a $400,000 automated sorting facility, directors are debating whether to increase selling prices by 6% or cut cost of sales by negotiating bulk fertilizer purchasing discounts.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit for this organic farm enterprise. Show your working.",
+        "model_answer": "Gross Profit = Sales Revenue ($4,200,000) - Cost of Sales ($2,520,000) = $1,680,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Sales Revenue - Cost of Sales formula",
+            "Gross profit shows the surplus after covering the cost of producing goods sold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) given Capital Employed of $3,300,000 and Operating Profit of $630,000. Explain what this result indicates.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($630,000 / $3,300,000) x 100 = 19.09% [k]. ROCE measures how effectively the business uses long-term capital to generate operating profit [k]. This result shows the farm earns about 19 cents of operating profit for every dollar of capital employed [app], drawing from $900,000 bank loans and equity reserves [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "19.09% calculation",
+            "explanation of return earned on capital employed"
+          ],
+          "application_max_2": [
+            "$630,000 operating profit vs $3,300,000 capital employed",
+            "$900,000 bank loans"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$630,000",
+            "$4,200,000",
+            "farm",
+            "loans",
+            "supermarket",
+            "fertilizer"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how an income statement helps a company's directors evaluate operational efficiency.",
+        "model_answer": "Gross Profit Margin tracking [k]. Comparing the 40% Gross Profit Margin ($1,680,000) against previous years [app] reveals whether raw material cost of sales is controlled efficiently [an]. Overhead expense control [k]. Analyzing $1,050,000 operating expenses relative to revenue [app] highlights areas where operational overhead costs can be reduced to expand net profit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tracks gross profit margin trends",
+            "monitors operating expense ratios"
+          ],
+          "application_max_2": [
+            "40% gross profit margin / $1,680,000",
+            "$1,050,000 operating expenses"
+          ],
+          "analysis_max_2": [
+            "evaluates raw material cost efficiency",
+            "identifies overhead cost reduction opportunities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit",
+            "expenses",
+            "revenue",
+            "margin",
+            "$1,050,000",
+            "$1,680,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think negotiating bulk purchasing discounts on fertilizer (cutting cost of sales) or increasing selling prices by 6% is the better strategy to fund the $400,000 automated sorting facility? Justify your answer.",
+        "model_answer": "Negotiating bulk purchasing discounts on fertilizer reduces cost of sales below $2,520,000 [app], directly expanding the 40% gross profit margin [k] and generating additional retained profit beyond $200,000 [an]. This relies on internal supplier negotiation rather than changing product prices. Increasing selling prices by 6% raises sales revenue above $4,200,000 [app], expanding the 15% net profit margin [k]. However, supermarket chains hold high buyer power and may switch to competing organic vegetable growers, causing sales volume to fall below $4,200,000 [an]. Overall, negotiating bulk fertilizer discounts is the better strategy because it improves profit margins through internal cost efficiency [eval], whereas raising prices by 6% risks losing major supermarket distribution contracts [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost reduction expands gross margin without volume risk",
+            "price rise boosts revenue but risks customer switching"
+          ],
+          "application_max_2": [
+            "$2,520,000 cost of sales",
+            "40% gross margin",
+            "15% net margin",
+            "$400,000 sorting facility"
+          ],
+          "analysis_max_2": [
+            "improves profit through internal efficiency",
+            "risks supermarket contract loss and revenue reduction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal supply chain savings against supermarket buyer power elasticity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "fertilizer",
+            "prices",
+            "cost of sales",
+            "gross profit",
+            "net profit",
+            "supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_22",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A fitness equipment manufacturing company operates as a Private Limited Company, producing commercial treadmills and weight machines for gym chains. The firm's income statement presents annual sales revenue of $5,500,000, cost of sales of $3,300,000 (steel, electronics, and assembly labor), and operating expenses of $1,375,000 (factory overheads, marketing, and sales commissions). Gross profit is $2,200,000 (40% Gross Profit Margin) and operating profit is $825,000 (15% Operating Profit Margin).\n\nNet profit after interest ($175,000) and tax ($130,000) is $520,000. Dividends paid total $350,000, leaving retained profit of $170,000. Non-current liabilities total $1,800,000 in long-term bank loans. To finance a $500,000 expansion into smart connected fitness software, management is debating whether to reduce operating expenses by renegotiating factory rent or reduce dividend payouts to increase retained profit.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the formula for Profit Margin (Net Profit Margin) and calculate its value for this fitness manufacturer.",
+        "model_answer": "Profit Margin = (Net Profit / Sales Revenue) x 100 [1]. Profit Margin = ($520,000 / $5,500,000) x 100 = 9.45% [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Net Profit / Revenue) x 100 formula",
+            "Profit margin measures what proportion of revenue is kept as net profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Operating Profit for this enterprise and outline what this figure represents.",
+        "model_answer": "Operating Profit = Gross Profit ($2,200,000) - Operating Expenses ($1,375,000) = $825,000 [k]. Operating profit is the profit earned from core operations before deducting interest and tax [k]. This $825,000 shows the core manufacturing business is profitable [app], leaving headroom to pay $175,000 interest and $130,000 tax [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$825,000 calculation",
+            "explanation of profit from core operations before interest/tax"
+          ],
+          "application_max_2": [
+            "$2,200,000 gross profit vs $1,375,000 expenses",
+            "$175,000 interest expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "operating profit",
+            "gross profit",
+            "expenses",
+            "interest",
+            "treadmills",
+            "$825,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a business can increase its net profit margin.",
+        "model_answer": "Way 1: Reduce cost of sales [k]. Sourcing cheaper steel raw materials reduces cost of sales below $3,300,000 [app], expanding gross profit and raising net profit margin above 9.45% [an]. Way 2: Cut operating overhead expenses [k]. Renegotiating factory rent lowers expenses below $1,375,000 [app], increasing operating profit and net profit margin [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduce cost of sales",
+            "cut operating overhead expenses / increase prices"
+          ],
+          "application_max_2": [
+            "$3,300,000 cost of sales / steel",
+            "$1,375,000 operating expenses / factory rent"
+          ],
+          "analysis_max_2": [
+            "increases gross profit margin baseline",
+            "lowers overhead deduction to boost net profit margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cost of sales",
+            "expenses",
+            "rent",
+            "steel",
+            "$3,300,000",
+            "treadmills"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Consider whether reducing operating expenses by renegotiating factory rent or reducing dividend payouts is the better strategy to fund the $500,000 smart fitness expansion. Justify your answer.",
+        "model_answer": "Renegotiating factory rent lowers operating expenses below $1,375,000 [app], directly increasing operating profit beyond $825,000 and expanding the 9.45% net profit margin [an]. However, landlords may refuse to lower the agreed rent [k]. Reducing dividend payouts from $350,000 increases retained profit above $170,000 [app], providing interest-free internal finance [k] for the $500,000 software expansion [an]. Overall, reducing dividend payouts is the better strategy because it secures internal cash without relying on external landlord negotiations [eval], safely funding the software project while keeping operating structures stable [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rent reduction cuts fixed overheads permanently",
+            "dividend cuts retain cash internally without external dependency"
+          ],
+          "application_max_2": [
+            "$500,000 software expansion",
+            "$1,375,000 operating expenses",
+            "$350,000 dividends",
+            "9.45% net margin"
+          ],
+          "analysis_max_2": [
+            "improves long-term operating profitability",
+            "provides guaranteed internal cash retention"
+          ],
+          "evaluation_max_2": [
+            "weighs internal dividend control against uncertainty of landlord contract negotiations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "rent",
+            "dividends",
+            "retained profit",
+            "expenses",
+            "operating profit",
+            "fitness"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_23",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A modular home construction business operates as a Private Limited Company, pre-fabricating wooden residential housing units. Statement of financial position records report non-current assets of $4,500,000 (timber processing plant and heavy cranes). Current assets total $1,800,000 (including $1,100,000 timber inventory, $500,000 trade receivables from property developers, and $200,000 cash balance). Current liabilities stand at $1,200,000 (comprising $850,000 trade payables owed to timber merchants and a $350,000 bank overdraft).\n\nNon-current liabilities consist of $2,000,000 in 10-year bank loans. Total capital employed is $5,100,000, with shareholders' funds at $3,100,000 ($2,000,000 share capital and $1,100,000 retained profit reserves). To expand factory capacity by $1,000,000, the Chief Financial Officer is analyzing balance sheet structure, debating whether to issue new ordinary shares or negotiate an additional 10-year bank loan at 6.5% interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the formula for Capital Employed using statement of financial position accounts.",
+        "model_answer": "Capital Employed = Non-Current Liabilities + Shareholders' Funds [1] (or Non-Current Assets + Working Capital [1]).",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital Employed = Non-Current Liabilities + Shareholders' Funds, or Non-Current Assets + Working Capital, or Total Assets - Current Liabilities",
+            "Capital employed represents the total long-term funds used to operate the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Working Capital for this modular home builder and outline what this figure indicates.",
+        "model_answer": "Working Capital = Current Assets ($1,800,000) - Current Liabilities ($1,200,000) = $600,000 [k]. Working capital is the money available to meet day-to-day running costs and short-term debts [k]. This positive $600,000 buffer shows the builder can cover $850,000 trade payables and the $350,000 bank overdraft [app], although $1,100,000 of stock sits in timber inventory [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$600,000 calculation",
+            "explanation of short-term liquidity buffer"
+          ],
+          "application_max_2": [
+            "$1,800,000 current assets vs $1,200,000 current liabilities",
+            "$850,000 trade payables / $350,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current assets",
+            "current liabilities",
+            "payables",
+            "overdraft",
+            "timber inventory",
+            "$1,800,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how an increase in long-term bank loans affects the capital structure shown on a balance sheet.",
+        "model_answer": "Increasing long-term bank loans expands non-current liabilities above $2,000,000 [app], which raises total capital employed above $5,100,000 [app]. This increases the company's fixed-interest debt level [k], so interest costs rise and financial risk increases if housing market demand declines [an]. Higher fixed-interest commitments also reduce profits available for dividends or reinvestment [k], making the balance sheet more vulnerable in a downturn [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increases non-current liabilities / capital employed",
+            "increases financial fixed-interest debt risk"
+          ],
+          "application_max_2": [
+            "$2,000,000 non-current liabilities",
+            "$5,100,000 capital employed"
+          ],
+          "analysis_max_2": [
+            "elevates proportion of debt capital",
+            "increases vulnerability during economic downturns"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "capital employed",
+            "liabilities",
+            "loans",
+            "interest",
+            "shares",
+            "$2,000,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new ordinary shares or taking a 10-year bank loan at 6.5% interest is the better financing option for the $1,000,000 factory expansion? Justify your answer using balance sheet analysis.",
+        "model_answer": "Taking a 10-year bank loan provides $1,000,000 expansion capital [app] without diluting existing share capital of $2,000,000 [k], preserving ownership control [an]. However, it raises non-current liabilities to $3,000,000 and adds 6.5% interest overheads [an]. Issuing new ordinary shares brings permanent equity [k], increasing shareholders' funds from $3,100,000 to $4,100,000 [app] without adding interest liabilities. Overall, issuing ordinary shares is recommended because the balance sheet already carries $2,000,000 in long-term loans and $1,200,000 in current liabilities [eval]; adding another $1,000,000 of debt raises fixed-interest repayment pressure, whereas equity strengthens the balance sheet safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt increases fixed-interest debt burden",
+            "equity strengthens capital structure without repayment risk"
+          ],
+          "application_max_2": [
+            "$1,000,000 factory expansion",
+            "$2,000,000 non-current loans",
+            "$3,100,000 shareholders funds",
+            "6.5% interest"
+          ],
+          "analysis_max_2": [
+            "preserves control but raises fixed-interest debt",
+            "equity avoids ongoing interest cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against equity dilution in capital structure context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "loan",
+            "liabilities",
+            "capital",
+            "interest",
+            "$1,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_24",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A hotel resort chain operates as a Public Limited Company, managing 4 coastal holiday resorts. Statement of financial position records disclose non-current assets of $12,000,000 (hotel land, buildings, and swimming pools). Current assets total $1,500,000 (including $400,000 food/beverage inventory, $800,000 trade receivables from tour operators, and $300,000 cash balance). Current liabilities stand at $2,000,000 (comprising $1,300,000 trade payables owed to food vendors and a $700,000 bank overdraft), creating a negative working capital of -$500,000.\n\nNon-current liabilities total $5,000,000 in 15-year bank loans. Total capital employed is $11,500,000, with shareholders' equity at $6,500,000 ($4,000,000 share capital and $2,500,000 retained profit reserves). To construct a $2,000,000 water park facility, the board is evaluating balance sheet restructuring, comparing issuing new PLC shares versus securing a new long-term bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Current Liabilities' and identify two examples from this business scenario.",
+        "model_answer": "Current liabilities are debts or financial obligations owed by a business that must be settled within one year [1]. Examples: $1,300,000 trade payables and $700,000 bank overdraft [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Debts or obligations due within one year",
+            "Examples include trade payables, bank overdrafts and short-term borrowings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this hotel resort chain and explain why this result indicates short-term illiquidity.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities = $1,500,000 / $2,000,000 = 0.75 : 1 [k]. The current ratio measures whether current assets cover short-term obligations due within one year [k]. This result shows only $0.75 of current assets per $1.00 of current liabilities [app], indicating the chain cannot yet settle $1,300,000 trade payables and the $700,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.75 : 1 calculation",
+            "explanation of short-term asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.75 assets per $1 liability",
+            "$1,300,000 trade payables / $700,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "assets",
+            "current liabilities",
+            "resort",
+            "$1,500,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a business can correct a negative working capital position.",
+        "model_answer": "Way 1: Sell non-current assets [k]. Selling underutilized land raises cash [app], directly converting non-current assets into cash to eliminate the -$500,000 working capital deficit [an]. Way 2: Secure long-term debt to replace short-term liabilities [k]. Converting the $700,000 bank overdraft into a long-term loan [app] removes it from current liabilities, improving short-term working capital [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sell underutilized non-current assets",
+            "convert short-term debt to long-term debt / issue equity"
+          ],
+          "application_max_2": [
+            "-$500,000 working capital deficit",
+            "$700,000 bank overdraft / non-current hotel land"
+          ],
+          "analysis_max_2": [
+            "injects liquid cash into current assets",
+            "reduces current liabilities to restore solvency"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "working capital",
+            "overdraft",
+            "assets",
+            "liabilities",
+            "cash",
+            "resort"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new PLC shares or taking a new long-term bank loan is the better option to fund the $2,000,000 water park facility? Justify your answer using balance sheet analysis.",
+        "model_answer": "Taking a long-term bank loan provides $2,000,000 capital [app] without diluting existing share capital of $4,000,000 [k]. However, it increases non-current liabilities from $5,000,000 to $7,000,000 [app], raising capital employed to $13,500,000 and significantly raising fixed-interest debt repayment pressure [an]. Issuing new PLC shares brings permanent equity [k], increasing shareholders' funds from $6,500,000 to $8,500,000 without adding interest overheads [an]. Overall, issuing shares is recommended because the balance sheet already shows -$500,000 negative working capital and $5,000,000 in long-term loans [eval]; adding another $2,000,000 of debt raises default risk, whereas equity strengthens the balance sheet structure safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt increases fixed-interest debt burden",
+            "equity strengthens balance sheet without debt liabilities"
+          ],
+          "application_max_2": [
+            "$2,000,000 water park",
+            "$5,000,000 non-current loans",
+            "-$500,000 working capital",
+            "$6,500,000 shareholders funds"
+          ],
+          "analysis_max_2": [
+            "preserves ownership structure vs elevates financial risk",
+            "avoids ongoing debt interest cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against equity dilution in capital structure context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "loan",
+            "liabilities",
+            "working capital",
+            "resort",
+            "$2,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_25",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A pharmaceuticals manufacturing firm operates as a Public Limited Company, producing generic prescription medications. Statement of financial position records show non-current assets of $8,200,000 (laboratories and automated tableting machinery). Current assets total $3,000,000 (including $1,600,000 active ingredient inventory, $1,000,000 trade receivables from pharmacy chains, and $400,000 cash balance). Current liabilities stand at $1,800,000 (comprising $1,300,000 trade payables owed to chemical suppliers and a $500,000 bank overdraft).\n\nNon-current liabilities total $3,200,000 in 10-year bank loans. Total capital employed is $9,400,000, with shareholders' equity at $6,200,000 ($4,500,000 share capital and $1,700,000 retained profit reserves). To construct a $2,500,000 biotechnology research lab, management is analyzing balance sheet accounts, deciding whether to issue new share capital or secure a new long-term bank loan at 6% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Total Assets for this pharmaceutical company. Show your working.",
+        "model_answer": "Total Assets = Non-Current Assets ($8,200,000) + Current Assets ($3,000,000) = $11,200,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Non-Current Assets + Current Assets formula",
+            "Total assets represent the full resources owned by the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this pharmaceutical firm and explain what this result indicates.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($3,000,000 - $1,600,000) / $1,800,000 = 0.78 : 1 [k]. The acid-test ratio measures whether liquid assets (excluding inventory) cover short-term debts [k]. This result shows $0.78 of liquid assets per $1.00 of current liabilities [app], indicating a potential shortage if $1,300,000 trade payables are demanded immediately [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.78 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.78 liquid assets per $1 liability",
+            "$1,300,000 trade payables / $500,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "inventory",
+            "current liabilities",
+            "$1,600,000",
+            "pharmaceutical"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain the difference between share capital and retained profit reserves on a balance sheet.",
+        "model_answer": "Share capital ($4,500,000) represents original funds invested by shareholders buying equity shares [k], shown by the $4,500,000 ordinary share issue in this PLC [app]. Retained profit reserves ($1,700,000) represent accumulated net profits kept after tax and dividends [k], here the $1,700,000 earned and reinvested rather than paid out [app]. Share capital is externally contributed equity while reserves are internally generated [an], and together they form total shareholders' equity of $6,200,000 [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share capital is external equity invested",
+            "retained profit is cumulative internal earnings kept"
+          ],
+          "application_max_2": [
+            "$4,500,000 share capital",
+            "$1,700,000 retained profit reserves / $6,200,000 equity"
+          ],
+          "analysis_max_2": [
+            "distinguishes contributed equity from earned reserves",
+            "links both components to total net worth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share capital",
+            "retained profit",
+            "reserves",
+            "equity",
+            "shareholders",
+            "$4,500,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new share capital or taking a new long-term bank loan at 6% interest is the better financing option for the $2,500,000 research lab? Justify your answer using balance sheet analysis.",
+        "model_answer": "Taking a long-term bank loan provides $2,500,000 capital [app] without diluting existing share capital of $4,500,000 [k]. However, it increases non-current liabilities from $3,200,000 to $5,700,000 [app], raising capital employed to $11,900,000 and adding 6% annual interest overheads [an]. Issuing new share capital brings permanent equity [k], increasing shareholders' funds from $6,200,000 to $8,700,000 without adding interest [an]. Overall, issuing share capital is recommended because the balance sheet already carries $3,200,000 in long-term loans and an acid-test ratio of 0.78:1 [eval]; adding another $2,500,000 of debt raises fixed-interest repayment pressure, whereas share issues strengthen balance sheet solvency safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt increases fixed-interest debt burden",
+            "equity strengthens capital structure without debt liabilities"
+          ],
+          "application_max_2": [
+            "$2,500,000 research lab",
+            "$3,200,000 non-current loans",
+            "0.78:1 acid-test ratio",
+            "$6,200,000 shareholders funds"
+          ],
+          "analysis_max_2": [
+            "preserves control but elevates debt liabilities",
+            "avoids ongoing debt interest cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against equity dilution in capital structure context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loan",
+            "liabilities",
+            "lab",
+            "share capital",
+            "interest",
+            "equity"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_26",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial dairy processing business operates as a Private Limited Company, packaging milk and manufacturing cheese for retail store chains. Balance sheet data reports non-current assets of $2,700,000 (processing plant and refrigerated trucks). Current assets total $700,000 (including $350,000 cheese inventory, $270,000 trade receivables, and $80,000 cash balance). Current liabilities stand at $550,000 (comprising $380,000 trade payables owed to dairy farmers and a $170,000 bank overdraft).\n\nNon-current liabilities total $1,100,000 in long-term bank loans. Total capital employed is $2,850,000, with shareholders' equity at $1,750,000 ($1,100,000 share capital and $650,000 retained profit reserves). To acquire a $400,000 cheese aging facility, management is debating whether to arrange a 5-year leasing agreement or purchase the facility using a new long-term bank loan at 7% interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Working Capital for this dairy processing business. Show your working.",
+        "model_answer": "Working Capital = Current Assets ($700,000) - Current Liabilities ($550,000) = $150,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Current Assets - Current Liabilities formula",
+            "Working capital shows the funds available for day-to-day trading"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this dairy business and explain what this result indicates about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($700,000 - $350,000) / $550,000 = 0.64 : 1 [k]. The acid-test ratio shows whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows $0.64 of liquid assets per $1.00 owed [app], indicating tight cover for $380,000 trade payables owed to dairy farmers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.64 : 1 calculation",
+            "explanation of liquid asset cover"
+          ],
+          "application_max_2": [
+            "$0.64 liquid assets per $1 liability",
+            "$380,000 trade payables / $170,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "farmers",
+            "inventory",
+            "current liabilities",
+            "$700,000",
+            "dairy"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why bank managers review a company's statement of financial position before approving loans.",
+        "model_answer": "Reason 1: Solvency and liquidity check [k]. Bank managers evaluate whether $700,000 current assets cover $550,000 current liabilities [app] to ensure short-term debt repayment capacity [an]. Reason 2: Collateral security assessment [k]. Lenders review $2,700,000 non-current assets [app] to verify fixed asset collateral value before approving loan requests [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "evaluates liquidity solvency",
+            "assesses asset collateral security"
+          ],
+          "application_max_2": [
+            "$700,000 current assets vs $550,000 current liabilities",
+            "$2,700,000 non-current assets"
+          ],
+          "analysis_max_2": [
+            "determines ability to service short-term debts",
+            "provides loan security reassurance to bank"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "balance sheet",
+            "assets",
+            "liabilities",
+            "bank",
+            ",700,000",
+            "dairy"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think securing a 5-year leasing agreement or taking a new long-term bank loan at 7% interest is the better option to acquire the $400,000 cheese aging facility? Justify your answer.",
+        "model_answer": "A 5-year leasing agreement avoids a large initial capital outlay [k], spreading monthly rental payments for the $400,000 facility [app] so existing working capital of $150,000 is preserved [an]. Leasing also often bundles maintenance support from the leasing firm [k]. Taking a long-term bank loan provides ownership of the $400,000 non-current asset [app], but increases non-current liabilities from $1,100,000 to $1,500,000 and adds 7% annual interest expenses [an]. Overall, leasing is the recommended option because adding $400,000 of bank debt onto existing non-current liabilities of $1,100,000 raises fixed-interest debt repayment pressure [eval], whereas leasing protects the $150,000 working capital position when the acid-test ratio is 0.64:1 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "leasing avoids large initial capital outlay",
+            "loan gives asset ownership but increases debt liabilities"
+          ],
+          "application_max_2": [
+            "$400,000 cheese aging facility",
+            "$150,000 working capital",
+            "0.64:1 acid-test ratio",
+            "$1,100,000 non-current loans"
+          ],
+          "analysis_max_2": [
+            "protects immediate liquidity cover",
+            "increases long-term fixed-interest debt expenses"
+          ],
+          "evaluation_max_2": [
+            "weighs fixed-interest debt risk against asset ownership given low acid-test liquidity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leasing",
+            "loan",
+            "facility",
+            "liabilities",
+            "interest",
+            "$400,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_27",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A specialized electronics contract manufacturer operates as a Public Limited Company, producing circuit boards for telecommunications equipment. Financial reports present annual sales revenue of $12,000,000, cost of sales of $7,800,000, and operating overhead expenses of $2,700,000, yielding an operating profit of $1,500,000 (12.5% Operating Profit Margin). Statement of financial position records present non-current assets of $7,000,000, current assets of $3,500,000 (including $2,000,000 component inventory, $1,100,000 trade receivables, and $400,000 cash balance), current liabilities of $2,000,000 (trade payables $1,400,000, bank overdraft $600,000), and non-current liabilities of $2,500,000 8-year bank loans.\n\nTotal capital employed is $8,500,000. Shareholders' funds total $6,000,000. To fund a $2,000,000 surface-mount technology line, management is analyzing ROCE and Acid-Test liquidity ratios, deciding whether to raise capital via issuing new share capital or securing another long-term bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) for this electronics manufacturer. Show your working.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($1,500,000 / $8,500,000) x 100 = 17.65% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Capital Employed) x 100 formula",
+            "ROCE measures how effectively long-term capital generates operating profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this electronics business and explain what this result indicates.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($3,500,000 - $2,000,000) / $2,000,000 = 0.75 : 1 [k]. The acid-test ratio measures liquid assets available to pay short-term liabilities without relying on inventory sales [k]. This result shows $0.75 of liquid assets per $1.00 of current liabilities [app], indicating potential liquidity strain in settling $1,400,000 trade payables [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.75 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.75 liquid assets per $1 liability",
+            "$1,400,000 trade payables / $600,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "liquidity",
+            "payables",
+            "overdraft",
+            "inventory"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a manufacturing business can improve its Return on Capital Employed (ROCE).",
+        "model_answer": "Way 1: Increase operating profit [k]. Reducing cost of sales below $7,800,000 expands operating profit above $1,500,000 [app], raising ROCE above 17.65% [an]. Way 2: Optimize capital employed [k]. Selling underutilized non-current assets reduces capital employed below $8,500,000 [app], generating higher profit returns per dollar of capital invested [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increase operating profit / reduced costs",
+            "reduce capital employed / sell redundant assets"
+          ],
+          "application_max_2": [
+            "$7,800,000 cost of sales / $1,500,000 operating profit",
+            "$8,500,000 capital employed / 17.65% ROCE"
+          ],
+          "analysis_max_2": [
+            "increases numerator (profit) to boost ratio",
+            "reduces denominator (capital) to boost ratio"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "operating profit",
+            "capital employed",
+            "cost of sales",
+            "assets"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new share capital or taking an additional long-term bank loan is the better financing option for the $2,000,000 surface-mount technology line? Justify your answer using ROCE and liquidity analysis.",
+        "model_answer": "Taking a long-term bank loan provides $2,000,000 for the technology line [app] without diluting existing share capital of $6,000,000 [k]. Because ROCE is strong at 17.65% [app], the return on capital exceeds typical borrowing interest rates [an]. However, adding $2,000,000 to existing non-current loans of $2,500,000 increases non-current liabilities to $4,500,000, raising capital employed to $10,500,000 [an]. Issuing new share capital brings permanent equity [k], keeping non-current liabilities at $2,500,000 and avoiding additional default risk. Overall, issuing share capital is recommended because expanding capital employed via debt when non-current liabilities are already $2,500,000 and the acid-test ratio is 0.75:1 raises financial risk unnecessarily [eval], whereas equity capital protects the healthy 17.65% ROCE performance safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high ROCE makes borrowing viable if interest < ROCE",
+            "equity avoids adding further loan obligations"
+          ],
+          "application_max_2": [
+            "17.65% ROCE",
+            "$2,000,000 surface-mount line",
+            "$2,500,000 non-current loans",
+            "0.75:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "returns on capital exceed borrowing cost",
+            "avoids long-term insolvency and debt pressure"
+          ],
+          "evaluation_max_2": [
+            "weighs ROCE profitability against capital structure fixed-interest debt risk given low liquidity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "loan",
+            "technology",
+            "liabilities",
+            "share capital",
+            "$2,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_28",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A retail supermarket chain operates as a Public Limited Company, managing 25 grocery stores. Financial reports reveal annual sales revenue of $20,000,000, cost of sales of $15,000,000 (groceries, produce, and packaged goods), and operating expenses of $3,800,000 (store rents, staff wages, and electricity). Operating profit is $1,200,000 (6% Operating Profit Margin) and net profit for the year is $800,000 (4% Net Profit Margin).\n\nStatement of financial position records show non-current assets of $10,000,000, current assets of $2,200,000 (including $1,500,000 grocery inventory, $400,000 trade receivables, and $300,000 cash balance), and current liabilities of $3,000,000 (comprising $2,200,000 trade payables owed to food distributors and an $800,000 bank overdraft). Non-current liabilities stand at $4,000,000. Facing thin Net Profit Margins (4%) and a low Current Ratio (0.73:1), directors are evaluating financial strategies, debating whether to cut cost of sales by negotiating supplier volume discounts or increase grocery prices by 5%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit Margin for this supermarket chain. Show your working.",
+        "model_answer": "Gross Profit = Revenue ($20,000,000) - Cost of Sales ($15,000,000) = $5,000,000 [1]. Gross Profit Margin = ($5,000,000 / $20,000,000) x 100 = 25% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Gross Profit / Revenue) x 100 formula",
+            "Gross profit margin shows the percentage of revenue kept after cost of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this supermarket chain and explain why this result indicates short-term solvency risk.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities = $2,200,000 / $3,000,000 = 0.73 : 1 [k]. The current ratio measures whether current assets cover short-term liabilities due within one year [k]. This result shows only $0.73 of current assets per $1.00 of current liabilities [app], indicating the chain could struggle to settle $2,200,000 trade payables and the $800,000 bank overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.73 : 1 calculation",
+            "explanation of current asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.73 assets per $1 liability",
+            "$2,200,000 trade payables / $800,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current ratio",
+            "payables",
+            "overdraft",
+            "groceries",
+            "supermarket",
+            "$2,200,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain why supermarket businesses typically operate with low acid-test ratios compared to manufacturing firms.",
+        "model_answer": "Fast-selling inventory [k]. Supermarkets sell $1,500,000 grocery inventory rapidly for immediate cash [app], reducing the need to hold large cash balances [an]. Low trade receivables [k]. Most retail shoppers pay immediately by cash/card rather than holding $400,000 credit receivables [app], meaning liquid current assets are low relative to $2,200,000 trade payables [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fast-selling grocery inventory generates daily cash",
+            "minimal trade receivables as customers pay immediately"
+          ],
+          "application_max_2": [
+            "$1,500,000 grocery inventory",
+            "$400,000 trade receivables / $2,200,000 trade payables"
+          ],
+          "analysis_max_2": [
+            "reduces reliance on holding liquid reserves",
+            "enables business to operate with low acid-test ratio safely"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inventory",
+            "receivables",
+            "payables",
+            "supermarket",
+            "grocery",
+            "cash"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think negotiating supplier volume discounts (cutting cost of sales) or increasing grocery prices by 5% is the better strategy to improve financial performance? Justify your answer using profitability and liquidity analysis.",
+        "model_answer": "Negotiating supplier volume discounts reduces cost of sales below $15,000,000 [app], directly expanding the 25% Gross Profit Margin [k] and increasing net profit from $800,000 [an] without raising store prices or losing retail customers. Increasing grocery prices by 5% raises sales revenue above $20,000,000 [app], expanding the 4% net profit margin [k]. However, retail grocery is highly competitive; raising prices by 5% may drive shoppers to rival supermarket chains [an]. Overall, negotiating supplier volume discounts is the better strategy because it improves thin profit margins through internal cost efficiency [eval], whereas raising prices by 5% risks losing market share in a price-sensitive retail sector [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost reduction improves margins without customer loss",
+            "price rise boosts revenue but risks customer switching"
+          ],
+          "application_max_2": [
+            "$15,000,000 cost of sales",
+            "25% gross margin",
+            "4% net margin",
+            "0.73:1 current ratio"
+          ],
+          "analysis_max_2": [
+            "improves profitability through internal supply chain efficiency",
+            "risks customer churn and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal supplier savings against customer price sensitivity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "discounts",
+            "prices",
+            "cost of sales",
+            "net profit",
+            "groceries",
+            "supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_29",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A fast-food restaurant franchise company operates as a Private Limited Company, managing 18 burger outlets. Annual financial statements report sales revenue of $9,000,000, cost of sales of $5,400,000 (food ingredients and paper packaging), and operating expenses of $2,700,000 (restaurant rent, utility bills, and staff wages). Operating profit is $900,000 (10% Operating Profit Margin) and net profit after tax is $540,000 (6% Net Profit Margin).\n\nStatement of financial position records present non-current assets of $4,500,000, current assets of $800,000 (including $450,000 food inventory, $200,000 trade receivables from catering clients, and $150,000 cash balance), current liabilities of $1,200,000 (trade payables $850,000, bank overdraft $350,000), and non-current liabilities of $2,000,000 7-year bank loans. Total capital employed is $4,100,000. Facing low Net Profit Margins (6%) and a low Current Ratio (0.67:1), management is evaluating whether to cut operating overhead expenses by introducing automated ordering kiosks or raise menu prices by 5%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Operating Profit Margin for this fast-food franchise. Show your working.",
+        "model_answer": "Operating Profit Margin = (Operating Profit / Sales Revenue) x 100 = ($900,000 / $9,000,000) x 100 = 10% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Revenue) x 100 formula",
+            "Operating profit margin shows the share of revenue left after operating costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this fast-food company and explain why this result indicates potential liquidity strain.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($800,000 - $450,000) / $1,200,000 = 0.29 : 1 [k]. The acid-test ratio shows whether liquid assets alone cover short-term obligations [k]. This result shows only $0.29 of liquid assets per $1.00 owed [app], signalling severe liquidity strain if $850,000 trade payables are demanded by food suppliers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.29 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.29 liquid assets per $1 liability",
+            "$850,000 trade payables / $350,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "inventory",
+            "current liabilities",
+            "$450,000",
+            "burger"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two financial ratios that potential lenders analyze before extending credit to a company.",
+        "model_answer": "Ratio 1: Acid-Test Ratio [k]. Lenders examine the 0.29:1 Acid-Test Ratio [app] to verify if liquid assets cover short-term debts of $1,200,000 without depending on inventory sales [an]. Ratio 2: Return on Capital Employed (ROCE) [k]. Lenders evaluate ROCE (21.95% = $900,000 / $4,100,000) [app] to assess operating efficiency and debt service capacity [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "acid-test ratio / current ratio",
+            "ROCE / fixed-interest debt level"
+          ],
+          "application_max_2": [
+            "0.29:1 acid-test ratio / $1,200,000 current liabilities",
+            "21.95% ROCE / $4,100,000 capital employed"
+          ],
+          "analysis_max_2": [
+            "evaluates short-term solvency cover",
+            "evaluates operating return and debt repayment capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "liabilities",
+            "capital employed",
+            "payables",
+            "revenue",
+            "$4,100,000",
+            "overdraft"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think introducing automated ordering kiosks to cut staff wage overheads or raising menu prices by 5% is the better strategy to improve financial performance? Justify your answer using profitability and liquidity analysis.",
+        "model_answer": "Introducing automated ordering kiosks reduces wage expenses below $2,700,000 [app], directly expanding the 10% Operating Profit Margin [k] and increasing net profit from $540,000 [an] without changing menu prices or turning away customers. Raising menu prices by 5% increases sales revenue above $9,000,000 [app], expanding the 6% net profit margin [k]. However, fast-food consumers are price sensitive; raising menu prices by 5% may drive diners to rival burger chains [an]. Overall, introducing kiosks is the better strategy because it improves thin profit margins through permanent labour cost reduction [eval], whereas raising menu prices risks losing customer footfall in a competitive market [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overhead cost reduction improves operating margin without volume risk",
+            "price rise boosts revenue but risks customer switching"
+          ],
+          "application_max_2": [
+            "$2,700,000 operating expenses",
+            "10% operating margin",
+            "6% net margin",
+            "0.29:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "improves profitability through internal labor efficiency",
+            "risks customer churn and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal automation overhead savings against fast-food customer price sensitivity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "kiosks",
+            "prices",
+            "expenses",
+            "operating profit",
+            "burger"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_30",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial software firm operates as a Private Limited Company, creating enterprise resource software for logistics corporations. Financial statements report sales revenue of $6,000,000, cost of sales of $1,800,000 (server hosting and software licenses), and operating expenses of $3,000,000 (programmer salaries, office rent, marketing). Operating profit is $1,200,000 (20% Operating Profit Margin) and net profit after tax is $840,000 (14% Net Profit Margin).\n\nFinancial position records show non-current assets of $3,500,000, current assets of $1,500,000 ($200,000 software media inventory, $1,000,000 trade receivables, $300,000 cash), current liabilities of $1,000,000 (trade payables $700,000, bank overdraft $300,000), and non-current liabilities of $1,500,000 in 5-year bank loans. Capital employed is $4,000,000; shareholders' funds total $2,500,000. To fund a $1,000,000 artificial intelligence software upgrade, directors are analyzing profitability ratios (20% Operating Margin, 30% ROCE) and liquidity ratios (1.50:1 Current Ratio, 1.30:1 Acid-Test), deciding whether to issue new share capital or secure another 5-year bank loan at 6.5% interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) for this software company. Show your working.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($1,200,000 / $4,000,000) x 100 = 30% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Capital Employed) x 100 formula",
+            "ROCE measures how effectively long-term capital generates operating profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this software enterprise and explain what this result reveals about liquidity.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($1,500,000 - $200,000) / $1,000,000 = 1.30 : 1 [k]. The acid-test ratio measures liquid assets available to pay short-term liabilities without selling inventory [k]. This result shows $1.30 of liquid assets per $1.00 of current liabilities [app], indicating healthy solvency to settle $700,000 trade payables [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.30 : 1 calculation",
+            "explanation of healthy liquid asset solvency cover"
+          ],
+          "application_max_2": [
+            "$1.30 liquid assets per $1 liability",
+            "$700,000 trade payables / $300,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "liquidity",
+            "payables",
+            "receivables",
+            "inventory"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how internal users (managers) and external users (banks) use accounting information differently.",
+        "model_answer": "Internal Managers: Use the 20% Operating Profit Margin and 30% ROCE [app] to evaluate department cost efficiency [k] and decide on launching new software products [an]. External Banks: Analyze the 1.30:1 Acid-Test Ratio and $1,500,000 non-current loans [app] to assess short-term solvency [k] before approving new long-term bank loans [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "managers evaluate internal efficiency/decisions",
+            "banks evaluate solvency and loan repayment security"
+          ],
+          "application_max_2": [
+            "20% operating margin / 30% ROCE",
+            "1.30:1 acid-test ratio / $1,500,000 bank loans"
+          ],
+          "analysis_max_2": [
+            "guides operational planning and product launches",
+            "determines credit risk approval for debt finance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "acid-test",
+            "capital employed",
+            "liquidity",
+            "interest",
+            "software"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think taking an additional 5-year bank loan at 6.5% interest or issuing new share capital is the better financing option for the $1,000,000 artificial intelligence software upgrade? Justify your answer using ROCE and liquidity analysis.",
+        "model_answer": "Taking a 5-year bank loan provides $1,000,000 for the AI upgrade [app] without diluting existing share capital of $2,500,000 [k]. Because ROCE is outstanding at 30% [app], the return on capital significantly exceeds the 6.5% interest rate [an]. Issuing new share capital brings permanent equity [k], keeping non-current liabilities at $1,500,000 and eliminating default risk [an]. Overall, taking the 5-year bank loan is the better option because an exceptionally high ROCE of 30% easily covers 6.5% borrowing interest [eval], allowing the company to fund AI expansion while preserving equity ownership for existing shareholders [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high ROCE makes borrowing viable if interest < ROCE",
+            "equity avoids debt obligations but dilutes ownership"
+          ],
+          "application_max_2": [
+            "30% ROCE",
+            "6.5% interest rate",
+            "$1,000,000 AI upgrade",
+            "1.30:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "return on capital comfortably above borrowing cost",
+            "avoids ownership dilution when liquidity is strong"
+          ],
+          "evaluation_max_2": [
+            "weighs high ROCE borrowing advantage against equity dilution risk given strong liquidity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "loan",
+            "interest",
+            "software",
+            "acid-test",
+            "$1,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_31",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A craft micro-brewery enterprise operates as a Partnership, producing specialty organic IPAs and stouts for upscale bars and restaurants. Trading successfully for 4 years, the enterprise reports annual sales revenue of $750,000, cost of sales of $420,000 (malt, hops, yeast, and bottling), and fixed operating overhead expenses of $210,000.\n\nStatement of financial position figures show non-current assets of $480,000, current assets of $190,000 (including $110,000 inventory, $60,000 trade receivables, and $20,000 cash balance), and current liabilities of $150,000 (comprising $100,000 trade payables owed to hops suppliers and a $50,000 bank overdraft). Non-current liabilities total $180,000 in long-term bank loans. To finance a $150,000 canning line expansion to enter retail supermarket distribution, the partners are evaluating suitable funding sources. The partners are weighing whether to invite a new equity partner who will contribute $150,000 capital or secure a 6-year bank loan at an annual interest rate of 7.5%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Net Profit for this micro-brewery enterprise. Show your working.",
+        "model_answer": "Gross Profit = Sales Revenue ($750,000) - Cost of Sales ($420,000) = $330,000 [1]. Net Profit = Gross Profit ($330,000) - Operating Expenses ($210,000) = $120,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross Profit - Operating Expenses formula (Gross Profit = Revenue - Cost of Sales)",
+            "Net profit is the final surplus after deducting operating expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this micro-brewery and explain what this result indicates about liquidity.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities = $190,000 / $150,000 = 1.27 : 1 [k]. The current ratio measures whether current assets cover short-term obligations due within one year [k]. This result shows $1.27 of current assets per $1.00 of current liabilities [app], indicating an adequate but narrow margin to settle $100,000 trade payables and the $50,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.27 : 1 calculation",
+            "explanation of short-term liquidity cover"
+          ],
+          "application_max_2": [
+            "$1.27 current assets per $1 liability",
+            "$100,000 trade payables / $50,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "assets",
+            "current liabilities",
+            "$190,000",
+            "brewery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain one advantage and one disadvantage of taking on a new equity partner in a partnership business.",
+        "model_answer": "Advantage: Permanent capital without interest debt [k]. A new equity partner contributes the required $150,000 [app], avoiding interest on a bank loan and easing pressure on the brewery's limited liquidity [an]. Disadvantage: Loss of control and profit share [k]. The new partner owns a share of the micro-brewery [app], so existing partners must share future profits and decision-making over brewing operations [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "brings permanent capital without debt/interest",
+            "dilutes management control and requires profit sharing"
+          ],
+          "application_max_2": [
+            "$150,000 required for canning line expansion",
+            "7.5% interest avoided on a bank loan"
+          ],
+          "analysis_max_2": [
+            "avoids cash flow debt repayment pressure",
+            "reduces original partners' profit share and authority"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "partner",
+            "equity",
+            "capital",
+            "interest",
+            "$150,000",
+            "brewery"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think taking on a new equity partner or securing a 6-year bank loan at 7.5% interest is the better financing option for the $150,000 canning line expansion? Justify your answer.",
+        "model_answer": "Taking on a new equity partner raises $150,000 permanent capital [app] without incurring interest [k], preserving the net profit of $120,000 [app] and avoiding pressure on cash reserves [an]. However, it dilutes existing ownership control and requires sharing future profits permanently. Taking a 6-year bank loan preserves full ownership for the original partners [k], but adds 7.5% annual interest on top of existing overheads of $210,000 and increases non-current liabilities from $180,000 to $330,000 [an]. Overall, taking on a new equity partner is the better option because interest-free capital avoids further debt repayment pressure [eval], whereas equity does not risk insolvency when financing fixed equipment [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "equity avoids interest/repayment but dilutes control and profits",
+            "loan preserves ownership but adds interest and repayment obligations"
+          ],
+          "application_max_2": [
+            "$210,000 operating overheads",
+            "$180,000 non-current loans"
+          ],
+          "analysis_max_2": [
+            "protects cash flow and avoids default risk",
+            "elevates long-term loan dependency and fixed interest expense burden"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against ownership control given existing debt levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "partner",
+            "loan",
+            "interest",
+            "canning",
+            "liabilities",
+            "$150,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_32",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A regional commercial airline company operates as a Public Limited Company, managing a fleet of 12 passenger aircraft for domestic routes. The company reports annual sales revenue of $25,000,000, cost of sales of $16,000,000 (aviation fuel, pilot salaries, and airport landing fees), and operating expenses of $6,500,000. Statement of financial position records present non-current assets of $18,000,000 (aircraft fleet and maintenance hangars).\n\nCurrent assets total $3,500,000 (including $1,200,000 aircraft spare parts inventory, $1,500,000 credit card receivables from booking agents, and $800,000 cash balance). Current liabilities stand at $4,200,000 (comprising $2,800,000 trade payables owed to fuel suppliers and a $1,400,000 bank overdraft). Non-current liabilities total $8,000,000 in long-term bank loans. To fund a $3,000,000 fleet upgrade for fuel-efficient engines, management is evaluating capital sources, comparing a sale and leaseback of 2 aircraft versus taking out an additional 10-year bank loan at 6% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Sale and Leaseback' as a source of business finance.",
+        "model_answer": "Sale and leaseback is a financial arrangement where a business sells a non-current asset to a leasing company for immediate capital and then leases it back long-term for operational use [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Selling a non-current asset for immediate cash",
+            "Leasing the same asset back for continued operational use"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this commercial airline and outline what this result reveals about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($3,500,000 - $1,200,000) / $4,200,000 = 0.55 : 1 [k]. The acid-test ratio measures whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows $0.55 of liquid assets per $1.00 owed [app], indicating severe illiquidity when settling $2,800,000 fuel trade payables and the $1,400,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.55 : 1 calculation",
+            "explanation of liquid asset cover deficiency"
+          ],
+          "application_max_2": [
+            "$0.55 liquid assets per $1 liability",
+            "$2,800,000 fuel payables / $1,400,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "inventory",
+            "overdraft",
+            "current liabilities",
+            "aircraft",
+            "$3,500,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain one advantage and one disadvantage of sale and leaseback to an enterprise requiring expansion capital.",
+        "model_answer": "Advantage: Large immediate cash injection without new debt [k]. Selling the 2 aircraft raises $3,000,000 of capital [app], which can erase the $700,000 working capital deficit [an]. Disadvantage: Ongoing rental payments and loss of ownership [k]. Leasing the aircraft back creates permanent monthly lease payments [app], increasing operating expenses beyond $6,500,000 over time [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides substantial lump-sum cash without debt",
+            "incurs ongoing lease rental expenses / loss of asset ownership"
+          ],
+          "application_max_2": [
+            "2 aircraft / $3,000,000 fleet upgrade",
+            "-$700,000 working capital / $6,500,000 expenses"
+          ],
+          "analysis_max_2": [
+            "eliminates negative working capital deficit without debt",
+            "increases fixed monthly overhead expenses permanently"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leaseback",
+            "aircraft",
+            "cash",
+            "expenses",
+            "$6,500,000",
+            "fuel"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think sale and leaseback of 2 aircraft or taking a new long-term bank loan at 6% interest is the better financing option for the $3,000,000 fleet upgrade? Justify your answer.",
+        "model_answer": "Sale and leaseback of 2 aircraft generates $3,000,000 immediate capital [app] without increasing non-current liabilities above $8,000,000 [app], repairing the negative working capital position [an]. However, it commits the airline to ongoing rental payments [k]. Taking a long-term bank loan provides $3,000,000 capital while maintaining asset ownership [k], but increases non-current liabilities to $11,000,000 and adds 6% interest expenses onto overheads of $6,500,000 [an]. Overall, sale and leaseback is the recommended option because adding $3,000,000 of loan debt onto existing non-current liabilities of $8,000,000 raises insolvency risk [eval], whereas sale and leaseback injects cash liquidity to fix the balance sheet safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale and leaseback injects cash without debt liabilities",
+            "loan retains ownership but increases fixed-interest debt burden"
+          ],
+          "application_max_2": [
+            "$8,000,000 non-current loans",
+            "6% interest rate"
+          ],
+          "analysis_max_2": [
+            "restores positive working capital and liquidity cover",
+            "elevates long-term fixed-interest debt expense strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against ongoing lease overheads given negative working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leaseback",
+            "loan",
+            "aircraft",
+            "liabilities",
+            "interest",
+            "$3,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_33",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A textile manufacturing enterprise operates as a Private Limited Company, producing woven cotton fabrics for garment exporters. Annual financial statements report sales revenue of $3,000,000, cost of sales of $1,800,000 (raw cotton yarn and dyes), and operating expenses of $750,000. Cash flow monitoring reveals severe quarterly fluctuations: cotton harvests demand raw material cash outflows of $220,000 per month during autumn, while garment exporters take 90 days to settle invoices, creating delayed monthly cash inflows of $150,000.\n\nStatement of financial position records show opening cash balance of $15,000, current assets of $480,000 (including $240,000 cotton inventory, $190,000 trade receivables, and $50,000 cash balance), and current liabilities of $380,000 (comprising $260,000 trade payables owed to yarn spinners and a $120,000 bank overdraft). To overcome a projected net cash outflow deficit of $70,000 next month, management compares arranging a debt factoring agreement for trade receivables against negotiating 90-day extended trade credit from yarn spinners.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Net Cash Flow for a month with cash inflows of $150,000 and cash outflows of $220,000.",
+        "model_answer": "Net Cash Flow = Cash Inflows ($150,000) - Cash Outflows ($220,000) = -$70,000 (a net cash deficit of $70,000) [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cash Inflows - Cash Outflows formula",
+            "A negative result means the business must find additional cash to pay bills"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this textile enterprise and explain what this result reveals about liquidity.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($480,000 - $240,000) / $380,000 = 0.63 : 1 [k]. The acid-test ratio measures whether liquid assets cover short-term liabilities without relying on selling cotton inventory [k]. This result shows $0.63 of liquid assets per $1.00 owed [app], indicating potential liquidity distress in settling $260,000 trade payables owed to yarn spinners [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.63 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.63 liquid assets per $1 liability",
+            "$260,000 payables owed to yarn spinners"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "spinners",
+            "inventory",
+            "cotton",
+            "$480,000",
+            "current liabilities"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two methods a business can use to manage trade receivables to improve cash flow.",
+        "model_answer": "Method 1: Offer early payment discounts [k]. Giving 2% discount to garment exporters for paying within 14 days incentivizes faster cash inflows [app], reducing the $190,000 trade receivables balance [an]. Method 2: Conduct credit checks and enforce credit limits [k]. Screening garment exporters before granting 90-day credit terms [app] prevents bad debts and ensures predictable cash collection [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "offer early payment discounts",
+            "enforce strict credit checks / credit limits"
+          ],
+          "application_max_2": [
+            "90-day credit / garment exporters",
+            "$190,000 trade receivables"
+          ],
+          "analysis_max_2": [
+            "accelerates cash inflows into bank account",
+            "reduces bad debt risk and improves cash predictability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "receivables",
+            "credit",
+            "exporters",
+            "cash",
+            "$190,000",
+            "invoices"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think arranging a debt factoring agreement or negotiating 90-day extended trade credit terms is the better strategy to overcome the $70,000 cash deficit? Justify your answer.",
+        "model_answer": "Debt factoring converts $190,000 trade receivables into immediate cash inflows [app], directly clearing the $70,000 cash deficit [app] and eliminating reliance on the $120,000 bank overdraft [an]. However, the factor charges a commission fee, reducing profit margins [k]. Negotiating 90-day trade credit with yarn spinners delays cash outflows for $260,000 trade payables and avoids factoring fees [k]. But yarn suppliers may refuse extended terms or halt cotton deliveries [an]. Overall, debt factoring is the better strategy because securing immediate cash guarantees liquidity through peak harvest months [eval], whereas risking yarn supplier refusal when the acid-test ratio is 0.63:1 could halt production [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "factoring provides immediate liquid cash but incurs fees",
+            "extending trade credit delays cash outflow but risks supplier refusal"
+          ],
+          "application_max_2": [
+            "$70,000 cash deficit",
+            "$260,000 trade payables"
+          ],
+          "analysis_max_2": [
+            "guarantees immediate cash liquidity cover",
+            "risks supply chain disruption and loss of credit terms"
+          ],
+          "evaluation_max_2": [
+            "weighs factoring commission cost against supply chain disruption risk in seasonal manufacturing context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "debt factoring",
+            "payables",
+            "receivables",
+            "spinners",
+            "deficit",
+            "inflows"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_34",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A regional pizza delivery chain operates as a Private Limited Company, managing 15 outlet stores. The enterprise's income statement records annual sales revenue of $4,500,000, cost of sales of $2,700,000 (flour, cheese, toppings, and pizza boxes), and operating overhead expenses of $1,350,000 (store rents, delivery driver wages, and electricity). Gross profit stands at $1,800,000 (40% Gross Profit Margin), operating profit is $450,000 (10% Operating Profit Margin), and net profit for the year after tax is $270,000.\n\nDividends paid to shareholders total $180,000, leaving retained profit for the year of $90,000. Balance sheet records show non-current assets of $2,200,000 and non-current liabilities of $950,000 in bank loans. Facing a 15% increase in dairy cheese prices (cost of sales), the directors are evaluating income statement strategies to protect net profit margins. The board is debating whether to reduce operating overhead expenses by $120,000 by switching to third-party delivery apps or increase pizza menu prices by 6%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Operating Profit for this pizza delivery chain. Show your working.",
+        "model_answer": "Gross Profit = Sales Revenue ($4,500,000) - Cost of Sales ($2,700,000) = $1,800,000 [1]. Operating Profit = Gross Profit ($1,800,000) - Operating Overhead Expenses ($1,350,000) = $450,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross Profit - Operating Expenses formula",
+            "Operating profit is the surplus from core operations after operating overheads"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Net Profit Margin for this pizza chain and explain what this ratio measures.",
+        "model_answer": "Net Profit Margin = (Net Profit / Sales Revenue) x 100 = ($270,000 / $4,500,000) x 100 = 6% [k]. This ratio measures what proportion of revenue is retained as net profit [k]. The chain keeps 6 cents of every revenue dollar after all costs and tax [app], consistent with net profit of $270,000 after $180,000 dividends were paid [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "6% calculation",
+            "explanation of net profit conversion relative to sales revenue"
+          ],
+          "application_max_2": [
+            "$270,000 net profit vs $4,500,000 revenue",
+            "$180,000 dividends / $90,000 retained profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "net profit margin",
+            "net profit",
+            "revenue",
+            "pizza",
+            "$270,000",
+            "dividends"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain the difference between operating profit and net profit on an income statement.",
+        "model_answer": "Operating profit is the profit earned from normal business operations before deducting interest and corporation tax [k]; here $450,000 after deducting operating overheads of $1,350,000 from gross profit [app]. Net profit is the final profit after interest and tax [k]; here $270,000, out of which $180,000 dividends were paid, leaving $90,000 retained profit [app]. Operating profit therefore shows operational efficiency, whereas net profit shows the actual earnings available to shareholders [an]. The two measure profitability at different stages of the income statement [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "operating profit is profit before interest and tax",
+            "net profit is final profit after interest and tax"
+          ],
+          "application_max_2": [
+            "$450,000 operating profit",
+            "$270,000 net profit / $180,000 dividends"
+          ],
+          "analysis_max_2": [
+            "distinguishes operational efficiency from final shareholder returns",
+            "shows where value is consumed between operations and the final surplus"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "operating profit",
+            "net profit",
+            "tax",
+            "dividends",
+            "pizza",
+            "$1,350,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think reducing operating overhead expenses by $120,000 by switching to third-party delivery apps or increasing pizza menu prices by 6% is the better strategy to protect profit margins against rising cheese costs? Justify your answer.",
+        "model_answer": "Reducing operating overhead expenses by $120,000 lowers overhead costs from $1,350,000 to $1,230,000 [app], directly compensating for the 15% cheese price increase and safeguarding the 6% net profit margin [an] without changing menu prices or risking customer loss. However, third-party delivery apps charge commission fees that could erode savings [k]. Increasing pizza menu prices by 6% raises sales revenue above $4,500,000 [app], preserving the 40% gross profit margin [k]. But fast-food delivery is price-sensitive; a 6% price rise may drive customers to rival chains [an]. Overall, reducing overhead expenses by $120,000 is the better strategy because it protects net profit internally [eval], whereas raising menu prices by 6% risks losing store order volume in a competitive market [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overhead cost reduction protects net profit margin internally",
+            "price increase preserves gross margin but risks order volume loss"
+          ],
+          "application_max_2": [
+            "$120,000 overhead reduction from $1,350,000",
+            "15% cheese price increase",
+            "6% price rise",
+            "6% net profit margin"
+          ],
+          "analysis_max_2": [
+            "protects net margin without consumer backlash",
+            "risks customer churn and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal cost efficiency gains against fast-food customer price sensitivity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "expenses",
+            "prices",
+            "cheese",
+            "gross profit",
+            "net profit",
+            "pizza"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_35",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A cloud software development firm operates as a Private Limited Company, marketing subscription software for logistics management. Financial statements disclose annual sales revenue of $6,400,000, cost of sales of $1,600,000 (cloud server hosting and software platform licenses), and operating expenses of $3,200,000 (programmer salaries, digital marketing, and office rent). Gross profit is $4,800,000 (75% Gross Profit Margin), operating profit is $1,600,000 (25% Operating Profit Margin), and net profit for the year after tax is $1,120,000.\n\nDividends paid to shareholders total $700,000, leaving retained profit for the year of $420,000. Balance sheet data shows non-current assets of $3,800,000 and non-current liabilities of $1,200,000 in bank loans. To fund a $600,000 artificial intelligence software integration, management is debating whether to reduce annual dividend payouts to increase retained profit or cut digital marketing overhead expenses by $200,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit Margin for this software firm. Show your working.",
+        "model_answer": "Gross Profit = Sales Revenue ($6,400,000) - Cost of Sales ($1,600,000) = $4,800,000 [1]. Gross Profit Margin = ($4,800,000 / $6,400,000) x 100 = 75% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Gross Profit / Revenue) x 100 formula",
+            "Gross profit margin shows the percentage of revenue kept after cost of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) given Capital Employed of $5,000,000 and Operating Profit of $1,600,000. Explain what this result indicates.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($1,600,000 / $5,000,000) x 100 = 32% [k]. ROCE measures how effectively long-term capital generates operating profit [k]. This result shows the firm earns 32 cents of operating profit per dollar of capital employed [app], comfortably covering the cost of its $1,200,000 bank loans [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "32% calculation",
+            "explanation of operating return generated per dollar of capital employed"
+          ],
+          "application_max_2": [
+            "$1,600,000 operating profit vs $5,000,000 capital employed",
+            "$1,200,000 bank loans"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "operating profit",
+            "software",
+            "loans",
+            "$1,600,000",
+            "retained profit"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to a company of using retained profit rather than bank loans to fund software R&D projects.",
+        "model_answer": "Advantage 1: Zero interest expense and debt liabilities [k]. Reinvesting retained profit ($420,000) avoids adding interest charges to existing operating expenses of $3,200,000 [app], protecting future net profit margins [an]. Advantage 2: Financial autonomy and flexibility [k]. Using internal retained earnings avoids negotiating loan terms or providing non-current assets as collateral security to banks [app], speeding up software project development [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no interest or debt repayment burden",
+            "complete financial independence / faster execution"
+          ],
+          "application_max_2": [
+            "$420,000 retained profit",
+            "$3,200,000 operating expenses / $3,800,000 non-current assets"
+          ],
+          "analysis_max_2": [
+            "safeguards net profit margins and liquidity",
+            "eliminates bank approval delays and restrictive loan covenants"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "loans",
+            "expenses",
+            "software",
+            "$420,000",
+            "marketing"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think reducing dividend payouts from $700,000 to increase retained profit or cutting digital marketing overhead expenses by $200,000 is the better way to fund the $600,000 artificial intelligence software integration? Justify your answer.",
+        "model_answer": "Reducing dividend payouts from $700,000 increases retained profit above $420,000 [app], providing internal finance [k] for the $600,000 AI software upgrade without altering marketing or operational budgets [an]. Lower dividends may disappoint private shareholders [an]. Cutting digital marketing overhead expenses by $200,000 lowers operating expenses from $3,200,000 to $3,000,000 [app], expanding operating profit beyond the 25% margin [k] while risking future sales revenue growth. Overall, reducing dividend payouts is the recommended strategy because maintaining digital marketing drives user growth and $6,400,000 revenue [eval], whereas cutting marketing contracts sales volume in a competitive tech industry [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividend reduction retains cash internally without affecting sales operations",
+            "marketing cuts improve short-term profit but risk revenue contraction"
+          ],
+          "application_max_2": [
+            "$700,000 dividends",
+            "$3,200,000 operating expenses"
+          ],
+          "analysis_max_2": [
+            "protects software customer acquisition and revenue growth",
+            "reduces operating expenses but slows sales lead generation"
+          ],
+          "evaluation_max_2": [
+            "weighs shareholder dividend expectations against long-term software market expansion and revenue acquisition"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "dividends",
+            "marketing",
+            "retained profit",
+            "expenses",
+            "operating profit",
+            "software"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_36",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An automotive components manufacturing enterprise operates as a Public Limited Company, manufacturing gearboxes and drive shafts for motor vehicle assemblers. Statement of financial position records present non-current assets of $9,000,000 (factory land, stamping presses, and robotics). Current assets total $3,200,000 (including $1,800,000 steel inventory, $1,000,000 trade receivables from car manufacturers, and $400,000 cash balance). Current liabilities stand at $2,200,000 (comprising $1,500,000 trade payables owed to steel mills and a $700,000 bank overdraft).\n\nNon-current liabilities total $3,500,000 in 10-year bank loans. Total capital employed is $10,000,000, with shareholders' equity at $6,500,000 ($4,500,000 share capital and $2,000,000 retained profit reserves). To fund a $2,000,000 electric vehicle component assembly line, the Chief Financial Officer is analyzing balance sheet accounts, evaluating whether to issue new PLC ordinary shares or secure a new long-term bank loan at 6.5% interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Working Capital for this automotive manufacturer. Show your working.",
+        "model_answer": "Working Capital = Current Assets ($3,200,000) - Current Liabilities ($2,200,000) = $1,000,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Current Assets - Current Liabilities formula",
+            "Working capital shows the funds available for day-to-day trading"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this business and explain what this result indicates about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($3,200,000 - $1,800,000) / $2,200,000 = 0.64 : 1 [k]. The acid-test ratio shows whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows $0.64 of liquid assets per $1.00 owed [app], indicating narrow liquid solvency for the $1,500,000 trade payables owed to steel mills [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.64 : 1 calculation",
+            "explanation of liquid asset cover deficiency"
+          ],
+          "application_max_2": [
+            "$0.64 liquid assets per $1 liability",
+            "$1,500,000 trade payables / $700,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "mills",
+            "inventory",
+            "current liabilities",
+            "gearboxes",
+            "$3,200,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a balance sheet enables potential investors to evaluate a company's financial risk.",
+        "model_answer": "Way 1: Debt-versus-equity assessment [k]. Investors compare $3,500,000 long-term bank loans against total capital employed of $10,000,000 [app] to evaluate the proportion of long-term debt and the risk of default [an]. Way 2: Solvency evaluation [k]. Investors compare $3,200,000 current assets against $2,200,000 current liabilities [app] to assess whether the business possesses adequate short-term liquidity to pay bills [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "evaluates debt-versus-equity structure",
+            "assesses working capital solvency/liquidity"
+          ],
+          "application_max_2": [
+            "$3,500,000 bank loans vs $10,000,000 capital employed",
+            "$3,200,000 current assets vs $2,200,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "identifies default risk from high debt levels",
+            "determines short-term bill repayment capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "financial position",
+            "loans",
+            "assets",
+            "liabilities",
+            "gearboxes",
+            "$10,000,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new PLC ordinary shares or taking a new long-term bank loan at 6.5% interest is the better financing option for the $2,000,000 electric vehicle component assembly line? Justify your answer using balance sheet analysis.",
+        "model_answer": "Taking a long-term bank loan provides $2,000,000 expansion capital [app] without diluting existing share capital of $4,500,000 [k], preserving shareholder control [an]. However, it increases non-current liabilities from $3,500,000 to $5,500,000 [app], adding 6.5% annual interest overheads [an]. Issuing new PLC ordinary shares brings permanent equity [k], increasing shareholders' funds from $6,500,000 to $8,500,000 without adding interest overheads. Overall, issuing ordinary shares is recommended because the balance sheet already carries $3,500,000 in non-current loans and an acid-test ratio of 0.64:1 [eval]; adding another $2,000,000 of debt raises fixed-interest repayment pressure, whereas equity strengthens balance sheet solvency safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt increases fixed-interest debt burden",
+            "equity strengthens capital structure without debt liabilities"
+          ],
+          "application_max_2": [
+            "3,500,000 non-current loans",
+            "0.64:1 acid-test ratio",
+            "$6,500,000 shareholders funds"
+          ],
+          "analysis_max_2": [
+            "preserves control but elevates long-term debt liabilities",
+            "avoids ongoing debt interest cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against equity dilution in capital structure context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "loan",
+            "liabilities",
+            "interest",
+            "share capital",
+            "equity"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_37",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial furniture manufacturing enterprise operates as a Private Limited Company, supplying office desks and chairs to corporate businesses. Statement of financial position figures report non-current assets of $2,400,000 (factory premises and wood CNC machinery). Current assets total $650,000 (including $350,000 timber inventory, $220,000 trade receivables, and $80,000 cash balance). Current liabilities stand at $500,000 (comprising $340,000 trade payables owed to timber merchants and a $160,000 bank overdraft).\n\nNon-current liabilities total $900,000 in long-term bank loans. Total capital employed is $2,550,000, with shareholders' equity at $1,650,000 ($1,000,000 share capital and $650,000 retained profit reserves). To acquire a $350,000 automated spray-painting facility, management is debating whether to arrange a 5-year leasing agreement or purchase the facility using a new long-term bank loan at 7% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Capital Employed for this furniture business using statement of financial position figures.",
+        "model_answer": "Capital Employed = Non-Current Assets ($2,400,000) + Working Capital ($650,000 - $500,000 = $150,000) = $2,550,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital Employed = Non-Current Assets + Working Capital (or Non-Current Liabilities + Shareholders' Equity)",
+            "Capital employed represents the total long-term funds used to operate the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this furniture manufacturer and explain what this result indicates about short-term solvency.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities = $650,000 / $500,000 = 1.30 : 1 [k]. The current ratio measures whether current assets cover short-term liabilities due within one year [k]. This result shows $1.30 of current assets per $1.00 of current liabilities [app], indicating adequate short-term solvency to settle $340,000 trade payables and the $160,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.30 : 1 calculation",
+            "explanation of short-term asset cover"
+          ],
+          "application_max_2": [
+            "$1.30 current assets per $1 liability",
+            "$340,000 trade payables / $160,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "furniture",
+            "current liabilities",
+            "$650,000",
+            "timber"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain the difference between non-current assets and current assets on a balance sheet.",
+        "model_answer": "Non-current assets are assets retained in the business for more than one year [k], such as factory premises and wood CNC machinery ($2,400,000) used in production [app]. Current assets are short-term assets expected to be converted into cash within one year [k], such as $350,000 timber inventory, $220,000 trade receivables and $80,000 cash [app]. The distinction separates long-term fixed production assets from liquid working capital that supports day-to-day trading [an]. Current assets fund short-term bills while non-current assets generate operating capacity [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "non-current assets retained > 1 year",
+            "current assets converted to cash <= 1 year"
+          ],
+          "application_max_2": [
+            "$2,400,000 non-current assets / CNC machinery",
+            "$350,000 timber inventory / $220,000 receivables / $80,000 cash"
+          ],
+          "analysis_max_2": [
+            "distinguishes fixed production assets from liquid operational working capital",
+            "shows how asset mix supports long-term capacity versus short-term bills"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "non-current assets",
+            "current assets",
+            "machinery",
+            "inventory",
+            "cash",
+            "$350,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think securing a 5-year leasing agreement or taking a new long-term bank loan at 7% interest is the better option to acquire the $350,000 automated spray-painting facility? Justify your answer.",
+        "model_answer": "A 5-year leasing agreement avoids a large initial capital outlay [k], spreading monthly rental payments for the $350,000 facility [app] so existing working capital of $150,000 is preserved [an]. Leasing also often bundles servicing support from the leasing firm [k]. Taking a long-term bank loan provides ownership of the $350,000 non-current asset [app], but increases non-current liabilities from $900,000 to $1,250,000 and adds 7% annual interest expenses [an]. Overall, leasing is the recommended option because adding $350,000 of bank debt onto existing non-current liabilities of $900,000 raises fixed-interest repayment pressure [eval], whereas leasing protects working capital while $350,000 remains tied up in timber inventory [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "leasing avoids large initial capital outlay",
+            "loan gives asset ownership but increases debt liabilities"
+          ],
+          "application_max_2": [
+            "$900,000 non-current loans",
+            "7% interest",
+            "$350,000 timber inventory"
+          ],
+          "analysis_max_2": [
+            "protects immediate liquidity cover",
+            "increases long-term fixed-interest debt expenses"
+          ],
+          "evaluation_max_2": [
+            "weighs fixed-interest debt risk against asset ownership given inventory liquidity constraints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leasing",
+            "loan",
+            "facility",
+            "liabilities",
+            "interest",
+            "$350,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_38",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A boutique hotel group operates as a Public Limited Company, managing 5 luxury heritage hotels. Financial reports disclose annual sales revenue of $10,000,000, cost of sales of $3,500,000 (food, beverage, and room guest amenities), and operating overhead expenses of $4,500,000. Gross profit is $6,500,000 (65% Gross Profit Margin) and operating profit is $2,000,000 (20% Operating Profit Margin). Net profit after tax is $1,300,000.\n\nStatement of financial position records present non-current assets of $12,000,000, current assets of $1,800,000 (including $400,000 food inventory, $1,000,000 credit card receivables from travel agencies, and $400,000 cash balance), current liabilities of $1,500,000 (trade payables $1,000,000, bank overdraft $500,000), and non-current liabilities of $4,500,000 10-year bank loans. Total capital employed is $12,300,000. To fund a $2,000,000 spa wellness center expansion, management is evaluating ROCE (16.26%) and Acid-Test (0.93:1) ratios, deciding whether to issue new PLC ordinary shares or secure another long-term bank loan at 6% interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) for this boutique hotel group. Show your working.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($2,000,000 / $12,300,000) x 100 = 16.26% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Capital Employed) x 100 formula",
+            "ROCE measures how effectively long-term capital generates operating profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this hotel group and explain what this result indicates about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($1,800,000 - $400,000) / $1,500,000 = 0.93 : 1 [k]. The acid-test ratio shows whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows $0.93 of liquid assets per $1.00 owed [app], indicating narrow liquidity cover for $1,000,000 trade payables and the $500,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.93 : 1 calculation",
+            "explanation of liquid asset cover deficiency"
+          ],
+          "application_max_2": [
+            "$0.93 liquid assets per $1 liability",
+            "$1,000,000 trade payables / $500,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "payables",
+            "overdraft",
+            "inventory",
+            "hotel",
+            ",800,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a service or hospitality business can improve its Profit Margin (Net Profit Margin).",
+        "model_answer": "Way 1: Reduce operating overhead expenses [k]. Cutting utility and maintenance overheads below $4,500,000 [app] raises operating profit above $2,000,000 and expands the 13% net profit margin [an]. Way 2: Increase room rates or average spend per guest [k]. Raising prices expands sales revenue above $10,000,000 [app], widening the net profit margin while variable costs stay controlled [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduce operating overhead expenses",
+            "increase selling prices / room rates"
+          ],
+          "application_max_2": [
+            "$10,000,000 sales revenue",
+            "13% net margin / $4,500,000 operating expenses"
+          ],
+          "analysis_max_2": [
+            "lowers overhead deduction to expand net margin",
+            "increases revenue top-line to boost profit margin percentage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit margin",
+            "net profit",
+            "expenses",
+            "revenue",
+            "hotel"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new PLC ordinary shares or taking an additional long-term bank loan at 6% interest is the better financing option for the $2,000,000 spa wellness center expansion? Justify your answer using ROCE and liquidity analysis.",
+        "model_answer": "Taking a long-term bank loan provides $2,000,000 for the spa center [app] without diluting existing share capital [k]. Because ROCE is 16.26% [app], the return on capital exceeds the 6% borrowing interest rate [an]. However, adding $2,000,000 to existing non-current loans of $4,500,000 increases non-current liabilities to $6,500,000, raising capital employed to $14,300,000 [an]. Issuing new PLC ordinary shares brings permanent equity [k], keeping non-current liabilities at $4,500,000 and eliminating default risk. Overall, issuing share capital is recommended because adding $2,000,000 of debt when non-current liabilities are already $4,500,000 and the acid-test ratio is below 1.0 (0.93:1) raises financial risk unnecessarily [eval], whereas equity capital protects balance sheet solvency safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high ROCE makes borrowing viable if interest < ROCE",
+            "equity avoids adding further loan obligations"
+          ],
+          "application_max_2": [
+            "16.26% ROCE",
+            "6% interest rate",
+            "$4,500,000 non-current loans"
+          ],
+          "analysis_max_2": [
+            "return on capital above borrowing cost",
+            "avoids long-term insolvency and debt pressure"
+          ],
+          "evaluation_max_2": [
+            "weighs ROCE profitability against capital structure fixed-interest debt risk given narrow liquidity cover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "shares",
+            "loan",
+            "spa",
+            "liabilities",
+            "$2,000,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_39",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial plastics packaging manufacturing corporation operates as a Public Limited Company, producing recyclable plastic containers for food processors. Financial statements report annual sales revenue of $16,000,000, cost of sales of $10,400,000 (polymer resin raw materials and factory energy), and operating overhead expenses of $4,000,000 (machine maintenance, administrative salaries, and transport). Operating profit is $1,600,000 (10% Operating Profit Margin) and net profit for the year is $1,120,000 (7% Net Profit Margin).\n\nStatement of financial position records show non-current assets of $11,000,000, current assets of $3,800,000 (including $2,200,000 polymer inventory, $1,200,000 trade receivables, and $400,000 cash balance), current liabilities of $3,200,000 (trade payables $2,400,000, overdraft $800,000), and non-current liabilities of $4,500,000 8-year bank loans. Total capital employed is $11,600,000. Facing thin Net Profit Margins (7%) and a low Acid-Test Ratio (0.50:1), management is evaluating financial performance strategies, debating whether to cut cost of sales by installing energy-efficient molding machinery or raise container prices by 5%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit Margin for this plastics manufacturer. Show your working.",
+        "model_answer": "Gross Profit = Sales Revenue ($16,000,000) - Cost of Sales ($10,400,000) = $5,600,000 [1]. Gross Profit Margin = ($5,600,000 / $16,000,000) x 100 = 35% [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Gross Profit / Revenue) x 100 formula",
+            "Gross profit margin shows the percentage of revenue kept after cost of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this plastics enterprise and explain why this result indicates severe liquidity risk.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($3,800,000 - $2,200,000) / $3,200,000 = 0.50 : 1 [k]. The acid-test ratio shows whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows only $0.50 of liquid assets per $1.00 owed [app], creating severe risk if $2,400,000 trade payables are demanded by resin suppliers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.50 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.50 liquid assets per $1 liability",
+            "$2,400,000 trade payables / $800,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "payables",
+            "overdraft",
+            "resin",
+            "$3,800,000",
+            "polymer"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two financial limitations of relying solely on accounting ratios to evaluate business success.",
+        "model_answer": "Limitation 1: Based on historical accounting data [k]. Ratios evaluate past performance such as the $16,000,000 sales revenue [app], which does not guarantee future sales or market stability [an]. Limitation 2: Ignores qualitative non-financial factors [k]. Ratio analysis fails to measure staff motivation, customer satisfaction, or product innovation [app], which are critical to long-term business survival [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "uses historical past data",
+            "ignores qualitative non-financial factors"
+          ],
+          "application_max_2": [
+            "$16,000,000 past revenue",
+            "staff motivation / customer satisfaction"
+          ],
+          "analysis_max_2": [
+            "does not guarantee future trading success",
+            "provides incomplete picture of total corporate health"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "revenue",
+            "polymer",
+            "margins",
+            "containers",
+            "$16,000,000",
+            "resin"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think installing energy-efficient molding machinery (cutting cost of sales) or raising container prices by 5% is the better strategy to improve financial performance? Justify your answer using profitability and liquidity analysis.",
+        "model_answer": "Installing energy-efficient molding machinery reduces cost of sales below $10,400,000 [app], directly expanding the 35% Gross Profit Margin [k] and increasing net profit from $1,120,000 [an] without changing container prices or turning away food processors. Raising container prices by 5% increases sales revenue above $16,000,000 [app], expanding the 7% net profit margin [k]. However, food processors operate in competitive packaging markets; a 5% price rise may drive clients to rival manufacturers [an]. Overall, installing energy-efficient machinery is the better strategy because it improves thin profit margins through internal energy efficiency [eval], whereas raising prices by 5% risks losing food processing supply contracts [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost reduction improves margins without customer loss",
+            "price rise boosts revenue but risks customer switching"
+          ],
+          "application_max_2": [
+            "$10,400,000 cost of sales",
+            "35% gross margin",
+            "7% net margin",
+            "0.50:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "improves profitability through internal energy efficiency",
+            "risks customer churn and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal operational cost savings against industrial customer price sensitivity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "machinery",
+            "prices",
+            "cost of sales",
+            "net profit",
+            "resin"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_40",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A healthcare software corporation operates as a Public Limited Company, developing electronic health record systems. Financial statements report annual sales revenue of $14,000,000, cost of sales of $4,200,000 (cloud hosting and software integration licenses), and operating expenses of $6,300,000 (engineers, regulatory compliance, sales operations). Operating profit is $3,500,000 (25% Operating Profit Margin) and net profit for the year is $2,450,000 (17.5% Net Profit Margin).\n\nStatement of financial position records show non-current assets of $8,500,000, current assets of $4,000,000 (including $500,000 software media inventory, $2,700,000 trade receivables from hospital trusts, and $800,000 cash balance), current liabilities of $2,500,000 (trade payables $1,800,000, overdraft $700,000), and non-current liabilities of $3,000,000 6-year bank loans. Total capital employed is $10,000,000. To fund a $2,500,000 cybersecurity software expansion, directors are analyzing profitability (25% Operating Margin, 35% ROCE) and liquidity (1.40:1 Acid-Test) ratios, deciding whether to issue new PLC ordinary shares or take an additional 6-year bank loan at 6% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) for this healthcare software company. Show your working.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($3,500,000 / $10,000,000) x 100 = 35% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Capital Employed) x 100 formula",
+            "ROCE measures how effectively long-term capital generates operating profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this company and explain what this result indicates about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities = ($4,000,000 - $500,000) / $2,500,000 = 1.40 : 1 [k]. The acid-test ratio shows whether liquid assets cover short-term liabilities without selling inventory [k]. This result shows $1.40 of liquid assets per $1.00 owed [app], indicating healthy solvency to settle $1,800,000 trade payables and the $700,000 overdraft [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.40 : 1 calculation",
+            "explanation of healthy liquid asset cover"
+          ],
+          "application_max_2": [
+            "$1.40 liquid assets per $1 liability",
+            "$1,800,000 trade payables / $700,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "liquidity",
+            "payables",
+            "overdraft",
+            "inventory"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why external stakeholders such as hospital trusts and trade payables analyse a company's financial statements.",
+        "model_answer": "Reason 1: Assess short-term creditworthiness [k]. Trade payables analyse the 1.40:1 Acid-Test Ratio [app] to verify that liquid assets cover short-term debts of $2,500,000 before granting credit terms [an]. Reason 2: Assess long-term viability and continuity [k]. Payables review the 25% operating profit margin and 35% ROCE [app] to ensure the software firm will remain solvent to deliver ongoing software support [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "evaluates short-term creditworthiness/solvency",
+            "evaluates long-term business viability and continuity"
+          ],
+          "application_max_2": [
+            "1.40:1 acid-test ratio / $2,500,000 current liabilities",
+            "25% operating profit margin / 35% ROCE"
+          ],
+          "analysis_max_2": [
+            "guides supplier decisions on granting credit terms",
+            "reassures commercial clients of long-term operational support"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "ROCE",
+            "payables",
+            "liquidity",
+            "$2,500,000",
+            "software"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think taking an additional 6-year bank loan at 6% interest or issuing new PLC ordinary shares is the better financing option for the $2,500,000 cybersecurity software expansion? Justify your answer using ROCE and liquidity analysis.",
+        "model_answer": "Taking a 6-year bank loan provides $2,500,000 expansion capital [app] without diluting existing share equity [k]. Because ROCE is outstanding at 35% [app], the return on capital significantly exceeds the 6% borrowing interest rate [an]. Issuing new PLC ordinary shares brings permanent equity [k], keeping non-current liabilities at $3,000,000 and eliminating default risk [an]. Overall, taking the 6-year bank loan is the better option because an exceptionally high ROCE of 35% easily covers 6% borrowing interest [eval], allowing the company to fund cybersecurity expansion while preserving equity ownership for existing shareholders [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high ROCE makes borrowing viable if interest < ROCE",
+            "equity avoids debt liabilities but dilutes ownership"
+          ],
+          "application_max_2": [
+            "35% ROCE",
+            "6% interest rate",
+            "$2,500,000 cybersecurity expansion",
+            "1.40:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "return on capital comfortably above borrowing cost",
+            "avoids ownership dilution when liquidity is strong"
+          ],
+          "evaluation_max_2": [
+            "weighs high ROCE borrowing advantage against equity dilution risk given strong liquidity cover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ROCE",
+            "loan",
+            "shares",
+            "interest",
+            "cybersecurity",
+            "acid-test"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

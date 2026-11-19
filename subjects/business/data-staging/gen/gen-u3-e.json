@@ -1,0 +1,1165 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_81",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Coppertree Bakery is a family-owned bakery chain operating 6 outlets across Country X, employing 34 staff and generating $780,000 in annual revenue. Most customers are office workers aged 25-45 buying lunchtime rolls. The other two outlets sit on industrial estates with little footfall. Sales of lunchtime rolls and salads have fallen by 12% over 18 months as more companies let staff work from home.\n\nThe owners plan to launch a gluten-free baked goods range, including croissants, rolls and cakes, but must decide whether to spend $15,000 on a secondary research report from a market analysis agency, or carry out their own primary research with 300 regular customers. They also must choose between launching in all 6 outlets at once or trialling the range in 2 outlets first.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'market research'.",
+        "model_answer": "The systematic process of collecting, analysing and interpreting information about a market, including customer needs and demand [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "collecting and analysing information about a market",
+            "understanding customers' needs and demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Coppertree Bakery of carrying out primary market research before launching its gluten-free range.",
+        "model_answer": "Benefit 1: It provides specific, up-to-date information [k] about whether office workers aged 25-45 want gluten-free baked goods [app]. Benefit 2: It reduces the risk of failure [k] by testing demand in 2 outlets before launching in all 6 outlets [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides specific and up-to-date data",
+            "reduces the risk of product failure"
+          ],
+          "application_max_2": [
+            "office workers aged 25-45",
+            "trial in 2 outlets before all 6 outlets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Coppertree Bakery",
+            "gluten-free",
+            "office workers",
+            "25-45",
+            "2 outlets",
+            "6 outlets"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations to Coppertree Bakery of relying only on secondary market research data.",
+        "model_answer": "Limitation 1: Secondary data may be out of date [k] and not specific to its 6 outlets [app], so the owners could launch a gluten-free range that local customers do not want [an]. Limitation 2: Secondary data cannot reveal the taste preferences of office workers [k] aged 25-45 who buy lunchtime rolls [app], so recipes may miss local demand and sales may disappoint [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "secondary data may be out of date or not specific",
+            "cannot reveal specific local customer preferences"
+          ],
+          "application_max_2": [
+            "not specific to its 6 outlets",
+            "taste preferences of 25-45 office workers"
+          ],
+          "analysis_max_2": [
+            "risk of launching an unwanted gluten-free range",
+            "recipes miss local demand so sales disappoint"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "secondary research report",
+            "$15,000",
+            "office workers",
+            "25-45",
+            "6 outlets",
+            "gluten-free"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Coppertree Bakery should spend $15,000 on a secondary research report before launching its gluten-free range? Justify your answer.",
+        "model_answer": "The secondary research report would give broad, national market data within weeks [k] for $15,000 [app], showing whether the gluten-free market is large enough before the owners commit stock to all 6 outlets [an]. However, primary research with 300 regular customers would give specific, current feedback [k] from people who actually buy lunchtime rolls from Coppertree Bakery [app], cutting the risk of unsold gluten-free stock after launch [an]. Overall, the owners should first carry out primary research [eval] because it directly reflects their own customers [eval], buying the report only if national expansion is pursued later.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "secondary data gives broad national market picture",
+            "primary research gives specific current customer feedback"
+          ],
+          "application_max_2": [
+            "$15,000 cost of the report",
+            "300 regular customers buying lunchtime rolls"
+          ],
+          "analysis_max_2": [
+            "shows market size before committing stock to 6 outlets",
+            "reduces risk of unsold gluten-free stock after launch"
+          ],
+          "evaluation_max_2": [
+            "weighs broad national data against specific local evidence",
+            "justified recommendation to do primary research first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Coppertree Bakery",
+            "$15,000",
+            "300 regular customers",
+            "gluten-free",
+            "6 outlets",
+            "office workers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_82",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Northgate Electrical is a family-run electrical goods retailer operating 2 stores in country towns of Country X, employing 26 staff and generating $2.4 million in annual sales. It stocks 1,800 product lines, mainly televisions and washing machines from 3 suppliers. A national chain opened nearby last year, and Northgate's sales have fallen by 9% since, while footfall keeps dropping.\n\nThe owners must decide how to respond, as unsold televisions gather dust on the shelves and the window display has not changed in months. One option is to carry out market research to identify what local customers want, for example smart home devices, and restructure the range, becoming more market-orientated. Alternatively, they could keep the current range and cut prices by 15% to match the cheaper national competitor.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'market-orientated business'.",
+        "model_answer": "A business that bases its decisions on the needs and wants of customers identified through market research, rather than on what it currently produces [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bases decisions on customer needs and wants",
+            "uses market research to guide decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Northgate Electrical of being a market-orientated business.",
+        "model_answer": "Benefit 1: Products would better match local customer needs [k], so stock such as smart home devices would appeal to country town buyers [app]. Benefit 2: Customer satisfaction and loyalty would improve [k], helping the 2 stores win back sales lost since the national chain opened [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "products match customer needs",
+            "higher customer satisfaction and loyalty"
+          ],
+          "application_max_2": [
+            "smart home devices as example stock",
+            "2 stores recovering from the 9% sales fall"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Northgate Electrical",
+            "2 stores",
+            "1,800 product lines",
+            "smart home devices",
+            "9%",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two difficulties Northgate Electrical might face in becoming more market-orientated.",
+        "model_answer": "Difficulty 1: Market research costs money and staff time [k], so interviewing customers across both stores takes staff off the shop floor [app], leaving less cash for new stock purchases [an]. Difficulty 2: Customer tastes change quickly [k], so research done this year may not show what customers want next year [app], meaning the restructured range of 1,800 lines could still miss demand [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "market research costs money and time",
+            "customer tastes change quickly"
+          ],
+          "application_max_2": [
+            "interviewing customers across both stores",
+            "restructured range of 1,800 lines"
+          ],
+          "analysis_max_2": [
+            "less cash left for new stock purchases",
+            "range could still miss future demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "market research",
+            "2 stores",
+            "1,800 product lines",
+            "smart home devices",
+            "9%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northgate Electrical should restructure its range based on market research rather than cut prices by 15%? Justify your answer.",
+        "model_answer": "Market research would identify exactly what local customers want [k], letting Northgate stock profitable lines such as smart home devices instead of unsold televisions [app], differentiating the 2 stores from the national competitor and protecting margins [an]. However, cutting prices by 15% would produce an immediate sales boost [k], tempting country town customers to return [app], but it would slash profit on every one of its 1,800 product lines [an]. Overall, restructuring the range is the stronger strategy [eval] because differentiation builds loyalty that a price cut cannot [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "market research identifies local customer wants",
+            "price cut gives immediate sales boost"
+          ],
+          "application_max_2": [
+            "smart home devices replacing unsold televisions",
+            "15% price cut on 1,800 product lines"
+          ],
+          "analysis_max_2": [
+            "differentiation protects margins against the national chain",
+            "price cut slashes profit on every line"
+          ],
+          "evaluation_max_2": [
+            "weighs differentiation and loyalty against short-term sales boost",
+            "justified recommendation to restructure the range"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "market research",
+            "smart home devices",
+            "1,800 product lines",
+            "15%",
+            "2 stores",
+            "$2.4 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_83",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Silverpine Youth Hostels is a national hostel chain operating 14 hostels across Country X, from coastal cities to mountain towns, welcoming 38,000 guests each year. The marketing manager wants to survey 400 guests about a proposed $250,000 refurbishment of its dormitories before next summer, adding bunk pods, laundry rooms and study corners.\n\nOne option is random sampling: selecting 400 guests at random from the full guest list. The other is quota sampling: interviewing guests in each age and gender group until 400 responses are gathered. The accuracy of the results will depend on the sample size, the wording of the questions and possible bias. Guests aged 16-24 make up 55% of bookings, so a flawed sample could mislead the chain into building features guests ignore.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'random sampling'.",
+        "model_answer": "A sampling method in which every member of the population has an equal chance of being selected, usually using a random number generator [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "every member of the population has an equal chance",
+            "selection is random, for example using random numbers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Silverpine Youth Hostels of using random sampling for its guest survey.",
+        "model_answer": "Advantage 1: Every guest on the full list has an equal chance of selection [k], so the 400 respondents are likely to represent the 38,000 guests fairly [app]. Advantage 2: It reduces the risk of bias [k] compared with hand-picking guests from just one hostel [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "equal chance of selection for all",
+            "reduces risk of bias"
+          ],
+          "application_max_2": [
+            "400 respondents representing 38,000 guests",
+            "compared with hand-picking from one hostel"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Silverpine Youth Hostels",
+            "14 hostels",
+            "38,000 guests",
+            "400",
+            "random sampling",
+            "$250,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two factors that could affect the accuracy of Silverpine's market research data.",
+        "model_answer": "Factor 1: Sample size [k] - surveying only 40 guests instead of 400 would poorly represent the 16-24 group that makes up 55% of bookings [app], producing unreliable results and a wasted $250,000 refurbishment [an]. Factor 2: Wording of the questions [k] - leading or confusing questions would bias answers about dormitory facilities [app], so the chain builds features guests do not want [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sample size affects accuracy",
+            "wording of questions can bias answers"
+          ],
+          "application_max_2": [
+            "40 instead of 400 poorly represents the 16-24 group",
+            "leading questions bias answers about dormitories"
+          ],
+          "analysis_max_2": [
+            "unreliable results waste the $250,000 refurbishment",
+            "biased answers mean building unwanted features"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sample size",
+            "wording of the questions",
+            "400",
+            "55%",
+            "16-24",
+            "$250,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Silverpine Youth Hostels should use random sampling rather than quota sampling for the dormitory survey? Justify your answer.",
+        "model_answer": "Random sampling gives every guest on the full list an equal chance of selection [k], producing an unbiased, representative picture of the 38,000 annual guests [app], which should guide the $250,000 refurbishment wisely [an]. However, quota sampling would guarantee enough responses from each age and gender group [k], for example the 16-24 segment at 55% of bookings [app], and can be completed faster at busier hostels [an]. Overall, random sampling is the better choice [eval] because the full guest list already exists, making it cheap and unbiased [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "random sampling gives equal chance and low bias",
+            "quota sampling ensures group representation"
+          ],
+          "application_max_2": [
+            "400 random respondents from the full guest list",
+            "16-24 segment at 55% of bookings"
+          ],
+          "analysis_max_2": [
+            "unbiased representative data guides the $250,000 decision",
+            "quota is faster at busier hostels"
+          ],
+          "evaluation_max_2": [
+            "weighs representativeness against speed and group quotas",
+            "justified recommendation for random sampling"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "random sampling",
+            "quota sampling",
+            "38,000 guests",
+            "$250,000",
+            "55%",
+            "16-24"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_84",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Verdana Smoothie Co is a start-up founded by two friends in Country X, selling smoothies made from local fruit at markets and colleges. They have $22,000 in savings and rent one market stall for $340 per week. Before opening a stall at Riverside College, which has 3,000 students on campus, they are deciding whether to buy an $8,500 market research report on the healthy drinks sector, or use free government statistics, internet research and internal records from their 3 trial market days.\n\nTheir 3 trial days showed strongest sales among health-conscious students aged 18-24 buying $6.50 smoothies. Office workers on higher incomes are a possible second segment. The founders must choose which source of data to rely on first, as savings are limited and mistakes would be costly.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two sources of secondary market research data.",
+        "model_answer": "Government statistics and market research reports [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government statistics",
+            "market research reports or internet research or internal records"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Verdana Smoothie Co of using secondary research first.",
+        "model_answer": "Benefit 1: Secondary data is quicker and cheaper to obtain [k], as government statistics and internet research are free compared with the $8,500 report [app]. Benefit 2: It gives a broad view of the healthy drinks sector [k], helping the founders judge whether students aged 18-24 can support a college stall [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quicker and cheaper than primary research",
+            "gives a broad overview of the sector"
+          ],
+          "application_max_2": [
+            "government statistics and internet research are free",
+            "judging 18-24 student demand for the college stall"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Verdana Smoothie Co",
+            "$8,500",
+            "government statistics",
+            "internet research",
+            "18-24",
+            "$6.50"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Verdana Smoothie Co should still carry out primary research despite having secondary data.",
+        "model_answer": "Reason 1: Secondary data is not specific to Riverside College [k], it covers the national healthy drinks sector [app], so it cannot show exactly what local students want [an]. Reason 2: Secondary data may be out of date [k], purchased reports describe last year's trends [app], so pricing at $6.50 could be wrong by launch day [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "secondary data is not specific to the local market",
+            "secondary data may be out of date"
+          ],
+          "application_max_2": [
+            "reports cover the national sector, not Riverside College",
+            "pricing at $6.50 based on last year's trends"
+          ],
+          "analysis_max_2": [
+            "cannot show exactly what local students want",
+            "launch price could be wrong by launch day"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Riverside College",
+            "$6.50",
+            "18-24",
+            "$8,500",
+            "internal records",
+            "health-conscious"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Verdana Smoothie Co should buy the $8,500 market research report rather than use free secondary sources? Justify your answer.",
+        "model_answer": "The $8,500 report would give professional, detailed analysis of the healthy drinks sector [k], showing whether students aged 18-24 or higher-income office workers are the stronger segment [app], saving months of guesswork [an]. However, free government statistics, internet research and internal records from their 3 trial market days cost nothing [k], and already show best sales among health-conscious 18-24 year-olds [app], leaving more of the $22,000 savings for stall equipment and stock [an]. Overall, the founders should use the free sources first [eval] because capital is scarce and the trial evidence is already clear [eval], buying the report only if they expand to more colleges.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "report gives professional detailed sector analysis",
+            "free sources cost nothing"
+          ],
+          "application_max_2": [
+            "comparing 18-24 students with higher-income office workers",
+            "3 trial market days already showing best sales among 18-24s"
+          ],
+          "analysis_max_2": [
+            "saves months of guesswork on segment choice",
+            "preserves the $22,000 savings for equipment and stock"
+          ],
+          "evaluation_max_2": [
+            "weighs detailed paid analysis against free local evidence",
+            "justified recommendation to use free sources first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$8,500",
+            "$22,000",
+            "3 trial market days",
+            "18-24",
+            "government statistics",
+            "$6.50"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_85",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Aurora Cinema Group operates 5 cinemas across Country X, each running 8 screens, selling 210,000 tickets a year at an average ticket price of $9. Attendance fell by 8% last year, food spend averages $6 per head, and most tickets are booked online. The group wants customer feedback on a proposed loyalty scheme and a new food menu.\n\nOne option is an email questionnaire sent to 500 members, with a possible 20% response rate. The other is face-to-face interviews with 60 members at the Central branch, lasting 30 minutes each. The manager is worried about leading questions and sample bias, and wants results presented as charts for the next board meeting covering all 5 cinemas before the January pricing review in February.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'questionnaire'.",
+        "model_answer": "A written set of questions sent to respondents to collect information about their opinions, attitudes or behaviour [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a written set of questions",
+            "collects information from respondents"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Aurora Cinema Group of using a questionnaire for this research.",
+        "model_answer": "Benefit 1: Questionnaires can reach many people cheaply [k], an email questionnaire can reach all 500 members at almost no cost [app]. Benefit 2: Responses are easy to quantify and present [k], making it simple to produce charts for the board meeting covering all 5 cinemas [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cheap and wide reach",
+            "responses easy to quantify and present"
+          ],
+          "application_max_2": [
+            "email reach to all 500 members",
+            "charts for the board meeting covering 5 cinemas"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Aurora Cinema Group",
+            "5 cinemas",
+            "210,000 tickets",
+            "$9",
+            "500 members",
+            "20%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two factors that could affect the accuracy of Aurora Cinema Group's research data.",
+        "model_answer": "Factor 1: Sample size and response rate [k] - if only 20% of the 500 members reply, the group gets just 100 responses [app], which may not represent all 210,000 ticket buyers [an]. Factor 2: Leading or confusing questions [k] - poor wording would bias answers about the loyalty scheme [app], so the group launches a scheme members do not value [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sample size and response rate affect accuracy",
+            "wording of questions can bias answers"
+          ],
+          "application_max_2": [
+            "20% of 500 members gives only 100 responses",
+            "leading wording biases answers about the loyalty scheme"
+          ],
+          "analysis_max_2": [
+            "100 responses may not represent 210,000 ticket buyers",
+            "biased answers could produce an unwanted loyalty scheme"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "20%",
+            "500 members",
+            "loyalty scheme",
+            "210,000 tickets",
+            "sample bias",
+            "charts"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aurora Cinema Group should send the questionnaire rather than carry out face-to-face interviews? Justify your answer.",
+        "model_answer": "The questionnaire reaches 500 members quickly at low cost [k], with quantifiable answers [app] that can be presented as charts for the board [an]. However, face-to-face interviews with 60 members at the Central branch allow probing follow-up questions [k] that explain why attendance fell by 8% [app], giving richer insight into opinions on the new food menu [an]. Overall, the questionnaire is the better first step [eval] because a large, low-bias sample reduces risk before the loyalty scheme launch [eval], with interviews afterwards to dig deeper.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "questionnaire gives cheap, quantifiable wide-reach data",
+            "interviews allow probing follow-up questions"
+          ],
+          "application_max_2": [
+            "500 members vs 60 members at the Central branch",
+            "interviews explain why attendance fell by 8%"
+          ],
+          "analysis_max_2": [
+            "charts let the board compare all 5 cinemas",
+            "richer insight into food menu opinions"
+          ],
+          "evaluation_max_2": [
+            "weighs breadth and low bias against in-depth insight",
+            "justified recommendation for the questionnaire first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "500 members",
+            "60 members",
+            "8%",
+            "loyalty scheme",
+            "Central branch",
+            "210,000 tickets"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_86",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Harrowgate Homeware is an independent furniture retailer operating 3 stores in Country X, two in town centres and one in a retail park. The stores rely mainly on walk-in trade, with around 1,400 customers visiting each week. The owner wants to redesign the layout to promote a new $850 sofa range, priced 20% above sofas already stocked, arriving in September.\n\nOne option is observation: trained staff recording where 1,000 shoppers stop over 4 weeks. The other is a focus group of 8 loyal customers discussing sofa styles and prices for 90 minutes. Early mock results would be presented as bar charts and a floor diagram at the next management meeting, before any spending on display fittings, posters or display lighting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'observation'.",
+        "model_answer": "A primary research method in which researchers watch and record how consumers behave in real settings, without asking them questions [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "watching and recording consumer behaviour",
+            "in a real setting, without asking questions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Harrowgate Homeware of using observation for the layout decision.",
+        "model_answer": "Benefit 1: It shows what customers actually do [k], where the 1,000 shoppers stop inside the 3 stores [app]. Benefit 2: Customers behave naturally when they do not know they are watched [k], giving unbiased evidence for placing the $850 sofa range near the entrance [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shows actual rather than stated behaviour",
+            "unobtrusive so behaviour is natural and unbiased"
+          ],
+          "application_max_2": [
+            "1,000 shoppers across 3 stores",
+            "placing the $850 sofa range near the entrance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Harrowgate Homeware",
+            "3 stores",
+            "1,400 customers",
+            "$850 sofa",
+            "1,000 shoppers",
+            "4 weeks"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the owner should still consider the focus group before deciding.",
+        "model_answer": "Reason 1: Focus groups reveal opinions and reasons, not just behaviour [k], 8 loyal customers can explain why they would or would not buy the $850 sofa [app], guiding which models and colours to display [an]. Reason 2: Observation cannot explain why shoppers stop [k], it will not reveal that fabrics look unappealing [app], so a layout built only on observation might still fail to lift sales [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "focus groups give opinions and reasons",
+            "observation shows behaviour but not reasons"
+          ],
+          "application_max_2": [
+            "8 loyal customers discussing the $850 sofa",
+            "observation will not reveal unappealing fabrics"
+          ],
+          "analysis_max_2": [
+            "guides which sofa models and colours to display",
+            "layout based only on observation may still fail to lift sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "focus group",
+            "8 loyal customers",
+            "$850 sofa",
+            "observation",
+            "bar charts",
+            "1,000 shoppers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Harrowgate Homeware should use observation rather than the focus group for the layout decision? Justify your answer.",
+        "model_answer": "Observation of 1,000 shoppers over 4 weeks gives hard, unbiased evidence of real behaviour [k] across all 3 stores [app], showing exactly where to place the $850 sofa range [an]. However, the focus group of 8 loyal customers costs far less and gives detailed opinions on style and price tolerance [k] from customers who already trust the retailer [app], though their views may not represent the 1,400 weekly shoppers [an]. Overall, observation is the better choice for a layout decision [eval] because traffic flow needs behavioural evidence presented as bar charts [eval], with a focus group afterwards to refine the range.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "observation gives unbiased behavioural evidence",
+            "focus groups give detailed opinions cheaply"
+          ],
+          "application_max_2": [
+            "1,000 shoppers over 4 weeks across 3 stores",
+            "8 loyal customers vs 1,400 weekly shoppers"
+          ],
+          "analysis_max_2": [
+            "shows exactly where to place the $850 sofa range",
+            "small focus group may not represent typical shoppers"
+          ],
+          "evaluation_max_2": [
+            "weighs breadth of behavioural data against depth of opinion",
+            "justified recommendation for observation for layout"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "observation",
+            "focus group",
+            "1,000 shoppers",
+            "$850 sofa",
+            "3 stores",
+            "bar charts"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_87",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Zephyr Mobile is a mobile phone retailer operating 4 shops in busy town centres in Country X, selling $150 mid-range handsets mostly to adults aged 35-55. Customers over 35 account for 62% of its sales, and handset sales grew 6% last year. The shops have introduced a $220 handset aimed at 16-24 year-olds, piloted in 1 shop where 240 units were sold in 2 months, 70% to under-25s.\n\nThe owner must decide whether to niche-target the 16-24 segment with student-focused advertising, costing $300 per campaign, or keep marketing to all ages with one mass-market campaign costing $4,500. The shops were modernised for $60,000 last year. Money is tight after the refit, and competition for younger buyers is strong in the towns where Zephyr operates.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'demographic segmentation'.",
+        "model_answer": "Dividing a market into groups based on demographic characteristics such as age, gender, income, occupation or family size [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing the market into groups",
+            "groups based on age, gender, income, occupation or family size"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Zephyr Mobile of segmenting its market by age.",
+        "model_answer": "Benefit 1: Promotion can target the chosen age group directly [k], student advertising can focus on 16-24 year-olds [app]. Benefit 2: The marketing budget is spent more efficiently [k], focusing on the segment that bought 70% of the 240 pilot units [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "targeted promotion to chosen group",
+            "more efficient marketing spend"
+          ],
+          "application_max_2": [
+            "student advertising aimed at 16-24 year-olds",
+            "the segment buying 70% of 240 pilot units"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Zephyr Mobile",
+            "4 shops",
+            "16-24",
+            "240 units",
+            "70%",
+            "$220"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of Zephyr Mobile targeting the 16-24 niche rather than a mass-market campaign.",
+        "model_answer": "Advantage 1: A niche approach builds a strong reputation with young buyers [k], 240 units were sold in 2 months, 70% to under-25s [app], encouraging student word-of-mouth and repeat purchases [an]. Advantage 2: Niche advertising is cheaper than mass campaigns [k], adverts placed in student media rather than nationwide [app], so limited funds go further while prices hold at $220 [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "niche builds strong reputation with the segment",
+            "niche advertising is cheaper than mass campaigns"
+          ],
+          "application_max_2": [
+            "240 units in 2 months, 70% to under-25s",
+            "student media rather than nationwide advertising"
+          ],
+          "analysis_max_2": [
+            "word-of-mouth lifts repeat sales from students",
+            "limited budget goes further while holding the $220 price"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "16-24",
+            "240 units",
+            "70%",
+            "2 months",
+            "$220",
+            "student-focused"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Zephyr Mobile should target the 16-24 niche rather than continue mass marketing? Justify your answer.",
+        "model_answer": "The pilot results of 240 units in 2 months, with 70% bought by under-25s, show strong demand from 16-24 year-olds [k], so niche student advertising would be targeted and cost-effective [app], building a loyal younger customer base for the $220 handset [an]. However, the 35-55 segment still provides 62% of sales [k], so abandoning mass marketing could alienate loyal customers across the 4 shops [app] and hand younger buyers to strong competitors there [an]. Overall, Zephyr should shift towards the 16-24 niche [eval] because the pilot data shows where growth is strongest [eval], while keeping basic mass coverage in its existing adverts.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "niche suits evidence-backed segment demand",
+            "mass marketing protects existing customer base"
+          ],
+          "application_max_2": [
+            "240 units in 2 months with 70% under-25 buyers",
+            "35-55 segment providing 62% of sales across 4 shops"
+          ],
+          "analysis_max_2": [
+            "targeted advertising builds loyal young customer base for the $220 handset",
+            "dropping mass marketing risks alienating core customers"
+          ],
+          "evaluation_max_2": [
+            "weighs pilot evidence of youth demand against existing 62% base",
+            "justified recommendation to shift towards the 16-24 niche"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "16-24",
+            "240 units",
+            "70%",
+            "62%",
+            "35-55",
+            "$220",
+            "4 shops"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_88",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Boreal Outdoor Gear is a private limited company selling waterproof jackets and boots in Country X. It operates 6 branches: 3 northern mountain branches and 3 southern coastal branches, plus an online store generating 30% of revenue. Annual revenue is $1.6 million, of which the northern branches produce 65%, with boot sales at $70 steady all year.\n\nThe 3 northern branches sell the $140 jacket all year in an average of 850 mm of rainfall per year. Southern branches average 480 mm of rain and peak in the winter tourist season. The directors must decide whether to launch a new $260 waterproof jacket nationwide, using the online store to deliver everywhere, or focus the launch on the 3 northern branches only.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'geographic segmentation'.",
+        "model_answer": "Dividing a market into groups based on geographic factors such as region, climate, country or urban and rural area [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing the market into groups",
+            "groups based on region, climate, country or urban/rural area"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Boreal Outdoor Gear of geographic segmentation.",
+        "model_answer": "Benefit 1: Products can be matched to local climate [k], heavy-duty jackets suit the 850 mm northern rainfall [app]. Benefit 2: Promotion can be focused where demand is proven [k], targeting the 3 northern branches and their online customers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "matches products to local climate and conditions",
+            "focuses promotion where demand is proven"
+          ],
+          "application_max_2": [
+            "heavy-duty jackets for 850 mm northern rainfall",
+            "focus on the 3 northern branches"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Boreal Outdoor Gear",
+            "6 branches",
+            "3 northern branches",
+            "850 mm",
+            "$260",
+            "65%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Boreal Outdoor Gear should be cautious about launching the $260 jacket nationwide.",
+        "model_answer": "Reason 1: Southern demand is weaker [k], with only 480 mm of rain, coastal customers buy lighter jackets [app], so unsold $260 stock could pile up in the 3 southern coastal branches [an]. Reason 2: National promotion costs more [k], advertising across all 6 branches and the online store [app], so a weak southern launch would squeeze profit on the $1.6 million revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "demand differs by region",
+            "national promotion costs more"
+          ],
+          "application_max_2": [
+            "480 mm of rain means lighter jackets in coastal branches",
+            "advertising across 6 branches plus the online store"
+          ],
+          "analysis_max_2": [
+            "unsold $260 stock piling up in southern branches",
+            "weak southern launch squeezes profit on $1.6 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "480 mm",
+            "$260",
+            "nationwide",
+            "online store",
+            "$1.6 million",
+            "southern coastal branches"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Boreal Outdoor Gear should launch the $260 jacket in only the 3 northern branches? Justify your answer.",
+        "model_answer": "The 3 northern branches deliver 65% of $1.6 million revenue and face 850 mm of rain a year [k], so demand for a premium waterproof jacket is proven there [app], allowing a targeted, low-risk launch with focused promotion [an]. However, a nationwide launch would use all 6 branches plus the online store [k], spreading fixed costs over higher volumes and building national brand awareness [app], though it risks weak sales in the 480 mm south [an]. Overall, Boreal should launch in the 3 northern branches first [eval] because matching product and climate maximises early sell-through [eval], expanding south later if demand proves itself.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "northern launch is targeted and low risk",
+            "nationwide launch spreads fixed costs and builds awareness"
+          ],
+          "application_max_2": [
+            "3 northern branches deliver 65% of $1.6 million revenue",
+            "all 6 branches plus the online store in a national launch"
+          ],
+          "analysis_max_2": [
+            "proven demand enables focused promotion",
+            "nationwide risks weak sales in the 480 mm south"
+          ],
+          "evaluation_max_2": [
+            "weighs targeted regional launch against national awareness",
+            "justified recommendation for the northern-only launch first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 northern branches",
+            "65%",
+            "850 mm",
+            "480 mm",
+            "$260",
+            "$1.6 million",
+            "online store"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_89",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Kettleworth Coffee Co runs 7 coffee shops in Country X, serving 4,200 customers a week at an average spend of $4.80, with morning regulars buying coffee before work. A rival cafe opened in the nearby shopping mall in March, and repeat visits have fallen by 15% since. Internal records show email list members visit 11 times a year on average, double the rate of non-members.\n\nThe manager is deciding how to rebuild loyalty: introduce a loyalty card, one free drink after 8 stamps, costing $18,000 to set up, or spend $9,500 on staff customer-service training across all 7 shops. Drinks margins average 68%, staff turnover is only 8% a year, and the mall rival is estimated to have taken 20% of the local lunch trade.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two ways a business can maintain customer loyalty.",
+        "model_answer": "Loyalty reward schemes such as stamp cards, and high-quality customer service [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyalty reward schemes such as stamp cards",
+            "high-quality customer service"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Kettleworth Coffee Co of maintaining customer loyalty.",
+        "model_answer": "Benefit 1: Loyal customers give repeat, predictable sales [k], email members visit 11 times a year [app]. Benefit 2: Retaining customers costs less than attracting new ones [k], cheaper than replacing the 20% lunch trade lost to the mall rival [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "repeat, predictable sales",
+            "cheaper to retain than attract new customers"
+          ],
+          "application_max_2": [
+            "email members visiting 11 times a year",
+            "20% lunch trade lost to the mall rival"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kettleworth Coffee Co",
+            "7 coffee shops",
+            "4,200 customers",
+            "$4.80",
+            "11 times a year",
+            "20%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the loyalty card over staff training as a response to the lost trade.",
+        "model_answer": "Advantage 1: It directly rewards repeat visits [k], a free drink after 8 stamps gives 4,200 weekly customers a reason to return [app], quickly rebuilding visit frequency [an]. Advantage 2: It produces usable data [k], stamp redemptions show which of the 7 shops keep loyal customers [app], guiding future promotion spending [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "directly rewards repeat purchases",
+            "produces measurable redemption data"
+          ],
+          "application_max_2": [
+            "free drink after 8 stamps for 4,200 weekly customers",
+            "redemption data across the 7 shops"
+          ],
+          "analysis_max_2": [
+            "quickly rebuilds visit frequency",
+            "data guides future promotion spending"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loyalty card",
+            "8 stamps",
+            "4,200 customers",
+            "7 shops",
+            "$18,000",
+            "11 times a year"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kettleworth Coffee Co should introduce the loyalty card rather than invest in staff training? Justify your answer.",
+        "model_answer": "The loyalty card costs $18,000 but directly incentivises repeat visits [k] from 4,200 weekly customers spending $4.80 each [app], quickly replacing the 15% fall in repeat visits since March [an]. However, staff training costs just $9,500 and tackles the root cause of service quality [k], improving experience across all 7 shops [app], building loyalty that stamps alone cannot buy, though its effect is slower [an]. Overall, introduce the loyalty card now [eval] because visit frequency must be rebuilt urgently while the mall rival gains ground [eval], adding training in the next quarter.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyalty card directly incentivises repeat visits",
+            "training tackles root cause of service quality"
+          ],
+          "application_max_2": [
+            "$18,000 card cost vs $9,500 training cost",
+            "4,200 weekly customers spending $4.80 each; 15% fall since March"
+          ],
+          "analysis_max_2": [
+            "card quickly replaces lost repeat visits",
+            "training builds deeper loyalty across all 7 shops but slower"
+          ],
+          "evaluation_max_2": [
+            "weighs urgent frequency rebuilding against root-cause improvement",
+            "justified recommendation to introduce the loyalty card now"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18,000",
+            "$9,500",
+            "4,200 customers",
+            "$4.80",
+            "15%",
+            "7 shops",
+            "11 times a year"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_90",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Maren Apparel is a women's clothing retailer operating 9 shops in Country X with annual revenue of $3.1 million. Over 2 years, sales of formal office wear fell by 25%, while casual and homewear lines now make up 58% of sales as more women work from home. Casual pieces average $35 against $90 for formal wear. Its online store generates only 12% of sales, and rival sites offer delivery within 48 hours along with same-day collection.\n\nThe owners must decide how to respond. One option is to commission focus groups, 10 customers in each of 3 cities, to understand changing preferences. The other is to rely on internal records, 2 years of sales by line, to steer the range towards casual wear immediately.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two reasons why consumer spending patterns change.",
+        "model_answer": "Changes in consumer incomes, and changes in tastes and lifestyles [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "changes in consumer incomes",
+            "changes in tastes and lifestyles"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Maren Apparel could respond to changing consumer spending patterns.",
+        "model_answer": "Response 1: Steer the range towards casual wear [k], which already accounts for 58% of sales [app]. Response 2: Invest in online selling [k], lifting the 12% of sales currently generated by its online store [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "adapt the product range to consumer demand",
+            "improve online/multichannel selling"
+          ],
+          "application_max_2": [
+            "casual wear at 58% of sales",
+            "online store only generating 12% of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Maren Apparel",
+            "9 shops",
+            "58%",
+            "12%",
+            "casual wear",
+            "48 hours"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Maren Apparel of using focus groups to understand changing spending patterns.",
+        "model_answer": "Benefit 1: Focus groups give detailed qualitative insight [k] into why formal office wear fell by 25% over 2 years [app], so the owners design lines customers genuinely want [an]. Benefit 2: They test reactions to new ranges before committing [k], 10 customers in each of 3 cities discussing casual designs [app], reducing unsold stock across the 9 shops [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "detailed qualitative insight into motivations",
+            "tests reactions before committing to new ranges"
+          ],
+          "application_max_2": [
+            "why formal office wear fell 25% over 2 years",
+            "10 customers in each of 3 cities discussing casual designs"
+          ],
+          "analysis_max_2": [
+            "owners design lines customers genuinely want",
+            "reduces unsold stock across the 9 shops"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "focus groups",
+            "25%",
+            "2 years",
+            "10 customers",
+            "3 cities",
+            "9 shops"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Maren Apparel should commission the focus groups rather than rely on internal records? Justify your answer.",
+        "model_answer": "Focus groups with 10 customers in each of 3 cities would reveal why tastes shifted [k], explaining the motivations behind the 58% casual-wear share that sales figures alone cannot show [app], helping the owners choose winning styles [an]. However, internal records are free and immediate [k], 2 years of sales by line across the 9 shops [app], pinpointing exactly which lines to drop and which to expand this season [an]. Overall, rely on internal records first [eval] because the evidence already points clearly to casual wear [eval], commissioning focus groups afterwards to refine the relaunched range.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "focus groups reveal motivations qualitatively",
+            "internal records give free immediate evidence"
+          ],
+          "application_max_2": [
+            "10 customers in 3 cities explaining the 58% casual-wear share",
+            "2 years of sales by line across 9 shops"
+          ],
+          "analysis_max_2": [
+            "motivations help choose winning styles",
+            "records pinpoint which lines to drop or expand now"
+          ],
+          "evaluation_max_2": [
+            "weighs qualitative insight against free quantitative evidence",
+            "justified recommendation to rely on internal records first"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "focus groups",
+            "internal records",
+            "58%",
+            "25%",
+            "9 shops",
+            "2 years",
+            "$3.1 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

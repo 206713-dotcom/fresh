@@ -1,0 +1,1202 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_51",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Kestrel Construction Ltd is a private limited company founded 6 years ago by Daniel Okafor, building houses and small warehouse units in the town of Marlow. It owns one plot of land near the ring road, large enough for either 12 houses or a single distribution warehouse. The houses would earn $900,000 in revenue over 18 months, while the warehouse would earn $650,000 over 14 months. The business employs 24 site workers and 3 supervisors.\n\nDaniel has only $120,000 saved for materials. He must choose between the housing project and the warehouse, knowing the land cannot do both. He could hire two bricklayers at $450 each per week or lease a concrete mixer for $1,200 a month. Land prices in Marlow have risen 20% since 2023, and the accountant reminded Daniel that scarcity means every choice has an opportunity cost. Either option carries risk, and delays could raise costs by 15%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'land' as a factor of production.",
+        "model_answer": "Land refers to all natural resources used to produce goods and services, such as the plot near the ring road in Marlow and materials like timber and sand. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Land = all natural resources used in producing goods and services, e.g. the building plot, timber, sand or land itself",
+            "Reward any example of a natural resource input used to make goods or services (2 marks for a clear definition with reference to nature)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why land is important to Kestrel Construction Ltd.",
+        "model_answer": "Reason 1: Land is a basic factor of production that provides natural resources for making goods [k]. Kestrel's only plot near the ring road is large enough for either 12 houses or a single distribution warehouse worth $900,000 or $650,000 of revenue [app]. Reason 2: Without suitable land the business cannot produce or sell anything [k]. With no plot to build on, the $900,000 house scheme and the $650,000 warehouse scheme would both be impossible and Kestrel would earn nothing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Land provides natural resources / site / raw materials needed for production",
+            "Without land the firm cannot produce or generate sales revenue"
+          ],
+          "application_max_2": [
+            "Reference to the single plot being large enough for 12 houses or the warehouse",
+            "Reference to the $900,000 (houses) and $650,000 (warehouse) revenue figures / the Marlow site"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kestrel Construction Ltd",
+            "Marlow",
+            "$900,000",
+            "$650,000",
+            "12 houses",
+            "ring road",
+            "$120,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways in which opportunity cost affects Kestrel Construction Ltd's decision.",
+        "model_answer": "Point 1: Opportunity cost is the next best alternative forgone when a choice is made [k]. By choosing the 12 houses, Kestrel gives up the chance to earn $650,000 from the warehouse, so the true cost of the houses includes the lost warehouse revenue [app]. This means Daniel must compare both revenue streams carefully before spending the $120,000 of scarce materials money [an]. Point 2: Scarcity of the single plot means the land cannot serve both projects [k]. Committing the plot to the housing scheme removes the chance to use it for the warehouse, so every scarce input carries a sacrifice [app]. This forces Daniel to recognise that scarcity creates opportunity cost in all of his decisions, not only in this one [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Opportunity cost = next best alternative forgone when a decision is made",
+            "Scarcity = limited resources vs unlimited wants, forcing economic choices"
+          ],
+          "application_max_2": [
+            "Reference to forgoing the $650,000 warehouse revenue if the 12 houses are chosen (or vice versa)",
+            "Reference to the single plot / the $120,000 materials finance as scarce resources"
+          ],
+          "analysis_max_2": [
+            "Analysis of how foregone revenue or profits changes the true cost of each option",
+            "Analysis chain linking scarcity -> choice -> sacrifice -> better decision-making"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kestrel Construction Ltd",
+            "$900,000",
+            "$650,000",
+            "12 houses",
+            "$120,000",
+            "opportunity cost",
+            "scarcity"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kestrel Construction Ltd should build the 12 houses rather than the warehouse? Justify your answer.",
+        "model_answer": "Argument for the houses: Building 12 houses suits Kestrel's construction skills and could earn $900,000 in revenue [k]. That is $250,000 more than the warehouse's $650,000, even though it takes 18 months rather than 14 [app]. However, the scheme ties up $120,000 of scarce materials money and any delay could raise costs by 15%, squeezing the margin for error on a fixed plot [an]. Argument for the warehouse: The warehouse earns $650,000 within 14 months, releasing cash faster for future projects [k]. Land prices have risen 20% since 2023, so completing quickly protects the value of the Marlow plot [app]. But $650,000 is $250,000 less revenue and would leave Kestrel dependent on a single buyer in a weaker warehouse market [an]. Overall, on the stem's figures the housing project offers the higher revenue of $900,000 and matches Kestrel's house-building specialism, so it should proceed only if Daniel secures firm buyer contracts and a contingency for the 15% cost risk [eval]. Otherwise the quicker, lower-risk warehouse would be the wiser choice for a business holding just $120,000 in materials finance [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Houses give higher total revenue ($900,000 vs $650,000)",
+            "Warehouse gives faster cash return (14 vs 18 months) and matches 20% land price rise"
+          ],
+          "application_max_2": [
+            "Uses $900,000 / $650,000 / $120,000 / 12 houses / 18 months vs 14 months figures from the stem",
+            "Reference to the single Marlow plot and the 15% cost-overrun or 20% price-rise risk"
+          ],
+          "analysis_max_2": [
+            "Analysis of revenue, cash-flow timing and cost-risk trade-offs between the two schemes",
+            "Analysis of how the decision affects scarce materials finance and future projects"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation that is conditional on contracts/cost risk, or favours the warehouse, supported by stem figures",
+            "Balanced judgement recognising the risk of the houses scheme vs the security of the warehouse"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kestrel Construction Ltd",
+            "$900,000",
+            "$650,000",
+            "12 houses",
+            "18 months",
+            "14 months",
+            "$120,000",
+            "15%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_52",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Willow & Pine Furniture Ltd is a private limited company run since 2019 by sisters Priya and Anita Raman. From a workshop in Fenwick it handcrafts oak dining tables and chairs, employing 14 carpenters paid $38,000 per year and 3 apprentices on $16,000 each. Annual output is 900 tables sold at $520 each. The sisters are considering division of labour so each worker specialises in one stage, such as cutting, sanding, joining or finishing.\n\nAt present every carpenter builds a whole table alone. Trials show specialised workers can finish a table in 6 hours instead of 11, lifting potential output to 1,240 tables a year. However, several carpenters fear their jobs will become monotonous and their craft skills will narrow. The workshop would need reorganising into 4 stations, and wages currently cost $580,000 a year. Quality complaints must stay below 3% for the plan to succeed.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'labour' as a factor of production.",
+        "model_answer": "Labour refers to the human effort, both physical and mental, used to produce goods and services, such as the 14 carpenters and 3 apprentices working in the Willow & Pine workshop. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Labour = human effort used in producing goods and services",
+            "Reward references to physical/mental effort, or workers such as carpenters, apprentices or staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why labour is important to Willow & Pine Furniture Ltd.",
+        "model_answer": "Reason 1: Labour performs the skilled work needed to create the product [k]. Willow & Pine employs 14 carpenters at $38,000 per year plus 3 apprentices, whose hands craft the 900 tables sold at $520 each [app]. Reason 2: Without labour the business cannot turn timber into furniture [k]. If the carpenters and apprentices stopped work, the $580,000 wage bill would produce nothing and the 900-table output could not be reached [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Labour does the physical/mental work of production",
+            "Without labour, production is impossible / no goods and services made"
+          ],
+          "application_max_2": [
+            "Reference to 14 carpenters and 3 apprentices / $38,000 and $16,000 pay",
+            "Reference to 900 tables a year at $520 / $580,000 wage bill"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Willow & Pine Furniture Ltd",
+            "14 carpenters",
+            "$38,000",
+            "3 apprentices",
+            "900 tables",
+            "$520",
+            "$580,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of division of labour for Willow & Pine Furniture Ltd.",
+        "model_answer": "Point 1: Division of labour means workers specialise in one repeated stage of production [k]. Trials show specialised staff can finish a table in 6 hours instead of 11, lifting potential output to 1,240 tables a year [app]. This raises productivity so the $580,000 wage bill is spread over more units and average labour cost per table falls [an]. Point 2: Specialised workers become faster and more skilled at their single stage [k]. Each of the 4 stations such as cutting or finishing would develop deep expertise, keeping quality complaints below the 3% target [app]. This improves customer satisfaction, protects the brand and supports repeat orders from the Fenwick workshop [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation in one repeated task / stage of production",
+            "Workers become quicker and more expert through repetition"
+          ],
+          "application_max_2": [
+            "Reference to 6 hours vs 11 hours build time and 1,240 tables a year",
+            "Reference to 4 stations and the 3% quality complaint threshold"
+          ],
+          "analysis_max_2": [
+            "Analysis that higher output per worker lowers average cost / raises profit margin",
+            "Analysis that fewer errors improve quality, reputation and repeat sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Willow & Pine Furniture Ltd",
+            "division of labour",
+            "6 hours",
+            "11",
+            "1,240 tables",
+            "4 stations",
+            "900 tables"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Willow & Pine Furniture Ltd should introduce division of labour in its workshop? Justify your answer.",
+        "model_answer": "Argument for division of labour: Specialisation would cut build time from 11 hours to 6 hours per table and could lift output to 1,240 tables a year [k]. Average labour cost per table would fall and revenue could rise sharply if demand holds for oak tables at $520 each [app]. However, gains depend on staff accepting repetitive jobs across 4 stations and on quality complaints staying below 3% [an]. Argument against: Whole-table crafting preserves the craft skills that justify premium pricing and keeps workers engaged [k]. Forcing specialisation could trigger boredom and resignations, risking the loss of experienced $38,000-a-year carpenters [app]. This risk is manageable through job rotation and careful deployment of the 3 apprentices, but it cannot be ignored [an]. Overall, division of labour is the better choice because saving 5 hours per table and the chance to reach 1,240 tables a year clearly outweigh the morale risk, provided the Ashbys consult staff and monitor the 3% quality threshold closely [eval]. Otherwise output gains could be cancelled out by turnover, rework and quality claims [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Division of labour cuts build time (11 to 6 hours) and can raise output (1,240 tables)",
+            "Whole-table crafting preserves skill, variety and worker engagement"
+          ],
+          "application_max_2": [
+            "Uses 6 hours vs 11 hours, 1,240 tables, 4 stations and $580,000 wage figures from the stem",
+            "Reference to monotony fears and the 3% quality complaints target"
+          ],
+          "analysis_max_2": [
+            "Analysis of productivity/cost per unit versus motivation and turnover risks",
+            "Analysis of quality outcomes and how they affect revenue and reputation"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation supporting specialisation (or retention) conditional on consultation and quality monitoring",
+            "Balanced judgement weighing output gains against craft-skill loss and boredom"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Willow & Pine Furniture Ltd",
+            "division of labour",
+            "6 hours",
+            "11",
+            "1,240 tables",
+            "$580,000",
+            "3%",
+            "900 tables"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_53",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Crossdock Freight Ltd is a logistics business based in the port city of Dunmore, founded 4 years ago by Marcus Reeve. It runs 9 delivery trucks, employing 21 drivers and 6 dispatchers. Revenue last year was $1,750,000 with a profit of $210,000. The company is winning new contracts carrying food from farms to supermarkets across the region, and truck utilisation is already 92% on a typical day.\n\nTo meet demand Marcus must add 3 trucks. Buying them would cost $240,000 plus $38,000 a year in maintenance, and they would last 8 years. Leasing would cost $3,600 per truck per month with servicing included. Marcus has $70,000 available now and could borrow the rest at 8% interest. The new contracts promise an extra $400,000 a year in revenue if the trucks arrive before summer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital' as a factor of production.",
+        "model_answer": "Capital refers to man-made resources used to produce goods and services, such as the trucks, forklifts, tools and depot machinery used by Crossdock Freight Ltd. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital = man-made resources used in production (goods used to make other goods)",
+            "Reward examples such as trucks, machinery, vehicles, tools, equipment or buildings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why capital equipment is important to Crossdock Freight Ltd.",
+        "model_answer": "Reason 1: Capital goods such as trucks are the tools that let the business deliver its service [k]. Crossdock runs 9 delivery trucks carrying supermarket food across the region, and truck utilisation is already 92% on a typical day [app]. Reason 2: Without enough capital equipment the firm cannot accept the new contracts [k]. Winning work worth an extra $400,000 a year is impossible unless 3 more trucks are added to the existing 9 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital equipment enables production/delivery of the service",
+            "Without adequate capital, output and contract capacity are capped"
+          ],
+          "application_max_2": [
+            "Reference to 9 delivery trucks and the 92% utilisation rate",
+            "Reference to the new food contracts / extra $400,000 a year needing 3 more trucks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Crossdock Freight Ltd",
+            "9 delivery trucks",
+            "21 drivers",
+            "$1,750,000",
+            "92%",
+            "$240,000",
+            "$3,600"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Crossdock Freight Ltd might face if it cannot fund new capital equipment.",
+        "model_answer": "Point 1: Without capital goods the firm lacks the machinery needed to produce more [k]. Without $240,000 to buy 3 trucks, the new contracts cannot be served and the fleet stays overstretched at 92% utilisation [app]. This leads to late deliveries, penalties and damaged relationships with supermarket customers, which could cost the $400,000 revenue opportunity [an]. Point 2: Relying on overworked capital raises running costs [k]. The existing 9 trucks would work beyond capacity, pushing maintenance above the quoted $38,000 a year and increasing breakdown risk [app]. This eats into the $210,000 profit and could leave Crossdock unable to meet food-safety delivery windows [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lack of capital equipment limits production capacity",
+            "Overworked/older capital raises maintenance and breakdown costs"
+          ],
+          "application_max_2": [
+            "Reference to the $240,000 purchase, $38,000 maintenance and 8-year life",
+            "Reference to the 92% utilisation and the $400,000 contract opportunity"
+          ],
+          "analysis_max_2": [
+            "Analysis chain from no new trucks -> lost contracts -> lost revenue and reputation",
+            "Analysis chain from overuse -> higher maintenance -> lower profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Crossdock Freight Ltd",
+            "$240,000",
+            "$38,000",
+            "8 years",
+            "$400,000",
+            "$70,000",
+            "8% interest"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Crossdock Freight Ltd should buy the 3 trucks rather than lease them? Justify your answer.",
+        "model_answer": "Argument for buying: Buying for $240,000 plus $38,000 a year maintenance makes the trucks assets lasting 8 years [k]. Owned trucks build equity, lower the true long-run cost per delivery and can be fitted out for the supermarket food contracts [app]. However, with only $70,000 available now, Marcus must borrow $170,000 at 8% interest, adding roughly $13,600 a year to his costs [an]. Argument for leasing: Leasing costs $3,600 per truck per month with servicing included, spreading payments and avoiding big up-front borrowing and maintenance risk [k]. It also gives flexibility to return or upgrade trucks if the new contracts falter [app]. But over a full year, 3 leased trucks cost $129,600 with nothing owned at the end [an]. Overall, buying is the better long-term choice for a stable operator already at 92% utilisation and expecting $400,000 a year in new revenue, provided Marcus secures the loan at 8% and keeps maintenance within $38,000 [eval]. Leasing would suit him only if the contracts were unproven and cash flow were tighter than the current $70,000 suggests [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying = ownership, asset lasting 8 years vs monthly lease of $3,600 per truck",
+            "Leasing spreads payments and includes servicing; buying needs borrowing at 8%"
+          ],
+          "application_max_2": [
+            "Uses $240,000 / $70,000 / $170,000 and $38,000 maintenance figures",
+            "Uses $3,600 per month leasing rate and the $400,000 projected new revenue"
+          ],
+          "analysis_max_2": [
+            "Analysis of 8-year cost comparison: leasing $129,600 a year vs buying plus 8% interest",
+            "Analysis of capacity/asset value vs cash-flow flexibility and contract risk"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation favouring purchase (or leasing) conditional on loan/contracts",
+            "Balanced judgement weighing ownership benefits vs borrowing risk at 8% interest"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Crossdock Freight Ltd",
+            "$240,000",
+            "$3,600",
+            "$38,000",
+            "8 years",
+            "$70,000",
+            "$400,000",
+            "8% interest"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_54",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "BrightSpark Printing Ltd is an independent commercial printer in the market town of Wexley, started 8 years ago by owner Rachel Dunne. It employs 12 print operators and 2 sales staff, producing catalogues, labels and posters. Last year revenue was $880,000 and profit $96,000. A national online printer has begun undercutting prices by 25% across the region.\n\nRachel must decide whether to take the risk of buying a high-speed digital press costing $150,000, doubling capacity and cutting unit costs by 18%, or to keep the current presses and compete on service and 24-hour delivery. The bank will lend $100,000 at 9% interest if needed, with a personal guarantee from Rachel. Failure could endanger the business, but standing still may lose 30% of revenue to the cheaper rival within a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'enterprise' as a factor of production.",
+        "model_answer": "Enterprise is the risk-bearing and decision-making factor that organises land, labour and capital to produce goods and services, such as Rachel Dunne setting up and running BrightSpark Printing Ltd. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise = the organising / risk-taking factor of production",
+            "Reward references to entrepreneurial risk, decision-making or combining the other factors (land, labour, capital)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why enterprise is important to BrightSpark Printing Ltd.",
+        "model_answer": "Reason 1: Enterprise organises land, labour and capital into a working business [k]. Rachel decides how the 12 print operators, 2 sales staff and machinery combine to produce catalogues and labels earning $880,000 a year [app]. Reason 2: Enterprise drives innovation and response to competition [k]. Facing a national rival undercutting prices by 25%, Rachel must choose how to compete, for example by buying a high-speed press or improving service [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise combines and organises the other factors of production",
+            "Enterprise creates change/innovation in response to competition or opportunity"
+          ],
+          "application_max_2": [
+            "Reference to Rachel organising 12 print operators and 2 sales staff at $880,000 revenue",
+            "Reference to the 25% undercutting by the online printer and the decision over the press"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "BrightSpark Printing Ltd",
+            "12 print operators",
+            "$880,000",
+            "$96,000",
+            "25%",
+            "$150,000",
+            "18%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Rachel faces when showing enterprise against the online rival.",
+        "model_answer": "Point 1: Entrepreneurial risk-taking can threaten survival [k]. Buying the $150,000 press with a $100,000 bank loan at 9% interest means failure could leave BrightSpark unable to meet repayments [app]. This would erode the $96,000 profit and could put the 12 print operators out of work [an]. Point 2: Competing on price against a bigger rival squeezes margins [k]. The online firm's 25% price cut may force Rachel to discount up to 30% of revenue to keep clients [app]. This leaves less cash to pay for the new press and weakens long-term investment [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise = risk-taking; risks can threaten business survival",
+            "Price competition from a larger rival can erode profit margins"
+          ],
+          "application_max_2": [
+            "Reference to the $150,000 press and the $100,000 loan at 9% interest",
+            "Reference to the 25% undercutting and the possible loss of 30% of revenue"
+          ],
+          "analysis_max_2": [
+            "Analysis chain from loan repayments -> lower profit -> possible job losses/closure",
+            "Analysis chain from discounting -> reduced margins -> less cash for investment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "BrightSpark Printing Ltd",
+            "$150,000",
+            "18%",
+            "$100,000",
+            "9% interest",
+            "25%",
+            "30%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Rachel should buy the high-speed digital press rather than keep the current presses and compete on service? Justify your answer.",
+        "model_answer": "Argument for buying the press: The $150,000 press doubles capacity and cuts unit costs by 18% [k]. That protects margins against the rival's 25% undercutting and lets BrightSpark quote sharper prices while still delivering in 24 hours [app]. However, with $100,000 borrowed at 9% interest and a personal guarantee, repayments would eat into the $96,000 profit and a soft winter could make the upgrade unaffordable [an]. Argument against buying: Keeping the current presses avoids new borrowing and risk, and superior service with 24-hour turnaround could retain loyal clients without the $150,000 outlay [k]. This keeps Rachel flexible while she studies the online rival's real pricing in Wexley [app]. But standing still risks losing up to 30% of revenue within a year as price-sensitive customers switch away [an]. Overall, Rachel should buy the press if her order book shows at least $150,000 of new long-term contracts, because an 18% unit-cost cut is the strongest defence against a 25% price gap and the press would pay back over its 10-year life [eval]. If the pipeline stays soft she should compete on service first and borrow later once demand is proven [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Press costs $150,000, doubles capacity, cuts unit costs 18%",
+            "Keeping presses avoids $100,000 borrowing at 9% but risks losing 30% of revenue"
+          ],
+          "application_max_2": [
+            "Uses $150,000 / $100,000 / 9% / $96,000 / $880,000 stem figures",
+            "Reference to 25% undercutting, 18% cost saving, 24-hour delivery and 30% revenue at risk"
+          ],
+          "analysis_max_2": [
+            "Analysis of margin protection vs loan-repayment strain and personal guarantee risk",
+            "Analysis of capacity gain vs standing still and revenue erosion over a year"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation conditional on order pipeline / risk appetite",
+            "Balanced judgement weighing cost saving and revenue risk for and against the press"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "BrightSpark Printing Ltd",
+            "$150,000",
+            "18%",
+            "$880,000",
+            "$96,000",
+            "25%",
+            "30%",
+            "9% interest"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_55",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Sunvalley Foods Ltd is a food processing company in rural Carlow County, founded 10 years ago by Aoife Brennan. It freezes and packs mixed vegetables for supermarket own-brand ranges, employing 46 production staff plus 4 quality inspectors. Output is 30,000 bags per week across five stages: sorting, washing, cutting, blanching and packing.\n\nCurrently workers rotate through all five stages each week. Aoife wants to introduce permanent specialisation, giving each worker one stage. In similar factories this raised output by 40%, but some Sunvalley staff fear boredom and the firm lost 2 workers after a 3-month trial last year. Training one worker for a single stage costs $800, and rejection rates currently stand at 6% of batches. The board must decide by December whether to change.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'division of labour'.",
+        "model_answer": "Division of labour is where production is split into separate tasks and each worker specialises in one task, such as sorting, washing, cutting, blanching or packing mixed vegetables. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Division of labour = splitting production into small distinct tasks",
+            "Each worker specialises in just one repeated task / stage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why businesses use division of labour.",
+        "model_answer": "Reason 1: Division of labour breaks production into small tasks so workers specialise [k]. Sunvalley splits its line into five stages — sorting, washing, cutting, blanching and packing — across 46 production staff [app]. Reason 2: It raises productivity and speeds up output [k]. In similar factories specialisation raised output by 40%, which would push Sunvalley well beyond its current 30,000 bags per week [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Workers specialise in one repeated task rather than all tasks",
+            "Specialisation speeds up work / raises productivity through practice"
+          ],
+          "application_max_2": [
+            "Reference to the five stages and 46 production staff",
+            "Reference to the 40% output gain and 30,000 bags per week from the stem"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sunvalley Foods Ltd",
+            "46 production staff",
+            "30,000 bags",
+            "specialisation",
+            "sorting, washing, cutting, blanching and packing",
+            "40%",
+            "$800"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Sunvalley Foods Ltd might face after introducing specialisation.",
+        "model_answer": "Point 1: Repetitive specialist work causes boredom and lowers motivation [k]. Sunvalley already lost 2 workers after a 3-month specialisation trial last year, showing that single-stage work can demoralise the 46 production staff [app]. This raises recruitment and training costs at $800 per replacement and disrupts the 30,000-bag weekly target [an]. Point 2: Over-dependence on key specialists creates bottlenecks [k]. If the cutting specialist is absent, the whole line can stall because each worker masters only one stage [app]. This risks raising rejection rates above the current 6% and jeopardising supermarket own-brand contracts [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Monotony/boredom reduces motivation and can raise labour turnover",
+            "Over-specialisation creates dependency on individuals, risking bottlenecks"
+          ],
+          "application_max_2": [
+            "Reference to the 2 workers lost after the 3-month trial and $800 retraining cost",
+            "Reference to the 6% rejection rate / possible contract loss"
+          ],
+          "analysis_max_2": [
+            "Analysis chain from boredom -> resignations -> higher costs and disrupted output",
+            "Analysis chain from absence of a specialist -> line stoppage -> missed orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sunvalley Foods Ltd",
+            "specialisation",
+            "40%",
+            "3-month trial",
+            "2 workers",
+            "6%",
+            "30,000 bags"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sunvalley Foods Ltd should introduce permanent specialisation on its production line? Justify your answer.",
+        "model_answer": "Argument for specialisation: Giving each of the 46 production staff one of the five stages could raise output by 40%, easing the strain on the 30,000-bag week [k]. Trained specialists make fewer mistakes, which should help push rejection rates below the present 6% [app]. However, boredom could worsen turnover, following the 2 resignations seen in the 3-month trial [an]. Argument against: Keeping job rotation preserves motivation and flexibility [k], and retraining everyone at $800 each would be wasted if staff keep leaving or demand shifts between stages like blanching and packing [app]. But rotation means slower throughput and caps output at 30,000 bags a week for a growing own-brand range [an]. Overall, permanent specialisation is justified if Aoife combines it with job rotation, structured training at $800 per head and close monitoring of the 6% rejection rate, because the 40% output gain is too large to ignore for supermarket contracts [eval]. Imposing rigid single-task roles without staff consultation would only repeat last year's resignations [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation can raise output by 40% and reduce mistakes",
+            "Rotation preserves motivation; rigid tasks risk turnover and training waste"
+          ],
+          "application_max_2": [
+            "Uses the 40% figure, 30,000 bags, 6% rejections, $800 training cost and the 2 resignations",
+            "Reference to the five stages and 3-month trial from the stem"
+          ],
+          "analysis_max_2": [
+            "Analysis of productivity gains vs turnover/retraining costs",
+            "Analysis of quality and flexibility trade-offs for the supermarket range"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation conditional on rotation/consultation/monitoring",
+            "Balanced judgement weighing the 40% gain against boredom and resignations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sunvalley Foods Ltd",
+            "specialisation",
+            "40%",
+            "2 workers",
+            "3-month trial",
+            "6%",
+            "$800",
+            "30,000 bags"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_56",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "FreshPress Laundry Co is a commercial laundry serving 26 hotels and restaurants across Norwick. Founded 5 years ago by Tomasz Nowak, it employs 18 operatives across two shifts at a single depot. Last year it cleaned 4,200 tonnes of linen, about 233 tonnes per worker, but 45 hotel loads were rejected last quarter for poor stain removal.\n\nTomasz must choose between buying a high-capacity washer costing $85,000, lifting output to 5,100 tonnes a year but using 15% more electricity, or spending $20,000 on staff training to cut re-washes by 30% and reduce wasted water and detergent. He has $90,000 available now. The hotels have asked for better stain removal by March or they will review contracts worth $140,000 a year. The hotels also expect twice-daily deliveries.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'productivity'.",
+        "model_answer": "Productivity measures how much output is produced per unit of input, usually per worker, such as 4,200 tonnes of linen cleaned divided by 18 operatives at FreshPress Laundry Co. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Productivity = output per worker / per unit of input",
+            "Reward formula-style definitions or references to output efficiency per labour unit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why productivity is important to FreshPress Laundry Co.",
+        "model_answer": "Reason 1: Productivity shows output per worker, so higher productivity lowers average cost per tonne [k]. FreshPress cleans about 233 tonnes per worker per year, so even modest gains across 18 operatives would cut unit costs sharply [app]. Reason 2: High productivity helps meet customer demand and deadlines [k]. The hotels want stain-removal problems fixed by March or they will review contracts worth $140,000 a year, so more output per worker protects that revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher productivity lowers average/unit costs",
+            "Productivity lets the firm meet deadlines and customer demand"
+          ],
+          "application_max_2": [
+            "Reference to 4,200 tonnes / 233 tonnes per worker / 18 operatives",
+            "Reference to the March deadline and the $140,000 hotel contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "FreshPress Laundry Co",
+            "18 operatives",
+            "4,200 tonnes",
+            "233 tonnes",
+            "26 hotels",
+            "$140,000",
+            "45 hotel loads"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two differences between productivity and efficiency.",
+        "model_answer": "Point 1: Productivity measures the quantity of output per unit of input, whereas efficiency measures how well inputs are used with minimal waste [k]. FreshPress cleans 233 tonnes per worker, a productivity measure, while 45 rejected hotel loads and poor stain removal are signs of inefficient work [app]. This shows productivity counts volume but efficiency counts quality and waste [an]. Point 2: Productivity gains can come from more machines or longer hours, but efficiency gains come from better methods [k]. The $85,000 washer would raise output to 5,100 tonnes a year even though it uses 15% more electricity [app]. So FreshPress could lift productivity yet waste more resources if efficiency were ignored [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Productivity = output per input (volume); efficiency = waste minimisation / quality of input use",
+            "Productivity can rise with machines or hours; efficiency requires process improvement"
+          ],
+          "application_max_2": [
+            "Reference to 233 tonnes per worker vs 45 rejected loads",
+            "Reference to the $85,000 washer and its 15% extra electricity use"
+          ],
+          "analysis_max_2": [
+            "Analysis distinguishing volume/quantity measures from waste/quality measures",
+            "Analysis that productivity can rise while efficiency falls, with cost consequences"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "FreshPress Laundry Co",
+            "4,200 tonnes",
+            "233 tonnes",
+            "5,100 tonnes",
+            "$85,000",
+            "30%",
+            "$20,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tomasz should buy the high-capacity washer rather than spend $20,000 on staff training? Justify your answer.",
+        "model_answer": "Argument for the washer: The $85,000 washer lifts output to 5,100 tonnes a year, a gain of 900 tonnes [k]. It lets FreshPress take on extra hotel linen and cut turnaround times for its 26 hotels and restaurants [app]. However, it uses 15% more electricity and would absorb nearly all of the $90,000 the business has available, leaving little for maintenance or training [an]. Argument for training: Spending $20,000 on staff training could cut re-washes by 30%, saving water and detergent [k]. It directly addresses the 45 rejected loads that caused the crisis at far lower cost than the washer [app]. But training alone will not raise total capacity or satisfy hotels needing 5,100 tonnes of linen output [an]. Overall, Tomasz should buy the washer because it is the only option that protects the $140,000 contracts, provided he secures an electricity-efficient model, because stain complaints plus lost output together exceed $140,000 a year [eval]. Training should follow in the next quarter to fix quality once the extra capacity is guaranteed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Washer lifts output to 5,100 tonnes (900-tonne gain) at $85,000 and 15% more electricity",
+            "Training costs $20,000, cuts re-washes 30% but adds no capacity"
+          ],
+          "application_max_2": [
+            "Uses $85,000 / $90,000 / $20,000 / 5,100 tonnes / 30% figures from the stem",
+            "Reference to the 45 rejected loads and $140,000 contracts and March deadline"
+          ],
+          "analysis_max_2": [
+            "Analysis of capacity vs quality: extra output does not fix rejects but protects contracts",
+            "Analysis of capital use of $90,000 reserve and 15% electricity cost increase"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation prioritising washer (or training) linked to the $140,000 contract threat",
+            "Balanced judgement: washer for capacity now, training for quality next"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "FreshPress Laundry Co",
+            "$85,000",
+            "5,100 tonnes",
+            "15% more electricity",
+            "$20,000",
+            "30%",
+            "$90,000",
+            "$140,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_57",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Copperfield Foods Ltd is a family food business in the coastal town of Bowen Bay, producing jams, sauces and pickles. It has traded for 7 years under founder Maria Copperfield, employing 9 staff, with revenue of $640,000 last year. Demand for its tomato chutney has grown 30% since winter, and customers keep asking for sugar-free options, though healthier ingredients cost $0.40 more per jar.\n\nMaria has $30,000 to spend and must choose between buying a new boiling kettle line costing $28,000, or launching a sugar-free jam range costing $26,000 for ingredients and jars. She cannot fund both, so either choice means giving up the other. The new range could add $90,000 in sales if it succeeds. The bank manager reminded her that resources are scarce while customer wants are unlimited.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'wants'.",
+        "model_answer": "Wants are things people desire but do not need to survive, such as jams, sauces and pickles, whose demand exceeds the resources available to supply them. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wants = desired goods/services not essential for survival",
+            "Wants are unlimited; resources to satisfy them are scarce"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why scarcity is a problem for Copperfield Foods Ltd.",
+        "model_answer": "Reason 1: Scarcity means resources are limited while wants are unlimited [k]. Maria has only $30,000 to spend but wants both a $28,000 kettle line and a $26,000 sugar-free launch [app]. Reason 2: Scarcity forces choices with opportunity costs [k]. Choosing one option means giving up the other, so the scarce $30,000 cannot fund both projects at Copperfield Foods [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Scarcity = limited resources vs unlimited wants",
+            "Scarcity forces trade-offs / economic choices to be made"
+          ],
+          "application_max_2": [
+            "Reference to the $30,000 budget vs the $28,000 and $26,000 options",
+            "Reference to the inability to fund both projects"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Copperfield Foods Ltd",
+            "9 staff",
+            "$640,000",
+            "30%",
+            "$30,000",
+            "tomato chutney",
+            "$26,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways understanding opportunity cost could help Maria make better decisions.",
+        "model_answer": "Point 1: Opportunity cost is the next best alternative forgone in a decision [k]. If Maria launches the $26,000 sugar-free range, she forgoes the $28,000 kettle line and its extra production capacity [app]. Weighing the $90,000 potential sales against slower production clarifies the true cost of each option [an]. Point 2: Recognising opportunity cost keeps decisions aligned with customer demand [k]. Tomato chutney demand grew 30% and customers ask for sugar-free jars, so choosing the range matches wants and uses scarce ingredients wisely [app]. This raises the chance the $26,000 investment is recovered, rather than spending $28,000 on capacity for a product customers are not asking about [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Opportunity cost = next best alternative forgone",
+            "Better decisions weigh all alternatives, not only immediate gains"
+          ],
+          "application_max_2": [
+            "Reference to the $26,000 range vs $28,000 kettle line",
+            "Reference to the $90,000 potential sales and the 30% demand growth"
+          ],
+          "analysis_max_2": [
+            "Analysis linking foregone alternative to true cost of each option",
+            "Analysis linking demand signals (30% growth, sugar-free asks) to return on $26,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Copperfield Foods Ltd",
+            "$30,000",
+            "$28,000",
+            "$26,000",
+            "$90,000",
+            "sugar-free",
+            "$0.40"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Maria should launch the sugar-free range rather than buy the new kettle line? Justify your answer.",
+        "model_answer": "Argument for the sugar-free range: Launching costs $26,000 and taps proven demand, with chutney sales growing 30% and customers explicitly asking for sugar-free jars [k]. Healthier ingredients cost only $0.40 more per jar, preserving margins while unmet demand is captured [app]. However, $26,000 for ingredients and jars is a near-total commitment of the $30,000 budget and the range has never sold at Copperfield before [an]. Argument for the kettle line: The $28,000 boiling kettle line would raise capacity and protect supply of the existing chutney, safeguarding the 30% growth already in evidence [k]. It is a known product so the investment feels safer, but it creates no new demand and yields no extra revenue by itself [app]. By contrast the range could add $90,000 in sales if it succeeds, more than three times its launch cost [an]. Overall, Maria should launch the sugar-free range because the $90,000 upside against a $26,000 cost and explicit customer demand is compelling, provided she trials small batches to limit risk within her $30,000 budget [eval]. The kettle line can be bought later once range sales prove themselves [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Sugar-free range costs $26,000 vs kettle line $28,000; both fit the $30,000 budget",
+            "Range could add $90,000 sales; kettle line adds no direct revenue"
+          ],
+          "application_max_2": [
+            "Uses $30,000 / $26,000 / $28,000 / $90,000 stem figures",
+            "Reference to 30% chutney growth, $0.40 higher ingredient cost and customer demand for sugar-free"
+          ],
+          "analysis_max_2": [
+            "Analysis of demand-led vs capacity-led investment and payback ($90,000 vs cost)",
+            "Analysis of risk given an unproven product and a $30,000 ceiling"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation for the range (or kettle) conditional on trial batches and budget limit",
+            "Balanced judgement weighing $90,000 upside vs safer capacity expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Copperfield Foods Ltd",
+            "$30,000",
+            "$28,000",
+            "$26,000",
+            "$90,000",
+            "sugar-free",
+            "$640,000",
+            "30%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_58",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Harborpoint Construction Ltd is a small construction company in the harbour district of Brayport, founded in 2021 by Jonah Whitmore. It builds small commercial units and employs 11 builders. The company is choosing between redeveloping a derelict workshop site bought for $150,000 into 6 units, or taking a council contract to refurbish the town-centre library for $220,000. There are only enough workers for one project at a time.\n\nThe workshop scheme could deliver a $320,000 profit after 2 years, but materials cost $420,000. The library refurbishment would cost $180,000 in materials and pay a $95,000 profit within a year. Harborpoint has $210,000 in savings. Jonah is naturally cautious after a difficult 2024, yet he knows only calculated risk will grow the business, and the site cannot remain unused indefinitely.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two examples of land as a factor of production.",
+        "model_answer": "The derelict workshop site bought for $150,000; and natural materials taken from the earth, such as sand, gravel or timber used in construction. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "The derelict workshop site / the physical building plot",
+            "Any natural resource input, e.g. sand, gravel, timber, clay, stone"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Jonah Whitmore shows enterprise in his decisions.",
+        "model_answer": "Reason 1: An entrepreneur organises land, labour and capital and bears risk [k]. Jonah is deciding how to deploy the 11 builders and the derelict site, risking the $150,000 already spent on the site purchase [app]. Reason 2: Enterprise involves spotting opportunities others miss [k]. Jonah identified two openings — redeveloping 6 units or a $220,000 council contract — showing initiative beyond routine construction work [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise = organising factors of production and risk-taking",
+            "Enterprise = spotting/creating business opportunities and driving change"
+          ],
+          "application_max_2": [
+            "Reference to Jonah organising the 11 builders and the $150,000 site",
+            "Reference to the two options: 6 units redevelopment or the $220,000 library contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Harborpoint Construction Ltd",
+            "Jonah Whitmore",
+            "11 builders",
+            "$150,000",
+            "$220,000",
+            "$95,000",
+            "2021"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems a shortage of labour would cause Harborpoint Construction Ltd.",
+        "model_answer": "Point 1: Labour is the human effort needed to carry out the work [k]. Harborpoint has only 11 builders and can run just one project at a time, so a shortage would delay both the 6-unit scheme and the library [app]. This pushes back the $95,000 or $320,000 profits and damages the firm's reputation with the council [an]. Point 2: Scarce labour raises costs and strains cash flow [k]. Hiring extra builders to chase two projects would lift the wage bill beyond what $210,000 of savings comfortably covers [app]. This could force Harborpoint to borrow or delay the $420,000 materials order for the units, jeopardising both projects [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Labour = human effort needed for production",
+            "Labour scarcity raises wage costs and delays output"
+          ],
+          "application_max_2": [
+            "Reference to only 11 builders and one project at a time",
+            "Reference to $210,000 savings, $420,000 materials, $95,000/$320,000 profits"
+          ],
+          "analysis_max_2": [
+            "Analysis chain from labour shortage -> delay -> lost profit and reputation",
+            "Analysis chain from higher wages -> cash-flow strain -> risk to materials order"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Harborpoint Construction Ltd",
+            "11 builders",
+            "6 units",
+            "$420,000",
+            "$180,000",
+            "$210,000",
+            "Brayport"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Jonah should take the library contract rather than redevelop the workshop site? Justify your answer.",
+        "model_answer": "Argument for the library contract: The refurbishment pays a $95,000 profit within a year from $180,000 of materials [k]. Completing it builds a strong relationship with the council for future public work and keeps the risk low [app]. However, $95,000 is a modest reward and the job leaves no lasting asset for the company afterwards [an]. Argument for the workshop redevelopment: Redeveloping the site bought for $150,000 into 6 units could return $320,000 after 2 years [k]. It converts a derelict plot into saleable stock and creates long-term equity for Harborpoint [app]. But materials of $420,000 exceed the $210,000 in savings, forcing borrowing, and the 2-year wait depends on buyer demand in Brayport [an]. Overall, Jonah should take the library contract this year because the $95,000 return is quick, near-certain and within his $210,000 savings, matching his cautious post-2024 stance [eval]. The site redevelopment only becomes the better option once he secures pre-sales for the 6 units and external finance to cover the $420,000 materials cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Library pays $95,000 in a year for $180,000 materials (low risk, quick)",
+            "Workshop yields $320,000 after 2 years but needs $420,000 materials vs $210,000 savings"
+          ],
+          "application_max_2": [
+            "Uses $150,000 / 6 units / $320,000 / $220,000 / $95,000 / $180,000 / $210,000 stem figures",
+            "Reference to one-project-at-a-time capacity of the 11 builders"
+          ],
+          "analysis_max_2": [
+            "Analysis of profit speed and certainty vs scale and asset creation",
+            "Analysis of financing gap ($420,000 vs $210,000) and buyer-demand risk"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation favouring library (or redevelopment) conditional on finance/pre-sales",
+            "Balanced judgement weighing quick certain return vs long-term equity creation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Harborpoint Construction Ltd",
+            "$150,000",
+            "6 units",
+            "$320,000",
+            "$220,000",
+            "$95,000",
+            "$180,000",
+            "$210,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_59",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Cedar & Co Furniture Ltd is a woodworking business in the market town of Elmridge, founded 9 years ago by Ben and Clara Ashby. It employs 10 woodworkers making two ranges: hand-carved walnut cabinets at $1,900 each, taking 16 hours to make, and flat-pack pine shelves at $85 each, taking 40 minutes. Annual revenue is $720,000, and the Ashbys want to add value by specialising.\n\nSpecialising fully in walnut cabinets would let each worker master one craft, cut waste by 12% and appeal to boutique retailers. However, walnut costs $9 per board foot and demand is uncertain, with only 60 firm cabinet orders for next year. The firm sells 3,000 flat-pack shelves a year and they keep cash flowing. The owners must decide at this month's board meeting which market to serve.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline one way specialisation can add value to furniture.",
+        "model_answer": "By concentrating workers on one craft, output per worker rises and quality improves, so cabinets sell at $1,900 each for far more than the input costs — the difference between selling price and input cost is the added value created [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation raises skill, output and quality of one task",
+            "Added value = difference between selling price and cost of inputs; specialisation widens that gap"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why businesses specialise.",
+        "model_answer": "Reason 1: Specialisation means workers focus on one product or task [k]. Cedar & Co could let its 10 woodworkers master cabinet-making instead of dividing time with flat-pack pine shelves [app]. Reason 2: Specialisation raises efficiency and adds value [k]. Dedicated cabinet staff could cut waste by 12% and justify premium $1,900 pricing to boutique retailers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation = focusing on one product/task/market",
+            "Specialisation raises skill, speed and quality / reduces waste"
+          ],
+          "application_max_2": [
+            "Reference to 10 woodworkers and the two ranges ($1,900 cabinets, $85 shelves)",
+            "Reference to the 12% waste cut and boutique retailer targeting"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cedar & Co Furniture Ltd",
+            "hand-carved walnut cabinets",
+            "10 woodworkers",
+            "$720,000",
+            "3,000 flat-pack shelves",
+            "$1,900",
+            "$85"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways specialisation adds value for Cedar & Co Furniture Ltd.",
+        "model_answer": "Point 1: Specialised workers develop deeper skills and waste less material [k]. Full-time cabinet makers could cut walnut waste by 12% while mastering the 16-hour build [app]. This lowers unit cost and raises the value added per $1,900 cabinet sold [an]. Point 2: Specialisation enables a stronger brand and premium pricing [k]. Boutique retailers pay more for expert joinery than for general furniture [app]. This helps Cedar & Co capture more value from each of the 60 firm orders for next year, instead of relying on $85 shelves with thin margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation deepens skill, speed and consistency",
+            "Specialisation supports brand positioning and premium pricing"
+          ],
+          "application_max_2": [
+            "Reference to 12% waste cut and 16 hours per cabinet",
+            "Reference to boutique retailers, 60 firm cabinet orders and $85 shelves"
+          ],
+          "analysis_max_2": [
+            "Analysis linking skill/waste reduction to value added per cabinet",
+            "Analysis linking brand premium to higher margin per order vs shelves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cedar & Co Furniture Ltd",
+            "specialising",
+            "12%",
+            "16 hours",
+            "40 minutes",
+            "$9 per board foot",
+            "$720,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cedar & Co Furniture Ltd should specialise fully in hand-carved walnut cabinets? Justify your answer.",
+        "model_answer": "Argument for full specialisation: Concentrating on walnut cabinets lets each of the 10 woodworkers master one craft, cutting waste by 12% and sharpening the brand for boutique retailers [k]. Cabinets at $1,900 each could lift average revenue well beyond the current $720,000 if the 60 firm orders convert and expand [app]. However, with walnut at $9 per board foot and only 60 firm cabinet orders for next year, volume would sit far below the 3,000 flat-pack shelves sold annually [an]. Argument against full specialisation: Keeping both ranges spreads risk, and steady shelf sales of 3,000 units at $85 each generate dependable cash while cabinet demand builds [k]. Specialising too soon could leave the workshop underused and Cedar & Co short of working capital [app]. But splitting focus dilutes craftsmanship, keeps waste high and weakens the added-value story boutique retailers will pay for [an]. Overall, Cedar & Co should specialise fully only once the 60 firm orders are converted into deposits covering at least a full year's production, because the 12% waste saving and $1,900 pricing reward mastery [eval]. Otherwise a gradual transition, keeping shelves until cabinet demand proves itself, is the safer route given demand uncertainty [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation cuts waste 12%, builds brand, supports $1,900 pricing",
+            "Dual range spreads risk; walnut at $9 per board foot raises input costs"
+          ],
+          "application_max_2": [
+            "Uses $1,900 / $85 / 16 hours / $9 per board foot / 12% stem figures",
+            "Reference to only 60 firm cabinet orders vs 3,000 shelf sales and $720,000 revenue"
+          ],
+          "analysis_max_2": [
+            "Analysis of added value and margin per cabinet vs shelf volume economics",
+            "Analysis of demand uncertainty, walnut cost inflation and working capital risk"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation conditional on deposits/conversion of the 60 firm orders",
+            "Balanced judgement weighing $1,900-cabinet upside vs risk of losing shelf cash flow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cedar & Co Furniture Ltd",
+            "walnut cabinets",
+            "$1,900",
+            "16 hours",
+            "$9 per board foot",
+            "60 firm cabinet orders",
+            "3,000 flat-pack shelves",
+            "12%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_60",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "QuickQuill Printing Ltd is a print shop in the commuter town of Redford, operating for 6 years. It produces business cards, menus and leaflets for local firms, employing 8 staff and 2 apprentices. Revenue was $520,000 last year, and orders have risen 15% since a rival closed. The shop now turns away work most Saturdays because both presses are fully booked.\n\nOwner Nadia Rahman must choose how to expand. Buying a faster digital press costing $110,000 would raise capacity from 9,000 to 14,000 sheets per hour and last 10 years. Alternatively, hiring 3 more operators at $27,000 each per year would add 20% capacity immediately. Nadia has $130,000 in the business account and worries about machine breakdowns and staff absence. The extra Saturday work is worth about $60,000 a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'efficiency'.",
+        "model_answer": "Efficiency means producing the maximum output from given inputs with the least waste of time, materials or energy, such as QuickQuill Printing Ltd running its presses without idle Saturdays. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Efficiency = maximum output from minimum input / waste",
+            "Reward references to minimising waste, time energy or materials in production"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways increased efficiency could benefit QuickQuill Printing Ltd.",
+        "model_answer": "Reason 1: Higher efficiency means more output from the same inputs [k]. If QuickQuill reduces turnaround times and waste, it could serve the Saturday work it currently turns away and raise effective capacity toward 14,000 sheets an hour [app]. Reason 2: Higher efficiency lowers average costs [k]. Cutting re-prints and idle press time would grow the $520,000 revenue without adding $27,000-a-year staff costs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Efficiency raises output per unit of input",
+            "Efficiency lowers unit/average costs and waste"
+          ],
+          "application_max_2": [
+            "Reference to the Saturday backlog and the 9,000 to 14,000 sheets-per-hour upgrade",
+            "Reference to $520,000 revenue and $27,000 staff cost comparison"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "QuickQuill Printing Ltd",
+            "8 staff",
+            "$520,000",
+            "15%",
+            "14,000 sheets",
+            "$110,000",
+            "$27,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of expanding QuickQuill Printing Ltd using capital rather than labour.",
+        "model_answer": "Point 1: Capital investment provides durable, high-output capacity [k]. The $110,000 press lasts 10 years and lifts capacity to 14,000 sheets per hour [app]. This gives QuickQuill the scale to clear the Saturday backlog and capture more of the orders rising 15% since the rival closed [an]. Point 2: Machines produce consistent quality with lower ongoing per-unit costs [k]. Unlike 3 extra operators costing $81,000 a year, the press runs with the existing 8 staff [app]. This protects margins, reduces supervision costs and keeps Saturday turnaround times reliable for business card and leaflet clients [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital goods last for years and offer high, consistent capacity",
+            "Machines spread cost over more units / lower per-unit running cost over time"
+          ],
+          "application_max_2": [
+            "Reference to the $110,000 press, 10-year life and 14,000 sheets per hour",
+            "Reference to 3 operators at $27,000 each ($81,000 a year) vs existing 8 staff"
+          ],
+          "analysis_max_2": [
+            "Analysis linking one-off capital cost to long-run unit cost advantage",
+            "Analysis linking capacity, consistency and reliability to winning more orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "QuickQuill Printing Ltd",
+            "$110,000",
+            "14,000 sheets",
+            "10 years",
+            "9,000",
+            "$27,000",
+            "$130,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Nadia should buy the faster digital press rather than hire 3 more operators? Justify your answer.",
+        "model_answer": "Argument for the press: Buying the $110,000 digital press raises capacity from 9,000 to 14,000 sheets per hour and lasts 10 years [k]. It unlocks the Saturday backlog worth about $60,000 a year and scales with the 15% order growth [app]. However, $110,000 of the $130,000 reserves would be spent upfront, leaving little cushion if breakdowns occur [an]. Argument for hiring operators: Three operators add 20% capacity immediately at $81,000 a year with no large upfront outlay [k]. Nadia keeps $130,000 liquid and can scale back staff if demand dips after the rival closure settles [app]. But wages are a permanent cost and never match the press's step-change of 5,000 extra sheets per hour [an]. Overall, Nadia should buy the press because the $60,000 Saturday backlog and 15% growth justify locking in long-term capacity at 10 years, provided she arranges a service contract to manage breakdown risk [eval]. Hiring operators only becomes the better choice if the order pipeline softens or her cash reserves fall below $50,000 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Press = $110,000, 9,000 to 14,000 sheets/hour, lasts 10 years",
+            "Hiring = 20% capacity now for $81,000 a year, keeps cash liquid"
+          ],
+          "application_max_2": [
+            "Uses $110,000 / $130,000 / $27,000 / $60,000 / 15% figures from the stem",
+            "Reference to Saturday backlog, machine breakdowns and staff absence concerns"
+          ],
+          "analysis_max_2": [
+            "Analysis of one-off vs recurring cost ($110,000 vs $81,000 a year) and payback logic",
+            "Analysis of flexibility/liquidity versus capacity step-change and breakdown risk"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation favouring the press (or hiring) conditional on contracts and cash position",
+            "Balanced judgement weighing capacity/growth vs liquidity and breakdown risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "QuickQuill Printing Ltd",
+            "$110,000",
+            "9,000 to 14,000 sheets",
+            "10 years",
+            "$27,000",
+            "20% capacity",
+            "$130,000",
+            "$60,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

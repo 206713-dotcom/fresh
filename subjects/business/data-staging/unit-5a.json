@@ -1,0 +1,2379 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_01",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A retail apparel business operates as a Private Limited Company, managing 8 clothing stores across major shopping malls. Operating successfully for 6 years, the company reports annual sales revenue of $1,500,000, cost of sales of $900,000, and annual operating expenses of $450,000. Balance sheet data shows current assets of $350,000 (comprising $220,000 in inventory, $80,000 in trade receivables, and $50,000 cash balance) against current liabilities of $250,000 (comprising $170,000 in trade payables to clothing manufacturers and an $80,000 bank overdraft).\n\nNon-current liabilities total $400,000 in long-term bank loans. To fund a major $200,000 winter stock expansion, the finance manager is preparing a comprehensive cash-flow forecast and evaluating potential sources of finance. The manager is comparing taking out an additional 5-year bank loan at 7% annual interest versus securing extended 90-day trade credit terms from fabric suppliers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit Margin for this business. Show your working.",
+        "model_answer": "Gross Profit = Revenue ($1,500,000) - Cost of Sales ($900,000) = $600,000 [1]. Gross Profit Margin = ($600,000 / $1,500,000) x 100 = 40% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "correct formula/working step",
+            "40%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this business and explain what this result indicates.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities [k] = ($350,000 - $220,000) / $250,000 = 0.52 : 1. The business has only $0.52 of liquid assets for every $1.00 of short-term liabilities [app], meaning it would struggle to pay the $80,000 bank overdraft and trade payables immediately [app]. Such a very low ratio signals a serious short-term liquidity risk that the business must manage carefully [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.52 : 1 calculation",
+            "explanation of liquid assets vs short-term debt"
+          ],
+          "application_max_2": [
+            "$0.52 liquid assets per $1 short-term debt",
+            "trade payables demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$350,000",
+            "$250,000",
+            "$220,000",
+            "inventory",
+            "overdraft",
+            "receivables"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways this business could improve its cash flow position over the next 6 months.",
+        "model_answer": "Way 1: Negotiate extended payment terms with fabric suppliers [k], delaying cash outflows for trade payables [app] and keeping cash in the bank for operational needs [an]. Way 2: Offer early payment discounts to retail trade receivables [k], encouraging faster cash inflows from credit customers [app] and reducing the reliance on the $80,000 bank overdraft [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delay payables / negotiate trade credit",
+            "encourage faster receivables payment / discounts"
+          ],
+          "application_max_2": [
+            "fabric suppliers / trade payables",
+            "retail trade receivables / $80,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "keeps cash in bank for operational needs",
+            "reduces reliance on bank overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "receivables",
+            "overdraft",
+            "fabric",
+            "cash"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think taking out a 5-year bank loan is a better source of finance for the $200,000 winter stock expansion than securing extended trade credit? Justify your answer.",
+        "model_answer": "A 5-year bank loan provides a structured long-term capital sum [k] to purchase the $200,000 winter stock upfront [app], spreading repayments over 5 years so current liquidity is not immediately drained [an]. However, the loan incurs 7% interest expenses [k], increasing annual overheads beyond the current $450,000 operating expenses [app] and creating long-term debt liabilities [an]. Extended 90-day trade credit avoids interest charges but requires fast-selling inventory to pay fabric suppliers within 90 days. Overall, the 5-year bank loan is better because purchasing seasonal stock requires long-term repayment stability [eval], whereas relying on 90-day trade credit with a low acid-test ratio of 0.52:1 risks severe insolvency if winter sales stall [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "spreads capital repayment over long term",
+            "incurs interest expenses / risk of default"
+          ],
+          "application_max_2": [
+            "$200,000 winter stock",
+            "7% interest",
+            "$450,000 operating expenses",
+            "0.52:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "protects immediate current liquidity",
+            "increases annual operating overheads"
+          ],
+          "evaluation_max_2": [
+            "weighs interest cost against insolvency risks given low 0.52:1 acid-test ratio in retail context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "stock",
+            "loan",
+            "interest",
+            "credit",
+            "$200,000",
+            "90-day",
+            "trade credit",
+            "7%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_02",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial bakery operating as a Private Limited Company manufactures packaged artisan breads for regional supermarkets. The bakery employs 85 staff across two production sites. The business reports annual revenue of $2,400,000, cost of sales of $1,440,000, and annual operating overheads of $600,000. Current financial records indicate non-current assets of $1,200,000, current assets of $400,000 (including $150,000 inventory, $180,000 trade receivables, and $70,000 cash balance), and current liabilities of $300,000 (comprising $220,000 trade payables and $80,000 short-term bank borrowings).\n\nNon-current liabilities stand at $500,000 in long-term bank loans. To fund a major capital expansion project involving $600,000 for automated baking ovens, management is evaluating whether to issue new ordinary share capital to existing shareholders or secure an additional 10-year bank loan at 6% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two reasons why a business requires long-term finance.",
+        "model_answer": "Reason 1: To purchase non-current assets such as machinery or premises [1]. Reason 2: To finance long-term business expansion or capital development projects [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "purchasing non-current assets",
+            "funding long-term growth/expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Working Capital for this commercial bakery and outline what this figure represents.",
+        "model_answer": "Working Capital = Current Assets ($400,000) - Current Liabilities ($300,000) = $100,000 [k]. This positive working capital means the bakery's current assets comfortably exceed its current liabilities [app], suggesting it can settle its $220,000 trade payables and $80,000 short-term borrowings as they fall due [app]. It also indicates healthy short-term liquidity for day-to-day trading operations [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$100,000 calculation",
+            "definition/meaning of working capital"
+          ],
+          "application_max_2": [
+            "$400,000 current assets vs $300,000 current liabilities",
+            "$220,000 trade payables / $80,000 borrowings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current assets",
+            "current liabilities",
+            "payables",
+            "borrowings",
+            "$400,000",
+            "$300,000",
+            "bakery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain one internal source and one external source of finance suitable for purchasing short-term raw material supplies.",
+        "model_answer": "Internal Source: Retained profit from previous trading years [k] can be used without paying interest [an], drawing on the cash balance of $70,000 to buy ingredients for the artisan breads [app]. External Source: Trade credit from flour and ingredient suppliers [k] allows the bakery to delay payment while it awaits supermarket invoices being settled [an], easing pressure on its current liabilities of $300,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit",
+            "trade credit"
+          ],
+          "application_max_2": [
+            "$70,000 cash balance / retained profit",
+            "$300,000 current liabilities / supermarket sales"
+          ],
+          "analysis_max_2": [
+            "no interest costs incurred",
+            "improves short-term cash flow timing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "breads",
+            "supermarkets",
+            "$70,000",
+            "$300,000",
+            "current liabilities",
+            "cash",
+            "bakery"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Consider whether issuing new ordinary shares or taking out a 10-year bank loan is the better source of finance for the $600,000 automated baking oven project. Justify your recommendation.",
+        "model_answer": "Issuing new ordinary shares brings permanent equity capital [k] for the $600,000 automated baking ovens [app], which never has to be repaid and incurs zero interest charges [an]. However, selling shares dilutes ownership control and requires paying dividends from profit for the year. A 10-year bank loan preserves ownership structure [k], but adds 6% annual interest expenses to existing overheads of $600,000 [app] and increases non-current liabilities beyond $500,000 [an]. Overall, issuing shares is recommended because adding a $600,000 loan to existing non-current liabilities of $500,000 significantly increases fixed-interest debt risk [eval], whereas equity finance provides safe funding for fixed capital without burdening monthly cash flow with interest repayments [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no repayment / no interest for equity",
+            "loan interest costs / increased financial risk"
+          ],
+          "application_max_2": [
+            "$600,000 automated baking ovens",
+            "6% annual interest",
+            "$600,000 overheads",
+            "$500,000 non-current liabilities"
+          ],
+          "analysis_max_2": [
+            "avoids cash outflow debt pressure",
+            "increases annual financial interest overheads"
+          ],
+          "evaluation_max_2": [
+            "weighs fixed-interest financial risk against ownership dilution in capital expansion context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loan",
+            "interest",
+            "ovens",
+            "liabilities",
+            "overheads",
+            "share capital",
+            "$600,000",
+            "6%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_03",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An organic juice processing enterprise operates as a Partnership, manufacturing cold-pressed fruit drinks for health food stores. Annual sales revenue reaches $800,000 with cost of sales at $480,000 and operating expenses of $220,000. Cash flow monitoring reveals severe seasonal fluctuations: monthly cash inflows average $65,000, while cash outflows spike to $95,000 during harvest months due to upfront fruit inventory purchases.\n\nBalance sheet data shows opening cash balance of $15,000, trade receivables of $90,000 (with customer credit terms of 60 days), inventory of $110,000, and current liabilities of $130,000 (including $85,000 in trade payables due in 30 days and a $45,000 bank overdraft). To resolve a projected net cash outflow deficit of $30,000 next quarter, the partners are reviewing cash-flow forecast adjustments, weighing whether to arrange a short-term bank overdraft increase or reduce credit terms for trade receivables from 60 to 30 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'cash inflow' and state one example from this business context.",
+        "model_answer": "Cash inflow is the sum of cash or money entering a business during a specific time period [1]. An example is cash receipts from health food stores paying for organic juices [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "definition of cash entering the business",
+            "example such as receipts from health food stores / juice sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Net Cash Flow for a month where cash inflows are $65,000 and cash outflows are $95,000, and calculate the resulting closing bank balance given an opening balance of $15,000.",
+        "model_answer": "Net Cash Flow = Cash Inflows ($65,000) - Cash Outflows ($95,000) = -$30,000 [k]. This $30,000 deficit means cash outflows exceed inflows during harvest months, draining the opening balance [app]. Closing Bank Balance = Opening Balance ($15,000) + Net Cash Flow (-$30,000) = -$15,000 [k]. The business would therefore start the next period $15,000 overdrawn, matching the projected deficit in the forecast [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "-$30,000 net cash flow",
+            "-$15,000 closing balance"
+          ],
+          "application_max_2": [
+            "$65,000 inflows vs $95,000 outflows",
+            "$15,000 opening balance to negative balance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inflows",
+            "outflows",
+            "balance",
+            "overdraft",
+            "deficit",
+            "$65,000",
+            "$95,000",
+            "$15,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two financial problems caused by having a negative net cash flow over consecutive trading months.",
+        "model_answer": "Problem 1: Insolvency risk [k], as the cash drain prevents paying the $85,000 trade payables due in 30 days [app], leading to raw material supply disruption [an]. Problem 2: Increased borrowing costs [k], as exceeding the existing $45,000 bank overdraft limit [app] triggers expensive high-interest penalties that increase operating expenses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "risk of insolvency/inability to pay bills",
+            "increased interest costs/overdraft fees"
+          ],
+          "application_max_2": [
+            "$85,000 trade payables due in 30 days",
+            "$45,000 bank overdraft limit"
+          ],
+          "analysis_max_2": [
+            "causes supply disruption from unpaid vendors",
+            "increases operating expenses and reduces profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "fruit",
+            "$85,000",
+            "$45,000",
+            "harvest"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think increasing the bank overdraft facility or reducing customer credit terms from 60 to 30 days is the better solution to overcome the projected $30,000 cash flow deficit? Justify your answer.",
+        "model_answer": "Increasing the bank overdraft facility provides flexible short-term borrowing [k] to cover the $30,000 cash deficit immediately during harvest months [app], allowing fruit inventory to be purchased without operational delays [an]. However, overdrafts carry high, variable interest rates [k], compounding existing current liabilities of $130,000 [app] and reducing net profit [an]. Reducing customer credit terms from 60 to 30 days accelerates cash inflows from the $90,000 trade receivables without incurring interest costs. But health food stores may switch to competitors offering longer credit. Overall, reducing credit terms to 30 days is better because harvest expenses occur annually [eval], so relying permanently on an expensive bank overdraft to cover structural seasonal cash shortages creates unsustainable debt liabilities [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flexible short-term access vs high interest",
+            "faster cash inflow vs customer loss risk"
+          ],
+          "application_max_2": [
+            "$30,000 cash deficit",
+            "$90,000 trade receivables",
+            "60 to 30 days credit terms",
+            "$130,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "secures immediate inventory purchases",
+            "avoids ongoing high interest expense overheads"
+          ],
+          "evaluation_max_2": [
+            "weighs recurring seasonal deficit financing costs against trade customer retention risks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "overdraft",
+            "receivables",
+            "credit",
+            "deficit",
+            "harvest",
+            "$30,000",
+            "$90,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_04",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A custom wooden furniture workshop operates as a Sole Trader business, building handcrafted dining tables and cabinets. Annual sales revenue stands at $500,000, with cost of sales at $300,000 and fixed overhead expenses of $140,000. Statement of financial position records show current assets of $110,000 (consisting of $65,000 raw timber inventory, $35,000 trade receivables, and $10,000 cash balance).\n\nCurrent liabilities total $140,000 (comprising $95,000 in trade payables owed to timber merchants and a $45,000 bank overdraft), giving a negative working capital of -$30,000. Due to slow customer collection and long 90-day production cycles, the sole trader faces an immediate working capital deficit and must decide between selling $40,000 of unused woodworking machinery (sale of non-current assets) or offering a 5% cash discount for immediate payment by trade receivables.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the formula for Working Capital and calculate its value for this business.",
+        "model_answer": "Working Capital = Current Assets - Current Liabilities [1]. Working Capital = $110,000 - $140,000 = -$30,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Working Capital = Current Assets - Current Liabilities formula",
+            "-$30,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this business and explain why this ratio indicates liquidity distress.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities [k] = $110,000 / $140,000 = 0.79 : 1. This means the business has only $0.79 of current assets for every $1.00 of current liabilities [app], so it lacks sufficient short-term assets to cover its $95,000 trade payables and $45,000 bank overdraft [app]. A ratio below 1.0 is a clear sign of liquidity distress and possible short-term solvency problems [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.79 : 1 calculation",
+            "explanation of short-term solvency ratio"
+          ],
+          "application_max_2": [
+            "$0.79 assets per $1 liability",
+            "$95,000 trade payables"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "assets",
+            "liabilities",
+            "$110,000",
+            "$140,000",
+            "overdraft",
+            "$95,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two main causes of working capital shortages in a manufacturing enterprise.",
+        "model_answer": "Cause 1: Excessive holding of raw material inventory [k], which ties up $65,000 in timber stock [app], preventing funds from being available as cash liquidity [an]. Cause 2: Over-trading or granting excessive credit terms [k], leading to $35,000 tied up in trade receivables for up to 90 days [app], delaying essential cash inflows needed for daily expenses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "holding excessive inventory",
+            "offering long credit terms / poor receivable collection"
+          ],
+          "application_max_2": [
+            "$65,000 timber inventory",
+            "$35,000 trade receivables over 90 days"
+          ],
+          "analysis_max_2": [
+            "locks cash in physical stock",
+            "delays cash inflows required for expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inventory",
+            "receivables",
+            "timber",
+            "cash",
+            "$65,000",
+            "$35,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think selling $40,000 of unused woodworking machinery or offering a 5% cash discount to trade receivables is the better strategy to correct the negative working capital position of -$30,000? Justify your answer.",
+        "model_answer": "Selling $40,000 of unused woodworking machinery raises a substantial cash sum [k] directly eliminating the -$30,000 working capital deficit [app] without sacrificing profit margins on furniture sales [an]. However, selling non-current assets is a one-off capital source [k] and reduces future production capacity if the machinery is needed later [an]. Offering a 5% cash discount speeds up collection of the $35,000 trade receivables, encouraging immediate cash inflow [app]. However, a 5% discount reduces total sales revenue and lowers gross profit. Overall, selling the unused machinery is the better strategy because it injects $40,000 capital upfront to clear the negative working capital [eval], whereas a 5% discount on $35,000 receivables yields only $33,250, which is insufficient to fully resolve the working capital shortfall [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one-off asset sale capital injection",
+            "cash discount speeds inflow but reduces margin"
+          ],
+          "application_max_2": [
+            "$40,000 machinery sale",
+            "-$30,000 working capital deficit",
+            "5% discount on $35,000 receivables"
+          ],
+          "analysis_max_2": [
+            "immediately eliminates working capital deficit",
+            "yields immediate cash but lowers profit margin"
+          ],
+          "evaluation_max_2": [
+            "compares quantum of capital generated against the severity of the -$30,000 liquidity deficit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "machinery",
+            "discount",
+            "receivables",
+            "working capital",
+            "timber",
+            "deficit",
+            "$40,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_05",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial printing company operates as a Private Limited Company, producing bulk marketing brochures and packaging materials. The firm's income statement records annual sales revenue of $3,200,000, cost of sales of $1,920,000, and total operating overhead expenses of $800,000 (including paper raw materials, factory electricity, and administrative salaries). Net profit after interest and tax is $320,000, from which $200,000 is distributed as dividends to shareholders, leaving retained profit for the year of $120,000.\n\nBalance sheet data shows non-current assets of $1,800,000 and current liabilities of $400,000. Facing a 15% increase in paper pulp prices (cost of sales), the directors are evaluating whether to reduce operating overhead expenses by $100,000 or increase printing prices to maintain the 40% Gross Profit Margin.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the formula for Gross Profit and calculate its value from the financial data provided.",
+        "model_answer": "Gross Profit = Sales Revenue - Cost of Sales [1]. Gross Profit = $3,200,000 - $1,920,000 = $1,280,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Sales Revenue - Cost of Sales formula",
+            "$1,280,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Profit Margin (Net Profit Margin) for this commercial printing business and explain what this ratio measures.",
+        "model_answer": "Profit Margin = (Net Profit / Sales Revenue) x 100 [k] = ($320,000 / $3,200,000) x 100 = 10%. This means the company retains 10 cents of net profit from every dollar of sales [app], after covering cost of sales and its $800,000 operating overheads [app]. The Profit Margin measures how effectively revenue is converted into net profit [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "10% calculation",
+            "explanation of converting revenue to net profit"
+          ],
+          "application_max_2": [
+            "$320,000 net profit vs $3,200,000 revenue",
+            "$800,000 operating overheads"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit margin",
+            "net profit",
+            "revenue",
+            "paper",
+            "$320,000",
+            "$3,200,000",
+            "$800,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain the difference between gross profit and retained profit for a private limited company.",
+        "model_answer": "Gross Profit is revenue minus cost of sales ($1,280,000) [app], representing trading profit before overhead expenses [k]. Retained Profit is net profit remaining after deducting overhead expenses ($800,000), corporation tax, and $200,000 dividend payments to shareholders [app]. Retained profit ($120,000) is reinvested into the business to fund non-current assets [k], whereas gross profit covers the day-to-day operating expenses of the printing business [an], ensuring the company can keep trading until retained profit accumulates [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "gross profit trading surplus",
+            "retained profit remaining profit reinvested"
+          ],
+          "application_max_2": [
+            "$1,280,000 gross profit vs $120,000 retained profit",
+            "$800,000 overheads / $200,000 dividends"
+          ],
+          "analysis_max_2": [
+            "gross profit covers operational overheads",
+            "retained profit builds long-term capital reserves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit",
+            "retained profit",
+            "dividends",
+            "revenue",
+            "$3,200,000",
+            "$800,000",
+            "$200,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Consider whether reducing operating overhead expenses by $100,000 or increasing selling prices is the better strategy to protect profit margins against rising cost of sales. Justify your decision.",
+        "model_answer": "Reducing operating overhead expenses by $100,000 directly lowers overhead costs from $800,000 [app], protecting the 10% net profit margin [k] without changing product prices or risking client loss [an]. However, cutting expenses may reduce printing quality or cut marketing staff [k], potentially hurting long-term customer service. Increasing selling prices passes higher paper pulp cost of sales [app] directly onto commercial clients to preserve the 40% gross profit margin. But price increases in a competitive market may drive buyers to rival printers, reducing total revenue below $3,200,000 [an]. Overall, reducing overhead expenses by $100,000 is the better decision because price increases risk losing clients [eval], whereas internal expense cuts safeguard net profit directly without threatening total sales volume [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overhead cost reduction protects net margin",
+            "price increases preserve gross margin but risk volume loss"
+          ],
+          "application_max_2": [
+            "$100,000 overhead cut from $800,000",
+            "15% paper cost increase",
+            "40% gross margin",
+            "10% net margin"
+          ],
+          "analysis_max_2": [
+            "safeguards net profit internally without market backlash",
+            "risks customer churn and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal operational efficiency against market demand elasticity and revenue risks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "expenses",
+            "prices",
+            "paper",
+            "gross profit",
+            "profit margin",
+            "$100,000",
+            "40%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_06",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A luxury beach resort operates as a Public Limited Company, managing 150 guest rooms and conference facilities. Annual financial statements disclose sales revenue of $6,000,000, cost of sales of $2,400,000 (food, beverage, and guest amenities), and operating expenses of $2,700,000 (staff wages, utility bills, and resort maintenance). Operating profit stands at $900,000, interest expenses are $200,000, and corporation tax totals $140,000. Net profit for the year after tax is $560,000.\n\nDividends paid to PLC shareholders total $400,000, leaving retained profit of $160,000. Facing a $500,000 room renovation requirement, management is evaluating an income statement restructuring, debating whether to cut cost of sales by sourcing lower-cost food supplies or retain a higher proportion of net profit by reducing annual dividend payouts.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Operating Profit for this luxury resort and show your working.",
+        "model_answer": "Gross Profit = Revenue ($6,000,000) - Cost of Sales ($2,400,000) = $3,600,000 [1]. Operating Profit = Gross Profit ($3,600,000) - Operating Expenses ($2,700,000) = $900,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross Profit - Operating Expenses formula",
+            "$900,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Gross Profit Margin for this resort and outline how cost of sales impacts this ratio.",
+        "model_answer": "Gross Profit Margin = (Gross Profit / Revenue) x 100 [k] = ($3,600,000 / $6,000,000) x 100 = 60%. Cost of sales ($2,400,000 for food and amenities) directly reduces gross profit [app], meaning higher supplier costs would compress the margin below 60% unless room rates increase [app]. The ratio shows how much of each revenue dollar remains after deducting cost of sales [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "60% calculation",
+            "explanation of cost of sales impact on gross margin"
+          ],
+          "application_max_2": [
+            "$3,600,000 gross profit vs $6,000,000 revenue",
+            "$2,400,000 food/amenities cost of sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cost of sales",
+            "revenue",
+            "amenities",
+            "resort",
+            "$6,000,000",
+            "$2,400,000",
+            "$2,700,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of an income statement for external stakeholders of a public limited company.",
+        "model_answer": "Use 1: Potential PLC shareholders analyze net profit for the year ($560,000) and $400,000 dividends [app] to evaluate return on investment [k] before purchasing shares on the stock exchange [an]. Use 2: Commercial lenders review operating profit ($900,000) against $200,000 interest expenses [app] to assess debt repayment capacity [k] before extending long-term loans [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "investors evaluate dividend returns",
+            "lenders assess interest coverage / creditworthiness"
+          ],
+          "application_max_2": [
+            "$560,000 net profit / $400,000 dividends",
+            "$900,000 operating profit / $200,000 interest"
+          ],
+          "analysis_max_2": [
+            "guides investment choices on stock market",
+            "determines credit approval for expansion loans"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "dividends",
+            "interest",
+            "net profit",
+            "operating profit",
+            "shareholders"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the resort should fund the $500,000 room renovation by cutting cost of sales (food and amenities) or by reducing dividend payments to retain more profit? Justify your answer.",
+        "model_answer": "Cutting cost of sales on food and beverage supplies reduces variable costs from $2,400,000 [app], expanding gross profit margins beyond 60% [k] to generate additional operational cash flow. However, lower quality ingredients damages the luxury resort brand image, leading to falling room occupancy rates and revenue loss below $6,000,000 [an]. Reducing annual dividend payouts from $400,000 increases retained profit above $160,000 [app], providing internal equity finance [k] for the $500,000 room renovation without incurring debt or compromising luxury quality [an]. Overall, reducing dividends is the recommended strategy because protecting the premium resort brand image is vital to maintaining $6,000,000 revenue [eval], whereas compromising guest quality risks long-term business collapse even if dividend yields fall temporarily [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost reduction improves gross profit",
+            "retained profit provides risk-free internal equity"
+          ],
+          "application_max_2": [
+            "$500,000 room renovation",
+            "$2,400,000 cost of sales",
+            "$400,000 dividends",
+            "$160,000 retained profit"
+          ],
+          "analysis_max_2": [
+            "protects premium revenue and guest experience",
+            "avoids long-term brand equity destruction"
+          ],
+          "evaluation_max_2": [
+            "weighs shareholder dividend expectations against core brand value proposition and luxury market positioning"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "renovation",
+            "dividends",
+            "retained profit",
+            "cost of sales",
+            "resort",
+            "revenue"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_07",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An electric bicycle manufacturing enterprise operates as a Public Limited Company, producing e-bikes for urban commuters. The factory runs three assembly lines and employs 240 workers. Statement of financial position records present non-current assets of $3,500,000 (factory premises and assembly equipment). Current assets total $1,200,000 (including $650,000 in lithium battery inventory, $400,000 trade receivables, and $150,000 cash balance). Current liabilities stand at $800,000 (comprising $550,000 trade payables owed to component suppliers and a $250,000 bank overdraft).\n\nNon-current liabilities consist of a $1,500,000 10-year bank loan. Shareholders' funds total $2,400,000 ($1,800,000 share capital and $600,000 retained profit reserves). To expand production by $800,000, the Chief Financial Officer is evaluating balance sheet restructuring, comparing issuing new share capital versus negotiating a new long-term bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Non-Current Assets' and identify one example from this business scenario.",
+        "model_answer": "Non-current assets are resources or items of value owned by a business intended for long-term use for more than one year [1]. An example is the factory premises and assembly equipment valued at $3,500,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "definition of long-term assets (held for more than one year)",
+            "example such as factory premises / assembly equipment ($3,500,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Capital Employed for this electric bicycle manufacturer using statement of financial position figures.",
+        "model_answer": "Capital Employed = Non-Current Liabilities + Shareholders' Funds [k] = $1,500,000 + $2,400,000 = $3,900,000. (Alternative: Total Assets - Current Liabilities = $4,700,000 - $800,000 = $3,900,000). This represents the total long-term capital invested in financing the factory premises and working capital [app], sourced from long-term bank loans and share capital [app]. Capital employed measures the total resources deployed in the business [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$3,900,000 calculation",
+            "definition/meaning of capital employed"
+          ],
+          "application_max_2": [
+            "$1,500,000 bank loan + $2,400,000 equity",
+            "financing factory premises and working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bank loan",
+            "assets",
+            "liabilities",
+            "$1,500,000",
+            "$2,400,000",
+            "shareholders' funds",
+            "factory"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how an increase in lithium battery inventory affects the liquidity position shown on a balance sheet.",
+        "model_answer": "Increasing lithium battery inventory raises total current assets above $1,200,000 [app], which keeps the Current Ratio high [k]. However, inventory is the least liquid current asset [k] because it cannot be instantly converted to cash to pay $550,000 trade payables [app]. Consequently, the Acid-Test Ratio falls below 0.69:1 ($550,000 / $800,000), deteriorating true liquid solvency [an] and increasing illiquidity risk [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increases current assets / current ratio",
+            "reduces acid-test ratio / liquid cash availability"
+          ],
+          "application_max_2": [
+            "$650,000 lithium battery inventory",
+            "$550,000 trade payables / $800,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "locks cash in physical stock",
+            "increases risk of short-term illiquidity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inventory",
+            "battery",
+            "payables",
+            "$650,000",
+            "$550,000",
+            "$1,200,000",
+            "current assets"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new share capital or taking an additional long-term bank loan is the better option to fund the $800,000 expansion? Justify your answer using balance sheet analysis.",
+        "model_answer": "Taking a long-term bank loan provides $800,000 expansion capital [app] without diluting existing share capital of $1,800,000 [k], preserving ownership control for current shareholders [an]. However, it increases non-current liabilities from $1,500,000 to $2,300,000, raising capital employed to $4,700,000 and increasing fixed-interest debt expense risks [an]. Issuing new share capital brings permanent equity [k], increasing shareholders' funds from $2,400,000 to $3,200,000 [app] without adding interest overheads. Overall, issuing share capital is recommended because the balance sheet already carries $1,500,000 in non-current loans and $800,000 in current liabilities [eval]; adding another $800,000 debt severely elevates fixed-interest debt risk, whereas share issues strengthen the balance sheet structure safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt increases debt/interest burden",
+            "equity strengthens balance sheet without debt liabilities"
+          ],
+          "application_max_2": [
+            "$800,000 expansion",
+            "$1,500,000 non-current loans",
+            "$1,800,000 share capital",
+            "$2,400,000 shareholders funds"
+          ],
+          "analysis_max_2": [
+            "preserves ownership structure vs elevates financial risk",
+            "avoids ongoing debt interest cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against equity dilution in capital structure context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loan",
+            "liabilities",
+            "capital",
+            "$800,000",
+            "$1,500,000",
+            "$2,400,000",
+            "share capital"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_08",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A logistics fleet company operates as a Private Limited Company, managing 40 commercial delivery trucks. Balance sheet figures show non-current assets of $2,800,000 (fleet vehicles and distribution depot). Current assets stand at $500,000 (including $100,000 spare parts inventory, $320,000 trade receivables from corporate clients, and $80,000 cash balance). Current liabilities are $450,000 (comprising $300,000 trade payables owed to fuel suppliers and a $150,000 bank overdraft).\n\nNon-current liabilities total $1,200,000 in long-term bank loans. Total capital employed is $2,850,000, with shareholders' equity at $1,650,000 ($1,000,000 share capital and $650,000 retained profit). To acquire 10 new electric delivery vans costing $500,000, management is debating whether to arrange a 5-year leasing agreement or purchase the vehicles outright using a new long-term bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Working Capital for this logistics business. Show your working.",
+        "model_answer": "Working Capital = Current Assets ($500,000) - Current Liabilities ($450,000) = $50,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Working Capital = Current Assets - Current Liabilities formula",
+            "$50,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this logistics business and explain what this result indicates about short-term financial stability.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities [k] = $500,000 / $450,000 = 1.11 : 1. This means the business has $1.11 of current assets for every $1.00 of current liabilities [app], showing narrow liquidity cover to settle $300,000 fuel trade payables and $150,000 overdraft [app]. A ratio only just above 1.0 indicates a thin margin of safety against short-term claims [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.11 : 1 calculation",
+            "explanation of current solvency cover"
+          ],
+          "application_max_2": [
+            "$1.11 assets per $1 liability",
+            "$300,000 fuel payables / $150,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "fuel",
+            "$500,000",
+            "$450,000",
+            "current assets",
+            "$300,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to a business of maintaining detailed balance sheet records.",
+        "model_answer": "Advantage 1: Assesses net worth and total capital structure [k], enabling directors to evaluate how $2,800,000 non-current assets are financed by $1,200,000 bank loans versus equity [app], supporting strategic capital planning [an]. Advantage 2: Demonstrates financial solvency to lenders [k], proving that $500,000 current assets cover $450,000 current liabilities [app], which helps secure competitive interest rates on future loans [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "evaluates capital structure/net worth",
+            "demonstrates solvency to external lenders"
+          ],
+          "application_max_2": [
+            "$2,800,000 non-current assets vs $1,200,000 bank loans",
+            "$500,000 current assets vs $450,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "assists long-term capital strategy",
+            "improves creditworthiness and lowers borrowing costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "balance sheet",
+            "assets",
+            "loans",
+            "liabilities",
+            "$2,800,000",
+            "$1,200,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think securing a 5-year leasing agreement or taking a new long-term bank loan is the better financing option for acquiring the $500,000 electric delivery vans? Justify your decision.",
+        "model_answer": "A 5-year leasing agreement avoids a large initial capital outlay [k], spreading monthly rental payments for the $500,000 electric vans [app] so immediate working capital of $50,000 is preserved [an]. Furthermore, maintenance responsibilities often rest with the leasing company. However, leasing means the business does not own the non-current asset [k], increasing total expenditure over 5 years [an]. Taking a long-term bank loan means acquiring ownership of $500,000 non-current vehicle assets, but increases non-current liabilities from $1,200,000 to $1,700,000 [app] and incurs annual interest overheads. Overall, leasing is the recommended option because adding $500,000 in bank debt onto existing non-current liabilities of $1,200,000 significantly increases fixed-interest debt risk [eval], whereas leasing protects the narrow $50,000 working capital buffer while updating the fleet [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "leasing avoids large upfront cash outlay",
+            "loan gives asset ownership but increases debt liabilities"
+          ],
+          "application_max_2": [
+            "$500,000 electric vans",
+            "$50,000 working capital",
+            "$1,200,000 non-current liabilities"
+          ],
+          "analysis_max_2": [
+            "protects immediate liquidity cover",
+            "elevates long-term fixed-interest debt expenses"
+          ],
+          "evaluation_max_2": [
+            "weighs fixed-interest debt risk against asset ownership given low working capital position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leasing",
+            "loan",
+            "vans",
+            "liabilities",
+            "$500,000",
+            "$1,200,000",
+            "overdraft"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_09",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A medical device manufacturing corporation operates as a Public Limited Company, producing specialized surgical instruments. Financial statements report annual sales revenue of $10,000,000, gross profit of $6,000,000 (60% Gross Profit Margin), operating overhead expenses of $4,200,000, and operating profit of $1,800,000 (18% Net Profit Margin). Statement of financial position records show non-current assets of $6,500,000, current assets of $2,500,000 (including $1,400,000 inventory, $800,000 trade receivables, and $300,000 cash balance), current liabilities of $1,000,000 (trade payables $700,000, overdraft $300,000), and non-current liabilities of $2,000,000 8-year bank loans.\n\nTotal capital employed is $8,000,000. Shareholders' funds total $6,000,000. To fund a $1,500,000 robotic production facility, management is analyzing profitability and liquidity ratios, deciding whether to raise capital via issuing new share capital or taking another long-term bank loan.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Return on Capital Employed (ROCE) for this medical device manufacturer. Show your working.",
+        "model_answer": "ROCE = (Operating Profit / Capital Employed) x 100 = ($1,800,000 / $8,000,000) x 100 = 22.5% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Capital Employed) x 100 formula",
+            "22.5% calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this medical device business and explain what this result indicates about liquid solvency.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities [k] = ($2,500,000 - $1,400,000) / $1,000,000 = $1,100,000 / $1,000,000 = 1.10 : 1. This indicates the business has $1.10 of liquid assets (cash and receivables) for every $1.00 of current liabilities [app], showing satisfactory immediate solvency to clear $700,000 trade payables and $300,000 overdraft [app]. An acid test above 1.0 suggests the company can meet immediate debts without selling inventory [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "1.10 : 1 calculation",
+            "explanation of liquid asset ratio cover"
+          ],
+          "application_max_2": [
+            "$1.10 liquid assets per $1 liability",
+            "$700,000 trade payables / $300,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "liquidity",
+            "payables",
+            "receivables",
+            "inventory",
+            "$2,500,000",
+            "$1,400,000",
+            "$1,000,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of using ratio analysis to assess a company's financial performance.",
+        "model_answer": "Limitation 1: Historical data basis [k]. Ratios use past accounting records such as the $10,000,000 revenue [app], which may not reflect future market trends or upcoming economic changes [an]. Limitation 2: Inflation distortion [k]. Over time, rising raw material prices skew comparisons of $6,000,000 gross profit across years [app], making historical trend analysis misleading [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "uses historical past data",
+            "affected by inflation / ignores qualitative factors"
+          ],
+          "application_max_2": [
+            "$10,000,000 revenue past performance",
+            "$6,000,000 gross profit affected by inflation"
+          ],
+          "analysis_max_2": [
+            "does not guarantee future performance",
+            "distorts real growth comparisons across trading periods"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "ratios",
+            "revenue",
+            "profit",
+            "$10,000,000",
+            "$6,000,000",
+            "inventory",
+            "receivables"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new share capital or taking an additional long-term bank loan is the better financing option for the $1,500,000 robotic production facility? Justify your answer using ROCE and liquidity analysis.",
+        "model_answer": "Taking a long-term bank loan provides $1,500,000 for the robotic facility without diluting ownership of $6,000,000 shareholders' funds [k]. Since ROCE is strong at 22.5% [app], the return earned on capital exceeds typical borrowing interest rates [an]. However, adding $1,500,000 to existing non-current loans of $2,000,000 increases non-current liabilities to $3,500,000 [app], raising total capital employed to $9,500,000 and significantly elevating fixed-interest debt risk [an]. Issuing new share capital brings permanent equity [k], keeping non-current liabilities at $2,000,000 and eliminating default risk. Overall, issuing share capital is recommended because expanding capital employed via debt when non-current liabilities are already $2,000,000 increases financial risk unnecessarily [eval], whereas equity capital protects the healthy 22.5% ROCE performance safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high ROCE makes borrowing viable if interest < ROCE",
+            "equity avoids increasing debt liabilities"
+          ],
+          "application_max_2": [
+            "22.5% ROCE",
+            "$1,500,000 robotic facility",
+            "$2,000,000 non-current loans",
+            "$6,000,000 shareholders funds"
+          ],
+          "analysis_max_2": [
+            "leverages high return against borrowing costs",
+            "avoids long-term insolvency and debt pressure"
+          ],
+          "evaluation_max_2": [
+            "weighs ROCE profitability against capital structure fixed-interest debt risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loan",
+            "robotic",
+            "liabilities",
+            "$1,500,000",
+            "$8,000,000",
+            "$2,000,000",
+            "18%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_10",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A specialty coffee chain operates as a Private Limited Company, managing 12 retail cafes across major city locations. Financial reports reveal annual sales revenue of $4,000,000, cost of sales of $2,600,000 (imported coffee beans, dairy, and packaging), and operating expenses of $1,100,000 (store rent, barista wages, and utilities). Net profit for the year after interest and tax is $200,000.\n\nBalance sheet data shows non-current assets of $2,100,000, current assets of $300,000 (including $180,000 coffee inventory, $70,000 trade receivables from corporate catering, and $50,000 cash balance), and current liabilities of $400,000 (comprising $280,000 trade payables to coffee bean suppliers and a $120,000 bank overdraft). Non-current liabilities stand at $800,000. Facing falling Net Profit Margin (5%) and a low Acid-Test Ratio (0.30:1), directors are evaluating whether to cut cost of sales by switching to cheaper coffee suppliers or increase retail coffee selling prices by 10%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Gross Profit Margin for this coffee chain. Show your working.",
+        "model_answer": "Gross Profit = Revenue ($4,000,000) - Cost of Sales ($2,600,000) = $1,400,000 [1]. Gross Profit Margin = ($1,400,000 / $4,000,000) x 100 = 35% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "($1,400,000 / $4,000,000) x 100 formula",
+            "35% calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this coffee chain and explain why this result indicates severe short-term liquidity risk.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities [k] = ($300,000 - $180,000) / $400,000 = $120,000 / $400,000 = 0.30 : 1. This result indicates the business has only $0.30 of liquid assets for every $1.00 of current liabilities [app], creating severe risk of liquidity crisis if the $280,000 coffee bean suppliers demand immediate payment [app]. Such a low acid-test position shows the company cannot settle short-term debts without selling inventory [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.30 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.30 liquid assets per $1 liability",
+            "$280,000 payables to coffee bean suppliers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "acid-test",
+            "payables",
+            "coffee",
+            "inventory",
+            "$300,000",
+            "$180,000",
+            "$400,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how profitability ratios and liquidity ratios differ in measuring business performance.",
+        "model_answer": "Profitability Ratios (such as the 35% Gross Profit Margin and 5% Net Profit Margin) measure how effectively sales revenue ($4,000,000) is converted into profit after expenses [app], assessing operational management efficiency [k] and showing whether the business is earning enough from trading [an]. Liquidity Ratios (such as the 0.30:1 Acid-Test Ratio) measure the ability to settle short-term debts of $400,000 using liquid current assets [app], assessing short-term solvency and financial survival [k] and showing whether the company can keep trading day to day [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profitability measures profit relative to sales/capital",
+            "liquidity measures short-term debt repayment ability"
+          ],
+          "application_max_2": [
+            "35% gross margin / 5% net margin / $4,000,000 revenue",
+            "0.30:1 acid-test / $400,000 current liabilities"
+          ],
+          "analysis_max_2": [
+            "evaluates long-term earning efficiency",
+            "evaluates immediate financial survival and solvency"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "margin",
+            "acid-test",
+            "revenue",
+            "$4,000,000",
+            "0.30:1",
+            "5%",
+            "$400,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think switching to cheaper coffee bean suppliers or raising retail coffee prices by 10% is the better strategy to improve financial performance? Justify your answer using profitability and liquidity analysis.",
+        "model_answer": "Switching to cheaper coffee bean suppliers reduces cost of sales below $2,600,000 [app], directly expanding the 35% Gross Profit Margin [k] and increasing net profit from $200,000. However, lower quality beans damages the specialty brand image [k], leading to falling customer footfall and sales loss [an]. Raising retail coffee prices by 10% increases sales revenue above $4,000,000, protecting the premium brand quality while expanding net profit margins beyond 5%. Extra cash inflows from higher prices also help improve the low 0.30:1 Acid-Test Ratio [app] to reduce liquidity risk [an]. Overall, raising retail prices by 10% is the better strategy because specialty coffee consumers are willing to pay for quality [eval], whereas compromising bean quality destroys the business's USP and long-term customer loyalty [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost reduction improves margins but risks quality",
+            "price increase boosts revenue and cash flow if demand is inelastic"
+          ],
+          "application_max_2": [
+            "$2,600,000 cost of sales",
+            "35% gross margin",
+            "5% net margin",
+            "0.30:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "preserves brand reputation and cash flow",
+            "risks long-term brand equity destruction"
+          ],
+          "evaluation_max_2": [
+            "weighs brand identity and price elasticity against cost-reduction risks in specialty market context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "coffee",
+            "prices",
+            "suppliers",
+            "margin",
+            "acid-test",
+            "cost of sales",
+            "$2,600,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_11",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial printing and packaging factory operates as a Private Limited Company, supplying customized cardboard boxes to local food manufacturers. The company has been trading for 8 years and reports annual sales revenue of $2,100,000, cost of sales of $1,260,000, and annual operating overhead expenses of $540,000. Balance sheet figures show non-current assets of $1,500,000, current assets of $420,000 (including $250,000 paper inventory, $120,000 trade receivables, and $50,000 cash balance), and current liabilities of $310,000 (comprising $220,000 trade payables owed to paper suppliers and a $90,000 bank overdraft).\n\nNon-current liabilities stand at $600,000 in 8-year bank loans. To purchase a modern high-speed printing machine costing $450,000 for business expansion, the financial director is preparing financial forecasts and evaluating suitable sources of capital. The director is evaluating whether to issue new ordinary shares to existing shareholders or secure a 7-year bank loan at an annual interest rate of 6.5%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two internal sources of finance available to a private limited company.",
+        "model_answer": "Source 1: Retained profit reinvested from previous trading years [1]. Source 2: Sale of redundant or unwanted non-current assets [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit",
+            "sale of non-current assets / owners' investment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Gross Profit Margin for this printing factory and explain what this result measures.",
+        "model_answer": "Gross Profit = Revenue ($2,100,000) - Cost of Sales ($1,260,000) = $840,000 [k]. Gross Profit Margin = ($840,000 / $2,100,000) x 100 = 40% [k]. This means the business retains $0.40 of gross profit for every $1.00 of sales after paying $1,260,000 cost of sales [app], showing strong trading profitability before its $540,000 operating expenses are paid [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "40% calculation step",
+            "explanation of gross profit percentage relative to sales revenue"
+          ],
+          "application_max_2": [
+            "$1,260,000 cost of sales",
+            "$540,000 operating expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "cost of sales",
+            "expenses",
+            "revenue",
+            "$2,100,000",
+            "$1,260,000",
+            "$540,000",
+            "printing"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain one advantage and one disadvantage to a business of using a bank overdraft to meet short-term financial needs.",
+        "model_answer": "Advantage: Flexibility [k]. The business can overdraw its bank account up to $90,000 as needed [app], providing quick cash liquidity to pay $220,000 trade payables during temporary cash deficits [an]. Disadvantage: High variable interest rates [k]. Interest charges accumulate quickly on the $90,000 bank overdraft [app], increasing total annual operating expenses above $540,000 and reducing net profit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flexible short-term access",
+            "high variable interest / repayable on demand"
+          ],
+          "application_max_2": [
+            "$90,000 bank overdraft",
+            "$220,000 trade payables / $540,000 expenses"
+          ],
+          "analysis_max_2": [
+            "provides immediate liquidity for short-term bills",
+            "increases overhead expenses and lowers net profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "overdraft",
+            "payables",
+            "expenses",
+            "interest",
+            "$90,000",
+            "$220,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing new ordinary shares or taking out a 7-year bank loan at 6.5% interest is the better option to fund the $450,000 printing machine? Justify your decision.",
+        "model_answer": "Issuing new ordinary shares brings permanent equity capital [k] for the $450,000 printing machine [app], which does not require repayment and avoids adding interest expenses [an]. However, selling shares to external investors dilutes control and requires paying future dividends. A 7-year bank loan preserves existing ownership control [k], but adds 6.5% interest charges onto the existing $540,000 operating overheads [app] and increases non-current liabilities beyond $600,000 [an]. Overall, issuing ordinary shares is recommended because the balance sheet already carries $600,000 in long-term bank loans and a $90,000 bank overdraft [eval]; adding another $450,000 loan significantly increases debt obligations and default risks, whereas equity safely finances fixed machinery expansion [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "equity requires no repayment/interest",
+            "loan preserves control but adds interest/fixed-interest debt risk"
+          ],
+          "application_max_2": [
+            "$450,000 printing machine",
+            "6.5% interest",
+            "$600,000 bank loans",
+            "$90,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "avoids cash outflow debt strain",
+            "increases long-term debt liabilities and financial overheads"
+          ],
+          "evaluation_max_2": [
+            "weighs reliance on loan capital against ownership control given existing debt levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "loan",
+            "interest",
+            "machine",
+            "liabilities",
+            "overdraft",
+            "$450,000",
+            "6.5%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_12",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial transport company operates as a Public Limited Company, managing 35 heavy delivery trucks for nationwide freight delivery. Trading for 10 years, the company reports annual sales revenue of $4,800,000, cost of sales of $2,880,000 (fuel, vehicle parts, and driver wages), and operating overhead expenses of $1,200,000.\n\nStatement of financial position records show non-current assets of $3,200,000, current assets of $600,000 (including $150,000 spare parts inventory, $350,000 trade receivables, and $100,000 cash balance), and current liabilities of $500,000 (comprising $320,000 trade payables owed to fuel suppliers and a $180,000 bank overdraft). Non-current liabilities consist of a $1,400,000 10-year bank loan. To replace 8 aging transport trucks costing $700,000, the finance committee is evaluating alternative external sources of capital. The board is choosing between entering a 5-year leasing contract for the fleet or securing a new long-term bank loan at 7% annual interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the difference between short-term finance and long-term finance.",
+        "model_answer": "Short-term finance is money borrowed or repaid within one year [1], whereas long-term finance is capital secured for periods exceeding one year [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "short-term <= 1 year",
+            "long-term > 1 year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Working Capital for this transport company and explain what this result indicates.",
+        "model_answer": "Working Capital = Current Assets ($600,000) - Current Liabilities ($500,000) = $100,000 [k]. This positive figure means current assets exceed current liabilities, giving a $100,000 liquidity buffer [app], enough to settle its $320,000 fuel trade payables and $180,000 bank overdraft as they fall due [app]. Adequate working capital is vital for day-to-day trading [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$100,000 calculation",
+            "meaning of working capital liquidity buffer"
+          ],
+          "application_max_2": [
+            "$600,000 current assets vs $500,000 current liabilities",
+            "$320,000 fuel payables / $180,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current assets",
+            "current liabilities",
+            "payables",
+            "overdraft",
+            "$600,000",
+            "$500,000",
+            "trucks"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two factors a financial manager should consider when choosing a source of finance for asset replacement.",
+        "model_answer": "Factor 1: Financial cost and interest rates [k]. Taking loans adds 7% annual interest onto existing $1,200,000 overhead expenses [app], reducing overall profit for the year [an]. Factor 2: Length of time and capital matching [k]. Purchasing non-current fleet trucks costing $700,000 [app] requires long-term finance to match the asset's useful operational life [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost / interest rate",
+            "time period / matching asset life"
+          ],
+          "application_max_2": [
+            "7% interest / $1,200,000 overheads",
+            "$700,000 fleet truck replacement"
+          ],
+          "analysis_max_2": [
+            "affects annual profit margins",
+            "ensures repayment aligns with long-term asset revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "interest",
+            "trucks",
+            "long-term",
+            "finance",
+            "$700,000",
+            "7%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think entering a 5-year leasing contract or taking a new long-term bank loan is the better option to acquire the $700,000 transport fleet? Justify your answer.",
+        "model_answer": "A 5-year leasing contract avoids a massive upfront cash payment [k], allowing the $700,000 fleet replacement [app] while keeping existing working capital of $100,000 intact [an]. Additionally, vehicle maintenance costs are often absorbed by the leasing firm. However, leasing means the company never owns the truck assets [k], increasing total cumulative costs over 5 years [an]. A long-term bank loan provides ownership of $700,000 non-current assets, but increases non-current liabilities from $1,400,000 to $2,100,000 [app] and incurs 7% interest charges. Overall, leasing is the better option because adding $700,000 in bank loans onto existing non-current liabilities of $1,400,000 creates high fixed-interest debt risk [eval], whereas leasing protects the narrow $100,000 working capital position safely [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "leasing avoids large capital sum upfront",
+            "loan gives ownership but increases debt liabilities"
+          ],
+          "application_max_2": [
+            "$700,000 transport fleet",
+            "$100,000 working capital",
+            "$1,400,000 non-current liabilities",
+            "7% interest"
+          ],
+          "analysis_max_2": [
+            "preserves short-term liquidity buffer",
+            "increases long-term debt liabilities and fixed-interest debt risk"
+          ],
+          "evaluation_max_2": [
+            "weighs fixed-interest financial risk against non-current asset ownership given existing debt levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "leasing",
+            "loan",
+            "trucks",
+            "liabilities",
+            "interest",
+            "$700,000",
+            "7%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_13",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A solar energy panel installation company operates as a Private Limited Company, installing residential solar equipment for homeowners. Trading for 5 years, the company reports annual sales revenue of $1,800,000, cost of sales of $1,080,000 (solar panels and mounting hardware), and operating expenses of $420,000. Balance sheet records show non-current assets of $950,000, current assets of $310,000 (including $140,000 panel inventory, $120,000 trade receivables, and $50,000 cash balance), and current liabilities of $210,000 (comprising $150,000 trade payables owed to equipment suppliers and a $60,000 bank overdraft).\n\nNon-current liabilities stand at $350,000 in long-term bank loans. To fund a $300,000 research and development expansion into commercial battery storage systems, the finance manager is evaluating funding sources. The management team is choosing between applying for a government green energy grant or securing venture capital equity investment from an external green technology fund.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Government Grant' as a source of business finance.",
+        "model_answer": "A government grant is a non-repayable financial contribution provided by public authorities to businesses to encourage specific activities like green innovation or regional employment [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "non-repayable sum provided by government for a specific purpose",
+            "e.g. to encourage green innovation or regional employment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this solar installation firm and outline what this result indicates.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities [k] = ($310,000 - $140,000) / $210,000 = $170,000 / $210,000 = 0.81 : 1. This result indicates the firm has $0.81 of liquid assets for every $1.00 of short-term liabilities [app], showing a potential liquidity deficit if the $150,000 trade payables are demanded immediately and the $60,000 bank overdraft is called in [app]. An acid test below 1.0 signals limited coverage of immediate debts without selling inventory [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.81 : 1 calculation",
+            "explanation of liquid asset deficiency relative to short-term debts"
+          ],
+          "application_max_2": [
+            "$0.81 liquid assets per $1 liability",
+            "$150,000 trade payables / $60,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "inventory",
+            "$310,000",
+            "$140,000",
+            "$210,000",
+            "solar"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain one advantage and one disadvantage to an enterprise of raising capital through venture capital equity investment.",
+        "model_answer": "Advantage: Permanent capital injection [k]. Venture capital provides the $300,000 expansion funds [app] without requiring monthly debt repayments or interest charges, preserving operational cash flow [an]. Disadvantage: Loss of equity ownership [k]. The green technology fund will demand a shareholding stake and board representation [app], diluting founder control over strategic decisions [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no debt repayment/interest burden",
+            "dilution of control / sharing future profits"
+          ],
+          "application_max_2": [
+            "$300,000 expansion capital",
+            "green technology fund equity stake"
+          ],
+          "analysis_max_2": [
+            "protects cash flow and liquidity",
+            "reduces original owners' managerial authority"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "venture capital",
+            "equity",
+            "fund",
+            "$300,000",
+            "cash",
+            "green"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think securing a government green energy grant or issuing venture capital equity is the better funding source for the $300,000 commercial battery expansion? Justify your answer.",
+        "model_answer": "A government green energy grant provides $300,000 capital upfront that does not require repayment or interest payments [k], protecting existing operating expenses of $420,000 [app] while keeping 100% ownership control intact [an]. However, grants involve complex application processes and strict compliance conditions [k], and funding may not be guaranteed. Venture capital equity secures $300,000 reliably [app], but requires giving up equity shares and future dividend profits to the green technology fund [an]. Overall, a government grant is the better funding source because it provides zero-cost capital without diluting share ownership [eval], whereas taking venture capital equity permanently surrenders corporate control and future profits when a grant offers interest-free funding [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grant is non-repayable without ownership dilution",
+            "venture capital gives equity but loses ownership/profits"
+          ],
+          "application_max_2": [
+            "$300,000 battery expansion",
+            "$420,000 operating expenses",
+            "green tech fund equity"
+          ],
+          "analysis_max_2": [
+            "preserves full ownership and avoids interest expense",
+            "secures guaranteed funds but surrenders equity share"
+          ],
+          "evaluation_max_2": [
+            "weighs grant compliance complexity against permanent equity dilution"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "grant",
+            "equity",
+            "venture capital",
+            "expenses",
+            "panels",
+            "$300,000",
+            "green energy"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_14",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An artisanal pottery workshop operates as a Partnership, producing handmade ceramic tableware for specialty boutiques. The business has been operating for 3 years and reports annual sales revenue of $320,000, cost of sales of $180,000 (clay, glazes, and kiln fuel), and operating expenses of $90,000. Statement of financial position figures indicate non-current assets of $160,000, current assets of $80,000 (including $45,000 inventory, $25,000 trade receivables, and $10,000 cash balance), and current liabilities of $70,000 (comprising $50,000 trade payables to clay suppliers and a $20,000 bank overdraft).\n\nNon-current liabilities stand at $50,000 in long-term bank loans. To fund a $60,000 workshop expansion involving electric kilns, the partners are evaluating alternative funding options. The partners are choosing between launching an online reward-based crowdfunding campaign or applying for a $60,000 specialized microfinance loan at an annual interest rate of 8%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Crowdfunding' as a source of business finance.",
+        "model_answer": "Crowdfunding is a method of raising capital by collecting small financial contributions from a large number of individuals, typically via online platforms [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raising capital by collecting small contributions from many individuals online",
+            "typically via reward-based platforms without interest or debt liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Working Capital for this pottery workshop and explain what this figure indicates about short-term solvency.",
+        "model_answer": "Working Capital = Current Assets ($80,000) - Current Liabilities ($70,000) = $10,000 [k]. This positive figure shows the workshop has a minimal liquidity buffer [app] to settle its $50,000 trade payables and $20,000 bank overdraft as they fall due [app]. Minimal working capital leaves little room for unexpected expenses or slow-paying customers [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "$10,000 calculation",
+            "explanation of minimal liquidity margin"
+          ],
+          "application_max_2": [
+            "$80,000 current assets vs $70,000 current liabilities",
+            "$50,000 trade payables / $20,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "current assets",
+            "current liabilities",
+            "payables",
+            "overdraft",
+            "$80,000",
+            "$70,000",
+            "pottery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks to a small business of securing capital through microfinance loans.",
+        "model_answer": "Drawback 1: High interest expenses [k]. Paying 8% interest on the $60,000 microfinance loan [app] increases annual operating expenses beyond $90,000, reducing net profit [an]. Drawback 2: Risk of debt burden [k]. Adding $60,000 in microfinance loans doubles non-current liabilities from $50,000 [app], creating severe repayment pressure if pottery sales decrease [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high interest rates",
+            "increased debt burden / default risk"
+          ],
+          "application_max_2": [
+            "8% interest rate",
+            "$60,000 microfinance loan / $50,000 existing loans"
+          ],
+          "analysis_max_2": [
+            "increases operating overhead expenses",
+            "elevates financial risk during sales downturns"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "microfinance",
+            "interest",
+            "loans",
+            "expenses",
+            "liabilities"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think an online reward-based crowdfunding campaign or a $60,000 microfinance loan is the better financing option for the electric kiln expansion? Justify your answer.",
+        "model_answer": "An online reward-based crowdfunding campaign raises $60,000 from small backers [app] without incurring interest expenses or creating debt liabilities [k], preserving the narrow $10,000 working capital buffer [an]. Additionally, it acts as marketing promotion for ceramic tableware products. However, if the campaign fails to reach its $60,000 target, zero funds are received [k]. A $60,000 microfinance loan provides guaranteed capital immediately, but incurs 8% interest charges that increase annual operating expenses of $90,000 [app] and add debt liabilities [an]. Overall, reward-based crowdfunding is the better option because taking an 8% interest loan when working capital is only $10,000 creates unsustainable debt risks [eval], whereas crowdfunding provides debt-free capital while testing market demand for the expanded pottery line [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "crowdfunding provides debt-free capital but risks non-completion",
+            "microfinance offers guaranteed cash but incurs interest/debt liabilities"
+          ],
+          "application_max_2": [
+            "$60,000 electric kilns",
+            "$10,000 working capital",
+            "8% interest rate",
+            "$90,000 operating expenses"
+          ],
+          "analysis_max_2": [
+            "protects cash flow and generates pre-orders",
+            "adds fixed interest overheads and financial risk"
+          ],
+          "evaluation_max_2": [
+            "weighs debt interest risk against crowdfunding target completion risk given low working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "crowdfunding",
+            "microfinance",
+            "kilns",
+            "interest",
+            "expenses",
+            "$60,000",
+            "8%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_15",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial landscaping and garden design firm operates as a Private Limited Company. The business generates annual sales revenue of $1,200,000, cost of sales of $720,000 (plants, stone materials, and fuel), and operating expenses of $360,000. Cash-flow forecasting indicates strong seasonal volatility: monthly cash inflows average $100,000 in summer but drop to $40,000 in winter, while monthly cash outflows remain constant at $80,000 due to equipment leases and permanent staff wages.\n\nBalance sheet records show opening cash balance of $20,000, trade receivables of $110,000 (with customer credit terms of 60 days), inventory of $90,000, and current liabilities of $160,000 (including $110,000 in trade payables owed to stone nurseries due in 30 days and a $50,000 bank overdraft). To solve a projected winter cash deficit of $40,000 per month, directors are deciding whether to negotiate debt factoring for trade receivables or delay payments to stone nurseries from 30 days to 60 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'Cash-Flow Forecast' and state its main purpose.",
+        "model_answer": "A cash-flow forecast is an estimate of a business's expected cash inflows and outflows over a future period [1]. Its main purpose is to anticipate cash surpluses or deficits to manage liquidity effectively [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "definition of expected cash inflows/outflows",
+            "purpose to identify future surpluses/deficits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Net Cash Flow for a winter month where inflows are $40,000 and outflows are $80,000, and state the closing bank balance given an opening balance of $20,000.",
+        "model_answer": "Net Cash Flow = Cash Inflows ($40,000) - Cash Outflows ($80,000) = -$40,000 [k]. This net cash deficit of $40,000 means outflows exceed inflows in winter, draining the opening balance [app]. Closing Bank Balance = Opening Balance ($20,000) + Net Cash Flow (-$40,000) = -$20,000 [k], meaning the firm would end the month $20,000 overdrawn, matching the projected deficit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "-$40,000 net cash flow",
+            "-$20,000 closing balance"
+          ],
+          "application_max_2": [
+            "$40,000 inflows vs $80,000 outflows",
+            "$20,000 opening balance to negative balance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inflows",
+            "outflows",
+            "balance",
+            "overdraft",
+            "deficit",
+            "$40,000",
+            "$80,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain how debt factoring works to resolve short-term cash flow deficits for a business.",
+        "model_answer": "Debt factoring sells unpaid invoices to a third-party agency for immediate cash [k]. A debt factoring agency buys the business's $110,000 trade receivables at a discount [app], providing immediate cash inflows of around 80-90% [k]. This injects liquid funds into the bank account [an], eliminating the -$40,000 winter cash deficit [app] and enabling payment of $110,000 trade payables without relying on the $50,000 bank overdraft [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debt factor buys unpaid invoices for cash upfront",
+            "business receives immediate liquid funds"
+          ],
+          "application_max_2": [
+            "$110,000 trade receivables",
+            "-$40,000 winter cash deficit / $50,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "accelerates cash inflows into bank account",
+            "resolves seasonal liquidity shortfall without debt"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "debt factoring",
+            "receivables",
+            "inflows",
+            "deficit",
+            "overdraft"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think debt factoring or delaying supplier trade payables from 30 to 60 days is the better strategy to overcome the $40,000 winter cash deficit? Justify your answer.",
+        "model_answer": "Debt factoring converts $110,000 trade receivables into immediate cash inflows [app], directly clearing the $40,000 winter cash deficit [app] and guaranteeing liquidity through the winter months [an]. However, the debt factor charges a commission fee (e.g. 5-10%) [k], reducing net profit margins [an]. Delaying payments to stone nurseries from 30 to 60 days reduces short-term cash outflows for $110,000 trade payables without incurring factoring fees [k]. But delaying payments risks damaging relationships with stone suppliers, who may refuse future credit or deliveries. Overall, debt factoring is the better strategy because securing immediate cash inflows guarantees survival through winter months [eval], whereas risking supplier refusal during peak spring prep could threaten annual revenue of $1,200,000 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "factoring gives immediate cash but incurs commission fees",
+            "delaying payables saves fees but damages supplier trust"
+          ],
+          "application_max_2": [
+            "$110,000 trade receivables",
+            "$40,000 winter cash deficit",
+            "30 to 60 days credit terms",
+            "$1,200,000 revenue"
+          ],
+          "analysis_max_2": [
+            "guarantees liquidity cover during off-season",
+            "risks supply disruption and loss of credit terms"
+          ],
+          "evaluation_max_2": [
+            "weighs factoring commission cost against severe supply chain disruption risk during seasonal downturn"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "debt factoring",
+            "payables",
+            "receivables",
+            "deficit",
+            "nurseries",
+            "inflows"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_16",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A boutique fashion designer operates as a Sole Trader, creating custom formal dresses and bridal gowns. Annual sales revenue totals $400,000, cost of sales is $220,000 (silk fabrics and embellishments), and operating overhead expenses are $130,000 (studio rent and marketing). Cash-flow forecasts highlight severe working capital pressure due to upfront fabric purchases 90 days before customer final payments.\n\nBalance sheet data presents opening cash balance of $5,000, current assets of $85,000 (including $50,000 fabric inventory, $30,000 trade receivables, and $5,000 cash balance), and current liabilities of $105,000 (comprising $75,000 trade payables owed to silk suppliers and a $30,000 bank overdraft), creating a negative working capital of -$20,000. To resolve an upcoming cash deficit of $25,000 next quarter, the designer is reviewing cash-flow strategies. The sole trader is choosing between requiring a 50% upfront cash deposit from bridal clients or delaying the purchase of a $25,000 digital embroidery machine.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two items that represent cash outflows in a cash-flow forecast.",
+        "model_answer": "Outflow 1: Payments to trade payables for raw material supplies [1]. Outflow 2: Payment of operating overhead expenses such as rent or utility bills [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "payments to suppliers / payables",
+            "payment of operating expenses / wages / rent"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this boutique designer and explain why this ratio indicates severe illiquidity.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities [k] = $85,000 / $105,000 = 0.81 : 1. This result of 0.81:1 indicates the designer possesses only $0.81 of current assets for every $1.00 of current liabilities [app], showing an inability to pay $75,000 trade payables and clear the $30,000 bank overdraft [app]. A current ratio below 1.0 confirms severe illiquidity and short-term solvency problems [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.81 : 1 calculation",
+            "explanation of short-term asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.81 assets per $1 liability",
+            "$75,000 trade payables / $30,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "liabilities",
+            "$85,000",
+            "$105,000",
+            "$75,000",
+            "boutique"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways a business can manage inventory levels to improve working capital.",
+        "model_answer": "Way 1: Implement Just-In-Time (JIT) ordering [k], purchasing silk fabrics only when customer dress orders are placed [app], reducing the $50,000 inventory tied up in storage [an]. Way 2: Clear outdated inventory [k], discounting unsold dress fabrics [app] to generate immediate cash inflows and improve working capital liquidity [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "implement JIT ordering",
+            "discount/sell off slow-moving inventory"
+          ],
+          "application_max_2": [
+            "$50,000 fabric inventory",
+            "silk fabrics for dress orders"
+          ],
+          "analysis_max_2": [
+            "prevents cash being locked in physical stock",
+            "generates immediate cash inflows to improve working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inventory",
+            "fabrics",
+            "working capital",
+            "cash",
+            "silk"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think requiring a 50% upfront cash deposit from bridal clients or delaying the purchase of a $25,000 digital embroidery machine is the better strategy to solve the -$20,000 working capital position? Justify your recommendation.",
+        "model_answer": "Requiring a 50% upfront cash deposit from bridal clients generates immediate cash inflows [k], reducing cash tied up in $30,000 trade receivables [app] and directly covering the $25,000 projected cash deficit upfront [an]. However, demanding upfront deposits may turn away prospective brides to rival designers [k+an]. Delaying the purchase of the $25,000 digital embroidery machine immediately prevents a major cash outflow [k], preserving $25,000 cash balance [app] and avoiding deepening the $30,000 bank overdraft [an]. But delaying machine acquisition slows production expansion. Overall, requiring a 50% upfront deposit is the better long-term strategy because custom gown manufacturing requires significant raw fabric expense [eval]; securing deposits fixes the structural working capital deficit of -$20,000 permanently, whereas delaying machinery only postpones capital expenditure without fixing daily cash collection [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "upfront deposit creates immediate cash inflow",
+            "delaying asset purchase avoids major cash outflow"
+          ],
+          "application_max_2": [
+            "50% deposit on bridal gowns",
+            "$25,000 embroidery machine",
+            "-$20,000 working capital",
+            "$30,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "fixes cash cycle timing gap",
+            "prevents cash drain but delays operational expansion"
+          ],
+          "evaluation_max_2": [
+            "weighs structural cash flow cycle improvement against customer loss risk given negative working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "deposit",
+            "embroidery",
+            "working capital",
+            "overdraft",
+            "bridal",
+            "deficit",
+            "$25,000",
+            "50%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_17",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A fruit juice bottling company operates as a Private Limited Company, packaging pasteurized juices for supermarkets. The enterprise reports annual sales revenue of $2,800,000, cost of sales of $1,680,000 (fruit concentrates and glass bottles), and operating overhead expenses of $700,000. Cash flow forecasting indicates that during fruit harvesting months, cash outflows reach $260,000 per month due to bulk concentrate purchases, while cash inflows are delayed to $180,000 per month due to 60-day supermarket credit terms.\n\nStatement of financial position data shows opening cash balance of $25,000, current assets of $520,000 (including $280,000 inventory, $190,000 trade receivables, and $50,000 cash balance), and current liabilities of $410,000 (comprising $290,000 trade payables owed to growers and a $120,000 bank overdraft). To resolve a projected seasonal cash deficit of $80,000 next month, the board is comparing arranging a temporary bank loan at 7% annual interest versus offering a 3% cash discount to supermarket trade receivables for 14-day payment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Net Cash Flow for a month with cash inflows of $180,000 and cash outflows of $260,000.",
+        "model_answer": "Net Cash Flow = Cash Inflows ($180,000) - Cash Outflows ($260,000) = -$80,000 (net cash deficit of $80,000) [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Inflows - Outflows formula",
+            "-$80,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Acid-Test Ratio for this bottling company and explain what this result reveals about liquidity.",
+        "model_answer": "Acid-Test Ratio = (Current Assets - Inventory) / Current Liabilities [k] = ($520,000 - $280,000) / $410,000 = $240,000 / $410,000 = 0.59 : 1. This result indicates the firm has only $0.59 of liquid assets for every $1.00 of current liabilities [app], showing a severe liquidity deficit if $290,000 trade payables are demanded by growers [app]. Such a low acid-test ratio signals serious short-term liquidity problems [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.59 : 1 calculation",
+            "explanation of liquid asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.59 liquid assets per $1 liability",
+            "$290,000 payables to growers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "growers",
+            "inventory",
+            "$520,000",
+            "$280,000",
+            "$410,000",
+            "bottling"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two consequences to a business of failing to accurately forecast cash flows.",
+        "model_answer": "Consequence 1: Liquidity crisis and insolvency risk [k]. Failing to predict the -$80,000 seasonal deficit prevents paying $290,000 trade payables to growers [app], resulting in legal action or cancelled raw material supplies [an]. Consequence 2: Expensive emergency borrowing costs [k]. Exceeding the $120,000 bank overdraft limit forces taking high-interest loans [app], increasing annual operating expenses of $700,000 and reducing profit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "insolvency / inability to pay suppliers",
+            "expensive emergency borrowing fees"
+          ],
+          "application_max_2": [
+            "-$80,000 seasonal deficit / $290,000 payables",
+            "$120,000 bank overdraft / $700,000 expenses"
+          ],
+          "analysis_max_2": [
+            "leads to raw material supply disruption",
+            "increases operating overheads and reduces net profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "forecast",
+            "deficit",
+            "payables",
+            "overdraft",
+            "expenses"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think arranging a temporary bank loan at 7% interest or offering a 3% cash discount for 14-day receivable payment is the better strategy to overcome the $80,000 cash deficit? Justify your decision.",
+        "model_answer": "Arranging a temporary bank loan provides an immediate $80,000 cash injection [app] to pay fruit growers upfront [an]. However, it incurs 7% interest charges [k], increasing annual operating expenses beyond $700,000 and adding debt liabilities [an]. Offering a 3% cash discount incentivizes supermarket credit customers to settle $190,000 trade receivables within 14 days [app], generating rapid cash inflows [k] without adding debt liabilities or interest overheads. The 3% discount reduces total sales revenue slightly (by $5,700), but avoids taking on new debt. Overall, offering a 3% cash discount is the better strategy because the 3% discount cost ($5,700) is far lower than taking loan debt when the acid-test ratio is already low at 0.59:1 [eval], safely accelerating cash inflows from trade receivables without worsening its debt position [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loan provides guaranteed cash but adds interest/debt",
+            "cash discount speeds inflows without debt but lowers revenue"
+          ],
+          "application_max_2": [
+            "7% interest rate",
+            "3% discount on $190,000 receivables",
+            "$80,000 cash deficit",
+            "0.59:1 acid-test ratio"
+          ],
+          "analysis_max_2": [
+            "secures immediate inventory funding",
+            "avoids long-term debt liabilities and interest strain"
+          ],
+          "evaluation_max_2": [
+            "weighs discount financial cost against debt interest and fixed-interest debt risks given low liquidity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loan",
+            "discount",
+            "receivables",
+            "interest",
+            "growers",
+            "$80,000",
+            "7%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_18",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "An event management and concert promotion firm operates as a Private Limited Company, organizing music festivals. Annual sales revenue totals $5,000,000, cost of sales is $3,200,000 (artist fees, stage rentals, and security), and operating overhead expenses are $1,100,000. The financial controller's cash-flow forecast indicates severe timing mismatches: artist deposits create cash outflows of $450,000 per month 4 months before events, while ticket sales inflows of $800,000 arrive only in the final 30 days.\n\nBalance sheet records show current assets of $650,000 (including $350,000 inventory, $200,000 trade receivables, and $100,000 cash) and current liabilities of $750,000 (comprising $500,000 trade payables and a $250,000 bank overdraft), giving a negative working capital of -$100,000. To resolve a projected net cash deficit of $200,000 next quarter, the board is deciding whether to negotiate 90-day extended credit with stage suppliers or sell $200,000 of sponsor trade receivables to a debt factor.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State the formula for Working Capital and calculate its value for this event company.",
+        "model_answer": "Working Capital = Current Assets - Current Liabilities [1]. Working Capital = $650,000 - $750,000 = -$100,000 [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Working Capital = Current Assets - Current Liabilities formula",
+            "-$100,000 calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Current Ratio for this event management company and explain why this ratio indicates financial distress.",
+        "model_answer": "Current Ratio = Current Assets / Current Liabilities [k] = $650,000 / $750,000 = 0.87 : 1. This result of 0.87:1 indicates the company has only $0.87 of current assets for every $1.00 of current liabilities [app], showing insufficient short-term assets to cover $500,000 trade payables and clear the $250,000 bank overdraft [app]. A current ratio below 1.0 signals financial distress and liquidity risk [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "0.87 : 1 calculation",
+            "explanation of short-term asset deficiency"
+          ],
+          "application_max_2": [
+            "$0.87 assets per $1 liability",
+            "$500,000 trade payables / $250,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "overdraft",
+            "liabilities",
+            "$650,000",
+            "$750,000",
+            "$500,000",
+            "event"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two causes of cash flow deficits in a service or event management enterprise.",
+        "model_answer": "Cause 1: Upfront operational expenditure timing [k]. Paying $450,000 monthly artist fees months before events [app] creates massive cash outflows long before revenue is collected [an]. Cause 2: Delayed cash inflows from clients/sponsors [k]. Holding $200,000 in corporate sponsor trade receivables [app] delays cash inflows needed to cover immediate venue and stage expenses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "upfront operational payments required early",
+            "delayed customer/sponsor payments"
+          ],
+          "application_max_2": [
+            "$450,000 monthly artist fees",
+            "$200,000 trade receivables from sponsors"
+          ],
+          "analysis_max_2": [
+            "creates severe cash drain before revenue arrives",
+            "locks cash liquidity in uncollected invoices"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "inflows",
+            "outflows",
+            "receivables",
+            "sponsor",
+            "artist"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think securing 90-day extended credit terms with stage suppliers or selling $200,000 sponsor trade receivables to a debt factor is the better strategy to eliminate the -$100,000 working capital deficit? Justify your answer.",
+        "model_answer": "Securing 90-day extended credit terms with stage suppliers delays cash outflows for $500,000 trade payables [app], allowing ticket sales revenue of $800,000 to arrive before bills are settled [an] without paying interest or discounting fees [k]. However, suppliers may refuse extended credit or raise equipment rental prices [k]. Selling $200,000 sponsor trade receivables to a debt factor provides immediate cash inflows of around $180,000 [app], directly eliminating the $200,000 cash deficit and reducing working capital strain [an]. But debt factoring incurs a commission charge that reduces net profit [k+an]. Overall, debt factoring is the better strategy because it injects immediate cash liquidity to clear the -$100,000 working capital deficit [eval], whereas relying on stage suppliers to grant 90-day credit when the current ratio is 0.87:1 risks vendor refusal and event cancellation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extending trade credit delays cash outflow without fees",
+            "debt factoring injects immediate cash but incurs commission costs"
+          ],
+          "application_max_2": [
+            "90-day credit on $500,000 payables",
+            "$200,000 debt factoring",
+            "-$100,000 working capital",
+            "0.87:1 current ratio"
+          ],
+          "analysis_max_2": [
+            "aligns cash outflows with ticket revenue timing",
+            "provides immediate liquidity cover to prevent default"
+          ],
+          "evaluation_max_2": [
+            "weighs factoring commission fee against supplier credit refusal risk in high-risk event context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "payables",
+            "receivables",
+            "credit",
+            "working capital",
+            "suppliers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_19",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A commercial bakery chain operates as a Private Limited Company, managing 6 regional bakeries producing packaged breads and cakes for retail grocery stores. The company's annual income statement shows sales revenue of $3,600,000, cost of sales of $2,160,000 (flour, yeast, sugar, and packaging), and operating overhead expenses of $900,000 (bakery rents, energy bills, and delivery logistics). Gross profit is $1,440,000 (40% Gross Profit Margin) and net profit before tax is $540,000.\n\nAfter deducting corporation tax of $80,000 and dividend distributions of $180,000 to shareholders, retained profit for the year stands at $280,000. Facing a 20% increase in flour raw material cost of sales, the board of directors is evaluating income statement adjustments to maintain net profit margins. The board is choosing between reducing operating overhead expenses by $150,000 through energy-efficiency cuts or raising wholesale bread prices by 8%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Net Profit Margin for this commercial bakery chain. Show your working.",
+        "model_answer": "Net Profit Margin = (Net Profit / Sales Revenue) x 100 = ($540,000 / $3,600,000) x 100 = 15% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Net Profit / Sales Revenue) x 100 formula",
+            "15% calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Outline how an increase in cost of sales impacts the gross profit and net profit of a manufacturing business.",
+        "model_answer": "A 20% rise in flour cost of sales directly increases production costs above $2,160,000 [app], which reduces gross profit below $1,440,000 [app]. Because net profit is gross profit minus operating expenses ($900,000), the lower gross profit directly reduces net profit and the margin percentage [k]. Cost of sales is deducted before expenses, so any increase flows straight through to both profit measures [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces gross profit figure",
+            "reduces net profit and profit margin percentage"
+          ],
+          "application_max_2": [
+            "$2,160,000 cost of sales",
+            "$1,440,000 gross profit / $900,000 expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit",
+            "net profit",
+            "cost of sales",
+            "expenses",
+            "flour",
+            "$2,160,000",
+            "$1,440,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why managers monitor retained profit on an income statement.",
+        "model_answer": "Reason 1: Internal source of expansion finance [k]. Retained profit of $280,000 provides interest-free funds [app] to purchase new baking machinery without borrowing [an]. Reason 2: Business growth buffer [k]. Retained profit accumulates in equity reserves after paying $180,000 dividends [app], strengthening balance sheet reserves to absorb future trading losses [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides internal reinvestment capital",
+            "builds financial reserve buffer against losses"
+          ],
+          "application_max_2": [
+            "$280,000 retained profit",
+            "$180,000 dividends to shareholders"
+          ],
+          "analysis_max_2": [
+            "avoids borrowing costs and debt interest",
+            "strengthens long-term capital stability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "profit",
+            "$280,000",
+            "$180,000",
+            "dividend",
+            "bakery",
+            "flour"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think reducing operating overhead expenses by $150,000 or raising wholesale bread prices by 8% is the better strategy to protect net profit margins against rising flour costs? Justify your answer.",
+        "model_answer": "Reducing operating overhead expenses by $150,000 cuts overhead costs from $900,000 to $750,000 [app], directly compensating for the 20% flour cost increase to safeguard net profit without changing product prices [an]. However, energy-efficiency cuts may require initial capital investment [k]. Raising wholesale bread prices by 8% increases sales revenue above $3,600,000 [app], preserving the 40% gross profit margin [k]. But grocery stores operate in a competitive market and may switch to alternative bakery suppliers, causing sales volume and revenue to drop below $3,600,000 [an]. Overall, reducing overhead expenses by $150,000 is the better strategy because it protects net profit internally [eval], whereas raising wholesale prices by 8% risks losing supermarket supply contracts in a price-sensitive grocery sector [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overhead reduction protects net profit margin internally",
+            "price increase preserves gross profit margin but risks sales volume loss"
+          ],
+          "application_max_2": [
+            "$150,000 overhead reduction from $900,000",
+            "20% flour cost increase",
+            "8% price rise",
+            "40% gross margin"
+          ],
+          "analysis_max_2": [
+            "protects net margin without customer backlash",
+            "risks contract loss and revenue contraction"
+          ],
+          "evaluation_max_2": [
+            "weighs internal operational efficiency gains against market demand elasticity and buyer power"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "expenses",
+            "prices",
+            "flour",
+            "gross profit",
+            "net profit",
+            "$150,000",
+            "8%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_20",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "A luxury watch manufacturing company operates as a Public Limited Company, producing handcrafted mechanical timepieces. Financial records report annual sales revenue of $8,000,000, cost of sales of $3,200,000 (precious metals, watch movements, and leather straps), and operating overhead expenses of $3,200,000 (artisan wages, boutique rents, and global marketing). Operating profit is $1,600,000, interest expenses total $300,000, and corporation tax is $260,000, leaving net profit for the year of $1,040,000.\n\nDividends paid to PLC shareholders total $700,000, leaving retained profit of $340,000. Non-current liabilities stand at $2,500,000 in long-term bank loans. To fund a $1,000,000 boutique retail expansion, the directors are analyzing the statement of profit or loss, debating whether to increase net profit retention by reducing annual shareholder dividends or cut operating overhead expenses by closing 2 underperforming boutiques.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the Operating Profit Margin for this luxury watch company. Show your working.",
+        "model_answer": "Gross Profit = Revenue ($8,000,000) - Cost of Sales ($3,200,000) = $4,800,000 [1]. Operating Profit Margin = (Operating Profit $1,600,000 / Revenue $8,000,000) x 100 = 20% [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(Operating Profit / Revenue) x 100 formula",
+            "20% calculation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the Profit Margin (Net Profit Margin) for this company and explain what this ratio measures.",
+        "model_answer": "Net Profit Margin = (Net Profit / Revenue) x 100 [k] = ($1,040,000 / $8,000,000) x 100 = 13%. This means the watch company retains $0.13 of net profit for every $1.00 of revenue after deducting cost of sales, the $3,200,000 operating overheads, $300,000 interest, and $260,000 tax [app]. This healthy margin shows strong control over production and overhead costs in the luxury watch market [app]. The ratio measures how efficiently revenue is converted into net profit [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "13% calculation",
+            "explanation of net profit conversion per dollar of sales"
+          ],
+          "application_max_2": [
+            "$1,040,000 net profit vs $8,000,000 revenue",
+            "$3,200,000 overheads / $300,000 interest"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "net profit",
+            "revenue",
+            "interest",
+            "$8,000,000",
+            "$1,040,000",
+            "$300,000",
+            "tax"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain the relationship between operating profit, net profit, and retained profit for a public limited company.",
+        "model_answer": "Operating profit ($1,600,000) is trading profit after deducting cost of sales and operating overheads [k], reflecting the core earnings from selling watches [app]. Net profit ($1,040,000) is calculated by deducting $300,000 interest expenses and $260,000 corporation tax from operating profit [app]. Retained profit ($340,000) is the final surplus remaining after paying $700,000 dividends to PLC shareholders [k], which is reinvested into non-current assets and future expansion [an]. Each measure deducts one more layer of costs or distributions, so retained profit always falls furthest down the statement [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "operating profit less interest/tax equals net profit",
+            "net profit less dividends equals retained profit"
+          ],
+          "application_max_2": [
+            "$1,600,000 operating profit",
+            "$1,040,000 net profit / $340,000 retained profit"
+          ],
+          "analysis_max_2": [
+            "demonstrates sequential profit deductions down income statement",
+            "links final retained surplus to equity growth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "operating profit",
+            "net profit",
+            "retained profit",
+            "dividends",
+            "interest",
+            "$1,600,000",
+            "$700,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think funding the $1,000,000 boutique expansion by reducing annual shareholder dividend payouts or by closing 2 boutiques to cut operating overhead expenses is the better option? Justify your answer.",
+        "model_answer": "Reducing annual dividend payouts from $700,000 increases retained profit above $340,000 [app], providing internal equity capital [k] for the $1,000,000 boutique expansion without incurring debt or closing stores [an]. However, lowering dividends may disappoint PLC shareholders, causing share prices on the stock exchange to fall [k+an]. Closing 2 underperforming boutiques cuts operating overhead expenses below $3,200,000 [app], directly expanding the 20% operating profit margin [k] and freeing operational cash flow [an]. But closing stores reduces total retail presence and sales revenue below $8,000,000. Overall, reducing dividend payouts is the better recommendation because maintaining store footprint protects the $8,000,000 luxury brand revenue [eval], whereas closing boutiques permanently damages global market share even if dividend yields fall temporarily [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reducing dividends retains cash without debt",
+            "store closures cut overheads but risk revenue loss"
+          ],
+          "application_max_2": [
+            "$1,000,000 boutique expansion",
+            "$700,000 dividends",
+            "$3,200,000 overheads",
+            "20% operating margin"
+          ],
+          "analysis_max_2": [
+            "preserves revenue base and retail presence",
+            "cuts fixed costs but contracts market footprint"
+          ],
+          "evaluation_max_2": [
+            "weighs shareholder dividend expectations against long-term luxury market positioning and revenue growth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "dividends",
+            "boutiques",
+            "retained profit",
+            "operating profit",
+            "$1,000,000",
+            "$700,000",
+            "shareholder"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]
