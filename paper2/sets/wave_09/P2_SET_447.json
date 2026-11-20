@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_447",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quanta Network Tools (QNT) is a private limited company in the business software sector, supplying data-analytics and automated-reporting subscriptions to mid-sized firms in Canada. Founded in 2015 by Priya Raman, it has a workforce of 45 and runs a flat structure with laissez-faire leadership, giving developers freedom over release schedules. QNT plans to invest $560,000 in an AI-driven analytics platform with self-service dashboards, financed by a $260,000 share issue and $300,000 retained profit. It has fixed costs of $196,000 a year, a variable cost of $4.20 a unit and a selling price of $11.20, and currently produces 70,000 units a year. Two problems persist: 5.4% of software releases contain defects, and developer turnover has reached 22% as rival firms recruit cloud specialists.",
+    "appendix_1_marketing_ops": "Product and Support Report — Q3 2025: QNT issued 12,400 licence renewals last quarter, with a 5.4% release defect rate down from 8.1% a year earlier. Client escalations averaged 19 a week and 11 of 35 corporate clients now demand a service-level agreement before renewal. Mean ticket resolution is 3.6 days and platform uptime reached 99.2%. A survey of 320 business clients found that 64% would pay up to $0.50 more for guaranteed uptime, and 59% rank data security above price. A skills audit shows 12 of 45 developers lack cloud certification; an external course costs $640 per developer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Quanta Network Tools for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "2,400", "2,800"],
+        ["Cost of sales", "1,440", "1,540"],
+        ["Gross profit", "960", "1,260"],
+        ["Operating profit", "288", "448"],
+        ["Capital employed", "1,800", "2,240"],
+        ["Interest payable", "18", "22"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 3.75% to 4.5%, increasing the opportunity cost of retaining cash and the price of future borrowing. (2) The national minimum wage will rise by 5.5% from $13.00 to $13.72 an hour from April 2026, raising wage bills across the software sector. (3) Cloud and software-licence input costs have risen 9.6% year-on-year, while spending on business analytics software grew 6.3% and overall inflation is 3.2%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QNT is considering a $260,000 share issue to help fund its $560,000 analytics platform. Explain two advantages for QNT of using $300,000 retained profit instead of issuing new shares.",
+      "model_answer": "Point 1: Retained profit does not dilute ownership or control, which matters to founder Priya Raman and the 45-person team because laissez-faire leadership depends on developers having freedom over release schedules. New shares would give outside investors a claim on future profits and a say in how the AI-driven analytics platform is run, whereas the $300,000 already earned keeps decision-making inside QNT. With developer turnover at 22%, losing founder control at the same time would make it harder to hold the remaining specialists together.\n\nPoint 2: Retained profit has no share-issue costs and creates no expectation of dividends, protecting cash while QNT covers fixed costs of $196,000 a year and tries to cut the 5.4% release defect rate. Every dollar not paid out to new shareholders can fund the 3.6-day ticket-resolution problem or the $640 per developer certification course. It is also immediate: the $300,000 is available now for the $560,000 platform, so QNT need not wait for investors who may be cautious while cloud input costs have risen 9.6%.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to QNT's ownership, costs and product problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "share issue", "$300,000", "$260,000", "$560,000", "$196,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QNT is launching self-service dashboards. Consider search-engine advertising, technology trade-journal advertising, or a webinar thought-leadership campaign. Which should QNT choose? Justify your recommendation.",
+      "model_answer": "Search-engine advertising: Paid search puts QNT in front of managers actively looking for analytics tools, so intent is high and spend can be capped daily, which suits a $560,000 platform launch. It can be measured click by click and adjusted quickly. The drawbacks are rising cost per click in a competitive software market and the fact that a search advert says little about the 99.2% uptime or the fall in release defects from 8.1% to 5.4% that distinguish QNT from rivals.\n\nTechnology trade-journal advertising: A trade title reaches chief information officers and data managers who buy business intelligence subscriptions, and a technical advert can carry the evidence that 11 of 35 corporate clients now demand in a service-level agreement. Its readership is narrow and print lead times are long, and it cannot demonstrate the self-service dashboards in use, which is what the 64% of 320 surveyed clients who would pay $0.50 more for guaranteed uptime want to see.\n\nWebinar thought-leadership campaign: Live webinars let Priya Raman demonstrate the dashboards, answer questions and capture qualified leads with real product evidence, while recordings can be reused at almost no extra cost. They build trust on data security, the factor 59% of surveyed clients rank above price. Webinars need presenters who are confident online and attendance can be low without promotion, but they reach exactly the audience QNT sells to.\n\nRecommendation: QNT should choose the webinar thought-leadership campaign. It demonstrates the product, addresses the security concerns of 59% of clients and produces reusable evidence at low cost, unlike paid search, which is rejected because it buys clicks without proof and grows expensive, or trade-journal advertising, which is rejected as slow and unable to demonstrate the $560,000 platform. Search can support the webinars later with tightly targeted keywords.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies promotional options with limited reference to QNT's software market.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options with some contextual evidence and emerging judgement.",
+        "level_3_9_to_12": "Evaluates all three options using QNT's survey data, client demands and launch budget, with a justified recommendation that explains why the other two are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["64%", "59%", "320 business clients", "$0.50", "5.4%", "35 corporate clients"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QNT's release defect rate is 5.4% and developer turnover has reached 22%. Explain two benefits for QNT of laissez-faire leadership and a flat structure in tackling these problems.",
+      "model_answer": "Point 1: Laissez-faire leadership lets experienced developers choose how they test and release code, which suits a skilled workforce of 45 and can raise motivation because specialists own their work. When developers control release schedules, they are more likely to catch faults before shipment, helping push the 5.4% defect rate down towards the 8.1%-to-5.4% improvement already made and protecting 12,400 licence renewals a quarter and the 99.2% uptime that clients value.\n\nPoint 2: A flat structure keeps the chain of command short, so a defect or a client escalation from the 19 a week can reach the developer who can fix it immediately, cutting the 3.6-day ticket-resolution time. It also supports the 11 of 35 corporate clients who now demand a service-level agreement, because decisions do not wait for several management layers. Together with laissez-faire leadership, the structure gives cloud specialists the autonomy that rival firms are using to recruit them, which can help reduce the 22% turnover.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QNT's defects, turnover and client service."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "flat structure", "5.4%", "22%", "workforce of 45", "19 a week"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QNT needs 12 developers trained in cloud certification. Consider internal mentoring by senior developers or an external certification course costing $640 per developer. Which should QNT choose? Justify your decision.",
+      "model_answer": "Internal mentoring: Senior developers can coach the 12 who lack cloud certification on QNT's own platform, tying the training directly to the 5.4% release defect rate and the self-service dashboards in the $560,000 upgrade. It costs no course fees and keeps all 45 staff productive, which matters while 19 escalations a week arrive and turnover is 22%. The weaknesses are that mentors' own work suffers, bad habits may be passed on, and there is no external certificate for the 11 of 35 corporate clients who now demand a service-level agreement.\n\nExternal certification course: The $640 per developer course gives a recognised qualification for all 12, costing $7,680 in total (12 × $640), which is small beside the $560,000 platform. It provides structured, up-to-date content and is evidence of competence that clients ranking data security above price can trust. It removes developers from release work briefly and its generic content may still need internal adaptation to QNT's own systems.\n\nDecision: QNT should choose the external certification course for the 12 developers, followed by short internal mentoring on its own code base. The recognised certificate supports the client demands behind 99.2% uptime and the 64% of surveyed clients willing to pay $0.50 more for guaranteed uptime, and $7,680 is affordable. Internal mentoring is rejected as the main route because it cannot produce the third-party evidence clients seek, though it remains the best way to apply what the course teaches. With 22% developer turnover, the certificate also makes QNT more attractive to the cloud specialists it is struggling to retain, so the $7,680 should be treated as retention spending as well as training.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Describes the two training methods with little application to QNT's skills gap.",
+        "level_2_5_to_8": "Analyses the benefits and drawbacks of both methods in QNT's context with some judgement.",
+        "level_3_9_to_12": "Comprehensively evaluates both methods against cost, disruption and client credibility, with a clear decision and explicit reasons for rejecting the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$640", "12 of 45", "22%", "99.2%", "cloud certification", "5.4%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QNT's management can use its cost, break-even and productivity data to plan the analytics platform.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QNT's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $11.20 − $4.20 = $7.00. Answer: contribution per unit is $7.00."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QNT's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $196,000 ÷ $7.00 = 28,000 units. Answer: break-even output is 28,000 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QNT's management can use this financial data.",
+          "model_answer": "1. With break-even at 28,000 units and output at 70,000 units, QNT has a margin of safety of 42,000 units, so the 5.4% release defect rate and 22% developer turnover would have to be severe before subscriptions stop covering the $196,000 fixed costs.\n2. Contribution per unit of $7.00 lets managers test the $0.50 premium that 64% of surveyed clients would pay for guaranteed uptime: raising price to $11.70 lifts contribution to $7.50 and lowers break-even, showing the value of the 99.2% uptime record.\n3. The $7.00 contribution and 42,000-unit margin of safety help judge whether the $260,000 share issue is really needed, or whether more of the $560,000 platform can be funded from retained profit without diluting Priya Raman's control.\n4. Average total cost of $7.00 a unit ($196,000 ÷ 70,000 = $2.80, plus $4.20) is a benchmark for the AI-driven platform: if automation cuts the 3.6-day ticket-resolution time and the 5.4% defects without raising variable cost, unit cost falls and margins widen."
+        }
+      ],
+      "model_answer": "(i) Contribution per unit = $7.00 | (ii) Break-even output = 28,000 units | (iii) Four contextual uses explained: margin of safety of 42,000 units against defects and turnover; testing the $0.50 uptime premium; judging the $260,000 share issue against retained profit; and unit-cost benchmarking at $7.00 for the $560,000 platform.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$7.00", "28,000", "42,000", "$196,000", "70,000", "8.1%"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QNT's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has QNT's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 16.0%\nROCE 2024 = 16.0%\nROCE 2025 = 20.0%\n\nDetailed workings: 2024 gross profit $960,000 ÷ revenue $2,400,000 × 100 = 40.0; 2025 $1,260,000 ÷ $2,800,000 × 100 = 45.0, as cost of sales rose only from $1,440,000 to $1,540,000. Operating profit $288,000 ÷ revenue $2,400,000 × 100 = 12.0 in 2024 and $448,000 ÷ $2,800,000 × 100 = 16.0 in 2025. Returns on capital: $288,000 ÷ $1,800,000 × 100 = 16.0 in 2024 and $448,000 ÷ $2,240,000 × 100 = 20.0 in 2025. Interest payable was only $18,000 and $22,000, so financing costs did not drive the change.\n\nEvaluation: All three measures improved. The gross margin rose from 40.0% to 45.0%, reflecting disciplined delivery costs and the 6.3% growth in analytics software spending, which let QNT add $400,000 of revenue while cost of sales rose just $100,000. The operating margin improved strongly from 12.0% to 16.0%, so the $196,000 fixed costs are being spread over more subscriptions. Returns on capital climbed from 16.0% to 20.0% even though capital employed grew by $440,000 for the platform, suggesting the investment is already earning returns. Because revenue, gross profit and operating profit all rose together, the improvement is broad-based rather than a one-off. The risk is that 5.4% of releases are defective, 22% of developers leave, and cloud input costs are up 9.6%; if the $560,000 platform is delayed, these gains could stall.\n\nConclusion: QNT's financial performance has improved. The gross margin (40.0% to 45.0%), operating margin (12.0% to 16.0%) and returns on capital (16.0% to 20.0%) all rose together with revenue. QNT should protect the position by using part of the $300,000 retained profit to cut the 5.4% defect rate and reduce developer turnover.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or simple changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Calculates all three ratios for both years with some contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation of revenue, costs, capital and interest, and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "12.0%", "16.0%", "20.0%", "$1,260,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QNT of adding AI-driven automated reporting to its subscriptions.",
+      "model_answer": "Advantage: Automated reporting cuts the 3.6-day ticket-resolution time and the 5.4% release defect rate because dashboards are generated directly from clean data, supporting the guaranteed uptime that 64% of 320 surveyed clients would pay $0.50 more for. It also answers the 11 of 35 corporate clients who demand a service-level agreement, protects the $7.00 contribution per unit, and helps justify the $560,000 platform while analytics spending grows 6.3%.\n\nDisadvantage: Building reliable automated reporting needs skilled developers, yet 12 of 45 lack cloud certification and turnover is already 22%, so the project may be delayed or produce errors that damage the 99.2% uptime record. Cloud and software-licence inputs have risen 9.6%, which pushes up the $4.20 variable cost per unit; if clients will not pay more than the $0.50 premium, contribution falls and the 42,000-unit margin of safety shrinks. Automated summaries would also still need checking before they reach the 11 of 35 corporate clients that demand a service-level agreement, so the 3.6-day ticket-resolution target could slip while developers debug report errors instead of the 5.4% release defects.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QNT's skills, survey data and cost base."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["automated-reporting", "64%", "$0.50", "5.4%", "$4.20", "$11.20"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.5%, the 5.5% minimum wage increase and the 9.6% rise in cloud and software-licence costs will affect QNT. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (3.75% to 4.5%): QNT has no bank loan in the case, so there is no direct interest charge on its $260,000 share issue or $300,000 retained profit, and the rise cannot be quantified as an interest bill from the insert. It still matters because it increases the opportunity cost of holding $300,000 as cash and makes any future borrowing for the $560,000 platform dearer, so the real effect is on financing choices rather than current profit.\n\nMinimum wage increase (5.5%, from $13.00 to $13.72): Each paid hour costs $0.715 more (5.5% × $13.00). The insert gives no hours worked and no individual pay rates, so an annual wage total cannot be invented; the defensible judgement is that with 45 staff and 22% turnover, replacement developers are hired at the new rate, and unless output of 70,000 units per year holds, unit labour cost rises and the $7.00 contribution is squeezed.\n\nCloud and software-licence costs (up 9.6%): QNT sells subscriptions that run on cloud infrastructure, so this is an unavoidable input, and 9.6% is the largest percentage change in the bulletin. The insert gives no separate cloud bill, so only the scale can be stated: it exceeds the 5.5% wage rise, it hits every one of the 70,000 subscriptions, and it arrives while the $560,000 AI platform will need more computing, not less.\n\nConclusion: The 9.6% rise in cloud and software-licence costs will have the greatest impact. It is the biggest percentage shock, it is unavoidable for a software business, and it compounds across all 70,000 units at a time when the new platform raises computing needs. The wage rise is second because it recurs with every replacement hire, while the interest rise is smallest and has no direct effect because QNT has no bank loan.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to QNT.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on QNT's costs, finance or prices in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that cloud and software-licence costs have the greatest impact and clear reasons why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.5%", "5.5%", "9.6%", "$13.72", "6.3%", "3.75%"]
+      }
+    }
+  ]
+}

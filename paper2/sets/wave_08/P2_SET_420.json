@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_420",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Zephyr Bio-Resources (ZBR) is a cooperative in the eco-packaging sector, employing a workforce of 35 at its moulded-fibre plant. Founded in 2012 by cooperative chair Ada Zephyr, the business supplies biodegradable trays to food retailers and operates a flat structure with democratic leadership. ZBR plans to invest $540,000 in a low-waste fibre-moulding line using crop residues, financed by a $240,000 bank loan and $300,000 from new member share contributions. It has fixed costs of $210,000 a year, a variable cost of $6.30 a unit and a selling price of $11.30, and currently produces 70,000 units a year. ZBR faces two problems: fibre-waste of 7.2% and irregular deliveries from seed suppliers.",
+    "appendix_1_marketing_ops": "Quality and Supply Report — Q4 2025: The moulding line produced 17,500 trays last quarter, with 7.2% scrapped because of uneven fibre, down from 10.1% previously. Retailer complaints about tray breakage fell from 33 to 15 per month. Average delivery time is 4.6 days. A survey of 620 shoppers found that 67% prefer biodegradable packaging and 54% would pay up to $0.35 more for it. Supplier deliveries arrived late 11 times last quarter, against a target of 3. The board is comparing end-of-line quality control inspection with quality assurance based on prevention and supplier partnerships, and is considering on-the-job training for 9 operators; off-the-job courses cost $880 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Zephyr Bio-Resources for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "760", "900"],
+        ["Cost of sales", "456", "495"],
+        ["Gross profit", "304", "405"],
+        ["Operating profit", "76", "117"],
+        ["Capital employed", "800", "900"],
+        ["Interest payable", "16", "20"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Retail Bulletin (February 2026): (1) The central bank has raised the base interest rate from 4.25% to 4.90%, increasing borrowing costs on variable-rate loans. (2) The national minimum wage will rise by 6.1% from $13.15 to $13.95 per hour from April 2026, raising the cooperative's wage bill. (3) Crop-residue and transport input costs have risen 9.4% year-on-year, while food-packaging inflation is 5.6% and sales of biodegradable food trays grew 4.4% over the period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "ZBR is raising $300,000 from new member share contributions for its $540,000 moulding line. Explain two advantages for ZBR of using member shares rather than the $240,000 bank loan.",
+      "model_answer": "Point 1: Member share contributions are equity, so the cooperative does not have to repay the $300,000 or pay interest on it, unlike the $240,000 bank loan. That protects cash flow while ZBR carries fixed costs of $210,000 a year and a 7.2% fibre-waste rate. More of the $5.00 contribution per unit can be spent on the low-waste fibre-moulding line and on solving the 11 late supplier deliveries rather than on debt service.\n\nPoint 2: Raising money from members strengthens the cooperative's own capital base and spreads the risk among the people who use and own it, instead of leaving a bank able to call in the loan. Ada Zephyr and the members keep control of decisions about biodegradable trays and the 620-shopper survey findings. Since 67% of shoppers prefer biodegradable packaging, the cooperative can reinvest any surplus in more capacity without first asking a lender's permission or meeting new repayment terms.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage of member shares over a bank loan identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual analysis of ZBR's $300,000 equity, loan and cooperative aims."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["member share contributions", "bank loan", "$300,000", "$240,000", "$540,000", "cooperative"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ZBR wants to grow sales of biodegradable trays to food retailers. Consider in-store shelf displays, food-retail trade fairs, or social-media campaigns. Which should ZBR choose? Justify your recommendation.",
+      "model_answer": "In-store shelf displays: A display beside the trays in food retailers would reach shoppers at the moment of purchase and can carry the message that 67% of the 620 surveyed shoppers prefer biodegradable packaging. This suits a cooperative with a modest budget and supports the $0.35 premium that 54% might pay. The drawback is that shelf space is limited and controlled by retailers, and a display cannot explain why ZBR's fibre trays are less wasteful than plastic once the shopper has walked past.\n\nFood-retail trade fairs: Meeting buyers face to face allows ZBR to show samples, discuss the 7.2% fibre-waste improvement and negotiate listings with several retailers at once. Samples let buyers judge tray strength against the 15 monthly breakage complaints. Trade fairs are expensive, however, for a 35-person cooperative funding a $540,000 line, and one event produces leads rather than guaranteed orders; follow-up is essential.\n\nSocial-media campaigns: Low-cost posts and short videos can reach the 54% of shoppers who would pay $0.35 more and build a brand story around crop-residue trays. Results can be measured and the campaign changed quickly. Its weaknesses are that engagement does not automatically become sales in food retailers, that rivals use the same channels, and that it does not persuade the retailers who decide whether to stock the trays.\n\nRecommendation: ZBR should choose in-store shelf displays, supported by low-cost social media. Displays are rejected as the only channel because they depend on retailer goodwill, but they win on cost and because they reach the shopper at the point of sale where the 67% preference matters. Trade fairs are rejected as too expensive for the cooperative right now, and social media alone is rejected because it influences consumers but not the retailers who control listings.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Names the promotional options with little reference to ZBR or its survey.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options in the context of ZBR.",
+        "level_3_9_to_12": "Evaluates all three options and recommends one with explicit reasons for rejecting the alternatives."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["67%", "620", "$0.35", "54%", "biodegradable", "food retailers"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ZBR's fibre-waste is 7.2% and supplier deliveries are irregular. Explain two benefits for ZBR of using democratic leadership with team working in its moulding plant.",
+      "model_answer": "Point 1: Democratic leadership asks the 35 members of staff how to reduce the 7.2% fibre-waste and how to cope with the 11 late supplier deliveries, drawing on the knowledge of operators who see uneven fibre every shift. Their ideas can improve mould settings and forward planning faster than a single manager, helping the plant hold the 17,500 trays produced last quarter and continue the fall from 10.1% waste. It also fits the flat structure, where suggestions reach Ada Zephyr without passing through many layers.\n\nPoint 2: Involving employees in decisions raises satisfaction and commitment, which supports team working and the quality assurance approach the board is considering. Higher motivation can reduce the 15 monthly breakage complaints because staff take ownership of tray quality, and it makes the $880 per employee off-the-job course a better investment when 9 operators are trained. For a cooperative, participation is consistent with member ownership, so the $540,000 moulding line is more likely to be used efficiently.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit of democratic leadership or team working identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for analysis applied to ZBR's waste, deliveries, flat structure and training."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "flat structure", "fibre-waste", "7.2%", "workforce of 35", "17,500"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ZBR must reduce fibre-waste and late deliveries. Consider end-of-line quality control inspection or quality assurance through prevention and supplier partnerships. Which should ZBR choose? Justify your decision.",
+      "model_answer": "Quality control inspection: Checking finished trays would catch breakage before they reach food retailers and directly address the 15 complaints a month. It gives straightforward pass/fail records and can be introduced quickly in a 35-person plant. However, inspection happens after the 7.2% of fibre has already been wasted, so it does not lower scrap or solve the 11 late deliveries; it also needs inspectors, adding cost to a cooperative with fixed costs of $210,000 a year, and rejects still have to be disposed of.\n\nQuality assurance: Prevention attacks the causes of uneven fibre through better mixing checks and mould maintenance, while supplier partnerships tackle the 11 late deliveries by agreeing reliable schedule with seed suppliers. The report already shows waste falling from 10.1% to 7.2%, so prevention has worked here. It also suits democratic leadership and team working because operators can stop the line when fibre quality drifts. It is slower to establish, needs training such as the $880 per employee courses for 9 operators, and cannot yet replace a final check on every tray.\n\nDecision: ZBR should choose quality assurance through prevention and supplier partnerships, keeping a light final inspection during the first weeks of the $540,000 line. Quality control is rejected as the main answer because it detects waste after it occurs and cannot fix supplier lateness; quality assurance wins because it removes the causes of both problems, protects the 67% of shoppers who prefer biodegradable packaging and makes better use of the workforce of 35. It also lets the cooperative train the 9 operators with the $880 courses in relevant prevention skills rather than in simple sorting, so the $540,000 line can raise tray quality as well as output.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Describes inspection and prevention with little application to ZBR.",
+        "level_2_5_to_8": "Analyses both approaches using ZBR's waste, complaints and delivery figures.",
+        "level_3_9_to_12": "Fully evaluates both approaches and reaches a justified decision that rejects the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["quality control", "quality assurance", "7.2%", "10.1%", "$540,000", "supplier partnerships"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ZBR's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ZBR's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $210,000 ÷ ($11.30 − $6.30) = $210,000 ÷ $5.00 = 42,000 units. Answer: break-even output is 42,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ZBR's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $11.30 − $6.30 = $5.00. Answer: contribution per unit is $5.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ZBR's management can use this financial data.",
+          "model_answer": "1. Compare the 42,000-unit break-even output with actual output of 70,000 units: the margin of safety is 28,000 units, so the cooperative knows how far retailer orders could fall before the $540,000 fibre-moulding line stops covering its $210,000 fixed costs.\n2. Test the survey result that 54% of shoppers would pay $0.35 more: a price of $11.65 would lift contribution to $5.35, worth 70,000 × $0.35 = $24,500 a year if the premium were obtained on all trays.\n3. Plan debt service: at 70,000 units total contribution is 70,000 × $5.00 = $350,000, leaving $140,000 after fixed costs to meet the $20,000 interest and repay the $240,000 bank loan.\n4. Benchmark performance with average total cost of $9.30 ($210,000 ÷ 70,000 + $6.30) and labour productivity of 70,000 ÷ 35 = 2,000 units per worker, so managers can judge whether the 7.2% fibre-waste and 11 late deliveries are pushing unit costs above that level."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 42,000 units | (ii) Contribution per unit = $5.00 | (iii) Four contextual uses: 28,000-unit margin of safety; $0.35 premium worth $24,500; total contribution of $350,000 for loan planning; and cost benchmarking at $9.30 with 2,000 units per worker.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for the correct formula and 1 mark for the accurate numerical answer in each of (i) and (ii); 1 mark for each of four valid applied uses in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["42,000", "$5.00", "70,000", "$210,000", "$6.30", "$11.30", "$9.30"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ZBR's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has ZBR's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 10.0%\nProfit Margin 2025 = 13.0%\nROCE 2024 = 9.5%\nROCE 2025 = 13.0%\n\nDetailed workings: 2024 gross profit = $760,000 revenue − $456,000 cost of sales = $304,000; 2025 gross profit = $900,000 − $495,000 = $405,000. For 2024, $304,000 ÷ $760,000 = 0.400; $76,000 operating profit ÷ $760,000 = 0.100; $76,000 ÷ $800,000 capital employed = 0.095. For 2025, $405,000 ÷ $900,000 = 0.450; $117,000 ÷ $900,000 = 0.130; $117,000 ÷ $900,000 = 0.130.\n\nEvaluation: Revenue rose by ($900,000 − $760,000) ÷ $760,000 = 18.4%, and cost of sales rose by only $39,000, so gross profit grew from $304,000 to $405,000. This is consistent with the 67% of surveyed shoppers who prefer biodegradable packaging and the 54% who would pay $0.35 more, suggesting ZBR is achieving better prices for its trays. Operating profit increased from $76,000 to $117,000, well ahead of revenue growth, showing that the $210,000 fixed costs were spread over more output even with 7.2% fibre-waste and 11 late deliveries. ROCE improved from 9.5% to 13.0% while capital employed increased from $800,000 to $900,000, so the new investment is raising returns. Interest payable rose from $16,000 to $20,000 on the $240,000 bank loan, which takes a small part of the benefit, but operating profit still covers it comfortably.\n\nConclusion: ZBR's profitability has improved on all three measures. Gross margin rose from 40.0% to 45.0%, operating margin from 10.0% to 13.0% and ROCE from 9.5% to 13.0%, and the gain in returns was achieved while the cooperative's asset base grew. The residual concerns are the interest charge and the 7.2% waste rate, but the $540,000 moulding line is currently generating stronger rather than weaker profitability.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Quotes selected Appendix 2 numbers with little accurate calculation.",
+        "level_2_5_to_8": "Calculates the three ratios for both years and describes the trend with some ZBR context.",
+        "level_3_9_to_12": "Accurate ratios for both years plus evaluation of revenue, costs, capital and interest with a justified conclusion."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "10.0%", "13.0%", "9.5%", "$540,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ZBR of using crop residues in its moulded-fibre trays.",
+      "model_answer": "Advantage: Crop residues are a renewable by-product, so using them supports the 67% of surveyed shoppers who prefer biodegradable packaging and the 54% who would pay $0.35 more. That helps ZBR hold its $11.30 selling price and $5.00 contribution per unit while the 9.4% rise in crop-residue and transport costs affects rivals, and it strengthens the case for the $540,000 low-waste moulding line in a cooperative owned by its members.\n\nDisadvantage: Residue supply varies with harvests, which helps explain the 11 late supplier deliveries against a target of 3, and uneven fibre is linked to the 7.2% waste rate and 15 monthly breakage complaints. If residues become scarce, the $6.30 variable cost may rise faster than the $0.35 premium can recover, squeezing the 45.0% gross margin. Quality assurance with supplier partnerships may be needed before the cooperative can rely on crop residues at the 70,000-unit output level, and the board should compare that extra cost with the $0.35 premium actually achieved before expanding the line further.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for development with survey, cost, waste and delivery figures."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["crop residues", "67%", "$0.35", "9.4%", "$6.30", "biodegradable"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.90%, the 6.1% minimum wage increase and the 9.4% rise in crop-residue and transport costs will affect ZBR. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.25% to 4.90%): If ZBR's $240,000 bank loan is on a variable rate, the rise of 0.65 percentage points adds 0.0065 × $240,000 = $1,560 a year, which is small against fixed costs of $210,000 and operating profit of $117,000. The $300,000 raised from member share contributions already limits how much the cooperative must borrow, and the rate can be fixed at the next review, so this is the least serious of the three changes.\n\nMinimum wage increase (6.1%, from $13.15 to $13.95 an hour): With a workforce of 35, higher pay for eligible staff raises the plant's wage bill and is unavoidable. The insert gives no hours worked or individual pay, so an annual wage total cannot be calculated honestly. The supported comparison is productivity of 70,000 units ÷ 35 workers = 2,000 units per worker; if the 7.2% fibre-waste falls and output holds, the extra wage cost is spread over 2,000 trays per worker. If late deliveries reduce output, unit labour cost rises and the $5.00 contribution shrinks. The effect is noticeable but can be managed through team working and training.\n\nInput-cost inflation (9.4% on crop residue and transport): The insert gives $6.30 variable cost per unit but no decomposition, so an honest upper bound assumes the whole amount is exposed: 9.4% × $6.30 = about $0.59 per unit, and on 70,000 units that is roughly $41,454 a year (70,000 × $0.5922). Even a smaller exposed share would reduce contribution significantly, and higher transport costs worsen the 11 late supplier deliveries. The $0.35 premium supported by 54% of shoppers recovers only part of this increase.\n\nConclusion: The 9.4% rise in crop-residue and transport costs will have the greatest impact. It affects every one of the 70,000 trays, could remove about $41,000 of annual contribution on the stated bound and threatens both the cost base and the delivery reliability of the $540,000 line. The interest rise costs only $1,560 a year and can be fixed, while the wage rise can be absorbed by maintaining 2,000 units per worker, so neither matches the breadth of input-cost inflation.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three changes with limited application to ZBR.",
+        "level_2_5_to_8": "Analyses at least two changes using ZBR's figures with some judgement.",
+        "level_3_9_to_12": "Evaluates all three changes in context with insert-derived arithmetic and a justified greatest-impact conclusion."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.90%", "6.1%", "9.4%", "$13.95", "$6.30", "$240,000"]
+      }
+    }
+  ]
+}

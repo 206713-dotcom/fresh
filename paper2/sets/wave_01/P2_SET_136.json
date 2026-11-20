@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_136",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Calder Vale Aggregates (CVA) is a private limited company in the quarrying and aggregates sector, employing a workforce of 140. Founded in 2003 by Derek Maddox, the business supplies crushed stone and rail ballast to regional road contractors and operates a hierarchical organisational structure with autocratic leadership. CVA plans to invest $1,450,000 in a new automated crushing and screening plant, financed by a $950,000 ten-year bank loan and $500,000 retained profit. It has fixed costs of $1,600,000 a year, a variable cost of $10.00 a unit and a selling price of $18.00, and currently produces 300,000 units a year. CVA faces two operational problems: dust levels at the crushing plant have breached safety limits, and absenteeism has reached 8%.",
+    "appendix_1_marketing_ops": "Quality and Safety Report — Q3 2026: The crushing plant processed 74,500 units last quarter at an off-spec rate of 2.2%, down from 3.5% a year ago. Dust monitoring recorded 6 readings above the safe limit in August, and 11 near-miss incidents were logged. Absenteeism has reached 8%; 34 of 140 staff have not completed dust and respirator refresher training, and the trade college course costs $750 per employee. Output per worker stands at 2,143 units a year.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Calder Vale Aggregates for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "4,680", "5,400"],
+        ["Cost of sales", "3,042", "3,240"],
+        ["Gross profit", "1,638", "2,160"],
+        ["Operating profit", "702", "1,080"],
+        ["Capital employed", "3,900", "4,800"],
+        ["Interest payable", "140", "180"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.75% to 5.5% in October 2026, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 5.2% from $12.40 to $13.04 per hour from April 2027, raising wage bills. (3) Diesel, explosives and haulage input costs have risen 9.6% year-on-year, while aggregates demand from road contractors grew 2.8% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "CVA plans to finance part of the crushing plant investment with a ten-year bank loan. Explain two advantages for CVA of using retained profit to fund $500,000 of the expansion instead of borrowing more.",
+      "model_answer": "Point 1: Using retained profit costs CVA nothing in repayments or interest, which protects cash flow at a time when the business already carries fixed costs of $1,600,000 a year and is committing to a $950,000 ten-year bank loan for the remaining $950,000-worth of the $1,450,000 project. Every dollar not paid as interest can offset the 9.6% rise in diesel and haulage input costs, helping CVA hold its $18.00 selling price against contractors who push for discounts and protecting the margin on 300,000 units a year.\n\nPoint 2: Retained profit carries no collateral or repossession risk, so the $500,000 is not at risk if contractor demand disappoints or near-miss stoppages intensify. It keeps the automated crushing and screening plant free from lender covenants that might restrict Maddox's control over hiring, wage settlements and safety investment, which is valuable for a private limited company with a hierarchical, autocratic structure that depends on decisive leadership from Derek Maddox and his directors.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Calder Vale Aggregates and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$500,000", "$950,000", "$1,450,000", "$1,600,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "CVA is launching its new rail ballast supply contract for regional road contractors. Consider a national television campaign, trade-magazine advertising, or sponsorship of a regional construction expo. Which should CVA choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Trade-magazine advertising: Civil-engineering and aggregates trade press are read directly by the procurement managers and engineers who specify rail ballast and crushed stone. A full-page advert costs a small fraction of television and can carry CVA's $18.00 price and 2.2% off-spec performance data, and can be timed to contractors' budget-setting seasons. Its weakness is passive reach — it informs but cannot demonstrate the new automated plant's capacity or safety record.\n\nSponsorship of a regional construction expo: A stand would put buyers face to face with CVA, allow samples of rail ballast to be inspected and generate enquiries within days, and the 2.8% demand growth suggests contractors are actively specifying. However, stand fees, staffing the stand for three days and lost output make it expensive per qualified lead, and it reaches only visitors who attend that one event.\n\nNational television campaign: Television would build broad national awareness quickly and could launch CVA's brand publicly. But production and airtime costs are enormous for a private limited company with 140 employees, and the audience would be overwhelmingly outside CVA's regional catchment; householders do not order rail ballast, so awareness would not convert into contractor orders for a bulk supplier producing 300,000 units a year.\n\nRecommendation: CVA should choose trade-magazine advertising. It targets exactly the buyers who specify aggregates, costs a fraction of television, recurs across the buying cycle unlike a one-off expo, and can feature the 2.2% off-spec rate and the new plant's throughput. Television is rejected as unaffordable and untargeted for a regional B2B supplier; the expo is rejected as a useful supporting tactic but too narrow and infrequent to carry the launch alone.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of CVA with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of CVA with a well-justified recommendation explaining why television and the expo sponsorship are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["rail ballast", "regional road contractors", "$18.00", "2.2%", "300,000", "2.8%"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "CVA's absenteeism has reached 8% and 34 of 140 staff have not completed dust and respirator refresher training. Explain two benefits for CVA of its hierarchical organisational structure with autocratic leadership.",
+      "model_answer": "Point 1: Autocratic leadership suits a safety-critical quarry where dust levels have already breached limits and 11 near-miss incidents were logged. Derek Maddox's supervisors can issue immediate, unambiguous instructions — stop work, fit respirators, isolate the crusher — without waiting for committee agreement, which is vital when seconds matter around crushing machinery and improvisation could kill. Fast, decisive orders reduce injury risk and the disruption that inflates the 8% absenteeism.\n\nPoint 2: A hierarchical structure gives every one of the 140 employees a clear line manager, defined chain of command and named accountability for safety and quality. Dust protocols and the 2.2% off-spec target cannot be ignored without consequence, and crew supervisors can report absence and quality figures weekly, escalate chronic cases to Maddox early, and schedule the 34 outstanding refresher courses before output per worker (2,143 units a year) slips further. Scheduling and accountability sit with named tiers rather than informal understandings, so nothing is lost as the automated plant comes online.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CVA's safety record, absenteeism and plant performance."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["hierarchical organisational structure", "autocratic leadership", "absenteeism", "8%", "34 of 140 staff", "11 near-miss"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "CVA must certify 34 production staff in dust safety and machine operation before the new plant starts. Consider on-the-job training or off-the-job training at the trade college. Which should CVA choose? Justify your decision.",
+      "model_answer": "Off-the-job training: The trade college course at $750 per employee would give all 34 staff structured, certificated teaching on dust control, respirator fit and crusher isolation. Total cost is $25,500 (34 × $750), affordable against fixed costs of $1,600,000 and the $1,450,000 investment already committed. Certification matters because road contractors and safety auditors increasingly require documented proof of training, and the fee also buys a recognised qualification beyond CVA. Drawbacks: staff leave production, courses are generic, and respirator fit varies by face shape, so classroom teaching cannot replace supervised practice at the actual crusher.\n\nOn-the-job training: Coaching by experienced crew at the plant is machine-specific, costs nothing in fees, keeps output flowing toward 300,000 units a year and corrects bad habits in context with signed-off competency cards crew by crew. However, uncertified trainers may pass on shortcuts, training records may not satisfy external safety auditors, and learning beside an active crushing face carries exactly the near-miss risk CVA is trying to eliminate — 11 incidents were logged last quarter.\n\nDecision: CVA should choose off-the-job training at the trade college, followed by one day of machine-side verification per employee. Safety-critical certification cannot be guaranteed in-house, and $25,500 is trivial against the legal and human cost of another dust-related injury. On-the-job training alone is rejected because it produces no certificated evidence of competence, risks entrenching unsafe habits, and would leave CVA exposed in any subsequent dust-related claim; the college course without machine-side follow-up is rejected because respirator fit and crusher controls must be checked on site.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to CVA.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of CVA.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of CVA with a well-justified decision covering cost, safety certification and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$750", "34 of 140 staff", "$1,450,000", "dust and respirator refresher training", "absenteeism", "11 near-miss"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how CVA's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate CVA's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $1,600,000 ÷ ($18.00 − $10.00) = $1,600,000 ÷ $8.00 = 200,000 units. Answer: break-even output is 200,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate CVA's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $18.00 − $10.00 = $8.00. Answer: contribution per unit is $8.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways CVA's management can use this financial data.",
+          "model_answer": "1. CVA's managers can hold the 100,000-unit margin of safety (300,000 units minus the 200,000 break-even output) in reserve against contract delays or dust-related stoppages, so production planning stays stable while the new plant beds in.\n2. Contribution per unit of $8.00 lets CVA model tenders: if a contractor demands $16.50 a unit, contribution falls to $6.50, and managers can check the discounted contract still covers the $1,600,000 fixed costs before signing.\n3. The unit cost of $15.33 a unit ($4,600,000 total costs divided by 300,000 units) can be benchmarked quarter by quarter to expose waste, renegotiate diesel and explosives supply against the 9.6% input-cost rise, and set targets for the automated line.\n4. Knowing break-even output (200,000 units) lets managers set the capacity-utilisation threshold needed to service the $950,000 bank loan and to judge when the crushing plant has earned back its $1,450,000 cost before committing further capital."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 200,000 units | (ii) Contribution per unit = $8.00 | (iii) Four contextual uses explained: margin of safety of 100,000 units against 300,000-unit output; tender modelling at $8.00 contribution against $1,600,000 fixed costs; unit cost benchmarking at $15.33 to fight input-cost inflation; and loan-servicing checks on the $1,450,000 expansion.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["200,000", "$8.00", "300,000", "$1,600,000", "$10.00", "$18.00", "$15.33"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate CVA's financial performance by calculating the gross profit margin, the profit margin and ROCE for 2024 and 2025. Has CVA's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 35.0%\nGross Profit Margin 2025 = 40.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 18.0%\nROCE 2025 = 22.5%\n\nDetailed workings: 2024 gross profit = $4,680,000 revenue − $3,042,000 cost of sales = $1,638,000; 2025 gross profit = $5,400,000 − $3,240,000 = $2,160,000. Operating profit rose from $702,000 to $1,080,000. Capital employed rose from $3,900,000 to $4,800,000. 2024: $1,638,000 ÷ $4,680,000 = 35.0%; $702,000 ÷ $4,680,000 = 15.0%; $702,000 ÷ $3,900,000 = 18.0%. 2025: $2,160,000 ÷ $5,400,000 = 40.0%; $1,080,000 ÷ $5,400,000 = 20.0%; $1,080,000 ÷ $4,800,000 = 22.5%.\n\nEvaluation: Profitability has clearly strengthened. Gross profit grew from $1,638,000 to $2,160,000 (+$522,000; $522,000 ÷ $1,638,000 × 100 = 31.9%) as the new crushing capacity and firmer rail-ballast pricing lifted output. Operating profit rose by $378,000 (+$378,000 ÷ $702,000 × 100 = 53.8%) even after interest payable increased from $140,000 to $180,000, so the gain is not borrowed or hollow. Capital employed grew by $900,000 to $4,800,000 yet returns on it still rose, showing the new plant is generating returns ahead of its cost. Caveats: the 9.6% diesel and haulage inflation and the 5.2% minimum wage rise (from $12.40 to $13.04 per hour from April 2027, per Appendix 3) could squeeze 2026 results, and interest payable is trending upward with the October rate rise, so improvement is not guaranteed to persist without further cost control and contract indexation.\n\nConclusion: CVA's financial performance has improved. Both the absolute profit ($1,638,000 to $2,160,000 gross; $702,000 to $1,080,000 operating) and every return measure (35.0% to 40.0%, 15.0% to 20.0%, 18.0% to 22.5%) moved decisively in the right direction. The remaining risks are input-cost inflation and rising interest, so CVA should index contract prices and fix part of its bank loan while pursuing the expansion.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, operating profit and capital employed movements and a justified conclusion on whether CVA's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["35.0%", "40.0%", "15.0%", "20.0%", "18.0%", "22.5%", "$2,160,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for CVA of installing dust-suppression equipment and electric haul trucks at its quarry.",
+      "model_answer": "Advantage: Dust suppression and electric haul trucks attack CVA's two worst safety indicators directly — 6 dust readings above the safe limit in August and 11 near-miss incidents — protecting workers and helping cut the 8% absenteeism that is draining output per worker of 2,143 units. Electrification also hedges the 9.6% diesel and haulage cost rise flagged in Appendix 3, because trucks run on charged batteries rather than imported fuel, which supports CVA's $18.00 selling price and improves the case for the $1,450,000 crushing plant investment.\n\nDisadvantage: The retrofit is expensive: suppression misting systems, filtered cabs, chargers and new trucks could consume a six-figure sum on top of the $1,450,000 already committed, straining cash while a $950,000 loan is serviced and pushing capital employed beyond $4,800,000 before safety and quality gains (moving the off-spec rate further below its current 2.2%) materialise — risky if aggregates demand grows no faster than the 2.8% seen last period and contractors resist price rises.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CVA's safety record, costs and investment."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["dust", "11 near-miss", "8%", "9.6%", "$1,450,000", "$18.00"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.5%, the 5.2% minimum wage increase and the 9.6% rise in input costs will affect CVA. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.75% to 5.5%): If CVA's $950,000 ten-year bank loan is variable-rate, the 0.75-point rise adds about $7,125 a year to interest, lifting financing costs above the $180,000 interest payable seen in 2025. Higher rates also cool contractor borrowing, so road and rail projects may be deferred, trimming the 2.8% demand growth. The impact is real but modest: CVA can fix the rate at renewal and the sum is small beside fixed costs of $1,600,000 a year.\n\nMinimum wage rise (5.2%, to $13.04 per hour from April 2027): The award adds exactly $0.64 per hour for each minimum-wage worker ($13.04 − $12.40). The insert does not state per-worker hours, so the annual total cannot be fixed precisely, but the effect scales across the 140 staff; illustratively, if half the workforce (70 staff) averaged 1,000 minimum-wage hours each a year, the award would add 70 × 1,000 × $0.64 = $44,800 a year to the payroll — a meaningful increase beside fixed costs of $1,600,000 a year, and one the automated plant should help CVA absorb through higher labour productivity.\n\nInput-cost inflation (9.6% diesel, explosives and haulage): CVA's $10.00 variable cost per unit includes diesel for haul trucks and mobile plant, but the insert does not split it by fuel share, so the exact per-unit effect cannot be isolated. What can be quantified: every $0.10 by which these components rise across 300,000 units totals $30,000 a year (300,000 × $0.10); an increase of $0.30 per unit would total $90,000 a year. Because it compounds at volume and strikes before the new plant's efficiency gains arrive, it erodes the $8.00 contribution per unit from day one, at a flat selling price of $18.00.\n\nConclusion: The 9.6% rise in input costs will have the greatest impact. Unlike the rate rise, it scales with every unit of the 300,000 CVA produces, compounds the wage bill, and lands immediately on the crushing plant's economics before efficiency gains arrive. The wage increase is second (bounded by the $0.64 per hour and by which staff are on minimum wage), and the interest-rate rise is smallest in cash terms (about $7,125 a year if the loan is variable). All three require CVA to fix the loan rate, automate to cut labour hours, index contract prices and renegotiate diesel supply urgently.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to CVA.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on CVA's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of CVA with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.5%", "5.2%", "$13.04", "9.6%", "interest rate", "$10.00"]
+      }
+    }
+  ]
+}

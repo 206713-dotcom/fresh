@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_381",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Saffron Crest Spices (SCS) is a private limited company in the spice-processing sector, based in the Southern Highlands and employing a workforce of 40. Founded in 2011 by Priya Raghunathan, it supplies ground spices to regional food manufacturers and operates a hierarchical structure with autocratic leadership. SCS plans to invest $840,000 in an automated spice-grinding and packing line, financed by a $600,000 ten-year bank loan and $240,000 retained profit. It has fixed costs of $280,000 a year, a variable cost of $5.20 a unit and a selling price of $10.20, and currently produces 80,000 units a year. SCS faces a quality problem: the defect rate in sealed spice packs has reached 4.2% and labour turnover is rising.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q3 2025: The grinding line packed 19,500 units last quarter at a defect rate of 4.2%, down from 6.8% a year ago. Customer complaints fell from 44 to 27 per month. Average order fulfilment time is 4.1 days. Market research of 500 trade buyers found that 68% would pay up to $0.50 more for sustainably sourced spice packs, and 47% check origin certification before ordering. Training records show 16 of 40 staff have not completed on-the-job training on the new grinders; off-the-job training courses at the regional technical college cost $1,100 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Saffron Crest Spices as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "95", "78"],
+        ["Trade receivables", "140", "165"],
+        ["Cash and cash equivalents", "38", "55"],
+        ["Current liabilities", "195", "180"],
+        ["Non-current assets", "1,420", "1,910"],
+        ["Capital employed", "1,850", "2,250"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 5.8% from $12.10 to $12.80 per hour from April 2026, raising wage bills. (3) Wholesale pepper, chilli and cumin input costs have risen 9.6% year-on-year, food-price inflation is 6.4%, and consumer spending on packaged spices grew 2.9%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "SCS plans to fund part of its automated grinding-line expansion with a ten-year bank loan. Explain two advantages for SCS of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Using retained profit costs SCS nothing in loan interest or capital repayments, protecting cash flow at a time when it already carries fixed costs of $280,000 a year and a variable cost of $5.20 a unit. The $240,000 of retained profit is internally generated, so every dollar saved on interest can be spent on tackling the 4.2% defect rate in sealed spice packs or absorbed if pepper and chilli input costs keep rising. It also keeps the automated grinding line's cash requirements within the business rather than committing to a $600,000 ten-year bank loan whose interest cost rises when base rates go up.\n\nPoint 2: Retained profit avoids the collateral and default risk attached to the bank loan, so the $840,000 expansion is not exposed to repossession if demand from regional food manufacturers disappoints. It also preserves the original owners' control: Priya Raghunathan and the existing shareholders do not have to answer to an external lender or meet loan covenants, which suits a hierarchical structure where decisions are already centralised. Because the money is already in the business, the grinding and packing line can be commissioned quickly without the delay of loan approval, helping SCS build on the fall in defects from 6.8% to 4.2% and protect its $10.20 selling price position.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to SCS and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "$240,000", "$600,000", "$840,000", "$280,000", "$5.20"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "SCS is launching a new sustainably sourced spice range. Consider a national television campaign, regional radio sponsorship, or social media influencer marketing. Which should SCS choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National television campaign: A national TV campaign would build brand awareness quickly across all regional food manufacturers and could support a premium price for sustainably sourced spice packs. However, airtime and production costs are very high for a firm funding an $840,000 line with a $600,000 loan, and most viewers are not trade buyers, so much of the spend would be wasted. It also cannot demonstrate the origin certification that 47% of surveyed buyers check.\n\nRegional radio sponsorship: Radio is cheaper and can target the Southern Highlands catchment where SCS's manufacturers operate, with frequent reminders about the new range. Its weakness is reach: SCS sells to regional food manufacturers beyond any single radio area, and audio cannot show the sustainable packaging that 68% of the 500 surveyed buyers would pay $0.50 more for.\n\nSocial media influencer marketing: Food and recipe influencers can demonstrate the spice packs visually to exactly the buyers who care about origin certification, with measurable engagement and low cost per trade lead. Results build more slowly than TV, and influencer credibility must be managed, but the 47% who check labels and the 68% willing to pay a $0.50 premium can be reached directly and repeatedly.\n\nRecommendation: SCS should choose social media influencer marketing. It targets the researched segment, costs far less than television, reaches beyond radio's local footprint and makes the sustainability story visible. Television is rejected as unaffordable and untargeted for a 40-employee company already servicing a $600,000 loan; radio is rejected as too narrow for regional manufacturer coverage. SCS should add low-cost trade catalogue listings to support the influencer work.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of SCS with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of SCS with a well-justified recommendation explaining why television and radio are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "47%", "$0.50", "500", "spice", "19,500"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "SCS's defect rate in sealed spice packs has reached 4.2% and labour turnover is rising. Explain two benefits for SCS of using autocratic leadership to improve quality and discipline in its production team.",
+      "model_answer": "Point 1: Autocratic leadership lets Priya Raghunathan set clear quality standards and issue immediate instructions when the defect rate in sealed spice packs reaches 4.2%, which is valuable in a hierarchical structure where quick, uniform decisions matter for food safety. With 16 of 40 staff still untrained on the new grinders, workers need unambiguous directions rather than debate, so defective packs can be isolated and the improvement from 6.8% to 4.2% protected while the $840,000 line beds in.\n\nPoint 2: Decisive, top-down control also tackles rising labour turnover by enforcing consistent shift rotas and discipline, reducing the disruption that unexplained absence causes on a grinding line with fixed costs of $280,000 a year. Because the leader alone allocates tasks, trained operators can be redeployed quickly to cover gaps without lengthy consultation, protecting output of 80,000 units and the $10.20 selling price commitment to regional food manufacturers while the $600,000 bank loan is serviced.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SCS's quality, staffing and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "hierarchical", "4.2%", "labour turnover", "40", "16"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "SCS must upskill 16 production staff to operate the new grinders. Consider on-the-job training or off-the-job training at the regional technical college. Which should SCS choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching the 16 untrained staff beside the new grinders is directly relevant to SCS's own quality standards and costs no course fees, unlike the $1,100 per employee charged by the regional technical college. It keeps all 16 workers productive while they learn, protecting the 19,500 units packed last quarter and the effort behind the fall from 6.8% to 4.2% defect rate. The drawbacks are that trainers are production staff whose own output suffers, and bad habits can be passed on without formal assessment.\n\nOff-the-job training: The $1,100 per employee college course gives structured, up-to-date skills and a recognised certificate for all 16 staff, costing $17,600 in total — small against the $840,000 investment. It removes 16 of 40 workers from the line, however, cutting short-term capacity and risking the 4.2% defect target, and generic content may not match SCS's grinder settings, so follow-up coaching would still be needed.\n\nDecision: SCS should choose on-the-job training for the initial rollout, with short college sessions later for senior operators. It is cheapest, machine-specific and avoids losing output while the defect rate is only just improving; full off-the-job training is rejected because withdrawing $17,600 and 16 staff from a 40-person line would disrupt supply to regional food manufacturers when the $600,000 loan must be serviced.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to SCS.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both training methods in the context of SCS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of SCS with a well-justified decision covering cost, disruption and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$1,100", "16", "40", "$840,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how SCS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate SCS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $280,000 ÷ ($10.20 − $5.20) = $280,000 ÷ $5.00 = 56,000 units. Answer: break-even output is 56,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate SCS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $10.20 − $5.20 = $5.00. Answer: contribution per unit is $5.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways SCS's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 56,000-unit break-even output with actual output of 80,000 units, giving a margin of safety of 24,000 units, to judge whether the $840,000 grinding line is being used fully enough.\n2. Contribution per unit of $5.00 lets SCS model a discount to regional food manufacturers: a $0.50 concession would cut contribution to $4.50, so managers can test whether extra volume still covers fixed costs of $280,000.\n3. Knowing fixed costs and contribution helps set the volume needed to service interest on the $600,000 bank loan before committing to further expansion.\n4. Unit cost can be checked as $280,000 ÷ 80,000 + $5.20 = $8.70, and labour productivity as 80,000 units ÷ 40 staff = 2,000 units per worker, giving benchmarks to track the 4.2% defect problem and 9.6% input-cost rise."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 56,000 units | (ii) Contribution per unit = $5.00 | (iii) Four contextual uses: margin of safety of 24,000 units vs 80,000 output; discount modelling against $280,000 fixed costs; loan servicing on the $600,000 bank loan; and unit cost of $8.70 with labour productivity of 2,000 units per worker.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["56,000", "$5.00", "$280,000", "$10.20", "$5.20", "24,000", "$8.70", "2,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate SCS's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has SCS's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.40 : 1\nCurrent Ratio 2025 = 1.66 : 1\nAcid Test Ratio 2024 = 0.91 : 1\nAcid Test Ratio 2025 = 1.22 : 1\n\nDetailed workings: 2024 current assets = $95,000 inventories + $140,000 trade receivables + $38,000 cash = $273,000; 2025 current assets = $78,000 + $165,000 + $55,000 = $298,000. Dividing by current liabilities gives 2024 = $273,000 ÷ $195,000 = 1.40 and 2025 = $298,000 ÷ $180,000 = 1.66. Excluding inventories gives 2024 = ($273,000 − $95,000) ÷ $195,000 = $178,000 ÷ $195,000 = 0.91 and 2025 = ($298,000 − $78,000) ÷ $180,000 = $220,000 ÷ $180,000 = 1.22.\n\nEvaluation: Liquidity has clearly strengthened. The 2024 figure of 1.40 rose to 1.66 because current assets increased from $273,000 to $298,000 while current liabilities fell from $195,000 to $180,000. More importantly, the inventory-excluding measure rose from 0.91 to 1.22, so SCS no longer depends on selling stock to meet short-term debts — valuable while it services a $600,000 bank loan and funds an $840,000 expansion. However, trade receivables grew from $140,000 to $165,000, tying up cash; if regional food manufacturers pay late the stronger position could weaken quickly, and inventories fell to $78,000, so stock availability for the 19,500-unit quarterly run rate should be watched.\n\nConclusion: SCS's financial position has improved. Both measures show stronger short-term solvency and the improvement does not rely on inventory. The residual risk is rising receivables, so credit control should be tightened while the expansion proceeds.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of inventory, receivables and liabilities movements and a justified conclusion on whether SCS's financial position improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.40", "1.66", "0.91", "1.22", "$273,000", "$298,000", "$840,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for SCS of introducing sustainably sourced packaging for its ground spice packs.",
+      "model_answer": "Advantage: Sustainable packaging matches the preferences of the 68% of 500 surveyed trade buyers who would pay up to $0.50 more, letting SCS protect its $5.00 contribution per unit even while pepper, chilli and cumin costs rise 9.6%. It also strengthens the brand with the 47% who check origin certification, helping SCS win or retain listings with regional food manufacturers for the $840,000 grinding line.\n\nDisadvantage: Sustainable materials usually cost more than conventional packs, which would increase the $5.20 variable cost per unit and squeeze margins unless the $0.50 premium is accepted across the whole range. Any failure in the new materials, such as poorer sealing on chilled-spice packs, could push the 4.2% defect rate back toward 6.8% and raise waste costs just as the new $600,000 loan must be serviced, offsetting the marketing benefit.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SCS's research data, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "47%", "$0.50", "9.6%", "4.2%", "$5.20"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 5.8% minimum wage increase and the 9.6% rise in spice input costs will affect SCS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.25% to 5.0%): The base rate rises by 0.75 percentage points. If the $600,000 ten-year bank loan is variable-rate, the annual interest cost increases by 0.0075 × $600,000 = $4,500 a year (shown as 0.75% of the loan). That is modest beside fixed costs of $280,000 a year, and if the loan is fixed-rate the extra cost is zero. Higher rates may also make manufacturers cautious about premium spices, but SCS can largely neutralise this by fixing the loan rate.\n\nMinimum wage increase (5.8%, from $12.10 to $12.80 per hour): This feeds into the wage bill of a 40-person workforce and is not optional. The insert gives no hours worked or individual pay rates, so no annual wage total can be invented honestly. The defensible comparison is with productivity derived from the insert: 80,000 units ÷ 40 staff = 2,000 units per worker. A wage rise is affordable only if that productivity holds or output grows; otherwise unit labour cost rises and the $5.00 contribution per unit is squeezed.\n\nInput cost inflation (9.6% on pepper, chilli and cumin): The insert does not decompose the $5.20 variable cost, so only an explicit bound can be computed: if the entire variable cost rose 9.6%, that adds 0.096 × $5.20 = $0.50 per unit, and at 80,000 units a year that is $40,000 a year. This is a labelled upper bound, not a prediction; a smaller rise would add less. SCS can recover part through the $0.50 premium that 68% of buyers accept or by renegotiating with suppliers.\n\nConclusion: The 9.6% input-cost inflation will have the greatest impact because it compounds on every unit sold and directly attacks the $5.00 contribution that justifies the $840,000 expansion. The interest-rate effect of $4,500 is small and can be fixed, and the wage effect is real but uncertain in size and can be offset by productivity of 2,000 units per worker; input costs strike at the core of SCS's margin.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to SCS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on SCS's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of SCS with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "5.8%", "9.6%", "$12.80", "$600,000", "$5.20"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U6_SET_101",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Kestrelview Kitchens makes fitted kitchen cabinets in Country X and has traded for 5 years. It employs 14 carpenters and sold 260 kitchens last year at an average price of $3,800, generating revenue of $988,000. Fixed costs are $6,500 a month and materials cost $2,100 per kitchen.\n\nCountry X is in the growth stage of the business cycle and gross domestic product rose by 3.4% last year. Orders have risen 18% since January and the order book is full for the next 4 months. The owner, Priya Raman, is deciding whether to open a second workshop with 6 more carpenters at a cost of $180,000, or keep one workshop and operate a waiting list. She must decide before the end of the quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'the business cycle'.",
+        "model_answer": "The regular pattern of ups and downs in economic activity and growth that economies experience over time, moving through stages such as growth, boom, recession and slump [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the business cycle is the regular pattern of fluctuations in economic activity over time",
+            "the cycle moves through stages such as growth, boom, recession and slump"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the growth stage of the business cycle affects Kestrelview Kitchens.",
+        "model_answer": "Reason 1: Growth means rising output, incomes and consumer spending [k]; Kestrelview's orders have risen 18% since January and gross domestic product rose by 3.4% last year [app]. Reason 2: Growth encourages firms to expand [k], so Priya is considering a second workshop with 6 more carpenters at a cost of $180,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "growth stage means rising GDP, incomes and consumer spending",
+            "growth encourages firms to expand output and invest"
+          ],
+          "application_max_2": [
+            "orders risen 18% since January with GDP growth of 3.4%",
+            "second workshop with 6 more carpenters at a cost of $180,000 under consideration"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "18%",
+            "3.4%",
+            "4 months",
+            "second workshop",
+            "$180,000",
+            "growth stage",
+            "260 kitchens"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kestrelview Kitchens might face if it opens the second workshop too quickly.",
+        "model_answer": "Problem 1: Rapid expansion raises fixed costs [k]; with fixed costs already $6,500 a month, a second workshop would push these higher before revenue from extra kitchens arrives [app], so cash reserves could be strained if demand slows [an]. Problem 2: Hiring 6 more carpenters quickly risks quality and control [k]; the 14 existing carpenters could struggle to produce 260 kitchens a year while training newcomers [app], so the reputation built over 5 years could be damaged [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "expansion increases fixed costs and overheads",
+            "rapid hiring creates quality and control problems"
+          ],
+          "application_max_2": [
+            "fixed costs already $6,500 a month before expansion",
+            "14 carpenters produce 260 kitchens; 6 new hires must be trained"
+          ],
+          "analysis_max_2": [
+            "cash-flow strain if growth cools before the new workshop pays for itself",
+            "quality slip could damage a reputation built over 5 years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6,500 a month",
+            "6 more carpenters",
+            "14 carpenters",
+            "260 kitchens",
+            "5 years",
+            "second workshop",
+            "$180,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kestrelview Kitchens should open the second workshop now? Justify your answer.",
+        "model_answer": "Opening the second workshop now would capture the high demand [k]; orders are up 18% since January, the book is full for the next 4 months and revenue has reached $988,000, so added capacity with 6 more carpenters could lift sales further [app], strengthening market share while the growth stage lasts [an]. However, expansion is risky and costly [k]; the workshop costs $180,000, fixed costs are already $6,500 a month, and the surge may not last beyond the growth stage [app], so idle capacity and strained quality could hurt the business in a downturn [an]. Overall, Kestrelview should open the second workshop now [eval], because 3.4% GDP growth and a full 4-month order book give strong evidence that demand will keep the new workshop busy [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "expansion during growth captures rising demand and raises revenue",
+            "expansion carries cost and demand risk if the cycle turns"
+          ],
+          "application_max_2": [
+            "orders up 18% since January, book full for 4 months, revenue $988,000",
+            "$180,000 cost with fixed costs of $6,500 a month and 3.4% GDP growth"
+          ],
+          "analysis_max_2": [
+            "extra capacity converts waiting-list demand into sales",
+            "idle capacity and quality strain if the economy leaves growth"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation weighing strong current demand against cycle risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "18%",
+            "4 months",
+            "$988,000",
+            "$180,000",
+            "$6,500 a month",
+            "3.4%",
+            "second workshop"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_102",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Sorrento Gelato Co makes and sells luxury ice cream through 9 parlours in the shopping centres of Country X and has traded for 7 years. Last year it sold 420,000 tubs at an average of $4.50, generating revenue of $1,890,000. Its main ingredient costs rose by 12% this year, fixed costs are $9,000 a month and it employs 74 staff across the summer peak.\n\nCountry X is in a boom, with consumer spending up 6.1% and unemployment at just 2.8%. Parlour footfall is up 25% and staff are struggling to meet demand, especially on hot weekends. The owner, Lena Costa, is deciding whether to raise prices by 6% across all parlours or absorb the higher ingredient costs and keep prices unchanged. She wants a decision before the peak summer season begins on 1 June.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'a boom'.",
+        "model_answer": "The peak stage of the business cycle, when the economy is strongest, with very high demand and output, low unemployment and rising incomes [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a boom is the peak stage of the business cycle with very high output",
+            "a boom brings high demand, high incomes and very low unemployment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the boom benefits Sorrento Gelato Co.",
+        "model_answer": "Reason 1: A boom means very high consumer spending [k]; spending across Country X rose by 6.1% and Sorrento's parlour footfall is up 25% [app]. Reason 2: In a boom incomes are high [k], so customers can afford $4.50 tubs and Sorrento sold 420,000 tubs and made $1,890,000 of revenue last year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a boom brings very high consumer spending and demand",
+            "a boom brings high incomes and low unemployment"
+          ],
+          "application_max_2": [
+            "consumer spending up 6.1% and footfall up 25%",
+            "420,000 tubs sold at $4.50 generating $1,890,000 of revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "6.1%",
+            "25%",
+            "$4.50",
+            "420,000 tubs",
+            "$1,890,000",
+            "2.8%",
+            "boom"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Sorrento Gelato Co faces during the boom.",
+        "model_answer": "Problem 1: A boom creates cost pressure as demand competes for scarce resources [k]; Sorrento's ingredient costs have risen by 12% this year [app], squeezing margins if tub prices stay at $4.50 [an]. Problem 2: Low unemployment makes hiring difficult [k]; with unemployment at just 2.8%, Sorrento's staff are struggling to serve 25% more footfall through its 9 parlours [app], so poor service could cost sales in the peak season [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a boom pushes up business costs through resource competition",
+            "a boom makes recruiting and retaining staff difficult"
+          ],
+          "application_max_2": [
+            "ingredient costs risen 12% this year",
+            "unemployment at just 2.8% with staff struggling to meet demand"
+          ],
+          "analysis_max_2": [
+            "margins squeezed if tub prices are held at $4.50",
+            "understaffing risks lost sales and slower service during the peak season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12%",
+            "2.8%",
+            "$4.50",
+            "9 parlours",
+            "25%",
+            "$9,000 a month",
+            "peak summer season"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sorrento Gelato Co should raise prices by 6% for the summer season? Justify your answer.",
+        "model_answer": "Raising prices by 6% would protect margins [k]; ingredient costs are up 12% and demand is strong with footfall up 25% while consumer spending rose 6.1% [app], so $1,890,000 of revenue can be defended and profits increased [an]. However, higher prices may test customer loyalty [k]; customers already face higher costs, and a rise from $4.50 may deter price-conscious buyers outside the summer peak [app], so sales volumes could fall and undo the gain [an]. Overall, Sorrento should raise prices by 6% [eval], because boom conditions with 6.1% spending growth and 2.8% unemployment mean demand is strong enough to absorb a modest rise [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raising prices in a boom protects profit margins",
+            "price rises risk losing price-sensitive customers"
+          ],
+          "application_max_2": [
+            "ingredient costs up 12% with footfall up 25%",
+            "consumer spending up 6.1% and unemployment at 2.8%"
+          ],
+          "analysis_max_2": [
+            "margin recovery and extra profit to fund staffing",
+            "volume risk if the 6% rise deters customers outside the peak"
+          ],
+          "evaluation_max_2": [
+            "justified decision linked to boom conditions and cost pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "6%",
+            "12%",
+            "25%",
+            "6.1%",
+            "2.8%",
+            "$4.50",
+            "$1,890,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_103",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Lindenbrook Clothing Co operates 8 high-street clothing stores in Country X and employs 60 sales assistants. Revenue fell from $2.4 million two years ago to $1.9 million last year, a fall of almost 21%. Fixed costs are $28,000 a month and each store needs at least 5 staff to open every day.\n\nCountry X is officially in recession, with GDP falling 1.7% over two quarters and unemployment rising to 6.5%. Footfall has dropped 22% across the stores and unsold stock is building up in stockrooms. The owner, Marcus Webb, is deciding whether to make 12 sales assistants, one fifth of the workforce, redundant or cut all staff wages by 10% for one year to protect cash flow. He must decide before the next quarter's payroll is approved.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'a recession'.",
+        "model_answer": "A period in which the economy shrinks for at least two consecutive quarters, with falling output and rising unemployment [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a recession is a fall in GDP/output for two or more consecutive quarters",
+            "a recession brings rising unemployment and falling consumer spending"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects the recession is having on Lindenbrook Clothing Co.",
+        "model_answer": "Reason 1: A recession cuts consumer demand [k]; Lindenbrook's revenue fell from $2.4 million to $1.9 million, a fall of almost 21% [app]. Reason 2: Falling confidence hits high-street retailers [k]; footfall has dropped 22% across Lindenbrook's 8 high-street clothing stores [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a recession cuts consumer demand and spending",
+            "a recession reduces retail sales and revenues"
+          ],
+          "application_max_2": [
+            "revenue fell from $2.4 million to $1.9 million, almost 21%",
+            "footfall dropped 22% across the 8 stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.4 million",
+            "$1.9 million",
+            "21%",
+            "22%",
+            "8 high-street",
+            "6.5%",
+            "recession"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of making 12 sales assistants redundant.",
+        "model_answer": "Problem 1: Redundancies cut capacity to serve customers [k]; removing 12 sales assistants leaves 48 staff for 8 stores needing at least 5 each [app], so any absence could force closures or lost sales [an]. Problem 2: Redundancies damage morale and public image [k]; with unemployment already rising to 6.5% in a recession, further job losses would be unpopular with staff and the public [app], lowering effort and driving customers to rivals [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "redundancy reduces staffing and service capacity",
+            "redundancy damages staff morale and the firm's reputation"
+          ],
+          "application_max_2": [
+            "cutting 12 leaves 48 staff for 8 stores needing at least 5 each",
+            "unemployment already rising to 6.5% in a recession"
+          ],
+          "analysis_max_2": [
+            "understaffing risks forcing closures or lost sales during peak trading",
+            "low morale and bad publicity could further cut the 22%-down footfall"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12 sales assistants",
+            "60 sales assistants",
+            "$28,000 a month",
+            "5 staff",
+            "6.5%",
+            "8 high-street",
+            "10%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Lindenbrook Clothing Co should make 12 sales assistants redundant rather than cut wages by 10%? Justify your answer.",
+        "model_answer": "Redundancy would cut payroll costs immediately [k]; removing 12 of 60 sales assistants saves their wages in a business whose revenue fell almost 21% to $1.9 million [app], protecting cash flow while fixed costs of $28,000 a month continue [an]. However, a 10% wage cut spreads the pain across all 60 sales assistants [k], keeping experienced staff on the 8 high-street stores rather than paying redundancy costs and harming morale while unemployment is 6.5% [app], so service quality is preserved for the recovery [an]. Overall, Lindenbrook should cut wages by 10% rather than make redundancies [eval], because retaining the experienced team protects its 8 stores better while the recession lasts [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "redundancy lowers wage costs quickly",
+            "a wage cut retains skills and morale at lower risk"
+          ],
+          "application_max_2": [
+            "revenue down almost 21% to $1.9 million with fixed costs of $28,000 a month",
+            "60 sales assistants across 8 stores with unemployment at 6.5%"
+          ],
+          "analysis_max_2": [
+            "immediate payroll relief against lost experience and redundancy costs",
+            "skills retention aids recovery when demand returns"
+          ],
+          "evaluation_max_2": [
+            "justified preference with stem evidence and a clear final choice"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.9 million",
+            "$28,000 a month",
+            "10%",
+            "6.5%",
+            "60 sales assistants",
+            "8 high-street",
+            "21%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_104",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Saltfleet Sands Hotel is a 110-room family hotel on the coast of Country X and has operated for 16 years. Occupancy has collapsed from 61% two years ago to just 29% this year, and revenue fell from $3.1 million to $1.4 million. The room rate is $120 and fixed costs are $34,000 a month. It employs 36 full-time staff and is carrying heavy winter losses.\n\nCountry X is in a slump, the deepest stage of the business cycle, with GDP down 3.2% over three years and unemployment at 11%. Coach bookings are down 40% and two neighbouring hotels have already shut. The owner, Delia Marsh, must choose between closing the hotel for 5 winter months to save $170,000 of operating costs, or cutting room rates by 30% to $84 to attract budget guests. Next summer is her final chance to recover.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'a slump'.",
+        "model_answer": "A prolonged and severe stage of the business cycle in which the economy suffers very low demand and output, high unemployment and falling business confidence [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a slump is a prolonged, severe downturn in the business cycle",
+            "a slump means very low demand and output and very high unemployment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems the slump causes for Saltfleet Sands Hotel.",
+        "model_answer": "Reason 1: A slump destroys consumer confidence [k]; occupancy has collapsed from 61% two years ago to just 29% this year [app]. Reason 2: A slump drains business revenue [k]; revenue fell from $3.1 million to $1.4 million while fixed costs remain $34,000 a month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a slump cuts consumer spending and demand",
+            "a slump lowers revenue and threatens business survival"
+          ],
+          "application_max_2": [
+            "occupancy collapsed from 61% to just 29%",
+            "revenue fell from $3.1 million to $1.4 million; fixed costs $34,000 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "61%",
+            "29%",
+            "$3.1 million",
+            "$1.4 million",
+            "$34,000 a month",
+            "slump",
+            "11%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of cutting room rates by 30% to $84.",
+        "model_answer": "Benefit 1: Lower rates attract price-sensitive guests [k]; cutting the rate from $120 to $84 could tempt families to book when GDP has fallen 3.2% and unemployment is 11% [app], lifting occupancy above 29% [an]. Benefit 2: Lower rates spread fixed costs across more rooms [k]; filling even half of the 110 rooms at $84 would cover more of the $34,000 monthly fixed costs than 29% occupancy [app], reducing losses in the slump [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower prices attract price-sensitive customers in a downturn",
+            "higher occupancy spreads fixed costs over more sales"
+          ],
+          "application_max_2": [
+            "rate cut from $120 to $84 with GDP down 3.2% and unemployment at 11%",
+            "occupancy just 29% of 110 rooms with fixed costs of $34,000 a month"
+          ],
+          "analysis_max_2": [
+            "increased occupancy rebuilds cash flow in the slump",
+            "fixed cost coverage improves, reducing monthly losses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$84",
+            "$120",
+            "30%",
+            "29%",
+            "110-room",
+            "3.2%",
+            "$34,000 a month"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saltfleet Sands Hotel should cut room rates by 30% to $84 rather than close for 5 winter months? Justify your answer.",
+        "model_answer": "Cutting rates to $84 would win bookings [k]; with GDP down 3.2% and unemployment at 11%, a $120 room at $84 is far better value for budget guests, and occupancy could rise above 29% of the 110 rooms [app], keeping the hotel open, staffed and visible for next summer [an]. However, closing for 5 winter months would save $170,000 of operating costs [k]; with revenue down to $1.4 million and fixed costs of $34,000 a month [app], closure would stop losses during the deadest part of the slump [an]. Overall, Saltfleet Sands should cut rates and stay open [eval], because next summer is the final chance to recover and a closed hotel cannot rebuild the 29% occupancy it needs [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cutting prices can raise demand and occupancy",
+            "seasonal closure cuts operating costs and limits losses"
+          ],
+          "application_max_2": [
+            "rate cut from $120 to $84 with occupancy at 29% of 110 rooms",
+            "closure for 5 winter months saves $170,000; revenue down to $1.4 million"
+          ],
+          "analysis_max_2": [
+            "staying open protects staff, visibility and momentum into summer",
+            "closure saves cash but forfeits off-season revenue and risks reopening costs"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to recovery next summer and the figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$84",
+            "$120",
+            "29%",
+            "110-room",
+            "$170,000",
+            "$1.4 million",
+            "$34,000 a month"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_105",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Marlwick Construction Ltd is a private limited company in Country X with 85 employees and annual revenue of $9.6 million. It builds houses and small commercial buildings across the eastern region and has traded for 14 years. Fixed costs are $22,000 a month and average profit is 9% of revenue.\n\nThe government has launched a $40 million road and bridge programme to support economic growth and has invited bids from qualified firms. Marlwick could bid for a $6.5 million contract to build two river bridges over 18 months near the port. It would need 10 more engineers and $1.1 million of new plant. The managing director must decide by 30 April whether to bid, having just completed a 24-unit housing estate in February and freed up two site managers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'economic growth'.",
+        "model_answer": "A rise in the total output of goods and services produced by an economy over time, usually measured by the percentage increase in gross domestic product [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "economic growth is a rise in output/GDP over time",
+            "economic growth is measured by the annual percentage change in real GDP"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the government's economic growth objective could benefit Marlwick Construction Ltd.",
+        "model_answer": "Reason 1: Governments pursuing growth spend heavily on infrastructure [k]; Country X's $40 million road and bridge programme includes a $6.5 million contract Marlwick could bid for [app]. Reason 2: Growth raises demand for new building work [k]; with the economy expanding, demand for Marlwick's houses and small commercial buildings should rise too [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "governments pursuing growth increase public spending and infrastructure orders",
+            "economic growth raises demand for construction and building"
+          ],
+          "application_max_2": [
+            "$40 million road and bridge programme with a $6.5 million contract available",
+            "Marlwick builds houses and small commercial buildings with $9.6 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$40 million",
+            "$6.5 million",
+            "economic growth",
+            "85 employees",
+            "$9.6 million",
+            "two river bridges",
+            "18 months"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Marlwick Construction Ltd may face if it wins the bridge contract.",
+        "model_answer": "Problem 1: Winning would strain its workforce [k]; Marlwick needs 10 more engineers on top of its 85 employees while building two river bridges over 18 months [app], so management attention could be diverted from existing housing work [an]. Problem 2: The contract needs heavy new investment [k]; $1.1 million of new plant is a large sum against $22,000 monthly fixed costs and profit of only 9% of revenue [app], so Marlwick may need external finance and faces greater risk if costs overrun [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large contracts create staffing and resourcing pressure",
+            "large contracts require significant capital investment"
+          ],
+          "application_max_2": [
+            "10 more engineers needed on top of 85 employees for two river bridges over 18 months",
+            "$1.1 million plant cost against $22,000 monthly fixed costs"
+          ],
+          "analysis_max_2": [
+            "diversion of management and staff from the core housing business",
+            "overrun risk could erase the 9% profit margin on $9.6 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "10 more engineers",
+            "85 employees",
+            "18 months",
+            "$1.1 million",
+            "$22,000 a month",
+            "9% of revenue",
+            "two river bridges"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marlwick Construction Ltd should bid for the $6.5 million bridge contract? Justify your answer.",
+        "model_answer": "Bidding would transform Marlwick's scale [k]; a $6.5 million contract over 18 months is worth two-thirds of its $9.6 million annual revenue and would build a reputation for government infrastructure work [app], positioning Marlwick to win future contracts as Country X pursues economic growth [an]. However, the bid carries real risk [k]; $1.1 million of plant and 10 more engineers must be committed up front, and the 9% margin on $9.6 million revenue leaves little room for overruns [app], so a late or over-budget bridge could damage the company's finances [an]. Overall, Marlwick should bid for the contract [eval], because the $40 million government programme gives a strong pipeline and winning would secure Marlwick's growth for years [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large government contracts can transform a firm's scale and reputation",
+            "large contracts carry financing and cost-overrun risk"
+          ],
+          "application_max_2": [
+            "$6.5 million contract over 18 months vs $9.6 million annual revenue",
+            "$1.1 million plant, 10 more engineers, 9% profit margin"
+          ],
+          "analysis_max_2": [
+            "reputation gains help win future government work",
+            "overruns could wipe out the 9% margin on $9.6 million revenue"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation referencing the programme and the figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.5 million",
+            "$9.6 million",
+            "$1.1 million",
+            "18 months",
+            "9% of revenue",
+            "10 more engineers",
+            "$40 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_106",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Northfen Contact Services runs a call centre in Country X employing 120 staff over two shifts at its offices in the market town of Jessop. It handles customer queries for 3 utilities companies and earns $5.1 million a year. Wages average $16,800 per worker per year, staff turnover is 28% and absence runs at 9%.\n\nThe government's economic objective of full employment has led it to offer a $3,000 grant plus free training for every long-term unemployed person hired. Northfen is deciding whether to hire 40 unemployed workers using the grants, worth $120,000, or to spend $250,000 on automation software that would reduce the need for 25 posts and lower average call times. The board must decide before the grant scheme closes on 31 August and wants to brief staff before any announcement.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'full employment'.",
+        "model_answer": "A situation in which virtually everyone who is able and willing to work can find a job, with only very low levels of unemployment remaining [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "full employment means virtually all those who can and want to work are employed",
+            "only very low residual unemployment remains"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the government's full employment objective benefits Northfen Contact Services.",
+        "model_answer": "Reason 1: The government rewards hiring the unemployed [k]; Northfen could claim $3,000 per hire, or $120,000 for 40 long-term unemployed workers, plus free training [app]. Reason 2: Reducing unemployment widens the available labour pool [k]; with 28% staff turnover, free trained recruits would help Northfen replace staff at its 120-seat call centre for 3 utilities companies [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "full employment policies back job creation with grants and training",
+            "reducing unemployment widens the effective labour pool"
+          ],
+          "application_max_2": [
+            "$3,000 grant plus free training per hire; $120,000 for 40 hires",
+            "28% turnover among 120 staff serving 3 utilities companies"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,000",
+            "$120,000",
+            "40 unemployed workers",
+            "free training",
+            "28%",
+            "120 staff",
+            "full employment"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Northfen Contact Services might face if it hires the 40 unemployed workers.",
+        "model_answer": "Problem 1: New hires may need close supervision [k]; although training is free, long-term unemployed staff handling queries for 3 utilities companies may need experienced agents beside them [app], diverting staff from live calls [an]. Problem 2: Retention could be poor [k]; with staff turnover already 28%, some of the 40 hires may not stay beyond their first year [app], so the $120,000 grant benefit could be eroded by repeat recruitment [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inexperienced or long-term unemployed staff need supervision and training",
+            "high staff turnover wastes recruitment and training investment"
+          ],
+          "application_max_2": [
+            "free training but close supervision still needed for 3 utilities companies",
+            "turnover already 28% among the existing 120 staff"
+          ],
+          "analysis_max_2": [
+            "supervision burden diverts experienced staff from revenue-earning calls",
+            "repeat recruitment could cancel out the $120,000 grant benefit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 utilities companies",
+            "28%",
+            "120 staff",
+            "$120,000",
+            "$3,000",
+            "40 unemployed workers",
+            "free training"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Consider whether Northfen Contact Services should hire 40 unemployed workers using the government grants or invest in $250,000 of automation software. Recommend one option and justify your answer.",
+        "model_answer": "Hiring 40 workers with the grants would keep capacity high [k]; $120,000 of grants plus free training cuts the cost of 40 recruits whose wages would otherwise total $672,000 a year at $16,800 per worker [app], protecting service for the 3 utilities companies [an]. However, automation would remove 25 posts [k]; $250,000 is a one-off cost that could cut long-run labour costs and ease the 28% turnover problem [app], raising productivity beyond what extra hiring achieves [an]. Overall, Northfen should hire the 40 unemployed workers using the grants [eval], because $120,000 of support plus free training meets its staffing needs and aids the government's full employment aim before the scheme closes on 31 August [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government grants and training reduce the net cost of hiring",
+            "automation lowers long-run labour costs and raises productivity"
+          ],
+          "application_max_2": [
+            "$120,000 grants plus free training; wages would total $672,000 a year",
+            "$250,000 software removing 25 posts; turnover 28% and $16,800 per worker"
+          ],
+          "analysis_max_2": [
+            "grants protect service quality and capacity at low net cost",
+            "automation saves recurring wages but cuts posts and morale"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to the grant deadline and the figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "$250,000",
+            "40 unemployed workers",
+            "$16,800 per worker",
+            "28%",
+            "3 utilities companies",
+            "31 August"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_107",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Fennimore Tea Rooms runs 6 tea rooms in Country X serving 92,000 customers a year, with revenue of $1.4 million. A slice of cake costs $4.00 before tax and cakes make up 15% of total sales. The government has raised VAT from 17.5% to 20% on 1 April as part of its drive for stable prices and lower public debt, although the change is expected to push up the general price level.\n\nThe owner, Amara Osei, must decide whether to pass the full VAT increase on to customers by raising prices or absorb it and keep menu prices unchanged. At a $4.00 cake slice, the tax rises from 70 cents to 80 cents. She must decide before printing new menus this month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'inflation'.",
+        "model_answer": "A sustained rise in the general price level of an economy over time, which reduces the purchasing power of money [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inflation is a sustained rise in the general price level",
+            "inflation reduces the purchasing power of money"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the VAT rise on Fennimore Tea Rooms.",
+        "model_answer": "Reason 1: VAT is an indirect tax on spending [k]; with VAT at 20% the tax on a $4.00 cake rises from 70 cents to 80 cents [app]. Reason 2: The VAT rise increases the price customers pay [k]; passing it on would raise menu prices for Fennimore's 92,000 customers a year across 6 tea rooms [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "VAT is an indirect tax on consumer spending collected by businesses",
+            "a VAT increase raises the prices consumers pay"
+          ],
+          "application_max_2": [
+            "tax on a $4.00 cake rises from 70 cents to 80 cents",
+            "92,000 customers a year across 6 tea rooms; revenue $1.4 million"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "17.5%",
+            "20%",
+            "70 cents",
+            "80 cents",
+            "92,000 customers",
+            "$4.00",
+            "6 tea rooms"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of absorbing the VAT rise rather than raising prices.",
+        "model_answer": "Benefit 1: Absorbing the rise keeps prices stable [k]; holding the cake slice at $4.00 plus the old tax keeps menu prices attractive while the government pursues stable prices [app], protecting customer goodwill [an]. Benefit 2: Stable prices protect sales volume [k]; avoiding even a 10-cent rise on each cake slice could prevent a fall in footfall among 92,000 customers a year [app], keeping the $1.4 million revenue steadier through the change [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "absorbing indirect tax rises keeps prices stable or competitive",
+            "stable prices protect demand and customer goodwill"
+          ],
+          "application_max_2": [
+            "cake slice held at $4.00 plus the old tax during the government's stable prices drive",
+            "92,000 customers a year and $1.4 million revenue at stake"
+          ],
+          "analysis_max_2": [
+            "goodwill and competitive edge from not raising prices",
+            "avoids a demand fall, protecting annual revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4.00",
+            "92,000 customers",
+            "$1.4 million",
+            "stable prices",
+            "70 cents",
+            "80 cents",
+            "6 tea rooms"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fennimore Tea Rooms should pass the VAT rise on to customers through higher prices? Justify your answer.",
+        "model_answer": "Passing on the rise would protect profit [k]; covering the extra tax from 70 cents to 80 cents on each $4.00 cake across 92,000 customers a year keeps margins intact on $1.4 million of sales [app], so Fennimore does not subsidise the government's tax rise itself [an]. However, raising prices conflicts with the stable prices objective [k]; a rise from $4.70 to $4.80 is small, but across 6 tea rooms even a modest increase could deter price-conscious customers [app], cutting footfall when rivals face the same change [an]. Overall, Fennimore should raise prices [eval], because a 10-cent rise on a $4.00 cake is small enough to keep most customers while protecting the margin needed to trade profitably [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "passing indirect tax rises to customers protects profit margins",
+            "raising prices risks losing price-sensitive customers"
+          ],
+          "application_max_2": [
+            "tax on cake rises from 70 cents to 80 cents on a $4.00 slice",
+            "92,000 customers a year across 6 tea rooms with $1.4 million revenue"
+          ],
+          "analysis_max_2": [
+            "margin protection across the whole sales base",
+            "footfall risk if the rise deters customers"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to the figures and the stable prices context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "70 cents",
+            "80 cents",
+            "$4.00",
+            "92,000 customers",
+            "$1.4 million",
+            "17.5%",
+            "20%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_108",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Argent & Vale Department Store sells premium fashion, jewellery and homeware across three floors in Country X's capital. It has traded for 12 years and made revenue of $8.64 million last year from 36,000 transactions at an average of $240. Around 70% of revenue comes from high-income customers.\n\nThe government has raised the top rate of income tax from 40% to 45% to fund public health services and redistribute income from higher earners to lower-income households. Argent & Vale's board is deciding whether to launch 'Argent Value', a budget range aimed at lower-income shoppers, or to stay premium and target its existing wealthy clientele with exclusive in-store events and private shopping evenings. The launch decision is due next month and no customer research has been done yet.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'income tax'.",
+        "model_answer": "A direct tax charged on the money earned by individuals and businesses, collected by the government from wages and other income [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "income tax is a tax on money earned/income",
+            "it is a direct tax collected by the government"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the higher income tax on Argent & Vale Department Store.",
+        "model_answer": "Reason 1: Higher income tax reduces high earners' disposable income [k]; with 70% of revenue from high-income customers, a rise from 40% to 45% could cut their spending in the store [app]. Reason 2: Lower disposable income pushes shoppers towards cheaper goods [k]; average transactions of $240 across 36,000 sales may shrink as wealthy customers trade down [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher income tax reduces disposable income",
+            "lower disposable income can reduce discretionary spending"
+          ],
+          "application_max_2": [
+            "70% of revenue comes from high-income customers; top rate from 40% to 45%",
+            "36,000 transactions averaging $240; revenue $8.64 million"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "70%",
+            "40%",
+            "45%",
+            "36,000 transactions",
+            "$240",
+            "$8.64 million",
+            "high-income customers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of launching the 'Argent Value' budget range.",
+        "model_answer": "Problem 1: A budget range could dilute the premium image [k]; Argent & Vale has traded for 12 years as a premium store, and a cheaper line might confuse the wealthy customers who provide 70% of revenue [app], weakening the brand behind $8.64 million of sales [an]. Problem 2: A new range needs shelf space and marketing spend [k]; diverting resources to sell lower-priced goods could squeeze profit from the existing premium lines bought at $240 per transaction [app], so returns may disappoint in the early years [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "budget ranges can dilute a premium brand image",
+            "new product ranges require investment in stock, space and marketing"
+          ],
+          "application_max_2": [
+            "12 years trading as a premium store with 70% of revenue from high-income customers",
+            "$8.64 million revenue with a $240 average transaction"
+          ],
+          "analysis_max_2": [
+            "brand dilution could erode premium loyalty and sales",
+            "investment diversion could cut profit from proven premium lines"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12 years",
+            "$8.64 million",
+            "$240",
+            "premium",
+            "Argent Value",
+            "high-income customers",
+            "70%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Argent & Vale Department Store should launch 'Argent Value' aimed at lower-income shoppers? Justify your answer.",
+        "model_answer": "Launching 'Argent Value' would open a new market [k]; with the top income tax rate rising from 40% to 45%, lower-income shoppers keep relatively more spending power and the range could win new customers [app], spreading risk beyond the 70% of revenue from high-income customers [an]. However, staying premium protects a proven formula [k]; the store earned $8.64 million from 36,000 transactions at $240 while trading premium for 12 years [app], so a budget launch could tarnish the image and confuse staff and customers [an]. Overall, Argent & Vale should stay premium and hold off the budget launch for now [eval], because its premium brand already delivers $8.64 million and the tax rise reduces high-earner spending rather than removing it [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a budget range accesses price-sensitive customer segments",
+            "a premium focus protects established brand equity"
+          ],
+          "application_max_2": [
+            "top income tax rate rises from 40% to 45% to redistribute income",
+            "$8.64 million revenue from 36,000 transactions at $240; 70% from high-income customers"
+          ],
+          "analysis_max_2": [
+            "a new segment diversifies revenue away from tax-hit high earners",
+            "brand dilution could cut premium sales built over 12 years"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation weighing diversification against brand risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Argent Value",
+            "45%",
+            "40%",
+            "$8.64 million",
+            "$240",
+            "70%",
+            "12 years"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_109",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Veloce Cycles Ltd imports 5,000 bicycles a year from Country Z and sells them in Country X at $320 each, earning $1.6 million in revenue and a margin of $170 per bike. Each bike costs $150 to import. The government, aiming to improve the balance of payments, has imposed a 25% import tariff on finished bicycles, raising the import cost to $187.50.\n\nThe owner, Tomás Rivera, must decide whether to raise the selling price above $320 or open a small assembly plant in Country X using imported parts, which are not tariffed, costing $175 per bike plus $300,000 of equipment and saving $12.50 per bike, or $62,500 a year. He must decide before the tariff takes effect on 1 October.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'import tariffs'.",
+        "model_answer": "Taxes placed on goods brought into a country, used to raise revenue, protect domestic producers or improve the balance of payments [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tariffs are taxes on imported goods",
+            "tariffs raise revenue, protect domestic industry or improve the balance of payments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the 25% import tariff on Veloce Cycles Ltd.",
+        "model_answer": "Reason 1: Tariffs raise the cost of imports [k]; each $150 bike now costs $187.50, cutting the margin on every one of the 5,000 bicycles [app]. Reason 2: Tariffs squeeze margins or force price rises [k]; holding the price at $320 would cut the unit margin from $170 to $132.50 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tariffs increase the cost of imported goods",
+            "tariffs squeeze importer margins or push up retail prices"
+          ],
+          "application_max_2": [
+            "import cost rises from $150 to $187.50; margin falls from $170 to $132.50",
+            "5,000 bicycles a year sold at $320; revenue $1.6 million"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "25%",
+            "$150",
+            "$187.50",
+            "$320",
+            "5,000 bicycles",
+            "$1.6 million",
+            "$170"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of assembling bicycles in Country X rather than importing finished bikes.",
+        "model_answer": "Benefit 1: Local assembly avoids the finished-bike tariff [k]; imported parts are not tariffed, so building bikes at $175 each undercuts the $187.50 tariffed import cost [app], protecting the margin on 5,000 bicycles a year [an]. Benefit 2: Local assembly gives Veloce more control over supply [k]; building to order in Country X cuts the lead time and shipping risk of supplies from Country Z [app], so stockouts and lost sales on the $1.6 million pipeline are less likely [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local assembly avoids tariffs on finished goods",
+            "local assembly improves control and reliability of supply"
+          ],
+          "application_max_2": [
+            "parts not tariffed; assembled cost $175 vs $187.50 tariffed import cost",
+            "5,000 bicycles a year imported from Country Z to sell at $320"
+          ],
+          "analysis_max_2": [
+            "margin restored on 5,000 units a year",
+            "less shipping risk protects sales and revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$175",
+            "$187.50",
+            "$320",
+            "5,000 bicycles",
+            "Country Z",
+            "$300,000",
+            "import tariff"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Veloce Cycles Ltd should set up the assembly plant in Country X? Justify your answer.",
+        "model_answer": "Setting up assembly would avoid the 25% tariff [k]; parts are not tariffed and building at $175 per bike beats the $187.50 tariffed import cost, saving $12.50 per bike or $62,500 a year on 5,000 bicycles [app], recovering most of the lost margin and independence from the tariff [an]. However, the plant needs $300,000 of equipment [k]; with margins already squeezed and no certainty the tariff will last, the outlay may take years to recover if sales fall [app], straining cash flow in the first year [an]. Overall, Veloce should set up the assembly plant [eval], because $62,500 a year of savings plus freedom from the 25% tariff outweighs the $300,000 one-off cost given steady demand [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local assembly avoids tariffs and protects margins",
+            "new plants require significant upfront capital investment"
+          ],
+          "application_max_2": [
+            "$175 assembled cost vs $187.50 tariffed import; $62,500 a year saved",
+            "$300,000 equipment against sales of 5,000 bicycles at $320"
+          ],
+          "analysis_max_2": [
+            "margin recovery on 5,000 units a year",
+            "upfront strain before savings accumulate"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation balancing savings against the one-off cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$175",
+            "$187.50",
+            "$62,500",
+            "$300,000",
+            "$320",
+            "5,000 bicycles",
+            "25%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_110",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Brackendale Precision Ltd makes industrial valves in Country X and employs 48 staff at a single factory. It produced 60,000 valves last year at a full cost of $31 each and sold them for $44, earning $2.64 million of revenue. Fixed costs are $95,000 a month and the managing director presents investment proposals at a monthly board meeting.\n\nThe government has raised corporation tax from 19% to 25% on company profits to fund public services, including roads and hospitals. Brackendale is deciding whether to buy a $900,000 CNC machine that would cut full cost per valve from $31 to $24, saving $7 per valve, or $420,000 a year. Profit would rise even after the higher tax. The board meets on 20 May to decide.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'corporation tax'.",
+        "model_answer": "A direct tax that companies pay on their profits, collected by the government [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "corporation tax is a tax on company profits",
+            "it is a direct tax paid by limited companies"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of the corporation tax rise on Brackendale Precision Ltd.",
+        "model_answer": "Reason 1: Higher corporation tax cuts retained profit [k]; raising the rate from 19% to 25% leaves Brackendale with a smaller share of what it earns from $2.64 million of revenue [app]. Reason 2: Higher tax makes boards more cautious about investment [k]; with $95,000 a month of fixed costs, the board may delay the $900,000 machine to preserve cash [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher corporation tax reduces retained profit",
+            "higher tax makes investment decisions more cautious"
+          ],
+          "application_max_2": [
+            "rate rises from 19% to 25% on profits",
+            "$95,000 monthly fixed costs and a $900,000 machine under consideration"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "19%",
+            "25%",
+            "$95,000 a month",
+            "$900,000",
+            "$2.64 million",
+            "60,000 valves",
+            "$31"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of buying the new CNC machine despite the tax rise.",
+        "model_answer": "Benefit 1: The machine cuts unit cost [k]; full cost falls from $31 to $24, saving $7 per valve across 60,000 valves, or $420,000 a year [app], which lifts profit even at the higher 25% tax rate [an]. Benefit 2: Lower costs strengthen competitiveness [k]; at $24 full cost Brackendale can defend its $44 selling price against rivals [app] or absorb future cost shocks, protecting its place with industrial buyers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "automation cuts unit costs",
+            "lower costs raise profit and competitiveness"
+          ],
+          "application_max_2": [
+            "full cost falls from $31 to $24, saving $420,000 a year across 60,000 valves",
+            "valves sell at $44 generating $2.64 million of revenue"
+          ],
+          "analysis_max_2": [
+            "the $420,000 saving outweighs the extra 6 percentage points of tax on profit",
+            "a cost edge supports pricing against rivals and wins orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$31",
+            "$24",
+            "$420,000",
+            "60,000 valves",
+            "$44",
+            "25%",
+            "$900,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackendale Precision Ltd should buy the $900,000 CNC machine? Justify your answer.",
+        "model_answer": "Buying the machine raises profit despite the tax rise [k]; cutting full cost from $31 to $24 saves $420,000 a year on 60,000 valves, so profit after 25% corporation tax would exceed profit after 19% tax without it, by roughly $268,200 a year [app], creating real value for shareholders [an]. However, the $900,000 price is a heavy strain [k]; with fixed costs of $95,000 a month and only 48 staff, financing the purchase could stretch cash flow if orders soften [app], so the board must be sure of future demand before committing [an]. Overall, Brackendale should buy the machine [eval], because the $420,000 annual saving comfortably outweighs the extra 6 percentage points of corporation tax and secures long-term competitiveness [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital investment can raise profit even after higher corporation tax",
+            "large purchases strain cash flow and may need external finance"
+          ],
+          "application_max_2": [
+            "$420,000 saving from $31 to $24 on 60,000 valves vs $900,000 cost",
+            "fixed costs $95,000 a month; profit taxed at 25% instead of 19%"
+          ],
+          "analysis_max_2": [
+            "after-tax profit comparison favours buying ($900,000 vs $631,800 retained a year)",
+            "cash-flow risk if orders soften before savings accumulate"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to the tax change and the figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$420,000",
+            "$31",
+            "$24",
+            "60,000 valves",
+            "25%",
+            "$95,000 a month"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

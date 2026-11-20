@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_368",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Zanthe Flow Tech (ZFT) is a public limited company in the fintech and contactless payments sector, employing a workforce of 50. Founded in 2011 by Wei Lin Tan, the business supplies payment-gateway software to retailers and operates a flat structure with laissez-faire leadership. ZFT plans to invest $960,000 in a new contactless payment gateway, financed by a $600,000 bank loan and $360,000 retained profit. It has fixed costs of $360,000 a year, a variable cost of $7.50 a unit and a selling price of $19.50, and currently produces 90,000 units a year. ZFT faces two problems: its transaction failure rate has risen to 2.8% and compliance complaints from merchants are increasing in several markets.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q4 2025: Zanthe Flow Tech processed 45,000 payment transactions a week at a transaction failure rate of 2.8%, up from 1.9% a year ago. Compliance complaints from merchants averaged 74 a month. A survey of 520 merchants found that 74% valued transaction speed above all and 66% would switch provider after two failures. In-house compliance training for 50 staff costs $560 per person; a six-week programme by external consultants costs $48,000.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Zanthe Flow Tech for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,600", "2,000"],
+        ["Cost of sales", "640", "760"],
+        ["Gross profit", "960", "1,240"],
+        ["Operating profit", "240", "340"],
+        ["Capital employed", "1,200", "1,360"],
+        ["Interest payable", "32", "28"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, increasing debt-servicing costs on variable-rate loans. (2) The national minimum wage will rise by 7.1% from $12.60 to $13.50 per hour from April 2026, raising wage costs. (3) Payment-network fees and encryption software costs have risen 10.5% year-on-year, while consumer spending on contactless payments grew 8.3% and inflation is 4.6%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "Explain two disadvantages for ZFT of financing its $960,000 contactless payment gateway with a $600,000 bank loan rather than retained profit.",
+      "model_answer": "Point 1: A $600,000 bank loan commits ZFT to regular interest and capital repayments whatever happens to sales, adding a fixed claim on cash at a time when the 2.8% transaction failure rate is already causing 74 compliance complaints a month. If merchants switch provider after two failures, as 66% of the 520 surveyed say they would, revenue may fall while the loan still must be served, threatening the $960,000 investment. Retained profit would carry no such compulsory payment.\n\nPoint 2: The loan may require security or covenants that limit how the $360,000 retained profit can be used, making it harder to respond quickly to the 2.8% failure problem through in-house compliance training at $560 per staff member. As a public limited company, ZFT also has shareholder expectations, and a large loan raises financial risk that could depress the share price. Using retained profit would preserve flexibility and keep control of the payment gateway without a lender's conditions, even though it would leave less cash in reserve.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid disadvantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to ZFT, its financing and its failure and complaint problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["bank loan", "retained profit", "$600,000", "$360,000", "$960,000", "contactless payment gateway"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ZFT is launching its new contactless payment gateway. Consider television advertising, partnerships with retail banks, or in-app referral promotions. Which should ZFT choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Television advertising: Television could build rapid brand awareness among the general public and support the launch of the $960,000 gateway. However, ZFT sells payment-gateway software to retailers, not mass consumers, so most viewers are not buyers. For a firm with fixed costs of $360,000 a year, the airtime cost is high and the message cannot demonstrate transaction speed, the factor 74% of the 520 surveyed merchants value most. Much of the spend would therefore be wasted.\n\nPartnerships with retail banks: A bank partnership gives instant credibility and access to merchants who already trust the bank, which could reduce the 2.8% failure concern and the 74 monthly compliance complaints. Joint marketing shares cost and reaches the right audience. The drawback is that ZFT would have to share margins and control, and banks may be slow to agree and demanding about compliance, so the launch could be delayed and less profitable than expected.\n\nIn-app referral promotions: Referrals use existing merchants to recommend the gateway, reaching the exact audience surveyed and rewarding the 74% who value speed. Costs are variable and low, and referred merchants may be less likely to switch after two failures because a peer recommended the service. The weakness is slow reach compared with television; without a large existing user base, growth may be gradual and the $960,000 investment may take longer to recover.\n\nRecommendation: ZFT should choose in-app referral promotions as the primary channel. They target retailers precisely, are cost-effective and build trust, directly addressing the 2.8% failure and complaint issues. Television is rejected as mistargeted and expensive; bank partnerships are rejected because profit and control would be shared and the launch slowed, though one partnership could be added later as a supporting route to market.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the three promotional options with minimal application to ZFT.",
+        "level_2_5_to_8": "Detailed analysis of the advantages and disadvantages of at least two options in the context of ZFT with some judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in context with a well-justified recommendation explaining why television and bank partnerships are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$960,000", "2.8%", "74%", "520", "66%", "contactless payment gateway"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ZFT has a 2.8% transaction failure rate and rising compliance complaints. Explain two benefits for ZFT of using laissez-faire leadership to improve its engineering team.",
+      "model_answer": "Point 1: Laissez-faire leadership gives experienced engineers freedom to investigate the 2.8% transaction failures in their own way and to experiment with fixes without waiting for approval from Wei Lin Tan. In a flat structure of 50 people, this can speed up problem-solving and encourage technical innovation, which matters because 74% of the 520 surveyed merchants value transaction speed above all. Faster fixes reduce the risk that the 66% who would switch after two failures actually leave.\n\nPoint 2: Delegation can raise motivation and retention because skilled staff feel trusted and take ownership of quality, helping to cut the 74 monthly compliance complaints. It also frees senior managers to focus on the $960,000 gateway launch rather than day-to-day fault tracing, and in-house compliance training at $560 per person can be organised by the team that knows the system. The benefit depends on competence, however: if engineers lack compliance skills, a hands-off style may let the 2.8% failure rate drift higher, so some coordination remains necessary.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to ZFT's failure rate, complaints and flat structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "flat structure", "transaction failure rate", "2.8%", "workforce of 50", "compliance complaints"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ZFT must improve compliance skills to reduce its 2.8% transaction failure rate. Consider in-house compliance training at $560 per person or a six-week programme by external consultants costing $48,000. Which should ZFT choose? Justify your decision.",
+      "model_answer": "In-house compliance training: Training delivered internally at $560 per person is specific to ZFT's own payment gateway and rules, so staff can work directly on the causes of the 2.8% transaction failure rate and the 74 monthly complaints. For the workforce of 50 the total is $28,000 (50 × $560), well below the consultant programme. It keeps knowledge inside the business, can be scheduled around live operations and fits the flat, delegated culture. The limitations are that internal trainers may repeat existing mistakes, the qualification is not externally recognised, and training while systems run can be interrupted by faults.\n\nExternal consultants: A six-week programme costing $48,000 brings specialist compliance expertise and an outside view, valuable when 66% of surveyed merchants would switch after two failures and 74 complaints a month signal a serious gap. Consultants can benchmark against industry practice and free ZFT's own staff to keep the gateway running. However, the flat $48,000 is far more than $28,000, the content may be generic rather than tied to ZFT's software, and knowledge leaves when the consultants depart, so the 2.8% failure rate could return.\n\nDecision: ZFT should choose in-house compliance training as the main route. It is cheaper by $20,000, tailored to the gateway and builds permanent internal capability against the 2.8% failure rate. External consultants are rejected as too expensive and too temporary to be the core solution; they should be used only for a short initial audit, with the savings from in-house training directed at the $960,000 launch.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training options with limited application to ZFT.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both options in the context of ZFT.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in context with a justified decision covering cost, specificity and lasting capability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["in-house compliance training", "$560", "$48,000", "2.8%", "workforce of 50", "74%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ZFT's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ZFT's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $19.50 − $7.50 = $12.00. Answer: contribution per unit is $12.00."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ZFT's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $360,000 ÷ $12.00 = 30,000 units. Answer: break-even output is 30,000 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ZFT's management can use this financial data.",
+          "model_answer": "1. With output of 90,000 units and break-even of 30,000 units, the margin of safety is 60,000 units, showing the gateway is well profitable and supporting the $960,000 investment decision.\n2. Contribution of $12.00 a unit lets managers model the cost of the 2.8% transaction failures: more failed transactions raise effective variable cost per successful unit, so managers can quantify the benefit of the $560 compliance training.\n3. The 30,000-unit break-even point sets a clear target for covering the $360,000 fixed costs; beyond it, each unit adds $12.00 toward servicing the $600,000 bank loan.\n4. Unit cost of $360,000 ÷ 90,000 + $7.50 = $11.50 can be compared with the $19.50 price to judge competitiveness; since 74% of merchants value speed, managers can decide whether faster but costlier processing is worth the margin."
+        }
+      ],
+      "model_answer": "(i) Contribution per unit = $12.00 | (ii) Break-even output = 30,000 units | (iii) Four contextual uses explained: margin of safety of 60,000 units against 90,000 output; modelling failure costs against $12.00 contribution; loan-service targets from the $600,000 facility; and unit-cost benchmarking at $11.50.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$12.00", "30,000", "90,000", "$360,000", "$19.50", "$7.50", "60,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ZFT's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has ZFT's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 60.0%\nGross Profit Margin 2025 = 62.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 17.0%\nROCE 2024 = 20.0%\nROCE 2025 = 25.0%\n\nDetailed workings: Gross profit of $960,000 on revenue of $1,600,000 in 2024 gives 60.0%; gross profit of $1,240,000 on revenue of $2,000,000 in 2025 gives 62.0%, an increase of 2.0 percentage points. Operating profit rose from $240,000 to $340,000, so the operating-to-revenue percentage improved from 15.0% to 17.0%. Capital employed increased from $1,200,000 to $1,360,000, yet the return on capital still rose from 20.0% to 25.0% because operating profit grew faster than capital. Cost of sales increased from $640,000 to $760,000, but revenue grew by $400,000, so the direct cost share fell. Interest payable declined from $32,000 to $28,000, which also helped.\n\nEvaluation: All three measures moved in the same positive direction, so the improvement is broadly based. The gross percentage increase shows ZFT is retaining more of each dollar of revenue after direct processing costs, useful when payment-network and encryption expenses are forecast to rise 10.5%. The operating percentage rising by 2.0 points indicates that the $360,000 fixed costs are being absorbed by growth rather than simply postponed. The return on capital climbing to 25.0% even with $160,000 more capital employed is the clearest evidence that the business is using its asset base more productively. However, the 2.8% transaction failure rate and 74 monthly compliance complaints could still raise costs and depress revenue if merchants switch, and a single year-on-year comparison does not establish a durable trend. The absolute margins, while improved, are not exceptional for a fintech firm.\n\nConclusion: ZFT's financial performance has improved. Gross profitability, operating profitability and return on capital all rose together despite a larger capital base and lower interest cost. The main risk is service quality, so management should spend part of the gain on the $560 in-house compliance training to protect the trend while the $960,000 gateway is rolled out.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directions of change without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs, capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["60.0%", "62.0%", "15.0%", "17.0%", "20.0%", "25.0%"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ZFT of introducing automated transaction-monitoring software to cut its 2.8% failure rate.",
+      "model_answer": "Advantage: Automated monitoring can screen every payment in real time and flag failures before merchants notice, directly reducing the 2.8% transaction failure rate and the 74 monthly compliance complaints. Since 74% of the 520 surveyed merchants value transaction speed above all and 66% would switch after two failures, fewer failures protect revenue and support the $960,000 gateway. Automation also frees the 50-strong workforce from constant manual checking, letting engineers focus on new features and compliance work.\n\nDisadvantage: Buying and integrating monitoring software adds to ZFT's $360,000 of annual fixed costs and competes for funds with the $600,000 bank loan. The system must be tuned correctly: false alerts could block legitimate payments and create new complaints, while a missed novel fault would leave the 2.8% failure rate largely unchanged. Merchants may also blame the provider for any outage during the transition, and with 66% saying they would switch after two failures, a poorly managed rollout could increase churn rather than reduce it.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ZFT's failure data, survey and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.8%", "74%", "520", "66%", "$960,000", "transaction failure rate"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 7.1% minimum wage increase and the 10.5% rise in payment-network fees will affect ZFT. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (from 4.25% to 5.0%): If ZFT's $600,000 bank loan is variable-rate, the extra annual interest is 0.75% × $600,000 = $4,500 a year (0.0075 × $600,000 = 4,500). That is meaningful but still modest against $360,000 of annual fixed costs, and if the loan is fixed-rate the immediate cash effect is zero. Higher rates may also make future funding for the gateway dearer and could slow merchant spending on new payment systems.\n\nMinimum wage rise (7.1%, to $13.50 per hour): The insert states a workforce of 50 and output of 90,000 units a year but gives no hours worked and no individual pay, so an annual wage total cannot be invented. The defensible comparison is productivity: 90,000 ÷ 50 = 1,800 units per worker. If that is maintained, the rise can be absorbed within the $12.00 contribution per unit; if the 2.8% failure rate and 74 complaints a month absorb staff time, unit labour cost rises and contribution falls. No more precise figure is supportable from the insert.\n\nInput-cost inflation (10.5%): The $7.50 variable cost is not decomposed in the insert, so only a bound can be calculated. If the whole variable cost rose 10.5%, the increase is 0.105 × $7.50 = $0.7875, about $0.79 per unit; across 90,000 units that is roughly $71,100 a year (90,000 × $0.79). Even a half-size effect near $0.39 a unit would be about $35,100 a year, reducing contribution from $12.00 toward $11.60 and threatening the cash flow needed for the $960,000 gateway.\n\nConclusion: The 10.5% rise in payment-network fees and encryption costs will have the greatest impact. It applies to every one of the 90,000 units and erodes the $12.00 contribution that funds the investment, whereas the interest rise is a calculable $4,500 at most and the wage effect cannot be quantified from the insert. ZFT can offset some of it through the speed that 74% of merchants value, but only if the 2.8% failure rate is reduced first.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to ZFT.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on ZFT's costs, revenue or financing in context, with shown working where figures are used.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in the context of ZFT with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "7.1%", "10.5%", "$13.50", "$600,000", "$7.50"]
+      }
+    }
+  ]
+}

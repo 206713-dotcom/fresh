@@ -1,0 +1,1188 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_171",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Coraline Chocolate Co is a private limited company founded 6 years ago by Elena Marchetti in Country X. The business employs 22 confectioners making hand-finished chocolate truffles and gift boxes, producing 90,000 boxes a year with sales revenue of $540,000 and an 8% profit margin. A major supermarket customer has complained that two batches of truffle boxes contained stale centres, and has threatened to delist Coraline's products unless quality improves.\n\nElena's quality manager reports that final quality control inspections reject 4% of output, wasting $18,000 of chocolate a year. Elena is weighing two options: invest $60,000 in quality assurance, training staff to check ingredients and temperatures at every stage, or keep quality control but hire two extra inspectors at $2,000 each per month. The supermarket will review the contract in 6 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'quality control'.",
+        "model_answer": "Quality control is checking finished products or samples during production to identify and remove faulty items before they reach customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "checking products during or after production",
+            "identifying and removing faulty items before customers receive them"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why high quality is important to Coraline Chocolate Co.",
+        "model_answer": "Reason 1: High quality keeps customers satisfied [k], so shoppers who enjoyed the hand-finished truffles will keep buying from Coraline instead of rivals [app]. Reason 2: High quality protects the company's reputation [k], reducing the risk that the supermarket delists its products after the stale-centre complaints [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customer satisfaction and loyalty",
+            "brand reputation and image"
+          ],
+          "application_max_2": [
+            "customers keep buying the hand-finished truffles",
+            "risk of the supermarket delisting Coraline after stale-centre complaints"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Coraline Chocolate Co",
+            "supermarket",
+            "stale centres",
+            "truffle",
+            "$18,000",
+            "90,000",
+            "quality"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Coraline Chocolate Co of replacing quality control with quality assurance.",
+        "model_answer": "Benefit 1: Quality assurance prevents faults at the source [k], so ingredients and temperatures are checked at every production stage rather than after the 4% of output is wasted [app], cutting the $18,000 annual chocolate waste [an]. Benefit 2: Quality assurance makes every worker responsible for quality [k], so Elena's 22 confectioners catch stale centres before boxes are sealed [app], building trust with the supermarket customer [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "prevents defects at the source / building quality into the process",
+            "makes all employees responsible for quality"
+          ],
+          "application_max_2": [
+            "checks ingredients and temperatures at every stage",
+            "22 confectioners catching stale centres before sealing"
+          ],
+          "analysis_max_2": [
+            "cuts the $18,000 annual chocolate waste",
+            "builds trust with the supermarket customer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "quality control",
+            "$60,000",
+            "$18,000",
+            "22 confectioners",
+            "stale centres",
+            "supermarket"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Coraline Chocolate Co should invest $60,000 in quality assurance rather than hire two extra inspectors? Justify your answer.",
+        "model_answer": "Investing in quality assurance builds quality into every stage of production [k], preventing the 4% defect rate that wastes $18,000 a year and satisfying the supermarket before its 6-month review [app], which should protect the $540,000 annual revenue long term [an]. However, quality assurance costs $60,000 up front plus staff training time [k], whereas two extra inspectors cost only $2,000 each per month and start catching faults immediately [app], which is safer if Elena's cash is tight [an]. Overall, quality assurance is the stronger choice because preventing faults is more reliable than catching them after they occur [eval], provided Elena can fund $60,000 without straining cash flow [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality assurance prevents defects at source",
+            "quality control / extra inspectors catch defects after production"
+          ],
+          "application_max_2": [
+            "$60,000 quality assurance investment and 6-month supermarket review",
+            "two extra inspectors at $2,000 each per month"
+          ],
+          "analysis_max_2": [
+            "protects the $540,000 annual revenue and the supermarket contract",
+            "inspectors start catching faults immediately but cost ongoing wages"
+          ],
+          "evaluation_max_2": [
+            "weighs prevention against inspection and gives a justified recommendation",
+            "conditional recommendation linked to Elena's cash position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$60,000",
+            "$18,000",
+            "$540,000",
+            "supermarket",
+            "4%",
+            "two extra inspectors",
+            "6 months"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_172",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Kelvara Knitwear is a public limited company manufacturing knitted school uniforms in Country X, operating for 9 years with 150 factory workers producing 60,000 garments a month. Monthly fixed costs are $95,000 and variable costs are $1.20 per garment. The factory's current defect rate is 5%, meaning 3,000 garments are reworked each month at a cost of $14,400 in extra labour and materials.\n\nA new overseas retailer has offered a two-year contract for 25,000 jumpers worth $900,000 a year, but it requires an audited defect rate below 2%. Kelvara must decide how to cut defects before signing. Option one is quality assurance training for all supervisors costing $45,000, certifying checks at every production stage. Option two is doubling end-of-line quality control inspections with a new $30,000 inspection station. The retailer's audit team visits next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'quality assurance'.",
+        "model_answer": "Quality assurance is a system that builds quality into every stage of production by setting standards and checking processes to prevent defects from occurring [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "system that builds quality into every production stage",
+            "designed to prevent defects rather than detect them"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why high quality is important to Kelvara Knitwear when winning export contracts.",
+        "model_answer": "Reason 1: High quality earns the trust of overseas buyers [k], increasing the chance the retailer agrees the two-year contract for 25,000 jumpers [app]. Reason 2: Consistent quality strengthens Kelvara's reputation [k], helping it win repeat orders instead of losing them to rival uniform suppliers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "buyer trust / meeting customer expectations",
+            "reputation and repeat business"
+          ],
+          "application_max_2": [
+            "retailer's contract for 25,000 jumpers and $900,000 a year",
+            "rival uniform suppliers competing for the same business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kelvara Knitwear",
+            "$900,000",
+            "25,000 jumpers",
+            "defect rate",
+            "overseas retailer",
+            "two-year contract"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two differences between quality control and quality assurance.",
+        "model_answer": "Difference 1: Quality control inspects finished garments at the end of the line [k], such as checking completed uniforms before packing [app], whereas quality assurance checks each production stage as work happens [an]. Difference 2: Quality control finds defects after money has been spent on the garment [k], so 5% of the 60,000 garments are still reworked at $14,400 a month [app], while quality assurance aims to prevent those defects arising in the first place [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality control inspects finished products, quality assurance checks processes",
+            "quality control detects defects, quality assurance prevents them"
+          ],
+          "application_max_2": [
+            "end-of-line inspection of completed uniforms",
+            "5% of 60,000 garments reworked at $14,400 a month"
+          ],
+          "analysis_max_2": [
+            "QA checks during production rather than after it",
+            "QA avoids wasted money on defects before they occur"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality control",
+            "quality assurance",
+            "5%",
+            "60,000 garments",
+            "$14,400",
+            "end-of-line",
+            "inspection station"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kelvara Knitwear should invest $45,000 in quality assurance training rather than install a $30,000 inspection station? Justify your answer.",
+        "model_answer": "Quality assurance training builds quality into every stage of production [k], lowering the 5% defect rate towards the retailer's required 2% audit threshold [app], which protects the $900,000-a-year two-year contract [an]. However, the inspection station costs $30,000, saving $15,000 against training [k], and doubling end-of-line checks would catch faulty jumpers before they ship [app], though defects would still occur and rework would still cost money [an]. Overall, quality assurance training is the better investment because the retailer's audit demands a process-wide system, not just final checking [eval], although Kelvara must deliver the training quickly to pass next month's audit [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality assurance prevents defects through process checks",
+            "inspection stations detect defects after production"
+          ],
+          "application_max_2": [
+            "$45,000 supervisor training to reach the 2% audit threshold",
+            "$30,000 inspection station saving $15,000"
+          ],
+          "analysis_max_2": [
+            "protects the $900,000-a-year contract",
+            "end-of-line checks catch faults late, so rework still costs $14,400 a month"
+          ],
+          "evaluation_max_2": [
+            "weighs prevention against cheaper detection and gives a justified recommendation",
+            "conditional recommendation linked to passing next month's audit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "quality control",
+            "$45,000",
+            "$30,000",
+            "$900,000",
+            "2%",
+            "5%",
+            "audit"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_173",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Aster Court Hotel is an independent 45-bedroom hotel in Country X, owned by the Demir family for 11 years. It employs 38 staff and generated $1.1 million in room revenue last year. Online reviews averaged 3.6 out of 5, and 22% of the 380 reviews received mentioned slow breakfast service and worn room linen. Repeat guests have fallen from 40% to 31% of bookings.\n\nThe family must decide how to lift service quality before the summer season. Option one is a total quality management programme costing $25,000, involving all 38 staff in continuous improvement meetings and guest feedback systems. Option two is targeted front-of-house training for 12 staff costing $9,000, focused only on breakfast and check-in. The hotel has $60,000 in cash reserves.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'total quality management'.",
+        "model_answer": "Total quality management is a company-wide approach in which every employee is responsible for quality and works to continuously improve processes and eliminate errors [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "company-wide approach involving all employees",
+            "focus on continuous improvement and eliminating defects/errors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why high quality is important to Aster Court Hotel.",
+        "model_answer": "Reason 1: Good service quality raises customer satisfaction [k], so guests who enjoyed their stay are more likely to book again [app]. Reason 2: Consistent quality builds a strong reputation [k], helping the hotel reverse its fall from 40% to 31% repeat bookings [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customer satisfaction in service businesses",
+            "reputation and repeat business"
+          ],
+          "application_max_2": [
+            "guests more likely to book again",
+            "repeat bookings already fell from 40% to 31%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Aster Court Hotel",
+            "Repeat guests",
+            "31%",
+            "40%",
+            "380 reviews",
+            "breakfast"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Aster Court Hotel of introducing total quality management.",
+        "model_answer": "Benefit 1: Total quality management involves all 38 staff in improving quality [k], so front-line teams can fix the slow breakfast service and worn room linen themselves [app], lifting online reviews above the current 3.6 out of 5 [an]. Benefit 2: Total quality management creates a culture of continuous improvement [k], so guest feedback systems and regular meetings keep service standards high all year [app], protecting $1.1 million in room revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "all employees responsible for quality",
+            "culture of continuous improvement"
+          ],
+          "application_max_2": [
+            "38 staff fixing slow breakfast service and worn room linen",
+            "guest feedback systems keeping standards high"
+          ],
+          "analysis_max_2": [
+            "raises the 3.6 out of 5 review average",
+            "protects $1.1 million in room revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "total quality management",
+            "38 staff",
+            "breakfast",
+            "3.6",
+            "$1.1 million",
+            "continuous improvement"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aster Court Hotel should introduce the $25,000 total quality management programme rather than targeted front-of-house training at $9,000? Justify your answer.",
+        "model_answer": "Total quality management involves all 38 staff in continuous improvement [k], tackling both the slow breakfast service and room quality across the whole hotel [app], which should raise the 3.6 out of 5 review average and rebuild repeat bookings above 31% [an]. However, total quality management costs $25,000 against $9,000 for focused front-of-house training [k], and the family has only $60,000 in cash reserves [app], so an all-staff programme may strain cash before the busy summer [an]. Overall, the total quality management programme is the stronger choice because it fixes causes across the hotel, not just the front desk [eval], provided the family accepts the slower payback of a wider cultural change [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "total quality management involves all employees in continuous improvement",
+            "targeted training focuses only on a part of the service"
+          ],
+          "application_max_2": [
+            "$25,000 all-staff programme versus $9,000 front-of-house training",
+            "$60,000 cash reserves before the summer season"
+          ],
+          "analysis_max_2": [
+            "raises reviews above 3.6 out of 5 and rebuilds repeat bookings",
+            "front-of-house only leaves room quality and other departments unfixed"
+          ],
+          "evaluation_max_2": [
+            "weighs whole-hotel change against cheaper targeted training and gives a justified recommendation",
+            "conditional recommendation linked to cash reserves and timing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "total quality management",
+            "$25,000",
+            "$9,000",
+            "$60,000",
+            "38 staff",
+            "3.6",
+            "31%",
+            "summer"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_174",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Delamere Dairy Co is a private limited company producing yoghurt and drinking milk in Country X, operating for 8 years with 45 production workers. It uses 120,000 litres of milk a year, currently buying at $0.52 a litre. Annual revenue is $860,000 and its profit margin is 11%. Customer complaints about sour batches rose to 26 last year.\n\nA new supplier offers milk at $0.44 a litre, saving the business $9,600 a year. However, its samples showed a slightly higher bacteria count, and Delamere's quality assurance team is unsure the milk meets the company's standards. Alternatively, Delamere could keep the current supplier and invest $15,000 in faster lab testing to catch sour batches earlier. The board must decide at its next meeting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'customer satisfaction'.",
+        "model_answer": "Customer satisfaction is the degree to which a customer's expectations about a product or service are met or exceeded [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "degree to which expectations are met or exceeded",
+            "relates to the customer's experience of the product or service"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why customer satisfaction is important to Delamere Dairy Co.",
+        "model_answer": "Reason 1: Satisfied customers keep buying the company's yoghurt and milk [k], supporting annual revenue of $860,000 [app]. Reason 2: Satisfied customers stay loyal rather than switching to rivals [k], helping Delamere reverse the 26 complaints about sour batches last year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "repeat purchases from satisfied customers",
+            "loyalty and lower switching to rivals"
+          ],
+          "application_max_2": [
+            "revenue of $860,000 from yoghurt and milk sales",
+            "26 sour-batch complaints to reverse"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Delamere Dairy Co",
+            "$860,000",
+            "customer complaints",
+            "sour batches",
+            "yoghurt",
+            "120,000 litres"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two trade-offs between quality and cost facing Delamere Dairy Co.",
+        "model_answer": "Trade-off 1: The new supplier's milk costs $0.44 a litre instead of $0.52 [k], saving $9,600 a year on 120,000 litres [app], but its higher bacteria count could increase sour-batch complaints [an]. Trade-off 2: Keeping the current supplier protects established quality standards [k], but the business pays an extra $0.08 a litre for that consistency [app], squeezing the 11% profit margin [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower input costs improve short-term profit",
+            "lower-cost inputs can reduce product quality"
+          ],
+          "application_max_2": [
+            "$0.44 versus $0.52 a litre, saving $9,600 a year",
+            "extra $0.08 a litre for the current supplier's consistency"
+          ],
+          "analysis_max_2": [
+            "higher bacteria count risks more sour-batch complaints",
+            "paying more per litre squeezes the 11% profit margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.44",
+            "$0.52",
+            "$9,600",
+            "bacteria count",
+            "11%",
+            "sour batches",
+            "Delamere"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Delamere Dairy Co should switch to the cheaper milk supplier rather than invest $15,000 in faster lab testing? Justify your answer.",
+        "model_answer": "Switching to the new supplier saves $9,600 a year on 120,000 litres of milk [k], directly lifting profit in a business earning an 11% margin [app], which is attractive if the milk still passes quality checks [an]. However, the higher bacteria count risks more sour batches and customer complaints [k], damaging reputation and loyalty among regular yoghurt buyers [app], whereas $15,000 on lab testing keeps known-good milk and catches faults earlier [an]. Overall, Delamere should not switch yet and should invest in lab testing because reputation and food safety outweigh a $9,600 saving [eval], unless the supplier's milk passes full quality assurance testing [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cheaper inputs raise short-term profit",
+            "quality assurance and testing prevent defects reaching customers"
+          ],
+          "application_max_2": [
+            "$9,600 yearly saving on 120,000 litres",
+            "$15,000 lab testing keeps current supplier quality"
+          ],
+          "analysis_max_2": [
+            "higher bacteria count could increase sour batches and complaints",
+            "lab testing catches faults earlier and protects reputation"
+          ],
+          "evaluation_max_2": [
+            "weighs cost saving against quality risk and gives a justified recommendation",
+            "conditional recommendation linked to passing quality assurance testing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.44",
+            "$0.52",
+            "$9,600",
+            "$15,000",
+            "bacteria count",
+            "11%",
+            "sour batches",
+            "120,000 litres"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_175",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Cobalt Spring Water Co is a private limited company bottling natural mineral water in Country X, founded 5 years ago. It employs 60 workers and generated $2.4 million in sales last year with a 14% profit margin. Its market share is 12%, and discount supermarket own-label rivals undercut its bottled water price by 15%. Country X's bottled water market is growing 6% a year.\n\nTo respond, Cobalt's directors are weighing two options. Option one is investing $150,000 in a quality assurance overhaul and premium spring-source branding, aiming to justify current prices. Option two is cutting the retail price by 10% to match own-label rivals, which would reduce revenue by about $240,000 a year if volumes stay flat. The board wants a decision before the new product launch in September.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'competitive advantage'.",
+        "model_answer": "Competitive advantage is a feature that allows a business to outperform rivals, for example through better quality, lower price or stronger branding [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "feature that allows a business to outperform rivals",
+            "examples include quality, price, branding or service"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways high quality can give Cobalt Spring Water Co a competitive advantage.",
+        "model_answer": "Reason 1: Premium quality differentiates Cobalt's water from own-label rivals [k], justifying its current price despite rivals undercutting by 15% [app]. Reason 2: Reliable quality builds customer loyalty and repeat purchases [k], helping defend Cobalt's 12% market share [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality as a way to differentiate from rivals",
+            "quality builds loyalty and repeat purchases"
+          ],
+          "application_max_2": [
+            "defends current prices against 15% undercutting",
+            "defends Cobalt's 12% market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cobalt Spring Water",
+            "own-label",
+            "15%",
+            "12%",
+            "market share",
+            "quality"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Cobalt Spring Water Co of investing in quality assurance.",
+        "model_answer": "Benefit 1: Quality assurance prevents faults at the source [k], so mineral water purity and bottling standards are verified at every stage [app], reducing waste and protecting the 14% profit margin [an]. Benefit 2: Quality assurance supports a premium brand image [k], reassuring health-conscious buyers that the water is consistently high quality [app], strengthening repeat sales [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "prevents defects by building quality into processes",
+            "supports a strong brand image"
+          ],
+          "application_max_2": [
+            "verified mineral water purity and bottling standards",
+            "premium spring-source positioning for health-conscious buyers"
+          ],
+          "analysis_max_2": [
+            "reduces waste and protects the 14% profit margin",
+            "strengthens repeat sales and loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$150,000",
+            "14%",
+            "premium",
+            "mineral water",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cobalt Spring Water Co should invest $150,000 in quality assurance and premium branding rather than cut its price by 10%? Justify your answer.",
+        "model_answer": "Quality assurance plus premium spring-source branding differentiates Cobalt's water [k], defending its 12% market share against own-label rivals undercutting by 15% [app], and protecting the $2.4 million revenue base and 14% margin [an]. However, a 10% price cut would match rivals and may win back price-sensitive buyers [k], but it would cost about $240,000 a year in lost revenue if volumes stay flat [app], squeezing profit further [an]. Overall, the quality and branding investment is the stronger choice because it builds a sustainable competitive advantage rather than a race to the bottom on price [eval], provided Cobalt can afford $150,000 and keep the product genuinely premium [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "differentiation through quality builds competitive advantage",
+            "price cuts match rivals but reduce margins"
+          ],
+          "application_max_2": [
+            "12% market share against 15% undercutting",
+            "10% price cut costing about $240,000 a year"
+          ],
+          "analysis_max_2": [
+            "protects the $2.4 million revenue base and 14% margin",
+            "a price cut lowers revenue and squeezes profit if volumes stay flat"
+          ],
+          "evaluation_max_2": [
+            "weighs differentiation against price competition and gives a justified recommendation",
+            "conditional recommendation linked to affording $150,000 and staying genuinely premium"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "$150,000",
+            "10%",
+            "$240,000",
+            "15%",
+            "12%",
+            "$2.4 million",
+            "premium"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_176",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Arden Motor Components Ltd manufactures wheel hubs and steering racks as a private limited company in Country X, operating for 10 years with 110 factory workers. It produces 30,000 units a month and sells them to a leading truck maker under a contract requiring a defect rate below 3%. Current output sells at $12 per unit with variable costs of $7, and the defect rate is 2%.\n\nThe operations director proposes raising line speed by 20% to produce 36,000 units a month, lifting monthly contribution by about $30,000 before quality costs. However, a trial run showed defects would rise to 5%, breaching the customer's 3% contract limit, and each defective unit costs $9 to rework. Alternatively, the firm could keep line speed unchanged and spend $80,000 on quality assurance training to push defects below 1%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'repeat purchase'.",
+        "model_answer": "Repeat purchase is when a customer buys from the same business again and again rather than switching to a rival [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customer buying from the same business again",
+            "not switching to a rival"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why repeat purchases are important to Arden Motor Components Ltd.",
+        "model_answer": "Reason 1: Repeat orders from the leading truck maker provide steady revenue [k], supporting continuous production of 30,000 units a month [app]. Reason 2: Repeat business from a loyal customer reduces selling costs and supports profit [k], especially under the contract requiring under 3% defects [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "steady revenue from returning customers",
+            "lower selling costs from customer loyalty"
+          ],
+          "application_max_2": [
+            "truck maker's regular orders sustaining 30,000 units a month",
+            "contract requiring a defect rate below 3%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Arden Motor Components",
+            "truck maker",
+            "30,000 units",
+            "3%",
+            "contract",
+            "$12"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two trade-offs between quality and productivity facing Arden Motor Components Ltd.",
+        "model_answer": "Trade-off 1: Raising line speed by 20% would lift output from 30,000 to 36,000 units a month [k], adding about $30,000 in monthly contribution before quality costs [app], but defects would rise from 2% to 5% [an]. Trade-off 2: Keeping line speed unchanged limits output but protects quality [k], so the defect rate stays under the 3% contract limit [app], avoiding penalties and lost future orders [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster production raises productivity and output",
+            "higher speed can damage quality"
+          ],
+          "application_max_2": [
+            "output rising from 30,000 to 36,000 units a month",
+            "defect rate staying under the 3% contract limit"
+          ],
+          "analysis_max_2": [
+            "about $30,000 extra monthly contribution before quality costs",
+            "extra defects breach the contract and risk lost orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "line speed",
+            "20%",
+            "36,000",
+            "30,000",
+            "$30,000",
+            "5%",
+            "2%",
+            "3%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Arden Motor Components Ltd should raise line speed by 20% rather than keep speed unchanged and spend $80,000 on quality assurance training? Justify your answer.",
+        "model_answer": "Raising line speed by 20% would lift output to 36,000 units a month [k], adding about $30,000 in monthly contribution at $12 per unit less $7 variable cost [app], increasing short-term revenue and profit [an]. However, trialling the faster line pushed defects to 5%, breaching the 3% limit in the truck maker's contract [k], risking loss of the entire contract and costly rework at $9 per defect [app], outweighing the extra contribution [an]. Overall, Arden should keep line speed unchanged and invest $80,000 in quality assurance training, because protecting the contract matters more than short-term output gains [eval], while defects below 1% should strengthen its reputation for future orders [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "raising line speed increases productivity and output",
+            "quality assurance training prevents defects at source"
+          ],
+          "application_max_2": [
+            "output of 36,000 units a month and $30,000 extra contribution",
+            "$80,000 quality assurance training pushing defects below 1%"
+          ],
+          "analysis_max_2": [
+            "extra contribution at $12 per unit less $7 variable cost",
+            "5% defect rate breaches the 3% contract limit and risks the contract"
+          ],
+          "evaluation_max_2": [
+            "weighs short-term output gain against contract protection and gives a justified recommendation",
+            "recommendation linked to long-term reputation and future orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "line speed",
+            "20%",
+            "36,000",
+            "$30,000",
+            "$80,000",
+            "5%",
+            "3%",
+            "quality assurance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_177",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Eldertree Furniture Co is a partnership making sofas and dining sets in Country X, operating for 14 years with 28 craftspeople. Sales revenue reached $700,000 last year, but customer complaints rose 35%, and 3 out of every 100 sofas were returned for broken frames or loose joints. Two big retailers have paused orders until quality improves. The partnership's profit margin slipped to 7% last year as returns mounted.\n\nThe partners are debating two fixes. Option one is quality assurance: redesigning the frame-gluing process and training staff, costing $28,000 up front, to prevent faults during assembly. Option two is stronger end-of-line quality control, adding a final inspection bench for $12,000 and a two-person repair team. The partners want the paused retailers' orders reinstated within 6 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'brand reputation'.",
+        "model_answer": "Brand reputation is the overall opinion customers and the public hold about a business and its products, built over time through experience and word of mouth [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overall opinion customers hold about a business",
+            "built over time through experience and word of mouth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two effects of poor quality on Eldertree Furniture Co's reputation.",
+        "model_answer": "Effect 1: Poor quality leads to complaints and returns [k], as shown by complaints rising 35% and 3 out of every 100 sofas being returned [app]. Effect 2: A damaged reputation deters retailers and customers [k], which is why two big retailers have paused orders [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "complaints damage reputation",
+            "loss of buyer confidence and orders"
+          ],
+          "application_max_2": [
+            "complaints rose 35% with 3 out of every 100 sofas returned",
+            "two big retailers paused their orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Eldertree Furniture Co",
+            "complaints",
+            "35%",
+            "returned",
+            "retailers",
+            "quality"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Eldertree Furniture Co of quality control.",
+        "model_answer": "Benefit 1: Quality control catches faulty sofas before they leave the workshop [k], so broken frames and loose joints are fixed before delivery [app], reducing costly returns [an]. Benefit 2: Quality control protects the firm's retail relationships [k], giving inspectors evidence that finished furniture meets agreed standards [app], helping win back the two paused retailers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "detects faults before products reach customers",
+            "provides evidence of standards met"
+          ],
+          "application_max_2": [
+            "broken frames and loose joints fixed before delivery",
+            "evidence for the two paused retailers"
+          ],
+          "analysis_max_2": [
+            "reduces costly returns",
+            "helps reinstate retailer orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality control",
+            "$12,000",
+            "retailers",
+            "sofas",
+            "frames",
+            "inspection"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Eldertree Furniture Co should invest $28,000 in quality assurance rather than $12,000 for end-of-line quality control? Justify your answer.",
+        "model_answer": "Quality assurance redesigns the frame-gluing process and trains staff to prevent faults during assembly [k], attacking the root cause of broken frames rather than just catching them late [app], which should cut the 3 out of 100 sofa returns and reverse the 35% complaint rise [an]. However, quality assurance costs $28,000, more than double the $12,000 inspection bench [k], so the partnership must weigh this against the six-month deadline to reinstate the paused retailers' orders [app], and quality control would start catching faults immediately [an]. Overall, quality assurance is the better long-term choice because preventing faults protects brand reputation more effectively than reworking bad furniture [eval], provided the partners can fund it without halting production [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality assurance prevents faults at source",
+            "quality control detects faults at the end of the line"
+          ],
+          "application_max_2": [
+            "$28,000 frame-gluing redesign and staff training",
+            "$12,000 final inspection bench with a two-person repair team"
+          ],
+          "analysis_max_2": [
+            "cuts the 3 out of 100 sofa returns and reverses the 35% complaint rise",
+            "quality control starts catching faults immediately against the six-month deadline"
+          ],
+          "evaluation_max_2": [
+            "weighs prevention against cheaper immediate detection and gives a justified recommendation",
+            "conditional recommendation linked to funding without halting production"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "quality control",
+            "$28,000",
+            "$12,000",
+            "35%",
+            "retailers",
+            "frame"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_178",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Severnview Electronics Ltd is a public limited company assembling televisions and soundbars in Country X, operating for 7 years with 200 production workers. It makes 4,000 units a month, of which 1,500 are exported to three countries. Export orders require audited defect rates below 1%; the current rate is 3%, meaning 120 defective sets a month cost about $18,000 to repair or replace. Television and soundbar sales grew 9% last year.\n\nSevernview is choosing between two options before renewing export contracts. Option one is investing $70,000 in quality assurance certification, training staff and auditing every production stage. Option two is hiring three end-of-line quality control inspectors at $2,200 each per month to catch faults before shipping. Export customers will review contracts next quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'defect'.",
+        "model_answer": "A defect is a fault or flaw in a product that means it fails to meet the required quality standard or customer expectation [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fault or flaw in a product",
+            "product fails to meet required standards or expectations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why low defect rates are essential for Severnview Electronics Ltd's exports.",
+        "model_answer": "Reason 1: Export contracts require audited defect rates below 1% [k], so Severnview must hit that standard to keep its contracts in three countries [app]. Reason 2: Export customers can reject or claim for faulty sets [k], while the current 3% rate already costs $18,000 a month in repairs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "export buyers impose quality requirements",
+            "defects lead to rejection, claims and repair costs"
+          ],
+          "application_max_2": [
+            "audited below 1% requirement for three export countries",
+            "3% current rate costing $18,000 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Severnview Electronics",
+            "export",
+            "1%",
+            "3%",
+            "$18,000",
+            "three countries"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two differences between quality control and quality assurance for Severnview Electronics Ltd.",
+        "model_answer": "Difference 1: Quality control checks finished televisions at the end of the line [k], catching the 120 defective sets a month before shipping [app], whereas quality assurance verifies each stage during production [an]. Difference 2: Quality control accepts that faults will happen and removes them [k], so rework still costs about $18,000 a month [app], while quality assurance works to prevent faults from occurring in the first place [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality control inspects finished products, quality assurance checks processes",
+            "quality control detects defects, quality assurance prevents them"
+          ],
+          "application_max_2": [
+            "end-of-line checks catching 120 defective sets a month",
+            "continued $18,000 monthly rework cost under quality control"
+          ],
+          "analysis_max_2": [
+            "quality assurance verifies stages during production",
+            "prevention avoids the $18,000 monthly rework cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality control",
+            "quality assurance",
+            "120 defective sets",
+            "$18,000",
+            "three countries",
+            "defect"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Severnview Electronics Ltd should invest $70,000 in quality assurance certification rather than hire three end-of-line quality control inspectors at $2,200 each per month? Justify your answer.",
+        "model_answer": "Quality assurance certification embeds checks at every production stage [k], cutting the 3% defect rate towards the audited 1% export requirement [app], protecting contracts across three countries and saving $18,000 a month in repairs [an]. However, certification costs $70,000 up front and takes time, while three inspectors cost $2,200 each per month but catch faults immediately [k], giving faster protection for the next shipment [app], though defects would still occur and need rework [an]. Overall, quality assurance certification is the stronger investment because audited export customers want process-wide quality, not just final inspection [eval], provided Severnview can complete certification before contract renewals next quarter [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality assurance certification verifies process-wide quality",
+            "quality control inspectors detect defects after production"
+          ],
+          "application_max_2": [
+            "$70,000 certification to meet the 1% audited requirement",
+            "three inspectors at $2,200 each per month catching faults immediately"
+          ],
+          "analysis_max_2": [
+            "protects three export country contracts and saves $18,000 a month",
+            "inspectors still allow defects and $18,000 monthly rework"
+          ],
+          "evaluation_max_2": [
+            "weighs prevention against faster detection and gives a justified recommendation",
+            "conditional recommendation linked to completing certification next quarter"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "quality assurance",
+            "quality control",
+            "$70,000",
+            "$2,200",
+            "1%",
+            "3%",
+            "three countries",
+            "export"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_179",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Poppet & Pine Toys Ltd is a private limited company making wooden and plastic toys in Country X, founded 4 years ago, employing 36 workers and producing 12,000 toys a month. Each toy uses about 1 kilogram of plastic. New safety rules require toys to withstand a 1.5 metre drop test. The current certified plastic costs $0.85 a kilogram; a cheaper uncertified supplier offers $0.70, saving $21,600 a year.\n\nHowever, internal tests show the cheaper plastic cracks in 4% of drop tests versus under 1% for the current material. The managing director is weighing option one: switch to the cheaper material and rely on quality control checks at the end of the line. Option two: keep the certified plastic and introduce continuous improvement teams, part of a total quality management approach, costing $18,000 a year. The national toy retailer audit happens in 4 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'continuous improvement'.",
+        "model_answer": "Continuous improvement is the ongoing effort by all employees to make small, regular improvements to processes, products and quality over time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ongoing effort to make small regular improvements",
+            "involves employees and covers processes, products and quality"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Poppet & Pine Toys Ltd of involving all workers in continuous improvement.",
+        "model_answer": "Reason 1: Workers spot small faults and waste that managers miss [k], helping reduce the 4% drop-test failures of the cheaper plastic [app]. Reason 2: Involving staff raises motivation and ownership of quality [k], supporting a total quality management culture across the 36 workers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "workers identify faults and waste others miss",
+            "employee involvement raises motivation and ownership"
+          ],
+          "application_max_2": [
+            "reducing 4% drop-test failures of the cheaper plastic",
+            "total quality management culture across 36 workers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Poppet & Pine",
+            "4%",
+            "36 workers",
+            "continuous improvement",
+            "total quality management",
+            "drop tests"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two trade-offs between quality and cost facing Poppet & Pine Toys Ltd.",
+        "model_answer": "Trade-off 1: The cheaper uncertified plastic costs $0.70 a kilogram instead of $0.85 [k], saving $21,600 a year at 1 kilogram per toy [app], but cracking in 4% of drop tests [an]. Trade-off 2: Keeping the certified plastic protects safety and reputation [k], essential under the new 1.5 metre drop test rules [app], but it raises input costs and squeezes margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cheaper inputs lower costs but can reduce quality",
+            "higher-quality inputs protect safety and reputation"
+          ],
+          "application_max_2": [
+            "$0.70 versus $0.85 a kilogram saving $21,600 a year",
+            "1.5 metre drop test rules for certified plastic"
+          ],
+          "analysis_max_2": [
+            "cheaper plastic cracks in 4% of drop tests",
+            "certified plastic raises input costs and squeezes margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.85",
+            "$0.70",
+            "$21,600",
+            "4%",
+            "1.5 metre",
+            "12,000 toys",
+            "certified"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Poppet & Pine Toys Ltd should keep the certified plastic and introduce continuous improvement teams rather than switch to the cheaper supplier? Justify your answer.",
+        "model_answer": "Keeping the certified plastic withstands the 1.5 metre drop test reliably [k], with under 1% failure versus 4% for the cheaper material [app], protecting child safety and the national toy retailer's approval [an]. However, the cheaper supplier would save $21,600 a year [k], tempting for a business only 4 years old with 12,000 toys made monthly [app], though failures in the 4-month retailer audit could end the account [an]. Overall, Poppet & Pine should keep the certified plastic and invest $18,000 a year in continuous improvement teams, because safety and reputation outweigh $21,600 in savings [eval], provided the teams genuinely cut waste to offset the extra material cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "certified safer materials protect customers and reputation",
+            "continuous improvement teams reduce waste and errors"
+          ],
+          "application_max_2": [
+            "under 1% failure versus 4% for the cheaper material",
+            "$21,600 yearly saving versus $18,000 a year for improvement teams"
+          ],
+          "analysis_max_2": [
+            "protects child safety and the national toy retailer's approval",
+            "4-month retailer audit could end the account if failures appear"
+          ],
+          "evaluation_max_2": [
+            "weighs cost savings against safety and reputation and gives a justified recommendation",
+            "conditional recommendation linked to teams cutting waste"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "certified plastic",
+            "$21,600",
+            "$18,000",
+            "4%",
+            "1.5 metre",
+            "12,000",
+            "continuous improvement",
+            "drop test"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_180",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Seacliff Fish & Grill is a family-run fish and chip restaurant in a coastal town in Country X, operating for 16 years with 9 employees. Monthly revenue is $48,000, and the lunch rush averages 120 covers between 12:00 and 14:00. Average wait times reached 18 minutes, and 15% of the 400 monthly online reviews mention cold food or order mistakes.\n\nThe owners must choose between two options to fix this. Option one is hiring 2 extra kitchen staff for the lunch rush at $1,600 each per month. Option two is a $12,000 kitchen redesign plus quality training for all 9 staff, building a total quality management culture with daily checklists and customer feedback cards. Either change must be in place before the summer tourist season.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'quality'.",
+        "model_answer": "Quality is how well a product or service meets customer needs and expectations, for example fitness for purpose and consistent standards [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "how well a product or service meets customer needs",
+            "fitness for purpose and consistent standards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why service quality is important to Seacliff Fish & Grill.",
+        "model_answer": "Reason 1: Good quality food and accurate, prompt service raise customer satisfaction [k], encouraging repeat visits during the 120-cover lunch rush [app]. Reason 2: Positive reviews attract passing trade [k], countering the 15% of 400 monthly reviews mentioning cold food or order mistakes [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customer satisfaction in a service business",
+            "reviews and word of mouth drive footfall"
+          ],
+          "application_max_2": [
+            "repeat visits during the 120-cover lunch rush",
+            "15% of 400 monthly reviews mentioning faults"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Seacliff Fish & Grill",
+            "lunch",
+            "120 covers",
+            "15%",
+            "400",
+            "reviews"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Seacliff Fish & Grill of adopting total quality management in the kitchen.",
+        "model_answer": "Benefit 1: Total quality management makes all 9 staff responsible for quality [k], so daily checklists catch order mistakes before plates reach tables [app], cutting the 18-minute average wait [an]. Benefit 2: Total quality management builds a culture of continuous feedback and improvement [k], using customer feedback cards to refine service each week [app], lifting review scores above current levels [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "all staff responsible for quality",
+            "culture of continuous feedback and improvement"
+          ],
+          "application_max_2": [
+            "daily checklists catching order mistakes before plates reach tables",
+            "customer feedback cards refining service weekly"
+          ],
+          "analysis_max_2": [
+            "cuts the 18-minute average wait",
+            "lifts review scores above current levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "total quality management",
+            "9 staff",
+            "checklists",
+            "18 minutes",
+            "feedback",
+            "Seacliff"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Seacliff Fish & Grill should hire 2 extra kitchen staff at $1,600 each per month rather than invest $12,000 in a kitchen redesign and quality training? Justify your answer.",
+        "model_answer": "Hiring 2 extra kitchen staff adds kitchen capacity immediately [k], directly cutting the 18-minute wait during the 120-cover lunch rush [app], which should reduce the 15% of reviews mentioning cold food [an]. However, the extra wages cost $1,600 each per month, about $38,400 a year forever [k], whereas the $12,000 redesign plus quality training builds lasting habits across all 9 staff [app], tackling the root causes of errors, not just symptoms [an]. Overall, the $12,000 redesign and training is the stronger investment because it fixes processes and motivates staff rather than adding permanent wage costs [eval], provided the owners can fund $12,000 before the summer tourist season [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra staff add immediate capacity",
+            "redesign plus training builds lasting quality culture"
+          ],
+          "application_max_2": [
+            "$1,600 each per month for 2 extra kitchen staff",
+            "$12,000 kitchen redesign with quality training for all 9 staff"
+          ],
+          "analysis_max_2": [
+            "cuts the 18-minute wait and reduces cold-food reviews",
+            "extra wages cost about $38,400 a year versus a one-off $12,000"
+          ],
+          "evaluation_max_2": [
+            "weighs quick capacity against lasting process improvement and gives a justified recommendation",
+            "conditional recommendation linked to funding before the summer tourist season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,600",
+            "$12,000",
+            "18 minutes",
+            "120 covers",
+            "15%",
+            "9 staff",
+            "summer tourist season",
+            "2 extra kitchen staff"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

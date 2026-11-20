@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_112",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Sole Ledger (SL) is a private limited company operating an online sneaker resale marketplace in the capital city of Dunmoor, employing a workforce of 62. Founded in 2016 by DeShawn Carter, the business authenticates and resells limited-edition trainers through a hierarchical structure with autocratic leadership. SL plans to invest $950,000 in a national authentication hub and a verified-seller onboarding programme for 300 new sellers, financed by a $600,000 bank loan and $350,000 from a share issue. It has fixed costs of $480,000 a year, a variable cost of $9.00 a unit and a selling price of $21.00, and currently produces 55,000 units a year. SL faces a serious operational problem: returns abuse has reached 6.8% of orders, driven by worn or switched pairs sent back for refunds.",
+    "appendix_1_marketing_ops": "Operations Log — Q3 2026: The Dunmoor authentication hub processed 9,400 pairs last quarter, rejecting 3.1% as counterfeit or unverifiable. Returns were 11% of orders, with 480 cases of suspected switched-item fraud referred for review. The average consigned sale price was $210, and average delivery time is 2.6 days. A survey of 350 buyers found 78% would pay a $19 authentication fee for guaranteed genuine stock, and 61% discovered SL through social media. Seller verification takes 6 working days, and 72% of new sellers fail the first audit.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Sole Ledger as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "410", "455"],
+        ["Trade receivables", "310", "380"],
+        ["Cash and cash equivalents", "150", "60"],
+        ["Current liabilities", "430", "505"],
+        ["Non-current assets", "2,600", "3,150"],
+        ["Capital employed", "3,040", "3,410"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.25%, the third rise this year, lifting variable-rate borrowing costs. (2) The national minimum wage will rise by 4.9% from $12.66 to $13.28 per hour from April 2026, raising wage bills for authentication and packing teams. (3) Logistics and resale input costs (delivery, authentication and payment processing) have risen 10.6% year-on-year, and consumer spending on second-hand sneakers grew 14.2% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "SL must choose how to fund the national authentication hub. Explain two advantages for SL of using a share issue to raise $350,000 instead of increasing the $600,000 bank loan.",
+      "model_answer": "Point 1: A share issue carries no repayment schedule and no interest charge, so SL avoids adding further fixed obligations while it absorbs a 10.6% rise in logistics and authentication input costs and a 4.9% minimum wage increase. This protects cash for the $950,000 hub build, when Appendix 2 already shows cash fell from $150,000 to $60,000 and current liabilities rose to $505,000 during expansion.\n\nPoint 2: Equity funding does not require the hub itself as collateral, so if launch yields slower seller sign-ups than the 300-seller target, the authentication hub is not at risk of repossession. It also strengthens SL's balance sheet and lender confidence, making the remaining $600,000 bank loan easier to service and assuring consigned sellers that a well-capitalised platform will honour their stock and payouts.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Sole Ledger, its expansion decision and its financial position."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "$600,000", "bank loan", "$950,000", "workforce of 62", "returns abuse"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "SL is onboarding 300 new verified sellers to its marketplace. Consider a social media influencer campaign, advertising in sneaker culture magazines, or sponsorship of a sneaker trade convention. Which should SL choose to promote seller onboarding? Justify your recommendation.",
+      "model_answer": "Social media influencer campaign: Sneaker and streetwear creators could showcase the authentication process to both buyers and aspiring sellers. With 61% of buyers already discovering SL through social media and 78% willing to pay a $19 authentication fee, the channel directly reaches the exact audience and can onboard sellers with referral codes, live authentication demos and seller-spotlight series. It is measurable, inexpensive per reach, and compounds virally; its risk is follower vanity metrics and inconsistent seller-quality enquiries.\n\nSneaker culture magazine advertising: Print ads carry prestige and suit long-form storytelling about counterfeit detection, appealing to serious collectors who value authentication. However, print circulation is shrinking, ads cannot be clicked to sign up, and measuring response requires QR-code campaigns with soft conversion; spending would have narrow impact for reaching 300 new verified sellers nationally.\n\nSponsorship of a sneaker trade convention: A booth at a national convention would put SL face-to-face with bulk sellers, restorers and graders, ideal for the 300-seller target, and permits live grading demonstrations. But it is a one-off, geographically concentrated spend with high booth and staffing costs, limited to attendees, and cannot sustain onboarding momentum across the following quarters.\n\nRecommendation: SL should choose a social media influencer campaign. It matches how the sneaker community already discovers the platform, scales nationally for a fraction of print or convention costs, and directly supports the 300-verified-seller drive with trackable sign-ups. Magazine print is rejected as unmeasurable and declining, and convention sponsorship is rejected as episodic and location-bound; SL can layer a single flagship convention appearance on top of the influencer programme rather than anchor the whole launch to it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal application to SL.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of SL with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of SL with a well-justified recommendation explaining why magazine print and convention sponsorship are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["61%", "78%", "authentication hub", "verified-seller", "$19", "9,400"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "SL's autocratic leadership has drawn criticism from authentication staff. Explain two benefits for SL of autocratic leadership when running seller verification and order authentication.",
+      "model_answer": "Point 1: Autocratic leadership means one clear chain of command and instant decisions on which pairs pass authentication, which is vital when counterfeit disputes move fast and 480 suspected switched-item cases need review. DeShawn Carter can impose a single verification standard across the 9,400 pairs processed each quarter, keeping the counterfeit-rejection rate at 3.1% consistent for every seller.\n\nPoint 2: Clear authority suits the hierarchical structure and an environment where errors costly to both buyers and the brand must be caught quickly, and where 72% of new sellers fail their first audit. Decisive managers can pull suspect consignments, sanction sellers and tighten fraud controls without committee delay, directly attacking the 6.8% returns abuse rate and protecting the $210 average sale price and the brand's promised authenticity.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SL's authentication centre and fraud problem."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "returns abuse", "6.8%", "9,400", "3.1%", "hierarchical structure"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "SL wants to cut fraudulent returns running at 6.8% of orders. Consider retraining its authentication staff on-the-job or hiring temporary auditors during peak releases. Which should SL choose? Justify your decision.",
+      "model_answer": "On-the-job retraining: Senior authenticators train every packer and grader on the exact checks used in the Dunmoor hub — stitching, box labels, SKU matching and weight checks — so learning maps directly onto live consignments. It keeps all 62 staff productive, costs no course fees, and builds a permanent checking culture that outlasts any scheme; weaknesses are that production staff who train lose output time, bad habits can be copied, and there is no external certificate if SL faces disputes with major sellers.\n\nTemporary auditors during peak releases: Bringing in experienced fraud auditors for high-volume drops such as limited trainer releases would surge capacity exactly when switched-item fraud spikes, catching problems the permanent team misses. They are however expensive per week, know nothing of SL's seller history without induction, cannot deliver lasting skills, and confidentiality around stock and pricing must be contractually watertight; they fade out after each release, leaving the underlying 6.8% returns abuse unfixed.\n\nDecision: SL should choose on-the-job retraining as its core response, reserving temporary auditors only for the two biggest release weekends. Retraining is cheaper, machine- and process-specific, raises long-term accuracy rather than patching peaks, and supports Carter's autocratic standard-setting with a skilled internal team. Hiring temps as the main solution is rejected because it treats symptoms, never builds internal capability, and erodes margins on every $210 sale while the 480 switched-item cases keep growing; permanent upskilling plus spot audits is the sustainable route.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two options with limited application to SL.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both options in the context of SL.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of SL with a well-justified decision covering cost, disruption, fraud prevention and long-term capability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["returns abuse", "6.8%", "authentication", "9,400", "480", "2.6 days"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how SL's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate SL's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Actual output − Break-even output. Substitution: Break-even output = $480,000 ÷ ($21.00 − $9.00) = $480,000 ÷ $12.00 = 40,000 units; Margin of safety = 55,000 − 40,000 = 15,000 units. Answer: margin of safety is 15,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate SL's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $21.00 − $9.00 = $12.00. Answer: contribution per unit is $12.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways SL's management can use this financial data.",
+          "model_answer": "1. SL's managers can use the 15,000-unit margin of safety, with actual output of 55,000 units against a 40,000-unit break-even point, to judge how far demand could fall before the authentication hub investment becomes loss-making, informing expansion pacing.\n2. The $12.00 contribution per unit can be combined with the $19 authentication fee buyers would pay, letting managers model whether fee income can offset the 10.6% rise in logistics input costs and keep each sale comfortably above $9.00 variable cost.\n3. Knowing fixed costs of $480,000 and contribution, managers can test whether the $600,000 bank loan repayments remain serviceable and set consignment-fee and commission structures that fund the $950,000 hub without breaching cash headroom, given Appendix 2 shows cash fell to $60,000 in 2025.\n4. Managers can benchmark unit cost ($480,000 ÷ 55,000 units = $8.73, plus $9.00 = $17.73 a unit) and labour productivity (55,000 units ÷ 62 staff ≈ 887 units per worker) to track packing efficiency, reward top graders, and spot waste driving the 6.8% returns abuse across shifts."
+        }
+      ],
+      "model_answer": "(i) Margin of safety = 15,000 units | (ii) Contribution per unit = $12.00 | (iii) Four contextual uses: 15,000-unit safety cushion vs 55,000 units sold and 40,000 break-even; $19 authentication fee modelling vs $9.00 variable cost; loan-service feasibility for the $600,000 bank loan; and unit-cost benchmarking at $17.73 with productivity of 887 units per worker.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["15,000", "40,000", "$12.00", "$480,000", "55,000", "$9.00", "$21.00"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate SL's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has SL's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 2.02 : 1\nCurrent Ratio 2025 = 1.77 : 1\nAcid Test Ratio 2024 = 1.07 : 1\nAcid Test Ratio 2025 = 0.87 : 1\n\nDetailed workings: 2024 current assets = $410,000 inventories + $310,000 trade receivables + $150,000 cash = $870,000; 2025 current assets = $455,000 + $380,000 + $60,000 = $895,000. 2024 cover = $870,000 ÷ $430,000 current liabilities = 2.02; 2025 cover = $895,000 ÷ $505,000 = 1.77. 2024 liquid cover = ($870,000 − $410,000) ÷ $430,000 = $460,000 ÷ $430,000 = 1.07; 2025 liquid cover = ($895,000 − $455,000) ÷ $505,000 = $440,000 ÷ $505,000 = 0.87.\n\nEvaluation: SL's liquidity has deteriorated even though the business is growing. Non-current assets rose from $2,600,000 to $3,150,000 as the authentication hub and onboarding programme were built, but cash fell from $150,000 to $60,000 and current liabilities climbed from $430,000 to $505,000, so overall cover slipped from 2.02 to 1.77. The liquid cover slid from 1.07 to 0.87, meaning SL can no longer meet short-term debts without realising stock, an uncomfortable position for a platform holding $455,000 of unsold consigned inventory and $380,000 of trade receivables from sellers on settlement terms. Growing receivables suggest some sellers are slow to remit, and if the 300-seller onboarding accelerates cash absorption further, SL could face a squeeze precisely when the $600,000 bank loan repayments bite and interest costs rise with the base rate.\n\nConclusion: SL's financial position has not improved. Both measures fell — cover from 2.02 to 1.77 and liquid cover from 1.07 to 0.87 — because expansion consumed working capital faster than it generated it. SL should tighten seller settlement terms, stage the onboarding of the 300 sellers in cohorts, and pause further borrowing until cash recovers, even though the hub will strengthen long-term competitiveness and support premium authentication fees.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of the deterioration caused by expansion and a justified conclusion that SL's financial position has not improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.02", "1.77", "1.07", "0.87", "$870,000", "$895,000", "$950,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for SL of adopting computer stock control and automation in the new authentication hub.",
+      "model_answer": "Advantage: Computer stock control with barcode tracking would let SL follow each of the 9,400 pairs a quarter from drop-off to dispatch, cut manual logging errors, and flag counterfeit hotspots instantly. Automated grading benches could photograph and weigh pairs consistently, lifting throughput for the 300-seller onboarding programme while keeping the 3.1% counterfeit rejection rate and 6.8% returns abuse under tighter surveillance, and generating stock data to negotiate better courier rates on its 2.6-day delivery promise.\n\nDisadvantage: Automation demands significant upfront spend within the $950,000 hub budget and skilled technicians SL may not have in-house, and it could undermine morale in a 62-person team that fears job losses under autocratic leadership. Equipment failures could halt authentication at peak drops, damaging the trusted $210 average sale price, and setup errors might misflag genuine stock as fake, alienating the best sellers SL needs for growth.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SL's authentication hub and fraud controls."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["authentication", "9,400", "3.1%", "$950,000", "workforce of 62", "verified-seller"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 4.9% minimum wage increase and the 10.6% rise in resale input costs will affect SL. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (from 4.5% to 5.25%): The 0.75% increase adds roughly $4,500 a year to repayments on a $600,000 variable-rate bank loan, and raises any top-up funding for the authentication hub. It also lifts SL's already-high seller acquisition pressure, as cautious consumers finance sneaker purchases on credit more carefully. The absolute cost is modest next to SL's revenues, and SL can blunt it by fixing the loan or negotiating with its lender, but it compounds the cash pressure visible in Appendix 2.\n\nMinimum wage increase (4.9% rise to $13.28 per hour from April 2026): Authentication, packing and customer-support teams in a 62-person workforce are heavily hourly-paid. An average wage bill of around $1.6 million (about $26,000 per worker) rises by roughly $78,000 a year, concentrated at peak release weekends when overtime demand spikes. SL cannot fully automate grading yet, so this lands directly on operating costs and squeezes the $12.00 contribution per unit unless productivity rises or the $19 authentication fee is increased.\n\nInput-cost inflation (10.6% rise in logistics, authentication and payment processing): SL's $9.00 variable cost per unit is dominated by these fees. Assuming about 70% of it ($6.30) is exposed to the 10.6% rise, that adds roughly $0.67 per pair, or about $37,000 a year on 55,000 units, before knock-on effects on the 14.2% growth in consumer spending which otherwise supports demand. SL could recover part through a modest sellers' fee rise given buyers' 78% willingness to pay for authentication.\n\nConclusion: The 4.9% minimum wage increase will have the greatest impact on SL, adding roughly $78,000 a year against about $37,000 for input costs and only around $4,500 for interest. It is unavoidable, recurring and concentrated on the authentication capability that differentiates SL from casual resale apps. SL should respond with a small, clearly signposted $19 authentication fee increase, tighter peak-release rostering and productivity incentives, while fixing its loan rate and renegotiating courier and payment-processing contracts to contain the other two threats.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to SL.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on SL's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of SL with a well-justified judgement that the minimum wage increase has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "4.9%", "10.6%", "interest rate", "$13.28", "$600,000"]
+      }
+    }
+  ]
+}

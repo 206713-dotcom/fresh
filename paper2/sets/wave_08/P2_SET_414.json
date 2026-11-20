@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_414",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Oakridge Private Hospital (OPH) is a public limited company in the healthcare sector, employing a workforce of 85. Founded in 1998 by Dr Ravi Menon, it provides private surgical procedures for patients across the region and operates a hierarchical organisational structure with democratic leadership. OPH plans to invest $1,200,000 in a new imaging suite, financed by a $700,000 bank loan and a $500,000 share issue. It has fixed costs of $540,000 a year, a variable cost of $120 a unit and a selling price of $300, and carries out 8,500 units of patient procedures a year. OPH faces two problems: a 3% surgical instrument defect rate and staff absenteeism of 7%.",
+    "appendix_1_marketing_ops": "Operations Log — Q2 2025: 2,100 procedures were completed; the instrument defect rate was 3%, down from 5% a year ago. Complaints about waiting lists rose from 28 to 41 per month. Average theatre turnaround was 48 minutes. A survey of 450 patients found 66% would pay $25 more for on-site imaging and 58% wanted weekend theatre slots; sterile-pack audit training costs $780 per ward.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Oakridge Private Hospital for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "5,000", "6,000"],
+        ["Cost of sales", "2,900", "3,240"],
+        ["Gross profit", "2,100", "2,760"],
+        ["Operating profit", "600", "900"],
+        ["Capital employed", "3,000", "4,000"],
+        ["Interest payable", "60", "70"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 5.0% to 5.6%, increasing debt-service costs. (2) The national minimum wage will rise by 5.5% to $14.35 an hour from April 2026, raising wage costs for clinical and support staff. (3) Medical consumables input costs have risen 10.4% year-on-year, while private health insurance premiums rose 6.2% and patient demand for private procedures grew 3.3%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "OPH plans to fund its imaging suite with a $700,000 bank loan rather than a $500,000 share issue. Explain two advantages for OPH of the bank loan.",
+      "model_answer": "Point 1: The $700,000 bank loan provides more finance than the $500,000 share issue, so OPH can fund the full $1,200,000 imaging suite without diluting existing shareholders. Because OPH is a public limited company, issuing shares would spread ownership and reduce earnings per share; a loan keeps Dr Ravi Menon's founding stake and the current shareholders' claims on the 8,500 patient procedures intact.\n\nPoint 2: A loan does not create a permanent dividend obligation, whereas new shares would require dividends if profits allow, which could strain the $540,000 fixed costs and the 7% absenteeism disruption. Borrowing spreads the cost of the suite over the repayment period while it generates revenue, and unlike the share issue it imposes no new voting rights on the hierarchical structure, leaving democratic leadership free to address the 3% instrument defect rate quickly. With patient demand growing 3.3% and insurance premiums up 6.2%, keeping ownership intact also keeps the revenue from 8,500 procedures within the existing shareholder group.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation applied to OPH's funding choice, ownership and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["bank loan", "$700,000", "$500,000", "share issue", "$540,000", "patient procedures"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "OPH wants to attract patients to its new imaging suite. Consider television advertising, partnerships with private insurers, or targeted online advertising. Which should OPH choose? Justify your recommendation.",
+      "model_answer": "Television advertising: A regional TV campaign would build rapid awareness of the $1,200,000 imaging suite across all potential patients and support the 66% of the 450 surveyed who would pay $25 more for on-site imaging. It gives mass reach that no other channel matches. Yet airtime is very expensive for a hospital already servicing a $700,000 loan, and most viewers are outside OPH's catchment or do not need private surgery, so much of the spend would be wasted.\n\nPartnerships with private insurers: Being listed by insurers would deliver a steady flow of referred patients with insurance-backed payment, filling the 41 monthly waiting-list complaints and reducing idle capacity in the suite. Referrals carry high trust and low marketing cost, and tie in with the 6.2% rise in insurance premiums. The drawback is delay: insurer approvals are slow, terms can be dictated by the insurer, and OPH may have to discount the $300 procedure price.\n\nTargeted online advertising: Search and social ads can reach people actively looking for private scans, can highlight the $25 premium imaging and the 58% demand for weekend slots, and can be measured and capped daily. This is cheaper than television and quicker than insurer negotiations, and it can drive bookings while complaints about waiting lists are high. Its weakness is that it may miss older patients who are less online, and costs rise if campaigns are badly targeted.\n\nRecommendation: OPH should choose targeted online advertising. It reaches the exact patients identified in the 450-person survey, protects cash against the $700,000 loan and can be adjusted quickly. Television is rejected as unaffordable and untargeted; insurer partnerships are rejected as too slow and likely to force price concessions, though they should be developed as a complementary channel once the suite is busy.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the promotional options with little application to OPH.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of OPH with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of OPH with a well-justified recommendation and clear rejection of the alternatives."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "58%", "$25", "450", "2,100", "41"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "OPH's staff absenteeism is 7%. Explain two benefits for OPH of using democratic leadership with its 85 staff.",
+      "model_answer": "Point 1: Democratic leadership invites the 85 staff to contribute ideas on theatre scheduling and instrument handling, which satisfies esteem needs (Maslow) and raises job satisfaction. Surgeons and nurses who help design the 2,100 procedures' workflow are more likely to attend reliably, directly reducing the 7% absenteeism that contributes to the 41 monthly waiting-list complaints.\n\nPoint 2: Consulting the team produces practical suggestions from those who see the 3% instrument defect rate firsthand, so quality can improve and the $780 per ward sterile-pack training can be targeted where needed. Involvement builds commitment and lowers labour turnover, protecting the 8,500 patient procedures and ensuring the $1,200,000 imaging suite is staffed confidently from its first day. Consultation is especially useful because 66% of surveyed patients want on-site imaging and 58% want weekend slots, so staff rota ideas can be gathered before the new service starts rather than after the 41 monthly complaints rise.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to OPH's absenteeism, defects and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "absenteeism", "7%", "hierarchical organisational structure", "$780", "2,100"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "OPH must reduce its 3% surgical instrument defect rate. Consider end-of-batch inspection or a quality assurance agreement with the instrument supplier. Which should OPH choose? Justify your decision.",
+      "model_answer": "End-of-batch inspection: Checking instruments before theatre use catches defective items and protects the 2,100 procedures and the 41 monthly complaints from being compounded by faults. Quality control inspection is under OPH's direct control, suits Dr Menon's desire for reliable standards, and needs no supplier agreement. It is reactive, however: the 3% defect rate has already occurred by the time inspection finds it, and with a workforce of 85 and 7% absenteeism, assigning staff to check every pack diverts clinical time and adds cost.\n\nQuality assurance agreement: Working with the supplier to prevent faults — agreed manufacturing standards, documented checks and rapid replacement of faulty batches — attacks the 3% defect rate at source and could build on the fall from 5%. It reduces the need for costly in-house checking and supports the $1,200,000 imaging suite's reputation for safe, efficient care. The limits are that OPH must trust and audit the supplier, standards may raise purchase prices, and the benefit depends on the supplier honouring the agreement, especially while hospital demand grows 3.3%.\n\nDecision: OPH should choose the quality assurance agreement with the supplier. Prevention removes the cause of the 3% defect rate without pulling scarce clinical staff from 8,500 patient procedures, and it complements the $780 sterile-pack training. Inspection is rejected because it only detects faults after they arise and consumes absentee-prone staff time; a small final check should remain as a safety net while the supplier agreement is proven, given that 48-minute theatre turnarounds leave little time to re-check packs.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two quality approaches with limited application to OPH.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of one or both approaches in the context of OPH.",
+        "level_3_9_to_12": "Comprehensive evaluation of both approaches in the context of OPH with a well-justified decision covering prevention, cost and staffing."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["defect rate", "3%", "5%", "2,100", "41", "$1,200,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how OPH's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate OPH's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $540,000 ÷ ($300 − $120) = $540,000 ÷ $180 = 3,000 units. Answer: break-even output is 3,000 units of patient procedures a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate OPH's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $300 − $120 = $180. Answer: contribution per unit is $180."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways OPH's management can use this financial data.",
+          "model_answer": "1. Compare the 3,000-unit break-even output with 8,500 procedures to find a margin of safety of 5,500 units, showing how far demand can fall before the $540,000 fixed costs are uncovered while the imaging suite opens.\n2. Use the $180 contribution per unit to assess the survey's $25 premium for on-site imaging: it would lift contribution to $205 and help justify the $1,200,000 investment, while a discount to insurers could be modelled against volume.\n3. Use fixed costs and contribution to set the procedure-volume target needed to service the $700,000 bank loan and the $500,000 share issue, so Dr Menon can judge whether the suite earns its cost.\n4. Use average total cost ($540,000 ÷ 8,500 units + $120 = $63.53 + $120 = $183.53 a procedure) and labour productivity (8,500 units ÷ 85 staff = 100 procedures per employee) to monitor the 7% absenteeism and 10.4% consumables inflation, and to target the $780 training where defects persist."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 3,000 units | (ii) Contribution per unit = $180 | (iii) Four contextual uses explained: margin of safety of 5,500 units; modelling the $25 imaging premium from $180 contribution; loan-service volume for the $700,000 loan; and unit cost $183.53 with productivity 100 procedures per employee.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii); 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$300", "$120", "$540,000", "8,500", "3,000", "$180", "5,500", "$183.53"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate OPH's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has OPH's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 42.0%\nGross Profit Margin 2025 = 46.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 15.0%\nROCE 2024 = 20.0%\nROCE 2025 = 22.5%\n\nDetailed workings: In 2024 a gross profit of $2,100,000 on revenue of $5,000,000 gives 42.0%; in 2025 $2,760,000 on $6,000,000 gives 46.0%. Operating profit of $600,000 against $5,000,000 revenue gives 12.0% in 2024, and $900,000 against $6,000,000 gives 15.0% in 2025. Operating profit of $600,000 against capital employed of $3,000,000 gives 20.0% in 2024, and $900,000 against $4,000,000 gives 22.5% in 2025.\n\nEvaluation: Every measure strengthened. The gross margin rose from 42.0% to 46.0%, consistent with better control of the 3% instrument defect rate and a richer case mix that supports the $25 imaging premium. The operating margin improved from 12.0% to 15.0%, showing the $540,000 fixed costs were absorbed more efficiently as revenue grew by $1,000,000. The return on capital employed increased from 20.0% to 22.5%, so even with $1,000,000 more capital employed the operating profit rose faster, which strengthens the case for the $1,200,000 imaging suite. Interest payable rose from $60,000 to $70,000, so the $700,000 loan is beginning to add cost but not enough to offset the gains. The main risk is that the 41 monthly waiting-list complaints and 7% absenteeism could limit throughput, and the survey shows only 58% want weekend slots, so the new capacity may not be filled quickly.\n\nConclusion: OPH's profitability has improved — gross margin, operating margin and return on capital all rose together, and the improvement is not explained by finance costs. Management should protect the 46.0% gross margin against 10.4% consumables inflation and use the $25 premium and weekend slots to keep the new suite fully utilised.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation and a justified conclusion on whether profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["42.0%", "46.0%", "12.0%", "15.0%", "20.0%", "22.5%", "6,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for OPH of offering weekend theatre slots, wanted by 58% of surveyed patients.",
+      "model_answer": "Advantage: The survey of 450 patients shows 58% want weekend theatre slots and 66% would pay $25 more for on-site imaging, so OPH can fill the new $1,200,000 imaging suite outside weekdays and raise its $300 procedure price toward $325, lifting the $180 contribution per unit. Weekend working also cuts the 41 monthly waiting-list complaints and spreads the $540,000 fixed costs over more procedures.\n\nDisadvantage: Weekend shifts need staff who are already 7% absent, and paying premium rates could erode the $25 extra revenue, with no hours or pay data in the insert to quantify the cost. It also requires more sterilisation and $780 per ward training, and if the 3% defect rate rises under rushed turnarounds of 48 minutes, patient safety and the hospital's reputation could suffer. With only 2,100 procedures completed last quarter, weekend lists must add genuine capacity rather than simply move weekday work, or the 41 waiting-list complaints will persist.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to OPH's survey, costs and staffing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["58%", "66%", "$25", "450", "imaging suite", "$1,200,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 5.6%, the 5.5% minimum wage increase and the 10.4% rise in medical consumables costs will affect OPH. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (5.0% to 5.6%): If the $700,000 bank loan is variable-rate, a 0.6 percentage-point rise adds 0.006 × $700,000 = $4,200 a year, which is noticeable but small against the $540,000 fixed costs and can be removed by fixing the rate. The $500,000 share issue carries no interest, so only part of the $1,200,000 funding is exposed. Higher rates may also cool demand for elective surgery, but the direct cost is hedgeable.\n\nMinimum wage increase (5.5%, to $14.35 an hour): With a workforce of 85, this raises the wage bill for clinical and support staff and cannot be avoided. The insert gives no hours worked or individual pay, so no annual total can honestly be invented; the defensible check is productivity of 8,500 units ÷ 85 staff = 100 procedures per employee. With $180 contribution per unit, the rise is absorbable while attendance and throughput hold, but 7% absenteeism and 41 waiting-list complaints make that uncertain.\n\nConsumables inflation (10.4%): The insert does not split the $120 variable cost, so only a bound can be shown: if the whole $120 rose 10.4%, that is 0.104 × $120 = $12.48 per procedure, or about $106,080 a year at 8,500 units, cutting contribution from $180 toward $167.52. The 6.2% insurance-premium rise may let OPH negotiate higher fees, and 3.3% demand growth helps, but a 3% defect rate means consumables may be wasted as well as dearer.\n\nConclusion: The 10.4% rise in medical consumables costs will have the greatest impact. It compounds across all 8,500 procedures and directly erodes the $180 contribution that funds the $1,200,000 suite, with the 3% defect rate adding waste. The interest-rate rise is small and hedgeable; the wage rise is significant but manageable at 100 procedures per employee, whereas consumables inflation strikes the core cost of every procedure.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to OPH.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on OPH's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of OPH with a well-justified greatest-impact judgement and reasons for rejecting the others."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.6%", "5.5%", "$14.35", "10.4%", "6.2%", "$700,000"]
+      }
+    }
+  ]
+}

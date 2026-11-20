@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_374",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Meridian Dental Care (MDC) is a partnership in the healthcare sector, running private dental practices and employing a workforce of 26. Founded in 2008 by Dr Ravi Meridian, it operates a flat structure with democratic leadership. MDC plans to invest $600,000 in two dental surgery suites with 3D scanning, financed by a $350,000 bank loan and $250,000 retained profit. It has fixed costs of $350,000 a year, a variable cost of $30 a unit and a selling price of $100, and currently produces 11,000 units a year, each a standard dental treatment. MDC faces two problems: dental nurse absenteeism has reached 12% and patient complaints about appointment delays are rising.",
+    "appendix_1_marketing_ops": "Quality and Operations Extract — Q3 2025: MDC completed 2,700 treatments last quarter with a complication rate of 1.5%, down from 2.8% a year ago. Patient complaints fell from 37 to 22 per month. Average appointment lead time is 6.1 days. A survey of 420 patients found that 70% would pay $14 more for same-day 3D scanning, and 59% choose a dentist by waiting time. Records show 9 of 26 staff have not completed on-the-job training on the new scanner; external courses cost $800 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Meridian Dental Care for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,500", "1,750"],
+        ["Cost of sales", "900", "980"],
+        ["Gross profit", "600", "770"],
+        ["Operating profit", "180", "280"],
+        ["Capital employed", "1,200", "1,400"],
+        ["Interest payable", "45", "55"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.2% to 5.1%, raising dental practice loan costs. (2) The national minimum wage will rise by 6.4% from $13.20 to $14.04 per hour from April 2026. (3) Dental material input costs rose 11.2% and private dental insurance reimbursement fell 5.8%, while consumer spending on cosmetic dentistry grew 4.0%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "MDC plans to fund part of its $600,000 expansion with a $350,000 bank loan. Explain two advantages for MDC of using retained profit rather than the bank loan.",
+      "model_answer": "Point 1: Retained profit of $250,000 requires no interest or instalments, unlike the $350,000 bank loan. With contribution of $70 on each $100 treatment, cash saved from debt service can absorb the $350,000 fixed costs and the 11.2% rise in dental material costs, letting the partnership hold its price at $100 while it equips the two new surgery suites.\n\nPoint 2: Using retained profit avoids the collateral and repossession risk of a bank loan, so the new 3D scanners cannot be seized if treatment volumes disappoint. It also leaves Dr Ravi Meridian and the partners in full control of clinical decisions, with no lender conditions on how the 11,000 treatments a year are delivered, and avoids adding to the interest payable of $55,000 shown in Appendix 2.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation applied to MDC's financing mix and treatment economics."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "$250,000", "$350,000", "$600,000", "$100", "$30"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "MDC is promoting its new 3D scanning service. Consider local radio advertising, dentist referral partnerships, or social media marketing. Which should MDC choose to attract private patients? Justify your recommendation.",
+      "model_answer": "Local radio advertising: Radio can quickly build awareness of the new scanning service across MDC's local area and suits a short message about same-day appointments. Yet airtime is a recurring cost on top of the $600,000 surgery investment, much of the audience is outside the practice catchment, and radio cannot show the 3D scanner or the 1.5% complication rate, so conversion may be weak.\n\nDentist referral partnerships: Formal links with local dentists could bring a steady stream of patients who trust a professional recommendation, and it supports the 59% of surveyed patients who choose by waiting time when combined with the 6.1-day lead time. Referrals build slowly, depend on other practices' goodwill and may send only complex cases; they do not by themselves communicate the 70% of 420 patients willing to pay $14 more for same-day scanning.\n\nSocial media marketing: Targeted local campaigns can reach the exact patients researching cosmetic dentistry, show same-day 3D scanning visually and quote the 70% survey result and the low 1.5% complication rate. It measures enquiries cheaply and can be scaled as the two suites open. It builds trust more slowly for a clinical service and needs careful, accurate health content, but cost per booked patient is low.\n\nRecommendation: MDC should choose social media marketing. It reaches the patients the survey identifies, communicates same-day scanning at lower cost than radio and spreads faster than referrals. Radio is rejected as costly and untargeted, and referral partnerships are rejected as too slow; MDC can add dentist referrals as a supporting channel once the suites are busy.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited identification of the promotional options with minimal reference to MDC.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options with some application to MDC and partial judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in MDC's context with a justified recommendation explaining why radio and referrals are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["70%", "420", "$14", "59%", "$600,000", "26"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "MDC's dental nurse absenteeism has reached 12% and patient complaints about appointment delays are rising. Explain two benefits for MDC of using job enrichment to improve staff motivation.",
+      "model_answer": "Point 1: Enriching dental nurses' roles by giving them responsibility for scanning appointments and patient follow-up gives the 26 staff more varied, meaningful work, which raises job satisfaction and should reduce the 12% absence rate. When nurses can book and check scans themselves, the 6.1-day lead time shortens and the complaints about delays fall, protecting the 11,000 treatments a year needed to support the $600,000 investment.\n\nPoint 2: Job enrichment uses the skills of the 9 of 26 staff still to be trained on the scanner by involving them in real scanning decisions rather than routine tasks, building ownership of the 1.5% complication rate. Greater autonomy and feedback suit Dr Ravi Meridian's flat structure and democratic leadership, improving quality and retention while avoiding repeated recruitment." ,
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation linked to MDC's absence, lead time and quality data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["12%", "26", "9", "$800", "1.5%", "$350,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "MDC must train 9 dental nurses on the new 3D scanner. Consider on-the-job training or external courses at $800 per employee. Which should MDC choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching on MDC's own scanner teaches the practice's exact scanning protocol and the habits behind the 1.5% complication rate, costs no fees and keeps the 9 nurses treating patients while they learn, protecting the 2,700 treatments done last quarter. Senior staff can mentor the 9 of 26 who are untrained during quieter clinic times. The drawbacks are that trainers are working clinicians whose own output falls, mistakes may be copied, and there is no external certificate, which may matter to patients choosing a dentist by quality.\n\nExternal courses: At $800 per employee, training 9 nurses costs $7,200 (9 × $800), small beside the $600,000 suites. Courses bring updated scanning techniques and a recognised certificate that supports MDC's professional image and the 70% of 420 patients willing to pay $14 more for same-day scanning. However, 9 of 26 staff would be away from the clinic, worsening 12% absenteeism and the 6.1-day lead time, and generic content may not match MDC's scanner, so follow-up coaching would still be needed.\n\nDecision: MDC should choose on-the-job training for the nine nurses, with one external course for a lead clinician. On-the-job training is cheaper, scanner-specific and avoids losing capacity while absence is 12%; full external training is rejected because $7,200 and nine staff off the rota would lengthen appointment delays for limited extra relevance.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited reference to MDC.",
+        "level_2_5_to_8": "Analysis of benefits and drawbacks of one or both methods applied to MDC, including cost and disruption.",
+        "level_3_9_to_12": "Full evaluation of both methods in MDC's context with a justified decision that rejects full external training and explains the cost and capacity trade-off."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "$800", "9", "26", "$600,000", "12%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how MDC's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate MDC's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $350,000 ÷ ($100 − $30) = $350,000 ÷ $70 = 5,000 units. Answer: break-even output is 5,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate MDC's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $100 − $30 = $70. Answer: contribution per unit is $70."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways MDC's management can use this financial data.",
+          "model_answer": "1. Compare the 5,000-unit break-even output with 11,000 treatments actually delivered: the margin of safety is 6,000 treatments, confirming the two new suites can succeed even if demand softens.\n2. Use the $70 contribution per $100 treatment to test pricing: 70% of 420 patients would pay $14 more for same-day scanning, so managers can judge a premium against any fall in volume.\n3. Check that 5,000 break-even treatments yield enough contribution to service the $350,000 bank loan before fitting out further suites.\n4. Benchmark unit cost of $61.82 per treatment ($350,000 ÷ 11,000 = $31.82 fixed plus $30 variable) to monitor 11.2% material inflation and investigate the 1.5% complication rate and 12% nurse absence that drive delays."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 5,000 units | (ii) Contribution per unit = $70 | (iii) Four contextual uses explained: margin of safety of 6,000 against 11,000 treatments; pricing using the $14 scanning premium; servicing the $350,000 loan; and unit-cost benchmarking at $61.82.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5,000", "$70", "$100", "$30", "$350,000", "11,000", "$61.82"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate MDC's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has MDC's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 44.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 16.0%\nROCE 2024 = 15.0%\nROCE 2025 = 20.0%\n\nDetailed workings: Revenue rose from $1,500,000 to $1,750,000 while cost of sales increased from $900,000 to $980,000, so gross profit went from $600,000 to $770,000. Gross profit as a share of revenue therefore improved from 40.0% to 44.0%. Operating profit climbed from $180,000 to $280,000, lifting operating profit as a share of revenue from 12.0% to 16.0%. Capital employed grew from $1,200,000 to $1,400,000, giving a return on capital of 15.0% in 2024 and 20.0% in 2025.\n\nEvaluation: All three measures improved, and the clearest gain is in the share of revenue retained after direct treatment costs, indicating that material use is controlled despite 11.2% input inflation. The operating result improved strongly, helped by spreading $350,000 of fixed costs over more treatments. However, interest payable rose from $45,000 to $55,000 as the $350,000 loan took effect, and capital employed grew by $200,000 while operating profit grew by $100,000, so return on capital rose well. The 12% nurse absence and 6.1-day lead time could still damage the patient experience, and the extract gives no detail on the partnership's drawings or debt terms.\n\nConclusion: MDC's financial performance has improved. Gross profit as a share of revenue rose from 40.0% to 44.0%, operating profit as a share of revenue from 12.0% to 16.0%, and return on capital from 15.0% to 20.0%. All three measures move upward and the strongest gain is in return on capital, so the improvement is substantial, though higher interest cost and rising appointment delays mean the partnership should protect service quality as it expands.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directional changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three ratios for both years with some contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs and capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "44.0%", "12.0%", "16.0%", "15.0%", "20.0%", "$1,750,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for MDC of offering same-day 3D scanning.",
+      "model_answer": "Advantage: Same-day scanning matches patient demand. MDC's survey found 70% of 420 patients would pay $14 more for same-day 3D scanning and 59% choose a dentist by waiting time, while the current lead time is 6.1 days. A premium would lift revenue above the $100 treatment price and protect the $70 contribution against the 5.8% fall in insurance reimbursement, strengthening the case for the $600,000 suites.\n\nDisadvantage: Guaranteeing same-day scans needs extra scanner capacity and radiology time, which could push fixed costs above $350,000 or raise the $30 variable cost per treatment. With dental nurse absenteeism at 12% and 9 of 26 staff untrained on the new scanner, MDC may fail to deliver, increasing the appointment delays and complaints the service is meant to solve.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to MDC's survey, costs and staffing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["70%", "420", "$14", "59%", "6.1 days", "$350,000", "12%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 5.1%, the 6.4% minimum wage increase and the 11.2% rise in dental material costs will affect MDC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.2% to 5.1%): If MDC's $350,000 loan is variable-rate, the 0.9 percentage-point increase adds 0.9% × $350,000 = $3,150 a year. That is modest next to $350,000 of fixed costs, and a fixed-rate loan would mean no extra interest at all. Higher rates may also make patients defer cosmetic work, but the direct financing effect is small and MDC can cut it by fixing the rate at the next opportunity.\n\nMinimum wage increase (6.4%, to $14.04 an hour): MDC has a workforce of 26 and dental nursing and reception roles include hourly-paid staff, so this raises the wage bill unavoidably. The insert gives no hours worked or individual pay, so no honest annual total can be produced. The defensible test is productivity: 11,000 treatments across 26 staff is about 423.1 treatments per employee, so the increase is absorbable only if that output holds; otherwise unit labour cost lifts the $61.82 unit cost and narrows the $70 contribution.\n\nDental material cost inflation (11.2%): The $30 variable cost per treatment is not decomposed in the insert, so only a labelled illustrative upper bound is defensible. If the whole $30 were exposed, 11.2% × $30 = $3.36 extra per treatment, and across 11,000 treatments that is $36,960 a year (11,000 × $3.36), cutting contribution from $70 toward $66.64. MDC can recover part of this through the $14 same-day premium that 70% of surveyed patients accept.\n\nConclusion: The 11.2% rise in dental material costs will have the greatest impact. It compounds over every one of the 11,000 treatments and directly erodes the $70 contribution that funds the $600,000 surgery suites, and a loan-rate decision cannot remove it. The wage rise is second but cannot be quantified from the insert, while the interest-rate rise adds at most $3,150 a year and is the smallest effect of the three changes.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to MDC.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on MDC's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in MDC's context with a justified judgement that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.1%", "6.4%", "11.2%", "$350,000", "$30", "26"]
+      }
+    }
+  ]
+}

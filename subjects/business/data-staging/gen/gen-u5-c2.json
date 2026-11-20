@@ -1,0 +1,1194 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_151",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Brackmere Paint & Decor is an independent paint and decorating-supplies shop in Country X, owned by Priya Raman for 6 years. It employs 9 staff and sells paint, tools and wallpaper to trade customers and homeowners, generating $680,000 in annual revenue. Current assets are $92,000, including $38,000 owed by trade debtors, while current liabilities are $74,000, including a $30,000 bank overdraft.\n\nPriya has been offered a $150,000 contract to supply paint for a new office block in 4 months, but the client will pay 90 days after the work is completed. She is considering two options: ask existing debtors to pay 30 days sooner in exchange for a 2% discount, or arrange a bank overdraft of $40,000 to bridge the gap.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'working capital'.",
+        "model_answer": "Working capital is current assets minus current liabilities. It measures the cash and other short-term assets available to fund day-to-day trading after short-term debts are accounted for [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital equals current assets minus current liabilities",
+            "it represents funds available for day-to-day operations / paying short-term debts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Brackmere Paint & Decor needs sufficient working capital.",
+        "model_answer": "Reason 1: Sufficient working capital allows a business to pay its short-term debts when they fall due [k], which matters because Brackmere's current liabilities are $74,000, including a $30,000 bank overdraft [app]. Reason 2: Working capital keeps a business trading while it waits for money it is owed to arrive [k], as $38,000 of Brackmere's $92,000 current assets is owed by trade debtors [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays short-term debts / liabilities as they fall due",
+            "working capital funds day-to-day trading while awaiting payment from debtors"
+          ],
+          "application_max_2": [
+            "current liabilities are $74,000 including a $30,000 bank overdraft",
+            "$38,000 of current assets is owed by trade debtors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$92,000",
+            "$38,000",
+            "$74,000",
+            "$30,000 bank overdraft",
+            "trade debtors",
+            "$680,000",
+            "current assets",
+            "current liabilities"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Brackmere of asking existing debtors to pay sooner.",
+        "model_answer": "Benefit 1: Getting cash in from debtors sooner brings money into the business faster [k], helping Priya fund the $150,000 office-block contract before the client pays 90 days after completion [app], which reduces the need to arrange the $40,000 bank overdraft [an]. Benefit 2: Converting $38,000 owed by trade debtors into cash more quickly would strengthen Brackmere's position [k], where current liabilities of $74,000 already exceed the cash balance and current assets of $92,000 leave only $18,000 of working capital [app], easing pressure on day-to-day payments such as wages and suppliers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "receiving debtor payments sooner speeds up cash inflows",
+            "faster collection improves the firm's cash / working capital position"
+          ],
+          "application_max_2": [
+            "the $150,000 office-block contract is paid 90 days after completion",
+            "$38,000 is owed by trade debtors while current liabilities are $74,000"
+          ],
+          "analysis_max_2": [
+            "earlier collection reduces reliance on the $40,000 bank overdraft",
+            "stronger cash position eases payment of day-to-day expenses such as wages and suppliers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "90 days",
+            "$40,000",
+            "$38,000",
+            "$92,000",
+            "2% discount",
+            "current liabilities",
+            "trade debtors"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Priya should ask existing debtors to pay sooner or arrange the $40,000 bank overdraft? Justify your answer.",
+        "model_answer": "Asking debtors to pay sooner would inject cash without further borrowing [k], and it directly tackles the $38,000 owed by trade debtors that is straining Brackmere's cash while current liabilities stand at $74,000 [app]. This would help fund the $150,000 contract sooner and reduce dependence on the $40,000 bank overdraft [an]. However, offering a 2% discount would cost money on every early-paying invoice [k], cutting into the $680,000 annual revenue Brackmere currently earns [app], and some debtors may still pay late despite the incentive, so the discount could be paid out without securing faster cash [an]. On balance, for a one-off gap of 4 months on a single contract, the bank overdraft is the more reliable option because it can be drawn down and repaid as soon as the contract client pays [eval]. Brackmere already uses a $30,000 bank overdraft within its current liabilities, so extending this arrangement is a familiar, flexible tool. Overall, Priya should arrange the $40,000 bank overdraft rather than discount debtors, since the 2% discount is a recurring cost while the overdraft is temporary and matches the 90-day payment gap [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "asking debtors to pay faster is an internal way to improve cash inflows",
+            "a bank overdraft provides flexible short-term borrowing repaid when cash arrives"
+          ],
+          "application_max_2": [
+            "$38,000 is owed by trade debtors and current liabilities are $74,000",
+            "the office-block contract is worth $150,000 with payment 90 days after completion"
+          ],
+          "analysis_max_2": [
+            "discount speeds up cash but permanently reduces margins on each early invoice",
+            "overdraft is repayable once the contract client pays, matching the short-term gap"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs cost of discount against flexibility/temporary nature of overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "90 days",
+            "$40,000",
+            "$38,000",
+            "$74,000",
+            "$30,000 bank overdraft",
+            "2% discount",
+            "$680,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_152",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Darrowmere Marine Engines is a private limited company in Country X, repairing and servicing fishing-boat engines for 8 years. It employs 14 mechanics and turns over $540,000 a year. The workshop serves 30 regular fishing boats each month, with demand peaking before the autumn fishing season. At the end of May, current assets were $61,000 but current liabilities were $78,000, leaving negative working capital of $17,000. The workshop must pay $45,000 for engine parts within 10 days to keep its repair contract with the local fishing fleet.\n\nManaging director Joss Darrow is considering two options: extend the existing $25,000 bank overdraft to $70,000, or take out a $45,000 bank loan at 9% interest per year, repayable over 3 years. Any borrowing would be paid from future repair income.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'bank overdraft'.",
+        "model_answer": "A bank overdraft allows a business to withdraw more money than it holds in its current account, up to an agreed limit, with interest charged on the amount actually overdrawn [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "an overdraft lets the business spend more than its current account balance",
+            "interest is charged on the amount overdrawn, up to an agreed limit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Darrowmere Marine Engines needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to meet its short-term debts as they fall due [k], which is critical for Darrowmere as current liabilities of $78,000 exceed current assets of $61,000 [app]. Reason 2: Sufficient working capital keeps a workshop trading without interruption [k], as Darrowmere must pay $45,000 for engine parts within 10 days to keep its fishing-fleet repair contract [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays short-term debts and obligations",
+            "working capital funds continuous day-to-day trading"
+          ],
+          "application_max_2": [
+            "current liabilities of $78,000 exceed current assets of $61,000",
+            "$45,000 for engine parts is due within 10 days to keep the fishing-fleet contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$61,000",
+            "$78,000",
+            "$17,000",
+            "$45,000",
+            "10 days",
+            "fishing fleet"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two differences between a bank overdraft and a bank loan as ways to overcome a short-term cash-flow problem.",
+        "model_answer": "Difference 1: An overdraft is a flexible limit on the current account with interest charged only on the amount used [k], so Darrowmere could extend its $25,000 overdraft to cover the $45,000 parts bill and repay it as repair income arrives [app], which is ideal if the cash gap lasts only a few weeks [an]. Difference 2: A bank loan is a fixed sum borrowed for a set term with interest paid over the whole period [k], so the $45,000 loan at 9% interest repayable over 3 years spreads the cost predictably [app], but Darrowmere would keep paying interest even after the cash crisis has passed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overdraft is flexible, interest only on amount used",
+            "loan is a fixed sum repaid over a set term with interest"
+          ],
+          "application_max_2": [
+            "the $25,000 overdraft could be extended to cover the $45,000 parts bill",
+            "the $45,000 loan at 9% interest is repayable over 3 years"
+          ],
+          "analysis_max_2": [
+            "overdraft suits a gap of only a few weeks as it is repaid quickly",
+            "loan interest continues over 3 years even after the cash crisis passes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$25,000",
+            "$70,000",
+            "$45,000",
+            "9% interest",
+            "3 years",
+            "$540,000",
+            "fishing-boat engines"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Joss should extend the overdraft to $70,000 or take the $45,000 bank loan? Justify your answer.",
+        "model_answer": "Extending the overdraft to $70,000 gives Darrowmere an immediate buffer with interest charged only on what is used [k], matching the $45,000 parts bill due within 10 days and the one-off nature of the gap [app]. If repair income recovers within weeks, total interest would be far below paying 9% on a $45,000 loan for 3 years [an]. However, the bank can demand repayment of an overdraft at short notice [k], which is risky for a firm whose current liabilities of $78,000 already exceed current assets of $61,000, leaving negative working capital of $17,000 [app]. The 3-year loan guarantees the $45,000 and cannot be withdrawn early, though it costs about $4,050 of interest each year plus the fixed repayments [an]. On balance, the bank loan is the safer choice because it cannot be recalled and fixes the repayment schedule while Darrowmere rebuilds its working capital [eval]. The loan also forces disciplined budgeting, whereas an extended overdraft could mask a deeper cash problem. Overall, Joss should take the $45,000 bank loan, since the predictable cost of about $4,050 a year is a fair price for security of funding [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overdraft is repayable on demand with interest on the amount used",
+            "loan is fixed for a term and cannot be withdrawn early"
+          ],
+          "application_max_2": [
+            "parts bill of $45,000 is due within 10 days to keep the fishing-fleet contract",
+            "current liabilities of $78,000 exceed current assets of $61,000, leaving negative working capital of $17,000"
+          ],
+          "analysis_max_2": [
+            "loan guarantees funding but costs about $4,050 interest each year",
+            "overdraft is cheaper if repaid quickly but risky if called in"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs security of loan funding against flexibility and cost of overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$25,000",
+            "$70,000",
+            "$45,000",
+            "9%",
+            "$78,000",
+            "$61,000",
+            "$17,000",
+            "10 days"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_153",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Kettleworth Bakery is a family partnership in Country X, operating from a unit on the industrial estate and supplying bread and rolls to 45 cafes and grocery stores for 11 years. It employs 16 bakers and has annual sales of $720,000. The bakery pays flour and packaging suppliers within 30 days and is owed $52,000 by customers on 60-day terms. Current assets are $84,000 and current liabilities are $65,000.\n\nA $120,000 industrial mixer has broken and the bakery urgently needs $30,000 to repair or replace it or lose its wholesale contract. Owner Marta Kettle is considering two options: ask suppliers for an extra 30 days of credit, delaying payment from 30 to 60 days, or arrange a $30,000 bank overdraft at 12% interest a year with the bakery's bank.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'creditors'.",
+        "model_answer": "Creditors are people or businesses to whom money is owed, usually because goods or services have been bought on credit terms and have not yet been paid for [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "creditors are people or businesses the firm owes money to",
+            "the debt usually arises from goods or services bought on credit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Kettleworth Bakery needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to buy the materials it needs for daily trading [k], as Kettleworth must buy flour and packaging and pay its suppliers within 30 days [app]. Reason 2: Working capital allows a business to keep operating while awaiting payment from customers [k], since $52,000 of Kettleworth's money is owed by customers paying on 60-day terms [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital funds purchase of stock and daily running costs",
+            "working capital supports trading while awaiting debtor payments"
+          ],
+          "application_max_2": [
+            "the bakery pays flour and packaging suppliers within 30 days",
+            "$52,000 is owed by customers on 60-day terms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$720,000",
+            "$52,000",
+            "$84,000",
+            "$65,000",
+            "30 days",
+            "60-day terms"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kettleworth may face if it delays payments to suppliers.",
+        "model_answer": "Problem 1: Delaying payment breaks the trust that suppliers place in the business [k], so flour and packaging suppliers who currently wait 30 days may refuse the extra 30 days Marta requests, or stop deliveries to the bakery [app], threatening the wholesale contract with 45 cafes and grocery stores that depends on daily supply [an]. Problem 2: Late payment can increase the cost of buying on credit [k], for example through lost cash discounts or tighter terms on the $720,000 of annual sales [app], reducing the bakery's profit on each sale and cutting working capital further [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying creditors damages supplier trust and relationships",
+            "late payment can lead to lost discounts or tighter credit terms"
+          ],
+          "application_max_2": [
+            "suppliers currently wait 30 days and Marta asks for an extra 30 days",
+            "the bakery supplies 45 cafes and grocery stores on $720,000 of annual sales"
+          ],
+          "analysis_max_2": [
+            "stopping deliveries would threaten the wholesale contract and daily supply",
+            "tighter terms or lost discounts reduce profit and available working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 days",
+            "$52,000",
+            "45 cafes and grocery stores",
+            "$720,000",
+            "$30,000",
+            "current liabilities"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marta should ask suppliers for an extra 30 days of credit or arrange the $30,000 bank overdraft? Justify your answer.",
+        "model_answer": "Asking suppliers for an extra 30 days of credit would preserve Kettleworth's cash without any interest cost [k], which is attractive because current assets of $84,000 and current liabilities of $65,000 leave only $19,000 of working capital [app]. Delaying payment from 30 to 60 days would free up cash to repair the equipment and protect the wholesale contract [an]. However, stretching suppliers risks deliveries being stopped or terms tightened [k], and the bakery depends on daily flour and packaging supplies to serve 45 cafes and grocery stores on $720,000 of annual sales [app]; a single missed delivery could lose customers to rivals [an]. A $30,000 bank overdraft at 12% interest would cost about $3,600 a year in interest , keeping suppliers happy and deliveries reliable, though it adds a permanent finance cost and the overdraft could be called in. On balance, the overdraft is the better choice because supplier goodwill is fragile and the interest of about $3,600 a year is modest compared with losing the wholesale contract [eval]. Overall, Marta should arrange the $30,000 bank overdraft rather than delay supplier payments, since reliable supply matters more than the interest saved [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying payments to creditors is an internal way to ease cash-flow pressure",
+            "an overdraft is flexible short-term borrowing charged at interest"
+          ],
+          "application_max_2": [
+            "current assets $84,000 and current liabilities $65,000 leave working capital of $19,000",
+            "the bakery serves 45 cafes and grocery stores on $720,000 of annual sales"
+          ],
+          "analysis_max_2": [
+            "delayed payment risks deliveries stopping and losing the wholesale contract",
+            "overdraft interest of about $3,600 a year (12% of $30,000) is modest but ongoing"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs supplier goodwill and supply reliability against interest cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$84,000",
+            "$65,000",
+            "$30,000",
+            "12% interest",
+            "45 cafes and grocery stores",
+            "$720,000",
+            "30 to 60 days",
+            "$120,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_154",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Aldermist Furniture Co is a private limited company in Country X manufacturing wooden office furniture for 9 years. It employs 26 workers and generates $1,150,000 in annual revenue, supplying offices and clinics across the region. Current assets are $140,000 and current liabilities are $95,000. The company planned to buy an $85,000 computer-controlled sawing machine this year, paying from its own cash reserves set aside for expansion.\n\nRising timber prices have cut the cash balance to $18,000, and the firm owes $60,000 to suppliers within 3 weeks. Director Sofia Marchetti must choose between two options: cancel the machine purchase and keep the cash to pay suppliers on time, or buy the machine now using an $85,000 bank loan at 8% interest a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital expenditure'.",
+        "model_answer": "Capital expenditure is spending on the purchase of non-current assets, such as machinery or buildings, whose benefit lasts for more than one year [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital expenditure is spending on non-current / fixed assets",
+            "the benefit of the asset lasts for more than one year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Aldermist Furniture Co needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay its immediate debts [k], as Aldermist owes $60,000 to suppliers within 3 weeks while holding just $18,000 in cash [app]. Reason 2: Working capital funds daily production and operating costs [k], which matters because Aldermist employs 26 workers to make wooden office furniture but its cash balance has fallen sharply with rising timber prices [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays immediate short-term debts",
+            "working capital funds day-to-day operating costs such as wages and materials"
+          ],
+          "application_max_2": [
+            "Aldermist owes $60,000 to suppliers within 3 weeks against a cash balance of $18,000",
+            "the company employs 26 workers amid rising timber prices"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$140,000",
+            "$95,000",
+            "$18,000",
+            "$60,000",
+            "3 weeks",
+            "$1,150,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Aldermist of cancelling the $85,000 machine purchase.",
+        "model_answer": "Benefit 1: Cancelling the purchase keeps cash inside the business [k], so the $18,000 cash balance plus current assets of $140,000 remain available to pay the $60,000 owed to suppliers within 3 weeks [app], avoiding default and protecting the firm's credit reputation [an]. Benefit 2: Avoiding the $85,000 bank loan saves $6,800 of interest a year at 8% [k], reducing fixed finance costs that would otherwise eat into profits from the $1,150,000 of annual revenue [app], improving the working capital left after paying current liabilities of $95,000 [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "not spending preserves the firm's cash balance",
+            "avoiding a loan saves interest charges"
+          ],
+          "application_max_2": [
+            "the cash balance is only $18,000 against $60,000 owed to suppliers within 3 weeks",
+            "an $85,000 loan at 8% costs about $6,800 of interest a year"
+          ],
+          "analysis_max_2": [
+            "keeping cash avoids default and protects supplier credit reputation",
+            "lower interest improves profit and working capital after current liabilities of $95,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$85,000",
+            "$18,000",
+            "$60,000",
+            "$140,000",
+            "$95,000",
+            "8% interest",
+            "$1,150,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sofia should cancel the machine purchase or buy the machine now using the $85,000 bank loan? Justify your answer.",
+        "model_answer": "Cancelling the machine purchase preserves Aldermist's cash [k], which is vital with only $18,000 in the bank and $60,000 owed to suppliers within 3 weeks [app], so wages and materials can be paid and production can continue without disruption [an]. However, delaying the sawing machine means the efficiency and output gains it offers arrive later [k], and 26 workers continue cutting timber manually while the firm generates $1,150,000 in annual revenue [app]; if a rival modernises first, Aldermist could lose orders [an]. Buying now with an $85,000 loan at 8% interest costs about $6,800 a year but spreads the cost while securing the machine's benefits immediately . On balance, cancelling is the safer option this year because survival and paying suppliers come before growth, and the loan's $6,800 annual interest would further strain working capital of only $45,000 [eval]. Sofia could revisit the purchase once the supplier debt is cleared and cash recovers. Overall, Sofia should cancel the machine purchase now and reconsider it later from healthier cash flow rather than take on an $85,000 loan [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cancelling planned capital expenditure is a recognised way to ease short-term cash flow",
+            "delaying capital spending preserves cash for urgent obligations"
+          ],
+          "application_max_2": [
+            "cash balance is $18,000 against $60,000 owed within 3 weeks",
+            "the machine costs $85,000 and a loan at 8% costs about $6,800 a year"
+          ],
+          "analysis_max_2": [
+            "keeping cash avoids default and keeps production running",
+            "buying now spreads cost but adds about $6,800 yearly interest and strains working capital"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs immediate survival/supplier payments against efficiency gains of the machine"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$85,000",
+            "$18,000",
+            "$60,000",
+            "3 weeks",
+            "$1,150,000",
+            "8% interest",
+            "$95,000",
+            "$140,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_155",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fenwhistle Farm Supplies is a wholesale agricultural supplier in Country X selling animal feed, seed and fertiliser for 14 years. It employs 11 sales and warehouse staff and has annual revenue of $890,000. The business is based on the ring road and supplies over 300 farms across the region. Current assets are $118,000, including $64,000 owed by farm customers, while current liabilities are $87,000, leaving working capital of $31,000.\n\nCustomer payments have slowed noticeably, and many farms now take 75 days to pay instead of the agreed 45. Owner Ben Fenwhistle must decide soon. He is considering two options: offer a 3% discount to any debtor paying within 20 days, or keep the 75-day terms and borrow $50,000 from the bank to cover operating costs.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'current assets'.",
+        "model_answer": "Current assets are assets owned by a business that are expected to be turned into cash or used up within one year, such as cash, inventories and debtors [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "current assets are expected to become cash or be used within one year",
+            "examples include cash, inventories and debtors / receivables"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Fenwhistle Farm Supplies needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay for stock and daily running costs [k], which matters because Fenwhistle sells feed, seed and fertiliser to farms and must keep its warehouse stocked [app]. Reason 2: Working capital allows a business to cover the gap between outflows and inflows [k], as $64,000 of its current assets is owed by farm customers who now take 75 days to pay instead of the agreed 45 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital funds stock purchases and daily running costs",
+            "working capital bridges the gap between making payments and receiving cash"
+          ],
+          "application_max_2": [
+            "the business must stock feed, seed and fertiliser for farms",
+            "$64,000 is owed by farm customers taking 75 days instead of the agreed 45"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$890,000",
+            "$118,000",
+            "$64,000",
+            "$87,000",
+            "$31,000",
+            "75 days",
+            "45"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Fenwhistle of offering a 3% discount for payment within 20 days.",
+        "model_answer": "Benefit 1: The discount gives farm customers an incentive to settle bills quickly [k], targeting the $64,000 owed by customers who currently take 75 days instead of the agreed 45 [app], which turns slow debts into cash more quickly [an]. Benefit 2: Faster collection reduces the need to borrow [k], helping Fenwhistle avoid the $50,000 bank loan and its interest costs on current working capital of only $31,000 [app], easing the pressure on cash for wages and warehouse costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a cash discount incentivises debtors to pay earlier",
+            "earlier collection reduces reliance on external borrowing"
+          ],
+          "application_max_2": [
+            "$64,000 is owed by farm customers paying in 75 days instead of the agreed 45",
+            "current working capital is only $31,000 against a proposed $50,000 bank loan"
+          ],
+          "analysis_max_2": [
+            "earlier payment converts debtors into usable cash",
+            "avoiding the loan saves interest and eases cash pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3% discount",
+            "20 days",
+            "$64,000",
+            "75 days",
+            "agreed 45",
+            "$50,000",
+            "$31,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ben should offer the 3% discount or borrow $50,000 from the bank? Justify your answer.",
+        "model_answer": "Offering a 3% discount within 20 days would encourage farms to pay the $64,000 owed much sooner [k], directly reducing the 75-day average payment period towards the agreed 45 days [app] and releasing working capital without any new debt [an]. However, every discounted invoice reduces revenue on the $890,000 of annual sales [k], so widespread use of the 3% discount would cut profit margins on each sale [app], and some farms might already pay within 20 days anyway, making the discount a waste of $1,920 on early debts [an]. A $50,000 bank loan keeps revenue intact and funds the business while debtors remain slow, but it adds interest costs and increases liabilities on top of current liabilities of $87,000 . On balance, the discount is the better option because it fixes the root cause of the cash shortfall rather than masking it with more borrowing [eval]. The cost of the discount is limited and only applies to early payers, while the loan's interest would be an ongoing burden. Overall, Ben should offer the 3% discount to collect the $64,000 faster, reserving a loan as a fallback if cash is still short [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a settlement discount motivates debtors to pay faster",
+            "a bank loan provides funds but increases liabilities and interest costs"
+          ],
+          "application_max_2": [
+            "$64,000 is owed by farm customers taking 75 days instead of the agreed 45",
+            "current liabilities are $87,000 and annual revenue is $890,000"
+          ],
+          "analysis_max_2": [
+            "discount tackles the root cause of slow-paying debtors without new debt",
+            "loan protects revenue but adds ongoing interest on top of current liabilities"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs discount cost against loan interest and liability increase"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3% discount",
+            "20 days",
+            "$64,000",
+            "75 days",
+            "agreed 45",
+            "$890,000",
+            "$50,000",
+            "$87,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_156",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Colmworth Construction is a private limited company in Country X, building single-storey warehouses for 10 years. It employs 32 workers and generates $1,300,000 in annual revenue, supplying distribution warehouses for retail chains in the northern industrial corridor. Current assets are $150,000 against current liabilities of $110,000, and cash flow is seasonal: $95,000 of revenue from a completed warehouse will be received in 4 months' time.\n\nThe firm planned to replace two ageing pickup trucks at a cost of $70,000 this month, before the winter building season begins in earnest. Director Leanne Colm is considering two options: delay the truck purchase until the $95,000 is received, or take a $70,000 bank loan at 10% interest a year to buy the trucks now.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'bank loan'.",
+        "model_answer": "A bank loan is a fixed sum of money borrowed from a bank and repaid over an agreed period, usually with interest paid on the outstanding amount [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a loan is a fixed sum borrowed from a bank",
+            "it is repaid over an agreed period with interest"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Colmworth Construction needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay wages and materials on site [k], which is vital for Colmworth as it employs 32 workers building single-storey warehouses [app]. Reason 2: Working capital covers the gap between doing the work and receiving payment [k], as $95,000 of Colmworth's revenue will only be received in 4 months' time [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital funds wages and materials during trading",
+            "working capital bridges the gap between completing work and receiving payment"
+          ],
+          "application_max_2": [
+            "Colmworth employs 32 workers building single-storey warehouses",
+            "$95,000 will only be received in 4 months' time"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,300,000",
+            "$150,000",
+            "$110,000",
+            "$95,000",
+            "4 months",
+            "32 workers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to Colmworth of delaying the truck purchase until the $95,000 is received.",
+        "model_answer": "Advantage 1: Delaying the purchase protects the firm's cash [k], so current assets of $150,000 remain available against current liabilities of $110,000 instead of being spent on the $70,000 trucks [app], preserving working capital for wages and materials [an]. Advantage 2: Delaying avoids the bank loan and its interest [k], saving about $7,000 a year at 10% on the $70,000 [app], so more of the $1,300,000 annual revenue is retained as profit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying capital expenditure keeps cash in the business",
+            "delaying a purchase avoids borrowing and interest costs"
+          ],
+          "application_max_2": [
+            "current assets are $150,000 against current liabilities of $110,000",
+            "a $70,000 loan at 10% costs about $7,000 a year"
+          ],
+          "analysis_max_2": [
+            "cash is preserved for wages and materials during the 4-month wait",
+            "saving interest retains more of the $1,300,000 revenue as profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$150,000",
+            "$110,000",
+            "$70,000",
+            "10% interest",
+            "$1,300,000",
+            "4 months"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Leanne should delay the truck purchase or take the $70,000 bank loan? Justify your answer.",
+        "model_answer": "Delaying the truck purchase until the $95,000 is received keeps Colmworth's cash intact [k], protecting the working capital of $40,000 left between current assets of $150,000 and current liabilities of $110,000 [app], and avoids around $7,000 a year of loan interest [an]. However, the ageing trucks may break down before the 4-month wait is over [k], disrupting site deliveries and risking delays on warehouse projects built by 32 workers [app], and any repair bills or lost time could cost more than the interest saved [an]. Taking the $70,000 loan gets reliable new trucks now and lets Colmworth complete jobs on schedule, though the interest adds to annual costs on top of existing obligations . On balance, delaying the purchase is the better option because the cash gap is clearly temporary and ends in 4 months, so interest would be pure extra cost [eval]. The trucks can be bought as soon as the $95,000 lands, keeping the firm debt-free. Overall, Leanne should delay the truck purchase rather than borrow, provided the old trucks remain serviceable for 4 months [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying planned capital expenditure is a recognised way to ease short-term cash flow",
+            "a loan provides immediate funds at the cost of interest"
+          ],
+          "application_max_2": [
+            "current assets $150,000 and current liabilities $110,000 leave working capital of $40,000",
+            "the $95,000 is received in 4 months' time"
+          ],
+          "analysis_max_2": [
+            "delay avoids around $7,000 yearly interest and preserves cash",
+            "truck breakdown risk could delay projects and cost more than interest"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs certain interest cost against risk of ageing trucks failing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "4 months",
+            "$70,000",
+            "10% interest",
+            "$150,000",
+            "$110,000",
+            "$1,300,000",
+            "32 workers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_157",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Saltcove Harbour Hotel is a 28-room coastal hotel in Country X, owned by Renata Duarte for 7 years. It employs 19 staff and generates $760,000 in annual revenue, much of it earned during the busy summer season and growing each year. Current assets are $34,000, including $9,000 in cash, but current liabilities are $52,000, leaving negative working capital of $18,000. Staff wages of $15,000 are due at the end of this month, and a $25,000 loan repayment is due in 6 weeks.\n\nRenata is considering two options: delay payments to suppliers by an extra 30 days to keep cash in the business, or negotiate a long-term loan of $40,000 from the bank to clear the shortfall before the summer bookings begin.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'current liabilities'.",
+        "model_answer": "Current liabilities are amounts owed by a business that must be repaid within one year, such as trade creditors, bank overdrafts and short-term loans [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "current liabilities are debts repayable within one year",
+            "examples include trade creditors, overdrafts and short-term loans"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Saltcove Harbour Hotel needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay its most urgent short-term debts [k], which is critical for Saltcove with current liabilities of $52,000 exceeding current assets of $34,000 [app]. Reason 2: Sufficient working capital keeps a hotel operating day to day [k], as wages of $15,000 are due at the end of this month and 19 staff must be paid so guests can be served [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays short-term debts and obligations",
+            "working capital funds day-to-day operations such as wages"
+          ],
+          "application_max_2": [
+            "current liabilities of $52,000 exceed current assets of $34,000",
+            "wages of $15,000 are due at the end of this month for 19 staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$34,000",
+            "$52,000",
+            "$9,000",
+            "$15,000",
+            "$25,000",
+            "19 staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Saltcove may face if it delays payments to suppliers by an extra 30 days.",
+        "model_answer": "Problem 1: Delaying payment to suppliers can damage the relationship with those suppliers [k], so the food and beverage suppliers delivering daily to a 28-room hotel may demand immediate payment or refuse further credit [app], disrupting the kitchen and the quality of guest service [an]. Problem 2: Late payment may increase costs for the hotel [k], for example through lost prompt-payment discounts on the $760,000 of annual revenue [app], squeezing profit margins on every room sold and shrinking working capital further [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying creditors damages supplier relationships and trust",
+            "late payment can raise costs through lost discounts or tighter terms"
+          ],
+          "application_max_2": [
+            "a 28-room hotel depends on daily food and beverage deliveries",
+            "the hotel generates $760,000 in annual revenue with current liabilities of $52,000"
+          ],
+          "analysis_max_2": [
+            "suppliers refusing credit would disrupt guest service",
+            "lost discounts squeeze margins and shrink working capital further"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "28-room",
+            "$760,000",
+            "$52,000",
+            "30 days",
+            "$15,000",
+            "current liabilities"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Renata should delay payments to suppliers or negotiate the $40,000 long-term loan? Justify your answer.",
+        "model_answer": "Delaying payments to suppliers keeps cash in the hotel without extra borrowing [k], which matters when current assets are $34,000 against current liabilities of $52,000 [app], easing pressure on the $15,000 wages due this month [an]. However, delaying payments risks souring relations with suppliers [k], and a 28-room hotel depends on daily food and beverage deliveries to sustain $760,000 in annual revenue [app]; if suppliers refuse credit, service would collapse at the busiest time [an]. A $40,000 long-term loan would clear the shortfall and rebuild positive working capital, though it adds monthly repayments and interest. On balance, the long-term loan is the better option because it addresses the root deficit instead of borrowing goodwill from suppliers [eval]. Interest and repayments can be planned across the year, unlike supplier patience, which can run out at any time. Overall, Renata should negotiate the $40,000 long-term loan to stabilise the hotel's finances, treating delayed supplier payments as a last resort only [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delaying creditors is an internal way to keep cash in the business",
+            "a long-term loan provides funds repaid over an extended period with interest"
+          ],
+          "application_max_2": [
+            "current assets are $34,000 against current liabilities of $52,000",
+            "the hotel generates $760,000 in annual revenue and wages of $15,000 are due soon"
+          ],
+          "analysis_max_2": [
+            "delayed payment risks suppliers refusing credit and service collapsing",
+            "the loan fixes the deficit but adds planned repayments and interest"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs zero-cost delay against supplier-risk versus the structured loan"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$34,000",
+            "$52,000",
+            "$15,000",
+            "28-room",
+            "$760,000",
+            "$40,000",
+            "30 days",
+            "$9,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_158",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fenmeadow Clothing is a menswear and womenswear retailer in Country X, trading through two high-street stores for 5 years. It employs 17 staff and has annual sales of $640,000, with a steady trade in school and work uniforms throughout the year. Current assets are $78,000, of which $45,000 is owed by employers on 60-day credit for staff uniforms, and current liabilities are $69,000.\n\nThe business urgently needs $35,000 for rent and insurance due in 3 weeks, and the refurbishment of the second store was planned for next spring. Owner Aisha Farouk is considering two options: offer uniform customers a 2.5% discount to settle invoices within 14 days, or postpone the $60,000 refurbishment of the second store for a year to preserve cash.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'debtors'.",
+        "model_answer": "Debtors are customers or businesses that owe money to the business, usually for goods sold on credit, and they are recorded as current assets [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debtors are customers or businesses owing the firm money",
+            "the debt usually arises from goods sold on credit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Fenmeadow Clothing needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to meet short-term debts on time [k], as Fenmeadow urgently needs $35,000 for rent and insurance due in 3 weeks [app]. Reason 2: Working capital supports daily retail operations [k], and 17 staff across two high-street stores must be paid from the trading cash tied to $640,000 of annual sales [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays short-term debts and bills on time",
+            "working capital funds daily operations such as wages and stock"
+          ],
+          "application_max_2": [
+            "Fenmeadow urgently needs $35,000 for rent and insurance due in 3 weeks",
+            "17 staff work across two stores on $640,000 of annual sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$78,000",
+            "$45,000",
+            "$69,000",
+            "$35,000",
+            "3 weeks",
+            "$640,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Fenmeadow of postponing the $60,000 refurbishment for a year.",
+        "model_answer": "Benefit 1: Postponing the refurbishment keeps $60,000 in the business [k], so the urgent $35,000 rent and insurance bill due in 3 weeks can be paid without draining the $78,000 of current assets needed for stock [app], avoiding late-payment penalties [an]. Benefit 2: Delaying the spend avoids new borrowing [k], sparing the retailer interest and leaving the $9,000 of working capital available for wages and suppliers [app], which strengthens day-to-day stability while debtors still take 60 days to pay [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "postponing capital expenditure keeps cash in the business",
+            "delaying major spending avoids new borrowing and interest"
+          ],
+          "application_max_2": [
+            "the refurbishment costs $60,000 and $35,000 is due for rent and insurance in 3 weeks",
+            "current assets are $78,000 leaving working capital of $9,000"
+          ],
+          "analysis_max_2": [
+            "keeping cash avoids penalties and protects stock levels",
+            "avoiding borrowing preserves the $9,000 of working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$35,000",
+            "3 weeks",
+            "$78,000",
+            "$45,000",
+            "60-day credit",
+            "$640,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aisha should offer the 2.5% discount to debtors or postpone the refurbishment? Justify your answer.",
+        "model_answer": "Offering a 2.5% discount to settle within 14 days turns slow debtors into fast cash [k], targeting the $45,000 owed by employers on 60-day credit [app], which would directly cover the $35,000 rent and insurance due in 3 weeks [an]. However, the discount costs money on every invoice settled early [k], trimming revenue below the $640,000 annual sales level on a margin-sensitive uniform trade [app], and employers who already pay within 14 days would receive a discount for nothing [an]. Postponing the $60,000 refurbishment preserves cash without discounting, though the second store stays dated for another year. On balance, postponing the refurbishment is the safer choice because it creates no direct cost, unlike the discount which eats directly into sales revenue [eval]. It also removes the $60,000 commitment from a business whose current liabilities of $69,000 already exceed what the $9,000 of working capital can comfortably cover. Overall, Aisha should postpone the refurbishment and keep the 2.5% discount as a reserve if debtors still pay too slowly [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a settlement discount motivates debtors to pay earlier",
+            "postponing planned capital expenditure preserves cash at no direct cost"
+          ],
+          "application_max_2": [
+            "$45,000 is owed by employers on 60-day credit",
+            "$35,000 for rent and insurance is due in 3 weeks on $640,000 of annual sales"
+          ],
+          "analysis_max_2": [
+            "the discount directly reduces revenue and may reward early payers for nothing",
+            "postponing removes a $60,000 commitment and costs nothing upfront"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs certain discount cost against the zero-cost delay of the refurbishment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2.5% discount",
+            "14 days",
+            "$45,000",
+            "60-day credit",
+            "$35,000",
+            "3 weeks",
+            "$60,000",
+            "$640,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_159",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Dorncliffe Fish Processing is a private limited company in Country X, freezing and packing sea fish for 13 years. The factory runs two shifts six days a week and is one of the largest employers in the fishing port. It employs 45 workers and has annual output of $2,100,000. Current assets are $210,000 and current liabilities are $165,000, giving working capital of $45,000. A large export customer owing $88,000 has delayed payment until next quarter.\n\nDirector Tomas Dorn must find $60,000 within 2 weeks for a refrigerated truck repair and wages. He is considering two options: delay paying fish suppliers by 45 days, or ask the export customer to pay the $88,000 immediately in exchange for a 2% discount, receiving $86,240.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'trade credit'.",
+        "model_answer": "Trade credit is an agreement that allows a business to buy goods or services now and pay the supplier at an agreed later date, usually within a set number of days [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "trade credit lets a business buy now and pay later",
+            "payment is made at an agreed future date, often in days"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Dorncliffe Fish Processing needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay wages and urgent bills [k], as Dorncliffe must find $60,000 within 2 weeks for a refrigerated truck repair and wages [app]. Reason 2: Working capital keeps production running while awaiting payment [k], since $88,000 owed by an export customer will not arrive until next quarter [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital pays wages and urgent operating bills",
+            "working capital bridges the gap between production and payment"
+          ],
+          "application_max_2": [
+            "Dorncliffe must find $60,000 within 2 weeks for a truck repair and wages",
+            "$88,000 owed by an export customer is delayed until next quarter"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2,100,000",
+            "$210,000",
+            "$165,000",
+            "$45,000",
+            "$88,000",
+            "2 weeks"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to Dorncliffe of asking the export customer to pay immediately with a 2% discount.",
+        "model_answer": "Advantage 1: An early payment converts a delayed debt into usable cash [k], bringing in $86,240 now instead of $88,000 next quarter [app], which gives Tomas immediate money for the refrigerated truck repair [an]. Advantage 2: Securing cash from the customer avoids delaying suppliers [k], keeping Dorncliffe in good standing with the fish suppliers behind $2,100,000 of annual output [app], so production continues without interruption [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "an early-payment discount converts slow debtors into immediate cash",
+            "collecting from debtors avoids delaying payments to creditors"
+          ],
+          "application_max_2": [
+            "the customer would pay $86,240 now instead of $88,000 next quarter",
+            "Dorncliffe produces $2,100,000 of annual output for 45 workers"
+          ],
+          "analysis_max_2": [
+            "immediate cash covers the refrigerated truck repair and wages",
+            "good supplier relations keep production running without interruption"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$88,000",
+            "$86,240",
+            "2% discount",
+            "$2,100,000",
+            "$60,000",
+            "2 weeks",
+            "$45,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tomas should delay paying fish suppliers by 45 days or ask the export customer to pay immediately with a 2% discount? Justify your answer.",
+        "model_answer": "Asking the export customer to pay immediately uses a discount to pull cash forward [k], securing $86,240 now to cover the $60,000 needed within 2 weeks [app], which solves the crisis without harming supplier relationships [an]. However, the 2% discount costs $1,760 of revenue [k], a direct reduction on the export order and on working capital of only $45,000 [app], and it may set a precedent for future early-payment demands [an]. Delaying fish suppliers by 45 days preserves cash at zero direct cost, but it risks deliveries and goodwill with the people who supply raw fish. On balance, the discount is the better option because losing supplier cooperation could stop production for 45 workers, which would cost far more than $1,760 [eval]. It also matches the one-off nature of this shortfall rather than risking a permanent tightening of supplier terms. Overall, Tomas should offer the 2% discount to the export customer rather than delay suppliers, treating the $1,760 as cheap insurance against a production stoppage [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a settlement discount pulls debtor cash forward at a cost",
+            "delaying creditors preserves cash but risks supply and goodwill"
+          ],
+          "application_max_2": [
+            "the customer would pay $86,240 immediately, covering the $60,000 needed within 2 weeks",
+            "the discount costs $1,760 against working capital of only $45,000"
+          ],
+          "analysis_max_2": [
+            "supplier delay could stop production for 45 workers",
+            "discount solves the one-off gap cleanly but may set a precedent"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs the $1,760 discount cost against the risk of production stoppage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$88,000",
+            "$86,240",
+            "2% discount",
+            "45 days",
+            "$60,000",
+            "2 weeks",
+            "$45,000",
+            "$2,100,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_160",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Harrowmere Pharmacy is a private limited company operating two community pharmacies in Country X for 8 years, dispensing prescriptions and offering basic health checks. It employs 23 staff and has annual revenue of $980,000, with both sites trading profitably. Current assets are $132,000, including $58,000 of medicines inventory, while current liabilities are $96,000, leaving working capital of $36,000. The main supplier now demands payment within 14 days instead of 45, and wages of $28,000 are due soon.\n\nDirector Nadia Harrow had planned to open a third pharmacy costing $110,000 in January in the new retail park. She is considering two options: postpone the third pharmacy for 12 months to keep cash, or take a $75,000 bank overdraft to cover running costs and still open on time.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'liquidity'.",
+        "model_answer": "Liquidity is the ability of a business to convert its assets into cash quickly so that it can pay its short-term debts as they fall due [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "liquidity is the ability to convert assets into cash quickly",
+            "liquid assets pay short-term debts as they fall due"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Harrowmere Pharmacy needs sufficient working capital.",
+        "model_answer": "Reason 1: Working capital allows a business to pay suppliers on demand [k], and Harrowmere's main supplier now demands payment within 14 days instead of 45 [app]. Reason 2: Working capital pays staff on time [k], as wages of $28,000 are due soon and 23 staff must be paid to keep both community pharmacies open [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "working capital funds prompt payment to suppliers",
+            "working capital funds staff wages and daily operations"
+          ],
+          "application_max_2": [
+            "the main supplier demands payment within 14 days instead of 45",
+            "wages of $28,000 are due soon for 23 staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$132,000",
+            "$58,000",
+            "$96,000",
+            "$36,000",
+            "14 days",
+            "$28,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Harrowmere of postponing the third pharmacy for 12 months.",
+        "model_answer": "Benefit 1: Postponing the $110,000 opening keeps cash in the business [k], protecting the $132,000 of current assets needed to honour the new 14-day supplier terms and pay the $28,000 wages due soon [app], and avoiding overdraft interest [an]. Benefit 2: Delaying gives the business time to rebuild working capital [k], strengthening the $36,000 of working capital left between current assets and current liabilities [app], so the new branch opens on a stable financial footing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "postponing expansion keeps cash inside the business",
+            "delaying allows working capital to rebuild before committing funds"
+          ],
+          "application_max_2": [
+            "the third pharmacy costs $110,000 and wages of $28,000 are due soon",
+            "current assets are $132,000 with working capital of only $36,000"
+          ],
+          "analysis_max_2": [
+            "keeping cash meets the tighter 14-day supplier terms",
+            "rebuilt working capital gives the new branch a stable start"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$110,000",
+            "$132,000",
+            "$58,000",
+            "$96,000",
+            "$36,000",
+            "14 days",
+            "$28,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Nadia should postpone the third pharmacy or take the $75,000 bank overdraft? Justify your answer.",
+        "model_answer": "Postponing the third pharmacy preserves cash without any interest cost [k], protecting the $36,000 of working capital left between current assets of $132,000 and current liabilities of $96,000 [app], so the 14-day supplier terms and the $28,000 wages bill stay comfortably covered [an]. However, delaying means missing the chance to open first in the third location [k], potentially losing ground in a market that supports $980,000 of annual revenue across the two existing pharmacies [app], and a rival could secure the location during the 12 months [an]. The $75,000 overdraft would keep the January opening on track, though it adds interest and could be called in just as supplier terms tighten. On balance, postponing is the safer option because the new 14-day supplier demand makes the existing business's cash tight, and an overdraft could become a trap [eval]. Keeping to the two present pharmacies lets Harrowmere absorb the tighter terms before committing to expansion. Overall, Nadia should postpone the third pharmacy by 12 months and review the opening once the 14-day payment cycle is absorbed comfortably [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "postponing capital expenditure preserves cash without added cost",
+            "an overdraft provides flexible funds but is interest-bearing and callable"
+          ],
+          "application_max_2": [
+            "current assets $132,000 and current liabilities $96,000 leave working capital of $36,000",
+            "the main supplier demands 14 days instead of 45 and $28,000 wages are due soon"
+          ],
+          "analysis_max_2": [
+            "delay preserves cash and covers the tighter terms",
+            "delay risks a rival taking the third location"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring one option with clear reasoning",
+            "weighs zero-cost delay against overdraft flexibility and competitive risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$110,000",
+            "$132,000",
+            "$96,000",
+            "$36,000",
+            "14 days",
+            "$28,000",
+            "$75,000",
+            "$980,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

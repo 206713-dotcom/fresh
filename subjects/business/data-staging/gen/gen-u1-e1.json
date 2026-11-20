@@ -1,0 +1,1285 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_181",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Tidemere Upholstery is a sole trader business owned and operated by Rhea Desai for 7 years in Country X. Tidemere employs 2 part-time assistants and re-covers sofas, armchairs and dining chair seats for local households. The business generated $95,000 in sales revenue last year, with a profit of $28,000.\n\nRhea wants to expand by adding curtain fitting to the services offered, which would require $18,000 of new sewing equipment. Her friend Marcus Vale has offered to join as a 50% partner, contributing $40,000, or she could remain sole owner and hire an additional part-time assistant costing $12,000 a year. Rhea must decide which option is the better choice for Tidemere Upholstery. Strong demand from new housing estates nearby makes her reluctant to delay the decision any longer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sole trader'.",
+        "model_answer": "A business owned and controlled by one person [1], who keeps all the profits but is personally responsible for all the business debts [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business owned and controlled by one person",
+            "owner keeps all profits but has unlimited liability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Tidemere Upholstery of remaining a sole trader.",
+        "model_answer": "Reason 1: Complete control over business decisions [k], so Rhea can choose which fabrics to stock and which jobs to accept without consulting anyone [app]. Reason 2: The owner keeps all the profit [k] and earns the full $28,000 profit on $95,000 of revenue without splitting it [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "full control over decisions",
+            "owner keeps all the profit"
+          ],
+          "application_max_2": [
+            "$28,000",
+            "$95,000",
+            "Tidemere Upholstery",
+            "curtain fitting"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sole trader",
+            "$95,000",
+            "$28,000",
+            "Rhea Desai",
+            "Tidemere",
+            "curtain fitting",
+            "$12,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Rhea might face if she takes Marcus Vale on as a 50% partner.",
+        "model_answer": "Problem 1: Profits must be shared with the new partner [k], so Marcus Vale's 50% share of the $28,000 profit would halve Rhea's reward after her 7 years of effort [app], making all the hard work feel less worthwhile [an]. Problem 2: Partners may disagree over decisions [k], particularly about spending $18,000 on sewing equipment for curtain fitting [app], which could delay the expansion and harm the Tidemere reputation [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profits must be shared between partners",
+            "partners may disagree over decisions"
+          ],
+          "application_max_2": [
+            "Marcus Vale",
+            "50%",
+            "$28,000",
+            "$18,000",
+            "curtain fitting"
+          ],
+          "analysis_max_2": [
+            "reduces the owner's reward for her effort",
+            "delays expansion and damages reputation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marcus Vale",
+            "50%",
+            "$28,000",
+            "$18,000",
+            "curtain fitting",
+            "sole trader",
+            "$40,000",
+            "Tidemere Upholstery"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Rhea should take Marcus Vale on as a partner rather than employ an additional part-time assistant? Justify your answer.",
+        "model_answer": "Taking Marcus as a 50% partner would add $40,000 of capital [k], covering the $18,000 needed for curtain fitting equipment with $22,000 to spare towards another assistant [app], enabling Tidemere to expand faster into a profitable new service [an]. However, becoming a partnership would mean sharing control and profits [k], so Rhea would split the $28,000 profit and lose sole decision-making power [app], creating potential friction in day-to-day management [an]. Overall, Rhea should hire an additional part-time assistant for $12,000 a year instead [eval], because it preserves her complete control and the full $28,000 profit while still adding capacity for the new work [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "partnership brings extra capital and skills",
+            "control and profits are shared in a partnership"
+          ],
+          "application_max_2": [
+            "$40,000",
+            "$18,000",
+            "$12,000",
+            "$28,000",
+            "curtain fitting",
+            "Marcus Vale"
+          ],
+          "analysis_max_2": [
+            "extra capital funds faster, risk-lowered expansion",
+            "shared profits and control risk friction and reduced reward"
+          ],
+          "evaluation_max_2": [
+            "weighs capital injection against loss of control and profit share",
+            "reaches a justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$40,000",
+            "$12,000",
+            "$18,000",
+            "$28,000",
+            "curtain fitting",
+            "Marcus Vale",
+            "sole trader",
+            "$95,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_182",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Wrenbury Dental Surgery is a partnership owned by Dr. Priya Raman and Dr. Joel Okafor for 9 years in Country X. The surgery employs 4 dental nurses and 2 receptionists, and generated $780,000 in fees last year. The practice has a loyal private patient list and a strong local reputation for gentle treatment.\n\nA former patient is claiming $150,000 in damages against the partners, and the surgery's insurance premium has risen to $24,000 a year. Priya and Joel disagree; Priya wants to continue as a partnership while Joel argues they should become a private limited company. Both partners are personally liable for the surgery's debts if it cannot pay. The matter will be decided at the next partners' meeting, which is booked for Thursday evening.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'partnership'.",
+        "model_answer": "A business owned and run by two or more people together [1], who share the profits, decisions and responsibility for the business [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business owned and run by two or more people",
+            "partners share profits, decisions and responsibility"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Wrenbury Dental Surgery of operating as a partnership.",
+        "model_answer": "Reason 1: Partners can share the workload and specialise [k], so Priya focuses on clinical dentistry while Joel can manage the 4 dental nurses and 2 receptionists [app]. Reason 2: More capital can be raised together than by one person [k], helping the surgery manage the $24,000 annual insurance premium alongside its $780,000 fees [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "partners share workload and can specialise",
+            "more capital available than a sole trader"
+          ],
+          "application_max_2": [
+            "4 dental nurses",
+            "2 receptionists",
+            "$24,000",
+            "$780,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "partnership",
+            "$780,000",
+            "4 dental nurses",
+            "Priya",
+            "Joel",
+            "$24,000",
+            "surgery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Joel wants the surgery to become a private limited company.",
+        "model_answer": "Reason 1: A private limited company gives owners limited liability [k], so if the $150,000 damages claim succeeds, Priya and Joel's personal savings remain safe [app], reducing the financial risk to their families [an]. Reason 2: As a separate legal entity the company can raise finance more easily [k], allowing the surgery to fund improvements beyond the $780,000 annual fees when needed [app], securing long-term stability and growth [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects owners' personal assets",
+            "separate legal entity can raise finance more easily"
+          ],
+          "application_max_2": [
+            "$150,000",
+            "$780,000",
+            "damages",
+            "private limited company"
+          ],
+          "analysis_max_2": [
+            "personal assets are protected from the damages claim",
+            "greater finance access supports long-term stability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "private limited company",
+            "$24,000",
+            "partnership",
+            "surgery",
+            "fees"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the partners should convert Wrenbury Dental Surgery into a private limited company rather than remain a partnership? Justify your answer.",
+        "model_answer": "Converting to a private limited company gives Priya and Joel limited liability [k], shielding their personal assets from the $150,000 damages claim [app], removing the greatest personal financial threat they face [an]. However, staying a partnership keeps the surgery simple and private [k], avoiding registration formalities and extra costs on top of the $24,000 insurance premium [app], and keeps decisions quick between the two partners [an]. Overall, the surgery should convert to a private limited company [eval], because the protection from unlimited liability for the $150,000 claim outweighs the modest extra compliance burden [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets",
+            "partnerships are simpler with fewer formalities and more privacy"
+          ],
+          "application_max_2": [
+            "$150,000",
+            "$24,000",
+            "$780,000",
+            "Wrenbury Dental Surgery",
+            "dental nurses"
+          ],
+          "analysis_max_2": [
+            "claim risk makes unlimited liability unacceptable",
+            "privacy and simplicity benefit a small two-partner practice"
+          ],
+          "evaluation_max_2": [
+            "weighs limited liability against compliance burden",
+            "recommendation tied to the damages claim figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$150,000",
+            "$780,000",
+            "$24,000",
+            "surgery",
+            "partnership",
+            "Wrenbury Dental Surgery",
+            "dental nurses"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_183",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Greythorn Taxis is an unincorporated partnership owned by Femi Balogun and Ada Balogun for 5 years in Country X. The partnership owns 4 licensed taxis and generates $260,000 in annual revenue, with profits of $45,000 last year. Greythorn Taxis holds a long-standing contract carrying nursing home residents to appointments, a steady source of work.\n\nThe Baloguns want to buy a wheelchair-accessible minibus costing $70,000 but cannot raise the full amount from savings. They are considering converting to a private limited company, which would allow them to sell shares to family members and approach banks as a separate legal entity. Ada prefers to keep the business unincorporated to avoid registration costs and extra paperwork. The purchase would double their carrying capacity at a stroke.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'unincorporated'.",
+        "model_answer": "An unincorporated business is not a separate legal entity from its owners [1], so the owners are personally liable for the debts of the business [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "not a separate legal entity from its owners",
+            "owners personally liable for business debts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Greythorn Taxis of keeping the business unincorporated.",
+        "model_answer": "Reason 1: Fewer legal formalities and low running costs [k], so the Baloguns avoid registration fees and annual filings while earning $260,000 a year [app]. Reason 2: Complete privacy of financial affairs [k], since accounts are not published, keeping the $45,000 profit figure away from competitors and the public [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fewer legal formalities and lower costs",
+            "greater privacy of financial information"
+          ],
+          "application_max_2": [
+            "$260,000",
+            "$45,000",
+            "unincorporated",
+            "Greythorn Taxis"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "unincorporated",
+            "$260,000",
+            "$45,000",
+            "partnership",
+            "Greythorn Taxis",
+            "4 licensed taxis",
+            "registration"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the Baloguns converting to a private limited company.",
+        "model_answer": "Benefit 1: Limited liability protection [k], so Femi and Ada risk only their investment if the business cannot repay finance taken for the $70,000 wheelchair-accessible minibus [app], protecting the family home and savings [an]. Benefit 2: Corporate status makes raising finance easier [k], as the company could sell shares to family members and approach banks as a separate legal entity [app], unlocking the funds needed to buy the minibus quickly [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects owners' personal assets",
+            "separate legal entity can raise finance more easily"
+          ],
+          "application_max_2": [
+            "$70,000",
+            "wheelchair-accessible minibus",
+            "family members",
+            "separate legal entity"
+          ],
+          "analysis_max_2": [
+            "personal assets are protected from business debts",
+            "share issues and bank loans unlock the $70,000 purchase"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$70,000",
+            "wheelchair-accessible minibus",
+            "separate legal entity",
+            "$45,000",
+            "family members",
+            "$260,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Greythorn Taxis should become an incorporated private limited company rather than remain an unincorporated partnership? Justify your answer.",
+        "model_answer": "Incorporating would create a separate legal entity [k] able to sell shares to family members to raise the $70,000 needed for the minibus [app], enabling faster expansion while protecting both owners through limited liability [an]. However, remaining unincorporated avoids registration fees and paperwork [k], saving money and keeping the $260,000 revenue and $45,000 profit private [app], which suits a small two-owner partnership with modest plans [an]. Overall, Greythorn Taxis should incorporate as a private limited company [eval], because limited liability matters far more than the minor compliance costs when committing to a $70,000 asset [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "incorporation creates a separate legal entity with limited liability",
+            "unincorporated business has lower costs and more privacy"
+          ],
+          "application_max_2": [
+            "$70,000",
+            "$260,000",
+            "$45,000",
+            "wheelchair-accessible minibus",
+            "family members",
+            "unincorporated"
+          ],
+          "analysis_max_2": [
+            "separate legal status unlocks finance and share issues",
+            "privacy and low costs suit a small partnership"
+          ],
+          "evaluation_max_2": [
+            "weighs limited liability against compliance costs",
+            "recommendation linked to the $70,000 minibus purchase"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$70,000",
+            "$45,000",
+            "$260,000",
+            "unincorporated",
+            "Greythorn Taxis",
+            "wheelchair-accessible minibus",
+            "separate legal entity"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_184",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Bracknell & Grey Furniture Co is a private limited company founded 11 years ago by Owen Bracknell and Denise Grey in Country X. The company employs 48 factory workers and generates $2.4 million in annual revenue producing dining room furniture, selling through a network of independent regional retailers.\n\nOwen and Denise want to build a second factory costing $3 million and plan to raise the money by selling shares on the Country X stock exchange, making the company a public limited company. Alternatively, they could remain a private limited company and finance the expansion with a bank loan of $3 million at 8% interest. Denise is worried that a public listing would force the company to pay dividends to outside shareholders and publish its accounts.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'private limited company'.",
+        "model_answer": "An incorporated business with limited liability [1] whose shares are sold privately and cannot be offered to the general public [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "incorporated business with limited liability",
+            "shares sold privately, not offered to the public"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Bracknell & Grey of remaining a private limited company.",
+        "model_answer": "Reason 1: Limited liability [k], so Owen and Denise risk only their investment in the company, which is vital when considering a $3 million factory project [app]. Reason 2: Ownership stays in a small, trusted group [k], keeping decision-making fast and avoiding outside shareholder interference [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects owners' personal assets",
+            "small ownership group retains control of decisions"
+          ],
+          "application_max_2": [
+            "$3 million",
+            "48 factory workers",
+            "dining room furniture",
+            "Owen Bracknell",
+            "Denise Grey"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$3 million",
+            "48 factory workers",
+            "Owen Bracknell",
+            "Denise Grey",
+            "dining room furniture",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of Bracknell & Grey becoming a public limited company.",
+        "model_answer": "Benefit 1: Access to far greater capital by selling shares publicly [k], raising the $3 million needed for the second factory without an 8% interest bank loan [app], saving around $240,000 of yearly interest (8% of $3 million) [an]. Benefit 2: A stock exchange listing raises the company's profile [k], advertising Bracknell & Grey's dining room furniture to large national retailers [app], helping win major contracts to lift revenue beyond $2.4 million [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "public share sales raise large amounts of capital",
+            "stock exchange listing boosts profile and credibility"
+          ],
+          "application_max_2": [
+            "$3 million",
+            "8%",
+            "stock exchange",
+            "dining room furniture",
+            "$2.4 million"
+          ],
+          "analysis_max_2": [
+            "avoids about $240,000 yearly interest on a bank loan",
+            "higher profile can win larger contracts and sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "public limited company",
+            "$3 million",
+            "8%",
+            "stock exchange",
+            "dining room furniture",
+            "$2.4 million",
+            "Owen Bracknell"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Bracknell & Grey should become a public limited company rather than remain a private limited company? Justify your answer.",
+        "model_answer": "Becoming a Plc would let the company raise $3 million by selling shares to the public [k], avoiding bank loan interest of about $240,000 per year at 8% [app], easing cash flow while funding the second factory [an]. However, floating on the stock exchange obliges Bracknell & Grey to publish accounts and pay dividends to outside shareholders [k], diluting Owen and Denise's control and pressuring short-term profits on $2.4 million revenue [app], possibly limiting long-term investment [an]. Overall, the company should remain a private limited company for now [eval], because the 8% loan can be serviced from current revenue while preserving founder control of strategy [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Plc can raise large capital from the public",
+            "Plc must publish accounts and pay dividends, losing founder control"
+          ],
+          "application_max_2": [
+            "$3 million",
+            "8%",
+            "$2.4 million",
+            "stock exchange",
+            "dividends",
+            "48 factory workers"
+          ],
+          "analysis_max_2": [
+            "avoids around $240,000 yearly interest, easing cash flow",
+            "public shareholders dilute control and demand short-term returns"
+          ],
+          "evaluation_max_2": [
+            "weighs cost of capital against loss of control",
+            "recommendation tied to revenue and expansion figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "public limited company",
+            "private limited company",
+            "$3 million",
+            "8%",
+            "$2.4 million",
+            "48 factory workers",
+            "stock exchange",
+            "dividends"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_185",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Crestline Grocery Plc is a public limited company listed on the stock exchange, operating 32 supermarkets across Country X for 14 years. The company employs 2,150 staff and generated $18 million in sales last year, but profit fell to $600,000 after a price war with rivals. Its own-label range accounts for nearly half of weekly sales across the stores.\n\nChief Executive Sandra Iqbal believes the Plc structure forces the company to focus on short-term dividends to keep shareholders satisfied. A group of investors has offered to buy all the shares and take Crestline Grocery private, reinvesting $4 million of profit currently earmarked for dividends into store refurbishments. Sandra must decide whether accepting the offer or remaining a Plc is in the company's best interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'public limited company'.",
+        "model_answer": "An incorporated business with limited liability [1] whose shares can be bought and sold by the general public on a stock exchange [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "incorporated business with limited liability",
+            "shares bought and sold by the public on a stock exchange"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Crestline Grocery of being a public limited company.",
+        "model_answer": "Reason 1: Access to enormous capital from public share sales [k], funding the wages of 2,150 staff and the running of 32 supermarkets without relying only on retained profit [app]. Reason 2: A high public profile and credibility [k], because stock exchange listing reassures suppliers and landlords about a grocery chain generating $18 million in sales [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to large capital from public share issues",
+            "high profile and credibility with stakeholders"
+          ],
+          "application_max_2": [
+            "2,150 staff",
+            "32 supermarkets",
+            "$18 million",
+            "stock exchange"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "public limited company",
+            "32 supermarkets",
+            "$18 million",
+            "2,150 staff",
+            "stock exchange",
+            "Crestline Grocery Plc",
+            "dividends"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Sandra Iqbal might support taking Crestline Grocery private.",
+        "model_answer": "Reason 1: An end to short-term dividend pressure [k], letting the company redirect $4 million of intended dividends into store refurbishments instead [app], lifting store appeal and reversing the $600,000 profit decline [an]. Reason 2: Private ownership frees managers from constant share price scrutiny [k], so Sandra can rebuild the $18 million sales base after the price war [app], enabling steadier, longer-term strategic decisions [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoids short-term dividend pressure from shareholders",
+            "private ownership allows long-term decision making"
+          ],
+          "application_max_2": [
+            "$4 million",
+            "$600,000",
+            "$18 million",
+            "price war"
+          ],
+          "analysis_max_2": [
+            "refurbishments can lift appeal and reverse falling profit",
+            "removal of share price scrutiny supports a long-term recovery"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4 million",
+            "refurbishments",
+            "$600,000",
+            "price war",
+            "private",
+            "$18 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Crestline Grocery should accept the offer to become a private company rather than remain a public limited company? Justify your answer.",
+        "model_answer": "Accepting the offer would unlock $4 million for store refurbishments [k], letting the 32 supermarkets compete harder in the price war and lift profits above $600,000 [app], securing the company's long-term competitiveness [an]. However, staying a Plc preserves access to public capital markets [k], which may be needed to fund future growth of the $18 million sales base [app], and keeps the company accountable to its shareholders [an]. Overall, Crestline Grocery should accept the offer to become private [eval], because escaping short-term dividend pressure will fix the underlying profit problems faster than remaining a Plc [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "private status enables reinvestment without dividend demands",
+            "remaining a Plc retains access to capital markets"
+          ],
+          "application_max_2": [
+            "$4 million",
+            "$600,000",
+            "32 supermarkets",
+            "$18 million",
+            "refurbishments",
+            "price war"
+          ],
+          "analysis_max_2": [
+            "refurbishments strengthen price-war competitiveness",
+            "loss of capital market access is a real opportunity cost"
+          ],
+          "evaluation_max_2": [
+            "weighs dividend pressure relief against losing capital markets",
+            "recommendation linked to $600,000 profit and $18 million sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4 million",
+            "$600,000",
+            "32 supermarkets",
+            "$18 million",
+            "refurbishments",
+            "price war",
+            "public limited company",
+            "dividends"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_186",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Ember Lane Coffee House is an independent cafe owned by Lena Ortiz for 4 years in Country X. It employs 5 baristas, serves 340 customers a week and generates $150,000 in annual revenue. Its flat white, regarded locally as the best in the whole town, draws a loyal following of office workers.\n\nLena is considering opening a second outlet. A national franchisor has offered her a MoccaVille franchise: a $45,000 initial fee, 7% of sales in royalties and full branding, training and supplier support. Alternatively, Lena could open her own independent second cafe for about $80,000 of set-up costs, keeping complete control but building a brand from scratch. Lena must choose which option offers the best value before the end of next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'franchise'.",
+        "model_answer": "An agreement in which one business, the franchisor, allows another, the franchisee, to trade under its name and brand [1] in exchange for an initial fee and continuing royalty payments [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "agreement allowing trade under an established name and brand",
+            "franchisee pays an initial fee and continuing royalties"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Lena of buying a MoccaVille franchise.",
+        "model_answer": "Benefit 1: An established, recognisable brand [k], so customers who already know MoccaVille would visit the second outlet from day one, building on Lena's 340 weekly customers [app]. Benefit 2: Training and supplier support [k], because the franchisor provides manuals, marketing and cheaper bulk supplies [app], reducing Lena's risk and start-up learning curve [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "established brand attracts customers immediately",
+            "franchisor provides training, marketing and supplies"
+          ],
+          "application_max_2": [
+            "340 customers",
+            "5 baristas",
+            "MoccaVille franchise",
+            "$150,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "MoccaVille franchise",
+            "$45,000",
+            "340 customers",
+            "5 baristas",
+            "franchisor",
+            "$150,000",
+            "training"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of the MoccaVille franchise option for Lena.",
+        "model_answer": "Drawback 1: Ongoing royalty payments reduce Lena's income [k], because 7% of the current $150,000 revenue would cost about $10,500 a year [app], directly cutting the second outlet's profit [an]. Drawback 2: Reduced independence and control [k], because MoccaVille dictates the menu, pricing and branding rather than Lena's own Ember Lane style [app], limiting her ability to respond to local customer tastes [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "royalties reduce franchisee's profit",
+            "franchisee loses independence and must follow franchisor rules"
+          ],
+          "application_max_2": [
+            "7%",
+            "$150,000",
+            "$45,000",
+            "Ember Lane Coffee House",
+            "7% of sales"
+          ],
+          "analysis_max_2": [
+            "about $10,500 per year leaves the business",
+            "less freedom to tailor the offer to local tastes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "7%",
+            "$150,000",
+            "royalties",
+            "$45,000",
+            "Ember Lane Coffee House",
+            "independent",
+            "MoccaVille"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Lena should buy a MoccaVille franchise rather than open an independent second cafe? Justify your answer.",
+        "model_answer": "Buying the franchise gives Lena an established brand and ongoing support [k], so the second outlet could win customers quickly beyond her 340 weekly visitors [app], speeding up sales and lowering the risk of early failure [an]. However, the 7% royalty on $150,000 revenue and the $45,000 fee would erode profits [k], and Lena would lose the independence that grew Ember Lane over 4 years [app], limiting future flexibility and creative control [an]. Overall, Lena should open an independent second cafe [eval], because keeping full control and 100% of the profits suits her proven track record better than franchising [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "franchise provides brand, training and lower early risk",
+            "franchise means fees, royalties and loss of independence"
+          ],
+          "application_max_2": [
+            "340 customers",
+            "7%",
+            "$150,000",
+            "$45,000",
+            "$80,000",
+            "Lena Ortiz"
+          ],
+          "analysis_max_2": [
+            "established brand accelerates second-outlet sales",
+            "fees and royalties materially reduce retained profit"
+          ],
+          "evaluation_max_2": [
+            "weighs brand support against fees and lost control",
+            "recommendation linked to Lena's 4-year record"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "MoccaVille franchise",
+            "$80,000",
+            "7%",
+            "340 customers",
+            "$150,000",
+            "Lena Ortiz",
+            "independent second cafe",
+            "$45,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_187",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Vinecourt Bottling Co is a private limited company in Country X that bottles fruit juices and soft drinks. It employs 60 workers, fills 12,000 bottles a day and generated $5.5 million in revenue last year. The business has won two national beverage awards in the last three years.\n\nVinecourt wants to enter the export market in Country Y but lacks distribution experience there. A French drinks company, BleuRiviere SA, has proposed a 50/50 joint venture to build a $2 million bottling plant in Country Y, splitting costs, risks and profits equally. Alternatively, Vinecourt could invest alone, but building its own plant would cost $5 million and take longer, keeping 100% of profits however. The board must decide within 3 months. Country Y retailers are already asking for its products to stock.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'joint venture'.",
+        "model_answer": "An agreement in which two or more businesses work together on a particular project [1] while remaining separate companies, sharing the costs, risks and profits [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "two or more businesses collaborate on a project",
+            "partners share costs, risks and profits but remain separate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Vinecourt of the proposed joint venture with BleuRiviere SA.",
+        "model_answer": "Benefit 1: Costs and risks are shared [k], so Vinecourt's share of the $2 million plant is $1 million instead of the $5 million needed alone [app]. Benefit 2: Local market knowledge and distribution [k], as BleuRiviere SA knows Country Y's retailers, helping place Vinecourt's fruit juices on shelves quickly [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "costs and risks are shared between partners",
+            "partner provides local knowledge and distribution"
+          ],
+          "application_max_2": [
+            "$2 million",
+            "$5 million",
+            "Country Y",
+            "BleuRiviere SA"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "joint venture",
+            "$2 million",
+            "Country Y",
+            "BleuRiviere SA",
+            "$5.5 million",
+            "12,000",
+            "fruit juices"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Vinecourt might face in the joint venture.",
+        "model_answer": "Problem 1: Profits must be split equally [k], so Vinecourt would surrender 50% of Country Y earnings instead of keeping 100% [app], reducing the overall return on its investment [an]. Problem 2: Potential conflict between partners [k], because a 50/50 structure can stall decisions on the $2 million plant and its 12,000-bottles-a-day output [app], causing management clashes and costly delays [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profits must be shared with the partner",
+            "conflicting priorities can cause deadlock and delays"
+          ],
+          "application_max_2": [
+            "50/50",
+            "$2 million",
+            "100%",
+            "12,000",
+            "Country Y"
+          ],
+          "analysis_max_2": [
+            "lower retained profit from Country Y sales",
+            "deadlock and clashes slow decisions and cost money"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "50/50",
+            "$2 million",
+            "100%",
+            "12,000",
+            "Country Y",
+            "profits",
+            "$5 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Vinecourt should form a joint venture with BleuRiviere SA rather than invest alone? Justify your answer.",
+        "model_answer": "Forming the joint venture halves Vinecourt's capital commitment to $1 million [k], sharing the $2 million plant cost and its risk with BleuRiviere [app], preserving cash for the 12,000-bottles-a-day home operation [an]. However, investing alone would keep 100% of Country Y profits [k] and give Vinecourt full control over its strategy [app], but costs $5 million and demands building distribution expertise from scratch [an]. Overall, Vinecourt should proceed with the joint venture [eval], because the shared risk and immediate local knowledge outweigh the halved profit share for a first export venture [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "joint venture halves capital commitment and risk",
+            "sole investment keeps 100% profit but costs more and takes longer"
+          ],
+          "application_max_2": [
+            "$2 million",
+            "$5 million",
+            "12,000",
+            "100%",
+            "Country Y",
+            "BleuRiviere SA"
+          ],
+          "analysis_max_2": [
+            "shared $1 million commitment protects home cash flow",
+            "sole control avoids deadlock but demands $5 million and expertise"
+          ],
+          "evaluation_max_2": [
+            "weighs risk sharing against profit sharing",
+            "recommendation tied to first export market decision"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "joint venture",
+            "$2 million",
+            "12,000",
+            "Country Y",
+            "100%",
+            "BleuRiviere SA",
+            "$5 million",
+            "50/50"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_188",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Bramley Ridge Roofing is a sole trader business owned by Tom Ellery for 8 years in Country X. Tom employs 4 roofers and carries out roof repairs and re-roofing for local households and farms. The business generated $340,000 in turnover last year. Tom is well known across the district for his punctual response to emergency roof leaks after storms.\n\nLast month a ladder slipped at a customer's house and falling tiles caused a minor injury. The customer has issued a claim for $60,000, but Tom's insurance covers only $25,000 of that amount. He is considering forming a private limited company to gain limited liability, or remaining a sole trader and continuing to pay the annual $7,000 insurance premium. The case will be heard at the district court next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'limited liability'.",
+        "model_answer": "Limited liability means shareholders can only lose the money they invested in the business [1], because the company is a separate legal entity and owners' personal assets are protected [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders only risk the money invested",
+            "company is a separate legal entity; personal assets protected"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Tom of converting to a private limited company.",
+        "model_answer": "Benefit 1: Limited liability [k], so Tom's home and savings are protected if the business cannot pay the $60,000 claim after only $25,000 of insurance coverage [app]. Benefit 2: Greater credibility with lenders and customers [k], because a limited company can pass credit checks when bidding for larger roofing contracts [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets",
+            "limited company has more credibility with lenders and customers"
+          ],
+          "application_max_2": [
+            "$60,000",
+            "$25,000",
+            "4 roofers",
+            "$340,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Bramley Ridge Roofing",
+            "$340,000",
+            "sole trader",
+            "$60,000",
+            "$25,000",
+            "4 roofers",
+            "Tom Ellery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of Tom forming a private limited company.",
+        "model_answer": "Problem 1: Extra legal costs and paperwork [k], including registration fees and annual filings on top of the $7,000 insurance premium [app], increasing Tom's fixed costs and administrative burden [an]. Problem 2: Less privacy [k], because limited companies must file accounts publicly, exposing the $340,000 turnover [app], allowing competitors to see his pricing and margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra registration costs and annual paperwork",
+            "public filing of accounts reduces privacy"
+          ],
+          "application_max_2": [
+            "$7,000",
+            "$340,000",
+            "$60,000",
+            "$25,000"
+          ],
+          "analysis_max_2": [
+            "higher fixed costs reduce profitability",
+            "published accounts weaken competitive position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$7,000",
+            "$340,000",
+            "$60,000",
+            "$25,000",
+            "4 roofers",
+            "limited liability"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tom should form a private limited company rather than remain a sole trader? Justify your answer.",
+        "model_answer": "Forming a private limited company gives Tom limited liability [k], so the $35,000 uninsured remainder of the $60,000 claim (after $25,000 of insurance) cannot touch his personal assets [app], removing the threat to his family's financial security [an]. However, staying a sole trader avoids registration fees and keeps accounts private [k], suiting a small 4-roofer business that pays only the $7,000 premium [app], preserving Tom's full control and simplicity [an]. Overall, Tom should convert to a private limited company [eval], because the $35,000 uninsured exposure outweighs the minor compliance costs of incorporation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "limited liability protects personal assets against claims",
+            "sole traders avoid compliance costs and keep privacy"
+          ],
+          "application_max_2": [
+            "$60,000",
+            "$25,000",
+            "$7,000",
+            "$340,000",
+            "4 roofers",
+            "Bramley Ridge Roofing"
+          ],
+          "analysis_max_2": [
+            "claim shortfall threatens personal assets without limited liability",
+            "low compliance costs suit a small business"
+          ],
+          "evaluation_max_2": [
+            "weighs $35,000 uninsured exposure against compliance burden",
+            "recommendation linked to the injury claim figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "private limited company",
+            "$60,000",
+            "$25,000",
+            "$7,000",
+            "$340,000",
+            "sole trader",
+            "4 roofers",
+            "limited liability"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_189",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Alder & Vine Plastering is a partnership founded 6 years ago by Daniela Costa and Ruth Anselm in Country X. The partnership employs 7 plasterers and decorators, and completed $520,000 of work last year. Both owners work long days on-site and handle all the quoting and invoicing themselves.\n\nDaniela and Ruth want to hire a third partner to fund a fleet of plastering machines costing $45,000. Their solicitor warned that adding a partner increases unlimited liability exposure, because each partner is personally liable for all business debts. The alternative is for each owner to lend the business $25,000, keeping the partnership but risking less. They meet tomorrow to decide. Hiring the extra staff needed to run the machines would also increase the annual wage bill.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'unlimited liability'.",
+        "model_answer": "Unlimited liability means the owners are personally and fully responsible for all the debts of the business [1], with no legal limit on what they can lose, including personal assets [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owners personally responsible for all business debts",
+            "no legal limit on losses, including personal assets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Alder & Vine of operating as a partnership.",
+        "model_answer": "Benefit 1: Partners can share the workload and supervise staff jointly [k], so Daniela and Ruth can split responsibility for the 7 plasterers and decorators between them [app]. Benefit 2: More capital is available than for a sole trader [k], which could help fund the $45,000 fleet of plastering machines without heavy borrowing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "partners share workload and supervision of staff",
+            "partnerships can raise more capital than sole traders"
+          ],
+          "application_max_2": [
+            "7 plasterers",
+            "$45,000",
+            "plastering machines",
+            "$520,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "partnership",
+            "$520,000",
+            "7 plasterers",
+            "Daniela Costa",
+            "Ruth Anselm",
+            "$25,000",
+            "Alder & Vine Plastering"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the solicitor warned about unlimited liability.",
+        "model_answer": "Reason 1: Every partner is fully liable for all business debts [k], so if the partnership cannot repay money borrowed for the $45,000 machines, Daniela or Ruth could each lose personal savings to cover the full debt [app], threatening their homes and financial security [an]. Reason 2: Joint and several liability means one partner's mistake affects everyone [k], so a single reckless decision on a $520,000 workload could bankrupt both owners [app], creating deep mistrust within the business [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "each partner fully liable for all business debts",
+            "joint and several liability affects all partners"
+          ],
+          "application_max_2": [
+            "$45,000",
+            "$520,000",
+            "business debts",
+            "plastering machines"
+          ],
+          "analysis_max_2": [
+            "personal assets of both owners are at risk",
+            "one partner's behaviour can bankrupt everyone"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "unlimited liability",
+            "$45,000",
+            "$520,000",
+            "third partner",
+            "plastering machines",
+            "business debts",
+            "$25,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the partners should add a third partner rather than each lend the business $25,000? Justify your answer.",
+        "model_answer": "Adding a third partner would bring in fresh capital and share the workload [k], fully funding the $45,000 machines and easing supervision of the 7 plasterers [app], strengthening the business without owners lending their own money [an]. However, lending $25,000 each would raise $50,000 in total, more than covering the $45,000 machines [k], while keeping only two owners and limiting each person's exposure to their own loan [app], avoiding the unlimited liability risks of an extra partner [an]. Overall, the partners should each lend $25,000 instead of adding a third partner [eval], because protecting themselves from unlimited liability matters more than the convenience of outside capital [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "third partner injects capital and shares workload",
+            "owner loans keep structure simple and exposure limited"
+          ],
+          "application_max_2": [
+            "$45,000",
+            "$25,000",
+            "7 plasterers",
+            "plastering machines",
+            "unlimited liability",
+            "$520,000"
+          ],
+          "analysis_max_2": [
+            "fresh capital eases machine purchase and staff supervision",
+            "new partner extends unlimited liability exposure to all three"
+          ],
+          "evaluation_max_2": [
+            "weighs extra capital against unlimited liability spread",
+            "recommendation linked to the $45,000 machine cost and $25,000 loans"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "third partner",
+            "$45,000",
+            "$25,000",
+            "unlimited liability",
+            "$520,000",
+            "7 plasterers",
+            "plastering machines",
+            "partnership"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_190",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Tallow Tree Bakery is an incorporated private limited company founded 9 years ago by James Whitmore in Country X. The company owns 3 bakeries, employs 26 staff and generated $1.1 million in revenue last year, selling sourdough bread and pastries. The bakeries are famous across the region for their crusty handmade loaves and seasonal treats.\n\nJames wants to open 2 more bakeries in neighbouring towns within 18 months. He is choosing between franchising the new outlets, collecting an $8,000 fee and 6% of sales from each franchisee, or keeping them company-owned by funding the $150,000 set-up cost of each bakery through retained profit and a bank loan. James must present his recommendation to the board next month. The neighbouring towns have no bakery offering handmade sourdough at present.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'incorporated'.",
+        "model_answer": "An incorporated business is a separate legal entity from its owners [1], with its own rights and liabilities, so owners typically benefit from limited liability [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "separate legal entity from its owners",
+            "owners usually benefit from limited liability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Tallow Tree Bakery of franchising the two new outlets.",
+        "model_answer": "Benefit 1: Expansion with minimal capital outlay [k], because franchisees fund the $150,000 set-up of each bakery while James receives the $8,000 fees and 6% royalties [app]. Benefit 2: Franchisees are motivated owner-operators [k], so each keeps profits from their outlet and personally drives sales of the sourdough bread and pastries [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rapid expansion without major capital outlay",
+            "franchisees are motivated owner-managers"
+          ],
+          "application_max_2": [
+            "$150,000",
+            "$8,000",
+            "6%",
+            "sourdough bread",
+            "pastries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "franchising",
+            "$8,000",
+            "6%",
+            "$150,000",
+            "James Whitmore",
+            "3 bakeries",
+            "sourdough bread"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Tallow Tree Bakery of keeping the new bakeries company-owned.",
+        "model_answer": "Benefit 1: The company keeps all the profits [k], since no royalties leak out, so both new bakeries contribute fully to the $1.1 million revenue base [app], boosting funds for future growth [an]. Benefit 2: Full control over quality and pricing [k], so standards stay consistent across the existing 3 bakeries and the 2 new ones [app], protecting the jobs of the 26 staff and the brand reputation [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "company retains 100% of profits",
+            "company keeps full control over quality and pricing"
+          ],
+          "application_max_2": [
+            "$1.1 million",
+            "company-owned",
+            "3 bakeries",
+            "26 staff"
+          ],
+          "analysis_max_2": [
+            "no royalty leakage increases available reinvestment funds",
+            "consistent standards protect reputation and staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "company-owned",
+            "retained profit",
+            "$1.1 million",
+            "3 bakeries",
+            "$150,000",
+            "26 staff"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tallow Tree Bakery should franchise the new bakeries rather than keep them company-owned? Justify your answer.",
+        "model_answer": "Franchising achieves the 18-month expansion without the company funding $300,000 of set-up costs (2 bakeries x $150,000) [k], because franchisees pay their own way while Tallow Tree collects $8,000 fees and 6% royalties [app], adding $16,000 of fee income plus a continuing royalty stream [an]. However, company-owned bakeries keep 100% of profits [k] and guarantee James complete control over quality, prices and brand standards [app], avoiding any franchisee disputes that could damage reputation [an]. Overall, Tallow Tree Bakery should franchise the two new bakeries [eval], because the 18-month target is met faster and cheaper while generating immediate fee income [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "franchising enables fast expansion with low capital outlay",
+            "company-owned outlets retain 100% profit and full control"
+          ],
+          "application_max_2": [
+            "$150,000",
+            "$8,000",
+            "6%",
+            "18 months",
+            "$1.1 million",
+            "company-owned"
+          ],
+          "analysis_max_2": [
+            "2 x $150,000 = $300,000 avoided; 2 x $8,000 = $16,000 fee income",
+            "full control reduces franchisee dispute risk"
+          ],
+          "evaluation_max_2": [
+            "weighs expansion speed and fees against lost profits and control",
+            "recommendation tied to the 18-month target and fee arithmetic"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "franchising",
+            "$150,000",
+            "$8,000",
+            "6%",
+            "18 months",
+            "company-owned",
+            "$1.1 million",
+            "2 more bakeries"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

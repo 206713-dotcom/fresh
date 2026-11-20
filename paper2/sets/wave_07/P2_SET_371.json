@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_371",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Brighthaven Private Clinic (BPC) is a private limited company in the healthcare sector, operating private outpatient screening clinics and employing a workforce of 60. Founded in 2011 by Dr Elena Brightwell, it runs a hierarchical structure with democratic leadership. BPC plans to invest $720,000 in a new diagnostic imaging suite, financed by a $450,000 ten-year bank loan and $270,000 retained profit. It has fixed costs of $360,000 a year, a variable cost of $40 a unit and a selling price of $100, and currently produces 12,000 units a year, each a standard screening package. BPC faces two problems: staff absenteeism has reached 11% and patient complaints about waiting times are rising. Its Q3 quality report shows a 2.4% re-scan rate.",
+    "appendix_1_marketing_ops": "Quality and Operations Report — Q3 2025: The screening unit delivered 3,100 screening packages last quarter at a re-scan rate of 2.4%, down from 4.0% a year ago. Patient complaints about waiting times fell from 46 to 19 per month. Average appointment turnaround is 28 minutes. A survey of 500 patients found that 68% would pay up to $8 more for same-day results, and 55% rank short waiting times as the top factor when choosing a clinic. Staff records show 14 of 60 employees have not completed on-the-job training on the new imaging software; external certification courses cost $750 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Brighthaven Private Clinic for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,800", "2,000"],
+        ["Cost of sales", "1,080", "1,100"],
+        ["Gross profit", "720", "900"],
+        ["Operating profit", "180", "250"],
+        ["Capital employed", "1,000", "1,250"],
+        ["Interest payable", "40", "50"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.0% to 4.8%, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 5.5% from $13.00 to $13.72 per hour from April 2026, raising wage bills for clinical and reception staff. (3) Medical supply input costs have risen 9.4% year-on-year and private screening prices are under pressure, while consumer spending on private health screening grew 2.8%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "BPC plans to fund part of its $720,000 imaging suite with a $450,000 ten-year bank loan. Explain two advantages for BPC of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Using retained profit of $270,000 costs BPC no interest charges or capital repayments, which protects cash flow while the clinic already carries fixed costs of $360,000 a year and a $450,000 loan commitment. With contribution of $60 on each $100 screening package, every dollar of interest saved can help absorb the 9.4% rise in medical supply costs reported in the bulletin, allowing BPC to hold its selling price at $100 rather than passing costs on to patients.\n\nPoint 2: Retained profit avoids the collateral and default risk attached to a bank loan, so the new imaging suite cannot be repossessed if demand for screening disappoints. It also preserves Dr Elena Brightwell's ownership and control: no external lender can impose conditions on how the diagnostic service is run or on the 12,000 units a year target, and BPC avoids adding to the interest payable of $40,000 shown in Appendix 2.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to BPC, its financing mix and its screening operation."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "$270,000", "$450,000", "$720,000", "$360,000", "$100"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "BPC is promoting its new diagnostic imaging suite. Consider a national television campaign, local newspaper advertising, or social media marketing. Which should BPC choose to attract private patients? Justify your recommendation.",
+      "model_answer": "National television campaign: Television delivers mass awareness quickly and could build the BPC brand across the whole country. However, airtime and production are extremely costly for a business funding a $720,000 imaging suite with a $450,000 loan, and most viewers would be outside BPC's clinic catchment or unlikely to self-fund a $100 screening, so much of the spend would be wasted.\n\nLocal newspaper advertising: Print is far cheaper than television and reaches patients in BPC's immediate area, and it suits a message about same-day results at a local clinic. Its weakness is narrow, ageing readership: it cannot build the brand beyond one catchment, which is a problem when the new suite must help reach the 12,000-unit annual target, and it gives no way to demonstrate the 28-minute turnaround.\n\nSocial media marketing: Targeted social advertising can reach exactly the patients in BPC's research — the 68% of 500 surveyed who would pay $8 more for same-day results and the 55% who rank short waiting times first. It allows BPC to show the faster turnaround and new scanner visually, measures engagement cheaply, and scales nationally without television's waste. It builds trust more slowly for a clinical service and depends on credible health content, but cost per relevant patient is low.\n\nRecommendation: BPC should choose social media marketing. It targets the segment already identified in the survey, is far cheaper than television, and reaches beyond the local newspaper's catchment while supporting the same-day-results message. Television is rejected as unaffordable and untargeted for a 60-employee clinic, and local newspaper advertising is rejected as too narrow; BPC can add a small print notice for older patients later.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited identification of the promotional options with minimal reference to BPC.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options with some application to BPC and partial judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in the context of BPC with a well-justified recommendation that explains why television and local newspaper advertising are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "500", "$8", "55%", "$720,000", "60"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "BPC's staff absenteeism has reached 11% and patient complaints about waiting times are rising. Explain two benefits for BPC of introducing team working to improve attendance and reduce complaints.",
+      "model_answer": "Point 1: Team working allows BPC's 60 staff to cover one another's shifts when absenteeism reaches 11%, so the screening list keeps moving and appointment turnaround stays near the 28 minutes reported in Appendix 1. When colleagues share patient preparation and scanning tasks, no single absence closes the imaging suite, which protects the 12,000 units a year needed to justify the $720,000 investment and reduces the waiting-time complaints patients are making.\n\nPoint 2: Working in teams spreads practical knowledge about the new imaging software, so the 14 of 60 employees still untrained can learn from colleagues during normal shifts rather than waiting for a course. Shared problem-solving cuts the 2.4% re-scan rate and improves service quality, while group loyalty raises commitment and helps bring absenteeism down, easing pressure on Dr Elena Brightwell's hierarchical structure.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation linked to BPC's absenteeism, turnaround time and quality data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["11%", "60", "28 minutes", "14", "2.4%", "$720,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "BPC must upskill 14 clinical staff on the new imaging software. Consider on-the-job training or external certification courses costing $750 per employee. Which should BPC choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training at the scanner teaches BPC's own routines and quality standards, costs no course fees, and keeps the 14 staff productive while they learn, protecting the 3,100 screening packages delivered last quarter. It also lets senior operators mentor colleagues and directly tackles the fact that 14 of 60 employees are untrained. The drawbacks are that trainers are working staff whose own output falls, bad habits can spread, and there is no external certificate, which may matter if private insurers ask for formal records.\n\nExternal certification courses: At $750 per employee, training all 14 costs $10,500 (14 × $750), which is small beside the $720,000 suite but still a real cash outflow. Courses give structured, up-to-date skills and a recognised certificate, and remove staff from the distracting clinic floor. The weaknesses are that 14 of a 60-strong workforce would be off the rota, worsening the 11% absenteeism problem, and generic course content may not match BPC's exact scanner settings, so follow-up coaching would still be needed.\n\nDecision: BPC should choose on-the-job training for the rollout, with short external certification for a few lead operators. On-the-job training is cheaper, machine-specific and avoids losing capacity while absence is already 11%; full external training is rejected because $10,500 plus 14 staff off the rota would disrupt the screening service for little extra relevance.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited reference to BPC.",
+        "level_2_5_to_8": "Analysis of benefits and drawbacks of one or both methods applied to BPC, including cost and disruption.",
+        "level_3_9_to_12": "Full evaluation of both methods in BPC's context with a justified decision that rejects full external training and explains the cost and capacity trade-off."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "$750", "14", "60", "3,100", "11%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how BPC's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate BPC's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $360,000 ÷ ($100 − $40) = $360,000 ÷ $60 = 6,000 units. Answer: break-even output is 6,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate BPC's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $100 − $40 = $60. Answer: contribution per unit is $60."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways BPC's management can use this financial data.",
+          "model_answer": "1. Compare the 6,000-unit break-even output with actual output of 12,000 units: BPC has a margin of safety of 6,000 units, confirming the imaging suite is comfortably profitable and supporting the $720,000 investment.\n2. Use contribution of $60 per $100 package to model pricing: a discount to a private insurer would cut contribution, so managers can judge the volume needed to still cover $360,000 of fixed costs.\n3. Check that 6,000 units of break-even output generates enough contribution to service the $450,000 bank loan before committing to further expansion.\n4. Benchmark unit cost of $70 per package ($360,000 ÷ 12,000 = $30 fixed cost plus $40 variable cost) each quarter to spot waste linked to the 2.4% re-scan rate and to negotiate the $40 variable cost amid 9.4% input inflation."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 6,000 units | (ii) Contribution per unit = $60 | (iii) Four contextual uses explained: margin of safety of 6,000 against 12,000 units; pricing and discount modelling against $360,000 fixed costs; servicing the $450,000 loan; and unit-cost benchmarking at $70 to tackle the 2.4% re-scan rate.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6,000", "$60", "$100", "$40", "$360,000", "12,000", "$70"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate BPC's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has BPC's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 10.0%\nProfit Margin 2025 = 12.5%\nROCE 2024 = 18.0%\nROCE 2025 = 20.0%\n\nDetailed workings: Revenue rose from $1,800,000 to $2,000,000 while cost of sales moved from $1,080,000 to $1,100,000, so gross profit increased from $720,000 to $900,000. Gross profit as a share of revenue therefore rose from 40.0% to 45.0%. Operating profit climbed from $180,000 to $250,000, so operating profit as a share of revenue improved from 10.0% to 12.5%. Capital employed increased from $1,000,000 to $1,250,000, giving a return on capital of 18.0% in 2024 and 20.0% in 2025.\n\nEvaluation: All three margins moved favourably, and the widest improvement is in the share of revenue left after direct costs, showing better control of scanning consumables even as revenue grew. The operating result also improved, suggesting fixed costs of $360,000 are being spread over more patients. However, interest payable rose from $40,000 to $50,000, and capital employed grew by $250,000 while operating profit grew by $70,000, so return on capital improved only modestly. The 2.4% re-scan rate and 11% absenteeism could still erode these gains, and rising receivables are not shown in this extract.\n\nConclusion: BPC's financial performance has improved. Gross profit as a share of revenue rose from 40.0% to 45.0%, operating profit as a share of revenue from 10.0% to 12.5%, and return on capital from 18.0% to 20.0%. Each measure points upward and none depends on a one-off sale, so the improvement is genuine, though the small rise in return on capital and higher interest cost mean the clinic should watch borrowing as it funds the imaging suite.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directional changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three ratios for both years with some contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs and capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "10.0%", "12.5%", "18.0%", "20.0%", "$2,000,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for BPC of offering same-day results for its screening packages.",
+      "model_answer": "Advantage: Same-day results directly match what patients want. BPC's own survey found 68% of 500 patients would pay up to $8 more for same-day results and 55% rank short waiting times first, while current turnaround is 28 minutes. A premium would lift revenue above the $100 selling price and protect the $60 contribution per package even with 9.4% input inflation, strengthening the case for the $720,000 imaging suite.\n\nDisadvantage: Guaranteeing same-day reporting needs more scanner capacity and radiology time, which could push fixed costs above $360,000 a year or raise the $40 variable cost per package. With staff absenteeism at 11% and 14 of 60 employees still untrained on the imaging software, BPC may fail to deliver the promise, turning a quality advantage into the very waiting-time complaints it is trying to remove.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to BPC's survey data, costs and staffing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "500", "$8", "55%", "28 minutes", "$360,000", "11%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.8%, the 5.5% minimum wage increase and the 9.4% rise in medical supply costs will affect BPC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.0% to 4.8%): If BPC's $450,000 ten-year loan is variable-rate, the rate is 0.8 percentage points higher, so the added annual interest is 0.8% × $450,000 = $3,600. That is modest beside fixed costs of $360,000, and if the loan is fixed-rate the extra cost is zero. Higher rates may also make patients more cautious about self-funded screening, and future borrowing for expansion dearer, but BPC can largely neutralise this by fixing the loan rate.\n\nMinimum wage increase (5.5%, to $13.72 an hour): BPC employs a workforce of 60, and clinical and reception roles include hourly-paid staff, so this raises the wage bill and cannot be avoided. The insert gives no hours worked or individual pay rates, so no honest annual total can be calculated; the defensible test is productivity. Output of 12,000 units across 60 staff is 200 screening packages per employee, so a wage rise is absorbable only if that productivity holds or output grows, otherwise unit labour cost pushes the $70 unit cost up and narrows the $60 contribution.\n\nMedical supply cost inflation (9.4%): The $40 variable cost per package is not broken down in the insert, so only an explicitly labelled illustrative upper bound can be computed. If the whole $40 were exposed, 9.4% × $40 = $3.76 extra per unit, and across 12,000 units that is $45,120 a year (12,000 × $3.76), cutting contribution from $60 toward $56.24. BPC can recover part of this through the $8 same-day premium that 68% of surveyed patients accept.\n\nConclusion: The 9.4% rise in medical supply costs will have the greatest impact. It compounds on every one of the 12,000 packages sold and directly erodes the $60 contribution that justifies the $720,000 suite, and it cannot be removed simply by fixing a loan rate. The minimum-wage rise is second but cannot be quantified from the insert, while the interest-rate rise adds only $3,600 a year at most and is the smallest of the three.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to BPC.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on BPC's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in BPC's context with a justified judgement that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.8%", "5.5%", "9.4%", "$450,000", "$40", "60"]
+      }
+    }
+  ]
+}

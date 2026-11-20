@@ -1,0 +1,952 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_121",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brewhurst Bottling Co is a private limited company in the port town of Carrick, Country X, bottling craft soft drinks for 90 supermarket customers. It employs 74 staff: 64 bottling operatives in 8 teams of 8, 8 supervisors, 1 general manager and 1 office manager. Output reached 1.5 million bottles last year across 2 production shifts.\n\nThe board is reviewing the company's span of control. Supervisors currently manage 8 operatives each, and quality checks take 3 hours a day per line. Directors propose widening the span to 12 operatives per supervisor and removing 2 supervisors, saving $58,000 a year in wages (2 x $29,000). However, a March trial lifted output per shift by only 4% while customer complaints doubled from 11 to 22 a month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'span of control'.",
+        "model_answer": "Span of control is the number of subordinates that one manager is directly responsible for, such as Brewhurst's 8 supervisors each managing 8 bottling operatives. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Span of control = number of subordinates reporting directly to one manager",
+            "Can be wide (many staff per manager) or narrow (few staff per manager)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Brewhurst Bottling Co of widening the span of control to 12 operatives per supervisor.",
+        "model_answer": "Benefit 1: A wider span of control means each supervisor manages more operatives, so fewer supervisors are needed [k]. Removing 2 supervisors would save $58,000 a year in wages (2 x $29,000) [app]. Benefit 2: Fewer supervisors can speed up communication between directors and operatives [k]. The March trial lifted output per shift by 4%, suggesting operatives can work well with less direct supervision [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wider span of control = more subordinates per manager, fewer managers needed overall",
+            "Fewer managers can reduce wage costs and speed up communication"
+          ],
+          "application_max_2": [
+            "Saving $58,000 a year by removing 2 supervisors (2 x $29,000)",
+            "March trial raised output per shift by 4%; 64 operatives would be covered by fewer supervisors at 12 each"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brewhurst Bottling Co", "$58,000", "12 operatives per supervisor", "64 bottling operatives", "output per shift", "4%", "2 supervisors"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks for Brewhurst of widening the span of control to 12 operatives per supervisor.",
+        "model_answer": "Drawback 1: Supervisors with more operatives to oversee have less time to monitor each one [k]. Quality checks already take 3 hours a day per line, so spreading one supervisor over 12 operatives could stretch supervision even further [app]. Weaker supervision may let defects reach dispatch, damaging relationships with the 90 supermarket customers [an]. Drawback 2: A wider span of control can leave operatives without enough support or guidance [k]. Customer complaints doubled from 11 to 22 a month during the March trial [app]. Rising complaints could mean more returns and penalty charges, wiping out the $58,000 wage saving [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wider span gives each subordinate less supervision and support",
+            "Supervisors may become overloaded, so guidance and discipline weaken"
+          ],
+          "application_max_2": [
+            "Quality checks already take 3 hours a day per line; proposal is 12 operatives per supervisor",
+            "Complaints doubled from 11 to 22 a month during the March trial; 90 supermarket customers"
+          ],
+          "analysis_max_2": [
+            "Less supervision raises the risk of defects reaching customers, harming supermarket relationships",
+            "Complaint and return costs could exceed the $58,000 wage saving"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brewhurst Bottling Co", "3 hours a day", "11 to 22", "90 supermarket customers", "$58,000", "12 operatives", "March trial"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brewhurst should widen the span of control to 12 operatives per supervisor rather than keep 8 operatives each? Justify your answer.",
+        "model_answer": "Argument for widening: a wider span of control cuts the number of supervisors Brewhurst needs [k]. Removing 2 supervisors would save $58,000 a year in wages (2 x $29,000), and the March trial lifted output per shift by 4% with 64 bottling operatives working in teams [app]. Lower wage costs would raise profit on 1.5 million bottles a year, helping Brewhurst price competitively for its 90 supermarket customers [an]. Argument for keeping 8 supervisors: the current narrow span lets supervisors monitor quality checks that take 3 hours a day per line [k]. The March trial doubled complaints from 11 to 22 a month while output rose only 4%, showing operatives may need closer supervision [app]. Wider spans could overload supervisors, harm quality and lose supermarket contracts that depend on reliable supply [an]. Overall, on the stem's figures, Brewhurst should not widen the span yet, because complaints doubling to 22 a month and only a 4% output gain outweigh the $58,000 saving; it should fix the causes of complaints first [eval]. If complaint and quality data improve over the next 3 months, widening the span could then be reconsidered [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wider span reduces manager numbers and wage costs",
+            "Narrower span allows closer supervision and support"
+          ],
+          "application_max_2": [
+            "$58,000 yearly saving from removing 2 supervisors (2 x $29,000); March trial output per shift up only 4%",
+            "Quality checks take 3 hours a day per line; complaints doubled from 11 to 22 a month"
+          ],
+          "analysis_max_2": [
+            "Lower wages raise per-bottle profit and competitive pricing across 1.5 million bottles",
+            "Overloaded supervisors could damage quality and lose supermarket contracts"
+          ],
+          "evaluation_max_2": [
+            "Recommendation not to widen yet, tied to the 22 complaints per month and the 4% gain",
+            "Conditional reconsideration if complaint and quality data improve over 3 months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brewhurst Bottling Co", "$58,000", "12 operatives per supervisor", "11 to 22", "4%", "90 supermarket customers", "3 hours a day", "8 operatives each"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_122",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Hallowmere Furniture Co is a private limited company in the market town of Brantwell, Country X, making oak dining furniture for 35 furniture retailers. It employs 84 people across design, cutting, assembly and finishing. Orders pass through 5 management levels, from workshop floor to managing director, before any price change or material substitution is approved.\n\nLast year the company lost 14 orders worth $96,000 because quotes took 9 days to approve. Managing director Ruth Ellison proposes shortening the chain of command so department heads can approve quotes up to $4,000 without director sign-off. The sales manager supports this, but 2 senior managers warn that junior staff could approve underpriced work and that rushed sign-off might raise material waste, already 7% of timber.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'chain of command'.",
+        "model_answer": "Chain of command is the line of authority through which orders and decisions pass from senior managers to junior staff, such as Hallowmere's quotes passing through 5 management levels before approval. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Chain of command = line of authority/communication from top to bottom of the hierarchy",
+            "Shows who answers to whom and who may give orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems for Hallowmere Furniture Co of its long chain of command.",
+        "model_answer": "Problem 1: A long chain of command slows down decision-making because every decision passes through many levels [k]. Quotes took 9 days to approve, and the company lost 14 orders worth $96,000 last year [app]. Problem 2: A long chain of command can distort messages as they travel down or up the levels [k]. Orders pass through 5 management levels before approval, so instructions may arrive late or changed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Long chains slow decision-making and approvals",
+            "Messages can be distorted or delayed as they pass through levels"
+          ],
+          "application_max_2": [
+            "Quotes took 9 days to approve; 14 orders worth $96,000 lost last year",
+            "5 management levels from workshop floor to managing director"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Hallowmere Furniture Co", "5 management levels", "9 days", "$96,000", "14 orders", "35 furniture retailers", "$4,000"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Hallowmere of shortening the chain of command so department heads can approve quotes up to $4,000.",
+        "model_answer": "Benefit 1: Shorter chains of command speed up decisions [k]. Approving quotes up to $4,000 at department level would cut the 9-day approval time and help save some of the 14 lost orders worth $96,000 [app]. Faster quotes would help Hallowmere win more repeat orders from its 35 furniture retailers before rivals respond [an]. Benefit 2: Shortening the chain gives department heads more responsibility [k]. Releasing routine decisions up to $4,000 lets the managing director focus on larger contracts and strategy [app]. Senior staff would build judgement and motivation, providing cover when directors are absent [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shorter chains speed up decisions and approvals",
+            "Delegating routine authority develops junior managers and frees senior time"
+          ],
+          "application_max_2": [
+            "Quotes took 9 days; 14 orders worth $96,000 lost last year",
+            "Department heads could approve quotes up to $4,000 without director sign-off"
+          ],
+          "analysis_max_2": [
+            "Faster quotes protect repeat orders from the 35 furniture retailers",
+            "Delegated responsibility develops staff and frees the managing director for strategy"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Hallowmere Furniture Co", "$4,000", "9 days", "$96,000", "14 orders", "35 furniture retailers", "managing director"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hallowmere should shorten the chain of command rather than keep director sign-off for all quotes? Justify your answer.",
+        "model_answer": "Argument for shortening: shortening the chain of command speeds up decisions [k]. Letting department heads approve quotes up to $4,000 would cut the 9-day approval time that cost Hallowmere 14 orders worth $96,000 last year [app]. Faster approvals would protect revenue from the 35 furniture retailers and sharpen competitiveness [an]. Argument for keeping sign-off: keeping director sign-off protects against underpriced work [k]. The 2 senior managers warn that junior staff could approve below-cost quotes, and material waste already stands at 7% of timber [app]. Mistakes at department level could erode profit faster than the time saved wins new orders [an]. Overall, on the stem's figures, Hallowmere should shorten the chain for quotes up to $4,000 only, because the $96,000 lost orders and 9-day delays are proven costs, while the risk can be managed with a minimum price list and weekly checks [eval]. If waste or underpricing rises after the change, the limit should be lowered or director sign-off restored [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Short chains speed decisions; long chains give control and consistency",
+            "Delegated limits must be controlled to prevent underpricing"
+          ],
+          "application_max_2": [
+            "$4,000 approval limit; 9-day approval time; 14 orders worth $96,000 lost",
+            "2 senior managers' warning; material waste already 7% of timber; 35 furniture retailers"
+          ],
+          "analysis_max_2": [
+            "Faster quotes protect revenue and competitiveness with retailers",
+            "Underpricing or waste at department level could outweigh the time savings"
+          ],
+          "evaluation_max_2": [
+            "Recommends shortening only for quotes up to $4,000, with price-list floor and weekly checks",
+            "Conditional reversal if waste or underpricing rises after the change"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Hallowmere Furniture Co", "$4,000", "9 days", "14 orders", "$96,000", "7% of timber", "2 senior managers", "35 furniture retailers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_123",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Wexmoor Care Homes Ltd runs 6 residential care homes in Country X, employing 240 carers, 9 care managers and a head of care. Each home has just 2 management levels below the head of care, with an average of 27 staff per manager. Annual carer turnover has risen to 26%, and 41% of leavers in exit surveys cited 'no career progression'.\n\nThe board is debating the hierarchy. Option one creates a senior carer grade, adding a third level and a promotion path for 36 experienced carers at $2,400 a year extra each, costing $86,400 a year. Option two keeps 2 levels and gives all carers a 4% pay rise costing $151,000 a year. The head of care argues promotion paths matter more to retention than flat pay.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'hierarchy'.",
+        "model_answer": "Hierarchy is the levels of authority and responsibility in a business, from senior managers at the top to junior staff at the bottom, such as Wexmoor's carers reporting through care managers to the head of care. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Hierarchy = levels of authority/responsibility in an organisation",
+            "Staff at higher levels hold more authority over those below"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why a clear hierarchy is important to Wexmoor Care Homes Ltd.",
+        "model_answer": "Reason 1: A hierarchy clarifies who is responsible for what [k]. Wexmoor's 240 carers report through 9 care managers to one head of care, so each home knows its lines of authority [app]. Reason 2: A hierarchy should give staff a promotion path [k]. With only 2 management levels, 41% of leavers cited no career progression, so clearer levels could help retain carers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Hierarchy defines responsibilities and lines of authority",
+            "Hierarchy provides promotion paths that aid retention and motivation"
+          ],
+          "application_max_2": [
+            "240 carers report through 9 care managers to one head of care across 6 homes",
+            "Only 2 management levels; 41% of leavers cited no career progression"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Wexmoor Care Homes Ltd", "240 carers", "9 care managers", "head of care", "41% of leavers", "2 management levels", "26%"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of adding a third level (senior carer grade) to Wexmoor's hierarchy.",
+        "model_answer": "Drawback 1: Adding a level lengthens the chain of command and can slow decisions [k]. A third level would sit between the 240 carers and the head of care, adding another step for approvals and information to travel [app]. Longer lines could delay responses to care-home incidents where minutes matter [an]. Drawback 2: A new grade raises payroll costs [k]. The senior carer grade would cost $86,400 a year (36 experienced carers at $2,400 extra each) [app]. If the grade does not cut the 26% turnover, Wexmoor would carry higher wages without the promised savings [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Extra levels lengthen the chain of command and slow decisions",
+            "Extra levels add management cost and may narrow spans further"
+          ],
+          "application_max_2": [
+            "A third level would sit between 240 carers and the head of care",
+            "$86,400 a year for 36 experienced carers at $2,400 extra each"
+          ],
+          "analysis_max_2": [
+            "Longer decision lines could delay urgent care responses, risking resident safety",
+            "If turnover stays at 26%, the $86,400 grade cost is paid without retention benefits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Wexmoor Care Homes Ltd", "third level", "$86,400 a year", "36 experienced carers", "240 carers", "$2,400", "26%", "head of care"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wexmoor should create the senior carer grade rather than give all carers a 4% pay rise? Justify your answer.",
+        "model_answer": "Argument for the senior carer grade: it adds a third level to the hierarchy and creates a visible promotion path [k]. 36 experienced carers would gain $2,400 a year extra each, costing $86,400 a year, and 41% of leavers cited no career progression as the reason for leaving [app]. A targeted grade could lift retention of the most skilled carers and protect care quality [an]. Argument for the 4% pay rise: it rewards all carers fairly rather than a chosen few [k]. The 4% rise across 240 carers costs $151,000 a year, nearly double the grade's $86,400, but it avoids resentment among carers passed over for senior posts [app]. However, a flat rise does not fix the missing progression that drives leavers, so turnover may stay near 26% [an]. Overall, on the stem's figures, Wexmoor should create the senior carer grade because 41% of leavers point to missing progression and $86,400 a year is cheaper than $151,000; it should be paired with clear selection criteria to limit resentment [eval]. If turnover does not fall within a year, the 4% rise for all carers should be reconsidered [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A promotion grade motivates and retains high performers",
+            "A flat pay rise rewards everyone equally but may ignore progression needs"
+          ],
+          "application_max_2": [
+            "$2,400 extra each for 36 experienced carers = $86,400 a year",
+            "4% rise for 240 carers costs $151,000 a year; 41% of leavers cite no career progression; turnover 26%"
+          ],
+          "analysis_max_2": [
+            "Targeted grade tackles the stated reason for leaving and should lift retention",
+            "Flat rise is costlier and may not fix progression, so turnover could persist"
+          ],
+          "evaluation_max_2": [
+            "Recommends the senior carer grade at $86,400 a year, with clear selection criteria",
+            "Reconsider the 4% rise if turnover does not fall within a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Wexmoor Care Homes Ltd", "senior carer grade", "$86,400", "$151,000", "41% of leavers", "240 carers", "26%", "$2,400"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_124",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Ravenglass Retail Co is a private limited company running 12 homeware stores across Country X. It employs 310 staff in a tall structure with 6 levels: 2 directors, a head of retail, 3 area managers, 12 store managers, 36 department supervisors and 256 shop-floor staff. Supervisors hold narrow spans of control of about 7 staff each. Revenue reached $21m last year.\n\nThe board wants to flatten the structure into a flat hierarchy with 3 levels, directors, 12 store managers and shop-floor staff, giving store managers a span of control of about 25. Store managers would gain full responsibility for ordering and promotions. The finance director estimates annual savings of $780,000 from the 40 removed posts, but 2 store managers question whether they can control about 25 staff each while handling customer complaints.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'tall organisational structure'.",
+        "model_answer": "A tall organisational structure has many levels of hierarchy between the board and shop-floor staff, with narrow spans of control, such as Ravenglass's 6 levels with supervisors controlling about 7 staff each. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Tall structure = many hierarchical levels with narrow spans of control",
+            "Long chain of command from top to bottom"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems for Ravenglass Retail Co of its tall organisational structure.",
+        "model_answer": "Problem 1: A tall structure makes communication slower because messages pass through many levels [k]. With 6 levels from directors to shop floor, decisions travel through the head of retail, 3 area managers and 36 supervisors [app]. Problem 2: A tall structure is expensive to run because it needs many managers and supervisors [k]. The 40 removed posts would save $780,000 a year, showing how much the tall layers cost [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Tall structures slow communication and decision-making",
+            "Tall structures cost more in management salaries"
+          ],
+          "application_max_2": [
+            "6 levels: directors, head of retail, 3 area managers, 12 store managers, 36 supervisors, 256 shop-floor staff",
+            "40 posts would be removed, saving $780,000 a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ravenglass Retail Co", "6 levels", "36 department supervisors", "$780,000", "40 removed posts", "3 area managers", "$21m"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Ravenglass of moving to a flat organisational structure with 3 levels.",
+        "model_answer": "Benefit 1: A flat structure reduces management overhead [k]. Removing the 40 posts would save $780,000 a year from the cost of running 6 levels [app]. Lower overheads would raise profit on $21m of revenue without cutting shop-floor selling capacity [an]. Benefit 2: A flat structure speeds up decisions and gives store managers more authority [k]. Store managers would take full responsibility for ordering and promotions with a span of about 25 staff [app]. Local promotions could be launched quickly, helping Ravenglass respond to fast-moving homeware trends in its 12 stores [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Flat structures cut management costs and levels",
+            "Flat structures speed up decisions and empower local managers"
+          ],
+          "application_max_2": [
+            "$780,000 a year saved by removing 40 posts",
+            "Store managers gain full responsibility for ordering and promotions with a span of about 25"
+          ],
+          "analysis_max_2": [
+            "Lower overheads raise profit on $21m revenue without cutting selling capacity",
+            "Empowered store managers can respond faster to local trends across 12 stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ravenglass Retail Co", "$780,000", "40 removed posts", "$21m", "span of control of about 25", "12 homeware stores", "ordering and promotions", "3 levels"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ravenglass should flatten the structure into 3 levels rather than keep the tall 6-level hierarchy? Justify your answer.",
+        "model_answer": "Argument for flattening: a flat structure with 3 levels removes costly management layers [k]. Ravenglass would save $780,000 a year by removing the 40 posts and revenue is $21m, so overheads would fall to a leaner share of sales [app]. Store managers gaining ordering and promotion responsibility could lift local sales across the 12 stores [an]. Argument for keeping tall: the tall structure gives closer supervision [k]. Supervisors currently hold spans of about 7 staff each, while the flat plan stretches store managers to about 25, and 2 store managers already doubt they can cope while handling customer complaints [app]. Overstretched managers could miss stock and service problems, damaging sales in stores where shop-floor staff need guidance [an]. Overall, on the stem's figures, Ravenglass should flatten the structure because $780,000 of yearly savings on $21m revenue is material, but it should widen the span gradually and appoint deputy supervisors in the busiest stores [eval]. If complaint levels rise after flattening, some supervisory posts should be reinstated [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Flat structures cut costs and empower managers",
+            "Very wide spans can overload managers and weaken supervision"
+          ],
+          "application_max_2": [
+            "$780,000 yearly saving from 40 removed posts; $21m revenue; 12 stores",
+            "Span widening from about 7 to about 25; 2 store managers doubt they can cope"
+          ],
+          "analysis_max_2": [
+            "Saving lifts profit and empowered ordering/promotion responsibility could grow local sales",
+            "Overstretched store managers may miss stock and service problems"
+          ],
+          "evaluation_max_2": [
+            "Recommends flattening, with gradual widening and deputy supervisors in busy stores",
+            "Conditional reinstatement of supervisory posts if complaints rise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ravenglass Retail Co", "$780,000", "$21m", "3 levels", "6 levels", "about 25", "about 7", "2 store managers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_125",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Redharrow Engineering Ltd is a steel fabrication business in the industrial town of Corvessa, Country X, employing 160 staff across cutting, welding and painting at 3 sites. It has a tall hierarchy of 7 levels with 4 middle management layers between the managing director and the shop floor. Each team leader manages 7 operatives. Last year revenue was $14m and profit was $1.1m.\n\nThe board proposes delayering, removing 2 middle management layers, a production manager and 2 shift supervisors per site, 9 posts in total, saving $342,000 a year. Span of control would widen to 14 operatives per team leader. Output targets would pass directly from directors to team leaders. The managing director warns that delayering may overload team leaders, and 2 of them have already asked for clearer written targets.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'delayering'.",
+        "model_answer": "Delayering is the removal of one or more levels of management from a hierarchy to create a flatter structure, such as Redharrow removing a production manager and 2 shift supervisors per site. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delayering = removing levels/layers of management from the hierarchy",
+            "Creates a flatter structure with wider spans of control"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Redharrow Engineering Ltd is considering delayering.",
+        "model_answer": "Reason 1: Delayering reduces the cost of management layers [k]. Removing 9 posts would save $342,000 a year from the cost of running the 7-level hierarchy [app]. Reason 2: Delayering shortens the chain of command so decisions reach the shop floor faster [k]. Output targets would pass directly from directors to team leaders, bypassing the 4 middle management layers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delayering cuts management/salary costs",
+            "Delayering shortens the chain of command and speeds decisions"
+          ],
+          "application_max_2": [
+            "9 posts removed would save $342,000 a year",
+            "Output targets would pass directly from directors to team leaders; 4 middle layers bypassed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Redharrow Engineering Ltd", "$342,000 a year", "9 posts", "7 levels", "4 middle management layers", "team leaders", "$14m"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of delayering for Redharrow Engineering Ltd.",
+        "model_answer": "Drawback 1: Delayering widens spans of control and can overload team leaders [k]. Each team leader would manage 14 operatives instead of 7 across cutting, welding and painting at 3 sites [app]. Overloaded leaders may miss safety and quality checks, risking rework and accidents on steel lines [an]. Drawback 2: Delayering removes experienced managers and their knowledge [k]. The 9 removed posts include production managers and shift supervisors whose site know-how would be lost [app]. Losing that experience could slow problem-solving on urgent orders and raise costly errors [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delayering widens spans of control and can overload managers",
+            "Delayering loses experienced management knowledge and can damage morale"
+          ],
+          "application_max_2": [
+            "Span would widen from 7 to 14 operatives per team leader",
+            "9 posts removed: a production manager and 2 shift supervisors per site across 3 sites"
+          ],
+          "analysis_max_2": [
+            "Overloaded leaders may miss safety/quality checks, causing rework and accidents",
+            "Loss of site know-how could slow problem-solving and raise errors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Redharrow Engineering Ltd", "14 operatives per team leader", "9 posts", "3 sites", "team leaders", "2 shift supervisors per site", "$1.1m"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redharrow should delayer by removing the 2 middle layers rather than keep the current 7-level hierarchy? Justify your answer.",
+        "model_answer": "Argument for delayering: delayering removes costly management layers [k]. Removing 9 posts would save $342,000 a year, lifting profit from $1.1m on $14m of revenue [app]. Shorter chains of command would let output targets pass directly from directors to team leaders, speeding response to order changes [an]. Argument against delayering: delayering widens spans and can overload leaders [k]. Team leaders would manage 14 operatives instead of 7, and 2 of them have already asked for clearer written targets [app]. Without clearer targets and support, safety and quality could fall on steel lines, costing more than the $342,000 saving [an]. Overall, on the stem's figures, Redharrow should delayer, because the $342,000 yearly saving is significant against $1.1m profit, but only with written targets, training and phased removal of the layers [eval]. If team leaders cannot cope within 2 quarters, one supervisory layer should be reinstated [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delayering cuts costs and shortens the chain of command",
+            "Delayering widens spans and can overload remaining managers"
+          ],
+          "application_max_2": [
+            "$342,000 a year saving; profit $1.1m on revenue $14m; 9 posts removed across 3 sites",
+            "Span widens from 7 to 14 operatives; 2 team leaders have asked for clearer written targets"
+          ],
+          "analysis_max_2": [
+            "Saving materially lifts the $1.1m profit and speeds target-setting",
+            "Overloaded leaders without clear targets risk safety and quality costs exceeding savings"
+          ],
+          "evaluation_max_2": [
+            "Recommends delayering with written targets, training and phased removal",
+            "Conditional reinstatement of a supervisory layer if leaders cannot cope"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Redharrow Engineering Ltd", "$342,000 a year", "$1.1m", "$14m", "14 operatives", "9 posts", "7 levels", "clearer written targets"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_126",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Overbrook Farms Ltd is an arable farm outside the market town of Dunwick, Country X, growing wheat and barley on 320 hectares. It employs 18 full-time workers plus 2 mechanics. Owner and managing director Sarah Vane works 70-hour weeks, personally approving every tractor repair, seed order and holiday request. Last year output was worth $2.3m and overtime rose 18% because decisions waited for Sarah.\n\nSarah must decide whether to delegate routine decisions to farm manager Tom Ilsley, letting him approve repairs up to $1,500 and all holiday requests, or to hire an assistant farm manager at $38,000 a year. Tom has run the machinery fleet for 6 years and passed his management course in March. Workers respect him, but Sarah recalls 2 costly repair mistakes last winter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'delegation'.",
+        "model_answer": "Delegation is the passing of authority down the hierarchy to subordinates to perform tasks and make decisions, such as Sarah letting Tom approve repairs up to $1,500 and all holiday requests. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delegation = passing authority/tasks down from manager to subordinate",
+            "Subordinate is accountable for the task, manager remains responsible overall"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages for Sarah of delegating routine decisions to Tom Ilsley.",
+        "model_answer": "Advantage 1: Delegation frees the manager's time for more important work [k]. Sarah works 70-hour weeks and personally approves every tractor repair, seed order and holiday request, so delegation would cut her workload [app]. Advantage 2: Delegation develops the subordinate's skills and motivation [k]. Tom has run the machinery fleet for 6 years and passed his management course in March, so trusted responsibility would build his judgement and confidence [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delegation frees managers to focus on strategic work",
+            "Delegation develops and motivates subordinates"
+          ],
+          "application_max_2": [
+            "Sarah works 70-hour weeks, approving every repair, seed order and holiday request",
+            "Tom has 6 years running the fleet and passed his management course in March"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Overbrook Farms Ltd", "70-hour weeks", "Tom Ilsley", "$1,500", "6 years", "management course", "holiday requests"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages for the farm of delegating to Tom Ilsley.",
+        "model_answer": "Disadvantage 1: The manager remains accountable for mistakes made by the subordinate [k]. Sarah recalls 2 costly repair mistakes last winter, so handing Tom repair sign-off up to $1,500 carries real financial risk [app]. A repeat mistake on a $1,500 repair could escalate into crop losses at the height of the season [an]. Disadvantage 2: Delegation can fail if the subordinate is not ready or supported [k]. Tom has passed his management course, but approving repairs across a $2.3m output still demands judgement under cost pressure [app]. Poor decisions could push overtime, already up 18%, even higher as errors are fixed late [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delegator remains accountable for subordinates' mistakes",
+            "Delegation may fail without the right skills, support and limits"
+          ],
+          "application_max_2": [
+            "2 costly repair mistakes last winter; repairs delegated up to $1,500",
+            "Output worth $2.3m; overtime rose 18%; Tom passed his management course in March"
+          ],
+          "analysis_max_2": [
+            "A repeat repair mistake could escalate into crop losses at peak season",
+            "Poor decisions could push overtime above the existing 18% rise as errors are corrected"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Overbrook Farms Ltd", "2 costly repair mistakes", "$1,500", "$2.3m", "18%", "Tom Ilsley", "management course"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sarah should delegate routine decisions to Tom Ilsley rather than hire an assistant farm manager at $38,000 a year? Justify your answer.",
+        "model_answer": "Argument for delegating to Tom: delegation passes authority to a trusted subordinate at no wage cost [k]. Tom has run the machinery fleet for 6 years and passed his management course in March, and Sarah works 70-hour weeks with decisions waited on her [app]. Delegating repairs up to $1,500 and holiday requests would cut her workload and rebuild Tom's motivation without the $38,000 salary [an]. Argument for hiring an assistant: an assistant farm manager adds extra capacity rather than stretching existing staff [k]. Hiring at $38,000 a year would bring in fresh judgement while Tom keeps handling the machinery fleet he knows [app]. However, hiring raises fixed costs on output worth $2.3m, and 2 costly repair mistakes last winter suggest Sarah's approval bottleneck, not Tom's competence, is the real problem [an]. Overall, on the stem's figures, Sarah should delegate to Tom, because his 6 years of fleet experience and March management course make him ready, and $38,000 a year is better spent only if delegation fails [eval]. If Tom makes costly errors beyond $1,500 or turnover rises among the 18 full-time workers, she should reconsider the hire [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Delegation empowers existing trusted staff at little cost",
+            "Hiring adds capacity but raises fixed wage costs"
+          ],
+          "application_max_2": [
+            "Tom: 6 years on the machinery fleet, passed his management course in March; repairs up to $1,500",
+            "Assistant manager $38,000 a year; Sarah works 70-hour weeks; overtime rose 18%"
+          ],
+          "analysis_max_2": [
+            "Delegation cuts Sarah's workload and costs nothing beyond current wages",
+            "Hiring adds judgement and capacity but raises fixed costs on $2.3m output"
+          ],
+          "evaluation_max_2": [
+            "Recommends delegating to Tom based on his experience and course, with $38,000 held in reserve",
+            "Reconsider hiring if Tom errs above $1,500 or worker turnover rises"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Overbrook Farms Ltd", "Tom Ilsley", "$1,500", "$38,000 a year", "6 years", "70-hour weeks", "18%", "$2.3m"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_127",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Westmoor Bus Co is a private limited company running 14 coach routes between 5 towns in Country X. It employs 96 drivers and 12 office staff, carrying 1.9 million passengers a year. A new route to the coastal resort of Pelwyke starts in June. The operations manager, Dale Mercer, usually allocates drivers and vehicles on the morning of each shift.\n\nLast month, 22 services ran late or were cancelled because no spare driver had been scheduled, and 3 corporate clients warned they would switch suppliers unless punctuality rose above 90%. Dale argues that planning routes months ahead is impossible in this business. The board must decide whether to introduce a quarterly planning system covering driver rotas, vehicle servicing and Pelwyke timetables, costing $27,000 to set up, or to keep day-to-day allocation.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'planning' as a role of management.",
+        "model_answer": "Planning is setting objectives and deciding in advance how to achieve them, such as Westmoor deciding its June Pelwyke timetables, driver rotas and vehicle servicing ahead of the new route. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Planning = setting objectives and deciding how to achieve them in advance",
+            "Involves forecasting, target-setting and preparing resources before action"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why planning is important to Westmoor Bus Co.",
+        "model_answer": "Reason 1: Planning ensures enough resources are available when needed [k]. Last month 22 services ran late or were cancelled because no spare driver had been scheduled [app]. Reason 2: Planning sets targets that guide the business and measure performance [k]. 3 corporate clients warned they would switch unless punctuality rose above 90%, a target only planning can deliver [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Planning ensures resources are ready when needed",
+            "Planning sets targets and direction for the business"
+          ],
+          "application_max_2": [
+            "22 services late or cancelled last month for lack of scheduled spare drivers; 96 drivers",
+            "3 corporate clients demanding punctuality above 90%; Pelwyke route starts in June"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Westmoor Bus Co", "22 services", "90%", "3 corporate clients", "Pelwyke", "96 drivers", "14 coach routes"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Westmoor of introducing the quarterly planning system costing $27,000.",
+        "model_answer": "Benefit 1: Planning ahead prevents resource shortfalls and costly disruption [k]. A quarterly system covering driver rotas, vehicle servicing and Pelwyke timetables would avoid repeats of the 22 services that ran late or were cancelled last month [app]. Fewer cancellations would protect revenue from 1.9 million passengers a year [an]. Benefit 2: Planning builds client confidence and protects contracts [k]. Meeting the 90% punctuality threshold the 3 corporate clients demand would secure their repeat business [app]. Retaining those contracts stabilises income and supports the June Pelwyke launch [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Planning prevents shortfalls and disruption",
+            "Planning builds reliability, trust and contract retention"
+          ],
+          "application_max_2": [
+            "Quarterly system covers driver rotas, vehicle servicing and Pelwyke timetables; setup cost $27,000",
+            "22 late or cancelled services last month; 90% punctuality demanded by 3 corporate clients"
+          ],
+          "analysis_max_2": [
+            "Avoiding cancellations protects revenue from 1.9 million passengers a year",
+            "Meeting the 90% threshold retains corporate contracts and stabilises income"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Westmoor Bus Co", "$27,000", "22 services", "90%", "1.9 million passengers", "3 corporate clients", "Pelwyke", "driver rotas"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Westmoor should introduce the quarterly planning system rather than keep day-to-day allocation? Justify your answer.",
+        "model_answer": "Argument for the planning system: planning means deciding in advance how to achieve objectives [k]. A quarterly system costing $27,000 would cover driver rotas, vehicle servicing and Pelwyke timetables, directly attacking the cause of the 22 late or cancelled services last month [app]. Fewer cancellations would protect 1.9 million passengers a year and the 3 corporate clients now demanding punctuality above 90% [an]. Argument for day-to-day allocation: day-to-day allocation is flexible when demand changes daily [k]. Keeping the morning allocation costs nothing and lets Dale react to sickness and traffic on the 14 routes in real time, unlike a rigid quarterly plan [app]. However, flexibility has already produced 22 failures in one month, and 3 clients are ready to switch suppliers, so the current approach is visibly failing [an]. Overall, on the stem's figures, Westmoor should introduce the quarterly planning system because 22 failures and the 90% client ultimatum show that day-to-day allocation is not working, and $27,000 is a small price against losing 3 corporate contracts [eval]. If the system proves too rigid or costly after 2 quarters, it should be adjusted rather than abandoned [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Planning = deciding in advance how to achieve objectives",
+            "Day-to-day allocation is flexible but reactive and unplanned"
+          ],
+          "application_max_2": [
+            "$27,000 setup cost; covers driver rotas, vehicle servicing, Pelwyke timetables; 22 late or cancelled services last month",
+            "3 corporate clients demanding 90% punctuality; 14 routes; 1.9 million passengers a year"
+          ],
+          "analysis_max_2": [
+            "Fewer cancellations protect passenger revenue and corporate contracts",
+            "Day-to-day allocation is failing, as shown by 22 failures and client ultimatums"
+          ],
+          "evaluation_max_2": [
+            "Recommends introducing the system, weighing $27,000 against losing 3 contracts",
+            "Adjust rather than abandon if the system proves too rigid after 2 quarters"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Westmoor Bus Co", "$27,000", "22", "90%", "3 corporate clients", "14 coach routes", "1.9 million passengers", "Pelwyke"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_128",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Pembroke Castings Co is a private limited company in the steel town of Grasmere, Country X, casting iron parts for 40 engineering firms. It employs 130 staff across moulding, fettling, machining and dispatch. Three urgent orders worth $1.4m are due in 6 weeks, but the machining department has only 4 CNC machines, all booked solid for 8 weeks.\n\nProduction director Gary Swinnerton must organise resources. He can buy a used CNC machine for $210,000, hire capacity from a rival foundry at $18,000 a month for 3 months, or offer machining staff overtime at triple time for 6 weekends. The board also expects him to organise job bags, tooling and inspections so the 3 orders ship on time without disrupting the 40 existing customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'organising' as a role of management.",
+        "model_answer": "Organising is arranging resources such as staff, materials and equipment so that work can be carried out, such as Gary organising job bags, tooling and inspections so the 3 urgent orders ship on time. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Organising = arranging/allocating resources (people, materials, equipment, time)",
+            "Involves deciding who does what, when and with which resources"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why organising resources effectively is important to Pembroke Castings Co.",
+        "model_answer": "Reason 1: Organising ensures the right resources are in the right place at the right time [k]. The machining department has only 4 CNC machines, all booked solid for 8 weeks, so without reorganising, the 3 urgent orders worth $1.4m cannot ship [app]. Reason 2: Organising prevents clashes between urgent work and regular customers [k]. The board wants the 3 orders shipped on time without disrupting the 40 existing customers, which only careful allocation can achieve [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Organising matches resources to tasks and deadlines",
+            "Organising avoids clashes and protects existing commitments"
+          ],
+          "application_max_2": [
+            "Only 4 CNC machines, all booked solid for 8 weeks; 3 urgent orders worth $1.4m due in 6 weeks",
+            "40 existing engineering firm customers must not be disrupted"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Pembroke Castings Co", "4 CNC machines", "$1.4m", "urgent orders", "40 engineering firms", "6 weeks", "8 weeks"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Pembroke of buying the used CNC machine for $210,000.",
+        "model_answer": "Benefit 1: Buying the machine gives permanent capacity inside Pembroke [k]. For $210,000 the business would own a 5th CNC machine instead of paying an outside rival foundry $18,000 a month [app]. Extra capacity would let Pembroke quote for more urgent orders after the 3 current ones, raising long-term revenue from its 40 engineering firms [an]. Benefit 2: Owning capacity removes dependency on a competitor [k]. Hiring from a rival means sharing designs, schedules and margins with a direct competitor [app]. Keeping work in-house protects Pembroke's confidential drawings and quality standards for the $1.4m of urgent orders [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying adds permanent capacity and asset ownership",
+            "Owning capacity reduces dependency on outsiders/competitors"
+          ],
+          "application_max_2": [
+            "$210,000 used machine vs $18,000 a month rival hire ($54,000 over 3 months)",
+            "3 urgent orders worth $1.4m; 4 CNC machines currently booked solid; 40 engineering firm customers"
+          ],
+          "analysis_max_2": [
+            "Extra capacity lets Pembroke chase further urgent orders, raising long-term revenue",
+            "In-house work protects confidentiality and quality versus outsourcing to a rival"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Pembroke Castings Co", "$210,000", "$18,000 a month", "4 CNC machines", "$1.4m", "40 engineering firms", "triple time"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Pembroke should buy the used CNC machine rather than hire capacity from a rival foundry? Justify your answer.",
+        "model_answer": "Argument for buying: buying builds permanent capacity [k]. A used CNC machine at $210,000 would give the machining department a 5th machine rather than paying $18,000 a month for 3 months ($54,000 total) for outside help [app]. Extra capacity supports the $1.4m of urgent orders and future work from the 40 engineering firms [an]. Argument for hiring: hiring is cheaper short term [k]. At $18,000 a month for 3 months, hiring costs $54,000, only about a quarter of the $210,000 purchase, and brings no maintenance or breakdown risk [app]. However, hiring shares confidential work with a rival foundry and delays capacity if the rival is busy, risking the 6-week deadline on the 3 orders [an]. Overall, on the stem's figures, Pembroke should hire capacity from the rival foundry first, because the orders are due in 6 weeks and $54,000 is far cheaper than $210,000; it can buy the machine later if urgent orders keep arriving [eval]. If the rival cannot guarantee dates or the machine proves reliable, buying it after the orders ship would be the better next step [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Buying = permanent capacity and asset ownership",
+            "Hiring = flexible, cheaper short-term, no maintenance risk"
+          ],
+          "application_max_2": [
+            "$210,000 purchase vs $18,000 a month for 3 months = $54,000 hire cost",
+            "3 urgent orders worth $1.4m due in 6 weeks; only 4 CNC machines booked for 8 weeks; 40 engineering firms"
+          ],
+          "analysis_max_2": [
+            "Buying supports $1.4m orders and future revenue from the 40 firms",
+            "Hiring is cheaper but risks deadlines and confidentiality with a rival"
+          ],
+          "evaluation_max_2": [
+            "Recommends hiring first given the 6-week deadline and $54,000 cost versus $210,000",
+            "Conditional purchase after the orders ship if demand proves persistent"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Pembroke Castings Co", "$210,000", "$18,000 a month", "urgent orders", "$1.4m", "6 weeks", "40 engineering firms", "6 weekends"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_129",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brightmoor Events Co is a private limited company in the capital city of Country X, managing conferences and weddings for 60 clients a year. It employs 24 staff: 8 event managers, 6 venue coordinators, 4 marketing staff and 6 finance and admin staff. Last year it turned over $3.6m.\n\nA technology conference on 18 September will host 1,400 delegates across 3 venues linked by shuttle buses. The catering team, audio-visual contractors and hotel partners each report separately to different event managers, and no single person coordinates all suppliers. At a wedding last month, double-booked AV equipment delayed speeches by 45 minutes. The board must decide whether to appoint one senior event manager to coordinate all suppliers for the September conference, or keep the current separate reporting lines.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'coordinating' as a role of management.",
+        "model_answer": "Coordinating is making sure different departments and people work together towards the same goal, such as Brightmoor ensuring the catering team, AV contractors and hotel partners all deliver for the 18 September conference. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Coordinating = linking departments/teams so they work together smoothly",
+            "Ensures consistency of effort and avoids duplication or clashes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems caused by poor coordination at Brightmoor Events Co.",
+        "model_answer": "Problem 1: Poor coordination causes clashes and mistakes between teams [k]. At a wedding last month, double-booked AV equipment delayed speeches by 45 minutes because no one aligned the suppliers [app]. Problem 2: Poor coordination wastes time and damages service quality [k]. The catering team, AV contractors and hotel partners each report to different event managers, so delays surface too late to fix before clients notice [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Poor coordination causes clashes, duplication and mistakes",
+            "Poor coordination wastes time and harms service quality"
+          ],
+          "application_max_2": [
+            "Double-booked AV equipment delayed wedding speeches by 45 minutes",
+            "Catering team, AV contractors and hotel partners report separately to different event managers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brightmoor Events Co", "45 minutes", "AV equipment", "different event managers", "September conference", "3 venues", "1,400 delegates"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Brightmoor of appointing one senior event manager to coordinate all suppliers for the September conference.",
+        "model_answer": "Benefit 1: One coordinator avoids clashes and duplication between suppliers [k]. A single senior manager overseeing catering, AV contractors and hotel partners would prevent repeats of the double-booked AV equipment that delayed wedding speeches by 45 minutes [app]. Fewer clashes mean a smoother 18 September conference for the 1,400 delegates [an]. Benefit 2: One coordinator gives clear accountability [k]. With everyone reporting to one senior manager, problems surface early across the 3 venues and decisions are taken faster [app]. Faster decisions protect Brightmoor's reputation with 60 clients a year and its $3.6m turnover [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Single coordinator prevents clashes and duplication",
+            "Single coordinator gives clear accountability and faster decisions"
+          ],
+          "application_max_2": [
+            "One senior manager to oversee catering, AV contractors and hotel partners for the 18 September conference",
+            "1,400 delegates across 3 venues; avoid repeat of the 45-minute AV delay"
+          ],
+          "analysis_max_2": [
+            "Clash-free delivery protects the conference experience for 1,400 delegates",
+            "Clear accountability speeds decisions, protecting reputation and $3.6m turnover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brightmoor Events Co", "1,400 delegates", "3 venues", "45 minutes", "18 September", "60 clients a year", "$3.6m", "senior event manager"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brightmoor should appoint one senior event manager to coordinate all suppliers rather than keep separate reporting lines? Justify your answer.",
+        "model_answer": "Argument for one coordinator: coordinating means making teams work together towards one goal [k]. A senior event manager overseeing catering, AV contractors and hotel partners would prevent a repeat of the double-booked AV equipment that delayed speeches by 45 minutes at a wedding last month [app]. Clear ownership across the 3 venues would raise the odds of a flawless 18 September conference for 1,400 delegates [an]. Argument for separate reporting lines: separate lines keep event managers specialised and close to their own clients [k]. Each of the 8 event managers focuses on their own relationships, and adding a coordinator layer costs senior time for one event rather than the whole year [app]. However, different managers each optimising their own area created the supplier clash that caused the 45-minute delay, and a 1,400-delegate conference has no room for that [an]. Overall, on the stem's figures, Brightmoor should appoint the senior event manager for the September conference, because the 45-minute AV failure and 1,400 delegates across 3 venues show separate lines are not working at this scale [eval]. If the coordinator role creates bottlenecks or slows small events, it should be limited to large conferences only [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Coordinating = linking teams towards one goal",
+            "Specialist reporting lines keep managers close to their clients"
+          ],
+          "application_max_2": [
+            "One senior event manager vs 8 event managers with separate supplier reporting lines",
+            "45-minute AV delay at a wedding; 1,400 delegates across 3 venues on 18 September; $3.6m turnover"
+          ],
+          "analysis_max_2": [
+            "Single ownership prevents clashes and protects the conference for 1,400 delegates",
+            "Separate lines suit small events but fail at multi-venue conference scale"
+          ],
+          "evaluation_max_2": [
+            "Recommends appointing the coordinator for the September conference based on the AV failure evidence",
+            "Limit the role to large conferences if it creates bottlenecks on small events"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brightmoor Events Co", "45 minutes", "1,400 delegates", "3 venues", "18 September", "8 event managers", "$3.6m", "AV equipment"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_130",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Sansome Pharmacies Ltd is a private limited company running 9 pharmacies across 2 towns in Country X. It employs 72 staff: 9 pharmacists, 38 dispensing technicians and 25 counter staff. Annual revenue is $17m. Each month head office sets targets for prescription turnaround, stock loss and customer waiting time, yet 4 of the 9 branches have missed the 20-minute waiting-time target for 3 consecutive months.\n\nOperations director Alice Brennan must strengthen control. She proposes electronic dashboards showing live waiting times in every branch, reviewed each Friday, at a cost of $31,000. Alternatively, branch managers could run weekly spot checks and phone in results, which is free but relies on self-reporting. Two branch managers privately admit they usually estimate rather than measure.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'controlling' as a role of management.",
+        "model_answer": "Controlling is monitoring performance against targets and taking corrective action when standards are not met, such as Sansome tracking prescription turnaround, stock loss and waiting-time targets each month. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Controlling = monitoring/measuring performance against standards or targets",
+            "Involves corrective action when performance falls short"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why controlling is important to Sansome Pharmacies Ltd.",
+        "model_answer": "Reason 1: Controlling checks that actual performance matches targets [k]. Each month head office sets targets for prescription turnaround, stock loss and waiting time, yet 4 of the 9 branches have missed the 20-minute target for 3 months [app]. Reason 2: Controlling allows corrective action before problems grow [k]. Without monitoring, missed 20-minute targets would keep driving customers to rival pharmacies in the 2 towns [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Controlling compares actual performance with targets/standards",
+            "Controlling enables corrective action before problems worsen"
+          ],
+          "application_max_2": [
+            "Monthly targets for turnaround, stock loss and waiting time; 4 of 9 branches missing the 20-minute target for 3 months",
+            "2 towns; 9 pharmacies; missed targets risk losing customers to rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Sansome Pharmacies Ltd", "20-minute", "4 of the 9 branches", "3 consecutive months", "9 pharmacies", "2 towns", "$17m"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Sansome of installing the electronic dashboards costing $31,000.",
+        "model_answer": "Benefit 1: Dashboards give accurate, real-time data instead of estimates [k]. Two branch managers admit they usually estimate rather than measure, so live waiting times would replace guesswork with facts in all 9 branches [app]. Reliable data lets Alice take corrective action on the 4 branches missing target before customers defect [an]. Benefit 2: Dashboards make performance visible and create accountability [k]. Weekly Friday reviews of live waiting times would show each of the 9 branch managers exactly where they stand [app]. Visible scorecards motivate managers to close the gap to the 20-minute target and protect $17m of annual revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Accurate real-time data improves control and decisions",
+            "Visible performance creates accountability and motivation"
+          ],
+          "application_max_2": [
+            "Live waiting times reviewed each Friday in every branch; replaces estimates admitted by 2 branch managers",
+            "4 of 9 branches missing the 20-minute target for 3 months; $17m annual revenue"
+          ],
+          "analysis_max_2": [
+            "Reliable data enables early corrective action on the 4 failing branches before customers leave",
+            "Visible scorecards motivate managers to hit the 20-minute target and protect revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Sansome Pharmacies Ltd", "$31,000", "Two branch managers", "20-minute", "4 of the 9 branches", "$17m", "Friday", "9 branches"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sansome should install the electronic dashboards rather than use weekly spot checks by branch managers? Justify your answer.",
+        "model_answer": "Argument for the dashboards: controlling means monitoring performance and taking corrective action [k]. Electronic dashboards would show live waiting times in every branch, reviewed each Friday, at a cost of $31,000 [app]. Real-time data would replace the estimates 2 branch managers admit to, letting Alice fix the 4 branches that missed the 20-minute target for 3 months [an]. Argument for spot checks: weekly spot checks cost nothing [k]. Branch managers phoning in results each week avoid the $31,000 outlay and keep control in their hands at no cost to Sansome [app]. However, spot checks rely on self-reporting, the exact weakness the 2 branch managers confessed to, so Alice would be controlling estimates, not reality [an]. Overall, on the stem's figures, Sansome should install the dashboards, because 4 of 9 branches have already missed target for 3 months and self-reporting has proven unreliable; $31,000 is small against $17m of revenue [eval]. If the dashboards show honest measurement returns and waiting times hit 20 minutes, the checks could be scaled back [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Controlling = monitoring performance and correcting deviations",
+            "Self-reported checks are cheaper but less reliable than independent systems"
+          ],
+          "application_max_2": [
+            "$31,000 dashboards; live waiting times reviewed each Friday in all 9 branches",
+            "4 of 9 branches missed the 20-minute target for 3 months; 2 branch managers admit estimating; $17m revenue"
+          ],
+          "analysis_max_2": [
+            "Real-time independent data enables corrective action on the 4 failing branches",
+            "Spot checks cost nothing but rely on dishonest self-reporting"
+          ],
+          "evaluation_max_2": [
+            "Recommends dashboards given sustained misses and unreliable self-reporting, cost justified by $17m revenue",
+            "Scale back checks if dashboards prove targets are met honestly"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Sansome Pharmacies Ltd", "$31,000", "20-minute", "4 of the 9 branches", "3 consecutive months", "Two branch managers", "$17m", "Friday"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

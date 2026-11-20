@@ -1,0 +1,1230 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_161",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Duskmere Appliances is a retailer of household white goods operating for 6 years in Country X, employing 22 staff across 2 stores. Annual revenue fell from $540,000 to $470,000 over the past 18 months as rising unemployment reduced real household incomes. Shoppers are trading down from premium washing machines priced at $650 to budget models at $310, and rival chains now run $25 weekly promotions on entry-level lines.\n\nThe owner is considering two responses to these changing consumer spending patterns. Option 1 is to cut the price of the $310 budget washing machine by 15% to protect footfall in both stores. Option 2 is to launch an own-label budget range across both stores, costing $90,000 in stock and packaging. The board must decide which option best matches how customers are now spending.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'consumer spending patterns'.",
+        "model_answer": "The ways in which consumer expenditure on goods and services changes over time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "consumer expenditure on goods and services",
+            "changes over time"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why consumer spending at Duskmere Appliances has fallen.",
+        "model_answer": "Reason 1: Rising unemployment reduces household disposable incomes [k], so shoppers are trading down from $650 premium machines to $310 budget models, cutting revenue from $540,000 to $470,000 [app]. Reason 2: Lower real incomes make consumers more price-sensitive [k], shifting purchases towards rival chains running $25 weekly promotions [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rising unemployment reduces household incomes",
+            "consumers more price-sensitive / trade down"
+          ],
+          "application_max_2": [
+            "$650 premium machines",
+            "$310 budget models",
+            "$540,000 to $470,000",
+            "$25 weekly promotions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Duskmere",
+            "$540,000",
+            "$470,000",
+            "$650",
+            "$310",
+            "$25",
+            "washing machines",
+            "18 months"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to Duskmere Appliances of launching the own-label budget range.",
+        "model_answer": "Advantage 1: Attracts price-sensitive budget shoppers [k] who are trading down from $650 premium machines, defending the $470,000 revenue [app], which can help the business recover sales volume in both stores [an]. Advantage 2: Differentiates Duskmere from rivals who only run $25 promotions [k], giving shoppers a reason to choose its 2 stores and trust the own-label brand [app], which can increase long-term repeat sales [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "attracts price-sensitive budget shoppers",
+            "differentiates from rivals / builds own brand"
+          ],
+          "application_max_2": [
+            "trading down from $650",
+            "defending the $470,000 revenue",
+            "$25 promotions",
+            "2 stores"
+          ],
+          "analysis_max_2": [
+            "recovering sales volume in both stores",
+            "increasing long-term repeat sales via own-label loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "own-label",
+            "$90,000",
+            "$310",
+            "$25",
+            "$470,000",
+            "budget",
+            "Duskmere"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching the own-label budget range is a better response to changing consumer spending patterns than cutting the price of the $310 budget washing machine by 15%? Justify your answer.",
+        "model_answer": "Launching the own-label range targets trading-down shoppers directly [k] by stocking budget models in both stores alongside the $310 machine [app], building a distinctive brand that can protect revenue after the fall to $470,000 [an]. However, cutting the $310 price by 15% is immediate and requires no upfront outlay [k], defending footfall against rivals' $25 weekly promotions without the $90,000 investment [app], though it reduces margin on every machine sold [an]. Overall, the own-label range is the better response because it matches the structural shift in consumer spending rather than sparking a temporary price war [eval], provided the board can fund the $90,000 stock and packaging [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "own-label targets trading-down demand / differentiates brand",
+            "price cut is immediate with no upfront cost"
+          ],
+          "application_max_2": [
+            "budget models in both stores",
+            "fall to $470,000",
+            "rivals' $25 weekly promotions",
+            "$90,000 investment"
+          ],
+          "analysis_max_2": [
+            "own-label protects revenue after the fall",
+            "price cut reduces margin on every machine"
+          ],
+          "evaluation_max_2": [
+            "weighs structural response against temporary price war",
+            "conditional on funding the $90,000 outlay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "own-label",
+            "$90,000",
+            "$310",
+            "$470,000",
+            "$25",
+            "15%",
+            "both stores"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_162",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Fernhill Cycle Works is a family-run bicycle shop operating for 9 years in Country X, employing 11 cycle mechanics. Annual revenue has slipped from $380,000 to $325,000 over 2 years as 4 new online retailers and a national chain entered the local market, selling comparable adult mountain bikes. Imported bikes now cost $120 less than similar models on the shop floor, and the national chain opened across the road.\n\nTo respond to growing competition, the owner is considering two options. Option 1 is to reduce prices on adult mountain bikes by 10% across the range. Option 2 is to introduce a free servicing loyalty scheme, offering 3 free services per bike per year, costing $14,000 per year to administer. The scheme would reward repeat customers and protect a revenue base the shop can no longer win on price alone.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'market competition'.",
+        "model_answer": "The rivalry between businesses operating in the same market to attract the same customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rivalry between businesses",
+            "same market / same customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the market for bicycles in Country X has become more competitive for Fernhill Cycle Works.",
+        "model_answer": "Reason 1: New entrants increase the number of sellers in the market [k], with 4 new online retailers and a national chain selling comparable adult mountain bikes [app]. Reason 2: Cheaper imports undercut incumbent shops on price [k], with imported bikes now costing $120 less than similar models on the shop floor [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new entrants increase number of sellers",
+            "cheaper imports undercut incumbents on price"
+          ],
+          "application_max_2": [
+            "4 new online retailers",
+            "national chain",
+            "$120 less",
+            "comparable adult mountain bikes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Fernhill",
+            "adult mountain bikes",
+            "$380,000",
+            "$325,000",
+            "$120",
+            "online retailers",
+            "national chain"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Fernhill Cycle Works of introducing the free servicing loyalty scheme.",
+        "model_answer": "Benefit 1: Encourages repeat purchases and builds customer loyalty [k], giving the shop a stable base of regular customers protecting its $325,000 annual revenue [app], which smooths income despite cheaper online rivals [an]. Benefit 2: Differentiates the shop from price-cutting online retailers [k], because 3 free services per bike per year add ongoing value beyond the $120 import saving [app], making customers less likely to switch on price alone [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "builds customer loyalty / encourages repeat purchases",
+            "differentiates from price-cutting online rivals"
+          ],
+          "application_max_2": [
+            "$325,000 annual revenue",
+            "3 free services per bike per year",
+            "$120 import saving",
+            "online retailers"
+          ],
+          "analysis_max_2": [
+            "smooths income despite cheaper rivals",
+            "customers less likely to switch on price"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loyalty",
+            "$14,000",
+            "$325,000",
+            "3 free services",
+            "$120",
+            "Fernhill",
+            "online retailers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the free servicing loyalty scheme is a better response to competition than cutting prices on adult mountain bikes by 10%? Justify your answer.",
+        "model_answer": "The loyalty scheme builds long-term customer relationships [k], rewarding repeat visits with 3 free services per year and protecting the $325,000 revenue base [app], which differentiates Fernhill from online rivals it cannot outprice [an]. However, cutting mountain bike prices by 10% is immediate and simple [k], matching the $120 import advantage driving customers away without the $14,000 annual running cost [app], though it reduces margin on every bike and rivals can match it [an]. Overall, the loyalty scheme is the better response because it tackles why customers stay loyal rather than only mimicking import pricing [eval], especially for a 9-year-old shop whose reputation rests on service [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyalty scheme builds relationships / differentiation",
+            "price cut is immediate and simple to execute"
+          ],
+          "application_max_2": [
+            "3 free services per year",
+            "$325,000 revenue base",
+            "$120 import advantage",
+            "$14,000 annual running cost"
+          ],
+          "analysis_max_2": [
+            "differentiation from online rivals it cannot outprice",
+            "price cut erodes margin and is easily matched"
+          ],
+          "evaluation_max_2": [
+            "weighs loyalty against mimicking import pricing",
+            "judges fit with reputation built over 9 years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loyalty",
+            "$14,000",
+            "$325,000",
+            "3 free services",
+            "$120",
+            "10%",
+            "Fernhill"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_163",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Marisol Skincare is a private limited company producing organic face creams for 7 years in Country X, employing 15 staff and generating $720,000 in annual sales. Its products are sold in 40 independent health stores and are aimed at vegan buyers with sensitive skin. Industry data shows the niche vegan sensitive-skin segment growing at 18% per year, with repeat purchase rates of 64% among existing customers.\n\nThe director is considering two options. Option 1 is to pursue mass marketing through a national supermarket chain with 240 branches stocking a cheaper everyday cream backed by a $150,000 national TV campaign. Option 2 is to remain a niche specialist, launching a premium vegan day cream at $34 per jar, costing $45,000 in development and promotion.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'mass marketing'.",
+        "model_answer": "Selling one standardised product to the whole market with a single broad marketing mix [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one standardised product / single marketing mix",
+            "whole market / broad appeal"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Marisol Skincare of targeting the niche vegan sensitive-skin segment.",
+        "model_answer": "Advantage 1: Less direct competition from large mass-market brands [k], since its vegan sensitive-skin range already sells successfully through 40 independent health stores [app]. Advantage 2: Ability to charge premium prices [k], with the proposed premium day cream priced at $34 per jar [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "less direct competition",
+            "ability to charge premium prices"
+          ],
+          "application_max_2": [
+            "40 independent health stores",
+            "$34 per jar",
+            "vegan sensitive-skin range"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marisol",
+            "vegan",
+            "sensitive skin",
+            "40 independent health stores",
+            "$34",
+            "niche"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Marisol Skincare of pursuing mass marketing through the national supermarket chain.",
+        "model_answer": "Benefit 1: Much larger potential sales volume [k], with 240 branches reaching far beyond the current 40 health stores [app], which could lift annual revenue well above $720,000 [an]. Benefit 2: Wider brand awareness through economies of scale in promotion [k], because the $150,000 national TV campaign spreads fixed advertising costs across a huge audience [app], lowering the marketing cost per unit sold [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger potential sales volume",
+            "economies of scale in promotion / wider brand awareness"
+          ],
+          "application_max_2": [
+            "240 branches",
+            "current 40 health stores",
+            "$150,000 national TV campaign",
+            "$720,000"
+          ],
+          "analysis_max_2": [
+            "revenue could rise well above $720,000",
+            "fixed advertising costs spread, lowering cost per unit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "mass marketing",
+            "240 branches",
+            "$150,000",
+            "$720,000",
+            "Marisol",
+            "health stores"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marisol Skincare should remain a niche specialist rather than pursue mass marketing through the national supermarket chain? Justify your answer.",
+        "model_answer": "Remaining a niche specialist plays to Marisol's proven vegan sensitive-skin expertise [k], leveraging a segment already growing at 18% a year through 40 health stores [app], protecting premium margins on the $34 jar [an]. However, mass marketing through 240 supermarket branches offers far greater reach [k], potentially lifting $720,000 revenue sharply even after the $150,000 TV campaign [app], though a cheaper everyday cream could dilute the premium brand built on vegan values [an]. Overall, Marisol should remain a niche specialist because its credibility and margins depend on focused differentiation [eval], at least until the $45,000 premium launch is established [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "niche plays to proven expertise / focused differentiation",
+            "mass marketing offers far greater reach"
+          ],
+          "application_max_2": [
+            "segment growing at 18% a year",
+            "40 health stores",
+            "240 supermarket branches",
+            "$720,000 revenue"
+          ],
+          "analysis_max_2": [
+            "protects premium margins on the $34 jar",
+            "cheaper everyday cream could dilute the premium brand"
+          ],
+          "evaluation_max_2": [
+            "weighs credibility and margins against mass reach",
+            "conditional on the $45,000 premium launch establishing itself"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "niche",
+            "18%",
+            "$45,000",
+            "$150,000",
+            "$34",
+            "Marisol",
+            "240 branches"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_164",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Bumble & Bright Kidswear is a childrenswear retailer in Country X, operating 3 stores for 8 years and employing 19 staff. Annual revenue is $410,000, of which 70% comes from the 0-5 age segment. Market research shows the 6-12 segment growing at 9% a year and a teen streetwear segment (ages 13-16) growing at 25% a year, with an average spend of $58 per teen purchase.\n\nThe owner is considering two options. Option 1 is to launch a teen streetwear range aimed at 13-16 year olds, costing $28,000 to design and stock. Option 2 is to expand the existing 0-5 organic baby line, costing $15,000 in new stock. The marketing budget is $30,000 and must be allocated by next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'demographic segmentation'.",
+        "model_answer": "Dividing a market into groups based on population characteristics such as age, gender, income or family status [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing a market into groups",
+            "population characteristics such as age / income / family status"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Bumble & Bright Kidswear segments the childrenswear market by age.",
+        "model_answer": "Reason 1: Different age groups have different needs and tastes [k], shown by teens' average spend of $58 on streetwear compared with essentials for 0-5 year olds [app]. Reason 2: Targeted marketing is more cost-effective than one generic campaign [k], letting the retailer focus its $30,000 marketing budget on the 25% a year growth segment [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "different age groups have different needs and tastes",
+            "targeted marketing is more cost-effective"
+          ],
+          "application_max_2": [
+            "teens' average spend of $58",
+            "0-5 year olds",
+            "$30,000 marketing budget",
+            "25% a year growth segment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Bumble & Bright",
+            "$410,000",
+            "0-5",
+            "$58",
+            "13-16",
+            "teen",
+            "25%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Bumble & Bright Kidswear of launching the teen streetwear range.",
+        "model_answer": "Benefit 1: Access to the fastest-growing segment [k], the 13-16 streetwear market expanding at 25% a year [app], which could lift total revenue above $410,000 [an]. Benefit 2: Higher average transaction values [k], with teens spending $58 per purchase against smaller baskets for baby basics [app], improving average profit per sale [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to the fastest-growing segment",
+            "higher average transaction values"
+          ],
+          "application_max_2": [
+            "13-16 streetwear market expanding at 25% a year",
+            "teens spending $58 per purchase",
+            "$410,000"
+          ],
+          "analysis_max_2": [
+            "could lift total revenue above $410,000",
+            "improves average profit per sale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "teen streetwear",
+            "$28,000",
+            "$58",
+            "25%",
+            "$410,000",
+            "Bumble & Bright",
+            "13-16"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching the teen streetwear range is a better decision than expanding the organic baby line? Justify your answer.",
+        "model_answer": "The teen range taps a segment growing at 25% a year [k], diversifying beyond the 70% of revenue currently tied to 0-5s and capturing $58 average purchases [app], reducing reliance on a single age segment [an]. However, the organic baby line extends an established strength [k], refreshing the range that generates 70% of $410,000 revenue for only $15,000 [app], with lower risk than an untested teen offer [an]. Overall, launching the teen range is the better decision because 25% annual growth will likely outpace the mature baby segment [eval], provided the $28,000 launch is supported by the $30,000 marketing budget [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "teen range taps fastest-growing segment / diversifies",
+            "baby line extends an established strength with lower risk"
+          ],
+          "application_max_2": [
+            "segment growing at 25% a year",
+            "70% of revenue currently tied to 0-5s",
+            "$58 average purchases",
+            "$410,000 revenue"
+          ],
+          "analysis_max_2": [
+            "reduces reliance on a single age segment",
+            "lower risk than an untested teen offer"
+          ],
+          "evaluation_max_2": [
+            "weighs 25% annual growth against the mature baby segment",
+            "conditional on the $30,000 marketing budget supporting launch"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "teen streetwear",
+            "$28,000",
+            "$15,000",
+            "$58",
+            "70%",
+            "25%",
+            "organic baby line"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_165",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Halcyon Coffee Co runs 2 coffee shops in Country X for 5 years, employing 26 staff. The flagship northern-city branch records 1,400 customer visits per week and sales of $95,000 per month, while the southern coastal-town branch records 520 visits per week and $38,000 per month. The southern town has a large tourist market from June to September.\n\nThe owners are considering two options. Option 1 is to open a second branch in the northern city, costing $60,000 in fit-out and stock. Option 2 is to launch a coastal-exclusive blended coffee range with locally roasted beans, sold only in the southern branch, costing $18,000 to develop. The blend would carry the southern town's name and be marketed to summer tourists.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'geographic segmentation'.",
+        "model_answer": "Dividing a market into groups based on location, such as region, town or climate [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing a market into groups",
+            "location / region / town / climate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Halcyon Coffee Co segments its market by geography.",
+        "model_answer": "Reason 1: Customer tastes and behaviour differ by location [k], shown by 1,400 northern-city visits per week against 520 in the southern coastal town [app]. Reason 2: Regional differences such as tourism create seasonal demand [k], with the southern branch reliant on June to September tourists [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tastes and behaviour differ by location",
+            "regional differences such as tourism create seasonal demand"
+          ],
+          "application_max_2": [
+            "1,400 northern-city visits per week",
+            "520 in the southern coastal town",
+            "June to September tourists"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Halcyon",
+            "northern-city",
+            "southern coastal-town",
+            "1,400",
+            "520",
+            "$95,000",
+            "$38,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Halcyon Coffee Co of launching the coastal-exclusive blended range.",
+        "model_answer": "Benefit 1: Meets local preferences and differentiates the southern branch [k], using locally roasted beans with the town's name for June to September tourists [app], which could lift southern sales above $38,000 per month [an]. Benefit 2: Requires much lower investment than a second branch [k], costing $18,000 to develop instead of $60,000 for the northern-city option [app], preserving capital while testing southern demand [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "meets local preferences / differentiates the branch",
+            "much lower investment than a second branch"
+          ],
+          "application_max_2": [
+            "locally roasted beans with the town's name",
+            "June to September tourists",
+            "$18,000 to develop",
+            "$60,000 northern-city option"
+          ],
+          "analysis_max_2": [
+            "could lift southern sales above $38,000 per month",
+            "preserves capital while testing southern demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "coastal-exclusive",
+            "$18,000",
+            "$60,000",
+            "$38,000",
+            "locally roasted",
+            "Halcyon",
+            "southern branch"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think opening the second northern-city branch is a better decision than launching the coastal-exclusive blended range? Justify your answer.",
+        "model_answer": "A second northern-city branch duplicates a proven format [k], replicating 1,400 weekly visits and $95,000 monthly sales with known demand [app], scaling what already works with lower trading risk [an]. However, the coastal-exclusive range is far cheaper and taps untapped tourist spend [k], costing $18,000 versus $60,000 to target June to September visitors in the southern branch [app], though southern sales are seasonal and less predictable [an]. Overall, opening the northern-city branch is the better decision because proven demand outweighs untested seasonal upside when $60,000 is committed [eval], unless the owners want to deepen the southern brand identity first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "second branch duplicates a proven format",
+            "exclusive range is cheaper and taps tourist spend"
+          ],
+          "application_max_2": [
+            "1,400 weekly visits and $95,000 monthly sales",
+            "$18,000 versus $60,000",
+            "June to September visitors",
+            "southern branch"
+          ],
+          "analysis_max_2": [
+            "lower trading risk from known northern demand",
+            "southern sales are seasonal and less predictable"
+          ],
+          "evaluation_max_2": [
+            "weighs proven demand against seasonal upside",
+            "conditional on the owners' priorities for the southern brand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "northern-city",
+            "$60,000",
+            "$18,000",
+            "$95,000",
+            "1,400",
+            "coastal-exclusive",
+            "Halcyon"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_166",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Linden & Grey Grooming is a hairdressing and grooming business in Country X operating for 4 years, employing 9 stylists and generating $680,000 a year, all from female clients, with zero current male custom. Industry data shows men's grooming services in Country X growing at 14% per year, with men aged 25-40 spending an average of $24 per visit on premium cuts and beard care.\n\nThe owner is considering two options. Option 1 is to launch a men's grooming range for 25-40 year olds, costing $55,000 in chairs, stock and marketing. Option 2 is to expand the salon's premium spa treatment suite for existing female clients, costing $35,000. The spa suite targets the current client base, while Option 1 targets a completely new segment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'gender segmentation'.",
+        "model_answer": "Dividing a market into groups based on gender to match different needs and preferences [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing a market into groups",
+            "based on gender / different needs and preferences"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Linden & Grey Grooming might segment its market by gender.",
+        "model_answer": "Reason 1: Men and women have different grooming needs and preferences [k], with men aged 25-40 favouring premium cuts and beard care [app]. Reason 2: Gender-targeted marketing allows more effective use of promotional spend [k], essential when the $680,000 revenue base is entirely female and the $24 average male spend is untapped [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "different needs and preferences by gender",
+            "gender-targeted marketing uses promotional spend effectively"
+          ],
+          "application_max_2": [
+            "men aged 25-40 favouring premium cuts and beard care",
+            "$680,000 revenue base is entirely female",
+            "$24 average male spend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Linden & Grey",
+            "$680,000",
+            "$24",
+            "25-40",
+            "men's grooming",
+            "female"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Linden & Grey Grooming of launching the men's grooming range.",
+        "model_answer": "Benefit 1: Access to a fast-growing segment [k], men's grooming in Country X growing at 14% per year [app], opening a second revenue stream beyond the $680,000 female base [an]. Benefit 2: Better utilisation of appointment slots [k], adding weekday morning male appointments at $24 per visit [app], raising revenue without moving premises [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to a fast-growing segment",
+            "better utilisation of appointment slots"
+          ],
+          "application_max_2": [
+            "men's grooming in Country X growing at 14% per year",
+            "$680,000 female base",
+            "$24 per visit"
+          ],
+          "analysis_max_2": [
+            "opens a second revenue stream",
+            "raises revenue without moving premises"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "men's grooming",
+            "$55,000",
+            "14%",
+            "$680,000",
+            "$24",
+            "Linden & Grey",
+            "25-40"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching the men's grooming range is a better decision than expanding the premium spa treatment suite? Justify your answer.",
+        "model_answer": "The men's range diversifies the client base [k], capturing a segment growing at 14% per year with $24 average visits rather than depending solely on existing female clients [app], reducing the risk of relying on one gender [an]. However, the spa suite builds on existing loyalty and trust [k], deepening spend from clients who already generate $680,000 a year for $35,000 [app], a safer return than an unproven segment [an]. Overall, launching the men's range is the better decision because 14% annual growth outweighs incremental spa spend [eval], provided local footfall data confirms male demand [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "men's range diversifies the client base",
+            "spa suite builds on existing loyalty and trust"
+          ],
+          "application_max_2": [
+            "segment growing at 14% per year",
+            "$24 average visits",
+            "clients who already generate $680,000 a year",
+            "$35,000"
+          ],
+          "analysis_max_2": [
+            "reduces the risk of relying on one gender",
+            "a safer return than an unproven segment"
+          ],
+          "evaluation_max_2": [
+            "weighs 14% annual growth against incremental spa spend",
+            "conditional on confirming local male demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "men's grooming",
+            "$55,000",
+            "$35,000",
+            "14%",
+            "$680,000",
+            "$24",
+            "spa"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_167",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Tern & Thistle Outdoors is an outdoor clothing brand in Country X operating for 6 years, employing 17 staff and generating $520,000 a year, mostly from technical hiking gear. A consumer survey of 2,000 respondents found 31% now practise yoga or urban wellness weekly, and national sales of athleisure yoga apparel are growing at 22% per year. The survey also found 44% of regular hikers would consider buying wellness apparel for everyday wear.\n\nThe owner is considering two options. Option 1 is to launch a yoga athleisure apparel line, costing $48,000 to design and promote, expected to generate $180,000 in year 1. Option 2 is to extend the existing technical hiking range with a waterproof jacket, costing $22,000. The brand has strong recognition among hikers but none among the yoga community.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'lifestyle segmentation'.",
+        "model_answer": "Dividing a market into groups based on shared activities, interests, opinions and values [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing a market into groups",
+            "shared activities / interests / opinions / values"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Tern & Thistle Outdoors might segment its market by lifestyle.",
+        "model_answer": "Reason 1: Lifestyle groups have distinct activities and needs [k], shown by hiking enthusiasts versus the 31% of surveyed consumers practising yoga weekly [app]. Reason 2: Lifestyle segmentation allows targeted product design and promotion [k], letting the brand choose between technical hiking gear and athleisure yoga apparel [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lifestyle groups have distinct activities and needs",
+            "allows targeted product design and promotion"
+          ],
+          "application_max_2": [
+            "hiking enthusiasts",
+            "31% of surveyed consumers practising yoga weekly",
+            "athleisure yoga apparel"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Tern & Thistle",
+            "hiking",
+            "yoga",
+            "31%",
+            "$520,000",
+            "2,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Tern & Thistle Outdoors of launching the yoga athleisure line.",
+        "model_answer": "Benefit 1: Access to a rapidly growing segment [k], athleisure yoga apparel growing at 22% per year nationally [app], which could lift revenue beyond $520,000 [an]. Benefit 2: Strong year 1 sales forecast [k], with $180,000 expected against the $48,000 launch cost [app], generating a healthy contribution to overheads [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to a rapidly growing segment",
+            "strong year 1 sales forecast"
+          ],
+          "application_max_2": [
+            "athleisure yoga apparel growing at 22% per year",
+            "$180,000 expected",
+            "$48,000 launch cost"
+          ],
+          "analysis_max_2": [
+            "could lift revenue beyond $520,000",
+            "generating a healthy contribution to overheads"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "athleisure",
+            "22%",
+            "$48,000",
+            "$180,000",
+            "$520,000",
+            "Tern & Thistle",
+            "yoga"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching the yoga athleisure line is a better decision than extending the technical hiking range? Justify your answer.",
+        "model_answer": "The yoga athleisure line targets an emerging lifestyle segment [k], addressing the 31% of surveyed consumers practising yoga weekly and a market growing at 22% per year [app], diversifying revenue beyond hiking and reducing dependence on one lifestyle group [an]. However, extending the hiking range builds on proven brand recognition [k], leveraging the $520,000 revenue stream and existing outdoor customers for just $22,000 [app], with far lower risk than entering an unfamiliar yoga market [an]. Overall, launching the athleisure line is the better decision because 22% annual growth outweighs incremental jacket sales [eval], provided the $180,000 year 1 forecast proves credible [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "athleisure targets an emerging lifestyle segment",
+            "hiking extension builds on proven brand recognition"
+          ],
+          "application_max_2": [
+            "31% of surveyed consumers practising yoga weekly",
+            "22% per year",
+            "$520,000 revenue stream",
+            "$22,000"
+          ],
+          "analysis_max_2": [
+            "diversifies revenue and reduces dependence on one group",
+            "lower risk than entering an unfamiliar market"
+          ],
+          "evaluation_max_2": [
+            "weighs 22% annual growth against incremental jacket sales",
+            "conditional on the $180,000 year 1 forecast"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "athleisure",
+            "22%",
+            "31%",
+            "$180,000",
+            "$22,000",
+            "$520,000",
+            "hiking"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_168",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Redbridge Bakery & Deli is an independent bakery in Country X operating for 11 years, employing 8 staff and generating $265,000 a year. Regulars account for 60% of sales, and the average spend is $6.40 per customer. A national bakery chain opened 300 metres away last month, and the owner fears losing footfall after till receipts show visits down by 12% in 3 weeks.\n\nThe owner is considering two responses. Option 1 is to introduce a stamp-card loyalty scheme, where buying 9 stamps earns a free 10th coffee, costing $9,000 to set up including printed cards and staff training. Option 2 is to reduce all prices by 10% across the bakery. Both options would be reviewed after 6 months against weekly sales and customer feedback collected at the till.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'customer loyalty'.",
+        "model_answer": "The willingness of customers to continue buying from the same business rather than switching to rivals [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customers continuing to buy from the same business",
+            "rather than switching to rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why maintaining customer loyalty is important to Redbridge Bakery & Deli.",
+        "model_answer": "Reason 1: Loyal customers generate repeat purchases [k], with regulars accounting for 60% of $265,000 annual sales [app]. Reason 2: Retaining customers is cheaper than attracting new ones [k], which matters because a national bakery chain opened 300 metres away last month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyal customers generate repeat purchases",
+            "retaining customers is cheaper than attracting new ones"
+          ],
+          "application_max_2": [
+            "regulars accounting for 60%",
+            "$265,000 annual sales",
+            "national bakery chain opened 300 metres away"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Redbridge",
+            "regulars",
+            "60%",
+            "$265,000",
+            "$6.40",
+            "national bakery chain"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Redbridge Bakery & Deli of introducing the stamp-card loyalty scheme.",
+        "model_answer": "Benefit 1: Encourages repeat visits and higher purchase frequency [k], rewarding the regulars who drive 60% of sales through the free 10th coffee offer [app], defending footfall against the new chain [an]. Benefit 2: Provides information on customer buying habits [k], as stamp-card redemptions reveal visit frequency against the $6.40 average spend [app], helping the owner target promotions more effectively [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "encourages repeat visits / higher frequency",
+            "provides information on buying habits"
+          ],
+          "application_max_2": [
+            "regulars who drive 60% of sales",
+            "free 10th coffee offer",
+            "$6.40 average spend"
+          ],
+          "analysis_max_2": [
+            "defends footfall against the new chain",
+            "helps target promotions more effectively"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "stamp-card",
+            "$9,000",
+            "60%",
+            "10th coffee",
+            "$6.40",
+            "Redbridge"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think introducing the stamp-card loyalty scheme is a better response to the new national chain opening 300 metres away than reducing all prices by 10%? Justify your answer.",
+        "model_answer": "The loyalty scheme rewards repeat behaviour [k], strengthening relationships with the customers driving 60% of $265,000 annual sales and costing only $9,000 to set up [app], protecting margin while building long-term attachment [an]. However, reducing prices by 10% is immediate and attracts price-sensitive shoppers [k], directly countering the national chain 300 metres away across every purchase [app], though it cuts margin on the $265,000 revenue and can be matched by the chain [an]. Overall, the stamp-card loyalty scheme is the better response because it builds durable loyalty rather than starting a price war [eval], provided the chain cannot undercut on both price and convenience [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loyalty scheme rewards repeat behaviour / builds attachment",
+            "price cut is immediate and attracts price-sensitive shoppers"
+          ],
+          "application_max_2": [
+            "customers driving 60% of $265,000 annual sales",
+            "$9,000 to set up",
+            "national chain 300 metres away"
+          ],
+          "analysis_max_2": [
+            "protects margin while building attachment",
+            "price cut cuts margin and can be matched by the chain"
+          ],
+          "evaluation_max_2": [
+            "weighs durable loyalty against an immediate price war",
+            "conditional on the chain not undercutting on price and convenience"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "stamp-card",
+            "$9,000",
+            "10%",
+            "60%",
+            "$265,000",
+            "loyalty",
+            "Redbridge"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_169",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Alder & Vine Interiors is a furniture retailer in Country X operating for 7 years, employing 14 staff and generating $900,000 a year. Sales of its sofa range fell 20% last year to $330,000. The marketing manager believes demand for compact sofas for small apartments is growing, while the design team favours a new conservatory furniture line based on their own instinct.\n\nThe managing director is considering two options. Option 1 is to spend $25,000 on primary market research, including questionnaires and a focus group of 60 customers, before repositioning the sofa range towards compact models. Option 2 is to launch the conservatory furniture line immediately, costing $70,000 to develop and promote. The board wants a decision by the end of the quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'market-orientated business'.",
+        "model_answer": "A business that identifies customer needs through market research first and then produces products to satisfy them [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "identifies customer needs through market research first",
+            "then produces products to satisfy them"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Alder & Vine Interiors of being a market-orientated business.",
+        "model_answer": "Reason 1: Products are more likely to meet customer needs [k], important because sofa sales fell 20% last year to $330,000 [app]. Reason 2: Lower risk of product failure [k], since research into compact sofas can confirm demand before $70,000 is committed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "products more likely to meet customer needs",
+            "lower risk of product failure"
+          ],
+          "application_max_2": [
+            "sofa sales fell 20% last year to $330,000",
+            "research into compact sofas",
+            "$70,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Alder & Vine",
+            "$900,000",
+            "$330,000",
+            "20%",
+            "compact sofas",
+            "$25,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of spending $25,000 on primary market research before repositioning the sofa range.",
+        "model_answer": "Benefit 1: Identifies what customers actually want [k], testing whether demand for compact sofas among small-apartment owners is real before the range is redesigned [app], reducing the risk of another failed launch [an]. Benefit 2: Provides data to guide investment decisions [k], with questionnaires and a focus group of 60 customers costing $25,000 against $70,000 for the conservatory line [app], directing capital where returns are likelier [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "identifies what customers actually want",
+            "provides data to guide investment decisions"
+          ],
+          "application_max_2": [
+            "demand for compact sofas among small-apartment owners",
+            "focus group of 60 customers",
+            "$25,000 against $70,000"
+          ],
+          "analysis_max_2": [
+            "reducing the risk of another failed launch",
+            "directing capital where returns are likelier"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "market research",
+            "$25,000",
+            "$70,000",
+            "compact sofas",
+            "60 customers",
+            "sofa range",
+            "Alder & Vine"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think spending $25,000 on market research before repositioning the sofa range is a better decision than launching the conservatory furniture line? Justify your answer.",
+        "model_answer": "Market research grounds the decision in evidence [k], testing compact-sofa demand among small-apartment owners before further capital is committed [app], reducing the chance of repeating last year's 20% sofa decline to $330,000 [an]. However, the conservatory furniture line reflects design expertise and first-mover advantage [k], entering a new category for $70,000 instead of $25,000 on research that rivals may already have [app], though without research it risks missing customer needs entirely [an]. Overall, commissioning the market research is the better decision because $25,000 of evidence protects the $900,000 business [eval], with the conservatory line still viable once demand is confirmed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "research grounds decisions in evidence",
+            "conservatory line offers design expertise / first-mover advantage"
+          ],
+          "application_max_2": [
+            "compact-sofa demand among small-apartment owners",
+            "20% sofa decline to $330,000",
+            "$70,000 instead of $25,000"
+          ],
+          "analysis_max_2": [
+            "reduces the chance of repeating last year's decline",
+            "without research it risks missing customer needs"
+          ],
+          "evaluation_max_2": [
+            "weighs evidence-based spending against first-mover advantage",
+            "conditional on the conservatory line remaining viable after research"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "market research",
+            "$25,000",
+            "$70,000",
+            "$900,000",
+            "$330,000",
+            "20%",
+            "conservatory"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_170",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Harbourne & Vale Insurance Brokers is a Country X brokerage operating for 10 years, employing 12 staff and generating $540,000 a year. Household real incomes have diverged sharply: high-income households earning above $60,000 a year grew 28% in 5 years, while middle-income budgets tightened. The firm currently sells one standard motor policy to all customers, renewing 3,400 policies a year from its single office with no online sales channel.\n\nThe partners are considering two options. Option 1 is a premium advice package for households earning above $60,000 a year, bundling life, home and motor cover at $95 per month, requiring 2 specialist advisers. Option 2 is a budget online-only policy for middle-income households at $38 per month, requiring a new booking system costing $30,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'income segmentation'.",
+        "model_answer": "Dividing a market into groups based on their level of income or disposable wealth [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividing a market into groups",
+            "level of income / disposable wealth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways in which Harbourne & Vale Insurance Brokers could segment the market by income.",
+        "model_answer": "Reason 1: High-income households have different needs and willingness to pay [k], as high-income households earning above $60,000 grew 28% in 5 years [app]. Reason 2: Budget households are more price-sensitive [k], with middle-income budgets tightening and demand for lower-cost cover rising [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high-income households: different needs / willingness to pay",
+            "budget households are more price-sensitive"
+          ],
+          "application_max_2": [
+            "high-income households earning above $60,000",
+            "grew 28% in 5 years",
+            "middle-income budgets tightening"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Harbourne & Vale",
+            "$60,000",
+            "28%",
+            "$95",
+            "$38",
+            "middle-income",
+            "$540,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Harbourne & Vale Insurance Brokers of launching the premium package for high-income households.",
+        "model_answer": "Benefit 1: Higher revenue per customer [k], with premium bundles at $95 per month yielding more per household than standard policies [app], lifting average monthly income above current levels [an]. Benefit 2: Targets a growing segment [k], high-income households above $60,000 having grown 28% in 5 years [app], securing higher-value clients for long-term profitability [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher revenue per customer",
+            "targets a growing segment"
+          ],
+          "application_max_2": [
+            "premium bundles at $95 per month",
+            "high-income households above $60,000 grown 28% in 5 years"
+          ],
+          "analysis_max_2": [
+            "lifts average monthly income above current levels",
+            "secures higher-value clients for long-term profitability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "premium advice package",
+            "$95",
+            "$60,000",
+            "28%",
+            "$540,000",
+            "Harbourne & Vale",
+            "specialist advisers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think launching the premium package for high-income households is a better decision than launching the budget online-only policy? Justify your answer.",
+        "model_answer": "The premium package targets a segment proven to be growing [k], with households above $60,000 up 28% in 5 years and willing to pay $95 per month [app], raising revenue per customer and deepening relationships through 2 specialist advisers [an]. However, the budget online-only policy serves the larger, tightening middle-income majority [k], offering $38 per month cover that matches current spending patterns at scale [app], though it yields thinner margins and requires the $30,000 booking system [an]. Overall, launching the premium package is the better decision because rising high-income numbers support $95-per-month demand with adviser-led loyalty [eval], provided the 2 advisers generate enough premium sales to justify their cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "premium package targets a growing, higher-value segment",
+            "budget policy serves the larger middle-income majority"
+          ],
+          "application_max_2": [
+            "households above $60,000 up 28% in 5 years",
+            "$95 per month",
+            "$38 per month",
+            "$30,000 booking system"
+          ],
+          "analysis_max_2": [
+            "raising revenue per customer and deepening relationships",
+            "thinner margins requiring the $30,000 booking system"
+          ],
+          "evaluation_max_2": [
+            "weighs growing high-income demand against the middle-income majority",
+            "conditional on the 2 advisers justifying their cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "premium advice package",
+            "$95",
+            "$38",
+            "$30,000",
+            "28%",
+            "$60,000",
+            "Harbourne & Vale"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 // CIE Cambridge 0264 / 0450 Paper 2 Authentic Case Study Database
-// 100 Comprehensive Case Studies (P2_SET_01 to P2_SET_100) with 800 authentic 8m & 12m questions,
+// 500 comprehensive case studies (P2_SET_01 to P2_SET_500) with 4,000 authentic 8m & 12m questions,
 // full mark schemes, level criteria (Level 1, 2, 3), and appendices 1, 2, and 3.
 
 import rawP2Database from "./paper2-database.json";

@@ -1,0 +1,1267 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_181",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Clearspan Contact Centre is a private limited company in Country X handling billing and technical queries for telecom providers. It employs 140 customer service agents across 2 shifts and last year generated $4.2 million in revenue. Agents currently earn a fixed monthly salary of $1,150, wages account for $1.9 million of annual costs, staff turnover reached 22%, and average customer satisfaction stands at 78%. The average agent completes 3,000 calls a month, with 7 minutes spent on each call.\n\nOperations director Lena Ortiz is comparing two reward proposals. Option 1 keeps the fixed salary and introduces a 'Star Agent' recognition scheme with monthly awards and certificates, costing $25,000 a year. Option 2 replaces the salary with $400 a month plus $0.25 per completed call, so an average agent would earn $1,150 a month and a top performer completing 3,600 calls would earn $1,300.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'salary'.",
+        "model_answer": "A fixed regular payment to an employee, usually expressed as an annual amount paid monthly [1], which does not vary with the number of hours worked or the output produced [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fixed regular payment, usually monthly",
+            "does not vary with hours worked or output"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Clearspan Contact Centre might introduce the output-based pay option.",
+        "model_answer": "Reason 1: Output-based pay links an agent's earnings directly to productivity [k], so an agent completing 3,600 calls would earn $1,300 a month instead of the fixed $1,150 [app]. Reason 2: Agents who complete more calls are financially rewarded for their effort [k], which should motivate the 140 agents to raise call output above the current 3,000 calls a month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "pay linked directly to output and productivity",
+            "financial reward for extra effort motivates workers"
+          ],
+          "application_max_2": [
+            "$0.25 per completed call",
+            "$1,300 a month for 3,600 calls",
+            "$1,150 fixed salary",
+            "3,000 calls a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Clearspan Contact Centre",
+            "$0.25",
+            "$1,150",
+            "$1,300",
+            "3,600",
+            "3,000",
+            "Star Agent",
+            "140"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems the output-based pay option could cause for Clearspan Contact Centre.",
+        "model_answer": "Problem 1: Agents may rush calls to raise their call count [k], so the 7 minutes per call could be cut at the expense of quality, hurting the 78% customer satisfaction rating [app], which could damage Clearspan's reputation with telecom providers [an]. Problem 2: Pay would become unstable for slower agents [k], as an agent completing only 2,500 calls would earn $1,025 a month, below the current $1,150 salary [app], so low-earning agents may leave and turnover could rise above 22% [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "workers rush work to maximise pay, reducing quality",
+            "variable pay creates income insecurity"
+          ],
+          "application_max_2": [
+            "7 minutes per call",
+            "78% customer satisfaction",
+            "$1,025 a month on 2,500 calls",
+            "22% turnover"
+          ],
+          "analysis_max_2": [
+            "damages reputation with telecom providers",
+            "low earners may resign, raising turnover above 22%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.25",
+            "7 minutes",
+            "78%",
+            "$1,150",
+            "22%",
+            "3,000",
+            "telecom providers",
+            "$4.2 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Clearspan Contact Centre should replace the fixed salary with output-based pay instead of keeping the salary and adding the Star Agent recognition scheme? Justify your answer.",
+        "model_answer": "Output-based pay would reward agents for exceeding 3,000 calls a month [k], as completing 3,600 calls would raise pay from $1,150 to $1,300, directly rewarding effort [app], which could lift productivity and protect the $4.2 million revenue [an]. However, the salary option gives income stability [k], agents keep a certain $1,150 a month and the $25,000 Star Agent scheme recognises effort without encouraging rushed calls [app], helping retention and satisfaction above 78% [an]. Overall, Clearspan should keep the fixed salary and introduce the Star Agent recognition scheme [eval], because agents already have income security and recognition improves service quality rather than raw call volume [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output-based pay motivates higher productivity",
+            "recognition schemes motivate without harming quality"
+          ],
+          "application_max_2": [
+            "$1,300 for 3,600 calls",
+            "$25,000 Star Agent scheme",
+            "$1,150 salary",
+            "78% satisfaction",
+            "$4.2 million"
+          ],
+          "analysis_max_2": [
+            "higher output could lift or protect revenue",
+            "recognition supports retention and call quality"
+          ],
+          "evaluation_max_2": [
+            "weighs productivity gain against quality and retention risk",
+            "reaches a justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Star Agent",
+            "$25,000",
+            "$1,150",
+            "$1,300",
+            "3,600",
+            "3,000",
+            "78%",
+            "$4.2 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_182",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Torr Vale Distribution Centre is a partnership in Country X operating a warehouse near the ring road and supplying 2 national supermarket chains. It employs 85 order pickers and 6 shift supervisors, and handled 1.35 million orders last year, generating $3.8 million in revenue. Pickers currently earn $14.50 an hour, and the average order takes 4 minutes to pick. Staff turnover among pickers reached 17% last year.\n\nPaul Merritt, the operations manager, is comparing two reward proposals. Option 1 pays a piece rate of $0.95 per correctly picked order; at 15 orders an hour this equals about $14.25, close to current hourly pay, while a fast picker completing 18 orders an hour would earn $17.10 and a slower one on 12 orders would earn $11.40. Option 2 keeps hourly pay and funds a weekly team recognition award of $300 and a trophy for the team with the fewest picking errors, currently running at 3%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'piece rate'.",
+        "model_answer": "A payment system where workers are paid a fixed amount for each unit of output they produce [1], so pay rises directly with the quantity of goods made or picked [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "paid a fixed amount per unit produced",
+            "pay varies directly with output"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the piece rate option for Torr Vale Distribution Centre.",
+        "model_answer": "Benefit 1: Pay would be linked directly to output [k], so a picker completing 18 orders an hour would earn $17.10 compared with $14.50 an hour now [app]. Benefit 2: Effort is financially rewarded [k], which should motivate pickers to raise productivity beyond the 1.35 million orders handled last year without closer supervision [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "pay linked directly to output",
+            "financial reward for effort motivates productivity"
+          ],
+          "application_max_2": [
+            "$0.95 per order",
+            "$17.10 for 18 orders an hour",
+            "$14.50 an hour",
+            "1.35 million orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Torr Vale Distribution Centre",
+            "$0.95",
+            "$17.10",
+            "$14.50",
+            "1.35 million orders",
+            "18 orders an hour",
+            "$3.8 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems the piece rate option could cause for Torr Vale Distribution Centre.",
+        "model_answer": "Problem 1: Pickers may rush orders to maximise pay [k], so the 3% error rate could climb above its current level, harming picking accuracy [app], which may cost the business repeat orders from its 2 supermarket chains [an]. Problem 2: Picker income would become unpredictable [k], as a picker producing only 12 orders an hour would earn $11.40, below the $14.50 hourly rate [app], so weaker staff may leave and the 17% turnover could worsen [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rushing reduces quality and accuracy",
+            "variable pay creates income insecurity"
+          ],
+          "application_max_2": [
+            "3% error rate",
+            "$11.40 for 12 orders an hour",
+            "$14.50 hourly rate",
+            "17% turnover"
+          ],
+          "analysis_max_2": [
+            "risks losing supermarket orders",
+            "higher turnover and recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.95",
+            "3%",
+            "$11.40",
+            "$14.50",
+            "17%",
+            "2 national supermarket chains",
+            "$3.8 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Torr Vale Distribution Centre should introduce the piece rate instead of keeping hourly pay with the weekly $300 team recognition award? Justify your answer.",
+        "model_answer": "The piece rate rewards the hardest workers [k], with a fast picker earning $17.10 an hour against $14.50 now, which should lift output above 1.35 million orders [app] and protect the $3.8 million revenue without extra managers [an]. However, it risks more errors and pay insecurity [k], since slower pickers would earn only $11.40 an hour and the 3% error rate could rise [app], harming accuracy and pushing turnover beyond 17% [an]. Overall, Torr Vale should keep hourly pay and introduce the weekly $300 team recognition award [eval], because the 2 supermarket chains need accuracy, and team rewards discourage rushing while building morale [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "piece rate directly rewards higher output",
+            "team recognition motivates without encouraging rushing"
+          ],
+          "application_max_2": [
+            "$17.10 an hour for fast pickers",
+            "$14.50 current hourly pay",
+            "$300 weekly team award",
+            "3% error rate",
+            "17% turnover"
+          ],
+          "analysis_max_2": [
+            "higher output protects revenue without extra supervision",
+            "errors and turnover risk undermines supermarket contracts"
+          ],
+          "evaluation_max_2": [
+            "weighs productivity incentive against accuracy and retention risk",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$17.10",
+            "$14.50",
+            "$300",
+            "3%",
+            "17%",
+            "$3.8 million",
+            "$11.40",
+            "Torr Vale Distribution Centre"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_183",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brightspur Field Sales is a private limited company in Country X employing 24 field sales representatives selling office furniture across 3 regions. Last year the team generated $9.6 million in sales, averaging about $33,000 per representative per month. Representatives currently earn a base salary of $1,400 a month plus 3% commission on sales, giving typical total pay of about $2,400 a month. Staff turnover reached 20% last year.\n\nManaging director Priya Nair wants to motivate the sales force differently. Option 1 replaces the mix with 5% commission only, which at the current average of $33,000 a month would pay about $1,650. Option 2 keeps the present salary-plus-commission scheme and adds a non-financial 'Star Performer' recognition programme: monthly awards, a reserved parking space and dinner with the directors, costing $8,000 a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'commission'.",
+        "model_answer": "A payment made to an employee based on the value of the sales they make, usually a percentage of each sale [1], so earnings rise when sales rise [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "payment based on value of sales made",
+            "earnings rise with sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the current salary-plus-commission scheme at Brightspur Field Sales.",
+        "model_answer": "Advantage 1: The base salary gives representatives a stable income [k], so they still receive $1,400 a month in quiet periods when sales fall below the $33,000 average [app]. Advantage 2: The 3% commission links pay to performance [k], adding about $1,000 a month on top of salary and motivating representatives to close more sales above the current average [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "base salary gives income stability",
+            "commission links pay to performance"
+          ],
+          "application_max_2": [
+            "$1,400 base salary",
+            "$33,000 monthly sales average",
+            "3% commission",
+            "$2,400 typical total pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Brightspur Field Sales",
+            "$1,400",
+            "$33,000",
+            "3% commission",
+            "$2,400",
+            "$9.6 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with switching to 5% commission only.",
+        "model_answer": "Problem 1: Representatives would face serious income risk in quiet months [k], earning only about $1,650 at the current average and far less in slow months, compared with a certain $1,400 base today [app], which could push turnover above 20% [an]. Problem 2: Aggressive selling may result if pay depends entirely on sales [k], so representatives might pressure customers into orders they cannot afford [app], damaging Brightspur's reputation across its 3 regions [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission-only pay creates income insecurity",
+            "pay linked purely to sales can encourage pressure selling"
+          ],
+          "application_max_2": [
+            "$1,650 at the current average",
+            "$1,400 base today",
+            "20% turnover",
+            "3 regions"
+          ],
+          "analysis_max_2": [
+            "turnover could rise above 20%",
+            "pressure selling damages regional reputation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "5% commission",
+            "$1,650",
+            "$1,400",
+            "20%",
+            "$33,000",
+            "3 regions",
+            "$9.6 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brightspur Field Sales should switch to 5% commission only instead of keeping the present scheme and adding the Star Performer recognition programme? Justify your answer.",
+        "model_answer": "Commission-only pay would sharply reward top performers [k], with 5% on $33,000 of monthly sales paying about $1,650 and unlimited upside above that [app], likely pushing representatives to sell harder and lift revenue beyond $9.6 million [an]. However, it removes the income floor and stability [k], risking resignations among the 24 representatives and turnover above 20%, while the $8,000 Star Performer scheme costs very little and rewards loyalty without income risk [app], protecting customer relationships and morale [an]. Overall, Brightspur should keep the salary-plus-commission scheme and add the recognition programme [eval], because $8,000 a year is tiny against $9.6 million in sales and retention protects regional customer relationships [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission-only pay rewards and motivates top sellers",
+            "recognition motivates at low cost without income risk"
+          ],
+          "application_max_2": [
+            "$1,650 at current average",
+            "$8,000 Star Performer scheme",
+            "$9.6 million sales",
+            "20% turnover",
+            "24 representatives"
+          ],
+          "analysis_max_2": [
+            "commission-only could lift sales but risks resignations",
+            "recognition protects morale and relationships cheaply"
+          ],
+          "evaluation_max_2": [
+            "weighs short-run selling incentive against retention risk",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Star Performer",
+            "$8,000",
+            "$1,650",
+            "$33,000",
+            "$9.6 million",
+            "20%",
+            "24 field sales representatives",
+            "$1,400"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_184",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "The Gilded Whisk is a family restaurant in Country X serving lunch and dinner seven days a week. It employs 6 chefs and 10 kitchen and waiting staff, and last year recorded revenue of $1.5 million with a profit of $180,000. Chefs are paid a fixed salary of $2,300 a month, but 2 chefs resigned in the last year, and kitchen turnover has reached 33% as rivals offer better pay and training.\n\nThe owner, Marcus Webb, wants to improve chef motivation. Option 1 introduces an annual performance bonus: 10% of profit shared among the 6 chefs, giving $3,000 per chef per year. Option 2 keeps the fixed salary and offers non-financial rewards: a fully funded $1,200 cookery course per chef each year, $7,200 a year across the 6 chefs, plus a 'Chef of the Quarter' award with a certificate and a team dinner.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'bonus'.",
+        "model_answer": "An extra payment made to an employee in addition to their basic pay [1], usually given as a reward for good performance or for meeting agreed targets [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra payment on top of basic pay",
+            "reward for performance or hitting targets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the annual profit bonus option for The Gilded Whisk.",
+        "model_answer": "Benefit 1: The bonus would motivate chefs to work harder [k], as 10% of the $180,000 profit shared among 6 chefs gives each chef $3,000 a year [app]. Benefit 2: The reward is linked to profit [k], so chefs are encouraged to control food waste and kitchen costs, protecting the $1.5 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bonus motivates harder work and effort",
+            "profit-linked pay encourages cost control"
+          ],
+          "application_max_2": [
+            "10% of profit",
+            "$180,000 profit",
+            "$3,000 per chef a year",
+            "$1.5 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "The Gilded Whisk",
+            "$3,000",
+            "$180,000",
+            "$1.5 million",
+            "$2,300",
+            "10% of profit"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the annual profit bonus option for The Gilded Whisk.",
+        "model_answer": "Problem 1: Profit depends heavily on factors outside the chefs' control [k], such as a quiet winter for lunch trade, so chefs might receive nothing despite working hard [app], which could demotivate them as much as a pay cut [an]. Problem 2: Splitting the bonus evenly could cause friction [k], with chefs expecting more than the $3,000 each when profit rises [app], weakening the close teamwork a busy 6-chef kitchen needs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit depends on factors beyond workers' control",
+            "equal splits can cause disputes and resentment"
+          ],
+          "application_max_2": [
+            "$3,000 per chef",
+            "10% of profit",
+            "$180,000 profit",
+            "6 chefs"
+          ],
+          "analysis_max_2": [
+            "demotivation when profit is low",
+            "friction undermines kitchen teamwork"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,000",
+            "$180,000",
+            "6 chefs",
+            "$2,300",
+            "$1.5 million",
+            "10% of profit",
+            "33%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think The Gilded Whisk should introduce the profit bonus instead of keeping fixed salaries and offering the cookery courses and Chef of the Quarter award? Justify your answer.",
+        "model_answer": "The profit bonus would give chefs a direct financial stake in success [k], with $3,000 per chef a year rewarding effort and encouraging cost control on food spend [app], which could lift profit beyond $180,000 [an]. However, profit is volatile and outside chefs' control [k], whereas the $1,200 cookery courses and awards cost $7,200 a year and remain fair in quiet months [app], building skills, loyalty and morale [an]. Overall, The Gilded Whisk should keep fixed salaries and fund the cookery courses and Chef of the Quarter award [eval], because the courses build skills chefs value and avoid disputes over profit splits in a small 6-chef kitchen [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit-linked bonus rewards effort and cost control",
+            "non-financial rewards build skills and loyalty"
+          ],
+          "application_max_2": [
+            "$3,000 per chef a year",
+            "$1,200 cookery course",
+            "$7,200 a year in total",
+            "$180,000 profit",
+            "6 chefs"
+          ],
+          "analysis_max_2": [
+            "bonus could lift profit if chefs control costs",
+            "courses and awards sustain loyalty in quiet months"
+          ],
+          "evaluation_max_2": [
+            "weighs financial incentive against skill and morale benefits",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,000",
+            "$1,200",
+            "$7,200",
+            "$180,000",
+            "6 chefs",
+            "Chef of the Quarter",
+            "$2,300",
+            "The Gilded Whisk"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_185",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Dartfield Logistics is a private limited company in Country X delivering parcels from 2 depots. It employs 60 drivers and 18 warehouse staff, and last year carried 1.9 million parcels, generating $5.2 million in revenue and a profit of $340,000. Drivers currently earn a fixed salary of $1,600 a month and turnover among drivers reached 18% last year.\n\nManaging director Sofia Brandt is comparing two changes. Option 1 introduces profit sharing: 20% of annual profit would be distributed to all drivers, about $1,133 each per year. Option 2 switches drivers to output-based pay of $700 a month plus $1.00 per completed delivery, so an average driver making 920 deliveries a month would earn about $1,620, while a fast driver making 1,100 would earn $1,800 and a slow driver on 750 would earn $1,450.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'profit sharing'.",
+        "model_answer": "A scheme in which employees receive a share of the business's profits [1], usually paid as an annual sum on top of their basic pay [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees receive a share of the profits",
+            "usually paid annually on top of basic pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the profit-sharing option for Dartfield Logistics.",
+        "model_answer": "Benefit 1: Profit sharing makes drivers part-owners of success [k], as 20% of the $340,000 profit would give each driver about $1,133 per year [app]. Benefit 2: The reward depends on total profit [k], encouraging drivers to look after parcels, drive economically and protect the $5.2 million revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit sharing aligns employee and business interests",
+            "reward depends on overall business performance"
+          ],
+          "application_max_2": [
+            "20% of annual profit",
+            "$340,000 profit",
+            "about $1,133 each",
+            "$5.2 million revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Dartfield Logistics",
+            "20% of annual profit",
+            "$340,000",
+            "$1,133",
+            "$5.2 million",
+            "$1,600"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with switching to output-based delivery pay.",
+        "model_answer": "Problem 1: Drivers may rush to complete more deliveries [k], so the $1.00 per delivery incentive could cause unsafe driving and damaged parcels across the 1.9 million parcels carried [app], increasing claims and customer complaints [an]. Problem 2: Income would fluctuate with demand [k], as a driver completing only 750 deliveries a month would earn $1,450, below the current $1,600 salary [app], so some drivers may leave and the 18% turnover could worsen [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output pay encourages rushing and lower safety",
+            "variable earnings fluctuate with demand"
+          ],
+          "application_max_2": [
+            "$1.00 per completed delivery",
+            "1.9 million parcels",
+            "$1,450 on 750 deliveries",
+            "18% turnover"
+          ],
+          "analysis_max_2": [
+            "unsafe driving raises claims and complaints",
+            "low earners may resign, raising turnover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.00",
+            "1.9 million parcels",
+            "$1,600",
+            "18%",
+            "$1,450",
+            "2 depots",
+            "$340,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dartfield Logistics should switch drivers to output-based pay instead of keeping fixed salaries and introducing profit sharing? Justify your answer.",
+        "model_answer": "Output-based pay would reward effort directly [k], with average drivers earning about $1,620 for 920 deliveries and fast drivers $1,800 for 1,100, lifting productivity at the 2 depots [app], which could push parcel volume beyond 1.9 million and revenue beyond $5.2 million [an]. However, it risks unsafe speed and income volatility [k], while profit sharing gives about $1,133 a year from the $340,000 profit with no incentive to rush [app], protecting driver safety and the 18% turnover [an]. Overall, Dartfield should keep fixed salaries and introduce the profit-sharing scheme [eval], because safe, reliable delivery matters to its parcel clients more than marginal speed gains [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output pay directly links pay to effort",
+            "profit sharing rewards success without rushing"
+          ],
+          "application_max_2": [
+            "$1,620 for 920 deliveries",
+            "$1,800 for 1,100 deliveries",
+            "$1,133 profit share each",
+            "$340,000 profit",
+            "$5.2 million revenue"
+          ],
+          "analysis_max_2": [
+            "higher output could raise volume and revenue",
+            "profit sharing protects safety and retention"
+          ],
+          "evaluation_max_2": [
+            "weighs productivity gain against safety and turnover risk",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,620",
+            "$1,800",
+            "$1,133",
+            "$340,000",
+            "$5.2 million",
+            "$1,600",
+            "18%",
+            "$1.00"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_186",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Highgate Motors is a private limited company with 3 showrooms in Country X, employing 30 sales consultants. Last year the showrooms sold 720 cars, generating $10.8 million in revenue at an average price of $15,000 per car. Consultants earn 5% commission on each car sold, about $1,500 a month, plus a basic salary of $900. Average staff turnover reached 19% last year.\n\nThe sales director is choosing between two motivation proposals. Option 1 introduces a share ownership scheme offering senior consultants 400 shares each, worth $25 a share today and vesting after 3 years, a benefit worth about $10,000 each. Option 2 introduces a monthly 'Star Seller' bonus of $700 for any consultant selling 3 or more cars in a month, above the current average of 2 cars per consultant per month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'share ownership'.",
+        "model_answer": "A scheme in which employees are given or allowed to buy shares in the company they work for [1], making them part-owners who benefit when the company performs well [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees receive or buy shares in the company",
+            "employees benefit when company performs well"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of the share ownership scheme for Highgate Motors.",
+        "model_answer": "Advantage 1: Employees become part-owners of the business [k], so senior consultants receiving 400 shares at $25 each gain directly if the share value rises [app]. Advantage 2: Share ownership encourages long-term loyalty [k], as the shares vest only after 3 years, giving senior consultants a strong reason to stay rather than leave for rival showrooms [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees become part-owners with a stake in success",
+            "vesting periods encourage long-term retention"
+          ],
+          "application_max_2": [
+            "400 shares each",
+            "$25 a share",
+            "vesting after 3 years",
+            "3 showrooms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Highgate Motors",
+            "400 shares",
+            "$25 a share",
+            "3 years",
+            "$10.8 million",
+            "30 sales consultants"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the share ownership scheme for Highgate Motors.",
+        "model_answer": "Problem 1: The shares may never rise in value [k], so senior consultants could wait 3 years for shares still worth $25 and feel unrewarded [app], weakening the motivational effect of the scheme [an]. Problem 2: Only senior consultants qualify [k], so the rest of the 30 sales consultants gain nothing [app], which could breed jealousy and reduce team spirit across the 3 showrooms [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share values can fall or stay flat, weakening rewards",
+            "schemes limited to some staff can damage morale"
+          ],
+          "application_max_2": [
+            "$25 a share",
+            "3 years",
+            "30 sales consultants",
+            "3 showrooms"
+          ],
+          "analysis_max_2": [
+            "flat share price undermines motivation",
+            "jealousy reduces team spirit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$25 a share",
+            "3 years",
+            "30 sales consultants",
+            "3 showrooms",
+            "$10,000",
+            "share ownership",
+            "19%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Highgate Motors should introduce the share ownership scheme instead of the monthly Star Seller bonus? Justify your answer.",
+        "model_answer": "Share ownership links consultants' wealth to the whole business [k], as 400 shares worth $25 each ($10,000) reward long-term loyalty and align senior staff with growth in the $10.8 million revenue [app], improving retention beyond the current 19% turnover [an]. However, the reward is distant and uncertain [k], whereas the $700 Star Seller bonus is immediate and earned by selling just 1 car above the 2-car monthly average [app], motivating every consultant now and lifting sales beyond 720 cars [an]. Overall, Highgate should introduce the monthly Star Seller bonus [eval], because it motivates all 30 consultants immediately and share ownership can be added later for senior staff [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share ownership aligns staff with long-term business success",
+            "immediate bonuses motivate performance more directly"
+          ],
+          "application_max_2": [
+            "400 shares worth $25 each",
+            "$10,000 per senior consultant",
+            "$700 monthly bonus",
+            "2 cars per month average",
+            "$10.8 million revenue"
+          ],
+          "analysis_max_2": [
+            "share scheme aids retention but pays off only later",
+            "immediate bonus can lift sales above 720 cars"
+          ],
+          "evaluation_max_2": [
+            "weighs long-term loyalty against immediate motivational impact",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share ownership",
+            "$10,000",
+            "$700",
+            "Star Seller",
+            "2 cars",
+            "$10.8 million",
+            "19%",
+            "30 sales consultants"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_187",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Copperline Hotels Group operates 2 hotels in Country X with 180 guest rooms and 45 housekeepers. Last year the hotels generated $2.4 million in revenue. Housekeepers earn $11 an hour for an 8-hour day, and clean an average of 14 rooms a day, so the daily wage is $88. Annual turnover among housekeepers reached 21%.\n\nGeneral manager Carla Reyes is choosing between two reward options. Option 1 pays a piece rate of $6.50 per room cleaned, so a housekeeper cleaning 14 rooms would earn $91 per day, slightly above the $88 hourly wage. Option 2 keeps hourly pay and enriches the role: housekeepers take charge of welcome packs, linen ordering and training new starters, plus a monthly 'Housekeeper of the Month' award with a $150 voucher, costing $1,800 a year in total.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job enrichment'.",
+        "model_answer": "Giving workers more responsibility and a wider variety of tasks in their jobs [1], so work becomes more challenging and rewarding rather than routine [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "more responsibility and wider variety of tasks",
+            "work becomes more challenging and rewarding"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of job enrichment for Copperline Hotels Group.",
+        "model_answer": "Benefit 1: More responsibility makes work more satisfying [k], with housekeepers taking charge of welcome packs, linen ordering and training new starters across the 2 hotels [app]. Benefit 2: Enriched jobs develop employees' skills [k], so experienced housekeepers can cover a wider range of duties without extra supervisors [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "more responsibility increases job satisfaction",
+            "enriched jobs develop employee skills"
+          ],
+          "application_max_2": [
+            "welcome packs",
+            "linen ordering",
+            "training new starters",
+            "2 hotels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Copperline Hotels Group",
+            "welcome packs",
+            "linen ordering",
+            "2 hotels",
+            "180 guest rooms",
+            "$11 an hour"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the piece rate option for Copperline Hotels Group.",
+        "model_answer": "Problem 1: Housekeepers may rush rooms to maximise earnings [k], so the $6.50 per room rate could cut corners when cleaning the 180 guest rooms [app], harming cleanliness, guest satisfaction and reviews [an]. Problem 2: Income would vary with the number of rooms to clean [k], as quiet nights mean fewer than 14 rooms and pay below the $88 daily wage [app], so morale and retention could fall and the 21% turnover could worsen [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "piece rate encourages rushing and lower quality",
+            "income varies with workload"
+          ],
+          "application_max_2": [
+            "$6.50 per room",
+            "180 guest rooms",
+            "$88 daily wage",
+            "21% turnover"
+          ],
+          "analysis_max_2": [
+            "poor cleaning damages guest satisfaction and reviews",
+            "income insecurity worsens retention"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.50",
+            "180 guest rooms",
+            "$88",
+            "$11 an hour",
+            "21%",
+            "14 rooms",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copperline Hotels Group should introduce the piece rate instead of keeping hourly pay with the enriched role and monthly award? Justify your answer.",
+        "model_answer": "The piece rate directly rewards output [k], with $6.50 per room giving $91 a day for 14 rooms, $3 more than the hourly wage, and should speed up cleaning [app], helping the 2 hotels turn rooms faster for new guests [an]. However, it risks rushed cleaning and unstable pay [k], whereas enriched duties let housekeepers run welcome packs, linen ordering and starter training, and the $150 monthly award costs just $1,800 a year [app], building motivation, skills and loyalty beyond pay [an]. Overall, Copperline should enrich the role and keep hourly pay with the monthly Housekeeper of the Month award [eval], because satisfied guests and lower turnover matter more than a $3 daily incentive [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "piece rate links pay directly to output",
+            "job enrichment and recognition build loyalty and skills"
+          ],
+          "application_max_2": [
+            "$6.50 per room",
+            "$91 a day for 14 rooms",
+            "$88 hourly wage",
+            "$150 monthly award",
+            "$1,800 a year"
+          ],
+          "analysis_max_2": [
+            "piece rate speeds cleaning but risks quality and pay dips",
+            "enrichment builds skills, loyalty and guest satisfaction"
+          ],
+          "evaluation_max_2": [
+            "weighs immediate output incentive against loyalty and quality",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.50",
+            "$91",
+            "$88",
+            "$150",
+            "$1,800",
+            "Housekeeper of the Month",
+            "14 rooms",
+            "21%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_188",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Calderwood Telesales is a private limited company in Country X employing 60 outbound agents selling energy contracts. Last year the agents made 1.08 million calls with a 2% success rate, closing 21,600 sales worth $6.5 million. Agents earn a fixed salary of $1,250 a month and staff turnover reached 24% last year.\n\nHead of sales Owen Doyle wants to raise the success rate. Option 1 funds a 2-day off-the-job training course for all agents, costing $18,000 or $300 per agent, aiming to lift conversions from 2% to 3%, about 32,400 sales a year. Option 2 keeps a salary but adds output-based pay of $700 basic plus $18 per sale closed; an average agent closing 30 sales a month would earn $1,240, while a stronger agent closing 45 sales would earn $1,510 and a weak agent closing only 20 sales would earn $1,060.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'training'.",
+        "model_answer": "The process of developing an employee's skills and knowledge [1], so they can perform their current job more effectively and adapt to new tasks [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "developing employee skills and knowledge",
+            "improves current job performance and adaptability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the off-the-job training option for Calderwood Telesales.",
+        "model_answer": "Benefit 1: Off-the-job training develops agents' selling techniques away from the desk [k], targeting a rise in the success rate from 2% to 3%, worth about 32,400 sales a year [app]. Benefit 2: Time on the 2-day course is an investment in all 60 agents at $300 each [k], and raising the whole team's skills protects the $6.5 million in sales the business depends on [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "off-the-job training builds new skills away from work pressures",
+            "training improves capability across the whole team"
+          ],
+          "application_max_2": [
+            "2% to 3%",
+            "32,400 sales a year",
+            "2-day course costing $18,000",
+            "$300 per agent"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Calderwood Telesales",
+            "2-day",
+            "$18,000",
+            "$300 per agent",
+            "32,400",
+            "2%",
+            "$6.5 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the output-based pay option for Calderwood Telesales.",
+        "model_answer": "Problem 1: Agents may use pressure selling to win commission [k], as the $18 per sale rewards volume over quality [app], leading to complaints and cancelled energy contracts [an]. Problem 2: Weaker agents would be pushed below the present salary [k], as an agent closing only 20 sales a month would earn $1,060 against today's $1,250 [app], so morale may fall and the 24% turnover could rise further [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission per sale encourages pressure selling",
+            "output pay is insecure for weaker performers"
+          ],
+          "application_max_2": [
+            "$18 per sale",
+            "$1,060 on 20 sales a month",
+            "$1,250 fixed salary",
+            "24% turnover"
+          ],
+          "analysis_max_2": [
+            "pressure selling damages reputation and contracts",
+            "poor earners may quit, worsening turnover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18 per sale",
+            "$1,250",
+            "24%",
+            "$1,060",
+            "21,600",
+            "$6.5 million",
+            "60 outbound agents"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Calderwood Telesales should fund the off-the-job training course instead of introducing output-based pay? Justify your answer.",
+        "model_answer": "Training tackles the root cause of weak results [k], lifting the success rate from 2% to 3%, around 10,800 extra sales a year, a permanent gain for all 60 agents [app], which protects and could grow the $6.5 million in sales revenue [an]. However, the $18,000 cost is certain while the 3% target is not [k], whereas output pay costs nothing until agents actually close sales and rewards high performers up to $1,510 a month [app], though it risks pressure selling and income anxiety [an]. Overall, Calderwood should fund the 2-day training course [eval], because it raises the whole team's ability without risking the 24% turnover climbing higher [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training addresses root cause and builds permanent capability",
+            "output pay rewards only realised sales but risks behaviour"
+          ],
+          "application_max_2": [
+            "2% to 3% success rate",
+            "$18,000 training cost",
+            "$1,510 a month for strong agents",
+            "24% turnover",
+            "$6.5 million sales"
+          ],
+          "analysis_max_2": [
+            "extra 10,800 sales could grow revenue",
+            "pressure selling risk could worsen turnover"
+          ],
+          "evaluation_max_2": [
+            "weighs certain training cost against uncertain conversion gain",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2-day",
+            "$18,000",
+            "$1,510",
+            "24%",
+            "$6.5 million",
+            "32,400",
+            "2%",
+            "training course"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_189",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "The Saltworks Kitchen is a partnership in Country X providing event catering for weddings, conferences and festivals. It employs 9 chefs and 12 event staff and serves around 60 events a year, generating $1.35 million in revenue with a profit of $210,000. Chefs are paid a fixed salary of $2,000 a month; kitchen morale is high, and the partners want to keep it that way through the busy summer season.\n\nThe partners are weighing two reward approaches. Option 1 introduces profit sharing: 10% of annual profit split between the 9 chefs, about $2,333 each per year. Option 2 offers non-financial rewards: teamworking days for the brigade, peer-voted 'Brigade of the Month' certificates and a funded $900 advanced cookery course for each chef, costing $8,100 a year in total.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'teamworking'.",
+        "model_answer": "Organising employees into groups that work together towards shared goals [1], so members support and rely on one another to complete tasks [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees organised into groups working towards shared goals",
+            "members support and rely on each other"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of the non-financial rewards option for The Saltworks Kitchen.",
+        "model_answer": "Benefit 1: Peer recognition makes staff feel valued [k], so the 'Brigade of the Month' certificates would reinforce excellent service across the 9 chefs [app]. Benefit 2: Working as a brigade builds cooperation and teamwork [k], which is essential when the kitchen serves around 60 events a year where timing dishes is critical [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "peer recognition makes staff feel valued",
+            "teamworking builds cooperation and coordination"
+          ],
+          "application_max_2": [
+            "Brigade of the Month",
+            "9 chefs",
+            "60 events a year",
+            "$900 advanced cookery course"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "The Saltworks Kitchen",
+            "Brigade of the Month",
+            "9 chefs",
+            "60 events",
+            "$8,100",
+            "$900"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the profit-sharing option for The Saltworks Kitchen.",
+        "model_answer": "Problem 1: The reward depends on profit, not just effort [k], so a weak festival season could cut the $2,333 each chef expects despite working hard [app], creating disappointment and resentment in the kitchen [an]. Problem 2: Profit sharing rewards annual results, not daily behaviour [k], so it gives little reason to fix mistakes during service across the 60 events a year [app], meaning standards could still drift under pressure [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit-linked rewards depend on external factors",
+            "annual profit rewards do not shape daily behaviour"
+          ],
+          "application_max_2": [
+            "$2,333 each per year",
+            "10% of annual profit",
+            "$210,000 profit",
+            "60 events a year"
+          ],
+          "analysis_max_2": [
+            "resentment if profit is low",
+            "weak effect on day-to-day service standards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2,333",
+            "$210,000",
+            "10% of annual profit",
+            "60 events",
+            "$2,000 a month",
+            "9 chefs",
+            "$1.35 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think The Saltworks Kitchen should introduce profit sharing instead of the teamworking days, peer certificates and cookery courses? Justify your answer.",
+        "model_answer": "Profit sharing gives chefs a clear financial stake [k], with $21,000 distributed from the $210,000 profit, about $2,333 per chef, aligning the kitchen with the business's success [app], which could motivate better cost control and effort [an]. However, it is distant, uncertain and backward-looking [k], while the $8,100 package of teamworking days, peer certificates and $900 cookery courses builds morale and skills now across the 9 chefs [app], sustaining service quality at around 60 events a year [an]. Overall, The Saltworks Kitchen should choose the non-financial package [eval], because chefs already have high morale to protect, and course-and-recognition rewards cost a predictable $8,100 a year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit sharing aligns staff with business success",
+            "non-financial rewards build morale and capability"
+          ],
+          "application_max_2": [
+            "$21,000 distributed",
+            "$2,333 per chef",
+            "$8,100 package",
+            "$900 cookery courses",
+            "$210,000 profit"
+          ],
+          "analysis_max_2": [
+            "profit share motivates cost control but is uncertain",
+            "package sustains morale and quality at events"
+          ],
+          "evaluation_max_2": [
+            "weighs financial stake against morale and skill building",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2,333",
+            "$8,100",
+            "$900",
+            "$210,000",
+            "Brigade of the Month",
+            "60 events",
+            "9 chefs",
+            "The Saltworks Kitchen"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_190",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Elmridge Fulfilment Co is a private limited company in Country X operating an e-commerce warehouse. It employs 120 full-time pickers and 80 seasonal workers for the 8-week peak before Christmas. Revenue last year was $5.6 million. Full-time pickers earn $13 an hour and seasonal workers $11, and the average picker handles 140 items a day against a daily target of 100 items. Annual turnover reached 23%.\n\nThe warehouse manager is comparing two peak-season proposals. Option 1 pays a bonus of $0.30 per item picked above 100 a day, so an average picker would earn an extra $12 a day and a high performer on 160 items would earn $18. Option 2 keeps hourly pay and introduces job rotation between picking, packing and loading, plus 'Peak Hero' weekly awards with $50 vouchers for staff nominated by colleagues, costing $5,000 for the peak season.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job rotation'.",
+        "model_answer": "Moving employees between different tasks or roles on a planned basis [1], so work becomes more varied and staff develop a wider range of skills [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "moving employees between tasks on a planned basis",
+            "widens skills and varies work"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of job rotation for Elmridge Fulfilment Co.",
+        "model_answer": "Benefit 1: Variety reduces boredom and fatigue [k], as pickers move between picking, packing and loading during the demanding 8-week peak [app]. Benefit 2: Rotation makes workers multi-skilled [k], so full-time and seasonal staff can cover absent colleagues anywhere in the warehouse without slowing order processing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "variety reduces boredom and fatigue",
+            "multi-skilled staff cover different roles"
+          ],
+          "application_max_2": [
+            "picking, packing and loading",
+            "8-week peak",
+            "120 full-time pickers",
+            "80 seasonal workers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Elmridge Fulfilment Co",
+            "picking, packing and loading",
+            "8-week peak",
+            "120 full-time pickers",
+            "80 seasonal workers",
+            "$13 an hour"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with the per-item bonus option for Elmridge Fulfilment Co.",
+        "model_answer": "Problem 1: Pickers may chase speed over accuracy [k], so the extra $12 a day for average pickers could raise error rates on packed orders [app], increasing costly returns and customer complaints [an]. Problem 2: Slower or newer staff would hardly benefit [k], earning under $12 extra or nothing at all [app], which could demotivate the 80 seasonal workers and lift the 23% turnover further [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output bonuses encourage speed over accuracy",
+            "output bonuses reward the fastest and exclude others"
+          ],
+          "application_max_2": [
+            "$12 a day extra",
+            "$0.30 per item",
+            "80 seasonal workers",
+            "23% turnover"
+          ],
+          "analysis_max_2": [
+            "errors raise returns and complaints",
+            "excluded workers may lose motivation and leave"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.30",
+            "$12 a day",
+            "80 seasonal workers",
+            "23%",
+            "100 items",
+            "140 items a day",
+            "$5.6 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Elmridge Fulfilment Co should introduce the per-item bonus instead of job rotation with the Peak Hero awards? Justify your answer.",
+        "model_answer": "The per-item bonus would directly reward high output [k], with $0.30 per item above 100 a day meaning the average picker gains $12 a day and a top picker on 160 items gains $18 [app], which could raise throughput and protect the $5.6 million revenue during the 8-week peak [an]. However, speed focus risks picking errors and excludes slower or newer staff [k], whereas rotation plus $50 Peak Hero vouchers cost only $5,000 and motivate all 120 full-time pickers and 80 seasonal workers through variety and peer recognition [app], supporting morale and accuracy at a critical time [an]. Overall, Elmridge should introduce job rotation with the Peak Hero awards [eval], because it motivates the whole workforce and protects order accuracy during the peak season [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output bonus directly rewards higher picking output",
+            "rotation and recognition motivate without accuracy risk"
+          ],
+          "application_max_2": [
+            "$0.30 per item above 100",
+            "$12 a day for the average picker",
+            "$18 for 160 items",
+            "$5,000 Peak Hero cost",
+            "$5.6 million revenue"
+          ],
+          "analysis_max_2": [
+            "bonus could lift throughput and protect revenue",
+            "rotation plus awards protects morale and accuracy"
+          ],
+          "evaluation_max_2": [
+            "weighs immediate output incentive against accuracy and inclusion",
+            "justified recommendation tied to stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.30",
+            "$12 a day",
+            "$18",
+            "$5,000",
+            "Peak Hero",
+            "$5.6 million",
+            "8-week peak",
+            "job rotation"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

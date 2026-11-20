@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_343",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Harbourleaf Tea Company (HTC) is a partnership in the hot-beverage sector, blending and packing loose-leaf and bagged teas for cafes and supermarkets. The partnership has a workforce of 26 and operates a flat structure with laissez-faire leadership under founder Mei Treasury. HTC plans to invest $430,000 in a new blending and automated packing line, financed by a $250,000 bank loan and $180,000 retained profit. It has fixed costs of $154,000 a year, a variable cost of $3.10 a unit and a selling price of $8.10, and produces 58,000 units a year, where each unit is a tea caddy. HTC faces two problems: 12% labour turnover among packing staff and rising complaints about inconsistent blends.",
+    "appendix_1_marketing_ops": "Quality and Operations Extract - Q4 2025: HTC packed 14,200 caddies last quarter, with 6.3% of batches rejected for inconsistent blends, down from 9.1% a year earlier. Customer complaints rose to 24 from 15 a month. Average order fulfilment is 4.1 days. A survey of 420 cafe buyers found 66% would pay $0.40 more for single-origin certified tea and 53% check ethical sourcing before ordering. A trial of the new blender on one shift cut rejected batches to 2.7%. A skills audit found 8 of 26 staff had not completed on-the-job training on the new packing line; off-the-job training at the regional college costs $640 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Harbourleaf Tea Company as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "74", "66"],
+        ["Trade receivables", "96", "112"],
+        ["Cash and cash equivalents", "26", "44"],
+        ["Current liabilities", "130", "124"],
+        ["Non-current assets", "760", "980"],
+        ["Capital employed", "880", "1,080"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Beverage Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.0% to 4.75%, increasing the cost of variable-rate borrowing. (2) The national minimum wage rises by 5.9% from $12.50 to $13.24 an hour from April 2026, raising packing wages. (3) Tea leaf and packaging input costs have risen 8.6% year-on-year, while retail tea prices rose only 1.8% and consumer spending on speciality tea grew 4.2%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HTC plans to fund part of its $430,000 packing line with a bank loan. Explain two advantages for HTC of using retained profit instead of the loan.",
+      "model_answer": "Point 1: Retained profit has no interest charge and no fixed repayment date, which matters because HTC must cover fixed costs of $154,000 a year with only $5.00 contribution per caddy ($8.10 − $3.10). Servicing a $250,000 loan would absorb cash even in months when the 6.3% rejection rate rises; keeping the $180,000 inside the partnership protects wages and lets Mei Treasury spend on fixing the inconsistent blends.\n\nPoint 2: Internal funding avoids the security and conditions a bank would impose, so the partners keep full control of blending recipes and the flat structure, with no lender able to veto decisions taken by the team. This suits a partnership where laissez-faire leadership relies on trusted staff. The drawback is that $180,000 of reserves can no longer cushion a bad quarter, leaving HTC dependent on the 12%-turnover-hit packing team to sustain the 58,000-caddy output. A phased approach, using the $180,000 first and borrowing only if the 4.2% speciality-tea demand growth persists, would preserve flexibility for the partners.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to HTC's costs, reserves and ownership."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$180,000", "$250,000", "$430,000", "$154,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HTC wants to launch a single-origin certified tea range. Consider sponsoring a barista competition, handing out free samples in cafes, or a social media campaign for tea drinkers. Which should HTC choose? Justify your recommendation.",
+      "model_answer": "Barista competition sponsorship: A competition puts HTC's tea in front of professional buyers and baristas whose opinions influence cafe listings, and it can carry the ethical-sourcing message that 53% of surveyed cafe buyers check. It is costly and short-lived, however, and reaches few of the 420 surveyed buyers directly while a $250,000 loan is being repaid.\n\nFree samples in cafes: Sampling lets buyers taste the blend and reduces the risk of a listing, which is valuable after complaints about inconsistent blends and a 6.3% rejection rate. It is cheap per tasting and gives instant feedback, but coverage is limited to a handful of cafes and cannot quickly build the 14,200-caddy quarterly base, so the link to the $430,000 line is slow.\n\nSocial media campaign: A campaign can show single-origin beans, the new blender and the 2.7% trial improvement to a national audience at low cost per view, with clicks measured against 14,200 caddies. It can convert the 66% who would pay $0.40 more into premium sales, though it needs steady content and cannot give buyers the tactile tasting evidence a café contract requires.\n\nRecommendation: HTC should choose the social media campaign, backed by limited cafe sampling for trade buyers. It reaches the 66% willing to pay the premium, scales beyond a few cafes and costs far less than a competition while the $250,000 loan is outstanding. Sponsorship is rejected as expensive and brief, and sampling alone is rejected as too local to fill a line built for 58,000 caddies a year.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal application to HTC.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of HTC with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in context with a well-justified recommendation explaining why sponsorship and sampling are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6.3%", "66%", "$0.40", "53%", "14,200", "$430,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HTC's labour turnover is 12% and 6.3% of batches are rejected for inconsistent blends. Explain two benefits for HTC of introducing team working in its packing area.",
+      "model_answer": "Point 1: Team working would let the workforce of 26 share blending and packing tasks and discuss problems together, which gives members a voice under Mei Treasury's laissez-faire style and reduces the isolation that drives 12% labour turnover. Stable teams learn the correct blend proportions, so the 6.3% rejection rate can fall towards the 2.7% recorded on the blender trial, protecting the 14,200 caddies packed each quarter.\n\nPoint 2: Teams can rotate between weighing, blending and sealing, so members understand how an error at one stage causes the 24 monthly complaints about inconsistent blends. Collective responsibility also means cover exists when a packer leaves, keeping the 4.1-day fulfilment promise and the $8.10 price intact while the $430,000 line is installed. Because 53% of buyers check ethical sourcing, a stable team is better placed to keep the certification records that support the $0.40 premium. Mei Treasury should compare batch rejections and absence on a trial shift with the 14,200-caddy baseline before asking all 26 staff to work in teams.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to HTC's turnover, blend quality, output and fulfilment."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["labour turnover", "12%", "workforce of 26", "6.3%", "14,200", "2.7%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HTC must train 8 of 26 staff on the new packing line. Consider on-the-job training on the line or off-the-job training at the regional college. Which should HTC choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching at the line teaches HTC's own sealing settings and blend checks, costs no course fees, and keeps the 8 trainees working while 14,200 caddies must be packed each quarter. Mistakes causing the 6.3% rejection rate can be corrected immediately on real caddies. The weaknesses are that experienced packers lose time teaching, bad habits may be passed on, and there is no certificate to evidence the ethical sourcing that 53% of buyers check.\n\nOff-the-job training: The regional college course costs $640 per employee, so 8 × $640 = $5,120, a small sum beside the $430,000 investment. It offers structured teaching in food handling and a recognised certificate, useful with 12% labour turnover. However, it removes 8 of 26 staff from production, risking the 4.1-day order fulfilment, and the generic course still needs adapting to HTC's own equipment.\n\nDecision: HTC should choose on-the-job training as the main method, with short college food-hygiene modules later. It is cheaper, tailored to the new line and avoids losing capacity while turnover is already 12%. Full off-the-job training is rejected because the $5,120 fee and lost shifts would slow the 14,200-caddy operation and cannot directly lower the 6.3% rejection rate. A one-shift trial compared with the 2.7% blender result should guide any further $640-per-head spending. The partners should also check that 12% turnover has fallen before investing more, since trained staff who leave would waste the $5,120 already committed. The partners should also check that 4.1-day fulfilment has not slipped during the trial, as college absences could undo the benefit of safer sealing.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to HTC.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both methods in the context of HTC.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a justified decision covering cost, disruption and relevance to the packing line."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$640", "8 of 26", "6.3%", "$430,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "HTC's management wants to use its cost and output data to plan the new line. Calculate and explain how that data can be used.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HTC's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $154,000 ÷ ($8.10 − $3.10) = $154,000 ÷ $5.00 = 30,800 units. Answer: break-even output is 30,800 caddies a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HTC's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Current output − Break-even output. Substitution: 58,000 − 30,800 = 27,200 units. Answer: margin of safety is 27,200 caddies a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HTC's management can use this financial data.",
+          "model_answer": "1. Break-even at 30,800 caddies against output of 58,000 leaves a margin of safety of 27,200, so even a quarter badly hit by the 6.3% rejection rate would still cover the $154,000 fixed costs.\n2. Contribution of $5.00 lets managers test the survey finding that 66% would pay $0.40 more: the premium lifts contribution to $5.40 and can be set against the cost of certification for the single-origin range.\n3. Average total cost of $5.76 a caddy ($154,000 ÷ 58,000 = $2.66, plus $3.10) gives a benchmark for the $430,000 line: automated packing must cut the 6.3% rejection rate or raise output to justify the extra fixed cost.\n4. The data guides financing: with 27,200 caddies of cushion, the partners can judge whether interest on the $250,000 loan is affordable while 12% labour turnover is being reduced, and whether to fund more from retained profit."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 30,800 caddies | (ii) Margin of safety = 27,200 caddies | (iii) Four contextual uses explained: 27,200-caddy cushion against the 6.3% rejection rate; a $0.40 premium on $5.00 contribution; a $5.76 unit-cost benchmark for the new line; and loan affordability for the $250,000 borrowing.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["30,800", "27,200", "58,000", "$154,000", "$5.00", "$8.10"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HTC's liquidity by calculating the current ratio and the acid test ratio for 2024 and 2025. Has HTC's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.51 : 1\nCurrent Ratio 2025 = 1.79 : 1\nAcid Test Ratio 2024 = 0.94 : 1\nAcid Test Ratio 2025 = 1.26 : 1\n\nDetailed workings: 2024 current assets = $74,000 inventories + $96,000 trade receivables + $26,000 cash = $196,000, and 2025 current assets = $66,000 + $112,000 + $44,000 = $222,000. Dividing by current liabilities gives $196,000 ÷ $130,000 = 1.51 and $222,000 ÷ $124,000 = 1.79. Excluding inventories: ($196,000 − $74,000) ÷ $130,000 = $122,000 ÷ $130,000 = 0.94, and ($222,000 − $66,000) ÷ $124,000 = $156,000 ÷ $124,000 = 1.26.\n\nEvaluation: Short-term liquidity improved on both measures. Current liabilities fell from $130,000 to $124,000 while current assets rose from $196,000 to $222,000, helped by cash rising from $26,000 to $44,000. The stricter test, which removes tea stock that could lose value if blends are inconsistent, moved from 0.94 to 1.26, so HTC can now meet short-term debts from cash and receivables alone rather than relying on selling the $66,000 of inventory. That matters while the partnership commits $180,000 of retained profit and borrows $250,000 for the $430,000 line. The caution is receivables, up from $96,000 to $112,000: cafe and supermarket customers are holding more of HTC's cash, and the 12% labour turnover plus 6.3% rejection rate could add costs faster than the ratios suggest.\n\nConclusion: HTC's financial position has improved. Both measures rose and the 1.26 figure shows the gain does not depend on stock, leaving better headroom to meet bills. Rising receivables are the main risk, so Mei Treasury should tighten credit terms with cafe buyers before drawing further on the $250,000 loan.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of inventory, receivables and liability movements and a justified conclusion on whether liquidity improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.51", "1.79", "0.94", "1.26", "$196,000", "$222,000", "$430,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HTC of launching the single-origin certified tea range identified in its survey.",
+      "model_answer": "Advantage: The survey of 420 cafe buyers found 66% would pay $0.40 more for single-origin certified tea, so the range can lift contribution above $5.00 a caddy and help recover the $430,000 line cost. Certification also answers the 53% who check ethical sourcing, strengthening listings with cafes and supermarkets and supporting the $8.10 price while retail tea prices rose only 1.8%.\n\nDisadvantage: Certification and traceability add documentation and fees, which raise the $3.10 variable cost or the $154,000 fixed costs, and the benefit depends on all 66% actually paying the premium; the survey records intent, not sales. Single-origin supply is also less flexible, so a poor harvest could worsen the 6.3% rejection rate and the 24 monthly complaints. The insert gives no premium sales volume, so the net effect cannot be quantified and a small trial is needed. HTC should measure actual premium sales and any extra certification cost against the 14,200-caddy quarterly baseline before extending the range to all cafes.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to HTC's survey, costs, rejection rate and certification."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["single-origin certified tea", "66%", "$0.40", "53%", "4.1 days", "$3.10"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.75%, the 5.9% minimum wage increase and the 8.6% rise in tea leaf and packaging costs will affect HTC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.0% to 4.75%): If the $250,000 bank loan is variable-rate, the 0.75 percentage-point increase adds 0.75% × $250,000 = $1,875 a year. That is modest against $154,000 of fixed costs, and the partners could fix the rate, so the direct impact is limited. The indirect impact is that dearer credit makes the $430,000 line harder to finance later and reduces the value of the $180,000 retained profit kept for contingencies.\n\nMinimum wage increase (5.9%, from $12.50 to $13.24): Each packing hour costs $0.74 more (5.9% × $12.50 = $0.7375). The insert gives no hours worked and no individual pay, so an annual total cannot be calculated honestly; the sound judgement is that 12% labour turnover forces repeated hiring at the higher rate, and unless productivity holds near 58,000 caddies from a workforce of 26, unit labour cost rises and the $5.00 contribution falls.\n\nTea leaf and packaging costs (up 8.6%): These feed the $3.10 variable cost on every caddy. The insert does not decompose that cost, so only a labelled upper bound is defensible: if the entire $3.10 were exposed, 8.6% × $3.10 = $0.27 a caddy, and at 58,000 caddies that is roughly $15,500 a year (58,000 × $0.2666). Even a smaller share cuts the $5.00 contribution on every unit, and retail tea prices rose only 1.8%, so little of the rise can be passed on.\n\nConclusion: The 8.6% rise in tea leaf and packaging costs will have the greatest impact. It recurs across all 58,000 caddies and directly erodes the $5.00 contribution that must repay the $250,000 loan and justify the $430,000 line, whereas the interest rise costs only $1,875 a year and can be capped by fixing the rate. The wage rise is second because it recurs with each new hire, but team working can offset part of it. HTC should cut the 6.3% rejection rate and seek the $0.40 premium instead of absorbing every increase.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to HTC.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on HTC's costs, prices or finance in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "5.9%", "8.6%", "$13.24", "$250,000", "$3.10"]
+      }
+    }
+  ]
+}

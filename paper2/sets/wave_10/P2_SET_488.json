@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_488",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Jestron Software Services (JSTS) is a private limited company in the business software sector, providing cloud accounting and payroll systems to trade firms across Dublin. Founded in 2017 by Ciara O'Donnell, JSTS employs a workforce of 50 and operates a flat organisational structure with laissez-faire leadership. JSTS plans to invest $720,000 in an automated invoicing and payroll platform, financed by a $450,000 ten-year bank loan and a $270,000 share issue. It has fixed costs of $720,000 a year, a variable cost of $120 a unit and a selling price of $300, and currently produces 10,000 units a year. JSTS faces a quality problem: 9% of invoices issued last quarter needed manual correction and a code audit found a 2.6% defect rate in released updates.",
+    "appendix_1_marketing_ops": "Market Research Summary — August 2026: A survey of 560 Irish trade firms found 66% still issue paper invoices and 59% would switch accounting software for automated payroll. Jestron's platform currently takes 3.8 days to process a payroll run; 9% of invoices last quarter required manual correction. Average customer support response is 7.1 hours. Competitors charge $19 per user per month while Jestron charges $23. Word-of-mouth referrals generate 41% of new subscribers; a code audit found a 2.6% defect rate in released updates.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Jestron Software Services for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "2,000", "2,400"],
+        ["Cost of sales", "1,300", "1,440"],
+        ["Gross profit", "700", "960"],
+        ["Operating profit", "240", "384"],
+        ["Capital employed", "1,500", "2,220"],
+        ["Interest payable", "36", "58"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) The European Central Bank raised its deposit rate from 3.75% to 4.40%, increasing borrowing costs on variable-rate business loans across the euro area. (2) Ireland's national minimum wage will rise 6.2% from $14.80 to $15.72 per hour from January 2027, raising payroll costs for support staff. (3) Data-centre and software-licensing costs rose 7.8% year-on-year as cloud demand surges, while Irish small-business software spending grew 5.9% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "JSTS plans to raise $270,000 for its automated invoicing platform through a share issue. Explain two advantages for JSTS of using the share issue instead of borrowing more with bank loans.",
+      "model_answer": "Point 1: A share issue provides permanent capital with no interest charge or repayment timetable, so JSTS can keep fixed costs of $720,000 a year free of extra debt service while it builds the $720,000 invoicing platform. The $270,000 can absorb the 7.8% rise in data-centre and licensing costs, letting JSTS hold the $300 price for the 59% of surveyed Irish trade firms who would switch for automated payroll rather than passing costs on.\n\nPoint 2: Equity carries no collateral or covenants, so Ciara O'Donnell and the existing shareholders keep strategic freedom if the 2.6% defect rate delays the platform launch; a bank could demand early repayment or security over the software assets. A broader shareholder base also strengthens credibility with the 66% of firms still using paper invoices, supporting the 10,000-unit plan and making future fundraising easier. The share issue spreads risk across investors rather than loading it onto a 50-person business.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Jestron Software Services and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "bank loan", "$270,000", "$450,000", "$720,000", "fixed costs"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "JSTS is reviewing the price of its cloud accounting software. Consider cutting the $23 price to match the $19 rival, holding $23 and adding premium features, or introducing tiered subscriptions. Which should JSTS choose? Justify your recommendation.",
+      "model_answer": "Cutting the price to $19: Matching rivals would remove the price objection for the 59% of surveyed firms who would switch for automated payroll and could win quick market share. However, dropping from $23 to $19 cuts contribution per unit from $180 to $140, raising break-even on $720,000 fixed costs from 4,000 to about 5,143 units and threatening the 10,000-unit plan. A price war with established rivals would also squeeze the cash needed to repay the $450,000 loan.\n\nHolding $23 and adding premium features: Keeping the price preserves $180 contribution while premium automated-payroll tools justify the gap over $19 rivals and appeal to the 59% switch segment. It protects the 41% referral engine and the 40.0% share of revenue retained as gross profit. The risk is that 66% of firms still use paper invoices and may need heavy education before paying more, and development cost must come from the $720,000 budget.\n\nTiered subscriptions: Basic, standard and premium tiers let JSTS capture price-sensitive firms at a low entry point while upselling payroll automation to larger trade firms, spreading the $120 variable cost across more subscribers. It also fits the 41% referral pattern. Weaknesses are billing complexity and the risk that customers downgrade to the cheapest tier.\n\nRecommendation: JSTS should introduce tiered subscriptions. They defend against the $19 rival without a blanket price cut, protect contribution and open a path to upsell the 59% switch segment. Matching $19 is rejected because it destroys contribution and endangers loan repayment; holding a single $23 price is rejected because it leaves no low-cost entry for the 66% still on paper. Tiering combines both advantages.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the pricing options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of JSTS with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three pricing options in the context of JSTS with a well-justified recommendation explaining why matching $19 and a single $23 price are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$19", "$23", "59%", "41%", "560", "66%"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "JSTS has a 2.6% defect rate in updates and 9% of invoices needing correction. Explain two benefits for JSTS of using laissez-faire leadership in its flat structure to improve software quality.",
+      "model_answer": "Point 1: Laissez-faire leadership gives the experienced developers who write the code freedom to choose how to fix the 2.6% defect rate and the 9% of invoices needing manual correction. In a flat structure their expertise is trusted rather than overridden, which raises ownership and job satisfaction (Herzberg) among the 50 staff and encourages them to test updates thoroughly before release, protecting the 10,000 units a year of service output.\n\nPoint 2: Delegation speeds problem-solving because developers can patch faults and reduce the 3.8-day payroll-processing time without waiting for approvals, cutting the 7.1-hour support response pressure. Empowered teams are more likely to suggest automation that reduces manual corrections and sustains the 41% referral rate. Autonomy also helps retain skilled staff during the $720,000 platform build, since motivated developers are less likely to leave, preserving continuity for the 59% of firms seeking better software.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to JSTS's defect rate, invoice errors and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire", "flat", "workforce of 50", "2.6%", "9%", "3.8 days"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "JSTS must reduce its 2.6% defect rate and 9% invoice-correction rate. Consider introducing automated validation checks or setting up quality circles. Which should JSTS choose? Justify your decision.",
+      "model_answer": "Automated validation checks: Embedding checks in the invoicing platform would catch the 9% of invoices needing manual correction before they reach customers and reduce the 2.6% defect rate in updates, cutting the 7.1-hour support response load. Checks work continuously across all 10,000 units and lower rework costs, protecting the $180 contribution. Drawbacks are the upfront development cost within the $720,000 budget and the risk that rigid rules miss unusual trade-firm cases, needing human backup.\n\nQuality circles: Regular meetings where developers and support staff identify and solve quality problems would tap the 50 staff's practical knowledge, fitting the flat, laissez-faire culture and addressing root causes of defects and invoice errors. Circles can also improve the 3.8-day payroll time and strengthen the 41% referral engine through better service. However, they take time away from coding, results are slower than automated checks, and without clear authority recommendations may not be implemented.\n\nDecision: JSTS should introduce automated validation checks as the main solution, supported by a small quality circle. Automation gives immediate, consistent control over the 9% invoice error and 2.6% defect rates across every unit and directly protects the $180 contribution and the $720,000 investment. Quality circles alone are rejected as too slow and dependent on staff discretion during a platform launch; JSTS can still hold circles to guide which checks to add, combining speed with employee insight.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two quality approaches with limited application to JSTS.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both approaches in the context of JSTS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both approaches in the context of JSTS with a well-justified decision covering speed, cost, consistency and staff involvement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.6%", "9%", "7.1 hours", "41%", "$720,000", "$23"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how JSTS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate JSTS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $720,000 ÷ ($300 − $120) = $720,000 ÷ $180 = 4,000 units. Answer: break-even output is 4,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate JSTS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $300 − $120 = $180. Answer: contribution per unit is $180."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways JSTS's management can use this financial data.",
+          "model_answer": "1. JSTS's managers can compare the 4,000-unit break-even output with actual output of 10,000 units, giving a margin of safety of 6,000 units and confidence that the new platform can cover fixed costs even if Irish trade-firm demand dips.\n2. Contribution per unit of $180 lets managers model pricing, for example a cut to the $19 rival price would reduce contribution to $100 and raise break-even to 7,200 units, showing a price war would endanger the 10,000-unit plan.\n3. Fixed costs of $720,000 and $180 contribution support the affordability test for the $450,000 bank loan and $270,000 share issue, proving the $720,000 investment is serviceable while the 9% invoice error rate is fixed.\n4. Managers can use unit cost data ($720,000 ÷ 10,000 units = $72 + $120 = $192 a unit) to benchmark development efficiency, target the 2.6% defect rate and renegotiate licensing amid 7.8% cloud-cost inflation, defending the $300 price."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 4,000 units | (ii) Contribution per unit = $180 | (iii) Four contextual uses explained: margin of safety against 10,000-unit output; modelling the $19 rival price against $720,000 fixed costs; loan and share-issue feasibility for the $720,000 platform; and unit-cost benchmarking at $192.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4,000", "$180", "10,000", "$720,000", "$120", "$300", "$192"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate JSTS's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has JSTS's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 35.0%\nGross Profit Margin 2025 = 40.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 16.0%\nROCE 2024 = 16.0%\nROCE 2025 = 17.3%\n\nDetailed workings: Gross profit 2024 = $2,000,000 − $1,300,000 = $700,000; 2025 = $2,400,000 − $1,440,000 = $960,000. As a share of revenue: 2024 = $700,000 ÷ $2,000,000 = 35.0%; 2025 = $960,000 ÷ $2,400,000 = 40.0%. Operating profit as a share of revenue: 2024 = $240,000 ÷ $2,000,000 = 12.0%; 2025 = $384,000 ÷ $2,400,000 = 16.0%. Returns on capital employed: 2024 = $240,000 ÷ $1,500,000 = 16.0%; 2025 = $384,000 ÷ $2,220,000 = 17.3%.\n\nEvaluation: 2025 shows stronger performance across all three measures. The share of revenue retained after cost of sales rose from 35.0% to 40.0%, helped by the automated invoicing efficiencies and the 59% of surveyed firms wanting better software. Capital employed grew from $1,500,000 to $2,220,000, matching the $720,000 platform funded by loan and share issue, yet returns on it improved from 16.0% to 17.3%, so the new system is already adding value. Operating profit rose, covering interest payable climbing from $36,000 to $58,000. Risks remain: 7.8% licensing inflation is pushing up costs, and if the 2.6% defect rate persists the subscription base could be damaged.\n\nConclusion: JSTS's financial performance has improved. Margins and returns on capital all rose, with operating profitability growing faster than revenue. The improvement is sound, so JSTS should fix the loan rate and eliminate invoice errors to protect it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether JSTS's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["35.0%", "40.0%", "12.0%", "16.0%", "17.3%", "2,220"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for JSTS of launching its automated invoicing and payroll platform for Irish trade firms.",
+      "model_answer": "Advantage: The platform targets clear demand: 66% of surveyed firms still issue paper invoices and 59% would switch for automated payroll, so JSTS can win new subscribers and reduce its 3.8-day processing time. It supports the $300 price against $19 rivals, strengthens the 40.0% share of revenue retained as gross profit and grows the 10,000 units a year needed to justify the $720,000 investment and the 41% referral engine.\n\nDisadvantage: Reliability is a serious threat: with 9% of invoices needing manual correction and a 2.6% defect rate in updates, a high-profile launch could expose faults to many firms at once, raising the 7.1-hour support response load and damaging the 41% referral rate. The 50 staff may be stretched during the $720,000 build, and 7.8% licensing-cost inflation could force JSTS to absorb margin or raise the $300 price beyond what the 560 surveyed firms will accept.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to JSTS's research, costs and customers."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "59%", "2.6%", "9%", "$720,000", "$23"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the rise in the deposit rate to 4.40%, the 6.2% minimum wage increase and the 7.8% rise in data-centre costs will affect JSTS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Deposit rate rise to 4.40%: JSTS carries a $450,000 ten-year bank loan. If it is variable-rate, the 0.65 percentage-point rise adds 0.65% of $450,000 = $2,925 a year (0.0065 × $450,000). That is small compared with fixed costs of $720,000 and 2025 interest payable of $58,000, and if the loan is fixed-rate the direct cost is nil. Higher rates might also slow Irish small-business software spending, but JSTS can largely eliminate the financing risk by fixing the rate.\n\nMinimum wage rise of 6.2% to $15.72 per hour: The insert does not state hours worked or how many of the 50 staff are hourly-paid, so no defensible annual wage total can be invented. The sound test is productivity computed from the insert: 10,000 units ÷ 50 staff = 200 units per worker. If that holds, the rise is absorbable within a 40.0% share of revenue retained as gross profit; if the 2.6% defect and 9% invoice problems reduce output per worker, unit labour costs rise and the $180 contribution per unit shrinks. JSTS can recover part through the 59% switch segment.\n\nData-centre and licensing cost inflation of 7.8%: This reaches every unit. The insert does not decompose the $120 variable cost, so only an explicitly labelled upper bound is honest: if the whole variable cost rose 7.8%, it would add 7.8% of $120 = $9.36 per unit, and at 10,000 units that is about $93,600 a year (10,000 × $9.36). Even a fraction of that erodes the contribution funding the $720,000 platform, and with rivals at $19 it cannot easily be passed to price-sensitive trade firms.\n\nConclusion: The 7.8% rise in data-centre and licensing costs will have the greatest impact. It recurs on all 10,000 units and attacks the $180 contribution behind the $720,000 investment, whereas the rate rise is at most $2,925 and the wage effect cannot be quantified without invented assumptions. JSTS should lock licensing contracts and fix the loan rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to JSTS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on JSTS's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of JSTS with a well-justified judgment that data-centre cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.40%", "6.2%", "7.8%", "$15.72", "$450,000", "$120"]
+      }
+    }
+  ]
+}

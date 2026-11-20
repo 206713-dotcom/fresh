@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_114",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Hartwell Homewares (HHW) is a public limited company in the homeware retail sector, employing a workforce of 210. Founded in 1994 by Gregory Hartwell, the chain operates twelve out-of-town stores across the Alderney region under a hierarchical structure with democratic leadership. HHW plans to invest $1,850,000 in three new out-of-town homeware stores, financed by a $1,200,000 share issue and $650,000 bank loan. It has fixed costs of $1,050,000 a year, a variable cost of $13 a unit and a selling price of $25.50, and currently produces 108,000 units a year. HHW faces a serious human resources problem: labour turnover has reached 41% a year across its stores and seasonal shelf-stacking gaps widen every Christmas.",
+    "appendix_1_marketing_ops": "Market Research Summary — October 2026: Across its twelve stores, HHW serves average monthly footfall of 92,000 shoppers with an average basket value of $46. A survey of 800 shoppers found 57% would buy furniture online for home delivery and 43% chose HHW for low prices; 66% were satisfied with in-store service, and 12% complained about checkout queues over 10 minutes. Online sales are 19% of revenue, up from 14% a year ago, and the three proposed stores scored an average 8.1 out of 10 on catchment research for visibility, parking and local spending.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Hartwell Homewares as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "520", "640"],
+        ["Trade receivables", "380", "430"],
+        ["Cash and cash equivalents", "230", "380"],
+        ["Current liabilities", "640", "760"],
+        ["Non-current assets", "6,800", "8,400"],
+        ["Capital employed", "7,290", "8,990"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, raising the cost of variable-rate borrowing for large retailers. (2) The national minimum wage will rise by 6.1% from $12.90 to $13.69 per hour from April 2026, increasing wage bills across stores and warehouses. (3) Furniture and homeware input costs (timber, steel and textiles) have risen 9.6% year-on-year, retail inflation is 5.8%, and consumer spending on homewares fell 2.4% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HHW intends to fund part of the three-store expansion by share issue. Explain two advantages for HHW of financing the expansion with a $1,200,000 share issue instead of the $650,000 bank loan.",
+      "model_answer": "Point 1: A share issue carries no interest and no fixed repayment dates, which is vital when HHW already faces fixed costs of $1,050,000 a year and a variable-rate bank loan element rising with the base rate. Avoiding further debt service protects HHW's cash headroom — important with labour turnover at 41% and wage inflation approaching — and leaves the $650,000 bank loan manageable alongside the share-issue proceeds.\n\nPoint 2: Selling shares spreads the ownership risk of three unproven out-of-town sites across many public investors rather than loading it onto HHW's property assets as security. It also strengthens the balance sheet and makes HHW more credible to landlords, suppliers and local authorities during catchment negotiations, supporting the 8.1 out of 10 catchment scores the three sites achieved, and preserving the freedom to stage openings rather than commit to aggressive early repayments.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Hartwell Homewares, its expansion decision and its finances."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "bank loan", "$1,200,000", "$650,000", "$1,850,000", "labour turnover"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HHW is opening three new out-of-town homeware stores. Consider a national television campaign, local radio sponsorship in the three catchment areas, or social media marketing with home-lifestyle influencers. Which should HHW choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National television campaign: Television would reach millions across the whole Alderney region and build instant national awareness of the new stores, reinforcing HHW's twelve-store reputation. However, production and airtime are extremely expensive, much of the audience lives far outside the three catchments, and for a public limited company raising $1,200,000 in new equity, the wastage is hard to justify when only three stores open, and television cannot tell viewers exactly where to park or what opening offers apply locally.\n\nLocal radio sponsorship in the three catchment areas: Radio reaches commuters and local householders precisely where the stores will trade, suits opening-weekend messaging, price announcements and loyalty-card drives, and is far cheaper than television. Its weakness is audio-only communication — homewares is visual, so sofa styles and kitchen ranges cannot be shown — and frequency of spots is needed before recall builds, with no interactive click-through to HHW's website.\n\nSocial media marketing with home-lifestyle influencers: Influencers could tour showroom kitchens, style living rooms with HHW furniture and post discount codes, measurable through clicks and redemptions, suiting the 57% of shoppers willing to buy online. It is inexpensive and visual, but skew toward younger audiences under-represents HHW's core family furniture buyers, and quality control across many influencers is harder for a hierarchical, democratically governed chain.\n\nRecommendation: HHW should choose local radio sponsorship anchored in the three catchment areas. It concentrates spend exactly where stores open, suits price-led homeware messages for family buyers, and costs a fraction of television and more targeting than untargeted social reach. National television is rejected as unaffordable and untargeted for three stores, and influencer-first social marketing is rejected as too young-skewing and hard to police for a 210-person chain; HHW should add in-store events and local press leaflets to convert radio listeners into opening-weekend footfall.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal application to HHW.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of HHW with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of HHW with a well-justified recommendation explaining why television and influencer-first social marketing are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "$1,850,000", "57%", "workforce of 210", "8.1", "footfall"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HHW operates a hierarchical structure with democratic leadership. Explain two benefits for HHW of its hierarchical structure when managing 210 staff across fifteen stores.",
+      "model_answer": "Point 1: A hierarchical structure gives HHW clear levels of authority — store managers, department leads, shelf teams — so every one of the 210 staff knows who to report to and who makes pricing, returns and safety decisions. This clarity is essential for training new starters fast, cutting the disruption caused when labour turnover hits 41% a year, and keeping service consistent across twelve stores while three more open.\n\nPoint 2: Defined chains of command speed up escalation when problems arise, for example stock shortages or the 12% of shoppers complaining about checkout queues over 10 minutes; democratic leadership then lets employees contribute ideas through team briefings and worker forums before decisions are finalised, combining tight control with genuine staff buy-in from departments that understand homewares operations best.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HHW's scale, turnover problem and structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["hierarchical structure", "democratic leadership", "workforce of 210", "labour turnover", "41%", "twelve"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HHW wants to reduce its 41% annual labour turnover. Consider performance-related bonuses or job enrichment for store staff. Which should HHW choose? Justify your decision.",
+      "model_answer": "Performance-related bonuses: Linking a monthly bonus to individual or team sales targets, mystery-shop scores and queue times would reward results directly — the $46 average basket value and 66% satisfaction with in-store service are measurable, and bonuses are easy to understand. They are particularly useful for checkout and sales-floor staff whose effort varies by shift. But bonuses narrow attention to measured metrics, can fuel unhealthy competition between the twelve stores, may reward selling over genuine advice, and do nothing for workers demotivated by repetitive stacking tasks; they also ratchet up the wage bill at a time when the minimum wage rises 6.1%.\n\nJob enrichment: Redesigning roles so shelf stackers and cashiers take ownership of stock rotation, customer help, display refreshes and simple team budgets gives variety, responsibility and growth — the Herzberg hygiene-and-motivator insight that removing monotony beats adding cash. Enrichment costs little in cash, builds skills HHW needs for three new stores, and directly addresses boredom-driven quitting among younger shelf teams. Its limits are slower to show results, requires careful training and supervision, and cannot satisfy staff purely motivated by take-home pay.\n\nDecision: HHW should choose job enrichment as its primary remedy, wrapped in targeted team bonuses only for new-store opening teams. Enrichment attacks the root cause of the 41% turnover — monotony and lack of progression in shelf and till roles — costs far less than adding bonus pay on top of a 6.1% minimum-wage rise, and builds the versatile staff the expansion needs. Performance-related bonuses alone are rejected because they pay more for output without fixing why people leave, risk worsening stock shrinkage and corner-cutting at busy periods, and would be repeated indefinitely; enrichment with recognition is the sustainable fix.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two motivation methods with limited application to HHW.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both methods in the context of HHW.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods in the context of HHW with a well-justified decision explaining why performance-related bonuses are rejected as the sole remedy and job enrichment is preferred."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["labour turnover", "41%", "$46", "workforce of 210", "democratic leadership", "minimum wage"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HHW's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HHW's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $1,050,000 ÷ ($25.50 − $13.00) = $1,050,000 ÷ $12.50 = 84,000 units. Answer: break-even output is 84,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HHW's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $25.50 − $13.00 = $12.50. Answer: contribution per unit is $12.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HHW's management can use this financial data.",
+          "model_answer": "1. HHW's managers can compare the 84,000-unit break-even output with actual output of 108,000 units, a margin of safety of 24,000 units, to decide whether three new stores can each absorb their share of the expanded cost base or whether openings should be staged.\n2. The $12.50 contribution per unit lets managers model promotional discounts, for example a 10% homewares sale at $22.95 would cut contribution to $9.95, showing how many extra units are needed at each new store to cover its share of fixed costs.\n3. Knowing fixed costs of $1,050,000 and contribution, managers can test the $650,000 bank loan repayments plus new stores' rents against store-level cash generation, and set unit targets for the three new managers to protect shareholder value after the $1,200,000 share issue.\n4. Managers can benchmark unit cost ($1,050,000 ÷ 108,000 = $9.72, plus $13.00 = $22.72 a unit) and labour productivity (108,000 units ÷ 210 staff ≈ 514 units per worker) to plan rostering against the 6.1% minimum wage rise and to track whether the 41% labour turnover is degrading service and basket value at peak."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 84,000 units | (ii) Contribution per unit = $12.50 | (iii) Four contextual uses: margin of safety of 24,000 units vs 108,000-unit output; sale modelling vs $1,050,000 fixed costs; loan and new-store feasibility for the $650,000 bank loan; and unit-cost benchmarking at $22.72 with productivity of 514 units per worker.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["84,000", "$12.50", "$1,050,000", "$13", "$25.50", "$650,000", "24,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HHW's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has HHW's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.77 : 1\nCurrent Ratio 2025 = 1.91 : 1\nAcid Test Ratio 2024 = 0.95 : 1\nAcid Test Ratio 2025 = 1.07 : 1\n\nDetailed workings: 2024 current assets = $520,000 inventories + $380,000 trade receivables + $230,000 cash = $1,130,000; 2025 current assets = $640,000 + $430,000 + $380,000 = $1,450,000. 2024 cover = $1,130,000 ÷ $640,000 current liabilities = 1.77; 2025 cover = $1,450,000 ÷ $760,000 = 1.91. 2024 liquid cover = ($1,130,000 − $520,000) ÷ $640,000 = $610,000 ÷ $640,000 = 0.95; 2025 liquid cover = ($1,450,000 − $640,000) ÷ $760,000 = $810,000 ÷ $760,000 = 1.07.\n\nEvaluation: HHW's liquidity has improved modestly but genuinely. Cash and cash equivalents rose from $230,000 to $380,000, and non-current assets expanded from $6,800,000 to $8,400,000 as the three-store build-up progressed, yet current liabilities also grew from $640,000 to $760,000 as HHW financed stock timber, steel and textiles ahead of opening. Inventories rose from $520,000 to $640,000, reasonable for a stock-led retailer preparing launch inventory, while trade receivables climbed from $380,000 to $430,000, so HHW should tighten payment terms with its timber and steel suppliers' trade-credit arrangements to avoid over-reliance on supplier finance. The liquid cover crossing 1.00 in 2025 (1.07) is a positive signal for a retailer paying weekly wages to 210 staff.\n\nConclusion: HHW's financial position has improved. Overall cover strengthened from 1.77 to 1.91 and liquid cover from 0.95 to 1.07, giving headroom to absorb opening costs. However, inventories and receivables both rose faster than sales momentum, and consumer spending on homewares fell 2.4%, so HHW should clear slow stock before opening and keep the $650,000 bank loan fixed-rate to protect this improved flexibility.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of inventory, receivables and cash movements and a justified conclusion on whether HHW's financial position improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.77", "1.91", "0.95", "1.07", "$1,130,000", "$1,450,000", "$1,850,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HHW of selling more homewares online through its website and allowing online ordering with store collection.",
+      "model_answer": "Advantage: Online sales already represent 19% of revenue, up from 14% a year ago, and 57% of surveyed shoppers would buy furniture for home delivery, so extending the website with store-collection options would capture that demand without paying to build extra showroom space. HHW could reach beyond its twelve Alderney stores, reduce reliance on the $46 average basket's in-store dependence, gather customer data for targeted promotions, and smooth seasonal wage peaks by shifting discovery and payment online before collection.\n\nDisadvantage: Selling higher-ticket furniture online raises the stakes on delivery, damage and returns — particularly timber and steel frames that cost more to move than the 12% checkout-queue complainants ever see. HHW would need drivers, packaging and insurance capacity, web photography and stock accuracy across twelve stores plus three new ones, and margin would be squeezed if the 5.8% retail inflation and 9.6% input-cost rise are passed through slowly, risking online price mismatches with store displays under its hierarchical pricing approvals.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HHW's online sales, research data and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["19%", "57%", "$46", "workforce of 210", "up from 14%", "footfall"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 6.1% minimum wage increase and the 9.6% rise in homeware input costs will affect HHW. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (from 4.25% to 5.0%): The 0.75% increase adds roughly $4,875 a year to interest on a $650,000 variable-rate bank loan, and slightly raises the discount rate HHW and its investors apply to the three new stores' future cash flows. Higher rates also cool housing transactions and big-ticket furniture demand; with consumer spending on homewares already down 2.4%, the demand effect may matter more than the $4,875. HHW can fix the loan and negotiate terms, making this the smallest direct cash impact, but a real strategic headwind.\n\nMinimum wage increase (6.1% rise to $13.69 per hour from April 2026): HHW's 210 staff — shelf teams, checkout, warehouse and new-store hires — are predominantly hourly. A wage bill of roughly $4.4 million a year rises by about $269,000 after the 6.1% increase, with extra pressure from overtime at Christmas shelf-stacking. For a retailer with $46 baskets, recovering $269,000 requires roughly 5,850 extra baskets a year (at $46) or a targeted price increase across top sellers; productivity, rostering and the 41% labour-turnover fix become urgent financial priorities, not just HR ones.\n\nInput-cost inflation (9.6% rise in timber, steel and textiles): These inputs dominate HHW's $13 variable cost per unit, roughly $9.75 of it. A 9.6% rise adds close to $0.94 a unit, or about $101,000 a year on 108,000 units, squeezing the $12.50 contribution to about $11.56 unless prices rise or suppliers are renegotiated. Because retail inflation is only 5.8%, HHW cannot pass it all through quickly, but its $25.50 price point and 43% low-price positioning give some room.\n\nConclusion: The 6.1% minimum wage increase will have the greatest impact on HHW. At roughly $269,000 a year it dwarfs the $101,000 input-cost rise and the $4,875 interest addition, and it hits every hour of trading across all stores. HHW should accelerate job enrichment and multi-skilling to lift output per worker, re-tender cleaning and logistics contracts, introduce opening-weekend staffing flexibility, and take a modest, phased price rise on inelastic lines, while fixing the loan and pressuring timber and steel suppliers to contain the second-largest threat.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to HHW.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on HHW's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of HHW with a well-justified judgement that the minimum wage increase has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "6.1%", "9.6%", "interest rate", "$13.69", "$650,000"]
+      }
+    }
+  ]
+}

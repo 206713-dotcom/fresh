@@ -1,0 +1,1154 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_161",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Briarfield Conserves Co is a private limited company in Country X making jams and chutneys at a factory opened 12 years ago. The business employs 85 production workers and produced 900,000 jars last year, with revenue of $2.7 million and profit of $270,000. Five years of rapid plant expansion has caused poor communication between the 3 shifts, and managers now report 140 jars rejected daily.\n\nThe board is choosing between two options. Option A is a horizontal integration: buying rival Hearthwick Conserves, producing 60,000 jars a month, for $1.8 million. Option B is organic growth: slowing expansion, adding 2 team supervisors and a written shift handover process, aiming to lift profit to $400,000 by 2029. Both plans target the same board deadline next autumn.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'diseconomies of scale'.",
+        "model_answer": "Diseconomies of scale occur when a business grows beyond its most efficient size and average costs begin to rise, for example because of poor communication, low morale or slow decision-making [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "average costs rise as the business grows beyond the efficient scale",
+            "caused by problems such as poor communication, low morale or slow decision-making"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why poor communication between the 3 shifts is increasing rejected jars.",
+        "model_answer": "Reason 1: Messages are delayed or distorted as they travel between shifts [k], so faults in jar sealing reported by night staff are not corrected before the day shift, contributing to the 140 jars rejected daily [app]. Reason 2: Poor communication means problems are not shared or standardised [k], so quality checks are skipped or duplicated across the 3 shifts running the 900,000-jar annual output [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "messages delayed/distorted between shifts",
+            "lack of communication means faults/problems are not shared or fixed quickly"
+          ],
+          "application_max_2": [
+            "140 jars rejected daily",
+            "3 shifts / 900,000-jar output",
+            "Briarfield Conserves Co"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Briarfield Conserves Co",
+            "140 jars",
+            "3 shifts",
+            "900,000",
+            "poor communication"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Briarfield of horizontal integration with Hearthwick Conserves.",
+        "model_answer": "Benefit 1: Horizontal integration removes a competitor from the market [k], because buying Hearthwick for $1.8 million adds 60,000 jars a month of output to Briarfield's 900,000 jars a year [app], increasing market share and spreading fixed costs over more units [an]. Benefit 2: The combined business gains purchasing and marketing economies of scale [k], as shared buying of jars and chutney ingredients and a wider distribution reach follow the merger [app], helping push the $270,000 profit towards the $400,000 target [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "removes a competitor / increases market share",
+            "gains economies of scale (purchasing/marketing)"
+          ],
+          "application_max_2": [
+            "$1.8 million takeover of Hearthwick Conserves",
+            "60,000 jars a month added to 900,000 jars a year",
+            "$270,000 profit towards $400,000 target"
+          ],
+          "analysis_max_2": [
+            "fixed costs spread over more units / higher output",
+            "higher market share / stronger competitive position / higher profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hearthwick Conserves",
+            "$1.8 million",
+            "60,000 jars",
+            "horizontal integration",
+            "$270,000",
+            "$2.7 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Briarfield should buy Hearthwick Conserves or grow organically? Justify your answer.",
+        "model_answer": "Buying Hearthwick would give Briarfield instant scale and remove a rival [k], because $1.8 million secures 60,000 jars a month of output in one deal [app], driving faster growth than opening plants gradually could achieve [an]. However, organic growth is cheaper and tackles the real cause of failure [k], because slowing expansion, adding 2 supervisors and a shift handover process would fix the poor communication behind the 140 jars rejected daily [app], cutting waste before scale increases further [an]. Overall, I think Briarfield should grow organically first [eval], because merging two businesses while communication between the 3 shifts is broken would likely worsen diseconomies rather than cure them [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "horizontal integration gives instant scale/removes a rival/economies of scale",
+            "organic growth is cheaper/lower risk and fixes internal problems first"
+          ],
+          "application_max_2": [
+            "$1.8 million for 60,000 jars a month",
+            "140 jars rejected daily / poor communication between the 3 shifts",
+            "$270,000 profit / $400,000 target / $2.7 million revenue"
+          ],
+          "analysis_max_2": [
+            "faster growth and market share via takeover vs slower but sustainable organic route",
+            "fixing communication reduces waste and unit costs before adding scale"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on which option suits Briarfield's situation, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "organic growth",
+            "$1.8 million",
+            "Hearthwick Conserves",
+            "140 jars",
+            "3 shifts",
+            "$270,000",
+            "$400,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_162",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Highmere Distribution Ltd is a private limited company in Country X running a parcel delivery network. The firm expanded from 3 depots to 11 depots in 4 years and now employs 260 drivers and warehouse staff, handling 95,000 parcels a week. Revenue reached $8.4 million last year, but late deliveries rose to 14% and fuel consumed 31% of total costs.\n\nThe operations director proposes splitting the network into 4 regional divisions, each with its own manager, to cut coordination loss and speed decisions. Alternatively, Highmere could acquire Cruxhill Couriers, a 90-driver rival covering 2 southern counties, for $2.6 million, adding instant national coverage before peak season. The board must decide by the March meeting. Both options aim to cut the 14% late delivery rate and protect the $8.4 million revenue base.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'organic growth'.",
+        "model_answer": "Organic growth is expansion achieved from within a business, such as opening new depots or investing in new vehicles, rather than by merging with or buying another firm [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "growth from within the business's own resources/activities",
+            "not through mergers or takeovers (internal methods such as expansion of premises/output)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two growth problems Highmere faces after expanding to 11 depots.",
+        "model_answer": "Problem 1: Coordination loss [k], because 11 depots and 260 staff spread over 4 years of rapid expansion are hard to direct centrally, which is reflected in late deliveries rising to 14% [app]. Problem 2: Falling efficiency and rising costs [k], because fuel already consumes 31% of total costs and 95,000 parcels a week are harder to route and monitor across a large network [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "coordination loss (difficulty controlling many sites centrally)",
+            "rising costs/inefficiency as scale increases"
+          ],
+          "application_max_2": [
+            "11 depots and 260 staff after 4 years of expansion",
+            "14% late deliveries / 31% of total costs / 95,000 parcels a week"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Highmere Distribution Ltd",
+            "11 depots",
+            "260 drivers",
+            "14%",
+            "31%",
+            "95,000 parcels"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Highmere of splitting into 4 regional divisions.",
+        "model_answer": "Benefit 1: Faster, better-informed decisions [k], because each of the 4 regional divisions would have its own manager close to its depots [app], shortening approval chains and cutting the coordination loss that produced 14% late deliveries [an]. Benefit 2: Clearer accountability [k], because division managers would own the performance of the 95,000 parcels handled weekly within their region [app], motivating them to control fuel use and driver productivity [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster/better local decision-making in decentralised divisions",
+            "clearer accountability/motivation of divisional managers"
+          ],
+          "application_max_2": [
+            "4 regional divisions, each with its own manager",
+            "95,000 parcels a week / 14% late deliveries"
+          ],
+          "analysis_max_2": [
+            "shorter chain of command reduces approval delays and coordination loss",
+            "accountability motivates managers, improving efficiency/cost control"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "4 regional divisions",
+            "11 depots",
+            "95,000 parcels",
+            "14%",
+            "260 drivers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Highmere should acquire Cruxhill Couriers or split into regional divisions? Justify your answer.",
+        "model_answer": "Acquiring Cruxhill would add instant capacity and coverage [k], because $2.6 million buys 90 drivers across 2 southern counties, widening Highmere's national network overnight [app], lifting revenue above the current $8.4 million quickly [an]. However, splitting into 4 divisions tackles the root cause of failure [k], because 14% late deliveries stem from coordination loss in a centrally run 11-depot network, and division managers would end that for a fraction of $2.6 million [app], speeding decisions and protecting the $8.4 million revenue base [an]. Overall, I think Highmere should split into divisions first [eval], because buying a rival while decisions are still slow risks importing more chaos, whereas fixing coordination may itself make future acquisitions safe [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "takeover/horizontal integration gives instant capacity, coverage and scale",
+            "internal reorganisation decentralises decisions and tackles coordination loss cheaply"
+          ],
+          "application_max_2": [
+            "$2.6 million for a 90-driver rival covering 2 southern counties",
+            "14% late deliveries from an 11-depot centrally run network",
+            "$8.4 million revenue base / 95,000 parcels a week"
+          ],
+          "analysis_max_2": [
+            "takeover speeds growth but adds cost and integration risk",
+            "divisions cut decision delays and improve accountability at low cost"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on which option best suits Highmere now, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cruxhill Couriers",
+            "$2.6 million",
+            "90-driver",
+            "2 southern counties",
+            "14%",
+            "11 depots",
+            "$8.4 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_163",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Selkirk Woollens Ltd is a private limited company in Country X weaving wool fabrics at a mill operated for 14 years. The firm employs 120 weavers, sold 2.1 million metres last year and generated $6.3 million of revenue. Rapid expansion added a second weaving shed, but poor communication between the two sheds has raised coordination loss, and staff turnover reached 22% this year.\n\nSelkirk sells 70% of its output through 2 national wholesalers, each charging a 12% markup, while the rest goes to exports. The board is considering forward vertical integration: opening retail showrooms in 3 cities to sell direct to garment factories. Alternatively, Selkirk could keep using wholesalers and fix internal problems by appointing 2 coordination supervisors costing $96,000 a year, before winter demand peaks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'forward vertical integration'.",
+        "model_answer": "Forward vertical integration is when a business takes control of a later stage of its distribution chain, such as a manufacturer opening its own shops to sell direct to customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business controls a later/distribution stage of the chain",
+            "e.g. producer selling direct to customers instead of through wholesalers/retailers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems caused by poor communication and coordination loss at Selkirk.",
+        "model_answer": "Problem 1: Poor communication [k], because information gets delayed or distorted as it passes between the two weaving sheds after rapid expansion [app]. Problem 2: Coordination loss [k], because the sheds cannot align production schedules for their output, leaving 120 weavers underused and contributing to turnover reaching 22% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "poor communication (delays/distortion of information across sites)",
+            "coordination loss (failure to align production/resources across the sheds)"
+          ],
+          "application_max_2": [
+            "two weaving sheds after rapid expansion",
+            "staff turnover reached 22% / 120 weavers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "poor communication",
+            "coordination loss",
+            "two sheds",
+            "22%",
+            "120 weavers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Selkirk of opening its own retail showrooms in 3 cities.",
+        "model_answer": "Benefit 1: Selkirk captures the wholesalers' 12% markup [k], because selling direct to garment factories cuts out the 2 national wholesalers who currently handle 70% of output [app], lifting profit on the $6.3 million revenue without raising volume [an]. Benefit 2: Direct customer contact improves market information [k], because showroom staff hear garment factories' feedback and orders first-hand [app], letting Selkirk tailor fabrics and win repeat orders more often [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher margin/profit by removing intermediaries' markup",
+            "better market information/direct customer contact"
+          ],
+          "application_max_2": [
+            "12% markup charged by 2 national wholesalers on 70% of output",
+            "showrooms in 3 cities / $6.3 million revenue"
+          ],
+          "analysis_max_2": [
+            "more revenue kept per unit sold increases profit margin",
+            "direct feedback/tailored products increase sales and loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "forward vertical integration",
+            "12% markup",
+            "2 national wholesalers",
+            "70%",
+            "3 cities",
+            "$6.3 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Selkirk should open its own retail showrooms or keep using wholesalers and fix internal problems? Justify your answer.",
+        "model_answer": "Forward vertical integration would raise Selkirk's margins and control [k], because cutting out the 2 wholesalers charging 12% on 70% of output lets Selkirk keep that margin on $6.3 million of revenue [app], boosting profit immediately on the same sales [an]. However, staying with wholesalers and appointing 2 coordination supervisors is cheaper and safer [k], because fixing the poor communication and coordination loss behind 22% turnover protects existing revenue before Selkirk commits to shop rents and staff [app], and it costs only $96,000 a year [an]. Overall, I think Selkirk should keep the wholesalers and fix internal problems first [eval], because an integration built on broken internal communication would multiply the diseconomies already visible in the two sheds [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "forward vertical integration captures intermediary margin and market control",
+            "internal fixes are lower risk/cheaper and address root causes before expansion"
+          ],
+          "application_max_2": [
+            "12% markup by 2 national wholesalers on 70% of output / $6.3 million",
+            "22% turnover, 2 coordination supervisors at $96,000 a year, 3 cities"
+          ],
+          "analysis_max_2": [
+            "removing markup raises revenue kept and profits without more volume",
+            "internal fixes reduce waste and turnover, protecting existing revenue at low cost"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on showroom investment vs internal fix, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "forward vertical integration",
+            "2 national wholesalers",
+            "12% markup",
+            "70%",
+            "$96,000",
+            "22%",
+            "$6.3 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_164",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Ambergate Stores Ltd is a private limited company operating 18 supermarkets across Country X and employing 1,150 staff. Revenue reached $34 million last year with profit of $1.02 million, a margin of only 3%. After rapid growth, decision-making has slowed: pricing changes now take 6 weeks to approve, and 9% of staff left in the last 12 months.\n\nAmbergate could buy 5 stores from struggling Pellington Retail for $4.5 million, a horizontal integration adding instant reach in the eastern region. Alternatively, it could grow organically, opening 2 new stores a year and investing $900,000 in faster stock systems to fix slow decisions at existing stores. The board decides in 8 weeks, before the Christmas trading period begins, and time is short.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'horizontal integration'.",
+        "model_answer": "Horizontal integration is when a business merges with or takes over another business at the same stage of the same industry, for example one supermarket buying another supermarket [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "merger/takeover of a business at the same stage of the same industry",
+            "e.g. a retailer buying a competing retailer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems slow decision-making causes Ambergate.",
+        "model_answer": "Problem 1: Lost competitiveness [k], because 6-week approval cycles mean Ambergate cannot react quickly to rival pricing or promotions, squeezing the already thin 3% margin [app]. Problem 2: Falling morale and rising turnover [k], because frustrated store teams wait for decisions that never come, reflected in 9% of staff leaving in the last 12 months [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lost competitiveness vs faster rivals / slower reaction",
+            "low morale / high staff turnover"
+          ],
+          "application_max_2": [
+            "6-week approval cycle for pricing changes",
+            "9% of staff left in 12 months / 3% margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ambergate Stores Ltd",
+            "6 weeks",
+            "9%",
+            "3%",
+            "decision-making"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Ambergate of buying the 5 Pellington stores.",
+        "model_answer": "Benefit 1: Instant scale and market share [k], because the $4.5 million horizontal integration adds 5 operating stores to Ambergate's 18 for immediate reach in the eastern region [app], lifting revenue above the current $34 million [an]. Benefit 2: Economies of scale [k], as one head office, shared marketing and bulk purchasing across 23 stores would cut average costs [app], widening the 3% margin on $1.02 million profit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "instant scale/market share (removes/ absorbs a competitor)",
+            "economies of scale (purchasing/marketing/managerial savings)"
+          ],
+          "application_max_2": [
+            "$4.5 million for 5 Pellington stores added to 18 stores",
+            "$34 million revenue / 3% margin on $1.02 million profit / 23 stores"
+          ],
+          "analysis_max_2": [
+            "immediate revenue growth without building stores from scratch",
+            "lower average costs from shared operations increase profit margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "horizontal integration",
+            "5 stores",
+            "$4.5 million",
+            "18 supermarkets",
+            "$34 million",
+            "Pellington Retail"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ambergate should buy the 5 Pellington stores or grow organically? Justify your answer.",
+        "model_answer": "Buying the stores would deliver instant growth and market share [k], because $4.5 million secures 5 trading stores and their eastern-region customers overnight, far faster than opening 2 new stores a year [app], lifting revenue beyond $34 million without delay [an]. However, organic growth avoids importing more problems [k], because integrating struggling stores onto a structure already slowed by 6-week approvals and 9% turnover risks compounding the failure before the $900,000 stock-system investment works [app], leaving the 3% margin even thinner [an]. Overall, I think Ambergate should grow organically [eval], because fixing slow decision-making first protects profits, whereas a $4.5 million takeover on top of broken processes would multiply diseconomies [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "horizontal integration gives instant scale/share but carries integration risk",
+            "organic growth is slower but controlled and fixes internal problems first"
+          ],
+          "application_max_2": [
+            "$4.5 million for 5 Pellington stores / 18 supermarkets / 2 new stores a year",
+            "6-week approvals, 9% turnover, 3% margin, $900,000 stock systems"
+          ],
+          "analysis_max_2": [
+            "takeover accelerates growth and removes a failed rival quickly",
+            "internal fixes raise efficiency and margin before adding stores, reducing risk"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on takeover vs organic growth, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "Pellington Retail",
+            "$4.5 million",
+            "9%",
+            "6 weeks",
+            "3%",
+            "grow organically"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_165",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Thorncote Steel Plc is a public limited company rolling steel beams at a Country X plant operated for 16 years. The firm employs 340 workers and produced 210,000 tonnes last year, with revenue of $18 million. Thorncote buys its scrap metal from 6 suppliers; prices rose 19% this year, and delivery delays idled the furnace for 11 days.\n\nThe board proposes backward vertical integration: buying Havercroft Salvage, the largest scrap supplier, for $6.5 million to secure supply and control input costs. Alternatively, Thorncote could grow organically by negotiating a 3-year fixed-price supply contract with its current suppliers at today's rates, avoiding the risks of running a salvage business. The board meets in six weeks to decide this, with the spring construction season fast approaching.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'backward vertical integration'.",
+        "model_answer": "Backward vertical integration is when a business takes control of an earlier stage of production, such as a manufacturer buying a supplier of raw materials [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business controls an earlier/upstream stage of production",
+            "e.g. a manufacturer buying a raw material supplier"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems Thorncote faces from relying on external scrap suppliers.",
+        "model_answer": "Problem 1: Price volatility [k], because the 19% rise in scrap prices this year raised input costs across the 210,000 tonnes Thorncote must buy, squeezing margins on the $18 million revenue [app]. Problem 2: Unreliable supply [k], because delivery delays from its 6 suppliers idled the furnace for 11 days, halting production and wasting fixed capacity [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price volatility/rising input costs from suppliers",
+            "unreliable supply/delays halting production"
+          ],
+          "application_max_2": [
+            "19% rise in scrap prices / $18 million revenue",
+            "6 suppliers and 11 days' furnace idle time / 210,000 tonnes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Thorncote Steel Plc",
+            "6 suppliers",
+            "19%",
+            "11 days",
+            "$18 million",
+            "210,000 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Thorncote of buying Havercroft Salvage.",
+        "model_answer": "Benefit 1: Secure, stable input prices [k], because owning the largest scrap supplier removes Thorncote's exposure to the 19% price rises seen this year [app], protecting margins on the $18 million revenue [an]. Benefit 2: Guaranteed supply on Thorncote's schedule [k], because internal deliveries would replace the 6 outside suppliers whose delays idled the furnace for 11 days [app], keeping the 210,000-tonne plant running and spreading fixed costs over full output [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stable/secure input prices by removing supplier markup and volatility",
+            "guaranteed, coordinated supply eliminating disruption"
+          ],
+          "application_max_2": [
+            "19% price rise removed by owning Havercroft Salvage for $6.5 million",
+            "6 suppliers' delays idling the furnace for 11 days / 210,000 tonnes"
+          ],
+          "analysis_max_2": [
+            "lower and predictable input costs raise profit margin",
+            "full capacity utilisation spreads fixed costs, raising efficiency"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Havercroft Salvage",
+            "$6.5 million",
+            "19%",
+            "11 days",
+            "210,000 tonnes",
+            "backward vertical integration"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thorncote should buy Havercroft Salvage or negotiate a 3-year fixed-price contract? Justify your answer.",
+        "model_answer": "Buying Havercroft would secure supply permanently [k], because $6.5 million buys the largest scrap supplier, removing the 19% price risk and the 11 days lost to supplier delays [app], protecting the $18 million revenue for years ahead [an]. However, the 3-year fixed-price contract avoids takeover risk [k], because locking in today's rates with its existing 6 suppliers costs no large capital sum and keeps Thorncote focused on rolling steel [app], preserving cash and avoiding an unfamiliar salvage business [an]. Overall, I think Thorncote should sign the 3-year contract [eval], because the immediate threat is price and supply volatility, which the contract solves without risking $6.5 million and integration failure [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "backward vertical integration guarantees supply and removes supplier markups/volatility",
+            "fixed-price contract gives price certainty without capital/integration risk"
+          ],
+          "application_max_2": [
+            "$6.5 million for Havercroft Salvage / 19% price rise / 11 days idle",
+            "3-year fixed-price contract at today's rates / $18 million revenue"
+          ],
+          "analysis_max_2": [
+            "ownership ends disruption and locks in supply long-term",
+            "contract limits risk and preserves cash but locks Thorncote to suppliers for 3 years"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on takeover vs contract, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Havercroft Salvage",
+            "$6.5 million",
+            "3-year fixed-price supply contract",
+            "19%",
+            "11 days",
+            "210,000 tonnes",
+            "backward vertical integration"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_166",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Marray Dairy Co is a private limited company in Country X processing 1.6 million litres of milk each week. The firm employs 95 workers, supplies 30 supermarkets and generated revenue of $11 million last year. Expansion into yoghurt production caused poor communication between 4 teams, and waste rose to 6% of output this year.\n\nThe board wants to grow. Option A is forward vertical integration: launching 3 dairy convenience stores selling fresh products direct to shoppers, at a start-up cost of $2.4 million. Option B is organic growth: exporting more yoghurt to the Arca trade bloc through its existing supermarket chain, adding an estimated $1.5 million of sales with no new sites to manage. The directors decide before the summer launch window opens.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'economies of scale'.",
+        "model_answer": "Economies of scale are the cost advantages a business gains as output increases, shown by a fall in average cost per unit, such as purchasing and marketing savings from bulk buying [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cost advantages gained from increased scale/output",
+            "average cost per unit falls (e.g. purchasing, marketing, managerial, technical)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two diseconomies of scale Marray may face as it grows.",
+        "model_answer": "Problem 1: Poor communication [k], because information travels through more people and teams as Marray expands, already seen in poor communication between the 4 teams on the yoghurt line [app]. Problem 2: Coordination loss and rising waste [k], because expansion into yoghurt stretched resources so far that waste reached 6% of output [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "poor communication (information distorted/delayed in larger firms)",
+            "coordination loss/rising waste as complexity grows"
+          ],
+          "application_max_2": [
+            "poor communication between 4 teams",
+            "waste reached 6% of output / 1.6 million litres a week"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marray Dairy Co",
+            "poor communication",
+            "4 teams",
+            "6%",
+            "1.6 million litres"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Marray of launching its own 3 dairy convenience stores.",
+        "model_answer": "Benefit 1: Capture of the retail margin [k], because direct selling removes the supermarkets' margin on products currently moved through 30 supermarkets [app], boosting profit from the $11 million revenue base [an]. Benefit 2: Stronger brand presence [k], because visible convenience stores advertise Marray daily to local shoppers [app], building loyalty that pulls demand through its own supply chain [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capture of retailer margin/control of distribution chain",
+            "brand visibility/direct customer relationships"
+          ],
+          "application_max_2": [
+            "3 dairy convenience stores / 30 supermarkets currently used",
+            "$11 million revenue base / $2.4 million start-up cost"
+          ],
+          "analysis_max_2": [
+            "keeping retailer margin raises profit per unit",
+            "brand visibility increases demand and customer loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "forward vertical integration",
+            "3 dairy convenience stores",
+            "30 supermarkets",
+            "$11 million",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marray should launch its own convenience stores or grow exports to the Arca trade bloc? Justify your answer.",
+        "model_answer": "Launching stores would lift margins and branding [k], because $2.4 million buys 3 direct-selling outlets that keep the retail margin otherwise lost to supermarkets [app], increasing profit on Marray's $11 million revenue and extending its reach beyond wholesale [an]. However, Arca exports carry far less risk [k], because the existing supermarket chain can absorb an extra $1.5 million of yoghurt sales with no new sites or staff [app], avoiding fresh communication breakdowns while waste is already at 6% with 4 teams stretched [an]. Overall, I think Marray should choose the Arca export route [eval], because it grows revenue through a proven channel instead of multiplying the poor communication already holding Marray back [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "forward vertical integration captures retail margin and boosts branding",
+            "organic/export growth through existing channels is lower risk and cheaper"
+          ],
+          "application_max_2": [
+            "$2.4 million for 3 convenience stores / 30 supermarkets / $11 million revenue",
+            "$1.5 million Arca exports / 6% waste / 4 teams stretched / 1.6 million litres"
+          ],
+          "analysis_max_2": [
+            "direct stores raise profit per unit and brand visibility but add management load",
+            "exports add sales without new sites, protecting coordination and waste control"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on stores vs exports, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Arca trade bloc",
+            "$1.5 million",
+            "$2.4 million",
+            "3 dairy convenience stores",
+            "4 teams",
+            "6%",
+            "$11 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_167",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Garside Cement Ltd is a private limited company producing cement at a Country X plant for 20 years and employing 260 workers. The firm supplied 480,000 tonnes last year and earned $14 million of revenue. After a second kiln opened, coordination loss between the shifts caused 2 kiln stoppages and average costs rose from $27 to $31 per tonne.\n\nThe board is considering buying Tarnfell Cement's neighbouring plant for $5.2 million, a horizontal integration removing its closest rival and adding capacity. Alternatively, Garside could stay independent, invest $800,000 in shift-planning software and reorganise into 3 production cells, aiming to cut average costs back to $27 per tonne by next year. The board meets in five weeks to choose between the two plans.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'fixed costs'.",
+        "model_answer": "Fixed costs are costs that do not vary with the level of output, such as rent and insurance, and must be paid even if nothing is produced [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "costs that do not change with output level",
+            "examples: rent, insurance, salaries of managers (must be paid regardless of output)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two diseconomies of scale affecting Garside.",
+        "model_answer": "Problem 1: Coordination loss [k], because the two shifts operating the second kiln cannot synchronise maintenance and loading, causing 2 kiln stoppages [app]. Problem 2: Rising average cost [k], because stoppages and poor coordination pushed average cost from $27 to $31 per tonne, about $1.92 million extra at 480,000 tonnes [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "coordination loss (failure to align across departments/shifts)",
+            "rising average costs as scale increases (diseconomies of scale)"
+          ],
+          "application_max_2": [
+            "2 kiln stoppages between the shifts",
+            "average cost rose from $27 to $31 per tonne / 480,000 tonnes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Garside Cement Ltd",
+            "coordination loss",
+            "2 kiln stoppages",
+            "$27 to $31",
+            "480,000 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Garside of buying Tarnfell Cement's plant.",
+        "model_answer": "Benefit 1: Horizontal integration removes its closest rival [k], because buying Tarnfell's neighbouring plant for $5.2 million adds capacity and ends direct local price competition [app], spreading fixed costs over more tonnes [an]. Benefit 2: Potential economies of scale [k], as shared purchasing of fuel and maintenance across two plants lowers average cost from the $31 peak [app], lifting profit on the $14 million revenue towards the $27 target [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "horizontal integration removes a competitor/gains share and capacity",
+            "economies of scale (purchasing/technical savings) reduce average cost"
+          ],
+          "application_max_2": [
+            "$5.2 million for Tarnfell Cement's neighbouring plant",
+            "average cost $31 peak / $14 million revenue target of $27"
+          ],
+          "analysis_max_2": [
+            "fixed costs spread over more output lowers average cost",
+            "removing a rival raises pricing power and margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "horizontal integration",
+            "Tarnfell Cement",
+            "$5.2 million",
+            "$31",
+            "$14 million",
+            "480,000 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Garside should buy Tarnfell Cement's plant or reorganise internally? Justify your answer.",
+        "model_answer": "Buying Tarnfell gives instant capacity and removes the closest rival [k], because $5.2 million secures a neighbouring plant and ends its competition, pushing Garside towards economies of scale [app], which could cut average cost below the current $31 per tonne [an]. However, internal reorganisation is cheaper and fixes the real cause [k], because $800,000 of shift-planning software plus 3 production cells would end the coordination loss and 2 kiln stoppages driving costs from $27 to $31 [app], saving about $1.92 million a year at 480,000 tonnes without any integration risk [an]. Overall, I think Garside should reorganise internally first [eval], because buying another plant before fixing coordination would simply double the diseconomies that are already costing it margin [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "horizontal integration adds capacity/removes rival but risks importing its problems",
+            "internal reorganisation fixes coordination/communication cheaply and directly"
+          ],
+          "application_max_2": [
+            "$5.2 million takeover of Tarnfell Cement / 480,000 tonnes / $14 million revenue",
+            "$800,000 software and 3 production cells / 2 kiln stoppages / $27 to $31"
+          ],
+          "analysis_max_2": [
+            "takeover raises scale quickly to unlock economies of scale",
+            "fixing coordination restores average cost (~$1.92 million a year saving) without takeover risk"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on takeover vs reorganisation, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$800,000",
+            "3 production cells",
+            "$5.2 million",
+            "Tarnfell Cement",
+            "$27",
+            "$31",
+            "2 kiln stoppages"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_168",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Thornby Hotels Ltd runs 9 mid-range hotels across Country X and employs 720 staff. Revenue was $16 million last year, down from $19 million two years ago, and occupancy fell to 66%. Guest satisfaction slipped to 71%, and 6 levels of management slowed decision-making, with pricing and refurbishment approvals now taking 8 weeks.\n\nA rival group, Kestreldon Hotels, offers to sell its 4 hotels totalling 340 rooms for $9 million, a horizontal integration promising economies of scale in marketing and bulk buying. Alternatively, Thornby could delayer, removing 2 management levels and saving an estimated $650,000 a year, then reinvest the savings in its existing 9 hotels. The board meets next month to decide which route reverses the decline, and time is short.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'delayering'.",
+        "model_answer": "Delayering is the removal of one or more levels of management from a business hierarchy, shortening the chain of command and widening spans of control [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "removing levels of management from the hierarchy",
+            "shortens chain of command / widens span of control / speeds decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems caused by slow decision-making at Thornby.",
+        "model_answer": "Problem 1: Lost competitiveness [k], because 8-week approval cycles for pricing and refurbishments let rivals react fast, contributing to occupancy falling to 66% and revenue dropping from $19 million to $16 million [app]. Problem 2: Falling guest satisfaction and morale [k], because 6 levels of management distance staff from decisions, and satisfaction slipped to 71% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lost competitiveness (rivals react faster)",
+            "low morale/satisfaction as decisions take too long"
+          ],
+          "application_max_2": [
+            "8-week approvals and revenue fall from $19 million to $16 million / occupancy 66%",
+            "6 levels of management / satisfaction slipped to 71%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Thornby Hotels Ltd",
+            "8 weeks",
+            "6 levels",
+            "66%",
+            "71%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Thornby of delayering 2 management levels.",
+        "model_answer": "Benefit 1: Faster decisions [k], because removing 2 of the 6 levels shortens the chain of command between 720 staff and senior managers [app], ending the 8-week approval delays for pricing and refurbishment [an]. Benefit 2: Lower overheads [k], because delayering saves an estimated $650,000 a year in management salaries [app], directly improving profit at a time when revenue has fallen to $16 million [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster decision-making (shorter chain of command)",
+            "lower overhead costs (fewer managers to pay)"
+          ],
+          "application_max_2": [
+            "removing 2 of 6 management levels / 720 staff",
+            "$650,000 a year saved / 8-week delays / revenue $16 million"
+          ],
+          "analysis_max_2": [
+            "quicker refurbishment and pricing response improves occupancy/competitiveness",
+            "cost savings flow straight to profit when revenue is falling"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "delayer",
+            "2 management levels",
+            "$650,000",
+            "720 staff",
+            "8 weeks",
+            "6 levels"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thornby should buy the 4 Kestreldon hotels or delayer and invest in its existing hotels? Justify your answer.",
+        "model_answer": "Buying the hotels would add instant scale [k], because $9 million secures 4 hotels with 340 rooms, and horizontal integration could spread marketing and bulk-buying costs across 13 hotels [app], lifting revenue beyond $16 million and filling empty rooms quickly [an]. However, delayering fixes the disease, not the symptom [k], because removing 2 levels saves $650,000 a year and ends 8-week approvals before new hotels are added [app], improving satisfaction at the 9 existing hotels where it has already slipped to 71% [an]. Overall, I think Thornby should delayer and reinvest in its estate [eval], because slow decision-making would simply be amplified across a bigger group if it is not cured first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "horizontal integration gives instant scale and shared economies of scale",
+            "delayering saves costs and speeds up decisions at existing sites"
+          ],
+          "application_max_2": [
+            "$9 million for 4 Kestreldon hotels, 340 rooms / 9 existing hotels / $16 million revenue",
+            "removing 2 levels saving $650,000 a year / 8-week delays / 71% satisfaction"
+          ],
+          "analysis_max_2": [
+            "takeover lifts capacity and shared savings improve competitiveness fast",
+            "delayering cuts overheads and fixes approval delays, improving service at existing hotels"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on takeover vs delayering, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kestreldon Hotels",
+            "$9 million",
+            "4 hotels",
+            "340 rooms",
+            "$650,000",
+            "8 weeks",
+            "71%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_169",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Calderridge Appliances Ltd is a private limited company in Country X assembling washing machines. The plant employs 300 workers and produced 50,000 machines last year, with total costs of $15 million and revenue of $18.5 million. Rapid growth has stretched 1 head office over 3 factories, and poor communication caused 4,200 warranty claims last year, double the previous year.\n\nThe managing director proposes dividing the business into 3 autonomous units, each with its own production and sales manager, to restore local decision-making. The finance director instead wants to add 2 regional managers to speed up approvals without changing the structure. Either option costs an estimated $700,000 to implement this year, and the board must choose at next week's meeting before volumes peak.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the average cost per washing machine. Show your working.",
+        "model_answer": "Average cost = total costs / output = $15,000,000 / 50,000 machines = $300 per machine [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "correct method (total costs divided by output)",
+            "$300 per machine"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems caused by poor communication between head office and the 3 factories.",
+        "model_answer": "Problem 1: Rising warranty claims [k], because instructions and quality updates are delayed or misread across 1 head office and 3 factories, and claims doubled to 4,200 machines [app]. Problem 2: Slow responses to faults [k], because a stretched central structure cannot approve fixes quickly, leaving defective washing machines in production longer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "delayed/distorted information raises error rates",
+            "slow decision-making leaves faults uncorrected"
+          ],
+          "application_max_2": [
+            "claims doubled to 4,200 last year",
+            "1 head office stretched over 3 factories"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Calderridge Appliances Ltd",
+            "poor communication",
+            "4,200 warranty claims",
+            "3 factories",
+            "1 head office"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Calderridge of dividing into 3 autonomous units.",
+        "model_answer": "Benefit 1: Local decisions are faster and better informed [k], because each unit's production and sales manager sees factory faults and local orders first-hand [app], cutting the delays blamed for the 4,200 warranty claims [an]. Benefit 2: Clear accountability for performance [k], because each autonomous unit can be measured separately on output, quality and the $18.5 million revenue [app], motivating managers to improve results [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster/better local decision-making in autonomous units",
+            "clearer accountability/motivation of unit managers"
+          ],
+          "application_max_2": [
+            "3 autonomous units with their own production and sales managers",
+            "4,200 warranty claims / $18.5 million revenue"
+          ],
+          "analysis_max_2": [
+            "decisions closer to operations reduce errors and claims",
+            "measurable units focus managers on quality and profitability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 autonomous units",
+            "4,200 warranty claims",
+            "$18.5 million",
+            "double the previous year",
+            "300 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Calderridge should divide into 3 autonomous units or add 2 regional managers? Justify your answer.",
+        "model_answer": "Autonomous units restore speed and accountability [k], because each unit makes its own production and sales decisions locally [app], attacking the root cause of the 4,200 warranty claims at no extra cost beyond the $700,000 either option already needs [an]. However, 2 regional managers keep central control while speeding approvals [k], because they add decision-making capacity to the stretched 1 head office without the duplicated functions and disruption of 3 stand-alone units [app], which suits a business with $15 million of total costs managing 3 factories [an]. Overall, I think Calderridge should divide into 3 autonomous units [eval], because the evidence shows a structural rather than a staffing problem, and separation is the stronger cure for poor communication and slow decisions [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "autonomous units restore local decision-making and accountability",
+            "regional managers speed approvals while keeping central coordination"
+          ],
+          "application_max_2": [
+            "3 autonomous units vs 2 regional managers, both costing $700,000",
+            "4,200 warranty claims double the previous year / 1 head office over 3 factories / $15 million total costs"
+          ],
+          "analysis_max_2": [
+            "autonomous units remove central bottlenecks but duplicate functions and add risk",
+            "regional managers preserve single reporting lines and are cheaper to coordinate"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on autonomous units vs regional managers, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3 autonomous units",
+            "2 regional managers",
+            "$700,000",
+            "4,200 warranty claims",
+            "$15 million",
+            "3 factories"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_170",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Redmoss Cider Co is a private limited company in Country X producing cider in an orchard region. The business buys 2,800 tonnes of apples a year from 24 growers at $900 per tonne, employs 70 staff and generated $3.6 million of revenue last year. After a poor harvest, apple prices jumped 25%, and 6 of its growers stopped supplying, forcing the mill to run at 70% of capacity.\n\nThe board is weighing backward vertical integration: buying 190 hectares of orchard for $3.8 million to secure its own apple supply. Alternatively, it could stay independent and sign 5-year supply contracts with 10 growers at fixed prices, keeping cash available for a planned production line upgrade next year. The harvest season begins in 5 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'productivity'.",
+        "model_answer": "Productivity measures output per unit of input, such as output per worker or per hour, and rising productivity means the same resources produce more goods and services [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output per input (e.g. per worker/hour)",
+            "higher productivity means more output from the same resources"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two problems caused by the 25% jump in apple prices and lost growers.",
+        "model_answer": "Problem 1: Margin squeeze [k], because a 25% rise lifts the apple cost from $900 to $1,125 per tonne, about an extra $630,000 a year at 2,800 tonnes [app]. Problem 2: Idle capacity [k], because 6 of its 24 growers stopped supplying, forcing the mill to run at 70% of capacity with the same fixed costs spread over fewer tonnes [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "input cost rise squeezes profit margins",
+            "lost suppliers leave capacity underused with unchanged fixed costs"
+          ],
+          "application_max_2": [
+            "25% price jump ($900 to $1,125 per tonne; about $630,000 a year extra)",
+            "6 of 24 growers stopped; mill at 70% of capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Redmoss Cider Co",
+            "25%",
+            "$900 per tonne",
+            "6 of its growers",
+            "70%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Redmoss of buying the 190 hectares of orchard.",
+        "model_answer": "Benefit 1: Guaranteed apple supply [k], because owning 190 hectares of orchard removes Redmoss's dependence on 24 outside growers who may stop supplying [app], ending the 70% capacity utilisation and restoring 2,800 tonnes of yearly throughput [an]. Benefit 2: Stable input costs [k], because integrated orchards are immune to the 25% price jumps seen this year [app], giving predictable production costs for the planned production line upgrade [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "secure/guaranteed supply of raw material (removes supplier risk)",
+            "stable/lower input costs (no purchased-market price rises)"
+          ],
+          "application_max_2": [
+            "190 hectares for $3.8 million / dependence on 24 growers reduced",
+            "25% price jump removed / 70% of capacity restored towards 2,800 tonnes"
+          ],
+          "analysis_max_2": [
+            "secure supply restores full capacity, spreading fixed costs over more tonnes",
+            "predictable input costs improve planning and profitability"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "backward vertical integration",
+            "190 hectares",
+            "$3.8 million",
+            "70%",
+            "24 growers",
+            "2,800 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redmoss should buy the 190 hectares of orchard or sign 5-year fixed-price contracts? Justify your answer.",
+        "model_answer": "Buying the orchard solves the supply problem at its root [k], because owning 190 hectares guarantees apples for the 2,800-tonne mill regardless of what the 24 growers decide [app], ending idle capacity for good and cutting exposure to 25% price spikes [an]. However, signing 5-year contracts with 10 growers at fixed prices is cheaper and faster [k], because $3.8 million stays in the business for the production line upgrade while supply risks are capped [app], keeping Redmoss focused on making cider rather than farming [an]. Overall, I think Redmoss should sign the 5-year contracts [eval], because the immediate crisis is supply availability and price, which the contracts solve without a $3.8 million commitment at 70% capacity [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "backward vertical integration guarantees supply and removes market price risk",
+            "long-term fixed-price contracts secure supply cheaply while preserving cash"
+          ],
+          "application_max_2": [
+            "$3.8 million for 190 hectares / guarantees 2,800 tonnes regardless of growers",
+            "5-year fixed-price contracts with 10 growers / 25% price spike / 70% capacity / $900 per tonne"
+          ],
+          "analysis_max_2": [
+            "orchard ownership restores full capacity and price stability long-term",
+            "contracts preserve capital for the production line and avoid farming risks"
+          ],
+          "evaluation_max_2": [
+            "reasoned judgement on orchard purchase vs contracts, justified with stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "5-year supply contracts",
+            "10 growers",
+            "$3.8 million",
+            "190 hectares",
+            "70%",
+            "$900 per tonne",
+            "2,800 tonnes"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

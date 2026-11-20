@@ -1,0 +1,392 @@
+[
+{
+  "scenario_id": "P1_U1_SET_161",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Fennel & Rye Bakery is a start-up opened 8 months ago by founder Dana Whitmore in the busy town of Millbrook, Country X. The bakery produces sourdough loaves and butter croissants for early commuters, employs 3 part-time assistants and recorded revenue of $3,400 last month against costs of $5,100, leaving a monthly loss of $1,700. Dana invested $9,000 of her savings and works around 55 hours a week.\n\nThe Country X government offers a start-up grant of $12,000 to new food businesses able to create at least 5 jobs, provided the owner matches it with $6,000 of her own capital and repays it if targets are missed. Alternatively, Millbrook Bank will lend Dana $15,000 at 9% interest over 4 years, or her flour supplier may allow 30 days of credit. Dana wants to open a second unit but lacks finance.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'grant'.",
+      "model_answer": "A grant is a sum of money given to a business by the government or another organisation that does not have to be repaid, usually to support a specific aim such as creating jobs. [2]",
+      "mark_scheme": { "knowledge_max_2": ["A sum of money given to a business (usually by the government or an organisation)", "Does not have to be repaid / given for a specific purpose such as job creation or supporting a start-up"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why the Country X government offers grants to new businesses.",
+      "model_answer": "Reason 1: Grants encourage new businesses to create jobs, so unemployment falls and more people pay taxes [k]. The $12,000 grant requires at least 5 jobs, so the government expects direct employment benefits for Millbrook workers [app]. Reason 2: Supporting start-ups boosts competition and diversifies the local economy [k]. Dana must match the grant with $6,000 of her own capital, which shares the risk and reduces the cost to the government [app].",
+      "mark_scheme": { "knowledge_max_2": ["Job creation / lower unemployment", "Encourages enterprise, competition, economic growth or higher tax revenue"], "application_max_2": ["$12,000 grant tied to at least 5 jobs in Millbrook", "Dana must match it with $6,000 of her own capital; renewed local food sector"] },
+      "qwen_marking_keys": { "valid_app_words": ["$12,000", "$6,000", "5 jobs", "Millbrook", "$3,400", "sourdough loaves", "$15,000"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two benefits for Fennel & Rye Bakery of accepting the government grant instead of the bank loan.",
+      "model_answer": "Benefit 1: A grant does not have to be repaid, so Dana avoids interest charges [k]. The Millbrook Bank loan of $15,000 at 9% over 4 years would cost about $5,400 in interest, whereas the $12,000 grant is free if targets are met [app]. This frees cash for flour, wages and equipment during loss-making months, improving the bakery's chance of survival [an]. Benefit 2: Winning the grant gives the bakery credibility with suppliers and banks [k]. Dana is losing $1,700 every month and relies on 30 days of flour supplier credit, so government approval would reassure creditors that she can expand safely [app]. Stronger credibility may unlock better credit terms and wholesale accounts, helping revenue recover from $3,400 per month [an].",
+      "mark_scheme": { "knowledge_max_2": ["Grant does not need to be repaid / no interest payable", "Improves credibility and access to finance or suppliers"], "application_max_2": ["Bank loan $15,000 at 9% over 4 years (about $5,400 interest) vs free $12,000 grant", "Monthly loss of $1,700 and reliance on 30 days supplier credit"], "analysis_max_2": ["Saves cash so fixed costs can be met, reducing risk of business failure", "Credibility improves supplier terms, lifting revenue and supporting expansion"] },
+      "qwen_marking_keys": { "valid_app_words": ["$12,000", "$15,000", "9%", "$5,100", "$1,700", "30 days", "$3,400", "$9,000"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Dana should accept the government grant? Justify your answer.",
+      "model_answer": "Dana could accept the grant because it provides $12,000 with no interest, directly addressing her shortage of finance while she records a loss of $1,700 a month [k]. The money would fund a second unit and the 5-job target matches her expansion plan, and it avoids the $5,400 interest she would pay on the $15,000 bank loan [app]. Avoiding that interest directly reduces her outgoings and protects her working capital while she is loss-making [an]. However, the grant must be matched with $6,000 of her own matching capital and repaid if targets are missed, which is risky when revenue is only $3,400 a month [k]. Failing to create 5 jobs in time would force repayment and destroy her remaining cash, so poor planning or slow sales could make the bakery fail [an]. On the other hand, the bank loan gives full flexibility with no job conditions and a longer 4-year repayment structure [app]. Overall, Dana should accept the grant because it removes her biggest constraint, finance, and the target is realistic given the commuter demand for sourdough loaves, but only if she secures the 30 days of supplier credit first [eval]. She should track cash flow weekly and hire gradually so the 5 jobs are sustainable [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Grant gives finance with no interest / supports growth", "Grant conditions (matching capital, repayment, job target) create risk"], "application_max_2": ["$12,000 grant vs $15,000 loan at 9% (about $5,400 interest); matching $6,000 plus existing $9,000 savings invested", "Monthly loss $1,700, revenue $3,400, second unit plan, 5 jobs target"], "analysis_max_2": ["Removing interest cost preserves cash and improves survival odds", "Missing job target triggers repayment, straining cash flow and risking failure"], "evaluation_max_2": ["Overall justified position weighing grant benefits against repayment risk", "Recommendation tied to cash-flow monitoring / securing supplier credit before accepting"] },
+      "qwen_marking_keys": { "valid_app_words": ["$12,000", "$15,000", "9%", "$6,000", "$1,700", "$3,400", "$9,000", "sourdough loaves", "30 days"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_162",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Brightbyte Apps is a software start-up founded 6 months ago by Lena Ortiz, a self-taught programmer who left her office job in the capital, Country X. Working from her spare bedroom, she is building an inventory app for small shops and charges 4 shop clients $700 each per month, giving revenue of $2,800 against monthly costs of $3,100. Her $14,000 savings are nearly exhausted and she has no written business plan.\n\nCountry X's New Enterprise Incubator offers start-ups 12 months of free desk space, weekly training in bookkeeping and marketing, weekly mentoring and a $10,000 grant, but requires relocation 40 km to the capital and the employment of at least 1 full-time developer. Lena could instead remain home-based with minimal overheads, though without training or support. She is unsure which option to choose.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'business plan'.",
+      "model_answer": "A business plan is a document that describes the business, its objectives, the market, forecasts and how the business will be financed and run, used to guide the owner and persuade lenders or investors. [2]",
+      "mark_scheme": { "knowledge_max_2": ["A written document describing the business and its objectives/market/forecasts", "Used to guide the business and to persuade financiers to lend or invest"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why many new businesses fail.",
+      "model_answer": "Reason 1: Many new businesses lack finance and run out of cash before they become profitable [k]. Lena's revenue of $2,800 is below her monthly costs of $3,100, so she burns through her $14,000 savings every month [app]. Reason 2: Poor planning causes failure because owners do not set objectives or forecast cash needs [k]. Lena has no written business plan, so nobody has tested whether 4 shop clients can ever cover her costs [app].",
+      "mark_scheme": { "knowledge_max_2": ["Lack of finance / poor cash-flow management", "Poor planning (no business plan or objectives)"], "application_max_2": ["Revenue $2,800 versus costs $3,100 per month", "$14,000 savings nearly exhausted; no written business plan"] },
+      "qwen_marking_keys": { "valid_app_words": ["$14,000", "$2,800", "$3,100", "$700", "4 shop clients", "spare bedroom", "business plan"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two problems Lena may face if she rejects the incubator place.",
+      "model_answer": "Problem 1: Without the incubator's weekly training, Lena would lack bookkeeping and marketing skills, which are common causes of start-up failure [k]. She currently has no written business plan and mismanages money, so guessing instead of monitoring means she may not notice that $3,100 of monthly costs are unsustainable [app]. Poor financial control would likely force her to close within months [an]. Problem 2: Rejecting the incubator forfeits the $10,000 grant and free desk space, leaving her to fund everything herself [k]. Her $14,000 savings are nearly exhausted and she still owes money for software tools, so she cannot hire the full-time developer she needs to grow [app]. Without extra hands, app development slows, clients churn and revenue of $2,800 per month stagnates [an].",
+      "mark_scheme": { "knowledge_max_2": ["Lack of training/skills leads to poor decisions and failure", "Rejecting support forfeits grants and resources needed to grow"], "application_max_2": ["No written business plan; costs $3,100 exceed revenue $2,800", "$14,000 savings nearly exhausted; incubator offers $10,000 grant and free desk space"], "analysis_max_2": ["Poor cash management accelerates insolvency and closure", "Under-resourcing slows development, hurting competitiveness and growth"] },
+      "qwen_marking_keys": { "valid_app_words": ["$10,000", "$14,000", "$2,800", "$3,100", "business plan", "12 months", "40 km", "weekly training"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Lena should accept the incubator place? Justify your answer.",
+      "model_answer": "Lena could accept the incubator place because it offers 12 months of free desk space, weekly training and a $10,000 grant, which would fix her two biggest weaknesses: poor planning and lack of finance [k]. With her $14,000 savings nearly exhausted and costs of $3,100 exceeding revenue of $2,800 each month, the grant alone would extend her runway by many months [app]. That extra runway lets her fix the planning weakness before savings run dry, turning a struggling start-up into a sustainable one [an]. However, accepting means relocating 40 km to the capital and hiring at least 1 full-time developer, adding a salary she may not afford [k]. If 4 shop clients cannot grow, the extra wage pushes monthly costs up further and she may be forced to use the $10,000 to cover losses rather than development [an]. On the other hand, remaining home-based keeps overheads minimal and lets her keep control while she wins more clients [app]. Overall, Lena should accept the incubator place because the training would teach her to write a proper business plan and control cash, and the $10,000 grant plus mentoring outweigh the relocation cost, provided she can sign at least 2 new clients first [eval]. Without a written plan she risks becoming another failed start-up, so structured support is the smarter option [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Incubator offers training, mentoring, grants and free premises", "Incubator conditions add costs and relocation risk"], "application_max_2": ["$10,000 grant, 12 months free desk space, 40 km relocation, 1 full-time developer", "Revenue $2,800 vs costs $3,100; $14,000 savings nearly exhausted"], "analysis_max_2": ["Training improves planning and cash control, reducing failure risk", "Added salary and relocation may strain cash if client growth is slow"], "evaluation_max_2": ["Overall justified recommendation weighing grant benefits against relocation costs", "Evaluation linked to client growth / cash-flow evidence from the stem"] },
+      "qwen_marking_keys": { "valid_app_words": ["$10,000", "$14,000", "$2,800", "$3,100", "business plan", "12 months", "40 km", "1 full-time developer", "4 shop clients"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_163",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Truegreen Cleaning Products is a manufacturing start-up founded 1 year ago by Marcus Oyelaran, producing eco-friendly sprays and detergents in a rented unit in Fenwick, Country X. It employs 5 production workers, sells to 60 local shops and recorded revenue of $96,000 last year against costs of $88,000, a profit of $8,000. The mixing machinery is ageing and bottling capacity limits growth.\n\nCountry X has designated an enterprise zone 55 km away offering 100% first-year capital allowances on new machinery and 5 years of zero business rates. To qualify, Truegreen must invest $30,000 in new bottling equipment within 12 months and create 4 additional jobs. Alternatively, Marcus could stay in Fenwick, keep renting at $640 per month, and retain his loyal workforce.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'entrepreneur'.",
+      "model_answer": "An entrepreneur is a person who takes the financial risk of starting and running a business, organising the factors of production and aiming to make a profit. [2]",
+      "mark_scheme": { "knowledge_max_2": ["Person who starts/organises and runs a business", "Takes financial risk in the hope of making a profit"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two benefits to a start-up of locating in an enterprise zone.",
+      "model_answer": "Benefit 1: Enterprise zones reduce start-up costs through tax incentives such as capital allowances and lower rates [k]. Truegreen would pay zero business rates for 5 years and receive 100% capital allowances on new machinery, lowering its fixed costs [app]. Benefit 2: Enterprise zones are designed to attract investment, so infrastructure and support services are often better [k]. The 55 km zone expects Truegreen to invest $30,000 and create 4 jobs, so shared services and utilities are geared toward new manufacturers [app].",
+      "mark_scheme": { "knowledge_max_2": ["Tax incentives reduce business costs (capital allowances / lower rates)", "Infrastructure, support and labour availability attract new firms"], "application_max_2": ["100% capital allowances and 5 years of zero business rates", "Must invest $30,000 and create 4 jobs in the 55 km zone"] },
+      "qwen_marking_keys": { "valid_app_words": ["enterprise zone", "Fenwick", "$30,000", "55 km", "5 years", "100% first-year capital allowances", "$640"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two problems Truegreen may face if it relocates to the enterprise zone.",
+      "model_answer": "Problem 1: Relocation means the $30,000 investment in bottling equipment must be funded up front, increasing risk if sales disappoint [k]. Truegreen made only $8,000 profit on $96,000 revenue last year, so borrowing or using reserves for the new machinery could strain cash flow badly [app]. If 60 local shops do not expand with it, the business may fail while still owing for the equipment [an]. Problem 2: Moving 55 km away breaks links with the loyal fenwick workforce and existing local shop customers [k]. Staying means keeping staff and paying $640 per month rent, whereas relocation forces the creation of 4 additional jobs at unknown wages [app]. Lost local goodwill and higher labour costs could wipe out the saving from zero business rates, shrinking the thin $8,000 profit further [an].",
+      "mark_scheme": { "knowledge_max_2": ["Large up-front capital investment increases financial risk", "Relocation can disrupt staffing and existing customer relationships"], "application_max_2": ["Profit of $8,000 on revenue of $96,000 last year; $30,000 investment required within 12 months", "Fenwick rent of $640 per month; 5 loyal production workers and 60 local shops"], "analysis_max_2": ["High fixed outgoings strain cash, increasing risk of insolvency", "Lost goodwill/higher labour costs erode the tax saving, harming profitability"] },
+      "qwen_marking_keys": { "valid_app_words": ["$30,000", "$96,000", "$88,000", "$8,000", "Fenwick", "$640", "60 local shops", "55 km", "4 additional jobs"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Truegreen should relocate to the enterprise zone? Justify your answer.",
+      "model_answer": "Truegreen could relocate because 100% capital allowances on new machinery and 5 years of zero business rates would cut its costs significantly, helping a business managing only $8,000 profit on $96,000 revenue [k]. Relocation also unlocks new bottling capacity, which currently limits growth, and the $30,000 incentive could be repaid quickly through higher sales [app]. Cutting fixed costs frees cash for materials and wages, compounding the benefit month after month [an]. However, the scheme demands a $30,000 investment within 12 months and 4 additional jobs, which may strain cash flow and force borrowing at bad terms [k]. If demand from the 60 local shops does not grow, the new machinery sits idle while wages and depreciation mount, pushing the firm towards failure [an]. On the other hand, staying in Fenwick keeps costs at $640 per month with a loyal workforce and familiar customers, but the ageing machinery keeps capacity capped and profits stuck at $8,000 [app]. Overall, Truegreen should relocate, but only after securing orders covering at least 70% of the new capacity and matching finance in place, because the tax incentives and bottling capacity are essential for growth while staying leaves it permanently capacity-constrained [eval]. If finance cannot be secured risk-free, staying is the safer short-term choice [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Enterprise zones offer tax incentives (capital allowances, zero rates) to attract firms", "Relocation brings investment/job obligations and disruption risks"], "application_max_2": ["100% capital allowances, 5 years zero business rates, $30,000 investment in 12 months, 4 additional jobs", "Profit $8,000 on $96,000 revenue; 60 local shops; Fenwick rent $640 per month"], "analysis_max_2": ["Tax savings and new capacity raise profit potential and growth", "Obligations strain cash; unused capacity and higher wages could erase benefits"], "evaluation_max_2": ["Overall justified recommendation weighing tax savings against relocation risk", "Evaluation tied to securing orders/finance before the 12-month deadline"] },
+      "qwen_marking_keys": { "valid_app_words": ["$30,000", "$96,000", "$8,000", "100% first-year capital allowances", "5 years", "Fenwick", "60 local shops", "$640", "4 additional jobs"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_164",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Aquajet Mobile Valeting is a start-up founded 2 years ago by Danny Herrera in Bracknell, Country X, offering van-based car washing and detailing to households across the town. It employs 2 part-time attendants and revenue fell from $9,800 per month to $6,300 per month over 6 months while costs stayed at $7,500 per month. Danny has missed 2 van loan payments and lost 1 supplier.\n\nCountry X's hardship scheme offers struggling start-ups a one-off $5,000 grant plus free budgeting training, but applicants must file a weekly cash-flow forecast for 6 consecutive months. Alternatively, Danny could ask his cleaning-supplies supplier for 45 days of credit and raise prices by 8%. He worries that poor planning, not demand, has caused his cash-flow crisis.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'cash-flow forecast'.",
+      "model_answer": "A cash-flow forecast is a plan estimating the likely cash inflows and outflows of a business over a future period, showing the expected bank balance. [2]",
+      "mark_scheme": { "knowledge_max_2": ["A forecast/estimate of future cash inflows and outflows", "Shows expected bank balance / helps plan for cash shortfalls"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why many new businesses experience cash-flow problems.",
+      "model_answer": "Reason 1: Many new businesses fail to plan their cash needs, so inflows arrive later than bills [k]. Danny's revenue fell to $6,300 while costs stayed at $7,500, a gap of $1,200 a month that he apparently did not forecast [app]. Reason 2: Over-reliance on credit sales and suppliers can leave firms short of cash [k]. Danny missed 2 van loan payments and lost a supplier, showing his outflows are being called in faster than his inflows arrive [app].",
+      "mark_scheme": { "knowledge_max_2": ["Poor planning / no cash-flow forecast", "Timing mismatch between inflows and outflows / reliance on credit"], "application_max_2": ["Revenue $6,300 per month vs costs $7,500 per month (a $1,200 monthly gap)", "2 missed van loan payments and a lost supplier"] },
+      "qwen_marking_keys": { "valid_app_words": ["$6,300", "$7,500", "$9,800", "$5,000", "2 van loan payments", "weekly cash-flow forecast", "8%"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two benefits for Aquajet Mobile Valeting of producing a weekly cash-flow forecast.",
+      "model_answer": "Benefit 1: A weekly forecast shows Danny exactly when cash shortages will occur so he can act before bills go unpaid [k]. His costs of $7,500 exceed the $6,300 of revenue by $1,200 per month, so a forecast would expose the gap early enough to arrange credit or cut spending [app]. Acting early avoids more missed van loan payments and protects the business from collapse [an]. Benefit 2: The forecast is a required input for the hardship scheme, unlocking the $5,000 grant and free budgeting training [k]. Filing it for 6 consecutive months is mandatory, and the grant plus training would directly tackle his poor planning [app]. Better budgeting skills would stop the decline in revenue from $9,800 to $6,300 going unnoticed, restoring control over cash [an].",
+      "mark_scheme": { "knowledge_max_2": ["Identifies shortages early / enables corrective action", "Satisfies grant requirements and builds financial control"], "application_max_2": ["Costs $7,500 exceed revenue $6,300 by $1,200 per month; missed 2 van loan payments", "Hardship scheme requires weekly forecast for 6 months; grant is $5,000"], "analysis_max_2": ["Early action prevents insolvency and protects the business", "Better financial control slows/reverses the revenue decline, improving viability"] },
+      "qwen_marking_keys": { "valid_app_words": ["$6,300", "$7,500", "$9,800", "$5,000", "weekly cash-flow forecast", "2 van loan payments", "6 consecutive months", "8%"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Danny should accept the hardship grant? Justify your answer.",
+      "model_answer": "Danny could accept the hardship grant because the $5,000 one-off payment would cover more than 4 months of his $1,200 monthly cash gap and the free budgeting training targets his weak planning directly [k]. His revenue has fallen from $9,800 to $6,300 while costs stayed at $7,500, so cash support plus skills would address the root cause rather than the symptoms [app]. Fixing the planning weakness now tackles the real cause of failure instead of masking it [an]. However, the scheme demands a weekly cash-flow forecast for 6 consecutive months, plus follow-up checks, which adds administrative work while he is struggling to survive [k]. If he stops filing or forecasts poorly, the grant could be withdrawn and he gains nothing except extra pressure [an]. On the other hand, simply raising prices by 8% and asking for 45 days of credit would improve cash without conditions, though it may drive away price-sensitive households [app]. Overall, Danny should accept the hardship grant because it fixes both the finance and planning problems together, whereas credit terms merely delay the cash gap; the forecasting discipline he builds is exactly what a failing start-up needs [eval]. He should also raise prices gradually and confirm the credit deal in writing alongside the grant [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Grant provides emergency finance and training support", "Grant conditions (weekly forecasts, compliance) impose burdens"], "application_max_2": ["$5,000 grant; revenue down from $9,800 to $6,300 vs costs of $7,500 (gap $1,200/month)", "Alternative: 45 days credit and 8% price rise; 2 missed van loan payments"], "analysis_max_2": ["Grant plus training addresses root cause (poor planning), improving survival", "Conditions add burden; failure to comply risks losing the grant"], "evaluation_max_2": ["Overall justified position weighing grant support against conditions", "Evaluation tied to combining grant with price rise/credit and monitoring"] },
+      "qwen_marking_keys": { "valid_app_words": ["$5,000", "$9,800", "$6,300", "$7,500", "weekly cash-flow forecast", "45 days", "8%", "6 consecutive months", "hardship scheme"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_165",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Hillcrest Alpaca Experiences is a rural start-up founded 10 months ago by Anna and Ben Kovac on their farm near Marlow, Country X. Visitors pay $25 each to walk and feed the 5 alpacas; in the first 6 months the farm hosted an average of 120 visitors per month, earning $18,000. Monthly costs are $1,900 and the couple want to buy 3 more alpacas at $2,400 each.\n\nCountry X's Rural Enterprise Scheme offers grants of up to $8,000 plus 20 hours of free training in marketing and bookkeeping to rural businesses creating at least 2 jobs, but applicants must submit a written business plan by 31 March and match 30% of the grant. The Kovacs could instead self-fund the $7,200 expansion from their savings and keep full control.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'opportunity cost'.",
+      "model_answer": "Opportunity cost is the value of the next best alternative foregone when a choice is made. [2]",
+      "mark_scheme": { "knowledge_max_2": ["The value of the next best alternative given up", "Incurred whenever a choice is made because resources are scarce"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why the government supports businesses in rural areas.",
+      "model_answer": "Reason 1: Rural areas often suffer high unemployment and low incomes, so government support spreads economic activity [k]. The Rural Enterprise Scheme targets rural businesses like the Kovacs' farm, aiming to create at least 2 jobs in the Marlow area [app]. Reason 2: Supporting rural start-ups slows migration to cities and protects communities [k]. The scheme offers up to $8,000 plus 20 hours of free training, encouraging new rural ventures that keep residents and visitors spending locally [app].",
+      "mark_scheme": { "knowledge_max_2": ["Reduce rural unemployment / raise rural incomes", "Encourage balanced regional development / stem urban migration"], "application_max_2": ["Rural Enterprise Scheme grant up to $8,000 tied to at least 2 jobs near Marlow", "Farm near Marlow; 20 hours of free training to rural businesses"] },
+      "qwen_marking_keys": { "valid_app_words": ["Rural Enterprise Scheme", "$8,000", "20 hours", "Marlow", "$25", "120 visitors", "$18,000"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two benefits of the Rural Enterprise Scheme for Hillcrest Alpaca Experiences.",
+      "model_answer": "Benefit 1: The grant of up to $8,000 would fund most of the $7,200 alpaca expansion without draining the couple's savings [k]. Self-funding would swallow their entire cushion, but the scheme requires only a 30% match, so they keep reserves for emergencies [app]. Retained savings protect the business if visitor numbers fall in winter, improving survival odds [an]. Benefit 2: The 20 hours of free training in marketing and bookkeeping would build skills the couple lacks [k]. Many rural start-ups fail through poor record-keeping and weak promotion, and the Kovacs currently track bookings informally across 120 visitors a month [app]. Better records and marketing would let them price, plan and promote professionally, increasing visitor numbers and revenue beyond the current $18,000 [an].",
+      "mark_scheme": { "knowledge_max_2": ["Grant funding reduces the owner's own financial outlay / preserves reserves", "Free training improves skills (marketing, bookkeeping)"], "application_max_2": ["Grant up to $8,000 covers the $7,200 expansion; only 30% matching required", "Visitors pay $25 each; average 120 visitors per month; revenue $18,000 so far"], "analysis_max_2": ["Preserving savings increases resilience and survival chances", "Improved skills raise visitor numbers, revenue and long-term growth"] },
+      "qwen_marking_keys": { "valid_app_words": ["$8,000", "$7,200", "30%", "$25", "120 visitors", "$18,000", "20 hours", "Marlow"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Anna and Ben should apply for the Rural Enterprise Scheme grant? Justify your answer.",
+      "model_answer": "The Kovacs could apply because the scheme offers up to $8,000, more than the full $7,200 expansion, plus 20 hours of free marketing and bookkeeping training [k]. With a 30% match, applying would cost them about $2,400 of savings instead of $7,200, and it builds the skills needed to manage 120 visitors a month professionally [app]. Better skills plus preserved savings directly raise the odds of surviving the critical first years [an]. However, they must submit a written business plan by 31 March and create at least 2 jobs, conditions that take time and carry obligations [k]. If they fail to deliver or miss the deadline, they receive nothing and have lost valuable planning time during their peak visitor season [an]. On the other hand, self-funding keeps full control with no paperwork or job commitments, though it consumes nearly all their savings and leaves no buffer if winter bookings fall [app]. Overall, the Kovacs should apply, because the $4,800 saving ($7,200 minus the $2,400 match) and free training outweigh the effort, provided they can write a realistic business plan and commit to the 2 jobs [eval]. If the plan deadline slips or visitor demand proves seasonal, self-funding remains the fallback [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Grant reduces owner outlay and adds training (Rural Enterprise Scheme)", "Grant has conditions: written plan, match, job creation"], "application_max_2": ["Grant up to $8,000 vs $7,200 expansion; 30% match (about $2,400); deadline 31 March", "Average 120 visitors per month at $25; revenue $18,000; 20 hours training; 2 jobs required"], "analysis_max_2": ["Grant preserves savings, strengthening financial resilience", "Conditions risk wasted effort/loss of control if demand is seasonal or plan fails"], "evaluation_max_2": ["Overall justified recommendation weighing grant benefits against conditions", "Evaluation tied to business-plan feasibility / seasonal demand evidence in stem"] },
+      "qwen_marking_keys": { "valid_app_words": ["$8,000", "$7,200", "30%", "31 March", "$25", "120 visitors", "$18,000", "20 hours", "2 jobs"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_166",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Nettle & Thread Tailors is a start-up founded 1 year ago by Imogen Hartley, making made-to-measure suits and dresses in her converted garage in Wexley, Country X. She employs 1 part-time sewer and recorded revenue of $27,000 last year against costs of $31,000, a loss of $4,000. She has no written business plan, ran short of cash in month 4 and missed a $2,000 rent payment.\n\nCountry X's Start Smart programme offers 8 weeks of free evening sessions covering business plans, cash-flow forecasting and pricing, plus free mentoring for new entrepreneurs. Sessions run every Tuesday and Thursday, costing Imogen about $600 a month in lost paid work. Alternatively, she could pay a consultant $900 for a business plan prepared within 10 days.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'working capital'.",
+      "model_answer": "Working capital is the finance available to a business for its day-to-day operations, calculated as current assets minus current liabilities. [2]",
+      "mark_scheme": { "knowledge_max_2": ["Finance for day-to-day operations", "Current assets minus current liabilities"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why writing a business plan is important for a start-up.",
+      "model_answer": "Reason 1: A business plan forces the owner to set objectives and forecast finances, reducing the risk of running out of cash [k]. Imogen has no written business plan, and she ran short of cash in month 4 and missed a $2,000 rent payment [app]. Reason 2: A plan helps persuade banks and grant bodies to provide finance [k]. Country X's Start Smart scheme expects new entrepreneurs to produce plans, so Imogen's missing plan may block her access to grants and loans [app].",
+      "mark_scheme": { "knowledge_max_2": ["Sets objectives/forecasts and reduces risk of failure", "Needed to raise finance from banks or grant providers"], "application_max_2": ["Imogen has no written business plan; month 4 cash shortfall and $2,000 rent missed", "Start Smart scheme supports new entrepreneurs producing plans"] },
+      "qwen_marking_keys": { "valid_app_words": ["business plan", "$2,000", "$27,000", "$31,000", "$4,000", "month 4", "Start Smart"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two problems Nettle & Thread may face without a written business plan.",
+      "model_answer": "Problem 1: Without a plan she cannot forecast cash needs, so shortages arrive unannounced [k]. Her $27,000 revenue against $31,000 costs produced a $4,000 loss, and she still had to find $2,000 rent in month 4 with no savings buffer [app]. Unplanned outflows like that force missed payments and can push a sole trader out of business [an]. Problem 2: Without a plan she has no clear growth strategy or pricing, so growth stalls [k]. She is paying $600 a month in lost work while considering training, and a consultant would charge $900 for a plan she could not afford blindly [app]. Weak pricing and no targets mean the loss repeats next year instead of turning into profit [an].",
+      "mark_scheme": { "knowledge_max_2": ["No forecasting leads to cash shortages and missed payments", "No clear objectives/pricing leads to weak growth and repeated losses"], "application_max_2": ["Revenue $27,000 vs costs $31,000 (loss $4,000); $2,000 missed rent payment in month 4", "$600 per month of lost work while attending; consultant costs $900"], "analysis_max_2": ["Missed payments damage creditworthiness and can cause closure", "No targets or pricing strategy perpetuates losses and blocks growth"] },
+      "qwen_marking_keys": { "valid_app_words": ["$27,000", "$31,000", "$4,000", "$2,000", "month 4", "$600", "$900", "business plan"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Imogen should attend the Start Smart training programme? Justify your answer.",
+      "model_answer": "Imogen could attend Start Smart because the free 8-week sessions cover business plans, cash-flow forecasting and pricing — exactly the gaps that produced her $4,000 loss and missed $2,000 rent payment [k]. Free mentoring would also support her every Tuesday and Thursday, whereas a consultant charges $900 for a one-off document [app]. Skills she keeps for life reduce her dependency on outside help and directly attack the planning failure behind her losses [an]. However, attendance costs about $600 a month in lost paid work, roughly $1,200 over 8 weeks, which she can ill afford while already loss-making [k]. If client orders clash with sessions, the training itself could deepen her cash shortage and force further missed payments [an]. On the other hand, paying the consultant $900 delivers a plan in 10 days with far less time lost, but it leaves her dependent on one document she may not understand or update [app]. Overall, Imogen should attend Start Smart, because the skills transfer — planning, forecasting and pricing — permanently fixes the cause of failure for the cost of $1,200 in lost work, beating a $900 consultant plan she cannot maintain [eval]. She should schedule sessions around standing appointments and use the mentor to build a forecast before month 4 repeats [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Start Smart offers free structured training and mentoring", "Training carries opportunity costs and practical burdens"], "application_max_2": ["8 weeks of sessions covering business plans, forecasting and pricing; $600 per month lost work", "Loss of $4,000; missed $2,000 rent in month 4; consultant alternative $900 for a 10-day plan"], "analysis_max_2": ["Skills learned prevent repeat cash shortfalls and missed payments", "Lost income during training could itself worsen her cash position"], "evaluation_max_2": ["Overall justified recommendation weighing free training vs consultant cost", "Evaluation tied to scheduling around orders and ongoing mentor support"] },
+      "qwen_marking_keys": { "valid_app_words": ["Start Smart", "$4,000", "$2,000", "$600", "$900", "8 weeks", "month 4", "$27,000", "$31,000"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_167",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Solder & Spark Repairs is a start-up founded 14 months ago by Rafiq Chowdhury, repairing smartphones and tablets in a high-street unit in Redford, Country X. It employs 1 part-time technician and takes in $5,600 a month, while rent is $950 a month. Walk-by trade from the busy street generates about $2,000 of that monthly revenue.\n\nRedford Council's enterprise centre offers start-ups low-cost premises at $480 per month for 2 years plus business rates relief, but the unit is 6 km away with no shopfront and half the floor space. Rafiq could renew the high-street lease at $950 per month and keep his passing trade, or move to the cheaper unit. He must decide before the lease expires on 30 September.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'tax incentive'.",
+      "model_answer": "A tax incentive is a reduction in, or relief from, tax offered by the government to encourage businesses to do something, for example investing or creating jobs. [2]",
+      "mark_scheme": { "knowledge_max_2": ["A tax reduction/relief offered by the government", "Designed to encourage business behaviour such as investing or hiring"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two benefits of low-cost premises for a start-up.",
+      "model_answer": "Benefit 1: Low-cost premises cut fixed costs, leaving more cash for stock and wages [k]. The council's unit costs $480 per month versus $950 on the high street, saving Rafiq $470 per month [app]. Benefit 2: Rates relief lowers the tax burden, improving cash flow in the fragile first years [k]. The enterprise centre adds business rates relief on top of the $480 rent, so a repair start-up keeps more of its $5,600 monthly take [app].",
+      "mark_scheme": { "knowledge_max_2": ["Lower fixed costs improve cash flow and survival", "Rates relief reduces the tax burden"], "application_max_2": ["$480 per month council unit vs $950 high-street lease (saving $470)", "Business rates relief on top of the low rent; monthly takings of $5,600"] },
+      "qwen_marking_keys": { "valid_app_words": ["$480", "$950", "$5,600", "business rates relief", "low-cost premises", "$2,000", "6 km"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two benefits for Solder & Spark Repairs of moving into the enterprise centre.",
+      "model_answer": "Benefit 1: Moving cuts rent from $950 to $480 per month, saving $470 that can fund spare parts and wages [k]. With monthly takings of $5,600, that saving is over 8% of revenue and would substantially improve cash flow during a weak trading spell [app]. Lower overheads mean the business reaches break-even sooner and is less likely to fail [an]. Benefit 2: Business rates relief and a 2-year fixed rent give certainty for planning [k]. The enterprise centre guarantees $480 per month for 2 years, whereas the high-street lease could be renegotiated upward at renewal [app]. Predictable costs let Rafiq forecast cash properly and price repairs competitively, winning more repeat business [an].",
+      "mark_scheme": { "knowledge_max_2": ["Lower rent improves cash flow / speeds break-even", "Fixed rent/rates relief gives cost certainty for planning"], "application_max_2": ["Move saves $470 per month versus the $950 high-street lease", "$5,600 monthly takings; 2 years of fixed $480 rent plus rates relief"], "analysis_max_2": ["Lower overheads reduce failure risk and fund growth (parts, wages)", "Certainty enables accurate forecasting and competitive pricing, lifting sales"] },
+      "qwen_marking_keys": { "valid_app_words": ["$480", "$950", "$5,600", "business rates relief", "2 years", "6 km", "$2,000", "30 September"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Rafiq should move into the enterprise centre premises? Justify your answer.",
+      "model_answer": "Rafiq could move because the unit costs $480 per month instead of $950, saving $470 — over 8% of his $5,600 monthly revenue and a large cash-flow benefit for a fragile start-up [k]. With rates relief on top, moving directly tackles the cost pressure that sinks many new businesses [app]. A cheaper base improves cash flow every month, compounding into a bigger safety buffer against slow periods [an]. However, the unit is 6 km away with no shopfront and half the floor space, so his $2,000 of monthly walk-by trade may vanish [k]. Losing passing customers to competitors while gaining only $470 per month of rent saving could easily reduce total profit, especially if delivery and remarketing costs rise [an]. On the other hand, renewing at $950 keeps the high-street location and walk-by trade but locks in high fixed costs for 2 years with uncertain takings [app]. Overall, Rafiq should renew the high-street lease if he can keep at least $3,000 of walk-by-driven revenue above the $470 rent saving, but move to the enterprise centre if he has strong online or repeat trade, because location visibility drives repair takings more than rent savings alone [eval]. A short-term town-centre pop-up advert and a strong online booking page could offset the move and make the cheaper unit viable [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Low-cost premises cut fixed costs and rate burden", "Location affects passing trade and revenue potential"], "application_max_2": ["$480 vs $950 (saving $470); $5,600 monthly revenue; $2,000 from walk-by trade", "Unit 6 km away, no shopfront, half the floor space, 2-year term, 30 September deadline"], "analysis_max_2": ["Rent saving improves cash flow and break-even speed", "Loss of walk-by trade could cut revenue by more than the $470 saving"], "evaluation_max_2": ["Overall justified recommendation weighing rent savings against location loss", "Evaluation tied to visibility of trade and online/repeat customer mix"] },
+      "qwen_marking_keys": { "valid_app_words": ["$480", "$950", "$5,600", "$2,000", "6 km", "business rates relief", "30 September", "2 years", "high-street"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_168",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Copperladle Street Food is a catering start-up founded 5 months ago by Blessing Adeyemi, serving jollof rice and grilled chicken from a converted truck in the harbour town of Dunmore, Country X. It employs 2 part-time assistants and took $14,500 in revenue across its first 4 months, averaging about $121 per trading day. Blessing wants to buy a second truck to serve evening markets in the nearby industrial estate.\n\nCountry X's youth enterprise grant offers $9,000 to start-ups employing at least 1 unemployed 18–24-year-old full-time for 12 months, with a written business plan required within 60 days. Alternatively, Dunmore Bank will lend $9,000 at 11% over 3 years with no conditions. Blessing has interviewed a suitable young assistant but worries about the paperwork.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'start-up capital'.",
+      "model_answer": "Start-up capital is the finance needed to open a new business, for example to buy equipment, premises, stock and to cover running costs before sales begin. [2]",
+      "mark_scheme": { "knowledge_max_2": ["Finance required to start a new business", "Used for equipment, premises, stock and running costs before revenue flows"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two benefits for a start-up of receiving a grant rather than a loan.",
+      "model_answer": "Benefit 1: A grant does not have to be repaid, so there is no interest and no debt burden [k]. Dunmore Bank's $9,000 loan at 11% over 3 years would add about $2,970 of interest, whereas the $9,000 youth enterprise grant is free [app]. Benefit 2: Grants often come with extra support such as mentoring or training [k]. The youth grant is tied to a written business plan, pushing Blessing to plan properly and cutting her risk of failure [app].",
+      "mark_scheme": { "knowledge_max_2": ["Grants need not be repaid (no interest or debt)", "Grants often bundle support/mentoring and force planning"], "application_max_2": ["$9,000 grant vs $9,000 loan at 11% over 3 years (about $2,970 interest)", "Written business plan required within 60 days of the grant"] },
+      "qwen_marking_keys": { "valid_app_words": ["$9,000", "$14,500", "11%", "3 years", "youth enterprise grant", "$121", "60 days"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two problems of taking the bank loan instead of the youth enterprise grant.",
+      "model_answer": "Problem 1: The loan costs about $2,970 in interest over 3 years, an extra outgoing the young business cannot easily absorb [k]. Blessing is averaging about $121 per trading day, so loan repayments would absorb a large slice of daily takings [app]. Heavy repayments reduce working capital, increase the risk of cash-flow failure and could force her to cut the 2 part-time assistants [an]. Problem 2: Unlike the grant, the loan builds debt and offers no training or plan support [k]. The grant requires a written plan, which would discipline her growth, whereas the loan simply adds $9,000 of liability with no mentoring [app]. Without structured planning she risks repeating the errors of under-priced menus and weak records that sink most food start-ups [an].",
+      "mark_scheme": { "knowledge_max_2": ["Interest/debt increases outgoings and financial risk", "Loans lack the planning support bundled with grants"], "application_max_2": ["$9,000 loan at 11% over 3 years (about $2,970 interest) on takings of about $121 per day", "Grant requires a plan in 60 days and 1 unemployed 18–24-year-old full-time for 12 months"], "analysis_max_2": ["Repayments drain working capital, raising risk of cash-flow insolvency", "Absence of planning support increases likelihood of avoidable failure"] },
+      "qwen_marking_keys": { "valid_app_words": ["$9,000", "11%", "3 years", "$121", "$14,500", "business plan", "60 days", "2 part-time assistants"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Blessing should accept the youth enterprise grant? Justify your answer.",
+      "model_answer": "Blessing could accept the grant because $9,000 free money would fund a second truck without adding the $2,970 interest of the bank loan [k]. Having taken $14,500 across her first 4 months at about $121 a day, the grant would let her attack the evening markets quickly rather than wait to save the money [app]. Faster expansion while momentum is strong helps her secure prime evening slots before competitors do [an]. However, the grant obliges her to employ at least 1 unemployed 18–24-year-old full-time for 12 months and file a written business plan within 60 days [k]. If the evening trade underperforms, the compulsory wage plus plan obligations could sink the business faster than a flexible loan would [an]. On the other hand, the bank loan of $9,000 at 11% over 3 years is unconditional, so she could hire anyone, keep flexible hours and restructure if evening markets fail [app]. Overall, Blessing should accept the youth enterprise grant, because the $2,970 interest saving and the structured plan discipline outweigh the hiring condition, especially as she has already interviewed a suitable young assistant [eval]. If she cannot trust the 12-month demand forecast for evening markets, the loan's flexibility is the safer fallback [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Grant is free but conditional (full-time hire, plan, reporting)", "Loan costs interest but is unconditional and flexible"], "application_max_2": ["$9,000 grant vs $9,000 loan at 11% over 3 years (about $2,970 interest)", "Takings of $14,500 in first 4 months (about $121 per day); suitable young assistant interviewed"], "analysis_max_2": ["Avoiding interest preserves cash during fragile early months", "Compulsory hire/plan obligations strain cash if evening markets disappoint"], "evaluation_max_2": ["Overall justified recommendation weighing grant savings against conditions", "Evaluation tied to the hire already interviewed and demand-forecast risk"] },
+      "qwen_marking_keys": { "valid_app_words": ["$9,000", "11%", "3 years", "$14,500", "$121", "youth enterprise grant", "business plan", "60 days", "12 months"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_169",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Fallow & Forge Woodworks is a start-up founded 9 months ago by Callum Reid, making handmade oak tables and benches in his driveway workshop in Elmridge, Country X. He employs 1 part-time helper, earned $21,000 in revenue across his first 9 months and cleared a profit of $3,500 after costs of $17,500. Orders exceed his capacity by about 40%.\n\nCountry X's enterprise zone offers start-ups low-cost units at $350 per month for 3 years plus a $6,000 relocation grant, provided each business creates at least 2 jobs and signs a 12-month minimum lease. Callum could move in, hire 2 workers and meet demand, but he would add $350 of rent each month. Alternatively, he could stay at home and grow more slowly.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'enterprise zone'.",
+      "model_answer": "An enterprise zone is an area designated by the government where businesses receive incentives such as low-cost premises, tax breaks or grants to encourage them to set up there. [2]",
+      "mark_scheme": { "knowledge_max_2": ["An area designated by the government for business incentives", "Offers incentives such as low-cost premises, tax breaks or grants"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two reasons why the government offers low-cost premises to start-ups.",
+      "model_answer": "Reason 1: Low-cost premises remove the biggest barrier to starting, lack of affordable space [k]. The zone offers units at $350 per month for 3 years, far below normal commercial rents, helping a young firm like Fallow & Forge afford proper premises [app]. Reason 2: The policy stimulates local jobs and enterprise in targeted regions [k]. The zone pays a $6,000 relocation grant but demands at least 2 jobs, directly reducing unemployment in Elmridge [app].",
+      "mark_scheme": { "knowledge_max_2": ["Lower premises costs remove a barrier to business creation", "Stimulates local employment and regional regeneration"], "application_max_2": ["Units at $350 per month for 3 years", "$6,000 relocation grant tied to at least 2 jobs in Elmridge"] },
+      "qwen_marking_keys": { "valid_app_words": ["$350", "$6,000", "enterprise zone", "Elmridge", "2 jobs", "3 years", "12-month minimum lease"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two problems Fallow & Forge may face if it moves into the enterprise zone.",
+      "model_answer": "Problem 1: The move adds $350 of rent each month, an extra $4,200 a year against current zero overheads [k]. Callum made only $3,500 profit on $21,000 revenue last year, so this new fixed cost alone could wipe out his margin [app]. If orders slow after the move, the 12-month minimum lease locks him into payments he cannot escape [an]. Problem 2: The 2-job requirement means hiring and managing workers before he is ready [k]. He currently employs 1 part-time helper and may lack the cash flow or supervision skills to run a bigger team [app]. Paying 2 wages before extra sales arrive drains cash, the most common killer of fast-growing start-ups [an].",
+      "mark_scheme": { "knowledge_max_2": ["New fixed costs raise break-even and risk in early years", "Forced hiring adds wage and management burdens before sales arrive"], "application_max_2": ["$350 per month extra rent; $4,200 a year; profit only $3,500 on $21,000 revenue", "12-month minimum lease; 2-job requirement; currently 1 part-time helper"], "analysis_max_2": ["Higher fixed costs reduce profit and raise failure risk if demand falls", "Wage outgoings before revenue growth cause cash shortages and failure"] },
+      "qwen_marking_keys": { "valid_app_words": ["$350", "$3,500", "$21,000", "$17,500", "$6,000", "12-month minimum lease", "2 jobs", "Elmridge", "40%"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Callum should move into the enterprise zone? Justify your answer.",
+      "model_answer": "Callum could move because the enterprise zone offers units at $350 per month for 3 years plus a $6,000 relocation grant, immediately boosting capacity for orders exceeding it by 40% [k]. Meeting demand now would protect his reputation and let revenue grow well beyond $21,000 without years of slow organic expansion [app]. Extra capacity plus the grant means wages are covered while he scales, reducing the danger of overstretching [an]. However, the move adds $350 a month of rent against profits of only $3,500, and forces at least 2 jobs plus a 12-month minimum lease [k]. If oak orders slip seasonally, fixed rent and 2 wages would consume the grant within months and push the business towards failure [an]. On the other hand, staying home keeps costs at zero and profit at $3,500 untouched, but his 40% capacity gap means he keeps turning down customers who may not return [app]. Overall, Callum should move, but only after using the $6,000 grant to fund the 2 workers for the first 12 months and securing written orders covering at least half of the new capacity, because the 40% unmet demand is too large to ignore [eval]. If orders cannot be pre-committed, staying home and adding a second machine part-time is the safer step [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Zone offers cheap premises and relocation grant for growth", "Zone imposes rent, job and lease obligations"], "application_max_2": ["$350 per month for 3 years plus $6,000 grant; 2 jobs; 12-month minimum lease", "Orders exceed capacity by 40%; profit $3,500 on $21,000 revenue; 1 part-time helper"], "analysis_max_2": ["Cheap capacity and grant enable rapid growth and competitiveness", "Fixed rent/wages before sales create cash risk if orders slip"], "evaluation_max_2": ["Overall justified recommendation weighing growth opportunity against fixed-cost risk", "Evaluation tied to pre-committed orders / using the grant to fund wages"] },
+      "qwen_marking_keys": { "valid_app_words": ["$350", "$6,000", "12-month minimum lease", "2 jobs", "40%", "$3,500", "$21,000", "enterprise zone", "$17,500"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+},
+{
+  "scenario_id": "P1_U1_SET_170",
+  "unit": "Unit 1: Understanding Business Activity",
+  "scenario_stem": "Glow & Ember Candles is a start-up founded 7 months ago by Harriet Bloom, hand-pouring soy candles at craft markets and selling online from her shed in Bracknell, Country X. She recorded revenue of $9,300 across her first 6 months against material and stall costs of $6,800, leaving a profit of $2,500. Thirty local gift shops have asked to stock her candles.\n\nCountry X's manufacturing support scheme offers new producers a 150% capital allowance on equipment up to $10,000, a $7,000 grant and free weekly training for 2 years, but businesses must register as limited companies and keep full audited accounts. Harriet could instead remain a sole trader working from home with simple records. She enjoys making candles but dislikes paperwork.",
+  "questions": [
+    {
+      "part": "a",
+      "mark_value": 2,
+      "question_text": "Define 'added value'.",
+      "model_answer": "Added value is the difference between the selling price of a product and the cost of the inputs used to make it. [2]",
+      "mark_scheme": { "knowledge_max_2": ["The difference between selling price and cost of inputs", "Value created by the business through processing, branding or packaging"] },
+      "qwen_marking_keys": { "valid_app_words": [] }
+    },
+    {
+      "part": "b",
+      "mark_value": 4,
+      "question_text": "Explain two ways Glow & Ember Candles could add value to its products.",
+      "model_answer": "Way 1: Branding and attractive packaging can make hand-poured soy candles seem premium, allowing a higher price [k]. Harriet sells to 30 local gift shops that value craftsmanship, so a distinctive brand would justify charging above basic candle prices [app]. Way 2: Adding scents, designs or gift sets differentiates the product from mass-market rivals [k]. Her revenue of $9,300 already beats her $6,800 costs, showing customers will pay for her craft input, so premium ranges would lift the $2,500 profit further [app].",
+      "mark_scheme": { "knowledge_max_2": ["Branding/packaging to justify premium pricing", "Product differentiation (design, range, gift sets)"], "application_max_2": ["30 local gift shops asking to stock candles; hand-poured soy positioning", "Revenue $9,300 vs costs $6,800 (profit $2,500); craft-market and online sales"] },
+      "qwen_marking_keys": { "valid_app_words": ["soy candles", "Thirty local gift shops", "$9,300", "$6,800", "$2,500", "craft markets", "hand-pouring"] }
+    },
+    {
+      "part": "c",
+      "mark_value": 6,
+      "question_text": "Explain two benefits of the manufacturing support scheme for Glow & Ember Candles.",
+      "model_answer": "Benefit 1: A 150% capital allowance on equipment up to $10,000 reduces taxable profit and cash tax paid [k]. Harriet could buy pouring and labelling equipment for $10,000 and deduct $15,000 from taxable profits, a direct cash saving in the early loss-prone years [app]. Lower tax bills free cash for materials and wages, funding the gift-shop expansion [an]. Benefit 2: The $7,000 grant plus 2 years of free weekly training de-risks scaling from a shed to proper production [k]. She has 30 gift shops already interested and only $2,500 of profit reserve, so grant cash plus training in costing and accounts would guide her through the jump [app]. Trained bookkeeping prevents the cash blunders that bankrupt most small manufacturers [an].",
+      "mark_scheme": { "knowledge_max_2": ["Capital allowances reduce tax and preserve cash", "Grant + free training support scaling and financial control"], "application_max_2": ["150% allowance on equipment up to $10,000; $7,000 grant", "30 local gift shops interested; profit only $2,500; revenue $9,300"], "analysis_max_2": ["Tax savings free cash to fund the gift-shop expansion", "Training improves financial management, reducing risk of insolvency"] },
+      "qwen_marking_keys": { "valid_app_words": ["150% capital allowance", "$10,000", "$7,000", "$2,500", "Thirty local gift shops", "$9,300", "2 years", "$6,800"] }
+    },
+    {
+      "part": "d",
+      "mark_value": 8,
+      "question_text": "Do you think Harriet should register as a limited company to access the scheme? Justify your answer.",
+      "model_answer": "Harriet could register as a limited company because it unlocks the 150% capital allowance up to $10,000, the $7,000 grant and 2 years of free weekly training [k]. Her revenue of $9,300 and 30 gift-shop enquiries show real demand, and grant cash plus training would let her scale production safely beyond craft markets [app]. Scaling early lets her supply the 30 interested shops before rivals fill the shelf space [an]. However, she would need full audited accounts and more paperwork, which she already dislikes, and company status adds filing duties and cost [k]. If demand proves seasonal or the shops pay late, audit fees and admin time could consume much of the $2,500 profit and stall her [an]. On the other hand, remaining a sole trader keeps records simple and personal, but she loses the $7,000 grant, the tax saving and the training, capping growth at her current shed [app]. Overall, Harriet should register as a limited company and take the scheme, because the combined $7,000 grant and tax relief outweigh the paperwork burden, and the weekly training directly fixes her weakness in accounts [eval]. She should hire a local bookkeeper part-time in the first year to manage audits while she focuses on making candles [eval].",
+      "mark_scheme": { "knowledge_max_2": ["Scheme requires limited company status and audited accounts", "Scheme offers grant, capital allowance and training"], "application_max_2": ["150% allowance up to $10,000, $7,000 grant, 2 years training", "Revenue $9,300, profit $2,500, 30 gift-shop enquiries; sole trader alternative keeps simple records"], "analysis_max_2": ["Grant and tax relief free cash to scale production safely", "Audit/admin burden could absorb profit and stall growth if demand falters"], "evaluation_max_2": ["Overall justified recommendation weighing scheme benefits against compliance burden", "Evaluation tied to hiring a bookkeeper / staged compliance support"] },
+      "qwen_marking_keys": { "valid_app_words": ["150% capital allowance", "$10,000", "$7,000", "2 years", "$9,300", "$2,500", "Thirty local gift shops", "$6,800", "limited companies"], "deterministic_rules": { "if_app_words_missing": "Cap AO2 Application score at 0", "if_no_eval_word": "Cap AO4 Evaluation score at 0" } }
+    }
+  ]
+}
+]

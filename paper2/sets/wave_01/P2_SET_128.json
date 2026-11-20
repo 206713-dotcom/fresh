@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_128",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Clearwater e-Learning Partners (CEP) is a partnership in the e-learning platform sector, employing a workforce of 27. Founded in 2016 by Sofia Marchetti and Tomás Rivera, the business operates an online marketplace of corporate training courses with live tutors and operates a flat structure with laissez-faire leadership. CEP plans to invest $540,000 in scaling its sales team and adding an offline mobile mode, financed by a $180,000 overdraft and $360,000 retained profit. It has fixed costs of $180,000 a year, a variable cost of $4.90 a unit and a selling price of $9.70, and currently produces 60,000 units a year. CEP faces a growth problem: subscriber churn is 9%, the sales pipeline is stretched thin, and remote tutors report communication gaps across the partnership.",
+    "appendix_1_marketing_ops": "Advertisement Extract — Corporate Learning Gazette, November 2026: 'Clearwater e-Learning Partners — upskill 1,950+ corporate teams with 320 expert-built courses from $45 per learner per month. 94% of clients would recommend us; course completion averages 66%; 4.3/5 average rating. 30-day free trial, HR-aligned reporting and our offline mobile mode arriving soon.'",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Clearwater e-Learning Partners for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "980", "1,310"],
+        ["Cost of sales", "539", "705"],
+        ["Gross profit", "441", "605"],
+        ["Operating profit", "147", "262"],
+        ["Capital employed", "820", "1,050"],
+        ["Interest payable", "12", "19"]
+      ]
+    },
+    "appendix_3_external_environment": "Education Technology Bulletin (November 2026): (1) The central bank raised the base interest rate from 3.75% to 4.5%, increasing the cost of overdrafts and new loans for small firms. (2) The national minimum wage will rise by 7.1% from $12.23 to $13.10 per hour from April 2026, raising wage bills for support staff. (3) Skilled tutor and content-creator day rates rose 10.8% year-on-year, inflation is running at 5.4%, and corporate spending on e-learning grew 9.2% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "CEP plans to finance part of its $540,000 expansion with a $180,000 overdraft. Explain two advantages for CEP of using an overdraft instead of a long-term bank loan.",
+      "model_answer": "Point 1: An overdraft is flexible — CEP only draws what it needs, when it needs it, and pays interest solely on the amount used. While the sales team ramps up and the offline mobile mode is built, cash peaks and troughs month to month; an overdraft covers the dips without the fixed monthly repayments of a long-term bank loan, protecting the $360,000 retained profit for genuine expansion spend.\n\nPoint 2: An overdraft provides fast, negotiable short-term finance without tying up collateral on long terms, ideal for a two-partner business that wants to keep total fixed costs near $180,000 a year. It can be cancelled or repaid once subscriber revenue covers the launch, unlike a ten-year loan that commits CEP regardless of how churn of 9% develops, and it avoids the formal appraisal, security and fees a full bank loan on $540,000 would entail. With interest payable of $19,000 in 2025 and the overdraft costing money only while drawn, CEP preserves cash for tutors and the offline mobile mode build instead of paying fixed loan interest from day one.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Clearwater e-Learning Partners and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["overdraft", "$180,000", "$540,000", "retained profit", "$360,000", "$9.70"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "CEP is promoting its upgraded marketplace with the offline mobile mode. Consider education trade-fair sponsorship, targeted email marketing to L&D heads, or national radio advertising. Which should CEP choose? Justify your recommendation.",
+      "model_answer": "Education trade-fair sponsorship: Sponsoring a corporate learning expo puts CEP directly in front of L&D managers and demonstrates the platform live — strong for credibility given 1,950 corporate clients and a 94% would-recommend score. However, fairs are episodic, concentrated in one or two cities, and costly once stand, travel and staff time are counted; a 27-person partnership cannot staff many events a year.\n\nTargeted email marketing to L&D heads: Precisely targeted campaigns to named L&D decision-makers are cheap per contact, fully measurable through open and trial-signup rates, and perfect for converting the 9% of subscribers who churn back into active learners with the new offline mobile mode story. Email suits CEP's existing base of 1,950 corporate clients and unknown-but-reachable prospects, and sequences can nurture leads over weeks. Drawbacks: inbox fatigue and spam filters mean creative must be strong, and email alone cannot close larger enterprise deals needing live proof.\n\nNational radio advertising: Radio delivers broad awareness cheaply per thousand listeners, but the audience is untargeted — most listeners are not corporate L&D buyers — and radio cannot show the marketplace, demo the offline mode or prove the 66% completion rate. For a B2B product with a niche buyer, mass reach is wasted spend.\n\nRecommendation: CEP should choose targeted email marketing to L&D heads. It is measurable, affordable within the $180,000 overdraft cushion, directly attacks the 9% churn problem, and converts warm contacts into 30-day free trials at low cost. Trade-fair sponsorship is rejected as too episodic and geographically narrow to sustain growth alone, and national radio is rejected as an untargeted mass channel for a specialist B2B product — CEP can sponsor one flagship expo later as email-qualified leads mature.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of CEP with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of CEP with a well-justified recommendation explaining why trade fairs and radio are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["offline mobile mode", "1,950", "94%", "66%", "$540,000", "subscriber churn is 9%", "320"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "CEP faces subscriber churn of 9% and communication gaps among remote tutors. Explain two benefits for CEP of using laissez-faire leadership to motivate its course-writing team.",
+      "model_answer": "Point 1: Laissez-faire leadership gives skilled course writers the autonomy to design engaging modules, pacing and assessments, which suits a flat partnership of 27 people where deep expertise matters more than supervision. Writers who own their content produce higher-quality courses — protecting the 4.3/5 average rating and the 66% completion rate — which directly strengthens the case for corporate renewals and attacks the 9% subscriber churn.\n\nPoint 2: Autonomy raises motivation through job enrichment and ownership, cutting the need for layers of checking and freeing Sofia Marchetti and Tomás Rivera to chase enterprise L&D deals. When tutors feel trusted they contribute fixes for the remote-tutor communication gaps themselves — peer review pods, shared FAQs and async briefings — which improves consistency across the 320-course catalogue and lowers the risk that gaps between tutors and the sales team stall the offline mobile mode launch. That self-managing culture is the only scalable way for a two-partner flat structure to grow its 1,950 corporate client base without adding bureaucracy.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CEP's churn, quality and catalogue."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "subscriber churn is 9%", "workforce of 27", "320", "66%", "4.3/5"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "CEP must scale its sales capacity for the launch. Consider promoting two tutors into account roles with on-the-job mentoring or externally recruiting two senior account executives. Which should CEP choose? Justify your decision.",
+      "model_answer": "Promoting tutors with on-the-job mentoring: Promoted tutors understand the product deeply — 320 courses, completion-analytics reporting and the offline mobile mode — and can speak credibly to L&D buyers about learning outcomes. Promotion is cheap (no agency fees), morale-boosting, and retains institutional knowledge; mentoring from the founders transfers sales technique in context while keeping the flat culture intact. Drawbacks: tutors have no sales track record, may take months to build a pipeline, and removing two tutors from delivery strains course updates; and laissez-faire habits mean coaching must be structured deliberately.\n\nExternal recruitment of senior account executives: Experienced executives arrive with books of L&D contacts, proven closing skills and immediate credibility with enterprise buyers, accelerating the 1,950-client base growth and giving the partnership instant pipeline. Drawbacks: high base salaries, agency fees and signing bonuses strain the $540,000 budget and $180,000 overdraft, culture clash with a laissez-faire flat partnership, and a real risk of quick exits if results dip — replacement would restart the cycle.\n\nDecision: CEP should promote the two best tutors with structured on-the-job mentoring, supported by a modest external contractor for the first two quarters if pipeline targets are missed. Promotion is cheaper, faster, culturally coherent and directly addresses the stretched sales pipeline without inflating fixed costs, while experienced executives can be hired later once the offline mobile mode proves demand. External recruitment is rejected as the primary route: committing to senior salaries before the launch validates demand would damage cash flow already underwritten by a $180,000 overdraft and risk morale among loyal tutors watching outsiders arrive.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two staffing options with limited application to CEP.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both options in the context of CEP.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of CEP with a well-justified decision covering cost, culture, pipeline speed and cash flow."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["offline mobile mode", "1,950", "$540,000", "subscriber churn is 9%", "sales team", "$180,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how CEP's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate CEP's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $180,000 ÷ ($9.70 − $4.90) = $180,000 ÷ $4.80 = 37,500 units. Answer: break-even output is 37,500 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate CEP's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $9.70 − $4.90 = $4.80. Answer: contribution per unit is $4.80."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways CEP's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 37,500-unit break-even output with actual output of 60,000 units to confirm a margin of safety of 22,500 units, informing how much overdraft headroom the offline mobile mode launch really needs.\n2. Contribution per unit of $4.80 lets managers model introductory pricing for new corporate contracts, for example an 8% first-year discount to $8.92 would drop contribution to $4.02, letting CEP judge whether the volume gain still clears $180,000 of fixed costs.\n3. Knowing the break-even point lets managers set quarterly enrolment targets for the sales team and track whether the overdraft is being repaid rather than rolled, protecting the partnership's credit standing with the bank.\n4. Managers can use unit cost data ($180,000 ÷ 60,000 units + $4.90 = $7.90 a unit) to benchmark tutoring cost per enrolment against the 10.8% rise in tutor day rates, spot underperforming course categories, and renegotiate supplier contracts or trim the catalogue to defend the $4.80 contribution."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 37,500 units | (ii) Contribution per unit = $4.80 | (iii) Four contextual uses explained: margin of safety of 22,500 units versus 60,000-unit output; discount modelling against $180,000 fixed costs; overdraft and sales-target discipline; and unit-cost benchmarking at $7.90 against the 10.8% tutor day-rate rise.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["37,500", "$4.80", "60,000", "$180,000", "$4.90", "$9.70", "$7.90", "22,500"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate CEP's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has CEP's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 45.0%\nGross Profit Margin 2025 = 46.2%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 17.9%\nROCE 2025 = 25.0%\n\nDetailed workings: 2024 — revenue $980,000 − cost of sales $539,000 = gross profit $441,000; 441 ÷ 980 × 100 = 45.0%. Operating profit $147,000 ÷ revenue $980,000 × 100 = 15.0%. Operating profit ÷ capital employed $820,000 × 100 = 17.9%. 2025 — revenue $1,310,000 − cost of sales $705,000 = gross profit $605,000; 605 ÷ 1,310 × 100 = 46.2%. Operating profit $262,000 ÷ revenue $1,310,000 × 100 = 20.0%. Operating profit ÷ capital employed $1,050,000 × 100 = 25.0%.\n\nEvaluation: Profitability has improved markedly. The margin between sales and direct tutor costs widened from 45.0% to 46.2%, and tighter overheads lifted the bottom-line measure from 15.0% to 20.0% while operating profit grew 78.2% on 33.7% revenue growth. Returns on capital jumped from 17.9% to 25.0%, meaning the $230,000 growth in employed capital paid for itself, helped by scaling the sales team and the offline mobile mode. Cautions: interest payable rose from $12,000 to $19,000 with the $180,000 overdraft, and revenue quality depends on retaining the 66% completion rate — if churn of 9% worsens, the 2025 ratios will flatter sustainability and CEP must invest in reactivation campaigns.\n\nConclusion: CEP's profitability has improved. All three measures rose (45.0% to 46.2%, 15.0% to 20.0%, 17.9% to 25.0%), powered by genuine margin gains and efficient capital use rather than debt. CEP should defend the trend by tightening overdraft discipline, reactivating churned subscribers and protecting tutor quality as the sales team scales.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, operating profit, interest and capital employed movements and a justified conclusion on whether CEP's profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["45.0%", "46.2%", "15.0%", "20.0%", "17.9%", "25.0%", "$540,000", "980"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for CEP of partnering with charities to offer free micro-courses to low-income learners.",
+      "model_answer": "Advantage: Free micro-courses strengthen CEP's reputation as a socially responsible business, winning goodwill with enterprise L&D buyers who weight ESG in procurement and with press covering digital inclusion. It showcases the 320-course catalogue and 66% completion rate to new audiences, converts grant-funded placements into future paying corporate contracts, and supports the 94% would-recommend score — powerful word-of-mouth for a small partnership competing against larger platforms for the offline mobile mode launch.\n\nDisadvantage: Free places consume tutor time, platform hosting and administration that CEP cannot easily recoup, squeezing the $4.80 contribution per unit if demand overwhelms capacity. Poorly managed charity partnerships can dilute brand quality — if free learners drop out at high rates, the 66% completion figure falls and the 4.3/5 rating slips, hurting paid conversions — and choosing partner charities unwisely creates reputational and administrative risks that a 27-person laissez-faire team may struggle to police. CEP should also monitor the 66% completion rate closely so free learners do not pull down the averages that corporate buyers scrutinise at renewal.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CEP's brand, completion rates, ratings and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["320", "66%", "94%", "$540,000", "offline mobile mode", "1,950"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.5%, the 7.1% minimum wage increase and the 10.8% rise in tutor day rates will affect CEP. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (3.75% to 4.5%): CEP's $180,000 overdraft is likely variable-rate, so annual interest cost rises by about 0.75%, adding roughly $1,350 if fully drawn — modest cash impact. The wider risk is that rolling the overdraft becomes pricier and the bank grows stricter on renewals while the $540,000 launch spend ramps, squeezing headroom. It also slightly cools corporate training budgets funded by borrowing, although corporate e-learning spend still grew 9.2% this period.\n\nMinimum wage increase (7.1% to $13.10): CEP's support, enrolment and admin staff — roughly 8 of 27 employees — near the minimum wage. An annual wage bill near $220,000 for that group rises by about $15,600 from April 2026. Engineers and senior tutors are unaffected directly, but pay-compression pressure may force modest rises for supervisors, adding a further layer to fixed costs of $180,000 a year.\n\nTutor and content-creator day-rate inflation (10.8%): Tutor pay is the single biggest driver of the $4.90 variable cost. If tutors account for roughly 55% of variable cost (about $2.70 per unit), a 10.8% rise adds about $0.29 per unit; across 60,000 units that is about $17,500 a year and erodes the $4.80 contribution by roughly 6%. Because completion quality depends on tutor engagement, CEP cannot simply dilute tutor hours without damaging the 66% completion rate and the 4.3/5 rating.\n\nConclusion: The 10.8% rise in tutor day rates will have the greatest impact. It is recurring, structural and strikes the direct cost of every unit delivered, unlike the interest rise (roughly $1,350) and the minimum wage increase (roughly $15,600, confined to support staff). It threatens the $4.80 contribution and course quality simultaneously — the two things that justify CEP's pricing. CEP should respond with multi-year tutor agreements, modest subscriber price increases tied to the offline mobile mode value, and profit-sharing to retain the best tutors rather than lose them to rival platforms.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to CEP.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on CEP's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of CEP with a well-justified judgement that tutor day-rate inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.5%", "7.1%", "10.8%", "$12.23", "$13.10", "base interest rate", "9.2%"]
+      }
+    }
+  ]
+}

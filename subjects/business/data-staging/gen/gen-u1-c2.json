@@ -1,0 +1,1172 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_151",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Oakhurst Precision Tools is a private limited company that manufactures precision measuring instruments in the industrial town of Brannock. Founded in 2011, it employs 45 production workers and sells instruments to engineering firms across Country X, generating $950,000 in annual revenue last year. Its customers include toolmakers and machine-tool shops in three other provinces, and several export buyers in coastal industrial regions.\n\nThe directors want to install automated calibration machines costing $220,000 to raise output by 30% and cut unit costs, shifting the objective from steady profit to rapid growth. Trade union representatives warn that automation could eliminate 18 of the 45 jobs, and workers have voted to oppose the plan. The two owners disagree on whether to protect jobs or pursue growth this year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'stakeholder'.",
+        "model_answer": "Any individual, group or organisation that has an interest in, or is affected by, the activities and decisions of a business. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Any individual, group or organisation with an interest in a business",
+            "Affected by the business's activities and decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the owners and the workers at Oakhurst may have conflicting objectives over the automation plan.",
+        "model_answer": "Reason 1: Owners want to reduce costs and increase output [k], because the $220,000 machines would raise output by 30% and could win larger orders from engineering firms across Country X [app]. Reason 2: Workers want job security and stable wages [k], because the union warns that 18 of the 45 production roles could disappear if automation goes ahead [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Owners seek lower costs and higher profit or growth",
+            "Workers seek job security and fair treatment"
+          ],
+          "application_max_2": [
+            "$220,000 machines would raise output by 30%",
+            "18 of the 45 production roles at risk of elimination"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Oakhurst",
+            "$220,000",
+            "30%",
+            "18",
+            "45",
+            "union"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Oakhurst could manage the conflict between the owners and the workers.",
+        "model_answer": "Point 1: Oakhurst could consult with the workers and their union before deciding [k], for example holding meetings about the $220,000 plan and the 18 at-risk roles [app], so employees feel heard and may accept retraining instead of resisting the change [an]. Point 2: Oakhurst could retrain or redeploy affected workers into new roles [k], offering the 18 workers training to operate or maintain the new calibration machines [app], which would reduce redundancies and keep skilled staff available for the 30% output increase [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Consultation and negotiation with workers and the union",
+            "Retraining or redeployment of affected staff"
+          ],
+          "application_max_2": [
+            "Meetings to discuss the $220,000 plan and the 18 at-risk roles",
+            "Training to operate the new machines for the 30% output increase"
+          ],
+          "analysis_max_2": [
+            "Consultation builds trust and reduces resistance",
+            "Retraining retains skills and reduces redundancies"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Oakhurst",
+            "$220,000",
+            "18",
+            "30%",
+            "union",
+            "45"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Oakhurst should approve the $220,000 investment in automated calibration machines? Justify your answer.",
+        "model_answer": "One argument for approving the investment is that the new machines would raise output by 30% [k], cutting unit costs for Oakhurst Precision Tools and helping it win larger orders from toolmakers across Country X [app], which could protect the business's survival and fund future growth [an]. However, one argument against is that automation could eliminate 18 of the 45 jobs [k], harming employee morale and creating bitter conflict with the trade union [app], which may damage productivity and undermine the very growth the owners want [an]. Overall, Oakhurst should not approve the machines immediately [eval]; it should first negotiate retraining and redeployment with the union, then approve the $220,000 investment in a phased programme that keeps most staff while still achieving the 30% output target [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Automation raises output and cuts unit costs",
+            "Automation risks job losses and employee resistance"
+          ],
+          "application_max_2": [
+            "$220,000 cost against a 30% output increase",
+            "18 of the 45 jobs at risk"
+          ],
+          "analysis_max_2": [
+            "Lower unit costs support survival and future growth",
+            "Job losses could damage morale, productivity and union relations"
+          ],
+          "evaluation_max_2": [
+            "Weighs automation benefits against worker welfare",
+            "Reaches a justified judgement favouring a phased, negotiated approach"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Oakhurst",
+            "$220,000",
+            "30%",
+            "18",
+            "45",
+            "union",
+            "$950,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_152",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Linden & Locke Joinery is a two-partner joinery business in the market town of Calder. Founded in 2019, it employs 7 craftspeople making bespoke doors and staircases for housebuilders. For its first three years the partners focused on survival, keeping costs low and accepting small orders to build a reputation that buyers value for handmade finish and reliable delivery.\n\nLast year Linden & Locke generated $260,000 in revenue and a profit of $32,000. The partners now disagree over the objective. Partner A wants rapid growth: hiring 5 more staff and opening a second workshop. Partner B wants to stay small, protect the $32,000 annual profit and avoid $1,800 of monthly repayments on a $70,000 expansion loan. Housebuilding in Calder is recovering after a slow period.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'survival' as a business objective.",
+        "model_answer": "Continuing to stay in business and keep trading, especially in the early years or during difficult conditions, rather than seeking profit or growth. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Continuing to trade and remain in business",
+            "Prioritising staying in business over profit or growth, often in early years or hard times"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why a new business may set survival as its main objective.",
+        "model_answer": "Reason 1: A new business may lack capital and a steady customer base to absorb losses [k], and Linden & Locke spent its first three years keeping costs low and accepting small orders to build a reputation [app]. Reason 2: Survival allows the owners to reinvest everything the business earns instead of taking profit out [k], which is how the partners reached $260,000 of revenue last year with a modest $32,000 profit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Limited capital and uncertain customer demand in early years",
+            "Focus on reinvestment and building reputation rather than profit-taking"
+          ],
+          "application_max_2": [
+            "First three years spent keeping costs low and accepting small orders",
+            "$260,000 revenue and $32,000 profit achieved last year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Linden & Locke",
+            "three years",
+            "$260,000",
+            "$32,000",
+            "small orders",
+            "survival"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages for Linden & Locke of changing its objective from survival to growth.",
+        "model_answer": "Advantage 1: Growth would let the business serve more customers and raise revenue [k], since hiring 5 more staff and opening a second workshop would increase capacity well beyond the current 7 craftspeople [app], raising sales potential and spreading fixed costs over a higher output [an]. Advantage 2: Growth can improve profit in the long run [k], because $260,000 of revenue produced only $32,000 of profit last year, and extra volume could lift total profit above that level [app], giving both partners a better financial return on their work [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Growth increases capacity, revenue and market presence",
+            "Growth can raise long-run profit through higher volume"
+          ],
+          "application_max_2": [
+            "5 more staff and a second workshop beyond the 7 craftspeople",
+            "$260,000 revenue produced only $32,000 of profit"
+          ],
+          "analysis_max_2": [
+            "Higher capacity spreads fixed costs over more output",
+            "Higher volume lifts long-run profit for both partners"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Linden & Locke",
+            "5",
+            "7",
+            "$260,000",
+            "$32,000",
+            "second workshop"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Linden & Locke should change its objective from survival to rapid growth? Justify your answer.",
+        "model_answer": "One argument for changing the objective is that growth would raise capacity [k]: hiring 5 staff and opening a second workshop could lift revenue well above $260,000 and total profit beyond the $32,000 earned last year [app], giving the partners a stronger market position against larger joinery firms as housebuilding recovers in Calder [an]. However, one argument against is that rapid growth strains a small business [k]: the $70,000 expansion loan would add $1,800 of monthly repayments even if orders are slow [app], which could consume the modest $32,000 profit and put the business back at risk [an]. Overall, the partners should change to a growth objective but expand gradually rather than all at once [eval], financing the second workshop from retained profit first and taking the loan only if the order book justifies it [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Growth objective raises capacity and competitiveness",
+            "Rapid growth adds debt and financial risk"
+          ],
+          "application_max_2": [
+            "5 staff and a second workshop to lift revenue above $260,000",
+            "$70,000 loan with $1,800 monthly repayments against a $32,000 profit"
+          ],
+          "analysis_max_2": [
+            "Extra capacity lets the business win more housebuilding orders",
+            "Fixed loan repayments could exhaust profit if demand stalls"
+          ],
+          "evaluation_max_2": [
+            "Weighs growth opportunity against debt risk",
+            "Reaches a justified judgement favouring gradual, staged expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Linden & Locke",
+            "$260,000",
+            "$32,000",
+            "$70,000",
+            "$1,800",
+            "5",
+            "second workshop"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_153",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Marisol Spice Co is a social enterprise that imports and blends authentic spices in the port city of Barra. Founded in 2016 by Priya Raman, the business employs 14 young people from disadvantaged backgrounds, paying them the national living wage and providing accredited training. It generates $380,000 in annual sales through local shops, markets and an online store, and donates $20,000 a year to a community kitchen.\n\nPriya is considering converting Marisol Spice into a private limited company focused on maximising profit. New investors would expect a $45,000 annual dividend and may pressure the board to cut the $28,000 training programme and the $20,000 donation. Profit could be reinvested to open a second shop, but the social mission may be diluted. Priya must decide whether growth justifies giving up the mission-driven approach.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'social enterprise'.",
+        "model_answer": "A business that trades to achieve social or environmental objectives, using its profits to benefit the community rather than solely to maximise returns for owners. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A business that trades goods or services",
+            "Uses profits to achieve social or environmental objectives rather than maximising owner returns"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Priya set up Marisol Spice as a social enterprise.",
+        "model_answer": "Reason 1: To tackle social problems through trade [k], Marisol Spice employs 14 young people from disadvantaged backgrounds and pays them the national living wage [app]. Reason 2: To put profits back into the community [k], the business donates $20,000 a year to a community kitchen rather than maximising owner returns [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Uses trade to address social problems such as unemployment",
+            "Profits are reinvested in community benefit"
+          ],
+          "application_max_2": [
+            "14 young people employed at the national living wage",
+            "$20,000 a year donated to a community kitchen"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marisol Spice",
+            "14",
+            "national living wage",
+            "$20,000",
+            "community kitchen",
+            "$380,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Marisol Spice may face if it converts to a private limited company focused on maximising profit.",
+        "model_answer": "Problem 1: Investors may pressure the business to cut its social programmes [k], because new shareholders would expect a $45,000 annual dividend [app], which could force Marisol to drop the $28,000 training programme or the $20,000 donation to balance its books [an]. Problem 2: The business may lose the mission-driven identity that attracts customers [k], since authentic blending and community support help generate $380,000 of annual sales [app], so abandoning the social mission could reduce revenue and damage the brand [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shareholders expect dividends and pressure management to prioritise them",
+            "Social mission is part of the brand and customer appeal"
+          ],
+          "application_max_2": [
+            "$45,000 expected dividend against the $28,000 training programme",
+            "$380,000 of sales built on authentic, community-focused positioning"
+          ],
+          "analysis_max_2": [
+            "Dividend pressure could force cuts to training and donations",
+            "Diluting the mission could reduce sales and brand damage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marisol Spice",
+            "$45,000",
+            "$28,000",
+            "$20,000",
+            "$380,000",
+            "private limited company"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marisol Spice should convert to a private limited company focused on maximising profit? Justify your answer.",
+        "model_answer": "One argument for converting is that new investors would inject share capital [k], funding a second shop and growing revenue well beyond $380,000 a year [app], which could create more jobs and training places for disadvantaged young people [an]. However, one argument against is that a profit-maximising company would have to pay the $45,000 dividend [k], putting pressure to cut the $28,000 training programme and the $20,000 community donation [app], which would undermine the very mission that keeps its customers loyal [an]. Overall, Marisol should not convert to a profit-maximising company [eval]; it should raise smaller sums through retained profit, grants and community fundraising instead, opening the second shop gradually while keeping its social mission and its 14 young workers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Conversion brings external investment capital for growth",
+            "Dividend obligations can crowd out social spending"
+          ],
+          "application_max_2": [
+            "$380,000 of sales with revenue growth funded by share capital for a second shop",
+            "$45,000 dividend against the $28,000 training programme and $20,000 donation"
+          ],
+          "analysis_max_2": [
+            "Second shop could extend training and jobs to more young people",
+            "Losing the mission risks customer loyalty and brand damage"
+          ],
+          "evaluation_max_2": [
+            "Weighs growth funding against mission dilution",
+            "Reaches a justified judgement favouring retained profit and grants"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marisol Spice",
+            "$380,000",
+            "$45,000",
+            "$28,000",
+            "$20,000",
+            "second shop",
+            "social mission"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_154",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Bluepine Sawmill Ltd operates a timber sawmill at the edge of Kestrelwick village, cutting and finishing planks for builders across the region. Founded in 2009, it employs 38 workers and generates $720,000 in annual revenue, running double shifts five days a week, six in peak season. It is the village's second-largest employer after the school.\n\nNeighbouring residents have complained about noise, dust and up to 55 logging truck movements a week. The Country X environmental agency warns Bluepine that it must fit dust extractors costing $60,000 and cap truck movements at 30 per week by next year, or face a $25,000 fine. The owners want to keep output high to protect profit, while the village council demands immediate action. Residents say the dust settles on gardens and trucks damage road verges.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'stakeholder conflict'.",
+        "model_answer": "A disagreement between stakeholder groups that have different objectives or interests in a business's decisions. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A disagreement between stakeholder groups",
+            "Different objectives or interests in business decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways in which the local community and the sawmill owners have conflicting objectives.",
+        "model_answer": "Reason 1: The owners want to maximise output and profit [k], which is why Bluepine runs double shifts and generates $720,000 in revenue despite repeated resident complaints [app]. Reason 2: The community wants a safe and quiet living environment [k], objecting to the noise, the dust and the 55 logging truck movements passing through the village each week [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Owners prioritise profit and output",
+            "Community prioritises health, safety and quality of life"
+          ],
+          "application_max_2": [
+            "Double shifts generating $720,000 in revenue",
+            "55 logging truck movements per week plus noise and dust"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Bluepine",
+            "$720,000",
+            "double shifts",
+            "55",
+            "dust",
+            "38"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Bluepine should respond to the environmental agency's demands.",
+        "model_answer": "Point 1: To avoid financial penalties and possible closure [k], the agency warned that a $25,000 fine would follow if the mill failed to act [app], which would wipe out a chunk of profit and could threaten the jobs of the 38 workers [an]. Point 2: To protect its reputation and its licence to operate [k], fitting $60,000 of dust extractors and capping trucks at 30 per week would satisfy the village council [app], reducing complaints, avoiding legal action and rebuilding trust with residents [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Legal and financial consequences of non-compliance",
+            "Maintaining reputation and goodwill with the community"
+          ],
+          "application_max_2": [
+            "$25,000 fine warning from the environmental agency",
+            "$60,000 dust extractors and a 30 per week truck cap"
+          ],
+          "analysis_max_2": [
+            "Fines erode profit and threaten worker jobs",
+            "Visible action reduces complaints and legal risk, rebuilding trust"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Bluepine",
+            "$25,000",
+            "$60,000",
+            "30",
+            "38",
+            "dust",
+            "$720,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Bluepine should invest $60,000 in the dust extractors now? Justify your answer.",
+        "model_answer": "One argument for investing now is that it satisfies the environmental agency [k], avoiding the $25,000 fine and any closure risk [app], protecting 38 jobs and $720,000 of annual revenue that support many village families [an]. However, one argument against is that the $60,000 cost is significant for the sawmill [k], and cutting truck movements from 55 to 30 per week could reduce deliveries to builders [app], squeezing profit at a time when timber and wage costs may already be tight [an]. Overall, Bluepine should invest in the dust extractors now [eval], spreading the cost and agreeing a phased truck cap with the council, because the fine, the loss of trust and possible closure far outweigh the short-term cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Investing now avoids fines and secures the licence to operate",
+            "Investment is costly and may reduce short-term output and profit"
+          ],
+          "application_max_2": [
+            "$60,000 cost against a $25,000 fine risk",
+            "Truck movements capped from 55 to 30 per week affecting deliveries"
+          ],
+          "analysis_max_2": [
+            "Avoiding closure protects 38 jobs and $720,000 of revenue",
+            "Lower truck cap could reduce output and squeeze profit"
+          ],
+          "evaluation_max_2": [
+            "Weighs compliance costs against fines and closure risk",
+            "Reaches a justified judgement favouring investment with a phased plan"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Bluepine",
+            "$60,000",
+            "$25,000",
+            "38",
+            "$720,000",
+            "55",
+            "30"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_155",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Kelpie Bay Hotel is a private limited company on the coast of Country X, with 40 shareholders and 65 employees. It is a popular wedding and conference venue for the region, with 78 rooms and a busy restaurant. Last year it made a profit of $180,000.\n\nThe board of directors wants to keep $150,000 of the profit to refurbish guest rooms, the restaurant kitchen and the booking system, changing the objective from survival to growth and aiming to raise market share from 9% to 12%. Most shareholders want a larger cash dividend this year instead. A minority of shareholders who are also managers support the refurbishment plan, believing it will lift long-term returns. They point to the hotel's ageing decor and slow Wi-Fi, which are currently losing weddings to rival hotels nearby.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'shareholder'.",
+        "model_answer": "A person or organisation that owns shares in a company and is therefore a part-owner of that business. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Owns shares in a company",
+            "Is a part-owner of that business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the shareholders and the managers may have conflicting objectives over the use of last year's profit.",
+        "model_answer": "Reason 1: Shareholders want a short-term return on their investment [k], which is why most of the 40 shareholders want a large cash dividend now that the hotel has recovered [app]. Reason 2: The board wants to reinvest profit to achieve growth [k], planning to keep $150,000 of the $180,000 profit for refurbishment to lift market share from 9% to 12% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shareholders prioritise short-term dividends",
+            "Managers and directors prioritise reinvestment and growth"
+          ],
+          "application_max_2": [
+            "40 shareholders wanting a large cash dividend this year",
+            "$150,000 of the $180,000 profit kept for refurbishment to reach 12% market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kelpie Bay Hotel",
+            "40",
+            "$180,000",
+            "$150,000",
+            "9%",
+            "12%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Kelpie Bay Hotel of reinvesting $150,000 instead of paying a large dividend.",
+        "model_answer": "Benefit 1: Refurbishment could increase revenue and market share [k], by offering new rooms, a faster booking system and modern facilities that attract more wedding and conference guests [app], which would raise future profit and strengthen the hotel against rivals [an]. Benefit 2: Reinvestment supports the growth objective [k], helping Kelpie Bay raise market share from 9% to 12% over the next two years [app], which would increase the business's value and ultimately allow bigger dividends for shareholders later [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Investment in facilities improves competitiveness and revenue",
+            "Growth objective increases business value and long-term returns"
+          ],
+          "application_max_2": [
+            "New rooms, restaurant kitchen and booking system funded from the $150,000",
+            "Market share targeted to rise from 9% to 12%"
+          ],
+          "analysis_max_2": [
+            "Better facilities attract more guests and raise future profit",
+            "Higher market share increases firm value and later dividends"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kelpie Bay Hotel",
+            "$150,000",
+            "9%",
+            "12%",
+            "refurbish",
+            "40",
+            "65"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kelpie Bay Hotel should pay a large dividend instead of reinvesting $150,000? Justify your answer.",
+        "model_answer": "One argument for paying a large dividend is that shareholders own the company and expect a return [k], especially after the pandemic, when most of the 40 shareholders have waited for the hotel's recovery with little cash in hand [app], which could keep shareholders satisfied and the board accountable [an]. However, one argument against is that withholding reinvestment would delay the refurbishment [k], costing the hotel the chance to raise market share from 9% to 12% with the $150,000 of planned improvements [app], weakening future profit and share value for everyone [an]. Overall, Kelpie Bay should reinvest the majority of the profit and pay only a modest dividend [eval], for example keeping dividends small this year while the refurbishment lifts revenue and share value, balancing both groups of shareholders fairly [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shareholders are part-owners entitled to expect a return",
+            "Reinvestment funds growth and long-term shareholder value"
+          ],
+          "application_max_2": [
+            "40 shareholders expecting a large cash dividend after the pandemic",
+            "$150,000 reinvestment to lift market share from 9% to 12%"
+          ],
+          "analysis_max_2": [
+            "Paying dividends builds shareholder satisfaction and accountability",
+            "Skipping refurbishment weakens competitiveness, revenue and share value"
+          ],
+          "evaluation_max_2": [
+            "Weighs short-term dividends against long-term growth",
+            "Reaches a justified judgement favouring modest dividends plus reinvestment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kelpie Bay",
+            "40",
+            "$150,000",
+            "$180,000",
+            "9%",
+            "12%",
+            "refurbish"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_156",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Averton Foods Plc operates 12 supermarkets across the eastern region of Country X, employing 480 staff and generating $28 million in annual revenue. Its basket covers everyday groceries, fresh produce and household goods for low- and middle-income families. Its stores range from town-centre branches to two large out-of-town superstores.\n\nShareholders have demanded a profit margin of 8% this year, up from 6% last year. The board plans to raise prices on 600 essential grocery lines and cut 40 jobs to reach the target. Consumers have reacted angrily: a customer association is calling for a boycott, weekly sales have fallen 9% since the announcement, and the government has warned Averton over misleading 'value' promotions. Union representatives say proposed job cuts would overload remaining checkout staff.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'profit'.",
+        "model_answer": "The financial surplus remaining from revenue after all costs have been deducted; the reward for taking the risk of operating a business. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Surplus of revenue over all costs",
+            "Reward for taking the risk of running a business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Averton Foods' shareholders want a higher profit margin.",
+        "model_answer": "Reason 1: Shareholders want a better return on their investment [k], which is why they have demanded the profit margin rise from 6% to 8% this year [app]. Reason 2: Higher profit strengthens the business and funds growth [k], supporting $28 million of annual revenue and the owners' plans to refurbish the 12 regional stores [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher returns for shareholders",
+            "Retained profit funds growth and business strength"
+          ],
+          "application_max_2": [
+            "Profit margin demanded to rise from 6% to 8%",
+            "$28 million of revenue across 12 regional stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Averton Foods",
+            "6%",
+            "8%",
+            "$28 million",
+            "12",
+            "480"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems caused by raising prices on 600 essential grocery lines and cutting 40 staff.",
+        "model_answer": "Problem 1: Customers may shop with rivals instead [k], which is already visible in weekly sales falling 9% after the announcement [app], so revenue could shrink and the 8% margin target could become harder, not easier, to reach [an]. Problem 2: Service quality may fall for shoppers [k], because cutting 40 of the 480 staff leaves fewer checkouts and less help on the shop floor [app], damaging customer loyalty and pushing more shoppers to competitors [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher prices drive customers to rivals",
+            "Fewer staff reduce service quality"
+          ],
+          "application_max_2": [
+            "Weekly sales already down 9% since the announcement",
+            "40 of 480 staff earmarked for cuts"
+          ],
+          "analysis_max_2": [
+            "Falling revenue can make the 8% margin target harder to hit",
+            "Poorer service damages loyalty and boosts competitors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Averton Foods",
+            "9%",
+            "8%",
+            "40",
+            "480",
+            "600",
+            "12"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Averton Foods should raise prices on 600 essential grocery lines to reach an 8% profit margin? Justify your answer.",
+        "model_answer": "One argument for raising prices is that it protects the profit margin shareholders want [k], lifting it from 6% to 8% on $28 million of annual revenue and funding dividends [app], which would reward investors and keep share capital in the business [an]. However, one argument against is that higher prices on essentials hurt low-income consumers [k], and sales have already fallen 9% since the announcement while the government has warned over misleading 'value' promotions [app], which could trigger legal action, further lost sales and lasting brand damage [an]. Overall, Averton should not raise prices on essential lines [eval]; it should hold prices, cut waste and improve stock control instead, keeping customers loyal even if the margin stays near 6% for another year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Price rises protect margins and fund dividends",
+            "Price rises on essentials harm consumers and loyalty"
+          ],
+          "application_max_2": [
+            "6% to 8% margin target on $28 million of revenue",
+            "Weekly sales already down 9% and the government warning over promotions"
+          ],
+          "analysis_max_2": [
+            "Dividends reward shareholders and retain capital",
+            "Lost sales and legal risk outweigh short-term margin gains"
+          ],
+          "evaluation_max_2": [
+            "Weighs shareholder returns against consumer welfare",
+            "Reaches a justified judgement favouring holding prices and cutting waste"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Averton Foods",
+            "8%",
+            "6%",
+            "$28 million",
+            "9%",
+            "600"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_157",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Ferryhill Boatyard is a small private limited company in the fishing port of Dunraven, employing 16 boatbuilders and repairers. It generates $340,000 in annual revenue, mainly refitting fishing vessels for commercial operators, and its two hoists and workshop are busy in summer and quiet in winter. For the last five years its objective was profit, and it paid modest dividends while building a reputation for reliable work.\n\nThis year a storm destroyed the harbour's main slipway, and three major contracts worth $120,000 were cancelled. The yard needs $90,000 to repair the slipway and faces rising timber and steel prices. Insurers have not yet confirmed how much of the storm damage they will cover. The owner now wants to switch the objective from profit to survival until the slipway is rebuilt and contracts return.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'growth' as a business objective.",
+        "model_answer": "An increase in the size or scale of a business, for example higher sales revenue, more employees, more outlets or a larger market share. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "An increase in the size or scale of the business",
+            "Measured by revenue, employment, outlets or market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Ferryhill Boatyard's objectives have changed from profit to survival.",
+        "model_answer": "Reason 1: The yard faces a sudden drop in revenue [k], with three major contracts worth $120,000 cancelled after the storm destroyed the slipway [app]. Reason 2: Unexpected costs have made profit impossible right now [k], because $90,000 is needed to repair the slipway and timber and steel prices keep rising [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Revenue has fallen because of lost contracts",
+            "Unexpected costs have created a cash crisis"
+          ],
+          "application_max_2": [
+            "Three contracts worth $120,000 cancelled",
+            "$90,000 needed to repair the destroyed slipway"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ferryhill Boatyard",
+            "$120,000",
+            "$90,000",
+            "slipway",
+            "$340,000",
+            "16"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of Ferryhill Boatyard changing its objective to survival.",
+        "model_answer": "Disadvantage 1: Survival may force the yard to sacrifice long-term growth [k], for example turning away commercial refit enquiries beyond the current $340,000 of revenue [app], so the yard could lose market share to rival boatyards while it waits [an]. Disadvantage 2: Survival can damage employee morale and dividends [k], as the 16 boatbuilders may face reduced hours or pay while the slipway is rebuilt [app], which could push skilled staff to leave for other yards [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Survival can mean forgoing investment and market share",
+            "Survival often involves cuts to pay, hours or dividends"
+          ],
+          "application_max_2": [
+            "Commercial refit work beyond the current $340,000 of revenue",
+            "16 boatbuilders facing reduced hours or pay"
+          ],
+          "analysis_max_2": [
+            "Forgoing orders lets rival boatyards take market share",
+            "Lower pay and hours can push skilled staff to leave"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ferryhill Boatyard",
+            "16",
+            "$340,000",
+            "$120,000",
+            "$90,000",
+            "slipway"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ferryhill Boatyard should change its objective from profit to survival? Justify your answer.",
+        "model_answer": "One argument for changing to survival is that the yard cannot generate profit without a working slipway [k], since $120,000 of contracts are cancelled and $90,000 of repairs are due now [app], so conserving cash could keep the business trading through the crisis until insurance is settled [an]. However, one argument against is that focusing only on survival could hollow out the business [k], because holding back reinvestment and cutting hours may push the 16 skilled boatbuilders to rival yards [app], destroying the yard's ability to win contracts once it recovers [an]. Overall, Ferryhill should change to survival temporarily [eval], but it must pair this with a short-term bank overdraft, early insurer settlement and a clear six-month plan to return to profit once the slipway reopens [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Survival objective conserves cash during a crisis",
+            "Survival in isolation can erode skills and competitiveness"
+          ],
+          "application_max_2": [
+            "$120,000 of cancelled contracts and $90,000 slipway repairs",
+            "16 skilled boatbuilders at risk of leaving"
+          ],
+          "analysis_max_2": [
+            "Cash conservation keeps the yard trading through the crisis",
+            "Losing skilled staff would cripple the yard after recovery"
+          ],
+          "evaluation_max_2": [
+            "Weighs cash survival against loss of skills and market position",
+            "Reaches a justified judgement favouring temporary survival supported by finance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ferryhill Boatyard",
+            "$120,000",
+            "$90,000",
+            "16",
+            "$340,000",
+            "slipway"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_158",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Ravenscar Woollen Mill is a private limited company in the market town of Hesledon, employing 120 full-time workers in weaving and finishing cloth. It generates $2.4 million in annual revenue and is the town's largest employer; the council estimates the mill contributes $310,000 a year in local business rates and wages. Ravenscar cloth is sold to clothing makers across Country X and abroad.\n\nThe owners want to relocate production to a region 400 km away, claiming labour savings of $180,000 a year, or possibly close and sell the site. The government has offered a $150,000 grant and tax incentives to keep the factory in Hesledon, but only if at least 100 jobs are retained for five years. The town council urges acceptance. Local suppliers fear losing their biggest customer. The union wants strict job and wage conditions attached to any grant.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'external stakeholder'.",
+        "model_answer": "A stakeholder who is outside the business but is affected by or interested in its activities, such as customers, suppliers, the local community and the government. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A stakeholder outside the business",
+            "Affected by or interested in the business's activities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways in which the government and the mill owners have conflicting objectives.",
+        "model_answer": "Reason 1: The government wants to protect employment and local prosperity [k], which is why it offered a $150,000 grant and tax incentives, but only if at least 100 jobs are retained for five years [app]. Reason 2: The owners want to cut costs and raise profit [k], aiming to save $180,000 a year by relocating the mill 400 km away [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Government prioritises employment and community welfare",
+            "Owners prioritise lower costs and higher profit"
+          ],
+          "application_max_2": [
+            "$150,000 grant conditional on 100 jobs retained for five years",
+            "$180,000 a year labour saving from relocating 400 km away"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ravenscar Woollen Mill",
+            "$150,000",
+            "100",
+            "$180,000",
+            "400 km",
+            "120"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for the whole community if the mill remains in Hesledon.",
+        "model_answer": "Benefit 1: The community keeps its largest source of employment [k], with 120 full-time weaving and finishing jobs retained under the grant agreement [app], which supports household incomes, local shops and the $310,000 a year in local rates and wages [an]. Benefit 2: Local businesses gain steady demand [k], as the mill generates $2.4 million in annual revenue and its workers spend their wages in town [app], which keeps schools, suppliers and services viable in a small market town [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "The mill is the town's main employer",
+            "Worker wages circulate through and sustain the local economy"
+          ],
+          "application_max_2": [
+            "120 full-time jobs and $310,000 a year in rates and wages",
+            "$2.4 million in annual revenue spent through the local economy"
+          ],
+          "analysis_max_2": [
+            "Retained jobs protect household incomes and local shops",
+            "Local spending keeps schools, suppliers and services viable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ravenscar Woollen Mill",
+            "120",
+            "$310,000",
+            "$2.4 million",
+            "$150,000",
+            "Hesledon"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Country X government should give Ravenscar Woollen Mill the $150,000 grant to keep the factory in Hesledon? Justify your answer.",
+        "model_answer": "One argument for the grant is that it protects the town's economy [k], securing around 100 jobs and the $310,000 a year in local rates and wages for the next five years [app], which would keep families earning and local businesses alive [an]. However, one argument against is that public money is scarce [k], and $150,000 supports one employer while the owners could save $180,000 a year by relocating regardless of the grant [app], so the mill may still leave when the five years end, wasting the grant [an]. Overall, the government should give the grant but attach strict conditions [eval], including wage growth, training and a long-term commitment, so public money buys lasting employment rather than merely delaying relocation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Grants protect employment and local prosperity",
+            "Public funds are limited and must deliver lasting value"
+          ],
+          "application_max_2": [
+            "100 jobs retained and $310,000 a year in rates and wages",
+            "$150,000 grant against $180,000 annual labour-saving incentive to relocate"
+          ],
+          "analysis_max_2": [
+            "Keeping the mill sustains incomes, shops and services",
+            "Without conditions the mill could still leave after five years"
+          ],
+          "evaluation_max_2": [
+            "Weighs community benefits against fiscal cost and relocation risk",
+            "Reaches a justified judgement favouring a conditional grant"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ravenscar Woollen Mill",
+            "$150,000",
+            "100",
+            "$310,000",
+            "$2.4 million",
+            "$180,000",
+            "Hesledon"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_159",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Sable & Stone Leatherworks is a partnership producing handmade leather belts and bags in the city of Torvale. Founded in 2015 by two partners, it employs 9 craftspeople and generates $190,000 in annual revenue, shared as $54,000 of annual profit. The partners take turns cutting, stitching and finishing orders for boutiques and online customers.\n\nPartner 1 wants to change the objective from steady profit to growth: borrow $80,000, repaid at $1,600 per month over 5 years, to open a second workshop and hire 6 more leatherworkers. Partner 2 worries the debt would eat into the $54,000 profit and wants to keep the safe objective of steady profit with the current 9 craftspeople. Order books are healthy, but wage and leather costs have risen this year. Retailers have asked about a larger, reliable supply of bags.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'business objective'.",
+        "model_answer": "A specific target or goal that a business sets for the short, medium or long term to guide its decisions and measure its success. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A specific target or goal for the business",
+            "Guides decisions and measures success"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the two partners want different objectives for Sable & Stone Leatherworks.",
+        "model_answer": "Reason 1: The partners have different attitudes to risk [k], with Partner 1 willing to borrow $80,000 to open a second workshop and hire 6 more staff [app]. Reason 2: The partners may have different personal financial goals [k], with Partner 2 preferring to protect the $54,000 annual profit and avoid $1,600 of monthly repayments [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Different attitudes to risk between owners",
+            "Different personal financial goals and priorities"
+          ],
+          "application_max_2": [
+            "$80,000 loan for a second workshop and 6 more staff",
+            "$54,000 profit preferred over $1,600 monthly repayments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sable & Stone",
+            "$80,000",
+            "6",
+            "$54,000",
+            "$1,600",
+            "second workshop"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Sable & Stone Leatherworks of changing its objective from steady profit to growth.",
+        "model_answer": "Benefit 1: Growth could raise revenue above $190,000 [k], since a second workshop with 6 extra leatherworkers would allow larger orders for belts and bags [app], increasing total sales and potential profit for both partners [an]. Benefit 2: Growth reduces dependence on one site [k], spreading production across two workshops supplying boutiques and online customers [app], so problems at one site would no longer threaten the whole business [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Growth raises capacity, revenue and profit potential",
+            "Growth diversifies production risk across sites"
+          ],
+          "application_max_2": [
+            "Second workshop with 6 extra leatherworkers beyond the current 9 craftspeople",
+            "Revenue currently $190,000 with retailers asking for larger supply"
+          ],
+          "analysis_max_2": [
+            "Larger orders raise sales and profit for both partners",
+            "Two sites mean one failure no longer threatens the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sable & Stone",
+            "$190,000",
+            "6",
+            "$80,000",
+            "second workshop",
+            "$54,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sable & Stone Leatherworks should change its objective from steady profit to growth by borrowing $80,000? Justify your answer.",
+        "model_answer": "One argument for changing the objective is that borrowing could unlock growth [k], funding a second workshop and 6 extra staff to lift revenue above the current $190,000 [app], raising capacity and long-run profit beyond the $54,000 earned last year [an]. However, one argument against is that the $1,600 monthly repayments must be paid for 5 years [k], even if the second workshop underperforms or rising wage and leather costs persist [app], which could consume Partner 2's preferred stable income and strain the partnership [an]. Overall, the partners should change only to a cautious growth objective [eval], borrowing $80,000 after a trial scale-up of part-time staff confirms order volumes, with a joint six-monthly review and the right to pause the loan if repayments bite into profit [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Borrowing funds growth that raises capacity and long-run profit",
+            "Fixed repayments create risk if demand disappoints"
+          ],
+          "application_max_2": [
+            "$80,000 loan for a second workshop and 6 extra staff beyond $190,000 revenue",
+            "$1,600 monthly repayments over 5 years against $54,000 annual profit"
+          ],
+          "analysis_max_2": [
+            "Extra capacity converts strong order books into revenue and profit",
+            "Fixed repayments can strain partnership stability and income"
+          ],
+          "evaluation_max_2": [
+            "Weighs growth opportunity against fixed-debt risk",
+            "Reaches a justified judgement favouring cautious, reviewed expansion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Sable & Stone",
+            "$80,000",
+            "6",
+            "$190,000",
+            "$54,000",
+            "$1,600"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_160",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Yarrow & Elm Preserves is a community interest company making jams and chutneys in the town of Brindleford. Founded in 2018, it employs 11 workers, eight of whom were long-term unemployed, and generates $210,000 in annual sales. Fruit comes from local orchards, and jars are sold in two farm shops and the town market. Profits of $18,000 a year are reinvested in accredited training and a subsidised cafe. The board keeps all profits in the business rather than distributing them.\n\nThe board wants to raise $150,000 to buy modern preserving machinery and win supermarket contracts that could double sales and raise market share from 4% to 7%. Issuing shares to outside investors could provide the $150,000, but new investors would expect dividends and may push the board to drop the training programme, the cafe and subsidised products, changing the community objective into a pure profit objective.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'market share'.",
+        "model_answer": "The proportion of total sales in a market that is held by one business, usually expressed as a percentage. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "The proportion of total sales in a market",
+            "Held by one business, usually expressed as a percentage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Yarrow & Elm Preserves wants to raise its market share from 4%.",
+        "model_answer": "Reason 1: Higher market share gives greater market power against rivals [k], and landing supermarket contracts could double Yarrow & Elm's $210,000 of annual sales [app]. Reason 2: Higher market share strengthens the brand's reach and reputation [k], helping the community company win more shelf space than its current 4% slice of the market [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Greater market power and competitiveness",
+            "Stronger brand reach and reputation"
+          ],
+          "application_max_2": [
+            "Supermarket contracts could double $210,000 of sales",
+            "Current market share is 4% of preserve sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Yarrow & Elm",
+            "$210,000",
+            "4%",
+            "supermarket",
+            "7%",
+            "$150,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Yarrow & Elm may face if it issues shares to outside investors to raise $150,000.",
+        "model_answer": "Problem 1: New investors may demand dividends instead of reinvestment [k], expecting returns from the $150,000 they put in [app], which could force the board to cut the $18,000 a year of community reinvestment [an]. Problem 2: The board may lose control of its social mission [k], as shareholder influence could pressure Yarrow & Elm to drop the training programme for the eight long-term unemployed workers and the subsidised cafe [app], undermining the founding community objective [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Outside shareholders expect dividends from profits",
+            "Shareholder influence can dilute the social mission"
+          ],
+          "application_max_2": [
+            "$150,000 share issue against $18,000 a year of community reinvestment",
+            "Eight long-term unemployed workers and the subsidised cafe at risk"
+          ],
+          "analysis_max_2": [
+            "Dividend expectations could force cuts to community spending",
+            "Mission dilution undermines the founding community objective"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Yarrow & Elm",
+            "$150,000",
+            "$18,000",
+            "eight",
+            "4%",
+            "cafe",
+            "community"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Yarrow & Elm Preserves should issue shares to outside investors to raise $150,000? Justify your answer.",
+        "model_answer": "One argument for issuing shares is that it provides $150,000 of long-term finance [k], funding modern machinery and supermarket contracts that could double sales and raise market share from 4% to 7% [app], letting the business employ and train more long-term unemployed workers at scale [an]. However, one argument against is that share ownership dilutes the social mission [k], because dividend-seeking investors may push the board to abandon the $18,000 training fund, the cafe and subsidised products [app], converting a community enterprise into a conventional profit-focused business [an]. Overall, Yarrow & Elm should not issue shares to outside investors [eval]; it should raise the $150,000 through retained profits, community fundraising and grants, keeping control of the business and its community objective intact [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Share issues provide long-term growth finance",
+            "Share ownership dilutes mission control and adds dividend pressure"
+          ],
+          "application_max_2": [
+            "$150,000 to double sales and lift market share from 4% to 7%",
+            "$18,000 training fund, the cafe and subsidised products at risk from dividends"
+          ],
+          "analysis_max_2": [
+            "Modern machinery and contracts could scale training and employment",
+            "Losing the mission removes the reason the business exists"
+          ],
+          "evaluation_max_2": [
+            "Weighs growth finance against mission dilution",
+            "Reaches a justified judgement favouring retained profit, grants and fundraising"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Yarrow & Elm",
+            "$150,000",
+            "4%",
+            "7%",
+            "$210,000",
+            "$18,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

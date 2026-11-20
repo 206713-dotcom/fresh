@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_139",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "ThermaWool Industries (TWI) is a private limited company in the insulation and eco-materials manufacturing sector, employing a workforce of 85. Founded in 2016 by Lena Pettersson, the business makes recycled-denim and sheep's-wool insulation boards for the construction industry, and operates a hierarchical organisational structure with laissez-faire leadership at senior level. TWI plans to invest $1,100,000 in a second automated recycled-denim line, financed by a $600,000 bank loan and $500,000 hire purchase of machinery. It has fixed costs of $1,150,000 a year, a variable cost of $13.50 a unit and a selling price of $25.00, and currently produces 166,000 units a year. TWI faces two problems: a skills gap, with 28 of 85 staff not certified for the new line, and a defect rate of 2.9%.",
+    "appendix_1_marketing_ops": "Market Research Summary — October 2026: A survey of 450 building merchants and housing associations found 71% would stock TWI insulation, and 63% would pay a premium of up to 8% for recycled-denim boards. The current defect rate is 2.9%, down from 4.1% a year ago; complaints fell from 26 to 15 per month; average delivery time is 4.2 days. Certification for the new line costs $800 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of ThermaWool Industries for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "3,600", "4,150"],
+        ["Cost of sales", "2,232", "2,407"],
+        ["Gross profit", "1,368", "1,743"],
+        ["Operating profit", "648", "913"],
+        ["Capital employed", "3,600", "3,652"],
+        ["Interest payable", "150", "175"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank raised the base interest rate from 5.0% to 5.75% in October 2026, increasing borrowing costs. (2) The national minimum wage will rise by 5.9% from $12.25 to $12.97 per hour from April 2027, raising production payroll costs. (3) Gas and electricity costs have risen 15.3% year-on-year, while construction demand for eco-materials grew 6.2% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "TWI plans to finance part of the second recycled-denim line with a $600,000 bank loan. Explain two advantages for TWI of using a bank loan rather than hiring the machinery for the full $1,100,000.",
+      "model_answer": "Point 1: A bank loan gives TWI immediate ownership of the $600,000 machinery with no hire-purchase premium or hidden interest embedded in instalments, so total financing cost is transparent and usually cheaper than machinery hire over the same term, and TWI can claim the line as its own asset for its whole life. The fixed monthly repayment also simplifies budgeting against the $1,150,000 fixed costs, useful while 28 of 85 staff await certification.\n\nPoint 2: Unlike hire, a bank loan can be renegotiated or refinanced if interest rates ease, rather than locking TWI into a fixed hire contract at a rate set today. Ownership also lets TWI modify the line and use it as collateral for future borrowing — valuable given the defect rate (2.9%, down from 4.1%) still has room to fall as output scales toward 166,000 units a year, and given energy costs rose 15.3% year-on-year.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to ThermaWool Industries and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["bank loan", "$600,000", "$1,100,000", "hire purchase", "$1,150,000", "166,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "TWI is launching its recycled-denim insulation boards to building merchants and housing associations. Consider a television advertising campaign, sponsorship of a green-building trade expo, or a targeted social-media campaign with renovator influencers. Which should TWI choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Television advertising: Television would make TWI a familiar name to householders and could build demand for eco-insulation generally. But airtime production and placement run into hundreds of thousands of dollars, the mass audience is mostly irrelevant to TWI — building merchants and housing associations, not DIY viewers, specify insulation — and the message cannot feature the technical performance data (thermal values, fire rating, 63% premium acceptance of up to 8%) that wins B2B orders.\n\nSponsorship of a green-building trade expo: A stand at an eco-materials expo would put TWI in front of exactly the buyers in its survey of 450 merchants (71% would stock the product), allow live demonstrations of recycled-denim batts, and generate qualifying leads within days. Drawbacks: one-off reach, high stand and staff time away from the line, and competitors exhibiting alongside TWI diluting attention.\n\nSocial media with renovator influencers: Visible, low-cost, strong for sustainability storytelling — the sheep's-wool and recycled-denim angles would resonate with green-home audiences and support the 63% premium-tolerance finding — but renovation influencers reach homeowners, while TWI's volume sits with merchants and housing associations; consumer pull is indirect and slow to convert into pallet orders.\n\nRecommendation: TWI should choose sponsorship of a green-building trade expo. It reaches the verified B2B decision-makers in TWI's 450-buyer research, supports hands-on product demonstration and specification discussions, and produces measurable leads within days. Television is rejected as untargeted and unaffordable for TWI's budget; influencer social media is rejected as aimed at the wrong audience for bulk insulation sales, though it should continue at low cost to reinforce the eco story.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of TWI with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of TWI with a well-justified recommendation explaining why television and influencer campaigns are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["building merchants", "housing associations", "71%", "63%", "8%", "recycled-denim"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "TWI's skills gap means 28 of 85 staff are not certified for the new line, and the defect rate is 2.9%. Explain two benefits for TWI of laissez-faire leadership at senior level.",
+      "model_answer": "Point 1: Laissez-faire leadership empowers TWI's senior engineers and production leads to design the new recycled-denim line, set certification curricula and solve defects autonomously, playing directly to the expertise TWI hired them for. With 28 staff awaiting certification, autonomous leads can tailor shop-floor coaching to each person's pace and knowledge gaps rather than forcing everyone through an identical script — something rigid top-down sign-off would slow dramatically.\n\nPoint 2: Senior autonomy satisfies the esteem and self-actualisation needs (Maslow) of highly skilled technical staff, which matters in a tight market for eco-materials engineers, and it taps Herzberg's recognition motivator: engineers whose fixes cut the defect rate from 4.1% to 2.9% are publicly credited, reinforcing ownership and initiative. It also speeds diagnosis of certification blockers for the 28 pending staff, since leads speak one-to-one rather than through formal review meetings. This keeps 85 staff engaged while the hierarchical company depends on a small senior cohort for day-to-day judgement.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to TWI's skills gap and defect rate."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "skills gap", "28 of 85 staff", "defect rate", "2.9%", "4.1%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "TWI must reduce its 2.9% defect rate on the new recycled-denim line. Consider quality control or quality assurance for the new line. Which should TWI choose? Justify your decision.",
+      "model_answer": "Quality control: QC inspects finished boards at the end of the line, catching defects before dispatch — straightforward, familiar, and requires only the existing inspection station. It would hold the current 2.9% rate or push it marginally lower by weeding failures. However, QC detects problems after cost has been sunk into faulty boards, rework and scrap eat margin at the $25.00 price point, and it does nothing to prevent recurring faults or build the certified capability the new line needs.\n\nQuality assurance: QA builds prevention into every stage — supplier checks on recycled denim and binders, calibrated die settings, in-process inspection checks, quality circles for operators, TQM-style ownership — targeting the defect rate's root causes. It costs more upfront in training ($800 per head × 28 pending = $22,400) and process redesign, and gains take longer to show. But it matches the premium positioning TWI is selling to the 63% of merchants who will pay up to 8% more for defect-free boards, and it dovetails with the certification programme.\n\nDecision: TWI should choose quality assurance. Prevention beats detection when variable cost is $13.50 and boards are reworked at full material cost; QA addresses why defects occur, supports the certification rollout laissez-faire engineers can lead, and protects the eco-brand that wins the 71% stocking commitment. Quality control alone is rejected because it weeds out defects after value is destroyed, permits drift back above 2.9%, and cannot support a premium-price strategy on its own; a final inspection layer should complement, not replace, QA.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two quality approaches with limited application to TWI.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both quality approaches in the context of TWI.",
+        "level_3_9_to_12": "Comprehensive evaluation of both quality approaches in the context of TWI with a well-justified decision covering cost, waste and premium positioning."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.9%", "$800", "28 of 85 staff", "63%", "71%", "defect rate"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how TWI's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate TWI's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $1,150,000 ÷ ($25.00 − $13.50) = $1,150,000 ÷ $11.50 = 100,000 units. Answer: break-even output is 100,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate TWI's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $25.00 − $13.50 = $11.50. Answer: contribution per unit is $11.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways TWI's management can use this financial data.",
+          "model_answer": "1. TWI's managers can compare the 100,000-unit break-even output with actual output of 166,000 units to confirm the second line's economics, with a margin of safety of 66,000 units, informing whether to run a third shift or hold output flat.\n2. Contribution per unit of $11.50 lets TWI model the eco-premium: holding price at $25.00 while rivals discounted to $23.00 still leaves a $9.50 contribution, so managers can test whether the 63% premium-tolerance finding survives price-based competition.\n3. The unit cost of $20.43 a unit ($3,391,000 total costs ÷ 166,000 units) can be benchmarked quarter by quarter to expose defects and rework, target the 2.9% defect rate downward and set cost targets for the new automated line being funded by the $600,000 bank loan and $500,000 hire purchase.\n4. Knowing break-even output helps managers check that the $600,000 loan can be serviced from the $11.50 contribution on 166,000 units, and to frame certification budgets ($800 per person for 28 staff) inside contribution rather than gross sales."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 100,000 units | (ii) Contribution per unit = $11.50 | (iii) Four contextual uses explained: margin of safety of 66,000 units; premium-price modelling at $11.50 contribution; unit cost benchmarking at $20.43 to attack defects; and loan-servicing checks and certification budgeting for the expansion.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["100,000", "$11.50", "166,000", "$1,150,000", "$13.50", "$25.00", "$20.43"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate TWI's financial performance by calculating the gross profit margin, the profit margin and ROCE for 2024 and 2025. Has TWI's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 38.0%\nGross Profit Margin 2025 = 42.0%\nProfit Margin 2024 = 18.0%\nProfit Margin 2025 = 22.0%\nROCE 2024 = 18.0%\nROCE 2025 = 25.0%\n\nDetailed workings: 2024 gross profit = $3,600,000 revenue − $2,232,000 cost of sales = $1,368,000; 2025 gross profit = $4,150,000 revenue − $2,407,000 cost of sales = $1,743,000. Operating profit rose from $648,000 to $913,000. Capital employed rose from $3,600,000 to $3,652,000. 2024: $1,368,000 ÷ $3,600,000 = 38.0%; $648,000 ÷ $3,600,000 = 18.0%; $648,000 ÷ $3,600,000 = 18.0%. 2025: $1,743,000 ÷ $4,150,000 = 42.0%; $913,000 ÷ $4,150,000 = 22.0%; $913,000 ÷ $3,652,000 = 25.0%.\n\nEvaluation: Performance has improved strongly. Revenue grew 15.3% to $4,150,000 — consistent with the 144,000-to-166,000 unit step and the 6.2% eco-materials demand growth — while costs of sales grew more slowly (7.8%), so gross profit advanced $375,000. Operating profit rose 40.9%, comfortably outrunning interest payable (up from $150,000 to $175,000), so the improvement sits in operations, not leverage. Capital employed barely moved ($3,600,000 to $3,652,000), which means the return on each dollar already invested rose sharply; 2026 must absorb the $1,100,000 second-line addition, which temporarily lowers or flattens returns before new output ramps up, and gas and electricity inflation (+15.3%) could squeeze 2026 costs until energy contracts are renegotiated.\n\nConclusion: TWI's financial performance has clearly improved. Gross profit grew by $375,000 and operating profit by $265,000, with every ratio (38.0% to 42.0%, 18.0% to 22.0%, 18.0% to 25.0%) moving decisively upward against nearly flat capital employed. The improvement is genuine and operational in origin, and TWI should lock it in by commissioning the new line on time and renegotiating energy and input contracts.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, operating profit and capital employed movements and a justified conclusion on whether TWI's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["38.0%", "42.0%", "18.0%", "22.0%", "25.0%", "$1,743,000", "$913,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for TWI of using recycled denim and sheep's-wool as feedstock for its insulation boards.",
+      "model_answer": "Advantage: Recycled-denim and sheep's-wool feedstock is the heart of TWI's eco-positioning, which its Market Research Summary shows buyers will pay for: 71% of 450 surveyed building merchants and housing associations would stock the boards and 63% would pay a premium of up to 8%, so the eco-feedstock underpins the $25.00 price and the $11.50 contribution per unit. It also satisfies rising green-building regulation and lets TWI qualify for public and housing-association frameworks that demand recycled content.\n\nDisadvantage: Recycled feedstock supply is volatile — denim bales arrive irregularly and sheep's wool quality varies by season — so intake scheduling and a $800-per-person certification regime for 28 uncertified staff become harder to plan; any feedstock contamination (denim bales failing density or cleanliness checks) raises the 2.9% defect rate and rework cost on top of a $13.50 variable cost per unit, and sheep's-wool prices could spike if farming margins squeeze TWI's feedstock budget.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to TWI's feedstock strategy and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["recycled-denim", "sheep's-wool", "71%", "63%", "$25.00", "2.9%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.75%, the 5.9% minimum wage increase and the 15.3% rise in gas and electricity costs will affect TWI. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (5.0% to 5.75%): On the $600,000 bank loan, 0.75 points adds about $4,500 a year, and the $175,000 interest payable will edge higher still on renewal. Greater is the demand-side signal: at 5.75%, builders and housing associations face costlier development finance, which can delay specification decisions and the 6.2% eco-materials demand growth TWI is counting on. Modest direct cost, noticeable strategic risk; TWI can fix the loan at renewal.\n\nMinimum wage rise (5.9%, to $12.97 per hour from April 2027): With 85 staff, mainly line operators and packers on hourly pay, the award adds roughly $0.72 per hour; at around 2,000 hours a year that is about $1,440 per worker or roughly $122,000 a year — around 13% of operating profit. Combined with the certification programme ($800 each for 28 staff), payroll pressure is real but mechanisation on the new automated line will offset part of it through labour productivity.\n\nGas and electricity costs (+15.3% year-on-year): Insulation manufacture is energy-intensive — drying ovens, die heating and compressed systems run continuously. If energy is even one-quarter of the $13.50 variable cost (about $3.38), a 15.3% rise adds about $0.52 per unit; across 166,000 units that is roughly $86,000 a year, compounding every quarter with no volume offset. TWI can hedge with fixed-term contracts and solar but must renegotiate before margins erode further.\n\nConclusion: The 15.3% gas and electricity rise will have the greatest impact. Unlike the rate rise, it scales with every unit produced, exceeds the rate rise in annual cash terms and — critically — outruns the 6.2% demand growth that was meant to absorb it, squeezing both contribution and the energy-hungry commissioning of the new line. The wage increase is second (large but mechanisable); the interest-rate rise is smallest. TWI must lock in energy contracts, fit sub-metering on the new line and reprice contracts with an energy surcharge.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to TWI.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on TWI's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of TWI with a well-justified judgement that the gas and electricity rise has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.75%", "5.9%", "$12.97", "15.3%", "interest rate", "$13.50"]
+      }
+    }
+  ]
+}

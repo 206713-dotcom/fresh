@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_402",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Harbourline Logistics (HLG) is a private limited company in the port and container logistics sector, employing a workforce of 95. Founded in 2007 by Ravi Harbour, the business unloads and forwards shipping containers and operates a flat structure with democratic leadership. HLG plans to invest $950,000 in an automated container-stacking yard and a new warehouse, financed by a $600,000 bank loan and $350,000 retained profit. It has fixed costs of $450,000 a year, a variable cost of $12 a unit and a selling price of $21, and handles 60,000 units a year. HLG faces two problems: a 6.2% container damage rate at the quay and rising labour turnover among crane operators.",
+    "appendix_1_marketing_ops": "Operations and Quality Report, Q4 2025: HLG handled 15,200 container units last quarter at a damage rate of 6.2%, down from 8.4% a year earlier. Customer claims fell from 44 to 27 per month. Average quay turnaround is 3.4 days. A survey of 350 shipping clients found 68% would pay a 4% premium for guaranteed two-day clearance, and 55% rank damage-free handling above price. A skills audit shows 22 of 95 crane operators lack stacking certification; external courses cost $1,250 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Harbourline Logistics for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "7,500", "8,400"],
+        ["Cost of sales", "5,250", "5,460"],
+        ["Gross profit", "2,250", "2,940"],
+        ["Operating profit", "900", "1,260"],
+        ["Capital employed", "5,000", "6,000"],
+        ["Interest payable", "150", "180"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (February 2026): (1) The central bank increased the base rate from 4.0% to 4.75%, lifting financing costs on HLG's $600,000 variable-rate loan. (2) The national minimum wage rises 4.9% to $14.20 an hour from April 2026, raising wage costs for HLG's 95 staff. (3) Container-handling equipment and diesel input costs rose 7.3% year-on-year while port logistics inflation reached 3.6% and warehouse rental costs climbed 6.1%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "Explain two advantages for HLG of financing its $950,000 stacking-yard expansion with a bank loan rather than a share issue.",
+      "model_answer": "Point 1: A bank loan leaves ownership and control with Ravi Harbour and the existing shareholders. A share issue would bring in new shareholders who would vote at meetings and share future profits, whereas the $600,000 loan has no voting rights. For a private limited company with a flat structure and democratic leadership, keeping decision-making inside the existing team is especially valuable when handling a 6.2% container damage rate that needs quick, coordinated action.\n\nPoint 2: Borrowing does not permanently give away a slice of profit. Once the loan is repaid, HLG keeps all the earnings from the new yard, while equity holders would share those earnings every year. The loan also lets HLG preserve its $350,000 retained profit as working capital to pay the 44 damage claims a month and fund crane-operator training, rather than surrendering cash to investors. With fixed costs of $450,000 a year, retaining that buffer reduces the risk of a cash shortfall while the automated yard beds in.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation applied to HLG's financing choice and case data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$950,000", "$600,000", "bank loan", "$350,000", "$450,000", "retained profit"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HLG is deciding how to expand its container handling capacity. Consider owning a new stacking yard, leasing yard space, or using a third-party depot. Which should HLG choose? Justify your recommendation.",
+      "model_answer": "Owning a new stacking yard: Building and owning the facility gives HLG full control over layout, equipment and service standards, which matters because 55% of surveyed shipping clients rank damage-free handling above price and the current damage rate is 6.2%. Owning also builds an asset for the long term. The drawbacks are the large $950,000 commitment, the need to service a $600,000 loan out of fixed costs already at $450,000 a year, and the risk that demand falls short of the 60,000-unit volume.\n\nLeasing yard space: Leasing avoids the huge upfront outlay and keeps debt lower, giving flexibility if container volumes change. It can be negotiated with maintenance included and frees the $350,000 retained profit for other uses. However, lease payments are a continuing fixed commitment without building an asset, the landlord controls improvements, and HLG may struggle to install the automated stacking equipment it plans if the site is not its own.\n\nUsing a third-party depot: Outsourcing needs almost no capital and converts fixed costs into variable payments, which is attractive while labour turnover among crane operators is a problem. Control of quality is weaker, though, so the 6.2% damage rate could worsen, and margins would be shared with the depot operator, reducing the $9 contribution on each of 60,000 units.\n\nRecommendation: HLG should own the new stacking yard. Control of handling quality is essential to cut the 6.2% damage rate and meet the 68% of clients willing to pay a 4% premium for reliable two-day clearance, and the $9 contribution on 60,000 units can service the $600,000 loan. Leasing is rejected because it blocks the automated investment, and outsourcing is rejected because it sacrifices quality control and margin.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies capacity options with limited application to HLG.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options in HLG's context with some judgement.",
+        "level_3_9_to_12": "Evaluates all three options using case figures and gives a justified recommendation explaining why leasing and outsourcing are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6.2%", "350", "68%", "4%", "two-day clearance", "60,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HLG's container damage rate is 6.2% and labour turnover among crane operators is rising. Explain two benefits for HLG of using democratic leadership to improve performance at the quay.",
+      "model_answer": "Point 1: Democratic leadership invites the 95 employees, especially crane operators, to suggest safer handling methods. Because the flat structure has few layers, their ideas about why 6.2% of containers are damaged can reach Ravi Harbour quickly and be tested in practice. Staff who help design the new stacking procedures are more likely to follow them, reducing the 44 monthly damage claims and protecting the $21 service price.\n\nPoint 2: Involvement raises job satisfaction and can reduce the rising labour turnover among crane operators. The audit shows 22 of 95 operators lack stacking certification, and consulting them about the $1,250 external courses makes training feel supportive rather than punitive. Lower turnover preserves experience at the quay, shortens the 3.4-day turnaround and protects the $9 contribution per unit from the extra recruitment and induction costs that high turnover would create. The same consultation helps HLG direct its $350,000 retained profit effectively, because operators who understand the new yard procedures waste less time and cause fewer damage claims.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation applied to HLG's damage, turnover and training data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "6.2%", "22", "$1,250", "flat", "95"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HLG needs 22 crane operators to gain stacking certification. Consider promoting experienced internal staff or recruiting certified operators externally. Which should HLG choose? Justify your decision.",
+      "model_answer": "Internal promotion: Promoting existing crane operators rewards loyalty and uses workers who already know HLG's quay routines, which helps cut the 6.2% damage rate without a long induction. It supports the flat, democratic culture and can be combined with the $1,250 external courses to certify 22 staff at a cost of 22 × $1,250 = $27,500, far below the $950,000 yard investment. The limitation is that internal candidates may lack formal stacking qualifications and need time to train, during which the 3.4-day turnaround could suffer, and the pool of willing staff may be small.\n\nExternal recruitment: Hiring already certified operators brings proven skills immediately and could reduce the 44 monthly damage claims quickly. New recruits also bring practice from other ports. However, external hiring is expensive in advertising and selection, risks clashing with the existing team, and raises labour turnover if the newcomers leave; it also does nothing to motivate the 22 current staff who remain uncertified, and the insert gives no evidence that external candidates are available locally.\n\nDecision: HLG should promote internal staff and fund the $1,250 courses for all 22. The $27,500 cost is modest against the $600,000 loan, and internal promotion preserves experience and morale at a time when turnover is rising. External recruitment is rejected because its costs and integration risk are not justified when the skills gap can be closed with training, though HLG should recruit externally later if 22 internal candidates cannot be found. Spreading the $1,250 courses over several intakes would keep the 3.4-day quay turnaround stable while all 22 operators qualify.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of internal and external recruitment with limited application to HLG.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both options using HLG's 22 staff, $1,250 and damage data.",
+        "level_3_9_to_12": "Full evaluation of both options with shown cost arithmetic and a justified decision explaining why the alternative is rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$1,250", "22", "95", "6.2%", "crane operators", "certification"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HLG's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HLG's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $450,000 ÷ ($21 − $12) = $450,000 ÷ $9 = 50,000 units. Answer: break-even output is 50,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HLG's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $21 − $12 = $9. Answer: contribution per unit is $9."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HLG's management can use this cost and break-even data.",
+          "model_answer": "1. Compare the 50,000-unit break-even point with the 60,000 units handled, giving a margin of safety of 10,000 units, so managers know how far container volumes could fall before the yard makes a loss.\n2. Use the $9 contribution to judge the 4% premium that 68% of surveyed shipping clients would pay for two-day clearance, estimating whether extra price covers the cost of faster handling.\n3. Test whether the $600,000 bank loan and $950,000 expansion are affordable: above 50,000 units, each container adds $9 toward the $450,000 fixed costs and interest payable.\n4. Benchmark average total cost of $19.50 a unit ($450,000 ÷ 60,000 + $12) each quarter to detect the effect of the 6.2% damage rate and the 7.3% rise in handling-equipment costs, guiding supplier talks."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 50,000 units | (ii) Contribution per unit = $9 | (iii) Four contextual uses explained: margin of safety of 10,000 units against 60,000 handled; premium pricing from the 68% survey finding; loan-service feasibility on $600,000 borrowing; and unit-cost benchmarking at $19.50 to track damage and equipment costs.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["50,000", "$9", "60,000", "$450,000", "$12", "$21"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HLG's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has HLG's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 30.0%\nGross Profit Margin 2025 = 35.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 15.0%\nROCE 2024 = 18.0%\nROCE 2025 = 21.0%\n\nDetailed workings: 2024 gross profit of $2,250,000 divided by revenue of $7,500,000 gives 30.0%; 2025 gross profit of $2,940,000 divided by $8,400,000 gives 35.0%. Operating profit of $900,000 divided by 2024 revenue gives 12.0%; 2025 operating profit of $1,260,000 divided by $8,400,000 gives 15.0%. Return on capital employed of $900,000 on $5,000,000 capital gives 18.0%; 2025 return of $1,260,000 on $6,000,000 gives 21.0%. Revenue rose 12.0% while cost of sales rose only 4.0%, and operating profit grew 40% against a 20% rise in capital employed.\n\nEvaluation: The trend is positive on every measure. The gross margin improved from 30.0% to 35.0% because revenue grew much faster than cost of sales, suggesting HLG controlled quay and handling costs even with a 6.2% damage rate. Operating return rose from 12.0% to 15.0%, showing overheads were absorbed better as volumes approached 60,000 units. Returns on capital improved from 18.0% to 21.0%, important because the $950,000 stacking yard raises the capital base and the $600,000 loan must be serviced. Interest payable increased from $150,000 to $180,000, but operating profit rose far more, so the extra debt has not weakened returns. A limitation is that these are historic figures and do not yet reflect the 7.3% rise in equipment and diesel costs in Appendix 3.\n\nConclusion: HLG's profitability has improved, and the improvement is broad-based rather than a one-off: both trading margins and the return on the enlarged capital base rose together. The key risk is that the 35.0% gross margin could be squeezed by rising input costs, so management should protect the $9 contribution per unit and monitor the damage rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or trends with little or no accurate ratio calculation.",
+        "level_2_5_to_8": "Calculates the three profitability ratios for both years with some relevant analysis of the trends.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years, detailed evaluation of revenue, cost, capital and interest movements, and a justified conclusion on profitability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["30.0%", "35.0%", "12.0%", "15.0%", "18.0%", "21.0%", "7,500"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HLG of offering guaranteed two-day container clearance to shipping clients.",
+      "model_answer": "Advantage: The survey of 350 shipping clients found that 68% would pay a 4% premium for guaranteed two-day clearance and that 55% rank damage-free handling above price. HLG can therefore raise its effective price above the $21 unit price and increase the $9 contribution, while giving clients a clear reason to choose HLG over other ports. Faster clearance also reduces the 3.4-day quay turnaround, easing the congestion that contributes to the 6.2% container damage rate.\n\nDisadvantage: A two-day guarantee requires more crane capacity and tighter scheduling, which pushes up the $450,000 fixed costs and may increase the $12 variable cost per unit through overtime or expedited handling. If HLG misses the deadline, the 68% who paid a premium may seek compensation or switch ports, damaging its reputation for reliability. With a $600,000 bank loan to repay, any extra cost could absorb the 4% premium before the new $950,000 yard is fully productive.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed development using HLG's survey, cost and turnaround data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "4%", "55%", "two-day clearance", "350", "6.2%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base rate rise to 4.75%, the 4.9% minimum wage increase and the 7.3% rise in handling-equipment and diesel costs will affect HLG. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base rate rise (4.0% to 4.75%): If HLG's $600,000 loan is variable-rate, the increase is 0.75 percentage points, so 0.0075 × $600,000 = $4,500 a year. That is small against fixed costs of $450,000 and interest payable of $180,000, and it could be removed by fixing the rate. Higher rates might also make future borrowing for the $950,000 yard dearer, but the direct effect is limited and one-dimensional.\n\nMinimum wage increase (4.9% to $14.20): HLG has 95 staff and handles 60,000 units, so productivity is 60,000 ÷ 95 = 631.6 units per worker. Hours and individual pay are not stated, so an exact wage-bill increase cannot be invented; the proper test is whether productivity stays near 632 units or volumes rise, otherwise unit labour cost grows and the $9 contribution narrows. The effect is recurring and unavoidable, but training the 22 uncertified crane operators could offset it.\n\nEquipment and diesel cost rise (7.3%): The insert does not break down the $12 variable cost, so only a labelled upper bound is valid: if all of it were affected, 7.3% × $12 = $0.876 per unit, and at 60,000 units that is 60,000 × $0.876 = $52,560 a year. Even a smaller share cuts the $9 contribution, and with warehouse rents up 6.1% and logistics inflation at 3.6%, HLG has limited scope to pass costs on.\n\nConclusion: The 7.3% rise in handling-equipment and diesel costs will have the greatest impact. It applies to every one of the 60,000 containers, directly erodes the contribution that services the $600,000 loan and funds the $950,000 yard, and is harder to hedge than a $4,500 interest change or a wage rise that higher productivity can absorb. The wage rise ranks second and the interest rise third.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to HLG.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on HLG's costs or financing using case figures.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with shown arithmetic, a justified greatest-impact judgement on input costs, and reasons why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "4.9%", "7.3%", "$12", "4.0%", "$600,000"]
+      }
+    }
+  ]
+}

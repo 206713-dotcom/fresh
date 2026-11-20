@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_261",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Goldenfield Grain Mills (GGM) is a private limited company in the grain milling and food processing sector, employing a workforce of 50. Founded in 2011 by Priya Goldenfield, it supplies fortified flour to regional bakeries and operates a hierarchical structure with autocratic leadership. GGM plans to invest $720,000 in a new automated flour-milling line with recyclable packaging, financed by a $420,000 ten-year bank loan and $300,000 retained profit. It has fixed costs of $240,000 a year, a variable cost of $5.00 a unit and a selling price of $11.00, and currently produces 100,000 units a year. GGM faces two problems: grain-dust waste has risen sharply and a recent quality audit found a 2.4% defect rate on the new line.",
+    "appendix_1_marketing_ops": "Quality and Operations Report — Q4 2025: The new milling line produced 24,000 units last quarter at a defect rate of 2.4%, down from 3.6% a year earlier. Customer complaints fell from 44 to 26 per month. Average order fulfilment time is 4.1 days. Grain-dust waste reached 3.2% of output. A survey of 400 regional bakery buyers found that 68% would pay up to $0.50 more for recyclable packaging, and 55% check packaging sustainability before ordering. Staff training records show 18 of 50 employees have not completed on-the-job training on the new milling machinery; off-the-job training courses at the technical college cost $800 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Goldenfield Grain Mills as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "100", "80"],
+        ["Trade receivables", "120", "150"],
+        ["Cash and cash equivalents", "50", "90"],
+        ["Current liabilities", "200", "200"],
+        ["Non-current assets", "1,400", "1,900"],
+        ["Capital employed", "1,800", "2,100"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.50% to 5.25%, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 5.8% from $13.00 to $13.75 per hour from April 2026, raising total wage bills. (3) Wheat and grain input costs have risen 9.5% year-on-year, and food-price inflation is 6.4%, while consumer spending on fortified flour grew 2.8% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "GGM plans to finance part of its milling expansion with a ten-year bank loan. Explain two advantages for GGM of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Using retained profit costs GGM nothing in interest or capital repayments, which protects cash flow at a time when the firm already carries fixed costs of $240,000 a year and a $420,000 bank loan. Every dollar not paid as interest can be used to absorb the 9.5% rise in wheat and grain input costs, helping GGM hold its $11.00 selling price for regional bakeries rather than passing costs on.\n\nPoint 2: Retained profit avoids the collateral and default risk of a bank loan, so the $300,000 available from internal funds leaves the new $720,000 milling line free from any lender repossession if demand from bakeries disappoints. It also preserves Priya Goldenfield's ownership and control of the business, since no external lender can impose conditions on how the automated flour-milling operation is run. Retaining profit also signals confidence to stakeholders and avoids the variable-rate exposure created when the base interest rate rose from 4.50% to 5.25%, which would have raised the cost of borrowing. Overall, internal finance keeps both the cost and the risk of the expansion lower than taking on more debt.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to GGM and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$300,000", "$420,000", "$240,000", "$720,000", "$5.00"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "GGM is launching its new fortified flour range. Consider a national television campaign, trade press advertising, or social media influencer marketing. Which should GGM choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National television campaign: A TV campaign would build rapid, wide brand awareness for the new fortified flour range across many regions at once. However, airtime and production costs are very high for a 50-employee private limited company already funding a $720,000 expansion with a $420,000 loan, and much of the mass audience would not be commercial bakeries, so a large share of the spend would be wasted.\n\nTrade press advertising: Advertising in milling and bakery trade journals is cheap, reaches exactly the regional bakeries GGM supplies, and carries technical credibility for a fortified flour product. Its weakness is narrow reach: it cannot build consumer pull or support a premium, and with only 68% of surveyed buyers willing to pay $0.50 more, trade press alone may not shift enough volume to fill the new line.\n\nSocial media influencer marketing: Food and baking influencers can demonstrate fortified flour recipes to exactly the 55% of the 400 surveyed buyers who check packaging sustainability, with measurable engagement and low cost per reached buyer. Results take time to build and depend on influencer credibility, but the message can highlight the recyclable packaging that underpins the premium.\n\nRecommendation: GGM should choose trade press advertising as the primary channel, supported by modest social media activity. Trade press reaches the actual decision-makers — regional bakeries — at a cost proportionate to a firm with $240,000 fixed costs, and it suits a technical fortified product. Television is rejected as unaffordable and untargeted, wasting spend on non-buyers; influencer marketing is rejected as the lead channel because it builds awareness slowly and GGM sells to bakeries rather than households, so the 68% premium signal is best triggered through the trade channel that already buys the flour.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of GGM with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of GGM with a well-justified recommendation explaining why television and influencer marketing are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["fortified flour", "regional bakeries", "$720,000", "68%", "55%", "$0.50"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "GGM's grain-dust waste and 2.4% defect rate are concerns. Explain two benefits for GGM of using autocratic leadership to improve quality on the new milling line.",
+      "model_answer": "Point 1: Autocratic leadership lets Priya Goldenfield set clear, uniform quality standards for the new milling line, so every one of the 50 employees follows the same milling and packing routine. Clear instructions reduce variation and help cut the 2.4% defect rate found in the recent quality audit, which is vital when supplying regional bakeries that demand consistent fortified flour.\n\nPoint 2: Autocratic decisions are made quickly, allowing GGM to halt production the moment grain-dust waste spikes and to correct machine settings without delay. This fast response limits the 3.2% waste reported in the quality report and protects the $5.00 variable cost per unit, since less flour is thrown away. For a hierarchical structure with strict roles, decisiveness also supports the $720,000 investment by keeping the line running to target. Faster correction of defects also reduces the need for the $800 per employee retraining that follows avoidable errors.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to GGM's waste, quality and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "workforce of 50", "defect rate", "2.4%", "grain-dust waste", "$800"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "GGM must upskill 18 production staff to operate the new milling machinery. Consider on-the-job training or off-the-job training at the technical college. Which should GGM choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training 18 staff on GGM's own milling machinery is directly relevant to the firm's exact settings and quality standards, costs nothing in external fees, and keeps those workers productive while they learn, protecting output toward 100,000 units and the effort to cut the 2.4% defect rate. The drawback is that the trainers are themselves production staff whose own work suffers, and bad habits can be passed on, which matters when a quality audit has already flagged defects.\n\nOff-the-job training: The technical college course at $800 per employee gives structured, up-to-date skills and a recognised certificate for all 18 staff, costing $14,400 in total — small beside the $720,000 investment. It removes 18 workers from the line, cutting short-term capacity and risking grain-dust waste rising further, and the generic content may not match GGM's exact milling settings, so follow-up coaching would still be needed.\n\nDecision: GGM should choose on-the-job training for the initial rollout, with short college top-ups later for the most senior operators. On-the-job training is cheaper, machine-specific and avoids losing capacity while waste is already a problem and defect rates are under audit; full off-the-job training is rejected because withdrawing $14,400 and 18 staff from a line still bedding in would jeopardise supply to regional bakeries, and GGM can add college certification once the new line is stable.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to GGM.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of GGM.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of GGM with a well-justified decision covering cost, disruption and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$800", "18", "$720,000", "2.4%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how GGM's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate GGM's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $240,000 ÷ ($11.00 − $5.00) = $240,000 ÷ $6.00 = 40,000 units. Answer: break-even output is 40,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate GGM's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $11.00 − $5.00 = $6.00. Answer: contribution per unit is $6.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways GGM's management can use this financial data.",
+          "model_answer": "1. GGM's managers can compare the 40,000-unit break-even output with actual output of 100,000 units to confirm the milling line is comfortably profitable, giving a margin of safety of 60,000 units, which supports running the new $720,000 line at full capacity.\n2. Contribution per unit of $6.00 lets GGM model the effect of the $0.50 premium for recyclable packaging: if won, contribution rises toward $6.50, showing how many extra units are needed to cover the $240,000 fixed costs.\n3. Knowing fixed costs of $240,000 and a contribution of $6.00 lets managers set the volume needed to service the $420,000 bank loan repayments and check the line can afford them before committing further capital.\n4. Managers can use unit cost ($240,000 ÷ 100,000 units + $5.00 = $7.40 a unit) to benchmark performance each quarter, isolate the grain-dust waste behind the 3.2% waste figure, and judge whether to renegotiate the $5.00 variable cost given 9.5% grain inflation."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 40,000 units | (ii) Contribution per unit = $6.00 | (iii) Four contextual uses explained: margin of safety against 100,000-unit output; the $0.50 premium and pricing against $240,000 fixed costs; loan-repayment feasibility for the $420,000 loan; and unit-cost benchmarking at $7.40 to tackle 3.2% waste.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40,000", "$6.00", "100,000", "$240,000", "$11.00", "$5.00", "$7.40"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate GGM's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has GGM's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.35 : 1\nCurrent Ratio 2025 = 1.60 : 1\nAcid Test Ratio 2024 = 0.85 : 1\nAcid Test Ratio 2025 = 1.20 : 1\n\nDetailed workings: 2024 current assets = $100,000 inventories + $120,000 trade receivables + $50,000 cash = $270,000; 2025 current assets = $80,000 + $150,000 + $90,000 = $320,000. Liquidity cover for 2024 = $270,000 ÷ $200,000 = 1.35, and for 2025 = $320,000 ÷ $200,000 = 1.60. Excluding stock, 2024 = ($270,000 − $100,000) ÷ $200,000 = $170,000 ÷ $200,000 = 0.85, and 2025 = ($320,000 − $80,000) ÷ $200,000 = $240,000 ÷ $200,000 = 1.20.\n\nEvaluation: GGM's short-term liquidity has strengthened. The first ratio rose from 1.35 to 1.60 as current assets grew from $270,000 to $320,000 while current liabilities held at $200,000, so the firm covers its short-term debts more comfortably. The second ratio, which strips out inventories, improved from 0.85 to 1.20, so GGM is no longer dependent on selling flour stock to meet obligations — important while it services a $420,000 bank loan and funds a $720,000 expansion. However, trade receivables rose from $120,000 to $150,000, tying up cash; if regional bakeries pay late, the stronger position could quickly reverse, and the fall in inventories to $80,000 should be watched so that bakery orders are not delayed.\n\nConclusion: GGM's financial position has improved. Both liquidity measures moved favourably (1.35 to 1.60 and 0.85 to 1.20), and the improvement does not rely on stock. The residual risk is rising receivables, so GGM should tighten credit control with its bakery customers while proceeding with the milling investment.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of inventory, receivables and liabilities movements and a justified conclusion on whether GGM's financial position improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.35", "1.60", "0.85", "1.20", "$270,000", "$320,000", "$720,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for GGM of introducing recyclable packaging for its fortified flour range.",
+      "model_answer": "Advantage: Recyclable packaging matches the preferences of the 68% of the 400 surveyed bakery buyers who would pay up to $0.50 more, letting GGM charge a premium that protects the $6.00 contribution per unit even as wheat and grain input costs rise 9.5%. It also strengthens the brand with the 55% who check packaging sustainability, helping GGM keep or win listings with regional bakeries for the $720,000 line.\n\nDisadvantage: Recyclable materials typically cost more than standard sacks, which would lift the $5.00 variable cost per unit and squeeze margins unless the $0.50 premium is accepted across the whole range. Any weakness in the new packaging — for example, poorer shelf life for fortified flour — could push the 2.4% defect rate higher and add to the grain-dust waste problem before the automated line settles down.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to GGM's research data, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["recyclable packaging", "68%", "55%", "$0.50", "9.5%", "$720,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 5.8% minimum wage increase and the 9.5% rise in input costs will affect GGM. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.50% to 5.25%): If GGM's $420,000 bank loan is variable-rate, the annual interest cost rises by 0.75 percentage points × $420,000 = $3,150 a year (0.0075 × $420,000). That is modest against $240,000 fixed costs, and if the loan is fixed-rate the effect is zero. Higher rates may also make customers cautious and raise the cost of any future borrowing for the $720,000 expansion, but GGM can limit this by fixing the rate.\n\nMinimum wage increase (5.8%, to $13.75 an hour): GGM employs a workforce of 50, and production and packing roles are largely hourly-paid, so this rise feeds into the wage bill and cannot be avoided. No hours worked or individual pay figures are given, so a defensible annual total cannot be invented; the honest test is productivity: 100,000 units ÷ 50 staff = 2,000 units per worker, so the rise is affordable only if productivity holds or output grows, otherwise unit labour cost climbs and the $6.00 contribution per unit shrinks.\n\nInput cost inflation (9.5% grain and wheat): GGM's $5.00 variable cost per unit contains ingredients, but the insert never decomposes it, so only a bound is honest: if the whole variable cost rose 9.5% that adds about 9.5% × $5.00 = $0.48 per unit, and at 100,000 units that is roughly $47,500 a year. Even a smaller increase erodes contribution, but the $0.50 recyclable-packaging premium and bakery price talks can recover part of it.\n\nConclusion: The 9.5% input-cost rise will have the greatest impact because it compounds on every one of the 100,000 units and directly erodes the $6.00 contribution that justifies the $720,000 expansion, and unlike the loan it cannot be neutralised by fixing a rate. The wage rise is real but manageable if productivity holds, and the interest rise adds only about $3,150, so both are smaller.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to GGM.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on GGM's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of GGM with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "5.8%", "9.5%", "interest rate", "$13.75", "$5.00"]
+      }
+    }
+  ]
+}

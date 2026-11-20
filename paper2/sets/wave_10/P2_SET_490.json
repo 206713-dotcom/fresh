@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_490",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Zyra Warehouse Robotics (ZYRA) is a private limited company in the industrial automation sector, supplying robotic picking systems to distribution centres in Rotterdam. Founded in 2016 by Daan van Houten, ZYRA employs a workforce of 50 and operates a flat structure with autocratic leadership. ZYRA plans to invest $1,200,000 in a robotic picking line and fleet-management software, financed by a $480,000 ten-year bank loan and a $720,000 hire purchase agreement. It has fixed costs of $1,200,000 a year, a variable cost of $250 a unit and a selling price of $550, and currently produces 10,000 units a year. ZYRA faces a quality problem: the pick-error rate reached 1.5% last quarter and customer damage complaints remain at 39 a month.",
+    "appendix_1_marketing_ops": "Quality and Operations Report — Q4 2026: The robotic picking line handled 5,400 orders last quarter at a pick-error rate of 1.5%, down from 3.6% a year earlier. Customer damage complaints fell from 71 to 39 per month. Average order cycle time is 4.4 hours. A survey of 760 Dutch warehouse managers found 64% plan to automate picking within two years and 56% would switch integrators for faster installation. Rivals charge $22 per hour for robotic-as-a-service while ZYRA charges $26. Technician logs show 16 of 50 field engineers have not completed on-the-job training on the new fleet software; off-the-job certification costs $1,400 per engineer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Zyra Warehouse Robotics for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "4,800", "6,000"],
+        ["Cost of sales", "3,360", "3,900"],
+        ["Gross profit", "1,440", "2,100"],
+        ["Operating profit", "720", "1,080"],
+        ["Capital employed", "3,000", "4,200"],
+        ["Interest payable", "60", "96"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) The European Central Bank raised its policy rate from 3.50% to 4.25%, lifting borrowing costs on variable-rate business loans and hire-purchase finance. (2) The Dutch minimum wage will rise 5.4% from $15.60 to $16.44 per hour from January 2027, increasing engineering wage bills. (3) Steel, motor and sensor input costs rose 10.2% year-on-year as global automation demand grows, while European warehouse-automation spending grew 7.1% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "ZYRA plans to fund $720,000 of its robotic picking line through hire purchase. Explain two advantages for ZYRA of using hire purchase instead of a larger bank loan.",
+      "model_answer": "Point 1: Hire purchase spreads the $720,000 cost over fixed instalments and the asset is used immediately while it is paid for, so ZYRA can start earning from the picking line before the full amount is outlayed. This eases cash flow against fixed costs of $1,200,000 a year and leaves the $480,000 bank loan as the only conventional debt, helping contain interest costs as policy rates rise.\n\nPoint 2: Hire purchase is secured on the robot itself, so it may be easier to obtain than a further unsecured $720,000 bank loan, and it spreads risk for Daan van Houten's shareholders. With a 1.5% pick-error rate and 39 damage complaints a month, ZYRA can deploy the equipment now and fix quality problems while earning, rather than waiting for loan approval. Ownership transfers after the final payment, rewarding the 64% of Dutch managers planning to automate.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Zyra Warehouse Robotics and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["hire purchase", "bank loan", "$720,000", "$480,000", "$1,200,000", "fixed costs"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ZYRA is planning how to reach the 760 surveyed Dutch warehouse managers. Consider direct sales to warehouses, partnerships with logistics integrators, or an equipment rental partnership. Which should ZYRA choose? Justify your recommendation.",
+      "model_answer": "Direct sales to warehouses: ZYRA's own sales team could demonstrate the picking line and explain the 1.5% error rate and 4.4-hour cycle time directly to the 64% planning to automate, keeping full margin and control of customer relationships. It supports the $26 price against the $22 rival. The drawbacks are high recruitment and travel costs for a 50-person firm, slow coverage of 760 managers, and the need to handle installation with 16 engineers still untrained.\n\nPartnerships with logistics integrators: Integrators already advise warehouses and bundle automation projects, so they can put ZYRA's robots into large bids and help cut the 56% who would switch integrators for faster installation. They bring installation capacity and industry credibility. However, they take a margin and may favour rival hardware, and ZYRA becomes dependent on a few partners for reaching the 64% demand segment.\n\nEquipment rental partnership: A rental firm could buy the robots and lease them to warehouses as a service, answering the $22-per-hour rival with a flexible offer and reducing customers' upfront cost. It would scale quickly. Weaknesses are that rental partners capture much of the revenue, ZYRA loses pricing control, and the $1,200,000 investment case weakens if margins are shared.\n\nRecommendation: ZYRA should choose direct sales as its main route. Full margin and control are vital when a 1.5% error rate and 39 complaints need careful explanation and the $1,200,000 line must earn its return. Integrator partnerships are rejected as the primary channel because margin sharing and partner dependence dilute returns; rental is rejected because it hands over pricing control to the $22 rival's model. ZYRA can add integrators later for installation capacity.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the route-to-market options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of ZYRA with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of ZYRA with a well-justified recommendation explaining why integrator and rental partnerships are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["64%", "56%", "760", "1.5%", "39", "$26"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ZYRA has a 1.5% pick-error rate and 39 damage complaints a month. Explain two benefits for ZYRA of using autocratic leadership in its flat structure during the robot rollout.",
+      "model_answer": "Point 1: Autocratic leadership lets Daan van Houten impose clear, uniform picking and packing standards immediately, which matters when the pick-error rate is 1.5% and damage complaints reach 39 a month. In a flat structure his instructions reach all 50 engineers and operators without delay, cutting errors and protecting the 10,000 units a year needed to justify the $1,200,000 line. Fast decisions also shorten the 4.4-hour order cycle.\n\nPoint 2: Central control enforces discipline on the 16 engineers untrained on the fleet software, ensuring no robot is deployed with a known fault and that installation is consistent for the 64% of managers planning to automate. Fewer errors reduce damage complaints and protect the 56% who would switch integrators for faster, reliable installation. Consistent quality also defends the $26 price against $22 rivals and supports the 35.0% share of revenue retained as gross profit.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to ZYRA's error rate, complaints and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic", "flat", "workforce of 50", "1.5%", "4.4 hours", "16"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ZYRA must reduce its 1.5% pick-error rate and 39 monthly damage complaints. Consider introducing automated inspection or setting up quality circles. Which should ZYRA choose? Justify your decision.",
+      "model_answer": "Automated inspection: Cameras and sensors could check every pick and reject faults before goods are damaged, directly cutting the 1.5% error rate and the 39 monthly complaints while shortening the 4.4-hour cycle time. Checks run continuously across all 5,400 orders and reduce rework, protecting the $300 contribution. Drawbacks are the upfront cost within the $1,200,000 project and the fact that 16 engineers lack training on the fleet software needed to maintain the system.\n\nQuality circles: Regular meetings where engineers and operators diagnose errors would tap the practical knowledge of the 50 staff, building ownership of the new robots and fitting ZYRA's problem-solving needs. Circles could identify causes of damage and support the 56% of managers wanting faster installation. However, they work slowly compared with automated checks, take staff from live operations, and recommendations may not be implemented quickly under autocratic leadership.\n\nDecision: ZYRA should introduce automated inspection first, backed by a small quality circle. Inspection gives immediate, consistent control over the 1.5% error rate and 39 damage complaints across every order, protecting the $300 contribution and the $1,200,000 investment. Quality circles alone are rejected as too slow while errors are damaging customer relationships and while 16 engineers still need training; ZYRA can use circles afterwards to refine inspection rules, combining speed with staff insight.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two quality approaches with limited application to ZYRA.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both approaches in the context of ZYRA.",
+        "level_3_9_to_12": "Comprehensive evaluation of both approaches in the context of ZYRA with a well-justified decision covering speed, cost, consistency and staff involvement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.5%", "3.6%", "39", "$1,400", "$1,200,000", "4.4 hours"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ZYRA's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ZYRA's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $1,200,000 ÷ ($550 − $250) = $1,200,000 ÷ $300 = 4,000 units. Answer: break-even output is 4,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ZYRA's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $550 − $250 = $300. Answer: contribution per unit is $300."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ZYRA's management can use this financial data.",
+          "model_answer": "1. ZYRA's managers can compare the 4,000-unit break-even output with actual output of 10,000 units, giving a margin of safety of 6,000 units and confidence the robotic line can cover fixed costs even if Dutch automation demand slows.\n2. Contribution per unit of $300 lets managers model pricing, for example a 10% discount to $495 would cut contribution to $245 and raise break-even to about 4,898 units, so they can judge whether volume from the 64% automating segment still pays.\n3. Fixed costs of $1,200,000 and $300 contribution support the affordability test for the $480,000 bank loan and $720,000 hire purchase, proving the $1,200,000 plan is serviceable while the 1.5% error rate persists.\n4. Managers can use unit cost data ($1,200,000 ÷ 10,000 units = $120 + $250 = $370 a unit) to benchmark assembly efficiency, target the 39 damage complaints and renegotiate steel and sensor contracts amid 10.2% input-cost inflation, defending the $550 price."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 4,000 units | (ii) Contribution per unit = $300 | (iii) Four contextual uses explained: margin of safety against 10,000-unit output; pricing and discount modelling against $1,200,000 fixed costs; loan and hire-purchase feasibility for the $1,200,000 line; and unit-cost benchmarking at $370 under 10.2% input inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4,000", "$300", "10,000", "$1,200,000", "$250", "$550", "$370"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ZYRA's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has ZYRA's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 30.0%\nGross Profit Margin 2025 = 35.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 24.0%\nROCE 2025 = 25.7%\n\nDetailed workings: Gross profit 2024 = $4,800,000 − $3,360,000 = $1,440,000; 2025 = $6,000,000 − $3,900,000 = $2,100,000. As a share of revenue: 2024 = $1,440,000 ÷ $4,800,000 = 30.0%; 2025 = $2,100,000 ÷ $6,000,000 = 35.0%. Operating profit as a share of revenue: 2024 = $720,000 ÷ $4,800,000 = 15.0%; 2025 = $1,080,000 ÷ $6,000,000 = 18.0%. Returns on capital employed: 2024 = $720,000 ÷ $3,000,000 = 24.0%; 2025 = $1,080,000 ÷ $4,200,000 = 25.7%.\n\nEvaluation: 2025 shows stronger performance on all three measures. The share of revenue retained after cost of sales rose from 30.0% to 35.0%, helped by automation efficiencies and the 64% of managers planning to automate. Capital employed grew from $3,000,000 to $4,200,000, matching the $1,200,000 picking line funded by loan and hire purchase, yet returns on it improved from 24.0% to 25.7%, so the new line is already earning. Operating profit rose strongly, covering interest payable rising from $60,000 to $96,000. Risks remain: 10.2% input-cost inflation is squeezing costs, and if the 1.5% error rate is not fixed the 39 complaints could damage growth.\n\nConclusion: ZYRA's financial performance has improved. Margins and returns on capital all rose, with operating profitability growing faster than revenue. The improvement is sound, so ZYRA should fix the loan rate and eliminate picking errors to protect it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether ZYRA's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["30.0%", "35.0%", "15.0%", "18.0%", "24.0%", "25.7%", "4,200"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ZYRA of launching its robotic picking line to Dutch distribution centres.",
+      "model_answer": "Advantage: The line meets clear demand: 64% of surveyed managers plan to automate within two years and 56% would switch integrators for faster installation, so ZYRA can win share with the 4.4-hour cycle time and falling 1.5% error rate. It defends the $26 price against the $22 rival, supports the 35.0% share of revenue retained as gross profit and grows the 10,000 units a year needed to justify the $1,200,000 investment.\n\nDisadvantage: Reliability and skills are serious risks: 39 damage complaints a month and 16 engineers untrained on the fleet software could undermine a high-profile launch, raising support costs and threatening the 56% switch segment. The 10.2% rise in steel, motor and sensor costs could squeeze the $300 contribution if ZYRA cannot pass it on, while the $720,000 hire purchase instalments and $480,000 loan repayments create heavy fixed commitments before the line is fully proven.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ZYRA's research, costs and customers."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.5%", "64%", "56%", "$22", "$26", "$1,200,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the rise in the policy rate to 4.25%, the 5.4% minimum wage increase and the 10.2% rise in input costs will affect ZYRA. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Policy rate rise to 4.25%: ZYRA has a $480,000 ten-year bank loan and a $720,000 hire purchase agreement. If the loan is variable-rate, the 0.75 percentage-point rise adds 0.75% of $480,000 = $3,600 a year (0.0075 × $480,000), and hire-purchase finance may also become dearer. That is modest beside fixed costs of $1,200,000 and 2025 interest payable of $96,000; if the loan is fixed-rate the direct cost is nil. Higher rates could cool Dutch warehouse investment, but ZYRA can largely remove the financing risk by fixing the loan rate.\n\nMinimum wage rise of 5.4% to $16.44 per hour: The insert does not state hours worked or how many of the 50 staff are hourly-paid, so no defensible annual wage total can be invented. The sound test is productivity computed from the insert: 10,000 units ÷ 50 staff = 200 units per worker. If that holds, the rise is absorbable within a 35.0% share of revenue retained as gross profit; if the 1.5% error rate and 39 complaints reduce output per worker, unit labour costs rise and the $300 contribution per unit shrinks. ZYRA can pass part on to the 64% automating segment.\n\nInput cost inflation of 10.2%: This hits every unit. The insert does not decompose the $250 variable cost, so only an explicitly labelled upper bound is honest: if the whole variable cost rose 10.2%, it would add 10.2% of $250 = $25.50 per unit, and at 10,000 units that is roughly $255,000 a year (10,000 × $25.50). Even a fraction of that erodes the contribution funding the $1,200,000 line, and with rivals at $22 it cannot easily be passed to price-sensitive warehouses.\n\nConclusion: The 10.2% rise in input costs will have the greatest impact. It recurs on all 10,000 units and attacks the $300 contribution behind the $1,200,000 line, whereas the rate rise is at most $3,600 and the wage effect cannot be quantified without invented assumptions. ZYRA should lock input contracts and fix the loan rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to ZYRA.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on ZYRA's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of ZYRA with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.25%", "5.4%", "10.2%", "$16.44", "$480,000", "$250"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,952 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_121",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Alderbrace Construction Ltd is a private limited company building 30 family homes a year on the edge of Dunmore, a growing town in Country X. The business owns 2 tower cranes, 14 lorries and 6 excavators, and employs 58 site workers plus 7 office staff. Land for a third housing phase was bought for $2.1m last year.\n\nManaging director Priya Nair is deciding whether to buy a new $380,000 mobile crane or to hire 12 additional bricklayers at $520 a week each for the next 3 years. Each bricklayer could lay 340 bricks a day, while the crane would lift loads 4 times faster than the existing hoist. Last year site output rose 11% after new machinery was installed, yet 22 houses from the latest phase remain unsold.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital' as a factor of production.",
+        "model_answer": "Capital is the man-made resources used to produce goods and services, such as Alderbrace's 2 tower cranes, 14 lorries, 6 excavators and hoist, which are used to build homes. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital = man-made / human-made resources used to produce goods and services",
+            "Reward any suitable examples such as machinery, tools, vehicles, equipment or buildings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why capital is important to Alderbrace Construction Ltd.",
+        "model_answer": "Reason 1: Capital gives a business the man-made resources it needs to produce goods and services [k]. Alderbrace owns 2 tower cranes, 14 lorries and 6 excavators to build its 30 family homes a year [app]. Reason 2: Capital raises productivity because machines can work faster and longer than people alone [k]. After new machinery was installed last year, site output rose 11%, showing capital equipment measurably increased production [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital = man-made resources used in production (machinery, vehicles, tools)",
+            "Capital goods help raise output and productivity"
+          ],
+          "application_max_2": [
+            "Alderbrace's own assets: 2 tower cranes, 14 lorries, 6 excavators / 30 family homes a year",
+            "The 11% rise in site output after new machinery was installed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Alderbrace Construction Ltd", "30 family homes", "2 tower cranes", "14 lorries", "11%", "$380,000", "340 bricks"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of buying the $380,000 mobile crane for Alderbrace.",
+        "model_answer": "Benefit 1: Capital equipment can increase the speed of production [k]. The crane would lift loads 4 times faster than the existing hoist, allowing the firm to complete phases more quickly [app]. Faster lifting would reduce the time each house spends under construction, raising overall output and helping clear unsold stock sooner [an]. Benefit 2: Machinery raises efficiency by getting more output from existing inputs [k]. A $380,000 crane costs far less over 3 years than hiring 12 bricklayers at $520 a week, which would total $973,440 (12 x $520 x 156 weeks) [app]. Paying once for the crane instead of ongoing wages would cut production costs per house and improve profit margins [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Machinery/capital equipment can increase speed and output",
+            "Machinery can reduce average costs / raise efficiency versus ongoing wages"
+          ],
+          "application_max_2": [
+            "Crane lifts loads 4 times faster than the existing hoist",
+            "Cost comparison: $380,000 crane versus $973,440 to hire 12 bricklayers over 3 years"
+          ],
+          "analysis_max_2": [
+            "Faster lifting shortens build time, raising output and sales turnover",
+            "Lower labour cost per house improves profit margins on the remaining houses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Alderbrace Construction Ltd", "$380,000", "4 times faster", "22 houses", "12 additional bricklayers", "$520", "3 years"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Alderbrace Construction Ltd should buy the $380,000 mobile crane rather than hire 12 additional bricklayers? Justify your answer.",
+        "model_answer": "Argument for the crane: buying the $380,000 mobile crane gives Alderbrace more capital, which is a man-made resource for production [k]. It would lift loads 4 times faster than the existing hoist, and site output already rose 11% after the previous machinery was installed [app]. This suggests further capital investment would raise productivity and shorten build times, helping shift the 22 houses that remain unsold [an]. Argument for hiring bricklayers: hiring 12 bricklayers at $520 a week is more flexible and avoids a large one-off outlay [k]. However, 12 bricklayers over the next 3 years would cost $973,440 (12 x $520 x 156 weeks), far more than the crane's one-off $380,000 [app]. Yet with 22 houses still unsold, committing cash to the crane is risky if demand weakens, because a specialised crane cannot easily be resold or redeployed [an]. Overall, on the stem's figures the crane is cheaper over 3 years ($380,000 versus $973,440) and matches the 11% output gain from the earlier machinery, so Alderbrace should buy the crane if it can secure buyer interest in the remaining houses [eval]. If demand stays weak, flexible bricklayers would protect the firm's cash, so the decision depends on confirmed sales [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Crane = capital investment; bricklayers = labour, both are factors of production",
+            "Capital can raise productivity and reduce unit costs over time"
+          ],
+          "application_max_2": [
+            "$380,000 crane versus 12 x $520 x 156 weeks = $973,440 over 3 years",
+            "4 times faster lifting / 11% output rise / 22 houses remain unsold / $2.1m land purchase"
+          ],
+          "analysis_max_2": [
+            "Cost comparison over 3 years favours the crane if demand holds",
+            "Fixed capital carries resale/redeployment risk versus flexible labour given unsold stock"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation conditional on confirmed demand/buyer contracts for the remaining houses",
+            "Balanced judgement recognising flexibility of labour against the crane's cost saving"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Alderbrace Construction Ltd", "$380,000", "12 additional bricklayers", "$520", "22 houses", "11%", "4 times faster", "3 years"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_122",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Vantara Logistics Ltd is a third-party fulfilment business operating a 9,000 sq m warehouse in the port city of Hallwick, Country X. It employs 340 warehouse operatives and processes 1,150 customer orders a day for 40 retail clients. Work on the packing line is split between 5 stations: receiving, picking, packing, labelling and dispatch.\n\nEach operative is assigned to a single station and repeats the same task throughout the shift. Since the line was split into stations 18 months ago, output per worker per hour has risen from 62 to 74 orders. General manager Laura Chen is deciding whether to add a 6th station for quality checks or to train staff to rotate between all 5 stations. Wages currently average $11 per hour.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'division of labour'.",
+        "model_answer": "Division of labour is the splitting of the production process into separate tasks, with each worker specialising in one task, such as Vantara's operatives working at the receiving, picking, packing, labelling or dispatch stations. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Division of labour = production process broken down into separate tasks/operations",
+            "Workers specialise in a single task (allow examples such as the 5 stations)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why division of labour increases output at Vantara's warehouse.",
+        "model_answer": "Reason 1: Division of labour lets workers specialise in one task, so they become skilled and faster at it [k]. Since work was split into 5 stations, output per worker per hour has risen from 62 to 74 orders [app]. Reason 2: Specialisation reduces time lost switching between different tasks [k]. With 340 operatives each repeating the same task every shift, the line processes 1,150 orders a day without workers pausing to change roles [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialising in one task raises skill, speed and dexterity",
+            "No time is lost switching between tasks"
+          ],
+          "application_max_2": [
+            "Output per worker per hour rose from 62 to 74 after stations were introduced",
+            "340 operatives / 1,150 orders a day / 5 named stations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Vantara Logistics Ltd", "5 stations", "62 to 74", "1,150", "340", "$11", "Hallwick"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of division of labour for Vantara.",
+        "model_answer": "Drawback 1: Doing the same task all shift can become boring and demotivating [k]. Operatives repeat the same task throughout the shift at $11 per hour, which could lower morale and increase absence [app]. Low motivation may push error rates up and force Vantara to spend more on supervision, reducing the gains from its split line [an]. Drawback 2: The line depends on every station working [k]. If the picking station stops, the operatives at packing, labelling and dispatch also run short of work, as the 5 stations are linked in sequence [app]. One absence or breakdown could therefore cut output across the whole warehouse, not just one step [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Repetitive work causes boredom / low morale / reduced motivation",
+            "Interdependent tasks mean one stoppage halts the whole line"
+          ],
+          "application_max_2": [
+            "$11 per hour wages and repetitive single-task shifts",
+            "5 linked stations; picking feeds packing and labelling"
+          ],
+          "analysis_max_2": [
+            "Boredom can raise errors and absenteeism, eroding efficiency gains",
+            "Linked stations mean a single stoppage reduces total daily output of 1,150 orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Vantara Logistics Ltd", "$11", "5 stations", "1,150", "62 to 74", "Hallwick", "340"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Vantara should add a 6th quality-check station rather than train staff to rotate between all 5 stations? Justify your answer.",
+        "model_answer": "Argument for the 6th station: adding a dedicated quality-check station would extend division of labour, a method that already raised output from 62 to 74 orders per worker per hour [k]. It would catch picking and packing errors before dispatch, protecting the service given to 40 retail clients [app]. This should raise accuracy without disrupting the current specialisation that delivers 1,150 orders a day [an]. Argument for rotation: training staff to rotate between all 5 stations would make work more varied and less boring [k]. It would also let Vantara cover absences and peak periods without hiring, protecting client service while wages average $11 per hour [app]. However, rotating staff could reduce the task-specific skill that lifted output by 12 orders per worker per hour over 18 months [an]. Overall, on the stem's figures, adding the 6th station builds on proven gains of 62 to 74 orders per hour and protects quality for 40 clients, so Vantara should add the quality-check station and offer limited job rotation to the most experienced operatives [eval]. If errors are rare and morale is the bigger problem, rotation would be better, so the final decision should depend on error-rate data [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Quality checks / an extra station extend division of labour",
+            "Rotation makes work more varied and flexible but may dilute specialisation"
+          ],
+          "application_max_2": [
+            "62 to 74 orders per worker per hour; 1,150 orders a day; 40 retail clients",
+            "$11 wages; 18 months since stations were introduced; 5 stations"
+          ],
+          "analysis_max_2": [
+            "6th station catches errors before dispatch, protecting client reputation",
+            "Rotation risks losing the task-specific productivity gains built up over 18 months"
+          ],
+          "evaluation_max_2": [
+            "Recommends the 6th station, with rotation reserved for experienced operatives",
+            "Conditional judgement based on error-rate data versus staff morale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Vantara Logistics Ltd", "62 to 74", "1,150", "40 retail clients", "$11", "18 months", "6th station", "Hallwick"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_123",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Brackmoor Haulage Co is a road freight company based in the market town of Fenwick, Country X, founded 11 years ago by brothers Tom and Nick Brady. It operates 28 HGVs serving the northern industrial corridor, and its 34 drivers each specialise on one of 3 fixed routes. Drivers receive 2 weeks of route-specific training before their first trip.\n\nThe company carries 1,900 tonnes of goods a month, and fuel use per kilometre has fallen 14% since drivers were assigned fixed routes. Managing director Tom Brady is considering whether to keep the 3 fixed routes or switch to flexible scheduling, in which drivers cover any route as needed. Two national supermarket contracts require deliveries within 90 minutes of scheduled times, with penalties of $1,200 per late load.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'specialisation'.",
+        "model_answer": "Specialisation is when a worker, business or region focuses on one product or one task, such as Brackmoor's drivers each specialising on one of the 3 fixed routes. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialisation = concentrating on one product, service or task",
+            "Workers or firms focus on what they do best (allow fixed-route driver examples)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why specialisation benefits Brackmoor Haulage Co.",
+        "model_answer": "Reason 1: Specialisation lets drivers become expert on particular routes, saving time and fuel [k]. Since drivers were assigned fixed routes, fuel use per kilometre has fallen 14%, and the company carries 1,900 tonnes a month [app]. Reason 2: Specialisation builds experience and knowledge that reduce mistakes [k]. Drivers receive 2 weeks of route-specific training before their first trip, and the 3 fixed routes help supermarket contracts arrive within the 90-minute window [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Specialists become expert, faster and make fewer mistakes",
+            "Experience reduces waste of fuel, time and money"
+          ],
+          "application_max_2": [
+            "Fuel use per kilometre fell 14% after fixed routes were assigned",
+            "1,900 tonnes a month; 2 weeks route-specific training; 90-minute delivery windows; 3 fixed routes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackmoor Haulage Co", "14%", "1,900 tonnes", "2 weeks", "90 minutes", "3 fixed routes", "Fenwick"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two risks of specialisation for Brackmoor.",
+        "model_answer": "Risk 1: Relying on a few drivers per route creates dependency if a specialist is absent [k]. With only 34 drivers covering 3 fixed routes, illness or resignation could leave a route uncovered [app]. A missed supermarket delivery would cost $1,200 in penalties per late load, directly hitting profit [an]. Risk 2: Specialisation reduces flexibility when demand changes [k]. If one route's volume falls while another rises, fixed assignments could leave Brackmoor with unused capacity on one route and overtime on another [app]. Rigid schedules may make it harder to win new contracts outside the northern industrial corridor, limiting growth [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dependency on specialist staff / capacity lost if they are absent",
+            "Inflexibility when demand patterns change"
+          ],
+          "application_max_2": [
+            "34 drivers across 3 fixed routes; 2 national supermarket contracts with 90-minute windows",
+            "$1,200 penalty per late load"
+          ],
+          "analysis_max_2": [
+            "A single absence can trigger $1,200 penalties and damage supermarket relationships",
+            "Rigid routes limit the ability to respond to demand changes or win work outside the corridor"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackmoor Haulage Co", "34 drivers", "3 fixed routes", "$1,200", "90 minutes", "northern industrial corridor", "Fenwick"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackmoor should keep its 3 fixed routes rather than switch to flexible scheduling? Justify your answer.",
+        "model_answer": "Argument for keeping fixed routes: specialisation has cut fuel use per kilometre by 14% since drivers were assigned fixed routes [k]. Fixed routes also support the 90-minute delivery windows in the 2 national supermarket contracts, where each late load costs $1,200 [app]. Dropping fixed routes would risk late deliveries, penalties and losing these contracts [an]. Argument for flexible scheduling: flexible cover would help if a specialist driver is ill and would let Brackmoor respond when volumes change between the 3 fixed routes [k]. It could also let the firm take on work outside the northern industrial corridor, using its 28 HGVs more fully [app]. However, flexible drivers would need retraining and fuel savings would likely fall below the 14% already achieved [an]. Overall, on the stem's figures, keeping the 3 fixed routes is the safer choice because the 14% fuel saving and the $1,200-per-load penalties tied to 90-minute windows outweigh the flexibility benefit while the supermarket contracts run [eval]. If a key driver resigns or a major client leaves, Brackmoor should review the decision and consider partial flexibility [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed routes underpin specialisation gains such as fuel savings",
+            "Flexible scheduling improves staff cover and adaptability"
+          ],
+          "application_max_2": [
+            "14% fuel saving; 90-minute windows; $1,200 penalties; 2 national supermarket contracts",
+            "28 HGVs; 34 drivers; 3 fixed routes"
+          ],
+          "analysis_max_2": [
+            "Losing the fuel saving and risking penalties would damage profit and contracts",
+            "Flexibility has value for cover and new markets but dilutes driver expertise"
+          ],
+          "evaluation_max_2": [
+            "Justified recommendation favouring fixed routes while contracts run",
+            "Balanced judgement recognising partial flexibility if circumstances change"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brackmoor Haulage Co", "3 fixed routes", "14%", "$1,200", "90 minutes", "28 HGVs", "34 drivers", "northern industrial corridor"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_124",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Solmere Warehousing Ltd runs a 12,000 sq m distribution warehouse in the town of Merriton, Country X, employing 96 staff and storing goods for 55 clients. Director Ade Johnson is deciding how to use a 5-hectare plot of land beside the warehouse. She could either expand the warehouse by 4,000 sq m at a cost of $1.6m to take on 25 new clients, or build a fleet yard and workshop to service 30 lorries.\n\nThe fleet yard, expected to save $210,000 a year in maintenance charges, would take 14 months to build, the same as the warehouse expansion. Solmere's annual profit is $780,000 and warehouse occupancy is 91%. Ade feels pressure from clients wanting more space, yet two of the fleet's lorries broke down last month, causing 9 missed deliveries.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'opportunity cost'.",
+        "model_answer": "Opportunity cost is the next best alternative that is given up when a choice is made, such as the profits forgone from the fleet yard if Solmere spends the $1.6m on the warehouse expansion instead. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Opportunity cost = next best alternative forgone when a decision is made",
+            "Allow examples from the stem (fleet yard versus warehouse expansion)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why opportunity cost is important to Solmere's decision.",
+        "model_answer": "Reason 1: Opportunity cost measures what must be sacrificed when resources are limited [k]. Solmere has a 5-hectare plot that can serve only one of the two projects, the $1.6m expansion or the fleet yard [app]. Reason 2: Comparing opportunity costs helps the business choose the option with the greatest benefit [k]. The warehouse could take on 25 new clients with occupancy already at 91%, while the fleet yard would save $210,000 a year in maintenance charges [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Opportunity cost = next best alternative forgone",
+            "Scarcity means choosing one option excludes the other"
+          ],
+          "application_max_2": [
+            "Single 5-hectare plot; only one project possible",
+            "$1.6m expansion for 25 new clients versus $210,000 annual maintenance saving; occupancy of 91%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Solmere Warehousing Ltd", "$1.6m", "5-hectare", "25 new clients", "$210,000", "91%", "Merriton"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the warehouse expansion for Solmere.",
+        "model_answer": "Advantage 1: Adding 4,000 sq m of capacity would let Solmere serve more clients and raise revenue [k]. Occupancy is already 91% and the expansion would take on 25 new clients, each of whom would pay to store goods [app]. More clients would spread fixed costs over more pallet spaces, raising profit above the current $780,000 a year [an]. Advantage 2: Extra space reduces dependency on a single income stream [k]. Clients are already demanding more space, so expansion meets proven demand rather than speculative need [app]. Capturing that demand now would strengthen client loyalty and protect long-term revenue before rivals expand [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Extra capacity allows more clients and higher revenue",
+            "Meeting existing demand builds loyalty and protects revenue"
+          ],
+          "application_max_2": [
+            "91% occupancy; 25 new clients",
+            "$780,000 current profit; 55 existing clients"
+          ],
+          "analysis_max_2": [
+            "Higher occupancy spreads fixed costs and lifts profit above $780,000",
+            "Meeting proven demand defends market share and long-term revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Solmere Warehousing Ltd", "91%", "25 new clients", "$780,000", "4,000 sq m", "55 clients", "Merriton"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Solmere should expand the warehouse by 4,000 sq m rather than build the fleet yard and workshop? Justify your answer.",
+        "model_answer": "Argument for the expansion: a 4,000 sq m expansion costing $1.6m would directly meet client demand, with occupancy already at 91% and 55 clients asking for more space [k]. It would let Solmere take on 25 new clients, pushing annual profit above the current $780,000 [app]. The expansion builds Solmere's core storage business, where skills and occupancy already exist [an]. Argument for the fleet yard: building the yard and workshop would service 30 lorries and save $210,000 a year in maintenance charges, and it would address the 9 missed deliveries caused by 2 lorry breakdowns [k]. A reliable fleet could protect logistics contracts without the risk of half-empty warehouse space [app]. However, the $210,000 yearly saving is modest against a $1.6m capital outlay, and the yard does nothing to ease client pressure for space [an]. Overall, on the stem's figures, the warehouse expansion is the better use of the 5-hectare plot because 91% occupancy and proven client demand make new profit more likely than the yard's $210,000 annual saving [eval]. Solmere should, however, repair the 2 failing lorries immediately whatever it decides [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Expansion meets existing client demand and raises capacity",
+            "Fleet yard saves maintenance costs and improves reliability"
+          ],
+          "application_max_2": [
+            "91% occupancy; 25 new clients; $780,000 profit; $1.6m expansion cost",
+            "$210,000 yearly saving; 30 lorries; 2 breakdowns; 9 missed deliveries"
+          ],
+          "analysis_max_2": [
+            "Expansion revenue is likely to exceed yard savings given 91% occupancy and waiting demand",
+            "Yard's $210,000 yearly saving is modest relative to $1.6m capital and ignores the space shortage"
+          ],
+          "evaluation_max_2": [
+            "Recommends the expansion based on occupancy and proven demand",
+            "Balanced judgement acknowledging both options, with urgent lorry repairs regardless"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Solmere Warehousing Ltd", "$1.6m", "91%", "25 new clients", "$210,000", "9 missed deliveries", "5-hectare", "Merriton"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_125",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Garnet Fleet Services is a fleet management company in the city of Corvane, Country X. It manages 210 vehicles for 68 client businesses, handling maintenance, insurance and compliance. Most clients are local hauliers and delivery companies. The firm employs 21 coordinators who each look after an average of 10 vehicles. Fleet management fees average $310 per vehicle a month.\n\nVehicle tracking software costing $95,000 was introduced in January and average jobs completed per vehicle per day have since risen from 9.4 to 11.2, a 19% increase. However, fuel costs have climbed 7% over the same period. Director Megan Osei is deciding whether to invest a further $130,000 in route-optimisation software or to offer her coordinators a 6% pay rise, as two senior coordinators have been approached by rival firms.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'productivity'.",
+        "model_answer": "Productivity measures how much output is produced per unit of input, such as jobs completed per vehicle per day, which rose from 9.4 to 11.2 at Garnet after tracking software was introduced. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Productivity = output per input / output per worker, machine or hour",
+            "Reward examples such as jobs per vehicle per day"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why productivity matters to Garnet Fleet Services.",
+        "model_answer": "Reason 1: Higher productivity means more output from the same resources, raising revenue [k]. Jobs per vehicle per day have risen from 9.4 to 11.2, a 19% increase since January [app]. Reason 2: Higher productivity spreads fixed costs over more jobs, improving efficiency [k]. With 21 coordinators each managing 10 vehicles, higher jobs per vehicle means more completed per coordinator without extra headcount [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Productivity = output per unit of input",
+            "Higher productivity raises revenue and lowers unit costs"
+          ],
+          "application_max_2": [
+            "Jobs per vehicle per day rose from 9.4 to 11.2 (19% increase)",
+            "21 coordinators; 10 vehicles each; 210 vehicles; 68 client businesses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Garnet Fleet Services", "9.4", "11.2", "19%", "210 vehicles", "21 coordinators", "Corvane"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of increasing productivity for Garnet.",
+        "model_answer": "Benefit 1: Productivity gains let Garnet earn more from its existing fleet [k]. 210 vehicles complete 19% more jobs per day after tracking was introduced, so revenue per vehicle rose without buying new vehicles [app]. Extra jobs without extra capital directly raise profit per vehicle and help please the 68 client businesses [an]. Benefit 2: Productivity data supports better pricing and planning [k]. Knowing each vehicle now completes 11.2 jobs a day lets Garnet set accurate schedules and fees for its $310-per-vehicle monthly management service [app]. Reliable data helps Garnet keep clients and justify its fees against rival fleet managers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "More output from the same resources raises profit",
+            "Accurate data supports planning, pricing and retention"
+          ],
+          "application_max_2": [
+            "Jobs per vehicle per day 11.2 (from 9.4); 19% increase",
+            "210 vehicles; 68 client businesses; $310 per vehicle per month"
+          ],
+          "analysis_max_2": [
+            "Extra jobs without new capital directly raise profit per vehicle",
+            "Accurate data supports pricing, client retention and competitiveness"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Garnet Fleet Services", "210 vehicles", "11.2", "9.4", "68 client businesses", "$310", "$95,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Garnet should invest $130,000 in route-optimisation software rather than offer a 6% pay rise? Justify your answer.",
+        "model_answer": "Argument for the software: route-optimisation builds on the productivity gain already achieved, with jobs per vehicle per day rising from 9.4 to 11.2, a 19% increase, after the $95,000 tracking investment [k]. Spending $130,000 more could raise productivity further and help cut fuel use, which has already climbed 7% [app]. The software directly targets efficiency and should raise profit per vehicle across the fleet [an]. Argument for the pay rise: a 6% pay rise would help keep the two senior coordinators who have been approached by rival firms, protecting their knowledge of the 10 vehicles each and the service given to 68 client businesses [k]. Losing senior staff would raise recruitment and training costs and could lower productivity more than software would lift it [app]. However, a pay rise raises fixed costs permanently, while software is a one-off cost with lasting efficiency benefits [an]. Overall, on the stem's figures, Garnet should invest in the $130,000 route-optimisation software because the 19% productivity gain shows technology works, but it should first renegotiate with the two senior coordinators so the roll-out is not undermined [eval]. If both coordinators resign despite talks, the pay rise would matter more, so securing them is the urgent first step [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Pay rise retains key staff; software raises productivity",
+            "Technology cost versus labour cost trade-off"
+          ],
+          "application_max_2": [
+            "$130,000 software; 9.4 to 11.2 jobs per vehicle per day (19%); 7% fuel increase",
+            "6% pay rise; two senior coordinators; 68 client businesses; 10 vehicles each"
+          ],
+          "analysis_max_2": [
+            "Software leverages the proven 19% gain and addresses the 7% fuel-cost rise",
+            "Pay rise avoids recruitment and training costs but raises permanent fixed costs"
+          ],
+          "evaluation_max_2": [
+            "Recommends software, conditional on retaining the two senior coordinators",
+            "Balanced judgement of permanent wage cost versus one-off technology investment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Garnet Fleet Services", "$130,000", "9.4", "11.2", "19%", "7%", "6% pay rise", "two senior coordinators"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_126",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Brindle Wharf Logistics operates a distribution warehouse beside the port of Alderquay, Country X, storing imported goods for 38 clients. It owns 46 fork-lift trucks and 12 reach trucks, keeping 150 staff busy across 3 shifts. The warehouse covers 11,000 sq m. Its busiest month is December, with 2,400 pallet movements a week. Last year the fleet broke down 27 times, costing $3,800 a month in lost time and repairs.\n\nDirector Carl Whitmore is weighing whether to build an in-house maintenance workshop costing $85,000 a year, including two full-time mechanics paid $16 an hour, or to sign an external service contract at $2,900 a month with a guaranteed 48-hour response. He believes Brindle must cut waste and run its resources more efficiently to protect its 9% operating margin.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'efficiency'.",
+        "model_answer": "Efficiency means producing the maximum output from given inputs with minimum waste, such as Brindle getting the most deliveries from its 46 fork-lift trucks and 12 reach trucks with the least wasted time and money. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Efficiency = maximum output from inputs / minimum waste",
+            "Best use of resources to achieve output (accept efficiency defined in contrast to productivity if accurate)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why efficiency matters to Brindle Wharf Logistics.",
+        "model_answer": "Reason 1: Efficient operations lower costs and protect profit [k]. The fleet broke down 27 times last year, costing $3,800 a month in lost time and repairs [app]. Reason 2: Efficient use of equipment keeps goods moving on time for clients [k]. Brindle stores imported goods for 38 clients with 150 staff across 3 shifts, so wasted time directly delays dispatches [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Efficiency lowers costs and waste, protecting profit",
+            "Efficient processes keep customer service reliable"
+          ],
+          "application_max_2": [
+            "27 breakdowns; $3,800 a month in losses",
+            "38 clients; 150 staff; 3 shifts; December peak of 2,400 pallet movements a week"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brindle Wharf Logistics", "46 fork-lift trucks", "12 reach trucks", "27 times", "$3,800", "38 clients", "Alderquay"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Brindle could improve its efficiency.",
+        "model_answer": "Way 1: Regular preventive maintenance would reduce breakdowns [k]. The fleet broke down 27 times last year, and either an in-house workshop at $85,000 a year or an external contract at $2,900 a month would service trucks before they fail [app]. Fewer breakdowns would cut the $3,800 monthly losses and reduce idle staff time [an]. Way 2: Better shift planning would cut wasted waiting time [k]. With 150 staff across 3 shifts and goods for 38 clients, matching staffing to weekly pallet movements would reduce overtime and bottlenecks [app]. Smoother flow would raise throughput per worker and protect the 9% operating margin [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Preventive maintenance reduces breakdowns",
+            "Better planning/scheduling cuts waste of time and labour"
+          ],
+          "application_max_2": [
+            "27 breakdowns; $3,800 a month; options of $85,000 a year or $2,900 a month",
+            "150 staff; 3 shifts; 38 clients; 9% operating margin"
+          ],
+          "analysis_max_2": [
+            "Fewer breakdowns cut losses and idle time, raising efficiency",
+            "Matching staffing to demand raises throughput and protects the operating margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brindle Wharf Logistics", "27 times", "$3,800", "$85,000", "$2,900", "3 shifts", "9% operating margin"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brindle should build the in-house maintenance workshop rather than sign the external service contract? Justify your answer.",
+        "model_answer": "Argument for in-house: an in-house workshop lets Brindle service trucks immediately, cutting the 27 breakdowns that cost $3,800 a month in lost time and repairs [k]. Including two mechanics paid $16 an hour, it costs $85,000 a year but keeps expertise on site for 46 fork-lift trucks and 12 reach trucks [app]. Faster repairs mean less downtime, higher throughput and more reliable service, protecting the 9% operating margin [an]. Argument for external: the $2,900 monthly contract costs $34,800 a year (12 x $2,900), less than half the in-house cost [k]. The guaranteed 48-hour response covers emergencies without paying two mechanics' fixed wages, though 48-hour delays could still disrupt dispatch for its 38 clients [app]. Slower response risks more lost pallet movements and strained client trust than the saving justifies [an]. Overall, on the stem's figures, Brindle should sign the external contract first because $34,800 a year is far cheaper than $85,000, which matters on a 9% operating margin, while it measures whether response times protect client service [eval]. If breakdowns persist or response times slip, the in-house workshop would become the better choice [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "In-house = fast, dedicated maintenance capability",
+            "External = cheaper outsourced service, slower response"
+          ],
+          "application_max_2": [
+            "$85,000 in-house including two mechanics at $16 an hour; $2,900 a month = $34,800 a year",
+            "27 breakdowns; $3,800 monthly losses; 46 fork-lift trucks; 12 reach trucks; 38 clients"
+          ],
+          "analysis_max_2": [
+            "Faster repairs reduce downtime and protect client service and the 9% margin",
+            "External contract saves money but 48-hour delay risks disruption and client trust"
+          ],
+          "evaluation_max_2": [
+            "Recommends the external contract with conditions, reviewing if breakdowns persist",
+            "Recognises margin pressure versus service-quality trade-off between the two options"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Brindle Wharf Logistics", "$85,000", "$2,900", "46 fork-lift trucks", "12 reach trucks", "27 times", "$3,800", "9% operating margin"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_127",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Ferromere Construction Co is a civil engineering contractor in Country X that has grown from 12 to 140 staff in 9 years. It specialises in rail and road infrastructure across the northern provinces. Founder and managing director Elena Petrova has spotted a chance to bid for a 3-year, $8.6m government contract to build a rail depot.\n\nElena must choose between this $8.6m depot bid and continuing with small housing refurbishments, which earn $95,000 profit per project with an 85% success rate. The depot would require hiring 60 workers within 6 months and a performance bond of 5% of the contract value. Last year Ferromere earned $1.3m profit on $9.5m revenue. Housing refurbishments make up 70% of the firm's income. A decision is needed by the end of the quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'enterprise'.",
+        "model_answer": "Enterprise is the factor of production that organises land, labour and capital and takes risks to run a business and spot opportunities, such as Elena Petrova founding Ferromere and bidding for contracts. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise = organising the other factors of production",
+            "Risk-taking and decision-making by entrepreneurs to start/run a business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why enterprise is important to Ferromere Construction Co.",
+        "model_answer": "Reason 1: Enterprise organises land, labour and capital into productive activity [k]. Elena has grown Ferromere from 12 to 140 staff in 9 years by coordinating teams across northern rail and road projects [app]. Reason 2: Enterprise spots and seizes business opportunities [k]. Elena is bidding for a 3-year, $8.6m government rail depot contract, showing she identifies profitable chances for the firm [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Enterprise organises the other factors (land, labour, capital)",
+            "Entrepreneurs take risks, spot opportunities and make decisions"
+          ],
+          "application_max_2": [
+            "Grew from 12 to 140 staff in 9 years",
+            "$8.6m, 3-year rail depot contract bid; northern provinces"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ferromere Construction Co", "12 to 140", "9 years", "$8.6m", "rail depot", "northern provinces", "Elena Petrova"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Ferromere of winning the $8.6m depot contract.",
+        "model_answer": "Benefit 1: Winning the contract would give Ferromere a large, secure revenue stream [k]. A 3-year, $8.6m project would add about $2.87m of revenue a year, more than twice the $1.3m profit Ferromere earned last year in annual terms [app]. Secure long-term work would smooth cash flow and support hiring 60 workers without idle capacity [an]. Benefit 2: Completing a high-profile government project would raise Ferromere's reputation [k]. A 3-year, $8.6m rail depot for government would mark Ferromere as a leading civil engineering firm [app]. A stronger reputation would make it easier to win further rail and road contracts across the northern provinces [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A large contract brings secure revenue and profit",
+            "A government project enhances reputation and future work"
+          ],
+          "application_max_2": [
+            "$8.6m over 3 years (about $2.87m a year) versus $1.3m last-year profit",
+            "60 workers required; rail and road infrastructure across the northern provinces"
+          ],
+          "analysis_max_2": [
+            "Long-term revenue smooths cash flow and supports the 60 hires",
+            "Reputation from a flagship project wins further contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ferromere Construction Co", "$8.6m", "60 workers", "$1.3m", "northern provinces", "rail depot", "Elena Petrova"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ferromere should bid for the $8.6m rail depot contract rather than continue with small housing refurbishments? Justify your answer.",
+        "model_answer": "Argument for bidding: the $8.6m depot contract would be Ferromere's largest ever project, worth about $2.87m a year over 3 years, far exceeding refurbishment earnings [k]. Ferromere earned $1.3m profit on $9.5m revenue last year, a 13.7% profit margin, and its 85% success rate on refurbishments shows it delivers projects well [app]. Winning the bid would transform Ferromere's scale, secure long-term work and let it hire 60 workers [an]. Argument against: refurbishments earn $95,000 each with an 85% success rate and currently make up 70% of the firm's income [k]. The depot requires a performance bond of 5% of the contract value, $430,000, plus 60 hires within 6 months, stretching cash and management [app]. If the bid fails or the project overruns, Ferromere could lose the bond and damage the steady refurbishment pipeline [an]. Overall, on the stem's figures, Ferromere should bid because a 13.7% profit margin and proven delivery make the $8.6m prize worth the $430,000 bond risk, provided Elena prices the bid conservatively and secures stage payments [eval]. If the firm cannot arrange the $430,000 bond or guarantee cash flow, it should focus on the 85%-success refurbishments and bid again next round [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large contract brings scale, revenue and reputation",
+            "Refurbishments are steady, proven and lower risk"
+          ],
+          "application_max_2": [
+            "$8.6m over 3 years versus $1.3m profit on $9.5m revenue (13.7% margin)",
+            "85% success rate; 70% of income from refurbishments; 5% bond = $430,000; 60 workers"
+          ],
+          "analysis_max_2": [
+            "The contract dwarfs refurbishment earnings and transforms scale",
+            "Bond and hiring demands risk cash flow and the core pipeline"
+          ],
+          "evaluation_max_2": [
+            "Recommends bidding, conditional on the bond and secure stage payments",
+            "Balanced judgement recognising the safer refurbishment fallback if cash is tight"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Ferromere Construction Co", "$8.6m", "$1.3m", "$9.5m", "85%", "$95,000", "5%", "60 workers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_128",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Northchill Cold Chain Ltd runs temperature-controlled storage from 3 warehouses in the port city of Kellby, Country X. It stores frozen fish, meat and dairy products for 72 food clients, with a combined capacity of 6,800 pallet spaces. Each warehouse runs 24 hours a day and employs 28 staff. Demand for chilled space has grown 25% in 2 years, yet scarcity of suitable land limits expansion.\n\nWarehouse manager Ruth Adeyemi is deciding how to use 400 spare pallet spaces at the Kellby No. 2 warehouse. She could sublet them to a new frozen-food exporter at $18 per pallet per month, earning $86,400 a year, or reserve them for existing clients who expect orders to expand 30% next year. Ruth must balance limited capacity against growing client demands.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'scarcity'.",
+        "model_answer": "Scarcity is the situation in which resources are limited but wants are unlimited, forcing choices, such as Northchill having only 6,800 pallet spaces while demand for chilled space has grown 25% in 2 years. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Scarcity = limited resources versus unlimited wants",
+            "Choices must be made because resources cannot satisfy all wants"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why scarcity of chilled space matters to Northchill.",
+        "model_answer": "Reason 1: Scarce capacity forces Northchill to choose between competing uses [k]. It has only 400 spare pallet spaces at Kellby No. 2, while demand has grown 25% in 2 years [app]. Reason 2: Scarcity means an opportunity cost arises whichever option is picked [k]. Reserving the spaces for existing clients excludes the income from subletting to the new exporter at $18 per pallet per month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Scarcity forces choices between competing uses of limited resources",
+            "Every choice made under scarcity carries an opportunity cost"
+          ],
+          "application_max_2": [
+            "400 spare pallet spaces; demand up 25% in 2 years",
+            "$18 per pallet per month sublet option; Kellby No. 2 warehouse"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Northchill Cold Chain Ltd", "6,800 pallet spaces", "400 spare pallet spaces", "25%", "$18", "Kellby", "72 food clients"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Northchill could respond to the scarcity of its chilled capacity.",
+        "model_answer": "Way 1: Northchill could raise prices to ration scarce space to the highest-paying users [k]. With demand up 25% in 2 years and occupancy near capacity, higher rental rates would balance supply and demand [app]. This would increase revenue per pallet and send scarce space to the clients who value it most [an]. Way 2: Northchill could invest in expansion, such as a 4th warehouse, if suitable land and capital allow [k]. Suitable land is scarce and expensive, so expansion would take planning and money [app]. Extra pallet spaces would remove the bottleneck, increasing capacity so existing clients' growth can be served without subletting to exporters [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rationing via higher prices",
+            "Expanding capacity through investment"
+          ],
+          "application_max_2": [
+            "Demand up 25% in 2 years; suitable land is scarce",
+            "72 food clients; 6,800 pallet spaces; 400 spare pallet spaces"
+          ],
+          "analysis_max_2": [
+            "Higher prices raise revenue per pallet and allocate space efficiently",
+            "Expansion removes the bottleneck and protects service to existing clients"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Northchill Cold Chain Ltd", "6,800 pallet spaces", "25%", "400 spare pallet spaces", "72 food clients", "Kellby", "$86,400"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northchill should sublet the 400 pallet spaces rather than reserve them for existing clients? Justify your answer.",
+        "model_answer": "Argument for subletting: subletting the 400 spaces to the new frozen-food exporter at $18 per pallet per month earns $86,400 a year with no capital outlay [k]. That is certain, immediate income on otherwise idle capacity in a business serving 72 food clients [app]. The cash could fund the next warehouse phase or cover rising running costs [an]. Argument for reserving: existing clients expect orders to expand 30% next year, and demand has already grown 25% in 2 years [k]. If Northchill sublets the 400 spaces, existing clients may face shortages next year, damaging loyalty and risking business moving to rivals [app]. Losing anchor clients would cost far more than $86,400 a year and would undermine Northchill's role as a reliable cold-chain partner [an]. Overall, on the stem's figures, reserving the spaces for existing clients is the wiser choice because loyal clients with 30% expected growth protect Northchill's long-term capacity use and revenue, while $86,400 is modest against the risk of losing major cold-chain contracts [eval]. Northchill should revisit subletting only if existing clients confirm their 30% expansion is genuinely committed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Subletting gives certain immediate income from idle capacity",
+            "Reserving protects relationships and expected future demand"
+          ],
+          "application_max_2": [
+            "$18 x 400 x 12 = $86,400 a year",
+            "25% demand growth in 2 years; 30% expected expansion; 72 food clients"
+          ],
+          "analysis_max_2": [
+            "$86,400 a year is a one-off style gain that could fund expansion or running costs",
+            "Losing loyal clients risks long-term capacity use and exceeds $86,400"
+          ],
+          "evaluation_max_2": [
+            "Recommends reserving the spaces, conditional on clients confirming their 30% expansion",
+            "Weighs certain $86,400 income against the risk of losing long-term client relationships"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Northchill Cold Chain Ltd", "$86,400", "$18", "400 spare pallet spaces", "25%", "30%", "72 food clients", "Kellby No. 2"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_129",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Windover Housebuilding Ltd builds family homes in the western suburbs of Country X's capital. It owns 2 active sites and builds 46 houses a year with 38 skilled workers. The company recently bought a 7-hectare greenfield plot outside the city for $3.4m, where it plans 120 houses over 5 years.\n\nDirector Ben Hollis is now deciding between this greenfield plot and an inner-city brownfield site costing $5.9m, which would save 18 months of planning time and sit closer to buyers' workplaces. Ben must also weigh that greenfield land needs new road access adding $700,000 to costs, while the brownfield land may hold old industrial contaminants requiring $850,000 of clean-up. Windover's annual turnover is $16m. It expects demand for family housing to stay high for 6 more years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'land' as a factor of production.",
+        "model_answer": "Land is all natural resources used to produce goods and services, including the 7-hectare greenfield plot Windover bought for $3.4m and the raw materials taken from building sites to make homes. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Land = natural resources / raw materials used in production",
+            "Reward examples such as building plots, minerals, timber or land itself"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why land is important to Windover Housebuilding.",
+        "model_answer": "Reason 1: Land provides the natural space and raw materials needed for building [k]. Windover owns 2 active sites and recently bought a 7-hectare plot for $3.4m to build 120 houses [app]. Reason 2: Without land Windover cannot produce or sell homes [k]. The planned 120-house development over 5 years depends entirely on securing suitable building land [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Land = site and natural resources needed for building",
+            "Without suitable land, production is impossible"
+          ],
+          "application_max_2": [
+            "2 active sites; 7-hectare plot bought for $3.4m; 38 skilled workers",
+            "46 houses a year; 120 houses planned over 5 years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Windover Housebuilding Ltd", "7-hectare", "$3.4m", "2 active sites", "46 houses", "120 houses", "$5.9m"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks of the greenfield plot compared with the brownfield site.",
+        "model_answer": "Drawback 1: The greenfield plot needs new road access, adding $700,000 to costs [k]. Together with the $3.4m purchase, Windover would commit $4.1m before construction, while the brownfield site already sits within existing roads and utilities [app]. Higher upfront costs reduce early cash flow and squeeze returns on the 120 planned houses [an]. Drawback 2: Greenfield development may face a longer planning process [k]. The brownfield site would save 18 months of planning time and sit closer to buyers' workplaces, advantages the greenfield plot lacks [app]. Extra delay would push back sales and tie up Windover's $16m turnover and 38 skilled workers for longer [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Greenfield land needs extra infrastructure such as roads",
+            "Greenfield development often faces a longer planning process than brownfield"
+          ],
+          "application_max_2": [
+            "$700,000 road access; $3.4m purchase = $4.1m committed",
+            "18 months planning saved on brownfield; closer to buyers' workplaces"
+          ],
+          "analysis_max_2": [
+            "Higher upfront cost reduces cash flow and returns on the 120 houses",
+            "Longer delay ties up capital and workers and delays sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Windover Housebuilding Ltd", "$3.4m", "$700,000", "18 months", "$5.9m", "120 houses", "$850,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Windover should buy the inner-city brownfield site rather than proceed with the greenfield plot? Justify your answer.",
+        "model_answer": "Argument for brownfield: the brownfield site costs $5.9m plus $850,000 of contamination clean-up, so $6.75m in total, but it saves 18 months of planning and sits closer to buyers' workplaces [k]. Faster sales of part of the 120 houses would bring in revenue sooner and cut holding costs [app]. Earlier revenue would also improve cash flow and reduce the need to borrow during construction [an]. Argument for greenfield: at $3.4m plus $700,000 road access, the greenfield plot costs $4.1m in total, $2.65m less than brownfield, and offers open space for all 120 houses [k]. With $16m annual turnover, Windover can fund the cheaper greenfield route, although greenfield may face longer planning [app]. However, delay would tie up capital and the 38 skilled workers and could strain cash before first sales [an]. Overall, on the stem's figures, Windover should proceed with the greenfield plot because at $4.1m it is $2.65m cheaper than brownfield at $6.75m, and the saving outweighs 18 months provided planning approval is likely for a 7-hectare plot outside the city [eval]. If planning is refused or buyers strongly prefer inner-city homes, the brownfield option becomes the better choice [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Brownfield: faster approval, closer to buyers, higher total cost",
+            "Greenfield: cheaper, more open space, longer planning risk"
+          ],
+          "application_max_2": [
+            "Greenfield $3.4m + $700,000 road = $4.1m; brownfield $5.9m + $850,000 = $6.75m",
+            "18 months planning saved; 120 houses over 5 years; $16m turnover"
+          ],
+          "analysis_max_2": [
+            "The $2.65m saving outweighs 18 months if approvals are obtainable",
+            "Inner-city location may boost sales but costs $2.65m more"
+          ],
+          "evaluation_max_2": [
+            "Recommends greenfield based on the $2.65m saving, conditional on planning approval",
+            "Recognises brownfield becomes preferable if planning is refused or demand shifts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Windover Housebuilding Ltd", "$3.4m", "$5.9m", "$700,000", "$850,000", "18 months", "120 houses", "$16m"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_130",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Valecrest Logistics Ltd is a delivery company running 36 vans and 9 HGVs from a depot in Ridgeline, Country X. It employs 74 drivers. It serves 130 retail and e-commerce clients. Last year the fleet completed 48,000 deliveries, up 16% on the previous year, but 2 HGVs are due for replacement at $110,000 each.\n\nManaging director Sara Iqbal is choosing between 2 contracts: a national same-day delivery deal worth $720,000 a year, needing 4 dedicated vans and a guaranteed 4-hour delivery window, or 3 bulk supply contracts worth $540,000 a year in total, using existing vehicles with flexible timing. Sara wants to grow the business but has limited fleet capacity and a $250,000 credit limit at her bank. Two new e-commerce clients have already signed up.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'wants'.",
+        "model_answer": "Wants are goods and services that people desire but which are not essential for survival, such as Valecrest's clients wanting same-day 4-hour delivery rather than standard bulk scheduling. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wants = desires / non-essential goods and services",
+            "Allow sensible contrast with needs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why customer wants matter to Valecrest Logistics.",
+        "model_answer": "Reason 1: Customer wants show what services the business should offer [k]. Clients expect guaranteed 4-hour same-day delivery, so Valecrest is considering a national same-day deal worth $720,000 a year [app]. Reason 2: Meeting wants keeps customers loyal and generates repeat business [k]. Valecrest already serves 130 retail and e-commerce clients and completed 48,000 deliveries last year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Wants indicate what customers demand",
+            "Satisfying wants builds loyalty and repeat business"
+          ],
+          "application_max_2": [
+            "4-hour same-day deal; $720,000 a year",
+            "130 retail and e-commerce clients; 48,000 deliveries; 16% growth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Valecrest Logistics Ltd", "$720,000", "4-hour", "130 retail and e-commerce clients", "48,000 deliveries", "16%", "Ridgeline"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Valecrest of the same-day delivery deal.",
+        "model_answer": "Benefit 1: The same-day deal would raise revenue per contract [k]. At $720,000 a year it is $180,000 more than the 3 bulk supply contracts worth $540,000 in total [app]. Higher revenue would lift profits and help fund the 2 HGVs due for replacement at $110,000 each [an]. Benefit 2: The deal would strengthen Valecrest's reputation in e-commerce [k]. Deliveries grew 16% last year, so offering 4-hour same-day delivery matches market trends [app]. A reputation for speed would win further clients and defend Valecrest against rival couriers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher-value contracts raise revenue and profit",
+            "Reputation for speed attracts e-commerce clients"
+          ],
+          "application_max_2": [
+            "$720,000 a year versus $540,000 for the 3 bulk contracts",
+            "16% delivery growth; 4-hour window; 2 HGVs at $110,000 each"
+          ],
+          "analysis_max_2": [
+            "The extra $180,000 a year helps fund the $220,000 HGV replacements and raises profit",
+            "A reputation for speed wins further clients and defends against rivals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Valecrest Logistics Ltd", "$720,000", "$540,000", "$110,000", "16%", "4-hour", "36 vans"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Valecrest should accept the $720,000 same-day deal rather than the 3 bulk contracts worth $540,000? Justify your answer.",
+        "model_answer": "Argument for the same-day deal: the deal pays $720,000 a year, $180,000 more than the $540,000 total for the 3 bulk contracts [k]. It also matches strong e-commerce growth, with deliveries up 16% last year, and the 2 HGVs due for replacement cost $220,000 for both (2 x $110,000), leaving headroom within the $250,000 credit limit [app]. Committing 4 dedicated vans to a guaranteed 4-hour window would squeeze capacity but build a formidable reputation [an]. Argument for bulk: the 3 bulk contracts use existing vehicles with flexible timing, avoiding the need for 4 dedicated vans and keeping deliveries manageable within current fleet capacity [k]. They carry lower delivery risk and could be handled without breaching the $250,000 credit limit, although annual income would be $180,000 lower [app]. Choosing bulk also preserves capacity for ad-hoc retail clients [an]. Overall, on the stem's figures, Valecrest should accept the $720,000 same-day deal if 4 dedicated vans are available, because the extra $180,000 a year and the 16% e-commerce growth outweigh the tighter 4-hour window risk [eval]. If van availability is tight or credit is needed for the HGV replacements, the 3 bulk contracts are the safer choice [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Same-day = higher revenue but tighter delivery requirements",
+            "Bulk = lower risk, existing vehicles, flexible timing"
+          ],
+          "application_max_2": [
+            "$720,000 versus $540,000 ($180,000 difference)",
+            "4 dedicated vans; 4-hour window; 16% growth; $250,000 credit limit; $220,000 for 2 HGV replacements"
+          ],
+          "analysis_max_2": [
+            "The extra $180,000 a year funds fleet replacement and raises profit",
+            "Bulk preserves capacity and avoids credit strain"
+          ],
+          "evaluation_max_2": [
+            "Recommends same-day deal, conditional on van availability and credit headroom",
+            "Bulk becomes preferable if fleet or credit constraints tighten"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Valecrest Logistics Ltd", "$720,000", "$540,000", "4 dedicated vans", "4-hour", "16%", "$250,000", "$110,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

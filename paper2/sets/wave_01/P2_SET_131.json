@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_131",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Alderney Dental Group (ADG) is a private limited company in the dental care sector, employing a workforce of 84. Founded in 2007 by Dr Ngozi Eze, ADG operates four general dental practices across the Alderney region and uses a hierarchical structure with autocratic leadership. It plans to invest $1,200,000 in a second branch in Millbrook, financed by a $700,000 ten-year bank loan and $500,000 retained profit. It has fixed costs of $384,000 a year, a variable cost of $28.00 a unit and a selling price of $60.00, and currently produces 96,000 units a year. ADG faces dentist and dental-nurse turnover of 24%, patient waiting lists averaging 11 days, and growing complaints about appointment delays.",
+    "appendix_1_marketing_ops": "Operations and Patient Report — Q3 2025: The four practices delivered 24,000 treatment units last quarter at a rework rate of 1.6%, down from 2.9% a year ago. Patient complaints fell from 31 to 19 per month. Market research of 750 patients found 62% would travel to the Millbrook branch and 48% would pay up to $12 more per visit for extended evening opening hours. Average waiting time is 11 days. Off-the-job training for the new digital imaging equipment costs $950 per employee at the regional college, and 21 of 84 staff have not completed it.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Alderney Dental Group for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "5,000", "5,760"],
+        ["Cost of sales", "3,000", "3,168"],
+        ["Gross profit", "2,000", "2,592"],
+        ["Operating profit", "750", "1,152"],
+        ["Capital employed", "5,000", "6,400"],
+        ["Interest payable", "35", "44"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.25%, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 6.9% from $12.60 to $13.47 per hour from April 2026, raising wage bills. (3) Dental materials and laboratory costs have risen 9.6% year-on-year, healthcare inflation is running at 7.4%, and consumer spending on private dental care grew 3.8% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "ADG plans to finance part of its Millbrook branch with a ten-year bank loan. Explain two advantages for ADG of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Using retained profit costs ADG nothing in repayments or interest, protecting its cash flow at a time when it already carries fixed costs of $384,000 a year and a proposed $700,000 ten-year bank loan commitment. Every dollar not paid as interest can absorb the 9.6% rise in dental materials and laboratory costs and help ADG keep its average $60.00 price competitive, without stretching the 11-day waiting lists that are already generating complaints about appointment delays across the four practices.\n\nPoint 2: Retained profit avoids the collateral risk of borrowing against the new $1,200,000 Millbrook branch, so the $500,000 is available without risking the branch if demand disappoints or consumer spending growth of 3.8% stalls. It also keeps Dr Ngozi Eze's ownership and control intact, since no lender can impose conditions on staffing levels, opening hours or the extended evening trial (48% of 750 surveyed patients would pay up to $12 more per visit), which matters while ADG manages dentist and dental-nurse turnover of 24%.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Alderney Dental Group, its Millbrook expansion and its cost structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$500,000", "$700,000", "$1,200,000", "$384,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ADG is promoting the opening of its Millbrook branch. Consider a national newspaper campaign, regional radio sponsorship, or targeted social media advertising. Which should ADG choose to promote the branch opening? Justify your recommendation.",
+      "model_answer": "National newspaper campaign: A national newspaper campaign would give ADG large reach and a credible print presence for the Millbrook launch, suiting a considered healthcare purchase that families plan and budget for. However, national readership is expensive and much of it lies outside the Alderney catchment and the realistic draw of one branch, so wastage would be high for an 84-employee business funding a $1,200,000 expansion and a $700,000 bank loan.\n\nRegional radio sponsorship: Regional radio is far cheaper than print or national TV and targets the exact Alderney and Millbrook listeners most likely to book weekend or evening appointments, reinforcing ADG's local family-dentist positioning. However, reach is capped at the region, whereas the 62% of 750 surveyed patients willing to travel to Millbrook are spread across the region, so radio alone cannot fill the appointment book quickly, especially with waiting lists already averaging 11 days.\n\nTargeted social media advertising: Social media lets ADG aim ads precisely at the 62% of 750 surveyed patients willing to travel to Millbrook and the 48% willing to pay up to $12 more for extended evening hours, with measurable cost per booking and strong visual storytelling for the new digital imaging equipment. Results depend on creative quality and active monitoring, but cost per reached patient is far below print, and ADG can retarget users who visit the booking page but do not complete a reservation.\n\nRecommendation: ADG should choose targeted social media advertising. It matches the evidence in ADG's own market research, stretches a limited marketing budget furthest alongside a $1,200,000 expansion, and builds a measurable booking pipeline for Millbrook. Regional radio is rejected as support only — it is too narrow to fill the new branch on its own — and the national newspaper campaign is rejected as too expensive and too untargeted, wasting spend ADG needs to recruit and retain clinical staff amid 24% turnover.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of ADG with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of ADG with a well-justified recommendation explaining why the newspaper campaign and radio sponsorship are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["Millbrook", "$1,200,000", "62%", "48%", "750", "11 days"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ADG's dentist and dental-nurse turnover has reached 24%. Explain two benefits for ADG of introducing democratic leadership to improve motivation in its clinical teams.",
+      "model_answer": "Point 1: Democratic leadership invites the 84 staff to help decide how treatment schedules, appointment slots and the Millbrook rota are organised, instead of receiving instructions down the existing hierarchical chain. Giving dental nurses and dentists a genuine voice raises job satisfaction and helps meet social and esteem needs, reducing the frustration that fuels the current autocratic culture and the 24% turnover — giving ADG a more stable clinical team able to serve the waiting list averaging 11 days and keep appointment delays from becoming complaints.\n\nPoint 2: Involving staff generates practical ideas from the people who manage the rework rate (1.6%, down from 2.9% a year ago) and patient complaints (31 to 19 a month). Suggestion-driven improvements to appointment flow, sterilisation routines and use of the new digital imaging equipment could cut waiting lists further and raise quality, while higher commitment lowers the cost of repeatedly replacing clinical staff, protecting output of 96,000 units a year and safeguarding the $32.00 contribution each unit earns.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ADG's turnover, waiting lists, rework rate and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["turnover of 24%", "workforce of 84", "autocratic leadership", "96,000", "11 days", "1.6%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ADG must train the 21 staff who have not completed training on the new digital imaging equipment. Consider on-the-job training or off-the-job training at the regional college. Which should ADG choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training beside experienced colleagues using the actual imaging equipment in each practice is directly relevant to ADG's own machines and patient flows, costs no tuition fees and keeps the 21 staff productive while they learn — vital with waiting lists at 11 days, complaints still arriving monthly and 96,000 units to protect. However, it depends on mentor availability, can pass on bad habits if supervision is weak, and gives no external certificate that some auditors and insurers like to see. It also builds the teamwork between dentists and assistants that efficient evening clinics will need.\n\nOff-the-job training at the regional college: College courses at $950 per employee give structured, up-to-date skills and formal certificates for all 21 staff at a total of $19,950 — modest against a $1,200,000 expansion and $384,000 of fixed costs, and the certificates may also support insurer requirements when imaging remains an audit-prone procedure. However, staff are removed from practice for days at a time, short-term capacity falls and waiting lists lengthen, content is generic rather than matched to ADG's specific imaging suite, and travel plus back-fill costs add further strain for a 24%-turnover workforce.\n\nDecision: ADG should choose on-the-job training as the default for the 21 staff, reserving college attendance for the two lead clinicians who will then cascade the skills internally. On-the-job delivery is machine-specific, free and avoids worsening waiting lists; full off-the-job training is rejected because $19,950 plus 21 absent staff would push waits beyond 11 days and strain the Millbrook launch, though certificates can be added later through short college refreshers once the branch stabilises.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to ADG.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both training methods in the context of ADG.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of ADG with a well-justified decision covering cost, waiting lists, equipment relevance and the Millbrook launch."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["Off-the-job training", "$950", "imaging equipment", "21 of 84", "waiting lists", "Millbrook"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ADG's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ADG's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $384,000 ÷ ($60.00 − $28.00) = $384,000 ÷ $32.00 = 12,000 units. Answer: break-even output is 12,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ADG's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $60.00 − $28.00 = $32.00. Answer: contribution per unit is $32.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ADG's management can use this financial data.",
+          "model_answer": "1. Compare the 12,000-unit break-even output with actual output of 96,000 units to confirm the practices are safely profitable with a margin of safety of 84,000 units, informing how fast the Millbrook ramp-up can proceed.\n2. Use contribution per unit of $32.00 to model discounts, for example reducing the average price by 10% to $54.00 would cut contribution to $26.00, letting managers judge whether extra Millbrook volume can still service the $700,000 loan repayments.\n3. Test the feasibility of the $700,000 ten-year bank loan by checking that the 84,000-unit margin of safety keeps fixed-cost recovery secure even if Millbrook starts slowly and waiting lists temporarily rise above 11 days.\n4. Benchmark unit cost ($384,000 ÷ 96,000 units + $28.00 = $32.00 a unit) across quarters to attack the 1.6% rework rate, spot waste in materials amid the 9.6% input-cost inflation, and compare performance with the 24,000 units delivered last quarter."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 12,000 units | (ii) Contribution per unit = $32.00 | (iii) Four contextual uses explained: margin of safety of 84,000 units against 96,000-unit output; discount and pricing modelling against the $384,000 fixed costs; feasibility checking for the $700,000 bank loan funding the Millbrook branch; unit-cost benchmarking at $32.00 to control the 1.6% rework rate.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["12,000", "$32.00", "96,000", "$384,000", "84,000", "24,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ADG's financial performance by calculating the gross profit margin, the profit margin and ROCE for 2024 and 2025. Has ADG's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 15.0%\nROCE 2025 = 18.0%\n\nDetailed workings: 2024 gross profit $2,000,000 on revenue $5,000,000 (cost of sales $3,000,000); 2025 gross profit $2,592,000 on revenue $5,760,000 (cost of sales $3,168,000). 2024 operating profit $750,000; 2025 operating profit $1,152,000. 2024 capital employed $5,000,000; 2025 capital employed $6,400,000. Interest payable rose from $35,000 to $44,000; the extract records the increase but does not give its cause.\n\nEvaluation: Performance improved strongly. Gross profit grew $592,000 (29.6%) as revenue rose $760,000 and cost of sales as a share of revenue fell from 60.0% to 55.0%, helped by rework falling from 2.9% to 1.6% and complaints from 31 to 19 a month. Operating profit grew 53.6% ($750,000 to $1,152,000), well ahead of revenue growth of 15.2%, so overheads were absorbed more efficiently. Capital employed rose from $5,000,000 to $6,400,000, yet the return on that capital still strengthened. However, higher interest charges and the risk of Millbrook filling slowly against the 96,000-unit plan are real, and the 9.6% materials inflation could reverse part of the cost-of-sales improvement.\n\nConclusion: Yes, ADG's financial performance has improved. Revenue, gross profit and operating profit all grew, cost control genuinely improved rather than riding on price rises alone, and the return on capital employed climbed from 15.0% to 18.0%. The judgement is not risk-free — borrowing is costlier after the base rate rise — so ADG should monitor Millbrook's ramp-up closely and keep tight control of materials costs and the 11-day waiting list.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, the profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, interest and capital employed movements and a justified conclusion on whether ADG's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5,760", "2,592", "1,152", "18.0%", "$44,000", "Capital employed"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ADG of introducing extended evening opening hours across its four practices.",
+      "model_answer": "Advantage: Evening opening matches the 48% of the 750 patients surveyed who would pay up to $12 more per visit, creating a premium service that protects the $32.00 contribution per unit while materials costs inflate 9.6%. It also relieves the 11-day waiting list, helps ADG stand out from rivals facing the same recruitment difficulties for dentists and nurses, and builds demand for the $1,200,000 Millbrook branch; a weekend-friendly, extended offer also fits the 62% willing to travel to Millbrook, converting survey interest into booked and repeated visits.\n\nDisadvantage: Evening shifts raise labour costs when wage pressure is already intense (the minimum wage rises 6.9% to $13.47) and dentist and dental-nurse turnover is 24%, so overtime or extra hires to staff late clinics could erode the improvement in the gross profit line. Longer hours also add utilities, sterilisation and reception costs, and any dip in quality or longer waits during evenings could undo the progress that cut rework to 1.6% and complaints from 31 to 19 per month; recruiting extra evening clinicians in a market already short of qualified nurses is itself a schedule and cost risk.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ADG's research data, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["48%", "$12", "750", "9.6%", "11 days", "$1,200,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 6.9% minimum wage increase and the 9.6% rise in dental materials and laboratory costs will affect ADG. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.5% to 5.25%): If ADG's planned $700,000 ten-year bank loan is variable-rate, a 0.75 percentage point increase adds about $5,250 a year (0.75% × $700,000) of extra interest, raising the financing cost of the Millbrook expansion it is intended to fund. It also makes the remaining funding need for the $1,200,000 Millbrook branch more expensive and could dampen consumer willingness to fund private dental care at the $60.00 average price; the direct cash impact is real but modest, and ADG can partly shield itself by fixing the loan rate.\n\nMinimum wage increase (6.9%, to $13.47 per hour): The national minimum wage rises by 6.9%, from $12.60 to $13.47 per hour — an extra $0.87 an hour on every minimum-wage hour worked across ADG's workforce of 84. The insert gives no wage-bill total or hours worked, so the exact annual cost cannot be quantified from the figures provided; what is certain is that it is a permanent, hourly cost that raises recruitment and retention expenses for any minimum-wage clinical support and reception posts, and it can only be offset through productivity gains such as imaging-driven throughput and democratic scheduling.\n\nInput cost inflation (9.6% materials and laboratory): Dental materials and laboratory costs have risen 9.6% year-on-year. These costs sit inside the $28.00 variable cost per unit, which across 96,000 units pools to a $2,688,000 variable-cost spend ($28.00 × 96,000, computable from the insert). The extract does not split materials from other variable costs, so the exact annual impact cannot be computed, but a 9.6% rise raises the cost of every one of the 96,000 units and threatens the fall in cost of sales as a share of revenue from 60.0% to 55.0% that lifted gross profit from $2,000,000 to $2,592,000 — the margin that supports the $1,200,000 Millbrook investment and the planned $700,000 loan.\n\nConclusion: The 9.6% rise in dental materials and laboratory costs will have the greatest impact. It strikes every one of the 96,000 units sold at a 9.6% rate on the materials and laboratory element of the $28.00 variable cost, whereas the interest rise is capped at about $5,250 a year on the planned $700,000 loan even if it is variable-rate, and the wage rise — though permanent and spread across every minimum-wage hour worked — cannot be quantified from the data given and can be partly offset through democratic scheduling and imaging-driven productivity. It also directly threatens the fall in cost of sales as a share of revenue (60.0% to 55.0%) and the margin that justifies the Millbrook investment. The wage increase is the second most serious risk; the interest rise is the smallest quantifiable impact and can be fixed, though all three still demand tighter cost control and careful pricing.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to ADG.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on ADG's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of ADG with a well-justified judgement that materials and laboratory inflation has the greatest impact, and why the wage rise and the interest rise are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "6.9%", "9.6%", "$13.47", "$700,000", "$28.00"]
+      }
+    }
+  ]
+}

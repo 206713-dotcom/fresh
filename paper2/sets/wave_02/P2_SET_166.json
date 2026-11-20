@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_166",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Ardent Analytics (ARA) is a private limited company in the technology services sector, providing data analytics and business-intelligence reporting for Texas retailers and distributors. Founded in 2013 by Dana Whitmore, ARA employs a workforce of 38 and operates a hierarchical structure with autocratic leadership. ARA plans to invest $1,200,000 in a new cloud data platform and self-service dashboard suite, financed by a $700,000 ten-year bank loan and a $500,000 share issue to existing shareholders. The business has fixed costs of $660,000 a year, a variable cost of $160 a unit and a selling price of $380, and currently produces 8,000 units a year. ARA faces an operational problem: client dashboards are delivered too slowly and junior analysts show skills gaps on the new platform.",
+    "appendix_1_marketing_ops": "Market Research Summary — September 2026: A survey of 500 Texas retail and distribution owners found 71% now use data dashboards weekly (up from 54% two years ago) and 58% would switch providers for same-day data refreshes. ARA's dashboards currently refresh overnight; 14% of client reports went out late last quarter. Average onboarding takes 3.5 weeks. Benchmark rivals charge $29 per month for entry-level reporting while ARA charges $32. Referrals from existing clients account for 44% of new business; manual extract reviews show a 2.1% rework rate on errors caught by clients.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Ardent Analytics for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "2,800", "3,040"],
+        ["Cost of sales", "1,680", "1,672"],
+        ["Gross profit", "1,120", "1,368"],
+        ["Operating profit", "420", "648"],
+        ["Capital employed", "2,400", "3,600"],
+        ["Interest payable", "96", "148"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) The Federal Reserve raised its target rate to 5.25%, the third rise this year, lifting borrowing costs on variable-rate business loans. (2) The minimum wage for federal contractors will rise 6.0% from $16.70 to $17.70 per hour from January 2027, raising wage bills for support staff. (3) Cloud computing capacity costs rose 8.4% year-on-year as AI demand tightens GPU supply, while US business software spending grew 6.1% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "ARA plans to finance part of its new cloud data platform with a $500,000 share issue to existing shareholders. Explain two advantages for ARA of using the share issue instead of borrowing the full $1,200,000 externally.",
+      "model_answer": "Point 1: A share issue raises permanent capital with no repayment schedule and no interest charge, so ARA avoids stacking more debt on top of the $700,000 ten-year bank loan and shields its fixed costs of $660,000 a year from additional interest. Cash retained in the business can absorb the 8.4% rise in cloud computing capacity costs and fund the January 2027 wage rise without pushing the $380 price beyond what Texas retailers will accept or jeopardising the 8,000-unit output plan.\n\nPoint 2: Shares issued to existing shareholders keep ownership and control inside Dana Whitmore's current group, unlike a bank, which can demand collateral, covenants or early repayment if the dashboard suite underperforms. No lender can force the sale of the platform assets if Texas retail demand disappoints, which protects the very capability ARA is building to win the 58% of surveyed owners willing to switch for same-day refreshes. A stronger capital base also improves ARA's credibility with future data-platform partners and enterprise clients signing multi-year reporting contracts.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Ardent Analytics and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "bank loan", "$500,000", "$700,000", "$1,200,000", "$660,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ARA is launching its new self-service dashboard suite for Texas retailers and distributors. Consider a national radio campaign, LinkedIn B2B advertising or exhibiting at retail technology trade shows. Which should ARA choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National radio campaign: A national radio campaign would put ARA's name in front of millions of listeners quickly and build broad awareness of the new dashboard launch. However, ARA sells to Texas retail and distribution owners only, so most listeners outside the state or outside retail management would be wasted reach. Radio offers no precise click-through measurement, the $29-versus-$32 benchmark advantage cannot be explained in a 30-second slot, and airtime remains expensive for a 38-person company already funding a $1,200,000 expansion.\n\nLinkedIn B2B advertising: LinkedIn targets retail owners, category managers and operations directors by role, industry and Texas location, exactly the people who sign reporting contracts. It is pay-per-click affordable, fully measurable, and lets ARA showcase the same-day refresh promise, the 44% referral engine and retail case studies. Weaknesses are that campaigns need constant fresh content and ad fatigue sets in, but the cost per qualified lead is far lower than broadcast.\n\nRetail technology trade shows: Exhibiting would let ARA demonstrate live dashboards in person and meet high-intent buyers, and 58% of surveyed owners would switch for same-day refreshes, so live demos could close multi-year contracts. The drawbacks are high stand and travel costs for a small team, limited audience per event, and sporadic rather than sustained lead flow.\n\nRecommendation: ARA should choose LinkedIn B2B advertising. It is the only option that reaches the precise Texas retail decision-maker segment identified in its research at low, measurable cost, reinforces the same-day-refresh positioning, and scales across the state without the wastage of radio. Radio is rejected as untargeted and unmeasurable for a B2B niche; trade shows are rejected as the sole channel because of high cost and episodic reach, though ARA should add one major annual exhibition later to support LinkedIn-generated leads.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of ARA with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of ARA with a well-justified recommendation explaining why radio and trade shows are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["Texas", "$29 per month", "$32", "58%", "44%", "71%"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ARA's junior analysts show skills gaps and 14% of client reports went out late last quarter. Explain two benefits for ARA of adopting more democratic leadership to involve junior analysts in decisions about the new dashboard platform.",
+      "model_answer": "Point 1: Democratic leadership invites the junior analysts who actually build the client dashboards to help set refresh routines, data-quality checks and escalation rules, surfacing practical fixes that top-down autocratic orders under ARA's hierarchical structure would miss. Direct involvement satisfies esteem and belonging needs (Maslow) and acts as a Herzberg motivator, lifting morale in a workforce of 38 where every analyst gone is a meaningful slice of a small team, and rapidly closing the skills gaps on the new platform.\n\nPoint 2: Consultation lowers resistance to change as the platform goes live, because analysts who help design the rollout feel ownership of the outcome and are far more likely to follow through at 2 a.m. before the same-day refresh deadline. Better communication across teams reduces the late-report rate and the 2.1% rework rate on errors, protects the 8,000 units a year ARA produces, and frees Dana Whitmore's autocratic-style decision-making for genuinely strategic issues such as the $700,000 bank loan terms and future Texas expansion beyond retail and distribution clients.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ARA's skills gaps, quality and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic", "hierarchical", "workforce of 38", "2.1%", "44%", "8,000 units"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ARA must handle rising demand for same-day dashboards. Consider hiring six additional analysts or investing in automated refresh pipelines. Which should ARA choose? Justify your decision.",
+      "model_answer": "Six additional analysts: Hiring would protect the 3.5-week average onboarding time, add human judgement for unusual client data, and create capacity for the Texas growth shown by 71% weekly dashboard usage among retail owners. However, each hire adds permanent salary to fixed costs already at $660,000 a year, recruitment and training take months, and the skills gaps on the new platform would persist without structured upskilling. Six salaries could exceed $400,000 a year, straining the $700,000 loan repayments before the new platform is adopted.\n\nAutomated refresh pipelines: ARA's analysts currently refresh dashboards with manual extracts overnight. Automating the pipelines would make data movement consistent, cut the late-report rate well below 14%, and push rework toward zero without linear salary growth. It scales naturally beyond 8,000 units a year and frees analysts for higher-value interpretation work clients will pay the $32 per month for. Drawbacks: it needs upfront development spend within the $1,200,000 project budget, relies on the same under-skilled junior team to build and maintain it, and reduces the human polish of bespoke commentary.\n\nDecision: ARA should choose automated refresh pipelines as the primary move, combined with targeted upskilling for the junior cohort. Automation attacks the root cause of late reports and rework, scales with the new platform, protects margins against 8.4% cloud-capacity inflation and the January 2027 wage rise, and is cheaper than six permanent salaries. Mass hiring is rejected: it raises fixed costs permanently, slows response while new staff learn the platform, and still leaves the skills gap unaddressed. ARA should still hire one senior data engineer to lead the pipeline build, so the automation does not depend on the least experienced staff.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two options with limited application to ARA.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both options in the context of ARA.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of ARA with a well-justified decision covering cost, scalability, delivery speed and skills gaps."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3.5 weeks", "2.1%", "$660,000", "8,000 units", "$1,200,000", "71%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ARA's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ARA's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $660,000 ÷ ($380 − $160) = $660,000 ÷ $220 = 3,000 units. Answer: break-even output is 3,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ARA's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $380 − $160 = $220. Answer: contribution per unit is $220."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ARA's management can use this financial data.",
+          "model_answer": "1. ARA's managers can compare the 3,000-unit break-even output with the actual output of 8,000 units, confirming a margin of safety of 5,000 units and giving confidence that the dashboard-suite revenue can cover the enlarged fixed costs before Texas retail demand plateaus.\n2. A contribution per unit of $220 lets managers model pricing moves, for example a 10% launch discount to $342 would cut contribution to $182 and raise the break-even point to about 3,626 units, letting them judge whether extra volume against the 58% switch-intent segment would still cover the $1,200,000 investment case.\n3. Fixed costs of $660,000 against contribution of $220 per unit support the affordability test for the $700,000 ten-year bank loan alongside the $500,000 share issue, showing lenders and Dana Whitmore that repayments remain serviceable even if reporting times slip to the current slow level.\n4. Managers can use unit cost data ($660,000 ÷ 8,000 units = $82.50 + $160 = $242.50 a unit) to benchmark quarterly efficiency, target the late-report problem and renegotiate cloud capacity contracts, protecting the $32 price point against $29 rivals amid 8.4% cloud-capacity inflation."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 3,000 units | (ii) Contribution per unit = $220 | (iii) Four contextual uses explained: margin of safety against 8,000-unit output; pricing and discount modelling against $660,000 fixed costs; loan-repayment feasibility for the $1,200,000 expansion; and unit-cost benchmarking at $242.50 against $29 rival pricing.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3,000", "$220", "8,000", "$660,000", "$160", "$380", "$242.50"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ARA's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has ARA's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 21.3%\nROCE 2024 = 17.5%\nROCE 2025 = 18.0%\n\nDetailed workings: 2024 gross profit = $2,800,000 − $1,680,000 = $1,120,000; 2025 gross profit = $3,040,000 − $1,672,000 = $1,368,000. 2024 operating profit $420,000; 2025 operating profit $648,000. Returns on capital employed 2024 = $420,000 ÷ $2,400,000 = 17.5%; 2025 = $648,000 ÷ $3,600,000 = 18.0%. Operating profit expressed as a share of revenue 2025 = $648,000 ÷ $3,040,000 = 21.3%; 2024 = $420,000 ÷ $2,800,000 = 15.0%.\n\nEvaluation: Performance has strengthened in margins and returns. The share of revenue left after cost of sales rose from 40.0% to 45.0%, helped by automated refreshes lifting delivery throughput and by price discipline against $29 rivals. Capital employed grew from $2,400,000 to $3,600,000, matching the $1,200,000 platform investment financed by loan plus share issue, yet returns on that larger base still edged up from 17.5% to 18.0%, evidence the new capability is earning its keep. Operating profit rose 54% to $648,000, comfortably covering the rise in interest payable from $96,000 to $148,000 as the new loan drew down. Risks remain: cloud-capacity inflation of 8.4% is squeezing delivery cost, interest payable jumped $52,000, and the suite is not yet at full adoption, so an under-used platform would dilute returns if Texas retail demand stalls or the 58% switch-intent segment fails to convert.\n\nConclusion: ARA's financial performance has improved. Both the share of revenue retained as gross profit (40.0% to 45.0%) and returns on capital (17.5% to 18.0%) moved up, and operating profitability rose even faster because the new platform lifted output without proportional cost growth. The improvement is genuine but not yet fully proven at scale; ARA should fix the loan rate, lock cloud-capacity contracts and convert referral leads (44% of new business) into multi-year dashboard contracts to protect the 2025 gains.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether ARA's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "17.5%", "18.0%", "21.3%", "1,120", "1,368", "3,600"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ARA of launching a self-service dashboard suite inside its new cloud data platform.",
+      "model_answer": "Advantage: A self-service suite turns ARA from a reporting supplier into an always-on analytics habit — retail owners open the dashboard weekly, answer their own questions, and stop phoning for bespoke reports. This directly attracts the 58% of surveyed owners willing to switch for same-day refreshes, strengthens the 44% referral engine with a tangible product to recommend, justifies the $32 per month against the $29 entry rival, and deepens client lock-in through saved views and historical trend lines — compounding ARA's 8,000 units a year into a recurring-revenue base that smooths Texas seasonality.\n\nDisadvantage: Self-service also makes ARA's errors visible at scale: a wrong filter or stale refresh shown to 500 clients is a reputational hit no bespoke process would create, and the 2.1% rework rate must fall before launch or every subscriber multiplies the error. Support demand will spike — novice users asking why their margins look odd — stretching the junior analysts already showing skills gaps, and building the suite inside the $1,200,000 project budget risks starving the onboarding-acceleration work (3.5 weeks) that wins switchers, so launch timing and training investment must be sequenced carefully.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to ARA's product, costs and clients."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.1%", "44%", "$32", "$29 per month", "58%", "$1,200,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the 5.25% base rate, the 6.0% rise in the federal contractor minimum wage and the 8.4% rise in cloud computing capacity costs will affect ARA. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise to 5.25%: ARA carries a $700,000 ten-year bank loan; if it is variable-rate, the 5.25% target rate adds roughly 0.75 percentage points — about $5,250 a year extra interest — on top of the $148,000 already charged, and raises the cost of any further drawdown for the platform. Higher rates may also cool Texas retailers' appetite for refitting stores, softening demand for new analytics migrations. The direct cash impact is modest, easily manageable by fixing the loan rate or trimming discretionary spend, and is partly offset by better deposit income on ARA's cash balances.\n\nMinimum wage rise of 6.0% to $17.70 per hour: The increase mostly touches support and contractor staff rather than senior analysts. Even applied across all 38 employees at roughly 2,080 hours a year, the extra $1.00 an hour costs about $79,000 a year gross, a noticeable but absorbable hit against a 45.0% gross profit and 8,000 units sold. Productivity gains from the 2.1%-rework elimination drive and democratic re-engagement of the junior cohort can offset much of it, and ARA can justify modest price increases given the 58% switch-intent segment's speed priority.\n\nCloud computing capacity cost inflation of 8.4%: This strikes the heart of ARA's cost base. GPU and storage capacity is the dominant cost inside the $160 variable cost per unit — on even $250,000 of annual cloud spend, an 8.4% rise adds about $21,000 a year directly to cost of sales — and it compounds exactly when the new suite multiplies the number of client dashboards refreshed daily. It inflates the $242.50 unit cost, threatens the 45.0% gross profit and compounds with the January 2027 wage rise at the moment the platform is filling up. Unlike the rate rise, it is unavoidable in the near term and cannot be fully passed to price-sensitive retailers paying $29–$32 per month.\n\nConclusion: The 8.4% rise in cloud computing capacity costs will have the greatest impact. It recurs per unit on all 8,000 units, compounds with the suite's heavier daily refresh load, hits the margin expansion ARA needs to service its $700,000 loan, and is largely outside management's control. The wage rise is second (sizeable but offsettable through automation of manual extracts), while the 5.25% base rate is smallest in cash terms (~$5,250 a year) and can be fixed contractually; both still demand tighter delivery automation and multi-year capacity commitments to protect the improved 2025 profitability.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to ARA.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on ARA's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of ARA with a well-justified judgment that cloud-capacity cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "6.0%", "8.4%", "$17.70", "$700,000", "$660,000"]
+      }
+    }
+  ]
+}

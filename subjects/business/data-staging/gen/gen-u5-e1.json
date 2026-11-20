@@ -1,0 +1,892 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_181",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Alderley Opticians Ltd runs 4 optician practices across Country X, employing 26 staff. In the year to 31 October, revenue was $840,000, cost of sales was $504,000 and profit was $92,400. Gross profit was $336,000 and capital employed was $660,000. The previous year, revenue was $720,000, gross profit was $237,600 and profit was $57,600 on capital employed of $576,000.\n\nThe owner, Rhea Sharma, plans to invest $150,000 in digital measuring equipment to promote premium lenses, hoping to lift margins, as competitor Clearglass Opticians reports a gross profit margin of 45% and a ROCE of 17%. Alternatively she could keep current prices to defend Alderley's budget-conscious customers, but the bank has asked to see the latest accounts before approving a loan for the equipment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'gross profit margin'.",
+        "model_answer": "Gross profit margin is the ratio of gross profit to revenue, expressed as a percentage (gross profit / revenue x 100), showing how much of each $1 of sales remains after the cost of sales has been deducted. It indicates how efficiently a business buys or makes its goods. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross profit as a percentage of revenue (gross profit / revenue x 100)",
+            "Shows how much of each $1 of sales remains after cost of sales is deducted / indicates efficiency of buying or production"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Alderley Opticians' gross profit margin may have risen from 33% to 40%.",
+        "model_answer": "Reason 1: The owner could have raised retail prices or shifted the product mix towards premium lenses, which carry higher mark-ups than standard lenses [k]. Selling more premium lenses within revenue of $840,000 (up from $720,000) supports the rise in gross profit to $336,000, a 40% margin [app]. Reason 2: The firm may have reduced its cost of sales, for example by renegotiating supplier terms or bulk-buying lens blanks more cheaply [k]. A lower cost of sales of $504,000 against higher revenue lifts gross profit from $237,600 to $336,000 and explains the improvement from 33% last year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher selling prices or sales mix shifted to higher-margin premium products",
+            "Lower cost of sales (cheaper suppliers, bulk buying, better trade terms)"
+          ],
+          "application_max_2": [
+            "Revenue rose from $720,000 to $840,000 and gross profit is $336,000 (40%)",
+            "Cost of sales $504,000 leaves $336,000 gross profit; last year 33% ($237,600 of $720,000)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Alderley Opticians", "$840,000", "$720,000", "$336,000", "$504,000", "$237,600", "$150,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of profitability ratios for the bank when deciding whether to approve the loan.",
+        "model_answer": "Point 1: Return on capital employed shows how effectively profits are earned on capital, helping the bank judge whether the business can generate enough surplus to repay interest and principal [k]. Alderley's ROCE rose to 14% from 10% ($92,400 on $660,000, up from $57,600 on $576,000), supporting its application to borrow $150,000 [app]. This means the bank can see rising returns on capital rather than relying on the balance sheet alone, reducing default risk [an]. Point 2: Profit margin shows how much profit remains from each $1 of sales after expenses, indicating whether the business generates enough surplus to cover new finance costs [k]. The profit margin improved to 11% from 8% ($92,400 profit on $840,000 revenue), so the bank can expect healthy cover for loan repayments if the trend continues [app]. The bank should still compare these ratios with rival Clearglass Opticians at 17% ROCE to judge competitive risk [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ROCE shows how effectively capital is used to generate profit / ability to service debt",
+            "Profit margin shows profit per $1 of revenue, indicating cover for finance costs"
+          ],
+          "application_max_2": [
+            "ROCE rose from 10% to 14% ($92,400 on $660,000 vs $57,600 on $576,000)",
+            "Profit margin rose from 8% to 11% ($92,400 profit on $840,000 revenue); rival Clearglass Opticians achieves 17% ROCE"
+          ],
+          "analysis_max_2": [
+            "Rising ratios reduce perceived default risk and support the loan decision",
+            "Comparing with the rival's 17% ROCE indicates Alderley still trails on capital efficiency"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Alderley", "$150,000", "$840,000", "$92,400", "$720,000", "Clearglass Opticians", "17%"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Alderley Opticians should invest $150,000 in the digital measuring equipment? Justify your answer.",
+        "model_answer": "I believe Alderley should invest in the $150,000 digital measuring equipment. Premium lenses carry higher mark-ups, so the equipment would lift the gross profit margin above the current 40% and improve the profit margin above 11%, generating the cash to service a bank loan [k]. The firm's returns are already improving, with ROCE up from 10% on $576,000 capital employed to 14% on $660,000, which gives the bank confidence to lend and funds the investment [app]. Stronger margins would also give Alderley an advantage against Clearglass Opticians, protecting market share in premium lenses and reducing reliance on price competition [an]. However, keeping current prices would protect the budget-conscious customers who generate reliable footfall, and $150,000 is a heavy commitment when Clearglass Opticians still leads on a 45% gross profit margin and 17% ROCE [k]. If premium demand disappoints, Alderley would face higher interest costs with no guarantee of extra sales, whereas price stability preserves the volume that underpins revenue of $840,000 [app]. Although the safer option protects existing trade, it locks in the gap to the competitor and slows margin growth [an]. Overall, I recommend the investment, because the improving trend suggests premium lens demand exists and, provided the loan terms are manageable, the reward outweighs the risk of defending prices alone [eval]. The main risk is over-committing to debt, so the board should agree stage payments with the bank and track premium lens sales monthly [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Premium lenses carry higher mark-ups; equipment lifts gross profit and profit margins",
+            "Keeping prices protects budget customers; $150,000 is a large commitment"
+          ],
+          "application_max_2": [
+            "ROCE improved from 10% ($576,000) to 14% ($660,000); PM improved to 11%",
+            "Rival Clearglass Opticians holds a 45% GPM and 17% ROCE; revenue $840,000"
+          ],
+          "analysis_max_2": [
+            "Stronger margins give a competitive edge and reduce price-competition reliance",
+            "Guarding volume protects revenue but cedes ground to the rival"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified against both options with figures",
+            "Acknowledges risk (debt, demand) and adds conditions (stage payments, monthly tracking)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Alderley Opticians", "$150,000", "$840,000", "Clearglass Opticians", "45%", "17%", "$660,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_182",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Dovetail Kitchens Ltd is a private limited company fitting kitchens in Country X, employing 14 joiners and designers. In the year to 31 March, revenue was $1,150,000, gross profit was $345,000 and profit was $69,000. Capital employed was $460,000. The previous year, revenue was $980,000, gross profit was $235,200 and profit was $39,200 on capital employed of $392,000.\n\nThe two owners credit a shared buying group and energy-efficient workshop lighting for the improvement. Their own profit margin improved from 4% to 6% this year. They now debate switching to premium German appliance suppliers to sell higher-priced ranges against rival ValueBuilt Homes, a national chain reporting a 35% gross profit margin, or retaining their value ranges to stay price-competitive with it across Country X.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'profit margin'.",
+        "model_answer": "Profit margin (net profit margin) expresses the profit a business makes as a percentage of its revenue, calculated as profit / revenue x 100. It shows how much profit remains from each $1 of sales after all costs, expenses and tax have been deducted. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit as a percentage of revenue (profit / revenue x 100)",
+            "Shows profit remaining per $1 of sales after all costs, expenses and tax"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Dovetail Kitchens' profit margin rose from 4% to 6%.",
+        "model_answer": "Reason 1: A shared buying group would have lowered the cost of materials and workshop overheads, so a greater share of each sales dollar remained as profit [k]. With profit rising from $39,200 on $980,000 revenue to $69,000 on $1,150,000, the margin improved from 4% to 6% [app]. Reason 2: Energy-efficient workshop lighting cuts electricity bills, reducing expenses and lifting profit [k]. Lower lighting costs help explain why profit rose by $29,800 even though revenue rose by only $170,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower cost of sales/materials via a shared buying group (bulk discounts)",
+            "Reduced overheads/expenses (e.g. energy-efficient lighting)"
+          ],
+          "application_max_2": [
+            "Profit rose from $39,200 (4% of $980,000) to $69,000 (6% of $1,150,000)",
+            "Revenue rose by $170,000 while profit grew by $29,800, so margins improved"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Dovetail Kitchens", "$980,000", "$1,150,000", "$39,200", "$69,000", "ValueBuilt Homes", "35%"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of profitability ratios for the owners of Dovetail Kitchens.",
+        "model_answer": "Use 1: Profitability ratios let the owners judge how efficiently the business converts revenue into profit, guiding pricing and cost-control decisions [k]. With profit margin up from 4% to 6% and gross profit margin up from 24% to 30% ($345,000 of $1,150,000), the owners can see their current approach is working [app]. This evidence helps them justify continuing margin-focused decisions when agreeing supplier contracts [an]. Use 2: Profitability ratios highlight relative performance and guide future investment decisions [k]. Return on capital employed improved from 10% to 15% ($69,000 on $460,000), showing owners their capital is working harder than last year [app]. Comparing their own 30% gross profit margin against the 35% achieved by ValueBuilt Homes shows where improvement is still possible, guiding the decision on whether to switch suppliers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Measure efficiency of converting revenue into profit; guide pricing/cost control",
+            "Compare performance over time and with competitors to guide investment decisions"
+          ],
+          "application_max_2": [
+            "PM rose 4% to 6%; GPM rose from 24% ($235,200) to 30% ($345,000 of $1,150,000)",
+            "ROCE rose from 10% to 15% ($69,000 on $460,000); ValueBuilt Homes achieves 35% GPM"
+          ],
+          "analysis_max_2": [
+            "Improvement validates and supports the current strategy and supplier decisions",
+            "Gap to the rival identifies where to focus improvement before switching suppliers"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Dovetail Kitchens", "$345,000", "$1,150,000", "$460,000", "$69,000", "ValueBuilt Homes", "35%", "$980,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dovetail Kitchens should switch to premium German appliance suppliers? Justify your answer.",
+        "model_answer": "I think Dovetail Kitchens should switch to premium German appliance suppliers. Premium ranges carry higher selling prices and mark-ups, which would lift the gross profit margin above the current 30% ($345,000 of $1,150,000) towards the 35% achieved by ValueBuilt Homes, improving the profit margin above 6% [k]. Improved margins would strengthen return on capital employed beyond 15% ($69,000 on $460,000), justifying the owners' plans and helping fund future growth [app]. Higher-quality kitchens can also differentiate the business from the national chain, winning customers who value design over lowest price [an]. However, the owners could instead keep the value ranges, because switching carries risks: premium stock costs more to hold, and if sales volumes fall, revenue growth could slip back from the $1,150,000 level achieved this year [k]. Keeping the value offer protects price-sensitive customers and avoids being undercut on price by ValueBuilt Homes, whose appeal is high volume at keen prices [app]. A wrong switch could dent the 6% profit margin if premium demand proves weak, whereas the current strategy already delivered an improvement from 4% [an]. Overall, I recommend the switch, but phased: trial premium lines in a small number of projects first and track gross profit margin monthly, since the upward trend and stronger ROCE suggest the premium market is reachable [eval]. The main risk is demand uncertainty, so supplier agreements should protect Dovetail against unsold premium stock [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Premium ranges carry higher mark-ups and prices; lift GPM",
+            "Switching carries risks: premium stock costs, demand uncertainty"
+          ],
+          "application_max_2": [
+            "GPM 30% ($345,000 of $1,150,000); rival ValueBuilt Homes 35%; ROCE 15% ($69,000 on $460,000)",
+            "Value strategy already improved PM from 4% to 6%; revenue now $1,150,000"
+          ],
+          "analysis_max_2": [
+            "Premium positioning differentiates from the national chain and can raise order values",
+            "Phased trial limits risk; track monthly GPM to confirm viability"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified with figures; conditions attached (trial, monthly tracking)",
+            "Weighs both options; demand-uncertainty risk acknowledged"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Dovetail Kitchens", "$345,000", "$1,150,000", "ValueBuilt Homes", "$460,000", "35%", "German"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_183",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Larkhill Garden Centres Ltd is a private limited company operating 2 garden centres in Country X, employing 30 full and part-time staff. In the year to 31 January, revenue was $2,400,000, gross profit was $912,000 and profit was $144,000. Capital employed was $1,200,000. The previous year, revenue was $2,100,000, gross profit was $756,000 and profit was $105,000 on capital employed of $1,050,000.\n\nThe owners credit new high-margin landscaping and cafe lines for the improvement: the gross profit margin rose from 36% to 38% and ROCE rose from 10% to 12% this year. Hillview Gardenworld, a nearby rival, reports a gross profit margin of 42% and a ROCE of 15%. The company must choose between opening a third garden centre on a new $300,000 site with bank funding, or refurbishing its existing 2 stores for $150,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'return on capital employed'.",
+        "model_answer": "Return on capital employed (ROCE) measures how effectively a business uses its capital to generate profit. It is calculated as profit / capital employed x 100 and shows the percentage return earned on the long-term funds invested in the business. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit divided by capital employed, expressed as a percentage (x 100)",
+            "Shows how effectively long-term capital is used to generate profit"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Larkhill Garden Centres' ROCE rose from 10% to 12%.",
+        "model_answer": "Reason 1: Profit grew faster than the capital employed, since profit rose from $105,000 to $144,000 while capital employed increased only modestly from $1,050,000 to $1,200,000 [k]. This produces a ROCE of 12% ($144,000 on $1,200,000), up from 10% ($105,000 on $1,050,000) [app]. Reason 2: New high-margin landscaping and cafe lines lifted the gross profit margin from 36% to 38%, so more of each dollar of revenue reached the bottom line [k]. Gross profit rose to $912,000 on revenue of $2,400,000, and this improvement flows through to a higher ROCE [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit growing faster than capital employed raises ROCE",
+            "Improved margins (cost control and sales mix) raise profit and ROCE"
+          ],
+          "application_max_2": [
+            "Profit $105,000 to $144,000; capital employed $1,050,000 to $1,200,000; ROCE 10% to 12%",
+            "GPM 36% to 38% ($756,000 to $912,000 on revenue of $2,400,000)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Larkhill Garden Centres", "$144,000", "$1,200,000", "$1,050,000", "$105,000", "$912,000", "$2,400,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of comparing Larkhill's profitability ratios with those of Hillview Gardenworld.",
+        "model_answer": "Benefit 1: Comparison against a rival shows whether Larkhill's performance is competitive, not merely improving in isolation [k]. Hillview Gardenworld reports a 42% gross profit margin and 15% ROCE versus Larkhill's 38% and 12%, so managers can see they still trail on both measures [app]. This tells the board where effort is most needed, such as lifting margins on cafe and landscaping lines, before committing to expansion [an]. Benefit 2: Rival benchmarking helps set realistic targets and supports decisions on where to allocate scarce capital [k]. Closing even half the 4-percentage-point gap to Hillview's 42% margin would add about $96,000 to gross profit on revenue of $2,400,000 [app]. This quantifies the prize from improvement and helps prioritise investment between the two options facing the company [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Benchmarking shows competitiveness vs rivals, not just trend improvement",
+            "Benchmarks set targets and guide where capital is best allocated"
+          ],
+          "application_max_2": [
+            "Hillview Gardenworld 42% GPM and 15% ROCE vs Larkhill 38% and 12%",
+            "Half the 4-point margin gap is worth about $96,000 on revenue of $2,400,000"
+          ],
+          "analysis_max_2": [
+            "Gap shows where to focus (cafe and landscaping margins) before expanding",
+            "Quantifying gains enables prioritisation between a new centre and refurbishment"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Hillview Gardenworld", "42%", "15%", "38%", "12%", "$2,400,000", "$912,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Larkhill Garden Centres should open a third garden centre? Justify your answer.",
+        "model_answer": "I think Larkhill should open the third garden centre, but only with cautious debt funding. Opening a $300,000 third centre would add a new revenue stream and lift profit beyond the current $144,000, and Larkhill's ROCE of 12% is rising towards the 15% reported by Hillview Gardenworld [k]. Returns are improving, with ROCE up from 10% on $1,050,000 to 12% on $1,200,000, and a successful new site would spread fixed costs and strengthen its competitive position [app]. A third site would also reduce dependence on 2 locations and capture demand the existing centres cannot serve [an]. However, the safer choice is to refurbish the existing 2 stores for $150,000, because it costs half as much and should lift margins at proven locations [k]. Refurbishment fits the improving trend (profit margin up from 5% to 6%, gross profit margin up from 36% to 38%) and avoids new debt while Hillview Gardenworld still leads on 42% margin and 15% ROCE [app]. Spending only $150,000 protects the balance sheet and could raise returns on the current $1,200,000 capital employed more safely than untested new-site demand [an]. Overall, I recommend opening the third centre, provided the bank agrees affordable terms, because Larkhill's upward trajectory shows it can convert capital into profit efficiently and refurbishment would cap growth [eval]. If early trading disappoints, the board should fall back on the $150,000 refurbishment plan for the existing stores [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "New site adds a revenue stream and spreads fixed costs; lifts profit",
+            "Refurbishment is cheaper, lower risk, proven locations, avoids new debt"
+          ],
+          "application_max_2": [
+            "$300,000 new site; ROCE 10% to 12% on $1,200,000 CE; profit $144,000 (6% PM)",
+            "Refurbishment $150,000 suits improving trend (GPM 36% to 38%, PM 5% to 6%); Hillview leads at 42% and 15%"
+          ],
+          "analysis_max_2": [
+            "New site diversifies location risk but adds untested demand risk",
+            "Refurbishment lifts returns on current capital more safely"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified with conditions (bank terms) and weighed against refurbishment",
+            "Fallback plan acknowledged; balanced overall judgement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Larkhill Garden Centres", "$300,000", "$150,000", "$144,000", "$1,200,000", "Hillview Gardenworld", "$2,400,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_184",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Bramleymoor Bedding Ltd is a private limited company making mattresses in Country X, employing 45 factory workers. In the year to 30 June, revenue was $3,600,000, cost of sales was $2,160,000 and profit was $288,000. Capital employed was $1,920,000. The previous year, revenue was $3,200,000, gross profit was $1,120,000 and profit was $192,000 on capital employed of $1,600,000.\n\nThe directors launched a premium pocket-sprung range and moved to a cheaper polyester filling supplier to defend margins and keep order books full. Restwell Beds Ltd, the market leader, reports a 44% gross profit margin. A supermarket chain has offered a $900,000 annual own-brand contract at a lower margin, or the firm could remain focused on premium independent retailers to protect its brand.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the gross profit margin for Bramleymoor Bedding Ltd. Show your working.",
+        "model_answer": "Gross profit = revenue minus cost of sales = $3,600,000 minus $2,160,000 = $1,440,000. Gross profit margin = $1,440,000 / $3,600,000 x 100 = 40%. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross profit = $1,440,000 (revenue $3,600,000 minus cost of sales $2,160,000)",
+            "GPM = $1,440,000 / $3,600,000 x 100 = 40%"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Bramleymoor Bedding's gross profit margin rose from 35% to 40%.",
+        "model_answer": "Reason 1: Moving to a cheaper polyester filling supplier reduced the cost of sales, so a larger share of each sales dollar remained as gross profit [k]. Cost of sales was $2,160,000 against revenue of $3,600,000, producing gross profit of $1,440,000 and a 40% margin [app]. Reason 2: The new premium pocket-sprung range sells at higher prices and mark-ups, lifting the sales mix towards more profitable products [k]. Premium volume helped push gross profit from $1,120,000 on $3,200,000 revenue to $1,440,000 on $3,600,000, a 5 percentage-point rise [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cheaper inputs/suppliers reduce cost of sales, raising GPM",
+            "Higher-margin premium products in the sales mix raise GPM"
+          ],
+          "application_max_2": [
+            "Cost of sales $2,160,000; GP $1,440,000 of $3,600,000 revenue = 40%",
+            "GP lifted from $1,120,000 (35%) on $3,200,000 revenue"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Bramleymoor Bedding", "$3,600,000", "$2,160,000", "$3,200,000", "$1,120,000", "Restwell Beds", "$900,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of using profitability ratios to assess a business.",
+        "model_answer": "Limitation 1: Profitability ratios are based on historic accounting data and can be distorted by accounting methods, so they may not reflect current trading [k]. Capital employed of $1,920,000 reflects asset values recorded at past prices, which may not match current replacement costs [app]. This means the 15% ROCE could flatter or understate how efficiently current assets are really being used [an]. Limitation 2: Ratios ignore non-financial factors such as product quality, staff morale or market position, so they give an incomplete picture [k]. The 40% gross profit margin says nothing about whether the premium range is losing ground to Restwell Beds at 44% [app]. A manager relying only on the 40% figure could miss competitive threats and over-invest in the premium line [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Ratios use historic data and accounting methods can distort comparison",
+            "Ratios ignore qualitative factors (quality, morale, brand, market trends)"
+          ],
+          "application_max_2": [
+            "Capital employed $1,920,000 reflects historic values; ROCE 15% may be distorted",
+            "GPM 40% ($1,440,000 of $3,600,000) trails Restwell Beds at 44%"
+          ],
+          "analysis_max_2": [
+            "Historic asset values distort true asset efficiency - caution interpreting ROCE",
+            "Ignoring competitor context risks misjudged strategy and over-investment"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Bramleymoor Bedding", "$1,920,000", "$1,600,000", "Restwell Beds", "44%", "$3,600,000", "$3,200,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Bramleymoor Bedding should accept the supermarket's $900,000 own-brand contract? Justify your answer.",
+        "model_answer": "I think Bramleymoor should not accept the contract as currently offered. Accepting the $900,000 own-brand order would add volume, but the lower margin would drag the gross profit margin below the current 40%, undoing the gains from the premium pocket-sprung range [k]. The business already earns an 8% profit margin ($288,000 on $3,600,000) with a stable 15% ROCE, so chasing low-margin volume risks shareholder returns [app]. Keeping the premium focus preserves the brand position against Restwell Beds at 44% and protects higher mark-ups on independent trade [an]. However, accepting the contract would add $900,000 to revenue and could keep factory lines fully utilised, lowering average fixed costs per unit [k]. Extra volume may also build the firm's name with a national supermarket, potentially leading to better terms later, provided quality is maintained near the 40% gross profit margin [app]. On the other hand, supermarket contracts often demand price cuts and promotional funding, squeezing the profit margin below 8% and diluting returns on $1,920,000 capital employed [an]. Overall, I recommend declining the contract unless the supermarket raises its offer or shares marketing costs, because the downside to margins outweighs the volume benefit given Bramleymoor's strong improving position [eval]. If the board negotiates a margin closer to premium lines, the contract could be revisited [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Low-margin volume drags GPM and PM down",
+            "Accepting adds revenue, capacity utilisation and brand exposure"
+          ],
+          "application_max_2": [
+            "GPM now 40% ($1,440,000 of $3,600,000); PM 8% ($288,000); ROCE 15%",
+            "$900,000 contract at lower margin; rival Restwell Beds GPM 44%; CE $1,920,000"
+          ],
+          "analysis_max_2": [
+            "Protects premium brand positioning vs rival",
+            "Supermarket demands typically squeeze PM below 8%"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified with both options weighed; conditional acceptance possible",
+            "Final judgement sets a negotiation condition (margin closer to premium lines)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Bramleymoor Bedding", "$900,000", "$3,600,000", "$288,000", "$1,920,000", "Restwell Beds", "$1,600,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_185",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Marston Fish Smokery Ltd is a private limited company smoking salmon and mackerel in Country X, employing 11 staff. In the year to 30 September, revenue was $950,000, gross profit was $304,000 and profit was $76,000. Capital employed was $475,000. The previous year, revenue was $880,000, gross profit was $264,000 and profit was $61,600 on capital employed of $440,000.\n\nThe owners smoke fish for local delicatessens and online sales. Clifftop Smokehouse, a rival, reports a 36% gross profit margin but only a 12% ROCE. Marston's gross profit margin rose from 30% to 32% and ROCE improved from 14% to 16% this year. Marston's board is considering borrowing $180,000 to build a second smokehouse kiln to serve a supermarket contract, or continuing small-batch artisan production for its loyal direct customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital employed'.",
+        "model_answer": "Capital employed is the total long-term funds invested in a business, usually calculated as non-current assets plus working capital (current assets minus current liabilities). It represents the capital base that generates the business's profit and is the denominator of the ROCE ratio. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Non-current assets plus working capital (current assets minus current liabilities)",
+            "Equals total assets minus current liabilities; the base that generates profit"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Marston Fish Smokery's ROCE rose from 14% to 16%.",
+        "model_answer": "Reason 1: Profit rose from $61,600 to $76,000, a proportionally larger increase than capital employed, lifting the return [k]. Return on capital employed is profit / capital employed x 100, so Marston's ROCE rose from 14% ($61,600 / $440,000) to 16% ($76,000 / $475,000) [app]. Reason 2: The gross profit margin improved from 30% to 32% ($304,000 of $950,000), showing tighter control of production costs relative to prices [k]. This extra profit flows directly into ROCE, which is calculated on the $475,000 capital employed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit rising faster than capital employed raises ROCE",
+            "Higher gross profit margin (cost control) raises the profit feeding ROCE"
+          ],
+          "application_max_2": [
+            "ROCE rose from 14% to 16%; profit $61,600 to $76,000; CE $440,000 to $475,000",
+            "GPM rose from 30% ($264,000 of $880,000) to 32% ($304,000 of $950,000)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Marston Fish Smokery", "$61,600", "$76,000", "$475,000", "$440,000", "$304,000", "$950,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of profitability ratios for Marston's managers.",
+        "model_answer": "Use 1: Profitability ratios show managers how efficiently the firm converts sales into profit, guiding pricing and cost decisions [k]. Marston's profit margin rose from 7% to 8% ($76,000 on $950,000), with gross profit at 32% ($304,000 of $950,000), confirming the artisan strategy is adding value [app]. This evidence supports continuing to focus on premium direct customers rather than discounting [an]. Use 2: ROCE helps managers assess whether investments earn satisfactory returns [k]. The 16% ROCE (up from 14%) and the comparison with Clifftop Smokehouse's 12% show Marston is using its $475,000 capital more productively than its rival [app]. This supports expansion decisions, such as whether to build the second smokehouse kiln [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "GPM/PM track pricing and cost-control performance",
+            "ROCE assesses returns on investment decisions"
+          ],
+          "application_max_2": [
+            "PM 7% to 8% ($76,000 of $950,000); GPM 32% ($304,000)",
+            "ROCE 14% to 16% vs Clifftop Smokehouse 12%; capital employed $475,000"
+          ],
+          "analysis_max_2": [
+            "Confirms artisan premium strategy and supports its continuation over discounting",
+            "Strong relative ROCE supports the expansion decision on the second kiln"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Marston Fish Smokery", "$76,000", "$950,000", "$304,000", "$475,000", "Clifftop Smokehouse", "16%"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marston Fish Smokery should borrow $180,000 to build a second smokehouse kiln? Justify your answer.",
+        "model_answer": "I think Marston should proceed with the second smokehouse kiln. Building the kiln would let Marston serve the supermarket contract and lift revenue beyond the current $950,000, while its 16% ROCE already beats Clifftop Smokehouse's 12%, showing it uses new capital productively [k]. Profit rose to $76,000 (8% profit margin) this year, so a larger output base should raise the cash available to service loan repayments [app]. Extra capacity also diversifies Marston beyond local delicatessens and online sales, reducing reliance on its limited direct-customer base [an]. However, staying artisan keeps costs low and avoids new debt entirely [k]. Local delicatessens and online customers give predictable cash flow, and borrowing $180,000 adds repayment pressure if supermarket volumes or payment terms disappoint, squeezing the 8% margin [app]. The rival comparison is instructive: Clifftop Smokehouse earns a 36% gross profit margin at only 12% ROCE, suggesting scale alone does not guarantee strong returns on capital [an]. Overall, I recommend borrowing for the kiln, because the improving trend (margins and ROCE all rising) indicates Marston can profit from extra capacity, provided the loan is tied to the supermarket contract [eval]. The board should phase the build and monitor ROCE and profit margin quarterly so the expansion can pause if returns fall below 14% [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "New capacity enables volume/revenue growth; loan funds it",
+            "Staying artisan avoids debt and protects healthy margins and cash flow"
+          ],
+          "application_max_2": [
+            "ROCE 16% vs Clifftop 12%; profit $76,000 (8% PM) on $950,000; GPM 32%",
+            "$180,000 loan adds repayment pressure; rival GPM 36% at only 12% ROCE"
+          ],
+          "analysis_max_2": [
+            "Diversification beyond direct customers reduces reliance risk",
+            "Scale alone does not guarantee returns - Clifftop evidence"
+          ],
+          "evaluation_max_2": [
+            "Recommendation weighs trend against debt risk; conditional on contract",
+            "Phased build with quarterly ROCE monitoring set as a safeguard"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Marston Fish Smokery", "$950,000", "Clifftop Smokehouse", "$76,000", "$180,000", "32%", "12%"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_186",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Redhill Stationery Wholesalers Ltd is a private limited company supplying schools and offices across Country X, employing 22 warehouse and delivery staff. In the year to 28 February, revenue was $5,200,000, cost of sales was $4,160,000 and profit was $156,000. Capital employed was $1,300,000. The previous year, revenue was $4,800,000, gross profit was $960,000 and profit was $240,000 on capital employed of $1,500,000.\n\nProfitability has fallen despite higher trade volumes, as warehouse energy prices and staff wages have risen sharply. Gross profit was $1,040,000, down from $960,000 last year. Paperline Wholesale, a competitor, reports a 24% gross profit margin. A national school supply contract worth $700,000 a year is on offer at a lower margin, or the firm could concentrate on profitable local retailer customers instead.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the profit margin for Redhill Stationery Wholesalers Ltd. Show your working.",
+        "model_answer": "Profit margin = profit / revenue x 100 = $156,000 / $5,200,000 x 100 = 3%. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit $156,000 divided by revenue $5,200,000",
+            "x 100 = 3% profit margin"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why profit fell from $240,000 to $156,000 despite revenue rising.",
+        "model_answer": "Reason 1: Sharp increases in warehouse energy prices and staff wages pushed up operating expenses, so more of the extra revenue was absorbed by running costs [k]. Revenue rose to $5,200,000 from $4,800,000, yet profit fell by $84,000, meaning expenses grew faster than sales [app]. Reason 2: Cost of sales stayed proportional at 80% of revenue ($4,160,000 of $5,200,000), reflecting little room to raise wholesale prices in a competitive market [k]. The gross profit margin held at 20% ($1,040,000) while the profit margin dropped to 3%, showing rising operating costs drove the squeeze [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rising operating expenses (energy, wages) absorb revenue and reduce profit",
+            "Cost of sales high and stable limits scope to protect margin"
+          ],
+          "application_max_2": [
+            "Revenue $4,800,000 to $5,200,000 but profit $240,000 to $156,000 (PM 5% to 3%)",
+            "CoS $4,160,000 = 80% of revenue; GP $1,040,000; GPM flat at 20%"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Redhill Stationery Wholesalers", "$5,200,000", "$4,800,000", "$156,000", "$240,000", "$4,160,000", "$1,040,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of profitability ratios for Redhill's managers.",
+        "model_answer": "Use 1: Profitability ratios highlight where profits are leaking, prompting targeted cost control [k]. The 3% profit margin ($156,000 on $5,200,000) signals expenses are rising too fast, so managers can act on energy and wage efficiencies [app]. Acting on this could restore the margin towards the previous 5% and protect cash flow [an]. Use 2: Ratios support decisions on which contracts to accept [k]. The national school supply contract is offered at a lower margin, and comparing it against the current 20% gross profit margin and 12% ROCE ($156,000 on $1,300,000) shows whether the added volume justifies thinner returns [app]. This prevents Redhill from diluting returns on its $1,300,000 capital employed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Identify leakages: margin compression signals cost-control action",
+            "Evaluate contract/investment decisions via ROCE and margins"
+          ],
+          "application_max_2": [
+            "PM 3% ($156,000 of $5,200,000) vs 5% prior year ($240,000)",
+            "ROCE 12% ($156,000 of $1,300,000); GPM 20%; Paperline Wholesale benchmark 24%"
+          ],
+          "analysis_max_2": [
+            "Cost control could restore margin and protect cash flow",
+            "Comparison prevents accepting a dilutive contract below acceptable returns"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Redhill Stationery Wholesalers", "$156,000", "$5,200,000", "$1,300,000", "$240,000", "Paperline Wholesale", "24%", "$4,160,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redhill Stationery Wholesalers should accept the national school supply contract? Justify your answer.",
+        "model_answer": "I think Redhill should accept the contract, but only after negotiating better terms. Accepting a $700,000 annual contract would lift revenue above the current $5,200,000 and keep warehouse volumes high, spreading fixed costs over more units [k]. Higher throughput may reduce average handling costs per parcel, partly offsetting the lower margin, and Redhill already runs a 20% gross profit margin and 12% ROCE with capacity to improve [app]. A national schools presence would also raise brand recognition in a sector where Paperline Wholesale reports 24% margins, potentially winning further profitable work [an]. However, the lower margin would cut the profit margin below 3%, extending a steep fall from 5% last year, and profit could fall again even with revenue up [k]. Local retailers give Redhill better margins and shorter payment cycles, while the school contract could stretch cash flow [app]. Every extra dollar of low-margin sales consumes working capital, so profits of $156,000 on $1,300,000 capital employed could shrink further if service failures trigger penalties [an]. Overall, I recommend accepting only if the board can negotiate revised pricing or volume rebates, because the contract secures scale that will help it keep pace with Paperline Wholesale, but margin protection matters most right now [eval]. If terms cannot improve, declining and serving profitable local customers is the better path [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contract lifts revenue and volume, spreads fixed costs",
+            "Lower margin dilutes the profit margin further"
+          ],
+          "application_max_2": [
+            "$700,000 contract on top of $5,200,000 revenue; GPM 20%, PM 3%, ROCE 12%",
+            "PM already fell from 5% ($240,000) to 3% ($156,000); Paperline 24% benchmark"
+          ],
+          "analysis_max_2": [
+            "Scale improves brand and may bring profitable follow-on work",
+            "Low-margin sales consume working capital and risk penalties, shrinking returns"
+          ],
+          "evaluation_max_2": [
+            "Conditional recommendation justified; both options weighed",
+            "Clear fallback if terms cannot improve"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Redhill Stationery Wholesalers", "$700,000", "$5,200,000", "$156,000", "$1,300,000", "Paperline Wholesale", "$240,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_187",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Northcott Leisure Ltd is a private limited company running a family fun centre in Country X with soft play, an arcade and a cafe. It employs 34 staff. In the year to 31 August, revenue was $1,350,000, gross profit was $675,000 and profit was $135,000. Capital employed was $750,000. The previous year, revenue was $1,200,000, gross profit was $540,000 and profit was $84,000 on capital employed of $600,000.\n\nThe owners credit stronger cafe margins and growth in arcade income for the improvement; the gross profit margin rose from 45% to 50% over the last 12 months. Starplay Leisure, a rival, reports a 55% gross profit margin. The company must choose between building an indoor trampoline arena costing $400,000, or upgrading the cafe and party rooms for $80,000 to lift returns further.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'gross profit'.",
+        "model_answer": "Gross profit is the profit a business makes after deducting the cost of sales from its revenue (Gross Profit = Revenue minus Cost of Sales). It shows what remains to cover operating expenses before other costs of running the business are deducted. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Revenue minus cost of sales",
+            "The margin available to cover operating expenses/overheads"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Northcott Leisure's gross profit margin rose from 45% to 50%.",
+        "model_answer": "Reason 1: Stronger cafe margins, probably from higher prices or better supply deals, mean each cafe sale now retains more gross profit [k]. Gross profit rose to $675,000 on revenue of $1,350,000 (50% margin), up from $540,000 on $1,200,000 (45%) [app]. Reason 2: Growth in arcade income, which carries high margins because games have a low ongoing cost per play [k]. Higher-margin arcade revenue pushed gross profit up by $135,000 year-on-year, lifting the overall margin to 50% [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher prices / better input deals in the cafe raise its margin",
+            "High-margin arcade income mix lifts overall GPM"
+          ],
+          "application_max_2": [
+            "GPM 45% to 50%; GP $540,000 (on $1,200,000) to $675,000 (on $1,350,000)",
+            "Arcade mix improvement added $135,000 to gross profit"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Northcott Leisure", "$1,350,000", "$675,000", "$1,200,000", "$540,000", "50%", "45%"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why analysing Northcott Leisure's profitability ratios over time is useful.",
+        "model_answer": "Reason 1: Trend analysis shows whether performance is improving or deteriorating, not just what the ratios are today [k]. Northcott's profit margin rose from 7% ($84,000 on $1,200,000) to 10% ($135,000 on $1,350,000), and ROCE rose from 14% to 18% ($135,000 on $750,000), both clear positive trends [app]. This demonstrates the fun centre is increasingly efficient, giving the owners confidence to invest [an]. Reason 2: Comparing ratios year-on-year reveals whether changes come from revenue growth or better cost control [k]. Revenue grew by $150,000 while gross profit grew by $135,000, meaning margins, not simply sales volume, drove the improvement [app]. This tells the board that pricing and mix improvements are working and should be extended to the party rooms and cafe [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Trend analysis reveals improving/deteriorating performance over time",
+            "Year-on-year comparison separates revenue growth from cost control"
+          ],
+          "application_max_2": [
+            "PM 7% to 10%; ROCE 14% to 18% ($135,000 / $750,000)",
+            "Revenue grew $150,000 while GP grew $135,000 - margin-led improvement"
+          ],
+          "analysis_max_2": [
+            "Positive trends give confidence to invest (trampoline arena)",
+            "Identifies margins as the driver - informs extending pricing/mix to cafe and party rooms"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Northcott Leisure", "$84,000", "$1,200,000", "$135,000", "$1,350,000", "$750,000", "Starplay Leisure", "55%"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Northcott Leisure should build the indoor trampoline arena costing $400,000? Justify your answer.",
+        "model_answer": "I think Northcott should build the trampoline arena. Building the arena would capture the growing family entertainment market and build on current momentum: revenue rose to $1,350,000, profit margin reached 10% and ROCE improved to 18% ($135,000 on $750,000) [k]. A $400,000 investment that lifts footfall would raise revenue and spread the fun centre's fixed costs over more visitors, strengthening returns [app]. A distinctive attraction can also outflank rival Starplay Leisure (55% gross profit margin) on experience rather than price, defending and growing the local market [an]. However, upgrading the cafe and party rooms for $80,000 is the lower-risk option, because it invests in the proven highest-margin parts of the business [k]. The cafe and parties already drove the margin improvement to 50%, so spending $80,000 there would compound gains quickly with minimal debt [app]. Spending only $80,000 also protects the balance sheet and could lift ROCE further, given $750,000 capital employed and attractive returns [an]. Overall, I recommend the trampoline arena, because the improving trend and strong ROCE indicate the business can service new investment, and an indoor trampoline park would differentiate Northcott from Starplay Leisure [eval]. If visitor projections prove weak, the board should stage the build and commit the $80,000 upgrade project first as a fallback [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Arena captures growth market and spreads fixed costs, lifting revenue",
+            "Cafe/party upgrade invests in highest-margin areas at much lower risk"
+          ],
+          "application_max_2": [
+            "Revenue $1,350,000; PM 10%; ROCE 18% ($135,000 on $750,000); GPM 50%",
+            "Cafe/parties drove margin rise; $80,000 vs $400,000; Starplay rival at 55% GPM"
+          ],
+          "analysis_max_2": [
+            "Differentiation on experience vs price-led rival",
+            "Lower spend protects balance sheet and can still lift ROCE"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified with conditions; staged fallback included",
+            "Both options weighed with figures; overall judgement balanced"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Northcott Leisure", "$400,000", "$80,000", "$1,350,000", "Starplay Leisure", "$750,000", "$135,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_188",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Chippendale & Rose Auctioneers Ltd is a private limited company running a saleroom in Country X, employing 9 staff. In the year to 31 May, revenue was $900,000, gross profit was $630,000 and profit was $225,000. Capital employed was $1,500,000 following the freehold purchase of its premises. The previous year, revenue was $820,000, gross profit was $533,000 and profit was $205,000 on capital employed of $1,025,000.\n\nGross profit margin improved from 65% to 70%, yet return on capital employed fell over the year. Bramley Auction House, a rival operating 3 salerooms, reports a 72% gross profit margin and an 18% ROCE. The partners are weighing opening a second saleroom in Rennick costing $600,000, or moving more business to a $120,000 online auction platform.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the return on capital employed (ROCE) for Chippendale & Rose Auctioneers Ltd. Show your working.",
+        "model_answer": "ROCE = profit / capital employed x 100 = $225,000 / $1,500,000 x 100 = 15%. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit $225,000 divided by capital employed $1,500,000",
+            "x 100 = 15% ROCE"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why ROCE fell from 20% to 15% even though revenue and gross profit rose.",
+        "model_answer": "Reason 1: Capital employed grew faster than profit - the freehold purchase raised capital employed from $1,025,000 to $1,500,000, while profit rose only from $205,000 to $225,000 [k]. Because ROCE = profit / capital employed x 100, the $475,000 extra capital dilutes the ratio to 15% despite a higher profit [app]. Reason 2: The new premises generate little immediate auction income, so in the short term they add capital without adding returns [k]. Gross profit margin actually improved to 70% ($630,000 of $900,000), so the fall reflects the timing of the investment, not weaker trading [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Capital employed grew faster than profit (freehold purchase)",
+            "Investment timing: premises add capital before generating income"
+          ],
+          "application_max_2": [
+            "CE rose from $1,025,000 to $1,500,000 (+$475,000); profit $205,000 to $225,000 (+$20,000)",
+            "ROCE fell 20% to 15%; GPM improved 65% to 70% ($533,000 to $630,000 of $900,000)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Chippendale & Rose Auctioneers", "$1,025,000", "$1,500,000", "$205,000", "$225,000", "$630,000", "$900,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using profitability ratios for the stakeholders of Chippendale & Rose.",
+        "model_answer": "Benefit 1: Ratios help shareholders and partners judge whether the business gives a good return on the capital they support [k]. The 15% ROCE (down from 20%) tells partners the freehold purchase is diluting returns, which matters when weighing whether to pay for a second saleroom from retained profits [app]. This lets partners hold management accountable for restoring ROCE before committing more capital [an]. Benefit 2: Ratios help the partners benchmark efficiency against rivals when planning strategy [k]. Bramley Auction House achieves a 72% gross profit margin and 18% ROCE, against Chippendale's 70% and 15%, showing the firm is competitive on margins but behind on capital efficiency [app]. This guides the choice between a $600,000 second saleroom and a $120,000 online platform [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Ratios show stakeholders returns on capital; accountability for dilution",
+            "Ratios benchmark vs rivals to guide strategy"
+          ],
+          "application_max_2": [
+            "ROCE fell to 15% (from 20%); profit $225,000 on CE $1,500,000",
+            "Bramley Auction House 72% GPM, 18% ROCE vs Chippendale 70% GPM, 15% ROCE; $600,000 vs $120,000 options"
+          ],
+          "analysis_max_2": [
+            "Accountability lever: partners can demand a ROCE-recovery plan before new capital",
+            "Benchmark gap focuses strategy on capital efficiency, not just margins"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Chippendale & Rose Auctioneers", "$1,500,000", "$1,025,000", "Bramley Auction House", "72%", "$600,000", "$120,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Chippendale & Rose Auctioneers should open a second saleroom in Rennick? Justify your answer.",
+        "model_answer": "I think Chippendale & Rose should not open the second saleroom yet; it should move more business online first. Opening a $600,000 saleroom would raise capital employed well beyond $1,500,000, and with ROCE already down to 15% from 20%, further dilution would worry the partners [k]. The business earns a 25% profit margin ($225,000 on $900,000 revenue), yet a second room adds fixed costs and relies on unproven auction demand in Rennick [app]. Physical expansion also commits the firm to premises, staff and marketing before testing whether local demand covers those costs [an]. However, a second saleroom could tap a new catchment and lift revenue beyond $900,000, mirroring the gains made this year [k]. Gross profit margin improved to 70% and profit margin held at 25%, so the business could support careful expansion if bidding volumes hold and the $600,000 were financed sustainably [app]. Rival Bramley Auction House earns an 18% ROCE, so a physical presence may be needed to defend market share against local competitors [an]. Overall, I recommend the $120,000 online auction platform instead, because it is far cheaper, extends reach without duplicating fixed costs and protects the balance sheet while the premises investment seasons [eval]. If online auctions lift bidding volumes, the board can revisit a Rennick saleroom with clearer evidence and restore ROCE towards 20% first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Second saleroom raises capital employed and risks further ROCE dilution",
+            "Physical expansion can tap new catchment and lift revenue"
+          ],
+          "application_max_2": [
+            "ROCE 15% (from 20%); CE $1,500,000; PM 25% ($225,000 on $900,000)",
+            "GPM 70%; Bramley 18% ROCE benchmark; $600,000 saleroom vs $120,000 platform"
+          ],
+          "analysis_max_2": [
+            "Premises commit fixed costs before local demand is proven",
+            "Rival physical presence may be needed to defend market share"
+          ],
+          "evaluation_max_2": [
+            "Online platform cheaper and balance-sheet protective; staged revisit proposed",
+            "Recommendation justified with both options weighed and figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Chippendale & Rose Auctioneers", "$600,000", "$1,500,000", "$225,000", "$900,000", "Bramley Auction House", "$120,000", "70%"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_189",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Kingsmead Family Butchers Ltd is a private limited company operating 3 butchers' shops in Country X, employing 17 staff. In the year to 30 November, revenue was $1,600,000, gross profit was $560,000 and profit was $48,000. Capital employed was $400,000. The previous year, revenue was $1,500,000, gross profit was $540,000 and profit was $75,000 on capital employed of $500,000.\n\nWholesale meat costs have risen by 12% and the gross profit margin eased from 36% to 35% this year. Nearby Wellworth Supermarkets discounts meat prices, reporting a 28% gross profit margin and an 18% ROCE across its chain. The directors are considering investing $70,000 in an in-store kitchen to sell higher-margin ready meals, or cutting counter prices to match the supermarket and defend customer footfall.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two stakeholders who might use profitability ratios.",
+        "model_answer": "Owners and shareholders use profitability ratios to judge the return on their investment, such as profit margin and ROCE. Banks and other lenders use them to assess whether Kingsmead can generate enough profit to repay loans and interest. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Owners/shareholders judge returns on their investment",
+            "Banks/lenders assess ability to repay loans and interest"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Kingsmead Family Butchers' profit margin fell from 5% to 3%.",
+        "model_answer": "Reason 1: Wholesale meat costs rose by 12%, so the cost of sales climbed faster than the prices Kingsmead could charge [k]. Gross profit margin eased to 35% ($560,000 of $1,600,000) from 36% ($540,000 of $1,500,000), squeezing the profit remaining after costs [app]. Reason 2: Nearby Wellworth Supermarkets discounts meat prices, forcing Kingsmead to keep prices competitive and limiting its ability to pass on cost increases [k]. Profit fell to $48,000 from $75,000 even though revenue grew, confirming that margins rather than demand were the problem [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Input cost inflation (meat +12%) outpaces price increases",
+            "Supermarket price competition prevents passing on cost increases"
+          ],
+          "application_max_2": [
+            "GPM eased 36% ($540,000 of $1,500,000) to 35% ($560,000 of $1,600,000)",
+            "Profit fell from $75,000 to $48,000 (PM 5% to 3%) despite revenue growth"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Kingsmead Family Butchers", "12%", "$560,000", "$1,600,000", "$1,500,000", "$540,000", "$48,000", "$75,000"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why comparing Kingsmead's profitability ratios with Wellworth Supermarkets is useful.",
+        "model_answer": "Reason 1: Comparison shows whether Kingsmead's weakness is sector-wide or specific to Kingsmead [k]. Wellworth achieves a 28% gross profit margin at scale, while Kingsmead matches a solid 35% locally, showing its product economics are healthy and price competition is the pressure point [app]. This directs managers towards differentiation, such as ready meals, rather than a price war [an]. Reason 2: Benchmarks help set targets and evaluate strategic options [k]. Wellworth's 18% ROCE on supermarket scale shows what disciplined volume can deliver, while Kingsmead's smaller 12% ROCE ($48,000 on $400,000) is reasonable for 3 shops [app]. Comparing ROCE helps the directors judge whether investing $70,000 in a ready-meals kitchen is realistic [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Distinguishes industry-wide weakness from firm-specific problems",
+            "Benchmarks set targets and assess feasibility of strategy options"
+          ],
+          "application_max_2": [
+            "Wellworth 28% GPM at scale vs Kingsmead 35% locally",
+            "Wellworth 18% ROCE vs Kingsmead 12% ($48,000 on $400,000); $70,000 kitchen option"
+          ],
+          "analysis_max_2": [
+            "Points towards differentiation rather than a price war",
+            "Benchmark quantifies headroom for the ready-meal investment decision"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Kingsmead Family Butchers", "Wellworth Supermarkets", "28%", "$48,000", "$400,000", "$70,000", "12%"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kingsmead Family Butchers should invest $70,000 in the in-store kitchen? Justify your answer.",
+        "model_answer": "I think Kingsmead should invest the $70,000 in the in-store kitchen. Ready meals carry higher margins than fresh meat, so the kitchen would lift the gross profit margin above the current 35% and the profit margin above 3%, reversing the fall from 5% last year [k]. Profit fell to $48,000 from $75,000 and ROCE slipped to 12% from 15%, so a margin-rich range is what Kingsmead needs to rebuild returns [app]. Differentiated artisan ready meals also give customers a reason to choose Kingsmead over Wellworth Supermarkets on quality rather than price [an]. However, cutting counter prices to match the supermarket would defend customer numbers and protect revenue of $1,600,000 in the short term [k]. But matching a supermarket's discounting would typically force margins below 3% and risk deeper losses, since Kingsmead cannot buy meat at Wellworth's scale [app]. A price war would erode ROCE further and delay any recovery towards the 15% achieved last year [an]. Overall, I recommend the $70,000 kitchen investment, because differentiation is more sustainable than chasing prices down against a supermarket, and improved margins would strengthen both profit and ROCE [eval]. The board should pilot 6 popular ready-meal lines first and track gross profit margin weekly before scaling up [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Ready meals carry higher margins than fresh meat",
+            "Price cuts defend volume but compress margins further"
+          ],
+          "application_max_2": [
+            "GPM 35%, PM 3% (down from 5%); profit $48,000; ROCE 12% (down from 15%)",
+            "Wellworth 28% GPM/18% ROCE scale benchmark; revenue $1,600,000"
+          ],
+          "analysis_max_2": [
+            "Differentiation protects margin from a supermarket price war",
+            "Pilot approach de-risks the decision and tracks GPM before scaling"
+          ],
+          "evaluation_max_2": [
+            "Recommendation justified against both options with figures",
+            "Phased pilot acknowledged as risk control"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Kingsmead Family Butchers", "$70,000", "35%", "Wellworth Supermarkets", "$1,600,000", "$48,000", "12%"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_190",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Talbot & Graves Solicitors Ltd is a private limited company of solicitors in Country X, employing 16 staff. In the year to 31 December, revenue was $2,500,000, gross profit was $1,875,000 and profit was $500,000. Capital employed was $2,500,000. The previous year, revenue was $2,000,000, gross profit was $1,600,000 and profit was $360,000 on capital employed of $1,800,000.\n\nDirect costs rose after the firm hired 2 junior solicitors at higher salaries, and the gross profit margin slipped from 80% to 75%, though moving to smaller premises cut overheads and the profit margin improved from 18% to 20%. Brereton & Co, a competing practice, reports an 82% gross profit margin and a 25% ROCE. The partners are deciding between opening a second office in Thelwall costing $600,000, or spending $200,000 on case-management software to reduce overtime.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'profit'.",
+        "model_answer": "Profit is the surplus remaining after all costs and expenses have been deducted from a business's revenue (Profit = Total Revenue minus Total Costs). It is the reward to the owners, which can be retained in the business or distributed as dividends, and it is the starting point for calculating profitability ratios. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Revenue minus all costs and expenses (Total Revenue minus Total Costs)",
+            "Surplus reward to owners; retained or distributed (dividends)"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Talbot & Graves' gross profit margin fell from 80% to 75%.",
+        "model_answer": "Reason 1: The firm hired 2 junior solicitors at higher salaries, raising its direct fee-earner costs, so more of each $1 of fees is absorbed before overheads [k]. Direct costs rose against revenue of $2,500,000, producing gross profit of $1,875,000 (75%) versus $1,600,000 on $2,000,000 (80%) the previous year [app]. Reason 2: Increasing salaries in a fixed-fee environment means each additional instruction adds cost faster than fee income [k]. Profit still rose to $500,000, so the fall in the gross profit margin reflects cost inflation at fee-earner level rather than weaker demand [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher direct/fee-earner salaries raise the cost of delivering fees",
+            "Cost inflation at fee-earner level outpaces fee income"
+          ],
+          "application_max_2": [
+            "GPM 80% to 75%; gross profit $1,600,000 on $2,000,000 to $1,875,000 on $2,500,000",
+            "Profit still rose to $500,000 (PM 20%) despite the margin fall"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Talbot & Graves Solicitors", "$2,500,000", "$1,875,000", "$1,600,000", "$2,000,000", "$500,000", "75%", "80%"] }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of profitability ratios for the partners of Talbot & Graves.",
+        "model_answer": "Use 1: Profitability ratios help partners judge how hard each dollar of capital is working [k]. ROCE held at 20% ($500,000 on $2,500,000, the same as last year), telling partners growth so far has not diluted returns, a key test before committing $600,000 to a second office [app]. If planned investment fails to lift ROCE above 20%, it should not proceed [an]. Use 2: Comparing ratios with competitors highlights strategic gaps [k]. Brereton & Co achieves an 82% gross profit margin and a 25% ROCE, so Talbot & Graves can see its 75% GPM and 20% ROCE trail a rival, prompting action on fees or costs [app]. This benchmarking supports the choice between a second office and case-management software [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ROCE measures capital efficiency; a test for new investment",
+            "Competitor benchmarking highlights strategic gaps"
+          ],
+          "application_max_2": [
+            "ROCE held at 20% ($500,000 on $2,500,000); PM 20%",
+            "Brereton & Co 82% GPM / 25% ROCE vs Talbot 75% GPM / 20% ROCE; $600,000 second office option"
+          ],
+          "analysis_max_2": [
+            "ROCE threshold discipline for committing to major investment",
+            "Gap prompts fees/costs review and informs the office-vs-software choice"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": ["Talbot & Graves Solicitors", "$500,000", "$2,500,000", "Brereton & Co", "82%", "25%", "$600,000"] }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Talbot & Graves Solicitors should open a second office in Thelwall? Justify your answer.",
+        "model_answer": "I think Talbot & Graves should not open the second office yet, and should invest in case-management software instead. A second office would capture conveyancing work in Thelwall and lift revenue beyond $2,500,000, spreading management costs over a larger client base [k]. The firm has grown profit from $360,000 to $500,000 while holding ROCE steady at 20%, so it can digest expansion investment efficiently if fees hold [app]. A local presence could also win referral work from estate agents in Thelwall, deepening the pipeline rather than relying on one town [an]. However, spending $200,000 on case-management software could cut overtime and lift the profit margin above 20% without the risk of a new office [k]. Software is cheaper, quicker and lower risk, and it reduces fee-earner hours per matter, letting the same team handle more client work [app]. Opening an office commits $600,000 to fit-out, rent, recruitment and marketing, and unproven local demand could drag ROCE below 20% while Brereton & Co leads on 25% ROCE and an 82% gross profit margin [an]. Overall, I recommend case-management software first, because it is lower-cost and addresses the direct-cost squeeze that cut the gross profit margin from 80% to 75%, strengthening margins to fund a later Thelwall office from profits rather than new debt [eval]. If software delivers the promised efficiency gains within 12 months, the board can revisit the second office with stronger evidence [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Second office lifts revenue and spreads costs over a larger client base",
+            "Software is cheaper and lower risk; cuts overtime"
+          ],
+          "application_max_2": [
+            "Profit $360,000 to $500,000; ROCE held at 20%; revenue $2,500,000",
+            "$600,000 office vs $200,000 software; GPM 80% to 75%; Brereton 25% ROCE / 82% GPM"
+          ],
+          "analysis_max_2": [
+            "Thelwall referral pipeline diversifies the client base",
+            "Fixed costs plus unproven demand risk dragging ROCE below 20%"
+          ],
+          "evaluation_max_2": [
+            "Software-first recommendation justified; phased revisit option set out",
+            "Both options weighed against figures; direct-cost squeeze identified as root issue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Talbot & Graves Solicitors", "$2,500,000", "$600,000", "$200,000", "Brereton & Co", "$500,000", "20%"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,250 @@
+{
+  "scenario_id": "P2_SET_408",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Crestline Technology Group (CTG) is a public limited company in the digital services sector, employing a workforce of 72 across its regional operations. Founded in 2008 by Sofia Marchetti, it provides managed web hosting to small businesses and operates a flat structure with laissez-faire leadership that delegates decisions to experienced engineers. CTG plans to invest $750,000 in a green data centre with automated server monitoring, financed by a $500,000 share issue and a $250,000 bank overdraft. It has fixed costs of $480,000 a year, a variable cost of $16.00 a unit and a selling price of $32.00, and currently produces 85,000 units a year. CTG faces two problems: recurring server downtime during peak evening hours and 30 of 72 staff lacking cloud-security training.",
+    "appendix_1_marketing_ops": "Customer Experience Report — Q1 2026: CTG hosted 12,500 client websites; server uptime averaged 99.2%, up from 98.4% a year earlier. Support tickets fell from 420 to 260 per month. Average response time is 3.4 hours. A survey of 720 clients found 66% would pay more for guaranteed 99.9% uptime and 58% value environmentally friendly hosting. A training audit shows 30 of 72 staff have not completed cloud-security training; a certification course costs $1,050 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Crestline Technology Group for the year ended 31 March 2025 ($ '000)",
+      "headers": [
+        "Financial Metric",
+        "2024",
+        "2025"
+      ],
+      "rows": [
+        [
+          "Revenue",
+          "2,000",
+          "2,400"
+        ],
+        [
+          "Cost of sales",
+          "1,100",
+          "1,200"
+        ],
+        [
+          "Gross profit",
+          "900",
+          "1,200"
+        ],
+        [
+          "Operating profit",
+          "320",
+          "480"
+        ],
+        [
+          "Capital employed",
+          "1,600",
+          "2,000"
+        ],
+        [
+          "Interest payable",
+          "50",
+          "65"
+        ]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Digital Bulletin (May 2026): (1) The base interest rate has increased from 3.75% to 4.5%, raising the cost of variable-rate borrowing. (2) Skilled IT salary inflation has reached 7.8%, lifting wage bills across the sector. (3) Electricity and server-hardware input costs rose 10.3% year-on-year, while demand for managed hosting grew 6.1%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "CTG plans to fund part of its $750,000 green data centre with a bank overdraft. Explain two advantages for CTG of using a share issue rather than the overdraft.",
+      "model_answer": "Point 1: A share issue provides permanent capital with no compulsory monthly repayment or interest charge, so CTG can commit the $500,000 raised to the $750,000 green data centre without increasing the $250,000 bank overdraft. Money saved can be spent on certification at $1,050 per employee for the 30 untrained staff, helping address the downtime problem, and on absorbing a 10.3% rise in electricity costs.\n\nPoint 2: Equity requires no collateral, so CTG's hosting assets are not exposed to seizure if the data centre underperforms, whereas an overdraft is repayable on demand and could be withdrawn when 99.2% uptime slips. The share issue also spreads funding across shareholders rather than one bank, protecting Sofia Marchetti's ability to serve 85,000 units and the 66% of clients who demand 99.9% uptime without a lender dictating terms. With 10.3% electricity cost inflation expected, keeping cash uncommitted to overdraft interest is particularly useful for a 72-person firm.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid advantage identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for contextual explanation and analysis applied to CTG's financing mix, hosting operations and expansion."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "share issue",
+          "$750,000",
+          "$500,000",
+          "$250,000",
+          "$480,000",
+          "bank overdraft"
+        ]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "CTG is promoting its new green hosting package. Consider print advertising in technology magazines, search-engine marketing, or partnerships with web-design agencies. Which should CTG choose? Justify your recommendation.",
+      "model_answer": "Print advertising in technology magazines: Ads can explain the green data centre and build brand prestige with IT professionals, and print is tangible for a technical audience. However, costs are high, circulation is slow to convert and results cannot be measured. With $750,000 already earmarked and a $250,000 overdraft to manage, heavy magazine spend would divert cash from fixing the downtime behind 99.2% uptime.\n\nSearch-engine marketing: Paid search reaches firms actively looking for hosting, is measurable and can highlight 99.9% uptime and green hosting to the 66% and 58% of the 720 surveyed clients who value them. It is flexible but keyword costs are competitive and CTG's flat, laissez-faire structure lacks a dedicated marketing owner to optimise campaigns, so spend could be poorly controlled.\n\nPartnerships with web-design agencies: Agencies already advise firms choosing hosting, so referral deals put CTG in front of qualified buyers at low cost and can offer 99.9% uptime as a joint selling point. This suits a 72-person firm and can be managed through a small partner team. The drawback is slower reach than paid search and sharing margin on a $32.00 price.\n\nRecommendation: CTG should choose partnerships with web-design agencies. They are affordable, targeted and credible for the green hosting message that 58% of clients value, and can be funded from the $500,000 share issue. Magazine advertising is rejected as expensive and unmeasurable; search marketing is rejected because competition and weak campaign control would waste cash while $480,000 fixed costs must be covered. Agency referrals also suit a flat structure where engineers, not a large sales force, support growth.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Lists or describes promotional options with limited application to CTG.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options in CTG's context with some judgement.",
+        "level_3_9_to_12": "Evaluates all three options in CTG's context and gives a justified recommendation explaining why magazine advertising and search marketing are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "$750,000",
+          "85,000",
+          "66%",
+          "58%",
+          "720",
+          "workforce of 72"
+        ]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "CTG's uptime is 99.2% and 30 of its 72 staff lack cloud-security training. Explain two benefits for CTG of using laissez-faire leadership in its technical teams.",
+      "model_answer": "Point 1: Laissez-faire leadership gives experienced engineers the freedom to diagnose and fix server downtime immediately, without waiting for approval from Sofia Marchetti. In a flat structure, this speeds responses to faults that keep uptime at 99.2% rather than the 99.9% demanded by 66% of surveyed clients, and supports the move toward automated server monitoring in the $750,000 data centre.\n\nPoint 2: Delegation lets technical staff choose how to close their own skills gaps, which can raise motivation and commitment among a workforce of 72 where 30 lack cloud-security training. Teams can schedule training around the $1,050 per employee courses and protect service for the 58% of clients who value green hosting. Freedom also encourages practical ideas for cutting support tickets from 260 per month, but it works best where staff are capable, so the training gap must be closed. Autonomy can also help retain skilled engineers when IT salary inflation is 7.8% and external offers are likely.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid benefit identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to CTG's uptime, training gap and expansion."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "laissez-faire leadership",
+          "downtime",
+          "workforce of 72",
+          "30",
+          "$1,050",
+          "flat structure"
+        ]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "CTG must close the cloud-security training gap for 30 staff. Consider on-the-job coaching or external certification at $1,050 per employee. Which should CTG choose? Justify your decision.",
+      "model_answer": "On-the-job coaching: Coaching alongside CTG's own servers is directly relevant to its hosting platform, costs no course fees and keeps all 30 staff available to maintain 99.2% uptime and cut support tickets from 260 per month. Engineers can learn the exact response routines behind automated server monitoring. The drawback is that trainers may themselves lack certification, bad habits can spread and no recognised qualification is gained, which matters for the 58% of clients who value green, secure hosting.\n\nExternal certification: An accredited course supplies up-to-date security skills and a formal credential that reassures the 720 surveyed clients. For 30 staff the fee is 30 × $1,050 = $31,500, an explicit calculation from the insert figures, affordable against the $500,000 share issue. Staff are absent from duties while training, risking downtime, and generic content may not fit CTG's platform, so follow-up coaching would be needed.\n\nDecision: CTG should choose external certification. The $31,500 cost is small relative to the $750,000 investment, the qualification is credible with clients, and on-the-job coaching cannot certify 30 untrained staff. On-the-job coaching is rejected because CTG's own trainers may not be qualified and the risk of downtime during the data-centre transition is too high given the 66% of clients demanding 99.9% uptime. Because laissez-faire leadership leaves engineers to solve problems, formal certification gives them a common standard to work to. The $31,500 is a one-off cost rather than a permanent salary increase, and staggering the 30 staff through courses would keep 99.2% uptime protected during the transition.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to CTG.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both methods in CTG's context.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a justified decision covering cost, credibility and service risk, rejecting the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "$1,050",
+          "30",
+          "cloud-security training",
+          "$750,000",
+          "85,000",
+          "99.2%"
+        ]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how CTG's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate CTG's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $480,000 ÷ ($32.00 − $16.00) = $480,000 ÷ $16.00 = 30,000 units. Answer: break-even output is 30,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate CTG's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $32.00 − $16.00 = $16.00. Answer: contribution per unit is $16.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways CTG's management can use this financial data.",
+          "model_answer": "1. Compare the 30,000-unit break-even output with 85,000 units sold to find a margin of safety of 55,000 units, showing how much hosting demand can fall before the $750,000 data centre loses money.\n2. Use $16.00 contribution to model price promotions for green hosting: a $3.00 discount leaves $13.00, so managers can compute the extra units needed to keep covering $480,000 fixed costs.\n3. Check that 85,000 × $16.00 = $1,360,000 contribution covers the $480,000 fixed costs and interest on the $250,000 overdraft, informing whether further borrowing is safe.\n4. Benchmark unit cost ($480,000 ÷ 85,000 = $5.65 plus $16.00 = $21.65 a unit) each quarter to detect the 10.3% electricity and hardware inflation and link it to the 99.2% uptime target."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 30,000 units | (ii) Contribution per unit = $16.00 | (iii) Four contextual uses explained: margin of safety of 55,000 units against 85,000-unit output; discount modelling with $480,000 fixed costs; overdraft-interest feasibility on the $250,000 facility; and unit-cost benchmarking at $21.65 against 10.3% input inflation.",
+      "mark_scheme": {
+        "working_marks": [
+          "1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "30,000",
+          "$16.00",
+          "85,000",
+          "$480,000",
+          "$32.00",
+          "$21.65",
+          "$250,000"
+        ]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate CTG's profitability by calculating the gross profit margin, profit margin and return on capital employed for 2024 and 2025. Has CTG's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 45.0%\nGross Profit Margin 2025 = 50.0%\nProfit Margin 2024 = 16.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 20.0%\nROCE 2025 = 24.0%\n\nDetailed workings: 2024 gross profit $900 ÷ revenue $2,000 = 45.0%; 2025 gross profit $1,200 ÷ revenue $2,400 = 50.0%. Operating profit 2024 $320 ÷ revenue $2,000 = 16.0%; 2025 $480 ÷ revenue $2,400 = 20.0%. Operating profit 2024 $320 ÷ capital employed $1,600 = 20.0%; 2025 $480 ÷ capital employed $2,000 = 24.0%. Revenue grew from $2,000 to $2,400 while cost of sales rose only from $1,100 to $1,200, so gross profit rose much faster than sales.\n\nEvaluation: Profitability improved on all three measures. The higher gross percentage reflects tighter control of direct hosting costs relative to revenue, consistent with a $32.00 price and $16.00 variable cost on 85,000 units. The operating percentage rose from 16.0% to 20.0% because operating profit grew from $320 to $480 more quickly than revenue, showing fixed costs of $480,000 were spread over more business. The return on capital increased from 20.0% to 24.0%, so the larger $2,000 capital base is working harder, which supports the $750,000 green data centre. Interest payable rose from $50 to $65 but remains small against $480 operating profit.\n\nConclusion: CTG's profitability has improved: all three measures rose together and the gain is driven by revenue growth and cost control rather than asset shrinkage. The caution is that a variable-rate $250,000 overdraft and recurring downtime could erode the 50.0% gross percentage, so management must protect uptime and control borrowing costs.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years combined with detailed evaluation of revenue, cost and capital movements and a justified conclusion on profitability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "45.0%",
+          "50.0%",
+          "16.0%",
+          "20.0%",
+          "24.0%",
+          "2,400",
+          "2,000"
+        ]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for CTG of introducing automated server monitoring in its hosting operations.",
+      "model_answer": "Advantage: Automated server monitoring detects faults before clients notice them, directly tackling the downtime that leaves uptime at 99.2%. Moving toward the 99.9% level wanted by 66% of the 720 surveyed clients would reduce the 260 support tickets per month, protect the $32.00 price and $16.00 contribution on 85,000 units, and support the 58% who value green hosting in the $750,000 data centre.\n\nDisadvantage: The monitoring system is part of the $750,000 investment and could lift the $480,000 fixed costs, raising the 30,000-unit break-even output. It also needs skills that 30 of 72 staff lack, so misconfigured alerts or over-reliance on software could cause false alarms and slower human responses, damaging service while the $250,000 overdraft still needs managing. CTG can judge success by tracking whether uptime moves from 99.2% toward 99.9% and whether the 260 monthly support tickets fall, so the benefit is measured against the existing customer-experience log rather than assumed.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for a valid advantage and 1 mark for a valid disadvantage."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to CTG's uptime, research data, costs and skills."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "automated server monitoring",
+          "99.2%",
+          "85,000",
+          "$32.00",
+          "$750,000",
+          "66%"
+        ]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.5%, the 7.8% rise in IT salaries and the 10.3% rise in electricity and hardware costs will affect CTG. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (3.75% to 4.5%): A bank overdraft is typically variable-rate, so on the $250,000 facility the extra annual cost is 0.75% × $250,000 = $1,875 (0.0075 × $250,000). This is minor beside $480,000 fixed costs and $480 of operating profit. The $500,000 share issue means CTG is less dependent on the overdraft, and the firm could reduce the facility or negotiate a cap, so the direct effect is limited.\n\nIT salary inflation (7.8%): The insert gives a workforce of 72 but not the number of IT specialists or hours worked, so an annual wage total cannot be invented. The sound judgement is qualitative: a 7.8% rise increases unit labour cost unless productivity holds at 85,000 ÷ 72 = about 1,181 units per employee, and with 30 staff lacking cloud-security training this is uncertain. It does make the $1,050 certification course relatively good value.\n\nElectricity and hardware input inflation (10.3%): The insert gives a variable cost of $16.00 a unit but does not decompose it. A clearly labelled upper bound if all of it rose 10.3% is 0.103 × $16.00 = $1.648 a unit; across 85,000 units that is 85,000 × $1.648 = $140,080 a year, cutting contribution from $16.00 to $14.35. Even a partial increase would materially shrink the surplus covering fixed costs and uptime investment.\n\nConclusion: The 10.3% rise in electricity and hardware costs will have the greatest impact. It touches every hosted unit, can add $140,080 a year on the stated assumption and directly erodes the $16.00 contribution needed for the $750,000 data centre; the overdraft costs only $1,875 more and the salary effect is unquantifiable from the insert and can be offset by productivity.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to CTG.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on CTG's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in CTG's context with justified greatest-impact judgement and shown derivations, rejecting the smaller effects."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "4.5%",
+          "7.8%",
+          "10.3%",
+          "$250,000",
+          "$16.00",
+          "85,000"
+        ]
+      }
+    }
+  ]
+}

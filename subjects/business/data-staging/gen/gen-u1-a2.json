@@ -1,0 +1,1242 @@
+[
+  {
+    "scenario_id": "P1_U1_SET_111",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Brinewell Fisheries is a family-run fishery based in Country X that has landed mackerel for 14 years. It employs 16 crew across 4 boats and catches about 20 tonnes of mackerel a month, selling the fresh fish to a fish merchant at $4 per kilogram. Fuel costs have risen by 18% this year. Sales of fresh mackerel have been flat for a while.\n\nThe owner, Priya Nadar, is deciding whether to spend $150,000 on a smoking and filleting unit to sell smoked fillets at $9 per kilogram, with $3 of extra running costs per kilogram. The bank has offered a loan for the equipment. Alternatively, the fish merchant has promised a 3-year fresh contract at $4.40 per kilogram if Brinewell keeps supplying fresh fish. The unit would need 5 extra workers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'added value'.",
+        "model_answer": "Added value is the difference between the selling price of a product and the cost of the bought-in materials and inputs used to produce it [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "difference between selling price and cost of bought-in inputs",
+            "value created by converting inputs into a finished good or service"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Brinewell Fisheries could increase added value.",
+        "model_answer": "Way 1: Processing the fish [k], by buying the $150,000 smoking and filleting unit to sell smoked fillets at $9 per kilogram instead of fresh fish at $4 per kilogram [app]. Way 2: Improving presentation and packaging [k], by selling branded, ready-to-eat smoked fillet packs that can command a higher price than the loose fresh fish sold to the fish merchant [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing/converting raw materials into a more expensive finished product",
+            "improving packaging, branding or presentation to raise the price"
+          ],
+          "application_max_2": [
+            "$150,000 smoking and filleting unit",
+            "smoked fillets at $9 per kilogram",
+            "fresh fish at $4 per kilogram",
+            "20 tonnes of mackerel a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "mackerel",
+            "$150,000",
+            "$9 per kilogram",
+            "$4 per kilogram",
+            "smoked fillets",
+            "fish merchant",
+            "20 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Brinewell Fisheries of investing in the smoking and filleting unit.",
+        "model_answer": "Benefit 1: A higher margin per kilogram [k], because smoked fillets sell at $9 per kilogram against $4 per kilogram for fresh fish [app], so even after $3 of extra running costs the business keeps about $2 more per kilogram, raising profit [an]. Benefit 2: Less dependence on one buyer [k], because branded smoked fillet packs can be sold to supermarkets and caterers rather than only the fish merchant [app], spreading the weekly catch across more customers and lowering the risk of losing the merchant's business [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price/added value raises revenue and profit",
+            "processed goods can reach a wider market, reducing reliance on one buyer"
+          ],
+          "application_max_2": [
+            "smoked fillets at $9 per kilogram",
+            "fresh fish at $4 per kilogram",
+            "$3 of extra running costs per kilogram",
+            "the fish merchant"
+          ],
+          "analysis_max_2": [
+            "about $2 per kilogram extra margin after running costs lifts profit",
+            "wider customer base reduces single-buyer risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9 per kilogram",
+            "$4 per kilogram",
+            "$3",
+            "fish merchant",
+            "$150,000",
+            "smoked",
+            "filleting"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brinewell Fisheries should invest in the smoking and filleting unit rather than sign the fresh 3-year contract? Justify your answer.",
+        "model_answer": "One side is that smoking captures far more added value [k], because smoked fillets sell at $9 per kilogram with $3 of running costs, leaving $6 per kilogram against $4.40 on the fresh contract [app], so each kilogram earns over $1.60 more, which helps repay the $150,000 loan [an]. On the other hand, the 3-year fresh contract at $4.40 per kilogram is guaranteed income [k] and needs no $150,000 loan, no 5 extra workers and no risk of the smoked packs failing to sell [app]; with fuel costs up 18%, dependable cash flow protects the business [an]. Overall, investing is the better choice only if Priya has secured retail orders for the smoked fillets, since $6 per kilogram beats $4.40 after running costs [eval]; without confirmed orders, the safer 3-year fresh contract is the wiser option while fuel costs stay high [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing increases added value and margin per kilogram",
+            "the 3-year fresh contract offers certainty and lower risk"
+          ],
+          "application_max_2": [
+            "$9 per kilogram smoked fillets with $3 running costs",
+            "$4.40 per kilogram on the 3-year fresh contract",
+            "$150,000 loan for the unit",
+            "18% rise in fuel costs"
+          ],
+          "analysis_max_2": [
+            "about $1.60 per kilogram extra margin could repay the loan",
+            "contract removes debt, staffing and demand risk"
+          ],
+          "evaluation_max_2": [
+            "weighs higher-margin processing against contract certainty",
+            "justified conditional recommendation tied to fuel costs and orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "$9 per kilogram",
+            "$4.40 per kilogram",
+            "3-year",
+            "18%",
+            "smoked fillets",
+            "mackerel",
+            "fish merchant"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_112",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Cardew Dairy Farm is a partnership owned by Helen and Marcus Cardew for 9 years in Country X. The farm keeps 60 dairy cows producing about 1,200 litres of milk a day, sold raw to a large creamery at $0.55 per litre. Feed costs have risen by 15% in the past year, squeezing the partners' margins.\n\nThe siblings are deciding whether to spend $80,000 on cheese-making and maturing equipment to produce cheddar sold at $15 per kilogram, using 10 litres of milk per kilogram of cheese and $4 of extra running costs per kilogram. The creamery has offered a 2-year raw-milk contract at $0.60 per litre, but cheese would add value and need 4 extra workers once the vat is installed.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by the 'primary sector'.",
+        "model_answer": "The primary sector is the part of the economy that extracts and harvests natural resources, such as farming, fishing and quarrying [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extracts, grows or harvests raw materials from nature",
+            "examples include agriculture, fishing, forestry and quarrying/mining"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Cardew Dairy Farm might add value to its milk by making cheese.",
+        "model_answer": "Reason 1: Cheese sells for far more than raw milk [k], because each kilogram of cheddar at $15 is made from 10 litres of milk that the farm currently sells raw at $0.55 per litre, about $5.50 per 10 litres [app]. Reason 2: Cheese lasts much longer [k], because matured cheddar can be stored for months and sold when prices are good, whereas 1,200 litres of raw milk a day must be collected daily or it spoils [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises the price received per input unit",
+            "processed products store longer, cutting waste and smoothing sales"
+          ],
+          "application_max_2": [
+            "cheddar at $15 per kilogram",
+            "raw milk at $0.55 per litre",
+            "1,200 litres of milk a day",
+            "10 litres of milk per kilogram of cheese"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$15 per kilogram",
+            "$0.55 per litre",
+            "cheddar",
+            "1,200 litres",
+            "10 litres",
+            "creamery",
+            "cheese"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Cardew Dairy Farm of making its own cheese instead of selling raw milk.",
+        "model_answer": "Benefit 1: A much higher return per litre [k], because cheese at $15 per kilogram uses 10 litres of milk and even after $4 of running costs keeps $11 per kilogram [app], far above the $6 return on the same 10 litres at $0.60 per litre on the 2-year contract, lifting profit [an]. Benefit 2: Greater control over where the product is sold [k], because the farm could sell its cheddar directly at markets and shops instead of depending on the large creamery [app], keeping the full retail margin and avoiding the creamery lowering its $0.55 per litre price [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing raises profit",
+            "selling directly keeps more of the final selling price"
+          ],
+          "application_max_2": [
+            "$15 per kilogram cheddar",
+            "$4 of extra running costs per kilogram",
+            "2-year contract at $0.60 per litre",
+            "$0.55 per litre current price"
+          ],
+          "analysis_max_2": [
+            "$11 per kilogram retained far beats the $6 per 10-litre contract return",
+            "direct sales reduce dependence on the creamery's price decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$15",
+            "$4",
+            "$0.60 per litre",
+            "$0.55",
+            "creamery",
+            "cheddar",
+            "10 litres"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cardew Dairy Farm should make its own cheese rather than accept the 2-year raw-milk contract? Justify your answer.",
+        "model_answer": "One side is that cheese adds far more value [k], because each kilogram at $15 is made from 10 litres of milk, so keeping $11 after running costs is far above the $6 return on the same milk at $0.60 per litre [app], meaning the farm could build up capital quickly [an]. However, the 2-year contract is guaranteed income [k], worth about $720 a day from 1,200 litres at $0.60 per litre, with no $80,000 debt, no 4 extra workers to recruit and no risk that the unproven cheddar fails to sell [app]; with feed costs already up 15%, dependable cash matters [an]. Overall, making cheese is the better long-term choice if the partners have secured orders for their cheddar, since $11 per kilogram beats the $6 contract return [eval]; without signed orders, the safer 2-year raw-milk contract at $0.60 per litre is wiser until the cheese proves itself [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing increases added value and margin",
+            "the 2-year contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "$15 per kilogram cheddar with $4 running costs",
+            "$0.60 per litre 2-year contract",
+            "1,200 litres a day (about $720 a day)",
+            "$80,000 equipment and 4 extra workers"
+          ],
+          "analysis_max_2": [
+            "$11 retained per kilogram far exceeds the contract return, aiding loan repayment",
+            "contract removes finance, staffing and market risk"
+          ],
+          "evaluation_max_2": [
+            "weighs superior margin against contract security and debt",
+            "justified conditional recommendation tied to feed costs and orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$80,000",
+            "$15",
+            "$0.60 per litre",
+            "1,200 litres",
+            "15%",
+            "2-year",
+            "cheddar",
+            "$0.55"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_113",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Haverfell Quarry is a private limited company operating in Country X that has extracted limestone for 8 years. It employs 34 workers and produces about 500 tonnes of raw stone a month, sold to construction firms at $65 per tonne. Blasting permits have become harder to obtain, and equipment costs have risen. Most sales go to road base and building block manufacturers.\n\nThe managing director, Farida Rahman, is deciding whether to spend $450,000 on sawing and polishing machinery to sell cut flagstones at $150 per tonne, with $50 of extra running costs per tonne. A builders' merchant has offered a 2-year contract at $70 per tonne for raw stone, but cut stone would add value and need 6 skilled masons trained on the new saws.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State what is meant by the 'secondary sector'.",
+        "model_answer": "The secondary sector is the part of the economy that converts raw materials into finished or semi-finished goods, such as manufacturing or construction [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "converts raw materials into finished or semi-finished goods",
+            "examples include manufacturing, processing and construction"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Haverfell Quarry could add value to its limestone.",
+        "model_answer": "Way 1: Cutting and polishing the stone [k], by spending $450,000 on sawing and polishing machinery to sell cut flagstones at $150 per tonne instead of raw stone at $65 per tonne [app]. Way 2: Supplying a tighter specification [k], by delivering uniform, correctly sized flagstones that builders can lay directly, saving them time compared with irregular raw blocks [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raw materials into a more valuable finished product",
+            "improving quality/specification to command a higher price"
+          ],
+          "application_max_2": [
+            "$450,000 sawing and polishing machinery",
+            "flagstones at $150 per tonne",
+            "raw stone at $65 per tonne",
+            "500 tonnes of raw stone a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "limestone",
+            "$450,000",
+            "$150 per tonne",
+            "$65 per tonne",
+            "flagstones",
+            "500 tonnes",
+            "$70 per tonne"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Haverfell Quarry of cutting its own flagstones instead of selling raw stone.",
+        "model_answer": "Benefit 1: A higher price per tonne [k], because cut flagstones sell at $150 per tonne against $65 per tonne for raw stone [app], and even after $50 of extra running costs the quarry keeps $100 per tonne, about $30 above the $70 contract, lifting profit [an]. Benefit 2: Access to new types of buyer [k], because cut flagstones can be sold to landscapers and garden centres as well as construction firms [app], spreading the 500 tonnes a month across more customers and reducing dependence on the builders' merchant [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "a wider range of buyers reduces dependence on one customer"
+          ],
+          "application_max_2": [
+            "flagstones at $150 per tonne",
+            "raw stone at $65 per tonne",
+            "$50 of extra running costs per tonne",
+            "$70 per tonne 2-year contract"
+          ],
+          "analysis_max_2": [
+            "$100 per tonne retained beats the $70 contract by about $30",
+            "new buyer types spread sales and cut single-buyer risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150 per tonne",
+            "$65 per tonne",
+            "$50",
+            "flagstones",
+            "500 tonnes",
+            "construction firms",
+            "$70 per tonne"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Haverfell Quarry should invest in cut flagstone production rather than accept the 2-year builders' contract? Justify your answer.",
+        "model_answer": "One side is that cutting adds real value [k], because flagstones at $150 per tonne keep $100 after $50 running costs, which is $30 per tonne better than the $70 contract [app], so on 500 tonnes a month the quarry could earn around $15,000 extra each month, helping repay the $450,000 machinery loan [an]. On the other hand, the 2-year contract at $70 per tonne is guaranteed income [k], needing no $450,000 loan, no 6 skilled masons to train and no risk that cut-stone buyers fail to appear while blasting permits are harder to obtain [app]; with equipment costs rising, a steady contract protects cash flow [an]. Overall, investing is the stronger choice if the quarry has signed landscaping or garden-centre orders, since $100 per tonne clearly beats $70 [eval]; without confirmed orders, the 2-year contract at $70 per tonne is the safer basis for the business [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cutting stone into flagstones increases added value and margin",
+            "the 2-year contract gives guaranteed income and avoids debt"
+          ],
+          "application_max_2": [
+            "flagstones at $150 per tonne",
+            "$70 per tonne on the 2-year contract",
+            "$450,000 machinery investment",
+            "500 tonnes a month output"
+          ],
+          "analysis_max_2": [
+            "about $15,000 extra per month could repay the loan",
+            "contract avoids loan, staffing and demand risk amid permit problems"
+          ],
+          "evaluation_max_2": [
+            "weighs higher margin against guaranteed income and permit risk",
+            "justified conditional recommendation tied to confirmed orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$450,000",
+            "$150 per tonne",
+            "$70 per tonne",
+            "500 tonnes",
+            "2-year",
+            "flagstones",
+            "$50",
+            "limestone"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_114",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Thornapple Orchards is a sole trader business owned by Sofia Lindqvist for 11 years in Country X. It grows apples across 40 hectares, producing about 180 tonnes a year, sold fresh to a wholesaler at $900 per tonne. An early frost last spring cut output by 12%, and storage space is limited. In peak harvest weeks some apples go to waste when the wholesaler cannot collect them.\n\nSofia is considering spending $95,000 on a juice bottling line to press her apples into bottled juice sold at $2.40 per litre, with about 700 litres of juice from each tonne and $0.50 of extra running costs per litre. The wholesaler has offered a 2-year fresh contract at $1,000 per tonne, but juice would add value and need 3 new workers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'opportunity cost'.",
+        "model_answer": "Opportunity cost is the benefit forgone from the next best alternative when a choice is made between alternatives [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "value or benefit of the next best alternative given up",
+            "arises because resources are scarce and choices must be made"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Thornapple Orchards might add value to its apples by bottling juice.",
+        "model_answer": "Reason 1: Bottled juice sells for more than fresh apples [k], because each tonne yields about 700 litres of juice at $2.40 per litre, worth roughly $1,680, against $900 per tonne for fresh apples [app]. Reason 2: Bottling uses lower-grade fruit [k], because bruised or graded-out apples that the wholesaler rejects can still be pressed into juice instead of being thrown away [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises the revenue earned per unit of input",
+            "processing allows lower-grade inputs to be used profitably"
+          ],
+          "application_max_2": [
+            "700 litres of juice per tonne",
+            "juice at $2.40 per litre",
+            "fresh apples at $900 per tonne",
+            "180 tonnes a year output"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "juice",
+            "$2.40 per litre",
+            "$900 per tonne",
+            "700 litres",
+            "$95,000",
+            "180 tonnes",
+            "wholesaler"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Thornapple Orchards of bottling apple juice instead of selling fresh apples.",
+        "model_answer": "Benefit 1: A higher return per tonne [k], because 700 litres of juice at $2.40 per litre bring in about $1,680 per tonne [app], and even after $0.50 per litre of running costs the farm keeps $1,330 per tonne, well above the $1,000 fresh contract, raising profit [an]. Benefit 2: A storable, year-round product [k], because bottled juice can be sold in farm shops and supermarkets long after the harvest [app], smoothing revenue through the year and reducing pressure to sell apples quickly at $900 per tonne when storage space is limited [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "processed goods store well, smoothing revenue and cutting waste"
+          ],
+          "application_max_2": [
+            "juice at $2.40 per litre",
+            "$0.50 of extra running costs per litre",
+            "$1,000 per tonne on the 2-year fresh contract",
+            "fresh apples at $900 per tonne"
+          ],
+          "analysis_max_2": [
+            "$1,330 per tonne retained beats the $1,000 contract",
+            "storable juice smooths cash flow and cuts waste"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.40 per litre",
+            "$0.50",
+            "$1,000 per tonne",
+            "$900 per tonne",
+            "juice",
+            "700 litres",
+            "bottling"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thornapple Orchards should bottle juice rather than accept the 2-year fresh contract? Justify your answer.",
+        "model_answer": "One side is that juice adds clearly more value [k], because at $2.40 per litre each tonne yields about $1,680, keeping roughly $1,330 after $0.50 per litre running costs against $1,000 on the 2-year contract [app], so switching could raise profit by around $330 per tonne across the 180 tonnes a year [an]. However, the fresh contract is much safer [k], guaranteeing $1,000 per tonne for 2 years with no $95,000 loan, no 3 new workers and no risk that the farm's bottled juice fails to sell [app]; after the early frost cut output by 12%, dependable cash matters [an]. Overall, bottling is the better choice if Sofia has secured shop or supermarket listings, since $1,330 per tonne beats the $1,000 contract [eval]; without confirmed buyers, the frost-hit farm should take the safety of the 2-year contract at $1,000 per tonne first [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bottling juice increases added value and revenue per tonne",
+            "the 2-year fresh contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "juice at $2.40 per litre with $0.50 running costs",
+            "$1,000 per tonne on the 2-year contract",
+            "$95,000 bottling line and 3 new workers",
+            "early frost cut output by 12%"
+          ],
+          "analysis_max_2": [
+            "around $330 extra per tonne could repay the investment",
+            "contract removes finance, staffing and demand risk after the frost"
+          ],
+          "evaluation_max_2": [
+            "weighs higher juice margin against contract security",
+            "justified conditional recommendation linked to confirmed buyers and the frost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$2.40",
+            "$1,000 per tonne",
+            "180 tonnes",
+            "12%",
+            "2-year",
+            "juice",
+            "$0.50"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_115",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Woldgate Grain Farm is a partnership owned by Tom and Elsie Brauer for 10 years in Country X. It farms 900 hectares of wheat, harvesting about 4,500 tonnes a year, sold raw in bulk to a milling company at $280 per tonne. A drought last year cut the harvest by 20%, and grain storage is limited.\n\nThe partners are considering spending $600,000 on a flour mill to grind their wheat into flour sold at $0.80 per kilogram, with each tonne of wheat yielding about 750 kilograms of flour and $140 of extra running costs per tonne milled. The milling company has offered a 2-year contract at $300 per tonne for raw wheat, but milling would add value and need 7 extra workers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State what is meant by 'industrialisation'.",
+        "model_answer": "Industrialisation is the process by which a country's economy shifts towards a larger secondary, manufacturing sector as it develops [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "growth in importance/size of the secondary manufacturing sector",
+            "typically involves investment in factories and industry as an economy develops"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Woldgate Grain Farm could add value to its wheat.",
+        "model_answer": "Way 1: Milling the wheat into flour [k], by spending $600,000 on a flour mill to sell flour at $0.80 per kilogram instead of raw wheat at $280 per tonne [app]. Way 2: Selling branded, consistent-quality flour [k], by supplying bagged flour directly to artisan bakeries, which pay more than raw grain bought in bulk by the milling company [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raw materials into a higher-priced finished product",
+            "branding and packaging can raise the price received"
+          ],
+          "application_max_2": [
+            "$600,000 flour mill",
+            "flour at $0.80 per kilogram",
+            "raw wheat at $280 per tonne",
+            "750 kilograms of flour per tonne of wheat"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "flour",
+            "$0.80 per kilogram",
+            "$280 per tonne",
+            "$600,000",
+            "wheat",
+            "750 kilograms",
+            "milling company"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Woldgate Grain Farm of milling its own flour instead of selling raw wheat.",
+        "model_answer": "Benefit 1: A higher income per tonne [k], because each tonne of wheat yields about 750 kilograms of flour at $0.80 per kilogram, worth $600 per tonne [app], and even after $140 of extra running costs the farm keeps $460 per tonne, $160 more than the $300 contract, lifting profit [an]. Benefit 2: Less dependence on one buyer [k], because flour can be sold to many bakeries and shops rather than only the milling company [app], spreading the 4,500 tonnes a year across more customers and protecting the farm if the contract price is renegotiated downwards [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises revenue per tonne and profit",
+            "selling to many buyers reduces reliance on a single customer"
+          ],
+          "application_max_2": [
+            "$600 per tonne of flour (750 kilograms at $0.80)",
+            "$140 of extra running costs per tonne",
+            "2-year contract at $300 per tonne",
+            "raw wheat at $280 per tonne"
+          ],
+          "analysis_max_2": [
+            "$460 per tonne retained beats the $300 contract by $160",
+            "wider customer base lowers single-buyer risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$0.80 per kilogram",
+            "$140",
+            "$300 per tonne",
+            "$280 per tonne",
+            "flour",
+            "750 kilograms",
+            "4,500 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Woldgate Grain Farm should build its own flour mill rather than accept the 2-year wheat contract? Justify your answer.",
+        "model_answer": "One side is that milling captures much more value [k], because flour at $0.80 per kilogram from 750 kilograms per tonne is worth $600 per tonne, keeping $460 after $140 milling costs, beating the $300 contract by $160 per tonne [app], so across 4,500 tonnes a year the extra could approach $720,000 and clear the $600,000 loan [an]. On the other hand, the 2-year contract at $300 per tonne is guaranteed [k], needing no $600,000 loan, no 7 extra workers and no risk that the farm's flour fails to win bakery customers [app]; after drought cut the harvest by 20%, dependable cash is vital [an]. Overall, building the mill is the better choice if the Brauers have forward orders from bakeries, since $460 per tonne beats $300 [eval]; without confirmed buyers, the safer 2-year contract at $300 per tonne protects a drought-hit farm [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "milling increases added value and margin per tonne",
+            "the 2-year contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "flour at $0.80 per kilogram (750 kilograms per tonne)",
+            "$300 per tonne on the 2-year contract",
+            "$600,000 flour mill and 7 extra workers",
+            "drought cut the harvest by 20%"
+          ],
+          "analysis_max_2": [
+            "about $720,000 extra a year could clear the $600,000 loan",
+            "contract removes finance, staffing and demand risk after the drought"
+          ],
+          "evaluation_max_2": [
+            "weighs superior milling margin against contract security",
+            "justified conditional recommendation linked to orders and the drought"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$0.80 per kilogram",
+            "$300 per tonne",
+            "750 kilograms",
+            "4,500 tonnes",
+            "20%",
+            "2-year",
+            "drought"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_116",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Tidemark Prawn Co is a prawn farming business in Country X operating for 6 years. It employs 26 workers across 12 ponds and produces about 140 tonnes of raw prawns a year, sold to an exporter at $6.50 per kilogram. Warming pond temperatures have reduced yields by 8% this season, and prawn feed has also become more expensive this year.\n\nThe director, Lena Ortiz, is deciding whether to spend $260,000 on a cooked-and-peeled packing line to sell packs at $13 per kilogram, with $4 of extra running costs per kilogram. The exporter has offered a 2-year raw contract at $7.00 per kilogram, but cooking and peeling would add value and need 5 extra workers; it is skilled, careful work that needs testing.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'division of labour'.",
+        "model_answer": "Division of labour is the splitting of a production process into smaller specialised tasks, with each worker responsible for one task [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "production broken into small specialised tasks",
+            "workers focus on one task, raising efficiency and output"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Tidemark Prawn Co might add value to its prawns by cooking and peeling them.",
+        "model_answer": "Reason 1: Cooked, peeled prawns sell for far more [k], because packs at $13 per kilogram are exactly double the $6.50 per kilogram the exporter pays for raw prawns [app]. Reason 2: Ready-to-eat packs reach new buyers [k], because cooked prawns can be sold to supermarkets and restaurants rather than only to one exporting firm [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises the price received per kilogram",
+            "ready-to-eat products reach more customer groups"
+          ],
+          "application_max_2": [
+            "packs at $13 per kilogram",
+            "raw prawns at $6.50 per kilogram",
+            "the exporter",
+            "140 tonnes of raw prawns a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "prawns",
+            "$13 per kilogram",
+            "$6.50 per kilogram",
+            "$260,000",
+            "exporter",
+            "140 tonnes",
+            "packing"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Tidemark Prawn Co of cooking and peeling its prawns instead of selling them raw.",
+        "model_answer": "Benefit 1: A higher net margin [k], because cooked, peeled prawns sell at $13 per kilogram and even after $4 of extra running costs the business keeps $9 per kilogram [app], which is $2 above the $7.00 two-year contract, raising profit [an]. Benefit 2: Less dependence on the exporter [k], because cooked packs can be sold to many supermarkets and restaurants [app], spreading the 140 tonnes a year across more buyers and giving the company more bargaining power over price [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "selling to more buyers reduces single-customer dependence"
+          ],
+          "application_max_2": [
+            "$13 per kilogram packs",
+            "$4 of extra running costs per kilogram",
+            "$7.00 per kilogram on the 2-year contract",
+            "$6.50 per kilogram current price"
+          ],
+          "analysis_max_2": [
+            "$9 per kilogram retained beats the $7.00 contract by $2",
+            "more buyers increase bargaining power and reduce contract risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$13 per kilogram",
+            "$4",
+            "$7.00 per kilogram",
+            "$6.50",
+            "cooked",
+            "peeled",
+            "$260,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tidemark Prawn Co should invest in the cooked-and-peeled packing line rather than accept the 2-year exporter contract? Justify your answer.",
+        "model_answer": "One side is that processing adds clear value [k], because $13 per kilogram less $4 of running costs leaves $9 per kilogram, which is $2 better than the $7.00 contract [app], so on 140 tonnes a year the extra could reach $280,000, repaying the $260,000 line in about a year [an]. On the other hand, the 2-year contract at $7.00 per kilogram is guaranteed income [k], needing no $260,000 loan, no 5 extra workers and no risk that peeled packs fail food-safety checks or fail to win supermarket shelf space [app]; with yields already down 8%, cash security matters [an]. Overall, investing is the stronger choice if Lena has letters of intent from supermarket buyers, since $9 per kilogram beats $7.00 [eval]; without confirmed orders, the guaranteed $7.00 two-year contract is the safer base while yields recover [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cooking and peeling increases added value and margin per kilogram",
+            "the 2-year exporter contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "$13 per kilogram packs with $4 running costs",
+            "$7.00 per kilogram on the 2-year contract",
+            "$260,000 packing line and 5 extra workers",
+            "yields reduced by 8% this season"
+          ],
+          "analysis_max_2": [
+            "about $280,000 extra a year could repay the line in about a year",
+            "contract removes finance, staffing and food-safety risk"
+          ],
+          "evaluation_max_2": [
+            "weighs higher processing margin against contract security",
+            "justified conditional recommendation linked to food-safety and buyers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "$13 per kilogram",
+            "$7.00 per kilogram",
+            "140 tonnes",
+            "8%",
+            "2-year",
+            "peeled",
+            "$4"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_117",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Copperhill Vineyard is a private limited company in Country X that has grown grapes for 15 years. It employs 38 workers across 120 hectares of vines and harvests about 260 tonnes of grapes a year, sold to a winery at $1,100 per tonne. Irrigation costs have risen by 22% since last summer, squeezing profits. The vineyard has also attracted growing interest from wine importers abroad.\n\nThe directors are considering spending $500,000 on a small bottling and labelling line to bottle their own wine at $9 per bottle (750 ml), with about 500 bottles from each tonne and $2.50 of extra running costs per bottle. The winery has offered a 2-year grape contract at $1,250 per tonne, but bottling would add value and need 4 extra cellar workers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'specialisation'.",
+        "model_answer": "Specialisation is when a worker, business or country concentrates on a narrow range of products or tasks in which it is most efficient [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "focusing on a narrow range of products or tasks",
+            "improves efficiency, skill and quality of output"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Copperhill Vineyard could add value to its grapes.",
+        "model_answer": "Way 1: Bottling its own wine [k], by spending $500,000 on a bottling and labelling line to sell wine at $9 per bottle instead of grapes at $1,100 per tonne [app]. Way 2: Creating a distinctive house brand [k], by labelling bottles under the Copperhill Vineyard name, which can command a premium from wine shops and restaurants [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raw materials into a higher-priced finished product",
+            "branding and packaging raise the price customers will pay"
+          ],
+          "application_max_2": [
+            "$500,000 bottling and labelling line",
+            "wine at $9 per bottle",
+            "grapes at $1,100 per tonne",
+            "500 bottles from each tonne"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "wine",
+            "$9 per bottle",
+            "$1,100 per tonne",
+            "$500,000",
+            "grapes",
+            "750 ml",
+            "winery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Copperhill Vineyard of bottling its own wine instead of selling grapes.",
+        "model_answer": "Benefit 1: A far higher return per tonne [k], because about 500 bottles at $9 each bring in $4,500 per tonne [app], and even after $2.50 per bottle of running costs the vineyard keeps $3,250 per tonne, well above the $1,250 two-year contract, lifting profit [an]. Benefit 2: A recognisable brand that builds loyalty [k], because own-labelled Copperhill wine can be stocked by shops and served by restaurants [app], widening the market beyond the single winery and supporting repeat sales year after year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "a brand builds customer loyalty and repeat purchases"
+          ],
+          "application_max_2": [
+            "500 bottles per tonne at $9",
+            "$2.50 of extra running costs per bottle",
+            "$1,250 per tonne on the 2-year grape contract",
+            "grapes at $1,100 per tonne"
+          ],
+          "analysis_max_2": [
+            "$3,250 per tonne retained vs $1,250 under the contract",
+            "own brand widens distribution and supports repeat sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9 per bottle",
+            "$2.50",
+            "$1,250 per tonne",
+            "500 bottles",
+            "wine",
+            "bottling",
+            "winery"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copperhill Vineyard should bottle its own wine rather than accept the 2-year grape contract? Justify your answer.",
+        "model_answer": "One side is that bottling transforms the vineyard's earnings [k], because 500 bottles per tonne at $9 bring in $4,500 per tonne, keeping $3,250 after $2.50 per bottle of costs, miles above the $1,250 two-year contract [app], so across 260 tonnes a year the extra could exceed $500,000 and clear the $500,000 loan quickly [an]. However, the 2-year contract at $1,250 per tonne is guaranteed income [k], needing no $500,000 loan, no 4 extra cellar workers and no launch costs to build an unproven brand while irrigation costs have risen 22% [app]. Unsold own-label wine would tie up working capital and could force the vineyard to borrow more [an]. Overall, bottling is the better long-term choice if the directors have secured distribution through shops or restaurants, since $3,250 per tonne beats $1,250 [eval]; without distribution, the safer $1,250 two-year grape contract is wiser for now [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bottling wine increases added value and revenue per tonne",
+            "the 2-year grape contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "500 bottles per tonne at $9 with $2.50 running costs",
+            "$1,250 per tonne on the 2-year grape contract",
+            "$500,000 bottling line and 4 extra workers",
+            "irrigation costs risen by 22%"
+          ],
+          "analysis_max_2": [
+            "extra over $500,000 a year could clear the $500,000 loan",
+            "unsold stock would tie up working capital and raise debt"
+          ],
+          "evaluation_max_2": [
+            "weighs superior bottling margin against contract security",
+            "justified conditional recommendation tied to distribution deals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500,000",
+            "$9 per bottle",
+            "$1,250 per tonne",
+            "500 bottles",
+            "22%",
+            "2-year",
+            "wine",
+            "$1,100 per tonne"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_118",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Redhaven Tomato Farm is a sole trader business run by Dan Whitmore for 8 years in Country X. It grows tomatoes across 25 hectares and produces about 950 tonnes a year, sold fresh to a city market at $750 per tonne. Labour for picking rose by 10% this year, squeezing margins. The farm also grows chilli peppers on a small 3-hectare plot nearby.\n\nDan is deciding whether to spend $210,000 on a sauce-making and bottling line to produce tomato sauce sold at $3.00 per jar, with about 500 jars from each tonne and $0.60 of extra running costs per jar. The city market has offered a 2-year fresh contract at $820 per tonne, but sauce would add value and need 4 extra workers across the year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State what is meant by 'de-industrialisation'.",
+        "model_answer": "De-industrialisation is the decline in importance of the secondary, manufacturing sector in an economy, often as services grow [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fall in the share or importance of secondary manufacturing",
+            "often linked to growth of the tertiary sector or cheaper imports"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Redhaven Tomato Farm might add value to its tomatoes by making sauce.",
+        "model_answer": "Reason 1: Sauce sells for more than fresh tomatoes [k], because about 500 jars per tonne at $3.00 per jar bring in $1,500 per tonne, twice the $750 per tonne for fresh tomatoes [app]. Reason 2: Sauce lasts far longer [k], because bottled jars can be stored and sold all year, while fresh tomatoes must be sold quickly at the city market before they spoil [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises revenue per tonne of raw input",
+            "processed products store longer, reducing waste"
+          ],
+          "application_max_2": [
+            "500 jars per tonne at $3.00 per jar",
+            "fresh tomatoes at $750 per tonne",
+            "950 tonnes a year output",
+            "the city market"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sauce",
+            "$3.00 per jar",
+            "$750 per tonne",
+            "500 jars",
+            "$210,000",
+            "950 tonnes",
+            "city market"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Redhaven Tomato Farm of making tomato sauce instead of selling fresh tomatoes.",
+        "model_answer": "Benefit 1: A higher return per tonne [k], because 500 jars at $3.00 bring in $1,500 per tonne [app], and even after $0.60 per jar of running costs the farm keeps $1,200 per tonne, $380 above the $820 two-year contract, raising profit [an]. Benefit 2: A stable, year-round sales pattern [k], because bottled sauce can be sold to shops and wholesalers in every season rather than relying on harvest-time prices at the city market [app], smoothing revenue and cutting the amount of unsold fresh tomatoes thrown away [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "processed goods sell year-round, smoothing revenue"
+          ],
+          "application_max_2": [
+            "500 jars at $3.00 per jar",
+            "$0.60 of extra running costs per jar",
+            "$820 per tonne on the 2-year fresh contract",
+            "fresh tomatoes at $750 per tonne"
+          ],
+          "analysis_max_2": [
+            "$1,200 per tonne retained beats the $820 contract by $380",
+            "year-round sales cut waste and smooth cash flow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.00 per jar",
+            "$0.60",
+            "$820 per tonne",
+            "500 jars",
+            "sauce",
+            "city market",
+            "$210,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redhaven Tomato Farm should make tomato sauce rather than accept the 2-year fresh contract? Justify your answer.",
+        "model_answer": "One side is that sauce adds clear value [k], because 500 jars at $3.00 keep $2.40 per jar after $0.60 costs, or $1,200 per tonne, which is $380 per tonne better than the $820 contract [app], so across 950 tonnes a year the gain could approach $361,000, repaying the $210,000 line in under a year [an]. However, the 2-year contract at $820 per tonne is guaranteed income [k], needing no $210,000 loan, no 4 extra workers and no marketing push to win shelf space for an unknown sauce, while picking labour has already risen 10% [app]. Fresh tomatoes are also a proven seller for the farm [an]. Overall, sauce is the better choice if Dan has secured supermarket listings, since $1,200 beats $820 per tonne [eval]; without confirmed buyers, the safer 2-year contract at $820 per tonne protects cash flow [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "making sauce increases added value and margin per tonne",
+            "the 2-year fresh contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "500 jars per tonne at $3.00 with $0.60 costs",
+            "$820 per tonne on the 2-year fresh contract",
+            "$210,000 line and 4 extra workers",
+            "picking labour costs rose by 10%"
+          ],
+          "analysis_max_2": [
+            "about $361,000 extra a year could repay the $210,000 line in under a year",
+            "contract avoids finance, staffing and marketing risk"
+          ],
+          "evaluation_max_2": [
+            "weighs higher sauce margin against contract security",
+            "justified conditional recommendation linked to supermarket listings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$210,000",
+            "$3.00 per jar",
+            "$820 per tonne",
+            "500 jars",
+            "10%",
+            "2-year",
+            "sauce",
+            "$0.60"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_119",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Blackcrag Quarry is a partnership between two cousins, Owen and Rhys Blackwood, operating in Country X for 7 years. It employs 22 workers and extracts about 3,000 tonnes of limestone a month, sold raw to a cement maker at $18 per tonne. New haulage rules have added 9% to transport costs. Dust complaints from neighbouring farms have also increased over the past year.\n\nThe cousins are deciding whether to spend $300,000 on a crushing and screening plant to sell graded road aggregate at $46 per tonne, with $20 of extra running costs per tonne. The cement maker has offered a 2-year raw contract at $20 per tonne, but grading would add value and need 5 extra workers; the plant would also need a permit and sits close to farmland.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify the four factors of production.",
+        "model_answer": "Land, labour, capital and enterprise [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "land, labour, capital and enterprise identified",
+            "any two of the four named correctly"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Blackcrag Quarry could add value to its limestone.",
+        "model_answer": "Way 1: Crushing and grading the stone [k], by spending $300,000 on a crushing and screening plant to sell graded road aggregate at $46 per tonne instead of raw stone at $18 per tonne [app]. Way 2: Meeting a tighter specification [k], by supplying consistent, correctly graded aggregate that road builders can use directly, which raw ungraded stone cannot offer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raw materials into a more valuable product",
+            "meeting a customer specification raises the price received"
+          ],
+          "application_max_2": [
+            "$300,000 crushing and screening plant",
+            "graded aggregate at $46 per tonne",
+            "raw stone at $18 per tonne",
+            "3,000 tonnes of limestone a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "limestone",
+            "$46 per tonne",
+            "$18 per tonne",
+            "$300,000",
+            "graded",
+            "3,000 tonnes",
+            "cement maker"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Blackcrag Quarry of crushing and grading its own stone instead of selling raw stone.",
+        "model_answer": "Benefit 1: A higher margin per tonne [k], because graded aggregate sells at $46 per tonne against $18 for raw stone [app], and even after $20 of extra running costs the quarry keeps $26 per tonne, above the $20 contract, raising profit [an]. Benefit 2: A wider customer base [k], because graded aggregate can be sold to road builders and councils in addition to the cement maker [app], spreading the 3,000 tonnes a month across more buyers and reducing dependence on one contract [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "selling to more customer groups reduces single-buyer dependence"
+          ],
+          "application_max_2": [
+            "$46 per tonne graded aggregate",
+            "$20 of extra running costs per tonne",
+            "$20 per tonne on the 2-year raw contract",
+            "$18 per tonne raw stone"
+          ],
+          "analysis_max_2": [
+            "$26 per tonne retained beats the $20 contract",
+            "more customer groups cut single-contract dependence"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "aggregate",
+            "$46 per tonne",
+            "$20",
+            "$18",
+            "crushing",
+            "3,000 tonnes",
+            "$300,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Blackcrag Quarry should crush and grade its own aggregate rather than accept the 2-year raw contract? Justify your answer.",
+        "model_answer": "One side is that grading adds value [k], because aggregate at $46 per tonne keeps $26 after $20 running costs, which is $6 per tonne better than the $20 contract [app], so on 3,000 tonnes a month the extra is about $18,000 a month, enough to repay the $300,000 plant in under two years [an]. However, the 2-year contract at $20 per tonne is guaranteed income [k], needing no $300,000 loan, no 5 extra workers and no permit for a plant near farmland, where complaints could halt operations [app]; with haulage costs already up 9%, a steady contract protects cash flow [an]. Overall, investing is the better choice if the Blackwoods have road-builder orders lined up, since $26 per tonne beats $20 [eval]; without confirmed orders, the $20 two-year contract is the safer option [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grading and crushing increases added value and margin per tonne",
+            "the 2-year raw contract offers certainty and avoids debt and permit risk"
+          ],
+          "application_max_2": [
+            "aggregate at $46 per tonne with $20 running costs",
+            "$20 per tonne on the 2-year raw contract",
+            "$300,000 plant and 5 extra workers",
+            "haulage costs up 9% and farmland permit risk"
+          ],
+          "analysis_max_2": [
+            "about $18,000 a month extra could repay the $300,000 plant in under two years",
+            "contract removes finance, staffing and permit/complaint risk"
+          ],
+          "evaluation_max_2": [
+            "weighs higher aggregate margin against contract security and permit risk",
+            "justified conditional recommendation tied to confirmed road-builder orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$300,000",
+            "$46 per tonne",
+            "$20 per tonne",
+            "3,000 tonnes",
+            "9%",
+            "2-year",
+            "aggregate",
+            "farmland"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U1_SET_120",
+    "unit": "Unit 1: Understanding Business Activity",
+    "scenario_stem": "Blackwater Trout Farm is a land-based fish farm in Country X operating for 9 years. It employs 17 workers and produces about 90 tonnes of rainbow trout a year, sold fresh to a hotel chain at $7 per kilogram. Water filtration costs have risen by 12% this year, squeezing margins. Local restaurants have begun asking for a reliable supply of smoked fish.\n\nThe owner, Yusuf Adeyemi, is deciding whether to spend $140,000 on a smokehouse to sell hot-smoked trout fillets at $14 per kilogram, with $5 of extra running costs per kilogram. The hotel chain has offered a 2-year fresh contract at $7.50 per kilogram, but smoked fillets would add value and need 4 extra workers; smoked packs could be ready before the busy summer season.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by the 'tertiary sector'.",
+        "model_answer": "The tertiary sector is the part of the economy that provides services rather than goods, such as retailing, tourism and banking [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "provides services rather than tangible goods",
+            "examples include retail, hotels, finance and transport"
+          ]
+        },
+        "qwen_marking_keys": { "valid_app_words": [] }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Blackwater Trout Farm might add value to its trout by smoking them.",
+        "model_answer": "Reason 1: Smoked fillets sell for far more [k], because hot-smoked trout fillets at $14 per kilogram are double the $7 per kilogram the hotel chain pays for fresh fish [app]. Reason 2: Smoking preserves the fish [k], because hot-smoked fillets keep for several weeks, so the farm can sell beyond the hotel chain's fresh demand and waste less fish [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "processing raises the price received per kilogram",
+            "processing preserves the product and reduces waste"
+          ],
+          "application_max_2": [
+            "smoked trout fillets at $14 per kilogram",
+            "fresh trout at $7 per kilogram",
+            "the hotel chain",
+            "90 tonnes of rainbow trout a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "trout",
+            "$14 per kilogram",
+            "$7 per kilogram",
+            "$140,000",
+            "hotel chain",
+            "90 tonnes",
+            "smokehouse"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Blackwater Trout Farm of smoking its trout rather than selling them fresh.",
+        "model_answer": "Benefit 1: A higher margin per kilogram [k], because smoked fillets at $14 per kilogram keep $9 after $5 of extra running costs [app], which is $1.50 per kilogram above the $7.50 two-year contract, adding about $135,000 a year across 90 tonnes [an]. Benefit 2: Access to new buyers and seasons [k], because smoked packs can be sold to delicatessens and online before the busy summer season rather than only to the hotel chain [app], spreading demand and reducing reliance on a single fresh-fish contract [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher selling price after processing increases profit",
+            "opening new sales channels reduces dependence on one buyer"
+          ],
+          "application_max_2": [
+            "$14 per kilogram smoked fillets",
+            "$5 of extra running costs per kilogram",
+            "$7.50 per kilogram on the 2-year fresh contract",
+            "$7 per kilogram current price"
+          ],
+          "analysis_max_2": [
+            "$1.50 per kilogram above the contract is about $135,000 a year",
+            "new outlets reduce reliance on the hotel chain"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14 per kilogram",
+            "$5",
+            "$7.50 per kilogram",
+            "$7",
+            "smoked",
+            "hotel chain",
+            "$140,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Blackwater Trout Farm should smoke its trout rather than accept the 2-year fresh contract? Justify your answer.",
+        "model_answer": "One side is that smoking adds clear value [k], because fillets at $14 per kilogram keep $9 after $5 of costs, which is $1.50 per kilogram better than the $7.50 contract [app], so on 90 tonnes a year the extra is about $135,000, enough to repay the $140,000 smokehouse in roughly a year [an]. However, the 2-year contract at $7.50 per kilogram is guaranteed income [k], needs no $140,000 loan, no 4 extra workers and no risk that smoked packs fail to win buyers while filtration costs have risen 12% [app]. Fresh trout is also what the hotel chain already buys reliably, and smoked fillets are unproven in this market [an]. Overall, smoking is the better choice if Yusuf has secured deli or online orders before summer, since $9 per kilogram beats $7.50 [eval]; without those orders, the safer $7.50 two-year hotel contract is wiser [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "smoking trout increases added value and margin per kilogram",
+            "the 2-year fresh contract offers certainty and avoids debt"
+          ],
+          "application_max_2": [
+            "$14 per kilogram fillets with $5 running costs",
+            "$7.50 per kilogram on the 2-year fresh contract",
+            "$140,000 smokehouse and 4 extra workers",
+            "filtration costs rose by 12%"
+          ],
+          "analysis_max_2": [
+            "about $135,000 extra a year could repay the $140,000 in roughly a year",
+            "contract removes finance, staffing and demand risk for an unproven product"
+          ],
+          "evaluation_max_2": [
+            "weighs higher smoked margin against contract security",
+            "justified conditional recommendation tied to pre-summer orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$140,000",
+            "$14 per kilogram",
+            "$7.50 per kilogram",
+            "90 tonnes",
+            "12%",
+            "2-year",
+            "smoked",
+            "$5"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_370",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quarry Bay Digital (QBD) is a private limited company in the mobile app and e-commerce software sector, employing a workforce of 45. Founded in 2020 by Esme Beaumont, the business builds shopping apps for retailers and operates a flat structure with autocratic leadership. QBD plans to invest $630,000 in a new cross-platform commerce app, financed by a $390,000 bank loan and $240,000 retained profit. It has fixed costs of $252,000 a year, a variable cost of $5.00 a unit and a selling price of $17.00, and currently produces 63,000 units a year. QBD faces two problems: its app crash rate has risen to 3.1% and its product-return rate is 6.4%, damaging its reputation with retail clients.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q4 2025: Quarry Bay Digital recorded 21,000 app downloads last month with an app crash rate of 3.1%, up from 1.7% a year earlier, and a product-return rate of 6.4%. A survey of 420 smartphone users found that 75% discovered new apps through social media, 63% trusted influencer recommendations and 41% used QR codes in-store. In-house code-review training costs $340 per developer; external certification courses cost $1,250 each.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Quarry Bay Digital for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "840", "1,050"],
+        ["Cost of sales", "336", "378"],
+        ["Gross profit", "504", "672"],
+        ["Operating profit", "126", "189"],
+        ["Capital employed", "700", "840"],
+        ["Interest payable", "16", "13"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.00% to 4.75%, raising borrowing costs for firms with variable-rate loans. (2) The national minimum wage will rise by 6.2% from $14.20 to $15.08 per hour from April 2026, lifting wage bills across the app-development workforce. (3) Cloud server and third-party API costs have risen 10.9% year-on-year, while digital-services inflation is 5.8% and consumer spending on mobile commerce grew 7.6%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QBD must fund its $630,000 cross-platform commerce app. Explain two advantages for QBD of using retained profit instead of a bank loan for this investment.",
+      "model_answer": "Point 1: Retained profit charges QBD no interest and requires no repayment, protecting the cash flow of a 45-person app developer already facing fixed costs of $252,000 a year and a 3.1% app crash rate. Keeping the $240,000 in the business means every dollar not paid to a lender can be spent on code-review training at $340 per developer to cut crashes, or on fixing the 6.4% product-return rate. That matters because 63% of surveyed users trust influencer recommendations, so a poor app would quickly damage the reputation the $630,000 investment depends on.\n\nPoint 2: Internal funding avoids the security and conditions attached to the $390,000 bank loan, so Esme Beaumont keeps full control of the commerce app and can change direction quickly if the 3.1% crash rate persists. There is no risk of assets being threatened if early downloads disappoint, and the $240,000 can be redirected to a rapid fix without asking a bank. For a young firm founded in 2020, preserving flexibility while building the 21,000-download monthly base is more valuable than taking on a new creditor.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to QBD, its financing and its app-quality problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$240,000", "$390,000", "$630,000", "commerce app"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QBD is launching its new cross-platform commerce app. Consider app-store advertising, social media influencer marketing, or in-store QR-code promotions with retail partners. Which should QBD choose to promote the launch? Justify your recommendation.",
+      "model_answer": "App-store advertising: Ads inside app stores reach users actively searching for shopping apps and can be targeted by category, giving measurable downloads. It is relatively cheap and quick to set up against the $630,000 budget. However, competition is intense and costs per download can rise, and with a 3.1% crash rate a surge of new users could expose faults and worsen the 6.4% return rate before the app is ready.\n\nSocial media influencer marketing: The survey of 420 users shows 75% discover new apps through social media and 63% trust influencer recommendations, so this channel matches how QBD's customers actually find apps. Influencers can demonstrate the shopping experience, building trust for retail partners and reaching a young audience at a fraction of television costs. The drawbacks are that results depend on choosing credible influencers and are slower to build than paid ads, and a single bad review of a crashing app could spread quickly.\n\nIn-store QR-code promotions: QR codes placed with retail partners connect the physical store to the app and can be tracked by location. They are low-cost and reach shoppers at the moment of purchase, supporting the 41% who use QR codes in-store. Their weakness is limited reach dependent on partner co-operation, and they do nothing to explain the app's benefits to users who never visit those stores.\n\nRecommendation: QBD should choose social media influencer marketing as its main channel. It aligns with the 75% discovery and 63% trust figures, is cost-effective and builds the credibility needed after a 3.1% crash rate. App-store ads are rejected as expensive and likely to amplify quality problems too early; QR codes are rejected as too dependent on partners and narrow, though they should be used as a supporting tactic once the app is stable.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the three promotional options with minimal application to QBD.",
+        "level_2_5_to_8": "Detailed analysis of the advantages and disadvantages of at least two options in the context of QBD with some judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in context with a well-justified recommendation explaining why app-store ads and QR codes are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$630,000", "3.1%", "75%", "420", "63%", "commerce app"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QBD's app crash rate has reached 3.1% and its product-return rate is 6.4%. Explain two benefits for QBD of using autocratic leadership in its development team.",
+      "model_answer": "Point 1: Autocratic leadership lets Esme Beaumont set unambiguous quality standards and take a fast decision to halt releases while the 3.1% crash rate is investigated, which is vital when 63% of surveyed users trust recommendations and a few bad reviews can undo the $630,000 launch. In a flat structure of 45 people, a clear instruction can be acted on immediately, reducing the risk that the 6.4% product-return rate rises further and damages retailer relationships.\n\nPoint 2: Central control fixes accountability: each developer knows exactly which test must pass, so the cause of the crashes can be traced and corrected rather than debated. That supports targeted in-house code-review training at $340 per developer and helps restore the 21,000-download monthly base. Decisive leadership also reassures retail clients that problems are being handled. The style has limits, though: developers who cannot suggest fixes may become demotivated, and their front-line insight into the 3.1% crashes could be lost, so some consultation is still needed.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QBD's crash rate, returns and flat structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "flat structure", "app crash rate", "3.1%", "workforce of 45", "6.4%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QBD must improve code quality to cut its 3.1% app crash rate. Consider in-house code-review training at $340 per developer or external certification courses at $1,250 each. Which should QBD choose? Justify your decision.",
+      "model_answer": "In-house code-review training: Training delivered internally at $340 per developer focuses on QBD's own code and the exact faults behind the 3.1% crash rate and 6.4% return rate, so improvements can be made immediately. For the workforce of 45 the total is $15,300, far below the external route. It fits the flat structure, keeps skills inside the business and lets senior developers coach others while continuing the 21,000-download workload. The drawbacks are that internal trainers may pass on their own bad habits, there is no recognised certificate, and sessions can be interrupted by urgent bug fixes.\n\nExternal certification courses: Courses at $1,250 each provide formal, up-to-date qualifications and outside expertise, which could reassure retail clients after a 3.1% crash rate and support the $630,000 commerce app. For all 45 developers the cost is $56,250, almost four times as much. Staff are away from the codebase and the generic content may not match QBD's platforms, so internal follow-up would still be needed, and the knowledge may leave if developers depart.\n\nDecision: QBD should choose in-house code-review training as the main approach. It is cheaper by $40,950, directly targets the crash and return problems and builds lasting internal skill. External certification is rejected as too expensive and too detached from QBD's own code to be the primary answer; a few senior developers could take the course later and then train colleagues, adding credibility without the full cost.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to QBD.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both methods in the context of QBD.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods in context with a justified decision covering cost, relevance and disruptive effect."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["in-house code-review training", "$340", "$1,250", "workforce of 45", "3.1%", "app crash rate"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QBD's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QBD's average total cost.",
+          "model_answer": "Formula: Average total cost = Fixed costs ÷ Output + Variable cost per unit. Substitution: $252,000 ÷ 63,000 + $5.00 = $4.00 + $5.00 = $9.00. Answer: average total cost is $9.00 per unit."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QBD's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $252,000 ÷ ($17.00 − $5.00) = $252,000 ÷ $12.00 = 21,000 units. Answer: break-even output is 21,000 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QBD's management can use this financial data.",
+          "model_answer": "1. Average total cost of $9.00 against the $17.00 price shows a healthy $8.00 gap, but the 3.1% crash rate and 6.4% return rate can raise effective cost, so managers can track whether quality failures erode it.\n2. Break-even of 21,000 units against output of 63,000 units gives a margin of safety of 42,000 units, showing the app is profitable and supporting the $630,000 investment.\n3. Contribution of $12.00 a unit means every unit beyond break-even adds $12.00 toward repaying the $390,000 bank loan, allowing managers to set monthly download targets.\n4. With 75% of surveyed users finding apps through social media and 63% trusting influencers, managers can compare the cost of promotion against the $12.00 contribution per extra download to decide how much to spend on the launch."
+        }
+      ],
+      "model_answer": "(i) Average total cost = $9.00 | (ii) Break-even output = 21,000 units | (iii) Four contextual uses explained: cost gap of $8.00 against the $17.00 price; margin of safety of 42,000 units; loan targets from the $390,000 facility; and promotion spending judged against $12.00 contribution.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$9.00", "21,000", "63,000", "$252,000", "$17.00", "$5.00", "42,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QBD's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has QBD's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 60.0%\nGross Profit Margin 2025 = 64.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 18.0%\nROCE 2025 = 22.5%\n\nDetailed workings: Gross profit of $504,000 on revenue of $840,000 in 2024 gives 60.0%; gross profit of $672,000 on revenue of $1,050,000 in 2025 gives 64.0%, a gain of 4.0 percentage points. Operating profit rose from $126,000 to $189,000, so the operating-to-revenue percentage improved from 15.0% to 18.0%. Capital employed increased from $700,000 to $840,000, but the return on capital still rose from 18.0% to 22.5% because operating profit grew faster than the asset base. Cost of sales rose from $336,000 to $378,000 while revenue grew by $210,000, so the direct cost share fell. Interest payable declined from $16,000 to $13,000, helping retained earnings.\n\nEvaluation: All three measures moved favourably, which makes the conclusion more dependable than if only one had changed. The improvement in the gross percentage suggests QBD is keeping more of each sales dollar after direct app-delivery costs, helpful when cloud and API costs are forecast to rise 10.9%. The operating percentage rising by 3.0 points shows that the $252,000 fixed costs are being absorbed by growth rather than deferred. Return on capital climbing to 22.5% despite $140,000 more capital employed is strong evidence that the business is using its assets more effectively. However, the 3.1% crash rate and 6.4% return rate could raise support costs and push users away, especially given 63% of surveyed users rely on trusted recommendations. One year of figures also cannot prove a lasting trend, and the absolute margins are still modest for a software firm.\n\nConclusion: QBD's financial performance has improved. Gross profitability, operating profitability and return on capital all rose together despite a larger capital employed and lower interest cost. The main risk is app quality, so management should use the $340 in-house code-review training to protect the trend while the $630,000 commerce app is launched.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directions of change without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs, capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["60.0%", "64.0%", "15.0%", "18.0%", "22.5%", "$630,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QBD of introducing automated app-testing software to cut its 3.1% crash rate.",
+      "model_answer": "Advantage: Automated testing can run the same checks on every release, catching the faults behind the 3.1% app crash rate before users download the update, which should also reduce the 6.4% product-return rate. With 75% of the 420 surveyed users discovering apps through social media and 63% trusting recommendations, a stable app protects the word-of-mouth that underpins the $630,000 commerce app and the 21,000 monthly downloads. It also frees the 45-strong team from repetitive manual tests.\n\nDisadvantage: Licensing and integrating the tool adds to QBD's $252,000 of annual fixed costs and competes with the $390,000 bank loan. Automated scripts only test what they are told to, so they may miss unusual faults that caused the 3.1% crashes, and false positives could delay releases at a critical launch. Developers may rely on the tool rather than think critically, and if a major crash still occurs, the 63% who trust recommendations may spread negative reviews quickly, undoing the benefit.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to QBD's crash data, survey and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3.1%", "75%", "420", "63%", "$630,000", "app crash rate"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.75%, the 6.2% minimum wage increase and the 10.9% rise in cloud and API costs will affect QBD. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (from 4.00% to 4.75%): If QBD's $390,000 bank loan carries a variable rate, the extra annual interest is 0.75% × $390,000 = $2,925 a year (0.0075 × $390,000 = 2,925). That is small beside $252,000 of fixed costs, and if the loan is fixed-rate the immediate cash effect is zero. Higher rates may still make later funding for the commerce app more expensive and could reduce retailers' appetite for new digital projects.\n\nMinimum wage rise (6.2%, to $15.08 per hour): The insert gives a workforce of 45 and output of 63,000 units a year but states no hours worked and no individual pay, so a total annual wage bill cannot be invented. The defensible comparison is productivity: 63,000 ÷ 45 = 1,400 units per worker. If that holds, the rise can be absorbed through the $12.00 contribution per unit; if the 3.1% crash rate and 6.4% returns absorb developer time, unit labour cost rises and contribution shrinks. No more precise figure is supportable from the insert.\n\nInput-cost inflation (10.9%): The $5.00 variable cost is not decomposed in the insert, so only a bound can be shown. If the whole variable cost rose 10.9%, the increase is 0.109 × $5.00 = $0.545, about $0.55 per unit; across 63,000 units that is roughly $34,650 a year (63,000 × $0.55). Even a half-size effect near $0.27 a unit would be about $17,000 a year, cutting contribution from $12.00 toward $11.50 and reducing the cash available for the $630,000 app.\n\nConclusion: The 10.9% rise in cloud server and API costs will have the greatest impact. It applies to every one of the 63,000 units and erodes the $12.00 contribution that funds the investment, whereas the interest rise is a calculable $2,925 at most and the wage effect cannot be quantified from the insert. QBD can offset part of it through the 75% of users who discover apps socially, but only if the 3.1% crash rate is fixed first.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to QBD.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on QBD's costs, revenue or financing in context, with shown working where figures are used.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in the context of QBD with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "6.2%", "10.9%", "$15.08", "$390,000", "$5.00"]
+      }
+    }
+  ]
+}

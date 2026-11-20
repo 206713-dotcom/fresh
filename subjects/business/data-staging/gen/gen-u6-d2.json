@@ -1,0 +1,1201 @@
+[
+  {
+    "scenario_id": "P1_U6_SET_171",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Brackenmoor Electronics is a public limited company in Country X that manufactures washing machines and dishwashers. It employs 210 workers across two factories and generated $3.6 million in revenue last year, of which $900,000 came from exports to Country Y. Country Y has 240 million consumers but charges an 18% import tariff on finished appliances, adding $162,000 in duty costs to Brackenmoor's Country Y sales each year.\n\nThe board must decide how to expand. Option one is to build a $2.5 million assembly plant in Country Y employing 180 local workers at 15% lower wages than in Country X. Option two is to spend $1.2 million enlarging the Country X factory, creating 60 jobs and keeping supplier contracts. Profits earned in Country Y would be repatriated to Country X.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'multinational company'.",
+        "model_answer": "A business that owns or controls production, sales or service operations in more than one country, rather than operating only in its home country [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a business that operates in more than one country",
+            "has production, sales or service operations outside its home country"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Brackenmoor Electronics of building the Country Y plant.",
+        "model_answer": "Benefit 1: Building abroad gives Brackenmoor access to a much larger market [k], as Country Y has 240 million consumers compared with Country X's much smaller market [app]. Benefit 2: Producing inside Country Y avoids its import tariff [k], saving $162,000 a year in duty on the $900,000 of appliances Brackenmoor currently exports there [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to a larger overseas market and new customers",
+            "avoiding import tariffs by producing inside the market"
+          ],
+          "application_max_2": [
+            "Country Y has 240 million consumers",
+            "18% tariff costs $162,000 a year on $900,000 of exports"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Brackenmoor Electronics",
+            "Country Y",
+            "240 million",
+            "$900,000",
+            "$162,000",
+            "18%",
+            "$2.5 million",
+            "$1.2 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Brackenmoor Electronics could face if it builds the Country Y plant.",
+        "model_answer": "Problem 1: The plant requires a very large outflow of cash [k], at $2.5 million it is more than double the $1.2 million needed to expand in Country X [app], so Brackenmoor may need to borrow heavily, raising interest payments and cutting short-term profit [an]. Problem 2: Returns from the plant could be reduced by government action [k], because profits earned in Country Y would be repatriated to Country X [app], and the Country Y government could restrict repatriation or raise taxes, leaving shareholders with less money [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large capital cost strains the firm's cash and increases financial risk",
+            "host governments may restrict repatriated profits or raise taxes"
+          ],
+          "application_max_2": [
+            "$2.5 million plant cost vs $1.2 million for the Country X expansion",
+            "profits earned in Country Y would be repatriated to Country X"
+          ],
+          "analysis_max_2": [
+            "borrowing to fund the plant raises interest payments and cuts short-term profit",
+            "restrictions or taxes in Country Y would reduce returns to Country X shareholders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.5 million",
+            "$1.2 million",
+            "$162,000",
+            "$3.6 million",
+            "Country Y",
+            "Country X",
+            "180"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackenmoor Electronics should build the Country Y plant or expand its Country X factory? Justify your answer.",
+        "model_answer": "Building the Country Y plant would give Brackenmoor access to 240 million consumers [k] and avoid the 18% tariff worth $162,000 a year on $900,000 of exports, while employing local workers at 15% lower wages [app], which should lower unit costs and could raise profit as output grows [an]. However, the $2.5 million cost is more than double the $1.2 million needed in Country X [k], and returns depend on the Country Y government allowing profits to be repatriated to Country X [app]; if rules change, the firm could be locked into a costly plant with limited returns [an]. Overall, Brackenmoor should build the Country Y plant, because the larger market and tariff savings outweigh the higher cost for a firm seeking growth [eval], but it should keep some Country X capacity so supply to existing customers is not disrupted [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overseas plants give access to larger markets and remove tariffs/cut input costs",
+            "large overseas investments carry heavy financial and political risk"
+          ],
+          "application_max_2": [
+            "240 million consumers; 18% tariff = $162,000 on $900,000 of exports; 15% lower wages",
+            "$2.5 million vs $1.2 million domestic; profits repatriated to Country X"
+          ],
+          "analysis_max_2": [
+            "tariff savings and lower wages reduce unit costs and could raise profit as output grows",
+            "rule changes by the host government could strand capital in a low-return plant"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on building the plant",
+            "recognises the value of retaining some Country X capacity as a safeguard"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "240 million",
+            "18%",
+            "$162,000",
+            "$900,000",
+            "$2.5 million",
+            "$1.2 million",
+            "Country Y",
+            "Brackenmoor"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_172",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Corven Apparel Group is a Country X clothing manufacturer and retailer. It employs 640 workers in three factories making 1.2 million shirts and uniforms a year, with revenue of $18 million. Cotton fabric costs $4.10 a metre in Country X but only $2.60 in Country Z, where wages are 40% lower and fabric arrives within 3 weeks.\n\nThe board is considering moving all garment production to Country Z and keeping Country X as the design and sales headquarters. The move would save about $1.5 a metre on fabric, an estimated $3.4 million a year, but would close two factories and make 480 of the 640 workers redundant. Country Z's government is offering a 10-year tax holiday to foreign manufacturers who export at least 60% of output.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'host country'.",
+        "model_answer": "The country in which a multinational company locates its production, offices or sales operations, which is different from the country where the multinational was originally based [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a country where the multinational locates its operations",
+            "different from the multinational's home or origin country"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Corven Apparel Group of relocating production to Country Z.",
+        "model_answer": "Benefit 1: Fabric and wages would be much cheaper [k], with cotton at $2.60 a metre versus $4.10 in Country X and wages 40% lower [app]. Benefit 2: Corven would pay far less tax [k], as Country Z offers foreign manufacturers a 10-year tax holiday [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower input and labour costs in the host country",
+            "tax incentives or holidays offered by host country governments"
+          ],
+          "application_max_2": [
+            "$2.60 vs $4.10 a metre; wages 40% lower",
+            "10-year tax holiday for foreign manufacturers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.60",
+            "$4.10",
+            "40%",
+            "Country Z",
+            "$3.4 million",
+            "10-year",
+            "Corven Apparel Group",
+            "640"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Corven Apparel Group could face if it relocates production to Country Z.",
+        "model_answer": "Problem 1: Corven would have to dismiss most of its Country X workforce [k], making 480 of the 640 workers redundant [app], which would mean large redundancy payments and lasting damage to Corven's reputation as a local employer [an]. Problem 2: Moving production overseas lengthens the supply chain [k], as finished garments must travel from Country Z to Country X shops [app], so any delays could leave stores empty in peak seasons and disappoint customers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "redundancy payments and reputational damage from closing factories",
+            "longer, more complex supply chain and logistics"
+          ],
+          "application_max_2": [
+            "480 of the 640 workers would be made redundant",
+            "production moves to Country Z while Country X remains the design and sales headquarters"
+          ],
+          "analysis_max_2": [
+            "redundancy costs and bad publicity reduce profit and staff morale",
+            "long delivery routes risk stock shortages and lost sales in peak seasons"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "480",
+            "640",
+            "Country Z",
+            "Country X",
+            "$18 million",
+            "$3.4 million",
+            "1.2 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Corven Apparel Group should relocate production to Country Z or keep it in Country X? Justify your answer.",
+        "model_answer": "Relocating would cut Corven's costs significantly [k], saving $1.5 a metre on fabric and an estimated $3.4 million a year, plus a 10-year tax holiday [app], which would raise profit margins and help Corven compete against cheaper imported clothing [an]. However, keeping production in Country X avoids dismissing 480 of the 640 workers [k], preserving experienced staff, local supplier links and the skilled local workforce [app]; mass redundancies could harm morale and Corven's reputation, and long delivery routes from Country Z add supply risk [an]. Overall, Corven should relocate production to Country Z, because $3.4 million of annual savings and lower wages secure the firm's survival in a price-competitive market [eval], but it should honour enhanced redundancy terms and keep a small Country X finishing unit to protect its reputation [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation cuts input and tax costs and can raise profit margins",
+            "relocation risks workforce morale, reputation and supply reliability"
+          ],
+          "application_max_2": [
+            "$1.5 a metre fabric saving; estimated $3.4 million a year; 10-year tax holiday",
+            "480 of 640 workers would be redundant; Country X kept as design and sales headquarters"
+          ],
+          "analysis_max_2": [
+            "lower costs strengthen competitiveness against cheap imported clothing",
+            "redundancies damage morale and reputation; longer supply routes risk empty stores"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on relocation",
+            "balanced mitigation, such as enhanced redundancy terms or a retained finishing unit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.5",
+            "$3.4 million",
+            "10-year",
+            "480",
+            "640",
+            "Country Z",
+            "$18 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_173",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Halvoren Foods Plc is a Country X manufacturer of breakfast cereals and snack bars. It employs 380 workers at one factory and has no overseas operations. Last year it generated $24 million in revenue, 75% of it from Country X. Country X's economy is forecast to grow by only 1% this year, while Country Y and Country Z are expected to grow by 5% and 6% respectively.\n\nThe board must choose between spending $5 million launching Halvoren's products in Country Y and Country Z, or investing $2 million in a new Country X product line. Expansion abroad would spread sales across three economies and reduce dependence on the slow-growing Country X market, but unfamiliar competitors, higher marketing costs and currency changes make the returns uncertain.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'globalisation'.",
+        "model_answer": "The increasing integration of economies and markets around the world, so that businesses trade, invest and operate across national borders [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "economies and markets around the world becoming increasingly connected",
+            "businesses trading, investing and operating across national borders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Halvoren Foods Plc of expanding into Country Y and Country Z.",
+        "model_answer": "Benefit 1: Halvoren would gain access to faster-growing markets [k], as Country Y and Country Z are forecast to grow by 5% and 6% versus only 1% in Country X [app]. Benefit 2: Sales would be spread across three economies [k], so Halvoren would no longer rely on Country X for 75% of its revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "access to larger or faster-growing overseas markets",
+            "spreading risk by diversifying across several economies"
+          ],
+          "application_max_2": [
+            "Country Y and Country Z growing at 5% and 6% vs 1% in Country X",
+            "75% of revenue currently from Country X; sales spread across three economies"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "5% and 6%",
+            "1%",
+            "75%",
+            "$24 million",
+            "Country Y and Country Z",
+            "Halvoren Foods",
+            "$5 million",
+            "$2 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Halvoren Foods Plc could face if it expands into Country Y and Country Z.",
+        "model_answer": "Problem 1: The launch would cost far more than the home option [k], at $5 million it is two and a half times the $2 million needed for the new Country X line [app], so Halvoren may need loans or share issues, increasing its financial risk [an]. Problem 2: Success abroad is uncertain [k], because unfamiliar competitors, higher marketing costs and currency changes could erode its margins [app], so Halvoren could spend heavily on marketing and still win too few customers to break even [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overseas expansion requires large funds and increases financial risk",
+            "unfamiliar markets, competitors and currency changes make returns uncertain"
+          ],
+          "application_max_2": [
+            "$5 million launch vs $2 million for the domestic product line",
+            "unfamiliar competitors, higher marketing costs and currency changes"
+          ],
+          "analysis_max_2": [
+            "borrowing or new share issues raise financial risk if the launch fails",
+            "heavy marketing spend may not recover if too few customers are won"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$5 million",
+            "$2 million",
+            "Country Y",
+            "Country Z",
+            "Halvoren",
+            "75%",
+            "$24 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Halvoren Foods Plc should expand into Country Y and Country Z or invest in the new Country X product line? Justify your answer.",
+        "model_answer": "Expanding abroad would let Halvoren tap two faster-growing economies [k], with growth of 5% and 6% against 1% at home, while reducing dependence on Country X for 75% of the $24 million revenue [app], spreading risk and opening a much larger customer base [an]. However, the $5 million launch is two and a half times the $2 million domestic alternative [k], and returns are uncertain given unfamiliar competitors and currency changes [app], so failure would leave Halvoren with high debt and little to show for the outlay [an]. Overall, Halvoren should expand into Country Y and Country Z, because diversifying away from a single slow-growing market protects long-term revenue better than one domestic product line [eval], provided it launches in one country first to test demand before committing the full $5 million [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overseas expansion opens faster-growing markets and spreads risk",
+            "overseas expansion is costly and the returns are uncertain"
+          ],
+          "application_max_2": [
+            "5% and 6% growth vs 1% in Country X; 75% of $24 million revenue from Country X",
+            "$5 million launch vs $2 million domestic; unfamiliar competitors and currency changes"
+          ],
+          "analysis_max_2": [
+            "diversification protects long-term revenue across three economies",
+            "failure would leave high debt and wasted outlay"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on expanding abroad",
+            "suggests a phased entry, testing one country first, showing balanced judgement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "5% and 6%",
+            "1%",
+            "75%",
+            "$24 million",
+            "$5 million",
+            "$2 million",
+            "Country Y and Country Z",
+            "Halvoren"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_174",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Nordmere Mining Plc is a Country X multinational that extracts copper ore at a mine in Country Y, where it has operated for 8 years. The mine employs 520 local workers and produced ore worth $50 million last year. After taxes and wages, Nordmere made $7.5 million profit in Country Y, equal to 15% of the ore's value.\n\nThe board must decide what to do with the $7.5 million. Option one is to repatriate it to Country X headquarters to pay a larger dividend to shareholders, who have complained about low dividends for two years. Option two is to reinvest it in a new Country Y processing plant costing $7 million, which would create 90 skilled jobs. Country Y's government offers a 5-year tax rebate to firms that reinvest profits locally.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'repatriation of profits'.",
+        "model_answer": "The practice of a multinational sending profits earned in a host country back to its home country [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profits earned in the host country are sent abroad",
+            "back to the multinational's home country"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Nordmere Mining Plc of repatriating the $7.5 million to Country X.",
+        "model_answer": "Benefit 1: Shareholders would receive a larger dividend [k], as the $7.5 million could be paid out rather than tied up in Country Y [app]. Benefit 2: Nordmere would centralise cash in Country X [k], giving head office $7.5 million to fund other projects without needing a loan [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher dividends for shareholders",
+            "cash central to head office, avoiding the need to borrow"
+          ],
+          "application_max_2": [
+            "$7.5 million could be paid out as a dividend",
+            "$7.5 million available at Country X headquarters"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7.5 million",
+            "Country X",
+            "Country Y",
+            "Nordmere",
+            "$50 million",
+            "520",
+            "15%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Nordmere Mining Plc could face if it repatriates the $7.5 million to Country X.",
+        "model_answer": "Problem 1: Nordmere would lose the 5-year tax rebate [k], which Country Y grants only to profits reinvested locally, so repatriating the $7.5 million raises its tax bill [app], leaving less net profit than reinvesting would [an]. Problem 2: Country Y's government may view repatriation badly [k], as the $7.5 million would leave instead of funding a $7 million processing plant with 90 skilled jobs [app], risking tougher treatment when the mining licence is renewed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "host government tax rebates are lost when profits are repatriated",
+            "repatriation can damage relations with the host government"
+          ],
+          "application_max_2": [
+            "5-year tax rebate only for profits reinvested locally",
+            "$7 million plant with 90 skilled jobs left unfunded"
+          ],
+          "analysis_max_2": [
+            "higher tax bill reduces net profit compared with reinvesting",
+            "poor government relations could endanger the mining licence"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "5-year",
+            "$7.5 million",
+            "$7 million",
+            "90",
+            "Country Y",
+            "Nordmere",
+            "520"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Nordmere Mining Plc should repatriate the $7.5 million to Country X or reinvest it in the new Country Y processing plant? Justify your answer.",
+        "model_answer": "Repatriating the $7.5 million would let Nordmere pay the larger dividend shareholders want [k], distributing the full $7.5 million rather than holding it in Country Y [app], which would improve short-term returns and financial flexibility for head office [an]. However, reinvesting would earn the 5-year tax rebate [k] and create a $7 million processing plant with 90 skilled jobs [app], which should lift the mine's long-run profit and protect Nordmere's standing with the Country Y government [an]. Overall, Nordmere should reinvest the money in the processing plant, because the tax rebate and future processing profit outweigh a one-off dividend [eval], while shareholders can still be rewarded once the plant generates cash [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "repatriation rewards shareholders and centralises cash",
+            "reinvestment can earn host country tax rebates and build long-term capacity"
+          ],
+          "application_max_2": [
+            "full $7.5 million distributed vs tied up in Country Y",
+            "5-year tax rebate; $7 million plant with 90 skilled jobs"
+          ],
+          "analysis_max_2": [
+            "repatriation improves short-term returns and financial flexibility",
+            "reinvestment lifts long-run profit and protects the mining licence and government relations"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on repatriation or reinvestment",
+            "recognises shareholders can be rewarded once the plant generates cash"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7.5 million",
+            "5-year",
+            "$7 million",
+            "90",
+            "Country X",
+            "Country Y",
+            "15%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_175",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Aldric Metals Plc, a Country X steel multinational, runs a foundry in Country Y employing 260 workers and has operated there for 11 years. The Country Y government has pressured Aldric to install modern computer-controlled casting equipment, which would cost $4 million, replace worn machines and train 120 Country Y workers in the new technology.\n\nAldric's board is split. Replacing the equipment would transfer new casting technology to Country Y and cut reject rates from 9% to 3%, but would require two senior Country X engineers to relocate. The alternative is to keep the old machines and pay Country X experts to fly in for three weeks each quarter, at a cost of $120,000 a year. The board must reach a decision by 30 June.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'technology transfer'.",
+        "model_answer": "The process by which a multinational brings its technology, skills and working methods into the host country, spreading knowledge to local firms and workers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "movement of technology, skills and methods from one country to another",
+            "from the multinational into the host country, benefiting local workers and firms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Aldric Metals Plc of installing the new casting equipment.",
+        "model_answer": "Benefit 1: Defects and waste would fall sharply [k], with the reject rate dropping from 9% to 3% [app]. Benefit 2: Aldric would gain a more skilled local workforce [k], as the investment would train 120 Country Y workers rather than rely on flying in experts at $120,000 a year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "improved quality and lower reject rates raise efficiency",
+            "training the host country workforce builds local skills and capacity"
+          ],
+          "application_max_2": [
+            "reject rate from 9% to 3%",
+            "120 Country Y workers trained vs $120,000 a year on flying in experts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9% to 3%",
+            "$4 million",
+            "120",
+            "260",
+            "Aldric",
+            "Country Y",
+            "$120,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Aldric Metals Plc could face if it installs the new casting equipment.",
+        "model_answer": "Problem 1: The investment is a large cash outflow [k], at $4 million it dwarfs the $120,000 a year cost of expert visits [app], so Aldric may need loans and its short-term profit will fall [an]. Problem 2: Installing new technology spreads Aldric's knowledge [k], as 120 trained workers and modern methods become part of the Country Y economy [app], meaning local firms could copy Aldric's techniques and undercut it later [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large capital outlay increases financial risk and cuts short-term profit",
+            "technology and skills can leak to local competitors once transferred"
+          ],
+          "application_max_2": [
+            "$4 million cost vs $120,000 a year for expert visits",
+            "120 Country Y workers trained in the new technology"
+          ],
+          "analysis_max_2": [
+            "borrowing to fund the equipment raises interest payments and lowers short-term profit",
+            "local competitors could learn the methods and undercut Aldric"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4 million",
+            "$120,000 a year",
+            "120",
+            "9% to 3%",
+            "Country Y",
+            "260",
+            "11 years"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aldric Metals Plc should install the new casting equipment or keep the old machines? Justify your answer.",
+        "model_answer": "Installing the equipment would cut the reject rate from 9% to 3% [k], saving on wasted metal and rework after a $4 million outlay [app], which lowers unit costs and raises quality over the machines' life [an]. However, keeping the old machines costs only $120,000 a year in expert visits [k], yet it keeps reject rates at 9% and ignores the host government's pressure and the training potential of 120 workers [app], which could sour relations and invite stricter treatment later [an]. Overall, Aldric should install the new equipment, because long-term quality gains and government goodwill outweigh the high upfront cost [eval], particularly as 120 trained Country Y workers can run it without permanent expatriate support [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "new equipment improves quality and efficiency",
+            "keeping obsolete equipment preserves cash but leaves inefficiency in place"
+          ],
+          "application_max_2": [
+            "reject rate from 9% to 3%; $4 million outlay",
+            "$120,000 a year on expert visits vs government pressure and 120 workers to train"
+          ],
+          "analysis_max_2": [
+            "lower unit costs and better quality improve competitiveness over the equipment's life",
+            "ignoring the host government risks tougher treatment; old machines keep reject rates high"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on installing the equipment",
+            "recognises a trained local workforce removes the need for permanent expatriate support"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9% to 3%",
+            "$4 million",
+            "$120,000 a year",
+            "120",
+            "260",
+            "Country Y",
+            "Aldric"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_176",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Kelvarn Dyes Ltd is a garment-dyeing factory in the Country X town of Millbrook, owned by a European multinational. It employs 300 local workers, mostly on the dyeing line, and discharges waste water into the River Calder. Tests show dye levels 4 times the legal limit downstream of the factory.\n\nThe Country X environmental agency proposes new legal controls forcing all dye works to install closed-loop effluent treatment by next year, or face fines of $250,000 and closure. Kelvarn can spend $2.2 million on a treatment plant, or relocate production to Country Z, where controls are weaker. Closing Millbrook would remove 300 jobs from a town with 500 unemployed adults. The town council wants the factory to stay, but farmers complain the polluted river harms their crops.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'external cost'.",
+        "model_answer": "A cost of a business activity that falls on people not directly involved in the transaction, such as pollution suffered by the local community [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a cost paid by third parties, not those in the transaction",
+            "for example, pollution suffered by the local community"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Kelvarn Dyes Ltd of installing the treatment plant.",
+        "model_answer": "Benefit 1: Kelvarn would avoid fines and closure [k], eliminating the risk of $250,000 fines and being shut down under the new legal controls [app]. Benefit 2: Kelvarn would protect its reputation and licence to operate [k], as complying stops pollution of the River Calder and keeps 300 Millbrook jobs, satisfying the town council and farmers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "compliance avoids fines and closure",
+            "compliance protects reputation and relations with the community"
+          ],
+          "application_max_2": [
+            "$250,000 fines and closure under the new controls",
+            "River Calder pollution ended; 300 Millbrook jobs kept; town council and farmers satisfied"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.2 million",
+            "$250,000",
+            "300",
+            "Millbrook",
+            "River Calder",
+            "500"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kelvarn Dyes Ltd would face if it relocates production to Country Z.",
+        "model_answer": "Problem 1: Relocation would make 300 Millbrook workers redundant [k], cutting jobs from a town with 500 unemployed adults [app], meaning large redundancy payments and serious reputational damage for Kelvarn [an]. Problem 2: Moving to a country with weaker controls only helps short term [k], as the River Calder tests show how strictly Country X polices pollution [app], so if Country Z adopts similar laws Kelvarn faces the same compliance costs plus lost trust from customers and the public [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "closing a factory makes workers redundant and damages reputation",
+            "operating where regulation is weak may not be sustainable as laws tighten everywhere"
+          ],
+          "application_max_2": [
+            "300 Millbrook workers redundant; town already has 500 unemployed adults",
+            "River Calder dye levels 4 times the legal limit show strict Country X enforcement"
+          ],
+          "analysis_max_2": [
+            "redundancy payments and bad publicity would harm Kelvarn's profit and image",
+            "future regulation in Country Z would strand the investment and customers may lose trust"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "300",
+            "500",
+            "Millbrook",
+            "Country Z",
+            "River Calder",
+            "$2.2 million",
+            "$250,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kelvarn Dyes Ltd should install the treatment plant or relocate production to Country Z? Justify your answer.",
+        "model_answer": "Installing the plant keeps Kelvarn operating [k], avoiding $250,000 fines and closure under the new legal controls while protecting 300 Millbrook jobs [app], so production continues with a safer reputation and the River Calder recovers [an]. However, the $2.2 million outlay is significant [k], and Country Z has weaker controls and possibly lower operating costs [app], yet relocation abandons Millbrook, its workers and community relationships, and risks Kelvarn being seen as polluting wherever rules are weakest [an]. Overall, Kelvarn should install the treatment plant, because compliance protects its licence, its 300 workers and its reputation for far less than the damage of fleeing [eval], and the investment secures the factory's future beyond next year's deadline [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "compliance avoids fines and closure and protects reputation",
+            "relocation avoids upfront compliance costs but abandons assets and community ties"
+          ],
+          "application_max_2": [
+            "$250,000 fines and closure vs $2.2 million treatment plant; 300 jobs kept",
+            "Country Z has weaker controls; Millbrook town with 500 unemployed adults"
+          ],
+          "analysis_max_2": [
+            "compliance keeps production and community relations intact and river recovers",
+            "relocation severs community ties and damages Kelvarn's image as a responsible multinational"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on installing the plant",
+            "recognises the long-term security the investment brings beyond the deadline"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.2 million",
+            "$250,000",
+            "300",
+            "500",
+            "Millbrook",
+            "Country Z",
+            "River Calder"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_177",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Baltica Mart Plc is a European multinational supermarket chain with 210 stores across 9 countries. It plans to enter Country X, where the retail grocery market is worth $900 million a year. A Country X chain, Castleton Retail Co, has offered Baltica a joint venture using its 25 stores and distribution depot.\n\nBaltica's board is deciding between the joint venture and opening 12 stand-alone megastores. Castleton would hold a 40% stake, and Country X competition authorities are reviewing the plans. The megastores would undercut Castleton and many small Country X retailers on price, and estimates suggest 40 local shops could close, while the joint venture would keep Castleton's 480 staff and local purchasing. However, the joint venture would halve Baltica's expected market share gains.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'ethical issue'.",
+        "model_answer": "A situation in which a decision involves a conflict between making profit and doing what is considered morally right [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a conflict between profit and what is morally right",
+            "for example, fairness to workers, rivals, suppliers or communities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Baltica Mart Plc of choosing the joint venture with Castleton Retail Co.",
+        "model_answer": "Benefit 1: Baltica would gain immediate access to Country X [k], entering through Castleton's 25 stores and distribution depot rather than building stores from scratch [app]. Benefit 2: Baltica would protect its reputation [k], as the joint venture would keep Castleton's 480 staff and local purchasing, avoiding accusations that it forces 40 local shops to close [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "faster, cheaper market entry using an established partner",
+            "protects reputation and stakeholder relationships"
+          ],
+          "application_max_2": [
+            "25 stores and distribution depot already in place",
+            "480 staff kept and 40 local shops not forced to close"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "25 stores",
+            "Castleton Retail Co",
+            "480 staff",
+            "40 local shops",
+            "40%",
+            "$900 million",
+            "Baltica Mart",
+            "12"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Baltica Mart Plc could face if it opens the 12 stand-alone megastores.",
+        "model_answer": "Problem 1: Baltica could face serious opposition [k], as estimates suggest 40 local shops could close and many small Country X retailers would be undercut on price [app], damaging Baltica's reputation and inviting boycotts or criticism in Country X [an]. Problem 2: Competition authorities may block or restrict the stores [k], because the plans are being reviewed by Country X competition authorities [app], so Baltica could waste money on a launch that is delayed or not allowed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "crowding out local firms damages reputation and provokes opposition",
+            "competition authorities can restrict or block large market entries"
+          ],
+          "application_max_2": [
+            "estimates suggest 40 local shops could close",
+            "plans are being reviewed by Country X competition authorities"
+          ],
+          "analysis_max_2": [
+            "public backlash and boycotts reduce sales and harm the brand",
+            "delays or a blocked launch would waste the cost of opening 12 megastores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12",
+            "40 local shops",
+            "480",
+            "competition authorities",
+            "Castleton",
+            "$900 million",
+            "Baltica"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Baltica Mart Plc should enter the joint venture with Castleton Retail Co or open the 12 stand-alone megastores? Justify your answer.",
+        "model_answer": "The megastores would let Baltica set its own prices, layouts and range [k], giving it full control of a share of Country X's $900 million grocery market [app], which could maximise long-term profit if the stores win customers quickly [an]. However, opening 12 megastores could force 40 local shops to close [k] and puts the plans under review by competition authorities [app], risking conditions, delays or a blocked launch, plus reputational damage that slows sales [an]. Overall, Baltica should take the joint venture, because sharing ownership with Castleton still opens Country X's market while protecting jobs, local supply chains and regulatory goodwill [eval], even though it halves Baltica's expected market share gains [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stand-alone stores give full control but provoke opposition and regulatory risk",
+            "joint ventures give market access with shared ownership and goodwill"
+          ],
+          "application_max_2": [
+            "$900 million Country X grocery market; full control of 12 megastores",
+            "40 local shops could close; plans reviewed by competition authorities; 40% Castleton stake"
+          ],
+          "analysis_max_2": [
+            "full control could maximise long-term profit if rapid customer wins",
+            "opposition and regulatory conditions could damage reputation and slow the launch"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on joint venture or stand-alone stores",
+            "recognises the trade-off of halving expected market share gains for goodwill and jobs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900 million",
+            "12",
+            "40 local shops",
+            "480",
+            "25 stores",
+            "Castleton",
+            "Baltica",
+            "40%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_178",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Varello Steel Plc is a multinational steel producer based in Country Y. It sells 90,000 tonnes of steel a year into Country X, worth $40 million, and has supplied the market for 6 years, but Country X's government has proposed a 22% import tariff on foreign steel to protect its 3 remaining steel mills, which employ 1,150 workers.\n\nVarello's board must decide how to respond. It could absorb the tariff, which would cut its margin on Country X sales by 22%, or build a $12 million mini-mill in Country X employing 150 workers on wages 20% below the Country X industry average. Country X's trade minister wants foreign steel firms to invest locally rather than export. A decision is needed before the tariff takes effect on 1 January.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'import tariff'.",
+        "model_answer": "A tax placed on goods brought into a country, which raises the price of imports and makes domestic products more competitive [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a tax on goods imported from abroad",
+            "raises import prices so domestic products become more competitive"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Varello Steel Plc of building the mini-mill in Country X.",
+        "model_answer": "Benefit 1: Varello would avoid the proposed tariff entirely [k], as steel made inside Country X pays no 22% import duty on $40 million of sales [app]. Benefit 2: Varello would gain secure, low-cost local production [k], with 150 workers on wages 20% below the industry average and no risk of being shut out of the market [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoiding tariffs by producing inside the market",
+            "secure market access with lower local costs"
+          ],
+          "application_max_2": [
+            "22% import duty on $40 million of sales avoided",
+            "150 workers on wages 20% below the industry average"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "22%",
+            "$40 million",
+            "$12 million",
+            "150",
+            "20%",
+            "90,000",
+            "Country X",
+            "1,150"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Varello Steel Plc could face if it builds the mini-mill in Country X.",
+        "model_answer": "Problem 1: Building the mill is a large investment [k], at $12 million it commits cash that could be used elsewhere [app], so Varello faces higher financial risk if Country X steel demand falls [an]. Problem 2: Varello may be seen as a rival to local mills [k], competing against 3 mills employing 1,150 workers [app], which could provoke demands for even tougher protection or higher taxes on its new plant [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large capital investment increases financial risk",
+            "new foreign plants may provoke backlash from protected local firms"
+          ],
+          "application_max_2": [
+            "$12 million outlay for the mini-mill",
+            "3 remaining Country X mills employ 1,150 workers"
+          ],
+          "analysis_max_2": [
+            "a demand fall would leave the $12 million investment underperforming",
+            "lobbying by local mills could bring tougher rules or taxes on Varello"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$12 million",
+            "1,150",
+            "$40 million",
+            "22%",
+            "150",
+            "90,000",
+            "Country X"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Varello Steel Plc should absorb the tariff or build the mini-mill in Country X? Justify your answer.",
+        "model_answer": "Absorbing the tariff keeps Varello's options open [k], requiring no $12 million outlay on a market it has served for 6 years [app], which protects short-term cash flow if Country X demand is uncertain [an]. However, the 22% tariff would cut the margin on $40 million of sales [k], costing Varello roughly $8.8 million a year [app], so profits would be heavily squeezed every year the tariff remains [an]. Overall, Varello should build the mini-mill, because avoiding about $8.8 million a year of tariff costs soon recovers the $12 million investment and secures its Country X position [eval], while creating 150 local jobs would please the trade minister and reduce political risk [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "absorbing the tariff avoids upfront investment but erodes margins",
+            "local production avoids the tariff and secures market access"
+          ],
+          "application_max_2": [
+            "no $12 million outlay; 6 years supplying Country X",
+            "22% on $40 million of sales costs about $8.8 million a year"
+          ],
+          "analysis_max_2": [
+            "absorbing the tariff protects short-term cash flow",
+            "tariff costs compound every year and outweigh the one-off investment"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on building the mini-mill",
+            "political goodwill from 150 local jobs strengthens the recommendation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "22%",
+            "$40 million",
+            "$12 million",
+            "150",
+            "20%",
+            "90,000",
+            "Country X"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_179",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Veyr Cement Plc, a Turkish multinational, exports 200,000 tonnes of cement a year to Country X, generating $26 million in revenue. It has sold there for 5 years. Country X has introduced an import quota of 120,000 tonnes a year, starting in 3 months, to protect its national cement firms and cut dependence on imports.\n\nVeyr's board must decide how to respond to the quota. It could build a $9 million cement plant in Country X, which would let it keep selling the full 200,000 tonnes, 80,000 of them produced locally, or reduce Country X sales to the 120,000-tonne quota and serve other markets instead. The new plant would employ 110 workers, and Country X's industry minister says the quota will last at least 4 years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'import quota'.",
+        "model_answer": "A physical limit on the quantity of a product that may be imported into a country over a period of time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a limit on the quantity of a product that can be imported",
+            "set by government, often to protect domestic industry"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Veyr Cement Plc of building the Country X plant.",
+        "model_answer": "Benefit 1: Veyr could keep its Country X volumes [k], producing 80,000 tonnes locally to top up the 120,000-tonne import quota and still sell the full 200,000 tonnes [app]. Benefit 2: Veyr would show its commitment to Country X [k], creating 110 local jobs, which may win government support and smoother approvals in future [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production bypasses the import quota volume limit",
+            "investment in local jobs builds goodwill with the host government"
+          ],
+          "application_max_2": [
+            "80,000 tonnes produced locally plus 120,000-tonne quota = 200,000 tonnes",
+            "110 workers would be employed at the new plant"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9 million",
+            "200,000 tonnes",
+            "120,000",
+            "80,000",
+            "$26 million",
+            "110",
+            "Veyr Cement Plc"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Veyr Cement Plc could face if it builds the Country X plant.",
+        "model_answer": "Problem 1: The $9 million outlay is a big commitment [k], compared with simply redirecting sales to other markets instead of Country X [app], so if local production costs are higher than expected the investment could take many years to justify [an]. Problem 2: Veyr could become dependent on a rule-changing market [k], as the industry minister says the quota will last at least 4 years [app], so Veyr may face tougher restrictions later and struggle to leave the market once the plant is built [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large upfront investment may not be justified if returns are weak",
+            "dependence on a market whose rules can change increases long-term risk"
+          ],
+          "application_max_2": [
+            "$9 million cost of the new Country X plant",
+            "industry minister says the quota will last at least 4 years"
+          ],
+          "analysis_max_2": [
+            "higher-than-expected local costs would make the investment hard to justify",
+            "once built, the plant makes Veyr vulnerable to further rule changes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9 million",
+            "4 years",
+            "200,000",
+            "120,000",
+            "80,000",
+            "$26 million",
+            "110"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Veyr Cement Plc should build the Country X plant or reduce sales to the 120,000-tonne quota and serve other markets instead? Justify your answer.",
+        "model_answer": "Building the plant would let Veyr keep selling 200,000 tonnes [k], holding on to $26 million of Country X revenue despite the 120,000-tonne quota [app], so turnover and market presence are protected [an]. However, the $9 million plant is a heavy outlay [k] and Country X could tighten its rules again after the current 4-year quota period [app], leaving Veyr exposed to a market it cannot leave easily [an]. Overall, Veyr should build the plant, because local production neutralises the quota and secures a key market for the long term [eval], while the 110 jobs created may improve relations with the ministry and ease future negotiations [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production bypasses quota limits and protects revenue",
+            "large investments in rule-heavy markets carry dependency risk"
+          ],
+          "application_max_2": [
+            "200,000 tonnes still sold with 80,000 produced locally vs 120,000-tonne quota",
+            "$9 million plant; quota to last at least 4 years; $26 million revenue"
+          ],
+          "analysis_max_2": [
+            "keeping full volumes protects turnover and market presence",
+            "dependency on Country X leaves Veyr exposed if rules tighten"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on building the plant",
+            "recognises the goodwill from 110 jobs may ease future ministry negotiations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9 million",
+            "200,000 tonnes",
+            "120,000",
+            "80,000",
+            "$26 million",
+            "110",
+            "4 years",
+            "Country X"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U6_SET_180",
+    "unit": "Unit 6: External Influences on Business Activity",
+    "scenario_stem": "Zalvara Mining Plc is a Country X-based multinational that operates an open-cast bauxite mine in Country Z. The mine employs 850 workers and generated $300 million in exports last year. Country Z's government has introduced a new sustainable development law requiring foreign miners to restore mined land and cut carbon emissions by 30% within 5 years.\n\nZalvara's board must respond. It could spend $15 million on land restoration and cleaner haul trucks to comply, or relocate operations to Country Y, which has weaker environmental rules. The Country Z government has warned that foreign miners breaking the law face fines of $10 million and loss of their licence. Restoring the site would protect the mine for the next 15 years, but relocation would abandon $40 million of infrastructure already invested.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sustainable development'.",
+        "model_answer": "Development that meets the needs of the present without compromising the ability of future generations to meet their own needs [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "meets the needs of the present generation",
+            "does not compromise the ability of future generations to meet their own needs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Zalvara Mining Plc of complying with the new law.",
+        "model_answer": "Benefit 1: Zalvara would keep its licence to operate [k], securing the mine for the next 15 years and avoiding a $10 million fine [app]. Benefit 2: Complying would protect Zalvara's reputation [k], as 850 workers and the local community would see it meeting the 30% emissions cut [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "compliance secures the licence to operate and avoids fines",
+            "compliance protects reputation with workers and the community"
+          ],
+          "application_max_2": [
+            "mine secured for the next 15 years; $10 million fine avoided",
+            "850 workers; 30% emissions cut shows commitment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$10 million",
+            "850",
+            "30%",
+            "15 years",
+            "$15 million",
+            "$300 million",
+            "Country Z"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Zalvara Mining Plc would face if it relocates to Country Y.",
+        "model_answer": "Problem 1: Relocation would strand huge past investment [k], abandoning $40 million of infrastructure at the Country Z mine [app], so Zalvara would lose capital that cannot be recovered [an]. Problem 2: Operating where environmental rules are weak is a short-term tactic [k], as Country Y has weaker environmental rules today [app], and if Country Y later adopts similar laws Zalvara faces the same compliance costs plus damage to its image as a responsible multinational [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation strands capital already invested in the site",
+            "weak regulation is a temporary advantage as laws tighten globally"
+          ],
+          "application_max_2": [
+            "$40 million of infrastructure already invested would be abandoned",
+            "Country Y has weaker environmental rules"
+          ],
+          "analysis_max_2": [
+            "the lost $40 million cannot be recovered and would weigh on profit for years",
+            "future Country Y laws would impose the same costs plus reputational damage"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$40 million",
+            "Country Y",
+            "weaker environmental rules",
+            "$15 million",
+            "850",
+            "Country Z",
+            "Zalvara"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Zalvara Mining Plc should comply with the new law or relocate to Country Y? Justify your answer.",
+        "model_answer": "Complying would secure the mine's future [k], keeping the licence for 15 years and avoiding $10 million fines after a $15 million investment [app], which protects a $300 million annual export operation [an]. However, relocating to Country Y avoids the 30% emissions cut and the $15 million outlay in the short run [k], though it abandons $40 million of installed infrastructure and relies on rules that may tighten later [app], damaging Zalvara's standing with governments and communities [an]. Overall, Zalvara should comply with the law, because keeping the mine operating over 15 years is worth far more than the $15 million cost [eval], and showing responsible practice may win it government support and community trust across Country Z [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "compliance secures the licence and avoids fines but costs cash upfront",
+            "relocation defers compliance costs but strands assets and risks future regulation"
+          ],
+          "application_max_2": [
+            "licence for 15 years; $10 million fines; $15 million investment; $300 million exports",
+            "30% emissions cut avoided; $40 million infrastructure abandoned; weaker rules in Country Y"
+          ],
+          "analysis_max_2": [
+            "compliance protects a $300 million annual export operation for 15 years",
+            "relocation loses $40 million of installed infrastructure and damages standing"
+          ],
+          "evaluation_max_2": [
+            "clear, justified recommendation on complying with the law",
+            "recognises reputational gains and community trust from responsible practice"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$15 million",
+            "$10 million",
+            "30%",
+            "15 years",
+            "$40 million",
+            "$300 million",
+            "850",
+            "Country Z"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

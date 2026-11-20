@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_171",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Kelbeck Joinery Co Ltd is a private limited company in Country X making kitchen cabinets and wardrobes for housebuilders. It employs 24 joiners and recorded revenue of $1.1 million last year. Its statement of financial position at 30 September shows non-current assets of $240,000, mainly a workshop lease and machinery. Current assets are $112,000, comprising inventories of $52,000, trade receivables of $38,000 and cash of $22,000. Current liabilities are $64,000, including trade payables and unpaid wages.\n\nKelbeck owes a bank loan of $110,000 repayable after more than one year, and shareholders' equity is $178,000. A new CNC cutting machine costing $90,000 would let Kelbeck accept larger contracts. The directors must choose between borrowing $90,000 from the bank now or waiting two years and buying it from accumulated retained profits.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'working capital'.",
+        "model_answer": "Working capital is current assets minus current liabilities, and it shows the finance available for day-to-day operations such as paying wages and suppliers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "current assets minus current liabilities",
+            "day-to-day operating finance available to the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the bank would study Kelbeck's statement of financial position before lending $90,000.",
+        "model_answer": "Reason 1: The bank wants to see if Kelbeck can repay the loan [k], because current assets of $112,000 exceed current liabilities of $64,000, giving working capital of $48,000 [app]. Reason 2: The bank wants to know how much Kelbeck already owes [k], because an existing bank loan of $110,000 is repayable after more than one year and shareholders' equity is $178,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bank assesses ability to repay / creditworthiness",
+            "bank assesses the level of existing debt and long-term financial position"
+          ],
+          "application_max_2": [
+            "current assets of $112,000 against current liabilities of $64,000 (working capital $48,000)",
+            "bank loan of $110,000 repayable after more than one year and shareholders' equity of $178,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$112,000",
+            "$64,000",
+            "$110,000",
+            "$178,000",
+            "$90,000",
+            "30 September",
+            "shareholders' equity"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways in which Kelbeck's managers could use its statement of financial position.",
+        "model_answer": "Way 1: Managers can monitor day-to-day liquidity [k], because the statement shows current assets of $112,000 against current liabilities of $64,000 [app], so they can check Kelbeck can pay wages and suppliers on time [an]. Way 2: Managers can judge whether Kelbeck can afford extra borrowing [k], because non-current assets of $240,000 and equity of $178,000 show what the owners have invested [app], helping them decide if a $90,000 loan is affordable [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "managers use the statement to monitor liquidity/working capital",
+            "managers use the statement to judge whether extra borrowing or investment is affordable"
+          ],
+          "application_max_2": [
+            "current assets of $112,000 against current liabilities of $64,000",
+            "non-current assets of $240,000 and equity of $178,000"
+          ],
+          "analysis_max_2": [
+            "surplus of current assets over current liabilities shows bills can be paid on time",
+            "owners' funds of $178,000 set the limit for sensible extra borrowing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$112,000",
+            "$64,000",
+            "$240,000",
+            "$178,000",
+            "$90,000",
+            "statement of financial position",
+            "Kelbeck"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kelbeck Joinery Co Ltd should borrow $90,000 now to buy the CNC machine? Justify your answer.",
+        "model_answer": "Borrowing now would let Kelbeck win larger contracts immediately [k], because the machine costs $90,000 and Kelbeck already has working capital of $48,000 from current assets of $112,000 against current liabilities of $64,000 [app], so revenue could rise sooner and repay the loan [an]. However, waiting two years avoids extra interest [k], because Kelbeck already owes $110,000 after more than one year and equity is only $178,000 [app], so a new loan could stretch cash if the bigger contracts take time to arrive [an]. Overall, Kelbeck should borrow now [eval], because the machine unlocks larger contracts and $90,000 is modest against non-current assets of $240,000 and equity of $178,000, provided the bank's terms are affordable [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "borrowing now brings the machine and larger contracts sooner",
+            "waiting avoids extra interest but delays benefits"
+          ],
+          "application_max_2": [
+            "machine costs $90,000; working capital of $48,000 from current assets of $112,000 against current liabilities of $64,000",
+            "existing bank loan of $110,000 and equity of $178,000"
+          ],
+          "analysis_max_2": [
+            "earlier capacity raises revenue sooner, helping repay the loan",
+            "extra borrowing on top of $110,000 could strain cash if contracts are delayed"
+          ],
+          "evaluation_max_2": [
+            "weighs immediate contract gains against added interest and debt risk using the stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$112,000",
+            "$64,000",
+            "$110,000",
+            "$178,000",
+            "$240,000",
+            "retained profits"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_172",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Vantel Fashion Stores Ltd is a private limited company in Country X running 3 fashion stores in busy shopping centres. It employs 46 sales staff and turnover was $2.4 million last year, paid mostly by card at the tills. Its statement of financial position at 31 December shows non-current assets of $410,000 and current assets of $213,000 made up of inventories of $175,000, receivables of $20,000 and cash of $18,000.\n\nCurrent liabilities total $140,000, including rent and wages owed. A debenture of $150,000 is repayable after more than one year. Shareholders' equity stands at $333,000. Directors debate whether to keep inventory at $175,000 to avoid empty shelves or cut it sharply to free working capital for a fourth store due to open next year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'current liabilities'.",
+        "model_answer": "Current liabilities are debts the business must repay within one year, such as trade payables, bank overdrafts, tax owed and unpaid expenses [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debts due to be repaid within one year",
+            "examples such as trade payables, overdrafts, tax owed or unpaid expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why managers of Vantel Fashion Stores would be concerned about inventories of $175,000.",
+        "model_answer": "Reason 1: Cash is tied up in unsold stock [k], because inventories of $175,000 absorb about 82% of the current assets of $213,000, leaving only $18,000 in cash [app]. Reason 2: Fashion stock can become unsellable [k], because changing trends may force Vantel to discount $175,000 of clothing heavily to shift it [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventories tie up cash that could be used elsewhere",
+            "unsold fashion stock may lose value through obsolescence and need discounting"
+          ],
+          "application_max_2": [
+            "inventories of $175,000 being about 82% of current assets of $213,000 with only $18,000 in cash",
+            "changing fashion trends forcing heavy discounts on clothing stock"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$175,000",
+            "$213,000",
+            "$18,000",
+            "$140,000",
+            "$20,000",
+            "inventories of $175,000",
+            "3 fashion stores"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Vantel of interpreting its statement of financial position regularly.",
+        "model_answer": "Benefit 1: Managers can see how much cash is genuinely free [k], because current assets of $213,000 less current liabilities of $140,000 leave working capital of $73,000 [app], showing whether the fourth store can be funded without overtrading [an]. Benefit 2: Managers can track whether stock is creeping above demand [k], because the statement shows inventories of $175,000 against cash of $18,000 this year [app], revealing whether buying needs tightening before the fourth store opens [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "statement shows the working capital position of the business",
+            "statement shows the composition of current assets such as inventories and cash"
+          ],
+          "application_max_2": [
+            "current assets of $213,000 against current liabilities of $140,000 (working capital $73,000)",
+            "inventories of $175,000 against cash of $18,000"
+          ],
+          "analysis_max_2": [
+            "a clear current surplus shows the fourth store can be funded without overstretching",
+            "high inventory share signals over-buying and weak cash discipline"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$213,000",
+            "$140,000",
+            "$175,000",
+            "$18,000",
+            "fourth store",
+            "inventories",
+            "Vantel"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Vantel Fashion Stores Ltd should cut its inventories below $175,000 to fund the fourth store? Justify your answer.",
+        "model_answer": "Cutting inventories would release cash for the fourth store [k], because inventories of $175,000 make up about 82% of current assets of $213,000 and cash is only $18,000 [app], so trimming slow-moving lines could free useful cash for the new shop [an]. However, deep cuts risk empty shelves [k], because Vantel runs 3 fashion stores with turnover of $2.4 million and customers buy on impulse [app], so missing popular sizes could push shoppers to rival retailers [an]. Overall, Vantel should reduce inventories gradually rather than sharply [eval], because freeing working capital suits the fourth store plan, but slashing $2.4 million of dependent sales across the 3 stores would be far too risky [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower inventories free cash for expansion",
+            "lower inventories risk stockouts and lost goodwill"
+          ],
+          "application_max_2": [
+            "inventories of $175,000, about 82% of current assets of $213,000, with cash of only $18,000",
+            "3 fashion stores, turnover of $2.4 million"
+          ],
+          "analysis_max_2": [
+            "freeing cash from slow lines funds the fourth store without new borrowing",
+            "over-cutting leaves gaps in popular lines and loses sales to rivals"
+          ],
+          "evaluation_max_2": [
+            "balances cash release for the fourth store against stock availability in a $2.4 million turnover business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$175,000",
+            "$213,000",
+            "$18,000",
+            "$2.4 million",
+            "3 fashion stores",
+            "fourth store",
+            "Vantel"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_173",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Cobblewick Bakery Plc is a public limited company in Country X with shares traded on the national stock exchange. It operates 14 bakeries supplying supermarkets and its own high-street shops, and earned revenue of $6.8 million last year. Its statement of financial position at 31 March shows non-current assets of $1,850,000 and current assets of $445,000, comprising inventories of $210,000, receivables of $95,000 and cash of $140,000.\n\nCurrent liabilities total $190,000, including $70,000 proposed dividends. Debentures of $700,000 are repayable after more than one year. Share capital is $900,000 and retained profit is $505,000. The board must choose between paying a dividend of $120,000 for the year or retaining the cash to fund a new automated pastry line costing $120,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'shareholders' equity'.",
+        "model_answer": "Shareholders' equity is share capital plus retained profit, representing the total value belonging to the owners of the company [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share capital plus retained profit",
+            "the owners' total stake or funds in the company"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Cobblewick Bakery Plc must prepare and publish a statement of financial position each year.",
+        "model_answer": "Reason 1: The law and the stock exchange require quoted companies to publish accounts [k], because Cobblewick is a public limited company, so shareholders can see debentures of $700,000 against equity of $900,000 share capital plus $505,000 retained profit [app]. Reason 2: Publishing the statement builds trust with investors [k], because it reveals current assets of $445,000 and current liabilities of $190,000 including $70,000 proposed dividends [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "legal/regulatory requirement for quoted public limited companies to publish accounts",
+            "publication builds investor confidence and transparency"
+          ],
+          "application_max_2": [
+            "Cobblewick is a public limited company on the stock exchange; debentures of $700,000 against equity of $900,000 share capital plus $505,000 retained profit",
+            "current assets of $445,000 and current liabilities of $190,000 including $70,000 proposed dividends"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "public limited company",
+            "$700,000",
+            "$900,000",
+            "$505,000",
+            "$445,000",
+            "$190,000",
+            "$70,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses shareholders can make of Cobblewick's published statement of financial position.",
+        "model_answer": "Use 1: Shareholders can judge the safety of their investment [k], because equity is $900,000 share capital plus $505,000 retained profit against debentures of only $700,000 [app], showing the business is financed more by owners than by long-term lenders [an]. Use 2: Shareholders can assess whether dividends are affordable [k], because current assets of $445,000 cover the proposed dividend of $70,000 inside current liabilities of $190,000 [app], indicating the board could fund a $120,000 dividend from cash [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders use equity vs debt to judge investment safety or control",
+            "shareholders use asset and liability figures to judge dividend affordability"
+          ],
+          "application_max_2": [
+            "share capital of $900,000 and retained profit of $505,000 against debentures of $700,000",
+            "current assets of $445,000 against current liabilities of $190,000 including $70,000 proposed dividends"
+          ],
+          "analysis_max_2": [
+            "equity exceeding debentures shows owners carry most of the long-term finance risk",
+            "current assets well above the proposed dividend show the $70,000 payment is comfortably covered"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$505,000",
+            "$700,000",
+            "$445,000",
+            "$190,000",
+            "$70,000",
+            "$120,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cobblewick Bakery Plc should pay the $120,000 dividend or retain it to fund the pastry line? Justify your answer.",
+        "model_answer": "Paying the dividend rewards owners and keeps the share price steady [k], because Cobblewick is a public limited company on the stock exchange with $900,000 share capital and retained profit of $505,000 [app], so investors expect a return and may sell if dividends disappoint [an]. However, retaining the cash funds the automated pastry line [k], because the line costs $120,000 and current assets of $445,000 can absorb the outflow while debentures stay at $700,000 [app], cutting labour costs and lifting margins on $6.8 million of revenue [an]. Overall, Cobblewick should retain the $120,000 [eval], because the pastry line promises future profit on $6.8 million revenue while debentures and liabilities stay manageable, though a small dividend could still be paid if profits allow [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividends reward shareholders and support the share price",
+            "retained profit funds investment that can raise future profits"
+          ],
+          "application_max_2": [
+            "public limited company on the stock exchange; share capital of $900,000 and retained profit of $505,000",
+            "pastry line costs $120,000; current assets of $445,000; revenue of $6.8 million; debentures of $700,000"
+          ],
+          "analysis_max_2": [
+            "skipping the dividend risks shareholder dissatisfaction and share price falls",
+            "the $120,000 pastry line cuts labour costs and lifts margins on $6.8 million revenue"
+          ],
+          "evaluation_max_2": [
+            "weighs shareholder return expectations against reinvestment returns on the $6.8 million revenue base"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "stock exchange",
+            "$900,000",
+            "$505,000",
+            "$445,000",
+            "$700,000",
+            "$6.8 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_174",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Dallow Farm Supplies Ltd is a private limited company in Country X selling animal feed, seed and small machinery to 900 farms. It employs 31 staff and revenue was $3.3 million last year. Its statement of financial position at 30 June shows non-current assets of $520,000 and current assets of $425,000, comprising inventories of $260,000, receivables of $135,000 and cash of $30,000.\n\nCurrent liabilities are $245,000, including $65,000 corporation tax owed to the government. A bank loan of $250,000 is repayable after more than one year. Share capital is $300,000 and retained profit is $150,000. The directors must decide whether to buy a $175,000 automated seed-cleaning machine now or postpone it to protect the cash buffer ahead of the autumn feed season.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'capital employed'.",
+        "model_answer": "Capital employed is the long-term finance used by a business, calculated as non-current assets plus working capital, or as non-current liabilities plus shareholders' equity [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "non-current assets plus working capital",
+            "equals non-current liabilities plus shareholders' equity / long-term finance used"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the government uses Dallow Farm Supplies' statement of financial position.",
+        "model_answer": "Reason 1: To calculate how much tax the company owes [k], because the statement shows the $65,000 corporation tax owed within current liabilities of $245,000 [app]. Reason 2: To check the business can keep operating and paying staff [k], because the government sees 31 employees but cash of only $30,000 against current liabilities of $245,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government uses accounts to assess and collect corporation tax",
+            "government uses accounts to check business solvency, employment and economic contribution"
+          ],
+          "application_max_2": [
+            "$65,000 corporation tax owed within current liabilities of $245,000",
+            "31 staff with cash of only $30,000 against current liabilities of $245,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$65,000",
+            "$245,000",
+            "$30,000",
+            "900 farms",
+            "$3.3 million",
+            "corporation tax",
+            "31 staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Dallow's owners could interpret its statement of financial position.",
+        "model_answer": "Way 1: Owners can measure whether their investment has grown [k], because equity is $300,000 share capital plus $150,000 retained profit against receivables of $135,000 [app], showing the business is compounding their capital [an]. Way 2: Owners can judge whether expansion is affordable [k], because working capital of $180,000 comes from current assets of $425,000 less current liabilities of $245,000 [app], indicating whether a $175,000 machine can be bought without borrowing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owners use equity to judge whether their investment has grown",
+            "owners use working capital to judge affordability of expansion"
+          ],
+          "application_max_2": [
+            "share capital of $300,000 and retained profit of $150,000 against receivables of $135,000",
+            "current assets of $425,000 less current liabilities of $245,000 (working capital $180,000)"
+          ],
+          "analysis_max_2": [
+            "retained profit added to equity shows owners' wealth is increasing",
+            "working capital of $180,000 is close to the $175,000 machine cost, so expansion may need extra funds"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$300,000",
+            "$150,000",
+            "$135,000",
+            "$425,000",
+            "$245,000",
+            "$175,000",
+            "900 farms"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dallow Farm Supplies Ltd should buy the $175,000 seed-cleaning machine now? Justify your answer.",
+        "model_answer": "Buying now would cut wastage and labour on $3.3 million revenue [k], because current assets of $425,000 include inventories of $260,000 and receivables of $135,000 that the machine would process faster [app], lifting margins before the autumn season [an]. However, cash is only $30,000 [k], because current liabilities reach $245,000 including $65,000 corporation tax owed [app], so buying now could force expensive borrowing or delay wage and tax payments [an]. Overall, Dallow should postpone the machine until receivables are collected [eval], because the $175,000 cost dwarfs cash of $30,000 and the tax bill of $65,000 falls due, although the order can be placed early for spring [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the machine cuts wastage and labour on high volumes",
+            "buying now risks a cash crisis because cash is minimal"
+          ],
+          "application_max_2": [
+            "revenue of $3.3 million; inventories of $260,000 and receivables of $135,000 in current assets of $425,000",
+            "cash of only $30,000; current liabilities of $245,000 including $65,000 corporation tax"
+          ],
+          "analysis_max_2": [
+            "faster seed cleaning raises margins during the busy autumn season",
+            "committing $175,000 with $30,000 cash could breach tax and supplier obligations"
+          ],
+          "evaluation_max_2": [
+            "weighs productivity gains against the short-term cash and tax pressure visible in the statement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$175,000",
+            "$3.3 million",
+            "$425,000",
+            "$260,000",
+            "$135,000",
+            "$30,000",
+            "$245,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_175",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Bellmont Hotel Ltd is a private limited company in Country X with 120 rooms, employing 58 staff. Revenue last year was $4.1 million and average occupancy was 74%. Its statement of financial position at 31 October shows non-current assets of $2,600,000 and current assets of $260,000, comprising inventories of $22,000, receivables of $48,000 and cash of $190,000.\n\nCurrent liabilities are $310,000, leaving working capital negative. A bank loan of $900,000 is repayable after more than one year. Share capital is $1,400,000 and retained profit is $250,000. After a $750,000 refurbishment of its lobby and 20 rooms, the directors must choose between repaying part of the bank loan early or refinancing it over a longer term to protect cash for the quiet season.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'non-current assets'.",
+        "model_answer": "Non-current assets are assets the business owns and uses for more than one year to generate income, such as buildings, vehicles and machinery [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "asset held and used for more than one year",
+            "example such as buildings, vehicles or machinery"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Bellmont's managers regularly review the statement of financial position.",
+        "model_answer": "Reason 1: Managers can spot cash pressure early [k], because current assets of $260,000 fall short of current liabilities of $310,000, leaving working capital of −$50,000 [app]. Reason 2: Managers can see long-term debt commitments [k], because the bank loan of $900,000 is repayable after more than one year and retained profit is only $250,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reviewing the statement reveals short-term cash or working capital pressure",
+            "reviewing the statement reveals long-term debt commitments"
+          ],
+          "application_max_2": [
+            "current assets of $260,000 below current liabilities of $310,000, working capital of −$50,000",
+            "bank loan of $900,000 repayable after more than one year, retained profit of $250,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "$310,000",
+            "$190,000",
+            "$48,000",
+            "$900,000",
+            "$250,000",
+            "Bellmont"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Bellmont's owners could interpret its negative working capital.",
+        "model_answer": "Way 1: Owners can judge short-term survival risk [k], because current liabilities of $310,000 exceed current assets of $260,000 by $50,000 [app], meaning the hotel depends on steady daily takings to pay bills on time [an]. Way 2: Owners can evaluate the refurbishment decision [k], because non-current assets would rise to $3,350,000 after the $750,000 lobby and 20-room refurbishment [app], which may lift room rates, though cash would fall further [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "negative working capital signals reliance on daily takings and prompt payment by customers",
+            "negative working capital affects how owners judge spending decisions"
+          ],
+          "application_max_2": [
+            "current liabilities of $310,000 exceeding current assets of $260,000 by $50,000",
+            "$750,000 refurbishment of lobby and 20 rooms on non-current assets of $2,600,000 (to $3,350,000)"
+          ],
+          "analysis_max_2": [
+            "the $50,000 shortfall means bills must be funded from trading cash",
+            "refurbishment may raise future income but drains cash in a business already short of working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$310,000",
+            "$260,000",
+            "$750,000",
+            "$190,000",
+            "$900,000",
+            "$48,000",
+            "$250,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Bellmont Hotel Ltd should repay part of its $900,000 bank loan early or refinance it over a longer term? Justify your answer.",
+        "model_answer": "Repaying early would cut interest and worry [k], because retained profit is $250,000 and cash is $190,000 [app], so clearing part of the $900,000 loan would free future cash flow [an]. However, paying early would drain the buffer the hotel needs [k], because current liabilities of $310,000 already exceed current assets of $260,000 [app], and the $750,000 refurbishment of the lobby and 20 rooms must be funded through a quiet season [an]. Overall, Bellmont should refinance the loan over a longer term [eval], because negative working capital makes cash sacred and the $750,000 refurbishment targets higher room rates, even though this keeps the $900,000 loan outstanding for longer [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "early repayment saves interest and reduces future obligations",
+            "refinancing preserves cash buffer during weak seasons"
+          ],
+          "application_max_2": [
+            "retained profit of $250,000 and cash of $190,000",
+            "current liabilities of $310,000 exceeding current assets of $260,000; $750,000 refurbishment"
+          ],
+          "analysis_max_2": [
+            "clearing part of the loan frees cash from future interest payments",
+            "paying early would worsen the cash shortfall ahead of the refurbishment"
+          ],
+          "evaluation_max_2": [
+            "weighs interest savings against the risk of running out of cash in a business with negative working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$250,000",
+            "$190,000",
+            "$310,000",
+            "$260,000",
+            "$750,000",
+            "Bellmont"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_176",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Vantrel Software Ltd is a private limited company in Country X developing payroll software for small firms. It employs 34 programmers and revenue last year was $1.66 million. Its statement of financial position at 31 March shows non-current assets of $380,000, mostly equipment and development costs, and current assets of $520,000, comprising receivables of $410,000 and cash of $110,000 with no inventories.\n\nCurrent liabilities are $240,000, leaving working capital of $280,000. A bank loan of $130,000 is repayable after more than one year. Share capital is $280,000 and retained profit is $250,000. Customers take around 90 days to pay. The directors must choose between spending $200,000 on a hosted server platform or keeping the cash to ride out slow customer payments.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'current assets'.",
+        "model_answer": "Current assets are assets the business expects to turn into cash or use within one year, such as inventories, trade receivables and bank balances [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "assets turned into cash or used within one year",
+            "examples such as inventories, receivables and bank/cash"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Vantrel's managers monitor receivables in the statement of financial position.",
+        "model_answer": "Reason 1: Receivables dominate the current asset base [k], because customers owe $410,000 against cash of only $110,000, on revenue of $1.66 million [app]. Reason 2: Slow payers squeeze working capital [k], because customers take around 90 days to pay while current liabilities of $240,000 fall due within one year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "receivables often make up most current assets in service businesses",
+            "slow-paying customers create working capital and cash-flow problems"
+          ],
+          "application_max_2": [
+            "customers owe $410,000 against cash of only $110,000, on revenue of $1.66 million",
+            "around 90 days to pay against current liabilities of $240,000 due within one year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$410,000",
+            "$110,000",
+            "$1.66 million",
+            "90 days",
+            "$240,000",
+            "receivables",
+            "Vantrel"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Vantrel might face if it spends $200,000 on the server platform now.",
+        "model_answer": "Problem 1: Cash protection would weaken [k], because cash of $110,000 and receivables of $410,000 against current liabilities of $240,000 leave working capital of $280,000 [app], so wages could go unpaid before debtors settle [an]. Problem 2: The non-current asset base would be stretched [k], because non-current assets are $380,000 with equity of $280,000 share capital and $250,000 retained profit [app], so a failed platform could exhaust modest reserves [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "spending now reduces the cash cushion against slow payers",
+            "spending now increases the risk if the platform underperforms"
+          ],
+          "application_max_2": [
+            "cash of $110,000 and receivables of $410,000 against current liabilities of $240,000 (working capital $280,000)",
+            "non-current assets of $380,000 with share capital of $280,000 and retained profit of $250,000"
+          ],
+          "analysis_max_2": [
+            "$200,000 spent from $110,000 cash would require debtors to pay first",
+            "failure of the platform could exhaust equity reserves quickly"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$200,000",
+            "$110,000",
+            "$410,000",
+            "$240,000",
+            "$380,000",
+            "90 days",
+            "$280,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Vantrel Software Ltd should spend $200,000 on the hosted server platform now? Justify your answer.",
+        "model_answer": "The platform would modernise delivery and cut support costs [k], because Vantrel serves small firms with revenue of $1.66 million and 34 programmers [app], so automation could lift margins and keep clients [an]. However, waiting is safer for cash [k], because receivables of $410,000 take around 90 days to arrive and current liabilities of $240,000 are due within one year [app], leaving only $110,000 in the bank to cover wages [an]. Overall, Vantrel should delay the platform until receivables are collected [eval], because protecting working capital of $280,000 matters more than the $200,000 upgrade while debtors are outstanding [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the platform modernises delivery and lowers support costs",
+            "delaying protects cash where debtors pay slowly"
+          ],
+          "application_max_2": [
+            "revenue of $1.66 million and 34 programmers serving small firms",
+            "receivables of $410,000, about 90 days to pay, current liabilities of $240,000, cash of $110,000"
+          ],
+          "analysis_max_2": [
+            "automation could raise margins and retention on $1.66 million revenue",
+            "spending $200,000 now could leave the business unable to meet wages"
+          ],
+          "evaluation_max_2": [
+            "weighs modernisation benefits against the risk to working capital of $280,000 given 90-day debtors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$200,000",
+            "$1.66 million",
+            "$410,000",
+            "90 days",
+            "$240,000",
+            "$110,000",
+            "$280,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_177",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Alderheath Pharmacies Ltd is a private limited company in Country X operating 8 community pharmacies in busy town centres. It employs 72 staff, including 20 pharmacists, and revenue last year was $9.5 million. Demand for prescriptions remains steady all year. Its statement of financial position at 31 December shows non-current assets of $1,250,000 and current assets of $980,000, comprising inventories of $620,000, receivables of $180,000 and cash of $180,000.\n\nCurrent liabilities are $530,000, mainly supplier payables. Debentures of $300,000 are repayable after more than one year. Share capital is $900,000 and retained profit is $500,000. To open 2 more pharmacies in the north of Country X costing $800,000, the board must decide between issuing new shares or borrowing the money through additional debentures.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'non-current liabilities'.",
+        "model_answer": "Non-current liabilities are debts the business does not have to repay for more than one year, such as long-term bank loans and debentures [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debts not due for repayment within more than one year",
+            "examples such as long-term loans and debentures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Alderheath's board would compare debt and equity before financing the expansion.",
+        "model_answer": "Reason 1: Borrowing keeps current ownership intact [k], because issuing shares would dilute the $900,000 share capital across more owners [app]. Reason 2: Borrowing adds interest pressure [k], because Alderheath already owes debentures of $300,000 on top of current liabilities of $530,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "issuing shares dilutes ownership and control",
+            "borrowing commits the business to interest payments"
+          ],
+          "application_max_2": [
+            "issuing shares would dilute the $900,000 share capital",
+            "existing debentures of $300,000 plus current liabilities of $530,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$300,000",
+            "$530,000",
+            "$800,000",
+            "8 community pharmacies",
+            "$9.5 million",
+            "debentures"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways lenders use the statement of financial position when judging Alderheath.",
+        "model_answer": "Way 1: Lenders check asset backing [k], because non-current assets of $1,250,000 and inventories of $620,000 give cover for further loans [app], showing what could be sold if repayment failed [an]. Way 2: Lenders check working capital [k], because current assets of $980,000 against current liabilities of $530,000 leave working capital of $450,000 [app], indicating whether cash flows can service more debentures [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lenders assess security/asset backing of the loan",
+            "lenders assess working capital and cash-flow strength"
+          ],
+          "application_max_2": [
+            "non-current assets of $1,250,000 and inventories of $620,000 as security",
+            "current assets of $980,000 against current liabilities of $530,000, working capital $450,000"
+          ],
+          "analysis_max_2": [
+            "assets of $1,250,000 could be liquidated to repay lenders if the business failed",
+            "working capital of $450,000 shows capacity to service interest on additional debentures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,250,000",
+            "$620,000",
+            "$980,000",
+            "$530,000",
+            "$300,000",
+            "$800,000",
+            "Alderheath"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Alderheath Pharmacies Ltd should finance the $800,000 expansion with new shares or debentures? Justify your answer.",
+        "model_answer": "New shares would avoid extra interest [k], because Alderheath already carries debentures of $300,000 and current liabilities of $530,000, while equity stands at $1,400,000 [app], keeping future cash free for pharmacy operations [an]. New debentures would keep ownership with existing shareholders [k], because an issue would dilute the $900,000 share capital and force profit-sharing with more owners [app], while working capital of $450,000 plus revenue of $9.5 million could service the interest [an]. Overall, Alderheath should finance the expansion with debentures [eval], because predictable interest on strong revenue of $9.5 million preserves family ownership and control, provided the 2 new pharmacies open on schedule [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shares avoid interest but dilute ownership",
+            "debentures keep ownership but add fixed interest"
+          ],
+          "application_max_2": [
+            "debentures of $300,000 and current liabilities of $530,000 already owed",
+            "share capital of $900,000 to dilute; working capital of $450,000; revenue of $9.5 million"
+          ],
+          "analysis_max_2": [
+            "extra interest would reduce cash available for the existing 8 pharmacies",
+            "dilution would hand part of future profits of the 2 new pharmacies to new owners"
+          ],
+          "evaluation_max_2": [
+            "weighs control and interest against dilution using revenue and balance-sheet figures from the stem"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$800,000",
+            "$300,000",
+            "$530,000",
+            "$900,000",
+            "$9.5 million",
+            "2 more pharmacies",
+            "debentures"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_178",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fenhallow Construction Ltd is a private limited company in Country X building housing estates across three regions. It employs 85 workers and revenue last year was $7.2 million, with homes priced between $280,000 and $450,000. Its statement of financial position at 30 September shows non-current assets of $3,400,000, mainly a fleet of diggers, cranes and trucks. Current assets are $1,150,000, comprising inventories of $260,000, receivables of $640,000 and cash of $250,000.\n\nCurrent liabilities are $780,000, mostly supplier payables and accrued wages. A bank loan of $1,800,000 is repayable after more than one year. Share capital is $1,500,000 and retained profit is $470,000. The firm must decide whether to buy a $600,000 excavator or hire extra excavators for $9,500 per month from a local plant-hire firm.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'net assets'.",
+        "model_answer": "Net assets are non-current assets plus working capital, equal to total assets minus total liabilities of the business [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "non-current assets plus working capital",
+            "total assets minus total liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Fenhallow's bank would insist on a recent statement of financial position before lending more money.",
+        "model_answer": "Reason 1: The bank wants security for any loan [k], because non-current assets of $3,400,000 could be sold if Fenhallow defaulted on further borrowing [app]. Reason 2: The bank wants to see repayment capacity [k], because receivables of $640,000 against current liabilities of $780,000 and a bank loan of $1,800,000 already outstanding test cash-flow strength [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bank wants security or collateral for the loan",
+            "bank wants to see ability to repay from cash flow"
+          ],
+          "application_max_2": [
+            "non-current assets of $3,400,000 as security",
+            "receivables of $640,000 and current liabilities of $780,000 with a $1,800,000 loan outstanding"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,400,000",
+            "$640,000",
+            "$780,000",
+            "$1,800,000",
+            "$600,000",
+            "$9,500",
+            "Fenhallow"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Fenhallow of preparing a statement of financial position before the excavator decision.",
+        "model_answer": "Benefit 1: Owners can see how much of the fleet is debt-funded [k], because non-current assets already stand at $3,400,000 with a bank loan of $1,800,000 outstanding [app], revealing the commitment to long-term lenders [an]. Benefit 2: Owners can check short-term headroom before big spending [k], because working capital is $370,000 from current assets of $1,150,000 less current liabilities of $780,000 [app], showing whether a $600,000 purchase needs new borrowing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the statement reveals debt funding of non-current assets",
+            "the statement reveals short-term financial headroom"
+          ],
+          "application_max_2": [
+            "non-current assets of $3,400,000 against bank loan of $1,800,000",
+            "current assets of $1,150,000 less current liabilities of $780,000 (working capital $370,000)"
+          ],
+          "analysis_max_2": [
+            "a $1,800,000 loan against $3,400,000 assets shows heavy debt dependency",
+            "working capital of $370,000 is below the $600,000 excavator price, so financing is needed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,400,000",
+            "$1,800,000",
+            "$1,150,000",
+            "$780,000",
+            "$250,000",
+            "$600,000",
+            "$9,500"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fenhallow Construction Ltd should buy the $600,000 excavator or hire excavators at $9,500 per month? Justify your answer.",
+        "model_answer": "Buying builds ownership and cuts long-term cost [k], because hiring at $9,500 per month costs $114,000 a year and the $600,000 excavator would pay for itself in about 63 months [app], making it a long-life addition to non-current assets of $3,400,000 [an]. Hiring preserves cash flexibility [k], because working capital is only $370,000 and cash is $250,000 [app], so a $600,000 outlay could strain wages and suppliers on $7.2 million revenue [an]. Overall, Fenhallow should hire for now and review in 12 months [eval], because thin working capital makes the $9,500 monthly cost safer than a $600,000 commitment while estates are being built [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "buying gives ownership and lower long-run cost",
+            "hiring preserves cash flexibility in the short term"
+          ],
+          "application_max_2": [
+            "hiring at $9,500 per month ($114,000 a year) and buying costs $600,000, about 63 months to pay for itself",
+            "working capital of $370,000, cash of $250,000, current assets of $1,150,000"
+          ],
+          "analysis_max_2": [
+            "after about 63 months buying becomes cheaper than hiring indefinitely",
+            "paying $600,000 up front could leave too little cash for wages and suppliers"
+          ],
+          "evaluation_max_2": [
+            "weighs long-term ownership savings against short-term cash safety in a business with only $370,000 working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$9,500",
+            "$3,400,000",
+            "$7.2 million",
+            "$1,150,000",
+            "$250,000",
+            "$780,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_179",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Wentworth Sports Ltd is a private limited company in Country X running 5 sports goods stores in large retail parks. It employs 64 staff and revenue last year was $5.6 million from rugby, cricket and athletics equipment. Its statement of financial position at 31 January shows non-current assets of $900,000 and current assets of $680,000, comprising inventories of $470,000, receivables of $60,000 and cash of $150,000.\n\nCurrent liabilities are $390,000, including $310,000 bank overdraft. It has no non-current liabilities. Share capital is $600,000 and retained profit is $590,000. The two founding shareholders both work full-time in the business. The directors must decide between paying a dividend of $100,000 to them or retaining it to refurbish the stores with new displays and lighting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'retained profit'.",
+        "model_answer": "Retained profit is profit kept inside the business after tax and dividends instead of being paid to owners, added to equity on the statement of financial position [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit kept in the business after tax and dividends",
+            "adds to equity on the statement of financial position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Wentworth's shareholders want to see its statement of financial position.",
+        "model_answer": "Reason 1: To check the safety of their investment [k], because share capital of $600,000 plus retained profit of $590,000 show the owners' stake in the business [app]. Reason 2: To judge whether a dividend is safe [k], because the bank overdraft of $310,000 inside current liabilities of $390,000 compares with cash of only $150,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders use the statement to check the safety of their investment",
+            "shareholders use the statement to judge whether dividends are affordable"
+          ],
+          "application_max_2": [
+            "share capital of $600,000 and retained profit of $590,000",
+            "bank overdraft of $310,000 within current liabilities of $390,000 against cash of $150,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$590,000",
+            "$310,000",
+            "$390,000",
+            "$150,000",
+            "$100,000",
+            "5 sports goods stores"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Wentworth's directors of comparing the statement of financial position with previous years.",
+        "model_answer": "Benefit 1: They can see whether equity is compounding [k], because retained profit has reached $590,000 on top of share capital of $600,000 [app], showing the business is building owners' wealth [an]. Benefit 2: They can detect over-reliance on short-term debt [k], because the bank overdraft of $310,000 lifts current liabilities to $390,000 against current assets of $680,000 [app], warning that trading cash services the overdraft instead of patient capital [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "comparison shows whether equity is growing year by year",
+            "comparison shows whether short-term debt is creeping up"
+          ],
+          "application_max_2": [
+            "retained profit of $590,000 added to share capital of $600,000",
+            "bank overdraft of $310,000 within current liabilities of $390,000 against current assets of $680,000"
+          ],
+          "analysis_max_2": [
+            "rising retained profit shows the business can fund itself internally",
+            "an overdraft inside current liabilities warns that growth is being financed by short-term borrowing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$590,000",
+            "$600,000",
+            "$310,000",
+            "$390,000",
+            "$680,000",
+            "$100,000",
+            "$470,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wentworth Sports Ltd should pay the $100,000 dividend or retain it to refurbish the stores? Justify your answer.",
+        "model_answer": "Paying the dividend would reward the two founders [k], because share capital of $600,000 and retained profit of $590,000 show investors expect a return [app], keeping them committed to remain shareholders [an]. Refurbishing the stores could lift sales [k], because inventories of $470,000 and revenue of $5.6 million depend on fresh, appealing stores [app], and current assets of $680,000 leave only $290,000 of working capital after current liabilities of $390,000 [an]. Overall, Wentworth should retain the $100,000 [eval], because refurbishing 5 stores could raise revenue while the $310,000 overdraft needs clearing first, although a small dividend can be paid next year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "dividends reward shareholders and retain loyalty",
+            "refurbishment can raise sales and competitiveness"
+          ],
+          "application_max_2": [
+            "share capital of $600,000 and retained profit of $590,000",
+            "inventories of $470,000, revenue of $5.6 million, current liabilities of $390,000 including $310,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "paying $100,000 signals confidence but drains cash on top of the overdraft",
+            "refurbishment appeals to customers and could increase $5.6 million revenue"
+          ],
+          "evaluation_max_2": [
+            "weighs owner reward against the growth and cash needs of a 5-store retailer carrying a $310,000 overdraft"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$100,000",
+            "$600,000",
+            "$590,000",
+            "$470,000",
+            "$5.6 million",
+            "$310,000",
+            "$680,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_180",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Driftnet Seafoods Ltd is a private limited company in Country X processing frozen fish for 3 export buyers. It employs 96 workers and revenue last year was $8.9 million. Its statement of financial position at 31 July shows non-current assets of $1,700,000 and current assets of $1,050,000, comprising inventories of $540,000, receivables of $310,000 and cash of $200,000.\n\nCurrent liabilities are $610,000. A government agency offered a $500,000 order if Driftnet files audited accounts for the last 2 years and expands cold storage by $350,000. Share capital is $1,000,000 and retained profit is $740,000, with a bank loan of $400,000 repayable after more than one year. The directors must decide whether to accept the government contract or keep serving the 3 existing buyers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'statement of financial position'.",
+        "model_answer": "A statement of financial position is a financial statement showing the assets, liabilities and equity of a business at a particular date [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shows assets, liabilities and equity",
+            "at a particular date / snapshot of financial health"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the government agency asks for audited accounts before awarding the $500,000 order.",
+        "model_answer": "Reason 1: To check the firm is financially sound [k], because the agency must trust a supplier with $500,000 of public money and wants to see current assets of $1,050,000 [app]. Reason 2: To confirm the firm meets its legal duties [k], because audited accounts prove that current liabilities of $610,000 and a bank loan of $400,000 are being serviced [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government verifies financial stability before awarding contracts",
+            "audited accounts prove legal and tax compliance"
+          ],
+          "application_max_2": [
+            "$500,000 of public money; current assets of $1,050,000",
+            "current liabilities of $610,000 and bank loan of $400,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500,000",
+            "$1,050,000",
+            "$610,000",
+            "$400,000",
+            "$350,000",
+            "$8.9 million",
+            "3 export buyers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways Driftnet's managers would use the statement of financial position when deciding on the government order.",
+        "model_answer": "Way 1: They can check capacity tied up in stock [k], because inventories of $540,000 and receivables of $310,000 show $850,000 already committed to current buyers [app], so extra cold storage must not overstretch cash [an]. Way 2: They can test equity cover for expansion [k], because share capital of $1,000,000 and retained profit of $740,000 give equity of $1,740,000 [app], supporting a $350,000 cold-storage expansion without emergency borrowing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "managers review stock and receivables before taking on new orders",
+            "managers compare equity against expansion cost before committing"
+          ],
+          "application_max_2": [
+            "inventories of $540,000 and receivables of $310,000 ($850,000 committed)",
+            "share capital of $1,000,000 and retained profit of $740,000 (equity $1,740,000) against expansion of $350,000"
+          ],
+          "analysis_max_2": [
+            "a sudden $500,000 order could strain cash if $850,000 is already committed",
+            "equity of $1,740,000 exceeds the $350,000 expansion, so borrowing can be avoided or minimised"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$540,000",
+            "$310,000",
+            "$1,000,000",
+            "$740,000",
+            "$350,000",
+            "$500,000",
+            "$200,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Driftnet Seafoods Ltd should accept the $500,000 government contract? Justify your answer.",
+        "model_answer": "Accepting would secure a big, reliable buyer [k], because existing revenue is $8.9 million from just 3 export buyers and the $500,000 order is government-backed [app], reducing dependence on a narrow customer base [an]. However, accepting means spending $350,000 on cold storage [k], because cash is only $200,000 and current liabilities of $610,000 sit against current assets of $1,050,000 [app], so Driftnet may need to borrow, straining finances if the government pays slowly [an]. Overall, Driftnet should accept the contract but negotiate staged payment [eval], because the $500,000 order strengthens revenue stability and equity of $1,740,000 supports the $350,000 expansion [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government contracts give large, stable, credible orders",
+            "expansion commits scarce cash and may require borrowing"
+          ],
+          "application_max_2": [
+            "revenue of $8.9 million from 3 export buyers; $500,000 order",
+            "cash of $200,000, current liabilities of $610,000, current assets of $1,050,000, expansion of $350,000"
+          ],
+          "analysis_max_2": [
+            "the order diversifies the buyer base and stabilises revenue",
+            "weak cash cover could force borrowing that strains the firm if payment is delayed"
+          ],
+          "evaluation_max_2": [
+            "weighs revenue stability and equity strength against cash and expansion risk, with a staged-payment safeguard"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$500,000",
+            "$8.9 million",
+            "3 export buyers",
+            "$350,000",
+            "$200,000",
+            "$610,000",
+            "$1,050,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

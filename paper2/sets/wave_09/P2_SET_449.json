@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_449",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Juniper Voice Systems (JVS) is a private limited company in the digital services sector, providing cloud contact-centre software with AI speech analytics to firms across Ireland. Founded in 2017 by Aoife Byrne, it employs a workforce of 40 and operates a flat organisational structure with democratic leadership, with engineers voting on product priorities. JVS plans to invest $480,000 in a cloud contact-centre upgrade with real-time transcription, financed by a $180,000 bank overdraft and $300,000 retained profit. It has fixed costs of $168,000 a year, a variable cost of $3.60 a unit and a selling price of $9.60, and currently produces 75,000 units a year. JVS faces two problems: transcription errors affect 7.1% of calls, and complaints about accuracy are rising.",
+    "appendix_1_marketing_ops": "Service Quality Report — Q3 2025: JVS handled 16,200 calls last quarter, with a 7.1% transcription error rate down from 10.3% a year earlier. Client complaints averaged 42 a month and 12 of 35 clients now demand accuracy guarantees before renewal. Average setup time for a new client is 1.8 days and platform uptime reached 98.6%. A survey of 380 business clients found that 66% would pay up to $0.45 more for accurate transcription, and 55% rank data privacy highest. A skills review shows 11 of 40 engineers lack NLP tuning training; a specialist course costs $720 per engineer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Juniper Voice Systems for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,800", "2,160"],
+        ["Cost of sales", "1,080", "1,188"],
+        ["Gross profit", "720", "972"],
+        ["Operating profit", "216", "324"],
+        ["Capital employed", "1,200", "1,620"],
+        ["Interest payable", "28", "34"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, increasing the cost of overdrafts and variable-rate borrowing. (2) The national minimum wage will rise by 6.0% from $12.50 to $13.25 an hour from April 2026, raising wage bills across the technology sector. (3) Cloud compute and bandwidth costs have risen 10.4% year-on-year, while spending on contact-centre software grew 5.7% and consumer prices rose 3.4%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "JVS plans to fund $180,000 of its $480,000 upgrade with a bank overdraft. Explain two advantages for JVS of using $300,000 retained profit instead.",
+      "model_answer": "Point 1: Retained profit has no interest charge, which matters because the base rate is due to reach 5.0% (Appendix 3) and JVS already pays interest of $34,000. The $180,000 overdraft would add a variable cost that rises whenever rates move, while the $300,000 already earned can be spent on cutting the 7.1% transcription error rate without raising the $9.60 selling price or reducing the $6.00 contribution per unit. Cash is therefore preserved for the 42 complaints a month that JVS must answer.\n\nPoint 2: Retained profit carries no repayment deadline or security, so Aoife Byrne and the 40 employees keep control of the $480,000 cloud upgrade and the bank cannot demand repayment when cash is tight. That is important while 12 of 35 clients want accuracy guarantees before renewal and the skills review shows 11 of 40 engineers need NLP tuning training. Using internal funds is also quicker than arranging an overdraft, letting JVS fix errors before more clients complain.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to JVS's financing, errors and client relationships."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "overdraft", "$300,000", "$180,000", "$480,000", "$168,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "JVS is launching accurate real-time transcription. Consider local radio advertising, sponsorship of an industry newsletter, or a social media influencer campaign aimed at contact-centre managers. Which should JVS choose? Justify your recommendation.",
+      "model_answer": "Local radio advertising: Radio is cheap and reaches local listeners quickly, which suits an Irish business with 40 staff and a $480,000 upgrade. It can carry a simple message about accurate transcription and costs far less than national media. Its weakness is that most listeners are not contact-centre managers, so much of the spend is wasted, and a spoken advert cannot demonstrate the 98.6% uptime or the fall in errors from 10.3% to 7.1% that 12 of 35 clients now want evidence of.\n\nIndustry newsletter sponsorship: A customer-service newsletter reaches the contact-centre managers who buy JVS software, and a sponsored article can explain real-time transcription in detail, including the accuracy guarantee demanded by 12 of 35 clients. It is credible and targeted at low cost. The audience is smaller than radio's, lead times are long, and a static article cannot show the product working, which matters when 66% of 380 surveyed clients would pay $0.45 more for accurate transcription.\n\nSocial media influencer campaign: Customer-experience influencers can demonstrate transcription accuracy with real call samples to a targeted professional audience, and results are measurable click by click. The message can address the 55% of surveyed clients who rank data privacy highest by showing how accuracy is achieved. Credibility depends on the influencer, and building reach takes time, but the audience matches JVS's buyer.\n\nRecommendation: JVS should choose the social media influencer campaign. It demonstrates accuracy to the managers in its own research and costs less than sustained radio advertising. Radio is rejected as untargeted and unable to prove a technical product, and newsletter sponsorship is rejected as slow and passive while 42 complaints a month demand a fast response; JVS should reuse the strongest demonstration clips in its newsletter afterwards.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies promotional options with limited reference to JVS's software market.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options with some contextual evidence and emerging judgement.",
+        "level_3_9_to_12": "Evaluates all three options using JVS's survey data, client demands and upgrade budget, with a justified recommendation that explains why the other two are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "55%", "380 business clients", "$0.45", "7.1%", "35 clients"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "JVS's transcription error rate is 7.1% and accuracy complaints are rising. Explain two benefits for JVS of democratic leadership and a flat organisational structure in tackling these problems.",
+      "model_answer": "Point 1: Democratic leadership lets the 40 engineers vote on product priorities, so the team can choose to fix the 7.1% transcription errors first, which raises commitment because staff own the decision. Engineers who help set the accuracy targets are more likely to report faults in the $480,000 real-time transcription system early, protecting the 16,200 calls handled each quarter and reducing the 42 complaints a month that currently damage client confidence.\n\nPoint 2: A flat organisational structure shortens the chain of command, so a transcription fault found in a live call can reach the engineer who can correct it the same day rather than passing through several layers. That helps keep the 1.8-day setup time and the 98.6% uptime that clients expect, and it supports the 12 of 35 clients who now demand accuracy guarantees before renewal. With a short hierarchy, NLP tuning knowledge can spread quickly to the 11 of 40 engineers who lack it.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to JVS's errors, complaints and service quality."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "flat organisational structure", "7.1%", "workforce of 40", "42 a month", "98.6%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "JVS needs 11 engineers trained in NLP tuning. Consider on-the-job coaching by senior engineers or a specialist external course costing $720 per engineer. Which should JVS choose? Justify your decision.",
+      "model_answer": "On-the-job coaching: Senior engineers can coach the 11 who lack NLP tuning on JVS's own speech models and the real call data behind the 7.1% error rate, so training is directly relevant to the $480,000 transcription upgrade. It costs no course fees and keeps all 40 staff available for the 16,200 calls a quarter and the 1.8-day setup schedule. The drawbacks are that coaches' own work suffers, mistakes can be copied, and there is no external certificate for the 12 of 35 clients who demand accuracy guarantees.\n\nSpecialist external course: The $720 per engineer course gives structured teaching and a recognised qualification for all 11, costing $7,920 in total (11 × $720). That helps answer clients who rank data privacy highest and is modest beside the $480,000 upgrade. It removes engineers from live support for a short period and its generic content must still be applied to JVS's own models, so some follow-up coaching is needed.\n\nDecision: JVS should choose the specialist external course for the 11 engineers, followed by on-the-job coaching on its own call data. The recognised training supports the accuracy guarantees that 12 of 35 clients require and the 66% of 380 surveyed clients who would pay $0.45 more for accurate transcription, and $7,920 is affordable. On-the-job coaching is rejected as the main route because it cannot provide independent evidence of competence, though it is the best way to apply what the course teaches to the 7.1% error problem. With 11 of 40 engineers still short of NLP skills and complaints running at 42 a month, spreading expertise only through senior staff would leave JVS exposed if one of those senior engineers left.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Describes the two training methods with little application to JVS's skills gap.",
+        "level_2_5_to_8": "Analyses the benefits and drawbacks of both methods in JVS's context with some judgement.",
+        "level_3_9_to_12": "Comprehensively evaluates both methods against cost, disruption and client credibility, with a clear decision and explicit reasons for rejecting the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$720", "11 of 40", "1.8 days", "10.3%", "NLP tuning", "7.1%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how JVS's management can use its cost, break-even and productivity data to plan the transcription upgrade.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate JVS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $9.60 − $3.60 = $6.00. Answer: contribution per unit is $6.00."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate JVS's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Current output − Break-even output. Break-even = $168,000 ÷ $6.00 = 28,000 units. Substitution: 75,000 − 28,000 = 47,000 units. Answer: margin of safety is 47,000 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways JVS's management can use this financial data.",
+          "model_answer": "1. Break-even is 28,000 units and output is 75,000 units, so the 47,000-unit margin of safety shows JVS can absorb a fall in demand or the cost of the 7.1% transcription errors before the $168,000 fixed costs are uncovered.\n2. Contribution per unit of $6.00 lets managers test the $0.45 premium that 66% of 380 surveyed clients would pay for accurate transcription: adding it to the $9.60 price raises contribution to $6.45 and lowers break-even, making the upgrade easier to justify.\n3. The 47,000-unit margin of safety helps judge whether the $180,000 overdraft can be serviced as the base rate reaches 5.0%, and whether more of the $480,000 upgrade should come from retained profit instead.\n4. Average total cost of $5.84 a unit ($168,000 ÷ 75,000 = $2.24, plus $3.60) is a benchmark for the new system: if accurate transcription cuts the 42 complaints a month and the 1.8-day setup time without raising variable cost, unit cost falls and margins widen."
+        }
+      ],
+      "model_answer": "(i) Contribution per unit = $6.00 | (ii) Margin of safety = 47,000 units | (iii) Four contextual uses explained: safety margin of 47,000 units against 7.1% errors; testing the $0.45 accuracy premium on $6.00 contribution; judging the $180,000 overdraft at 5.0% interest; and unit-cost benchmarking at $5.84 for the $480,000 upgrade.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$6.00", "47,000", "$5.84", "28,000", "75,000", "$0.45"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate JVS's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has JVS's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 15.0%\nROCE 2024 = 18.0%\nROCE 2025 = 20.0%\n\nDetailed workings: 2024 gross profit $720,000 ÷ revenue $1,800,000 × 100 = 40.0; 2025 $972,000 ÷ $2,160,000 × 100 = 45.0, with cost of sales rising from $1,080,000 to $1,188,000. Operating profit $216,000 ÷ revenue $1,800,000 × 100 = 12.0 in 2024 and $324,000 ÷ $2,160,000 × 100 = 15.0 in 2025. Returns on capital: $216,000 ÷ $1,200,000 × 100 = 18.0 in 2024 and $324,000 ÷ $1,620,000 × 100 = 20.0 in 2025. Interest payable increased from $28,000 to $34,000 with the $180,000 overdraft, but operating profit grew much faster.\n\nEvaluation: All three measures improved. The gross margin widened from 40.0% to 45.0%, showing control of direct service costs while revenue grew $360,000, helped by the 5.7% growth in contact-centre software spending. The operating margin improved from 12.0% to 15.0%, so more of each revenue dollar survives the $168,000 fixed costs even after the $6,000 rise in interest. Returns on capital rose from 18.0% to 20.0% although capital employed increased by $420,000 for the $480,000 upgrade, suggesting the investment is beginning to pay. Since revenue, gross profit and operating profit all grew together, the improvement is genuine and not caused by one-off cost cuts. The risk is that 7.1% of calls still have transcription errors, 42 complaints a month persist, and cloud compute and bandwidth costs are up 10.4%; if the upgrade slips, the trend could reverse.\n\nConclusion: JVS's financial performance has improved. The gross margin (40.0% to 45.0%), operating margin (12.0% to 15.0%) and returns on capital (18.0% to 20.0%) all rose with higher revenue. JVS should use part of the $300,000 retained profit to cut the 7.1% error rate and protect the gain before the overdraft is drawn further.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or simple changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Calculates all three ratios for both years with some contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation of revenue, costs, capital and interest, and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "12.0%", "15.0%", "18.0%", "20.0%", "$972,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for JVS of adding real-time transcription to its contact-centre software.",
+      "model_answer": "Advantage: Real-time transcription directly targets the 7.1% error rate and the 42 complaints a month, and the 66% of 380 surveyed clients who would pay $0.45 more for accurate transcription let JVS protect its $6.00 contribution per unit. It also satisfies the 12 of 35 clients demanding accuracy guarantees and supports the 55% who rank data privacy highest, helping JVS keep the $480,000 upgrade relevant as contact-centre software spending grows 5.7%.\n\nDisadvantage: Transcription runs on cloud compute and bandwidth, whose costs have risen 10.4%, so the $3.60 variable cost per unit may rise faster than the $0.45 premium is accepted. Precision also depends on engineers with NLP tuning skills, yet 11 of 40 lack them; until the 11 are trained, real-time errors could remain near 7.1% and the 98.6% uptime could suffer while the system is introduced. Clients who rank data privacy highest may also resist speech analytics being applied to calls, so the 55% who put privacy first could push back unless JVS explains its data handling, weakening the 66% willing to pay $0.45 more and slowing recovery of the $480,000 upgrade.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to JVS's errors, survey data and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["speech analytics", "66%", "$0.45", "7.1%", "$3.60", "$9.60"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 6.0% minimum wage increase and the 10.4% rise in cloud compute and bandwidth costs will affect JVS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.25% to 5.0%): The increase is 0.75 percentage points. If the $180,000 overdraft is charged at a variable rate, the added annual cost is 0.75% × $180,000 = $1,350 a year, small beside $168,000 of fixed costs and easily covered by the 47,000-unit margin of safety. The indirect effect is more important: dearer credit raises the cost of financing the remaining $300,000 of the $480,000 upgrade, and JVS can reduce exposure by using retained profit instead of extending the overdraft.\n\nMinimum wage increase (6.0%, from $12.50 to $13.25): Each paid hour costs $0.75 more (6.0% × $12.50). The insert gives no hours worked and no individual pay rates, so no annual wage total can be invented; the defensible point is that with 40 staff, every replacement is hired at the higher rate, and with 11 of 40 engineers still needing NLP training, unit labour cost rises unless output of 75,000 units a year is maintained, squeezing the $6.00 contribution.\n\nCloud compute and bandwidth costs (up 10.4%): JVS delivers every call through the cloud, so this is an unavoidable input, and 10.4% is the largest percentage change in the bulletin, nearly twice the 6.0% wage rise and far above the 0.75-point rate move. The insert gives no separate cloud bill, so only the scale can be stated: it applies to all 16,200 quarterly calls and to the new real-time transcription, which uses more compute than the current service.\n\nConclusion: The 10.4% rise in cloud compute and bandwidth costs will have the greatest impact. It is the biggest percentage shock, it cannot be avoided by a digital contact-centre business, and it affects every one of the 75,000 units and the $480,000 upgrade at once. The wage rise is second because it recurs across 40 staff, while the overdraft interest is smallest and can be limited by using retained profit rather than more debt.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to JVS.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on JVS's costs, finance or prices in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that cloud compute and bandwidth costs have the greatest impact and clear reasons why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "6.0%", "10.4%", "$13.25", "5.7%", "4.25%"]
+      }
+    }
+  ]
+}

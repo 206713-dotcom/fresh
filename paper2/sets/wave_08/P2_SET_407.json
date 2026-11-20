@@ -1,0 +1,250 @@
+{
+  "scenario_id": "P2_SET_407",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Digital Ledger Technologies (DLT) is a private limited company in the financial technology sector, employing a workforce of 55. Founded in 2013 by Daniel Okafor, it provides mobile-payment services to small merchants and operates a hierarchical structure with autocratic leadership. DLT plans to invest $720,000 in a new mobile-payment platform with biometric authentication, financed by a $420,000 share issue and a $300,000 bank loan. It has fixed costs of $350,000 a year, a variable cost of $10.00 a transaction and a selling price of $24.00, and currently produces 70,000 units a year. DLT faces two problems: a payment error rate of 3.2% and 18 of its 55 staff lacking cybersecurity certification.",
+    "appendix_1_marketing_ops": "Operations and Quality Log — Q2 2025: DLT processed 32,000 digital-payment transactions; the error rate was 3.2%, down from 5.1% a year earlier. Customer complaints fell from 96 to 54 per month. Average settlement time is 2.8 hours. A survey of 380 merchants found 61% would switch providers for faster settlement, and 49% cited security as their main concern. A skills audit shows 18 of 55 staff lack cybersecurity certification; an external certification course costs $950 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Digital Ledger Technologies for the year ended 31 March 2025 ($ '000)",
+      "headers": [
+        "Financial Metric",
+        "2024",
+        "2025"
+      ],
+      "rows": [
+        [
+          "Revenue",
+          "1,500",
+          "1,750"
+        ],
+        [
+          "Cost of sales",
+          "750",
+          "840"
+        ],
+        [
+          "Gross profit",
+          "750",
+          "910"
+        ],
+        [
+          "Operating profit",
+          "300",
+          "420"
+        ],
+        [
+          "Capital employed",
+          "2,500",
+          "2,800"
+        ],
+        [
+          "Interest payable",
+          "60",
+          "70"
+        ]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (March 2026): (1) The base interest rate has risen from 4.0% to 4.75%, raising borrowing costs for firms with variable-rate loans. (2) Average salaries for qualified software developers rose by 7.2%, pushing up wage bills across the technology sector. (3) Payment-processing and data-centre input costs rose 9.6% year-on-year, while fintech transaction volumes grew 5.5% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "DLT plans to fund part of its $720,000 payment platform with a bank loan. Explain two advantages for DLT of using a share issue rather than the bank loan.",
+      "model_answer": "Point 1: A share issue brings in permanent capital with no fixed interest or repayment schedule, so DLT can commit the $420,000 raised to the $720,000 biometric-authentication platform without adding to the $300,000 bank loan. Cash that would have serviced debt can instead fund certification at $950 per employee for the 18 untrained staff, helping cut the 3.2% error rate, and can absorb a rise in processing costs.\n\nPoint 2: Equity does not require collateral, so DLT's payment-platform assets are not at risk of repossession if the launch disappoints, unlike a bank loan. It also spreads ownership rather than concentrating debt risk with one lender, giving Daniel Okafor more room to invest in the 70,000-unit transaction base while fixed costs of $350,000 a year are covered. A bank loan would add interest payable, already $70 in 2025; the share issue avoids that burden entirely. The 7.2% salary inflation expected in the sector makes avoiding extra interest especially valuable to a 55-person firm.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid advantage identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for contextual explanation and analysis applied to DLT's financing mix, costs and platform launch."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "share issue",
+          "$720,000",
+          "$420,000",
+          "$300,000",
+          "$350,000",
+          "bank loan"
+        ]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "DLT is launching its new mobile-payment platform. Consider advertising in the national business press, paid search and social media advertising, or a referral programme for existing merchants. Which should DLT choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National business press advertising: Ads in national business newspapers could build credibility for DLT's security credentials among owners of small firms. However, the cost is high, readership is broad rather than merchant-specific, and response cannot be measured. With $720,000 already committed to the platform and a $300,000 bank loan to serve, spending heavily on untargeted press would waste cash that could cut the 3.2% error rate.\n\nPaid search and social media advertising: These reach merchants actively looking for payment services, can be targeted at small firms and give measurable clicks for a modest outlay. Campaign copy can highlight the 61% of surveyed merchants who want faster settlement and the 49% who rank security first, linked to biometric authentication. The weakness is that keyword costs rise with competition and DLT lacks the marketing skills to optimise campaigns while 18 of 55 staff lack certification.\n\nReferral programme for existing merchants: Offering incentives to current merchants to recommend the platform uses DLT's existing user base and the 380-merchant survey insight that 61% would switch for faster settlement. It is low-cost, self-targeting and builds trust through word of mouth, though growth is slower than paid media and rewards reduce revenue per transaction on a $24.00 price.\n\nRecommendation: DLT should choose the referral programme. It is cheap, targeted and credible with the exact merchants DLT serves, and it can be funded from the $420,000 share issue rather than more debt. National press is rejected as costly and untargeted; paid search is rejected as competitive and skill-intensive relative to a 55-person firm with a certification gap.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Lists or describes promotional options with limited application to DLT.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options in DLT's context with some judgement.",
+        "level_3_9_to_12": "Evaluates all three options in DLT's context and gives a justified recommendation explaining why press advertising and paid search are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "$720,000",
+          "70,000",
+          "61%",
+          "49%",
+          "380",
+          "workforce of 55"
+        ]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "DLT's payment error rate is 3.2% and 18 of its 55 staff lack cybersecurity certification. Explain two benefits for DLT of using autocratic leadership in its processing team.",
+      "model_answer": "Point 1: Autocratic leadership lets Daniel Okafor set one clear, standard procedure for every transaction, which directly reduces DLT's 3.2% error rate and helps cut complaints from 96 to 54 per month. In a hierarchical structure, unambiguous instructions and tight supervision are valuable in payment processing where mistakes are costly, and decisions can be made immediately when a settlement fault appears rather than waiting for team consensus.\n\nPoint 2: Centralised control makes it easier to enforce security rules while 18 of 55 staff still lack cybersecurity certification, protecting the 49% of surveyed merchants who rank security first. The leader can quickly direct resources to training at $950 per employee and set settlement-speed targets for the 70,000-unit base, meeting the 61% who want faster settlement. Clear direction also suits a workforce led by a founder, giving rapid responses during the $720,000 platform launch. It also protects the 61% of merchants who want faster settlement by reducing rework on incorrect payments.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid benefit identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to DLT's error rate, certification gap and expansion."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "autocratic leadership",
+          "error rate",
+          "workforce of 55",
+          "18",
+          "$950",
+          "hierarchical"
+        ]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "DLT must address the cybersecurity certification gap among 18 staff. Consider on-the-job coaching or external certification at $950 per employee. Which should DLT choose? Justify your decision.",
+      "model_answer": "On-the-job coaching: Coaching at the desk is tailored to DLT's own payment platform and biometric authentication, costs no course fees and keeps all 18 staff processing the 70,000 transactions a year while they learn, protecting the effort to reduce the 3.2% error rate. Supervisors can demonstrate the exact security routines merchants expect. However, the supervisors themselves may lack certification, bad habits can spread, and no formal qualification is awarded, which matters when 49% of merchants rank security as their main concern.\n\nExternal certification: An accredited course gives recognised, up-to-date security skills and a credential that reassures merchants. For 18 staff the fee is 18 × $950 = $17,100, an explicit calculation from the insert, affordable against the $420,000 share issue. It takes staff away from settlement duties and generic content may not match DLT's platform, but the certificate directly addresses the gap for the 49% who value security.\n\nDecision: DLT should choose external certification. The $17,100 cost is small relative to the $720,000 investment, the qualification is credible with merchants, and on-the-job coaching cannot confer certification when 18 of 55 staff are untrained. On-the-job coaching is rejected because it cannot provide the formal security assurance that 49% of surveyed merchants demand and would risk the 3.2% error rate persisting. With 7.2% salary inflation, the $17,100 one-off fee is easier to justify than a permanent rise in salaries, and the certificate gives merchants confidence that the 3.2% error rate will keep falling. A phased rollout would let the 18 staff train in groups so settlement service continues.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to DLT.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both methods in DLT's context.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a justified decision covering cost, credibility and disruption, rejecting the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "$950",
+          "18",
+          "cybersecurity certification",
+          "$720,000",
+          "70,000",
+          "3.2%"
+        ]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how DLT's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate DLT's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $350,000 ÷ ($24.00 − $10.00) = $350,000 ÷ $14.00 = 25,000 units. Answer: break-even output is 25,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate DLT's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $24.00 − $10.00 = $14.00. Answer: contribution per unit is $14.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways DLT's management can use this financial data.",
+          "model_answer": "1. Compare the 25,000-unit break-even output with 70,000 units actually processed to see a margin of safety of 45,000 units, showing how far transaction volume can fall before the $720,000 platform becomes loss-making.\n2. Use $14.00 contribution to price incentives for the referral programme: a $2.00 discount leaves $12.00, so managers can calculate the extra transactions needed to keep covering $350,000 fixed costs.\n3. Check that 70,000 × $14.00 = $980,000 contribution covers the $300,000 bank loan and $350,000 fixed costs, informing whether further borrowing is prudent.\n4. Benchmark unit cost ($350,000 ÷ 70,000 = $5.00 plus $10.00 = $15.00) each quarter to spot the effect of the 9.6% processing-cost rise and to tie it to the 3.2% error rate."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 25,000 units | (ii) Contribution per unit = $14.00 | (iii) Four contextual uses explained: margin of safety of 45,000 units against 70,000 transactions; discount pricing with $350,000 fixed costs; loan-service feasibility on the $300,000 loan; and unit-cost benchmarking at $15.00 against 9.6% input inflation.",
+      "mark_scheme": {
+        "working_marks": [
+          "1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "25,000",
+          "$14.00",
+          "70,000",
+          "$350,000",
+          "$10.00",
+          "$24.00",
+          "$15.00"
+        ]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate DLT's profitability by calculating the gross profit margin, profit margin and return on capital employed for 2024 and 2025. Has DLT's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 50.0%\nGross Profit Margin 2025 = 52.0%\nProfit Margin 2024 = 20.0%\nProfit Margin 2025 = 24.0%\nROCE 2024 = 12.0%\nROCE 2025 = 15.0%\n\nDetailed workings: 2024 gross profit $750 ÷ revenue $1,500 = 50.0%; 2025 gross profit $910 ÷ revenue $1,750 = 52.0%. Operating profit 2024 $300 ÷ revenue $1,500 = 20.0%; 2025 $420 ÷ revenue $1,750 = 24.0%. Operating profit 2024 $300 ÷ capital employed $2,500 = 12.0%; 2025 $420 ÷ capital employed $2,800 = 15.0%. Revenue grew from $1,500 to $1,750 while cost of sales rose from $750 to $840, so gross profit increased faster than sales.\n\nEvaluation: Profitability improved on every measure. The higher gross percentage shows better control of direct processing costs relative to revenue, consistent with the $24.00 price and $10.00 variable cost on 70,000 transactions. The operating percentage rose from 20.0% to 24.0% because operating profit grew from $300 to $420 faster than revenue, showing $350,000 fixed costs were spread over more business. The return on capital climbed from 12.0% to 15.0%, so the larger $2,800 capital base is being used more effectively, supporting the $720,000 platform. Interest payable rose from $60 to $70, but this is small against $420 operating profit.\n\nConclusion: DLT's profitability has improved: all three measures increased together and the gain comes from revenue growth and cost control, not from shrinking capital. The caution is that a variable-rate $300,000 loan and the 3.2% error rate could reverse the trend, so management should protect the 52.0% gross percentage.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years combined with detailed evaluation of revenue, cost and capital movements and a justified conclusion on profitability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "50.0%",
+          "52.0%",
+          "20.0%",
+          "24.0%",
+          "12.0%",
+          "1,750",
+          "1,500"
+        ]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for DLT of introducing biometric authentication in its payment platform.",
+      "model_answer": "Advantage: Biometric authentication strengthens security at a time when 49% of surveyed merchants rank it as their main concern and DLT still has a 3.2% error rate. Fraudulent or mistaken payments should fall, complaints should stay below 54 per month, and the feature supports the $24.00 price and $14.00 contribution across 70,000 transactions, helping justify the $720,000 platform.\n\nDisadvantage: The technology forms part of the $720,000 investment and may push up the $350,000 fixed costs, raising the 25,000-unit break-even output. It also requires cybersecurity skills that 18 of 55 staff lack, so rushed implementation could create login failures and slow settlement for the 61% of merchants who want faster processing. The platform's 32,000 transactions a quarter give a clear baseline: if biometric checks cut mistaken authorisations, complaints should fall further from 54 per month and the 49% who rank security first are more likely to stay. DLT can evaluate the feature using the same operational log rather than guessing at its benefits.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for a valid advantage and 1 mark for a valid disadvantage."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to DLT's security concerns, error rate, costs and skills."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "biometric authentication",
+          "3.2%",
+          "70,000",
+          "$24.00",
+          "$720,000",
+          "49%"
+        ]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.75%, the 7.2% rise in developer salaries and the 9.6% rise in payment-processing input costs will affect DLT. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.0% to 4.75%): If DLT's $300,000 bank loan is variable-rate, the additional interest is 0.75% × $300,000 = $2,250 a year (0.0075 × $300,000), a small sum beside $350,000 fixed costs and $420 of operating profit. The $420,000 share issue reduces reliance on debt, and fixing the loan rate would remove the risk. Future borrowing for the $720,000 platform could be dearer, but the direct annual effect is modest.\n\nDeveloper salary rise (7.2%): The insert states a workforce of 55 and a 3.2% error rate but gives no hours worked or number of developers, so an annual wage bill cannot be invented. The defensible judgement is qualitative: salaries rising 7.2% lift unit labour costs unless productivity holds at 70,000 ÷ 55 = about 1,273 transactions per employee, and the certification gap among 18 staff makes that difficult. It also makes the $950 external course better value.\n\nPayment-processing input cost inflation (9.6%): The insert gives a variable cost of $10.00 per transaction but does not break it down. A labelled upper bound if the whole variable cost rose 9.6% is 0.096 × $10.00 = $0.96 a unit; across 70,000 units that is 70,000 × $0.96 = $67,200 a year, reducing contribution from $14.00 to $13.04. Even partial pass-through materially narrows the surplus covering $350,000 fixed costs.\n\nConclusion: The 9.6% input-cost rise will have the greatest impact. It applies to every transaction, can add $67,200 a year on the stated assumption and directly erodes the $14.00 contribution that services the loan; the interest rise is at most $2,250 and the salary effect cannot be quantified from the insert and can be offset by productivity.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to DLT.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on DLT's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in DLT's context with justified greatest-impact judgement and shown derivations, rejecting the smaller effects."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "4.75%",
+          "7.2%",
+          "9.6%",
+          "$300,000",
+          "$10.00",
+          "70,000"
+        ]
+      }
+    }
+  ]
+}

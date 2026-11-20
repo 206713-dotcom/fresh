@@ -1,0 +1,1160 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_101",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Saltrunner Surfboards is a sole trader business owned by Marco Deleanu, shaping bespoke surfboards in a small coastal workshop in Country X for 6 years. Saltrunner employs 3 skilled shapers and produces 220 custom boards a year, each hand-shaped over 9 hours and sold at $1,450, generating annual revenue of $319,000. Fixed costs are $4,000 a month and materials cost $180 per board.\n\nA national surf retailer has offered a 2-year contract for 800 identical boards a year at $620 each. Marco could accept by introducing batch production with 2 Computer-Aided Design templates and $55,000 of new machinery, or he could refuse and keep shaping one-off boards for his loyal custom customers. He must decide before the retailer's order deadline on 30 September.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'job production'.",
+        "model_answer": "Producing one-off, often unique products, each made to the individual requirements of a specific customer [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one-off / single items are produced at a time",
+            "products are made to the individual customer's specification"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why job production suits Saltrunner's surfboards.",
+        "model_answer": "Reason 1: Job production makes one-off items to individual specifications [k], which suits boards ordered in personal sizes and designs by Saltrunner's 220 custom boards a year [app]. Reason 2: Job production supports skilled craftsmanship [k], allowing each $1,450 board to be hand-shaped over 9 hours to the buyer's exact dimensions [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job production customises each item to the customer's order",
+            "job production relies on skilled labour producing one-off items"
+          ],
+          "application_max_2": [
+            "220 custom boards a year are ordered to personal designs",
+            "each $1,450 board is hand-shaped over 9 hours"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "220 custom boards a year",
+            "$1,450",
+            "9 hours",
+            "hand-shaped",
+            "$319,000",
+            "custom customers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Saltrunner of switching to batch production for the retailer contract.",
+        "model_answer": "Problem 1: Switching to batch production would standardise the boards [k], but the retailer's 800 identical boards differ completely from the individual designs ordered by loyal custom customers [app], so the hand-shaping skills built over 6 years could be lost [an]. Problem 2: Batch production with $55,000 of new machinery raises fixed costs [k], and each contract board sells at only $620 instead of $1,450 [app], so Saltrunner could treble volume yet earn less cash per unit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "batch production standardises output and loses per-item customisation",
+            "batch production usually needs capital investment in machinery"
+          ],
+          "application_max_2": [
+            "the retailer wants 800 identical boards, unlike bespoke custom work",
+            "$55,000 machinery and only $620 per board against $1,450 today"
+          ],
+          "analysis_max_2": [
+            "loss of skills and differentiation built up over 6 years",
+            "higher volume but much thinner margin per board"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "800 identical boards",
+            "$55,000",
+            "$620",
+            "$1,450",
+            "6 years",
+            "one-off boards",
+            "2-year contract"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saltrunner Surfboards should accept the 800-board retailer contract and switch to batch production? Justify your answer.",
+        "model_answer": "Accepting the contract would raise revenue sharply [k], since 800 boards a year at $620 would bring $496,000 compared with today's $319,000 [app], so capacity use and cash flow would improve significantly [an]. However, batch production with $55,000 of machinery weakens the bespoke position [k]; loyal clients who pay $1,450 each for a hand-shaped one-off board may feel Saltrunner has gone mass market [app], so premium orders could fall below today's levels [an]. Overall, Saltrunner should decline the contract for now [eval], because protecting a $319,000-a-year bespoke reputation with only 3 skilled shapers beats taking on $55,000 of machinery debt for thin $620 margins [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "batch production raises volume and capacity utilisation at low unit cost",
+            "batch production risks losing differentiation and premium pricing"
+          ],
+          "application_max_2": [
+            "800 boards at $620 = $496,000 a year, above the current $319,000",
+            "$55,000 machinery and a drop from $1,450 to $620 per board"
+          ],
+          "analysis_max_2": [
+            "cash flow benefit weighed against margin per unit",
+            "brand dilution could erode the premium custom segment"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to the figures and the sole-trader scale of the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "800 identical boards",
+            "$620",
+            "$1,450",
+            "$55,000",
+            "$319,000",
+            "2-year contract",
+            "one-off boards"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_102",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Sunpepper Hot Sauce Co is a private limited company founded 4 years ago by Lena Ortiz in Country X, employing 14 production staff in one factory. Sunpepper cooks 6,000 litres of premium chilli sauce a month in batches of 750 litres, selling each 250 ml bottle at $6.40 and generating monthly revenue of $153,600. It makes 12 varieties, best known for smoky chipotle, mango habanero and lime leaf.\n\nA supermarket chain has listed Sunpepper's smoky chipotle sauce nationally, forecasting sales of 72,000 bottles a month, three times current output. Lena could install a continuous flow production line costing $480,000, or buy 2 additional 750-litre vats for $60,000 and hire 6 staff at $1,150 a month to triple batch capacity. She must decide within 8 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'batch production'.",
+        "model_answer": "Producing a set quantity of identical items, completing each stage for the whole batch before moving to the next batch [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a batch is a set number of identical items produced together",
+            "each stage is completed for the batch before production switches"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of batch production for Sunpepper.",
+        "model_answer": "Reason 1: Batch production allows different varieties to be made [k], which suits Sunpepper's 12 varieties, since each 750-litre batch can focus on one recipe [app]. Reason 2: Batch production spreads set-up costs across many units [k], lowering the average cost per bottle across the 24,000 bottles sold each month at $6.40 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "batch production can switch between varieties or recipes",
+            "batch production spreads set-up costs over many units"
+          ],
+          "application_max_2": [
+            "each 750-litre batch is devoted to one of the 12 varieties",
+            "24,000 bottles a month (6,000 litres at 250 ml) at $6.40 each"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12 varieties",
+            "750-litre vats",
+            "6,000 litres",
+            "$6.40",
+            "250 ml",
+            "$153,600"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Sunpepper of its current batch production.",
+        "model_answer": "Problem 1: Batch production needs downtime between batches [k], so cleaning and resetting vats across 12 varieties loses production hours in a factory making only 6,000 litres a month [app], leaving too little capacity to serve the supermarket listing [an]. Problem 2: One error can spoil a whole batch [k], and a faulty recipe could waste all 750 litres in a run before anyone notices [app], creating unsold stock and cash flow pressure against $153,600 monthly revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "batches need changeover time for cleaning and resetting",
+            "a single fault can ruin an entire batch"
+          ],
+          "application_max_2": [
+            "12 varieties mean frequent vat changeovers in a small factory",
+            "all 750 litres in a batch would be lost to one error"
+          ],
+          "analysis_max_2": [
+            "changeover downtime prevents meeting the 72,000-bottle forecast",
+            "wasted batches directly damage cash flow against $153,600 revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12 varieties",
+            "750 litres",
+            "6,000 litres",
+            "$153,600",
+            "72,000 bottles",
+            "$6.40"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sunpepper Hot Sauce Co should install the $480,000 flow production line rather than expand batch capacity? Justify your answer.",
+        "model_answer": "The supermarket forecasts 72,000 bottles a month, three times current output [k]; buying 2 additional 750-litre vats at $60,000 and hiring 6 staff at $1,150 adds only $6,900 a month in wages [app], far cheaper than $480,000 [an]. However, a flow line would cut unit costs and fill 72,000 bottles smoothly every month [k], avoiding 24 changeovers and protecting the national listing [app], building long-term volume beyond the chipotle sauce [an]. Overall, Sunpepper should expand batch capacity first [eval], keeping 12 varieties flexible for local shops while proving the supermarket volume before committing $480,000 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow production cuts unit cost for one standardised product at high volume",
+            "expanding batch capacity keeps variety and flexibility at lower cost"
+          ],
+          "application_max_2": [
+            "72,000 bottles a month (three times current) vs 2 vats at $60,000 and 6 staff at $1,150",
+            "$480,000 line vs $6,900 a month extra wages (6 x $1,150)"
+          ],
+          "analysis_max_2": [
+            "capital cost difference between the two options and when each breaks even",
+            "variety flexibility versus single-product flow efficiency and listing security"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to cash flow, the 8-week decision window and listing risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "72,000 bottles",
+            "$480,000",
+            "$60,000",
+            "$1,150",
+            "smoky chipotle",
+            "750-litre vats",
+            "12 varieties",
+            "$153,600"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_103",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Cindergate Canning Co is a private limited company in Country X, founded 5 years ago, employing 46 factory workers in one plant. It makes 125,000 cans of chopped tomatoes a day on a continuous flow production line, 5 days a week, selling to national supermarkets and wholesalers across Country X. Last year Cindergate sold 32.5 million cans at $0.85 each, and fixed costs are $210,000 a month.\n\nA supermarket has offered a 3-year contract for 45 million cans a year at $0.82 per can. The board is deciding between installing a second fully automated flow line costing $6.5 million, or keeping one line and running Saturday and Sunday shifts, adding $38,000 a month in overtime and maintenance. The contract starts in May, 9 months away.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'flow production'.",
+        "model_answer": "Producing large quantities of standardised products continuously, with work moving from one stage to the next on an assembly line [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "continuous production of standardised / identical products",
+            "output moves through stages, typically on an assembly line"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of flow production for Cindergate.",
+        "model_answer": "Reason 1: Flow production allows very high volumes [k], enabling Cindergate's continuous line to make 125,000 cans a day [app]. Reason 2: Flow production lowers average cost per unit [k], so each of the 32.5 million cans sold last year carried only a small share of the $210,000 monthly fixed costs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow production achieves very high output volumes",
+            "flow production lowers average cost per unit"
+          ],
+          "application_max_2": [
+            "125,000 cans a day on one continuous line",
+            "32.5 million cans a year spreading $210,000 fixed costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "125,000 cans",
+            "32.5 million cans",
+            "$210,000",
+            "$0.85",
+            "$0.82"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of flow production for Cindergate.",
+        "model_answer": "Problem 1: Flow production needs high capital investment [k], and a second automated line would cost $6.5 million in one payment [app], stretching cash reserves built from last year's 32.5 million cans [an]. Problem 2: A breakdown stops the whole line [k], so one fault in the continuous process could halt all 125,000 cans a day worked by 46 factory workers [app], missing supermarket deliveries and triggering penalties [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow production requires very high capital investment",
+            "in flow production one fault stops the entire line"
+          ],
+          "application_max_2": [
+            "$6.5 million for a second automated line",
+            "one fault could halt 125,000 cans a day across 46 workers"
+          ],
+          "analysis_max_2": [
+            "cash flow strain and risk of under-used capacity",
+            "lost output and delivery penalties under time pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.5 million",
+            "125,000 cans",
+            "46 factory workers",
+            "32.5 million cans",
+            "$210,000",
+            "5 days a week"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cindergate Canning Co should install a second flow line rather than run Saturday and Sunday shifts? Justify your answer.",
+        "model_answer": "Running weekends would meet the contract cheaply [k]: moving to 7 days raises capacity from 32.5 million to 45.5 million cans a year, covering the 45 million needed for only $38,000 a month in overtime [app], protecting cash ahead of the 9-month deadline [an]. However, weekend working strains workers and machinery [k], and the 3-year contract at $0.82 per can is worth about $110.7 million in revenue [app], so automation's reliability and lower long-run unit costs could protect margins on such a valuable deal [an]. Overall, Cindergate should run Saturday and Sunday shifts first [eval], keeping the $6.5 million uncommitted until the supermarket contract proves repeatable at $0.82 per can [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overtime/weekend working raises capacity without capital spending",
+            "automation lowers long-run unit cost and improves reliability"
+          ],
+          "application_max_2": [
+            "7 days yields 45.5 million cans a year, covering the 45 million contract for $38,000 a month",
+            "3-year contract worth about $110.7 million (45 million x $0.82 x 3)"
+          ],
+          "analysis_max_2": [
+            "$38,000 per month vs $6.5 million capital outlay, cash timing",
+            "reliability and unit-cost benefits versus workforce fatigue and maintenance"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation linked to the 9-month deadline and contract risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "125,000 cans",
+            "$0.82",
+            "$0.85",
+            "$6.5 million",
+            "$38,000",
+            "45 million cans",
+            "$210,000",
+            "32.5 million cans"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_104",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Thornwick Garments Ltd is a private limited company in Country X employing 85 sewing machinists making hard-wearing workwear for factories and logistics firms in one factory. Last month the factory produced 42,000 garments, up from 38,000 six months ago, after 12.5 hours of weekly overtime per machinist were approved. Total hours worked rose from 12,750 to 17,000 a month, and quality complaints rose from 1.2% to 1.9% of garments.\n\nThe owner could hire 12 more machinists at $520 per week to raise output, or invest $95,000 in 20 computerised sewing machines and a staff training programme to raise productivity and hold defects down. The largest customer, a national retailer, wants 55,000 garments a month within 12 months; overtime is already unpopular with the machinists.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'production'.",
+        "model_answer": "The process of transforming resources such as labour, land and capital into goods and services [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "production is the process of making goods / providing services",
+            "production converts inputs (factors of production) into outputs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the fall in productivity from 2.98 to 2.47 garments per hour matters to Thornwick.",
+        "model_answer": "Reason 1: Lower productivity means more labour hours per garment [k], so total hours rose from 12,750 to 17,000 a month to produce only 42,000 garments [app]. Reason 2: Falling productivity raises unit labour cost [k], and with complaints up from 1.2% to 1.9% of garments, rework makes each of the 42,000 garments more expensive [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower productivity raises input per unit of output",
+            "lower productivity increases average / unit cost"
+          ],
+          "application_max_2": [
+            "hours rose from 12,750 to 17,000 while output rose only from 38,000 to 42,000",
+            "complaints rose from 1.2% to 1.9% of garments adding rework cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12,750 to 17,000",
+            "1.2% to 1.9%",
+            "42,000 garments",
+            "38,000",
+            "85 sewing machinists"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages to Thornwick of investing in the 20 computerised sewing machines rather than hiring 12 more machinists.",
+        "model_answer": "Benefit 1: Machines raise output without adding proportional wages [k], since 20 computerised sewing machines would lift output towards the 55,000 garments the national retailer wants without adding 12 x $520 weekly wages [app], so unit labour cost falls [an]. Benefit 2: Machines improve consistency [k], reducing the 1.9% complaint rate that appeared once 12.5 extra weekly hours were worked [app], so rework falls and the retailer relationship is protected [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital investment raises capacity without proportional wage increases",
+            "machines improve consistency and reduce errors"
+          ],
+          "application_max_2": [
+            "20 computerised sewing machines towards the 55,000-garment target",
+            "complaints at 1.9% after 12.5 overtime hours per machinist"
+          ],
+          "analysis_max_2": [
+            "unit labour cost falls as output rises without 12 x $520 wages",
+            "fewer defects means less rework and a protected key account"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "20 computerised sewing machines",
+            "55,000 garments",
+            "$520",
+            "12 more machinists",
+            "1.9%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thornwick Garments should invest in the 20 computerised sewing machines rather than hire 12 more machinists? Justify your answer.",
+        "model_answer": "Investing $95,000 in 20 computerised machines would attack the productivity problem directly [k]; output could reach 55,000 garments a month within 12 months without permanently adding 12 x $520 a week to the wage bill [app], so unit costs fall and quality improves as manual overtime is replaced [an]. However, machines take time to install and machinists may fear job losses [k], whereas hiring 12 machinists at $520 a week adds capacity quickly and keeps 85 skilled operators in work [app], avoiding disputes and protecting output during changeover [an]. Overall, Thornwick should invest in the machines [eval], because productivity has already fallen from 2.98 to 2.47 garments per hour and overtime cannot sustainably deliver the national retailer's 55,000-garment target [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "technology investment raises productivity and quality",
+            "hiring adds quick capacity but raises permanent wage costs"
+          ],
+          "application_max_2": [
+            "$95,000 for 20 machines vs 55,000 garments needed within 12 months",
+            "12 machinists at $520 a week would cost $6,240 a week in extra wages"
+          ],
+          "analysis_max_2": [
+            "productivity recovery versus speed and disruption of installation",
+            "permanent wage cost versus one-off capital saving over time"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation linked to the productivity decline and retailer deadline"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "20 computerised sewing machines",
+            "55,000 garments",
+            "12 more machinists",
+            "$520",
+            "42,000 garments",
+            "1.9%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_105",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Brightfold Packaging Ltd is a private limited company in Country X employing 40 machine operators and 5 supervisors, producing corrugated postal boxes in brown, white and branded print in one plant. Last month the plant produced 480,000 boxes. Fixed costs are $96,000 a month and materials cost $0.31 per box; boxes sell at $0.95 each. Labour productivity was 12,000 boxes per operator per month.\n\nBrightfold's main customer placed a rush order for 720,000 boxes next month, 50% above current output. The operations manager proposes hiring 20 additional operators at $2,050 per month each, while the general manager proposes upgrading 6 forming machines for $120,000 to raise productivity to 18,000 boxes per operator. One of the two plans must be chosen within 3 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'productivity'.",
+        "model_answer": "A measure of output per unit of input, usually output per worker per period [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "productivity is output per worker / per unit of input",
+            "higher productivity means more output from the same resources"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Brightfold of raising labour productivity to 18,000 boxes per operator.",
+        "model_answer": "Benefit 1: Higher productivity spreads fixed costs over more output [k], so the $96,000 monthly fixed costs would be shared across 720,000 boxes instead of 480,000 [app]. Benefit 2: Higher productivity raises capacity without extra staff [k], allowing 40 operators to meet the 720,000-box rush order instead of 60 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "higher productivity lowers average / unit cost",
+            "higher productivity raises capacity without extra labour"
+          ],
+          "application_max_2": [
+            "$96,000 fixed cost spread over 720,000 boxes rather than 480,000",
+            "40 operators at 18,000 boxes each = 720,000 without hiring"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "720,000 boxes",
+            "480,000",
+            "$96,000",
+            "18,000 boxes per operator",
+            "$0.95",
+            "$0.31"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Brightfold may face if it hires 20 additional operators instead of upgrading the machines.",
+        "model_answer": "Problem 1: Extra operators raise wage costs permanently [k], adding 20 x $2,050 = $41,000 a month to the payroll [app], squeezing margins once the rush order ends [an]. Problem 2: More staff need more supervision and space [k], and 60 operators on one line exceed the capacity of the 5 supervisors and the plant floor [app], creating congestion, more defects and overtime costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "hiring adds permanent wage costs",
+            "more staff require more supervision and workspace"
+          ],
+          "application_max_2": [
+            "20 x $2,050 = $41,000 a month added to the payroll",
+            "60 operators vs only 5 supervisors on one line"
+          ],
+          "analysis_max_2": [
+            "margins are squeezed once the rush order finishes",
+            "supervision strain raises defect and overtime risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "20 additional operators",
+            "$2,050",
+            "5 supervisors",
+            "40 machine operators",
+            "720,000 boxes",
+            "$0.31"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brightfold Packaging should upgrade the 6 forming machines rather than hire 20 extra operators? Justify your answer.",
+        "model_answer": "The $120,000 upgrade would let the existing 40 operators reach 720,000 boxes (40 x 18,000) [k], and equals about 3 months of the $41,000 monthly wage bill for 20 new operators [app], so within a quarter the upgrade is cheaper and margins recover [an]. However, machines need installation time and the rush order is due next month [k], whereas hiring 20 operators at $2,050 each can be done within the 3-week decision window [app], securing the customer's rush order immediately [an]. Overall, Brightfold should upgrade the machines [eval], because the bottleneck is equipment rather than effort, and the rush order can be covered by short-term overtime from the current 40 operators while installation is completed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital upgrade lowers long-run unit labour cost",
+            "hiring is quicker but adds permanent wage cost"
+          ],
+          "application_max_2": [
+            "40 operators x 18,000 = 720,000 boxes with no extra hires",
+            "$120,000 equals about 3 months of $41,000 wages (20 x $2,050)"
+          ],
+          "analysis_max_2": [
+            "recovery time of the $120,000 upgrade versus ongoing wage drain",
+            "speed of hiring versus disruption of machine installation"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation linked to the 3-week window and equipment bottleneck"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "720,000 boxes",
+            "20 additional operators",
+            "$2,050",
+            "18,000 boxes per operator",
+            "5 supervisors",
+            "40 machine operators"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_106",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Ironbark Furniture Works is a partnership founded 9 years ago by two brothers in Country X, employing 34 workers making three product lines: bespoke fitted wardrobes at $4,800 each (25 a month), oak dining chairs made in batches of 600 a month at $210 each, and pine stools on a flow line at 2,000 a month at $34 each. Monthly sales revenue averages $314,000.\n\nThe stool flow line is overloaded with 1,400 stools on backorder, while the wardrobe line has spare capacity. The partners could invest $150,000 in a second stool pressing machine to raise stool output to 3,200 a month, or move 4 chair-batch workers onto the stool line and keep total employment unchanged. Orders are due next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two advantages of flow production.",
+        "model_answer": "Flow production allows very high output volumes [1]; it lowers average unit costs through standardisation and continuous working [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow production achieves very high output volume",
+            "flow production lowers average unit cost through standardisation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Ironbark uses different production methods for its three product lines.",
+        "model_answer": "Reason 1: Job production suits one-off custom work [k], fitting fitted wardrobes made to each customer's room at $4,800 and about 25 a month [app]. Reason 2: Flow production suits identical high-volume products [k], ideal for 2,000 pine stools a month at $34, while chairs are batch-made at 600 a month to balance volume and choice [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job production suits one-off, customised products",
+            "flow production suits standardised high-volume products"
+          ],
+          "application_max_2": [
+            "wardrobes at $4,800, about 25 a month, made to room measurements",
+            "stools at $34 on a flow line, 2,000 a month; chairs batched at 600 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "fitted wardrobes",
+            "$4,800",
+            "25 a month",
+            "2,000 a month",
+            "batches of 600",
+            "$34"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Ironbark of investing in the second stool pressing machine.",
+        "model_answer": "Problem 1: The press creates over-dependence on one low-margin line [k], since stools sell at only $34 each against $4,800 wardrobes [app], so recovering the $150,000 depends on volumes that may not last [an]. Problem 2: The press commits capital with one fault point [k], and with the flow line already missing 1,400 stools on backorder, a machine breakdown could halt stool output entirely [app], pushing deliveries past the orders due next month [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital is committed to one product line, raising risk",
+            "flow lines are vulnerable to breakdown stoppages"
+          ],
+          "application_max_2": [
+            "stools at $34 each versus $4,800 bespoke wardrobes",
+            "backorder already 1,400 stools; press costs $150,000"
+          ],
+          "analysis_max_2": [
+            "recovery risk if stool demand fades",
+            "single point of failure pushing deliveries beyond next month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "1,400 stools on backorder",
+            "$34",
+            "$4,800",
+            "2,000 a month",
+            "pine stools"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ironbark Furniture Works should invest in the second stool pressing machine rather than move 4 chair-batch workers onto the stool line? Justify your answer.",
+        "model_answer": "The second press would lift stool output to 3,200 a month [k], clearing the 1,400-stool backorder and supporting the $314,000-a-month sales run rate reliably [app], so flow efficiency and delivery would recover quickly [an]. However, $150,000 in one payment strains partner cash [k], while moving 4 chair-batch workers keeps chairs flowing, which sell at $210 each and earn $126,000 a month [app], and avoids debt if stool demand fades [an]. Overall, Ironbark should move the 4 chair-batch workers first [eval], solving the backorder without new debt, and commit to the $150,000 press only if backorders persist for two more months [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "investment raises flow capacity for high-volume standard goods",
+            "reallocating existing staff is cheaper and more flexible"
+          ],
+          "application_max_2": [
+            "press lifts output to 3,200 a month vs 1,400-stool backorder",
+            "chairs sell at $210 each earning about $126,000 a month"
+          ],
+          "analysis_max_2": [
+            "capacity and reliability versus cash flow strain",
+            "flexibility and zero debt versus delivery risk next month"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to backorder size and partner cash position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$150,000",
+            "1,400 stools on backorder",
+            "3,200 a month",
+            "$314,000",
+            "$210",
+            "batches of 600",
+            "2,000 a month"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_107",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Honeywick Artisan Bakery is a private limited company in Country X employing 18 bakers and 6 counter staff, producing fresh bread, rolls and pastries for 9 local shops across the town and two neighbouring villages. Last year the bakery produced 780,000 loaves and rolls, 8% more than the previous year, while the wage bill rose 15% to $540,000. The owners report each baker shapes 5% fewer loaves per hour than two years ago.\n\nThe owners could buy a $70,000 spiral dough mixer to lift weekly output from 15,000 to 21,000 loaves and free bakers for skilled pastry work, or pay overtime to cover the 600 loaves a week the 9 shops are short. The decision must be made by the end of the month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline the difference between production and productivity.",
+        "model_answer": "Production is the total output made in a period, whereas productivity measures output per worker or per input used [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "production is the total output made",
+            "productivity is output per worker / per unit of input"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Honeywick's labour productivity has fallen even though production rose.",
+        "model_answer": "Reason 1: Production can rise while productivity falls if more labour is used [k], because total output rose 8% to 780,000 loaves while the wage bill rose 15% to $540,000 [app]. Reason 2: Productivity falls when output per worker decreases [k], and each baker now shapes 5% fewer loaves per hour than two years ago [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "total output can rise while output per worker falls",
+            "productivity measures output per worker, not total output"
+          ],
+          "application_max_2": [
+            "output rose 8% to 780,000 while the wage bill rose 15% to $540,000",
+            "each baker shapes 5% fewer loaves per hour than two years ago"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "780,000 loaves",
+            "$540,000",
+            "5% fewer loaves",
+            "18 bakers",
+            "15%",
+            "8%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Honeywick of buying the $70,000 spiral dough mixer instead of paying overtime.",
+        "model_answer": "Benefit 1: The mixer raises output without permanent extra wages [k], lifting weekly output from 15,000 to 21,000 loaves, enough to cover the 600-loaf shortfall and grow [app], spreading the $70,000 over years of output [an]. Benefit 2: The mixer removes heavy manual kneading [k], freeing the 18 bakers to focus on pastries and quality [app], so productivity per hour rises and overtime is not needed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "machinery raises capacity without permanent wage inflation",
+            "machinery reduces physical strain and frees labour"
+          ],
+          "application_max_2": [
+            "output lifts from 15,000 to 21,000 loaves a week, covering the 600 shortfall",
+            "18 bakers freed from manual kneading for pastries and quality work"
+          ],
+          "analysis_max_2": [
+            "$70,000 spread over years versus open-ended overtime premiums",
+            "productivity per hour recovers, easing the wage-bill pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$70,000",
+            "15,000 to 21,000 loaves",
+            "600 loaves",
+            "18 bakers",
+            "9 local shops"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Honeywick Artisan Bakery should buy the spiral dough mixer rather than pay overtime? Justify your answer.",
+        "model_answer": "The $70,000 mixer would raise weekly output from 15,000 to 21,000 loaves [k], covering the 600-loaf weekly shortfall with capacity to spare for the 9 local shops [app], so Honeywick can grow without open-ended overtime premiums [an]. However, $70,000 is a large one-off outlay for a small bakery [k], while overtime spending would fall automatically if orders soften, unlike the fixed mixer cost [app], so the mixer raises cash flow risk if demand fades [an]. Overall, Honeywick should buy the mixer [eval], because bakers already shape 5% fewer loaves per hour than two years ago and overtime only deepens the fatigue behind the productivity slide [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "machinery raises capacity and productivity sustainably",
+            "overtime is flexible but deepens fatigue and wage costs"
+          ],
+          "application_max_2": [
+            "$70,000 mixer lifts output from 15,000 to 21,000 loaves, covering 600 shortfall",
+            "bakers shape 5% fewer loaves per hour; overtime cost falls if demand fades"
+          ],
+          "analysis_max_2": [
+            "long-run saving versus short-run cash flow strain",
+            "productivity recovery versus risk of weakening demand"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation linked to productivity decline and demand risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$70,000",
+            "15,000 to 21,000 loaves",
+            "600 loaves",
+            "18 bakers",
+            "9 local shops",
+            "780,000 loaves",
+            "$540,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_108",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Wychwood Naturals Ltd is a private limited company in Country X, founded 6 years ago, employing 22 staff making 15 varieties of natural skincare at an average of $12 per jar. Output runs in weekly batches of 300 jars per variety, fully traceable; batch changeovers take 6 hours each week, and last quarter 2 batches were rejected after a mislabelled allergen, costing $9,600 in write-offs.\n\nA regional pharmacy chain wants weekly delivery of 1,500 jars of tea-tree soap and lavender balm, 8 months a year. Wychwood could cut its range to the 6 best-selling varieties and run batches of 800 jars using $85,000 of new moulding equipment, or keep all 15 varieties and stay flexible for its 28 local shops.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two disadvantages of batch production.",
+        "model_answer": "It requires downtime between batches for cleaning and changeovers [1]; one error can spoil an entire batch [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "changeover downtime between batches / set-up time lost",
+            "one fault can ruin a whole batch"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why cutting the range to 6 varieties and running batches of 800 jars could help Wychwood.",
+        "model_answer": "Reason 1: Larger batches cut changeover time [k], so the 6 hours lost each week resetting 15 varieties would fall, freeing capacity for the pharmacy's 1,500 jars a week [app]. Reason 2: Fewer varieties reduce allergen-management risks [k], lowering the chance of rejecting whole runs like the 2 batches that cost $9,600 last quarter [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger batches reduce changeover downtime",
+            "fewer varieties reduce the risk and cost of errors"
+          ],
+          "application_max_2": [
+            "6 hours weekly changeover across 15 varieties would fall",
+            "capacity freed for the pharmacy's 1,500 jars a week"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "1,500 jars",
+            "6 hours",
+            "$9,600",
+            "800 jars",
+            "15 varieties",
+            "6 best-selling varieties"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Wychwood of keeping all 15 varieties and smaller batches.",
+        "model_answer": "Benefit 1: A broad range serves more segments [k], keeping 28 local shops stocked with all 15 varieties at $12 each rather than only the top 6 [app], so loyal shop buyers do not switch to rivals [an]. Benefit 2: Batches of 300 jars limit write-off exposure [k], so a mislabelled batch costs a fraction of an 800-jar run [app], protecting cash flow and the $9,600 type of loss [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a wider range appeals to more customer segments",
+            "smaller batches reduce the cost of errors"
+          ],
+          "application_max_2": [
+            "28 local shops buy the full 15 varieties at $12 per jar",
+            "300-jar batches vs 800-jar batches for error exposure"
+          ],
+          "analysis_max_2": [
+            "retention of shop contracts and loyal buyers",
+            "lower write-off cost protects cash flow"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "28 local shops",
+            "15 varieties",
+            "$12",
+            "300 jars",
+            "800 jars",
+            "$9,600"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wychwood Naturals should cut its range to 6 varieties and invest $85,000 in the moulding equipment? Justify your answer.",
+        "model_answer": "Cutting to 6 varieties and buying $85,000 of moulding equipment would slash changeover losses [k], letting Wychwood supply the pharmacy's 1,500 jars a week at $12 (an extra $18,000 a week) with 800-jar batches [app], lifting output and margin for 8 months a year [an]. However, dropping 9 of the 15 varieties risks the 28 local shops that stock the full range [k], whose buyers may migrate to rivals once niche items disappear [app], eroding shop contracts and spreading risk away from retail [an]. Overall, Wychwood should cut the range and buy the equipment [eval], because the pharmacy's 1,500-jar weekly order for 8 months a year is large and repeatable, while niche volumes at $12 are easily outweighed by the extra $18,000 a week [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "consolidating volumes lowers unit cost and changeover waste",
+            "narrowing range risks losing segments and channel diversity"
+          ],
+          "application_max_2": [
+            "$85,000 moulding equipment; 800-jar batches; pharmacy 1,500 jars a week at $12 = $18,000 a week",
+            "28 local shops and 15 varieties; risk of losing niche buyers"
+          ],
+          "analysis_max_2": [
+            "capacity and margin gain versus channel concentration risk",
+            "contract certainty for 8 months a year versus local shop loyalty"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to pharmacy revenue size vs local shop risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$85,000",
+            "1,500 jars",
+            "$12",
+            "28 local shops",
+            "6 best-selling varieties",
+            "8 months",
+            "$9,600"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_109",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Elmsworth & Cross Watchmakers Ltd is a private limited company founded 12 years ago by two horologists in Country X, employing 9 master watchmakers and selling hand-built watches at $9,500 each. Elmsworth sold 240 watches last year, generating revenue of $2.28 million; each watch takes 30 hours to assemble and regulate, and waiting lists run to 7 months. Elmsworth's clients are collectors who value heritage and discretion.\n\nThe owners could launch a $1,800 everyday automatic watch made on a small flow production line costing $900,000 with 12 new assembly staff, or stay exclusively with hand-built watches and raise prices by 15% to clear the 7-month backlog and shorten waiting lists. The board meets in December to decide between the two plans.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two disadvantages of flow production.",
+        "model_answer": "It requires very high capital investment in machinery [1]; a breakdown stops the whole production line [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow production needs very high capital investment",
+            "in flow production one breakdown halts the whole line"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why job production suits Elmsworth & Cross's luxury watches.",
+        "model_answer": "Reason 1: Job production makes one-off items to exact specification [k], suiting the 30 hours of individual assembly and regulation each $9,500 watch requires [app]. Reason 2: Job production supports premium craftsmanship and pricing [k], letting 9 master watchmakers sell genuinely hand-built watches to clients who wait 7 months [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job production makes one-offs to individual specification",
+            "job production enables premium craftsmanship and pricing"
+          ],
+          "application_max_2": [
+            "30 hours per watch at $9,500 each",
+            "9 master watchmakers; 7-month waiting lists"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 hours",
+            "$9,500",
+            "9 master watchmakers",
+            "240 watches",
+            "7 months"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two risks to Elmsworth & Cross of launching the $1,800 flow-made watch.",
+        "model_answer": "Problem 1: The $900,000 line with 12 new assembly staff is a heavy fixed commitment [k], and if the everyday watch disappoints, the cost cannot easily be repaid at $1,800 each, roughly a fifth of the luxury price [app], so one weak launch damages cash flow [an]. Problem 2: A cheaper line can blur exclusivity [k], diluting the hand-built reputation that supports $2.28 million of annual sales [app], so loyal collectors may question what the brand now stands for [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "flow lines need large fixed capital commitments that are hard to exit",
+            "product-line extensions can dilute brand positioning"
+          ],
+          "application_max_2": [
+            "$900,000 line and 12 staff vs a $1,800 selling price",
+            "reputation underpins $2.28 million annual sales at $9,500"
+          ],
+          "analysis_max_2": [
+            "low selling price makes recouping the line slow",
+            "brand dilution could erode the core luxury customer base"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,800",
+            "$900,000",
+            "12 new assembly staff",
+            "$2.28 million",
+            "$9,500",
+            "flow production line"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Elmsworth & Cross Watchmakers should launch the $1,800 flow-made watch rather than only raise prices by 15%? Justify your answer.",
+        "model_answer": "Raising prices by 15% would grow revenue without new risk [k], since 240 watches at $10,925 would bring about $2.62 million, roughly $342,000 more a year [app], while protecting the exclusive hand-built positioning [an]. However, the $1,800 watch could reach far more buyers than 240 a year [k], and the $900,000 line with 12 new assembly staff could open a larger market and spread brand awareness [app], building long-term demand beyond the waiting list [an]. Overall, Elmsworth & Cross should raise prices and hold the flow line under review [eval], because exclusivity underpins the $9,500 price, and $342,000 of low-risk extra revenue beats betting $900,000 on an unproven mass market [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "price rises lift revenue with no capital risk",
+            "a flow-made entry range can expand market reach at scale"
+          ],
+          "application_max_2": [
+            "240 watches at $10,925 = about $2.62 million, +$342,000 a year",
+            "$900,000 line, 12 staff, $1,800 selling price vs $9,500 luxury price"
+          ],
+          "analysis_max_2": [
+            "low-risk margin gain versus scalable but unproven demand",
+            "brand exclusivity versus audience growth"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to the figures and the waiting-list position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,800",
+            "$900,000",
+            "$9,500",
+            "$2.28 million",
+            "240 watches",
+            "15%",
+            "12 new assembly staff"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_110",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Kilnworth Ceramics Ltd is a private limited company in Country X employing 36 production workers and 4 packers making ceramic tableware for hotel groups and restaurant chains. Last week the factory produced 27,000 plates and bowls on one 8-hour shift, five days a week; labour productivity was 750 pieces per worker. Sales have grown steadily for three years, and two hotel groups want 40,500 pieces a week next year.\n\nKilnworth could add a second 8-hour shift with 36 new workers at $485 a week each to reach 54,000 pieces a week, or install a new shuttle kiln for $260,000 to raise productivity to 1,150 pieces per worker. Both options would begin after the January delivery window, and the cheaper option must be chosen by February.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the labour productivity of Kilnworth's production workers last week. Show your working.",
+        "model_answer": "Labour productivity = output / workers = 27,000 / 36 = 750 pieces per worker per week [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "labour productivity = output / number of workers",
+            "27,000 / 36 = 750 pieces per worker"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Kilnworth of installing the new shuttle kiln rather than adding a second shift.",
+        "model_answer": "Benefit 1: The kiln raises productivity per worker [k], lifting output from 750 to 1,150 pieces per worker with the same 36 production workers [app]. Benefit 2: The kiln avoids recurring shift wages [k], saving 36 x $485 = $17,460 a week compared with a second shift [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "machinery raises output per worker",
+            "machinery avoids recurring wage costs of extra shifts"
+          ],
+          "application_max_2": [
+            "750 to 1,150 pieces per worker with 36 production workers",
+            "36 x $485 = $17,460 a week saved versus a second shift"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "1,150 pieces per worker",
+            "750 pieces",
+            "36 production workers",
+            "$485",
+            "$260,000",
+            "40,500 pieces"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kilnworth may face if it adds a second shift with 36 new workers.",
+        "model_answer": "Problem 1: A second shift roughly doubles labour cost [k], adding 36 x $485 = $17,460 a week to the payroll before overtime and supervision [app], squeezing margins on price-sensitive hotel contracts [an]. Problem 2: New workers need training and quality checks [k], and with only 4 packers to handle 54,000 pieces a week [app], breakages and delivery delays could hit both hotel groups [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a second shift adds permanent recurring labour cost",
+            "new workers require training and quality supervision"
+          ],
+          "application_max_2": [
+            "36 x $485 = $17,460 a week extra payroll",
+            "only 4 packers for 54,000 pieces a week"
+          ],
+          "analysis_max_2": [
+            "margins squeezed on price-sensitive hotel contracts",
+            "packing bottleneck causes breakages and late deliveries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "36 new workers",
+            "$485",
+            "54,000 pieces",
+            "4 packers",
+            "40,500 pieces",
+            "8-hour shift"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kilnworth Ceramics should install the new shuttle kiln rather than add a second shift? Justify your answer.",
+        "model_answer": "The $260,000 kiln would lift productivity to 1,150 pieces per worker [k], so the existing 36 workers make 41,400 pieces a week and cover the hotel groups' 40,500 target [app], avoiding $17,460 a week of second-shift wages [an]. However, a second shift with 36 new workers would reach 54,000 pieces a week [k], giving spare capacity if both hotel groups expand beyond 40,500 [app], whereas the kiln's 41,400 leaves little headroom [an]. Overall, Kilnworth should install the kiln [eval], because a second shift would cost about $907,920 a year in wages against a one-off $260,000, and confirmed demand is only 40,500 pieces [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital investment raises productivity without recurring wages",
+            "a second shift doubles capacity but doubles labour cost"
+          ],
+          "application_max_2": [
+            "kiln: 1,150 x 36 = 41,400 pieces per week, covering 40,500 needed",
+            "second shift: 54,000 pieces a week; 36 x $485 = $17,460 a week (~$907,920 a year)"
+          ],
+          "analysis_max_2": [
+            "headroom for growth versus cheaper one-off outlay",
+            "recurring wage cost versus capital outlay"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation tied to confirmed demand of 40,500 pieces"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "1,150 pieces per worker",
+            "40,500 pieces",
+            "54,000 pieces",
+            "$485",
+            "36 new workers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

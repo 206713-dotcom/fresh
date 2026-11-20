@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_328",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quadview eXchange (QVX) is a private limited company in the cloud video-conferencing sector, employing a workforce of 34. Founded in 2014 by Sofia Marchetti, the business sells HD meeting and screen-sharing subscriptions to professional-services firms across Europe and operates a flat organisational structure with democratic leadership. QVX plans to invest $560,000 in a new HD collaboration platform with AI noise cancellation, financed by a $360,000 bank loan and $200,000 retained profit. It has fixed costs of $209,000 a year, a variable cost of $4.80 a unit and a selling price of $10.30, and currently produces 60,000 units a year. QVX faces two problems: a call-drop defect rate of 3.4% has drawn quality complaints, and labour turnover among support staff is rising.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q3 2025: QVX monitored 15,600 calls last quarter, of which 3.4% dropped, down from 5.1% a year earlier. Customer complaints fell from 44 to 26 a month. Average meeting setup time is 2.1 minutes and platform uptime was 99.1%. A survey of 480 subscribers found 62% would pay $0.30 more for guaranteed HD quality, and 49% check call reliability before renewing. 20 of 34 staff are engineers; on-the-job training on the collaboration codebase runs weekly, while off-the-job networking certification at the tech college costs $980 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Quadview eXchange for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,240", "1,520"],
+        ["Cost of sales", "720", "830"],
+        ["Gross profit", "520", "690"],
+        ["Operating profit", "186", "273"],
+        ["Capital employed", "1,860", "2,100"],
+        ["Interest payable", "14", "22"]
+      ]
+    },
+    "appendix_3_external_environment": "Technology Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.5% to 5.25%, increasing the cost of variable-rate borrowing for software firms. (2) The national minimum wage will rise by 5.8% from $12.20 to $12.91 per hour from April 2026, raising wage bills across support and administration teams. (3) Bandwidth and data-centre costs rose 12.7% year-on-year, technology inflation is running at 5.4%, and business spending on collaboration software grew 7.8% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QVX plans to fund part of its $560,000 HD collaboration platform with a $360,000 bank loan and $200,000 retained profit. Explain two advantages for QVX of using retained profit instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit needs no interest payments or fixed repayments, so it protects cash flow while QVX already carries $209,000 of fixed costs a year and a contribution of $5.50 a unit ($10.30 − $4.80). With interest payable forecast to rise from $14,000 to $22,000 in Appendix 2, using $200,000 of internal funds instead of more debt leaves cash available to cut the 3.4% call-drop rate and answer the 26 complaints a month without raising the $10.30 price.\n\nPoint 2: Internal funding avoids collateral conditions from the lender, so the $560,000 platform and its codebase cannot be put at risk if the 480 surveyed subscribers prove less willing to pay $0.30 more for HD than expected. It also keeps control with Sofia Marchetti and the flat, democratic team. The trade-off is that $200,000 of reserves is unavailable as a buffer if bandwidth costs keep rising by 12.7%, and slower growth may follow.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to QVX's costs, reserves and expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$200,000", "$360,000", "$560,000", "$209,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QVX is launching its new HD collaboration platform. Consider social-media influencer campaigns, paid search-engine advertising, or sponsorship of business podcasts. Which should QVX choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Social-media influencer campaigns: Influencers can show HD video quality and noise cancellation to large audiences at low cost per view, and content can highlight the 62% of 480 surveyed subscribers who would pay $0.30 more for guaranteed HD. Results are measurable, but views are often passive, the audience is broad rather than business buyers, and influencer credibility varies, which matters for a 34-person firm stretching a $560,000 launch.\n\nPaid search-engine advertising: Search ads reach firms at the exact moment they look for video-conferencing solutions, matching the 49% of subscribers who check call reliability before renewing. Spend can be tightly capped within the $200,000 retained-profit element, every click is measurable, and QVX can bid on terms like 'HD meeting platform' to capture high-intent professional-services buyers across Europe — the weakness is that competitors can bid up keywords and clicks are lost the moment the budget stops.\n\nBusiness podcast sponsorship: Sponsoring business podcasts builds brand credibility with professional-services firms through trusted hosts and gives QVX a narrative about reliability and 99.1% uptime. The audience is narrower, measurement is weaker, and a single sponsorship runs for weeks, so it is slow to produce sign-ups during a launch.\n\nRecommendation: QVX should choose paid search-engine advertising. It captures buyers with immediate intent, is measurable and controllable within a tight budget, and directly targets the reliability-conscious subscribers identified in the survey. Influencer campaigns are rejected as broad and passive rather than intent-driven, and podcast sponsorship is rejected as slow and hard to measure; QVX can add podcasts later to build the brand once search is delivering steady conversions.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of QVX with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of QVX with a well-justified recommendation explaining why influencers and podcasts are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["480", "62%", "49%", "$0.30", "99.1%", "$560,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QVX has rising labour turnover among support staff and a 3.4% call-drop defect rate. Explain two benefits for QVX of introducing a performance-related bonus.",
+      "model_answer": "Point 1: A performance-related bonus gives QVX's 34 employees a financial incentive to cut the 3.4% call-drop rate towards the 99.1% uptime target and to answer the 26 monthly complaints promptly. Linking part of pay to measured quality and response times focuses effort on the exact problems threatening the $10.30 subscription price, protecting the $5.50 contribution per unit while the $560,000 platform is launched.\n\nPoint 2: Bonuses can lift morale and reduce the rising labour turnover among support staff by rewarding the engineers and support workers who master the new HD codebase, so QVX avoids repeated recruitment and the $980 per employee certification cost of replacing them. In a flat, democratic structure, a transparent bonus linked to team quality measures reinforces shared ownership and helps retain the 20 engineers needed to hold the 60,000-unit subscriber base. Shared targets also give support staff a say in how the 26 complaints are resolved, which suits QVX's democratic structure.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to QVX's defect rate, turnover and service quality."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["15,600", "3.4%", "workforce of 34", "26", "$980", "60,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QVX must upskill 20 engineers to build the HD collaboration platform. Consider on-the-job training on the codebase or off-the-job networking certification at $980 per employee. Which should QVX choose? Justify your decision.",
+      "model_answer": "On-the-job training: Weekly pairing on QVX's own collaboration codebase keeps all 20 engineers working on real incidents and feature releases, costs no fees and teaches the exact architecture and call-quality settings behind the $560,000 platform. It fits a flat team of 34 already losing time to rising support turnover and protects the 15,600 calls monitored each quarter. Drawbacks are that senior engineers lose delivery time, bad habits may spread, and there is no external certificate, which matters when professional-services clients ask about proven networking skills.\n\nOff-the-job certification: The tech college's networking course at $980 per employee provides structured, current skills and a recognised qualification for all 20 engineers, costing $19,600 — small beside the $560,000 investment. However, it takes 20 staff away from sprints during the launch, delays the platform, and the content is generic, so QVX still needs in-house follow-up on its own codebase once the course ends.\n\nDecision: QVX should choose on-the-job training as the main route, with off-the-job certification for four team leads. It is cheaper, immediate and specific to the product, protects the call-quality work that underpins 99.1% uptime, and reduces turnover by keeping engineers engaged. Full off-the-job certification for all 20 is rejected because it removes most of the engineering team at launch, spends $19,600 on generic material and delays a platform being sold to subscribers of whom 49% check reliability; certification can be rolled out later once the platform is stable. Protecting the 99.1% uptime and the 15,600 calls monitored each quarter is worth more than a generic qualification at launch.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to QVX.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of QVX.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of QVX with a justified decision covering cost, disruption and platform relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job", "$980", "20 of 34", "$560,000", "3.4%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QVX's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QVX's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $209,000 ÷ ($10.30 − $4.80) = $209,000 ÷ $5.50 = 38,000 units. Answer: break-even output is 38,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QVX's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $10.30 − $4.80 = $5.50. Answer: contribution per unit is $5.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QVX's management can use this financial data.",
+          "model_answer": "1. Break-even of 38,000 units against 60,000 units sold gives a margin of safety of 22,000 units, so QVX can withstand lost subscribers while the 3.4% call-drop problem is fixed and still cover $209,000 of fixed costs.\n2. Contribution of $5.50 helps managers evaluate the survey finding that 62% would pay $0.30 more for HD: a $0.30 rise would lift contribution to $5.80 and cut break-even to about 36,000 units, showing the value of guaranteed quality.\n3. The $360,000 bank loan can be tested against the 38,000-unit break-even point, ensuring subscriber revenue stays high enough to service debt before further spending on the $560,000 platform.\n4. Average total cost of $8.28 a unit ($209,000 ÷ 60,000 = $3.48, plus $4.80) benchmarks the new platform: reducing dropped calls and raising output lowers unit cost, while the 12.7% bandwidth-cost rise threatens to raise it."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 38,000 units | (ii) Contribution per unit = $5.50 | (iii) Four contextual uses explained: 22,000-unit margin of safety versus 60,000-unit output; valuing the $0.30 HD premium on $5.50 contribution; stress-testing the $360,000 bank loan; and unit-cost benchmarking at $8.28 against call drops and 12.7% bandwidth inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["38,000", "$5.50", "60,000", "$209,000", "$4.80", "$10.30", "$8.28", "22,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QVX's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has QVX's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 41.9%\nGross Profit Margin 2025 = 45.4%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 10.0%\nROCE 2025 = 13.0%\n\nDetailed workings: 2024 — revenue $1,240,000 − cost of sales $720,000 = gross profit $520,000; 520 ÷ 1,240 × 100 = 41.9%. Operating profit $186,000 ÷ revenue $1,240,000 × 100 = 15.0%. Operating profit ÷ capital employed $1,860,000 × 100 = 10.0%. 2025 — revenue $1,520,000 − cost of sales $830,000 = gross profit $690,000; 690 ÷ 1,520 × 100 = 45.4%. Operating profit $273,000 ÷ revenue $1,520,000 × 100 = 18.0%. Operating profit ÷ capital employed $2,100,000 × 100 = 13.0%.\n\nEvaluation: Profitability strengthened on every measure. The gap between sales and direct costs widened from 41.9% to 45.4%, helped by falling complaints (26 a month) and better call quality; the bottom-line measure widened from 15.0% to 18.0% as revenue grew faster than capital employed; and returns on capital rose from 10.0% to 13.0%, showing the collaboration investment has been used productively. Qualifications remain: interest payable rose from $14,000 to $22,000, so more operating profit goes to debt service, and the 2025 figures rest on retaining 20 engineers amid rising support turnover and converting the 480 surveyed subscribers, only 62% of whom will pay more for HD, while bandwidth costs climb 12.7%. If quality slips back towards a 3.4% drop rate, margins could soften.\n\nConclusion: QVX's profitability has improved. All three measures rose (41.9% to 45.4%, 15.0% to 18.0%, 10.0% to 13.0%) through wider margins and better use of capital rather than extra borrowing. QVX should defend the gain by fixing the loan rate and holding the $5.50 contribution per unit as the $560,000 platform scales.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation of revenue, cost of sales, operating profit, interest and capital employed movements and a justified conclusion on whether QVX's profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["41.9%", "45.4%", "15.0%", "18.0%", "10.0%", "13.0%", "$560,000", "1,240"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QVX of using automated quality inspection to monitor its video calls.",
+      "model_answer": "Advantage: Automated inspection can detect dropped calls as they happen, allowing QVX to drive the 3.4% call-drop rate towards the 99.1% uptime target and reduce the 26 monthly complaints that threaten renewals among the 49% of subscribers who check reliability. Consistent quality supports the $10.30 price and $5.50 contribution, and it gives QVX evidence to sell the $560,000 HD platform to professional-services firms across Europe.\n\nDisadvantage: Automated inspection software adds to the $209,000 fixed costs or the $4.80 variable cost per unit, squeezing margins unless the 62% of surveyed subscribers who would pay $0.30 more actually do so. It also monitors symptoms rather than root causes: without skilled engineers acting on alerts, the defect rate may not fall, and false alarms could divert the 20 engineers from building the $560,000 platform while labour turnover among support staff is already rising. The survey shows only 49% check reliability before renewing, so QVX must prove that inspection improves material rather than merely adding cost.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QVX's quality data, costs and staffing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3.4%", "99.1%", "49%", "$10.30", "$4.80", "$560,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 5.25%, the 5.8% minimum wage increase and the 12.7% rise in bandwidth and data-centre costs will affect QVX. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.5% to 5.25%): If the $360,000 bank loan is variable-rate, the 0.75 percentage-point increase adds 0.75% × $360,000 = $2,700 a year, a small sum beside $209,000 of fixed costs and largely removable by fixing the rate. It could make future borrowing for the platform roadmap dearer, but the direct cash effect is modest.\n\nMinimum wage increase (5.8%, from $12.20 to $12.91): Each affected hour costs $12.91 − $12.20 = $0.71 more, equal to 5.8% × $12.20 = $0.71. The insert provides no hours worked or pay by worker, so an annual wage total cannot be invented; the defensible judgement is that support wages rise unavoidably, and with rising labour turnover QVX may spend more on recruitment and the $980 certification of replacements.\n\nBandwidth and data-centre costs (up 12.7%): Video calling is bandwidth-intensive, and this cost sits within the $4.80 variable cost and the 99.1% uptime promise. The insert does not decompose variable cost, so only a labelled upper bound is defensible: if the whole $4.80 rose 12.7%, that would add 0.127 × $4.80 = $0.61 per unit, or 60,000 × $0.61 = $36,600 a year, reducing the $5.50 contribution towards about $4.89. Even a part of that applies to every one of the 60,000 units and cannot be fixed by a loan hedge.\n\nConclusion: The 12.7% bandwidth and data-centre cost rise will have the greatest impact. It is the largest percentage change, recurs on all 60,000 subscriptions and strikes the cost line that delivers HD quality, while technology inflation is only 5.4% and the survey shows only 62% would pay $0.30 more, so recovery is limited. The wage rise is second because it raises payroll but cannot be quantified, and the interest rise is smallest and fixable — both still need disciplined control while the $560,000 platform launches.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to QVX.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on QVX's costs, prices or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes with a justified judgement that bandwidth cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "5.8%", "12.7%", "$12.91", "$4.80", "5.4%"]
+      }
+    }
+  ]
+}

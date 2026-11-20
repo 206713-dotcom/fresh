@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_413",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Sunrise Homecare Services (SHS) is a cooperative in the healthcare sector, employing a workforce of 50. Founded in 2008 by Nadia Osei, it provides domiciliary care visits to elderly clients across the county and operates a flat organisational structure with laissez-faire leadership. SHS plans to invest $280,000 in electric care vans and mobile scheduling software, financed by a $180,000 bank loan and $100,000 retained profit. It has fixed costs of $204,000 a year, a variable cost of $18 a unit and a selling price of $52, and delivers 12,000 units of home visits a year. SHS faces two problems: labour turnover has reached 14% and quality complaints about late visits are rising.",
+    "appendix_1_marketing_ops": "Quality and Waste Report — June 2025: 2,900 home visits were delivered; 5% of visits were late, down from 9% a year ago. Complaints about late arrivals rose from 33 to 47 per month. Average travel time between visits was 22 minutes. A survey of 300 clients found 74% valued evening visits and 62% would pay $6 more for them; a refresher manual-handling course costs $420 per carer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Sunrise Homecare Services for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,250", "1,600"],
+        ["Cost of sales", "650", "768"],
+        ["Gross profit", "600", "832"],
+        ["Operating profit", "150", "240"],
+        ["Capital employed", "1,000", "1,500"],
+        ["Interest payable", "18", "22"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.0% to 4.6%, increasing costs for variable-rate borrowers. (2) The national minimum wage will rise by 6.1% to $13.85 an hour from April 2026, raising wage costs for care workers. (3) Fuel and vehicle running costs have risen 11.2% year-on-year, while local authority commissioning rates rose only 2.4% and demand for home visits grew 4.6%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "SHS plans to fund its electric vans with a $180,000 bank loan rather than its $100,000 retained profit. Explain two advantages for SHS of using the bank loan.",
+      "model_answer": "Point 1: The $180,000 bank loan is larger than the $100,000 of retained profit, so SHS can fund the full $280,000 investment in electric vans and scheduling software immediately instead of delaying part of the project. Keeping the $100,000 retained profit as a cash reserve protects the cooperative against the disruption caused by 14% labour turnover and the 47 monthly late-visit complaints while the new vans are introduced.\n\nPoint 2: Borrowing leaves SHS's own cash available to cover fixed costs of $204,000 a year and the $420 per-carer training costs, so the 12,000 units of home visits can continue without a cash squeeze. A bank loan spreads the cost of the vans over the repayment period, matching the way the vehicles will generate revenue over several years, whereas spending all $100,000 of retained profit at once would weaken the financial cushion that the flat, self-managing teams rely on when rotas are short-staffed.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation applied to SHS's funding choice, costs and service."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["bank loan", "$180,000", "$100,000", "retained profit", "$204,000", "home visits"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "SHS wants to cut the 5% of visits that are late. Consider buying more vans, using route-planning software, or paying an evening shift allowance. Which should SHS choose? Justify your recommendation.",
+      "model_answer": "Buying more vans: Extra vehicles would reduce the 22-minute average travel time and the 5% late rate by giving carers more capacity, which would ease the 47 complaints about late arrivals. This directly supports the $280,000 investment already planned in electric vans. However, more vehicles add to the $204,000 fixed costs through insurance and maintenance, and with 14% labour turnover there may not be enough carers to staff them, so the vans could sit idle.\n\nRoute-planning software: The mobile scheduling software already included in the $280,000 investment can sequence visits to cut travel time, reduce the 5% late rate and make better use of the existing 50 staff without adding fixed vehicles. It also lets the cooperative plan the 74% of clients who value evening visits. Its limits are that software cannot solve a shortage of carers caused by 14% turnover, and staff need training to use it, which competes with the $420 manual-handling course.\n\nEvening shift allowance: Paying more for evening work would attract carers to cover the 62% of clients who would pay $6 more for evening visits, generating revenue that could offset the allowance and reduce lateness at peak times. It is flexible and quick to introduce, but it adds a new wage cost that may not be covered if take-up is low, and it does not tackle the 22-minute travel inefficiency that causes lateness in the first place.\n\nRecommendation: SHS should choose route-planning software. It is already part of the $280,000 investment, attacks the 22-minute travel time behind the 5% late rate, and works with the existing 50-person workforce. Extra vans are rejected as costly and unusable while 14% turnover persists; shift allowances are rejected as treating the symptom and adding wage cost, though they can be reviewed after the software is running.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the operational options with little application to SHS.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of SHS with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of SHS with a well-justified recommendation and clear rejection of the alternatives."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5%", "9%", "22 minutes", "74%", "62%", "$6"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "SHS's labour turnover has reached 14%. Explain two benefits for SHS of its laissez-faire leadership style in retaining care staff.",
+      "model_answer": "Point 1: Laissez-faire leadership gives experienced carers freedom to plan their own 2,900 home visits and manage their caseloads, which is a form of job enrichment that raises autonomy and job satisfaction (Herzberg). In a cooperative with a flat organisational structure, that trust can reduce the 14% labour turnover because skilled workers are not micromanaged and are more likely to stay with Nadia Osei's business.\n\nPoint 2: Allowing self-managing carers to decide how to meet the 74% of clients who value evening visits encourages practical local solutions to the 47 late-arrival complaints without waiting for head-office instructions. Higher involvement and flexible rota-owning improve commitment, cutting recruitment and the $420 manual-handling course cost for each replacement, and protecting the 12,000 units of home visits while the $280,000 van investment is introduced. Trust also helps carers accept the new mobile scheduling software, so the 47 late-visit complaints can be tackled without adding supervisory layers.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SHS's turnover, complaints and training costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "labour turnover", "14%", "flat organisational structure", "$420", "2,900"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "SHS must reduce its 14% labour turnover. Consider introducing team working with job enrichment or a performance-related bonus. Which should SHS choose? Justify your decision.",
+      "model_answer": "Team working with job enrichment: Organising carers into small teams that plan their own rounds and rotate duties gives them variety and ownership, which fits the cooperative's flat structure and laissez-faire leadership. It can reduce the 14% labour turnover by making jobs more satisfying and by letting experienced staff support new recruits, cutting the $420 manual-handling course cost for repeated replacements and protecting 2,900 home visits. It takes time to establish, and without clear leadership some teams may coordinate poorly, worsening the 47 late-visit complaints.\n\nPerformance-related bonus: Paying extra for low complaint rates or high visit completion gives a direct financial incentive and can be targeted at the 62% of clients who want evening visits, aligning carer effort with the $6 premium customers offer. A bonus is quick to introduce and measurable. However, the insert gives no wage or hours data, so the cost cannot be honestly quantified; bonuses may also encourage carers to rush the 22-minute travel routes to hit targets, risking care quality, and they do nothing to fix the underlying causes of 14% turnover.\n\nDecision: SHS should choose team working with job enrichment. It addresses the motivational causes of turnover within the cooperative's existing structure, uses no unquantified wage bill, and can directly reduce repeated $420 training costs while protecting 12,000 units of home visits. The bonus is rejected because its cost cannot be justified from the insert and it risks quality; it could be added later for specific evening shifts once teams are stable and the 5% late rate is falling.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two HR options with limited application to SHS.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of one or both options in the context of SHS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of SHS with a well-justified decision covering motivation, cost and quality."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["labour turnover", "14%", "74%", "62%", "$420", "2,900"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how SHS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate SHS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $204,000 ÷ ($52 − $18) = $204,000 ÷ $34 = 6,000 units. Answer: break-even output is 6,000 units of home visits a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate SHS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $52 − $18 = $34. Answer: contribution per unit is $34."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways SHS's management can use this financial data.",
+          "model_answer": "1. Compare the 6,000-unit break-even output with 12,000 units of home visits to show a margin of safety of 6,000 units, so the cooperative can judge how much commissioning income it could lose before covering the $204,000 fixed costs.\n2. Use the $34 contribution per unit to test the $6 evening premium: it would raise contribution to $40, helping decide whether to expand the 74% of clients who value evening visits and fund the $280,000 van investment.\n3. Use fixed costs and contribution to set the visit-volume target needed to service the $180,000 bank loan, checking that the new electric vans can be afforded without cutting care quality or pushing up the 5% late rate.\n4. Use average total cost ($204,000 ÷ 12,000 units + $18 = $17.00 + $18 = $35.00 a visit) and labour productivity (12,000 units ÷ 50 staff = 240 visits per carer) to monitor the effect of 14% labour turnover and rising 11.2% fuel costs on unit costs."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 6,000 units | (ii) Contribution per unit = $34 | (iii) Four contextual uses explained: margin of safety of 6,000 units; the $6 evening premium lifting $34 contribution; loan-service volume for the $180,000 loan; and unit cost $35.00 with productivity 240 visits per carer.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii); 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$52", "$18", "$204,000", "12,000", "6,000", "$34", "$35.00", "240"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate SHS's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has SHS's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 48.0%\nGross Profit Margin 2025 = 52.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 15.0%\nROCE 2024 = 15.0%\nROCE 2025 = 16.0%\n\nDetailed workings: In 2024 a gross profit of $600,000 on revenue of $1,250,000 gives 48.0%; in 2025 $832,000 on $1,600,000 gives 52.0%. Operating profit of $150,000 against $1,250,000 revenue gives 12.0% in 2024, and $240,000 against $1,600,000 gives 15.0% in 2025. Operating profit of $150,000 against capital employed of $1,000,000 gives 15.0% in 2024, and $240,000 against $1,500,000 gives 16.0% in 2025.\n\nEvaluation: All three measures are higher. The gross margin rose from 48.0% to 52.0%, suggesting better control of visit delivery costs or a shift toward higher-value evening visits, which the survey says 62% of clients would pay $6 more for. The operating margin improved from 12.0% to 15.0%, meaning the $204,000 fixed costs were absorbed more effectively as revenue grew from $1,250,000 to $1,600,000. The return on capital employed edged up from 15.0% to 16.0%: although capital employed jumped by $500,000 for the $280,000 van programme, operating profit still rose enough to keep the return positive. Interest payable increased from $18,000 to $22,000, so the loan has begun to cost more. A concern is that the 16.0% return is only slightly above 15.0% and could be diluted further if the electric vans do not raise visit capacity, while 14% labour turnover and 47 late-visit complaints threaten the revenue base.\n\nConclusion: SHS's profitability has improved, but only modestly on capital. Gross and operating margins rose strongly; the return on capital improved from 15.0% to 16.0%, which still justifies the $280,000 investment. Management should now focus on reducing turnover and lateness so the larger asset base earns a fuller return.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation and a justified conclusion on whether profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["48.0%", "52.0%", "12.0%", "15.0%", "16.0%", "1,600"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for SHS of expanding evening home visits for the 74% of clients who value them.",
+      "model_answer": "Advantage: The survey of 300 clients shows 74% value evening visits and 62% would pay $6 more, so SHS can raise its $52 selling price to $58 for those slots, lifting the $34 contribution per unit and helping to cover the $204,000 fixed costs and the $180,000 bank loan. Evening slots also use the $280,000 electric vans more fully and cut the 5% late rate by spreading visits.\n\nDisadvantage: Evening work may be unpopular with carers already leaving at 14% labour turnover, requiring higher pay or shift allowances that the insert does not quantify, which could erase the $6 premium. It also needs more scheduling and $420 manual-handling training, and if staff are tired the 47 late-visit complaints and care quality could worsen, damaging the cooperative's reputation with commissioners. With 300 clients surveyed and 2,900 visits recorded in the June report, the cooperative must also check that extra evening capacity can be staffed before promising it.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SHS's survey, costs and staffing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["74%", "62%", "$6", "evening visits", "300", "$280,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.6%, the 6.1% minimum wage increase and the 11.2% rise in fuel and vehicle costs will affect SHS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.0% to 4.6%): If the $180,000 bank loan is variable-rate, a 0.6 percentage-point rise adds 0.006 × $180,000 = $1,080 a year, small beside the $204,000 fixed costs and capable of being removed by fixing the rate. Higher rates may also squeeze local authority budgets, but the direct cash cost to SHS is modest and manageable.\n\nMinimum wage increase (6.1%, to $13.85 an hour): With a workforce of 50 this raises the wage bill for care workers and cannot be avoided. The insert gives no hours worked or individual pay, so no annual total can honestly be invented; the defensible check is productivity of 12,000 units ÷ 50 staff = 240 visits per carer. With $34 contribution per unit, the rise is absorbable only while turnover stays below 14% and productivity holds; otherwise unit labour costs rise and the $6 evening premium may be swallowed.\n\nFuel and vehicle inflation (11.2%): The insert does not decompose the $18 variable cost, so only a bound can be shown: if the whole $18 rose 11.2%, that is 0.112 × $18 = $2.02 per visit, or about $24,192 a year at 12,000 units, cutting contribution from $34 toward $31.98. Because the new electric vans are meant to replace fuel-powered travel, this rise both raises current costs and strengthens the case for the $280,000 investment; commissioning rates rising only 2.4% limits SHS's ability to pass it on, though 4.6% demand growth helps.\n\nConclusion: The 11.2% rise in fuel and vehicle costs will have the greatest impact. It compounds across all 12,000 visits, directly erodes the $34 contribution and outpaces the 2.4% commissioning increase, so it cannot be recovered through rates. The interest-rate effect is small and hedgeable; the wage rise is serious but manageable at 240 visits per carer, whereas fuel inflation also undermines the economics of the existing fleet.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to SHS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on SHS's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of SHS with a well-justified greatest-impact judgement and reasons for rejecting the others."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.6%", "6.1%", "$13.85", "11.2%", "2.4%", "$180,000"]
+      }
+    }
+  ]
+}

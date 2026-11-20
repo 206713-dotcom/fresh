@@ -1,0 +1,1231 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_111",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Brackenfell Woodcraft is a family-run furniture business founded 9 years ago by Helen Marchetti in Country X. It employs 26 workers making handcrafted oak dining tables and chairs, with output of 140 tables a month and annual revenue of $620,000. It sells directly to local hotels, restaurants and homes across the capital region, and the workshop has three separate areas for cutting, sanding and assembly, with parts travelling 14 metres between them.\n\nThe production manager proposes kaizen, a programme of continuous small improvements costing about $6,500 a year in training and suggestion rewards. The alternative is a one-off investment of $95,000 in a computer-controlled sanding machine that would cut sanding time by 35%. Helen must decide which route to fund before the new financial year starts.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'kaizen'.",
+        "model_answer": "A Japanese term meaning continuous, small, ongoing improvements to production processes, involving employees at every level rather than one-off large changes [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "continuous or ongoing small improvements",
+            "involves employees/everyone contributing ideas"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Brackenfell Woodcraft might introduce kaizen.",
+        "model_answer": "Reason 1: Kaizen involves all employees in spotting small, ongoing improvements [k], which suits a 26-worker workshop where parts travel 14 metres between cutting, sanding and assembly [app]. Reason 2: Kaizen costs very little in capital spending [k], at about $6,500 a year compared with a $95,000 machine [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "continuous small improvements by all staff",
+            "low-cost approach needing no major capital outlay"
+          ],
+          "application_max_2": [
+            "26 workers",
+            "14 metres between work areas",
+            "$6,500 a year",
+            "$95,000 sanding machine"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "26 workers",
+            "140 tables a month",
+            "$620,000",
+            "14 metres",
+            "$6,500",
+            "handcrafted oak dining tables"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Brackenfell Woodcraft of choosing kaizen rather than the computer-controlled sanding machine.",
+        "model_answer": "Benefit 1: Kaizen preserves cash [k], because $6,500 a year is far cheaper than the $95,000 sanding machine [app], leaving money free for timber and wages [an]. Benefit 2: Kaizen builds a culture where all 26 workers contribute improvement ideas [k], applied across the 140 tables a month passing through cutting, sanding and assembly [app], cutting rework and defects over time [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "kaizen needs little capital, freeing cash flow",
+            "kaizen engages and motivates all employees"
+          ],
+          "application_max_2": [
+            "$6,500 a year",
+            "$95,000 sanding machine",
+            "26 workers",
+            "140 tables a month"
+          ],
+          "analysis_max_2": [
+            "cash saved can be spent on materials and wages",
+            "ongoing employee ideas reduce defects and rework"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "26 workers",
+            "$6,500",
+            "$95,000",
+            "140 tables a month",
+            "14 metres",
+            "computer-controlled sanding machine"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackenfell Woodcraft should introduce kaizen instead of buying the computer-controlled sanding machine? Justify your answer.",
+        "model_answer": "Kaizen spreads the cost at about $6,500 a year [k], engaging all 26 workers in improving the flow of 140 tables a month across workshop areas 14 metres apart [app], so savings build steadily while cash stays available for materials [an]. However, the sanding machine would cut sanding time by 35% immediately [k], lifting capacity on a $620,000 revenue business far faster than gradual kaizen steps [app], which could win larger hotel orders and raise output [an]. Overall, Brackenfell Woodcraft should introduce kaizen first [eval], because low-cost cultural change suits a family-run workshop better than a $95,000 commitment before waste is removed [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "kaizen is low-cost and gradual with staff involvement",
+            "automation gives an immediate, measurable time saving"
+          ],
+          "application_max_2": [
+            "$6,500 a year",
+            "35% cut in sanding time",
+            "$620,000 revenue",
+            "$95,000 machine",
+            "14 metres between areas"
+          ],
+          "analysis_max_2": [
+            "cash preserved funds materials and wages",
+            "faster sanding lifts capacity and wins larger orders"
+          ],
+          "evaluation_max_2": [
+            "weighs low-cost gradual improvement against immediate machine productivity gain"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6,500",
+            "$95,000",
+            "140 tables a month",
+            "$620,000",
+            "14 metres",
+            "35%",
+            "26 workers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_112",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Selbrook Foods Ltd is a chilled ready-meal company in Country X, employing 48 workers at its Merriton factory near the rail depot. It produces 9,500 meals a day for supermarkets and made revenue of $1.8 million last year. Fresh vegetables currently arrive in bulk every Monday, and demand peaks sharply before weekends. The cold store holds about 6 days of stock, costing $4,300 a month to run.\n\nThe operations director proposes just-in-time deliveries from the main vegetable supplier, arriving four times a day and cutting cold-store stock to half a day. The purchasing manager argues this adds $900 a month in transport costs and any late delivery would stop the production line. Selbrook must decide before signing the new three-year supply contract.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'just-in-time'.",
+        "model_answer": "A stock management approach in which raw materials and components are delivered only when they are needed in production, rather than being held in inventory [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "materials delivered only when needed",
+            "reduces or eliminates inventory holding"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Selbrook Foods Ltd might introduce just-in-time deliveries.",
+        "model_answer": "Reason 1: JIT reduces the cost of holding inventory [k], because cutting stock from 6 days to half a day would slash much of the $4,300 monthly cold-store cost [app]. Reason 2: JIT keeps ingredients fresher [k], which matters because chilled meals receive fresh vegetables in bulk every Monday and demand peaks before weekends [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces inventory holding costs and space",
+            "perishable inputs arrive fresher and spoil less"
+          ],
+          "application_max_2": [
+            "6 days of stock",
+            "$4,300 a month",
+            "fresh vegetables in bulk every Monday",
+            "half a day"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9,500 meals a day",
+            "$1.8 million",
+            "$4,300",
+            "6 days of stock",
+            "four times a day",
+            "cold store"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Selbrook Foods Ltd of introducing just-in-time deliveries.",
+        "model_answer": "Benefit 1: Lower storage costs [k], as cold-store stock falls from 6 days to half a day against a current $4,300 monthly bill [app], freeing cash for other uses [an]. Benefit 2: Fresh ingredients support consistent quality [k], protecting the chilled ready-meal reputation with supermarket buyers who receive 9,500 meals a day [app], which should secure loyal, repeat orders [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "JIT cuts storage and holding costs",
+            "fresher inputs improve product quality"
+          ],
+          "application_max_2": [
+            "6 days of stock",
+            "$4,300 a month",
+            "9,500 meals a day",
+            "half a day"
+          ],
+          "analysis_max_2": [
+            "cash tied up in stock is freed for other uses",
+            "better quality protects supermarket relationships and repeat orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4,300",
+            "6 days",
+            "half a day",
+            "9,500 meals a day",
+            "chilled ready-meal company",
+            "four times a day"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Selbrook Foods Ltd should switch to just-in-time deliveries? Justify your answer.",
+        "model_answer": "Just-in-time means vegetables arrive four times a day [k], cutting the cold store from 6 days of stock to half a day and reducing the $4,300 monthly cost [app], so cash tied up in stock drops and ingredients stay fresher [an]. However, deliveries add $900 a month in transport and any late arrival would stop a line producing 9,500 meals a day [k], so four trucks a day leave no buffer when traffic delays suppliers [app], risking lost sales and supermarket penalties [an]. Overall, Selbrook should adopt just-in-time from its main vegetable supplier [eval], because chilled meals spoil quickly and freshness outweighs the $900 delivery cost, provided late-delivery penalties are written into the three-year contract [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "JIT cuts inventory cost and improves freshness",
+            "JIT creates vulnerability to supply delays with no buffer stock"
+          ],
+          "application_max_2": [
+            "four times a day",
+            "$4,300 monthly cold-store cost",
+            "$900 a month transport",
+            "9,500 meals a day",
+            "three-year supply contract"
+          ],
+          "analysis_max_2": [
+            "less cash held in stock and fresher ingredients",
+            "a single late delivery halts output and loses sales"
+          ],
+          "evaluation_max_2": [
+            "weighs freshness and storage savings against transport cost and supply risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4,300",
+            "$900",
+            "9,500 meals a day",
+            "half a day",
+            "four times a day",
+            "6 days of stock",
+            "three-year supply contract"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_113",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Quenby Electronics Ltd assembles industrial control panels for factories across Country X, employing 132 staff at its Westhaven plant. The panels range from small machine controllers to large motor-control cabinets for food processors, and most customers are regional engineering firms. Panels are built on a flow line where each worker repeats a single task. Output is 260 panels a month, the defect rate is 5.5%, and last year revenue reached $2.4 million.\n\nThe operations manager proposes cell production, forming 6 cells of 6 workers, each completing a whole panel from start to finish. The finance director warns that reorganisation costs $38,000 and output would fall by 12% during changeover. Any defects reaching customers trigger penalty clauses. Quenby must vote on the proposal at its board meeting next month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'cell production'.",
+        "model_answer": "A production method in which workers are organised into small self-contained groups or 'cells', each responsible for completing a whole product or a major section of it [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "workers grouped into small self-contained teams/cells",
+            "each cell completes a whole unit or major part"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Quenby Electronics Ltd might introduce cell production.",
+        "model_answer": "Reason 1: Teams take ownership of a complete panel [k], replacing the flow line where each of the 132 staff repeats a single task in isolation [app]. Reason 2: Cell production usually improves quality [k], helping cut the current 5.5% defect rate as workers check their own output [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "whole-task ownership raises motivation and accountability",
+            "built-in checks reduce defects and rework"
+          ],
+          "application_max_2": [
+            "132 staff",
+            "flow line",
+            "5.5% defect rate",
+            "single task"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "132 staff",
+            "260 panels a month",
+            "5.5%",
+            "6 cells of 6 workers",
+            "flow line",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Quenby Electronics Ltd of introducing cell production.",
+        "model_answer": "Benefit 1: Higher motivation [k], because 6 cells of 6 workers each complete whole panels rather than repeating single tasks [app], which lifts morale and effort [an]. Benefit 2: Fewer defects [k], tackling the 5.5% defect rate on the 260 panels a month built on the flow line [app], cutting rework and protecting $2.4 million of revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cells increase variety and ownership, boosting motivation",
+            "cells reduce defects through team responsibility"
+          ],
+          "application_max_2": [
+            "6 cells of 6 workers",
+            "single task",
+            "5.5% defect rate",
+            "260 panels a month"
+          ],
+          "analysis_max_2": [
+            "motivated teams work harder and stay with the firm",
+            "fewer defects cut rework cost and protect revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "6 cells",
+            "6 workers",
+            "whole panel",
+            "260 panels a month",
+            "single task",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Quenby Electronics Ltd should introduce cell production? Justify your answer.",
+        "model_answer": "Cell production gives 6 cells of 6 workers ownership of completed panels [k], attacking the 5.5% defect rate on 260 panels a month built on a single-task flow line [app], improving quality and cutting rework as teams learn together [an]. However, reorganisation costs $38,000 and output would fall by 12% (roughly 31 panels a month) during changeover [k], risking missed delivery slots and penalty clauses while staff learn new cell roles [app], which would strain cash and customer trust [an]. Overall, Quenby should vote yes [eval], because the $38,000 outlay is small against $2.4 million of annual revenue and defect-driven losses [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cell production improves ownership, teamwork and quality",
+            "reorganisation carries direct cost and temporary output loss"
+          ],
+          "application_max_2": [
+            "6 cells of 6 workers",
+            "5.5% defect rate",
+            "$38,000",
+            "12% fall in output",
+            "$2.4 million revenue"
+          ],
+          "analysis_max_2": [
+            "fewer defects reduce penalty clauses and rework cost",
+            "temporary output loss risks missed deliveries and cash strain"
+          ],
+          "evaluation_max_2": [
+            "weighs long-run quality and teamwork gains against short-term cost and disruption"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$38,000",
+            "12%",
+            "260 panels a month",
+            "5.5%",
+            "6 cells",
+            "$2.4 million",
+            "132 staff"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_114",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Anderfell Paper Mill has operated in Country X for 17 years, employing 84 workers who make kraft paper sacks for the cement industry. It runs in batches of 25,000 sacks, and finished stock waits in a rented warehouse costing $7,600 a month. Customers currently wait 21 days for delivery, and two large cement works have threatened to switch suppliers. The mill runs two shifts, five days a week.\n\nThe general manager proposes lean production with demand-driven smaller runs, cutting warehouse space and order lead time. The sales manager warns that cement works buy in bulk and fears losing volume discounts worth $45,000 a year. The board must decide whether to approve $52,000 for a floor reorganisation and new scheduling software before the end of this quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'batch production'.",
+        "model_answer": "A production method in which a quantity of identical products is made together as one group, with each stage completed for the whole batch before the next stage or product begins [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a quantity of identical items made together",
+            "one stage completed for the whole batch before moving on"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Anderfell Paper Mill might switch to lean production.",
+        "model_answer": "Reason 1: Lean cuts storage of finished stock [k], removing much of the $7,600 monthly warehouse cost holding batches of 25,000 sacks [app]. Reason 2: Lean shortens lead times [k], reducing the 21 days customers currently wait and the threat of losing orders [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lean minimises inventory and storage cost",
+            "lean reduces order lead time and waste"
+          ],
+          "application_max_2": [
+            "$7,600 a month",
+            "25,000 sacks",
+            "21 days",
+            "kraft paper sacks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "25,000 sacks",
+            "$7,600",
+            "21 days",
+            "finished stock",
+            "cement industry",
+            "84 workers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Anderfell Paper Mill of switching to lean production.",
+        "model_answer": "Benefit 1: Lower holding costs [k], saving much of the $7,600 a month spent storing batches of 25,000 sacks [app], freeing cash for other investment [an]. Benefit 2: Faster delivery [k], ending the 21-day wait that has two cement works threatening to switch [app], securing repeat orders and protecting future revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lean reduces finished-goods storage costs",
+            "lean shortens delivery lead time"
+          ],
+          "application_max_2": [
+            "$7,600 a month",
+            "25,000 sacks",
+            "21 days",
+            "two large cement works"
+          ],
+          "analysis_max_2": [
+            "cash saved on warehousing can fund other investment",
+            "shorter lead times protect contracts and future revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7,600",
+            "21 days",
+            "25,000 sacks",
+            "kraft paper sacks",
+            "lean production",
+            "84 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Anderfell Paper Mill should switch to lean production? Justify your answer.",
+        "model_answer": "Lean means smaller demand-driven runs [k], removing much of the $7,600 monthly warehouse cost on stored 25,000-sack batches and cutting the 21-day customer wait [app], protecting accounts from defection and improving cash flow [an]. However, bulk cement works currently earn volume discounts worth $45,000 a year [k], and smaller runs could forfeit some of this and raise unit costs [app], squeezing margins just when reorganisation costs $52,000 [an]. Overall, Anderfell should switch to lean [eval], because warehouse savings of about $91,200 a year ($7,600 x 12) outweigh $45,000 of possible lost discounts, and faster delivery secures customers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lean reduces storage cost and lead time",
+            "smaller runs may sacrifice bulk-buying discounts and raise unit costs"
+          ],
+          "application_max_2": [
+            "$7,600 monthly warehouse cost",
+            "21 days lead time",
+            "$45,000 volume discounts",
+            "$52,000 reorganisation cost",
+            "25,000-sack batches"
+          ],
+          "analysis_max_2": [
+            "cash saved and repeat orders strengthen finances",
+            "lost discounts and higher unit costs would squeeze margins"
+          ],
+          "evaluation_max_2": [
+            "weighs annual storage savings against lost volume discounts and reorganisation cost"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$52,000",
+            "$45,000",
+            "$7,600",
+            "21 days",
+            "25,000 sacks",
+            "kraft paper sacks"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_115",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Tallowmere Chocolates is a family business in Country X founded 12 years ago, employing 37 workers who make 18,000 boxes of chocolates a month. Most sales go to national supermarket chains, with two export orders to neighbouring countries. Before last Easter it produced 60,000 seasonal boxes in advance; 14,500 were still unsold by May and sat in a rented warehouse costing $2,100 a month. Annual revenue is $1.1 million.\n\nThe owner proposes lean production with a make-to-order approach for seasonal lines, making boxes only against confirmed retailer orders. The sales director warns this could leave shelves empty in peak weeks and lose impulse sales of about $48,000. The board must decide which system to use for the next Easter season, with production planning starting in December.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'lean production'.",
+        "model_answer": "A production approach that aims to minimise waste at every stage of the production process, producing only what customers demand while using resources efficiently [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "aims to eliminate or minimise waste",
+            "produces only what is needed / matches customer demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Tallowmere Chocolates might adopt a make-to-order approach for seasonal boxes.",
+        "model_answer": "Reason 1: Make-to-order prevents overproduction [k], avoiding a repeat of 14,500 unsold boxes from the 60,000 made in advance [app]. Reason 2: Make-to-order reduces storage needs [k], easing the $2,100 monthly cost of renting warehouse space for unsold stock [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoids overproduction, a key lean waste",
+            "cuts the cost of storing excess output"
+          ],
+          "application_max_2": [
+            "14,500 unsold boxes",
+            "60,000 seasonal boxes",
+            "$2,100 a month",
+            "rented warehouse"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "60,000",
+            "14,500",
+            "$2,100",
+            "18,000 boxes",
+            "make-to-order approach",
+            "confirmed retailer orders"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Tallowmere Chocolates of a make-to-order approach.",
+        "model_answer": "Benefit 1: Less unsold stock [k], sparing the business another 14,500 boxes from the 60,000 made in advance sitting in storage [app], which cuts waste costs and protects the $1.1 million revenue margin [an]. Benefit 2: Better cash flow [k], because making against confirmed retailer orders avoids money being tied up each month in the output of 18,000 boxes [app], freeing cash for ingredients and wages [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "make-to-order removes the risk of unsold output",
+            "cash is not tied up in finished goods stock"
+          ],
+          "application_max_2": [
+            "14,500 unsold boxes",
+            "60,000 seasonal boxes",
+            "18,000 boxes of chocolates a month",
+            "$1.1 million"
+          ],
+          "analysis_max_2": [
+            "lower storage and write-off costs raise margins",
+            "freed cash improves liquidity for wages and ingredients"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "14,500",
+            "$2,100",
+            "$1.1 million",
+            "18,000 boxes of chocolates a month",
+            "60,000",
+            "make-to-order approach"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tallowmere Chocolates should make seasonal boxes only against confirmed retailer orders? Justify your answer.",
+        "model_answer": "A make-to-order approach means producing only against confirmed retailer orders [k], which would prevent a repeat of 14,500 of 60,000 pre-made Easter boxes going unsold and paying $2,100 a month for storage [app], releasing cash and cutting waste dramatically [an]. However, empty shelves in peak weeks could forfeit impulse sales of about $48,000 [k], and a strict make-to-order system cannot serve unplanned supermarket top-up orders when demand spikes [app], risking lost display space and goodwill [an]. Overall, Tallowmere should switch largely to make-to-order [eval], because the certain saving on 14,500 unsold boxes outweighs the speculative $48,000, provided a modest flexible reserve is kept for peak weeks [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "make-to-order removes overproduction and storage waste",
+            "strict make-to-order risks empty shelves and lost impulse sales"
+          ],
+          "application_max_2": [
+            "14,500 unsold boxes",
+            "60,000 seasonal boxes",
+            "$2,100 a month",
+            "$48,000 impulse sales",
+            "$1.1 million revenue"
+          ],
+          "analysis_max_2": [
+            "freed cash and lower storage raise margins and liquidity",
+            "missed peak demand damages supermarket display and goodwill"
+          ],
+          "evaluation_max_2": [
+            "weighs certain waste savings against speculative impulse-sales losses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$48,000",
+            "14,500",
+            "$2,100",
+            "60,000",
+            "$1.1 million",
+            "make-to-order approach",
+            "confirmed retailer orders"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_116",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Silverbeck Ice Cream Co makes tubs of ice cream in Country X, employing 29 workers on a three-stage line with two shifts. A recent time study found the mixing tank sat idle 35% of each shift waiting for ingredients, and 4.2% of tubs were rejected for temperature faults, costing $6,800 a month in scrapped product. Daily output averages 3,200 litres, demand peaks in the hot summer months, and the business supplies hotel freezers and corner shops.\n\nThe production manager proposes kaizen workshops to redesign the ingredient route and add a mixing-schedule board, costing $3,400. The owner favours an $88,000 automated ingredient-dosing machine arriving in 8 months. Both options aim to cut waiting and defects. Silverbeck must choose one investment this quarter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'waste' in a production context.",
+        "model_answer": "Any activity, time or resource used in production that does not add value for the customer, for example waiting time, defects, excess inventory and unnecessary motion [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "something that does not add value",
+            "examples include waiting, defects or excess stock"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two types of waste that kaizen workshops could cut at Silverbeck Ice Cream Co.",
+        "model_answer": "Waste 1: Waiting [k], shown by the mixing tank sitting idle 35% of each shift waiting for ingredients to arrive [app]. Waste 2: Defects [k], shown by 4.2% of tubs rejected for temperature faults costing $6,800 a month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "waiting waste: idle time while resources wait",
+            "defects waste: faulty output requiring scrap or rework"
+          ],
+          "application_max_2": [
+            "mixing tank idle 35% of each shift",
+            "4.2% of tubs rejected",
+            "$6,800 a month",
+            "waiting for ingredients"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "35%",
+            "4.2%",
+            "$6,800",
+            "mixing tank",
+            "temperature faults",
+            "waiting for ingredients"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Silverbeck Ice Cream Co of the kaizen workshops.",
+        "model_answer": "Benefit 1: Very low cost [k], at $3,400 compared with $88,000 for the automated machine [app], so payback is fast and cash stays available [an]. Benefit 2: Worker-led solutions stick [k], engaging the 29 workers around the daily 3,200-litre output [app], which sustains lower waste and defect rates over time [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "kaizen is inexpensive and quick to implement",
+            "kaizen gains employee ownership of improvements"
+          ],
+          "application_max_2": [
+            "$3,400",
+            "$88,000",
+            "29 workers",
+            "3,200 litres"
+          ],
+          "analysis_max_2": [
+            "fast payback preserves cash for other needs",
+            "staff ownership sustains long-term defect reduction"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,400",
+            "$88,000",
+            "29 workers",
+            "3,200 litres",
+            "35%",
+            "4.2%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Silverbeck Ice Cream Co should fund the kaizen workshops rather than the automated ingredient-dosing machine? Justify your answer.",
+        "model_answer": "Kaizen workshops cost $3,400 [k], and by attacking waiting (the tank is idle 35% of each shift) and defects (4.2% of tubs, $6,800 a month scrapped) they could pay back within months [app], cutting both waste types immediately while cash is preserved [an]. However, the $88,000 machine arrives in 8 months [k] and would remove dosing errors permanently, whereas workshops depend on staff discipline and ideas [app], so savings may be partial and slow to appear [an]. Overall, Silverbeck should fund the kaizen workshops first [eval], because at nearly 26 times the cost the machine can follow once the process has been redesigned [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "kaizen is low-cost and immediate but depends on staff",
+            "automation is costly and delayed but removes errors permanently"
+          ],
+          "application_max_2": [
+            "$3,400",
+            "$88,000 machine",
+            "35% idle time",
+            "$6,800 a month",
+            "8 months"
+          ],
+          "analysis_max_2": [
+            "cheap fix cuts both waiting and defects quickly",
+            "automation removes dosing errors at far higher cost and delay"
+          ],
+          "evaluation_max_2": [
+            "weighs low-cost immediate kaizen savings against high-cost permanent automation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,400",
+            "$88,000",
+            "35%",
+            "4.2%",
+            "$6,800",
+            "8 months",
+            "kaizen"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_117",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Norgrove Auto Parts Ltd supplies brake components to car assemblers in Country X, employing 64 workers. Most sales go to three large car assembly plants, and output is stable across the year with weekly call-off contracts. It holds inventory valued at $95,000, including $38,000 of slow-moving stock stored for over 8 months. The warehouse costs $11,500 a month, and last year the firm made $130,000 profit on revenue of $2.9 million.\n\nThe managing director proposes just-in-time deliveries twice a week from a nearer steel supplier. The purchasing manager warns this supplier charges 6% more per tonne and any late delivery would halt production of 400 brake sets a day. Norgrove must decide by the end of the month before the next board meeting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'productivity'.",
+        "model_answer": "The output produced by a worker, or by a unit of input, in a given period of time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "output per worker or per unit of input",
+            "measured over a given time period"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Norgrove Auto Parts Ltd might introduce just-in-time deliveries.",
+        "model_answer": "Reason 1: JIT cuts inventory holding costs [k], reducing the $11,500 monthly warehouse bill on goods valued at $95,000 [app]. Reason 2: JIT frees cash locked in slow stock [k], releasing value from the $38,000 of slow-moving parts stored for over 8 months [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "JIT reduces warehousing and inventory costs",
+            "JIT releases cash tied up in stock"
+          ],
+          "application_max_2": [
+            "$11,500 a month",
+            "$95,000 inventory",
+            "$38,000 slow-moving stock",
+            "8 months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$38,000",
+            "$11,500",
+            "8 months",
+            "slow-moving stock",
+            "twice a week"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Norgrove Auto Parts Ltd of introducing just-in-time deliveries.",
+        "model_answer": "Benefit 1: Lower costs [k], trimming the $11,500 monthly warehouse spend on $95,000 of inventory [app], which improves profit beyond the $130,000 made last year [an]. Benefit 2: Less obsolete stock [k], tackling the $38,000 of parts stored over 8 months [app], reducing write-off risk and freeing cash for development [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "JIT cuts warehousing and holding costs",
+            "JIT reduces obsolescence and slow-moving stock"
+          ],
+          "application_max_2": [
+            "$11,500 a month",
+            "$95,000 inventory",
+            "$38,000 slow-moving stock",
+            "$130,000 profit"
+          ],
+          "analysis_max_2": [
+            "cost savings increase profit margins",
+            "less obsolete stock frees cash and reduces write-offs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$11,500",
+            "$38,000",
+            "$95,000",
+            "$130,000",
+            "slow-moving stock",
+            "64 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Norgrove Auto Parts Ltd should switch to twice-weekly just-in-time deliveries? Justify your answer.",
+        "model_answer": "Just-in-time would cut the $11,500 monthly warehouse cost and shrink the $95,000 inventory [k], including the $38,000 of slow-moving stock stored for over 8 months [app], releasing cash and lifting the $130,000 profit made on $2.9 million of revenue [an]. However, the nearer supplier charges 6% more per tonne [k], and one late delivery would halt the 400 brake sets a day bound for car assemblers [app], risking penalties and lost customer trust [an]. Overall, Norgrove should switch to JIT [eval], because warehouse and stock savings outweigh the 6% premium, provided delivery reliability is written into the contract [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "JIT cuts inventory and warehousing cost",
+            "JIT removes buffer, risking production halt if supply fails"
+          ],
+          "application_max_2": [
+            "$11,500 a month",
+            "$95,000 inventory",
+            "6% more per tonne",
+            "400 brake sets a day",
+            "$130,000 profit"
+          ],
+          "analysis_max_2": [
+            "freed cash and lower costs raise profit",
+            "a late delivery stops 400 sets a day and risks penalties"
+          ],
+          "evaluation_max_2": [
+            "weighs warehouse and stock savings against higher input prices and halt risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$11,500",
+            "6%",
+            "400 brake sets",
+            "$95,000",
+            "$38,000",
+            "$130,000",
+            "twice a week"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_118",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Wrenthorpe Clothing Co makes workwear garments in Country X, employing 58 machinists paid by output. Orders come mainly from construction companies. Each garment travels through cutting, sewing, pressing and packing benches spread across 45 metres of floor, and machinists walk between stations several times per hour. Motion studies show about 30 metres of walking per garment, and the defect rate is 6%.\n\nThe floor manager proposes cell production, arranging workstations into U-shaped cells so each cell completes a garment in one area. The owner warns the change would disrupt the busy spring season and cost $9,000 in layout work. A pilot cell could trial the layout first. They must agree the plan before the new spring contract of 11,000 garments begins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'efficiency'.",
+        "model_answer": "Producing a given level of output using the minimum possible resources, such as time, labour and materials, with no unnecessary waste [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "minimum input/resources for a given output",
+            "avoiding waste of time, labour or materials"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Wrenthorpe Clothing Co might introduce cell production.",
+        "model_answer": "Reason 1: Cells cut motion waste [k], removing much of the 30 metres of walking each garment requires between 45 metres of cutting, sewing, pressing and packing benches [app]. Reason 2: Cells reduce defects [k], helping cut the 6% defect rate as each team checks a whole garment [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cells eliminate unnecessary movement/motion waste",
+            "cells improve quality through team ownership of each unit"
+          ],
+          "application_max_2": [
+            "30 metres of walking per garment",
+            "45 metres of floor",
+            "6% defect rate",
+            "cutting, sewing, pressing and packing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 metres",
+            "6%",
+            "45 metres",
+            "58 machinists",
+            "U-shaped cells",
+            "cell production"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Wrenthorpe Clothing Co of cell production.",
+        "model_answer": "Benefit 1: Less walking time [k], saving part of the 30 metres per garment across 45 metres of floor [app], so machinists sew more units within the spring contract of 11,000 garments [an]. Benefit 2: Better teamwork [k], as 58 machinists work in U-shaped cells around one area per garment [app], speeding communication and cutting errors [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cells cut unnecessary movement, raising output per worker",
+            "cells strengthen teamwork and communication"
+          ],
+          "application_max_2": [
+            "30 metres of walking per garment",
+            "45 metres of floor",
+            "58 machinists",
+            "11,000 garments"
+          ],
+          "analysis_max_2": [
+            "more sewing time per shift raises output on the spring contract",
+            "tighter teams communicate faster and make fewer errors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 metres",
+            "6%",
+            "58 machinists",
+            "11,000 garments",
+            "U-shaped cells",
+            "45 metres"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wrenthorpe Clothing Co should introduce cell production next month? Justify your answer.",
+        "model_answer": "Cell production would end the 30 metres of walking per garment [k], freeing sewing time across 45 metres of floor to support the spring contract of 11,000 garments [app], directly lifting output per machinist and cutting the 6% defect rate [an]. However, the change costs $9,000 and risks disrupting the busy spring season [k], when all 58 machinists must relearn layouts and output may dip [app], possibly missing early delivery deadlines [an]. Overall, Wrenthorpe should introduce cell production next month as a single pilot cell [eval], since $9,000 is recoverable through lower defects and walking time, and full rollout can follow the spring peak [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "cells remove motion waste and improve team output",
+            "reorganisation carries cost and temporary disruption"
+          ],
+          "application_max_2": [
+            "30 metres of walking per garment",
+            "11,000 garments",
+            "$9,000 layout cost",
+            "6% defect rate",
+            "58 machinists"
+          ],
+          "analysis_max_2": [
+            "freed sewing time raises output for the spring contract",
+            "layout change risks missed deadlines during spring"
+          ],
+          "evaluation_max_2": [
+            "weighs long-run efficiency gain against short-term cost and disruption risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9,000",
+            "11,000 garments",
+            "30 metres",
+            "6%",
+            "58 machinists",
+            "45 metres",
+            "cell production"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_119",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Copperbeech Toys Ltd assembles wooden building sets in Country X, employing 41 workers on a flow production line. Timber supplies come from two local sawmills, and sales have grown steadily for four years. Inspectors check only finished boxes, and 7% of sets fail final inspection, so they are reworked at a cost of $5,600 a month. Annual output is 26,000 sets, with revenue of $980,000 and a strong order book for Christmas.\n\nThe operations manager proposes lean production cells with in-process checks at each stage, ending final-only inspection. The owner notes the change requires $24,000 of training and may slow throughput at first, with 41 workers learning new cell roles. Both options aim to protect the Christmas season. They must decide whether to reorganise before Christmas peak production begins.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'flow production'.",
+        "model_answer": "A production method in which products move continuously along a line or sequence of stages, used to make large volumes of identical items [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "continuous movement along a line/stages",
+            "used for large volumes of identical products"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Copperbeech Toys Ltd might switch to in-process checks at each stage.",
+        "model_answer": "Reason 1: Defects are caught early [k], ending final-only inspection on a line where 7% of sets fail at the end [app]. Reason 2: Rework costs fall [k], cutting the $5,600 a month spent fixing rejected wooden building sets [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "in-process checks catch defects at the source",
+            "early detection reduces rework and scrap cost"
+          ],
+          "application_max_2": [
+            "7% of sets fail final inspection",
+            "$5,600 a month",
+            "final-only inspection",
+            "wooden building sets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "7%",
+            "$5,600",
+            "26,000 sets",
+            "flow production line",
+            "in-process checks",
+            "$980,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Copperbeech Toys Ltd of switching to lean cells with in-process checks.",
+        "model_answer": "Benefit 1: Lower rework cost [k], removing much of the $5,600 a month spent on the 7% of sets failing final inspection [app], which lifts margins on $980,000 of revenue [an]. Benefit 2: Smoother Christmas output [k], because stopping errors at each stage protects the flow toward 26,000 sets a year [app], avoiding bottlenecks before the peak [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "early quality checks cut rework and scrap",
+            "steady flow protects output at peak times"
+          ],
+          "application_max_2": [
+            "$5,600 a month",
+            "7% of sets fail",
+            "$980,000 revenue",
+            "26,000 sets a year"
+          ],
+          "analysis_max_2": [
+            "saved rework cost directly raises profit margins",
+            "fewer bottlenecks secure the Christmas order book"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "7%",
+            "$5,600",
+            "$24,000",
+            "41 workers",
+            "26,000 sets",
+            "Christmas"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copperbeech Toys Ltd should reorganise into lean cells before Christmas? Justify your answer.",
+        "model_answer": "In-process checks at each stage [k] would catch defects before the 7% that currently fail final inspection, saving $5,600 a month of rework on 26,000 sets a year [app], protecting the pre-Christmas build when demand is highest [an]. However, reorganisation requires $24,000 of training [k] and throughput may slow at first, with 41 workers learning new cell roles [app], risking short-term delays to the Christmas order book [an]. Overall, Copperbeech should reorganise before Christmas [eval], because letting 7% defects reach final inspection in peak season would be worse, and the $24,000 is repaid by about four to five months of rework savings [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "in-process inspection reduces defects and rework",
+            "reorganisation carries training cost and slower throughput at first"
+          ],
+          "application_max_2": [
+            "7% failing final inspection",
+            "$5,600 a month",
+            "$24,000 training",
+            "26,000 sets a year",
+            "41 workers"
+          ],
+          "analysis_max_2": [
+            "saved rework cost protects margins during peak season",
+            "initial throughput dip risks Christmas deliveries"
+          ],
+          "evaluation_max_2": [
+            "weighs training cost and disruption against rework savings and peak-season quality"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$24,000",
+            "$5,600",
+            "7%",
+            "26,000 sets",
+            "$980,000",
+            "41 workers",
+            "in-process checks"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_120",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Anvilbrook Bottling Co bottles fruit cordials in Country X, employing 33 workers on a lean line that fills 15,000 bottles a week on demand, and only 1.5% of bottles are discarded as waste. The firm's standard range includes six flavours. A regional hotel group has offered a one-off contract for 2,400 bottles of bespoke strawberry-elderflower cordial with a custom label at $6.50 a bottle, worth $15,600.\n\nThe sales manager wants to accept the job and hand-finish the bespoke order on a separate bench. The operations manager warns this removes up to two shifts from the lean line and breaks the standard flow that keeps waste at 1.5%. Anvilbrook must reply to the hotel group by Friday, and a decision will set the plan for the summer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'job production'.",
+        "model_answer": "A production method in which a single item, or a small number of items, are made to an individual customer's specification rather than for general stock [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "one-off or small number of items made",
+            "made to a specific customer's specification/order"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Anvilbrook Bottling Co might accept the bespoke job production contract.",
+        "model_answer": "Reason 1: High revenue per bottle [k], with the one-off contract paying $6.50 a bottle, worth $15,600 in total [app]. Reason 2: A new customer relationship [k], offering 2,400 bottles of bespoke strawberry-elderflower cordial to a regional hotel group that could place repeat orders [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job production earns premium prices per unit",
+            "a bespoke job can win new customers and future orders"
+          ],
+          "application_max_2": [
+            "$6.50 a bottle",
+            "$15,600",
+            "regional hotel group",
+            "2,400 bottles"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.50",
+            "$15,600",
+            "2,400 bottles",
+            "regional hotel group",
+            "one-off contract",
+            "strawberry-elderflower cordial"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems for Anvilbrook Bottling Co of hand-finishing the bespoke order on a separate bench.",
+        "model_answer": "Problem 1: Disrupted flow [k], because removing up to two shifts off the lean line breaks the standard flow that keeps bottle waste at 1.5% [app], raising waste and unit costs [an]. Problem 2: Lost standard output [k], as two removed shifts reduce the 15,000 bottles a week available to regular buyers [app], risking missed regular orders and revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "removing capacity disrupts the standard flow",
+            "less capacity means fewer regular units produced"
+          ],
+          "application_max_2": [
+            "two shifts removed",
+            "1.5% waste",
+            "15,000 bottles a week",
+            "lean line"
+          ],
+          "analysis_max_2": [
+            "broken flow raises waste and unit costs",
+            "lost regular output risks missed orders and revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15,000 bottles a week",
+            "1.5%",
+            "two shifts",
+            "lean line",
+            "separate bench",
+            "strawberry-elderflower cordial"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Anvilbrook Bottling Co should accept the bespoke job production contract? Justify your answer.",
+        "model_answer": "The contract pays $6.50 a bottle for 2,400 bottles, worth $15,600 [k], a high-margin one-off deal that could showcase the firm's cordials to a regional hotel group [app], potentially opening future contracts beyond the standard 15,000-bottle-a-week range [an]. However, hand-finishing removes up to two shifts from the lean line [k], risking waste above the usual 1.5% and delaying regular orders of 15,000 bottles a week [app], which could erode the reliability regular buyers rely on [an]. Overall, Anvilbrook should accept, but schedule the job after peak filling weeks [eval], securing $15,600 without sacrificing the lean flow that keeps waste at 1.5% [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "job orders earn premium prices and can win repeat business",
+            "acceptance risks disrupting the standard flow and waste level"
+          ],
+          "application_max_2": [
+            "$6.50 a bottle",
+            "$15,600 contract",
+            "two shifts off the lean line",
+            "15,000 bottles a week",
+            "1.5% waste"
+          ],
+          "analysis_max_2": [
+            "premium one-off revenue and possible future hotel orders",
+            "disruption raises waste and risks regular-order deliveries"
+          ],
+          "evaluation_max_2": [
+            "weighs premium one-off revenue against lean-flow disruption and waste risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$15,600",
+            "$6.50",
+            "2,400 bottles",
+            "15,000 bottles a week",
+            "1.5%",
+            "two shifts",
+            "one-off contract"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

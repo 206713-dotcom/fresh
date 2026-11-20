@@ -74,8 +74,8 @@ I want to be upfront about how this was actually built, because the person readi
 | What | How much | Where it lives |
 |---|---:|---|
 | MCQ drill bank | **6,000** questions (1,000 per section) | `src/lib/data/mcq-bank-section1..6.ts` |
-| Paper 1 scenarios | **600** (100 per section) | `src/lib/data/paper1-database.json` |
-| Paper 1 structured questions | **2,400** (600 each of 2, 4, 6 and 8 marks) | same |
+| Paper 1 scenarios | **1,200** (200 per section) | `src/lib/data/paper1-database.json` |
+| Paper 1 structured questions | **4,800** (1,200 each of 2, 4, 6 and 8 marks) | same |
 | Paper 2 case studies | **100** | `src/lib/data/paper2-database.json` |
 | Paper 2 structured questions | **800** (400 × 8-mark, 400 × 12-mark) | same |
 | Verified past-paper questions | **189** | `src/lib/data/verified-questions.ts` |
@@ -90,7 +90,7 @@ I want to be upfront about how this was actually built, because the person readi
 | Themes | **5** (2 free, 3 coin-unlocked) | `src/lib/themes.ts` |
 | Boss encounters | **6** | `src/components/BossBattleArena.tsx` |
 
-That is **6,000 multiple-choice questions**, **3,200 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
+That is **6,000 multiple-choice questions**, **5,600 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
 
 One honest caveat: the large practice banks were generated with AI (Gemini) using Cambridge model answers as the basis, then checked and edited by me. They are built to *match* the syllabus, not to be official material. The separate verified archive (see section 5 below) is the part of the app built from inspected Cambridge past papers.
 
@@ -129,7 +129,7 @@ The quiz also includes a **Daily Blitz** and **Weekly Master** challenge. The pr
 
 ### 3. Write: the Paper 1 topical studio
 
-Paper 1 is where definitions and case application meet. The studio contains **600 scenario sets**, 100 per section, each with a full case and four structured parts:
+Paper 1 is where definitions and case application meet. The studio contains **1,200 scenario sets**, 200 per section, each with a full case and four structured parts:
 
 | Part | Marks | What it tests |
 |---|---:|---|
@@ -698,7 +698,7 @@ The 129-question bank was replaced with 6,000 Cambridge-style questions across s
 
 ### The exam-room build — Paper 1, Paper 2 and mocks
 
-The platform grew a written-answer studio: 600 Paper 1 scenario sets, 100 Paper 2 case studies with three appendices, mark-scheme viewers, model answers, drafts, bookmarks, timers and three timed mock formats. This is the release that turned EcBiz from a quiz into an exam trainer.
+The platform grew a written-answer studio: 1,200 Paper 1 scenario sets, 100 Paper 2 case studies with three appendices, mark-scheme viewers, model answers, drafts, bookmarks, timers and three timed mock formats. This is the release that turned EcBiz from a quiz into an exam trainer.
 
 ### The feedback build — AO rules and a local examiner
 

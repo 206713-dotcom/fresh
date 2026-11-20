@@ -1,0 +1,1193 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_151",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Hallowfen Bakery is a private limited company that bakes artisan sourdough loaves in the market town of Dunmere. Founded in 2018, it employs 12 bakers and sells its loaves to shops and cafés across Country X. Each loaf sells for $10.00 wholesale, variable cost per loaf is $4.00, and monthly fixed costs are $9,000. Last month the bakery sold 2,250 loaves and made a profit of $4,500.\n\nA rival bakery two streets away has started undercutting on price. The owners are weighing two options: switching to a cheaper flour blend, cutting variable cost to $2.50 per loaf, or raising the wholesale price to $12.00 per loaf. They fear dearer loaves could lose orders, but worry cheaper flour might weaken the artisan quality that won them loyal customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'break-even output'.",
+        "model_answer": "The level of output at which total revenue exactly equals total costs, so the business makes neither a profit nor a loss. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Output where total revenue equals total costs",
+            "Neither profit nor loss is made at this point"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate Hallowfen Bakery's break-even output in loaves per month. Show your working.",
+        "model_answer": "Contribution per loaf = $10.00 − $4.00 = $6.00 [k]. Break-even output = fixed costs ÷ contribution = $9,000 ÷ $6.00 = 1,500 loaves per month [app], the level at which total revenue equals total costs [k]. Revenue at break-even equals $15,000 and would exactly cover all fixed and variable costs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even output = fixed costs ÷ contribution per unit",
+            "At break-even, total revenue equals total costs"
+          ],
+          "application_max_2": [
+            "Contribution of $6.00 per loaf ($10.00 − $4.00)",
+            "$9,000 ÷ $6.00 = 1,500 loaves; revenue at break-even $15,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hallowfen Bakery",
+            "$10.00",
+            "$4.00",
+            "$9,000",
+            "2,250",
+            "$12.00",
+            "flour"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Hallowfen Bakery of knowing its break-even output and margin of safety.",
+        "model_answer": "Benefit 1: It shows how many loaves must be sold before profit begins [k], which for Hallowfen is 1,500 loaves a month against actual sales of 2,250 loaves [app], so the owners can see the bakery has a 750-loaf cushion before falling into losses [an]. Benefit 2: It helps the owners judge price and cost changes safely [k], for example testing whether the cheaper flour or the $12.00 price rise would keep the margin of safety positive [app], which supports calmer decisions while a rival bakery undercuts on price [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even shows the minimum output needed to avoid a loss",
+            "Margin of safety measures the cushion above break-even"
+          ],
+          "application_max_2": [
+            "1,500 loaves needed to break even vs 2,250 sold",
+            "Testing the $2.50 flour switch or the $12.00 price rise"
+          ],
+          "analysis_max_2": [
+            "750-loaf cushion before losses begin",
+            "Break-even analysis reduces risk of poor pricing decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hallowfen",
+            "2,250",
+            "$9,000",
+            "$10.00",
+            "$12.00",
+            "flour",
+            "$4.00"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hallowfen Bakery should switch to the cheaper flour blend rather than raise the wholesale price to $12.00? Justify your answer.",
+        "model_answer": "One argument for switching flour is that it cuts variable cost to $2.50 per loaf [k], raising contribution to $7.50 and cutting break-even output from 1,500 to 1,200 loaves while lifting profit at 2,250 loaves to $7,875 [app], which strengthens the bakery against the rival without dearer prices for loyal shops and cafés [an]. However, one argument against is that cheaper flour could weaken the artisan quality [k], damaging the reputation built since 2018 and risking the orders that drive $4,500 of monthly profit [app], so the bakery could lose more through lower quality than it gains from the extra $1.50 of contribution [an]. Overall, Hallowfen should switch flour only after baking trial batches and checking customer feedback [eval]; if quality holds, profit rises to $7,875 with the price kept at $10.00, otherwise the $12.00 rise is the safer route to $9,000 of profit [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower variable costs raise contribution and cut break-even output",
+            "Cheaper ingredients can damage product quality and reputation"
+          ],
+          "application_max_2": [
+            "$2.50 flour raises contribution to $7.50 and cuts break-even to 1,200 loaves",
+            "Profit at 2,250 loaves rises to $7,875; the price option reaches $9,000"
+          ],
+          "analysis_max_2": [
+            "Higher contribution strengthens the bakery against the rival",
+            "A quality slip could cost more than the flour saving gains"
+          ],
+          "evaluation_max_2": [
+            "Weighs cheaper flour savings against quality risk",
+            "Reaches a justified conditional judgement with a trial-first recommendation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hallowfen",
+            "$2.50",
+            "$12.00",
+            "2,250",
+            "$4,500",
+            "flour",
+            "$10.00"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_152",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Nettlewick Brewery is a private limited company that brews craft pale ales in the town of Carrowdale. Founded in 2019, it employs 9 brewers and produces around 6,000 bottles a month. Bottles sell at $5.00 each through independent shops and the taproom, with variable costs of $2.00 per bottle and fixed costs of $6,000 a month. Current monthly profit is about $12,000.\n\nA supermarket chain has offered to buy 2,000 bottles a month at $4.20 each. The owners have drawn a break-even chart to see where current sales sit. The chart shows fixed costs flat at $6,000, total cost rising with output, and the revenue line crossing total cost at 2,000 bottles. They must decide whether to accept the supermarket contract or keep selling at $5.00 alone.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'break-even chart'.",
+        "model_answer": "A graph plotting sales revenue and total costs against output, showing the fixed-cost line, the total-cost line, the revenue line, and the break-even point where they cross. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A graph of revenue and total costs against output",
+            "Shows fixed costs, total costs, revenue and the break-even point"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two pieces of information that Nettlewick Brewery's break-even chart shows.",
+        "model_answer": "Point 1: It shows the break-even point, where total revenue equals total costs [k], which on Nettlewick's chart is 2,000 bottles per month [app]. Point 2: It shows the margin of safety, the gap between actual output and break-even output [k], so 4,000 of the 6,000 bottles sold each month are beyond break-even [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even point is where revenue equals total costs",
+            "Margin of safety is the gap between actual output and break-even output"
+          ],
+          "application_max_2": [
+            "Break-even point shown at 2,000 bottles per month",
+            "4,000 bottles beyond break-even (6,000 − 2,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Nettlewick Brewery",
+            "6,000",
+            "$5.00",
+            "$6,000",
+            "$4.20",
+            "2,000",
+            "$12,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for Nettlewick Brewery.",
+        "model_answer": "Limitation 1: It assumes one selling price for all bottles [k], but the supermarket offer would sell 2,000 bottles at $4.20 instead of $5.00 [app], so the single straight revenue line would overstate revenue and distort the chart [an]. Limitation 2: It assumes costs stay constant at every output [k], but brewing 8,000 bottles instead of 6,000 could bring bulk-buy discounts on grain and bottles [app], so the $2.00 variable cost and $6,000 fixed cost figures may not hold as output rises [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assumes a single constant selling price",
+            "Assumes costs remain constant at all levels of output"
+          ],
+          "application_max_2": [
+            "Supermarket bottles at $4.20 vs taproom $5.00",
+            "Output rising towards 8,000 bottles if the contract is signed"
+          ],
+          "analysis_max_2": [
+            "A flat revenue line misrepresents mixed-price sales",
+            "Bulk-buy discounts shift cost curves as output rises"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Nettlewick",
+            "$4.20",
+            "$5.00",
+            "2,000",
+            "$2.00",
+            "$6,000",
+            "6,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Nettlewick Brewery should accept the supermarket contract at $4.20 per bottle? Justify your answer.",
+        "model_answer": "One argument for accepting is that each supermarket bottle still contributes $2.20 [k], so 2,000 bottles would add about $4,400 towards the $6,000 fixed costs, lifting total monthly profit from $12,000 to roughly $16,400 [app], spreading fixed costs over 8,000 bottles and improving efficiency [an]. However, one argument against is that $4.20 undercuts the $5.00 price [k], risking the premium craft image that underpins sales through independent shops and the taproom, which carry the 4,000-bottle margin of safety [app], and could upset independent stockists who dislike seeing the beer cheaper in supermarkets [an]. Overall, Nettlewick should accept the contract only as a clearly distinct label or smaller bottle, keeping the flagship ale at $5.00 [eval]; if the chain insists on the identical bottle at $4.20, the brewery should decline and protect its margin of safety [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "An extra contract still contributes positively to fixed costs",
+            "A lower price risks brand image and independent stockists"
+          ],
+          "application_max_2": [
+            "2,000 bottles at $4.20 contribute $2.20 each, about $4,400 a month",
+            "Premium $5.00 taproom sales carry the 4,000-bottle margin of safety"
+          ],
+          "analysis_max_2": [
+            "Spreading fixed costs lifts total profit towards $16,400",
+            "Price erosion could upset stockists and weaken the margin of safety"
+          ],
+          "evaluation_max_2": [
+            "Weighs volume and profit gains against brand dilution",
+            "Reaches a justified conditional judgement with a distinct-label compromise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Nettlewick",
+            "$4.20",
+            "$5.00",
+            "2,000",
+            "$6,000",
+            "$12,000",
+            "6,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_153",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Marrowfell Furniture is a small private limited company making made-to-measure oak tables in the town of Brackenholme. It employs 6 joiners and sells about 30 tables a year at $1,500 each. Variable costs for oak, labour and finish run at $700 per table, and annual fixed costs are $12,000 for the workshop, machinery and insurance. Last year the business made a profit of $12,000.\n\nThe owner is weighing two options: buying a CNC router for $25,000, which would cut variable cost to $550 per table but add $6,000 a year of maintenance and software, or accepting a school contract for 12 tables a year at $1,200 each. A neighbouring workshop that bought the same router says it only paid off once annual output passed 40 tables.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'total costs'.",
+        "model_answer": "The sum of fixed costs and variable costs incurred at a particular level of output. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed costs plus variable costs",
+            "Total costs change as output rises, starting from the fixed-cost level"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Marrowfell Furniture might carry out break-even analysis before buying the CNC router.",
+        "model_answer": "Reason 1: It shows the output needed to cover all costs [k], so Marrowfell can see the router would lift break-even from 15 tables to about 19 tables a year [app]. Reason 2: It shows profit at a given output [k], revealing that profit at 30 tables a year would fall from $12,000 to $10,500 if the router is bought [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even shows the minimum output needed to avoid a loss",
+            "Break-even analysis supports investment and pricing decisions"
+          ],
+          "application_max_2": [
+            "Router lifts break-even from 15 tables to about 19 tables a year",
+            "Profit at 30 tables falls from $12,000 to $10,500"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marrowfell",
+            "$25,000",
+            "$6,000",
+            "$550",
+            "$700",
+            "$12,000",
+            "30"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for Marrowfell Furniture.",
+        "model_answer": "Limitation 1: It assumes every table sells at one fixed price [k], yet the school contract would sell 12 tables at $1,200 rather than $1,500 [app], so the single revenue line would misstate total revenue and distort the chart [an]. Limitation 2: It assumes costs stay constant [k], but the router changes both fixed costs, up $6,000 a year, and variable cost per table, down to $550 [app], so a chart drawn on today's figures would not represent the new cost structure [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assumes a single constant selling price",
+            "Assumes costs remain constant at all outputs"
+          ],
+          "application_max_2": [
+            "School tables at $1,200 each rather than $1,500",
+            "Router changes fixed costs ($6,000 a year) and variable cost ($550)"
+          ],
+          "analysis_max_2": [
+            "Mixed pricing distorts the revenue line and break-even point",
+            "A shifted cost structure makes the old chart unreliable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marrowfell",
+            "$1,200",
+            "$1,500",
+            "$550",
+            "$6,000",
+            "school contract",
+            "12"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marrowfell Furniture should buy the CNC router? Justify your answer.",
+        "model_answer": "One argument for buying the router is that it cuts variable cost to $550 per table [k], saving $150 a table and lifting contribution to $950, so profit would beat today's $12,000 once output passes about 40 tables a year [app], making it worthwhile if the school contract and steady growth push annual sales upward [an]. However, one argument against is that at the current 30 tables a year profit falls to $10,500 [k], because the extra $6,000 of annual fixed costs outweighs the $4,500 saving on variable costs at 30 tables [app], and the $25,000 purchase price remains before any benefit arrives [an]. Overall, Marrowfell should not buy the router yet [eval]; it should sign the school contract first, lifting profit to about $18,000, and review the router only when annual sales reliably exceed 40 tables [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower variable costs raise contribution per unit",
+            "Higher fixed costs raise the output needed to break even"
+          ],
+          "application_max_2": [
+            "$550 variable cost saves $150 a table, lifting contribution to $950",
+            "$25,000 router plus $6,000 a year fixed against current $12,000 profit"
+          ],
+          "analysis_max_2": [
+            "Router beats today's profit only above roughly 40 tables a year",
+            "Current 30-table volume cannot absorb the extra fixed costs"
+          ],
+          "evaluation_max_2": [
+            "Weighs long-run unit saving against short-run strain",
+            "Reaches a justified judgement: school contract first, router later"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Marrowfell",
+            "$25,000",
+            "$6,000",
+            "$550",
+            "$700",
+            "30",
+            "$12,000",
+            "school contract"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_154",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Boghall Mushroom Farm is a family business in the wetland district of Country X, founded in 2017, employing 14 pickers and growers. It harvests about 25,000 kg of oyster mushrooms a year. Annual fixed costs are $60,000 for polytunnels and refrigeration, and variable costs are $4.00 per kg for compost, spawn and packaging. The farm also runs a small farm shop selling dried mushrooms at the gate.\n\nThe family is choosing between two sales options. Selling to three restaurants at $12.00 per kg would move around 9,000 kg a year. Selling to a supermarket chain at $7.00 per kg would take the full 25,000 kg harvest. They want to compare the break-even output of each option before signing any contract, and worry the supermarket could cut the price later.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'variable costs'.",
+        "model_answer": "Costs that vary in direct proportion with the level of output, such as raw materials and piece-rate labour. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Costs that change as output changes",
+            "Vary in direct proportion to output, e.g. materials"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the break-even output and the profit for each sales option. Show your working.",
+        "model_answer": "Option A (restaurants): contribution per kg = $12.00 − $4.00 = $8.00 [k]; break-even = $60,000 ÷ $8.00 = 7,500 kg a year, and profit at 9,000 kg = (9,000 × $8.00) − $60,000 = $12,000 [app]. Option B (supermarket): contribution per kg = $7.00 − $4.00 = $3.00 [k]; break-even = $60,000 ÷ $3.00 = 20,000 kg a year, and profit at 25,000 kg = (25,000 × $3.00) − $60,000 = $15,000 [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contribution per unit = price − variable cost per unit",
+            "Break-even output = fixed costs ÷ contribution per unit"
+          ],
+          "application_max_2": [
+            "Option A: break-even 7,500 kg; profit $12,000 at 9,000 kg",
+            "Option B: break-even 20,000 kg; profit $15,000 at 25,000 kg"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Boghall",
+            "$12.00",
+            "$7.00",
+            "$4.00",
+            "$60,000",
+            "9,000",
+            "25,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages for Boghall Mushroom Farm of selling to restaurants rather than the supermarket.",
+        "model_answer": "Advantage 1: Restaurants pay a higher price [k], at $12.00 per kg instead of $7.00, so each kilogram contributes $8.00 rather than $3.00 [app], meaning the farm breaks even after just 7,500 kg and losses are far less likely in a weak year [an]. Advantage 2: Three restaurants spread risk across several buyers [k], rather than relying on one supermarket chain for the whole 25,000 kg harvest [app], so if one buyer cuts its orders the farm is not left with tonnes of unsold mushrooms and falling revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A higher price raises contribution per unit",
+            "Several buyers reduce dependence on a single customer"
+          ],
+          "application_max_2": [
+            "$12.00 per kg yields $8.00 contribution vs $3.00 per kg",
+            "Three restaurants vs one supermarket taking 25,000 kg"
+          ],
+          "analysis_max_2": [
+            "Break-even at just 7,500 kg cushions weak seasons",
+            "Diversified buyers limit damage if any one reduces orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Boghall",
+            "$12.00",
+            "$7.00",
+            "$60,000",
+            "25,000",
+            "three restaurants",
+            "9,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Boghall Mushroom Farm should sell to the supermarket chain? Justify your answer.",
+        "model_answer": "One argument for the supermarket is that it buys the whole harvest [k], taking 25,000 kg at $7.00 per kg and giving profit of about $15,000, with break-even passed at 20,000 kg and a 5,000 kg margin of safety [app], so fixed costs of $60,000 are safely covered and the farm has no unsold produce [an]. However, one argument against is that a single buyer could cut price or orders [k], putting the entire $7.00 per kg revenue at risk and wiping out the $3,000 extra profit over the restaurant option very quickly [app], and the farm would also lose the higher-margin chef relationships built with three restaurants [an]. Overall, Boghall should accept the supermarket contract only for around 70% of the harvest, keeping two restaurant accounts alongside it [eval]; if the chain demands the entire crop exclusively, the farm should stay with restaurants for their $8.00 contribution and lower risk [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Guaranteed volume secures revenue and covers fixed costs",
+            "Single-customer dependence increases commercial risk"
+          ],
+          "application_max_2": [
+            "25,000 kg at $7.00; break-even 20,000 kg; margin of safety 5,000 kg",
+            "Restaurant option earns $12,000 profit with three buyers"
+          ],
+          "analysis_max_2": [
+            "A full-harvest contract wipes out waste and covers $60,000 fixed costs",
+            "Losing the one buyer could erase the $3,000 extra profit"
+          ],
+          "evaluation_max_2": [
+            "Weighs guaranteed volume against customer concentration",
+            "Reaches a justified judgement with a mixed-sales compromise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Boghall",
+            "$7.00",
+            "$12.00",
+            "25,000",
+            "$60,000",
+            "$4.00",
+            "restaurants"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_155",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Mallowbrook Herbs is a nursery in the river valley near Aldersey, founded in 2016, employing 8 growers and weekend shop staff. It sells potted basil, thyme and mint through its farm shop at $3.00 per pot, with variable costs of $1.00 per pot and annual fixed costs of $48,000. Last year it sold 40,000 pots and made a profit of $32,000. The farm shop is busiest on Saturday mornings.\n\nThe owner is choosing between raising the shop price to $3.50 a pot, or building a second greenhouse for $40,000, which adds $18,000 a year to fixed costs but lifts capacity to 55,000 pots. She fears dearer pots may drive shoppers to the garden centre in town, while the greenhouse leaves less cash if sales disappoint.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'fixed costs'.",
+        "model_answer": "Costs that do not change with the level of output in the short run, such as rent, insurance and permanent staff salaries. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Costs that stay constant regardless of output in the short run",
+            "Examples include rent, insurance and permanent salaries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the break-even output in pots per year and the margin of safety at current sales. Show your working.",
+        "model_answer": "Contribution per pot = $3.00 − $1.00 = $2.00 [k]. Break-even output = $48,000 ÷ $2.00 = 24,000 pots per year [app]. Margin of safety = 40,000 − 24,000 = 16,000 pots beyond break-even [app], the fall in sales the nursery could absorb before making a loss [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contribution = price − variable cost per unit",
+            "Margin of safety = actual output − break-even output"
+          ],
+          "application_max_2": [
+            "Break-even 24,000 pots ($48,000 ÷ $2.00)",
+            "Margin of safety 16,000 pots (40,000 − 24,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Mallowbrook Herbs",
+            "$3.00",
+            "$1.00",
+            "$48,000",
+            "40,000",
+            "$32,000",
+            "$3.50"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for Mallowbrook Herbs of knowing its margin of safety before building the second greenhouse.",
+        "model_answer": "Benefit 1: It shows how far sales can fall before a loss is made [k], which is 16,000 pots at current sales of 40,000 pots [app], so the owner can judge whether the greenhouse leaves enough headroom if demand dips [an]. Benefit 2: It helps weigh the extra fixed costs [k], since a second greenhouse lifts annual fixed costs from $48,000 to $66,000 [app], and sales would need to stay above the new break-even of 33,000 pots for the investment to remain safe [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Margin of safety cushions the business against falling demand",
+            "Break-even output rises when fixed costs increase"
+          ],
+          "application_max_2": [
+            "16,000-pot cushion at current sales of 40,000 pots",
+            "Fixed costs rising from $48,000 to $66,000 with a second greenhouse"
+          ],
+          "analysis_max_2": [
+            "Enough headroom must remain after extra fixed costs are added",
+            "The new break-even of 33,000 pots must be beaten every year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Mallowbrook",
+            "$48,000",
+            "40,000",
+            "$40,000",
+            "$18,000",
+            "55,000",
+            "$3.50"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Mallowbrook Herbs should build the second greenhouse? Justify your answer.",
+        "model_answer": "One argument for the greenhouse is that it raises capacity to 55,000 pots [k], which at $3.00 per pot would give profit of about $44,000 a year even after the extra $18,000 of fixed costs, comfortably above the current $32,000 [app], provided herb demand keeps growing [an]. However, one argument against is that the $40,000 build lifts break-even to 33,000 pots [k], so if dearer pots send shoppers to the garden centre in town, sales could slip towards the new break-even and erase the current 16,000-pot margin of safety [app], leaving the nursery exposed to losses [an]. Overall, Mallowbrook should raise the price to $3.50 first and watch demand for one season [eval]; if sales hold near 40,000 pots, the greenhouse becomes a safer investment to approve the following year [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher capacity supports greater sales and profit",
+            "Extra fixed costs raise break-even output"
+          ],
+          "application_max_2": [
+            "55,000-pot capacity; profit about $44,000 after $18,000 extra fixed costs",
+            "Break-even rises to 33,000 pots against a current $32,000 profit"
+          ],
+          "analysis_max_2": [
+            "Selling more pots lifts profit beyond the current $32,000",
+            "Garden-centre competition could drag sales towards break-even"
+          ],
+          "evaluation_max_2": [
+            "Weighs capacity gain against the higher break-even point",
+            "Reaches a justified judgement: price-rise trial before greenhouse build"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Mallowbrook",
+            "$40,000",
+            "$18,000",
+            "55,000",
+            "$3.50",
+            "$48,000",
+            "$32,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_156",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Dock Lane Phone Repairs is a small private limited company in the port district of Country X, founded in 2020, employing 3 technicians. It averages 275 repairs a month at $40.00 per repair, with variable costs of $16.00 per repair and monthly fixed costs of $4,800 for the shop unit and insurance. Profit last month was $1,800. Footfall on the old lane has fallen since a retail park opened nearby.\n\nThe owner is choosing between two options: spending $900 a month on local advertising to attract more walk-ins, or moving to a smaller unit nearby where fixed costs would fall to $3,600 a month. Advertising could lift repairs to about 330 a month, while the smaller unit may put off some walk-in customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'margin of safety'.",
+        "model_answer": "The difference between actual output and break-even output, showing how much output may fall before the business starts making a loss. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Actual output minus break-even output",
+            "Shows how much sales can fall before losses occur"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the break-even output and the margin of safety for Dock Lane Phone Repairs. Show your working.",
+        "model_answer": "Contribution per repair = $40.00 − $16.00 = $24.00 [k]. Break-even output = $4,800 ÷ $24.00 = 200 repairs per month [app]. Margin of safety = 275 − 200 = 75 repairs a month [app], the drop in demand the shop can absorb before losses begin [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contribution = price − variable cost per unit",
+            "Margin of safety = actual output − break-even output"
+          ],
+          "application_max_2": [
+            "Break-even 200 repairs ($4,800 ÷ $24.00)",
+            "Margin of safety 75 repairs (275 − 200)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Dock Lane Phone Repairs",
+            "$40.00",
+            "$16.00",
+            "$4,800",
+            "275",
+            "$900",
+            "$3,600"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways moving to the smaller unit would affect Dock Lane Phone Repairs' break-even point and margin of safety.",
+        "model_answer": "Effect 1: Lower fixed costs reduce break-even output [k], because $3,600 of monthly fixed costs divided by the $24.00 contribution gives a break-even of just 150 repairs instead of 200 [app], so far fewer repairs are needed each month to avoid losses [an]. Effect 2: The margin of safety widens at current sales [k], growing from 75 to 125 repairs a month (275 − 150) [app], giving the owner more room if the new retail park keeps pulling footfall away [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Falling fixed costs lower break-even output",
+            "A wider margin of safety means lower risk"
+          ],
+          "application_max_2": [
+            "Break-even falls to 150 repairs ($3,600 ÷ $24.00)",
+            "Margin of safety widens from 75 to 125 repairs"
+          ],
+          "analysis_max_2": [
+            "Fewer repairs are needed before losses begin",
+            "Extra cushion protects profit if footfall keeps falling"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Dock Lane",
+            "$3,600",
+            "$4,800",
+            "275",
+            "$40.00",
+            "retail park",
+            "$16.00"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Dock Lane Phone Repairs should move to the smaller unit? Justify your answer.",
+        "model_answer": "One argument for moving is that fixed costs fall to $3,600 [k], cutting break-even to 150 repairs and widening the margin of safety to 125 repairs at today's 275-repair sales [app], lifting monthly profit from $1,800 to about $3,000 without needing a single extra customer [an]. However, one argument against is that a smaller unit could put off walk-in customers [k], and if repairs fall below 200 a month the $1,200 saving could be swamped by lost trade [app], especially with a new retail park already pulling footfall away from the old lane [an]. Overall, Dock Lane should move to the smaller unit [eval], because the $1,200 monthly saving is certain while the extra walk-ins from the $900 advertising plan are only hoped for [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Lower fixed costs reduce break-even and widen the margin of safety",
+            "Smaller premises may deter walk-in trade"
+          ],
+          "application_max_2": [
+            "Break-even falls to 150 repairs; margin of safety widens to 125",
+            "Profit rises from $1,800 to about $3,000 a month"
+          ],
+          "analysis_max_2": [
+            "The certain $1,200 saving strengthens the shop against footfall loss",
+            "Lost walk-ins could wipe out the saving if demand falls"
+          ],
+          "evaluation_max_2": [
+            "Weighs the certain saving against uncertain trade loss",
+            "Reaches a justified judgement favouring the move over costly advertising"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Dock Lane",
+            "$3,600",
+            "$900",
+            "$4,800",
+            "275",
+            "$1,800",
+            "retail park"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_157",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Kittiwake Ice Cream Parlour is a small family business on the promenade in the seaside town of Marbeck, founded in 2015, employing 6 staff in summer. It sells cones and tubs at $3.00 each, with variable costs of $0.80 per sale and fixed costs of $8,800 per month while open. In summer it sells around 5,500 scoops a month; in winter only 1,200. Tourist numbers peak in July and August then drop sharply.\n\nThe owners are deciding whether to close from November to February or trade all year. If closed, fixed costs would fall to $2,000 per month, but the parlour would be dark for four months. They have drawn a break-even chart showing a healthy summer margin of safety, but winter sales running well below break-even.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'revenue'.",
+        "model_answer": "The total income a business earns from selling its goods or services, calculated as price × quantity sold. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total income from sales",
+            "Calculated as price × quantity sold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Outline two pieces of information that Kittiwake Ice Cream Parlour's break-even chart shows.",
+        "model_answer": "Point 1: It shows the break-even point, where the revenue line crosses the total cost line [k], which on the parlour's chart is 4,000 scoops a month [app]. Point 2: It shows the summer margin of safety, the gap between actual summer sales and break-even [k], meaning 1,500 of the 5,500 summer scoops are beyond break-even [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Break-even point is where revenue equals total costs",
+            "Margin of safety is the gap between actual output and break-even"
+          ],
+          "application_max_2": [
+            "Break-even at 4,000 scoops ($8,800 ÷ $2.20)",
+            "1,500 scoops beyond break-even in summer (5,500 − 4,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kittiwake",
+            "$3.00",
+            "$8,800",
+            "5,500",
+            "1,200",
+            "$0.80",
+            "summer"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why Kittiwake Ice Cream Parlour's break-even chart may be misleading in winter.",
+        "model_answer": "Reason 1: The chart assumes sales stay at the summer level [k], but winter sales of 1,200 scoops fall far below the 4,000 break-even level [app], so the parlour makes a loss of about $6,160 each winter month despite a healthy summer chart [an]. Reason 2: A straight-line chart hides seasonal changes in fixed costs [k], but closing from November to February would cut fixed costs from $8,800 to $2,000 per month [app], so one annual chart would misstate both costs and the break-even point [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assumes constant demand across the period",
+            "Hides changes in fixed costs between seasons"
+          ],
+          "application_max_2": [
+            "Winter sales of 1,200 scoops vs 4,000 break-even",
+            "Winter closure cuts fixed costs from $8,800 to $2,000 a month"
+          ],
+          "analysis_max_2": [
+            "Winter losses reach about $6,160 a month despite summer strength",
+            "Seasonal fixed costs make a single chart misleading"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kittiwake",
+            "1,200",
+            "$8,800",
+            "$2,000",
+            "5,500",
+            "$0.80",
+            "winter"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kittiwake Ice Cream Parlour should close from November to February? Justify your answer.",
+        "model_answer": "One argument for closing is that winter sales of 1,200 scoops are far below the 4,000 break-even level [k], so staying open loses about $6,160 a month, while closing cuts fixed costs to $2,000, saving roughly $16,640 over the four winter months [app], cash that could refurbish the parlour or fund summer staff [an]. However, one argument against is that closing for four months interrupts customer relationships [k], and regulars who visit every weekend may drift to competitors, shrinking the 5,500 summer scoops that built the summer margin of safety [app], so spring revenue could disappoint after reopening [an]. Overall, Kittiwake should close from November to February [eval], because trading through winter loses about $4,160 more each month than the $2,000 fixed cost of staying dark, and the parlour can relaunch each spring with promotions [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Closing in loss-making months cuts fixed costs and saves cash",
+            "Extended closure can weaken customer relationships"
+          ],
+          "application_max_2": [
+            "Winter loss of about $6,160 a month vs $2,000 if closed, saving ≈ $16,640 over four months",
+            "Summer margin of safety built on 5,500 scoops a month"
+          ],
+          "analysis_max_2": [
+            "Avoiding winter losses preserves cash for the summer season",
+            "Losing regulars could cut summer sales after reopening"
+          ],
+          "evaluation_max_2": [
+            "Weighs the certain winter saving against brand continuity",
+            "Reaches a justified judgement favouring winter closure with a spring relaunch"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Kittiwake",
+            "1,200",
+            "$2,000",
+            "$8,800",
+            "5,500",
+            "November",
+            "winter"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_158",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Rillbeck Soap Co is a private limited company making handmade soaps in the market town of Brindleford, founded in 2014, employing 5 staff. Its best-selling lavender bar sells at $6.00 per bar, with variable costs of $2.00 per bar and annual fixed costs of $14,000. Last year it sold 6,000 bars and made a profit of $10,000. All bars are poured and wrapped by hand in small weekly batches.\n\nThe owner must choose between launching a new oatmeal soap bar, which needs a $7,000-a-year moulding contract and has a likely first-year demand of 1,500 bars at $6.00 each, or promoting the lavender line harder to push sales towards 7,500 bars. Variable cost per oatmeal bar would be $2.50. A local gift shop has already asked to stock the oatmeal line.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'average cost'.",
+        "model_answer": "The total cost per unit produced, calculated by dividing total costs by the number of units output. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total costs divided by units produced",
+            "Falls as output rises while fixed costs stay constant"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the average cost per lavender bar and the profit from selling 6,000 bars. Show your working.",
+        "model_answer": "Total cost = $14,000 fixed + (6,000 × $2.00 = $12,000 variable) = $26,000 [k]. Average cost per bar = $26,000 ÷ 6,000 = $4.33 [app]. Revenue = 6,000 × $6.00 = $36,000, so profit = $36,000 − $26,000 = $10,000 [app], matching last year's result for Rillbeck [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Average cost = total costs ÷ units produced",
+            "Profit = revenue − total costs"
+          ],
+          "application_max_2": [
+            "Total cost $26,000; average cost $4.33 per bar",
+            "Profit $10,000 on revenue of $36,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Rillbeck",
+            "$6.00",
+            "$2.00",
+            "$14,000",
+            "6,000",
+            "$10,000",
+            "lavender"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis if Rillbeck Soap Co launches the oatmeal bar.",
+        "model_answer": "Limitation 1: It assumes one product and one price [k], but lavender and oatmeal bars share the $14,000 fixed costs and sell at $6.00 with different variable costs [app], so splitting fixed costs between two lines can distort each line's true break-even output [an]. Limitation 2: It assumes first-year demand can be predicted [k], yet the estimated 1,500 oatmeal bars sit below the 2,000 bars needed to cover the $7,000 moulding contract [app], so the new line could lose about $1,750 in year one even if the chart looks acceptable [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assumes a single product sold at one price",
+            "Assumes forecast demand levels are achieved"
+          ],
+          "application_max_2": [
+            "Two bars sharing $14,000 fixed costs",
+            "1,500 forecast bars vs the 2,000 needed to cover $7,000"
+          ],
+          "analysis_max_2": [
+            "Splitting fixed costs between lines distorts per-line break-even",
+            "Forecast shortfall yields a year-one loss of about $1,750"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Rillbeck",
+            "oatmeal",
+            "$7,000",
+            "1,500",
+            "$2.50",
+            "lavender",
+            "$14,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Rillbeck Soap Co should launch the oatmeal soap bar? Justify your answer.",
+        "model_answer": "One argument for launching is that a second line spreads the $14,000 fixed costs across more bars [k], and once oatmeal sales pass the 2,000-bar break-even for the $7,000 moulding contract, each extra bar contributes $3.50 to profit [app], helping Rillbeck grow beyond its current $10,000 annual profit [an]. However, one argument against is that the forecast 1,500 bars fall below that break-even [k], so the line would lose about $1,750 in year one and divert staff from the proven lavender bar [app], while pushing lavender towards 7,500 bars could more safely lift profit to about $16,000 [an]. Overall, Rillbeck should not launch yet [eval]; it should survey its gift-shop customers and trial a market stall, launching only if pre-orders top 2,000 bars [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Extra product lines spread fixed costs",
+            "New products often lose money before reaching break-even"
+          ],
+          "application_max_2": [
+            "Oatmeal break-even is 2,000 bars against the $7,000 moulding contract",
+            "Forecast 1,500 bars lose ≈ $1,750; lavender at 7,500 bars could yield ≈ $16,000 profit"
+          ],
+          "analysis_max_2": [
+            "Each bar sold past break-even adds $3.50 contribution",
+            "Focusing on the proven lavender line is the safer profit route"
+          ],
+          "evaluation_max_2": [
+            "Weighs growth potential against the forecast shortfall",
+            "Reaches a justified judgement: trial and pre-order check before launch"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Rillbeck",
+            "oatmeal",
+            "$7,000",
+            "1,500",
+            "lavender",
+            "$10,000",
+            "$2.50"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_159",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Netherfield Farm in Country X runs a pick-your-own strawberry field from June to August, founded in 2012, employing 10 seasonal pickers. It charges $9.00 per kg of strawberries, with variable costs of $2.00 per kg and fixed costs for the season of $14,000. This year's harvest may reach 6,000 kg, but sales to direct visitors may be only 4,500 kg. The farm also sells punnets at the gate for cash.\n\nA jam factory has offered to buy any unsold strawberries at $4.00 per kg after the season ends. The family is deciding whether to accept the offer, protecting against waste, or risk the whole crop on bumper visitor sales in good weather. An early heatwave has already brought families to the field this month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'break-even analysis'.",
+        "model_answer": "Comparing fixed and variable costs with revenue to find the output at which no profit or loss is made, and to judge risk and profit at different outputs. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Comparing costs and revenue to locate break-even output",
+            "Used to judge risk, profit and pricing decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the break-even output for Netherfield Farm and the profit if 4,500 kg are sold this season. Show your working.",
+        "model_answer": "Contribution per kg = $9.00 − $2.00 = $7.00 [k]. Break-even output = $14,000 ÷ $7.00 = 2,000 kg of strawberries [app]. Profit if 4,500 kg are sold = (4,500 × $7.00) − $14,000 = $17,500 [app], before any surplus sales to the jam factory are counted [k].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contribution = price − variable cost per unit",
+            "Break-even output = fixed costs ÷ contribution per unit"
+          ],
+          "application_max_2": [
+            "Break-even 2,000 kg ($14,000 ÷ $7.00)",
+            "Profit $17,500 at 4,500 kg (4,500 × $7.00 − $14,000)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Netherfield Farm",
+            "$9.00",
+            "$2.00",
+            "$14,000",
+            "4,500",
+            "6,000",
+            "$4.00"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of break-even analysis for Netherfield Farm.",
+        "model_answer": "Limitation 1: It assumes all output is sold [k], but Netherfield may pick 6,000 kg and sell only 4,500 kg to visitors [app], so the chart would overstate revenue unless the 1,500 kg surplus goes to the jam factory [an]. Limitation 2: It assumes prices and costs stay fixed [k], but heat, rain or hail can ruin crop quality and force price cuts to clear fruit [app], so the real break-even can move sharply in a bad summer [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assumes all output is sold",
+            "Assumes prices and costs remain constant"
+          ],
+          "application_max_2": [
+            "6,000 kg harvest vs 4,500 kg of visitor sales",
+            "Weather can cut quality and force price reductions"
+          ],
+          "analysis_max_2": [
+            "Unsold 1,500 kg breaks the all-output-sold assumption",
+            "Weather-driven price cuts push break-even upwards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Netherfield",
+            "6,000",
+            "4,500",
+            "$9.00",
+            "jam factory",
+            "$2.00",
+            "$14,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Netherfield Farm should accept the jam factory's offer at $4.00 per kg? Justify your answer.",
+        "model_answer": "One argument for accepting is that it guarantees a buyer for the surplus [k], turning 1,500 kg of unsold fruit into about $3,000 of extra contribution ($4.00 − $2.00 per kg) on top of the $17,500 from visitor sales [app], lifting seasonal profit towards $20,500 and cutting waste to zero [an]. However, one argument against is that $4.00 per kg is well under the $9.00 visitor price [k], so fruit sold late to the factory earns far less than field sales would, and heavy dependence on the factory could tempt the farm to neglect visitor promotion [app], damaging the premium pick-your-own image that fills the field each summer [an]. Overall, Netherfield should accept the offer as a one-season safety net for unsold fruit only [eval]; the farm should sell at $9.00 to visitors first and send only the remaining surplus to the jam factory [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Guaranteed sales of surplus cut waste",
+            "Lower-priced bulk sales yield less per kilogram"
+          ],
+          "application_max_2": [
+            "1,500 kg surplus × $2.00 contribution ≈ $3,000 extra",
+            "$9.00 field price vs $4.00 jam factory price"
+          ],
+          "analysis_max_2": [
+            "Profit rises towards $20,500 with the offer in place",
+            "Over-reliance on factory sales erodes the $9.00 field margin"
+          ],
+          "evaluation_max_2": [
+            "Weighs guaranteed surplus sales against the lower margin",
+            "Reaches a justified judgement: visitors first, factory as safety net"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Netherfield",
+            "$4.00",
+            "$9.00",
+            "$2.00",
+            "4,500",
+            "jam factory",
+            "$14,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_160",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Hest Bank Yoghurt Co is a private limited company in the market town of Hest Bank, founded in 2017, employing 11 production staff. It sells natural yoghurt pots at $1.20 each. Annual fixed costs are $9,000 and variable costs are $0.80 per pot. It sells about 30,000 pots a year to local shops, making a profit of $3,000.\n\nA supermarket chain has offered a contract for 400,000 pots a year, but Hest Bank would need a new potting line. Machine X runs at $0.40 variable cost per pot with $21,000 extra annual fixed lease. Machine Y runs at $0.70 variable cost per pot with $6,000 extra annual fixed costs. Both machines are affordable, but the owner must choose based on expected demand.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'profit'.",
+        "model_answer": "The amount by which revenue exceeds total costs, that is sales income minus every cost of production. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Revenue minus total costs",
+            "The reward that remains after all costs are paid"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Calculate the break-even output for Machine X and Machine Y. Show your working.",
+        "model_answer": "Machine X: contribution per pot = $1.20 − $0.40 = $0.80 [k], so break-even = $30,000 ÷ $0.80 = 37,500 pots a year [app]. Machine Y: contribution per pot = $1.20 − $0.70 = $0.50 [k], so break-even = $15,000 ÷ $0.50 = 30,000 pots a year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Fixed costs combine into total fixed costs",
+            "Break-even output = fixed costs ÷ contribution per unit"
+          ],
+          "application_max_2": [
+            "Machine X: $30,000 ÷ $0.80 = 37,500 pots a year",
+            "Machine Y: $15,000 ÷ $0.50 = 30,000 pots a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hest Bank Yoghurt Co",
+            "$1.20",
+            "$0.40",
+            "$0.70",
+            "$21,000",
+            "$6,000",
+            "400,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of Machine X over Machine Y if Hest Bank wins the supermarket contract.",
+        "model_answer": "Advantage 1: Machine X earns a stronger contribution per pot [k], at $0.80 rather than $0.50 [app], so across the 400,000-pot contract it leaves Hest Bank about $105,000 better off a year ($290,000 vs $185,000 profit) [an]. Advantage 2: Machine X's lower variable cost protects profit if milk prices rise [k], because each pot needs only $0.40 of materials instead of $0.70 [app], so a dairy price increase would squeeze margin far less on the supermarket's large order [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Higher contribution per unit raises profit at high volume",
+            "Lower variable costs give resilience against input price rises"
+          ],
+          "application_max_2": [
+            "$0.80 vs $0.50 contribution per pot",
+            "$0.40 vs $0.70 variable cost per pot"
+          ],
+          "analysis_max_2": [
+            "About $105,000 extra profit a year at 400,000 pots",
+            "Dairy price rises hurt Machine Y margins far more"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hest Bank",
+            "Machine X",
+            "$0.40",
+            "$0.70",
+            "400,000",
+            "$21,000",
+            "supermarket"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hest Bank Yoghurt Co should choose Machine X for the supermarket contract? Justify your answer.",
+        "model_answer": "One argument for Machine X is that its $0.80 contribution suits high volume [k], so at 400,000 pots a year it would earn about $290,000 after its $30,000 fixed costs, comfortably beyond its 37,500-pot break-even [app], making automation the right fit for a long supermarket contract [an]. However, one argument against is that Machine X's break-even is 37,500 pots [k], higher than Machine Y's 30,000 pots, and below about 50,000 pots a year Machine Y leaves Hest Bank better off [app], so if the supermarket cuts orders the extra $21,000 lease could drag the business into losses [an]. Overall, Hest Bank should choose Machine X [eval], but only after written agreement of a minimum annual order of at least 60,000 pots, so the 37,500-pot break-even is safely cleared [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "High contribution rewards high-volume contracts",
+            "Fixed leases are risky if demand falls"
+          ],
+          "application_max_2": [
+            "$290,000 projected profit at 400,000 pots after $30,000 fixed costs",
+            "Machine X break-even 37,500 pots vs Machine Y 30,000 pots"
+          ],
+          "analysis_max_2": [
+            "Automation wins clearly above roughly 50,000 pots a year",
+            "Order cuts could leave the $21,000 lease uncovered"
+          ],
+          "evaluation_max_2": [
+            "Weighs high-volume reward against demand risk",
+            "Reaches a justified judgement: Machine X only with a guaranteed minimum order"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Hest Bank",
+            "Machine X",
+            "$21,000",
+            "$0.40",
+            "400,000",
+            "30,000",
+            "supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

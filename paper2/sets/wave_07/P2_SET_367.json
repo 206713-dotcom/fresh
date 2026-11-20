@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_367",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Xyprime Data Labs (XDL) is a private limited company in the retail data-analytics software sector, employing a workforce of 40. Founded in 2016 by Niamh Corrigan, the business sells subscription dashboards to shop chains and operates a hierarchical structure with autocratic leadership. XDL plans to invest $540,000 in a new AI-driven analytics dashboard, financed by a $300,000 bank loan and $240,000 retained profit. It has fixed costs of $216,000 a year, a variable cost of $9.00 a unit and a selling price of $21.00, and currently produces 54,000 units a year. XDL faces two problems: customer churn has reached 12% of accounts and its data-defect rate has risen to 4.2%, causing complaints from several large retail clients.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q4 2025: Xyprime Data Labs processed 27,000 dashboard subscriptions last quarter at a data-defect rate of 4.2%, down from 5.6% a year earlier. Customer churn reached 12% of accounts against a 7% target. A survey of 350 retail managers found that 68% wanted real-time reporting, and 61% would pay $2.50 more per month for it. Refresher training for 40 analysts costs $640 per person; recruitment of a replacement analyst costs $4,200.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Xyprime Data Labs for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "900", "1,200"],
+        ["Cost of sales", "360", "450"],
+        ["Gross profit", "540", "750"],
+        ["Operating profit", "135", "216"],
+        ["Capital employed", "750", "900"],
+        ["Interest payable", "18", "15"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has cut the base interest rate from 5.25% to 4.75%, lowering borrowing costs for firms with variable-rate loans. (2) The national minimum wage will rise by 4.8% from $13.75 to $14.41 per hour from April 2026, lifting wage bills. (3) Specialist software licensing and cloud bandwidth costs have risen 11.2% year-on-year, while inflation is 5.9% and spending on retail analytics software grew 6.8%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "XDL needs to fund its $540,000 AI-driven analytics dashboard. Explain two advantages for XDL of using a bank loan rather than relying only on its retained profit for this investment.",
+      "model_answer": "Point 1: A bank loan gives XDL the full $300,000 immediately, so the AI-driven dashboard can be built and launched before competitors respond. Waiting to accumulate that sum from retained profit could take several years at current trading, during which the 12% customer churn might worsen as retail clients demand real-time reporting that 68% of surveyed managers want. Speed matters when the survey also shows 61% would pay $2.50 more a month for better reporting, so early launch protects future revenue.\n\nPoint 2: Using the loan preserves the $240,000 of retained profit as a contingency for the 4.2% data-defect rate. That money can be spent on refresher training at $640 per analyst or on fixing defects without seeking further finance, which is important for a firm of only 40 people with a small asset base. The interest on the loan is a known, budgetable cost that can be set against the $216,000 of annual fixed costs, whereas running out of cash midway through development would leave the dashboard incomplete and the $540,000 investment wasted.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to XDL, its financing and its churn and defect problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["bank loan", "retained profit", "$300,000", "$240,000", "$540,000", "AI-driven analytics dashboard"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "XDL is launching its new analytics dashboard. Consider sponsoring a retail technology conference, running pay-per-click online advertising, or employing a direct sales team. Which should XDL choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Retail technology conference sponsorship: A conference places XDL in front of retail decision-makers, the same group as the 350 managers surveyed, and allows live demonstrations of real-time reporting, which 68% said they wanted. It builds credibility and direct contacts. However, one event has limited reach and a high fixed fee, and with only a workforce of 40 there are few staff to follow up every lead; interest also fades once the event ends.\n\nPay-per-click online advertising: Search advertising reaches retail managers exactly when they look for analytics tools, is measurable, and can be adjusted daily. It is cheaper to start than a conference and more continuous, and it can highlight the $2.50-per-month premium feature that 61% said they would pay. Its weakness is that clicks can be expensive for competitive software keywords, and without a strong sales process the leads may not convert, which matters when churn is already 12%.\n\nDirect sales team: A dedicated team can demonstrate the dashboard, answer technical questions and build relationships, which should reduce the 12% churn through closer account management. It also gives full control of the message. The drawbacks are high and ongoing salary costs for a 40-person business already carrying $216,000 of fixed costs, and slow coverage of the market compared with online channels.\n\nRecommendation: XDL should choose pay-per-click online advertising as the main channel. It reaches the surveyed managers at the moment of need, is measurable and is affordable against the $540,000 investment. Conference sponsorship is rejected as too narrow and short-lived, and a direct sales team is rejected as too costly for 40 staff; a small conference presence and inside-sales follow-up should support, not replace, online advertising.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the three promotional options with minimal application to XDL.",
+        "level_2_5_to_8": "Detailed analysis of the advantages and disadvantages of at least two options in the context of XDL with some judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in context with a well-justified recommendation explaining why conference sponsorship and a direct sales team are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$540,000", "68%", "350", "61%", "$2.50", "workforce of 40"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "XDL's customer churn has reached 12% and its data-defect rate is 4.2%. Explain two benefits for XDL of using autocratic leadership to improve performance in its analyst team.",
+      "model_answer": "Point 1: Autocratic leadership lets Niamh Corrigan set clear quality standards and decisive priorities for the hierarchical structure, which is useful when 4.2% of dashboard data is defective and large retail clients are complaining. A single decision-maker can order an immediate freeze on faulty releases and assign fixes without lengthy consultation, cutting the risk that the 12% churn rises further. In a 40-person firm, fast central decisions can be implemented the same day.\n\nPoint 2: Clear direction also fixes accountability: each analyst knows exactly which reporting standard to meet, so errors can be traced and corrected, supporting the 68% of surveyed managers who want real-time reporting. Combined with refresher training at $640 per person, tightly specified targets can raise consistency and reduce complaints. The approach suits a crisis, but it must be used carefully, because analysts who cannot contribute ideas may become demotivated and leave, and replacing one costs $4,200, which would worsen the churn problem.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to XDL's churn, defects and hierarchical structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "hierarchical structure", "customer churn", "4.2%", "workforce of 40", "12%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "XDL must improve the skills of its analysts to cut the 4.2% data-defect rate. Consider refresher training for existing staff at $640 each or recruiting a replacement analyst for $4,200. Which should XDL choose? Justify your decision.",
+      "model_answer": "Refresher training: Training existing analysts at $640 each directly upgrades the people who produce the dashboards and already know XDL's systems, so it attacks the 4.2% defect rate without losing knowledge. For the workforce of 40 the full cost is $25,600 (40 × $640), and because the content can target real-time reporting standards wanted by 68% of surveyed managers, the benefit is immediate. Staff also feel invested in, which may reduce the 12% churn. The drawbacks are that training takes analysts away from live work and that existing habits may be hard to change if the same staff caused the errors.\n\nRecruitment: Hiring a replacement analyst for $4,200 brings fresh skills and new ideas, and may be essential if the 12% churn continues. One new salary is a smaller single outlay than training all 40 staff, and recruitment can fill a genuine capacity gap. However, a new analyst needs induction and time to learn XDL's proprietary dashboards, so the 4.2% defect problem is not solved quickly; there is also no guarantee the recruit stays, given churn of 12%, and the cost excludes salary and onboarding time.\n\nDecision: XDL should choose refresher training first. It is cheaper for the whole team than repeated recruitment, is specific to the defects, and protects morale while churn is high. Recruitment is rejected as the primary answer because a newcomer cannot fix a system-wide 4.2% defect rate alone and may also leave; it should be reserved for genuine vacancies, with training used to raise the skill level of the existing 40 analysts.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of training and recruitment with limited application to XDL.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both options in the context of XDL.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in context with a justified decision covering cost, speed and the defect and churn problems."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["refresher training", "$640", "$4,200", "4.2%", "12%", "workforce of 40"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how XDL's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate XDL's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $216,000 ÷ ($21.00 − $9.00) = $216,000 ÷ $12.00 = 18,000 units. Answer: break-even output is 18,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate XDL's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Actual output − Break-even output. Substitution: 54,000 − 18,000 = 36,000 units. Answer: margin of safety is 36,000 units."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways XDL's management can use this financial data.",
+          "model_answer": "1. The 18,000-unit break-even point against output of 54,000 units leaves a margin of safety of 36,000 units, showing the dashboard is profitable and giving confidence to spend the $540,000 investment.\n2. Contribution of $12.00 a unit lets managers test the $2.50 monthly premium: even a modest price increase raises contribution, but the 68% of managers who want real-time reporting shows demand is conditional, so volume assumptions must be checked.\n3. Break-even analysis sets a target for repaying the $300,000 bank loan: after 18,000 units each further subscription adds $12.00 toward interest and capital, so managers can monitor progress monthly.\n4. Unit cost of $216,000 ÷ 54,000 + $9.00 = $13.00 can be tracked against the 4.2% defect rate; if defects force rework, effective cost rises and the $21.00 price may no longer be competitive, guiding the $640 training decision."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 18,000 units | (ii) Margin of safety = 36,000 units | (iii) Four contextual uses explained: profitability headroom against 54,000 units; pricing based on the $2.50 premium and 68% demand; loan-repayment targets from the $300,000 facility; and unit-cost benchmarking at $13.00 against defects.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["18,000", "36,000", "54,000", "$216,000", "$12.00", "$21.00", "$9.00"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate XDL's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has XDL's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 60.0%\nGross Profit Margin 2025 = 62.5%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 18.0%\nROCE 2025 = 24.0%\n\nDetailed workings: In 2024 gross profit of $540,000 on revenue of $900,000 gives 60.0%; in 2025 gross profit of $750,000 on revenue of $1,200,000 gives 62.5%, a gain of 2.5 percentage points. Operating profit climbed from $135,000 to $216,000, so the operating-to-revenue percentage rose from 15.0% to 18.0%. Capital employed increased from $750,000 to $900,000, but the return on that capital still rose from 18.0% to 24.0% because operating profit grew much faster than the asset base. Cost of sales increased from $360,000 to $450,000, but revenue grew by $300,000, so the direct cost burden fell relative to sales. Interest payable declined from $18,000 to $15,000, reducing the drain on earnings.\n\nEvaluation: The three measures all point in the same favourable direction, which makes the conclusion more reliable than if only one ratio had moved. The gross improvement suggests XDL is gaining better terms or spreading software-delivery costs over more subscriptions, valuable when 11.2% software-licensing inflation is forecast. The operating percentage rising by 3.0 points shows that the $216,000 fixed costs are being absorbed by growth rather than allowed to drift. The return on capital rising to 24.0% despite $150,000 more capital employed is the strongest signal that the business is using its assets more effectively. However, a 12% churn rate and a 4.2% defect rate could reverse these gains if clients leave or rework rises, and one year's figures do not prove a lasting trend. The absolute percentages are also still ordinary for a software firm.\n\nConclusion: XDL's financial performance has improved. Gross profitability, operating profitability and return on capital all rose together, and the improvement survived a larger capital employed and lower interest cost. The main risk is churn and defective data, so management should use the $640 refresher training and the $2.50 premium opportunity to protect the trend while the $540,000 dashboard is launched.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directions of change without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs, capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["60.0%", "62.5%", "15.0%", "18.0%", "24.0%", "$540,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for XDL of introducing automated data-validation software to cut its 4.2% data-defect rate.",
+      "model_answer": "Advantage: Automated validation can check every dashboard feed against set rules before it reaches retail clients, directly reducing the 4.2% defect rate and the complaints from large shop chains. Cleaner data supports the real-time reporting that 68% of the 350 surveyed managers want and protects the $2.50 premium that 61% would pay, helping to hold the 12% customer churn down and justify the $540,000 dashboard. It also frees analysts from manual checking so they can improve features.\n\nDisadvantage: Buying and integrating validation software adds to XDL's $216,000 of annual fixed costs and must be funded alongside a $300,000 bank loan. The tool needs rules that match each client's reporting format; if these are wrong it could reject correct data and create new complaints, worsening churn rather than reducing it. Automated checks may also miss subtle errors an experienced analyst would spot, so the 4.2% defect rate may not fall as much as hoped, and staff may feel their judgement is being replaced, which could raise churn further.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to XDL's defect data, survey and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.2%", "68%", "350", "$2.50", "$540,000", "data-defect rate"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate cut to 4.75%, the 4.8% minimum wage increase and the 11.2% rise in input costs will affect XDL. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate cut (from 5.25% to 4.75%): If XDL's $300,000 bank loan is variable-rate, the saving is 0.50% × $300,000 = $1,500 a year (0.005 × $300,000 = 1,500). This is helpful but small against $216,000 of annual fixed costs, and if the loan is fixed-rate the cash benefit is zero. Lower rates may still make future borrowing for the dashboard cheaper and encourage retail clients to invest in new analytics.\n\nMinimum wage rise (4.8%, to $14.41 per hour): The insert states a workforce of 40 and output of 54,000 units a year but gives no hours worked and no individual pay, so a total wage bill cannot be invented. The honest comparison is productivity: 54,000 ÷ 40 = 1,350 units per analyst. If that holds, the rise can be absorbed through the $12.00 contribution per unit; if the 4.2% defect rate and 12% churn consume analyst time, unit labour cost rises and contribution is squeezed. The direction is clear, but no further figure is supportable from the insert.\n\nInput-cost inflation (11.2%): The $9.00 variable cost is not decomposed in the insert, so only a bound can be shown. If the whole variable cost rose 11.2%, the increase is 0.112 × $9.00 = $1.008, about $1.01 per unit; over 54,000 units that is roughly $54,540 a year (54,000 × $1.01). Even a half-size effect near $0.50 a unit would be about $27,000 a year, cutting contribution from $12.00 toward $11.00 and threatening the cash needed for the $540,000 investment.\n\nConclusion: The 11.2% rise in licensing and bandwidth costs will have the greatest impact. It applies to every one of the 54,000 subscriptions and attacks the $12.00 contribution that funds the dashboard, whereas the rate cut saves at most $1,500 and the wage effect cannot be quantified from the insert. XDL can recover some of it through the $2.50 premium that 61% of managers would accept, but only if the 4.2% defect rate is fixed first.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to XDL.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on XDL's costs, revenue or financing in context, with shown working where figures are used.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in the context of XDL with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "4.8%", "11.2%", "$14.41", "$300,000", "$9.00"]
+      }
+    }
+  ]
+}

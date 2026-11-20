@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_171",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Dermaven Aesthetic Clinic (DAC) is a private limited company in the healthcare sector, providing non-surgical aesthetic treatments in two city clinics and employing a workforce of 38. Founded in 2013 by Dr Sofia Duarte, the business operates a hierarchical structure with democratic leadership. DAC plans to invest $620,000 in a second treatment suite featuring advanced laser-rejuvenation equipment, financed by a $400,000 ten-year bank loan and $220,000 retained profit. It has fixed costs of $210,000 a year, a variable cost of $38.00 a unit and a selling price of $80.00, and currently produces 11,000 units a year, measured in treatments. DAC faces a skills gap in laser-safety certification and rising appointment waiting times across both clinics.",
+    "appendix_1_marketing_ops": "Patient Experience and Quality Report — Q3 2026: The clinic performed 2,750 treatments last quarter with a complication rate of 2.1%, down from 3.4% a year ago. Customer complaints fell from 16 to 7 per month. Average appointment waiting time is 8 days. A survey of 500 clients found that 68% would pay up to $15 more for premium anti-ageing packages and 55% check online reviews before booking. A training needs analysis shows 12 of 38 staff require advanced laser-safety certification; off-the-job training at the local medical college costs $750 per employee. DAC has also begun trialling recyclable, eco-friendly packaging for single-use consumables.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Dermaven Aesthetic Clinic for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,800", "2,200"],
+        ["Cost of sales", "1,080", "1,210"],
+        ["Gross profit", "720", "990"],
+        ["Operating profit", "270", "396"],
+        ["Capital employed", "1,500", "1,760"],
+        ["Interest payable", "45", "60"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, increasing borrowing costs for variable-rate loans. (2) The national minimum wage will rise by 5.8% from $12.60 to $13.33 per hour from April 2026, raising wage bills for treatment and reception staff. (3) Wholesale clinic consumables, including serums and laser gels, have risen 11.5% year-on-year, while consumer spending on cosmetic treatments grew 4.2% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "DAC plans to finance part of its second treatment suite with a ten-year bank loan. Explain two advantages for DAC of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit costs DAC nothing in interest charges or repayments, which protects cash flow at a time when fixed costs already stand at $210,000 a year and a $400,000 ten-year bank loan would add further monthly commitments. Avoiding that interest helps DAC absorb the 11.5% rise in consumables without breaching the premium pricing its clients expect, protecting its $42.00 contribution per treatment and keeping the $620,000 investment affordable while the new suite ramps up.\n\nPoint 2: Retained profit keeps ownership and control fully with Dr Sofia Duarte and existing shareholders, with no bank covenants or security charges hanging over the laser-rejuvenation suite if demand disappoints. There is no repossession risk and no lender interference in clinic operations, which matters for a private limited company positioning itself as premium. It also strengthens DAC's credit standing for any future borrowing and signals that the expansion is funded sustainably from trading profits.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Dermaven Aesthetic Clinic and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$220,000", "$400,000", "$620,000", "$210,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "DAC is launching a premium anti-ageing package. Consider a national television campaign, local radio sponsorship, or a social media influencer campaign. Which should DAC choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Television campaign: A national TV campaign would reach millions quickly and make the anti-ageing package instantly recognisable, suiting a mass-market push behind a premium launch. However, production and airtime costs run into hundreds of thousands of dollars, prohibitive next to a $620,000 expansion funded partly by a bank loan, and much of the national audience sits outside DAC's two-city catchment and would never book a treatment, so wasted spend would dwarf the benefit for a 38-employee private limited company.\n\nLocal radio sponsorship: Local radio is far cheaper than television, fits the two-city catchment and suits timely messages such as a limited launch offer. Its weakness is reach: frequent commuters cannot generate the premium anti-ageing volume DAC needs, and even peak-time spots miss the 55% of clients who research online before booking, limiting measurable return on spend.\n\nSocial media influencer campaign: Working with beauty and wellness influencers speaks directly to the 68% of 500 surveyed clients willing to pay up to $15 more for premium anti-ageing, with measurable clicks, bookings and reviews, exactly where the 55% who check online reviews actually look. Cost per reached client is low and results can be tracked weekly, though outcomes depend on influencer credibility and sustained content rather than one burst of advertising.\n\nRecommendation: DAC should choose the social media influencer campaign. It reaches the precise segment its own research identified, costs a fraction of television, scales far beyond local radio, and builds the online review trail its clients rely on. Television is rejected as unaffordable and untargeted for a two-clinic business funding a $620,000 expansion; local radio is rejected as too narrow to fill the new treatment suite. DAC should layer in-clinic promotion for existing patients to reinforce the influencer activity.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of DAC with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of DAC with a well-justified recommendation explaining why television and local radio are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["anti-ageing", "68%", "55%", "$15", "2,750", "500"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "DAC faces a skills gap in laser-safety certification and rising appointment waiting times. Explain two benefits for DAC of democratic leadership when motivating its clinic team.",
+      "model_answer": "Point 1: Democratic leadership gives the 38 employees a real voice in how treatment rooms are scheduled and safety routines are designed, which satisfies social and esteem needs (Maslow) and raises job satisfaction. Staff who help shape the new laser-rejuvenation workflow are more likely to attend punctually and to suggest practical fixes for rising waiting times, directly relieving pressure on both clinics and supporting the current output of 11,000 treatments a year.\n\nPoint 2: Involving staff generates frontline ideas — for example tighter appointment triage or calmer rebooking scripts — that reduce the 8-day waiting time and support the 2,750 treatments delivered last quarter. Higher commitment reduces the risk of certified clinicians leaving, protects treatment quality (complication rates already fell from 3.4% to 2.1%), and saves part of the $750 per employee cost of external laser-safety certification by building capability and confidence internally before the second suite opens.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to DAC's skills gap, waiting times and treatment output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "workforce of 38", "laser-safety", "$750", "11,000", "2,750"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "DAC must certify 12 treatment staff in advanced laser-safety procedures. Consider on-the-job training by senior clinicians or off-the-job certification at the local medical college. Which should DAC choose? Justify your decision.",
+      "model_answer": "On-the-job training: Supplier-led and clinician-led training inside the treatment rooms is directly relevant to DAC's own laser-rejuvenation devices, costs nothing beyond the equipment contract and keeps staff productive while they learn, protecting the 2,750-treatments-per-quarter throughput. Its weaknesses are shallow skill depth, bad habits spreading between shifts, and no recognised certificate — awkward if insurers or auditors ask for documented laser-safety competence across only 12 of 38 staff.\n\nOff-the-job training: The local medical college course gives structured, assessed content and a recognised laser-safety certificate for all 12 staff; 12 x $750 = $9,000, modest against a $620,000 expansion. It removes staff from the floor for set days, trimming short-term capacity, and the generic syllabus still needs adapting to DAC's specific devices afterwards.\n\nDecision: DAC should choose off-the-job certification at the medical college, supplemented by supplier familiarisation on site afterwards. Laser safety is compliance-critical: a recognised certificate satisfies insurers, auditors and referral partners, and the $9,000 fee is trivially small beside the expansion. On-the-job training alone is rejected — it cannot evidence formal competence, risks inconsistent standards across both clinics, and leaves DAC exposed if a safety incident occurs before the second treatment suite opens.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to DAC.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of DAC.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of DAC with a well-justified decision covering compliance, cost and clinic relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["off-the-job training", "$750", "laser-safety", "$620,000", "2,750", "12"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how DAC's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate DAC's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $210,000 ÷ ($80.00 − $38.00) = $210,000 ÷ $42.00 = 5,000 treatments. Answer: break-even output is 5,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate DAC's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $80.00 − $38.00 = $42.00. Answer: contribution per unit is $42.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways DAC's management can use this financial data.",
+          "model_answer": "1. Comparing the 5,000-unit break-even with actual output of 11,000 treatments shows a margin of safety of 6,000 units (around 55% of output), giving managers confidence to push the new suite towards full utilisation without eroding the $42.00 contribution per treatment.\n2. Contribution data lets managers model package discounts: cutting the anti-ageing promotional price by 10% would drop contribution to around $34.00, so managers can test whether the extra bookings still cover $210,000 of fixed costs before approving a promotion.\n3. Unit cost data — ($210,000 ÷ 11,000) + $38.00 = $57.09 per treatment — lets managers benchmark each clinic's efficiency, spot waste in serums and laser consumables, and renegotiate supplier pricing in response to the 11.5% input-cost inflation.\n4. Labour productivity of 11,000 ÷ 38 = about 289 treatments per employee lets managers set staffing levels for the second suite, identify underused capacity and justify the 12-person laser-safety certification programme against measurable output gains."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 5,000 units | (ii) Contribution per unit = $42.00 | (iii) Four contextual uses explained: margin of safety of 6,000 units versus 11,000 treatments produced; discount and promotion modelling against $210,000 fixed costs; unit-cost benchmarking at $57.09 to tackle skills gap and consumable waste; and productivity targets of about 289 treatments per employee to staff the $620,000 expansion.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5,000", "$42.00", "11,000", "$210,000", "$38.00", "$80.00", "$57.09"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate DAC's financial performance by calculating the gross profit margin, the profit margin and ROCE for 2024 and 2025. Has DAC's financial performance improved? Justify your answer.",
+      "model_answer": "Gross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 18.0%\nROCE 2025 = 22.5%\n\nDetailed workings: 2024 gross profit $720,000 on revenue of $1,800,000 (720 ÷ 1,800 = 40.0%); 2025 gross profit $990,000 on revenue of $2,200,000 (990 ÷ 2,200 = 45.0%). Operating profit rose from $270,000 (270 ÷ 1,800 = 15.0% of revenue) to $396,000 (396 ÷ 2,200 = 18.0% of revenue). With capital employed of $1,500,000 in 2024 and $1,760,000 in 2025, the return on capital moved from 270 ÷ 1,500 = 18.0% to 396 ÷ 1,760 = 22.5%. Revenue grew $400,000 (22.2%) while cost of sales grew only $130,000, evidence of premium pricing power in the anti-ageing range.\n\nEvaluation: Performance has improved decisively. Margins widened because the $400,000 revenue gain outran cost growth, and the return on capital now comfortably exceeds any bank deposit rate, validating the expansion logic behind the second suite. However, interest payable climbed from $45,000 to $60,000 as borrowing rose, the 11.5% consumables inflation threatens next year's margin, and the 5.8% minimum wage rise from April 2026 will lift the wage bill further. DAC should also watch treatment waiting times, as lost appointments quietly erode revenue per room.\n\nConclusion: DAC's financial performance has improved across all three measures — profitability (40.0% to 45.0%), operating margin (15.0% to 18.0%) and return on capital employed (18.0% to 22.5%). The improvement is broad-based rather than a one-off, but DAC must protect it by managing consumables inflation and wage costs while the second suite ramps up to full utilisation.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost and capital movements and a justified conclusion on whether DAC's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "15.0%", "18.0%", "22.5%", "990", "1,760"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "DAC is trialling recyclable, eco-friendly packaging for single-use treatment consumables. Explain one advantage and one disadvantage for DAC of introducing this packaging.",
+      "model_answer": "Advantage: Recyclable, eco-friendly packaging aligns directly with the 68% of surveyed clients willing to pay up to $15 more for premium anti-ageing, letting DAC protect or raise price points while differentiating from rival chains. It also strengthens the review-driven reputation DAC relies on — 55% of clients check online reviews — supporting corporate wellness referrals and council health contracts and reinforcing the premium positioning behind the $620,000 second suite.\n\nDisadvantage: Eco-friendly materials typically cost more and are less durable, raising the $38.00 variable cost per treatment and squeezing the $42.00 contribution unless the premium is accepted across the whole anti-ageing range. Any packaging failure — leaks, breakage or shorter shelf life — would also inflate the 2.1% complication rate and increase waste handling, adding cost before the new suite stabilises at full capacity.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to DAC's research data, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["eco-friendly", "68%", "$15", "55%", "2.1%", "$38.00"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 5.8% minimum wage increase and the 11.5% rise in consumables costs will affect DAC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.25% to 5.0%): DAC's $400,000 ten-year variable-rate loan costs about 0.75% more a year — roughly $3,000 extra interest — small against $396,000 of operating profit. Higher rates also cool appetite for discretionary treatments and raise the cost of any future borrowing, but DAC can fix the rate or repay early, and its $220,000 retained profit buffer softens the blow further.\n\nMinimum wage increase (5.8%, to $13.33): DAC employs 38 staff, many treatment and reception roles paid near the minimum. On 26 eligible staff averaging 1,950 hours, the current wage cost is about 26 x $12.60 x 1,950 = $639,000; a 5.8% rise adds roughly $37,000 a year - over twelve times the interest impact - arriving just as the second suite adds headcount and certification duties.\n\nConsumables inflation (11.5%): Consumables and retail skincare make up roughly 60% of cost of sales, about $726,000 in 2025. An 11.5% rise adds approximately $83,500 a year. Even if partly passed on, this erodes the $42.00 contribution per treatment and inflates the $38.00 variable cost, pressuring the premium anti-ageing pricing strategy that justifies the $620,000 expansion.\n\nConclusion: The 11.5% consumables inflation will have the greatest impact. It adds about $83,500 to annual costs — more than double the wage rise (roughly $37,000) and nearly twenty-eight times the interest increase (roughly $3,000) — and it hits every one of the 11,000 treatments sold each year, threatening the exact margin that justifies the $620,000 expansion. DAC should renegotiate supplier terms and nudge prices upward with the anti-ageing premium, while managing the wage and rate rises through rosters and loan-rate fixing.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to DAC.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on DAC's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of DAC with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "5.8%", "11.5%", "4.25%", "$13.33", "11,000"]
+      }
+    }
+  ]
+}

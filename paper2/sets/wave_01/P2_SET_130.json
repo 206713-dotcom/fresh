@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_130",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Mosaic App Studio (MAS) is a cooperative in the mobile app development sector, employing a workforce of 24. Founded in 2018 by Lena Duarte, the studio designs and builds iOS and Android apps for retail, hospitality and public-sector clients and operates a flat structure with democratic leadership. MAS plans to invest $600,000 in opening a second studio in a coastal innovation hub, financed by $250,000 hire purchase for workstations and servers and $350,000 retained profit. It has fixed costs of $175,000 a year, a variable cost of $8.50 a unit and a selling price of $18.50, and currently produces 25,000 units a year. MAS faces a quality problem: defect rates on store submissions have risen and client complaints about release delays are climbing, straining the small delivery team.",
+    "appendix_1_marketing_ops": "Market Research Summary — October 2026: A survey of 700 app owners and digital leads found 59% want faster release cycles and 46% would pay a 15% premium for accessibility-compliant builds. The average project cycle is 9.5 weeks; 78% of annual-maintenance clients renew; client rating averages 4.6/5. 14 active contracts cover retail and hospitality apps; 3 of 24 studio members are UX designers.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Mosaic App Studio for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "720", "940"],
+        ["Cost of sales", "396", "500"],
+        ["Gross profit", "324", "440"],
+        ["Operating profit", "108", "188"],
+        ["Capital employed", "600", "800"],
+        ["Interest payable", "9", "13"]
+      ]
+    },
+    "appendix_3_external_environment": "Digital Economy Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.0% to 4.75%, raising the cost of equipment finance and overdrafts. (2) The national minimum wage will rise by 6.4% from $12.08 to $12.85 per hour from April 2026, raising wage bills for QA testers and support staff. (3) Memory-chip and workstation component costs rose 11.5% year-on-year, consumer app-store spending grew 5.8%, and digital-agency day rates rose 7.9% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "MAS plans to finance its $600,000 second studio with $250,000 hire purchase. Explain two advantages for MAS of using hire purchase instead of paying cash from retained profit.",
+      "model_answer": "Point 1: Hire purchase spreads the cost of the workstations and servers over their useful life, preserving the $350,000 retained profit to fund the coastal innovation hub fit-out, staffing and launch marketing. Keeping cash in the business protects day-to-day payroll for 24 cooperative members while the second studio ramps up and client revenue from the new site begins to flow.\n\nPoint 2: Fixed monthly instalments make budgeting predictable and the equipment becomes MAS's property at the end of the agreement, unlike leasing. It avoids draining reserves before the hub proves demand, and because the assets are essential production tools, hire purchase aligns payments with the revenue the machines help generate — far safer than committing the whole $600,000 up front from retained profit when defect rates on store submissions are already rising.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Mosaic App Studio and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["hire purchase", "$250,000", "$600,000", "retained profit", "$350,000", "workstations and servers"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "MAS is promoting the opening of its second studio in the coastal innovation hub. Consider local radio sponsorship, a regional social-media campaign, or print advertising in business magazines. Which should MAS choose? Justify your recommendation.",
+      "model_answer": "Local radio sponsorship: A coastal radio sponsorship would raise awareness of the new studio among local businesses and job seekers, useful for recruiting and community goodwill as the cooperative expands. However, radio is audio-only — MAS cannot show its app portfolio — listening is fragmented across many stations, and reach does not map neatly onto the retail, hospitality and public-sector buyers who commission builds; spend is hard to attribute to signed contracts.\n\nRegional social-media campaign: A targeted campaign on Instagram, LinkedIn and app-store showcases can display MAS's work, client ratings (4.6/5) and before-and-after release-cycle stories directly, reaching app owners and digital leads across the whole region, not just one town. It is cheap to iterate, measurable down to the lead level, and can run retargeting to nurture the 59% of owners wanting faster release cycles. Drawbacks: organic reach needs constant content, and paid ads demand weekly optimisation.\n\nPrint advertising in business magazines: Magazine ads signal credibility and prestige and reach senior hospitality and retail executives, but they are expensive, slow to produce, untargeted at the digital level and impossible to attribute; a 24-member cooperative funding a $600,000 launch cannot afford vanity reach.\n\nRecommendation: MAS should choose the regional social-media campaign. It fits the audience 59% of whom want faster release cycles, showcases accessibility-compliant builds (46% would pay a 15% premium), is measurable and affordable alongside the $350,000 retained profit element, and converts directly into demo requests for the second studio. Local radio is rejected as audibly broad but visually empty for a portfolio-driven craft business, and print advertising is rejected as costly, slow and unaccountable — one targeted sponsorship at a regional tech event can be layered on once the social pipeline matures.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of MAS with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of MAS with a well-justified recommendation explaining why radio and print are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["second studio", "$600,000", "700", "59%", "46%", "9.5 weeks", "4.6/5"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "MAS faces rising defect rates on store submissions and climbing client complaints about release delays. Explain two benefits for MAS of using democratic leadership to improve quality in the cooperative.",
+      "model_answer": "Point 1: Democratic leadership gives MAS's 24 members a real voice in QA checklists, release gates and sprint planning, so the people who write the code also own the fixes. Member-led retrospectives expose root causes of store-submission defects — for example limited test coverage or rushed accessibility checks — lifting build quality and helping MAS win the 46% of buyers willing to pay a 15% premium for accessibility-compliant apps.\n\nPoint 2: Cooperative ownership plus democratic leadership aligns everyone's incentives with long-term client relationships: members suggest better pre-release automation, share pair-programming techniques and flag unrealistic deadlines before release dates slip. Morale and job satisfaction rise, complaint-driven rework falls, the 78% annual-maintenance renewal rate is protected, and the studio sustains its 4.6/5 rating while the second studio expands capacity without importing the same defect problems.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to MAS's defects, complaints, ratings and renewals."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "defect rates", "client complaints about release delays", "workforce of 24", "14 active contracts", "4.6/5"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "MAS must choose how the second studio will produce app feature modules. Consider batch production or flow production. Which should MAS choose? Justify your decision.",
+      "model_answer": "Batch production: Building feature modules in batches suits MAS's varied order book — 14 active contracts across retail, hospitality and public-sector clients, each with distinct brand rules, accessibility requirements and release windows. Batches allow code reuse within a client family (for example, booking modules for hospitality), quality checks between batches, and flexibility to switch features when priorities change; setup cost per batch is modest and fits the 9.5-week average project cycle. Drawbacks: stockpiling of unused module variants, some changeover downtime, and less extreme efficiency than a fully standardised line.\n\nFlow production: A flow line would push near-identical modules through standardised stages at very high speed with minimal changeover — ideal only if MAS were shipping one standard product at huge volume, like a commodity app. MAS's 25,000 units a year may sound high, but they split across 14 varied contracts; flow production would demand heavy capital equipment, rigid scheduling, and sacrifice the customisation that justifies MAS's $18.50 unit price, and any defect would cascade down the line before detection.\n\nDecision: MAS should choose batch production, supported by a shared component library so repeated modules (logins, payments, analytics) move faster with each release. Batch production matches bespoke client work, contains defects before they spread, and preserves the craft quality behind the 4.6/5 rating and the 46% accessibility-premium opportunity. Flow production is rejected: its capital cost, inflexibility and defect-cascade risk are wrong for low-volume, high-variety contract work, and MAS's hire-purchase budget is better spent on reliable workstations and QA tooling for the second studio.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two production methods with limited application to MAS.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both options in the context of MAS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of MAS with a well-justified decision covering variety, volume, defect risk and capital cost."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["second studio", "14 active contracts", "25,000", "9.5 weeks", "59%", "46%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how MAS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate MAS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $175,000 ÷ ($18.50 − $8.50) = $175,000 ÷ $10.00 = 17,500 units. Answer: break-even output is 17,500 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate MAS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $18.50 − $8.50 = $10.00. Answer: contribution per unit is $10.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways MAS's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 17,500-unit break-even output with actual output of 25,000 units to confirm a margin of safety of 7,500 units, judging how safely the second studio can operate before it breaks even itself.\n2. Contribution per unit of $10.00 lets managers price fixed-fee public-sector bids, modelling for example a 5% competitive discount to $17.58, which would still leave $9.08 contribution and show whether winning the tender clears $175,000 of fixed costs.\n3. Knowing the break-even point lets managers set unit targets for the second studio, tracking monthly against the sales pipeline so hire-purchase instalments on the new workstations are covered before the hub fully launches.\n4. Managers can use unit cost data ($175,000 ÷ 25,000 units + $8.50 = $15.50 a unit) to benchmark delivery efficiency across the two studios, identify why release delays and defect rates climbed on recent store submissions, and redesign QA resourcing or pair-programming time to protect the $10.00 contribution."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 17,500 units | (ii) Contribution per unit = $10.00 | (iii) Four contextual uses explained: margin of safety of 7,500 units versus 25,000-unit output; fixed-fee bid modelling against $175,000 fixed costs; second-studio unit targets versus hire-purchase; and unit-cost benchmarking at $15.50 to fix defects and delays.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["17,500", "$10.00", "25,000", "$175,000", "$8.50", "$18.50", "$15.50", "7,500"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate MAS's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has MAS's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 45.0%\nGross Profit Margin 2025 = 46.8%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 18.0%\nROCE 2025 = 23.5%\n\nDetailed workings: 2024 — revenue $720,000 − cost of sales $396,000 = gross profit $324,000; 324 ÷ 720 × 100 = 45.0%. Operating profit $108,000 ÷ revenue $720,000 × 100 = 15.0%. Operating profit ÷ capital employed $600,000 × 100 = 18.0%. 2025 — revenue $940,000 − cost of sales $500,000 = gross profit $440,000; 440 ÷ 940 × 100 = 46.8%. Operating profit $188,000 ÷ revenue $940,000 × 100 = 20.0%. Operating profit ÷ capital employed $800,000 × 100 = 23.5%.\n\nEvaluation: Profitability has improved convincingly. Direct delivery costs grew more slowly than revenue, widening the gross gap from 45.0% to 46.8%, and overhead discipline lifted the bottom-line measure from 15.0% to 20.0% while operating profit rose 74% on 30.6% revenue growth. Returns rose from 18.0% to 23.5% even after capital employed grew 33.3% to fund the second studio, showing the new site is already earning its keep. Cautions: interest payable rose from $9,000 to $13,000 with the hire-purchase commitment, and 2025 margins rest on holding defect rates down — if store-submission failures persist, rework will rebuild cost of sales and compress the gains; the 78% maintenance renewal rate must also hold.\n\nConclusion: MAS's profitability has improved. All three measures rose (45.0% to 46.8%, 15.0% to 20.0%, 18.0% to 23.5%), built on genuine margin widening and efficient capital use rather than extra debt. MAS should consolidate the improvement by standardising QA, locking in multi-year maintenance renewals and keeping the second studio pipeline full before signing further hire-purchase agreements.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, operating profit, interest and capital employed movements and a justified conclusion on whether MAS's profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["45.0%", "46.8%", "15.0%", "20.0%", "18.0%", "23.5%", "$600,000", "720"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for MAS of powering the second studio with renewable energy and recycled hardware.",
+      "model_answer": "Advantage: Renewable power and recycled workstations give MAS a credible sustainability story that wins tenders — public-sector clients increasingly weight environmental criteria, and the 46% of surveyed buyers willing to pay a 15% premium for accessibility-compliant builds will also reward responsible suppliers. Lower running costs compound over the hub's life, and visible green credentials differentiate the cooperative from bigger rivals chasing the same hospitality and retail framework contracts.\n\nDisadvantage: Recycled hardware carries shorter or uncertain warranties and may underperform on demanding builds, raising failure and replacement costs that erode the $8.50 variable cost advantage; setting up renewable contracts also adds complexity and possible upfront premiums. If a refurbished server fails mid-release, delay climbs, defects spike and the 4.6/5 client rating and 78% renewal rate — the very assets the second studio depends on — could be damaged to win a reputational point.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to MAS's costs, ratings, renewals and client mix."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["15% premium", "46%", "4.6/5", "78%", "second studio", "$8.50"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.75%, the 6.4% minimum wage increase and the 11.5% rise in component costs will affect MAS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.0% to 4.75%): MAS financed the second studio with $250,000 hire purchase, so instalments may adjust upward by about 0.75%, adding roughly $1,875 a year if the rate is variable. Broader effects: clients financing their own digital projects face costlier loans, which can defer start dates, and MAS's overdraft flexibility shrinks; consumer app-store spending grew only 5.8%, so demand-side softness adds to the pressure.\n\nMinimum wage increase (6.4% to $12.85): MAS's QA testers and support staff — roughly 8 of 24 members — work near the minimum wage. An annual wage bill near $215,000 for that group rises by about $13,800 from April 2026, with knock-on pressure on the next pay bands. Exposure is moderate because MAS is developer-heavy, but compressional pay demands could push wider increases across the cooperative.\n\nComponent cost inflation (11.5%): Memory chips and workstation hardware feed directly into MAS's $250,000 hire-purchase order and its annual refresh budget. If MAS spends about $150,000 a year on hardware, parts and maintenance, a 11.5% rise adds roughly $17,250 recur-ring, and inflates the second studio's capital plan at the exact moment of investment — potentially forcing spec compromises that raise failure rates and defect costs on store submissions.\n\nConclusion: The 11.5% rise in component and workstation costs will have the greatest impact. It hits capital spend and running costs simultaneously, lands precisely when MAS is committing $250,000 to the second studio, and cannot be passed through cleanly on fixed-fee contracts; it therefore threatens both the expansion and the defect/delay problem already straining delivery. The minimum wage rise is second (about $13,800, confined to QA and support, partly offset by productivity tools); the interest rise is the smallest (about $1,875) though worth fixing in the hire-purchase agreement — MAS should bulk-order hardware now, spec efficiently and review quotes at contract renewal.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to MAS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on MAS's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of MAS with a well-justified judgement that component cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "6.4%", "11.5%", "$12.08", "$12.85", "base interest rate", "5.8%"]
+      }
+    }
+  ]
+}

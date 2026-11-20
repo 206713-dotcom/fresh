@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_487",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Qubit Smart Systems (QBIT) is a public limited company in the smart-home technology sector, making connected hubs and voice-control devices for Singapore households. Founded in 2011 by Mei Lin Chua, QBIT employs a workforce of 70 and operates a hierarchical structure with autocratic leadership. QBIT plans to invest $1,400,000 in a next-generation smart-home hub and voice-assistant app, financed by an $800,000 ten-year bank loan, a $300,000 share issue and $300,000 retained profit. It has fixed costs of $900,000 a year, a variable cost of $210 a unit and a selling price of $390, and currently produces 14,000 units a year. QBIT faces a quality problem: 2.4% of hubs assembled last quarter were defective and 1.6% of installations suffered firmware-update failures.",
+    "appendix_1_marketing_ops": "Operations and Quality Log — Q4 2026: The smart-home hub line assembled 3,600 units last quarter at a defect rate of 2.4%, down from 4.0% a year earlier. Customer returns fell from 62 to 34 per month. Average firmware-update failure rate is 1.6% of installations. Delivery lead time averages 6.2 days. A survey of 720 Singapore homeowners found 68% want voice-control compatibility and 57% would pay a 10% premium for faster setup. Technician audit shows 24 of 70 field staff have not completed on-the-job training on the new hub; off-the-job certification costs $1,100 per technician.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Qubit Smart Systems for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "4,000", "4,800"],
+        ["Cost of sales", "2,600", "2,784"],
+        ["Gross profit", "1,400", "2,016"],
+        ["Operating profit", "560", "864"],
+        ["Capital employed", "3,200", "4,600"],
+        ["Interest payable", "90", "150"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) Singapore's central bank has tightened policy, lifting the three-month interbank rate from 3.30% to 4.05% and raising borrowing costs on variable-rate business loans. (2) The national minimum wage will rise 5.5% from $15.00 to $15.83 per hour from July 2027, increasing wage costs for field and support staff. (3) Semiconductor and sensor input costs rose 11.3% year-on-year as global chip demand recovers, while Singapore smart-home device sales grew 8.6% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QBIT plans to raise $300,000 for its new smart-home hub through a share issue. Explain two advantages for QBIT of using the share issue rather than borrowing the whole $1,400,000 from banks.",
+      "model_answer": "Point 1: A share issue brings permanent equity with no repayment schedule or interest charge, so QBIT avoids piling further debt on top of its $800,000 ten-year bank loan and shields fixed costs of $900,000 a year from extra interest. The $300,000 can fund the voice-assistant app and absorb the 11.3% rise in sensor costs, helping hold the $390 selling price for the 57% of surveyed homeowners who would pay a 10% premium for faster setup rather than passing costs on.\n\nPoint 2: Equity does not require collateral or covenants, so Mei Lin Chua's expanded shareholder base faces no lender pressure if the hub launch is delayed by the 2.4% defect rate or 1.6% firmware failures. Unlike the bank, shareholders share the risk of a 14,000-unit sales target without demanding early repayment. A larger capital base also improves credibility with Smart Nation partners and retail chains, supporting the 68% of homeowners who want voice-control compatibility and the wider $1,400,000 platform rollout.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Qubit Smart Systems and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "bank loan", "$300,000", "$800,000", "$1,400,000", "fixed costs"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QBIT is launching its new smart-home hub. Consider selling through electronics retail chains, a direct online store, or partnerships with telecommunications providers. Which should QBIT choose to distribute the hub? Justify your recommendation.",
+      "model_answer": "Electronics retail chains: Stores would let shoppers see and try voice-control features, important when 68% of surveyed homeowners want compatibility and 57% would pay more for faster setup. Staff can demonstrate the hub and handle the 6.2-day delivery question face to face. However, chains demand generous margins and shelf fees, which would squeeze the $390 price and the contribution available to repay the $800,000 loan, and QBIT would lose control of how the product is presented.\n\nDirect online store: Selling directly captures the full margin, builds first-party customer data and lets QBIT explain the 10% premium for fast setup in detailed product pages. It suits the 720 surveyed homeowners comfortable with technology. The drawback is that customers cannot test voice control before buying, returns could rise above the current 34 per month, and QBIT must fund its own marketing and a delivery network, stretching a 70-person firm already managing a $1,400,000 expansion.\n\nTelecommunications provider partnerships: Telcos already visit homes and bundle devices with broadband, so they can install the hub while solving the 1.6% firmware-failure risk and reach households at scale. Partner branding reassures buyers. The downside is that telcos take a share of revenue and may favour their own hardware, and QBIT becomes dependent on a few large partners.\n\nRecommendation: QBIT should choose direct online sales as the primary channel. It protects margin on the 14,000-unit plan, owns the customer relationship and lets QBIT communicate the 57% speed premium. Retail chains are rejected because shelf fees and lost control erode returns; telco partnerships are rejected as the main route because revenue sharing and partner dependence weaken the $1,400,000 investment case. QBIT can add one telco partner later for installation support.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the distribution options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of QBIT with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of QBIT with a well-justified recommendation explaining why retail chains and telco partnerships are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "57%", "720", "6.2 days", "2.4%", "34"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QBIT's 2.4% defect rate and 1.6% firmware-failure rate are harming quality. Explain two benefits for QBIT of using autocratic leadership within its hierarchical structure to improve quality control.",
+      "model_answer": "Point 1: Autocratic leadership lets Mei Lin Chua set firm, uniform assembly and firmware-testing standards immediately, which is valuable when 2.4% of hubs are defective and 1.6% of installations fail. A clear chain of command in the hierarchical structure means instructions reach all 70 workers without delay, cutting rework and protecting the 14,000-unit output needed to justify the $1,400,000 hub investment. Fast decisions also shorten the 6.2-day lead time.\n\nPoint 2: Tight central control enforces discipline on the 24 field staff lacking training and on the 3,600 units assembled last quarter, ensuring no hub ships with a known fault. This reduces returns, already falling from 62 to 34 a month, and protects the 57% of surveyed homeowners who would pay a premium for reliable, fast setup. Consistent quality also supports the 68% wanting voice compatibility and shields the $390 price against rivals, while freeing management to tackle skills gaps through the $1,100 certification courses.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QBIT's defect rate, firmware failures and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic", "hierarchical", "workforce of 70", "2.4%", "1.6%", "24"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QBIT must close the skills gap among the 24 untrained field staff and cut its 2.4% defect rate. Consider on-the-job training by senior technicians or off-the-job certification at $1,100 per technician. Which should QBIT choose? Justify your decision.",
+      "model_answer": "On-the-job training by senior technicians: Training at the point of work is directly relevant to QBIT's own hub and firmware routines, costs no course fees and keeps the 24 staff productive while they learn, protecting the 3,600 units assembled last quarter and the effort to cut returns from 62 to 34 a month. Senior technicians can demonstrate fixes for the 1.6% firmware failures immediately. The weaknesses are that trainers are taken off their own duties, bad habits can spread, and there is no external certificate to prove competence to partners.\n\nOff-the-job certification at $1,100 per technician: A formal course gives up-to-date skills and a recognised qualification for all 24 staff, costing $26,400 in total (24 × $1,100), affordable beside a $1,400,000 investment. It removes staff from the field temporarily, reducing installation capacity during a launch, and generic content may not match QBIT's exact hub settings, so follow-up coaching would still be needed.\n\nDecision: QBIT should choose on-the-job training first, backed by short certification for senior technicians. It attacks the 2.4% defect and 1.6% firmware problems on QBIT's own equipment without the $26,400 outlay or lost field time. Full off-the-job certification is rejected as the sole method because it removes 24 staff from the field when the 6.2-day lead time and new hub launch demand their presence; QBIT can send a small trainee group later once the rollout stabilises.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to QBIT.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of QBIT.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of QBIT with a well-justified decision covering cost, disruption and product relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$1,100", "24", "2.4%", "1.6%", "70", "$1,400,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QBIT's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QBIT's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $900,000 ÷ ($390 − $210) = $900,000 ÷ $180 = 5,000 units. Answer: break-even output is 5,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QBIT's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $390 − $210 = $180. Answer: contribution per unit is $180."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QBIT's management can use this financial data.",
+          "model_answer": "1. QBIT's managers can compare the 5,000-unit break-even output with actual output of 14,000 units, giving a margin of safety of 9,000 units and confidence that the new hub can cover the enlarged fixed costs even if Singapore demand slows.\n2. Contribution per unit of $180 lets managers model pricing, for example a 10% launch discount to $351 would reduce contribution to $141 and lift break-even to about 6,383 units, so they can judge whether extra volume from the 57% premium segment still pays.\n3. Fixed costs of $900,000 and $180 contribution support the affordability test for the $800,000 bank loan, $300,000 share issue and $300,000 retained profit, showing the $1,400,000 plan is serviceable even while the 2.4% defect rate persists.\n4. Managers can use unit cost data ($900,000 ÷ 14,000 units = $64.29 + $210 = $274.29 a unit) to benchmark assembly efficiency, target the 1.6% firmware failures and renegotiate chip contracts amid 11.3% sensor inflation, defending the $390 price."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 5,000 units | (ii) Contribution per unit = $180 | (iii) Four contextual uses explained: margin of safety against 14,000-unit output; pricing and discount modelling against $900,000 fixed costs; funding feasibility for the $1,400,000 hub; and unit-cost benchmarking at $274.29 under 11.3% sensor inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5,000", "$180", "14,000", "$900,000", "$210", "$390", "$274.29"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QBIT's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has QBIT's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 35.0%\nGross Profit Margin 2025 = 42.0%\nProfit Margin 2024 = 14.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 17.5%\nROCE 2025 = 18.8%\n\nDetailed workings: Gross profit 2024 = $4,000,000 − $2,600,000 = $1,400,000; 2025 = $4,800,000 − $2,784,000 = $2,016,000. As a share of revenue: 2024 = $1,400,000 ÷ $4,000,000 = 35.0%; 2025 = $2,016,000 ÷ $4,800,000 = 42.0%. Operating profit as a share of revenue: 2024 = $560,000 ÷ $4,000,000 = 14.0%; 2025 = $864,000 ÷ $4,800,000 = 18.0%. Returns on capital employed: 2024 = $560,000 ÷ $3,200,000 = 17.5%; 2025 = $864,000 ÷ $4,600,000 = 18.8%.\n\nEvaluation: 2025 shows stronger performance on all three measures. The share of revenue left after cost of sales rose from 35.0% to 42.0%, helped by the new hub's efficiencies and the 57% of homeowners willing to pay more for faster setup. Capital employed grew from $3,200,000 to $4,600,000, in line with the $1,400,000 investment funded by loan, share issue and retained profit, yet returns on it improved from 17.5% to 18.8%, suggesting the hub is earning its keep. Operating profit rose strongly, covering interest payable climbing from $90,000 to $150,000. Risks remain: 11.3% sensor inflation is pushing costs up, and if the 2.4% defect rate is not fixed the launch could dilute these gains.\n\nConclusion: QBIT's financial performance has improved. Margins and returns on capital all increased, and operating profitability grew faster than revenue. The improvement is real, so QBIT should fix the loan rate and eliminate firmware failures to sustain it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether QBIT's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["35.0%", "42.0%", "14.0%", "18.0%", "17.5%", "18.8%", "4,600"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QBIT of launching the new voice-controlled smart-home hub.",
+      "model_answer": "Advantage: Voice-control compatibility is demanded by 68% of surveyed homeowners and 57% would pay a 10% premium for faster setup, so the hub is aimed at proven demand rather than guesswork. It lets QBIT command the $390 price, deepen the 42.0% share of revenue retained as gross profit and grow the 14,000 units a year that underpin the $1,400,000 investment. Strong reviews should also cut customer returns, already down from 62 to 34 a month.\n\nDisadvantage: Smart-home hardware is unforgiving: the 2.4% defect rate and 1.6% firmware-failure rate could multiply across a high-profile launch, turning the 57% premium segment into dissatisfied buyers and raising returns above 34 a month. The 24 untrained field staff may struggle to install the new hub within the 6.2-day lead time, and rising 11.3% sensor costs could force QBIT to absorb margin or raise the $390 price beyond what the 720 surveyed homeowners accept.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to QBIT's product, costs and customers."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["68%", "57%", "10%", "1.6%", "$1,400,000", "2.4%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the rise in the interbank rate to 4.05%, the 5.5% minimum wage increase and the 11.3% rise in sensor costs will affect QBIT. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interbank rate rise to 4.05%: QBIT has an $800,000 ten-year bank loan. If it is variable-rate, the 0.75 percentage-point rise adds 0.75% of $800,000 = $6,000 a year (0.0075 × $800,000). That is modest next to fixed costs of $900,000 and 2025 interest payable of $150,000, and if the loan is fixed-rate the direct cost is nil. Higher rates could also dampen Singapore household spending on smart-home devices, but QBIT can largely remove the financing risk by fixing the rate.\n\nMinimum wage rise of 5.5% to $15.83 per hour: The insert does not state hours worked or how many of the 70 staff are hourly-paid, so no defensible annual wage total can be invented. The sound test is productivity computed from the insert: 14,000 units ÷ 70 staff = 200 units per worker. If that holds, the rise is absorbable within a 42.0% share of revenue retained as gross profit; if the 2.4% defect and 1.6% firmware problems cut output per worker, unit labour costs rise and the $180 contribution per unit shrinks. QBIT can offset part of it via the 57% premium segment.\n\nSensor input cost inflation of 11.3%: This hits every unit. The insert does not decompose the $210 variable cost, so only an explicitly labelled upper bound is honest: if the whole variable cost rose 11.3%, it would add 11.3% × $210 = $23.73 per unit, and at 14,000 units that is roughly $332,000 a year (14,000 × $23.73). Even a fraction of that erodes the contribution financing the $1,400,000 hub, and it cannot easily be passed on to price-conscious homeowners.\n\nConclusion: The 11.3% rise in sensor costs will have the greatest impact. It recurs on all 14,000 units and directly attacks the $180 contribution that justifies the hub investment, whereas the rate rise is at most $6,000 and the wage effect cannot be quantified without invented assumptions. QBIT should lock chip contracts and fix the loan rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to QBIT.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on QBIT's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of QBIT with a well-justified judgment that sensor cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.05%", "5.5%", "11.3%", "$15.83", "$800,000", "$210"]
+      }
+    }
+  ]
+}

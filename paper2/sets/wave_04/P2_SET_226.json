@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_226",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Kestrel Precision Gears (KPG) is a private limited company in the precision gear manufacturing sector, employing a workforce of 60. Founded in 2011 by Aoife Kestrel in Waterford, the business supplies custom gearboxes to agricultural machinery and robotics manufacturers and operates a flat organisational structure with democratic leadership. KPG plans to invest $900,000 in a new CNC gear-grinding line, financed by a $600,000 ten-year bank loan and $300,000 retained profit. It has fixed costs of $300,000 a year, a variable cost of $8.00 a unit and a selling price of $20.00, and currently produces 60,000 units a year. KPG faces two problems: absenteeism has reached 8%, skilled labour turnover is rising, and the defect rate on gear teeth from the older machines is climbing.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q3 2025: The precision gear line machined 15,000 units last quarter at a defect rate of 2.4%, down from 4.1% a year ago, with 18 customer quality complaints per month and an average order lead time of 12 days. A survey of 500 industrial buyers found that 68% rank on-time delivery as the top criterion when choosing a gear supplier, and 41% would switch supplier for a 3% lower price. A skills audit shows 14 of 60 production staff have not completed on-the-job training on the new CNC gear grinders; off-the-job training at the technical college costs $1,000 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Kestrel Precision Gears as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "140", "110"],
+        ["Trade receivables", "160", "190"],
+        ["Cash and cash equivalents", "50", "70"],
+        ["Current liabilities", "250", "230"],
+        ["Non-current assets", "2,000", "2,600"],
+        ["Capital employed", "2,600", "2,900"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (October 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.2%, increasing borrowing costs for firms with variable-rate loans. (2) The national minimum wage will rise by 6.0% from $12.75 to $13.50 per hour from April 2026, raising wage bills across engineering workshops. (3) Imported alloy steel and specialty input costs have risen 11.3% year-on-year as the dollar weakened, while industrial electricity prices are up 7.5%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "KPG plans to fund part of its $900,000 CNC gear-grinding line with a $600,000 ten-year bank loan. Explain two advantages for KPG of using the $300,000 retained profit instead of that loan.",
+      "model_answer": "Point 1: Using the $300,000 retained profit costs KPG no interest charges or capital repayments, which protects cash flow while it already services fixed costs of $300,000 a year and a $600,000 ten-year bank loan. Every dollar not handed to a lender can instead absorb the 11.3% rise in imported alloy steel costs, helping KPG hold its $20.00 selling price for agricultural machinery and robotics customers rather than passing costs on and risking the 41% of surveyed buyers who would switch for a 3% lower price.\n\nPoint 2: Retained profit carries no collateral or repossession risk, so the $900,000 CNC gear-grinding line is not endangered if demand for custom gearboxes disappoints or the 2.4% defect rate delays output. It also preserves Aoife Kestrel's ownership and control under the flat, democratic structure: no external lender can impose covenants on how KPG operates the new grinders or on which orders get priority, which matters because 68% of the 500 buyers surveyed rank on-time delivery as the top criterion.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation applied to KPG's retained profit, loan and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$300,000", "$900,000", "$600,000", "precision gear"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "KPG is launching a new range of precision gears. Consider advertising in specialist engineering trade journals, exhibiting at an industry trade fair, or using targeted online and social media marketing. Which should KPG choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Specialist trade journals: Print advertising in engineering magazines reaches KPG's exact niche of agricultural machinery and robotics buyers and gives technical credibility for custom gearboxes. However, readership is limited and falling, lead times are long, and the 68% of 500 surveyed buyers who rank on-time delivery first are more persuaded by service proof than by a static advert, while a 12-day order lead time is a stronger selling point than a page in a journal.\n\nIndustry trade fair: A trade fair lets KPG demonstrate the new CNC gear-grinding output, meet buyers face to face and win orders directly, which suits a technical product where the 2.4% defect rate and quality can be inspected. Yet stand costs, travel and staff time are high for a firm funding a $900,000 line, and only buyers who attend are reached, so reach is narrow relative to the precision gear market.\n\nTargeted online and social media: LinkedIn-style campaigns and engineering forums can target procurement managers by job title and region, show short videos of the grinding process, and be scaled cheaply with measurable enquiries, directly addressing the buyers who value delivery performance.\n\nRecommendation: KPG should choose targeted online and social media marketing as the primary channel, supported by one trade fair. Online targeting reaches the specialist niche at low cost and is measurable, unlike journals; the trade fair is retained because technical buyers want to inspect gears, but full reliance on it is rejected as too expensive and event-bound for a business also absorbing a $600,000 loan.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of KPG with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of KPG with a well-justified recommendation explaining why journals and the trade fair are not the main choice."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.4%", "68%", "500", "$900,000", "precision gear", "12 days"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "KPG's absenteeism has reached 8% and skilled labour turnover is rising. Explain two benefits for KPG of using democratic leadership to improve motivation in its production team.",
+      "model_answer": "Point 1: Democratic leadership gives the 60 production staff a real voice in how the new CNC gear-grinding line is organised, which helps satisfy esteem and social needs and raises job satisfaction. Workers who help set shift patterns and machine routines are more likely to attend consistently, directly attacking KPG's 8% absenteeism and easing pressure on the flat structure where each skilled operator is hard to replace.\n\nPoint 2: Consulting the people who machine gears every day generates practical ideas for reducing the 2.4% gear-tooth defect rate and maintaining the 12-day order lead time, raising commitment and lowering skilled labour turnover. Retaining experienced staff avoids repeated off-the-job training at $1,000 per employee and protects output of 60,000 units while the $900,000 investment beds in, so motivation improvements translate into lower cost and more reliable supply for the 68% of buyers who prioritise delivery.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to KPG's absenteeism, defect rate and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "absenteeism", "labour turnover", "workforce of 60", "$1,000", "2.4%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "KPG must train 14 of its 60 production staff on the new CNC gear grinders. Consider on-the-job training or off-the-job training at the technical college. Which should KPG choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching at the machine is directly relevant to KPG's own CNC gear grinders and quality standards, costs no course fees and keeps the 14 staff productive while they learn, protecting the 15,000 units machined last quarter and the fall in the defect rate to 2.4%. The drawbacks are that trainer-operators lose some of their own output, bad habits can be passed on, and there is no external certificate, which could matter if robotics customers audit quality systems.\n\nOff-the-job training: The technical college course at $1,000 per employee costs $14,000 for the 14 staff, affordable against the $900,000 investment, and gives structured skills and a recognised qualification. It removes 14 of 60 workers from the line, however, cutting short-term capacity when absenteeism is already 8%, and the generic syllabus may not match KPG's exact grinder settings, so follow-up coaching would still be needed.\n\nDecision: KPG should choose on-the-job training for the initial rollout, with short college modules later for lead operators. On-the-job training is cheapest, machine-specific and avoids worsening the 8% absenteeism pressure on the 12-day lead time; full off-the-job training is rejected because losing 14 staff from production and spending $14,000 would disrupt delivery to the 68% of buyers who rank it first, and KPG can add certified college visits once the grinders stabilise.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to KPG.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both methods in the context of KPG.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods in context with a well-justified decision covering cost, disruption and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$1,000", "$900,000", "14 of 60", "CNC gear grinders"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how KPG's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate KPG's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $300,000 ÷ ($20.00 − $8.00) = $300,000 ÷ $12.00 = 25,000 units. Answer: break-even output is 25,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate KPG's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $20.00 − $8.00 = $12.00. Answer: contribution per unit is $12.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways KPG's management can use this financial data.",
+          "model_answer": "1. Compare the 25,000-unit break-even output with actual output of 60,000 units, giving a margin of safety of 35,000 units, to confirm the gear line is comfortably profitable before adding the $900,000 CNC capacity.\n2. Use the $12.00 contribution per unit to model discounts for robotics buyers, for example a 5% price cut to $19.00 would leave $11.00 contribution, so managers can judge whether extra volume still covers the $300,000 fixed costs during 11.3% alloy steel inflation.\n3. Set the volume targets needed to service the $600,000 bank loan from the contribution earned, checking the new grinders can support the $900,000 investment before committing more capital.\n4. Track unit cost ($300,000 ÷ 60,000 units + $8.00 = $13.00) each quarter to benchmark performance and pinpoint waste behind the 2.4% defect rate and 18 monthly complaints."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 25,000 units | (ii) Contribution per unit = $12.00 | (iii) Four contextual uses: margin of safety of 35,000 units vs 60,000 output; discount modelling at $12.00 contribution against $300,000 fixed costs; loan-service volume for the $900,000 expansion; and unit-cost benchmarking at $13.00 to cut the 2.4% defect rate.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["25,000", "$12.00", "60,000", "$300,000", "$8.00", "$20.00", "$13.00"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate KPG's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has KPG's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.40 : 1\nCurrent Ratio 2025 = 1.61 : 1\nAcid Test Ratio 2024 = 0.84 : 1\nAcid Test Ratio 2025 = 1.13 : 1\n\nDetailed workings: 2024 current assets = $140,000 inventories + $160,000 trade receivables + $50,000 cash = $350,000; 2025 current assets = $110,000 + $190,000 + $70,000 = $370,000. Dividing by current liabilities gives 2024 $350,000 ÷ $250,000 and 2025 $370,000 ÷ $230,000. Excluding inventories, liquid assets are 2024 ($350,000 − $140,000) = $210,000 and 2025 ($370,000 − $110,000) = $260,000, divided by the same current liabilities to give the four figures stated above.\n\nEvaluation: Overall liquidity has strengthened. The first measure rose from 1.40 to 1.61, so current assets cover short-term debts more comfortably, helped by current liabilities falling from $250,000 to $230,000 while current assets rose. The second measure, which strips out inventories, improved from 0.84 to 1.13, meaning KPG no longer depends on selling gear stock to pay its bills — important while it services a $600,000 loan and funds a $900,000 expansion. However, trade receivables climbed from $160,000 to $190,000, tying up cash; if agricultural and robotics customers pay late, these measures could deteriorate quickly, and inventories fell to $110,000, so stock cover for the 12-day lead time should be watched.\n\nConclusion: KPG's financial position has improved. Both liquidity measures rose (1.40 to 1.61 and 0.84 to 1.13) and the gain is not reliant on inventory. The residual risk is higher receivables, so tighter credit control is advisable before further borrowing.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates both ratios for 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of inventories, receivables and liabilities and a justified conclusion on improvement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.40", "1.61", "0.84", "1.13", "$350,000", "$370,000", "$900,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for KPG of introducing quality circles to tackle the gear-teeth defect rate.",
+      "model_answer": "Advantage: Quality circles would tap the practical knowledge of the 60 production staff, letting small teams meet regularly to diagnose the causes of the 2.4% defect rate and the 18 customer quality complaints per month. Because KPG already uses democratic leadership and a flat structure, this fits its culture and can drive the defect rate down further from 4.1% a year ago, protecting the $900,000 CNC line's reputation with robotics buyers and supporting the 68% of customers who value reliable delivery.\n\nDisadvantage: Regular meetings take operators away from the grinding machines, which could lengthen the 12-day order lead time and reduce the 15,000 units machined each quarter just as the $600,000 loan must be serviced. If suggestions are collected but not acted on, staff may become cynical, and without external expertise the circles may fail to solve the technical gear-tooth problem, leaving the 2.4% defect rate and complaint count unchanged.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to KPG's defect rate, complaints and leadership style."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["2.4%", "4.1%", "18 customer quality complaints", "$900,000", "democratic leadership"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.2%, the 6.0% minimum wage increase and the 11.3% rise in alloy steel costs will affect KPG. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.5% to 5.2%): If KPG's $600,000 ten-year bank loan is variable-rate, the annual interest cost rises by 0.7% of $600,000 = $4,200 a year (0.007 × $600,000). That is small beside fixed costs of $300,000, and if the loan is fixed-rate the direct effect is zero. Higher base rates may also make robotics and agricultural customers cautious about capital spending and raise the cost of any future borrowing, but KPG can largely neutralise this by fixing the loan rate.\n\nMinimum wage increase (6.0%, to $13.50 per hour): KPG employs a workforce of 60 and many workshop and packing roles are likely hourly-paid, so this rise feeds into the wage bill and is not optional. The insert does not state hours worked or individual pay, so no defensible annual total can be invented; the honest test is against given productivity of 60,000 units ÷ 60 staff = 1,000 units per worker. A wage rise is affordable only if that productivity holds or output grows, otherwise unit labour cost rises and the $12.00 contribution per unit is squeezed.\n\nAlloy steel input inflation (11.3%): KPG's variable cost of $8.00 per unit includes materials, but the insert never decomposes it, so only a clearly labelled bound can be computed: if the entire $8.00 rose 11.3% it would add 11.3% × $8.00 = $0.90 per unit, or about $54,000 a year at 60,000 units. This would cut contribution from $12.00 toward $11.10. KPG can recover part through price negotiations with 500 surveyed buyers, 41% of whom would switch for a 3% lower price, so pricing power is limited.\n\nConclusion: The 11.3% alloy steel rise will have the greatest impact because it hits every one of the 60,000 units and directly erodes the $12.00 contribution that justify the $900,000 line, whereas the loan rise is at most $4,200 a year and the wage effect depends on unstated hours and can be offset by productivity. Interest and wage rises are therefore smaller or less certain in effect.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to KPG.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on KPG's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in context with a well-justified judgment that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.2%", "6.0%", "11.3%", "$13.50", "$8.00", "$600,000"]
+      }
+    }
+  ]
+}

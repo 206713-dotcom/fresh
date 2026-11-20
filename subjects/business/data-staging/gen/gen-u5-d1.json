@@ -1,0 +1,1203 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_161",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Calderwell Creamery Ltd is a private limited company in Country X that pasteurises milk and makes cheese for regional supermarkets. For the year ended 31 March 2026, the income statement showed Revenue of $540,000, Cost of Sales of $324,000, Gross Profit of $216,000, Expenses of $132,000 and Profit for the year of $84,000. A dividend of $30,000 was paid to shareholders, leaving a Retained Profit of $54,000.\n\nThe directors must decide between Option 1, a special dividend of $20,000 for loyal shareholders, and Option 2, investing $50,000 in a new pasteuriser to raise production capacity. Current assets are $180,000 and current liabilities are $72,000, giving working capital of $108,000. The gross profit margin was 40% this year, up on 37% last year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'gross profit'.",
+        "model_answer": "Gross Profit is the profit made after deducting the cost of producing or buying the goods sold, calculated as Revenue minus Cost of Sales, before deducting Expenses [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit made after deducting cost of sales from revenue",
+            "Calculated before any expenses are deducted"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why profit is important to Calderwell Creamery Ltd.",
+        "model_answer": "Reason 1: Profit can be retained and reinvested to fund growth without borrowing [k], and the $54,000 Retained Profit shows money genuinely available for Option 2, the new pasteuriser [app]. Reason 2: Profit rewards shareholders for their investment [k], which allowed the $30,000 dividend to be paid and supports investor confidence in the company [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit can be retained and reinvested to fund growth without borrowing",
+            "Profit rewards shareholders and enables dividends to be paid"
+          ],
+          "application_max_2": [
+            "$54,000 Retained Profit available towards Option 2 and the pasteuriser",
+            "$30,000 dividend paid to reward shareholders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Calderwell Creamery",
+            "$54,000",
+            "Retained Profit",
+            "Option 2",
+            "pasteuriser",
+            "$30,000",
+            "dividend"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the income statement helps the directors choose between Option 1 and Option 2.",
+        "model_answer": "Point 1: The income statement confirms the company earned a Profit for the year of $84,000 from Revenue of $540,000 after Expenses of $132,000 [k], so directors know either option could be afforded from real earnings rather than guesswork [app], which means the decision is about strategy, not survival [an]. Point 2: It shows Retained Profit of $54,000 after the $30,000 dividend [k], so the $50,000 pasteuriser is feasible from internal funds with $4,000 headroom [app], leaving directors free to reject new debt for this purchase [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Confirms the business is genuinely profitable after all costs",
+            "Shows retained profit available after dividends are paid"
+          ],
+          "application_max_2": [
+            "$84,000 Profit for the year from $540,000 Revenue after $132,000 Expenses",
+            "$50,000 pasteuriser vs $54,000 Retained Profit, leaving $4,000 headroom"
+          ],
+          "analysis_max_2": [
+            "Profitability means the choice is strategic rather than a question of survival",
+            "Retained funds cover the pasteuriser, so new debt is not required for Option 2"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "income statement",
+            "$84,000",
+            "$540,000",
+            "$132,000",
+            "Retained Profit",
+            "$54,000",
+            "pasteuriser"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should pay a special dividend of $20,000 (Option 1) or buy the new pasteuriser for $50,000 (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 would directly reward shareholders with a $20,000 special dividend, returning cash now and signalling confidence in the steady 40% gross profit margin [k][app], which should keep family shareholders loyal ahead of future growth [an]. Option 2 reinvests in productive capacity, and the $50,000 pasteuriser should raise output and protect future Gross Profit rather than distributing it once [k][an], and it is affordable from the $54,000 Retained Profit with only $4,000 of headroom [app]. Overall, the directors should choose Option 2, because the pasteuriser strengthens the creamery's long-term ability to generate profit and larger dividends later, whereas a special dividend is a one-off reward that permanently shrinks funds for capacity; with working capital of $108,000 the business can absorb the smaller cash pile [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dividends reward shareholders and signal confidence in the business",
+            "Retained profit reinvested in capacity supports long-term profit growth"
+          ],
+          "application_max_2": [
+            "$20,000 special dividend given the 40% gross profit margin",
+            "$50,000 pasteuriser affordable from $54,000 Retained Profit"
+          ],
+          "analysis_max_2": [
+            "Dividend is one-off and shrinks internal funds for growth",
+            "Pasteuriser should raise output and protect future gross profit"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: immediate reward keeps loyal shareholders satisfied",
+            "Overall: Option 2 builds long-term value; dividends can rise later from bigger profits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "special dividend",
+            "$20,000",
+            "Option 2",
+            "pasteuriser",
+            "$54,000",
+            "Retained Profit",
+            "gross profit margin",
+            "$108,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_162",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Tarn Hows Fisheries Ltd is a private limited company in Country X that farms trout in onshore tanks for restaurants and fishmongers. For the year ended 31 May 2026, the income statement showed Revenue of $720,000, Cost of Sales of $432,000, Gross Profit of $288,000, Expenses of $168,000 and Profit for the year of $120,000. After a dividend of $48,000, Retained Profit was $72,000.\n\nDespite this profit, the bank balance is only $22,000 because customers owe $96,000 and several restaurants pay 60 to 75 days late. A national supermarket has offered a contract worth $150,000 of extra Revenue a year at 30% gross profit, with 75-day payment terms. Option 2 is investing $40,000 in a liquid-ice machine to cut trout spoilage. The directors want a decision this month.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'cost of sales'.",
+        "model_answer": "Cost of Sales is the direct cost of producing or buying the goods sold during a trading period, such as raw materials, direct labour and direct packaging [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Direct costs of goods or services sold during the period",
+            "Includes raw materials, direct labour and direct packaging"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why profit is not the same as cash for Tarn Hows Fisheries Ltd.",
+        "model_answer": "Reason 1: Profit is an accounting figure matching revenue against costs, so the $120,000 Profit for the year includes sales made on credit to restaurants not yet paid [k], and the $96,000 owed by customers shows profit recorded before cash arrived [app]. Reason 2: A business can be profitable yet illiquid because timing differs [k], and with only $22,000 in the bank the company cannot simply spend its $120,000 profit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit matches revenue against costs, regardless of when cash is received",
+            "A profitable business can still have low cash because of timing differences and credit sales"
+          ],
+          "application_max_2": [
+            "$120,000 profit includes unpaid credit sales to restaurants",
+            "Only $22,000 in the bank despite $96,000 owed by customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Tarn Hows Fisheries",
+            "$120,000",
+            "Profit for the year",
+            "$96,000",
+            "$22,000",
+            "restaurants"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the income statement helps Tarn Hows Fisheries assess the supermarket contract offer.",
+        "model_answer": "Point 1: The income statement shows Revenue of $720,000 and Gross Profit of $288,000 at a 40% margin, so directors can compare the contract's 30% gross profit offer against current returns and see that extra Revenue at a lower margin may still raise profit but weaken the margin mix [k][app][an]. Point 2: Retained Profit of $72,000 is the cushion available, so accepting a contract with 75-day payment terms would strain cash even if profit rose, because profit under the new contract is not received in cash for months [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shows revenue and gross profit levels against which new offers can be compared",
+            "Shows retained profit available as an internal funding cushion"
+          ],
+          "application_max_2": [
+            "Contract offers 30% gross profit vs the current 40% margin on $720,000 Revenue",
+            "$72,000 Retained Profit vs the 75-day payment terms strain on cash"
+          ],
+          "analysis_max_2": [
+            "Extra revenue at a lower margin raises profit but dilutes percentage returns",
+            "Profit would rise before the cash arrives, worsening the existing payment-late position"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "income statement",
+            "$720,000",
+            "$288,000",
+            "supermarket",
+            "30%",
+            "Retained Profit",
+            "$72,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should accept the supermarket contract worth $150,000 a year (Option 1) or invest $40,000 in the liquid-ice machine (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 brings in $150,000 of extra Revenue and, at 30% gross profit, about $45,000 of extra Gross Profit a year, a clear boost to the income statement [k][app][an]. However, with payment after 75 days and already $96,000 outstanding, agreeing could worsen the cash gap despite higher profit. Option 2 spends $40,000 of the $72,000 Retained Profit on a liquid-ice machine that cuts trout spoilage, protecting existing margins without new credit risk [k][app][an]. Overall, the directors should choose Option 2 first, because protecting the 40% margin through lower waste is safer than chasing Revenue that arrives three months late; once collections shorten, the supermarket contract can be revisited next year [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Accepting new revenue contracts can raise profit if managed well",
+            "Retained profit spent on efficiency can protect existing margins"
+          ],
+          "application_max_2": [
+            "$150,000 extra Revenue at 30% gross profit is about $45,000 extra gross profit",
+            "$40,000 liquid-ice machine affordable from $72,000 Retained Profit"
+          ],
+          "analysis_max_2": [
+            "Contract raises profit but worsens cash with 75-day terms and $96,000 already owed",
+            "Cutting spoilage protects the 40% margin without new credit risk"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: strong headline growth and year-round supermarket outlet",
+            "Overall: Option 2 protects margin and cash first; contract can wait for better collection terms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "supermarket",
+            "$150,000",
+            "30%",
+            "liquid-ice machine",
+            "$40,000",
+            "$72,000",
+            "$96,000",
+            "Option 2"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_163",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Netherby Joinery Co Ltd is a private limited company in Country X producing bespoke oak wardrobes and kitchen units for homeowners in the capital region. For the year ended 30 June 2026, the income statement showed Revenue of $385,000, Cost of Sales of $231,000, Gross Profit of $154,000, Expenses of $98,000 and Profit for the year of $56,000. A dividend of $20,000 left Retained Profit of $36,000.\n\nOrder books are full until March 2027. Directors are weighing Option 1, raising prices by 5% which should add about $19,000 of Revenue a year if volumes hold, against Option 2, cutting Expenses by $9,000 a year through energy-efficient saws and LED workshop lighting. The gross profit margin is 40% and the directors do not want to lose price-sensitive customers.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'expenses'.",
+        "model_answer": "Expenses are the indirect or running costs of a business, not directly tied to making or buying the goods sold, such as wages, rent, utilities, marketing and administration [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Indirect or running costs of the business",
+            "Not directly linked to producing or buying the goods sold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Netherby Joinery Co Ltd could improve its profit.",
+        "model_answer": "Reason 1: Raise selling prices, since a 5% increase should add about $19,000 of Revenue a year if volumes hold [k][app]. Reason 2: Reduce Expenses through efficiency, such as energy-efficient saws and LED workshop lighting saving about $9,000 a year on the $98,000 Expenses total [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Increasing prices raises revenue and profit (if volumes hold)",
+            "Reducing expenses raises profit directly"
+          ],
+          "application_max_2": [
+            "5% price rise should add about $19,000 of Revenue a year",
+            "Energy-efficient saws and LED lighting could save about $9,000 of the $98,000 Expenses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Netherby Joinery",
+            "$19,000",
+            "$98,000",
+            "$9,000",
+            "energy-efficient saws",
+            "LED workshop lighting",
+            "Revenue"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Netherby Joinery Co Ltd of knowing the Expenses figure in its income statement.",
+        "model_answer": "Point 1: Knowing Expenses of $98,000 tells directors how much is consumed after the $154,000 Gross Profit [k], so they can target real savings like the $9,000 lighting and saws proposal instead of guessing [app][an]. Point 2: Expenses determine the gap between Gross Profit and Profit for the year ($56,000) [k], so tracking them helps directors spot overspending early and protect the $36,000 Retained Profit [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Expenses show indirect costs after gross profit",
+            "Expenses create the gap between gross profit and profit for the year"
+          ],
+          "application_max_2": [
+            "$98,000 Expenses vs $154,000 Gross Profit",
+            "$56,000 Profit for the year and $36,000 Retained Profit at stake"
+          ],
+          "analysis_max_2": [
+            "Directors can target concrete savings rather than guessing",
+            "Early detection of overspending protects dividends and retained funds"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Expenses",
+            "$98,000",
+            "$154,000",
+            "$56,000",
+            "Retained Profit",
+            "$36,000",
+            "gross profit"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should raise prices by 5% (Option 1) or cut expenses by $9,000 a year (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 should add about $19,000 of Revenue a year and, if volumes hold at a 40% gross profit margin, most of it should reach Profit for the year [k][app][an]. The risk is that bespoke furniture customers may trade down or delay purchases, hurting Revenue instead. Option 2 saves a guaranteed $9,000 a year on the $98,000 Expenses and does not risk alienating customers, but it is smaller and harder to repeat [k][app][an]. Overall, the directors should choose Option 1, because a price rise applies to every sale and homeowners in the capital region buying bespoke wardrobes are less price-sensitive; the $19,000 potential gain outweighs a guaranteed but smaller $9,000 saving, though Option 2 can also be done in parallel [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Raising prices increases revenue and profit if demand holds",
+            "Cutting costs increases profit without needing higher sales"
+          ],
+          "application_max_2": [
+            "5% rise worth about $19,000 on current Revenue at a 40% gross profit margin",
+            "$9,000 saving on $98,000 Expenses"
+          ],
+          "analysis_max_2": [
+            "Price rises risk losing price-sensitive customers",
+            "Cost cuts are guaranteed but smaller and can only be repeated so far"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: bigger upside on every sale, low risk with bespoke buyers",
+            "Overall: Option 1 wins on value, though Option 2 can run alongside"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "$19,000",
+            "$9,000",
+            "$98,000",
+            "40%",
+            "gross profit margin",
+            "Revenue"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_164",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Ostler & Grey Printers Ltd is a private limited company in Country X printing wedding invitations, menus and personalised stationery for premium clients. For the year ended 31 August 2026, the income statement showed Revenue of $460,000, Cost of Sales of $230,000, Gross Profit of $230,000, Expenses of $150,000 and Profit for the year of $80,000. A dividend of $32,000 left Retained Profit of $48,000.\n\nA national estate-agency chain has offered a contract worth $120,000 of extra Revenue a year, but at only 30% gross profit instead of the current 50%. Option 2 is to keep focusing on wedding work and review prices for next season. The directors note that fixed Expenses would not change under either option and must choose by 15 October.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'retained profit'.",
+        "model_answer": "Retained Profit is the profit kept in the business after dividends or other distributions have been paid, used to fund growth or build up reserves [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Profit kept in the business after dividends are paid",
+            "Used to fund growth or build reserves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways directors can use the income statement to make decisions at Ostler & Grey Printers.",
+        "model_answer": "Reason 1: It reveals which work earns the most, with wedding and stationery work at a 50% gross profit margin versus the contract's 30%, so directors can compare profit quality, not just Revenue [k][app]. Reason 2: It shows Retained Profit of $48,000 after the $32,000 dividend, telling directors how much could be reinvested without new finance [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shows profitability of different activities so better decisions can be made",
+            "Shows retained profit available for reinvestment without new finance"
+          ],
+          "application_max_2": [
+            "50% gross profit margin on wedding work vs 30% on the estate-agency contract",
+            "$48,000 Retained Profit after the $32,000 dividend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Ostler & Grey",
+            "50%",
+            "30%",
+            "Retained Profit",
+            "$48,000",
+            "$32,000",
+            "wedding"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why gross profit matters more than Revenue when assessing the estate-agency contract.",
+        "model_answer": "Point 1: The contract adds $120,000 Revenue but only $36,000 of gross profit at 30% [k], so directors should weigh profit quality against headline Revenue rather than accept growth for its own sake [app][an]. Point 2: Current work earns $230,000 gross profit on $460,000 Revenue at 50% [k], so filling capacity with lower-margin contract work could dilute overall returns even while sales rise [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Gross profit measures the return after direct costs, not just sales income",
+            "Profit quality matters more than headline revenue growth"
+          ],
+          "application_max_2": [
+            "30% gross profit on the $120,000 contract = about $36,000",
+            "Current $230,000 gross profit on $460,000 Revenue at 50%"
+          ],
+          "analysis_max_2": [
+            "Revenue growth at a lower margin can weaken overall profitability",
+            "Directors should compare incremental gross profit, not just extra sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "estate-agency",
+            "contract",
+            "$120,000",
+            "30%",
+            "$230,000",
+            "$460,000",
+            "gross profit"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should accept the estate-agency contract worth $120,000 a year at 30% gross profit (Option 1) or keep focusing on wedding work and review prices (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 uses the company's spare capacity and adds $120,000 of Revenue, about $36,000 of extra gross profit a year, with no change in fixed Expenses of $150,000 [k][app][an]. The risk is that it crowds out premium wedding orders and drags the blended margin from 50% towards 30% [app]. Option 2 protects the 50% margin and brand, and a price review could lift profit without extra workload [k][an]. Overall, the directors should accept Option 1 only if wedding bookings stay full, because the contract covers fixed Expenses and adds $36,000 of gross profit; they must cap contract volume so premium wedding work keeps priority [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contracts can absorb spare capacity and cover fixed costs",
+            "Premium positioning and price reviews can raise profit without extra volume"
+          ],
+          "application_max_2": [
+            "$120,000 extra Revenue at 30% gross profit = about $36,000",
+            "Fixed Expenses of $150,000 unchanged; current 50% margin vs 30%"
+          ],
+          "analysis_max_2": [
+            "Contract covers fixed costs but dilutes the blended margin",
+            "Option 2 protects margin and brand but may leave capacity idle"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: dependable volume and covers fixed costs",
+            "Overall: accept Option 1 with volume caps, prioritising premium wedding work"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "estate-agency",
+            "$120,000",
+            "30%",
+            "50%",
+            "fixed Expenses",
+            "$150,000",
+            "Option 2",
+            "wedding"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_165",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Penllwyn Stone Co is a private limited company in Country X that quarries roofing slate and cuts it to size at a single site in the northern hills. For the year ended 30 September 2026, the income statement showed Revenue of $880,000, Cost of Sales of $528,000, Gross Profit of $352,000, Expenses of $246,000 and Profit for the year of $106,000. A dividend of $46,000 left Retained Profit of $60,000.\n\nThe directors are choosing between Option 1, paying the whole $60,000 as a special final dividend to the family shareholders, and Option 2, buying a diamond-wire saw for $75,000 to cut slate faster and reduce waste. The bank has offered to lend the shortfall of $15,000 over five years. The current gross profit margin is 40% and sales are expected to rise by 10% next year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'revenue'.",
+        "model_answer": "Revenue is the total value of sales of goods or services made by a business in a trading period, before any costs or Expenses are deducted [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Total value of sales made in a trading period",
+            "Measured before any costs or expenses are deducted"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why gross profit is important to Penllwyn Stone Co.",
+        "model_answer": "Reason 1: It shows what quarrying and cutting the slate earns before Expenses, confirming the $352,000 gross profit on $880,000 of Revenue covers production costs properly [k][app]. Reason 2: It signals efficiency, so the diamond-wire saw can be judged by whether the gross profit margin rises above the current 40% [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Shows the return before overheads and whether production costs are covered",
+            "Acts as an efficiency signal for decisions on new equipment"
+          ],
+          "application_max_2": [
+            "$352,000 gross profit on $880,000 Revenue",
+            "40% gross profit margin as the benchmark for the saw investment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Penllwyn Stone",
+            "$352,000",
+            "$880,000",
+            "diamond-wire saw",
+            "40%",
+            "gross profit",
+            "Revenue"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the directors should compare the $60,000 Retained Profit with the saw's $75,000 cost before deciding.",
+        "model_answer": "Point 1: Retained Profit of $60,000 is the cheapest finance available [k], so buying the saw for $75,000 uses nearly all of it, and the $15,000 shortfall must come from a bank loan with interest and repayments [app][an]. Point 2: Declaring Option 1 returns the entire $60,000 to family shareholders [k], leaving the saw unaffordable without new debt or a cut in the ordinary dividend, so the retained figure frames the feasibility of both options [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Retained profit is usually the cheapest form of finance",
+            "Spending retained profit reduces funds available for dividends and other uses"
+          ],
+          "application_max_2": [
+            "$60,000 Retained Profit vs $75,000 saw cost, $15,000 shortfall",
+            "Option 1 special final dividend of $60,000 vs reinvestment in the saw"
+          ],
+          "analysis_max_2": [
+            "A loan would add interest costs and repayment risk over five years",
+            "Choosing the dividend leaves no internal funds for the saw"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Retained Profit",
+            "$60,000",
+            "saw",
+            "$75,000",
+            "$15,000",
+            "special final dividend",
+            "shortfall"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Penllwyn Stone Co should pay the $60,000 as a special final dividend (Option 1) or buy the diamond-wire saw for $75,000 (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 returns the entire $60,000 to family shareholders in a year when Profit for the year was $106,000 and the gross profit margin was 40% [k][app][an]. Option 2 commits $60,000 of retained profit plus a $15,000 loan to a saw that should cut slate faster, reduce waste and lift output, as sales are expected to rise by 10% next year [k][app][an]. Overall, the directors should choose Option 2, because the shortfall loan is small and repayments manageable, while extra cutting capacity should raise Gross Profit and support larger dividends later; paying the special dividend permanently shrinks the family business's ability to grow [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dividends reward shareholders and can be funded from retained profit",
+            "Investing in capacity can raise future output and profit"
+          ],
+          "application_max_2": [
+            "$60,000 special final dividend after $106,000 profit and 40% gross profit margin",
+            "$75,000 saw funded by $60,000 retained profit plus $15,000 loan; sales up 10% next year"
+          ],
+          "analysis_max_2": [
+            "Dividend is attractive now but reduces investment funds",
+            "Saw should cut costs and raise capacity, supporting future profits"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: immediate cash to family owners in a strong year",
+            "Overall: Option 2 maximises long-term value; dividends can rise later from higher profits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "special final dividend",
+            "$60,000",
+            "diamond-wire saw",
+            "$75,000",
+            "$15,000",
+            "40%",
+            "$106,000",
+            "10%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_166",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Hallow Brook Mushrooms Ltd is a private limited company in Country X growing shiitake and oyster mushrooms in converted barns. In the year ended 31 July 2025, Revenue was $300,000, Cost of Sales $180,000, Gross Profit $120,000 and Profit for the year $36,000 after Expenses of $84,000. In the year ended 31 July 2026, Revenue rose to $410,000, Cost of Sales to $287,000, Gross Profit to $123,000 and Profit for the year fell to $25,000 after Expenses of $98,000.\n\nThe directors paid dividends of $12,000 in each year, leaving Retained Profit of $24,000 in 2025 and $13,000 in 2026. The gross profit margin slid from 40% to 30% as compost and substrate costs rose. The directors are weighing Option 1, switching to a cheaper substrate supplier, against Option 2, raising prices by 8% from January 2027.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'profit for the year'.",
+        "model_answer": "Profit for the year is the final profit remaining after all Expenses have been deducted from Gross Profit, the amount available for dividends and retention [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Final profit after all expenses are deducted from gross profit",
+            "The amount available to pay dividends and to retain in the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the change in gross profit margin matters to Hallow Brook Mushrooms.",
+        "model_answer": "Reason 1: The margin slid from 40% to 30%, so each $100 of sales now yields only $30 of gross profit instead of $40, squeezing what is left for Expenses and dividends [k][app]. Reason 2: The slide comes from compost and substrate costs, so gross profit of $123,000 barely covers the $98,000 Expenses, leaving just $25,000 before the $12,000 dividend and only $13,000 retained [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A falling margin leaves less profit per dollar of sales",
+            "A falling margin can threaten coverage of overheads and dividends if unchecked"
+          ],
+          "application_max_2": [
+            "Margin slid from 40% to 30%, $30 per $100 of sales",
+            "Gross Profit of $123,000 vs $98,000 Expenses and $12,000 dividend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit margin",
+            "40%",
+            "30%",
+            "compost",
+            "substrate",
+            "$123,000",
+            "$98,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the directors could respond to profit for the year falling from $36,000 to $25,000.",
+        "model_answer": "Point 1: Attack Cost of Sales, because the margin drop was driven by substrate costs, so Option 1, switching to a cheaper supplier, could restore gross profit without touching customer prices [k][app][an]. Point 2: Raise prices by 8% (Option 2) to lift Revenue per kilogram [k][app], but risk losing orders if buyers can switch to rival growers, so directors must judge demand sensitivity before acting [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Reducing direct costs raises gross profit and profit for the year",
+            "Raising prices raises revenue but may reduce volumes demanded"
+          ],
+          "application_max_2": [
+            "Option 1 targets the compost and substrate cost rise behind the 30% margin",
+            "Option 2, an 8% price rise, lifts revenue per kilogram"
+          ],
+          "analysis_max_2": [
+            "Cutting input costs protects the margin without risking demand",
+            "Price rises risk losing price-sensitive buyers to rival growers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option 1",
+            "Option 2",
+            "substrate",
+            "8%",
+            "Revenue",
+            "gross profit",
+            "Expenses"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should switch to the cheaper substrate supplier (Option 1) or raise prices by 8% (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 directly targets the cause of the margin slide, because compost and substrate costs cut the margin from 40% to 30%, so a cheaper supplier could restore gross profit without reducing volumes [k][app][an]. The risk is variable quality, which could lower mushroom yields and damage the shiitake brand [app]. Option 2 lifts Revenue per kilogram and protects profit if volumes hold, but a broad 8% rise could push buyers towards other growers [k][an]. Overall, the directors should choose Option 1 first and only add a modest price rise if the margin does not recover, because fixing the input cost protects competitiveness while a blanket rise risks demand [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rising input costs should be addressed at source where possible",
+            "Price increases must be weighed against demand elasticity"
+          ],
+          "application_max_2": [
+            "Compost and substrate rise cut margin from 40% to 30%",
+            "8% price rise lifts Revenue per kilogram from January 2027"
+          ],
+          "analysis_max_2": [
+            "Cheaper inputs restore margin without buyer resistance",
+            "A broad 8% rise risks losing customers to competitors"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: targets the root cause and protects competitiveness",
+            "Overall: Option 1 first, with a small price rise only if margins do not recover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "substrate supplier",
+            "Option 1",
+            "Option 2",
+            "8%",
+            "40%",
+            "30%",
+            "compost",
+            "gross profit"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_167",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Farthing Poultry Ltd is a private limited company in Country X processing free-range chickens for butchers and restaurants in the eastern region. For the year ended 31 October 2026, the income statement showed Revenue of $650,000, Cost of Sales of $390,000, Gross Profit of $260,000, Expenses of $225,000 and Profit for the year of only $35,000. A dividend of $10,000 left Retained Profit of $25,000.\n\nExpenses jumped after the lease of a new chilling unit added $54,000 a year to overheads, and drivers' overtime rose by $18,000. The gross profit margin is a healthy 40%, but the profit margin is only about 5%. The directors are weighing Option 1, cutting overtime and closing Saturday processing to save $28,000 a year, against Option 2, raising prices by 4% from February 2027.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the retained profit for the year.",
+        "model_answer": "Retained Profit = Profit for the year − Dividends = $35,000 − $10,000 = $25,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Correct method: profit for the year minus dividends paid",
+            "Correct answer: $25,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Farthing Poultry's expenses are a concern.",
+        "model_answer": "Reason 1: Expenses of $225,000 absorb most of the $260,000 Gross Profit [k], leaving only $35,000 of profit despite a healthy 40% gross profit margin [app]. Reason 2: The chilling unit lease added $54,000 and drivers' overtime rose by $18,000 [k], so costs jumped sharply and could persist, threatening the $25,000 Retained Profit [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "High expenses consume gross profit and squeeze final profit",
+            "Sudden cost increases may persist and repeat in future years"
+          ],
+          "application_max_2": [
+            "$225,000 Expenses vs $260,000 Gross Profit leaving only $35,000",
+            "Chilling-unit lease added $54,000 and overtime $18,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$225,000",
+            "$260,000",
+            "$35,000",
+            "chilling unit",
+            "$54,000",
+            "$18,000",
+            "overtime"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why a profit margin of only about 5% should worry the directors and shareholders.",
+        "model_answer": "Point 1: Profit for the year of $35,000 is only about 5% of Revenue [k], so the business has almost no cushion if wages or feed prices rise again [app], leaving dividends and reinvestment exposed [an]. Point 2: Lower profit means smaller dividends and retention, and with just $10,000 paid out the company has limited room to fund improvements from its $25,000 Retained Profit [k][app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A low profit margin leaves a tiny cushion against cost increases",
+            "A low profit margin restricts dividends and retained profit for reinvestment"
+          ],
+          "application_max_2": [
+            "$35,000 profit on $650,000 Revenue is about 5%",
+            "Only $10,000 dividend paid from $25,000 Retained Profit"
+          ],
+          "analysis_max_2": [
+            "Any further cost rise could erase the thin profit",
+            "Shareholders face smaller returns and the firm faces a funding squeeze"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "about 5%",
+            "$35,000",
+            "Revenue",
+            "$10,000",
+            "Retained Profit",
+            "$25,000",
+            "Profit for the year"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should cut expenses by $28,000 a year (Option 1) or raise prices by 4% (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 saves a guaranteed $28,000 a year by cutting overtime and closing Saturday processing [k][app], which would lift Profit for the year from $35,000 to about $63,000 and restore the cushion the business now lacks [an]. The risk is losing butchers and restaurants that rely on Saturday supply. Option 2 should add about $26,000 of Revenue a year at 4% and is simple to implement [k], though customers may resist rises while cheaper imported chicken exists [app][an]. Overall, the directors should choose Option 1, because removing avoidable overtime tackles the root cause of expense bloat and protects the 5% margin without alienating customers; a modest price rise can follow once service levels stabilise [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cutting unnecessary costs raises profit without raising prices",
+            "Price increases raise revenue but risk losing price-sensitive customers"
+          ],
+          "application_max_2": [
+            "$28,000 saving lifts profit from $35,000 to about $63,000",
+            "4% rise on $650,000 Revenue adds about $26,000"
+          ],
+          "analysis_max_2": [
+            "Removing overtime addresses the cause of the expense surge",
+            "Customers may switch to cheaper imports if prices rise"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: guaranteed saving, protects margin and customer relationships",
+            "Overall: Option 1 first; a modest price rise later once service stabilises"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$28,000",
+            "Option 1",
+            "Option 2",
+            "Saturday processing",
+            "4%",
+            "overtime",
+            "Profit for the year"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_168",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Quincefield Orchards Ltd is a private limited company in Country X growing quinces and apples on 60 hectares of orchard. In the year ended 31 October 2025, Revenue was $275,000, Cost of Sales $137,500, Gross Profit $137,500 and Profit for the year $52,500 after Expenses of $85,000. In the year ended 31 October 2026, Revenue was $330,000, Cost of Sales $198,000, Gross Profit $132,000 and Profit for the year $44,000 after Expenses of $88,000.\n\nDividends of $20,000 were paid in both years, leaving Retained Profit of $32,500 in 2025 and $24,000 in 2026. The gross profit margin fell from 50% to 40% after a wet summer lifted orchard labour and packing costs. The directors are weighing Option 1, selling surplus fruit to a juice contractor at $0.80 a kilogram, against Option 2, investing $55,000 in on-site juicing equipment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two items found in an income statement.",
+        "model_answer": "Revenue and Gross Profit are two items found in an income statement [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Any two components named, e.g. revenue, cost of sales, gross profit",
+            "Any two further components, e.g. expenses, profit for the year, retained profit"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why comparing two years of income statements helps Quincefield Orchards.",
+        "model_answer": "Reason 1: It shows trends, with the gross profit margin sliding from 50% to 40% [k], signalling rising orchard labour and packing costs that a single year would hide [app]. Reason 2: It reveals that Profit for the year fell from $52,500 to $44,000 despite Revenue growing to $330,000 [k], so directors see that growth without profitability is possible [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Comparisons reveal trends and changes over time",
+            "Comparisons separate revenue growth from profit growth"
+          ],
+          "application_max_2": [
+            "Gross profit margin slid from 50% to 40% on higher labour and packing costs",
+            "Profit fell from $52,500 to $44,000 while Revenue reached $330,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit margin",
+            "50%",
+            "40%",
+            "$52,500",
+            "$44,000",
+            "$330,000",
+            "orchard labour"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the directors could use the falling gross profit margin to make decisions.",
+        "model_answer": "Point 1: The margin fell from 50% to 40% as labour and packing costs rose [k], so directors should find which input costs grew and renegotiate or mechanise to restore the spread [app], protecting profit per kilogram sold [an]. Point 2: Profit for the year dropped $8,500 to $44,000 and Retained Profit fell to $24,000 [k], so directors must judge whether Option 2's juicing equipment needs a loan in addition to internal funds [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Margin analysis locates where costs rose or prices lagged",
+            "Falling retained profit constrains the funding of investments"
+          ],
+          "application_max_2": [
+            "Margin fell from 50% to 40% on orchard labour and packing costs",
+            "Retained Profit fell to $24,000; juicing equipment costs $55,000"
+          ],
+          "analysis_max_2": [
+            "Targeting the input-cost rise restores profit without price changes",
+            "A funding gap may force borrowing for the juicing equipment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit margin",
+            "50%",
+            "40%",
+            "$44,000",
+            "Retained Profit",
+            "$24,000",
+            "juicing equipment",
+            "$55,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should sell surplus fruit to the juice contractor at $0.80 a kilogram (Option 1) or invest $55,000 in on-site juicing equipment (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 quickly converts surplus fruit into Revenue at $0.80 a kilogram without the $55,000 outlay, but it locks the orchard into a thin margin that does nothing to repair the 40% gross profit margin [k][app][an]. Option 2 keeps juicing in-house, should lift gross profit per kilogram and support the $330,000 Revenue base [k], but Retained Profit is only $24,000 so a bank loan would be needed alongside [app][an]. Overall, the directors should choose Option 2, because building juice capacity addresses the margin slide permanently and adds a branded revenue stream; the contractor is a short-term cash fix that keeps the orchard in low-value sales [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Selling surplus stock quickly generates cash without capital spending",
+            "In-house processing can capture higher value-added margins"
+          ],
+          "application_max_2": [
+            "Option 1 pays $0.80 per kilogram with no equipment spend",
+            "Option 2 costs $55,000; only $24,000 Retained Profit available"
+          ],
+          "analysis_max_2": [
+            "Contractor route avoids debt but keeps margins thin",
+            "In-house juicing raises value-added profit but needs external finance"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: immediate cash, no borrowing, uses surplus fruit",
+            "Overall: Option 2 builds long-term margin and a brand; contractor is only a stopgap"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "surplus fruit",
+            "$0.80",
+            "Option 1",
+            "Option 2",
+            "$55,000",
+            "juicing equipment",
+            "40%",
+            "$24,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_169",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fernglen Enamelware Ltd is a private limited company in Country X pressing and enamelling steel kitchenware, sold in department stores and by mail order. For the year ended 30 November 2026, the income statement showed Revenue of $520,000, Cost of Sales of $312,000, Gross Profit of $208,000, Expenses of $140,000 and Profit for the year of $68,000. A dividend of $28,000 left Retained Profit of $40,000.\n\nA supermarket chain has offered an own-brand contract worth $200,000 of Revenue a year at just 18% gross profit, less than half the current 40% margin. Option 2 is launching a heritage cookware range expected to add $45,000 of gross profit for $18,000 of marketing spend. The directors must decide by 30 December and want to keep dividend payments steady.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'dividend'.",
+        "model_answer": "A dividend is a distribution of a company's profit paid to its shareholders, usually relative to the number of shares held, from the profits of the business [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A distribution of profit paid to shareholders",
+            "Usually based on the number of shares held"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why dividends matter to Fernglen Enamelware's shareholders.",
+        "model_answer": "Reason 1: Dividends reward shareholders for investing their capital, and $28,000 was paid this year out of the $68,000 profit, giving a tangible return [k][app]. Reason 2: A steady dividend signals confidence in the business, and keeping payments steady helps keep shareholders loyal and supportive of future decisions [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Dividends reward shareholders for risking their capital",
+            "Dividends signal the company's strength and support shareholder loyalty"
+          ],
+          "application_max_2": [
+            "$28,000 dividend paid out of $68,000 Profit for the year",
+            "Directors want to keep dividend payments steady in future decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "dividend",
+            "$28,000",
+            "$68,000",
+            "steady",
+            "dividend payments",
+            "Fernglen Enamelware"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the supermarket contract would change Fernglen Enamelware's income statement.",
+        "model_answer": "Point 1: Accepting it adds $200,000 of Revenue at only 18% gross profit, about $36,000 [k], so headline sales would swell but the blended 40% margin would drop sharply [app][an]. Point 2: Fixed Expenses stay at $140,000 [k], so the extra $36,000 of gross profit should flow into Profit for the year if volumes are met, but directors must check it is genuine profit and not just turnover [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "New revenue contracts change both turnover and margin mix",
+            "With fixed overheads unchanged, extra gross profit should lift bottom-line profit"
+          ],
+          "application_max_2": [
+            "$200,000 extra Revenue at 18% gross profit = about $36,000",
+            "Fixed Expenses of $140,000 unchanged if the contract is absorbed"
+          ],
+          "analysis_max_2": [
+            "Headline growth would dilute the blended 40% margin",
+            "Extra gross profit converts to profit for the year, but directors must verify quality"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "supermarket",
+            "$200,000",
+            "18%",
+            "40%",
+            "Expenses",
+            "$140,000",
+            "Profit for the year",
+            "Revenue"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should accept the own-brand supermarket contract worth $200,000 a year at 18% gross profit (Option 1) or launch the heritage cookware range (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 secures a large, reliable outlet for enamelware and adds $200,000 of Revenue; even at 18% gross profit that is about $36,000 of extra gross profit with no marketing spend [k][app][an]. The downside is margin dilution and reliance on a single buyer. Option 2's heritage range should add $45,000 of gross profit for $18,000 of marketing, a net uplift of about $27,000, and strengthens the brand [k][app][an]. Overall, the directors should choose Option 2, because it builds a differentiated premium position and adds more gross profit per dollar of Revenue; the supermarket deal, though tempting for volume, would drag the whole company's margin from 40% towards 18% [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Large contracts can absorb capacity and add gross profit",
+            "Premium product launches can raise margins and brand strength"
+          ],
+          "application_max_2": [
+            "$200,000 Revenue at 18% gross profit = about $36,000",
+            "Heritage range adds $45,000 gross profit for $18,000 marketing"
+          ],
+          "analysis_max_2": [
+            "Contract dilutes blended margin and concentrates reliance on one buyer",
+            "Heritage range builds brand and keeps premium margins"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: volume, certainty and zero marketing cost",
+            "Overall: Option 2 maximises margin and brand; better long-term positioning"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "supermarket",
+            "$200,000",
+            "18%",
+            "own-brand contract",
+            "Option 2",
+            "heritage",
+            "$45,000",
+            "$18,000",
+            "40%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_170",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Sumpter & Moss Hardware Ltd is a private limited company in Country X running two hardware stores in a market town, selling paint, tools and kitchen fittings. For the year ended 31 December 2026, the income statement showed Revenue of $410,000, Cost of Sales of $287,000, Gross Profit of $123,000, Expenses of $82,000 and Profit for the year of $41,000. A dividend of $15,000 left Retained Profit of $26,000.\n\nProfit was earned but the bank account is overdrawn by $12,000 after the Christmas stock build-up. A supermarket-style DIY warehouse opens on the ring road in March 2027. Directors are weighing Option 1, focusing on high-margin kitchen-fitting work at 45% gross profit, against Option 2, matching warehouse prices on paint and tools, which would cut the gross profit margin from 30% towards 25%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the gross profit margin.",
+        "model_answer": "Gross Profit Margin = Gross Profit ÷ Revenue × 100 = $123,000 ÷ $410,000 × 100 = 30% [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Correct formula: gross profit divided by revenue, times 100",
+            "Correct answer: 30%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why understanding cost of sales matters to Sumpter & Moss Hardware.",
+        "model_answer": "Reason 1: Cost of Sales of $287,000 is 70% of Revenue, so small buying inefficiencies quickly erode the $123,000 Gross Profit and the 30% margin [k][app]. Reason 2: Knowing which lines carry the best margin, such as kitchen fittings at 45%, tells directors where to steer customers, stock investment and promotions [k][app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Cost of sales directly determines gross profit and margin",
+            "Margin by product line guides stock and promotion decisions"
+          ],
+          "application_max_2": [
+            "$287,000 Cost of Sales is 70% of $410,000 Revenue",
+            "Kitchen-fitting work at 45% gross profit vs 30% store average"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Cost of Sales",
+            "$287,000",
+            "Revenue",
+            "$123,000",
+            "30%",
+            "45%",
+            "kitchen fittings"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why the directors should monitor the gross profit margin before the March 2027 superstore opens.",
+        "model_answer": "Point 1: The margin is already only 30%, so Option 2, matching warehouse prices, could drag it towards 25% [k][app], wiping out profit without volume gains to compensate [an]. Point 2: Steering towards 45%-margin kitchen-fitting work under Option 1 [k][app] would raise the blended margin and protect the $41,000 Profit for the year from erosion [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "A lower margin before a rival opens leaves no buffer for a price war",
+            "Shifting the sales mix towards higher-margin work protects profit"
+          ],
+          "application_max_2": [
+            "Option 2 could cut margin from 30% towards 25%",
+            "Kitchen-fitting work at 45% under Option 1; Profit for the year is $41,000"
+          ],
+          "analysis_max_2": [
+            "Competing on price against a superstore with buying power destroys profit",
+            "A richer sales mix defends profit without needing higher volumes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "gross profit margin",
+            "30%",
+            "25%",
+            "kitchen-fitting work",
+            "$41,000",
+            "Option 1",
+            "Option 2",
+            "45%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the directors should focus on high-margin kitchen-fitting work (Option 1) or match warehouse prices on paint and tools (Option 2)? Justify your answer.",
+        "model_answer": "Option 1 concentrates on 45% gross profit kitchen-fitting work, which should lift the blended margin above the current 30% and defend profit without fighting the warehouse on price [k][app][an]. The risk is that fitting demand is lumpy and limited to renovation projects [app]. Option 2 matches the new rival head-on, but cutting the margin from 30% towards 25% would sharply reduce Profit for the year from $41,000 unless volumes rise a great deal [k][an]. Overall, the directors should choose Option 1, because on Revenue of $410,000 each percentage point of gross profit margin is worth about $4,100, so margin defence beats price-matching against a superstore with bigger buying power [eval][eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Focusing on higher-margin work protects overall profitability",
+            "Competing on price against a stronger rival squeezes margins"
+          ],
+          "application_max_2": [
+            "45% margin kitchen-fitting work vs 30% blended margin",
+            "Option 2 risks 25% margin and a fall from $41,000 profit"
+          ],
+          "analysis_max_2": [
+            "Fitting demand is lumpy but highly profitable",
+            "Price-matching destroys profit without equivalent volume gains"
+          ],
+          "evaluation_max_2": [
+            "For Option 1: defends margin; every margin point is worth about $4,100",
+            "Overall: Option 1; the warehouse has greater buying power on paint and tools"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "kitchen-fitting work",
+            "Option 1",
+            "Option 2",
+            "45%",
+            "30%",
+            "25%",
+            "$41,000",
+            "Revenue"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

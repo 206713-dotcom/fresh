@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_126",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Hartley Digital Payroll (HDP) is a private limited company in the payroll software sector, employing a workforce of 38. Founded in 2011 by Ananya Iyer, the business sells cloud payroll and HR compliance subscriptions to small and medium employers nationwide and operates a flat organisational structure with democratic leadership. The company plans to invest $720,000 in a version-2 payroll platform with AI compliance checking, financed by a $450,000 ten-year bank loan and $270,000 retained profit. It has fixed costs of $220,000 a year, a variable cost of $7.20 a unit and a selling price of $12.70, and currently produces 60,000 units a year. HDP faces an acute people problem: developer poaching by rival firms has pushed labour turnover to 14%, and remote engineers report communication breakdowns across the team.",
+    "appendix_1_marketing_ops": "Market Research Summary — October 2026: A survey of 520 payroll managers in client firms found 68% would upgrade to the v2 platform within 12 months, and 57% cited automated compliance as the main reason. 41% first heard of HDP through LinkedIn posts. Support tickets fell from 1,520 to 1,140 last quarter; average first-response time is 4.1 hours and platform uptime was 99.2%. The bug-report rate is 2.3% of releases. 22 of 38 staff are product engineers; on-the-job training on the v2 codebase runs weekly, while off-the-job cloud-certification courses at the tech college cost $1,150 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Hartley Digital Payroll for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,480", "1,860"],
+        ["Cost of sales", "890", "1,085"],
+        ["Gross profit", "590", "775"],
+        ["Operating profit", "222", "326"],
+        ["Capital employed", "2,220", "2,480"],
+        ["Interest payable", "16", "27"]
+      ]
+    },
+    "appendix_3_external_environment": "Technology Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.5% to 5.25% in October, increasing the cost of variable-rate borrowing for software businesses. (2) The national minimum wage will rise by 5.9% from $11.95 to $12.66 per hour from April 2026, raising wage bills across support and administration teams. (3) Cloud infrastructure and data-centre costs rose 9.6% year-on-year, technology inflation is running at 6.2%, and business spending on payroll software grew 7.4% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HDP plans to finance its $720,000 version-2 payroll platform with a $450,000 bank loan and $270,000 retained profit. Explain two advantages for HDP of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit costs HDP nothing in repayments or interest, protecting cash flow at a time when it already carries fixed costs of $220,000 a year and the $450,000 bank loan commitment. Every dollar saved in interest charges can absorb the 9.6% rise in cloud infrastructure costs and keep the $12.70 selling price competitive, defending the $5.50 contribution per unit across the 60,000 units sold each year.\n\nPoint 2: Using $270,000 of retained profit avoids the collateral risk attached to the loan, so the v2 platform and its AI compliance checking cannot be repossessed if launch uptake disappoints. It also preserves Ananya Iyer's ownership and the flat, democratic structure, since no external lender can impose conditions on how the roadmap or the engineering team is run, and signals financial strength to the 520 payroll managers surveyed, who want reliable compliance automation before switching. With fixed costs of $220,000 already committed and interest payable set to rise from $16,000 in 2024 to $27,000 in 2025, keeping debt service low defends the launch-year profit margin.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Hartley Digital Payroll and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$270,000", "$450,000", "$720,000", "version-2 payroll platform"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HDP is launching its version-2 payroll platform. Consider a national technology-press advertising campaign, targeted LinkedIn advertising, or exhibitions at industry payroll conferences. Which should HDP choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National technology-press advertising: Full-page ads in national IT magazines would build broad awareness of the v2 platform quickly and reach HR and finance directors across many sectors. However, print space is expensive, readership skews towards IT generalists rather than payroll buyers, and response rates are hard to measure, making it poor value for a 38-person company financing an $720,000 launch from a ten-year bank loan and retained profit.\n\nTargeted LinkedIn advertising: LinkedIn lets HDP target job titles such as payroll manager and finance director precisely, matching the 520 payroll managers surveyed, 68% of whom would upgrade within 12 months, and 57% of whom cited automated compliance as the reason. 41% already heard of HDP through LinkedIn, proving the channel works, and spend can be scaled gradually with fully measurable click and demo-request data against a limited launch budget.\n\nIndustry payroll conferences: Exhibiting puts HDP in front of committed buyers with live AI compliance demos, but events are episodic, geographically limited and expensive once travel, stand fees and staff time are counted, and coverage happens only once or twice a quarter.\n\nRecommendation: HDP should choose targeted LinkedIn advertising. It reaches the exact decision-makers its research identified, is measurable and affordable within the $270,000 retained profit element, and 41% of prospects already arrive through the channel. National technology-press advertising is rejected as broad, costly and hard to measure for a niche B2B product; conference exhibitions are rejected as too infrequent and regional to carry the whole launch, so HDP should add one or two flagship events only after the LinkedIn pipeline matures.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of HDP with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of HDP with a well-justified recommendation explaining why press advertising and conferences are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["LinkedIn", "68%", "57%", "version-2 payroll platform", "$720,000", "520", "41%"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HDP faces developer poaching by rival tech firms, with labour turnover at 14%. Explain two benefits for HDP of using democratic leadership to motivate its development team.",
+      "model_answer": "Point 1: Democratic leadership gives HDP's 38 employees a genuine voice in sprint priorities, code-review norms and remote working patterns, satisfying esteem and social needs and lifting morale. Developers who help shape the v2 platform feel valued, which directly counters developer poaching by rival firms and the current 14% labour turnover, cutting expensive re-hiring, protecting the launch timeline and reducing the pressure on a flat structure where senior engineers already carry heavy loads.\n\nPoint 2: Involving engineers in decisions surfaces practical ideas, for example safer release checklists to push the 2.3% bug-report rate lower and better asynchronous stand-ups to repair remote-work communication breakdowns. Ownership raises commitment, absenteeism and poaching risk fall, and HDP saves on the $1,150 per employee cloud-certification replacement cost because it retains people who already understand the stack, sustaining output of 60,000 units a year while the platform beds in. In a flat structure with no middle management, democratic routines replace supervision entirely, so motivation must come from ownership rather than from orders.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HDP's poaching, turnover, quality and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "developer poaching", "14%", "workforce of 38", "$1,150", "60,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HDP must upskill 22 product engineers to build the version-2 payroll platform. Consider on-the-job training or off-the-job cloud-certification courses at $1,150 per employee. Which should HDP choose? Justify your decision.",
+      "model_answer": "On-the-job training: Weekly pairing on the v2 codebase keeps all 22 engineers productive on real support tickets and bug fixes, costs nothing in fees, and transfers machine-specific knowledge — HDP's actual architecture, review checklists and release process — far better than any generic course. It suits remote engineers who already struggle with communication, and it directly protects the 1,140 support tickets a quarter that the team must still absorb during the launch. Drawbacks are that senior engineers are pulled off delivery, bad habits can spread unchecked, and no recognised certificate is earned, which weakens HDP's credibility when enterprise clients ask about certified delivery capability.\n\nOff-the-job training: The tech college's cloud-certification course at $1,150 per employee gives structured, current skills and a recognised credential for all 22 engineers, totalling $25,300 — small against the $720,000 launch budget. However, it removes 22 people from sprints for course days, delaying the launch, and the content is generic, so HDP would still need in-house follow-up on the v2 codebase once staff return.\n\nDecision: HDP should choose on-the-job training as the backbone, with off-the-job certification reserved for 6 team leads. On-the-job pairing is cheaper, immediate and v2-specific, it shields the 60,000-unit support load and bug-fix queue, and it addresses the remote communication breakdown where it actually occurs. Full off-the-job training for all 22 is rejected: losing the entire engineering function for weeks would stall the $720,000 launch and dilute relevance, and HDP cannot spare the capacity during a developer-poaching wave — certification can be layered on for the whole team later, once the launch stabilises and revenue from the v2 platform starts to flow.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to HDP.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of HDP.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of HDP with a well-justified decision covering cost, disruption, machine relevance and the poaching wave."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job cloud-certification", "$1,150", "22 of 38", "$720,000", "v2 codebase"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HDP's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HDP's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $220,000 ÷ ($12.70 − $7.20) = $220,000 ÷ $5.50 = 40,000 units. Answer: break-even output is 40,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HDP's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $12.70 − $7.20 = $5.50. Answer: contribution per unit is $5.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HDP's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 40,000-unit break-even output with actual output of 60,000 units to confirm the business earns a margin of safety of 20,000 units, informing whether the new automation capacity can be added after the launch.\n2. Contribution per unit of $5.50 lets managers model a promotional discount for annual subscriptions, for example a 6% price cut to $11.94 would drop contribution to $4.74, letting HDP judge whether extra volume from the 68% upgrade-intenders would still cover the $220,000 fixed costs.\n3. Knowing the break-even point helps managers stress-test the $450,000 ten-year bank loan repayments, checking each year that forecast subscription revenue stays comfortably above 40,000 units before committing to further spend on the v2 platform.\n4. Managers can use unit cost data ($220,000 ÷ 60,000 units + $7.20 = $10.87 a unit) to benchmark productivity against the 14% labour turnover problem, identify waste in support tickets falling only to 1,140 a quarter, and negotiate better cloud-hosting rates amid the 9.6% infrastructure cost rise."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 40,000 units | (ii) Contribution per unit = $5.50 | (iii) Four contextual uses explained: margin of safety of 20,000 units versus 60,000-unit output; discount modelling against $220,000 fixed costs and the $12.70 price; stress-testing the $450,000 ten-year bank loan repayments before further spend; and unit-cost benchmarking at $10.87 to tackle waste, turnover and the 9.6% hosting cost rise.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40,000", "$5.50", "60,000", "$220,000", "$7.20", "$12.70", "$10.87", "20,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HDP's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has HDP's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 39.9%\nGross Profit Margin 2025 = 41.7%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 17.5%\nROCE 2024 = 10.0%\nROCE 2025 = 13.1%\n\nDetailed workings: 2024 — revenue $1,480,000 − cost of sales $890,000 = gross profit $590,000; 590 ÷ 1,480 × 100 = 39.9%. Operating profit $222,000 ÷ revenue $1,480,000 × 100 = 15.0%. Operating profit ÷ capital employed $2,220,000 × 100 = 10.0%. 2025 — revenue $1,860,000 − cost of sales $1,085,000 = gross profit $775,000; 775 ÷ 1,860 × 100 = 41.7%. Operating profit $326,000 ÷ revenue $1,860,000 × 100 = 17.5%. Operating profit ÷ capital employed $2,480,000 × 100 = 13.1%.\n\nEvaluation: Profitability has clearly strengthened on every measure. The gap between sales and direct costs widened from 39.9% to 41.7%, helped by price rises and falling support tickets (1,140 vs 1,520), and the bottom-line measure widened even more, from 15.0% to 17.5%, as revenue grew 25.7% with only an 11.7% rise in capital employed. Returns on the capital base rose from 10.0% to 13.1%, converting the launch spend into efficient use of assets. Residual concerns: interest payable nearly doubled from $16,000 to $27,000, and 2025 performance depends on retaining the 22 of 38 product engineers amid developer poaching and labour turnover of 14% while the $720,000 v2 platform beds in, and on converting the 520 payroll managers surveyed (68% ready to upgrade) into migrated subscribers of the 60,000 units a year; if launch uptake disappoints, returns could slip back towards 2024 levels.\n\nConclusion: HDP's profitability has improved. All three measures rose (39.9% to 41.7%, 15.0% to 17.5%, 10.0% to 13.1%), and the improvement came from wider margins and better use of the capital base rather than from debt. HDP should protect these gains by fixing the bank loan rate and defending the subscription gross profit while the v2 platform scales.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, operating profit, interest and capital employed movements and a justified conclusion on whether HDP's profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["39.9%", "41.7%", "15.0%", "17.5%", "10.0%", "13.1%", "$720,000", "1,480"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HDP of migrating the version-2 payroll platform to renewable-energy-powered cloud hosting.",
+      "model_answer": "Advantage: Renewable-energy hosting lets HDP lock in long-term price certainty against the 9.6% year-on-year rise in cloud infrastructure costs highlighted in Appendix 3, protecting the $7.20 variable cost and the $5.50 contribution per unit. Modern green data centres also sustain the 99.2% uptime that underpins the subscription promise, and the sustainability story strengthens the sales pitch to the 68% of surveyed payroll managers planning to upgrade, helping HDP win enterprise listings that justify the $720,000 launch against its bank-loan and retained-profit financing.\n\nDisadvantage: Premium green-hosting contracts usually cost more upfront, which would raise the $7.20 variable cost per unit and squeeze margins unless HDP passes a small price rise to subscribers already facing the 5.9% minimum wage pressure. Migration also carries downtime risk for the 60,000-unit subscriber base and must be scheduled carefully around the launch; if the recycled benefit of lower energy bills takes years to materialise, cash already stretched by the $450,000 loan could be squeezed further.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HDP's costs, launch, uptime and survey data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["v2 platform", "9.6%", "99.2%", "$720,000", "60,000", "$7.20"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 5.25%, the 5.9% minimum wage increase and the 9.6% rise in cloud infrastructure costs will affect HDP. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.5% to 5.25%): If HDP's $450,000 ten-year bank loan carries a variable rate, annual interest rises by 0.75%, adding roughly $3,375 a year to financing costs and nudging fixed costs above $220,000. Higher rates also make future borrowing for the platform roadmap more expensive and can cool enterprise spending on payroll subscriptions. The cash impact is real but modest, and HDP can partly shield itself by fixing the loan rate before the next review.\n\nMinimum wage increase (5.9% to $12.66): HDP's support and administration staff — roughly 9 of the 38 employees — work near the minimum wage. An annual wage bill near $240,000 for that group would rise by about $14,100 from April 2026. Engineers are unaffected directly, but pay-compression pressure may push HDP to review banded salaries for mid-level developers, already scarce given developer poaching, raising the total people-cost further.\n\nCloud infrastructure cost inflation (9.6%): Hosting is the backbone of the product and the main driver of the $7.20 variable cost. If infrastructure accounts for roughly $210,000 of annual spend (an estimate based on hosting fees within the cost base), a 9.6% rise adds about $20,160 every year, recurring against every one of the 60,000 units sold and cutting the $5.50 contribution per unit by roughly $0.34 a unit unless HDP renegotiates multi-year rates or lifts the $12.70 price.\n\nConclusion: The 9.6% cloud infrastructure cost rise will have the greatest impact. It is recurring, unavoidable and scales directly with the subscriber base HDP must grow to justify the $720,000 launch, and it strikes the exact cost line that funds the product's reliability. The wage rise is the second-largest pressure and can be offset by planning and modest price rises, while the interest rate increase is the smallest cash impact and can be fixed — both still require disciplined cost control and premium pricing while the v2 platform ramps up.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to HDP.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on HDP's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of HDP with a well-justified judgement that cloud infrastructure cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "5.9%", "9.6%", "$11.95", "$12.66", "base interest rate", "7.4%"]
+      }
+    }
+  ]
+}

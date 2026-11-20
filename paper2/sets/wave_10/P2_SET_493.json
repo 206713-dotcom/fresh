@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_493",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Cedarwell Care Homes (CCH) is a private limited company in the residential elderly care sector, based in the Leeds region and running care homes, employing a workforce of 120. Founded in 2008 by Margaret Cedarwell, it receives placements from local councils and operates a hierarchical structure with autocratic leadership. CCH plans to invest $1,500,000 in a new 40-bed dementia care wing with fitted emergency-call sensors, financed by a $900,000 ten-year bank loan and $600,000 retained profit. It has fixed costs of $700,000 a year, a variable cost of $22 a unit and a selling price of $50, and produces 90,000 units a year. CCH faces a medication-administration error rate of 2.8% and care-worker absenteeism of 12%.",
+    "appendix_1_marketing_ops": "Quality and Operations Log — Q4 2025: The homes recorded 21,500 resident-days last quarter with a medication error rate of 2.8%, up from 1.6% a year earlier. Family complaints rose from 27 to 44 a month. Average response time to call bells is 8.2 minutes. A survey of 350 families found 66% would pay $25 more a week for the dementia wing, and 71% check inspection ratings before choosing a home. A skills audit shows 30 of 120 care workers have not completed on-the-job training on the new call sensors; off-the-job training courses in dementia care at the regional college cost $700 per worker.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Cedarwell Care Homes for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "4,500", "5,400"],
+        ["Cost of sales", "2,700", "3,024"],
+        ["Gross profit", "1,800", "2,376"],
+        ["Operating profit", "675", "972"],
+        ["Capital employed", "4,500", "5,400"],
+        ["Interest payable", "110", "135"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Social Care Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.00% to 4.75%, increasing the cost of variable-rate borrowing. (2) The national minimum wage will rise by 7.1% from $13.40 to $14.35 per hour from April 2026, lifting care-worker payroll costs. (3) Medical consumables and specialist dementia equipment costs have risen 10.2% year-on-year, while demand for dementia places grew 4.6%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "CCH is funding part of its $1,500,000 dementia care wing with a $900,000 ten-year bank loan. Explain two advantages for CCH of using the $600,000 retained profit instead of borrowing more.",
+      "model_answer": "Point 1: Retained profit has no interest charge or repayment schedule, so CCH preserves the cash flow needed to cover fixed costs of $700,000 a year while it services the $900,000 loan. Every dollar kept from the bank can absorb the 10.2% rise in medical consumables, helping CCH hold its $50 selling price and maintain the 40-bed wing for the local councils that place residents.\n\nPoint 2: Using $600,000 retained profit adds no collateral and keeps Margaret Cedarwell's ownership intact. The $1,500,000 wing cannot be threatened by a bank recall if occupancy falls short of the 90,000 units, and the survey showing 66% of 350 families would pay $25 more a week gives CCH grounds to fund the launch from its own resources rather than increase borrowing. Care homes must hold staffing levels despite 12% absence, and internal funds give that breathing room without a new repayment deadline; they also avoid the covenants a lender might impose on a regulated care business.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to CCH's financing decision and its care-home operations."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$900,000", "$600,000", "$1,500,000", "councils"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "CCH is promoting its new dementia care wing. Consider local newspaper advertising, open days for families, or social media campaigns. Which should CCH choose? Justify your recommendation.",
+      "model_answer": "Local newspaper advertising: Print adverts can announce the 40-bed wing across the Leeds region and reach older readers who may be choosing care for a relative. They are cheaper than television and can carry the inspection-rating message, but newspaper readership is falling and a static advert cannot show the fitted emergency-call sensors or answer the personal questions that families ask before placing a resident.\n\nOpen days for families: Inviting relatives to tour the wing lets them see the call sensors and ask staff directly, which matches the 71% of 350 surveyed families who check inspection ratings before choosing a home. Open days can be organised with the local councils that already place residents, cost little beyond staff time, and support the 66% who would pay $25 more a week for dementia care. They reach fewer people than advertising and require careful scheduling around 8.2-minute call-bell response duties, but the trust built is far higher.\n\nSocial media campaigns: Targeted posts can show the wing and reach adult children searching for care, with measurable enquiries against the 21,500 resident-days recorded last quarter. They are low-cost and fast, but a care-home decision is highly personal and online interest may not convert into placements without a visit, so leads can be weak.\n\nRecommendation: CCH should choose open days for families, supported by a small newspaper notice. Open days are cheap, show the sensors directly and match the 71% who check ratings. Newspaper advertising is rejected as passive and unable to answer families' questions; social media is rejected because it cannot build the trust needed for a 12% absenteeism-sensitive, inspection-rated service and is less effective than a face-to-face visit.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal application to CCH.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of CCH with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of CCH with a well-justified recommendation explaining why newspaper advertising and social media are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["inspection ratings", "71%", "66%", "350", "21,500", "$1,500,000", "8.2 minutes"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "CCH's medication error rate has risen to 2.8% and care-worker absenteeism to 12%. Explain two benefits for CCH of using autocratic leadership with its workforce of 120.",
+      "model_answer": "Point 1: Autocratic leadership gives clear instructions and a tight chain of command, which suits CCH's hierarchical structure when a resident presses an emergency call bell. Quick, unchallenged decisions can cut the 8.2-minute response time and enforce medication checks that attack the 2.8% error rate risen from 1.6%, protecting the 21,500 resident-days recorded last quarter and the 71% of families who check inspection ratings.\n\nPoint 2: Uniform rules issued from the top keep care consistent across 120 workers, reducing variation that could cause errors or complaints; family complaints have already risen from 27 to 44 a month. Strong direction also lets managers redeploy staff quickly when 12% absence occurs, protecting the $50 selling price and the return on the $1,500,000 dementia wing. In a 120-worker hierarchy one clear instruction about drug rounds is faster than a committee decision when a call bell sounds, and uniform procedures make inspection evidence easier to assemble for the 71% of families who check ratings.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CCH's error rate, absence, inspections and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "hierarchical", "2.8%", "12%", "workforce of 120", "8.2 minutes", "30 of 120"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "CCH must train 30 of 120 care workers who have not completed on-the-job training on the new call sensors. Consider on-the-job training or off-the-job training at the regional college. Which should CCH choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching on the actual emergency-call sensors is specific to CCH's own wing and costs no course fees, while the 30 trainees continue to cover the 21,500 resident-days from last quarter. Supervisors can correct response procedures at once, the fastest way to shorten the 8.2-minute call-bell time and support the 2.8% medication-error target. Drawbacks are that senior staff lose time from resident care, bad habits may be copied, and there is no external certificate for the 71% of families who check inspection ratings.\n\nOff-the-job training: The regional college dementia-care course at $700 per worker costs 30 × $700 = $21,000, modest beside the $1,500,000 wing. It gives structured knowledge and a recognised certificate that reassures inspectors and families. However, it removes 30 of 120 care workers from the homes, which could lengthen the 8.2-minute call-bell response and worsen 12% absence, and generic teaching still needs adapting to CCH's fitted sensors.\n\nDecision: CCH should choose on-the-job training first, with short certified college modules later for senior carers. On-the-job coaching is cheaper, sensor-specific and avoids reducing resident cover while absence is 12%. Full off-the-job training is rejected now because removing 30 of 120 workers would risk call-bell response times and the $21,000 fee is premature before the 2.8% error rate is brought under control. Given the 8.2-minute call-bell response target, practising on the fitted sensors in a live home is far more relevant than a classroom demonstration. CCH should compare the 2.8% error rate and response time after a pilot and spend the $21,000 only if coaching leaves a gap.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to CCH.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both training methods in the context of CCH.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods with a well-justified decision covering cost, disruption and care-quality relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$700", "30 of 120", "2.8%", "21,500"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how CCH's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate CCH's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $700,000 ÷ ($50 − $22) = $700,000 ÷ $28 = 25,000 units. Answer: break-even output is 25,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate CCH's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $50 − $22 = $28. Answer: contribution per unit is $28."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways CCH's management can use this financial data.",
+          "model_answer": "1. Comparing the 25,000-unit break-even output with actual output of 90,000 units gives a margin of safety of 65,000 units, showing how far occupancy could fall before the wing loses money.\n2. Contribution per unit of $28 lets managers test pricing: a $2 discount from $50 to $48 leaves $26 contribution, so they can judge whether extra places still cover the $700,000 fixed costs.\n3. Knowing fixed costs and contribution helps set the volume needed to service the $900,000 bank loan, checking the $1,500,000 wing can meet repayments before CCH commits more capital.\n4. Managers can benchmark unit cost, $700,000 ÷ 90,000 units = $7.78 plus $22 = $29.78 a resident-day, across quarters to spot the 2.8% medication error rate and 12% absence driving extra costs."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 25,000 units | (ii) Contribution per unit = $28 | (iii) Four contextual uses: 65,000-unit safety margin against 90,000-unit output; discount pricing from $50 against $28 contribution; loan-service volume for the $900,000 borrowing; and unit-cost benchmarking at $29.78 to tackle medication errors and absence.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["25,000", "$28", "90,000", "$700,000", "$22", "$50", "$29.78"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate CCH's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has CCH's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 44.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 15.0%\nROCE 2025 = 18.0%\n\nDetailed workings: 2024 gross profit of $1,800,000 came from $4,500,000 revenue less $2,700,000 cost of sales, so $1,800,000 ÷ $4,500,000 × 100 = 40.0. In 2025, $5,400,000 revenue less $3,024,000 cost of sales gives $2,376,000, so $2,376,000 ÷ $5,400,000 × 100 = 44.0. Operating profit of $675,000 in 2024 and $972,000 in 2025 divided by revenue gives $675,000 ÷ $4,500,000 × 100 = 15.0 and $972,000 ÷ $5,400,000 × 100 = 18.0. Returns on capital were $675,000 ÷ $4,500,000 × 100 = 15.0 in 2024 and $972,000 ÷ $5,400,000 × 100 = 18.0 in 2025. Interest payable rose from $110,000 to $135,000, so the gain was not caused by cheaper borrowing.\n\nEvaluation: Every measure improved. The gross margin rose from 40.0% to 44.0% because revenue grew from $4,500,000 to $5,400,000 while cost of sales increased less quickly, so each resident-day retained more after direct costs. The operating margin improved from 15.0% to 18.0%, showing the $700,000 fixed-cost base was absorbed better as the dementia wing filled. Returns on capital climbed from 15.0% to 18.0% even though capital employed rose from $4,500,000 to $5,400,000, so the new investment is contributing. These are operational gains, since operating profit rose despite higher interest payable. The caution is the 2.8% medication error rate and 12% absence, which could lift costs or trigger inspection problems if the $1,500,000 wing is not managed well.\n\nConclusion: CCH's financial performance has improved. The gross margin (40.0% to 44.0%), operating margin (15.0% to 18.0%) and returns on capital (15.0% to 18.0%) all rose together on higher revenue and gross profit, not on accounting effects. CCH should protect the gain by cutting medication errors and absence.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three margins/return for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs, capital and interest movements and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "44.0%", "15.0%", "18.0%", "$2,376,000", "$972,000", "$700,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "CCH is considering fitting emergency-call sensors across all its care homes. Explain one advantage and one disadvantage for CCH of this decision.",
+      "model_answer": "Advantage: Call sensors support the inspection standards that 71% of 350 surveyed families check and help justify the $25 weekly premium wanted by 66%, protecting the $28 contribution per resident-day across 90,000 units and the $1,500,000 dementia wing investment.\n\nDisadvantage: Fitting and maintaining sensors raises the $22 variable cost per unit or the fixed-cost base, and the insert gives no figure for the extra cost, so the net effect cannot be quantified honestly. A technical failure or false alarm would also lengthen the 8.2-minute call-bell response and add to the 2.8% medication error rate before the new wing stabilises. Faster call-bell response also protects the inspection ratings that 71% of families check, which is central to filling the 40-bed wing. The insert gives no installation or maintenance figure, so no payback can be calculated; CCH should pilot sensors on one floor and compare the 8.2-minute response and 2.8% error rate first.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to CCH's survey data, costs and quality record."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["emergency-call sensors", "71%", "350", "$25", "66%", "2.8%", "$1,500,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.75%, the 7.1% minimum wage increase to $14.35 and the 10.2% rise in medical consumables and dementia equipment costs will affect CCH. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.00% to 4.75%): The increase is 0.75 of a percentage point, so if CCH's $900,000 ten-year loan is variable-rate the extra cost is 0.75% × $900,000 = $6,750 a year (0.0075 × $900,000). That is small beside fixed costs of $700,000, and a fixed-rate loan would avoid it. Higher rates could also make future borrowing for the $1,500,000 wing dearer and slightly dampen the 4.6% growth in demand for dementia places.\n\nMinimum wage increase (7.1%, to $14.35 an hour): CCH's workforce of 120 includes hourly-paid care workers, so payroll costs rise and cannot be avoided. The insert gives neither hours worked nor individual pay, so an annual wage total would be invented. The defensible test is productivity: 90,000 units ÷ 120 staff = 750 resident-days per worker, so the higher wage is affordable only if that rate holds or improves; cutting 12% absence and the 2.8% error rate and training the 30 untrained workers can help sustain it.\n\nInput cost inflation (10.2%): Medical consumables feed the $22 variable cost on every resident-day. The insert does not decompose that cost, so only a bound is honest: if the whole $22 were exposed, 10.2% × $22 = $2.244 per unit, and at 90,000 units that is 90,000 × $2.244 = $201,960 a year. Even a smaller exposed share would erode the $28 contribution on every resident-day sold.\n\nConclusion: The 10.2% rise in medical consumables and dementia equipment costs will have the greatest impact. It repeats across all 90,000 units and directly attacks the $28 contribution that services the $900,000 loan and funds the $1,500,000 wing, whereas the interest rise costs $6,750 a year and the wage effect can be offset by sustaining 750 resident-days per worker. CCH should cut the 2.8% error rate and seek the $25 premium rather than absorb the whole increase.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to CCH.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on CCH's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in context with a well-justified judgment that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "7.1%", "10.2%", "$14.35", "$900,000", "$22"]
+      }
+    }
+  ]
+}

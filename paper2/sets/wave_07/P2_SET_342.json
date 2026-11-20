@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_342",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Kestrel Creek Creamery (KCC) is a public limited company in the dairy processing sector, making milk, butter and soft cheese for supermarkets and food-service wholesalers. The company employs a workforce of 37 and operates a hierarchical structure with autocratic leadership and narrowly defined jobs. Founder Niamh Kestrel plans to invest $560,000 in a cheese maturation cellar and an automated bottling line, financed by a $360,000 bank loan and $200,000 retained profit. It has fixed costs of $198,000 a year, a variable cost of $4.40 a unit and a selling price of $10.40, and produces 74,000 units a year, where each unit is a one-litre carton. KCC faces two problems: 7.4% of cartons fail quality checks for curdling or leaking seals, and labour turnover among production staff has reached 18%.",
+    "appendix_1_marketing_ops": "Quality and Operations Extract - Q4 2025: KCC tested 16,800 cartons last quarter, of which 7.4% failed checks for curdling or leaking seals, down from 10.1% a year earlier. Customer complaints rose to 28 from 19 a month. Average delivery to supermarkets is 3.1 days. A survey of 650 shoppers found 62% would pay $0.30 more for milk in returnable glass bottles and 48% check the farm of origin before buying. A trial of the new bottling line on one shift cut failed cartons to 3.2%. A skills audit found 9 of 37 staff had not completed on-the-job training on the filler; off-the-job training at the regional college costs $720 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Kestrel Creek Creamery as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "88", "80"],
+        ["Trade receivables", "120", "138"],
+        ["Cash and cash equivalents", "32", "54"],
+        ["Current liabilities", "160", "152"],
+        ["Non-current assets", "980", "1,220"],
+        ["Capital employed", "1,180", "1,440"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Food Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.75% to 5.5%, increasing the cost of variable-rate borrowing for capital investment. (2) The national minimum wage rises by 6.8% from $12.30 to $13.14 an hour from April 2026, raising dairy production wage costs. (3) Cattle feed and carton packaging input costs have risen 10.4% year-on-year, while retail milk prices rose only 2.2% and consumer spending on cheese grew 3.6%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "KCC plans to fund part of its $560,000 maturation cellar and bottling line with a bank loan. Explain two advantages for KCC of using retained profit instead of the loan.",
+      "model_answer": "Point 1: Retained profit requires no interest payment and no fixed repayment date, which is valuable because KCC must cover fixed costs of $198,000 a year from a contribution of $6.00 a carton ($10.40 − $4.40). Interest on a $360,000 loan would be due even in months when the 7.4% failure rate spikes; using the $200,000 already generated keeps cash in the company and protects the 18%-turnover-hit production team from cutbacks.\n\nPoint 2: Funding from internal reserves avoids the collateral and covenants a bank would attach to a public limited company, so Niamh Kestrel's board can operate the new bottling line without lender interference. No external claim is created over the maturation cellar. The trade-off is that $200,000 of reserves is no longer available as a cushion if cheese demand weakens or the 10.4% feed-cost rise persists, leaving KCC more exposed than with a spread of funding sources. A phased approach, using retained profit first and borrowing later only if cheese demand grows in line with the 3.6% spending trend, would keep that reserve intact.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to KCC's costs, reserves and financing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$200,000", "$360,000", "$560,000", "$198,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "KCC wants to launch its new soft cheese range. Consider local radio advertising, sponsoring a regional food festival, or a social media influencer campaign. Which should KCC choose? Justify your recommendation.",
+      "model_answer": "Local radio advertising: Radio reaches commuters and nearby shoppers cheaply and can run frequent reminders about the new cheese. Its weakness is sound only: it cannot show the product, and a 5.5% base rate makes borrowed promotion money expensive for a company with a $360,000 loan. The 48% of surveyed shoppers who check farm of origin need a visual message.\n\nRegional food festival sponsorship: A festival lets consumers taste the cheese and hear the farm-origin story directly, which suits the 48% who check provenance and the 62% who would pay $0.30 more for returnable glass bottles. It creates goodwill and press, but the event lasts a few days, the audience is local, and the link to 74,000 cartons of annual output is indirect and hard to measure.\n\nSocial media influencer campaign: Food and family influencers can show the cheese, the maturation cellar and the returnable bottles to a broad national audience at low cost per view, with engagement that can be tracked against the 16,800 cartons tested last quarter. Results build gradually and depend on credible reviewers, and content must address the 28 monthly complaints about leaking seals.\n\nRecommendation: KCC should choose the social media influencer campaign, with a small festival tasting for launch week. It shows the product and the provenance message, reaches far beyond a local radio catchment while the $360,000 loan is outstanding, and can repair the image behind 28 complaints. Radio is rejected because it cannot display the cheese, and festival sponsorship is rejected as a short local event that cannot sell 74,000 cartons a year on its own.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal application to KCC.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of KCC with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in context with a well-justified recommendation explaining why radio and the festival are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["7.4%", "62%", "$0.30", "48%", "16,800", "$560,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "KCC's labour turnover is 18% and 7.4% of cartons fail checks under its autocratic, hierarchical structure. Explain two benefits for KCC of introducing job enrichment for production staff.",
+      "model_answer": "Point 1: Job enrichment would give the workforce of 37 whole tasks, such as monitoring the bottling line and signing off their own quality checks, instead of narrowly repeating one motion. That variety tackles the boredom driving 18% labour turnover, so fewer experienced operators leave and the 7.4% failure rate is less likely to be worsened by constant new starters.\n\nPoint 2: When workers own a complete stage of production they can spot the cause of curdling or leaking seals earlier, helping drive failures towards the 3.2% achieved on the bottling-line trial and cutting the 28 monthly complaints. Greater responsibility also suits a public limited company preparing a $560,000 cellar: stable, skilled staff protect the $10.40 price and $6.00 contribution, and reduce the need to recruit during the 6.8% wage rise. Niamh Kestrel should pilot enrichment on one shift and compare results with the 16,800-carton baseline before extending it. Managers should also check that 18% turnover actually falls before the change is rolled out, since extra responsibility will not help if staffing remains unstable.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to KCC's turnover, quality failures and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["labour turnover", "18%", "workforce of 37", "7.4%", "16,800", "3.2%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "KCC must train 9 of 37 staff to operate the new filler. Consider on-the-job training on the bottling line or off-the-job training at the regional college. Which should KCC choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching at the filler teaches KCC's own seals, temperatures and cleaning cycles, costs no course fees, and keeps the 9 trainees producing while 16,800 cartons a quarter must be tested. It can cut the 7.4% failure rate straight away because supervisors correct errors on real cartons. The weaknesses are that skilled operators lose time teaching, bad habits can spread, and there is no certificate to prove competence to supermarket auditors checking the 3.2% trial standard.\n\nOff-the-job training: The regional college course costs $720 per employee, so 9 × $720 = $6,480, small against a $560,000 investment. It provides structured dairy-process teaching and a recognised certificate, helpful for a public limited company with 18% labour turnover. It removes 9 of 37 staff from production, risking the 3.1-day delivery promise, and generic content still needs adapting to KCC's exact filler settings.\n\nDecision: KCC should choose on-the-job training on the line, followed by a short certified college module for the team leaders. It is cheaper, specific to the installed equipment and avoids losing output while turnover is already high. Full off-the-job training is rejected because the $6,480 fee and lost shifts would slow the 16,800-carton operation and cannot directly reduce the 7.4% failures. A one-shift pilot measured against the 3.2% trial result should decide whether the $720 per head is worth extending to all staff. The board should also require evidence that the $6,480 spend lowers the 7.4% failure rate before repeating it on other shifts, particularly as 18% turnover means newly hired operators will need training again.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to KCC.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both methods in the context of KCC.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a justified decision covering cost, disruption and relevance to the filler."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$720", "9 of 37", "7.4%", "$560,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "KCC's management wants to use its cost and output data to judge the new bottling line. Calculate and explain how that data can be used.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate KCC's average total cost per carton.",
+          "model_answer": "Formula: Average total cost = Fixed cost per unit + Variable cost per unit. Substitution: $198,000 ÷ 74,000 = $2.68, plus $4.40 = $7.08. Answer: average total cost is $7.08 a carton."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate KCC's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $10.40 − $4.40 = $6.00. Answer: contribution per unit is $6.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways KCC's management can use this financial data.",
+          "model_answer": "1. Average total cost of $7.08 against a $10.40 price shows a $3.32 margin a carton, a benchmark for judging whether the $560,000 cellar and filler genuinely lower unit cost rather than adding to fixed costs.\n2. Contribution of $6.00 lets managers test the survey: the 62% who would pay $0.30 more for returnable glass bottles would lift contribution to $6.30, which can be weighed against the extra cost of the bottles before a launch.\n3. With fixed costs of $198,000 and $6.00 contribution, break-even is $198,000 ÷ $6.00 = 33,000 cartons, leaving KCC a margin of safety of 41,000 cartons on output of 74,000 even if the 7.4% failure rate rises.\n4. Managers can compare unit cost with the $720 per employee training fee and 18% labour turnover, deciding whether cutting 9 untrained staff's errors on the 28 monthly complaints is worth the $6,480 spend, and renegotiate the $4.40 variable cost given 10.4% input inflation."
+        }
+      ],
+      "model_answer": "(i) Average total cost = $7.08 | (ii) Contribution per unit = $6.00 | (iii) Four contextual uses explained: $7.08 cost versus $10.40 price; $6.00 contribution for the $0.30 bottle premium; break-even of 33,000 cartons and a 41,000-carton safety margin; and unit-cost benchmarking against $720 training and 10.4% inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$7.08", "$6.00", "74,000", "$198,000", "$4.40", "$10.40"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate KCC's liquidity by calculating the current ratio and the acid test ratio for 2024 and 2025. Has KCC's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.50 : 1\nCurrent Ratio 2025 = 1.79 : 1\nAcid Test Ratio 2024 = 0.95 : 1\nAcid Test Ratio 2025 = 1.26 : 1\n\nDetailed workings: 2024 current assets = $88,000 inventories + $120,000 trade receivables + $32,000 cash = $240,000, and 2025 current assets = $80,000 + $138,000 + $54,000 = $272,000. Dividing by current liabilities gives $240,000 ÷ $160,000 = 1.50 and $272,000 ÷ $152,000 = 1.79. Excluding inventories: ($240,000 − $88,000) ÷ $160,000 = $152,000 ÷ $160,000 = 0.95, and ($272,000 − $80,000) ÷ $152,000 = $192,000 ÷ $152,000 = 1.26.\n\nEvaluation: Short-term liquidity improved on both measures. Current liabilities fell from $160,000 to $152,000 while current assets rose from $240,000 to $272,000, helped by cash rising from $32,000 to $54,000. The stricter test, which removes stock that may be lost through curdling or leaking, climbed from 0.95 to 1.26, so KCC can now cover all short-term debts from cash and receivables alone instead of relying on selling $80,000 of inventories. This matters while the company spends $200,000 of reserves and takes a $360,000 loan for the $560,000 cellar. The reservation is that receivables grew from $120,000 to $138,000, tying up cash owed by supermarkets, and 18% labour turnover plus the 7.4% failure rate could raise costs faster than the ratio gain suggests.\n\nConclusion: KCC's financial position has improved. Both measures rose and the 1.26 figure shows the improvement does not depend on stock, so the business is better placed to meet short-term obligations. Rising receivables remain the main risk, so Niamh Kestrel should tighten credit control before further drawdown on the $360,000 loan.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of inventory, receivables and liability movements and a justified conclusion on whether liquidity improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.50", "1.79", "0.95", "1.26", "$240,000", "$272,000", "$560,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for KCC of switching its milk cartons to returnable glass bottles.",
+      "model_answer": "Advantage: The survey found 62% of 650 shoppers would pay $0.30 more for milk in returnable glass bottles and 48% check farm of origin, so the change supports a premium that protects the $6.00 contribution on all 74,000 cartons. Glass also reinforces the provenance story behind the new soft cheese and helps KCC defend its $10.40 price while retail milk prices rose only 2.2%.\n\nDisadvantage: Returnable glass is heavier and more fragile than cartons, so the 3.1-day delivery chain could see more breakages than the current 7.4% failure figure, adding to the 28 monthly complaints and the $4.40 variable cost through higher transport and washing. A deposit and reverse logistics system would also need investment while a $360,000 loan is outstanding. The insert gives no return rate or washing cost, so the net benefit cannot be quantified and must be tested on a small trial first. KCC should compare breakages and complaints from a limited launch with the current 28 monthly complaints before converting the whole 74,000-carton range.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to KCC's survey, failure rate, delivery and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["returnable glass bottles", "62%", "$0.30", "48%", "3.1 days", "$4.40"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.5%, the 6.8% minimum wage increase and the 10.4% rise in feed and packaging costs will affect KCC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.75% to 5.5%): If the $360,000 bank loan is variable-rate, the 0.75 percentage-point rise adds 0.75% × $360,000 = $2,700 a year to interest. That is small beside $198,000 of fixed costs, and the board could fix the rate, so the direct cost is containable. The indirect effect is that dearer borrowing makes the $560,000 cellar more expensive to refinance and raises the cost of drawing on future credit.\n\nMinimum wage increase (6.8%, from $12.30 to $13.14): Each production hour costs $0.84 more (6.8% × $12.30 = $0.8364). The insert gives no hours worked and no individual pay rates, so an annual total would be invented; the defensible judgement is that with 18% labour turnover KCC keeps rehiring at the new rate, and unless productivity holds near 74,000 cartons from a workforce of 37, unit labour cost rises and the $6.00 contribution shrinks.\n\nFeed and packaging costs (up 10.4%): These bear on the $4.40 variable cost of each carton. The insert does not decompose that cost, so only a labelled upper bound is honest: if the whole $4.40 were exposed, 10.4% × $4.40 = $0.46 a carton, and at 74,000 cartons that is roughly $33,900 a year (74,000 × $0.4576). Even a smaller exposed share cuts the $6.00 contribution on every carton, and retail milk prices rose only 2.2%, so little can be passed on.\n\nConclusion: The 10.4% rise in feed and packaging costs will have the greatest impact. It recurs on all 74,000 cartons and directly attacks the $6.00 contribution that services the $360,000 loan and the $560,000 expansion, whereas interest adds only $2,700 a year and can be capped by fixing the rate. The wage rise is second because it recurs with every new hire, but job enrichment can offset part of it. KCC should reduce the 7.4% failure rate and pursue the $0.30 premium rather than absorb the whole increase.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to KCC.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on KCC's costs, prices or finance in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.5%", "6.8%", "10.4%", "$13.14", "$360,000", "$4.40"]
+      }
+    }
+  ]
+}

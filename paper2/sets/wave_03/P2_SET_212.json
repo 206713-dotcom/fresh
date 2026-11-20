@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_212",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Hexfield Code Academy (HCA) is a private limited company in the education sector, specialising in digital-skills training, employing a workforce of 26. Founded in 2018 by Rhea Calloway, HCA runs coding bootcamps for career-changers and uses a flat organisational structure with laissez-faire leadership. HCA plans to invest $650,000 in a second campus in Leeds with expanded data-analytics labs and solar panels, financed by a $400,000 five-year bank loan and a $250,000 share issue. It has fixed costs of $715,000 a year, a variable cost of $450 a unit and a selling price of $1,000, and currently produces 6,800 units a year (course enrolments). HCA faces two problems: an instructor skills gap in cloud computing and rising learner complaints about outdated course materials.",
+    "appendix_1_marketing_ops": "Market Research Summary — Q3 2025: Market research of 800 prospective learners found that 57% would enrol on a data-analytics bootcamp and 46% would pay up to $150 more per month for evening and weekend classes. Completion rates last term reached 87%, up from 79% a year ago. Learner complaints fell from 44 to 26 per intake across the 1,675 enrolments delivered in Q3. An on-the-job training needs analysis shows 9 of 26 staff have not completed platform upskilling; off-the-job training courses at the city college cost $700 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Hexfield Code Academy for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "5,600", "6,800"],
+        ["Cost of sales", "3,360", "3,740"],
+        ["Gross profit", "2,240", "3,060"],
+        ["Operating profit", "840", "1,360"],
+        ["Capital employed", "8,400", "8,500"],
+        ["Interest payable", "30", "41"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.25% to 5.0%, increasing borrowing costs for businesses with variable-rate loans. (2) The national minimum wage will rise by 6.2% from $12.20 to $12.96 per hour from April 2026, raising wage bills across the education sector. (3) Cloud licensing and laptop costs have risen 10.8% year-on-year, education inflation is running at 7.2%, and consumer spending on private digital-skills training grew 5.4% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HCA plans to finance part of its Leeds expansion with a bank loan and a share issue. Explain two advantages for HCA of using a share issue instead of a larger bank loan.",
+      "model_answer": "Point 1: A share issue brings in $250,000 with no repayments and no interest, protecting HCA's cash flow at a time when it already carries fixed costs of $715,000 a year and a $400,000 five-year bank loan. Every dollar not paid to a lender can absorb the 10.8% rise in cloud licensing and laptop costs, helping HCA hold its $1,000 course price and protect the $550 contribution per enrolment rather than passing costs straight on to learners.\n\nPoint 2: Issuing shares spreads the ownership of HCA across more shareholders, so the expansion risk is shared rather than borne by Rhea Calloway alone, and no extra collateral is required over the Leeds campus assets. It also avoids the repayment-pressure and covenant risk of a larger loan at a time when the base interest rate has just risen from 4.25% to 5.0% — interest payable already rose from $30,000 to $41,000, and a bigger loan would compound that burden just as the Leeds site ramps up enrolments.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Hexfield Code Academy and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["share issue", "bank loan", "$250,000", "$400,000", "$715,000", "$1,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HCA is launching its data-analytics bootcamp and new Leeds campus. Consider a national television campaign, local radio sponsorship, or social media influencer marketing. Which should HCA choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Television campaign: A national television campaign would reach millions of viewers very quickly and build instant name recognition for the new Leeds campus. However, HCA is a 26-person academy funding a $650,000 expansion; national production and airtime costs are extremely high, and most viewers neither want to change careers into data analytics nor live near Leeds, so most spend would be wasted on the wrong audience. Television is also hard to measure beyond broad reach, which a private training business needs to justify its marketing budget.\n\nLocal radio sponsorship: Local radio is cheap, reaches Leeds and surrounding commuter belt repeatedly, and suits time-boxed messages such as enrolment deadlines for the new intake. Its weakness is reach — HCA's bootcamps already serve career-changers online nationally, producing 6,800 course enrolments a year, so a purely local station cannot drive the volume needed for the Leeds campus's capacity or build brand outside the Yorkshire region.\n\nSocial media influencer marketing: Partnering with data-career YouTubers and LinkedIn creators targets exactly the 57% of surveyed learners who would enrol on a data-analytics bootcamp and the 46% who would pay up to $150 more per month for evening and weekend classes. Content can demonstrate real student outcomes, cost per reached learner is low, engagement is measurable, and the solar-powered Leeds campus and completion-rate story (87%, up from 79%) give influencers credible material. Results take time to compound and depend on influencer credibility, but the audience match is far better than TV or radio.\n\nRecommendation: HCA should choose social media influencer marketing. It reaches the precise segment already identified in its research (57% and 46%), costs far less than television for a 26-person business, scales nationally where local radio cannot, and lets prospects see the campus and graduate outcomes directly. Television is rejected as unaffordable and untargeted; local radio is rejected as the lead channel because its reach is too narrow for a national online bootcamp, though short Leeds radio bursts could support the launch affordably. Influencers alone lack broadcast reach, so HCA should pair them with open days and referral incentives for alumni.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of HCA with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of HCA with a well-justified recommendation explaining why television and radio are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["data-analytics", "57%", "46%", "$150", "87%", "$650,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HCA faces an instructor skills gap in cloud computing and rising complaints about outdated course materials. Explain two benefits for HCA of its laissez-faire leadership style.",
+      "model_answer": "Point 1: Laissez-faire leadership gives HCA's experienced instructors the autonomy to redesign cloud-computing modules and update outdated materials themselves, exercising initiative and job enrichment (Herzberg) rather than waiting for head-office approval. This directly attacks both stated problems at source, because the people closest to the material refresh it fastest, and it satisfies esteem needs that keep scarce technical talent in post.\n\nPoint 2: High autonomy encourages instructors to experiment with the new virtual-learning platform and bring back innovations from the data-analytics market, raising the 87% completion rate further and helping complaints (down from 44 to 26 per intake) fall again. For a flat 26-person organisation, delegating decisions cuts delays, lowers the burden on Rhea Calloway, and builds a pipeline of future course leads. This autonomy also protects the 1,675 enrolments delivered last term, because motivated instructors keep cancellations low and the intake full — crucial when upskilling costs $700 per employee and the platform skills gap affects 9 of the 26 staff.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HCA's skills gap, complaints and training costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "workforce of 26", "9 of 26 staff", "87%", "$700", "outdated course materials"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HCA must upskill 9 instructors on the new virtual-learning platform. Consider on-the-job training or off-the-job training at the city college. Which should HCA choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training on the job is directly relevant to HCA's own platform, course repositories and delivery standards, costs nothing in course fees, and keeps the 9 instructors teaching while they learn, protecting the 1,675 enrolments delivered last term and the 87% completion rate. Drawbacks are that senior instructors who train others lose teaching time themselves, bad habits on the platform can spread between colleagues, and no external certificate is awarded, which HCA's learners may value when comparing providers — the market research shows 57% would enrol specifically for the data-analytics bootcamp, so visible quality matters.\n\nOff-the-job training: The city college course at $700 per employee gives structured, current platform certification for all 9 staff, costing $6,300 in total — affordable against a $650,000 expansion. It removes 9 of 26 instructors from the classroom, however, reducing delivery capacity for the Q3 intake and risking longer feedback loops on learner complaints, and the generic content may not match HCA's exact platform configuration, so on-site follow-up coaching would still be needed.\n\nDecision: HCA should choose on-the-job training for the platform rollout, supplemented by off-the-job college places for two lead instructors who can then set platform standards for the rest of the team. On-the-job training is cheaper, platform-specific and avoids pulling a third of the teaching workforce out of delivery while the Leeds campus opens. Full off-the-job training is rejected because the $6,300 fee plus lost teaching time would squeeze the very completion rate (87%) HCA relies on to counter complaints about outdated materials; college certification can follow once the new intake is under way.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to HCA.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of HCA.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of HCA with a well-justified decision covering cost, disruption, capacity and credential relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$700", "9 of 26 staff", "1,675", "$650,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HCA's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HCA's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $715,000 ÷ ($1,000 − $450) = $715,000 ÷ $550 = 1,300 units. Answer: break-even output is 1,300 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HCA's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $1,000 − $450 = $550. Answer: contribution per unit is $550."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HCA's management can use this financial data.",
+          "model_answer": "1. HCA's managers can compare the 1,300-unit break-even output with actual enrolments of 6,800 units to confirm the business is comfortably profitable, with a margin of safety of 5,500 enrolments, informing how aggressively to market the Leeds campus before it reaches steady state.\n2. Contribution per unit of $550 lets managers model the effect of a discounted scholarship offer, for example a 10% price cut to $900 would reduce contribution to $450, letting managers test whether the extra volume needed to fill the new data-analytics labs would still cover the $715,000 fixed costs.\n3. Knowing fixed costs and contribution per unit helps managers set enrolment targets used to justify the $400,000 bank loan and the $250,000 share issue, checking the Leeds site can service both before committing to further campuses.\n4. Managers can use unit cost data ($715,000 ÷ 6,800 units + $450 = $555.15 a unit) to benchmark term-by-term performance, identify where cloud licensing and laptop costs are drifting above plan amid the 10.8% input-cost rise, and reprice evening classes (the 46% of learners willing to pay up to $150 more) to defend contribution."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 1,300 units | (ii) Contribution per unit = $550 | (iii) Four contextual uses explained: margin of safety of 5,500 enrolments vs 6,800-unit output; scholarship discount modelling vs $715,000 fixed costs; loan and share-issue feasibility for the $650,000 expansion; and unit-cost benchmarking at $555.15 against input-cost inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1,300", "$550", "6,800", "$715,000", "5,500", "$555.15"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HCA's financial performance by calculating the gross profit margin, the profit margin and ROCE for 2024 and 2025. Has HCA's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 10.0%\nROCE 2025 = 16.0%\n\nDetailed workings: 2024 gross profit $2,240,000 on revenue $5,600,000 (cost of sales $3,360,000); 2025 gross profit $3,060,000 on revenue $6,800,000 (cost of sales $3,740,000). 2024 operating profit $840,000; 2025 operating profit $1,360,000. 2024 capital employed $8,400,000; 2025 capital employed $8,500,000. Interest payable rose from $30,000 to $41,000, reflecting the five-year bank loan funding the Leeds campus.\n\nEvaluation: Performance improved strongly. Gross profit grew $820,000 (36.6%) as revenue rose $1,200,000 and the cost of sales share of revenue fell from 60.0% to 55.0%, helped by the completion rate reaching 87% and complaints falling from 44 to 26 per intake — fewer re-delivery costs and more referrals. Operating profit grew 61.9% ($840,000 to $1,360,000), well ahead of revenue growth of 21.4%, so overheads were absorbed efficiently as the Leeds site filled. Capital employed rose only $100,000 because much of the Leeds build was covered by the share issue, so the return on capital still climbed sharply. However, interest payable is rising with the loan and the base-rate move from 4.25% to 5.0%, the 10.8% jump in cloud and laptop costs could squeeze future cost of sales, and the Leeds ramp-up still carries enrolment risk against the 6,800-unit plan.\n\nConclusion: Yes, HCA's financial performance has improved. Revenue, gross profit and operating profit all grew strongly, cost control genuinely improved, and the return on capital employed climbed from 10.0% to 16.0% while capital employed barely moved. The judgement is not risk-free — borrowing costs are rising and input inflation is running at 10.8% — so HCA should lock in platform licensing deals, monitor Leeds enrolment weekly, and keep refreshing course materials, but the overall verdict is a clearly improved performance.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, cost of sales, overheads and capital employed movements and a justified conclusion on whether HCA's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "20.0%", "16.0%", "$6,800", "3,060"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HCA of installing solar panels at the new Leeds campus.",
+      "model_answer": "Advantage: Solar panels cut electricity bills at the new Leeds campus, directly lowering the $715,000 fixed-cost base and freeing cash for teaching quality, equipment and the 9 under-trained instructors. They also strengthen HCA's environmental image — a credible differentiator for a digital-first academy whose learners skew young and sustainability-minded — and support recruitment of instructors who want to work for a responsible employer, helping tackle the skills gap in cloud computing for good.\n\nDisadvantage: The panels add an upfront cost on top of a $650,000 expansion already funded by a bank loan and share issue, increasing the amount HCA must finance and repay. Installation on a new build also risks delaying the campus opening and first intake, and solar generation is variable — savings in winter fall short of summer output, so the panels will not fully shield HCA from the 10.8% rise in cloud licensing and laptop costs, which are its real cost pressure rather than lighting and heating.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HCA's costs, expansion and skills gap."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["solar panels", "$650,000", "$715,000", "$400,000", "9 of 26 staff", "10.8%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.0%, the 6.2% minimum wage increase and the 10.8% rise in input costs will affect HCA. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.25% to 5.0%): If HCA's $400,000 five-year bank loan is variable-rate, the 0.75 percentage point rise adds about $3,000 a year to financing costs — real, but modest next to $715,000 of fixed costs. Higher rates also make any further borrowing costlier, may cool consumer spending on big-ticket training courses, and increase the opportunity cost of waiting for retained profit rather than issuing more shares. HCA can partly shield itself by fixing the loan rate and leaning further on its share-issue capacity.\n\nMinimum wage increase (6.2%, to $12.96 per hour): HCA employs 26 staff; instructors earn well above minimum wage, but support, facilities and administrative roles are affected. If roughly 8 of the 26 staff sit near the minimum wage on 40-hour weeks, the 6.2% rise adds roughly $1,340 per affected worker per year — around $11,000 a year — on top of the existing skills gap and $700-per-head retraining costs. The impact is material but concentrated in the support-staff budget, not teaching delivery.\n\nInput cost inflation (10.8% cloud licensing and laptops): HCA's variable cost of $450 a unit is dominated by platform licences, laptops and lab materials. A 10.8% rise on, say, the $200 licence-and-materials share adds roughly $22 per enrolment; at 6,800 enrolments a year that is about $149,000 a year, cutting contribution per unit from $550 toward $528 and eroding roughly 4% of margin. The 5.4% growth in private digital-skills spending shows demand is intact, but rivals face the same pressure, so HCA must renegotiate licences or reprice evening classes (the 46% willing to pay up to $150 more) to hold contribution.\n\nConclusion: The 10.8% rise in input costs will have the greatest impact. It strikes every one of the 6,800 enrolments, totalling roughly $150,000 a year and steadily eroding the $550 contribution margin that justifies the $650,000 Leeds expansion. The minimum wage rise is the second risk, concentrated in support roles, while the interest-rate increase is the smallest in cash terms (about $3,000 a year) and can be managed by fixing the loan rate. HCA should still address all three — renegotiate platform contracts, restructure support rosters and review debt terms — or the Appendix 2 gains in cost control will unwind by 2026.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to HCA.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on HCA's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of HCA with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "6.2%", "10.8%", "$12.96", "$450", "$400,000"]
+      }
+    }
+  ]
+}

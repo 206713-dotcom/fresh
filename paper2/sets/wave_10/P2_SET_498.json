@@ -1,0 +1,269 @@
+{
+  "scenario_id": "P2_SET_498",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Harborline Precast Systems (HPSC) is a public limited company in the low-carbon construction products sector, employing a workforce of 64. Founded in 2004 by Elena Marchetti, the business supplies precast concrete panels to contractors and operates a hierarchical structure with autocratic leadership. HPSC plans to invest $900,000 in an automated precast moulding line using recycled aggregate, financed by a $450,000 share issue and a $450,000 bank loan. It has fixed costs of $540,000 a year, a variable cost of $18.00 a unit and a selling price of $30.00, and currently produces 90,000 units a year. HPSC faces two problems: the casting-bay defect rate has reached 5.4% and labour turnover is high.",
+    "appendix_1_marketing_ops": "Quality Report — Q3 2025: The precast line cast 23,000 units last quarter at a defect rate of 5.4%, down from 7.2% a year ago. Customer complaints about cracked panels fell from 52 to 27 per month. Average delivery time is 7.4 days. Cement waste is 6.6% of material input. A survey of 500 contractors found that 59% would pay $1.20 more for low-carbon precast panels, and 55% check carbon credentials when tendering. A training review shows 22 of 64 workers have not completed on-the-job training on the new moulding machines; off-the-job courses at the technical college cost $880 per worker.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Harborline Precast Systems for the year ended 31 March 2025 ($ '000)",
+      "headers": [
+        "Financial Metric",
+        "2024",
+        "2025"
+      ],
+      "rows": [
+        [
+          "Revenue",
+          "4,000",
+          "4,800"
+        ],
+        [
+          "Cost of sales",
+          "2,200",
+          "2,496"
+        ],
+        [
+          "Gross profit",
+          "1,800",
+          "2,304"
+        ],
+        [
+          "Operating profit",
+          "600",
+          "864"
+        ],
+        [
+          "Capital employed",
+          "3,000",
+          "3,600"
+        ],
+        [
+          "Interest payable",
+          "80",
+          "96"
+        ]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.0% to 4.75%, increasing servicing costs on floating-rate debt. (2) The national minimum wage will rise by 6.1% from $13.00 to $13.79 an hour from April 2026, raising wage bills across construction. (3) Wholesale cement and steel input costs have risen 10.5% year-on-year, while construction inflation is 6.8% and spending on commercial building grew 2.4%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HPSC plans to fund its $900,000 moulding line with a $450,000 bank loan. Explain two advantages for HPSC of using a bank loan rather than funding the whole line through a share issue.",
+      "model_answer": "Point 1: A bank loan leaves existing shareholders' control untouched, so Elena Marchetti and current investors are not diluted by issuing new shares for the whole $900,000. With autocratic leadership and a hierarchical structure, HPSC can keep decision-making centralised while servicing the $450,000 loan from the $12.00 contribution earned on each panel, rather than sharing ownership with new shareholders.\n\nPoint 2: Debt has a known, fixed cost and term, which makes planning against $540,000 fixed costs easier than the uncertain dividend expectations of new equity. If the 59% of surveyed contractors who would pay $1.20 more convert into orders, the loan can be repaid on schedule without permanently giving away a share of future profits from the 90,000-unit output.\n\nThe loan can also be repaid on a fixed schedule from contribution earned on each panel (the $30.00 price less the $18.00 variable cost), so dividend expectations stay realistic; equity would create permanent claims on future profit from the 90,000-unit output.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid advantage of debt over equity finance (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for contextual explanation applied to HPSC's ownership, leadership and expansion."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "bank loan",
+          "$450,000",
+          "$900,000",
+          "$540,000",
+          "$30.00",
+          "share issue"
+        ]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HPSC wants to cut its 5.4% casting-bay defect rate. Consider end-of-line inspection, quality circles involving operators, or automated sensors on the moulding machines. Which should HPSC choose? Justify your recommendation.",
+      "model_answer": "End-of-line inspection: Checking finished panels can catch cracked units before dispatch, protecting the 27 monthly complaints figure and the $30.00 price. It is a detection method that finds defects after resources have been used, so the 6.6% cement waste continues, and hiring inspectors adds cost to the $540,000 fixed costs; with autocratic leadership, inspection may breed blame rather than improvement.\n\nQuality circles: Regular operator problem-solving meetings can identify the root causes of the 5.4% defect rate and tap the 42 of 64 workers already trained, building ownership and reducing the 6.6% waste. They take time and require a shift away from strict top-down control, which conflicts with HPSC's autocratic culture; results are gradual and depend on genuine management support.\n\nAutomated sensors: Inline sensors on the new moulding machines can flag faults immediately, cutting rework across 90,000 units and supporting the $1.20 premium sought by 59% of survey respondents. The capital and maintenance cost is high on top of a $900,000 line financed by a $450,000 loan, and 22 of 64 workers still need on-the-job training before they can respond to sensor data.\n\nRecommendation: HPSC should install automated sensors, backed by short operator training. Sensors prevent defects at source across the full 90,000-unit output and protect the low-carbon positioning that 55% of contractors check, outweighing the extra cost. End-of-line inspection is rejected because it detects rather than prevents waste; quality circles are rejected as too slow and at odds with the current autocratic structure, though they can be introduced later.\n\nSensors also generate data that can guide later quality circles.",
+      "mark_scheme": {
+        "level_1_1_to_4": [
+          "Limited awareness of the three quality approaches with minimal HPSC context."
+        ],
+        "level_2_5_to_8": [
+          "Discussion of advantages and disadvantages of at least two approaches applied to HPSC's defect and cost data."
+        ],
+        "level_3_9_to_12": [
+          "Detailed evaluation of all three approaches with a justified recommendation explaining why inspection and quality circles are rejected."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "defect rate",
+          "5.4%",
+          "59%",
+          "$1.20",
+          "500",
+          "6.6%"
+        ]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HPSC's casting bay has a 5.4% defect rate and high labour turnover. Explain two benefits for HPSC of its autocratic leadership style.",
+      "model_answer": "Point 1: Autocratic leadership lets Elena Marchetti impose strict casting standards and immediate corrective action across the 64-strong workforce, which can bring the 5.4% defect rate down quickly and reduce the 6.6% cement waste. Clear instructions suit a hierarchical structure where consistency matters for precast panels supplied to 500 surveyed contractors, protecting the $30.00 price and $12.00 contribution.\n\nPoint 2: In a crisis of high labour turnover, fast top-down decisions on staffing and training avoid delays from consultation; management can redeploy the 42 trained workers and schedule the $880 courses without waiting for consensus. This keeps the 90,000-unit output on track while the $900,000 line beds in, though HPSC should watch that lack of involvement does not worsen the turnover problem.\n\nClear, central instructions also help when 22 of 64 workers still need on-the-job training, since standardised casting routines are easier to teach than individually improvised methods, protecting the $1.20 premium panels.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid benefit of autocratic leadership (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for contextual development linked to HPSC's defects, turnover and hierarchy."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "autocratic leadership",
+          "5.4%",
+          "workforce of 64",
+          "$880",
+          "6.6%",
+          "hierarchical structure"
+        ]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "A training review shows 22 of 64 HPSC workers have not completed on-the-job training on the new moulding machines. Consider hiring external quality inspectors or introducing quality circles with existing staff. Which should HPSC choose? Justify your decision.",
+      "model_answer": "External quality inspectors: Recruiting specialists could identify the causes of the 5.4% defect rate quickly and give an independent check on the $1.20 premium panels, while covering the 22 untrained workers. Salaries add to $540,000 fixed costs, outsiders may not understand the new moulding machines, and hiring while labour turnover is high does nothing to build long-term skill among the 64 staff.\n\nQuality circles: Small groups of existing operators meeting to solve casting problems can use the experience of the 42 already trained, reduce the 6.6% cement waste and raise commitment, which helps high labour turnover. The $880 per-worker course figure shows training is already budgeted, but circles need time and a move from autocratic control towards shared decisions, so gains may be slow in HPSC's hierarchical culture.\n\nDecision: HPSC should introduce quality circles among its existing workforce, supported by the planned $880 training. Circles address the 5.4% defect rate at source, use the 42 trained workers and improve retention, protecting the 90,000-unit output without adding permanent salary costs. External inspectors are rejected because they are an ongoing expense, lack machine-specific knowledge and leave the underlying skill gap of 22 of 64 workers untouched, so defects would return once they left.\n\nCircles also fit the hierarchical structure better than outsiders because they use the 42 trained workers already familiar with the moulding machines. HPSC can review the 5.4% defect rate each quarter; if it does not fall, management can then hire a specialist without having lost the investment in staff development and without creating a permanent salary commitment.",
+      "mark_scheme": {
+        "level_1_1_to_4": [
+          "Basic comparison of recruitment and quality circles with limited HPSC application."
+        ],
+        "level_2_5_to_8": [
+          "Analysis of cost, speed and skill effects of both options using HPSC's defect and training data."
+        ],
+        "level_3_9_to_12": [
+          "Comprehensive evaluation of both options with a justified decision referencing cost, defect rate and labour turnover."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "defect rate",
+          "22 of 64",
+          "$880",
+          "6.6%",
+          "moulding machines",
+          "5.4%"
+        ]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HPSC's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HPSC's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $540,000 ÷ ($30.00 − $18.00) = $540,000 ÷ $12.00 = 45,000 units. Answer: break-even output is 45,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate the contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $30.00 − $18.00 = $12.00. Answer: contribution per unit is $12.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways the management can use this financial data.",
+          "model_answer": "1. Compare break-even output of 45,000 units with actual output of 90,000 units, giving a margin of safety of 45,000 units, so management can absorb a downturn in commercial building, which grew only 2.4%.\n2. Use the $12.00 contribution to evaluate the survey finding that 59% would pay $1.20 more: the premium would raise contribution to $13.20, supporting the business case for the $900,000 low-carbon line.\n3. Link break-even volume to servicing the $450,000 bank loan, ensuring the $540,000 fixed costs and interest are covered before the new moulding line is run at full capacity.\n4. Track average total cost of $24.00 a unit ($540,000 ÷ 90,000 = $6.00 plus $18.00) against the 6.6% cement waste and 10.5% input inflation, so managers can judge whether the 5.4% defect rate is being controlled."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 45,000 units | (ii) Contribution per unit = $12.00 | (iii) Four contextual uses explained: margin of safety of 45,000 units against 90,000 output; modelling the $1.20 premium on $12.00 contribution; loan-service volume for the $450,000 loan; and average total cost benchmarking at $24.00 to monitor 6.6% waste and 10.5% inflation.",
+      "mark_scheme": {
+        "working_marks": [
+          "1 mark for correct formula and 1 mark for the numerical answer in (i) and (ii); 1 mark per valid applied use in (iii)."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "45,000",
+          "$12.00",
+          "90,000",
+          "$540,000",
+          "$18.00",
+          "$30.00",
+          "$24.00",
+          "$1.20"
+        ]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HPSC's financial performance by calculating the gross profit margin, profit margin and return on capital employed for 2024 and 2025. Has HPSC's financial performance improved? Justify your answer.",
+      "model_answer": "Gross Profit Margin 2024 = 45.0%\nGross Profit Margin 2025 = 48.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 20.0%\nROCE 2025 = 24.0%\n\nDetailed workings: Gross profit of 1,800 on revenue of 4,000 gives 45.0% in 2024, and 2,304 on 4,800 gives 48.0% in 2025. Operating profit of 600 on revenue of 4,000 gives 15.0%, and 864 on 4,800 gives 18.0%. Operating profit of 600 on capital employed of 3,000 gives 20.0%, and 864 on 3,600 gives 24.0%. Revenue rose by 800 while cost of sales rose by only 296, and interest payable increased from 80 to 96.\n\nEvaluation: The improvement is broad. The 45.0% to 48.0% gross margin shows HPSC is converting each dollar of precast sales into more gross profit, helped by the low-carbon positioning that 59% of surveyed contractors value. The 15.0% to 18.0% operating margin confirms that the $540,000 fixed costs were absorbed as revenue grew, since operating profit rose by 264. The 20.0% to 24.0% return on capital employed is most important: capital grew from 3,000 to 3,600 with the $900,000 investment, yet operating profit grew faster, so the new line has not diluted returns. Interest payable rose from 80 to 96, reflecting the $450,000 loan, a modest offset.\n\nConclusion: HPSC's financial performance has improved. Gross margin, operating margin and ROCE all increased together, so the gain is not purely a revenue effect. The higher interest charge is the main watch point, but the figures support the moulding-line investment at this stage.",
+      "mark_scheme": {
+        "level_1_1_to_4": [
+          "States isolated figures from Appendix 2 with little accurate calculation."
+        ],
+        "level_2_5_to_8": [
+          "Calculates all three measures for both years accurately and describes the trend with some HPSC context."
+        ],
+        "level_3_9_to_12": [
+          "Accurate calculations for both years with detailed evaluation of revenue, costs, capital and interest, and a justified conclusion on improvement."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "45.0%",
+          "48.0%",
+          "15.0%",
+          "18.0%",
+          "20.0%",
+          "24.0%",
+          "4,800"
+        ]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HPSC of using recycled aggregate in its precast panels.",
+      "model_answer": "Advantage: Recycled aggregate supports the low-carbon claim that 59% of 500 surveyed contractors would pay $1.20 more for, and the 55% who check carbon credentials when tendering, helping defend the $30.00 price and $12.00 contribution while cement and steel costs rise 10.5%. It also strengthens HPSC's bid for commercial building work, which grew 2.4%.\n\nDisadvantage: Variable quality in recycled aggregate can increase the 5.4% casting defect rate and the 6.6% cement waste, raising rework and material costs above the $18.00 variable cost per unit. With 22 of 64 workers still needing on-the-job training, mistakes in mixing and moulding may persist, and if contractors refuse the full $1.20 premium HPSC absorbs the extra cost, squeezing returns on the $900,000 line.\n\nHPSC should therefore monitor the 5.4% defect rate and 6.6% waste closely after switching inputs, and only expand recycled aggregate across the 90,000-unit range once the $1.20 premium is confirmed in signed contracts.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for a valid advantage and 1 mark for a valid disadvantage."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for contextual development using HPSC's survey, costs and defect data."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "recycled aggregate",
+          "59%",
+          "$1.20",
+          "6.6%",
+          "10.5%",
+          "$18.00"
+        ]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.75%, the 6.1% minimum wage increase and the 10.5% rise in cement and steel input costs will affect HPSC. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.0% to 4.75%): If the $450,000 bank loan is floating-rate, the extra interest is 0.75% of $450,000 = $3,375 a year (0.0075 x $450,000), manageable beside $540,000 fixed costs; if the loan is fixed, the immediate cost is zero. The higher rate could discourage commercial building, which grew only 2.4%, and raise the cost of future borrowing, but HPSC can limit this by fixing the rate or using more of the $450,000 share issue.\n\nMinimum wage increase (6.1%, to $13.79 an hour): HPSC has a workforce of 64, so wage costs rise across casting and delivery roles. The insert does not state hours worked or individual pay, so a total wage bill cannot be derived. The proper comparison is productivity: 90,000 units divided by 64 workers is about 1,406 panels per worker, so the rise is affordable only if that productivity is maintained or improved; otherwise unit labour cost rises and the $12.00 contribution is eroded, worsening the high-labour-turnover problem.\n\nCement and steel costs (10.5%): As an illustrative bound, if the full $18.00 variable cost rose 10.5%, that adds $1.89 a unit (0.105 x $18.00 = $1.89), and at 90,000 units that is about $170,100 a year (90,000 x $1.89). Even a partial increase would significantly cut the $12.00 contribution. The $1.20 low-carbon premium and supplier renegotiation can recover some of it, but the effect touches every panel.\n\nConclusion: The 10.5% rise in cement and steel input costs has the greatest impact. It compounds over all 90,000 panels and strikes directly at the $12.00 contribution funding the $900,000 line, whereas the interest rise is a bounded $3,375 and the wage effect can be offset through productivity. HPSC should prioritise waste reduction and securing the $1.20 premium in contracts.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited identification of the external factors with minimal application to HPSC.",
+        "level_2_5_to_8": "Analysis of the impact of at least two of the three changes on HPSC's costs, revenue or financing.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in context with a well-justified greatest-impact judgement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "4.75%",
+          "6.1%",
+          "10.5%",
+          "$13.79",
+          "$13.00",
+          "4.0%"
+        ]
+      }
+    }
+  ]
+}

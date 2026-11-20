@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_489",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Xentric Cloud Hosting (XNTR) is a private limited company in the cloud infrastructure sector, providing renewable-powered website hosting to small firms across Auckland. Founded in 2012 by Aroha Ngatai, XNTR employs a workforce of 65 and operates a hierarchical structure with democratic leadership. XNTR plans to invest $1,080,000 in a green data centre with automated server provisioning, financed by a $640,000 ten-year bank loan and $440,000 retained profit. It has fixed costs of $1,080,000 a year, a variable cost of $90 a unit and a selling price of $270, and currently produces 13,000 units a year. XNTR faces an operational problem: 1.7% of server set-ups were defective last quarter and unplanned downtime reached 26 incidents a month.",
+    "appendix_1_marketing_ops": "Operations Log — Q3 2026: XNTR provisioned 4,200 hosting accounts last quarter with a server-setup defect rate of 1.7%, down from 3.3% a year earlier. Unplanned downtime incidents fell from 48 to 26 per month. Average provisioning time is 2.9 hours. A survey of 840 New Zealand small firms found 62% now require renewable-powered hosting and 54% would switch providers for a greener option. Rivals charge $18 per month for entry hosting while XNTR charges $21. Engineering audit shows 18 of 65 engineers have not completed on-the-job training on the new provisioning system; off-the-job cloud certification costs $1,250 per engineer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Xentric Cloud Hosting for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "3,200", "4,000"],
+        ["Cost of sales", "2,240", "2,500"],
+        ["Gross profit", "960", "1,500"],
+        ["Operating profit", "480", "800"],
+        ["Capital employed", "2,400", "3,480"],
+        ["Interest payable", "72", "118"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) The Reserve Bank raised the official cash rate from 4.50% to 5.25%, lifting borrowing costs on variable-rate business loans. (2) New Zealand's minimum wage will rise 5.2% from $18.00 to $18.94 per hour from April 2027, increasing wage costs for support and engineering staff. (3) Electricity and cooling costs for data centres rose 9.7% year-on-year as demand from AI workloads grows, while New Zealand cloud-services spending grew 6.8% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "XNTR plans to fund $440,000 of its green data centre with retained profit. Explain two advantages for XNTR of using retained profit rather than increasing its bank loan.",
+      "model_answer": "Point 1: Retained profit requires no interest or repayments, so XNTR protects the cash flow that must already carry fixed costs of $1,080,000 a year and service the $640,000 bank loan. The $440,000 can fund the green data centre and absorb the 9.7% rise in electricity and cooling costs, letting XNTR hold the $270 price for the 62% of surveyed Auckland firms that require renewable-powered hosting.\n\nPoint 2: Retaining profit keeps ownership with Aroha Ngatai and existing shareholders, avoiding extra lender conditions on how the $1,080,000 centre is built or priced. With 26 downtime incidents a month and 1.7% defective set-ups, XNTR needs freedom to redirect funds into reliability rather than meet new bank covenants. Self-funding also signals financial strength to the 54% of firms who would switch for a greener option, supporting the 13,000-unit plan without loading more debt onto a 65-person business.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Xentric Cloud Hosting and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$440,000", "$640,000", "$1,080,000", "fixed costs"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "XNTR wants to retain more of the 840 surveyed Auckland firms and reduce switching. Consider 24/7 premium support, fixed-price annual contracts, or a loyalty discount scheme. Which should XNTR choose? Justify your recommendation.",
+      "model_answer": "24/7 premium support: Round-the-clock engineers would cut the 26 monthly downtime incidents and reassure the 62% of firms needing renewable-powered hosting, since green credentials count for little if the service is unreliable. It differentiates XNTR from the $18 rival and supports the $270 price. The drawback is cost: staffing night shifts adds to fixed costs of $1,080,000 and stretches the 65 staff, while 18 engineers still lack training on the new provisioning system.\n\nFixed-price annual contracts: Locking customers into a year at a known price secures revenue for the 13,000-unit plan, protects cash flow for the $640,000 loan and reduces the risk of switching to the 54% who would move for greener options. Predictable revenue also helps justify the $1,080,000 centre. However, fixed prices leave no room to recover 9.7% electricity inflation during the contract, and some small firms may resist commitment.\n\nLoyalty discount scheme: Rewards for long-term customers would directly tackle switching by making rivals' $18 offers less attractive, and could be targeted at the 54% green-switch segment. It is cheap to administer and reinforces the referral habit. Weaknesses are that discounts erode the $180 contribution per unit and may simply subsidise customers who would stay anyway.\n\nRecommendation: XNTR should choose 24/7 premium support. Reliability is the root cause of dissatisfaction: with 26 downtime incidents and 1.7% defective set-ups, support protects both the 62% green-demand segment and the $270 price. Fixed-price contracts are rejected because they lock in costs during 9.7% inflation; loyalty discounts are rejected because they cut contribution without fixing the service problem. XNTR can add contracts later once reliability improves.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the retention options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of XNTR with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of XNTR with a well-justified recommendation explaining why fixed-price contracts and loyalty discounts are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["62%", "54%", "$18", "$21", "840", "26"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "XNTR has 1.7% defective server set-ups and 18 engineers untrained on the new system. Explain two benefits for XNTR of using democratic leadership in its hierarchical structure to improve reliability.",
+      "model_answer": "Point 1: Democratic leadership invites the engineers who provision the 4,200 accounts to help redesign set-up routines, so practical fixes for the 1.7% defect rate and 26 monthly downtime incidents reach Aroha Ngatai through the hierarchy. Involvement satisfies belonging and esteem needs (Maslow) and raises job satisfaction (Herzberg) among the 65 staff, increasing care in the 2.9-hour provisioning process and protecting the 13,000 units a year of hosting output.\n\nPoint 2: Consulting engineers about the new system helps close the 18-person training gap because staff can flag what they do not understand, allowing targeted on-the-job coaching instead of generic courses. Better upward communication also spreads quick fixes for faults, reducing downtime and safeguarding the 54% of firms who would switch providers. Higher morale and ownership cut the risk of losing engineers during the $1,080,000 data-centre build, preserving skills for the 62% green-hosting demand.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to XNTR's defects, downtime and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic", "hierarchical", "workforce of 65", "1.7%", "2.9 hours", "18"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "XNTR must cut its 26 monthly downtime incidents and 1.7% defect rate. Consider investing in automated server monitoring or introducing quality circles. Which should XNTR choose? Justify your decision.",
+      "model_answer": "Automated server monitoring: Continuous monitoring would detect faults before they cause the 26 monthly downtime incidents and flag the 1.7% defective set-ups immediately, cutting the 2.9-hour provisioning rework and protecting the 13,000 units a year. It operates across all 4,200 accounts without adding to fixed costs of $1,080,000 beyond the initial spend. Drawbacks are the cost within the $1,080,000 project and the need for skilled engineers to respond to alerts, of whom 18 are still untrained.\n\nQuality circles: Regular problem-solving meetings would let the 65 engineers identify root causes of downtime and defects, fitting the democratic style and building ownership of the new system. Circles can improve provisioning routines and support the 54% green-switch segment through better service. However, results are slower than automated alerts, meetings take engineers away from live incidents, and recommendations may lack authority to be implemented quickly.\n\nDecision: XNTR should invest in automated server monitoring, supported by a small quality circle. Monitoring gives immediate, continuous control over the 26 downtime incidents and 1.7% defects, protecting the $180 contribution and the $1,080,000 centre. Quality circles alone are rejected as too slow during a critical reliability problem and dependent on staff who still need training; XNTR can use circles afterwards to refine alert rules, combining speed with employee insight.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two approaches with limited application to XNTR.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both approaches in the context of XNTR.",
+        "level_3_9_to_12": "Comprehensive evaluation of both approaches in the context of XNTR with a well-justified decision covering speed, cost, reliability and staff involvement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["26", "1.7%", "3.3%", "2.9 hours", "$1,250", "$1,080,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how XNTR's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate XNTR's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $1,080,000 ÷ ($270 − $90) = $1,080,000 ÷ $180 = 6,000 units. Answer: break-even output is 6,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate XNTR's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $270 − $90 = $180. Answer: contribution per unit is $180."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways XNTR's management can use this financial data.",
+          "model_answer": "1. XNTR's managers can compare the 6,000-unit break-even output with actual output of 13,000 units, giving a margin of safety of 7,000 units and confidence the green centre can cover fixed costs even if demand for hosting slows.\n2. Contribution per unit of $180 lets managers model pricing, for example matching the $18 rival price would cut contribution substantially and raise break-even, so they can judge the impact of the 54% green-switch segment's price sensitivity.\n3. Fixed costs of $1,080,000 and $180 contribution support the affordability test for the $640,000 bank loan and the $440,000 retained-profit investment, proving repayments remain serviceable while 26 downtime incidents persist.\n4. Managers can use unit cost data ($1,080,000 ÷ 13,000 units = $83.08 + $90 = $173.08 a unit) to benchmark efficiency, target the 1.7% set-up defects and renegotiate power contracts amid 9.7% electricity inflation, defending the $270 price."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 6,000 units | (ii) Contribution per unit = $180 | (iii) Four contextual uses explained: margin of safety against 13,000-unit output; pricing modelling against $18 rivals; loan feasibility for the $1,080,000 green centre; and unit-cost benchmarking at $173.08 under 9.7% power inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6,000", "$180", "13,000", "$1,080,000", "$90", "$270", "$173.08"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate XNTR's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has XNTR's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 30.0%\nGross Profit Margin 2025 = 37.5%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 20.0%\nROCE 2024 = 20.0%\nROCE 2025 = 23.0%\n\nDetailed workings: Gross profit 2024 = $3,200,000 − $2,240,000 = $960,000; 2025 = $4,000,000 − $2,500,000 = $1,500,000. As a share of revenue: 2024 = $960,000 ÷ $3,200,000 = 30.0%; 2025 = $1,500,000 ÷ $4,000,000 = 37.5%. Operating profit as a share of revenue: 2024 = $480,000 ÷ $3,200,000 = 15.0%; 2025 = $800,000 ÷ $4,000,000 = 20.0%. Returns on capital employed: 2024 = $480,000 ÷ $2,400,000 = 20.0%; 2025 = $800,000 ÷ $3,480,000 = 23.0%.\n\nEvaluation: 2025 shows stronger performance on every measure. The share of revenue retained after cost of sales rose from 30.0% to 37.5%, reflecting efficient automation and the 62% of firms requiring renewable hosting. Capital employed grew from $2,400,000 to $3,480,000, matching the $1,080,000 green centre funded by loan and retained profit, yet returns on it still improved from 20.0% to 23.0%, showing the centre is already earning. Operating profit rose strongly, covering interest payable rising from $72,000 to $118,000. Risks remain: 9.7% electricity inflation is pushing costs up, and if the 26 downtime events are not cut the customer base could suffer.\n\nConclusion: XNTR's financial performance has improved. Margins and returns on capital all increased, with operating profitability growing faster than revenue. The improvement is genuine, so XNTR should fix the loan rate and eliminate downtime to sustain it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether XNTR's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["30.0%", "37.5%", "15.0%", "20.0%", "23.0%", "3,480"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for XNTR of building a renewable-powered green data centre.",
+      "model_answer": "Advantage: Green hosting answers strong demand: 62% of surveyed firms require renewable-powered hosting and 54% would switch for a greener option, so the centre gives XNTR a clear point of difference from the $18 rival and helps defend the $270 price. It supports the 37.5% share of revenue retained as gross profit, grows the 13,000 units a year and strengthens the business case for the $1,080,000 investment while reducing exposure to energy-price volatility over time.\n\nDisadvantage: The project is capital-intensive and risky: $1,080,000 is being spent while 26 downtime incidents a month and a 1.7% set-up defect rate show existing operations are not yet stable, so a high-profile green launch could expose reliability weaknesses. Renewable power may carry a premium before savings appear, and 9.7% electricity-cost inflation could raise running costs faster than expected, squeezing the $180 contribution if 18 untrained engineers slow the rollout.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to XNTR's research, costs and operations."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["62%", "54%", "9.7%", "$21", "$18", "$1,080,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the rise in the official cash rate to 5.25%, the 5.2% minimum wage increase and the 9.7% rise in electricity costs will affect XNTR. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Official cash rate rise to 5.25%: XNTR carries a $640,000 ten-year bank loan. If it is variable-rate, the 0.75 percentage-point rise adds 0.75% of $640,000 = $4,800 a year (0.0075 × $640,000). That is modest beside fixed costs of $1,080,000 and 2025 interest payable of $118,000, and if the loan is fixed-rate the direct cost is nil. Higher rates could slow New Zealand small-firm spending on hosting, but XNTR can largely remove the financing risk by fixing the rate.\n\nMinimum wage rise of 5.2% to $18.94 per hour: The insert does not state hours worked or how many of the 65 staff are hourly-paid, so no defensible annual wage total can be invented. The sound test is productivity computed from the insert: 13,000 units ÷ 65 staff = 200 units per worker. If that holds, the rise is absorbable within a 37.5% share of revenue retained as gross profit; if 26 downtime incidents and 1.7% defects cut output per worker, unit labour costs rise and the $180 contribution per unit shrinks. XNTR can pass part on to the 54% green-switch segment.\n\nElectricity and cooling cost inflation of 9.7%: This reaches every unit. The insert does not decompose the $90 variable cost, so only an explicitly labelled upper bound is honest: if the whole variable cost rose 9.7%, it would add 9.7% of $90 = $8.73 per unit, and at 13,000 units that is roughly $113,000 a year (13,000 × $8.73). Even a fraction of that erodes the contribution funding the $1,080,000 centre, and with rivals at $18 it cannot easily be passed to small firms.\n\nConclusion: The 9.7% rise in electricity and cooling costs will have the greatest impact. It recurs on all 13,000 units and attacks the $180 contribution behind the $1,080,000 centre, whereas the rate rise is at most $4,800 and the wage effect cannot be quantified without invented assumptions. XNTR should lock energy contracts and fix the loan rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to XNTR.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on XNTR's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of XNTR with a well-justified judgment that electricity cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "5.2%", "9.7%", "$18.94", "$640,000", "$90"]
+      }
+    }
+  ]
+}

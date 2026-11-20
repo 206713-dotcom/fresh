@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_384",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Kelpwave Seaweed Farms (KSF) is a private limited company in the seaweed aquaculture sector, based off the northern Atlantic coast and employing a workforce of 55. Founded in 2016 by Fiona O'Donnell, it supplies dried seaweed to health-food manufacturers and operates a hierarchical structure with autocratic leadership. KSF plans to invest $780,000 in a new drying and packaging plant, financed by a $480,000 bank loan and $300,000 retained profit. It has fixed costs of $330,000 a year, a variable cost of $6.10 a unit and a selling price of $11.60, and currently produces 110,000 units a year. KSF faces a quality problem: the defect rate in dried packs has reached 3.9% and labour turnover is rising.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q3 2025: The drying line packed 28,600 units last quarter at a defect rate of 3.9%, up from 2.7% a year ago. Customer complaints rose from 21 to 34 per month. Average delivery time is 4.4 days. A survey of 380 buyers found that 66% would pay up to $0.55 more for organic-certified seaweed, and 51% check sustainability claims. Records show 17 of 55 staff have not completed on-the-job training on the new dryers; off-the-job training courses at the coastal college cost $1,050 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Kelpwave Seaweed Farms as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "105", "84"],
+        ["Trade receivables", "150", "168"],
+        ["Cash and cash equivalents", "42", "63"],
+        ["Current liabilities", "220", "210"],
+        ["Non-current assets", "1,560", "2,050"],
+        ["Capital employed", "1,900", "2,400"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.25%, increasing borrowing costs for variable-rate borrowers. (2) The national minimum wage will rise by 6.4% from $12.00 to $12.77 per hour from April 2026. (3) Wholesale packaging and energy input costs have risen 10.2% year-on-year, food inflation is 6.8%, and consumer spending on seaweed snacks grew 3.7%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "KSF plans to fund part of its drying-plant expansion with a ten-year bank loan. Explain two advantages for KSF of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit requires no interest payments or capital repayments, protecting cash flow for a company with fixed costs of $330,000 a year and a variable cost of $6.10 a unit. The $300,000 of retained profit is already inside KSF, so money that would have serviced the $480,000 bank loan can instead be spent on the 3.9% defect rate in dried packs or on absorbing the 10.2% rise in packaging and energy costs while defending the $11.60 selling price.\n\nPoint 2: Using retained profit avoids the collateral and default risk of the bank loan, so the $780,000 drying and packaging plant is not exposed to repossession if health-food manufacturers reduce orders. It also preserves the control of founder Fiona O'Donnell and existing shareholders without lender covenants, which suits a hierarchical structure. Because no loan approval is needed, the plant can be commissioned quickly, helping KSF reverse the rise in complaints from 21 to 34 per month and protect the 28,600-unit quarterly run rate.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to KSF and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "$300,000", "$480,000", "$780,000", "$330,000", "$6.10"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "KSF is launching a new organic-certified seaweed range. Consider national television advertising, coastal radio sponsorship, or social media influencer marketing. Which should KSF choose to promote the launch? Justify your recommendation.",
+      "model_answer": "National television advertising: TV would create rapid awareness of organic-certified seaweed among consumers nationwide and could support a premium price. However, airtime is extremely costly for a company committing $780,000 to a drying plant and already servicing a $480,000 loan, and most TV viewers are not buyers of dried seaweed for health-food manufacturers, so spend would be heavily wasted. TV also cannot display the organic certification that 66% of surveyed buyers value.\n\nCoastal radio sponsorship: Radio is cheaper and can reach listeners around the northern Atlantic coast where KSF's brand has local recognition, with frequent low-cost reminders. Its weakness is limited reach: KSF supplies health-food manufacturers beyond the coastal region, and audio cannot show the 51% of buyers who check sustainability claims the certification itself.\n\nSocial media influencer marketing: Health and cooking influencers can demonstrate the dried seaweed and organic certification visually to a targeted national audience, with measurable engagement and low cost per lead. Credibility must be managed and results build gradually, but the 66% premium segment and the 51% who check sustainability claims can be reached directly.\n\nRecommendation: KSF should choose social media influencer marketing, with modest coastal radio support for local brand goodwill. It targets the researched segment, costs far less than TV and reaches beyond the local catchment. Television is rejected as unaffordable and untargeted given the $330,000 fixed costs and $480,000 loan; radio alone is rejected as too narrow for supplying health-food manufacturers nationally.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of KSF with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of KSF with a well-justified recommendation explaining why television and radio are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "51%", "$0.55", "380", "health-food manufacturers", "28,600"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "KSF's defect rate in dried packs has reached 3.9% and labour turnover is rising. Explain two benefits for KSF of using autocratic leadership to enforce food-safety standards.",
+      "model_answer": "Point 1: Autocratic leadership lets Fiona O'Donnell impose clear, uniform food-safety rules the moment the defect rate in dried packs reaches 3.9%, which is effective in a hierarchical structure where fast, consistent decisions limit risk. With 17 of 55 staff still untrained on the new dryers, workers need precise instructions rather than discussion, so faulty packs can be isolated before the rate rises from 2.7% to 3.9% further and the $780,000 plant's reputation with health-food manufacturers is protected.\n\nPoint 2: Top-down control can also stabilise staffing by setting firm shift rotas and expectations, reducing disruption from rising labour turnover on a line with fixed costs of $330,000 a year. Because the leader allocates tasks directly, trained operators can be redeployed immediately to cover absences, protecting output of 110,000 units and the $11.60 selling price while the $480,000 bank loan is serviced.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to KSF's quality, staffing and output."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "hierarchical", "3.9%", "labour turnover", "55", "17"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "KSF must upskill 17 staff to operate the new dryers. Consider on-the-job training or off-the-job training at the coastal college. Which should KSF choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching the 17 untrained staff beside the new dryers is directly relevant to KSF's own drying standards and costs no course fees, unlike the $1,050 per employee charged by the coastal college. It keeps all 17 workers productive while they learn, protecting the 28,600 units packed last quarter and the food-safety effort behind the 2.7%-to-3.9% defect problem. The drawbacks are that trainers have their own output to maintain and bad habits can spread without formal assessment.\n\nOff-the-job training: The $1,050 per employee college course gives structured teaching and a recognised certificate for all 17 staff, costing $17,850 in total — small against the $780,000 investment. It removes 17 of 55 workers from the line, cutting short-term capacity when the defect rate is deteriorating, and generic content may not match KSF's dryer settings without follow-up coaching.\n\nDecision: KSF should choose on-the-job training for the initial rollout, adding short college modules later for senior operators. It is cheapest, machine-specific and avoids losing output while quality is fragile; full off-the-job training is rejected because withdrawing $17,850 and 17 of 55 staff would disrupt supply to health-food manufacturers when the $480,000 loan must be serviced.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to KSF.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both training methods in the context of KSF.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of KSF with a well-justified decision covering cost, disruption and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$1,050", "17", "55", "$780,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how KSF's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate KSF's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $330,000 ÷ ($11.60 − $6.10) = $330,000 ÷ $5.50 = 60,000 units. Answer: break-even output is 60,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate KSF's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $11.60 − $6.10 = $5.50. Answer: contribution per unit is $5.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways KSF's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 60,000-unit break-even output with actual output of 110,000 units, giving a margin of safety of 50,000 units, to judge whether the $780,000 drying plant is justified.\n2. Contribution per unit of $5.50 lets KSF model the $0.55 organic premium: if 66% of surveyed buyers accept it, managers can estimate the gain against the 10.2% input-cost rise.\n3. Knowing fixed costs of $330,000 and contribution helps set the volume required to service interest on the $480,000 bank loan before further borrowing.\n4. Unit cost can be checked as $330,000 ÷ 110,000 + $6.10 = $9.10, and labour productivity as 110,000 units ÷ 55 staff = 2,000 units per worker, giving benchmarks to track the 3.9% defect rate and rising labour turnover."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 60,000 units | (ii) Contribution per unit = $5.50 | (iii) Four contextual uses: margin of safety of 50,000 units vs 110,000 output; the $0.55 organic premium against $330,000 fixed costs; loan servicing on the $480,000 bank loan; and unit cost of $9.10 with labour productivity of 2,000 units per worker.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["60,000", "$5.50", "$330,000", "$11.60", "$6.10", "$9.10", "2,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate KSF's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has KSF's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.35 : 1\nCurrent Ratio 2025 = 1.50 : 1\nAcid Test Ratio 2024 = 0.87 : 1\nAcid Test Ratio 2025 = 1.10 : 1\n\nDetailed workings: 2024 current assets = $105,000 inventories + $150,000 trade receivables + $42,000 cash = $297,000; 2025 current assets = $84,000 + $168,000 + $63,000 = $315,000. Dividing by current liabilities gives 2024 = $297,000 ÷ $220,000 = 1.35 and 2025 = $315,000 ÷ $210,000 = 1.50. Excluding inventories gives 2024 = ($297,000 − $105,000) ÷ $220,000 = $192,000 ÷ $220,000 = 0.87 and 2025 = ($315,000 − $84,000) ÷ $210,000 = $231,000 ÷ $210,000 = 1.10.\n\nEvaluation: Liquidity has strengthened. The 2024 figure of 1.35 rose to 1.50 as current liabilities fell from $220,000 to $210,000 and current assets rose to $315,000, helped by cash increasing from $42,000 to $63,000. The inventory-excluding measure improved from 0.87 to 1.10, so KSF is less reliant on selling dried-stock to meet short-term debts while servicing a $480,000 loan and funding a $780,000 plant. There is a caveat: receivables rose from $150,000 to $168,000, so cash could be tied up if health-food manufacturers pay late, and the 3.9% defect rate may leave some stock difficult to sell even though inventories fell to $84,000.\n\nConclusion: KSF's financial position has improved. Both measures show stronger short-term solvency and the improvement does not depend on inventory. The main residual risk is higher receivables, so credit control should be tightened as the new plant operates.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of inventory, receivables and liabilities movements and a justified conclusion on whether KSF's financial position improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.35", "1.50", "0.87", "1.10", "$297,000", "$315,000", "$780,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for KSF of introducing organic certification for its dried seaweed.",
+      "model_answer": "Advantage: Organic certification addresses the 66% of 380 surveyed buyers who would pay up to $0.55 more, protecting the $5.50 contribution per unit while packaging and energy costs rise 10.2%. It also answers the 51% who check sustainability claims, strengthening KSF's position with health-food manufacturers and the $780,000 drying plant.\n\nDisadvantage: Certification involves inspection and compliance costs that could increase the $6.10 variable cost per unit unless the $0.55 premium is accepted throughout the range. A certification failure or poor harvest could add to the 3.9% defect rate and cut the 28,600 units packed each quarter, while fixed costs of $330,000 continue regardless of output.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to KSF's research data, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "51%", "$0.55", "10.2%", "3.9%", "$6.10"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 6.4% minimum wage increase and the 10.2% rise in packaging and energy costs will affect KSF. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.5% to 5.25%): The base rate goes up by 0.75 percentage points. If the $480,000 bank loan is variable-rate, the extra annual interest is 0.0075 × $480,000 = $3,600 a year, modest beside fixed costs of $330,000 a year and zero if the loan is fixed-rate. Higher rates could make consumers cautious about seaweed snacks, but KSF can largely remove the direct cost by fixing the loan rate.\n\nMinimum wage increase (6.4%, from $12.00 to $12.77 per hour): This raises the wage bill for a 55-person workforce and cannot be avoided. The insert gives no hours worked and no individual pay rates, so an annual wage total cannot be invented. The comparison that can be derived is productivity: 110,000 units ÷ 55 staff = 2,000 units per worker. If that holds the rise is absorbable; if rising labour turnover cuts throughput, unit labour cost rises and the $5.50 contribution per unit is squeezed.\n\nInput cost inflation (10.2% on packaging and energy): The insert does not decompose the $6.10 variable cost, so only a labelled bound is honest: if the entire variable cost rose 10.2%, the addition is 0.102 × $6.10 = $0.62 per unit, and at 110,000 units a year that is about $68,420. This is an upper bound, not a forecast; the real addition depends on the packaging-and-energy share, which is not stated. KSF can recover part through the $0.55 organic premium accepted by 66% of surveyed buyers.\n\nConclusion: The 10.2% rise in packaging and energy costs will have the greatest impact. It applies to every unit and attacks the $5.50 contribution that supports the $780,000 plant, whereas the interest effect of $3,600 is small and fixable and the wage effect can be offset if 2,000-units-per-worker productivity holds. Input-cost inflation therefore deserves the strongest response.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to KSF.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on KSF's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of KSF with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "6.4%", "10.2%", "$12.77", "$480,000", "$6.10"]
+      }
+    }
+  ]
+}

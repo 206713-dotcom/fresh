@@ -1,0 +1,1183 @@
+[
+  {
+    "scenario_id": "P1_U4_SET_191",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Kelwick Knitwear Ltd is a private limited company in Country X making school jumpers and cardigans for 9 retail chains. It employs 180 machinists paid $1,150 a month and earned $9.6 million in revenue last year. Its wage bill reached $2.48 million, about 26% of revenue. A rival knitwear firm relocated to Country Y last year and now pays machinists the equivalent of $420 a month.\n\nThe directors must decide whether to open a $3.2 million factory in Country Y, where the same 180 machinists would cost $907,200 a year, or stay in Country X and upgrade 40 sewing machines. Orders from the 9 retail chains are steady at 620,000 garments a year, and two buyers insist that lead times stay under 6 weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'variable cost'.",
+        "model_answer": "A cost that varies directly with the level of output produced, such as raw materials or piece-rate wages [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a cost that varies with the level of output",
+            "examples include raw materials or piece-rate wages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why wage costs influence where Kelwick Knitwear locates production.",
+        "model_answer": "Reason 1: Lower wages abroad cut production costs [k], because Country Y pays $420 a month compared with $1,150 in Country X, reducing the wage bill from $2.48 million to $907,200 [app]. Reason 2: Lower labour costs free up cash [k], because the $1.58 million annual saving could fund part of the $3.2 million factory [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower wages abroad reduce production or wage costs",
+            "labour cost savings improve competitiveness or free cash"
+          ],
+          "application_max_2": [
+            "$420 a month in Country Y vs $1,150 in Country X",
+            "wage bill falls from $2.48 million to $907,200",
+            "$1.58 million annual saving contributing to the $3.2 million factory"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$420 a month",
+            "$1,150",
+            "$2.48 million",
+            "$907,200",
+            "$3.2 million",
+            "Country Y",
+            "180 machinists"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Kelwick Knitwear may face if it relocates to Country Y.",
+        "model_answer": "Problem 1: The move demands heavy up-front spending [k], because the new factory costs $3.2 million before production begins [app], and recovering that money would take around 2 years of wage savings [an]. Problem 2: Distance threatens delivery times [k], because two buyers insist lead times stay under 6 weeks for orders from 9 retail chains [app], so freight delays could cost Kelwick contracts [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation requires substantial up-front capital",
+            "greater distance risks slower delivery and lost orders"
+          ],
+          "application_max_2": [
+            "factory costs $3.2 million before production starts",
+            "lead times must stay under 6 weeks for 9 retail chains",
+            "620,000 garments a year must still be delivered on time"
+          ],
+          "analysis_max_2": [
+            "$3.2 million cost would take around 2 years of the $1.58 million annual saving to recover",
+            "late deliveries risk breaching buyer terms and losing retail contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.2 million",
+            "6 weeks",
+            "9 retail chains",
+            "$907,200",
+            "Country Y",
+            "620,000 garments"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Kelwick Knitwear Ltd should relocate production to Country Y? Justify your answer.",
+        "model_answer": "Relocating would cut running costs sharply [k], because the same 180 machinists would cost $907,200 a year instead of $2.48 million in Country X [app], releasing about $1.58 million a year to repay the $3.2 million factory in roughly 2 years [an]. However, staying in Country X protects delivery speed [k], because two buyers demand lead times under 6 weeks and the firm serves 9 retail chains with steady orders of 620,000 garments a year [app], and moving could disrupt production and quality while new staff settle [an]. Overall, Kelwick should relocate to Country Y [eval], because the $1.58 million annual wage saving is large relative to the $3.2 million factory cost and the steady 620,000-garment order book supports the move, provided the transfer is staged to protect the 6-week lead times [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation lowers wage and production costs",
+            "relocation risks disruption and longer delivery times"
+          ],
+          "application_max_2": [
+            "$907,200 a year in Country Y vs $2.48 million in Country X",
+            "steady orders of 620,000 garments a year from 9 retail chains",
+            "buyers demand lead times under 6 weeks"
+          ],
+          "analysis_max_2": [
+            "$1.58 million annual saving repays the $3.2 million factory in roughly 2 years",
+            "disruption of production and quality during the move could breach buyer lead-time terms"
+          ],
+          "evaluation_max_2": [
+            "weighs $1.58 million annual wage saving against relocation cost and 6-week lead-time risk in a steady-order context"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$907,200",
+            "$2.48 million",
+            "$3.2 million",
+            "620,000 garments",
+            "6 weeks",
+            "9 retail chains",
+            "Country Y"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_192",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Marlowcrest Tableware Ltd is a private limited company in Country X producing hand-decorated ceramic dinner plates and bowls. It employs 120 workers and exported $7.4 million of tableware to Country Z last year, selling through 340 stores. Country Z has just imposed a 22% import tariff on ceramic tableware, which would cost Marlowcrest about $1.628 million a year if exports continue unchanged. No other ceramic supplier in Country X currently exports to Country Z.\n\nThe directors are considering building a $5.5 million factory in Country Z employing 95 local workers, or keeping production in Country X and raising wholesale prices by 15%. Current capacity is 1.1 million pieces a year and demand in Country Z is growing by 8% annually. Marlowcrest has retained profits of $6.0 million.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'tariff'.",
+        "model_answer": "A tax placed by a government on goods imported into a country, which raises the price of those goods [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a tax or duty on imported goods",
+            "raises the price of imports and protects domestic producers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the 22% tariff encourages Marlowcrest to produce tableware inside Country Z.",
+        "model_answer": "Reason 1: Avoiding the tariff protects competitiveness [k], because exporting from Country X would add about $1.628 million a year in duty on $7.4 million of sales [app]. Reason 2: Local production reaches buyers without import restrictions [k], because plates made in Country Z sell freely through 340 stores [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoiding the tariff keeps exports price-competitive",
+            "local production gains unrestricted access to the importing market"
+          ],
+          "application_max_2": [
+            "$1.628 million annual duty on $7.4 million of exports",
+            "plates made in Country Z sell freely through 340 stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.628 million",
+            "$7.4 million",
+            "340 stores",
+            "22% import tariff",
+            "Country Z",
+            "15%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Marlowcrest may face if it builds the Country Z factory.",
+        "model_answer": "Problem 1: High capital cost [k], because the factory costs $5.5 million, most of the firm's $6.0 million retained profit [app], leaving little cash to absorb shocks if Country Z demand slows [an]. Problem 2: Training and quality risk [k], because 95 new local workers must learn Marlowcrest's hand-decoration standards [app], and faults would damage the brand in its 340 stores [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high cost of setting up a new factory",
+            "quality and training risks with a new, untrained workforce"
+          ],
+          "application_max_2": [
+            "factory costs $5.5 million of the $6.0 million retained profit",
+            "95 new local workers need hand-decoration training",
+            "quality failures would be visible across 340 stores"
+          ],
+          "analysis_max_2": [
+            "spending $5.5 million of $6.0 million retained profit weakens liquidity if demand slows",
+            "poorly trained workers risk faulty plates and brand damage in 340 stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$5.5 million",
+            "$6.0 million",
+            "95 local workers",
+            "340 stores",
+            "Country Z",
+            "8% annually"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marlowcrest Tableware Ltd should build the Country Z factory instead of continuing to export and raising prices by 15%? Justify your answer.",
+        "model_answer": "Building the factory removes the tariff burden [k], because production in Country Z means the $1.628 million annual duty disappears while demand grows at 8% annually across 340 stores [app], protecting Marlowcrest's $7.4 million market more securely than a price rise would [an]. However, raising prices by 15% avoids the $5.5 million outlay [k], because it keeps all 120 workers in Country X and preserves the $6.0 million profit cushion [app], but higher prices could push buyers towards rival plates and sales may fall [an]. Overall, Marlowcrest should build the Country Z factory [eval], because avoiding $1.628 million of duty each year plus 8% annual market growth outweighs the $5.5 million set-up cost over time [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production avoids the import tariff",
+            "raising prices risks losing price-sensitive buyers"
+          ],
+          "application_max_2": [
+            "$1.628 million annual duty vs $5.5 million factory cost",
+            "15% price rise alternative would keep 120 workers in Country X",
+            "demand growing 8% annually across 340 stores"
+          ],
+          "analysis_max_2": [
+            "avoiding duty plus growth protects the $7.4 million export market",
+            "a 15% price rise could cut sales volume and revenue"
+          ],
+          "evaluation_max_2": [
+            "weighs tariff avoidance ($1.628 million a year) and 8% annual growth against the $5.5 million set-up cost and the price-rise alternative"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.628 million",
+            "8% annually",
+            "340 stores",
+            "$5.5 million",
+            "15%",
+            "Country Z",
+            "$7.4 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_193",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Steadham Speakers Ltd is a private limited company in Country X assembling 240,000 Bluetooth speakers a year. It imports $4.1 million of speaker components priced in dollars and employs 96 workers. Last year the Country X currency fell 18% against the dollar, so the imported components now cost about $4.84 million, roughly $740,000 more than before.\n\nSteadham sells 60% of its output in Country X and exports 40%, worth $3.3 million, to Country R, with export invoices in dollars. The board is weighing two options: move component sourcing and final assembly to Country D, or keep assembly in Country X and raise local prices by 9%. A Country D factory would cost $2.7 million to build, and local wages are 25% lower.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'exchange rate'.",
+        "model_answer": "The price of one currency in terms of another, for example how many local units equal one US dollar [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the price of one currency in terms of another",
+            "it determines how much local money is paid or received in foreign trade"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the 18% fall in the Country X currency affects Steadham Speakers.",
+        "model_answer": "Reason 1: Imports become more expensive [k], because dollar-priced components rose from $4.1 million to about $4.84 million, an extra $740,000 [app]. Reason 2: Exports become more price-competitive [k], because the 40% of output worth $3.3 million is invoiced in dollars, so dollar receipts convert into more local currency [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a fall in the currency makes imports more expensive",
+            "a fall in the currency makes exports cheaper and more competitive abroad"
+          ],
+          "application_max_2": [
+            "components rose from $4.1 million to about $4.84 million, an extra $740,000",
+            "40% of output worth $3.3 million is dollar-invoiced, so receipts buy more local currency"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4.1 million",
+            "$4.84 million",
+            "$740,000",
+            "$3.3 million",
+            "18% against the dollar",
+            "Country X"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why exchange rates influence Steadham's decision to locate production abroad.",
+        "model_answer": "Reason 1: Relocation removes import-cost risk [k], because buying components in Country D's currency avoids another $740,000 of losses if the Country X currency falls again [app], giving stable, predictable costs [an]. Reason 2: Matching costs and revenue in dollars [k], because the $3.3 million export income is dollar-priced and Country D wages are 25% lower [app], so a natural hedge protects profit margins whichever way the rate moves [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "locating where inputs are bought removes exposure to import-cost swings",
+            "matching cost and revenue currencies creates a natural hedge"
+          ],
+          "application_max_2": [
+            "the 18% fall added $740,000 to component costs this year",
+            "$3.3 million of exports are dollar-priced while Country D wages are 25% lower"
+          ],
+          "analysis_max_2": [
+            "local currency sourcing would stabilise costs and ease planning",
+            "a dollar-based cost structure hedges the dollar revenue and defends margins"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$740,000",
+            "$3.3 million",
+            "25% lower",
+            "Country D",
+            "$4.84 million",
+            "Country X"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Steadham Speakers Ltd should move assembly to Country D? Justify your answer.",
+        "model_answer": "Moving to Country D would cut and stabilise costs [k], because components would be bought locally instead of importing at $4.84 million after the 18% fall, and wages there are 25% lower [app], which should recover the $740,000 margin lost to the currency in a few years [an]. However, relocating costs $2.7 million and disrupts skilled production [k], because 96 Country X workers would lose their jobs and new quality routines must be built in Country D [app], risking delayed orders for Country R buyers [an]. Overall, Steadham should move assembly to Country D [eval], because matching its export income with dollar costs and 25% lower wages protects both the $3.3 million export business and long-run profitability [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation can cut and stabilise production costs",
+            "relocation carries set-up cost and workforce disruption"
+          ],
+          "application_max_2": [
+            "$4.84 million component import bill after the 18% fall vs local sourcing",
+            "$2.7 million factory cost and 96 Country X workers displaced",
+            "$3.3 million dollar-priced export income to Country R"
+          ],
+          "analysis_max_2": [
+            "25% lower wages plus local sourcing should recover the $740,000 currency loss within a few years",
+            "disruption of quality and delivery could damage orders from Country R buyers"
+          ],
+          "evaluation_max_2": [
+            "weighs stable dollar costs and 25% lower wages against the $2.7 million relocation cost and disruption to 96 workers and Country R orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.7 million",
+            "$4.84 million",
+            "25% lower",
+            "$3.3 million",
+            "Country D",
+            "96 workers",
+            "18%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_194",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Westmarch Snack Foods Ltd is a private limited company in Country X producing tortilla chips and corn puffs for supermarkets at home and abroad. It employs 74 workers and exported $5.2 million of snacks to Country P last year, equal to 28% of revenue. Country P has announced an annual import quota of 1,900 tonnes on savoury snacks, below Westmarch's 2,300-tonne exports last year. No snack maker in Country P currently rivals Westmarch's range of 14 flavours.\n\nCountry P's snack market is growing by 12% a year and local snack prices are 10% above Country X levels. The directors are weighing a $4.1 million factory employing 60 workers in Country P against accepting the 1,900-tonne quota and losing about $900,000 of annual export sales.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'quota'.",
+        "model_answer": "A physical limit on the quantity of a good that may be imported into a country during a period of time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a physical limit on the quantity of imports",
+            "set by the importing country's government"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why market access encourages Westmarch to consider opening in Country P.",
+        "model_answer": "Reason 1: Escaping the quota keeps sales growing [k], because the 1,900-tonne limit is below Westmarch's 2,300-tonne exports, so local production would keep shelves full in a market growing 12% a year [app]. Reason 2: Higher local prices raise margins [k], because snack prices in Country P are 10% above Country X levels [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production escapes the import quota",
+            "higher prices and market growth abroad raise margins and revenue"
+          ],
+          "application_max_2": [
+            "1,900-tonne quota vs 2,300 tonnes exported last year",
+            "Country P market growing 12% a year with prices 10% above Country X levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "1,900-tonne",
+            "2,300-tonne",
+            "12% a year",
+            "10% above",
+            "Country P",
+            "$5.2 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of building the Country P factory rather than accepting the 1,900-tonne quota.",
+        "model_answer": "Benefit 1: Full market access [k], because goods made inside Country P escape the quota in a market growing 12% a year [app], so Westmarch can grow beyond the 1,900-tonne cap and defend its $5.2 million export business [an]. Benefit 2: Reliable local supply [k], because a factory employing 60 Country P workers sets production next to the supermarkets Westmarch serves [app], cutting transport times so shelves stay stocked when exports would be capped [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production bypasses the quota entirely",
+            "producing close to customers improves supply reliability"
+          ],
+          "application_max_2": [
+            "goods made in Country P escape the 1,900-tonne quota in a market growing 12% a year",
+            "factory employs 60 Country P workers next to supermarket customers",
+            "protects the $5.2 million export business"
+          ],
+          "analysis_max_2": [
+            "growth beyond the 1,900-tonne cap defends and extends the $5.2 million business",
+            "shorter delivery distances reduce stockouts and protect retailer relationships"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "1,900-tonne",
+            "$5.2 million",
+            "12% a year",
+            "60 workers",
+            "Country P",
+            "$4.1 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Westmarch Snack Foods Ltd should build the Country P factory? Justify your answer.",
+        "model_answer": "Building the factory secures full market access [k], because it would free Westmarch from the 1,900-tonne quota in a market growing 12% a year with prices 10% above Country X levels [app], letting it grow beyond 2,300 tonnes and protect the $5.2 million business [an]. However, accepting the quota is cheaper short-term [k], because the $4.1 million factory and 60 new workers must be funded at a time when only about $900,000 of annual export sales would otherwise be lost [app], yet demand growth could fill the factory quickly and strain its capacity [an]. Overall, Westmarch should build the Country P factory [eval], because the 12% market growth and higher local prices outweigh the $4.1 million cost, and only local production can serve Country P snack buyers fully [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local production escapes quota limits and unlocks growth",
+            "building a factory is costly and must be justified financially"
+          ],
+          "application_max_2": [
+            "1,900-tonne quota vs 2,300 tonnes exported; market growing 12% a year",
+            "$4.1 million factory and 60 workers to be funded",
+            "about $900,000 of annual export sales at risk under the quota"
+          ],
+          "analysis_max_2": [
+            "growth beyond the cap protects the $5.2 million export business",
+            "accepting the quota forfeits about $900,000 a year and caps growth"
+          ],
+          "evaluation_max_2": [
+            "weighs quota-free growth, 12% annual market growth and higher prices against the $4.1 million investment and $900,000 annual risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4.1 million",
+            "1,900-tonne",
+            "12% a year",
+            "10% above",
+            "$5.2 million",
+            "60 workers",
+            "Country P"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_195",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Brinvale Toys Ltd is a private limited company in Country X producing wooden railway sets and toy trains. It employs 88 workers and sells $6.3 million of toys a year, 70% in Country X and 30% exported to Country R. Country X has introduced strict toy safety rules requiring $380,000 of annual laboratory testing and batch certification before any toy can be sold. Brinvale is the only wooden-toy maker in Country X with its own paint workshop.\n\nCountry Q, where Brinvale could relocate, applies basic safety checks costing about $60,000 a year, and wages there are 35% lower. The move would cost $2.4 million. Country Q's legal system is slow at resolving contract disputes, and Country X import checks on toys stay equally strict wherever they are made.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'quality assurance'.",
+        "model_answer": "A system of checking quality at every stage of production so that faults are prevented rather than found at the end [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "quality is checked throughout the production process",
+            "aims to prevent faults rather than detect them at the end"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways legal controls influence where Brinvale locates its factory.",
+        "model_answer": "Reason 1: Compliance costs differ between countries [k], because Country X requires $380,000 a year of laboratory testing and certification while Country Q checks cost about $60,000 [app]. Reason 2: Selling rules dictate market choice [k], because Country X import checks apply wherever toys are made, so relocation does not remove legal duties [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "legal requirements raise or lower compliance costs",
+            "legal controls apply based on where the product is sold, not where it is made"
+          ],
+          "application_max_2": [
+            "Country X testing costs $380,000 a year vs $60,000 in Country Q",
+            "Country X import checks remain in force wherever the toys are manufactured"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$380,000",
+            "$60,000",
+            "Country X",
+            "Country Q",
+            "88 workers",
+            "$6.3 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems Brinvale may face if it relocates to Country Q.",
+        "model_answer": "Problem 1: Brand and safety risk [k], because Country X import checks remain strict, so any toy failing them would embarrass Brinvale in front of its $6.3 million customer base [app], destroying the trust its wooden railway sets rely on [an]. Problem 2: Legal uncertainty [k], because Country Q resolves contract disputes slowly, so suppliers may exploit weak enforcement [app], adding costs and risk to the relocated 88-worker operation [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "products must still pass import checks where they are sold",
+            "a weak legal system makes contracts hard to enforce"
+          ],
+          "application_max_2": [
+            "Country X import checks stay strict despite relocation",
+            "Country Q's courts resolve disputes slowly",
+            "$6.3 million sales base would be exposed to brand damage"
+          ],
+          "analysis_max_2": [
+            "a failed check would destroy trust behind the $6.3 million sales base",
+            "slow dispute resolution raises risk and cost for the 88-worker relocated operation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.3 million",
+            "Country X",
+            "Country Q",
+            "$2.4 million",
+            "35% lower",
+            "88 workers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brinvale Toys Ltd should relocate to Country Q? Justify your answer.",
+        "model_answer": "Relocating would cut legal and wage costs [k], because Country Q checks cost $60,000 a year instead of $380,000 and wages are 35% lower [app], saving around $320,000 a year plus payroll savings that could offset the $2.4 million move within a few years [an]. However, relocation would not relax Country X rules [k], because 70% of sales depend on passing strict import checks, and Country Q's slow legal system threatens contracts [app], so a quality or legal failure could cost far more than the $320,000 annual saving [an]. Overall, Brinvale should not relocate to Country Q simply to escape its legal duties [eval], because its $6.3 million reputation rests on safe, certified toys and Country X market access matters more than the compliance saving [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "relocation can reduce compliance and wage costs",
+            "relocation cannot remove legal controls where products are sold"
+          ],
+          "application_max_2": [
+            "$380,000 vs $60,000 annual checks; wages 35% lower",
+            "70% of sales are in Country X under strict import checks",
+            "$2.4 million relocation cost against a $6.3 million sales base"
+          ],
+          "analysis_max_2": [
+            "$320,000 annual compliance saving plus wage savings could repay the $2.4 million move within a few years",
+            "a failed check or legal dispute could destroy far more value than $320,000 a year"
+          ],
+          "evaluation_max_2": [
+            "weighs compliance and wage savings ($320,000 a year, 35% lower wages) against brand risk, Country X import checks and Country Q's legal weakness — decides against relocating for cost reasons alone"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$380,000",
+            "$60,000",
+            "35% lower",
+            "$2.4 million",
+            "$6.3 million",
+            "70%",
+            "Country Q"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_196",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Craymoor Flour Co is a private limited company in Country X milling flour for 60 independent bakeries. It employs 52 workers and produces 4,500 tonnes of flour a year, worth $3.1 million. Wheat is harvested in autumn, so the mill holds 700 tonnes of wheat, about 8 weeks of output, worth $260,000. Two of the bakeries buy only from Craymoor and would switch to other mills if supply failed.\n\nHolding that stock costs about $105,000 a year in rent, insurance and interest, including $2,800 a month of warehouse rent. Last spring a supplier strike delayed deliveries for 3 weeks and the mill kept running only because of its wheat store. The directors are deciding whether to keep 700 tonnes or cut stock to 250 tonnes with weekly deliveries.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'inventory'.",
+        "model_answer": "The stock of raw materials, work in progress and finished goods held by a business at a point in time [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stock of raw materials, work in progress and finished goods",
+            "held to support production or customer orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Craymoor Flour holds 700 tonnes of wheat.",
+        "model_answer": "Reason 1: To keep production running all year [k], because wheat is harvested only in autumn and 700 tonnes cover about 8 weeks of milling for 60 bakeries [app]. Reason 2: To survive supply disruption [k], because last spring's 3-week supplier strike was absorbed without stopping the mill [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventory keeps production running between seasonal supplies",
+            "inventory protects against supply delays or disruption"
+          ],
+          "application_max_2": [
+            "wheat arrives only in autumn; 700 tonnes cover about 8 weeks of output",
+            "the 3-week supplier strike last spring was absorbed without stopping production",
+            "60 independent bakeries rely on Craymoor's supply"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "700 tonnes",
+            "8 weeks",
+            "supplier strike",
+            "independent bakeries",
+            "$260,000",
+            "4,500 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs of holding the wheat inventory.",
+        "model_answer": "Cost 1: Storage and holding expenses [k], because rent of $2,800 a month and the total $105,000 a year for rent, insurance and interest on 700 tonnes [app], reduce the profit available for reinvestment [an]. Cost 2: Money tied up in stock [k], because the wheat is worth $260,000, cash that cannot be used elsewhere in the mill [app], so other opportunities such as equipment or debt repayment are postponed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "holding inventory incurs storage, insurance and interest costs",
+            "cash tied up in stock cannot be used elsewhere (opportunity cost)"
+          ],
+          "application_max_2": [
+            "$2,800 a month warehouse rent; $105,000 a year total holding cost",
+            "the 700-tonne store is worth $260,000"
+          ],
+          "analysis_max_2": [
+            "holding costs of $105,000 a year directly reduce profit",
+            "$260,000 tied up has an opportunity cost for the mill's other needs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$105,000",
+            "$2,800",
+            "700 tonnes",
+            "$260,000",
+            "8 weeks",
+            "250 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Craymoor Flour Co should cut its wheat inventory from 700 tonnes to 250 tonnes? Justify your answer.",
+        "model_answer": "Cutting stock to 250 tonnes would save money [k], because holding costs of about $105,000 a year would fall by roughly $67,500 and less cash would sit in the store [app], freeing funds for the mill's other needs [an]. However, a 250-tonne store leaves only about 3 weeks of cover [k], because it supports far fewer days of milling for 60 bakeries than 700 tonnes [app], so the next supply strike could stop production and push bakeries to rival mills [an]. Overall, Craymoor should keep the 700-tonne inventory [eval], because the 3-week strike showed that stock protects uninterrupted production and the loyalty of 60 bakeries, outweighing the $67,500 annual saving [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower inventory reduces holding costs and frees cash",
+            "lower inventory raises the risk of running out during disruption"
+          ],
+          "application_max_2": [
+            "$105,000 a year holding cost; about $67,500 potential saving",
+            "700 tonnes vs 250 tonnes (about 8 vs about 3 weeks of cover)",
+            "60 bakeries rely on Craymoor, including two exclusive buyers"
+          ],
+          "analysis_max_2": [
+            "saving $67,500 a year improves cash flow and funds other needs",
+            "3 weeks of cover risks stopping production during a strike and losing bakery customers"
+          ],
+          "evaluation_max_2": [
+            "weighs the $67,500 annual saving against supply continuity and loyalty of 60 bakeries, shown by the 3-week strike"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$105,000",
+            "$2,800",
+            "250 tonnes",
+            "700 tonnes",
+            "3 weeks",
+            "independent bakeries",
+            "$260,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_197",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Highgrove Garden Products Ltd is a family-owned company in Country X making metal garden arches and patio heaters. It employs 34 workers and sells through 110 garden centres. Annual revenue is $2.8 million, yet a single hot weekend in June brought $310,000 of orders, about 11% of the year, and 1,400 units were delivered within 9 days. The busiest season runs from April to August.\n\nThe company usually holds 2,600 finished units going into May, worth $480,000, in a rented warehouse costing $3,900 a month. Demand is unpredictable, and last year sales rose 60% in one month. If the summer is cold, unsold heaters would sit in the warehouse for months. The directors are debating whether to raise inventory to 3,500 units or switch to just-in-time supply with weekly deliveries.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'just-in-time'.",
+        "model_answer": "A stock control system where supplies arrive only when they are needed, so almost no inventory is held [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "supplies arrive only when needed for production or sale",
+            "minimises or eliminates held inventory"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Highgrove Garden Products keeps finished units in stock.",
+        "model_answer": "Reason 1: To meet sudden surges in demand [k], because a single hot June weekend brought $310,000 of orders and 1,400 units were needed within 9 days [app]. Reason 2: To avoid running out at peak season [k], because sales rose 60% in one month last year, and stock lets 110 garden centres restock immediately [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "inventory meets unexpected or peak demand",
+            "inventory prevents stockouts and lost sales"
+          ],
+          "application_max_2": [
+            "$310,000 in one hot June weekend; 1,400 units in 9 days",
+            "sales rose 60% in a single month last year",
+            "110 garden centres depend on immediate restocking"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$310,000",
+            "1,400 units",
+            "9 days",
+            "60%",
+            "110 garden centres",
+            "$2.8 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs of holding 2,600 finished units.",
+        "model_answer": "Cost 1: Warehouse expense [k], because rent of $3,900 a month is about $46,800 a year, a charge that continues even in a cold summer [app], squeezing margins on the $2.8 million revenue [an]. Cost 2: Capital tied up in stock [k], because the inventory is worth $480,000, cash unavailable for other uses [app], so the business cannot invest or repay debt quickly [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "storage incurs rent and related charges",
+            "cash tied up in inventory cannot be used elsewhere"
+          ],
+          "application_max_2": [
+            "$3,900 a month warehouse rent (about $46,800 a year)",
+            "inventory of finished units worth $480,000",
+            "unsold heaters may sit for months after a cold summer"
+          ],
+          "analysis_max_2": [
+            "fixed storage cost continues regardless of demand, reducing profit",
+            "$480,000 tied up restricts liquidity and investment options"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,900",
+            "$480,000",
+            "2,600",
+            "3,500 units",
+            "just-in-time",
+            "$310,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Highgrove Garden Products Ltd should raise inventory to 3,500 units rather than switch to just-in-time? Justify your answer.",
+        "model_answer": "Holding 3,500 units would protect peak-season sales [k], because one hot weekend generated $310,000 and 1,400 units were needed within 9 days, so extra stock prevents garden centres from switching to rivals [app], safeguarding the $2.8 million annual revenue stream [an]. However, just-in-time would cut costs [k], because the $3,900 monthly warehouse rent and the $480,000 of cash in stock would shrink, and unsold heaters would not pile up after a cold summer [app], freeing cash for marketing or new products [an]. Overall, Highgrove should raise inventory to 3,500 units rather than switch to just-in-time [eval], because demand swings of 60% in a month make stockouts more costly than storage charges in the April to August season [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "holding more stock protects against sudden demand surges",
+            "just-in-time reduces storage cost and capital tied up but risks stockouts"
+          ],
+          "application_max_2": [
+            "$310,000 hot June weekend and 1,400 units in 9 days",
+            "$3,900 monthly rent and $480,000 tied up in stock",
+            "sales rose 60% in a single month last year"
+          ],
+          "analysis_max_2": [
+            "extra stock protects $2.8 million revenue and 110 retailer relationships at peak",
+            "just-in-time would cut storage cost and free cash but invites stockouts in hot months"
+          ],
+          "evaluation_max_2": [
+            "weighs stockout risk in the April to August season (60% monthly swings) against storage cost and capital tied up — decides for the larger inventory"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "3,500 units",
+            "$310,000",
+            "$3,900",
+            "$480,000",
+            "60%",
+            "$2.8 million",
+            "1,400 units"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_198",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Pennywell Wholesale Co is a private limited company in Country X supplying rice, sugar and lentils to 240 corner shops. It employs 29 workers and buys 900 tonnes of rice a year at $640 a tonne. The supplier offers a 6% discount on orders above 250 tonnes, and Pennywell saves about $34,560 a year by buying quarterly in bulk. Rice is Pennywell's biggest line by volume. Two shops have already asked for weekly rice deliveries.\n\nIts warehouse holds about 280 tonnes at peak, costing $5,200 a month in rent, insurance and handling, $62,400 a year. Last year a burst pipe damaged $38,000 of stored sugar. The directors are weighing half-yearly bulk buying for a 9% discount against monthly deliveries to cut storage costs.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'economies of scale'.",
+        "model_answer": "The fall in average cost per unit as a business increases the scale of its operations, for example by buying in bulk [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "average cost per unit falls as scale increases",
+            "purchasing (bulk-buy) economies give discounts for large orders"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Pennywell buys 900 tonnes of rice in bulk.",
+        "model_answer": "Reason 1: To earn bulk-buy discounts [k], because orders above 250 tonnes get a 6% discount, saving about $34,560 a year on rice at $640 a tonne [app]. Reason 2: To guarantee supply for shops [k], because 240 corner shops rely on rice deliveries and peak stock of about 280 tonnes prevents empty shelves [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bulk buying earns purchasing economies and lower unit costs",
+            "large inventory guarantees continuity of supply"
+          ],
+          "application_max_2": [
+            "6% discount above 250 tonnes; about $34,560 saved a year on $640 a tonne rice",
+            "240 corner shops rely on deliveries; peak stock of about 280 tonnes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "900 tonnes",
+            "$640",
+            "6%",
+            "250 tonnes",
+            "$34,560",
+            "240 corner shops",
+            "280 tonnes"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two costs of holding the larger inventory.",
+        "model_answer": "Cost 1: Storage and handling charges [k], because rent, insurance and handling cost $5,200 a month, $62,400 a year [app], which eats into the $34,560 bulk-buy saving [an]. Cost 2: Risk of damage or spoilage [k], because a burst pipe destroyed $38,000 of stored sugar last year [app], showing that holding more stock raises the chance of losing goods and money [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "holding inventory incurs storage, insurance and handling costs",
+            "stored goods risk damage, spoilage or loss"
+          ],
+          "application_max_2": [
+            "$5,200 a month, $62,400 a year in rent, insurance and handling",
+            "a burst pipe damaged $38,000 of stored sugar last year"
+          ],
+          "analysis_max_2": [
+            "$62,400 a year of storage costs absorb much of the $34,560 saving",
+            "greater stored volume increases exposure to damage like the $38,000 sugar loss"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$5,200",
+            "$62,400",
+            "$38,000",
+            "280 tonnes",
+            "$34,560",
+            "6%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Pennywell Wholesale Co should switch to half-yearly bulk buying for the 9% discount? Justify your answer.",
+        "model_answer": "Half-yearly bulk buying would deepen the discount [k], because raising the saving from 6% to 9% adds about $17,280 a year on rice at $640 a tonne, and two shops already want weekly deliveries [app], strengthening Pennywell's margins on its $34,560 existing saving [an]. However, larger half-yearly stocks would raise storage and risk [k], because rent and insurance already cost $5,200 a month, and a burst pipe once destroyed $38,000 of sugar [app], so doubled stock could raise holding costs and potential losses above the $17,280 gain [an]. Overall, Pennywell should keep its quarterly 6% bulk buying rather than switch to half-yearly orders [eval], because the extra $17,280 a year does not cover the added storage, insurance and damage risk on much larger stock [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "larger bulk orders deepen purchasing discounts",
+            "larger stocks raise storage cost and damage risk"
+          ],
+          "application_max_2": [
+            "9% vs 6% discount: about $17,280 extra a year on $640 a tonne rice",
+            "$5,200 a month for rent, insurance and handling; $62,400 a year",
+            "$38,000 of sugar lost to a burst pipe last year"
+          ],
+          "analysis_max_2": [
+            "extra $17,280 a year improves margins on rice sales",
+            "doubled stock raises $62,400 a year baseline storage and the chance of repeat losses above the saving"
+          ],
+          "evaluation_max_2": [
+            "weighs the extra $17,280 a year discount against higher storage cost and damage risk ($38,000 precedent) — decides to keep quarterly 6% buying"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "9%",
+            "6%",
+            "$5,200",
+            "$38,000",
+            "$34,560",
+            "$62,400",
+            "280 tonnes"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_199",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Harrowdale Electronics Ltd is a private limited company in Country X importing 180,000 electric kettles and toasters a year from Country M for resale to 350 retailers. It employs 21 office and warehouse staff and pays $9.5 million for the imports plus $1.9 million in import duties. Average wholesale price is $74 per unit. Competitors currently supply Country X from two other countries.\n\nThe directors are considering opening a $6.8 million assembly plant in Country Y, which shares a free trade area with Country X so finished units enter tariff-free, employing 130 workers at wages 40% below Country X levels. Alternatively, the company could keep importing from Country M and raise wholesale prices by 8%. Demand in Country X is steady at 180,000 units a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'import'.",
+        "model_answer": "Goods or services bought by one country from a supplier in another country [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "goods or services bought from abroad",
+            "money flows out to the foreign supplier"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the Country Y assembly plant appeals to Harrowdale.",
+        "model_answer": "Reason 1: It removes the import duty [k], because finished units from Country Y enter Country X tariff-free under the free trade area, saving the $1.9 million duty paid on current imports [app]. Reason 2: It cuts wage costs [k], because the 130 Country Y workers would be paid 40% below Country X levels [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "tariff-free entry under a free trade area removes import duties",
+            "lower wages abroad reduce production costs"
+          ],
+          "application_max_2": [
+            "$1.9 million duties saved each year on finished units",
+            "130 Country Y workers paid 40% below Country X levels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.9 million",
+            "$9.5 million",
+            "Country Y",
+            "130 workers",
+            "40% below",
+            "$6.8 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of opening the Country Y assembly plant.",
+        "model_answer": "Problem 1: Large set-up cost [k], because the plant needs $6.8 million before it earns anything [app], leaving little headroom if sales of the 180,000 units slow [an]. Problem 2: New-workforce risk [k], because 130 Country Y workers need training to Country X quality standards [app], and faults would damage Harrowdale's name with its 350 retailers [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "setting up abroad requires major up-front investment",
+            "a new workforce needs training and quality control is harder to maintain"
+          ],
+          "application_max_2": [
+            "$6.8 million set-up cost before any revenue",
+            "130 Country Y workers need training for Country X standards",
+            "faults would reach 350 retailers"
+          ],
+          "analysis_max_2": [
+            "$6.8 million of up-front spend strains cash if 180,000-unit demand slows",
+            "quality failures would harm relationships with 350 retailers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.8 million",
+            "130 workers",
+            "350 retailers",
+            "180,000",
+            "Country Y",
+            "$74"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Harrowdale Electronics Ltd should open the Country Y assembly plant? Justify your answer.",
+        "model_answer": "Opening the plant would cut landed costs sharply [k], because finished units enter Country X tariff-free, saving $1.9 million a year, and wages run 40% below Country X levels for 130 workers [app], which would widen the current margin of $1.92 million on $74 average prices considerably [an]. However, the plant risks a lot [k], because $6.8 million must be committed while demand is steady at 180,000 units and Harrowdale would rely on Country Y logistics and politics for every kettle sold [app], so a disruption would starve 350 retailers of stock [an]. Overall, Harrowdale should open the Country Y assembly plant [eval], because the $1.9 million annual duty saving and 40% wage advantage far outweigh the $6.8 million one-off cost given steady 180,000-unit demand [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "local assembly under a free trade area removes duties and may cut wages",
+            "setting up a plant abroad carries cost and supply-chain risk"
+          ],
+          "application_max_2": [
+            "$1.9 million annual duty saved; wages 40% below Country X levels for 130 workers",
+            "$6.8 million set-up cost; steady demand at 180,000 units a year",
+            "$74 average price and $9.5 million import spend under the current arrangement"
+          ],
+          "analysis_max_2": [
+            "duty saving and wage cut would widen the $1.92 million margin substantially",
+            "a $6.8 million commitment with single-plant politics and logistics risk could disrupt supply to 350 retailers"
+          ],
+          "evaluation_max_2": [
+            "weighs $1.9 million annual saving and 40% lower wages against the $6.8 million cost and supply risk — decides for the plant given steady 180,000-unit demand"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6.8 million",
+            "$1.9 million",
+            "40% below",
+            "180,000",
+            "350 retailers",
+            "Country Y",
+            "$74"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U4_SET_200",
+    "unit": "Unit 4: Operations Management",
+    "scenario_stem": "Willowfen Furniture Ltd is a private limited company in Country X selling flat-pack wardrobes and bookcases through 95 Country X retailers. It employs 17 staff and imports 60,000 flat-pack units a year from a single Country G supplier at $118 each, paying $7.08 million a year. The supplier has just announced a 12% price rise, and quality complaints now affect 6% of units.\n\nThe directors are deciding between building a $3.9 million factory in Country G employing 85 local workers, or keeping the import arrangement and accepting the 12% rise, which would add about $850,000 a year. Willowfen would remain headquartered in Country X. Willowfen's annual profit is $1.1 million and Country G offers 4 years of reduced business taxes on new factories.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'multinational company'.",
+        "model_answer": "A business that has operations such as factories or offices in more than one country [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "operates in more than one country",
+            "has production, offices or facilities abroad"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Willowfen considers manufacturing in Country G.",
+        "model_answer": "Reason 1: The supplier keeps raising prices [k], because the announced 12% rise adds about $850,000 a year to the $7.08 million import bill [app]. Reason 2: Quality has slipped [k], because complaints now affect 6% of units arriving from the single Country G supplier [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rising supplier prices squeeze margins and push firms to produce themselves",
+            "poor supplier quality threatens the brand and retail relationships"
+          ],
+          "application_max_2": [
+            "12% price rise adds about $850,000 a year to the $7.08 million bill",
+            "complaints affect 6% of units from the single Country G supplier"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "12%",
+            "$850,000",
+            "$7.08 million",
+            "6%",
+            "Country G",
+            "60,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of building Willowfen's own factory in Country G.",
+        "model_answer": "Problem 1: The investment is heavy [k], because $3.9 million is over three times the firm's $1.1 million annual profit [app], so profits would take several years to repay the factory [an]. Problem 2: Managing from afar is hard [k], because 85 local workers must reach Country X quality standards for 95 retailers [app], and distance raises the risk of continued faults [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "building a factory abroad requires major capital investment",
+            "managing a workforce in a distant country is difficult"
+          ],
+          "application_max_2": [
+            "$3.9 million factory cost vs $1.1 million annual profit",
+            "85 local workers must meet standards for 95 retailers"
+          ],
+          "analysis_max_2": [
+            "about 3.5 times annual profit means a slow payback and stretched liquidity",
+            "distance and a new workforce raise the risk of persistent quality faults reaching 95 retailers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.9 million",
+            "$1.1 million",
+            "85 local workers",
+            "95 Country X retailers",
+            "$850,000",
+            "4 years"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Willowfen Furniture Ltd should build its own factory in Country G? Justify your answer.",
+        "model_answer": "Building the factory would control cost and quality [k], because it removes the 12% rise costing about $850,000 a year and the 6% fault rate from the current single supplier [app], letting Willowfen set standards for its 95 retailers and keep the 4 years of reduced business taxes [an]. However, it would strain finances and focus [k], because $3.9 million is over three times the $1.1 million annual profit and 85 local workers must be recruited and trained abroad [app], and if Country G demand shifts, the factory cost may never be recouped [an]. Overall, Willowfen should build the Country G factory [eval], because the $850,000 annual saving, better quality and 4-year tax reduction outweigh the $3.9 million outlay over time [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "owning production removes supplier mark-ups and improves quality control",
+            "a factory abroad is costly and carries execution risk"
+          ],
+          "application_max_2": [
+            "12% rise adds about $850,000 a year; 6% of units faulty from the current supplier",
+            "$3.9 million cost vs $1.1 million annual profit",
+            "4 years of reduced business taxes on the new factory"
+          ],
+          "analysis_max_2": [
+            "removing the $850,000 rise and faults protects margins and the 95 retailer relationships",
+            "$3.9 million is about 3.5 times annual profit, so a slow payback strains liquidity and execution must succeed"
+          ],
+          "evaluation_max_2": [
+            "weighs $850,000 annual saving, quality control and 4-year tax cut against the $3.9 million outlay and 85-worker execution risk — decides for building the factory"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.9 million",
+            "$1.1 million",
+            "$850,000",
+            "6%",
+            "12%",
+            "85 local workers",
+            "4 years"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

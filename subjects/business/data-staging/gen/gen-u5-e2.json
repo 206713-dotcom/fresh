@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_191",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Braeburn Valley Wholesale Ltd is a private limited company in Country X supplying frozen and dry goods to 14 independent shops. Run by managing director Karen Doyle for 6 years, it earned revenue of $1.15 million last year with a profit of $92,000. Current assets are $180,000 (inventories $96,000, trade receivables $64,000 and cash $20,000) while current liabilities are $120,000, made up of trade payables of $72,000 and a bank overdraft of $48,000.\n\nBraeburn's largest supplier, Delta Produce, offers 30-day credit, and a regional supermarket group, FreshMart, has offered a contract worth $260,000 a year in extra sales if Braeburn can hold more stock and give 45 days to pay. Karen must decide whether to accept the FreshMart contract or keep supplying the 14 independent shops, which pay within 14 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'current ratio'.",
+        "model_answer": "Current assets divided by current liabilities; it shows whether a business can pay its short-term debts when they fall due, expressed as x:1 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "current assets divided by current liabilities",
+            "shows ability to pay short-term debts, expressed as x:1"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Karen should study the acid test ratio before accepting the FreshMart contract.",
+        "model_answer": "Reason 1: The acid test is a stricter measure of liquidity than the current ratio [k]; Braeburn's acid test is 0.7:1, that is ($180,000 - $96,000) / $120,000, well below the 1.5:1 current ratio [app]. Reason 2: The acid test ignores inventories, which can be slow to sell [k]; Braeburn holds $96,000 of inventories within $180,000 current assets, and the FreshMart deal needs still more stock plus 45 days for FreshMart to pay [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "acid test measures ability to pay short-term debts without relying on inventories",
+            "acid test is stricter than the current ratio, useful for judging stock-heavy businesses"
+          ],
+          "application_max_2": [
+            "Braeburn's acid test is 0.7:1 from ($180,000 - $96,000) / $120,000 against a 1.5:1 current ratio",
+            "inventories are $96,000 of the $180,000 current assets and FreshMart wants 45 days to pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$180,000",
+            "$96,000",
+            "$120,000",
+            "$260,000",
+            "FreshMart",
+            "45 days",
+            "$1.15 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of Braeburn's final accounts for its stakeholders.",
+        "model_answer": "Use 1: The bank can use the final accounts to judge whether to lend or renew the $48,000 overdraft [k]; with working capital of only $60,000 ($180,000 - $120,000) and an acid test of 0.7:1, the bank can see cash is tight, so it may demand security or restrict the facility [app][an]. Use 2: Delta Produce can use the final accounts to set credit terms before the FreshMart deal [k]; trade payables of $72,000 against current assets of $180,000 show how much Braeburn already owes suppliers, so Delta Produce can decide whether to keep 30-day terms or tighten them [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "banks and lenders use accounts to judge ability to repay before lending",
+            "suppliers use accounts to decide whether to offer or tighten credit terms"
+          ],
+          "application_max_2": [
+            "acid test of 0.7:1 and working capital of $60,000 ($180,000 - $120,000); overdraft $48,000",
+            "trade payables of $72,000 against current assets of $180,000; $1.15 million revenue"
+          ],
+          "analysis_max_2": [
+            "tight cash cover means the bank may restrict or secure the overdraft before renewal",
+            "suppliers may tighten credit if the FreshMart deal stretches payables further"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$48,000",
+            "$72,000",
+            "$180,000",
+            "$1.15 million",
+            "FreshMart",
+            "Delta Produce",
+            "30-day credit"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Karen should accept the FreshMart contract? Justify your answer.",
+        "model_answer": "Accepting the contract could lift profit [k]. FreshMart offers $260,000 a year of extra sales and Braeburn earned $92,000 profit on $1.15 million last year, so the contract could raise revenue and profit significantly [app][an]. However, the deal would stretch an already weak liquidity position [k]; the acid test is just 0.7:1 and FreshMart wants 45 days to pay, so trade payables of $72,000 and the $48,000 overdraft could swell with the extra stock [app][an]. Overall, Karen should accept the FreshMart contract but phase the stock build-up over two quarters [eval], because the extra sales are large relative to $1.15 million revenue, provided Delta Produce keeps 30-day credit and collections stay tight [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra sales contract could raise revenue and profit",
+            "weak acid test leaves little room to fund extra stock and credit"
+          ],
+          "application_max_2": [
+            "$260,000 a year of extra sales against revenue of $1.15 million; profit $92,000",
+            "acid test of 0.7:1 with 45 days allowed to FreshMart, overdraft $48,000 and payables $72,000"
+          ],
+          "analysis_max_2": [
+            "phasing the stock build-up avoids payables and the overdraft swelling at once",
+            "the profit opportunity is significant relative to last year's $92,000"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to accept with a phased stock build-up, weighing the 0.7:1 acid test against $260,000 extra sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "$1.15 million",
+            "$92,000",
+            "$48,000",
+            "$72,000",
+            "FreshMart",
+            "45 days"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_192",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Copperthwaite Hotel Group operates a 45-room boutique hotel in a seaside town in Country X, directed by general manager Sofia Marchetti since 2019. Last year revenue was $2.3 million with a profit of $310,000. Current assets total $150,000 (inventories $30,000, trade receivables $30,000 and bank balance $90,000); current liabilities total $75,000 (trade payables $45,000 and a bank overdraft of $30,000). Occupancy falls to 35% between November and March.\n\nSofia plans to refurbish 12 rooms this winter for $220,000, hoping to attract more winter wedding parties, or keep the cash back for the slow season. Much of the money would come from a 7-year bank loan at 11% interest. Shareholders want a dividend and staff want a pay rise before Christmas.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'acid test ratio'.",
+        "model_answer": "(Current assets minus inventories) divided by current liabilities; it measures the ability to pay short-term debts quickly without relying on selling inventories, expressed as x:1 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(current assets - inventories) / current liabilities",
+            "measures ability to pay short-term debts without selling inventories, expressed as x:1"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways Copperthwaite's shareholders use its final accounts.",
+        "model_answer": "Use 1: Shareholders use final accounts to decide whether to hold or sell their shares [k]; profit of $310,000 on revenue of $2.3 million suggests the hotel is trading well, which could support confidence in keeping their investment [app]. Use 2: Shareholders use final accounts to judge whether a dividend can be paid [k]; current assets of $150,000 against current liabilities of $75,000 give a current ratio of 2.0:1, so short-term debts are covered and part of the $310,000 profit could be distributed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders use accounts to decide whether to hold or sell shares",
+            "shareholders use accounts to judge whether a dividend is affordable"
+          ],
+          "application_max_2": [
+            "profit of $310,000 on revenue of $2.3 million",
+            "current assets $150,000 and current liabilities $75,000 give a current ratio of 2.0:1"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.3 million",
+            "$310,000",
+            "$150,000",
+            "$75,000",
+            "45-room",
+            "Sofia Marchetti",
+            "Shareholders"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways employees use Copperthwaite's final accounts.",
+        "model_answer": "Use 1: Employees use final accounts to assess job security [k]; revenue of $2.3 million and occupancy falling to 35% between November and March show the slow season is the risky period, so staff may fear winter hours even though the year closed with a $310,000 profit [app][an]. Use 2: Employees use final accounts to support a pay claim [k]; the $310,000 profit and a current ratio of 2.0:1 suggest the hotel can afford a pay rise, strengthening the case staff put to Sofia Marchetti before Christmas [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees use accounts to assess job security",
+            "employees use accounts to support pay negotiations"
+          ],
+          "application_max_2": [
+            "occupancy falls to 35% between November and March; revenue $2.3 million",
+            "profit of $310,000; current ratio 2.0:1; pay rise wanted before Christmas"
+          ],
+          "analysis_max_2": [
+            "winter low season threatens winter hours despite annual profit",
+            "liquidity and profit give weight to a pay claim before Christmas"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.3 million",
+            "35%",
+            "$310,000",
+            "Sofia Marchetti",
+            "occupancy",
+            "Christmas",
+            "$150,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Sofia should take the bank loan to refurbish the 12 rooms? Justify your answer.",
+        "model_answer": "Taking the loan could transform winter trade [k]; refurbishing 12 rooms for $220,000 could attract wedding parties in the November to March season when occupancy is just 35%, lifting revenue beyond $2.3 million [app][an]. However, the loan has 11% interest for 7 years and cash is already stretched [k]; current assets of $150,000, an acid test of 1.6:1 and the $90,000 bank balance leave little slack, while staff still want a pay rise and shareholders a dividend [app][an]. Overall, Sofia should take the loan only if the bank agrees an interest-only first year and the $220,000 refit finishes before the wedding season [eval], because winter demand is unproven and she must keep enough cash for the slow season and for wages [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "loan-funded refurbishment could attract winter wedding parties and lift revenue",
+            "the loan adds long-term interest cost and reduces cash headroom in winter"
+          ],
+          "application_max_2": [
+            "$220,000 to refurbish 12 rooms; occupancy 35% from November to March",
+            "acid test 1.6:1; bank balance $90,000; overdraft $30,000; 11% interest over 7 years"
+          ],
+          "analysis_max_2": [
+            "if winter wedding demand materialises revenue could rise above $2.3 million",
+            "interest for 7 years strains cash during the thin winter season alongside pay and dividend demands"
+          ],
+          "evaluation_max_2": [
+            "conditional justified recommendation: accept the loan with an interest-only first year, weighing wedding demand against unproven winter trade"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$220,000",
+            "12 rooms",
+            "35%",
+            "$90,000",
+            "$30,000",
+            "11%",
+            "$2.3 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_193",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Duncannon Timber Homes Ltd manufactures timber-frame house kits in Country X. Director Adam Kowalski took over the business 9 years ago; last year's revenue was $3.4 million, up from $3.0 million the year before. This year's current assets are $260,000 (inventories $140,000, trade receivables $85,000 and cash $35,000) with current liabilities of $130,000; last year current assets were $200,000 (inventories $90,000) and current liabilities $100,000.\n\nA national housing association has offered a $900,000 contract to supply 60 timber-frame kits, but it requires Duncannon to hold far more timber in stock from March. Adam must decide whether to accept the contract, or stay with private housebuilders paying within 30 days. Inflation has pushed timber prices up sharply over the last two years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'ratio analysis'.",
+        "model_answer": "The use of financial ratios calculated from a business's final accounts to assess its performance, liquidity and position, and to compare it with other periods or businesses [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "financial ratios calculated from final accounts",
+            "used to assess performance, liquidity or position and to compare over time or with other businesses"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two uses of ratio analysis for Adam and his fellow directors.",
+        "model_answer": "Use 1: Directors use ratio analysis to monitor liquidity and spot a deteriorating trend [k]; Duncannon's acid test has fallen to 0.92:1 this year, from 1.1:1 last year, even though the current ratio is stable at 2.0:1 in both years [app]. Use 2: Directors use ratio analysis to help decide whether to accept the housing association contract [k]; if required stocks of timber rise well beyond $140,000, the acid test could fall sharply, so Adam can insist on phased deliveries before signing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "directors use ratio analysis to monitor liquidity trends",
+            "directors use ratio analysis to support decisions on large contracts and stock levels"
+          ],
+          "application_max_2": [
+            "acid test fell from 1.1:1 to 0.92:1; current ratio stable at 2.0:1 ($260,000 / $130,000)",
+            "inventories rose from $90,000 to $140,000; contract needs far more stock from March"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$260,000",
+            "$140,000",
+            "$3.4 million",
+            "$3.0 million",
+            "$900,000",
+            "60 timber-frame",
+            "30 days"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of comparing Duncannon's ratios over the last two years.",
+        "model_answer": "Limitation 1: Ratios are historic figures and say nothing certain about the future [k]; the 0.92:1 acid test reflects revenue of $3.4 million earned at the year end, not whether the $900,000 contract will strain cash when it is delivered from March [app][an]. Limitation 2: Comparisons over time are distorted by inflation and price changes [k]; timber prices have pushed inventories from $90,000 to $140,000, so higher stock value does not necessarily mean more timber in real terms [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ratios are historic and cannot predict future performance",
+            "comparisons over time are distorted by inflation and price changes"
+          ],
+          "application_max_2": [
+            "acid test now 0.92:1 against revenue of $3.4 million and a $900,000 contract under consideration",
+            "inventories rose from $90,000 to $140,000 due to timber price inflation"
+          ],
+          "analysis_max_2": [
+            "historic figures cannot show how the contract will actually affect liquidity",
+            "price rises inflate inventory values, so the deterioration may be smaller than it looks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3.4 million",
+            "$90,000",
+            "$140,000",
+            "$900,000",
+            "inflation",
+            "$3.0 million",
+            "timber"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Adam should accept the housing association contract? Justify your answer.",
+        "model_answer": "The contract could secure two years of work [k]; at $900,000 it is worth about a quarter of last year's $3.4 million revenue and would keep Duncannon's kit factory running at full capacity [app][an]. However, liquidity is already stretched, and comparisons over time can mislead [k]; the acid test has slipped from 1.1:1 to 0.92:1 and inflation has swollen inventories to $140,000, so the true position may be weaker than the figures suggest [app][an]. Overall, Adam should accept the contract only with milestone payments and staged timber deliveries [eval], because the $900,000 prize outweighs the risk if cash arrives before large inventory bills fall due, protecting the 0.92:1 acid test [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the contract offers $900,000 of secure work",
+            "the acid test is deteriorating; historic ratio comparisons can mislead"
+          ],
+          "application_max_2": [
+            "$900,000 contract against revenue of $3.4 million",
+            "acid test 0.92:1 this year vs 1.1:1 last year; inventories $140,000"
+          ],
+          "analysis_max_2": [
+            "the contract is worth about a quarter of revenue and could transform capacity utilisation",
+            "inflation distorts the two-year comparison, so staged stock purchases protect cash"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to accept only with milestone payments and staged deliveries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$900,000",
+            "$3.4 million",
+            "$140,000",
+            "inflation",
+            "housing association",
+            "30 days",
+            "$3.0 million"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_194",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Starrow Retail Group Plc runs 24 fashion stores across Country X and is listed on the Country X Stock Exchange; chief executive Helena Brandt joined in 2021. This year revenue was $9.5 million and profit $640,000; 1,150 people are employed. Current assets are $550,000 (inventories $300,000, trade receivables $120,000 and cash $130,000) and current liabilities are $250,000 (trade payables $180,000 and taxation payable $70,000). Last year the current ratio was 2.0:1 and the acid test about 0.92:1; this year they are 2.2:1 and 1.0:1.\n\nThe board must decide whether to pay a special dividend of $90,000 to shareholders, who have seen two flat years, or spend $1.2 million refitting the oldest 8 stores; customers complain about poor fitting rooms and the tax authority awaits the $70,000 tax due by 31 March.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two stakeholders who use a business's final accounts.",
+        "model_answer": "Shareholders (owners) and the government (the tax authority) are two stakeholders who use final accounts, for example to judge dividends and tax due [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders/owners use final accounts",
+            "government/tax authority uses final accounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the government uses Starrow's final accounts.",
+        "model_answer": "Use 1: The tax authority uses final accounts to calculate and verify corporation tax [k]; Starrow shows taxation payable of $70,000 against revenue of $9.5 million, so the authority can check the $70,000 is correct and collect it by 31 March [app]. Use 2: The government uses final accounts to monitor large employers and economic activity [k]; 1,150 people are employed across 24 stores, so the accounts help the authority track employment taxes and check the Plc meets reporting duties [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government uses accounts to assess and check taxes due",
+            "government uses accounts to monitor large employers and compliance"
+          ],
+          "application_max_2": [
+            "taxation payable of $70,000; revenue of $9.5 million; tax due by 31 March",
+            "1,150 employees across 24 fashion stores"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$70,000",
+            "$9.5 million",
+            "1,150",
+            "24 fashion stores",
+            "31 March",
+            "taxation payable",
+            "Country X Stock Exchange"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways customers use Starrow's final accounts.",
+        "model_answer": "Use 1: Customers use final accounts to judge whether Starrow will keep trading and honour returns or warranties [k]; a current ratio of 2.2:1 and profit of $640,000 this year suggest Starrow is a sound, going-concern retailer, so customers can buy with confidence [app][an]. Use 2: Customers use final accounts to judge whether Starrow can afford the promised refits [k]; revenue of $9.5 million and cash of $130,000 indicate Starrow could fund the fitting-room refurbishments in the oldest 8 stores if it chose to [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customers use accounts to judge whether the business will survive for warranties and returns",
+            "customers use accounts to judge quality of service and investment in stores"
+          ],
+          "application_max_2": [
+            "current ratio of 2.2:1; profit of $640,000",
+            "revenue $9.5 million and cash $130,000; fitting-room complaints in the 8 oldest stores"
+          ],
+          "analysis_max_2": [
+            "financial stability supports confidence in warranties and stock availability",
+            "strong revenue and cash could fund the oldest-store refurbishments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2.2:1",
+            "$640,000",
+            "$9.5 million",
+            "$130,000",
+            "8 stores",
+            "fitting rooms",
+            "$70,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Starrow should pay the special dividend or refit the 8 stores? Justify your answer.",
+        "model_answer": "A special dividend would reward loyal shareholders [k]; two flat years made Starrow cautious, and the improved 2.2:1 current ratio and 1.0:1 acid test show the business could afford $90,000 without endangering suppliers [app][an]. However, customers are deserting the poorest stores [k]; refitting the oldest 8 stores for $1.2 million could defend revenue of $9.5 million by fixing fitting rooms and the shopping experience, and the $70,000 tax is due by 31 March regardless [app][an]. Overall, Starrow should refit the 8 stores and skip the special dividend this year [eval], because revenue of $9.5 million needs protecting and the acid test has improved from about 0.92:1 to 1.0:1, while a dividend now would not create value if store sales slipped further [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a dividend rewards shareholders; a refit defends sales",
+            "improved liquidity can fund either option but not both comfortably"
+          ],
+          "application_max_2": [
+            "current ratio improved from 2.0:1 to 2.2:1; acid test from about 0.92:1 to 1.0:1",
+            "$90,000 dividend vs $1.2 million for 8 stores; $70,000 tax due by 31 March; profit $640,000"
+          ],
+          "analysis_max_2": [
+            "paying both would strain cash; the refit protects the revenue base",
+            "skipping the dividend preserves flexibility while liquidity rebuilds"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to refit the 8 stores, weighing shareholder returns against revenue protection"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$1.2 million",
+            "8 stores",
+            "2.2:1",
+            "$9.5 million",
+            "31 March",
+            "$640,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_195",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Hollowbrook Artisan Bakery operates as a partnership between Adele and Maura Byrne in a market town in Country X, supplying bread and pastries to 11 shops and its own cafe. Last year revenue was $520,000 with a profit of $48,000. Current assets are $75,000 (inventories $45,000 of flour, butter and finished goods, trade receivables $18,000 and cash $12,000); current liabilities total $60,000 (a bank overdraft of $30,000 and trade payables of $30,000).\n\nThe Country X Commercial Bank is reviewing whether to renew the $40,000 overdraft when it expires in June. The partners want a $90,000 loan to buy a second oven to double capacity and win a supermarket own-label contract, or keep only the overdraft and delay expansion for two years.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'stakeholders'.",
+        "model_answer": "Individuals or groups who have an interest in, and are affected by, a business's activities and financial performance, such as owners, employees, banks, suppliers, government and customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "individuals or groups with an interest in the business",
+            "examples include owners, employees, banks, suppliers, government and customers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons the bank uses Hollowbrook's final accounts before lending.",
+        "model_answer": "Reason 1: The bank uses the final accounts to judge whether the business can repay the $90,000 loan [k]; with a profit of only $48,000 last year on revenue of $520,000, the loan looks large relative to annual profit unless the supermarket own-label contract delivers [app]. Reason 2: The bank uses the final accounts to judge short-term liquidity before renewing the overdraft [k]; the current ratio is 1.25:1 and the acid test a weak 0.5:1, so Hollowbrook relies on selling flour, butter and bread quickly, which is risky for a perishable baker [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the bank uses accounts to judge ability to repay before lending",
+            "the bank uses accounts to assess liquidity risk before renewing an overdraft"
+          ],
+          "application_max_2": [
+            "profit of $48,000 on revenue of $520,000; requested loan $90,000",
+            "current ratio 1.25:1; acid test 0.5:1; overdraft $30,000 with renewal of $40,000 due in June"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$48,000",
+            "$520,000",
+            "$40,000",
+            "$30,000",
+            "June",
+            "own-label"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of using ratio analysis to judge Hollowbrook's liquidity.",
+        "model_answer": "Limitation 1: Ratios are historic figures and cannot prove the business will repay the loan [k]; the 1.25:1 current ratio and working capital of $15,000 ($75,000 - $60,000) reflect last year, not whether the supermarket own-label contract will lift revenue above $520,000 [app][an]. Limitation 2: The acid test can exaggerate the weakness of a perishable business [k]; excluding $45,000 of flour and butter stock makes liquidity look far worse than it is, because bakery inventories usually sell within days [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "historic ratios cannot predict future repayment ability",
+            "the acid test unfairly depresses liquidity where inventories sell quickly"
+          ],
+          "application_max_2": [
+            "working capital $15,000; current ratio 1.25:1; revenue $520,000",
+            "$45,000 inventories of flour, butter and finished goods; acid test 0.5:1"
+          ],
+          "analysis_max_2": [
+            "ratios say nothing about the future contract income from the own-label deal",
+            "perishable stock sells within days, so the acid test overstates the risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$45,000",
+            "$520,000",
+            "$75,000",
+            "$60,000",
+            "own-label",
+            "$90,000",
+            "$40,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Adele and Maura should borrow the $90,000 for the second oven? Justify your answer.",
+        "model_answer": "The second oven would double capacity [k]; if the supermarket own-label contract is won, revenue should rise well above $520,000 and the $48,000 profit could service the new loan over a few years of stronger margins [app][an]. However, liquidity is fragile [k]; the acid test is just 0.5:1, the overdraft of $30,000 expires in June, and a further $90,000 loan would leave Hollowbrook paying interest from working capital of only $15,000 [app][an]. Overall, the partners should take the loan only if the bank renews the $40,000 overdraft and the supermarket signs a firm own-label contract first [eval], because the contract revenue would service the $90,000 loan, whereas expansion without it would stretch the 1.25:1 current ratio beyond comfort [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a second oven could double capacity and secure the supermarket contract",
+            "weak liquidity makes extra debt risky"
+          ],
+          "application_max_2": [
+            "revenue $520,000, profit $48,000, working capital $15,000, acid test 0.5:1",
+            "$90,000 loan on top of a $30,000 overdraft expiring in June; renewal of $40,000 requested"
+          ],
+          "analysis_max_2": [
+            "the own-label contract would service the loan from higher revenue",
+            "expanding without the contract would overstretch the 1.25:1 current ratio"
+          ],
+          "evaluation_max_2": [
+            "conditional justified recommendation: borrow only with a signed contract and overdraft renewal"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$90,000",
+            "$40,000",
+            "own-label",
+            "$520,000",
+            "$48,000",
+            "June",
+            "$30,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_196",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Fenber Furniture Co is a family-owned private limited company in Country X making solid-oak tables and chairs for 30 independent shops. Run by director Liam Fenber, it earned revenue of $2.1 million last year. Current assets are $390,000 (inventories $210,000, trade receivables $140,000 and cash $40,000) and current liabilities are $150,000 (trade payables of $110,000 and an overdraft of $40,000). Last year current assets were $300,000 with inventories of $140,000 and current liabilities of $125,000, giving a current ratio of 2.4:1 and an acid test of 1.28:1.\n\nA German retailer has offered a $600,000 annual export order if Fenber can deliver from September, but it needs about $140,000 of imported timber up front. Fenber's timber merchant offers 60-day credit instead of the usual 30 days, or a 4% discount for payment within 10 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the current ratio of Fenber Furniture Co.",
+        "model_answer": "Current assets / current liabilities = $390,000 / $150,000 = 2.6, so Fenber's current ratio is 2.6:1 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "current assets divided by current liabilities ($390,000 / $150,000)",
+            "current ratio = 2.6:1"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons Fenber's timber merchant should study its final accounts before granting 60-day credit.",
+        "model_answer": "Reason 1: The merchant uses the accounts to judge whether Fenber will pay a large timber bill on time [k]; current assets of $390,000 against trade payables of $110,000 and an acid test of 1.2:1 suggest Fenber can cover short-term debts without distress [app]. Reason 2: The merchant uses the accounts to set the amount and length of credit [k]; an overdraft of $40,000 and existing payables of $110,000 show Fenber already uses 30-day credit, so extending to 60 days raises the merchant's risk if the export order fails and $140,000 of timber is delivered before the retailer pays [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "suppliers use accounts to judge whether and when they will be paid",
+            "suppliers use accounts to decide the amount and duration of credit"
+          ],
+          "application_max_2": [
+            "current assets $390,000 vs payables $110,000; acid test 1.2:1; revenue $2.1 million",
+            "overdraft $40,000; trade payables $110,000; proposed 60-day credit on $140,000 timber"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$390,000",
+            "$110,000",
+            "$140,000",
+            "60-day credit",
+            "$600,000",
+            "$40,000",
+            "30 days"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two uses of ratio analysis for Fenber's managers.",
+        "model_answer": "Use 1: Managers use ratio analysis to compare this year with last year and spot trends [k]; the current ratio improved from 2.4:1 to 2.6:1, but the acid test slipped from 1.28:1 to 1.2:1, showing Fenber is carrying more stock ($210,000 now vs $140,000 last year) relative to its sales [app][an]. Use 2: Managers use ratio analysis to plan for the export order [k]; if inventories climb above $210,000 for the $600,000 order, the acid test will fall further, so they can choose the 60-day credit or the 4% discount for payment within 10 days [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "managers use ratio analysis to compare periods and spot trends",
+            "managers use ratio analysis to plan decisions such as large orders"
+          ],
+          "application_max_2": [
+            "current ratio rose from 2.4:1 to 2.6:1; acid test slipped from 1.28:1 to 1.2:1",
+            "inventories $210,000 vs $140,000 last year; export order needs about $140,000 timber up front"
+          ],
+          "analysis_max_2": [
+            "stock is building faster than cash, visible only in the acid test",
+            "the 60-day credit vs 4% discount choice depends on liquidity headroom"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "2.4:1",
+            "1.28:1",
+            "$210,000",
+            "$140,000",
+            "4% discount",
+            "$600,000",
+            "60-day credit"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fenber should accept the German export order? Justify your answer.",
+        "model_answer": "The export order is a significant prize [k]; $600,000 a year is nearly a third of last year's $2.1 million revenue and would keep the factory busy beyond its 30 independent shops [app][an]. However, accepting it stretches liquidity just as the acid test has softened [k]; this year's acid test is 1.2:1 (down from 1.28:1), and funding $140,000 of imported timber up front is hard while the overdraft already stands at $40,000 [app][an]. Overall, Fenber should accept the order but insist on 60-day supplier credit and staged deliveries [eval], because the margin on $600,000 of sales outweighs the extra $140,000 timber cost if the retailer pays on time, and 60-day terms let Fenber convert tables into cash before the merchant demands payment [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the $600,000 export order would transform revenue",
+            "the order stretches liquidity; the acid test is weakening"
+          ],
+          "application_max_2": [
+            "$600,000 order against revenue of $2.1 million",
+            "acid test 1.2:1 vs 1.28:1; $140,000 timber up front; overdraft $40,000"
+          ],
+          "analysis_max_2": [
+            "the order would transform factory utilisation and spread fixed costs",
+            "supplier 60-day credit protects cash until the tables are sold"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to accept with staged deliveries and supplier credit, weighing the revenue prize against the liquidity risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$600,000",
+            "$2.1 million",
+            "$140,000",
+            "$40,000",
+            "60-day credit",
+            "$210,000",
+            "$390,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_197",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Redburn Village Stores is a family partnership running 2 convenience stores in Country X, owned by the Whitmore family for 14 years. Last year revenue was $1.4 million and profit $88,000. Current assets are $210,000 (inventories $150,000 of chilled and grocery lines, trade receivables $15,000 and cash $45,000) against current liabilities of $105,000 (trade payables of $85,000 and an overdraft of $20,000). Last year current assets were $180,000 (inventories $130,000) and current liabilities were $90,000.\n\nA new supermarket opens 10 minutes away in March, and the family is deciding whether to open a third store near the railway station, costing $350,000 and funded by a $250,000 bank loan plus $100,000 of owners' savings, or refurbish the 2 existing stores for $90,000 to improve layout and fresh food.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "State two limitations of comparing ratios over time.",
+        "model_answer": "Ratios are based on historic figures, so they may not predict future performance; and comparisons over time can be distorted by inflation, changes in accounting methods or changes in the business, making the trend look better or worse than it really is [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ratios are historic and may not predict future performance",
+            "comparisons are distorted by inflation, accounting changes or changes in the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons the Whitmore family should use ratio analysis before deciding on the third store.",
+        "model_answer": "Reason 1: Ratio analysis shows whether Redburn could take on a $250,000 loan [k]; revenue of $1.4 million and profit of $88,000 with working capital of $105,000 (current assets $210,000 minus current liabilities $105,000) suggest the business could service a loan but not comfortably fund $350,000 outright [app]. Reason 2: Ratio analysis reveals the trend in liquidity [k]; the current ratio has held at 2.0:1 in both years while the acid test has barely moved from 0.56:1 to about 0.57:1, signalling steady but stock-reliant trading rather than growing cash headroom [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ratio analysis shows capacity to service a loan before borrowing",
+            "ratio analysis reveals the trend in liquidity over years"
+          ],
+          "application_max_2": [
+            "working capital $105,000 vs $250,000 loan and $350,000 total cost; profit $88,000",
+            "current ratio 2.0:1 in both years; acid test about 0.57:1 vs 0.56:1 last year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$250,000",
+            "$350,000",
+            "$1.4 million",
+            "$88,000",
+            "$105,000",
+            "2 convenience stores",
+            "$90,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of comparing Redburn's ratios over the last two years.",
+        "model_answer": "Limitation 1: Changed stock mix makes the two years hard to compare [k]; inventories have risen from $130,000 to $150,000 partly because the stores added chilled fresh lines with slower turnover, so the higher figure alone does not prove poorer stock control [app][an]. Limitation 2: Historic figures ignore the new supermarket opening in March [k]; the steady 2.0:1 current ratio reflects the 2 stores trading as usual, but the third store decision depends on future footfall near the railway station, which past ratios cannot show [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "changes in stock mix or accounting methods distort year-on-year comparison",
+            "historic ratios ignore future events and market changes"
+          ],
+          "application_max_2": [
+            "inventories rose from $130,000 to $150,000 as chilled lines were added",
+            "new supermarket 10 minutes away opens in March; third store planned near the railway station"
+          ],
+          "analysis_max_2": [
+            "higher stock value may reflect range change, not worse management",
+            "past stability cannot predict competition or third-store trade"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$130,000",
+            "$150,000",
+            "March",
+            "railway station",
+            "$210,000",
+            "$180,000",
+            "$1.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Whitmore family should open the third store or refurbish the 2 existing stores? Justify your answer.",
+        "model_answer": "The third store would capture railway-station trade before the new supermarket settles [k]; $350,000 for a station-side store could keep revenue growing beyond $1.4 million and offset trade being lost to the supermarket 10 minutes away [app][an]. However, the family would carry a $250,000 loan against current liabilities of only $105,000 and an overdraft of $20,000 [k]; the acid test of about 0.57:1 and working capital of $105,000 show cash is already tied up in chilled stock, and repaying the loan from $88,000 annual profit would be tight for the first years [app][an]. Overall, the family should refurbish the 2 existing stores for $90,000 rather than open the third store now [eval], because revenue of $1.4 million may fall when the supermarket opens, and cutting costs before adding debt is safer for a partnership whose acid test is just 0.57:1 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a third store could defend revenue against the new supermarket",
+            "a $250,000 loan would be a heavy debt burden for this business"
+          ],
+          "application_max_2": [
+            "$350,000 cost; $250,000 loan plus $100,000 savings vs $90,000 refit",
+            "acid test about 0.57:1; working capital $105,000; profit $88,000"
+          ],
+          "analysis_max_2": [
+            "station footfall could secure revenue before the supermarket opens",
+            "interest and repayments from $88,000 profit would be tight in early years"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to refurbish now and delay the third store until the competitive position is clear"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$350,000",
+            "$250,000",
+            "$100,000",
+            "$90,000",
+            "$1.4 million",
+            "$88,000",
+            "new supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_198",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Volantis Electronics Plc assembles printed circuit boards in Country X and employs 640 people; its shares trade on the Country X Stock Exchange. This year revenue was $18 million with a profit of $1.35 million. Current assets are $1,250,000 (inventories $700,000, trade receivables $380,000 and cash $170,000) and current liabilities are $500,000 (trade payables $320,000 and taxation payable $180,000). Last year the current ratio was 2.2:1 and the acid test 0.90:1; this year they are 2.5:1 and 1.1:1.\n\nThe board must decide whether to pay a special dividend of $400,000 to shareholders, many of whom want income after two modest years, or reinvest in an automated surface-mount line costing $1.1 million to cut unit costs. The tax authority expects the $180,000 taxation to be settled by 30 April.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'final accounts'.",
+        "model_answer": "The financial statements prepared at the end of a trading period, the income statement and the statement of financial position, showing a business's revenue, costs, profit and financial position [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "income statement (revenue, costs, profit)",
+            "statement of financial position (assets, liabilities, equity)"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways shareholders use Volantis's final accounts.",
+        "model_answer": "Use 1: Shareholders use final accounts to decide whether to buy, hold or sell their shares [k]; revenue of $18 million and a profit of $1.35 million, with the current ratio improved from 2.2:1 to 2.5:1, suggest Volantis is strengthening, encouraging shareholders to hold [app]. Use 2: Shareholders use final accounts to judge whether the special dividend of $400,000 is affordable [k]; with taxation of $180,000 due by 30 April and cash of only $170,000, shareholders can see most of the dividend must come from retained earnings rather than bank balances [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shareholders use accounts to decide whether to buy, hold or sell shares",
+            "shareholders use accounts to judge the affordability of dividends"
+          ],
+          "application_max_2": [
+            "revenue $18 million; profit $1.35 million; current ratio improved from 2.2:1 to 2.5:1",
+            "$400,000 special dividend proposed; $180,000 tax due by 30 April; cash $170,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18 million",
+            "$1.35 million",
+            "2.5:1",
+            "$400,000",
+            "$180,000",
+            "$170,000",
+            "30 April"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the government uses Volantis's final accounts.",
+        "model_answer": "Use 1: The government uses final accounts to check that Volantis pays the correct tax [k]; the $180,000 taxation payable lets the tax authority verify it against the stated $1.35 million profit and $18 million revenue before collecting it by 30 April [app][an]. Use 2: The government uses final accounts to monitor large employers and public accountability [k]; with 640 people employed and shares traded on the Country X Stock Exchange, the accounts show whether Volantis is healthy enough to keep paying wages and taxes [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government uses accounts to verify and collect taxes due",
+            "government uses accounts to monitor large employers and their compliance"
+          ],
+          "application_max_2": [
+            "$180,000 taxation payable against profit of $1.35 million and revenue of $18 million; due 30 April",
+            "640 employees; listed on the Country X Stock Exchange"
+          ],
+          "analysis_max_2": [
+            "an incorrect profit figure would change the $180,000 assessed, so verification protects public revenue",
+            "the accounts signal whether jobs and wage taxes are sustainable for a 640-person employer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$180,000",
+            "$1.35 million",
+            "$18 million",
+            "640",
+            "Country X Stock Exchange",
+            "30 April",
+            "$320,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Volantis should pay the special dividend or reinvest in the automated line? Justify your answer.",
+        "model_answer": "A special dividend would attract investors [k]; $400,000 after two modest years would reward shareholders and could support the share price on the Country X Stock Exchange, and the improved 2.5:1 current ratio (up from 2.2:1) shows the business can spare it [app][an]. However, the automated line is the bigger prize [k]; $1.1 million would cut unit costs across $18 million of revenue, defending it against overseas rivals and protecting 640 jobs without borrowing [app][an]. Overall, Volantis should reinvest in the automated line and skip the special dividend this year [eval], because profit of $1.35 million is worth more as a durable cost advantage, though the board could review a dividend next year once the 1.1:1 acid test strengthens further [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a dividend rewards shareholders and can support the share price",
+            "reinvestment in automation cuts unit costs and defends revenue"
+          ],
+          "application_max_2": [
+            "$400,000 special dividend; two modest years; current ratio 2.5:1 vs 2.2:1 last year",
+            "$1.1 million automated line vs revenue of $18 million and profit of $1.35 million; acid test 1.1:1; 640 jobs"
+          ],
+          "analysis_max_2": [
+            "reinvestment improves competitiveness without new debt and spreads savings across every unit sold",
+            "paying the dividend now would forgo compounding cost savings on $18 million of revenue"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to reinvest and revisit the dividend next year once the acid test strengthens"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$400,000",
+            "$1.1 million",
+            "$18 million",
+            "$1.35 million",
+            "640",
+            "2.5:1",
+            "Country X Stock Exchange"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_199",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Caldmoor Bay Holiday Camp is a private limited company in Country X running a 140-pitch seaside campsite with swimming pools and restaurants, directed by owner Martin Hollis. Revenue last year was $1.9 million, mostly between May and September; 25 staff are full-time and 35 are seasonal. Current assets are $320,000 (inventories $80,000, trade receivables $35,000 and cash $205,000) against current liabilities of $160,000. In February last year current assets were $190,000 (inventories $60,000) and current liabilities were $150,000.\n\nMartin must decide whether to invest $280,000 in heated indoor pools and winter events to open all year, or keep the 7-month season and accept winter closures. The bank will consider a winter overdraft of up to $120,000. Employees want year-round jobs; the owners fear an overdraft spiral in winter.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the acid test ratio for Caldmoor Bay last February.",
+        "model_answer": "(Current assets - inventories) / current liabilities = ($190,000 - $60,000) / $150,000 = $130,000 / $150,000 = 0.87, so the acid test ratio was 0.87:1 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "(current assets - inventories) / current liabilities: ($190,000 - $60,000) / $150,000",
+            "acid test ratio = 0.87:1"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways employees use Caldmoor Bay's final accounts.",
+        "model_answer": "Use 1: Employees use final accounts to assess job security, especially in winter [k]; February current assets of $190,000 against current liabilities of $150,000 (an acid test of 0.87:1) show how tight cash gets out of season, explaining why only 25 staff keep full-time jobs while 35 are seasonal [app]. Use 2: Employees use final accounts to support a pay claim or a case for year-round hours [k]; revenue of $1.9 million, earned mostly between May and September, and summer current assets of $320,000 show the camp depends on peak-season trade, strengthening the case for seasonal pay supplements [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees use accounts to assess job security",
+            "employees use accounts to support pay and hours negotiations"
+          ],
+          "application_max_2": [
+            "February: current assets $190,000 vs liabilities $150,000; acid test 0.87:1; 25 full-time and 35 seasonal staff",
+            "revenue $1.9 million mostly between May and September; summer current assets $320,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$190,000",
+            "$150,000",
+            "$320,000",
+            "$1.9 million",
+            "25 staff",
+            "35 are seasonal",
+            "February"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two limitations of comparing Caldmoor's ratios between summer and winter.",
+        "model_answer": "Limitation 1: Seasonality makes the two periods unrepresentative of each other [k]; current assets were $320,000 against $160,000 liabilities at the year end, but only $190,000 against $150,000 last February, so the two current ratios describe different positions, not a like-for-like trend [app][an]. Limitation 2: Comparisons over time ignore how cash moves during the year [k]; ratios are only a snapshot, so they cannot show how the May to September surplus pays for pool repairs and winter wages, meaning a strong summer acid test can mask a winter squeeze [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "seasonal businesses cannot be compared like-for-like across the year",
+            "ratios are snapshots that miss intra-year cash movement"
+          ],
+          "application_max_2": [
+            "current assets $320,000 vs February $190,000; liabilities $160,000 vs $150,000",
+            "surplus from May to September versus February's 0.87:1 acid test"
+          ],
+          "analysis_max_2": [
+            "winter ratios exaggerate weakness and summer ratios flatter strength",
+            "snapshot ratios hide that the surplus is absorbed by off-season costs before February"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$320,000",
+            "$190,000",
+            "May and September",
+            "$1.9 million",
+            "$80,000",
+            "$60,000",
+            "February"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Martin should invest in the winter facilities or keep the 7-month season? Justify your answer.",
+        "model_answer": "Winter opening would keep 35 seasonal staff in work [k]; $280,000 of heated pools and events could turn a 7-month business into a year-round one, lifting revenue beyond $1.9 million and improving job security for the camp's 60 workers [app][an]. However, the camp loses money in the closed season [k]; February's current ratio was 1.27:1 and the acid test 0.87:1, so opening all year would rely on a winter overdraft of up to $120,000 on top of current liabilities of $160,000 [app][an]. Overall, Martin should keep the 7-month season and test winter weekends before committing $280,000 [eval], because the indoor facilities only pay if winter bookings are secured in advance, and an unplanned $120,000 overdraft could spiral as the owners fear [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "winter investment could create year-round work and lift revenue",
+            "winter trading is historically loss-making and overdraft-dependent"
+          ],
+          "application_max_2": [
+            "$280,000 invest to open all year vs keeping the 7-month season; 25 full-time and 35 seasonal staff",
+            "February ratio 1.27:1; acid test 0.87:1; winter overdraft up to $120,000; current liabilities $160,000"
+          ],
+          "analysis_max_2": [
+            "year-round opening spreads fixed costs and secures jobs for seasonal workers",
+            "winter losses could exhaust cash before spring unless advance bookings cover the costs"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to trial winter events before committing $280,000, weighing job security against overdraft risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$280,000",
+            "$1.9 million",
+            "$120,000",
+            "$160,000",
+            "7-month season",
+            "May and September",
+            "February"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_200",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Nordell Dental Supplies Ltd is a private limited company in Country X distributing dental consumables to 90 dental practices. Director Priya Nandakumar founded the business 7 years ago; revenue was $4.6 million last year and profit $390,000. Current assets are $540,000 (inventories $300,000 of implants and composites, trade receivables $165,000 and cash $75,000); current liabilities are $240,000 (trade payables $190,000 and an overdraft of $50,000). Last year current assets were $500,000 (inventories $260,000) and current liabilities were $250,000.\n\nA 120-practice dental group has invited Nordell to become its exclusive supplier, worth $1.1 million a year, but Nordell would need to hold about $120,000 more high-value stock. Priya must decide whether to accept the group contract using cash reserves, or keep the capital liquid and stay with the 90 practices, which pay within 30 days.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'liquidity'.",
+        "model_answer": "The ability of a business to pay its short-term debts when they fall due, using current assets such as cash and items that can quickly be turned into cash [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ability to pay short-term debts when they fall due",
+            "relates to current assets that can quickly be turned into cash"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two ways the dental practices use Nordell's final accounts.",
+        "model_answer": "Use 1: The 90 dental practices use Nordell's final accounts to judge whether Nordell will remain a reliable supplier [k]; a current ratio of 2.25:1 and an acid test of 1.0:1 (computed from $540,000 current assets less $300,000 inventories) show Nordell can cover its short-term bills and keep supplying implants and composites [app]. Use 2: The practices use final accounts to judge Nordell's staying power for emergency resupply and warranty support [k]; revenue of $4.6 million and profit of $390,000 show a substantial, profitable distributor likely to honour after-sales commitments [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customers use accounts to judge reliability of supply (going concern)",
+            "customers use accounts to judge after-sales and warranty support"
+          ],
+          "application_max_2": [
+            "current ratio 2.25:1; acid test 1.0:1 derived from current assets $540,000 and inventories $300,000",
+            "revenue $4.6 million; profit $390,000; current liabilities $240,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$540,000",
+            "$300,000",
+            "90 dental practices",
+            "$4.6 million",
+            "$390,000",
+            "$1.1 million",
+            "120-practice"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways the government uses Nordell's final accounts.",
+        "model_answer": "Use 1: The government uses final accounts to check that Nordell pays the correct corporation tax [k]; the $390,000 profit on $4.6 million revenue lets the tax authority verify the assessed tax and chase any shortfall, supporting public services [app][an]. Use 2: The government uses final accounts to assess whether Nordell is a safe public-sector supplier [k]; with current assets of $540,000 comfortably above current liabilities of $240,000, the accounts signal a stable business to keep in healthcare supply chains [app][an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "government uses accounts to verify and collect taxes due",
+            "government uses accounts to assess businesses as employers or public-sector suppliers"
+          ],
+          "application_max_2": [
+            "profit $390,000 on revenue of $4.6 million",
+            "current assets $540,000 against current liabilities $240,000; acid test 1.0:1"
+          ],
+          "analysis_max_2": [
+            "the profit figure is the base for the corporation tax assessment, so verification protects revenue",
+            "comfortable cover of liabilities makes Nordell a low-risk supplier for public contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$390,000",
+            "$4.6 million",
+            "$540,000",
+            "$240,000",
+            "$300,000",
+            "90 dental practices",
+            "$50,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Priya should accept the 120-practice group contract? Justify your answer.",
+        "model_answer": "The group contract would transform Nordell's scale [k]; $1.1 million a year on top of $4.6 million revenue would lift it by almost a quarter and secure exclusive supply to 120 practices [app][an]. However, buying about $120,000 more high-value implants with cash would cut the acid test sharply [k]; inventories would rise from $300,000 to $420,000 against current liabilities of $240,000, so the acid test would fall from 1.0:1 to 0.5:1, leaving thin cover if the overdraft of $50,000 is called in [app][an]. Overall, Priya should accept the group contract only with staged stock deliveries or supplier credit for the extra $120,000 [eval], because the exclusive $1.1 million deal could entrench Nordell in the market, provided she does not fund it entirely from cash and strain supply to the 90 existing practices [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the exclusive $1.1 million contract would transform scale",
+            "extra stock funded in cash would halve the acid test"
+          ],
+          "application_max_2": [
+            "$1.1 million contract against revenue of $4.6 million; 120-practice group vs 90 practices",
+            "inventories would rise from $300,000 to $420,000; acid test falls from 1.0:1 to 0.5:1; overdraft $50,000; liabilities $240,000"
+          ],
+          "analysis_max_2": [
+            "exclusive supply could entrench Nordell and add almost a quarter to revenue",
+            "halving the acid test leaves little room if suppliers tighten terms or the overdraft is called"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation to accept only with supplier credit or staged deliveries, weighing market gain against cash risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1.1 million",
+            "$4.6 million",
+            "$120,000",
+            "$300,000",
+            "120-practice",
+            "90 dental practices",
+            "$50,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

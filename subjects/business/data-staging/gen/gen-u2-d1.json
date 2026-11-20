@@ -1,0 +1,952 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_161",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Tarnmere Retail Group operates 6 supermarket stores across Country X and employs 240 staff. The group is opening a new store in Bramfield next spring and must hire 30 sales assistants before March. Last year, the HR team received 1,400 CVs for just 25 vacancies, and managers found that one-third of applicants omitted key details such as previous retail experience or weekend availability.\n\nThe HR manager wants to introduce a standard application form for the Bramfield campaign, arguing that every candidate would answer the same questions and shortlisting would be faster and fairer. The store general manager prefers keeping CVs, believing they reveal personality and written communication skills that a form cannot capture. Designing and printing the new form will cost $600, and two managers would spend about 2 days each on the changeover.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'application form'.",
+        "model_answer": "An application form is a document containing a standard set of questions that all applicants for a vacancy must complete. It asks for personal details, qualifications and employment history so the employer can compare candidates on equal terms. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Document containing standard/set questions completed by all applicants",
+            "Requests personal details, qualifications and employment history for comparison"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Tarnmere Retail Group of using an application form for the Bramfield campaign.",
+        "model_answer": "Benefit 1: Application forms contain standard questions, so every one of the 1,400 applicants answers the same way [k], making shortlisting for the 30 sales assistant posts in Bramfield faster and fairer for managers [app]. Benefit 2: Forms force every candidate to provide key details such as retail experience, which one-third of last year's CVs omitted [k], so the HR team avoids wasting time on incomplete applications for the Bramfield campaign [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Standard questions mean all candidates answer identically",
+            "Ensures key information is supplied by every applicant"
+          ],
+          "application_max_2": [
+            "Shortlisting 1,400 applicants for 30 Bramfield posts becomes faster and fairer",
+            "Solves the problem that one-third of last year's CVs omitted key details such as retail experience"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["application form", "1,400", "30 sales assistants", "Bramfield", "retail experience", "one-third"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of using CVs for selecting sales assistants.",
+        "model_answer": "Advantage 1: A CV lets each applicant present their skills and experience in their own way [k], revealing personality and written communication skills [app], so managers can judge how well a candidate would represent Tarnmere Retail Group in busy stores [an]. Advantage 2: CVs are quick and inexpensive for applicants to create and send [k], helping the group attract a large pool such as the 1,400 candidates it received last year [app], which increases the chance of finding excellent sales assistants for Bramfield [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "CV allows applicants to present skills and experience in their own format",
+            "CVs are quick and cheap for applicants to produce and send"
+          ],
+          "application_max_2": [
+            "Reveals personality and written communication skills the store general manager values",
+            "Helped attract 1,400 candidates when 25 vacancies were filled last year"
+          ],
+          "analysis_max_2": [
+            "Better judgement of fit for customer-facing supermarket stores",
+            "Wider applicant pool raises the likelihood of appointing strong sales assistants for Bramfield"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["CV", "CVs", "personality", "written communication skills", "1,400", "Bramfield", "sales assistants"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tarnmere Retail Group should introduce the application form for the Bramfield campaign? Justify your answer.",
+        "model_answer": "Tarnmere Retail Group should introduce the application form because the 1,400 applicants would all answer identical questions [k], allowing two managers to shortlist the 30 sales assistants quickly and fairly, with about 2 days each on design a small one-off effort for the group [app]. This would also solve the problem of one-third of CVs omitting key details such as retail experience [an]. However, the store general manager prefers CVs because they reveal personality and written communication skills [k], which matter when staff speak to shoppers all day in 6 supermarket stores [app], and losing that insight could mean appointing assistants who perform poorly with customers and need replacing [an]. Overall, on balance the group should adopt the application form for the Bramfield campaign because consistency and speed at a scale of 1,400 applicants outweigh the extra insight CVs give for entry-level sales roles, with communication skills still checked at interview [eval]. The $600 cost is trivial compared with the wages and disruption of a poor appointment across 6 supermarket stores [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Application forms standardise answers across all candidates",
+            "CVs reveal personality and written communication skills"
+          ],
+          "application_max_2": [
+            "Consistent shortlisting of 1,400 applicants for 30 Bramfield posts by two managers",
+            "Removes the one-third of CVs that omitted key details such as retail experience"
+          ],
+          "analysis_max_2": [
+            "Fairer, faster shortlisting and fewer wasted management hours",
+            "Risk that strong interpersonal candidates are filtered out before interview"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement that consistency wins at 1,400-applicant scale",
+            "Acknowledges $600 cost and the role of interview in checking communication skills"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["application form", "1,400", "30 sales assistants", "Bramfield", "one-third", "$600", "written communication skills", "6 supermarket stores"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_162",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Voss Engineering Ltd manufactures hydraulic pumps for agricultural machinery and employs 85 production staff at its plant in Dunwick. The company needs to hire 6 graduate production engineers to support four automated production lines, and has shortlisted 18 candidates from 320 applications received this year. The HR director believes practical aptitude tests would show which candidates can read engineering drawings and solve numerical problems before interviews are held.\n\nThe production manager argues that aptitude tests cost $1,800 to administer and take half a day to run, whereas one-to-one interviews cost almost nothing and reveal motivation and teamwork. The managing director must decide whether to test the 18 candidates or simply interview them and appoint the 6 best-performing interviewees within three weeks.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'aptitude test'.",
+        "model_answer": "An aptitude test is a selection method that measures a candidate's natural ability to carry out specific tasks, such as numerical reasoning or reading technical drawings. Employers use the results to predict how well a candidate can learn and perform the duties of the job. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Selection method measuring natural ability for specific tasks",
+            "Used to predict how well a candidate can learn and perform the job"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of using aptitude tests for the graduate engineer recruitment.",
+        "model_answer": "Benefit 1: Aptitude tests give objective, measurable scores, so all 18 shortlisted candidates are assessed against the same practical tasks [k], helping the HR director identify which candidates can read engineering drawings and solve numerical problems for the 6 graduate engineer roles [app]. Benefit 2: Testing before interviewing filters out unsuitable candidates early [k], so the company avoids wasting interview time and fills the 6 posts within three weeks [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Objective and measurable scores for every candidate",
+            "Filters out unsuitable candidates before interview"
+          ],
+          "application_max_2": [
+            "Checks ability to read engineering drawings and solve numerical problems",
+            "Supports appointing 6 graduate engineers within three weeks"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["aptitude tests", "18 candidates", "engineering drawings", "320 applications", "$1,800", "Dunwick"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of one-to-one interviews as a selection method for Voss Engineering Ltd.",
+        "model_answer": "Advantage 1: One-to-one interviews let the panel explore each candidate's motivation and teamwork [k], revealing qualities that the $1,800 aptitude tests cannot measure [app], so the production manager can judge whether a graduate fits the working culture at the Dunwick plant [an]. Advantage 2: Interviews are inexpensive to set up and run [k], which matters when filling 6 posts from a shortlist of 18 candidates [app], helping Voss Engineering Ltd control recruitment costs while assessing every candidate properly [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Explores motivation and teamwork in depth",
+            "Inexpensive to set up and run"
+          ],
+          "application_max_2": [
+            "Reveals qualities tests cannot measure, such as motivation and teamwork",
+            "Low cost suited to filling 6 posts from 18 candidates"
+          ],
+          "analysis_max_2": [
+            "Better judgement of cultural fit at the Dunwick plant",
+            "Controls recruitment costs for a small engineering firm"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["one-to-one interviews", "motivation and teamwork", "Dunwick", "85 production staff", "$1,800", "6 graduate production engineers"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Voss Engineering Ltd should use aptitude tests before interviewing the 18 candidates? Justify your answer.",
+        "model_answer": "Voss Engineering Ltd should use aptitude tests because they produce objective scores for all 18 candidates [k], allowing the HR director to check who can actually read engineering drawings and solve numerical problems rather than relying on interview impressions alone [app]. With 320 applications and only 6 graduate engineer roles, an evidence-based shortlist reduces the risk of a costly mis-hire in a technical manufacturing environment [an]. However, the production manager argues that one-to-one interviews cost almost nothing and reveal motivation and teamwork [k], which matters when engineers will work alongside 85 production staff at the Dunwick plant [app], so relying on tests alone could appoint technically strong but difficult colleagues [an]. Overall, on balance the company should use tests and then interview, because the $1,800 cost (about $100 per candidate) is small against the price of a wrong technical hire, and tests give the objective base the interviews lack [eval]. Both methods together give the most reliable route to appointing the right 6 engineers within three weeks [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Aptitude tests produce objective, measurable scores",
+            "Interviews reveal motivation and teamwork"
+          ],
+          "application_max_2": [
+            "Checks ability to read engineering drawings and solve numerical problems across 18 candidates",
+            "Cuts the field from 320 applications to 6 hires"
+          ],
+          "analysis_max_2": [
+            "Reduces risk of costly mis-hire in a technical environment",
+            "Test-only approach may miss motivation and teamwork fit"
+          ],
+          "evaluation_max_2": [
+            "Weighs $1,800 cost ($100 per candidate) against cost of a wrong hire",
+            "Concludes a combined tests-then-interviews approach is best"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["aptitude tests", "18 candidates", "engineering drawings", "$1,800", "one-to-one interviews", "320 applications", "85 production staff"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_163",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Caldermere Hotel Group runs 4 hotels in Country X and employs 320 staff. Its events coordinator at the Seacrest Grand Hotel resigned last month, leaving a vacancy earning $42,000 a year. The group has two strong internal candidates: Priya Nair, a banquet supervisor with 6 years of service, and Daniel Reyes, a conference sales team leader with 4 years of service.\n\nAlternatively, the HR director could advertise externally and attract experienced events professionals from outside the group, at an estimated recruitment cost of $9,500 including advertising and agency fees. External advertising would take around 4 weeks and could attract 30 or more applicants. The chief executive must decide whether to promote internally or recruit from outside; whichever route is chosen, the post must be filled before the peak wedding season in June.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'internal recruitment'.",
+        "model_answer": "Internal recruitment is filling a vacancy by appointing someone who already works for the business, for example through promotion or transfer, rather than hiring from outside the organisation. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Filling a vacancy with an existing employee",
+            "Includes promotion or transfer from within the business"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of recruiting the events coordinator internally.",
+        "model_answer": "Advantage 1: Internal candidates are already known to the group, so managers have direct evidence of their performance and reliability [k], meaning Priya Nair or Daniel Reyes' work as banquet supervisor and conference sales team leader is proven rather than untested [app]. Advantage 2: Filling the vacancy internally is quicker and cheaper [k], avoiding the estimated $9,500 cost of advertising and agency fees and allowing the post to be filled before the June wedding season [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Internal candidates are already known and tested in the business",
+            "Quicker and cheaper than external recruitment"
+          ],
+          "application_max_2": [
+            "Proven records of Priya Nair (6 years) and Daniel Reyes (4 years)",
+            "Avoids $9,500 external recruitment cost before June wedding season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["internal candidates", "Priya Nair", "Daniel Reyes", "$9,500", "June", "6 years of service"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of recruiting the events coordinator externally.",
+        "model_answer": "Advantage 1: External recruitment widens the applicant pool beyond the 4 hotels [k], allowing experienced events professionals from outside the group to apply [app], so the group can appoint a coordinator with broader events expertise [an]. Advantage 2: An external hire brings fresh ideas and avoids internal rivalries [k], which matters if Priya Nair and Daniel Reyes both applied and one is appointed over the other [app], helping the events team work smoothly in the run-up to the June wedding season [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Widens the pool of applicants beyond the business",
+            "Brings fresh ideas and avoids internal rivalries"
+          ],
+          "application_max_2": [
+            "Access to experienced events professionals outside the group",
+            "Prevents awkwardness if one internal candidate beats the other"
+          ],
+          "analysis_max_2": [
+            "Broader events expertise strengthens the hotel's offering",
+            "Smooth team dynamics in the peak wedding season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["externally", "$9,500", "4 hotels", "events coordinator", "wedding season", "30 or more applicants"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Caldermere Hotel Group should recruit the events coordinator internally or externally? Justify your answer.",
+        "model_answer": "Caldermere Hotel Group should prioritise internal recruitment because Priya Nair and Daniel Reyes are proven performers whose work is already known across the 4 hotels [k], so appointing either avoids the $9,500 cost of external advertising and agency fees [app]. Filling the post quickly from within also protects service during the June wedding season, when occupancy peaks [an]. However, internal recruitment means one strong candidate may feel passed over [k], risking lower morale or even resignation in a hotel employing 320 staff [app], whereas an external hire would add fresh expertise but at extra cost and with a 4-week advertising timeline that could delay the appointment until after the June peak [an]. Overall, on balance the group should promote internally, choosing the stronger candidate on merit, because the cost saving, speed and known track records outweigh the modest benefit of outside experience for a coordinator post [eval]. The unsuccessful internal candidate should receive feedback and a development plan to protect morale [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Internal candidates are proven and known to managers",
+            "External hires bring fresh experience at extra cost"
+          ],
+          "application_max_2": [
+            "Avoids $9,500 recruitment cost and delays before June",
+            "Ripple effect on morale across 320 staff and the wedding season"
+          ],
+          "analysis_max_2": [
+            "Faster appointment safeguards peak-season service",
+            "Risk of morale damage or delay if external route is chosen"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring internal promotion on merit",
+            "Recognises need for feedback to retain the unsuccessful candidate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["internal candidates", "Priya Nair", "Daniel Reyes", "$9,500", "June", "wedding season", "320 staff"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_164",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Hathersage Garden Centre employs 18 staff in a rural location and is busiest at weekends and during the spring planting season, when customer numbers double. The owner wants to replace 4 full-time checkout employees who resigned, but weekend trade now generates 60% of weekly revenue and weekday mornings are quiet, with fewer than 50 customers by noon. The planting season typically begins in February and lasts until early May when the weather is favourable.\n\nThe owner is considering recruiting 8 part-time employees working Saturday, Sunday and Wednesday shifts instead of 4 full-time replacements. Full-time replacements would have cost $108,000 a year, so part-time staff at $11.50 per hour would save an estimated $12,000 a year, but full-time staff would offer more consistent service and need less supervision and training overall.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'part-time employee'.",
+        "model_answer": "A part-time employee is a worker contracted for fewer hours per week than a full-time employee, for example weekend or reduced weekday shifts. Pay and benefits are usually calculated pro rata against full-time staff. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Works fewer hours per week than a full-time employee",
+            "Pay and benefits usually pro rata against full-time staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Hathersage Garden Centre of recruiting part-time employees.",
+        "model_answer": "Benefit 1: Part-time staff can be rostered for the busiest periods, such as weekends when customer numbers double [k], matching labour to the pattern in which weekend trade now generates 60% of weekly revenue [app]. Benefit 2: Part-time employees at $11.50 per hour cost less than full-time replacements [k], saving an estimated $12,000 a year against the $108,000 full-time bill [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Can be rostered to match peak trading periods",
+            "Lower total wage cost than full-time staff"
+          ],
+          "application_max_2": [
+            "Covers weekends when numbers double and 60% of revenue is earned",
+            "Saves about $12,000 a year versus the $108,000 full-time bill"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["part-time employees", "weekend trade", "60%", "$11.50", "$12,000", "spring planting season"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two drawbacks to Hathersage Garden Centre of replacing the 4 full-time checkout employees with part-time staff.",
+        "model_answer": "Drawback 1: Replacing 4 full-time employees with 8 part-time workers doubles the number of people to train and supervise [k], increasing the workload for the owner of an 18-staff business [app], so induction and supervision costs could erode the projected $12,000 annual saving [an]. Drawback 2: Part-time staff often lack the product knowledge of full-time workers [k], so service quality during the spring planting season could slip [app], risking the garden centre's reputation and repeat custom [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "More part-time staff means more training and supervision",
+            "Part-time staff may lack full product knowledge"
+          ],
+          "application_max_2": [
+            "8 part-time recruits to train versus 4 full-time at an 18-staff business",
+            "Service quality at risk during the spring planting season"
+          ],
+          "analysis_max_2": [
+            "Induction and supervision costs may offset the $12,000 saving",
+            "Poorer customer advice could reduce reputation and repeat sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["8 part-time employees", "4 full-time replacements", "18 staff", "$12,000", "spring planting season", "Wednesday shifts"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hathersage Garden Centre should recruit 8 part-time employees instead of replacing the 4 full-time checkout employees? Justify your answer.",
+        "model_answer": "Hathersage Garden Centre should recruit the part-time employees because they can be concentrated on the weekend trade that generates 60% of weekly revenue [k], letting the centre serve doubled customer numbers without paying for idle hours on quiet weekday mornings [app]. The estimated $12,000 annual saving against the $108,000 full-time cost also protects margins [an]. However, 8 part-time workers mean more rotas, training and supervision than 4 full-time staff [k], and less experienced checkout staff may give poorer advice during the spring planting season rush [app], which could damage customer loyalty and reduce the very weekend sales that make the model work [an]. Overall, on balance the owner should recruit the part-time staff for Saturday, Sunday and Wednesday cover but retain one experienced full-time supervisor to train them [eval]. This captures the $12,000 saving and flexibility while limiting the risk of poorer customer service during the critical planting season [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Part-time staff can be rostered around peaks",
+            "More part-timers increase supervision and training needs"
+          ],
+          "application_max_2": [
+            "Targets 60% of weekly revenue at weekends",
+            "Saves about $12,000 a year versus the $108,000 full-time bill"
+          ],
+          "analysis_max_2": [
+            "Matching labour to demand protects margins and service at peaks",
+            "Inexperienced staff could reduce loyalty and weekend sales"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring part-time cover with retained experience",
+            "Weighs wage saving against service risk in the planting season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["8 part-time employees", "60%", "$12,000", "4 full-time replacements", "spring planting season", "Wednesday", "$11.50"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_165",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Quillfern Software Ltd employs 55 developers and analysts creating accounting packages for small businesses in Country X. The company has grown by 25% in two years and now serves 40 small business clients. It now wants to hire 5 graduate analysts to support this growth and has shortlisted 20 candidates. The HR manager has proposed a half-day assessment centre with group exercises, a presentation and an in-tray task, costing $3,000 in total.\n\nThe technical director argues that a structured 45-minute panel interview is cheaper at $400 in total and enough to judge each candidate, while the HR manager believes behaviour and teamwork shown at an assessment centre better predict job performance. The board must decide which method to use before offers are made in September.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'assessment centre'.",
+        "model_answer": "An assessment centre is a selection method in which candidates complete a series of tasks and exercises, such as group discussions, presentations and problem-solving activities, while trained assessors observe and score their performance. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Candidates complete a series of tasks and exercises",
+            "Assessors observe and score performance across the activities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of using an assessment centre for the 5 graduate analyst roles.",
+        "model_answer": "Benefit 1: Assessment centres use several exercises, such as group work, a presentation and an in-tray task, so assessors observe candidates over a longer period [k], giving a fuller and fairer picture than one 45-minute interview when choosing between 20 candidates [app]. Benefit 2: Group exercises reveal teamwork and communication skills [k], which Quillfern Software Ltd needs in graduate analysts supporting 40 small business clients [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Multiple exercises show behaviour over a longer period",
+            "Reveals teamwork and communication skills"
+          ],
+          "application_max_2": [
+            "Richer comparison across 20 shortlisted candidates",
+            "Matches the needs of analysts supporting 40 small business clients"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["assessment centre", "20 candidates", "group exercises", "in-tray task", "$3,000", "5 graduate analysts"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of a structured panel interview over an assessment centre for selecting the graduate analysts.",
+        "model_answer": "Advantage 1: A 45-minute panel interview costs only $400 in total [k], compared with $3,000 for the assessment centre [app], so the company spends far less at a time when the 55-person business is investing in growth [an]. Advantage 2: Panel interviews are quicker to arrange and give each candidate direct time to discuss motivation and career goals [k], helping the technical director judge commitment to the analyst role [app], which speeds up offers before the September start [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Much lower cost than an assessment centre",
+            "Quicker to arrange and gives candidates direct time"
+          ],
+          "application_max_2": [
+            "$400 versus $3,000 for the 20-candidate shortlist",
+            "Direct discussion of motivation for the analyst role"
+          ],
+          "analysis_max_2": [
+            "Preserves cash for a 55-person business investing in growth",
+            "Faster decisions mean offers before the September start"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["panel interview", "$400", "$3,000", "45-minute", "55 developers", "September"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Quillfern Software Ltd should run the assessment centre rather than rely on panel interviews for the 5 graduate analyst roles? Justify your answer.",
+        "model_answer": "Quillfern Software Ltd should run the assessment centre because exercises such as group tasks, a presentation and an in-tray activity reveal how all 20 candidates actually behave [k], not just how they answer questions in a 45-minute interview [app]. For 5 graduate analysts supporting 40 small business clients, seeing teamwork and problem-solving in practice reduces the risk of an expensive mis-hire [an]. However, the technical director is right that $3,000 is much more than $400 [k], and a poorly organised assessment centre can feel repetitive or intimidating to able candidates [app], causing them to withdraw and accept offers elsewhere at a time of 25% growth [an]. Overall, on balance the company should hold the assessment centre, because at $150 per candidate the extra $2,600 is modest against the cost of a wrong appointment, and structured interviews can still be kept within the day [eval]. This combined approach best predicts which 5 candidates will succeed with small business clients before the September start [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assessment centres reveal real behaviour across exercises",
+            "Panel interviews are cheaper and quicker"
+          ],
+          "application_max_2": [
+            "Observes teamwork across 20 candidates for 5 roles",
+            "$3,000 versus $400 cost and risk to candidate experience"
+          ],
+          "analysis_max_2": [
+            "Better prediction of on-the-job performance for analysts",
+            "Poorly run process could deter talented candidates during growth"
+          ],
+          "evaluation_max_2": [
+            "Weighs $150 per candidate against cost of a mis-hire",
+            "Concludes assessment centre plus interviews is the best route"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["assessment centre", "$3,000", "$400", "20 candidates", "5 graduate analysts", "45-minute", "September"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_166",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Draycott Freight Ltd is a family-owned haulage business with 28 trucks and 60 employees operating across Country X. Its transport supervisor retired suddenly after 12 years, leaving a vacancy managing a team of 9 drivers. The owners have shortlisted Mo Ahmed, a driver with 5 years of service who knows the depot routes, and an external candidate from a larger logistics firm with formal management qualifications.\n\nPromoting Mo internally would cost only $150 in training materials, but he has never supervised anyone before. The external candidate would expect a salary of $36,000, slightly above the $33,000 budget, plus $2,000 in relocation costs. Mo has asked for a 3-month trial period in the role. The owners must decide within 2 weeks who to appoint, as the 9 drivers need daily route briefings.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'external recruitment'.",
+        "model_answer": "External recruitment is filling a vacancy by hiring a person from outside the business, for example through job advertisements, recruitment agencies or websites, rather than promoting existing staff. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Hiring a person from outside the business",
+            "Uses channels such as advertisements, agencies or websites"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of appointing the external candidate for the transport supervisor post.",
+        "model_answer": "Benefit 1: The external candidate brings formal management qualifications and experience from a larger logistics firm [k], giving the 60-employee business supervisory skills that its internal applicant lacks [app]. Benefit 2: An outsider brings fresh ideas and no internal loyalties [k], which can help the new supervisor manage the 9 drivers fairly from day one [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Brings formal qualifications and outside experience",
+            "Brings fresh ideas without internal loyalties"
+          ],
+          "application_max_2": [
+            "Supplies supervisory skills the internal candidate lacks",
+            "Enables fair, neutral management of the 9 drivers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["external candidate", "management qualifications", "larger logistics firm", "transport supervisor", "9 drivers", "60 employees"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of promoting Mo Ahmed to transport supervisor.",
+        "model_answer": "Benefit 1: Mo has worked at the depot for 5 years and knows the routes intimately [k], so he can brief the 9 drivers from day one without a lengthy handover [app], keeping deliveries running on time across Country X [an]. Benefit 2: Promoting Mo would cost only $150 in training materials [k], compared with an external salary of $36,000 plus $2,000 in relocation costs [app], saving the business money while boosting morale among the 60 employees [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Knows the depot routes after 5 years of service",
+            "Far cheaper than hiring externally"
+          ],
+          "application_max_2": [
+            "Immediate route knowledge for briefing the 9 drivers",
+            "$150 training cost versus $36,000 salary plus $2,000 relocation"
+          ],
+          "analysis_max_2": [
+            "Continuity keeps deliveries on time across Country X",
+            "Lower cost and higher morale across the 60-employee workforce"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Mo Ahmed", "5 years of service", "9 drivers", "$150", "$36,000", "$33,000"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Draycott Freight Ltd should promote Mo Ahmed or appoint the external candidate? Justify your answer.",
+        "model_answer": "Draycott Freight Ltd should promote Mo Ahmed because he knows the depot routes and the 9 drivers after 5 years of service [k], so he can take over the daily route briefings immediately and keep the 28 trucks moving [app]. His appointment would cost only $150 in training, well within the $33,000 salary budget, and would send a powerful message to the 60 employees that loyalty is rewarded [an]. However, the external candidate arrives with formal management qualifications from a larger logistics firm [k], bringing supervisory skills Mo has not yet developed [app], and a wrong appointment controlling 9 drivers could disrupt deliveries and damage customer confidence across Country X [an]. Overall, on balance the owners should promote Mo, paired with structured management training and a 3-month trial period with review points, because his route knowledge, low cost and proven reliability outweigh his lack of supervisory experience [eval]. If he does not meet the standard, the trial can be ended and the external hire pursued, limiting the risk of the decision [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Internal promotion uses known, proven staff",
+            "External candidate brings formal management qualifications"
+          ],
+          "application_max_2": [
+            "5 years of route knowledge and instant 9-driver briefings",
+            "$150 cost versus $36,000 salary plus $2,000 relocation"
+          ],
+          "analysis_max_2": [
+            "Continuity protects deliveries and customer confidence",
+            "Unsupervised management gap could disrupt the depot"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring Mo with a 3-month trial",
+            "Trial period limits the risk if he underperforms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Mo Ahmed", "$150", "9 drivers", "28 trucks", "60 employees", "$33,000", "$36,000"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_167",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Thorncombe Bay Hotel is a 3-star hotel in a seaside town with 70 bedrooms, where occupancy reaches 90% in July and August but falls to 35% from November to February. It employs 12 full-time housekeepers working 40 hours per week each. The general manager is considering converting 6 full-time housekeeping roles to part-time contracts of 20 hours per week.\n\nThe switch would save an estimated $56,000 a year at the $9 hourly rate and give the hotel flexibility to add shifts in peak weeks. However, experienced full-time housekeepers may resign rather than accept fewer hours, and part-time staff often need more supervision. The decision must be made before contracts are renewed in October. The hotel would also rotate weekly deep cleaning between the rooms.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'full-time employee'.",
+        "model_answer": "A full-time employee is a worker contracted for the standard full working week, typically around 35 to 40 hours, usually with regular hours throughout the year and entitlement to full pro-rata holiday and benefits. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Contracted for the standard full working week",
+            "Regular hours with full pro-rata holiday and benefits"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Thorncombe Bay Hotel of employing part-time housekeepers.",
+        "model_answer": "Benefit 1: Part-time housekeepers can be rostered to match seasonal demand, such as the 90% occupancy weeks in July and August [k], so the hotel covers peaks without paying full-time wages in the quiet months [app]. Benefit 2: Converting 6 full-time roles to 20 hours per week saves an estimated $56,000 a year [k], at the $9 hourly rate [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rostered to match seasonal demand",
+            "Reduces total wage cost"
+          ],
+          "application_max_2": [
+            "Covers 90% occupancy peak weeks in July and August",
+            "Saves about $56,000 a year at the $9 hourly rate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["90%", "$56,000", "$9", "July and August", "20 hours per week", "part-time"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages to Thorncombe Bay Hotel of converting the 6 full-time housekeeping roles to part-time contracts.",
+        "model_answer": "Disadvantage 1: Experienced full-time housekeepers may resign rather than accept fewer hours [k], meaning the hotel loses staff who know the 70 bedrooms and its standards intimately [app], so room quality could slip precisely when 90% occupancy demands speed and consistency [an]. Disadvantage 2: Part-time staff often need more supervision as more people share the work [k], increasing the housekeeping manager's workload [app], which may offset the $56,000 saving through extra supervisory hours and training [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Experienced staff may resign rather than accept fewer hours",
+            "Part-time staff often need more supervision"
+          ],
+          "application_max_2": [
+            "Loss of knowledge of the 70 bedrooms and hotel standards",
+            "Extra supervision and induction for the reduced-hours team"
+          ],
+          "analysis_max_2": [
+            "Room quality risk at 90% peak occupancy",
+            "Supervision and training time may offset the $56,000 saving"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["6 full-time housekeeping roles", "part-time", "70 bedrooms", "$56,000", "90%", "20 hours"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Thorncombe Bay Hotel should convert the 6 full-time housekeeping roles to part-time contracts? Justify your answer.",
+        "model_answer": "Thorncombe Bay Hotel should convert the roles because occupancy swings from 35% in November to 90% in July and August [k], so matching housekeeping hours to actual occupancy avoids paying for 40-hour weeks when few rooms are let [app]. At the $9 hourly rate, cutting 6 roles from 40 to 20 hours per week saves an estimated $56,000 a year, protecting margins through the seaside off-season [an]. However, experienced full-time housekeepers may leave rather than accept shorter hours [k], taking their knowledge of the 70 bedrooms with them, and recruiting and training new part-time staff would add costs [app], undermining service precisely when 90% occupancy demands speed and consistency [an]. Overall, on balance the hotel should offer the 6 affected housekeepers the part-time contracts first and keep those who accept, because flexibility and the $56,000 saving are real but retaining known, experienced staff protects quality [eval]. Conversions should fall back to natural wastage if too many resign, limiting the operational risk [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Matching labour hours to seasonal demand",
+            "Experienced staff may resign over reduced hours"
+          ],
+          "application_max_2": [
+            "35% winter versus 90% summer occupancy",
+            "$56,000 annual saving at the $9 hourly rate"
+          ],
+          "analysis_max_2": [
+            "Avoids paying idle hours in the off-season",
+            "Loss of experienced staff threatens peak-season service"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring conversion with retention safeguards",
+            "Falls back to natural wastage to limit operational risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["6 full-time housekeeping roles", "$56,000", "$9", "90%", "35%", "70 bedrooms", "part-time"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_168",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Redfen Foods Ltd is a bakery employing 48 staff producing fresh bread and pastries for supermarkets in Country X. It needs a quality control manager to check 9,000 loaves a day. The previous appointment left after 3 months following repeated customer complaints, costing the company $11,000 in wasted ingredients and a lost supermarket contract worth $60,000 a month.\n\nThe operations director has two candidates: Lena Park, an experienced food technologist asking for $38,000 a year, and Sam Doyle, an internal apprentice promoted quickly with 2 years of experience asking for a lower salary of $27,000. The director wants to ensure the vacancy is filled with the right person, as product faults could risk the remaining contracts worth $720,000 a year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'interview'.",
+        "model_answer": "An interview is a selection method in which an employer asks a candidate questions, face to face or remotely, to assess their suitability, experience, skills and motivation for a vacancy. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Employer asks candidates questions face to face or remotely",
+            "Assesses suitability, experience, skills and motivation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why filling the quality control manager vacancy with the right person is important for Redfen Foods Ltd.",
+        "model_answer": "Reason 1: The right quality control manager can prevent faults across the 9,000 loaves checked each day [k], avoiding repeat complaints like those that cost the $60,000 a month supermarket contract [app]. Reason 2: A poor appointment risks further waste [k], such as the $11,000 in ingredients lost after the last hire, and could threaten the remaining contracts worth $720,000 a year [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Prevents product faults at scale",
+            "Avoids waste and repeat quality failures"
+          ],
+          "application_max_2": [
+            "Protects the $60,000 a month supermarket contract",
+            "Prevents further $11,000 ingredient losses and risks to $720,000 a year of contracts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["quality control manager", "9,000 loaves", "$60,000", "$11,000", "$720,000", "Redfen Foods Ltd"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two ways interviews can help Redfen Foods Ltd choose the right quality control manager.",
+        "model_answer": "Way 1: Interviews let managers probe food safety knowledge and how candidates handled past quality incidents [k], revealing whether Lena Park's food technologist experience or Sam Doyle's 2 years of internal exposure matches the role [app], so the director can judge real competence rather than CV claims alone [an]. Way 2: Interviews assess communication and leadership skills [k], essential for a manager who must enforce standards across 48 staff [app], reducing the risk of another appointment leaving after 3 months [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Probes technical and past-incident knowledge",
+            "Assesses communication and leadership skills"
+          ],
+          "application_max_2": [
+            "Compares Lena Park's experience with Sam Doyle's 2 years",
+            "Tests ability to lead standards across 48 staff"
+          ],
+          "analysis_max_2": [
+            "Judges real competence rather than claims on paper",
+            "Reduces risk of another short-lived appointment after 3 months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Lena Park", "Sam Doyle", "food technologist", "48 staff", "3 months", "2 years"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Redfen Foods Ltd should appoint Lena Park or Sam Doyle as quality control manager? Justify your answer.",
+        "model_answer": "Redfen Foods Ltd should appoint Lena Park because she is an experienced food technologist whose $38,000 asking salary is justified by proven expertise [k], and her appointment directly addresses the complaints and $11,000 ingredient waste that cost a $60,000 a month contract [app]. Protecting the remaining $720,000 a year of contracts makes her premium over $27,000 easily recoverable [an]. However, Sam Doyle is an internal apprentice asking just $27,000 with 2 years of experience [k], and hiring him rewards loyalty, signals promotion prospects to the other 48 staff and avoids repeating the external mis-hire [app], though his limited supervisory experience means faults could persist if he is promoted too quickly [an]. Overall, on balance the company should appoint Lena Park, because food safety failures threaten $720,000 a year of contracts and the previous hire failed within 3 months, so verified expertise outweighs the $11,000 salary saving [eval]. Sam should be retained as her deputy to keep his loyalty and develop him toward the role later [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Experienced food technologist versus internal apprentice",
+            "Salary difference reflects experience and risk"
+          ],
+          "application_max_2": [
+            "Lena directly addresses complaints and $11,000 ingredient waste",
+            "Protects $720,000 a year of remaining contracts"
+          ],
+          "analysis_max_2": [
+            "Premium salary is recoverable against contract losses",
+            "Sam's inexperience could perpetuate faults despite loyalty gains"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring Lena Park on verified expertise",
+            "Suggests Sam as deputy to manage risk and retain talent"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["Lena Park", "$38,000", "$27,000", "$720,000", "$60,000", "Sam Doyle", "3 months"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_169",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brackmere City Council employs 1,150 staff delivering waste collection, leisure centres and social care in Country X. The council uses a standard application form for all vacancies and received 260 applications for 8 administrative officer posts last year. Councillors have asked whether the council should accept CVs instead, arguing the form is outdated and discourages younger applicants from applying.\n\nThe form guarantees every candidate supplies the same information, supporting fair, consistent shortlisting and the council's equal opportunities policy. Moving to CVs could modernise recruitment, but officers estimate rewriting the process would cost $4,500 and take 3 months, and 90% of councils in comparable regions still use application forms for consistency and legal defensibility. The form is also translated into 2 community languages.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'curriculum vitae (CV)'.",
+        "model_answer": "A curriculum vitae (CV) is a written summary prepared by a job applicant listing their personal details, qualifications, work history and skills. It is sent to employers when advertisements invite applications rather than use a standard form. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Written summary listing personal details, qualifications and work history",
+            "Prepared by the applicant rather than the employer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Brackmere City Council of continuing to use a standard application form.",
+        "model_answer": "Benefit 1: A standard form means every applicant supplies the same information in the same order [k], so shortlisting the 260 applications for the 8 administrative officer posts is consistent and fair [app]. Benefit 2: Using the form supports the council's equal opportunities policy [k], helping it demonstrate non-discriminatory shortlisting to staff and regulators [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Every applicant supplies the same information in the same format",
+            "Supports equal opportunities and defensible shortlisting"
+          ],
+          "application_max_2": [
+            "Consistent shortlisting of 260 applications for 8 posts",
+            "Demonstrates non-discrimination to staff and regulators"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["application form", "260", "8 administrative officer posts", "equal opportunities policy", "Brackmere City Council", "social care"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two arguments for the council accepting CVs instead of application forms.",
+        "model_answer": "Argument 1: CVs let applicants present their experience in a modern, personal format [k], encouraging younger applicants who see the paper form as outdated [app], helping the council compete for talent in social care and leisure roles [an]. Argument 2: Accepting CVs reduces the effort needed for well-prepared applicants [k], so strong candidates in a tight labour market may be more willing to apply to Brackmere City Council [app], widening the pool beyond the 260 received last year [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "CVs present experience in a modern, personal format",
+            "Reduces effort for well-prepared applicants"
+          ],
+          "application_max_2": [
+            "May attract younger applicants put off by the paper form",
+            "Could widen the pool beyond 260 applications"
+          ],
+          "analysis_max_2": [
+            "Helps compete for talent in social care and leisure roles",
+            "Larger, stronger pool raises quality of appointments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["CVs", "younger applicants", "application form", "260", "administrative officer", "Brackmere City Council"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brackmere City Council should continue using application forms rather than accept CVs? Justify your answer.",
+        "model_answer": "Brackmere City Council should continue using application forms because 260 applications for 8 administrative officer posts must be shortlisted consistently [k], and the form guarantees comparable information on every candidate, matching the council's equal opportunities policy and its 2 community languages translation [app]. Rewriting the process would cost $4,500 and take 3 months, and with 90% of comparable councils still using forms, the legal and reputational risk of changing outweighs the benefits [an]. However, accepting CVs could modernise recruitment and attract younger applicants put off by the paper form [k], which matters for filling roles quickly in social care and leisure [app], and the $4,500 cost is modest for an organisation employing 1,150 staff [an]. Overall, on balance the council should keep the application form for now because consistency, translations and legal defensibility outweigh the modernising appeal of CVs [eval]. A limited CV pilot for hard-to-fill posts could be considered later as a measured compromise [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Application forms standardise shortlisting and support equal opportunities",
+            "CVs may attract younger applicants and modernise the process"
+          ],
+          "application_max_2": [
+            "Fair shortlisting of 260 applicants for 8 posts with language translations",
+            "$4,500 rewrite cost and 3-month timeline against 90% peer benchmark"
+          ],
+          "analysis_max_2": [
+            "Consistency and legal defensibility protect the council",
+            "Modest cost and youth appeal make CVs attractive in shortage areas"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring retention of the application form",
+            "Suggests a limited CV pilot as a measured compromise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["application form", "260", "$4,500", "90%", "equal opportunities policy", "1,150", "2 community languages"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_170",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Yewbank Electronics Ltd assembles small household appliances and employs 130 workers in Country X. A production line leader resigned and must be replaced. The HR manager has shortlisted 2 internal candidates after interviews: Tomas Silva, a team leader of 4 years earning $29,000, and Aisha Rahman, a quality inspector of 7 years earning $31,000.\n\nA practical problem-solving assessment is scheduled next week, costing $500. The production director believes the assessment will reveal which candidate can handle real line faults and calm staff under pressure, while the HR manager warns that the cost of choosing wrongly is high: the last mis-hire disrupted output worth $85,000 before being replaced after 5 months. The managing director must decide whether to rely on interviews alone or add the assessment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'selection'.",
+        "model_answer": "Selection is the process of choosing the most suitable candidate for a vacancy from the applicants who applied, using methods such as interviews, tests and assessment centres. [2]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Process of choosing the most suitable candidate from applicants",
+            "Uses methods such as interviews, tests and assessment centres"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why filling the production line leader vacancy with the right person is important for Yewbank Electronics Ltd.",
+        "model_answer": "Reason 1: The right line leader keeps the assembly of small household appliances running smoothly [k], avoiding the output disruption that cost the company $85,000 during the last mis-hire [app]. Reason 2: A poor appointment could reduce quality and lose orders [k], repeating the failure that forced a replacement after 5 months [app]. [4]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Keeps production running smoothly",
+            "Prevents quality failures and lost orders"
+          ],
+          "application_max_2": [
+            "Avoids the $85,000 output disruption seen last time",
+            "Prevents a repeat of the 5-month failure cycle"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["production line leader", "$85,000", "5 months", "small household appliances", "Yewbank Electronics Ltd", "130 workers"]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of adding a practical problem-solving assessment to the interviews.",
+        "model_answer": "Benefit 1: The assessment simulates real line faults, so managers can watch how each candidate responds under pressure [k], which interviews alone cannot reveal [app], improving the prediction of on-the-job performance for the 130-worker plant [an]. Benefit 2: For only $500, the assessment adds objective evidence comparing Tomas Silva and Aisha Rahman [k], strengthening the fairness of the final decision [app], and reducing the risk of another costly mis-hire [an]. [6]",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Simulates real faults and shows behaviour under pressure",
+            "Adds objective evidence to the selection process"
+          ],
+          "application_max_2": [
+            "Shows handling of real line faults, not just interview answers",
+            "$500 cost versus the $85,000 mis-hire precedent"
+          ],
+          "analysis_max_2": [
+            "Improves prediction of on-the-job performance",
+            "Strengthens fairness and reduces mis-hire risk"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["practical problem-solving assessment", "$500", "interviews", "Tomas Silva", "Aisha Rahman", "130 workers"]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Yewbank Electronics Ltd should rely on interviews alone or add a practical assessment before appointing the new production line leader? Justify your answer.",
+        "model_answer": "Yewbank Electronics Ltd should add the practical problem-solving assessment because interviews alone show how Tomas Silva and Aisha Rahman answer questions, not how they handle real production line faults [k], and the assessment costs only $500 next to the $85,000 disruption caused by the last mis-hire [app]. Observing calm problem-solving across a 130-worker plant assembling small household appliances is valuable evidence [an]. However, both candidates are internal, so their track records over 4 and 7 years are already well known to the HR manager [k], and an extra hurdle may feel unnecessary or unfair to loyal staff and delay the appointment [app], which matters when the line has already been without a leader [an]. Overall, on balance the company should add the assessment, because $500 is trivial against an $85,000 failure and it gives objective grounds to choose between the $29,000 Tomas and the $31,000 Aisha [eval]. The result should be combined with interview and appraisal evidence to appoint the strongest line leader [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Assessment reveals real fault-handling behaviour",
+            "Internal candidates have known track records"
+          ],
+          "application_max_2": [
+            "$500 test versus $85,000 mis-hire cost",
+            "Compare Tomas Silva ($29,000) and Aisha Rahman ($31,000) objectively"
+          ],
+          "analysis_max_2": [
+            "Better evidence for a leadership-critical role",
+            "Extra step risks delay and perceived unfairness to loyal staff"
+          ],
+          "evaluation_max_2": [
+            "Balanced judgement favouring adding the assessment",
+            "Combines assessment with interview and appraisal evidence"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": ["practical problem-solving assessment", "interviews", "$500", "$85,000", "Tomas Silva", "Aisha Rahman", "130 workers"],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

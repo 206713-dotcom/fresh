@@ -1,0 +1,1189 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_141",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brancott Bakery Co operates a wholesale bakery in Country X supplying 24 supermarkets across the region. It employs 96 production staff working three shifts to produce around 31,000 loaves a week. Each morning, shift manager Priya Nair briefs staff verbally for 10 minutes before production starts, while updated recipes and safety notices are pinned to the canteen board. The bakery recently won a contract with a national supermarket chain.\n\nSales of a new wholegrain loaf have fallen 18% after staff failed to follow the updated recipe. Night-shift workers rarely attend briefings, and the canteen board is read by fewer than 1 in 5 staff. Priya must choose between creating a daily messaging group for all staff or paying staff to stay for a 15-minute briefing at the start of every shift for the next 3 months.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'internal communication'.",
+        "model_answer": "Internal communication is the exchange of information between people within the same business, for example between managers and employees, so everyone understands their tasks, goals and any changes. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication between people inside the same business or organisation",
+            "Used to share information, instructions and feedback so staff understand tasks and goals"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why effective internal communication is important at Brancott Bakery.",
+        "model_answer": "Reason 1: Effective internal communication ensures all employees understand how to do their jobs correctly [k], so the 96 production staff follow the updated wholegrain recipe and output stays at around 31,000 loaves a week [app]. Reason 2: It allows information to reach staff who miss meetings [k], so night-shift workers who rarely attend briefings would still receive recipe changes through the canteen board or a daily messaging group [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Ensures employees understand tasks and work to standard",
+            "Allows information to reach all staff, including those who miss meetings"
+          ],
+          "application_max_2": [
+            "96 production staff must follow the updated wholegrain recipe to keep output at 31,000 loaves a week",
+            "Night-shift workers rarely attend briefings and would need recipe changes via the canteen board or messaging group"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Brancott Bakery Co",
+            "96 production staff",
+            "31,000 loaves",
+            "night-shift workers",
+            "daily messaging group",
+            "canteen board",
+            "18%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits for the bakery of Priya paying staff to stay for a 15-minute briefing at the start of every shift.",
+        "model_answer": "Benefit 1: Every worker receives the same instructions face to face [k], so night-shift staff who missed verbal briefings in the past would hear the updated recipe directly [app], reducing the risk of mistakes and helping reverse the 18% fall in wholegrain loaf sales [an]. Benefit 2: Two-way questions can be asked and answered immediately [k], so workers can clarify the content of the 15-minute briefing before starting production across the three shifts [app], preventing wasted flour, time and effort on the 31,000-loaf target [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Face-to-face briefings give every worker the same direct message",
+            "Two-way communication allows immediate questions and clarification"
+          ],
+          "application_max_2": [
+            "Night-shift staff who missed verbal briefings would hear the updated recipe directly",
+            "The 15-minute briefing covers all three shifts before production begins on the 31,000-loaf target"
+          ],
+          "analysis_max_2": [
+            "Fewer mistakes reverse the 18% fall in wholegrain loaf sales",
+            "Clarified instructions prevent wasted flour, time and effort"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15-minute briefing",
+            "night-shift",
+            "18%",
+            "three shifts",
+            "31,000",
+            "updated recipe",
+            "wholegrain loaf"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Priya should create a daily messaging group instead of paying staff to stay for 15-minute briefings? Justify your answer.",
+        "model_answer": "One argument for the daily messaging group is that it is a fast, low-cost written method [k], reaching all 96 production staff across three shifts, including night-shift workers who rarely attend briefings, for almost no extra wages [app], so recipe changes would be seen by more workers and the 18% fall in wholegrain loaf sales could recover [an]. However, one argument against is that written messages are easy to ignore [k], as the canteen board is read by fewer than 1 in 5 staff and some workers may not check their phones [app], so a messaging group may repeat the same failure and errors in the updated recipe would continue [an]. Overall, Priya should pay staff to stay for the 15-minute briefing instead [eval], because face-to-face briefings are more reliable for a production workforce and the extra wages are small compared with lost sales and wasted output from the 18% decline [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Electronic written methods like messaging groups are fast and cheap",
+            "Written messages can be ignored and give no guarantee of understanding"
+          ],
+          "application_max_2": [
+            "Messaging group reaches 96 production staff across three shifts including night-shift workers at almost no extra wages",
+            "The canteen board is read by fewer than 1 in 5 staff, suggesting written notices are ignored"
+          ],
+          "analysis_max_2": [
+            "Wider reach of recipe changes could reverse the 18% sales fall",
+            "An ignored messaging group repeats the failure and recipe errors continue"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the messaging group and paid briefings",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "daily messaging group",
+            "96 production staff",
+            "three shifts",
+            "night-shift workers",
+            "18%",
+            "1 in 5",
+            "15-minute briefing"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_142",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Gullwing Seafoods Ltd is a fish wholesaler in Country X supplying 38 restaurants and 12 hotels with fresh seabass, snapper and prawns each morning. Orders are taken by telephone before 7 a.m., and the sales office writes about 260 orders onto paper dockets each week. Last month 47 orders contained errors, including wrong quantities and two missed deliveries.\n\nThe director proposes replacing phone ordering with an online portal costing $9,600 to set up, where customers place orders by 10 p.m. the night before. Some long-standing restaurant customers say they prefer speaking to sales staff and have no time to learn a new system. The director estimates errors would fall below 5 a month, but 6 of the 38 restaurants have no reliable internet connection.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'external communication'.",
+        "model_answer": "External communication is the exchange of information between a business and people or organisations outside it, such as customers, suppliers, regulators and the general public. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication between a business and outside parties",
+            "Examples include customers, suppliers, government and the public"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why effective communication with customers is important for Gullwing Seafoods.",
+        "model_answer": "Reason 1: Clear ordering communication ensures the correct fish is delivered on time [k], which matters because Gullwing supplies 38 restaurants and 12 hotels every morning with fresh fish [app]. Reason 2: Reducing ordering errors protects the firm's reputation [k], as last month 47 orders contained errors, including wrong quantities and two missed deliveries [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Clear communication means correct, on-time delivery to customers",
+            "Accurate ordering protects reputation and customer loyalty"
+          ],
+          "application_max_2": [
+            "Gullwing supplies 38 restaurants and 12 hotels every morning",
+            "Last month 47 orders contained errors including two missed deliveries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "38 restaurants",
+            "12 hotels",
+            "47 orders",
+            "two missed deliveries",
+            "paper dockets",
+            "online portal"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the online ordering portal for Gullwing Seafoods.",
+        "model_answer": "Benefit 1: Orders placed by 10 p.m. the night before would avoid morning phone queues [k], so the sales office would no longer write about 260 orders onto paper dockets each week [app], freeing staff time and removing errors caused by mishearing quantities [an]. Benefit 2: Order accuracy should improve [k], because customers type their own quantities directly into the portal, which the director estimates would cut errors below 5 a month from last month's 47 [app], leading to fewer complaints and fewer missed deliveries [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Online ordering removes morning phone queues and manual paperwork",
+            "Customers entering their own data improves accuracy"
+          ],
+          "application_max_2": [
+            "About 260 orders are written onto paper dockets each week",
+            "Errors estimated to fall below 5 a month from last month's 47"
+          ],
+          "analysis_max_2": [
+            "Staff time is freed and mishearing errors are removed",
+            "Fewer complaints and missed deliveries strengthen customer loyalty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "10 p.m.",
+            "260 orders",
+            "paper dockets",
+            "$9,600",
+            "47",
+            "online portal",
+            "5 a month"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the director should replace phone ordering with the online portal? Justify your answer.",
+        "model_answer": "One argument for the portal is that it costs $9,600 [k] but should cut errors below 5 a month, compared with 47 last month, and remove the need to write 260 orders by hand each week [app], so the sales office works more efficiently and restaurant customers receive more reliable deliveries [an]. However, one argument against is that 6 of the 38 restaurants have no reliable internet connection [k], and some long-standing customers prefer speaking to staff and have no time to learn a new system, so those orders might be lost [app], damaging sales and relationships built over many years [an]. Overall, the director should introduce the portal but keep telephone ordering for customers without internet access [eval], because this captures most of the efficiency savings while protecting the 6 disadvantaged restaurants and unhappy traditionalists [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Electronic ordering improves efficiency and accuracy",
+            "Some customers lack internet access or IT skills"
+          ],
+          "application_max_2": [
+            "$9,600 setup cost to cut errors below 5 a month from 47",
+            "6 of the 38 restaurants have no reliable internet connection"
+          ],
+          "analysis_max_2": [
+            "Removing handwritten dockets frees time and improves reliability",
+            "Forcing all customers online risks losing long-standing accounts"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the portal's efficiency and its exclusion of some customers",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9,600",
+            "47",
+            "260 orders",
+            "6 of the 38 restaurants",
+            "online portal",
+            "5 a month",
+            "paper dockets"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_143",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Maple Court Care Home in Country X provides residential care for 64 elderly residents across 4 wards. It employs 58 care workers and 9 nurses. The home charges $3,200 per resident per year and prides itself on personal, face-to-face care. Key resident information is passed on at a 15-minute verbal handover meeting at shift change, and main points are recorded afterwards in each resident's care file.\n\nA recent inspection found 22 medication and dietary errors in 3 months, partly because night staff left early for buses and missed the verbal handover. The manager must choose between paying staff to stay for 12 minutes to complete written handover sheets before leaving, estimated at $150 a week in extra wages, or calling absent night staff into a second 10-minute video handover, estimated at $95 a week.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'verbal communication'.",
+        "model_answer": "Verbal communication is the passing of information by spoken words, such as face-to-face conversations, telephone calls or meetings, in person or through a device. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication using spoken words",
+            "Can be face-to-face or by phone/video, and can be two-way"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of verbal communication at Maple Court Care Home.",
+        "model_answer": "Advantage 1: It allows immediate two-way discussion [k], so nurses can question care workers about the 22 medication and dietary errors found in 3 months during the 15-minute handover [app]. Advantage 2: It is quick and personal [k], which suits a home providing personal care for 64 elderly residents across 4 wards, where staff can pass on detailed concerns face to face [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Two-way discussion with immediate questions and answers",
+            "Quick and personal, suiting sensitive situations"
+          ],
+          "application_max_2": [
+            "Nurses can question care workers about the 22 medication and dietary errors in 3 months",
+            "Face-to-face care is part of the home's service for 64 elderly residents across 4 wards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "verbal handover",
+            "15-minute",
+            "64 elderly residents",
+            "4 wards",
+            "care file",
+            "22"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the written handover sheets option.",
+        "model_answer": "Benefit 1: Written sheets create a permanent record [k], so each resident's care file would document what happened on the shift even if night staff leave early for buses [app], making missed information less likely [an]. Benefit 2: Every worker reads the same details [k], so the 58 care workers and 9 nurses would share consistent information after the 22 errors in 3 months, rather than relying only on the 15-minute verbal meeting [app], reducing repeated medication and dietary mistakes [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Written communication creates a permanent, checkable record",
+            "Every reader receives the same consistent information"
+          ],
+          "application_max_2": [
+            "Sheets completed before leaving are documented in each resident's care file",
+            "58 care workers and 9 nurses would share consistent details after 22 errors in 3 months"
+          ],
+          "analysis_max_2": [
+            "A permanent record makes missed information less likely",
+            "Consistent information reduces repeated medication and dietary mistakes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "written handover sheets",
+            "care file",
+            "night staff",
+            "58 care workers",
+            "9 nurses",
+            "22",
+            "15-minute"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the manager should introduce written handover sheets instead of the video handover? Justify your answer.",
+        "model_answer": "One argument for written sheets is that they cost about $150 a week and create a permanent record [k], so the 9 nurses can check what the 58 care workers saw after night staff leave early for buses [app], preventing repeated medication and dietary errors like the 22 found in 3 months [an]. However, one argument against is that paper sheets are not interactive [k], so absent night staff cannot ask questions as they could in a 10-minute video handover costing about $95 a week [app], and unclear notes may still cause mistakes [an]. Overall, the manager should introduce the written handover sheets [eval], because a permanent written record attached to each care file protects residents better than a phone call, even though the video handover is cheaper at $95 a week [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Written records are permanent but one-way",
+            "Interactive verbal methods allow immediate questions and answers"
+          ],
+          "application_max_2": [
+            "Written sheets cost about $150 a week versus $95 a week for the video handover",
+            "9 nurses checking 58 care workers' notes after 22 errors in 3 months"
+          ],
+          "analysis_max_2": [
+            "Permanent records prevent repeated medication and dietary errors",
+            "Lack of interaction means unclear notes may still cause mistakes"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the written sheets and the video handover",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "written handover sheets",
+            "$150 a week",
+            "$95 a week",
+            "10-minute video handover",
+            "22",
+            "$3,200",
+            "night staff"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_144",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Redmarsh Construction Ltd is building a 9-storey office block in Country X. The site employs 74 workers, including 26 contract migrants whose first language is not English. Falls from height remain the biggest risk, with 2 scaffolders injured last year. Safety rules are communicated through coloured posters and hazard signs around the site, plus a 20-minute verbal safety talk each Monday led by the site manager.\n\nAfter 3 near-miss incidents in one month, the safety officer proposes weekly 10-minute toolbox talks using a translator, at a cost of $60 per session. The project manager argues that printing multilingual signs would cost $4,800 once and would cover all areas, noting accident rates on similar sites fell by 40% after multilingual signage was introduced. Both options must start within 2 weeks to satisfy the insurer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'visual communication'.",
+        "model_answer": "Visual communication is the passing of information through images, such as signs, posters, charts, diagrams, photographs or videos, rather than through words alone. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication using images, symbols or diagrams",
+            "Examples include posters, signs, charts and videos"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of visual communication on the construction site.",
+        "model_answer": "Advantage 1: Signs and posters communicate safety rules instantly without spoken language [k], which is vital because 26 contract migrants on site have a first language other than English [app]. Advantage 2: Visual warnings are permanent and cannot be forgotten [k], so coloured hazard signs around the site constantly remind the 74 workers of the dangers of working at height on the 9-storey block [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Images communicate quickly without spoken language",
+            "Visual messages are permanent and always visible"
+          ],
+          "application_max_2": [
+            "26 contract migrants have a first language other than English",
+            "Coloured hazard signs remind the 74 workers on the 9-storey block"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "coloured posters",
+            "hazard signs",
+            "26 contract migrants",
+            "74 workers",
+            "9-storey",
+            "20-minute",
+            "multilingual"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two reasons why visual communication alone may not be enough on the site.",
+        "model_answer": "Reason 1: Posters and signs cannot check understanding [k], so the 26 contract migrants might misread hazard warnings even in their own language [app], leaving the safety officer unable to tell whether workers understand the risks [an]. Reason 2: Visual methods cannot answer questions [k], so workers cannot clarify site rules beyond the 20-minute Monday talk without stopping work [app], meaning misunderstandings about falls from height and scaffolding could persist undetected [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Visual methods are one-way and cannot check understanding",
+            "Visual methods cannot answer questions or give feedback"
+          ],
+          "application_max_2": [
+            "26 contract migrants might misread existing coloured posters and hazard signs",
+            "Only the 20-minute Monday talk allows any spoken explanation of the rules"
+          ],
+          "analysis_max_2": [
+            "The safety officer cannot tell whether workers understand the risks",
+            "Unchecked misunderstandings about falls from height may go undetected"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "posters",
+            "hazard signs",
+            "26 contract migrants",
+            "multilingual signage",
+            "20-minute",
+            "toolbox talks",
+            "3 near-miss"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the project manager should spend $4,800 on multilingual signs instead of hiring a translator for toolbox talks? Justify your answer.",
+        "model_answer": "One argument for the multilingual signs is that they cost $4,800 once [k] and would be on display in all areas permanently, covering the 26 contract migrants and the other 48 workers [app], so safety instructions would always be visible where the danger actually occurs on the 9-storey block [an]. However, one argument against is that signs are one-way [k] and cannot check that workers understand, as shown by the 3 near-miss incidents in one month despite existing posters [app], whereas a translator at $60 per session would let migrants ask questions and get answers face to face [an]. Overall, the site should fund both, but if only one option is possible, the multilingual signs are the better spend [eval], because they protect every worker every day, matching the 40% fall in accident rates seen on similar sites after signage was introduced [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Visual methods are permanent, always visible and cheap over time",
+            "Verbal two-way methods check understanding and allow questions"
+          ],
+          "application_max_2": [
+            "$4,800 once for multilingual signs covering 26 contract migrants and 48 other workers",
+            "3 near-miss incidents in one month despite existing posters and signs"
+          ],
+          "analysis_max_2": [
+            "Permanent visible signs protect workers where the danger occurs",
+            "Existing one-way signs failed to prevent near misses, so interaction is needed"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the signs and the translator-led toolbox talks",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4,800",
+            "$60",
+            "multilingual signs",
+            "26 contract migrants",
+            "3 near-miss",
+            "40%",
+            "74 workers"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_145",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Northlight Software Ltd is a Country X technology company employing 43 staff, of whom 19 work from home in 5 different countries. The company builds booking software used by 11 hospitals, so deadlines matter. Teams coordinate through email and a weekly video meeting; everything else goes through a shared chat channel. Software builds are tracked on a spreadsheet updated by one senior developer.\n\nLast quarter 14 project deadlines slipped and client complaints reached 31, which staff blame on slow, unclear email chains. The operations director proposes a project management platform costing $1,150 per month with task boards, deadlines and file sharing. The technical lead warns of 'message overload' and says weekly video contact should not be reduced. The platform would take 3 weeks to set up with 2 training sessions.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'electronic communication'.",
+        "model_answer": "Electronic communication is the passing of information using electronic devices and digital technology, such as email, video conferencing, messaging apps, intranets and websites. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication using electronic devices and digital technology",
+            "Examples include email, video calls, chat apps and intranets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of electronic communication for Northlight Software.",
+        "model_answer": "Advantage 1: It allows instant communication across long distances [k], so the 19 staff working from home in 5 different countries can message colleagues in seconds [app]. Advantage 2: It creates shareable written records [k], so task boards and shared files would replace the single spreadsheet now updated by one senior developer [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Instant, low-cost communication across long distances",
+            "Creates permanent, shareable records of messages and files"
+          ],
+          "application_max_2": [
+            "19 staff work from home in 5 different countries",
+            "Shared task boards would replace the spreadsheet updated by one senior developer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "19 work from home",
+            "5 different countries",
+            "shared chat channel",
+            "weekly video meeting",
+            "project management platform",
+            "$1,150",
+            "43 staff"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems with relying on email chains for coordination.",
+        "model_answer": "Problem 1: Email threads become long and unclear, creating a barrier to understanding [k], which is why client complaints reached 31 last quarter while 14 project deadlines slipped [app], so work is delayed and errors go unnoticed until hospital clients complain [an]. Problem 2: Email is slow for urgent decisions [k], so the 19 staff working from home across 5 different countries must wait hours for replies instead of seeing tasks and deadlines on a shared board [app], reducing productivity and morale [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Long email chains are unclear and create barriers to understanding",
+            "Email is slow for urgent decisions compared with live tools"
+          ],
+          "application_max_2": [
+            "14 project deadlines slipped and client complaints reached 31 last quarter",
+            "19 remote staff across 5 different countries wait on email replies rather than a shared board"
+          ],
+          "analysis_max_2": [
+            "Delayed, unclear work hurts the 11 hospitals waiting on the software",
+            "Slow replies and poor visibility reduce productivity and morale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "email",
+            "31",
+            "14",
+            "19 work from home",
+            "$1,150",
+            "project management platform",
+            "shared chat channel"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the operations director should adopt the project management platform? Justify your answer.",
+        "model_answer": "One argument for the platform is that it costs $1,150 per month [k] but gives every team member the same live task boards, deadlines and shared files, replacing slow unclear email chains blamed for 14 slipped deadlines and 31 client complaints [app], so coordination would become faster and more transparent [an]. However, one argument against is that staff already suffer 'message overload' [k], and the platform would add another channel on top of the shared chat and email rather than removing them [app], which could reduce attention and cut the personal contact of the weekly video meeting [an]. Overall, Northlight should adopt the platform but make it the single source of task truth and keep the weekly video meeting [eval], because the platform's transparency outweighs its $1,150 monthly cost if it replaces rather than adds to email [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Centralised task boards improve clarity and accountability",
+            "Too many communication channels create overload"
+          ],
+          "application_max_2": [
+            "$1,150 per month platform versus slow unclear email chains",
+            "14 deadlines slipped and 31 complaints blamed on email last quarter"
+          ],
+          "analysis_max_2": [
+            "Live shared task visibility makes coordination faster and clearer",
+            "Adding a channel without removing email worsens message overload"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the platform's clarity and the risk of overload",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$1,150 per month",
+            "14",
+            "31",
+            "message overload",
+            "weekly video meeting",
+            "project management platform",
+            "shared chat channel"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_146",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Kestrelmoor Textiles Ltd runs a garment factory in Country X employing 150 machinists on day and night shifts. About 62 of the machinists are recent migrants whose first language is not English. Safety and quality instructions are issued as written English notices, and only 71% of migrant machinists passed last quarter's safety quiz, compared with 94% of other staff.\n\nThe factory manager must overcome this language barrier. Option one is to translate all safety and quality notices into 3 languages at a cost of $7,200. Option two is to pay 6 bilingual supervisors an extra $180 per month each to give verbal demonstrations on the line, costing $1,080 a month. Both options aim to cut the 9 safety incidents recorded last year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'communication barrier'.",
+        "model_answer": "A communication barrier is anything that stops a message being received or understood correctly, such as language differences, noise, jargon, poor timing or unclear wording. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Anything that blocks or distorts a message between sender and receiver",
+            "Examples include language, noise, jargon and unclear wording"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two barriers to communication at Kestrelmoor Textiles.",
+        "model_answer": "Barrier 1: Language differences [k], 62 of the 150 machinists are recent migrants whose first language is not English, so written English notices are not fully understood [app]. Barrier 2: Over-reliance on written English notices [k], only 71% of migrant machinists passed last quarter's safety quiz compared with 94% of other staff [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Language difference blocks understanding of messages",
+            "Using an unsuitable method (written-only) blocks understanding"
+          ],
+          "application_max_2": [
+            "62 of the 150 machinists are recent migrants whose first language is not English",
+            "Only 71% of migrant machinists passed the safety quiz versus 94% of other staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "150 machinists",
+            "written English notices",
+            "71%",
+            "94%",
+            "language barrier",
+            "safety quiz",
+            "3 languages"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of option one, translating the notices into 3 languages.",
+        "model_answer": "Advantage 1: All migrant machinists receive instructions in their own language [k], so the 62 recent migrants would understand written safety and quality notices without depending on a supervisor being present [app], reducing the gap between the 71% and 94% pass rates [an]. Advantage 2: Translation is a one-off cost with no ongoing fees [k], at $7,200 once compared with $1,080 every month for bilingual supervisors [app], saving money after about 7 months and keeping instructions available at all times [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Instructions in the reader's own language remove the language barrier",
+            "A one-off translation has no recurring monthly cost"
+          ],
+          "application_max_2": [
+            "62 recent migrants would understand notices without a supervisor present",
+            "$7,200 once versus $1,080 a month for bilingual supervisors"
+          ],
+          "analysis_max_2": [
+            "Pass rates should rise towards the 94% benchmark of other staff",
+            "Translation is cheaper after about 7 months and always available"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7,200",
+            "$1,080",
+            "3 languages",
+            "recent migrants",
+            "71%",
+            "94%",
+            "safety and quality notices"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the factory manager should translate the notices instead of paying bilingual supervisors? Justify your answer.",
+        "model_answer": "One argument for translating the notices is the one-off cost of $7,200 [k], which would give all 62 recent migrants written instructions in 3 languages, cheaper than $1,080 a month for supervisors after about 7 months [app], reducing the language barrier that left only 71% passing the safety quiz [an]. However, one argument against is that written notices cannot demonstrate tasks [k], so machinists who struggle to read in any language would still fail, while verbal demonstrations by 6 bilingual supervisors would show safe machine operation directly on the line [app], which better suits practical garment work and immediate questions [an]. Overall, the manager should choose option two, the bilingual supervisors [eval], because hands-on demonstration overcomes the language barrier more reliably in a factory, and it can be scaled back once pass rates reach 94% and the 9 safety incidents fall [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Translated written instructions remove the language barrier permanently",
+            "Verbal demonstration teaches practical tasks and allows questions"
+          ],
+          "application_max_2": [
+            "$7,200 once for 3 languages versus $1,080 a month for 6 bilingual supervisors",
+            "Only 71% of migrant machinists passed the safety quiz versus 94% of others"
+          ],
+          "analysis_max_2": [
+            "Permanent translated notices close the comprehension gap at low cost",
+            "Written-only methods cannot teach physical machine operation"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the translation and the bilingual supervisor options",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7,200",
+            "$1,080 a month",
+            "3 languages",
+            "recent migrants",
+            "71%",
+            "94%",
+            "bilingual supervisors"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_147",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brackmore Insurance Services runs a customer call centre in Country X with 88 call-handlers answering about 30,000 calls a month. Call quality is monitored by a small team of 4 quality coaches. Complaints are logged by handlers, and a weekly email tells all staff the top 5 complaint types. Handlers receive no individual feedback and never hear what happened to complaints they logged.\n\nOnly 12% of staff in last year's survey felt their feedback was acted on. The centre manager proposes monthly one-to-one feedback meetings between team leaders and handlers, using about 140 staff-hours a month. Team leaders instead suggest a daily 10-minute briefing with the whole team, which would take no extra time beyond shift handovers. Waiting times already average 9 minutes, so staff motivation matters.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'feedback'.",
+        "model_answer": "Feedback is the response sent back to the sender of a message, showing whether it was received and understood, or giving a reaction to a performance, idea or action. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Response returned to the sender of a message",
+            "Shows whether the message was understood or comments on performance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why feedback is important for Brackmore call-handlers.",
+        "model_answer": "Reason 1: Feedback tells handlers whether their work meets standard [k], so the 88 call-handlers would know how they performed on the about 30,000 calls a month [app]. Reason 2: Feedback motivates employees and helps them improve [k], which matters because only 12% of staff felt their feedback was acted on last year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Feedback tells employees whether their work meets the standard",
+            "Feedback motivates employees and supports improvement"
+          ],
+          "application_max_2": [
+            "88 call-handlers answer about 30,000 calls a month",
+            "Only 12% of staff felt their feedback was acted on last year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "88 call-handlers",
+            "30,000 calls",
+            "12%",
+            "weekly email",
+            "top 5",
+            "one-to-one",
+            "10-minute briefing"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of relying only on the weekly email of complaint types.",
+        "model_answer": "Problem 1: The email is one-way and gives no personal comment [k], so the 88 handlers cannot learn how their own handling of the about 30,000 calls a month could improve [app], limiting learning and call quality [an]. Problem 2: Emails list only the top 5 complaint types [k], so unusual or individual issues raised by handlers are never acknowledged, consistent with only 12% feeling their feedback was acted on [app], leaving staff feeling ignored and demotivated [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "One-way channels give no personal, tailored guidance",
+            "Summaries hide individual and unusual issues"
+          ],
+          "application_max_2": [
+            "88 handlers answer 30,000 calls a month with no individual feedback",
+            "The weekly email lists only the top 5 complaint types and 12% felt heard"
+          ],
+          "analysis_max_2": [
+            "Without tailored guidance, call quality and learning stagnate",
+            "Ignored handlers become demotivated and waiting times may rise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "weekly email",
+            "top 5",
+            "88",
+            "30,000",
+            "12%",
+            "one-to-one feedback meetings",
+            "140 staff-hours"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the centre manager should introduce monthly one-to-one feedback meetings instead of daily team briefings? Justify your answer.",
+        "model_answer": "One argument for one-to-one meetings is that handlers receive personal feedback [k], using about 140 staff-hours a month to discuss individual performance, which would address the finding that only 12% of staff felt their feedback was acted on [app], so handlers would know exactly how to improve their handling of the about 30,000 calls a month [an]. However, one argument against is the time cost [k], as 140 staff-hours a month is the equivalent of about 18 working days, and a daily 10-minute briefing with the whole team would cost no extra time beyond shift handovers [app], reaching all 88 handlers daily instead of once a month [an]. Overall, the centre should combine both, starting with the daily briefings and adding monthly one-to-one meetings for struggling handlers [eval], because briefings cost nothing extra while one-to-ones fix the deeper motivation problem behind the 12% figure [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "One-to-one feedback is personal but time-consuming",
+            "Group briefings are broad, cheap and can be frequent"
+          ],
+          "application_max_2": [
+            "140 staff-hours a month is about 18 working days of one-to-one time",
+            "Only 12% of staff felt their feedback was acted on last year"
+          ],
+          "analysis_max_2": [
+            "Personal feedback addresses individual performance on 30,000 calls",
+            "Daily briefings cost nothing extra and reach everyone far more often"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the one-to-one meetings and daily briefings",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "140 staff-hours",
+            "12%",
+            "10-minute briefing",
+            "88",
+            "30,000",
+            "one-to-one",
+            "weekly email"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_148",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Ruskin & Cole Department Store in Country X employs 210 people across 2 selling floors and a warehouse. The store turns over $24 million in sales a year. Head office communicates every change, till updates, floor moves and rota rules, by email and memo, and full staff meetings are held only twice a year. A staff survey found 58% of employees did not understand the last 3 changes, and staff turnover rose to 34% this year.\n\nRegional manager Dana Cole proposes fortnightly 45-minute team briefings where staff can ask questions; the finance director prefers a quarterly newsletter costing $300 per edition, about $1,200 a year. Dana argues face-to-face questions would catch confusion early, but the finance director notes the briefings would use about 158 staff-hours each fortnight across all 210 employees. The newsletter would reach all 210 employees.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'two-way communication'.",
+        "model_answer": "Two-way communication is communication where the receiver can respond to the sender, such as a conversation, meeting or phone call, allowing questions and feedback. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Message flows in both directions with feedback",
+            "Allows questions and clarification, unlike one-way channels"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits of two-way communication at the store.",
+        "model_answer": "Benefit 1: Staff can ask questions and clear up confusion immediately [k], so the 58% of employees who did not understand the last 3 changes could be brought up to date in fortnightly briefings [app]. Benefit 2: Managers learn what employees think [k], helping the store reduce the staff turnover that rose to 34% this year by showing staff their views matter [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Two-way channels allow questions and immediate clarification",
+            "Two-way channels make staff feel heard and valued"
+          ],
+          "application_max_2": [
+            "58% of employees did not understand the last 3 changes",
+            "Staff turnover rose to 34% this year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "58%",
+            "last 3 changes",
+            "turnover",
+            "34%",
+            "210",
+            "twice a year",
+            "fortnightly"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems caused by one-way email and memo communication at Ruskin & Cole.",
+        "model_answer": "Problem 1: One-way messages cannot be questioned [k], so the 58% of staff who misunderstood recent till updates and rota rules had no chance to ask about them between staff meetings held only twice a year [app], causing mistakes and frustration on the shop floor [an]. Problem 2: One-way communication makes staff feel unheard [k], which may explain why staff turnover rose to 34% this year, with employees leaving rather than raising concerns by email to head office [app], increasing recruitment and training costs [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "One-way messages cannot be questioned or clarified",
+            "One-way communication leaves staff feeling ignored"
+          ],
+          "application_max_2": [
+            "58% of staff misunderstood recent changes, meetings held only twice a year",
+            "Staff turnover rose to 34% this year amid email and memo communication"
+          ],
+          "analysis_max_2": [
+            "Unquestioned instructions cause mistakes and frustration on the shop floor",
+            "Feeling unheard drives staff turnover and raises recruitment costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "email and memo",
+            "twice a year",
+            "58%",
+            "34%",
+            "head office",
+            "45-minute team briefings",
+            "quarterly newsletter"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ruskin & Cole should introduce fortnightly team briefings instead of a quarterly newsletter? Justify your answer.",
+        "model_answer": "One argument for the briefings is that they are two-way [k], letting the 210 staff ask questions about till updates and rota rules, attacking the 58% misunderstanding directly, at a cost of about 158 staff-hours each fortnight [app], which should reduce errors, the 34% staff turnover and disruption to the $24 million sales [an]. However, one argument against is cost and reach [k], as 158 staff-hours every fortnight is far more expensive in time than a $300 quarterly newsletter costing about $1,200 a year, which reaches everyone in print [app], but the newsletter is one-way and would not fix the misunderstanding driving the 34% turnover [an]. Overall, the store should introduce the fortnightly team briefings [eval], because two-way face-to-face communication addresses the root cause, and falling turnover would save far more than the briefings cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Two-way face-to-face briefings check understanding",
+            "A printed newsletter is cheap and reaches everyone but is one-way"
+          ],
+          "application_max_2": [
+            "158 staff-hours each fortnight to answer the 58% misunderstanding",
+            "$300 per edition, about $1,200 a year for the newsletter"
+          ],
+          "analysis_max_2": [
+            "Two-way dialogue reduces errors, turnover of 34% and disruption to $24 million sales",
+            "The one-way newsletter would not fix the misunderstanding causing turnover"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the fortnightly briefings and the quarterly newsletter",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "45-minute team briefings",
+            "$300",
+            "$1,200",
+            "twice a year",
+            "58%",
+            "34%",
+            "210"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_149",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Castlereagh Solicitors is a law firm in Country X with 52 staff across 3 offices. The partners plan to merge with a rival firm, Trelawney & Grant, moving 30 staff into new premises 12 miles away and creating 12 new roles. No announcement has been made; rumours have spread through the grapevine and 7 staff have resigned in 2 months.\n\nThe managing partner must decide how to announce the merger. Option one is an all-staff meeting followed by written letters to every employee. Option two is to issue a press release this week first; the partners believe it would reassure clients of continuity, but staff would hear of the merger from the media. The deal is worth $2.4 million to the firm.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'formal communication'.",
+        "model_answer": "Formal communication is communication sent through the official, authorised channels and methods of an organisation, such as official letters, memos, meetings and press releases issued by managers. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication via the official, authorised channels of the organisation",
+            "Examples include official letters, meetings, memos and press releases"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of formal communication for Castlereagh Solicitors.",
+        "model_answer": "Advantage 1: Formal channels carry authority and accuracy [k], so an all-staff meeting followed by letters would tell all 52 staff the official merger details rather than grapevine rumours [app]. Advantage 2: Formal written records can be referred back to [k], so the 30 staff moving to premises 12 miles away would have clear written terms about their relocation and the 12 new roles [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Official channels are accurate and carry authority",
+            "Written formal records can be referred back to"
+          ],
+          "application_max_2": [
+            "All 52 staff would hear official details instead of rumours",
+            "30 staff moving 12 miles away would have written terms on the 12 new roles"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "52 staff",
+            "all-staff meeting",
+            "grapevine",
+            "30 staff",
+            "12 miles",
+            "12 new roles",
+            "written letters"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems caused by rumours and informal communication about the merger.",
+        "model_answer": "Problem 1: Rumours are inaccurate and uncontrolled [k], so staff imagine job losses across the 3 offices even though the plan creates 12 new roles and relocates 30 staff rather than cutting jobs [app], fuelling anxiety and resignations [an]. Problem 2: Informal communication undermines trust in management [k], which is why 7 staff resigned in 2 months without any official announcement being made [app], risking client service and jeopardising the $2.4 million deal [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Rumours are inaccurate and cannot be controlled by the business",
+            "Silence from management damages trust and morale"
+          ],
+          "application_max_2": [
+            "Rumours ignore the 12 new roles and 30 staff relocation across 3 offices",
+            "7 staff resigned in 2 months before any official announcement"
+          ],
+          "analysis_max_2": [
+            "Imagined job losses fuel anxiety and resignations",
+            "Resignations risk client service and the $2.4 million deal"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "grapevine",
+            "7 staff",
+            "2 months",
+            "12 new roles",
+            "$2.4 million",
+            "3 offices",
+            "Trelawney & Grant"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Castlereagh should tell staff first through an all-staff meeting and letters rather than issuing a press release this week? Justify your answer.",
+        "model_answer": "One argument for telling staff first is that it is honest and builds trust [k], so the 52 staff would hear directly from the managing partner before a press release, preventing more resignations like the 7 staff who left in 2 months [app], protecting morale and client service during the $2.4 million merger [an]. However, one argument against is that a press release this week would reassure clients and protect the firm's reputation sooner [k], because rival firms may already know about the merger talks [app], yet staff hearing first from the media would feel betrayed and may leave before the 12 new roles are filled [an]. Overall, the firm should hold the all-staff meeting and written letters first, then issue the press release [eval], because committed staff are essential during a merger and a one-week delay for clients is a small price compared with losing key lawyers [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Telling staff first builds trust and commitment",
+            "Early public announcement reassures clients and protects reputation"
+          ],
+          "application_max_2": [
+            "52 staff would hear directly, stopping the 7 resignations seen in 2 months",
+            "Press release first would reach clients sooner but staff would feel betrayed"
+          ],
+          "analysis_max_2": [
+            "Honesty protects morale, client service and the $2.4 million deal",
+            "Media-first news risks losing staff before the 12 new roles are filled"
+          ],
+          "evaluation_max_2": [
+            "Weighs both announcing to staff first and issuing a press release first",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "all-staff meeting",
+            "press release",
+            "52 staff",
+            "7 staff",
+            "$2.4 million",
+            "12 new roles",
+            "written letters"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_150",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Wrenhill Toys Ltd sells the wooden 'Sunshine Express' train set through 160 retailers across Country X; about 9,000 units were sold last year. The train set sells for $45 and is the firm's best-selling toy this Christmas. A small number of units contain loose magnets, a choking risk identified by the safety regulator, and 340 sets have already been returned by parents.\n\nThe marketing manager proposes an urgent press release and social media campaign to alert buyers quickly. The managing director prefers phoning all 160 retailers and writing to the 2,100 buyers who registered online, costing about $6,500 and taking 2 weeks; only retailers and the media can reach the remaining 6,900 unregistered buyers. The managing director worries a public campaign would alarm parents who never bought the set.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'written communication'.",
+        "model_answer": "Written communication is the passing of information through written words, such as letters, emails, memos, reports, notices or text messages, producing a record that can be read and re-read. [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Communication using written words",
+            "Examples include letters, emails, reports and notices; creates a record"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages of written communication for the product recall.",
+        "model_answer": "Advantage 1: Written messages give a permanent record [k], so the 160 retailers would have the recall instructions in writing to identify and return the unsafe Sunshine Express sets [app]. Advantage 2: Written communication suits messages sent to named individuals [k], so the 2,100 buyers who registered online would receive clear return instructions by letter [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Written messages create a permanent, checkable record",
+            "Written messages suit sending the same message to named individuals"
+          ],
+          "application_max_2": [
+            "160 retailers would have recall instructions in writing for the unsafe sets",
+            "2,100 registered online buyers would receive return instructions by letter"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "160 retailers",
+            "2,100",
+            "9,000",
+            "340",
+            "$6,500",
+            "2 weeks"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of announcing the recall through a press release and social media.",
+        "model_answer": "Advantage 1: Mass electronic channels reach far more people far faster [k], alerting the 6,900 unregistered buyers who never registered online [app], so unsafe Sunshine Express sets can be returned before more magnets are swallowed [an]. Advantage 2: Posting online costs almost nothing [k], compared with about $6,500 and 2 weeks for phone calls and letters to retailers and registered buyers [app], protecting public safety and the brand at minimal cost [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Mass media and social media reach huge audiences quickly",
+            "Electronic public announcements cost very little"
+          ],
+          "application_max_2": [
+            "6,900 unregistered buyers would be reached instantly",
+            "Compared with about $6,500 and 2 weeks for phone calls and letters"
+          ],
+          "analysis_max_2": [
+            "Faster alerts return unsafe sets before more injuries occur",
+            "Minimal cost protects both public safety and the brand's reputation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "press release",
+            "social media",
+            "6,900 unregistered",
+            "9,000",
+            "$6,500",
+            "2 weeks",
+            "160 retailers"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Wrenhill Toys should rely on the press release and social media instead of phoning retailers and writing to registered buyers? Justify your answer.",
+        "model_answer": "One argument for the press release and social media is speed and reach [k], which would instantly alert the owners of the remaining 6,900 unregistered units, including the 340 sets already proving defective [app], so children could be protected immediately at almost no cost [an]. However, one argument against is that mass media cannot guarantee every affected buyer acts [k], whereas phoning the 160 retailers and writing to the 2,100 registered buyers uses two-way and written channels with confirmed receipt, costing about $6,500 and 2 weeks [app], giving an auditable recall record for the safety regulator [an]. Overall, Wrenhill should use both: the press release immediately to protect children, followed by calls and letters to retailers and registered buyers to evidence the recall [eval], prioritising safety over the $6,500 cost [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "Mass media is fast and wide-reaching but unverifiable",
+            "Two-way and written channels confirm receipt and create records"
+          ],
+          "application_max_2": [
+            "Press coverage reaches the 6,900 unregistered buyers instantly",
+            "Phoning 160 retailers and writing to 2,100 registered buyers costs about $6,500"
+          ],
+          "analysis_max_2": [
+            "Immediate public alert prevents further injuries from loose magnets",
+            "Confirmed calls and letters give an auditable record for the regulator"
+          ],
+          "evaluation_max_2": [
+            "Weighs both the public campaign and direct two-way contact",
+            "Reaches a justified recommendation using stem figures"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "press release",
+            "social media",
+            "160 retailers",
+            "2,100",
+            "$6,500",
+            "6,900",
+            "340"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

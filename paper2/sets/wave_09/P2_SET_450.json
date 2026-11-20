@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_450",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Orbital Digital Media (ORB) is a private limited company in the digital services sector, building e-commerce websites and 3D product visualisation for retailers in Australia. Founded in 2014 by Grace Tan, it employs a workforce of 48 and operates a flat structure with laissez-faire leadership, letting creative teams choose their own working methods. ORB plans to invest $600,000 in a 3D rendering studio and e-commerce platform, financed by $250,000 venture capital and $350,000 retained profit. It has fixed costs of $240,000 a year, a variable cost of $4.50 a unit and a selling price of $12.00, and currently produces 80,000 units a year. Two problems persist: 5.9% of deployed websites contain defects, and web-designer turnover is rising.",
+    "appendix_1_marketing_ops": "Digital Quality Report — Q3 2025: ORB deployed 14,800 websites last quarter, of which 5.9% were returned for defect fixes, down from 8.6% a year earlier. Client complaints averaged 36 a month and 10 of 32 retail clients now require a written performance guarantee. Average deployment time is 2.9 days and platform uptime reached 97.8%. A survey of 410 retailers found that 69% would pay up to $0.55 more for 3D product visualisation, and 61% rank mobile loading speed first. A training review shows 13 of 48 designers lack 3D and CAM skills; an external workshop costs $850 per designer.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Orbital Digital Media for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "2,800", "3,400"],
+        ["Cost of sales", "1,680", "1,870"],
+        ["Gross profit", "1,120", "1,530"],
+        ["Operating profit", "336", "510"],
+        ["Capital employed", "1,600", "2,040"],
+        ["Interest payable", "20", "26"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.25%, raising the required return on risk capital and the cost of future borrowing. (2) The national minimum wage will rise by 6.8% from $12.90 to $13.78 an hour from April 2026, raising wage bills across the digital services sector. (3) Cloud rendering and software-licence input costs have risen 12.6% year-on-year, while online retail spending grew 4.3% and consumer inflation is 3.7%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "ORB plans to raise $250,000 venture capital for its $600,000 studio. Explain two advantages for ORB of using the $350,000 retained profit instead.",
+      "model_answer": "Point 1: Retained profit does not give outside investors a share of ownership or a claim on future profits, which matters to founder Grace Tan and the 48 employees because laissez-faire leadership depends on creative teams choosing their own methods. Venture capital usually brings investors who want influence and an exit, whereas the $350,000 already earned keeps control inside ORB. With web-designer turnover rising, a change of ownership at the same time would make it harder to keep the team together.\n\nPoint 2: Retained profit has no fundraising costs and no expectation of high future returns, protecting cash while ORB covers fixed costs of $240,000 a year and tries to cut the 5.9% website defect rate. Every dollar not promised to investors can reduce the 36 complaints a month or fund part of the $850 per designer workshop. It is also immediately available for the $600,000 studio, so ORB need not wait for venture capitalists who may be cautious while cloud rendering inputs have risen 12.6%.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to ORB's ownership, costs and service problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["venture capital", "retained profit", "$350,000", "$250,000", "$600,000", "$240,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "ORB is launching 3D product visualisation. Consider online search advertising, design trade-magazine advertising, or a creator influencer campaign aimed at retailers. Which should ORB choose? Justify your recommendation.",
+      "model_answer": "Online search advertising: Paid search reaches retailers actively looking for e-commerce design, so intent is high and daily spend can be capped, which suits a $600,000 studio launch. Results are measurable and can be changed quickly. The drawbacks are rising cost per click and the fact that a text advert cannot show the 3D visualisation itself or prove the drop in defects from 8.6% to 5.9% that the 10 of 32 retail clients now want guaranteed.\n\nDesign trade-magazine advertising: A design title reaches retail marketing managers who commission websites, and a technical advert can explain the $600,000 studio and the 97.8% uptime. It is credible and targeted at modest cost. Its readership is narrow and print is slow, and it cannot demonstrate the 3D product view that 69% of 410 surveyed retailers would pay $0.55 more for, which matters when 61% rank mobile loading speed first.\n\nCreator influencer campaign: Retail and e-commerce creators can show 3D product views in short videos to an audience of store owners, with measurable clicks and low cost per contact. The content can answer the 61% who care about mobile speed by demonstrating loading on a phone. Credibility depends on the creator and reach takes time to build, but the audience is close to ORB's buyer.\n\nRecommendation: ORB should choose the creator influencer campaign. It demonstrates the product visually to the retailers in its own research and costs less than a sustained search campaign. Search is rejected because it buys clicks without showing a visual product and becomes expensive, while trade-magazine advertising is rejected as slow and unable to demonstrate 3D views while 36 complaints a month need a quick response; the best clips can later support search landing pages.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies promotional options with limited reference to ORB's digital market.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options with some contextual evidence and emerging judgement.",
+        "level_3_9_to_12": "Evaluates all three options using ORB's survey data, defect record and studio budget, with a justified recommendation that explains why the other two are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["69%", "61%", "410 retailers", "$0.55", "5.9%", "32 retail clients"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "ORB's website defect rate is 5.9% and designer turnover is rising. Explain two benefits for ORB of laissez-faire leadership and a flat structure in tackling these problems.",
+      "model_answer": "Point 1: Laissez-faire leadership lets experienced designers choose how they build and test sites, which suits a creative workforce of 48 and raises motivation because staff own their work. Designers who control their own methods are more likely to catch faults before deployment, helping push the 5.9% defect rate down towards the 8.6%-to-5.9% improvement already made and protecting the 14,800 websites deployed each quarter and the 97.8% uptime.\n\nPoint 2: A flat structure keeps the chain of command short, so a defect report or one of the 36 complaints a month can reach the designer who can fix it immediately, cutting the 2.9-day average deployment time. It also supports the 10 of 32 retail clients who now require a written performance guarantee, because decisions do not wait for several management layers. Together with laissez-faire leadership, the structure gives designers the autonomy that keeps them from leaving, easing the turnover problem while the $600,000 studio is built.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to ORB's defects, turnover and client demands."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["laissez-faire leadership", "flat structure", "5.9%", "workforce of 48", "36 a month", "97.8%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "ORB must train 13 designers in 3D and CAM skills. Consider an in-house workshop led by senior designers or an external 3D course costing $850 per designer. Which should ORB choose? Justify your decision.",
+      "model_answer": "In-house workshop: Senior designers can teach the 13 who lack 3D and CAM skills on ORB's own studio software and the e-commerce sites behind the 5.9% defect rate, so the training is directly relevant. It costs no course fees and keeps all 48 staff working on the 14,800 websites deployed each quarter and the 2.9-day deployment schedule. The weaknesses are that the senior designers' own output suffers, bad habits may spread, and there is no recognised qualification for the 10 of 32 retail clients who want a performance guarantee.\n\nExternal 3D course: The $850 per designer course gives structured teaching and a certificate for all 13, costing $11,050 in total (13 × $850), which is modest beside the $600,000 studio. It offers up-to-date techniques that help answer the 69% of 410 surveyed retailers who would pay $0.55 more for 3D visualisation. It removes designers from client work briefly and its generic content still needs applying to ORB's own platforms.\n\nDecision: ORB should choose the external 3D course for the 13 designers, followed by short in-house workshops on its own software. The certificate supports the performance guarantees wanted by 10 of 32 retail clients and the 69% willing to pay $0.55 more, and $11,050 is affordable. The in-house workshop is rejected as the main route because it cannot provide independent evidence of skill, though it is the best way to apply what the course teaches to the 5.9% defect problem. A recognised qualification also supports recruitment when designer turnover is rising, and the $11,050 is small against the $600,000 studio; relying only on senior designers would leave 48 staff dependent on a few people who may themselves leave.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Describes the two training methods with little application to ORB's skills gap.",
+        "level_2_5_to_8": "Analyses the benefits and drawbacks of both methods in ORB's context with some judgement.",
+        "level_3_9_to_12": "Comprehensively evaluates both methods against cost, disruption and relevance, with a clear decision and explicit reasons for rejecting the alternative."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$850", "13 of 48", "2.9 days", "8.6%", "3D and CAM", "5.9%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how ORB's management can use its cost, break-even and productivity data to plan the new studio.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate ORB's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $240,000 ÷ ($12.00 − $4.50) = $240,000 ÷ $7.50 = 32,000 units. Answer: break-even output is 32,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate ORB's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $12.00 − $4.50 = $7.50. Answer: contribution per unit is $7.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways ORB's management can use this financial data.",
+          "model_answer": "1. Break-even of 32,000 units against output of 80,000 units gives a margin of safety of 48,000 units, so ORB can absorb a demand dip or the cost of the 5.9% website defects before the $240,000 fixed costs are uncovered.\n2. Contribution per unit of $7.50 lets managers test the $0.55 premium that 69% of 410 surveyed retailers would pay for 3D visualisation: raising price to $12.55 lifts contribution to $8.05 and lowers break-even, showing the value of the new studio.\n3. The 48,000-unit margin of safety helps judge the $250,000 venture capital: managers can check how much profit must be generated to give investors a return before committing more of the $600,000 studio budget.\n4. Average total cost of $7.50 a unit ($240,000 ÷ 80,000 = $3.00, plus $4.50) is a benchmark for the studio: if 3D tools cut the 5.9% defects and the 2.9-day deployment time without raising variable cost, unit cost falls and margins widen."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 32,000 units | (ii) Contribution per unit = $7.50 | (iii) Four contextual uses explained: margin of safety of 48,000 units against 5.9% defects; testing the $0.55 visualisation premium on $7.50 contribution; judging the $250,000 venture capital; and unit-cost benchmarking at $7.50 for the $600,000 studio.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["32,000", "$7.50", "48,000", "$240,000", "80,000", "$0.55"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate ORB's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has ORB's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 12.0%\nProfit Margin 2025 = 15.0%\nROCE 2024 = 21.0%\nROCE 2025 = 25.0%\n\nDetailed workings: 2024 gross profit $1,120,000 ÷ revenue $2,800,000 × 100 = 40.0; 2025 $1,530,000 ÷ $3,400,000 × 100 = 45.0, as cost of sales rose from $1,680,000 to $1,870,000. Operating profit $336,000 ÷ revenue $2,800,000 × 100 = 12.0 in 2024 and $510,000 ÷ $3,400,000 × 100 = 15.0 in 2025. Returns on capital: $336,000 ÷ $1,600,000 × 100 = 21.0 in 2024 and $510,000 ÷ $2,040,000 × 100 = 25.0 in 2025. Interest payable rose only from $20,000 to $26,000, so financing costs were not the cause of the improvement.\n\nEvaluation: All three measures improved. The gross margin widened from 40.0% to 45.0%, reflecting control of delivery costs while revenue grew $600,000, helped by the 4.3% growth in online retail spending and the 69% of surveyed retailers willing to pay $0.55 more for 3D views. The operating margin rose from 12.0% to 15.0%, so more of each revenue dollar survives the $240,000 fixed costs. Returns on capital increased from 21.0% to 25.0% even though capital employed grew by $440,000 ahead of the $600,000 studio, suggesting existing assets are working harder. Because revenue, gross profit and operating profit all rose together, the improvement is broad-based. The caution is that 5.9% of websites still contain defects, 36 complaints a month persist, and cloud rendering inputs are up 12.6%; if the studio is delayed, the gains could be eroded.\n\nConclusion: ORB's financial performance has improved. The gross margin (40.0% to 45.0%), operating margin (12.0% to 15.0%) and returns on capital (21.0% to 25.0%) all rose with higher revenue. ORB should use part of the $350,000 retained profit to cut the 5.9% defect rate before expanding further.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or simple changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Calculates all three ratios for both years with some contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation of revenue, costs, capital and interest, and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "12.0%", "15.0%", "21.0%", "25.0%", "$1,530,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for ORB of adding 3D product visualisation to its e-commerce websites.",
+      "model_answer": "Advantage: 3D product visualisation answers the 69% of 410 surveyed retailers who would pay up to $0.55 more for it, so ORB can lift its $7.50 contribution per unit and better cover the $240,000 fixed costs. It also sets ORB apart from rivals at a time when 61% of retailers rank mobile speed first and 10 of 32 clients demand a performance guarantee, supporting the $12.00 price and the $600,000 studio investment as online retail spending grows 4.3%.\n\nDisadvantage: Rendering 3D views uses cloud computing whose input costs have risen 12.6%, pushing up the $4.50 variable cost per unit; if the $0.55 premium is not widely accepted, contribution falls below $7.50. The work also needs designers with 3D and CAM skills, yet 13 of 48 lack them and turnover is rising, so defects could stay near 5.9% and the 36 complaints a month could grow while the studio is staffed. Large 3D files may also slow the 2.9-day deployment time on mobile connections, annoying the 61% of retailers who rank loading speed first and undoing the benefit of the $0.55 premium.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to ORB's survey data, defects and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3D product visualisation", "69%", "$0.55", "5.9%", "$4.50", "$12.00"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 6.8% minimum wage increase and the 12.6% rise in cloud rendering and software-licence costs will affect ORB. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.5% to 5.25%): ORB has no bank loan in the case, so no interest charge can be computed from the insert for its $250,000 venture capital or $350,000 retained profit. The rise still matters because it increases the required return investors will demand on the $250,000 and makes future borrowing for the $600,000 studio more expensive; the effect is on the cost of capital and financing choice, not on a stated interest bill.\n\nMinimum wage increase (6.8%, from $12.90 to $13.78): Each paid hour costs $0.877 more (6.8% × $12.90). The insert gives no hours worked and no individual pay rates, so an annual wage total cannot be invented; the defensible judgement is that with 48 staff and rising designer turnover, each replacement is hired at the higher rate. Unless productivity holds on the 80,000 units a year, unit labour cost rises and the $7.50 contribution is squeezed while 13 of 48 designers still need 3D training.\n\nCloud rendering and software-licence costs (up 12.6%): ORB sells websites built on cloud platforms, so this is an unavoidable input, and 12.6% is the largest percentage change in the bulletin, almost twice the 6.8% wage rise and far larger than the 0.75-point rate move. The insert gives no separate rendering bill, so only the scale can be stated: it applies to all 80,000 units and to the new 3D studio, which will use more rendering than existing sites.\n\nConclusion: The 12.6% rise in cloud rendering and software-licence costs will have the greatest impact. It is the biggest percentage shock, it cannot be avoided by a digital agency, and it hits all 80,000 units and the $600,000 studio at once when online retail spending grew only 4.3%. The wage rise is second because it recurs with every one of the 48 staff, while the interest rise has no direct interest bill in the insert and mainly changes the terms of future finance.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to ORB.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on ORB's costs, finance or prices in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that cloud rendering costs have the greatest impact and clear reasons why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "6.8%", "12.6%", "$13.78", "4.3%", "4.5%"]
+      }
+    }
+  ]
+}

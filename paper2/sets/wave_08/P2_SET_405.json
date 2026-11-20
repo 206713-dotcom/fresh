@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_405",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Coldchain Haulage (CHX) is a private limited company in the refrigerated road transport sector, employing a workforce of 110. Founded in 2010 by Elena Cold, the business carries chilled and frozen food for supermarkets and operates a hierarchical structure with autocratic leadership. CHX plans to invest $1,100,000 in a fleet of refrigerated trucks and a temperature-monitoring system, financed by a $650,000 bank loan and $450,000 retained profit. It has fixed costs of $540,000 a year, a variable cost of $15 a unit and a selling price of $27, and carries 54,000 units a year. CHX faces two problems: a 3.8% spoilage rate from temperature excursions and high driver turnover on long routes.",
+    "appendix_1_marketing_ops": "Quality and Waste Report, Q4 2025: CHX carried 13,500 chilled loads last quarter with a spoilage rate of 3.8%, down from 5.6% a year earlier. Temperature-alarm incidents fell from 26 to 14 per month. Average journey time is 2.8 days. A survey of 320 supermarket suppliers found 66% would pay a 3.5% premium for verified temperature-controlled transport, and 59% rank spoilage-free delivery above price. A skills audit shows 24 of 110 drivers lack refrigerant-handling certification; courses cost $1,050 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Coldchain Haulage for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "9,000", "10,000"],
+        ["Cost of sales", "6,120", "6,400"],
+        ["Gross profit", "2,880", "3,600"],
+        ["Operating profit", "900", "1,250"],
+        ["Capital employed", "6,000", "6,250"],
+        ["Interest payable", "140", "170"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (January 2026): (1) The central bank lifted the base rate from 4.25% to 5.0%, raising interest on CHX's $650,000 variable-rate loan. (2) The national minimum wage rises 6.1% from $12.80 to $13.58 an hour, raising labour costs for CHX's 110 staff. (3) Diesel prices rose 10.4% year-on-year and refrigerated-insurance premiums climbed 5.5%, while supermarket demand for chilled transport grew 2.8%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "Explain two advantages for CHX of financing its $1,100,000 fleet expansion with a bank loan rather than a short-term overdraft.",
+      "model_answer": "Point 1: A bank loan gives CHX a fixed repayment schedule spread over years, matched to the working life of the new refrigerated trucks. An overdraft can be withdrawn on demand, which would be dangerous when the 3.8% spoilage rate and temperature-alarm incidents already disrupt cash flow. With fixed costs of $540,000 a year, predictable loan repayments let Elena Cold plan the $1,100,000 fleet investment without fearing a sudden call on funds.\n\nPoint 2: The $650,000 loan leaves the $450,000 retained profit free for the temperature-monitoring system and for training the 24 drivers without refrigerant-handling certification. It also avoids giving away ownership: control stays with Elena Cold rather than being diluted by a share issue. Because the loan is long-term, CHX can spread the cost across the 54,000 units carried each year instead of funding capital equipment from volatile short-term credit. The temperature-monitoring system also protects the 66% of suppliers who value verified transport, strengthening the case for long-term finance.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation applied to CHX's financing choice and case data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$1,100,000", "$650,000", "$450,000", "bank loan", "retained profit", "$540,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "CHX is deciding how to win more chilled-transport work. Consider long-term supermarket contracts, spot-market haulage, or an online logistics platform. Which should CHX choose? Justify your recommendation.",
+      "model_answer": "Long-term supermarket contracts: Agreeing regular contracts with supermarket suppliers gives CHX predictable volumes toward the 54,000-unit target and a stable base for the $1,100,000 fleet investment. It supports the 66% of surveyed suppliers who would pay a 3.5% premium for verified temperature-controlled transport and rewards the fall in spoilage to 3.8%. The downside is dependence on a few large buyers, which can squeeze rates and expose CHX if a contract is lost.\n\nSpot-market haulage: Taking ad-hoc loads keeps CHX flexible and fills spare capacity when demand changes, with no long commitment. Rates can be high at peak times. However, income is unpredictable, making it hard to service a $650,000 loan against fixed costs of $540,000, and constant route changes can undermine the temperature control that 59% of surveyed suppliers rank above price, risking spoilage.\n\nOnline logistics platform: Listing capacity on a digital platform can quickly find loads and reduce empty running, and it needs little sales investment. Yet CHX would pay platform fees that reduce the $12 contribution per unit, and it would have little control over service standards or customer relationships, which matters when selling verified temperature-controlled transport.\n\nRecommendation: CHX should prioritise long-term supermarket contracts. They give the volume certainty needed to justify the refrigerated fleet and allow the 3.5% premium to be earned, while spot haulage is rejected as too volatile for loan servicing and the online platform as margin-eroding and weak on service control. Spot loads can still fill genuine spare capacity. CHX should review contract rates each year so the 3.5% premium is not eroded by dependence on a single dominant buyer.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the options with limited reference to CHX.",
+        "level_2_5_to_8": "Discusses advantages and disadvantages of at least two options in CHX's context with some judgement.",
+        "level_3_9_to_12": "Evaluates all three options with case figures and a justified recommendation explaining why spot haulage and the platform are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "3.5%", "59%", "320", "supermarket", "$1,100,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "CHX's spoilage rate is 3.8% and driver turnover on long routes is high. Explain two benefits for CHX of using autocratic leadership to improve performance.",
+      "model_answer": "Point 1: Autocratic leadership lets Elena Cold impose one strict temperature-check procedure across the hierarchical structure, so all 110 drivers follow identical refrigeration settings and recording. With spoilage at 3.8% and 14 temperature-alarm incidents a month, firm rules and close monitoring can cut losses quickly, protecting the $27 price and the 66% of surveyed suppliers who will pay more for verified transport.\n\nPoint 2: Decisive top-down action can address high driver turnover on long routes. The audit shows 24 of 110 drivers without refrigerant-handling certification, and an autocratic leader can immediately assign the $1,050 courses and set route standards without lengthy consultation. Clear instructions and faster decisions reduce the 2.8-day journey time variability that causes temperature excursions, defending the $12 contribution per unit. Firm direction also reassures the 320 supermarket suppliers that expect consistent service and reduces the confusion that can extend the 2.8-day journey time and raise spoilage risk.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual explanation applied to CHX's spoilage, turnover and training data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "3.8%", "24", "$1,050", "hierarchical", "110"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "CHX must certify 24 drivers in refrigerant handling. Consider on-the-job mentoring by senior drivers or accredited external courses costing $1,050 per employee. Which should CHX choose? Justify your decision.",
+      "model_answer": "On-the-job mentoring: Senior drivers can teach refrigeration checks on the actual trucks, which relates directly to the 3.8% spoilage rate and the 14 monthly temperature alarms. Mentoring keeps drivers on the road and costs no course fees, valuable with fixed costs of $540,000 a year. However, it depends on senior drivers who are already doing long routes, may pass on bad habits, and gives no recognised certificate, so the 66% of suppliers wanting verified temperature-controlled transport may not be satisfied.\n\nAccredited external courses: Sending all 24 drivers on the $1,050 course gives formal certification and current refrigerant-handling standards. The total of 24 × $1,050 = $25,200 is small against the $1,100,000 fleet investment and can come from the $450,000 retained profit. The disadvantage is that 24 of 110 drivers are off the road during training, which could lengthen the 2.8-day journey time and threaten the 54,000-unit target, and the generic course may need on-truck follow-up.\n\nDecision: CHX should choose accredited external courses, backed by short on-truck coaching. The $25,200 cost is affordable and certification is exactly what the 66% of surveyed suppliers will pay a 3.5% premium for, so it has clear commercial value. Mentoring is rejected because it cannot provide the verification buyers want and relies on the senior drivers CHX needs on long routes; lost capacity can be managed by spreading training over several groups. Staggering the $1,050 courses would keep most trucks on the road, and the certificate would reassure the 320 supermarket suppliers about verification. The qualification also supports the 3.5% premium sought by 66% of surveyed suppliers.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training options with limited application to CHX.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both options using CHX's 24 drivers, $1,050 and spoilage data.",
+        "level_3_9_to_12": "Full evaluation of both options with shown cost arithmetic and a justified decision explaining why the alternative is rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$1,050", "24", "110", "3.8%", "refrigerant-handling certification", "refrigerant-handling"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how CHX's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate CHX's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $540,000 ÷ ($27 − $15) = $540,000 ÷ $12 = 45,000 units. Answer: break-even output is 45,000 loads a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate CHX's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $27 − $15 = $12. Answer: contribution per unit is $12."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways CHX's management can use this cost and break-even data.",
+          "model_answer": "1. Compare the 45,000-unit break-even point with 54,000 loads carried, giving a margin of safety of 9,000 units, so managers know how far volumes can fall before the refrigerated fleet loses money.\n2. Use the $12 contribution to assess the 3.5% premium that 66% of surveyed suppliers will pay for verified temperature-controlled transport and decide whether monitoring costs are covered.\n3. Test whether the $650,000 bank loan and $1,100,000 investment are serviceable: above 45,000 loads each unit adds $12 toward the $540,000 fixed costs and $170,000 interest payable.\n4. Benchmark average total cost of $25 a load ($540,000 ÷ 54,000 + $15) each quarter to detect the cost of the 3.8% spoilage rate and guide diesel negotiations as prices rise 10.4%."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 45,000 loads | (ii) Contribution per unit = $12 | (iii) Four contextual uses explained: margin of safety of 9,000 loads against 54,000 carried; the 3.5% verification premium from the 66% survey result; loan-service feasibility on $650,000 borrowing; and unit-cost benchmarking at $25 to track spoilage and diesel prices.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["45,000", "$12", "54,000", "$540,000", "$15", "$27"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate CHX's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has CHX's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 32.0%\nGross Profit Margin 2025 = 36.0%\nProfit Margin 2024 = 10.0%\nProfit Margin 2025 = 12.5%\nROCE 2024 = 15.0%\nROCE 2025 = 20.0%\n\nDetailed workings: 2024 gross profit of $2,880,000 divided by revenue of $9,000,000 gives 32.0%; 2025 gross profit of $3,600,000 divided by $10,000,000 gives 36.0%. Operating profit of $900,000 divided by 2024 revenue gives 10.0%; 2025 operating profit of $1,250,000 divided by $10,000,000 gives 12.5%. Return on capital employed of $900,000 on $6,000,000 capital gives 15.0%; 2025 return of $1,250,000 on $6,250,000 gives 20.0%. Revenue rose 11.1% while cost of sales rose only 4.6%, and operating profit rose nearly 39% while capital employed rose 4.2%.\n\nEvaluation: The trend is favourable on every measure. The gross margin improved from 32.0% to 36.0% because revenue grew much faster than cost of sales, suggesting better control over spoilage and fuel despite a 3.8% loss rate. Operating return rose from 10.0% to 12.5%, showing the $540,000 fixed costs were absorbed more effectively. Returns on capital climbed from 15.0% to 20.0%, which is important because the $1,100,000 refrigerated fleet will enlarge the capital base and the $650,000 loan needs servicing. Interest payable increased from $140,000 to $170,000, but operating profit grew much more, so borrowing has not weakened returns. These figures are historic, though, and do not yet include the 10.4% diesel rise in Appendix 3.\n\nConclusion: CHX's profitability has improved, and the improvement is sound because trading margins and the return on capital all rose together. The principal risk is that a 36.0% gross margin could be squeezed by higher diesel and insurance costs, so management should protect the $12 contribution per load and cut the 3.8% spoilage rate.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or trends with little or no accurate ratio calculation.",
+        "level_2_5_to_8": "Calculates the three profitability ratios for both years with some relevant analysis of the trends.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years, detailed evaluation of revenue, cost, capital and interest movements, and a justified conclusion on profitability."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["32.0%", "36.0%", "10.0%", "12.5%", "15.0%", "20.0%", "10,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for CHX of offering verified temperature-controlled transport to supermarket suppliers.",
+      "model_answer": "Advantage: The survey of 320 supermarket suppliers found that 66% would pay a 3.5% premium for verified temperature-controlled transport and that 59% rank spoilage-free delivery above price. CHX can therefore charge above the $27 price and increase the $12 contribution per load, while verification supports the case for the $1,100,000 monitoring system and helps reduce the 3.8% spoilage rate that currently worries buyers.\n\nDisadvantage: Verification needs continuous temperature recording, calibration and audits, which add to the $540,000 fixed costs and may extend the 2.8-day journey time. If a monitor fails and spoilage occurs, the 66% who paid a premium may reject a load or switch haulier, damaging CHX's reputation. With a $650,000 loan to service, any extra compliance cost could offset the 3.5% premium until the new fleet is fully deployed. CHX should confirm that the premium covers calibration and audit costs before promising verification to all 320 suppliers. Maintaining that standard protects the $12 contribution per load.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed development using CHX's survey, cost and spoilage data."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["66%", "3.5%", "59%", "320", "temperature-controlled", "3.8%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base rate rise to 5.0%, the 6.1% minimum wage increase and the 10.4% diesel price rise will affect CHX. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base rate rise (4.25% to 5.0%): If CHX's $650,000 loan is variable-rate, the interest increase is 0.75 percentage points, so 0.0075 × $650,000 = $4,875 a year. This is small beside fixed costs of $540,000 and interest payable of $170,000, and it can be removed by fixing the rate. It may raise the cost of future borrowing for the $1,100,000 fleet, but the direct annual effect is limited.\n\nMinimum wage increase (6.1% to $13.58): CHX employs 110 staff and carries 54,000 loads, so labour productivity is 54,000 ÷ 110 = 490.9 loads per worker. Hours and individual pay are not stated, so an annual wage-bill figure cannot be invented; the proper test is whether productivity stays near 491 loads. The rise is recurring and unavoidable, and the 24 drivers needing certification add cost, but it can partly be offset by better route planning and the 2.8% growth in chilled-transport demand.\n\nDiesel price rise (10.4%): The insert does not decompose the $15 variable cost, so only a labelled upper bound is defensible: if all of it were fuel, 10.4% × $15 = $1.56 per load, and at 54,000 loads that is 54,000 × $1.56 = $84,240 a year. Even a smaller fuel share cuts the $12 contribution, and the 5.5% rise in refrigerated-insurance premiums adds to the same cost pressure, while rates to supermarkets may be fixed by contract.\n\nConclusion: The 10.4% diesel price rise will have the greatest impact. It applies across every one of the 54,000 loads, directly erodes the contribution that funds the $1,100,000 fleet and the $650,000 loan, and is harder to neutralise than the $4,875 interest change or a wage rise that higher productivity and growing demand can absorb. The wage rise ranks second and the interest rise third.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to CHX.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on CHX's costs or financing using case figures.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with shown arithmetic, a justified greatest-impact judgement on diesel costs, and reasons why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.0%", "6.1%", "10.4%", "$15", "4.25%", "$650,000"]
+      }
+    }
+  ]
+}

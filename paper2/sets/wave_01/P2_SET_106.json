@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_106",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Harwick Precision Engineering (HPE) is a private limited company in the precision engineering sector, manufacturing industrial flow-control valves for oil and gas clients, employing a workforce of 120. Founded in 2004 by Marcus Whitfield, HPE operates a hierarchical structure with autocratic leadership. HPE plans to invest $1,450,000 in a robotic CNC machining cell to fulfil a five-year export order, financed by an $800,000 bank loan and $650,000 retained profit. It has fixed costs of $540,000 a year, a variable cost of $18.50 a unit and a selling price of $32.00, and currently produces 48,000 units a year. HPE faces an operational problem: its defect rate has risen to 4.6% and rework costs are increasing.",
+    "appendix_1_marketing_ops": "Quality and Waste Report — Q3 2025: HPE machined and inspected 3,850 valves last quarter; the defect rate was 4.6%, up from 2.9% a year ago. Customer complaints from oil and gas clients rose from 9 to 17 per month. Rework costs totalled $38,000 in the quarter. Average order fulfilment time is 4.1 days. A survey of 80 export distributors found 68% require ISO 9001 certification before placing orders, and 57% would switch to a certified rival. Training needs analysis shows 24 of 120 staff have not completed on-the-job training on the CNC cell; off-the-job training courses cost $1,150 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Harwick Precision Engineering as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "210", "150"],
+        ["Trade receivables", "340", "420"],
+        ["Cash and cash equivalents", "80", "110"],
+        ["Current liabilities", "450", "425"],
+        ["Non-current assets", "3,200", "4,150"],
+        ["Capital employed", "4,700", "5,500"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 5.25% to 6.0%, increasing borrowing costs for variable-rate loans. (2) The national minimum wage will rise by 5.8% from $11.50 to $12.17 per hour from April 2027, raising total wage bills. (3) Imported steel and component input costs have risen 9.6% year-on-year, industrial order inflation is running at 6.8%, while export demand for industrial valves grew 5.4% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "HPE plans to finance part of its robotic CNC machining cell expansion with a bank loan. Explain two advantages for HPE of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Using retained profit costs HPE nothing in interest or repayments, protecting cash flow and profit margin while it already carries fixed costs of $540,000 a year alongside an $800,000 bank loan. Money not paid as interest can absorb the 9.6% rise in steel and component input costs without pushing the $32.00 selling price above what oil and gas clients will accept.\n\nPoint 2: Retained profit avoids the collateral risk attached to a bank loan, so the $650,000 does not put the new $1,450,000 CNC machining cell at risk of repossession if the export order ramps up more slowly than expected. It also keeps Marcus Whitfield's ownership and control intact, with no lender able to impose conditions on how the CNC cell is operated, expanded or staffed. This suits HPE's hierarchical structure, where the founder prefers to direct investment decisively while tackling the 4.6% defect rate and stabilising output of 48,000 units a year.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Harwick Precision Engineering and its expansion decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$650,000", "$800,000", "$1,450,000", "private limited company"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "HPE is launching its bid for the five-year export order. Consider exhibiting at an international oil and gas trade exhibition, advertising in specialist engineering trade journals, or a targeted LinkedIn and digital marketing campaign. Which should HPE choose to promote its valves? Justify your recommendation.",
+      "model_answer": "Trade exhibition: Exhibiting at a major international oil and gas or water-treatment exhibition puts HPE's valves directly in front of procurement engineers, allows live demonstrations of the new CNC machining cell and builds credibility for a five-year export order. However, stand space, travel and staffing can cost tens of thousands of dollars, enquiries may be slow to convert, and one exhibition alone cannot fill an order book aimed at 48,000 units a year.\n\nTrade journal advertising: Advertising in specialist engineering journals is far cheaper than broadcast media and reaches exactly the industrial buyers HPE wants, with repetition across monthly issues building brand familiarity. Readership is passive - buyers may never see the advert while evaluating rivals - and print lead times are long, dulling the launch of a time-sensitive export opportunity.\n\nLinkedIn and digital marketing: A campaign aimed at procurement managers in the 80 export distributors HPE surveyed targets the 68% requiring ISO 9001 certification and the 57% willing to switch suppliers, with measurable clicks, demo requests and cost per lead. It is far cheaper than exhibitions, scales internationally and suits the 5.4% growth in export demand, though it needs consistent content and rapid follow-up, and some traditional oil and gas buyers prefer face-to-face relationships.\n\nRecommendation: HPE should choose LinkedIn and targeted digital marketing, reinforced by a single well-chosen exhibition each year. It reaches the exact segments identified in HPE's research at a fraction of exhibition cost, suits national distribution to oil and gas regions, and supports the export order quickly. Journal advertising is rejected as too passive to shift buyers, and exhibiting alone is rejected as too expensive and infrequent for a 120-person manufacturer funding a $1,450,000 cell with an $800,000 bank loan.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of HPE with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of HPE with a well-justified recommendation explaining why trade journals and the exhibition-only approach are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["export order", "$1,450,000", "48,000", "68%", "$32.00", "industrial"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "HPE's defect rate has risen to 4.6% and rework costs are increasing. Explain two benefits for HPE of using autocratic leadership to address quality problems in its production team.",
+      "model_answer": "Point 1: Autocratic leadership gives Marcus Whitfield and his managers tight, immediate control of the production floor, which is vital when the defect rate has climbed to 4.6% and rework costs reached $38,000 in a single quarter. Clear, one-way instructions on CNC cell set-up, tooling changes and inspection routines let HPE react faster than a consultative approach while quality is slipping, protecting the tolerances that oil and gas clients demand.\n\nPoint 2: During the five-year export order, autocratic decisions on overtime, shift cover and machine allocation prevent delays that could jeopardise delivery to international clients. With 24 of 120 staff untrained on the CNC cell, strict direction on who operates which machine protects output of 48,000 units a year and reinforces the chain of command in HPE's hierarchical structure. Although some employees may feel less consulted, speed and consistency matter more while the defect rate is being brought under control and the $1,450,000 investment beds in.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HPE's defect rate, export order and hierarchy."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["autocratic leadership", "defect rate", "4.6%", "workforce of 120", "export order", "48,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "HPE must train 24 production staff to operate the new CNC machining cell. Consider on-the-job training or off-the-job training at a specialist centre. Which should HPE choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training the 24 CNC cell operators on the live production floor is machine-specific, costs nothing in course fees and keeps the valve line running while staff learn, directly attacking the 4.6% defect rate without stopping output for the export order. Drawbacks are that senior machinists acting as trainers lose productive time, poor habits can be passed on, and formal certification is limited, which may concern the 68% of export distributors requiring ISO 9001 evidence.\n\nOff-the-job training: Specialist off-the-job training courses at $1,150 per employee cost $27,600 for the 24 staff - affordable beside the $1,450,000 investment - and deliver structured skills plus certified records that strengthen ISO 9001 applications. Staff are removed from the line, however, slowing the average fulfilment time of 4.1 days, and generic content may not match HPE's exact valve tolerances, so on-site follow-up would still be required.\n\nDecision: HPE should choose on-the-job training for the first twelve months, supplemented by off-the-job certification for two senior operators who can then cascade training to the rest. This keeps output of 48,000 units stable while the defect rate is investigated, costs far less than $27,600 and fixes the immediate quality problem. Full off-the-job training is rejected for now because withdrawing 24 staff from a 120-person workforce during a quality crisis and export ramp-up would risk late deliveries, penalties and further rework on top of the $38,000 already lost last quarter. HPE should review defect-rate data monthly for the first quarter and adjust the training mix in line with ISO 9001 audit feedback.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to HPE.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of HPE.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of HPE with a well-justified decision covering cost, disruption, machine relevance and ISO 9001 needs."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$1,150", "4.6%", "$1,450,000", "24"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how HPE's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate HPE's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $540,000 ÷ ($32.00 − $18.50) = $540,000 ÷ $13.50 = 40,000 units. Answer: break-even output is 40,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate HPE's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $32.00 − $18.50 = $13.50. Answer: contribution per unit is $13.50."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways HPE's management can use this financial data.",
+          "model_answer": "1. Managers can compare the 40,000-unit break-even output with actual production of 48,000 units to confirm a margin of safety of 8,000 units, judging whether output can stretch further to serve the export order.\n2. Contribution per unit of $13.50 lets HPE model price negotiations with oil and gas clients; a 5% price cut to $30.40 would drop contribution to $11.90, showing how much extra volume would be needed to keep the $540,000 fixed costs covered.\n3. Knowing fixed costs of $540,000 and contribution per unit helps managers check that the CNC cell can service the $800,000 bank loan before committing to any further borrowing for the $1,450,000 investment.\n4. Managers can use average total cost ($540,000 ÷ 48,000 units + $18.50 = $29.75 a unit) to benchmark each quarter, spot waste driving the 4.6% defect rate and renegotiate steel and component prices as input costs rise 9.6%."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 40,000 units | (ii) Contribution per unit = $13.50 | (iii) Four contextual uses explained: margin of safety of 8,000 units versus 48,000-unit output; pricing and discount modelling against $540,000 fixed costs; loan-repayment feasibility for the $1,450,000 CNC machining cell; and unit-cost benchmarking at $29.75 to tackle the 4.6% defect rate and 9.6% input-cost inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40,000", "$13.50", "48,000", "$540,000", "$18.50", "$32.00", "$29.75", "8,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate HPE's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has HPE's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.40 : 1\nCurrent Ratio 2025 = 1.60 : 1\nAcid Test Ratio 2024 = 0.93 : 1\nAcid Test Ratio 2025 = 1.25 : 1\n\nDetailed workings: 2024 current assets = $210,000 inventories + $340,000 trade receivables + $80,000 cash = $630,000; 2025 current assets = $150,000 + $420,000 + $110,000 = $680,000. Short-term cover 2024 = $630,000 ÷ $450,000 = 1.40; 2025 = $680,000 ÷ $425,000 = 1.60. Cover excluding inventories 2024 = ($630,000 − $210,000) ÷ $450,000 = $420,000 ÷ $450,000 = 0.93; 2025 = ($680,000 − $150,000) ÷ $425,000 = $530,000 ÷ $425,000 = 1.25.\n\nEvaluation: Liquidity has clearly strengthened. Short-term cover improved from 1.40 to 1.60 as inventories were cut from $210,000 to $150,000 and cash rose to $110,000 while liabilities fell from $450,000 to $425,000. The tougher measure excluding inventories moved from 0.93 to 1.25, so HPE no longer relies on selling stock to meet short-term debts, which is vital while it services an $800,000 bank loan for the $1,450,000 CNC machining cell. However, trade receivables climbed from $340,000 to $420,000, tying up cash; if export clients pay late, the stronger position could deteriorate quickly, and inventories of $150,000 must still be sufficient to deliver against the five-year export order.\n\nConclusion: HPE's financial position has improved. Both liquidity measures rose (1.40 to 1.60 and 0.93 to 1.25), and the improvement does not depend on stock. The main residual risk is rising trade receivables, so HPE should tighten export credit control and monitor distributor balances while the CNC cell beds in.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of inventory, receivables and liabilities movements and a justified conclusion on whether HPE's financial position improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.40", "1.60", "0.93", "1.25", "$630,000", "$680,000", "$1,450,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for HPE of introducing ISO 9001 quality assurance for its valve production.",
+      "model_answer": "Advantage: ISO 9001 quality assurance directly rewards the 68% of export distributors who require certification before placing orders, making HPE a preferred supplier for the export order and supporting pricing above the $32.00 selling price. Catching defects at each CNC machining stage rather than inspecting finished valves would drive the 4.6% defect rate down, cutting the $38,000 quarterly rework bill and freeing capacity toward the 48,000-unit target without extra capital spending. External auditors would also help HPE demonstrate compliance when negotiating the five-year export contract.\n\nDisadvantage: Certification demands documented procedures, staff training and external audits, adding to HPE's $540,000 fixed costs and management workload in an autocratic hierarchy built for speed. If applied rigidly, the extra paperwork could slow the CNC cell just as HPE ramps up the export order, and ongoing audit and consultancy fees could squeeze margins on the $18.50 variable cost before export cash starts flowing steadily. Audit fees and consultancy typically run into the low thousands of dollars a year, a recurring cost that must be weighed against the $38,000 quarterly rework bill it aims to eliminate.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to HPE's quality, costs and expansion."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["ISO 9001", "68%", "4.6%", "$38,000", "export order", "defect rate"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 6.0%, the 5.8% minimum wage increase and the 9.6% rise in input costs will affect HPE. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (5.25% to 6.0%): If HPE's $800,000 bank loan is variable-rate, annual interest rises by 0.75%, adding about $6,000 a year to financing costs and slightly lifting the $540,000 fixed-cost burden. Higher rates may also make export distributors slower to commit to large orders and raise the cost of any additional borrowing for the $1,450,000 CNC cell. The direct impact is real but modest and can be capped by fixing the loan rate.\n\nMinimum wage increase (5.8%, to $12.17 per hour): HPE employs 120 staff in a hierarchical plant. If the lowest-paid 30 operatives move from $11.50 to $12.17, each gains about $1,340 a year, or roughly $40,000 across that group. Skilled machinists are paid well above the minimum, so the overall wage bill rises by far less than 5.8%, though HPE must still budget for it and manage staff expectations during the expansion.\n\nInput cost inflation (9.6% steel and components): Steel and components dominate HPE's $18.50 variable cost, at roughly $10 of materials per valve. A 9.6% rise adds about $0.96 per unit; at 48,000 units that is roughly $46,000 a year, eroding the $13.50 contribution per unit and pressuring the $32.00 price for oil and gas clients.\n\nConclusion: The 9.6% rise in input costs will have the greatest impact. It repeatedly reduces contribution on every valve sold, totalling roughly $46,000 a year and squeezing the margin that justifies the $1,450,000 expansion. The wage rise is the second concern at roughly $40,000 a year, while the interest-rate increase costs only about $6,000 a year and can be managed by fixing the loan rate; all three still demand tighter cost control and firmer price negotiation with export clients.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to HPE.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on HPE's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of HPE with a well-justified judgment that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6.0%", "5.8%", "9.6%", "interest rate", "$12.17", "48,000"]
+      }
+    }
+  ]
+}

@@ -560,7 +560,7 @@ export function Paper2PracticeView({
           <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
           <h1 className="study-title">Paper 2 <span>Case studies</span></h1>
           <p className="study-description">
-            Work through 100 case studies with appendices and step-by-step questions.
+            Work through {PAPER2_DATABASE.length} case studies with appendices and step-by-step questions.
           </p>
         </div>
         <div className="study-hero-image" aria-hidden="true" />
@@ -592,7 +592,7 @@ export function Paper2PracticeView({
               ← Prev
             </button>
 
-            {/* Set Indicator: X / 100 (matching Paper 1 style) */}
+            {/* Set Indicator: X / total (matching Paper 1 style) */}
             <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#FAF9F6] dark:bg-black border border-slate-200 dark:border-neutral-800 text-[#0F2042] dark:text-white min-w-[76px] text-center shadow-2xs">
               {currentScenarioIdx + 1} / {PAPER2_DATABASE.length}
             </span>
@@ -621,7 +621,7 @@ export function Paper2PracticeView({
               type="button"
               onClick={() => setShowScenarioPicker(true)}
               className="p-1.5 rounded-lg border border-slate-300 dark:border-neutral-700 bg-white dark:bg-black text-neutral-600 dark:text-neutral-300 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 cursor-pointer"
-              title="Search and browse all 100 sets"
+              title={`Search and browse all ${PAPER2_DATABASE.length} sets`}
             >
               <Search className="w-4 h-4" />
             </button>
@@ -699,7 +699,7 @@ export function Paper2PracticeView({
                 onClick={() => setShowScenarioPicker(true)}
                 className="text-[11px] font-semibold text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 underline cursor-pointer"
               >
-                All 100 Sets ↗
+                All {PAPER2_DATABASE.length} Sets ↗
               </button>
             </div>
 
@@ -1765,7 +1765,7 @@ export function Paper2PracticeView({
                     <div>
                       <div className="flex items-center justify-between mb-1">
                         <span className={`text-[11px] font-mono font-bold ${isCurrent ? "text-blue-200" : "text-[#0F2042] dark:text-[#38BDF8]"}`}>
-                          {`Set ${PAPER2_DATABASE.findIndex((s) => s.scenario_id === scen.scenario_id) + 1} (${PAPER2_DATABASE.findIndex((s) => s.scenario_id === scen.scenario_id) + 1} / 100)`}
+                          {`Set ${PAPER2_DATABASE.findIndex((s) => s.scenario_id === scen.scenario_id) + 1} (${PAPER2_DATABASE.findIndex((s) => s.scenario_id === scen.scenario_id) + 1} / ${PAPER2_DATABASE.length})`}
                         </span>
                         <span className="text-[10px] opacity-75 font-mono">8 questions</span>
                       </div>

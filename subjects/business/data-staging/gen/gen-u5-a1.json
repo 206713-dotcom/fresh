@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_101",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Maya and Reuben are launching Copperfinch Roastery, a partnership planning to open a coffee roasting and tasting room in Country X. To launch, the business needs a $48,000 roasting machine, a $15,000 lease deposit and refurbishment for the shop, $7,000 of green coffee beans and $9,000 per month of working capital for the first 3 months before sales become steady.\n\nIn total, the start-up requires $97,000. Maya has $40,000 of owners' savings and Reuben has $35,000, giving $75,000 together. Reuben also owns an unused delivery van worth $25,000 that he could sell. Because the business is new it has no retained profit to use, so the partners must decide which internal sources of finance to rely on and whether to sell the van.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'start-up capital'.",
+        "model_answer": "Start-up capital is the finance needed to set up and launch a new business, covering initial costs such as equipment, premises and stock before any sales revenue is received [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "finance needed to set up / launch a new business",
+            "covers initial costs before revenue is received"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Copperfinch Roastery needs $97,000 of start-up capital.",
+        "model_answer": "Reason 1: To buy equipment and premises [k], including the $48,000 roasting machine and the $15,000 lease deposit and refurbishment [app]. Reason 2: To cover running costs before sales arrive [k], such as $9,000 per month of working capital for the first 3 months [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital needed to buy equipment/premises",
+            "capital needed to cover costs before revenue arrives"
+          ],
+          "application_max_2": [
+            "$48,000 roasting machine / $15,000 lease deposit",
+            "$9,000 per month working capital for the first 3 months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$48,000",
+            "$15,000",
+            "$9,000",
+            "roasting machine",
+            "working capital",
+            "$97,000",
+            "$7,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using owners' savings to finance the start-up.",
+        "model_answer": "Benefit 1: Owners' savings are immediately available [k], so Maya and Reuben can contribute $75,000 without waiting for outside lenders [app], letting the roastery open on schedule [an]. Benefit 2: Using savings carries no interest [k], so none of the $9,000 monthly working capital is absorbed by loan repayments [app], leaving more cash free for the first months of trading [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "savings immediately available / no approval needed",
+            "no interest or repayment obligation"
+          ],
+          "application_max_2": [
+            "Maya and Reuben contribute $75,000",
+            "no repayments eating into the $9,000 monthly working capital"
+          ],
+          "analysis_max_2": [
+            "lets the roastery open on schedule",
+            "more cash free for the first months of trading"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "owners' savings",
+            "$75,000",
+            "Maya and Reuben",
+            "$9,000",
+            "roastery",
+            "internal sources"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Copperfinch Roastery should sell Reuben's delivery van to raise the remaining start-up capital? Justify your answer.",
+        "model_answer": "Selling the van would raise $25,000 [k], covering the $22,000 gap between the $75,000 of owners' savings and the $97,000 required [app], so the partners keep the launch fully funded with internal sources [an]. However, the van may be needed once deliveries of beans and cafe supplies begin [k], and selling it now would remove a useful asset before the roastery proves its sales [app], leaving the business without transport just as it starts trading [an]. Overall, the van should be sold [eval], because it is unused and closes the gap exactly with $3,000 to spare, keeping the opening plan intact [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale of unused asset raises internal finance",
+            "losing a still-useful asset before trading starts"
+          ],
+          "application_max_2": [
+            "$25,000 from the van versus the $22,000 gap",
+            "$75,000 of owners' savings against the $97,000 requirement"
+          ],
+          "analysis_max_2": [
+            "launch stays fully funded with internal sources",
+            "business loses transport just as it begins trading"
+          ],
+          "evaluation_max_2": [
+            "weighs sale proceeds against losing transport capacity",
+            "justified recommendation with spare $3,000 after covering the gap"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$25,000",
+            "$75,000",
+            "$97,000",
+            "delivery van",
+            "start-up",
+            "retained profit",
+            "internal sources"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_102",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Foulsham Joinery is a partnership owned by Elena and Marcus that has made bespoke oak furniture in Country X for 11 years. The firm employs 24 craftspeople making dining tables, wardrobes and cabinets, and last year generated sales revenue of $620,000. After all expenses, the partnership retained a profit of $60,000 for reinvestment. Cabinet orders have doubled this year, and the partners also hope to keep weekly wages stable.\n\nOrders now exceed workshop capacity, so the partners want $110,000 of capital expenditure on an automated spray-finishing machine that would cut finishing time and reduce waste. Elena has $30,000 of personal savings and Marcus has $20,000, totalling $50,000. The partners want internal finance only, so they are weighing their retained profit against owners' savings to fund the machine.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'capital expenditure'.",
+        "model_answer": "Capital expenditure is money spent on non-current assets such as machinery, vehicles or premises that the business will use for more than one year [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "spending on non-current assets",
+            "assets used for more than one year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Foulsham Joinery wants to invest $110,000 of capital expenditure in the spray-finishing machine.",
+        "model_answer": "Reason 1: To increase efficiency [k], because the automated spray-finishing machine would cut finishing time and reduce waste on bespoke oak furniture [app]. Reason 2: To meet rising demand [k], since cabinet orders have doubled this year and orders now exceed workshop capacity [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "increased efficiency / faster production",
+            "ability to meet rising demand / take on more orders"
+          ],
+          "application_max_2": [
+            "machine cuts finishing time and reduces waste on oak furniture",
+            "cabinet orders doubled and now exceed workshop capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "automated spray-finishing machine",
+            "bespoke oak furniture",
+            "$110,000",
+            "workshop capacity",
+            "$620,000",
+            "capital expenditure",
+            "24 craftspeople"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of Foulsham Joinery using retained profit to fund the machine.",
+        "model_answer": "Benefit 1: It carries no interest or repayment obligation [k], so the $60,000 reinvests money the firm itself earned, protecting monthly cash [app], which keeps the workshop running smoothly [an]. Benefit 2: It is immediately available [k], already in hand after last year's $620,000 revenue [app], letting the partners order the machine without outside approval [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no interest or repayments",
+            "immediately available internal finance"
+          ],
+          "application_max_2": [
+            "the $60,000 retained profit reinvested",
+            "in hand after the $620,000 revenue year"
+          ],
+          "analysis_max_2": [
+            "protects monthly cash flow / steady workshop running",
+            "machine can be ordered without outside approval"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$60,000",
+            "$620,000",
+            "internal finance",
+            "spray-finishing machine",
+            "$110,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Foulsham Joinery should fund the $110,000 spray-finishing machine mainly from retained profit rather than owners' savings? Justify your answer.",
+        "model_answer": "Retained profit is long-term internal finance with no repayment obligation [k], so using the $60,000 to help fund the $110,000 machine reinvests money the business earned itself [app], strengthening the partnership without adding financial pressure [an]. However, owners' savings of $50,000 are also immediately available and carry no interest [k], so together the two sources exactly cover the $110,000 [app], letting the partners decide the split without any shortfall [an]. Overall, retained profit should be used as the main source [eval], because the $60,000 came from the firm's own $620,000 revenue and keeps personal risk low, with the $50,000 savings topping up the balance [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit is long-term internal finance with no repayment",
+            "owners' savings equally interest-free and available"
+          ],
+          "application_max_2": [
+            "$60,000 retained profit plus $50,000 savings equals $110,000",
+            "the $60,000 came from the firm's $620,000 revenue"
+          ],
+          "analysis_max_2": [
+            "strengthens the firm without financial pressure",
+            "split can be decided freely with no shortfall"
+          ],
+          "evaluation_max_2": [
+            "weighs reinvesting business earnings against committing personal funds",
+            "justified recommendation to use retained profit with savings top-up"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$60,000",
+            "$50,000",
+            "$110,000",
+            "owners' savings",
+            "internal finance",
+            "$620,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_103",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Harriet Sloane runs Fernhill Orchard Farm, a sole trader growing apples and pears in Country X for 14 years. The farm employs 6 permanent workers and 20 seasonal pickers. Annual revenue is $240,000, but about 70% arrives between October and December after the harvest, while wages, fertiliser and packaging of $38,000 fall due between April and September. Most fruit is sold through supermarkets and a wholesale market in the nearest city.\n\nCurrent assets total $95,000 against current liabilities of $60,000, leaving working capital of $35,000. From last year the farm has retained profit of $22,000, and Harriet has $16,000 of personal savings. She also owns an old tractor worth $14,000 that sees little use and prefers internal sources of finance to outside borrowing.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'working capital'.",
+        "model_answer": "Working capital is the money available to pay the day-to-day running of a business, calculated as current assets minus current liabilities [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "money for day-to-day running of the business",
+            "current assets minus current liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Fernhill Orchard Farm faces working capital pressure before the harvest.",
+        "model_answer": "Reason 1: Costs fall due before revenue arrives [k], because wages, fertiliser and packaging of $38,000 are due between April and September [app]. Reason 2: Income is uneven across the year [k], with about 70% of the $240,000 annual revenue arriving between October and December [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "costs due before revenue arrives",
+            "seasonal / uneven income pattern"
+          ],
+          "application_max_2": [
+            "$38,000 of wages, fertiliser and packaging due April to September",
+            "70% of $240,000 revenue arriving October to December"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$38,000",
+            "April and September",
+            "70%",
+            "$240,000",
+            "October and December",
+            "working capital"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the farm using retained profit to ease its working capital need.",
+        "model_answer": "Benefit 1: Retained profit is free and flexible internal finance [k], so the $22,000 can pay wages and suppliers without interest [app], preserving precious cash in the low-income months [an]. Benefit 2: It carries no repayment deadline [k], unlike an outside loan, so Harriet can rebuild reserves when the October and December income arrives [app], easing stress until the harvest revenue flows in [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit is free / flexible internal finance",
+            "no repayment deadline attached"
+          ],
+          "application_max_2": [
+            "$22,000 used to pay wages and suppliers without interest",
+            "reserves rebuilt when October and December income arrives"
+          ],
+          "analysis_max_2": [
+            "preserves cash in the low-income months",
+            "eases stress until harvest revenue flows in"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$22,000",
+            "internal sources of finance",
+            "October and December",
+            "working capital"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fernhill Orchard Farm should sell the old tractor rather than use retained profit to cover its pre-harvest working capital need? Justify your answer.",
+        "model_answer": "Selling the old tractor would raise $14,000 [k], turning an unused asset into cash for the $38,000 of pre-harvest costs [app], and would leave the $22,000 retained profit untouched for emergencies [an]. However, the tractor could still serve as a back-up during the busy picking season [k], and selling it now might force hire charges if the main tractor fails [app], cancelling out any gain [an]. Overall, the farm should use the retained profit first [eval], keeping the tractor as a working back-up, and sell it only if harvest revenue disappoints [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale of unused asset raises internal finance",
+            "retained profit keeps an asset back-up available"
+          ],
+          "application_max_2": [
+            "$14,000 from the tractor against $38,000 of pre-harvest costs",
+            "selling now risks hire charges if the main tractor fails"
+          ],
+          "analysis_max_2": [
+            "preserves $22,000 retained profit for emergencies",
+            "loss of the back-up tractor could cancel the gain"
+          ],
+          "evaluation_max_2": [
+            "weighs asset sale against keeping the tractor back-up",
+            "justified recommendation to use retained profit first with sale as fallback"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$14,000",
+            "old tractor",
+            "$38,000",
+            "$22,000",
+            "retained profit",
+            "working capital",
+            "$16,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_104",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Denise Okafor owns Saltwell Laundry Co, a sole trader providing commercial laundry services to hotels and guesthouses in Country X. Operating for 8 years, the business employs 16 staff who collect and deliver laundry by van. Last year it earned sales revenue of $410,000 and recorded retained profit of $50,000. Hotels are charged a weekly collection fee for each laundry round. Guesthouse contracts are typically agreed for 12 months.\n\nTo keep up with demand, Denise must replace the delivery van at a cost of $68,000, which is capital expenditure. The old van could be sold for $18,000, and she has $25,000 of personal savings. Denise prefers internal finance where possible and is deciding how to combine retained profit and the old van sale to fund the $68,000 purchase.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'retained profit'.",
+        "model_answer": "Retained profit is the profit a business keeps after paying all costs, expenses and owner drawings, held back for reinvestment as internal finance rather than withdrawn or distributed [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit kept after costs, expenses and drawings",
+            "held back / reinvested as internal finance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why replacing the delivery van is capital expenditure rather than a day-to-day cost.",
+        "model_answer": "Reason 1: The van is a long-term asset [k], used for several years to collect and deliver laundry for hotels and guesthouses [app]. Reason 2: It is a large one-off purchase [k], costing $68,000 rather than a regular expense such as wages [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term asset used for more than one year",
+            "large one-off non-current asset purchase"
+          ],
+          "application_max_2": [
+            "van used for several years serving hotels and guesthouses",
+            "$68,000 one-off cost rather than regular wages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "delivery van",
+            "$68,000",
+            "hotels and guesthouses",
+            "capital expenditure",
+            "collect and deliver",
+            "$410,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using retained profit as the main source of finance for the van.",
+        "model_answer": "Benefit 1: No interest or repayments are required [k], so using the $50,000 avoids adding loan repayments to monthly outgoings [app], protecting short-term cash flow [an]. Benefit 2: The decision can be made quickly by one person [k], since the $50,000 is already in hand after a $410,000 revenue year [app], so the van can be replaced without delay [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no interest or repayments required",
+            "decision can be made quickly / funds already in hand"
+          ],
+          "application_max_2": [
+            "$50,000 used directly without extra outgoings",
+            "$50,000 already in hand after the $410,000 revenue year"
+          ],
+          "analysis_max_2": [
+            "protects short-term cash flow",
+            "van replaced without delay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$50,000",
+            "$410,000",
+            "internal finance",
+            "$68,000",
+            "delivery van"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Saltwell Laundry Co should sell its old van and use retained profit to fund the $68,000 replacement, rather than keep the old van and use owners' savings? Justify your answer.",
+        "model_answer": "Selling the old van raises $18,000 [k], and together with the $50,000 retained profit it exactly funds the $68,000 replacement [app], leaving Denise's $25,000 savings untouched as a personal safety net [an]. However, the old van could remain useful as a back-up for busy hotel seasons [k], and using owners' savings instead would preserve two vehicles for collections and deliveries [app], at the cost of reducing Denise's personal reserves [an]. Overall, Saltwell Laundry Co should sell the old van and use the retained profit [eval], because the $50,000 plus the $18,000 sale is an exact fit for the $68,000 cost and keeps business and personal money separate [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale of existing asset raises internal finance",
+            "old asset can remain as a back-up"
+          ],
+          "application_max_2": [
+            "$18,000 sale plus $50,000 retained profit exactly covers $68,000",
+            "owners' savings would preserve two vehicles for rounds"
+          ],
+          "analysis_max_2": [
+            "$25,000 savings preserved as a personal safety net",
+            "reducing personal reserves weakens the owner's position"
+          ],
+          "evaluation_max_2": [
+            "weighs exact funding fit against keeping a back-up vehicle",
+            "justified recommendation with clear personal/business separation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "old van",
+            "$18,000",
+            "$50,000",
+            "$68,000",
+            "$25,000",
+            "retained profit",
+            "internal finance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_105",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Priya Raman owns Marram Hair & Beauty Studio, a hair and beauty salon in Country X trading for 6 years with 8 staff. The salon serves mainly walk-in clients and generates $185,000 of annual revenue. It offers cuts, colour treatments, manicures and facials. Monthly bills for rent, wages, utilities and products total about $11,000, and the salon holds $6,000 of stock.\n\nA slow winter has left the studio with current assets of $28,000 and current liabilities of $19,000, giving working capital of $9,000. Three quiet months could see bills outrun takings. Last year the salon recorded retained profit of $8,500, and Priya has $10,000 of owners' savings. She wants internal sources of finance only and is choosing between the two for the winter months ahead.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'internal source of finance'.",
+        "model_answer": "An internal source of finance is money raised from within the business itself, such as retained profit, owners' savings or proceeds from selling assets, rather than from outside investors or lenders [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "money raised from within the business itself",
+            "examples such as retained profit, owners' savings, asset sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the studio needs working capital during the winter months.",
+        "model_answer": "Reason 1: To pay monthly bills on time [k], including rent, wages, utilities and products costing about $11,000 a month [app]. Reason 2: To keep services stocked [k], holding $6,000 of products for cuts, colour treatments, manicures and facials [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "to pay day-to-day bills on time",
+            "to hold stock for services"
+          ],
+          "application_max_2": [
+            "$11,000 a month for rent, wages, utilities and products",
+            "$6,000 of stock supporting cuts, colour, manicures and facials"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$11,000",
+            "$6,000",
+            "working capital",
+            "walk-in",
+            "$185,000",
+            "winter months",
+            "$9,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of using retained profit instead of owners' savings for the winter months.",
+        "model_answer": "Advantage 1: It is the business's own reinvested money [k], so the $8,500 is available without Priya touching her $10,000 owners' savings [app], keeping business and personal money separate [an]. Advantage 2: It carries no repayment obligation [k], so the salon adds nothing to future outgoings [app], easing pressure until takings recover [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "business's own reinvested money",
+            "no repayment obligation / no added outgoings"
+          ],
+          "application_max_2": [
+            "$8,500 available without touching Priya's $10,000 savings",
+            "nothing added to future outgoings for the winter"
+          ],
+          "analysis_max_2": [
+            "keeps business and personal money separate",
+            "eases pressure until takings recover"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$8,500",
+            "$10,000",
+            "owners' savings",
+            "internal sources of finance",
+            "$9,000",
+            "winter months"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Marram Hair & Beauty Studio should use retained profit or owners' savings to fund its winter working capital need? Justify your answer.",
+        "model_answer": "Retained profit of $8,500 covers most of the $9,000 gap [k], and using it first keeps Priya's $10,000 owners' savings intact [app], preserving a personal safety net for emergencies [an]. However, leaning only on $8,500 would empty the salon's profit reserve [k], whereas adding savings would bridge the small $500 difference wholly [app], which may be sensible if winter takings stay weak [an]. Overall, the studio should use retained profit first [eval], topping up with owners' savings only if the shortfall persists after takings recover [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit usable first as internal finance",
+            "drawing only retained profit empties the profit reserve"
+          ],
+          "application_max_2": [
+            "$8,500 against the $9,000 working capital gap",
+            "$10,000 owners' savings would bridge the $500 difference"
+          ],
+          "analysis_max_2": [
+            "preserves a personal safety net for emergencies",
+            "topping up may be sensible if winter takings stay weak"
+          ],
+          "evaluation_max_2": [
+            "weighs using business profit reserve against personal savings",
+            "justified recommendation to use retained profit with conditional top-up"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$8,500",
+            "$9,000",
+            "$10,000",
+            "owners' savings",
+            "working capital",
+            "winter months"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_106",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Jack and Lily are launching Fernwell Pet Grooming, a partnership offering mobile grooming for dogs and cats across Country X. They will operate within a 40-kilometre radius of the town. The start-up needs a $28,000 van conversion with bathing and drying equipment, $6,000 of grooming tools and supplies, $2,000 of insurance and licences, and $4,000 of working capital for the first 2 months.\n\nIn total the launch requires $40,000. Jack has $22,000 of savings and Lily has $13,000, totalling $35,000. Jack also owns an unused motorbike valued at $6,000. Lily will work full time in the van while Jack handles bookings. The partners want internal finance only and are deciding whether to sell the motorbike or scale back the van conversion to cover the remaining $5,000.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Outline what is meant by 'owners' savings'.",
+        "model_answer": "Owners' savings are personal money invested by the owners into their own business, such as savings deposited to fund start-up costs, equipment or working capital [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "personal money invested by the owners",
+            "into their own business for start-up or running costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Fernwell Pet Grooming needs start-up capital before it can begin trading.",
+        "model_answer": "Reason 1: To buy the equipment needed to operate [k], including the $28,000 van conversion with bathing and drying equipment [app]. Reason 2: To cover costs incurred before revenue arrives [k], such as $2,000 of insurance and licences and $4,000 of working capital for the first 2 months [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "capital to buy equipment/premises to operate",
+            "capital to cover costs before revenue arrives"
+          ],
+          "application_max_2": [
+            "$28,000 van conversion with bathing and drying equipment",
+            "$2,000 insurance and licences plus $4,000 working capital"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "start-up",
+            "$28,000",
+            "van conversion",
+            "$2,000",
+            "$4,000",
+            "working capital",
+            "$40,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the partners selling the motorbike to complete the funding.",
+        "model_answer": "Benefit 1: It raises cash without borrowing [k], and $6,000 from the sale would more than cover the $5,000 gap between the $35,000 of savings and the $40,000 required [app], keeping the launch debt-free [an]. Benefit 2: The motorbike is unused [k], so turning it into cash has no impact on grooming work [app], releasing money exactly when the first 2 months of working capital are needed [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "sale raises cash without borrowing / internal finance",
+            "unused asset can be converted to cash"
+          ],
+          "application_max_2": [
+            "$6,000 sale exceeds the $5,000 gap to $40,000",
+            "motorbike unused so operations unaffected"
+          ],
+          "analysis_max_2": [
+            "launch kept debt-free",
+            "money released exactly when working capital is needed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "motorbike",
+            "$6,000",
+            "$5,000",
+            "$35,000",
+            "$40,000",
+            "working capital",
+            "$22,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Fernwell Pet Grooming should sell the motorbike rather than scale back the van conversion to fund the launch? Justify your answer.",
+        "model_answer": "Selling the motorbike raises $6,000 [k], comfortably covering the $5,000 shortfall on the $40,000 launch [app], so the $28,000 van conversion can open fully equipped and win customers from day one [an]. However, Jack may rely on the motorbike for personal travel [k], and scaling back the conversion by about $5,000 would still leave a working grooming van [app], though with reduced capacity and a weaker first impression [an]. Overall, the partners should sell the motorbike [eval], because it is unused and preserves the professional conversion that the whole mobile business depends on [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling an unused asset raises internal finance",
+            "scaling back reduces capacity/quality but keeps the asset"
+          ],
+          "application_max_2": [
+            "$6,000 sale covers the $5,000 shortfall on $40,000",
+            "scaling back leaves a working but reduced conversion"
+          ],
+          "analysis_max_2": [
+            "conversion opens fully equipped to win customers",
+            "reduced capacity weakens first impressions"
+          ],
+          "evaluation_max_2": [
+            "weighs selling personal transport against degrading the offer",
+            "justified recommendation that the unused motorbike should be sold"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "motorbike",
+            "$6,000",
+            "$5,000",
+            "$28,000",
+            "van conversion",
+            "$40,000",
+            "internal finance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_107",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Oxenford Wholesale Grocers is a partnership supplying independent shops and cafes across Country X for 12 years. The firm employs 28 workers and buys food stock in bulk for $150,000 each month, paying suppliers within 30 days while customers often pay after 45 days. Weekly deliveries go to over 60 independent shops and cafes. Last year it earned revenue of $2,400,000 and retained profit of $95,000.\n\nThis has created a working capital gap of about $75,000. Current assets total $420,000 against current liabilities of $345,000, leaving working capital of $75,000. Storing stock is essential because bulk buying lowers unit costs. The firm owns an empty warehouse unit valued at $210,000 but is reluctant to sell. The partners want internal finance only and are weighing retained profit against selling the unit.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Identify two internal sources of finance the partnership could use.",
+        "model_answer": "Retained profit from last year's earnings [1]. Proceeds from selling existing assets, such as the empty warehouse unit [1].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit identified as internal source",
+            "sale of existing assets identified as internal source"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Oxenford Wholesale Grocers faces a working capital gap.",
+        "model_answer": "Reason 1: It pays suppliers before customers pay [k], because suppliers require payment within 30 days while customers often pay after 45 days [app]. Reason 2: It buys stock in bulk each month [k], spending $150,000 on food stock every month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "suppliers paid before customers pay",
+            "bulk monthly stock purchases tie up cash"
+          ],
+          "application_max_2": [
+            "30-day supplier terms versus 45-day customer payments",
+            "$150,000 monthly food stock purchases"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30 days",
+            "45 days",
+            "$150,000",
+            "working capital",
+            "$75,000",
+            "bulk"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using the retained profit rather than selling the warehouse unit.",
+        "model_answer": "Benefit 1: The $95,000 retained profit comfortably covers the $75,000 working capital gap [k], so the shortfall is met in one step [app], keeping the warehouse available for future expansion [an]. Benefit 2: Selling the unit would sacrifice a long-term asset [k], because rising revenue of $2,400,000 may soon need more storage space [app], whereas retained profit replenishes from future earnings [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit can cover the gap directly",
+            "selling sacrifices a long-term asset"
+          ],
+          "application_max_2": [
+            "$95,000 covers the $75,000 working capital gap",
+            "$2,400,000 rising revenue may soon need more storage"
+          ],
+          "analysis_max_2": [
+            "warehouse kept available for future expansion",
+            "retained profit replenishes from future earnings"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$95,000",
+            "$75,000",
+            "warehouse unit",
+            "retained profit",
+            "$2,400,000",
+            "$210,000",
+            "working capital"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Oxenford Wholesale Grocers should use retained profit rather than sell the empty warehouse unit to fund its working capital need? Justify your answer.",
+        "model_answer": "Using retained profit of $95,000 avoids selling the $210,000 warehouse unit [k], fully covering the $75,000 working capital gap in a single step [app], and keeps a strategic asset for future growth and extra storage [an]. However, the $95,000 is finite, and holding it back leaves nothing in reserve if a quiet quarter cuts revenue [k], while selling the unit now would raise cash far beyond the gap [app], creating a buffer even if suppliers tighten the 30-day terms [an]. Overall, the partnership should use retained profit [eval], because the working capital need is recurring and temporary and is best met from earnings rather than by selling a long-term asset [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit preserves the $210,000 warehouse asset",
+            "selling the unit raises a one-off large cash sum"
+          ],
+          "application_max_2": [
+            "$95,000 covers the $75,000 gap in one step",
+            "sale raises far beyond the gap as a buffer against tighter 30-day terms"
+          ],
+          "analysis_max_2": [
+            "strategic asset kept for future growth and storage",
+            "sale buffer protects against tighter supplier credit"
+          ],
+          "evaluation_max_2": [
+            "weighs preserving the asset against one-off cash buffer",
+            "justified recommendation to use retained profit for a recurring need"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$95,000",
+            "$210,000",
+            "$75,000",
+            "warehouse unit",
+            "30 days",
+            "internal finance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_108",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Gregory Nolan owns Hartley Vale Dairy Farm, a sole trader with 160 dairy cows in Country X run for 15 years. The farm employs 11 workers and produces 1,900,000 litres of milk a year, generating revenue of $730,000. Milk is supplied daily to a regional bottling plant and two cheese makers. Gregory retained a profit of $34,000 this year.\n\nThe farm needs a new $58,000 bulk milk cooler, which is capital expenditure, because the old cooler breaks down regularly. The old cooler could be sold for $8,000, and the farm owns an old tractor valued at $24,000 that sees little use. The new cooler arrives with a 5-year warranty. Gregory has $10,000 of personal savings and prefers internal finance, combining retained profit, the cooler sale and the tractor sale as needed.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'sale of existing assets'.",
+        "model_answer": "Sale of existing assets is selling unwanted business assets, such as old machinery or vehicles, to raise cash that can be reinvested, and it is an internal source of finance [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling unwanted business assets",
+            "cash raised is reinvested as internal finance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the bulk milk cooler is capital expenditure rather than a day-to-day cost.",
+        "model_answer": "Reason 1: It is a long-term asset [k], used to chill the farm's 1,900,000 litres of milk for years [app]. Reason 2: It is a large one-off purchase [k], costing $58,000 rather than a regular expense like feed or wages [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term asset used for more than one year",
+            "large one-off non-current asset purchase"
+          ],
+          "application_max_2": [
+            "cooler used for years on 1,900,000 litres of milk",
+            "$58,000 one-off cost rather than feed or wages"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "bulk milk cooler",
+            "$58,000",
+            "capital expenditure",
+            "1,900,000 litres",
+            "160 dairy cows",
+            "$730,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of funding the cooler using retained profit and asset sales rather than owners' savings.",
+        "model_answer": "Benefit 1: It keeps Gregory's $10,000 personal savings intact [k], and the $34,000 retained profit plus the $8,000 cooler sale raise $42,000 with no personal risk [app], leaving savings untouched for family emergencies [an]. Benefit 2: It turns idle assets into productive equipment [k], because the old cooler and the old tractor, valued at $8,000 and $24,000, are no longer needed [app], so money tied up in them works harder as a new cooler [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "keeps personal savings intact",
+            "converts idle assets into productive equipment"
+          ],
+          "application_max_2": [
+            "$34,000 retained profit plus $8,000 cooler sale raises $42,000",
+            "old cooler and old tractor valued at $8,000 and $24,000"
+          ],
+          "analysis_max_2": [
+            "personal savings remain for family emergencies",
+            "money tied up in idle assets works harder as a new cooler"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$34,000",
+            "$8,000",
+            "$24,000",
+            "$10,000",
+            "bulk milk cooler",
+            "$58,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hartley Vale Dairy Farm should sell the old tractor to help fund the new bulk milk cooler? Justify your answer.",
+        "model_answer": "Selling the old tractor would raise $24,000 [k], and together with the $34,000 retained profit and the $8,000 cooler sale it would raise $66,000, exceeding the $58,000 cost [app], leaving the cooler fully funded by internal finance [an]. However, the tractor may still be needed at busy calving and haymaking times [k], and losing it could force the farm to hire machinery at short notice [app], which could cost more than the $24,000 raised [an]. Overall, the farm should sell the old tractor [eval], because it sees little use and the internal funds raised would exceed the $58,000 price with $8,000 to spare [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling unused asset raises $24,000 internal finance",
+            "losing the tractor may force machinery hire"
+          ],
+          "application_max_2": [
+            "$24,000 plus $34,000 retained profit plus $8,000 cooler sale exceeds $58,000",
+            "hire costs at calving and haymaking could exceed $24,000"
+          ],
+          "analysis_max_2": [
+            "cooler fully funded by internal finance",
+            "short-notice hire could be more expensive than the sale gain"
+          ],
+          "evaluation_max_2": [
+            "weighs raising internal finance against losing a back-up tractor",
+            "justified recommendation with $8,000 surplus after funding the cooler"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "old tractor",
+            "$24,000",
+            "$34,000",
+            "$8,000",
+            "$58,000",
+            "retained profit",
+            "internal finance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_109",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Tanswell Design Studio Ltd is a private limited company in Country X operating for 5 years with 12 employees producing branding and packaging designs. The studio serves food producers and drink importers across the region. Annual revenue is $540,000, and the studio has retained profit of $28,000. The directors want to buy six workstations and new software costing $36,000, which is capital expenditure with a 4-year life.\n\nThe directors must decide whether this long-term need should be met by long-term internal finance or by short-term finance. Two owners are willing to inject $12,000 of owners' savings as a quick top-up, and a separate short-term cash need of $9,000 may arise next month. Directors meet monthly to review cash. The studio prefers internal finance and will avoid outside borrowing for now.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define 'long-term finance'.",
+        "model_answer": "Long-term finance is finance provided for more than one year, used to fund major purchases such as non-current assets or expansion, and is not expected to be repaid within the year [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "finance provided for more than one year",
+            "used for major purchases / not repaid within the year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two differences between short-term and long-term finance.",
+        "model_answer": "Difference 1: Long-term finance is provided for more than one year [k], suiting the 4-year life of the $36,000 workstations [app]. Difference 2: Short-term finance is repaid or used within a year [k], matching the $9,000 cash need the studio expects next month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term finance provided for more than one year",
+            "short-term finance repaid or used within a year"
+          ],
+          "application_max_2": [
+            "4-year life of the $36,000 workstations",
+            "$9,000 cash need expected next month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "long-term",
+            "short-term",
+            "4-year",
+            "$36,000",
+            "$9,000",
+            "workstations",
+            "capital expenditure"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of using retained profit as long-term finance for the workstations.",
+        "model_answer": "Advantage 1: It is permanent finance with no repayment date [k], so the $28,000 comes from the studio's own $540,000 revenue year [app], strengthening the balance sheet without outside claims [an]. Advantage 2: It avoids sharing ownership [k], because no new shares are issued to raise the money [app], keeping control with the existing owners [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "permanent finance with no repayment date",
+            "no new shares issued / ownership unchanged"
+          ],
+          "application_max_2": [
+            "$28,000 comes from the studio's $540,000 revenue year",
+            "money raised without issuing shares in the Ltd"
+          ],
+          "analysis_max_2": [
+            "strengthens the balance sheet without outside claims",
+            "control retained by the existing owners"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$28,000",
+            "$540,000",
+            "long-term internal finance",
+            "workstations",
+            "$36,000",
+            "private limited company"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Tanswell Design Studio Ltd should use retained profit rather than owners' savings to fund the $36,000 of workstations? Justify your answer.",
+        "model_answer": "Retained profit of $28,000 is long-term internal finance [k], so it matches the 4-year life of the $36,000 capital expenditure [app], avoiding pressure to repay within the year [an]. However, $28,000 leaves an $8,000 gap, and the owners' $12,000 of savings could cover it immediately [k], completing the purchase now without outside borrowing [app], keeping the studio on schedule [an]. Overall, the studio should use retained profit as the main source [eval], because matching long-term assets with long-term internal finance is sound, with the savings meeting only the $8,000 balance [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit is long-term internal finance",
+            "owners' savings can fill the gap immediately"
+          ],
+          "application_max_2": [
+            "$28,000 retained profit against the 4-year life of $36,000 of workstations",
+            "owners' $12,000 savings cover the $8,000 gap"
+          ],
+          "analysis_max_2": [
+            "no pressure to repay within the year",
+            "purchase completed on schedule without outside borrowing"
+          ],
+          "evaluation_max_2": [
+            "weighs matching long-term assets with long-term finance against instant savings",
+            "justified recommendation to use retained profit with savings covering the $8,000 balance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$28,000",
+            "$36,000",
+            "owners' savings",
+            "internal finance",
+            "4-year",
+            "$12,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_110",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Colette Marchand owns The Salted Plum Delicatessen, a delicatessen and prepared-foods counter in Country X trading for 9 years. The business employs 10 staff and records annual revenue of $390,000. Current assets total $85,000, made up of $40,000 of stock, $15,000 of trade receivables and $30,000 of cash. Current liabilities total $50,000, made up of $35,000 of trade payables and a $15,000 overdraft.\n\nColette is considering a second store, a capital expenditure project costing $95,000. She has retained profit of $70,000 and personal savings of $30,000, and prefers internal finance. The existing shop breaks even most months and banks any surplus. She must decide how much of each to commit to the long-term project, rather than using it for short-term cover at the existing shop.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Calculate the working capital of The Salted Plum Delicatessen. Show your working.",
+        "model_answer": "Working capital = Current assets - Current liabilities = $85,000 - $50,000 = $35,000 [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "correct working: $85,000 - $50,000",
+            "working capital = $35,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why The Salted Plum Delicatessen needs sufficient working capital.",
+        "model_answer": "Reason 1: To meet short-term debts on time [k], including $35,000 of trade payables and the $15,000 overdraft [app]. Reason 2: To keep stock available for customers [k], holding $40,000 of stock and $30,000 of cash [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "meet short-term debts/obligations on time",
+            "keep stock and cash available for day-to-day trading"
+          ],
+          "application_max_2": [
+            "$35,000 trade payables and $15,000 overdraft",
+            "$40,000 stock and $30,000 cash held"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$35,000",
+            "$15,000",
+            "$40,000",
+            "$30,000",
+            "trade payables",
+            "overdraft"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of using retained profit as the main source of finance for the second store.",
+        "model_answer": "Benefit 1: No interest or repayments are required [k], so the $70,000 can be reinvested without adding monthly costs [app], keeping the existing shop's cash flow stable [an]. Benefit 2: It is controlled entirely by Colette [k], using profits from the $390,000 revenue year rather than outside approval [app], so the expansion proceeds on her terms [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "no interest or repayments required",
+            "owner retains full control of the finance"
+          ],
+          "application_max_2": [
+            "$70,000 reinvested without added monthly costs",
+            "profits from the $390,000 revenue year used rather than outside approval"
+          ],
+          "analysis_max_2": [
+            "existing shop's cash flow stays stable",
+            "expansion proceeds on Colette's own terms"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$70,000",
+            "$390,000",
+            "second store",
+            "capital expenditure",
+            "$95,000",
+            "internal finance"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think The Salted Plum Delicatessen should use retained profit rather than owners' savings to fund the $95,000 second store? Justify your answer.",
+        "model_answer": "Retained profit of $70,000 covers most of the $95,000 cost [k], and using it reinvests money the shop itself earned [app], leaving Colette's $30,000 savings largely untouched as a personal buffer [an]. However, using $25,000 of savings would complete the funding immediately [k], while preserving the retained profit as a cushion for the new store's first months [app], a prudent move given the $15,000 overdraft at the existing shop [an]. Overall, the second store should be funded mainly from retained profit [eval], with $25,000 of savings closing the gap, keeping business and personal money clearly separated [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit covers most of the cost",
+            "using savings reverses the order and preserves the reserve"
+          ],
+          "application_max_2": [
+            "$70,000 retained profit against the $95,000 cost",
+            "$25,000 of savings closes the gap given the $15,000 overdraft"
+          ],
+          "analysis_max_2": [
+            "leaves Colette's $30,000 savings largely untouched",
+            "preserves retained profit as a first-months cushion"
+          ],
+          "evaluation_max_2": [
+            "weighs reinvesting shop earnings against instant personal funding",
+            "justified recommendation for retained profit plus a $25,000 savings top-up"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$70,000",
+            "$95,000",
+            "$30,000",
+            "$390,000",
+            "second store",
+            "internal finance"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

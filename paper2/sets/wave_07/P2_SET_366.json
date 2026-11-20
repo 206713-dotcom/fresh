@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_366",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quadrant Vault Systems (QVS) is a private limited company in the cloud cybersecurity software sector, employing a workforce of 60. Founded in 2013 by Priya Raghunathan, the business supplies threat-detection subscriptions to mid-sized firms and operates a flat structure with democratic leadership. QVS plans to invest $720,000 in a new cloud security operations platform, financed by a $420,000 five-year bank loan and $300,000 retained profit. It has fixed costs of $288,000 a year, a variable cost of $8.00 a unit and a selling price of $20.00, and currently produces 72,000 units a year. QVS faces two operational problems: its software defect rate has risen to 3.4% and its enterprise support backlog has grown to 410 open tickets a week against a 250-ticket capacity.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q4 2025: Quadrant Vault Systems shipped 18,000 licence units last quarter at a software defect rate of 3.4%, up from 2.1% a year earlier. Enterprise support tickets averaged 410 per week against a 250-ticket capacity. A survey of 480 IT managers found that 72% rated threat-detection speed as their top buying criterion, and 58% would switch suppliers after a serious breach. On-the-job certification for 60 engineers costs $750 per person; external vendor courses cost $1,100 each.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Quadrant Vault Systems for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,250", "1,500"],
+        ["Cost of sales", "550", "600"],
+        ["Gross profit", "700", "900"],
+        ["Operating profit", "200", "270"],
+        ["Capital employed", "1,000", "1,200"],
+        ["Interest payable", "24", "20"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Technology Bulletin (November 2026): (1) The central bank has lifted the base interest rate from 3.75% to 4.5%, raising the cost of variable-rate business borrowing. (2) The national minimum wage will rise by 5.2% from $14.50 to $15.25 per hour from April 2026, increasing wage bills across the tech support workforce. (3) Cloud hosting and specialist software input costs have risen 9.8% year-on-year, while technology-sector wage inflation is 6.4% and business spending on cybersecurity software grew 7.1%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QVS plans to fund part of its cloud security operations platform with a five-year bank loan. Explain two advantages for QVS of using its retained profit instead of the bank loan for this $720,000 investment.",
+      "model_answer": "Point 1: Using retained profit costs QVS no interest or capital repayments, which protects the cash flow of a 60-person software firm already carrying fixed costs of $288,000 a year. Keeping the $300,000 inside the business means every dollar saved on loan interest can be spent on reducing the 3.4% software defect rate and clearing the 410-ticket support backlog, rather than being paid to a lender. That matters because 58% of surveyed IT managers say they would switch suppliers after a serious breach, so spending on reliability protects the subscription revenue that must justify the $720,000 platform.\n\nPoint 2: Retained profit avoids the security and covenants attached to the $420,000 bank loan. With internal funds there is no collateral to pledge and no risk of the platform being threatened if early subscription sales disappoint, which preserves Priya Raghunathan's control of the business. It also gives QVS flexibility: if defect rates stay high, management can redirect the $300,000 to on-the-job certification at $750 per engineer without asking a bank for permission, strengthening the service that 72% of customers rank as their top buying criterion.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to QVS, its financing and its operational problems."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$300,000", "$420,000", "$720,000", "cloud security operations platform"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QVS is launching its new cloud security operations platform. Consider a national television campaign, sponsorship of a technology trade conference, or targeted online search and social media advertising. Which should QVS choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Television campaign: A national TV campaign would build mass awareness of threat detection very quickly and could reach thousands of potential subscribers in one week. However, airtime and production costs are very high for a business with a workforce of 60 and fixed costs of $288,000, and most viewers are not IT managers. Given that only 480 managers were surveyed and the buying decision is technical, a large share of the spend would be wasted, and the $720,000 platform budget would be better spent on product reliability.\n\nTechnology trade conference sponsorship: Sponsoring a conference puts QVS directly in front of IT managers and security specialists, the exact decision-makers behind the 72% who rate threat-detection speed as their top criterion. It allows live demonstrations and credibility, which matters when 58% would switch after a breach. The drawbacks are high one-off fees, a narrow reach limited to attendees, and no presence when those managers are actually searching for a solution later.\n\nTargeted online search and social media advertising: This reaches managers actively looking for cybersecurity software, can be geo-targeted at mid-sized firms, and is measurable and adjustable. It is far cheaper than television and more continuous than a single conference, and it can carry the reliability message that the survey identified. Its weakness is that results take time to build and depend on strong search rankings, so it should be paired with some direct sales follow-up.\n\nRecommendation: QVS should choose targeted online search and social media advertising. It reaches the precise segment in the 480-manager survey at a fraction of television's cost, is measurable, and can be scaled with the $720,000 investment. Television is rejected as unaffordable and untargeted for a 60-person firm; conference sponsorship is useful but too narrow and short-lived to be the main channel, so it should only be used as a supporting activity.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited description of the three promotional options with minimal application to QVS.",
+        "level_2_5_to_8": "Detailed analysis of the advantages and disadvantages of at least two options in the context of QVS with some judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three options in the context of QVS with a well-justified recommendation explaining why television and conference sponsorship are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$720,000", "72%", "480", "58%", "cloud security operations platform", "18,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QVS's software defect rate has risen to 3.4% and its support backlog has reached 410 tickets a week. Explain two benefits for QVS of using democratic leadership to improve motivation in its engineering team.",
+      "model_answer": "Point 1: Democratic leadership gives the engineers in QVS's flat structure a real voice in how the new platform is built and tested. Because they work closest to the code, staff can identify the causes of the 3.4% defect rate faster than managers alone, and involving them in setting testing routines raises ownership of quality. Higher job satisfaction should improve attendance and reduce the 410-ticket backlog, since fewer defects mean fewer support calls, while the flat workforce of 60 makes consultation practical rather than slow.\n\nPoint 2: Involvement also supports retention and skill development. Engineers who help decide how to fix defects are more committed and more likely to stay, avoiding the disruption of replacing specialists in a small 60-person team. Their ideas can be fed into on-the-job certification at $750 per person, so training targets the real weaknesses behind the 2.1%-to-3.4% deterioration. For a business where 72% of surveyed managers buy on threat-detection speed, motivated engineers directly protect the product quality that wins and keeps subscriptions.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QVS's defect rate, backlog and flat structure."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "software defect rate", "workforce of 60", "3.4%", "410", "flat structure"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QVS must upskill its engineers to reduce the 3.4% defect rate on the new platform. Consider on-the-job certification at $750 per engineer or external vendor courses at $1,100 each. Which should QVS choose? Justify your decision.",
+      "model_answer": "On-the-job certification: Training at the workstation is directly relevant to QVS's own codebase and threat-detection standards and costs $750 per engineer, less than the $1,100 external alternative. It keeps staff productive while they learn and can be aimed immediately at the 3.4% defect rate and the 410-ticket backlog, so results appear quickly and the flat structure of 60 people can share knowledge. The drawback is that senior engineers who act as trainers lose time themselves, bad habits may be passed on, and there is no widely recognised certificate, which may matter when enterprise clients ask for evidence of competence.\n\nExternal vendor courses: Courses at $1,100 each bring up-to-date, vendor-accredited skills and a recognised qualification, useful for credibility with the 58% of managers who would switch after a breach. They remove engineers from the 410-ticket queue temporarily and the generic content may not match QVS's exact platform, so follow-up coaching would still be needed. For the whole workforce of 60, the full cost would be $66,000 (60 × $1,100) against $45,000 for certification, a difference of $21,000 (60 × $350).\n\nDecision: QVS should choose on-the-job certification as the main route, topped up by a small number of vendor courses for team leaders. It is cheaper, specific to the platform and avoids losing capacity while the backlog stands at 410 tickets. Full external training is rejected because the extra $21,000 and the time away from the line are hard to justify when the defect problem is internal and the 18,000-unit quarterly volume must be sustained; vendor accreditation can be added later for a few senior staff.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to QVS.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both training methods in the context of QVS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods in context with a justified decision covering cost, relevance and disruption."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job certification", "external vendor courses", "$750", "$1,100", "workforce of 60", "3.4%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QVS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QVS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $288,000 ÷ ($20.00 − $8.00) = $288,000 ÷ $12.00 = 24,000 units. Answer: break-even output is 24,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QVS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $20.00 − $8.00 = $12.00. Answer: contribution per unit is $12.00."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QVS's management can use this financial data.",
+          "model_answer": "1. Compare the 24,000-unit break-even point with actual output of 72,000 units: the margin of safety is 48,000 units, so the platform is comfortably profitable and management has evidence to support the $720,000 investment.\n2. Use the $12.00 contribution per unit to test discounting: a $1.00 cut in the $20.00 selling price would leave $11.00 contribution, still covering the $288,000 fixed costs but requiring more subscribers, so managers can judge whether volume would rise enough.\n3. Check debt service: 24,000 break-even units produce $288,000 of contribution, exactly covering fixed costs, so each extra unit yields $12.00 toward the interest on the $420,000 loan; this sets a clear sales target for the first year.\n4. Benchmark unit cost: $288,000 ÷ 72,000 units + $8.00 = $12.00 a unit. Tracking this against the 3.4% defect rate and the 410-ticket backlog shows whether quality failures are pushing up effective cost, guiding spending on certification."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 24,000 units | (ii) Contribution per unit = $12.00 | (iii) Four contextual uses explained: margin of safety against 72,000-unit output; discount modelling on the $20.00 price; loan-service targets from the $420,000 facility; and unit-cost benchmarking at $12.00 to tackle defects.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["24,000", "$12.00", "72,000", "$288,000", "$20.00", "$8.00", "$720,000"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QVS's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has QVS's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 56.0%\nGross Profit Margin 2025 = 60.0%\nProfit Margin 2024 = 16.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 20.0%\nROCE 2025 = 22.5%\n\nDetailed workings: In 2024 the gross result of $700,000 on revenue of $1,250,000 gives 56.0%; in 2025 gross profit of $900,000 on revenue of $1,500,000 gives 60.0%, a gain of 4.0 percentage points. Operating profit rose from $200,000 to $270,000, so the operating-to-revenue percentage moved from 16.0% to 18.0%. Capital employed increased from $1,000,000 to $1,200,000, yet the return on that capital still improved from 20.0% to 22.5% because operating profit grew faster than the asset base. Cost of sales rose from $550,000 to $600,000, but revenue grew by $250,000, so QVS kept more of each sales dollar. Interest payable fell from $24,000 to $20,000, which also helped retained earnings.\n\nEvaluation: All three measures moved favourably, so the direction of change is consistent and is not created by a single accounting item. The widening gross percentage is the most important driver: after direct delivery costs, QVS keeps 60 cents of every sales dollar in 2025 against 56 cents in 2024, leaving room to absorb the 9.8% cloud-hosting inflation in Appendix 3. The operating percentage also improved, showing that the $288,000 annual fixed costs are being spread over a larger revenue base rather than deferred. The return on capital rising despite a $200,000 larger asset base is encouraging, since it suggests the new platform is already contributing. However, the absolute percentages are only moderate for a software business, and the 3.4% defect rate and 410-ticket backlog could push support costs up and reverse the gain if left unresolved. A single year-on-year comparison also cannot show whether 2025 is typical.\n\nConclusion: QVS's financial performance has improved. Gross profitability, operating profitability and return on capital all rose together, and the improvement survived a larger capital employed and lower interest cost. The main risk to sustaining it is rising support and defect costs, so management should use the 72% survey finding to prioritise reliability while the new platform beds in.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or directions of change without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the three profitability ratios for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of revenue, costs, capital employed and a justified conclusion on whether performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["56.0%", "60.0%", "16.0%", "18.0%", "20.0%", "22.5%", "$700,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QVS of introducing automated threat-detection software to cut its 3.4% defect rate.",
+      "model_answer": "Advantage: Automated detection can test code far more consistently than manual review, directly attacking the 3.4% software defect rate that has risen from 2.1% and the 410-ticket support backlog. Fewer defects mean faster threat detection, which matches the 72% of the 480 surveyed managers who rank speed as their top buying criterion, protecting the 18,000 licence units shipped each quarter and helping justify the $720,000 platform. It also releases engineers from repetitive checks so they can work on new features.\n\nDisadvantage: Automated tools require significant purchase and integration spending at a time when QVS already has $288,000 of annual fixed costs and a $420,000 bank loan, and the software itself needs calibration. If the tool is configured badly it may generate false alerts that add to the 410-ticket backlog rather than reduce it, and the 58% of managers who would switch after a serious breach may not be reassured if an automated system misses a novel threat that an experienced engineer would catch. Staff may also resist a system that appears to replace their judgement.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to QVS's defect data, survey and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["3.4%", "72%", "480", "18,000", "$720,000", "software defect rate"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 4.5%, the 5.2% minimum wage increase and the 9.8% rise in input costs will affect QVS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (from 3.75% to 4.5%): If QVS's $420,000 five-year bank loan carries a variable rate, the extra annual interest is 0.75% × $420,000 = $3,150 a year (0.0075 × $420,000 = 3,150). That is small beside $288,000 of annual fixed costs, and if the loan is fixed-rate the immediate cash effect is zero. Higher base rates could still make future borrowing for the platform more expensive and may make customers cautious about new subscriptions.\n\nMinimum wage rise (5.2%, to $15.25 per hour): The insert gives a workforce of 60 and output of 72,000 units a year but states no hours worked and no individual pay, so a total annual wage figure cannot be invented. The defensible comparison is productivity: 72,000 ÷ 60 = 1,200 units per worker. If output per worker holds, the rise is absorbable through the $12.00 contribution per unit; if the 3.4% defect rate and 410-ticket backlog absorb labour time, unit labour cost rises and that contribution is squeezed. The effect is real but cannot be quantified further from the insert.\n\nInput-cost inflation (9.8%): The $8.00 variable cost is not broken down in the insert, so only a bound can be shown honestly. If the whole variable cost rose 9.8%, the increase is 0.098 × $8.00 = $0.784, about $0.78 per unit; across 72,000 units that is roughly $56,400 a year (72,000 × $0.78). Even a half-size effect of $0.39 a unit would be about $28,100 a year, cutting contribution from $12.00 toward $11.60 and directly reducing the cash available to service the loan.\n\nConclusion: The 9.8% rise in cloud-hosting and software input costs will have the greatest impact. It applies to every one of the 72,000 units and erodes the $12.00 contribution that justifies the $720,000 platform, whereas the interest rise is a calculable $3,150 at most and the wage effect cannot be quantified from the insert. QVS can offset part of it by improving the reliability that 72% of surveyed managers rank as their top buying criterion, but only if the defect backlog is tackled first.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the three external changes with limited application to QVS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on QVS's costs, revenue or financing in context, with shown working where figures are used.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in the context of QVS with a well-justified judgement that input-cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.5%", "5.2%", "9.8%", "$15.25", "$420,000", "$8.00"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "scenario_id": "P2_SET_249",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quanta Data Solutions (QDS) is a public limited company in the business analytics and software services sector, employing a workforce of 75. Founded in 2008 by Amara Diallo, who remains its chief executive, the business operates a hierarchical structure with democratic leadership. QDS plans to invest $1,050,000 in an automated data-warehouse platform with AI-driven reporting tools, financed by a $650,000 ten-year bank loan and $400,000 retained profit. It has fixed costs of $504,000 a year, a variable cost of $16 a unit and a selling price of $44, and currently produces 45,000 units a year. QDS faces a skills and quality problem: reporting errors have risen to 2.8% and 12 analysts have not completed data-security training.",
+    "appendix_1_marketing_ops": "Quality and Market Research Report — Q3 2025: QDS delivered 3,600 analytics reports, with an error rate of 2.8%, up from 1.5% a year ago. Client complaints rose from 18 to 39 per month, and average report turnaround is 5.2 days. A survey of 320 managers found 71% want faster dashboards and 55% would pay $4 more per month for real-time reporting. Data-security training for the 12 untrained analysts costs $1,250 per course.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Quanta Data Solutions for the year ended 31 March 2025 ($ '000)",
+      "headers": [
+        "Financial Metric",
+        "2024",
+        "2025"
+      ],
+      "rows": [
+        [
+          "Revenue",
+          "1,600",
+          "1,900"
+        ],
+        [
+          "Cost of sales",
+          "880",
+          "950"
+        ],
+        [
+          "Gross profit",
+          "720",
+          "950"
+        ],
+        [
+          "Operating profit",
+          "320",
+          "475"
+        ],
+        [
+          "Capital employed",
+          "2,000",
+          "2,375"
+        ],
+        [
+          "Interest payable",
+          "52",
+          "58"
+        ]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.50% to 5.25%. (2) The national minimum wage will rise by 6.4% from $14.20 to $15.11 per hour from January 2027. (3) Cloud-computing and data-centre input costs have risen 10.6% year-on-year, and business analytics spending grew 7.3% in the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QDS is financing part of its data-warehouse expansion with a ten-year bank loan. Explain two advantages for QDS of using retained profit to fund the expansion instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit avoids interest and principal repayments, so QDS keeps the cash that would otherwise service the $650,000 ten-year bank loan. That cash can cover the $504,000 annual fixed costs and pay for data-security training at $1,250 per course, tackling the 12 untrained analysts and the 2.8% error rate without raising the $44 selling price.\n\nPoint 2: Using $400,000 retained profit keeps control with Amara Diallo's existing shareholders rather than a lender, so there are no covenants restricting how the $1,050,000 data-warehouse platform is used. It also avoids pledging assets when 39 client complaints a month and a 5.2-day turnaround show the business still has operational problems to solve before taking on more debt. With 55% of managers willing to pay $4 more for real-time reporting, retained profit can fund the platform and training without diverting cash that would otherwise reduce the 39 monthly complaints and the 5.2-day turnaround.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid advantage identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual explanation and analysis applied to QDS and its financing decision."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "retained profit",
+          "bank loan",
+          "$650,000",
+          "$1,050,000",
+          "$400,000",
+          "$504,000",
+          "2.8%",
+          "QDS"
+        ]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QDS is launching its new automated data-warehouse platform. Consider search-engine advertising, an industry conference sponsorship, or social media influencer marketing. Which should QDS choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Search-engine advertising: Ads triggered by analytics searches reach managers actively looking for reporting tools, so intent is high and spend can be controlled. The cost per click can escalate, however, and it does not demonstrate the AI-driven reporting features; for a public limited company funding a $1,050,000 platform with a $650,000 loan, a purely text-based campaign may not build enough trust.\n\nIndustry conference sponsorship: A stand at a data conference allows live demonstrations to 320-manager-scale audiences of potential buyers and supports credibility. Yet stand, travel and staffing costs are high and only a limited delegate list is reached, which is narrow for a service sold to many clients and slow to generate the 45,000 units a year needed.\n\nSocial media influencer marketing: Data and business influencers can show the platform's dashboards to a broad professional audience at low cost per view, with engagement that can be measured. This connects with the 71% of surveyed managers who want faster dashboards and the 55% who would pay $4 more for real-time reporting, and it lets QDS answer the 2.8% error-rate issue openly by showing how the new platform improves accuracy.\n\nRecommendation: QDS should choose social media influencer marketing. It demonstrates the product, reaches the professional segment cheaply and scales beyond one conference. Search-engine advertising is rejected as costly per click and unable to demonstrate features; conference sponsorship is rejected as expensive and narrow. Influencer activity should be backed by search ads for high-intent buyers. The 2.8% error rate also means QDS should avoid claims it cannot yet support, so a demonstrable product story is safer than a broad message.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal application to QDS.",
+        "level_2_5_to_8": "Detailed discussion of at least two options in the context of QDS with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options with a well-justified recommendation explaining why search ads and conferences are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "$1,050,000",
+          "$650,000",
+          "3,600",
+          "320",
+          "71%",
+          "55%",
+          "$4",
+          "2.8%"
+        ]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QDS has an error rate of 2.8% and 12 analysts without data-security training. Explain two benefits for QDS of using democratic leadership within its hierarchical structure to improve motivation and quality.",
+      "model_answer": "Point 1: Democratic leadership lets the 75 employees propose how reports are checked, so analysts who see the 2.8% errors first-hand can suggest fixes. Involvement increases ownership of accuracy, helping reduce the 39 monthly complaints and the 5.2-day turnaround while protecting the 3,600 reports delivered each quarter.\n\nPoint 2: The hierarchical structure keeps accountability clear for the $1,050,000 data-warehouse rollout, so ideas from analysts reach Amara Diallo through defined channels and decisions are not delayed. Consulting staff about the new AI-driven tools also makes the 12 analysts more willing to undertake the $1,250 data-security training, closing the skills gap without disrupting the $650,000 loan-funded project. Because the 12 untrained analysts are a known gap, consultation also helps identify which skills are missing before the $1,250 courses are purchased, making the 75-person workforce more willing to adopt the new tools. Accuracy, not just speed, must improve if the 39 complaints are to fall.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for each valid benefit identified (max 2)."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to QDS's errors, complaints and training gap."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "democratic leadership",
+          "hierarchical structure",
+          "75",
+          "2.8%",
+          "5.2 days",
+          "39",
+          "12",
+          "QDS"
+        ]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QDS needs analysts with data-security skills. Consider internal recruitment or external recruitment of security specialists. Which should QDS choose? Justify your decision.",
+      "model_answer": "Internal recruitment: Promoting or retraining existing analysts is cheaper and faster, and the 75 staff already know QDS's reporting systems and clients. Training the 12 untrained analysts at $1,250 per course would build loyalty. The drawback is that the insert states a current data-security skills gap and a 2.8% error rate, so internal candidates may simply reproduce the same weaknesses unless training is thorough, and no new expertise enters the business.\n\nExternal recruitment: Hiring experienced security specialists brings up-to-date skills and fresh practice, which directly addresses the 2.8% error rate and the 12 analysts without training. It widens the pool beyond the 75 current employees and supports the $1,050,000 data-warehouse launch. The costs are higher and induction takes time, with the risk that a new hire does not fit the hierarchical structure.\n\nDecision: QDS should choose external recruitment for the security specialists, while offering the $1,250 course to existing analysts. External hiring is justified because the skills gap is explicit and cannot be solved from within quickly; internal recruitment alone is rejected as too slow and likely to perpetuate the 5.2-day turnaround and 39 complaints, though it remains suitable for non-security roles. A sensible compromise is to recruit externally for the missing security skills and enrol the 12 existing analysts on the $1,250 course, but the primary decision must be external hiring because the skills gap is explicit. Success should be measured against the 2.8% error rate, the 5.2-day turnaround and the 39 complaints. The insert gives no salary figures, so no cost comparison is invented; the judgement rests on the need for skills not currently present among the 75 staff.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of internal and external recruitment with limited application to QDS.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both methods in the context of QDS.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a well-justified decision covering skills gap, cost, speed and quality."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "data-security training",
+          "$1,250",
+          "12",
+          "2.8%",
+          "75",
+          "$1,050,000",
+          "39",
+          "QDS"
+        ]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how QDS's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QDS's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $504,000 ÷ ($44 − $16) = $504,000 ÷ $28 = 18,000 units. Answer: break-even output is 18,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QDS's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $44 − $16 = $28. Answer: contribution per unit is $28."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QDS's management can use this financial data.",
+          "model_answer": "1. Compare the 18,000-unit break-even output with 45,000 units produced, giving a margin of safety of 27,000 reports, so managers can judge how much client demand can fall before the $1,050,000 platform fails to cover costs.\n2. Use the $28 contribution per unit for pricing tests: a $3 cut to $41 leaves $25 contribution, meaning 20,160 reports (504,000 ÷ 25) would be needed to cover the $504,000 fixed costs.\n3. Average total cost is $27.2 a unit ($504,000 ÷ 45,000 = $11.2 plus $16), below the $44 price, leaving room for the $1,250 security courses.\n4. Labour productivity is 600 reports per worker (45,000 ÷ 75), a baseline for checking whether the automated data warehouse improves efficiency despite the 2.8% error rate."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 18,000 units | (ii) Contribution per unit = $28 | (iii) Four contextual uses: margin of safety of 27,000 reports; a $3 price cut leaving $25 contribution and 20,160 reports needed; average total cost of $27.2 against $44; labour productivity of 600 reports per worker.",
+      "mark_scheme": {
+        "working_marks": [
+          "1 mark for correct formula/method and 1 mark for the accurate numerical answer in (i) and (ii); 1 mark for each valid applied use in (iii)."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "break-even output",
+          "contribution per unit",
+          "18,000",
+          "$28",
+          "45,000 units",
+          "$504,000",
+          "$27.2",
+          "600"
+        ]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QDS's financial position by calculating the gross profit margin and the profit margin for 2024 and 2025. Has QDS's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 45.0%\nGross Profit Margin 2025 = 50.0%\nProfit Margin 2024 = 20.0%\nProfit Margin 2025 = 25.0%\nROCE 2024 = 16.0%\nROCE 2025 = 20.0%\n\nDetailed workings: 2024 revenue 1,600, cost of sales 880, gross profit 720; operating profit 320; capital employed 2,000. 2025 revenue 1,900, cost of sales 950, gross profit 950; operating profit 475; capital employed 2,375. Gross profit ÷ revenue: 720 ÷ 1,600 and 950 ÷ 1,900. Operating profit ÷ revenue: 320 ÷ 1,600 and 475 ÷ 1,900. Operating profit ÷ capital employed: 320 ÷ 2,000 and 475 ÷ 2,375.\n\nEvaluation: Each measure is stronger in 2025. The share of revenue remaining after direct costs rose from 45.0% to 50.0% because cost of sales grew by only 70 while revenue grew by 300, so the analytics service is scaling efficiently. The share retained as operating profit also rose, and the return on the 2,375 of capital employed improved, important for a public limited company that must justify a $1,050,000 investment to shareholders while servicing a $650,000 loan. The 2.8% error rate and 39 complaints pose a quality risk, but the figures show that growth has not been bought by cutting prices.\n\nConclusion: QDS's financial position has improved. Both margins and the return on capital are higher, driven by revenue growth far ahead of cost of sales. Management should use the stronger position to fund security training and the automated platform, while monitoring errors so that quality does not erode the gain.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the two margins for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years, detailed evaluation of revenue, cost, profit and capital trends, and a justified conclusion on whether QDS improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "45.0%",
+          "50.0%",
+          "20.0%",
+          "25.0%",
+          "16.0%",
+          "Capital employed",
+          "2,375",
+          "$650,000"
+        ]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QDS of introducing real-time reporting for its analytics clients.",
+      "model_answer": "Advantage: The survey of 320 managers found 71% want faster dashboards and 55% would pay $4 more per month for real-time reporting, so the feature can add revenue across the 3,600 reports and help cover $504,000 of fixed costs. It also supports the $1,050,000 data-warehouse launch and answers the 39 monthly complaints about slow service.\n\nDisadvantage: Delivering real-time data may raise the $16 variable cost per unit through higher computing use and require the 12 analysts to gain new skills, while the current error rate is already 2.8%. A wrong real-time figure could damage client trust more than a delayed report, and the insert gives no cost for the feature, so its exact profitability cannot be calculated. Because the insert gives no development cost, QDS should pilot the feature with a small group before committing the $1,050,000 platform's resources; the 55% willingness to pay is evidence of demand, not proof of profitability.",
+      "mark_scheme": {
+        "knowledge_max_2": [
+          "1 mark for a valid advantage and 1 mark for a valid disadvantage."
+        ],
+        "application_analysis_max_6": [
+          "Up to 3 marks per point for detailed contextual development linked to QDS's survey, error rate and costs."
+        ]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "real-time reporting",
+          "55%",
+          "71%",
+          "320",
+          "$4",
+          "$16",
+          "$504,000",
+          "2.8%"
+        ]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 5.25%, the 6.4% minimum wage increase to $15.11 and the 10.6% rise in cloud-computing and data-centre input costs will affect QDS. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.50% to 5.25%): If the $650,000 ten-year bank loan is variable-rate, the additional annual interest is 0.75% × $650,000 = $4,875 a year, shown as 0.0075 × $650,000. That is small against $504,000 of fixed costs, and if the loan is fixed the direct impact is nil. Higher rates may still discourage client spending, despite analytics spending growing 7.3%.\n\nMinimum wage increase (6.4% to $15.11 an hour): The insert supplies no hours worked or current wages, so an annual wage bill cannot be invented. The derivable figure is productivity: 45,000 units ÷ 75 workers = 600 reports per worker. If productivity holds, the rise is absorbed; if the 2.8% error rate and 39 complaints force rework, unit labour costs rise and the $28 contribution narrows. The effect is directionally clear but cannot be quantified from the data.\n\nInput-cost inflation (10.6%): The $16 variable cost is not decomposed in the insert, so an explicit upper bound is 10.6% × $16 = $1.696, about $1.70 per report. At 45,000 reports this is 45,000 × $1.70 = $76,500 a year. Even a partial pass-through cuts contribution from $28 toward about $26.30 and raises the volume needed to cover $504,000 of fixed costs above 18,000.\n\nConclusion: The 10.6% rise in cloud and data-centre input costs will have the greatest impact. It applies to all 45,000 reports and directly erodes the $28 contribution that funds the loan and the $1,050,000 platform; the interest rise is about $4,875 and the wage effect cannot be shown to be larger. QDS can offset part of the increase through the $4 premium that 55% of managers accept.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to QDS.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on QDS's costs, revenue or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with shown derivations from insert figures and a well-justified greatest-impact judgement."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": [
+          "5.25%",
+          "6.4%",
+          "$15.11",
+          "10.6%",
+          "$16",
+          "$650,000",
+          "45,000 units",
+          "7.3%"
+        ]
+      }
+    }
+  ]
+}

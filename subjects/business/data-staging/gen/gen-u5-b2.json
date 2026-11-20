@@ -1,0 +1,1182 @@
+[
+  {
+    "scenario_id": "P1_U5_SET_131",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Kettlebrook Bakery is a family run private limited company in Country X, trading for 9 years with 14 staff across two retail shops in one town. Last year the bakery recorded revenue of $480,000 and retained profit of $85,000, which is held in its reserves for future growth. The shops currently pay $9,600 a year to hire two small vans for deliveries.\n\nThe owners want to buy a refrigerated delivery van for $60,000 to supply three nearby supermarkets with fresh bread and cakes each morning. Two new wholesale contracts begin in March. They are weighing up using retained profit for the van against a 4 year bank loan at 6.5% annual interest, with monthly repayments of $1,400 over 48 months. Repaying the loan would cost $67,200 in total, and the owners are worried about cash flow during quiet winter weeks when sales dip.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'retained profit'.",
+        "model_answer": "Profit kept inside the business after tax and dividends have been paid, which can be used to fund future purchases or growth [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "profit kept in the business after tax and dividends are paid",
+            "used to finance future purchases or growth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Kettlebrook Bakery might choose internal finance to buy the delivery van.",
+        "model_answer": "Reason 1: Internal finance avoids paying interest [k], because using $85,000 of retained profit means the $60,000 van is funded without borrowing at 6.5% [app]. Reason 2: Internal finance is available immediately [k], because the money is already in the bakery's reserves rather than waiting for the bank to approve a $67,200 loan [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "avoids interest on external borrowing",
+            "internal finance is immediately available without bank approval"
+          ],
+          "application_max_2": [
+            "$85,000 retained profit covers the $60,000 van price",
+            "the 6.5% loan would cost $67,200 in total repayments"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "retained profit",
+            "$85,000",
+            "$60,000",
+            "delivery van",
+            "$480,000",
+            "supermarkets",
+            "Kettlebrook Bakery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of Kettlebrook Bakery using retained profit rather than a bank loan.",
+        "model_answer": "Advantage 1: No interest is paid [k], because the $85,000 reserves fund the $60,000 van with zero finance cost, whereas the loan's total repayments would be $67,200 [app], so the bakery keeps an extra $7,200 for ingredients and wages [an]. Advantage 2: There is no repayment schedule to worry about [k], because retained profit removes the $1,400 monthly repayments over 48 months [app], giving the bakery flexibility to ride out quiet winter weeks [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit avoids interest charges",
+            "retained profit carries no fixed repayment schedule"
+          ],
+          "application_max_2": [
+            "$67,200 total loan repayments vs the $60,000 van price, saving $7,200",
+            "no $1,400 monthly repayments over 48 months"
+          ],
+          "analysis_max_2": [
+            "extra $7,200 stays available for ingredients and wages",
+            "flexibility to ride out quiet winter weeks when sales dip"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$67,200",
+            "$60,000",
+            "retained profit",
+            "$85,000",
+            "Kettlebrook Bakery",
+            "bank loan"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think retained profit is a better source of finance than the bank loan for the $60,000 delivery van? Justify your answer.",
+        "model_answer": "Retained profit costs nothing in interest [k], so the bakery avoids the $7,200 difference between the $60,000 van price and the $67,200 loan repayments and keeps the van fully owned from day one [app], protecting the $480,000 revenue business from extra monthly outflows [an]. However, spending $60,000 of the $85,000 reserves would leave just $25,000 for emergencies such as oven repairs or ingredient price rises [k], reducing the cushion available if the wholesale contracts slip or winter sales dip badly [app], which could force expensive short notice borrowing later [an]. Overall, retained profit is the better option because the $7,200 saving is certain and the delivery van directly supports the three supermarkets [eval], but the owners should also arrange an overdraft facility as a backup in case reserves fall too low [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "retained profit avoids interest on external borrowing",
+            "internal finance reduces the safety cushion held by the business"
+          ],
+          "application_max_2": [
+            "$7,200 difference between van price and $67,200 loan repayments",
+            "only $25,000 of the $85,000 reserves would remain after buying the van"
+          ],
+          "analysis_max_2": [
+            "protects $480,000 revenue from extra monthly outflows",
+            "short notice borrowing could become necessary if reserves fall"
+          ],
+          "evaluation_max_2": [
+            "weighs the certain interest saving against the loss of the emergency reserve",
+            "recommends retained profit with an overdraft facility as backup"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "retained profit",
+            "$85,000",
+            "delivery van",
+            "$480,000",
+            "$67,200",
+            "supermarket"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_132",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Avenmere Scientific Ltd is a private limited company in Country X that manufactures water testing kits for farms and fisheries. Founded 6 years ago by two engineers, it employs 18 staff and last year earned revenue of $300,000 with profit of $42,000. The firm now needs $120,000 to buy automated laboratory equipment that would let it test twice as many samples each week.\n\nA government grant of $50,000 is available for firms creating high skilled jobs, but it requires Avenmere to hire 6 technicians at $1,500 a month each and publish its accounts for 5 years. The equipment is expected to pay for itself within 4 years. The alternative is a bank loan of $120,000 at 8% annual interest over 5 years, costing $9,600 a year in interest.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'grant'.",
+        "model_answer": "Money given by the government or another body to a business which does not have to be repaid, usually to support a specific purpose [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "money given to a business that does not have to be repaid",
+            "usually provided to support a specific purpose or project"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors Avenmere Scientific Ltd should consider when choosing between the grant and the loan.",
+        "model_answer": "Factor 1: The cost of the finance [k], because the grant gives $50,000 without interest, while the loan adds $9,600 a year over 5 years [app]. Factor 2: The conditions attached to each source [k], because the grant requires 6 technicians at $1,500 a month each and published accounts for 5 years [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the cost of the finance and its interest charges",
+            "the conditions attached to receiving the finance"
+          ],
+          "application_max_2": [
+            "grant provides $50,000 interest free while the loan costs $9,600 a year",
+            "grant requires 6 technicians at $1,500 a month each and 5 years of published accounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$50,000",
+            "$120,000",
+            "$9,600",
+            "6 technicians",
+            "$1,500",
+            "bank loan",
+            "grant"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of accepting the government grant for the laboratory equipment.",
+        "model_answer": "Disadvantage 1: It commits the firm to big extra wages [k], because 6 technicians at $1,500 a month each add about $108,000 a year to costs, against revenue of only $300,000 [app], squeezing profit unless sample volumes double as planned [an]. Disadvantage 2: It reduces privacy and freedom [k], because Avenmere must publish its accounts for 5 years and meet the grant conditions [app], exposing figures to competitors and limiting the founders' decisions [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grants create heavy ongoing commitments such as new jobs",
+            "grants require public disclosure and reduce freedom"
+          ],
+          "application_max_2": [
+            "6 technicians at $1,500 a month each add about $108,000 a year",
+            "revenue of only $300,000 makes the added cost significant"
+          ],
+          "analysis_max_2": [
+            "squeezes profit unless sample volumes double as planned",
+            "exposes accounts to competitors and limits the founders' decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$120,000",
+            "$50,000",
+            "6 technicians",
+            "$1,500",
+            "publish its accounts",
+            "$300,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think accepting the $50,000 grant is a better choice than the $120,000 bank loan to fund the laboratory equipment? Justify your answer.",
+        "model_answer": "The grant cuts the amount that must be borrowed [k], because $50,000 of the $120,000 equipment cost arrives without interest, saving up to $4,000 of interest a year at 8% [app], which protects the $42,000 profit while testing volumes build up [an]. However, the grant obliges Avenmere to hire 6 technicians at $1,500 a month each [k], adding about $108,000 a year to costs and opening its books to public scrutiny for 5 years [app], which could strain cash badly if testing demand does not double on schedule [an]. Overall, the grant is the better choice only if firm contracts from farms are signed first, because the $50,000 free funding outweighs $48,000 of simple interest on the loan [eval], and without those contracts the bank loan is the safer, cleaner option [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grants provide interest free finance for a specific purpose",
+            "grants carry conditions such as job creation and disclosure"
+          ],
+          "application_max_2": [
+            "$50,000 of the $120,000 cost arrives without interest, saving up to $4,000 a year",
+            "6 technicians at $1,500 a month each add about $108,000 a year to costs"
+          ],
+          "analysis_max_2": [
+            "protects the $42,000 profit while testing volumes build up",
+            "cash could be strained if testing demand does not double on schedule"
+          ],
+          "evaluation_max_2": [
+            "weighs the free $50,000 against $48,000 of simple interest on the loan",
+            "grant only preferable with firm contracts in place; otherwise the loan is safer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$50,000",
+            "$120,000",
+            "$9,600",
+            "6 technicians",
+            "$1,500",
+            "$42,000",
+            "bank loan"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_133",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Thornwick Gifts Ltd runs 3 gift shops in Country X, trading for 11 years with 22 staff selling toys, candles and cards. Revenue last year was $620,000, of which about $210,000 came in November and December. The directors want $45,000 to stock Christmas gifts and decorations. The shops hold current assets of $95,000 against current liabilities of $70,000, and staff wages average $28,000 a month.\n\nThe board is comparing a bank overdraft at 11% annual interest with extended 60 day trade credit from the two main suppliers, who normally demand payment within 30 days. Holding the overdraft for 4 months would cost around $1,650 in interest, whereas trade credit costs nothing but the suppliers expect payment before February. Storage is rented at $900 a month until January and a successful Christmas would turn the stock back into cash before the bills fall due.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'working capital'.",
+        "model_answer": "The finance used for day to day trading, calculated as current assets minus current liabilities [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "finance used for day to day trading",
+            "calculated as current assets minus current liabilities"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why short term finance is suitable for the Christmas stock.",
+        "model_answer": "Reason 1: The need is temporary [k], because the $45,000 is tied up only from October until the stock is sold by the end of December [app]. Reason 2: Repayment matches seasonal cash flow [k], because about $210,000 of November and December revenue would pay off the overdraft or the suppliers before February [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "short term finance suits temporary needs",
+            "short term finance matches seasonal repayment cycles"
+          ],
+          "application_max_2": [
+            "$45,000 is tied up only from October until the end of December",
+            "about $210,000 of November and December revenue arrives before February"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$45,000",
+            "$210,000",
+            "November and December",
+            "overdraft",
+            "trade credit",
+            "Thornwick Gifts Ltd"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems of using a bank overdraft for the $45,000 Christmas stock.",
+        "model_answer": "Problem 1: Interest adds to seasonal costs [k], because 11% annual interest on $45,000 for 4 months costs around $1,650 [app], trimming the margin made on Christmas sales [an]. Problem 2: The overdraft can be withdrawn on demand [k], because the bank may reduce the limit and the shops hold only $95,000 of current assets against $70,000 of liabilities [app], pressuring the directors if December sales disappoint [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overdrafts carry interest charges",
+            "overdrafts are repayable on demand"
+          ],
+          "application_max_2": [
+            "11% on $45,000 for 4 months costs around $1,650",
+            "only $95,000 of current assets against $70,000 of liabilities"
+          ],
+          "analysis_max_2": [
+            "interest trims the profit margin on Christmas sales",
+            "a reduced limit would pressure the directors if December sales disappoint"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "11%",
+            "$45,000",
+            "$1,650",
+            "$95,000",
+            "$70,000",
+            "overdraft"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think a bank overdraft is a better source than extended trade credit for the $45,000 Christmas stock? Justify your answer.",
+        "model_answer": "Trade credit is interest free [k], so the shops avoid the $1,650 overdraft charge and keep the full margin on around $210,000 of seasonal sales [app], which suits the tight working capital of only $25,000 [an]. However, relying on extended 60 day credit is risky [k], because the two suppliers expect payment before February and may shorten terms or charge more if trading stays slow [app], straining the relationships behind 11 years of stock supply [an]. Overall, trade credit is the better, cheaper option for the Christmas stock because the zero interest cost directly helps profit [eval], but the overdraft should remain available as backup if December trading falls well short of $210,000 [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "trade credit is interest free finance from suppliers",
+            "extended supplier credit carries a risk of tightened terms"
+          ],
+          "application_max_2": [
+            "avoids the $1,650 overdraft charge and keeps margin on $210,000 of seasonal sales",
+            "current assets of $95,000 against current liabilities of $70,000 leave tight working capital"
+          ],
+          "analysis_max_2": [
+            "zero interest directly protects profit and cash flow",
+            "strained supplier relationships could damage future stock supply"
+          ],
+          "evaluation_max_2": [
+            "recommends trade credit as the cheaper option for the Christmas stock",
+            "retains the overdraft as backup if December sales fall short"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "trade credit",
+            "$1,650",
+            "$210,000",
+            "60 day",
+            "overdraft",
+            "current liabilities"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_134",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Norwyn Engineering Ltd is a private limited company in Country X, employing 60 machinists for 12 years repairing industrial gearboxes for farms and mines. Last year revenue was $2.4 million and output has grown about 15% a year for 3 years. The directors want $800,000 to build a second workshop with new lifting equipment. The family founded the firm and still works full time in it.\n\nThey are choosing between selling 10 year debentures at 7% annual interest and issuing 50,000 new shares at $16 each to local investors. The debentures would cost $56,000 a year in interest for 10 years. Issuing shares would cut the founding family's stake from 60,000 of the 100,000 existing shares, currently 60%, to 60,000 of 150,000 shares, or 40%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'debenture'.",
+        "model_answer": "A long term loan raised by a company from investors, usually at a fixed rate of interest, repaid after an agreed period and often secured against the company's assets [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a long term loan raised by a company from investors",
+            "usually fixed interest and repaid after an agreed period, often secured"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why control matters when Norwyn Engineering chooses between debentures and shares.",
+        "model_answer": "Reason 1: Shares transfer ownership [k], because 50,000 new shares at $16 each would dilute the founding family from 60% to 40% of the company [app]. Reason 2: Control shapes the direction of the firm [k], because debenture holders have no votes, so the family keeps full say over the 60 machinists and the second workshop plan [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "issuing shares transfers ownership and voting power",
+            "debenture holders have no voting rights"
+          ],
+          "application_max_2": [
+            "50,000 new shares at $16 would dilute the founding family from 60% to 40%",
+            "debentures let the family keep full say over the 60 machinists and the workshop"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "debentures",
+            "$800,000",
+            "50,000 new shares",
+            "$16",
+            "founding family",
+            "60%"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of issuing new shares to raise the $800,000.",
+        "model_answer": "Disadvantage 1: The family loses control [k], because its stake falls from 60,000 of 100,000 shares (60%) to 60,000 of 150,000 shares (40%) [app], so new investors could block key decisions about the workshop [an]. Disadvantage 2: Profit is shared among more owners [k], because $2.4 million revenue would be divided among 150,000 shares rather than 100,000, cutting the family's share of the profit [app], which could reduce the incentive to keep investing [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "issuing shares dilutes the ownership and control of existing owners",
+            "issuing shares spreads the same profit across more shareholders"
+          ],
+          "application_max_2": [
+            "stake falls from 60,000 of 100,000 shares (60%) to 60,000 of 150,000 shares (40%)",
+            "$2.4 million revenue would be divided among 150,000 shares instead of 100,000"
+          ],
+          "analysis_max_2": [
+            "new investors could block key workshop decisions",
+            "smaller family share of profit could reduce the incentive to keep investing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$800,000",
+            "60,000 of the 100,000",
+            "60,000 of 150,000",
+            "$16",
+            "founding family",
+            "$2.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think selling debentures is a better option than issuing shares for the $800,000 second workshop? Justify your answer.",
+        "model_answer": "Debentures preserve control [k], because debenture holders cannot vote, so the family keeps its say over the 60 machinists and the second workshop while raising the full $800,000 [app], avoiding clashes over how the new site is run [an]. However, debentures carry a fixed cost [k], because $56,000 a year of interest for 10 years totals $560,000, payable even when orders from farms and mines dip [app], which could squeeze cash flow during a recession [an]. Overall, debentures are the better option because protecting family control and meeting $56,000 a year from $2.4 million revenue is comfortably manageable [eval]; shares would only be preferable if interest rates rose sharply or lenders refused the debenture [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "debentures keep voting control with existing owners",
+            "debentures carry fixed interest payable regardless of profits"
+          ],
+          "application_max_2": [
+            "family keeps full say over the 60 machinists and the second workshop",
+            "$56,000 a year of interest totals $560,000 over 10 years against $2.4 million revenue"
+          ],
+          "analysis_max_2": [
+            "avoids clashes over how the new site is run",
+            "cash flow could be squeezed if orders from farms and mines dip"
+          ],
+          "evaluation_max_2": [
+            "weighs preserved family control against the fixed $56,000 annual cost",
+            "recommends debentures while interest rates stay stable; shares if rates rise or lenders refuse"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "debentures",
+            "$800,000",
+            "$56,000",
+            "$2.4 million",
+            "60 machinists",
+            "founding family",
+            "7%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_135",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Sorrel Cottage Tailoring is a sole trader business in Country X, run by Priya Raman from her home for 4 years, making school uniforms and alterations. Last year revenue was $54,000, all earned from two busy districts. Priya wants $8,500 to buy two industrial sewing machines to take on a supermarket uniform contract. Her current machine is 12 years old and breaks down often. She wants to keep the business home based while it grows.\n\nShe has saved $5,000 and needs $3,500 more. A micro-finance lender offers $3,500 at 14% annual interest over 2 years, repayable at about $187 a month. The alternative is a crowdfunding campaign offering each backer a discount voucher, with no interest but no certainty the $3,500 target will be met.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'micro-finance'.",
+        "model_answer": "Small scale finance offered to small businesses or entrepreneurs who cannot access traditional bank loans, often through specialist lenders [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "small scale finance for small businesses or entrepreneurs",
+            "used when traditional bank loans are not available"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors Priya should consider when choosing between micro-finance and crowdfunding.",
+        "model_answer": "Factor 1: The amount required is small [k], because only $3,500 is missing after her $5,000 savings towards the $8,500 machines [app]. Factor 2: The cost and certainty of the finance [k], because the micro-finance lender asks 14% interest and about $187 a month for 2 years, while crowdfunding costs nothing but may raise nothing [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the amount needed influences the most suitable source",
+            "cost and certainty of the finance differ between sources"
+          ],
+          "application_max_2": [
+            "only $3,500 is missing after her $5,000 savings towards the $8,500 machines",
+            "micro-finance costs 14% interest at about $187 a month for 2 years; crowdfunding may raise nothing"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,500",
+            "$5,000",
+            "$8,500",
+            "14%",
+            "$187",
+            "crowdfunding",
+            "micro-finance"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of micro-finance for Sorrel Cottage Tailoring.",
+        "model_answer": "Advantage 1: She gets the machines quickly [k], because the $3,500 can be agreed without a long bank process, letting the supermarket uniform contract start this term [app], lifting revenue above $54,000 a year [an]. Advantage 2: She keeps full ownership of her business [k], because micro-finance involves no shares or voting rights being handed to backers [app], so Priya alone decides about prices, designs and hours [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "micro-finance is usually agreed faster than a bank loan",
+            "micro-finance does not hand over ownership or control"
+          ],
+          "application_max_2": [
+            "the $3,500 can be agreed quickly, letting the supermarket uniform contract start this term",
+            "no shares or voting rights are handed to backers or lenders"
+          ],
+          "analysis_max_2": [
+            "lifts revenue above $54,000 a year",
+            "Priya alone keeps control over prices, designs and hours"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,500",
+            "micro-finance",
+            "$54,000",
+            "$8,500",
+            "two industrial sewing machines",
+            "supermarket uniform contract"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think micro-finance is a better option than crowdfunding for the $3,500 Priya needs? Justify your answer.",
+        "model_answer": "Micro-finance is certain and fast [k], because the lender has agreed $3,500 at 14% over 2 years at about $187 a month, so Priya can order the two industrial sewing machines immediately [app], winning the supermarket uniform contract before rivals [an]. Crowdfunding costs nothing in interest [k], but it demands constant promotion, delivers discount vouchers that cut margins, and may raise nothing at all [app], delaying the machines and risking the contract [an]. Overall, micro-finance is the better option because guaranteed funding at $187 a month is affordable for a $54,000 a year business [eval], provided Priya budgets for the 14% interest cost and never falls behind on repayments [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "micro-finance provides guaranteed funds from a specialist lender",
+            "crowdfunding raises money from many backers with no interest but no certainty"
+          ],
+          "application_max_2": [
+            "$3,500 agreed at 14% over 2 years at about $187 a month",
+            "crowdfunding delivers discount vouchers and may raise nothing at all"
+          ],
+          "analysis_max_2": [
+            "immediate order wins the supermarket uniform contract before rivals",
+            "crowdfunding failure would delay the machines and risk the contract"
+          ],
+          "evaluation_max_2": [
+            "recommends micro-finance because guaranteed funding beats an uncertain campaign",
+            "micro-finance only viable if $187 a month fits the $54,000 annual revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "micro-finance",
+            "$3,500",
+            "14%",
+            "$187",
+            "crowdfunding",
+            "$54,000",
+            "$8,500"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_136",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Rushmere Jam Co Ltd is a private limited company in Country X, founded 10 years ago with 26 staff making fruit preserves for three supermarkets. Revenue last year was $2.1 million and energy costs were $310,000. The firm wants $150,000 to install an energy efficient boiler that should cut energy costs by $45,000 a year. The current boiler fails the supermarkets' new green audits.\n\nA government environmental grant covers 40% of the cost, $60,000, on condition the firm files quarterly energy reports for 5 years and cuts emissions by 25%. Two buyers have hinted they may switch suppliers without it. Alternatively, a bank loan of $150,000 at 7.5% annual interest over 6 years would cost $11,250 a year in interest and must be repaid even if the energy savings slip.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'subsidy'.",
+        "model_answer": "Financial help given by the government to a business to encourage a particular activity, such as cutting pollution or creating jobs [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "financial help given by the government to a business",
+            "used to encourage a particular activity such as cutting pollution"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors Rushmere Jam Co Ltd should consider when choosing between the grant and the bank loan.",
+        "model_answer": "Factor 1: The cost of the finance [k], because the grant funds $60,000 without interest, while the loan adds $11,250 a year for 6 years [app]. Factor 2: The conditions attached [k], because the grant demands quarterly energy reports for 5 years and a 25% emissions cut, enforced even if the savings slip [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the cost of the finance influences the choice",
+            "the conditions attached to a grant influence the choice"
+          ],
+          "application_max_2": [
+            "the grant funds $60,000 without interest while the loan adds $11,250 a year for 6 years",
+            "the grant requires quarterly energy reports for 5 years and a 25% emissions cut"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$150,000",
+            "$11,250",
+            "7.5%",
+            "quarterly energy reports",
+            "25%",
+            "grant"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of using the environmental grant for the boiler.",
+        "model_answer": "Advantage 1: It cuts the amount to be financed [k], because $60,000 of the $150,000 boiler comes free, leaving $90,000 to fund, or less than $150,000 to borrow at 7.5% [app], keeping interest well below the $11,250 a year the full loan would cost [an]. Advantage 2: It supports green credentials [k], because cutting emissions by 25% and reporting energy use quarterly satisfy the supermarkets' environmental audits [app], helping retain three supermarket contracts worth $2.1 million a year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grants reduce the amount that must be borrowed",
+            "grants can improve a firm's environmental standing"
+          ],
+          "application_max_2": [
+            "$60,000 of the $150,000 boiler comes free, leaving at most $90,000 to fund",
+            "the 25% emissions cut and quarterly reports satisfy the supermarkets' audits"
+          ],
+          "analysis_max_2": [
+            "interest stays well below the $11,250 a year the full loan would cost",
+            "retaining three supermarket contracts worth $2.1 million a year protects revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$150,000",
+            "$310,000",
+            "25%",
+            "three supermarkets",
+            "Rushmere Jam Co Ltd"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the environmental grant is a better choice than the bank loan to fund the boiler? Justify your answer.",
+        "model_answer": "The grant is free money [k], because it covers $60,000 of the $150,000 boiler with no 7.5% interest attached, saving about $4,500 a year of interest on that portion [app], freeing cash from the $310,000 energy budget for fruit purchases and wages [an]. However, it binds Rushmere to quarterly energy reports for 5 years and a 25% emissions cut [k], and if the paperwork slips the supermarkets may doubt the firm's green claims [app], wiping out the saving and damaging the three supermarket contracts behind $2.1 million revenue [an]. Overall, the grant is the better option because the $60,000 funding plus at least $27,000 of interest saved beats the paperwork burden, given $45,000 a year energy savings are expected [eval], though the firm should appoint an energy manager before signing the reporting conditions [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "grants provide interest free funding for specific purposes",
+            "grants carry binding conditions such as reporting and emissions cuts"
+          ],
+          "application_max_2": [
+            "$60,000 of the $150,000 boiler is interest free, saving about $4,500 a year",
+            "quarterly energy reports for 5 years and a 25% emissions cut are required"
+          ],
+          "analysis_max_2": [
+            "frees cash from the $310,000 energy budget for fruit and wages",
+            "slipping paperwork could damage the supermarket contracts behind $2.1 million revenue"
+          ],
+          "evaluation_max_2": [
+            "weighs the $60,000 grant and at least $27,000 of interest saved against the reporting burden",
+            "grant preferred if an energy manager is appointed; loan simpler if conditions look unmanageable"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60,000",
+            "$150,000",
+            "7.5%",
+            "quarterly energy reports",
+            "25%",
+            "$45,000",
+            "grant"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_137",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Larkwhistle Nurseries Ltd is a plant nursery in Country X, founded 14 years ago with 12 staff, growing shrubs and hedge plants for garden centres. Revenue last year was $310,000 and the firm wants $28,000 to build two new polytunnels to extend the growing season. Polytunnels are expected to raise output by 20% and two garden centres have asked for year round stock.\n\nThe nursery owns two unused tractors that an agricultural dealer will buy for $22,000, leaving a $6,000 gap to be met from cash. The alternative is a bank loan of $28,000 at 8% annual interest over 3 years, totalling $34,720 in repayments of about $965 a month. The firm has $6,000 in the bank and no other large outlays planned this year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'capital expenditure'.",
+        "model_answer": "Spending on long term assets that will benefit the business for more than one year, such as buildings, machinery or vehicles [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "spending on long term assets",
+            "assets benefit the business for more than one year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors Larkwhistle Nurseries Ltd should consider when choosing between selling the tractors and the bank loan.",
+        "model_answer": "Factor 1: The cost of the finance [k], because selling the two tractors for $22,000 is free, while the loan costs 8% interest and $34,720 in total repayments [app]. Factor 2: The purpose and period of the need [k], because the $28,000 polytunnels are a long term asset serving the firm for many years [app], which suits using asset sale proceeds rather than heavy borrowing.",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the cost of each source of finance",
+            "the time period the finance is needed for"
+          ],
+          "application_max_2": [
+            "selling the two tractors for $22,000 is free while the loan costs 8% and $34,720 total",
+            "the $28,000 polytunnels are a long term asset"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$22,000",
+            "$28,000",
+            "8%",
+            "$34,720",
+            "tractors",
+            "polytunnels",
+            "Larkwhistle Nurseries Ltd"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of selling the tractors rather than taking the bank loan.",
+        "model_answer": "Advantage 1: No interest to pay [k], because the $22,000 sale plus $6,000 of cash covers the $28,000 polytunnels without any borrowing at 8% [app], so the nursery avoids $965 of monthly repayments and protects its $310,000 revenue [an]. Advantage 2: It releases idle assets [k], because the two tractors are unused and would only lose value sitting in the yard [app], turning dead capital into productive polytunnel capacity [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling assets avoids interest charges",
+            "selling redundant assets releases tied up capital"
+          ],
+          "application_max_2": [
+            "$22,000 from the sale plus $6,000 cash covers the $28,000 polytunnels",
+            "the two tractors are unused and would lose value sitting in the yard"
+          ],
+          "analysis_max_2": [
+            "avoids $965 monthly repayments and protects $310,000 of revenue",
+            "turns dead capital into productive polytunnel capacity"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$22,000",
+            "$6,000",
+            "$28,000",
+            "8%",
+            "$965",
+            "tractors",
+            "polytunnels"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think selling the tractors is a better option than the bank loan for the $28,000 polytunnels? Justify your answer.",
+        "model_answer": "Selling the tractors is cheaper and debt free [k], because $22,000 from the sale plus $6,000 in the bank funds the polytunnels outright, avoiding the $6,720 of interest and $34,720 total repayment of the loan [app], preserving profit for a nursery whose seasonal sales swing widely [an]. However, selling removes backup capacity [k], because the two tractors could be needed when the hire machine breaks down during the busy spring rush [app], forcing costly short notice rental when the nursery can least afford it [an]. Overall, selling the tractors is the better choice because the interest saving of about $965 a month and freedom from debt outweigh the option value of idle tractors [eval], provided no tractor dependent work is due within the next 3 years [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling assets raises finance without interest",
+            "borrowing keeps assets available but adds fixed repayments"
+          ],
+          "application_max_2": [
+            "$22,000 sale plus $6,000 in the bank funds the polytunnels outright",
+            "the loan would cost $6,720 of interest and $34,720 in total repayments"
+          ],
+          "analysis_max_2": [
+            "preserves profit for a nursery with wide seasonal sales swings",
+            "losing the tractors could force costly short notice rental in spring"
+          ],
+          "evaluation_max_2": [
+            "weighs the interest saving against the loss of backup tractor capacity",
+            "recommends selling only if no tractor dependent work is due within 3 years"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$22,000",
+            "$28,000",
+            "$34,720",
+            "$965",
+            "bank loan",
+            "$310,000",
+            "tractors"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_138",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Marlborough Freight Ltd is a logistics company in Country X, trading for 8 years with 35 lorries and drivers, delivering building materials across three regions. Revenue last year was $3.6 million and profit was $240,000. Trade receivables stand at $96,000, including $38,000 owed by one builder that is 60 days late. The insurer wants payment within 30 days of renewal and has already sent a final demand.\n\nThe firm faces an $80,000 cash shortfall for insurance renewals and vehicle repairs. Two large contracts are due to start in February. It is weighing up factoring its debts for a 3% fee, $2,880, against an overdraft at 10.5% annual interest costing about $3,500 if used for 5 months. Fuel prices have risen 12% this year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'factoring of debts'.",
+        "model_answer": "Selling trade receivables to a specialist firm for immediate cash, minus a fee, rather than waiting for customers to pay [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling trade receivables to a specialist firm",
+            "provides immediate cash minus a fee"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors Marlborough Freight Ltd should consider when choosing between factoring and the overdraft.",
+        "model_answer": "Factor 1: The cost of each option [k], because factoring costs 3%, or $2,880, on the $96,000 receivables, while the overdraft costs about $3,500 over 5 months at 10.5% [app]. Factor 2: How fast the cash arrives [k], because factoring releases money within days, whereas the overdraft limit must first be agreed with the bank [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the cost of each source of finance",
+            "the speed at which finance can be accessed"
+          ],
+          "application_max_2": [
+            "factoring costs 3%, or $2,880, on $96,000 of receivables versus about $3,500 overdraft interest",
+            "factoring releases money within days while an overdraft limit must be agreed with the bank"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "factoring",
+            "$2,880",
+            "3%",
+            "$3,500",
+            "10.5%",
+            "overdraft",
+            "$96,000"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of using an overdraft to cover the $80,000 shortfall.",
+        "model_answer": "Disadvantage 1: It keeps growing in cost [k], because 10.5% interest on $80,000 adds about $3,500 over just 5 months [app], which rises if the repairs overrun or insurance cannot be paid on time [an]. Disadvantage 2: Repayment can be demanded on short notice [k], because overdrafts are repayable on demand and the firm already has $38,000 of late paying debts [app], leaving Marlborough exposed if the bank cuts the limit [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "overdrafts charge interest which grows over time",
+            "overdrafts are repayable on demand"
+          ],
+          "application_max_2": [
+            "10.5% on $80,000 adds about $3,500 over 5 months",
+            "the firm already has $38,000 of late paying debts"
+          ],
+          "analysis_max_2": [
+            "costs rise if repairs overrun or insurance payment is late",
+            "a reduced bank limit would leave the firm unable to pay urgent bills"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "10.5%",
+            "$80,000",
+            "$3,500",
+            "$38,000",
+            "overdraft",
+            "Marlborough Freight Ltd"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think factoring the debts is a better option than the overdraft for the $80,000 shortfall? Justify your answer.",
+        "model_answer": "Factoring is quicker and cheaper [k], because the 3% fee of $2,880 beats the $3,500 five month overdraft interest, and cash can arrive within days [app], plugging the gap before insurance renewals and repairs fall due [an]. However, factoring hands over a slice of profit [k], because the factor keeps $2,880 of the $96,000 receivables and may chase the late builder aggressively for the $38,000 [app], risking a customer relationship that drives future contracts [an]. Overall, factoring is the better choice this month because it is $620 cheaper and immediate, bringing certain cash into Marlborough when the insurer demands payment within 30 days [eval], but the firm should also tighten credit checks and chase the $38,000 late payer before the next renewal [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "factoring provides immediate cash at a percentage fee",
+            "overdrafts charge interest and are repayable on demand"
+          ],
+          "application_max_2": [
+            "3% fee of $2,880 beats $3,500 of five month overdraft interest",
+            "the factor may chase the $38,000 late builder aggressively"
+          ],
+          "analysis_max_2": [
+            "plugs the gap before insurance renewals and repairs fall due",
+            "aggressive chasing could damage a customer relationship driving future contracts"
+          ],
+          "evaluation_max_2": [
+            "weighs the $620 saving and speed of factoring against the lost customer relationship",
+            "recommends factoring now but tightening credit control afterwards"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "factoring",
+            "$2,880",
+            "$3,500",
+            "$38,000",
+            "overdraft",
+            "$80,000",
+            "3%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_139",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "The Copper Beech Hotel is a family company in Country X, open for 17 years with 30 staff and 24 bedrooms. Revenue last year was $1.5 million with profit of $180,000. The owners want $500,000 to add 20 bedrooms and a small conference room. Occupancy runs at 78% most of the year and room rates have been frozen for 2 years. Demand for family rooms keeps rising each summer.\n\nThey are choosing between issuing 20,000 new shares at $25 each to two private investors and a bank loan of $500,000 at 9% annual interest over 8 years. The shares would cut the family's stake from 100% to about 91%. The loan would cost $45,000 a year in interest, $360,000 in total.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'share capital'.",
+        "model_answer": "Finance raised by selling shares in a company to investors, which does not have to be repaid, though dividends may be paid from profit [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "finance raised by selling shares to investors",
+            "share capital does not have to be repaid"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why control matters to the owners when choosing between shares and the bank loan.",
+        "model_answer": "Reason 1: Shares dilute ownership [k], because 20,000 new shares at $25 each would cut the family's stake from 100% to about 91% [app]. Reason 2: Control determines strategy [k], because the family decides room rates and refurbishment now, but new investors holding about 9% could influence future votes [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "issuing shares dilutes existing owners' control",
+            "banks have no voting rights, only a contractual claim"
+          ],
+          "application_max_2": [
+            "20,000 new shares at $25 would cut the family's stake from 100% to about 91%",
+            "new investors holding about 9% could influence future votes on rates and refurbishment"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "$500,000",
+            "$25",
+            "20,000 new shares",
+            "9%",
+            "The Copper Beech Hotel",
+            "$1.5 million"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of issuing shares rather than taking the loan.",
+        "model_answer": "Advantage 1: No interest is paid [k], because $500,000 raised from 20,000 shares at $25 carries no 9% charge, unlike the loan's $45,000 a year [app], protecting the $180,000 profit for refurbishment and staff training [an]. Advantage 2: Lower risk of failure [k], because dividends are paid only when profit is made, whereas the loan demands $360,000 of total repayments regardless of trading [app], easing cash pressure in quiet winter months [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share finance carries no interest charge",
+            "dividends are only paid out of profit, unlike fixed loan repayments"
+          ],
+          "application_max_2": [
+            "$500,000 raised from 20,000 shares at $25 carries no 9% charge unlike the loan's $45,000 a year",
+            "the loan demands $360,000 of total repayments regardless of trading"
+          ],
+          "analysis_max_2": [
+            "protects the $180,000 profit for refurbishment and staff training",
+            "eases cash pressure in quiet winter months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "$500,000",
+            "$25",
+            "$45,000",
+            "9%",
+            "$180,000",
+            "bank loan"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think issuing shares is a better option than the bank loan for the $500,000 extension? Justify your answer.",
+        "model_answer": "Shares avoid fixed debt [k], because raising $500,000 through 20,000 new shares at $25 removes the $45,000 a year interest, $360,000 over the loan term [app], leaving cash to market the 20 new bedrooms and lift revenue beyond $1.5 million [an]. However, loans keep ownership intact [k], because a bank has no votes, whereas two private investors would hold about 9% of the hotel and might question family decisions [app], though the family's stake of about 91% keeps firm control [an]. Overall, shares are the better option because dividends can be paused in weak years but interest cannot, and 9% dilution is a fair price for far lower financial risk [eval]; the family should still sign a shareholder agreement limiting investor interference before issuing [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share finance carries no interest and divides risk with investors",
+            "loan finance preserves full ownership but adds fixed interest"
+          ],
+          "application_max_2": [
+            "$500,000 via 20,000 shares at $25 avoids $45,000 a year interest, $360,000 in total",
+            "two private investors would hold about 9% against the family's 91%"
+          ],
+          "analysis_max_2": [
+            "leaves cash to market the 20 new bedrooms and lift revenue beyond $1.5 million",
+            "though diluted, the family's 91% stake keeps firm control of the hotel"
+          ],
+          "evaluation_max_2": [
+            "weighs avoiding $360,000 of interest against 9% dilution of ownership",
+            "recommends shares with a protective shareholder agreement; loan preferable if family refuses any dilution"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "shares",
+            "$500,000",
+            "20,000 new shares",
+            "$45,000",
+            "$360,000",
+            "91%",
+            "The Copper Beech Hotel"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U5_SET_140",
+    "unit": "Unit 5: Financial Information and Decisions",
+    "scenario_stem": "Denby Hall Milling Co is a partnership in Country X, founded 22 years ago by three cousins, milling flour for 14 bakeries across two towns. Revenue last year was $1.4 million and the partners have already put in $60,000 of savings towards a new $200,000 milling machine. Downtime is costing the partners over $30,000 a year in repairs and lost orders.\n\nA bank loan over 7 years at 7% annual interest is on offer, costing $98,000 of interest and $298,000 in total repayments, and the bank needs an answer by the end of next month. Alternatively, the partners could sell the warehouse next door, which they rent out for $18,000 a year, for $200,000 to fund the machine outright. Both mills expect orders to grow by 10% next year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'internal finance'.",
+        "model_answer": "Finance raised from inside the business itself, such as retained profit, owners' savings or the sale of existing assets [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "finance raised from inside the business itself",
+            "examples include retained profit, owners' savings and sale of existing assets"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two factors the partners should consider when choosing between selling the warehouse and the bank loan.",
+        "model_answer": "Factor 1: The cost of each source [k], because the warehouse sale is free, while the loan adds $98,000 of interest over 7 years at 7% [app]. Factor 2: The time period of the need [k], because the milling machine is a long term asset serving 14 bakeries, which suits both the 7 year loan and permanent capital from a sale [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the cost of each source of finance",
+            "the time period the finance is needed for"
+          ],
+          "application_max_2": [
+            "the warehouse sale is free while the loan adds $98,000 of interest over 7 years at 7%",
+            "the milling machine is a long term asset serving 14 bakeries"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "warehouse",
+            "$200,000",
+            "$98,000",
+            "7%",
+            "bank loan",
+            "$1.4 million",
+            "Denby Hall Milling Co"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two disadvantages of selling the warehouse to fund the milling machine.",
+        "model_answer": "Disadvantage 1: Rental income is lost forever [k], because selling ends $18,000 a year of rent from the tenant, about $126,000 over the next 7 years [app], which is more than the $98,000 of interest avoided [an]. Disadvantage 2: A long term asset disappears [k], because the warehouse is worth $200,000 and could be kept, mortgaged or expanded as a storage depot [app], reducing the partnership's flexibility if milling flourishes [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling an income producing asset sacrifices future income",
+            "selling a fixed asset reduces the firm's long term asset base"
+          ],
+          "application_max_2": [
+            "$18,000 a year of rent ends, about $126,000 over 7 years",
+            "the warehouse is worth $200,000 and could be kept, mortgaged or expanded"
+          ],
+          "analysis_max_2": [
+            "$126,000 of lost rent exceeds the $98,000 of interest avoided",
+            "losing the warehouse reduces flexibility if milling flourishes"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "warehouse",
+            "$18,000",
+            "$98,000",
+            "$200,000",
+            "bank loan",
+            "14 bakeries",
+            "$1.4 million"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think selling the warehouse is a better option than the bank loan for the $200,000 milling machine? Justify your answer.",
+        "model_answer": "Selling the warehouse avoids all interest [k], because the full $200,000 comes from the sale with no 7% charge, avoiding the $98,000 of interest and $298,000 total repayments of the loan [app], so more of the $1.4 million revenue becomes profit each year [an]. However, the warehouse earns $18,000 a year in rent [k], so selling sacrifices about $126,000 over 7 years to save $98,000 of interest [app], leaving the partners around $28,000 worse off with one asset fewer [an]. Overall, the loan is the better option because keeping the warehouse's rent stream leaves the partners ahead by about $28,000 over 7 years and retains a valuable long term asset [eval], provided the growing orders for the new machine remain firm [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling assets raises finance without interest",
+            "loans add interest but preserve existing income producing assets"
+          ],
+          "application_max_2": [
+            "the $200,000 sale avoids $98,000 of interest and $298,000 of total repayments",
+            "selling sacrifices $126,000 of rent over 7 years to save $98,000"
+          ],
+          "analysis_max_2": [
+            "more of the $1.4 million revenue becomes profit each year after the sale",
+            "the partners would be around $28,000 worse off and lose an asset"
+          ],
+          "evaluation_max_2": [
+            "weighs the interest saving against $126,000 of lost rent, net $28,000 in the loan's favour",
+            "recommends the loan provided the growing orders for the machine remain firm"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "warehouse",
+            "$98,000",
+            "$298,000",
+            "$18,000",
+            "bank loan",
+            "$200,000",
+            "7%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

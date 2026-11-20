@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_329",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Xenon Technologies (XNT) is a private limited company in the cybersecurity software sector, employing a workforce of 48. Founded in 2013 by Grace Mbeki, the business sells endpoint-security and AI threat-detection subscriptions to mid-sized firms and operates a hierarchical structure with democratic leadership. XNT plans to invest $820,000 in a new endpoint-security platform with AI threat detection, financed by a $520,000 bank loan and $300,000 retained profit. It has fixed costs of $290,000 a year, a variable cost of $5.60 a unit and a selling price of $11.40, and currently produces 78,000 units a year. XNT faces two problems: a skills gap in threat analysis has raised the false-alert rate, and labour turnover among security analysts has reached 12%.",
+    "appendix_1_marketing_ops": "Market Research Summary — October 2026: A survey of 500 security officers at client firms found 65% would upgrade to the new platform within 12 months, and 60% cited AI threat detection as the main reason. 36% first heard of XNT through technical webinars. The false-positive alert rate is 4.2%, down from 6.8% a year earlier, and critical alerts take an average 3.6 hours to resolve. Platform uptime was 99.5%. 26 of 48 staff are engineers; on-the-job training on the detection codebase runs weekly, while off-the-job threat-analysis certification at the tech college costs $1,400 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Xenon Technologies for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "1,560", "1,940"],
+        ["Cost of sales", "900", "1,070"],
+        ["Gross profit", "660", "870"],
+        ["Operating profit", "234", "349"],
+        ["Capital employed", "2,340", "2,580"],
+        ["Interest payable", "20", "33"]
+      ]
+    },
+    "appendix_3_external_environment": "Technology Bulletin (November 2026): (1) The central bank raised the base interest rate from 4.0% to 4.75%, increasing the cost of variable-rate borrowing for software businesses. (2) The national minimum wage will rise by 7.0% from $12.45 to $13.32 per hour from April 2026, raising wage bills across support and administration teams. (3) Cloud computing and data-centre costs rose 10.9% year-on-year, technology inflation is running at 6.0%, and business spending on cybersecurity software grew 11.2% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "XNT plans to finance part of its $820,000 endpoint-security platform with a $520,000 bank loan and $300,000 retained profit. Explain two advantages for XNT of using retained profit instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit requires no interest or fixed repayments, protecting cash flow while XNT already commits $290,000 of fixed costs a year and earns $5.80 contribution per unit ($11.40 − $5.60). Appendix 2 shows interest payable climbing from $20,000 to $33,000, so funding $300,000 internally instead of borrowing more leaves cash to close the threat-analysis skills gap and cut the 4.2% false-alert rate without pushing up the $11.40 price.\n\nPoint 2: Using internal funds avoids lender security and covenants, so the $820,000 platform and its codebase cannot be jeopardised if uptake among the 500 surveyed security officers falls short of the 65% intending to upgrade. It also keeps control with Grace Mbeki and the existing shareholders. The trade-off is that $300,000 of reserves is no longer available if cloud-computing costs keep rising by 10.9%, leaving less room to absorb the 12% analyst turnover. Retained profit also avoids covenant restrictions a lender might place on the $820,000 platform's roadmap.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to XNT's costs, reserves and funding decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$300,000", "$520,000", "$820,000", "$290,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "XNT is launching its new AI threat-detection platform. Consider sponsoring a cybersecurity podcast, targeted LinkedIn advertising, or exhibitions at security-industry conferences. Which should XNT choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Cybersecurity podcast sponsorship: A security podcast reaches an engaged audience of practitioners and builds credibility through the host's endorsement, which suits a technical product. However, the audience is relatively small, a run of sponsorship takes weeks, and response is hard to measure, making it slow value for a 48-person firm financing an $820,000 platform.\n\nTargeted LinkedIn advertising: LinkedIn lets XNT target job titles such as security officer, matching the 500 officers surveyed, 65% of whom intend to upgrade and 60% of whom cite AI threat detection. The 36% who already discover XNT through webinars and professional channels show that digital outreach works, and spend can be capped within the $300,000 retained-profit element with measurable demo requests. The drawback is that rival vendors bid up the same keywords and attention is fleeting.\n\nSecurity-industry conferences: Exhibiting allows live detection demonstrations and face-to-face trust-building with buyers, which matters in a hierarchical, relationship-driven security market. The disadvantages are high stand, travel and staff costs, coverage limited to a few events a year, and weak measurement of return.\n\nRecommendation: XNT should choose targeted LinkedIn advertising. It reaches the exact decision-makers in the research, is measurable and affordable, and builds on the 36% who already find XNT through digital channels. Podcast sponsorship is rejected as narrow, slow and hard to measure, and conferences are rejected as costly and infrequent; XNT should add a flagship security conference once LinkedIn is producing a steady pipeline of qualified leads. Since 60% cite AI threat detection, the message should lead with detection capability in every channel.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of XNT with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of XNT with a well-justified recommendation explaining why podcasts and conferences are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["500", "65%", "60%", "36%", "webinars", "$820,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "XNT has a threat-analysis skills gap and labour turnover of 12% among security analysts. Explain two benefits for XNT of using job enrichment.",
+      "model_answer": "Point 1: Job enrichment gives XNT's 48 employees greater responsibility for end-to-end threat analysis rather than repetitive alert triage, which makes work more challenging and satisfying and helps close the skills gap. Analysts who own investigations and improve detection rules are more likely to stay, cutting the 12% labour turnover and the cost of repeatedly recruiting specialists needed for the $820,000 platform.\n\nPoint 2: Enriched roles give analysts authority to investigate and resolve alerts, which should shorten the 3.6-hour critical-alert response time and reduce the 4.2% false-positive rate that currently wastes effort. In a hierarchical structure, delegating meaningful decisions also relieves senior staff, while the 99.5% uptime promise and the $5.80 contribution per unit are protected as the new detection platform is introduced to the 500 security officers surveyed. Enrichment also reduces reliance on scarce specialists, which matters while the 12% turnover persists in a hierarchical team. Retaining these analysts protects the detection knowledge built into XNT's own codebase.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to XNT's skills gap, turnover and alert quality."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["99.5%", "12%", "workforce of 48", "4.2%", "3.6 hours", "$820,000"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "XNT must upskill 26 engineers to build the AI threat-detection platform. Consider on-the-job training on the detection codebase or off-the-job threat-analysis certification at $1,400 per employee. Which should XNT choose? Justify your decision.",
+      "model_answer": "On-the-job training: Weekly pairing on XNT's own detection codebase keeps all 26 engineers working on real alerts and model tuning, costs no fees and teaches the exact rules and triage process behind the $820,000 platform. It suits a team already stretched by 12% analyst turnover and a threat-analysis skills gap, and it directly attacks the 4.2% false-positive rate. Its weaknesses are that senior engineers lose delivery time, bad habits can spread, and no external certificate is earned, which matters when clients ask for evidence of qualified threat analysts.\n\nOff-the-job certification: The tech college course at $1,400 per employee gives structured knowledge and a recognised credential for all 26 engineers, costing $36,400 — modest beside the $820,000 investment. However, it removes 26 people from live detection work during the launch, delaying releases, and the content is generic, so XNT still needs in-house follow-up on its own codebase after the course.\n\nDecision: XNT should choose on-the-job training as the primary method, with off-the-job certification for six lead analysts. It is cheaper, immediate and specific to the platform, protects the 3.6-hour alert response and cuts false positives where the work happens. Full off-the-job certification for all 26 is rejected because it withdraws the core detection team at launch, spends $36,400 on generic content and delays a platform being sold to 500 security officers; certification can be extended once the system is stable. With 3.6-hour response targets and 99.5% uptime to defend, XNT cannot spare 26 engineers for generic coursework at launch; on-the-job pairing keeps live detection running throughout.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to XNT.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training methods in the context of XNT.",
+        "level_3_9_to_12": "Comprehensive evaluation of both training methods in the context of XNT with a justified decision covering cost, disruption and detection relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job", "$1,400", "26 of 48", "$820,000", "12%"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how XNT's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate XNT's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $290,000 ÷ ($11.40 − $5.60) = $290,000 ÷ $5.80 = 50,000 units. Answer: break-even output is 50,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate XNT's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Current output − Break-even output. Substitution: 78,000 − 50,000 = 28,000 units. Answer: margin of safety is 28,000 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways XNT's management can use this financial data.",
+          "model_answer": "1. Break-even of 50,000 units against 78,000 units sold leaves a margin of safety of 28,000 units, showing XNT can lose subscriptions while fixing the 4.2% false-alert rate and still cover $290,000 of fixed costs.\n2. Contribution of $5.80 helps managers test a discount sought by larger clients: a 5% price cut to $10.83 would reduce contribution to $5.23 and lift break-even towards roughly 55,400 units, showing whether extra volume is worth the lower margin.\n3. The $520,000 bank loan can be checked against the 50,000-unit break-even point, ensuring subscription revenue stays high enough to service debt before further spending on the $820,000 platform.\n4. Average total cost of $9.32 a unit ($290,000 ÷ 78,000 = $3.72, plus $5.60) benchmarks the new platform: reducing false alerts and raising output lowers unit cost, while the 10.9% cloud-computing cost rise threatens to push it higher."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 50,000 units | (ii) Margin of safety = 28,000 units | (iii) Four contextual uses explained: 28,000-unit safety margin versus 78,000-unit output; discount modelling against $290,000 fixed costs and the $11.40 price; stress-testing the $520,000 bank loan; and unit-cost benchmarking at $9.32 against false alerts and 10.9% cloud inflation.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["50,000", "28,000", "78,000", "$290,000", "$5.60", "$11.40", "$9.32"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate XNT's profitability by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Has XNT's profitability improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 42.3%\nGross Profit Margin 2025 = 44.8%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.0%\nROCE 2024 = 10.0%\nROCE 2025 = 13.5%\n\nDetailed workings: 2024 — revenue $1,560,000 − cost of sales $900,000 = gross profit $660,000; 660 ÷ 1,560 × 100 = 42.3%. Operating profit $234,000 ÷ revenue $1,560,000 × 100 = 15.0%. Operating profit ÷ capital employed $2,340,000 × 100 = 10.0%. 2025 — revenue $1,940,000 − cost of sales $1,070,000 = gross profit $870,000; 870 ÷ 1,940 × 100 = 44.8%. Operating profit $349,000 ÷ revenue $1,940,000 × 100 = 18.0%. Operating profit ÷ capital employed $2,580,000 × 100 = 13.5%.\n\nEvaluation: Profitability strengthened on all three measures. The gap between sales and direct costs widened from 42.3% to 44.8%, helped by falling false positives (4.2%) and faster alert resolution; the bottom-line measure widened from 15.0% to 18.0% as revenue grew faster than capital employed; and returns on capital rose from 10.0% to 13.5%, indicating the detection investment is being used effectively. The key qualifications are that interest payable increased from $20,000 to $33,000, so debt service absorbs more operating profit, and the 2025 results depend on closing the threat-analysis skills gap and retaining 26 engineers amid 12% turnover while converting the 500 surveyed officers, only 65% of whom plan to upgrade, as cloud costs rise 10.9%.\n\nConclusion: XNT's profitability has improved. All three measures rose (42.3% to 44.8%, 15.0% to 18.0%, 10.0% to 13.5%) through wider margins and more efficient use of capital rather than new debt. XNT should protect the gain by fixing the loan rate and defending the $5.80 contribution per unit as the $820,000 platform scales.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years with detailed evaluation of revenue, cost of sales, operating profit, interest and capital employed movements and a justified conclusion on whether XNT's profitability improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["42.3%", "44.8%", "15.0%", "18.0%", "10.0%", "13.5%", "$820,000", "1,560"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for XNT of using automation to handle routine threat alerts.",
+      "model_answer": "Advantage: Automating routine alert triage lets XNT cut the 4.2% false-positive rate and shorten the 3.6-hour critical-alert response time, freeing the 26 engineers to build the $820,000 detection platform. Faster, more consistent responses protect the 99.5% uptime and the 78,000-unit subscription base, supporting the $5.80 contribution per unit and the 65% of 500 surveyed officers who intend to upgrade.\n\nDisadvantage: Automation software adds to the $290,000 fixed costs or the $5.60 variable cost per unit, squeezing margins unless customers accept the $11.40 price. It can also miss novel threats that need human judgement, and with a 12% analyst turnover and a skills gap, XNT still needs skilled staff to train and supervise the system; over-reliance on automated rules could raise the false-alert rate again and undermine the 99.5% uptime promise. The 60% of surveyed officers who value AI detection expect accurate alerts, so poor automation would damage the launch proposition.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to XNT's alert data, costs and analyst skills."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.2%", "3.6 hours", "99.5%", "$11.40", "$5.60", "$820,000"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the base interest rate rise to 4.75%, the 7.0% minimum wage increase and the 10.9% rise in cloud computing and data-centre costs will affect XNT. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Base interest rate rise (4.0% to 4.75%): If XNT's $520,000 bank loan is variable-rate, the 0.75 percentage-point increase adds 0.75% × $520,000 = $3,900 a year, modest against $290,000 of fixed costs and mostly removable by fixing the rate. It could make later borrowing dearer, but the direct cash effect is small and fintech-style spending on security is still growing 11.2%.\n\nMinimum wage increase (7.0%, from $12.45 to $13.32): Each affected hour costs $13.32 − $12.45 = $0.87 more, equal to 7.0% × $12.45 = $0.87. No hours worked or individual pay rates are given, so an annual total cannot be calculated honestly; the defensible point is that support wages rise unavoidably, and with 12% analyst turnover XNT may spend more on recruitment and $1,400 certification of replacements.\n\nCloud computing and data-centre costs (up 10.9%): Detection models run continuously on cloud infrastructure inside the $5.60 variable cost. The insert does not decompose that cost, so only a labelled upper bound can be shown: if the whole $5.60 rose 10.9%, that would add 0.109 × $5.60 = $0.61 per unit, or 78,000 × $0.61 = $47,580 a year, cutting the $5.80 contribution towards about $5.19. Even a fraction of this recurs on every subscription and cannot be removed by fixing a loan.\n\nConclusion: The 10.9% cloud computing rise will have the greatest impact. It applies to all 78,000 units, hits the infrastructure that delivers the 99.5% uptime and AI detection, and exceeds the 6.0% technology-inflation rate, so it cannot easily be passed on. The wage rise is second because it raises payroll but cannot be quantified from the insert, and the interest rise is smallest and fixable — both still require cost discipline while the $820,000 platform launches.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to XNT.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on XNT's costs, prices or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes with a justified judgement that cloud computing cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.75%", "7.0%", "10.9%", "$13.32", "$5.60", "11.2%"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_345",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Quarryfield Ale Brewers (QAB) is a cooperative in the beverage sector, brewing craft ale for independent retailers and taprooms. The cooperative has a workforce of 33 and operates a flat structure with democratic leadership, with founder Elin Quarryfield putting major decisions to member votes. QAB plans to invest $680,000 in new fermentation tanks and a canning line, financed by a $420,000 bank overdraft and $260,000 retained surplus. It has fixed costs of $245,000 a year, a variable cost of $5.10 a unit and a selling price of $12.10, and produces 80,000 units a year, where each unit is a can of ale. QAB faces two problems: 6.8% of cans are rejected for leaking seals and absenteeism among brewing staff has reached 9.5%.",
+    "appendix_1_marketing_ops": "Brewery Quality Log - Q4 2025: QAB filled 17,800 cans last quarter, of which 6.8% were rejected for leaking seals, down from 10.2% a year earlier. Taproom complaints rose to 29 from 18 a month. Average delivery to distributors is 2.9 days. A survey of 560 ale drinkers found 63% would pay $0.45 more for locally brewed craft ale in recyclable cans and 55% check brewery provenance before buying. A trial of the new canning line cut rejected cans to 2.9%. A skills audit found 10 of 33 workers had not completed on-the-job training on the canning line; off-the-job training at the technical college costs $700 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Quarryfield Ale Brewers as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "84", "76"],
+        ["Trade receivables", "102", "126"],
+        ["Cash and cash equivalents", "38", "62"],
+        ["Current liabilities", "170", "162"],
+        ["Non-current assets", "1,040", "1,360"],
+        ["Capital employed", "1,220", "1,520"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Beverage Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.5% to 5.25%, increasing the cost of the bank overdraft. (2) The national minimum wage rises by 6.4% from $12.20 to $12.98 an hour from April 2026, raising brewery wages. (3) Barley, hops and aluminium input costs have risen 14.2% year-on-year, while craft ale retail prices rose 3.4% and consumer spending on local ale grew 5.2%."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "QAB plans to fund part of its $680,000 fermentation and canning project with a bank overdraft. Explain two advantages for QAB of using retained surplus instead of the overdraft.",
+      "model_answer": "Point 1: Retained surplus carries no interest charge and no variable-rate exposure, which matters because QAB must cover fixed costs of $245,000 a year from $7.00 contribution per can ($12.10 − $5.10). Interest on a $420,000 overdraft would rise whenever the base rate moves, especially with the rise to 5.25%; using the $260,000 already accumulated keeps cash inside the cooperative and protects the wages of a workforce of 33.\n\nPoint 2: Internal funding avoids the daily repayment pressure and security of an overdraft, so the fermentation tanks cannot be threatened by a bank recall if ale sales dip below the 17,800 cans filled last quarter. Control stays with the members who vote on decisions under Elin Quarryfield. The cost is that $260,000 of surplus is no longer a reserve for the 6.8% rejection problem, so QAB relies more on its own trading cash flow. Elin Quarryfield should put the choice to a member vote, weighing the 5.2% growth in local-ale spending against the risk of holding no reserve if seal failures persist.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to QAB's costs, reserves and cooperative ownership."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained surplus", "bank overdraft", "$260,000", "$420,000", "$680,000", "$245,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "QAB wants to grow demand for its craft ale. Consider running taproom tasting events, sponsoring a local beer festival, or a social media campaign for ale drinkers. Which should QAB choose? Justify your recommendation.",
+      "model_answer": "Taproom tasting events: Tastings let drinkers try the ale and hear the provenance story directly, which suits the 55% who check brewery provenance and helps answer the 29 monthly complaints with visible quality. They are cheap and give instant feedback, but each event reaches only a small local audience and cannot quickly lift the 17,800-can baseline enough to fill a $680,000 canning line.\n\nLocal beer festival sponsorship: A festival gathers thousands of ale drinkers and press in one place, building regional brand awareness at moderate cost and supporting the local-brewing story behind the 63% who would pay $0.45 more. The impact fades after the event, the audience is mostly local, and the route from a festival pint to 80,000 cans of annual output is indirect and hard to measure.\n\nSocial media campaign: A campaign can show the fermentation tanks, canning line and recyclable cans to drinkers well beyond the taproom, with engagement measured against the 17,800-can quarterly figure. It can convert the 63% premium intent into sales and reinforce the 2.9-day delivery promise. Results build gradually and need constant content, and the message must address the 6.8% leaking-seal failures.\n\nRecommendation: QAB should choose the social media campaign, supported by occasional taproom tastings. It reaches the drinkers already identified in the survey, scales beyond one festival and costs far less than sponsorship while a $420,000 overdraft is outstanding. Festival sponsorship is rejected as a short local event with no clear sales link, and tastings alone are rejected as too small to sustain 80,000 cans a year.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the promotional options with minimal application to QAB.",
+        "level_2_5_to_8": "Discussion of advantages and disadvantages of at least two options in the context of QAB with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in context with a well-justified recommendation explaining why festival sponsorship and tastings are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6.8%", "63%", "$0.45", "55%", "17,800", "$680,000"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "QAB's absence rate is 9.5% and 6.8% of cans fail seal checks. Explain two benefits for QAB of introducing a formal appraisal system for its brewing staff.",
+      "model_answer": "Point 1: Appraisal gives each member of the workforce of 33 a regular review where the 6.8% leaking-seal failures can be discussed and training needs agreed, so brewers understand how their work affects quality. This makes the flat, democratic structure more effective because Elin Quarryfield gets facts rather than opinions at member votes, helping drive failures towards the 2.9% achieved on the canning-line trial and cutting the 29 monthly complaints.\n\nPoint 2: Appraisal can also explore why 9.5% of brewing staff are absent, agreeing targets and support that improve commitment and reduce repeated cover. Better attendance protects the 17,800 cans filled each quarter and the $12.10 price and $7.00 contribution needed to service the $420,000 overdraft. Because 55% of drinkers check provenance, a well-run appraisal record also helps QAB show members that quality standards are being maintained while the $680,000 investment beds in. Elin Quarryfield should review appraisal outcomes against the 17,800-can baseline and 9.5% absence figure before making it a permanent requirement for all 33 members.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QAB's absence rate, seal failures, output and quality."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["absenteeism", "9.5%", "workforce of 33", "6.8%", "17,800", "2.9%"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "QAB must train 10 of 33 workers on the new canning line. Consider on-the-job training at the brewery or off-the-job training at the technical college. Which should QAB choose? Justify your decision.",
+      "model_answer": "On-the-job training: Coaching at the canning line teaches QAB's own seal settings and checks, costs no course fees, and keeps the 10 trainees working while 17,800 cans a quarter must be filled. It can reduce the 6.8% leaking-seal rate immediately as supervisors correct faults on real cans. The weaknesses are that experienced brewers lose time teaching, bad habits may spread, and no certificate is issued to evidence the quality that 55% of drinkers associate with provenance.\n\nOff-the-job training: The technical college course costs $700 per employee, so 10 × $700 = $7,000, small against the $680,000 investment. It gives structured teaching and a recognised qualification, useful for a cooperative with 9.5% absence and changing staff. However, it takes 10 of 33 workers away from brewing, risking the 2.9-day delivery to distributors, and the generic course still needs adapting to QAB's exact canning line.\n\nDecision: QAB should choose on-the-job training at the brewery, with a short certified college module for team leaders. It is cheaper, specific to the installed line and avoids losing capacity while 9.5% absenteeism is already disrupting shifts. Full off-the-job training is rejected because the $7,000 fee and lost shifts would slow the 17,800-can operation and cannot directly cut the 6.8% seal failures. A one-shift pilot compared with the 2.9% trial figure should decide whether further $700-per-head spending is worthwhile. Members should also consider that with 9.5% absence, training investment needs attendance to improve before more canning-line places are funded, and the appraisal records should show whether the $7,000 has actually reduced the 6.8% seal failures.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to QAB.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of both methods in the context of QAB.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods with a justified decision covering cost, disruption and relevance to the canning line."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$700", "10 of 33", "6.8%", "$680,000"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "QAB's management wants to use its cost and output data to plan the canning line. Calculate and explain how that data can be used.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate QAB's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $245,000 ÷ ($12.10 − $5.10) = $245,000 ÷ $7.00 = 35,000 units. Answer: break-even output is 35,000 cans a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate QAB's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Current output − Break-even output. Substitution: 80,000 − 35,000 = 45,000 units. Answer: margin of safety is 45,000 cans a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways QAB's management can use this financial data.",
+          "model_answer": "1. Break-even at 35,000 cans against output of 80,000 gives a margin of safety of 45,000, so even a sharp fall in ale sales or the 6.8% seal failures would still leave the $245,000 fixed costs covered.\n2. Contribution of $7.00 lets managers test the survey: the 63% who would pay $0.45 more for locally brewed ale in recyclable cans would lift contribution to $7.45, which can be weighed against the cost of cans before pricing.\n3. Average total cost of $8.16 a can ($245,000 ÷ 80,000 = $3.06, plus $5.10) gives a benchmark for the $680,000 line: canning must cut the 6.8% rejection rate or raise throughput to lower unit cost.\n4. The data supports the financing choice: with 45,000 cans of cushion, members can judge how much overdraft interest is affordable, and compare that with $700 per employee for training 10 workers, before voting on further spending under Elin Quarryfield."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 35,000 cans | (ii) Margin of safety = 45,000 cans | (iii) Four contextual uses explained: 45,000-can cushion against 6.8% seal failures; $0.45 premium on $7.00 contribution; $8.16 unit-cost benchmark for the canning line; and overdraft interest versus $700 training cost.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["35,000", "45,000", "80,000", "$245,000", "$8.16", "$5.10"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate QAB's liquidity by calculating the current ratio and the acid test ratio for 2024 and 2025. Has QAB's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.32 : 1\nCurrent Ratio 2025 = 1.63 : 1\nAcid Test Ratio 2024 = 0.82 : 1\nAcid Test Ratio 2025 = 1.16 : 1\n\nDetailed workings: 2024 current assets = $84,000 inventories + $102,000 trade receivables + $38,000 cash = $224,000, and 2025 current assets = $76,000 + $126,000 + $62,000 = $264,000. Dividing by current liabilities gives $224,000 ÷ $170,000 = 1.32 and $264,000 ÷ $162,000 = 1.63. Excluding inventories: ($224,000 − $84,000) ÷ $170,000 = $140,000 ÷ $170,000 = 0.82, and ($264,000 − $76,000) ÷ $162,000 = $188,000 ÷ $162,000 = 1.16.\n\nEvaluation: Short-term liquidity improved on both measures. Current liabilities fell from $170,000 to $162,000 while current assets rose from $224,000 to $264,000, helped by cash rising from $38,000 to $62,000. The stricter test, which removes ale stock that may be rejected for leaking seals, moved from 0.82 to 1.16, so QAB can now meet short-term debts from cash and receivables alone instead of relying on the $76,000 of inventory. That matters while the cooperative uses $260,000 of surplus and carries a $420,000 overdraft for the $680,000 project. The caution is that receivables rose from $102,000 to $126,000, so retailers and distributors are holding more of QAB's cash, and 9.5% absence plus 6.8% seal failures could add costs faster than the ratios suggest.\n\nConclusion: QAB's financial position has improved. Both measures rose and the 1.16 figure shows the gain does not depend on unsold stock, giving the cooperative more headroom to meet bills. Rising receivables are the main risk, so Elin Quarryfield should tighten credit control with distributors before drawing more on the $420,000 overdraft.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the current ratio and acid test ratio for both years with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of inventory, receivables and liability movements and a justified conclusion on whether liquidity improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.32", "1.63", "0.82", "1.16", "$224,000", "$264,000", "$680,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for QAB of selling its ale in recyclable cans with a brewery provenance label.",
+      "model_answer": "Advantage: The survey found 63% of 560 drinkers would pay $0.45 more for locally brewed craft ale in recyclable cans, and 55% check brewery provenance, so the packaging can lift contribution above $7.00 a can and help justify the $680,000 line. The label also differentiates QAB from mass-market ale in independent retailers, supporting the $12.10 price and the 17,800-can quarterly volume.\n\nDisadvantage: Recyclable cans and labelling can cost more than plain cans, raising the $5.10 variable cost and reducing contribution unless the full $0.45 premium is achieved; the 63% figure records intent, not actual payment. A provenance claim also raises expectations, so the 29 monthly complaints and 6.8% leaking seals could damage the brand if quality slips. The insert gives no can-cost figure, so the net effect cannot be quantified and QAB should trial the label with one retailer. It should compare any price premium actually achieved with the 29 monthly complaints before rolling the recyclable packaging out to all 80,000 cans.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to QAB's survey, packaging, seal failures and costs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["recyclable cans", "63%", "$0.45", "55%", "2.9 days", "$5.10"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 6.4% minimum wage increase and the 14.2% rise in barley, hops and aluminium costs will affect QAB. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.5% to 5.25%): If the $420,000 overdraft remains drawn, the 0.75 percentage-point rise adds 0.75% × $420,000 = $3,150 a year to interest, and unlike a term loan an overdraft is variable-rate, so the cost arrives quickly. It is still small beside $245,000 of fixed costs, and QAB could reduce the balance with the $260,000 surplus, so the direct effect is containable.\n\nMinimum wage increase (6.4%, from $12.20 to $12.98): Each brewery hour costs $0.78 more (6.4% × $12.20 = $0.7808). The insert gives no hours worked and no individual pay rates, so no annual total can be calculated honestly; the defensible judgement is that 9.5% absenteeism forces constant cover, and unless productivity holds near 80,000 cans from a workforce of 33, unit labour cost rises and the $7.00 contribution falls.\n\nInput costs (up 14.2%): Barley, hops and aluminium feed the $5.10 variable cost of every can. The insert does not decompose that cost, so only a labelled upper bound is defensible: if the entire $5.10 were exposed, 14.2% × $5.10 = $0.72 a can, and at 80,000 cans that is roughly $57,900 a year (80,000 × $0.7242). Even a smaller exposed share cuts the $7.00 contribution on every can, and it recurs on every unit, unlike the one-off interest estimate.\n\nConclusion: The 14.2% input-cost rise will have the greatest impact. It compounds across all 80,000 cans and directly attacks the $7.00 contribution that must fund the $680,000 expansion and cover overdraft interest, whereas the rate rise costs only $3,150 a year and can be reduced by repaying the overdraft. The wage rise is second because it recurs with each replacement, but appraisal and better attendance can offset part of it. QAB should cut the 6.8% seal failures and seek the $0.45 premium rather than absorb the whole increase.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to QAB.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on QAB's costs, prices or finance in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes with a justified judgement that input-cost inflation has the greatest impact and why the others are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "6.4%", "14.2%", "$12.98", "$420,000", "$5.10"]
+      }
+    }
+  ]
+}

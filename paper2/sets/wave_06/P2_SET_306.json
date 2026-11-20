@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_306",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Marson Industrial Precision (MIP) is a private limited company in the precision engineering sector, employing a workforce of 60. Founded in 2011 by Elias Marson, it machines steel shafts and gear housings for industrial equipment and operates a hierarchical structure with democratic leadership. MIP plans to invest $720,000 in a new CNC machining cell, financed by a $450,000 ten-year bank loan and $270,000 retained profit. It has fixed costs of $300,000 a year, a variable cost of $14 a unit and a selling price of $22, and currently produces 50,000 units a year. MIP faces two operational problems: a defect rate of 4.2% on machined shafts and rising metal-waste levels in the workshop.",
+    "appendix_1_marketing_ops": "Operations and Quality Report — Q3 2025: The machining cell produced 12,500 precision shafts last quarter at a defect rate of 4.2%, down from 6.1% a year earlier. Customer complaints fell from 44 to 26 a month and average delivery lead time is 5.5 days. A survey of 400 industrial buyers found that 58% would pay up to $0.60 more for certified precision shafts, while 47% check supplier quality accreditation before placing orders. A training needs analysis shows 18 of the 60 operators have not completed on-the-job training in CAM on the new CNC cell; an off-the-job training course in CNC programming at the local college costs $1,100 per employee.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Financial Position of Marson Industrial Precision as at 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Inventories", "90", "100"],
+        ["Trade receivables", "110", "130"],
+        ["Cash and cash equivalents", "50", "70"],
+        ["Current liabilities", "200", "200"],
+        ["Non-current assets", "1,200", "1,500"],
+        ["Capital employed", "1,250", "1,600"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The central bank has raised the base interest rate from 4.50% to 5.25%, increasing borrowing costs for firms with variable-rate loans. (2) The national minimum wage will rise by 5.8% from $13.00 to $13.75 an hour from April 2026, lifting total wage bills. (3) Steel and alloy input costs have risen 8.5% year-on-year, producer price inflation is 6.2%, and demand for industrial equipment components grew 2.8% over the same period."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "MIP plans to fund part of its $720,000 CNC machining cell with a $450,000 bank loan. Explain two advantages for MIP of using retained profit instead of the bank loan.",
+      "model_answer": "Point 1: Retained profit costs MIP no interest payments or capital repayments, which protects cash flow at a time when the business already carries fixed costs of $300,000 a year and a $450,000 bank loan commitment. Using the $270,000 of retained profit means every dollar of the $8 contribution per shaft stays in the business to absorb the 8.5% steel and alloy input-cost inflation reported in Appendix 3, rather than being paid to a lender, so the new cell can reach its 50,000-unit target without extra finance charges.\n\nPoint 2: Retained profit carries no collateral or repossession risk, so the $720,000 CNC cell cannot be seized if industrial buyers delay orders and the defect rate stays at 4.2%. It also keeps control in Elias Marson's hands: no bank can impose conditions on how the hierarchical firm is run, which matters because democratic leadership depends on management being able to keep promises to the 60 staff while the workshop absorbs the new technology.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to MIP's expansion, costs and financing."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["retained profit", "bank loan", "$270,000", "$450,000", "$720,000", "$300,000"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "MIP is launching certified precision shafts to industrial buyers. Consider a trade-exhibition stand, print advertising in engineering magazines, or e-commerce listings on an industrial marketplace. Which should MIP choose to reach these buyers? Justify your recommendation.",
+      "model_answer": "Trade-exhibition stand: A trade exhibition puts MIP's certified shafts directly in front of engineers from industrial equipment manufacturers and allows live demonstration of machining tolerances, which is valuable when 47% of surveyed buyers check quality accreditation. However, stand space, travel and sample costs are high for a 60-employee firm already funding a $720,000 expansion through a $450,000 loan, and attendance is limited to a few events a year, so the reach cannot be sustained.\n\nPrint advertising in engineering magazines: Print ads build credibility with a specialist readership and stay visible for months, suiting technical components with a 5.5-day lead time. The drawback is that circulation is narrow and ageing, response is hard to measure, and an advert cannot show the 4.2% defect reduction as vividly as a demonstration; spend may be wasted on readers who do not buy shafts.\n\nE-commerce listings on an industrial marketplace: A marketplace listing reaches industrial buyers nationally and internationally at low fixed cost, displays certification to the 58% who would pay $0.60 more, and generates measurable enquiries and repeat orders. It suits standard machined shafts produced at 12,500 a quarter and can be scaled up as the CNC cell beds in. Its weakness is price comparison with rivals and the need for good product photographs and descriptions.\n\nRecommendation: MIP should choose e-commerce listings on an industrial marketplace as the primary channel. They reach the exact industrial buyers in the survey at the lowest cost, avoid the heavy fixed spend of exhibitions and the poor measurability of print, and can highlight certification to the 58% willing to pay a premium. Exhibitions are rejected as too expensive and infrequent, and print is rejected as narrow and unmeasurable; MIP can add a small exhibition presence later once online enquiries justify it.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited outline of the three promotional channels with minimal application to MIP.",
+        "level_2_5_to_8": "Detailed discussion of advantages and disadvantages of at least two channels in the context of MIP with some judgement.",
+        "level_3_9_to_12": "Detailed evaluation of all three channels in the context of MIP with a well-justified recommendation explaining why exhibitions and print are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$720,000", "58%", "47%", "industrial buyers", "certified", "5.5 days"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "MIP's defect rate is 4.2% and metal waste is rising. Explain two benefits for MIP of using democratic leadership to improve motivation among its production team.",
+      "model_answer": "Point 1: Democratic leadership gives the 60 operators a real voice in how the new CNC machining cell is organised, so they feel valued and are more likely to take care over each shaft. Consulting the people who actually set up the machines can surface practical fixes for the 4.2% defect rate and the metal-waste problem faster than instructions from a distant manager, and it fits the flat decision-making that a hierarchical structure with democratic leadership is meant to encourage.\n\nPoint 2: Involvement builds commitment and reduces resistance to the $720,000 expansion, which is important when 18 operators still lack on-the-job training. Staff who help design quality checks and shift routines are more likely to attend and to apply the $1,100 off-the-job programming course, so output of 12,500 shafts a quarter is protected, scrap falls, and the $450,000 loan can be serviced without costly rework. Listening to operators also reveals whether the 5.5-day delivery schedule is realistic, so managers can set targets the team accepts instead of deadlines that raise waste.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual development linked to MIP's defect rate, waste and training needs."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["democratic leadership", "4.2%", "workforce of 60", "18", "$1,100", "12,500"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "MIP must upskill 18 operators to run the new CNC cell. Consider on-the-job training on the cell or off-the-job training at the local college at $1,100 per employee. Which should MIP choose? Justify your decision.",
+      "model_answer": "On-the-job training: Training at the CNC cell uses MIP's own machines, fixtures and quality standards, so the 18 operators learn exactly the routines that caused the 4.2% defect rate and the metal waste. It costs no course fees and keeps staff producing the 12,500 shafts a quarter while they learn. The weakness is that the trainers are themselves production workers, so their output falls, bad habits can be copied, and there is no external certificate, which may matter when 47% of buyers check quality accreditation.\n\nOff-the-job training: A college programming course at $1,100 per employee gives structured teaching and a recognised certificate for all 18 staff, costing $19,800 in total — small beside the $720,000 investment. It removes operators from the line for a period, cutting short-term capacity, and the generic syllabus may not match MIP's exact machine settings, so follow-up coaching would still be required.\n\nDecision: MIP should choose on-the-job training first, with short college modules for the most senior operators. It is cheaper, machine-specific and avoids losing output while absenteeism and scrap are already problems; full off-the-job training is rejected because $19,800 of fees and 18 people away from the cell would disrupt the delivery schedule just as the $450,000 loan begins to be repaid. Accredited college modules can be added later once the cell is stable. With 18 staff needing the skill and 60 employees in total, that staged approach spreads cost while keeping the 4.2% defect rate under review and the 12,500-unit quarter intact before further investment.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training methods with limited application to MIP.",
+        "level_2_5_to_8": "Detailed analysis of benefits and drawbacks of both methods in the context of MIP.",
+        "level_3_9_to_12": "Comprehensive evaluation of both methods in the context of MIP with a justified decision covering cost, disruption and machine relevance."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["on-the-job training", "off-the-job training", "$1,100", "$720,000", "18", "12,500"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how MIP's management can use its cost and break-even data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate MIP's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $300,000 ÷ ($22 − $14) = $300,000 ÷ $8 = 37,500 units. Answer: break-even output is 37,500 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate MIP's contribution per unit.",
+          "model_answer": "Formula: Contribution per unit = Selling price − Variable cost per unit. Substitution: $22 − $14 = $8. Answer: contribution per unit is $8."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways MIP's management can use this financial data.",
+          "model_answer": "1. Managers can compare break-even of 37,500 units with actual output of 50,000 units, giving a margin of safety of 12,500 units, to judge whether the $720,000 CNC cell can be worked harder or should be left as a contingency.\n2. Contribution of $8 a unit lets MIP test pricing: a $0.60 premium accepted by 58% of surveyed buyers would raise contribution to $8.60, while a $0.60 discount would cut it to $7.40, showing the volume needed to still cover $300,000 fixed costs.\n3. The $450,000 bank loan can be assessed against the 37,500-unit break-even: above that point each extra shaft adds $8, so managers can check the cell services loan repayments before authorising more capital spending.\n4. Unit cost ($300,000 ÷ 50,000 units + $14 = $20 a unit) provides a benchmark for the 12,500 shafts made last quarter, helping quantify the cost of the 4.2% defect rate and decide whether to renegotiate the $14 variable cost amid 8.5% input inflation."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 37,500 units | (ii) Contribution per unit = $8 | (iii) Four contextual uses: margin of safety of 12,500 units against 50,000 output; pricing/premium modelling on the $0.60 figure; loan servicing on the $450,000 borrowing; and unit-cost benchmarking at $20 to tackle the 4.2% defect rate.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method and 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["37,500", "$8", "50,000", "$300,000", "$14", "$22", "$20"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate MIP's financial position by calculating the current ratio and the acid test ratio for 2024 and 2025. Has MIP's financial position improved? Justify your answer.",
+      "model_answer": "Calculations:\nCurrent Ratio 2024 = 1.25 : 1\nCurrent Ratio 2025 = 1.50 : 1\nAcid Test Ratio 2024 = 0.80 : 1\nAcid Test Ratio 2025 = 1.00 : 1\n\nDetailed workings: 2024 current assets = $90,000 inventories + $110,000 trade receivables + $50,000 cash = $250,000; 2025 current assets = $100,000 + $130,000 + $70,000 = $300,000. Dividing each by current liabilities of $200,000 in both years gives 1.25 and 1.50. Excluding inventories: ($250,000 − $90,000) ÷ $200,000 = $160,000 ÷ $200,000 = 0.80 in 2024, and ($300,000 − $100,000) ÷ $200,000 = $200,000 ÷ $200,000 = 1.00 in 2025.\n\nEvaluation: Liquidity has strengthened. The current ratio rose from 1.25 to 1.50 because current assets grew from $250,000 to $300,000 while current liabilities held at $200,000. More importantly, the measure that strips out stock improved from 0.80 to 1.00, so by 2025 MIP can cover every dollar of short-term debt without relying on selling inventories — valuable when it is servicing a $450,000 loan and investing $720,000 in the CNC cell. Cash also rose from $50,000 to $70,000, giving a small extra buffer for the $450,000 loan. The caution is that trade receivables climbed from $110,000 to $130,000, tying up cash; if industrial buyers pay slowly, both ratios could weaken quickly, and inventories rose to $100,000, so stock tied up in slow-moving shafts should be watched.\n\nConclusion: MIP's financial position has improved. Both measures rose, and the improvement does not depend on inventory, which is the stricter test. The remaining risk is rising receivables, so tighter credit control is needed before further borrowing.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates both ratios for 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate calculations for both years with detailed evaluation of inventories, receivables and liabilities and a justified conclusion on whether liquidity improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1.25", "1.50", "0.80", "1.00", "$250,000", "$300,000", "$450,000"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for MIP of introducing CAM (computer-aided manufacturing) on its new CNC cell.",
+      "model_answer": "Advantage: CAM can machine shafts to a consistent tolerance, directly tackling the 4.2% defect rate and the metal-waste problem in the workshop. More accurate cuts mean fewer rejected parts out of the 12,500 shafts made each quarter, protecting the $8 contribution per unit and helping the $720,000 CNC cell reach its 50,000-unit potential without extra scrap cost. It also supports the certified shafts that 58% of buyers would pay $0.60 more for.\n\nDisadvantage: CAM software and programming skills are expensive, and the insert shows 18 of the 60 operators have not completed on-the-job training, so a skills gap could leave the cell idle or badly set. Programming errors could actually raise defects before the team is ready, and the $1,100 per employee college course adds to the cost of an investment already financed by a $450,000 loan, delaying any return. The 47% of surveyed buyers who check accreditation may also demand evidence that CAM output meets tolerance, so inspection remains necessary even with accurate machines.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to MIP's defect rate, training gap and investment."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["CAM", "4.2%", "12,500", "$720,000", "$14", "58%"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the interest rate rise to 5.25%, the 5.8% minimum wage increase and the 8.5% rise in steel and alloy input costs will affect MIP. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Interest rate rise (4.50% to 5.25%): If the $450,000 ten-year bank loan is variable-rate, the rise is 5.25% − 4.50% = 0.75 percentage points, so extra annual interest = 0.75% × $450,000 = 0.0075 × $450,000 = $3,375 a year. That is small against fixed costs of $300,000, and if the loan is fixed-rate the direct cost is zero. Higher rates could still make future borrowing dearer, but the effect on MIP is modest and can be capped by fixing the rate.\n\nMinimum wage increase (5.8%, $13.00 to $13.75 an hour): The insert gives a workforce of 60 and output of 50,000 units, but it states neither hours worked nor individual pay, so no annual wage total can be calculated honestly. What can be derived is labour productivity = 50,000 units ÷ 60 staff = 833.3 units per worker. A wage rise is affordable only if that productivity is maintained or improved; otherwise unit labour cost climbs and the $8 contribution per shaft narrows. The impact is real but depends on factors the insert does not give.\n\nInput-cost inflation (8.5% on steel and alloy): The insert does not decompose the $14 variable cost, so only a clearly labelled upper bound can be shown: if the whole $14 rose by 8.5%, the increase = 8.5% × $14 = 0.085 × $14 = $1.19 a unit; at 50,000 units a year that is 50,000 × $1.19 = $59,500 a year. Even a smaller pass-through would erode contribution on every shaft, and the figure is compounded by the 6.2% producer price inflation.\n\nConclusion: The 8.5% rise in steel and alloy input costs will have the greatest impact. It applies to every one of the 50,000 units and directly attacks the $8 contribution that justifies the $720,000 CNC cell, with a computable upper bound of $59,500 a year. By contrast the interest rise adds a known $3,375 a year at most, and the wage effect cannot be quantified from the insert and can be offset by productivity. Input inflation is therefore the change management must address first, through supplier renegotiation and the $0.60 certified-shaft premium.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external changes with limited application to MIP.",
+        "level_2_5_to_8": "Analyses the impact of at least two changes on MIP's costs, revenue or financing with figures derived from the insert.",
+        "level_3_9_to_12": "Detailed evaluation of all three changes in context with shown derivations and a well-justified judgement that input-cost inflation has the greatest impact."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5.25%", "5.8%", "8.5%", "$450,000", "$14", "$720,000"]
+      }
+    }
+  ]
+}

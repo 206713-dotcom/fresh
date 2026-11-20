@@ -1,0 +1,150 @@
+{
+  "scenario_id": "P2_SET_167",
+  "unit": "Paper 2 Case Study",
+  "case_study_insert": {
+    "main_stem": "Saltmeadow Fibre (SMF) is a private limited company in the telecommunications sector, providing fibre broadband and managed Wi-Fi to homes and small businesses across rural Nova Scotia from Halifax. Founded in 2015 by Chiara Bellucci, SMF employs a workforce of 52 and operates a flat structure with democratic leadership. SMF plans to invest $600,000 in a new 10-gigabit neighbourhood node with automated fault detection, financed by $380,000 retained profit and $220,000 of hire purchase for network hardware. The business has fixed costs of $675,000 a year, a variable cost of $105 a unit and a selling price of $240, and currently produces 13,500 units a year of annual connection contracts. SMF faces an HR problem: staff absenteeism has reached 8% and two senior network engineers resigned last quarter.",
+    "appendix_1_marketing_ops": "Operations Log — October 2026: SMF connected 340 new premises last month across 3 rural exchange areas. Network uptime averaged 99.2%, with 22 fault call-outs resolved in an average of 6.5 hours (down from 19 hours a year ago after automated fault detection went live). Customer complaints fell to 4 per week from 11 a year ago. A flyer campaign in 3 towns generated 84 sign-ups, with 9 new business customers signed last month. Customer satisfaction averages 4.6 out of 5; average cost per connection ticket is $78; the field team logged 1,270 vehicle hours, up 18% year-on-year; average installation now takes 9 days.",
+    "appendix_2_financial_data": {
+      "title": "Extract from the Statement of Profit or Loss and Capital employed data of Saltmeadow Fibre for the year ended 31 March 2025 ($ '000)",
+      "headers": ["Financial Metric", "2024", "2025"],
+      "rows": [
+        ["Revenue", "2,700", "3,240"],
+        ["Cost of sales", "1,620", "1,782"],
+        ["Gross profit", "1,080", "1,458"],
+        ["Operating profit", "405", "594"],
+        ["Capital employed", "2,700", "3,300"],
+        ["Interest payable", "75", "98"]
+      ]
+    },
+    "appendix_3_external_environment": "Economic and Business Bulletin (November 2026): (1) The Bank of Canada raised the target rate to 4.00%, the second rise this year, increasing borrowing costs on variable-rate credit. (2) Nova Scotia's minimum wage will rise 2.3% from $15.70 to $16.06 per hour from April 2027, raising wage bills for junior and field-support staff. (3) Canadian fibre construction costs rose 9.2% year-on-year (trenching, cable and splice closures), while rural broadband adoption grew 11.3% over the year."
+  },
+  "questions": [
+    {
+      "number": "1(a)",
+      "mark_value": 8,
+      "question_text": "SMF plans to finance part of its 10-gigabit neighbourhood node with $220,000 of hire purchase for network hardware. Explain two advantages for SMF of hire purchase instead of paying the full amount upfront from its $380,000 retained profit.",
+      "model_answer": "Point 1: Hire purchase spreads the hardware cost over agreed instalments, so SMF keeps its $380,000 retained profit liquid to cover the $600,000 node build, emergency fibre repairs after winter storms and the backfill costs created by 8% absenteeism. Paying $220,000 upfront would strip more than half of that cushion at the exact moment SMF is committing to its fastest-ever neighbourhood expansion, leaving little room for recruitment, training or an unexpected cable-fault replacement before the new node beds in.\n\nPoint 2: SMF gets immediate use of the network hardware — essential to connect the 340 premises arriving last month and the 13,500 annual connection contracts under management — while ownership transfers only after the final instalment. Fixed, predictable monthly payments make cash flow planning easier, avoid negotiating unsecured bank facilities amid a 4.00% target rate, and cap the risk of draining reserves if construction cost inflation of 9.2% pushes the build over budget. The equipment also lifts fault detection speed, protecting the 4.6-out-of-5 satisfaction score and the 99.2% uptime SMF promises subscribers.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid advantage identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for contextual explanation and analysis applied to Saltmeadow Fibre and its financing decision."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["hire purchase", "retained profit", "$220,000", "$380,000", "$600,000", "13,500"]
+      }
+    },
+    {
+      "number": "1(b)",
+      "mark_value": 12,
+      "question_text": "SMF is launching its 10-gigabit neighbourhood node. Consider a community radio campaign, door-to-door flyer drops in the exchange areas, or sponsoring the Halifax Seaport minor-hockey tournament. Which should SMF choose to promote the launch? Justify your recommendation.",
+      "model_answer": "Community radio campaign: A Halifax community radio campaign would put SMF in front of rural households cheaply and build friendly local recognition for the new 10-gigabit node. However, radio listeners span the whole region, including areas SMF's fibre does not yet reach, the price ($240 a year) and the sign-up process cannot be explained well in a 30-second slot, and there is no direct measurement of who actually signs a contract versus who simply heard the ad.\n\nDoor-to-door flyer drops in the exchange areas: Flyers target exactly the three exchange areas being connected, carry a QR code and launch pricing, and can be tracked by scanning codes per street. They are cheap, tangible and reach non-radio listeners — perfect for the 11.3% rural broadband adoption wave. Drawbacks: printing and distribution labour for volunteers is limited, bad weather halts drops, flyers are often binned, and the approach cannot answer technical questions about speed tiers or installation (currently 9 days) on the doorstep.\n\nSponsoring the Halifax Seaport minor-hockey tournament: A tournament sponsorship would associate SMF with community life, put its logo on rink boards for a weekend and reach hundreds of small-business owners and households through signage, jerseys and announcements. Drawbacks: cost per reached household is high, the event is one weekend a year, most attendees live outside SMF's three exchange areas, and ROI is hard to attribute to actual subscriptions.\n\nRecommendation: SMF should choose door-to-door flyer drops in the three exchange areas. It is the only option that targets precisely the households the new node will serve, at minimal cost, with measurable QR-code conversion — ideal for a community launch where installation logistics (9 days) and coverage boundaries are the real selling questions. Community radio is rejected as broad, unmeasurable and untargeted to covered streets; hockey sponsorship is rejected as high-cost, one-off and mostly reaching outside SMF's footprint, though SMF should add modest radio spots later to reinforce flyer conversion once the node is live.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Limited knowledge or outline of the promotional options with minimal context.",
+        "level_2_5_to_8": "Detailed discussion of the advantages and disadvantages of at least two options in the context of SMF with some judgement.",
+        "level_3_9_to_12": "Detailed discussion of all three options in the context of SMF with a well-justified recommendation explaining why radio and hockey sponsorship are rejected."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["$240", "6.5 hours", "99.2%", "4.6 out of 5", "340 new premises", "9 days"]
+      }
+    },
+    {
+      "number": "2(a)",
+      "mark_value": 8,
+      "question_text": "Two of SMF's senior network engineers have resigned and staff absenteeism has reached 8%. Explain two benefits for SMF of using job enrichment to motivate its remaining field and network engineers.",
+      "model_answer": "Point 1: Job enrichment — for example, giving field engineers end-to-end ownership of an exchange area from fault detection to household sign-off, plus a voice in node design decisions — adds responsibility, variety and achievement (Herzberg motivators) to work that can otherwise become repetitive call-out drudgery. Enriched roles make the noticeable 8% absenteeism harder to trigger, because engineers with ownership are far more invested than those just clearing tickets, and it signals to resigning-style flight risks that SMF backs their growth, directly supporting retention of the remaining senior engineers.\n\nPoint 2: Enrichment accelerates skill development on the automated fault-detection system, cutting the 6.5-hour average fix time and the 22 monthly call-outs on the live network. It also improves the quality of field judgement at customer premises, reinforcing the 4.6-out-of-5 satisfaction score and the 99.2% uptime that differentiate SMF from cable alternatives — and because flat-structure democratic leadership already invites engineer input, enrichment is a natural next step that converts goodwill into measurable network performance without across-the-board pay rises that would strain a $675,000 fixed-cost base.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for each valid benefit identified (max 2)."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SMF's absenteeism, retention and network performance."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["absenteeism", "flat structure", "8%", "6.5 hours", "4.6 out of 5", "workforce of 52"]
+      }
+    },
+    {
+      "number": "2(b)",
+      "mark_value": 12,
+      "question_text": "SMF must train its eight new junior technicians to install and maintain the 10-gigabit node. Consider on-the-job training with senior engineers or off-the-job training at a Nova Scotia Community College telecom programme. Which should SMF choose? Justify your decision.",
+      "model_answer": "On-the-job training with senior engineers: Training inside live exchange areas exposes juniors to real fibre faults, splice closures and customer premises exactly as SMF operates them, is tailored to SMF's network and tooling, keeps juniors productive across the 1,270 vehicle hours logged each month, and costs no tuition fees. Seniors also model the 6.5-hour fault-resolution standard and NSCC-independent certifications. Drawbacks: seniors pulled from fault queues lose productive hours amid 8% absenteeism, bad habits can pass on, and juniors may learn narrowly without broader transmission-theory grounding.\n\nOff-the-job training at a Nova Scotia Community College telecom programme: A structured college programme delivers recognised certificates (fibre splicing, PON architecture, safety tickets) that clients and municipalities value, builds broad theory that shadowing cannot, and signals audited competence. However, removing eight juniors for weeks would hollow out field coverage during winter repair season, cost tuition on top of salaries from a $675,000 fixed-cost base, and much content would not map to SMF's exact PON design, requiring re-training on return.\n\nDecision: SMF should choose on-the-job training with senior engineers as the primary route, adding a short college block (two weeks) for the two best juniors. On-the-job is faster, cheaper, directly relevant and sustainable given the current field rota; full college is rejected because withdrawing eight staff during winter fault season would blow out installation (9 days) and fault-fix (6.5 hours) targets and risk the 4.6-out-of-5 satisfaction score before the node even opens. SMF should still set competency milestones with sign-off, or knowledge gaps will resurface during the first major storm event.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Basic description of the two training options with limited application to SMF.",
+        "level_2_5_to_8": "Detailed analysis of the benefits and drawbacks of one or both training options in the context of SMF.",
+        "level_3_9_to_12": "Comprehensive evaluation of both options in the context of SMF with a well-justified decision covering cost, coverage pressure, relevance and certification."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["1,270 vehicle hours", "4.6 out of 5", "8%", "$78", "340 new premises", "9 days"]
+      }
+    },
+    {
+      "number": "3(a)",
+      "mark_value": 8,
+      "question_text": "Calculate and explain how SMF's management can use its cost, break-even and productivity data.",
+      "sub_parts": [
+        {
+          "part": "(i)",
+          "marks": 2,
+          "question_text": "Calculate SMF's break-even output.",
+          "model_answer": "Formula: Break-even output = Fixed costs ÷ Contribution per unit. Substitution: $675,000 ÷ ($240 − $105) = $675,000 ÷ $135 = 5,000 units. Answer: break-even output is 5,000 units a year."
+        },
+        {
+          "part": "(ii)",
+          "marks": 2,
+          "question_text": "Calculate SMF's margin of safety.",
+          "model_answer": "Formula: Margin of safety = Actual output − Break-even output. Substitution: 13,500 − 5,000 = 8,500 units. Answer: margin of safety is 8,500 units a year."
+        },
+        {
+          "part": "(iii)",
+          "marks": 4,
+          "question_text": "Explain four ways SMF's management can use this financial data.",
+          "model_answer": "1. SMF's managers can compare the 5,000-unit break-even output with the 13,500 contracts sold to confirm a margin of safety of 8,500 units, showing the network can absorb churn — for instance the pressure from two senior engineer resignations — without falling below break-even on connected premises.\n2. Contribution per unit of $135 against the $240 connection price lets managers model a premium tier: moving 1,000 subscribers to a $300 gigabit plan lifts contribution to $195 and lowers break-even to about 3,462 units, quantifying whether the new node justifies migrating early adopters onto gigabit pricing.\n3. Fixed costs of $675,000 against contribution of $135 per unit support SMF's negotiation for the $220,000 hire purchase instalments, demonstrating to the hardware vendor and to Chiara Bellucci that the node expansion services its own costs rather than draining the $380,000 retained profit.\n4. Managers can use unit cost data ($675,000 ÷ 13,500 = $50 + $105 = $155 a unit) to benchmark against the $78 average cost per connection ticket and the 11.3% rural adoption growth, identifying which exchange areas deserve the next node build and setting pricing that protects the 18.3% operating share of revenue."
+        }
+      ],
+      "model_answer": "(i) Break-even output = 5,000 units | (ii) Margin of safety = 8,500 units | (iii) Four contextual uses explained: margin of safety versus 13,500-contract output; gigabit repricing leveraged on $135 contribution; hire-purchase affordability for the $600,000 node; and unit-cost benchmarking at $155 against $78 connection tickets.",
+      "mark_scheme": {
+        "working_marks": ["1 mark for correct formula/method, 1 mark for accurate numerical answer in (i) and (ii). 1 mark per valid applied point in (iii)."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["5,000", "8,500", "13,500", "$675,000", "$135", "$240", "$155"]
+      }
+    },
+    {
+      "number": "3(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 2, evaluate SMF's financial performance by calculating the gross profit margin, profit margin and ROCE for 2024 and 2025. Which year shows stronger performance, and has SMF's financial performance improved? Justify your answer.",
+      "model_answer": "Calculations:\nGross Profit Margin 2024 = 40.0%\nGross Profit Margin 2025 = 45.0%\nProfit Margin 2024 = 15.0%\nProfit Margin 2025 = 18.3%\nROCE 2024 = 15.0%\nROCE 2025 = 18.0%\n\nDetailed workings: 2024 gross profit = $2,700,000 − $1,620,000 = $1,080,000; 2025 gross profit = $3,240,000 − $1,782,000 = $1,458,000. 2024 operating profit $405,000; 2025 operating profit $594,000. Returns on capital employed 2024 = $405,000 ÷ $2,700,000 = 15.0%; 2025 = $594,000 ÷ $3,300,000 = 18.0%. Operating profit expressed as a share of revenue 2025 = $594,000 ÷ $3,240,000 = 18.3%; 2024 = $405,000 ÷ $2,700,000 = 15.0%. Capital employed rose $600,000 — exactly the new node financed by hire purchase plus retained profit.\n\nEvaluation: Performance improved across every measure. The share of revenue retained as gross profit rose from 40.0% to 45.0%, reflecting automated fault detection cutting field call-outs and scale economies on fibre lit capacity, and operating profit jumped $189,000 to $594,000 despite the $600,000 capital injection. Returns on capital rose from 15.0% to 18.0%, meaning the new node is earning more than it costs to finance, with interest payable of $98,000 — up only $23,000 from $75,000 — comfortably covered. Risks: construction cost inflation of 9.2% will raise the next node build; the 2.3% minimum-wage rise adds wage pressure on junior field roles; and engineer churn (two seniors gone) could reverse the fault-fix gains if not checked by enrichment and democratic leadership.\n\nConclusion: SMF's financial performance has improved. Gross profitability reached 45.0%, returns on capital 18.0% and operating profitability 18.3%, all ahead of 2024 despite a larger asset base and higher interest. The expansion is delivering, but SMF must lock fibre-construction pricing, fix the cycle on minimum-wage bench, and stabilise its senior team, or 2026 could give the gains back.",
+      "mark_scheme": {
+        "level_1_1_to_4": "States financial figures or changes without accurate ratio calculations.",
+        "level_2_5_to_8": "Accurately calculates the gross profit margin, profit margin and ROCE for both 2024 and 2025 with contextual analysis of the trend.",
+        "level_3_9_to_12": "Accurate ratio calculations for both years combined with detailed evaluation of revenue, costs and capital employed movements and a justified conclusion on whether SMF's financial performance improved."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["40.0%", "45.0%", "15.0%", "18.3%", "18.0%", "1,458", "594", "3,300"]
+      }
+    },
+    {
+      "number": "4(a)",
+      "mark_value": 8,
+      "question_text": "Explain one advantage and one disadvantage for SMF of building the new 10-gigabit neighbourhood node with automated fault detection.",
+      "model_answer": "Advantage: Automated fault detection already cut SMF's fix time from 19 hours to 6.5 hours for the 22 call-outs last month, lifting uptime to 99.2% and complaints to 4 per week from 11 a year ago. Extending it to the 10-gigabit node means faults are localised before customers notice, protecting the 4.6-out-of-5 rating, reducing truck rolls and their $78 ticket cost, and making SMF's premium-tier promise credible to the 340 households and 9 business customers signed last month — a direct differentiator against cable incumbents in rural Nova Scotia.\n\nDisadvantage: The automated system requires clean network data and trained staff — exactly the capability strained by two senior engineer resignations and an 8% absenteeism rate. Mis-tuned detection creates alert fatigue, false alarms waste field vehicles, and an undetected fibre break on the new node would hammer the 99.2% uptime promise during peak evening streaming hours. The $600,000 build also consumes the room SMF needs for future nodes, and if take-up disappoints in the three exchange areas, fixed capacity costs would drag the 18.3% operating share of revenue down instead of lifting it.",
+      "mark_scheme": {
+        "knowledge_max_2": ["1 mark for a valid advantage and 1 mark for a valid disadvantage."],
+        "application_analysis_max_6": ["Up to 3 marks per point for detailed contextual development linked to SMF's network performance, costs and customers."]
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["6.5 hours", "99.2%", "4.6 out of 5", "$600,000", "$78", "340 new premises"]
+      }
+    },
+    {
+      "number": "4(b)",
+      "mark_value": 12,
+      "question_text": "Using Appendix 3, evaluate how the Bank of Canada's rate rise to 4.00%, the 2.3% Nova Scotia minimum-wage increase and the 9.2% rise in fibre construction costs will affect SMF. Which change will have the greatest impact? Justify your answer.",
+      "model_answer": "Rate rise to 4.00%: SMF funds the node build with retained profit and hire purchase rather than heavy variable-rate bank debt, so a 4.00% target rate adds little direct cash cost — it modestly raises any variable-rate facilities and the cost of future hardware finance. Higher rates may also cool rural housing sales and small-business creation, slowing some new-connection sign-ups in the three exchange areas, and raise household caution on discretionary upgrades to gigabit tiers. The effect is real but indirect and manageable; fixing any floating rate removes most of it, so it should not drive strategy.\n\nMinimum-wage rise of 2.3% to $16.06 per hour: This reaches junior field technicians, installation crews and customer-service staff in Nova Scotia. If applied across, say, 20 junior and field-support staff at about 2,080 hours a year, the extra $0.36 an hour costs roughly $15,000 a year — small against $3,240,000 revenue and the 45.0% gross profit. Senior network engineers earn well above minimum wage, so technical costs are untouched; the rise mainly nudges junior-pay benchmarking and reinforces the need to keep enrichment and democratic leadership front-of-mind for retention ahead of winter storm season.\n\nFibre construction costs up 9.2%: Construction — trenching, cable, splice closures — is the dominant input in any new node or exchange build. A 9.2% rise on the $600,000 node adds roughly $55,000 to the build before SMF connects a single premise, and every future node faces the same inflation, directly attacking SMF's growth pipeline into the 11.3%-growing rural broadband market. It also inflates repair and extension quotes for the existing 13,500 contracts, compressing the 45.0% gross profit and making the 9-day installation target harder to defend as crews redeploy to fix overruns. Unlike the rate rise, this cost is unavoidable and recurring on every expansion, and cannot be passed to price-sensitive rural households paying $240 a year.\n\nConclusion: The 9.2% rise in fibre construction costs will have the greatest impact. It recurs on every expansion build, raises the capital hurdle for the three exchange areas now in the pipeline and strains the 45.0% gross profit at exactly the moment SMF is scaling — far more than the 2.3% wage rise (~$15,000 a year on junior roles) or the 4.00% rate rise (near-zero direct cash effect given SMF's low debt). SMF should negotiate fixed-price construction contracts, forward-buy cable and closures, and sequence node builds to lock today's prices before another 9% lands.",
+      "mark_scheme": {
+        "level_1_1_to_4": "Identifies the external factors with limited application to SMF.",
+        "level_2_5_to_8": "Analyses the impact of at least two external changes on SMF's costs, demand or financing in context.",
+        "level_3_9_to_12": "Detailed evaluation of all three external changes in the context of SMF with a well-justified judgment that fibre construction cost inflation has the greatest impact and why the other two are smaller."
+      },
+      "qwen_marking_keys": {
+        "valid_app_words": ["4.00%", "2.3%", "9.2%", "11.3%", "$15.70", "$16.06"]
+      }
+    }
+  ]
+}

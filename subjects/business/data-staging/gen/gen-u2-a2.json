@@ -1,0 +1,1258 @@
+[
+  {
+    "scenario_id": "P1_U2_SET_111",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Brightstead Superstores employs 320 staff across 14 Country X supermarkets, including 85 warehouse pickers who pack online grocery orders into crates each morning. Pickers are paid a time rate of $11.50 per hour on a 38-hour week, about $437 before deductions, and each picker averages 800 items per shift. Over the past year, labour turnover among pickers reached 28% and the order error rate hit 6%, costing an estimated $3,100 a month in replacements and customer refunds.\n\nOperations manager Dmitri Alvarez proposes replacing the time rate with a piece rate of $0.11 per item picked, which would pay an average picker about $440 a week at current volumes. The alternative is to keep the time rate and add a $40 weekly team bonus for any week when order accuracy exceeds 97% and turnover stays below 20%.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'piece rate'.",
+        "model_answer": "A payment system where employees are paid a fixed amount for each item they produce or complete, rather than for the hours they work [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "paid per item or unit completed",
+            "contrasts with time-based pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Brightstead Superstores might introduce the piece rate for warehouse pickers.",
+        "model_answer": "Reason 1: Piece rate links pay directly to output [k], which should raise productivity as each picker who averages 800 items per shift would earn about $440 a week [app]. Reason 2: It could help cut labour turnover [k], easing the 28% turnover that leaves $3,100 a month of replacement and refund costs [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "pay linked to output encourages effort",
+            "helps reduce labour turnover"
+          ],
+          "application_max_2": [
+            "800 items per shift",
+            "$440 a week",
+            "28% turnover",
+            "$3,100 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "piece rate",
+            "$0.11",
+            "800 items",
+            "$440",
+            "28%",
+            "$3,100",
+            "warehouse pickers"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Brightstead Superstores of keeping the time rate and adding the weekly accuracy bonus.",
+        "model_answer": "Benefit 1: It rewards accuracy rather than speed [k], so the 6% error rate and the $3,100 a month replacement and refund bill should fall [app], cutting wasted costs and protecting margins [an]. Benefit 2: Cautious, accurate pickers keep a stable income [k], because $11.50 per hour is guaranteed on a 38-hour week with an extra $40 weekly team bonus only above 97% accuracy [app], which should lift morale and hold turnover below 20% [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rewards quality and accuracy, not just speed",
+            "income security maintains morale"
+          ],
+          "application_max_2": [
+            "6% error rate",
+            "$3,100 a month",
+            "$11.50 per hour",
+            "$40 weekly team bonus",
+            "97% accuracy"
+          ],
+          "analysis_max_2": [
+            "fewer errors reduce refund and replacement costs",
+            "secure pay plus bonus supports morale and retention"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "time rate",
+            "$11.50",
+            "$40",
+            "97%",
+            "6%",
+            "$3,100",
+            "order error rate"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brightstead Superstores should replace the time rate with a piece rate for warehouse pickers? Justify your answer.",
+        "model_answer": "Switching links pay to output [k]; at $0.11 per item an average picker earns about $440 a week, matching the current $437 time rate [app], so fast pickers are rewarded and productivity should rise [an]. However, piece rate can encourage rushing [k]; with errors already at 6% and costing $3,100 a month, paying per item could push accuracy below the 97% the bonus scheme demands [app], increasing refunds and damaging customer trust [an]. Overall, Brightstead should keep the time rate and add the $40 team bonus instead [eval], because online grocery fulfilment depends on correct orders, not just fast ones [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "piece rate rewards output speed",
+            "piece rate risks poor quality and rushing"
+          ],
+          "application_max_2": [
+            "$0.11 per item",
+            "$440 a week",
+            "$437",
+            "6%",
+            "$3,100 a month"
+          ],
+          "analysis_max_2": [
+            "output-linked pay should raise picker productivity",
+            "rushing increases errors, refunds and customer harm"
+          ],
+          "evaluation_max_2": [
+            "weighs higher output against order accuracy and fulfilment quality"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "piece rate",
+            "$0.11",
+            "$440",
+            "$437",
+            "97%",
+            "6%",
+            "$3,100",
+            "$40 weekly team bonus"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_112",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "The Marram Bay Hotel is a 3-star coastal hotel in Country X employing 74 full-time staff across housekeeping, front desk and kitchen teams. Its events and weddings manager, who has worked there for 4 years, arranges private functions and booked events worth $875,000 last year, the hotel's second-biggest revenue source. The manager is paid a salary of $2,600 a month with no commission of any kind. This year the hotel aims to launch two new beach wedding packages in March and targets events bookings of $900,000.\n\nOwner Priya Ramanthan is deciding between adding a commission of 4% on confirmed events revenue, which would have paid the manager about $35,000 at last year's level, or raising the monthly salary to $3,100, an extra $6,000 a year. The front-desk team are also hinting that they expect a pay rise.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'commission'.",
+        "model_answer": "A payment calculated as a percentage of the value of sales an employee makes, usually paid in addition to or instead of a basic wage [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "percentage of sales value",
+            "linked to selling performance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the Marram Bay Hotel might add 4% commission for its events manager.",
+        "model_answer": "Reason 1: Commission directly links reward to sales achieved [k], giving the manager a strong incentive to fill the calendar of two new beach wedding packages launched in March [app]. Reason 2: It ties the hotel's payment to confirmed events revenue [k], so the 4% commission would track the $900,000 target instead of committing a fixed $6,000 salary rise [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ties pay to sales performance",
+            "motivates selling effort"
+          ],
+          "application_max_2": [
+            "two new beach wedding packages",
+            "confirmed events revenue",
+            "$900,000 target",
+            "$6,000 salary rise"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "commission",
+            "4%",
+            "$875,000",
+            "$900,000",
+            "weddings manager",
+            "$35,000",
+            "beach wedding packages"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to the manager of keeping a higher salary instead of taking the commission.",
+        "model_answer": "Benefit 1: A salary gives a predictable income every month [k], so the manager can budget reliably rather than depend on whether the $900,000 booking target is met [app], reducing financial stress and improving focus on service quality [an]. Benefit 2: A raise to $3,100 is guaranteed pay [k], worth $6,000 more a year with no risk if few events are booked, such as after a weak January [app], making earnings more secure than a 4% commission that paid about $35,000 only at last year's level of $875,000 [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "salary provides income certainty",
+            "guaranteed raise removes sales risk"
+          ],
+          "application_max_2": [
+            "$3,100",
+            "$6,000 more a year",
+            "$900,000 booking target",
+            "4% commission",
+            "$875,000"
+          ],
+          "analysis_max_2": [
+            "predictable pay reduces stress and supports service quality",
+            "guaranteed income protects against weak trading months"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,100",
+            "$6,000",
+            "salary",
+            "$900,000",
+            "$875,000",
+            "4%",
+            "commission"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Marram Bay Hotel should add 4% commission rather than raise the manager's salary to $3,100 a month? Justify your answer.",
+        "model_answer": "Commission ties reward to results [k]; at 4% of last year's $875,000 bookings the manager could earn about $35,000, far more than a $6,000 salary rise [app], so the manager is pushed to fill the two new beach wedding packages and hit $900,000 [an]. However, high commission can tempt over-promising to close sales [k], and the manager may neglect existing corporate clients worth $875,000 a year [app], damaging the hotel's reputation among loyal event bookers [an]. Overall, the hotel should add the commission [eval], because a results-linked cost rises only when revenue does and it most strongly motivates hitting the $900,000 target [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission motivates sales performance",
+            "commission can distort behaviour and neglect existing clients"
+          ],
+          "application_max_2": [
+            "4%",
+            "$875,000",
+            "$35,000",
+            "$6,000 salary rise",
+            "$900,000"
+          ],
+          "analysis_max_2": [
+            "results-linked pay rises only with revenue",
+            "commission pressure may harm service and client coverage"
+          ],
+          "evaluation_max_2": [
+            "weighs higher potential earnings against behaviour risk and client neglect"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "commission",
+            "4%",
+            "$875,000",
+            "$35,000",
+            "$3,100",
+            "$900,000",
+            "beach wedding packages"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_113",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Casa Verde Restaurants runs 6 family dining restaurants in Country X employing 190 full-time staff, including 60 chefs, 74 waiting staff and 12 supervisors. Profit last year was $240,000 after all expenses were deducted. Founder Lucia Ferrer has always paid every employee a fixed Christmas bonus of $250, costing $47,500 each year regardless of how profitable the business is, and staff treat it as guaranteed income every December.\n\nLucia is considering replacing the fixed bonus with a profit-sharing scheme distributing 20% of annual profit among all staff, which would have paid $48,000 this year, or about $253 each. In a strong year with profit of $300,000 the pool would reach $60,000, but in a weak year with little or no profit, employees could receive nothing at all. The waiting staff prefer the guaranteed bonus payment.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'profit sharing'.",
+        "model_answer": "A financial reward in which employees receive a share of the business's profit, usually paid as a percentage of profit, in addition to their normal pay [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "share of business profit paid to employees",
+            "linked to overall performance rather than individual output"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Casa Verde Restaurants might replace the fixed Christmas bonus with a profit-sharing scheme.",
+        "model_answer": "Reason 1: Profit sharing links rewards to business performance [k], so staff have an incentive to control costs and grow profit beyond $240,000 [app]. Reason 2: It makes the reward affordable in weak years [k], because the pool is 20% of profit rather than a guaranteed $47,500 cost [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "links pay to business performance",
+            "variable cost adjusts to profitability"
+          ],
+          "application_max_2": [
+            "$240,000 profit",
+            "20% of profit",
+            "$47,500"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit-sharing scheme",
+            "20%",
+            "$240,000",
+            "$47,500",
+            "$48,000",
+            "190 full-time staff",
+            "fixed Christmas bonus"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to Casa Verde employees of keeping the fixed Christmas bonus.",
+        "model_answer": "Benefit 1: The bonus is guaranteed income [k], so all 190 staff know the $250 will arrive every December regardless of profit [app], making it easier to plan household budgets over winter [an]. Benefit 2: It feels fair across roles [k], because waiting staff and chefs receive the same $250 rather than a share diluted by seniority or hours [app], supporting goodwill and teamwork during the busiest season [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "guaranteed income for employees",
+            "equal treatment across roles"
+          ],
+          "application_max_2": [
+            "$250",
+            "190 staff",
+            "waiting staff and chefs"
+          ],
+          "analysis_max_2": [
+            "certainty helps winter budgeting",
+            "equal pay supports goodwill in peak season"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Christmas bonus",
+            "$250",
+            "190",
+            "$47,500",
+            "waiting staff",
+            "guaranteed"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Casa Verde Restaurants should replace the fixed Christmas bonus with a profit-sharing scheme? Justify your answer.",
+        "model_answer": "Profit sharing aligns everyone with profit [k]; this year 20% of $240,000 would pay $48,000, slightly more than the $47,500 fixed bonus [app], and if profit reached $300,000 the pool would rise to $60,000, rewarding strong performance [an]. However, staff prefer certainty [k]; in a weak year with little profit, 190 employees could receive nothing instead of $250 each [app], demoralising the waiting staff who already earn modest tips [an]. Overall, Casa Verde should switch to profit sharing [eval], because it caps costs at 20% of profit and turns rewards into a shared performance goal, provided staff are shown how their actions cut waste [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "aligns staff with profit performance",
+            "rewards can be zero in weak years"
+          ],
+          "application_max_2": [
+            "20% of $240,000",
+            "$48,000",
+            "$47,500",
+            "$60,000",
+            "$250 each"
+          ],
+          "analysis_max_2": [
+            "variable pool rises when profit grows",
+            "zero-pay risk demoralises lower-paid staff"
+          ],
+          "evaluation_max_2": [
+            "weighs performance alignment and cost control against income certainty for staff"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "profit-sharing scheme",
+            "20%",
+            "$240,000",
+            "$48,000",
+            "$47,500",
+            "$300,000",
+            "$60,000",
+            "fixed Christmas bonus"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_114",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Polished Petals Hair Studio operates a busy city-centre salon in Country X with 9 full-time stylists paid a monthly salary of $1,450. Total services revenue last month was $41,400, an average of $4,600 per stylist. The two senior stylists each billed over $6,000, while the newest stylist billed $3,200 in her first full month, and would earn only $1,120 a month at 35% commission on those services.\n\nStylist Grace Okoro suggests switching everyone to a 35% commission on services revenue with no retainer; she would earn about $2,100 a month on $6,000 of work. However, the owner favours keeping the salary and adding a small 8% commission on retail product sales only. The other 8 stylists remain divided on which pay system they prefer for the coming year.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'salary'.",
+        "model_answer": "A fixed annual payment for a worker's job, usually paid monthly or fortnightly, which is not directly linked to the number of hours, items produced or sales made [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "fixed regular payment for a job",
+            "not linked to output, hours or sales"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Grace Okoro supports switching to a 35% commission on services revenue.",
+        "model_answer": "Reason 1: Commission rewards high performers [k], so on $6,000 of services she would take home about $2,100 a month instead of $1,450 [app]. Reason 2: It removes the earnings ceiling [k], because taking a 35% share of services revenue means the harder she sells and serves, the more she earns beyond the fixed salary [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "high earners rewarded proportionately",
+            "earnings rise with personal sales effort"
+          ],
+          "application_max_2": [
+            "$6,000",
+            "$2,100 a month",
+            "$1,450",
+            "35%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "35%",
+            "services revenue",
+            "$2,100",
+            "$6,000",
+            "$1,450",
+            "Grace Okoro",
+            "commission"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits to the studio of keeping the salary and adding retail-sales commission.",
+        "model_answer": "Benefit 1: Stylists keep income certainty [k], because the guaranteed $1,450 salary stays and the newest stylist who billed $3,200 would not see pay fall to $1,120 under pure commission [app], avoiding resignations and the cost of rehiring in a skills-short trade [an]. Benefit 2: The 8% retail commission targets a neglected area [k], because retail products are not reflected in the services revenue of $41,400 discussed so far [app], encouraging staff to sell treatments and aftercare products alongside cuts [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stable income protects retention",
+            "retail commission targets add-on sales"
+          ],
+          "application_max_2": [
+            "guaranteed $1,450 salary",
+            "billed $3,200",
+            "$1,120",
+            "8% retail commission",
+            "$41,400"
+          ],
+          "analysis_max_2": [
+            "avoids losing junior staff and recruitment costs",
+            "broadens earnings source to retail without risking base pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "salary",
+            "$1,450",
+            "$3,200",
+            "$1,120",
+            "8%",
+            "retail product sales",
+            "$41,400"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Polished Petals Hair Studio should switch stylists to a 35% commission on services revenue? Justify your answer.",
+        "model_answer": "Commission would strongly motivate selling [k]; Grace Okoro billing $6,000 would earn about $2,100 a month, $650 above her salary [app], driving senior staff to upsell premium treatments and fill more appointments [an]. However, pure commission exposes junior staff [k]; the newest stylist who billed $3,200 would earn only about $1,120, below the current $1,450 [app], risking demotivation and departure precisely when training investment is highest [an]. Overall, the studio should keep the $1,450 salary with 8% retail commission [eval], because the mixed system keeps pay fair across the 9 stylists and still rewards effort [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "commission motivates senior sales effort",
+            "commission is risky for juniors and low billers"
+          ],
+          "application_max_2": [
+            "$6,000",
+            "$2,100",
+            "$1,450",
+            "$3,200",
+            "$1,120"
+          ],
+          "analysis_max_2": [
+            "higher commission drives upselling and fuller books",
+            "pay drop for juniors risks demotivation and exit"
+          ],
+          "evaluation_max_2": [
+            "weighs motivation of seniors against fairness and retention of juniors"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "35% commission",
+            "$6,000",
+            "$2,100",
+            "$1,450",
+            "$3,200",
+            "$1,120",
+            "9 full-time stylists"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_115",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "UrbanPulse Fitness operates 5 clubs across Country X employing 60 staff in total, including 22 group-exercise instructors paid $13 per hour. Instructors teach the same pre-set classes every week, following routines designed by the head office, and turnover among them reached 35% last year. Instructor payroll is about $446,160 a year based on 30-hour weeks.\n\nOwner Marcus Whitlam is deciding between a straight 8% pay rise, which would cost about $35,700 a year, or a job enrichment programme where instructors design their own classes, track members' progress and run their own promotion workshops, at a one-off cost of $6,000. Exit interviews repeatedly cited boredom and lack of ownership, not pay, as the main reasons instructors gave for leaving the clubs.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'job enrichment'.",
+        "model_answer": "A non-financial method of motivation where employees are given more demanding, varied or complex tasks and greater control over how they carry them out [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "more demanding or varied tasks",
+            "greater control and responsibility for the worker"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why UrbanPulse Fitness might introduce job enrichment for its instructors.",
+        "model_answer": "Reason 1: Job enrichment makes work more challenging and meaningful [k], addressing the boredom cited in exit interviews at the same clubs with 35% turnover [app]. Reason 2: It is far cheaper than a pay rise [k], costing a one-off $6,000 instead of about $35,700 a year for the 8% increase [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces repetitive work and boredom",
+            "lower cost than financial rise"
+          ],
+          "application_max_2": [
+            "35% turnover",
+            "exit interviews",
+            "$6,000",
+            "$35,700 a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job enrichment",
+            "35%",
+            "exit interviews",
+            "$6,000",
+            "$35,700",
+            "instructors",
+            "boredom"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the 8% pay rise for UrbanPulse Fitness.",
+        "model_answer": "Benefit 1: A pay rise is simple to deliver and quick to feel [k], with about $35,700 a year shared across 22 instructors from the current $13 per hour [app], immediately lifting perceived fairness of pay [an]. Benefit 2: It can help retention in a competitive local labour market [k], where rival clubs recruit instructors at higher rates and turnover is already 35% [app], cutting the cost and disruption of hiring and retraining replacements [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "simple and fast to implement",
+            "supports retention against competitors"
+          ],
+          "application_max_2": [
+            "about $35,700 a year",
+            "22 instructors",
+            "$13 per hour",
+            "35%"
+          ],
+          "analysis_max_2": [
+            "perceived fairness improves morale quickly",
+            "lower turnover cuts recruitment and retraining costs"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "8%",
+            "$35,700",
+            "22 group-exercise instructors",
+            "$13",
+            "35%",
+            "UrbanPulse Fitness"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think UrbanPulse Fitness should introduce job enrichment rather than the 8% pay rise? Justify your answer.",
+        "model_answer": "Job enrichment targets the real problem [k]; exit interviews blamed boredom and lack of ownership, not pay, and the programme costs a one-off $6,000 against about $35,700 a year for the rise [app], making it sustainable and motivating members as instructors design their own classes [an]. However, enrichment takes time to work and demands skill [k]; if instructors feel overloaded on top of current 30-hour weeks, enthusiasm could fade and the 35% turnover persist [app], while pay clearly answers any wage concerns at rival clubs [an]. Overall, UrbanPulse should introduce job enrichment first [eval], because it is cheaper and addresses the cause, reviewing pay after 12 months if turnover does not fall below 20% [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "enrichment addresses intrinsic motivation directly",
+            "enrichment can overload staff if poorly managed"
+          ],
+          "application_max_2": [
+            "exit interviews",
+            "one-off $6,000",
+            "$35,700 a year",
+            "35% turnover",
+            "30-hour weeks"
+          ],
+          "analysis_max_2": [
+            "low one-off cost makes the fix sustainable",
+            "overload risk could sustain high turnover"
+          ],
+          "evaluation_max_2": [
+            "weighs targeted motivational fix against quick, safe financial reward"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job enrichment",
+            "8% pay rise",
+            "$6,000",
+            "$35,700",
+            "exit interviews",
+            "35%",
+            "30-hour weeks"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_116",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Halloway House is a department store in Country X across 3 floors, employing 130 floor staff paid $12.80 per hour. About 70% of staff have worked in the same department for over 2 years, satisfaction scores have fallen to 46% across the last two annual surveys, and staff turnover is 22% a year, well above the retail sector average.\n\nHR manager Sonal Mehta proposes two options to the board. Option 1 is job rotation: floor staff rotate across the 3 departments every 6 months, needing about $90 each for 2 days of induction training, roughly $11,700 in total. Option 2 is job enrichment: small teams take full ownership of one floor's displays, stock ordering and customer events, at a one-off training cost of $7,500.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'job rotation'.",
+        "model_answer": "A non-financial method of motivation where employees regularly move between different jobs or tasks at the same level, reducing repetition and widening skills [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "regular movement between jobs at same level",
+            "reduces repetition and widens skills"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Halloway House might introduce job rotation for floor staff.",
+        "model_answer": "Reason 1: Rotation reduces repetition and boredom [k], tackling the 70% of staff who have stayed in one department for over 2 years [app]. Reason 2: It builds flexible, multi-skilled staff [k], covering all 3 floors as people leave and helping lift satisfaction from 46% and curb 22% annual turnover [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "reduces repetition and boredom",
+            "creates flexible multi-skilled workforce"
+          ],
+          "application_max_2": [
+            "70% of staff",
+            "3 floors",
+            "satisfaction scores have fallen to 46%",
+            "22% a year"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job rotation",
+            "every 6 months",
+            "70%",
+            "3 departments",
+            "46%",
+            "22%",
+            "$11,700"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of job enrichment over job rotation for Halloway House.",
+        "model_answer": "Benefit 1: Enrichment gives deeper ownership [k], as teams run one floor's displays, stock ordering and events, which is more motivating than simply swapping departments every 6 months [app], so commitment and service should rise [an]. Benefit 2: It is cheaper to launch [k], at a one-off $7,500 instead of roughly $11,700 for the rotation induction [app], leaving the $12.80 hourly payroll untouched while engagement improves [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "greater ownership and responsibility",
+            "lower upfront cost"
+          ],
+          "application_max_2": [
+            "every 6 months",
+            "$7,500",
+            "roughly $11,700",
+            "$12.80 per hour"
+          ],
+          "analysis_max_2": [
+            "deeper ownership lifts commitment and service",
+            "cheaper launch protects the wage bill while boosting engagement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job enrichment",
+            "$7,500",
+            "$11,700",
+            "$12.80",
+            "every 6 months",
+            "Option 2"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Halloway House should introduce job rotation rather than job enrichment? Justify your answer.",
+        "model_answer": "Job rotation spreads skills across the store [k]; staff would learn all 3 floors every 6 months for about $90 each, roughly $11,700, and flexibility would cover absences and peak season [app], easing the 22% turnover by making each role more varied [an]. However, rotation is shallower change [k]; staff would still restock shelves, just on different floors, so the 46% satisfaction that reflects feeling valued may stay low [app], whereas enriched teams own a floor and feel accountable [an]. Overall, Halloway House should choose job enrichment [eval], because genuine responsibility is the stronger motivator for the 70% stuck in one department, though rotation could follow later [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rotation builds flexible cross-floor skills",
+            "rotation is shallower change than enrichment"
+          ],
+          "application_max_2": [
+            "$90 each",
+            "roughly $11,700",
+            "all 3 floors",
+            "22% turnover",
+            "46% satisfaction"
+          ],
+          "analysis_max_2": [
+            "flexibility covers absence and peaks",
+            "shallow change may not lift how valued staff feel"
+          ],
+          "evaluation_max_2": [
+            "weighs breadth and flexibility against depth of ownership and morale"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "job rotation",
+            "job enrichment",
+            "3 floors",
+            "$90",
+            "$11,700",
+            "22%",
+            "46%",
+            "every 6 months"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_117",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "The Copper Fox Bistro is an independent neighbourhood bistro in Country X employing 34 full-time staff with weekly sales of $26,000 and an average online rating of 4.6 out of 5. Owner Renata Voss wants to lift weekly sales beyond $28,000, a rise of about 7.7%, to cover rising food costs and a planned winter menu.\n\nRenata is choosing between two reward schemes. Scheme A gives an individual bonus of $180 a month to every employee who hits a personal target, costing up to $6,120 a month if all 34 qualify. Scheme B gives a team bonus of $90 a month to all 34 staff only if weekly sales exceed $28,000, costing $3,060 a month. The staff strongly prefer Scheme A.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'bonus'.",
+        "model_answer": "An additional financial payment made on top of normal pay, usually linked to individual, team or business performance over a period [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "extra payment on top of normal pay",
+            "linked to performance over a period"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why the Copper Fox Bistro might choose Scheme B over Scheme A.",
+        "model_answer": "Reason 1: Scheme B costs less in total [k], at $3,060 a month instead of up to $6,120 if all 34 staff qualify [app]. Reason 2: Scheme B pushes everyone toward the same goal [k], because the $90 team bonus is only paid if weekly sales exceed $28,000, aligning the front-of-house and kitchen on the 7.7% lift needed [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "lower total cost",
+            "aligns whole team on common goal"
+          ],
+          "application_max_2": [
+            "$3,060 a month",
+            "$6,120",
+            "$28,000",
+            "7.7%"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Scheme B",
+            "Scheme A",
+            "$3,060",
+            "$6,120",
+            "$28,000",
+            "7.7%",
+            "$90"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of Scheme A for the Copper Fox Bistro.",
+        "model_answer": "Benefit 1: Individual targets reward personal effort directly [k], so strong servers who sell more desserts or drinks can earn the $180 monthly bonus on their own merit [app], sharpening performance at each station [an]. Benefit 2: It is automatically affordable [k], because only staff hitting personal targets receive $180, so the cost stays at or below $6,120 a month and falls when performance dips [app], letting Renata keep weaker months under control [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rewards individual merit directly",
+            "cost falls when performance dips"
+          ],
+          "application_max_2": [
+            "$180 monthly bonus",
+            "at or below $6,120 a month"
+          ],
+          "analysis_max_2": [
+            "sharper personal accountability at each station",
+            "affordability flexes with performance dips"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Scheme A",
+            "individual bonus",
+            "$180",
+            "$6,120",
+            "34 staff",
+            "personal target"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think the Copper Fox Bistro should introduce Scheme B, the team bonus, rather than Scheme A, the individual bonus? Justify your answer.",
+        "model_answer": "Scheme B builds teamwork behind one target [k]; paying $90 to all 34 staff only above $28,000 weekly sales costs $3,060 a month, half of Scheme A's $6,120 cap [app], and nudges chefs, servers and cleaners to pull together on the 7.7% increase [an]. However, Scheme B can breed resentment [k]; slower staff receive the same $90 as top performers, and if the rating stays at 4.6 but sales stall under $28,000, nobody earns anything despite honest effort [app], risking morale [an]. Overall, the bistro should introduce Scheme B [eval], because shared reward suits a small, tight-knit bistro, provided individual targets are reviewed after 3 months [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shared target builds cooperation",
+            "free-rider resentment risk"
+          ],
+          "application_max_2": [
+            "$90",
+            "$28,000",
+            "$3,060",
+            "$6,120",
+            "7.7%",
+            "4.6"
+          ],
+          "analysis_max_2": [
+            "cooperative push across all roles",
+            "resentment and demotivation if the target is missed"
+          ],
+          "evaluation_max_2": [
+            "weighs cheaper, cooperative reward against individual fairness and motivation"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Scheme B",
+            "Scheme A",
+            "$90",
+            "$28,000",
+            "$3,060",
+            "$6,120",
+            "4.6",
+            "team bonus"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_118",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Cobalt Travel Agency is an independent leisure travel agency in Country X employing 11 booking consultants paid a salary of $1,700 a month plus 2% individual commission on holidays sold. Last month branch sales reached $385,000; the top consultant sold $58,000, earning $1,160 in commission, while the quietest sold $19,000, earning just $380. Around 60% of bookings now come from repeat and referred customers.\n\nOwner Dan Whitmore proposes replacing individual commission with a shared team bonus of $4,500, paid only if monthly sales pass $400,000, split equally among all 11 consultants, or about $409 each. He believes the change would encourage teamworking, with stronger consultants helping quieter colleagues close larger holiday sales, instead of competing with each other for the biggest and most lucrative deals.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'teamworking'.",
+        "model_answer": "A non-financial method of motivation where employees are organised into groups that work together toward shared goals, pooling skills and supporting each other [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees organised into groups",
+            "shared goals and mutual support"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Cobalt Travel Agency might replace individual commission with the shared team bonus.",
+        "model_answer": "Reason 1: Teamworking pools skills across consultants [k], so stronger sellers can help quieter colleagues improve their $19,000 monthly sales total [app]. Reason 2: It rewards collective results [k], because the $4,500 bonus is only triggered past $400,000, pushing everyone to grow branch sales beyond the $385,000 achieved last month [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "stronger staff support weaker ones",
+            "rewards collective performance"
+          ],
+          "application_max_2": [
+            "$19,000 monthly sales",
+            "$4,500 bonus",
+            "$400,000",
+            "$385,000"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "teamworking",
+            "team bonus",
+            "$4,500",
+            "$400,000",
+            "$385,000",
+            "$19,000",
+            "11 booking consultants"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two problems the switch could create for Cobalt Travel Agency.",
+        "model_answer": "Problem 1: Top performers may feel under-rewarded [k], because the consultant selling $58,000 would get about $409 instead of $1,160 in individual commission [app], risking the loss of the very sellers who drive the branch [an]. Problem 2: Free-riding may appear [k], because the $90 difference between $409 and $380 for the quietest seller is small motivation [app], so effort could slip and branch sales fall below $400,000 anyway [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "top performers lose incentive",
+            "free-riding reduces individual effort"
+          ],
+          "application_max_2": [
+            "$58,000",
+            "$409",
+            "$1,160",
+            "$380",
+            "$400,000"
+          ],
+          "analysis_max_2": [
+            "demotivated top sellers may leave",
+            "low effort could keep sales under trigger point"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$58,000",
+            "$409",
+            "$1,160",
+            "$380",
+            "$400,000",
+            "shared team bonus"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cobalt Travel Agency should replace individual commission with the shared team bonus? Justify your answer.",
+        "model_answer": "The team bonus encourages cooperation [k]; splitting $4,500 equally gives about $409 each past $400,000 in sales, lifting everyone beyond the $385,000 last month [app], and consultants may cross-sell and cover for one another during peak holidays [an]. However, removing individual commission blunts personal drive [k]; the top consultant would lose $751 a month versus $1,160 commission, while the quietest would gain only $29 [app], so the best sellers may leave for rival agencies [an]. Overall, Cobalt should not fully replace commission [eval]; instead keep the 2% individual commission and add a smaller shared bonus for passing $400,000, balancing motivation and teamwork [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "team rewards build cooperation",
+            "removing individual commission blunts top performers"
+          ],
+          "application_max_2": [
+            "$4,500",
+            "$409",
+            "$400,000",
+            "$385,000",
+            "$1,160",
+            "$29"
+          ],
+          "analysis_max_2": [
+            "collaboration raises cross-selling and coverage",
+            "top performers may defect to rivals"
+          ],
+          "evaluation_max_2": [
+            "weighs cooperative gains against retention of high achievers"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "team bonus",
+            "individual commission",
+            "$4,500",
+            "$409",
+            "$385,000",
+            "$400,000",
+            "$1,160"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_119",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Ashbourne Home & DIY is a family-owned DIY and homeware warehouse in Country X employing 85 staff across its selling floor, trade counter and warehouse, including 12 senior managers and supervisors. Company profit last year was $520,000 and the business is valued at about $4.5 million. Owner Brett Kowalski wants his senior team to commit to the long term as a national chain prepares to open nearby in June.\n\nHe is weighing two rewards for the 12 senior employees: a share ownership scheme gifting 4% of company shares, vesting over 5 years, worth about $15,000 per person at today's valuation, or a one-off cash bonus of $3,000 each, costing $36,000. The senior managers favour the shares; the supervisors are unsure which reward they would prefer.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'share ownership'.",
+        "model_answer": "A financial reward where employees are given or sold shares in the business, making them part-owners entitled to dividends and any rise in share value [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "employees receive shares in the business",
+            "gain dividends and share-value growth"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Ashbourne Home & DIY might introduce the share ownership scheme for senior staff.",
+        "model_answer": "Reason 1: Shares tie senior staff to long-term performance [k], since the 4% stake vests over 5 years, so managers gain only if the company keeps growing in value beyond $4.5 million [app]. Reason 2: It defends leadership talent against the national chain [k], because $15,000 per person in shares is a stronger reason to stay than a one-off $3,000 bonus [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "long-term performance alignment",
+            "retention of key staff vs competitors"
+          ],
+          "application_max_2": [
+            "4% stake vests over 5 years",
+            "$4.5 million",
+            "$15,000 per person",
+            "$3,000 bonus"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share ownership",
+            "4%",
+            "5 years",
+            "$4.5 million",
+            "$15,000",
+            "$3,000",
+            "national chain"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the share ownership scheme over the one-off bonus for Ashbourne.",
+        "model_answer": "Benefit 1: It builds genuine part-ownership thinking [k], because senior staff would hold a 4% stake worth about $15,000 each at today's $4.5 million valuation [app], making them care about profit of $520,000 and how it grows [an]. Benefit 2: It costs no immediate cash [k], unlike the $36,000 bonus paid from wages or savings now [app], preserving cash as the national chain prepares its June opening [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "ownership mindset improves decisions",
+            "no immediate cash outflow"
+          ],
+          "application_max_2": [
+            "4% stake",
+            "$15,000",
+            "$4.5 million",
+            "$520,000",
+            "$36,000 bonus"
+          ],
+          "analysis_max_2": [
+            "owners-in-waiting manage profit carefully",
+            "cash preserved ahead of competitive threat"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share ownership",
+            "4%",
+            "$15,000",
+            "$4.5 million",
+            "$520,000",
+            "$36,000",
+            "June"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Ashbourne Home & DIY should introduce the share ownership scheme rather than pay the one-off $3,000 bonus? Justify your answer.",
+        "model_answer": "Share ownership secures long-term commitment [k]; gifting 4% of shares vesting over 5 years, worth about $15,000 per senior manager versus $3,000 cash now [app], should keep all 12 leaders loyal past the national chain's June opening [an]. However, shares carry risk [k]; if profit falls from $520,000 after the opening, the $4.5 million valuation could drop, making the $15,000 worth less than it appears [app], and younger supervisors may prefer cash today [an]. Overall, Ashbourne should introduce the share ownership scheme [eval], because it is the deeper motivator for retention, provided vesting over 5 years is explained clearly to the unsure supervisors [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "shares retain key staff long term",
+            "share value can fall, reducing reward"
+          ],
+          "application_max_2": [
+            "4%",
+            "5 years",
+            "$15,000",
+            "$3,000",
+            "$520,000",
+            "$4.5 million"
+          ],
+          "analysis_max_2": [
+            "vesting period locks in loyalty beyond the June threat",
+            "valuation risk may weaken the reward"
+          ],
+          "evaluation_max_2": [
+            "weighs long-term retention value against immediate reward certainty"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "share ownership",
+            "4%",
+            "5 years",
+            "$15,000",
+            "$3,000",
+            "$4.5 million",
+            "June",
+            "12 senior"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U2_SET_120",
+    "unit": "Unit 2: People in Business",
+    "scenario_stem": "Amberfold Day Spa is a premium spa and beauty salon in Country X employing 27 staff in total, including 15 therapists paid $12.60 per hour on 25-hour weeks. Client retention stands at 72% across the last year and no therapist has been promoted in 3 years, and several experienced therapists have resigned to work at upmarket spas in the capital city.\n\nOwner Ines Barbosa is choosing between two rewards to retain her team. Option A is $9,600 a year of off-the-job training in new treatments, plus a promotion path to senior therapist at $14.20 per hour, with 4 senior posts expected within 18 months. Option B is an across-the-board 6% pay rise for the 15 therapists, costing about $14,700 a year. Both options cost under $15,000 annually.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'training'.",
+        "model_answer": "The process of teaching employees the skills, knowledge and behaviours they need to carry out their jobs effectively, so performance improves [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "teaching skills, knowledge or behaviours",
+            "aimed at improving job performance"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Amberfold Day Spa might choose Option A, the training and promotion path.",
+        "model_answer": "Reason 1: Off-the-job training widens therapists' skills [k], letting the spa offer new treatments that support the current 72% client retention [app]. Reason 2: A promotion path motivates ambitious staff [k], creating 4 senior posts at $14.20 per hour within 18 months instead of a flat $14,700 pay rise across the board [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training widens service offer and skills",
+            "promotion prospects motivate ambitious staff"
+          ],
+          "application_max_2": [
+            "72% client retention",
+            "4 senior posts",
+            "$14.20 per hour",
+            "$14,700"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "off-the-job training",
+            "72%",
+            "4 senior posts",
+            "$14.20",
+            "$9,600",
+            "senior therapist",
+            "Option A"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the 6% pay rise for the 15 therapists.",
+        "model_answer": "Benefit 1: Every therapist gains immediately [k], because 6% on $12.60 per hour raises base pay for all 15 on 25-hour weeks, not just the 4 promoted to senior posts [app], feeling fair and transparent [an]. Benefit 2: It is simple to administer [k], costing about $14,700 a year with no courses to schedule or cover staffing for training days [app], avoiding disruption to client bookings [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "equal benefit for all therapists",
+            "simple to administer and apply"
+          ],
+          "application_max_2": [
+            "6%",
+            "$12.60 per hour",
+            "15 therapists",
+            "25-hour weeks",
+            "about $14,700 a year"
+          ],
+          "analysis_max_2": [
+            "fairness spreads morale across the whole team",
+            "no cover or scheduling disruption needed"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "6% pay rise",
+            "$12.60",
+            "15 therapists",
+            "25-hour weeks",
+            "$14,700",
+            "Option B"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Amberfold Day Spa should fund the training and promotion path rather than the 6% pay rise? Justify your answer.",
+        "model_answer": "Option A builds lasting capability [k]; $9,600 of off-the-job training plus 4 senior posts at $14.20 per hour within 18 months gives therapists growth and the spa a deeper skill base for the 72% returning clients [app], lifting service quality and retention [an]. However, a pay rise is felt by all now [k]; the $14,700 option reaches all 15 therapists at once, whereas only 4 gain promotion and others wait [app], which may demotivate those overlooked [an]. Overall, Amberfold should fund the training and promotion path [eval], because skills and careers motivate more deeply than a one-off raise, with a pay review after 18 months if retention stalls [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "training and promotion build long-term motivation",
+            "pay rise benefits all immediately"
+          ],
+          "application_max_2": [
+            "$9,600",
+            "4 senior posts",
+            "$14.20",
+            "72%",
+            "$14,700",
+            "15 therapists"
+          ],
+          "analysis_max_2": [
+            "skills deepen service quality and repeat custom",
+            "instant fair pay avoids leaving anyone out"
+          ],
+          "evaluation_max_2": [
+            "weighs deep, career-based motivation against broad, immediate reward"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Option A",
+            "Option B",
+            "$9,600",
+            "$14.20",
+            "72%",
+            "$14,700",
+            "18 months",
+            "promotion path"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]

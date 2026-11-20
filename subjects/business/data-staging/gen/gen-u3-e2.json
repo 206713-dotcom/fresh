@@ -1,0 +1,1162 @@
+[
+ {
+  "scenario_id": "P1_U3_SET_191",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Redfield Energy Drinks is a private limited company founded 6 years ago by twin sisters Priya and Nina Rao. It produces a natural mango and lime energy drink sold in 1,800 convenience stores across Country X, employing 46 full-time staff at a bottling plant. Annual revenue reached $3.6 million last year, up 8% on the previous year, and the drink holds 9% of the youth energy drink market behind two multinational rivals.\n\nThe marketing director has $120,000 for the next 12 months and must choose between sponsoring the Country X national basketball league for $100,000, with logos on courtside boards and team shirts for one season, or a six-month social media campaign costing $110,000 aimed at 18-24 year-olds. A smaller trial of the sponsorship raised brand awareness by 14% in the capital city.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'sponsorship'.",
+    "model_answer": "A business paying to support an event, team or individual in exchange for displaying its name or logo to a wide audience, gaining publicity and brand awareness [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "paying to associate the business name with an event, team or individual",
+      "gaining publicity and brand awareness from the association"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two benefits to Redfield Energy Drinks of sponsoring the national basketball league rather than running social media adverts.",
+    "model_answer": "Benefit 1: Sponsorship provides repeated exposure of the Redfield name [k] to 18-24 year-old basketball fans through courtside boards and team shirts across one season [app]. Benefit 2: Association with the national league gives the drink a healthy, energetic image [k] that appeals to the young buyers it must win over from two multinational rivals [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "sponsorship gives repeated, wide exposure to the brand name",
+      "association with an event or league builds a positive image"
+     ],
+     "application_max_2": [
+      "courtside boards and team shirts reaching fans across a season",
+      "winning young buyers from two multinational rivals"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "Redfield Energy Drinks",
+      "$100,000",
+      "national basketball league",
+      "1,800 convenience stores",
+      "9%",
+      "14%"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two reasons why sponsorship may not increase sales for Redfield Energy Drinks.",
+    "model_answer": "Reason 1: The $100,000 fee uses most of the $120,000 budget [k], leaving only $20,000 for everything else that drives purchase decisions [app], so awareness may rise without enough in-store support to convert it into sales [an]. Reason 2: Sponsorship reaches mainly basketball fans [k], a narrower audience than the 1,800 convenience stores across Country X [app], so many young buyers outside the sport never see the logo and buying habits do not change [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "sponsorship consumes most of the promotional budget",
+      "sponsorship reaches a limited, self-selected audience"
+     ],
+     "application_max_2": [
+      "$100,000 of the $120,000 budget leaves $20,000 for other uses",
+      "basketball fans are narrower than 1,800 convenience stores nationwide"
+     ],
+     "analysis_max_2": [
+      "awareness may rise without converting into sales without in-store support",
+      "non-fans never see the logo so buying habits do not change"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$100,000",
+      "$120,000",
+      "national basketball league",
+      "1,800 convenience stores",
+      "18-24",
+      "9%"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Redfield Energy Drinks should sponsor the national basketball league? Justify your answer.",
+    "model_answer": "The sponsorship would build positive brand awareness [k] among 18-24 year-old fans through courtside boards and shirts all season [app], helping Redfield close the gap on two multinational rivals at 9% market share [an]. However, the $110,000 social media campaign [app] would reach 18-24 year-olds precisely for six months with clicks and sales tracked directly [k], converting awareness into purchases faster [an]. Overall, Redfield should sponsor the basketball league [eval] because the 14% awareness lift shown in the trial is hard evidence rather than speculation, and an image built over a season outlasts a six-month advert run [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "sponsorship builds brand awareness and positive image",
+      "social media advertising allows precise targeting and measurable results"
+     ],
+     "application_max_2": [
+      "courtside boards and shirts reaching 18-24 year-olds all season",
+      "$110,000 six-month social media campaign targeting 18-24 year-olds"
+     ],
+     "analysis_max_2": [
+      "awareness may help Redfield take share from two multinational rivals",
+      "tracked clicks and sales may convert awareness into purchases faster"
+     ],
+     "evaluation_max_2": [
+      "weighs trial evidence of a 14% awareness lift against social media measurability",
+      "justified recommendation to sponsor the league based on durable image and hard evidence"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$100,000",
+      "$110,000",
+      "18-24",
+      "14%",
+      "9%",
+      "national basketball league"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_192",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Marlowe & Bright Biscuits is a private limited company that has baked cream crackers and fruit biscuits in the eastern region for 9 years. It employs 58 factory staff and supplies 320 supermarkets across Country X. Annual sales revenue was $5.4 million last year, but a social media complaint about an underweight pack spread after a customer posted photos, and sales fell 11% in the last quarter. The affected batch was certified at 200g but averaged 187g.\n\nThe managing director has $25,000 to repair the company's image before the holiday season. Option one is a public relations campaign — a factory open day for 40 food retailers and journalists plus a press release, costing $16,000. Option two is a newspaper advertising campaign across 8 regional papers costing $22,000. The board also wants the pack-weight complaint investigated while the campaign runs.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'public relations'.",
+    "model_answer": "The part of marketing that builds a favourable image and goodwill with the public through unpaid coverage such as press events, open days and news stories, rather than paid advertising [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "building a favourable image and goodwill with the public",
+      "gaining publicity through events, press coverage and press releases, not paid adverts"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two benefits to Marlowe & Bright Biscuits of the public relations campaign rather than newspaper advertising.",
+    "model_answer": "Benefit 1: Coverage earned through the open day and press release carries more credibility than paid advertising [k] because 40 food retailers and journalists would experience the bakery first-hand [app]. Benefit 2: The campaign costs $16,000 against $22,000 for newspapers [k], saving $6,000 while reaching the decision-makers behind 320 supermarket listings [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "earned coverage is more credible than paid advertising",
+      "public relations is cheaper than press advertising"
+     ],
+     "application_max_2": [
+      "40 food retailers and journalists experiencing the bakery first-hand",
+      "$16,000 PR cost versus $22,000 newspaper adverts, reaching 320 supermarket decision-makers"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "public relations campaign",
+      "$16,000",
+      "$22,000",
+      "40 food retailers",
+      "press release",
+      "320 supermarkets"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks to Marlowe & Bright Biscuits of relying on public relations to repair its image.",
+    "model_answer": "Drawback 1: Marlowe & Bright cannot control what journalists write [k] after the open day [app], so coverage could rehash the 187g pack-weight story instead of celebrating the bakery, deepening distrust rather than repairing it [an]. Drawback 2: Public relations reaches only the 40 attending retailers and journalists [k] compared with 8 regional papers [app], so most supermarket buyers never hear the company's side and sales may keep falling [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a business cannot control what journalists publish",
+      "public relations reaches a limited, targeted audience only"
+     ],
+     "application_max_2": [
+      "open day coverage could rehash the 187g pack-weight story",
+      "only 40 attendees reached versus 8 regional papers and 320 supermarkets"
+     ],
+     "analysis_max_2": [
+      "uncontrolled coverage could deepen distrust instead of repairing the image",
+      "limited reach means most buyers never hear the company's side, so sales keep falling"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "public relations campaign",
+      "open day",
+      "187g",
+      "40 food retailers",
+      "8 regional papers",
+      "320 supermarkets"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Marlowe & Bright Biscuits should run the public relations campaign rather than the newspaper advertising? Justify your answer.",
+    "model_answer": "The PR campaign would rebuild credibility [k] by letting 40 food retailers and journalists see the bakery and the 200g pack quality first-hand [app], which could win back the 320 supermarket listings lost after an 11% fall in quarterly sales [an]. However, newspaper advertising across 8 regional papers [app] would reach far more of the public at once with a message the company fully controls [k], though at $22,000 it costs $6,000 more than the $16,000 PR option [an]. Overall, Marlowe & Bright should choose the PR campaign [eval] because trust, not awareness, is the problem this 187g batch created, so third-party voices will persuade sceptical shoppers better than paid adverts [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "public relations rebuilds credibility through third-party endorsement",
+      "paid advertising gives wide reach and full control of the message"
+     ],
+     "application_max_2": [
+      "40 food retailers and journalists seeing 200g pack quality first-hand",
+      "8 regional papers reaching far more of the public for $22,000"
+     ],
+     "analysis_max_2": [
+      "credible coverage could win back 320 supermarket listings lost after the 11% fall",
+      "advertising costs $6,000 more but delivers controlled, wider exposure"
+     ],
+     "evaluation_max_2": [
+      "weighs controlled wide reach against credible third-party persuasion",
+      "justified recommendation to choose PR because the problem is trust, not awareness"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$16,000",
+      "$22,000",
+      "40 food retailers",
+      "8 regional papers",
+      "11%",
+      "187g"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_193",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Mango Flash Snacks is a private limited company producing baked plantain chips for 4 years, sold in 850 corner shops and school canteens across Country X. It employs 23 workers and generated $880,000 in revenue last year. Packets retail at $1.50. Owner Dani Reyes plans to launch a chilli-mango flavour aimed at 13-19 year-olds this spring and has set a target of 60,000 extra packets in the first month.\n\nThe launch budget is $45,000. Option one is a 6-week viral video campaign: a 30-second clip of friends trading Mango Flash packets costing $15,000 to produce, seeded to 4 student influencers with 2.3 million combined followers. Option two is a 3-week evening television campaign costing $40,000, expected to reach 1.1 million viewers.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'viral marketing'.",
+    "model_answer": "A promotional method where a message, usually a short video, spreads rapidly from person to person online as viewers choose to share it, giving wide reach at very low cost [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a message spreads rapidly online from person to person",
+      "viewers choose to share it, giving wide reach at low cost"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two benefits to Mango Flash Snacks of the viral video campaign rather than television advertising.",
+    "model_answer": "Benefit 1: Viral video costs only $15,000 [k], one third of the $45,000 budget, far below the $40,000 television alternative, so the rest can fund stock and distribution [app]. Benefit 2: If viewers share the clip it spreads from person to person [k], reaching 13-19 year-olds through the 4 student influencers' 2.3 million combined followers [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "viral video is low cost compared with television advertising",
+      "pass-along sharing can multiply the audience exponentially"
+     ],
+     "application_max_2": [
+      "$15,000 versus $40,000 leaves budget for stock and distribution",
+      "reach aimed at 13-19 year-olds via 4 student influencers with 2.3 million followers"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$15,000",
+      "$45,000",
+      "2.3 million",
+      "4 student influencers",
+      "13-19 year-olds",
+      "chilli-mango"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two risks for Mango Flash Snacks of choosing the viral video campaign.",
+    "model_answer": "Risk 1: Success depends on viewers choosing to share [k], so if the 30-second clip fails to engage, reach stays far below the 2.3 million influencer followers [app], and the spring target of 60,000 extra packets may be missed entirely [an]. Risk 2: A viral message can spread for the wrong reasons [k]; a clip misread as mocking students could damage the brand with exactly the 13-19 year-olds it wants to recruit [app], turning a launch into a costly public relations problem [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "sharing is voluntary, so reach is uncertain",
+      "viral content can be misread and backfire"
+     ],
+     "application_max_2": [
+      "clip may fall flat with 2.3 million influencer followers",
+      "misread clip could offend the 13-19 year-old target audience"
+     ],
+     "analysis_max_2": [
+      "60,000 extra packet target may be missed entirely",
+      "a backlash would turn the launch into a public relations problem"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$15,000",
+      "2.3 million",
+      "30-second clip",
+      "60,000",
+      "13-19 year-olds",
+      "4 student influencers"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Mango Flash Snacks should run the viral video campaign? Justify your answer.",
+    "model_answer": "The viral campaign would cost $15,000 [app] and its pass-along nature suits the 13-19 year-olds who live on social media [k], so a genuinely funny clip could reach far beyond the 2.3 million influencer followers at almost no extra cost [an]. However, television for $40,000 guarantees reach to 1.1 million evening viewers [app] with a message the company fully controls [k], de-risking the spring launch of the chilli-mango flavour [an]. Overall, Mango Flash should run the viral clip and bank the $25,000 saving [eval] because the target audience lives online and the saving can fund launch stock and school canteen sampling [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "viral marketing suits digitally native young audiences at low cost",
+      "television advertising guarantees reach with full message control"
+     ],
+     "application_max_2": [
+      "$15,000 viral budget versus $40,000 television reach of 1.1 million viewers",
+      "13-19 year-old social media audience for the chilli-mango launch"
+     ],
+     "analysis_max_2": [
+      "a shareable clip could multiply reach beyond the 2.3 million followers",
+      "television de-risks the launch with controlled, guaranteed exposure"
+     ],
+     "evaluation_max_2": [
+      "weighs uncertain pass-along reach against guaranteed controlled exposure",
+      "justified recommendation to run the viral campaign and bank the $25,000 saving"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$15,000",
+      "$40,000",
+      "2.3 million",
+      "1.1 million",
+      "13-19 year-olds",
+      "60,000 extra packets"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_194",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Scarlet Meadow Fashion is a private limited company founded 8 years ago, designing streetwear for 18-30 year-olds. It runs 5 stores in Country X, employs 64 staff and generated $7.2 million in revenue last year. The brand won a national design award in 2024. The directors want to sell online in two neighbouring markets, Country V and Country W, where online clothing sales are growing 15% a year among 18-30 year-olds.\n\nThe marketing manager has $150,000 and must choose between one global mega-influencer campaign costing $130,000 run identically in both countries, or local campaigns costing $140,000 in total — two regional celebrities plus a launch event in each capital city. Country V buyers trust local celebrity endorsement, while Country W has stricter advertising rules requiring pre-clearance of promotional content.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'advertising'.",
+    "model_answer": "Paid-for promotion of a product or brand through media such as television, newspapers or social media, designed to inform or persuade customers to buy [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "paid-for promotion of a product or brand",
+      "designed to inform or persuade customers to buy"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two advantages to Scarlet Meadow Fashion of the global mega-influencer campaign.",
+    "model_answer": "Advantage 1: One campaign is produced and purchased once [k], costing $130,000 to cover Country V and Country W instead of two separate local shoots [app]. Advantage 2: A single mega-influencer with a huge following gives instant, massive reach [k], building rapid awareness among the 18-30 year-olds the brand wants in both growing markets [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "one global campaign is cheaper and simpler than running two local campaigns",
+      "a mega-influencer gives instant, massive reach"
+     ],
+     "application_max_2": [
+      "$130,000 covering both Country V and Country W instead of two local shoots",
+      "fast awareness among 18-30 year-olds in both growing markets"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$130,000",
+      "$150,000",
+      "Country V",
+      "Country W",
+      "mega-influencer",
+      "18-30 year-olds"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks for Scarlet Meadow Fashion of the global mega-influencer campaign.",
+    "model_answer": "Drawback 1: An identical advert ignores local differences [k]; Country V buyers trust local celebrity endorsement [app], so a foreign mega-influencer may feel irrelevant and fail to persuade them to buy [an]. Drawback 2: Country W requires pre-clearance of promotional content [k]; a global campaign shot without local approval could be rejected or banned there [app], wasting most of the $130,000 before a single online sale is made [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a standardised campaign ignores local preferences and culture",
+      "strict advertising rules abroad can block foreign campaigns"
+     ],
+     "application_max_2": [
+      "Country V buyers trust local celebrity endorsement over foreign faces",
+      "Country W requires pre-clearance that a global shoot may not have"
+     ],
+     "analysis_max_2": [
+      "the foreign face may fail to persuade Country V buyers to purchase",
+      "pre-clearance failure could waste the $130,000 before any sale is made"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "Country V",
+      "Country W",
+      "$130,000",
+      "pre-clearance",
+      "local celebrity endorsement",
+      "mega-influencer"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Scarlet Meadow Fashion should run the global mega-influencer campaign or the two local campaigns? Justify your answer.",
+    "model_answer": "The global campaign would cost $130,000 [app] and give one consistent brand message across both markets [k], saving $10,000 against the local option and simplifying management [an]. However, the local campaigns at $140,000 [app] use trusted regional celebrities and launch events [k], matching Country V's preference for local faces and clearing Country W's pre-clearance rules, which should convert awareness into faster online sales [an]. Overall, Scarlet Meadow should run the two local campaigns [eval] because the extra $10,000 buys legal certainty in Country W and credibility in Country V, the two barriers most likely to block a $7.2 million brand breaking into these markets [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a global campaign gives a consistent message across markets at lower cost",
+      "local campaigns match local tastes and legal rules"
+     ],
+     "application_max_2": [
+      "$130,000 global campaign versus $140,000 local campaigns",
+      "regional celebrities and launch events matching Country V and clearing Country W rules"
+     ],
+     "analysis_max_2": [
+      "the global option saves $10,000 and simplifies management",
+      "local campaigns should convert awareness into faster online sales"
+     ],
+     "evaluation_max_2": [
+      "weighs $10,000 saving and consistency against legal certainty and local credibility",
+      "justified recommendation to run the two local campaigns"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$130,000",
+      "$140,000",
+      "Country V",
+      "Country W",
+      "$150,000",
+      "pre-clearance"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_195",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Alderwick Preserves Co is a partnership of two brothers, Theo and Jonah Marchetti, making rose-hip and quince jams by hand since 2015. It sells 95,000 jars a year at $6.40 each, generating $608,000 in revenue, and employs 19 staff in the Lakeside region. Domestic jam sales have grown only 2% in 2 years, and two supermarket chains demanded a 12% price discount last month.\n\nA distributor in neighbouring Country V offers to stock 30,000 jars a year at $5.10 per jar if Alderwick meets Country V food-safety labelling within 6 months, with the contract running for 3 years. Exporting would add $24,000 in freight and require $9,000 of new certification. The brothers must decide whether to start exporting to Country V.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'export'.",
+    "model_answer": "Selling goods produced in one country to customers in another country, extending a business's market beyond its domestic borders [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "selling goods produced in the home country to overseas customers",
+      "extending the market beyond domestic borders"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two opportunities for Alderwick Preserves Co of exporting to Country V.",
+    "model_answer": "Opportunity 1: The order would add sales beyond the stagnant domestic market [k] — 30,000 jars a year at $5.10 is about $153,000 of new revenue [app]. Opportunity 2: Entering Country V spreads risk [k], so if two domestic supermarket chains force the 12% discount, the brothers still have a second market to sell into [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "exporting adds sales beyond the domestic market",
+      "selling into a second country spreads risk"
+     ],
+     "application_max_2": [
+      "30,000 jars a year at $5.10 is about $153,000 of new revenue",
+      "a second market cushions the 12% discount demanded by supermarket chains"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "30,000 jars",
+      "$5.10",
+      "12% price discount",
+      "Country V",
+      "2%",
+      "95,000 jars"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two problems for Alderwick Preserves Co of exporting to Country V.",
+    "model_answer": "Problem 1: The brothers must meet Country V food-safety labelling within 6 months [k], so failure would waste the $9,000 certification fee before a single jar ships [app], delaying entry and straining the Lakeside factory's cash flow [an]. Problem 2: Freight adds $24,000 a year [k] and the $5.10 jar price is $1.30 below the domestic $6.40 [app], squeezing margins so the order may add little profit even when the factory is full [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "export markets impose labelling and certification requirements",
+      "freight costs and lower overseas prices squeeze margins"
+     ],
+     "application_max_2": [
+      "$9,000 certification and 6-month labelling deadline for Country V",
+      "$5.10 export price versus $6.40 domestic, plus $24,000 freight"
+     ],
+     "analysis_max_2": [
+      "failure to certify wastes the fee and strains cash flow",
+      "thin margins mean the order may add little profit"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$9,000",
+      "$24,000",
+      "$5.10",
+      "$6.40",
+      "6 months",
+      "Country V"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Alderwick Preserves Co should start exporting to Country V? Justify your answer.",
+    "model_answer": "Exporting would open a Country V market while domestic sales crawl at 2% [k], with 30,000 jars a year at $5.10 worth about $153,000 even after $24,000 freight — roughly $129,000 before certification [app]. However, the $5.10 price is $1.30 below domestic $6.40 [app] and the $9,000 certification carries a real risk of rejection within 6 months [k], so refusal would waste the fee and six months of planning [an], while the domestic slide continues unchecked [an]. Overall, Alderwick should accept the export order [eval] because a second market reduces dependence on supermarkets demanding 12% discounts, and the numbers still add up after certification [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "exporting opens overseas markets when domestic demand stagnates",
+      "certification deadlines and lower export prices carry real risk"
+     ],
+     "application_max_2": [
+      "$153,000 of export revenue at $5.10 after $24,000 freight",
+      "$5.10 price is $1.30 below domestic $6.40"
+     ],
+     "analysis_max_2": [
+      "roughly $129,000 remains before certification",
+      "rejected paperwork would waste the $9,000 certification fee"
+     ],
+     "evaluation_max_2": [
+      "weighs overseas growth and reduced supermarket dependence against price and certification risk",
+      "justified recommendation to export because the numbers work after costs"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$5.10",
+      "$6.40",
+      "$24,000",
+      "$9,000",
+      "30,000 jars",
+      "12%"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_196",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Halloran Cycle Works is a private limited company founded 10 years ago by Sofia Lindqvist, producing electric cargo bicycles for delivery riders. It employs 72 workers, generated $9.8 million in revenue last year and sells each bike at $4,100, with domestic demand now flat. Country W, where e-bike deliveries grew 22% last year, has no domestic producer and the boom is driven by courier firms switching from vans to cargo bikes.\n\nThe board wants to enter Country W and must choose between a joint venture with Weidler Logistics, a local company with 40 depots, costing $1.2 million for a 50% share, or building its own assembly plant in Country W for $3.5 million. Country W also charges a 12% tariff on imported bicycles, ruling out simple exporting.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'joint venture'.",
+    "model_answer": "Two or more businesses agreeing to work together on one project or market, sharing capital, risks, decision-making and profits [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "two or more businesses working together on one project or market",
+      "sharing capital, risks, control and profits"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two opportunities for Halloran Cycle Works of entering Country W through a joint venture with Weidler Logistics.",
+    "model_answer": "Opportunity 1: The joint venture gives instant local knowledge and distribution [k] through Weidler's 40 depots across Country W [app]. Opportunity 2: Sharing the $1.2 million cost means half the capital at risk [k] instead of $3.5 million for its own plant, preserving cash for product development [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a joint venture provides local knowledge and distribution channels",
+      "sharing capital halves the financial risk of entry"
+     ],
+     "application_max_2": [
+      "Weidler's 40 depots give nationwide distribution in Country W",
+      "$1.2 million for 50% versus $3.5 million for its own assembly plant"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$1.2 million",
+      "$3.5 million",
+      "40 depots",
+      "Weidler Logistics",
+      "Country W",
+      "22%"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two problems for Halloran Cycle Works of entering Country W.",
+    "model_answer": "Problem 1: A 12% tariff on imported bicycles [k] makes shipping finished bikes from Country X costly [app], raising the retail price and dampening demand among cost-conscious delivery riders [an]. Problem 2: Sharing a joint venture halves control [k]; Halloran must agree every major decision with Weidler Logistics [app], risking slow decisions and erosion of the 10-year brand it built on technical quality [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "import tariffs raise the cost of selling abroad",
+      "joint ventures mean shared control and compromise"
+     ],
+     "application_max_2": [
+      "12% tariff on imported bicycles entering Country W",
+      "every major decision must be agreed with Weidler Logistics"
+     ],
+     "analysis_max_2": [
+      "higher retail prices dampen demand among delivery riders",
+      "slow decisions and compromised control could erode the 10-year brand"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "12% tariff",
+      "Weidler Logistics",
+      "$1.2 million",
+      "$3.5 million",
+      "Country W",
+      "$4,100"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Halloran Cycle Works should enter Country W through a joint venture rather than build its own plant? Justify your answer.",
+    "model_answer": "The joint venture would halve the capital at risk — $1.2 million for 50% [app] — and bring instant local knowledge [k] through Weidler's 40 depots [app], letting Halloran enter the 22% growth market quickly before Weidler's rivals move [an]. However, building its own plant for $3.5 million keeps full control and all the profits [k], while a partner might push its own fleet priorities and erode Halloran's 10-year brand reputation [an]. Overall, Halloran should choose the joint venture [eval] because with a 12% import tariff ruling out simple exporting, shared risk and local expertise are worth more than owning every profit [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "a joint venture halves capital at risk and adds local expertise",
+      "an own plant keeps full control and all profits"
+     ],
+     "application_max_2": [
+      "$1.2 million for 50% versus $3.5 million for its own plant",
+      "Weidler's 40 depots giving nationwide reach in Country W"
+     ],
+     "analysis_max_2": [
+      "speed to market in a 22% growth market ahead of rivals",
+      "partner pressure on fleet priorities could erode the 10-year brand"
+     ],
+     "evaluation_max_2": [
+      "weighs halved capital risk and local expertise against lost control and profit",
+      "justified recommendation to joint venture given the 12% tariff rules out exporting"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$1.2 million",
+      "$3.5 million",
+      "40 depots",
+      "22%",
+      "12% tariff",
+      "Weidler Logistics"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_197",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Fernwell Skincare is a private limited company producing a shea-butter hand cream since 2017. It sells 260,000 tubes a year at $8.50 across 140 pharmacies in Country X, generating $2.21 million in revenue, and employs 33 staff. The cream won a national beauty award in 2024 and its golden packaging is instantly recognisable. Enquiries from Country S surged after a beauty blogger featured the cream in a video watched 900,000 times.\n\nThe directors must choose between exporting directly from Country X, requiring $70,000 of export set-up and shipping documentation for each shipment, or licensing the cream to Country S maker Bellano Cosmetics, which would produce and sell locally for 7% royalties on sales. Forecast sales in Country S are 120,000 tubes a year at $8.00 per tube.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'licensing'.",
+    "model_answer": "Giving another business permission to produce or sell your product in return for a fee or royalty, usually a percentage of their sales [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "granting another business the right to produce or sell your product",
+      "in return for a fee or a royalty, usually a percentage of sales"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two opportunities for Fernwell Skincare of licensing the cream to Bellano Cosmetics.",
+    "model_answer": "Opportunity 1: Licensing avoids the $70,000 export set-up [k] and the shipping documentation for every shipment, so Fernwell can enter Country S with almost no capital [app]. Opportunity 2: Bellano knows Country S labelling and retail networks [k], so the cream can reach buyers immediately, earning 7% royalties on forecast sales of 120,000 tubes a year [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "licensing avoids the capital cost of direct exporting",
+      "the local licensee provides market knowledge and distribution"
+     ],
+     "application_max_2": [
+      "no $70,000 set-up or shipping documentation needed for Country S",
+      "7% royalties on forecast sales of 120,000 tubes a year"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$70,000",
+      "Bellano Cosmetics",
+      "7% royalties",
+      "120,000 tubes",
+      "Country S",
+      "$8.00"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks for Fernwell Skincare of licensing the cream to Bellano Cosmetics.",
+    "model_answer": "Drawback 1: Fernwell loses control over quality [k]; if Bellano dilutes the formula to cut costs, the shea-butter hand cream's reputation built since 2017 could collapse in both markets [app], destroying the brand image with loyal buyers [an]. Drawback 2: Royalties of 7% [k] yield only $67,200 a year on sales of 120,000 tubes at $8.00 [app], far below the margin Fernwell earns on its own 260,000 tubes, limiting the upside of going overseas [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "the licensor loses control of quality and brand presentation",
+      "royalties are a small share of overseas sales value"
+     ],
+     "application_max_2": [
+      "dilution risk to the shea-butter formula and its 2017 reputation",
+      "7% of 120,000 tubes at $8.00 yields about $67,200 a year"
+     ],
+     "analysis_max_2": [
+      "brand damage would hit loyal buyers in both markets",
+      "the royalty stream limits the financial upside of overseas expansion"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "7%",
+      "$8.00",
+      "120,000 tubes",
+      "260,000 tubes",
+      "Bellano Cosmetics",
+      "2017"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Fernwell Skincare should license the cream to Bellano Cosmetics rather than export directly? Justify your answer.",
+    "model_answer": "Licensing would give Fernwell entry to Country S without the $70,000 export set-up [app] and instant access to Bellano's local knowledge [k], turning interest from a 900,000-view video into steady royalty income on 120,000 tubes a year [an]. However, 7% royalties yield only about $67,200 a year [app] and Fernwell would surrender control of quality and brand [k], risking the hand-cream image built since 2017 if Bellano cuts corners [an]. Overall, Fernwell should license rather than export directly [eval] because the low upfront risk suits a first foreign market, and once Country S sales prove themselves Fernwell can renegotiate rates or open its own route [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "licensing gives low-cost, low-risk entry with local expertise",
+      "exporting keeps control and full margin but costs capital and effort"
+     ],
+     "application_max_2": [
+      "no $70,000 set-up; 7% royalties on 120,000 tubes at $8.00",
+      "900,000-view video driving demand in Country S"
+     ],
+     "analysis_max_2": [
+      "steady royalty income without export risk",
+      "quality-control loss could damage the brand if Bellano cuts corners"
+     ],
+     "evaluation_max_2": [
+      "weighs low-risk royalty income against lost control and lower returns",
+      "justified recommendation to license first, with the option to renegotiate later"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$70,000",
+      "120,000 tubes",
+      "$8.00",
+      "7%",
+      "Country S",
+      "900,000"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_198",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Tarrow Tandoor is a private limited company operating 7 tandoor restaurants across Country X, employing 96 staff and generating $3.1 million in revenue last year. Country X sales grew 9% last year, and it imports most spice blends from three suppliers. Two investors in neighbouring Country Z have asked to open Tarrow-branded restaurants there, where 2 million residents have no tandoor restaurant and imported spice blends cost 15% more than in Country X.\n\nThe board must choose between international franchises — each franchisee pays a $35,000 set-up fee plus 5% of annual sales — or one company-owned restaurant in Country Z costing $420,000. Franchisees would handle staffing, local advertising and daily operations, while a company-owned outlet would keep all profits but need two Country X managers relocating for 2 years.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'franchise'.",
+    "model_answer": "A legal arrangement where a franchisor sells the right to trade under its brand name to a franchisee, who pays fees and runs the outlet under agreed standards [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchisor sells the right to trade under its brand name",
+      "franchisee pays fees and must follow agreed operating standards"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two advantages to Tarrow Tandoor of the international franchise option.",
+    "model_answer": "Advantage 1: Franchises need no $420,000 capital outlay [k]; two franchisees would pay $35,000 each plus 5% of sales, giving Tarrow brand presence in Country Z with minimal investment [app]. Advantage 2: Local franchisees understand Country Z's market and staffing [k], so Tarrow can open two restaurants faster than relocating two managers for 2 years [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchising expands with little capital investment by the franchisor",
+      "local franchisees bring local market knowledge and motivation"
+     ],
+     "application_max_2": [
+      "two franchisees paying $35,000 each plus 5% of sales instead of $420,000",
+      "faster entry than relocating two Country X managers for 2 years"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$35,000",
+      "5%",
+      "$420,000",
+      "Country Z",
+      "2 million",
+      "international franchises"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks for Tarrow Tandoor of international franchising into Country Z.",
+    "model_answer": "Drawback 1: Tarrow keeps only 5% of franchisee sales [k]; the two franchisees pocket most of the profit from their restaurants [app], so the cheapest route may earn the least over the long term [an]. Drawback 2: Quality control is harder at a distance [k]; poor spicing or service from a franchisee in Country Z would tarnish the Tarrow name built across 7 restaurants [app], risking complaints that travel back to Country X [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchisors retain only a small share of outlet profits",
+      "quality control is harder to maintain at a distance"
+     ],
+     "application_max_2": [
+      "only 5% of sales plus set-up fees while franchisees keep the rest",
+      "poor Country Z service would tarnish the 7-restaurant Tarrow name"
+     ],
+     "analysis_max_2": [
+      "the low-cost route may earn the least long-term profit",
+      "brand damage from one franchisee could spread back to Country X"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "5%",
+      "$35,000",
+      "7 tandoor restaurants",
+      "Country Z",
+      "$420,000",
+      "2 million"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Tarrow Tandoor should expand into Country Z through international franchises? Justify your answer.",
+    "model_answer": "Franchises would open Tarrow in Country Z without the $420,000 cost [app] and bring in local partners who handle staffing, advertising and daily operations [k], so the brand could reach 2 million residents in months rather than years [an]. However, franchising pays only $35,000 fees plus 5% of sales [app] and cedes day-to-day control [k], so weak franchisee cooking or service could stain the Tarrow name in both countries [an]. Overall, Tarrow should franchise [eval] because two motivated local partners beat one distant, costly outlet, and the $420,000 stays available for opening restaurant 8 back in Country X [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "international franchising enables fast, low-capital overseas expansion",
+      "franchising cedes day-to-day control and most outlet profits"
+     ],
+     "application_max_2": [
+      "no $420,000 outlay; local partners handle staffing and operations",
+      "only $35,000 fees plus 5% of sales retained by Tarrow"
+     ],
+     "analysis_max_2": [
+      "reach 2 million Country Z residents within months",
+      "weak franchisee standards could damage the brand in both countries"
+     ],
+     "evaluation_max_2": [
+      "weighs fast, low-capital reach against lost control and profit share",
+      "justified recommendation to franchise while keeping $420,000 for domestic growth"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$420,000",
+      "$35,000",
+      "5%",
+      "2 million residents",
+      "Country Z",
+      "$3.1 million"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_199",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Willowmere Spices is a private limited company blending mild curry pastes and dried herbs since 2011. It sells 480,000 jars a year at $4.20, generating $2.016 million in revenue, and employs 41 staff across its kitchen, warehouse and office. It won 2 national food awards in 2025. Export orders to Country Z now total 60,000 jars a year and are growing 30% annually. Two Country Z supermarkets have already agreed to trial the range.\n\nCountry Z buyers prefer milder, low-salt pastes, halal-certified ingredients and labels in the local language. Reformulating and re-labelling for Country Z would cost $95,000. Keeping the standard range saves the $95,000 but the importer warns sales could fall by 25% — about 15,000 jars a year — within 12 months.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'marketing mix'.",
+    "model_answer": "The combination of product, price, place and promotion a business uses to sell its products, blended to suit its target market [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "the combination of product, price, place and promotion",
+      "blended to suit a target market"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two benefits to Willowmere Spices of localising its products for Country Z.",
+    "model_answer": "Benefit 1: Reformulating to milder, low-salt pastes matches local tastes [k], protecting the 60,000 jars a year growing at 30% annually [app]. Benefit 2: Halal certification and local-language labels remove barriers to purchase [k], opening distribution far wider than the current limited export range [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "localising matches the product to local tastes and preferences",
+      "local language labels and certification satisfy legal and cultural requirements"
+     ],
+     "application_max_2": [
+      "milder low-salt pastes protecting 60,000 jars growing at 30%",
+      "halal certification and local-language labels widening distribution in Country Z"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "60,000 jars",
+      "30%",
+      "Country Z",
+      "halal-certified",
+      "low-salt pastes",
+      "$95,000"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks to Willowmere Spices of localising its products for Country Z.",
+    "model_answer": "Drawback 1: Reformulating and re-labelling costs $95,000 [k], a heavy outlay for a business generating $2.016 million on 60,000 export jars [app], tying up cash that could fund domestic promotion [an]. Drawback 2: Two versions of the range double recipe, stock and label complexity [k]; a mix-up breaching halal standards in Country Z could lose the whole export account [app], wiping out 30% annual growth in one error [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "localising costs money and ties up working capital",
+      "running two product versions increases operational complexity"
+     ],
+     "application_max_2": [
+      "$95,000 cost against $2.016 million revenue and 60,000 export jars",
+      "a halal mix-up would breach Country Z standards across the export range"
+     ],
+     "analysis_max_2": [
+      "cash diverted from potentially stronger domestic promotion",
+      "one compliance error could end 30% annual export growth"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$95,000",
+      "$2.016 million",
+      "60,000 jars",
+      "halal-certified",
+      "Country Z",
+      "30%"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Willowmere Spices should localise its products for Country Z? Justify your answer.",
+    "model_answer": "Localisation would cost $95,000 [app] but milder low-salt pastes, halal certification and local-language labels [k] would protect and expand the 60,000-jar export order growing 30% a year, avoiding the importer's feared 25% fall [an]. However, staying standard saves $95,000 now [app] and avoids running two versions of the range [k], but likely loses 15,000 jars — about $63,000 of sales a year — and damages the Country Z reputation [an]. Overall, Willowmere should localise [eval] because $95,000 is under 5% of revenue and defending a growing export order is cheaper than re-entering Country Z after sales collapse [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "localisation adapts the product to local tastes, religion and language",
+      "localisation adds cost and operational complexity"
+     ],
+     "application_max_2": [
+      "$95,000 reformulation cost against declining export sales in Country Z",
+      "keeping the standard range saves $95,000 but risks the 25% fall"
+     ],
+     "analysis_max_2": [
+      "losing 15,000 jars a year would cost about $63,000 of annual sales",
+      "declining exports would damage the Country Z reputation"
+     ],
+     "evaluation_max_2": [
+      "weighs $95,000 localisation cost against protecting a growing export order",
+      "justified recommendation to localise because $95,000 is under 5% of revenue"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$95,000",
+      "60,000 jars",
+      "30%",
+      "15,000 jars",
+      "Country Z",
+      "25%"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "scenario_id": "P1_U3_SET_200",
+  "unit": "Unit 3: Marketing",
+  "scenario_stem": "Bramble & Vine Chocolatiers is a private limited company founded 12 years ago, making single-origin dark chocolate bars sold through 12 boutique shops in Country X. It employs 38 staff and generated $5.6 million in revenue last year. Two department-store buyers in Country S and Country T ask for 150,000 bars a year combined, and Country S customs inspect chocolate imports slowly.\n\nThe board is choosing between licensing a Country S confectioner to produce Bramble & Vine bars there for 6% royalties on wholesale sales, or franchising its boutique shop concept to a Country S retail partner for a $50,000 entry fee plus 4% of shop sales. Franchising would cost $80,000 to recruit and train franchisees over 6 months; licensing requires no shop investment.",
+  "questions": [
+   {
+    "part": "a",
+    "mark_value": 2,
+    "question_text": "Define 'brand image'.",
+    "model_answer": "The picture, feelings and reputation customers hold about a business and its products, built through quality, design and promotion [2].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "the picture and reputation customers hold about a business and its products",
+      "built through quality, design and promotion over time"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": []
+    }
+   },
+   {
+    "part": "b",
+    "mark_value": 4,
+    "question_text": "Explain two benefits to Bramble & Vine Chocolatiers of the franchising option.",
+    "model_answer": "Benefit 1: Each franchisee pays a $50,000 entry fee [k], with boutiques displaying the single-origin range at premium prices in Country S and Country T [app]. Benefit 2: Franchising keeps the shop experience and brand story under tighter control [k], reinforcing the brand image customers pay $5.6 million a year for [app].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchising generates entry fees and keeps brand presentation controlled",
+      "franchising preserves a consistent, premium customer experience"
+     ],
+     "application_max_2": [
+      "$50,000 entry fee per franchisee with premium single-origin pricing",
+      "protecting the brand image behind $5.6 million of annual revenue"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$50,000",
+      "4% of shop sales",
+      "12 boutique shops",
+      "$5.6 million",
+      "Country S",
+      "single-origin dark chocolate"
+     ]
+    }
+   },
+   {
+    "part": "c",
+    "mark_value": 6,
+    "question_text": "Explain two drawbacks to Bramble & Vine Chocolatiers of franchising rather than licensing.",
+    "model_answer": "Drawback 1: Recruiting and training franchisees over 6 months costs $80,000 [k], more than the $50,000 entry fee returned at the start [app], so cash is tied up before the first boutique opens [an]. Drawback 2: Franchising earns only 4% of shop sales [k], less than the 6% royalties on wholesale sales from licensing [app], so if shops underperform, Bramble & Vine earns less from the 150,000 bars than licensing would deliver [an].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchising requires upfront recruitment and training investment",
+      "franchise fees are a smaller royalty share than licensing offers"
+     ],
+     "application_max_2": [
+      "$80,000 training cost exceeding the $50,000 entry fee",
+      "4% of shop sales versus 6% licensing royalties on 150,000 bars"
+     ],
+     "analysis_max_2": [
+      "cash is locked up before the first boutique opens",
+      "underperforming shops yield less than licensing would pay"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$80,000",
+      "$50,000",
+      "6 months",
+      "4%",
+      "6% royalties",
+      "150,000 bars"
+     ]
+    }
+   },
+   {
+    "part": "d",
+    "mark_value": 8,
+    "question_text": "Do you think Bramble & Vine Chocolatiers should franchise its boutiques rather than license production? Justify your answer.",
+    "model_answer": "Franchising would protect the premium brand image [k] through six months of franchisee training and tightly controlled boutiques [app], sustaining the single-origin prices and quality behind $5.6 million of revenue [an]. However, licensing a Country S confectioner [app] needs no $80,000 set-up [k] and pays 6% royalties rather than 4%, so the 150,000-bar orders from Country S and Country T could start sooner with no shop risk [an]. Overall, Bramble & Vine should franchise its boutiques [eval] because its brand image is its defence against the slow but certain customs drag on imports, and losing control of single-origin quality would cost more than the 2% royalty gap [eval].",
+    "mark_scheme": {
+     "knowledge_max_2": [
+      "franchising protects brand experience and presentation",
+      "licensing minimises capital outlay and risk while paying higher royalties"
+     ],
+     "application_max_2": [
+      "six months of franchisee training sustaining $5.6 million of premium revenue",
+      "licensing a Country S confectioner needing no $80,000 set-up"
+     ],
+     "analysis_max_2": [
+      "controlled boutiques defend the single-origin brand against import friction",
+      "licensing starts sooner and pays 6% rather than 4%"
+     ],
+     "evaluation_max_2": [
+      "weighs brand control against faster, cheaper, higher-royalty licensing",
+      "justified recommendation to franchise because brand image is the competitive moat"
+     ]
+    },
+    "qwen_marking_keys": {
+     "valid_app_words": [
+      "$80,000",
+      "4%",
+      "6% royalties",
+      "150,000 bars",
+      "Country S",
+      "$5.6 million"
+     ],
+     "deterministic_rules": {
+      "if_app_words_missing": "Cap AO2 Application score at 0",
+      "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+     }
+    }
+   }
+  ]
+ }
+]

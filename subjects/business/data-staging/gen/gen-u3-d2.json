@@ -1,0 +1,1191 @@
+[
+  {
+    "scenario_id": "P1_U3_SET_171",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Millbrook Roastery is a private limited company in Country X that roasts speciality coffee beans. It sells 250 g bags online and to 12 independent cafés, employing 9 staff. Annual revenue reached $340,000 last year, but sales have fallen 8% over the past 6 months after a supermarket launched its own-label coffee at $7 a bag, against Millbrook's $12.\n\nThe managing director must choose a marketing strategy for the next 12 months. Option one is a promotional pricing campaign, cutting the bag price to $9 for 6 months at an estimated cost of $15,000 in lost margin. Option two is investing $18,000 in a premium brand image campaign: new packaging, storytelling and a loyalty card for repeat buyers. The board meets on 30 March to decide.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'marketing strategy'.",
+        "model_answer": "A marketing strategy is a long-term plan setting out how a business will use the marketing mix to achieve its marketing objectives, such as increasing sales, market share or customer loyalty [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a long-term plan for using the marketing mix",
+            "designed to achieve marketing objectives such as higher sales or market share"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Millbrook Roastery must respond to the supermarket's own-label launch.",
+        "model_answer": "Reason 1: A clear response helps Millbrook keep customers who might switch to cheaper coffee [k], which matters because its sales have already fallen 8% in 6 months [app]. Reason 2: Responding protects Millbrook's position against a much larger rival [k], important when revenue of $340,000 and 12 café accounts are now under threat from $7 own-label bags [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "failing to respond risks losing customers to rivals",
+            "a response protects market share and the business's position"
+          ],
+          "application_max_2": [
+            "sales already fallen 8% in 6 months",
+            "supermarket own-label at $7 against Millbrook's $12; $340,000 revenue and 12 café accounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "own-label coffee",
+            "$7",
+            "$12",
+            "8%",
+            "$340,000",
+            "12 independent cafés",
+            "Millbrook Roastery"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of choosing the premium brand image campaign.",
+        "model_answer": "Advantage 1: A strong brand image lets Millbrook justify charging $12 rather than matching the $7 own-label coffee [k], keeping a higher margin on every 250 g bag sold through its 12 café customers [app], which protects the $340,000 revenue better than a price war would [an]. Advantage 2: New packaging, storytelling and a loyalty card strengthen the brand image and recognition [k], encouraging repeat buyers at a time when sales have fallen 8% [app], so customers return more often over the 12-month campaign rather than switching to the supermarket [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a strong brand image supports premium pricing",
+            "packaging and loyalty schemes build recognition and repeat custom"
+          ],
+          "application_max_2": [
+            "charging $12 against $7 own-label coffee with loyal café customers",
+            "loyalty card aimed at repeat buyers after an 8% sales fall"
+          ],
+          "analysis_max_2": [
+            "protects margin and revenue better than matching the cheap rival",
+            "increases repeat purchase frequency and defends the customer base"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "premium brand image",
+            "$12",
+            "$7",
+            "250 g",
+            "loyalty card",
+            "8%",
+            "12"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Millbrook Roastery should invest in the premium brand image campaign rather than the promotional pricing campaign? Justify your answer.",
+        "model_answer": "Argument for: the $18,000 premium brand image campaign [k] includes new packaging, storytelling and a loyalty card aimed at repeat buyers who already accept the $12 price [app], defending Millbrook's premium position instead of chasing the supermarket's $7 own-label coffee [an]. Argument against: the promotional pricing campaign cutting the bag to $9 for 6 months [k] costs an estimated $15,000 in lost margin but could win back price-sensitive shoppers put off since sales fell 8% in 6 months [app], although margins would thin and customers may leave once prices rise again [an]. Overall, the brand image campaign is the stronger choice because it builds the loyalty that protects $340,000 of revenue long term [eval], although Millbrook should monitor monthly sales and keep a short promotional offer in reserve if the 8% decline continues [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "brand image campaigns aim to differentiate and build loyalty",
+            "promotional pricing cuts margin to stimulate short-term demand"
+          ],
+          "application_max_2": [
+            "$18,000 premium campaign with loyalty card against $15,000 lost margin and a $9 bag price",
+            "sales already down 8% in 6 months; $340,000 revenue at stake against $7 own-label"
+          ],
+          "analysis_max_2": [
+            "premium positioning defends margin and the cafe relationships",
+            "price cuts may only pull forward demand and erode long-term pricing power"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation weighing brand investment against short-term price response",
+            "conditional judgement with a monitoring and contingency caveat"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$18,000",
+            "premium brand image",
+            "loyalty card",
+            "$12",
+            "$15,000",
+            "promotional pricing",
+            "8%",
+            "$340,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_172",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Cove & Compass Travel Co is an independent leisure travel agency in Country X employing 6 travel consultants. It arranges package holidays for 3,200 customers a year and earns about $96,000 in commission. Its customer records show 55% of bookings come from repeat clients, the average customer age has risen to 58, and it operates from a high-street office in the market town of Keldport.\n\nThe owners want a marketing strategy to grow the business. Option one is launching 'sun and sail' cruises aimed at retired couples, promoted to the 1,760 repeat clients on the database. Option two is a family beach-holiday campaign using social media adverts aimed at young parents, at a cost of $4,000. A decision is needed by 30 September before the winter brochure goes to print.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'customer loyalty'.",
+        "model_answer": "The extent to which customers keep buying from the same business rather than switching to rivals, usually built through satisfying experiences and trust [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customers repeatedly buying from the same business",
+            "built on satisfaction and trust rather than price alone"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Cove & Compass Travel Co should study its customer records before choosing a marketing strategy.",
+        "model_answer": "Reason 1: Records reveal what existing customers actually want [k], such as the fact that 55% of bookings come from repeat clients and the average age has risen to 58 [app]. Reason 2: Records help the owners point the budget at proven demand [k], rather than guess at a new segment without evidence from its 3,200 annual customers [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "records show real buying patterns and preferences",
+            "data-led choices reduce the risk of wasting the marketing budget"
+          ],
+          "application_max_2": [
+            "55% of bookings from repeat clients; average age 58",
+            "3,200 customers a year, with 1,760 repeat clients on the database"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "customer records",
+            "55%",
+            "repeat clients",
+            "58",
+            "3,200",
+            "1,760"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of marketing 'sun and sail' cruises to the repeat clients.",
+        "model_answer": "Benefit 1: Repeat clients already trust the agency [k], so the 1,760 retirees on the database are more likely to book a 'sun and sail' cruise than cold targets would be [app], cutting the cost of persuading them compared with paying $4,000 for social media adverts [an]. Benefit 2: Satisfying the needs of its core older market deepens loyalty [k], which fits a business already getting 55% of bookings from repeat clients aged around 58 [app], raising lifetime value and securing the $96,000 commission stream [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "marketing to existing customers is cheaper per sale",
+            "satisfying a segment's needs builds loyalty and repeat purchases"
+          ],
+          "application_max_2": [
+            "1,760 repeat clients on the database aged around 58",
+            "55% of bookings already from repeat clients; $4,000 alternative campaign cost"
+          ],
+          "analysis_max_2": [
+            "lower persuasion cost and higher response rate",
+            "deeper loyalty protects and grows the commission revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "sun and sail",
+            "repeat clients",
+            "1,760",
+            "$4,000",
+            "55%",
+            "58",
+            "$96,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Cove & Compass Travel Co should target retired repeat clients rather than young parents? Justify your answer.",
+        "model_answer": "Argument for: contacting the 1,760 retired repeat clients [k] uses the 55% repeat-booking strength and the average age of 58 to promote cruises matched to their needs [app], generating reliable commission from customers whose preferences are already known [an]. Argument against: the $4,000 family beach-holiday campaign [k] could open a new younger market and reduce reliance on an ageing client base whose bookings may fade as they travel less [app], but it targets an untested segment with no proven loyalty to the agency [an]. Overall, targeting retired repeat clients is the safer, evidence-based choice now, because the database proves demand [eval], although the agency should use what it learns to plan a later move into the family market [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "targeting an existing segment uses known demand",
+            "targeting a new segment carries higher risk but spreads the customer base"
+          ],
+          "application_max_2": [
+            "1,760 repeat clients; 55% repeat bookings; average age 58",
+            "family beach-holiday campaign costing $4,000 against an untested younger segment"
+          ],
+          "analysis_max_2": [
+            "proven demand lowers risk and marketing cost per booking",
+            "new segment could diversify income but may fail without loyalty"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation based on database evidence and repeat-booking strength",
+            "conditional judgement allowing a future move once the family segment is researched"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "1,760",
+            "55%",
+            "58",
+            "sun and sail",
+            "$4,000",
+            "family beach-holiday",
+            "$96,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_173",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Brightwire Appliance Repairs is a sole trader in Country X run by Danny Okoro for 7 years, fixing washing machines, ovens and dishwashers across the southern suburbs. It employs 3 technicians and repaired 1,150 appliances last year, earning $138,000 in revenue. A questionnaire of 400 local households found 62% would choose a repairer offering evening appointments. The firm is known for fixed prices and clear quotes.\n\nDanny must decide the marketing strategy for the year ahead. Option one is an online booking system costing $6,000, promoting evening slots through local radio for 6 weeks. Option two is a door-to-door leaflet drop costing $1,500 across 9,000 homes, keeping the current daytime-only hours. He wants the decision to act on the survey evidence, not on his own preference.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'market-orientated business'.",
+        "model_answer": "A business that bases its decisions on identifying and satisfying customer needs, using market research to shape its products and marketing, rather than pushing what it wants to sell [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "bases decisions on identifying and satisfying customer needs",
+            "uses research to guide marketing rather than personal judgement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two advantages to Brightwire Appliance Repairs of acting on the household survey.",
+        "model_answer": "Benefit 1: The survey shows 62% of 400 households want evening appointments [k], so building marketing around that need should attract more repairs than relying on guesswork [app]. Benefit 2: A market-orientated strategy matches the firm to real customer wants [k], helping it defend and grow the 1,150 appliances handled last year and the $138,000 revenue [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "research reveals genuine customer preferences",
+            "market-orientated decisions reduce marketing risk"
+          ],
+          "application_max_2": [
+            "62% of 400 households want evening appointments",
+            "1,150 appliances repaired last year and $138,000 revenue to protect"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "62%",
+            "400",
+            "evening appointments",
+            "1,150",
+            "$138,000",
+            "questionnaire"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the online booking system and local radio strategy.",
+        "model_answer": "Benefit 1: An online booking system makes arranging evening slots convenient [k], appealing directly to the 62% of households that asked for them [app], so interest converts quickly into confirmed bookings [an]. Benefit 2: Local radio adverts reach a broad local audience for 6 weeks [k], promoting the new evening service across the southern suburbs [app], which should lift repair volumes above 1,150 a year and grow the $138,000 revenue [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "online booking reduces friction and converts interest",
+            "radio advertising builds local awareness of a new offer"
+          ],
+          "application_max_2": [
+            "evening slots aimed at the 62% who asked for them",
+            "6 weeks of local radio across the southern suburbs"
+          ],
+          "analysis_max_2": [
+            "convenience increases the conversion rate from interest to bookings",
+            "wider awareness lifts volume and revenue"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "online booking system",
+            "evening",
+            "62%",
+            "local radio",
+            "1,150",
+            "$138,000",
+            "$6,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Brightwire Appliance Repairs should install the online booking system rather than do the leaflet drop? Justify your answer.",
+        "model_answer": "Argument for: the $6,000 online booking system [k] lets the 62% of households wanting evening slots actually book them, acting directly on the survey evidence [app], so repair volumes can rise beyond 1,150 a year and revenue grow past $138,000 [an]. Argument against: the door-to-door leaflet drop costing $1,500 [k] could reach all 9,000 homes cheaply and keep daytime hours that existing customers already use [app], building broad awareness without changing operations, but it ignores the evening-appointment preference the survey revealed [an]. Overall, the online booking strategy is the better, market-orientated choice because it matches proven local demand [eval], although Danny could add a smaller leaflet drop later once the evening service is running well [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "market-orientated strategy responds to research findings",
+            "leaflet drops offer cheap broad awareness without targeting need"
+          ],
+          "application_max_2": [
+            "$6,000 system serving the 62% who want evening appointments",
+            "$1,500 leaflet drop across 9,000 homes vs $138,000 revenue and 1,150 repairs"
+          ],
+          "analysis_max_2": [
+            "matching proven demand raises conversion and repeat use",
+            "cheap awareness may not change behaviour if hours stay daytime-only"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation rooted in survey evidence and market-orientated logic",
+            "conditional judgement allowing a later low-cost leaflet drop as a complement"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$6,000",
+            "online booking system",
+            "62%",
+            "1,150",
+            "$138,000",
+            "$1,500",
+            "9,000",
+            "leaflet drop"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_174",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Hazel & Rye Bakehouse is a family bakery in Country X selling sourdough loaves, pastries and cakes from 2 shops, trading for 14 years. It employs 11 staff and sold 84,000 loaves last year at $4.50 each, giving revenue of $378,000. A supermarket bakery 500 metres away now sells basic loaves at $2.80, and footfall has dropped 15% in 3 months.\n\nThe owners must set next year's marketing strategy. Option one is a full rebrand costing $9,000: new name, logo, packaging and a loyalty card, repositioning both shops as a premium artisan brand. Option two is a promotional campaign cutting prices 20% for 3 months, estimated at $18,900 in reduced margin. The decision is due by 28 February before the spring menu launch.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'brand image'.",
+        "model_answer": "The impression and beliefs customers hold about a business and its products, shaped by quality, packaging, service and promotion, which can strongly influence sales and loyalty [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the impression customers hold of a business and its products",
+            "built through quality, packaging, service and promotion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Hazel & Rye Bakehouse must rethink its marketing strategy.",
+        "model_answer": "Reason 1: A rival 500 metres away sells basic loaves at $2.80, far below $4.50 [k], so budget customers are tempted away every week [app]. Reason 2: Footfall has already dropped 15% in 3 months [k], threatening the $378,000 revenue earned from 84,000 loaves a year [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a nearby cheaper rival draws price-sensitive customers away",
+            "falling footfall threatens revenue"
+          ],
+          "application_max_2": [
+            "supermarket sells loaves at $2.80 versus $4.50",
+            "footfall down 15% in 3 months against $378,000 revenue and 84,000 loaves"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.80",
+            "$4.50",
+            "15%",
+            "$378,000",
+            "84,000",
+            "500 metres",
+            "Hazel & Rye Bakehouse"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the rebrand as a premium artisan brand.",
+        "model_answer": "Advantage 1: A premium rebrand lets Hazel & Rye stand apart from the $2.80 supermarket loaf [k], justifying its $4.50 price through quality, packaging and an artisan story across both shops [app], protecting the higher margin per loaf rather than entering a losing price war [an]. Advantage 2: A distinctive brand image with a loyalty card builds recognition and repeat custom [k], encouraging loyal customers to keep visiting despite the 15% footfall drop [app], recovering $378,000 of annual revenue without a permanent price cut [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "differentiation from cheaper rivals supports premium pricing",
+            "a strong image and loyalty scheme build repeat purchase"
+          ],
+          "application_max_2": [
+            "standing apart from the $2.80 supermarket loaf at $4.50",
+            "loyalty card and packaging aimed at loyal customers after 15% footfall drop"
+          ],
+          "analysis_max_2": [
+            "protects margin instead of eroding it in a price war",
+            "repeat custom recovers revenue more reliably than discounting"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$2.80",
+            "$4.50",
+            "packaging",
+            "loyalty card",
+            "15%",
+            "$378,000",
+            "2 shops"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Hazel & Rye Bakehouse should rebrand rather than cut prices by 20%? Justify your answer.",
+        "model_answer": "Argument for: the $9,000 rebrand [k] repositions both shops as a premium artisan brand with new packaging and a loyalty card [app], differentiating from the $2.80 supermarket loaf and keeping the $4.50 margin instead of eroding it [an]. Argument against: the promotional campaign cutting prices 20% for 3 months [k], estimated at $18,900 in lost margin, could win back budget customers immediately and lift footfall from its 15% fall [app], but customers may drift back to the supermarket once prices return to $4.50 [an]. Overall, rebranding fits a small bakery whose $378,000 revenue depends on quality and loyalty rather than volume [eval], although the owners should track footfall weekly and trial targeted promotions if the rebrand does not reverse the decline [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "rebrand aims to differentiate and support premium positioning",
+            "promotional price cuts stimulate short-term demand at the cost of margin"
+          ],
+          "application_max_2": [
+            "$9,000 rebrand with packaging and loyalty card versus $18,900 estimated margin loss",
+            "$4.50 price against $2.80 rival; 15% footfall drop and $378,000 revenue"
+          ],
+          "analysis_max_2": [
+            "differentiation defends margin that a discount cannot match",
+            "short-term traffic may not become lasting loyalty"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring differentiation over a margin-eroding discount",
+            "conditional judgement with weekly monitoring and a contingency promotion"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$9,000",
+            "rebrand",
+            "loyalty card",
+            "$2.80",
+            "$4.50",
+            "20%",
+            "$18,900",
+            "15%"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_175",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Atlas Peak Gym is a private fitness club in Country X with 1,400 members, employing 18 trainers and reception staff. Membership costs $45 a month and the gym earned $756,000 last year, which is the town's strongest result. A new low-cost chain nearby charges $25 a month, and 210 members have asked about cancelling. The club trades from a converted warehouse beside the ring road in Creston.\n\nThe owner must approve a marketing strategy before the annual renewal letters go out on 1 February. Option one is a 'Transform for Life' premium programme: personal training, nutrition plans and monthly goal reviews, adding $60 to the monthly fee. Option two is cutting standard membership to $30 a month for 12 months to match the budget rival, estimated at $252,000 in lost revenue.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'building customer relationships'.",
+        "model_answer": "Developing long-term links with customers through personalised service, communication and after-sales contact so they trust the business and keep buying from it [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "developing long-term links with customers",
+            "through personalised service and ongoing communication"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two benefits to Atlas Peak Gym of understanding why members want to cancel.",
+        "model_answer": "Benefit 1: Asking members reveals the real cause, such as price or lack of personal progress [k], rather than assuming it is price alone when 210 members queried cancelling [app]. Benefit 2: Identifying needs first lets the gym shape a strategy members actually value [k], protecting $756,000 of annual revenue from 1,400 members [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "direct feedback identifies the true cause of churn",
+            "strategy matched to needs is more likely to succeed"
+          ],
+          "application_max_2": [
+            "210 members asked about cancelling since the $25 rival opened",
+            "$756,000 revenue from 1,400 members at $45 a month"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "210 members",
+            "1,400",
+            "$756,000",
+            "$45",
+            "cancelling",
+            "$25"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of launching the 'Transform for Life' premium programme.",
+        "model_answer": "Advantage 1: The programme adds personal training, nutrition plans and monthly goal reviews [k], satisfying members who want measurable results rather than basic equipment, the very need behind 210 members asking to cancel [app], making them far less likely to switch to the $25 rival [an]. Advantage 2: Adding $60 to the monthly fee [k], lifting paying members above the $45 standard rate for the full year [app], raises average revenue per member so any losses on standard memberships are offset without cutting headline prices [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "personalised programmes satisfy higher-order needs and build loyalty",
+            "premium add-ons raise revenue per customer"
+          ],
+          "application_max_2": [
+            "goal reviews and nutrition plans answering the needs behind the 210 cancellation queries",
+            "$60 added to the $45 monthly fee for a full 12 months"
+          ],
+          "analysis_max_2": [
+            "reduces switching to the cheaper rival by differentiating",
+            "higher per-member revenue offsets any standard price pressure"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "Transform for Life",
+            "personal training",
+            "$60",
+            "$45",
+            "210",
+            "$25",
+            "1,400"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Atlas Peak Gym should launch the premium programme rather than cut membership to $30? Justify your answer.",
+        "model_answer": "Argument for: the 'Transform for Life' programme at $60 above the $45 monthly fee [k] answers the needs of results-driven members, differentiating Atlas Peak from the $25 budget chain rather than copying it [app], lifting average revenue per member and defending the $756,000 income base [an]. Argument against: cutting standard membership to $30 for 12 months [k], estimated at $252,000 in lost revenue, might stop the 210 cancellation queries becoming mass departures to the budget chain [app], although $30 still leaves the gym above the $25 rival and sacrifices margin [an]. Overall, the premium programme is the stronger strategy because it builds loyalty and relationships instead of triggering a price war [eval], although the owner should survey the 210 members first and offer a pause or transfer option if they remain price-driven [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "premium programme differentiates on value, not price",
+            "matching a low-cost rival usually starts a margin-eroding price war"
+          ],
+          "application_max_2": [
+            "$60 premium on top of $45 versus cutting to $30 for 12 months",
+            "$252,000 estimated lost revenue; 210 members queried cancelling; $756,000 base"
+          ],
+          "analysis_max_2": [
+            "differentiation protects margin and loyalty",
+            "a matched low price may still be beaten by the $25 rival and destroys margin"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring the relationship-based premium strategy",
+            "conditional judgement with a member survey and pause or transfer caveat"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$60",
+            "$45",
+            "premium programme",
+            "$25",
+            "$30",
+            "$252,000",
+            "210",
+            "$756,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_176",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Larkfield Farm Shop is a family-run farm shop in Country X outside Wexford, selling local meat, vegetables, cheese and preserves. It has traded for 16 years, employs 7 staff, earned $210,000 in revenue last year and serves 600 weekly customers tracked on a loyalty card. The produce comes from 22 nearby farms, and the owners are deciding how to grow sales before Christmas.\n\nOption one is a weekly veg-box subscription promoted to existing customers at $18 a box, forecast to add $3,600 a week. Option two is a paid social media campaign costing $2,500 to reach new shoppers in Wexford and advertise seasonal gift hampers. A decision is needed by 15 October, and the owners want the choice to match what their regulars actually ask for.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'the role of marketing'.",
+        "model_answer": "To identify and satisfy customer needs profitably, while maintaining customer loyalty and building long-term relationships with those customers [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "identifying and satisfying customer needs",
+            "maintaining loyalty and building long-term customer relationships"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Larkfield Farm Shop should use its loyalty-card data when planning its marketing.",
+        "model_answer": "Reason 1: The loyalty-card data shows what its 600 weekly customers actually buy and how often [k], so the owners can spot rising interest in veg boxes or hampers before investing [app]. Reason 2: Data-led decisions are market-orientated, matching promotions to real needs [k], protecting and growing the $210,000 yearly revenue rather than wasting the $2,500 budget [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "customer data reveals real buying behaviour and preferences",
+            "market-orientated decisions lower the risk of wasted spend"
+          ],
+          "application_max_2": [
+            "loyalty-card records of 600 weekly customers",
+            "$210,000 revenue to protect and a $2,500 budget to allocate"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "loyalty card",
+            "600",
+            "$210,000",
+            "$2,500",
+            "veg-box",
+            "Larkfield Farm Shop"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of promoting the veg-box subscription to existing customers.",
+        "model_answer": "Benefit 1: Promoting to existing customers is cheaper than recruiting strangers [k], because the 600 weekly loyal shoppers already trust the shop's local produce [app], so the $18 weekly box needs little more than an email or a till-side prompt [an]. Benefit 2: Subscriptions create regular repeat purchases [k], smoothing demand across the winter and lifting predictable revenue towards the forecast $3,600 a week [app], strengthening cash flow ahead of the costly pre-Christmas stock build-up [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "selling to existing customers costs less than acquiring new ones",
+            "subscriptions generate predictable repeat revenue"
+          ],
+          "application_max_2": [
+            "600 loyal weekly customers already buying local produce",
+            "$18 per box forecast to add $3,600 a week"
+          ],
+          "analysis_max_2": [
+            "lower promotion cost per sale and faster sign-up",
+            "smoother cash flow ahead of the Christmas stock build-up"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "veg-box subscription",
+            "$18",
+            "600",
+            "$3,600",
+            "existing customers",
+            "$210,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Larkfield Farm Shop should promote the veg-box subscription rather than pay for the social media campaign? Justify your answer.",
+        "model_answer": "Argument for: the veg-box subscription promotes to existing customers [k], whose loyalty-card records show repeat buying, at a forecast $3,600 a week from $18 boxes [app], giving quick, predictable extra revenue without staking $2,500 on untargeted adverts [an]. Argument against: the $2,500 social media campaign [k] could attract new shoppers in Wexford and boost seasonal hamper sales [app], widening the customer base beyond the current 600 weekly regulars before Christmas [an]. Overall, the veg-box subscription is the lower-risk choice because it deepens relationships with proven buyers and matches what the data shows [eval], although the shop could run a small targeted social advert alongside it once subscriptions are established [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "promoting to existing customers deepens loyalty at low cost",
+            "advertising can widen reach but carries adoption risk"
+          ],
+          "application_max_2": [
+            "$18 box forecast at $3,600 a week to existing loyalty-card customers",
+            "$2,500 campaign to reach new Wexford shoppers and hamper sales vs 600 weekly regulars"
+          ],
+          "analysis_max_2": [
+            "predictable recurring revenue strengthens cash flow",
+            "new-customer acquisition is slower and less certain before Christmas"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring loyalty-led growth over untargeted advertising",
+            "conditional judgement allowing a small complementary social campaign later"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "veg-box",
+            "$3,600",
+            "$18",
+            "$2,500",
+            "loyalty card",
+            "600",
+            "$210,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_177",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Peregrine Bookshop is an independent bookshop in the town of Charwell, Country X, employing 4 staff and trading for 11 years. Annual sales are $190,000, but revenue has fallen 12% this year as a national chain and an online retailer discount bestsellers by 25%. The owners want a clear reason for local customers to choose them. The shop stocks 25,000 titles across 3 floors.\n\nOption one is turning the shop into a community hub: weekly readings, a children's story hour and a loyalty stamp card, costing $3,000 to set up. Option two is matching the 25% discount on the 40 bestselling titles all year, estimated at $18,000 in lost margin. The decision must be made before the school summer holidays, when families visit most.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'marketing mix'.",
+        "model_answer": "The combination of marketing decisions — product, price, place and promotion — used together by a business to satisfy customers and achieve its objectives [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "the combination of product, price, place and promotion",
+            "used together to satisfy customers and meet objectives"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why matching the 25% discount may not save Peregrine Bookshop.",
+        "model_answer": "Reason 1: Matching the 25% discount means giving up margin on the 40 bestselling titles [k], costing an estimated $18,000 over the year against sales of only $190,000 [app]. Reason 2: An online retailer can sustain discounting far better than a small shop [k], so a price war Peregrine cannot afford could drag on regardless of the 12% revenue fall already seen [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "matching discounts erodes margin",
+            "larger competitors can outlast small firms in price wars"
+          ],
+          "application_max_2": [
+            "40 bestsellers at 25% off; $18,000 estimated lost margin",
+            "$190,000 sales; online retailer discounting; 12% revenue fall"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "25%",
+            "40 bestselling",
+            "$18,000",
+            "$190,000",
+            "12%",
+            "online retailer"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the community hub strategy.",
+        "model_answer": "Advantage 1: Readings and a children's story hour give people a reason to visit that price cannot match [k], drawing families into the shop during the school summer holidays [app], lifting footfall and sales of non-book items such as stationery and gifts [an]. Advantage 2: A loyalty stamp card encourages repeat custom [k], building lasting relationships with the local market rather than one-off bargain hunters [app], creating a defensible position the online retailer cannot easily copy at any discount [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "experiential marketing attracts customers beyond price",
+            "loyalty schemes build repeat custom and relationships"
+          ],
+          "application_max_2": [
+            "story hour and readings timed for the school summer holidays",
+            "loyalty stamp card aimed at local repeat buyers"
+          ],
+          "analysis_max_2": [
+            "footfall lifts sales of higher-margin non-book items",
+            "relationships create loyalty rivals cannot buy with discounts"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "community hub",
+            "loyalty stamp card",
+            "$3,000",
+            "summer holidays",
+            "online retailer",
+            "12%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Peregrine Bookshop should become a community hub rather than match the 25% discount? Justify your answer.",
+        "model_answer": "Argument for: the community hub costs $3,000 to set up [k], creating events and a loyalty stamp card that build reasons to visit beyond price [app], defending the $190,000 revenue without destroying margin across the 40 bestselling titles [an]. Argument against: matching the 25% discount [k] could win back price-driven buyers quickly and stem the 12% revenue decline [app], but it costs an estimated $18,000 in lost margin and teaches customers to buy only on discount [an]. Overall, the community hub is the better strategy because differentiation, not price-matching, protects an independent bookshop [eval], although the owners should promote events heavily and review sales monthly through the holiday period [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "community positioning differentiates on experience and loyalty",
+            "discounting buys volume at the expense of margin and habits"
+          ],
+          "application_max_2": [
+            "$3,000 hub setup with loyalty stamp card versus $18,000 estimated lost margin on 40 bestsellers",
+            "12% revenue fall; $190,000 sales; 25% discount to match"
+          ],
+          "analysis_max_2": [
+            "differentiation protects margin and builds loyal demand",
+            "discounting likely triggers an unwinnable war with the online rival"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring differentiation and loyalty over discounting",
+            "conditional judgement with promotion and monthly review caveats"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$3,000",
+            "community hub",
+            "loyalty stamp card",
+            "25%",
+            "40 bestselling",
+            "$190,000",
+            "12%",
+            "$18,000"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_178",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Aster Lane Fashion is a boutique in the capital of Country X selling women's clothing to 24- to 35-year-old professionals. It employs 5 staff at its store on Wren Street, trading for 6 years, and made $265,000 in revenue last year with steady weekend trade. A survey of 300 customers showed 68% discover new fashion brands through short video adverts, while only 9% read local newspapers.\n\nThe owner is choosing a marketing strategy for the autumn launch, with the stock arriving on 15 August. Option one is a $5,000 short-video advertising campaign with a popular local creator. Option two is a $5,000 package of weekly full-page local newspaper adverts for 6 weeks. The owner wants the decision to follow the research evidence, not personal media habits.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'market research'.",
+        "model_answer": "The systematic collection and analysis of data about customers, competitors and markets, used to help a business make informed marketing decisions [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "systematic collection of data about customers and markets",
+            "used to support informed marketing decisions"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Aster Lane Fashion should base its autumn launch on the survey results.",
+        "model_answer": "Reason 1: The survey is direct evidence from 300 real customers [k], showing that 68% discover fashion brands through short video adverts [app]. Reason 2: Decisions grounded in research are market-orientated and reduce risk [k], so the $5,000 budget should not be wasted on the newspaper channel only 9% read [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "research evidence reflects actual customer behaviour",
+            "market-orientated decisions cut marketing risk"
+          ],
+          "application_max_2": [
+            "68% discover brands through short video adverts",
+            "only 9% read local newspapers; $5,000 budget at stake"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "300",
+            "68%",
+            "$5,000",
+            "9%",
+            "short video",
+            "survey"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the short-video advertising campaign.",
+        "model_answer": "Benefit 1: Short video matches how 68% of target customers already discover brands [k], so the $5,000 spend reaches 24- to 35-year-old professionals where they actually look [app], raising the chance of a strong autumn-launch sell-through [an]. Benefit 2: A popular local creator adds authentic, persuasive word-of-mouth [k], appealing to style-conscious professionals far better than print ever could [app], building brand awareness faster than 6 weeks of newspaper adverts [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "advertising in the right channel increases effectiveness",
+            "influencer-style endorsements add persuasive credibility"
+          ],
+          "application_max_2": [
+            "68% of target customers discover brands via short video",
+            "popular local creator speaking to 24- to 35-year-old professionals"
+          ],
+          "analysis_max_2": [
+            "higher conversion and faster awareness ahead of the launch",
+            "word-of-mouth spreads reach beyond the paid spend"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "short-video",
+            "68%",
+            "$5,000",
+            "24- to 35-year-old",
+            "local creator",
+            "6 weeks",
+            "9%"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Aster Lane Fashion should choose the short-video campaign rather than the newspaper adverts? Justify your answer.",
+        "model_answer": "Argument for: the $5,000 short-video campaign [k] targets the 68% of surveyed customers who discover brands through video, using a local creator they already trust [app], so it should convert awareness into autumn-launch sales far more efficiently than print [an]. Argument against: the $5,000 newspaper package [k] puts the boutique in front of the 9% who read local papers with 6 weeks of repeated exposure [app], which could reinforce standing with older loyal readers but ignores the overwhelming 68% preference for video [an]. Overall, the video campaign is the right research-led choice for this young professional audience [eval], although the owner should track sales and click-throughs weekly and reshuffle the mix if the autumn stock has not moved by 15 August [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "effectiveness of promotion depends on choosing the right channel",
+            "repetition supports awareness but cannot fix a poor channel fit"
+          ],
+          "application_max_2": [
+            "$5,000 across video with a local creator vs $5,000 for 6 weeks of print",
+            "68% prefer video discovery; only 9% read local newspapers"
+          ],
+          "analysis_max_2": [
+            "channel fit converts awareness into launch sales",
+            "repeated print exposure cannot close a 59-point preference gap"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation following the survey evidence",
+            "conditional judgement with weekly tracking and a mix-adjustment trigger"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$5,000",
+            "short-video",
+            "68%",
+            "9%",
+            "newspaper",
+            "local creator",
+            "15 August",
+            "autumn"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_179",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Whiteoak Creamery is a small ice-cream maker in Country X producing 8 flavours from its farm near Tarnley. It sells through 15 local shops, employs 6 staff and took in $85,000 last year, trading for 9 years. A national supermarket chain has offered to stock Whiteoak across Marisport, home to 220,000 people, if it can supply 30,000 tubs a year at $2.20 per tub versus the $4 direct price.\n\nThe owners must set a marketing strategy for the coming year. Option one is signing the supermarket supply deal for 2 years, worth about $66,000 a year. Option two is focusing on the home market: a new flavour, tastings at 6 summer fairs and a loyalty card costing $4,000. A decision is due by 31 May before orders are placed.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'niche market'.",
+        "model_answer": "A small, specific segment of a larger market with distinctive needs, targeted with a specialised product or marketing approach [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a small, clearly defined segment of a larger market",
+            "served with a specialised product or marketing approach"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two opportunities for Whiteoak Creamery from signing the supermarket deal.",
+        "model_answer": "Opportunity 1: Supplying 30,000 tubs a year would massively increase production volume [k], lifting revenue towards $66,000 a year from the 220,000-person Marisport market [app]. Opportunity 2: Listing in national supermarkets would raise national brand awareness [k], helping Whiteoak reach far beyond its 15 local shops without paying for advertising [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "large-scale listing multiplies volume and revenue",
+            "supermarket distribution builds brand awareness at no extra ad cost"
+          ],
+          "application_max_2": [
+            "30,000 tubs a year; $66,000 a year at $2.20 per tub",
+            "Marisport market of 220,000 people versus 15 local shops"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30,000",
+            "220,000",
+            "15 local shops",
+            "supermarket",
+            "$2.20",
+            "$85,000",
+            "Marisport"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two benefits of the home-market strategy.",
+        "model_answer": "Benefit 1: Direct sales keep the $4 selling price [k], whereas the supermarket deal would pay only $2.20 per tub [app], so home sales stay far more profitable per tub even at lower volume [an]. Benefit 2: Tastings and a loyalty card build relationships and repeat custom [k], deepening loyalty among existing buyers near Tarnley [app], which suits a small firm employing 6 staff that may not yet guarantee 30,000 tubs a year [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "direct selling keeps the full price and margin",
+            "tastings and loyalty schemes strengthen relationships and repeat purchase"
+          ],
+          "application_max_2": [
+            "$4 direct versus $2.20 supermarket price per tub",
+            "6 staff serving 15 local shops near Tarnley vs 30,000 tubs demanded"
+          ],
+          "analysis_max_2": [
+            "higher margin per tub funds the loyalty investment",
+            "avoids overcommitting a small team to a 30,000-tub contract"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$4",
+            "$2.20",
+            "home market",
+            "loyalty card",
+            "tastings",
+            "6 staff",
+            "Tarnley",
+            "30,000"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Whiteoak Creamery should sign the supermarket supply deal rather than focus on the home market? Justify your answer.",
+        "model_answer": "Argument for: the national supermarket deal [k] offers 30,000 tubs a year at $2.20, roughly $66,000 of new revenue from a 220,000-person market [app], approaching the $85,000 earned last year through just 15 local shops [an]. Argument against: the $2.20 price halves Whiteoak's direct $4 margin [k] and commits it to 30,000 tubs a year for 2 years [app], which could strain a 6 staff team and undermine the farm-fresh quality on which the home market depends [an]. Overall, focusing on the home market first is the wiser strategy for a small creamery, because protecting margin and quality builds the brand before scaling up [eval], although the owners should revisit the supermarket offer once capacity and cash flow allow [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "a large contract offers growth but halves the price and margin",
+            "home-market focus protects quality and brand before scaling"
+          ],
+          "application_max_2": [
+            "30,000 tubs at $2.20 (about $66,000) vs $4 direct sales",
+            "$85,000 last year through 15 shops; 6 staff; 2-year commitment"
+          ],
+          "analysis_max_2": [
+            "scale could nearly double revenue if capacity allows",
+            "half margin and full commitment could strain a small team and quality"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation based on margin, capacity and brand risk",
+            "conditional judgement allowing the deal to be revisited later"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "30,000",
+            "$2.20",
+            "$66,000",
+            "$4",
+            "$85,000",
+            "15 local shops",
+            "2 years",
+            "6 staff"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "P1_U3_SET_180",
+    "unit": "Unit 3: Marketing",
+    "scenario_stem": "Quernmore Furniture Co is a workshop in Country X making solid-wood tables and chairs. It employs 14 staff, trading for 13 years, and earned $480,000 last year from sales through 3 showroom partners. The workshop prides itself on local oak, and it is launching an 'eco-oak' range made from certified timber that costs 15% more to produce.\n\nThe partners must pick a marketing strategy for the launch. Local timber suppliers deliver to the workshop fortnightly. Option one is an eco-focused brand campaign: a dedicated web page, showroom displays and sponsoring a green-homes exhibition, costing $7,500. Option two is a 20% launch discount on the eco-oak range for 8 weeks, estimated at $9,600 in reduced margin. The partners expect a recommendation at the July meeting.",
+    "questions": [
+      {
+        "part": "a",
+        "mark_value": 2,
+        "question_text": "Define the term 'promotion'.",
+        "model_answer": "The marketing activities used to inform customers about a product and persuade them to buy, such as advertising, sales promotion and public relations [2].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "activities informing and persuading customers",
+            "for example advertising, sales promotion and public relations"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": []
+        }
+      },
+      {
+        "part": "b",
+        "mark_value": 4,
+        "question_text": "Explain two reasons why Quernmore Furniture Co should not rely on low price for the eco-oak range.",
+        "model_answer": "Reason 1: The eco-oak range costs 15% more to produce [k], so a 20% discount would wipe out what margin the range has left [app]. Reason 2: Buyers of certified timber furniture often value ethics over price [k], so leading with a discount sends the wrong signal about a premium eco product [app].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "discounting a high-cost range destroys margin",
+            "ethical buyers often pay for certified provenance rather than low price"
+          ],
+          "application_max_2": [
+            "eco-oak costs 15% more to produce",
+            "20% launch discount would erode the range's margin"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "15%",
+            "20%",
+            "eco-oak",
+            "certified timber",
+            "Quernmore Furniture Co"
+          ]
+        }
+      },
+      {
+        "part": "c",
+        "mark_value": 6,
+        "question_text": "Explain two advantages of the eco-focused brand campaign.",
+        "model_answer": "Advantage 1: A dedicated web page, showroom displays and exhibition sponsorship [k] clearly communicate the certified timber story [app], justifying the 15% higher production cost and protecting margin far better than a 20% discount [an]. Advantage 2: The campaign strengthens the brand and its PR presence [k], differentiating Quernmore in the green-homes market [app], reaching exactly the ethically minded buyers an eco range depends on [an].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "clear communication of product benefits supports premium pricing",
+            "brand-building and PR differentiate a business in a niche market"
+          ],
+          "application_max_2": [
+            "web page, displays and green-homes exhibition promoting certified timber",
+            "positioning Quernmore's eco-oak range for ethically minded buyers"
+          ],
+          "analysis_max_2": [
+            "stronger communication protects margin that a discount would sacrifice",
+            "differentiation attracts the segment most willing to pay"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "eco-focused",
+            "certified timber",
+            "$7,500",
+            "green-homes exhibition",
+            "15%",
+            "20%",
+            "showroom displays"
+          ]
+        }
+      },
+      {
+        "part": "d",
+        "mark_value": 8,
+        "question_text": "Do you think Quernmore Furniture Co should run the eco-focused brand campaign rather than the 20% launch discount? Justify your answer.",
+        "model_answer": "Argument for: the $7,500 eco-focused brand campaign [k] highlights certified timber through displays and the green-homes exhibition [app], attracting buyers willing to pay for sustainability and protecting the 15% higher production cost [an]. Argument against: the 20% launch discount for 8 weeks [k] could drive rapid volume of the new eco-oak range and create early adopters fast [app], costing an estimated $9,600 in reduced margin but generating word-of-mouth momentum [an]. Overall, the eco-focused campaign is the better strategy because it builds the brand and margin the eco range needs to survive [eval], although a smaller time-limited offer could be layered onto it later if the launch underwhelms [eval].",
+        "mark_scheme": {
+          "knowledge_max_2": [
+            "brand campaigns build sustainable positioning",
+            "launch discounts trade margin for speed and volume"
+          ],
+          "application_max_2": [
+            "$7,500 campaign with green-homes exhibition vs $9,600 estimated margin loss",
+            "eco-oak at 15% higher production cost; 20% discount for 8 weeks"
+          ],
+          "analysis_max_2": [
+            "brand-led launch protects margin and long-term price integrity",
+            "discount may create quick volume but at a real $9,600 cost"
+          ],
+          "evaluation_max_2": [
+            "justified recommendation favouring brand investment over discounting",
+            "conditional judgement allowing a later small layered offer"
+          ]
+        },
+        "qwen_marking_keys": {
+          "valid_app_words": [
+            "$7,500",
+            "eco-focused",
+            "certified timber",
+            "green-homes",
+            "15%",
+            "20%",
+            "8 weeks",
+            "$9,600"
+          ],
+          "deterministic_rules": {
+            "if_app_words_missing": "Cap AO2 Application score at 0",
+            "if_no_eval_word": "Cap AO4 Evaluation score at 0"
+          }
+        }
+      }
+    ]
+  }
+]
