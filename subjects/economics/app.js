@@ -16,57 +16,71 @@ const pad = n => String(n).padStart(2,'0');
 function tiles(includeExam) {
   return '<div class="grid">' + catalog.slice(0,includeExam ? catalog.length : 6).map((c,i) => '<a class="tile" style="--tone:'+ (colors[i] || colors[0]) +'" href="#chapter/'+i+'"><span class="icon" aria-hidden="true">'+icons[i]+'</span><div class="tile-copy"><h3>'+escapeHtml(c.title)+'</h3><small>'+ (i<6 ? 'CHAPTER '+pad(i+1) : 'EXAM SKILLS') +' · '+lessons.filter(l=>l.chapter===i).length+' lessons</small></div><span class="arrow" aria-hidden="true">→</span></a>').join('')+'</div>';
 }
+function overviewIcon(kind) {
+  const shapes = {
+    paper: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5M10 12h5M10 16h5"/>',
+    writing: '<path d="m15 4 5 5-10 10-6 1 1-6zM13 6l5 5"/>',
+    notes: '<path d="M3 5c4-2 6-1 9 1 3-2 5-3 9-1v15c-4-2-6-1-9 1-3-2-5-3-9-1zM12 6v15"/>',
+    cards: '<rect x="6" y="7" width="15" height="14" rx="2"/><path d="M17 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1M10 12h7M10 16h4"/>',
+    tools: '<path d="M4 5h16M4 12h16M4 19h16"/><circle cx="8" cy="5" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="19" r="2"/>',
+    progress: '<path d="M4 4v16h17M8 15l4-5 4 2 4-7"/>',
+    check: '<path d="m7 12 3 3 7-7"/><rect x="3" y="3" width="18" height="18" rx="5"/>'
+  };
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + shapes[kind] + '</svg>';
+}
 function home() {
   const exam = [
-    ['Ⅰ', 'Paper 1 practice', 'Work through multiple-choice questions by topic.', '#practice/mcq'],
-    ['Ⅱ', 'Paper 2 practice', 'Practise structured answers and review your feedback.', '#practice/structured'],
+    ['paper', 'Paper 1 practice', 'Build your confidence with multiple-choice questions, organised by topic.', '#practice/mcq'],
+    ['writing', 'Paper 2 practice', 'Develop your written answers with structured questions and detailed feedback.', '#practice/structured']
   ];
   const revision = [
-    ['▤', 'Lessons', 'Read notes and work through diagrams.', '#library'],
-    ['▣', 'Flashcards', 'Test yourself on definitions and concepts.', '#flashcards'],
-    ['✦', 'All revision tools', 'Try timed tests, cheatsheets and mistake review.', '#revision'],
+    ['notes', 'Lesson library', 'Clear explanations, key ideas and diagrams for every chapter.', '#library'],
+    ['cards', 'Flashcards', 'Turn what you understand into what you remember.', '#flashcards'],
+    ['tools', 'Revision tools', 'Cheatsheets, timed tests and a place to revisit mistakes.', '#revision']
   ];
-  const cards = items => items.map(([symbol, title, description, href]) => `
+  const cards = items => items.map(([icon, title, description, href]) => `
     <a class="overview-card" href="${href}">
-      <span class="overview-icon" aria-hidden="true">${symbol}</span>
+      <span class="overview-icon">${overviewIcon(icon)}</span>
       <span class="overview-card-copy"><strong>${title}</strong><span>${description}</span></span>
-      <span class="overview-arrow" aria-hidden="true">→</span>
     </a>`).join('');
   return `
     <header class="economics-hero">
       <div class="economics-hero-copy">
-        <p class="eyebrow">Cambridge IGCSE · 0455</p>
-        <h1>Economics</h1>
-        <p>Explore how markets work, revise the syllabus, and practise exam questions one topic at a time.</p>
+        <p class="eyebrow">Cambridge IGCSE · Economics 0455</p>
+        <h1>Economics,<br><em>made clearer.</em></h1>
+        <p>Make sense of the world around you. Explore the ideas, connect the concepts and build confidence for your exams.</p>
         <div class="actions">
-          ${link('Start practice →', '#practice', 'button hero-primary')}
-          ${link('Browse lessons', '#library', 'button hero-secondary')}
+          ${link('Start practising', '#practice', 'button hero-primary')}
+          ${link('Explore lessons', '#library', 'button hero-secondary')}
+        </div>
+        <div class="hero-facts" aria-label="Study resources">
+          <span><strong>6</strong> syllabus chapters</span>
+          <span><strong>${lessons.length}</strong> lessons</span>
+          <span><strong>${questions.length.toLocaleString('en-GB')}</strong> practice questions</span>
         </div>
       </div>
+      <aside class="hero-study-plan" aria-labelledby="study-plan-title">
+        <div class="study-plan-heading"><span class="eyebrow">A little progress, every day</span><h2 id="study-plan-title">Find your focus.</h2><p>Choose where you want to begin.</p></div>
+        <a href="#library"><span class="focus-icon">${overviewIcon('notes')}</span><span><strong>Understand a concept</strong><small>Open the lesson library</small></span></a>
+        <a href="#practice"><span class="focus-icon">${overviewIcon('writing')}</span><span><strong>Put it into practice</strong><small>Try an exam-style question</small></span></a>
+        <a href="#revision-checklist"><span class="focus-icon">${overviewIcon('check')}</span><span><strong>Plan your next step</strong><small>Review your syllabus checklist</small></span></a>
+        <div class="study-plan-footer">Your space to learn at your own pace.</div>
+      </aside>
     </header>
-    <a class="progress-overview-link" href="#progress">
-      <span class="overview-icon" aria-hidden="true">▥</span>
-      <span class="overview-card-copy"><strong>My progress</strong><span>View your saved answers, checklist progress and CSV download.</span></span>
-      <span class="overview-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="checklist-callout" href="#revision-checklist">
-      <span class="overview-icon" aria-hidden="true">✓</span>
-      <span class="overview-card-copy"><strong>Syllabus checklist</strong><span>Track what you’ve covered and choose what to revise next.</span></span>
-      <span class="overview-arrow" aria-hidden="true">→</span>
-    </a>
+    <div class="overview-personal">
+      <a class="progress-overview-link" href="#progress"><span class="overview-icon">${overviewIcon('progress')}</span><span class="overview-card-copy"><strong>Your progress, in one place</strong><span>Revisit saved answers and see how far you’ve come.</span></span></a>
+      <a class="checklist-callout" href="#revision-checklist"><span class="overview-icon">${overviewIcon('check')}</span><span class="overview-card-copy"><strong>Know what comes next</strong><span>Keep track of the syllabus with your revision checklist.</span></span></a>
+    </div>
     <section class="overview-section" aria-labelledby="overview-exam">
-      <h2 id="overview-exam">Exam practice</h2>
+      <div class="overview-section-heading"><div><p class="eyebrow">Build your confidence</p><h2 id="overview-exam">Make practice a habit.</h2></div><p>Small steps. Stronger answers.</p></div>
       <div class="overview-exam-grid">${cards(exam)}</div>
     </section>
     <section class="overview-section" aria-labelledby="overview-revision">
-      <h2 id="overview-revision">Revision tools</h2>
+      <div class="overview-section-heading"><div><p class="eyebrow">Learn your way</p><h2 id="overview-revision">A toolkit for every topic.</h2></div></div>
       <div class="overview-revision-grid">${cards(revision)}</div>
     </section>
-    <section class="overview-section" aria-labelledby="overview-chapters">
-      <div class="section-head">
-        <h2 id="overview-chapters">Explore the chapters</h2>
-        ${link('Syllabus coverage →', '#syllabus', 'text-link')}
-      </div>
+    <section class="overview-section overview-chapters" aria-labelledby="overview-chapters">
+      <div class="section-head"><div><p class="eyebrow">The bigger picture</p><h2 id="overview-chapters">Explore the syllabus.</h2></div>${link('View syllabus coverage', '#syllabus', 'text-link')}</div>
       ${tiles(false)}
     </section>`;
 }

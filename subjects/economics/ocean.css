@@ -1,0 +1,265 @@
+/* Ocean: shared presentation for the Economics study workspace and arcade. */
+:root {
+  --ink: #193449;
+  --muted: #526878;
+  --blue: #196e60;
+  --navy: #142f43;
+  --paper: #f5f8fa;
+  --line: #dce5eb;
+  --peach: #b4ecd5;
+  --white: #fff;
+  --ocean-mint: #b4ecd5;
+  --ocean-soft: #eaf6f1;
+  --ocean-shadow: 0 8px 28px #17364b08;
+  --economics-nav-height: 80px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+body, body[data-game] { background: var(--paper); color: var(--ink); font-size: 1rem; line-height: 1.65; }
+::selection { background: #b4ecd5; color: #142f43; }
+main { min-width: 0; }
+.wrap { width: min(calc(100% - 64px), 1248px); padding-top: 36px; padding-bottom: 72px; }
+.practice-page, .learning-page, .revision-page { font-size: 1rem; }
+a { color: inherit; text-underline-offset: 4px; }
+button, .button { border-radius: 10px; min-height: 44px; font-size: .875rem; background: #fff; border-color: var(--line); font-weight: 650; }
+button:hover:not(:disabled), .button:hover { border-color: #6d9d9b; }
+.primary, button.primary, a.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+.primary:hover:not(:disabled) { background: #254b61; }
+:where(a, button, input, select, textarea, summary):focus-visible { outline: 3px solid #238576; outline-offset: 4px; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+input, select, textarea { font-size: 1rem; color: var(--ink); border-color: #c5d5de; background: #fff; border-radius: 10px; }
+input[type='checkbox'], input[type='radio'], progress { accent-color: #197962; }
+select { appearance: none; padding-right: 36px !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23526878' stroke-width='1.5'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 16px; background-position: right 12px center; }
+.eyebrow, .badge { color: #196e60; font-size: .75rem; font-weight: 700; letter-spacing: .13em; }
+.page-title, .section-head h2 { color: var(--navy); letter-spacing: -.035em; }
+.panel, .group, .tile { background: #fff; border-color: var(--line); box-shadow: var(--ocean-shadow); border-radius: 18px; }
+.panel { line-height: 1.85; }
+.field, .study-search, .chapter-select { font-size: .875rem; color: var(--ink); }
+.muted, .crumb { color: var(--muted); }
+.text-link { color: #196e60; font-size: .875rem; font-weight: 650; }
+.tile .arrow, .cover-arrow, .overview-arrow, .revision-tool-arrow { display: none; }
+
+/* Navigation stays easy to scan, including when all eight destinations are present. */
+.economics-nav { background: #fffffffa; border-color: var(--line); color: var(--navy); box-shadow: 0 2px 16px #142f4305; }
+.economics-nav-inner { width: min(calc(100% - 64px), 1376px); column-gap: 20px; }
+.economics-brand strong { font-size: 26px; letter-spacing: -.8px; }
+.economics-brand small { color: var(--muted); font-size: .75rem; }
+.economics-mark { width: 42px; height: 42px; background: var(--navy); color: var(--ocean-mint); border-radius: 13px; }
+.economics-links { gap: 2px; }
+.economics-links a, .economics-subjects, #topic-search-open { padding: 8px 10px; font-size: .875rem; font-weight: 600; }
+.economics-links a:hover, .economics-subjects:hover, #topic-search-open:hover { background: #f0f5f7; }
+.economics-links a[aria-current='page'] { background: var(--ocean-soft); color: #14624f; box-shadow: inset 0 -2px #299879; }
+.economics-subjects { border-color: var(--line); }
+#topic-search-open { color: var(--navy); border-color: var(--line); background: #f5f8fa; }
+
+/* A quiet editorial introduction, paired with a useful study launcher. */
+.economics-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: clamp(32px, 6vw, 88px); align-items: center; min-height: 0; padding: 36px 0 54px; background: none; color: var(--navy); border-radius: 0; overflow: visible; }
+.economics-hero-copy { padding: 0; width: auto; min-width: 0; }
+.economics-hero .eyebrow { color: #196e60; }
+.economics-hero h1 { margin: 24px 0; font: 400 clamp(3rem, 6.1vw, 5.7rem)/1.03 Georgia, serif; letter-spacing: -.055em; }
+.economics-hero h1 em { color: #247864; font-weight: 400; }
+.economics-hero p:not(.eyebrow) { color: var(--muted); max-width: 46ch; font-size: 1.0625rem; line-height: 1.85; margin-bottom: 28px; }
+.economics-hero .actions { gap: 12px; }
+.economics-hero .button { padding: 14px 22px; min-height: 50px; }
+.economics-hero .hero-primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.economics-hero .hero-primary:hover { background: #254b61; border-color: #254b61; }
+.economics-hero .hero-secondary { color: var(--navy); background: #fff; border-color: #cbd9e2; }
+.economics-hero .hero-secondary:hover { background: #eaf6f1; border-color: #7ea99b; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 14px 24px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
+.hero-facts strong { color: var(--navy); font-size: 1rem; margin-right: 4px; font-variant-numeric: tabular-nums; }
+.hero-study-plan { padding: 30px; background: var(--navy); color: #fff; border: 1px solid #254c61; border-radius: 24px; box-shadow: 0 18px 45px #142f4312; min-width: 0; }
+.hero-study-plan .eyebrow { color: var(--ocean-mint); font-size: .75rem; }
+.hero-study-plan .study-plan-heading h2 { font: 400 clamp(2rem, 3vw, 2.75rem)/1.15 Georgia, serif; margin: 14px 0 10px; letter-spacing: -.035em; }
+.economics-hero .hero-study-plan p { color: #c3d4df; margin: 0 0 24px; font-size: .875rem; }
+.hero-study-plan > a { display: flex; align-items: center; gap: 14px; padding: 18px 0; border-top: 1px solid #365366; text-decoration: none; }
+.hero-study-plan > a:hover strong { color: var(--ocean-mint); }
+.hero-study-plan > a strong, .hero-study-plan > a small { display: block; }
+.hero-study-plan > a strong { font-size: 1rem; font-weight: 600; }
+.hero-study-plan > a small { color: #bdcfdc; font-size: .8125rem; margin-top: 2px; }
+.focus-icon { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border-radius: 12px; background: #24485a; color: var(--ocean-mint); }
+.focus-icon svg, .overview-icon svg { width: 25px; height: 25px; }
+.study-plan-footer { border-top: 1px solid #365366; padding-top: 18px; color: #bdcfdc; font-size: .8125rem; }
+
+.overview-personal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.overview-personal > a { margin: 0; display: flex; padding: 22px; gap: 16px; background: #eaf6f1; border: 1px solid #cee6dc; border-radius: 16px; text-decoration: none; }
+.overview-personal > a:first-child { background: #edf3f8; border-color: #d8e3eb; }
+.overview-icon { flex: 0 0 48px; width: 48px; height: 48px; background: #e8f5ef; color: #246d59; border-radius: 13px; }
+.overview-personal .overview-icon, .checklist-callout .overview-icon { color: #246d59; background: #fff; }
+.overview-card-copy { min-width: 0; gap: 9px; }
+.overview-card-copy strong { font: 600 1.125rem/1.35 Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--navy); }
+.overview-card-copy span { font-size: 1rem; color: var(--muted); line-height: 1.7; }
+.overview-section { margin-top: 54px; }
+.overview-section-heading { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+.overview-section-heading .eyebrow, .overview-chapters .eyebrow { margin: 0 0 10px; }
+.overview-section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--navy); margin: 0; }
+.overview-section-heading > p { margin: 0; font-size: .875rem; color: var(--muted); }
+.overview-exam-grid, .overview-revision-grid { gap: 18px; }
+.overview-card, .overview-exam-grid .overview-card { display: flex; flex-direction: column; align-items: start; gap: 22px; min-height: 210px; padding: 28px; background: #fff; border-color: var(--line); color: var(--ink); box-shadow: var(--ocean-shadow); border-radius: 18px; }
+.overview-exam-grid .overview-icon { color: var(--navy); background: #e9f1f7; }
+.overview-exam-grid .overview-card:nth-child(2) .overview-icon { background: #e5f5ed; color: #246d59; }
+.overview-card:hover, .overview-personal > a:hover, .tile:hover { border-color: #7ea99b; box-shadow: 0 10px 28px #142f4310; }
+.overview-chapters { border-top: 1px solid var(--line); padding-top: 40px; }
+.overview-chapters .section-head { margin-bottom: 24px; flex-wrap: wrap; }
+.tile { grid-template-columns: auto minmax(0, 1fr); padding: 24px; min-height: 112px; }
+.tile h3 { font: 600 1rem/1.5 Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.tile .icon { background: #eaf6f1; color: #246d59; width: 42px; height: 42px; border-radius: 12px; }
+.tile small { font-size: .75rem; }
+
+/* Lesson collections, reading and active recall. */
+.study-hero { border-color: var(--line); padding: 28px 0 48px; gap: 40px; }
+.study-hero h1, .lesson-heading h1, .progress-heading h1 { color: var(--navy); font-size: clamp(2.5rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -.045em; }
+.study-intro, .lesson-heading > p:last-child { font-size: 1rem; color: var(--muted); line-height: 1.85; }
+.study-stats { color: var(--muted); font-size: .875rem; }
+.study-stats strong { color: var(--navy); }
+.study-art, .card-art { background: #e8f2f3; border: 1px solid #d5e6e7; }
+.art-orbit { border-color: #a6c6c3; }
+.art-sheet { background: #fff; border-color: #d2e2e2; color: var(--navy); }
+.sheet-back { background: #b4ecd5; }
+.collection-toolbar { margin-block: 32px 24px; }
+.study-search input, .chapter-select select { font-size: 1rem; background-color: #fff; border-color: #cbd9e2; min-height: 48px; }
+.chapter-collection, .deck-grid { gap: 22px; }
+.chapter-cover { background: #fff; border-color: var(--line); border-top: 4px solid #b4ecd5; padding: 28px; border-radius: 18px; box-shadow: var(--ocean-shadow); }
+.chapter-cover h2 { color: var(--navy); line-height: 1.2; }
+.cover-number, .chapter-tag { background: #eaf6f1; color: #246d59; }
+.chapter-cover small, .cover-bottom, .chapter-cover .cover-bottom { font-size: .875rem; color: var(--muted); }
+.deck-cover { background: #fff; border-color: var(--line); border-radius: 18px; box-shadow: var(--ocean-shadow); padding: 24px; }
+.deck-cover h3 { color: var(--navy); font-size: 1.25rem; }
+.deck-cover small, .deck-cover > div { font-size: .8125rem; }
+.deck-cover-icon { background: #eaf6f1; color: #246d59; }
+.chapter-topic, .glossary-banner, .recall-guide, .aside-recall { border-color: var(--line); background: #eaf6f1; }
+.chapter-topic { background: #fff; }
+.lesson-link { padding: 16px 0; border-color: var(--line); gap: 18px; }
+.lesson-link small { color: var(--muted); font-size: .8125rem; }
+.lesson-heading { padding-bottom: 28px; }
+.learning-page .lesson-study-tabs { border-color: var(--line); gap: 12px; }
+.lesson-study-tabs .button { font-size: .875rem; color: var(--muted); }
+.lesson-study-tabs a[aria-current] { color: #14624f; border-color: #197962; }
+.learning-page .revision-notes { font-size: 1.0625rem; background: #fff; border-color: var(--line); line-height: 1.9; }
+.learning-page .revision-notes .remember { background: #edf7f2; border-color: #d1e8dc; }
+.study-aside button { font-size: .875rem; color: var(--muted); }
+.study-aside button:hover { background: #eaf6f1; color: #14624f; }
+.learning-page .flash, .flash { background: #f3faf7; border-color: #c6e5d8; color: var(--navy); border-radius: 20px; }
+.learning-page .flash.reveal { background: #e1f4eb; }
+.deck-hint, .deck-download, .lesson-end, .recall-guide li { font-size: .875rem; }
+.deck-progress { background: #e2eaf0; }
+.deck-progress span { background: #248367; }
+.syllabus-table { font-size: .9375rem; }
+.syllabus-table th { background: #eaf6f1; }
+
+/* Practice and progress use the same surfaces as the lesson library. */
+.practice-heading { background: #eaf1f6; border: 1px solid #d9e4ec; color: var(--navy); padding: 30px; }
+.practice-filters, .question-browser { background: #fff; border-color: var(--line); box-shadow: var(--ocean-shadow); border-radius: 16px; }
+.practice-filters { padding: 18px 22px; }
+.practice-filters summary, .question-browser summary { font-size: .875rem; }
+#question-list button { font-size: .875rem; color: var(--ink); }
+#question-list small { font-size: .75rem; color: var(--muted); }
+#question-list button[aria-current] { background: #eaf6f1; border-color: #78ae9a; }
+#question-list button:hover { background: #f1f6f8; }
+.question-number { background: #edf3f7; color: var(--navy); }
+.question-work h2 { font-size: clamp(1.375rem, 2.3vw, 1.75rem); line-height: 1.5; }
+.question-work .choice, .choice { font-size: 1rem; padding: 14px 16px; background: #fff; border-color: var(--line); border-radius: 12px; }
+.choice:has(input:checked) { background: #eaf6f1; border-color: #248367; }
+.question-id, .jump-label, .navigator-pages button, .question-toolbar { font-size: .8125rem; }
+.case-study { background: #edf3f7; border-color: #698da3; }
+#marking-model:not([hidden]) { background: #eaf6f1; border-color: #cee6dc; border-radius: 14px; padding: 16px 20px; }
+#marking-model p, #marking-status { color: #3c6258; font-size: .8125rem; }
+.progress-stat { background: #fff; border: 1px solid var(--line); box-shadow: var(--ocean-shadow); padding: 28px; }
+.progress-stat > strong { color: var(--navy); }
+.progress-stat > span { color: var(--muted); font-size: .875rem; }
+.progress-stat > small { font-size: .8125rem; }
+.progress-panel { background: #fff; border-color: var(--line); }
+.progress-heading p, .progress-answer-list a { font-size: 1rem; }
+.progress-answer-list a:hover { background: #eaf6f1; }
+
+/* Revision tools remain distinct by purpose within the shared Ocean palette. */
+.revision-hero, .revision-heading { background: var(--navy); border: 1px solid #244b60; border-radius: 22px; color: #fff; }
+.revision-hero .eyebrow, .revision-heading .eyebrow { color: var(--ocean-mint); }
+.revision-hero p:last-child { color: #c3d4df; }
+.revision-hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+.revision-tool-groups { gap: 24px; margin-top: 36px; }
+.revision-tool-group h2 { font-size: 1.375rem; color: var(--navy); }
+.revision-tool-card { background: #fff; border-color: var(--line); padding: 26px; border-radius: 18px; box-shadow: var(--ocean-shadow); grid-template-rows: auto auto 1fr; gap: 14px; }
+.revision-tool-card h3 { color: var(--navy); font-size: 1.5rem; }
+.revision-tool-card p { font-size: 1rem; line-height: 1.75; }
+.revision-tool-icon { background: #eaf6f1; color: #246d59; }
+.revision-workspace .panel, .revision-workspace .group { background: #fff; border-color: var(--line); box-shadow: var(--ocean-shadow); }
+.revision-workspace :is(textarea, select, input[type='number']) { background-color: #fff; border-color: #c5d5de; }
+.revision-workspace .choice { background: #fff; }
+.revision-workspace .checklist-progress { background: #eaf6f1; }
+.checklist-chapter-tally, .checklist-topic-tally { font-size: .75rem; color: var(--muted); }
+.checklist-filter, .checklist-chapter summary, .workbook-ticks, .revision-back { font-size: .875rem; }
+.workbook-topic > summary { font-size: 1rem; }
+.checklist-topic-tally { background: #edf3f7; }
+.checklist-topic-tally.is-complete { color: #14624f; background: #dff2e8; }
+#topic-search { background: #fff; border-color: var(--line); }
+#topic-search::backdrop { background: #142f4380; }
+#topic-search-results li { background: #f5f8fa; border-color: var(--line); }
+.topic-search-field, #topic-search-status, .topic-result-title > span { font-size: .875rem; }
+
+/* Shared chrome for games, while retaining each game's own visual identity. */
+#game-root .hero { background: var(--navy); border-radius: 22px; }
+#game-root .card { border-color: var(--line); border-radius: 18px; }
+.game-switcher a strong { font-size: .875rem; }
+.scene-eyebrow, #game-root .card-kicker { font-size: .75rem; }
+.scene-mini-stats > span { font-size: .75rem; }
+.game-switcher a[aria-current='page'] { background: #e1f4eb; border-color: #248367; }
+footer { padding: 28px max(32px, calc((100% - 1248px) / 2)); color: var(--muted); background: #fff; border-color: var(--line); font-size: .8125rem; gap: 18px; }
+.footer-links { gap: 12px 24px; }
+
+@media (min-width: 1441px) { #topic-search-open span:last-child { display: inline; } }
+@media (max-width: 1440px) {
+  :root { --economics-nav-height: 124px; }
+  .economics-nav-inner { grid-template-columns: 1fr auto; grid-template-areas: 'brand actions' 'links links'; grid-template-rows: 64px auto; padding-bottom: 10px; }
+  .economics-brand { grid-area: brand; }
+  .economics-nav-actions { grid-area: actions; }
+  .economics-links { grid-area: links; justify-content: start; gap: 6px; }
+  .economics-links a { padding: 8px 14px; }
+}
+@media (max-width: 900px) {
+  .economics-hero { gap: 28px; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .hero-study-plan { padding: 24px; }
+  .economics-hero h1 { font-size: clamp(2.75rem, 6.8vw, 4rem); }
+  .overview-card, .overview-exam-grid .overview-card { padding: 22px; }
+}
+@media (max-width: 720px) {
+  .wrap, .economics-nav-inner { width: calc(100% - 36px); }
+  .economics-links { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; padding: 2px 0 6px; }
+  .economics-links a { flex: 0 0 auto; white-space: nowrap; min-height: 40px; padding: 8px 12px; }
+  .economics-hero { grid-template-columns: minmax(0, 1fr); padding: 12px 0 28px; gap: 30px; }
+  .economics-hero h1 { font-size: clamp(3rem, 11vw, 4.75rem); }
+  .economics-hero p:not(.eyebrow) { max-width: 52ch; }
+  .hero-study-plan { padding: 26px; }
+  .overview-personal, .overview-exam-grid, .overview-revision-grid { grid-template-columns: minmax(0, 1fr); }
+  .overview-card, .overview-exam-grid .overview-card { flex-direction: row; min-height: 0; gap: 18px; }
+  .overview-section { margin-top: 38px; }
+  .overview-personal > a { padding: 20px; }
+  .study-hero { grid-template-columns: minmax(0, 1fr); padding-top: 12px; }
+  .study-art { display: none; }
+  .chapter-collection, .deck-grid { gap: 16px; }
+  .lesson-link { flex-wrap: wrap; gap: 4px; }
+  .learning-page .revision-notes { padding: 24px; font-size: 1rem; }
+  .progress-stat-grid { grid-template-columns: minmax(0, 1fr); }
+  footer { padding: 24px 18px; }
+}
+@media (max-width: 440px) {
+  #topic-search-open { min-width: 42px; padding: 8px 12px; }
+  #topic-search-open span:last-child { display: none; }
+  .economics-subjects { font-size: .8125rem; padding-inline: 8px; }
+  .economics-subjects img { display: none; }
+  .hero-facts { gap: 10px 18px; }
+  .hero-study-plan { padding: 22px; }
+  .economics-hero .actions .button { flex: 1 1 auto; padding-inline: 16px; }
+  .overview-personal > a { align-items: start; }
+  .overview-icon { flex-basis: 40px; width: 40px; height: 40px; }
+  .overview-section-heading > p { display: none; }
+}
+@media (max-height: 460px) and (max-width: 1440px) {
+  :root { --economics-nav-height: 0px; }
+  .economics-nav { position: static; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+@media (forced-colors: active) {
+  .economics-links a[aria-current='page'], .overview-card, .hero-study-plan { border: 1px solid CanvasText; }
+}
