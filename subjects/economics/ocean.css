@@ -10,6 +10,12 @@
   --white: #fff;
   --ocean-mint: #b4ecd5;
   --ocean-soft: #eaf6f1;
+  --flash-prompt-surface: #f3faf7;
+  --flash-prompt-text: #142f43;
+  --flash-prompt-label: #386354;
+  --flash-answer-surface: #142f43;
+  --flash-answer-text: #ffffff;
+  --flash-answer-label: #b4ecd5;
   --ocean-shadow: 0 8px 28px #17364b08;
   --economics-nav-height: 80px;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -138,9 +144,41 @@ select { appearance: none; padding-right: 36px !important; background-image: url
 .learning-page .revision-notes .remember { background: #edf7f2; border-color: #d1e8dc; }
 .study-aside button { font-size: .875rem; color: var(--muted); }
 .study-aside button:hover { background: #eaf6f1; color: #14624f; }
-.learning-page .flash, .flash { background: #f3faf7; border-color: #c6e5d8; color: var(--navy); border-radius: 20px; }
-.learning-page .flash.reveal { background: #e1f4eb; }
+/* Keep foreground and surface together for every card state, including glossary cards. */
+.flash, .learning-page .flash {
+  background: var(--flash-prompt-surface);
+  color: var(--flash-prompt-text);
+  border-color: #829c95;
+  border-radius: 20px;
+}
+.flash small, .learning-page .flash small {
+  color: var(--flash-prompt-label);
+  font-size: .875rem;
+}
+.flash.reveal, .learning-page .flash.reveal {
+  background: var(--flash-answer-surface);
+  color: var(--flash-answer-text);
+  border-color: var(--flash-answer-surface);
+}
+.flash.reveal small, .learning-page .flash.reveal small {
+  color: var(--flash-answer-label);
+}
+.flash .flash-text { color: inherit; }
+.flash:hover:not(:disabled), .learning-page .flash:hover:not(:disabled) { border-color: #386354; }
+.flash.reveal:hover:not(:disabled), .learning-page .flash.reveal:hover:not(:disabled) { border-color: var(--flash-answer-label); }
+.flash:focus-visible, .learning-page .flash:focus-visible { outline: 3px solid #196e60; outline-offset: 5px; }
+.learning-page .flash { box-shadow: 0 7px 0 -2px #dce8e3, 0 14px 0 -5px #eaf1ee, 0 18px 32px #142f4309; }
 .deck-hint, .deck-download, .lesson-end, .recall-guide li { font-size: .875rem; }
+.deck-hint, .deck-cover > small, .deck-cover > div, .lesson-sibling small,
+.study-aside nav button span, .topic-heading > span { color: var(--muted); }
+.learning-page #deck .counter { font-size: .875rem; color: #196e60; }
+.topic-heading > span { color: #386354; }
+input::placeholder, textarea::placeholder { color: #526878; opacity: 1; }
+input:not([type='checkbox']):not([type='radio']):not([type='range']), select, textarea { border-color: #6e8593; }
+.study-search input, .chapter-select select, .practice-filters select,
+.revision-workspace :is(textarea, select, input[type='number']),
+#topic-search-input, main .field textarea, .question-work .answer-composer { border-color: #6e8593; }
+.primary:hover:not(:disabled), .question-work form > button.primary:hover:not(:disabled) { color: #fff; }
 .deck-progress { background: #e2eaf0; }
 .deck-progress span { background: #248367; }
 .syllabus-table { font-size: .9375rem; }
