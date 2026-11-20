@@ -2,7 +2,7 @@ questions.push(...examPracticeQuestions);
 
 const main = document.querySelector('main');
 const markingControls = document.querySelector('#local-marking-controls');
-const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-teach', 'revision-retry']);
+const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-retry']);
 const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-notes/';
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
 const papers = 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-economics-0455/past-papers/';
@@ -429,6 +429,10 @@ function setActiveSection(active) {
 
 function render(autoMark = true) {
   const [revisionPage, revisionId] = location.hash.slice(1).split('/');
+  if (revisionPage === 'revision-teach') {
+    location.replace('#revision');
+    return;
+  }
   const isRevision = Object.hasOwn(revisionRoutes, revisionPage);
   main.classList.toggle('revision-page', isRevision);
   main.after(markingControls);

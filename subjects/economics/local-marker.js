@@ -10,11 +10,6 @@ const ecbizMarking = (() => {
         banks.set('mock-' + group + '-' + part, { prompt, marks, scheme, context: stimulus, diagram: group === 0 && part === 3 });
       });
     });
-    for (const topic of revisionLab.topics) {
-      const [answer, reason] = topic.options[topic.answer];
-      banks.set('teach-' + topic.code, { prompt: topic.prompt, marks: 2,
-        scheme: '1 mark for the stated outcome: ' + answer + ' 1 mark for the economic reasoning: ' + reason });
-    }
     return banks;
   }
 

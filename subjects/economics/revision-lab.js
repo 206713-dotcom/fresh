@@ -145,7 +145,7 @@ function renderRevisionTool(page, id) {
   if (page === 'revision') return revisionHub();
   const icons = {
     'revision-checklist': '✓', 'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
-    'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎', 'revision-teach': '◇'
+    'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎'
   };
   return '<div class="revision-workspace" data-tool="' + page + '">' +
     '<div class="revision-toolbar">' + link('← Revision Tools', '#revision', 'revision-back') +
@@ -156,8 +156,7 @@ function renderRevisionTool(page, id) {
 function revisionHub() {
   const groups = [
     ['Review the syllabus', [
-      ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics'],
-      ['◇', 'Teach Jojo', 'Explain a concept in your own words and compare it with worked reasoning.', '#revision-teach']
+      ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics']
     ]],
     ['Practise for the exam', [
       ['◷', 'Test builder and original mocks', 'Build a custom quiz or sit a timed 2027-style paper.', '#revision-test'],
@@ -292,46 +291,6 @@ function setupRevisionWriting(id) {
       guide.querySelector('details:last-child').open = true;
     } catch (error) {
       status.textContent = error.message;
-    } finally {
-      button.disabled = false;
-    }
-  };
-}
-
-function revisionTeach(code) {
-  const topic = revisionLab.topics.find(item => item.code === code);
-  return revisionHeading('Explain in your own words', 'Teach Jojo', 'Submit your explanation to get a mark out of 2 and feedback.') +
-    '<form class="panel" id="revision-teach-form"><label class="field">Topic<select name="topic">' +
-    revisionLab.topics.map(item => '<option value="' + item.code + '"' + (item === topic ? ' selected' : '') + '>' +
-      escapeHtml(item.title) + '</option>').join('') + '</select></label>' +
-    (topic ? '<h2>' + escapeHtml(topic.prompt) + '</h2><label class="field">Your explanation<textarea maxlength="8000" required name="explanation"></textarea></label>' +
-      '<button class="primary">Mark my explanation</button><div class="feedback" role="status" hidden></div>' :
-      '<button class="primary">Open explanation task</button>') + '</form>';
-}
-
-function setupRevisionTeach(code) {
-  const form = document.querySelector('#revision-teach-form');
-  if (!form) return;
-  const select = form.elements.namedItem('topic');
-  select.onchange = () => { location.hash = '#revision-teach/' + select.value; };
-  form.onsubmit = async event => {
-    event.preventDefault();
-    if (!code) { location.hash = '#revision-teach/' + select.value; return; }
-    const topic = revisionLab.topics.find(item => item.code === code);
-    const explanation = form.elements.namedItem('explanation').value.trim();
-    const button = form.querySelector('button.primary');
-    if (!topic || !explanation || button.disabled) return;
-    const feedback = form.querySelector('.feedback');
-    const [answer, reason] = topic.options[topic.answer];
-    button.disabled = true;
-    feedback.hidden = false;
-    feedback.textContent = 'Marking your explanation…';
-    try {
-      const grade = await ecbizMarking.grade('teach-' + code, explanation);
-      feedback.innerHTML = ecbizMarking.feedback(grade, 2) +
-        ecbizMarking.scheme({ scheme: answer + '\n' + reason }) + revisionNotesLinks(code);
-    } catch (error) {
-      feedback.textContent = error.message;
     } finally {
       button.disabled = false;
     }
@@ -901,11 +860,11 @@ function setupRevisionChecklist(selectedTopic) {
 const revisionRoutes = {
   'revision-checklist': revisionChecklist,
   revision: revisionHub, 'revision-topics': revisionTopics, 'revision-mistakes': revisionMistakes,
-  'revision-papers': revisionPapers, 'revision-writing': revisionWriting, 'revision-teach': revisionTeach,
+  'revision-papers': revisionPapers, 'revision-writing': revisionWriting,
   'revision-test': revisionTest, 'revision-retry': revisionRetry
 };
 const revisionSetups = {
   'revision-checklist': setupRevisionChecklist,
   'revision-topics': setupRevisionTopic, 'revision-writing': setupRevisionWriting,
-  'revision-teach': setupRevisionTeach, 'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry
+  'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry
 };
