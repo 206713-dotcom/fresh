@@ -43,60 +43,19 @@ const SECTION_LABELS: Record<string, string> = {
 };
 
 /**
- * Generate 3 tricky distractors for a target MCQItem
- * Pulls from the same or related chapters to test true exact knowledge
- */
-function generateTrickyDistractors(target: MCQItem, allItems: MCQItem[]): string[] {
-  const sameChapterCandidates = allItems.filter(
-    (item) => item.id !== target.id && item.chapter === target.chapter && item.correctAnswer !== target.correctAnswer,
-  );
-
-  const otherCandidates = allItems.filter(
-    (item) => item.id !== target.id && item.chapter !== target.chapter && item.correctAnswer !== target.correctAnswer,
-  );
-
-  const distractors: string[] = [];
-
-  const shuffledSame = [...sameChapterCandidates].sort(() => 0.5 - Math.random());
-  for (let i = 0; i < Math.min(2, shuffledSame.length); i++) {
-    if (!distractors.includes(shuffledSame[i].correctAnswer)) {
-      distractors.push(shuffledSame[i].correctAnswer);
-    }
-  }
-
-  const shuffledOthers = [...otherCandidates].sort(() => 0.5 - Math.random());
-  for (let i = 0; i < shuffledOthers.length && distractors.length < 3; i++) {
-    if (!distractors.includes(shuffledOthers[i].correctAnswer)) {
-      distractors.push(shuffledOthers[i].correctAnswer);
-    }
-  }
-
-  while (distractors.length < 3) {
-    const randomPick = allItems[Math.floor(Math.random() * allItems.length)];
-    if (randomPick.correctAnswer !== target.correctAnswer && !distractors.includes(randomPick.correctAnswer)) {
-      distractors.push(randomPick.correctAnswer);
-    }
-  }
-
-  return distractors;
-}
-
-/**
- * Build a set of quiz questions with shuffled options
+ * Build a set of quiz questions.
+ * Options are kept in their original A–D order so each option's written
+ * explanation stays attached to the exact option it assesses.
  */
 function buildQuizSet(pool: MCQItem[], count: number): QuizQuestionInstance[] {
   const shuffled = [...pool].sort(() => 0.5 - Math.random());
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
 
-  return selected.map((item) => {
-    const distractors = generateTrickyDistractors(item, MCQ_BANK);
-    const options = [item.correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
-    return {
-      item,
-      options,
-      correctAnswer: item.correctAnswer,
-    };
-  });
+  return selected.map((item) => ({
+    item,
+    options: [item.options.A, item.options.B, item.options.C, item.options.D],
+    correctAnswer: item.correctAnswer,
+  }));
 }
 
 export function DailyQuickQuiz({
@@ -232,13 +191,13 @@ export function DailyQuickQuiz({
     setAnswersHistory([]);
   };
 
-  const handleSelectOption = (option: string) => {
+  const handleSelectOption = (letter: string) => {
     if (hasAnswered) return;
-    setSelectedOption(option);
+    setSelectedOption(letter);
     setHasAnswered(true);
 
     const current = questions[currentIndex];
-    const isCorrect = option === current.correctAnswer;
+    const isCorrect = letter === current.item.correctOption;
 
     // Track MCQ progress in this browser.
     try {
@@ -279,7 +238,7 @@ export function DailyQuickQuiz({
       ...h,
       {
         item: current.item,
-        selected: option,
+        selected: current.item.options[letter as "A" | "B" | "C" | "D"],
         isCorrect,
       },
     ]);
@@ -294,7 +253,7 @@ export function DailyQuickQuiz({
       setQuizCompleted(true);
       clearQuickQuizDraft();
       awardBonusStudyCoins(25);
-      const finalScore = score + (selectedOption === questions[currentIndex]?.correctAnswer ? 0 : 0);
+      const finalScore = score + (selectedOption === questions[currentIndex]?.item.correctOption ? 0 : 0);
       const pct = questions.length > 0 ? (finalScore / questions.length) * 100 : 0;
       if (pct >= 70) {
         confetti({
@@ -685,12 +644,15 @@ export function DailyQuickQuiz({
                       </p>
                     </div>
 
-                    {/* Shuffled MCQ Options */}
+                    {/* MCQ Options with inline explanations */}
                     <div className="space-y-2.5">
-                      {currentQ.options.map((option, idx) => {
-                        const isSelected = selectedOption === option;
-                        const isCorrect = option === currentQ.correctAnswer;
-                        const letter = String.fromCharCode(65 + idx);
+                      {(["A", "B", "C", "D"] as const).map((letter) => {
+                        const option = currentQ.item.options[letter];
+                        const isSelected = selectedOption === letter;
+                        const isCorrect = letter === currentQ.item.correctOption;
+                        const optionExplanation = isCorrect
+                          ? currentQ.item.explanation?.correct_reason ?? ""
+                          : currentQ.item.explanation?.distractor_reasons?.[letter] ?? "";
 
                         let cardClasses =
                           "bg-[var(--surface)] border-[var(--surface-line)] hover:border-[var(--surface-accent)] hover:bg-[var(--surface-practice)]/55 text-[var(--surface-text)]";
@@ -716,10 +678,10 @@ export function DailyQuickQuiz({
 
                         return (
                           <button
-                            key={idx}
+                            key={letter}
                             type="button"
                             disabled={hasAnswered}
-                            onClick={() => handleSelectOption(option)}
+                            onClick={() => handleSelectOption(letter)}
                             className={`w-full text-left p-3.5 sm:p-4 rounded-xl border text-xs sm:text-sm leading-relaxed transition-colors flex items-start gap-3 ${cardClasses} ${
                               hasAnswered ? "cursor-default" : "cursor-pointer"
                             }`}
@@ -737,14 +699,18 @@ export function DailyQuickQuiz({
                             </span>
                             <div className="flex-1 min-w-0">
                               <span>{option}</span>
-                              {hasAnswered && isCorrect && (
-                                <span className="block mt-1 font-mono text-[11px] font-bold text-[var(--surface-accent)]">
-                                  Exact Cambridge mark scheme definition
-                                </span>
-                              )}
-                              {hasAnswered && isSelected && !isCorrect && (
-                                <span className="block mt-1 font-mono text-[11px] font-bold text-[#97532b] dark:text-[#f6bb83]">
-                                  Distractor selected — review the correct definition above
+                              {hasAnswered && (
+                                <span
+                                  className={`block mt-2 text-[11px] leading-relaxed font-normal ${
+                                    isCorrect
+                                      ? "text-[var(--surface-accent)]"
+                                      : "text-[#97532b] dark:text-[#f6bb83]"
+                                  }`}
+                                >
+                                  <strong className="font-mono font-bold mr-1.5">
+                                    {isCorrect ? "✓ Why correct:" : "✕ Why wrong:"}
+                                  </strong>
+                                  {optionExplanation}
                                 </span>
                               )}
                             </div>
@@ -753,18 +719,18 @@ export function DailyQuickQuiz({
                       })}
                     </div>
 
-                    {/* Examiner Guidance */}
+                    {/* Bottom status banner */}
                     {hasAnswered && (
-                      <div className="rounded-xl border border-[var(--surface-line)] bg-[var(--surface-practice)] p-4 text-xs space-y-1.5">
+                      <div className="rounded-xl border border-[var(--surface-line)] bg-[var(--surface-practice)] p-4 text-xs">
                         <div className="flex items-center gap-2 font-semibold text-sm text-[var(--surface-text)]">
-                          {selectedOption === currentQ.correctAnswer ? (
+                          {selectedOption === currentQ.item.correctOption ? (
                             <>
                               <CheckCircle2
                                 size={16}
                                 className="shrink-0 text-[var(--surface-accent)]"
                                 aria-hidden="true"
                               />
-                              <span>Full marks awarded — exact Cambridge knowledge (AO1/AO2).</span>
+                              <span>Correct option selected.</span>
                             </>
                           ) : (
                             <>
@@ -777,12 +743,6 @@ export function DailyQuickQuiz({
                             </>
                           )}
                         </div>
-                        <p className="text-[var(--surface-muted)] leading-relaxed">
-                          <strong className="text-[var(--surface-text)]">Examiner guidance: </strong>
-                          In Cambridge Business Studies (0264 / 0450), mark schemes penalise vague
-                          or colloquial phrasing. Precision on technical terms and direct business
-                          context protects full AO1 and AO2 credit.
-                        </p>
                       </div>
                     )}
 
@@ -790,7 +750,7 @@ export function DailyQuickQuiz({
                     <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[var(--surface-line)]">
                       <span className="text-xs text-[var(--surface-muted)]">
                         {hasAnswered
-                          ? "Review the mark scheme above before moving on."
+                          ? "Review the explanations above before moving on."
                           : "Choose one of the four options above."}
                       </span>
 
