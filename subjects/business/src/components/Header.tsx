@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   ChevronDown,
   ArrowLeft,
+  ClipboardList,
   Headphones,
   LayoutGrid,
   Menu,
@@ -30,6 +31,7 @@ import {
   Check,
 } from "lucide-react";
 import { deductStudyCoins, getStudyCoins } from "../lib/cookies";
+import { getReviewAnswerCount } from "../lib/mcq-review";
 import {
   APP_THEMES,
   getTheme,
@@ -72,6 +74,7 @@ const primaryNavigation = [
   { tab: "paper2", label: "Paper 2", Icon: BookOpen },
   { tab: "lessons", label: "Lessons", Icon: GraduationCap },
   { tab: "checklist", label: "Checklist", Icon: CheckSquare },
+  { tab: "review", label: "Review", Icon: ClipboardList },
 ] as const;
 
 export function Header({
@@ -238,6 +241,7 @@ export function Header({
 
   const isResourcesActive = ["glossary", "archive", "progress"].includes(activeTab);
   const isChecklistActive = ["checklist", "compare", "sections"].includes(activeTab);
+  const reviewCount = getReviewAnswerCount();
 
   const openCompare = (sectionCode: string) => {
     setOpenDropdown(null);
@@ -753,6 +757,11 @@ export function Header({
               >
                 <Icon size={16} aria-hidden="true" />
                 {label}
+                {tab === "review" && reviewCount > 0 && (
+                  <small className="font-mono text-[10px] px-1.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">
+                    {reviewCount}
+                  </small>
+                )}
               </button>
             ))}
             {onOpenMcq && (
@@ -998,6 +1007,23 @@ export function Header({
             }`}
           >
             Boss Battle Arena ⚔️
+          </button>
+
+          <button
+            onClick={() => handleSelectTab("review")}
+            className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold flex items-center justify-between ${
+              activeTab === "review" ? "bg-[#0F2042] text-white" : "text-neutral-800 dark:text-neutral-200"
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <ClipboardList className="w-3.5 h-3.5" aria-hidden="true" />
+              Review mistakes
+            </span>
+            {reviewCount > 0 && (
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-mono">
+                {reviewCount}
+              </span>
+            )}
           </button>
 
           <button

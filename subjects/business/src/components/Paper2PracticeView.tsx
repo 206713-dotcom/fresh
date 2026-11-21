@@ -31,6 +31,7 @@ import {
   Paper2AppendixTable,
 } from "../lib/data/paper2-database";
 import { FlagQuestionButton } from "./FlagQuestionButton";
+import { ExamLayoutPicker } from "./ExamLayoutPicker";
 import {
   evaluatePaper2Answer,
   Paper2EvaluationResult,
@@ -53,6 +54,11 @@ import {
   savePaper2Answers,
   loadPaper2Answers,
 } from "../lib/cookies";
+import {
+  loadExamLayout,
+  saveExamLayout,
+  type ExamLayout,
+} from "../lib/exam-layout";
 
 interface Paper2PracticeViewProps {
   initialScenarioId?: string;
@@ -117,6 +123,12 @@ export function Paper2PracticeView({
 
   // Case Study Pane tab: "main" | "app1" | "app2" | "app3"
   const [caseTab, setCaseTab] = useState<"main" | "app1" | "app2" | "app3">("main");
+
+  const [layout, setLayout] = useState<ExamLayout>(() => loadExamLayout());
+  const changeLayout = (next: ExamLayout) => {
+    setLayout(next);
+    saveExamLayout(next);
+  };
 
   // Step-by-step sequential questions: index 0 to 7 (1a, 1b, 2a, 2b, 3a, 3b, 4a, 4b) (resumes from saved position)
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState<number>(() => {
@@ -625,6 +637,8 @@ export function Paper2PracticeView({
             >
               <Search className="w-4 h-4" />
             </button>
+
+            <ExamLayoutPicker layout={layout} onChange={changeLayout} />
           </div>
         </div>
       </div>
@@ -684,7 +698,7 @@ export function Paper2PracticeView({
       )}
 
       {/* Main Split-Screen Workspace */}
-      <div className="study-studio study-columns study-paper-two-columns">
+      <div className={`study-studio study-columns study-paper-two-columns ${layout === "stacked" ? "study-columns-layout-stacked" : "study-columns-layout-columns"}`}>
         {/* ======================================================== */}
         {/* LEFT COLUMN (COL 1-5): CASE STUDY AREA WITH APPENDIX TABS */}
         {/* ======================================================== */}

@@ -123,7 +123,7 @@ The Quick Quiz is the fast, low-friction loop:
 - see the correct answer, the reason it is correct, and why each distractor is wrong;
 - earn Study Coins: 15 for a correct answer, 5 for a revision attempt, 25 for completing a set.
 
-Wrong answers are written to `ecbiz_mcq_wrong`. When you later answer the same question correctly, it leaves the list. The list is also mirrored to the teacher spreadsheet, which turns a private study habit into a visible intervention signal.
+Wrong answers are written to `ecbiz_mcq_wrong`. A question leaves that Wrong Only bank only after you answer it correctly on two **different days** — two correct answers on the same day count once, and a wrong answer resets the count. Wrong answers in Boss Battle are banked on the **Mistake Review** page instead: you can review the mark scheme, practise them, and choose whether to move them into MCQ Wrong Only. The list is also mirrored to the teacher spreadsheet, which turns a private study habit into a visible intervention signal.
 
 The quiz also includes a **Daily Blitz** and **Weekly Master** challenge. The prompt is picked from the UTC date or week, so every student sees the same question on the same day. Both are timed at 60 seconds and award 50 or 150 bonus coins.
 

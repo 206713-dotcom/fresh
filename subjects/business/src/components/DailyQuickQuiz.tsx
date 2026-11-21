@@ -3,6 +3,7 @@ import confetti from "canvas-confetti";
 import {
   ArrowRight,
   CheckCircle2,
+  ClipboardList,
   Headphones,
   Layers,
   RotateCcw,
@@ -11,6 +12,12 @@ import {
   Zap,
 } from "lucide-react";
 import { MCQ_BANK, MCQItem } from "../lib/data/mcq-bank";
+import {
+  getWrongAnswerIds,
+  MASTERY_DAYS_REQUIRED,
+  recordWrongAnswerCorrect,
+  recordWrongAnswerIncorrect,
+} from "../lib/mcq-review";
 import {
   saveQuickQuizDraft,
   loadQuickQuizDraft,
@@ -23,6 +30,8 @@ interface DailyQuickQuizProps {
   onOpenFullGlossary?: () => void;
   onOpenStudySpace?: () => void;
   onOpenPractice?: () => void;
+  /** Opens the Boss Battle mistake review page. */
+  onOpenReview?: () => void;
   /** Which study mode to open in. Defaults to "challenge" (Daily & Weekly Challenge). */
   initialMode?: "challenge" | "drill";
 }
@@ -62,21 +71,17 @@ export function DailyQuickQuiz({
   onOpenFullGlossary,
   onOpenStudySpace,
   onOpenPractice,
+  onOpenReview,
   initialMode = "challenge",
 }: DailyQuickQuizProps) {
   const [activeMode, setActiveMode] = useState<"challenge" | "drill">(initialMode);
 
   const savedDraft = useMemo(() => loadQuickQuizDraft(), []);
 
-  const WRONG_KEY = "ecbiz_mcq_wrong";
-  const [wrongIds, setWrongIds] = useState<Set<string>>(() => {
-    try {
-      return new Set(JSON.parse(localStorage.getItem(WRONG_KEY) || "[]"));
-    } catch {
-      return new Set();
-    }
-  });
+  const [wrongIds, setWrongIds] = useState<Set<string>>(() => new Set(getWrongAnswerIds()));
+  const refreshWrongIds = () => setWrongIds(new Set(getWrongAnswerIds()));
   const [wrongOnly, setWrongOnly] = useState<boolean>(false);
+  const [masteryNotice, setMasteryNotice] = useState<string | null>(null);
 
   const [selectedSection, setSelectedSection] = useState<string>(() => savedDraft?.selectedSection || "all");
   const [selectedSubTopic, setSelectedSubTopic] = useState<string>(() => savedDraft?.selectedSubTopic || "all");
@@ -189,6 +194,7 @@ export function DailyQuickQuiz({
     setMaxStreak(0);
     setQuizCompleted(false);
     setAnswersHistory([]);
+    setMasteryNotice(null);
   };
 
   const handleSelectOption = (letter: string) => {
@@ -212,25 +218,26 @@ export function DailyQuickQuiz({
         if (next > maxStreak) setMaxStreak(next);
         return next;
       });
-      setWrongIds((prev) => {
-        const next = new Set(prev);
-        next.delete(current.item.id);
-        try {
-          localStorage.setItem(WRONG_KEY, JSON.stringify([...next]));
-        } catch {}
-        return next;
-      });
+      // Wrong Only items need two correct answers on two different days.
+      const progress = recordWrongAnswerCorrect(current.item.id);
+      refreshWrongIds();
+      if (progress.mastered) {
+        setMasteryNotice(
+          `Mastered! You answered this correctly on ${MASTERY_DAYS_REQUIRED} different days, so it has left the Wrong Only bank.`
+        );
+      } else if (progress.days > 0) {
+        setMasteryNotice(
+          `Mastery progress ${progress.days}/${MASTERY_DAYS_REQUIRED} days. Answer it correctly again on a different day to clear it from Wrong Only.`
+        );
+      }
       awardBonusStudyCoins(15);
     } else {
       setStreak(0);
-      setWrongIds((prev) => {
-        const next = new Set(prev);
-        next.add(current.item.id);
-        try {
-          localStorage.setItem(WRONG_KEY, JSON.stringify([...next]));
-        } catch {}
-        return next;
-      });
+      recordWrongAnswerIncorrect(current.item.id);
+      refreshWrongIds();
+      setMasteryNotice(
+        `Added to Wrong Only. Get it right on ${MASTERY_DAYS_REQUIRED} different days to remove it.`
+      );
       awardBonusStudyCoins(5);
     }
 
@@ -339,11 +346,22 @@ export function DailyQuickQuiz({
                 <ArrowRight size={15} aria-hidden="true" />
               </button>
             )}
+
+            {onOpenReview && (
+              <button
+                type="button"
+                onClick={onOpenReview}
+                className="study-action study-secondary-action whitespace-nowrap shrink-0"
+              >
+                <ClipboardList size={16} aria-hidden="true" />
+                <span>Review Mistakes</span>
+              </button>
+            )}
           </div>
 
           <p className="mt-3 font-mono text-[11px] font-semibold tabular-nums text-white/75">
             {MCQ_BANK.length.toLocaleString()} MCQ questions · {allSections.length} sections ·{" "}
-            {wrongIds.size} flagged for review
+            {wrongIds.size} in Wrong Only
           </p>
         </div>
         <div className="study-hero-image" aria-hidden="true" />
@@ -443,7 +461,7 @@ export function DailyQuickQuiz({
                     handleStartNewQuiz(quizSize, selectedSection, selectedSubTopic, next);
                   }}
                   aria-pressed={wrongOnly}
-                  title="Practice only questions you previously answered incorrectly"
+                  title={`Practice only questions you previously answered incorrectly. A question leaves Wrong Only after ${MASTERY_DAYS_REQUIRED} correct answers on different days.`}
                   className={`study-shortcut justify-between ${
                     wrongOnly
                       ? "bg-[var(--sheet-rose)] text-[var(--surface-text)] border border-[var(--sheet-rose-line)]"
@@ -458,6 +476,13 @@ export function DailyQuickQuiz({
                     {wrongIds.size}
                   </small>
                 </button>
+
+                {onOpenReview && (
+                  <button type="button" onClick={onOpenReview} className="study-shortcut">
+                    <ClipboardList size={15} aria-hidden="true" />
+                    <span>Review Mistakes</span>
+                  </button>
+                )}
 
                 {onOpenFullGlossary && (
                   <button type="button" onClick={onOpenFullGlossary} className="study-shortcut">
@@ -558,7 +583,7 @@ export function DailyQuickQuiz({
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-[var(--surface-muted)]">
                       {wrongOnly
-                        ? "Every question answered wrong goes into your review bank until you get it right."
+                        ? `Every question answered wrong goes into Wrong Only until you get it right on ${MASTERY_DAYS_REQUIRED} different days.`
                         : "Try broadening your section or sub-topic filter to start a drill."}
                     </p>
                     <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -739,10 +764,23 @@ export function DailyQuickQuiz({
                                 className="shrink-0 text-[#97532b] dark:text-[#f6bb83]"
                                 aria-hidden="true"
                               />
-                              <span>Incorrect option selected — added to Wrong Only review bank.</span>
+                              <span>
+                                Incorrect option selected — added to Wrong Only. Get it right on{" "}
+                                {MASTERY_DAYS_REQUIRED} different days to remove it.
+                              </span>
                             </>
                           )}
                         </div>
+                      </div>
+                    )}
+
+                    {/* Wrong Only mastery progress (two different days) */}
+                    {hasAnswered && masteryNotice && (
+                      <div
+                        role="status"
+                        className="rounded-xl border border-[var(--surface-line)] bg-[var(--surface-practice)] p-3 text-xs leading-relaxed text-[var(--surface-muted)]"
+                      >
+                        {masteryNotice}
                       </div>
                     )}
 
@@ -783,7 +821,7 @@ export function DailyQuickQuiz({
                           ? "100% precision. You nailed every Cambridge definition and avoided every distractor trap."
                           : scorePercent >= 70
                             ? "Strong performance. You accurately identified the majority of verified syllabus definitions."
-                            : "Active recall improves rapidly with repetition. Use Wrong Only mode to drill missed items."}
+                            : `Active recall improves rapidly with repetition. Use Wrong Only mode to drill missed items — get each one right on ${MASTERY_DAYS_REQUIRED} different days to clear it.`}
                       </p>
 
                       <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
@@ -807,6 +845,17 @@ export function DailyQuickQuiz({
                           <Target size={15} aria-hidden="true" />
                           <span>10-Question Master Drill</span>
                         </button>
+
+                        {onOpenReview && (
+                          <button
+                            type="button"
+                            onClick={onOpenReview}
+                            className="study-action study-secondary-action whitespace-nowrap"
+                          >
+                            <ClipboardList size={15} aria-hidden="true" />
+                            <span>Review Mistakes</span>
+                          </button>
+                        )}
 
                         {onOpenFullGlossary && (
                           <button
@@ -894,8 +943,9 @@ export function DailyQuickQuiz({
       </div>
 
       <p className="mx-auto mt-5 max-w-3xl text-center text-[11px] leading-relaxed text-[var(--muted,#4b5c54)] dark:text-neutral-500">
-        Active recall questions align with Cambridge IGCSE Business Studies (0264 / 0450). Flagged
-        mistakes and Study Coin rewards are saved locally in this browser.
+        Active recall questions align with Cambridge IGCSE Business Studies (0264 / 0450). Wrong Only
+        mistakes are cleared after {MASTERY_DAYS_REQUIRED} correct answers on different days. Boss
+        Battle mistakes are saved to the review page. Progress and Study Coins stay in this browser.
       </p>
     </div>
   );

@@ -10,6 +10,12 @@ import {
 } from "../lib/cookies";
 import { MCQ_BANK, MCQItem } from "../lib/data/mcq-bank";
 import {
+  getReviewAnswerCount,
+  recordReviewMiss,
+  recordWrongAnswerCorrect,
+  resetWrongAnswerProgress,
+} from "../lib/mcq-review";
+import {
   TIER_LABELS,
   UNIT_OPTIONS,
   buildPool,
@@ -35,6 +41,7 @@ import { AvatarCustomizerModal } from "./AvatarCustomizerModal";
 import { FlagQuestionButton } from "./FlagQuestionButton";
 import {
   ArrowLeft,
+  ClipboardList,
   Shield,
   Sparkles,
   Award,
@@ -364,10 +371,13 @@ function toBossQuestion(target: MCQItem, difficulty: DifficultyTier): BossActive
 interface BossBattleArenaProps {
   onBackToStudio: () => void;
   onOpenPracticeQuestion?: () => void;
+  /** Opens the mistake review page where Boss Battle misses are banked. */
+  onOpenReview?: () => void;
 }
 
 export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   onBackToStudio,
+  onOpenReview,
 }) => {
   // Web Audio Synthesizer
   const audioCtxRef = useRef<AudioContext | null>(null);
@@ -601,6 +611,7 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   // Missed-questions state — the spaced-repetition map from localStorage
   const [bossWrongMap, setBossWrongMap] = useState(() => loadBossWrongQuestions());
   const missedCount = Object.keys(bossWrongMap).length;
+  const reviewCount = getReviewAnswerCount();
   const refreshWrongMap = () => setBossWrongMap(loadBossWrongQuestions());
 
   // Recently drawn question ids so the same question never repeats back-to-back
@@ -956,10 +967,26 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
   const recordBossOutcome = (wasCorrect: boolean, question: BossActiveQuestion) => {
     if (wasCorrect) {
       recordBossHit(question.id);
+      // A correct Boss Battle answer also counts towards clearing an item that
+      // was moved into the MCQ Wrong Only bank.
+      recordWrongAnswerCorrect(question.id);
       refreshWrongMap();
       return;
     }
+    // Keep the in-game spaced-repetition weighting and also bank the miss on
+    // the review page, where the student decides whether it joins MCQ Wrong Only.
     recordBossMiss(question.item, selectedDifficulty);
+    resetWrongAnswerProgress(question.id);
+    recordReviewMiss({
+      id: question.id,
+      question: question.question,
+      options: question.options,
+      correctIndex: question.correctIndex,
+      chapter: question.chapter,
+      unit: question.unit,
+      explanation: question.explanation,
+      difficulty: question.difficulty,
+    });
     refreshWrongMap();
   };
 
@@ -2050,6 +2077,11 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                 {stageCount > 1 && (
                   <button type="button" className="boss-quiet" onClick={() => selectMatch(1, selectedDifficulty)}><RotateCcw size={16} aria-hidden="true" /> Select Stage 1</button>
                 )}
+                {onOpenReview && (
+                  <button type="button" className="boss-quiet" onClick={onOpenReview}>
+                    <ClipboardList size={16} aria-hidden="true" /> Review mistakes ({reviewCount})
+                  </button>
+                )}
               </div>
             </section>
           </div>
@@ -2140,6 +2172,10 @@ export const BossBattleArena: React.FC<BossBattleArenaProps> = ({
                   No missed questions yet — misses are banked here and resurface until you master them.
                 </span>
               )}
+              <span>
+                Wrong answers also go to the Review page, where you can practise them and choose
+                whether to add them to MCQ Wrong Only.
+              </span>
             </div>
           </section>
         </>

@@ -7,6 +7,7 @@ import { GlossaryView } from "./components/GlossaryView";
 import { DocumentArchive } from "./components/DocumentArchive";
 import { ProgressDashboard } from "./components/ProgressDashboard";
 import { DailyQuickQuiz } from "./components/DailyQuickQuiz";
+import { MistakeReview } from "./components/MistakeReview";
 import { SectionsView } from "./components/SectionsView";
 import { SyllabusRevisionChecklist } from "./components/SyllabusRevisionChecklist";
 import { CompareNotesView } from "./components/CompareNotesView";
@@ -38,6 +39,7 @@ export type BusinessTab =
   | "practice"
   | "paper2"
   | "quick-quiz"
+  | "review"
   | "sections"
   | "checklist"
   | "glossary"
@@ -67,6 +69,7 @@ export default function App() {
           "practice",
           "paper2",
           "quick-quiz",
+          "review",
           "sections",
           "checklist",
           "glossary",
@@ -366,7 +369,19 @@ export default function App() {
               onOpenFullGlossary={() => setBusinessTab("glossary")}
               onOpenStudySpace={handleOpenStudySpace}
               onOpenPractice={() => setBusinessTab("practice")}
+              onOpenReview={() => setBusinessTab("review")}
               initialMode={quickQuizMode}
+            />
+          )}
+
+          {/* TAB: Boss Battle mistake review */}
+          {businessTab === "review" && (
+            <MistakeReview
+              onOpenBossBattle={() => setBusinessTab("boss-battle")}
+              onOpenMcq={() => {
+                setQuickQuizMode("drill");
+                setBusinessTab("quick-quiz");
+              }}
             />
           )}
 
@@ -406,7 +421,10 @@ export default function App() {
 
           {/* TAB 9: 2D Boss Battle Fighting Game */}
           {businessTab === "boss-battle" && (
-            <BossBattleArena onBackToStudio={() => { setBusinessTab("overview"); window.scrollTo(0, 0); }} />
+            <BossBattleArena
+              onBackToStudio={() => { setBusinessTab("overview"); window.scrollTo(0, 0); }}
+              onOpenReview={() => { setBusinessTab("review"); window.scrollTo(0, 0); }}
+            />
           )}
 
           {businessTab === "compare" && (

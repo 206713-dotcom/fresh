@@ -10,11 +10,13 @@ import {
   ChevronRight,
   ChevronUp,
   Clock,
+  Columns2,
   FileText,
   Flag,
   ListChecks,
   LogOut,
   RotateCcw,
+  Rows2,
   ShieldAlert,
   Timer,
 } from "lucide-react";
@@ -26,6 +28,11 @@ import type {
   Paper2CaseStudyInsert,
 } from "../lib/data/paper2-database";
 import { formatTime } from "../lib/utils";
+import {
+  loadExamLayout,
+  saveExamLayout,
+  type ExamLayout,
+} from "../lib/exam-layout";
 
 type ExamId = "paper1" | "paper2_full" | "paper2_short";
 type ExamStage = "select" | "active" | "finished";
@@ -462,13 +469,17 @@ function CaseStudyPanel({
   exam,
   open,
   onToggle,
+  className = "",
 }: {
   exam: MockExamPaper;
   open: boolean;
   onToggle: () => void;
+  className?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden mb-5">
+    <div
+      className={`rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden ${className}`}
+    >
       <button
         type="button"
         onClick={onToggle}
@@ -552,6 +563,12 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
   const [timeLeft, setTimeLeft] = useState<number>(0);
   const [ranOutOfTime, setRanOutOfTime] = useState<boolean>(false);
   const [showCaseStudy, setShowCaseStudy] = useState<boolean>(true);
+  const [layout, setLayout] = useState<ExamLayout>(() => loadExamLayout());
+
+  const changeLayout = (next: ExamLayout) => {
+    setLayout(next);
+    saveExamLayout(next);
+  };
 
   const currentQuestion = exam?.questions[currentIndex];
 
@@ -726,6 +743,85 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
             <div className="study-hero-image" aria-hidden="true" />
           </header>
 
+          <section
+            aria-labelledby="mock-layout-title"
+            className="mb-6 rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 sm:p-5"
+          >
+            <div className="mb-3">
+              <h2
+                id="mock-layout-title"
+                className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200"
+              >
+                On-screen layout
+              </h2>
+              <p className="mt-0.5 text-[11px] text-[#78716C] dark:text-neutral-400">
+                Choose how the case study and question appear. You can switch at
+                any point during the exam.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <button
+                type="button"
+                aria-pressed={layout === "stacked"}
+                onClick={() => changeLayout("stacked")}
+                className={`rounded-xl border p-3.5 text-left transition-colors cursor-pointer ${
+                  layout === "stacked"
+                    ? "border-[#0F2042] dark:border-white ring-2 ring-[#0F2042]/15 dark:ring-white/20 bg-[#F5F5F4] dark:bg-neutral-800"
+                    : "border-[#E7E5E4] dark:border-neutral-800 hover:border-[#0F2042]/50 dark:hover:border-neutral-500"
+                }`}
+              >
+                <span className="flex items-start gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 flex items-center justify-center shrink-0">
+                    <Rows2 className="w-4 h-4" />
+                  </span>
+                  <span className="min-w-0">
+                    <strong className="block text-xs font-bold text-[#0F2042] dark:text-white">
+                      Text at top, question below
+                    </strong>
+                    <span className="block mt-0.5 text-[11px] leading-snug text-[#57534E] dark:text-neutral-400">
+                      Case study spans the page above the question. Timer and
+                      navigator stay in the right-hand panel.
+                    </span>
+                  </span>
+                </span>
+                <span className="mt-3 grid gap-1" aria-hidden="true">
+                  <span className="block h-2.5 rounded bg-[#0F2042]/25 dark:bg-white/25" />
+                  <span className="block h-5 rounded bg-indigo-200/80 dark:bg-indigo-900/60" />
+                </span>
+              </button>
+
+              <button
+                type="button"
+                aria-pressed={layout === "columns"}
+                onClick={() => changeLayout("columns")}
+                className={`rounded-xl border p-3.5 text-left transition-colors cursor-pointer ${
+                  layout === "columns"
+                    ? "border-[#0F2042] dark:border-white ring-2 ring-[#0F2042]/15 dark:ring-white/20 bg-[#F5F5F4] dark:bg-neutral-800"
+                    : "border-[#E7E5E4] dark:border-neutral-800 hover:border-[#0F2042]/50 dark:hover:border-neutral-500"
+                }`}
+              >
+                <span className="flex items-start gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center shrink-0">
+                    <Columns2 className="w-4 h-4" />
+                  </span>
+                  <span className="min-w-0">
+                    <strong className="block text-xs font-bold text-[#0F2042] dark:text-white">
+                      Text left, question right
+                    </strong>
+                    <span className="block mt-0.5 text-[11px] leading-snug text-[#57534E] dark:text-neutral-400">
+                      Case study and question sit side by side. Timer and
+                      navigator move into a toolbar above them.
+                    </span>
+                  </span>
+                </span>
+                <span className="mt-3 grid grid-cols-2 gap-1" aria-hidden="true">
+                  <span className="block h-7 rounded bg-[#0F2042]/25 dark:bg-white/25" />
+                  <span className="block h-7 rounded bg-indigo-200/80 dark:bg-indigo-900/60" />
+                </span>
+              </button>
+            </div>
+          </section>
+
           <div className="grid md:grid-cols-3 gap-4">
             {EXAM_CONFIGS.map((config) => {
               const accent = CARD_ACCENTS[config.id];
@@ -787,7 +883,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
               <p className="mt-0.5 text-[11px] leading-snug text-amber-900/80 dark:text-amber-200/80">
                 Navigation, Study Space and all other distractions are hidden
                 while the timer runs. The paper submits automatically when the
-                countdown reaches zero.
+                countdown reaches zero, or sooner if you choose Finish Early.
               </p>
             </div>
           </div>
@@ -884,6 +980,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
             exam={exam}
             open={showCaseStudy}
             onToggle={() => setShowCaseStudy((previous) => !previous)}
+            className="mb-5"
           />
 
           <div className="space-y-5">
@@ -934,7 +1031,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
                           {part.questionText}
                         </h3>
 
-                        <div className="grid lg:grid-cols-2 gap-4 mt-3">
+                        <div className="grid md:grid-cols-2 gap-4 mt-3">
                           <div>
                             <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#57534E] dark:text-neutral-400 mb-1.5">
                               Your answer
@@ -1035,6 +1132,237 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
   // =========================================================
   if (!currentQuestion) return null;
 
+  const layoutToggle = (
+    <div
+      role="group"
+      aria-label="Exam layout"
+      className="flex items-center gap-0.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-[#FAF9F6] dark:bg-neutral-900 p-0.5"
+    >
+      <button
+        type="button"
+        aria-pressed={layout === "stacked"}
+        title="Text at top, question below"
+        aria-label="Text at top, question below"
+        onClick={() => changeLayout("stacked")}
+        className={`p-1.5 rounded-md cursor-pointer ${
+          layout === "stacked"
+            ? "bg-[#0F2042] text-white dark:bg-white dark:text-black"
+            : "text-[#57534E] dark:text-neutral-400 hover:bg-black/5 dark:hover:bg-white/10"
+        }`}
+      >
+        <Rows2 className="w-3.5 h-3.5" />
+      </button>
+      <button
+        type="button"
+        aria-pressed={layout === "columns"}
+        title="Text left, question right"
+        aria-label="Text left, question right"
+        onClick={() => changeLayout("columns")}
+        className={`p-1.5 rounded-md cursor-pointer ${
+          layout === "columns"
+            ? "bg-[#0F2042] text-white dark:bg-white dark:text-black"
+            : "text-[#57534E] dark:text-neutral-400 hover:bg-black/5 dark:hover:bg-white/10"
+        }`}
+      >
+        <Columns2 className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  );
+
+  const statusStrip = (
+    <div className="mb-5">
+      <div className="flex items-center justify-between gap-3 mb-2">
+        <span className="text-xs font-mono font-semibold text-[#57534E] dark:text-neutral-400">
+          Question {currentIndex + 1} of {exam.questions.length}
+        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono text-[#78716C] dark:text-neutral-400 hidden sm:inline">
+            {answeredQuestions} / {exam.questions.length} questions answered
+          </span>
+          <div className="md:hidden">{layoutToggle}</div>
+        </div>
+      </div>
+      <div className="h-1.5 rounded-full bg-[#E7E5E4] dark:bg-neutral-800 overflow-hidden">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300"
+          style={{
+            width: `${((currentIndex + 1) / exam.questions.length) * 100}%`,
+          }}
+        />
+      </div>
+    </div>
+  );
+
+  const navigatorList = (
+    <>
+      <div className="space-y-2">
+        {exam.questions.map((question, index) => {
+          const answered = question.parts.every(
+            (part) => (answers[part.id] ?? "").trim().length > 0,
+          );
+          const isCurrent = index === currentIndex;
+          return (
+            <button
+              key={question.id}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              className={`w-full text-left px-3 py-2 rounded-lg border text-xs font-semibold flex items-center justify-between gap-2 transition-colors cursor-pointer ${
+                isCurrent
+                  ? "border-[#0F2042] dark:border-white bg-[#0F2042] text-white dark:bg-white dark:text-black"
+                  : answered
+                    ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/70 dark:hover:bg-emerald-950/50"
+                    : "border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-black/10 dark:bg-white/10 text-[10px] font-mono flex items-center justify-center">
+                  {index + 1}
+                </span>
+                <span>
+                  {question.number} · {question.marks}m
+                </span>
+              </span>
+              {answered && <CheckCircle2 className="w-3.5 h-3.5" />}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-3 pt-3 border-t border-[#E7E5E4] dark:border-neutral-800">
+        <div className="flex items-center justify-between text-[10px] font-mono text-[#78716C] dark:text-neutral-400 mb-1.5">
+          <span>Parts answered</span>
+          <span>
+            {answeredParts} / {totalParts}
+          </span>
+        </div>
+        <div className="h-1.5 rounded-full bg-[#E7E5E4] dark:bg-neutral-800 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-emerald-600 transition-all duration-300"
+            style={{
+              width: `${
+                totalParts > 0
+                  ? (answeredParts / totalParts) * 100
+                  : 0
+              }%`,
+            }}
+          />
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={handleSubmit}
+        className="mt-4 w-full px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+      >
+        <Flag className="w-4 h-4" />
+        Finish Early
+      </button>
+    </>
+  );
+
+  const questionCard = (
+    <div className="rounded-2xl border-2 border-[#0F2042]/20 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-4 sm:p-5 shadow-xs">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        <span className="px-2 py-0.5 rounded bg-[#0F2042] text-white dark:bg-white dark:text-black text-[10px] font-mono font-bold uppercase">
+          {currentQuestion.number}
+        </span>
+        <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
+          {currentQuestion.marks} marks
+        </span>
+        {currentQuestion.parts.length > 1 && (
+          <span className="text-[10px] font-mono text-[#78716C] dark:text-neutral-400">
+            {currentQuestion.parts.length} sub-parts
+          </span>
+        )}
+      </div>
+
+      <div className="space-y-5">
+        {currentQuestion.parts.map((part) => (
+          <div key={part.id}>
+            {part.label && (
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="text-xs font-mono font-bold text-[#0F2042] dark:text-white">
+                  {part.label}
+                </span>
+                <span className="text-[10px] font-mono font-bold text-[#78716C] dark:text-neutral-400">
+                  {part.marks} marks
+                </span>
+              </div>
+            )}
+
+            <h2 className="font-academic-serif text-base sm:text-lg font-bold text-[#0F2042] dark:text-white leading-relaxed mb-3">
+              {part.questionText}
+            </h2>
+
+            <label
+              htmlFor={`mock-answer-${part.id}`}
+              className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#57534E] dark:text-neutral-400 mb-1.5"
+            >
+              Your answer
+            </label>
+            <textarea
+              id={`mock-answer-${part.id}`}
+              value={answers[part.id] ?? ""}
+              onChange={(event) =>
+                handleAnswerChange(part.id, event.target.value)
+              }
+              placeholder="Type your full answer here under exam conditions..."
+              rows={part.label ? 4 : 9}
+              className="w-full p-3 rounded-xl border border-[#D6D3D1] dark:border-neutral-700 bg-[#FAF9F6] dark:bg-black text-sm text-[#1C1917] dark:text-white leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white resize-y"
+            />
+            <div className="mt-1.5 flex items-center justify-between text-[10px] font-mono text-[#78716C] dark:text-neutral-400">
+              <span>
+                {countWords(answers[part.id] ?? "")} words
+              </span>
+              <span className="hidden sm:inline">
+                Aim for about {part.marks * 10}–{part.marks * 18} words
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const questionNav = (
+    <div className="mt-5 flex items-center justify-between gap-3">
+      <button
+        type="button"
+        disabled={currentIndex === 0}
+        onClick={() =>
+          setCurrentIndex((index) => Math.max(0, index - 1))
+        }
+        className="px-4 py-2 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-xs font-semibold hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 cursor-pointer"
+      >
+        <ChevronLeft className="w-4 h-4" />
+        Previous
+      </button>
+
+      {currentIndex < exam.questions.length - 1 ? (
+        <button
+          type="button"
+          onClick={() =>
+            setCurrentIndex((index) =>
+              Math.min(exam.questions.length - 1, index + 1),
+            )
+          }
+          className="px-4 py-2 rounded-lg bg-[#0F2042] dark:bg-white text-white dark:text-black text-xs font-bold hover:bg-[#1E3A8A] dark:hover:bg-neutral-200 flex items-center gap-1.5 cursor-pointer"
+        >
+          Next Question
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+        >
+          <Flag className="w-4 h-4" />
+          Finish Exam
+        </button>
+      )}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-[#FAF9F6] dark:bg-black text-[#1C1917] dark:text-white flex flex-col transition-colors">
       <header className="sticky top-0 z-30 border-b border-[#E7E5E4] dark:border-neutral-800 bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md px-4 sm:px-6 py-3">
@@ -1050,6 +1378,16 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            <div className="hidden md:block">{layoutToggle}</div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              title="Submit your answers before the timer runs out"
+              className="px-3 py-1.5 rounded-lg border border-emerald-600 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
+            >
+              <Flag className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Finish Early</span>
+            </button>
             <div
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-mono text-sm font-bold tabular-nums ${timerTone}`}
               title="Time remaining"
@@ -1070,231 +1408,131 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
         </div>
       </header>
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 grid lg:grid-cols-[minmax(0,1fr)_300px] gap-6 items-start">
-        <section className="min-w-0">
-          <div className="flex items-center justify-between gap-3 mb-2">
-            <span className="text-xs font-mono font-semibold text-[#57534E] dark:text-neutral-400">
-              Question {currentIndex + 1} of {exam.questions.length}
-            </span>
-            <span className="text-xs font-mono text-[#78716C] dark:text-neutral-400">
-              {answeredQuestions} / {exam.questions.length} questions answered
-            </span>
-          </div>
-
-          <div className="h-1.5 rounded-full bg-[#E7E5E4] dark:bg-neutral-800 overflow-hidden mb-5">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-300"
-              style={{
-                width: `${((currentIndex + 1) / exam.questions.length) * 100}%`,
-              }}
-            />
-          </div>
-
-          <CaseStudyPanel
-            exam={exam}
-            open={showCaseStudy}
-            onToggle={() => setShowCaseStudy((previous) => !previous)}
-          />
-
-          <div className="rounded-2xl border-2 border-[#0F2042]/20 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-4 sm:p-5 shadow-xs">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="px-2 py-0.5 rounded bg-[#0F2042] text-white dark:bg-white dark:text-black text-[10px] font-mono font-bold uppercase">
-                {currentQuestion.number}
-              </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[10px] font-mono font-bold">
-                {currentQuestion.marks} marks
-              </span>
-              {currentQuestion.parts.length > 1 && (
-                <span className="text-[10px] font-mono text-[#78716C] dark:text-neutral-400">
-                  {currentQuestion.parts.length} sub-parts
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-5">
-              {currentQuestion.parts.map((part) => (
-                <div key={part.id}>
-                  {part.label && (
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-xs font-mono font-bold text-[#0F2042] dark:text-white">
-                        {part.label}
-                      </span>
-                      <span className="text-[10px] font-mono font-bold text-[#78716C] dark:text-neutral-400">
-                        {part.marks} marks
-                      </span>
-                    </div>
-                  )}
-
-                  <h2 className="font-academic-serif text-base sm:text-lg font-bold text-[#0F2042] dark:text-white leading-relaxed mb-3">
-                    {part.questionText}
-                  </h2>
-
-                  <label
-                    htmlFor={`mock-answer-${part.id}`}
-                    className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#57534E] dark:text-neutral-400 mb-1.5"
-                  >
-                    Your answer
-                  </label>
-                  <textarea
-                    id={`mock-answer-${part.id}`}
-                    value={answers[part.id] ?? ""}
-                    onChange={(event) =>
-                      handleAnswerChange(part.id, event.target.value)
-                    }
-                    placeholder="Type your full answer here under exam conditions..."
-                    rows={part.label ? 4 : 9}
-                    className="w-full p-3 rounded-xl border border-[#D6D3D1] dark:border-neutral-700 bg-[#FAF9F6] dark:bg-black text-sm text-[#1C1917] dark:text-white leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#0F2042] dark:focus:ring-white resize-y"
-                  />
-                  <div className="mt-1.5 flex items-center justify-between text-[10px] font-mono text-[#78716C] dark:text-neutral-400">
-                    <span>
-                      {countWords(answers[part.id] ?? "")} words
-                    </span>
-                    <span className="hidden sm:inline">
-                      Aim for about {part.marks * 10}–{part.marks * 18} words
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-5 flex items-center justify-between gap-3">
-            <button
-              type="button"
-              disabled={currentIndex === 0}
-              onClick={() =>
-                setCurrentIndex((index) => Math.max(0, index - 1))
-              }
-              className="px-4 py-2 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-xs font-semibold hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 cursor-pointer"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Previous
-            </button>
-
-            {currentIndex < exam.questions.length - 1 ? (
-              <button
-                type="button"
-                onClick={() =>
-                  setCurrentIndex((index) =>
-                    Math.min(exam.questions.length - 1, index + 1),
-                  )
-                }
-                className="px-4 py-2 rounded-lg bg-[#0F2042] dark:bg-white text-white dark:text-black text-xs font-bold hover:bg-[#1E3A8A] dark:hover:bg-neutral-200 flex items-center gap-1.5 cursor-pointer"
+      <main
+        className={`flex-1 w-full mx-auto px-3 sm:px-4 lg:px-6 py-6 ${
+          layout === "columns"
+            ? "max-w-[1600px]"
+            : "max-w-6xl grid md:grid-cols-[minmax(0,1fr)_240px] lg:grid-cols-[minmax(0,1fr)_300px] gap-5 lg:gap-6 items-start"
+        }`}
+      >
+        {layout === "columns" ? (
+          <>
+            {/* In side-by-side mode the controls move into a toolbar above the two panels. */}
+            <div className="sticky top-[60px] z-20 mb-4 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md px-3 py-2.5 shadow-xs">
+              <div
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-mono text-base font-bold tabular-nums ${timerTone}`}
+                title="Time remaining"
               >
-                Next Question
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            ) : (
+                <Timer className="w-4 h-4" />
+                <span>{formatTime(timeLeft)}</span>
+              </div>
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+                title="Submit your answers before the timer runs out"
+                className="px-3 py-1.5 rounded-lg border border-emerald-600 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
               >
-                <Flag className="w-4 h-4" />
-                Finish Exam
+                <Flag className="w-3.5 h-3.5" />
+                Finish Early
               </button>
-            )}
-          </div>
-        </section>
-
-        <aside className="lg:sticky lg:top-20 space-y-4">
-          <div className="rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200">
-                Countdown
-              </h3>
-            </div>
-            <div
-              className={`rounded-xl border px-3 py-3 text-center font-mono text-3xl font-bold tabular-nums ${timerTone}`}
-            >
-              {formatTime(timeLeft)}
-            </div>
-            <p className="mt-2 text-[10px] text-[#78716C] dark:text-neutral-400 leading-snug">
-              The exam auto-submits when the timer reaches zero. The case study
-              and appendices stay available throughout.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <ListChecks className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200">
-                Question Navigator
-              </h3>
-            </div>
-            <div className="space-y-2">
-              {exam.questions.map((question, index) => {
-                const answered = question.parts.every(
-                  (part) => (answers[part.id] ?? "").trim().length > 0,
-                );
-                const isCurrent = index === currentIndex;
-                return (
-                  <button
-                    key={question.id}
-                    type="button"
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-full text-left px-3 py-2 rounded-lg border text-xs font-semibold flex items-center justify-between gap-2 transition-colors cursor-pointer ${
-                      isCurrent
-                        ? "border-[#0F2042] dark:border-white bg-[#0F2042] text-white dark:bg-white dark:text-black"
-                        : answered
-                          ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/70 dark:hover:bg-emerald-950/50"
-                          : "border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black text-[#57534E] dark:text-neutral-400 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800"
-                    }`}
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-black/10 dark:bg-white/10 text-[10px] font-mono flex items-center justify-center">
-                        {index + 1}
-                      </span>
-                      <span>
-                        {question.number} · {question.marks}m
-                      </span>
-                    </span>
-                    {answered && <CheckCircle2 className="w-3.5 h-3.5" />}
-                  </button>
-                );
-              })}
+              <span className="text-xs font-mono text-[#78716C] dark:text-neutral-400 hidden sm:inline">
+                {answeredParts} / {totalParts} parts answered
+              </span>
+              <details className="relative ml-auto">
+                <summary className="cursor-pointer list-none rounded-lg border border-[#D6D3D1] dark:border-neutral-700 px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5 [&::-webkit-details-marker]:hidden">
+                  <ListChecks className="w-3.5 h-3.5" />
+                  Questions
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </summary>
+                <div className="absolute right-0 top-full mt-2 z-30 w-72 max-h-[70vh] overflow-y-auto rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3 shadow-xl">
+                  <div className="flex items-center gap-2 mb-2">
+                    <ListChecks className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200">
+                      Question Navigator
+                    </h3>
+                  </div>
+                  {navigatorList}
+                </div>
+              </details>
             </div>
 
-            <div className="mt-3 pt-3 border-t border-[#E7E5E4] dark:border-neutral-800">
-              <div className="flex items-center justify-between text-[10px] font-mono text-[#78716C] dark:text-neutral-400 mb-1.5">
-                <span>Parts answered</span>
-                <span>
-                  {answeredParts} / {totalParts}
-                </span>
-              </div>
-              <div className="h-1.5 rounded-full bg-[#E7E5E4] dark:bg-neutral-800 overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-emerald-600 transition-all duration-300"
-                  style={{
-                    width: `${
-                      totalParts > 0
-                        ? (answeredParts / totalParts) * 100
-                        : 0
-                    }%`,
-                  }}
+            <div className="grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:grid-cols-[minmax(0,42fr)_minmax(0,58fr)] gap-5 lg:gap-6 items-start">
+              <div className="min-w-0 md:sticky md:top-32 md:max-h-[calc(100vh-10rem)] md:overflow-y-auto">
+                <CaseStudyPanel
+                  exam={exam}
+                  open={showCaseStudy}
+                  onToggle={() => setShowCaseStudy((previous) => !previous)}
+                  className="mb-5"
                 />
+                <div className="rounded-2xl border border-amber-300 dark:border-amber-800/80 bg-amber-50/70 dark:bg-amber-950/20 p-3 flex gap-2">
+                  <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                  <p className="text-[10px] leading-snug text-amber-900 dark:text-amber-200">
+                    Strict conditions: work independently, no notes. Use the
+                    case study facts, figures and appendices in your answers.
+                  </p>
+                </div>
               </div>
+              <section className="min-w-0">
+                {statusStrip}
+                {questionCard}
+                {questionNav}
+              </section>
             </div>
+          </>
+        ) : (
+          <>
+            <section className="min-w-0">
+              {statusStrip}
+              <CaseStudyPanel
+                exam={exam}
+                open={showCaseStudy}
+                onToggle={() => setShowCaseStudy((previous) => !previous)}
+                className="mb-5"
+              />
+              {questionCard}
+              {questionNav}
+            </section>
 
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className="mt-4 w-full px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
-            >
-              <Flag className="w-4 h-4" />
-              Finish & See Model Answers
-            </button>
-          </div>
+            <aside className="md:sticky md:top-20 space-y-4">
+              <div className="rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200">
+                    Countdown
+                  </h3>
+                </div>
+                <div
+                  className={`rounded-xl border px-3 py-3 text-center font-mono text-3xl font-bold tabular-nums ${timerTone}`}
+                >
+                  {formatTime(timeLeft)}
+                </div>
+                <p className="mt-2 text-[10px] text-[#78716C] dark:text-neutral-400 leading-snug">
+                  The exam auto-submits when the timer reaches zero, or you can
+                  use Finish Early at any time. The case study stays available
+                  throughout.
+                </p>
+              </div>
 
-          <div className="rounded-2xl border border-amber-300 dark:border-amber-800/80 bg-amber-50/70 dark:bg-amber-950/20 p-3 flex gap-2">
-            <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-            <p className="text-[10px] leading-snug text-amber-900 dark:text-amber-200">
-              Strict conditions: work independently, no notes. Use the case
-              study facts, figures and appendices in your answers.
-            </p>
-          </div>
-        </aside>
+              <div className="rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <ListChecks className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-neutral-200">
+                    Question Navigator
+                  </h3>
+                </div>
+                {navigatorList}
+              </div>
+
+              <div className="rounded-2xl border border-amber-300 dark:border-amber-800/80 bg-amber-50/70 dark:bg-amber-950/20 p-3 flex gap-2">
+                <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                <p className="text-[10px] leading-snug text-amber-900 dark:text-amber-200">
+                  Strict conditions: work independently, no notes. Use the case
+                  study facts, figures and appendices in your answers.
+                </p>
+              </div>
+            </aside>
+          </>
+        )}
       </main>
     </div>
   );

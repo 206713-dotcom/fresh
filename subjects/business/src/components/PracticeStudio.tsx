@@ -12,6 +12,7 @@ import {
   StudentSubmissionRecord,
 } from "../lib/types";
 import { AOHighlightViewer } from "./AOHighlightViewer";
+import { ExamLayoutPicker } from "./ExamLayoutPicker";
 import { MarkOverrideModal } from "./MarkOverrideModal";
 import { FlagQuestionButton } from "./FlagQuestionButton";
 import { FactorsOfProductionDiagram } from "./FactorsOfProductionDiagram";
@@ -46,6 +47,11 @@ import {
   WebLLMStatus,
 } from "../lib/engine/webllm";
 import { formatTime } from "../lib/utils";
+import {
+  loadExamLayout,
+  saveExamLayout,
+  type ExamLayout,
+} from "../lib/exam-layout";
 import {
   saveAnswerDraft,
   loadAnswerDraft,
@@ -90,6 +96,12 @@ export function PracticeStudio({
   const [practiceMode, setPracticeMode] = useState<"paper1_database" | "paper2_case_study" | "verified_archive">(
     initialPracticeMode || "paper1_database"
   );
+  const [layout, setLayout] = useState<ExamLayout>(() => loadExamLayout());
+  const changeLayout = (next: ExamLayout) => {
+    setLayout(next);
+    saveExamLayout(next);
+  };
+  const layoutClass = layout === "stacked" ? "study-columns-layout-stacked" : "study-columns-layout-columns";
 
   useEffect(() => {
     if (initialPracticeMode) {
@@ -998,6 +1010,8 @@ export function PracticeStudio({
               Instant Examiner
             </button>
           </div>
+
+          <ExamLayoutPicker layout={layout} onChange={changeLayout} />
         </div>
 
         {(webllmStatus.isLoading || webllmStatus.error) && (
@@ -1140,7 +1154,7 @@ export function PracticeStudio({
 
           <div className="min-w-0">
             {practiceMode === "paper1_database" && (
-              <div className="study-columns study-paper-one-columns">
+              <div className={`study-columns study-paper-one-columns ${layoutClass}`}>
                 <section className="study-case-panel" aria-labelledby="paper-one-case-title">
                   <div className="study-panel-header">
                     <div>
@@ -1594,7 +1608,7 @@ export function PracticeStudio({
                 </div>
 
                 {activeVerifiedQuestion ? (
-                  <div className="study-columns study-paper-one-columns">
+                  <div className={`study-columns study-paper-one-columns ${layoutClass}`}>
                     {/* LEFT COLUMN: FULL CASE STUDY & APPENDICES */}
                     <section className="study-case-panel" aria-labelledby="verified-case-title">
                       <div className="study-panel-header">
