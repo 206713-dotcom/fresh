@@ -65,8 +65,10 @@ async function loadMeaningChecker() {
   ]);
   const entailment = Object.entries(model.config.id2label).find(([, label]) =>
     label.toLowerCase() === 'entailment');
-  if (!entailment) throw new Error('The meaning checker has no entailment label.');
-  return { tokenizer, model, entailment: Number(entailment[0]) };
+  const contradiction = Object.entries(model.config.id2label).find(([, label]) =>
+    label.toLowerCase() === 'contradiction');
+  if (!entailment || !contradiction) throw new Error('The meaning checker is missing a required label.');
+  return { tokenizer, model, entailment: Number(entailment[0]), contradiction: Number(contradiction[0]) };
 }
 
 function independentDefinitionPoints(question) {
@@ -166,44 +168,119 @@ function exactRouteGrade(question, answer) {
     provisional: true };
 }
 
-async function markDefinition(points, answer, report) {
-  report('Checking your wording against the mark scheme…');
-  const clauses = answerClauses(answer);
-  const exact = new Set(clauses.flatMap(clause => exactEvidence(points, clause, true)));
-  const matches = points.map(point => exact.has(point));
-  const unmatched = points.filter(point => !exact.has(point));
-  if (unmatched.length) {
-    meaningChecker ??= await loadMeaningChecker();
-    const { tokenizer, model, entailment } = meaningChecker;
-    const hypotheses = unmatched.map(point => [...new Set(pointAlternatives(point).slice(1))]);
-    const pairs = hypotheses.flat();
-    const inputs = tokenizer(pairs.map(() => answer), {
-      text_pair: pairs, padding: true, truncation: true, max_length: 512
-    });
-    const { logits } = await model(inputs);
-    const predictions = logits.tolist();
-    let offset = 0;
-    for (const [index, alternatives] of hypotheses.entries()) {
-      const rows = predictions.slice(offset, offset + alternatives.length);
-      offset += alternatives.length;
-      matches[points.indexOf(unmatched[index])] = rows.some(row => {
-        const best = Math.max(...row);
-        const probability = Math.exp(row[entailment] - best) /
-          row.reduce((total, value) => total + Math.exp(value - best), 0);
-        return probability >= 0.75;
-      });
-    }
+
+/* Meaning checks are restricted to point-marked written answers. */
+function matchingSchemeRoutes(question) {
+  const lines = question.scheme.split('\n');
+  const linked = /^Maximum [46] marks\..*Credit two distinct (?:explanations|analytical routes), up to [23] marks/i.test(lines[0]);
+  const chooseOne = question.marks === 2 && /\bChoose one route\b/i.test(question.note ?? '');
+  if (!linked && !chooseOne) return;
+  const routes = lines.filter(line => linked ? /^\d+\.\s/.test(line) : line.startsWith('• '))
+    .map(line => line.replace(/^(?:\d+\.|•)\s+/, '').split(linked ? ' → ' : ';')
+      .map(part => /^(.*?)\s+\(1\)\.?$/.exec(part.trim())?.[1]));
+  if (routes.length < 2 || routes.some(route => route.length < 2 || route.some(point => !point))) return;
+  return { routes, limit: linked ? question.marks / 2 : 2, count: linked ? 2 : 1 };
+}
+
+function meaningVariants(point) {
+  const variants = definitionAlternatives(point);
+  const key = normalizePoint(point);
+  if (key === 'next best alternative' || key === 'the next best alternative') {
+    variants.push('The best of the other options', 'The best option apart from the one chosen',
+      'The most valuable alternative to the chosen option');
   }
-  const earned = points.filter((_, index) => matches[index]);
-  const missing = points.filter((_, index) => !matches[index]);
-  return {
-    score: earned.length,
-    feedback: earned.length
-      ? 'Credited: ' + earned.join('; ') + '.'
-      : 'The answer did not clearly establish either marking point.',
-    nextStep: missing.length ? 'Make this meaning clear: ' + missing[0] + '.' : '',
-    provisional: true
-  };
+  if (key === 'forgone / given up when making a choice') {
+    variants.push('Something you miss out on because you picked something else',
+      'An option that is sacrificed as a result of choosing another option');
+  }
+  return [...new Set(variants)];
+}
+
+function directDefinitionEvidence(point, answer) {
+  // This common definition has two independently creditable ideas.
+  // Require an affirmative whole definition, including a choice and a forgone option.
+  const m = /^(?:opportunity cost (?:is|means) |it is )?(?:the )?(next[- ]best alternative|best (?:other |remaining )?(?:alternative|option)|most valuable (?:alternative|option|thing)|least valuable (?:alternative|option|thing)) (?:you )?(?:give up|sacrifice|miss out on|forgo|give up on|given up|sacrificed|forgone|lost) (?:because you (?:choose|picked|pick) something else|when (?:you (?:make a choice|choose|pick something else)|making a choice|a choice is made|making a decision))$/.exec(normalizePoint(answer));
+  if (!m) return false;
+  const key = normalizePoint(point);
+  if (/^(?:the )?next best alternative$/.test(key)) return !m[1].startsWith('least');
+  return key === 'forgone / given up when making a choice';
+}
+
+async function semanticEvidence(points, answer, threshold = .74) {
+  meaningChecker ??= await loadMeaningChecker();
+  const { tokenizer, model, entailment, contradiction } = meaningChecker;
+  const hypotheses = points.map(meaningVariants);
+  const pairs = hypotheses.flat();
+  const inputs = tokenizer(pairs.map(() => answer), {
+    text_pair: pairs, padding: true, truncation: true, max_length: 512
+  });
+  const rows = (await model(inputs)).logits.tolist();
+  let offset = 0;
+  return hypotheses.map(variants => {
+    const votes = rows.slice(offset, offset + variants.length).map(row => {
+      const weights = row.map(value => Math.exp(value - Math.max(...row)));
+      const total = weights.reduce((sum, value) => sum + value, 0);
+      return { yes: weights[entailment] / total, no: weights[contradiction] / total };
+    });
+    offset += variants.length;
+    return votes.some(vote => vote.yes >= threshold && vote.no <= .15) &&
+      !votes.some(vote => vote.no >= .55);
+  });
+}
+
+function pointResult(earned, nextStep) {
+  return { score: earned.length, provisional: true,
+    feedback: earned.length ? 'Credited: ' + earned.join('; ') + '.' :
+      'No marking point was supported clearly enough.',
+    nextStep };
+}
+
+async function markLinkedMeaning(question, answer, spec, report) {
+  // Linked steps must be supported in context. Checking the transition separately
+  // prevents a bag of related facts from receiving full development marks.
+  if (answer.length > 1600) return;
+  report('Checking equivalent reasoning and causal links…');
+  const hypotheses = [...new Set(spec.routes.flatMap(route =>
+    route.flatMap((point, i) => i ? [point, route[i - 1] + ' leads to this result: ' + point] : [point])))];
+  const votes = await semanticEvidence(hypotheses, answer, .80);
+  const matches = new Set(hypotheses.filter((_, i) => votes[i]));
+  const scored = spec.routes.map(route => {
+    const credited = [];
+    for (const [i, point] of route.entries()) {
+      if (!matches.has(point) || (i && !matches.has(route[i - 1] + ' leads to this result: ' + point))) break;
+      credited.push(point);
+      if (credited.length === spec.limit) break;
+    }
+    return credited;
+  }).sort((a,b) => b.length - a.length);
+  const earned = [];
+  let count = 0;
+  for (const route of scored) {
+    const fresh = route.filter(point => !earned.some(existing => normalizePoint(existing) === normalizePoint(point)));
+    if (!fresh.length || count >= spec.count) continue;
+    earned.push(...fresh);
+    count++;
+  }
+  return pointResult(earned, earned.length < question.marks ? 'Develop each reason by linking it to the next economic consequence.' : '');
+}
+
+async function markDefinition(points, answer, report) {
+  report('Checking the meaning of each definition point…');
+  const clauses = answerClauses(answer);
+  const exactClauses = clauses.map(clause => exactEvidence(points, clause, true));
+  const exact = new Set(exactClauses.every(hits => hits.length) ? exactClauses.flat() : []);
+  const direct = points.map(point => exact.has(point) || directDefinitionEvidence(point, answer));
+  if (direct.every(Boolean) || points.some(point => directDefinitionEvidence(point, answer))) {
+    return pointResult(points.filter((_, i) => direct[i]), 'Check that your definition includes both required ideas.');
+  }
+  try {
+    const matched = await semanticEvidence(points, answer);
+    const earned = points.filter((_, i) => direct[i] || matched[i]);
+    const missing = points.find(point => !earned.includes(point));
+    return pointResult(earned, missing ? 'Make this meaning clear: ' + missing + '.' : '');
+  } catch {
+    // The written model can still mark the answer if the meaning checker is unavailable.
+  }
 }
 
 // Cambridge 0455/02 specimen mark scheme for examination from 2027, Table A (p. 4).
@@ -484,9 +561,20 @@ async function mark(question, answer, report) {
   }
   if (question) {
     const points = independentDefinitionPoints(question);
-    if (points) return markDefinition(points, answer, report);
+    if (points) {
+      const definition = await markDefinition(points, answer, report);
+      if (definition) return definition;
+    }
     const exact = exactRouteGrade(question, answer);
     if (exact) return exact;
+  }
+  let semantic;
+  if ([2, 4, 6].includes(question?.marks)) {
+    const routes = matchingSchemeRoutes(question);
+    if (routes) {
+      try { semantic = await markLinkedMeaning(question, answer, routes, report); } catch {}
+      if (semantic?.score === question.marks) return semantic;
+    }
   }
   engine ??= await openModel(report);
   if (!question) return;
@@ -496,7 +584,8 @@ async function mark(question, answer, report) {
     '\n' + context + 'Rubric:\n' + rubric + '\nStudent answer: ' + JSON.stringify(answer);
   report('Marking on your device…');
   const response = await engine.createChatCompletion({
-    messages: [{ role: 'system', content: instructions }, { role: 'user', content: prompt }],
+    messages: [{ role: 'system', content: [2, 4, 6].includes(question.marks) ? instructions +
+      ' Count each distinct correct idea independently. Accept ordinary phrasing that conveys the same idea. A wrong consequence does not cancel its correctly stated cause. A reversed direction or an unsupported link earns no mark for that part. Respect route limits.' : instructions }, { role: 'user', content: prompt }],
     temperature: 0,
     max_tokens: 160
   });
@@ -505,12 +594,15 @@ async function mark(question, answer, report) {
   try {
     grade = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/gi, ''));
   } catch {
+    if (semantic?.score) return semantic;
     throw new Error('The Economics AI did not return a readable mark. Your answer is available to retry.');
   }
   if (!Number.isInteger(grade?.score) || grade.score < 0 || grade.score > question.marks ||
       typeof grade.feedback !== 'string' || !grade.feedback.trim()) {
+    if (semantic?.score) return semantic;
     throw new Error('The Economics AI returned an invalid mark. Your answer is available to retry.');
   }
+  if (semantic?.score > grade.score) return semantic;
   return { score: grade.score, feedback: grade.feedback.trim(), provisional: true };
 }
 
