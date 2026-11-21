@@ -164,7 +164,9 @@ function exactRouteGrade(question, answer) {
   if (earned.length !== question.marks) return;
   return { score: earned.length,
     feedback: 'Your answer covers the required linked points in the mark scheme.',
-    credits: earned.map(point => ({ criterion: point, evidence: point })),
+    credits: earned.map(point => ({
+      criterion: point, evidence: answer.match(new RegExp(point.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))?.[0] ?? ''
+    })),
     provisional: true };
 }
 
@@ -206,6 +208,39 @@ function directDefinitionEvidence(point, answer) {
   return key === 'forgone / given up when making a choice';
 }
 
+async function locateCreditEvidence(points, answer) {
+  if (!points.length) return [];
+  const pieces = answer.match(/[^;\n.!?]+(?:[.!?]+|(?=;|\n|$))/g)?.map(text=>text.trim()).filter(Boolean) ?? [];
+  const candidates = [answer.trim(), ...pieces.slice(0,10)].filter(Boolean);
+  const credits = points.map(criterion => ({
+    criterion, evidence: candidates.slice(1).find(piece =>
+      exactEvidence([criterion], normalizePoint(piece), true).length ||
+      directDefinitionEvidence(criterion, piece)) ?? ''
+  }));
+  const unresolved = credits.filter(credit => !credit.evidence);
+  if (!unresolved.length || !meaningChecker || answer.length>1600) return credits;
+  const {tokenizer,model,entailment,contradiction} = meaningChecker;
+  const pairs = unresolved.flatMap(({criterion}) => candidates.map(text=>[text,criterion]));
+  if (!pairs.length) return credits;
+  try {
+    const inputs=tokenizer(pairs.map(([text])=>text),{
+      text_pair:pairs.map(([,criterion])=>criterion),padding:true,truncation:true,max_length:512
+    });
+    const rows=(await model(inputs)).logits.tolist();
+    unresolved.forEach((credit,i)=>{
+      const matches=candidates.filter((_,j)=>{
+        const row=rows[i*candidates.length+j];
+        if (!row) return false;
+        const weights=row.map(value=>Math.exp(value-Math.max(...row)));
+        const sum=weights.reduce((total,value)=>total+value,0);
+        return weights[entailment]/sum>=.85 && weights[contradiction]/sum<=.12;
+      });
+      credit.evidence=matches.sort((a,b)=>a.length-b.length)[0] ?? '';
+    });
+  } catch { /* An unavailable excerpt does not affect the mark. */ }
+  return credits;
+}
+
 async function semanticEvidence(points, answer, threshold = .74) {
   meaningChecker ??= await loadMeaningChecker();
   const { tokenizer, model, entailment, contradiction } = meaningChecker;
@@ -228,8 +263,8 @@ async function semanticEvidence(points, answer, threshold = .74) {
   });
 }
 
-function pointResult(earned, nextStep) {
-  return { score: earned.length, provisional: true,
+async function pointResult(earned, nextStep, answer) {
+  return { score: earned.length, provisional: true, credits: await locateCreditEvidence(earned, answer),
     feedback: earned.length ? 'Credited: ' + earned.join('; ') + '.' :
       'No marking point was supported clearly enough.',
     nextStep };
@@ -261,7 +296,14 @@ async function markLinkedMeaning(question, answer, spec, report) {
     earned.push(...fresh);
     count++;
   }
-  return pointResult(earned, earned.length < question.marks ? 'Develop each reason by linking it to the next economic consequence.' : '');
+  const incomplete = spec.routes.map(route => ({
+    route, prefix: route.findIndex((point, i) => !matches.has(point) ||
+      (i > 0 && !matches.has(route[i-1] + ' leads to this result: ' + point)))
+  })).filter(({prefix})=>prefix>0 && prefix<spec.limit).sort((a,b)=>b.prefix-a.prefix)[0];
+  const nextStep = earned.length === question.marks ? '' : incomplete
+    ? 'Develop the link from “' + incomplete.route[incomplete.prefix-1] + '” to “' + incomplete.route[incomplete.prefix] + '”.'
+    : 'Develop each reason by linking it to the next economic consequence.';
+  return pointResult(earned, nextStep, answer);
 }
 
 async function markDefinition(points, answer, report) {
@@ -271,13 +313,13 @@ async function markDefinition(points, answer, report) {
   const exact = new Set(exactClauses.every(hits => hits.length) ? exactClauses.flat() : []);
   const direct = points.map(point => exact.has(point) || directDefinitionEvidence(point, answer));
   if (direct.every(Boolean) || points.some(point => directDefinitionEvidence(point, answer))) {
-    return pointResult(points.filter((_, i) => direct[i]), 'Check that your definition includes both required ideas.');
+    return pointResult(points.filter((_, i) => direct[i]), direct.every(Boolean) ? '' : 'Check that your definition includes both required ideas.', answer);
   }
   try {
     const matched = await semanticEvidence(points, answer);
     const earned = points.filter((_, i) => direct[i] || matched[i]);
     const missing = points.find(point => !earned.includes(point));
-    return pointResult(earned, missing ? 'Make this meaning clear: ' + missing + '.' : '');
+    return pointResult(earned, missing ? 'Make this meaning clear: ' + missing + '.' : '', answer);
   } catch {
     // The written model can still mark the answer if the meaning checker is unavailable.
   }

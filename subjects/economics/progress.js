@@ -23,6 +23,11 @@ function economicsProgress() {
       <div><h1>My progress</h1><p>Saved in this browser. Clearing site data removes it.</p></div>
       <div><button type="button" class="primary" data-export-economics>Export progress CSV</button><p id="revision-save-status" role="status"></p></div>
     </header>
+    <section class="progress-panel study-next"><h2>What should I study next?</h2>
+      <p>Recall a topic, review three flashcards and answer a fresh question.</p>
+      <div class="row">${link('Start a 10-minute review','#revision-review','button primary')}
+      ${link('Practise diagrams','#revision-diagrams')}${link('View mock history','#revision-history')}</div>
+    </section>
     <nav class="progress-shortcuts" aria-label="Progress sections">
       <button type="button" data-progress-target="progress-answers">Saved answers</button>
       <button type="button" data-progress-target="progress-checklist">Syllabus progress</button>

@@ -1,0 +1,34 @@
+
+.study-next {
+  background: #e5f6ef;
+  border-inline-start: .35rem solid #16806d;
+}
+.study-next h2 { margin-block: 0 .35rem; }
+.diagram-workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.25fr);
+  gap: 1rem;
+  align-items: start;
+  margin-block-start: 1rem;
+}
+.diagram-workspace > .panel { margin: 0; min-width: 0; }
+.diagram-figure svg { display: block; width: 100%; height: auto; background: #f6fbff; }
+.diagram-figure svg text { fill: #142f43; font: 13px system-ui, sans-serif; }
+.diagram-grid { stroke: #dbe8ef; stroke-width: 1; }
+.diagram-axis { stroke: #142f43; stroke-width: 2; }
+.diagram-demand, .diagram-ppc { stroke: #275aab; stroke-width: 3; }
+.diagram-supply { stroke: #087365; stroke-width: 3; }
+.diagram-shift { stroke: #7048ae; stroke-width: 3; stroke-dasharray: 8 5; }
+.diagram-point { fill: #142f43; stroke: #fff; stroke-width: 1.5; }
+.diagram-figure figcaption { padding-block-start: .5rem; }
+#diagram-feedback ul { padding-inline-start: 0; list-style: none; }
+#diagram-feedback li { margin-block: .35rem; }
+.writing-compare-panel { max-width: none; }
+.writing-compare { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,16rem),1fr)); gap: .9rem; }
+.writing-version { min-width: 0; padding: .75rem; border: 1px solid #c7d8e3; border-radius: .5rem; overflow-wrap: anywhere; }
+.review-evidence mark { background: #d0f6df; color: #073f2c; padding: 0 .1rem; }
+.mock-history-entry summary { cursor: pointer; }
+.mock-history-entry h2 { font-size: 1.15rem; }
+@media (max-width: 770px) { .diagram-workspace { grid-template-columns: 1fr; } }
+
+.writing-review-layout > form { max-width: none; }

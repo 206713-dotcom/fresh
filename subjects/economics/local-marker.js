@@ -14,7 +14,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=11', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=12', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -198,7 +198,7 @@ const ecbizMarking = (() => {
     };
   }
 
-  function feedback(result, marks) {
+  function feedback(result, marks, answer) {
     const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
       escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
     const section = (title, value, kind = '') => value ? '<section class="review-section ' + kind + '"><h3>' + title + '</h3>' + paragraphs(value) + '</section>' : '';
@@ -208,12 +208,14 @@ const ecbizMarking = (() => {
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
       '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
       '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>' +
+      ([2,4,6].includes(marks) && typeof answer === 'string' && answer && result.score
+        ? '<section class="review-section review-evidence">' + markedEvidence(answer, result) + '</section>' : '') +
       (result.credits?.length ? '<section class="review-section review-credits"><h3>Marks awarded</h3><ul>' + result.credits.map(credit =>
         '<li><strong>' + escapeHtml(credit.criterion) + '</strong> · ' +
-        escapeHtml(credit.evidence) + '</li>').join('') + '</ul></section>' : '') +
+        escapeHtml(credit.evidence || 'Exact wording unavailable') + '</li>').join('') + '</ul></section>' : '') +
       '<div class="review-coaching">' + section('What worked', coaching?.strengths, 'review-strengths') +
       section('What to improve', coaching?.gaps, 'review-gaps') + '</div>' +
-      section('How to reach full marks', coaching?.next || result.nextStep, 'review-next') +
+      section('How to reach full marks', result.nextStep || coaching?.next, 'review-next') +
       section(result.diagram ? 'Model diagram instructions' : 'Model response', result.modelResponse, 'review-model') +
       (result.generatedModelResponse ? '<p class="muted">AI-generated example. Check it against the question’s mark scheme.</p>' : '') +
       (result.modelPlan ? '<h3>Mark-scheme answer plan</h3><p>The AI could not verify a complete model response. Use these points to build your answer.</p><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +

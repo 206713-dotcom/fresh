@@ -278,7 +278,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
     questions.forEach((question, index) => {
       const entry = saved?.[question.id];
       if (typeof entry?.answer === 'string') {
-        attempts.set(index, { answer: entry.answer, feedback: typeof entry.feedback === 'string' ? entry.feedback : '' });
+        attempts.set(index, { answer: entry.answer, feedback: typeof entry.feedback === 'string' ? entry.feedback : '', score: entry.score });
       }
     });
   } catch {}
@@ -286,7 +286,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
   function saveAttempt(index, state) {
     try {
       const saved = readPracticeAnswers();
-      saved[questions[index].id] = { answer: state.answer, feedback: state.pending ? '' : state.feedback || '' };
+      saved[questions[index].id] = { answer: state.answer, feedback: state.pending ? '' : state.feedback || '', score: state.score };
       localStorage.setItem(answersKey, JSON.stringify(saved));
       saveStatus.textContent = 'Saved in this browser.';
     } catch {
@@ -446,12 +446,19 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
     };
     showFeedback();
     try {
-      state.feedback=q.options
-        ? outcomeBadge(mcqOutcome(answer, q.answer))+'<h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>'
-        : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer,undefined,message=>{
+      if (q.options) {
+        state.score = Number(answer === String(q.answer));
+        state.feedback = outcomeBadge(mcqOutcome(answer, q.answer))+'<h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>';
+      } else {
+        const grade = await ecbizMarking.grade(q.id,answer,undefined,message=>{
           state.feedback='<p>'+escapeHtml(message)+'</p>';
           showFeedback();
-        }),q.marks)+ecbizMarking.scheme(q);
+        });
+        state.score = grade.score;
+        if ([2,4,6].includes(q.marks) && attempts.get(index) === state) saveWritingVersion(q.id,answer,grade);
+        state.feedback = ecbizMarking.feedback(grade,q.marks,answer)+ecbizMarking.scheme(q)+
+          link('Revise this answer and compare versions','#revision-writing/'+q.id);
+      }
       if(q.reference) {
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
           escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';

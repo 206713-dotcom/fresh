@@ -144,6 +144,7 @@ function revisionHeading(label, title, description) {
 function renderRevisionTool(page, id) {
   if (page === 'revision') return revisionHub();
   const icons = {
+    'revision-history': '▤', 'revision-diagrams': '◩', 'revision-review': '↻',
     'revision-checklist': '✓', 'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
     'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎'
   };
@@ -159,6 +160,7 @@ function revisionHub() {
       ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics']
     ]],
     ['Practise for the exam', [
+      ['◩', 'Diagram practice', 'Label axes, shift curves and mark equilibrium.', '#revision-diagrams'],
       ['◷', 'Test builder and original mocks', 'Build a custom quiz or sit a timed 2027-style paper.', '#revision-test'],
       ['↗', 'Past papers and specimen materials', 'Find Cambridge’s specimen papers, mark schemes and past-paper directory.', '#revision-papers']
     ]],
@@ -258,18 +260,24 @@ function revisionWriting(id) {
   const versions = revisionState('writing-' + id, []);
   return link('← Choose another question', '#revision-writing', 'text-link') +
     revisionHeading('Automatic marking · ' + selected.marks + ' marks', 'Review your answer', escapeHtml(selected.q)) +
-    '<div class="revision-columns revision-writing-columns"><form class="panel" id="revision-writing-form">' + (selected.case ? '<p>' + escapeHtml(selected.case) + '</p>' : '') +
+    '<div class="writing-review-layout"><form class="panel" id="revision-writing-form">' + (selected.case ? '<p>' + escapeHtml(selected.case) + '</p>' : '') +
     '<label class="field">Your response<textarea name="response" maxlength="8000" required>' + escapeHtml(versions.at(-1)?.answer ?? versions.at(-1) ?? '') + '</textarea></label>' +
     '<button class="primary">Mark and save version</button><p id="revision-save-status" role="status"></p></form>' +
     '<div id="revision-writing-guide">' + (versions.length ? revisionWritingGuide(selected, versions) : '<section class="panel revision-empty"><h2>Mark scheme</h2><p>Submit an answer to see your mark and feedback.</p></section>') + '</div></div>';
 }
 
 function revisionWritingGuide(question, versions) {
-  return '<section class="panel"><h2>Question-specific mark scheme</h2><div class="mark-scheme">' + escapeHtml(question.scheme) +
-    '</div>' + (question.note ? '<p>' + escapeHtml(question.note) + '</p>' : '') +
-    '<h3>Compare your versions</h3>' + versions.map((version, index) => '<details><summary>Version ' + (index + 1) +
-      '</summary><p class="mark-scheme">' + escapeHtml(version.answer ?? version) + '</p>' +
-      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks) + '</div>' : '') + '</details>').join('') + '</section>';
+  const renderVersion = (version, index) => {
+    const answer = typeof version === 'string' ? version : version.answer;
+    const title = 'Version ' + (index + 1) + (version.grade ? ' · ' + version.grade.score + '/' + question.marks : '');
+    return '<article class="writing-version"><h4>' + title + '</h4><details><summary>Submitted answer</summary><p class="mark-scheme">' +
+      escapeHtml(answer) + '</p></details>' +
+      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks, answer) + '</div>' : '') + '</article>';
+  };
+  const recent = versions.slice(-2).map((version,index)=>renderVersion(version,versions.length-Math.min(versions.length,2)+index)).join('');
+  const earlier = versions.slice(0,-2).map((version,index)=>'<details><summary>Version '+(index+1)+'</summary>'+renderVersion(version,index)+'</details>').join('');
+  return '<section class="panel writing-compare-panel"><h2>Compare your versions</h2><div class="writing-compare">'+recent+'</div>'+
+    (earlier ? '<h3>Earlier versions</h3>'+earlier : '') + ecbizMarking.scheme(question) + '</section>';
 }
 
 function setupRevisionWriting(id) {
@@ -287,17 +295,15 @@ function setupRevisionWriting(id) {
     button.disabled = true;
     status.textContent = 'Marking your answer…';
     try {
-      if (latest?.answer !== response || !latest.grade) {
+      if (latest?.answer !== response || !latest?.grade) {
         const grade = await ecbizMarking.grade(id, response);
-        if (latest === response) versions.pop();
-        versions.push({ answer: response, grade });
-        if (!saveRevisionState(key, versions)) return;
+        if (!saveWritingVersion(id,response,grade)) return;
       }
       if (!form.isConnected) return;
       status.textContent = 'Answer marked and saved.';
       const guide = document.querySelector('#revision-writing-guide');
-      guide.innerHTML = revisionWritingGuide(questions.find(question => question.id === id), versions);
-      guide.querySelector('details:last-child').open = true;
+      guide.innerHTML = revisionWritingGuide(questions.find(question => question.id === id), revisionState(key, []));
+      guide.querySelector('.writing-version:last-child details')?.setAttribute('open', '');
     } catch (error) {
       status.textContent = error.message;
     } finally {
@@ -312,6 +318,7 @@ function revisionTest() {
   const state = revisionState('test', null);
   if (state) return revisionAttempt(state);
   return revisionHeading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
+    link('View mock exam history', '#revision-history') +
     '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Paper 1 uses 40 questions selected from the EcBiz bank. Paper 2 uses an original case and four structured choices.</p>' +
     '<div class="revision-mock-options"><button type="button" data-revision-mock="p1"><strong>Paper 1</strong><span>40 marks · 60 minutes</span></button>' +
     '<button type="button" data-revision-mock="p2"><strong>Paper 2</strong><span>80 marks · 120 minutes</span></button></div></section>' +
@@ -358,6 +365,7 @@ function markRevisionTest(state, status, retry) {
             if (!current || current.attemptId !== attemptId) return;
             current.grades = { ...current.grades, [key]: grade };
             if (!saveRevisionState('test', current)) return;
+            archiveMock(current);
           } catch (error) {
             markingError ??= error.message;
           }
@@ -404,7 +412,7 @@ function revisionAttempt(state) {
     const label = outcome === 'correct' ? 'Full credit' : outcome === 'incorrect' ? 'No credit' : undefined;
     return '<div class="feedback"' + (outcome ? ' data-outcome="' + outcome + '"' : '') + '>' +
       (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>Awaiting marking.</p>' :
-        ecbizMarking.feedback(grade ?? ecbizMarking.blank, max) + ecbizMarking.scheme({ scheme })) + '</div>';
+        ecbizMarking.feedback(grade ?? ecbizMarking.blank, max, state.answers[key]) + ecbizMarking.scheme({ scheme })) + '</div>';
   };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';
@@ -446,7 +454,8 @@ function revisionAttempt(state) {
   return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review ? (pending ? ' · ' + pending + ' awaiting marking' : ' · Score ' + earned + '/' + marks) : '')) +
     (mock2 ? '<p>Answer all of Section A and choose three Section B questions.</p>' : '') +
     (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
-    (review ? '<button id="revision-test-reset" type="button">Build another test</button>' +
+    (review ? '<button id="revision-test-reset" type="button">Build another test</button> ' +
+      link('View mock exam history', '#revision-history') +
       (pending ? '<button id="revision-test-retry" type="button" hidden>Retry marking</button>' : '') : '') +
     '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
     (!review ? '<button class="primary">Finish and mark</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
@@ -500,6 +509,7 @@ function setupRevisionTest(_id, autoMark = true) {
   const state = revisionState('test', null);
   const reset = document.querySelector('#revision-test-reset');
   reset.onclick = () => {
+    if (state.finished && !archiveMock(state)) return;
     if ((state.finished || confirm('Discard this test and its answers?')) && saveRevisionState('test', null)) render();
   };
   if (state.finished) {
@@ -563,7 +573,9 @@ function setupRevisionTest(_id, autoMark = true) {
   };
   const clock = document.querySelector('#revision-clock');
   function finish() {
-    if (!saveRevisionState('test', {...state, finished: true})) return;
+    const submitted = {...state, finished: true, completedAt: Date.now()};
+    if (!saveRevisionState('test', submitted)) return;
+    archiveMock(submitted);
     const mistakes = revisionState('mistakes', {});
     const tested = new Set(state.ids);
     for (const q of questions) {
@@ -893,10 +905,12 @@ const revisionRoutes = {
   'revision-checklist': revisionChecklist,
   revision: revisionHub, 'revision-topics': revisionTopics, 'revision-mistakes': revisionMistakes,
   'revision-papers': revisionPapers, 'revision-writing': revisionWriting,
-  'revision-test': revisionTest, 'revision-retry': revisionRetry
+  'revision-test': revisionTest, 'revision-retry': revisionRetry,
+  'revision-review': studyQueue, 'revision-diagrams': diagramPractice, 'revision-history': mockHistoryView
 };
 const revisionSetups = {
   'revision-checklist': setupRevisionChecklist,
   'revision-topics': setupRevisionTopic, 'revision-writing': setupRevisionWriting,
-  'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry
+  'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry,
+  'revision-review': setupStudyQueue, 'revision-diagrams': setupDiagramPractice
 };
