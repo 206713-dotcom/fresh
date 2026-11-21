@@ -172,3 +172,12 @@ body[data-phase=finished] .sim-console { grid-column: 1 / -1; }
 @media (prefers-reduced-motion: reduce) {
   .sim-vault-door.is-open { animation: none; transform: scaleX(.16); }
 }
+
+.campaign-challenge, .campaign-readout {
+  border-top: 2px solid var(--scene-border);
+  margin-top: 20px;
+  padding-top: 14px;
+}
+.campaign-challenge h2, .campaign-readout h2 { font-size: 1.2rem; }
+.campaign-readout details { margin-top: 12px; }
+.campaign-readout details > div { margin-top: 10px; }
