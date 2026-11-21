@@ -1,0 +1,55 @@
+
+/* Result labels and strong outlines make verdicts readable without relying on colour. */
+main [data-outcome='correct'] {
+  --result-text: #135139;
+  --result-fill: #dcf7e8;
+  --result-edge: #228254;
+}
+main [data-outcome='incorrect'] {
+  --result-text: #881c2c;
+  --result-fill: #ffe5e9;
+  --result-edge: #ba3148;
+}
+main [data-outcome='partial'] {
+  --result-text: #654307;
+  --result-fill: #fff0cd;
+  --result-edge: #986511;
+}
+main [data-outcome='unanswered'] {
+  --result-text: #34495a;
+  --result-fill: #edf3f7;
+  --result-edge: #64788b;
+}
+main .choice[data-outcome],
+main .revision-workspace .choice[data-outcome],
+main .revision-workspace .feedback[data-outcome],
+main .feedback[data-outcome] {
+  background: var(--result-fill);
+  color: var(--result-text);
+  border: 1px solid var(--result-edge);
+  border-inline-start-width: 5px;
+}
+main .choice[data-outcome] input { accent-color: var(--result-edge); }
+main .result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+  width: fit-content;
+  max-width: 100%;
+  padding: .2em .55em;
+  border: 1px solid var(--result-edge);
+  border-radius: .4rem;
+  background: #fff;
+  color: var(--result-text);
+  font-size: .85rem;
+  line-height: 1.4;
+  font-weight: 750;
+}
+main .choice > .result-badge {
+  display: flex;
+  margin-block-start: .45rem;
+}
+main .feedback[data-outcome] > .result-badge + p { margin-block-start: .65rem; }
+@media (forced-colors: active) {
+  main .result-badge { border-color: CanvasText; }
+}

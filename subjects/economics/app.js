@@ -222,6 +222,40 @@ function readPracticeAnswers() {
   } catch { return {}; }
 }
 
+
+const outcomeLabels = {
+  correct: ['✓', 'Correct'], incorrect: ['✕', 'Incorrect'],
+  unanswered: ['–', 'Unanswered'], partial: ['◐', 'Partial credit']
+};
+
+function outcomeBadge(outcome, label = outcomeLabels[outcome][1]) {
+  return '<strong class="result-badge" data-outcome="' + outcome + '">' +
+    '<span aria-hidden="true">' + outcomeLabels[outcome][0] + '</span> ' + escapeHtml(label) + '</strong>';
+}
+
+function mcqOutcome(selected, expected) {
+  return selected === String(expected) ? 'correct' : selected ? 'incorrect' : 'unanswered';
+}
+
+function choiceOutcome(option, selected, expected) {
+  if (option === String(expected)) return ['correct', option === selected ? 'Correct · your answer' : 'Correct answer'];
+  if (option === selected) return ['incorrect', 'Incorrect · your answer'];
+  return null;
+}
+
+function paintAnswerChoices(form, selected, expected) {
+  for (const input of form.querySelectorAll('.choice input[type="radio"]')) {
+    const label = input.closest('.choice');
+    const outcome = expected != null ? choiceOutcome(input.value, selected, expected) : null;
+    delete label.dataset.outcome;
+    label.querySelector('.result-badge')?.remove();
+    if (outcome) {
+      label.dataset.outcome = outcome[0];
+      label.insertAdjacentHTML('beforeend', outcomeBadge(...outcome));
+    }
+  }
+}
+
 function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId }) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
@@ -316,6 +350,12 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
           '<div class="answer-footer"><span id="answer-hint">Use clear economic reasoning and relevant examples.</span><span class="answer-count">'+wordCount+' '+(wordCount===1?'word':'words')+'</span></div></div>')+
         '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
+    const current=matches[page];
+    const saved=current && attempts.get(current.i);
+    if (current?.q.options && saved?.feedback) {
+      paintAnswerChoices(target, saved.answer, current.q.answer);
+      target.querySelector('.feedback').dataset.outcome = mcqOutcome(saved.answer, current.q.answer);
+    }
     pages.innerHTML=matches.length?'<button type="button" data-page="-1" '+(page===0?'disabled':'')+'>← Previous</button><label class="jump-label">Question <input id="question-jump" aria-label="Go to question number" type="number" min="1" max="'+matches.length+'" value="'+(page+1)+'"> of '+matches.length+'</label><button type="button" data-page="1" '+(page===matches.length-1?'disabled':'')+'>Next →</button>':'';
     if(!matches.length)target.innerHTML='<div class="panel"><h2>No matching questions</h2><p>Try a broader search or clear the filters.</p></div>';
   }
@@ -375,7 +415,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
       const words=event.target.value.trim()?event.target.value.trim().split(/\s+/).length:0;
       count.textContent=words+' '+(words===1?'word':'words');
     }
-    form.querySelector('.feedback').hidden=true;
+    const feedback=form.querySelector('.feedback');
+    feedback.hidden=true;
+    delete feedback.dataset.outcome;
+    paintAnswerChoices(form);
     form.querySelector('button.primary').disabled=false;
     renderNavigator();
   };
@@ -395,12 +438,16 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
       const feedback=current.querySelector('.feedback');
       feedback.hidden=false;
       feedback.innerHTML=state.feedback;
+      if (q.options && state.feedback !== 'Marking your answer…') {
+        feedback.dataset.outcome=mcqOutcome(answer, q.answer);
+        paintAnswerChoices(current, answer, q.answer);
+      }
       current.querySelector('button.primary').disabled=state.pending;
     };
     showFeedback();
     try {
       state.feedback=q.options
-        ? '<strong>'+(Number(answer)===q.answer?'Correct · 1/1':'0/1 · Correct answer '+String.fromCharCode(65+q.answer))+'</strong><h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>'
+        ? outcomeBadge(mcqOutcome(answer, q.answer))+'<h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>'
         : ecbizMarking.feedback(await ecbizMarking.grade(q.id,answer,undefined,message=>{
           state.feedback='<p>'+escapeHtml(message)+'</p>';
           showFeedback();

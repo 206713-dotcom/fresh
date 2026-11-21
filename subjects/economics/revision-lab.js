@@ -206,13 +206,22 @@ function setupRevisionTopic(code) {
   const form = document.querySelector('#revision-topic-form');
   if (!form) return;
   const topic = revisionLab.topics.find(item => item.code === code);
+  form.addEventListener('change', () => {
+    paintAnswerChoices(form);
+    const feedback = form.querySelector('.feedback');
+    feedback.hidden = true;
+    delete feedback.dataset.outcome;
+  });
   form.onsubmit = event => {
     event.preventDefault();
-    const choice = Number(new FormData(form).get('answer'));
+    const selected = String(new FormData(form).get('answer') ?? '');
+    const choice = Number(selected);
     const correct = choice === topic.answer;
     const feedback = form.querySelector('.feedback');
     feedback.hidden = false;
-    feedback.innerHTML = '<strong>' + (correct ? 'Correct' : 'Try again') + '</strong><ul>' + topic.options.map(([option, why], index) =>
+    feedback.dataset.outcome = mcqOutcome(selected, topic.answer);
+    paintAnswerChoices(form, selected, topic.answer);
+    feedback.innerHTML = outcomeBadge(feedback.dataset.outcome) + '<ul>' + topic.options.map(([option, why], index) =>
       '<li><strong>' + escapeHtml(option) + (index === topic.answer ? ' ✓' : '') + '</strong> — ' + escapeHtml(why) + '</li>').join('') + '</ul>';
     recordRevisionMistake('topic-' + code, topic.prompt, '#revision-topics/' + code, !correct);
     if (correct) saveRevisionState('topics', {...revisionState('topics', {}), [code]: true});
@@ -387,13 +396,31 @@ function revisionAttempt(state) {
   const isPending = key => !state.grades?.[key] && (state.answers[key]?.trim() || state.images?.[key]);
   const pending = written.filter(({ key }) => isPending(key)).length;
   const earned = score + written.reduce((total, { key }) => total + (state.grades?.[key]?.score ?? 0), 0);
-  const writtenFeedback = (key, max, scheme) => review
-    ? '<div class="feedback">' + (isPending(key) ? '<p>Awaiting marking.</p>' :
-      ecbizMarking.feedback(state.grades?.[key] ?? ecbizMarking.blank, max) + ecbizMarking.scheme({ scheme })) + '</div>'
-    : '';
+  const writtenFeedback = (key, max, scheme) => {
+    if (!review) return '';
+    const grade = state.grades?.[key];
+    const outcome = grade ? (grade.score === max ? 'correct' : grade.score === 0 ? 'incorrect' : 'partial') :
+      isPending(key) ? null : 'unanswered';
+    const label = outcome === 'correct' ? 'Full credit' : outcome === 'incorrect' ? 'No credit' : undefined;
+    return '<div class="feedback"' + (outcome ? ' data-outcome="' + outcome + '"' : '') + '>' +
+      (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>Awaiting marking.</p>' :
+        ecbizMarking.feedback(grade ?? ecbizMarking.blank, max) + ecbizMarking.scheme({ scheme })) + '</div>';
+  };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';
-  const reviewScheme = text => review ? '<div class="feedback mark-scheme">' + escapeHtml(text) + '</div>' : '';
+  const multipleChoice = question => {
+    const chosen = state.answers[question.id];
+    const outcome = mcqOutcome(chosen, question.answer);
+    return question.options.map((option, i) => {
+      const value = String(i);
+      const result = review ? choiceOutcome(value, chosen, question.answer) : null;
+      return '<label class="choice"' + (result ? ' data-outcome="' + result[0] + '"' : '') +
+        '><input type="radio" name="' + escapeHtml(question.id) + '" value="' + i + '"' +
+        (chosen === value ? ' checked' : '') + (review ? ' disabled' : '') + '> ' + escapeHtml(option) +
+        (result ? outcomeBadge(...result) : '') + '</label>';
+    }).join('') + (review ? '<div class="feedback" data-outcome="' + outcome + '">' +
+      outcomeBadge(outcome) + '<p>' + escapeHtml(question.why) + '</p></div>' : '');
+  };
   const body = mock2 ? (review ? selected : groups).map(group => {
     const active = group.index === 0 || state.selection.includes(group.index);
     return '<section class="panel"><h2>' + escapeHtml(group.title) + '</h2><p>' + escapeHtml(group.stimulus) + '</p>' +
@@ -412,12 +439,8 @@ function revisionAttempt(state) {
   }).join('') : bank.map((question, index) =>
     '<section class="panel"><h2>' + (index + 1) + '. ' + escapeHtml(question.q) + ' [' + question.marks + ']</h2>' +
     (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') +
-    (question.options ? question.options.map((option, i) => '<label class="choice"><input type="radio" name="' +
-      escapeHtml(question.id) + '" value="' + i + '"' + (state.answers[question.id] === String(i) ? ' checked' : '') +
-      (review ? ' disabled' : '') + '> ' + escapeHtml(option) + '</label>').join('') : input(question.id, state.answers[question.id])) +
-    (question.options ? reviewScheme((state.answers[question.id] === String(question.answer) ? 'Correct · 1/1' : '0/1') +
-      '\nCorrect answer: ' + question.options[question.answer] + '\n' + question.why) :
-      writtenFeedback(question.id, question.marks, question.scheme)) +
+    (question.options ? multipleChoice(question) :
+      input(question.id, state.answers[question.id]) + writtenFeedback(question.id, question.marks, question.scheme)) +
     '</section>').join('');
   const title = state.mode === 'p1' ? 'EcBiz Paper 1 mock' : mock2 ? 'EcBiz Paper 2 mock' : 'Custom practice test';
   return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review ? (pending ? ' · ' + pending + ' awaiting marking' : ' · Score ' + earned + '/' + marks) : '')) +
@@ -608,12 +631,21 @@ function setupRevisionRetry(id) {
   const form = document.querySelector('#revision-retry-form');
   if (!form) return;
   const question = questions.find(q => q.id === id);
+  form.addEventListener('change', () => {
+    paintAnswerChoices(form);
+    const feedback = form.querySelector('.feedback');
+    feedback.hidden = true;
+    delete feedback.dataset.outcome;
+  });
   form.onsubmit = event => {
     event.preventDefault();
-    const correct = new FormData(form).get('answer') === String(question.answer);
+    const selected = String(new FormData(form).get('answer') ?? '');
+    const correct = selected === String(question.answer);
     const feedback = form.querySelector('.feedback');
     feedback.hidden = false;
-    feedback.textContent = (correct ? 'Correct. ' : 'Try again. ') + question.why;
+    feedback.dataset.outcome = mcqOutcome(selected, question.answer);
+    paintAnswerChoices(form, selected, question.answer);
+    feedback.innerHTML = outcomeBadge(feedback.dataset.outcome) + ' ' + escapeHtml(question.why);
     recordRevisionMistake(id, question.q, '#revision-retry/' + id, !correct);
   };
 }
