@@ -1,10 +1,10 @@
 'use strict';
 const games = {
-  island: ['Scarcity Island','◈','Allocate workers between crops and tools. Balance basic needs as productive capacity changes.','1.2–1.4'],
-  market: ['Market Mayhem','⇄','Move curves on a live graph and predict the new equilibrium.','2.2–2.7'],
-  policy: ['Policy Panic','◷','Choose policies for a fictional economy and deal with their delayed effects.','4.1–4.7'],
-  trade: ['Trade Tycoon','◎','Commit production to export contracts and balance imports, currency and tariffs.','5.1, 6.1–6.4'],
-  escape: ['Economics Escape Room','✦','Open clues, decode calculations and assemble chains of reasoning to unlock rooms.','Units 1–6']
+  island: ['Scarcity Island','','Allocate workers between crops and tools. Balance basic needs as productive capacity changes.','1.2–1.4'],
+  market: ['Market Mayhem','','Move curves on a live graph and predict the new equilibrium.','2.2–2.7'],
+  policy: ['Policy Panic','','Choose policies for a fictional economy and deal with their delayed effects.','4.1–4.7'],
+  trade: ['Trade Tycoon','','Commit production to export contracts and balance imports, currency and tariffs.','5.1, 6.1–6.4'],
+  escape: ['Economics Escape Room','','Open clues, decode calculations and assemble chains of reasoning to unlock rooms.','Units 1–6']
 };
 const root = document.querySelector('#game-root');
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
@@ -79,7 +79,7 @@ const island = {
   },
   preview(form,s) {
     const m = islandModel(s), crops = Number(form.elements.workers.value) * m.crop, tools = (m.workers - Number(form.elements.workers.value)) * m.tool;
-    graph(form.querySelector('canvas'),'Tools','Crop baskets',m.workers*m.crop,m.workers*m.tool,[{coords:[[0,m.workers*m.tool],[m.workers*m.crop,0]],color:'#196e57',label:'PPC'}],[crops,tools]);
+    graph(form.querySelector('canvas'),'Crop baskets','Tools',m.workers*m.crop,m.workers*m.tool,[{coords:[[0,m.workers*m.tool],[m.workers*m.crop,0]],color:'#196e57',label:'PPC'}],[crops,tools]);
     form.querySelector('figcaption').textContent = 'Allocation produces ' + crops + ' baskets and ' + tools + ' tools. All workers are assigned.';
   },
   judge(data,s) {
@@ -109,17 +109,7 @@ const market = {
       select('s','Shift supply',[['0','Unchanged'],['-1','Left'],['1','Right']]) +
       select('prediction','Predict equilibrium price and quantity', [['up/up','Both rise'],['up/down','Price rises, quantity falls'],['down/up','Price falls, quantity rises'],['down/down','Both fall'],['up/same','Price rises, quantity stays unchanged'],['down/same','Price falls, quantity stays unchanged']]) +
       (s.mode === 'challenge' ? input('elasticity','If quantity demanded falls 12% after a 6% price rise, what is the magnitude of PED?',0,9,'') : '') +
-      '</div>' + chart('Pear market, quantity on the horizontal axis and price on the vertical axis') + '</div>';
-  },
-  preview(form) {
-    const d=Number(form.elements.d.value), s=Number(form.elements.s.value), e=equilibrium(d,s);
-    graph(form.querySelector('canvas'),'Price (credits)','Quantity (crates)',32,28,[
-      {coords:[[0,20],[20,0]],color:'#56716a',label:'D₀',dashed:true},
-      {coords:[[4,0],[32,28]],color:'#56716a',label:'S₀',dashed:true},
-      {coords:[[0,20+4*d],[20+4*d,0]],color:'#1d7059',label:'D'},
-      {coords:[[4+4*s,0],[28+4*s,24]],color:'#32578c',label:'S'}
-    ],[e.quantity,e.price]);
-    form.querySelector('figcaption').textContent = 'Original: 8 credits, 12 crates. Your model: ' + e.price + ' credits, ' + e.quantity + ' crates.';
+      '</div></div>';
   },
   judge(data,s) {
     const [news,d,shift,topic] = marketEvent(s), e=equilibrium(d,shift);
@@ -263,16 +253,48 @@ function changePage() {
   render();
   window.scrollTo(0,0);
 }
+
+/* Presentation reads the same models and current form choices as gameplay. */
+function simulationSnapshot() {
+  if (!activeGame) return null;
+  const s = state ?? {mode:'practice',unit:'mixed',round:0,seed:0,history:[],economy:[5,7,1,-2,50],balance:0};
+  const form = root.querySelector('#game-turn');
+  const data = !form ? {} : s.feedback ? (s.draft ?? {}) : Object.fromEntries(new FormData(form));
+  const common = {phase:!state?'intro':s.finished?'finished':'playing',round:s.round+1,total:roundCount(s),
+    committed:Boolean(s.feedback)};
+  if (activeGame==='island') {
+    const m=islandModel(s), assigned=integer(data.workers??Math.floor(m.workers/2),0,m.workers);
+    return {...common,...m,assigned,crops:assigned*m.crop,tools:(m.workers-assigned)*m.tool};
+  }
+  if (activeGame==='market') {
+    const d=Number(data.d??0), supply=Number(data.s??0), e=equilibrium(d,supply);
+    return {...common,d,supply,...e,news:marketEvent(s)[0]};
+  }
+  if (activeGame==='policy') {
+    const selected=policies.find(p=>p[0]===data.policy) ?? policies[0];
+    const incoming=s.pending??[0,0,0,0,0];
+    const projected=s.economy.map((v,i)=>common.committed?v:(i<2?Math.max(0,v+incoming[i]+(selected[4]?0:selected[3][i])):v+incoming[i]+(selected[4]?0:selected[3][i])));
+    return {...common,economy:[...s.economy],before:s.before?.economy??null,projected,pending:Boolean(s.pending),
+      selected:selected[0],policyName:selected[1],delayed:Boolean(selected[4]),crisis:crises[roundNumber(s)%crises.length][0]};
+  }
+  if (activeGame==='trade') {
+    const m=tradeModel(s),units=integer(data.exports??m.capacity-2,0,m.capacity);
+    return {...common,...m,units,domestic:m.capacity-units,receipts:units*m.price,balance:s.balance};
+  }
+  const [topic,name,clue,hint,prompt,,key]=roomFor(s);
+  return {...common,topic,name,clue,hint,prompt,sequence:Array.isArray(key),unlocked:s.feedback?.points===2};
+}
+
 function render() {
   renderGameContent();
-  window.renderGameGui(activeGame);
+  window.renderGameGui(activeGame, simulationSnapshot());
 }
 function renderGameContent() {
   if (!activeGame) {
     root.innerHTML='<div class="hero"><h1>Economics Games</h1><p>Run an island, move markets and solve economic puzzles using fictional scenarios.</p></div><div class="grid">'+
-      Object.entries(games).map(([slug,[name,icon,description,tag]])=>{
+      Object.entries(games).map(([slug,[name,,description,tag]])=>{
         const best=load(slug+'-best',null);
-        return '<article class="card"><span class="symbol" aria-hidden="true">'+icon+'</span><h2>'+name+'</h2><p>'+description+
+        return '<article class="card"><h2>'+name+'</h2><p>'+description+
           '</p><p><small>Syllabus '+tag+' · Practice or challenge<br>Best: '+(best===null?'—':best+'%')+
           '</small></p>'+link('Play '+name,'#games/'+slug)+'</article>';
       }).join('')+'</div>';
@@ -280,7 +302,7 @@ function renderGameContent() {
   }
   const [name,,description,tag]=games[activeGame];
   const engine=engines[activeGame];
-  const title='<div class="actions">'+link('← All games','#games')+'</div><header class="hero"><h1>'+name+'</h1><p>'+description+'</p></header>';
+  const title='<div class="actions">'+link('All simulations','#games')+'</div><header class="hero"><h1>'+name+'</h1><p>'+description+'</p></header>';
   const status='<p id="storage-status" role="status"></p>';
   if (!state) {
     root.innerHTML=title+'<section class="panel"><h2>How to play</h2><p>'+engine.help+'</p><p>Syllabus '+tag+'</p>'+
@@ -318,6 +340,7 @@ root.addEventListener('input',event=>{
   if (!form || state.feedback) return;
   state.draft=Object.fromEntries(new FormData(form));
   engines[activeGame].preview?.(form,state);
+  window.updateGameScene?.(activeGame, simulationSnapshot());
   save(activeGame,state);
 });
 root.addEventListener('submit',event=>{
@@ -363,9 +386,10 @@ root.addEventListener('click',event=>{
   }
   render();
   save(activeGame,state??savedSession);
-  const nextFocus = root.querySelector('#game-continue') ?? root.querySelector('#game-turn legend') ?? root.querySelector('.game-scene h1');
+  const nextFocus = root.querySelector('#game-continue') ?? root.querySelector('#game-turn legend') ?? root.querySelector('#simulation-title');
   nextFocus?.setAttribute('tabindex','-1');
   nextFocus?.focus();
 });
 window.addEventListener('hashchange',changePage);
 document.addEventListener('DOMContentLoaded', changePage, {once:true});
+
