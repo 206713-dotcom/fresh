@@ -16,7 +16,7 @@ const pages = sheets
             .join("")}</ul></section>`
       )
       .join("");
-    return `<article class="sheet" data-code="${sheet.code}"><header><div><div class="kicker">Cambridge IGCSE Business 0264 / 0450</div><h2>${sheet.code}. ${sheet.title}</h2><p>${sheet.strap}</p></div><div class="num">${sheet.code}/6<div>One-page sheet</div></div></header><div class="body">${blocks}</div><footer><span>EcBiz</span><span>One page</span></footer></article>`;
+    return `<article class="sheet" data-code="${sheet.code}"><header><div><div class="kicker">Cambridge IGCSE Business 0264</div><h2>${sheet.code}. ${sheet.title}</h2><p>${sheet.strap}</p></div><div class="num">${sheet.code}/6<div>One-page sheet</div></div></header><div class="body">${blocks}</div><footer><span>EcBiz</span><span>One page</span></footer></article>`;
   })
   .join("");
 

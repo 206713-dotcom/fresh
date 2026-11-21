@@ -120,7 +120,7 @@ export function FactorsOfProductionDiagram({
                 Cambridge Syllabus Core 1.1 / Unit 1
               </span>
               <span className="text-xs text-blue-200 font-mono hidden sm:inline">
-                Syllabus 0264 · 0450
+                Syllabus 0264
               </span>
             </div>
             <h2 className="font-academic-serif text-xl sm:text-2xl font-bold text-white mt-0.5">

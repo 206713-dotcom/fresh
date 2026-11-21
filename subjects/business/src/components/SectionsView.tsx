@@ -45,7 +45,7 @@ export function SectionsView({
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2 h-2 rounded-full bg-[#0F2042] dark:bg-[#38BDF8]" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2042] dark:text-[#38BDF8]">
-              Cambridge 0264 / 0450 Syllabus Directory
+              Cambridge 0264 Syllabus Directory
             </span>
           </div>
           <h1 className="study-title">

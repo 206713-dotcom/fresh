@@ -899,7 +899,7 @@ export function PracticeStudio({
       {/* Top Header & Quick Launcher */}
       <header className="study-hero">
         <div className="study-hero-content">
-          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>
           <h1 className="study-title">Paper 1 <span>Practice</span></h1>
           <p className="study-description">
             Practise 2-, 4-, 6- and 8-mark questions using business case studies.

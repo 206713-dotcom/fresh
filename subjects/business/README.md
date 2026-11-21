@@ -2,7 +2,7 @@
 
 ### Cambridge IGCSE Business Studies, practised properly.
 
-**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264 / 0450).** It turns the syllabus into a loop: learn the idea, answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
+**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264).** It turns the syllabus into a loop: learn the idea, answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
 
 **Where it stands:** EcBiz has been tested with my classmates and submitted to my school for review. It is not widely used yet, and I am not claiming that it is. It is a real project used by real classmates, still early.
 
@@ -522,7 +522,7 @@ The verified archive exists precisely because AI-generated practice should never
 
 ### Scope
 
-EcBiz covers the six sections of Cambridge IGCSE Business Studies (0264 / 0450):
+EcBiz covers the six sections of Cambridge IGCSE Business Studies (0264):
 
 1. Understanding business activity
 2. People in business
@@ -730,7 +730,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 
 ## Credits
 
-- **Cambridge IGCSE Business Studies (0264 / 0450)** — syllabus structure, assessment objectives and command-word expectations. EcBiz is independent and not endorsed by Cambridge.
+- **Cambridge IGCSE Business Studies (0264)** — syllabus structure, assessment objectives and command-word expectations. EcBiz is independent and not endorsed by Cambridge.
 - **Borrington & Stimpson, *Cambridge IGCSE & O Level Business*, Sixth Edition** — chapter sequence used to organise the 24 lessons.
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Gemini** — used to generate the bulk practice question banks (MCQs and Paper 1/2-style practice) from Cambridge model answers, which I then checked and edited.

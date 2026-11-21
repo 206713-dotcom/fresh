@@ -90,7 +90,7 @@ function createMockWebLLMEngine(tier: "0.6b", jsonPayload: Record<string, unknow
 }
 
 async function runTests() {
-  console.log("Running Cambridge 0264 / 0450 Grading Regression Suite...");
+  console.log("Running Cambridge 0264 Grading Regression Suite...");
 
   // 1. Verify cross-sentence two-step causal chain detection
   const crossScan = scanPaper2CausalChains(BCT_4_PARA_ESSAY_CROSS_SENTENCE);

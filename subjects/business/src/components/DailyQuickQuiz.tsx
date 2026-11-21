@@ -293,7 +293,7 @@ export function DailyQuickQuiz({
       {/* Studio Hero Header matching Paper 1, Paper 2, and Interactive Lessons */}
       <header className="study-hero">
         <div className="study-hero-content">
-          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>
           <h1 className="study-title">
             Quick Quiz <span>&amp; Daily Challenge</span>
           </h1>
@@ -943,7 +943,7 @@ export function DailyQuickQuiz({
       </div>
 
       <p className="mx-auto mt-5 max-w-3xl text-center text-[11px] leading-relaxed text-[var(--muted,#4b5c54)] dark:text-neutral-500">
-        Active recall questions align with Cambridge IGCSE Business Studies (0264 / 0450). Wrong Only
+        Active recall questions align with Cambridge IGCSE Business Studies (0264). Wrong Only
         mistakes are cleared after {MASTERY_DAYS_REQUIRED} correct answers on different days. Boss
         Battle mistakes are saved to the review page. Progress and Study Coins stay in this browser.
       </p>

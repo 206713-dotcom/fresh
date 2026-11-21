@@ -2580,7 +2580,7 @@ function findFreshAppDetails(foundWords: string[], credited: Set<string>): strin
 }
 
 /**
- * Strict Cambridge 0264/0450 Paper 1 & Short-Response Evaluation Engine
+ * Strict Cambridge 0264 Paper 1 & Short-Response Evaluation Engine
  * Combines Qwen 3 0.6B boolean checklist evaluation with strict 0264 deterministic
  * AO2/AO3/AO4 verification so paraphrased understanding is credited fairly while vague filler,
  * repeated sentences, simple lists, and standalone company name-dropping are not over-scored.

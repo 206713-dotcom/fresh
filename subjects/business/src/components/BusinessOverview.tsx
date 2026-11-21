@@ -56,7 +56,7 @@ export function BusinessOverview({ onNavigate, onStartMockExam, onOpenActiveReca
     <div className="study-page business-overview">
       <header className="study-hero business-overview-hero">
         <div className="study-hero-content">
-          <p className="study-hero-kicker">Cambridge IGCSE · 0264 / 0450</p>
+          <p className="study-hero-kicker">Cambridge IGCSE · 0264</p>
           <h1 className="study-title">Business<br />Studies</h1>
           <p className="study-description">
             Revise a topic, practise with case studies, and get feedback on your answers.

@@ -88,7 +88,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
                   </span>
                 </div>
                 <span className="mt-0.5 font-mono text-[9px] text-[var(--muted)] dark:text-neutral-400">
-                  Cambridge IGCSE&trade; Business 0264 / 0450
+                  Cambridge IGCSE&trade; Business 0264
                 </span>
               </div>
 
@@ -230,7 +230,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
                     EcBiz · Section {activeSheet.code} of 6
                   </span>
                   <span className="text-[var(--muted)] dark:text-neutral-400">
-                    Cambridge IGCSE Business 0264 / 0450
+                    Cambridge IGCSE Business 0264
                   </span>
                 </div>
                 <h1 className="mt-1 font-academic-serif text-xl font-bold leading-tight tracking-tight text-[var(--green)] dark:text-white sm:text-[26px]">
@@ -331,7 +331,7 @@ export function OnePageSheets({ initialSectionCode = "1", onBack }: OnePageSheet
           {/* Footer */}
           <footer className="flex shrink-0 flex-row items-center justify-between gap-2 border-t border-[var(--green)]/30 bg-[var(--sheet-surface)] px-5 py-2.5 font-mono text-[7.5px] text-[var(--muted)] dark:bg-neutral-900 dark:text-neutral-400 sm:px-7">
             <span className="truncate">
-              EcBiz · Section {activeSheet.code} Chapter Summary · Cambridge IGCSE™ Business 0264 / 0450
+              EcBiz · Section {activeSheet.code} Chapter Summary · Cambridge IGCSE™ Business 0264
             </span>
             <span className="inline-flex shrink-0 items-center gap-1.5">
               <Lightbulb className="h-3 w-3 text-[#97532b]" />

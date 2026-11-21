@@ -569,7 +569,7 @@ export function Paper2PracticeView({
       {/* Top Banner / Header */}
       <header className="study-hero">
         <div className="study-hero-content">
-          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+          <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>
           <h1 className="study-title">Paper 2 <span>Case studies</span></h1>
           <p className="study-description">
             Work through {PAPER2_DATABASE.length} case studies with appendices and step-by-step questions.

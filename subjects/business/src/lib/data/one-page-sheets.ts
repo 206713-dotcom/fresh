@@ -119,7 +119,7 @@ export interface OnePageSheet {
   blocks: SheetBlock[];
 }
 
-/** One visual revision sheet per Cambridge 0264 / 0450 section. */
+/** One visual revision sheet per Cambridge 0264 section. */
 export const ONE_PAGE_SHEETS: OnePageSheet[] = [
   {
     code: "1",

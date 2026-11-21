@@ -27,7 +27,7 @@ export interface Paper2QuestionPart {
 export interface Paper2CaseStudy {
   id: string;
   businessName: string;
-  syllabus: "0264" | "0450";
+  syllabus: "0264";
   year: number;
   session: string;
   title: string;

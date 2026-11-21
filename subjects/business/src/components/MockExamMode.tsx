@@ -736,7 +736,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
         <main className="study-page">
           <header className="study-hero">
             <div className="study-hero-content">
-              <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264 / 0450</p>
+              <p className="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>
               <h1 className="study-title">Choose your <span>mock exam</span></h1>
               <p className="study-description">The countdown starts when you choose a paper. Each mock includes its case study and relevant appendices.</p>
             </div>

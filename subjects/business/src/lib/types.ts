@@ -1,4 +1,4 @@
-export type SyllabusCode = "0264" | "0450";
+export type SyllabusCode = "0264";
 
 export type MarkTier = 2 | 4 | 6 | 8 | 12;
 
