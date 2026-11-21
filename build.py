@@ -46,6 +46,7 @@ def page(title, description, main, prefix="", script=""):
 <footer class="wrap footer">
   <span>{brand} · Independent IGCSE revision</span>
   <a href="{CAMBRIDGE}">Cambridge subject directory ↗</a>
+  <a href="{prefix}privacy.html">Privacy notice</a>
 </footer>
 </body>
 </html>

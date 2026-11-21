@@ -465,6 +465,10 @@ export default function App() {
           <a href="./Business.html?open=progress" className="font-semibold underline hover:text-[#8B1E1E]">
             Progress on this device
           </a>
+          {" · "}
+          <a href="../../privacy.html" className="font-semibold underline hover:text-[#8B1E1E]">
+            Privacy notice
+          </a>
         </p>
       </footer>
     </div>
