@@ -15,7 +15,7 @@ rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 // Root static files
-for (const f of ["index.html", "privacy.html", "404.html", "style.css", "home.css", "privacy.css", "search.js", "fresh.svg"]) {
+for (const f of ["index.html", "privacy.html", "404.html", "style.css", "home.css", "privacy.css", "privacy.js", "search.js", "fresh.svg"]) {
   const src = path.join(root, f);
   if (existsSync(src)) cpSync(src, path.join(dist, f));
 }
