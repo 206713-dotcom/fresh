@@ -29,11 +29,11 @@
     const line=(d,supply,base=false)=>`<path d="M${x(0)} ${y(20+4*d)}L${x(20+4*d)} ${y(0)}" class="${base?'sim-curve-base':'sim-demand'}"/><path d="M${x(4+4*supply)} ${y(0)}L${x(28+4*supply)} ${y(24)}" class="${base?'sim-curve-base':'sim-supply'}"/>`;
     let grid='';for(let i=0;i<=4;i++){grid+=`<path d="M100 ${y(i*7)}H790M${x(i*8)} 68V388" stroke="#294b63" stroke-width="1"/>`+text(66,y(i*7)+5,i*7)+text(x(i*8)-5,416,i*8);}
     return svg('market','Interactive supply and demand model',`Your demand shift is ${s.d}; supply shift is ${s.supply}. Equilibrium is ${s.price} credits and ${s.quantity} crates.`,
-      `<rect width="900" height="480" fill="#102c40"/>${grid}<path d="M100 58v330h705" stroke="#a8c6d4" stroke-width="2"/>${text(40,35,'Price · credits')}${text(615,455,'Quantity · crates')}${line(0,0,true)}${line(s.d,s.supply)}<path d="M100 ${y(s.price)}H${x(s.quantity)}V388" stroke="#b7ead5" stroke-width="1.5" stroke-dasharray="6 6"/><circle cx="${x(s.quantity)}" cy="${y(s.price)}" r="13" fill="#b7ead533"/><circle cx="${x(s.quantity)}" cy="${y(s.price)}" r="6" fill="#b7ead5"/>${text(x(s.quantity)+17,y(s.price)-14,'Equilibrium','sim-equilibrium-label')}${text(x(20+4*s.d)-10,370,'D','sim-demand-label')}${text(x(28+4*s.supply)-23,y(24)-14,'S','sim-supply-label')}`);
+      `<rect width="900" height="480" fill="#102c40"/>${grid}<path d="M100 58v330h705" stroke="#a8c6d4" stroke-width="2"/>${text(40,35,'Price · credits')}${text(615,455,'Quantity · crates')}${line(0,0,true)}${line(s.d,s.supply)}${s.campaign?'<path d="M100 '+y(s.campaign.price)+'H790" stroke="#fd9b9c" stroke-width="3" stroke-dasharray="5 7"/>'+text(584,y(s.campaign.price)-11,s.campaign.ceiling?'Price ceiling':'Price floor'):''}<path d="M100 ${y(s.price)}H${x(s.quantity)}V388" stroke="#b7ead5" stroke-width="1.5" stroke-dasharray="6 6"/><circle cx="${x(s.quantity)}" cy="${y(s.price)}" r="13" fill="#b7ead533"/><circle cx="${x(s.quantity)}" cy="${y(s.price)}" r="6" fill="#b7ead5"/>${text(x(s.quantity)+17,y(s.price)-14,'Equilibrium','sim-equilibrium-label')}${text(x(20+4*s.d)-10,370,'D','sim-demand-label')}${text(x(28+4*s.supply)-23,y(24)-14,'S','sim-supply-label')}`);
   }
   function policyArt(v) {
     const s=v??{economy:[5,7,1,-2,50],projected:[5,7,1,-2,50],selected:'rates-up',committed:false};
-    let blocks='';const employment=clamp(1-s.projected[1]/20,.15,1);
+    let blocks='';const employment=clamp(1-(s.campaign?.after??s.projected)[1]/20,.15,1);
     for(let b=0;b<7;b++){const x=48+b*113,h=[115,164,128,205,150,183,110][b],y=350-h;blocks+=`<g><rect x="${x}" y="${y}" width="86" height="${h}" rx="3" fill="${b%2?'#4a7687':'#7393a0'}"/>`;for(let row=0;row<Math.floor(h/28)-1;row++)for(let col=0;col<3;col++)blocks+=`<rect x="${x+12+col*23}" y="${y+17+row*25}" width="12" height="13" fill="${(row*3+col)/18<employment?'#ffdf9c':'#345467'}"/>`;blocks+='</g>';}
     return svg('policy','A fictional economy and its public institutions',`Unemployment is ${s.economy[1]} percent and growth is ${s.economy[2]} percent. City lighting reflects projected employment in this illustrative model.`,
       `<defs><linearGradient id="policy-sky" x2="0" y2="1"><stop stop-color="#c1d9e4"/><stop offset="1" stop-color="#edf0dd"/></linearGradient></defs><rect width="900" height="480" fill="url(#policy-sky)"/><circle cx="726" cy="87" r="33" fill="#fff0bc"/><path d="M0 350h900v130H0z" fill="#365e66"/>${blocks}<path d="M0 397h900" stroke="#aec3b6" stroke-width="4" stroke-dasharray="34 22"/><g transform="translate(325 273)"><path d="M-25 0 68-60 160 0z" fill="#24465d"/><rect x="-8" width="151" height="93" fill="#d7dfd9"/><path d="M0 84h135M-14 98h163" stroke="#b9cbc8" stroke-width="12"/><path d="M13 13v65M49 13v65M85 13v65M121 13v65" stroke="#fff8df" stroke-width="14"/></g>${tree(257,320)}${tree(739,335)}<g class="sim-city-caption"><rect x="28" y="30" width="260" height="65" rx="12" fill="#142f43"/>${text(47,57,s.committed?'POLICY ENACTED':'POLICY PREVIEW')}${text(47,79,'Fictional economy · model effects')}</g>`);
@@ -60,10 +60,38 @@
     if(game==='market')return `<div class="sim-metrics">${metric('Equilibrium price',s.price+' credits')}${metric('Equilibrium quantity',s.quantity+' crates')}${metric('Demand',s.d<0?'Left':s.d>0?'Right':'Unchanged')}${metric('Supply',s.supply<0?'Left':s.supply>0?'Right':'Unchanged')}</div><div class="sim-curve-controls"><div><span class="sim-demand-key">Demand curve</span>${action('d-left','Shift left',blocked||s.d<=-1,'Shift demand left')}${action('d-right','Shift right',blocked||s.d>=1,'Shift demand right')}</div><div><span class="sim-supply-key">Supply curve</span>${action('s-left','Shift left',blocked||s.supply<=-1,'Shift supply left')}${action('s-right','Shift right',blocked||s.supply>=1,'Shift supply right')}</div>${action('market-reset','Reset curves',blocked)}</div><p class="sim-event"><strong>Market news</strong> ${esc(s.news)}</p><p class="sim-note">Solid lines show your model; dashed lines show the original curves. Predict the event’s outcome in the decision console.</p>`;
     if(game==='policy'){
       const labels=['Inflation','Unemployment','Growth','Budget balance','Living standards'],suffix=['%','%','%',' credits',' index'];
-      return `<div class="sim-policy-metrics">${labels.map((label,i)=>{const n=s.projected[i],current=s.economy[i],delta=s.committed&&s.before?n-s.before[i]:n-current;return `<div class="sim-metric"><span>${label}</span><strong>${esc(n+suffix[i])}</strong><small>${s.committed?'Enacted':current+suffix[i]+' now'} · ${signed(delta)} ${s.committed?'this turn':'projected'}</small></div>`;}).join('')}</div><div class="sim-toolbar">${action('policy-rates-up','Raise rates',blocked)}${action('policy-rates-down','Cut rates',blocked)}${action('policy-spending','Invest',blocked)}${action('policy-training','Train workers',blocked)}${action('policy-tax','Raise taxes',blocked)}</div><p class="sim-event"><strong>${s.committed?'Decision enacted':'Selected policy'}</strong> ${esc(s.policyName)}</p><p class="sim-note">${s.delayed?'Skills training takes one turn. The current turn includes any training effects already due.':'Projections include any training effects arriving this turn.'} The lights illustrate employment in the model.</p>`;
+      return `<div class="sim-policy-metrics">${labels.map((label,i)=>{const n=(s.campaign?.after ?? s.projected)[i],current=s.economy[i],delta=s.committed&&s.before?n-s.before[i]:n-current;return `<div class="sim-metric"><span>${label}</span><strong>${esc(n+suffix[i])}</strong><small>${s.committed?'Enacted':current+suffix[i]+' now'} · ${signed(delta)} ${s.committed?'this turn':'projected'}</small></div>`;}).join('')}</div><div class="sim-toolbar">${action('policy-rates-up','Raise rates',blocked)}${action('policy-rates-down','Cut rates',blocked)}${action('policy-spending','Invest',blocked)}${action('policy-training','Train workers',blocked)}${action('policy-tax','Raise taxes',blocked)}</div><p class="sim-event"><strong>${s.committed?'Decision enacted':'Selected policy'}</strong> ${esc(s.policyName)}</p><p class="sim-note">${s.delayed?'Skills training takes one turn. The current turn includes any training effects already due.':'Projections include any training effects arriving this turn.'} The lights illustrate employment in the model.</p>`;
     }
-    if(game==='trade')return `<div class="sim-metrics">${metric('Export cargo',s.units+' / '+s.capacity)}${metric('Domestic supply',s.domestic+' units','Keep at least 2')}${metric('Export receipts',s.receipts+' credits')}${metric('Exchange rate',s.rate+' foreign','per home credit')}</div><div class="sim-toolbar">${action('load','Load export unit',blocked||s.units>=s.capacity)}${action('unload','Return unit to home port',blocked||s.units<=0)}<p>${esc(s.good)} bound for ${esc(s.port)}.</p></div><div class="sim-trade-invoice"><span>Import order: <strong>${s.importUnits} machines</strong></span><span>Foreign price: <strong>${s.foreignCost} each</strong></span><span>Domestic tariff: <strong>${s.tariff} per machine</strong></span></div><p class="sim-note">Green crates stay at home. Containers on the ship are exports. Calculate the landed import cost in the decision console.</p>`;
+    if(game==='trade')return `<div class="sim-metrics">${metric('Export cargo',s.units+' / '+s.capacity)}${metric('Domestic supply',s.domestic+' units','Keep at least 2')}${metric('Export receipts',(s.campaign?.gross??s.receipts)+' credits')}${metric('Exchange rate',s.rate+' foreign','per home credit')}</div><div class="sim-toolbar">${action('load','Load export unit',blocked||s.units>=s.capacity)}${action('unload','Return unit to home port',blocked||s.units<=0)}<p>${esc(s.good)} bound for ${esc(s.port)}.</p></div><div class="sim-trade-invoice"><span>Import order: <strong>${s.importUnits} machines</strong></span><span>Foreign price: <strong>${s.foreignCost} each</strong></span><span>Domestic tariff: <strong>${s.tariff} per machine</strong></span></div><p class="sim-note">Green crates stay at home. Containers on the ship are exports. Calculate the landed import cost in the decision console.</p>`;
     return `<div class="sim-room-route" aria-label="Room progress">${Array.from({length:s.total},(_,i)=>`<span class="${i+1<s.round?'is-past':i+1===s.round?'is-current':''}"${i+1===s.round?' aria-current="step"':''}>Room ${i+1}</span>`).join('')}</div><div class="sim-escape-summary"><strong>${esc(s.name)}</strong><span>${s.unlocked?'Door unlocked':s.committed?'Code rejected — try again':'Door locked'}</span></div><p class="sim-note">Select the evidence desk, hint book or vault lock in the scene. ${s.sequence?'This room uses a sequence lock.':'Enter your answer in the decision console.'}</p>`;
+  }
+
+  function campaignDashboard(game,s) {
+    const plan=s.campaign;
+    if(!plan)return '';
+    const rows=s.history.map((points,i)=>metric('Round '+(i+1),points+' / '+s.maximum)).join('');
+    let details='';
+    if(game==='island'){
+      details=metric('Tools from reserves',plan.stock)+metric('Tools after proposed spend',plan.available)+
+        metric('Investment status',plan.project?(plan.funded?'Affordable':'Needs unmet'):'None selected');
+    }
+    if(game==='market'){
+      const gap=plan.gap>0?'shortage':plan.gap<0?'surplus':'no gap';
+      details=metric('Price '+(plan.ceiling?'ceiling':'floor'),plan.price+' credits',plan.binding?'Binding in your model':'Non-binding in your model')+
+        metric('Buyer demand',plan.buyers+' crates')+metric('Seller supply',plan.sellers+' crates')+
+        metric('Projected result',Math.abs(plan.gap)+' · '+gap,plan.sold+' crates traded');
+    }
+    if(game==='policy'){
+      const labels=['Inflation','Unemployment','Growth','Budget balance','Living standards'];
+      details=metric('Second policy',plan.secondary??'None')+
+        plan.future.map((value,i)=>value?metric('Next turn · '+labels[i],signed(value)):'').join('');
+    }
+    if(game==='trade'){
+      details=metric('Gross export receipts',plan.gross+' credits')+metric('Domestic setup fee',plan.fee+' credits');
+    }
+    if(game==='escape')details=metric('Locks in this room',s.unlocked?'Both unlocked':'Two codes required');
+    return '<section class="campaign-readout"><h2>Campaign dashboard</h2><div class="sim-policy-metrics">'+details+'</div>'+
+      (rows?'<details><summary>Completed rounds</summary><div class="sim-policy-metrics">'+rows+'</div></details>':'')+'</section>';
   }
   function hotspots(game,s) {
     if(game!=='escape')return '';
@@ -76,7 +104,7 @@
     view=s;
     const visual=root.querySelector('#simulation-visual'),data=root.querySelector('#simulation-dashboard');
     if(visual)visual.innerHTML=art[game](s)+hotspots(game,s);
-    if(data)data.innerHTML=dashboard(game,s);
+    if(data)data.innerHTML=dashboard(game,s)+campaignDashboard(game,s);
   }
   window.updateGameScene=update;
   window.renderGameGui=(game,s) => {

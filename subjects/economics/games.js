@@ -64,7 +64,9 @@ const islandEvents = [
 function islandModel(s) {
   const [event, plots, bonus] = islandEvents[roundNumber(s) % islandEvents.length];
   const workers = 8 + plots + (s.mode === 'challenge' ? 1 : 0);
-  return {event, workers, crop: 2 + (bonus === 1 ? 1 : 0), tool: 1 + (bonus === 2 ? 1 : 0),
+  const upgrades = (s.feedback ? s.before?.projects : s.projects) ?? {};
+  return {event, workers, crop: 2 + (bonus === 1 ? 1 : 0) + (upgrades.irrigation ?? 0),
+    tool: 1 + (bonus === 2 ? 1 : 0) + (upgrades.workshop ?? 0),
     minCrop: Math.ceil(workers / 2), minTools: 2 + (s.mode === 'challenge' ? 1 : 0)};
 }
 const island = {
@@ -240,7 +242,10 @@ function roundCount(s) {
   if (activeGame==='escape') return s.unit==='mixed' ? (s.mode==='challenge'?7:4) : 3;
   return s.mode==='challenge'?6:3;
 }
-function roundMaximum(s) { return activeGame==='market' && s.mode==='challenge' ? 3 : 2; }
+function roundMaximum(s) {
+  if(s.campaign) return activeGame==='escape'?2:activeGame==='market'?4:3;
+  return activeGame==='market' && s.mode==='challenge' ? 3 : 2;
+}
 function validSession(value) {
   return value && ['practice','challenge'].includes(value.mode) && Number.isInteger(value.round) &&
     value.round>=0 && value.round<roundCount(value) && Array.isArray(value.history) && Number.isInteger(value.seed);
@@ -261,7 +266,8 @@ function simulationSnapshot() {
   const form = root.querySelector('#game-turn');
   const data = !form ? {} : s.feedback ? (s.draft ?? {}) : Object.fromEntries(new FormData(form));
   const common = {phase:!state?'intro':s.finished?'finished':'playing',round:s.round+1,total:roundCount(s),
-    committed:Boolean(s.feedback)};
+    committed:Boolean(s.feedback), campaign:campaignScene(activeGame,s,data),
+    history:s.history.map(row=>row.points), maximum:roundMaximum(s)};
   if (activeGame==='island') {
     const m=islandModel(s), assigned=integer(data.workers??Math.floor(m.workers/2),0,m.workers);
     return {...common,...m,assigned,crops:assigned*m.crop,tools:(m.workers-assigned)*m.tool};
@@ -294,8 +300,9 @@ function renderGameContent() {
     root.innerHTML='<div class="hero"><h1>Economics Games</h1><p>Run an island, move markets and solve economic puzzles using fictional scenarios.</p></div><div class="grid">'+
       Object.entries(games).map(([slug,[name,,description,tag]])=>{
         const best=load(slug+'-best',null);
+        const campaignBest=load(slug+'-campaign-best',null);
         return '<article class="card"><h2>'+name+'</h2><p>'+description+
-          '</p><p><small>Syllabus '+tag+' · Practice or challenge<br>Best: '+(best===null?'—':best+'%')+
+          '</p><p><small>Syllabus '+tag+' · Practice, Challenge or Campaign<br>Best: '+(best===null?'—':best+'%')+' · Campaign: '+(campaignBest===null?'—':campaignBest+'%')+
           '</small></p>'+link('Play '+name,'#games/'+slug)+'</article>';
       }).join('')+'</div>';
     return;
@@ -305,8 +312,8 @@ function renderGameContent() {
   const title='<div class="actions">'+link('All simulations','#games')+'</div><header class="hero"><h1>'+name+'</h1><p>'+description+'</p></header>';
   const status='<p id="storage-status" role="status"></p>';
   if (!state) {
-    root.innerHTML=title+'<section class="panel"><h2>How to play</h2><p>'+engine.help+'</p><p>Syllabus '+tag+'</p>'+
-      '<form id="game-start">'+select('mode','Mode',[['practice','Practice · 3–5 minutes'],['challenge','Challenge · more rounds']])+
+    root.innerHTML=title+'<section class="panel"><h2>How to play</h2><p>'+engine.help+'</p><p>Syllabus '+tag+'</p><p><strong>Campaign</strong> · '+campaignBriefs[activeGame]+'</p>'+
+      '<form id="game-start">'+select('mode','Mode',[['practice','Practice · 3–5 minutes'],['challenge','Challenge · more rounds'],['campaign','Campaign · advanced decisions']])+
       (activeGame==='escape'?select('unit','Room pack',[['mixed','Mixed review'],...topics.map((topic,index)=>[index,topic])]):'')+
       '<div class="actions"><button class="primary">Start new game</button>'+
       (validSession(savedSession)?'<button type="button" id="game-continue">Continue session</button>':'')+'</div></form></section>'+status;
@@ -321,7 +328,7 @@ function renderGameContent() {
   }
   root.innerHTML=title+'<div class="stats"><span>Round '+(state.round+1)+' of '+roundCount(state)+'</span><span>'+
     state.history.reduce((n,row)=>n+row.points,0)+' game points</span></div><section class="panel"><details><summary>Help</summary><p>'+engine.help+
-    '</p></details><form id="game-turn"><fieldset '+(state.feedback?'disabled':'')+'><legend>Your decision</legend>'+engine.render(state)+
+    '</p></details><form id="game-turn"><fieldset '+(state.feedback?'disabled':'')+'><legend>Your decision</legend>'+engine.render(state)+campaignControls(activeGame,state)+
     '</fieldset><button class="primary" '+(state.feedback?'hidden':'')+'>'+(activeGame==='escape'?'Try the lock':'Confirm decision')+
     '</button></form>'+(state.feedback?'<div class="feedback" role="status"><strong>'+state.feedback.points+' of '+roundMaximum(state)+
       ' game points</strong><p>'+escape(state.feedback.explanation)+'</p></div><div class="actions">'+
@@ -347,11 +354,11 @@ root.addEventListener('submit',event=>{
   event.preventDefault();
   const data=Object.fromEntries(new FormData(event.target));
   if(event.target.id==='game-start'){
-    state={mode:data.mode,unit:data.unit??'mixed',round:0,seed:Math.floor(Math.random()*6),history:[],economy:[5,7,1,-2,50],balance:0};
+    state={mode:data.mode==='campaign'?'challenge':data.mode,campaign:data.mode==='campaign',unit:data.unit??'mixed',round:0,seed:Math.floor(Math.random()*6),history:[],economy:[5,7,1,-2,50],balance:0};
   }else{
     state.draft=data;
-    state.before={economy:state.economy,balance:state.balance,pending:state.pending??null};
-    state.feedback=engines[activeGame].judge(data,state);
+    state.before={economy:state.economy,balance:state.balance,pending:state.pending??null,projects:state.projects??null};
+    state.feedback=campaignJudge(activeGame,data,state);
   }
   render();
   save(activeGame,state);
@@ -378,7 +385,8 @@ root.addEventListener('click',event=>{
       if(state.round===roundCount(state)){
         state.finished=true;
         const score=Math.round(100*state.history.reduce((n,row)=>n+row.points,0)/(state.round*roundMaximum(state)));
-        save(activeGame+'-best',Math.max(score,load(activeGame+'-best',0)));
+        const scoreKey=activeGame+(state.campaign?'-campaign-best':'-best');
+        save(scoreKey,Math.max(score,load(scoreKey,0)));
       }
       break;
     }
