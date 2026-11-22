@@ -313,15 +313,58 @@ function setupRevisionWriting(id) {
 }
 
 const revisionMockModes = { p1: 60, p2: 120 };
+const legacyMockTopics = [
+  ['2.4','1.2','3.5','2.5','3.5','2.10'], ['2.10','2.2','2.5','2.10'],
+  ['4.6','4.2','4.6','4.6'], ['3.5','3.5','3.6','3.7'], ['6.3','6.3','4.7','6.2']
+];
+const legacyMockGroups = revisionPaper2.map((group, index) => ({
+  ...group,
+  parts: group.parts.map(([marks,prompt,scheme],part) => ({
+    marks, prompt, scheme, topic:legacyMockTopics[index][part], diagram:index === 0 && part === 3
+  }))
+}));
+
+function revisionPaper2Groups(paper) {
+  return paper ? numberedPaper2[paper - 1] : legacyMockGroups;
+}
+
+function revisionPaper2Id(paper, group, part) {
+  return (paper ? 'mock-p2-' + paper + '-' : 'mock-') + group + '-' + part;
+}
+
+function revisionQuestion(id) {
+  return numberedPaper1.find(id);
+}
+
+function revisionMockLabel(mode, paper) {
+  return 'Paper ' + (mode === 'p1' ? '1' : '2') + (paper ? ' · Mock ' + pad(paper) : '');
+}
+
+function revisionMockPicker(mode, title, timing, original) {
+  const options = Array.from({length:mockPaperCount}, (_, index) =>
+    '<option value="' + (index + 1) + '">Mock ' + pad(index + 1) + '</option>').join('');
+  return '<form class="revision-mock-picker" data-revision-mock="' + mode + '"><h3>' + title + '</h3><p>' + timing +
+    '</p><label class="field">Choose a paper<select name="paper">' + options + '<option value="0">' + original +
+    '</option></select></label><button class="primary">Start ' + title + '</button></form>';
+}
+
+function mockDataTable({caption, headers, rows}) {
+  return '<div class="mock-data-scroll"><table class="mock-data"><caption>' + escapeHtml(caption) + '</caption><thead><tr>' +
+    headers.map(value => '<th scope="col">' + escapeHtml(value) + '</th>').join('') +
+    '</tr></thead><tbody>' + rows.map(([heading,...values]) => '<tr><th scope="row">' + escapeHtml(heading) + '</th>' +
+      values.map(value => '<td>' + escapeHtml(String(value)) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+}
 
 function revisionTest() {
   const state = revisionState('test', null);
   if (state) return revisionAttempt(state);
   return revisionHeading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
     link('View mock exam history', '#revision-history') +
-    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Paper 1 uses 40 questions selected from the EcBiz bank. Paper 2 uses an original case and four structured choices.</p>' +
-    '<div class="revision-mock-options"><button type="button" data-revision-mock="p1"><strong>Paper 1</strong><span>40 marks · 60 minutes</span></button>' +
-    '<button type="button" data-revision-mock="p2"><strong>Paper 2</strong><span>80 marks · 120 minutes</span></button></div></section>' +
+    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Choose from 50 numbered mocks for each paper. Paper 2 answers are marked by the local AI after submission.</p>' +
+    '<div class="mock-picker-grid">' +
+    revisionMockPicker('p1', 'Paper 1', '40 marks · 60 minutes', 'Original · Random selection') +
+    revisionMockPicker('p2', 'Paper 2', '80 marks · 120 minutes', 'Original · Water and farming in Ardin') +
+    '</div></section>' +
     '<form class="panel" id="revision-test-builder"><h2>Custom practice</h2><div class="row">' +
     '<label class="field">Topic<select name="topic"><option value="">All topics</option>' +
     revisionLab.topics.map(topic => '<option value="' + topic.code + '">' + escapeHtml(topic.title) + '</option>').join('') +
@@ -335,8 +378,8 @@ const pendingRevisionTests = new Map();
 
 function revisionWrittenItems(state) {
   if (state.mode === 'p2') {
-    return revisionPaper2.flatMap((group, index) => index === 0 || state.selection.includes(index)
-      ? group.parts.map(([marks], part) => ({ key: index + '-' + part, id: 'mock-' + index + '-' + part, marks }))
+    return revisionPaper2Groups(state.paper).flatMap((group, index) => index === 0 || state.selection.includes(index)
+      ? group.parts.map(({marks,topic}, part) => ({key:index + '-' + part, id:revisionPaper2Id(state.paper,index,part), marks, topic}))
       : []);
   }
   return state.ids.map(id => questions.find(question => question.id === id))
@@ -351,6 +394,8 @@ function markRevisionTest(state, status, retry) {
   const attemptId = state.attemptId;
   status.textContent = 'Marking ' + items.length + ' written answers…';
   retry.hidden = true;
+  const reset = status.ownerDocument.querySelector('#revision-test-reset');
+  reset.disabled = true;
 
   if (!pendingRevisionTests.has(attemptId)) {
     const run = async () => {
@@ -358,9 +403,14 @@ function markRevisionTest(state, status, retry) {
       let markingError;
       async function worker() {
         while (next < items.length) {
+          if (revisionState('test', null)?.attemptId !== attemptId) return;
           const { key, id } = items[next++];
+          const progress = 'Marking answer ' + next + ' of ' + items.length + '.';
+          if (status.isConnected) status.textContent = progress;
           try {
-            const grade = await ecbizMarking.grade(id, state.answers[key]?.trim() || '', state.images?.[key]);
+            const grade = await ecbizMarking.grade(id, state.answers[key]?.trim() || '', state.images?.[key], message => {
+              if (status.isConnected) status.textContent = progress + ' ' + message;
+            });
             const current = revisionState('test', null);
             if (!current || current.attemptId !== attemptId) return;
             current.grades = { ...current.grades, [key]: grade };
@@ -378,8 +428,9 @@ function markRevisionTest(state, status, retry) {
   }
   pendingRevisionTests.get(attemptId).then(markingError => {
     if (!status.isConnected) return;
+    reset.disabled = false;
     const latest = revisionState('test', null);
-    if (!latest) return;
+    if (latest?.attemptId !== attemptId) return;
     if (items.some(({ key }) => latest.grades?.[key])) {
       render(false);
       if (markingError && document.querySelector('#revision-test-retry')) {
@@ -395,8 +446,8 @@ function markRevisionTest(state, status, retry) {
 function revisionAttempt(state) {
   const review = state.finished;
   const mock2 = state.mode === 'p2';
-  const groups = mock2 ? revisionPaper2.map((group, index) => ({...group, index})) : [];
-  const bank = state.ids.map(id => questions.find(question => question.id === id)).filter(Boolean);
+  const groups = mock2 ? revisionPaper2Groups(state.paper).map((group, index) => ({...group, index})) : [];
+  const bank = state.ids.map(revisionQuestion).filter(Boolean);
   const selected = mock2 ? groups.filter(group => group.index === 0 || state.selection.includes(group.index)) : [];
   const score = bank.filter(q => q.options && state.answers[q.id] === String(q.answer)).length;
   const marks = mock2 ? 80 : bank.reduce((total, question) => total + question.marks, 0);
@@ -404,7 +455,7 @@ function revisionAttempt(state) {
   const isPending = key => !state.grades?.[key] && (state.answers[key]?.trim() || state.images?.[key]);
   const pending = written.filter(({ key }) => isPending(key)).length;
   const earned = score + written.reduce((total, { key }) => total + (state.grades?.[key]?.score ?? 0), 0);
-  const writtenFeedback = (key, max, scheme) => {
+  const writtenFeedback = (key, max, scheme, model, diagram) => {
     if (!review) return '';
     const grade = state.grades?.[key];
     const outcome = grade ? (grade.score === max ? 'correct' : grade.score === 0 ? 'incorrect' : 'partial') :
@@ -412,7 +463,8 @@ function revisionAttempt(state) {
     const label = outcome === 'correct' ? 'Full credit' : outcome === 'incorrect' ? 'No credit' : undefined;
     return '<div class="feedback"' + (outcome ? ' data-outcome="' + outcome + '"' : '') + '>' +
       (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>Awaiting marking.</p>' :
-        ecbizMarking.feedback(grade ?? ecbizMarking.blank, max, state.answers[key]) + ecbizMarking.scheme({ scheme })) + '</div>';
+        ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key]) +
+        ecbizMarking.scheme({scheme})) + '</div>';
   };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';
@@ -431,28 +483,34 @@ function revisionAttempt(state) {
   };
   const body = mock2 ? (review ? selected : groups).map(group => {
     const active = group.index === 0 || state.selection.includes(group.index);
-    return '<section class="panel"><h2>' + escapeHtml(group.title) + '</h2><p>' + escapeHtml(group.stimulus) + '</p>' +
+    return '<section class="panel"><h2>' + escapeHtml(group.title) + '</h2>' +
+      (group.simulated ? '<p class="muted">Practice scenario. Data are simulated.</p>' : '') +
+      group.stimulus.split('\n\n').map(paragraph => '<p>' + escapeHtml(paragraph) + '</p>').join('') +
+      (group.tables ?? []).map(mockDataTable).join('') +
       (!review && group.index ? '<label class="choice"><input type="checkbox" data-section="' + group.index + '"' +
         (active ? ' checked' : '') + '> Answer this question</label>' : '') +
       '<fieldset' + (active ? '' : ' hidden disabled') + '><legend>Question ' + (group.index + 1) + '</legend>' +
-      group.parts.map(([points, prompt, guide], part) => {
+      group.parts.map(({marks:points, prompt, scheme, model, diagram}, part) => {
         const key = group.index + '-' + part;
         return '<p><strong>' + String.fromCharCode(97 + part) + '.</strong> ' + escapeHtml(prompt) + ' [' + points + ']</p>' +
-          (group.index === 0 && part === 3 ? (review
+          (diagram ? (review
             ? (state.images?.[key] ? '<p>Submitted diagram</p><img style="max-width:100%" alt="Your submitted diagram" src="' + escapeHtml(state.images[key]) + '">' : '')
-            : '<label class="field">Upload a photo of your diagram<input type="file" accept="image/png,image/jpeg,image/webp" id="revision-diagram" aria-describedby="revision-diagram-status"></label><p id="revision-diagram-status" role="status">' +
+            : '<label class="field">Upload a photo of your diagram<input type="file" accept="image/png,image/jpeg,image/webp" data-mock-diagram="' +
+              key + '" aria-describedby="revision-diagram-status-' + key + '"></label><p id="revision-diagram-status-' + key + '" role="status">' +
               (state.images?.[key] ? 'Diagram saved with your answer.' : '') + '</p>') : '') +
-          input(key, state.answers[key]) + writtenFeedback(key, points, guide);
+          input(key, state.answers[key]) + writtenFeedback(key, points, scheme, model, diagram);
       }).join('') + '</fieldset></section>';
   }).join('') : bank.map((question, index) =>
     '<section class="panel"><h2>' + (index + 1) + '. ' + escapeHtml(question.q) + ' [' + question.marks + ']</h2>' +
     (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') +
+    (question.graph ? mockQuestionFigure(question.graph) : '') +
     (question.options ? multipleChoice(question) :
       input(question.id, state.answers[question.id]) + writtenFeedback(question.id, question.marks, question.scheme)) +
     '</section>').join('');
-  const title = state.mode === 'p1' ? 'EcBiz Paper 1 mock' : mock2 ? 'EcBiz Paper 2 mock' : 'Custom practice test';
+  const title = state.mode === 'custom' ? 'Custom practice test' :
+    (state.paper ? revisionMockLabel(state.mode, state.paper) : 'EcBiz ' + revisionMockLabel(state.mode) + ' mock');
   return revisionHeading('Original EcBiz practice', title, marks + ' marks' + (review ? (pending ? ' · ' + pending + ' awaiting marking' : ' · Score ' + earned + '/' + marks) : '')) +
-    (mock2 ? '<p>Answer all of Section A and choose three Section B questions.</p>' : '') +
+    (mock2 ? '<p>Use the source to answer all of Section A. Choose three questions in Section B.</p>' : '') +
     (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
     (review ? '<button id="revision-test-reset" type="button">Build another test</button> ' +
       link('View mock exam history', '#revision-history') +
@@ -464,17 +522,19 @@ function revisionAttempt(state) {
 
 function setupRevisionTest(_id, autoMark = true) {
   const builder = document.querySelector('#revision-test-builder');
-  function start(mode, pool, count, minutes) {
+  function start(mode, pool, count, minutes, paper = 0) {
     if (pool.length < count) {
       document.querySelector('#revision-save-status').textContent = 'Only ' + pool.length + ' questions match these options.';
       return;
     }
-    const shuffled = [...pool];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    const ordered = [...pool];
+    if (!paper) {
+      for (let i = ordered.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [ordered[i], ordered[j]] = [ordered[j], ordered[i]];
+      }
     }
-    const state = { mode, attemptId: crypto.randomUUID(), ids: shuffled.slice(0, count).map(q => q.id), answers: {}, selection: [],
+    const state = { mode, paper, attemptId: crypto.randomUUID(), ids: ordered.slice(0, count).map(q => q.id), answers: {}, selection: [],
       deadline: minutes ? Date.now() + minutes * 60000 : null, finished: false };
     if (saveRevisionState('test', state)) render();
   }
@@ -486,9 +546,19 @@ function setupRevisionTest(_id, autoMark = true) {
         (!data.get('topic') || q.topic === data.get('topic')));
       start('custom', pool, Number(data.get('count')), Number(data.get('minutes')));
     };
-    document.querySelectorAll('[data-revision-mock]').forEach(button => button.onclick = () => {
-      const mode = button.dataset.revisionMock;
-      const mcqs = mode === 'p1' ? catalog.slice(0, 6).flatMap((_, chapter) => {
+    document.querySelectorAll('[data-revision-mock]').forEach(form => form.onsubmit = event => {
+      event.preventDefault();
+      const mode = form.dataset.revisionMock;
+      const paper = Number(new FormData(form).get('paper'));
+      if (mode === 'p2' || paper) {
+        try {
+          start(mode, mode === 'p1' ? numberedPaper1.get(paper) : [], mode === 'p1' ? 40 : 0, revisionMockModes[mode], paper);
+        } catch (error) {
+          document.querySelector('#revision-save-status').textContent = error.message;
+        }
+        return;
+      }
+      const mcqs = catalog.slice(0, 6).flatMap((_, chapter) => {
         const pool = questions.filter(q => q.options && q.c === chapter);
         const byTopic = new Map();
         for (const question of pool) {
@@ -501,8 +571,8 @@ function setupRevisionTest(_id, autoMark = true) {
         });
         const target = chapter < 4 ? 7 : 6;
         return Array.from({length: target}, (_, i) => queues[i % queues.length][Math.floor(i / queues.length)]);
-      }) : [];
-      start(mode, mcqs, mode === 'p1' ? 40 : 0, revisionMockModes[mode]);
+      });
+      start(mode, mcqs, 40, revisionMockModes[mode]);
     });
     return;
   }
@@ -529,12 +599,13 @@ function setupRevisionTest(_id, autoMark = true) {
     return;
   }
   const form = document.querySelector('#revision-attempt');
-  const diagram = form.querySelector('#revision-diagram');
+  const diagram = form.querySelector('[data-mock-diagram]');
   let loadingDiagram = false;
   if (diagram) diagram.onchange = async () => {
     const file = diagram.files[0];
     if (!file) return;
-    const status = form.querySelector('#revision-diagram-status');
+    const key = diagram.dataset.mockDiagram;
+    const status = form.querySelector('#revision-diagram-status-' + key);
     loadingDiagram = true;
     diagram.disabled = true;
     status.textContent = 'Preparing diagram…';
@@ -557,7 +628,7 @@ function setupRevisionTest(_id, autoMark = true) {
       const image = canvas.toDataURL('image/jpeg', 0.78);
       if (image.length > 530000) throw new Error('Choose a smaller or more tightly cropped image.');
       if (!form.isConnected) return;
-      const images = { ...state.images, '0-3': image };
+      const images = { ...state.images, [key]: image };
       if (saveRevisionState('test', { ...state, images })) {
         state.images = images;
         status.textContent = 'Diagram saved with your answer.';
@@ -577,9 +648,9 @@ function setupRevisionTest(_id, autoMark = true) {
     if (!saveRevisionState('test', submitted)) return;
     archiveMock(submitted);
     const mistakes = revisionState('mistakes', {});
-    const tested = new Set(state.ids);
-    for (const q of questions) {
-      if (!tested.has(q.id) || !q.options) continue;
+    for (const id of state.ids) {
+      const q = revisionQuestion(id);
+      if (!q?.options) continue;
       if (state.answers[q.id] === String(q.answer)) delete mistakes[q.id];
       else mistakes[q.id] = {text: q.q, href: '#revision-retry/' + q.id};
     }
@@ -629,11 +700,12 @@ function setupRevisionTest(_id, autoMark = true) {
 }
 
 function revisionRetry(id) {
-  const question = questions.find(q => q.id === id && q.options);
-  if (!question) return revisionMistakes();
+  const question = revisionQuestion(id);
+  if (!question?.options) return revisionMistakes();
   return link('← Mistakes log', '#revision-mistakes', 'text-link') +
     revisionHeading('Retry', 'Try the question again', escapeHtml(question.q)) +
-    '<form id="revision-retry-form" class="panel">' + (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') + question.options.map((option, index) =>
+    '<form id="revision-retry-form" class="panel">' + (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') +
+    (question.graph ? mockQuestionFigure(question.graph) : '') + question.options.map((option, index) =>
       '<label class="choice"><input type="radio" name="answer" value="' + index + '" required> ' +
       escapeHtml(option) + '</label>').join('') +
     '<button class="primary">Check answer</button><p class="feedback" role="status" hidden></p><p id="revision-save-status" role="status"></p></form>';
@@ -642,7 +714,7 @@ function revisionRetry(id) {
 function setupRevisionRetry(id) {
   const form = document.querySelector('#revision-retry-form');
   if (!form) return;
-  const question = questions.find(q => q.id === id);
+  const question = revisionQuestion(id);
   form.addEventListener('change', () => {
     paintAnswerChoices(form);
     const feedback = form.querySelector('.feedback');

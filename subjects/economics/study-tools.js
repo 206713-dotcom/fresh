@@ -4,20 +4,14 @@ const studyTopicName = code => officialSyllabusChapters.flatMap(chapter=>chapter
 
 function mockRows(state) {
   if (state.mode === 'p1') {
-    const bank = new Map(questions.filter(q => q.options).map(q => [q.id,q]));
     return state.ids.flatMap(id => {
-      const q = bank.get(id);
+      const q = revisionQuestion(id);
       return q ? [{topic:q.topic, max:1, score:Number(state.answers[id] === String(q.answer))}] : [];
     });
   }
-  const topics = [
-    ['2.4','1.2','3.5','2.5','3.5','2.10'], ['2.10','2.2','2.5','2.10'],
-    ['4.6','4.2','4.6','4.6'], ['3.5','3.5','3.6','3.7'], ['6.3','6.3','4.7','6.2']
-  ];
-  return revisionWrittenItems(state).map(({key,marks}) => {
-    const [group, part] = key.split('-').map(Number);
+  return revisionWrittenItems(state).map(({key,marks,topic}) => {
     const submitted = Boolean(state.answers[key]?.trim() || state.images?.[key]);
-    return {topic:topics[group][part],max:marks,score:state.grades?.[key]?.score ?? (submitted ? null : 0)};
+    return {topic,max:marks,score:state.grades?.[key]?.score ?? (submitted ? null : 0)};
   });
 }
 
@@ -31,8 +25,8 @@ function mockSummary(state) {
       else { item.earned += row.score; item.max += row.max; }
     }
   }
-  return {id:state.attemptId || 'previous-' + state.mode, mode:state.mode, at:state.completedAt ?? null,
-    score:rows.reduce((sum,r)=>sum+(r.score??0),0), max:rows.reduce((sum,r)=>sum+r.max,0),
+  return {id:state.attemptId || 'previous-' + state.mode, mode:state.mode, paper:state.paper, at:state.completedAt ?? null,
+    score:rows.reduce((sum,r)=>sum+(r.score??0),0), max:state.mode === 'p2' ? 80 : rows.reduce((sum,r)=>sum+r.max,0),
     pending:rows.filter(r=>r.score===null).reduce((sum,r)=>sum+r.max,0), topics, markTypes,
     ids:state.mode==='p1'?state.ids:[]};
 }
@@ -61,7 +55,7 @@ function mockHistoryView() {
       const score = row => row.earned + '/' + row.max + (row.pending ? ' · '+row.pending+' marks awaiting marking' : '');
       const date = item.at ? new Date(item.at).toLocaleString() : 'Earlier attempt';
       const summary = item.max===item.pending ? 'Awaiting marks' : item.score+'/'+(item.max-item.pending)+(item.pending?' marked so far':'');
-      return '<details class="panel mock-history-entry"><summary><strong>Paper '+(item.mode==='p1'?1:2)+'</strong> · '+
+      return '<details class="panel mock-history-entry"><summary><strong>'+revisionMockLabel(item.mode,item.paper)+'</strong> · '+
         escapeHtml(date)+' · '+summary+(item.pending?' · '+item.pending+' marks pending':'')+
         '</summary><h2>Marks by topic</h2><ul>'+topicRows.map(([code,row])=>'<li>'+escapeHtml(studyTopicName(code))+' · '+score(row)+' '+
           link('Practise this topic','#practice/topic/'+code,'text-link')+'</li>').join('')+

@@ -806,6 +806,7 @@ function isDevelopedModelDiscussion(response) {
 }
 
 function existingModelResponse(question) {
+  if (question.model) return question.model;
   const examples = question.marks === 8 ? developedDiscussions : extendedModelResponses;
   const match = examples.find(([prompt, scheme]) => prompt.test(question.prompt) && scheme.test(question.scheme));
   if (match) return match[2];
