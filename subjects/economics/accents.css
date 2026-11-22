@@ -1,0 +1,165 @@
+/* EcBiz accents supplement the Ocean palette. Assessment colours remain separate. */
+[data-chapter-colour="0"],
+.overview-personal .checklist-callout,
+.economics-links [data-section="revision-checklist"],
+.revision-tool-card[href="#revision-topics"],
+.revision-workspace[data-tool="revision-checklist"] {
+  --accent-ink: #145b49;
+  --accent-line: #348f74;
+  --accent-fill: #cff3e4;
+  --accent-wash: #f0fbf6;
+}
+
+[data-chapter-colour="1"],
+.overview-exam-grid .overview-card[href="#practice/mcq"],
+.economics-links [data-section="practice"],
+.revision-workspace[data-tool="revision-test"],
+.revision-tool-card[href="#revision-test"],
+.practice-heading {
+  --accent-ink: #1a4989;
+  --accent-line: #4179c5;
+  --accent-fill: #cfe5ff;
+  --accent-wash: #f0f7ff;
+}
+
+[data-chapter-colour="2"],
+.overview-revision-grid .overview-card[href="#flashcards"],
+.economics-links [data-section="flashcards"],
+.revision-workspace[data-tool="revision-diagrams"],
+.revision-tool-card[href="#revision-diagrams"],
+.card-art {
+  --accent-ink: #58358d;
+  --accent-line: #8155b7;
+  --accent-fill: #e5d8fd;
+  --accent-wash: #f8f4ff;
+}
+
+[data-chapter-colour="3"],
+.overview-exam-grid .overview-card[href="#practice/structured"],
+.revision-workspace[data-tool="revision-papers"],
+.revision-tool-card[href="#revision-papers"] {
+  --accent-ink: #70460c;
+  --accent-line: #a67223;
+  --accent-fill: #ffe4ae;
+  --accent-wash: #fff8ea;
+}
+
+[data-chapter-colour="4"],
+.overview-revision-grid .overview-card[href="#library"],
+.economics-links [data-section="library"],
+.notes-art {
+  --accent-ink: #125565;
+  --accent-line: #2b8495;
+  --accent-fill: #cceef1;
+  --accent-wash: #effafa;
+}
+
+[data-chapter-colour="5"],
+.overview-revision-grid .overview-card[href="#revision"],
+.economics-links [data-section="revision"],
+.revision-workspace[data-tool="revision-writing"],
+.revision-tool-card[href="#revision-writing"] {
+  --accent-ink: #823b2c;
+  --accent-line: #b55b48;
+  --accent-fill: #ffded2;
+  --accent-wash: #fff4ed;
+}
+
+[data-chapter-colour="6"],
+.overview-personal .progress-overview-link,
+.economics-links [data-section="progress"],
+.revision-workspace[data-tool="revision-history"],
+.revision-tool-card[href="#revision-mistakes"] {
+  --accent-ink: #80355d;
+  --accent-line: #ad5c83;
+  --accent-fill: #f8d9ea;
+  --accent-wash: #fff4fa;
+}
+
+.economics-hero {
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 52px);
+  margin-block-end: 1.4rem;
+  background:
+    radial-gradient(ellipse at 96% 0%, #c9e4ff 0%, transparent 58%),
+    radial-gradient(ellipse at 3% 98%, #cdf3e4 0%, transparent 58%),
+    #eef7fb;
+}
+.economics-hero .hero-study-plan {
+  background: linear-gradient(145deg, #142f43 20%, #18554f 100%);
+}
+.economics-hero .hero-study-plan > a:nth-of-type(2) .focus-icon { background: #365582; color: #e0edff; }
+.economics-hero .hero-study-plan > a:nth-of-type(3) .focus-icon { background: #5a4a72; color: #f5e6ff; }
+.economics-hero .hero-facts { border-color: #a5c9d6; }
+
+.economics-links a[aria-current='page'] {
+  color: var(--accent-ink, #145b49);
+  background: var(--accent-fill, #cff3e4);
+  box-shadow: inset 0 -3px var(--accent-line, #348f74);
+}
+
+main .overview-section .overview-card, main .overview-personal > a:is(:first-child,.checklist-callout), main .revision-tool-card,
+main .tile, main .chapter-cover, main .deck-cover {
+  background: linear-gradient(140deg, var(--accent-fill, #cff3e4), var(--accent-wash, #f0fbf6) 72%);
+  border-color: var(--accent-line, #348f74);
+}
+main .overview-card, main .revision-tool-card, main .chapter-cover {
+  border-block-start-width: .28rem;
+}
+main .overview-section .overview-card:hover, main .overview-personal > a:is(:first-child,.checklist-callout):hover, main .revision-tool-card:hover,
+main .tile:hover, main .chapter-cover:hover, main .deck-cover:hover {
+  border-color: var(--accent-ink, #145b49);
+  box-shadow: 0 8px 20px #142f431b;
+}
+main .overview-section .overview-card[href] .overview-icon,
+main .overview-exam-grid .overview-card:nth-child(2) .overview-icon,
+main .overview-personal .overview-icon,
+main .tile .icon, main .chapter-cover .cover-number,
+main .revision-tool-card .revision-tool-icon, main .deck-cover-icon {
+  background: var(--accent-ink, #145b49);
+  color: #fff;
+}
+
+main .overview-card .overview-card-copy span,
+main .overview-personal .overview-card-copy span,
+main .chapter-cover small, main .chapter-cover .cover-bottom,
+main .tile small, main .deck-cover > small, main .deck-cover > div,
+main .revision-tool-card p, main .practice-heading .muted,
+main .lesson-heading[data-chapter-colour] > p:last-child { color: #425664; }
+
+main .lesson-heading[data-chapter-colour], main .practice-heading {
+  border: 1px solid var(--accent-line);
+  border-inline-start-width: .35rem;
+  border-radius: 18px;
+  background: linear-gradient(120deg, var(--accent-fill), var(--accent-wash));
+  padding: clamp(18px, 3vw, 36px);
+}
+main .lesson-heading[data-chapter-colour] .eyebrow { background: #fff; color: var(--accent-ink); }
+main .deck-chapter .chapter-tag { background: var(--accent-fill); color: var(--accent-ink); padding: .22rem .42rem; border-radius: .5rem; }
+main .study-art {
+  background: radial-gradient(circle at 80% 20%, var(--accent-wash), var(--accent-fill) 62%);
+  border-color: var(--accent-line);
+}
+main .study-art .sheet-back { background: var(--accent-fill); border-color: var(--accent-line); }
+
+main .revision-hero {
+  background: linear-gradient(120deg, #142f43 25%, #2a4971 68%, #2c655f);
+}
+main .revision-workspace .revision-heading {
+  background: linear-gradient(115deg, #142f43 25%, var(--accent-ink, #145b49));
+}
+main .revision-workspace .revision-workspace-icon {
+  background: var(--accent-fill, #cff3e4);
+  color: var(--accent-ink, #145b49);
+}
+main .progress-stat:nth-child(1) { background: #e6eefc; border-color: #4179c5; }
+main .progress-stat:nth-child(2) { background: #e2f5ea; border-color: #348f74; }
+main .progress-stat:nth-child(3) { background: #eee4fd; border-color: #8155b7; }
+
+@media (max-width: 440px) {
+  .economics-hero { padding: 19px; }
+  .economics-hero h1 { font-size: clamp(2.2rem, 11vw, 3rem); overflow-wrap: anywhere; }
+}
+@media (forced-colors: active) {
+  .economics-links a[aria-current='page'] { outline: 2px solid Highlight; outline-offset: -3px; }
+}
