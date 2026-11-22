@@ -340,12 +340,18 @@ function revisionMockLabel(mode, paper) {
   return 'Paper ' + (mode === 'p1' ? '1' : '2') + (paper ? ' · Mock ' + pad(paper) : '');
 }
 
-function revisionMockPicker(mode, title, timing, original) {
-  const options = Array.from({length:mockPaperCount}, (_, index) =>
-    '<option value="' + (index + 1) + '">Mock ' + pad(index + 1) + '</option>').join('');
-  return '<form class="revision-mock-picker" data-revision-mock="' + mode + '"><h3>' + title + '</h3><p>' + timing +
-    '</p><label class="field">Choose a paper<select name="paper">' + options + '<option value="0">' + original +
-    '</option></select></label><button class="primary">Start ' + title + '</button></form>';
+function revisionMockPicker(mode, title, timing, original, completed) {
+  const remaining = Array.from({length:mockPaperCount}, (_, index) => index + 1)
+    .filter(paper => !completed.has(fixedMockKey({mode, paper})));
+  const header = '<h3>' + title + '</h3><p>' + timing + '</p><p>' + (remaining.length
+    ? remaining.length + ' of ' + mockPaperCount + ' numbered mocks remaining.'
+    : 'All ' + mockPaperCount + ' numbered mocks completed.') + '</p>';
+  const options = remaining.map(paper => '<option value="' + paper + '">Mock ' + pad(paper) + '</option>');
+  if (!completed.has(fixedMockKey({mode, paper:0}))) options.push('<option value="0">' + original + '</option>');
+  if (!options.length) return '<section class="revision-mock-picker">' + header + '</section>';
+  return '<form class="revision-mock-picker" data-revision-mock="' + mode + '">' + header +
+    '<label class="field">Choose a paper<select name="paper">' + options.join('') +
+    '</select></label><button class="primary">Start ' + title + '</button></form>';
 }
 
 function mockDataTable({caption, headers, rows}) {
@@ -358,12 +364,14 @@ function mockDataTable({caption, headers, rows}) {
 function revisionTest() {
   const state = revisionState('test', null);
   if (state) return revisionAttempt(state);
+  const completed = completedFixedMocks();
   return revisionHeading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
     link('View mock exam history', '#revision-history') +
-    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Choose from 50 numbered mocks for each paper. Paper 2 answers are marked by the local AI after submission.</p>' +
+    '<p id="revision-save-status" role="status"></p>' +
+    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Completed mocks appear in Mock Exam History. Paper 2 answers are marked by the local AI after submission.</p>' +
     '<div class="mock-picker-grid">' +
-    revisionMockPicker('p1', 'Paper 1', '40 marks · 60 minutes', 'Original · Random selection') +
-    revisionMockPicker('p2', 'Paper 2', '80 marks · 120 minutes', 'Original · Water and farming in Ardin') +
+    revisionMockPicker('p1', 'Paper 1', '40 marks · 60 minutes', 'Original · Random selection', completed) +
+    revisionMockPicker('p2', 'Paper 2', '80 marks · 120 minutes', 'Original · Water and farming in Ardin', completed) +
     '</div></section>' +
     '<form class="panel" id="revision-test-builder"><h2>Custom practice</h2><div class="row">' +
     '<label class="field">Topic<select name="topic"><option value="">All topics</option>' +
@@ -371,7 +379,7 @@ function revisionTest() {
     '</select></label><label class="field">Format<select name="format"><option value="mcq">Multiple choice</option><option value="written">Structured</option></select></label>' +
     '<label class="field">Questions<input name="count" type="number" min="1" max="40" value="10" required></label>' +
     '<label class="field">Minutes (0 for untimed)<input name="minutes" type="number" min="0" max="180" value="0" required></label></div>' +
-    '<button class="primary">Start test</button><p id="revision-save-status" role="status"></p></form></div>';
+    '<button class="primary">Start test</button></form></div>';
 }
 
 const pendingRevisionTests = new Map();
@@ -550,6 +558,15 @@ function setupRevisionTest(_id, autoMark = true) {
       event.preventDefault();
       const mode = form.dataset.revisionMock;
       const paper = Number(new FormData(form).get('paper'));
+      if (revisionState('test', null)) {
+        render();
+        return;
+      }
+      if (completedFixedMocks().has(fixedMockKey({mode, paper}))) {
+        render();
+        document.querySelector('#revision-save-status').textContent = 'This mock is already complete. Choose another paper.';
+        return;
+      }
       if (mode === 'p2' || paper) {
         try {
           start(mode, mode === 'p1' ? numberedPaper1.get(paper) : [], mode === 'p1' ? 40 : 0, revisionMockModes[mode], paper);

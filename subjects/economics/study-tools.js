@@ -31,24 +31,44 @@ function mockSummary(state) {
     ids:state.mode==='p1'?state.ids:[]};
 }
 
+function fixedMockKey({mode, paper}) {
+  if ((mode === 'p1' || mode === 'p2') && paper > 0) return mode + '-' + paper;
+  return mode === 'p2' ? 'p2-original' : null;
+}
+
+function retainMockHistory(history) {
+  // Keep the 30 most recent attempts plus the latest result for every fixed paper.
+  const seen = new Set();
+  return history.filter((item, index) => {
+    const key = fixedMockKey(item);
+    const firstForPaper = key && !seen.has(key);
+    if (key) seen.add(key);
+    return index < 30 || firstForPaper;
+  });
+}
+
+function completedFixedMocks() {
+  return new Set(mockHistory().map(fixedMockKey).filter(Boolean));
+}
+
 function mockHistory() {
   const history = revisionState('mock-history', []);
   const current = revisionState('test', null);
   const saved = Array.isArray(history) ? history : [];
   if (!current?.finished || !['p1','p2'].includes(current.mode)) return saved;
   const snapshot = mockSummary(current);
-  return [snapshot,...saved.filter(item=>item.id!==snapshot.id)].slice(0,30);
+  return retainMockHistory([snapshot, ...saved.filter(item => item.id !== snapshot.id)]);
 }
 
 function archiveMock(state) {
   if (!state?.finished || !['p1','p2'].includes(state.mode)) return true;
   const snapshot = mockSummary(state);
-  return saveRevisionState('mock-history',[snapshot,...mockHistory().filter(item=>item.id!==snapshot.id)].slice(0,30));
+  return saveRevisionState('mock-history', retainMockHistory([snapshot, ...mockHistory().filter(item => item.id !== snapshot.id)]));
 }
 
 function mockHistoryView() {
   const history = mockHistory();
-  return revisionHeading('Exam practice','Mock exam history','Review your last 30 submitted mocks saved in this browser.') +
+  return revisionHeading('Exam practice','Mock exam history','Review your submitted mocks saved in this browser.') +
     (history.length ? history.map(item => {
       const topicRows = Object.entries(item.topics).sort((a,b)=>(b[1].max-b[1].earned)-(a[1].max-a[1].earned));
       const types = Object.entries(item.markTypes).sort((a,b)=>Number(a[0])-Number(b[0]));
