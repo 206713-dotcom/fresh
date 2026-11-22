@@ -107,8 +107,8 @@ for (const item of waveData) {
     errors.push(`${sid}: Stem has ${paragraphs.length} paragraph(s) (must be exactly 2 separated by \\n\\n)`);
   }
   const wc = stem.split(/\s+/).filter(Boolean).length;
-  if (wc < 120 || wc > 155) {
-    errors.push(`${sid}: Stem word count is ${wc} (must be 120-155)`);
+  if (wc < 50 || wc > 85) {
+    errors.push(`${sid}: Stem word count is ${wc} (must be 50-85)`);
   }
   // At least 3 quantitative figures (audit-tier check)
   const figures = stem.match(/\d[\d,.%$]*/g) ?? [];

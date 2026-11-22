@@ -765,8 +765,7 @@ export function DailyQuickQuiz({
                                 aria-hidden="true"
                               />
                               <span>
-                                Incorrect option selected — added to Wrong Only. Get it right on{" "}
-                                {MASTERY_DAYS_REQUIRED} different days to remove it.
+                                Incorrect option selected — added to Wrong Only review bank.
                               </span>
                             </>
                           )}

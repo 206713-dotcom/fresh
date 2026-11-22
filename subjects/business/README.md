@@ -73,11 +73,11 @@ I want to be upfront about how this was actually built, because the person readi
 
 | What | How much | Where it lives |
 |---|---:|---|
-| MCQ drill bank | **6,000** questions (1,000 per section) | `src/lib/data/mcq-bank-section1..6.ts` |
-| Paper 1 scenarios | **1,200** (200 per section) | `src/lib/data/paper1-database.json` |
-| Paper 1 structured questions | **4,800** (1,200 each of 2, 4, 6 and 8 marks) | same |
-| Paper 2 case studies | **100** | `src/lib/data/paper2-database.json` |
-| Paper 2 structured questions | **800** (400 × 8-mark, 400 × 12-mark) | same |
+| MCQ drill bank | **12,000** questions (2,000 per section/unit) | `src/lib/data/mcq-bank-section1..6.ts` |
+| Paper 1 scenarios | **6,000** (1,000 per section) | `src/lib/data/paper1-database.json` |
+| Paper 1 structured questions | **24,000** (1,200 legacy sets at 2/4/6/8 = 4,800; 4,800 added sets at 2/2/6/6 = 19,200). Across all 6,000 sets: 10,800 × 2-mark, 1,200 × 4-mark, 10,800 × 6-mark, 1,200 × 8-mark | same |
+| Paper 2 case studies | **3,000** | `src/lib/data/paper2-database.json` |
+| Paper 2 structured questions | **24,000** (12,000 × 8-mark, 12,000 × 12-mark) | same |
 | Verified past-paper questions | **189** | `src/lib/data/verified-questions.ts` |
 | Verified past-paper case studies | **31** (20 Paper 1 scenarios, 11 Paper 2 cases) | `src/lib/data/verified-case-studies.ts` |
 | Interactive lessons | **24** across all six sections | `src/lib/data/interactive-lessons.ts` |
@@ -90,7 +90,7 @@ I want to be upfront about how this was actually built, because the person readi
 | Themes | **5** (2 free, 3 coin-unlocked) | `src/lib/themes.ts` |
 | Boss encounters | **6** | `src/components/BossBattleArena.tsx` |
 
-That is **6,000 multiple-choice questions**, **5,600 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
+That is **12,000 multiple-choice questions**, **48,000 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
 
 One honest caveat: the large practice banks were generated with AI (Gemini) using Cambridge model answers as the basis, then checked and edited by me. They are built to *match* the syllabus, not to be official material. The separate verified archive (see section 5 below) is the part of the app built from inspected Cambridge past papers.
 
@@ -113,7 +113,7 @@ Lessons are grouped by section, with per-section completion and an overall maste
 
 Progress, hint reveals, confidence ratings and the last opened lesson are stored locally and can be reset from the lesson header.
 
-### 2. Drill: the 6,000-question MCQ bank
+### 2. Drill: the 12,000-question MCQ bank
 
 The Quick Quiz is the fast, low-friction loop:
 
@@ -129,7 +129,7 @@ The quiz also includes a **Daily Blitz** and **Weekly Master** challenge. The pr
 
 ### 3. Write: the Paper 1 topical studio
 
-Paper 1 is where definitions and case application meet. The studio contains **1,200 scenario sets**, 200 per section, each with a full case and four structured parts:
+Paper 1 is where definitions and case application meet. The studio contains **6,000 scenario sets**, 1,000 per section, each with a full case and four structured parts:
 
 | Part | Marks | What it tests |
 |---|---:|---|
@@ -137,6 +137,8 @@ Paper 1 is where definitions and case application meet. The studio contains **1,
 | (b) | 4 | Knowledge plus application to the case |
 | (c) | 6 | Developed analysis in context |
 | (d) | 8 | Balanced evaluation with a justified judgement |
+
+The marks above are the shape of the original 1,200 legacy sets (a = 2, b = 4, c = 6, d = 8). The 4,800 sets added in the expansion use a slightly different split — a = 2, b = 2, c = 6, d = 6 — so both formats live in the studio and it is worth checking the mark value on the question itself.
 
 For every question you get:
 
@@ -154,7 +156,7 @@ Two-mark questions are a special case: they are pure knowledge. The engine force
 
 ### 4. Apply: the Paper 2 case-study simulator
 
-Paper 2 is a different skill: read an unseen business, use the appendices, and write under time pressure. The simulator includes **100 full case studies**, each with:
+Paper 2 is a different skill: read an unseen business, use the appendices, and write under time pressure. The simulator includes **3,000 full case studies**, each with:
 
 - a main case narrative;
 - **Appendix 1** — marketing and operations data;
@@ -162,7 +164,7 @@ Paper 2 is a different skill: read an unseen business, use the appendices, and w
 - **Appendix 3** — external environment and economic context;
 - four topic pairs, each containing one 8-mark and one 12-mark question.
 
-That is **800 questions** in total, split evenly between 8 and 12 marks. The 8-mark questions use band descriptors from "Basic" to "Maximum"; the 12-mark questions use the official Cambridge Level 3, Level 2, Level 1 and Level 0 descriptors with a supported recommendation at the top level.
+That is **24,000 questions** in total — twelve thousand 8-mark and twelve thousand 12-mark. The 8-mark questions use band descriptors from "Basic" to "Maximum"; the 12-mark questions use the official Cambridge Level 3, Level 2, Level 1 and Level 0 descriptors with a supported recommendation at the top level.
 
 For 12 marks, the result screen shows the Level badge, the mark out of 12 and short qualitative tags per paragraph ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It does not show an AO1–AO4 card grid or per-paragraph marks, because those would imply a points-based scheme that the question does not use. Numeric per-paragraph marks only appear on the 4-, 6- and 8-mark questions, where they are the correct model.
 
@@ -218,8 +220,8 @@ The question banks are the engine. The rest of the platform is the reason studen
 - **Avatar customiser** includes 7 skin tones and 15 options each for hair, tops, bottoms and shoes.
 - **Study Space** is a draggable focus widget with a Pomodoro timer, custom durations, ambient sound mixing and a "ghost mode" that keeps the numbers visible while fading the panel.
 - **Achievements** include 14 milestones for first submissions, context mastery, high marks, syllabus triage, focus sessions and glossary work.
-- **Boss Battle Arena** is a 2D canvas game with six business-themed bosses. It includes unit, subsection and focus filters (all subjects, wrong-only, definitions, calculations, application), spaced repetition that weights previously missed questions, armour tiers with real effects, extra lives, a shop with 9 character skins, 7 armour tiers up to Grandmaster Mantle, coin upgrades up to 100-ammo capacity, and distinct hair styles that render in-game. The top nav always has an **MCQ** entry for the 6,000-question drill.
-- **MCQ tab** in the top navigation opens the full 6,000-question drill bank instantly from any screen.
+- **Boss Battle Arena** is a 2D canvas game with six business-themed bosses. It includes unit, subsection and focus filters (all subjects, wrong-only, definitions, calculations, application), spaced repetition that weights previously missed questions, armour tiers with real effects, extra lives, a shop with 9 character skins, 7 armour tiers up to Grandmaster Mantle, coin upgrades up to 100-ammo capacity, and distinct hair styles that render in-game. The top nav always has an **MCQ** entry for the 12,000-question drill.
+- **MCQ tab** in the top navigation opens the full 12,000-question drill bank instantly from any screen.
 
 ### 9. Report issues from inside the app
 
@@ -589,6 +591,8 @@ EcBiz is a static site. It is hosted on **GitHub Pages** at [gisfresh.me/subject
 2. The build output (`index.html`, `Business.html`, `assets/`) is committed to the repo alongside the rest of Fresh.
 3. GitHub Pages serves it at `https://gisfresh.me/subjects/business/Business.html` with all assets resolved relatively (`./assets/…`) — no absolute paths, no Vercel dependency.
 
+One thing to watch when committing a rebuild: the build writes a new content-hashed `assets/main-*.js` each time. Stage the **new** hashed asset **and** the deletion of the old one, or `Business.html`/`index.html` will point to a file that is no longer there. The root-level assembled `dist/` is a local build artifact — GitHub Pages serves from the repo root, so `dist/` is not committed.
+
 ### Any static host
 
 Upload `subjects/business/` (or the parent Fresh repo). All asset references are relative (`./assets/…`) so it works under any path on any domain. Deep links like `?open=dashboard` work because the app reads query parameters, not browser routes.
@@ -606,12 +610,12 @@ EcBiz/
 │   ├── main.tsx                    # Study app and local progress migration
 │   ├── components/
 │   │   ├── PracticeStudio.tsx      # Paper 1 + verified archive + Paper 2 entry
-│   │   ├── Paper2PracticeView.tsx  # 100-case Paper 2 simulator
+│   │   ├── Paper2PracticeView.tsx  # 3,000-case Paper 2 simulator
 │   │   ├── MockExamMode.tsx        # Timed Paper 1 / Paper 2 mocks
 │   │   ├── InteractiveLessonsView.tsx
 │   │   ├── InteractiveLessonCard.tsx
 │   │   ├── WordDropExercise.tsx    # Drag-the-word gap fill
-│   │   ├── DailyQuickQuiz.tsx      # 6,000-question drill + wrong-only
+│   │   ├── DailyQuickQuiz.tsx      # 12,000-question drill + wrong-only
 │   │   ├── DailyWeeklyChallenge.tsx
 │   │   ├── BossBattleArena.tsx     # 2D canvas boss game
 │   │   ├── ProgressDashboard.tsx
@@ -678,7 +682,7 @@ The marking engine has real automated checks. `scripts/test-grading.ts` runs hea
 
 The checks are not decoration. Several of the fixes described above were caught by them rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the checks were what proved the displayed result still matched the rubric.
 
-To be honest about what is **not** covered yet: there are no automated checks for the Sheet sync conflict policy, the authentication helpers, or the integrity of the 7,000+ question records. Those are the remaining targets on the roadmap.
+To be honest about what is **not** covered yet: there are no automated checks for the Sheet sync conflict policy, the authentication helpers, or the integrity of the 21,000+ question records. Those are the remaining targets on the roadmap.
 
 ---
 
@@ -723,7 +727,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
 - [ ] Add exportable progress reports for teachers and parents.
 - [ ] Run a formal accessibility audit and close the gaps.
-- [ ] Add more Paper 2 case studies beyond the current 100.
+- [ ] Add more Paper 2 case studies beyond the current 3,000.
 - [ ] Improve the AI examiner's rubric awareness while keeping the coded marking rules.
 
 ---

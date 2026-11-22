@@ -1,5 +1,7 @@
 # 0264 Paper 2 — 400-Set Pipeline
 
+This describes the original 400-set wave pipeline. The shipped 0264 Paper 2 bank has since been expanded and verified to 3,000 case studies (24,000 questions, 80 marks each). For the current shipped figures, see `subjects/business/README.md`.
+
 Goal: 400 syllabus-compliant 80-mark Paper 2 Case Study sets for Cambridge IGCSE Business (0264), 2027–2029 syllabus, Waves 01–10 of 40 sets each.
 
 ## Directory layout

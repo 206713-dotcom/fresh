@@ -33,6 +33,9 @@ export interface Paper1ScenarioSet {
   scenario_id: string;
   unit: string;
   scenario_stem: string;
+  section?: string;
+  chapter?: string;
+  number?: string;
   questions: Paper1Question[];
 }
 
