@@ -120,16 +120,6 @@
 .revision-workspace .panel summary { cursor: pointer; }
 .revision-empty { padding: 18px; text-align: center; }
 .revision-spec { color: var(--tool-dark); font-weight: 700; }
-.revision-mock-options { display: grid; gap: 10px; }
-.revision-mock-options button {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  text-align: left;
-  background: var(--tool-soft);
-  color: var(--tool-dark);
-}
 #revision-test-builder .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
 #revision-attempt fieldset { min-width: 0; border: 1px solid #b8c9c2; border-radius: 10px; }
 #revision-attempt > button + button { margin-left: 8px; }
@@ -186,3 +176,46 @@
 .workbook-wording { white-space: pre-line; overflow-wrap: anywhere; }
 .workbook-ticks { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 4px 60px; font-size: 13px; }
 @media (max-width: 510px) { .workbook-ticks { margin-left: 0; } }
+
+.mock-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+}
+.revision-mock-picker {
+  padding: 1rem;
+  border: 1px solid var(--line, #bfcec9);
+  border-radius: 0.85rem;
+}
+.revision-mock-picker h3, .revision-mock-picker p { margin: 0 0 0.6rem; }
+.revision-mock-picker button { width: 100%; }
+.mock-data-scroll { overflow-x: auto; margin: 0.75rem 0 1rem; }
+.mock-data {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.mock-data caption { text-align: left; font-weight: 700; padding: 0.35rem 0; }
+.mock-data th, .mock-data td {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--line, #bfcec9);
+}
+.mock-data thead th { background: #eaf2f1; color: #142f43; }
+.mock-question-figure {
+  display: block;
+  width: min(100%, 28rem);
+  margin: 0.6rem auto;
+  color: #142f43;
+  background: #f8fbfb;
+  border: 1px solid #bfcec9;
+  border-radius: 0.75rem;
+}
+.mock-question-figure text { fill: currentColor; font-size: 13px; font-family: inherit; }
+.mock-question-figure circle { fill: currentColor; }
+.mock-question-figure line, .mock-question-figure polyline { fill: none; stroke-width: 1.5; }
+.mock-graph-axis { stroke: #142f43; }
+.mock-graph-guide { stroke: #727e87; stroke-dasharray: 3 4; }
+.mock-graph-control { stroke: #795125; stroke-dasharray: 5 3; }
+.mock-graph-capacity, .mock-graph-demand, .mock-graph-trend { stroke: #176592; }
+.mock-graph-supply { stroke: #237a64; }

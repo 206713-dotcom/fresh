@@ -5,16 +5,23 @@ const ecbizMarking = (() => {
     for (const { id, q, marks, case: context, scheme, note, options } of questions) {
       if (!options) banks.set(id, { prompt: q, marks, context, scheme, note });
     }
-    revisionPaper2.forEach(({ stimulus, parts }, group) => {
-      parts.forEach(([marks, prompt, scheme], part) => {
-        banks.set('mock-' + group + '-' + part, { prompt, marks, scheme, context: stimulus, diagram: group === 0 && part === 3 });
+    function registerMock(paper) {
+      revisionPaper2Groups(paper).forEach(({stimulus, tables, parts}, group) => {
+        const tableText = (tables ?? []).map(({caption,headers,rows}) =>
+          [caption,headers.join(' | '),...rows.map(row => row.join(' | '))].join('\n')).join('\n\n');
+        const context = [stimulus, tableText].filter(Boolean).join('\n\n');
+        parts.forEach(({topic, ...question}, part) => {
+          banks.set(revisionPaper2Id(paper,group,part), {...question,context});
+        });
       });
-    });
+    }
+    registerMock(0);
+    for (let paper = 1; paper <= mockPaperCount; paper++) registerMock(paper);
     return banks;
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=12', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=13', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
