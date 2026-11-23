@@ -1,57 +1,135 @@
-/* Ocean remains the main palette. Chapter colour is limited to compact labels and icons. */
-[data-chapter-colour="0"] { --chapter-ink: #315f54; --chapter-soft: #ebf3ef; }
-[data-chapter-colour="1"] { --chapter-ink: #395b83; --chapter-soft: #ecf1f7; }
-[data-chapter-colour="2"] { --chapter-ink: #5b4b78; --chapter-soft: #f0edf6; }
-[data-chapter-colour="3"] { --chapter-ink: #6b502d; --chapter-soft: #f6f1e8; }
-[data-chapter-colour="4"] { --chapter-ink: #32606a; --chapter-soft: #eaf2f4; }
-[data-chapter-colour="5"] { --chapter-ink: #774f46; --chapter-soft: #f6eeeb; }
-[data-chapter-colour="6"] { --chapter-ink: #654f64; --chapter-soft: #f4eff4; }
+/* EcBiz uses one set of accents for study tasks and chapter navigation. */
+:root {
+  --ecbiz-teal: #18665a;
+  --ecbiz-deep-teal: #114e48;
+  --ecbiz-mint: #e3f2ea;
+  --ecbiz-blue: #e9f0f8;
+  --ecbiz-lilac: #eeeaf7;
+  --ecbiz-sand: #f7efde;
+  --ecbiz-tide: linear-gradient(120deg, var(--navy) 22%, #235b62);
+  --flash-prompt-surface: #e5f3ec;
+  --flash-answer-surface: #173f49;
+  --flash-answer-label: #bff0db;
+}
+
+[data-chapter-colour="0"] { --chapter-ink: #315f54; --chapter-soft: var(--ecbiz-mint); --chapter-edge: #9bc7b3; }
+[data-chapter-colour="1"] { --chapter-ink: #395b83; --chapter-soft: var(--ecbiz-blue); --chapter-edge: #a6bedb; }
+[data-chapter-colour="2"] { --chapter-ink: #5b4b78; --chapter-soft: var(--ecbiz-lilac); --chapter-edge: #c3b5dc; }
+[data-chapter-colour="3"] { --chapter-ink: #6b502d; --chapter-soft: var(--ecbiz-sand); --chapter-edge: #d2b98b; }
+[data-chapter-colour="4"] { --chapter-ink: #32606a; --chapter-soft: #e4f0f2; --chapter-edge: #a2c6cd; }
+[data-chapter-colour="5"] { --chapter-ink: #774f46; --chapter-soft: #f4ebe6; --chapter-edge: #d9b7a9; }
+[data-chapter-colour="6"] { --chapter-ink: #654f64; --chapter-soft: #f2eaf1; --chapter-edge: #ceb7ca; }
+
+.economics-mark,
+#marking-download-open,
+.economics-hero .hero-primary {
+  background: var(--ecbiz-teal);
+  border-color: var(--ecbiz-teal);
+  color: #fff;
+}
+#marking-download-open:hover,
+.economics-hero .hero-primary:hover {
+  background: var(--ecbiz-deep-teal);
+  border-color: var(--ecbiz-deep-teal);
+}
+.economics-links a[aria-current="page"] { background: var(--ecbiz-mint); }
 
 .economics-hero {
-  border: 1px solid var(--line);
+  border: 1px solid #d4e6e1;
   border-radius: 24px;
   padding: clamp(24px, 4vw, 52px);
   margin-block-end: 1.4rem;
-  background: #fff;
+  background: linear-gradient(115deg, #fff 18%, #f1f8f5 62%, #e3efef);
 }
-main .overview-section .overview-card,
-main .overview-personal > a:is(:first-child, .checklist-callout),
-main .revision-tool-card, main .tile, main .chapter-cover, main .deck-cover,
-main .progress-stat {
-  background: #fff;
-  border-color: var(--line);
+.economics-hero h1 em { color: var(--ecbiz-teal); }
+.hero-study-plan,
+main .revision-hero,
+#game-root > div.hero { background: var(--ecbiz-tide); }
+
+.overview-personal > .progress-overview-link { background: var(--ecbiz-blue); border-color: #d5e2ef; }
+.overview-personal > .checklist-callout { background: var(--ecbiz-mint); border-color: #cfe4d8; }
+.overview-personal .overview-icon { color: var(--ecbiz-teal); }
+.progress-overview-link .overview-icon { color: #395b83; }
+
+.overview-exam-grid .overview-card[href="#practice/mcq"] .overview-icon,
+.overview-card[href="#library"] .overview-icon { background: var(--ecbiz-blue); color: #395b83; }
+.overview-exam-grid .overview-card[href="#practice/structured"] .overview-icon { background: var(--ecbiz-mint); color: var(--ecbiz-teal); }
+.overview-card[href="#flashcards"] .overview-icon { background: var(--ecbiz-lilac); color: #5b4b78; }
+.overview-card[href="#revision"] .overview-icon { background: var(--ecbiz-sand); color: #6b502d; }
+
+.study-hero {
+  padding: clamp(18px, 3vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(115deg, #fff, var(--ecbiz-blue));
 }
-main .overview-section .overview-card:hover,
-main .overview-personal > a:is(:first-child, .checklist-callout):hover,
-main .revision-tool-card:hover, main .tile:hover, main .chapter-cover:hover,
-main .deck-cover:hover, main .progress-stat:hover {
-  border-color: #7ea99b;
-}
-main .overview-section .overview-card .overview-icon,
-main .overview-exam-grid .overview-card:nth-child(2) .overview-icon,
-main .overview-personal .overview-icon, main .revision-tool-card .revision-tool-icon {
-  background: var(--ocean-soft);
-  color: #246d59;
-}
-main .tile[data-chapter-colour] .icon, main .chapter-cover[data-chapter-colour] .cover-number,
+.study-hero:has(.card-art) { background: linear-gradient(115deg, #fff, var(--ecbiz-lilac)); }
+.study-art { background: #dcebe9; border-color: #c6dedb; }
+.study-art .sheet-back { background: #b8dacf; }
+.card-art { background: #e2ddef; border-color: #d4c9e5; }
+.card-art .art-orbit { border-color: #bfaed9; }
+.card-art .sheet-back { background: #cdbce4; }
+.card-art .sheet-front { color: #5b4b78; }
+
+main .tile[data-chapter-colour] .icon,
+main .chapter-cover[data-chapter-colour] .cover-number,
 main .deck-chapter[data-chapter-colour] :is(.chapter-tag, .deck-cover-icon),
 main .lesson-heading[data-chapter-colour] .eyebrow {
   background: var(--chapter-soft);
   color: var(--chapter-ink);
 }
-main .deck-chapter .chapter-tag { padding: .22rem .42rem; border-radius: .5rem; }
-main .lesson-heading[data-chapter-colour], main .practice-heading {
+main .chapter-cover[data-chapter-colour] { border-block-start-color: var(--chapter-edge); }
+main .chapter-cover[data-chapter-colour]:hover { border-color: var(--chapter-edge); }
+main .deck-chapter-heading {
+  padding: .7rem .85rem;
+  border-inline-start: 3px solid var(--chapter-edge);
+  border-radius: 8px;
+  background: var(--chapter-soft);
+}
+main .deck-chapter-heading .chapter-tag { padding: .22rem .42rem; border-radius: .5rem; }
+main .deck-cover:hover { border-color: var(--chapter-edge); }
+main .deck-cover > div span:last-child { color: var(--chapter-ink); }
+main .lesson-heading[data-chapter-colour],
+main .practice-heading {
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #f7fafb;
   padding: clamp(18px, 3vw, 36px);
 }
-main .revision-hero, main .revision-workspace .revision-heading { background: var(--navy); }
+main .lesson-heading[data-chapter-colour] {
+  border-inline-start: 4px solid var(--chapter-edge);
+  background: linear-gradient(110deg, var(--chapter-soft), #fff 80%);
+}
+main .practice-heading { background: linear-gradient(110deg, var(--ecbiz-blue), #fff 85%); }
+main .flash:not(.reveal) { border-color: #678d81; }
+
+main .revision-workspace .revision-heading { background: linear-gradient(115deg, var(--navy), var(--tool-dark)); }
+.revision-tool-group {
+  --group-fill: var(--ecbiz-mint);
+  --group-ink: var(--ecbiz-teal);
+  --group-edge: #9bc7b3;
+}
+.revision-tool-group:nth-child(2) {
+  --group-fill: var(--ecbiz-blue);
+  --group-ink: #395b83;
+  --group-edge: #a6bedb;
+}
+.revision-tool-group:nth-child(3) {
+  --group-fill: var(--ecbiz-sand);
+  --group-ink: #6b502d;
+  --group-edge: #d2b98b;
+}
+.revision-tool-group .revision-tool-card { border-block-start: 3px solid var(--group-edge); }
+.revision-tool-group .revision-tool-icon { background: var(--group-fill); color: var(--group-ink); }
+.revision-mock-picker[data-revision-mock="p1"] { background: var(--ecbiz-blue); }
+.revision-mock-picker[data-revision-mock="p2"] { background: var(--ecbiz-mint); }
+.progress-stat[data-progress-target="progress-answers"] { background: var(--ecbiz-blue); }
+.progress-stat[data-progress-target="progress-checklist"] { background: var(--ecbiz-mint); }
+.progress-stat[data-progress-target="progress-flashcards"] { background: var(--ecbiz-lilac); }
 
 @media (max-width: 440px) {
   .economics-hero { padding: 19px; }
   .economics-hero h1 { font-size: clamp(2.2rem, 11vw, 3rem); overflow-wrap: anywhere; }
 }
 @media (forced-colors: active) {
-  .economics-links a[aria-current='page'] { outline: 2px solid Highlight; outline-offset: -3px; }
+  .economics-links a[aria-current="page"] { outline: 2px solid Highlight; outline-offset: -3px; }
 }
