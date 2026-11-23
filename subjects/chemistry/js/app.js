@@ -3,6 +3,7 @@
   'use strict';
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const FRESH_HOME = '../../';
   const PHYSICS_URL = '../physics/index.html#coverage-0625';
   const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } } };
   const view = $('#view'), bar = $('#bar'), startEl = $('#start');
@@ -173,7 +174,7 @@
         <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions with worked answers.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
       <section class="hm-sec"><header><p class="kicker">Four stages, one straight path</p><h2>Start where you are.</h2></header><div id="hmResume"></div>
         <div class="hm-stages" id="hmStages"></div></section>
-      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">Fresh subjects</a>` : ''}</footer>`;
+      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a><a href="${FRESH_HOME}">Fresh homepage</a></footer>`;
     host.addEventListener('click', e => {
       const lab = e.target.closest('[data-lab]'); if (lab) { labAt = +lab.dataset.lab; Widgets.clear(); labMount(); Snd.tick(); return; }
       const hm = e.target.closest('[data-hm]'); if (hm) { if (hm.dataset.hm === 'q') hmQuestion(); else hmElement(); Snd.tick(); return; }
@@ -210,7 +211,7 @@
 
   function vAbout() {
     const nT = IDX.stages.reduce((a, s) => a + s.topics.length, 0), nS = ALL.reduce((a, l) => a + l.ns, 0), nQ = ALL.reduce((a, l) => a + l.q, 0);
-    view.innerHTML = `<div class="page">${crumbs([['#home', 'Homepage'], ['', 'About us']])}
+    view.innerHTML = `<div class="page">${crumbs([[FRESH_HOME, 'Homepage'], ['', 'About us']])}
       <header class="page-head"><h1>About us</h1><p>Quilio is a chemistry learning site made by students, for the students in our CCA. The idea: the shortest honest route through the subject, with nothing skipped.</p></header>
       <div class="facts" style="margin-bottom:26px">${[[IDX.stages.length, 'stages, KS3 to A Level'], [nT, 'topics in syllabus order'], [ALL.length, 'lectures'], [nS, 'concepts explained']].map(f => `<div class="fact panel"><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</div>
       <div class="prose">
@@ -227,7 +228,7 @@
   }
 
   function vDevs() {
-    view.innerHTML = `<div class="page">${crumbs([['#home', 'Homepage'], ['', 'Developers']])}
+    view.innerHTML = `<div class="page">${crumbs([[FRESH_HOME, 'Homepage'], ['', 'Developers']])}
       <header class="page-head"><h1>Developers</h1><p>Geodesic and Quilio are built by two students at Garden International School.</p></header>
       <div class="cols-2" style="margin-bottom:28px">
         <div class="person panel" style="--hue:var(--sun)"><div class="avatar">I</div><h3>Ian Lee</h3><p><strong>Geodesic Physics.</strong> Physics and mathematics, from KS3 to quantum field theory.</p><a class="go" href="${PHYSICS_URL}">Open Geodesic Physics</a></div>
@@ -465,18 +466,6 @@
     function frame(t) { requestAnimationFrame(frame); if (document.hidden || !startEl.hidden || t - last < 33) return; const dt = Math.min(.1, (t - last) / 1000); last = t; draw(dt); }
     window.addEventListener('resize', () => { size(); draw(0); }); draw(0); if (!still) requestAnimationFrame(frame);
   }
-
-  /* ---------- Homepage menu: a small bar that drops under the Homepage button ---------- */
-  const hpMenu = document.createElement('nav'); hpMenu.className = 'hp-menu'; hpMenu.hidden = true; hpMenu.setAttribute('aria-label', 'Homepage menu');
-  hpMenu.innerHTML = `<a href="${window.GEO_HOME || '#home'}"><b>Home</b><span>Browse all Fresh subjects</span></a><a href="${PHYSICS_URL}"><b>Geodesic</b><span>The physics site</span></a><a href="#start"><b>Chemistry site</b><span>The chemistry home screen</span></a><a href="#olympiad"><b>Olympiad</b><span>Competitions and practice</span></a><a href="#about-us"><b>About this site</b><span>How it is organised</span></a><a href="#developers"><b>Developer</b><span>Who builds it</span></a>`;
-  document.body.append(hpMenu);
-  document.addEventListener('click', e => {
-    const b = e.target.closest('.hp');
-    if (!b) { hpMenu.hidden = true; return; }
-    e.preventDefault(); if (!hpMenu.hidden) { hpMenu.hidden = true; return; }
-    const r = b.getBoundingClientRect(); hpMenu.style.left = Math.max(8, r.left) + 'px'; hpMenu.style.top = (r.bottom + 8) + 'px'; hpMenu.hidden = false;
-  });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') hpMenu.hidden = true; });
 
   window.GC = { tex, inline, plain, esc, store, done, ALL, BY, cur: () => CUR, stageData, get IDX() { return IDX; } };
 
