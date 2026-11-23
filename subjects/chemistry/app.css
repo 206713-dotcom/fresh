@@ -183,7 +183,7 @@ main { display: block; }
 .lecture .notes > :is(p, ul, ol) { max-width: 78ch; }
 @media (min-width: 1181px) { #lectureJumps { display: none; } }
 @media (min-width: 1440px) {
-  .lecture-preview:has(.lecture-film:not([hidden])) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); }
+  .lecture-preview:has(.lecture-film:not([hidden])) { grid-template-columns: minmax(280px, 2fr) minmax(0, 3.5fr); }
 }
 .lect-head h1 { font-weight: 300; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -.015em; }
 .lect-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13.5px; color: var(--ink-2); }
