@@ -299,14 +299,20 @@ footer { padding: 28px max(32px, calc((100% - 1248px) / 2)); color: var(--muted)
   footer { padding: 24px 18px; }
 }
 @media (max-width: 575px) {
-  [data-study-nav] #topic-search-open { min-width: 44px; padding: 8px 10px; }
+  [data-study-nav] #topic-search-open { min-width: 44px; min-height: 44px; padding: 8px 10px; }
   [data-study-nav] #topic-search-open span:last-child { display: none; }
+}
+@media (max-width: 520px) {
+  [data-study-nav] .economics-subjects { min-width: 44px; min-height: 44px; gap: 0; font-size: 0; }
+  [data-study-nav] .economics-subjects img { display: block; }
+}
+@media (max-width: 375px) {
+  [data-study-nav] .economics-brand { min-height: 44px; }
+  [data-study-nav] .economics-mark { display: none; }
 }
 @media (max-width: 440px) {
   [data-study-nav] .economics-nav-inner { width: calc(100% - 24px); column-gap: 8px; }
   [data-study-nav] .economics-nav-actions { gap: 6px; }
-  [data-study-nav] .economics-subjects { min-width: 44px; min-height: 44px; gap: 0; font-size: 0; }
-  [data-study-nav] .economics-subjects img { display: block; }
   #marking-download-open { padding-inline: 8px; }
   #topic-search-open { min-width: 42px; padding: 8px 12px; }
   #topic-search-open span:last-child { display: none; }
