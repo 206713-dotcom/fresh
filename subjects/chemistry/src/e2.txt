@@ -1,0 +1,546 @@
+# Cambridge International A Level Chemistry 9701, topics 24 and 25 (electrochemistry and equilibria): first look, full notes, mark-scheme wording and marked questions.
+
+== ca-24-1
+S: In electrolysis, the amount of substance released at an electrode depends only on the charge passed: Q = It, and one mole of electrons carries one faraday, 96 500 C. Which substance is released depends on the state of the electrolyte, the electrode potentials and the concentration.
+<<<
+## Predicting the products
+### Molten electrolytes
+Only the ions of the compound are present.
+
+- **Cathode (−):** the metal. $\mathrm{Pb^{2+} + 2e^- \rightarrow Pb}$
+- **Anode (+):** the non-metal. $\mathrm{2Br^- \rightarrow Br_2 + 2e^-}$
+
+### Aqueous electrolytes
+Water also provides H⁺ and OH⁻ ions (or water molecules themselves are oxidised or reduced), so there is competition. Three things decide the product: the **state** of the electrolyte, the **position of the ions in the redox series** (their E⦵ values), and the **concentration**.
+
+**At the cathode: reduction.** The species with the **more positive E⦵** is reduced more easily.
+
+| Cation | E⦵ compared with H⁺/H₂ (0.00 V) | Product |
+| Cu²⁺, Ag⁺ | more positive | the **metal** |
+| Na⁺, K⁺, Mg²⁺, Al³⁺, Zn²⁺ | much more negative | **hydrogen**: $\mathrm{2H^+ + 2e^- \rightarrow H_2}$ |
+
+**At the anode: oxidation.**
+
+| Anion | Product |
+| SO₄²⁻, NO₃⁻ | **oxygen**: $\mathrm{4OH^- \rightarrow O_2 + 2H_2O + 4e^-}$ |
+| Cl⁻, Br⁻, I⁻ in **concentrated** solution | the **halogen**: $\mathrm{2Cl^- \rightarrow Cl_2 + 2e^-}$ |
+| Cl⁻ in **dilute** solution | mainly **oxygen** |
+
+On E⦵ values alone, hydroxide ions (water) should be oxidised in preference to chloride. But in a concentrated solution the high concentration of Cl⁻ favours its discharge: **concentration can override the redox series**.
+
+| Electrolyte (inert electrodes) | Cathode | Anode |
+| molten NaCl | sodium | chlorine |
+| concentrated NaCl(aq) | hydrogen | chlorine |
+| dilute NaCl(aq) | hydrogen | oxygen |
+| CuSO₄(aq) | copper | oxygen |
+| dilute H₂SO₄ | hydrogen | oxygen |
+
+## Charge
+$$Q = It$$
+
+Q is charge in coulombs, I is current in amperes, t is time in **seconds**.
+
+## The Faraday constant
+!def Faraday constant, F | The charge carried by one mole of electrons: 96 500 C mol⁻¹.
+
+$$F = Le$$
+
+L is the Avogadro constant (6.02 × 10²³ mol⁻¹) and e is the charge on one electron (1.60 × 10⁻¹⁹ C).
+
+## Calculating the mass or volume released
+- Find the charge: **Q = It**.
+- Find the moles of electrons: **n(e⁻) = Q ÷ F**.
+- Use the **half-equation** to find the moles of product.
+- Convert to mass (× M) or to gas volume (× 24.0 dm³ at room conditions).
+
+**Example 1.** A current of 0.500 A passes through aqueous copper(II) sulfate for 30.0 minutes. Find the mass of copper deposited.
+
+- Q = 0.500 × (30.0 × 60) = 900 C
+- n(e⁻) = 900 ÷ 96 500 = 9.33 × 10⁻³ mol
+- Cu²⁺ + 2e⁻ → Cu, so n(Cu) = 4.66 × 10⁻³ mol
+- mass = 4.66 × 10⁻³ × 63.5 = **0.296 g**
+
+**Example 2.** Find the volume of oxygen formed at the anode in the same experiment.
+
+- 4OH⁻ → O₂ + 2H₂O + 4e⁻, so n(O₂) = 9.33 × 10⁻³ ÷ 4 = 2.33 × 10⁻³ mol
+- volume = 2.33 × 10⁻³ × 24.0 = **0.0560 dm³** (56.0 cm³)
+
+Working backwards, the same steps give the time or current needed for a given mass.
+
+## Finding the Avogadro constant by electrolysis
+- Electrolyse aqueous copper(II) sulfate with **copper electrodes**.
+- Weigh the cathode before and after (rinse and dry it first). Measure the **current** with an ammeter, keep it constant with a variable resistor, and measure the **time**.
+- Calculate the charge passed: Q = It.
+- From the **mass of copper deposited**, find the moles of copper, and so the moles of electrons (× 2).
+- **F = Q ÷ moles of electrons.**
+- **L = F ÷ e**, using the charge on the electron, 1.60 × 10⁻¹⁹ C.
+
+**Example.** 0.200 A for 2400 s deposits 0.158 g of copper.
+
+- Q = 480 C
+- n(Cu) = 0.158 ÷ 63.5 = 2.49 × 10⁻³ mol; n(e⁻) = 4.98 × 10⁻³ mol
+- F = 480 ÷ 4.98 × 10⁻³ = 96 400 C mol⁻¹
+- L = 96 400 ÷ 1.60 × 10⁻¹⁹ = **6.03 × 10²³ mol⁻¹**
+>>>
+F: $Q = It$ :: Charge (C) = current (A) × time (s).
+F: $F = Le$ :: Faraday constant = Avogadro constant × charge on the electron = 96 500 C mol⁻¹.
+W: Time must be in seconds.
+W: Use the half-equation: 2 mol of electrons per mole of Cu, 4 per mole of O₂.
+W: A concentrated chloride solution gives chlorine at the anode; a dilute one gives oxygen.
+W: Sodium is never formed from an aqueous solution: hydrogen is.
+M: Three factors that decide the products of electrolysis :: **state** of the electrolyte (molten or aqueous); **position in the redox series** (E⦵); **concentration**
+M: Cathode product from an aqueous solution of a reactive metal salt :: **hydrogen**
+M: Cathode product from aqueous copper(II) sulfate :: **copper**
+M: Anode product from concentrated aqueous sodium chloride :: **chlorine**
+M: Anode product from dilute aqueous sodium chloride or a sulfate :: **oxygen**
+M: Anode half-equation forming oxygen :: $\mathrm{4OH^- \rightarrow O_2 + 2H_2O + 4e^-}$
+M: Equation for charge :: **Q = It**
+M: Define the Faraday constant :: the **charge carried by one mole of electrons**, 96 500 C mol⁻¹
+M: Relationship between F, L and e :: **F = Le**
+M: Moles of electrons from charge :: **n = Q ÷ F**
+M: Steps in an electrolysis calculation :: **Q = It**; **÷ F** for moles of electrons; **half-equation** ratio; convert to mass or volume
+M: Measurements needed to find L by electrolysis :: **current**, **time**, and **mass of copper** deposited on the cathode
+M: Finding L from the measured value of F :: **L = F ÷ e**
+C: [1] What is formed at the cathode when aqueous potassium sulfate is electrolysed? | potassium | oxygen | *hydrogen | sulfur dioxide | K⁺ has a very negative E⦵, so H⁺ is reduced instead.
+C: [1] How many moles of electrons are needed to deposit 1 mol of aluminium from Al³⁺? | 1 | 2 | *3 | 6 | Al³⁺ + 3e⁻ → Al.
+C: [1] What is formed at the anode when concentrated aqueous sodium chloride is electrolysed? | oxygen | hydrogen | sodium | *chlorine | The high concentration of chloride ions favours their discharge.
+C: [1] Which expression gives the Faraday constant? | L ÷ e | e ÷ L | *L × e | Q × t | The charge on one mole of electrons.
+N: [3] A current of 2.00 A is passed through aqueous silver nitrate for 15.0 minutes. Calculate the mass of silver deposited, in g. (Ag = 107.9; F = 96 500 C mol⁻¹) => 2.01 ~ 2.0 ~ 2.013 {2*15*60/96500*107.9} | C1 Q = 2.00 × 900 = 1800 C | C1 n(e⁻) = 1800 ÷ 96 500 = 0.01865 mol = n(Ag) | A1 0.01865 × 107.9 = 2.01 g
+N: [3] Calculate the volume of hydrogen, in cm³ at room conditions, formed at the cathode when 0.400 A flows through dilute sulfuric acid for 20.0 minutes. (F = 96 500 C mol⁻¹; molar gas volume 24.0 dm³) => 59.7 ~ 60 ~ 59.69 {0.4*20*60/96500/2*24000} | C1 Q = 0.400 × 1200 = 480 C; n(e⁻) = 4.97 × 10⁻³ mol | C1 2H⁺ + 2e⁻ → H₂, so n(H₂) = 2.49 × 10⁻³ mol | A1 2.49 × 10⁻³ × 24 000 = 59.7 cm³
+N: [3] How long, in seconds, must a current of 1.50 A flow to deposit 0.635 g of copper from aqueous copper(II) sulfate? (Cu = 63.5; F = 96 500 C mol⁻¹) => 1287 ~ 1290 ~ 1286.7 {0.635/63.5*2*96500/1.5} | C1 n(Cu) = 0.0100 mol, so n(e⁻) = 0.0200 mol | C1 Q = 0.0200 × 96 500 = 1930 C | A1 t = 1930 ÷ 1.50 = 1287 s
+Q: [3] Explain why chlorine is formed at the anode when concentrated aqueous sodium chloride is electrolysed, but oxygen is formed when the solution is very dilute.
++ in dilute solution, hydroxide ions (water) are oxidised in preference, giving oxygen :: hydroxide|OH|water
++ in concentrated solution the concentration of chloride ions is high :: concentrat
++ which favours the discharge (oxidation) of chloride ions :: chloride & discharg|oxidis|oxidiz|favour
+A: In a dilute solution, hydroxide ions from the water are oxidised in preference to chloride ions, so oxygen is formed. In a concentrated solution, the high concentration of chloride ions favours their discharge, so chlorine is formed.
+Q: [4] Describe how the Avogadro constant can be determined by electrolysis.
++ electrolyse aqueous copper(II) sulfate with copper electrodes, measuring the current and the time :: current & time
++ measure the increase in mass of the cathode (mass of copper deposited) :: mass
++ calculate Q = It and the moles of electrons (2 × moles of copper), giving F = Q ÷ moles of electrons :: moles of electrons|mol of electrons|faraday
++ L = F ÷ e (charge on the electron) :: charge on|divide|÷ e|per e
+A: Electrolyse aqueous copper(II) sulfate using copper electrodes, measuring the current and the time. Measure the mass of copper deposited on the cathode. Calculate the charge, Q = It, and the moles of electrons, which is twice the moles of copper; the Faraday constant is the charge divided by the moles of electrons. Then divide F by the charge on the electron to obtain L.
+
+== ca-24-2
+S: Every half-cell has an electrode potential that measures how readily it gains electrons, compared with the standard hydrogen electrode. Join two half-cells and the difference is the cell voltage. A positive cell potential means the reaction is feasible, and the Nernst equation corrects for non-standard concentrations.
+<<<
+## Definitions
+!def Standard electrode potential, E⦵ | The voltage produced when a standard half-cell is connected to a standard hydrogen electrode under standard conditions.
+
+!def Standard cell potential, E⦵cell | The difference in standard electrode potential between two half-cells.
+
+**Standard conditions:** 298 K; 101 kPa for gases; 1.00 mol dm⁻³ for ions in solution.
+
+Electrode potentials are written as **reductions**: oxidised form + electrons ⇌ reduced form.
+
+$$\mathrm{Cu^{2+}(aq) + 2e^- \rightleftharpoons Cu(s)} \qquad E^\ominus = +0.34\ \text{V}$$
+
+## The standard hydrogen electrode
+- **Hydrogen gas at 101 kPa** bubbles over
+- a **platinum electrode** (coated with platinum black), dipping into
+- a solution containing **1.00 mol dm⁻³ H⁺(aq)**, at **298 K**.
+
+$$\mathrm{2H^+(aq) + 2e^- \rightleftharpoons H_2(g)} \qquad E^\ominus = 0.00\ \text{V (by definition)}$$
+
+Platinum is inert and conducts, and it provides a surface on which the equilibrium is set up.
+
+## Measuring E⦵
+Connect the half-cell to a standard hydrogen electrode through a **high-resistance voltmeter** and a **salt bridge**.
+
+| Half-cell | How it is built |
+| **metal / metal ion**, e.g. Cu²⁺/Cu | a rod of the **metal** in a **1.00 mol dm⁻³** solution of its ions |
+| **non-metal / non-metal ion**, e.g. Cl₂/Cl⁻ | the **gas at 101 kPa** bubbling over a **platinum** electrode in a 1.00 mol dm⁻³ solution of its ions |
+| **ions of the same element in different oxidation states**, e.g. Fe³⁺/Fe²⁺ | a **platinum** electrode in a solution containing **both ions, each at 1.00 mol dm⁻³** |
+
+- The **salt bridge** (filter paper soaked in saturated potassium nitrate) **completes the circuit** by letting ions move between the solutions, keeping the charges balanced. It must not react with either solution.
+- The **high-resistance voltmeter** means that almost no current flows, so the maximum potential difference is measured.
+
+## Cell potential
+$$E^\ominus_{cell} = E^\ominus(\text{more positive half-cell}) - E^\ominus(\text{more negative half-cell})$$
+
+| Half-equation | E⦵ / V |
+| $\mathrm{Zn^{2+} + 2e^- \rightleftharpoons Zn}$ | −0.76 |
+| $\mathrm{Fe^{2+} + 2e^- \rightleftharpoons Fe}$ | −0.44 |
+| $\mathrm{2H^+ + 2e^- \rightleftharpoons H_2}$ | 0.00 |
+| $\mathrm{Cu^{2+} + 2e^- \rightleftharpoons Cu}$ | +0.34 |
+| $\mathrm{I_2 + 2e^- \rightleftharpoons 2I^-}$ | +0.54 |
+| $\mathrm{Fe^{3+} + e^- \rightleftharpoons Fe^{2+}}$ | +0.77 |
+| $\mathrm{Ag^+ + e^- \rightleftharpoons Ag}$ | +0.80 |
+| $\mathrm{Br_2 + 2e^- \rightleftharpoons 2Br^-}$ | +1.07 |
+| $\mathrm{Cl_2 + 2e^- \rightleftharpoons 2Cl^-}$ | +1.36 |
+| $\mathrm{MnO_4^- + 8H^+ + 5e^- \rightleftharpoons Mn^{2+} + 4H_2O}$ | +1.52 |
+
+**Zinc–copper cell:** E⦵cell = +0.34 − (−0.76) = **+1.10 V**.
+
+### Polarity and electron flow
+- The half-cell with the **more positive E⦵** is the **positive electrode**: **reduction** happens there.
+- The half-cell with the **more negative E⦵** is the **negative electrode**: **oxidation** happens there (its half-equation runs backwards).
+- **Electrons flow** through the external circuit **from the negative electrode to the positive electrode**: from zinc to copper.
+
+$$\mathrm{Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu}$$
+
+## Oxidising and reducing agents
+- The **more positive** the E⦵, the **stronger the oxidising agent** on the **left** of the half-equation. MnO₄⁻ (in acid) and Cl₂ are strong oxidising agents.
+- The **more negative** the E⦵, the **stronger the reducing agent** on the **right**. Zinc is a strong reducing agent.
+
+## Predicting feasibility
+A reaction is **feasible if E⦵cell is positive**.
+
+Quick rule: the species on the **left** of the half-equation with the **more positive E⦵** will oxidise the species on the **right** of the half-equation with the more negative E⦵.
+
+**Example.** Will chlorine oxidise Fe²⁺ to Fe³⁺?
+
+- Cl₂/Cl⁻ is +1.36 V; Fe³⁺/Fe²⁺ is +0.77 V.
+- E⦵cell = +1.36 − (+0.77) = **+0.59 V**: feasible.
+
+$$\mathrm{Cl_2 + 2Fe^{2+} \rightarrow 2Cl^- + 2Fe^{3+}}$$
+
+**Will iodine oxidise Fe²⁺?** E⦵cell = +0.54 − 0.77 = −0.23 V: not feasible. (The reverse is: Fe³⁺ oxidises I⁻.)
+
+### Building the equation
+- Write the half-equation with the more positive E⦵ as a **reduction**.
+- **Reverse** the other half-equation.
+- **Multiply** so the electrons are equal, then add. Do **not** multiply the E⦵ values.
+
+### Limits of the prediction
+- A feasible reaction may be **too slow** to see: a high activation energy.
+- The conditions may **not be standard**: concentrations and temperature change the potentials.
+
+## The effect of concentration
+Apply Le Chatelier's principle to the half-equation.
+
+$$\mathrm{Cu^{2+}(aq) + 2e^- \rightleftharpoons Cu(s)}$$
+
+- **Increasing [Cu²⁺]** moves the equilibrium to the right: electrons are removed, so E becomes **more positive**.
+- **Decreasing [Cu²⁺]** makes E **less positive** (more negative).
+
+In general, raising the concentration of the oxidised form (left side) makes E more positive; raising the concentration of the reduced form makes it more negative.
+
+## The Nernst equation
+$$E = E^\ominus + \frac{0.059}{z}\log\frac{[\text{oxidised species}]}{[\text{reduced species}]}$$
+
+z is the number of electrons transferred. Solids are not included.
+
+**Copper:**
+
+$$E = 0.34 + \frac{0.059}{2}\log[\mathrm{Cu^{2+}}]$$
+
+If [Cu²⁺] = 0.010 mol dm⁻³: E = 0.34 + 0.0295 × (−2) = **+0.28 V**.
+
+**Iron(III) / iron(II):**
+
+$$E = 0.77 + 0.059\log\frac{[\mathrm{Fe^{3+}}]}{[\mathrm{Fe^{2+}}]}$$
+
+If [Fe³⁺] is ten times [Fe²⁺]: E = 0.77 + 0.059 = +0.83 V.
+
+## Cell potential and Gibbs free energy
+$$\Delta G^\ominus = -nE^\ominus_{cell}F$$
+
+n is the number of moles of electrons transferred in the cell reaction; F = 96 500 C mol⁻¹. The answer is in **joules** per mole.
+
+**Zinc–copper cell:** ΔG⦵ = −2 × 1.10 × 96 500 = −212 300 J mol⁻¹ = **−212 kJ mol⁻¹**.
+
+A **positive E⦵cell gives a negative ΔG⦵**: the two tests for feasibility agree.
+>>>
+F: $E^\ominus_{cell} = E^\ominus(\text{positive electrode}) - E^\ominus(\text{negative electrode})$ :: More positive minus more negative.
+F: $E = E^\ominus + \dfrac{0.059}{z}\log\dfrac{[\text{oxidised}]}{[\text{reduced}]}$ :: Nernst equation; z = electrons transferred.
+F: $\Delta G^\ominus = -nE^\ominus_{cell}F$ :: In J mol⁻¹; F = 96 500 C mol⁻¹.
+W: Do not multiply E⦵ values when you multiply a half-equation.
+W: Electrons flow from the more negative half-cell to the more positive one.
+W: A positive E⦵cell means feasible, not fast.
+W: In the Nernst equation, a solid metal is left out: only the ion concentration appears.
+W: ΔG from the cell equation is in joules. Divide by 1000 for kJ.
+M: Define standard electrode potential :: the **voltage** when a **standard half-cell** is connected to a **standard hydrogen electrode** under standard conditions
+M: Define standard cell potential :: the **difference in standard electrode potential** between two half-cells
+M: Standard conditions for electrode potentials :: **298 K**, **101 kPa**, **1.00 mol dm⁻³**
+M: The standard hydrogen electrode :: **H₂ gas at 101 kPa** over a **platinum electrode** in **1.00 mol dm⁻³ H⁺**, at 298 K; E⦵ = 0.00 V
+M: Half-cell for ions in two oxidation states (Fe³⁺/Fe²⁺) :: a **platinum electrode** in a solution containing **both ions at 1.00 mol dm⁻³**
+M: Purpose of the salt bridge :: to **complete the circuit** by allowing **ions to move** between the half-cells
+M: Why a high-resistance voltmeter is used :: so that **(almost) no current flows**, giving the maximum potential difference
+M: Calculating E⦵cell :: **more positive E⦵ − more negative E⦵**
+M: Which half-cell is the positive electrode :: the one with the **more positive E⦵** (reduction occurs there)
+M: Direction of electron flow :: from the **more negative** half-cell to the **more positive** half-cell, through the external circuit
+M: Condition for a reaction to be feasible :: **E⦵cell is positive**
+M: Strongest oxidising agents :: species on the **left** of half-equations with the **most positive E⦵**
+M: Strongest reducing agents :: species on the **right** of half-equations with the **most negative E⦵**
+M: Effect of increasing [Cu²⁺] on E for Cu²⁺/Cu :: E becomes **more positive** (equilibrium moves right)
+M: The Nernst equation :: **E = E⦵ + (0.059/z) log([oxidised]/[reduced])**
+M: Relationship between ΔG⦵ and E⦵cell :: **ΔG⦵ = −nE⦵cellF**
+M: Why a feasible reaction may not occur :: **high activation energy** (too slow), or **non-standard conditions**
+C: [1] What is the standard cell potential of a cell made from Fe²⁺/Fe (−0.44 V) and Ag⁺/Ag (+0.80 V)? | +0.36 V | −1.24 V | *+1.24 V | +2.04 V | +0.80 − (−0.44) = +1.24 V.
+C: [1] Which species is the strongest oxidising agent? (E⦵: Zn²⁺/Zn −0.76; Cu²⁺/Cu +0.34; Ag⁺/Ag +0.80 V) | Zn | Zn²⁺ | Cu²⁺ | *Ag⁺ | It is on the left of the half-equation with the most positive E⦵.
+C: [1] In a zinc–copper cell, in which direction do electrons flow in the external circuit? | from copper to zinc | *from zinc to copper | through the salt bridge | they do not flow | Zinc is oxidised at the negative electrode.
+C: [1] What is used as the electrode in a Fe³⁺/Fe²⁺ half-cell? | iron | copper | graphite coated with iron | *platinum | An inert conductor is needed, as neither ion is a solid.
+C: [1] How does E for the Cu²⁺/Cu half-cell change when [Cu²⁺] is decreased? | It becomes more positive. | *It becomes less positive. | It does not change. | It becomes zero. | The equilibrium moves to the left, releasing electrons.
+N: [2] Use the Nernst equation to calculate E, in V, for a Cu²⁺/Cu half-cell in which [Cu²⁺] = 0.0010 mol dm⁻³. (E⦵ = +0.34 V) => 0.25 ~ 0.252 ~ 0.2515 {0.34+0.059/2*log10(0.001)} | C1 E = 0.34 + (0.059 ÷ 2) × log(0.0010) | A1 0.34 − 0.0885 = +0.25 V
+N: [2] Calculate ΔG⦵, in kJ mol⁻¹, for the reaction Cl₂ + 2Fe²⁺ → 2Cl⁻ + 2Fe³⁺, for which E⦵cell = +0.59 V. (F = 96 500 C mol⁻¹) => -114 ~ −114 ~ -113.9 {-2*0.59*96500/1000} | C1 ΔG = −nE⦵cellF = −2 × 0.59 × 96 500 | A1 −113 870 J mol⁻¹ = −114 kJ mol⁻¹
+Q: [3] Describe the standard hydrogen electrode.
++ hydrogen gas at 101 kPa (1 atm) :: hydrogen gas|H2 gas|101|1 atm
++ a platinum electrode :: platinum
++ in a solution containing 1.00 mol dm⁻³ H⁺ ions (at 298 K) :: 1.00|1 mol|1.0 mol|acid
+A: Hydrogen gas at 101 kPa is bubbled over a platinum electrode, which dips into a solution containing 1.00 mol dm⁻³ of hydrogen ions at 298 K.
+Q: [3] Use E⦵ values to explain whether aqueous iron(III) ions will oxidise iodide ions. (Fe³⁺/Fe²⁺ +0.77 V; I₂/I⁻ +0.54 V)
++ E⦵cell = +0.77 − 0.54 = +0.23 V :: 0.23
++ E⦵cell is positive, so the reaction is feasible :: positive|feasible
++ 2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂ :: 2Fe & I2|iodine
+A: E⦵cell = +0.77 − 0.54 = +0.23 V. This is positive, so the reaction is feasible: 2Fe³⁺ + 2I⁻ → 2Fe²⁺ + iodine, I2.
+Q: [2] State the function of the salt bridge in an electrochemical cell and name a suitable substance for it.
++ it completes the circuit by allowing ions to move between the two solutions :: ions|complete
++ (filter paper soaked in saturated) potassium nitrate :: potassium nitrate|KNO3|potassium chloride|KCl
+A: The salt bridge completes the circuit by allowing ions to move between the two solutions. It can be filter paper soaked in saturated potassium nitrate.
+
+== ca-25-1
+S: pH is a logarithmic measure of hydrogen ion concentration. Strong acids give up all their protons; weak acids only a fraction, set by Ka. A buffer holds pH steady by pairing a weak acid with its conjugate base, and the solubility product Ksp sets the limit for sparingly soluble salts.
+<<<
+## Conjugate acid–base pairs
+When an acid donates a proton, what is left is its **conjugate base**. When a base accepts a proton, it becomes its **conjugate acid**. A conjugate pair differs by **one H⁺**.
+
+$$\mathrm{CH_3COOH + H_2O \rightleftharpoons CH_3COO^- + H_3O^+}$$
+
+| Acid | Conjugate base |
+| CH₃COOH | CH₃COO⁻ |
+| H₃O⁺ | H₂O |
+| NH₄⁺ | NH₃ |
+| H₂O | OH⁻ |
+
+Each equation has two pairs: acid 1 / base 1 and acid 2 / base 2.
+
+## pH, Kw, Ka and pKa
+$$\mathrm{pH} = -\log[\mathrm{H^+}] \qquad [\mathrm{H^+}] = 10^{-\mathrm{pH}}$$
+
+$$K_w = [\mathrm{H^+}][\mathrm{OH^-}] = 1.00 \times 10^{-14}\ \text{mol}^2\,\text{dm}^{-6}\ \text{at 298 K}$$
+
+For a weak acid, $\mathrm{HA \rightleftharpoons H^+ + A^-}$:
+
+$$K_a = \frac{[\mathrm{H^+}][\mathrm{A^-}]}{[\mathrm{HA}]} \qquad \mathrm{p}K_a = -\log K_a$$
+
+- $K_a$ has units of mol dm⁻³.
+- A **larger $K_a$** (a **smaller p$K_a$**) means a **stronger** acid.
+- $K_w$ is the ionic product of water. In pure water [H⁺] = [OH⁻] = 1.00 × 10⁻⁷ mol dm⁻³, so pH = 7.
+
+## Calculating pH
+### Strong acids
+Fully dissociated: for a monoprotic acid, **[H⁺] = concentration of the acid**.
+
+0.0200 mol dm⁻³ HCl: pH = −log(0.0200) = **1.70**.
+
+### Strong alkalis
+Fully dissociated: find [OH⁻], then use $K_w$.
+
+$$[\mathrm{H^+}] = \frac{K_w}{[\mathrm{OH^-}]}$$
+
+0.0500 mol dm⁻³ NaOH: [H⁺] = 1.00 × 10⁻¹⁴ ÷ 0.0500 = 2.00 × 10⁻¹³; pH = **12.70**.
+
+### Weak acids
+Two approximations: [H⁺] = [A⁻], and so little acid dissociates that [HA] at equilibrium equals its original concentration, c.
+
+$$K_a = \frac{[\mathrm{H^+}]^2}{c} \qquad [\mathrm{H^+}] = \sqrt{K_a \times c}$$
+
+0.100 mol dm⁻³ ethanoic acid, $K_a$ = 1.74 × 10⁻⁵ mol dm⁻³:
+
+$$[\mathrm{H^+}] = \sqrt{1.74 \times 10^{-5} \times 0.100} = 1.32 \times 10^{-3} \qquad \mathrm{pH} = 2.88$$
+
+To find $K_a$ from a pH: [H⁺] = 10^−pH, then $K_a$ = [H⁺]² ÷ c.
+
+## Buffer solutions
+!def Buffer solution | A solution that resists changes in pH when small amounts of acid or alkali are added.
+
+### How to make one
+- Mix a **weak acid with its salt** (its conjugate base): ethanoic acid and sodium ethanoate. This gives an acidic buffer.
+- Or **partly neutralise** a weak acid with a strong alkali, leaving a mixture of the acid and its salt.
+- A weak base with its salt, such as ammonia and ammonium chloride, gives an alkaline buffer.
+
+### How it works
+The buffer contains **large amounts (reservoirs) of both** the weak acid, CH₃COOH, and its conjugate base, CH₃COO⁻.
+
+$$\mathrm{CH_3COOH \rightleftharpoons CH_3COO^- + H^+}$$
+
+**Adding acid:** the extra H⁺ ions are removed by the conjugate base.
+
+$$\mathrm{CH_3COO^- + H^+ \rightarrow CH_3COOH}$$
+
+**Adding alkali:** the OH⁻ ions are removed by the weak acid.
+
+$$\mathrm{CH_3COOH + OH^- \rightarrow CH_3COO^- + H_2O}$$
+
+In each case the ratio [CH₃COOH] : [CH₃COO⁻] changes very little, so [H⁺] and the pH hardly change.
+
+### Buffers in blood
+Blood is kept at pH 7.35 to 7.45, mainly by **hydrogencarbonate ions, HCO₃⁻**.
+
+$$\mathrm{H^+ + HCO_3^- \rightleftharpoons H_2CO_3 \rightleftharpoons CO_2 + H_2O}$$
+
+Extra H⁺ is removed by HCO₃⁻; extra OH⁻ is removed by H₂CO₃ (or reacts with H⁺, and more H₂CO₃ dissociates). Buffers are also used in shampoos, food and medicines, and wherever enzymes need a constant pH.
+
+### The pH of a buffer
+$$[\mathrm{H^+}] = K_a \times \frac{[\mathrm{HA}]}{[\mathrm{A^-}]} \qquad \mathrm{pH} = \mathrm{p}K_a + \log\frac{[\mathrm{A^-}]}{[\mathrm{HA}]}$$
+
+Moles can be used in place of concentrations, as both are in the same volume.
+
+**Example.** A buffer contains 0.100 mol of ethanoic acid and 0.200 mol of sodium ethanoate. $K_a$ = 1.74 × 10⁻⁵.
+
+$$[\mathrm{H^+}] = 1.74 \times 10^{-5} \times \frac{0.100}{0.200} = 8.70 \times 10^{-6} \qquad \mathrm{pH} = 5.06$$
+
+When [HA] = [A⁻], pH = p$K_a$.
+
+## Solubility product
+!def Solubility product, Ksp | The product of the concentrations of the ions in a saturated solution of a sparingly soluble salt, each raised to the power of its number in the formula, at a given temperature.
+
+| Salt | Equilibrium | $K_{sp}$ | Units |
+| AgCl | $\mathrm{AgCl(s) \rightleftharpoons Ag^+ + Cl^-}$ | $[\mathrm{Ag^+}][\mathrm{Cl^-}]$ | mol² dm⁻⁶ |
+| PbI₂ | $\mathrm{PbI_2(s) \rightleftharpoons Pb^{2+} + 2I^-}$ | $[\mathrm{Pb^{2+}}][\mathrm{I^-}]^2$ | mol³ dm⁻⁹ |
+| Ag₂CrO₄ | $\mathrm{Ag_2CrO_4(s) \rightleftharpoons 2Ag^+ + CrO_4^{2-}}$ | $[\mathrm{Ag^+}]^2[\mathrm{CrO_4^{2-}}]$ | mol³ dm⁻⁹ |
+
+The solid is not included.
+
+### Calculations
+Let the solubility be s mol dm⁻³.
+
+- **AgCl:** [Ag⁺] = [Cl⁻] = s, so $K_{sp}$ = s². With $K_{sp}$ = 1.8 × 10⁻¹⁰: s = 1.3 × 10⁻⁵ mol dm⁻³.
+- **PbI₂:** [Pb²⁺] = s and [I⁻] = 2s, so $K_{sp}$ = s × (2s)² = **4s³**. With s = 1.5 × 10⁻³: $K_{sp}$ = 4 × (1.5 × 10⁻³)³ = 1.4 × 10⁻⁸ mol³ dm⁻⁹.
+
+A precipitate forms when the ionic product of the mixed solutions is **greater than $K_{sp}$**.
+
+## The common ion effect
+!def Common ion effect | The reduction in the solubility of a sparingly soluble salt in a solution that already contains one of its ions.
+
+Adding Cl⁻ ions (from NaCl) to a saturated solution of AgCl increases [Cl⁻]. The equilibrium $\mathrm{AgCl(s) \rightleftharpoons Ag^+ + Cl^-}$ moves to the **left**, so more AgCl precipitates: [Ag⁺] falls until [Ag⁺][Cl⁻] equals $K_{sp}$ again.
+
+**Example.** Solubility of AgCl in 0.10 mol dm⁻³ NaCl:
+
+$$[\mathrm{Ag^+}] = \frac{K_{sp}}{[\mathrm{Cl^-}]} = \frac{1.8 \times 10^{-10}}{0.10} = 1.8 \times 10^{-9}\ \text{mol dm}^{-3}$$
+
+This is far less than its solubility in pure water, 1.3 × 10⁻⁵ mol dm⁻³.
+>>>
+F: $\mathrm{pH} = -\log[\mathrm{H^+}]$ :: and [H⁺] = 10^−pH.
+F: $K_w = [\mathrm{H^+}][\mathrm{OH^-}] = 1.00 \times 10^{-14}$ :: mol² dm⁻⁶ at 298 K.
+F: $[\mathrm{H^+}] = \sqrt{K_a \times c}$ :: Weak acid of concentration c.
+F: $[\mathrm{H^+}] = K_a \times \dfrac{[\mathrm{HA}]}{[\mathrm{A^-}]}$ :: Buffer solution.
+W: For a strong alkali, find [OH⁻] first, then [H⁺] = Kw ÷ [OH⁻].
+W: A weak acid needs the square root: [H⁺] = √(Ka × c). Do not use [H⁺] = c.
+W: For PbI₂, [I⁻] is 2s and it is squared: Ksp = 4s³.
+W: A buffer needs both the weak acid and its conjugate base in large amounts.
+W: Give pH to two decimal places.
+M: Conjugate acid–base pair :: two species that differ by **one proton (H⁺)**
+M: Conjugate base of CH₃COOH; conjugate acid of NH₃ :: **CH₃COO⁻**; **NH₄⁺**
+M: Definition of pH :: **pH = −log[H⁺]**
+M: Expression for Kw and its value at 298 K :: **Kw = [H⁺][OH⁻] = 1.00 × 10⁻¹⁴ mol² dm⁻⁶**
+M: Expression for Ka of a weak acid HA :: **Ka = [H⁺][A⁻] ÷ [HA]**
+M: Definition of pKa :: **pKa = −log Ka**
+M: [H⁺] in a strong monoprotic acid :: equal to the **concentration of the acid**
+M: [H⁺] in a strong alkali :: **Kw ÷ [OH⁻]**
+M: [H⁺] in a weak acid :: **√(Ka × c)**
+M: Define buffer solution :: a solution that **resists changes in pH** when **small amounts of acid or alkali** are added
+M: How to make an acidic buffer :: a **weak acid and its salt** (conjugate base), e.g. ethanoic acid and sodium ethanoate
+M: How a buffer removes added acid :: $\mathrm{CH_3COO^- + H^+ \rightarrow CH_3COOH}$
+M: How a buffer removes added alkali :: $\mathrm{CH_3COOH + OH^- \rightarrow CH_3COO^- + H_2O}$
+M: Buffer in blood :: **HCO₃⁻** ions: $\mathrm{H^+ + HCO_3^- \rightleftharpoons H_2CO_3}$
+M: [H⁺] in a buffer :: **Ka × [HA] ÷ [A⁻]**
+M: Define solubility product :: the **product of the ion concentrations** in a **saturated solution**, each raised to the power of its number in the formula
+M: Ksp expression for PbI₂ :: **[Pb²⁺][I⁻]²**, units mol³ dm⁻⁹
+M: Common ion effect :: the solubility of a sparingly soluble salt is **reduced** in a solution containing **one of its ions**
+C: [1] What is the pH of 0.010 mol dm⁻³ hydrochloric acid? | 0.01 | 1.00 | *2.00 | 12.00 | pH = −log(0.010) = 2.00.
+C: [1] What is the conjugate base of the hydrogencarbonate ion, HCO₃⁻? | H₂CO₃ | *CO₃²⁻ | CO₂ | OH⁻ | Remove one proton.
+C: [1] Which mixture is a buffer solution? | HCl and NaCl | NaOH and NaCl | *CH₃COOH and CH₃COONa | HNO₃ and NaNO₃ | A weak acid with its salt.
+C: [1] What is the expression for the solubility product of calcium fluoride, CaF₂? | [Ca²⁺][F⁻] | [Ca²⁺][2F⁻] | *[Ca²⁺][F⁻]² | [Ca²⁺]²[F⁻] | The fluoride concentration is squared.
+C: [1] Silver chloride is less soluble in aqueous sodium chloride than in water. What is this called? | buffering | hydrolysis | *the common ion effect | disproportionation | The chloride ion is common to both.
+N: [2] Calculate the pH of 0.0250 mol dm⁻³ aqueous sodium hydroxide at 298 K. (Kw = 1.00 × 10⁻¹⁴ mol² dm⁻⁶) => 12.4 ~ 12.40 ~ 12.398 {-log10(1e-14/0.025)} | C1 [H⁺] = 1.00 × 10⁻¹⁴ ÷ 0.0250 = 4.00 × 10⁻¹³ mol dm⁻³ | A1 pH = −log(4.00 × 10⁻¹³) = 12.40
+N: [2] Calculate the pH of 0.0500 mol dm⁻³ propanoic acid. (Ka = 1.35 × 10⁻⁵ mol dm⁻³) => 3.09 ~ 3.1 ~ 3.085 {-log10(sqrt(1.35e-5*0.05))} | C1 [H⁺] = √(1.35 × 10⁻⁵ × 0.0500) = 8.22 × 10⁻⁴ mol dm⁻³ | A1 pH = 3.09
+N: [2] A buffer contains 0.150 mol dm⁻³ ethanoic acid and 0.100 mol dm⁻³ sodium ethanoate. Calculate its pH. (Ka = 1.74 × 10⁻⁵ mol dm⁻³) => 4.58 ~ 4.6 ~ 4.583 {-log10(1.74e-5*0.15/0.1)} | C1 [H⁺] = 1.74 × 10⁻⁵ × (0.150 ÷ 0.100) = 2.61 × 10⁻⁵ mol dm⁻³ | A1 pH = 4.58
+N: [2] The solubility of barium sulfate is 1.05 × 10⁻⁵ mol dm⁻³. Calculate its Ksp. Give your answer in the form x × 10⁻¹⁰ and enter x. => 1.1 ~ 1.10 ~ 1.1025 {1.05*1.05} | C1 Ksp = [Ba²⁺][SO₄²⁻] = s² | A1 (1.05 × 10⁻⁵)² = 1.10 × 10⁻¹⁰ mol² dm⁻⁶
+Q: [1] Define the term buffer solution.
++ a solution that resists changes in pH when small amounts of acid or alkali are added :: resist|minimis|little change
+A: A buffer solution is a solution that resists changes in pH when small amounts of acid or alkali are added.
+Q: [4] Explain, with equations, how a solution of ethanoic acid and sodium ethanoate acts as a buffer.
++ it contains large amounts (a reservoir) of both CH₃COOH and CH₃COO⁻ :: large|reservoir|high concentration|both
++ added H⁺ is removed: CH₃COO⁻ + H⁺ → CH₃COOH :: ethanoate ion|CH3COO- + H|conjugate base|react with the H|removes the H|remove H
++ added OH⁻ is removed: CH₃COOH + OH⁻ → CH₃COO⁻ + H₂O :: hydroxide|OH
++ so the ratio of acid to salt (and the pH) hardly changes :: ratio|hardly|little|small change|constant
+A: The solution contains large amounts of both ethanoic acid and ethanoate ions. When acid is added, the ethanoate ion reacts with the H⁺ ions: CH₃COO⁻ + H⁺ → CH₃COOH. When alkali is added, the hydroxide ions react with the acid: CH₃COOH + OH⁻ → CH₃COO⁻ + H₂O. The ratio of acid to salt hardly changes, so the pH stays almost constant.
+Q: [3] Explain why silver chloride is less soluble in aqueous sodium chloride than in water.
++ sodium chloride provides chloride ions (a common ion) :: chloride ion|common ion|Cl-
++ the equilibrium AgCl(s) ⇌ Ag⁺ + Cl⁻ moves to the left :: left|reverse|backward
++ so more silver chloride precipitates (less dissolves), keeping [Ag⁺][Cl⁻] equal to Ksp :: precipitat|less dissolve|Ksp
+A: Sodium chloride provides chloride ions, a common ion. This moves the equilibrium AgCl(s) ⇌ Ag⁺ + Cl⁻ to the left, so more silver chloride precipitates and less dissolves.
+
+== ca-25-2
+S: When a solute is shaken with two liquids that do not mix, it shares itself between them in a fixed ratio: the partition coefficient. A solute goes mostly into the solvent whose polarity matches its own.
+<<<
+## Partition
+Two **immiscible** solvents, such as water and an organic solvent, form two layers. A solute that dissolves in both distributes itself between them. Molecules of solute move across the boundary in both directions until the two rates are equal: a **dynamic equilibrium**.
+
+!def Partition coefficient, Kpc | The ratio of the concentrations of a solute in two immiscible solvents at equilibrium.
+
+$$K_{pc} = \frac{[\text{solute in organic solvent}]}{[\text{solute in water}]}$$
+
+- $K_{pc}$ has **no units**: the concentration units cancel.
+- It is constant at a given **temperature**.
+- It applies when the solute is in the **same physical state** (the same molecular form) in both solvents.
+- The question states which solvent is on top of the ratio. Check it.
+
+## Calculating Kpc
+**Example 1.** 100 cm³ of water containing 0.400 g of iodine is shaken with 20.0 cm³ of an organic solvent. Afterwards 0.060 g of iodine remains in the water.
+
+- in the organic layer: 0.400 − 0.060 = 0.340 g in 20.0 cm³: 0.0170 g cm⁻³
+- in the water: 0.060 g in 100 cm³: 6.0 × 10⁻⁴ g cm⁻³
+
+$$K_{pc} = \frac{0.0170}{6.0 \times 10^{-4}} = 28$$
+
+Any concentration units can be used, as long as they are the same for both layers.
+
+## Using Kpc
+**Example 2.** 2.00 g of X is dissolved in 100 cm³ of water. It is shaken with 50.0 cm³ of ether. $K_{pc}$ (ether/water) = 4.00. What mass of X is extracted?
+
+Let the mass extracted be m g.
+
+$$4.00 = \frac{m / 50.0}{(2.00 - m) / 100}$$
+
+$$4.00 = \frac{2m}{2.00 - m} \qquad 8.00 - 4.00m = 2m \qquad m = 1.33\ \text{g}$$
+
+### Several small extractions are better than one large one
+Using the 50 cm³ of ether as two separate 25 cm³ portions removes more X in total than using it all at once: each fresh portion sets up a new equilibrium with what is left in the water.
+
+## Polarity
+"Like dissolves like." The value of $K_{pc}$ depends on the **polarities of the solute and of the two solvents**.
+
+| Solute | More soluble in | $K_{pc}$ (organic/water) |
+| **non-polar**, e.g. iodine, I₂ | the **non-polar** organic solvent: only id–id forces are needed, and iodine cannot hydrogen-bond with water | **large** (much greater than 1) |
+| **polar, hydrogen-bonding**, e.g. ammonia, ethanoic acid | **water**: it forms hydrogen bonds with water molecules | **small** (less than 1) |
+
+A solute dissolves when the forces it can form with the solvent are similar in strength to the forces that had to be broken in the solute and in the solvent.
+
+## Where partition is used
+- **Solvent extraction:** removing an organic product from an aqueous reaction mixture with a separating funnel.
+- **Chromatography:** components separate because they partition differently between the mobile and stationary phases.
+- Predicting how a drug or pesticide distributes between water and fatty tissue.
+>>>
+F: $K_{pc} = \dfrac{[\text{solute in solvent 1}]}{[\text{solute in solvent 2}]}$ :: At equilibrium, at constant temperature; no units.
+W: Use concentrations, not masses, unless the two volumes are equal.
+W: Check which solvent is on the top of the ratio.
+W: The two solvents must be immiscible.
+W: Kpc has no units.
+M: Define partition coefficient :: the **ratio of the concentrations** of a solute in **two immiscible solvents** at **equilibrium**
+M: Units of Kpc :: **none**
+M: What Kpc depends on :: **temperature** (and the nature of the solute and solvents)
+M: Meaning of immiscible :: the two liquids **do not mix**: they form two layers
+M: Kind of equilibrium in partition :: **dynamic**: solute crosses the boundary in both directions at equal rates
+M: When Kpc can be applied :: when the solute is in the **same physical state (molecular form)** in both solvents
+M: Solvent in which a non-polar solute is more soluble :: the **non-polar** (organic) solvent
+M: Solvent in which a polar, hydrogen-bonding solute is more soluble :: **water** (the polar solvent)
+M: Why iodine is more soluble in hexane than in water :: iodine is **non-polar**; it forms **id–id forces** with hexane and cannot hydrogen-bond with water
+M: Why ammonia is more soluble in water than in an organic solvent :: it forms **hydrogen bonds** with water
+M: Why several small extractions are better than one large one :: **more solute is extracted** in total
+M: A use of partition :: **solvent extraction** (or chromatography)
+C: [1] What are the units of a partition coefficient? | mol dm⁻³ | g cm⁻³ | dm³ mol⁻¹ | *no units | It is a ratio of two concentrations.
+C: [1] Iodine is shaken with water and hexane. Where is most of the iodine found at equilibrium? | in the water | *in the hexane | equally in both | at the boundary only | Iodine is non-polar, like hexane.
+C: [1] Which change alters the value of Kpc for a given solute and pair of solvents? | adding more solute | using more of one solvent | shaking for longer | *changing the temperature | It is an equilibrium constant.
+N: [2] At equilibrium the concentration of a solute is 0.150 mol dm⁻³ in an organic solvent and 0.0120 mol dm⁻³ in water. Calculate Kpc (organic/water). => 12.5 {0.15/0.012} | C1 Kpc = [solute in organic] ÷ [solute in water] | A1 0.150 ÷ 0.0120 = 12.5
+N: [3] 1.00 g of Y is dissolved in 50.0 cm³ of water and shaken with 50.0 cm³ of an organic solvent. Kpc (organic/water) = 9.00. Calculate the mass of Y, in g, extracted into the organic solvent. => 0.9 ~ 0.90 ~ 0.900 {9/10} | C1 9.00 = (m ÷ 50.0) ÷ ((1.00 − m) ÷ 50.0) | C1 9.00 − 9.00m = m | A1 m = 0.900 g
+Q: [2] Define the term partition coefficient.
++ the ratio of the concentrations of a solute :: ratio
++ in two immiscible solvents at equilibrium :: immiscible|equilibrium
+A: The partition coefficient is the ratio of the concentrations of a solute in two immiscible solvents at equilibrium.
+Q: [3] Explain why iodine has a large partition coefficient between hexane and water.
++ iodine is non-polar :: non-polar|nonpolar|not polar
++ it is more soluble in hexane, which is also non-polar (id–id forces between them) :: hexane
++ it cannot form hydrogen bonds with water (so it is only slightly soluble in water) :: hydrogen bond|water
+A: Iodine is non-polar, so it is much more soluble in hexane, which is also non-polar and forms instantaneous dipole forces with it. Iodine cannot form hydrogen bonds with water, so it is only slightly soluble in water.

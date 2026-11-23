@@ -1,0 +1,157 @@
+/* Geodesic: deeper lesson content for GCSE / IGCSE topics. */
+(function () {
+  const D = (window.WL = window.WL || {}).deep = window.WL.deep || {};
+  Object.assign(D, {
+    'gcse-suvat': {
+      keys: [
+        'SUVAT works only when the acceleration is constant. List s, u, v, a, t: you know three, want a fourth, and pick the equation that leaves out the fifth.',
+        'On a velocity–time graph the gradient is the acceleration and the area under the line is the displacement.',
+        'Choose a positive direction and give every vector (s, u, v, a) a sign. For a ball thrown up with up positive, a = −9.8 m/s².',
+        'In free fall near Earth (no air resistance) every object accelerates at g ≈ 9.8 m/s² downwards, whatever its mass.'
+      ],
+      worked: [{ q: 'A car at 25 m/s brakes with a constant deceleration of 5.0 m/s². How far does it travel before stopping, and how long does it take?',
+        steps: ['u = 25 m/s, v = 0, a = −5.0 m/s²; want s and t.', '$v^2 = u^2 + 2as$: 0 = 625 − 10s, so s = 62.5 m.', '$v = u + at$: 0 = 25 − 5.0t, so t = 5.0 s.'], ans: '62.5 m in 5.0 s.' }],
+      mistakes: [['Using SUVAT when the acceleration changes (strong air resistance, springs).', 'Check that a is constant; otherwise use graphs or calculus.'],
+        ['Dropping the minus sign of a when something slows down or rises.', 'Fix a positive direction and keep it for every quantity.'],
+        ['Treating s as the distance travelled when the object turns back.', 's is displacement; split the motion at the turning point to get distance.']],
+      exam: [{ q: 'A ball is thrown vertically upwards at 15 m/s. Ignoring air resistance (g = 9.8 m/s²), find (a) the maximum height, (b) the time until it returns to the thrower’s hand.', marks: 4,
+        sol: ['Up positive: u = 15 m/s, a = −9.8 m/s², v = 0 at the top.', '(a) $0 = 15^2 - 2(9.8)s$, so s = 225/19.6 = 11.5 m.', '(b) Time to the top t = 15/9.8 = 1.53 s; by symmetry the total is 3.06 s ≈ 3.1 s.', 'Check: setting s = 0 in $s = ut + \\tfrac12 at^2$ gives t = 2u/g = 3.06 s.'] },
+      { q: 'A v–t graph rises in a straight line from 0 to 12 m/s in 4.0 s, then stays at 12 m/s for 6.0 s. Find the acceleration in the first part and the total distance.', marks: 3,
+        sol: ['a = 12/4.0 = 3.0 m/s².', 'Triangle: ½ × 4.0 × 12 = 24 m; rectangle: 6.0 × 12 = 72 m.', 'Total distance = 96 m.'] }]
+    },
+    'gcse-energy': {
+      keys: [
+        'Energy is conserved: it moves between stores (kinetic, gravitational, elastic, thermal, chemical, nuclear) but the total never changes.',
+        'Work done = force × distance moved in the direction of the force, $W = Fs$. Doing work transfers energy; 1 J = 1 N m.',
+        '$E_k = \\tfrac12 mv^2$ and $\\Delta E_p = mgh$. Doubling the speed quadruples the kinetic energy.',
+        'Efficiency = useful output ÷ total input. Power is the rate of transfer, $P = E/t$, in watts.'
+      ],
+      worked: [{ q: 'A 0.50 kg ball is dropped from 3.2 m. Ignoring air resistance, how fast is it moving just before it hits the ground? (g = 9.8 N/kg)',
+        steps: ['GPE lost = mgh = 0.50 × 9.8 × 3.2 = 15.7 J.', 'All of it becomes kinetic energy: ½ × 0.50 × v² = 15.7.', 'v² = 62.7, so v = 7.9 m/s. (The mass cancels: v = √(2gh).)'], ans: '7.9 m/s.' }],
+      mistakes: [['Forgetting to square the speed in ½mv².', 'Doubling v gives four times the kinetic energy.'],
+        ['Using the length of a slope as h in mgh.', 'h is the vertical height change.'],
+        ['Saying energy is lost or used up.', 'It is transferred, often to thermal stores of the surroundings, where it is less useful (dissipated).']],
+      exam: [{ q: 'A motor lifts a 40 kg load through 12 m in 20 s; its input power is 400 W. Find (a) the useful work done, (b) the useful output power, (c) the efficiency. (g = 9.8 N/kg)', marks: 4,
+        sol: ['(a) W = mgh = 40 × 9.8 × 12 = 4704 J ≈ 4.7 kJ.', '(b) P = W/t = 4704/20 = 235 W.', '(c) Efficiency = 235/400 = 0.59, i.e. 59%.'] },
+      { q: 'A 1200 kg car speeds up from 10 m/s to 20 m/s. How much work must the engine do, ignoring friction?', marks: 3,
+        sol: ['Initial $E_k$ = ½ × 1200 × 10² = 60 000 J.', 'Final $E_k$ = ½ × 1200 × 20² = 240 000 J.', 'Work = 240 000 − 60 000 = 180 000 J = 180 kJ.'] }]
+    },
+    'gcse-circuits': {
+      keys: [
+        'Resistance R = V/I, in ohms. An ohmic conductor at constant temperature has a straight I–V graph through the origin; a filament lamp’s resistance rises as it heats, so its graph curves.',
+        'Series: the same current everywhere, p.d.s add, $R = R_1 + R_2$.',
+        'Parallel: the same p.d. across each branch, currents add, and $1/R = 1/R_1 + 1/R_2$, so the total is less than the smallest branch.',
+        'Charge Q = It; energy E = QV = VIt; power P = VI = I²R.'
+      ],
+      worked: [{ q: 'A 12 V battery drives a 4.0 Ω resistor in series with a parallel pair of 6.0 Ω and 3.0 Ω. Find the total resistance and the battery current.',
+        steps: ['Parallel pair: 1/R = 1/6 + 1/3 = 1/2, so R = 2.0 Ω.', 'Total R = 4.0 + 2.0 = 6.0 Ω.', 'I = V/R = 12/6.0 = 2.0 A.'], ans: '6.0 Ω; 2.0 A.' }],
+      mistakes: [['Adding parallel resistances directly.', 'Use 1/R = 1/R₁ + 1/R₂; the result is smaller than either.'],
+        ['Forgetting to flip the reciprocal at the end.', '1/R = 0.5 Ω⁻¹ means R = 2 Ω.'],
+        ['Assuming every component has a fixed resistance.', 'Lamps, diodes and thermistors are non-ohmic; R = V/I still defines R at each point.']],
+      exam: [{ q: 'In the worked-example circuit, find the p.d. across the 4.0 Ω resistor and the current in the 3.0 Ω resistor.', marks: 3,
+        sol: ['V = IR = 2.0 × 4.0 = 8.0 V across the 4.0 Ω resistor.', 'The parallel pair has 12 − 8.0 = 4.0 V across it.', 'Current in the 3.0 Ω resistor = 4.0/3.0 = 1.3 A.'] },
+      { q: 'Sketch the I–V graph of a filament lamp and explain its shape.', marks: 3,
+        sol: ['An S-shaped curve through the origin, symmetric for negative p.d.', 'As the current increases the filament gets hotter.', 'Its ions vibrate more, so the resistance increases and the graph becomes less steep.'] }]
+    },
+    'gcse-newton': {
+      keys: [
+        'Momentum p = mv is a vector, in kg m/s. With no external force, the total momentum before a collision or explosion equals the total after.',
+        'Newton’s second law in momentum form: force = rate of change of momentum, $F = \\Delta p/\\Delta t$.',
+        'Newton’s third law: interacting objects push on each other with equal and opposite forces for the same time, so their momentum changes are equal and opposite.',
+        'Crumple zones, airbags and seat belts lengthen the collision time, so the same momentum change needs a smaller force.'
+      ],
+      worked: [{ q: 'A 2.0 kg trolley at 3.0 m/s hits a stationary 1.0 kg trolley and they stick together. Find their common speed and the kinetic energy lost.',
+        steps: ['Momentum before = 2.0 × 3.0 + 0 = 6.0 kg m/s.', 'After: (2.0 + 1.0)v = 6.0, so v = 2.0 m/s.', 'KE before = ½ × 2.0 × 3.0² = 9.0 J; after = ½ × 3.0 × 2.0² = 6.0 J.', 'KE lost = 3.0 J, to heat, sound and deformation.'], ans: '2.0 m/s; 3.0 J lost.' }],
+      mistakes: [['Adding the momenta of objects moving towards each other.', 'Take one direction as positive; velocities the other way are negative.'],
+        ['Assuming kinetic energy is always conserved.', 'Momentum always is; kinetic energy only in elastic collisions.'],
+        ['Thinking the heavier object pushes harder.', 'By the third law the forces are equal and opposite, whatever the masses.']],
+      exam: [{ q: 'A 60 g tennis ball arrives at 20 m/s and leaves the racket at 30 m/s in the opposite direction. Contact lasts 5.0 ms. Find the average force on the ball.', marks: 3,
+        sol: ['Final direction positive: Δp = 0.060 × 30 − 0.060 × (−20) = 1.8 + 1.2 = 3.0 kg m/s.', 'F = Δp/Δt = 3.0/0.0050 = 600 N.'] },
+      { q: 'A 50 kg skater at rest pushes a 70 kg skater at rest, who moves off at 1.5 m/s. Find the velocity of the 50 kg skater.', marks: 2,
+        sol: ['Total momentum is zero before, so after: 50v + 70 × 1.5 = 0.', 'v = −2.1 m/s: 2.1 m/s in the opposite direction.'] }]
+    },
+    'gcse-em-spectrum': {
+      keys: [
+        'All electromagnetic waves are transverse and travel at $3.0\\times10^8$ m/s in a vacuum. In order of rising frequency: radio, microwaves, infrared, visible, ultraviolet, X-rays, gamma rays.',
+        'Higher frequency means shorter wavelength and more energy per photon; UV, X-rays and gamma rays are ionising and can damage cells.',
+        'Refraction: light changes speed, and direction unless it meets the boundary along the normal. Refractive index $n = c/v$; Snell’s law $n_1\\sin\\theta_1 = n_2\\sin\\theta_2$.',
+        'From glass into air, beyond the critical angle ($\\sin C = 1/n$) all the light reflects: total internal reflection, used in optical fibres.'
+      ],
+      worked: [{ q: 'Light passes from air into glass (n = 1.50) with an angle of incidence of 40°. Find the angle of refraction and the speed of light in the glass.',
+        steps: ['$\\sin r = \\sin 40°/1.50 = 0.643/1.50 = 0.429$.', 'r = 25.4°.', 'v = c/n = 3.0 × 10⁸/1.50 = 2.0 × 10⁸ m/s.'], ans: '25°; 2.0 × 10⁸ m/s.' }],
+      mistakes: [['Thinking the frequency changes when light refracts.', 'The source fixes the frequency; speed and wavelength change.'],
+        ['Measuring angles from the surface.', 'Angles of incidence and refraction are measured from the normal.'],
+        ['Expecting total internal reflection from air into glass.', 'It needs travel from the slower medium into the faster one, beyond the critical angle.']],
+      exam: [{ q: 'Calculate the critical angle for diamond (n = 2.42) and explain why diamonds sparkle.', marks: 3,
+        sol: ['sin C = 1/2.42 = 0.413, so C = 24.4°.', 'The critical angle is small, so most light inside meets a face beyond it and is totally internally reflected several times.', 'It leaves through only a few faces and is split into colours (dispersion), so the stone sparkles.'] },
+      { q: 'A radio station broadcasts at 100 MHz. Calculate the wavelength.', marks: 2, sol: ['λ = c/f = 3.0 × 10⁸ / 1.00 × 10⁸ = 3.0 m.'] }]
+    },
+    'gcse-magnetism': {
+      keys: [
+        'A current-carrying wire in a magnetic field feels a force (the motor effect) unless it lies along the field. When it is perpendicular, $F = BIL$.',
+        'Direction: Fleming’s left-hand rule (First finger Field, seCond finger Current, thuMb Motion). Reversing either the current or the field reverses the force.',
+        'Magnetic flux density B is measured in tesla: 1 T exerts 1 N on 1 m of wire carrying 1 A at right angles.',
+        'In a d.c. motor the forces on opposite sides of the coil turn it; a split-ring commutator reverses the current every half turn so it keeps turning the same way.'
+      ],
+      worked: [{ q: 'A 0.20 m length of wire carrying 3.0 A lies at right angles to a uniform 0.050 T field. Calculate the force on it.',
+        steps: ['F = BIL = 0.050 × 3.0 × 0.20 = 0.030 N.'], ans: '0.030 N, perpendicular to both the wire and the field.' }],
+      mistakes: [['Using the right hand for the motor effect.', 'Left hand for motors (force on a current); right hand for generators.'],
+        ['Expecting a force on a wire parallel to the field.', 'F = BIL sin θ, which is zero when θ = 0.'],
+        ['Thinking the commutator reverses the magnetic field.', 'It reverses the current in the coil every half turn.']],
+      exam: [{ q: 'State three ways of increasing the turning effect on the coil of a d.c. motor.', marks: 3,
+        sol: ['Increase the current.', 'Use a stronger magnet (larger B).', 'Use more turns, or a coil of larger area.'] },
+      { q: 'A wire carrying 2.0 A feels a force of 0.012 N when 6.0 cm of it lies perpendicular to a magnetic field. Calculate B.', marks: 2,
+        sol: ['B = F/(IL) = 0.012/(2.0 × 0.060) = 0.10 T.'] }]
+    },
+    'gcse-shc': {
+      keys: [
+        'Specific heat capacity c is the energy to raise 1 kg by 1 °C: $\\Delta E = mc\\Delta\\theta$. Water’s c = 4200 J/(kg °C) is very large, which keeps coastal climates mild.',
+        'During a change of state the temperature stays constant: the energy breaks bonds instead of speeding up the particles.',
+        'Specific latent heat L is the energy to change the state of 1 kg without a temperature change: $E = mL$. Water: $L_f$ = 334 kJ/kg, $L_v$ = 2260 kJ/kg.',
+        'Boiling needs far more energy than melting because the particles must be separated completely, not just loosened.'
+      ],
+      worked: [{ q: 'How much energy turns 0.50 kg of ice at 0 °C into water at 20 °C? ($L_f$ = 334 000 J/kg, c = 4200 J/(kg °C))',
+        steps: ['Melting: E₁ = mL = 0.50 × 334 000 = 167 000 J.', 'Warming: E₂ = mcΔθ = 0.50 × 4200 × 20 = 42 000 J.', 'Total = 209 000 J.'], ans: '≈ 2.1 × 10⁵ J.' }],
+      mistakes: [['Using mcΔθ while ice melts or water boils.', 'Δθ = 0 during a change of state; use E = mL.'],
+        ['Mixing kJ with J, or g with kg.', 'Convert to J and kg before calculating.'],
+        ['Thinking the temperature rises while ice melts.', 'It stays at 0 °C until all the ice has melted.']],
+      exam: [{ q: 'A 2.0 kW kettle heats 1.2 kg of water from 15 °C to 100 °C. Assuming no losses, how long does it take? (c = 4200 J/(kg °C))', marks: 3,
+        sol: ['E = mcΔθ = 1.2 × 4200 × 85 = 428 400 J.', 't = E/P = 428 400/2000 = 214 s ≈ 3.6 min.'] },
+      { q: 'Sketch the temperature–time graph for ice heated steadily from −10 °C to steam at 110 °C, and explain the flat parts.', marks: 3,
+        sol: ['Rising to 0 °C, flat at 0 °C (melting), rising to 100 °C, a much longer flat part at 100 °C (boiling), then rising again.', 'On the flat parts the energy breaks bonds (latent heat) instead of raising the particles’ kinetic energy, so the temperature is constant.', 'The boiling plateau is about 6.8 times as long because $L_v ≈ 6.8 L_f$.'] }]
+    },
+    'gcse-radioactivity': {
+      keys: [
+        'Unstable nuclei decay at random, emitting alpha (a helium nucleus, strongly ionising, stopped by paper), beta (a fast electron, stopped by a few mm of aluminium) or gamma (an EM wave, reduced by thick lead).',
+        'Activity is the number of decays per second, in becquerels (Bq), measured with a Geiger–Müller tube after subtracting the background count.',
+        'Half-life is the time for half the undecayed nuclei, and so the activity, to halve. After n half-lives, $N = N_0/2^n$.',
+        'One nucleus is unpredictable, but huge numbers decay predictably: the fraction decaying per second is fixed.'
+      ],
+      worked: [{ q: 'A sample has an activity of 800 Bq and a half-life of 6 hours. What is its activity after one day?',
+        steps: ['One day = 24 h = 4 half-lives.', 'A = 800/2⁴ = 800/16 = 50 Bq.'], ans: '50 Bq.' }],
+      mistakes: [['Thinking everything has decayed after two half-lives.', 'After two half-lives a quarter remains; it never quite reaches zero.'],
+        ['Forgetting to subtract the background count.', 'Measure it separately and subtract it from every reading.'],
+        ['Confusing irradiation with contamination.', 'Irradiated objects do not become radioactive; contamination means radioactive atoms are on or in the object.']],
+      exam: [{ q: 'Iodine-131 has a half-life of 8 days. What fraction of a sample remains after 24 days, and what fraction has decayed?', marks: 2,
+        sol: ['24/8 = 3 half-lives, so (½)³ = 1/8 remains.', '7/8 has decayed.'] },
+      { q: 'Write a balanced equation for the alpha decay of uranium-238 (Z = 92).', marks: 2,
+        sol: ['$^{238}_{92}\\mathrm{U} \\to\\, ^{234}_{90}\\mathrm{Th} +\\, ^{4}_{2}\\alpha$', 'Mass numbers balance (238 = 234 + 4) and so do atomic numbers (92 = 90 + 2).'] }]
+    },
+    'gcse-orbits': {
+      keys: [
+        'Light from distant galaxies is red-shifted: the absorption lines appear at longer wavelengths than in the laboratory, and more so for more distant galaxies.',
+        'Red-shift shows galaxies are receding, faster the further away they are (Hubble’s law, v = H₀d): the universe is expanding.',
+        'Big Bang theory: the universe began about 13.8 billion years ago in an extremely hot, dense state and has been expanding and cooling ever since.',
+        'The cosmic microwave background is radiation from the early universe, stretched to microwave wavelengths: strong evidence for the Big Bang.'
+      ],
+      worked: [{ q: 'A hydrogen line with laboratory wavelength 656.3 nm is observed at 669.4 nm. Find the red-shift and the recession speed.',
+        steps: ['Δλ = 669.4 − 656.3 = 13.1 nm.', 'z = Δλ/λ = 13.1/656.3 = 0.0200.', 'v = zc = 0.0200 × 3.0 × 10⁸ = 6.0 × 10⁶ m/s (valid because v ≪ c).'], ans: 'z = 0.020; v ≈ 6000 km/s.' }],
+      mistakes: [['Saying red-shifted light becomes red.', 'Every wavelength shifts towards the red end of the spectrum.'],
+        ['Concluding that we are at the centre of the expansion.', 'Every galaxy sees the others receding: there is no centre.'],
+        ['Picturing the Big Bang as an explosion into empty space.', 'Space itself expands; the Big Bang happened everywhere at once.']],
+      exam: [{ q: 'With H₀ = 70 km/s per Mpc, estimate the recession speed of a galaxy 200 Mpc away.', marks: 2, sol: ['v = H₀d = 70 × 200 = 14 000 km/s.'] },
+      { q: 'Describe two pieces of evidence for the Big Bang theory.', marks: 4,
+        sol: ['Red-shift increases with distance: the universe is expanding, so it was once much smaller and denser.', 'The cosmic microwave background: microwave radiation arriving almost equally from every direction, the cooled glow of the hot early universe.'] }]
+    }
+  });
+})();

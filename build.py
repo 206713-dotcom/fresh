@@ -111,7 +111,7 @@ def topic_card(index, topic):
 
 def subject_page(subject, next_subject):
     slug, name, code, group, symbol, description, topics = subject
-    if slug == "economics":
+    if slug in {"chemistry", "economics", "physics"}:
         return
     links = "".join(f'<li><a href="#topic-{index}">{escape(topic[0])}</a></li>'
                     for index, topic in enumerate(topics, 1))

@@ -30,10 +30,9 @@ for (const f of readdirSync(subjectsDir)) {
   }
 }
 
-// subjects/economics/
-const econDir = path.join(subjectsDir, "economics");
-if (existsSync(econDir)) {
-  cpSync(econDir, path.join(distSubjects, "economics"), { recursive: true });
+// Static subject apps and their lesson data.
+for (const subject of ["chemistry", "economics", "physics"]) {
+  cpSync(path.join(subjectsDir, subject), path.join(distSubjects, subject), { recursive: true });
 }
 
 // Compiled business app
