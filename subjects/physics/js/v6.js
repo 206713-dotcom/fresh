@@ -236,14 +236,68 @@
   const JSF = { floor: 'Math.floor', comb: 'COMB', fact: 'FACT', sqrt: 'Math.sqrt', sin: 'SIN', cos: 'COS', tan: 'TAN', asin: 'ASIN', acos: 'ACOS', atan: 'ATAN', ln: 'Math.log', log: 'Math.log10', exp: 'Math.exp', abs: 'Math.abs', pi: 'Math.PI', min: 'Math.min', max: 'Math.max' };
   const SIN = (d) => Math.sin((d * Math.PI) / 180), COS = (d) => Math.cos((d * Math.PI) / 180), TAN = (d) => Math.tan((d * Math.PI) / 180), ASIN = (x) => (Math.asin(x) * 180) / Math.PI, ACOS = (x) => (Math.acos(x) * 180) / Math.PI, ATAN = (x) => (Math.atan(x) * 180) / Math.PI;
   const FACT = (n) => { let r = 1; for (let i = 2; i <= Math.round(n); i++) r *= i; return r; }, COMB = (n, r) => FACT(n) / (FACT(r) * FACT(n - r));
+  const FUNCTIONS = { floor: Math.floor, comb: COMB, fact: FACT, sqrt: Math.sqrt, sin: SIN,
+    cos: COS, tan: TAN, asin: ASIN, acos: ACOS, atan: ATAN, ln: Math.log, log: Math.log10,
+    exp: Math.exp, abs: Math.abs, min: Math.min, max: Math.max };
+  const OPERATORS = {
+    '||': [1, (a, b, vars) => a(vars) || b(vars)], '&&': [2, (a, b, vars) => a(vars) && b(vars)],
+    '==': [3, (a, b, vars) => a(vars) === b(vars)], '!=': [3, (a, b, vars) => a(vars) !== b(vars)],
+    '<': [4, (a, b, vars) => a(vars) < b(vars)], '<=': [4, (a, b, vars) => a(vars) <= b(vars)],
+    '>': [4, (a, b, vars) => a(vars) > b(vars)], '>=': [4, (a, b, vars) => a(vars) >= b(vars)],
+    '+': [5, (a, b, vars) => a(vars) + b(vars)], '-': [5, (a, b, vars) => a(vars) - b(vars)],
+    '*': [6, (a, b, vars) => a(vars) * b(vars)], '/': [6, (a, b, vars) => a(vars) / b(vars)],
+    '%': [6, (a, b, vars) => a(vars) % b(vars)], '^': [7, (a, b, vars) => a(vars) ** b(vars)]
+  };
   const CACHE = new Map();
+  // Formula templates use arithmetic, named maths functions and range checks.
   function compile(expr) {
     if (CACHE.has(expr)) return CACHE.get(expr);
-    const js = expr.replace(/\^/g, '**').replace(/\b(floor|comb|fact|sqrt|sin|cos|tan|asin|acos|atan|ln|log|exp|abs|pi|min|max)\b/g, (m) => JSF[m]);
-    const names = [...new Set((expr.match(/\b[A-Za-z_]\w*\b/g) || []).filter((w) => !JSF[w]))];
-    const f = new Function('SIN', 'COS', 'TAN', 'ASIN', 'ACOS', 'ATAN', 'FACT', 'COMB', ...names, `return (${js});`);
-    const r = { names, run: (v) => f(SIN, COS, TAN, ASIN, ACOS, ATAN, FACT, COMB, ...names.map((n) => v[n])) };
-    CACHE.set(expr, r); return r;
+    const tokens = expr.match(/(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?|[a-z_]\w*|[<>=!]=|&&|\|\||[^\s]/gi) || [];
+    let cursor = 0;
+    const accept = token => tokens[cursor] === token && (++cursor, true);
+    const requireToken = token => { if (!accept(token)) throw new Error('Invalid practice formula: ' + expr); };
+    function atom() {
+      const token = tokens[cursor++];
+      if (token === '(') {
+        const value = expression(0);
+        requireToken(')');
+        return value;
+      }
+      if (token === '+' || token === '-') {
+        const value = expression(7);
+        return vars => token === '-' ? -value(vars) : +value(vars);
+      }
+      if (token === 'pi') return () => Math.PI;
+      if (token && /^[0-9.]/.test(token)) return () => Number(token);
+      if (token && /^[a-z_]\w*$/i.test(token)) {
+        if (!accept('(')) return vars => vars[token];
+        const fn = Object.hasOwn(FUNCTIONS, token) && FUNCTIONS[token];
+        if (!fn) throw new Error('Unknown practice formula function: ' + token);
+        const args = [expression(0)];
+        while (accept(',')) args.push(expression(0));
+        requireToken(')');
+        return vars => fn(...args.map(arg => arg(vars)));
+      }
+      throw new Error('Invalid practice formula: ' + expr);
+    }
+    function expression(minimum) {
+      let value = atom();
+      while (Object.hasOwn(OPERATORS, tokens[cursor])) {
+        const operator = tokens[cursor];
+        const [precedence, apply] = OPERATORS[operator];
+        if (precedence < minimum) break;
+        cursor++;
+        const left = value;
+        const right = expression(operator === '^' ? precedence : precedence + 1);
+        value = vars => apply(left, right, vars);
+      }
+      return value;
+    }
+    const run = expression(0);
+    if (cursor !== tokens.length) throw new Error('Invalid practice formula: ' + expr);
+    const result = { run };
+    CACHE.set(expr, result);
+    return result;
   }
   const NICE = { rho: 'ρ', lam: 'λ', theta: 'θ', th: 'θ', omega: 'ω', w: 'ω', mu: 'μ', eps: 'ε', phi: 'φ', alpha: 'α', beta: 'β', gamma: 'γ', delta: 'Δ', sigma: 'σ', tau: 'τ', nu: 'ν', eta: 'η', Dt: 'Δt', DT: 'ΔT', Dx: 'Δx', Dv: 'Δv', Dp: 'Δp', DE: 'ΔE', Dm: 'Δm', DQ: 'ΔQ', Dth: 'Δθ', Ek: 'Eₖ', Ep: 'Eₚ', v0: 'v₀', x0: 'x₀', N0: 'N₀', A0: 'A₀', I0: 'I₀', V0: 'V₀', Q0: 'Q₀', T0: 'T₀', t12: 't½', R1: 'R₁', R2: 'R₂', R3: 'R₃', C1: 'C₁', C2: 'C₂', m1: 'm₁', m2: 'm₂', u1: 'u₁', u2: 'u₂', v1: 'v₁', v2: 'v₂', n1: 'n₁', n2: 'n₂', p1: 'p₁', p2: 'p₂', V1: 'V₁', V2: 'V₂', T1: 'T₁', T2: 'T₂', F1: 'F₁', F2: 'F₂', d1: 'd₁', d2: 'd₂', Np: 'Nₚ', Ns: 'Nₛ', Vp: 'Vₚ', Vs: 'Vₛ', Ip: 'Iₚ', Is: 'Iₛ', f0: 'f₀', E0: 'E₀', B0: 'B₀', k_B: 'k_B', DU: 'ΔU', DS: 'ΔS', kappa: 'κ', hbar: 'ħ', me: 'mₑ', mn: 'mₙ', Ms: 'M☉', mc2: 'mc²', Ephot: 'E_photon', nmax: 'n_max', uy: 'u_y', dm: 'Δm', eps0: 'ε₀', H0: 'H₀', R0: 'R₀', lc: 'h/mₑc', Kb: 'K_before', Ka: 'K_after', Id: 'I_d', inv: '1/λ', vmax: 'v_max', amax: 'a_max', Tb: 'T_beat', sc: 'q/m', E1: 'E₁', E2: 'E₂', sb: 's_brake', pw: 'p_water', Pin: 'P_in', p0: 'p₀', hw: 'ħω', GM: 'GM', NA: 'Nₐ', n0: 'n₀', b: 'b', mc: 'mc', DG: 'ΔG', Dlam: 'Δλ', Df: 'Δf', DPhi: 'ΔΦ', Phi: 'Φ', lmax: 'λmax', rs: 'r_s', gam: 'γ', vrms: 'v_rms', Vrms: 'V_rms', Irms: 'I_rms', Vout: 'V_out', Vin: 'V_in', Ein: 'E_in', Eout: 'E_out', Eu: 'E_useful', R_T: 'R_T' };
   const nice = (n) => NICE[n] || n;
@@ -1588,7 +1642,7 @@
     const rules = t.id === 'smc' ? 'You start with 25 marks. Multiple choice: +4 right, −1 wrong, 0 blank (the traditional SMC rule). Questions 23 to 25 need a three-digit answer, as in the 2026 trial: we score them +4 if right and 0 otherwise.'
       : t.id === 'amc' ? '6 points for a right answer, 1.5 for a blank, 0 for a wrong answer.'
       : t.id === 'aime' ? 'Each answer is a whole number from 0 to 999. 1 point per right answer, no penalty.'
-      : 'Write full solutions on paper. When you finish, the model solutions and marking notes appear and you mark yourself out of 10 per problem.';
+      : 'Write full solutions on paper. When you finish, you can compare your answers with the worked solutions.';
     const head = `${trackbar()}${crumbs([['Competition maths', '#compete'], [t.short, '#compete-' + t.id], ['Mock paper']])}<header class="cm-head"><p class="cm-orgline">Mock paper · ${h.esc(t.line)}</p><h1>${h.esc(t.short)} mock paper</h1></header>`;
     if (!run || (run.done && !run.review)) {
       view.innerHTML = `<section class="cm-page cm-mock">${head}<div class="cm-rules"><p>${P.items.length} problems written for this site in the style of the ${h.esc(t.name)}. You have ${dur(t.mins)}. ${h.esc(rules)}</p><p>No calculator. Work on paper. The clock keeps running if you leave the page, and the paper is marked when time runs out.</p><button type="button" class="btn primary" data-mstart>Start the clock</button></div></section>`;
@@ -1605,7 +1659,7 @@
         : '<p class="cm-proofnote">Write your solution on paper.</p>';
       return `<li class="cm-mq" id="mq-${i}"><p class="cm-qmeta"><b class="cm-qn">${i + 1}</b>${p.t === 'proof' ? '<span>10 marks</span>' : ''}</p><div class="cm-qtext">${h.pr(p.q)}</div>${FIG(t.id + ':' + (i + 1))}${box}</li>`;
     };
-    view.innerHTML = `<section class="cm-page cm-mock">${head}<div class="cm-mbar"><span class="cm-clock" id="cm-clock">${fmt(end - Date.now())}</span><span class="cm-prog" id="cm-prog"></span><button type="button" class="btn small" data-mfinish>Finish and mark</button></div><ol class="cm-paper">${P.items.map(item).join('')}</ol><div class="cm-mfoot"><button type="button" class="btn primary" data-mfinish>Finish and mark</button></div></section>`;
+    view.innerHTML = `<section class="cm-page cm-mock">${head}<div class="cm-mbar"><span class="cm-clock" id="cm-clock">${fmt(end - Date.now())}</span><span class="cm-prog" id="cm-prog"></span><button type="button" class="btn small" data-mfinish>Finish practice</button></div><ol class="cm-paper">${P.items.map(item).join('')}</ol><div class="cm-mfoot"><button type="button" class="btn primary" data-mfinish>Finish practice</button></div></section>`;
     document.title = t.short + ' mock paper · Geodesic';
     h.typeset(view);
     const prog = () => { const n = P.items.filter((p, i) => p.t !== 'proof' && run.ans[i] != null && run.ans[i] !== '').length, all = P.items.filter((p) => p.t !== 'proof').length; const el = view.querySelector('#cm-prog'); if (el) el.textContent = all ? `${n} of ${all} answered` : ''; };
@@ -3798,7 +3852,7 @@ WL.lecMeta = [{"id":"calculus","title":"Calculus: the derivative and the integra
     }
     if (run.done) { renderReview(view, t, P, run, head); return; }
     const end = run.start + P.mins * 60000;
-    view.innerHTML = `<section class="cm-page cm-mock">${head}<div class="cm-mbar"><span class="cm-clock" id="cm-clock">${fmtT(end - Date.now())}</span><span class="cm-prog" id="cm-prog"></span><button type="button" class="btn small" data-mfinish>Finish and mark</button></div>${paperHTML(P, run, false)}<div class="cm-mend"><button type="button" class="btn primary" data-mfinish>Finish and mark</button></div></section>`;
+    view.innerHTML = `<section class="cm-page cm-mock">${head}<div class="cm-mbar"><span class="cm-clock" id="cm-clock">${fmtT(end - Date.now())}</span><span class="cm-prog" id="cm-prog"></span><button type="button" class="btn small" data-mfinish>Finish practice</button></div>${paperHTML(P, run, false)}<div class="cm-mend"><button type="button" class="btn primary" data-mfinish>Finish practice</button></div></section>`;
     document.title = t.short + ' mock paper · Geodesic';
     h.typeset(view);
     const prog = () => { const k = Object.keys(run.ans).filter((x) => run.ans[x] !== '').length, el = view.querySelector('#cm-prog'); if (el) el.textContent = `${k} of ${count} answered`; };

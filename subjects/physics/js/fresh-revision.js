@@ -5,8 +5,8 @@
   const unavailable = [
     '.asktopic', '.ecard', '#more', '.recall-ai', '.exgen',
     '[data-ndeep]', '[data-open-ai]', '[data-recall-ai]', '[data-tutor-step]',
-    '[data-discuss]', '[data-discuss-x]', '[data-cmfresh]', '[data-pcfresh]',
-    '[data-tl-ask]', '[data-pcask]', '[data-oask]', '[data-xai]', '[data-xgen]',
+    '[data-qmark]', '[data-qall]', '[data-wmark]', '[data-ai]', '.cm-selfm', '.cm-score', '[data-discuss]', '[data-discuss-x]', '[data-cmfresh]', '[data-pcfresh]',
+    '[data-tl-ask]', '[data-tutor-open]', '[data-pcask]', '[data-oask]', '[data-xai]', '[data-xgen]',
     'a[href="#research"]', 'a[href="#advanced"]', 'a[href^="#adv-from-"]',
   ].join(',');
   const needsTutor = /\b(?:ask|with|by|let) (?:the )?(?:einstein|ai)\b|\b(?:einstein|ai) (?:writes|settings|tutor|hint|feedback|marking|mark|coach)\b/i;
@@ -14,7 +14,7 @@
   function removeTutorControls() {
     view.querySelectorAll(unavailable).forEach(element => element.remove());
     view.querySelectorAll('button, a, label').forEach(element => {
-      if (needsTutor.test(element.textContent.trim())) element.remove();
+      if (needsTutor.test(element.textContent.trim()) || /^(?:mark it|mark my answer|mark this|mark my write-up|self-mark)$/i.test(element.textContent.trim())) element.remove();
     });
   }
   new MutationObserver(removeTutorControls).observe(view, { childList: true, subtree: true });

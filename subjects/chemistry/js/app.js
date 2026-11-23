@@ -157,7 +157,7 @@
     homeBuilt = true;
     const nT = IDX.stages.reduce((a, s) => a + s.topics.length, 0), nS = ALL.reduce((a, l) => a + l.ns, 0), nQ = ALL.reduce((a, l) => a + l.q, 0);
     host.innerHTML = `
-      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'questions, marked here'], [Films.count, 'short films'], [16, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
+      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'practice questions'], [Films.count, 'short films'], [16, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
       <section class="hm-sec" id="hm-lab"><header><p class="kicker">Live models</p><h2>Do not just read about it. Change it.</h2><p>Every model below is running now. Move a control and watch what the particles do.</p></header>
         <div class="seg" id="hmLabTabs" role="group" aria-label="Choose a live model">${LAB.map((l, i) => `<button type="button" data-lab="${i}">${l[1]}</button>`).join('')}</div>
         <div id="hmFig"></div><p class="hm-note" id="hmFigLink"></p></section>
@@ -170,7 +170,7 @@
           <div class="hm-row"><a class="chip" href="#olympiad-competitions">Competitions</a><a class="chip" href="#olympiad-syllabus">IChO syllabus</a><a class="chip" href="#olympiad-practice">Practice problems</a><a class="chip" href="#olympiad-papers">Past papers</a></div><div class="hm-row"><a class="btn small" href="#olympiad-train">Start training ${ARROW}</a></div></div>
       </section>
       <section class="hm-sec"><header><p class="kicker">Inside every lecture</p><h2>How a lecture works.</h2></header>
-        <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions, marked here on your device.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
+        <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions with worked answers.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
       <section class="hm-sec"><header><p class="kicker">Four stages, one straight path</p><h2>Start where you are.</h2></header><div id="hmResume"></div>
         <div class="hm-stages" id="hmStages"></div></section>
       <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">Fresh subjects</a>` : ''}</footer>`;
@@ -179,8 +179,8 @@
       const hm = e.target.closest('[data-hm]'); if (hm) { if (hm.dataset.hm === 'q') hmQuestion(); else hmElement(); Snd.tick(); return; }
       const o = e.target.closest('[data-hmo]'); if (o && hmQ) {
         const q = hmQ.q, pick = +o.dataset.hmo, ok = pick === q.a, fb = $('#hmQ .fb');
-        $$('#hmQ .opts button').forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
-        fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = `<b>${ok ? 'Correct.' : 'Not quite.'}</b> ${inline(q.y)} <a href="#${hmQ.L.id}">Read the lecture ${ARROW}</a>`; Snd.tick(ok);
+        $$('#hmQ .opts button').forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right');  });
+        fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Answer.</b> ${inline(q.y)} <a href="#${hmQ.L.id}">Read the lecture ${ARROW}</a>`; Snd.tick();
       }
     });
     labMount(); hmElement(); hmQuestion(); homeProgress();
@@ -220,7 +220,7 @@
         <ul>${IDX.stages.map(s => `<li><a href="#${s.hash}"><strong>${s.label}</strong></a> (${s.years}): ${s.sub}. ${plural(s.topics.length, 'topic')}, ${plural(s.all.length, 'lecture')}.</li>`).join('')}</ul>
         <p>Every stage is a list of numbered topics. Every topic is a list of numbered lectures. Every lecture is a list of numbered concepts. The numbers match the syllabus, so the number in your school notes is the number here.</p>
         <h2>What is inside a lecture</h2>
-        <ul><li><strong>First look:</strong> the whole lecture in a few sentences.</li><li><strong>Notes:</strong> every concept the syllabus asks for, with tables, equations and drawn structures.</li><li><strong>Films:</strong> a short animated film at the top of the lectures marked Film, with captions and a script you can read.</li><li><strong>Live figures:</strong> models you can change, on the lectures marked Live.</li><li><strong>Formulas to know</strong> and <strong>Watch out:</strong> what to memorise and what people get wrong.</li><li><strong>What earns the marks:</strong> the wording that mark schemes reward, with a mode that hides the answers so you can test yourself.</li><li><strong>Check yourself:</strong> ${nQ.toLocaleString('en-GB')} questions across the site, marked on your own device.</li></ul>
+        <ul><li><strong>First look:</strong> the whole lecture in a few sentences.</li><li><strong>Notes:</strong> every concept the syllabus asks for, with tables, equations and drawn structures.</li><li><strong>Films:</strong> a short animated film at the top of the lectures marked Film, with captions and a script you can read.</li><li><strong>Live figures:</strong> models you can change, on the lectures marked Live.</li><li><strong>Formulas to know</strong> and <strong>Watch out:</strong> what to memorise and what people get wrong.</li><li><strong>What earns the marks:</strong> the wording that mark schemes reward, with a mode that hides the answers so you can test yourself.</li><li><strong>Check yourself:</strong> ${nQ.toLocaleString('en-GB')} questions across the site, with worked answers.</li></ul>
         <h2>Honest notes</h2>
         <ul><li>The IGCSE lectures were checked point by point against the Cambridge IGCSE Chemistry 0620 syllabus for exams in 2026 to 2028. AS and A Level follow Cambridge 9701 for 2025 to 2027. KS3 follows the National Curriculum for England.</li><li>The questions are original, written in the Cambridge style. They are not past-paper questions.</li><li>The drifting specks behind every page are air: 39 nitrogen molecules, 10 oxygen molecules and 1 argon atom, close to the real mix. Carbon dioxide is about 1 molecule in 2400, so you will not see one.</li><li>Your ticks for finished lectures, your practice answers are saved in this browser only. There are no accounts.</li><li>Found a mistake? Tell one of the <a href="#developers">developers</a>.</li></ul>
       </div></div>`;
@@ -300,7 +300,7 @@
       if (input && typeof record.answer === 'string') input.value = record.answer;
       const control = Number.isInteger(record.option)
         ? $(`[data-o="${record.option}"]`, question)
-        : record.checked && $('[data-act="check"], [data-act="mark"]', question);
+        : null;
       if (control) onQuiz({ target: control }, true);
     });
   }
@@ -308,8 +308,8 @@
   function quizHtml(rec) {
     let h = '';
     rec.c.forEach((q, i) => { h += `<div class="q" data-k="c" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>1 mark</i></div><div class="opts">${q.o.map((o, k) => `<button type="button" data-o="${k}">${inline(o)}</button>`).join('')}</div><div class="fb" hidden></div></div>`; });
-    rec.n.forEach((q, i) => { h += `<div class="q" data-k="n" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><div class="q-in"><input id="qn-${i}" type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer, as a number" placeholder="your answer"><button type="button" class="btn small" data-act="check">Check</button><button type="button" class="chip" data-act="work">Show working</button></div><div class="fb" hidden></div></div>`; });
-    rec.q.forEach((q, i) => { h += `<div class="q" data-k="q" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><textarea id="qq-${i}" aria-label="Your answer" placeholder="Write your answer, then have it marked."></textarea><div class="q-in"><button type="button" class="btn small" data-act="mark">Mark my answer</button><button type="button" class="chip" data-act="model">Show mark scheme</button></div><div class="fb" hidden></div></div>`; });
+    rec.n.forEach((q, i) => { h += `<div class="q" data-k="n" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><div class="q-in"><input id="qn-${i}" type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer, as a number" placeholder="your answer"><button type="button" class="chip" data-act="work">Show working</button></div><div class="fb" hidden></div></div>`; });
+    rec.q.forEach((q, i) => { h += `<div class="q" data-k="q" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><textarea id="qq-${i}" aria-label="Your answer" placeholder="Write your answer, then compare it with the model."></textarea><div class="q-in"><button type="button" class="chip" data-act="model">Show mark scheme</button></div><div class="fb" hidden></div></div>`; });
     return h;
   }
 
@@ -335,7 +335,7 @@
       ${rec.f.length ? `<section class="block"><h2>Formulas to know</h2><div class="formulas">${rec.f.map(f => `<div><span>${tex(f[0], false)}</span><span>${inline(f[1])}</span></div>`).join('')}</div></section>` : ''}
       ${rec.w.length ? `<section class="block"><h2>Watch out</h2><ul class="watch">${rec.w.map(w => `<li>${inline(w)}</li>`).join('')}</ul></section>` : ''}
       ${rec.m.length ? `<section class="block"><h2>What earns the marks <button type="button" class="chip" data-act="test" aria-pressed="false">Test yourself</button></h2><p class="sub">The wording that mark schemes reward. The highlighted words are the ones that score.</p><dl class="ms">${rec.m.map(m => `<div><dt>${inline(m[0])}</dt><dd>${inline(m[1])}</dd></div>`).join('')}</dl></section>` : ''}
-      ${L.q ? `<section class="block"><h2>Check yourself</h2><p class="sub">Original questions in the exam style, marked here on your device.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
+      ${L.q ? `<section class="block"><h2>Check yourself</h2><p class="sub">Try each question, then open the worked answer.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
       <div class="done-row"><p>${isDone ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'}</p><button type="button" class="btn small${isDone ? ' ghost' : ''}" data-act="done">${isDone ? 'Done ✓ (undo)' : 'Mark as done'}</button></div>
       <nav class="lect-nav" aria-label="Lectures">${prev ? `<a href="#${prev.id}"><small>Previous</small><b>${prev.code} · ${esc(prev.title)}</b></a>` : '<span></span>'}${next ? `<a href="#${next.id}"><small>Next</small><b>${next.code} · ${esc(next.title)}</b></a>` : `<a href="#${S.hash}"><small>End of ${S.label}</small><b>Back to all topics</b></a>`}</nav>`;
     restorePractice(L.id);
@@ -362,38 +362,25 @@
     IDX.stages.forEach(S => { const box = $(`[data-defs="${S.id}"]`); if (!box) return; stageData(S).then(() => { if (!here('definitions') || !box.isConnected) return; box.innerHTML = S.all.flatMap(l => (l.defs || []).map(d => `<a class="def-item panel" href="#${l.id}" data-t="${esc((plain(d[0]) + ' ' + plain(d[1])).toLowerCase())}"><b>${inline(d[0])}</b><span>${inline(d[1])}</span><i>${S.label} ${l.code} · ${esc(l.title)}</i></a>`)).join(''); apply(); }).catch(() => { box.innerHTML = '<p class="def-wait">These definitions did not load. Check your connection and open this page again.</p>'; }); });
   }
 
-  /* ---------- marking ---------- */
-  function num(s) {
-    const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹⁻';
-    s = String(s).replace(/[−–]/g, '-').replace(/,/g, '').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => '^' + [...m].map(c => SUP.indexOf(c) === 10 ? '-' : SUP.indexOf(c)).join('')).replace(/(\d(?:\.\d+)?)\s*[×x*]\s*10\s*\^?\s*\(?(-?\d+)\)?/i, '$1e$2');
-    const m = /-?\d*\.?\d+(e-?\d+)?/i.exec(s); return m ? parseFloat(m[0]) : NaN;
-  }
-  const norm = s => ' ' + String(s).toLowerCase().replace(/[^a-z0-9%]+/g, ' ').trim() + ' ';
-  function hit(text, keys) {
-    if (!keys) return false;
-    return keys.split(' & ').every(grp => { grp = grp.trim(); const neg = grp[0] === '!'; if (neg) grp = grp.slice(1);
-      const any = grp.split('|').some(k => { k = k.trim(); const whole = k[0] === '='; if (whole) k = k.slice(1); const kn = norm(k).trim(); return kn && (whole ? text.includes(' ' + kn + ' ') : text.includes(kn)); });
-      return neg ? !any : any; });
-  }
+  /* ---------- worked answers ---------- */
   function onQuiz(e, restoring = false) {
     const qEl = e.target.closest('.q'); if (!qEl || !CUR) return false; const kind = qEl.dataset.k, i = +qEl.dataset.i, fb = $('.fb', qEl), rec = CUR.rec;
     const o = e.target.closest('[data-o]'), act = e.target.closest('[data-act]');
     if (kind === 'c' && o) {
-      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a; $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
-      fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = `<b>${ok ? 'Correct.' : 'Not quite.'}</b> ${inline(q.y)}`; if (!restoring) { savePractice(qEl, { option: pick }); Snd.tick(ok); } return true;
+      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a; $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right');  });
+      fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Answer.</b> ${inline(q.y)}`; if (!restoring) { savePractice(qEl, { option: pick }); Snd.tick(); } return true;
     }
     if (kind === 'n' && act) {
       const q = rec.n[i], steps = `<ol class="steps">${q.st.map(s => `<li>${inline(s.replace(/^[A-Z]\d\s+/, ''))}</li>`).join('')}</ol>`;
       if (act.dataset.act === 'work') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Working</b>${steps}<b>Answer: ${esc(q.a[0])}</b>`; return true; }
-      const u = num($('input', qEl).value); if (isNaN(u)) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = 'Type a number first, for example 0.25 or 2.4 × 10^3.'; return true; }
-      const ok = q.a.some(a => { const v = num(a); return Math.abs(u - v) <= Math.abs(v) * 0.011 + 1e-12; });
-      fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = ok ? `<b>Correct: ${esc(q.a[0])}.</b> ${plural(q.k, 'mark')}.${steps}` : `<b>Not yet.</b> Check your working and the sign, then try again, or press Show working.`; if (!restoring) { savePractice(qEl, { answer: $('input', qEl).value, checked: true }); Snd.tick(ok); } return true;
+      return false;
     }
-    if (kind === 'q' && act) {
-      const q = rec.q[i], txt = $('textarea', qEl).value.trim(), model = `<p style="margin-top:8px"><b>Model answer.</b> ${inline(q.a)}</p>`;
-      if (act.dataset.act === 'model' || !txt) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Mark scheme${q.p.length > q.k ? `: any ${q.k} from` : ''}</b><ul class="pts">${q.p.map(p => `<li>${inline(p[0])}</li>`).join('')}</ul>${model}`; return true; }
-      const t = norm(txt), hits = q.p.map(p => hit(t, p[1])), score = Math.min(q.k, hits.filter(Boolean).length);
-      fb.hidden = false; fb.className = 'fb ' + (score === q.k ? 'ok' : score ? '' : 'no'); fb.innerHTML = `<b>${score} out of ${q.k}.</b>${q.p.length > q.k ? ` Any ${q.k} of these points score.` : ''}<ul class="pts">${q.p.map((p, k) => `<li class="${hits[k] ? 'hit' : 'miss'}">${inline(p[0])}</li>`).join('')}</ul>${model}<p style="margin-top:6px;color:var(--ink-3);font-size:14px">Marked by looking for key words, so check your answer against the model as well.</p>`; if (!restoring) { savePractice(qEl, { answer: txt, checked: true }); Snd.tick(score === q.k); } return true;
+    if (kind === 'q' && act?.dataset.act === 'model') {
+      const q = rec.q[i];
+      fb.hidden = false;
+      fb.className = 'fb';
+      fb.innerHTML = `<b>Mark scheme</b><ul class="pts">${q.p.map(p => `<li>${inline(p[0])}</li>`).join('')}</ul><p><b>Model answer.</b> ${inline(q.a)}</p>`;
+      return true;
     }
     return false;
   }

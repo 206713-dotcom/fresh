@@ -110,15 +110,14 @@
   function probCard(id, key, p, num, rec) {
     const draft = loadLS().drafts?.[id]?.[key];
     const kind = WL.grade.kind(p), pr = prb, ph = kind === 'written' ? 'Explain in your own words, in English or Korean' : 'Your answer, with units, e.g. 12 m/s';
-    return `<div class="pcq${rec && rec.v ? ' is-' + rec.v : ''}" data-i="${key}" data-kind="${kind}">
+    return `<div class="pcq" data-i="${key}" data-kind="${kind}">
       <div class="pcq-top"><span class="pcq-n">${num}</span><span class="tagl lv${p.l || 2}">${LVN[p.l || 2]}</span><span class="tagl ${kind}">${kind === 'written' ? 'Written' : 'Numerical'}</span><span class="pcq-st" aria-hidden="true"></span></div>
       <p class="pcq-q">${pr(p.q)}</p>${figFor(id, key, p)}
       <textarea rows="${kind === 'written' ? 3 : 1}" placeholder="${ph}" aria-label="Your answer to problem ${num}" spellcheck="${kind === 'written'}">${esc(draft ?? rec?.t ?? '')}</textarea>
-      <div class="conf" role="group" aria-label="How sure are you before checking?"><span>How sure?</span><button type="button" data-conf="1" aria-pressed="false">Guessing</button><button type="button" data-conf="2" aria-pressed="false">Fairly sure</button><button type="button" data-conf="3" aria-pressed="false">Certain</button></div>
-      <div class="pcq-act"><button type="button" class="btn small primary" data-check>Check</button>${(p.s && p.s.length > 1) || (p.k && p.k.length) ? '<button type="button" class="btn small ghost" data-hint>Hint</button>' : ''}<button type="button" class="btn small ghost" data-sol aria-expanded="false">Solution</button><span class="pcq-kbd">Ctrl + Enter to check</span></div>
+
+      <div class="pcq-act">${(p.s && p.s.length > 1) || (p.k && p.k.length) ? '<button type="button" class="btn small ghost" data-hint>Hint</button>' : ''}<button type="button" class="btn small ghost" data-sol aria-expanded="false">Solution</button></div>
       <ol class="pcq-hints" hidden></ol>
-      <div class="pcq-fb" role="status" aria-live="polite"${rec && rec.v ? '' : ' hidden'}>${rec && rec.v ? fbHTML(rec) : ''}</div>
-      <div class="pcq-sol" hidden>${p.a ? `<p class="pans"><b>Answer</b> ${pr(p.a)}</p>` : ''}${p.s && p.s.length ? `<ol class="psol">${p.s.map((x) => `<li>${pr(x)}</li>`).join('')}</ol>` : ''}${p.k && p.k.length ? `<p class="pkeys"><b>Key ideas</b> ${p.k.map((x) => esc(x.split('|')[0])).join(' · ')}</p>` : ''}</div>
+            <div class="pcq-sol" hidden>${p.a ? `<p class="pans"><b>Answer</b> ${pr(p.a)}</p>` : ''}${p.s && p.s.length ? `<ol class="psol">${p.s.map((x) => `<li>${pr(x)}</li>`).join('')}</ol>` : ''}${p.k && p.k.length ? `<p class="pkeys"><b>Key ideas</b> ${p.k.map((x) => esc(x.split('|')[0])).join(' · ')}</p>` : ''}</div>
     </div>`;
   }
   /* Practice has two modes. Core questions check one idea at a time and are marked at once.
@@ -148,15 +147,15 @@
   let EXT = null;     // the running timed paper: { id, end, int }
   function examCard(id, it, k, rec) {
     const m = it.marks, ticks = (rec && rec.ticks) || [], got = rec && rec.ticks ? xScore(it, ticks) : null;
-    return `<article class="exq2${got !== null ? ' marked' : ''}" data-x="${it.key}">
+    return `<article class="exq2" data-x="${it.key}">
       <header><span class="exn">Q${k}</span><span class="excw">${cmdWord(it)}</span>${it.src === 'g' ? '<span class="exai">Written by AI</span>' : ''}<span class="exm">[${m} mark${m > 1 ? 's' : ''}]</span></header>
       <p class="exq-q">${prb(it.q)}</p>${it.src === 'p' && WL.geo ? WL.geo.fig(id + ':q' + it.i, it.q) : ''}
       <textarea rows="4" placeholder="Show your working, then your answer" aria-label="Your answer to question ${k}">${esc((rec && rec.t) || '')}</textarea>
-      <div class="exact"><button type="button" class="btn small" data-xmark>Mark it</button><button type="button" class="btn small ghost" data-xai>Mark with Einstein</button><button type="button" class="btn small ghost" data-discuss-x>Discuss</button>${it.src === 'g' ? '<button type="button" class="linkbtn" data-xdel>Remove</button>' : ''}<span class="exscore" aria-live="polite">${got !== null ? `<b>${got}</b> / ${m}` : ''}</span></div>
+      <div class="exact"><button type="button" class="btn small" data-xmark>Show worked answer</button><button type="button" class="btn small ghost" data-xai>Mark with Einstein</button><button type="button" class="btn small ghost" data-discuss-x>Discuss</button>${it.src === 'g' ? '<button type="button" class="linkbtn" data-xdel>Remove</button>' : ''}<span class="exscore" aria-live="polite">${got !== null ? `<b>${got}</b> / ${m}` : ''}</span></div>
       <div class="exms"${got !== null ? '' : ' hidden'}><p class="exms-h">Mark scheme <small>tick each point your answer shows; equivalent methods count</small></p>
-        <ol>${it.pts.map((p, j) => `<li><label><input type="checkbox" data-xpt="${j}"${ticks[j] ? ' checked' : ''}><span>${prb(p)}</span></label></li>`).join('')}</ol>
+        <ol>${it.pts.map((p, j) => `<li>${prb(p)}</li>`).join('')}</ol>
         ${it.a ? `<p class="pans"><b>Answer</b> ${prb(it.a)}</p>` : ''}${it.src === 'g' ? '<p class="exwarn">This question and its scheme were written by AI: if a step looks wrong, trust the physics, not the scheme.</p>' : ''}
-        <div class="exfb">${rec && rec.fb ? `<p><b>Einstein:</b> ${prb(rec.fb)}</p>` : ''}</div></div>
+        </div>
     </article>`;
   }
   function examHTML(id, n) {
@@ -165,10 +164,9 @@
     const run = EXT && EXT.id === id && EXT.el && EXT.el.isConnected;
     return `<div class="expaper${run ? ' running' : ''}" id="expaper">
       <div class="exhead"><div><p class="exk">Exam-style paper · ${esc(stageOf(id).name)} standard</p><h3>${esc(n.title)}</h3><p class="exmeta">${its.length} question${its.length === 1 ? '' : 's'} · ${M} marks · about ${T} minutes</p></div>
-        <div class="extimer"><span class="exclock" id="ex-clock" data-min="${T}">${run ? '' : T + ':00'}</span><button type="button" class="btn small ${run ? '' : 'primary'}" data-xstart>${run ? 'Finish and mark' : 'Start timed paper'}</button></div></div>
-      <p class="exnote">Answer as you would in the exam, without notes, then open the mark scheme and award yourself the marks. During a timed paper the mark schemes stay closed until you finish. These questions are built from this topic’s multi-step problems and laid out like exam questions; they are not past papers.</p>
-      <p class="extotal" id="ex-total">${of ? `Marked so far: <b>${got}</b> of ${of} marks (${Math.round((100 * got) / of)} %)` : 'Nothing marked yet.'}</p>
-      ${its.length ? its.map((it, k) => examCard(id, it, k + 1, A[it.key])).join('') : '<p class="pempty">This topic has no multi-step problems yet.</p>'}
+        <div class="extimer"><span class="exclock" id="ex-clock" data-min="${T}">${run ? '' : T + ':00'}</span><button type="button" class="btn small ${run ? '' : 'primary'}" data-xstart>${run ? 'Finish practice' : 'Start timed paper'}</button></div></div>
+      <p class="exnote">Answer as you would in the exam, without notes, then compare your answer with the worked solution. During a timed paper the mark schemes stay closed until you finish. These questions are built from this topic’s multi-step problems and laid out like exam questions; they are not past papers.</p>
+            ${its.length ? its.map((it, k) => examCard(id, it, k + 1, A[it.key])).join('') : '<p class="pempty">This topic has no multi-step problems yet.</p>'}
       <div class="exgen"><div class="exgen-row">${WL.qgen && WL.qgen.count(id).exam ? '<button type="button" class="btn small" data-xinst>Instant exam question</button>' : ''}<button type="button" class="btn small" data-xgen>Einstein writes a new one</button><button type="button" class="btn small ghost" data-xtest>Timed test on this topic</button></div><small>Instant questions are generated with a worked mark scheme. Einstein writes fresh ones at ${esc(stageOf(id).short)} standard, inside the syllabus statements for this topic. The timed test opens the test builder with this topic chosen.</small><p class="exgen-out" id="exgen-out" aria-live="polite"></p></div>
     </div>`;
   }
@@ -197,11 +195,11 @@
         <div class="ppanel" data-pp="core"${mode === 'core' ? '' : ' hidden'}>
         <div class="phead"><p class="sec-sub">Type an answer and press Check. Say how sure you are first if you like: it shows you where your confidence can be trusted. Numbers are checked at once; written answers are marked by Einstein (<span class="ai-name">${esc(aiLabel)}</span>).</p>
         <div class="pfilter" role="group" aria-label="Show problems"><button type="button" data-pf="all" aria-pressed="true">All <small>${nCore}</small></button><button type="button" data-pf="written" aria-pressed="false">Written <small>${nW}</small></button><button type="button" data-pf="numeric" aria-pressed="false">Numerical <small>${nCore - nW}</small></button></div></div>
-        <p class="pscore" id="pscore">${scoreLine(id)}</p>`;
+        `;
       const QC = WL.qgen ? WL.qgen.count(id) : { plain: 0, exam: 0 };
       if (QC.plain) h += `<section class="endless" data-endless><div class="endless-h"><div><h3 class="plevel">Endless practice <small>${QC.plain} kinds of question, new numbers every time</small></h3><p class="sec-sub">Each one is generated with its worked solution. Press the button as often as you like.</p></div><button type="button" class="btn primary" data-endless-new>New question</button></div><div class="endless-q" id="endless-q"></div><p class="endless-tally" id="endless-tally">${tallyLine(A.endless)}</p></section>`;
       let k = 0;
-      if (X.length) { h += '<h3 class="plevel">Explain in words <small>written questions, marked on meaning</small></h3>'; X.forEach((p, j) => { k++; h += probCard(id, 'w' + j, Object.assign({ w: 1, l: 2 }, p), k, A['w' + j]); }); }
+      if (X.length) { h += '<h3 class="plevel">Explain in words <small>written questions with worked answers</small></h3>'; X.forEach((p, j) => { k++; h += probCard(id, 'w' + j, Object.assign({ w: 1, l: 2 }, p), k, A['w' + j]); }); }
       [1, 2].forEach((lv) => {
         const g = core.filter(([, q]) => (q.l || 2) === lv); if (!g.length) return;
         h += `<h3 class="plevel">${LV[lv][0]} <small>${lv === 2 ? 'a few steps' : LV[lv][1]}</small></h3>`;
@@ -401,35 +399,6 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
     return true;
   }
   const card = (el) => el && el.closest('.pcq');
-  async function checkProb(c, id, n) {
-    if (!c || c.dataset.busy) return;
-    const key = c.dataset.i, p = getProb(id, key), ta = c.querySelector('textarea'), ans = ta.value.trim(), fb = c.querySelector('.pcq-fb'), btn = c.querySelector('[data-check]');
-    if (!ans) { ta.focus(); ta.classList.add('need'); setTimeout(() => ta.classList.remove('need'), 900); return; }
-    c.dataset.busy = '1'; btn.disabled = true; btn.textContent = 'Checking';
-    fb.hidden = false; fb.innerHTML = '<div class="fbh"><span class="spin" aria-hidden="true"></span><b>Checking your answer</b></div>';
-    c.className = c.className.replace(/\s?is-\w+/g, '') + ' is-checking';
-    let rec;
-    try {
-      const r = await WL.grade.check(p, ans, { topic: n.title + ' (' + stageOf(id).name + ')' });
-      rec = { t: ans.slice(0, 2000), v: r.verdict, fb: r.feedback || '', note: r.note || '', found: r.found || [], missing: r.missing || [], via: r.via, at: Date.now() };
-    } catch (e) { rec = { t: ans.slice(0, 2000), v: 'incorrect', fb: '', note: (e && e.message) || 'Could not check the answer.', found: [], missing: [], via: 'keywords', at: Date.now() }; }
-    if (ta.value.trim() === ans && loadLS().drafts?.[id]) delete LS.drafts[id][key];
-    const cf = +c.dataset.cf || 0;
-    if (cf && WL.study) {
-      WL.study.calib(cf, rec.v === 'correct', id); rec.c = cf;
-      const cn = WL.study.confNote(cf, rec.v === 'correct'); if (cn) rec.note = (rec.note ? rec.note + ' ' : '') + cn;
-      if (cf === 3 && rec.v !== 'correct' && LS.u[id] && LS.r[id]) { LS.r[id].due = Math.min(LS.r[id].due, Date.now() + DAY); LS.r[id].i = 0; }
-    }
-    if (isGenKey(key)) { const e = Object.assign({ n: 0, ok: 0 }, pAns(id).endless); e.n++; if (rec.v === 'correct') e.ok++; saveAns(id, 'endless', e); markP(id, 'g' + (e.n % 10), rec.v === 'correct'); const tl = $('#endless-tally'); if (tl) tl.textContent = tallyLine(e); }
-    else if (isMoreKey(key)) saveAns(id, key, rec);
-    else { saveAns(id, key, rec); markP(id, key, rec.v === 'correct'); }
-    fb.innerHTML = fbHTML(rec); typeset(fb);
-    c.className = c.className.replace(/\s?is-\w+/g, '') + ' is-' + rec.v;
-    delete c.dataset.busy; btn.disabled = false; btn.textContent = 'Check';
-    const sc = $('#pscore'); if (sc) sc.innerHTML = scoreLine(id); const dm = $('#done-msg'); if (dm) dm.textContent = doneMsg(id);
-    refreshStudy(id);
-    const ma = $('#more-ask'); if (ma && !ma.dataset.busy && !isMoreKey(key)) ma.innerHTML = moreAskHTML(id);
-  }
   function practiceClick(e, id, n) {
     const t = e.target;
     if (t.closest('[data-endless-new]')) { newEndless(id); return true; }
@@ -470,25 +439,23 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
     if (xs) {
       if (EXT && EXT.id === id) { stopExam(true); return true; }
       const ck = $('#ex-clock'), min = +ck.dataset.min; EXT = { id, el: $('#expaper'), end: Date.now() + min * 60000, int: setInterval(tickClock, 1000) };
-      $('#expaper').classList.add('running'); $$('.exq2 .exms').forEach((m) => (m.hidden = true)); xs.textContent = 'Finish and mark'; xs.classList.remove('primary'); tickClock();
+      $('#expaper').classList.add('running'); $$('.exq2 .exms').forEach((m) => (m.hidden = true)); xs.textContent = 'Finish practice'; xs.classList.remove('primary'); tickClock();
       const f = $('.exq2 textarea'); if (f) f.focus(); return true;
     }
     if (t.closest('[data-xgen]')) { aiGenExam(id, n, t.closest('[data-xgen]')); return true; }
     if (xc) {
       const it = examItems(id).find((x) => x.key === xc.dataset.x); if (!it) return true;
       const locked = EXT && EXT.id === id;
-      if (t.closest('[data-xmark]')) { if (locked) { toast('Finish the paper first: the mark schemes open when you press “Finish and mark”.'); return true; } const ms = xc.querySelector('.exms'); ms.hidden = !ms.hidden; if (!ms.hidden) { typeset(ms); saveExam(id, it, xc, { ticks: $$('[data-xpt]', xc).map((cb) => cb.checked) }); } return true; }
+      if (t.closest('[data-xmark]')) { if (locked) { toast('Finish the paper first: the mark schemes open when you press “Finish practice”.'); return true; } const ms = xc.querySelector('.exms'); ms.hidden = !ms.hidden; if (!ms.hidden) typeset(ms); return true; }
       if (t.closest('[data-xai]')) { if (locked) { toast('Finish the paper first, then Einstein can mark it.'); return true; } aiMarkExam(id, it, xc, t.closest('[data-xai]')); return true; }
       if (t.closest('[data-discuss-x]')) { WL.tutor.open({ topic: tutorTopic(n), chip: { label: 'Exam question', suggestions: PROB_SUGS, text: `Exam-style question (${it.marks} marks): ${it.q}\nMark scheme (do not reveal it all unless asked): ${it.pts.join(' / ')}${it.a ? '\nFinal answer: ' + it.a : ''}${xc.querySelector('textarea').value.trim() ? '\nThe student\'s answer: ' + xc.querySelector('textarea').value.trim().slice(0, 1500) : ''}` } }); return true; }
       if (t.closest('[data-xdel]')) { const G = genAll(); G[id] = (G[id] || []).filter((g) => g.key !== it.key); store.set(genKey(), G); const pp = $('[data-pp="exam"]'); pp.innerHTML = examHTML(id, n); typeset(pp); return true; }
-      if (t.matches('[data-xpt]')) { saveExam(id, it, xc, { ticks: $$('[data-xpt]', xc).map((cb) => cb.checked) }); return false; }
       return false;
     }
     const pf = t.closest('[data-pf]');
     if (pf) { const k = pf.dataset.pf; $$('[data-pf]', view).forEach((b) => b.setAttribute('aria-pressed', b === pf)); $$('.pcq', view).forEach((c) => (c.hidden = k !== 'all' && c.dataset.kind !== k)); $$('.plevel', view).forEach((h) => { let el = h.nextElementSibling, any = false; while (el && el.classList.contains('pcq')) { if (!el.hidden) any = true; el = el.nextElementSibling; } h.hidden = !any; }); return true; }
     const c = card(t); if (!c) return false;
     const key = c.dataset.i, p = getProb(id, key);
-    if (t.closest('[data-check]')) { checkProb(c, id, n); return true; }
     if (t.closest('[data-hint]')) {
       const box = c.querySelector('.pcq-hints'), steps = p.s && p.s.length > 1 ? p.s.slice(0, -1) : (p.k || []).map((x) => 'Think about: ' + x.split('|')[0]);
       const shown = box.children.length;
@@ -497,12 +464,6 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
       return true;
     }
     if (t.closest('[data-sol]')) { const b = t.closest('[data-sol]'), sol = c.querySelector('.pcq-sol'), open = sol.hidden; sol.hidden = !open; b.setAttribute('aria-expanded', open); b.textContent = open ? 'Hide solution' : 'Solution'; if (open) typeset(sol); return true; }
-    if (t.closest('[data-override]')) {
-      const rec = Object.assign({}, pAns(id)[key] || {}, { v: 'correct', via: 'self', missing: [], note: 'You marked this as right after reading the feedback.', at: Date.now() });
-      saveAns(id, key, rec); if (!isMoreKey(key)) markP(id, key, true);
-      const fb = c.querySelector('.pcq-fb'); fb.innerHTML = fbHTML(rec); c.className = c.className.replace(/\s?is-\w+/g, '') + ' is-correct';
-      const sc = $('#pscore'); if (sc) sc.innerHTML = scoreLine(id); refreshStudy(id); return true;
-    }
     if (t.closest('[data-discuss]')) { const num = c.querySelector('.pcq-n').textContent; WL.tutor.open({ topic: tutorTopic(n), chip: probChip(p, num, pAns(id)[key]) }); return true; }
     return false;
   }
@@ -697,7 +658,7 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
           <li><b>Watch</b><span>A short film shows the idea before any algebra. With <i>Explain more</i> on, it pauses to explain each step in plain words.</span></li>
           <li><b>Read</b><span>New to the topic? A step-by-step guide with worked examples and quick checks, then the summary notes.</span></li>
           <li><b>Derive</b><span>The result built line by line, and every line has its own “Why?”.</span></li>
-          <li><b>Practise</b><span>Answer in numbers or in words and have it checked at once.</span></li>
+          <li><b>Practise</b><span>Try the questions, then open the worked answers.</span></li>
         </ol>
       </section>
       ${learnPanel()}
@@ -1268,7 +1229,6 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
         return;
       }
     };
-    view.onkeydown = (e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey) && e.target.matches('.pcq textarea')) { e.preventDefault(); checkProb(e.target.closest('.pcq'), id, n); } };
     view.oninput = event => {
       const input = event.target;
       if (input.matches('.exq2 textarea')) {
