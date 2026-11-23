@@ -175,6 +175,7 @@ export interface PracticeSessionState {
   activePart?: "a" | "b" | "c" | "d";
   selectedUnit?: 1 | 2 | 3 | 4 | 5 | 6;
   activePaper2QIndex?: number;
+  selectedCaseStudyId?: string;
   currentVerifiedIndex?: number;
   verifiedMarkFilter?: number | "all";
   verifiedUnitFilter?: string;
@@ -291,6 +292,47 @@ export function loadBookmarkedQuestionIds(): string[] {
   } catch {
     return [];
   }
+}
+
+/**
+ * Completed practice questions. Ids are stored canonically as
+ * `${scenarioId}_${partOrNumber}` so the hyphenated ids built by MockExamMode
+ * match the underscore ids used by PracticeStudio and Paper2PracticeView.
+ */
+export function canonicalQuestionId(id: string): string {
+  const hyphen = id.lastIndexOf("-");
+  return hyphen >= 0 ? `${id.slice(0, hyphen)}_${id.slice(hyphen + 1)}` : id;
+}
+
+export function saveCompletedQuestionIds(ids: string[]): void {
+  setPermanentCookie("completed_questions", JSON.stringify(ids));
+}
+
+export function loadCompletedQuestionIds(): string[] {
+  const data = getPermanentCookie("completed_questions");
+  if (!data) return [];
+  try {
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed)
+      ? parsed.map((item) => canonicalQuestionId(String(item)))
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+export function isQuestionDone(id: string, doneIds: string[]): boolean {
+  return doneIds.includes(canonicalQuestionId(id));
+}
+
+export function markQuestionDone(id: string): string[] {
+  const canonical = canonicalQuestionId(id);
+  const ids = loadCompletedQuestionIds();
+  if (!ids.includes(canonical)) {
+    ids.push(canonical);
+    saveCompletedQuestionIds(ids);
+  }
+  return ids;
 }
 
 /**

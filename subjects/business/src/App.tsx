@@ -20,8 +20,10 @@ import StudySpace from "./components/StudySpace";
 import { GLOSSARY_TERMS } from "./lib/data/glossary";
 import {
   loadBookmarkedQuestionIds,
+  loadCompletedQuestionIds,
   loadMasteredTerms,
   loadSubmissions,
+  markQuestionDone,
   saveBookmarkedQuestionIds,
   saveMasteredTerms,
   saveSubmissions,
@@ -142,6 +144,7 @@ export default function App() {
   const [submissions, setSubmissions] = useState<StudentSubmissionRecord[]>([]);
   const [masteredTerms, setMasteredTerms] = useState<string[]>([]);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
+  const [doneIds, setDoneIds] = useState<string[]>([]);
 
   // Synchronize documentElement, body, and storage with theme
   useEffect(() => {
@@ -158,6 +161,7 @@ export default function App() {
     setSubmissions(loadSubmissions());
     setMasteredTerms(loadMasteredTerms());
     setBookmarkedIds(loadBookmarkedQuestionIds());
+    setDoneIds(loadCompletedQuestionIds());
 
     if (typeof window !== "undefined") {
       try {
@@ -262,6 +266,10 @@ export default function App() {
     saveBookmarkedQuestionIds(updated);
   };
 
+  const handleMarkDone = (id: string) => {
+    setDoneIds(markQuestionDone(id));
+  };
+
   const handleClearSubmissions = () => {
     setSubmissions([]);
     saveSubmissions([]);
@@ -270,7 +278,13 @@ export default function App() {
   // Timed Mock Exam Mode deliberately strips away all navigation, study-space
   // widgets and modals so the student sits the paper under strict conditions.
   if (isMockExamMode) {
-    return <MockExamMode onExit={() => setIsMockExamMode(false)} />;
+    return (
+      <MockExamMode
+        onExit={() => setIsMockExamMode(false)}
+        doneIds={doneIds}
+        onMarkDone={handleMarkDone}
+      />
+    );
   }
 
   return (
@@ -316,8 +330,11 @@ export default function App() {
           {businessTab === "practice" && (
             <PracticeStudio
               onSaveSubmission={handleSaveSubmission}
+              submissions={submissions}
               bookmarkedIds={bookmarkedIds}
               onToggleBookmark={handleToggleBookmark}
+              doneIds={doneIds}
+              onMarkDone={handleMarkDone}
               onOpenQuickQuiz={() => setBusinessTab("quick-quiz")}
               onOpenSections={() => setBusinessTab("sections")}
               initialSectionCode={selectedPracticeSection}
@@ -330,7 +347,11 @@ export default function App() {
 
           {/* TAB 2: Dedicated Paper 2 Practice Studio (100 Case Studies, Appendices 1-3, Qwen 3 0.6B) */}
           {businessTab === "paper2" && (
-            <Paper2PracticeView onOpenStudySpace={handleOpenStudySpace} />
+            <Paper2PracticeView
+              onOpenStudySpace={handleOpenStudySpace}
+              doneIds={doneIds}
+              onMarkDone={handleMarkDone}
+            />
           )}
 
           {/* TAB: Interactive Lessons (24 guided concept + practice cards) */}

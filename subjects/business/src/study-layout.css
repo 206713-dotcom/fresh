@@ -597,6 +597,81 @@
   color: var(--primary-btn-text);
 }
 
+/* Persisted "done" state for practice question pickers. */
+.study-question-button--done {
+  border-color: #16a34a;
+  background: #ecfdf5;
+}
+
+.study-question-button--done[aria-pressed="true"] {
+  border-color: #15803d;
+  background: #15803d;
+  color: #fff;
+}
+
+.study-question-done-mark {
+  color: #15803d;
+  font: 600 0.625rem/1.2 var(--font-mono);
+}
+
+.dark .study-question-button--done {
+  border-color: #34d399;
+  background: #064e3b;
+}
+
+.dark .study-question-button--done[aria-pressed="true"] {
+  border-color: #059669;
+  background: #047857;
+  color: #ecfdf5;
+}
+
+.dark .study-question-done-mark {
+  color: #6ee7b7;
+}
+
+/* Score badges: full marks = green, any partial score = red. */
+.study-question-button--partial {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.study-question-button--partial[aria-pressed="true"] {
+  border-color: #b91c1c;
+  background: #b91c1c;
+  color: #fff;
+}
+
+.study-question-score {
+  font: 700 0.625rem/1.2 var(--font-mono);
+}
+
+.study-question-score--full {
+  color: #15803d;
+}
+
+.study-question-score--partial {
+  color: #b91c1c;
+}
+
+.dark .study-question-button--partial {
+  border-color: #f87171;
+  background: #450a0a;
+}
+
+.dark .study-question-button--partial[aria-pressed="true"] {
+  border-color: #dc2626;
+  background: #991b1b;
+  color: #fef2f2;
+}
+
+.dark .study-question-score--full {
+  color: #6ee7b7;
+}
+
+.dark .study-question-score--partial {
+  color: #fca5a5;
+}
+
 .study-answer {
   background: var(--surface-practice);
 }

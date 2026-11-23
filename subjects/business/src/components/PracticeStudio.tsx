@@ -61,10 +61,14 @@ import {
   savePaper1Position,
   loadPaper1Position,
   awardBonusStudyCoins,
+  isQuestionDone,
 } from "../lib/cookies";
 
 interface PracticeStudioProps {
   onSaveSubmission: (record: StudentSubmissionRecord) => void;
+  submissions: StudentSubmissionRecord[];
+  doneIds: string[];
+  onMarkDone: (id: string) => void;
   bookmarkedIds: string[];
   onToggleBookmark: (id: string) => void;
   onOpenFinanceTest?: () => void;
@@ -79,6 +83,9 @@ interface PracticeStudioProps {
 
 export function PracticeStudio({
   onSaveSubmission,
+  submissions,
+  doneIds,
+  onMarkDone,
   bookmarkedIds,
   onToggleBookmark,
   onOpenFinanceTest,
@@ -89,12 +96,30 @@ export function PracticeStudio({
   initialSectionCode,
   initialPracticeMode,
 }: PracticeStudioProps) {
+  // Latest saved mark per question, used by the question pickers to show
+  // full marks in green and any partial score in red.
+  const scoreByQuestionId = useMemo(() => {
+    const map = new Map<string, { score: number; max: number }>();
+    for (const record of submissions) {
+      const max = record.result?.maxMarks || record.marks;
+      map.set(record.questionId, { score: record.result?.totalScore ?? 0, max });
+    }
+    return map;
+  }, [submissions]);
+  const getQuestionScore = (id: string) => scoreByQuestionId.get(id);
+
+  // Restore the full Practice Studio session once on mount. Position and
+  // answer drafts were already persisted, but the saved index/filters were
+  // never read back, so Paper 2 specimen and archive modes always restarted
+  // at question 1.
+  const savedSession = useMemo(() => loadPracticeSessionState(), []);
+
   // Practice Modes:
   // "paper1_database" = Paper 1 authentic 40-scenario database for Sections 1 & 2 (Topical Questions)
   // "verified_archive" = Separate Official Past Papers Archive (189 Questions)
   // "paper2_case_study" = Paper 2 authentic specimen case study insert (Paper 2 database coming later)
   const [practiceMode, setPracticeMode] = useState<"paper1_database" | "paper2_case_study" | "verified_archive">(
-    initialPracticeMode || "paper1_database"
+    initialPracticeMode || savedSession?.practiceMode || "paper1_database"
   );
   const [layout, setLayout] = useState<ExamLayout>(() => loadExamLayout());
   const changeLayout = (next: ExamLayout) => {
@@ -191,25 +216,36 @@ export function PracticeStudio({
   // PAPER 2 SPECIMEN STATES
   // ==========================================
   const paper2Studies = getAllPaper2CaseStudies();
-  const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string>(OFFICIAL_2027_SPECIMEN_PAPER_2.id);
+  const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string>(
+    savedSession?.selectedCaseStudyId || OFFICIAL_2027_SPECIMEN_PAPER_2.id
+  );
   const activeCaseStudy: Paper2CaseStudy =
     paper2Studies.find((c) => c.id === selectedCaseStudyId) || OFFICIAL_2027_SPECIMEN_PAPER_2;
   const [activeCaseTab, setActiveCaseTab] = useState<"overview" | "workforce" | "app1" | "app2" | "app3" | "hooks">("overview");
-  const [activePaper2QIndex, setActivePaper2QIndex] = useState<number>(0);
+  const [activePaper2QIndex, setActivePaper2QIndex] = useState<number>(
+    savedSession?.activePaper2QIndex ?? 0
+  );
   const activePaper2Question: Paper2QuestionPart =
     activeCaseStudy.questions[activePaper2QIndex] || activeCaseStudy.questions[0];
 
   // ==========================================
   // VERIFIED ARCHIVE STATES (OFFICIAL PAST PAPERS)
   // ==========================================
-  const [currentVerifiedIndex, setCurrentVerifiedIndex] = useState<number>(0);
-  const [verifiedMarkFilter, setVerifiedMarkFilter] = useState<MarkTier | "all">("all");
-  const [verifiedUnitFilter, setVerifiedUnitFilter] = useState<string>(() =>
-    initialSectionCode && ["1", "2", "3", "4", "5", "6"].includes(initialSectionCode)
-      ? initialSectionCode
-      : "all"
+  const [currentVerifiedIndex, setCurrentVerifiedIndex] = useState<number>(
+    savedSession?.currentVerifiedIndex ?? 0
   );
-  const [verifiedPaperFilter, setVerifiedPaperFilter] = useState<1 | 2 | "all">("all");
+  const [verifiedMarkFilter, setVerifiedMarkFilter] = useState<MarkTier | "all">(
+    (savedSession?.verifiedMarkFilter as MarkTier | "all") ?? "all"
+  );
+  const [verifiedUnitFilter, setVerifiedUnitFilter] = useState<string>(
+    savedSession?.verifiedUnitFilter ??
+      (initialSectionCode && ["1", "2", "3", "4", "5", "6"].includes(initialSectionCode)
+        ? initialSectionCode
+        : "all")
+  );
+  const [verifiedPaperFilter, setVerifiedPaperFilter] = useState<1 | 2 | "all">(
+    (savedSession?.verifiedPaperFilter as 1 | 2 | "all") ?? "all"
+  );
   const [activeVerifiedCaseTab, setActiveVerifiedCaseTab] = useState<"main" | number>("main");
 
   const filteredVerifiedQuestions: VerifiedQuestion[] = useMemo(() => {
@@ -433,6 +469,7 @@ export function PracticeStudio({
         timestamp: new Date().toISOString(),
       };
       onSaveSubmission(record);
+      onMarkDone(currentActiveId);
     }
   };
 
@@ -466,6 +503,7 @@ export function PracticeStudio({
         timestamp: new Date().toISOString(),
       };
       onSaveSubmission(record);
+      onMarkDone(currentActiveId);
     }
   };
 
@@ -484,6 +522,7 @@ export function PracticeStudio({
       activePart,
       selectedUnit,
       activePaper2QIndex,
+      selectedCaseStudyId,
       currentVerifiedIndex,
       verifiedMarkFilter,
       verifiedUnitFilter,
@@ -495,6 +534,7 @@ export function PracticeStudio({
     activePart,
     selectedUnit,
     activePaper2QIndex,
+    selectedCaseStudyId,
     currentVerifiedIndex,
     verifiedMarkFilter,
     verifiedUnitFilter,
@@ -866,6 +906,7 @@ export function PracticeStudio({
       };
       setLatestSubmissionId(record.id);
       onSaveSubmission(record);
+      onMarkDone(questionId);
 
       // Award study points/coins for answering this question!
       const earnedCoins = 20 + Math.max(5, result.totalScore * 5);
@@ -1206,18 +1247,32 @@ export function PracticeStudio({
                     <div role="group" aria-label="Question parts" className="study-question-options">
                       {activePaper1Scenario.questions.map((q) => {
                         const isCurrent = activePart === q.part;
+                        const partId = `${activePaper1Scenario.scenario_id}_${q.part}`;
+                        const isDone = isQuestionDone(partId, doneIds);
+                        const saved = getQuestionScore(partId);
+                        const hasScore = saved !== undefined;
+                        const score = saved?.score ?? 0;
+                        const max = saved?.max || q.mark_value;
+                        const isFull = hasScore && score >= max;
                         return (
                           <button
                             key={q.part}
                             type="button"
                             onClick={() => handleSelectPart(q.part)}
                             aria-pressed={isCurrent}
-                            aria-label={`Part ${q.part.toUpperCase()}, ${q.mark_value} marks. ${q.question_text}`}
+                            aria-label={`Part ${q.part.toUpperCase()}, ${q.mark_value} marks. ${q.question_text}${hasScore ? `. Scored ${score} out of ${max}` : isDone ? ". Done" : ""}`}
                             title={q.question_text}
-                            className="study-question-button"
+                            className={`study-question-button${hasScore ? (isFull ? " study-question-button--done" : " study-question-button--partial") : isDone ? " study-question-button--done" : ""}`}
                           >
                             <strong>Part {q.part.toUpperCase()}</strong>
                             <small>{q.mark_value} marks</small>
+                            {hasScore ? (
+                              <span className={isFull ? "study-question-score study-question-score--full" : "study-question-score study-question-score--partial"}>
+                                {score}/{max}{isFull ? " ✓" : ""}
+                              </span>
+                            ) : isDone ? (
+                              <span className="study-question-done-mark" aria-hidden="true">✓ Done</span>
+                            ) : null}
                           </button>
                         );
                       })}
@@ -1432,22 +1487,37 @@ export function PracticeStudio({
 
                   {/* Questions for Paper 2 */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {activeCaseStudy.questions.map((q, idx) => (
-                      <button
-                        key={q.id}
-                        onClick={() => {
-                          setActivePaper2QIndex(idx);
-                          setEvaluationResult(null);
-                        }}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-colors ${
-                          idx === activePaper2QIndex
-                            ? "bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322]"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                        }`}
-                      >
-                        {q.partNumber} ({q.marks}m)
-                      </button>
-                    ))}
+                    {activeCaseStudy.questions.map((q, idx) => {
+                      const isDone = isQuestionDone(q.id, doneIds);
+                      const saved = getQuestionScore(q.id);
+                      const hasScore = saved !== undefined;
+                      const score = saved?.score ?? 0;
+                      const max = saved?.max || q.marks;
+                      const isFull = hasScore && score >= max;
+                      return (
+                        <button
+                          key={q.id}
+                          onClick={() => {
+                            setActivePaper2QIndex(idx);
+                            setEvaluationResult(null);
+                          }}
+                          aria-label={`${q.partNumber}, ${q.marks} marks${hasScore ? `. Scored ${score} out of ${max}` : ""}`}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-colors ${
+                            idx === activePaper2QIndex
+                              ? "bg-[#0F2042] dark:bg-[#38BDF8] text-white dark:text-[#0C1322]"
+                              : hasScore
+                              ? isFull
+                                ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                                : "bg-red-100 dark:bg-red-950/50 text-red-800 dark:text-red-300 border border-red-300 dark:border-red-700"
+                              : isDone
+                              ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                          }`}
+                        >
+                          {q.partNumber} ({q.marks}m){hasScore ? ` ${score}/${max}` : isDone ? " ✓" : ""}
+                        </button>
+                      );
+                    })}
                   </div>
 
                   <h3 className="font-academic-serif text-lg font-bold mb-4">

@@ -40,6 +40,10 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
       const loadStart = performance.now();
       env.allowLocalModels = false;
       env.useBrowserCache = true;
+      // Versioned browser-cache key: bump this whenever the fine-tuned weights on
+      // Hugging Face are replaced, so clients re-download instead of reusing the
+      // stale cached model files (Cache API keys are namespaced by this value).
+      env.cacheKey = "transformers-cache-0264-v4";
       if (env.backends.onnx?.wasm) {
         env.backends.onnx.wasm.proxy = false;
         env.backends.onnx.wasm.numThreads = 1;
@@ -64,7 +68,10 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
       const progress_callback: NonNullable<
         Parameters<typeof pipeline>[2]
       >["progress_callback"] = (progress: any) => self.postMessage({ id, progress });
-      // Single self-contained onnx/model_q4f16.onnx (~535 MB) — no external data format needed.
+      // The browser loads the single-file Transformers.js export onnx/model_q4f16.onnx
+      // (~540 MB). The same HF repo also contains the onnxruntime-genai int4 export
+      // (genai_config.json + model.onnx + model.onnx.data); that layout is for native
+      // inference and is intentionally NOT used by this WebGPU/Transformers.js loader.
       console.log("[QwenWorker] 1. Loading ONNX session...");
       grader = await pipeline("text-generation", data.modelId, {
         dtype: "q4f16",
@@ -78,6 +85,20 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
         throw new Error(`Failed to load the WebGPU model: ${message}`);
       });
       console.log("[QwenWorker] 2. Model ready");
+      // Install the repo's Qwen3 chat template on the tokenizer so apply_chat_template()
+      // can render the non-thinking prompt. Transformers.js ignores chat_template.jinja
+      // unless it is embedded in tokenizer_config.json, which this repo does not do.
+      // A failure here is non-fatal: generation falls back to the equivalent literal.
+      try {
+        const templateUrl = `https://huggingface.co/${data.modelId}/resolve/main/chat_template.jinja`;
+        const response = await fetch(templateUrl);
+        if (response.ok) {
+          const templateText = await response.text();
+          if (grader?.tokenizer) (grader.tokenizer as any).chat_template = templateText;
+        }
+      } catch (e) {
+        console.warn("[QwenWorker] Could not load chat_template.jinja:", e);
+      }
       console.log(`[QwenWorker] Model ready in ${Math.round(performance.now() - loadStart)}ms`);
       self.postMessage({ id, value: "" });
       return;
@@ -92,10 +113,28 @@ self.onmessage = async ({ data }: MessageEvent<Request>) => {
     // Marking starts inside the JSON object: prefill "{" so the model emits the grading
     // JSON immediately and can never ramble before the root object. The InterruptableStoppingCriteria
     // starts at brace depth 1 (this prefilled "{") and halts at the matching top-level "}".
-    const prompt =
-      messages
-        .map((m) => `<|im_start|>${m.role}\n${m.content}<|im_end|>\n`)
-        .join("") + "<|im_start|>assistant\n<think>\n\n</think>\n{";
+    //
+    // Prefer the repo's real Qwen3 chat template rendered with enable_thinking: false;
+    // it yields "<|im_start|>assistant\n<think>\n\n</think>\n\n" (verified against the
+    // model's chat_template.jinja). Fall back to that same literal prefix if the
+    // template fetch or rendering fails.
+    let promptPrefix: string;
+    try {
+      promptPrefix = (grader.tokenizer as any).apply_chat_template(messages, {
+        add_generation_prompt: true,
+        enable_thinking: false,
+        tokenize: false,
+        tools: null,
+        documents: null,
+      }) as string;
+    } catch (e) {
+      console.warn("[QwenWorker] apply_chat_template failed; using Qwen3 non-thinking fallback:", e);
+      promptPrefix =
+        messages
+          .map((m) => `<|im_start|>${m.role}\n${m.content}<|im_end|>\n`)
+          .join("") + "<|im_start|>assistant\n<think>\n\n</think>\n\n";
+    }
+    const prompt = promptPrefix + "{";
 
     const generateStart = performance.now();
 

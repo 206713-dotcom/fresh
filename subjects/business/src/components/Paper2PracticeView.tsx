@@ -53,6 +53,7 @@ import {
   loadPaper2Position,
   savePaper2Answers,
   loadPaper2Answers,
+  isQuestionDone,
 } from "../lib/cookies";
 import {
   loadExamLayout,
@@ -63,6 +64,8 @@ import {
 interface Paper2PracticeViewProps {
   initialScenarioId?: string;
   onOpenStudySpace?: () => void;
+  doneIds: string[];
+  onMarkDone: (id: string) => void;
 }
 
 /**
@@ -106,6 +109,8 @@ function getTwelveMarkTagClasses(tag: string): string {
 export function Paper2PracticeView({
   initialScenarioId = "P2_SET_01",
   onOpenStudySpace,
+  doneIds,
+  onMarkDone,
 }: Paper2PracticeViewProps) {
   // Active Scenario from the 100 available sets (resumes from saved position)
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>(() => {
@@ -148,7 +153,13 @@ export function Paper2PracticeView({
   const [answers, setAnswers] = useState<Record<number, string>>(() => {
     if (typeof window !== "undefined") {
       const saved = loadPaper2Position();
-      const scenId = saved?.scenarioId || initialScenarioId || "P2_SET_01";
+      // Use the same resolution as selectedScenarioId so answers and position
+      // always come from the same scenario after a reload.
+      const scenId =
+        saved?.scenarioId &&
+        PAPER2_DATABASE.some((s) => s.scenario_id === saved.scenarioId)
+          ? saved.scenarioId
+          : initialScenarioId || "P2_SET_01";
       return loadPaper2Answers(scenId);
     }
     return {};
@@ -161,6 +172,14 @@ export function Paper2PracticeView({
   const [showModelAnswer, setShowModelAnswer] = useState<boolean>(false);
   // Whether exact 0264 mark scheme rubric is revealed for current question
   const [showMarkSchemeRubric, setShowMarkSchemeRubric] = useState<boolean>(false);
+
+  // Persisted done-state is the source of truth for the completed question picker.
+  useEffect(() => {
+    const derived = activeScenario.questions
+      .map((q, idx) => (isQuestionDone(`${selectedScenarioId}_${q.number}`, doneIds) ? idx : -1))
+      .filter((idx) => idx >= 0);
+    setCompletedIndices(derived);
+  }, [selectedScenarioId, doneIds, activeScenario]);
 
   // Manual score override & self-assessment panel state
   const [showOverridePanel, setShowOverridePanel] = useState<boolean>(false);
@@ -264,6 +283,7 @@ export function Paper2PracticeView({
       if (!completedIndices.includes(currentQuestionIdx)) {
         setCompletedIndices((prev) => [...prev, currentQuestionIdx]);
       }
+      onMarkDone(`${selectedScenarioId}_${activeQuestion.number}`);
 
       // Bonus coins for completing a Paper 2 question
       const coinsEarned = evalRes.totalScore * 5 + 10;
@@ -404,6 +424,7 @@ export function Paper2PracticeView({
     if (!completedIndices.includes(currentQuestionIdx)) {
       setCompletedIndices((prev) => [...prev, currentQuestionIdx]);
     }
+    onMarkDone(`${selectedScenarioId}_${activeQuestion.number}`);
 
     const previousScore = existingEval?.totalScore ?? 0;
     if (clampedScore > previousScore) {
@@ -863,6 +884,7 @@ export function Paper2PracticeView({
                 const isCompleted = completedIndices.includes(idx);
                 const ev = evaluations[idx];
                 const hasScore = ev !== undefined;
+                const isPartial = hasScore && ev.totalScore < q.mark_value;
 
                 return (
                   <button
@@ -881,6 +903,8 @@ export function Paper2PracticeView({
                         : isCompleted
                         ? ev?.isManuallyOverridden
                           ? "bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 border-amber-300 dark:border-amber-700"
+                          : isPartial
+                          ? "bg-red-50 dark:bg-red-950/40 text-red-800 dark:text-red-300 border-red-300 dark:border-red-800"
                           : "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800"
                         : "bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50"
                     }`}

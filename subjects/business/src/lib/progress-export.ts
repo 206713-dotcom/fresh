@@ -1,7 +1,7 @@
 import { downloadProgressCsv } from "../../../progress-csv.js";
 import { DETAILED_0264_SYLLABUS } from "./data/detailed-syllabus-0264";
 import { ALL_LESSONS } from "./data/interactive-lessons";
-import { loadSyllabusRatings, getStudyCoins } from "./cookies";
+import { loadSyllabusRatings, getStudyCoins, loadCompletedQuestionIds } from "./cookies";
 import { loadLessonProgress } from "./lessons-progress";
 import { loadBossWrongQuestions } from "./boss-battle";
 import type { StudentSubmissionRecord } from "./types";
@@ -33,6 +33,9 @@ export function exportBusinessProgress(submissions: StudentSubmissionRecord[]): 
   for (const record of Object.values(loadBossWrongQuestions())) {
     rows.push(["Boss Battle review", record.id, record.missCount + " misses", "",
       record.question + "\nAnswer: " + record.correctAnswer, new Date(record.lastMissedAt).toISOString()]);
+  }
+  for (const id of loadCompletedQuestionIds()) {
+    rows.push(["Completed question", id, "Done", "", "", ""]);
   }
   for (const key of Object.keys(localStorage).sort()) {
     if (key.startsWith("ecbiz_draft_") || key.startsWith("ecbiz_p2_answers_")) {

@@ -34,7 +34,7 @@ export const QWEN_MODELS: Record<QwenModelTier, QwenModelConfig> = {
     shortLabel: "Qwen 3 0.6B",
     activeLabel: "Qwen 3 0.6B Active",
     footerLabel: "Qwen 3 0.6B AI",
-    approxDownloadSize: "~535 MB",
+    approxDownloadSize: "~650 MB",
   },
 };
 
@@ -112,8 +112,10 @@ export function getDeviceTierInfo(): DeviceTierInfo {
 }
 
 const PREF_STORAGE_KEY = "ecbiz_qwen_preferred_tier";
-// Versioned cache keys so a stale cached flag from the previous base model never
-// triggers an unintended background download of the ~535 MB fine-tuned model.
+// Versioned local-storage flags so a stale flag from a previous base model never
+// triggers an unintended background download. The actual browser model cache key
+// lives in qwen.worker.ts (`env.cacheKey`) and must be bumped whenever the
+// fine-tuned weights are replaced on Hugging Face.
 const CACHE_STORAGE_KEY = "ecbiz_qwen3_cached_v2";
 const CACHE_TIER_KEY = "ecbiz_qwen3_cached_tier_v2";
 

@@ -22,19 +22,28 @@ import {
 } from "lucide-react";
 import { PAPER1_DATABASE } from "../lib/data/paper1-database";
 import { PAPER2_DATABASE } from "../lib/data/paper2-database";
-import type { Paper1Question } from "../lib/data/paper1-database";
+import type {
+  Paper1Question,
+  Paper1ScenarioSet,
+} from "../lib/data/paper1-database";
 import type {
   Paper2AppendixTable,
   Paper2CaseStudyInsert,
 } from "../lib/data/paper2-database";
 import { formatTime } from "../lib/utils";
+import { isQuestionDone } from "../lib/cookies";
 import {
   loadExamLayout,
   saveExamLayout,
   type ExamLayout,
 } from "../lib/exam-layout";
 
-type ExamId = "paper1" | "paper2_full" | "paper2_short";
+type ExamId =
+  | "paper1_full"
+  | "paper2_complete"
+  | "paper1"
+  | "paper2_full"
+  | "paper2_short";
 type ExamStage = "select" | "active" | "finished";
 
 interface ExamConfig {
@@ -49,6 +58,28 @@ interface ExamConfig {
 }
 
 const EXAM_CONFIGS: ExamConfig[] = [
+  {
+    id: "paper1_full",
+    paperLabel: "Paper 1 · Full",
+    title: "Paper 1 Full Paper",
+    durationSeconds: 90 * 60,
+    durationLabel: "1 hour 30 min",
+    totalMarks: 80,
+    questionMix: "4 cases × (a) 2m · (b) 4m · (c) 6m · (d) 8m",
+    description:
+      "The complete 80-mark Paper 1 in the 0264 specimen format: four unseen case studies, each with four structured questions. Only questions you have not practised are used.",
+  },
+  {
+    id: "paper2_complete",
+    paperLabel: "Paper 2 · Complete",
+    title: "Paper 2 Full Paper",
+    durationSeconds: 90 * 60,
+    durationLabel: "1 hour 30 min",
+    totalMarks: 80,
+    questionMix: "4 × 8-mark · 4 × 12-mark",
+    description:
+      "The complete 80-mark Paper 2 in the 0264 specimen format: one full case study insert with Appendices 1–3 and all eight questions. Only unseen questions are used.",
+  },
   {
     id: "paper1",
     paperLabel: "Paper 1",
@@ -88,6 +119,21 @@ const CARD_ACCENTS: Record<
   ExamId,
   { border: string; badge: string; iconBg: string; text: string }
 > = {
+  paper1_full: {
+    border: "border-sky-300/70 dark:border-sky-800/80",
+    badge: "bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300",
+    iconBg:
+      "bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-300",
+    text: "text-sky-700 dark:text-sky-300",
+  },
+  paper2_complete: {
+    border: "border-violet-300/70 dark:border-violet-800/80",
+    badge:
+      "bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300",
+    iconBg:
+      "bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-300",
+    text: "text-violet-700 dark:text-violet-300",
+  },
   paper1: {
     border: "border-indigo-300/70 dark:border-indigo-800/80",
     badge:
@@ -133,6 +179,12 @@ interface MockExamQuestion {
   marks: number;
   parts: MockExamPart[];
   markScheme: MarkSchemeGroup[];
+  // Full-paper mocks attach a case study to each individual question, so the
+  // inset panel can follow the question the student is currently answering.
+  caseStem?: string;
+  scenarioId?: string;
+  unit?: string;
+  appendices?: MockExamAppendix[];
 }
 
 interface MockExamAppendix {
@@ -240,20 +292,40 @@ function countWords(text: string): number {
   return trimmed ? trimmed.split(/\s+/).length : 0;
 }
 
-function createPaper1Exam(): MockExamPaper {
-  const scenario =
-    PAPER1_DATABASE[Math.floor(Math.random() * PAPER1_DATABASE.length)];
+function createPaper1Exam(doneIds: string[]): MockExamPaper {
+  const isDone = (scenarioId: string, question: Paper1Question) =>
+    isQuestionDone(`${scenarioId}_${question.part}`, doneIds);
+
+  // Only scenarios with at least one undone question are eligible. If every
+  // question in the bank is done, fall back to the full bank so a mock can
+  // still be generated.
+  const eligibleScenarios = PAPER1_DATABASE.filter((candidate) =>
+    candidate.questions.some(
+      (question) => !isDone(candidate.scenario_id, question),
+    ),
+  );
+  const pool =
+    eligibleScenarios.length > 0 ? eligibleScenarios : PAPER1_DATABASE;
+  const scenario = pool[Math.floor(Math.random() * pool.length)];
 
   const picked: Paper1Question[] = [];
   for (const mark of [2, 4, 6, 8]) {
     const match = scenario.questions.find(
-      (question) => question.mark_value === mark,
+      (question) =>
+        question.mark_value === mark && !isDone(scenario.scenario_id, question),
     );
     if (match) picked.push(match);
   }
 
+  const undoneQuestions = scenario.questions.filter(
+    (question) => !isDone(scenario.scenario_id, question),
+  );
   const sourceQuestions =
-    picked.length === 4 ? picked : scenario.questions;
+    picked.length === 4
+      ? picked
+      : undoneQuestions.length > 0
+        ? undoneQuestions
+        : scenario.questions;
 
   const questions: MockExamQuestion[] = sourceQuestions.map(
     (question, index) => {
@@ -285,6 +357,93 @@ function createPaper1Exam(): MockExamPaper {
     scenarioId: scenario.scenario_id,
     unit: scenario.unit,
     caseStem: scenario.scenario_stem,
+    appendices: [],
+    questions,
+  };
+}
+
+/**
+ * Full Paper 1 in the 0264 specimen format: four unseen case studies, each with
+ * parts (a)–(d) worth 2, 4, 6 and 8 marks (80 marks total, 90 minutes).
+ */
+function createFullPaper1Exam(doneIds: string[]): MockExamPaper {
+  const parts = ["a", "b", "c", "d"] as const;
+  const marksForPart: Record<(typeof parts)[number], 2 | 4 | 6 | 8> = {
+    a: 2,
+    b: 4,
+    c: 6,
+    d: 8,
+  };
+  const isDone = (scenarioId: string, question: Paper1Question) =>
+    isQuestionDone(`${scenarioId}_${question.part}`, doneIds);
+
+  // Prefer four case studies whose four parts are all unseen. If fewer are
+  // available, relax the filter so a full paper can still be generated.
+  let pool = PAPER1_DATABASE.filter(
+    (scenario) =>
+      parts.every((part) =>
+        scenario.questions.some(
+          (q) => q.part === part && q.mark_value === marksForPart[part],
+        ),
+      ) &&
+      scenario.questions.every((q) => !isDone(scenario.scenario_id, q)),
+  );
+  if (pool.length < 4) {
+    pool = PAPER1_DATABASE.filter((scenario) =>
+      scenario.questions.some((q) => !isDone(scenario.scenario_id, q)),
+    );
+  }
+  if (pool.length < 4) pool = PAPER1_DATABASE;
+
+  const scenarios = pickRandom(pool, 4);
+  const questions: MockExamQuestion[] = [];
+
+  scenarios.forEach((scenario, scenarioIndex) => {
+    parts.forEach((part) => {
+      const question =
+        scenario.questions.find(
+          (q) =>
+            q.part === part &&
+            q.mark_value === marksForPart[part] &&
+            !isDone(scenario.scenario_id, q),
+        ) ??
+        scenario.questions.find(
+          (q) => q.part === part && q.mark_value === marksForPart[part],
+        );
+      if (!question) return;
+
+      const partId = `${scenario.scenario_id}-${question.part}`;
+      questions.push({
+        id: partId,
+        number: `Question ${scenarioIndex + 1}(${part})`,
+        marks: question.mark_value,
+        parts: [
+          {
+            id: partId,
+            label: `(${part})`,
+            marks: question.mark_value,
+            questionText: question.question_text,
+            modelAnswer: question.model_answer,
+          },
+        ],
+        markScheme: flattenMarkScheme(question.mark_scheme),
+        caseStem: scenario.scenario_stem,
+        scenarioId: scenario.scenario_id,
+        unit: scenario.unit,
+        appendices: [],
+      });
+    });
+  });
+
+  return {
+    id: "paper1_full",
+    paper: 1,
+    title: "Paper 1 Full Paper (0264 specimen format)",
+    durationSeconds: 90 * 60,
+    totalMarks: questions.reduce((sum, question) => sum + question.marks, 0),
+    scenarioId: scenarios.map((scenario) => scenario.scenario_id).join(" · "),
+    unit: scenarios.map((scenario) => scenario.unit).join(" · "),
+    caseStem: scenarios[0]?.scenario_stem ?? "",
     appendices: [],
     questions,
   };
@@ -363,29 +522,50 @@ function buildAppendices(
   return appendices;
 }
 
-function createPaper2Exam(mode: "full" | "short"): MockExamPaper {
-  const scenario =
-    PAPER2_SCENARIOS[Math.floor(Math.random() * PAPER2_SCENARIOS.length)];
+function createPaper2Exam(
+  mode: "full" | "short" | "complete",
+  doneIds: string[],
+): MockExamPaper {
+  const requiredPairs = mode === "complete" ? 4 : mode === "full" ? 2 : 1;
+  const isDone = (scenario: Paper2RawScenario, question: Paper2RawQuestion) =>
+    isQuestionDone(`${scenario.scenario_id}-${question.number}`, doneIds);
 
-  // Paper 2 questions are arranged in topic pairs: 1(a)/1(b), 2(a)/2(b), etc.
-  // Each pair contains one 8-mark and one 12-mark question. Choosing whole
-  // pairs guarantees the exact 2×8 + 2×12 or 1×8 + 1×12 structure while
-  // keeping each question attached to its related topic.
-  const pairs = new Map<string, Paper2RawQuestion[]>();
-  for (const question of scenario.questions) {
-    const pairKey = question.number.split("(")[0] || question.number;
-    const group = pairs.get(pairKey) ?? [];
-    group.push(question);
-    pairs.set(pairKey, group);
-  }
+  const buildCompletePairs = (
+    scenario: Paper2RawScenario,
+    excludeDone: boolean,
+  ): Paper2RawQuestion[][] => {
+    // Paper 2 questions are arranged in topic pairs: 1(a)/1(b), 2(a)/2(b),
+    // etc. Each pair contains one 8-mark and one 12-mark question. Choosing
+    // whole pairs guarantees the exact 2×8 + 2×12 or 1×8 + 1×12 structure
+    // while keeping each question attached to its related topic.
+    const pairs = new Map<string, Paper2RawQuestion[]>();
+    for (const question of scenario.questions) {
+      const pairKey = question.number.split("(")[0] || question.number;
+      const group = pairs.get(pairKey) ?? [];
+      group.push(question);
+      pairs.set(pairKey, group);
+    }
 
-  const completePairs = Array.from(pairs.values()).filter(
-    (pair) =>
-      pair.some((question) => question.mark_value === 8) &&
-      pair.some((question) => question.mark_value === 12),
+    return Array.from(pairs.values()).filter(
+      (pair) =>
+        pair.some((question) => question.mark_value === 8) &&
+        pair.some((question) => question.mark_value === 12) &&
+        (!excludeDone || pair.every((question) => !isDone(scenario, question))),
+    );
+  };
+
+  // A scenario qualifies only when it has enough complete pairs that still
+  // contain an undone question. If none qualifies, fall back to the full pool
+  // (and unfiltered pairs) so the exam still works when everything is done.
+  const eligibleScenarios = PAPER2_SCENARIOS.filter(
+    (candidate) => buildCompletePairs(candidate, true).length >= requiredPairs,
   );
+  const usingUndonePool = eligibleScenarios.length > 0;
+  const pool = usingUndonePool ? eligibleScenarios : PAPER2_SCENARIOS;
+  const scenario = pool[Math.floor(Math.random() * pool.length)];
 
-  const chosenPairs = pickRandom(completePairs, mode === "full" ? 2 : 1);
+  const completePairs = buildCompletePairs(scenario, usingUndonePool);
+  const chosenPairs = pickRandom(completePairs, requiredPairs);
   const selectedNumbers = new Set(
     chosenPairs.flat().map((question) => question.number),
   );
@@ -395,11 +575,21 @@ function createPaper2Exam(mode: "full" | "short"): MockExamPaper {
     .map((question) => normalisePaper2Question(scenario.scenario_id, question));
 
   return {
-    id: mode === "full" ? "paper2_full" : "paper2_short",
+    id:
+      mode === "complete"
+        ? "paper2_complete"
+        : mode === "full"
+          ? "paper2_full"
+          : "paper2_short",
     paper: 2,
     title:
-      mode === "full" ? "Paper 2 Full Mock Exam" : "Paper 2 Short Mock Exam",
-    durationSeconds: mode === "full" ? 60 * 60 : 30 * 60,
+      mode === "complete"
+        ? "Paper 2 Full Paper (0264 specimen format)"
+        : mode === "full"
+          ? "Paper 2 Full Mock Exam"
+          : "Paper 2 Short Mock Exam",
+    durationSeconds:
+      mode === "complete" ? 90 * 60 : mode === "full" ? 60 * 60 : 30 * 60,
     totalMarks: questions.reduce((sum, question) => sum + question.marks, 0),
     scenarioId: scenario.scenario_id,
     unit: scenario.unit,
@@ -409,9 +599,11 @@ function createPaper2Exam(mode: "full" | "short"): MockExamPaper {
   };
 }
 
-function createExam(id: ExamId): MockExamPaper {
-  if (id === "paper1") return createPaper1Exam();
-  return createPaper2Exam(id === "paper2_full" ? "full" : "short");
+function createExam(id: ExamId, doneIds: string[]): MockExamPaper {
+  if (id === "paper1_full") return createFullPaper1Exam(doneIds);
+  if (id === "paper1") return createPaper1Exam(doneIds);
+  if (id === "paper2_complete") return createPaper2Exam("complete", doneIds);
+  return createPaper2Exam(id === "paper2_full" ? "full" : "short", doneIds);
 }
 
 function AppendixTable({ table }: { table: Paper2AppendixTable }) {
@@ -467,15 +659,23 @@ function AppendixTable({ table }: { table: Paper2AppendixTable }) {
 
 function CaseStudyPanel({
   exam,
+  question,
   open,
   onToggle,
   className = "",
 }: {
   exam: MockExamPaper;
+  question?: MockExamQuestion;
   open: boolean;
   onToggle: () => void;
   className?: string;
 }) {
+  // Full papers give every question its own case study; shorter mocks share a
+  // single paper-level insert. Fall back to the paper values when absent.
+  const scenarioId = question?.scenarioId ?? exam.scenarioId;
+  const unit = question?.unit ?? exam.unit;
+  const caseStem = question?.caseStem ?? exam.caseStem;
+  const appendices = question?.appendices ?? exam.appendices;
   return (
     <div
       className={`rounded-2xl border border-[#E7E5E4] dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden ${className}`}
@@ -496,7 +696,7 @@ function CaseStudyPanel({
               {exam.paper === 1 ? "Case Study" : "Case Study Insert"}
             </span>
             <span className="block text-[10px] text-[#78716C] dark:text-neutral-400">
-              {exam.scenarioId} · {exam.unit}
+              {scenarioId} · {unit}
             </span>
           </span>
         </span>
@@ -517,11 +717,11 @@ function CaseStudyPanel({
               Business background
             </div>
             <p className="text-xs sm:text-sm leading-relaxed text-[#44403C] dark:text-neutral-300 whitespace-pre-line">
-              {exam.caseStem}
+              {caseStem}
             </p>
           </div>
 
-          {exam.appendices.map((appendix) => (
+          {appendices.map((appendix) => (
             <div
               key={appendix.id}
               className="rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black/40 overflow-hidden"
@@ -552,9 +752,15 @@ function CaseStudyPanel({
 
 interface MockExamModeProps {
   onExit: () => void;
+  doneIds: string[];
+  onMarkDone: (id: string) => void;
 }
 
-export function MockExamMode({ onExit }: MockExamModeProps) {
+export function MockExamMode({
+  onExit,
+  doneIds,
+  onMarkDone,
+}: MockExamModeProps) {
   const [stage, setStage] = useState<ExamStage>("select");
   const [exam, setExam] = useState<MockExamPaper | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -640,7 +846,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
   }, [deadline, stage]);
 
   const startExam = (id: ExamId) => {
-    const generated = createExam(id);
+    const generated = createExam(id, doneIds);
     setExam(generated);
     setAnswers({});
     setCurrentIndex(0);
@@ -680,6 +886,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
     ) {
       return;
     }
+    exam.questions.forEach((question) => onMarkDone(question.id));
     setShowCaseStudy(false);
     setStage("finished");
   };
@@ -976,12 +1183,14 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
             </div>
           </div>
 
-          <CaseStudyPanel
-            exam={exam}
-            open={showCaseStudy}
-            onToggle={() => setShowCaseStudy((previous) => !previous)}
-            className="mb-5"
-          />
+          {!exam.questions.some((question) => question.caseStem) && (
+            <CaseStudyPanel
+              exam={exam}
+              open={showCaseStudy}
+              onToggle={() => setShowCaseStudy((previous) => !previous)}
+              className="mb-5"
+            />
+          )}
 
           <div className="space-y-5">
             {exam.questions.map((question, index) => (
@@ -1000,11 +1209,21 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
                     {question.marks} marks
                   </span>
                   <span className="text-[10px] font-mono text-[#78716C] dark:text-neutral-400">
-                    {exam.scenarioId}
+                    {question.scenarioId ?? exam.scenarioId}
                   </span>
                 </header>
 
                 <div className="p-4 sm:p-5 space-y-4">
+                  {question.caseStem && (
+                    <div className="rounded-xl border border-[#E7E5E4] dark:border-neutral-800 bg-[#FAF9F6] dark:bg-black/30 p-3">
+                      <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#57534E] dark:text-neutral-400 mb-1">
+                        Case study · {question.scenarioId} · {question.unit}
+                      </div>
+                      <p className="text-xs leading-relaxed text-[#44403C] dark:text-neutral-300 whitespace-pre-line">
+                        {question.caseStem}
+                      </p>
+                    </div>
+                  )}
                   {question.parts.map((part) => {
                     const answer = (answers[part.id] ?? "").trim();
                     return (
@@ -1460,6 +1679,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
               <div className="min-w-0 md:sticky md:top-32 md:max-h-[calc(100vh-10rem)] md:overflow-y-auto">
                 <CaseStudyPanel
                   exam={exam}
+                  question={currentQuestion}
                   open={showCaseStudy}
                   onToggle={() => setShowCaseStudy((previous) => !previous)}
                   className="mb-5"
@@ -1485,6 +1705,7 @@ export function MockExamMode({ onExit }: MockExamModeProps) {
               {statusStrip}
               <CaseStudyPanel
                 exam={exam}
+                question={currentQuestion}
                 open={showCaseStudy}
                 onToggle={() => setShowCaseStudy((previous) => !previous)}
                 className="mb-5"
