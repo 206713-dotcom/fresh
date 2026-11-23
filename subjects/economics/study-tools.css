@@ -32,3 +32,38 @@
 @media (max-width: 770px) { .diagram-workspace { grid-template-columns: 1fr; } }
 
 .writing-review-layout > form { max-width: none; }
+
+.mock-case-layout { display:grid; grid-template-columns:minmax(0, .85fr) minmax(0, 1.15fr); gap:1.1rem; align-items:start; }
+.mock-case-layout > *, .mock-case-responses > * { min-width:0; }
+.mock-source { padding:.9rem; background:#f1f7f5; border:1px solid #cbded7; border-radius:.75rem; }
+.source-paragraph { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.55rem; align-items:start; }
+.source-paragraph > p { margin:.4rem 0 .75rem; white-space:pre-line; }
+.mock-source td button, .source-paragraph button { margin:.12rem; padding:.26rem .48rem; font-size:.82rem; min-height:34px; }
+.mock-source [data-case-pin][aria-pressed=true] { background:#1d6357; border-color:#1d6357; color:#fff; }
+.mock-source mark { color:#192e38; background:#f6dea1; border-radius:2px; }
+.mock-case-pins { padding:.65rem .85rem; color:#17463f; border:1px solid #c0dbd0; border-radius:.7rem; background:#eaf5f0; }
+.mock-case-pins h3, .mock-case-pins p { margin:.2rem 0; }
+.mock-case-pins ul { margin:.4rem 0; padding-left:1.25rem; }
+.mock-part + .mock-part { border-top:1px solid #dce7e2; padding-top:.6rem; margin-top:1rem; }
+.mock-part textarea { min-height:8rem; }
+.exam-drawing { margin:.75rem 0; padding:.85rem; border:1px solid #cbded7; border-radius:.75rem; background:#f4f8f7; }
+.exam-drawing h3 { margin:.1rem 0 .6rem; }
+.drawing-fields { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr)); gap:.65rem; margin-bottom:.65rem; }
+.drawing-fields > label { display:grid; align-content:start; gap:.25rem; font-size:.86rem; }
+.drawing-fields :is(input,select) { width:100%; min-width:0; }
+.exam-drawing canvas { width:100%; height:auto; display:block; border:1px solid #b8cfd1; border-radius:8px; background:white; cursor:crosshair; touch-action:none; }
+.exam-drawing details { margin:.65rem 0; }
+.exam-drawing [data-drawing-status], .mock-source [data-case-status], #progress-backup [role=status] { margin:.35rem 0 0; }
+.exam-drawing [data-drawing-status]:empty, .mock-source [data-case-status]:empty { display:none; }
+.mock-diagram-compare, .corrections-compare { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap:1rem; }
+.mock-diagram-compare figure { margin:0; min-width:0; }
+.mock-diagram-compare figcaption { font-weight:700; margin:0 0 .35rem; }
+.mock-diagram-compare img, .correction-diagram { display:block; max-width:100%; height:auto; border:1px solid #cfdddf; border-radius:8px; }
+.mark-review-flag { background:#fff1d8; border-inline-start:3px solid #9c6d1f; color:#5b3c12; padding:.65rem .8rem; border-radius:.4rem; }
+.mock-corrections-list li + li { border-top:1px solid #dce7e2; margin-top:.7rem; padding-top:.6rem; }
+.mock-corrections-list li p { margin:.3rem 0; }
+.mock-correction textarea { min-height:10rem; }
+.corrections-compare > section { min-width:0; }
+@media (max-width:970px) {
+  .mock-case-layout { grid-template-columns:minmax(0,1fr); }
+}

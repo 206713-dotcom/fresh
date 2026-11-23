@@ -23,10 +23,18 @@ function economicsProgress() {
       <div><h1>My progress</h1><p>Saved in this browser. Clearing site data removes it.</p></div>
       <div><button type="button" class="primary" data-export-economics>Export progress CSV</button><p id="revision-save-status" role="status"></p></div>
     </header>
+    <section class="progress-panel" id="progress-backup"><h2>Back up or restore progress</h2>
+      <p>Transfer your mocks, saved answers, flashcards, checklist and game progress to another browser.</p>
+      <div class="row"><button type="button" data-ecbiz-backup>Download backup</button>
+      <label class="field">Choose an EcBiz backup<input type="file" data-ecbiz-backup-file accept=".json,application/json"></label>
+      <button type="button" data-ecbiz-restore disabled>Restore selected backup</button></div>
+      <p class="muted">Restore fills gaps in this browser, combines mock histories and keeps your highest game scores.</p>
+      <p role="status"></p>
+    </section>
     <section class="progress-panel study-next"><h2>What should I study next?</h2>
       <p>Recall a topic, review three flashcards and answer a fresh question.</p>
       <div class="row">${link('Start a 10-minute review','#revision-review','button primary')}
-      ${link('Practise diagrams','#revision-diagrams')}${link('View mock history','#revision-history')}</div>
+      ${link('Practise diagrams','#revision-diagrams')}${link('View mock history','#revision-history')}${link('Mock corrections','#revision-corrections')}</div>
     </section>
     <nav class="progress-shortcuts" aria-label="Progress sections">
       <button type="button" data-progress-target="progress-answers">Saved answers</button>

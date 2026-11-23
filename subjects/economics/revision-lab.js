@@ -145,6 +145,7 @@ function renderRevisionTool(page, id) {
   if (page === 'revision') return revisionHub();
   const icons = {
     'revision-history': '▤', 'revision-diagrams': '◩', 'revision-review': '↻',
+    'revision-corrections': '↺', 'revision-diagram-draw': '◩',
     'revision-checklist': '✓', 'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
     'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎'
   };
@@ -165,6 +166,7 @@ function revisionHub() {
       ['↗', 'Past papers and specimen materials', 'Find Cambridge’s specimen papers, mark schemes and past-paper directory.', '#revision-papers']
     ]],
     ['Improve your answers', [
+      ['↺', 'Mock corrections', 'Review missed marks and redo answers from completed mocks.', '#revision-corrections'],
       ['↺', 'Mistakes log', 'Retry questions you missed in topic checks and submitted tests.', '#revision-mistakes'],
       ['✎', 'Written-answer review', 'Get a mark and feedback for each saved version.', '#revision-writing']
     ]]
@@ -366,7 +368,8 @@ function revisionTest() {
   if (state) return revisionAttempt(state);
   const completed = completedFixedMocks();
   return revisionHeading('Exam practice', 'Test builder and original mocks', 'Answers and the timer are saved in this browser.') +
-    link('View mock exam history', '#revision-history') +
+    '<div class="row">' + link('View mock exam history', '#revision-history') +
+    link('Mock corrections', '#revision-corrections') + '</div>' +
     '<p id="revision-save-status" role="status"></p>' +
     '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Completed mocks appear in Mock Exam History. Paper 2 answers are marked by the local AI after submission.</p>' +
     '<div class="mock-picker-grid">' +
@@ -395,13 +398,13 @@ function revisionWrittenItems(state) {
     .map(({ id, marks }) => ({ key: id, id, marks }));
 }
 
-function markRevisionTest(state, status, retry) {
-  const items = revisionWrittenItems(state).filter(({ key }) => !state.grades?.[key] &&
-    (state.answers[key]?.trim() || state.images?.[key]));
+function markRevisionTest(state, status, retry, onlyKey) {
+  const items = revisionWrittenItems(state).filter(({key}) => hasMockResponse(state,key) &&
+    (onlyKey ? key === onlyKey : !state.grades?.[key]));
   if (!items.length) return;
   const attemptId = state.attemptId;
   status.textContent = 'Marking ' + items.length + ' written answers…';
-  retry.hidden = true;
+  retry.disabled = true;
   const reset = status.ownerDocument.querySelector('#revision-test-reset');
   reset.disabled = true;
 
@@ -416,16 +419,22 @@ function markRevisionTest(state, status, retry) {
           const progress = 'Marking answer ' + next + ' of ' + items.length + '.';
           if (status.isConnected) status.textContent = progress;
           try {
-            const grade = await ecbizMarking.grade(id, state.answers[key]?.trim() || '', state.images?.[key], message => {
+            const image=ecBizDiagramImage(state.drawings?.[key]) || state.images?.[key];
+            const grade = await ecbizMarking.grade(id, state.answers[key]?.trim() || '', image, message => {
               if (status.isConnected) status.textContent = progress + ' ' + message;
             });
             const current = revisionState('test', null);
             if (!current || current.attemptId !== attemptId) return;
             current.grades = { ...current.grades, [key]: grade };
-            if (!saveRevisionState('test', current)) return;
+            if (current.markErrors) delete current.markErrors[key];
+            if (!saveRevisionState('test', current)) return 'The mark could not be saved in this browser.';
             archiveMock(current);
           } catch (error) {
             markingError ??= error.message;
+            const current=revisionState('test',null);
+            if(current?.attemptId!==attemptId)return;
+            current.markErrors={...current.markErrors,[key]:error.message};
+            if(saveRevisionState('test',current))archiveMock(current);
           }
         }
       }
@@ -437,17 +446,11 @@ function markRevisionTest(state, status, retry) {
   pendingRevisionTests.get(attemptId).then(markingError => {
     if (!status.isConnected) return;
     reset.disabled = false;
-    const latest = revisionState('test', null);
-    if (latest?.attemptId !== attemptId) return;
-    if (items.some(({ key }) => latest.grades?.[key])) {
-      render(false);
-      if (markingError && document.querySelector('#revision-test-retry')) {
-        document.querySelector('#revision-save-status').textContent = markingError + ' Your answers are saved.';
-      }
-    } else {
-      status.textContent = (markingError || 'Some written answers could not be marked.') + ' Your answers are saved.';
-      retry.hidden = false;
-    }
+    retry.disabled = false;
+    if (revisionState('test',null)?.attemptId !== attemptId) return;
+    render(false);
+    document.querySelector('#revision-save-status').textContent = markingError ?
+      markingError + ' Your answers are saved.' : 'Marking complete.';
   });
 }
 
@@ -460,7 +463,7 @@ function revisionAttempt(state) {
   const score = bank.filter(q => q.options && state.answers[q.id] === String(q.answer)).length;
   const marks = mock2 ? 80 : bank.reduce((total, question) => total + question.marks, 0);
   const written = revisionWrittenItems(state);
-  const isPending = key => !state.grades?.[key] && (state.answers[key]?.trim() || state.images?.[key]);
+  const isPending = key => !state.grades?.[key] && hasMockResponse(state,key);
   const pending = written.filter(({ key }) => isPending(key)).length;
   const earned = score + written.reduce((total, { key }) => total + (state.grades?.[key]?.score ?? 0), 0);
   const writtenFeedback = (key, max, scheme, model, diagram) => {
@@ -469,10 +472,13 @@ function revisionAttempt(state) {
     const outcome = grade ? (grade.score === max ? 'correct' : grade.score === 0 ? 'incorrect' : 'partial') :
       isPending(key) ? null : 'unanswered';
     const label = outcome === 'correct' ? 'Full credit' : outcome === 'incorrect' ? 'No credit' : undefined;
+    const error=state.markErrors?.[key];
+    const retry=hasMockResponse(state,key) && (!grade || error || ecbizMarking.reviewReason(grade,state.answers[key]));
     return '<div class="feedback"' + (outcome ? ' data-outcome="' + outcome + '"' : '') + '>' +
-      (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>Awaiting marking.</p>' :
+      (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>' + escapeHtml(error || 'Awaiting marking.') + '</p>' :
         ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key]) +
-        ecbizMarking.scheme({scheme})) + '</div>';
+        (error?'<p>'+escapeHtml(error)+'</p>':'')) + ecbizMarking.scheme({scheme}) +
+      (retry?'<button type="button" data-retry-mock-part="' + escapeHtml(key) + '">Retry marking this answer</button>':'') + '</div>';
   };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';
@@ -493,21 +499,21 @@ function revisionAttempt(state) {
     const active = group.index === 0 || state.selection.includes(group.index);
     return '<section class="panel"><h2>' + escapeHtml(group.title) + '</h2>' +
       (group.simulated ? '<p class="muted">Practice scenario. Data are simulated.</p>' : '') +
-      group.stimulus.split('\n\n').map(paragraph => '<p>' + escapeHtml(paragraph) + '</p>').join('') +
-      (group.tables ?? []).map(mockDataTable).join('') +
       (!review && group.index ? '<label class="choice"><input type="checkbox" data-section="' + group.index + '"' +
         (active ? ' checked' : '') + '> Answer this question</label>' : '') +
+      '<div class="mock-case-layout">' + mockCaseSource(group,state,review) +
+      '<div class="mock-case-responses"><aside class="mock-case-pins" aria-live="polite" data-case-pins="' + group.index + '">' +
+      mockCasePins(state.evidence?.[group.index]?.pins) + '</aside>' +
       '<fieldset' + (active ? '' : ' hidden disabled') + '><legend>Question ' + (group.index + 1) + '</legend>' +
-      group.parts.map(({marks:points, prompt, scheme, model, diagram}, part) => {
-        const key = group.index + '-' + part;
-        return '<p><strong>' + String.fromCharCode(97 + part) + '.</strong> ' + escapeHtml(prompt) + ' [' + points + ']</p>' +
-          (diagram ? (review
-            ? (state.images?.[key] ? '<p>Submitted diagram</p><img style="max-width:100%" alt="Your submitted diagram" src="' + escapeHtml(state.images[key]) + '">' : '')
-            : '<label class="field">Upload a photo of your diagram<input type="file" accept="image/png,image/jpeg,image/webp" data-mock-diagram="' +
-              key + '" aria-describedby="revision-diagram-status-' + key + '"></label><p id="revision-diagram-status-' + key + '" role="status">' +
-              (state.images?.[key] ? 'Diagram saved with your answer.' : '') + '</p>') : '') +
-          input(key, state.answers[key]) + writtenFeedback(key, points, scheme, model, diagram);
-      }).join('') + '</fieldset></section>';
+      group.parts.map((part,index)=>{
+        const {marks:points,prompt,scheme,model,diagram}=part, key=group.index+'-'+index;
+        return '<section class="mock-part"><p><strong>' + String.fromCharCode(97+index) + '.</strong> ' + escapeHtml(prompt) + ' [' + points + ']</p>' +
+          (diagram ? (review ? examDiagramPreview(state.drawings?.[key],state.images?.[key],part) :
+            diagramEditor(key) + '<details><summary>Upload a photo instead</summary><label class="field">Upload a diagram<input type="file" accept="image/png,image/jpeg,image/webp" data-mock-diagram="' +
+            key + '"></label><p id="revision-diagram-status-' + key + '" role="status">' +
+            (state.images?.[key]?'Uploaded photo saved. Use the editor to replace it.':'')+'</p></details>') : '') +
+          input(key,state.answers[key]) + writtenFeedback(key,points,scheme,model,diagram) + '</section>';
+      }).join('') + '</fieldset></div></div></section>';
   }).join('') : bank.map((question, index) =>
     '<section class="panel"><h2>' + (index + 1) + '. ' + escapeHtml(question.q) + ' [' + question.marks + ']</h2>' +
     (question.case ? '<p>' + escapeHtml(question.case) + '</p>' : '') +
@@ -521,8 +527,9 @@ function revisionAttempt(state) {
     (mock2 ? '<p>Use the source to answer all of Section A. Choose three questions in Section B.</p>' : '') +
     (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
     (review ? '<button id="revision-test-reset" type="button">Build another test</button> ' +
-      link('View mock exam history', '#revision-history') +
-      (pending ? '<button id="revision-test-retry" type="button" hidden>Retry marking</button>' : '') : '') +
+      link('View mock exam history', '#revision-history') + ' ' +
+      (state.mode==='custom'?'':link('Open corrections',mockCorrectionHref({id:state.attemptId || 'previous-'+state.mode}))) +
+      (pending ? '<button id="revision-test-retry" type="button">Retry pending marks</button>' : '') : '') +
     '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
     (!review ? '<button class="primary">Finish and mark</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
     '</form>' + (review && mock2 ? '<section class="panel"><h2>8-mark discussion bands</h2><p>6–8 for developed analysis of both sides, 3–5 for some developed reasoning with limited depth or balance, 1–2 for relevant undeveloped points, 0 for no creditworthy material.</p></section>' : '');
@@ -601,21 +608,39 @@ function setupRevisionTest(_id, autoMark = true) {
   };
   if (state.finished) {
     const retry = document.querySelector('#revision-test-retry');
-    if (!retry) return;
     if (!state.attemptId) {
       state.attemptId = crypto.randomUUID();
       if (!saveRevisionState('test', state)) return;
     }
     const status = document.querySelector('#revision-save-status');
-    retry.onclick = () => markRevisionTest(revisionState('test', state), status, retry);
-    if (autoMark) retry.click();
-    else {
-      status.textContent = 'Some written answers could not be marked. Your answers are saved.';
-      retry.hidden = false;
+    for (const button of document.querySelectorAll('[data-retry-mock-part]')) {
+      button.onclick=()=>{ if(!pendingRevisionTests.has(state.attemptId))
+        markRevisionTest(revisionState('test',state),status,button,button.dataset.retryMockPart); };
+    }
+    if(retry) {
+      retry.onclick=()=>{ if(!pendingRevisionTests.has(state.attemptId))
+        markRevisionTest(revisionState('test',state),status,retry); };
+      if(autoMark && !Object.keys(state.markErrors ?? {}).length)retry.click();
     }
     return;
   }
   const form = document.querySelector('#revision-attempt');
+  const save = patch=>{
+    if(!saveRevisionState('test',{...state,...patch}))return false;
+    Object.assign(state,patch);
+    return true;
+  };
+  setupMockCaseNotes(form,state,save);
+  setupDiagramEditors(form,state.drawings,(key,drawing)=>{
+    const images={...state.images};
+    delete images[key];
+    const saved=save({images,drawings:{...state.drawings,[key]:drawing}});
+    if(saved) {
+      const status=form.querySelector('#revision-diagram-status-'+key);
+      if(status)status.textContent='';
+    }
+    return saved;
+  });
   const diagram = form.querySelector('[data-mock-diagram]');
   let loadingDiagram = false;
   if (diagram) diagram.onchange = async () => {
@@ -646,9 +671,11 @@ function setupRevisionTest(_id, autoMark = true) {
       if (image.length > 530000) throw new Error('Choose a smaller or more tightly cropped image.');
       if (!form.isConnected) return;
       const images = { ...state.images, [key]: image };
-      if (saveRevisionState('test', { ...state, images })) {
-        state.images = images;
-        status.textContent = 'Diagram saved with your answer.';
+      const drawings={...state.drawings};
+      delete drawings[key];
+      if (save({images,drawings})) {
+        status.textContent = 'Uploaded photo saved. Use the editor to replace it.';
+        form.querySelector('[data-exam-drawing="'+key+'"]')?.dispatchEvent(new Event('diagram-photo-saved'));
       } else {
         status.textContent = 'The diagram could not be saved in this browser.';
       }
@@ -995,11 +1022,13 @@ const revisionRoutes = {
   revision: revisionHub, 'revision-topics': revisionTopics, 'revision-mistakes': revisionMistakes,
   'revision-papers': revisionPapers, 'revision-writing': revisionWriting,
   'revision-test': revisionTest, 'revision-retry': revisionRetry,
-  'revision-review': studyQueue, 'revision-diagrams': diagramPractice, 'revision-history': mockHistoryView
+  'revision-review': studyQueue, 'revision-diagrams': diagramPractice, 'revision-history': mockHistoryView,
+  'revision-corrections': correctionPage, 'revision-diagram-draw': freeDiagramPractice
 };
 const revisionSetups = {
   'revision-checklist': setupRevisionChecklist,
   'revision-topics': setupRevisionTopic, 'revision-writing': setupRevisionWriting,
   'revision-test': setupRevisionTest, 'revision-retry': setupRevisionRetry,
-  'revision-review': setupStudyQueue, 'revision-diagrams': setupDiagramPractice
+  'revision-review': setupStudyQueue, 'revision-diagrams': setupDiagramPractice,
+  'revision-corrections': setupCorrectionPage, 'revision-diagram-draw': setupFreeDiagramPractice
 };

@@ -21,7 +21,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=13', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=14', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -205,21 +205,30 @@ const ecbizMarking = (() => {
     };
   }
 
+  function reviewReason(result, answer) {
+    if (result.reviewNote) return result.reviewNote;
+    if (result.reviewUnavailable || result.modelPlan) return 'The marker could not verify a complete worked example.';
+    if (result.diagram && result.provisional) return 'Check the visual assessment against the model diagram and mark scheme.';
+    if (result.provisional && result.score>0 && !creditedEvidence(answer,result).length) {
+      return 'The marker awarded credit without a verifiable quotation from your answer.';
+    }
+    return '';
+  }
+
   function feedback(result, marks, answer) {
     const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
       escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
     const section = (title, value, kind = '') => value ? '<section class="review-section ' + kind + '"><h3>' + title + '</h3>' + paragraphs(value) + '</section>' : '';
     const coaching = result.coaching;
+    const evidence = markedEvidence(answer,result);
+    const reason = reviewReason(result,answer);
     return '<div class="review-summary"><div><span class="review-eyebrow">Answer review</span><h3>Your feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
       '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
       '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>' +
-      ([2,4,6].includes(marks) && typeof answer === 'string' && answer && result.score
-        ? '<section class="review-section review-evidence">' + markedEvidence(answer, result) + '</section>' : '') +
-      (result.credits?.length ? '<section class="review-section review-credits"><h3>Marks awarded</h3><ul>' + result.credits.map(credit =>
-        '<li><strong>' + escapeHtml(credit.criterion) + '</strong> · ' +
-        escapeHtml(credit.evidence || 'Exact wording unavailable') + '</li>').join('') + '</ul></section>' : '') +
+      (reason?'<p class="mark-review-flag"><strong>Review recommended.</strong> '+escapeHtml(reason)+'</p>':'') +
+      (evidence?'<section class="review-section review-evidence">' + evidence + '</section>':'') +
       '<div class="review-coaching">' + section('What worked', coaching?.strengths, 'review-strengths') +
       section('What to improve', coaching?.gaps, 'review-gaps') + '</div>' +
       section('How to reach full marks', result.nextStep || coaching?.next, 'review-next') +
@@ -237,6 +246,6 @@ const ecbizMarking = (() => {
       (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</details>';
   }
 
-  return { grade, feedback, scheme, blank: { score: 0, feedback: 'No answer submitted.' } };
+  return { grade, feedback, scheme, reviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
 })();
 

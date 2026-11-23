@@ -2,7 +2,7 @@ questions.push(...examPracticeQuestions);
 
 const main = document.querySelector('main');
 const markingControls = document.querySelector('#local-marking-controls');
-const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-retry']);
+const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-retry', 'revision-corrections']);
 const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-notes/';
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
 const papers = 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-economics-0455/past-papers/';

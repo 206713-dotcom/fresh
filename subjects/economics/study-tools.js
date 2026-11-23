@@ -10,7 +10,7 @@ function mockRows(state) {
     });
   }
   return revisionWrittenItems(state).map(({key,marks,topic}) => {
-    const submitted = Boolean(state.answers[key]?.trim() || state.images?.[key]);
+    const submitted = hasMockResponse(state,key);
     return {topic,max:marks,score:state.grades?.[key]?.score ?? (submitted ? null : 0)};
   });
 }
@@ -28,7 +28,7 @@ function mockSummary(state) {
   return {id:state.attemptId || 'previous-' + state.mode, mode:state.mode, paper:state.paper, at:state.completedAt ?? null,
     score:rows.reduce((sum,r)=>sum+(r.score??0),0), max:state.mode === 'p2' ? 80 : rows.reduce((sum,r)=>sum+r.max,0),
     pending:rows.filter(r=>r.score===null).reduce((sum,r)=>sum+r.max,0), topics, markTypes,
-    ids:state.mode==='p1'?state.ids:[]};
+    ids:state.mode==='p1'?state.ids:[], evidence:state.evidence, corrections:snapshotMockCorrections(state)};
 }
 
 function fixedMockKey({mode, paper}) {
@@ -79,7 +79,7 @@ function mockHistoryView() {
         escapeHtml(date)+' · '+summary+(item.pending?' · '+item.pending+' marks pending':'')+
         '</summary><h2>Marks by topic</h2><ul>'+topicRows.map(([code,row])=>'<li>'+escapeHtml(studyTopicName(code))+' · '+score(row)+' '+
           link('Practise this topic','#practice/topic/'+code,'text-link')+'</li>').join('')+
-        '</ul><h2>Marks by question type</h2><ul>'+types.map(([type,row])=>'<li>'+type+'-mark questions · '+score(row)+'</li>').join('')+'</ul></details>';
+        '</ul><h2>Marks by question type</h2><ul>'+types.map(([type,row])=>'<li>'+type+'-mark questions · '+score(row)+'</li>').join('')+'</ul>'+link('Open corrections',mockCorrectionHref(item),'text-link')+'</details>';
     }).join('') : '<p class="panel">Finished Paper 1 and Paper 2 mocks will appear here.</p>')+
     link('Open test builder','#revision-test');
 }
@@ -240,7 +240,7 @@ function diagramPractice(id) {
     '<div id="diagram-feedback" role="status"></div><button type="button" id="diagram-solution" hidden>Show correct diagram</button></form>'+
     '<figure class="panel diagram-figure"><div id="diagram-plot">'+diagramPlot(exercise,{})+'</div><figcaption>'+
     (market?'Blue · original demand. Mint · original supply. Purple · your shifted curve.':'Blue · original PPC. Purple · your shifted PPC.')+
-    '</figcaption></figure></div>';
+    '</figcaption></figure></div><p>'+link('Draw a PPC from scratch','#revision-diagram-draw/growth')+'</p>';
 }
 function setupDiagramPractice() {
   const form=document.querySelector('#diagram-exercise');
@@ -288,18 +288,24 @@ function setupDiagramPractice() {
   };
 }
 
-function markedEvidence(answer, grade) {
-  const claims = (grade?.credits ?? []).flatMap(credit=>{
+function creditedEvidence(answer, grade) {
+  if (typeof answer!=='string') return [];
+  return (grade?.credits ?? []).flatMap(credit=>{
     if (typeof credit.evidence!=='string' || !credit.evidence.trim()) return [];
-    const snippet = credit.evidence.trim();
-    const start = answer.toLowerCase().indexOf(snippet.toLowerCase());
-    if (start < 0) return [];
+    const query=credit.evidence.trim().split(/\s+/).map(part=>part.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('\\s+');
+    const match=new RegExp(query,'i').exec(answer);
+    if (!match) return [];
+    const {0:snippet,index:start}=match;
     const end = start+snippet.length;
     if ((/\p{L}|\p{N}/u.test(snippet[0]) && /[\p{L}\p{N}]/u.test(answer[start-1]??'')) ||
         (/[\p{L}\p{N}]/u.test(snippet.at(-1)) && /[\p{L}\p{N}]/u.test(answer[end]??''))) return [];
     return [{start,end,criterion:credit.criterion,snippet:answer.slice(start,end)}];
   });
-  if (!claims.length) return '<p class="muted">No exact passage could be verified for highlighting. See the feedback and mark scheme below.</p>';
+}
+
+function markedEvidence(answer, grade) {
+  const claims = creditedEvidence(answer,grade);
+  if(!claims.length)return '';
   const ranges = claims.slice().sort((a,b)=>a.start-b.start).reduce((merged,current)=>{
     const last=merged.at(-1);
     if (last && current.start<=last.end) last.end=Math.max(last.end,current.end);
