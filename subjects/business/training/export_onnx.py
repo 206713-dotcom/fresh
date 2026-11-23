@@ -29,6 +29,15 @@ def main():
         raise SystemExit(f"Missing merged model: {MERGED}. Run kaggle_train.py first.")
     OUT.mkdir(parents=True, exist_ok=True)
 
+    # Training disables the KV cache; Transformers.js generation requires it.
+    # Re-enable before export so the ONNX graph includes past-key/value inputs.
+    import json
+    config_path = MERGED / "config.json"
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    config["use_cache"] = True
+    config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+    print("Set use_cache=True in output/merged/config.json")
+
     from optimum.exporters.onnx import main_export
 
     kwargs = dict(

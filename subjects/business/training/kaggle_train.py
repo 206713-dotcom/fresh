@@ -15,10 +15,13 @@ adapter to output/adapter. Use export_onnx.py afterwards.
 """
 from __future__ import annotations
 
+import inspect
 import json
 import math
 import os
 from pathlib import Path
+
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 import torch
 from torch.utils.data import Dataset
@@ -123,7 +126,7 @@ def main():
     if rank == 0:
         model.print_trainable_parameters()
 
-    args = TrainingArguments(
+    train_args = dict(
         output_dir=str(OUT / "trainer"),
         overwrite_output_dir=True,
         num_train_epochs=float(os.environ.get("EPOCHS", "3")),
@@ -134,11 +137,10 @@ def main():
         warmup_ratio=0.03,
         weight_decay=0.0,
         logging_steps=10,
-        save_strategy="epoch",
-        save_total_limit=1,
+        save_strategy="no",
         fp16=True,
         bf16=False,
-        optim="adamw_torch_fused",
+        optim="adamw_torch",
         dataloader_num_workers=2,
         report_to="none",
         seed=SEED,
@@ -146,6 +148,13 @@ def main():
         remove_unused_columns=False,
         ddp_find_unused_parameters=False,
     )
+    # transformers 5.x renamed/removed several TrainingArguments keys. Keep only
+    # the ones this installed version actually accepts.
+    accepted = set(inspect.signature(TrainingArguments.__init__).parameters)
+    dropped = [k for k in train_args if k not in accepted]
+    if rank == 0 and dropped:
+        print(f"TrainingArguments: ignoring unsupported keys {dropped}", flush=True)
+    args = TrainingArguments(**{k: v for k, v in train_args.items() if k in accepted})
     trainer = Trainer(
         model=model,
         args=args,
@@ -154,23 +163,31 @@ def main():
     )
     trainer.train()
 
-    # Manual validation loss (avoids Trainer eval API differences across versions).
-    model.eval()
-    total, n = 0.0, 0
-    collator = Collator(tok.pad_token_id)
-    with torch.no_grad():
-        for start in range(0, len(val_ds), 16):
-            batch = collator([val_ds[i] for i in range(start, min(start + 16, len(val_ds)))])
-            batch = {k: v.cuda() for k, v in batch.items()}
-            loss = model(**batch).loss
-            total += float(loss)
-            n += 1
+    # Manual validation loss (best effort — never blocks saving).
+    try:
+        model.eval()
+        total, n = 0.0, 0
+        collator = Collator(tok.pad_token_id)
+        with torch.no_grad():
+            for start in range(0, len(val_ds), 8):
+                batch = collator([val_ds[i] for i in range(start, min(start + 8, len(val_ds)))])
+                batch = {k: v.cuda() for k, v in batch.items()}
+                total += float(model(**batch).loss)
+                n += 1
+        if rank == 0:
+            print(f"validation loss: {total / max(n, 1):.4f}", flush=True)
+    except Exception as exc:
+        if rank == 0:
+            print(f"validation skipped: {exc}", flush=True)
+
     if rank == 0:
-        print(f"validation loss: {total / max(n, 1):.4f}", flush=True)
         adapter = OUT / "adapter"
-        model.save_pretrained(str(adapter))
+        base = model.module if hasattr(model, "module") else model
+        base.save_pretrained(str(adapter))
         tok.save_pretrained(str(adapter))
-        merged = model.merge_and_unload()
+        merge = getattr(base, "merge_and_unload", None)
+        merged = merge() if merge else base
+        merged.config.use_cache = True
         merged_dir = OUT / "merged"
         merged.save_pretrained(str(merged_dir), safe_serialization=True)
         tok.save_pretrained(str(merged_dir))

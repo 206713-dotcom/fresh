@@ -1305,7 +1305,7 @@
   /* Optional local model (Transformers.js v3 ESM CDN, zero build)      */
   /* ================================================================ */
 
-  var MODEL_ID = "SemiLunarz/qwen3-0.6b-igcse-0264-onnx";
+  var MODEL_ID = "SemiLunarz/qwen3-0.6b-igcse-0264-marker-v2";
   var TRANSFORMERS_CDN = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3";
   /* The model repo ships chat_template.jinja but does NOT embed it in
    * tokenizer_config.json, so Transformers.js cannot find it automatically.
@@ -1565,7 +1565,7 @@
 
   function createGenerator(tf, device, progressCb) {
     return tf.pipeline("text-generation", MODEL_ID, {
-      dtype: "q4f16",
+      dtype: "fp16",
       device: device,
       progress_callback: progressCb
     });
@@ -1682,7 +1682,7 @@
       try {
         tf.env.allowLocalModels = false;
         tf.env.useBrowserCache = true;
-        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v4");
+        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v6");
       } catch (e) {}
       return createGenerator(tf, "webgpu", onProgress)["catch"](function () {
         if (epoch !== loadEpoch) return null;

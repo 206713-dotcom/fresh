@@ -45,9 +45,14 @@ marker from the syllabus-aligned data already in this repository.
    ```python
    !pip -q install -U transformers peft accelerate sentencepiece optimum onnx
    ```
-4. Train:
+4. Train (two GPUs):
    ```python
    !torchrun --nproc_per_node=2 kaggle_train.py
+   ```
+   If multi-GPU launching fails on your Kaggle runtime, use one GPU instead — the dataset is
+   small enough that it still finishes well inside 90 minutes:
+   ```python
+   !python kaggle_train.py
    ```
 5. Export:
    ```python
