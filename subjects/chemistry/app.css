@@ -166,7 +166,7 @@ main { display: block; }
 .lcard-foot { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line-2); padding-top: 9px; font-variant-numeric: tabular-nums; }
 
 /* ---------- lecture ---------- */
-.lecture { display: grid; grid-template-columns: 250px minmax(0, 760px) 200px; gap: 26px; max-width: 1290px; margin: 0 auto; padding: 26px 24px 90px; align-items: start; }
+.lecture { display: grid; grid-template-columns: clamp(210px, 16vw, 260px) minmax(0, 1fr) clamp(210px, 16vw, 265px); gap: clamp(16px, 1.6vw, 28px); max-width: 1760px; margin: 0 auto; padding: 26px clamp(18px, 3vw, 48px) 90px; align-items: start; }
 .rail { position: sticky; top: calc(var(--bar) + 18px); max-height: calc(100vh - var(--bar) - 36px); overflow: auto; font-size: 14px; }
 .rail-box { padding: 14px 12px; display: grid; gap: 6px; }
 .rail h4 { font-size: 11.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding: 2px 8px 6px; }
@@ -175,6 +175,16 @@ main { display: block; }
 .rail.toc a { grid-template-columns: 1fr; } .rail.toc a.is-on { box-shadow: inset 3px 0 0 var(--sun); }
 .sheet { background: var(--paper); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid #fff; padding: 34px clamp(20px, 4vw, 48px) 40px; min-width: 0; }
 .lect-head { display: grid; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.lecture-preview { display: grid; gap: 20px; align-items: start; }
+.lecture-overview, .lecture-film { min-width: 0; }
+.lecture-actions:not([hidden]) { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+#lecture-notes, #lecture-models, #lecture-practice { scroll-margin-top: calc(var(--bar) + 20px); }
+.lecture-film .film { margin: 0; }
+.lecture .notes > :is(p, ul, ol) { max-width: 78ch; }
+@media (min-width: 1181px) { #lectureJumps { display: none; } }
+@media (min-width: 1440px) {
+  .lecture-preview:has(.lecture-film:not([hidden])) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); }
+}
 .lect-head h1 { font-weight: 300; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -.015em; }
 .lect-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13.5px; color: var(--ink-2); }
 .tag { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px; background: color-mix(in srgb, var(--hue) 10%, #fff); color: var(--hue); font-weight: 500; font-size: 13px; font-variant-numeric: tabular-nums; }

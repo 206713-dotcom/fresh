@@ -770,9 +770,23 @@ footer { border-top-color: var(--line); font-family: var(--f-text); }
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/v3.css">
 <link rel="stylesheet" href="css/v4.css">
-<link rel="stylesheet" href="css/v5.css">
+<link rel="stylesheet" href="css/v5.css?v=lesson-layout">
+<link rel="stylesheet" href="../science-loading.css?v=1">
 </head>
 <body>
+<div class="science-loading" id="science-loading" data-subject="Physics">
+  <div>
+    <span class="science-spinner" aria-hidden="true"></span>
+    <h1>Opening Physics</h1>
+    <p role="status">Loading lessons and study tools…</p>
+    <div class="science-loading-actions" hidden>
+      <button type="button">Try again</button>
+      <a href="../../">Back to Fresh</a>
+    </div>
+  </div>
+</div>
+<noscript><style>#science-loading { display: none; }</style><p>Enable JavaScript to use Physics. <a href="../../">Back to Fresh</a></p></noscript>
+<script src="../science-loading.js?v=1"></script>
 <canvas id="void" aria-hidden="true"></canvas>
 <header class="top">
   <div class="readbar" aria-hidden="true"><i id="readbar"></i></div>
@@ -852,6 +866,14 @@ footer { border-top-color: var(--line); font-family: var(--f-text); }
 <script src="js/v6.js"></script>
 <script src="js/fresh-revision.js"></script>
 <script src="js/app.js"></script>
-<script>WL.openRevision();</script>
+<script>
+  try {
+    WL.openRevision();
+    window.dispatchEvent(new Event('fresh-science-ready'));
+  } catch (error) {
+    console.error(error);
+    window.dispatchEvent(new Event('fresh-science-error'));
+  }
+</script>
 </body>
 </html>

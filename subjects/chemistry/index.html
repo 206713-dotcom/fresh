@@ -8,15 +8,29 @@
 <title>Quilio Chemistry | Fresh</title>
 <style>@font-face{font-family:Jost;font-weight:400;src:url(fonts/jost-latin-400-normal.woff2) format("woff2");font-display:swap}@font-face{font-family:Jost;font-weight:500;src:url(fonts/jost-latin-500-normal.woff2) format("woff2");font-display:swap}html.moving{background:#fff}html.moving body{visibility:hidden}</style>
 <link rel="stylesheet" href="katex-core.css">
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="app.css?v=lesson-layout">
 <script>
-/* The entrance film plays when you arrive from the ΦΥΣΙΣ page (#enter), or on the first visit of a session with no address. */
+/* The entrance film plays when you open Chemistry from Fresh (#enter), or on the first visit of a session with no address. */
 (function () { var h = location.hash.slice(1), seen = false, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   try { seen = !!sessionStorage.getItem('gc.intro'); } catch (e) {}
   if (!window.GEO_MOVING && !still && (h === 'enter' || (!h && !seen))) document.documentElement.classList.add('intro'); })();
 </script>
+<link rel="stylesheet" href="../science-loading.css?v=1">
 </head>
 <body>
+<div class="science-loading" id="science-loading" data-subject="Chemistry">
+  <div>
+    <span class="science-spinner" aria-hidden="true"></span>
+    <h1>Opening Chemistry</h1>
+    <p role="status">Loading lessons and study tools…</p>
+    <div class="science-loading-actions" hidden>
+      <button type="button">Try again</button>
+      <a href="../../">Back to Fresh</a>
+    </div>
+  </div>
+</div>
+<noscript><style>#science-loading { display: none; }</style><p>Enable JavaScript to use Chemistry. <a href="../../">Back to Fresh</a></p></noscript>
+<script src="../science-loading.js?v=1"></script>
 <div id="intro" aria-hidden="true"><div id="introSky"></div><canvas id="introGL"></canvas><p id="introCap"><b></b><span></span></p><div id="introFlash"></div><button type="button" id="introSkip" tabindex="-1">Skip</button></div>
 <canvas id="air" aria-hidden="true"></canvas>
 
@@ -87,7 +101,7 @@
 <main id="view" tabindex="-1" hidden></main>
 
 <script src="js/orbital.js"></script>
-<script src="js/intro.js"></script>
+<script src="js/intro.js?v=loading"></script>
 <script src="js/katex.min.js"></script>
 <script src="js/parse.js"></script>
 <script src="js/ptable.js"></script>
@@ -97,6 +111,6 @@
 <script src="js/olympiad.js"></script>
 <script src="js/train-data.js"></script>
 <script src="js/training.js"></script>
-<script src="js/app.js?v=fresh-home"></script>
+<script src="js/app.js?v=lesson-layout"></script>
 </body>
 </html>

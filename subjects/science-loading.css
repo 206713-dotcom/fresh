@@ -1,0 +1,102 @@
+.science-loading {
+  --loading-ink: #132e4b;
+  --loading-accent: #1477cf;
+  --loading-bg: #edf7ff;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+  color: var(--loading-ink);
+  background: radial-gradient(ellipse at 50% 36%, #fff, transparent 65%), var(--loading-bg);
+}
+
+.science-loading[data-subject="Physics"] {
+  --loading-ink: #f3f7ff;
+  --loading-accent: #88c8ff;
+  --loading-bg: #081326;
+  background: radial-gradient(ellipse at 50% 36%, #203a5a, transparent 65%), var(--loading-bg);
+}
+
+.science-loading[hidden],
+.science-loading-actions[hidden] {
+  display: none;
+}
+
+body:has(> .science-loading:not([hidden])) > :is(header, main, footer, #start, #intro) {
+  visibility: hidden;
+}
+
+.science-loading h1 {
+  margin: 22px 0 8px;
+  color: inherit;
+  font: 600 clamp(25px, 5vw, 35px)/1.2 system-ui, sans-serif;
+}
+
+.science-loading p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.science-spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  vertical-align: -0.15em;
+  animation: science-spin 1s linear infinite;
+}
+
+.science-loading .science-spinner {
+  width: 54px;
+  height: 54px;
+  border-width: 3px;
+  color: var(--loading-accent);
+}
+
+.science-loading.is-slow .science-spinner {
+  display: none;
+}
+
+.science-loading-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.science-loading-actions button,
+.science-loading-actions a {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.science-loading a:focus-visible,
+.science-loading button:focus-visible {
+  outline: 2px solid var(--loading-accent);
+  outline-offset: 4px;
+}
+
+@keyframes science-spin {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .science-spinner { animation: none; }
+}
+
+@media print {
+  .science-loading { display: none !important; }
+}

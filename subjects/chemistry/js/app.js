@@ -318,7 +318,7 @@
     const S = L.stage, T = L.topic, k = S.all.indexOf(L), prev = S.all[k - 1], next = S.all[k + 1]; store.set('gc.last', L.id); CUR = null;
     const side = `<aside class="rail side" aria-label="Lectures in this topic"><div class="rail-box panel"><h4>${S.label} · Topic ${T.n}</h4>${T.lectures.map(l => `<a href="#${l.id}" class="${l === L ? 'is-on' : ''}${done.has(l.id) ? ' is-done' : ''}"><b>${l.code}</b><span>${esc(l.title)}</span></a>`).join('')}<h4 style="margin-top:10px">Go to</h4><a href="#${T.hash}" style="grid-template-columns:1fr">Topic ${T.n} overview</a><a href="#${S.hash}" style="grid-template-columns:1fr">All ${S.label} topics</a></div></aside>`;
     view.innerHTML = `<div class="lecture" style="${hue(S)}">${side}<article class="sheet">${crumbs([['#chemistry', 'Chemistry'], ['#' + S.hash, S.label], ['#' + T.hash, `${T.n} ${T.title}`], ['', L.code]])}
-      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="first-look" id="firstLook"><span class="lbl">First look</span>Loading the lecture…</div></header><div id="lectBody"></div></article>
+      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="lecture-preview"><div class="lecture-overview"><div class="first-look" id="firstLook"><span class="lbl">First look</span><span role="status"><span class="science-spinner" aria-hidden="true"></span> Loading the lecture…</span></div><div class="sec-chips" id="lectureJumps" role="group" aria-label="Jump to a concept" hidden></div><nav class="lecture-actions" id="lectureActions" aria-label="Lecture sections" hidden></nav></div><div class="lecture-film" id="lectureFilm" hidden></div></div></header><div id="lectBody"></div></article>
       <aside class="rail toc" aria-label="In this lecture"><div class="rail-box panel" id="tocBox"><h4>In this lecture</h4></div></aside></div>`;
     let rec;
     try { rec = (await stageData(S))[L.id]; } catch (e) { rec = null; }
@@ -327,16 +327,30 @@
     CUR = { L, rec }; window.dispatchEvent(new Event('gc-view'));
     $('#tocBox').innerHTML = '<h4>In this lecture</h4>' + L.secs.map((x, i) => `<a href="#${L.id}" data-sec="${i + 1}"><span>${i + 1}. ${inline(x)}</span></a>`).join('');
     $('#firstLook').innerHTML = `<span class="lbl">First look</span>${inline(rec.s)}`;
+    const [firstFilm, ...otherFilms] = Films.of(L.id);
+    if (firstFilm) {
+      const film = $('#lectureFilm');
+      film.hidden = false;
+      film.innerHTML = `<div data-film="${firstFilm}"></div>`;
+    }
+    const jumps = $('#lectureJumps');
+    jumps.innerHTML = L.secs.map((section, i) => `<button type="button" class="chip" data-sec="${i + 1}">${i + 1}. ${esc(plain(section))}</button>`).join('');
+    jumps.hidden = !L.secs.length;
     const figs = Widgets.list(L.id), isDone = done.has(L.id);
+    const sections = [['lecture-notes', 'Notes']];
+    if (figs.length) sections.push(['lecture-models', 'Live models']);
+    if (L.q) sections.push(['lecture-practice', 'Practice']);
+    const actions = $('#lectureActions');
+    actions.innerHTML = sections.map(([id, label]) => `<a class="chip" href="#${L.id}" data-jump="${id}">${label}</a>`).join('');
+    actions.hidden = false;
     $('#lectBody').innerHTML = `
-      <div class="sec-chips" role="group" aria-label="Jump to a concept">${L.secs.map((s, i) => `<button type="button" class="chip" data-sec="${i + 1}">${i + 1}. ${esc(plain(s))}</button>`).join('')}</div>
-      ${Films.of(L.id).map(n => `<div data-film="${n}"></div>`).join('')}
-      ${figs.map(f => `<div class="fig" data-fig="${f}"></div>`).join('')}
-      <div class="notes">${blocks(rec.b)}</div>
+      ${otherFilms.map(n => `<div data-film="${n}"></div>`).join('')}
+      ${figs.length ? `<div id="lecture-models">${figs.map(f => `<div class="fig" data-fig="${f}"></div>`).join('')}</div>` : ''}
+      <div class="notes" id="lecture-notes">${blocks(rec.b)}</div>
       ${rec.f.length ? `<section class="block"><h2>Formulas to know</h2><div class="formulas">${rec.f.map(f => `<div><span>${tex(f[0], false)}</span><span>${inline(f[1])}</span></div>`).join('')}</div></section>` : ''}
       ${rec.w.length ? `<section class="block"><h2>Watch out</h2><ul class="watch">${rec.w.map(w => `<li>${inline(w)}</li>`).join('')}</ul></section>` : ''}
       ${rec.m.length ? `<section class="block"><h2>What earns the marks <button type="button" class="chip" data-act="test" aria-pressed="false">Test yourself</button></h2><p class="sub">The wording that mark schemes reward. The highlighted words are the ones that score.</p><dl class="ms">${rec.m.map(m => `<div><dt>${inline(m[0])}</dt><dd>${inline(m[1])}</dd></div>`).join('')}</dl></section>` : ''}
-      ${L.q ? `<section class="block"><h2>Check yourself</h2><p class="sub">Try each question, then open the worked answer.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
+      ${L.q ? `<section class="block" id="lecture-practice"><h2>Check yourself</h2><p class="sub">Try each question, then open the worked answer.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
       <div class="done-row"><p>${isDone ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'}</p><button type="button" class="btn small${isDone ? ' ghost' : ''}" data-act="done">${isDone ? 'Done ✓ (undo)' : 'Mark as done'}</button></div>
       <nav class="lect-nav" aria-label="Lectures">${prev ? `<a href="#${prev.id}"><small>Previous</small><b>${prev.code} · ${esc(prev.title)}</b></a>` : '<span></span>'}${next ? `<a href="#${next.id}"><small>Next</small><b>${next.code} · ${esc(next.title)}</b></a>` : `<a href="#${S.hash}"><small>End of ${S.label}</small><b>Back to all topics</b></a>`}</nav>`;
     restorePractice(L.id);
@@ -407,12 +421,13 @@
     if (h === 'enter') { try { history.replaceState(null, '', '#start'); } catch (e) { } }
     window.dispatchEvent(new Event('gc-view'));
     if (!h || h === 'start' || h === 'enter') return startShow();
-    startHide(); let st = null;
+    startHide(); let st = null, pending;
     if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h);
-    else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
+    else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { pending = vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
     $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h === 'rp' ? 'research' : h.startsWith('olympiad') ? 'olympiad' : h)));
     window.scrollTo(0, 0);
+    return pending;
   }
 
   /* ---------- search ---------- */
@@ -471,14 +486,21 @@
 
   /* ---------- boot ---------- */
   async function boot() {
-    try { const r = await fetch('data/tree.json'); if (!r.ok) throw new Error(r.status); IDX = await r.json(); }
-    catch (e) { startEl.hidden = true; view.hidden = false; view.innerHTML = '<div class="page"><div class="panel" style="padding:26px"><h1 style="font-size:28px;margin-bottom:8px">The lecture list did not load</h1><p>Check your connection, then reload the page.</p></div></div>'; return; }
+    const response = await fetch('data/tree.json');
+    if (!response.ok) throw new Error('The lecture index could not load.');
+    IDX = await response.json();
     IDX.stages.forEach(S => { STAGE[S.hash] = S; S.all = []; S.topics.forEach(T => { T.stage = S; T.hash = `${S.hash}-t${T.n}`; TOPIC[T.hash] = T; T.lectures.forEach(L => { L.stage = S; L.topic = T; BY[L.id] = L; S.all.push(L); ALL.push(L); SEARCH.push({ L, t: L.title, k: 0, hay: `${L.code} ${L.title} ${S.label}`.toLowerCase() }); }); }); });
     $('#stagePick').innerHTML = IDX.stages.map(S => `<a href="#${S.hash}" style="${hue(S)}"><b>${S.label}</b><i>${S.years}</i><i>${plural(S.all.length, 'lecture')}</i></a>`).join('');
     $('#tabs').innerHTML = IDX.stages.map(S => `<a href="#${S.hash}" style="${hue(S)}">${S.label}</a>`).join('');
-    air(); window.addEventListener('hashchange', route); route();
+    air();
+    window.addEventListener('hashchange', route);
+    await route();
+    window.dispatchEvent(new Event('fresh-science-ready'));
     // fetch the remaining stages quietly, one after another, so that search and the definitions list cover everything
     setTimeout(() => IDX.stages.reduce((p, S) => p.then(() => stageData(S)).catch(() => { }), Promise.resolve()), 1800);
   }
-  boot();
+  boot().catch(error => {
+    console.error(error);
+    window.dispatchEvent(new Event('fresh-science-error'));
+  });
 })();

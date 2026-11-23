@@ -22,12 +22,12 @@ for (const f of [
   if (existsSync(src)) cpSync(src, path.join(dist, f));
 }
 
-// subjects/*.html — includes the no-build entry pages economics.html and business.html
+// Subject entry pages and shared science loading assets
 const subjectsDir = path.join(root, "subjects");
 const distSubjects = path.join(dist, "subjects");
 mkdirSync(distSubjects, { recursive: true });
 for (const f of readdirSync(subjectsDir)) {
-  if (f.endsWith(".html")) {
+  if (f.endsWith(".html") || f === "science-loading.css" || f === "science-loading.js") {
     cpSync(path.join(subjectsDir, f), path.join(distSubjects, f));
   }
 }

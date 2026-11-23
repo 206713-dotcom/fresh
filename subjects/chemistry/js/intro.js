@@ -2,7 +2,7 @@
    The periodic table you clicked is made of dots. The dots let go and become electron clouds: 1s, 2p, 3d, 4f, each one
    sampled from |psi|^2 of hydrogen, then the camera falls through the 4f cloud and comes out on the home screen's 2p orbital.
    Click, tap or press a key to skip. It does not play for people who ask for reduced motion. */
-(function () {
+window.addEventListener('fresh-science-ready', () => {
   'use strict';
   const root = document.documentElement, el = document.getElementById('intro');
   const I = (window.GCIntro = { playing: root.classList.contains('intro'), done: false });
@@ -119,4 +119,4 @@ void main(){
   el.addEventListener('pointerdown', skip); window.addEventListener('keydown', skip, { once: true });
   if (!FREEZE) setTimeout(() => finish(true), 9000);   // a tab that was hidden, or a very slow machine: never leave the film in the way
   draw(0, 0); requestAnimationFrame(frame);
-})();
+}, { once: true });

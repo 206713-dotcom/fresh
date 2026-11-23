@@ -2390,3 +2390,48 @@ html.wl-fw :has(.wl-fullwin) { animation: none !important; transform: none !impo
 .tl-banner { border-left-color: #F4D345; }
 .tl-banner:hover { border-left-color: #F4D345; }
 @media (max-width: 600px) { .tl-tools { margin-top: -16px; } .tl-tools .btn { flex: 1 1 auto; justify-content: center; } }
+
+/* Physics lessons have room for a reading column and reference cards. */
+@media screen and (min-width: 1060px) {
+  body[data-page="topic"] main#view,
+  body[data-page="topic"] .top .wrap {
+    max-width: 1740px;
+    padding-inline: clamp(24px, 3vw, 48px);
+  }
+
+  body[data-page="topic"] .topic {
+    grid-template-columns: minmax(0, 1fr) clamp(260px, 23%, 355px);
+    gap: clamp(28px, 3vw, 52px);
+  }
+
+  .topic > article { min-width: 0; }
+
+  .topic aside.side {
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    gap: 12px;
+  }
+
+  .topic .side .card,
+  .topic .side .card:first-child {
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+  }
+
+  .topic .side .card h3 {
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .topic .notes :is(p, ul, ol) {
+    max-width: 78ch;
+  }
+
+  .topic .watch,
+  .topic .scene-host {
+    max-width: 960px;
+  }
+}
