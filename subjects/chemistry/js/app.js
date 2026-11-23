@@ -318,7 +318,13 @@
     const S = L.stage, T = L.topic, k = S.all.indexOf(L), prev = S.all[k - 1], next = S.all[k + 1]; store.set('gc.last', L.id); CUR = null;
     const side = `<aside class="rail side" aria-label="Lectures in this topic"><div class="rail-box panel"><h4>${S.label} · Topic ${T.n}</h4>${T.lectures.map(l => `<a href="#${l.id}" class="${l === L ? 'is-on' : ''}${done.has(l.id) ? ' is-done' : ''}"><b>${l.code}</b><span>${esc(l.title)}</span></a>`).join('')}<h4 style="margin-top:10px">Go to</h4><a href="#${T.hash}" style="grid-template-columns:1fr">Topic ${T.n} overview</a><a href="#${S.hash}" style="grid-template-columns:1fr">All ${S.label} topics</a></div></aside>`;
     view.innerHTML = `<div class="lecture" style="${hue(S)}">${side}<article class="sheet">${crumbs([['#chemistry', 'Chemistry'], ['#' + S.hash, S.label], ['#' + T.hash, `${T.n} ${T.title}`], ['', L.code]])}
-      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="lecture-preview"><div class="lecture-overview"><div class="first-look" id="firstLook"><span class="lbl">First look</span><span role="status"><span class="science-spinner" aria-hidden="true"></span> Loading the lecture…</span></div><div class="sec-chips" id="lectureJumps" role="group" aria-label="Jump to a concept" hidden></div><nav class="lecture-actions" id="lectureActions" aria-label="Lecture sections" hidden></nav></div><div class="lecture-film" id="lectureFilm" hidden></div></div></header><div id="lectBody"></div></article>
+      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="lecture-preview">
+        <div class="first-look" id="firstLook"><span class="lbl">First look</span><span role="status"><span class="science-spinner" aria-hidden="true"></span> Loading the lecture…</span></div>
+        <div class="lecture-film" id="lectureFilm" hidden></div>
+      </div>
+      <nav class="lecture-actions" id="lectureActions" aria-label="Lecture sections" hidden></nav>
+      <div class="sec-chips" id="lectureJumps" role="group" aria-label="Jump to a concept" hidden></div>
+      </header><div id="lectBody"></div></article>
       <aside class="rail toc" aria-label="In this lecture"><div class="rail-box panel" id="tocBox"><h4>In this lecture</h4></div></aside></div>`;
     let rec;
     try { rec = (await stageData(S))[L.id]; } catch (e) { rec = null; }
@@ -326,7 +332,7 @@
     if (!rec) { $('#firstLook').innerHTML = '<span class="lbl">Could not load</span>This lecture did not load. Check your connection and <a href="#' + L.id + '" data-act="retry">try again</a>.'; return; }
     CUR = { L, rec }; window.dispatchEvent(new Event('gc-view'));
     $('#tocBox').innerHTML = '<h4>In this lecture</h4>' + L.secs.map((x, i) => `<a href="#${L.id}" data-sec="${i + 1}"><span>${i + 1}. ${inline(x)}</span></a>`).join('');
-    $('#firstLook').innerHTML = `<span class="lbl">First look</span>${inline(rec.s)}`;
+    $('#firstLook').innerHTML = `<span class="lbl">First look</span><p class="first-look-summary">${inline(rec.s)}</p>`;
     const [firstFilm, ...otherFilms] = Films.of(L.id);
     if (firstFilm) {
       const film = $('#lectureFilm');

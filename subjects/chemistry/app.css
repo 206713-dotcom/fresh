@@ -175,20 +175,18 @@ main { display: block; }
 .rail.toc a { grid-template-columns: 1fr; } .rail.toc a.is-on { box-shadow: inset 3px 0 0 var(--sun); }
 .sheet { background: var(--paper); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid #fff; padding: 34px clamp(20px, 4vw, 48px) 40px; min-width: 0; }
 .lect-head { display: grid; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
-.lecture-preview { display: grid; gap: 20px; align-items: start; }
-.lecture-overview, .lecture-film { min-width: 0; }
-.lecture-actions:not([hidden]) { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.lecture-preview { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.lecture-actions:not([hidden]) { display: flex; flex-wrap: wrap; gap: 8px; }
+#lectureJumps { margin: 0; }
 #lecture-notes, #lecture-models, #lecture-practice { scroll-margin-top: calc(var(--bar) + 20px); }
 .lecture-film .film { margin: 0; }
 .lecture .notes > :is(p, ul, ol) { max-width: 78ch; }
 @media (min-width: 1181px) { #lectureJumps { display: none; } }
-@media (min-width: 1440px) {
-  .lecture-preview:has(.lecture-film:not([hidden])) { grid-template-columns: minmax(280px, 2fr) minmax(0, 3.5fr); }
-}
 .lect-head h1 { font-weight: 300; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -.015em; }
 .lect-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13.5px; color: var(--ink-2); }
 .tag { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px; background: color-mix(in srgb, var(--hue) 10%, #fff); color: var(--hue); font-weight: 500; font-size: 13px; font-variant-numeric: tabular-nums; }
 .first-look { font: 400 19px/1.55 var(--body); color: var(--ink); padding: 16px 20px; border-radius: 14px; background: linear-gradient(135deg, var(--tint), #f3f9ff); }
+.first-look-summary { max-width: 78ch; margin: 0; }
 .first-look b.lbl, .lbl { display: block; font: 500 11.5px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
 .sec-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 18px 0 6px; }
 .chip.wrap { white-space: normal; height: auto; min-height: 32px; padding: 5px 13px; text-align: left; max-width: 100%; line-height: 1.3; }
