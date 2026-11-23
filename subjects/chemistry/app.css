@@ -310,11 +310,6 @@ main { display: block; }
 .ptex { font-family: var(--body); white-space: nowrap; } .eq .ptex { white-space: normal; }
 .def-wait { font: 400 16px/1.5 var(--body); color: var(--ink-2); grid-column: 1 / -1; padding: 6px 2px; }
 
-.hp-menu { position: fixed; z-index: 200; display: flex; gap: 4px; padding: 6px; max-width: calc(100vw - 16px); overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
-.hp-menu a { display: grid; gap: 1px; padding: 9px 14px; border-radius: 11px; color: var(--ink); white-space: nowrap; } .hp-menu a:hover { background: var(--tint); }
-.hp-menu b { font-weight: 500; font-size: 15px; } .hp-menu span { font-size: 12px; color: var(--ink-3); }
-@media (max-width: 620px) { .hp-menu { flex-direction: column; } }
-
 /* ---------- the entrance film ---------- */
 #intro { display: none; }
 html.intro #intro { display: block; position: fixed; inset: 0; z-index: 400; background: #fff; overflow: hidden; cursor: pointer; }
