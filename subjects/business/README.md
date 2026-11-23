@@ -85,7 +85,7 @@ I want to be upfront about how this was actually built, because the person readi
 | Glossary terms | **275** | `src/lib/data/glossary.ts` |
 | Advantages/disadvantages notes | **165** | `src/lib/data/compare-notes.ts` |
 | Chapter summaries | **6** sections, **28** topic blocks | `src/lib/data/one-page-sheets.ts` |
-| Mock exam formats | **3** (Paper 1, Paper 2 full, Paper 2 short) | `src/components/MockExamMode.tsx` |
+| Mock exam formats | **5** (Full Paper 1 exam, Full Paper 2 exam, Paper 1, Paper 2 full, Paper 2 short) | `js/views/mocks.js` |
 | Achievements | **14** | `src/components/AchievementsModal.tsx` |
 | Themes | **5** (2 free, 3 coin-unlocked) | `src/lib/themes.ts` |
 | Boss encounters | **6** | `src/components/BossBattleArena.tsx` |
@@ -187,15 +187,17 @@ The Document Archive links to the official 0264 specimen Paper 1 and Paper 2, th
 
 ### 6. Perform: the mock exam room
 
-Mock Exam Mode removes the navigation, the widgets and the safety net. You choose one of three formats:
+Mock Exam Mode removes the navigation, the widgets and the safety net. You choose one of five formats:
 
 | Format | Time | Marks | Question mix |
 |---|---:|---:|---|
+| **Full Paper 1 exam** | 1 h 30 min | 80 | 4 compulsory questions, 4 × (2 + 4 + 6 + 8) |
+| **Full Paper 2 exam** | 1 h 30 min | 80 | 4 compulsory questions, 4 × (8 + 12) |
 | Paper 1 Mock | 30 min | 20 | 1 × 2, 1 × 4, 1 × 6, 1 × 8 |
 | Paper 2 Full Mock | 60 min | 40 | 2 × 8, 2 × 12 |
 | Paper 2 Short Mock | 30 min | 20 | 1 × 8, 1 × 12 |
 
-The paper uses a real case study and the matching appendices, keeps a visible countdown, and submits automatically when time runs out. The review screen shows the mark scheme and model answer beside each response so you can mark yourself honestly. The real Cambridge papers are 80 marks and 1 hour 30 minutes; these mocks are shortened practice versions, not replica papers.
+The two full exams follow the real 0264 format from the official syllabus: Paper 1 is short-answer and data response with stimulus material; Paper 2 is four questions on one case-study insert with appendices. The three shorter formats remain for quick practice. The paper keeps a visible countdown and submits automatically when time runs out. The review screen shows the mark scheme and model answer beside each response so you can mark yourself honestly.
 
 ### 7. Keep going: the study system around the questions
 
@@ -543,37 +545,35 @@ Original source code, interface text and teaching notes are MIT licensed. Offici
 
 ## Run EcBiz locally
 
-### Prerequisites
+EcBiz is now a **plain static site** in the same format as the Economics side of Fresh: one HTML entry, ordinary CSS files, ordinary JavaScript files and JSON question banks. There is no framework, no bundler, no install and no build step.
 
-- **Node.js 22+**
-- A modern browser
+### Run with no build step
 
-### Install and run
+From the repository root:
 
 ```bash
-git clone https://github.com/206713-dotcom/fresh.git
-cd fresh/subjects/business
-npm install
-npm run dev                  # Vite dev server on http://localhost:3000
+python -m http.server 8000
 ```
 
+Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Business.html`). Progress is saved in the browser. The previous React version is preserved in `backup/` and in `legacy.html` inside this folder.
 
-Progress is saved in the browser. The study app runs as a static site.
+### Files
 
-### Scripts
-
-| Command | What it does |
+| Path | What it is |
 |---|---|
-| `npm run dev` | Start the Vite dev server on port 3000 |
-| `npm run build` | Production build into `dist/` |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Type-check with `tsc --noEmit` |
-| `npm test` | Run the marking-engine automated checks (`scripts/test-grading.ts`) |
-| `npm run clean` | Remove `dist/` and the legacy `server.js` |
+| `Business.html`, `index.html` | Plain HTML entries that load the CSS and JS files directly |
+| `style.css`, `site.css` | Plain CSS (design tokens, layout and component styles) |
+| `js/core.js`, `js/app.js` | Shared helpers and the router/overview — vanilla JavaScript |
+| `js/views/*.js` | One plain JavaScript file per section (quiz, Paper 1, Paper 2, lessons, progress, …) |
+| `data/*.json` | All question banks as static JSON: 12,000 MCQs, 6,000 Paper 1 sets / 24,000 questions, 3,000 Paper 2 cases / 24,000 questions, glossary, lessons, verified archive |
+| `assets/` | Images, local model worker/WASM and the two local PDFs |
+| `legacy.html` | The previous compiled app, kept as a rollback reference |
+
+`node ../../build.mjs` optionally assembles a `dist/` mirror of these plain files; it only copies files and compiles nothing.
 
 ### First run
 
-1. Open `http://localhost:3000/`.
+1. Open `http://localhost:8000/subjects/business.html`.
 2. Start with **Interactive Lessons** if you are learning a topic for the first time.
 3. Use **Topical Questions** for Paper 1 and **Paper 2** for case-study writing.
 4. Use **Quick Quiz** for fast retrieval and **Mock Exam** when you want the clock on.
@@ -583,25 +583,43 @@ Progress is saved in the browser. The study app runs as a static site.
 
 ## Deploy EcBiz
 
-EcBiz is a static site. It is hosted on **GitHub Pages** at [gisfresh.me/subjects/business/Business.html](https://gisfresh.me/subjects/business/Business.html) as part of the broader Fresh hub.
+EcBiz is a static site. Its canonical entry is [gisfresh.me/subjects/business.html](https://gisfresh.me/subjects/business.html), with `subjects/business/Business.html` kept as a legacy entry. Both load the same committed bundle in `subjects/business/assets/`.
 
 ### GitHub Pages (live)
 
-1. Build: `npm run build` from `subjects/business/`
-2. The build output (`index.html`, `Business.html`, `assets/`) is committed to the repo alongside the rest of Fresh.
-3. GitHub Pages serves it at `https://gisfresh.me/subjects/business/Business.html` with all assets resolved relatively (`./assets/…`) — no absolute paths, no Vercel dependency.
+1. Commit the static files: `subjects/business.html`, `subjects/business/{Business.html,index.html,404.html,assets/}`, and the compatibility PDFs in `subjects/assets/aistudio/`.
+2. GitHub Pages serves from the repo root — no build command, no npm, no Vite.
+3. `node build.mjs` from the repo root optionally assembles a `dist/` mirror of the same files for hosts that need a single output folder.
 
-One thing to watch when committing a rebuild: the build writes a new content-hashed `assets/main-*.js` each time. Stage the **new** hashed asset **and** the deletion of the old one, or `Business.html`/`index.html` will point to a file that is no longer there. The root-level assembled `dist/` is a local build artifact — GitHub Pages serves from the repo root, so `dist/` is not committed.
+If you rebuild the authoring source, stage the **new** content-hashed `assets/main-*.js` and the deletion of the old one, or the entry pages will point to a file that is no longer there.
 
 ### Any static host
 
-Upload `subjects/business/` (or the parent Fresh repo). All asset references are relative (`./assets/…`) so it works under any path on any domain. Deep links like `?open=dashboard` work because the app reads query parameters, not browser routes.
+Upload the Fresh repo (or `subjects/` plus the root `fresh.svg`). Asset references in the entry pages are relative (`./business/assets/…`) and work under any path on any domain. Deep links like `?open=dashboard` work because the app reads query parameters, not browser routes.
 
-The app uses Google Fonts for typography. If you need a fully self-contained deployment, vendor the fonts locally and update `index.html`.
+The app uses Google Fonts for typography. If you need a fully self-contained deployment, vendor the fonts locally and update the entry pages.
 
 ---
 
 ## Project structure
+
+Served static site (all committed, no build step):
+
+```text
+Fresh/
+├── subjects/
+│   ├── business.html                 # canonical no-build entry
+│   ├── business/
+│   │   ├── Business.html             # legacy entry (same app)
+│   │   ├── index.html                # legacy entry
+│   │   ├── 404.html
+│   │   └── assets/                   # committed bundle, CSS, worker, WASM, images, PDFs
+│   ├── assets/aistudio/              # compatibility copies of the two local PDFs
+│   └── economics.html / economics/   # the same plain-file format
+└── build.mjs                         # static file assembly (no compiler)
+```
+
+Optional authoring source (kept for reference; not part of the served site):
 
 ```text
 EcBiz/

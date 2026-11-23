@@ -6,7 +6,7 @@ Fresh is an independent revision hub for 12 Cambridge IGCSE subjects. Find your 
 
 ## Study tools
 
-- **Business Studies** offers Paper 1 practice, Paper 2 case studies, and interactive lessons. Track what you’ve covered with the syllabus checklist or test your recall in Boss Battle. [Open Business Studies](https://gisfresh.me/subjects/business/Business.html?open=overview) · [Checklist](https://gisfresh.me/subjects/business/Business.html?open=checklist) · [Boss Battle](https://gisfresh.me/subjects/business/Business.html?open=boss-battle)
+- **Business Studies** offers Paper 1 practice, Paper 2 case studies, and interactive lessons. Track what you’ve covered with the syllabus checklist or test your recall in Boss Battle. [Open Business Studies](https://gisfresh.me/subjects/business.html?open=overview) · [Checklist](https://gisfresh.me/subjects/business.html?open=checklist) · [Boss Battle](https://gisfresh.me/subjects/business.html?open=boss-battle)
 - **Economics** has syllabus notes, flashcards, exam practice, and revision games. [Open Economics](https://gisfresh.me/subjects/economics.html)
 - **Other subjects** have starter revision notes and practice questions. Search by subject name or syllabus code in the [subject directory](https://gisfresh.me/#subjects).
 
@@ -16,18 +16,20 @@ Open **My progress** in either subject’s main navigation to find your stats, s
 
 ## Run Fresh locally
 
-From the repository root, start a local server with Python 3.
+From the repository root, start a local server with Python 3. No build step, npm, or Vite is needed — both subject sites are plain files served directly.
 
 ```sh
 python -m http.server 8000
 ```
 
-Open [localhost:8000](http://localhost:8000/) in your browser.
+Open [localhost:8000](http://localhost:8000/) in your browser. The two subject entries are [Economics](subjects/economics.html) and [Business Studies](subjects/business.html). Business Studies is plain HTML, CSS and JavaScript in `subjects/business/` (no framework or build step); `subjects/business/Business.html` and `index.html` are equivalent entries. A full backup of the previous React version is in `backup/`.
+
+`node build.mjs` optionally assembles a `dist/` folder of the same static files; it only copies files and does not compile anything.
 
 ## Project files
 
 - [Homepage](index.html), [homepage styling](home.css), and [subject data](subjects.json)
-- [Business Studies development guide](subjects/business/README.md) and [Economics source files](subjects/economics/)
+- [Economics entry](subjects/economics.html) with [plain CSS/JS source](subjects/economics/); [Business Studies entry](subjects/business.html) with [plain CSS/JS source and static question banks](subjects/business/) and [development guide](subjects/business/README.md)
 - [Custom domain configuration](CNAME) for GitHub Pages
 
 For full syllabus coverage, check the official syllabus for your exam year. [Cambridge IGCSE subject directory](https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/subjects/)

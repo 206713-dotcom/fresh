@@ -1,11 +1,23 @@
 <!doctype html>
+<!--
+  EcBiz Business Studies — canonical entry point.
+
+  The app itself lives in ./business/ with document-relative JS/CSS/data paths.
+  This page redirects to it so that all paths resolve correctly on case-sensitive
+  static hosts (GitHub Pages, Netlify, Cloudflare Pages), matching the behaviour
+  of the saved original site.
+-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=./business/Business.html">
-  <title>EcBiz | Business Studies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#203e32">
+  <title>EcBiz | IGCSE Business</title>
+  <link rel="icon" href="../fresh.svg" type="image/svg+xml">
+  <meta http-equiv="refresh" content="0;url=./business/Business.html">
+  <script>location.replace('./business/Business.html' + location.search);</script>
 </head>
 <body>
-  <p>Redirecting to <a href="./business/Business.html">EcBiz Business Studies</a>…</p>
+  <p>Opening <a href="./business/Business.html">EcBiz IGCSE Business Studies</a>…</p>
 </body>
 </html>
