@@ -181,3 +181,101 @@ body[data-phase=finished] .sim-console { grid-column: 1 / -1; }
 .campaign-challenge h2, .campaign-readout h2 { font-size: 1.2rem; }
 .campaign-readout details { margin-top: 12px; }
 .campaign-readout details > div { margin-top: 10px; }
+
+/* Mission interface */
+#game-root > .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px), 1fr)); }
+#game-root .hero { background: linear-gradient(120deg,#142f43 25%,#21505b); }
+#game-root .simulation-frame > .hero { padding-block: clamp(18px,3.5vw,34px); }
+body[data-phase=playing] #game-root .simulation-frame > .hero h1 { font-size: clamp(1.85rem,3.7vw,3.2rem); }
+#game-root article[data-game-card] { transition: border-color .18s, box-shadow .18s; }
+#game-root article[data-game-card]:focus-within,
+#game-root article[data-game-card]:hover { border-color:#708d95; box-shadow:0 10px 26px #16384919; }
+.game-topic { color:#405d6c; font-size:.85rem; }
+.game-records { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 14px; }
+.game-records > div { display:flex; gap:5px; font-size:.82rem; background:#eaf3ef; padding:3px 8px; border-radius:6px; }
+.game-records dt { text-transform:capitalize; }
+.game-records dd { margin:0; font-weight:750; }
+article[data-game-card] > small { margin-bottom:.75rem; }
+.game-mode-picker { display:grid; gap:8px; padding:0; border:0; }
+.game-mode-picker label {
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:9px; align-items:start;
+  padding:12px; border:1px solid var(--scene-border); border-radius:11px; margin:0; cursor:pointer;
+}
+.game-mode-picker label:has(:checked) { background:var(--scene-soft); border-color:var(--scene-accent); }
+.game-mode-picker input { width:1rem; height:1rem; margin:.24rem 0 0; accent-color:var(--scene-accent); }
+.game-mode-picker small { display:block; margin-top:2px; }
+.game-save-card, #replace-session { padding:12px; border-radius:11px; background:var(--scene-soft); margin:14px 0; }
+.game-save-card p, #replace-session p { margin:0 0 8px; }
+.game-progress { display:grid; grid-template-columns:1fr auto; gap:6px 12px; margin-bottom:13px; font-size:.84rem; font-weight:700; }
+.game-progress progress { grid-column:1/-1; display:block; width:100%; height:9px; accent-color:var(--scene-accent); }
+.game-progress progress::-webkit-progress-bar { background:var(--scene-soft); border-radius:10px; }
+.game-progress progress::-webkit-progress-value { background:var(--scene-accent); border-radius:10px; }
+.mission-brief { background:var(--scene-soft); border-left:3px solid var(--scene-accent); border-radius:9px; padding:12px; }
+.mission-brief h2, .mission-room-title { font-size:clamp(1.25rem,3vw,1.6rem); }
+.mission-brief h2, .mission-brief p { margin:0; }
+.mission-brief p { margin-top:5px; }
+.mission-note, #turn-status { color:#395568; font-size:.88rem; }
+.mission-note:empty, #turn-status:empty { display:none; }
+.mission-data { overflow-x:auto; max-width:100%; }
+.mission-data table { font-size:.85rem; font-variant-numeric:tabular-nums; }
+.mission-data caption { text-align:left; font-weight:750; font-size:1rem; margin-bottom:7px; }
+.mission-data thead th { font-weight:750; background:var(--scene-soft); }
+.mission-data :is(th,td) { padding:.43rem .48rem; vertical-align:top; }
+.sim-forecast tbody td:last-child { font-weight:750; background:#fcfaf4; }
+.sim-indicator-trend { display:inline-block; vertical-align:middle; margin-left:3px; width:50px; height:20px; color:var(--scene-accent); }
+.sim-indicator-trend polyline { fill:none; stroke:currentColor; stroke-width:2; }
+.sim-indicator-trend circle { fill:currentColor; }
+.sim-goals { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px; }
+.sim-goal {
+  display:grid; grid-template-columns:1fr auto; gap:4px 8px; align-items:center; min-width:0;
+  border:1px solid #bbd6c9; border-radius:9px; padding:8px; font-size:.83rem; background:#f1f8f3;
+}
+.sim-goal[data-met=no] { background:#fff4e8; border-color:#dabca1; }
+.sim-goal meter { grid-column:1/-1; width:100%; height:12px; accent-color:#286e61; }
+.sim-market-control { stroke:#ef9caa; stroke-width:3; stroke-dasharray:6 8; }
+.sim-chart-key { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.83rem; margin-top:10px; }
+.sim-chart-key span::before { content:''; display:inline-block; vertical-align:middle; width:14px; border-top:3px solid #216d89; margin-right:5px; }
+.sim-chart-key span:nth-child(2)::before { border-color:#9b5a25; }
+.sim-chart-key span:nth-child(3)::before { border-color:#627783; border-top-style:dashed; }
+.sim-chart-key span:nth-child(4)::before { border-color:#b6485c; border-top-style:dashed; }
+.mission-keypad { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; max-width:280px; }
+.mission-keypad button { padding:.4rem; }
+.mission-sequence ol { padding-left:1.6rem; }
+.mission-sequence li { border:1px dashed var(--scene-border); border-radius:7px; padding:5px 9px; margin:.35rem 0; }
+.mission-sequence-choices { display:grid; gap:6px; margin-bottom:8px; }
+.mission-sequence-choices button { text-align:left; }
+.mission-sequence-choices [aria-pressed=true] { background:var(--scene-soft); opacity:1; }
+.mission-step-menus { margin:.65rem 0; }
+.game-checks { list-style:none; padding:0; margin:.65rem 0; display:grid; gap:5px; }
+.game-checks li { display:flex; justify-content:space-between; align-items:baseline; gap:8px; background:#f6fbf8; border-radius:6px; padding:5px 9px; font-size:.83rem; }
+.game-checks li[data-met=no] { background:#fff3e6; color:#673821; }
+.game-checks li strong { flex-shrink:0; }
+.sim-console .feedback[data-result=full] { background:#e5f4eb; border-color:#3b7965; }
+.sim-console .feedback[data-result=partial],
+.sim-console .feedback[data-result=assisted] { background:#fff4df; border-color:#8f611f; }
+.sim-console .feedback[data-result=miss] { background:#faeae6; border-color:#9f4c40; }
+.game-turn-actions { margin-top:12px; }
+.game-result { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:clamp(14px,3vw,28px); border-radius:13px; background:var(--scene-soft); }
+.game-result p { margin:0; }
+.game-result > strong { font-size:clamp(1.9rem,6vw,4rem); color:var(--scene-accent); }
+.game-round-review { margin:20px 0; display:grid; gap:8px; }
+.game-round-review h3 { margin:0 0 6px; }
+.game-round-review details { border:1px solid var(--scene-border); border-radius:10px; padding:10px 13px; }
+.game-round-review summary { cursor:pointer; }
+.game-round-review summary > strong { margin-inline-start:.6rem; color:var(--scene-accent); }
+.sim-ship.is-dispatched { animation: ec-biz-dispatch .8s ease-out both; }
+@keyframes ec-biz-dispatch { from { transform:translateX(0); } to { transform:translateX(44px); } }
+@media (max-width:520px) {
+  .mission-data :is(th,td) { padding:.38rem; }
+  .sim-forecast th:nth-child(3) { max-width:4.5rem; }
+  .game-checks li { align-items:start; }
+  .sim-goal { font-size:.75rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  #game-root article[data-game-card] { transition:none; }
+  .sim-ship.is-dispatched { animation:none; }
+}
+.sim-stage-top .sim-jump { display:none; min-height:36px; padding:.3rem .6rem; }
+@media (max-width:940px) {
+  .sim-stage-top .sim-jump { display:inline-flex; align-items:center; }
+}

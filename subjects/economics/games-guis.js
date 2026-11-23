@@ -17,14 +17,42 @@
   function islandArt(v) {
     const s=v??{workers:8,assigned:4,crops:8,tools:4,event:'Normal harvest'};
     let plants='',people='',stores='';
-    for(let i=0;i<24;i++){const x=210+i%6*26,y=239+Math.floor(i/6)*24;plants+=`<path d="M${x} ${y+8}v-14m0 7q-11-15-12-4m12 6q12-16 13-5" fill="none" stroke="${i<s.assigned*3?'#d9eb98':'#698a5a'}" stroke-width="3" stroke-linecap="round"/>`;}
+    for(let i=0;i<24;i++){const x=210+i%6*26,y=239+Math.floor(i/6)*24;plants+=`<path d="M${x} ${y+8}v-14m0 7q-11-15-12-4m12 6q12-16 13-5" fill="none" stroke="${i<Math.round(24*s.assigned/s.workers)?'#d9eb98':'#698a5a'}" stroke-width="3" stroke-linecap="round"/>`;}
     for(let i=0;i<s.workers;i++)people+=person(i<s.assigned?220+(i%4)*35:567+(i-s.assigned)%4*34,i<s.assigned?357+Math.floor(i/4)*25:333+Math.floor((i-s.assigned)/4)*28,i<s.assigned?'#fff1bd':'#b5deef');
     for(let i=0;i<Math.min(s.tools,8);i++)stores+=crate(590+(i%4)*29,250+Math.floor(i/4)*25);
     return svg('island','Your island production plan',`${s.assigned} workers farm and ${s.workers-s.assigned} make tools. Output is ${s.crops} crop baskets and ${s.tools} tools.`,
       `<defs><linearGradient id="island-sea" x2="0" y2="1"><stop stop-color="#b8e3e7"/><stop offset="1" stop-color="#79bbc9"/></linearGradient></defs><rect width="900" height="480" fill="url(#island-sea)"/><g fill="none" stroke="#d5f0ed" stroke-width="2" opacity=".7"><path d="M30 370q80-14 135 0m540 35q75-14 150 0M650 96q70-14 150 0M30 100q70-14 110 0"/></g><path d="M112 340Q65 180 205 133Q305 77 432 125Q610 69 739 165Q860 271 765 365Q669 444 489 417Q234 464 112 340Z" fill="#e5d29e" stroke="#cae9df" stroke-width="12"/><path d="M134 326Q98 195 225 156Q330 107 431 150Q616 94 718 180Q813 269 741 345Q643 408 481 394Q254 435 134 326Z" fill="#8ab982"/><path d="M385 321q70-50 180-20" stroke="#d7cba5" stroke-width="26" fill="none"/><path d="M180 218h204v117H180z" fill="#658851" stroke="#d6c99f" stroke-width="8"/>${plants}<g><path d="M548 175h148v84H548z" fill="#c4e1df"/><path d="m532 180 91-63 91 63z" fill="#285771"/><path d="M579 211h31v48h-31z" fill="#244854"/><path d="M640 204h29v29h-29z" fill="#fff0c5"/><path d="M542 259h164" stroke="#37614e" stroke-width="6"/></g>${stores}${tree(437,192)}${tree(157,200)}${tree(733,276)}${people}<g class="sim-map-label"><rect x="211" y="178" width="140" height="33" rx="8" fill="#193e35"/>${text(235,201,'FARMLAND')}<rect x="557" y="97" width="145" height="33" rx="8" fill="#193e35"/>${text(579,120,'WORKSHOP')}</g>`);
   }
+  function missionMarketArt(s) {
+    const {a,c,b,e,baseA,baseC,point,original}=s.curve;
+    const top = 64, left = 95, bottom = 390, right = 800;
+    const maxQ = Math.ceil(Math.max(a,baseA,s.quantity+12,28)/8)*8;
+    const maxP = Math.ceil(Math.max(a/b,baseA/b,s.campaign?.price??0,10)/6)*6;
+    const x=q=>left+q/maxQ*(right-left), y=p=>bottom-p/maxP*(bottom-top);
+    const curve=(start,slope,cls)=>`<path class="${cls}" d="M${x(start)} ${bottom}L${x(start+slope*maxP)} ${top}"/>`;
+    const grid=Array.from({length:5},(_,i)=>{
+      const price=maxP*i/4, units=maxQ*i/4;
+      return `<path d="M${left} ${y(price)}H${right}M${x(units)} ${top}V${bottom}" stroke="#294b63"/>` +
+        text(55,y(price)+5,price)+text(x(units)-4,bottom+26,units);
+    }).join('');
+    const markX=x(point.quantity),markY=y(point.price),baseX=x(original.quantity),baseY=y(original.price);
+    return svg('market','Supply and demand for '+s.good,`Original equilibrium: ${s.baseline.price} credits, ${s.baseline.quantity} units. Current equilibrium: ${s.price} credits, ${s.quantity} units.`,
+      `<defs><clipPath id="market-plot"><rect x="${left}" y="${top}" width="${right-left}" height="${bottom-top}"/></clipPath></defs>
+      <rect width="900" height="480" fill="#102c40"/>${grid}
+      <path d="M${left} ${top}V${bottom}H${right}" stroke="#a8c6d4" stroke-width="2"/>
+      ${text(42,35,'Price · credits')}${text(622,455,'Quantity · units')}
+      <g clip-path="url(#market-plot)">
+        ${curve(baseA,-b,'sim-curve-base')}${curve(baseC,e,'sim-curve-base')}
+        ${curve(a,-b,'sim-demand')}${curve(c,e,'sim-supply')}
+        ${s.campaign?`<path d="M${left} ${y(s.campaign.price)}H${right}" class="sim-market-control"/>`:''}
+        <circle cx="${baseX}" cy="${baseY}" r="8" fill="#102c40" stroke="#a8c6d4" stroke-width="2"/>
+        <path d="M${left} ${markY}H${markX}V${bottom}" stroke="#b7ead5" stroke-width="1.5" stroke-dasharray="6 6"/>
+        <circle cx="${markX}" cy="${markY}" r="7" fill="#c9f5de" stroke="#102c40" stroke-width="2"/>
+      </g>${text(Math.min(markX+14,690),markY-13,'Equilibrium','sim-equilibrium-label')}`);
+  }
   function marketArt(v) {
     const s=v??{d:0,supply:0,price:8,quantity:12};
+    if (s.curve) return missionMarketArt(s);
     const x=q=>100+q/32*690,y=p=>388-p/28*320;
     const line=(d,supply,base=false)=>`<path d="M${x(0)} ${y(20+4*d)}L${x(20+4*d)} ${y(0)}" class="${base?'sim-curve-base':'sim-demand'}"/><path d="M${x(4+4*supply)} ${y(0)}L${x(28+4*supply)} ${y(24)}" class="${base?'sim-curve-base':'sim-supply'}"/>`;
     let grid='';for(let i=0;i<=4;i++){grid+=`<path d="M100 ${y(i*7)}H790M${x(i*8)} 68V388" stroke="#294b63" stroke-width="1"/>`+text(66,y(i*7)+5,i*7)+text(x(i*8)-5,416,i*8);}
@@ -54,26 +82,79 @@
   const art={island:islandArt,market:marketArt,policy:policyArt,trade:tradeArt,escape:escapeArt};
   const metric = (label,value,note='') => `<div class="sim-metric"><span>${esc(label)}</span><strong>${esc(value)}</strong>${note?`<small>${esc(note)}</small>`:''}</div>`;
   const action = (name,label,disabled=false,accessibleLabel=label) => `<button type="button" data-sim-action="${name}" aria-label="${esc(accessibleLabel)}"${disabled?' disabled':''}>${esc(label)}</button>`;
+  const forecastLabels=['Inflation','Unemployment','Growth','Budget balance','Living standards'];
+  const forecastUnits=['%','%','%',' cr',''];
+  function meter(label,value,target) {
+    const maximum=Math.max(value,target,1);
+    return '<div class="sim-goal" data-met="' + (value>=target?'yes':'no') + '"><span>' + esc(label) +
+      '</span><strong>'+value+' / '+target+'</strong><meter aria-label="'+esc(label)+'" min="0" max="'+maximum+'" value="'+value+
+      '"></meter></div>';
+  }
+
+  function indicatorHistory(values) {
+    if (values.length<2) return '';
+    const low=Math.min(...values),high=Math.max(...values);
+    const coords=values.map((value,i)=>[5+i*70/(values.length-1),21-(high===low ? .5 : (value-low)/(high-low))*17]);
+    return '<svg class="sim-indicator-trend" viewBox="0 0 80 26" role="img" aria-label="Quarter history: ' +
+      values.map(esc).join(', ') + '"><polyline points="'+coords.map(point=>point.join(',')).join(' ')+'"/>' +
+      coords.map(([x,y])=>'<circle cx="'+x+'" cy="'+y+'" r="2"/>').join('')+'</svg>';
+  }
+
+  function cabinetReadout(s,blocked) {
+    const policyShortcuts=[['rates-up','Raise rates'],['rates-down','Cut rates'],['spending','Invest'],
+      ['training','Training'],['tax','Raise taxes'],['targeted-support','Income support'],['competition','Ease entry barriers']];
+    return '<div class="mission-data sim-forecast"><table><caption>Quarter forecast</caption><thead><tr><th scope="col">Indicator</th>' +
+      '<th scope="col">Opening</th><th scope="col">No new policy</th><th scope="col">'+(s.committed?'Enacted':'Your plan')+
+      '</th></tr></thead><tbody>' + forecastLabels.map((label,i)=>
+      '<tr><th scope="row">'+label+indicatorHistory(s.trend.map(values=>values[i]))+'</th>'+
+      [s.baseline,s.without,s.after].map(values=>'<td>'+values[i]+forecastUnits[i]+'</td>').join('')+'</tr>').join('') +
+      '</tbody></table></div><div class="sim-toolbar">'+policyShortcuts.map(([id,label])=>action('policy-'+id,label,blocked)).join('')+'</div><p class="sim-event"><strong>'+(s.committed?'Decision enacted':'Current choice')+'</strong> '+esc(s.policyName)+'</p>'+
+      (s.future.some(Boolean)?'<p class="sim-note">Effects due next quarter: '+s.future.map((value,i)=>
+        value ? esc(forecastLabels[i]+' '+signed(value)+forecastUnits[i]) : '').filter(Boolean).join(' · ')+'.</p>':'')+
+      '<p class="sim-note">Fictional effects. The skyline lights illustrate employment.</p>';
+  }
+
   function dashboard(game,s) {
     const blocked=s.phase!=='playing'||s.committed;
-    if(game==='island')return `<div class="sim-metrics">${metric('Farm workers',s.assigned)}${metric('Workshop workers',s.workers-s.assigned)}${metric('Crop baskets',s.crops,'Target: '+s.minCrop)}${metric('Tools',s.tools,'Target: '+s.minTools)}</div><div class="sim-toolbar">${action('farm','Assign worker to farm',blocked||s.assigned>=s.workers)}${action('workshop','Assign worker to workshop',blocked||s.assigned<=0)}</div><p class="sim-event"><strong>Island conditions</strong> ${esc(s.event)}</p>`;
-    if(game==='market')return `<div class="sim-metrics">${metric('Equilibrium price',s.price+' credits')}${metric('Equilibrium quantity',s.quantity+' crates')}${metric('Demand',s.d<0?'Left':s.d>0?'Right':'Unchanged')}${metric('Supply',s.supply<0?'Left':s.supply>0?'Right':'Unchanged')}</div><div class="sim-curve-controls"><div><span class="sim-demand-key">Demand curve</span>${action('d-left','Shift left',blocked||s.d<=-1,'Shift demand left')}${action('d-right','Shift right',blocked||s.d>=1,'Shift demand right')}</div><div><span class="sim-supply-key">Supply curve</span>${action('s-left','Shift left',blocked||s.supply<=-1,'Shift supply left')}${action('s-right','Shift right',blocked||s.supply>=1,'Shift supply right')}</div>${action('market-reset','Reset curves',blocked)}</div><p class="sim-event"><strong>Market news</strong> ${esc(s.news)}</p><p class="sim-note">Solid lines show your model; dashed lines show the original curves. Predict the event’s outcome in the decision console.</p>`;
+    if(game==='policy'&&s.mission)return cabinetReadout(s,blocked);
+    if(game==='island') {
+      const outputs=s.mission ? '<div class="sim-goals">'+meter('Baskets available',s.food,s.minCrop)+meter('Tools available',s.stock,s.minTools)+'</div>' : '';
+      return `<div class="sim-metrics">${metric('Farm workers',s.assigned)}${metric('Workshop workers',s.workers-s.assigned)}${metric('Crop harvest',s.crops)}${metric('Tools produced',s.tools)}</div>
+        ${outputs}<div class="sim-toolbar">${action('farm','Assign to farm',blocked||s.assigned>=s.workers)}${action('workshop','Assign to workshop',blocked||s.assigned<=0)}</div>
+        ${s.mission?'':'<p class="sim-event"><strong>Island conditions</strong> '+esc(s.event)+'</p>'}${s.mission&&s.campaign&&s.round<s.total?'<p class="sim-note">Next season: '+esc(s.next)+'</p>':''}`;
+    }
+    if(game==='market') {
+      const notes=s.mission ? `<div class="sim-chart-key"><span>Demand</span><span>Supply</span><span>Original curves</span>${s.campaign?'<span>Price control</span>':''}</div>` : '';
+      return `<div class="sim-metrics">${metric('Equilibrium price',s.price+' credits',s.baseline?'Original: '+s.baseline.price:'')}${metric('Equilibrium quantity',s.quantity+' units',s.baseline?'Original: '+s.baseline.quantity:'')}${metric('Demand',s.d<0?'Left':s.d>0?'Right':'Unchanged')}${metric('Supply',s.supply<0?'Left':s.supply>0?'Right':'Unchanged')}</div>
+        ${notes}<div class="sim-curve-controls"><div><span class="sim-demand-key">Demand curve</span>${action('d-left','Shift left',blocked||s.d<=-1,'Shift demand left')}${action('d-right','Shift right',blocked||s.d>=1,'Shift demand right')}</div><div><span class="sim-supply-key">Supply curve</span>${action('s-left','Shift left',blocked||s.supply<=-1,'Shift supply left')}${action('s-right','Shift right',blocked||s.supply>=1,'Shift supply right')}</div>${action('market-reset','Reset curves',blocked)}</div>
+        ${s.mission?'':'<p class="sim-event"><strong>Market news</strong> '+esc(s.news)+'</p>'}`;
+    }
     if(game==='policy'){
       const labels=['Inflation','Unemployment','Growth','Budget balance','Living standards'],suffix=['%','%','%',' credits',' index'];
       return `<div class="sim-policy-metrics">${labels.map((label,i)=>{const n=(s.campaign?.after ?? s.projected)[i],current=s.economy[i],delta=s.committed&&s.before?n-s.before[i]:n-current;return `<div class="sim-metric"><span>${label}</span><strong>${esc(n+suffix[i])}</strong><small>${s.committed?'Enacted':current+suffix[i]+' now'} · ${signed(delta)} ${s.committed?'this turn':'projected'}</small></div>`;}).join('')}</div><div class="sim-toolbar">${action('policy-rates-up','Raise rates',blocked)}${action('policy-rates-down','Cut rates',blocked)}${action('policy-spending','Invest',blocked)}${action('policy-training','Train workers',blocked)}${action('policy-tax','Raise taxes',blocked)}</div><p class="sim-event"><strong>${s.committed?'Decision enacted':'Selected policy'}</strong> ${esc(s.policyName)}</p><p class="sim-note">${s.delayed?'Skills training takes one turn. The current turn includes any training effects already due.':'Projections include any training effects arriving this turn.'} The lights illustrate employment in the model.</p>`;
     }
-    if(game==='trade')return `<div class="sim-metrics">${metric('Export cargo',s.units+' / '+s.capacity)}${metric('Domestic supply',s.domestic+' units','Keep at least 2')}${metric('Export receipts',(s.campaign?.gross??s.receipts)+' credits')}${metric('Exchange rate',s.rate+' foreign','per home credit')}</div><div class="sim-toolbar">${action('load','Load export unit',blocked||s.units>=s.capacity)}${action('unload','Return unit to home port',blocked||s.units<=0)}<p>${esc(s.good)} bound for ${esc(s.port)}.</p></div><div class="sim-trade-invoice"><span>Import order: <strong>${s.importUnits} machines</strong></span><span>Foreign price: <strong>${s.foreignCost} each</strong></span><span>Domestic tariff: <strong>${s.tariff} per machine</strong></span></div><p class="sim-note">Green crates stay at home. Containers on the ship are exports. Calculate the landed import cost in the decision console.</p>`;
+    if(game==='trade') {
+      const limit=s.route?.limit??s.capacity, reserve=s.reserve??2;
+      const limits=s.mission?'<div class="sim-goals">'+meter('Domestic stock',s.domestic,reserve)+
+        '<div class="sim-goal" data-met="'+(s.units<=limit?'yes':'no')+'"><span>Cargo limit</span><strong>'+
+        s.units+' / '+limit+'</strong><meter aria-label="Cargo loaded" min="0" max="'+Math.max(s.units,limit)+
+        '" value="'+s.units+'"></meter></div></div>':'';
+      return `<div class="sim-metrics">${metric('Export cargo',s.units+' / '+s.capacity,s.route?'Contract: '+s.route.name:'')}${metric('Domestic supply',s.domestic+' units','Keep at least '+reserve)}${metric('Gross receipts',(s.campaign?.gross??s.receipts)+' credits')}${metric('Goods balance',signed(s.balance)+' credits','Cumulative')}</div>
+        ${limits}<div class="sim-toolbar">${action('load','Load export unit',blocked||s.units>=s.capacity)}${action('unload','Return unit to home port',blocked||s.units<=0)}<p>${esc(s.good)} bound for ${esc(s.port)}.</p></div>
+        <div class="sim-trade-invoice"><span>Import order: <strong>${s.importUnits} machines</strong></span><span>Exchange rate: <strong>${s.rate} foreign per home credit</strong></span><span>Tariff: <strong>${s.tariff} per machine</strong></span></div>`;
+    }
     return `<div class="sim-room-route" aria-label="Room progress">${Array.from({length:s.total},(_,i)=>`<span class="${i+1<s.round?'is-past':i+1===s.round?'is-current':''}"${i+1===s.round?' aria-current="step"':''}>Room ${i+1}</span>`).join('')}</div><div class="sim-escape-summary"><strong>${esc(s.name)}</strong><span>${s.unlocked?'Door unlocked':s.committed?'Code rejected — try again':'Door locked'}</span></div><p class="sim-note">Select the evidence desk, hint book or vault lock in the scene. ${s.sequence?'This room uses a sequence lock.':'Enter your answer in the decision console.'}</p>`;
   }
 
   function campaignDashboard(game,s) {
     const plan=s.campaign;
     if(!plan)return '';
-    const rows=s.history.map((points,i)=>metric('Round '+(i+1),points+' / '+s.maximum)).join('');
     let details='';
     if(game==='island'){
       details=metric('Tools from reserves',plan.stock)+metric('Tools after proposed spend',plan.available)+
-        metric('Investment status',plan.project?(plan.funded?'Affordable':'Needs unmet'):'None selected');
+        metric('Preparation',plan.project?(plan.funded?'Upgrade funded':'Needs unmet'):plan.ready?'Reserve ready':'Hold reserves');
+      if(s.mission)details+=metric('Baskets from reserves',plan.foodReserve)+metric('Next season’s stores',
+        plan.carried.food+' baskets · '+plan.carried.tools+' tools');
     }
     if(game==='market'){
       const gap=plan.gap>0?'shortage':plan.gap<0?'surplus':'no gap';
@@ -82,16 +163,16 @@
         metric('Projected result',Math.abs(plan.gap)+' · '+gap,plan.sold+' crates traded');
     }
     if(game==='policy'){
-      const labels=['Inflation','Unemployment','Growth','Budget balance','Living standards'];
       details=metric('Second policy',plan.secondary??'None')+
-        plan.future.map((value,i)=>value?metric('Next turn · '+labels[i],signed(value)):'').join('');
+        (s.mission?metric('Budget limit',s.allowance?'Up to '+s.allowance+' credits lower':'Hold or improve'):
+          plan.future.map((value,i)=>value?metric('Next turn · '+forecastLabels[i],signed(value)):'').join(''));
     }
     if(game==='trade'){
       details=metric('Gross export receipts',plan.gross+' credits')+metric('Domestic setup fee',plan.fee+' credits');
     }
-    if(game==='escape')details=metric('Locks in this room',s.unlocked?'Both unlocked':'Two codes required');
-    return '<section class="campaign-readout"><h2>Campaign dashboard</h2><div class="sim-policy-metrics">'+details+'</div>'+
-      (rows?'<details><summary>Completed rounds</summary><div class="sim-policy-metrics">'+rows+'</div></details>':'')+'</section>';
+    if(game==='escape')details=metric('Locks in this room',s.unlocked?'Both unlocked':'Two codes required',
+      s.mission&&s.attempts?s.attempts+' attempt'+(s.attempts===1?'':'s'):'');
+    return '<section class="campaign-readout"><h2>Campaign dashboard</h2><div class="sim-policy-metrics">'+details+'</div></section>';
   }
   function hotspots(game,s) {
     if(game!=='escape')return '';
@@ -105,6 +186,7 @@
     const visual=root.querySelector('#simulation-visual'),data=root.querySelector('#simulation-dashboard');
     if(visual)visual.innerHTML=art[game](s)+hotspots(game,s);
     if(data)data.innerHTML=dashboard(game,s)+campaignDashboard(game,s);
+    if (game==='trade') root.querySelector('.sim-ship')?.classList.toggle('is-dispatched',s.phase==='playing' && s.committed);
   }
   window.updateGameScene=update;
   window.renderGameGui=(game,s) => {
@@ -113,7 +195,7 @@
     document.body.dataset.phase=s?.phase??'hub';
     if(!game){
       root.querySelector('.hero h1').textContent='The Economics simulations';
-      root.querySelector('.hero p').textContent='Five worlds. Real economic choices. Learn by changing what happens.';
+      root.querySelector('.hero p').textContent='Manage resources, test a policy or solve an exam-style puzzle. Each simulation saves your progress in this browser.';
       root.querySelectorAll('article.card').forEach(card=>{const slug=card.querySelector('a')?.getAttribute('href').split('/').pop();if(!art[slug])return;card.dataset.gameCard=slug;card.querySelector('.symbol')?.remove();const preview=document.createElement('div');preview.className='sim-card-art';preview.innerHTML=art[slug](null);card.prepend(preview);const label=document.createElement('p');label.className='sim-card-kind';label.textContent=kinds[slug];card.insertBefore(label,card.querySelector('h2'));});
       return;
     }
@@ -121,9 +203,11 @@
     const frame=document.createElement('section');frame.className='simulation-frame sim-'+game;
     frame.setAttribute('aria-labelledby','simulation-title');
     heading.querySelector('h1').id='simulation-title';
-    heading.querySelector('p').textContent=subtitles[game];
-    const badge=document.createElement('span');badge.className='sim-mode';badge.textContent=s.phase==='intro'?'Scene preview':s.phase==='finished'?'Session complete':s.committed?'Decision reviewed':'Live simulation';heading.prepend(badge);
-    const stage=document.createElement('div');stage.className='sim-stage';stage.innerHTML='<div class="sim-stage-top"><span>'+esc(kinds[game])+'</span><span>'+(s.phase==='playing'?'Round '+s.round+' of '+s.total:'Start a session to use the scene controls')+'</span></div><div class="sim-visual" id="simulation-visual"></div><div id="simulation-dashboard"></div><div class="sim-inspector" id="simulation-inspector" tabindex="-1" hidden></div>';
+    if (s.phase==='intro') heading.querySelector('p').textContent=subtitles[game];
+    const badge=document.createElement('span');badge.className='sim-mode';badge.textContent=s.phase==='intro'?kinds[game]:s.phase==='finished'?'Session complete':s.mode??(s.committed?'Decision reviewed':'Live simulation');heading.prepend(badge);
+    const stage=document.createElement('div');stage.className='sim-stage';stage.innerHTML='<div class="sim-stage-top"><span>'+esc(kinds[game])+'</span><span>'+(s.phase==='playing'?'Round '+s.round+' of '+s.total:'Scene preview')+'</span>'+
+      (s.phase==='playing'?'<button type="button" class="sim-jump" data-sim-action="decision">'+(s.committed?'Review decision':'Go to your decision')+'</button>':'')+
+      '</div><div class="sim-visual" id="simulation-visual"></div><div id="simulation-dashboard"></div><div class="sim-inspector" id="simulation-inspector" tabindex="-1" hidden></div>';
     const consolePanel=document.createElement('div');consolePanel.className='sim-console';consolePanel.append(...controls);
     frame.append(navigation,heading);
     if (s.phase!=='finished') frame.append(stage);
@@ -148,14 +232,19 @@
     }else if(name==='hint'||name==='evidence'){
       const inspector=root.querySelector('#simulation-inspector');inspector.hidden=false;inspector.innerHTML='<div><h2>'+ (name==='hint'?'Hint book':'Evidence dossier')+'</h2>'+action('close-inspector','Close')+'</div><p>'+esc(name==='hint'?view.hint:view.clue)+'</p>';inspector.focus();
       const form=root.querySelector('#game-turn'),details=name==='evidence'?form?.querySelector('details.clue'):[...(form?.querySelectorAll('details')??[])].find(d=>d.querySelector('summary')?.textContent==='Hint');if(details)details.open=true;
+    }else if(name==='decision'){
+      const target=root.querySelector(view.committed?'.feedback':'#game-turn legend');
+      target?.setAttribute('tabindex','-1');
+      target?.focus();
     }else if(name==='close-inspector'){root.querySelector('#simulation-inspector').hidden=true;root.querySelector('[data-sim-action="evidence"]')?.focus({preventScroll:true});}
     else if(name==='lock'){
-      const field=root.querySelector('#game-turn input[name="answer"],#game-turn select[name="answer"],#game-turn select[name="step0"]');
+      const field=root.querySelector('#game-turn [data-lock-step]:not(:disabled)') ??
+        root.querySelector('#game-turn input[name="answer"],#game-turn select[name="answer"],#game-turn select[name="step0"]');
       const target = view.committed ? root.querySelector('#game-next, #game-retry') : field;
       target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});target?.focus({preventScroll:true});
     }
     // A scene refresh replaces controls; retain keyboard focus on the equivalent action.
-    if (!['hint','evidence','lock','close-inspector'].includes(name)) {
+    if (!['hint','evidence','lock','close-inspector','decision'].includes(name)) {
       const next=root.querySelector('[data-sim-action="'+name+'"]:not(:disabled)') ?? root.querySelector('#simulation-dashboard button:not(:disabled)');
       next?.focus({preventScroll:true});
     }

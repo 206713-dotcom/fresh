@@ -1,9 +1,9 @@
 'use strict';
 const games = {
-  island: ['Scarcity Island','','Allocate workers between crops and tools. Balance basic needs as productive capacity changes.','1.2–1.4'],
-  market: ['Market Mayhem','','Move curves on a live graph and predict the new equilibrium.','2.2–2.7'],
-  policy: ['Policy Panic','','Choose policies for a fictional economy and deal with their delayed effects.','4.1–4.7'],
-  trade: ['Trade Tycoon','','Commit production to export contracts and balance imports, currency and tariffs.','5.1, 6.1–6.4'],
+  island: ['Scarcity Island','','Feed a settlement, build reserves and decide when to invest in new capacity.','1.2–1.4'],
+  market: ['Market Mayhem','','Move curves on a live graph and test the effects of shocks and price controls.','2.2–2.7, 2.10'],
+  policy: ['Policy Panic','','Balance a cabinet’s growth, jobs, inflation and budget objectives across quarters.','4.1–4.7, 5.1–5.2'],
+  trade: ['Trade Tycoon','','Run a port, choose contracts and work out how each shipment affects the current account.','6.1–6.4'],
   escape: ['Economics Escape Room','','Open clues, decode calculations and assemble chains of reasoning to unlock rooms.','Units 1–6']
 };
 const root = document.querySelector('#game-root');
@@ -17,8 +17,8 @@ function save(key, value) {
 const topics = ['Basic economic problem','Allocation of resources','Microeconomic decision-makers','Government and the macroeconomy','Economic development','International trade'];
 const integer = (value, min, max) => Math.max(min, Math.min(max, Math.round(Number(value) || 0)));
 const link = (title, href) => '<a class="button" href="' + href + '">' + escape(title) + '</a>';
-const input = (name, label, min, max, value) => '<label>' + label + ' <input name="' + name + '" type="number" step="any" min="' + min + '" max="' + max + '" value="' + value + '" required></label>';
-const select = (name, label, options) => '<label>' + label + ' <select name="' + name + '" required>' + options.map(([id, title]) => '<option value="' + id + '">' + escape(title) + '</option>').join('') + '</select></label>';
+const input = (name, label, min, max, value, step = 'any') => '<label>' + label + ' <input name="' + name + '" type="number" step="' + step + '" min="' + min + '" max="' + max + '" value="' + value + '" required></label>';
+const select = (name, label, options, required = true) => '<label>' + label + ' <select name="' + name + '"' + (required?' required':'') + '>' + options.map(([id, title]) => '<option value="' + id + '">' + escape(title) + '</option>').join('') + '</select></label>';
 const stats = entries => '<div class="stats">' + entries.map(([name, value]) => '<span>' + escape(name) + ' <strong>' + escape(value) + '</strong></span>').join('') + '</div>';
 const result = (points, explanation, topic) => ({points, explanation, topic});
 const roundNumber = state => state.round + state.seed;
@@ -238,11 +238,23 @@ const escapeRoom={
 };
 
 const engines={island,market,policy,trade,escape:escapeRoom};
+const currentMission = s => s.version === 2;
+const modeKey = s => s.campaign ? 'campaign' : s.mode;
+const modeName = s => ({practice:'Practice',challenge:'Challenge',campaign:'Campaign'})[modeKey(s)];
+const gameEngine = s => (currentMission(s) ? missionEngines : engines)[activeGame];
+
 function roundCount(s) {
+  if (currentMission(s)) {
+    const count = s.campaign ? 8 : s.mode === 'challenge' ? 6 : 4;
+    return activeGame === 'escape' && s.unit !== 'mixed' ? Math.min(count,7) : count;
+  }
   if (activeGame==='escape') return s.unit==='mixed' ? (s.mode==='challenge'?7:4) : 3;
   return s.mode==='challenge'?6:3;
 }
 function roundMaximum(s) {
+  if (currentMission(s)) return activeGame === 'market' || activeGame === 'trade'
+    ? 2 + Number(s.mode === 'challenge') + Number(s.campaign)
+    : 2 + Number(s.campaign && activeGame !== 'escape');
   if(s.campaign) return activeGame==='escape'?2:activeGame==='market'?4:3;
   return activeGame==='market' && s.mode==='challenge' ? 3 : 2;
 }
@@ -265,9 +277,10 @@ function simulationSnapshot() {
   const s = state ?? {mode:'practice',unit:'mixed',round:0,seed:0,history:[],economy:[5,7,1,-2,50],balance:0};
   const form = root.querySelector('#game-turn');
   const data = !form ? {} : s.feedback ? (s.draft ?? {}) : Object.fromEntries(new FormData(form));
-  const common = {phase:!state?'intro':s.finished?'finished':'playing',round:s.round+1,total:roundCount(s),
-    committed:Boolean(s.feedback), campaign:campaignScene(activeGame,s,data),
-    history:s.history.map(row=>row.points), maximum:roundMaximum(s)};
+  const common = {phase:!state?'intro':s.finished?'finished':'playing',round:s.round+1,total:roundCount(s),committed:Boolean(s.feedback)};
+  if (s.finished) return common;
+  if (currentMission(s)) return {...common,...gameEngine(s).snapshot(s,data),mission:true,mode:modeName(s)};
+  common.campaign = campaignScene(activeGame,s,data);
   if (activeGame==='island') {
     const m=islandModel(s), assigned=integer(data.workers??Math.floor(m.workers/2),0,m.workers);
     return {...common,...m,assigned,crops:assigned*m.crop,tools:(m.workers-assigned)*m.tool};
@@ -295,70 +308,158 @@ function render() {
   renderGameContent();
   window.renderGameGui(activeGame, simulationSnapshot());
 }
+const modeDescriptions = {
+  practice:'Four missions with feedback and a chance to revise your decisions.',
+  challenge:'Six missions with additional analysis and calculations.',
+  campaign:'A longer run with extra decisions, constraints, or locks.'
+};
+
+function modePicker() {
+  return '<fieldset class="game-mode-picker"><legend>Choose a mode</legend>' +
+    Object.entries(modeDescriptions).map(([id,description],i) =>
+      '<label><input type="radio" name="mode" value="' + id + '"' + (i===0?' checked':'') +
+      '><span><strong>' + id[0].toUpperCase() + id.slice(1) + '</strong><small>' + description + '</small></span></label>').join('') +
+    '</fieldset>';
+}
+
+function checkList(feedback) {
+  if (!feedback.checks?.length) return '';
+  return '<ul class="game-checks">' + feedback.checks.map(({label,met}) =>
+    '<li data-met="' + (met?'yes':'no') + '"><span>' + escape(label) + '</span><strong>' +
+    (met?'Met':'Needs work') + '</strong></li>').join('') + '</ul>';
+}
+
 function renderGameContent() {
   if (!activeGame) {
     root.innerHTML='<div class="hero"><h1>Economics Games</h1><p>Run an island, move markets and solve economic puzzles using fictional scenarios.</p></div><div class="grid">'+
       Object.entries(games).map(([slug,[name,,description,tag]])=>{
-        const best=load(slug+'-best',null);
-        const campaignBest=load(slug+'-campaign-best',null);
-        return '<article class="card"><h2>'+name+'</h2><p>'+description+
-          '</p><p><small>Syllabus '+tag+' · Practice, Challenge or Campaign<br>Best: '+(best===null?'—':best+'%')+' · Campaign: '+(campaignBest===null?'—':campaignBest+'%')+
-          '</small></p>'+link('Play '+name,'#games/'+slug)+'</article>';
+        const records = ['practice','challenge','campaign'].map(mode => [mode,load(slug+'-best-'+mode,null)])
+          .filter(([,value]) => value !== null);
+        const best = load(slug+'-best',null);
+        const campaignBest = load(slug+'-campaign-best',null);
+        const legacy = best===null && campaignBest===null?'':
+          '<small>' + (best===null?'':'Best: '+best+'%') + (best!==null&&campaignBest!==null?' · ':'') +
+          (campaignBest===null?'':'Campaign: '+campaignBest+'%') + '</small>';
+        return '<article class="card"><h2>'+name+'</h2><p>'+description+'</p><p class="game-topic">Syllabus '+tag+'</p>' +
+          (records.length ? '<dl class="game-records">'+records.map(([mode,value])=>'<div><dt>'+mode+'</dt><dd>'+value+'%</dd></div>').join('')+'</dl>' : legacy) +
+          link('Play '+name,'#games/'+slug)+'</article>';
       }).join('')+'</div>';
     return;
   }
   const [name,,description,tag]=games[activeGame];
-  const engine=engines[activeGame];
+  const engine=state ? gameEngine(state) : missionEngines[activeGame];
   const title='<div class="actions">'+link('All simulations','#games')+'</div><header class="hero"><h1>'+name+'</h1><p>'+description+'</p></header>';
   const status='<p id="storage-status" role="status"></p>';
   if (!state) {
     root.innerHTML=title+'<section class="panel"><h2>How to play</h2><p>'+engine.help+'</p><p>Syllabus '+tag+'</p><p><strong>Campaign</strong> · '+campaignBriefs[activeGame]+'</p>'+
-      '<form id="game-start">'+select('mode','Mode',[['practice','Practice · 3–5 minutes'],['challenge','Challenge · more rounds'],['campaign','Campaign · advanced decisions']])+
+      (validSession(savedSession)?'<div class="game-save-card"><p><strong>Saved session</strong> · ' + modeName(savedSession) +
+        ' · Round ' + (savedSession.round+1) + ' of ' + roundCount(savedSession) +
+        '</p><button type="button" id="game-continue">Resume session</button></div>':'')+
+      '<form id="game-start">'+modePicker()+
       (activeGame==='escape'?select('unit','Room pack',[['mixed','Mixed review'],...topics.map((topic,index)=>[index,topic])]):'')+
-      '<div class="actions"><button class="primary">Start new game</button>'+
-      (validSession(savedSession)?'<button type="button" id="game-continue">Continue session</button>':'')+'</div></form></section>'+status;
+      '<div class="actions"><button class="primary" id="game-start-primary">Start new game</button></div>' +
+      (validSession(savedSession) ? '<div id="replace-session" hidden><p>Starting over will replace this game’s saved session.</p>' +
+        '<div class="actions"><button type="button" id="game-cancel-replace">Keep saved session</button>' +
+        '<button type="submit" id="game-replace">Replace and start</button></div></div>' : '')+'</form></section>'+status;
     return;
   }
   if (state.finished) {
     const points=state.history.reduce((n,row)=>n+row.points,0);
-    root.innerHTML=title+'<section class="panel"><h2>Game complete</h2><p>'+points+' of '+roundCount(state)*roundMaximum(state)+
-      ' game points</p><ol>'+state.history.map(row=>'<li><p>'+escape(row.explanation)+' '+link('Revise '+row.topic,'economics.html#revision-topics/'+row.topic)+'</p></li>').join('')+
-      '</ol><div class="actions"><button id="game-replay" class="primary">Play again</button>'+link('Choose another game','#games')+'</div></section>'+status;
+    const maximum = roundCount(state)*roundMaximum(state);
+    const percentage = Math.round(100*points/maximum);
+    root.innerHTML=title+'<section class="panel game-report"><div class="game-result"><div><h2>Game complete</h2><p>' +
+      modeName(state) + ' · ' + points + ' of ' + maximum + ' game points</p></div><strong>' + percentage + '%</strong></div>' +
+      '<div class="game-round-review"><h3>Review your decisions</h3>'+state.history.map((row,index)=>
+        '<details><summary><span>' + escape(row.title??'Round '+(index+1)) + '</span><strong>' + row.points + '/' +
+        roundMaximum(state) + (row.assisted?' · Solution viewed':'') + '</strong></summary><p>' + escape(row.explanation) +
+        '</p>' + checkList(row) + link('Revise '+row.topic,'economics.html#revision-topics/'+row.topic)+'</details>').join('')+
+      '</div><div class="actions"><button id="game-replay" class="primary">Play again</button>'+link('Choose another game','#games')+'</div></section>'+status;
     return;
   }
-  root.innerHTML=title+'<div class="stats"><span>Round '+(state.round+1)+' of '+roundCount(state)+'</span><span>'+
-    state.history.reduce((n,row)=>n+row.points,0)+' game points</span></div><section class="panel"><details><summary>Help</summary><p>'+engine.help+
-    '</p></details><form id="game-turn"><fieldset '+(state.feedback?'disabled':'')+'><legend>Your decision</legend>'+engine.render(state)+campaignControls(activeGame,state)+
-    '</fieldset><button class="primary" '+(state.feedback?'hidden':'')+'>'+(activeGame==='escape'?'Try the lock':'Confirm decision')+
-    '</button></form>'+(state.feedback?'<div class="feedback" role="status"><strong>'+state.feedback.points+' of '+roundMaximum(state)+
-      ' game points</strong><p>'+escape(state.feedback.explanation)+'</p></div><div class="actions">'+
-      (activeGame==='escape' && state.feedback.points===0 ? '<button id="game-retry" class="primary">Try again</button>' :
-        '<button id="game-next" class="primary">'+(state.round+1===roundCount(state)?'See results':'Next round')+'</button>')+
-      (activeGame!=='escape' && state.mode==='practice' && state.feedback.points<roundMaximum(state)?'<button id="game-retry">Retry this round</button>':'')+
+  const max = roundMaximum(state);
+  const earns = state.history.reduce((n,row)=>n+row.points,0);
+  const feedback = state.feedback;
+  const locked = activeGame==='escape' && (currentMission(state)?!feedback?.unlocked:feedback?.points===0);
+  const retry = feedback && activeGame!=='escape' && state.mode==='practice' && feedback.points<max;
+  const progress = '<div class="game-progress"><span>' + modeName(state) + ' · Round ' + (state.round+1) + ' of ' + roundCount(state) +
+    '</span><span>' + earns + ' points banked</span><progress aria-label="Rounds completed" max="' +
+    roundCount(state) + '" value="' + state.history.length + '"></progress></div>';
+  root.innerHTML=title+progress+'<section class="panel"><details><summary>Help</summary><p>'+engine.help+
+    '</p></details><form id="game-turn"><fieldset '+(feedback?'disabled':'')+'><legend>Your decision</legend>'+engine.render(state)+
+    (currentMission(state)?'':campaignControls(activeGame,state))+'</fieldset><p id="turn-status" role="status"></p>' +
+    '<button class="primary" '+(feedback?'hidden':'')+'>'+(activeGame==='escape'?'Try the lock':'Confirm decision')+
+    '</button></form>'+(feedback?'<div class="feedback" role="status" data-result="' +
+      (feedback.assisted?'assisted':feedback.points===max?'full':feedback.points?'partial':'miss')+'"><strong>' +
+      (feedback.assisted?'Solution revealed':feedback.points+' of '+max+' game points')+
+      '</strong><p>'+escape(feedback.explanation)+'</p>'+checkList(feedback)+'</div><div class="actions game-turn-actions">'+
+      (locked ? '<button id="game-retry" class="primary">Try again</button>' +
+        (currentMission(state)?'<button id="game-walkthrough">Show solution</button>':'') :
+        '<button id="game-next" class="primary">'+(state.round+1===roundCount(state)?'See results':activeGame==='escape'?'Next room':'Next round')+'</button>')+
+      (retry?'<button id="game-retry">Retry this round</button>':'')+
       '</div>':'')+'<p><button id="game-pause">Save and pause</button></p></section>'+status;
   const form=root.querySelector('#game-turn');
   if (state.draft) {
     Object.entries(state.draft).forEach(([key,value])=>{const field=form.elements.namedItem(key); if(field)field.value=value;});
   }
   engine.preview?.(form,state);
+  updateSequence(form);
 }
+
+function updateSequence(form) {
+  const sequence = form.querySelector('.mission-sequence');
+  if (!sequence) return;
+  const steps = [...form.querySelectorAll('.mission-step-menus select')];
+  const values = steps.map(field=>field.value).filter(Boolean);
+  sequence.querySelector('ol').innerHTML = steps.map((field,index) =>
+    '<li>' + escape(field.value?field.selectedOptions[0].textContent:'Step '+(index+1)) + '</li>').join('');
+  sequence.querySelectorAll('[data-lock-step]').forEach(button => {
+    const used = values.includes(button.dataset.lockStep);
+    button.disabled = Boolean(state.feedback || used || values.length===steps.length);
+    button.setAttribute('aria-pressed',String(used));
+  });
+  for (const button of sequence.querySelectorAll('[data-lock-undo], [data-lock-clear]')) {
+    button.disabled = Boolean(state.feedback || !values.length);
+  }
+}
+
 root.addEventListener('input',event=>{
   const form=event.target.closest('#game-turn');
   if (!form || state.feedback) return;
   state.draft=Object.fromEntries(new FormData(form));
-  engines[activeGame].preview?.(form,state);
+  gameEngine(state).preview?.(form,state);
+  updateSequence(form);
+  form.querySelector('#turn-status').textContent = '';
   window.updateGameScene?.(activeGame, simulationSnapshot());
   save(activeGame,state);
 });
 root.addEventListener('submit',event=>{
   event.preventDefault();
   const data=Object.fromEntries(new FormData(event.target));
-  if(event.target.id==='game-start'){
-    state={mode:data.mode==='campaign'?'challenge':data.mode,campaign:data.mode==='campaign',unit:data.unit??'mixed',round:0,seed:Math.floor(Math.random()*6),history:[],economy:[5,7,1,-2,50],balance:0};
-  }else{
+  if (event.target.id==='game-start') {
+    if (!['practice','challenge','campaign'].includes(data.mode)) return;
+    const warning = root.querySelector('#replace-session');
+    if (warning && event.submitter?.id!=='game-replace') {
+      warning.hidden=false;
+      warning.querySelector('button').focus();
+      return;
+    }
+    state={version:2,mode:data.mode==='campaign'?'challenge':data.mode,campaign:data.mode==='campaign',unit:data.unit??'mixed',
+      round:0,seed:Math.floor(Math.random()*1000000),history:[],economy:[5,7,1,-2,50],balance:0};
+  } else if (event.target.id==='game-turn' && state && !state.feedback) {
+    const sequence = event.target.querySelector('.mission-step-menus');
+    if (sequence) {
+      const values = [...sequence.querySelectorAll('select')].map(field=>field.value);
+      if (values.some(value=>!value) || new Set(values).size!==values.length) {
+        event.target.querySelector('#turn-status').textContent = 'Choose a different action for each step before trying the lock.';
+        return;
+      }
+    }
     state.draft=data;
     state.before={economy:state.economy,balance:state.balance,pending:state.pending??null,projects:state.projects??null};
-    state.feedback=campaignJudge(activeGame,data,state);
+    if (activeGame==='escape' && currentMission(state)) state.attempts=(state.attempts??0)+1;
+    state.feedback=currentMission(state)?gameEngine(state).judge(data,state):campaignJudge(activeGame,data,state);
+  } else {
+    return;
   }
   render();
   save(activeGame,state);
@@ -367,9 +468,36 @@ root.addEventListener('submit',event=>{
   destination?.focus();
 });
 root.addEventListener('click',event=>{
-  const action=event.target.closest('button')?.id;
+  const button=event.target.closest('button');
+  if (!button || button.disabled) return;
+  if (state && !state.feedback && (button.dataset.lockKey || button.dataset.lockStep || button.hasAttribute('data-lock-undo') || button.hasAttribute('data-lock-clear'))) {
+    const form = button.closest('form');
+    let field;
+    if (button.dataset.lockKey) {
+      field = form.elements.namedItem(button.dataset.lockField);
+      const key = button.dataset.lockKey;
+      field.value = key==='Clear'?'':key==='Delete'?field.value.slice(0,-1):(field.value+key).slice(0,4);
+    } else {
+      const steps = [...form.querySelectorAll('.mission-step-menus select')];
+      if (button.hasAttribute('data-lock-clear')) {
+        steps.forEach(step=>{step.value='';});
+        field=steps[0];
+      } else {
+        field = button.hasAttribute('data-lock-undo') ? steps.findLast(step=>step.value) : steps.find(step=>!step.value);
+        if (field) field.value = button.dataset.lockStep ?? '';
+      }
+    }
+    field?.dispatchEvent(new Event('input',{bubbles:true}));
+    if (button.disabled) form.querySelector('[data-lock-step]:not(:disabled), [data-lock-undo]:not(:disabled)')?.focus();
+    return;
+  }
+  const action=button.id;
   if (!action) return;
   switch(action){
+    case 'game-cancel-replace':
+      root.querySelector('#replace-session').hidden=true;
+      root.querySelector('#game-start-primary').focus();
+      return;
     case 'game-continue': state=savedSession; break;
     case 'game-pause': savedSession=state; state=null; break;
     case 'game-replay': state=null; savedSession=null; break;
@@ -377,16 +505,24 @@ root.addEventListener('click',event=>{
       Object.assign(state,state.before);
       state.feedback=null;
       break;
+    case 'game-walkthrough':
+      if (activeGame!=='escape' || !state.feedback || state.feedback.unlocked) return;
+      state.feedback=gameEngine(state).walkthrough(state);
+      break;
     case 'game-next': {
+      if (!state.feedback) return;
       state.history.push(state.feedback);
       state.feedback=null;
       state.draft=null;
+      state.attempts=0;
       state.round++;
       if(state.round===roundCount(state)){
         state.finished=true;
         const score=Math.round(100*state.history.reduce((n,row)=>n+row.points,0)/(state.round*roundMaximum(state)));
         const scoreKey=activeGame+(state.campaign?'-campaign-best':'-best');
         save(scoreKey,Math.max(score,load(scoreKey,0)));
+        const modeRecord=activeGame+'-best-'+modeKey(state);
+        save(modeRecord,Math.max(score,load(modeRecord,0)));
       }
       break;
     }
@@ -394,7 +530,8 @@ root.addEventListener('click',event=>{
   }
   render();
   save(activeGame,state??savedSession);
-  const nextFocus = root.querySelector('#game-continue') ?? root.querySelector('#game-turn legend') ?? root.querySelector('#simulation-title');
+  const nextFocus = root.querySelector('#game-continue') ?? root.querySelector('.game-turn-actions .primary') ??
+    root.querySelector('#game-turn legend') ?? root.querySelector('#simulation-title');
   nextFocus?.setAttribute('tabindex','-1');
   nextFocus?.focus();
 });
