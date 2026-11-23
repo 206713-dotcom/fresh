@@ -200,7 +200,26 @@ input:not([type='checkbox']):not([type='radio']):not([type='range']), select, te
 .question-id, .jump-label, .navigator-pages button, .question-toolbar { font-size: .8125rem; }
 .case-study { background: #edf3f7; border-color: #698da3; }
 #marking-model:not([hidden]) { background: #eaf6f1; border-color: #cee6dc; border-radius: 14px; padding: 16px 20px; }
-#marking-model p, #marking-status { color: #3c6258; font-size: .8125rem; }
+#marking-model p, #marking-status { color: #3c6258; font-size: .875rem; }
+#marking-model p { flex: 1 1 16rem; }
+#marking-download-open { padding: 8px 12px; line-height: 1.2; white-space: nowrap; }
+#marking-download {
+  width: min(calc(100% - 2rem), 29rem);
+  max-height: calc(100% - 2rem);
+  padding: clamp(16px, 5vw, 26px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 18px 54px #142f4338;
+}
+#marking-download::backdrop { background: #142f4380; }
+.marking-download-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.marking-download-heading h2 { margin: 0; font-size: clamp(1.25rem, 5vw, 1.5rem); line-height: 1.25; }
+#marking-download-description { margin: 14px 0; color: var(--muted); }
+#marking-download-start[aria-disabled='true'] { background: var(--ocean-soft); border-color: #94bbae; color: var(--navy); cursor: default; }
+#marking-download #marking-download-status { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+#marking-download #marking-download-status:not(:empty) { margin-top: 12px; }
 .progress-stat { background: #fff; border: 1px solid var(--line); box-shadow: var(--ocean-shadow); padding: 28px; }
 .progress-stat > strong { color: var(--navy); }
 .progress-stat > span { color: var(--muted); font-size: .875rem; }
@@ -279,7 +298,16 @@ footer { padding: 28px max(32px, calc((100% - 1248px) / 2)); color: var(--muted)
   .progress-stat-grid { grid-template-columns: minmax(0, 1fr); }
   footer { padding: 24px 18px; }
 }
+@media (max-width: 575px) {
+  [data-study-nav] #topic-search-open { min-width: 44px; padding: 8px 10px; }
+  [data-study-nav] #topic-search-open span:last-child { display: none; }
+}
 @media (max-width: 440px) {
+  [data-study-nav] .economics-nav-inner { width: calc(100% - 24px); column-gap: 8px; }
+  [data-study-nav] .economics-nav-actions { gap: 6px; }
+  [data-study-nav] .economics-subjects { min-width: 44px; min-height: 44px; gap: 0; font-size: 0; }
+  [data-study-nav] .economics-subjects img { display: block; }
+  #marking-download-open { padding-inline: 8px; }
   #topic-search-open { min-width: 42px; padding: 8px 12px; }
   #topic-search-open span:last-child { display: none; }
   .economics-subjects { font-size: .8125rem; padding-inline: 8px; }
