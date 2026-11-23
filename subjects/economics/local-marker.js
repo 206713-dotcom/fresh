@@ -32,8 +32,10 @@ const ecbizMarking = (() => {
   async function evaluate(question, answer, image, report) {
     if (!image) {
       const progress = message => {
-        status.hidden = false;
-        status.textContent = message;
+        if (question) {
+          status.hidden = false;
+          status.textContent = message;
+        }
         report?.(message);
       };
       progress(question ? 'Starting the on-device marker…' : 'Preparing model download…');
@@ -41,8 +43,10 @@ const ecbizMarking = (() => {
         const marker = await import(trainedMarkerURL);
         return await marker.evaluate(question, answer, progress);
       } finally {
-        status.hidden = true;
-        status.textContent = '';
+        if (question) {
+          status.hidden = true;
+          status.textContent = '';
+        }
       }
     }
 
@@ -176,29 +180,33 @@ const ecbizMarking = (() => {
     return request;
   }
 
-  const setup = document.querySelector('#marking-model');
-  const download = setup.querySelector('button');
-  const downloadStatus = setup.querySelector('[role="status"]');
-  function showModelSetup() {
-    setup.hidden = !/^#(?:practice|revision)(?:[-/]|$)/.test(location.hash);
+  const downloadDialog = document.querySelector('#marking-download');
+  const download = document.querySelector('#marking-download-start');
+  const downloadStatus = document.querySelector('#marking-download-status');
+  const downloadOpeners = document.querySelectorAll('[data-ai-download-open]');
+  const setupHint = document.querySelector('#marking-model p');
+  for (const opener of downloadOpeners) {
+    opener.addEventListener('click', () => downloadDialog.showModal());
   }
-  window.addEventListener('hashchange', showModelSetup);
-  showModelSetup();
 
   if (!globalThis.WebAssembly || typeof Worker !== 'function') {
-    download.disabled = true;
+    download.setAttribute('aria-disabled', 'true');
     downloadStatus.textContent = 'This browser does not support on-device AI marking.';
   } else {
     download.onclick = async () => {
-      download.disabled = true;
+      if (download.getAttribute('aria-disabled') === 'true') return;
+      download.setAttribute('aria-disabled', 'true');
+      download.textContent = 'Downloading local AI…';
       downloadStatus.textContent = 'Preparing download…';
       const report = message => { downloadStatus.textContent = message; };
       try {
         await enqueue(() => evaluate(null, '', undefined, report));
         download.textContent = 'Local AI ready';
         downloadStatus.textContent = 'You can now mark written answers on this device.';
+        for (const opener of downloadOpeners) opener.textContent = 'Local AI ready';
+        setupHint.textContent = 'AI marking is ready for written answers.';
       } catch (error) {
-        download.disabled = false;
+        download.removeAttribute('aria-disabled');
         download.textContent = 'Retry AI download';
         downloadStatus.textContent = error.message;
       }
