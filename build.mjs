@@ -1,26 +1,28 @@
-import { execSync } from "node:child_process";
 import { cpSync, mkdirSync, readdirSync, rmSync, existsSync } from "node:fs";
 import path from "node:path";
 
+// Static assembly only. Both subject sites are plain files in the repo:
+// economics keeps its readable source in subjects/economics/, and business
+// keeps its committed compiled bundle in subjects/business/assets/.
+// Nothing here runs npm, Vite or any compiler.
+
 const root = process.cwd();
 const dist = path.join(root, "dist");
-const businessDir = path.join(root, "subjects", "business");
-const businessDist = path.join(businessDir, "dist");
 
-// 1. Build the Business Vite app
-execSync("npm run build", { cwd: businessDir, stdio: "inherit" });
-
-// 2. Assemble dist/
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 // Root static files
-for (const f of ["index.html", "privacy.html", "404.html", "style.css", "home.css", "privacy.css", "privacy.js", "search.js", "fresh.svg"]) {
+for (const f of [
+  "index.html", "privacy.html", "404.html", "style.css", "home.css",
+  "privacy.css", "privacy.js", "search.js", "fresh.svg",
+  "CNAME", ".nojekyll", "metadata.json",
+]) {
   const src = path.join(root, f);
   if (existsSync(src)) cpSync(src, path.join(dist, f));
 }
 
-// subjects/*.html
+// subjects/*.html — includes the no-build entry pages economics.html and business.html
 const subjectsDir = path.join(root, "subjects");
 const distSubjects = path.join(dist, "subjects");
 mkdirSync(distSubjects, { recursive: true });
@@ -30,14 +32,34 @@ for (const f of readdirSync(subjectsDir)) {
   }
 }
 
-// Static subject apps and their lesson data.
+// Static subject apps and their lesson data. All three plain-file subject
+// folders are copied as-is; subjects/business/ is assembled separately below
+// so its React source/build tooling is never included in dist/.
 for (const subject of ["chemistry", "economics", "physics"]) {
-  cpSync(path.join(subjectsDir, subject), path.join(distSubjects, subject), { recursive: true });
+  const subjectDir = path.join(subjectsDir, subject);
+  if (existsSync(subjectDir)) {
+    cpSync(subjectDir, path.join(distSubjects, subject), { recursive: true });
+  }
 }
 
-// Compiled business app
+// subjects/assets/ — compatibility copies of the two local PDFs linked from
+// the business document archive by document-relative ./assets/aistudio/ URLs.
+const compatAssets = path.join(subjectsDir, "assets");
+if (existsSync(compatAssets)) {
+  cpSync(compatAssets, path.join(distSubjects, "assets"), { recursive: true });
+}
+
+// subjects/business/ — plain HTML/CSS/JS/data only (no React source or build files)
+const businessDir = path.join(subjectsDir, "business");
 const distBusiness = path.join(distSubjects, "business");
 mkdirSync(distBusiness, { recursive: true });
-cpSync(businessDist, distBusiness, { recursive: true });
+for (const f of ["Business.html", "index.html", "404.html", "legacy.html", "style.css", "site.css"]) {
+  const src = path.join(businessDir, f);
+  if (existsSync(src)) cpSync(src, path.join(distBusiness, f));
+}
+for (const d of ["assets", "js", "data"]) {
+  const src = path.join(businessDir, d);
+  if (existsSync(src)) cpSync(src, path.join(distBusiness, d), { recursive: true });
+}
 
-console.log("Build complete: dist/");
+console.log("Static site assembled: dist/ (no Vite/npm build required)");
