@@ -41,7 +41,8 @@ function mockCorrectionHref(mock,key) {
 }
 
 function correctionPracticeSeen() {
-  return new Set([...Object.keys(readPracticeAnswers()),...mockHistory().flatMap(entry=>entry.ids)]);
+  return new Set([...Object.keys(readPracticeAnswers()),...revisionState('reviewed-questions', []),
+    ...mockHistory().flatMap(entry=>entry.ids ?? [])]);
 }
 
 function freshCorrectionQuestion(q,seen = correctionPracticeSeen()) {
