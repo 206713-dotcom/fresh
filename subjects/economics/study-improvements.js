@@ -226,7 +226,7 @@ const markedAnswerExamples = [
     ['4/4',[['A tariff raises the price of competing imports, giving new domestic firms time to expand and lower their costs.','Explains how the tariff gives an infant industry temporary protection.'],['The government also collects tax on imports that are still bought, raising revenue it can use to fund public services.','Explains how the tariff generates revenue.']]]
   ]},
   {marks:6, topic:'Fiscal policy', prompt:'Analyse how an increase in government spending could affect unemployment and inflation.', answers:[
-    ['3/6',[['Higher government spending increases total demand. Firms sell more, so they expand output.','Develops the link from spending to sales and output.']]],
+    ['3/6',[['Higher government spending increases total demand. Firms sell more, so they expand output and hire more workers.','Develops three links through demand, output and hiring.']]],
     ['6/6',[['Higher government purchases increase total demand. Firms sell more and expand output.','Links the policy to higher demand, sales and output.'],['Firms need more workers to produce this output, which can reduce cyclical unemployment.','Carries the chain through to employment.'],['If the economy is close to full capacity, output can only rise a little. The extra demand then pushes up the general price level, causing demand-pull inflation.','Explains the inflation effect and the capacity condition.']]]
   ]},
   {marks:6, topic:'Market failure', prompt:'Analyse why a market economy may underprovide public goods.', answers:[
