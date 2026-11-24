@@ -84,11 +84,11 @@ function mockHistoryView() {
     link('Open test builder','#revision-test');
 }
 
-function suggestStudy() {
+function suggestStudy(requestedTopic) {
   const attempts = readPracticeAnswers();
   const mistakes = revisionState('mistakes', {});
   const reviewed = revisionState('reviewed-questions', []);
-  const seen = new Set([...reviewed,...mockHistory().flatMap(mock=>mock.ids)]);
+  const seen = new Set([...reviewed,...mockHistory().flatMap(mock=>mock.ids ?? [])]);
   const gaps = new Map();
   const add = (topic, lost) => { if (topic && lost>0) gaps.set(topic,(gaps.get(topic)??0)+lost); };
   for (const q of questions) {
@@ -100,17 +100,21 @@ function suggestStudy() {
   for (const id of Object.keys(mistakes)) if (id.startsWith('topic-')) add(id.slice(6),1);
   for (const [topic,row] of Object.entries(mockHistory()[0]?.topics ?? {})) add(topic,row.max-row.earned);
   const candidates = [...gaps.keys()].sort((a,b)=>gaps.get(b)-gaps.get(a));
-  const order = [...new Set([...candidates,...revisionLab.topics.map(topic=>topic.code)])];
+  const order = requestedTopic ? [requestedTopic] : [...new Set([...candidates,...revisionLab.topics.map(topic=>topic.code)])];
   for (const topic of order) {
-    const q = questions.find(q=>q.options && q.topic===topic && !seen.has(q.id));
+    const q = freshTopicQuestion(topic,seen);
     const lesson = syllabusTopicLessons(topic).find(l=>flashcardDecks[l.id]?.length);
     if (q && lesson) return {topic,question:q.id,lesson:lesson.id,step:0,card:0,revealed:false,misses:gaps.get(topic)??0};
   }
   return null;
 }
 
-function studyQueue() {
-  const plan = revisionState('study-queue',null) ?? suggestStudy();
+function studyQueueKey(code) {
+  return revisionLab.topics.some(topic=>topic.code===code) ? 'study-queue-' + code : 'study-queue';
+}
+
+function studyQueue(code) {
+  const plan = revisionState(studyQueueKey(code),null) ?? suggestStudy(code);
   const q = plan && questions.find(q=>q.id===plan.question && q.options);
   const lesson = plan && lessons.find(l=>l.id===plan.lesson);
   if (!q || !lesson) return revisionHeading('Your revision','10-minute review','Open a practice topic to keep revising.')+
@@ -146,17 +150,18 @@ function studyQueue() {
     '<section class="panel" id="study-queue" data-question="'+escapeHtml(plan.question)+'">'+body+actions+'</section>';
 }
 
-function setupStudyQueue() {
+function setupStudyQueue(code) {
   const panel = document.querySelector('#study-queue');
   if (!panel) return;
-  const plan = revisionState('study-queue', null) ?? suggestStudy();
+  const key = studyQueueKey(code);
+  const plan = revisionState(key, null) ?? suggestStudy(code);
   if (!plan || plan.question !== panel.dataset.question) return;
-  const save = () => { if (saveRevisionState('study-queue',plan)) render(); };
-  saveRevisionState('study-queue',plan);
+  const save = () => { if (saveRevisionState(key,plan)) render(); };
+  saveRevisionState(key,plan);
   panel.onclick = event => {
     const action = event.target.closest('[data-review-action]')?.dataset.reviewAction;
     if (!action) return;
-    if (action==='new') { if (saveRevisionState('study-queue',null)) render(); return; }
+    if (action==='new') { if (saveRevisionState(key,null)) render(); return; }
     if (action==='cards') plan.step=1;
     if (action==='reveal') plan.revealed=true;
     if (action==='advance') {
@@ -173,7 +178,9 @@ function setupStudyQueue() {
     if (answer===null) return;
     const q = questions.find(q=>q.id===plan.question);
     if (!saveRevisionState('reviewed-questions',[...new Set([...revisionState('reviewed-questions',[]),q.id])])) return;
-    recordRevisionMistake(q.id,q.q,'#revision-retry/'+q.id,answer!==String(q.answer));
+    const correct = answer === String(q.answer);
+    recordTopicCheck(q.id,q.topic,correct);
+    recordRevisionMistake(q.id,q.q,'#revision-retry/'+q.id,!correct);
     plan.answer=answer;
     plan.step=3;
     save();
@@ -240,7 +247,7 @@ function diagramPractice(id) {
     '<div id="diagram-feedback" role="status"></div><button type="button" id="diagram-solution" hidden>Show correct diagram</button></form>'+
     '<figure class="panel diagram-figure"><div id="diagram-plot">'+diagramPlot(exercise,{})+'</div><figcaption>'+
     (market?'Blue · original demand. Mint · original supply. Purple · your shifted curve.':'Blue · original PPC. Purple · your shifted PPC.')+
-    '</figcaption></figure></div><p>'+link('Draw a PPC from scratch','#revision-diagram-draw/growth')+'</p>';
+    '</figcaption></figure></div><p>'+link('Draw and check a diagram','#revision-diagram-draw/'+exercise.id)+'</p>';
 }
 function setupDiagramPractice() {
   const form=document.querySelector('#diagram-exercise');
