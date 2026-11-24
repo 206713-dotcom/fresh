@@ -69,7 +69,7 @@
     ['1.1', i => {
       const [first, second] = pair(report, i);
       const budget = 14 + i * 2;
-      return choice('A council has $' + budget + 'm. It can build a ' + first + ' or a ' + second
+      return choice('A council has $' + budget + 'm. It can fund one of two projects: a new ' + first + ' or a new ' + second
         + ', but it cannot finance both. Why must it choose?',
       ['Resources are scarce relative to wants.', 'Goods provided by a council are free goods.',
         'The wants of local residents are already satisfied.', 'Every project uses the same factors of production.'],
@@ -210,7 +210,7 @@
         ['A substitute for ' + a + ' becomes cheaper. Supply of both goods stays the same.', 3]
       ];
       const [event, answer] = pick(i, situations);
-      return choice('A market sells ' + a + ' and ' + b + '. ' + event
+      return choice('Retailers sell ' + a + ' and ' + b + ' in separate markets. ' + event
         + ' What happens to the equilibrium price and quantity of ' + a + '?', directional, answer,
       ['Demand shifts right.', 'Supply shifts left.', 'Supply shifts right.', 'Demand shifts left.'][answer]);
     }],
@@ -274,7 +274,7 @@
     }],
     ['3.2', i => {
       const borrowed = 500 + 20 * i;
-      return choice('A household needs to borrow $' + borrowed + '. Interest rates on new loans rise. Other influences are unchanged. How is the household most likely to respond?',
+      return choice('A household plans to borrow up to $' + borrowed + '. Interest rates on new loans rise. Other influences are unchanged. How is the household most likely to respond?',
         ['Borrow less because the cost of credit is higher.', 'Borrow more because the cost of credit is lower.',
           'Save less because the return to saving necessarily falls.', 'Borrow more because its income must have risen.'], 0,
         'Higher interest rates increase the cost of new borrowing and make some purchases on credit less attractive.');
@@ -346,9 +346,9 @@
     ['4.1', i => {
       const initial = 20 + i;
       const final = initial + 8;
-      return choice('Exports stay unchanged while an increase in employment raises household spending. Imports rise from $'
+      return choice('The current account starts in balance. Exports stay unchanged while an increase in employment raises household spending. Imports rise from $'
         + initial + 'bn to $' + final + 'bn. Other current account items are unchanged. Which pair of government aims does this illustrate a potential conflict between?',
-      ['Lower unemployment and current account stability',
+      ['Lower unemployment and maintaining current account balance',
         'Lower inflation and environmental sustainability',
         'Redistribution of income and environmental sustainability',
         'Lower inflation and redistribution of income'], 0,
@@ -436,7 +436,7 @@
         + ' years. Education and income measures used in the Human Development Index stay unchanged. What happens to HDI?',
       ['It rises because the health component improves.', 'It falls because the education component falls.',
         'It stays constant because HDI only measures GDP per head.',
-        'It rises because a larger population directly raises HDI.'], 0,
+        'It stays constant because an unchanged income measure offsets any gain in health.'], 0,
       'Life expectancy measures the health dimension of HDI.');
     }],
     ['5.2', i => {
@@ -479,8 +479,8 @@
       const [correct, why] = pick(i, variants);
       return choice('The share of a country’s fixed population aged 65 or over rises from ' + start + '% to '
         + end + '%. Which is a likely consequence of this demographic change?',
-      [correct, 'The number of older residents decreases.', 'The proportion of older residents has stayed the same.',
-        'The total population must increase.'], 0, why);
+      [correct, 'Pension spending falls as more people reach retirement age.', 'Demand for school places rises because of the change in age structure.',
+        'The share of people under 65 rises by the same amount.'], 0, why);
     }],
     ['5.4', i => {
       const [a, b] = pair(occupations, i);
@@ -506,7 +506,7 @@
     }],
     ['6.2', i => {
       const [a, b] = pair(goods, i);
-      const tools = ['charges a tax on imported ' + a, 'sets a maximum number of imported ' + a,
+      const tools = ['charges a tax on imported ' + a, 'sets an annual limit on the number of imported units of ' + a,
         'prohibits all imports of ' + a, 'pays domestic producers of ' + a + ' for each unit they sell'];
       const key = i % tools.length;
       return choice('A country imports ' + a + ' and ' + b + '. Its government ' + tools[key]
@@ -520,8 +520,8 @@
       return choice('A multinational that makes ' + a + ' and ' + b
         + ' opens a factory in a host country with high unemployment. What is a potential benefit to the host country?',
       ['Employment may rise when the factory recruits local workers.',
-        'All profits are guaranteed to stay in the host country.', 'The host government must lose all tax revenue.',
-        'The number of domestic jobs automatically falls by the number the firm creates.'], 0,
+        'Sending the factory’s profits abroad would improve the host’s primary income balance.', 'A government grant to the factory would directly increase tax revenue.',
+        'Buying all inputs from overseas would increase sales for domestic suppliers.'], 0,
       'The investment can create jobs directly by increasing demand for labour in the host country.');
     }],
     ['6.3', i => {
@@ -571,7 +571,8 @@
   const templates = [basic, markets, micro, macro, development, trade];
   for (const [chapter, chapterTemplates] of templates.entries()) {
     for (let serial = 0; serial < 2000; serial++) {
-      const [topic, makeQuestion] = rotate(chapterTemplates, serial);
+      const pattern = serial % chapterTemplates.length;
+      const [topic, makeQuestion] = chapterTemplates[pattern];
       const index = Math.floor(serial / chapterTemplates.length);
       const {stem, correct, wrong, why} = makeQuestion(index);
       // Stable option order, distributed across positions for all question patterns.
@@ -584,7 +585,7 @@
       options.splice(answer, 0, correct);
       questions.push({
         id: '0455-2027-MCQ-C0' + (chapter + 1) + '-' + String(serial + 1).padStart(4, '0'),
-        ...topics.get(topic), paper: '1', type: 'MCQ', marks: 1, case: '', q: stem,
+        ...topics.get(topic), variantKey:'c' + (chapter + 1) + '-pattern-' + pattern, paper: '1', type: 'MCQ', marks: 1, case: '', q: stem,
         options, answer, why, scheme: 'Award 1 mark for option ' + 'ABCD'[answer] + '.', note: ''
       });
     }
@@ -592,7 +593,7 @@
 
   const structured = [
     ['BASIC-PPC-4', '1.4', 4, 'Explain two causes of an outward shift of a production possibility curve.',
-      'Award up to 2 marks for each of two distinct causes. More workers available (1) allow more output with a larger labour force (1). More capital goods (1) give the economy more equipment with which to produce (1). Better technology (1) increases output per unit of input (1). Better education or training (1) raises worker productivity (1). Credit equivalent explanations of increased capacity.'],
+      'Award up to 2 marks for each of two distinct causes. More workers available (1) allow more output with a larger labour force (1). More capital goods (1) give the economy more equipment with which to produce (1). Better technology (1) increases output per unit of input (1). Better education or training (1) raises worker productivity (1). Discovery of usable natural resources (1) increases the inputs available for production (1). Accept other valid causes linked to productive capacity.'],
     ['BASIC-PPC-8', '1.4', 8, 'Discuss whether a country should produce more capital goods and fewer consumer goods.',
       'For: more machinery can increase productivity and productive capacity, shifting the PPC outwards. Lower production costs could improve competitiveness and future consumption. Against: fewer consumer goods are available now, which may lower living standards. Capital goods may be unsuitable or underused if firms lack skilled workers or demand. Weigh the current opportunity cost against future output gains, taking account of the initial availability of consumer goods and existing spare capacity.'],
     ['MARKETS-PED-4', '2.6', 4, 'Explain two reasons why demand for a product may be price elastic.',
@@ -600,7 +601,7 @@
     ['MARKETS-PUBLIC-6', '2.9', 6, 'Analyse why a market economy may underprovide public goods.',
       'Award up to 6 for distinct linked analysis. Non-excludability (1) makes it hard to prevent non-payers benefiting (1). People have an incentive to free ride (1), limiting revenue from voluntary payments (1), so firms may not cover the costs of providing the good (1) and may provide too little or none (1). Where linked to underprovision, credit an additional user not reducing availability for others (1) or social benefits that exceed the benefits captured by a private supplier (1).'],
     ['MICRO-LABOUR-4', '3.3', 4, 'Explain two reasons why workers in one occupation may earn more than those in another.',
-      'Award up to 2 per distinct reason. A greater need for qualifications (1) restricts the supply of suitably trained workers (1). Higher demand for the product workers make (1) increases derived demand for that labour (1). Poor working conditions or high risk (1) may require employers to pay more to attract workers (1). Stronger trade union bargaining power (1) may secure higher wage rates (1).'],
+      'Award up to 2 per distinct reason. A greater need for qualifications (1) restricts the supply of suitably trained workers (1). Higher demand for the product workers make (1) increases derived demand for that labour (1). Poor working conditions or high risk (1) may require employers to pay more to attract workers (1). Stronger trade union bargaining power (1) may secure higher wage rates (1). A higher local cost of living (1) may require firms to pay higher wages to attract workers to the area (1). Accept other valid reasons linked to differences in wages.'],
     ['MICRO-COST-6', '3.4', 6, 'Analyse how economies and diseconomies of scale could affect a firm as it expands.',
       'Award up to 6 marks, crediting coherent links to average cost. Larger orders (1) may secure supplier discounts (1), lowering input cost per unit (1). Larger firms can afford specialist equipment or staff (1), raising productivity (1) and lowering average cost (1). Very large operations may add layers of management (1), slowing communication and decisions (1), increasing errors, waste or average cost (1). A larger workforce may feel less recognised (1), reducing motivation and productivity (1), which may raise average costs (1).'],
     ['MACRO-SUPPLY-8', '4.4', 8, 'Discuss whether government supply-side policies are likely to improve an economy’s performance.',
@@ -612,7 +613,7 @@
     ['DEVELOPMENT-GDP-8', '5.1', 8, 'Discuss whether real GDP per head is a good measure for comparing living standards between countries.',
       'For: it estimates real output per person, adjusts for population size and separates price-level change over time from changes in output. More real output per person can mean more material goods and resources to fund services. Against: an average hides income inequality. Health, education, unpaid work and environmental quality are not adequately represented by the measure. International comparisons of purchasing power can be misleading if price levels are ignored. Weigh the value of the measure for material living standards against what a wider set of measures such as HDI would reveal.'],
     ['TRADE-RESTRICTIONS-4', '6.2', 4, 'Explain two reasons why a government may impose tariffs on imports.',
-      'Award 1 mark for each of two distinct reasons and 1 for each linked explanation. Protect infant industries (1) by giving new domestic producers time to develop and lower costs (1). Raise public revenue (1) by collecting tax on goods that are still imported (1). Protect strategic industries (1) by supporting domestic capacity for essential supplies (1). Discourage consumption of imported demerit goods (1) by raising their price and reducing purchases (1).'],
+      'Award 1 mark for each of two distinct reasons and 1 for each linked explanation. Protect infant industries (1) by giving new domestic producers time to develop and lower costs (1). Raise public revenue (1) by collecting tax on goods that are still imported (1). Protect strategic industries (1) by supporting domestic capacity for essential supplies (1). Discourage consumption of imported demerit goods (1) by raising their price and reducing purchases (1). Counter dumping (1) by making it harder for unusually low-priced imports to undercut domestic producers (1). Accept other valid reasons with a linked explanation.'],
     ['TRADE-EXCHANGE-8', '6.3', 8, 'Discuss whether depreciation of its currency is likely to benefit a country.',
       'For: export prices in foreign currency may fall, increasing export sales and employment. Higher import prices may encourage buying from domestic suppliers and improve the current account if volumes respond sufficiently. Against: dearer imported goods reduce purchasing power and dearer imported inputs raise production costs, possibly causing cost-push inflation. Export supply may be constrained, or buyers may respond only slowly to price changes. Weigh the effects using responsiveness to prices, spare capacity and dependence on indispensable imported inputs.']
   ];
