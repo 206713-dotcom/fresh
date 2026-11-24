@@ -5564,9 +5564,15 @@ WL.lecMeta = [{"id":"calculus","title":"Calculus: the derivative and the integra
     return FILM.v;
   }
   function filmScene(id) {
-    const sv = (WL.svideos || {})[id]; if (!sv || !sv.ch) return null;
-    const i = sv.ch.findIndex((c) => /^see it/i.test(c[1])); if (i < 0) return null;
-    const t0 = +sv.ch[i][0], t1 = i + 1 < sv.ch.length ? +sv.ch[i + 1][0] : +sv.dur, len = Math.max(3, t1 - t0 - 0.15), src = `https://b8313b41-06f1-4a6a-a5c8-cd5647ea5ea8.frame.claudeusercontent.com/_f/1795426252-2985/svideos/${id}.mp4`;
+    const clip = WL.spots?.find((spot) => spot.topic === id);
+    const sv = (WL.svideos || {})[id];
+    const i = sv?.ch?.findIndex((chapter) => /^see it/i.test(chapter[1])) ?? -1;
+    if (!clip && i < 0) return null;
+    const t0 = clip ? 0 : +sv.ch[i][0];
+    const t1 = clip ? clip.seconds : i + 1 < sv.ch.length ? +sv.ch[i + 1][0] : +sv.dur;
+    const len = Math.max(3, t1 - t0 - 0.15);
+    const src = clip ? 'spot/' + id + '.mp4' :
+      'https://b8313b41-06f1-4a6a-a5c8-cd5647ea5ea8.frame.claudeusercontent.com/_f/1795426252-2985/svideos/' + id + '.mp4';
     const sc = { say: ['Before any equations, watch it happen. The film has its own words, so read along.', len], tail: 0.4,
       draw(r, S) {
         const C = WL.C, c = r.ctx, local = S.b >= 1 ? Math.min(len, Math.max(0, S.t - S.B[1])) : 0, want = t0 + local;
@@ -5576,7 +5582,7 @@ WL.lecMeta = [{"id":"calculus","title":"Calculus: the derivative and the integra
         if (run) { if (v.paused) v.play().catch(() => {}); if (!v.seeking && Math.abs(v.currentTime - want) > 0.45) v.currentTime = want; }
         else { if (!v.paused) v.pause(); if (!v.seeking && Math.abs(v.currentTime - want) > 0.1) try { v.currentTime = want; } catch (e) {} }
         if (v.readyState >= 2) { const ga = c.globalAlpha; c.globalAlpha = r._a; c.drawImage(v, 0, 0, 960, 540); c.globalAlpha = ga; }
-        else r.txt('Loading the film…', 480, 270, { size: 22, sans: true, align: 'center', c: C.dim });
+        else r.txt(v.error ? 'This clip is unavailable. Continue to the next chapter.' : 'Loading the film…', 480, 270, { size: 22, sans: true, align: 'center', c: C.dim });
       } };
     return sc;
   }
