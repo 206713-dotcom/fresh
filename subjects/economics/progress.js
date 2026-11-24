@@ -23,6 +23,7 @@ function economicsProgress() {
       <div><h1>My progress</h1><p>Saved in this browser. Clearing site data removes it.</p></div>
       <div><button type="button" class="primary" data-export-economics>Export progress CSV</button><p id="revision-save-status" role="status"></p></div>
     </header>
+    ${weakTopicsPanel()}
     <section class="progress-panel" id="progress-backup"><h2>Back up or restore progress</h2>
       <p>Transfer your mocks, saved answers, flashcards, checklist and game progress to another browser.</p>
       <div class="row"><button type="button" data-ecbiz-backup>Download backup</button>
@@ -66,6 +67,7 @@ function economicsProgress() {
     </section>
     <section class="progress-panel" id="progress-flashcards" tabindex="-1" aria-labelledby="progress-flashcards-title">
       <div class="section-head"><h2 id="progress-flashcards-title">Your flashcards</h2>${link('Browse decks →', '#flashcards', 'text-link')}</div>
+      <p>${link('Start daily flashcard review','#flashcard-review')}</p>
       ${decks.length ? '<div class="progress-answer-list">' + decks.map(deck => `<a href="#lesson/${deck.id}/cards"><strong>${escapeHtml(deck.title)}</strong><span>Card ${deck.position + 1} of ${deck.total} →</span></a>`).join('') + '</div>' : '<p class="muted">Open a flashcard deck to save your place and continue it here.</p>'}
     </section>`;
 }

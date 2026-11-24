@@ -1,10 +1,18 @@
 const ecbizMarking = (() => {
   const banks = new Map();
-  function questionBank() {
-    if (banks.size) return banks;
-    for (const { id, q, marks, case: context, scheme, note, options } of questions) {
-      if (!options) banks.set(id, { prompt: q, marks, context, scheme, note });
+  let practiceReady = false;
+  let mocksReady = false;
+  function questionData(id) {
+    if (!id.startsWith('mock-')) {
+      if (!practiceReady) {
+        for (const { id, q, marks, case: context, scheme, note, options } of questions) {
+          if (!options) banks.set(id, { prompt: q, marks, context, scheme, note });
+        }
+        practiceReady = true;
+      }
+      return banks.get(id);
     }
+    if (mocksReady) return banks.get(id);
     function registerMock(paper) {
       revisionPaper2Groups(paper).forEach(({stimulus, tables, parts}, group) => {
         const tableText = (tables ?? []).map(({caption,headers,rows}) =>
@@ -17,7 +25,8 @@ const ecbizMarking = (() => {
     }
     registerMock(0);
     for (let paper = 1; paper <= mockPaperCount; paper++) registerMock(paper);
-    return banks;
+    mocksReady = true;
+    return banks.get(id);
   }
 
   const status = document.querySelector('#marking-status');
@@ -147,7 +156,7 @@ const ecbizMarking = (() => {
   }
 
   function grade(id, answer, image, report) {
-    const question = questionBank().get(id);
+    const question = questionData(id);
     const response = answer.trim();
     if (!question?.scheme || response.length > 8000 || (!response && !image) || (image && !question.diagram)) {
       return Promise.reject(new Error('Check the question, answer length or diagram and try again.'));
@@ -180,14 +189,12 @@ const ecbizMarking = (() => {
     return request;
   }
 
-  const downloadDialog = document.querySelector('#marking-download');
   const download = document.querySelector('#marking-download-start');
   const downloadStatus = document.querySelector('#marking-download-status');
   const downloadOpeners = document.querySelectorAll('[data-ai-download-open]');
   const setupHint = document.querySelector('#marking-model p');
-  for (const opener of downloadOpeners) {
-    opener.addEventListener('click', () => downloadDialog.showModal());
-  }
+  download.disabled = false;
+  downloadStatus.textContent = '';
 
   if (!globalThis.WebAssembly || typeof Worker !== 'function') {
     download.setAttribute('aria-disabled', 'true');
@@ -213,23 +220,13 @@ const ecbizMarking = (() => {
     };
   }
 
-  function reviewReason(result, answer) {
-    if (result.reviewNote) return result.reviewNote;
-    if (result.reviewUnavailable || result.modelPlan) return 'The marker could not verify a complete worked example.';
-    if (result.diagram && result.provisional) return 'Check the visual assessment against the model diagram and mark scheme.';
-    if (result.provisional && result.score>0 && !creditedEvidence(answer,result).length) {
-      return 'The marker awarded credit without a verifiable quotation from your answer.';
-    }
-    return '';
-  }
-
   function feedback(result, marks, answer) {
     const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
       escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
     const section = (title, value, kind = '') => value ? '<section class="review-section ' + kind + '"><h3>' + title + '</h3>' + paragraphs(value) + '</section>' : '';
     const coaching = result.coaching;
     const evidence = markedEvidence(answer,result);
-    const reason = reviewReason(result,answer);
+    const reason = markReviewReason(result,answer);
     return '<div class="review-summary"><div><span class="review-eyebrow">Answer review</span><h3>Your feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
@@ -254,6 +251,6 @@ const ecbizMarking = (() => {
       (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</details>';
   }
 
-  return { grade, feedback, scheme, reviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
+  return { grade, feedback, scheme, reviewReason:markReviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
 })();
 

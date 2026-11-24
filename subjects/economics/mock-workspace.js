@@ -246,6 +246,17 @@ function setupDiagramEditors(root, drawings, save) {
   }
 }
 
+function marketDrawingSpec(part) {
+  if (part.kind==='market') return part;
+  const scheme = part.scheme.toLowerCase();
+  return {
+    kind:'market',
+    changing:/only the demand curve/.test(scheme) ? 'demand' : 'supply',
+    increase:scheme.includes('shift of supply') ? !scheme.includes('leftward') : /curve right/.test(scheme),
+    labor:scheme.includes('wage rate')
+  };
+}
+
 function modelDiagram(part, kind='market') {
   const chart = emptyDiagram();
   const shape=(kind,points,text='',color)=>chart.shapes.push({kind,points:points.map(([x,y])=>diagramPoint(x,y)),text,color});
@@ -267,11 +278,7 @@ function modelDiagram(part, kind='market') {
     shape('point',[inward?[55,47]:[49,52]],'A','#182d43');
     return chart;
   }
-  const scheme=part.scheme.toLowerCase();
-  const legacy=scheme.includes('shift of supply');
-  const changing = /only the demand curve/.test(scheme) ? 'demand' : 'supply';
-  const increase = legacy ? !scheme.includes('leftward') : /curve right/.test(scheme);
-  const labor = scheme.includes('wage rate');
+  const {changing,increase,labor} = marketDrawingSpec(part);
   chart.x=labor?'Quantity of labour':'Quantity';chart.y=labor?'Wage rate':'Price';
   const d='#1b6189',s='#257252', shift='#79539b', grey='#607789';
   line([14,86],[82,18],'D₁',d); line([14,18],[82,86],'S₁',s);
@@ -292,27 +299,45 @@ function examDiagramPreview(drawing, image, part, kind='market') {
   const example=ecBizDiagramImage(modelDiagram(part,kind));
   const figure=(src,label)=>'<figure><figcaption>' + label + '</figcaption><img src="' + escapeHtml(src) +
     '" alt="' + label + '"></figure>';
-  return '<div class="mock-diagram-compare">' + (submitted?figure(submitted,'Your diagram'):'') +
+  const spec = kind==='ppc' ? {...part,kind} : marketDrawingSpec(part);
+  return (image ? '' : drawingFeedback(drawing,spec)) + '<div class="mock-diagram-compare">' + (submitted?figure(submitted,'Your diagram'):'') +
     figure(example,'Model diagram') + '</div>';
 }
 
+const freeDrawingTasks = {
+  growth:{kind:'ppc',name:'Capacity rises',shift:'out',prompt:'Better technology increases productive capacity. Draw PPC₁ and PPC₂.'},
+  loss:{kind:'ppc',name:'Capacity falls',shift:'in',prompt:'A flood destroys productive resources. Draw PPC₁ and PPC₂.'},
+  demand:{kind:'market',name:'Demand rises',changing:'demand',increase:true,prompt:'A health campaign makes vegetables more popular. Draw and label D₁, S₁ and the shifted D₂. Mark E₁ and E₂.'},
+  drought:{kind:'market',name:'Supply falls',changing:'supply',increase:false,prompt:'A drought damages the vegetable harvest. Draw and label D₁, S₁ and the shifted S₂. Mark E₁ and E₂.'}
+};
+
+function freeDrawingKey(id) {
+  return Object.hasOwn(freeDrawingTasks,id) ? id : 'growth';
+}
+
 function freeDiagramPractice(id) {
-  const loss=id==='loss';
-  return revisionHeading('Diagram practice','Draw a production possibility curve',
-    loss?'Show a fall in productive capacity after a flood.':'Show an outward shift after an improvement in technology.') +
-    '<div class="row">' + link('Growth exercise','#revision-diagram-draw/growth') + link('Capacity loss exercise','#revision-diagram-draw/loss') +
-    link('Back to diagram exercises','#revision-diagrams') + '</div><section class="panel" id="free-drawing">' +
-    diagramEditor(loss?'loss':'growth') + '<button type="button" id="compare-ppc">Compare with model</button><div id="free-comparison"></div></section>';
+  const key=freeDrawingKey(id), task=freeDrawingTasks[key];
+  return revisionHeading('Diagram practice',task.kind==='ppc'?'Draw a production possibility curve':'Draw a market diagram',task.prompt) +
+    '<nav class="row" aria-label="Drawing exercises">' + Object.entries(freeDrawingTasks).map(([id,exercise])=>
+      link(exercise.name,'#revision-diagram-draw/'+id,id===key?'button primary':'button')).join('') +
+    link('Back to diagram exercises','#revision-diagrams') + '</nav><section class="panel" id="free-drawing">' +
+    diagramEditor(key) + '<div class="row"><button type="button" class="primary" id="compare-ppc">Check drawing</button></div>' +
+    '<div id="free-comparison" aria-live="polite"></div></section>';
 }
 
 function setupFreeDiagramPractice(id) {
-  const root=document.querySelector('#free-drawing'), key=id==='loss'?'loss':'growth';
+  const root=document.querySelector('#free-drawing'), key=freeDrawingKey(id), task=freeDrawingTasks[key];
   const drawings=revisionState('free-diagrams',{});
+  const feedback=root.querySelector('#free-comparison');
   setupDiagramEditors(root,drawings, (id,diagram)=>{
     if(!saveRevisionState('free-diagrams',{...drawings,[id]:diagram}))return false;
-    drawings[id]=diagram;return true;
+    drawings[id]=diagram;
+    if(feedback.childElementCount) feedback.textContent='Drawing changed. Check it again when you’re ready.';
+    return true;
   });
   root.querySelector('#compare-ppc').onclick=()=>{
-    root.querySelector('#free-comparison').innerHTML=examDiagramPreview(drawings[key],null,{shift:key==='loss'?'in':'out'},'ppc');
+    feedback.innerHTML=drawings[key]?.shapes.length
+      ? examDiagramPreview(drawings[key],null,task,task.kind)
+      : '<p>Draw and label your curves before checking.</p>';
   };
 }

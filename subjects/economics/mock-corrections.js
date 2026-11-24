@@ -22,7 +22,7 @@ function snapshotMockCorrections(state) {
   return revisionWrittenItems(state).flatMap(({key,marks})=>{
     const grade=state.grades?.[key], answer=state.answers[key] ?? '';
     const drawing=state.drawings?.[key], image=drawing?.shapes.length ? undefined : state.images?.[key];
-    const review=grade && ecbizMarking.reviewReason(grade,answer);
+    const review=grade && markReviewReason(grade,answer);
     if(grade?.score===marks && !review) return [];
     const entry={key,score:grade?.score ?? (hasMockResponse(state,key)?null:0),answer};
     if (drawing?.shapes.length) entry.drawing=drawing;
@@ -41,12 +41,12 @@ function mockCorrectionHref(mock,key) {
 }
 
 function correctionPracticeSeen() {
-  return new Set([...Object.keys(readPracticeAnswers()),...mockHistory().flatMap(entry=>entry.ids)]);
+  return new Set([...Object.keys(readPracticeAnswers()),...revisionState('reviewed-questions', []),
+    ...mockHistory().flatMap(entry=>entry.ids ?? [])]);
 }
 
 function freshCorrectionQuestion(q,seen = correctionPracticeSeen()) {
-  const candidates=questions.filter(item=>item.id!==q.id && item.topic===q.topic && Boolean(item.options)===Boolean(q.options) && !seen.has(item.id));
-  return candidates.find(item=>item.marks===q.marks) ?? candidates[0];
+  return freshTopicQuestion(q.topic,seen,q,Boolean(q.options));
 }
 
 function mockCorrectionComparison(item,q,updated) {
@@ -83,7 +83,7 @@ function correctionPage(route) {
   const groups=mock ? [mock] : history;
   const seen=correctionPracticeSeen(), varied=new Map();
   return revisionHeading('Exam practice','Mock corrections','Start with the questions that cost the most marks. Compare a new answer with the one you submitted.') +
-    '<div class="row">'+(mock?link('All corrections','#revision-corrections'):'')+link('Mock exam history','#revision-history')+'</div>' +
+    '<div class="row">'+(mock?link('All corrections','#revision-corrections'):'')+link('Mock exam history','#revision-history')+link('Weak topics','#progress-weak-topics')+'</div>' +
     (groups.length ? groups.map(entry=>{
       const items=correctionGroup(entry);
       const back=mockCorrectionHref(entry);

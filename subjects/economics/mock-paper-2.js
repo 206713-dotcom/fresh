@@ -226,7 +226,7 @@ const numberedPaper2 = (() => {
       yName.toLowerCase() + ' in the four areas.',
       'Award 1 for the correct general relationship, 1 for an accurately paired comparison between areas, ' +
       '1 for other accurate paired evidence and 1 for identifying a valid exception or explaining a limitation. ' +
-      'If the same data are used to support two points, avoid double credit. ' +
+      'Accept any accurate comparison with both indicators paired correctly. Credit a different valid exception or a reason the data alone cannot establish causation. Avoid double credit for the same evidence. ' +
       trend + ' ' + evidence + ' For other evidence, area B records ' + valuesX[1] + ' and ' + valuesY[1] + '. ' + qualification,
       trend + ' ' + evidence + ' Area B also records ' + valuesX[1] + ' and ' + valuesY[1] + ', which are intermediate values. ' + qualification);
     return {data,item};
