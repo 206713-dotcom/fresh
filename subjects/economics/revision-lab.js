@@ -145,7 +145,7 @@ function renderRevisionTool(page, id) {
   if (page === 'revision') return revisionHub();
   const icons = {
     'revision-history': '▤', 'revision-diagrams': '◩', 'revision-review': '↻',
-    'revision-corrections': '↺', 'revision-diagram-draw': '◩',
+    'revision-corrections': '↺', 'revision-diagram-draw': '◩', 'revision-examples': '✎',
     'revision-checklist': '✓', 'revision-topics': '▤', 'revision-test': '◷', 'revision-papers': '↗',
     'revision-mistakes': '↺', 'revision-retry': '↺', 'revision-writing': '✎'
   };
@@ -168,7 +168,8 @@ function revisionHub() {
     ['Improve your answers', [
       ['↺', 'Mock corrections', 'Review missed marks and redo answers from completed mocks.', '#revision-corrections'],
       ['↺', 'Mistakes log', 'Retry questions you missed in topic checks and submitted tests.', '#revision-mistakes'],
-      ['✎', 'Written-answer review', 'Get a mark and feedback for each saved version.', '#revision-writing']
+      ['✎', 'Written-answer review', 'Get a mark and feedback for each saved version.', '#revision-writing'],
+      ['▤', 'Compare sample answers', 'See how written answers earn more marks, line by line.', '#revision-examples']
     ]]
   ];
   return '<div class="revision-hub"><header class="revision-hero"><div><p class="eyebrow">Cambridge IGCSE · 0455</p>' +
@@ -227,6 +228,7 @@ function setupRevisionTopic(code) {
     paintAnswerChoices(form, selected, topic.answer);
     feedback.innerHTML = outcomeBadge(feedback.dataset.outcome) + '<ul>' + topic.options.map(([option, why], index) =>
       '<li><strong>' + escapeHtml(option) + (index === topic.answer ? ' ✓' : '') + '</strong> — ' + escapeHtml(why) + '</li>').join('') + '</ul>';
+    recordTopicCheck('topic-' + code, code, correct);
     recordRevisionMistake('topic-' + code, topic.prompt, '#revision-topics/' + code, !correct);
     if (correct) saveRevisionState('topics', {...revisionState('topics', {}), [code]: true});
   };
@@ -279,7 +281,7 @@ function revisionWritingGuide(question, versions) {
   const recent = versions.slice(-2).map((version,index)=>renderVersion(version,versions.length-Math.min(versions.length,2)+index)).join('');
   const earlier = versions.slice(0,-2).map((version,index)=>'<details><summary>Version '+(index+1)+'</summary>'+renderVersion(version,index)+'</details>').join('');
   return '<section class="panel writing-compare-panel"><h2>Compare your versions</h2><div class="writing-compare">'+recent+'</div>'+
-    (earlier ? '<h3>Earlier versions</h3>'+earlier : '') + ecbizMarking.scheme(question) + '</section>';
+    (earlier ? '<h3>Earlier versions</h3>'+earlier : '') + ecbizMarking.scheme(question) + answerComparisonLink(question.marks) + '</section>';
 }
 
 function setupRevisionWriting(id) {
@@ -478,6 +480,7 @@ function revisionAttempt(state) {
       (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>' + escapeHtml(error || 'Awaiting marking.') + '</p>' :
         ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key]) +
         (error?'<p>'+escapeHtml(error)+'</p>':'')) + ecbizMarking.scheme({scheme}) +
+      (diagram ? '' : answerComparisonLink(max)) +
       (retry?'<button type="button" data-retry-mock-part="' + escapeHtml(key) + '">Retry marking this answer</button>':'') + '</div>';
   };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
@@ -527,7 +530,7 @@ function revisionAttempt(state) {
     (mock2 ? '<p>Use the source to answer all of Section A. Choose three questions in Section B.</p>' : '') +
     (!review && state.deadline ? '<p id="revision-clock" role="timer"></p>' : '') +
     (review ? '<button id="revision-test-reset" type="button">Build another test</button> ' +
-      link('View mock exam history', '#revision-history') + ' ' +
+      link('View mock exam history', '#revision-history') + ' ' + link('Weak topics','#progress-weak-topics') + ' ' +
       (state.mode==='custom'?'':link('Open corrections',mockCorrectionHref({id:state.attemptId || 'previous-'+state.mode}))) +
       (pending ? '<button id="revision-test-retry" type="button">Retry pending marks</button>' : '') : '') +
     '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
@@ -1023,7 +1026,8 @@ const revisionRoutes = {
   'revision-papers': revisionPapers, 'revision-writing': revisionWriting,
   'revision-test': revisionTest, 'revision-retry': revisionRetry,
   'revision-review': studyQueue, 'revision-diagrams': diagramPractice, 'revision-history': mockHistoryView,
-  'revision-corrections': correctionPage, 'revision-diagram-draw': freeDiagramPractice
+  'revision-corrections': correctionPage, 'revision-diagram-draw': freeDiagramPractice,
+  'revision-examples': answerComparisons
 };
 const revisionSetups = {
   'revision-checklist': setupRevisionChecklist,
