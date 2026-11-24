@@ -65,6 +65,9 @@ function backupValidator(key) {
   if (gameKey.test(key)) return key.includes('-best') ? value=>integer(value,0,100) : game;
   if (key===revision+'mock-history') return value=>list(value,mock,150);
   if (key===revision+'test') return test;
+  if (key===revision+'flashcard-review') return value=>map(value,item=>record(item) &&
+    integer(item.interval,0,90) && integer(item.due) && integer(item.reviewed) && item.due>=item.reviewed,/^\d+-\d+$/);
+  if (key===revision+'topic-check-results') return value=>map(value,item=>record(item) && topic.test(item.topic) && integer(item.score,0,1));
   if (key===revision+'free-diagrams') return value=>map(value,drawing);
   if (key===revision+'checklist-0455-workbook' || key===revision+'checklist-0455-2027') return value=>list(value,
     item=>str(item,24)&&/^\d+(?:\.\d+)+(?:[:.-]\d+)?$/.test(item),900);
@@ -149,7 +152,13 @@ function restoreBackup(entries) {
           if(!previous || row.pending<previous.pending || row.pending===previous.pending&&(row.corrections||!previous.corrections))combined.set(row.id,row);
         }
         next=retainMockHistory([...combined.values()].sort((a,b)=>(b.at??0)-(a.at??0)));
-      } else if (key===practice || key.startsWith(revision+'correction-') || key===revision+'free-diagrams') next={...incoming,...existing};
+      } else if (key===revision+'flashcard-review') {
+        next={...existing};
+        for (const [id,item] of Object.entries(incoming)) {
+          if (!next[id] || item.reviewed>next[id].reviewed) next[id]=item;
+        }
+      } else if (key===practice || key.startsWith(revision+'correction-') || key===revision+'free-diagrams' ||
+        key===revision+'topic-check-results') next={...incoming,...existing};
       else if (key.includes('checklist-0455-')) next=[...new Set([...incoming,...(existing ?? [])])];
       else if (key.startsWith(games)&&key.includes('-best')) next=Math.max(incoming,existing ?? 0);
       const value=flashcard?next:JSON.stringify(next);
