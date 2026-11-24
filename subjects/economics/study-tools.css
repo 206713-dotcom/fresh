@@ -67,3 +67,52 @@
 @media (max-width:970px) {
   .mock-case-layout { grid-template-columns:minmax(0,1fr); }
 }
+
+.fx-weak-topics { scroll-margin-block-start: calc(var(--economics-nav-height) + 1rem); }
+.fx-weak-topics > ol { padding: 0; margin: 1rem 0; list-style: none; }
+.fx-weak-topics > ol > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem 1.1rem;
+  padding: .9rem 0;
+  border-block-start: 1px solid var(--line);
+}
+.fx-weak-topics li h3, .fx-weak-topics li p { margin: 0; }
+.fx-weak-topics li p { color: var(--muted); }
+.fx-daily-callout {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-block: 1.25rem;
+  background: var(--ocean-soft);
+}
+.fx-daily-callout h2, .fx-daily-callout p { margin: 0; }
+.fx-daily-review { max-width: 760px; margin-inline: auto; }
+.fx-card-ratings { margin-block: 1.1rem .5rem; }
+.fx-card-ratings:not([hidden]) { display: flex; }
+.fx-card-ratings[hidden], .fx-daily-review .flash[hidden] { display: none; }
+:is([data-card-status], [data-daily-status]):empty { display: none; }
+.fx-example-filters { margin-block: 1.2rem; }
+.fx-example-filters a[aria-current="page"] { background: var(--ocean-soft); border-color: #397260; }
+.fx-answer-example { margin-block: 1.1rem; }
+.fx-answer-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.fx-answer-pair > section {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f3f7fa;
+}
+.fx-answer-pair > section:last-child { background: #edf6f1; }
+.fx-answer-pair h3 { margin: 0 0 .5rem; }
+.fx-answer-line p { margin: 0; }
+.fx-answer-line p + p { color: var(--muted); font-size: .9rem; }
+.fx-answer-line + .fx-answer-line { border-block-start: 1px solid var(--line); margin-block-start: .8rem; padding-block-start: .8rem; }
+.fx-drawing-feedback { margin-block: .9rem; }
+.fx-drawing-feedback ul { list-style: none; padding: 0; }
+.fx-drawing-feedback li { display: flex; gap: .7rem; align-items: start; margin-block: .5rem; }
+.fx-drawing-feedback li p { margin: 0; }
+@media(max-width:620px) { .fx-answer-pair { grid-template-columns: minmax(0,1fr); } }
