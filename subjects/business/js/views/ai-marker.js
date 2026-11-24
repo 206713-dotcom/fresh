@@ -1305,7 +1305,7 @@
   /* Optional local model (Transformers.js v3 ESM CDN, zero build)      */
   /* ================================================================ */
 
-  var MODEL_ID = "SemiLunarz/qwen3-0.6b-igcse-0264-marker-v2";
+  var MODEL_ID = "SemiLunarz/qwen3-0.6b-igcse-0264-onnx";
   var TRANSFORMERS_CDN = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3";
   /* The model repo ships chat_template.jinja but does NOT embed it in
    * tokenizer_config.json, so Transformers.js cannot find it automatically.
@@ -1327,8 +1327,9 @@
    * is that the UI, status, busy flag and deterministic fallback always recover
    * from a stall, and that a late resolution is ignored (loadEpoch). */
   var LOAD_TIMEOUT_MS = 300000;   /* 300 s download / shader-compile budget */
-  var MARK_TIMEOUT_MS = 180000;   /* generous first-request budget */
-  var REAUDIT_TIMEOUT_MS = 120000; /* per-paragraph re-audit budget */
+  var MARK_TIMEOUT_MS = 300000;   /* idle timeout between streamed tokens */
+  var REAUDIT_TIMEOUT_MS = 240000; /* per-paragraph re-audit budget */
+  var MARK_TOTAL_MS = 600000;      /* absolute cap for one generation */
   var aiBusy = false;             /* module-level guard: one generation at a time */
   var loadEpoch = 0;              /* rejects callbacks from a timed-out load */
   var loadTimer = null;
@@ -1477,8 +1478,10 @@
    * between generated tokens) and the main-thread GPU pass cannot be cancelled
    * mid-flight — extractJsonObject remains the guaranteed safety net. */
   var braceStop = null;
-  function createBraceDepthTracker() {
-    var depth = 0, inStr = false, esc = false, started = false, complete = false;
+  function createBraceDepthTracker(initialDepth) {
+    /* The prompt is prefilled with "{", so generation starts one level deep. */
+    var depth = initialDepth || 0, inStr = false, esc = false,
+      started = (initialDepth || 0) > 0, complete = false;
     return {
       isComplete: function () { return complete; },
       feed: function (chunk) {
@@ -1565,8 +1568,12 @@
 
   function createGenerator(tf, device, progressCb) {
     return tf.pipeline("text-generation", MODEL_ID, {
-      dtype: "fp16",
+      dtype: "q4",
       device: device,
+      /* Disable ConstantFolding so the q4 graph fits on low-memory devices. */
+      session_options: {
+        extra: { "optimization.disable_specified_optimizers": "ConstantFolding" }
+      },
       progress_callback: progressCb
     });
   }
@@ -1682,7 +1689,7 @@
       try {
         tf.env.allowLocalModels = false;
         tf.env.useBrowserCache = true;
-        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v8");
+        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v10");
       } catch (e) {}
       return createGenerator(tf, "webgpu", onProgress)["catch"](function () {
         if (epoch !== loadEpoch) return null;
@@ -2102,8 +2109,10 @@
     var messages = [{ role: "system", content: system }, { role: "user", content: user }];
     var prompt, streamer;
     var expired = false, settled = false, resolvePromise = null;
+    var keepAlive = null, startedAt = 0;
     function cleanupGeneration() {
       clearMarkTimer();
+      if (keepAlive !== null) { clearInterval(keepAlive); keepAlive = null; }
       aiHeartbeat = null;
       stopCriteria = null;
       braceStop = null;
@@ -2137,7 +2146,7 @@
        * (original webllm behaviour). extractJsonObject also accepts a full
        * object, so models that re-emit `{` remain compatible. */
       prompt += "{";
-      braceStop = createBraceDepthTracker();
+      braceStop = createBraceDepthTracker(1);
       if (tfModule && typeof tfModule.InterruptableStoppingCriteria === "function") {
         stopCriteria = new tfModule.InterruptableStoppingCriteria();
       }
@@ -2158,6 +2167,7 @@
     var genOpts = {
       max_new_tokens: maxTokens,
       do_sample: false,
+      repetition_penalty: 1.1,
       return_full_text: false,
       streamer: streamer
     };
@@ -2191,7 +2201,7 @@
                 skip_prompt: true, skip_special_tokens: true,
                 callback_function: function (token) { if (aiHeartbeat) { try { aiHeartbeat(); } catch (e) {} } }
               });
-              var oneOpts = { max_new_tokens: 180, do_sample: false, return_full_text: false, streamer: oneStreamer };
+              var oneOpts = { max_new_tokens: 180, do_sample: false, repetition_penalty: 1.1, return_full_text: false, streamer: oneStreamer };
               if (oneCriteria) oneOpts.stopping_criteria = oneCriteria;
               var reauditGen;
               try {
@@ -2220,6 +2230,17 @@
     return new Promise(function (resolve) {
       resolvePromise = resolve;
       armMarkTimer();
+      startedAt = Date.now();
+      /* Re-arm the idle deadline while generation is still pending. Some WebGPU
+       * runs produce no streamed tokens for a long time but are not stuck. */
+      keepAlive = setInterval(function () {
+        if (settled || expired) return;
+        if (Date.now() - startedAt > MARK_TOTAL_MS) {
+          failGeneration("Local AI marking failed (Local AI timed out. Reload the model to try again.) — using the deterministic marker.");
+          return;
+        }
+        armMarkTimer();
+      }, 15000);
       aiHeartbeat = armMarkTimer;
       var generation;
       try {
@@ -2243,7 +2264,13 @@
           text = (last && last.content != null) ? last.content : "";
         }
         var parsed = extractJsonObject(text);
-        if (!parsed) parsed = extractJsonObject("{" + text);
+        /* The prompt prefills "{", so generation often starts with a quote.
+         * Parsing directly may grab a nested object; prefer the version that
+         * actually contains the paragraphs array. */
+        if (!parsed || !Array.isArray(parsed.paragraphs) || !parsed.paragraphs.length) {
+          var prefixed = extractJsonObject("{" + text);
+          if (prefixed && Array.isArray(prefixed.paragraphs) && prefixed.paragraphs.length) parsed = prefixed;
+        }
         if (parsed) streamFinish(text.charAt(0) === "{" ? text : "{" + text);
         if (!parsed || !Array.isArray(parsed.paragraphs) || !parsed.paragraphs.length) {
           failGeneration("Local AI marking failed (Local AI returned no usable assessment.) — using the deterministic marker.");
