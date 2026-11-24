@@ -1,5 +1,3 @@
-questions.push(...examPracticeQuestions);
-
 const main = document.querySelector('main');
 const markingControls = document.querySelector('#local-marking-controls');
 const markingPages = new Set(['practice', 'revision-test', 'revision-writing', 'revision-retry', 'revision-corrections']);
@@ -55,7 +53,7 @@ function home() {
         <div class="hero-facts" aria-label="Study resources">
           <span><strong>6</strong> syllabus chapters</span>
           <span><strong>${lessons.length}</strong> lessons</span>
-          <span><strong>${questions.length.toLocaleString('en-GB')}</strong> practice questions</span>
+          <span><strong>2</strong> exam paper formats</span>
         </div>
       </div>
       <aside class="hero-study-plan" aria-labelledby="study-plan-title">
@@ -145,7 +143,7 @@ function deckGallery(query='', chapterIndex='') {
 }
 function flashcards() {
   const total=Object.values(flashcardDecks).flat().length;
-  return studyHero('Cambridge IGCSE · 0455','Economics flashcards','Choose a lesson deck, recall each answer, then flip the card to check it.',[[lessons.length,'lesson decks'],[total,'cards'],['CSV','downloads']],'card-art')+'<section class="collection-toolbar deck-filters"><div><h2>Find a deck</h2></div><label class="study-search"><span>Search flashcard decks</span><input id="deck-search" type="search" placeholder="Search a lesson or topic…"></label><label class="chapter-select"><span>Chapter</span><select id="deck-chapter"><option value="">All chapters</option>'+catalog.map((c,i)=>'<option value="'+i+'">'+escapeHtml(c.title)+'</option>').join('')+'</select></label></section><div id="deck-results">'+deckGallery()+'</div><section class="glossary-banner"><span class="mini-icon" aria-hidden="true">Aa</span><div><h2>Supplementary glossary</h2><p>Review '+supplementaryGlossary.length+' additional Economics terms.</p></div>'+link('Open glossary →','#glossary','button')+'</section>';
+  return studyHero('Cambridge IGCSE · 0455','Economics flashcards','Choose a lesson deck, recall each answer, then flip the card to check it.',[[lessons.length,'lesson decks'],[total,'cards'],['CSV','downloads']],'card-art')+flashcardReviewCallout()+'<section class="collection-toolbar deck-filters"><div><h2>Find a deck</h2></div><label class="study-search"><span>Search flashcard decks</span><input id="deck-search" type="search" placeholder="Search a lesson or topic…"></label><label class="chapter-select"><span>Chapter</span><select id="deck-chapter"><option value="">All chapters</option>'+catalog.map((c,i)=>'<option value="'+i+'">'+escapeHtml(c.title)+'</option>').join('')+'</select></label></section><div id="deck-results">'+deckGallery()+'</div><section class="glossary-banner"><span class="mini-icon" aria-hidden="true">Aa</span><div><h2>Supplementary glossary</h2><p>Review '+supplementaryGlossary.length+' additional Economics terms.</p></div>'+link('Open glossary →','#glossary','button')+'</section>';
 }
 function glossary() {
   return heading('Extra vocabulary','Supplementary glossary','This deck includes additional terms from the supplied glossary. Use the lesson decks for Cambridge 0455 syllabus revision.')+
@@ -162,10 +160,14 @@ function setupDeck(id) {
     const saved = Number(localStorage.getItem(positionKey));
     if (Number.isInteger(saved) && saved >= 0 && saved < cards.length) index = saved;
   } catch {}
-  deck.innerHTML='<div class="deck-topline"><p class="eyebrow counter" aria-live="polite"></p><button id="export" class="deck-download">↓ Download CSV</button></div><div class="deck-progress" aria-hidden="true"><span></span></div><button class="flash" type="button"></button><p class="deck-hint">Click the card or press Space to flip. Use ← and → to move between cards.</p><div class="deck-controls"><button data-step="-1" aria-label="Previous card">← Previous</button><button id="flip-card" class="primary">Reveal answer ↻</button><button data-step="1" aria-label="Next card">Next →</button></div>';
+  const rateable = id !== 'glossary';
+  deck.innerHTML='<div class="deck-topline"><p class="eyebrow counter" aria-live="polite"></p><button id="export" class="deck-download">↓ Download CSV</button></div><div class="deck-progress" aria-hidden="true"><span></span></div><button class="flash" type="button"></button><p class="deck-hint">Click the card or press Space to flip. Use ← and → to move between cards.</p><div class="deck-controls"><button data-step="-1" aria-label="Previous card">← Previous</button><button id="flip-card" class="primary">Reveal answer ↻</button><button data-step="1" aria-label="Next card">Next →</button></div>' +
+    (rateable ? flashcardRatings() + '<p data-card-status role="status"></p>' : '');
   const flash=deck.querySelector('.flash');
   const stepButtons=[...deck.querySelectorAll('[data-step]')];
+  const ratings = deck.querySelector('[data-flashcard-ratings]');
   function update() {
+    if (ratings) ratings.hidden = !flipped;
     try { localStorage.setItem(positionKey, String(index)); } catch {}
     deck.querySelector('.counter').textContent='Card '+(index+1)+' of '+cards.length;
     flash.classList.toggle('reveal',flipped);
@@ -178,6 +180,17 @@ function setupDeck(id) {
   }
   flash.onclick=()=>{flipped=!flipped;update()};
   deck.querySelector('#flip-card').onclick=flash.onclick;
+  if (ratings) ratings.onclick = event => {
+    const rating = event.target.closest('[data-card-rating]')?.dataset.cardRating;
+    if (!rating || !flipped) return;
+    const next = saveCardRating(id,index,rating);
+    deck.querySelector('[data-card-status]').textContent = flashcardRatingMessage(next);
+    if (!next) return;
+    index = Math.min(index + 1, cards.length - 1);
+    flipped = false;
+    update();
+    flash.focus();
+  };
   deck.onkeydown=event=>{
     const direction=event.key==='ArrowLeft'?-1:event.key==='ArrowRight'?1:0;
     if(direction&&index+direction>=0&&index+direction<cards.length){event.preventDefault();index+=direction;flipped=false;update()}
@@ -210,7 +223,7 @@ function practice(chapterIndex) {
     '<details class="practice-filters"'+expanded+'><summary>Filter questions</summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></details>'+
+    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></details>'+
     '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
     '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
@@ -318,8 +331,9 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
       (!topic.value||q.topic===topic.value)&&
       (!type.value||type.value===(q.options?'mcq':'structured'))&&
       (!marks.value||q.marks===Number(marks.value))&&
-      (!questionSet.value||Boolean(q.reference))&&
+      (questionSet.value!=='exam'||Boolean(q.reference))&&
       (!search.value.trim()||(q.id+' '+q.topicName+' '+q.q+' '+q.case).toLowerCase().includes(search.value.trim().toLowerCase())));
+    if (questionSet.value==='mixed') matches = distinctQuestionPatterns(matches, item=>item.q);
     if (requestedQuestion) {
       page = matches.findIndex(({q}) => q.id === requestedQuestion);
       requestedQuestion = '';
@@ -449,6 +463,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
         state.score = Number(answer === String(q.answer));
         state.feedback = outcomeBadge(mcqOutcome(answer, q.answer))+'<h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Model response</h3><p>'+escapeHtml(q.options[q.answer])+'</p>';
       } else {
+        await loadEconomicsMarker();
         const grade = await ecbizMarking.grade(q.id,answer,undefined,message=>{
           state.feedback='<p>'+escapeHtml(message)+'</p>';
           showFeedback();
@@ -456,7 +471,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
         state.score = grade.score;
         if ([2,4,6].includes(q.marks) && attempts.get(index) === state) saveWritingVersion(q.id,answer,grade);
         state.feedback = ecbizMarking.feedback(grade,q.marks,answer)+ecbizMarking.scheme(q)+
-          link('Revise this answer and compare versions','#revision-writing/'+q.id);
+          '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
       }
       if(q.reference) {
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
@@ -514,11 +529,11 @@ function render(autoMark = true) {
   }
   const [page='home', id, mode] = location.hash.slice(1).split('/');
   main.classList.toggle('practice-page',page==='practice');
-  main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','glossary'].includes(page));
+  main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','flashcard-review','glossary'].includes(page));
   const preset = page === 'practice' ? practicePreset(id, mode) : null;
-  const routes={home,progress:economicsProgress,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
+  const routes={home,progress:economicsProgress,'progress-weak-topics':economicsProgress,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,'flashcard-review':dailyFlashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
-  const active = page === 'glossary' ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
+  const active = page==='progress-weak-topics' ? 'progress' : ['glossary','flashcard-review'].includes(page) ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
   setActiveSection(Object.hasOwn(routes, page) ? active : 'home');
   document.querySelectorAll('.tabs a').forEach(a=>{
     if(a.hash===location.hash)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
@@ -534,18 +549,15 @@ function render(autoMark = true) {
   if(deckSearch)deckSearch.oninput=deckChapter.onchange=()=>{document.querySelector('#deck-results').innerHTML=deckGallery(deckSearch.value,deckChapter.value)};
   document.querySelectorAll('[data-note-target]').forEach(button=>button.onclick=()=>document.getElementById(button.dataset.noteTarget).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));
   setupDeck(page==='glossary'?'glossary':Number(id));
+  if (page==='flashcard-review') setupDailyFlashcards();
   if (page === 'practice') {
     main.querySelector('#practice-marking').replaceWith(markingControls);
     setupPractice(preset);
   }
 }
-window.addEventListener('hashchange', () => {
-  render();
-  main.focus({ preventScroll: true });
-  window.scrollTo(0, 0);
-});
+window.addEventListener('hashchange', () => renderEconomicsRoute(true));
 document.addEventListener('DOMContentLoaded', () => {
-  render();
+  renderEconomicsRoute();
   document.querySelector('.skip').addEventListener('click', event => {
     event.preventDefault();
     main.focus();
