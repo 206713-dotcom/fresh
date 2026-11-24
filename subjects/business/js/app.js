@@ -120,7 +120,8 @@
         '<button type="button" class="boss-cta boss-nav-button" data-nav="boss-battle">' + icon('swords', 19) + ' Boss Battle</button>' +
       '</div></nav></header>';
 
-    document.body.insertBefore(EC.el('div', { html: header }).firstChild, document.getElementById('main'));
+    var headerEl = EC.el('div', { html: header }).firstChild;
+    document.body.insertBefore(headerEl, document.getElementById('main'));
 
     /* P1-9: the header theme control is a dropdown everywhere. misc.js adds
        EC.renderThemeShop and also auto-upgrades .site-theme-control on
@@ -159,7 +160,11 @@
         '<button type="button" data-nav="archive" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-neutral-800 dark:text-neutral-200">Past Papers Archive</button>' +
         '<button type="button" data-nav="progress" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-neutral-800 dark:text-neutral-200">My progress</button>'
     });
-    document.body.insertBefore(mobileNav, document.getElementById('main'));
+    /* Keep the drawer inside the sticky header. As a body-level sibling it
+       sits in normal flow above <main>, so once the page is scrolled its box
+       is off-screen and opening it appears to do nothing. */
+    if (headerEl) headerEl.appendChild(mobileNav);
+    else document.body.insertBefore(mobileNav, document.getElementById('main'));
     var mobileBtn = document.getElementById('mobileNavBtn');
     if (mobileBtn) {
       mobileBtn.addEventListener('click', function (event) {

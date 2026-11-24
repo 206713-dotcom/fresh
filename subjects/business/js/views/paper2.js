@@ -1953,6 +1953,13 @@
       var i = parseInt(t.getAttribute('data-q'), 10);
       if (isNaN(i)) return;
       setDraft(i, t.value);
+      /* The submit button is rendered disabled when the saved draft is empty.
+         Re-rendering here would tear down the textarea and lose focus, so keep
+         its disabled state in sync directly as the student types. Without this,
+         in "Step by step" mode the button stays disabled until some other
+         action happens to trigger a re-render. */
+      var submitBtn = main.querySelector('[data-act="submit-assessment"][data-q="' + i + '"]');
+      if (submitBtn) submitBtn.disabled = !s(t.value).trim() || !!state.evaluating[i];
       var w = main.querySelector('[data-wcount="' + i + '"]');
       if (w) w.textContent = countWords(t.value);
       if (!state.timerRunning && s(t.value).trim()) startTimer();
