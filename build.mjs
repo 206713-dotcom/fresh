@@ -27,7 +27,7 @@ const subjectsDir = path.join(root, "subjects");
 const distSubjects = path.join(dist, "subjects");
 mkdirSync(distSubjects, { recursive: true });
 for (const f of readdirSync(subjectsDir)) {
-  if (f.endsWith(".html") || f === "science-loading.css" || f === "science-loading.js") {
+  if (f.endsWith(".html") || f === "science.css" || f === "science-loading.css" || f === "science-loading.js") {
     cpSync(path.join(subjectsDir, f), path.join(distSubjects, f));
   }
 }

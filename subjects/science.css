@@ -1,0 +1,154 @@
+.science-hub {
+  background: radial-gradient(ellipse at top, #edf0e0, transparent 47rem), var(--paper);
+}
+.science-hub .site-header { background: var(--white); }
+.science-hub .topbar { min-height: 64px; }
+.science-hub .brand { font-size: 1.35rem; letter-spacing: -.055em; }
+.science-intro { margin-block: clamp(2.8rem, 7vw, 5.25rem) 2.2rem; }
+.science-intro h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 7.6vw, 6.3rem);
+  line-height: .99;
+  letter-spacing: -.08em;
+}
+.science-intro h1 span { color: #527450; }
+.science-intro p {
+  max-width: 39rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 2vw, 1.25rem);
+  line-height: 1.55;
+}
+.science-subjects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
+.science-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #b7ccd6;
+  border-radius: 1.45rem;
+  background: #f7fcff;
+  color: #122f40;
+  text-decoration: none;
+  box-shadow: 0 10px 30px #192e2810;
+}
+.physics-card {
+  border-color: #254359;
+  background: #102637;
+  color: #f2f8ff;
+}
+.science-card:hover .science-enter { text-decoration: underline; }
+.science-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(9.4rem, 20vw, 13.25rem);
+  isolation: isolate;
+  overflow: hidden;
+}
+.chemistry-art {
+  background: radial-gradient(ellipse at 72% 10%, #e7f6f5, transparent 62%),
+    radial-gradient(ellipse at 20% 80%, #afd7ef, transparent 65%), #d5edf6;
+}
+.physics-art {
+  background: radial-gradient(ellipse at 62% 60%, #28546a, transparent 66%), #0b1929;
+}
+.science-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(currentColor .85px, transparent 1px);
+  background-size: 17px 17px;
+  opacity: .15;
+}
+.molecule {
+  position: relative;
+  width: 7.75rem;
+  height: 3.1rem;
+  transform: rotate(-22deg);
+}
+.molecule::before {
+  content: '';
+  position: absolute;
+  inset: 42% 8%;
+  border-radius: 2rem;
+  background: #6495a9;
+}
+.molecule i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3.05rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 33% 25%, #e2f8f5, #62a7b5 51%, #236476);
+  box-shadow: 0 7px 19px #204e6840;
+}
+.molecule i:nth-child(2) {
+  inset: -20% auto -20% 28%;
+  width: 4.25rem;
+  z-index: 1;
+  background: radial-gradient(circle at 35% 22%, #f4feff, #a0d1ee 50%, #367dab);
+}
+.molecule i:last-child { inset-inline: auto 0; }
+.orbit {
+  position: relative;
+  width: min(69%, 15rem);
+  height: 4.2rem;
+  border: 1px solid #91d6ef9c;
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+.orbit::before, .orbit::after {
+  content: '';
+  position: absolute;
+  border: 1px solid #91d6ef53;
+  border-radius: 50%;
+}
+.orbit::before { inset: -15% -8%; }
+.orbit::after { inset: 17% 11%; }
+.orbit i {
+  position: absolute;
+  top: calc(50% - 2.15rem);
+  left: calc(50% - 2.15rem);
+  width: 4.3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 27%, #fff6c6, #f8b876 45%, #9f5a41 82%);
+  box-shadow: 0 0 32px #fac07053;
+}
+.science-card-content { display: flex; flex: 1; flex-direction: column; padding: clamp(1.2rem, 3vw, 1.85rem); }
+.science-card-content p { max-width: 35ch; margin: .7rem 0 1.3rem; line-height: 1.55; }
+.science-card-content .science-app {
+  margin: 0 0 .45rem;
+  color: #305a72;
+  font-size: .85rem;
+  font-weight: 750;
+  letter-spacing: .04em;
+}
+.physics-card .science-app { color: #a9dbf2; }
+.science-card h2 { margin: 0; font-size: clamp(2rem, 4.6vw, 3.55rem); line-height: 1; letter-spacing: -.07em; }
+.science-enter {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: .65rem;
+  margin-top: auto;
+  padding: .7rem 1rem;
+  border-radius: .65rem;
+  background: #123b53;
+  color: white;
+  font-weight: 700;
+}
+.physics-card .science-enter { background: #c8e9fa; color: #132c3f; }
+.science-footer {
+  display: flex;
+  gap: .5rem 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-block: 1.2rem 2.5rem;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.science-footer p { margin: 0; }
+@media (max-width: 620px) {
+  .science-hub .wrap { width: calc(100% - 36px); }
+  .science-subjects { grid-template-columns: 1fr; }
+}

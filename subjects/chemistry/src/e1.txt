@@ -1,0 +1,433 @@
+# Cambridge International A Level Chemistry 9701, topic 23 (chemical energetics): first look, full notes, mark-scheme wording and marked questions.
+
+== ca-23-1
+S: Lattice energy measures how strongly the ions in a solid attract each other. It cannot be measured directly, so it is found from a Born–Haber cycle: a Hess's law cycle that takes the elements to gaseous ions step by step. Small, highly charged ions give the most exothermic lattice energies.
+<<<
+## Definitions
+!def Enthalpy change of atomisation, ΔHat | The enthalpy change when one mole of gaseous atoms is formed from the element in its standard state, under standard conditions.
+
+$$\mathrm{Na(s) \rightarrow Na(g)} \qquad \mathrm{\tfrac{1}{2}Cl_2(g) \rightarrow Cl(g)}$$
+
+Always **endothermic**. It is per mole of **atoms formed**, so for chlorine it is half the Cl–Cl bond energy.
+
+!def Lattice energy, ΔHlatt | The enthalpy change when one mole of an ionic compound is formed from its gaseous ions, under standard conditions.
+
+$$\mathrm{Na^+(g) + Cl^-(g) \rightarrow NaCl(s)}$$
+
+Always **exothermic**: gaseous ions come together to form a solid.
+
+!def First electron affinity, EA | The enthalpy change when one mole of electrons is added to one mole of gaseous atoms, to form one mole of gaseous 1− ions.
+
+$$\mathrm{Cl(g) + e^- \rightarrow Cl^-(g)}$$
+
+- The **first** electron affinity is usually **exothermic**: the incoming electron is attracted by the nucleus.
+- The **second** electron affinity is **endothermic**: an electron is being added to an ion that is already negative, so energy is needed to overcome the **repulsion**.
+
+$$\mathrm{O^-(g) + e^- \rightarrow O^{2-}(g)} \qquad EA_2 = +798\ \text{kJ mol}^{-1}$$
+
+## What affects electron affinity
+| Factor | Effect |
+| **nuclear charge** | greater nuclear charge: stronger attraction for the incoming electron: more exothermic |
+| **atomic radius** | larger atom: the electron is added further from the nucleus: less exothermic |
+| **shielding** | more inner shells: weaker attraction: less exothermic |
+
+### Trends in Groups 16 and 17
+**Down the group, electron affinities generally become less exothermic.** The atoms are larger and there is more shielding, so the attraction between the nucleus and the added electron is weaker.
+
+| | F | Cl | Br | I |
+| EA / kJ mol⁻¹ | −328 | −349 | −325 | −295 |
+
+Fluorine (and oxygen) do not fit: the atom is so small that the added electron is **repelled** by the electrons already crowded into the small outer shell, so its electron affinity is less exothermic than chlorine's.
+
+## Born–Haber cycles
+A Born–Haber cycle applies Hess's law to the formation of an ionic solid.
+
+**Route 1:** elements → compound directly: ΔHf.
+
+**Route 2:** elements → gaseous atoms → gaseous ions → solid lattice.
+
+$$\Delta H_f = \Delta H_{at}(\text{metal}) + IE + \Delta H_{at}(\text{non-metal}) + EA + \Delta H_{latt}$$
+
+### Sodium chloride
+| Step | Equation | ΔH / kJ mol⁻¹ |
+| atomise sodium | Na(s) → Na(g) | +107 |
+| ionise sodium | Na(g) → Na⁺(g) + e⁻ | +496 |
+| atomise chlorine | ½Cl₂(g) → Cl(g) | +122 |
+| electron affinity | Cl(g) + e⁻ → Cl⁻(g) | −349 |
+| lattice energy | Na⁺(g) + Cl⁻(g) → NaCl(s) | ? |
+| formation | Na(s) + ½Cl₂(g) → NaCl(s) | −411 |
+
+$$\Delta H_{latt} = -411 - (107 + 496 + 122 - 349) = -411 - 376 = -787\ \text{kJ mol}^{-1}$$
+
+!mol Shape of the Born-Haber cycle for NaCl
+ Na+(g) + e- + Cl(g)
+   ^                 |  EA
+   | at(Cl)          v
+ Na+(g) + e- + 1/2Cl2    Na+(g) + Cl-(g)
+   ^ IE                        |
+ Na(g) + 1/2Cl2(g)             |  lattice
+   ^ at(Na)                    |  energy
+ Na(s) + 1/2Cl2(g)             |
+   |  formation                v
+   +----------------------->  NaCl(s)
+!end
+
+Endothermic steps are drawn as arrows going up; exothermic steps as arrows going down.
+
+### Ions with 2+ and 2− charges
+| Compound | Changes needed |
+| **MgCl₂** | first **and second** ionisation energies of Mg; **2 ×** ΔHat of chlorine; **2 ×** the electron affinity of chlorine |
+| **MgO** | first and second ionisation energies of Mg; ΔHat of oxygen; **first and second** electron affinities of oxygen |
+| **Na₂O** | **2 ×** ΔHat of Na; **2 ×** IE of Na; ΔHat of O; first and second electron affinities of O |
+
+**Magnesium oxide.** ΔHf = −602; ΔHat(Mg) = +148; IE₁ = +738; IE₂ = +1451; ΔHat(O) = +249; EA₁ = −141; EA₂ = +798.
+
+$$\Delta H_{latt} = -602 - (148 + 738 + 1451 + 249 - 141 + 798) = -602 - 3243 = -3845\ \text{kJ mol}^{-1}$$
+
+## What affects lattice energy
+| Factor | Effect | Reason |
+| **ionic charge** | greater charge: **more exothermic** | stronger electrostatic attraction between the ions |
+| **ionic radius** | smaller ions: **more exothermic** | the ions are closer together, so they attract more strongly |
+
+| Compound | Ions | ΔHlatt / kJ mol⁻¹ |
+| NaCl | Na⁺, Cl⁻ | −787 |
+| NaBr | Na⁺, Br⁻ (larger anion) | −751 |
+| MgCl₂ | Mg²⁺, Cl⁻ | −2524 |
+| MgO | Mg²⁺, O²⁻ (both doubly charged, both small) | −3845 |
+
+A small, highly charged ion has a high **charge density**. A more exothermic lattice energy means stronger ionic bonding and a higher melting point.
+>>>
+F: $\Delta H_f = \Delta H_{at}(\text{M}) + IE + \Delta H_{at}(\text{X}) + EA + \Delta H_{latt}$ :: Born–Haber cycle for MX. Multiply terms to match the formula.
+W: Lattice energy is defined for formation from gaseous ions, so it is exothermic.
+W: ΔHat of chlorine is for ½Cl₂ → Cl. For MgCl₂ you need two of them, and two electron affinities.
+W: The second electron affinity is endothermic. Do not give it a negative sign.
+W: For a 2+ ion, include both the first and the second ionisation energies.
+M: Define enthalpy change of atomisation :: enthalpy change when **one mole of gaseous atoms** is formed from the **element in its standard state**
+M: Define lattice energy :: enthalpy change when **one mole of an ionic compound** is formed from its **gaseous ions**
+M: Define first electron affinity :: enthalpy change when **one mole of electrons** is added to **one mole of gaseous atoms** to form **one mole of gaseous 1− ions**
+M: Sign of lattice energy :: **exothermic** (negative)
+M: Why the second electron affinity is endothermic :: the electron is added to a **negative ion**, so there is **repulsion** to overcome
+M: Factors affecting electron affinity :: **nuclear charge**, **atomic radius**, **shielding**
+M: Trend in electron affinity down Groups 16 and 17 :: generally **less exothermic**: larger atoms, more shielding, weaker attraction
+M: Equation for the lattice energy of magnesium chloride :: $\mathrm{Mg^{2+}(g) + 2Cl^-(g) \rightarrow MgCl_2(s)}$
+M: Equation for the first electron affinity of oxygen :: $\mathrm{O(g) + e^- \rightarrow O^-(g)}$
+M: Equation for the atomisation of chlorine :: $\mathrm{\tfrac{1}{2}Cl_2(g) \rightarrow Cl(g)}$
+M: Born–Haber relationship :: **ΔHf = ΔHat(metal) + IE + ΔHat(non-metal) + EA + ΔHlatt**
+M: Effect of ionic charge on lattice energy :: **greater charge: more exothermic**
+M: Effect of ionic radius on lattice energy :: **smaller radius: more exothermic** (ions closer together)
+M: Why MgO has a more exothermic lattice energy than NaCl :: its ions have **greater charges** (2+, 2−) and are **smaller**
+C: [1] Which equation represents the lattice energy of calcium oxide? | $\mathrm{Ca(s) + \tfrac{1}{2}O_2(g) \rightarrow CaO(s)}$ | $\mathrm{Ca(g) + O(g) \rightarrow CaO(s)}$ | *$\mathrm{Ca^{2+}(g) + O^{2-}(g) \rightarrow CaO(s)}$ | $\mathrm{CaO(s) \rightarrow Ca^{2+}(aq) + O^{2-}(aq)}$ | One mole of solid is formed from gaseous ions.
+C: [1] Which compound has the most exothermic lattice energy? | NaCl | KCl | MgCl₂ | *MgO | Both ions are small and doubly charged.
+C: [1] Why is the second electron affinity of oxygen endothermic? | Oxygen has a high nuclear charge. | The O⁻ ion is very small. | *The electron is repelled by the negative O⁻ ion. | Oxygen is in Period 2. | Energy is needed to add an electron to a negative ion.
+C: [1] Which enthalpy change is represented by ½Br₂(l) → Br(g)? | bond energy of bromine | *enthalpy change of atomisation of bromine | first electron affinity of bromine | lattice energy | One mole of gaseous atoms forms from the element in its standard state.
+N: [3] Calculate the lattice energy of potassium chloride, in kJ mol⁻¹. ΔHf(KCl) = −437; ΔHat(K) = +89; IE₁(K) = +419; ΔHat(Cl) = +122; EA(Cl) = −349 kJ mol⁻¹. => -718 ~ −718 {-437-(89+419+122-349)} | C1 ΔHf = ΔHat(K) + IE + ΔHat(Cl) + EA + ΔHlatt | C1 sum of the other terms = 89 + 419 + 122 − 349 = +281 | A1 ΔHlatt = −437 − 281 = −718 kJ mol⁻¹
+N: [3] Calculate the lattice energy of magnesium chloride, in kJ mol⁻¹. ΔHf = −641; ΔHat(Mg) = +148; IE₁ = +738; IE₂ = +1451; ΔHat(Cl) = +122; EA(Cl) = −349 kJ mol⁻¹. => -2524 ~ −2524 {-641-(148+738+1451+2*122-2*349)} | C1 two Cl atoms: 2 × 122 and 2 × (−349) | C1 sum = 148 + 738 + 1451 + 244 − 698 = +1883 | A1 ΔHlatt = −641 − 1883 = −2524 kJ mol⁻¹
+Q: [2] Define the term lattice energy.
++ the enthalpy change when one mole of an ionic compound (solid) is formed :: one mole|1 mol
++ from its gaseous ions :: gaseous ions|ions in the gas|gas phase ions|gaseous state
+A: Lattice energy is the enthalpy change when one mole of an ionic compound is formed from its gaseous ions under standard conditions.
+Q: [3] Explain why the lattice energy of magnesium oxide is more exothermic than that of sodium chloride.
++ the ions in MgO have greater charges (2+ and 2−) :: charge
++ the ions in MgO are smaller (smaller ionic radii) :: smaller|radius|radii
++ so the electrostatic attraction between the ions is stronger :: attract
+A: The ions in magnesium oxide have greater charges, 2+ and 2−, and smaller radii than the ions in sodium chloride. The electrostatic attraction between them is therefore stronger, so more energy is released when the lattice forms.
+Q: [3] Describe and explain the general trend in the first electron affinity down Group 17 from chlorine to iodine.
++ it becomes less exothermic (less negative) :: less exothermic|less negative|decreas
++ the atomic radius increases and shielding increases :: radius|shield|larger|further
++ so the attraction between the nucleus and the added electron is weaker :: attract
+A: The first electron affinity becomes less exothermic from chlorine to iodine. The atoms are larger and have more shielding, so the attraction between the nucleus and the added electron is weaker.
+
+== ca-23-2
+S: When an ionic solid dissolves, the lattice is pulled apart and the freed ions are surrounded by water molecules. Whether the solid dissolves with a rise or fall in temperature depends on the balance between lattice energy and the enthalpy changes of hydration.
+<<<
+## Definitions
+!def Enthalpy change of hydration, ΔHhyd | The enthalpy change when one mole of gaseous ions dissolves in water to form a solution of infinite dilution.
+
+$$\mathrm{Na^+(g) \rightarrow Na^+(aq)}$$
+
+Always **exothermic**: bonds form between the ions and the polar water molecules (ion–dipole attractions). The δ− oxygen of water is attracted to cations, and the δ+ hydrogens to anions.
+
+!def Enthalpy change of solution, ΔHsol | The enthalpy change when one mole of an ionic solid dissolves in water to form a solution of infinite dilution.
+
+$$\mathrm{NaCl(s) \rightarrow Na^+(aq) + Cl^-(aq)}$$
+
+It can be **exothermic or endothermic**.
+
+"Infinite dilution" means so dilute that adding more water causes no further enthalpy change.
+
+## The energy cycle
+Dissolving can be imagined in two steps.
+
+- **Break up the lattice** into gaseous ions: the reverse of lattice energy, so +(−ΔHlatt): endothermic.
+- **Hydrate the gaseous ions**: the sum of the hydration enthalpies: exothermic.
+
+$$\Delta H_{sol} = -\Delta H_{latt} + \sum \Delta H_{hyd}$$
+
+or, going round the cycle the other way:
+
+$$\Delta H_{latt} + \Delta H_{sol} = \sum \Delta H_{hyd}$$
+
+!mol Energy cycle for dissolving an ionic solid
+          gaseous ions
+          M+(g) + X-(g)
+          /            \
+  lattice/              \ hydration
+  energy/                \ (both ions)
+       v                  v
+   MX(s)  -------->  M+(aq) + X-(aq)
+            solution
+!end
+
+**Example.** Sodium chloride: ΔHlatt = −787; ΔHhyd(Na⁺) = −406; ΔHhyd(Cl⁻) = −377 kJ mol⁻¹.
+
+$$\Delta H_{sol} = -(-787) + (-406) + (-377) = +787 - 783 = +4\ \text{kJ mol}^{-1}$$
+
+**For a compound such as MgCl₂**, use **two** hydration enthalpies of Cl⁻.
+
+$$\Delta H_{sol} = -\Delta H_{latt} + \Delta H_{hyd}(\mathrm{Mg^{2+}}) + 2\Delta H_{hyd}(\mathrm{Cl^-})$$
+
+The cycle can be used to find any one of the three quantities if the other two are known.
+
+## What affects the enthalpy change of hydration
+| Factor | Effect | Reason |
+| **ionic charge** | greater charge: **more exothermic** | stronger attraction between the ion and the water molecules |
+| **ionic radius** | smaller ion: **more exothermic** | higher charge density; the water molecules get closer and are attracted more strongly |
+
+| Ion | Li⁺ | Na⁺ | K⁺ | Mg²⁺ | Al³⁺ |
+| ΔHhyd / kJ mol⁻¹ | −519 | −406 | −322 | −1920 | −4690 |
+
+Down a group the ions get larger and ΔHhyd becomes less exothermic. Across Na⁺, Mg²⁺, Al³⁺ the charge rises and the radius falls, so it becomes much more exothermic.
+
+## Predicting solubility
+- If ΔHsol is **exothermic or only slightly endothermic**, the solid is likely to be soluble.
+- If ΔHsol is **strongly endothermic**, the solid is likely to be insoluble: the hydration enthalpies do not make up for the energy needed to break the lattice.
+
+Both lattice energy and hydration enthalpy depend on charge and radius in the same way, so solubility depends on a fine balance between them. (Entropy matters too.)
+>>>
+F: $\Delta H_{sol} = -\Delta H_{latt} + \sum \Delta H_{hyd}$ :: Lattice energy defined as formation from gaseous ions.
+W: Hydration starts from gaseous ions; solution starts from the solid.
+W: Reverse the sign of the lattice energy when breaking the lattice.
+W: Multiply the hydration enthalpy by the number of that ion in the formula.
+W: Hydration enthalpy is always exothermic; enthalpy of solution can have either sign.
+M: Define enthalpy change of hydration :: enthalpy change when **one mole of gaseous ions** dissolves in water to form a solution of **infinite dilution**
+M: Define enthalpy change of solution :: enthalpy change when **one mole of an ionic solid** dissolves in water to form a solution of **infinite dilution**
+M: Sign of the enthalpy change of hydration :: always **exothermic**
+M: Why hydration is exothermic :: **attractions form** between the ions and **polar water molecules** (ion–dipole)
+M: Relationship between ΔHsol, ΔHlatt and ΔHhyd :: **ΔHsol = −ΔHlatt + ΣΔHhyd**
+M: Equation for the hydration of a magnesium ion :: $\mathrm{Mg^{2+}(g) \rightarrow Mg^{2+}(aq)}$
+M: Equation for the enthalpy change of solution of MgCl₂ :: $\mathrm{MgCl_2(s) \rightarrow Mg^{2+}(aq) + 2Cl^-(aq)}$
+M: Effect of ionic charge on ΔHhyd :: **greater charge: more exothermic**
+M: Effect of ionic radius on ΔHhyd :: **smaller ion: more exothermic**
+M: Why Mg²⁺ has a more exothermic ΔHhyd than Na⁺ :: **greater charge** and **smaller radius**: stronger attraction for water molecules
+M: Meaning of infinite dilution :: adding **more water** causes **no further enthalpy change**
+M: When a solid is likely to be insoluble :: when ΔHsol is **strongly endothermic**
+C: [1] Which equation represents the enthalpy change of hydration of the chloride ion? | $\mathrm{Cl(g) + e^- \rightarrow Cl^-(g)}$ | $\mathrm{NaCl(s) \rightarrow Na^+(aq) + Cl^-(aq)}$ | *$\mathrm{Cl^-(g) \rightarrow Cl^-(aq)}$ | $\mathrm{\tfrac{1}{2}Cl_2(g) \rightarrow Cl^-(aq)}$ | Gaseous ions dissolve to form aqueous ions.
+C: [1] Which ion has the most exothermic enthalpy change of hydration? | Na⁺ | K⁺ | Mg²⁺ | *Al³⁺ | It has the highest charge and the smallest radius.
+C: [1] Which expression gives the enthalpy change of solution of CaCl₂? | ΔHlatt + ΔHhyd(Ca²⁺) + ΔHhyd(Cl⁻) | *−ΔHlatt + ΔHhyd(Ca²⁺) + 2ΔHhyd(Cl⁻) | −ΔHlatt − ΔHhyd(Ca²⁺) − 2ΔHhyd(Cl⁻) | ΔHlatt − 2ΔHhyd(Cl⁻) | Break the lattice, then hydrate one Ca²⁺ and two Cl⁻ ions.
+N: [3] Calculate the enthalpy change of solution of lithium chloride, in kJ mol⁻¹. ΔHlatt = −848; ΔHhyd(Li⁺) = −519; ΔHhyd(Cl⁻) = −364 kJ mol⁻¹. => -35 ~ −35 {848-519-364} | C1 ΔHsol = −ΔHlatt + ΣΔHhyd | C1 = +848 + (−519) + (−364) | A1 −35 kJ mol⁻¹
+N: [3] The enthalpy change of solution of MgCl₂ is −155 kJ mol⁻¹ and its lattice energy is −2493 kJ mol⁻¹. ΔHhyd(Cl⁻) = −364 kJ mol⁻¹. Calculate ΔHhyd(Mg²⁺) in kJ mol⁻¹. => -1920 ~ −1920 {-155-2493+2*364} | C1 ΔHsol = −ΔHlatt + ΔHhyd(Mg²⁺) + 2ΔHhyd(Cl⁻) | C1 −155 = +2493 + x − 728 | A1 x = −1920 kJ mol⁻¹
+Q: [2] Define the term enthalpy change of hydration.
++ the enthalpy change when one mole of gaseous ions :: gaseous
++ dissolves in water (to form a solution of infinite dilution / aqueous ions) :: water|aqueous|dissolv
+A: It is the enthalpy change when one mole of gaseous ions dissolves in water to form a solution of infinite dilution.
+Q: [3] Explain why the enthalpy change of hydration of Mg²⁺ is more exothermic than that of Na⁺.
++ Mg²⁺ has a greater charge :: charge
++ Mg²⁺ has a smaller ionic radius :: smaller|radius
++ so it attracts water molecules more strongly :: attract
+A: The magnesium ion has a greater charge and a smaller ionic radius than the sodium ion, so it attracts the polar water molecules more strongly and more energy is released.
+Q: [2] Explain, in terms of enthalpy changes, why some ionic compounds dissolve in water with a fall in temperature.
++ the energy needed to break the lattice is greater than the energy released on hydration :: lattice & hydrat
++ so the enthalpy change of solution is endothermic (positive) :: endothermic|positive
+A: The energy needed to break up the lattice is greater than the energy released when the ions are hydrated, so the enthalpy change of solution is endothermic.
+
+== ca-23-3
+S: Entropy counts the number of ways particles and their energy can be arranged: the more ways, the higher the entropy. Gases have far more entropy than solids, so a reaction that makes more moles of gas has a positive entropy change.
+<<<
+## Entropy
+!def Entropy, S | The number of possible arrangements of the particles and their energy in a given system.
+
+- Units: **J K⁻¹ mol⁻¹** (joules, not kilojoules).
+- The more ways the particles and their energy can be arranged (the more disordered the system), the **higher the entropy**.
+- All substances have a positive entropy above 0 K. A perfect crystal at 0 K has zero entropy.
+
+## Predicting the sign of an entropy change
+### Changes of state and dissolving
+$$S(\text{solid}) < S(\text{liquid}) \ll S(\text{gas})$$
+
+| Change | ΔS | Reason |
+| melting | **positive** | particles become free to move past each other: more possible arrangements |
+| boiling, evaporating, subliming | **large and positive** | particles in a gas move freely in all directions and are far apart |
+| condensing, freezing | **negative** | fewer possible arrangements |
+| a solid dissolving | usually **positive** | ions or molecules are spread through the solution and free to move |
+
+### Temperature
+Raising the temperature **increases** entropy: the particles have more energy, and there are more ways of sharing that energy among them.
+
+### A change in the number of moles of gas
+| Reaction | ΔS |
+| **more** moles of gas in the products | **positive** |
+| **fewer** moles of gas in the products | **negative** |
+| the same number of moles of gas | small |
+
+| Reaction | Moles of gas | Sign of ΔS |
+| CaCO₃(s) → CaO(s) + CO₂(g) | 0 → 1 | positive |
+| N₂(g) + 3H₂(g) → 2NH₃(g) | 4 → 2 | negative |
+| 2H₂O₂(l) → 2H₂O(l) + O₂(g) | 0 → 1 | positive |
+| NH₃(g) + HCl(g) → NH₄Cl(s) | 2 → 0 | negative |
+| H₂(g) + Cl₂(g) → 2HCl(g) | 2 → 2 | close to zero |
+
+## Calculating an entropy change
+$$\Delta S^\ominus = \sum S^\ominus(\text{products}) - \sum S^\ominus(\text{reactants})$$
+
+Multiply each standard entropy by its balancing number. Elements do **not** have zero entropy.
+
+**Example.** $\mathrm{N_2(g) + 3H_2(g) \rightarrow 2NH_3(g)}$
+
+S⦵ / J K⁻¹ mol⁻¹: N₂ 191.6; H₂ 130.6; NH₃ 192.3.
+
+$$\Delta S^\ominus = (2 \times 192.3) - [191.6 + (3 \times 130.6)] = 384.6 - 583.4 = -198.8\ \text{J K}^{-1}\,\text{mol}^{-1}$$
+
+Negative, as predicted: four moles of gas become two.
+
+**Example.** $\mathrm{CaCO_3(s) \rightarrow CaO(s) + CO_2(g)}$
+
+S⦵: CaCO₃ 92.9; CaO 39.7; CO₂ 213.6.
+
+$$\Delta S^\ominus = (39.7 + 213.6) - 92.9 = +160.4\ \text{J K}^{-1}\,\text{mol}^{-1}$$
+
+## Why entropy matters
+Processes tend to go in the direction that increases the total entropy. An endothermic process can still happen if the entropy increases enough, which is why ice melts and ammonium nitrate dissolves. Whether a reaction is feasible depends on both ΔH and ΔS, combined in the Gibbs free energy.
+>>>
+F: $\Delta S^\ominus = \sum S^\ominus(\text{products}) - \sum S^\ominus(\text{reactants})$ :: Units J K⁻¹ mol⁻¹. Elements are not zero.
+W: Entropy is in J K⁻¹ mol⁻¹, not kJ. Convert before using it with ΔH.
+W: The standard entropy of an element is not zero.
+W: Count moles of gas only when predicting the sign.
+W: Products minus reactants, each multiplied by its balancing number.
+M: Define entropy :: the **number of possible arrangements** of the **particles and their energy** in a given system
+M: Units of entropy :: **J K⁻¹ mol⁻¹**
+M: Order of entropy of the three states :: **solid < liquid < gas**
+M: Sign of ΔS for melting and boiling :: **positive**
+M: Why a gas has a higher entropy than a solid :: its particles **move freely** and are **far apart**: many more possible arrangements
+M: Sign of ΔS when a solid dissolves :: usually **positive**: particles become spread out and free to move
+M: Effect of raising temperature on entropy :: it **increases**: more energy, more ways to distribute it
+M: Sign of ΔS when the number of moles of gas increases :: **positive**
+M: Sign of ΔS when the number of moles of gas decreases :: **negative**
+M: Equation for the entropy change of a reaction :: **ΔS = ΣS(products) − ΣS(reactants)**
+M: Sign of ΔS for N₂ + 3H₂ → 2NH₃ :: **negative**: 4 moles of gas become 2
+M: Sign of ΔS for CaCO₃(s) → CaO(s) + CO₂(g) :: **positive**: a gas is produced
+C: [1] Which process has a negative entropy change? | ice melting | water boiling | sodium chloride dissolving | *steam condensing | A gas becomes a liquid: fewer possible arrangements.
+C: [1] Which reaction has a positive entropy change? | 2SO₂(g) + O₂(g) → 2SO₃(g) | NH₃(g) + HCl(g) → NH₄Cl(s) | *2NaNO₃(s) → 2NaNO₂(s) + O₂(g) | 2Mg(s) + O₂(g) → 2MgO(s) | A gas is formed from a solid.
+C: [1] What are the units of entropy? | kJ mol⁻¹ | J mol⁻¹ | *J K⁻¹ mol⁻¹ | kJ K mol⁻¹ | Energy per kelvin per mole.
+N: [3] Calculate ΔS⦵, in J K⁻¹ mol⁻¹, for 2SO₂(g) + O₂(g) → 2SO₃(g). S⦵: SO₂ 248.1; O₂ 205.0; SO₃ 256.8 J K⁻¹ mol⁻¹. => -187.6 ~ −187.6 ~ -188 ~ −188 {2*256.8-(2*248.1+205)} | C1 products: 2 × 256.8 = 513.6 | C1 reactants: (2 × 248.1) + 205.0 = 701.2 | A1 513.6 − 701.2 = −187.6 J K⁻¹ mol⁻¹
+N: [3] Calculate ΔS⦵, in J K⁻¹ mol⁻¹, for CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l). S⦵: CH₄ 186.2; O₂ 205.0; CO₂ 213.6; H₂O(l) 69.9 J K⁻¹ mol⁻¹. => -242.8 ~ −242.8 ~ -243 ~ −243 {213.6+2*69.9-(186.2+2*205)} | C1 products: 213.6 + (2 × 69.9) = 353.4 | C1 reactants: 186.2 + (2 × 205.0) = 596.2 | A1 353.4 − 596.2 = −242.8 J K⁻¹ mol⁻¹
+Q: [1] Define the term entropy.
++ the number of possible arrangements of the particles and their energy in a system :: arrangement|ways|disorder
+A: Entropy is the number of possible arrangements of the particles and their energy in a given system.
+Q: [2] Predict and explain the sign of the entropy change for CaCO₃(s) → CaO(s) + CO₂(g).
++ positive :: positive|increas
++ a gas is produced from a solid (more moles of gas), and gas particles have more possible arrangements :: gas
+A: The entropy change is positive, because a gas is produced from a solid and gas particles have many more possible arrangements.
+Q: [2] Explain why the entropy of a substance increases when it is heated.
++ the particles have more energy (move faster) :: energy|faster
++ so there are more ways of arranging the particles and distributing the energy :: ways|arrangement|distribut|disorder
+A: The particles gain energy and move faster, so there are more ways of distributing the energy among them and more possible arrangements.
+
+== ca-23-4
+S: The Gibbs free energy change, ΔG = ΔH − TΔS, combines enthalpy and entropy into one test. A reaction is feasible when ΔG is negative. Because T multiplies ΔS, changing the temperature can switch a reaction between feasible and not feasible.
+<<<
+## The Gibbs equation
+$$\Delta G^\ominus = \Delta H^\ominus - T\Delta S^\ominus$$
+
+| Symbol | Quantity | Unit |
+| ΔG⦵ | standard Gibbs free energy change | kJ mol⁻¹ |
+| ΔH⦵ | standard enthalpy change | kJ mol⁻¹ |
+| T | temperature | K |
+| ΔS⦵ | standard entropy change | **J K⁻¹ mol⁻¹: divide by 1000** to get kJ K⁻¹ mol⁻¹ |
+
+## Feasibility
+| ΔG | Reaction |
+| **negative** | **feasible** (can happen spontaneously) |
+| **positive** | **not feasible** |
+| zero | at equilibrium: just feasible |
+
+!key Feasible does not mean fast. A feasible reaction may have such a high activation energy that it is too slow to observe. ΔG says nothing about rate.
+
+## Calculations
+**Example 1.** $\mathrm{N_2 + 3H_2 \rightarrow 2NH_3}$ at 298 K. ΔH⦵ = −92 kJ mol⁻¹; ΔS⦵ = −198.8 J K⁻¹ mol⁻¹.
+
+- ΔS⦵ = −0.1988 kJ K⁻¹ mol⁻¹
+- ΔG⦵ = −92 − (298 × −0.1988) = −92 + 59.2 = **−32.8 kJ mol⁻¹**
+- Negative: feasible at 298 K.
+
+**Example 2.** $\mathrm{CaCO_3 \rightarrow CaO + CO_2}$ at 298 K. ΔH⦵ = +178 kJ mol⁻¹; ΔS⦵ = +160.4 J K⁻¹ mol⁻¹.
+
+- ΔG⦵ = +178 − (298 × 0.1604) = +178 − 47.8 = **+130.2 kJ mol⁻¹**
+- Positive: not feasible at 298 K.
+
+## The effect of temperature
+The −TΔS term grows as T rises. Assume ΔH and ΔS do not change with temperature.
+
+| ΔH | ΔS | −TΔS | Feasible? |
+| **negative** | **positive** | negative | **always** (ΔG always negative) |
+| **positive** | **negative** | positive | **never** (ΔG always positive) |
+| **negative** | **negative** | positive | only at **low** temperatures |
+| **positive** | **positive** | negative | only at **high** temperatures |
+
+### The temperature at which a reaction becomes feasible
+Set ΔG = 0:
+
+$$T = \frac{\Delta H}{\Delta S}$$
+
+Use the same energy units for both.
+
+**Example.** For the decomposition of calcium carbonate:
+
+$$T = \frac{178\,000}{160.4} = 1110\ \text{K}$$
+
+Above 1110 K, ΔG is negative and the decomposition is feasible.
+
+For the Haber process, ΔH and ΔS are both negative: the reaction is feasible only below T = 92 000 ÷ 198.8 = 463 K. Above that, the equilibrium increasingly favours the reactants.
+
+## Explaining in words
+- An **exothermic reaction with a decrease in entropy** becomes less feasible as temperature rises: −TΔS is positive and gets bigger, eventually outweighing ΔH.
+- An **endothermic reaction with an increase in entropy** becomes feasible at high temperature: −TΔS is negative and eventually outweighs the positive ΔH.
+
+This is why endothermic reactions such as thermal decomposition need heating: at high temperature the entropy term wins.
+>>>
+F: $\Delta G^\ominus = \Delta H^\ominus - T\Delta S^\ominus$ :: ΔS in kJ K⁻¹ mol⁻¹ (divide J by 1000); T in K.
+F: $T = \dfrac{\Delta H}{\Delta S}$ :: Temperature at which ΔG = 0; same energy units for both.
+W: Convert ΔS from J to kJ (divide by 1000) before using it with ΔH in kJ.
+W: Temperature must be in kelvin.
+W: A negative ΔG means feasible, not fast.
+W: Watch the signs: −T × (negative ΔS) is positive.
+M: The Gibbs equation :: **ΔG = ΔH − TΔS**
+M: Units of ΔG :: **kJ mol⁻¹**
+M: Condition for a reaction to be feasible :: **ΔG is negative** (or zero)
+M: Converting ΔS for use in the Gibbs equation :: **divide by 1000** (J to kJ)
+M: Feasibility when ΔH is negative and ΔS is positive :: feasible at **all temperatures**
+M: Feasibility when ΔH is positive and ΔS is negative :: **never feasible**
+M: Feasibility when ΔH and ΔS are both negative :: feasible only at **low temperatures**
+M: Feasibility when ΔH and ΔS are both positive :: feasible only at **high temperatures**
+M: Temperature at which a reaction just becomes feasible :: **T = ΔH ÷ ΔS** (when ΔG = 0)
+M: Why a feasible reaction may not be observed :: it may have a **high activation energy**, so it is **too slow**
+M: Why thermal decomposition needs a high temperature :: ΔH and ΔS are both **positive**; **TΔS must exceed ΔH**
+M: Value of ΔG at equilibrium :: **zero**
+C: [1] A reaction has a negative ΔH and a positive ΔS. When is it feasible? | *at all temperatures | at no temperature | only at high temperatures | only at low temperatures | ΔG = ΔH − TΔS is negative at every temperature.
+C: [1] A reaction is endothermic and has a positive entropy change. When is it feasible? | at all temperatures | at no temperature | *only at high temperatures | only at low temperatures | TΔS must become larger than ΔH.
+C: [1] For a reaction, ΔH = +50 kJ mol⁻¹ and ΔS = +100 J K⁻¹ mol⁻¹. Above what temperature is it feasible? | 0.5 K | 2 K | *500 K | 5000 K | T = 50 000 ÷ 100 = 500 K.
+C: [1] What does a negative value of ΔG tell you about a reaction? | It is fast. | It is exothermic. | *It is feasible. | It has a low activation energy. | ΔG gives feasibility, not rate.
+N: [3] Calculate ΔG⦵, in kJ mol⁻¹, at 298 K for a reaction with ΔH⦵ = −196 kJ mol⁻¹ and ΔS⦵ = −187.6 J K⁻¹ mol⁻¹. => -140 ~ −140 ~ -140.1 ~ −140.1 {-196-298*-0.1876} | C1 ΔS = −0.1876 kJ K⁻¹ mol⁻¹ | C1 ΔG = −196 − (298 × −0.1876) | A1 −196 + 55.9 = −140.1 kJ mol⁻¹
+N: [2] For MgCO₃(s) → MgO(s) + CO₂(g), ΔH⦵ = +117 kJ mol⁻¹ and ΔS⦵ = +175 J K⁻¹ mol⁻¹. Calculate the minimum temperature, in K, at which the reaction is feasible. => 669 ~ 668.6 ~ 670 {117000/175} | C1 T = ΔH ÷ ΔS with ΔH = 117 000 J mol⁻¹ | A1 117 000 ÷ 175 = 669 K
+Q: [2] State the Gibbs equation and the condition for a reaction to be feasible.
++ ΔG = ΔH − TΔS :: ΔH − TΔS|delta H|H minus T
++ the reaction is feasible if ΔG is negative (less than or equal to zero) :: negative|less than|zero
+A: ΔG = ΔH − TΔS, which in words is delta H minus T delta S. The reaction is feasible if ΔG is negative.
+Q: [3] The Haber process, N₂ + 3H₂ → 2NH₃, has a negative ΔH and a negative ΔS. Explain how the feasibility of the reaction changes as the temperature increases.
++ −TΔS is positive (because ΔS is negative) :: positive
++ as temperature increases, this term becomes larger, so ΔG becomes less negative (more positive) :: less negative|more positive|larger|increas
++ so the reaction becomes less feasible (not feasible at high temperature) :: less feasible|not feasible|no longer feasible
+A: Because ΔS is negative, the term −TΔS is positive. As the temperature increases this term becomes larger, so ΔG becomes less negative and eventually positive. The reaction therefore becomes less feasible, and is not feasible at high temperatures.
+Q: [2] Explain why a reaction with a negative ΔG may not take place at room temperature.
++ the reaction has a high activation energy :: activation
++ so its rate is too slow :: slow|rate
+A: The reaction may have a high activation energy, so although it is feasible, its rate is too slow to be observed.
