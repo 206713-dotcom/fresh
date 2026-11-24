@@ -41,24 +41,31 @@ marker from the syllabus-aligned data already in this repository.
 1. **Notebook → GPU T4 ×2** (Settings → Accelerator → GPU T4 x2).
 2. **Add data:** upload this whole `training` folder as a Kaggle dataset, or open
    `kaggle_marker_training.ipynb` and copy the files into `/kaggle/working`.
-3. Install once:
+3. Install once (this exact cell is already in the notebook — it removes Kaggle's broken
+   diffusers/gradio stack and installs the working ONNX exporter):
    ```python
-   !pip -q install -U transformers peft accelerate sentencepiece optimum onnx
+   !pip -q uninstall -y diffusers gradio gradio-client optimum
+   !pip -q install -U "transformers>=4.44,<5" peft accelerate sentencepiece "optimum>=2.1,<3" "optimum-onnx>=0.1" onnx onnxruntime-gpu huggingface_hub
    ```
 4. Train (two GPUs):
    ```python
    !torchrun --nproc_per_node=2 kaggle_train.py
    ```
-   If multi-GPU launching fails on your Kaggle runtime, use one GPU instead — the dataset is
-   small enough that it still finishes well inside 90 minutes:
-   ```python
-   !python kaggle_train.py
-   ```
+   The script defaults to `BATCH=2`, `ACCUM=16`, `MAX_LEN=768` and
+   `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` so it will not OOM on a 16 GB T4.
+   If multi-GPU launching fails, replace with `!python kaggle_train.py` (single T4).
 5. Export:
    ```python
    !python export_onnx.py
    ```
-6. Download `output/adapter`, `output/merged` and `output/onnx`.
+   It re-enables `use_cache`, exports `text-generation-with-past` at opset 18, and copies
+   `chat_template.jinja` into the output folder.
+6. Upload:
+   ```python
+   !python upload_to_hf.py
+   ```
+   It uploads weights to `onnx/model_fp16.onnx` and config/tokenizer to the repo root —
+   the exact layout Transformers.js needs.
 
 Expected runtime: about **10–25 minutes for training** (4,642 examples × 3 epochs,
 effective batch 64) and **10–30 minutes for ONNX export/quantisation** — comfortably

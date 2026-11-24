@@ -2054,6 +2054,10 @@
         persist();
         toast("⏱️ Focus session set to " + mins + " minutes!");
         if (ssTimer !== null) { clearInterval(ssTimer); ssTimer = null; }
+        /* Update the visible digits immediately — otherwise a paused timer
+           looks frozen and the presets appear to do nothing. */
+        draw();
+        refreshTick();
       }
       function switchMode(mode) {
         st.running = false; st.elapsed = 0; st.mode = mode;
@@ -2135,6 +2139,7 @@
           var extra = parseInt(btn.getAttribute("data-mins"), 10) || 0;
           st.timeLeft += extra * 60;
           toast("Added +" + extra + "m to timer");
+          refreshTick();
         } else if (act === "preset") {
           setFocus(parseInt(btn.getAttribute("data-mins"), 10) || st.focus);
         } else if (act === "set-custom") {
@@ -2969,7 +2974,8 @@
     if (id === "dark" || id === "midnight") id = "midnight";
     else if (id === "light") id = "daylight";
     if (THEME_KNOWN.indexOf(id) === -1) id = "daylight";
-    var unlocked = EC.store.get("unlocked_themes", ["daylight", "midnight"]) || [];
+    var unlocked = EC.store.get("unlocked_themes", ["daylight", "midnight"]);
+    if (!Array.isArray(unlocked)) unlocked = ["daylight", "midnight"];
     if (unlocked.indexOf(id) === -1) id = "daylight";
     return id;
   }

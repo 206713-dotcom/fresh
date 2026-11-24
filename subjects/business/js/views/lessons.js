@@ -1042,10 +1042,14 @@
         EC.store.del(ACTIVE_KEY);
         state.confirmingReset = false;
         resetLocal();
-        state.activeId = state.lessons[0].id;
-        EC.store.set(ACTIVE_KEY, state.activeId);
-        state.scrollToReader = true;
-        EC.navigate("lessons", { lesson: state.activeId });
+        state.activeId = state.lessons.length ? state.lessons[0].id : null;
+        if (state.activeId) {
+          EC.store.set(ACTIVE_KEY, state.activeId);
+          state.scrollToReader = true;
+          EC.navigate("lessons", { lesson: state.activeId });
+        } else {
+          draw();
+        }
         break;
       case "hint":
         concept = node.getAttribute("data-concept");

@@ -1028,6 +1028,9 @@
     renderChallenge(st);
     stopTimer();
     activeTimer = setInterval(function () {
+      /* If the student navigated to another view, stop instead of recording a
+         challenge result nobody saw. */
+      if (!st.root || !st.root.isConnected) { stopTimer(); return; }
       if (!st.running || st.submitted || st.seconds <= 0) { stopTimer(); return; }
       st.seconds--;
       if (st.seconds <= 0) {

@@ -22,6 +22,7 @@ import os
 from pathlib import Path
 
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import torch
 from torch.utils.data import Dataset
@@ -39,7 +40,7 @@ DATA = ROOT / "dataset"
 OUT = ROOT / "output"
 MODEL = os.environ.get("BASE_MODEL", "Qwen/Qwen3-0.6B")
 SEED = 42
-MAX_LEN = int(os.environ.get("MAX_LEN", "1024"))
+MAX_LEN = int(os.environ.get("MAX_LEN", "768"))
 
 
 class MarkerDataset(Dataset):
@@ -130,8 +131,8 @@ def main():
         output_dir=str(OUT / "trainer"),
         overwrite_output_dir=True,
         num_train_epochs=float(os.environ.get("EPOCHS", "3")),
-        per_device_train_batch_size=int(os.environ.get("BATCH", "8")),
-        gradient_accumulation_steps=int(os.environ.get("ACCUM", "4")),
+        per_device_train_batch_size=int(os.environ.get("BATCH", "2")),
+        gradient_accumulation_steps=int(os.environ.get("ACCUM", "16")),
         learning_rate=float(os.environ.get("LR", "1e-4")),
         lr_scheduler_type="cosine",
         warmup_ratio=0.03,

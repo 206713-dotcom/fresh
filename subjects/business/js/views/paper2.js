@@ -1654,7 +1654,8 @@
       var sc = list[i];
       var n = idxOfScenario(state.data, sc.scenario_id) + 1;
       var stem = s(sc.case_study_insert && sc.case_study_insert.main_stem).slice(0, 130);
-      var isCurrent = sc.scenario_id === scenario().scenario_id;
+      var currentSc = scenario();
+      var isCurrent = !!(currentSc && sc.scenario_id === currentSc.scenario_id);
       var cardCls = isCurrent
         ? 'bg-[#0F2042] text-white border-[#0F2042] shadow-sm'
         : 'bg-white dark:bg-neutral-800/40 text-neutral-800 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400';
@@ -1722,15 +1723,17 @@
   }
   function stepCase(delta) {
     var list = navList();
-    if (!list.length) return;
-    var pos = idxOfScenario(list, scenario().scenario_id);
+    var currentSc = scenario();
+    if (!list.length || !currentSc) return;
+    var pos = idxOfScenario(list, currentSc.scenario_id);
     var next = pos < 0 ? 0 : (pos + delta + list.length) % list.length;
     selectCase(idxOfScenario(state.data, list[next].scenario_id));
   }
   function randomCase() {
     var list = navList();
-    if (list.length <= 1) return;
-    var pos = idxOfScenario(list, scenario().scenario_id);
+    var currentSc = scenario();
+    if (list.length <= 1 || !currentSc) return;
+    var pos = idxOfScenario(list, currentSc.scenario_id);
     var next = Math.floor(Math.random() * list.length);
     if (next === pos) next = (next + 1) % list.length;
     selectCase(idxOfScenario(state.data, list[next].scenario_id));

@@ -59,6 +59,10 @@
     jsonCache[name] = getText(name).then(function (text) {
       return JSON.parse(text);
     })["catch"](function () {
+      /* Clear all failure state so a later navigation can try again. */
+      delete jsonCache[name];
+      delete textCache[name];
+      failed[name] = false;
       return originalLoad(name);
     });
     return jsonCache[name];
@@ -96,7 +100,9 @@
 
   var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
   var slowNetwork = !!connection.saveData || /(?:^|-)slow-2g$|2g/.test(connection.effectiveType || "");
-  var lowMemory = typeof navigator.deviceMemory === "number" && navigator.deviceMemory < 4;
+  /* iOS Safari and Firefox do not expose deviceMemory. Treat "unknown" as low
+     memory so ~82 MB of decompressed banks are not prefetched on phones. */
+  var lowMemory = typeof navigator.deviceMemory !== "number" || navigator.deviceMemory < 4;
 
   var queue = [], running = false;
 

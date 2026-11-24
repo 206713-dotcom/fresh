@@ -170,7 +170,10 @@
     filter: "all",
     query: "",
     expanded: { "1.1": true },
-    ratings: EC.store.get(RATINGS_KEY, {}),
+    ratings: (function () {
+      var saved = EC.store.get(RATINGS_KEY, {});
+      return saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+    })(),
     drill: null,
     drillAnswer: "",
     drillAnswers: {},

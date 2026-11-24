@@ -7,6 +7,7 @@ Example:
 """
 from __future__ import annotations
 
+import json
 import os
 import shutil
 from pathlib import Path
@@ -24,10 +25,18 @@ def main():
     if not TOKEN:
         raise SystemExit("Set HF_TOKEN (or add it as a Kaggle secret named HF_TOKEN).")
 
-    # The app fetches chat_template.jinja from the model repo; include it if available.
-    template = MERGED / "chat_template.jinja"
-    if template.exists():
-        shutil.copy2(template, ONNX / "chat_template.jinja")
+    # The app fetches chat_template.jinja from the model repo.
+    for template in (ROOT / "chat_template.jinja", MERGED / "chat_template.jinja"):
+        if template.exists():
+            shutil.copy2(template, ONNX / "chat_template.jinja")
+            break
+
+    # Enforce cache-enabled config in the uploaded copy as well.
+    config_path = ONNX / "config.json"
+    if config_path.exists():
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config["use_cache"] = True
+        config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
 
     from huggingface_hub import HfApi
 
@@ -35,11 +44,12 @@ def main():
     api.create_repo(repo_id=REPO, exist_ok=True, private=False)
 
     # Transformers.js looks for onnx/model_<dtype>.onnx, not a root-level model.onnx.
-    model_file = ONNX / "model.onnx"
-    if model_file.exists():
+    model_file = next((p for p in sorted(ONNX.glob("*.onnx"))), None)
+    target = "onnx/model_q4f16.onnx"
+    if model_file:
         api.upload_file(
             path_or_fileobj=str(model_file),
-            path_in_repo="onnx/model_fp16.onnx",
+            path_in_repo=target,
             repo_id=REPO,
             commit_message="Upload ONNX weights (fp16)",
         )

@@ -1328,7 +1328,7 @@
    * from a stall, and that a late resolution is ignored (loadEpoch). */
   var LOAD_TIMEOUT_MS = 300000;   /* 300 s download / shader-compile budget */
   var MARK_TIMEOUT_MS = 180000;   /* generous first-request budget */
-  var REAUDIT_TIMEOUT_MS = 60000; /* per-paragraph re-audit budget */
+  var REAUDIT_TIMEOUT_MS = 120000; /* per-paragraph re-audit budget */
   var aiBusy = false;             /* module-level guard: one generation at a time */
   var loadEpoch = 0;              /* rejects callbacks from a timed-out load */
   var loadTimer = null;
@@ -1682,7 +1682,7 @@
       try {
         tf.env.allowLocalModels = false;
         tf.env.useBrowserCache = true;
-        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v6");
+        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v8");
       } catch (e) {}
       return createGenerator(tf, "webgpu", onProgress)["catch"](function () {
         if (epoch !== loadEpoch) return null;
@@ -2022,6 +2022,47 @@
     ].join("\n");
   }
 
+  /* Manual greedy generation for ONNX exports that lack KV-cache inputs.
+   * Calling the model directly avoids Transformers.js generate(), which crashes
+   * with "reading 'dims'" on a cache-less graph. It stops at the closing JSON
+   * brace so output stays short, and re-arms the watchdog on every token. */
+  function manualGenerate(pipe, prompt, opts) {
+    opts = opts || {};
+    var tok = pipe.tokenizer, model = pipe.model;
+    var maxNew = clampI(opts.max_new_tokens || 220, 8, 360);
+    var initial = Array.from(tok(prompt, { return_tensors: "pt" }).input_ids.data).map(Number);
+    var ids = initial.slice();
+    var streamer = opts.streamer;
+    var depth = 0, seenOpen = false, done = false;
+    return (async function () {
+      var decoded = "";
+      for (var step = 0; step < maxNew; step++) {
+        var input = new tfModule.Tensor("int64", BigInt64Array.from(ids.map(BigInt)), [1, ids.length]);
+        var mask = new tfModule.Tensor("int64", BigInt64Array.from(ids.map(function () { return 1n; })), [1, ids.length]);
+        var out = await model({ input_ids: input, attention_mask: mask });
+        var logits = out.logits, g = logits.data, vocab = logits.dims[2], seq = logits.dims[1];
+        var off = (seq - 1) * vocab, best = 0, bv = -Infinity;
+        for (var i = 0; i < vocab; i++) { var v = g[off + i]; if (v > bv) { bv = v; best = i; } }
+        input.dispose(); mask.dispose(); logits.dispose();
+        if (best === 151645 || best === 151643) break;
+        ids.push(best);
+        var piece = String(tok.decode([best], { skip_special_tokens: true }) || "");
+        decoded += piece;
+        if (streamer && typeof streamer.callback_function === "function") {
+          try { streamer.callback_function(piece); } catch (e) {}
+        }
+        if (aiHeartbeat) { try { aiHeartbeat(); } catch (e) {} }
+        for (var j = 0; j < piece.length; j++) {
+          var c = piece.charAt(j);
+          if (c === "{") { depth++; seenOpen = true; }
+          else if (c === "}") { depth--; if (seenOpen && depth === 0) { done = true; break; } }
+        }
+        if (done) break;
+      }
+      return [{ generated_text: String(tok.decode(ids.slice(initial.length), { skip_special_tokens: true }) || "") }];
+    })();
+  }
+
   function markWithLocalAI(answer, info, statusFn) {
     function status(s) { if (statusFn) { try { statusFn(s); } catch (e) {} } }
     if (aiBusy) { status("The local AI is already marking an answer."); return null; }
@@ -2113,7 +2154,7 @@
       return null;
     }
     status("Local AI: marking your answer locally…");
-    var maxTokens = Math.min(1150, Math.max(760, computeRecommendedMaxTokens(answer, qtype)));
+    var maxTokens = Math.min(320, Math.max(180, computeRecommendedMaxTokens(answer, qtype)));
     var genOpts = {
       max_new_tokens: maxTokens,
       do_sample: false,
@@ -2150,9 +2191,15 @@
                 skip_prompt: true, skip_special_tokens: true,
                 callback_function: function (token) { if (aiHeartbeat) { try { aiHeartbeat(); } catch (e) {} } }
               });
-              var oneOpts = { max_new_tokens: 350, do_sample: false, return_full_text: false, streamer: oneStreamer };
+              var oneOpts = { max_new_tokens: 180, do_sample: false, return_full_text: false, streamer: oneStreamer };
               if (oneCriteria) oneOpts.stopping_criteria = oneCriteria;
-              return withTimeout(generator(onePrompt, oneOpts), REAUDIT_TIMEOUT_MS, null).then(function (out) {
+              var reauditGen;
+              try {
+                reauditGen = generator(onePrompt, oneOpts)["catch"](function () {
+                  return manualGenerate(generator, onePrompt, oneOpts);
+                });
+              } catch (ge) { reauditGen = manualGenerate(generator, onePrompt, oneOpts); }
+              return withTimeout(reauditGen, REAUDIT_TIMEOUT_MS, null).then(function (out) {
                 if (expired || !out) return acc;
                 var t = out && out[0] ? out[0].generated_text : "";
                 var parsedOne = extractJsonObject(t) || extractJsonObject("{" + t);
@@ -2175,10 +2222,14 @@
       armMarkTimer();
       aiHeartbeat = armMarkTimer;
       var generation;
-      try { generation = generator(prompt, genOpts); }
-      catch (ge) {
-        failGeneration("Local AI marking failed (" + (ge && ge.message ? ge.message : "error") + ") — using the deterministic marker.");
-        return;
+      try {
+        generation = generator(prompt, genOpts)["catch"](function (ge) {
+          // Browser/WebGPU generate() often mismatches ONNX input dtypes;
+          // the manual token loop talks to the model directly instead.
+          return manualGenerate(generator, prompt, genOpts);
+        });
+      } catch (ge) {
+        generation = manualGenerate(generator, prompt, genOpts);
       }
       /* One heartbeat-resettable deadline only (no second fixed timer): every
        * streamed token re-arms markTimer, so an actively generating model is

@@ -1525,6 +1525,9 @@
       // If an exam is still running (e.g. a popstate re-render), resume it.
       if (stage === "active" && exam) {
         setExamMode(true);
+        // A re-render (e.g. popstate) must not reuse the original absolute
+        // deadline, or the paper finishes instantly with zero time left.
+        deadline = Date.now() + Math.max(0, timeLeft) * 1000;
         renderActive(main);
         startTimer();
       } else if (stage === "finished" && exam) {

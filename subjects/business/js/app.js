@@ -344,13 +344,7 @@
       /* Mock exam mode is distraction-free: the original unmounted the whole
        * app. Hide the site chrome for every mock stage, restore it elsewhere. */
       document.body.classList.toggle('ec-exam-active', name === 'mocks');
-      var syllabusBtn = document.getElementById('syllabusMenuBtn');
       var resourcesBtn = document.getElementById('resourcesMenuBtn');
-      if (syllabusBtn) {
-        var checklistActive = ['checklist', 'sections', 'compare'].indexOf(name) >= 0;
-        syllabusBtn.classList.toggle('bg-[#0F2042]', checklistActive);
-        syllabusBtn.classList.toggle('text-white', checklistActive);
-      }
       var reviewCount = document.querySelector('[data-ec-review-count]');
       if (reviewCount) {
         var n = 0;

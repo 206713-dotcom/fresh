@@ -32,6 +32,11 @@
     cache[name] = fetch("./data/" + name + ".json").then(function (r) {
       if (!r.ok) throw new Error("Cannot load " + name);
       return r.json();
+    }, function (error) {
+      /* Never retain a rejected promise: a transient failure must be retryable
+         by revisiting the view instead of poisoning the cache for this session. */
+      delete cache[name];
+      throw error;
     });
     return cache[name];
   }
