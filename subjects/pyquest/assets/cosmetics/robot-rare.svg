@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="gear" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0" stop-color="#b2ffea"/><stop offset=".24" stop-color="#33c2bb"/><stop offset=".72" stop-color="#527f9d"/><stop offset="1" stop-color="#193c56"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#33c2bb" stop-opacity=".8"/><stop offset=".4" stop-color="#527f9d" stop-opacity=".44"/><stop offset="1" stop-color="#33c2bb" stop-opacity="0"/></radialGradient>
+      <filter id="ds" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/><feOffset in="blur" dy="13" result="offset"/><feComponentTransfer in="offset" result="dark"><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode in="dark"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g filter="url(#ds)">
+    <g transform="translate(121 0) scale(1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#193c56" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#b2ffea" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#193c56" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#b2ffea" stroke-width="6" opacity=".65"/>
+    </g>
+    <g transform="translate(279 0) scale(-1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#193c56" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#b2ffea" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#193c56" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#b2ffea" stroke-width="6" opacity=".65"/>
+    </g><g transform="translate(121 207) scale(0.36)" fill="none" stroke="#b7fff1" stroke-width="5"><path d="M-27 -19 H-9 V-2 H12 V-20 H28 M-28 19 H-7 V5 H14 V22 H28"/><circle r="7" fill="#b7fff1"/></g><g transform="translate(279 207) scale(0.36)" fill="none" stroke="#b7fff1" stroke-width="5"><path d="M-27 -19 H-9 V-2 H12 V-20 H28 M-28 19 H-7 V5 H14 V22 H28"/><circle r="7" fill="#b7fff1"/></g></g>
+  </svg>

@@ -10,7 +10,10 @@ Fresh is an independent revision hub for 13 Cambridge IGCSE subjects. Find your 
 
 ### Mathematics (0580)
 
-Practise linear equations, right-angled trigonometry and probability with short worked answers. [Open Mathematics](https://gisfresh.me/subjects/mathematics.html)
+Choose a track from Fresh Mathematics. The original quick revision on equations, trigonometry and probability is also available there. [Open Mathematics](https://gisfresh.me/subjects/mathematics.html)
+
+- **IGCSE Maths (0580)** opens MathQuest for interactive lessons, a course level test and practice. [Open IGCSE Maths](https://gisfresh.me/subjects/igcse-maths.html)
+- **Competition Maths** opens Vertex Maths for AMC, AIME, UKMT and the IMO proof track. [Open Competition Maths](https://gisfresh.me/subjects/competition-maths.html)
 
 ### First Language English (0500)
 
@@ -35,6 +38,8 @@ Geodesic Physics has topic lessons, visual explanations and interactive activiti
 ### Computer Science (0478)
 
 Practise binary conversions, trace tables and Boolean logic. [Open Computer Science](https://gisfresh.me/subjects/computer-science.html)
+
+**Python with PyQuest** offers lessons, challenges, and a browser-based Code Lab. The Fresh edition saves progress and runs code on the device. MathQuest, Vertex Maths and PyQuest were created by `linze933-spec`. [Open Python](https://gisfresh.me/subjects/python.html)
 
 ### Information and Communication Technology (0417)
 
@@ -62,7 +67,7 @@ Work through Paper 1 questions, Paper 2 case studies and interactive lessons. Tr
 
 ## Progress and privacy
 
-Business Studies and Economics save progress in the current browser. Their progress tools let students review their stats and export a CSV to their device. Use the same browser and device to continue your work.
+Business Studies, Economics and PyQuest save progress in the current browser. Business Studies and Economics can export a progress CSV. In PyQuest, use Local profile to download or restore a backup.
 
 ## Run Fresh locally
 
@@ -72,7 +77,7 @@ From the repository root, start a local server with Python 3.
 python -m http.server 8000
 ```
 
-Open [localhost:8000](http://localhost:8000/). Business Studies, Economics, Chemistry and Physics are served from the repo as static files. The Design and Technology card opens the externally hosted RM Revise site.
+Open [localhost:8000](http://localhost:8000/). Business Studies, Economics, Chemistry, Physics and PyQuest are served from the repo as static files. The Maths tracks open the hosted MathQuest and Vertex Maths apps. The Design and Technology card opens RM Revise.
 
 Run `node build.mjs` to assemble a static `dist/` folder.
 

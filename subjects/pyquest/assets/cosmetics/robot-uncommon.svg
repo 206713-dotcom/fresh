@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="gear" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0" stop-color="#b2ffea"/><stop offset=".24" stop-color="#33c2bb"/><stop offset=".72" stop-color="#527f9d"/><stop offset="1" stop-color="#193c56"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#33c2bb" stop-opacity=".8"/><stop offset=".4" stop-color="#527f9d" stop-opacity=".44"/><stop offset="1" stop-color="#33c2bb" stop-opacity="0"/></radialGradient>
+      <filter id="ds" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/><feOffset in="blur" dy="13" result="offset"/><feComponentTransfer in="offset" result="dark"><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode in="dark"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g filter="url(#ds)">
+    <path d="M141 90 L176 102 Q200 126 224 102 L259 90 L304 148 L274 184 L265 290 L135 290 L126 184 L96 148 Z" fill="url(#gear)" stroke="#193c56" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M141 90 L184 136 L200 185 L216 136 L259 90 L231 97 L200 144 L169 97Z" fill="#193c56" opacity=".85"/>
+    <path d="M199 168 V284" stroke="#b2ffea" stroke-width="5" opacity=".75"/>
+    <path d="M121 155 L146 174 M279 155 L254 174" stroke="#b2ffea" stroke-width="8" opacity=".75"/>
+    <path d="M145 276 H255" stroke="#b2ffea" stroke-width="8" opacity=".65"/>
+    <rect x="153" y="243" width="33" height="25" rx="7" fill="#193c56" opacity=".8"/>
+    <rect x="214" y="243" width="33" height="25" rx="7" fill="#193c56" opacity=".8"/>
+    <g transform="translate(200 209) scale(0.67)" fill="none" stroke="#b7fff1" stroke-width="5"><path d="M-27 -19 H-9 V-2 H12 V-20 H28 M-28 19 H-7 V5 H14 V22 H28"/><circle r="7" fill="#b7fff1"/></g></g>
+  </svg>

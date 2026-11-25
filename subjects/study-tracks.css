@@ -1,0 +1,49 @@
+.track-page .topbar { min-height: 68px; }
+.track-page .brand { font-size: 1.28rem; font-weight: 850; text-decoration: none; }
+.track-page .brand img { display: block; flex: none; }
+.track-page .topbar > a:last-child { margin-left: auto; }
+.track-page .back { text-decoration-thickness: 1px; }
+.track-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: clamp(1.6rem, 5vw, 3.7rem);
+  border-radius: 1.3rem;
+  background: radial-gradient(ellipse at 100% 5%, #507555, transparent 67%), #203e32;
+  color: #fffefa;
+}
+.track-intro .eyebrow { color: #e4eeb2; }
+.track-intro h1 { max-width: 17ch; font-family: inherit; font-size: clamp(2.25rem, 5.4vw, 4.8rem); line-height: 1; letter-spacing: -.06em; }
+.track-intro p:not(.eyebrow) { max-width: 49ch; line-height: 1.65; color: #edf3dd; }
+.track-intro .symbol {
+  width: clamp(4rem, 12vw, 8rem);
+  height: auto;
+  aspect-ratio: 1;
+  font: 750 clamp(1.6rem, 5.5vw, 3.4rem) system-ui, sans-serif;
+  background: #f4f7e0;
+  border: 1px solid #dce8b6;
+  border-radius: 20%;
+}
+.track-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; margin-top: 1.25rem; }
+.track-actions a { min-height: 44px; }
+.track-intro .track-secondary { color: #fffefa; }
+.track-intro a:focus-visible { outline-color: #e4eeb2; }
+.track-section { margin-block: clamp(1.65rem, 4.6vw, 3rem); }
+.track-section h2 { font: 800 clamp(1.48rem, 3.5vw, 2.25rem)/1.15 system-ui, sans-serif; letter-spacing: -.045em; }
+.track-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.track-option { border-top: 3px solid var(--track-accent, #6b9264); }
+.track-option.competition { --track-accent: #7866a6; --tint: #eae2f6; }
+.track-option a { min-height: 14rem; padding: clamp(1.1rem, 3vw, 1.6rem); }
+.track-option .card-link { color: #28523d; }
+.track-page .study-layout { margin-block-start: 2rem; }
+.track-page .footer { margin-top: 2rem; }
+@media (max-width: 560px) {
+  .track-grid { grid-template-columns: 1fr; }
+  .track-option a { min-height: 0; }
+  .track-intro { gap: .75rem; }
+}
+@media (max-width: 360px) {
+  .track-intro { grid-template-columns: 1fr; }
+  .track-intro > .symbol { display: none; }
+}

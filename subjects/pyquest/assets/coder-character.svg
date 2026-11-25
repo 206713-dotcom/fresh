@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" width="320" height="420">
+<defs>
+  <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292545"/><stop offset="1" stop-color="#13172c"/></linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe0c3"/><stop offset="1" stop-color="#dba985"/></linearGradient>
+  <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c8eea"/><stop offset="1" stop-color="#4249a1"/></linearGradient>
+  <linearGradient id="pants" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#434e78"/><stop offset="1" stop-color="#222a51"/></linearGradient>
+  <filter id="sh"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#14244c" flood-opacity=".25"/></filter>
+</defs>
+<ellipse cx="160" cy="381" rx="101" ry="15" fill="#7986c1" opacity=".25"/>
+<g stroke="#27315a" stroke-width="5" stroke-linejoin="round" filter="url(#sh)">
+  <path d="M123 272 L160 278 L155 354 Q147 369 113 367 L106 352 Z" fill="url(#pants)"/>
+  <path d="M163 278 L197 272 L214 352 Q202 369 170 367 L166 354 Z" fill="url(#pants)"/>
+  <path d="M108 350 Q124 356 159 351 L157 370 Q128 381 93 373 Q83 367 92 358Z" fill="#f5f7ff"/>
+  <path d="M167 351 Q193 357 216 348 Q231 360 226 371 Q196 382 164 370Z" fill="#f5f7ff"/>
+  <path d="M107 177 Q71 181 66 230 L70 272 Q90 289 103 264 L112 210Z" fill="url(#jacket)"/>
+  <path d="M212 178 Q246 181 254 231 L252 275 Q230 289 216 261 L208 211Z" fill="url(#jacket)"/>
+  <path d="M82 261 L72 276 Q68 295 84 298 Q105 298 110 274 L101 258Z" fill="url(#skin)"/>
+  <path d="M238 259 L250 274 Q255 296 237 298 Q213 295 210 273 L219 258Z" fill="url(#skin)"/>
+  <path d="M124 176 Q160 157 196 176 L219 192 Q216 264 202 284 L119 284 Q103 256 105 192 Z" fill="url(#jacket)"/>
+  <path d="M137 174 L160 203 L182 174 L171 197 L178 282 L141 282 L148 197Z" fill="#f0efff" stroke="none"/>
+  <path d="M118 258 H202" stroke="#adbbff" stroke-width="6"/>
+  <path d="M139 115 V165 Q159 184 181 165 V115Z" fill="url(#skin)"/>
+  <path d="M108 73 Q118 32 160 35 Q208 34 212 78 L211 128 Q205 163 162 171 Q116 164 109 130Z" fill="url(#skin)"/>
+  <path d="M104 94 Q93 44 135 30 Q172 5 212 39 Q238 65 215 105 L202 83 Q183 88 173 68 Q149 86 119 85Z" fill="url(#hair)"/>
+  <path d="M111 93 Q116 69 138 59 Q158 79 190 68 Q207 76 209 94" fill="none" stroke="#44405d" stroke-width="7"/>
+</g>
+<g fill="#253557"><ellipse cx="138" cy="122" rx="6" ry="8"/><ellipse cx="181" cy="122" rx="6" ry="8"/></g>
+<path d="M148 145 Q160 153 172 145" fill="none" stroke="#9e5a5a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="121" cy="137" r="9" fill="#e49591" opacity=".3"/><circle cx="197" cy="137" r="9" fill="#e49591" opacity=".3"/>
+<path d="M160 207 V265" stroke="#8a96d7" stroke-width="4"/><circle cx="160" cy="230" r="4" fill="#5c66af"/>
+</svg>

@@ -54,7 +54,7 @@ def page(title, description, main, prefix="", script=""):
 
 
 def subject_href(subject, prefix=""):
-    if len(subject) > 7:
+    if len(subject) > 7 and "url" in subject[7]:
         return subject[7]["url"]
     return f"{prefix}{subject[0]}.html"
 
@@ -68,7 +68,8 @@ def subject_card(subject):
         link = subject[7]
         aliases = f' data-aliases="{escape(link["aliases"])}"'
         label = link["label"]
-        arrow = "↗"
+        if "url" in link:
+            arrow = "↗"
     return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}"{aliases}>
   <a href="{escape(subject_href(subject, "subjects/"))}">
     <span class="card-top"><span class="symbol" aria-hidden="true">{escape(symbol)}</span><span class="code">{code}</span></span>
@@ -88,7 +89,10 @@ def home():
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
     <p>Find clear revision notes and quick practice questions for {len(SUBJECTS)} IGCSE subjects.</p>
-    <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
+    <div class="hero-actions">
+      <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
+      <a class="python-link" href="subjects/python.html">Practise Python <span aria-hidden="true">→</span></a>
+    </div>
   </div>
   <div class="hero-art" aria-hidden="true">
     <div class="art-grid"></div>
@@ -124,10 +128,10 @@ def topic_card(index, topic):
 
 
 def subject_page(subject, next_subject):
-    if len(subject) > 7:
+    if len(subject) > 7 and "url" in subject[7]:
         return
-    slug, name, code, group, symbol, description, topics = subject
-    if slug in {"chemistry", "economics", "physics"}:
+    slug, name, code, group, symbol, description, topics = subject[:7]
+    if slug in {"chemistry", "computer-science", "economics", "mathematics", "physics"}:
         return
     links = "".join(f'<li><a href="#topic-{index}">{escape(topic[0])}</a></li>'
                     for index, topic in enumerate(topics, 1))

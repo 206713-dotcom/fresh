@@ -1,9 +1,9 @@
 [
-  ["mathematics","Mathematics","0580","Maths & technology","∑","Build confidence with equations, shapes and data.",[
+  ["mathematics","Mathematics","0580","Maths & technology","∑","Choose IGCSE revision or competition maths practice.",[
     ["Linear equations","Use inverse operations on both sides to isolate the unknown. Substitute your answer back into the original equation to check it.","Solve 3x + 7 = 22.","Subtract 7 to get 3x = 15. Divide by 3 to get x = 5."],
     ["Right-angled trigonometry","Relative to the chosen angle, sine is opposite ÷ hypotenuse, cosine is adjacent ÷ hypotenuse and tangent is opposite ÷ adjacent.","The side opposite θ is 6 cm and the adjacent side is 8 cm. Find θ to one decimal place.","tan θ = 6 ÷ 8 = 0.75, so θ = tan⁻¹(0.75) ≈ 36.9°."],
     ["Probability","For equally likely outcomes, divide the number of favourable outcomes by the total number of outcomes.","A bag holds 4 red and 6 blue counters. Find the probability of drawing a red counter at random.","P(red) = 4 ÷ 10 = 2/5."]
-  ]],
+  ],{"aliases":"maths|igcse maths|mathquest|competition maths|vertex maths|olympiad","label":"Explore maths"}],
   ["english-language","First Language English","0500","English & humanities","Aa","Read closely and write with purpose.",[
     ["Inference","An inference is a conclusion supported by clues. Identify the detail and explain how it supports your interpretation.","‘Lina reread the message three times before pressing send.’ What might this suggest about Lina?","She may be nervous about how the message will be received. Rereading it three times suggests she wants to avoid a mistake."],
     ["Writer’s effects","Pick a precise word or image. Explain what it suggests and how it shapes the reader’s impression of the scene.","What effect does ‘the wind clawed at the shutters’ create?","‘Clawed’ makes the wind sound like an attacking animal, giving the scene a threatening atmosphere."],
@@ -29,11 +29,11 @@
     ["Forces","For a constant mass, the resultant force equals mass × acceleration. Use kilograms, metres per second squared and newtons.","A 4 kg object accelerates at 3 m/s². Find the resultant force.","F = ma = 4 × 3 = 12 N in the direction of acceleration."],
     ["Circuits","Potential difference equals current × resistance. Components in series carry the same current.","A 6 Ω resistor has a 12 V potential difference across it. Find the current.","I = V ÷ R = 12 ÷ 6 = 2 A."]
   ]],
-  ["computer-science","Computer Science","0478","Maths & technology","‹/›","Practise algorithms, data representation and logic.",[
+  ["computer-science","Computer Science","0478","Maths & technology","‹/›","Practise algorithms, data representation and logic, or learn Python with PyQuest.",[
     ["Binary","Each binary place represents a power of two. From the right, the first four place values are 1, 2, 4 and 8.","Convert binary 1011 to decimal.","8 + 0 + 2 + 1 = 11."],
     ["Trace tables","A trace table records how variables change as an algorithm runs. Track one loop iteration at a time.","Start total at 0. Add 2, then 4, then 6 in a loop. List total after each iteration.","The running totals are 2, 6 and 12."],
     ["Boolean logic","An AND operation is true only when both inputs are true. OR is true when at least one input is true. NOT reverses its input.","Evaluate NOT(A AND B) when A is true and B is false.","A AND B is false. NOT false is true."]
-  ]],
+  ],{"aliases":"python|pyquest|coding","label":"Start revising"}],
   ["ict","Information & Communication Technology","0417","Maths & technology","▣","Build practical skills with spreadsheets, databases and digital safety.",[
     ["Spreadsheet references","A relative cell reference moves when copied. A dollar sign locks the row or column that follows it.","Copy =B2*$E$1 from C2 down to C3. What does the formula become?","=B3*$E$1. The relative row changes and the fixed reference stays E1."],
     ["Databases","A primary key uniquely identifies a record. Use field types that match how the data will be stored and queried.","Why is a student ID a better primary key than a surname?","Student IDs can be unique, while several students may share a surname."],

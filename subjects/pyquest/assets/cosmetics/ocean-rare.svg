@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="gear" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0" stop-color="#c8f3fe"/><stop offset=".24" stop-color="#39b9de"/><stop offset=".72" stop-color="#3768d1"/><stop offset="1" stop-color="#163e6e"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#39b9de" stop-opacity=".8"/><stop offset=".4" stop-color="#3768d1" stop-opacity=".44"/><stop offset="1" stop-color="#39b9de" stop-opacity="0"/></radialGradient>
+      <filter id="ds" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/><feOffset in="blur" dy="13" result="offset"/><feComponentTransfer in="offset" result="dark"><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode in="dark"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g filter="url(#ds)">
+    <g transform="translate(121 0) scale(1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#163e6e" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#c8f3fe" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#163e6e" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#c8f3fe" stroke-width="6" opacity=".65"/>
+    </g>
+    <g transform="translate(279 0) scale(-1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#163e6e" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#c8f3fe" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#163e6e" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#c8f3fe" stroke-width="6" opacity=".65"/>
+    </g><g transform="translate(121 207) scale(0.36)" fill="none" stroke="#ecfcff" stroke-width="5" stroke-linecap="round"><path d="M-31 -7 Q-15 -21 1 -7 T32 -7"/><path d="M-31 10 Q-15 -4 1 10 T32 10"/></g><circle cx="128.2" cy="197.64" r="2.16" fill="#edffff"/><g transform="translate(279 207) scale(0.36)" fill="none" stroke="#ecfcff" stroke-width="5" stroke-linecap="round"><path d="M-31 -7 Q-15 -21 1 -7 T32 -7"/><path d="M-31 10 Q-15 -4 1 10 T32 10"/></g><circle cx="286.2" cy="197.64" r="2.16" fill="#edffff"/></g>
+  </svg>

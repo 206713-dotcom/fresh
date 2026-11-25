@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <linearGradient id="gear" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0" stop-color="#ffd06b"/><stop offset=".24" stop-color="#ff6b37"/><stop offset=".72" stop-color="#d72f54"/><stop offset="1" stop-color="#49223f"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#ff6b37" stop-opacity=".8"/><stop offset=".4" stop-color="#d72f54" stop-opacity=".44"/><stop offset="1" stop-color="#ff6b37" stop-opacity="0"/></radialGradient>
+      <filter id="ds" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur"/><feOffset in="blur" dy="13" result="offset"/><feComponentTransfer in="offset" result="dark"><feFuncA type="linear" slope=".24"/></feComponentTransfer><feMerge><feMergeNode in="dark"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g filter="url(#ds)">
+    <g transform="translate(121 0) scale(1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#49223f" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#ffd06b" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#49223f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#ffd06b" stroke-width="6" opacity=".65"/>
+    </g>
+    <g transform="translate(279 0) scale(-1 1)">
+      <path d="M-46 120 L26 118 L32 164 L45 189 L33 260 Q8 290 -32 267 L-48 196 Z" fill="url(#gear)" stroke="#49223f" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M-42 169 L31 166 L32 186 L-42 190Z" fill="#ffd06b" opacity=".8"/>
+      <path d="M-29 226 L-27 268 M-4 226 V276 M19 223 L20 265" stroke="#49223f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-36 142 L19 139" stroke="#ffd06b" stroke-width="6" opacity=".65"/>
+    </g><g transform="translate(121 207) scale(0.36)"><path d="M -2 34 Q -29 14 -7 -19 L-12 -33 Q 17 -12 8 6 Q 31 -13 26 -29 Q 56 22 2 35 Z" fill="#ffce67" stroke="#fff4bc" stroke-width="4"/><path d="M 0 21 Q -7 12 3 -8 Q 27 18 0 21" fill="#ff723d"/></g><g transform="translate(279 207) scale(0.36)"><path d="M -2 34 Q -29 14 -7 -19 L-12 -33 Q 17 -12 8 6 Q 31 -13 26 -29 Q 56 22 2 35 Z" fill="#ffce67" stroke="#fff4bc" stroke-width="4"/><path d="M 0 21 Q -7 12 3 -8 Q 27 18 0 21" fill="#ff723d"/></g></g>
+  </svg>

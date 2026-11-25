@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360">
+      <defs><linearGradient id="chest" x1=".1" y1=".1" x2=".9" y2=".9"><stop stop-color="#f7fbff"/><stop offset=".25" stop-color="#7fcaf9"/><stop offset=".75" stop-color="#b8d6fc"/><stop offset="1" stop-color="#335985"/></linearGradient>
+      <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff" stop-opacity=".68"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+      <filter id="shadow"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-opacity=".38"/></filter>
+      <radialGradient id="glow"><stop stop-color="#f7fbff" stop-opacity=".9"/><stop offset="1" stop-color="#f7fbff" stop-opacity="0"/></radialGradient></defs>
+      <ellipse cx="210" cy="318" rx="157" ry="21" fill="#1a2356" opacity=".28"/>
+      <circle cx="210" cy="152" r="151" fill="url(#glow)" opacity=".45"/>
+      <g filter="url(#shadow)">
+        <path d="M91 103 Q104 67 154 61 H270 Q317 70 330 103 L341 161 L79 161Z" fill="url(#chest)" stroke="#335985" stroke-width="12"/>
+        <path d="M91 103 L329 103" stroke="#f7fbff" stroke-width="9" opacity=".82"/>
+        <path d="M90 148 L325 148" stroke="#335985" stroke-width="12"/>
+        <path d="M72 155 L210 189 L347 155 L333 285 L210 328 L87 285Z" fill="url(#chest)" stroke="#335985" stroke-width="12" stroke-linejoin="round"/>
+        <path d="M72 155 L210 189 L347 155" fill="none" stroke="#f7fbff" stroke-width="12"/>
+        <path d="M210 189 L210 328" stroke="#335985" stroke-width="10"/>
+        <path d="M95 190 L190 212 L190 286 L105 263Z" fill="url(#shine)" opacity=".38"/>
+        <path d="M232 213 L315 191 L307 267 L232 293Z" fill="#335985" opacity=".18"/>
+        <path d="M185 181 L235 181 L235 224 Q210 239 185 224Z" fill="#335985" stroke="#f7fbff" stroke-width="8"/>
+        <circle cx="210" cy="207" r="10" fill="#f7fbff"/>
+      </g>
+      <g transform="translate(211 116) scale(0.75)" stroke="#faffff" stroke-width="5" stroke-linecap="round"><path d="M0 -35 V35 M-30 -18 L30 18 M-30 18 L30 -18"/><path d="M-8 -24 L0 -16 L8 -24 M-8 24 L0 16 L8 24 M-26 -8 L-15 -10 L-19 -20 M26 8 L15 10 L19 20" fill="none"/></g>
+      <g fill="#fff" opacity=".65"><circle cx="68" cy="90" r="5"/><circle cx="348" cy="80" r="4"/><path d="M356 167 L366 156 L376 167 L366 178Z"/><path d="M44 218 L51 207 L58 218 L51 229Z"/></g>
+    </svg>

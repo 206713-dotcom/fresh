@@ -26,7 +26,10 @@
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
     <p>Find clear revision notes and quick practice questions for 13 IGCSE subjects.</p>
-    <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
+    <div class="hero-actions">
+      <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
+      <a class="python-link" href="subjects/python.html">Practise Python <span aria-hidden="true">→</span></a>
+    </div>
   </div>
   <div class="hero-art" aria-hidden="true">
     <div class="art-grid"></div>
@@ -44,12 +47,12 @@
     <label>Subject group <select id="group"><option value="">All groups</option><option value="technology">Maths &amp; technology</option><option value="science">Sciences</option><option value="humanities">English &amp; humanities</option><option value="business">Business &amp; economics</option></select></label>
   </div>
   <p id="empty" hidden>No subjects match. Try another name, syllabus code or group.</p>
-  <ul class="grid"><li class="card technology" data-group="technology">
+  <ul class="grid"><li class="card technology" data-group="technology" data-aliases="maths|igcse maths|mathquest|competition maths|vertex maths|olympiad">
   <a href="subjects/mathematics.html">
     <span class="card-top"><span class="symbol" aria-hidden="true">∑</span><span class="code">0580</span></span>
     <h3>Mathematics</h3>
-    <p>Build confidence with equations, shapes and data.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
+    <p>Choose IGCSE revision or competition maths practice.</p>
+    <span class="card-link">Explore maths <span aria-hidden="true">→</span></span>
   </a>
 </li>
 <li class="card humanities" data-group="humanities">
@@ -92,11 +95,11 @@
     <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
   </a>
 </li>
-<li class="card technology" data-group="technology">
+<li class="card technology" data-group="technology" data-aliases="python|pyquest|coding">
   <a href="subjects/computer-science.html">
     <span class="card-top"><span class="symbol" aria-hidden="true">‹/›</span><span class="code">0478</span></span>
     <h3>Computer Science</h3>
-    <p>Practise algorithms, data representation and logic.</p>
+    <p>Practise algorithms, data representation and logic, or learn Python with PyQuest.</p>
     <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
   </a>
 </li>

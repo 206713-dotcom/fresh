@@ -367,3 +367,15 @@
   }
   .fresh-home .hero em::after { clip-path: none; }
 }
+
+/* Keep optional study tools discoverable beside the subject directory. */
+.fresh-home .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .85rem; }
+.fresh-home .hero-actions .python-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: #f2f7da;
+  font-weight: 700;
+  text-underline-offset: .24em;
+}
