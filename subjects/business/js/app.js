@@ -106,7 +106,7 @@
           '<button type="button" id="mobileNavBtn" class="lg:hidden p-1.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#1C1917] dark:text-white" aria-expanded="false" aria-label="Open study navigation">' + icon('menu', 24, 'w-5 h-5') + '</button>' +
         '</div></div>' +
       '<nav class="business-nav" aria-label="Business study tools"><div class="business-nav-inner">' +
-        '<a class="business-nav-home" href="../../index.html">' + icon('arrowLeft', 16) + ' Fresh</a>' +
+        '<a class="business-nav-home" href="../../" aria-label="Fresh homepage" title="Fresh homepage">' + icon('arrowLeft', 16) + ' Fresh</a>' +
         '<div class="business-nav-tools">' +
           navBtn('overview', 'layoutGrid', 'Overview') +
           navBtn('progress', 'chartColumn', 'My progress') +

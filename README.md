@@ -47,7 +47,7 @@ Review spreadsheet references, databases and digital security. [Open ICT](https:
 
 ### Design and Technology (0445)
 
-RM Revise covers Paper 1 Product Design and Paper 3 Resistant Materials with lessons, a 3D workshop, quizzes and flashcards. Alexey Lykosov created and maintains the site. [Open RM Revise](https://penguinplaze.github.io/RM_REVISION/) · [RM Revise on GitHub](https://github.com/PENGUINPLAZE/RM_REVISION)
+RM Revise covers Paper 1 Product Design and Paper 3 Resistant Materials with lessons, a 3D workshop, quizzes and flashcards. Alexey Lykosov created and maintains the site. [Open RM Revise](https://gisfresh.me/subjects/design-and-technology/) · [RM Revise on GitHub](https://github.com/PENGUINPLAZE/RM_REVISION)
 
 ### Geography (0460)
 
@@ -67,7 +67,7 @@ Work through Paper 1 questions, Paper 2 case studies and interactive lessons. Tr
 
 ## Progress and privacy
 
-Business Studies, Economics and PyQuest save progress in the current browser. Business Studies and Economics can export a progress CSV. In PyQuest, use Local profile to download or restore a backup.
+Business Studies, Economics and PyQuest save progress in the current browser. Business Studies and Economics can export a progress CSV. In PyQuest or MathQuest, use Local profile to download or restore a backup. Vertex Maths has backup tools under My progress. RM Revise offers local sync links. Progress from an old site address can be brought across using those tools.
 
 ## Run Fresh locally
 
@@ -77,7 +77,7 @@ From the repository root, start a local server with Python 3.
 python -m http.server 8000
 ```
 
-Open [localhost:8000](http://localhost:8000/). Business Studies, Economics, Chemistry, Physics and PyQuest are served from the repo as static files. The Maths tracks open the hosted MathQuest and Vertex Maths apps. The Design and Technology card opens RM Revise.
+Open [localhost:8000](http://localhost:8000/). All Fresh subject apps are served as static files from this repository. The Maths tracks open MathQuest and Vertex Maths. The Design and Technology card opens RM Revise.
 
 Run `node build.mjs` to assemble a static `dist/` folder.
 

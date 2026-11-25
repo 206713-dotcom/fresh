@@ -15,14 +15,10 @@ GROUPS = {
 
 def page(title, description, main, prefix="", script=""):
     is_home = not prefix
-    brand = "Fresh" if is_home else "Study Commons"
-    mark = ('<img src="fresh.svg" width="40" height="40" alt="">' if is_home
-            else '<span class="logo" aria-hidden="true">✦</span>')
-    home_assets = (
-        '<link rel="stylesheet" href="home.css">\n'
-        '<link rel="icon" href="fresh.svg" type="image/svg+xml">\n'
-        if is_home else ""
-    )
+    brand = "Fresh"
+    logo_size = 40 if is_home else 34
+    mark = f'<img src="{prefix}fresh.svg" width="{logo_size}" height="{logo_size}" alt="">'
+    home_assets = '<link rel="stylesheet" href="home.css">\n' if is_home else ""
     body = '<body class="fresh-home">' if is_home else '<body>'
     return f"""<!doctype html>
 <html lang="en">
@@ -32,13 +28,14 @@ def page(title, description, main, prefix="", script=""):
 <meta name="description" content="{escape(description)}">
 <title>{escape(title)} | {brand}</title>
 <link rel="stylesheet" href="{prefix}style.css">
+<link rel="icon" href="{prefix}fresh.svg" type="image/svg+xml">
 {home_assets}{script}
 </head>
 {body}
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap topbar" aria-label="Main navigation">
-    <a class="brand" href="{prefix}index.html">{mark} {brand}</a>
+    <a class="brand" href="{prefix or './'}" aria-label="Fresh homepage">{mark} {brand}</a>
     <a href="{prefix}index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
@@ -54,9 +51,10 @@ def page(title, description, main, prefix="", script=""):
 
 
 def subject_href(subject, prefix=""):
-    if len(subject) > 7 and "url" in subject[7]:
-        return subject[7]["url"]
-    return f"{prefix}{subject[0]}.html"
+    url = subject[7].get("url") if len(subject) > 7 else None
+    if url and url.startswith(("https://", "http://")):
+        return url
+    return prefix + (url or f"{subject[0]}.html")
 
 
 def subject_card(subject):
@@ -68,7 +66,7 @@ def subject_card(subject):
         link = subject[7]
         aliases = f' data-aliases="{escape(link["aliases"])}"'
         label = link["label"]
-        if "url" in link:
+        if link.get("url", "").startswith(("https://", "http://")):
             arrow = "↗"
     return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}"{aliases}>
   <a href="{escape(subject_href(subject, "subjects/"))}">
