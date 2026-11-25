@@ -1,9 +1,16 @@
 /* =========================================================
    Fresh homepage
    1. Page and header
-   2. Hero banner (layout, background, copy, art, motion)
+   2. Hero banner
+      2a. Stage (full-width surface and fallback background)
+      2b. Live layers added by home.js (sky, spotlight, grain, dust)
+      2c. Copy (eyebrow, heading, text, button)
+      2d. Art (halo, pulses, orbit chips, logo tile, subject count)
+      2e. Ticker tapes
+      2f. Motion
    3. Subject directory
    4. Small screens and reduced motion
+   Colours are the Fresh palette only: greens, lime, peach and cream.
    ========================================================= */
 
 /* ---------- 1. Page and header ---------- */
@@ -12,254 +19,258 @@
   --peach: #f6bb83;
   --cream: #f6efd8;
   --sage: #9bb39b;
+  --deep: #132c27;
   background: var(--paper);
   color: var(--ink);
+  overflow-x: clip;
 }
-.fresh-home .site-header { background: var(--white); }
+.fresh-home .skip { z-index: 30; }
+.fresh-home .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fffefad9;
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  backdrop-filter: blur(14px) saturate(1.5);
+}
 .fresh-home .topbar { min-height: 70px; }
 .fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
 .fresh-home .brand img { display: block; }
-/* Keep the brand on the left and group the page links together on the right, at one size */
+/* Brand on the left, page links grouped on the right at one size */
 .fresh-home .topbar > :nth-child(2) { margin-left: auto; }
 .fresh-home .topbar > a:not(.brand) { color: var(--ink); font-size: .87rem; }
 
 /* ---------- 2. Hero banner ---------- */
 
-/* 2a. Layout and surface */
+/* 2a. Stage: breaks out of the page column and fills the screen under the header */
 .fresh-home .hero {
   --mx: 0;
   --my: 0;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  min-height: 440px;
-  padding: clamp(2.25rem, 5vw, 4.2rem);
-  border-radius: 1.35rem;
+  --px: 70%;
+  --py: 40%;
+  width: 100vw;
+  min-height: clamp(560px, calc(100svh - 71px), 900px);
+  margin: 0 calc(50% - 50vw);
+  padding: clamp(2.5rem, 5vw, 4.5rem) max(24px, calc(50vw - 560px)) clamp(7rem, 11vw, 9rem);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: 1rem;
+  border-radius: 0;
+  /* Shown as-is when WebGL or JavaScript is unavailable */
   background:
-    radial-gradient(120% 95% at 100% 0%, #315c48 0%, transparent 56%),
-    linear-gradient(118deg, #1c392d 12%, #234435 55%, #2b4f3f 100%);
-  box-shadow: inset 0 1px 0 #ffffff17, 0 18px 44px #192e2826, 0 2px 6px #192e2812;
+    radial-gradient(60% 70% at 74% 44%, #48705a 0%, transparent 62%),
+    radial-gradient(50% 60% at 8% 100%, #f6bb8326 0%, transparent 70%),
+    radial-gradient(70% 80% at 100% 0%, #315c48 0%, transparent 60%),
+    linear-gradient(118deg, #132c27 0%, #1c392d 45%, #24463a 100%);
+  box-shadow: none;
 }
 
-/* 2b. Decorative background: glows, dot texture, sparkles and brand streaks */
-.fresh-home .hero-glow {
+/* 2b. Live layers. home.js creates these, so the page works without them. */
+.fresh-home .hero-sky, .fresh-home .hero-dust {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.fresh-home .hero-sky { z-index: -3; opacity: 0; transition: opacity 1.2s ease; }
+.fresh-home .hero-sky.is-on { opacity: 1; }
+.fresh-home .hero-dust { z-index: 3; }
+/* Soft light that follows the pointer */
+.fresh-home .hero-spot {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(34rem circle at var(--px) var(--py), #e4eeb224, #e4eeb20a 42%, transparent 68%);
+  pointer-events: none;
+}
+/* Fine film grain so gradients never band */
+.fresh-home .hero-grain {
   position: absolute;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
-  border-radius: inherit;
+  opacity: .16;
+  mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events: none;
 }
-.fresh-home .hero-glow::before {
+/* Bottom edge melts into the ticker */
+.fresh-home .hero::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image: radial-gradient(var(--lime) .8px, transparent 1.25px);
-  background-size: 18px 18px;
-  opacity: .1;
-  mask-image: linear-gradient(100deg, transparent 28%, black 78%);
+  inset: auto 0 0;
+  z-index: 3;
+  height: 9rem;
+  background: linear-gradient(transparent, #0f2620cc);
+  pointer-events: none;
 }
-.fresh-home .hero-glow::after {
-  content: '';
-  position: absolute;
-  inset: 0 8% auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #e4eeb266, transparent);
-}
-.fresh-home .glow {
-  position: absolute;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  translate: calc(var(--mx) * -14px) calc(var(--my) * -10px);
-  transition: translate .7s ease-out;
-}
-.fresh-home .glow-lime {
-  top: -48%;
-  right: -14%;
-  width: 62%;
-  background: radial-gradient(closest-side, #e4eeb238, transparent);
-  animation: fresh-drift 16s ease-in-out infinite alternate;
-}
-.fresh-home .glow-sage {
-  top: 8%;
-  left: 26%;
-  width: 52%;
-  background: radial-gradient(closest-side, #6f9b7c30, transparent);
-  animation: fresh-drift 21s ease-in-out -6s infinite alternate-reverse;
-}
-.fresh-home .glow-peach {
-  bottom: -55%;
-  left: -14%;
-  width: 52%;
-  background: radial-gradient(closest-side, #f6bb832b, transparent);
-  animation: fresh-drift 19s ease-in-out -3s infinite alternate;
-}
-.fresh-home .spark {
-  position: absolute;
-  width: var(--size, 12px);
-  aspect-ratio: 1;
-  background: var(--colour, var(--lime));
-  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
-  opacity: .7;
-  animation: fresh-twinkle 4.2s ease-in-out var(--delay, 0s) infinite;
-}
-.fresh-home .s1 { top: 13%; left: 47%; --size: 13px; }
-.fresh-home .s2 { top: 74%; left: 43%; --size: 9px; --colour: var(--peach); --delay: -1.4s; }
-.fresh-home .s3 { top: 9%; right: 9%; --size: 10px; --colour: var(--cream); --delay: -2.6s; }
-.fresh-home .s4 { bottom: 9%; right: 36%; --size: 15px; --delay: -.8s; }
-.fresh-home .s5 { top: 45%; right: 3%; --size: 8px; --colour: var(--peach); --delay: -3.3s; }
-.fresh-home .s6 { bottom: 14%; left: 3.5%; --size: 9px; --colour: var(--cream); --delay: -2s; }
-.fresh-home .streak {
-  position: absolute;
-  height: 9px;
-  border-radius: 2px;
-  transform: skewX(-30deg);
-  opacity: .5;
-}
-.fresh-home .k1 { bottom: 7%; left: 49%; width: 56px; background: var(--lime); }
-.fresh-home .k2 { bottom: calc(7% + 15px); left: calc(49% + 28px); width: 26px; background: var(--peach); }
 
-/* 2c. Copy: eyebrow, heading, text and button */
-.fresh-home .hero-copy { position: relative; z-index: 1; }
-.fresh-home .hero-copy > * { animation: fresh-rise .75s cubic-bezier(.2, .7, .2, 1) both; }
-.fresh-home .hero-copy > :nth-child(2) { animation-delay: .08s; }
-.fresh-home .hero-copy > :nth-child(3) { animation-delay: .18s; }
-.fresh-home .hero-copy > :nth-child(4) { animation-delay: .28s; }
+/* 2c. Copy */
+.fresh-home .hero-copy { position: relative; z-index: 5; }
 .fresh-home .hero .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: .55rem;
-  margin-bottom: 1.2rem;
-  padding: .42rem .8rem .42rem .62rem;
-  border: 1px solid #e4eeb233;
+  margin-bottom: 1.35rem;
+  padding: .46rem .9rem .46rem .68rem;
+  border: 1px solid #e4eeb23d;
   border-radius: 2rem;
-  background: #e4eeb210;
+  background: #e4eeb214;
   color: #dce9ae;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: fx-rise .8s cubic-bezier(.2, .7, .2, 1) .1s both;
 }
 .fresh-home .hero .eyebrow span {
   width: .48rem;
   height: .48rem;
   border-radius: 50%;
   background: var(--lime);
-  animation: fresh-ping 2.6s ease-out infinite;
+  box-shadow: 0 0 12px var(--lime);
+  animation: fx-ping 2.4s ease-out infinite;
 }
 .fresh-home h1, .fresh-home h2 { font-family: inherit; font-weight: 800; }
 .fresh-home .hero h1 {
-  font-size: clamp(3.05rem, 6.3vw, 5.45rem);
+  font-size: clamp(3.1rem, 7.5vw, 6.9rem);
   letter-spacing: -.078em;
-  line-height: .96;
-  text-shadow: 0 2px 24px #0d1f1a40;
+  line-height: .93;
+  text-shadow: 0 4px 40px #0b1c1680;
+  perspective: 900px;
+}
+/* home.js wraps each letter of the first words so they can fall into place */
+.fresh-home .hero h1 .word { display: inline-block; white-space: nowrap; }
+.fresh-home .hero h1 .ch {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  animation: fx-letter .95s cubic-bezier(.2, .8, .2, 1) calc(.3s + var(--i) * 42ms) both;
 }
 .fresh-home .hero em {
   position: relative;
   display: inline-block;
-  padding-right: .04em;
+  padding-right: .05em;
   color: var(--lime);
   font-style: normal;
+  filter: blur(0) drop-shadow(0 0 1.6rem #e4eeb250);
+  animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both;
 }
-/* A soft light passes over "revision." every few seconds */
+/* Lime, cream and peach light flowing through "revision." */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .fresh-home .hero em {
-    background: linear-gradient(100deg, var(--lime) 42%, #fffbe8 50%, var(--lime) 58%) 100% 0 / 260% 100%;
+    background: linear-gradient(100deg, var(--lime) 0%, #fbfde9 22%, var(--lime) 42%, var(--peach) 62%, var(--lime) 82%, var(--lime) 100%) 0 0 / 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
-    animation: fresh-shimmer 8s ease-in-out 1.6s infinite;
+    animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both, fx-flow 9s linear 2s infinite;
   }
 }
-/* Hand-drawn peach underline under "revision." */
+/* Hand-drawn peach underline */
 .fresh-home .hero em::after {
   content: '';
   position: absolute;
   left: 1%;
   right: 7%;
-  bottom: -.1em;
+  bottom: -.09em;
   height: .2em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M4 15C52 6 118 2 196 8' fill='none' stroke='%23f6bb83' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   clip-path: inset(0 100% 0 0);
-  animation: fresh-draw .9s cubic-bezier(.6, 0, .2, 1) .75s forwards;
+  animation: fx-draw .9s cubic-bezier(.6, 0, .2, 1) 1.7s forwards;
 }
-.fresh-home .hero-copy > p:not(.eyebrow) { color: #e0e9e2; margin-block: 1.3rem 1.6rem; }
+.fresh-home .hero-copy > p:not(.eyebrow) {
+  max-width: 34ch;
+  margin-block: 1.6rem 1.9rem;
+  color: #e0e9e2;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.25s both;
+}
 .fresh-home .button { background: var(--lime); color: #213b30; padding: .85rem 1.05rem; }
 .fresh-home .button:hover { background: #f2f7da; }
 .fresh-home .hero .button {
-  box-shadow: inset 0 -2px 0 #c8d78e, 0 8px 22px #0d1f1a45;
-  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 1.3rem;
+  border-radius: .75rem;
+  font-size: 1.02rem;
+  box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 0 #e4eeb266;
+  transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease, background-color .2s ease;
+  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.4s both, fx-halo 3.2s ease-out 2.6s infinite;
 }
 .fresh-home .hero .button:hover {
-  transform: translateY(-2px);
-  box-shadow: inset 0 -2px 0 #c8d78e, 0 12px 28px #0d1f1a5c, 0 0 0 4px #e4eeb229;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: inset 0 -2px 0 #c8d78e, 0 16px 40px #0b1c168c, 0 0 2.6rem #e4eeb259;
 }
-.fresh-home .hero .button > span { display: inline-block; animation: fresh-nudge 2.4s ease-in-out 1.4s infinite; }
+/* A streak of light crosses the button */
+.fresh-home .hero .button::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, #ffffffb3, transparent);
+  transform: skewX(-30deg);
+  animation: fx-sheen 4.5s ease-in-out 2.4s infinite;
+}
+.fresh-home .hero .button > span { display: inline-block; animation: fx-nudge 2.2s ease-in-out 2s infinite; }
 
-/* 2d. Art: grid, halo, subject orbit, logo tile (unchanged) and subject count */
-.fresh-home .hero-art {
-  --orbit-tilt: -12deg;
-  --chip: 2.05rem;
-  min-height: 320px;
-  isolation: isolate;
-  container-type: inline-size;
-}
+/* 2d. Art. The logo tile keeps its original look; everything else is built around it.
+   Depth order inside the banner: far chips (1) < logo tile (2) < dust (3) < near chips (4) < badge and copy (5). */
+.fresh-home .hero-art { min-height: 360px; }
 .fresh-home .hero-art::before {
   content: '';
   position: absolute;
-  left: 12%;
-  right: 12%;
   top: 50%;
+  left: 50%;
+  width: min(150%, 44rem);
   aspect-ratio: 1;
-  margin-top: -38%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, #e4eeb22b, #e4eeb20d 60%, transparent);
-  animation: fresh-breathe 6s ease-in-out infinite;
+  background: radial-gradient(closest-side, #e4eeb247, #e4eeb21a 38%, #6f9b7c14 62%, transparent);
+  translate: -50% -50%;
+  animation: fx-breathe 5.5s ease-in-out infinite;
 }
 .fresh-home .art-grid {
   position: absolute;
-  inset: -12% -20% -12% -4%;
-  background-image: linear-gradient(#9bb39b20 1px, transparent 1px), linear-gradient(90deg, #9bb39b20 1px, transparent 1px);
+  inset: -30% -40% -30% -30%;
+  background-image: linear-gradient(#9bb39b24 1px, transparent 1px), linear-gradient(90deg, #9bb39b24 1px, transparent 1px);
   background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse, black 35%, transparent 74%);
-  translate: calc(var(--mx) * 4px) calc(var(--my) * 3px);
-  transition: translate .7s ease-out;
+  -webkit-mask-image: radial-gradient(closest-side, black 20%, transparent 85%);
+  mask-image: radial-gradient(closest-side, black 20%, transparent 85%);
+  translate: calc(var(--mx) * 8px) calc(var(--my) * 6px);
 }
-/* Orbit of subject chips around the logo. Everything here sits BEHIND the logo
-   tile (z-index 1 < 2), so the logo itself is never covered or changed.
-   The script at the end of index.html adds one chip per subject card. */
-.fresh-home .art-orbit { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.fresh-home .orbit-ring {
+/* Rings of light that travel outwards from the logo */
+.fresh-home .art-pulse {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(calc(100% - var(--chip)), 410px);
-  aspect-ratio: 1.3;
-  border: 1.5px solid #e4eeb24d;
+  width: 15rem;
+  aspect-ratio: 1;
+  border: 1.5px solid #e4eeb2;
   border-radius: 50%;
   translate: -50% -50%;
-  rotate: var(--orbit-tilt);
+  opacity: 0;
+  animation: fx-pulse 5.4s cubic-bezier(.2, .6, .3, 1) 2s infinite;
 }
-.fresh-home .orbit-ring.outer {
-  width: min(calc(100% + 2.5rem), 470px);
-  border: 1px dashed #f6bb8347;
-  animation: fresh-fade 5s ease-in-out infinite alternate;
-}
+.fresh-home .art-pulse + .art-pulse { border-color: var(--peach); animation-delay: 4.7s; }
+/* Subject chips. home.js places them on three tilted 3D orbits. */
+.fresh-home .art-orbit { position: absolute; inset: 0; pointer-events: none; }
 .fresh-home .orbit-chip {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   display: grid;
   place-items: center;
-  width: var(--chip);
-  height: var(--chip);
-  margin: calc(var(--chip) / -2) 0 0 calc(var(--chip) / -2);
-  border: 1px solid #ffffff80;
-  border-radius: .62rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: -1.25rem 0 0 -1.25rem;
+  border: 1px solid #ffffffb3;
+  border-radius: .72rem;
   background: var(--tint, var(--cream));
   color: var(--ink);
-  font: bold calc(var(--chip) * .44) / 1 Georgia, serif;
-  box-shadow: 0 6px 16px #0b1c1659;
-  translate: calc(var(--mx) * 9px) calc(var(--my) * 7px);
-  transition: translate .6s ease-out;
+  font: bold 1.12rem / 1 Georgia, serif;
+  box-shadow: 0 0 1.5rem #e4eeb266, 0 .5rem 1.2rem #0b1c1680;
+  opacity: 0;
   will-change: transform, opacity;
 }
-/* Logo tile: exactly the original design. Only z-index is added so the orbit can sit behind it. */
+/* Logo tile: the original design, untouched. Only z-index is added for depth sorting. */
 .fresh-home .art-tile {
   position: relative;
   z-index: 2;
@@ -280,20 +291,18 @@
 .fresh-home .art-index {
   position: absolute;
   z-index: 5;
-  right: 1%;
-  bottom: 6%;
+  right: 4%;
+  bottom: 4%;
   display: flex;
   align-items: center;
   gap: .6rem;
   padding: .62rem .82rem .62rem .62rem;
-  border: 1px solid #e4eeb2;
+  border: 1px solid var(--lime);
   border-radius: .7rem;
   background: var(--white);
   color: var(--ink);
-  box-shadow: 0 10px 26px #132c2766;
-  translate: calc(var(--mx) * 22px) calc(var(--my) * 16px);
-  transition: translate .45s ease-out;
-  animation: fresh-pop .7s cubic-bezier(.3, 1.5, .5, 1) .5s both, fresh-bob 6s ease-in-out 1.2s infinite;
+  box-shadow: 0 12px 30px #0b1c1680, 0 0 2rem #e4eeb233;
+  animation: fx-pop .7s cubic-bezier(.3, 1.5, .5, 1) 1.9s both, fx-bob 6s ease-in-out 2.8s infinite;
 }
 .fresh-home .art-index::before {
   content: '';
@@ -302,30 +311,79 @@
   border-radius: 4px;
   background: linear-gradient(var(--lime), var(--peach));
 }
-.fresh-home .art-index b { font-size: 1.9rem; letter-spacing: -.085em; line-height: 1; }
+.fresh-home .art-index b { min-width: 1.1em; font-size: 1.9rem; letter-spacing: -.085em; line-height: 1; font-variant-numeric: tabular-nums; }
 .fresh-home .art-index span { font-size: .59rem; font-weight: 800; letter-spacing: .08em; line-height: 1.15; }
 
-/* 2e. Motion */
-@keyframes fresh-rise { from { opacity: 0; transform: translateY(14px); } }
-@keyframes fresh-ping {
-  0% { box-shadow: 0 0 0 0 #e4eeb299; }
-  75%, 100% { box-shadow: 0 0 0 .5rem #e4eeb200; }
+/* 2e. Ticker tapes: two crossing bands along the bottom edge, filled by home.js */
+.fresh-home .hero-ticker {
+  position: absolute;
+  inset: auto -3% 1.5rem;
+  z-index: 6;
+  height: 4.6rem;
+  pointer-events: none;
+  animation: fx-rise 1s cubic-bezier(.2, .7, .2, 1) 1.6s both;
 }
-@keyframes fresh-shimmer { 0%, 55% { background-position: 100% 0; } 100% { background-position: 0 0; } }
-@keyframes fresh-draw { to { clip-path: inset(0 0 0 0); } }
-@keyframes fresh-nudge { 0%, 55%, 100% { transform: none; } 28% { transform: translateY(3px); } }
-@keyframes fresh-drift { to { transform: translate(6%, 8%) scale(1.08); } }
-@keyframes fresh-twinkle {
-  0%, 100% { opacity: .15; transform: scale(.55) rotate(0deg); }
-  50% { opacity: .85; transform: scale(1) rotate(45deg); }
+.fresh-home .ticker-band {
+  position: absolute;
+  inset: auto 0 .9rem;
+  overflow: hidden;
+  padding: .62rem 0;
+  white-space: nowrap;
+  font-size: .8rem;
+  font-weight: 850;
+  letter-spacing: .15em;
+  text-transform: uppercase;
 }
-@keyframes fresh-breathe { 0%, 100% { opacity: .75; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.04); } }
-@keyframes fresh-fade { from { opacity: .45; } to { opacity: 1; } }
-@keyframes fresh-pop { from { opacity: 0; transform: scale(.7) translateY(10px); } }
-@keyframes fresh-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.fresh-home .ticker-band.back {
+  rotate: 1.5deg;
+  border-block: 1px solid #e4eeb238;
+  background: #132c27;
+  color: #e4eeb2bf;
+}
+.fresh-home .ticker-band.front {
+  rotate: -1.4deg;
+  background: var(--lime);
+  color: #203e32;
+  box-shadow: 0 12px 34px #0b1c1699;
+}
+.fresh-home .ticker-track { display: inline-flex; align-items: center; animation: fx-marquee 46s linear infinite; }
+.fresh-home .ticker-band.back .ticker-track { animation-duration: 64s; animation-direction: reverse; }
+.fresh-home .ticker-track span { padding-inline: 1.15rem; }
+/* The separator is the slanted bar from the logo */
+.fresh-home .ticker-track i {
+  flex: none;
+  width: 1.5rem;
+  height: .5rem;
+  border-radius: 2px;
+  background: var(--peach);
+  transform: skewX(-30deg);
+}
+.fresh-home .ticker-band.front .ticker-track i:nth-of-type(even) { background: #486e57; }
+
+/* 2f. Motion */
+@keyframes fx-rise { from { opacity: 0; transform: translateY(18px); } }
+@keyframes fx-letter { from { opacity: 0; transform: translateY(.55em) rotateX(-85deg) scale(.9); filter: blur(12px); } }
+@keyframes fx-word { from { opacity: 0; transform: translateY(.35em) scale(.94); filter: blur(14px) drop-shadow(0 0 1.6rem #e4eeb200); } }
+@keyframes fx-flow { to { background-position: -300% 0; } }
+@keyframes fx-draw { to { clip-path: inset(0 0 0 0); } }
+@keyframes fx-ping {
+  0% { box-shadow: 0 0 12px var(--lime), 0 0 0 0 #e4eeb299; }
+  75%, 100% { box-shadow: 0 0 12px var(--lime), 0 0 0 .6rem #e4eeb200; }
+}
+@keyframes fx-halo {
+  0% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 0 #e4eeb266; }
+  70%, 100% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 .8rem #e4eeb200; }
+}
+@keyframes fx-sheen { 0% { left: -60%; } 30%, 100% { left: 140%; } }
+@keyframes fx-nudge { 0%, 55%, 100% { transform: none; } 28% { transform: translateY(4px); } }
+@keyframes fx-breathe { 0%, 100% { opacity: .7; scale: .92; } 50% { opacity: 1; scale: 1.06; } }
+@keyframes fx-pulse { 0% { opacity: .55; scale: .7; } 70%, 100% { opacity: 0; scale: 3.4; } }
+@keyframes fx-pop { from { opacity: 0; transform: scale(.6) translateY(14px); } }
+@keyframes fx-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes fx-marquee { to { transform: translateX(-50%); } }
 
 /* ---------- 3. Subject directory ---------- */
-.fresh-home .directory { margin-top: 3rem; }
+.fresh-home .directory { margin-top: 3.4rem; scroll-margin-top: 5.6rem; }
 .fresh-home .section-top .eyebrow { color: #48634e; }
 .fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
 .fresh-home .count { background: #edf2e7; color: #203e32; font-weight: 700; }
@@ -336,29 +394,77 @@
 .fresh-home .science { --accent: #627e48; }
 .fresh-home .humanities { --accent: #a17146; }
 .fresh-home .business { --accent: #a16478; }
-.fresh-home .card { border-top: 3px solid var(--accent); box-shadow: 0 3px 12px #192e2808; }
+.fresh-home .card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 0%;
+  position: relative;
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 3px 12px #192e2808;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+}
+.fresh-home .card:hover { box-shadow: 0 18px 40px #192e2824, 0 0 0 1px var(--accent); }
+/* Glow in the card's own accent colour that follows the pointer */
+.fresh-home .card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(16rem circle at var(--gx) var(--gy), var(--tint), transparent 70%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.fresh-home .card:hover::after { opacity: .75; }
+.fresh-home .card > * { position: relative; z-index: 1; }
 .fresh-home .card a { padding: 1.15rem 1.2rem; }
-.fresh-home .card a:hover { box-shadow: 0 8px 22px #192e2818; }
+.fresh-home .card a:hover { box-shadow: none; }
+.fresh-home .card .symbol { transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.fresh-home .card:hover .symbol { transform: scale(1.14) rotate(-6deg); }
 .fresh-home .card-link { color: #203e32; }
+.fresh-home .card-link span { display: inline-block; transition: transform .25s ease; }
+.fresh-home .card:hover .card-link span { transform: translateX(4px); }
+/* Cards and the heading rise in as they scroll into view (home.js adds .fx and .in) */
+.fresh-home.fx .section-top, .fresh-home.fx .card {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity .7s ease var(--wait, 0s), translate .7s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s),
+    transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+}
+.fresh-home.fx .section-top.in, .fresh-home.fx .card.in { opacity: 1; translate: 0 0; }
 .fresh-home :focus-visible { outline-color: #97532b; }
 .fresh-home .hero :focus-visible { outline-color: var(--lime); }
 
 /* ---------- 4. Small screens and reduced motion ---------- */
-/* When the art column gets narrow, drop the orbit so the logo has room */
-@container (max-width: 330px) {
-  .fresh-home .art-orbit { display: none; }
+@media (max-width: 850px) {
+  .fresh-home .hero { padding-inline: max(24px, 4vw); }
+  .fresh-home .orbit-chip { width: 2.1rem; height: 2.1rem; margin: -1.05rem 0 0 -1.05rem; font-size: .95rem; border-radius: .6rem; }
 }
 @media (max-width: 630px) {
-  .fresh-home .hero { min-height: 0; padding: 2rem 1.3rem 2.15rem; }
-  .fresh-home .hero h1 { font-size: clamp(2.55rem, 10vw, 3.7rem); }
+  /* Phones: logo and orbits on top, copy underneath */
+  .fresh-home .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100svh - 62px);
+    margin-top: 0;
+    padding: 1.2rem 1.3rem 7.5rem;
+  }
+  .fresh-home .hero-art { display: grid; order: -1; min-height: 250px; width: 100%; }
+  .fresh-home .art-tile { width: 132px; border-radius: 1.3rem; box-shadow: 7px 8px 0 #132c2763, 12px 14px 26px #132c2765; }
+  .fresh-home .art-tile::before { top: -13px; width: 30px; height: 7px; }
+  .fresh-home .art-tile::after { left: -16px; bottom: 8px; width: 34px; height: 7px; }
+  .fresh-home .art-index { right: 0; bottom: 0; scale: .82; transform-origin: 100% 100%; }
+  .fresh-home .art-pulse { width: 9rem; }
+  .fresh-home .orbit-chip { width: 1.7rem; height: 1.7rem; margin: -.85rem 0 0 -.85rem; font-size: .76rem; border-radius: .5rem; }
+  .fresh-home .hero h1 { font-size: clamp(2.7rem, 13.5vw, 4.2rem); }
+  .fresh-home .hero .eyebrow { margin-bottom: 1rem; }
+  .fresh-home .hero-copy > p:not(.eyebrow) { margin-block: 1.1rem 1.4rem; }
   .fresh-home .topbar { min-height: 61px; }
-  .fresh-home .directory { margin-top: 2.25rem; }
-  .fresh-home .glow-lime { top: -20%; right: -40%; width: 110%; }
-  .fresh-home .glow-peach { bottom: -40%; left: -40%; width: 100%; }
-  .fresh-home .s1 { left: auto; right: 12%; }
-  .fresh-home .s2, .fresh-home .s4 { display: none; }
-  .fresh-home .k1 { left: auto; right: 14%; bottom: 10%; }
-  .fresh-home .k2 { left: auto; right: calc(14% - 6px); bottom: calc(10% + 15px); }
+  .fresh-home .directory { margin-top: 2.25rem; scroll-margin-top: 4.8rem; }
+  .fresh-home .ticker-band { font-size: .68rem; padding: .5rem 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after {
@@ -366,16 +472,7 @@
     transition: none !important;
   }
   .fresh-home .hero em::after { clip-path: none; }
-}
-
-/* Keep optional study tools discoverable beside the subject directory. */
-.fresh-home .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .85rem; }
-.fresh-home .hero-actions .python-link {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  color: #f2f7da;
-  font-weight: 700;
-  text-underline-offset: .24em;
+  .fresh-home .art-pulse { display: none; }
+  .fresh-home.fx .section-top, .fresh-home.fx .card { opacity: 1; translate: none; transition: none; }
+  .fresh-home .card { transform: none; }
 }
