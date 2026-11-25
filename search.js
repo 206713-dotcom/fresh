@@ -7,14 +7,16 @@ const cards = [...document.querySelectorAll('.card')].map(element => ({
   element,
   name: element.querySelector('h3').textContent.toLowerCase(),
   code: element.querySelector('.code').textContent,
+  aliases: (element.dataset.aliases || '').split('|'),
 }));
 
 function filterSubjects() {
   const query = search.value.trim().toLowerCase();
   let visible = 0;
-  for (const { element, name, code } of cards) {
+  for (const { element, name, code, aliases } of cards) {
     const matchesGroup = !group.value || element.dataset.group === group.value;
     const matchesSearch = name.includes(query) || code.includes(query)
+      || aliases.some(alias => alias.includes(query))
       || (element.dataset.group === 'technology' && code === '0417' && 'ict'.includes(query));
     element.hidden = !(matchesGroup && matchesSearch);
     if (!element.hidden) visible += 1;

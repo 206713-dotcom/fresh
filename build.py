@@ -53,14 +53,28 @@ def page(title, description, main, prefix="", script=""):
 """
 
 
+def subject_href(subject, prefix=""):
+    if len(subject) > 7:
+        return subject[7]["url"]
+    return f"{prefix}{subject[0]}.html"
+
+
 def subject_card(subject):
-    slug, name, code, group, symbol, description, _ = subject
-    return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}">
-  <a href="subjects/{slug}.html">
+    _, name, code, group, symbol, description, _ = subject[:7]
+    aliases = ""
+    label = "Start revising"
+    arrow = "→"
+    if len(subject) > 7:
+        link = subject[7]
+        aliases = f' data-aliases="{escape(link["aliases"])}"'
+        label = link["label"]
+        arrow = "↗"
+    return f"""<li class="card {GROUPS[group]}" data-group="{GROUPS[group]}"{aliases}>
+  <a href="{escape(subject_href(subject, "subjects/"))}">
     <span class="card-top"><span class="symbol" aria-hidden="true">{escape(symbol)}</span><span class="code">{code}</span></span>
     <h3>{escape(name)}</h3>
     <p>{escape(description)}</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
+    <span class="card-link">{escape(label)} <span aria-hidden="true">{arrow}</span></span>
   </a>
 </li>"""
 
@@ -73,13 +87,13 @@ def home():
   <div class="hero-copy">
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
-    <p>Find clear revision notes and quick practice questions for 12 IGCSE subjects.</p>
+    <p>Find clear revision notes and quick practice questions for {len(SUBJECTS)} IGCSE subjects.</p>
     <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
   </div>
   <div class="hero-art" aria-hidden="true">
     <div class="art-grid"></div>
     <div class="art-tile"><img src="fresh.svg" width="192" height="192" alt=""></div>
-    <span class="art-index"><b>12</b><span>IGCSE<br>SUBJECTS</span></span>
+    <span class="art-index"><b>{len(SUBJECTS)}</b><span>IGCSE<br>SUBJECTS</span></span>
   </div>
 </section>
 <section class="directory" id="subjects" aria-labelledby="directory-title">
@@ -110,6 +124,8 @@ def topic_card(index, topic):
 
 
 def subject_page(subject, next_subject):
+    if len(subject) > 7:
+        return
     slug, name, code, group, symbol, description, topics = subject
     if slug in {"chemistry", "economics", "physics"}:
         return
@@ -132,7 +148,7 @@ def subject_page(subject, next_subject):
     <h2 id="revision">Revision notes</h2>
     <p>Try each question before revealing the answer. Check your exam-year syllabus for the full topic list.</p>
     {cards}
-    <a class="button next" href="{next_subject[0]}.html">Next subject · {escape(next_subject[1])} <span aria-hidden="true">→</span></a>
+    <a class="button next" href="{escape(subject_href(next_subject))}">Next subject · {escape(next_subject[1])} <span aria-hidden="true">→</span></a>
   </section>
 </div>
 """
@@ -142,7 +158,7 @@ def subject_page(subject, next_subject):
 if __name__ == "__main__":
     (ROOT / "subjects").mkdir(exist_ok=True)
     (ROOT / "index.html").write_text(
-        page("IGCSE study hub", "Revision notes and practice across 12 IGCSE subjects.",
+        page("IGCSE study hub", f"Revision notes and practice across {len(SUBJECTS)} IGCSE subjects.",
              home(), script='<script defer src="search.js"></script>'),
         encoding="utf-8",
     )
