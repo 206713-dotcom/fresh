@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="economics/practice-results.css?v=1">
   <link rel="stylesheet" href="economics/study-tools.css?v=study-improvements">
   <link rel="stylesheet" href="economics/accents.css?v=coastal-1">
+  <link rel="stylesheet" href="economics/loading.css?v=1">
+  <noscript><style>.ecbiz-route-loading { display: none; }</style></noscript>
   <script defer src="economics/catalog.js"></script>
   <script defer src="economics/lesson-points.js"></script>
   <script defer src="economics/flashcard-decks.js"></script>
@@ -22,13 +24,13 @@
   <script defer src="economics/note-visuals.js"></script>
   <script defer src="economics/syllabus-notes.js"></script>
   <script defer src="economics/syllabus-visuals.js"></script>
-  <script defer src="economics/study-routing.js?v=verified-credit-1"></script>
+  <script defer src="economics/study-routing.js?v=loading-1"></script>
   <script defer src="economics/study-improvements.js?v=copy-1"></script>
-  <script defer src="economics/app.js?v=copy-1"></script>
+  <script defer src="economics/app.js?v=loading-1"></script>
   <script defer src="economics/study-tools.js?v=study-improvements"></script>
   <script defer src="economics/mock-workspace.js?v=study-improvements"></script>
   <script defer src="economics/mock-corrections.js?v=study-improvements"></script>
-  <script defer src="economics/revision-lab.js?v=copy-1"></script>
+  <script defer src="economics/revision-lab.js?v=loading-1"></script>
   <script defer src="economics/progress.js?v=study-improvements"></script>
   <script defer src="economics/topic-search.js?v=1"></script>
   <script type="module" src="economics/progress-export.js?v=1"></script>
@@ -61,7 +63,18 @@
       </div>
     </div>
   </header>
-  <main id="main" tabindex="-1"></main>
+  <main id="main" tabindex="-1">
+    <div class="wrap ecbiz-route-loading">
+      <div class="ecbiz-loading-card">
+        <div class="ecbiz-loading-chart" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="ecbiz-loading-copy" role="status">
+          <p data-loading-label>Loading Economics…</p>
+          <div class="ecbiz-loading-track" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <noscript><p class="wrap">Enable JavaScript to open EcBiz.</p></noscript>
+  </main>
   <dialog id="topic-search" aria-labelledby="topic-search-title">
     <div class="topic-search-heading">
       <h2 id="topic-search-title">Find an Economics topic</h2>
@@ -79,6 +92,7 @@
     </div>
     <p id="marking-download-description">Download the AI marking model (about 506 MiB) to mark written answers. Your answers stay on your device. AI marks are provisional.</p>
     <button type="button" id="marking-download-start" class="primary" aria-describedby="marking-download-status" autofocus>Download model</button>
+    <div class="ecbiz-loading-track ecbiz-download-track" aria-hidden="true"></div>
     <p id="marking-download-status" role="status"></p>
   </dialog>
   <div id="local-marking-controls" class="wrap" hidden>
@@ -86,7 +100,7 @@
       <button type="button" class="primary" data-ai-download-open aria-haspopup="dialog" aria-controls="marking-download">Set up marking</button>
       <p>Download the model to mark written answers on this device.</p>
     </section>
-    <p id="marking-status" class="muted" role="status" hidden></p>
+    <p id="marking-status" class="muted ecbiz-loading-status" role="status" hidden></p>
   </div>
   <footer>
     <a class="brand" href="#home">EcBiz<span>.</span></a>

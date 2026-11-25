@@ -297,6 +297,8 @@ function setupRevisionWriting(id) {
     const versions = revisionState(key, []);
     const latest = versions.at(-1);
     button.disabled = true;
+    status.classList.add('ecbiz-loading-status');
+    status.setAttribute('data-loading', '');
     status.textContent = 'Marking your answer…';
     try {
       if (latest?.answer !== response || !latest?.grade) {
@@ -311,6 +313,7 @@ function setupRevisionWriting(id) {
     } catch (error) {
       status.textContent = error.message;
     } finally {
+      status.removeAttribute('data-loading');
       button.disabled = false;
     }
   };
@@ -405,6 +408,8 @@ function markRevisionTest(state, status, retry, onlyKey) {
     (onlyKey ? key === onlyKey : !state.grades?.[key]));
   if (!items.length) return;
   const attemptId = state.attemptId;
+  status.classList.add('ecbiz-loading-status');
+  status.setAttribute('data-loading', '');
   status.textContent = 'Marking ' + items.length + ' written answers…';
   retry.disabled = true;
   const reset = status.ownerDocument.querySelector('#revision-test-reset');
@@ -447,6 +452,7 @@ function markRevisionTest(state, status, retry, onlyKey) {
   }
   pendingRevisionTests.get(attemptId).then(markingError => {
     if (!status.isConnected) return;
+    status.removeAttribute('data-loading');
     reset.disabled = false;
     retry.disabled = false;
     if (revisionState('test',null)?.attemptId !== attemptId) return;
