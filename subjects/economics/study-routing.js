@@ -54,7 +54,7 @@ function loadEconomicsMocks() {
 }
 
 function loadEconomicsMarker() {
-  return loadEconomicsScript('local-marker.js?v=copy-1');
+  return loadEconomicsScript('local-marker.js?v=verified-credit-1');
 }
 
 const mockDataPages = new Set(['revision-test', 'revision-retry', 'revision-corrections']);

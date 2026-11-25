@@ -83,7 +83,7 @@ function normalizePoint(text) {
   return text.normalize('NFKC').toLowerCase()
     .replace(/[’‘]/g, "'").replace(/[‐‑–—]/g, '-')
     .replace(/^\s*(?:[•*-]|\d+[.)])\s*/, '')
-    .replace(/\s*\(1\)\s*$/, '').replace(/[.!?,:]+$/, '')
+    .replace(/\s*\(1\)(?=[.!?,:]?\s*$)/, '').trim().replace(/[.!?,:]+$/, '')
     .replace(/\s+/g, ' ').trim();
 }
 
@@ -134,54 +134,121 @@ function exactEvidence(points, clause, definition = false) {
   return hits;
 }
 
-function exactRouteGrade(question, answer) {
-  const header = question.scheme.split('\n')[0];
-  const linked = /^Maximum [46] marks\..*Credit two distinct (?:explanations|analytical routes), up to [23] marks/i.test(header);
-  const chooseOne = question.marks === 2 && /\bChoose one route\b/i.test(question.note ?? '');
-  if (!linked && !chooseOne) return;
-  const lines = question.scheme.split('\n').filter(line => linked ? /^\d+\.\s/.test(line) : line.startsWith('• '));
-  const routes = lines.map(line => line.replace(/^(?:\d+\.|•)\s+/, '').split(linked ? ' → ' : ';')
-    .map(part => /^(.*?)\s+\(1\)\.?$/.exec(part.trim())?.[1]));
-  if (routes.length < 2 || routes.some(route => route.length < 2 || route.some(point => !point))) return;
-  const clauses = answerClauses(answer);
-  const evidence = clauses.map(clause => exactEvidence(routes.flat(), clause));
-  if (!evidence.length || evidence.some(points => !points.length)) return;
-  const matched = evidence.flat();
-  const routeLimit = linked ? question.marks / 2 : 2;
-  const scores = routes.map(route => {
-    const credited = [];
-    let last = -1;
-    for (const point of route.slice(0, routeLimit)) {
-      const index = matched.indexOf(point, last + 1);
-      if (index < 0) break;
-      credited.push(point);
-      last = index;
-    }
-    return credited;
-  }).sort((a, b) => b.length - a.length);
-  const earned = [...new Set(scores.slice(0, linked ? 2 : 1).flat())];
-  // Only settle complete answers here. The full rubric remains necessary for alternative developments.
-  if (earned.length !== question.marks) return;
-  return { score: earned.length,
-    feedback: 'Your answer covers the required linked points in the mark scheme.',
-    credits: earned.map(point => ({
-      criterion: point, evidence: answer.match(new RegExp(point.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))?.[0] ?? ''
-    })),
-    provisional: true };
+function markedPoints(text) {
+  const parts = text.trim().replace(/\.$/, '').split(/\s*\(1\)\s*/);
+  if (parts.pop() !== '' || parts.some(part => !part)) return [];
+  return parts.map(part => part.replace(/^,\s*/, ''));
 }
 
-
-/* Meaning checks are restricted to point-marked written answers. */
 function matchingSchemeRoutes(question) {
-  const lines = question.scheme.split('\n');
-  const linked = /^Maximum [46] marks\..*Credit two distinct (?:explanations|analytical routes), up to [23] marks/i.test(lines[0]);
+  const [header, ...lines] = question.scheme.split('\n');
+  const linked = /^Maximum [46] marks\..*Credit two distinct (?:explanations|analytical routes), up to [23] marks/i.test(header);
   const chooseOne = question.marks === 2 && /\bChoose one route\b/i.test(question.note ?? '');
-  if (!linked && !chooseOne) return;
-  const routes = lines.filter(line => linked ? /^\d+\.\s/.test(line) : line.startsWith('• '))
-    .map(line => line.replace(/^(?:\d+\.|•)\s+/, '').split(linked ? ' → ' : ';')
-      .map(part => /^(.*?)\s+\(1\)\.?$/.exec(part.trim())?.[1]));
-  if (routes.length < 2 || routes.some(route => route.length < 2 || route.some(point => !point))) return;
-  return { routes, limit: linked ? question.marks / 2 : 2, count: linked ? 2 : 1 };
+  const explain = question.marks === 4 &&
+    header === 'Award up to 4 marks: 1 mark for each of two distinct relevant points and 1 for a linked explanation of each.';
+  const analyse = question.marks === 6 &&
+    header === 'Award up to 6 marks for distinct, logically linked economic points. Credit identification and accurate development where relevant to this question.';
+  if (linked || chooseOne || explain || analyse) {
+    const routes = lines.filter(line => linked ? /^\d+\.\s/.test(line) : line.startsWith('• '))
+      .map(line => line.replace(/^(?:\d+\.|•)\s+/, '').split(chooseOne ? ';' : ' → ')
+        .map(part => explain || analyse ? part.trim().replace(/\.$/, '') : markedPoints(part)[0]));
+    if (routes.length < 2 || routes.some(route => route.length < 2 || route.some(point => !point))) return;
+    return {
+      routes, limit: analyse ? question.marks : chooseOne || explain ? 2 : question.marks / 2,
+      count: chooseOne ? 1 : analyse ? routes.length : 2,
+      guidance: [header, ...lines.filter(line => line === 'OR, an alternative route:'), question.note],
+      checkMeaning: true
+    };
+  }
+
+  // These prose formats explicitly tag each individual mark. Leave other prose
+  // schemes to the model rather than inferring scoring rules from their wording.
+  const prose = /^(Award up to 6 (?:marks for linked analysis[:.]|for distinct linked (?:analysis\.|steps:)|for distinct links\.|marks, crediting coherent links to average cost\.)|Award up to [46] marks\.|Award up to 2 (?:marks )?(?:for each|per) [^.]+\.|Award 1 mark for each of two distinct reasons and 1 for (?:its|each) linked explanation\.|Award 1 mark for each distinct determinant and 1 for its explanation, up to 4\.)\s+/i.exec(question.scheme);
+  if (!prose || ![4, 6].includes(question.marks)) return;
+  const isPaired = /^Award (?:up to 2|1 mark)/i.test(prose[1]);
+  const allChains = prose[1] === 'Award up to 6 marks, crediting coherent links to average cost.';
+  const sentences = question.scheme.slice(prose[0].length).split(/(?<=\.)\s+/);
+  const tagged = [];
+  const guidance = [prose[1], question.note];
+  for (const sentence of sentences) {
+    const alternative = /^(?:Where linked to underprovision, credit |Credit that spending )/i.test(sentence);
+    if (/\(1\)/.test(sentence) && !alternative) {
+      // A semicolon can separate individually tagged steps in a single run of prose.
+      const points = markedPoints(sentence.replace(/(?<=\(1\));/g, ''));
+      if (!points.length) return;
+      tagged.push(points);
+    } else if (alternative || /^(?:Accept|Credit (?:other|alternative|effects with)|Avoid double|Do not double-count|Equivalent wording)/i.test(sentence)) {
+      guidance.push(sentence);
+    } else {
+      return;
+    }
+  }
+  if (isPaired || allChains) {
+    const limit = isPaired ? 2 : 3;
+    if (question.marks === limit * 2 && tagged.length >= 2 && tagged.every(route => route.length === limit)) {
+      return { routes: tagged, limit, count: 2, guidance };
+    }
+    return;
+  }
+  const points = tagged.flat();
+  if (points.length === question.marks) {
+    return { routes: [points], limit: question.marks, count: 1, guidance };
+  }
+}
+
+function selectRouteCredits(scored, spec, max) {
+  const earned = new Map();
+  let count = 0;
+  for (const route of scored.sort((a, b) => b.length - a.length)) {
+    if (count === spec.count || earned.size === max) break;
+    const fresh = route.filter(({ criterion }) => !earned.has(normalizePoint(criterion)));
+    if (!fresh.length) continue;
+    for (const credit of fresh.slice(0, max - earned.size)) {
+      earned.set(normalizePoint(credit.criterion), credit);
+    }
+    count++;
+  }
+  return [...earned.values()];
+}
+
+function withoutSchemeGuidance(answer, guidance) {
+  // Ignore only the examiner guidance for this question, never arbitrary prose.
+  return guidance.filter(Boolean).reduce((text, line) => text.replaceAll(line, ''), answer);
+}
+
+function exactRouteGrade(question, answer, spec) {
+  if (!spec) return;
+  const content = withoutSchemeGuidance(answer, spec.guidance);
+  const parts = content.split(/[\n;→]+|(?<=[.!?])\s+(?=[A-Z0-9])|(?<=\(1\)),?\s+/)
+    .map(text => text.trim()).filter(text => normalizePoint(text));
+  const points = spec.routes.flat();
+  const matches = parts.map(evidence => exactEvidence(points, normalizePoint(evidence))
+    .map(criterion => ({ criterion, evidence })));
+  if (!matches.length || matches.some(part => !part.length)) return;
+  const sequence = matches.flat();
+  const scored = spec.routes.map(route => {
+    const first = normalizePoint(route[0]);
+    let best = [];
+    for (const [index, credit] of sequence.entries()) {
+      if (normalizePoint(credit.criterion) !== first) continue;
+      const linked = [];
+      for (const [offset, point] of route.slice(0, spec.limit).entries()) {
+        const match = sequence[index + offset];
+        if (!match || normalizePoint(match.criterion) !== normalizePoint(point)) break;
+        linked.push({ criterion: point, evidence: match.evidence });
+      }
+      if (linked.length > best.length) best = linked;
+    }
+    return best;
+  });
+  const credits = selectRouteCredits(scored, spec, question.marks);
+  if (!credits.length) return;
+  return {
+    score: credits.length, credits, provisional: true,
+    feedback: credits.length === question.marks
+      ? 'Your answer covers the required linked points in the mark scheme.'
+      : 'Your answer includes these linked points from the mark scheme.'
+  };
 }
 
 function meaningVariants(point) {
@@ -288,14 +355,8 @@ async function markLinkedMeaning(question, answer, spec, report) {
     }
     return credited;
   }).sort((a,b) => b.length - a.length);
-  const earned = [];
-  let count = 0;
-  for (const route of scored) {
-    const fresh = route.filter(point => !earned.some(existing => normalizePoint(existing) === normalizePoint(point)));
-    if (!fresh.length || count >= spec.count) continue;
-    earned.push(...fresh);
-    count++;
-  }
+  const earned = selectRouteCredits(scored.map(route =>
+    route.map(criterion => ({ criterion }))), spec, question.marks).map(credit => credit.criterion);
   const incomplete = spec.routes.map(route => ({
     route, prefix: route.findIndex((point, i) => !matches.has(point) ||
       (i > 0 && !matches.has(route[i-1] + ' leads to this result: ' + point)))
@@ -321,6 +382,9 @@ async function markDefinition(points, answer, report) {
     const missing = points.find(point => !earned.includes(point));
     return pointResult(earned, missing ? 'Make this meaning clear: ' + missing + '.' : '', answer);
   } catch {
+    if (exact.size && exactClauses.every(hits => hits.length)) {
+      return pointResult(points.filter((_, i) => direct[i]), 'Check that your definition includes all required ideas.', answer);
+    }
     // The written model can still mark the answer if the meaning checker is unavailable.
   }
 }
@@ -607,50 +671,61 @@ async function mark(question, answer, report) {
     engine ??= await openModel(report);
     return markDiscussion(question, answer, report);
   }
-  if (question) {
-    const points = independentDefinitionPoints(question);
-    if (points) {
-      const definition = await markDefinition(points, answer, report);
-      if (definition) return definition;
-    }
-    const exact = exactRouteGrade(question, answer);
-    if (exact) return exact;
+  if (!question) {
+    engine ??= await openModel(report);
+    return;
   }
-  let semantic;
-  if ([2, 4, 6].includes(question?.marks)) {
-    const routes = matchingSchemeRoutes(question);
-    if (routes) {
-      try { semantic = await markLinkedMeaning(question, answer, routes, report); } catch {}
-      if (semantic?.score === question.marks) return semantic;
-    }
+  const points = independentDefinitionPoints(question);
+  if (points) {
+    const header = question.scheme.split('\n')[0];
+    const guidance = [question.note];
+    if (/^Maximum 2 marks\. Credit the specific components below\.$/.test(header)) guidance.push(header);
+    const definition = await markDefinition(points, withoutSchemeGuidance(answer, guidance), report);
+    if (definition) return definition;
   }
-  engine ??= await openModel(report);
-  if (!question) return;
+
+  const routes = matchingSchemeRoutes(question);
+  const exact = exactRouteGrade(question, answer, routes);
+  if (exact?.score === question.marks) return exact;
+
+  let verified = exact;
+  if (routes?.checkMeaning && !exact) {
+    try { verified = await markLinkedMeaning(question, answer, routes, report); } catch {}
+    if (verified?.score === question.marks) return verified;
+  }
+
   const rubric = [question.scheme, question.note].filter(Boolean).join('\n');
   const context = question.context ? 'Context: ' + question.context + '\n' : '';
   const prompt = 'Question: ' + question.prompt + '\nMaximum: ' + question.marks +
     '\n' + context + 'Rubric:\n' + rubric + '\nStudent answer: ' + JSON.stringify(answer);
   report('Marking on your device…');
-  const response = await engine.createChatCompletion({
-    messages: [{ role: 'system', content: [2, 4, 6].includes(question.marks) ? instructions +
-      ' Count each distinct correct idea independently. Accept ordinary phrasing that conveys the same idea. A wrong consequence does not cancel its correctly stated cause. A reversed direction or an unsupported link earns no mark for that part. Respect route limits.' : instructions }, { role: 'user', content: prompt }],
-    temperature: 0,
-    max_tokens: 320
-  });
+  let response;
+  try {
+    engine ??= await openModel(report);
+    response = await engine.createChatCompletion({
+      messages: [{ role: 'system', content: [2, 4, 6].includes(question.marks) ? instructions +
+        ' Count each distinct correct idea independently. Accept ordinary phrasing that conveys the same idea. A wrong consequence does not cancel its correctly stated cause. A reversed direction or an unsupported link earns no mark for that part. Respect route limits.' : instructions }, { role: 'user', content: prompt }],
+      temperature: 0,
+      max_tokens: 320
+    });
+  } catch (error) {
+    if (verified?.score) return verified;
+    throw error;
+  }
   const raw = response.choices[0]?.message?.content?.trim() ?? '';
   let grade;
   try {
     grade = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/gi, ''));
   } catch {
-    if (semantic?.score) return semantic;
+    if (verified?.score) return verified;
     throw new Error('Marking didn’t finish. Try submitting your answer again.');
   }
   if (!Number.isInteger(grade?.score) || grade.score < 0 || grade.score > question.marks ||
       typeof grade.feedback !== 'string' || !grade.feedback.trim()) {
-    if (semantic?.score) return semantic;
+    if (verified?.score) return verified;
     throw new Error('The mark was invalid. Try submitting your answer again.');
   }
-  if (semantic?.score > grade.score) return semantic;
+  if (verified?.score && verified.score >= grade.score) return verified;
   const credits=Array.isArray(grade.credits) ? grade.credits.filter(credit=>
     typeof credit?.criterion==='string' && credit.criterion.trim() &&
     typeof credit?.evidence==='string' && credit.evidence.trim()).slice(0,Math.min(3,grade.score)) : [];
