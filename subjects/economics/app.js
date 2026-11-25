@@ -359,7 +359,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
           '<div class="answer-composer"><div class="answer-heading"><label for="practice-answer">Your answer</label><span>Written practice</span></div>'+
           '<textarea id="practice-answer" name="answer" maxlength="8000" required aria-describedby="answer-hint" placeholder="Start with your key point, then develop your reasoning…">'+escapeHtml(answer)+'</textarea>'+
           '<div class="answer-footer"><span id="answer-hint">Use clear economic reasoning and relevant examples.</span><span class="answer-count">'+wordCount+' '+(wordCount===1?'word':'words')+'</span></div></div>')+
-        '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
+        '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback ecbiz-loading-status" role="status" '+(saved.pending?'data-loading ':'')+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
     const current=matches[page];
     const saved=current && attempts.get(current.i);
@@ -448,6 +448,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
       if(!current || attempts.get(index)!==state)return;
       const feedback=current.querySelector('.feedback');
       feedback.hidden=false;
+      feedback.toggleAttribute('data-loading', state.pending);
       feedback.innerHTML=state.feedback;
       if (q.options && state.feedback !== 'Marking your answer…') {
         feedback.dataset.outcome=mcqOutcome(answer, q.answer);

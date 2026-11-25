@@ -190,6 +190,7 @@ const ecbizMarking = (() => {
   }
 
   const download = document.querySelector('#marking-download-start');
+  const downloadDialog = download.closest('dialog');
   const downloadStatus = document.querySelector('#marking-download-status');
   const downloadOpeners = document.querySelectorAll('[data-ai-download-open]');
   const setupHint = document.querySelector('#marking-model p');
@@ -203,6 +204,7 @@ const ecbizMarking = (() => {
     download.onclick = async () => {
       if (download.getAttribute('aria-disabled') === 'true') return;
       download.setAttribute('aria-disabled', 'true');
+      downloadDialog.setAttribute('data-loading', '');
       download.textContent = 'Downloading model…';
       downloadStatus.textContent = 'Preparing download…';
       const report = message => { downloadStatus.textContent = message; };
@@ -216,6 +218,8 @@ const ecbizMarking = (() => {
         download.removeAttribute('aria-disabled');
         download.textContent = 'Retry AI download';
         downloadStatus.textContent = error.message;
+      } finally {
+        downloadDialog.removeAttribute('data-loading');
       }
     };
   }
