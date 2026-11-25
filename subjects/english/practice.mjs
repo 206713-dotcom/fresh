@@ -13,8 +13,8 @@ Text B · A resident
 The summer trial left litter outside our building and made it hard for my father to sleep. The council counted visitors but never asked neighbours what had changed. I would support a shorter trial if stalls faced away from homes and council staff monitored noise and collected rubbish before midnight.`;
 
 export const papers = [
-  { id: 'p1', title: 'Reading', marks: 80, summary: 'Four compulsory questions across three source texts.' },
-  { id: 'p2', title: 'Directed Writing & Composition', marks: 80, summary: 'Two directed-writing parts and one composition from four titles.' },
+  { id: 'p1', title: 'Reading', markScheme: 'https://www.cambridgeinternational.org/Images/718838-2027-specimen-paper-1-mark-scheme.pdf' },
+  { id: 'p2', title: 'Directed Writing & Composition', markScheme: 'https://www.cambridgeinternational.org/Images/718839-2027-specimen-paper-2-mark-scheme.pdf' },
 ];
 
 const exercises = [
@@ -84,10 +84,24 @@ const compositionBands = [
   '21–24: precise vocabulary, purposeful sentence variety, consistent register and high accuracy. 17–20: mostly precise and accurate with range. 13–16: some precision and variety with generally secure control. 9–12: straightforward expression with uneven control. 5–8: limited range and frequent errors. 1–4: substantial imprecision or errors impede meaning. 0: no creditable content.',
 ];
 
+export const rubricVersion = 'Fresh 0500 practice · 2027 specimen v2 adaptation';
+const objectiveMap = {
+  comprehension: ['R1','R2','R5'],
+  summary: ['R1','R2','R5','W1','W2','W3'],
+  attitude: ['R2','R3'],
+  'short-language': ['R1','R2','R4'],
+  language: ['R1','R2','R4'],
+  extended: ['R1','R2','R3','R5','W1','W2','W3','W4'],
+  evaluation: ['R3','R4'],
+  directed: ['R1','R2','R3','R5','W1','W2','W3','W4','W5'],
+};
+const compositionObjectives = ['W1','W2','W3','W4','W5'];
+
 export const tasks = exercises.map(task => {
   const bands = task.marks === 40 ? compositionBands : bandGuides[task.id] ?? [];
   return {
     ...task,
+    objectives: objectiveMap[task.id] ?? compositionObjectives,
     criteria: task.criteria.map(([name, max, guidance], index) =>
       [name, max, [guidance, bands[index]].filter(Boolean).join(' ')]),
   };

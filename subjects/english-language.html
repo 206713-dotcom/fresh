@@ -19,7 +19,7 @@
     <p>Practise close reading, develop your writing and review your answers against the skills each question assesses.</p>
     <a class="button" href="#practice">Start practising</a>
   </section>
-  <nav class="jump" aria-label="English Studio"><a href="#course">Course guide</a><a href="#practice">Practice studio</a><a href="#reading-lab">Reading Lab</a><a href="#notebook">Mistake notebook</a><a href="#skills-title">Revision library</a><a href="#syllabus-checklist">Syllabus checklist</a></nav>
+  <nav class="jump" aria-label="English Studio"><a href="#course">Course guide</a><a href="#practice">Practice studio</a><a href="#reading-lab">Reading Lab</a><a href="#workshop">Response workshop</a><a href="#notebook">Mistake notebook</a><a href="#skills-title">Revision library</a><a href="#syllabus-checklist">Syllabus checklist</a></nav>
   <section class="section" aria-labelledby="course"><p class="eyebrow">Course guide</p><h2 id="course">Know your papers</h2>
     <div class="papers">
       <article><p class="eyebrow">Paper 1 · 2 hours · 80 marks</p><h3>Reading</h3><ol><li>Comprehension · 20</li><li>Summary and attitude · 20</li><li>Short answers and language analysis · 20</li><li>Extended response to reading · 20</li></ol></article>
@@ -35,7 +35,7 @@
     <noscript><p>Enable JavaScript to use the practice workspace.</p></noscript>
     <div class="workspace">
       <article class="panel">
-        <p class="eyebrow" id="task-meta"></p><h3 id="task-title"></h3><p id="prompt"></p>
+        <p class="eyebrow" id="task-meta"></p><h3 id="task-title"></h3><p id="prompt"></p><p class="note" id="task-objectives"></p>
         <div id="source-panel"><h4>Source text</h4><div id="source" class="source"></div></div>
       </article>
       <article class="panel">
@@ -49,7 +49,7 @@
       </article>
     </div>
     <details id="analysis"><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
-    <details id="review"><summary>Self-marking guide and example</summary><div id="criteria"></div><h4>Example response or excerpt</h4><p id="example"></p></details>
+    <details id="review"><summary>Self-marking guide and example</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a><h4>Example response or excerpt</h4><p id="example"></p></details>
   </section>
   <section class="section" id="reading-lab" aria-labelledby="lab-title">
     <p class="eyebrow">Reading Lab</p><h2 id="lab-title">Annotate a passage</h2>
@@ -66,6 +66,17 @@
         <p id="annotation-status" role="status"></p><ul id="annotations" class="records"></ul>
       </article>
     </div>
+  </section>
+  <section class="section" id="workshop" aria-labelledby="workshop-title">
+    <p class="eyebrow">Compare and improve</p><h2 id="workshop-title">Response workshop</h2>
+    <p>Revise an original sample, then reveal three ways it could develop. These excerpts illustrate writing choices.</p>
+    <label for="workshop-skill">Choose a skill</label><select id="workshop-skill"></select>
+    <p id="workshop-brief"></p>
+    <div class="workspace">
+      <article class="panel"><h3>Starting response</h3><p id="workshop-start" class="source"></p><p id="workshop-pitfall"></p></article>
+      <article class="panel"><label for="workshop-draft">Your revision</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><p id="workshop-status" role="status"></p></article>
+    </div>
+    <details id="workshop-reveal"><summary>Compare three revisions</summary><div class="skills" id="workshop-versions"></div><a id="workshop-practice" href="#practice">Try the related practice task</a></details>
   </section>
   <section class="section" id="notebook" aria-labelledby="notebook-title">
     <p class="eyebrow">My progress</p><h2 id="notebook-title">Personal mistake notebook</h2>

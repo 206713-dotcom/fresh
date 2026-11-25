@@ -11,6 +11,8 @@
 - [x] Keep manual review usable when the AI model or WebGPU is unavailable.
 - [x] Add a persistent R1–R5 and W1–W5 confidence checklist with links to exercises, plus a persistent light/dark control.
 - [x] Add a Reading Lab with exact-phrase highlighting, draft analysis and a personal mistake notebook.
+- [x] Add three compare-and-improve workshop activities for writer’s effects, directed writing and descriptive writing, with persistent drafts and links to practice.
+- [x] Display objective mappings, the practice rubric version and direct specimen mark-scheme links in the practice workspace.
 - [x] Verify mark allocation, Unicode word counting, and mark and evidence validation with `node --test tests/english-0500.test.mjs`.
 - [x] Exercise all task selections, self-marking, draft persistence, review tracking, timer controls, draft downloads, mobile layout and AI fallback in Chromium.
 
@@ -20,7 +22,7 @@
 
 - [ ] Finish the plan's sidebar, global search, personalised overview, mobile passage/editor tabs, exam mode, full writing portfolio and draft comparisons.
 - [ ] Build the examiner case library, Examiner Lab, authorised anchor retrieval, independent rescoring, appeals, feedback history and teacher moderation.
-- [ ] Finish advanced learning tools. The Reading Lab has four original passages and persistent editable annotations. Draft analysis covers counts, sentence-length bands, distinct word ratio and repeated words. The notebook supports manual notes and resolved status. Passage filtering, richer writing analysis, automated error tracking, the personal AI tutor, composition simulator, adaptive pathways and visual prompts remain pending.
+- [ ] Finish advanced learning tools. The Reading Lab has four original passages and persistent editable annotations. Draft analysis covers counts, sentence-length bands, distinct word ratio and repeated words. The notebook supports manual notes and resolved status. Passage filtering, richer writing analysis, automated error tracking, the personal AI tutor, full-length composition comparisons, adaptive pathways and visual prompts remain pending.
 - [ ] Build school-controlled accounts, peer marking, teacher tools, offline revision, custom mocks and the study planner.
 - [ ] Validate the on-device marker against teacher-scored anchor scripts across the full mark range. The site labels AI marks as practice estimates while examiner agreement is unmeasured.
 - [ ] Test successful live marking across representative WebGPU devices. The first model download requires connectivity, and hardware support varies by device.

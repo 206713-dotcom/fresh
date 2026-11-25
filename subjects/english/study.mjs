@@ -1,5 +1,6 @@
-import { countWords, papers, tasks } from './practice.mjs';
+import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
 import { setupLearningTools, updateMetrics } from './learning.mjs';
+import { setupWorkshop } from './workshop.mjs';
 
 const get = id => document.getElementById(id);
 const select = get('task');
@@ -92,6 +93,9 @@ function showTask() {
   get('task-title').textContent = task.title;
   get('task-meta').textContent = (task.paper === 'p1' ? 'Paper 1' : 'Paper 2') + ' · Question ' + task.number + ' · ' + task.marks + ' practice marks';
   get('prompt').textContent = task.prompt;
+  get('task-objectives').textContent = 'Assessment objectives · ' + task.objectives.join(', ');
+  get('rubric-version').textContent = rubricVersion;
+  get('specimen-scheme').href = papers.find(paper => paper.id === task.paper).markScheme;
   get('source-panel').hidden = !task.source;
   get('source').textContent = task.source ?? '';
   editor.value = read('draft:' + task.id) ?? '';
@@ -211,3 +215,4 @@ const initialTask = new URLSearchParams(location.search).get('task');
 if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
 setupLearningTools({ read, write, currentTask: () => task });
+setupWorkshop(read, write);
