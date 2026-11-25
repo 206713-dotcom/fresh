@@ -212,6 +212,22 @@
 }
 .fresh-home .hero .button > span { display: inline-block; animation: fx-nudge 2.2s ease-in-out 2s infinite; }
 
+/* Buttons row: Explore subjects plus the optional Python link (added with PyQuest) */
+.fresh-home .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .85rem; }
+.fresh-home .hero-actions .python-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: #f2f7da;
+  font-weight: 700;
+  text-underline-offset: .24em;
+  text-shadow: 0 2px 14px #0b1c16b3;
+  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.55s both;
+}
+.fresh-home .hero-actions .python-link span { display: inline-block; transition: transform .25s ease; }
+.fresh-home .hero-actions .python-link:hover span { transform: translateX(4px); }
+
 /* 2d. Art. The logo tile keeps its original look; everything else is built around it.
    Depth order inside the banner: far chips (1) < logo tile (2) < dust (3) < near chips (4) < badge and copy (5). */
 .fresh-home .hero-art { min-height: 360px; }
