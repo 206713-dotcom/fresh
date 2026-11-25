@@ -1,0 +1,556 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U5_03",
+  "title": "The Vertical Income Statement, Row by Row",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 240,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U5_03.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 28,
+      "visual_type": "animated_scenario_hook",
+      "layout": "vertical_statement_builder_left_growing_stack",
+      "camera_motion": "smooth_zoom_into_blank_statement",
+      "title": "Building an Income Statement",
+      "labels": [
+        "Picketline Fencing Co",
+        "Period: one year",
+        "Revenue down to retained profit"
+      ],
+      "elements": [
+        {
+          "type": "icon_fence",
+          "id": "fence",
+          "label": "Fence installation van",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "paper_stack",
+          "id": "statement",
+          "label": "Blank vertical Income Statement",
+          "color": "#E0A229"
+        },
+        {
+          "type": "animated_counter",
+          "id": "rev",
+          "label": "Sales figure waiting to drop",
+          "color": "#1E7A46"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Van and installed fences fade in"
+        },
+        {
+          "at_sec": 12,
+          "directive": "Blank statement sheet unrolls"
+        },
+        {
+          "at_sec": 24,
+          "directive": "First revenue figure drops into place"
+        },
+        {
+          "at_sec": 28,
+          "directive": "Empty rows light up in sequence"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Picketline Fencing Co installs garden fences, but its owner cannot explain where the money went. Sales were busy all year, yet the bank balance barely moved. An Income Statement records income and all costs incurred to earn that income over a period, usually a year. It is built vertically, line by line, from revenue down to retained profit. Watch each figure drop into place like a fence post.",
+        "words": 68,
+        "wpm": 145.7
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 28,
+      "out": 58,
+      "visual_type": "formula_substitution",
+      "layout": "vertical_statement_two_rows_subtracting",
+      "camera_motion": "smooth_follow_subtraction_downward",
+      "title": "Revenue Less Cost of Sales",
+      "labels": [
+        "Revenue $120,000",
+        "Cost of sales $45,000",
+        "Gross profit $75,000"
+      ],
+      "elements": [
+        {
+          "type": "formula_card",
+          "id": "rev",
+          "label": "Revenue $120,000",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "formula_card",
+          "id": "cos",
+          "label": "Cost of sales $45,000",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "animated_counter",
+          "id": "gp",
+          "label": "Gross profit $75,000",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "icon_post",
+          "id": "posts",
+          "label": "Posts rails concrete and gates",
+          "color": "#E0A229"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 28,
+          "directive": "Revenue card locks at the top"
+        },
+        {
+          "at_sec": 40,
+          "directive": "Material icons stack into cost of sales"
+        },
+        {
+          "at_sec": 52,
+          "directive": "Subtraction line draws downward"
+        },
+        {
+          "at_sec": 58,
+          "directive": "Gross profit counter locks at seventy-five thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Start at the top with revenue. Revenue is the income from selling goods or services during a period. Picketline billed one hundred twenty thousand dollars for fencing jobs last year. Cost of sales is the cost of the posts, rails, concrete and gates actually used on those jobs: forty-five thousand dollars. Subtract cost of sales from revenue. One hundred twenty thousand minus forty-five thousand gives gross profit of seventy-five thousand dollars.",
+        "words": 71,
+        "wpm": 142.0
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 58,
+      "out": 88,
+      "visual_type": "formula_substitution",
+      "layout": "vertical_statement_expense_rows_stacking",
+      "camera_motion": "smooth_drive_expense_icons_into_row",
+      "title": "Expenses Reduce Profit",
+      "labels": [
+        "Gross profit $75,000",
+        "Expenses $38,000",
+        "Profit $37,000"
+      ],
+      "elements": [
+        {
+          "type": "formula_card",
+          "id": "gp2",
+          "label": "Gross profit $75,000",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "formula_card",
+          "id": "exp",
+          "label": "Expenses $38,000",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "icon_wages",
+          "id": "wages",
+          "label": "Fitter wages van fuel insurance and rent",
+          "color": "#E0A229"
+        },
+        {
+          "type": "animated_counter",
+          "id": "profit",
+          "label": "Profit $37,000",
+          "color": "#2D6A9F"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 58,
+          "directive": "Expense icons line up in a row"
+        },
+        {
+          "at_sec": 70,
+          "directive": "Overheads total counts to thirty-eight thousand"
+        },
+        {
+          "at_sec": 82,
+          "directive": "Subtraction line sweeps across"
+        },
+        {
+          "at_sec": 88,
+          "directive": "Profit counter locks at thirty-seven thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Gross profit is made when revenue is greater than cost of sales. It shows the margin earned before overheads. Now subtract expenses, the fixed costs and overheads of the period. Picketline spent thirty-eight thousand dollars on fitter wages, van fuel, insurance and yard rent. Seventy-five thousand minus thirty-eight thousand leaves profit of thirty-seven thousand dollars. Profit is total income less total costs, and it rewards the owner for risk-taking.",
+        "words": 69,
+        "wpm": 138.0
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 88,
+      "out": 118,
+      "visual_type": "animated_scenario_hook",
+      "layout": "vertical_statement_two_deduction_gates",
+      "camera_motion": "smooth_pass_counter_through_two_gates",
+      "title": "From Profit to Retained Profit",
+      "labels": [
+        "Profit $37,000",
+        "Tax $7,000 and dividends $10,000",
+        "Retained profit $20,000"
+      ],
+      "elements": [
+        {
+          "type": "formula_card",
+          "id": "profit2",
+          "label": "Profit $37,000",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "gate",
+          "id": "tax",
+          "label": "Tax gate $7,000",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "gate",
+          "id": "div",
+          "label": "Dividend gate $10,000",
+          "color": "#5B3FA8"
+        },
+        {
+          "type": "animated_counter",
+          "id": "ret",
+          "label": "Retained profit $20,000",
+          "color": "#1E7A46"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 88,
+          "directive": "Profit counter reaches the first gate"
+        },
+        {
+          "at_sec": 100,
+          "directive": "Tax removes seven thousand"
+        },
+        {
+          "at_sec": 112,
+          "directive": "Dividends remove ten thousand"
+        },
+        {
+          "at_sec": 118,
+          "directive": "Retained profit reserves twenty thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Profit is not the same as cash in the owner's pocket. First deduct tax of seven thousand dollars. Thirty-seven thousand minus seven thousand leaves thirty thousand dollars. Then pay dividends of ten thousand dollars to the shareholders. Thirty thousand minus ten thousand leaves retained profit of twenty thousand dollars. Retained profit is the earnings kept in the business for growth, perhaps a second van or a wider stock of fencing materials.",
+        "words": 71,
+        "wpm": 142.0
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 118,
+      "out": 148,
+      "visual_type": "causal_chain_flow",
+      "layout": "flow_diagram_profit_to_four_outcomes",
+      "camera_motion": "smooth_branch_from_profit_to_four_nodes",
+      "title": "Why Profit Matters",
+      "labels": [
+        "Profit rewards risk-taking",
+        "Retained profit funds growth"
+      ],
+      "elements": [
+        {
+          "type": "flow_node",
+          "id": "reward",
+          "label": "Reward for risk-taking",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "flow_node",
+          "id": "finance",
+          "label": "Source of finance",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "flow_node",
+          "id": "measure",
+          "label": "Measure of success",
+          "color": "#E0A229"
+        },
+        {
+          "type": "flow_node",
+          "id": "invest",
+          "label": "Attracts investors",
+          "color": "#5B3FA8"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 118,
+          "directive": "Profit tile branches into four outcomes"
+        },
+        {
+          "at_sec": 130,
+          "directive": "Retained profit flows to a new van icon"
+        },
+        {
+          "at_sec": 142,
+          "directive": "Borrowing tile shrinks as profit grows"
+        },
+        {
+          "at_sec": 148,
+          "directive": "Year labels scroll for comparison"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Why does profit matter? It is a reward for risk-taking and a source of finance for expansion. It measures success and attracts investors and lenders. Because retained profit can fund a new van, therefore the firm borrows less, so future interest costs fall. Comparing this Income Statement with last year's reveals whether material costs or overheads are rising. A falling profit warns the owner before the problem becomes a crisis.",
+        "words": 70,
+        "wpm": 140.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 148,
+      "out": 178,
+      "visual_type": "split_screen_comparison",
+      "layout": "split_screen_long_revenue_bar_short_profit_bar",
+      "camera_motion": "smooth_shrink_revenue_bar_into_profit_bar",
+      "title": "Revenue Is Not Profit",
+      "labels": [
+        "Revenue $120,000",
+        "Profit $37,000",
+        "Costs take $83,000"
+      ],
+      "elements": [
+        {
+          "type": "bar_chart",
+          "id": "rbar",
+          "label": "Revenue bar one hundred twenty thousand",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "bar_chart",
+          "id": "pbar",
+          "label": "Profit bar thirty-seven thousand",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "animated_counter",
+          "id": "costs",
+          "label": "Costs remove eighty-three thousand",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "formula_card",
+          "id": "steps",
+          "label": "Two-step calculation card",
+          "color": "#E0A229"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 148,
+          "directive": "Revenue bar stretches across the frame"
+        },
+        {
+          "at_sec": 160,
+          "directive": "Cost segments peel away from the bar"
+        },
+        {
+          "at_sec": 172,
+          "directive": "Profit bar settles at about one third"
+        },
+        {
+          "at_sec": 178,
+          "directive": "Two-step formula card flashes"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Do not confuse revenue with profit. Revenue is the total sales income: one hundred twenty thousand dollars. Profit is what remains after costs: thirty-seven thousand dollars. On screen, the revenue bar stretches across the frame while the profit bar is only a fraction as long. A firm can grow revenue and still see profit shrink if costs rise faster. Always show the calculation in two steps: revenue minus cost of sales, then minus expenses.",
+        "words": 74,
+        "wpm": 148.0
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 178,
+      "out": 208,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_profit_reveals_left_profit_hides_right",
+      "camera_motion": "smooth_flip_between_reveals_and_gaps",
+      "title": "What Profit Does Not Show",
+      "labels": [
+        "Shows trading result",
+        "Misses cash timing and asset value"
+      ],
+      "elements": [
+        {
+          "type": "scale",
+          "id": "shows",
+          "label": "Shows trading performance",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "scale",
+          "id": "misses",
+          "label": "Misses cash timing and assets",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "icon_clock",
+          "id": "clock",
+          "label": "Cash timing clock",
+          "color": "#E0A229"
+        },
+        {
+          "type": "icon_shop",
+          "id": "shop",
+          "label": "Fence quality and goodwill",
+          "color": "#2D6A9F"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 178,
+          "directive": "Left panel lists what profit reveals"
+        },
+        {
+          "at_sec": 190,
+          "directive": "Clock icon shows late customer payment"
+        },
+        {
+          "at_sec": 202,
+          "directive": "Asset and goodwill tiles stay hidden"
+        },
+        {
+          "at_sec": 208,
+          "directive": "Three statements sit side by side"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Now evaluate what profit does and does not show. It shows whether trading earned more than it cost, and it helps compare years. It does not show cash timing, so a profitable firm can still miss a supplier payment. It does not show the value of assets, the quality of fences or customer goodwill. Historic figures look backward. Use the Income Statement beside a cash-flow forecast and a statement of financial position before deciding.",
+        "words": 74,
+        "wpm": 148.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 208,
+      "out": 240,
+      "visual_type": "funnel_animation",
+      "layout": "vertical_funnel_eight_locking_rows",
+      "camera_motion": "smooth_sweep_down_all_eight_rows",
+      "title": "Rebuild the Whole Statement",
+      "labels": [
+        "Revenue 120,000 to retained profit 20,000",
+        "Clarity versus a single period"
+      ],
+      "elements": [
+        {
+          "type": "paper_stack",
+          "id": "full",
+          "label": "Complete vertical Income Statement",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "animated_counter",
+          "id": "chain",
+          "label": "Eight figures locking in order",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "scale",
+          "id": "pro",
+          "label": "Advantage: clarity",
+          "color": "#E0A229"
+        },
+        {
+          "type": "scale",
+          "id": "con",
+          "label": "Limitation: one period",
+          "color": "#B23A2B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 208,
+          "directive": "Top revenue row locks in"
+        },
+        {
+          "at_sec": 220,
+          "directive": "Gross profit and profit rows follow"
+        },
+        {
+          "at_sec": 232,
+          "directive": "Tax and dividend gates close"
+        },
+        {
+          "at_sec": 240,
+          "directive": "Retained profit seals the statement"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Let us rebuild the whole vertical statement in one pass. Revenue one hundred twenty thousand; cost of sales forty-five thousand; gross profit seventy-five thousand; expenses thirty-eight thousand; profit thirty-seven thousand; tax seven thousand; dividends ten thousand; retained profit twenty thousand. Each row locks into place like a completed panel. The advantage is clarity; the limitation is that one period never tells the whole story of a fencing business. Compare several years before judging performance.",
+        "words": 74,
+        "wpm": 138.8
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Picketline's revenue rose from $120,000 to $132,000 while cost of sales rose from $45,000 to $56,250. What happened to gross profit?",
+    "options": [
+      "It stayed at $75,000",
+      "It rose from $75,000 to $75,750, but the gross margin fell",
+      "It fell to $70,000",
+      "It doubled to $150,000"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "Both revenue bars grow; the red cost segment expands faster in percentage terms, the green gross-profit segment grows only from $75,000 to $75,750, and a margin dial turns down from 62.50% to 57.39%."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

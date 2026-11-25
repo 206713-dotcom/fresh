@@ -1,0 +1,563 @@
+{
+  "video_id": "VID_U5_02",
+  "unit_number": 5,
+  "unit_title": "Unit 5: Financial information and decisions",
+  "chapter_code": "5.2",
+  "chapter_title": "Cash-flow forecasting and working capital",
+  "video_title": "Coin Streams: Cash-Flow Forecasting in Motion",
+  "target_duration_sec": 240,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Complete a cash-flow forecast using net cash flow and closing balance rules",
+    "Explain why a profitable business can still run out of cash",
+    "Evaluate forecast limitations and short-term remedies"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 30,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Profitable, Yet Short of Cash",
+      "on_screen_labels": [
+        "Lantern Lane City Cafes",
+        "Profit is not cash",
+        "Supplier due this Friday"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_busy_cafe_left_empty_till_right",
+        "elements": [
+          {
+            "type": "icon_cafe",
+            "id": "cafe",
+            "label": "Busy city cafe counter",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "animated_counter",
+            "id": "till",
+            "label": "Till balance falling",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "icon_invoice",
+            "id": "invoice",
+            "label": "Milk supplier invoice due",
+            "color": "#E0A229"
+          }
+        ],
+        "camera_motion": "smooth_zoom_from_crowd_to_empty_till",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Cafe crowd orders animate in"
+          },
+          {
+            "at_sec": 12,
+            "directive": "Till counter drops below the invoice"
+          },
+          {
+            "at_sec": 24,
+            "directive": "Invoice stamp flashes red"
+          },
+          {
+            "at_sec": 30,
+            "directive": "Coin stream label cash appears"
+          }
+        ]
+      },
+      "voiceover_script": "Lantern Lane City Cafes serves thousands of lunches, yet the owner cannot pay the milk supplier this Friday. Profit is revenue minus costs over a period; cash is money available now. A cash-flow forecast is an estimate of future cash inflows and outflows, usually month by month, showing the expected closing balance. A profitable business can still run out of cash when customers pay later and suppliers demand payment now. Follow the coin streams to find the gap.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "cash flow forecast",
+        "cash inflows",
+        "cash outflows",
+        "profit versus cash"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 30,
+      "end_sec": 60,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Five Features of the Forecast",
+      "on_screen_labels": [
+        "Inflows in",
+        "Outflows out",
+        "Net flow = in minus out"
+      ],
+      "animation_directives": {
+        "layout": "flow_diagram_five_row_forecast_table",
+        "elements": [
+          {
+            "type": "table_row",
+            "id": "in",
+            "label": "Cash inflows row with blue coins",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "table_row",
+            "id": "out",
+            "label": "Cash outflows row with orange coins",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "formula_card",
+            "id": "net",
+            "label": "Net cash flow card",
+            "color": "#E0A229"
+          },
+          {
+            "type": "table_row",
+            "id": "bal",
+            "label": "Opening and closing balance rows",
+            "color": "#1E7A46"
+          }
+        ],
+        "camera_motion": "smooth_scan_down_forecast_table",
+        "visual_beats": [
+          {
+            "at_sec": 30,
+            "directive": "Table rows draw themselves one by one"
+          },
+          {
+            "at_sec": 42,
+            "directive": "Blue coins enter the inflow row"
+          },
+          {
+            "at_sec": 54,
+            "directive": "Orange coins leave the outflow row"
+          },
+          {
+            "at_sec": 60,
+            "directive": "Balance row glows with the rule"
+          }
+        ]
+      },
+      "voiceover_script": "A cash-flow forecast has five features. Cash inflows are sums received, such as cafe takings. Cash outflows are sums paid, such as wages, rent and ingredients. Net cash flow is the difference between inflows and outflows during each period. Opening balance is cash at the start; closing balance is cash at the end. The rule is simple: closing balance equals opening balance plus net cash flow. Every row becomes a moving coin stream.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "cash inflows",
+        "cash outflows",
+        "net cash flow",
+        "closing balance"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 60,
+      "end_sec": 92,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Months One and Two",
+      "on_screen_labels": [
+        "M1: in $30,000, out $22,000",
+        "M1 closing: $16,000",
+        "M2 closing: $11,000"
+      ],
+      "animation_directives": {
+        "layout": "animated_table_plus_balance_bar",
+        "elements": [
+          {
+            "type": "coin_stream",
+            "id": "blue",
+            "label": "Blue inflow coins month one",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "coin_stream",
+            "id": "orange",
+            "label": "Orange outflow coins month one",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "table_row",
+            "id": "m1",
+            "label": "Month one full row",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "balance_bar",
+            "id": "bar",
+            "label": "Balance bar sixteen thousand then eleven thousand",
+            "color": "#E0A229"
+          }
+        ],
+        "camera_motion": "smooth_slide_along_two_month_columns",
+        "visual_beats": [
+          {
+            "at_sec": 60,
+            "directive": "Opening balance eight thousand appears"
+          },
+          {
+            "at_sec": 72,
+            "directive": "Net flow plus eight thousand fills the bar"
+          },
+          {
+            "at_sec": 84,
+            "directive": "Month two outflow stream overtakes inflow"
+          },
+          {
+            "at_sec": 92,
+            "directive": "Bar settles at eleven thousand"
+          }
+        ]
+      },
+      "voiceover_script": "Build the forecast with Lantern Lane. Month one opens with eight thousand dollars. Inflows are thirty thousand; outflows are twenty-two thousand, so net cash flow is plus eight thousand and closing balance is sixteen thousand. Month two receives twenty-six thousand and pays thirty-one thousand, giving net cash flow of minus five thousand. Sixteen thousand plus negative five thousand leaves eleven thousand. Blue coins flow in, orange coins flow out, and the balance bar rises then dips.",
+      "word_count": 76,
+      "syllabus_concepts_tagged": [
+        "net cash flow",
+        "closing balance",
+        "cash flow forecast"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 92,
+      "end_sec": 122,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "A Negative Closing Balance",
+      "on_screen_labels": [
+        "M3 closing: $1,000",
+        "M4 closing: -$4,000",
+        "Cumulative net flow: -$12,000"
+      ],
+      "animation_directives": {
+        "layout": "animated_table_balance_bar_crosses_zero",
+        "elements": [
+          {
+            "type": "coin_stream",
+            "id": "blue2",
+            "label": "Month three and four inflow coins",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "coin_stream",
+            "id": "orange2",
+            "label": "Outflow coins growing taller",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "formula_card",
+            "id": "sum",
+            "label": "Four net flows summed to minus twelve thousand",
+            "color": "#E0A229"
+          },
+          {
+            "type": "balance_bar",
+            "id": "bar2",
+            "label": "Bar crosses below zero",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_dtrack_bar_below_axis",
+        "visual_beats": [
+          {
+            "at_sec": 92,
+            "directive": "Month three row highlights the ten thousand gap"
+          },
+          {
+            "at_sec": 104,
+            "directive": "Closing bar nearly reaches zero"
+          },
+          {
+            "at_sec": 116,
+            "directive": "Month four net flow turns the bar red"
+          },
+          {
+            "at_sec": 122,
+            "directive": "Axis shows negative four thousand"
+          }
+        ]
+      },
+      "voiceover_script": "Month three opens at eleven thousand. Inflows fall to twenty-four thousand, outflows climb to thirty-four thousand, so net cash flow is minus ten thousand and closing balance is one thousand. Month four opens at one thousand, receives twenty-eight thousand, pays thirty-three thousand, and ends four thousand dollars in the red. Add the four net flows: plus eight, minus five, minus ten, minus five equals minus twelve thousand. Eight thousand opening cash minus twelve thousand gives negative four thousand.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "net cash flow",
+        "closing balance",
+        "cash shortfall"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 122,
+      "end_sec": 152,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Profit Without Cash",
+      "on_screen_labels": [
+        "Credit sales become receivables",
+        "Suppliers must be paid now"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_profit_column_left_cash_column_right",
+        "elements": [
+          {
+            "type": "icon_invoice",
+            "id": "receivable",
+            "label": "Customer invoice awaiting payment",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "icon_stock",
+            "id": "inventory",
+            "label": "Coffee bean inventory stack",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "animated_counter",
+            "id": "profit",
+            "label": "Profit figure high",
+            "color": "#E0A229"
+          },
+          {
+            "type": "animated_counter",
+            "id": "cash",
+            "label": "Bank balance low",
+            "color": "#B23A2B"
+          }
+        ],
+        "camera_motion": "smooth_crossfade_profit_into_cash",
+        "visual_beats": [
+          {
+            "at_sec": 122,
+            "directive": "Profit column builds from sales"
+          },
+          {
+            "at_sec": 134,
+            "directive": "Invoice tile floats but becomes no coin"
+          },
+          {
+            "at_sec": 146,
+            "directive": "Stock bags pile up in the middle"
+          },
+          {
+            "at_sec": 152,
+            "directive": "Cash column drains as bills land"
+          }
+        ]
+      },
+      "voiceover_script": "Why can a profitable cafe chain still have no cash? Because credit sales become trade receivables, not coins. Because extra coffee beans sit as inventory before they are sold. And because suppliers, wages and rent must be paid immediately. Profit measures performance over a period; cash measures survival this week. Therefore a growing business can report a healthy profit while its bank balance empties, so the forecast must track timing, not just totals.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "trade receivables",
+        "inventory",
+        "cash versus profit"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 152,
+      "end_sec": 182,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "The Working Capital Cycle",
+      "on_screen_labels": [
+        "Inventory to production",
+        "Receivables to cash"
+      ],
+      "animation_directives": {
+        "layout": "circular_funnel_inventory_production_receivables_cash",
+        "elements": [
+          {
+            "type": "cycle_node",
+            "id": "inv",
+            "label": "Inventory of coffee beans",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "cycle_node",
+            "id": "prod",
+            "label": "Production and service",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "cycle_node",
+            "id": "rec",
+            "label": "Trade receivables",
+            "color": "#E0A229"
+          },
+          {
+            "type": "cycle_node",
+            "id": "cash",
+            "label": "Cash returned",
+            "color": "#5B3FA8"
+          },
+          {
+            "type": "formula_card",
+            "id": "wc",
+            "label": "Working capital $20,000 minus $15,000",
+            "color": "#B23A2B"
+          }
+        ],
+        "camera_motion": "smooth_orbit_around_four_cycle_nodes",
+        "visual_beats": [
+          {
+            "at_sec": 152,
+            "directive": "Cash coin enters the inventory node"
+          },
+          {
+            "at_sec": 164,
+            "directive": "Inventory moves into production"
+          },
+          {
+            "at_sec": 176,
+            "directive": "Receivable invoice turns into a coin"
+          },
+          {
+            "at_sec": 182,
+            "directive": "Working capital card shows five thousand"
+          }
+        ]
+      },
+      "voiceover_script": "The working capital cycle shows the same trap. Cash buys inventory; inventory moves into production and service delivery; sales create receivables; then customers finally pay and cash returns. Working capital is current assets minus current liabilities, the finance needed for day-to-day expenses. Lantern Lane holds twenty thousand dollars of current assets and fifteen thousand of current liabilities, so working capital is five thousand dollars. Too little working capital risks insolvency; too much sits idle.",
+      "word_count": 74,
+      "syllabus_concepts_tagged": [
+        "working capital",
+        "current assets",
+        "current liabilities",
+        "working capital cycle"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 182,
+      "end_sec": 212,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Fixing the Shortfall",
+      "on_screen_labels": [
+        "$5,000 overdraft leaves $1,000 headroom",
+        "Trade-offs: interest and goodwill"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_overdraft_left_other_remedies_right",
+        "elements": [
+          {
+            "type": "source_tile",
+            "id": "od",
+            "label": "Five-thousand-dollar overdraft facility",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "scale",
+            "id": "delay",
+            "label": "Delayed supplier payments",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "scale",
+            "id": "chase",
+            "label": "Customers asked to pay sooner",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "animated_counter",
+            "id": "head",
+            "label": "One thousand dollars of headroom",
+            "color": "#E0A229"
+          }
+        ],
+        "camera_motion": "smooth_swing_between_remedy_panels",
+        "visual_beats": [
+          {
+            "at_sec": 182,
+            "directive": "Negative four thousand bar appears"
+          },
+          {
+            "at_sec": 194,
+            "directive": "Overdraft tile lifts bar to plus one thousand"
+          },
+          {
+            "at_sec": 206,
+            "directive": "Supplier relationship tile wobbles"
+          },
+          {
+            "at_sec": 212,
+            "directive": "Customer goodwill tile dips slightly"
+          }
+        ]
+      },
+      "voiceover_script": "A negative closing balance signals a shortfall, so Lantern Lane needs a five-thousand-dollar overdraft. That facility covers the four-thousand-dollar gap and leaves one thousand dollars of headroom. Delaying supplier payments or asking customers to pay sooner also helps. An overdraft is flexible and quick, but interest charges grow if the gap lasts. Late payments strain supplier relationships and can stop deliveries. Asking customers to pay faster improves cash, yet may cost goodwill.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "bank overdraft",
+        "cash shortfall",
+        "cash flow remedies"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 212,
+      "end_sec": 240,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "What a Forecast Cannot Tell You",
+      "on_screen_labels": [
+        "Estimates can be wrong",
+        "Not a profit forecast"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_forecast_left_surprises_right",
+        "elements": [
+          {
+            "type": "table",
+            "id": "forecast",
+            "label": "Forecast table with estimate badges",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "icon_weather",
+            "id": "cold",
+            "label": "Cold spell and broken oven surprises",
+            "color": "#E0A229"
+          },
+          {
+            "type": "scale",
+            "id": "warn",
+            "label": "Early warning benefit",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "scale",
+            "id": "limit",
+            "label": "Prediction limitation",
+            "color": "#B23A2B"
+          }
+        ],
+        "camera_motion": "slow_pull_back_from_table_to_split_evaluation",
+        "visual_beats": [
+          {
+            "at_sec": 212,
+            "directive": "Estimate badges pop up on each cell"
+          },
+          {
+            "at_sec": 224,
+            "directive": "Surprise icons break two flow links"
+          },
+          {
+            "at_sec": 236,
+            "directive": "Warning light turns green before the gap"
+          },
+          {
+            "at_sec": 240,
+            "directive": "Split panel holds the judgement"
+          }
+        ]
+      },
+      "voiceover_script": "Forecasts have limits. They depend on estimates: a cold spell raises sales, a broken oven adds costs, and customers may pay late. A cash-flow forecast is not a profit forecast and cannot predict surprises. Used with care, it warns of a gap before it becomes a crisis, letting the owner obtain finance in time. Because timing decides survival, a small cafe with steady profit still watches every coin stream.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "cash flow forecast",
+        "limitations of forecasting",
+        "cash shortfall"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Lantern Lane expects a closing balance of -$4,000 next month. Which response protects cash without damaging future trade most?",
+    "options": [
+      "Buy a new delivery van now",
+      "Obtain a short-term overdraft and chase receivables",
+      "Order extra coffee stock",
+      "Stop paying every supplier indefinitely"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "The balance bar dips below zero, then an overdraft tile lifts it above zero while invoice flows from customers turn into coins; the van and extra-stock tiles grey out."
+  }
+}

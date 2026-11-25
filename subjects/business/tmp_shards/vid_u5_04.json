@@ -1,0 +1,573 @@
+{
+  "video_id": "VID_U5_04",
+  "unit_number": 5,
+  "unit_title": "Unit 5: Financial information and decisions",
+  "chapter_code": "5.4",
+  "chapter_title": "Statement of financial position",
+  "video_title": "Balance Scales: The Statement of Financial Position",
+  "target_duration_sec": 250,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Identify non-current assets, current assets, liabilities and equity",
+    "Calculate total assets, working capital and capital employed",
+    "Assess liquidity and evaluate the snapshot limitation"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 30,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "A Financial Snapshot on Scales",
+      "on_screen_labels": [
+        "Paw & Polish Grooming Ltd",
+        "Assets on the left",
+        "Liabilities and equity on the right"
+      ],
+      "animation_directives": {
+        "layout": "animated_balance_scale_with_asset_icons",
+        "elements": [
+          {
+            "type": "balance_scale",
+            "id": "scale",
+            "label": "Balance scale frozen on one date",
+            "color": "#E0A229"
+          },
+          {
+            "type": "icon_shop",
+            "id": "shop",
+            "label": "Pet grooming shop and stock",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "paper_stack",
+            "id": "sheet",
+            "label": "Statement of Financial Position sheet",
+            "color": "#1E7A46"
+          }
+        ],
+        "camera_motion": "smooth_zoom_into_balance_beam",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Balance beam appears level"
+          },
+          {
+            "at_sec": 12,
+            "directive": "Assets drop onto the left pan"
+          },
+          {
+            "at_sec": 24,
+            "directive": "Liabilities and equity drop onto the right pan"
+          },
+          {
+            "at_sec": 30,
+            "directive": "Date stamp reads one particular time"
+          }
+        ]
+      },
+      "voiceover_script": "Paw and Polish Grooming sells shampoos, brushes and grooming sessions. An Income Statement covers a period; a statement of financial position shows the value of assets and liabilities at a particular time. Picture a balance scale frozen on one date. On the left sit assets; on the right sit liabilities and equity. The scale must balance, because everything the business owns was funded by either creditors or owners.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "Statement of Financial Position",
+        "assets",
+        "liabilities",
+        "equity"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 30,
+      "end_sec": 62,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Loading Total Assets",
+      "on_screen_labels": [
+        "Non-current assets $180,000",
+        "Current assets $50,000",
+        "Total assets $230,000"
+      ],
+      "animation_directives": {
+        "layout": "balance_scale_left_pan_asset_stacking",
+        "elements": [
+          {
+            "type": "icon_machine",
+            "id": "nca",
+            "label": "Grooming tables dryers and leasehold",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "icon_stock",
+            "id": "inv",
+            "label": "Inventory $24,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "icon_receipt",
+            "id": "rec",
+            "label": "Trade receivables $16,000",
+            "color": "#E0A229"
+          },
+          {
+            "type": "icon_coin",
+            "id": "cash",
+            "label": "Cash $10,000",
+            "color": "#5B3FA8"
+          },
+          {
+            "type": "animated_counter",
+            "id": "ta",
+            "label": "Total assets $230,000",
+            "color": "#8A4F1A"
+          }
+        ],
+        "camera_motion": "smooth_stack_assets_on_left_pan",
+        "visual_beats": [
+          {
+            "at_sec": 30,
+            "directive": "Non-current assets block settles on the pan"
+          },
+          {
+            "at_sec": 42,
+            "directive": "Three current asset tiles stack beside it"
+          },
+          {
+            "at_sec": 54,
+            "directive": "Current asset counter reaches fifty thousand"
+          },
+          {
+            "at_sec": 62,
+            "directive": "Total assets label locks at two hundred thirty thousand"
+          }
+        ]
+      },
+      "voiceover_script": "Load the left pan. Non-current assets are property, machinery and other assets not turned into cash within one year: grooming tables, dryers and the shop leasehold, worth one hundred eighty thousand dollars. Current assets become cash within one year: twenty-four thousand of inventory, sixteen thousand of trade receivables and ten thousand of cash. That is fifty thousand dollars of current assets. Total assets are one hundred eighty thousand plus fifty thousand, or two hundred thirty thousand dollars.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "non-current assets",
+        "current assets",
+        "total assets"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 62,
+      "end_sec": 92,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Loading Liabilities",
+      "on_screen_labels": [
+        "Current liabilities $40,000",
+        "Non-current liabilities $70,000",
+        "Total liabilities $110,000",
+        "Assets $230,000 exceed liabilities $110,000",
+        "Equity still to be added"
+      ],
+      "animation_directives": {
+        "layout": "balance_scale_right_pan_liability_stacking",
+        "elements": [
+          {
+            "type": "icon_invoice",
+            "id": "pay",
+            "label": "Trade payables $30,000",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "icon_bank",
+            "id": "od",
+            "label": "Overdraft $10,000",
+            "color": "#E0A229"
+          },
+          {
+            "type": "icon_loan",
+            "id": "loan",
+            "label": "Bank loan $70,000",
+            "color": "#5B3FA8"
+          },
+          {
+            "type": "animated_counter",
+            "id": "tl",
+            "label": "Total liabilities $110,000",
+            "color": "#8A4F1A"
+          },
+          {
+            "type": "gap_bracket",
+            "id": "gap",
+            "label": "Gap of $120,000: equity still to be added",
+            "color": "#B23A2B"
+          }
+        ],
+        "camera_motion": "smooth_stack_liabilities_on_right_pan",
+        "visual_beats": [
+          {
+            "at_sec": 62,
+            "directive": "Payables tile lands on the right pan"
+          },
+          {
+            "at_sec": 74,
+            "directive": "Overdraft tile adds ten thousand"
+          },
+          {
+            "at_sec": 86,
+            "directive": "Long-term loan block settles in"
+          },
+          {
+            "at_sec": 92,
+            "directive": "Right pan holds $110,000 against $230,000 on the left; equity of $120,000 is still missing"
+          }
+        ]
+      },
+      "voiceover_script": "Fill the right pan. Current liabilities are short-term debts due within one year: thirty thousand dollars owed to suppliers and a ten-thousand-dollar overdraft, totalling forty thousand. Non-current liabilities are long-term debts repaid over more than one year: a seventy-thousand-dollar bank loan for equipment. Total liabilities are forty thousand plus seventy thousand, or one hundred ten thousand dollars. The right pan is still far lighter than the left, so the owners' equity is needed to balance the scale.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "current liabilities",
+        "non-current liabilities",
+        "total liabilities"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 92,
+      "end_sec": 124,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Equity Balances the Scale",
+      "on_screen_labels": [
+        "Equity $120,000",
+        "Liabilities plus equity $230,000",
+        "Total assets $230,000"
+      ],
+      "animation_directives": {
+        "layout": "balance_scale_equity_tile_levels_beam",
+        "elements": [
+          {
+            "type": "source_tile",
+            "id": "eq",
+            "label": "Equity $120,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "animated_counter",
+            "id": "right",
+            "label": "40,000 + 70,000 + 120,000",
+            "color": "#E0A229"
+          },
+          {
+            "type": "balance_beam",
+            "id": "beam",
+            "label": "Beam levels perfectly",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "identity",
+            "label": "Assets equals liabilities plus equity",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_level_balance_beam",
+        "visual_beats": [
+          {
+            "at_sec": 92,
+            "directive": "Equity tile rises into the right pan"
+          },
+          {
+            "at_sec": 104,
+            "directive": "Three right-hand figures add together"
+          },
+          {
+            "at_sec": 116,
+            "directive": "Beam swings gently to horizontal"
+          },
+          {
+            "at_sec": 124,
+            "directive": "Equality label flashes on both pans"
+          }
+        ]
+      },
+      "voiceover_script": "Equity completes the right pan. The owners invested one hundred twenty thousand dollars. Add current liabilities of forty thousand, non-current liabilities of seventy thousand, and equity of one hundred twenty thousand. Forty plus seventy plus one hundred twenty equals two hundred thirty thousand dollars. The scale levels perfectly: total assets of two hundred thirty thousand equal total liabilities plus equity. If the two sides did not agree, a figure would be missing.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "equity",
+        "total assets",
+        "liabilities"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 124,
+      "end_sec": 154,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Working Capital and Capital Employed",
+      "on_screen_labels": [
+        "Working capital $10,000",
+        "Capital employed $190,000",
+        "Method: total assets minus current liabilities"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_two_substitution_cards",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "wc",
+            "label": "50,000 minus 40,000 equals 10,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "formula_card",
+            "id": "ce",
+            "label": "230,000 minus 40,000 equals 190,000",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "check",
+            "label": "180,000 plus 10,000 equals 190,000",
+            "color": "#E0A229"
+          },
+          {
+            "type": "balance_beam",
+            "id": "beam2",
+            "label": "Both methods agree",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_flip_between_two_cards_and_check",
+        "visual_beats": [
+          {
+            "at_sec": 124,
+            "directive": "First card subtracts current liabilities"
+          },
+          {
+            "at_sec": 136,
+            "directive": "Second card defines capital employed"
+          },
+          {
+            "at_sec": 148,
+            "directive": "Check card repeats the result"
+          },
+          {
+            "at_sec": 154,
+            "directive": "Both answers lock together"
+          }
+        ]
+      },
+      "voiceover_script": "Two derived figures matter. Working capital is current assets minus current liabilities: fifty thousand minus forty thousand equals ten thousand dollars. Capital employed, defined here as total assets minus current liabilities, is two hundred thirty thousand minus forty thousand, or one hundred ninety thousand dollars. Check it the other way: non-current assets of one hundred eighty thousand plus working capital of ten thousand also gives one hundred ninety thousand.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "working capital",
+        "capital employed",
+        "current liabilities"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 154,
+      "end_sec": 186,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Assessing Liquidity",
+      "on_screen_labels": [
+        "Current Ratio 1.25:1",
+        "Acid-Test Ratio 0.65:1",
+        "Inventory 48% of current assets ($24,000 of $50,000)"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_two_ratio_cards_inventory_bucket",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "cr",
+            "label": "50,000 over 40,000 equals 1.25 to 1",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "formula_card",
+            "id": "atr",
+            "label": "26,000 over 40,000 equals 0.65 to 1",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "icon_stock",
+            "id": "bucket",
+            "label": "Inventory bucket: 48% of current assets",
+            "color": "#E0A229"
+          },
+          {
+            "type": "scale",
+            "id": "judge",
+            "label": "Liquidity judgement beam",
+            "color": "#2D6A9F"
+          }
+        ],
+        "camera_motion": "smooth_remove_inventory_bucket_from_ratio",
+        "visual_beats": [
+          {
+            "at_sec": 154,
+            "directive": "Current Ratio card builds first"
+          },
+          {
+            "at_sec": 166,
+            "directive": "Inventory bucket, 48% of current assets, lifts out"
+          },
+          {
+            "at_sec": 178,
+            "directive": "Acid-Test Ratio 0.65 appears weaker than Current Ratio 1.25"
+          },
+          {
+            "at_sec": 186,
+            "directive": "Judgement beam tips toward caution over stock dependence"
+          }
+        ]
+      },
+      "voiceover_script": "Assess liquidity. The Current Ratio is current assets divided by current liabilities: fifty thousand over forty thousand gives one point two five to one. The Acid-Test Ratio removes inventory: fifty thousand minus twenty-four thousand is twenty-six thousand, divided by forty thousand gives zero point six five to one. Because nearly half of current assets, forty-eight percent, are shampoos and brushes in stock, therefore the firm depends on selling inventory, so its liquid cover is weaker than the first ratio suggests.",
+      "word_count": 80,
+      "syllabus_concepts_tagged": [
+        "Current Ratio",
+        "Acid-Test Ratio",
+        "liquidity"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 186,
+      "end_sec": 216,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "The Snapshot Limitation",
+      "on_screen_labels": [
+        "Useful to lenders and owners",
+        "Historic cost and one date only"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_strengths_left_limits_right",
+        "elements": [
+          {
+            "type": "scale",
+            "id": "pro",
+            "label": "Useful for lenders and owners",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "scale",
+            "id": "con",
+            "label": "Historic cost and missing goodwill",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "icon_calendar",
+            "id": "date",
+            "label": "One date snapshot",
+            "color": "#E0A229"
+          },
+          {
+            "type": "paper_stack",
+            "id": "other",
+            "label": "Income Statement alongside",
+            "color": "#2D6A9F"
+          }
+        ],
+        "camera_motion": "smooth_flip_between_strengths_and_limits",
+        "visual_beats": [
+          {
+            "at_sec": 186,
+            "directive": "Left panel lists lender and owner uses"
+          },
+          {
+            "at_sec": 198,
+            "directive": "Historic cost tag appears on assets"
+          },
+          {
+            "at_sec": 210,
+            "directive": "Goodwill and skill tiles stay empty"
+          },
+          {
+            "at_sec": 216,
+            "directive": "Income Statement sits beside the snapshot"
+          }
+        ]
+      },
+      "voiceover_script": "A statement of financial position is useful to lenders and owners, because it shows what is owed and what is owned. But it is a snapshot: figures are at historical cost, not today's market value; goodwill and staff skill are absent; and one date can hide a seasonal cash gap. A single list of balances cannot show profit earned during the year. Read it alongside the Income Statement before lending or investing.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "Statement of Financial Position",
+        "historic cost",
+        "limitations"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 216,
+      "end_sec": 250,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Rebalance Before You Leave",
+      "on_screen_labels": [
+        "Assets $230,000",
+        "Liabilities plus equity $230,000",
+        "Working capital $10,000"
+      ],
+      "animation_directives": {
+        "layout": "animated_balance_scale_final_recap",
+        "elements": [
+          {
+            "type": "balance_scale",
+            "id": "final",
+            "label": "Scale level at two hundred thirty thousand",
+            "color": "#E0A229"
+          },
+          {
+            "type": "formula_card",
+            "id": "ratio1",
+            "label": "Current Ratio 1.25 to 1",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "formula_card",
+            "id": "ratio2",
+            "label": "Acid-Test Ratio 0.65 to 1",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "animated_counter",
+            "id": "recap",
+            "label": "Capital employed 190,000",
+            "color": "#2D6A9F"
+          }
+        ],
+        "camera_motion": "slow_orbit_around_level_balance_scale",
+        "visual_beats": [
+          {
+            "at_sec": 216,
+            "directive": "Left pan totals two hundred thirty thousand"
+          },
+          {
+            "at_sec": 228,
+            "directive": "Right pan matches it exactly"
+          },
+          {
+            "at_sec": 240,
+            "directive": "Ratio cards slide out on either side"
+          },
+          {
+            "at_sec": 250,
+            "directive": "Quiz prompt fades in over the beam"
+          }
+        ]
+      },
+      "voiceover_script": "Rebalance the scale one last time. Left pan: non-current assets one hundred eighty thousand, current assets fifty thousand, total two hundred thirty thousand. Right pan: current liabilities forty thousand, non-current liabilities seventy thousand, equity one hundred twenty thousand, total two hundred thirty thousand. Working capital ten thousand; capital employed one hundred ninety thousand. Current Ratio one point two five; Acid-Test Ratio zero point six five. The picture is clear at a glance, yet only for this one date.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "total assets",
+        "working capital",
+        "capital employed",
+        "liquidity"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Paw & Polish has $50,000 current assets including $24,000 inventory, and $40,000 current liabilities. Which liquidity conclusion is correct?",
+    "options": [
+      "Current Ratio 1.25:1 and Acid-Test Ratio 0.65:1, so it relies on selling inventory",
+      "Current Ratio 0.65:1 and Acid-Test Ratio 1.25:1",
+      "Working capital is negative $10,000",
+      "Liquidity is strong because inventory is cash"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "Two ratio cards appear; the inventory bucket is lifted out of the current-assets bar and the second card drops below 1, while the first card stays above 1."
+  }
+}

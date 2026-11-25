@@ -1,0 +1,64 @@
+{
+  "auditor_id": "SYL-VID-AUD-04",
+  "target_unit": 4,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u4_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "No post-approval edits were reported for this shard; original full audit stands unchanged.",
+        "BLACKLIST: zero hits across voiceover, titles, on-screen labels, element labels, substitution arrays, visual beats and quiz text (searched full spec s3 list plus user directive, case-insensitive; no standalone ARR/CPA/IRR and no 'rearrange' false positive).",
+        "AO1 exact 0264 wording present: Scene 2 (24-52 s) labour productivity = total output / number of workers (or worker-hours) and 1,200 / 20 = 60; Scene 4 (80-108 s) lean production uses fewer inputs and cuts waste of materials, time and human effort, JIT delivers stock when needed, Kaizen is continuous improvement through eliminating waste; Scenes 5-7 list the SEVEN wastes (overproduction, waiting, transport, over-processing, inventory, motion, defects), job/batch/flow, and CAD/CAM/automation with the standard glossary definitions.",
+        "AO2: named firm Riverbend Bicycle Frames with numbers and on-screen motion in every scene (frame rack, worker icons, ratio panels, stock piles, waste icons, three conveyors, CAD-to-CAM file flight). AO3 causal chains in Scene 4 ('Therefore fewer resources are tied up, so unit costs fall') and Scene 5 ('Because every waste adds cost without adding value...'). AO4: dedicated two-sided evaluation split in Scene 8 (196-224 s) with green benefit vs amber risk labels and a conditional judgement. Quiz tests application with a new output figure (1,440 / 20 = 72).",
+        "ARITHMETIC VERIFIED: 1,200 frames / 20 workers = 60 (Scene 2 and tile); 20 workers / 2 machines = 10 workers per machine and 16 machines / 8 workers = 2 machines per worker (Scene 3, label and VO agree); 1,440 / 20 = 72 (Scene 9 and quiz correct_index 1). No error found.",
+        "MISLEADING-ANALOGY CHECKS PASSED: productivity is defined as output per worker and linked only to lower unit labour cost, never equated with efficiency or profit (the 'efficiency' tag in Scenes 1 and 8 is not asserted as a definition). No cost or break-even geometry in this shard.",
+        "MINOR (non-blocking) logic gap - Scene 2, 24-52 s: VO says 'Because output rose while the workforce stayed the same, unit labour cost falls', but the hook in Scene 1 only asks whether each worker produced more than last month and supplies no prior-month output baseline. Concrete correction: either insert a baseline in Scene 1 (e.g. 'last month: 1,000 frames with 20 workers = 50 per worker') so the comparison shown is 50 -> 60, or rephrase Scene 2 conditionally: 'If output rises while the workforce stays the same, unit labour cost falls.' The unit-cost link itself is correct 0264."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u4_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "No post-approval edits were reported for this shard; original full audit stands unchanged.",
+        "BLACKLIST: zero hits across all voiceover, titles, labels, formula panels, substitution arrays, chart labels, beats and quiz text.",
+        "AO1 exact 0264 wording present: Scene 2 fixed costs 'do not vary in the short run with output', variable costs 'rise directly with output', total cost = fixed + variable; Scene 3 economies (purchasing, technical) and diseconomies (poor communication) with a falling-then-rising long-run average cost; Scene 4 break-even = fixed costs / (selling price - variable cost per unit) with contribution = price - variable cost; Scene 7 margin of safety = actual output - break-even output; Scene 8 limitations = constant prices and costs, one product, known demand, 'a planning aid, not a guarantee'.",
+        "MISLEADING-ANALOGY CHECKS PASSED (the key risk in this shard): Scene 5 (108-144 s) draws the total-cost line from [0, 2000] to [1000, 4000] - it correctly starts at $2,000, NOT at zero, even though fixed costs exist. Fixed-cost line is flat at [0,2000] -> [1000,2000]; revenue line runs [0,0] -> [1000,6000]. The highlighted intersection at x=500, y=$3,000 agrees exactly with TR=6Q and TC=2000+2Q (6*500=3000; 2000+2*500=3000). Axes 0-1,000 loaves / 0-$6,000 contain all points.",
+        "ARITHMETIC VERIFIED: 2,000 + (1,000 x 2) = 4,000 (Scene 2); long-run average costs 3,200/400 = 8, 4,000/800 = 5, 5,400/1,200 = 4.5, 8,800/1,600 = 5.5 (Scene 3); contribution 6-2 = 4 and 2,000/4 = 500 loaves (Scene 4); break-even revenue and cost both 3,000 (Scene 5); at 1,000 loaves revenue 6,000 - cost 4,000 = profit 2,000 (Scene 6); margin 700-500 = 200, revenue 4,200, cost 3,400, profit 800 (Scene 7); 2,400/4 = 600 loaves (Scene 9 and quiz correct_index 1). All internally consistent across scenes.",
+        "AO2: named firm Stonehaven Bakehouse with rent $2,000, variable $2/loaf, price $6/loaf and animated cost pipes/chart lines. AO3 causal chain in Scene 8 ('Because the model simplifies reality, it guides decisions but never guarantees profit'). AO4: dedicated two-sided evaluation split in Scene 8 (200-228 s) with green 'useful planning aid' vs amber 'simplifying assumptions' labels. Quiz applies a changed fixed cost.",
+        "MINOR (non-blocking) wording inconsistency - Scene 1, 0-24 s: the on-screen label reads 'Rent: $2,000 a month' and Scene 2 VO says 'rent stays 2,000 dollars', but Scene 1 VO calls the same figure 'ovens cost 2,000 dollars a month'. Concrete correction: change Scene 1 VO to 'rent on the ovens is 2,000 dollars a month', or change the label to 'Ovens: $2,000 a month'. Both are fixed costs so the concept is unaffected."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u4_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "RE-CHECK (post-approval surgical edit, Scene 9 / 220-240 s): the visual beat formerly at 239 s ('The factor 0.02 glows above the division bar') has moved to 231 s and now reads 'The x 0.02 multiplier glows between the output tile and the result tile'. Verified: (a) no blacklist term in the new directive; (b) beats remain chronological at 220 / 226 / 231 / 233 s, all inside the scene, with consecutive gaps of 6 / 5 / 2 s; (c) voiceover and labels are unchanged and the new 'multiplier' wording matches the unchanged VO line 'Multiply 4,000 by 0.02 to get 80' and the quiz answer 4,000 x 0.02 = 80. The edit actually IMPROVES accuracy by removing the prior 'division bar' image, which wrongly implied division where the operation is multiplication. No new syllabus claim introduced; per-shard verdict retained.",
+        "BLACKLIST: zero hits across all voiceover, titles, labels, element labels, substitution arrays, beats and quiz text (re-verified after the edit).",
+        "AO1 exact glossary wording present: Scene 2 (24-52 s) quality control = 'checking for quality ... at the end of the production process' and quality assurance = 'setting quality standards throughout the production process and checking these are reached at each stage'. Scenes 3-4 cover TQM (quality is everyone's responsibility), Kaizen (continuous improvement through eliminating waste), quality circles and benchmarking against the industry best, matching the 4.3 alignment requirement.",
+        "MISLEADING-ANALOGY CHECK PASSED: quality control is correctly framed as end-of-process detection ('Gate catches; loop prevents', Scene 2) and is never described as process-wide prevention. Prevention/stage-by-stage checking is attributed only to QA/TQM in Scenes 2, 3 and 7, exactly as the 0264 glossary separates the two concepts.",
+        "ARITHMETIC VERIFIED: 2,000 x 0.05 = 100 defects and 100 x $12 = $1,200 (Scene 5); 2,000 x 0.02 = 40 defects, 40 x $12 = $480, saving 1,200-480 = $720/week and 720 x 50 = $36,000 (Scene 6); 4,000 x 0.02 = 80 (Scene 9 and quiz correct_index 1). All defect rates, unit rework cost and weekly/50-week totals agree across scenes.",
+        "AO2: named firm Northgate Medical Devices with 2,000 assemblies/week, 5% defects, $12 rework, animated inspection gate, reject bin, shrinking defect slice, comparison bars and funnel. AO3 causal chain in Scene 3 ('Because problems are caught early, fewer faulty units reach the gate'). AO4: dedicated two-sided evaluation split in Scene 8 (192-220 s) with green saving bars vs amber training/equipment/delay icons. Quiz applies doubled output.",
+        "Scene 7 correctly distinguishes internal failure (scrap/rework before delivery), external failure (returns, guarantee claims, goodwill) and prevention/appraisal costs."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u4_04.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "RE-CHECK (post-approval surgical edit, Scene 1 / 0-24 s): 'government incentives' was added consistently to the on-screen label, the factor-icons element label, the beat at 16 s and the voiceover. Verified: (a) no blacklist term in any added string; (b) government grants/incentives are a valid 0264 manufacturing-location factor - lessons.json 4.4-c4 states 'Government grants and taxes can also matter' and syllabus 4.6.1 covers factors influencing manufacturing location, and this is consistent with the $30,000 incentive already applied to Site A in Scenes 2 and 4; (c) word count re-verified at 61 actual tokens = declared 61, with pacing 61/24 = 2.542 words/sec inside the 2.25-2.60 gate, and the amended label is 11 words (≤18). The previously recorded 'six icons vs five named factors' inconsistency is RESOLVED. No misleading syllabus claim introduced; per-shard verdict retained.",
+        "PREVIOUS MINOR NOTE NOW RESOLVED: Scene 1's factor list now names all six factors, including government incentives (see re-check note).",
+        "BLACKLIST: zero hits across all voiceover, titles, labels, cost tiles, substitution arrays, beats and quiz text (re-verified after the edit).",
+        "AO1 alignment present: Scene 2 quantitative factors 'can be measured in money' (labour, transport to market, raw material delivery, utilities, government incentives) and Scene 3 qualitative factors 'harder to price' (quality of life, local labour skills, environmental impact), matching the manufacturing-location factor list in lessons.json 4.4.",
+        "ARITHMETIC VERIFIED: Site A = 300,000 + 80,000 + 40,000 + 60,000 - 30,000 = $450,000 (Scene 4); Site B = 360,000 + 20,000 + 70,000 + 50,000 = $500,000, Site A cheaper by $50,000 (Scene 5); after transport rises 80,000 -> 140,000 (+60,000) Site A = $510,000 and Site B is cheaper by $10,000 (Scene 6); with transport $160,000 Site A = $530,000 and the gap is $30,000 (Scene 9 and quiz correct_index 2). Every running total in labels, VO and substitution arrays agrees.",
+        "AO2: named firm Frostvale Foods with two named sites (A near port, B near capital), animated map pins, cost-tile stacks and delivery truck. AO3 explicit causal chain in Scene 7 (172-200 s): 'Because transport cost rises with distance, the landed cost of frozen meals rises; therefore the cheaper site changes; so Frostvale should shift...'. AO4: dedicated two-sided evaluation split in Scene 8 (200-228 s) with green $10,000 cost saving vs amber qualitative risks. Quiz applies a new transport shock.",
+        "MINOR (non-blocking, unchanged) wording inconsistency - Scene 7, 172-200 s: VO 'shift its plant' implies relocating an existing plant, while Scene 1 describes choosing a site for a NEW plant; suggested correction: 'locate the new plant near the city'. No syllabus or accuracy error."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "Post-approval re-check of the two reported surgical edits is complete and both are clean: vid_u4_03 Scene 9's new 231 s 'x 0.02 multiplier' beat introduces no blacklist term or wrong claim, stays on schedule, and improves accuracy by removing the misleading 'division bar' image; vid_u4_04 Scene 1's added 'government incentives' factor is a valid 0264 manufacturing-location factor (lessons.json 4.4-c4 / syllabus 4.6.1), is consistent across label, element, beat and VO, keeps word_count 61 = actual 61 and pacing 2.542 wps, and resolves the earlier six-vs-five-factor note. All four per-shard verdicts remain APPROVED_BY_SYL_AUD and the top-level verdict remains APPROVED_BY_SYL_AUD; remaining notes are minor wording items only (u4_01 S2 baseline, u4_02 S1 rent vs ovens, u4_04 S7 'shift its plant')."
+}

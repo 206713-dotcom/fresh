@@ -1,0 +1,51 @@
+{
+  "auditor_id": "SYL-VID-AUD-06",
+  "target_unit": 6,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u6_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: zero true hits. Automated substring matches for 'ARR' occur only inside 'arrows', 'directional_arrow', 'animated_arrow' and 'arrow' (false positives); no accounting-rate-of-return concept is present. No McGregor/Theory X/Y/Mayo/Hawthorne/Ansoff/BCG/Critical Path/gearing/investment appraisal/NPV/payback/IRR/Mendelow/Porter/decision tree/SWOT/PED calculation/A-Level/9609/0450/balance sheet/profit and loss account/Acid Test Ratio/capital employed = anywhere in VO, titles, labels, element labels, beats or quiz.",
+        "AO1 exactness verified against lessons.json 6.1, syllabus-static.json 6.1.1-6.1.2 and glossary.json: cycle stages appear in correct order growth, boom, recession, slump (scene 1, 0-20s); GDP = 'total value of output of goods and services in a country in one year' and growth = real GDP increases (scene 4, 76-100s); recession = falling GDP usually two consecutive quarters of negative growth (scene 4); inflation = average price level rising (scene 3, 48-76s); fiscal policy = taxation and public spending (scene 5, 100-128s); monetary policy = interest rates (scene 6, 128-156s).",
+        "AO2: named firm Brambledon Bicycles with concrete numbers (price index 100 to 105 in scene 3; two negative quarters in scene 4; rate 3% to 7% in scene 6) and on-screen motion (orbiting cycle gates, workforce tiles, levers, pipes, gauge, quarter bars).",
+        "AO3: scene 6 (128-156s) 'Because borrowing costs rise, monthly repayments take more profit, so the firm postpones a new workshop' and scene 8 (188-224s) 'Because orders fall and cash is tight, therefore it cuts overtime and delays expansion, so it protects cash' are explicit causal chains matching the lessons.json examTip.",
+        "AO4: scene 7 (156-188s) is a genuine two-sided evaluation with split-screen PRO labels (lower rates/taxes lift demand and profit) and CON labels (cheap credit fuels inflation, rate rises make loans dear, higher taxes fund services); VO concludes policy must match the cycle stage. Scene 8 also balances cost-cutting benefit against damage to quality and morale.",
+        "Gate 4: no cash-flow/profit conflation ('fight for cash' and 'protects cash' refer to liquidity, not profit). Quiz scene 9 (224-256s) and the recap question are application-based and consistent with scene 6: a large loan makes the 3% to 7% rate rise bite before the income-tax cut.",
+        "Learning objectives are 0264-aligned and contain no old 0450/A-Level or 9609 theory leakage."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u6_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: zero true hits (the 'ARR' substring matches are inside the word 'arrows' only). No blacklisted theory, qualification code or forbidden account title appears in VO, titles, labels, element labels, beats or quiz.",
+        "AO1 exactness verified against lessons.json 6.3-6.4, syllabus-static.json 6.2.3/6.3.1/6.4.1/6.5.1 and glossary.json: external costs and benefits are defined as imposed on a third party independent of the original transaction (scenes 2 and 3); ethical issues listed (child labour, fair wages, fair prices to suppliers, supplier environmental damage) match the syllabus; pressure groups = people acting together to try to force businesses or governments to adopt policies (scene 6, 132-160s). Sustainable development is presented as the Brundtland 'today's needs without damaging tomorrow's' idea; no conflicting source definition exists in the read-only files and the three-pillar treatment is accurate.",
+        "AO2: named scenario Cocoa Grove Collective with concrete numbers and motion — private $150,000 + external $400,000 = social cost $550,000 (scene 2, 20-48s); private $120,000 + external $200,000 = social benefit $320,000 (scene 3, 48-72s); wages $8 to $10 and cocoa $1,800 to $2,100 a tonne (scene 5, 100-132s); 8% of $5m = $400,000 boycott loss (scene 6). All arithmetic rechecked and correct: 150+400=550, 120+200=320, 300x2000=600000, 0.08x5000000=400000.",
+        "Gate 4 externality arrows are directionally correct: smoke/waste-water harm arrows and the jobs benefit arrow all point outward from the factory to the community (scene 1, 0-20s), and the spillover arrow crosses from the private stack to the external stack (scene 2). Social cost and social benefit are stated as private plus external, never inverted.",
+        "AO3: scene 8 (196-228s) 'Because untreated waste harms the river, therefore the firm installs treatment and raises prices slightly, so the licence is safe' is an explicit causal chain. AO4: scene 7 (160-196s) balances reputation/loyalty/legal-risk benefits against higher costs, price disadvantage and possible job cuts; scene 8 balances cost rises against protected sales and clean water.",
+        "Quiz and scene 9 are application-based and internally consistent: certified cocoa costs $300 more per tonne ($600,000 on 2,000 tonnes) and a boycott risks $400,000 of sales.",
+        "Non-blocking advisory for VID-GEN-06: in scene 5 (100-132s) the $480,000 wage-bill figure is correct only for a 50-paid-week year (120 workers x 40 hours x 50 weeks x $2 = $480,000); adding 'over 50 paid weeks' to the VO and label would make the arithmetic fully transparent to learners. No rejection — the figure is internally achievable and no competing weeks figure is stated."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u6_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: zero true hits ('ARR' matches are only inside 'arrows'/'price_arrow'/etc.). No PED formula or coefficient, A-Level/0450/9609 concept, or any other blacklisted term in VO, titles, labels, element labels, beats or quiz.",
+        "AO1 exactness verified against glossary.json and syllabus-static.json 6.2.1-6.2.4: globalisation = worldwide trade and movement of people and capital between countries (scene 1, 0-20s); MNC = operations in more than one country with parent/subsidiary capital and profit flows (scene 3, 48-76s); tariff = tax on imported goods arriving into the country (scene 6, 132-160s); quota = limit on the physical quantity that can be imported (scene 7, 160-188s). Exchange rate = price of one currency in terms of another (scene 4, 76-104s).",
+        "Gate 2 and 5 exchange-rate direction checked line by line and is CORRECT: the dollar depreciates from $1 = 0.75 pounds to $1 = 0.60 pounds, so the pound appreciates. The £300 order costs the American buyer $500 (300/0.60 = 500) and British exports are dearer; the $400 American order costs the British buyer 240 pounds (400 x 0.60 = 240) and British imports are cheaper. This matches the binding rule (a depreciation makes that country's exports cheaper abroad and imports dearer at home) because the appreciating pound produces the opposite for the UK. No direction reversal or conversion contradiction anywhere in scenes 4, 5, 8, 9 or the quiz.",
+        "Arithmetic rechecked: 400 x 0.75 = 300; 300 / 0.75 = 400; 300 / 0.60 = 500; 400 x 0.60 = 240; tariff 400 + 40 = 440 and 440 x 0.75 = 330 (scene 6 explicitly restates the baseline 0.75 rate, so reverting from scene 5's 0.60 is a labelled separate example, not a contradiction).",
+        "AO2: named firms Northstar Microchip Imports and Vantara Devices with numbers ($2m capital down, $600,000 profit repatriation, 150 host-country jobs, $5m exports, $400/£300/£240/$500 conversions, 10% tariff, 12,000-8,000 quota units) and on-screen motion (network, org chart, flipping currency cards, border gates, price arrows).",
+        "AO3: scene 8 (188-224s) 'Because competition is strong, therefore prices fall, so consumers benefit' is an explicit causal chain. AO4: scene 8 is genuinely two-sided (free trade: cheaper inputs, wider markets, consumer benefit vs domestic job losses, tariff costs, quota scarcity, retaliation), and the evaluation correctly states the pound appreciation/import binary.",
+        "Quiz scene 9 (224-260s) and the recap question test application: 240 pounds and dearer exports in dollars, with a visual explanation consistent with scenes 4 and 5. Learning objectives are 0264-aligned; 'Calculate' refers only to permitted exchange-rate conversions, not PED coefficients.",
+        "Non-blocking advisories: scene 4 phrase 'every price changes twice' is loose wording for 'both directions of the rate are shown'; scene 7's quota-driven rise from 300 to 330 pounds is asserted as a scenario assumption rather than derived. Neither is a syllabus or accuracy violation, so no regeneration is required."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "All three Unit 6 shards pass the syllabus/accuracy audit. Zero true blacklist hits; all definitions match lessons.json, syllabus-static.json and glossary.json; all claimed arithmetic is internally consistent, including the dollar depreciation worked example ($400 x 0.75 = 300 pounds; 300 / 0.60 = $500; 400 x 0.60 = 240 pounds) with correctly stated export/import price directions. Each shard has an exact-knowledge AO1 base, a named animated business scenario with numbers (AO2), an explicit causal chain (AO3) and a genuinely balanced two-sided evaluation scene (AO4), plus an application quiz. Two non-blocking advisories are recorded for VID-GEN-06 (50-week assumption for the $480,000 wage bill in u6_02 scene 5; loose wording in u6_03 scene 4). Collectively the three videos cover the 0264 Unit 6 subtopics grouped by PIPELINE_SPEC section 1."
+}

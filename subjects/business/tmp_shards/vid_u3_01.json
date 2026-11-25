@@ -1,0 +1,585 @@
+{
+  "video_id": "VID_U3_01",
+  "unit_number": 3,
+  "unit_title": "Unit 3: Marketing",
+  "chapter_code": "3.1",
+  "chapter_title": "Marketing, competition and the customer",
+  "video_title": "Visualising Markets, Segmentation and Competition",
+  "target_duration_sec": 270,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Define marketing using 0264 wording and identify customer needs",
+    "Compare mass and niche markets and explain the five bases of segmentation",
+    "Explain competition and market share, then evaluate which market route suits a small brand"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 31,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Who Wants Verdant Crunch?",
+      "on_screen_labels": [
+        "Marketing: identify wants, satisfy profitably",
+        "Pea protein snack bar",
+        "Shopper crowd animation"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_product_right_crowd",
+        "elements": [
+          {
+            "type": "icon_product",
+            "id": "bar",
+            "label": "Verdant Crunch pea bar",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "crowd_grid",
+            "id": "shoppers",
+            "label": "Potential customers",
+            "color": "#123B5E"
+          },
+          {
+            "type": "animated_counter",
+            "id": "launch",
+            "label": "Launch budget $50,000",
+            "color": "#F2C14E"
+          }
+        ],
+        "camera_motion": "smooth_zoom_from_product_into_crowd",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Show the bar alone on a plain background"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Shopper grid fades in and groups separate"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Title resolves into four chapter tiles"
+          }
+        ],
+        "split_panels": [
+          "product close up",
+          "animated shopper crowd"
+        ]
+      },
+      "voiceover_script": "Meet Verdant Crunch, a young plant based snack brand facing one question. Who wants a pea protein bar, and why? Marketing is identifying customer wants and satisfying them profitably. On screen, a crowd of shoppers splits into groups, needs turn into products, and market share gets measured. We will see mass and niche markets, segmentation tiles and how competition changes choices. By the end, you can judge which route gives this small brand the strongest position.",
+      "word_count": 76,
+      "syllabus_concepts_tagged": [
+        "marketing",
+        "customer needs",
+        "market"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 31,
+      "end_sec": 63,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Needs Into Loyalty Loop",
+      "on_screen_labels": [
+        "Need to product to satisfaction",
+        "Loyalty and relationships",
+        "Anticipate changing wants"
+      ],
+      "animation_directives": {
+        "layout": "circular_flow_with_center_product",
+        "elements": [
+          {
+            "type": "icon_person",
+            "id": "need",
+            "label": "Customer need",
+            "color": "#123B5E"
+          },
+          {
+            "type": "flow_node",
+            "id": "product",
+            "label": "Satisfying product",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "loop_path",
+            "id": "repeat",
+            "label": "Repeat purchase",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_heart",
+            "id": "loyalty",
+            "label": "Customer loyalty",
+            "color": "#D64550"
+          }
+        ],
+        "camera_motion": "orbit_around_loyalty_loop",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Need icon pulses at the top of the loop"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Product node lights and satisfaction halo spreads"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Income slider moves and premium line appears"
+          }
+        ],
+        "flow_nodes": [
+          "customer need",
+          "satisfying product",
+          "repeat purchase",
+          "loyalty",
+          "relationship"
+        ]
+      },
+      "voiceover_script": "Marketing starts with customer needs. Verdant Crunch listens, then satisfies those needs with a tasty, affordable bar. Satisfied buyers repeat purchase, and repeat buying builds customer loyalty. Communicating with customers builds relationships, and relationships keep sales steady. Because household incomes rose, therefore more shoppers wanted premium ingredients, so the firm added a smaller premium line. Marketing also means anticipating changes in customer needs, before rivals spot them. Watch the loop: need, product, satisfaction, loyalty, relationship, then need again.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "customer needs",
+        "customer loyalty",
+        "customer relationships",
+        "anticipating change"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 63,
+      "end_sec": 99,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Market Share Ring Builds",
+      "on_screen_labels": [
+        "Total market: $8m revenue",
+        "Verdant Crunch: $1.6m",
+        "Share shows strength, not profit"
+      ],
+      "animation_directives": {
+        "layout": "ring_chart_left_numbers_right",
+        "elements": [
+          {
+            "type": "ring_chart",
+            "id": "share",
+            "label": "Market share ring",
+            "color": "#123B5E"
+          },
+          {
+            "type": "animated_counter",
+            "id": "total",
+            "label": "Total market $8,000,000",
+            "color": "#4A5A6A"
+          },
+          {
+            "type": "animated_counter",
+            "id": "brand",
+            "label": "Brand revenue $1,600,000",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_rival",
+            "id": "rivals",
+            "label": "New competitors enter",
+            "color": "#D64550"
+          }
+        ],
+        "camera_motion": "zoom_into_ring_segment",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Axes and ring outline draw in"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Numbers slide into the ratio 1.6 over 8"
+          },
+          {
+            "at_sec": 22,
+            "directive": "One fifth of the ring fills in gold"
+          }
+        ],
+        "axes": [
+          "time",
+          "market revenue"
+        ],
+        "highlight_intersection": "twenty percent segment"
+      },
+      "voiceover_script": "Market share is the percentage of total market sales or revenue held by one brand. Here the health snack market sells two million packs a year at four dollars each, giving eight million dollars of sales. Verdant Crunch sells four hundred thousand packs, worth one point six million dollars. One point six divided by eight, times one hundred, gives twenty percent. The ring fills to show that share. Share shows competitive strength, not profit. More rivals now enter, so the firm must differentiate or cut its price.",
+      "word_count": 87,
+      "syllabus_concepts_tagged": [
+        "market share",
+        "sales revenue",
+        "competitive strength"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 99,
+      "end_sec": 135,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Mass Market vs Niche Market",
+      "on_screen_labels": [
+        "Mass: large audience, high volume",
+        "Niche: small specialised segment",
+        "Scale versus focus"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_mass_right_niche",
+        "elements": [
+          {
+            "type": "crowd_grid",
+            "id": "mass",
+            "label": "Large audience",
+            "color": "#123B5E"
+          },
+          {
+            "type": "target_icon",
+            "id": "niche",
+            "label": "Specialised segment",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "icon_factory",
+            "id": "scale",
+            "label": "Economies of scale",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_shield",
+            "id": "focus",
+            "label": "Less competition",
+            "color": "#2E8B6B"
+          }
+        ],
+        "camera_motion": "dolly_out_to_show_both_audiences",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Crowd divides down the middle"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Mass cart fills with many bars"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Niche cart fills with fewer premium bars"
+          }
+        ],
+        "split_panels": [
+          "mass volume path",
+          "niche focus path"
+        ]
+      },
+      "voiceover_script": "Now the audience splits. On the left, a mass market sells to the largest part of the market, often with standardised products. Verdant Crunch could supply every supermarket, winning high volume and economies of scale. On the right, a niche market is a small, specialised segment of a much larger market, say older athletes needing low sugar snacks. There is less competition, but limited volume. Two carts move across the screen: the mass cart holds thousands of bars, the niche cart holds hundreds at a higher price.",
+      "word_count": 87,
+      "syllabus_concepts_tagged": [
+        "mass market",
+        "niche market",
+        "economies of scale"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 135,
+      "end_sec": 166,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "Five Segmentation Tiles",
+      "on_screen_labels": [
+        "Age, income, location",
+        "Gender and lifestyle",
+        "Better targeting, higher costs"
+      ],
+      "animation_directives": {
+        "layout": "five_tile_grid_with_funnel",
+        "elements": [
+          {
+            "type": "tile",
+            "id": "age",
+            "label": "Age tile",
+            "color": "#123B5E"
+          },
+          {
+            "type": "tile",
+            "id": "income",
+            "label": "Income tile",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "tile",
+            "id": "location",
+            "label": "Location tile",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "tile",
+            "id": "gender",
+            "label": "Gender tile",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "tile",
+            "id": "lifestyle",
+            "label": "Lifestyle tile",
+            "color": "#1B7F7B"
+          }
+        ],
+        "camera_motion": "sweep_across_tiles_then_push_into_funnel",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Age and income tiles snap in"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Location, gender and lifestyle tiles follow"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Funnel focuses into two chosen segments"
+          }
+        ],
+        "segment_bases": [
+          "age",
+          "income",
+          "location",
+          "gender",
+          "lifestyle"
+        ]
+      },
+      "voiceover_script": "Markets can be segmented by age, income, location, gender and lifestyle. Five tiles slide into place. Age separates students from retirees. Income separates budget from premium buyers. Location separates city from rural shoppers. Gender and lifestyle shape flavour and format choices. Market segmentation means knowing that different segments exist, then developing and marketing different products for each. Targeting improves, because messages fit buyers, but research and production costs rise, because every tile needs its own campaign.",
+      "word_count": 76,
+      "syllabus_concepts_tagged": [
+        "market segmentation",
+        "market segment",
+        "targeting"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 166,
+      "end_sec": 198,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Why Spending Patterns Shift",
+      "on_screen_labels": [
+        "Income, age, technology",
+        "Fashion and economic climate",
+        "Rivals force a response"
+      ],
+      "animation_directives": {
+        "layout": "slider_console_above_demand_curve",
+        "elements": [
+          {
+            "type": "slider_console",
+            "id": "drivers",
+            "label": "Spending drivers",
+            "color": "#123B5E"
+          },
+          {
+            "type": "line_graph",
+            "id": "demand",
+            "label": "Demand curve",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_rival",
+            "id": "copycat",
+            "label": "Competing brands",
+            "color": "#D64550"
+          },
+          {
+            "type": "icon_package",
+            "id": "refresh",
+            "label": "New packaging",
+            "color": "#F2C14E"
+          }
+        ],
+        "camera_motion": "track_slider_motion_into_curve_shift",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Five driver sliders rise and fall"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Demand curve bends right then left"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Rival box appears and packaging refreshes"
+          }
+        ],
+        "axes": [
+          "price",
+          "quantity demanded"
+        ],
+        "lines": [
+          "original demand",
+          "shifted demand"
+        ]
+      },
+      "voiceover_script": "Spending patterns shift with income, age, technology, fashion and the economic climate. Animated sliders move and the demand curve bends. When incomes dip, shoppers trade down. When a new trend spreads, they trade up. Some markets become more competitive as rivals copy ideas, and prices fall. Businesses respond by differentiating, improving quality or lowering prices. Because a rival launched a cheaper bar, therefore Verdant Crunch refreshed its packaging, so shoppers noticed a clear difference on the shelf.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "market changes",
+        "competitive markets",
+        "differentiation"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 198,
+      "end_sec": 234,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Verdant Crunch By The Numbers",
+      "on_screen_labels": [
+        "2,000,000 packs in market",
+        "400,000 packs sold",
+        "$4 per pack, $1.6m revenue"
+      ],
+      "animation_directives": {
+        "layout": "funnel_left_growing_bar_right",
+        "elements": [
+          {
+            "type": "funnel",
+            "id": "market",
+            "label": "Market to brand funnel",
+            "color": "#123B5E"
+          },
+          {
+            "type": "animated_counter",
+            "id": "packs",
+            "label": "400,000 packs",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "bar_chart",
+            "id": "revenue",
+            "label": "Revenue $1.6m",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_money",
+            "id": "campaign",
+            "label": "Campaign cost $100,000",
+            "color": "#D64550"
+          }
+        ],
+        "camera_motion": "follow_funnel_then_pan_to_revenue_bar",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Funnel focuses from 2m to 400k"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Revenue bar grows to $1.6m"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Extra 50k buyers lift the bar again"
+          }
+        ],
+        "flow_nodes": [
+          "2,000,000 market packs",
+          "400,000 brand packs",
+          "$1.6m revenue"
+        ],
+        "worked_example": {
+          "market_packs": 2000000,
+          "brand_packs": 400000,
+          "price": 4,
+          "total_revenue": 8000000,
+          "brand_revenue": 1600000,
+          "share_percent": 20
+        }
+      },
+      "voiceover_script": "Follow the numbers. Two million packs are sold in the whole market. Verdant Crunch aims at gym goers and busy students, and reaches four hundred thousand buyers. At four dollars a pack, revenue is one point six million dollars, which is twenty percent of the eight million dollar market. The funnel focuses from two million shoppers to four hundred thousand buyers. If a niche campaign adds fifty thousand buyers, revenue grows by two hundred thousand dollars. The bar rises, but the campaign costs one hundred thousand dollars.",
+      "word_count": 87,
+      "syllabus_concepts_tagged": [
+        "market share",
+        "worked scenario",
+        "market segmentation"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 234,
+      "end_sec": 270,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Mass Reach Or Niche Focus",
+      "on_screen_labels": [
+        "Mass: volume and scale, but price wars",
+        "Niche: focus and loyalty, but small",
+        "Start niche, then expand"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_verdict_bar_below",
+        "elements": [
+          {
+            "type": "balance_scale",
+            "id": "weigh",
+            "label": "Pros and cons scale",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_label",
+            "id": "mass",
+            "label": "Mass advantages",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_label",
+            "id": "niche",
+            "label": "Niche advantages",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "verdict_banner",
+            "id": "decision",
+            "label": "Start focused, then scale",
+            "color": "#2E8B6B"
+          }
+        ],
+        "camera_motion": "pull_back_from_scale_to_verdict_banner",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Two columns of pros and cons appear"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Scale tips toward the niche side"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Verdict banner slides up"
+          }
+        ],
+        "split_panels": [
+          "mass advantages and limits",
+          "niche advantages and limits"
+        ]
+      },
+      "voiceover_script": "Time to weigh both sides. A mass market brings high volume and economies of scale, yet it needs heavy spending and invites price wars. A niche market brings focus and less competition, yet volume stays small and a trend can fade. Segmentation sharpens targeting, but every extra segment adds research and production cost. Because the brand is small, therefore it should start niche, so it can learn before expanding. The verdict is to begin focused, then reach for the mass market once the recipe is proven.",
+      "word_count": 86,
+      "syllabus_concepts_tagged": [
+        "advantages of mass markets",
+        "advantages of niche markets",
+        "evaluation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Verdant Crunch sells 400,000 packs at $4 in a 2,000,000-pack market. Total market revenue is $8m. What is its market share?",
+    "options": [
+      "10 percent",
+      "20 percent",
+      "25 percent",
+      "40 percent"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A ring chart fills one fifth of the market while 1.6 million and 8 million slide into the ratio on screen."
+  }
+}

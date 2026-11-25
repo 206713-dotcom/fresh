@@ -1,0 +1,584 @@
+{
+  "video_id": "VID_U2_04",
+  "unit_number": 2,
+  "unit_title": "Unit 2: People in business",
+  "chapter_code": "2.4",
+  "chapter_title": "Internal and external communication",
+  "video_title": "Animate the Message: Channels, Barriers and Feedback",
+  "target_duration_sec": 240,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Trace the communication process and define internal and external communication",
+    "Identify physical, language, jargon, cultural and overload barriers with mitigations",
+    "Evaluate communication channels for a given audience and purpose"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 24,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Where Did the Handover Note Go?",
+      "on_screen_labels": [
+        "Harbourview Solutions Call Centre",
+        "24 agents across two shifts",
+        "18 missed callbacks a day"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "icon_headset",
+            "id": "call_centre",
+            "label": "Call centre floor",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_note",
+            "id": "handover_note",
+            "label": "Handover note",
+            "color": "#C8860D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "missed_counter",
+            "label": "Missed callbacks",
+            "color": "#B22222",
+            "from": 0,
+            "to": 18
+          }
+        ],
+        "camera_motion": "zoom_from_the_call_floor_to_one_sticky_note",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Show twenty-four headsets and a busy night shift"
+          },
+          {
+            "at_sec": 12,
+            "directive": "A handwritten note slides under a keyboard and disappears"
+          },
+          {
+            "at_sec": 24,
+            "directive": "Missed callback counter climbs to eighteen"
+          }
+        ]
+      },
+      "voiceover_script": "Communication is the transferring of a message from the sender to the receiver, who understands the message. At Harbourview Solutions Call Centre, a shift handover note is left on a desk. The evening team misses eighteen callbacks because the note is incomplete. The sender thought it was clear. The receiver never saw the crucial change. Watch the note stop and restart.",
+      "word_count": 61,
+      "syllabus_concepts_tagged": [
+        "communication",
+        "internal communication",
+        "barriers"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 24,
+      "end_sec": 50,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Sender to Feedback, With a Barrier",
+      "on_screen_labels": [
+        "Sender encodes",
+        "Message travels by channel",
+        "Receiver decodes",
+        "Feedback confirms understanding"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "flow_nodes",
+            "id": "process_loop",
+            "label": "Five stage loop",
+            "color": "#17365D",
+            "nodes": 5
+          },
+          {
+            "type": "noise_wall",
+            "id": "noise_barrier",
+            "label": "Noise barrier",
+            "color": "#B22222"
+          },
+          {
+            "type": "arrow_flow",
+            "id": "feedback_arrow",
+            "label": "Read-back feedback",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "pan_around_the_full_communication_loop",
+        "visual_beats": [
+          {
+            "at_sec": 24,
+            "directive": "Sender, message, channel, receiver and feedback nodes light in turn"
+          },
+          {
+            "at_sec": 37,
+            "directive": "A red noise wall blocks the channel and the message stalls"
+          },
+          {
+            "at_sec": 50,
+            "directive": "A green read-back arrow loops around the wall to the sender"
+          }
+        ]
+      },
+      "voiceover_script": "Five steps animate. The sender encodes an idea into a message. The message travels through a channel: email, phone, briefing or noticeboard. The receiver decodes it. Feedback is the reply from the receiver confirming the message was understood and acted upon. A red noise barrier blocks the channel. A read-back arrow loops around the wall and returns confirmation. Without feedback, the sender never knows the message failed.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "communication process",
+        "channel",
+        "feedback",
+        "communication barriers"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 50,
+      "end_sec": 74,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Three Ways to Classify Methods",
+      "on_screen_labels": [
+        "Verbal speech versus non-verbal gestures",
+        "Formal channels versus informal chat",
+        "Internal staff versus external customers"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "method_split",
+            "label": "Three classification pairs",
+            "color": "#17365D",
+            "lanes": 3
+          },
+          {
+            "type": "icon_speech",
+            "id": "verbal",
+            "label": "Verbal and non-verbal",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "icon_document",
+            "id": "formal",
+            "label": "Formal and informal",
+            "color": "#C8860D"
+          },
+          {
+            "type": "icon_building",
+            "id": "scope",
+            "label": "Internal and external",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "dolly_across_the_three_classification_panels",
+        "visual_beats": [
+          {
+            "at_sec": 50,
+            "directive": "Speech and gesture icons fill the first panel"
+          },
+          {
+            "at_sec": 62,
+            "directive": "Official memo and corridor chat fill the second"
+          },
+          {
+            "at_sec": 74,
+            "directive": "Staff and supplier icons fill the internal external panel"
+          }
+        ]
+      },
+      "voiceover_script": "Methods split three ways. Verbal communication uses speech; non-verbal uses gestures, facial expression and body language. Formal communication follows official channels; informal grows through conversation. Internal communication is between members of the same organisation. External communication reaches customers, suppliers, investors and the public. Harbourview uses a briefing for staff and a letter for a supplier. Audience and purpose should shape the medium.",
+      "word_count": 62,
+      "syllabus_concepts_tagged": [
+        "verbal communication",
+        "non-verbal communication",
+        "internal communication",
+        "external communication"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 74,
+      "end_sec": 100,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Compare the Channels",
+      "on_screen_labels": [
+        "Meeting: instant feedback",
+        "Email: $0.02, written record",
+        "Text: $0.05, brief",
+        "Letter: $0.85, formal"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "comparison_grid",
+            "id": "channel_grid",
+            "label": "Four channel cards",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_clock",
+            "id": "speed_icon",
+            "label": "Speed meter",
+            "color": "#1F7A8C"
+          },
+          {
+            "type": "icon_coins",
+            "id": "cost_icon",
+            "label": "Cost meter",
+            "color": "#C8860D"
+          },
+          {
+            "type": "icon_document",
+            "id": "record_icon",
+            "label": "Written record",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "sweep_the_grid_from_speed_to_record",
+        "visual_beats": [
+          {
+            "at_sec": 74,
+            "directive": "Channel cards drop into four rows"
+          },
+          {
+            "at_sec": 87,
+            "directive": "Speed and cost meters animate beside every card"
+          },
+          {
+            "at_sec": 100,
+            "directive": "Written record ticks appear for email and letters only"
+          }
+        ]
+      },
+      "voiceover_script": "Compare the channels. Meetings give instant feedback but cost travel time. Email costs two cents and leaves a record, but invites overload. A text costs five cents and is quick, but too short for detail. A letter costs eighty-five cents and suits formal external notice, but is slow. Social media reaches many cheaply, but messages spread widely. Each method trades speed, cost, reach and record.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "methods of communication",
+        "written record",
+        "channel choice"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 100,
+      "end_sec": 124,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Barriers Break the Loop",
+      "on_screen_labels": [
+        "Physical: call floor noise",
+        "Language: unfamiliar words",
+        "Jargon: undefined terms",
+        "Cultural: directness differs"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "flow_nodes",
+            "id": "barrier_points",
+            "label": "Barrier insertion points",
+            "color": "#17365D",
+            "nodes": 4
+          },
+          {
+            "type": "noise_wall",
+            "id": "physical_noise",
+            "label": "Physical noise",
+            "color": "#B22222"
+          },
+          {
+            "type": "icon_term",
+            "id": "jargon_card",
+            "label": "SLA breach jargon",
+            "color": "#C8860D"
+          },
+          {
+            "type": "icon_people",
+            "id": "culture_cards",
+            "label": "Cultural styles",
+            "color": "#6A4C93"
+          }
+        ],
+        "camera_motion": "dive_into_each_barrier_insertion_point",
+        "visual_beats": [
+          {
+            "at_sec": 100,
+            "directive": "Noise waves cover the channel arrow"
+          },
+          {
+            "at_sec": 112,
+            "directive": "A jargon card replaces a plain instruction"
+          },
+          {
+            "at_sec": 124,
+            "directive": "Two cultural speech bubbles show different refusal styles"
+          }
+        ]
+      },
+      "voiceover_script": "Barriers stop effective communication. Physical noise comes from two hundred calls an hour. Language barriers arise from unfamiliar words. Jargon causes the same problem: a note saying SLA breach means little without explanation. Cultural differences affect how directly a person refuses a request. Each barrier breaks the loop at a different point, so each needs a different fix.",
+      "word_count": 58,
+      "syllabus_concepts_tagged": [
+        "communication barriers",
+        "physical barriers",
+        "jargon",
+        "cultural differences"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 124,
+      "end_sec": 150,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Overload and the Plain-Language Fix",
+      "on_screen_labels": [
+        "27-page manual hides one safety step",
+        "Fix: plain words and short numbered steps",
+        "Fix: read-back confirmation"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "icon_document",
+            "id": "thick_manual",
+            "label": "Twenty-seven page manual",
+            "color": "#B22222"
+          },
+          {
+            "type": "checklist",
+            "id": "short_steps",
+            "label": "Eight short steps",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "arrow_flow",
+            "id": "readback_loop",
+            "label": "Read-back loop",
+            "color": "#1F7A8C"
+          }
+        ],
+        "camera_motion": "compress_the_manual_into_a_short_checklist",
+        "visual_beats": [
+          {
+            "at_sec": 124,
+            "directive": "A thick manual flips through pages and buries one highlighted line"
+          },
+          {
+            "at_sec": 137,
+            "directive": "Pages compress into eight numbered plain-language steps"
+          },
+          {
+            "at_sec": 150,
+            "directive": "A receiver reads back and a confirmation tick returns"
+          }
+        ]
+      },
+      "voiceover_script": "Information overload is another barrier. A twenty-seven page manual hides one safety step. The wrong medium worsens it: a diagram sent by text cannot be read. Mitigation is concrete. Use plain language and define jargon. Break long guidance into short numbered steps. Choose a channel that fits the message, then ask the receiver to read it back. Feedback and checking turn a one-way send into shared understanding.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "information overload",
+        "choosing the right medium",
+        "reducing barriers"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 150,
+      "end_sec": 178,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Harbourview Rebuilds the Handover",
+      "on_screen_labels": [
+        "Missed callbacks: 18 to 4",
+        "Complaints: 6 to 2 percent",
+        "Resolution: 58 to 74 percent"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "checklist",
+            "id": "digital_checklist",
+            "label": "Eight field checklist",
+            "color": "#17365D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "callback_counter",
+            "label": "Missed callbacks",
+            "color": "#2E8B57",
+            "from": 18,
+            "to": 4
+          },
+          {
+            "type": "dashboard",
+            "id": "metrics_dashboard",
+            "label": "Three live metrics",
+            "color": "#1F7A8C"
+          }
+        ],
+        "camera_motion": "sweep_across_the_live_metrics_dashboard",
+        "visual_beats": [
+          {
+            "at_sec": 150,
+            "directive": "Old handwritten note fades beside eighteen missed callbacks"
+          },
+          {
+            "at_sec": 164,
+            "directive": "Checklist and five minute briefing appear"
+          },
+          {
+            "at_sec": 178,
+            "directive": "All three dashboard counters move to their new values"
+          }
+        ]
+      },
+      "voiceover_script": "Harbourview changes its handover. Because handwritten notes were ambiguous, therefore the team uses a structured digital checklist with a five minute briefing, so missed callbacks fall from eighteen to four. Complaint rates drop from six percent to two percent. First contact resolution rises from fifty-eight percent to seventy-four percent. It has eight fields and a read-back box. Agents tick each item before leaving. Every dashboard metric moves as the loop closes.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "causal chain",
+        "worked scenario",
+        "feedback"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 178,
+      "end_sec": 208,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Which Channel Would You Choose?",
+      "on_screen_labels": [
+        "Email plus: cheap, recorded",
+        "Email minus: overload, misread tone",
+        "Face-to-face plus: questions and cues",
+        "Face-to-face minus: time and cost"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "evaluation_split",
+            "id": "channel_eval",
+            "label": "Channel trade-offs",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_email",
+            "id": "email_side",
+            "label": "Email",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "icon_people",
+            "id": "face_side",
+            "label": "Face-to-face",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "warning_sign",
+            "id": "cost_side",
+            "label": "Time cost",
+            "color": "#C8860D"
+          }
+        ],
+        "camera_motion": "alternate_between_email_and_face_to_face_panels",
+        "visual_beats": [
+          {
+            "at_sec": 178,
+            "directive": "Email panel shows low cost and a searchable record"
+          },
+          {
+            "at_sec": 193,
+            "directive": "Long thread icons pile up to show overload"
+          },
+          {
+            "at_sec": 208,
+            "directive": "Briefing panel shows questions but a scheduling clock"
+          }
+        ]
+      },
+      "voiceover_script": "Evaluate the channels. Email is cheap, searchable and leaves a record, but long threads create overload and tone is easily misread. Briefings allow questions and cues, but cost time across shifts. Texts are fast and cheap, but too brief for complex instructions. Letters and formal reports are slow, yet they suit external contracts. The best channel depends on urgency, sensitivity and whether a written record is needed. Often the answer combines two channels.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "evaluation",
+        "advantages and disadvantages",
+        "channel recommendation"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 208,
+      "end_sec": 240,
+      "visual_type": "timeline_animation",
+      "on_screen_title": "Apply the Loop to Your Answer",
+      "on_screen_labels": [
+        "Name the barrier",
+        "Show its effect",
+        "Give one mitigation and trade-off"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "timeline",
+            "id": "answer_timeline",
+            "label": "Three step answer",
+            "color": "#17365D"
+          },
+          {
+            "type": "flow_nodes",
+            "id": "loop_recap",
+            "label": "Five stage loop",
+            "color": "#2E75B6",
+            "nodes": 5
+          },
+          {
+            "type": "checkbox",
+            "id": "mitigation_box",
+            "label": "Mitigation check",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "step_along_the_answer_timeline",
+        "visual_beats": [
+          {
+            "at_sec": 208,
+            "directive": "Replay the five stage loop as small icons"
+          },
+          {
+            "at_sec": 219,
+            "directive": "Flash the barrier icons beside the broken loop"
+          },
+          {
+            "at_sec": 229,
+            "directive": "Highlight fourteen fewer missed callbacks each day"
+          },
+          {
+            "at_sec": 240,
+            "directive": "Build a three part exam answer with a channel trade-off"
+          }
+        ]
+      },
+      "voiceover_script": "Recap the loop: sender, message, channel, receiver, feedback. Noise and barriers can break it at any stage. Internal messages stay inside the firm; external messages reach outside. Verbal, non-verbal, formal and informal methods all have a place. Harbourview cut missed callbacks by fourteen a day using a checklist and read-back. For an answer, name the barrier, show its effect, then give one concrete mitigation and one channel trade-off. That is application, not just a list of apps.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "communication process",
+        "barriers",
+        "evaluation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Harbourview must send a complex new safety procedure to twenty-four agents on two shifts. Which channel plan best reduces barriers, and why?",
+    "options": [
+      "Send a text only, because it is the cheapest and fastest option",
+      "Post a letter, because formal written notice is always understood",
+      "Use a short briefing with plain-language steps and agent read-back, with a written summary for the record",
+      "Use social media, because it reaches the widest possible audience"
+    ],
+    "correct_index": 2,
+    "visual_explanation": "Jargon words morph into plain numbered steps on a screen, an agent reads them back to a supervisor and a written summary card files itself for the record."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "auditor_id": "VIS-TECH-AUD-06",
+  "target_unit": 1,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u1_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: 8 scenes all use concrete primitives (need/want paired icons, branching decision node, four-factor org chart, four-station production line, price/cost bars, lever panel, evaluation panels); all >15s scenes have 3 visual beats at 0/8/16 or 9-10s spacing; max title 8 words, max label 7 words; no text_slide/bullet_list/title_card_only.",
+        "Gate 2 PASS: recomputed with Python whitespace .split() plus edge punctuation stripping - declared word_counts match actual exactly in all 8 scenes (66/67/65/62/73/64/76/73); pacing 2.385-2.538 wps (143-152 wpm), all within 2.25-2.60; 0-26-52-78-104-134-160-190-220 contiguous, total 220s; beat order tracks concept order (need/want -> scarcity -> factor merge -> output -> subtraction -> levers -> pro/con -> quiz).",
+        "Gate 4 PASS: exact top-level and scene key sets; VID_U1_01 sequential; all colours strict uppercase #RRGGBB; every element has a unique id; quiz has 4 options, correct_index 0 = $320 valid; layout/elements/camera_motion present in all 8 scenes.",
+        "Gate 5 PASS: 'Cobalt Cove Boards' and its script appear in no other unit (u2-u6) and no Unit 1 peer; all 25 voiceover scripts unique.",
+        "Advisory only (non-blocking): scene 6 numeric beats at 142s and 150s slightly lead the spoken '$50 / 310 to 360' figures (~154-159s), but the price-rise/added-value concepts are being narrated at those beats, so A/V sync passes."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        "S2 opportunity cost: deck $480 chosen, tail-pads $180 forgone -> value of next best alternative = $180 (not $480 spent); label and voiceover agree.",
+        "S5 added value: selling price $480 - bought-in materials $170 = $310; on-screen counter and voiceover agree.",
+        "S5 definition check: wages excluded from added value per textbook definition; label 'Wages are not deducted' consistent.",
+        "S6 lever maths: $480 + $50 price rise = $530; $530 - $170 materials = $360, matching 'Added value $310 to $360' and the series [310,360].",
+        "S7 evaluation check: $310 added value is not profit because rent/energy/advertising/wages still deducted; no contradictory figure.",
+        "S8 + recap quiz: $520 - $200 = $320; correct_index 0 ($320) valid; visual_explanation $170->$200 segment swap still resolves to $320."
+      ]
+    },
+    "vid_u1_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: concrete sector primitives throughout (three-stage goods-flow icons, farm-to-processor flow, input-process-output factory, shop counter with service icons, value ladder, employment timeline, private/public split, three sorting boxes); all 8 scenes >15s with 3 beats spaced 8-10s; max title 6 words, max label 8 words.",
+        "Gate 2 PASS: exact recomputed word counts (67/64/64/67/76/63/73/73) = declared; pacing 2.423-2.577 wps (145-155 wpm); contiguous 0->220; beat order farm/dairy/shop -> definitions -> chain values -> timeline -> private/public -> sorting matches narration order.",
+        "Gate 4 PASS: exact key sets; VID_U1_02 sequential; all hex uppercase #RRGGBB; all element ids present and unique; quiz 4 options with correct_index 1 (Secondary) valid; required animation_directives keys present.",
+        "Gate 5 PASS: Bramblefield Farms, Meadowline Dairy and Harbourmart Grocers appear only in this shard; no collision with u2-u6 cases (e.g. Frostvale Foods, Northwater Kayaks Ltd) and no within-unit recycling."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        "S5 dairy value added: sells cheese $3.20 - bought-in raw milk $2.00 = $1.20, matching voiceover 'added one dollar twenty'.",
+        "S5 grocer value added: retail price $4.50 - purchase price $3.20 = $1.30, matching 'adds one dollar thirty more'.",
+        "S5 value ladder: $2.00 < $3.20 < $4.50 and counter from 2 to 4.5 - monotonic value growth, no contradiction."
+      ]
+    },
+    "vid_u1_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: concrete primitives (trait panels, document tabs, four-meter dashboard, paired before/after counters and bars, expanding network map, two company-block merge, supply-chain split, reordering blocks); 8 scenes with 3 beats each spaced 8-11s; max title 7 words, max label 7 words.",
+        "Gate 2 PASS: exact recomputed counts (62/66/66/66/69/65/76/71) = declared; pacing 2.300-2.538 wps (138-152 wpm); contiguous 0->220; beats follow entrepreneur -> plan -> size meters -> metrics -> organic nodes -> horizontal merge -> vertical chain -> quiz.",
+        "Gate 4 PASS: exact key sets; VID_U1_03 sequential; all colours uppercase #RRGGBB; all element ids present/unique; quiz 4 options, correct_index 0 (backward vertical integration) valid.",
+        "Gate 5 PASS: Soffia Khan, Northbeam Couriers, Pinnacle Parcel Works, Vertex Van Bodies and Doorstep Direct are unique to this shard and absent from u2-u6; note 'Vantara Assembly Works' in u6 is a distinct case."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        "S4 employee growth: 40 -> 120 staff = x3 = +200%; counter from/to matches label 'Launch: 40 staff' / 'Later: 120 staff'.",
+        "S4 sales growth: $1.2m -> $3.8m = x3.167 = +216.7%, which exceeds the 200% staff rise, so 'the revenue bar shows a bigger jump' is arithmetically correct.",
+        "S4 capital employed: $0.4m -> $1.1m = +175%; counter from/to matches label.",
+        "S4 value-added/size metric: revenue per employee $1.2m/40 = $30,000 at launch and $3.8m/120 = $31,666.67 later, so 'value added rose too' is not contradicted by the size figures."
+      ]
+    },
+    "vid_u1_04.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: concrete legal-form visuals (seven-node ownership chart, shop vs personal-savings jar with debt line, two-owner kiln chart, liability shield around company shell, shareholder grid with control meter, franchise outlet vs joint project node, sole/Ltd comparison scales); 3 beats per scene at <=10s spacing; max title 6 words, max label 8 words.",
+        "Gate 2 PASS: exact recomputed counts (67/64/67/67/76/66/75/74) = declared; pacing 2.462-2.577 wps (148-155 wpm); contiguous 0->220; beat order moves from ownership taxonomy through sole -> partnership -> Ltd -> Plc -> franchise/JV -> evaluation -> quiz in the same order as narration.",
+        "Gate 4 PASS: exact key sets; VID_U1_04 sequential; every hex strict uppercase #RRGGBB; all element ids present and unique; quiz 4 options, correct_index 2 (Private limited company) valid.",
+        "Gate 5 PASS: Rillstone Pottery, Fenwick and Rowe Ceramics, Larkspur Crafts Ltd, Hearthside Goods Plc, Thornfield Market Goods and Kestrel and Vale Designs are unique to this shard; no cross-unit reuse of 'Ltd' cases (u5 uses Northwater Kayaks Ltd and Polish Grooming Ltd)."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        "S2 liability logic: sole trader has no separate legal identity and no liability cap, so a business debt reaches personal savings - unlimited liability claim correct.",
+        "S3 liability logic: ordinary partnership has no incorporation shield, so each of the two partners is exposed to firm debts - 'usually unlimited liability' correct.",
+        "S4/S5 liability logic: Ltd and Plc shareholders risk only the amount invested because the company has separate legal identity; Plc dividend payments come from profit after the shield - internally consistent.",
+        "S8 + recap quiz: two owners wanting limited liability and privately held shares are correctly served by Ltd (index 2), not sole trader/partnership/Plc."
+      ]
+    },
+    "vid_u1_05.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: concrete stakeholder primitives (objective ladder, five SMART filter cards feeding a goal bar, internal org chart with aim bubbles, hub-and-spoke stakeholder map, central decision node with competing pressure lines, objectives timeline, CSR/profit split panels, ladder vs pressure-line quiz); 3 beats per scene at <=11s spacing; max title 6 words, max label 8 words; no wall of text.",
+        "Gate 2 PASS: exact recomputed counts (61/62/66/66/74/65/71/68) = declared; pacing 2.267-2.538 wps (136-152 wpm), all inside 2.25-2.60; contiguous 0->220; beats follow objectives -> SMART writing -> internal -> external -> conflict -> maturity -> CSR -> quiz, matching narration order.",
+        "Gate 4 PASS: exact key sets; VID_U1_05 sequential; all hex strict uppercase #RRGGBB; every element has a unique id; quiz 4 options, correct_index 1 (Growth as SMART objective) valid; required animation_directives keys present.",
+        "Gate 5 PASS: Wardwell Hospital Catering and Fenhay Foods appear in no other unit and no Unit 1 peer; all 25 voiceover scripts globally unique.",
+        "Advisory only (non-blocking): scene 2 layout/beat call for five SMART filter cards while the elements array defines three (specific, measurable, timebound) plus the goal bar; scene 4 layout calls for five external spokes while three spoke elements are defined (customers, supplier, community). Adding two filter_card elements (achievable, relevant) and two spoke elements (lender, government) would make the declared counts exactly renderable, but no required gate is breached."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        "S5 pay-rise cost: 40 staff x 40 hours x $0.50/hour = $800 per week, matching label '40 staff x 40 hours x $0.50 = $800/week' and the counter 0 -> 800.",
+        "S5 profit impact: an extra $800/week of wages reduces profit by the same $800; 'profit falls by the same eight hundred dollars' is consistent.",
+        "S2 SMART target: satisfaction 70% -> 85% = +15 percentage points over 12 months; goal bar from/to and the on-screen labels agree."
+      ]
+    }
+  },
+  "summary": "All five Unit 1 shards (VID_U1_01..05, 220s each, 8 scenes each) pass all five Tier-2B gates: concrete visual primitives with <=15s beat spacing and short labels/titles; exact recomputed word counts with 2.267-2.577 wps pacing and a contiguous 0->220 timeline in sync with beat order; independently recalculated added-value, opportunity-cost, chain value-added, growth, liability and pay-rise maths with no contradictions (20 math checks recorded); clean schema, sequential IDs, uppercase hex, complete element ids and valid 4-option quizzes; and globally unique case names/scripts across all 25 videos. Verdict APPROVED_BY_VIS_AUD; no blocking scene fixes required (two non-blocking element-count advisories noted on vid_u1_05 scenes 2 and 4)."
+}

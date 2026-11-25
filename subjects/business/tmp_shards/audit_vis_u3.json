@@ -1,0 +1,99 @@
+{
+  "auditor_id": "VIS-TECH-AUD-04",
+  "target_unit": 3,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u3_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 4/5 pass: exact top-level and scene key sets, VID_U3_01, status UNVERIFIED, 8 scenes, contiguous 0-270 s, every duration within 8-40 s, uppercase #RRGGBB throughout, quiz = 4 options with correct_index 1 pointing to '20 percent' and a concrete ring-chart animation. No blacklist terms, no non-ASCII punctuation, no lower-case hex.",
+        "Gate 2 pass: recomputed with Python str.split() after stripping edge punctuation, actual word counts equal declared word_count exactly in all 8 scenes (76, 78, 87, 87, 76, 77, 87, 86); pacing 2.389-2.452 words/s, all inside 2.25-2.60. Total 270 s is inside 180-300 s.",
+        "Gate 1 pass: all scenes use concrete visual types (animated_scenario_hook, flow_diagram, interactive_graph_build, split_screen_comparison, funnel_animation, evaluation_split); beats fire at 0/11/22 s in every >15 s scene (11 s spacing); titles 3-5 words, labels 3-7 words.",
+        "Gate 1 primitives present: audience split tiles (s4 mass/niche), five-tile segmentation grid (s5), market-share ring (s3), market-to-brand funnel (s7), verdict split (s8).",
+        "Gate 5 pass: 'Verdant Crunch' appears only in this shard across all 25 videos; no voiceover script is duplicated.",
+        "Non-blocking advisory: s7 narration says the funnel focuses from 'two million shoppers' although the market figure is 2,000,000 packs. Numerically consistent but 'packs' would be more precise."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 3/7: total market revenue = $8,000,000", "recomputed": "2,000,000 packs x $4 = $8,000,000", "pass": true},
+        {"claim": "Scene 3/7: Verdant Crunch brand revenue = $1,600,000", "recomputed": "400,000 packs x $4 = $1,600,000", "pass": true},
+        {"claim": "Scene 3: market share = 20 percent", "recomputed": "1,600,000 / 8,000,000 x 100 = 20%", "pass": true},
+        {"claim": "Scene 3 beat: ring fills 'one fifth'", "recomputed": "one fifth = 20%, matches computed share", "pass": true},
+        {"claim": "Scene 7: 50,000 extra buyers add $200,000 of revenue", "recomputed": "50,000 x $4 = $200,000", "pass": true},
+        {"claim": "Quiz: correct answer is 20 percent (index 1)", "recomputed": "400,000 x $4 = $1.6m; $1.6m/$8m = 20%; index 1 is '20 percent'", "pass": true}
+      ]
+    },
+    "vid_u3_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 4/5 pass: exact key sets, VID_U3_02, status UNVERIFIED, 8 scenes, contiguous 0-274 s, durations 31-38 s, uppercase hex, 4 quiz options with correct_index 1 = '60 percent, from neutral and even groups' and a concrete two-bar/grid animation. No blacklist terms or exotic punctuation.",
+        "Gate 2 pass: actual word counts equal declared counts exactly (84, 79, 84, 83, 84, 76, 93, 81); pacing 2.394-2.455 words/s; total 274 s in range.",
+        "Gate 1 pass: concrete visual types throughout; beats at 0/11/22 s with 11 s spacing in all >15 s scenes; titles 3-6 words, labels 4-6 words.",
+        "Gate 1 primitives present: two parallel research streams (s2, blue fieldwork + green desk), two 10x10 population-selection grids with random and quota highlights (s5), skewed-grid bias dials (s6), survey bar chart with cost cards (s7), split evaluation (s8).",
+        "Gate 5 pass: 'Lumen Eats' appears only in this shard across all 25 videos; no duplicated voiceover script.",
+        "Non-blocking advisory: scene 7 lasts 38 s and its final beat is at 22 s, leaving a 16 s tail. Consecutive beats are 11 s apart, so the spec gate is met, but a fourth beat near 33 s would remove any ambiguity about a >15 s visual gap.",
+        "Non-blocking advisory: the quiz calls the 60% figure a 'quota sample' while s7 describes a random sample with a quota check; the figures themselves are consistent and the selected answer is correct."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 5: population grid = 100 cells", "recomputed": "grid_size [10,10] => 10 x 10 = 100 cells", "pass": true},
+        {"claim": "Scene 5: random sample highlights 20 of 100 cells", "recomputed": "selection.random = 20; 20/100 = 20%, narration states 20 cells", "pass": true},
+        {"claim": "Scene 5: quota sample picks ten from each band across 2 bands", "recomputed": "quota_bands 2 x per_band 10 = 20 selected, consistent with 20 random cells", "pass": true},
+        {"claim": "Scene 7: response counts sum to the sample of 400", "recomputed": "240 lunch + 96 dinner + 64 unsure = 400", "pass": true},
+        {"claim": "Scene 7: lunch support = 60 percent", "recomputed": "240 / 400 x 100 = 60%, matches worked_example.lunch_percent = 60", "pass": true},
+        {"claim": "Scene 7: loaded-wording result = 78 percent", "recomputed": "78% of 400 = 312 implied; no count claimed, figure internally consistent and correctly labelled as inflated", "pass": true},
+        {"claim": "Scene 7: survey cost $1,200 versus desk report $200", "recomputed": "values match worked_example survey_cost 1200 and report_cost 200; no contradictory saving claimed", "pass": true},
+        {"claim": "Quiz: neutral figure 60 percent is correct (index 1)", "recomputed": "60% from neutral sample is the reliable figure; 78% is loaded; index 1 matches", "pass": true}
+      ]
+    },
+    "vid_u3_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 4/5 pass: exact key sets, VID_U3_03, status UNVERIFIED, 9 scenes, contiguous 0-278 s, durations 29-33 s, uppercase hex, quiz = 4 options with correct_index 1 = 'Price skimming' and a concrete curve/badge animation. No blacklist hits (notably no PED formula, elasticity calculation, NPV or payback strings).",
+        "Gate 2 pass: actual word counts equal declared counts exactly (79, 77, 74, 72, 72, 73, 77, 74, 71); pacing 2.387-2.448 words/s; total 278 s in range.",
+        "Gate 1 pass: concrete visual types only (curve_reveal, split_screen_comparison, flow_diagram, interactive_graph_build, evaluation_split); beats at 0/11/22 s in every >15 s scene; titles 3-6 words, labels 3-8 words.",
+        "Gate 1 primitives present: PLC curve with four stage markers (s3), extension lift curves (s4), pricing-direction lines (s5), penetration/skimming revenue curves (s6), producer-to-consumer distribution flow with online route (s7), four-Ps puzzle and verdict split (s9).",
+        "Gate 3 pricing-direction check: penetration = low launch price with a climbing revenue path, skimming = high launch price that starts high then eases, loss leader = price dips while store traffic rises. All directions are economically correct and match the on-screen lines and beats. No PED coefficient is computed anywhere; revenue direction is described conceptually only.",
+        "Gate 5 pass: 'Auralis Audio' and 'Nimbus One' appear only in this shard across all 25 videos; no duplicated voiceover script."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 3: PLC unit sales rise then fall (2k -> 9k -> 14k -> 6k)", "recomputed": "2000 < 9000 < 14000 then 6000 < 14000; curve_stages match narration and 'rises, flattens, then falls'", "pass": true},
+        {"claim": "Scene 5: cost-plus pricing example", "recomputed": "no numeric cost or mark-up stated, so no contradiction; definition 'manufacturing cost plus profit mark up' is exact 0264 wording", "pass": true},
+        {"claim": "Scene 6: penetration revenue direction", "recomputed": "low launch price -> more buyers -> climbing revenue path; 'Low price climbing curve' is the correct direction", "pass": true},
+        {"claim": "Scene 6: skimming revenue direction", "recomputed": "high initial price -> 'High price starts high then eases' as buyers are served; correct direction, premium badge on skimming path", "pass": true},
+        {"claim": "Scene 6: conceptual revenue statement without PED coefficient", "recomputed": "'When price is lower, more buyers may respond, so revenue can grow' is directional only; no PED formula or coefficient present", "pass": true},
+        {"claim": "Scene 5: loss leader direction", "recomputed": "price tag dips while store traffic rises - correct loss-leader direction", "pass": true},
+        {"claim": "Quiz: premium launch seeking cost recovery before rivals => skimming", "recomputed": "correct_index 1 = 'Price skimming', consistent with scene 6 and its visual explanation", "pass": true}
+      ]
+    },
+    "vid_u3_04.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "RE-AUDIT after VID-GEN-03 fix: scene 7 visual_beats[1].directive now reads 'Returns bar falls from 5 percent to 2 percent, a drop of 3 percentage points'. The previously flagged 'halves' wording is gone. Verified consistent everywhere: on_screen_labels[1] 'Benefit: returns fall from 5 to 2 percent', bar_chart element label 'Returns 5 to 2 percent', worked_example returns_before 5 / returns_after 2, and voiceover 'cut returns from five percent to two percent'. Arithmetic confirmed: 5 - 2 = 3 percentage points (a 60% relative reduction); no 'halving' claim remains. No timing, word-count or other field changed.",
+        "Gate 4/5 pass on re-audit: exact top-level and scene key sets, VID_U3_04, status UNVERIFIED, 8 scenes, contiguous 0-267 s, durations 31-36 s, uppercase #RRGGBB, quiz = 4 options with correct_index 1 = 'Adapted labels and price only' and a concrete split-screen/banner animation. worked_example remains correctly nested inside animation_directives as a permitted extra key. No blacklist hits, no non-ASCII punctuation, no lower-case hex in any shard.",
+        "Gate 2 pass on re-audit: actual word counts still equal declared counts exactly (85, 80, 81, 81, 87, 81, 75, 79); pacing 2.394-2.454 words/s; total 267 s in range.",
+        "Gate 1 pass on re-audit: concrete visual primitives including funnel/positioning map and journey path (s2), border gate with tariff coin and quota counter (s5), three-shield stack (s6), cost-vs-trust balance scale (s7), split evaluation (s8); beats at 0/11/22 s in every >15 s scene, titles 4-5 words, labels 3-8 words.",
+        "Gate 3 pass on re-audit: $2,000,000 + $600,000 = $2,600,000 (30% growth); 2,000,000 / 2,600,000 = 76.92% ~ 77% home dependence; $10 + $2 tariff = $12 landed cost; 5% -> 2% returns = 3 percentage-point fall; $30,000 and 6 weeks compliance cost stated with no contradictory derived figure.",
+        "Gate 5 pass: 'Clearleaf Cleaning' still appears only in this shard across all 25 videos; no duplicated voiceover script anywhere."
+      ],
+      "scene_fixes": [
+        {
+          "scene": 7,
+          "issue": "RESOLVED AND VERIFIED (was a Gate 3 failure on first audit): animation_directives.visual_beats[1].directive originally read 'Returns bar halves from 5 to 2 percent'; halving 5% gives 2.5%, not 2%, contradicting the label, bar-chart element, worked_example and voiceover.",
+          "fix": "APPLIED BY VID-GEN-03 AND RE-VERIFIED: directive changed to 'Returns bar falls from 5 percent to 2 percent, a drop of 3 percentage points'. Voiceover, on-screen labels, bar_chart element and worked_example (5 -> 2) were already correct and unchanged; no timing or word-count change. No further action required."
+        }
+      ],
+      "math_checks": [
+        {"claim": "Scene 4: total revenue after overseas entry = $2,600,000", "recomputed": "$2,000,000 home + $600,000 new = $2,600,000, matches worked_example.total", "pass": true},
+        {"claim": "Scene 4: revenue growth = 30 percent", "recomputed": "600,000 / 2,000,000 x 100 = 30%, matches worked_example.growth_percent = 30", "pass": true},
+        {"claim": "Scene 4: dependence on home market falls to about 77 percent", "recomputed": "2,000,000 / 2,600,000 x 100 = 76.92% ~ 77%, matches worked_example.home_share_after = 77", "pass": true},
+        {"claim": "Scene 5: tariff raises a $10 refill to a $12 landed cost", "recomputed": "$10 base + $2 tariff = $12, matches worked_example (10 + 2 = 12)", "pass": true},
+        {"claim": "Scene 7 beat (re-checked after fix): 'Returns bar falls from 5 percent to 2 percent, a drop of 3 percentage points'", "recomputed": "5 - 2 = 3 percentage points; relative fall 3/5 = 60%; matches label '5 to 2 percent', bar_chart label and worked_example 5 -> 2; no halving claim remains", "pass": true},
+        {"claim": "Scene 7: compliance cost $30,000 and 6 weeks", "recomputed": "values match worked_example compliance_cost 30000 and weeks 6; no derived figure claimed", "pass": true},
+        {"claim": "Quiz: adapted labels and price only is correct (index 1)", "recomputed": "local wording rules require label adaptation while the core stays standardised; index 1 matches scene 8 verdict", "pass": true}
+      ]
+    }
+  },
+  "summary": "Re-audit complete: all 28 independent math checks across Unit 3 now pass (27 originally passed; the one prior failure in vid_u3_04 scene 7 was 'Returns bar halves from 5 to 2 percent'). VID-GEN-03 changed that directive to 'Returns bar falls from 5 percent to 2 percent, a drop of 3 percentage points', and re-verification confirms 5 - 2 = 3 percentage points consistently with the unchanged label, bar-chart element, worked_example (5 -> 2) and voiceover, with no timing or word-count changes and all other gates still passing. vid_u3_01, vid_u3_02, vid_u3_03 retain their approvals and vid_u3_04 is now APPROVED_BY_VIS_AUD, so the overall verdict is APPROVED_BY_VIS_AUD."
+}

@@ -1,0 +1,50 @@
+{
+  "auditor_id": "SYL-VID-AUD-02",
+  "target_unit": 2,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u2_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Verdict carried over from the first audit; shard was not part of this re-audit. AO1 definitions are verbatim from glossary/lessons: Motivation, Piece Rate. Maslow order physiological-safety-social-esteem-self-actualisation is correct; Herzberg hygiene vs motivators correctly distinguished; Taylor/scientific management is legitimate 0264 content. AO2 Kestrel Ridge Sportswear with numbers; AO3 scene 6 causal chain; AO4 scene 8 two-sided evaluation; application quiz. No blacklist hits.",
+        "Non-blocking polish note from first audit: scene 4 (74-100s) voiceover says 'extra pay lifts the left side briefly' while beat 87s says 'Coins pile up briefly but the beam stays level'. Taught concept is correct; align wording if the shard is reopened.",
+        "Non-blocking polish note from first audit: scene 1 title 'Why Do 40 Tops Go Missing Daily?' could imply theft rather than a 40-unit shortfall."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u2_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "RE-AUDITED IN FULL after regeneration; both previously rejected defects are resolved and no new defect was introduced.",
+        "FIX VERIFIED - scene 5 (100-124s): voiceover now reads 'Ironbridge removes eight posts, including two coordination roles, as automation takes over paperwork. Staff fall from forty to thirty-two.' This reconciles the headcount counter 40 to 32 (eight posts) with the coordination-role detail. Beat at 112s updated to 'Automation gear replaces two of the eight removed roles' and beat at 124s remains 'Eight roles move to a redundancy box with compensation'. word_count updated 59 to 62, which matches a manual ASCII count of the new script; 62 words over 24s is within pacing range. Redundancy is still explicitly distinguished from dismissal ('made redundant, not dismissed').",
+        "FIX VERIFIED - scene 9 (208-240s): causal chain now reads 'Because five layers slowed every approval, therefore delayering removed two layers, so a route change now takes one day instead of six.' 'six layers' is gone (zero occurrences in the shard). This matches scene 1 'five management layers', scene 2 'from five levels to three' from_levels 5 to_levels 3, and scene 8 'decisions crawl through five layers'. All '6 days' / 'six days' approval-delay references were correctly left intact: scene 1 title, labels and beat; scene 8 label and beat; scene 9 label, beat and 6-to-1 counter; the 'one day instead of six' endpoint.",
+        "Full re-check of remaining content: exact 0264 wording retained for tall/flat structures, narrow/wide span of control, chain of command, the five management functions, delegation with retained responsibility, downsizing, redundancy, autocratic/democratic/laissez-faire leadership, trade union and collective bargaining. Tall (5 levels, span 3) versus flat (3 levels, span 8) pairing remains correct, so no wrong span-of-control implication. AO2 Ironbridge scenario with numbers and motion; AO3 scene 9 because/therefore/so; AO4 scene 8 split-screen evaluation; quiz still tests application. No blacklist terms, no A-Level/9609/0450 leakage. The 'ARR' substring match is a false positive inside arrow/narrow/barriers.",
+        "All scene_fixes from the prior audit are cleared."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u2_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "RE-AUDITED IN FULL after regeneration; the previously noted funnel-count inconsistency is resolved and no new defect was introduced. Voiceover text is unchanged as specified.",
+        "FIX VERIFIED - scene 2 (24-50s): funnel element label is now 'Eight stage funnel' with 'stages: 8' (was 'Seven stage funnel' / 7). On-screen labels enumerate exactly eight stages: job analysis, job description, person specification, advertise, forms, shortlist, interview, offer; the beat at 50s animates the last five in sequence.",
+        "FIX VERIFIED - scene 9 (208-240s): mini-funnel element label is now 'Eight stage recap' and the beat at 208s reads 'Replay the eight funnel stages as small icons'. The eight-stage count is now consistent across scene 2 element, on-screen labels, scene 9 element and scene 9 beat.",
+        "Full re-check of remaining content: exact AO1 glossary wording retained for Recruitment, Job Analysis, Internal/External Recruitment, Employment Contract, Dismissal, Redundancy; selection methods and legal controls match syllabus 2.1.1-2.1.3; all three training types correctly defined. Scene 8 still separates redundancy (job eliminated) from dismissal (conduct/capability) and names sacking for union membership as unfair dismissal, so no misleading analogy. AO2 Juniper Lane Coffee Roasters with numbers; AO3 scene 7 causal chain; AO4 scene 8 two-sided internal versus external evaluation; quiz tests application. Arithmetic unchanged and correct: 2400-600=$1800, 35-12=23 days, 48 to 12 to 4. No blacklist terms or old-spec leakage; 'ARR' is only a false positive inside 'arrived'/'narrow'.",
+        "Minor retained observation, not a defect: scene 2 voiceover mentions 'references' among selection methods, which is accurate syllabus content but is a sub-step rather than one of the eight on-screen funnel stages."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u2_04.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Verdict carried over from the first audit; shard was not part of this re-audit. Communication definition, internal/external definitions and feedback are verbatim glossary wording; barriers and mitigations match lessons 2.3/syllabus 2.3.2. The noise wall is a barrier that blocks the channel and is never shown as a channel. AO2 Harbourview scenario; AO3 scene 7 causal chain; AO4 scene 8 split-screen evaluation; application quiz; arithmetic 18-4=14 consistent. No blacklist hits or old-spec leakage; 'ARR' is a false positive inside arrow/barriers."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "Re-audited ONLY vid_u2_02.json and vid_u2_03.json after regeneration; the already-approved verdicts for vid_u2_01.json and vid_u2_04.json were carried over unchanged, not re-approved on new content. All four corrections verified line by line: u2_02 scene 5 now says 'eight posts, including two coordination roles' with a matching 112s beat and word_count 62; u2_02 scene 9 now says 'five layers' with all six-day approval-delay references intact; u2_03 scenes 2 and 9 now use an eight-stage funnel (stages: 8, 'Eight stage funnel', 'Eight stage recap', updated 208s beat) with unchanged voiceover. Full re-check found no new syllabus, blacklist, AO or misleading-analogy defects in either regenerated shard. All prior scene_fixes are cleared. Overall verdict now APPROVED_BY_SYL_AUD for all four Unit 2 shards."
+}

@@ -1,0 +1,633 @@
+{
+  "video_id": "VID_U5_05",
+  "unit_number": 5,
+  "unit_title": "Unit 5: Financial information and decisions",
+  "chapter_code": "5.5",
+  "chapter_title": "Analysis of accounts",
+  "video_title": "Five Ratios, One Dataset",
+  "target_duration_sec": 252,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Calculate Current Ratio and Acid-Test Ratio to two decimal places",
+    "Calculate Gross Profit Margin, Profit Margin and ROCE to two decimal places",
+    "Interpret liquidity and profitability side by side and state limitations"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 28,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "One Dataset, Five Ratios",
+      "on_screen_labels": [
+        "Revenue $200,000 and cost of sales $120,000",
+        "Expenses $50,000",
+        "Current assets $90,000",
+        "Capital employed $240,000"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_income_right_financial_position",
+        "elements": [
+          {
+            "type": "paper_stack",
+            "id": "is",
+            "label": "Income Statement card",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "paper_stack",
+            "id": "sfp",
+            "label": "Statement of Financial Position card",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "formula_card",
+            "id": "ce",
+            "label": "Capital employed $240,000",
+            "color": "#E0A229"
+          },
+          {
+            "type": "scale",
+            "id": "split",
+            "label": "Liquidity versus profitability",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_zoom_between_two_statement_cards",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Income Statement card reveals five figures"
+          },
+          {
+            "at_sec": 12,
+            "directive": "Financial position card reveals four figures"
+          },
+          {
+            "at_sec": 24,
+            "directive": "Capital employed card locks at two hundred forty thousand"
+          },
+          {
+            "at_sec": 28,
+            "directive": "Liquidity and profitability labels split apart"
+          }
+        ]
+      },
+      "voiceover_script": "Meet Inkwell Notebook Press, which publishes pocket notebooks. One dataset drives five ratios. From its Income Statement: revenue two hundred thousand dollars, cost of sales one hundred twenty thousand, gross profit eighty thousand, expenses fifty thousand, profit thirty thousand. From its statement of financial position: current assets ninety thousand, inventory eighteen thousand, current liabilities sixty thousand, and capital employed two hundred forty thousand. Liquidity tests short-term survival; profitability tests earning power.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "ratio analysis",
+        "liquidity",
+        "profitability",
+        "capital employed"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 28,
+      "end_sec": 56,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Current Ratio",
+      "on_screen_labels": [
+        "Current assets $90,000",
+        "Current liabilities $60,000",
+        "Result 1.50 : 1"
+      ],
+      "animation_directives": {
+        "layout": "formula_substitution_card_with_highlighted_numbers",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "formula",
+            "label": "Current assets divided by current liabilities",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "sub",
+            "label": "90,000 over 60,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "animated_counter",
+            "id": "result",
+            "label": "1.50 to 1",
+            "color": "#E0A229"
+          },
+          {
+            "type": "icon_coin",
+            "id": "cover",
+            "label": "One dollar fifty per dollar owed",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_highlight_substitution_then_result",
+        "visual_beats": [
+          {
+            "at_sec": 28,
+            "directive": "Formula card slides in from the left"
+          },
+          {
+            "at_sec": 40,
+            "directive": "Ninety thousand and sixty thousand glow"
+          },
+          {
+            "at_sec": 52,
+            "directive": "Division sign flashes"
+          },
+          {
+            "at_sec": 56,
+            "directive": "Answer card reads one point five zero to one"
+          }
+        ]
+      },
+      "voiceover_script": "First ratio: the Current Ratio measures liquidity. Formula: current assets divided by current liabilities. Substitute ninety thousand dollars over sixty thousand dollars. Ninety divided by sixty equals one point five. The Current Ratio is one point five zero to one. Inkwell holds one dollar fifty of current assets for every dollar of short-term debt. That looks comfortable, but current assets include inventory that may not sell quickly.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "Current Ratio",
+        "current assets",
+        "current liabilities",
+        "liquidity"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 56,
+      "end_sec": 84,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Acid-Test Ratio",
+      "on_screen_labels": [
+        "(90,000 - 18,000) / 60,000",
+        "Result 1.20 : 1",
+        "Stock removed"
+      ],
+      "animation_directives": {
+        "layout": "formula_substitution_inventory_removed_from_assets",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "formula2",
+            "label": "Current assets minus inventory over current liabilities",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "icon_stock",
+            "id": "stock",
+            "label": "Inventory $18,000 lifts away",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "formula_card",
+            "id": "sub2",
+            "label": "72,000 over 60,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "animated_counter",
+            "id": "result2",
+            "label": "1.20 to 1",
+            "color": "#E0A229"
+          }
+        ],
+        "camera_motion": "smooth_lift_inventory_out_then_divide",
+        "visual_beats": [
+          {
+            "at_sec": 56,
+            "directive": "Formula card appears with brackets"
+          },
+          {
+            "at_sec": 68,
+            "directive": "Inventory tile lifts out of the asset bar"
+          },
+          {
+            "at_sec": 80,
+            "directive": "Numerator changes to seventy-two thousand"
+          },
+          {
+            "at_sec": 84,
+            "directive": "Answer card reads one point two zero to one"
+          }
+        ]
+      },
+      "voiceover_script": "Second ratio: the Acid-Test Ratio is current assets minus inventories, divided by current liabilities. Substitute ninety thousand minus eighteen thousand, giving seventy-two thousand, over sixty thousand. Seventy-two divided by sixty equals one point two; the Acid-Test Ratio is one point two zero to one. This strips out stock, so it is a harsher liquidity test. Inkwell still covers each dollar of short-term debt with one dollar twenty of liquid assets.",
+      "word_count": 70,
+      "syllabus_concepts_tagged": [
+        "Acid-Test Ratio",
+        "inventory",
+        "liquidity"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 84,
+      "end_sec": 112,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Gross Profit Margin",
+      "on_screen_labels": [
+        "Gross profit $80,000",
+        "Revenue $200,000",
+        "Result 40.00%"
+      ],
+      "animation_directives": {
+        "layout": "formula_substitution_percentage_wheel",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "formula3",
+            "label": "Gross profit over revenue times 100",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "sub3",
+            "label": "80,000 over 200,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "pie_chart",
+            "id": "pie",
+            "label": "Forty percent green segment of sales",
+            "color": "#E0A229"
+          },
+          {
+            "type": "animated_counter",
+            "id": "result3",
+            "label": "40.00 percent",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_fill_percentage_wheel",
+        "visual_beats": [
+          {
+            "at_sec": 84,
+            "directive": "Formula card shows times one hundred"
+          },
+          {
+            "at_sec": 96,
+            "directive": "Two figures glow in the fraction"
+          },
+          {
+            "at_sec": 108,
+            "directive": "Wheel fills forty percent green"
+          },
+          {
+            "at_sec": 112,
+            "directive": "Answer card locks at forty point zero zero percent"
+          }
+        ]
+      },
+      "voiceover_script": "Third ratio: Gross Profit Margin measures profitability. Formula: gross profit divided by revenue, times one hundred. Substitute eighty thousand over two hundred thousand, times one hundred. Eighty divided by two hundred is zero point four; the Gross Profit Margin is forty point zero zero percent. That means forty cents of every sales dollar remains after direct costs, before overheads. Compare it with the profit margin to see what overheads take.",
+      "word_count": 70,
+      "syllabus_concepts_tagged": [
+        "Gross Profit Margin",
+        "gross profit",
+        "revenue",
+        "profitability"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 112,
+      "end_sec": 140,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Profit Margin",
+      "on_screen_labels": [
+        "Profit $30,000",
+        "Revenue $200,000",
+        "Result 15.00%"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_gross_margin_left_net_margin_right",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "formula4",
+            "label": "Profit over revenue times 100",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "sub4",
+            "label": "30,000 over 200,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "bar_chart",
+            "id": "bars",
+            "label": "Forty percent bar versus fifteen percent bar",
+            "color": "#E0A229"
+          },
+          {
+            "type": "animated_counter",
+            "id": "result4",
+            "label": "15.00 percent",
+            "color": "#B23A2B"
+          }
+        ],
+        "camera_motion": "smooth_shrink_gross_bar_into_net_bar",
+        "visual_beats": [
+          {
+            "at_sec": 112,
+            "directive": "Formula card slides into the left panel"
+          },
+          {
+            "at_sec": 124,
+            "directive": "Overhead segment eats twenty-five points"
+          },
+          {
+            "at_sec": 136,
+            "directive": "Net bar settles at fifteen percent"
+          },
+          {
+            "at_sec": 140,
+            "directive": "Answer card reads fifteen point zero zero percent"
+          }
+        ]
+      },
+      "voiceover_script": "Fourth ratio: Profit Margin. Formula: profit divided by revenue, times one hundred. Substitute thirty thousand over two hundred thousand, times one hundred. Thirty divided by two hundred is zero point one five; Profit Margin is fifteen point zero zero percent. Gross Profit Margin was forty percent, so overheads consumed twenty-five percentage points of sales. Because expenses are large, therefore net profit is thin, so rising rent would hurt quickly.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "Profit Margin",
+        "expenses",
+        "profitability"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 140,
+      "end_sec": 168,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "ROCE",
+      "on_screen_labels": [
+        "Profit $30,000",
+        "Capital employed $240,000",
+        "Result 12.50%"
+      ],
+      "animation_directives": {
+        "layout": "formula_substitution_capital_employed_dial",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "formula5",
+            "label": "Profit over capital employed times 100",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "formula_card",
+            "id": "sub5",
+            "label": "30,000 over 240,000",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "gauge",
+            "id": "dial",
+            "label": "Return dial turns to twelve point five",
+            "color": "#E0A229"
+          },
+          {
+            "type": "animated_counter",
+            "id": "result5",
+            "label": "12.50 percent",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_turn_dial_to_final_return",
+        "visual_beats": [
+          {
+            "at_sec": 140,
+            "directive": "Capital employed card shows two hundred forty thousand"
+          },
+          {
+            "at_sec": 152,
+            "directive": "Profit figure glows in numerator"
+          },
+          {
+            "at_sec": 164,
+            "directive": "Dial sweeps around to twelve point five"
+          },
+          {
+            "at_sec": 168,
+            "directive": "Answer card locks at twelve point five zero percent"
+          }
+        ]
+      },
+      "voiceover_script": "Fifth ratio: ROCE, return on capital employed. Formula: profit divided by capital employed, times one hundred. Capital employed is two hundred forty thousand dollars. Substitute thirty thousand over two hundred forty thousand, times one hundred. Thirty divided by two hundred forty is one eighth; ROCE is twelve point five zero percent. Every hundred dollars invested in the press earns twelve dollars fifty of profit each year.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "ROCE",
+        "capital employed",
+        "profitability"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 168,
+      "end_sec": 196,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Liquidity Beside Profitability",
+      "on_screen_labels": [
+        "Current 1.50 and Acid-Test 1.20",
+        "Margins 40% and 15%, ROCE 12.50%"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_liquidity_gauges_left_profit_bars_right",
+        "elements": [
+          {
+            "type": "gauge",
+            "id": "liq",
+            "label": "Liquidity gauges above one",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "bar_chart",
+            "id": "prof",
+            "label": "Profitability bars",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "scale",
+            "id": "lend",
+            "label": "Lender view",
+            "color": "#E0A229"
+          },
+          {
+            "type": "scale",
+            "id": "own",
+            "label": "Owner view",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "smooth_crossfade_between_two_evaluation_panels",
+        "visual_beats": [
+          {
+            "at_sec": 168,
+            "directive": "Three liquidity gauges settle"
+          },
+          {
+            "at_sec": 180,
+            "directive": "Three profitability bars rise side by side"
+          },
+          {
+            "at_sec": 192,
+            "directive": "Lender icon nods at liquid cover"
+          },
+          {
+            "at_sec": 196,
+            "directive": "Owner icon weighs the moderate return"
+          }
+        ]
+      },
+      "voiceover_script": "Place liquidity and profitability side by side. Current Ratio one point five zero, Acid-Test Ratio one point two zero: short-term cover looks sound. Gross Profit Margin forty percent, Profit Margin fifteen percent, ROCE twelve point five zero percent: the press earns steadily but not spectacularly. Because inventory is modest relative to current assets, therefore liquid cover is credible, so a lender may feel safe while an owner seeks higher returns.",
+      "word_count": 70,
+      "syllabus_concepts_tagged": [
+        "liquidity",
+        "profitability",
+        "interpretation"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 196,
+      "end_sec": 224,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Limits of Ratio Analysis",
+      "on_screen_labels": [
+        "Historic figures and different policies",
+        "Non-financial factors ignored"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_ratio_power_left_ratio_blind_spots_right",
+        "elements": [
+          {
+            "type": "scale",
+            "id": "use",
+            "label": "Ratios enable comparison",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "scale",
+            "id": "limit",
+            "label": "Historic and one-year snapshot",
+            "color": "#B23A2B"
+          },
+          {
+            "type": "icon_people",
+            "id": "qual",
+            "label": "Loyalty skill and quality tiles",
+            "color": "#E0A229"
+          },
+          {
+            "type": "icon_calendar",
+            "id": "years",
+            "label": "Several years and competitors",
+            "color": "#2D6A9F"
+          }
+        ],
+        "camera_motion": "smooth_flip_between_power_and_blind_spots",
+        "visual_beats": [
+          {
+            "at_sec": 196,
+            "directive": "Left panel turns numbers into signals"
+          },
+          {
+            "at_sec": 208,
+            "directive": "Historic cost stamp appears on the right"
+          },
+          {
+            "at_sec": 220,
+            "directive": "Qualitative tiles fade in but stay unmeasured"
+          },
+          {
+            "at_sec": 224,
+            "directive": "Multi-year grid overlays the scene"
+          }
+        ]
+      },
+      "voiceover_script": "Now the limits. Ratios use historic figures and one year's snapshot; different firms use different accounting policies. They ignore non-financial factors like customer loyalty, staff skill and product quality. A good ratio cannot prove future returns. Yet ratios still turn a pile of numbers into comparable signals: liquidity for survival, profitability for efficiency. Use several years and several competitors before deciding on Inkwell.",
+      "word_count": 63,
+      "syllabus_concepts_tagged": [
+        "limitations of ratio analysis",
+        "historic cost",
+        "decision making"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 224,
+      "end_sec": 252,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Interpret, Do Not Recite",
+      "on_screen_labels": [
+        "Current 1.50, Acid-Test 1.20",
+        "GPM 40%, PM 15%, ROCE 12.50%"
+      ],
+      "animation_directives": {
+        "layout": "recap_quiz_ratio_cards_and_interpretation_prompt",
+        "elements": [
+          {
+            "type": "formula_card",
+            "id": "recap1",
+            "label": "Two liquidity ratios",
+            "color": "#1E7A46"
+          },
+          {
+            "type": "formula_card",
+            "id": "recap2",
+            "label": "Three profitability ratios",
+            "color": "#2D6A9F"
+          },
+          {
+            "type": "icon_question",
+            "id": "prompt",
+            "label": "Interpretation question",
+            "color": "#E0A229"
+          },
+          {
+            "type": "scale",
+            "id": "balance",
+            "label": "Profit and liquid assets together",
+            "color": "#5B3FA8"
+          }
+        ],
+        "camera_motion": "slow_pull_back_across_five_answer_cards",
+        "visual_beats": [
+          {
+            "at_sec": 224,
+            "directive": "Five result cards line up"
+          },
+          {
+            "at_sec": 236,
+            "directive": "Liquidity pair glows green"
+          },
+          {
+            "at_sec": 248,
+            "directive": "Profitability trio glows blue"
+          },
+          {
+            "at_sec": 252,
+            "directive": "Quiz prompt appears over the balanced cards"
+          }
+        ]
+      },
+      "voiceover_script": "Time for a recap. Five formulas, one dataset. Liquidity: Current Ratio and Acid-Test Ratio. Profitability: Gross Profit Margin, Profit Margin and ROCE. Results: one point five zero, one point two zero, forty percent, fifteen percent and twelve point five zero percent. The question on screen asks you to interpret, not just recite. Choose the conclusion that both the profit and the liquid asset figures support.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "Current Ratio",
+        "Acid-Test Ratio",
+        "ROCE",
+        "interpretation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Inkwell's Profit Margin is 15.00% and its Acid-Test Ratio is 1.20:1. Which conclusion is best supported?",
+    "options": [
+      "It earns profit on sales and has $1.20 of liquid assets per $1 of short-term debt",
+      "It holds no inventory at all",
+      "Its ROCE is 15.00%",
+      "It cannot cover current liabilities"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "A profit bar marked 15.00% and a liquid-asset stack marked 1.20:1 slide together into one judgement card, while the no-inventory and cannot-cover tiles fade away."
+  }
+}

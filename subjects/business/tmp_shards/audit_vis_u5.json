@@ -1,0 +1,116 @@
+{
+  "auditor_id": "VIS-TECH-AUD-02",
+  "target_unit": 5,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u5_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: concrete primitives present - finance-source tiles (S4 funnel of three internal tiles, S5 external loan/overdraft/share/grant tiles), two-lane matching timeline (S7), split-screen debt-versus-equity evaluation (S6, S8). No text_slide, bullet_list or title_card_only. All 8 scenes carry visual_beats with max gap 12 s; titles <=6 words and labels <=5 words.",
+        "Gate 2: 8 scenes run 0-240 s contiguously; recomputed .split() word counts equal declared counts exactly; pacing 2.30-2.60 w/s in every scene; beats at scene start plus 12 s intervals fire on the matching funding and timeline narration.",
+        "Gate 4: exact top-level and scene key sets; VID_U5_01; status UNVERIFIED; 4 quiz options with valid correct_index 1 and concrete animation explanation; all 31 colour values are uppercase #RRGGBB; required animation_directives keys present; no blacklist hits.",
+        "Gate 5: Northwater Kayaks Ltd appears in no other shard among all 25 videos; no script duplicated anywhere. Non-blocking polish: S7 narrates internal $25,000 as reducing borrowing without explicitly allocating it, but the arithmetic is unambiguous (25,000 internal + 25,000 loan = 50,000 machine; 12,000 overdraft = stock)."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "S3 total funding need = machine $50,000 + stock $12,000", "recomputed": "$62,000, matches stated $62,000", "pass": true},
+        {"claim": "S4 internal total = savings $10,000 + retained profit $12,000 + trailer sale $3,000", "recomputed": "$25,000, matches stated internal total", "pass": true},
+        {"claim": "S5 external total = five-year loan $25,000 + three-month overdraft $12,000", "recomputed": "$37,000, matches stated external total", "pass": true},
+        {"claim": "S7 total funding = internal $25,000 + external $37,000", "recomputed": "$62,000, equals the S3 need", "pass": true},
+        {"claim": "S7 matching: overdraft 3 months for stock, loan 5 years for machine", "recomputed": "short and long durations match the stated asset lives; no contradiction", "pass": true}
+      ]
+    },
+    "vid_u5_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: concrete primitives present - animated cafe/till hook (S1), five-row cash-flow table with blue and orange coin streams (S2-S4), balance bar crossing zero (S4), profit-versus-cash split screen (S5), four-node working-capital cycle (S6), overdraft/remedy evaluation split (S7). No blacklisted visual types; beats max gap 12 s; titles <=6 words, labels <=5 words.",
+        "Gate 2: 8 scenes 0-240 s contiguous; declared word counts match recomputed .split() counts exactly (67-78 words); pacing 2.30-2.60 w/s throughout; beats fire on the matching row, coin stream and shortfall narration.",
+        "Gate 4: exact key sets; VID_U5_02; status UNVERIFIED; quiz has 4 options and valid correct_index 1; all 32 colour values uppercase #RRGGBB; no blacklist hits.",
+        "Gate 5: Lantern Lane City Cafes is unique across all 25 shards; no duplicated scripts. Non-blocking polish: S4 camera_motion string smooth_dtrack_bar_below_axis appears to be a typo of smooth_track_bar_below_axis; rename before render if motion presets are looked up by name."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "S3 M1 net cash flow = inflow $30,000 - outflow $22,000", "recomputed": "+$8,000, matches narration", "pass": true},
+        {"claim": "S3 M1 closing balance = opening $8,000 + net $8,000", "recomputed": "$16,000, matches stated $16,000", "pass": true},
+        {"claim": "S3 M2 net cash flow = $26,000 - $31,000", "recomputed": "-$5,000, matches narration", "pass": true},
+        {"claim": "S3 M2 closing balance = $16,000 - $5,000", "recomputed": "$11,000, matches stated $11,000", "pass": true},
+        {"claim": "S4 M3 net cash flow = $24,000 - $34,000", "recomputed": "-$10,000, matches narration", "pass": true},
+        {"claim": "S4 M3 closing balance = $11,000 - $10,000", "recomputed": "$1,000, matches stated $1,000", "pass": true},
+        {"claim": "S4 M4 net cash flow = $28,000 - $33,000", "recomputed": "-$5,000, matches narration", "pass": true},
+        {"claim": "S4 M4 closing balance = $1,000 - $5,000", "recomputed": "-$4,000 (four thousand in the red), matches", "pass": true},
+        {"claim": "S4 cumulative net flow = +8,000 - 5,000 - 10,000 - 5,000", "recomputed": "-$12,000, matches stated -$12,000", "pass": true},
+        {"claim": "S4 closing check = opening $8,000 + cumulative -$12,000", "recomputed": "-$4,000, agrees with month-by-month result", "pass": true},
+        {"claim": "S6 working capital = current assets $20,000 - current liabilities $15,000", "recomputed": "$5,000, matches stated $5,000", "pass": true},
+        {"claim": "S7 overdraft headroom = facility $5,000 - shortfall $4,000", "recomputed": "$1,000, matches stated headroom", "pass": true}
+      ]
+    },
+    "vid_u5_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: concrete primitives present - blank vertical statement unrolling (S1), two-row subtraction formula cards (S2), expense rows stacking (S3), two deduction gates (S4), causal flow from profit to four outcomes (S5), shrinking revenue/profit bars (S6), reveals-versus-gaps split (S7), eight-row vertical rebuild funnel (S8). No blacklisted visual types; beats max gap 12 s; titles <=5 words, labels <=6 words.",
+        "Gate 2: 8 scenes 0-240 s contiguous; declared counts equal recomputed .split() counts exactly (68-74 words); pacing 2.30-2.47 w/s; beats fire on each figure dropping into the vertical build.",
+        "Gate 4: exact key sets; VID_U5_03; status UNVERIFIED; quiz has 4 options with correct_index 1; all 31 colour values uppercase #RRGGBB; no blacklist hits.",
+        "Gate 5: Picketline Fencing Co is unique across all 25 shards; no duplicated scripts. Quiz margin claims independently confirmed to 2 d.p."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "S2 gross profit = revenue $120,000 - cost of sales $45,000", "recomputed": "$75,000, matches stated gross profit", "pass": true},
+        {"claim": "S3 profit = gross profit $75,000 - expenses $38,000", "recomputed": "$37,000, matches stated profit", "pass": true},
+        {"claim": "S4 profit after tax = $37,000 - $7,000", "recomputed": "$30,000, matches narration", "pass": true},
+        {"claim": "S4 retained profit = $30,000 - dividends $10,000", "recomputed": "$20,000, matches stated retained profit", "pass": true},
+        {"claim": "S6 total costs = cost of sales $45,000 + expenses $38,000", "recomputed": "$83,000 label; $120,000 - $83,000 = $37,000 profit", "pass": true},
+        {"claim": "Quiz gross profit = new revenue $132,000 - new cost of sales $56,250", "recomputed": "$75,750, matches correct option", "pass": true},
+        {"claim": "Quiz original GPM = $75,000 / $120,000 x 100", "recomputed": "62.50%, matches visual_explanation", "pass": true},
+        {"claim": "Quiz new GPM = $75,750 / $132,000 x 100", "recomputed": "57.39%, matches visual_explanation; margin fell", "pass": true}
+      ]
+    },
+    "vid_u5_04.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: concrete primitives present - balance scale frozen on one date (S1), asset stacking on left pan (S2), liability stacking on right pan (S3), equity tile levelling the beam (S4), dual substitution cards for working capital and capital employed (S5), two ratio cards with inventory bucket (S6), snapshot-limitation split (S7), final recap scale (S8). No blacklisted visual types; beats max gap 12 s; titles <=5 words, labels <=6 words.",
+        "Gate 2: 8 scenes 0-250 s contiguous; declared counts equal recomputed .split() counts exactly (68-79 words); pacing 2.25-2.47 w/s; beats fire on each asset, liability, equity and ratio animation.",
+        "Gate 4: exact key sets; VID_U5_04; status UNVERIFIED; target 250 s within 180-300; quiz has 4 options with correct_index 0; all 32 colour values uppercase #RRGGBB; no blacklist hits.",
+        "Gate 5: Paw & Polish Grooming Ltd is unique across all 25 shards; no duplicated scripts. Both capital-employed methods and both liquidity ratios agree exactly.",
+        "RE-CHECK after VID-GEN-05 surgical edits: performed on the current file. S3 VO recomputed at 77 words over 30 s = 2.5667 w/s (declared 77 matches); two new labels (max 5 words), new gap_bracket element and revised @92 beat all conform, with beats at 62/74/86/92 s (max gap 12 s). S6 VO recomputed at 80 words over 32 s = 2.5000 w/s (declared 80 matches); label Inventory 48% of current assets is 8 words, element and beats updated, beats at 154/166/178/186 s (max gap 12 s). New arithmetic 230,000 - 110,000 = 120,000 and 24,000 / 50,000 = 48% both verified. Schema, contiguous 0-250 s timing, uppercase hex colours (33), 4-option quiz with correct_index 0, blacklist and global uniqueness all still pass."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "S2 current assets = inventory $24,000 + receivables $16,000 + cash $10,000", "recomputed": "$50,000, matches stated current assets", "pass": true},
+        {"claim": "S2 total assets = non-current $180,000 + current $50,000", "recomputed": "$230,000, matches stated total assets", "pass": true},
+        {"claim": "S3 current liabilities = payables $30,000 + overdraft $10,000", "recomputed": "$40,000, matches stated current liabilities", "pass": true},
+        {"claim": "S3 total liabilities = current $40,000 + non-current $70,000", "recomputed": "$110,000, matches stated total liabilities", "pass": true},
+        {"claim": "S4 accounting identity: assets = liabilities $110,000 + equity $120,000", "recomputed": "$230,000 on both sides, beam balances", "pass": true},
+        {"claim": "S5 working capital = current assets $50,000 - current liabilities $40,000", "recomputed": "$10,000, matches stated working capital", "pass": true},
+        {"claim": "S5 capital employed method 1 = total assets $230,000 - current liabilities $40,000", "recomputed": "$190,000, matches stated capital employed", "pass": true},
+        {"claim": "S5 capital employed method 2 = non-current assets $180,000 + working capital $10,000", "recomputed": "$190,000, agrees with method 1", "pass": true},
+        {"claim": "S6 Current Ratio = current assets $50,000 / current liabilities $40,000", "recomputed": "1.25:1 to 2 d.p., matches card and quiz", "pass": true},
+        {"claim": "S6 Acid-Test Ratio = ($50,000 - inventory $24,000) / $40,000", "recomputed": "$26,000 / $40,000 = 0.65:1 to 2 d.p., matches card and quiz", "pass": true},
+        {"claim": "RE-CHECK S3 equity gap = assets $230,000 - total liabilities $110,000", "recomputed": "$120,000, matches new gap_bracket label and @92 beat; equals the $120,000 equity introduced in S4", "pass": true},
+        {"claim": "RE-CHECK S6 inventory share = $24,000 / $50,000 current assets x 100", "recomputed": "48%, matches new label, element and nearly half VO wording", "pass": true}
+      ]
+    },
+    "vid_u5_05.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: concrete primitives present - two-statement split screen (S1), five formula-substitution cards with highlighted numbers (S2-S6), inventory lifted out of the ratio (S3), percentage wheel and bars (S4-S5), ROCE dial (S6), liquidity-versus-profitability split screen (S7), evaluation split (S8), recap cards (S9). No blacklisted visual types; beats max gap 12 s; titles <=4 words, labels <=7 words.",
+        "Gate 2: 9 scenes 0-252 s contiguous; declared counts equal recomputed .split() counts exactly (63-71 words); pacing 2.25-2.54 w/s; beats fire on each substitution and result card.",
+        "Gate 4: exact key sets; VID_U5_05; status UNVERIFIED; target 252 s within 180-300; quiz has 4 options with correct_index 0; all 36 colour values uppercase #RRGGBB; no blacklist hits.",
+        "Gate 5: Inkwell Notebook Press is unique across all 25 shards; no duplicated scripts. Non-blocking polish: S7 beat at 168 s says Three liquidity gauges settle although the dataset supplies only two liquidity ratios (Current and Acid-Test); change to Two liquidity gauges settle if the animation is driven literally by that directive."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "S1 gross profit = revenue $200,000 - cost of sales $120,000", "recomputed": "$80,000, matches narration", "pass": true},
+        {"claim": "S1 profit = gross profit $80,000 - expenses $50,000", "recomputed": "$30,000, matches narration", "pass": true},
+        {"claim": "S2 Current Ratio = current assets $90,000 / current liabilities $60,000", "recomputed": "1.50:1 to 2 d.p., matches card", "pass": true},
+        {"claim": "S3 Acid-Test Ratio = ($90,000 - inventory $18,000) / $60,000", "recomputed": "$72,000 / $60,000 = 1.20:1 to 2 d.p., matches card", "pass": true},
+        {"claim": "S4 Gross Profit Margin = $80,000 / $200,000 x 100", "recomputed": "40.00%, matches card", "pass": true},
+        {"claim": "S5 Profit Margin = $30,000 / $200,000 x 100", "recomputed": "15.00%, matches card", "pass": true},
+        {"claim": "S5 overhead gap = GPM 40.00% - PM 15.00%", "recomputed": "25.00 percentage points, matches twenty-five points claim", "pass": true},
+        {"claim": "S6 ROCE = profit $30,000 / capital employed $240,000 x 100", "recomputed": "12.50% to 2 d.p., matches card and quiz", "pass": true},
+        {"claim": "S6 claim 30,000 divided by 240,000 is one eighth", "recomputed": "0.125 = 1/8, correct", "pass": true},
+        {"claim": "S2-S3 one dollar fifty and one dollar twenty of cover per dollar owed", "recomputed": "1.50 and 1.20, consistent with the two ratio results", "pass": true}
+      ]
+    }
+  },
+  "summary": "All five Unit 5 shards pass every gate. Re-check of the VID-GEN-05 surgical edits to vid_u5_04.json was performed on the current file and every changed item passes: S3 now 77 words / 30 s = 2.5667 w/s with matching declared count, S6 now 80 words / 32 s = 2.5000 w/s with matching declared count; new labels, gap_bracket element and beats remain within limits and ≤12 s spacing; 230,000 - 110,000 = 120,000 and 24,000 / 50,000 = 48% verified. 47 independent math checks recomputed with zero failures: funding needs and source sums (5), month-by-month cash-flow/net-flow/closing-balance chain plus working capital and overdraft headroom (12), vertical Income Statement build and quiz margins (8), Statement of Financial Position identity, both capital-employed methods, liquidity ratios and the two new re-check figures (12), and five profitability/liquidity ratios to 2 d.p. (10). Structure, contiguous 0-250 s timing, exact .split() word counts and 2.25-2.60 w/s pacing, beat spacing, label/title limits, key sets, quiz integrity, uppercase hex colours, blacklist and global case/script uniqueness all still pass. Two non-blocking polish notes remain: u5_02 S4 camera_motion appears to contain a dtrack typo, and u5_05 S7 beat at 168 s says three liquidity gauges where only two ratios exist; neither contradicts a number or fails a gate."
+}

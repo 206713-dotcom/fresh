@@ -1,0 +1,592 @@
+{
+  "video_id": "VID_U3_02",
+  "unit_number": 3,
+  "unit_title": "Unit 3: Marketing",
+  "chapter_code": "3.2",
+  "chapter_title": "Market research",
+  "video_title": "Visualising Market Research and Sampling",
+  "target_duration_sec": 274,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Compare primary and secondary research using 0264 definitions",
+    "Explain fieldwork, questionnaires, interviews and the effect of question wording",
+    "Show random and quota sampling and evaluate bias with a worked survey"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 35,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Lumen Eats Launches In A City",
+      "on_screen_labels": [
+        "Market research: gather, analyse, interpret",
+        "Empty lunch order tickets",
+        "One risky launch decision"
+      ],
+      "animation_directives": {
+        "layout": "city_map_left_launch_dashboard_right",
+        "elements": [
+          {
+            "type": "icon_map",
+            "id": "city",
+            "label": "City map of office blocks",
+            "color": "#123B5E"
+          },
+          {
+            "type": "ticket_stack",
+            "id": "orders",
+            "label": "Empty order tickets",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_product",
+            "id": "meal",
+            "label": "Lunchtime meal concept",
+            "color": "#2E8B6B"
+          }
+        ],
+        "camera_motion": "zoom_from_city_map_into_empty_order_tickets",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "City map draws with office blocks"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Empty order tickets float outward"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Two data stream icons appear"
+          }
+        ],
+        "split_panels": [
+          "city map",
+          "launch dashboard"
+        ]
+      },
+      "voiceover_script": "Lumen Eats is a city food delivery startup about to launch lunchtime meals. One big risk: nobody wants them. Market research is the process of gathering, analysing and interpreting information about a market. On the map, empty order tickets float over office blocks. The team can ask customers directly, or read data someone else collected. This video follows two information streams, then builds a sample grid, and finally runs a survey with real numbers. Choose well, and a costly launch becomes a calculated one.",
+      "word_count": 84,
+      "syllabus_concepts_tagged": [
+        "market research",
+        "research objective",
+        "launch risk"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 35,
+      "end_sec": 68,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Two Information Streams",
+      "on_screen_labels": [
+        "Primary: original direct data",
+        "Secondary: data already collected",
+        "Fieldwork and desk research"
+      ],
+      "animation_directives": {
+        "layout": "two_parallel_streams_with_source_nodes",
+        "elements": [
+          {
+            "type": "stream",
+            "id": "primary",
+            "label": "Blue fieldwork stream",
+            "color": "#123B5E"
+          },
+          {
+            "type": "stream",
+            "id": "secondary",
+            "label": "Green desk stream",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_form",
+            "id": "questionnaire",
+            "label": "Questionnaires",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_book",
+            "id": "report",
+            "label": "Market reports",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "track_both_streams_to_a_shared_decision",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Blue stream fills with fieldwork sources"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Green stream fills with desk sources"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Both streams reach the decision node"
+          }
+        ],
+        "flow_nodes": [
+          "questionnaires",
+          "interviews",
+          "focus groups",
+          "observation",
+          "competitor websites",
+          "government sources",
+          "market reports",
+          "trade magazines"
+        ]
+      },
+      "voiceover_script": "Two streams appear. Primary market research is the collection and collation of original data via direct contact with potential or existing consumers, also called field research. Questionnaires, interviews, focus groups and observation feed it. Secondary market research uses information that has already been collected and is available for use by others, also called desk research. Competitor websites, government sources, market reports and trade magazines feed that one. One stream is fresh and specific; the other is quick and cheap.",
+      "word_count": 79,
+      "syllabus_concepts_tagged": [
+        "primary market research",
+        "secondary market research",
+        "questionnaires",
+        "focus groups"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 68,
+      "end_sec": 103,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Fieldwork Versus Desk Research",
+      "on_screen_labels": [
+        "Fieldwork: current and specific, costly",
+        "Desk: quick and cheap, generic",
+        "Mix methods to decide"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_clock_and_price_tags",
+        "elements": [
+          {
+            "type": "icon_clock",
+            "id": "time",
+            "label": "Days versus minutes",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_price",
+            "id": "cost",
+            "label": "Thousands versus almost nothing",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_target",
+            "id": "specific",
+            "label": "Local detail meter",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_calendar",
+            "id": "age",
+            "label": "Data freshness meter",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "alternate_focus_between_the_two_columns",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Clock icons tick at different speeds"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Price tags drop into each column"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Freshness meters settle"
+          }
+        ],
+        "split_panels": [
+          "fieldwork profile",
+          "desk research profile"
+        ]
+      },
+      "voiceover_script": "Fieldwork goes to the customer. Desk research stays at the screen. Fieldwork gives current, specific answers, but it costs time and money, and a poor sample can bias it. Desk research is faster and cheaper, yet data may be outdated or not specific to this city. Lumen Eats puts a clock beside each stream: days for fieldwork, minutes for desk work. A price tag appears beside each: thousands for surveys, almost nothing for a report. The right mix matters more than any single method.",
+      "word_count": 84,
+      "syllabus_concepts_tagged": [
+        "advantages of primary research",
+        "advantages of secondary research",
+        "accuracy of data"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 103,
+      "end_sec": 137,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Questionnaires, Interviews, Wording",
+      "on_screen_labels": [
+        "Questionnaire: set of questions",
+        "Focus group: representative people",
+        "Leading wording distorts answers"
+      ],
+      "animation_directives": {
+        "layout": "questionnaire_grid_left_dialogue_bubbles_right",
+        "elements": [
+          {
+            "type": "grid",
+            "id": "form",
+            "label": "Tick box questionnaire",
+            "color": "#123B5E"
+          },
+          {
+            "type": "speech_bubble",
+            "id": "interview",
+            "label": "Interview answers",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_group",
+            "id": "focus",
+            "label": "Focus group circle",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "warning_tag",
+            "id": "bias",
+            "label": "Leading question warning",
+            "color": "#D64550"
+          }
+        ],
+        "camera_motion": "push_into_questionnaire_then_pan_to_dialogue",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Tick marks fill the questionnaire grid"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Focus group bubbles expand"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Loaded and neutral questions compare side by side"
+          }
+        ],
+        "split_panels": [
+          "leading question result",
+          "neutral question result"
+        ]
+      },
+      "voiceover_script": "A questionnaire is a set of questions to be answered as a means of collecting data for primary market research. Ticks fill a grid as answers land. Interviews and focus groups go deeper: a group of people representative of the target market discusses opinions about products and promotions. Watch the wording trap. A leading question, Don't you love our menu, pushes people to agree. A neutral question, How often would you order lunch, gives cleaner data. Bad wording distorts every chart that follows.",
+      "word_count": 83,
+      "syllabus_concepts_tagged": [
+        "questionnaire",
+        "interviews",
+        "focus group",
+        "leading questions"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 137,
+      "end_sec": 172,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "Random And Quota Sampling Grids",
+      "on_screen_labels": [
+        "Sample: group selected to respond",
+        "Random: equal chance for each",
+        "Quota: fixed mix by group"
+      ],
+      "animation_directives": {
+        "layout": "two_population_grids_with_highlight_animation",
+        "elements": [
+          {
+            "type": "grid",
+            "id": "population",
+            "label": "Grid of 100 workers",
+            "color": "#4A5A6A"
+          },
+          {
+            "type": "highlight",
+            "id": "random",
+            "label": "20 random cells lit",
+            "color": "#123B5E"
+          },
+          {
+            "type": "highlight",
+            "id": "quota",
+            "label": "Age band quotas lit",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_group",
+            "id": "bands",
+            "label": "Age band labels",
+            "color": "#F2C14E"
+          }
+        ],
+        "camera_motion": "sweep_across_first_grid_then_second",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Population grid of 100 cells draws in"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Random cells light in scattered positions"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Quota cells light evenly by age band"
+          }
+        ],
+        "grid_size": [
+          10,
+          10
+        ],
+        "selection": {
+          "random": 20,
+          "quota_bands": 2,
+          "per_band": 10
+        }
+      },
+      "voiceover_script": "A sample is a group of people selected to respond to a primary market research exercise, such as a questionnaire. Here is a grid of one hundred city workers. First, random sampling: every cell has an equal chance, and twenty cells light up in scattered positions. Next, quota sampling: the grid sorts into age bands, and the researcher picks ten from each band, so the mix matches the target market. Random selection spreads chance; quota selection controls the mix. Both beat asking only friends.",
+      "word_count": 84,
+      "syllabus_concepts_tagged": [
+        "sample",
+        "random sampling",
+        "quota sampling",
+        "representative sample"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 172,
+      "end_sec": 203,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "The Sample Bias Pitfall",
+      "on_screen_labels": [
+        "One gym only: skewed sample",
+        "Bias ruins reliability",
+        "Check size and data age"
+      ],
+      "animation_directives": {
+        "layout": "skewed_grid_left_factor_dials_right",
+        "elements": [
+          {
+            "type": "grid",
+            "id": "biased",
+            "label": "Gym only grid glow",
+            "color": "#D64550"
+          },
+          {
+            "type": "dial",
+            "id": "size",
+            "label": "Sample size dial",
+            "color": "#123B5E"
+          },
+          {
+            "type": "dial",
+            "id": "wording",
+            "label": "Wording dial",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "dial",
+            "id": "age",
+            "label": "Data age dial",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "zoom_into_one_corner_of_grid_then_pull_back",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "One corner of the grid lights up"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Estimate bar jumps too high"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Four accuracy dials appear"
+          }
+        ],
+        "axes": [
+          "accuracy factor",
+          "risk level"
+        ],
+        "lines": [
+          "biased estimate",
+          "true estimate"
+        ]
+      },
+      "voiceover_script": "Sample bias is the pitfall. Lumen Eats surveys thirty people outside one gym, and the grid glows in one corner only. Because that sample came from one place, therefore it over represented fitness fans, so the lunch estimate looked far too high. Accuracy depends on sample size, sample bias, question wording, timing and the age of the data. A larger, more representative sample improves reliability. A biased one makes results misleading, however polished the chart looks.",
+      "word_count": 76,
+      "syllabus_concepts_tagged": [
+        "sample bias",
+        "sample size",
+        "reliability"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 203,
+      "end_sec": 241,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Lumen Eats Survey Results",
+      "on_screen_labels": [
+        "400 replies from 8,000 workers",
+        "240 lunch, 96 dinner, 64 unsure",
+        "Loaded wording gives 78 percent"
+      ],
+      "animation_directives": {
+        "layout": "bar_chart_left_cost_cards_right",
+        "elements": [
+          {
+            "type": "bar_chart",
+            "id": "results",
+            "label": "Lunch 240 of 400",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "bar_chart",
+            "id": "loaded",
+            "label": "Loaded result 78 percent",
+            "color": "#D64550"
+          },
+          {
+            "type": "icon_price",
+            "id": "survey",
+            "label": "Survey $1,200",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_price",
+            "id": "report",
+            "label": "Desk report $200",
+            "color": "#4A5A6A"
+          }
+        ],
+        "camera_motion": "build_bars_then_zoom_into_warning_bar",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Bars build for 240, 96 and 64"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Loaded wording bar jumps to 78 percent"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Cost cards compare survey and report"
+          }
+        ],
+        "worked_example": {
+          "population": 8000,
+          "sample": 400,
+          "lunch": 240,
+          "lunch_percent": 60,
+          "dinner": 96,
+          "unsure": 64,
+          "loaded_percent": 78,
+          "survey_cost": 1200,
+          "report_cost": 200
+        }
+      },
+      "voiceover_script": "Here is the full survey. The target population is eight thousand office workers. A random sample of four hundred replies. Two hundred and forty say they would order lunch, which is sixty percent. Ninety six prefer dinner, and sixty four are unsure. A quota check keeps the age mix even. The same question with loaded wording lifts support to seventy eight percent, a clear warning sign. A desk report costs two hundred dollars but is two years old; the survey costs one thousand two hundred and is current. Recommendation: trust the neutral survey.",
+      "word_count": 93,
+      "syllabus_concepts_tagged": [
+        "analysing market research data",
+        "sample",
+        "leading questions",
+        "secondary data"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 241,
+      "end_sec": 274,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Two Streams, One Decision",
+      "on_screen_labels": [
+        "Primary: specific but costly and biased",
+        "Secondary: cheap but generic and old",
+        "Neutral survey wins here"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_with_stage_timeline_below",
+        "elements": [
+          {
+            "type": "timeline",
+            "id": "stages",
+            "label": "Six research stages",
+            "color": "#123B5E"
+          },
+          {
+            "type": "balance_scale",
+            "id": "weigh",
+            "label": "Method trade off",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_check",
+            "id": "choice",
+            "label": "Neutral survey choice",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "verdict_banner",
+            "id": "verdict",
+            "label": "Blend both streams",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "pull_back_from_scale_to_reveal_full_timeline",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Six stage timeline clicks into place"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Scale compares primary and secondary"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Verdict banner highlights neutral survey"
+          }
+        ],
+        "split_panels": [
+          "primary pros and cons",
+          "secondary pros and cons"
+        ],
+        "flow_nodes": [
+          "objective",
+          "method",
+          "sample",
+          "collect",
+          "analyse",
+          "recommend"
+        ]
+      },
+      "voiceover_script": "The stages are clear: set the objective, choose the method, draw the sample, collect, analyse, then recommend. On the split screen, primary data is specific and current, yet costly and prone to bias. Secondary data is quick and cheap, yet generic and possibly outdated. Because this decision is about a local launch, therefore Lumen Eats pays for a neutral survey, so the recommendation rests on fresh evidence. The best research often blends both streams, with a checked sample and careful wording.",
+      "word_count": 81,
+      "syllabus_concepts_tagged": [
+        "research stages",
+        "evaluation of research methods",
+        "accuracy"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "A leading question gives 78 percent support; a neutral quota sample gives 60 percent. Which figure should guide Lumen Eats launch?",
+    "options": [
+      "78 percent, because it is higher",
+      "60 percent, from neutral and even groups",
+      "Neither, ask only friends",
+      "The oldest desk report"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "Two bars compare the loaded and neutral results while a population grid highlights the even age mix."
+  }
+}

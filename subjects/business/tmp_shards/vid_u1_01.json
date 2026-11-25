@@ -1,0 +1,539 @@
+{
+  "video_id": "VID_U1_01",
+  "unit_number": 1,
+  "unit_title": "Unit 1: Understanding business activity",
+  "chapter_code": "1.1",
+  "chapter_title": "Business activity",
+  "video_title": "Visualising Needs, Wants, Scarcity and Added Value",
+  "target_duration_sec": 220,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Distinguish needs from wants and explain scarcity and opportunity cost",
+    "Identify the four factors of production and the effect of specialisation",
+    "Calculate added value and evaluate ways to increase it"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 26,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Needs, Wants and Scarcity",
+      "on_screen_labels": [
+        "Need: essential for survival",
+        "Want: not essential for survival",
+        "Unlimited wants, scarce resources",
+        "Cobalt Cove Boards"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_scene_right_labels",
+        "elements": [
+          {
+            "type": "icon_workshop",
+            "id": "boards",
+            "label": "Cobalt Cove Boards",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "paired_icons",
+            "id": "need_want",
+            "label": "Need versus want",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "resource_pool",
+            "label": "Limited resources",
+            "color": "#C0392B",
+            "from": 10,
+            "to": 3,
+            "suffix": " units"
+          }
+        ],
+        "camera_motion": "smooth_zoom_from_workshop_to_choice_point",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Show a surfer and a small shaping workshop"
+          },
+          {
+            "at_sec": 8,
+            "directive": "Split the screen into a need icon and a want icon"
+          },
+          {
+            "at_sec": 16,
+            "directive": "Shrink the resource counter and flash the word scarce"
+          }
+        ]
+      },
+      "voiceover_script": "People have unlimited wants, but resources are scarce. A need is essential for survival. A want is something people would like but do not need to live. At Cobalt Cove Boards, a surfer requests a hand-painted fibreglass deck: a want, not a need. Scarce materials force the workshop to choose which order to take. Business activity produces goods and services to satisfy people's needs and wants.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "needs",
+        "wants",
+        "scarcity",
+        "business activity"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 26,
+      "end_sec": 52,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Opportunity Cost: The Next Best Alternative",
+      "on_screen_labels": [
+        "One batch of resin, two possible uses",
+        "Deck: $480",
+        "Tail-pads: $180",
+        "Opportunity cost = $180, not money spent"
+      ],
+      "animation_directives": {
+        "layout": "central_choice_node_with_two_branch_paths",
+        "elements": [
+          {
+            "type": "decision_node",
+            "id": "resin",
+            "label": "One batch of resin",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "product_card",
+            "id": "deck",
+            "label": "Custom deck $480",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "product_card",
+            "id": "pads",
+            "label": "Tail-pads $180",
+            "color": "#16A085"
+          },
+          {
+            "type": "highlight_box",
+            "id": "foregone",
+            "label": "Next best alternative forgone",
+            "color": "#C0392B"
+          }
+        ],
+        "camera_motion": "smooth_pan_from_choice_node_to_chosen_branch",
+        "visual_beats": [
+          {
+            "at_sec": 26,
+            "directive": "Display the single resin batch at the centre"
+          },
+          {
+            "at_sec": 34,
+            "directive": "Grow two product cards on the branching paths"
+          },
+          {
+            "at_sec": 42,
+            "directive": "Fade the tail-pads and tag them as forgone"
+          }
+        ]
+      },
+      "voiceover_script": "Opportunity cost is the value of the next best alternative given up when a choice is made. Cobalt Cove Boards has one batch of resin. It can paint a custom deck for four hundred eighty dollars, or make tail-pads for one hundred eighty dollars. Because the resin has one use, choosing the deck means giving up the tail-pads. Therefore its opportunity cost is one hundred eighty dollars.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "opportunity cost",
+        "scarcity",
+        "choice"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 52,
+      "end_sec": 78,
+      "visual_type": "org_chart_morph",
+      "on_screen_title": "The Four Factors of Production",
+      "on_screen_labels": [
+        "Land: natural resources",
+        "Labour: human effort",
+        "Capital: man-made resources",
+        "Enterprise: risk-taking organiser"
+      ],
+      "animation_directives": {
+        "layout": "four_column_org_chart_morphing_into_workshop",
+        "elements": [
+          {
+            "type": "org_node",
+            "id": "land",
+            "label": "Coastal site and sand",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "org_node",
+            "id": "labour",
+            "label": "Shapers and painters",
+            "color": "#7FB3D5"
+          },
+          {
+            "type": "org_node",
+            "id": "capital",
+            "label": "Tools, oven and finance",
+            "color": "#6C3483"
+          },
+          {
+            "type": "org_node",
+            "id": "enterprise",
+            "label": "Owner organises and risks",
+            "color": "#E8A33D"
+          }
+        ],
+        "camera_motion": "smooth_zoom_out_from_workshop_to_four_factor_chart",
+        "visual_beats": [
+          {
+            "at_sec": 52,
+            "directive": "Build the four org chart columns one by one"
+          },
+          {
+            "at_sec": 60,
+            "directive": "Drop workshop icons into each factor column"
+          },
+          {
+            "at_sec": 68,
+            "directive": "Merge all four columns into a finished deck"
+          }
+        ]
+      },
+      "voiceover_script": "Businesses combine four factors of production. Land is natural resources, like the coastal site and sand for fibreglass. Labour is human effort, from shapers and painters. Capital is man-made resources: shaping tools, the curing oven and finance invested by owners. Enterprise is the skill and risk-taking ability of the entrepreneur organising the other three. At Cobalt Cove Boards, all four combine to make one deck.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "factors of production",
+        "land",
+        "labour",
+        "capital",
+        "enterprise"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 78,
+      "end_sec": 104,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Specialisation and Division of Labour",
+      "on_screen_labels": [
+        "Shape, resin, sand, pack",
+        "Output: 4 to 10 decks a week",
+        "Benefit: higher output",
+        "Risk: repetition and dependence"
+      ],
+      "animation_directives": {
+        "layout": "horizontal_production_line_with_four_stations",
+        "elements": [
+          {
+            "type": "work_station",
+            "id": "shape",
+            "label": "Shaping station",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "work_station",
+            "id": "resin",
+            "label": "Resin station",
+            "color": "#16A085"
+          },
+          {
+            "type": "work_station",
+            "id": "sand",
+            "label": "Sanding station",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "output",
+            "label": "Decks per week",
+            "color": "#2E8B57",
+            "from": 4,
+            "to": 10,
+            "suffix": " decks"
+          }
+        ],
+        "camera_motion": "tracking_shot_along_the_production_line",
+        "visual_beats": [
+          {
+            "at_sec": 78,
+            "directive": "Place four workers along a moving production line"
+          },
+          {
+            "at_sec": 86,
+            "directive": "Run the output counter from four to ten decks"
+          },
+          {
+            "at_sec": 94,
+            "directive": "Show one worker slowing to hint at repetition"
+          }
+        ]
+      },
+      "voiceover_script": "Specialisation means workers focus on one task. At Cobalt Cove Boards, one worker shapes each deck, another applies resin, a third sands the finish and a fourth packs the order. Because repetition builds skill and saves time, weekly output rises from four boards to ten. Therefore division of labour raises output. But repetitive work may reduce motivation and create dependence between workers.",
+      "word_count": 62,
+      "syllabus_concepts_tagged": [
+        "specialisation",
+        "division of labour",
+        "added value"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 104,
+      "end_sec": 134,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Worked Example: Added Value at Cobalt Cove Boards",
+      "on_screen_labels": [
+        "Selling price: $480",
+        "Bought-in materials: $170",
+        "Added value = $310",
+        "Wages are not deducted"
+      ],
+      "animation_directives": {
+        "layout": "formula_panel_left_with_animated_cash_bars_right",
+        "elements": [
+          {
+            "type": "price_bar",
+            "id": "price",
+            "label": "Selling price $480",
+            "color": "#1F6FEB",
+            "from": 0,
+            "to": 480,
+            "prefix": "$"
+          },
+          {
+            "type": "cost_bar",
+            "id": "materials",
+            "label": "Bought-in materials $170",
+            "color": "#C0392B",
+            "from": 0,
+            "to": 170,
+            "prefix": "$"
+          },
+          {
+            "type": "animated_counter",
+            "id": "added",
+            "label": "Added value",
+            "color": "#2E8B57",
+            "from": 0,
+            "to": 310,
+            "prefix": "$"
+          },
+          {
+            "type": "formula_panel",
+            "id": "formula",
+            "label": "Selling price minus bought-in materials",
+            "color": "#0B1F3A"
+          }
+        ],
+        "camera_motion": "smooth_zoom_into_the_subtraction_and_result_counter",
+        "visual_beats": [
+          {
+            "at_sec": 104,
+            "directive": "Grow the selling price bar to four hundred eighty"
+          },
+          {
+            "at_sec": 113,
+            "directive": "Overlay the bought-in materials bar at one hundred seventy"
+          },
+          {
+            "at_sec": 123,
+            "directive": "Subtract and reveal the added value counter at three hundred ten"
+          }
+        ]
+      },
+      "voiceover_script": "Added value is the difference between the selling price and the cost of bought-in materials and components. Watch the numbers appear at Cobalt Cove Boards. A custom deck sells for four hundred eighty dollars. The fibreglass, resin and tail-pad kit bought in from suppliers cost one hundred seventy dollars. Subtract bought-in materials only: four hundred eighty minus one hundred seventy equals three hundred ten dollars of added value. Wages are not deducted here.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "added value",
+        "selling price",
+        "bought-in materials"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 134,
+      "end_sec": 160,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Five Ways to Increase Added Value",
+      "on_screen_labels": [
+        "Stronger brand image",
+        "Better quality and graphics",
+        "Better service and packaging",
+        "Added value $310 to $360"
+      ],
+      "animation_directives": {
+        "layout": "bar_chart_building_with_five_selectable_levers",
+        "elements": [
+          {
+            "type": "bar_chart",
+            "id": "value_bars",
+            "label": "Added value bars",
+            "color": "#1F6FEB",
+            "series": [
+              310,
+              360
+            ]
+          },
+          {
+            "type": "lever_panel",
+            "id": "levers",
+            "label": "Five value levers",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "new_price",
+            "label": "Price rises by $50",
+            "color": "#16A085"
+          }
+        ],
+        "camera_motion": "slow_pan_across_the_rising_bar_chart",
+        "visual_beats": [
+          {
+            "at_sec": 134,
+            "directive": "Light up each of the five levers in turn"
+          },
+          {
+            "at_sec": 142,
+            "directive": "Raise the price bar by fifty dollars"
+          },
+          {
+            "at_sec": 150,
+            "directive": "Grow the added value bar from three hundred ten to three hundred sixty"
+          }
+        ]
+      },
+      "voiceover_script": "The workshop can increase added value in several ways. A stronger brand image lets Cobalt Cove Boards charge more. Better quality and hand-painted resin graphics justify a higher price. Improved customer service and smarter packaging add perceived value. Negotiating a lower material cost widens the gap too. Here a fifty-dollar price rise lifts added value from three hundred ten to three hundred sixty dollars.",
+      "word_count": 64,
+      "syllabus_concepts_tagged": [
+        "added value",
+        "brand image",
+        "quality",
+        "customer service"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 160,
+      "end_sec": 190,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Is High Added Value Always Good News?",
+      "on_screen_labels": [
+        "Advantage: covers costs and funds growth",
+        "Limitation: not profit",
+        "Wages, rent and energy still to pay",
+        "Judge both sides"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_green_benefits_right_red_limitations",
+        "elements": [
+          {
+            "type": "benefit_panel",
+            "id": "pro",
+            "label": "Added value covers costs",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "cost_panel",
+            "id": "con",
+            "label": "Added value is not profit",
+            "color": "#C0392B"
+          },
+          {
+            "type": "balance_scale",
+            "id": "judgement",
+            "label": "Weigh both sides",
+            "color": "#E8A33D"
+          }
+        ],
+        "camera_motion": "smooth_crossfade_between_the_two_evaluation_panels",
+        "visual_beats": [
+          {
+            "at_sec": 160,
+            "directive": "Fill the green benefit panel first"
+          },
+          {
+            "at_sec": 169,
+            "directive": "Fill the red limitation panel with wage and rent icons"
+          },
+          {
+            "at_sec": 179,
+            "directive": "Tilt the balance scale to show both sides matter"
+          }
+        ]
+      },
+      "voiceover_script": "Is a high added value good news? On one side, yes. Added value covers bought-in costs and leaves money to pay wages and, eventually, fund growth. Because it can be increased by better quality, the workshop can compete without cutting price. On the other side, added value is not profit. Rent, energy, advertising and wages still come out of it. Therefore a large added value can still leave a small profit if running costs are high.",
+      "word_count": 76,
+      "syllabus_concepts_tagged": [
+        "added value",
+        "profit",
+        "evaluation"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 190,
+      "end_sec": 220,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Recap: Calculate and Apply Added Value",
+      "on_screen_labels": [
+        "Price: $520",
+        "Bought-in materials: $200",
+        "Added value: $320",
+        "Name one way to raise it"
+      ],
+      "animation_directives": {
+        "layout": "quiz_panel_with_animated_answer_bar",
+        "elements": [
+          {
+            "type": "quiz_card",
+            "id": "question",
+            "label": "Sells for $520, materials $200",
+            "color": "#0B1F3A"
+          },
+          {
+            "type": "option_row",
+            "id": "options",
+            "label": "Four answer options",
+            "color": "#7FB3D5"
+          },
+          {
+            "type": "animated_counter",
+            "id": "answer",
+            "label": "Added value $320",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "zoom_into_the_correct_option_then_pull_back",
+        "visual_beats": [
+          {
+            "at_sec": 190,
+            "directive": "Display the price and material figures"
+          },
+          {
+            "at_sec": 199,
+            "directive": "Light up the correct option and grow its bar"
+          },
+          {
+            "at_sec": 209,
+            "directive": "Show one lever raising the added value bar again"
+          }
+        ]
+      },
+      "voiceover_script": "Let's check your understanding. Cobalt Cove Boards sells a deck for five hundred twenty dollars and buys in materials worth two hundred dollars. Added value is the selling price minus bought-in materials, so the answer is three hundred twenty dollars. It is not profit, because wages and rent are still paid from it. Which option shows the added value, and name one way to increase it? Choose carefully, then watch the bar animate.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "added value",
+        "selling price",
+        "bought-in materials"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Cobalt Cove Boards sells a deck for $520 and buys in materials worth $200. What is its added value?",
+    "options": [
+      "$320",
+      "$520",
+      "$200",
+      "$720"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "A $520 price bar animates in, a $170-high red segment is replaced by a $200 bought-in-materials segment, and the remaining $320 segment lights up green while a small label reminds viewers that wages are not deducted."
+  }
+}

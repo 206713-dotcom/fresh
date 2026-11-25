@@ -1,0 +1,571 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U2_02",
+  "title": "Org Charts, Span of Control and Leadership in Motion",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 240,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U2_02.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 24,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "zoom_from_the_depot_into_the_tall_chart",
+      "title": "Six Days to Approve One Route Change?",
+      "labels": [
+        "Ironbridge Freight Depot",
+        "Five management layers",
+        "Span: 3 loaders",
+        "Approval takes 6 days"
+      ],
+      "elements": [
+        {
+          "type": "icon_warehouse",
+          "id": "depot",
+          "label": "Freight depot",
+          "color": "#17365D"
+        },
+        {
+          "type": "org_chart",
+          "id": "tall_chart",
+          "label": "Five layers",
+          "color": "#C8860D"
+        },
+        {
+          "type": "icon_clock",
+          "id": "delay_clock",
+          "label": "Six day delay",
+          "color": "#B22222"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Open on a loader waiting beside a parked truck"
+        },
+        {
+          "at_sec": 12,
+          "directive": "Stack five management boxes above the loader"
+        },
+        {
+          "at_sec": 24,
+          "directive": "Clock counts six days for one route approval"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Ironbridge Freight Depot has five management layers. One supervisor directs three loaders; a route change takes six days. A tall structure has many levels and a narrow span of control. A flat structure has fewer levels and a wider span. The chain of command shows who reports to whom. Watch the chart and the waiting loaders.",
+        "words": 56,
+        "wpm": 140.0
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 24,
+      "out": 50,
+      "visual_type": "org_chart_morph",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "crane_down_over_the_morphing_chart",
+      "title": "The Org Chart Collapses",
+      "labels": [
+        "Tall: 5 levels, span 3",
+        "Flat: 3 levels, span 8",
+        "Chain: director to supervisor to loader"
+      ],
+      "elements": [
+        {
+          "type": "org_chart",
+          "id": "morphing_chart",
+          "label": "Five to three levels",
+          "color": "#17365D",
+          "from_levels": 5,
+          "to_levels": 3
+        },
+        {
+          "type": "arrow_flow",
+          "id": "reporting_lines",
+          "label": "Reporting lines",
+          "color": "#2E75B6"
+        },
+        {
+          "type": "animated_counter",
+          "id": "span_counter",
+          "label": "Span width",
+          "color": "#1F7A8C",
+          "from": 3,
+          "to": 8
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 24,
+          "directive": "Show five stacked levels linked by long reporting lines"
+        },
+        {
+          "at_sec": 37,
+          "directive": "Two middle layers dissolve and boxes merge"
+        },
+        {
+          "at_sec": 50,
+          "directive": "Lines redraw to three levels and the span counter reaches eight"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The structure morphs. Two middle layers slide away and the chart collapses from five levels to three. The span of control widens from three loaders per supervisor to eight. Lines redraw in blue. Instructions pass from director to supervisor to loader. The chain of command is shorter, but each supervisor must coach eight people instead of three. Delayering changes both speed and workload.",
+        "words": 63,
+        "wpm": 145.4
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 50,
+      "out": 74,
+      "visual_type": "flow_diagram",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "fan_out_from_the_supervisor_node",
+      "title": "Eight Loaders, One Supervisor",
+      "labels": [
+        "Span of control: subordinates per manager",
+        "Narrow: close support, higher cost",
+        "Wide: speed, less close control"
+      ],
+      "elements": [
+        {
+          "type": "hub_spoke",
+          "id": "span_diagram",
+          "label": "One supervisor eight loaders",
+          "color": "#2E75B6"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "reporting_arrows",
+          "label": "Animated report arrows",
+          "color": "#1F7A8C"
+        },
+        {
+          "type": "split_panel",
+          "id": "span_compare",
+          "label": "Narrow versus wide",
+          "color": "#C8860D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 50,
+          "directive": "Place one supervisor node at the centre"
+        },
+        {
+          "at_sec": 62,
+          "directive": "Eight arrows shoot out to loader icons"
+        },
+        {
+          "at_sec": 74,
+          "directive": "Contrast a narrow three-arrow panel with the wide eight-arrow panel"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Span of control is the number of subordinates working directly under a manager. Arrows fan to eight loaders. A narrow span gives close support but adds cost and slows decisions. A wide span saves cost but leaves less time per person. At Ironbridge Freight Depot, eight loaders is the largest span that still allows a daily safety check.",
+        "words": 58,
+        "wpm": 145.0
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 74,
+      "out": 100,
+      "visual_type": "flow_diagram",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "follow_the_authority_arrow_downward",
+      "title": "Functions, Delegation and Responsibility",
+      "labels": [
+        "Plan, organise, coordinate, command, control",
+        "Delegation: authority to five hundred dollars",
+        "Responsibility stays with the manager"
+      ],
+      "elements": [
+        {
+          "type": "flow_nodes",
+          "id": "management_functions",
+          "label": "Five functions",
+          "color": "#17365D",
+          "nodes": 5
+        },
+        {
+          "type": "arrow_flow",
+          "id": "authority_arrow",
+          "label": "Authority moves down",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "icon_lock",
+          "id": "responsibility_lock",
+          "label": "Responsibility stays",
+          "color": "#C8860D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 74,
+          "directive": "Five management function icons appear in a row"
+        },
+        {
+          "at_sec": 87,
+          "directive": "An authority token slides to the shift leader"
+        },
+        {
+          "at_sec": 100,
+          "directive": "A responsibility lock remains with the depot manager"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Managers plan, organise, coordinate, command and control. Delegation means giving a subordinate the authority to perform particular tasks. The depot manager hands the shift leader authority to approve overtime up to five hundred dollars. Authority moves down the arrow; responsibility stays with the manager. Delegation develops staff and speeds decisions, but it can cause inconsistency if two shift leaders set different limits. Clear guidelines reduce that risk.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 100,
+      "out": 124,
+      "visual_type": "timeline_animation",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "track_the_timeline_left_to_right",
+      "title": "Delayering and Redundancy at Ironbridge",
+      "labels": [
+        "Downsizing: staff 40 to 32",
+        "Automation removes paperwork",
+        "Redundancy: job no longer needed"
+      ],
+      "elements": [
+        {
+          "type": "timeline",
+          "id": "downsize_timeline",
+          "label": "Cost cutting timeline",
+          "color": "#17365D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "headcount",
+          "label": "Employee numbers",
+          "color": "#B22222",
+          "from": 40,
+          "to": 32
+        },
+        {
+          "type": "icon_handshake",
+          "id": "compensation",
+          "label": "Retraining offer",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 100,
+          "directive": "Show forty staff icons in the depot"
+        },
+        {
+          "at_sec": 112,
+          "directive": "Automation gear replaces two of the eight removed roles"
+        },
+        {
+          "at_sec": 124,
+          "directive": "Eight roles move to a redundancy box with compensation"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Downsizing is permanently reducing the number of people a business employs. Ironbridge removes eight posts, including two coordination roles, as automation takes over paperwork. Staff fall from forty to thirty-two. These workers are made redundant, not dismissed. Redundancy arises when a job is no longer needed; dismissal concerns conduct or capability. Compensation and retraining help the remaining team cover the wider span.",
+        "words": 62,
+        "wpm": 155.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 124,
+      "out": 150,
+      "visual_type": "split_screen_comparison",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "pan_across_three_parallel_lanes",
+      "title": "Three Leadership Decision Flows",
+      "labels": [
+        "Autocratic: manager decides alone",
+        "Democratic: team consulted first",
+        "Laissez-faire: capable staff decide"
+      ],
+      "elements": [
+        {
+          "type": "split_panel",
+          "id": "leadership_three",
+          "label": "Three decision lanes",
+          "color": "#17365D",
+          "lanes": 3
+        },
+        {
+          "type": "arrow_flow",
+          "id": "auto_flow",
+          "label": "Single fast arrow",
+          "color": "#B22222"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "demo_flow",
+          "label": "Consultation loop",
+          "color": "#C8860D"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "laissez_flow",
+          "label": "Team-owned decision",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 124,
+          "directive": "Three lanes light up with the same depot decision"
+        },
+        {
+          "at_sec": 137,
+          "directive": "Autocratic arrow jumps straight to the loader"
+        },
+        {
+          "at_sec": 150,
+          "directive": "Democratic loops and laissez-faire hand the decision to the team"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Three decision flows run side by side. Autocratic leaders decide alone and have orders followed without consultation. A closure order reaches the loader in seconds. Democratic leaders consult, then decide themselves. The team debates, then the manager chooses. Laissez-faire leaders set broad objectives and leave capable staff to organise their own work. The style must fit urgency, risk and skill.",
+        "words": 60,
+        "wpm": 138.5
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 150,
+      "out": 178,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "push_in_to_the_bargaining_table",
+      "title": "Union Voices at the Depot",
+      "labels": [
+        "Trade union: employees joined together",
+        "Collective pay: $12.00 to $12.60",
+        "Monthly representation meeting"
+      ],
+      "elements": [
+        {
+          "type": "icon_badge",
+          "id": "union_badge",
+          "label": "Union representation",
+          "color": "#6A4C93"
+        },
+        {
+          "type": "meeting_table",
+          "id": "bargaining_table",
+          "label": "Collective bargaining",
+          "color": "#17365D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "wage_counter",
+          "label": "Hourly rate",
+          "color": "#2E8B57",
+          "from": 12.0,
+          "to": 12.6
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 150,
+          "directive": "Union badge appears beside the workforce"
+        },
+        {
+          "at_sec": 164,
+          "directive": "Representatives and manager sit at the table"
+        },
+        {
+          "at_sec": 178,
+          "directive": "Hourly rate counter climbs from twelve to twelve sixty"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "A trade union is a group of employees who have joined together to ensure their interests and working conditions are protected. Representatives meet the manager monthly. Collective bargaining lifts the hourly rate from twelve dollars to twelve dollars and sixty cents. Members gain a voice, better pay and support in disputes. The depot gains clearer communication, though wage costs rise and industrial action can stop deliveries. Both sides must prepare evidence.",
+        "words": 71,
+        "wpm": 152.1
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 178,
+      "out": 208,
+      "visual_type": "evaluation_split",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "alternate_between_structure_and_leadership_panels",
+      "title": "Two Sides of Every Structure",
+      "labels": [
+        "Tall plus: clear paths, close support",
+        "Tall minus: slow six day decisions",
+        "Flat plus: fast, lower cost",
+        "Flat minus: stretched supervisors"
+      ],
+      "elements": [
+        {
+          "type": "evaluation_split",
+          "id": "structure_eval",
+          "label": "Structure trade-offs",
+          "color": "#17365D"
+        },
+        {
+          "type": "icon_ladder",
+          "id": "tall_side",
+          "label": "Tall structure",
+          "color": "#C8860D"
+        },
+        {
+          "type": "icon_arrow",
+          "id": "flat_side",
+          "label": "Flat structure",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "warning_sign",
+          "id": "risk_side",
+          "label": "Leadership risks",
+          "color": "#B22222"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 178,
+          "directive": "Show promotion ladders and close support on the tall side"
+        },
+        {
+          "at_sec": 193,
+          "directive": "Show the six day delay beside the tall column"
+        },
+        {
+          "at_sec": 208,
+          "directive": "Contrast flat speed with stretched supervisors and leadership styles"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Consider the trade-offs on screen. A tall structure gives clear promotion paths and close supervision, but decisions crawl through five layers. A flat structure cuts cost and speeds decisions, yet supervisors are stretched and promotion paths narrow. Autocratic leadership is fast in a crisis, but can damage morale. Democratic leadership wins commitment, but takes time. Laissez-faire suits skilled professionals, but fails with inexperienced staff. There is no single best structure: match it to the situation and the evidence.",
+        "words": 78,
+        "wpm": 156.0
+      }
+    },
+    {
+      "scene_number": 9,
+      "in": 208,
+      "out": 240,
+      "visual_type": "timeline_animation",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "travel_along_the_change_timeline",
+      "title": "One Year at Ironbridge Freight Depot",
+      "labels": [
+        "Approval: 6 days to 1 day",
+        "Staff: 40 to 32 through redundancy",
+        "Consignments: 120 to 134 daily"
+      ],
+      "elements": [
+        {
+          "type": "timeline",
+          "id": "year_timeline",
+          "label": "Change timeline",
+          "color": "#17365D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "decision_speed",
+          "label": "Approval days",
+          "color": "#2E8B57",
+          "from": 6,
+          "to": 1
+        },
+        {
+          "type": "animated_counter",
+          "id": "consignment_counter",
+          "label": "Daily consignments",
+          "color": "#1F7A8C",
+          "from": 120,
+          "to": 134
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 208,
+          "directive": "Set the baseline of six days, forty staff and 120 consignments"
+        },
+        {
+          "at_sec": 219,
+          "directive": "Collapse two layers and animate the redundancy box"
+        },
+        {
+          "at_sec": 229,
+          "directive": "Show the union wage counter climbing to twelve sixty"
+        },
+        {
+          "at_sec": 240,
+          "directive": "Show one day approval and 134 consignments with a trade-off label"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The Ironbridge story in numbers. Because five layers slowed every approval, therefore delayering removed two layers, so a route change now takes one day instead of six. Headcount fell from forty to thirty-two through redundancy. Supervisors now coach eight loaders each. Daily consignments rose from one hundred and twenty to one hundred and thirty-four. Union bargaining set the rate at twelve dollars and sixty cents. Weigh the saving against the wider workload. One decision creates both a benefit and a cost.",
+        "words": 81,
+        "wpm": 151.9
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "A chemical leak at Ironbridge Freight Depot means loaders must evacuate within seconds. Which leadership style fits, and what is the main drawback of that style here?",
+    "options": [
+      "Autocratic, because one clear order is fastest in a crisis, though it can damage morale if used every day",
+      "Democratic, because consulting everyone gives the best long-term plan",
+      "Laissez-faire, because experienced loaders should set their own priorities",
+      "No leadership is needed because the chain of command already works"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "Three decision lanes race an exit timer; only the autocratic arrow reaches the exit before the clock, while a small morale meter dips beside it."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

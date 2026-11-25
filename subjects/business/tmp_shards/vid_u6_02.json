@@ -1,0 +1,655 @@
+{
+  "video_id": "VID_U6_02",
+  "unit_number": 6,
+  "unit_title": "Unit 6: External influences on business activity",
+  "chapter_code": "6.2",
+  "chapter_title": "Environmental and ethical issues",
+  "video_title": "Visualising Externalities, Ethics and Pressure Groups",
+  "target_duration_sec": 256,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Distinguish private and social costs and benefits using spillover animations",
+    "Explain sustainable development as a balance of economic, social and environmental pillars",
+    "Evaluate ethical objectives against profit objectives with a cocoa factory scenario"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 20,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Spillovers From the Factory",
+      "on_screen_labels": [
+        "Cocoa Grove Collective",
+        "Private costs",
+        "Third party harms",
+        "Third party gains"
+      ],
+      "animation_directives": {
+        "layout": "factory_with_outward_spillover_arrows",
+        "elements": [
+          {
+            "type": "icon_factory",
+            "id": "plant",
+            "label": "Cocoa processing plant",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "spillover_arrow",
+            "id": "smoke",
+            "label": "Smoke spillover",
+            "color": "#C00000"
+          },
+          {
+            "type": "spillover_arrow",
+            "id": "water",
+            "label": "Waste water spillover",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "spillover_arrow",
+            "id": "jobs",
+            "label": "Jobs spillover",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "pull_back_from_factory_to_community",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Factory appears"
+          },
+          {
+            "at_sec": 10,
+            "directive": "Red and amber arrows spill out"
+          },
+          {
+            "at_sec": 20,
+            "directive": "Green benefit arrow appears"
+          }
+        ]
+      },
+      "voiceover_script": "Meet Cocoa Grove Collective, a co operative that runs a cocoa processing plant. Thick arrows spill out of the factory: smoke, waste water and jobs. Some spillovers harm neighbours, others help them. These effects sit outside the firm's own accounts, yet they shape real decisions for everyone nearby.",
+      "word_count": 48,
+      "syllabus_concepts_tagged": [
+        "external costs",
+        "external benefits",
+        "third party"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 20,
+      "end_sec": 48,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Private Cost Versus Social Cost",
+      "on_screen_labels": [
+        "External cost: third party harm",
+        "Treatment: $150,000",
+        "Harm to town: $400,000",
+        "Social cost: $550,000"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_private_stack_plus_external_stack",
+        "elements": [
+          {
+            "type": "cost_stack",
+            "id": "private",
+            "label": "Private cost stack",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "cost_stack",
+            "id": "external",
+            "label": "External cost stack",
+            "color": "#C00000"
+          },
+          {
+            "type": "directional_arrow",
+            "id": "spill",
+            "label": "Spillover arrow",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "total_tile",
+            "id": "social",
+            "label": "Social cost tile",
+            "color": "#C00000"
+          }
+        ],
+        "camera_motion": "rise_from_private_stack_to_social_total",
+        "visual_beats": [
+          {
+            "at_sec": 20,
+            "directive": "Private stack builds to 150000"
+          },
+          {
+            "at_sec": 29,
+            "directive": "External stack builds to 400000"
+          },
+          {
+            "at_sec": 38,
+            "directive": "Spillover arrow crosses"
+          },
+          {
+            "at_sec": 48,
+            "directive": "Total tile reads 550000"
+          }
+        ]
+      },
+      "voiceover_script": "External costs are costs imposed on a third party, independent of the original transaction. The plant pays one hundred fifty thousand dollars to treat waste water. Untreated discharge would impose four hundred thousand dollars of cleanup and health costs on the town. Social cost is private cost plus external cost: five hundred fifty thousand dollars. The price of cocoa does not include that damage, so the market overproduces it.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "External Costs",
+        "social cost",
+        "pollution"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 48,
+      "end_sec": 72,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Private Benefit Versus Social Benefit",
+      "on_screen_labels": [
+        "External benefit: third party gain",
+        "Productivity: $120,000",
+        "Community skills: $200,000",
+        "Social benefit: $320,000"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_private_benefit_plus_external_benefit",
+        "elements": [
+          {
+            "type": "benefit_stack",
+            "id": "private_b",
+            "label": "Private benefit stack",
+            "color": "#548235"
+          },
+          {
+            "type": "benefit_stack",
+            "id": "external_b",
+            "label": "External benefit stack",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "total_tile",
+            "id": "social_b",
+            "label": "Social benefit tile",
+            "color": "#548235"
+          },
+          {
+            "type": "workforce_tiles",
+            "id": "trainees",
+            "label": "Trained workers",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "rise_from_private_gain_to_social_total",
+        "visual_beats": [
+          {
+            "at_sec": 48,
+            "directive": "Private benefit builds to 120000"
+          },
+          {
+            "at_sec": 60,
+            "directive": "External benefit builds to 200000"
+          },
+          {
+            "at_sec": 72,
+            "directive": "Trainee tiles appear"
+          }
+        ]
+      },
+      "voiceover_script": "External benefits are gains imposed on a third party, independent of the transaction. A training scheme gives Cocoa Grove one hundred twenty thousand dollars of extra productivity. It also gives the community two hundred thousand dollars of skills. Social benefit is private plus external, three hundred twenty thousand dollars. The firm gains too, because trained workers make fewer mistakes.",
+      "word_count": 59,
+      "syllabus_concepts_tagged": [
+        "External Benefits",
+        "social benefit",
+        "training"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 72,
+      "end_sec": 100,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Three Pillars of Sustainable Development",
+      "on_screen_labels": [
+        "Economic pillar: profit",
+        "Social pillar: fairness",
+        "Environmental pillar: care",
+        "One weak pillar tilts all"
+      ],
+      "animation_directives": {
+        "layout": "three_pillars_supporting_a_platform_scale",
+        "elements": [
+          {
+            "type": "pillar",
+            "id": "economic",
+            "label": "Economic pillar",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "pillar",
+            "id": "social",
+            "label": "Social pillar",
+            "color": "#548235"
+          },
+          {
+            "type": "pillar",
+            "id": "environmental",
+            "label": "Environmental pillar",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "balance_platform",
+            "id": "platform",
+            "label": "Business platform",
+            "color": "#C00000"
+          }
+        ],
+        "camera_motion": "tilt_camera_as_one_pillar_shrinks",
+        "visual_beats": [
+          {
+            "at_sec": 72,
+            "directive": "Three pillars rise"
+          },
+          {
+            "at_sec": 81,
+            "directive": "Platform balances on top"
+          },
+          {
+            "at_sec": 90,
+            "directive": "Environmental pillar shrinks"
+          },
+          {
+            "at_sec": 100,
+            "directive": "Platform tilts then recovers"
+          }
+        ]
+      },
+      "voiceover_script": "Sustainable development means meeting today's needs without damaging tomorrow's. On screen, three pillars hold up a platform: economic profit, social fairness and environmental care. If one pillar shrinks, the platform tilts. Cocoa Grove must earn enough, pay fairly and protect the river, or the whole business becomes unstable. A fair price to farmers keeps the supply chain reliable. Clean water keeps the licence. Both protect long term profit.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "sustainable development",
+        "social responsibility",
+        "stakeholders"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 100,
+      "end_sec": 132,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Ethical Conflicts With Real Numbers",
+      "on_screen_labels": [
+        "Wages $8 to $10 an hour",
+        "Extra wage bill $480,000 over 50 weeks",
+        "Cocoa $1,800 to $2,100 a tonne",
+        "Extra material cost $600,000"
+      ],
+      "animation_directives": {
+        "layout": "two_cost_meters_side_by_side_with_worker_tiles",
+        "elements": [
+          {
+            "type": "animated_counter",
+            "id": "wage",
+            "label": "Hourly wage counter",
+            "from_": 8,
+            "to": 10,
+            "prefix": "$",
+            "color": "#C00000"
+          },
+          {
+            "type": "worker_tiles",
+            "id": "workers",
+            "label": "120 worker tiles",
+            "color": "#548235"
+          },
+          {
+            "type": "animated_counter",
+            "id": "cocoa",
+            "label": "Cocoa price counter",
+            "from_": 1800,
+            "to": 2100,
+            "prefix": "$",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "cost_tile",
+            "id": "bill",
+            "label": "Extra wage bill over 50 weeks",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "zoom_between_wage_tiles_and_cocoa_sacks",
+        "visual_beats": [
+          {
+            "at_sec": 100,
+            "directive": "Wage meter rises from 8"
+          },
+          {
+            "at_sec": 111,
+            "directive": "Worker tiles multiply across 50 weeks"
+          },
+          {
+            "at_sec": 122,
+            "directive": "Cocoa sack price rises"
+          },
+          {
+            "at_sec": 132,
+            "directive": "Two cost totals appear"
+          }
+        ]
+      },
+      "voiceover_script": "Ethical issues create conflicts. Wages here are eight dollars an hour; a fair wage is ten. For one hundred twenty workers on forty hour weeks across fifty working weeks, that adds four hundred eighty thousand dollars a year. Certified cocoa costs two thousand one hundred dollars a tonne instead of one thousand eight hundred, adding six hundred thousand dollars on two thousand tonnes. Cheaper inputs lift short term margin, but they may hide child labour and damage the co operative's reputation.",
+      "word_count": 81,
+      "syllabus_concepts_tagged": [
+        "Ethical Issue",
+        "fair wages",
+        "supplier choice",
+        "fair prices to suppliers"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 132,
+      "end_sec": 160,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Pressure Group Campaign Waves",
+      "on_screen_labels": [
+        "Pressure group: collective action",
+        "12,000 subscribers",
+        "8 percent of $5m sales lost",
+        "Loss of $400,000"
+      ],
+      "animation_directives": {
+        "layout": "concentric_waves_hitting_firm_shield",
+        "elements": [
+          {
+            "type": "wave_animation",
+            "id": "waves",
+            "label": "Campaign waves",
+            "color": "#C00000"
+          },
+          {
+            "type": "icon_factory",
+            "id": "firm",
+            "label": "Cocoa Grove plant",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "boycott_icon",
+            "id": "boycott",
+            "label": "Boycott call",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "sales_bar",
+            "id": "sales",
+            "label": "Sales bar",
+            "color": "#548235"
+          },
+          {
+            "type": "shield",
+            "id": "report",
+            "label": "Transparent report shield",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "track_waves_from_crowd_to_firm",
+        "visual_beats": [
+          {
+            "at_sec": 132,
+            "directive": "Crowd icon appears"
+          },
+          {
+            "at_sec": 141,
+            "directive": "Waves ripple toward firm"
+          },
+          {
+            "at_sec": 150,
+            "directive": "Sales bar loses 8 percent"
+          },
+          {
+            "at_sec": 160,
+            "directive": "Shield rises"
+          }
+        ]
+      },
+      "voiceover_script": "A pressure group is people acting together to force businesses or governments to adopt policies. Campaign waves roll over Cocoa Grove on screen. Twelve thousand subscribers share a boycott call. If eight percent of five million dollars of sales is lost, that is four hundred thousand dollars. Firms can engage, publish transparent reports or change suppliers. Ignoring legitimate concerns can escalate reputational damage and invite legal action.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "Pressure Groups",
+        "boycott",
+        "transparent reports",
+        "reputation"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 160,
+      "end_sec": 196,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Ethics Versus Profit Objectives",
+      "on_screen_labels": [
+        "PRO: reputation and loyalty",
+        "PRO: lower legal risk",
+        "CON: higher costs and price gap",
+        "CON: fair wages may cut jobs"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_ethics_left_profit_right",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "ethics",
+            "label": "Ethics panel",
+            "color": "#548235"
+          },
+          {
+            "type": "split_panel",
+            "id": "profit",
+            "label": "Profit panel",
+            "color": "#C00000"
+          },
+          {
+            "type": "price_tag",
+            "id": "price",
+            "label": "Price disadvantage tag",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "balance_icon",
+            "id": "balance",
+            "label": "Objective balance",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "swing_camera_across_ethics_profit_divider",
+        "visual_beats": [
+          {
+            "at_sec": 160,
+            "directive": "Green ethics panel fills"
+          },
+          {
+            "at_sec": 172,
+            "directive": "Red profit panel fills"
+          },
+          {
+            "at_sec": 184,
+            "directive": "Price tag slides upward"
+          },
+          {
+            "at_sec": 196,
+            "directive": "Balance icon judges"
+          }
+        ]
+      },
+      "voiceover_script": "Two sides, one decision. Being ethical can improve reputation, attract customers and employees, and reduce legal risk. Loyal buyers may accept a higher price. Yet ethical sourcing raises costs, and a price disadvantage can lose price sensitive orders. Paying fair wages may force job cuts instead of fairer jobs. The balance depends on whether customers value the story enough to pay. In a downturn, cost cutting may win the argument; in a boom, brand trust can win it for this co operative and its buyers.",
+      "word_count": 85,
+      "syllabus_concepts_tagged": [
+        "ethical objectives",
+        "profit objective",
+        "evaluation",
+        "reputation"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 196,
+      "end_sec": 228,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Cocoa Grove Chooses a Middle Path",
+      "on_screen_labels": [
+        "Treat waste, protect licence",
+        "Premium line keeps certified cocoa",
+        "Standard bars use cheaper beans",
+        "Clean water for years"
+      ],
+      "animation_directives": {
+        "layout": "factory_with_two_product_lanes_and_report_tile",
+        "elements": [
+          {
+            "type": "icon_factory",
+            "id": "plant",
+            "label": "Treatment plant",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "product_lane",
+            "id": "premium",
+            "label": "Premium certified lane",
+            "color": "#548235"
+          },
+          {
+            "type": "product_lane",
+            "id": "standard",
+            "label": "Standard value lane",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "report_tile",
+            "id": "report",
+            "label": "Transparent report",
+            "color": "#548235"
+          },
+          {
+            "type": "river_tile",
+            "id": "river",
+            "label": "Clean river",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "follow_two_lanes_out_of_factory",
+        "visual_beats": [
+          {
+            "at_sec": 196,
+            "directive": "Treatment pipe starts"
+          },
+          {
+            "at_sec": 207,
+            "directive": "Premium lane lights green"
+          },
+          {
+            "at_sec": 218,
+            "directive": "Standard lane lights amber"
+          },
+          {
+            "at_sec": 228,
+            "directive": "River tile turns blue"
+          }
+        ]
+      },
+      "voiceover_script": "Cocoa Grove chooses a middle path. Because untreated waste harms the river, therefore the firm installs treatment and raises prices slightly, so the licence is safe. It keeps certified cocoa for its premium line and cheaper beans for standard bars. That protects margin and reputation at once. Transparent reporting turns the pressure group from an opponent into a critic it can answer. Costs rise, but sales hold and the town keeps its clean water supply for years.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "ethical decision",
+        "social responsibility",
+        "evaluation",
+        "pressure groups"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 228,
+      "end_sec": 256,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Apply It: Cheap Beans or Certified Beans",
+      "on_screen_labels": [
+        "Cheap supplier pollutes",
+        "Certified beans cost $300 more",
+        "Boycott risk $400,000",
+        "Pick a path, see effects"
+      ],
+      "animation_directives": {
+        "layout": "quiz_fork_with_cost_and_reputation_tiles",
+        "elements": [
+          {
+            "type": "fork",
+            "id": "paths",
+            "label": "Two supplier paths",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "cost_tile",
+            "id": "cost",
+            "label": "Cost tile",
+            "color": "#C00000"
+          },
+          {
+            "type": "reputation_tile",
+            "id": "reputation",
+            "label": "Reputation tile",
+            "color": "#548235"
+          },
+          {
+            "type": "answer_tiles",
+            "id": "answers",
+            "label": "Four answer tiles",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "hover_fork_then_reveal_downstream_tiles",
+        "visual_beats": [
+          {
+            "at_sec": 228,
+            "directive": "Fork appears"
+          },
+          {
+            "at_sec": 237,
+            "directive": "Cheap path flashes red"
+          },
+          {
+            "at_sec": 246,
+            "directive": "Certified path flashes green"
+          },
+          {
+            "at_sec": 256,
+            "directive": "Both outcome tiles settle"
+          }
+        ]
+      },
+      "voiceover_script": "Apply the idea. Cocoa Grove can buy cheap beans from a supplier that pollutes, or certified beans that cost three hundred dollars more per tonne. Which choice protects profit and which protects the brand? On screen, two paths split into cost and reputation tiles. Pick one, then see the downstream effects. A boycott could erase four hundred thousand dollars of sales, while the premium line keeps loyal buyers.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "supplier choice",
+        "ethical issue",
+        "boycott",
+        "application"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Cocoa Grove can save $600,000 by using a polluting supplier. A boycott may erase $400,000 of sales. What is the best justification for staying certified?",
+    "options": [
+      "Reputation and licence protection can outweigh the short term saving",
+      "Certified cocoa always lowers the immediate material bill",
+      "Pressure groups have no influence on consumer behaviour",
+      "External costs are always paid by the supplier alone"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "Two supplier paths split. The cheap path shows a green $600,000 saving tile then a red $400,000 boycott wave, while the certified path keeps the premium lane and clean river tile lit. The balance icon tips toward the certified path."
+  }
+}

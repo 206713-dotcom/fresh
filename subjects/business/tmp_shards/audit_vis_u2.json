@@ -1,0 +1,80 @@
+{
+  "auditor_id": "VIS-TECH-AUD-05",
+  "target_unit": 2,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u2_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: all 9 scenes use concrete primitives (output counter factory, five-tier pyramid, stopwatch/piece-rate flow, Herzberg balance beam, split reward panels, three-node causal chain, metrics dashboard, evaluation split, answer timeline); no text_slide/bullet_list/title_card_only. Every scene >15 s has visual_beats with gaps of 12-14 s; all titles <=12 words (max 7) and all labels <=18 words (max 6).",
+        "Gate 2: recomputed via Python .split() with edge punctuation stripped — declared word_count equals actual in every scene; rates 2.278-2.538 words/sec, all inside 2.25-2.60. Timings contiguous 0-24-50-74-100-124-150-176-204-240 with target_duration_sec 240; beat order tracks voiceover order (pyramid fill, piece-rate reveal, beam tilt, trial counters, recap metrics).",
+        "Gate 4: exact top-level and scene key sets; VID_U2_01; all colours uppercase #RRGGBB; no duplicate element ids; quiz has 4 options and valid correct_index 1 with concrete visual_explanation.",
+        "Gate 5: case 'Kestrel Ridge Sportswear' appears only in this shard; no script duplication across the 25 shards; blacklist scan clean (only false-positive substrings such as 'arrow').",
+        "Scene 3's standard 20 tops/hour x the 8-hour shift stated in Scene 6 equals 160 tops/day, matching the reported line output; the shard never states a headcount for the line, so there is no demonstrable numeric contradiction. Minor: the Scene 4 beam beat at 87 s says coins leave the beam level while the voiceover says extra pay 'lifts the left side briefly' — clarify as a brief temporary tip if Tier 3 renders it literally."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"check": "Scene 1 shortfall", "calc": "200 target - 160 actual = 40 tops missing", "result": "matches on-screen title 'Why Do 40 Tops Go Missing Daily?'", "status": "PASS"},
+        {"check": "Scene 3 piece rate", "calc": "160 tops x $0.40 = $64; counter target 200 tops x $0.40 = $80", "result": "voiceover and labels agree", "status": "PASS"},
+        {"check": "Scene 3/6 daily standard", "calc": "20 tops/hour x 8 hours = 160 tops/day", "result": "equals reported actual output", "status": "PASS"},
+        {"check": "Scene 7 trial", "calc": "215 tops x $0.40 = $86 plus $30 bonus (215 > 200 threshold) = $116", "result": "voiceover 'eighty-six dollars, plus the bonus' correct", "status": "PASS"},
+        {"check": "Scene 7/9 improvement", "calc": "215-160 = +55 tops; 12%-7% = -5 percentage points; 8%->4% = halved", "result": "Scene 9 recap numbers match Scene 7 dashboard", "status": "PASS"}
+      ]
+    },
+    "vid_u2_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "RE-AUDIT AFTER REGENERATION — both previously rejected defects are resolved and all five gates now pass.",
+        "Fix 1 (Scene 5) verified: voiceover now reads 'Ironbridge removes eight posts, including two coordination roles, as automation takes over paperwork', the 112 s beat now reads 'Automation gear replaces two of the eight removed roles', and word_count is 62. 40 - 32 = 8 staff removed now matches the counter, the on-screen label and the 124 s beat ('Eight roles move to a redundancy box'). Recomputed pacing: 62/24 = 2.583 w/s (155 wpm), inside 135-156 wpm.",
+        "Fix 2 (Scene 9) verified: voiceover now opens 'Because five layers slowed every approval, therefore delayering removed two layers'. 5 - 2 = 3 matches Scenes 1, 2 and 8; no 'six layers' claim remains in any scene. Word count unchanged at 81 (81/32 = 2.531 w/s).",
+        "Gate 1: concrete org_chart org-chart morph, hub-spoke span diagram, flow nodes, three decision lanes, union bargaining table, evaluation split; all beats 10-15 s apart; titles <=12 words (max 7) and labels <=18 words (max 6). No blacklisted visual types.",
+        "Gate 2: recomputed word counts match declared exactly in all 9 scenes; rates 2.308-2.600 w/s; contiguous 0-24-50-74-100-124-150-178-208-240 with target 240 s; beat order follows narration hierarchy -> span -> delegation -> downsizing -> leadership -> union -> evaluation -> recap.",
+        "Gate 4: exact top-level and scene key sets; VID_U2_02; all colours uppercase #RRGGBB; no duplicate element ids; quiz has 4 options and valid correct_index 0 with concrete visual_explanation. Status remains UNVERIFIED for Tier 3.",
+        "Gate 5: case 'Ironbridge Freight Depot' appears only in this shard; no duplicate video_ids or scripts across the 25 shards; blacklist scan clean (only false-positive substrings such as 'arrow'/'narrow')."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"check": "Scene 1/2/8 hierarchy (previously PASS)", "calc": "5 levels - 2 removed = 3 levels; span 3 -> 8; approval 6 days -> 1 day", "result": "internally consistent", "status": "PASS"},
+        {"check": "Scene 5 downsizing (previously FAIL, now fixed)", "calc": "40 - 32 = 8 posts; script now says 'eight posts, including two coordination roles'; beat @112 says two of eight; beat @124 says eight", "result": "contradiction resolved: 8 = 8; word_count 62, 62/24 = 2.583 w/s", "status": "PASS"},
+        {"check": "Scene 7 union wage", "calc": "$12.00 -> $12.60 = +$0.60 (+5%)", "result": "label and counter agree", "status": "PASS"},
+        {"check": "Scene 9 hierarchy recap (previously FAIL, now fixed)", "calc": "script now 'five layers' - 2 = 3 flat levels, matching Scenes 1/2/8", "result": "contradiction resolved: 5 = 5; word_count 81, 81/32 = 2.531 w/s", "status": "PASS"},
+        {"check": "Scene 9 metrics", "calc": "120 -> 134 consignments (+14); headcount 40 -> 32; span 8; rate $12.60", "result": "all figures agree with earlier scenes", "status": "PASS"}
+      ]
+    },
+    "vid_u2_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "RE-AUDIT AFTER REGENERATION — the previously rejected funnel stage count is resolved and all five gates now pass.",
+        "Fix 1 (Scene 2) verified: animation_directives element 'stage_funnel' now has stages: 8 and label 'Eight stage funnel', matching the eight stages actually shown (job analysis, job description, person specification, advertise, forms, shortlist, interview, offer).",
+        "Fix 2 (Scene 9) verified: 'mini_funnel' label is now 'Eight stage recap' and the beat at 208 s reads 'Replay the eight funnel stages as small icons'. No 'seven' remains anywhere in the shard.",
+        "Voiceover scripts and all declared word_counts are unchanged; element labels and beat directives do not affect pacing, so no recomputation changes were needed.",
+        "Gate 1: concrete funnel animation, split internal/external panels, four-gate selection flow, contract/person icons, three training lanes, evaluation split, timeline recap; all beats 10-15 s apart; titles <=12 words (max 6) and labels <=18 words (max 6).",
+        "Gate 2: recomputed word counts match declared exactly in all 9 scenes; rates 2.375-2.600 w/s; contiguous 0-24-50-74-100-124-150-178-208-240 with target 240 s; beat order follows narration (48 applications -> funnel stages -> hiring routes -> shortlisting -> contract -> training -> Priya -> redundancy/evaluation -> recap).",
+        "Gate 4: exact top-level and scene key sets; VID_U2_03; all colours uppercase #RRGGBB; no duplicate element ids; quiz has 4 options and valid correct_index 1 with concrete visual_explanation. Status remains UNVERIFIED for Tier 3.",
+        "Gate 5: case 'Juniper Lane Coffee Roasters' appears only in this shard; no duplicate video_ids or scripts across the 25 shards; blacklist scan clean."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"check": "Scenes 1/4/9 selection funnel", "calc": "48 applications -> 12 shortlisted -> 4 interviewed -> 1 offer", "result": "consistent across all three scenes", "status": "PASS"},
+        {"check": "Scenes 3/6/7 costs and time", "calc": "internal 12 days/$600 vs external 35 days/$2400; saving 2400-600 = $1800; 35-12 = 23 days sooner; induction $200 + shadowing $600 + college $2400; offer $14.00/hr > $11.50 minimum wage", "result": "all figures agree", "status": "PASS"},
+        {"check": "Scenes 2/9 funnel stage count (previously FAIL, now fixed)", "calc": "declared stages: 8; enumerated job analysis + job description + person specification + advertise + forms + shortlist + interview + offer = 8; recap label and beat both say eight", "result": "contradiction resolved: 8 = 8", "status": "PASS"}
+      ]
+    },
+    "vid_u2_04.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1: every scene uses concrete primitives (handover note/missed-callback counter, five-node communication loop with noise wall, classification panels, channel comparison grid, barrier insertion points, manual-to-checklist morph, live metrics dashboard, evaluation split, answer timeline); no wall of text. Beats 10-15 s apart in all scenes >15 s; titles <=12 words (max 6) and labels <=18 words (max 7).",
+        "Gate 2: recomputed word counts match declared exactly; rates 2.406-2.583 w/s; contiguous 0-24-50-74-100-124-150-178-208-240 with target 240 s; beat order matches narration (sender->feedback loop, barriers, overload fix, handover metrics, recap).",
+        "Gate 4: exact key sets, uppercase #RRGGBB colours, no duplicate element ids, quiz with 4 options and valid correct_index 2.",
+        "Gate 5: case 'Harbourview Solutions Call Centre' unique across all 25 shards; no duplicated scripts; blacklist scan clean."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"check": "Scenes 1/7/9 handover metrics", "calc": "18 -> 4 missed callbacks = -14/day; complaints 6% -> 2%; first contact resolution 58% -> 74% (+16 pp)", "result": "Scene 9 'fourteen fewer' matches 18-4", "status": "PASS"},
+        {"check": "Scene 4 channel costs", "calc": "$0.02 email, $0.05 text, $0.85 letter", "result": "matches voiceover 'two cents', 'five cents', 'eighty-five cents'", "status": "PASS"},
+        {"check": "Scenes 5/6/7 document and agent counts", "calc": "27-page manual compressed to 8 numbered steps; 8-field digital checklist; 24 agents across two shifts; 200 calls/hour is plausible for that floor", "result": "no contradictions", "status": "PASS"}
+      ]
+    }
+  },
+  "summary": "Re-audit of regenerated vid_u2_02.json and vid_u2_03.json confirms all four requested fixes: u2_02 Scene 5 now removes eight posts (including two coordination roles) with word_count 62 at 2.583 w/s and an updated 112 s beat, and Scene 9 now says five layers (5-2=3); u2_03 Scene 2 now declares stages: 8 with 'Eight stage funnel' and Scene 9 uses 'Eight stage recap' plus an eight-stage beat at 208 s. Both shards pass all five gates; the earlier approvals of vid_u2_01.json and vid_u2_04.json are retained. All four Unit 2 shards are APPROVED_BY_VIS_AUD with no outstanding scene fixes, so the top-level verdict is APPROVED_BY_VIS_AUD (status fields remain UNVERIFIED for Tier 3)."
+}

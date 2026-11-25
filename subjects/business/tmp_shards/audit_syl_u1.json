@@ -1,0 +1,96 @@
+{
+  "auditor_id": "SYL-VID-AUD-01",
+  "target_unit": 1,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u1_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST scan across voiceover, titles, labels, element labels, beats and quiz: ZERO hits (word-boundary checks on ARR/CPA/NPV/BCG/9609/0450/Porter/Mayo and all literal multi-word terms).",
+        "AO1 exact: need = essential for survival, want = not essential; scarcity as unlimited wants vs limited resources; opportunity cost = value of the next best alternative given up (scene 2); four factors land/labour/capital/enterprise with glossary wording (scene 3); added value = selling price minus cost of bought-in materials and components (scene 5). Correctly states 'wages are not deducted' and 'added value is not profit'.",
+        "AO2: named firm Cobalt Cove Boards with consistent numbers ($480 deck, $180 tail-pads, $170 materials, $310 added value, $360 after a $50 price rise, quiz $520/$200/$320). AO3 causal chains in scenes 2, 5 and 7. AO4 genuine two-sided evaluation split in scene 7. Recap quiz tests application (compute added value), not pure recall.",
+        "DEFECT (non-blocking, must fix before render): scene 7 voiceover says 'Added value covers bought-in costs'. This reverses the definition: bought-in materials are deducted BEFORE added value is found, so the residual pays wages/rent/energy and funds growth. The supporting on-screen label 'Advantage: covers costs and funds growth' and element label 'Added value covers costs' are ambiguous in the same way.",
+        "DEFECT (non-blocking): end_of_video_recap_quiz.visual_explanation carries a stale '$170-high red segment' from the scene 5 worked example; the quiz example uses $200 bought-in materials. Correct the math visual to $200 only.",
+        "Minor tagging: scene 4 syllabus_concepts_tagged includes 'added value' although that scene teaches specialisation/division of labour only; retag to 'specialisation', 'division of labour'."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": [
+        {
+          "scene": 7,
+          "timestamp": "160-190s",
+          "issue": "Voiceover 'Added value covers bought-in costs and leaves money to pay wages...' plus labels 'Advantage: covers costs and funds growth' and 'Added value covers costs' misstate the sequence. Added value = selling price minus bought-in materials/components, so bought-in costs are already deducted; only the residual pays wages, rent, energy and funds growth.",
+          "fix": "Rewrite the opening to: 'Added value is what is left after bought-in materials are paid for, so it can cover wages, rent and energy and eventually fund growth.' Change the on-screen label to 'Advantage: pays wages, rent and funds growth' and the pro element label to 'Added value funds running costs and growth'. Keep the existing correct lines 'added value is not profit' and 'wages are not deducted'."
+        },
+        {
+          "scene": 8,
+          "timestamp": "190-220s / end_of_video_recap_quiz.visual_explanation",
+          "issue": "The visual explanation mixes two examples: '$170-high red segment is replaced by a $200 bought-in-materials segment'. The $170 materials figure belongs to the scene 5 example, not the $520/$200/$320 recap question.",
+          "fix": "Replace with: 'A $520 price bar animates in, a $200 bought-in-materials bar appears inside it, and the remaining $320 segment lights up green while a label reminds viewers that wages are not deducted.'"
+        }
+      ]
+    },
+    "vid_u1_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST scan: ZERO hits across all voiceover, titles, labels, elements, beats and quiz text.",
+        "AO1 exact glossary wording: primary sector extracts/uses natural resources of Earth; secondary manufactures and processes goods using primary-sector raw materials; tertiary provides services to consumers and other sectors; de-industrialisation = decline in importance of the secondary manufacturing sector; mixed economy = both private and public sectors; private owned by individuals/companies aiming for profit, public owned/controlled by government providing key services.",
+        "Sector classification is correct throughout: Bramblefield Farms = primary (raw milk), Meadowline Dairy = secondary (pasteurising, cheese/yoghurt), Harbourmart Grocers = tertiary (retail service). No misclassification; retailing is correctly treated as a service even though a physical good is sold.",
+        "AO2: three uniquely named firms plus the $2.00 -> $3.20 -> $4.50 value ladder (differences $1.20 and $1.30, internally consistent). AO3: causal chains in scenes 2, 3, 4 and 6. AO4: dedicated split-screen scene 7 weighing private efficiency against unprofitable essential services and tax funding. Quiz is an application/classification item with correct_index 1 and a concrete animation.",
+        "Minor continuity only (no correction required for syllabus): scene 8 says the dairy 'bottles and pasteurises the milk' while scenes 3 and 5 have it making cheese and yoghurt; the firm remains correctly classified as secondary in every scene."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u1_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST scan: ZERO hits.",
+        "AO1 exact: entrepreneur organises resources, takes risks, makes decisions in hope of profit with the full trait list (resilience, creativity, confidence, determination, communication) per lesson 1.2-c1; business plan contains all eight syllabus elements (overview/summary, objectives, resources, market research, marketing, finance, people, operations); size measured by employees, value/volume of output and sales, capital employed, with explicit rejection of profit; internal/organic growth = new products/new markets; external growth = merger or takeover.",
+        "Integration logic is correct: Pinnacle Parcel Works is a same-stage courier (horizontal), Vertex Van Bodies is an upstream supplier (backward vertical), Doorstep Direct is a downstream customer-facing partner (forward vertical). No wrong-direction merger is shown. Quiz asks application of backward vs horizontal with correct_index 0.",
+        "AO2: named firm Northbeam Couriers with 40 -> 120 staff, $1.2m -> $3.8m sales, $0.4m -> $1.1m capital employed. AO3 causal chains in scenes 1, 2, 3, 5, 6 and 7. AO4 dedicated evaluation split in scene 7 (supply/customer control vs lack of skill, poor communication, loss of control).",
+        "Minor polish (non-blocking): scene 7 should state explicitly that Doorstep Direct is at a LATER stage (downstream last-mile/customer-facing) to remove any ambiguity with a same-stage courier; scene 4 phrase 'Value added rose too' should use the glossary term 'Added value rose too'."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": [
+        {
+          "scene": 7,
+          "timestamp": "160-190s",
+          "issue": "'Later it links with Doorstep Direct, a delivery network closer to customers, for forward integration' does not explicitly identify a different (later) production stage, so a viewer could read it as another same-stage courier and confuse forward vertical with horizontal integration.",
+          "fix": "Change to: 'Later it links with Doorstep Direct, a downstream last-mile and customer-facing network at a later stage of the chain, so that is forward vertical integration.' Keep the upstream/downstream block-stack animation as drawn."
+        }
+      ]
+    },
+    "vid_u1_04.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST scan: ZERO hits.",
+        "AO1 exact: sole trader owned/controlled by one person with unlimited liability; partnership = two or more joint owners, extra capital and skills, usually unlimited liability, partnership agreement always recommended; Ltd = separate legal identity, limited liability capped at investment, shares sold privately; Plc = shares sold to the public and tradeable on the Stock Exchange, more disclosure and possible loss of control; franchise = fee for brand/logos/methods; joint venture = shared capital, risk and profit while firms remain separate; public corporation = state-owned.",
+        "Liability protection is correctly assigned throughout: scene 2 explicitly says 'limited liability never protects a sole trader' and shows the debt line reaching personal savings; scenes 4 and 5 put the liability shield around the company only. This satisfies the zero-misleading-analogy rule.",
+        "AO2: named firms Rillstone Pottery, Fenwick and Rowe Ceramics, Larkspur Crafts Ltd, Hearthside Goods Plc, Thornfield Market Goods, Kestrel and Vale Designs. AO3 causal chains in scenes 2, 4 and 7. AO4 dedicated evaluation split in scene 7 comparing sole trader control/profit/unlimited risk against Ltd limited liability/shareholder funds/administration and privacy. Quiz is an application recommendation with correct_index 2 and a concrete shield animation.",
+        "DEFECT (non-blocking, fix before render): scene 8 sets a TWO-owner case but names 'sole trader' as the unincorporated alternative and shows label 'Sole trader keeps control but full risk'. With two owners the correct unincorporated comparison is a partnership, whose partners face unlimited liability. The correct answer (Ltd) and all liability statements remain right, so this is a case-to-form mismatch, not mis-assigned liability protection.",
+        "Minor continuity: scene 7 presents Rillstone Pottery and Larkspur Crafts Ltd as alternative forms of one studio under different names; social enterprise (syllabus 1.4.1-pt-4) is not covered, but the binding Unit 1 audit list does not require it."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": [
+        {
+          "scene": 8,
+          "timestamp": "190-220s",
+          "issue": "The case has two owners ('Two owners want limited liability'), but the voiceover says 'A sole trader would keep control but face unlimited liability' and the label reads 'Sole trader keeps control but full risk'. A sole trader has exactly one owner, so the comparison structure does not fit the case facts.",
+          "fix": "Replace the voiceover sentence with: 'A partnership would share control and capital but leave both partners with unlimited liability.' Change the fourth on-screen label to 'Partnership: shared control, unlimited liability for both'. Keep 'Two owners want limited liability', 'Keep shares private', 'Raise money for a third shop', the correct Ltd answer and the two balance panels unchanged."
+        }
+      ]
+    },
+    "vid_u1_05.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST scan: ZERO hits. No 0450/A-Level theory leakage in any scene, quiz or label.",
+        "AO1 exact: business objectives = aims or targets a business works towards; common objectives survival, profit, growth, market share and how they change with maturity, business cycle, competition and owner values; full SMART expansion (specific, measurable, achievable, relevant, time-bound); internal stakeholders owners/managers/employees and external customers/suppliers/lenders/government/local community with the correct aims; stakeholder defined as any person or group with a direct interest.",
+        "AO2: named firm Wardwell Hospital Catering with 70% -> 85% satisfaction bar over 12 months and the worked conflict '40 staff x 40 hours x $0.50 = $800/week' (arithmetically correct). AO3 causal chains in scenes 2, 3, 4, 5, 6 and 7. AO4 dedicated evaluation split in scene 7 (CSR reputation/loyalty/contract wins vs higher ingredient costs and falling margins, with survival weighed against long-term growth). Recap quiz tests application by asking the objective type from a concrete two-site, twelve-month target; correct_index 1.",
+        "Minor tagging/cosmetic only (no correction required for syllabus): scene 2 syllabus_concepts_tagged lists 'market research' although the scene is about writing a SMART objective; animation_directives.layout id 'five_smART_filter_cards' has inconsistent capitalisation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "All five Unit 1 shards PASS the Tier-2A syllabus/accuracy audit: zero blacklist hits (including word-boundary checks for ARR/CPA/NPV/BCG and all banned theory tokens), exact 0264 definitions from lessons.json/syllabus-static.json/glossary.json, correct sectors and liability assignment, correct horizontal/backward/forward integration directions, full AO1-AO4 coverage in every video, and application-based recap quizzes. Verdict APPROVED_BY_SYL_AUD. Three non-blocking corrections are recorded for the creator before render: vid_u1_01 scene 7 (160-190s) 'added value covers bought-in costs' wording and its labels, vid_u1_01 end-of-video visual_explanation (stale $170 segment), and vid_u1_04 scene 8 (190-220s) sole-trader/partnership mismatch in a two-owner case; one optional polish note in vid_u1_03 scene 7 clarifies forward integration. No shard met a REJECT_SYLLABUS trigger."
+}

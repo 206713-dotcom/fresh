@@ -1,0 +1,77 @@
+{
+  "auditor_id": "SYL-VID-AUD-05",
+  "target_unit": 5,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u5_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Blacklist scan across every voiceover, title, label, element label, beat, objective and quiz string: 0 hits (no gearing, investment appraisal, NPV, ARR, payback, IRR, PED calc, A-Level/9609/0450, balance sheet, profit and loss account, or unhyphenated Acid Test Ratio).",
+        "AO1 exact: scene 1 'Finance is money or capital needed to pay for expenditure and business operations' matches glossary verbatim; scene 2 start-up capital, working capital and short-term/long-term definitions match glossary (repaid within one year / longer than one year); scene 4 internal and scene 5 external definitions match.",
+        "AO2/AO3/AO4: named firm Northwater Kayaks Ltd with numbers and fountain/pipe motion; causal chain in scene 3 ('Because one machine is long-term and the stock is short-term... So...') and scene 7 ('Because... therefore... so...'); genuine two-sided evaluation in scene 6 (debt vs equity) and scene 8 (seven factors, pros beside cons).",
+        "Arithmetic verified: 50,000 + 12,000 = 62,000 need; 10,000 + 12,000 + 3,000 = 25,000 internal; 25,000 + 12,000 = 37,000 external; 25,000 + 37,000 = 62,000 total funding. No outflow shown increasing a balance; no profit/cash conflation.",
+        "Quiz is application-based (short-term stock need -> three-month overdraft, correct_index 1) and consistent with the scene-5/scene-7 timeline.",
+        "Minor non-blocking continuity note: scene 7 says 'retained profit stays as a cushion' although the $12,000 retained profit was already spent as part of the $25,000 internal total in scene 4. Consider wording as 'future retained profit rebuilds the cushion'. No correction required for syllabus accuracy."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u5_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Blacklist scan: 0 hits across all text fields.",
+        "AO1 exact: scene 1 cash-flow forecast definition matches glossary ('estimate of future cash inflows and outflows, usually month by month, showing the expected closing balance'); scene 2 net cash flow = inflow minus outflow and closing balance = opening + net cash flow match spec rule 5.",
+        "AO2/AO3/AO4: named firm Lantern Lane City Cafes with coins/table/bar motion and worked 4-month forecast; causal chain in scene 5 ('Because credit sales become trade receivables... Therefore... so...') and scene 8; genuinely two-sided evaluation in scene 7 (overdraft pros/cons, supplier goodwill, customer goodwill) and scene 8 (early-warning benefit vs prediction limit).",
+        "Arithmetic independently verified: M1 8,000 + (30,000 - 22,000) = 16,000; M2 16,000 + (26,000 - 31,000) = 11,000; M3 11,000 + (24,000 - 34,000) = 1,000; M4 1,000 + (28,000 - 33,000) = -4,000; cumulative net flow +8 -5 -10 -5 = -12,000 and 8,000 - 12,000 = -4,000. All labels and beats agree.",
+        "Working capital in scene 6: 20,000 - 15,000 = 5,000, matching the glossary definition. Scene 7 overdraft 5,000 covers the 4,000 gap leaving 1,000 headroom - correct.",
+        "No misleading analogies: profit is explicitly distinguished from cash in scenes 1, 5 and 8; every outflow reduces the closing balance; scene 8 states 'A cash-flow forecast is not a profit forecast'.",
+        "Quiz is application-based (shortfall remedy, correct_index 1) with a concrete animation explanation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u5_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Blacklist scan: 0 hits. 'Income Statement' used throughout; no 'Profit and Loss Account' or 'balance sheet'.",
+        "AO1 exact: scene 1 Income Statement definition matches glossary wording ('records income and all costs incurred to earn that income over a period'); scene 2 revenue and cost of sales, scene 3 expenses and gross profit, scene 4 retained profit all match source definitions.",
+        "AO2/AO3/AO4: named firm Picketline Fencing Co with vertical statement build and locking counters; causal chain in scene 5 ('Because retained profit can fund a new van, therefore the firm borrows less, so future interest costs fall'); two-sided evaluation in scene 7 (what profit shows vs misses) and scene 8 ('Clarity versus a single period').",
+        "Arithmetic verified: 120,000 - 45,000 = 75,000 gross profit; 75,000 - 38,000 = 37,000 profit; 37,000 - 7,000 = 30,000; 30,000 - 10,000 = 20,000 retained; scene 6 costs 45,000 + 38,000 = 83,000 and 120,000 - 83,000 = 37,000. Correct order throughout: gross profit is computed before expenses.",
+        "Quiz arithmetic verified: new gross profit 132,000 - 56,250 = 75,750; margin 75,000/120,000 = 62.50% falling to 75,750/132,000 = 57.39%. correct_index 1 and visual explanation are accurate.",
+        "No cash/profit conflation: scene 1 sets up 'bank balance barely moved' and scene 7 correctly states profit does not show cash timing."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u5_04.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "RE-AUDIT of regenerated shard: both previously rejected defects are corrected and the top-level verdict is now APPROVED_BY_SYL_AUD.",
+        "Fix 1 verified (scene 3, 62-92 s): the false 'Both pans are nearly level' line is replaced with 'The right pan is still far lighter than the left, so the owners' equity is needed to balance the scale.' The new labels 'Assets $230,000 exceed liabilities $110,000' and 'Equity still to be added', the gap_bracket element 'Gap of $120,000: equity still to be added', and the updated at_sec 92 beat are all factually correct: 230,000 - 110,000 = 120,000. Scene 4 still contains the 'The scale levels perfectly' reveal, so beam levelling now occurs only when equity is added, matching the accounting identity.",
+        "Fix 2 verified (scene 6, 154-186 s): 'more than half of current assets' is replaced with 'nearly half of current assets, forty-eight percent'. The new label 'Inventory 48% of current assets ($24,000 of $50,000)', the bucket element and the beats at 166/178/186 are consistent: 24,000 / 50,000 = 0.48 = 48%. The causal chain premise is now true, and its conclusion remains correct (Acid-Test 0.65 below Current 1.25, so liquid cover is weaker and depends on selling inventory).",
+        "Blacklist re-scan of all voiceovers, titles, labels, element labels, beats, objectives and quiz strings: 0 hits. No 'balance sheet', 'Profit and Loss Account', unhyphenated 'Acid Test Ratio', gearing, investment appraisal, NPV, ARR, payback, IRR, PED, A-Level, 9609 or 0450.",
+        "Exact 0264 terminology preserved: 'Statement of Financial Position' retained in chapter title, video title, scene tags and scenes 1/7; 'Income Statement' retained in scenes 1/7; 'Current Ratio' (9 occurrences) and hyphenated 'Acid-Test Ratio' (8 occurrences) correct.",
+        "No new misleading analogies introduced: the scene-3 gap is explicitly attributed to missing equity rather than a false near-balance, every cash/asset figure moves in the correct direction, and no ratio is interpreted backwards. Scene 1's balance-scale hook remains a generic schematic of the accounting identity and does not attach the worked $230,000/$110,000 figures.",
+        "All arithmetic re-verified: 24,000 + 16,000 + 10,000 = 50,000 current assets; 180,000 + 50,000 = 230,000 total assets; 30,000 + 10,000 = 40,000 current liabilities; 40,000 + 70,000 = 110,000 total liabilities; 40,000 + 70,000 + 120,000 = 230,000; working capital 50,000 - 40,000 = 10,000; capital employed 230,000 - 40,000 = 190,000 = 180,000 + 10,000 (current liabilities correctly excluded); Current Ratio 1.25 and Acid-Test Ratio 0.65.",
+        "AO1/AO2/AO3/AO4 satisfied: exact Statement of Financial Position definition, named firm Paw & Polish Grooming Ltd with animated balance scales, causal chains in scenes 3 and 6, and a genuine two-sided snapshot-limitation evaluation in scene 7. Quiz unchanged and application-based (correct_index 0).",
+        "Structural/pacing gates verified after regeneration: word_count equals actual plain-ASCII word count in all 8 scenes; rates 2.267, 2.406, 2.567, 2.250, 2.300, 2.500, 2.400, 2.294 w/s all within 2.25-2.60; titles <= 12 words; labels <= 18 words; all colours uppercase #RRGGBB; scenes contiguous 0-250 s, each 8-40 s; visual beats in range and <= 15 s apart."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u5_05.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "Blacklist scan: 0 hits. Mandatory terms all present and correctly cased/hyphenated: Current Ratio, Acid-Test Ratio, Gross Profit Margin, Profit Margin, ROCE, Income Statement, Statement of Financial Position.",
+        "AO1 exact: ratio definitions and formula cards match spec rule 5; scene 1 correct dataset split between the Income Statement and the Statement of Financial Position; liquidity defined as short-term survival and profitability as earning power.",
+        "AO2/AO3/AO4: named firm Inkwell Notebook Press with percentage wheel, gauges, bars and dial; causal chains in scene 5 ('Because expenses are large, therefore net profit is thin, so rising rent would hurt quickly') and scene 7; genuine two-sided evaluation in scene 8 (ratios enable comparison vs historic/one-year snapshot and ignored non-financial factors).",
+        "Arithmetic independently verified: gross profit 200,000 - 120,000 = 80,000; profit 80,000 - 50,000 = 30,000; Current Ratio 90,000/60,000 = 1.50; Acid-Test (90,000 - 18,000)/60,000 = 72,000/60,000 = 1.20; GPM 80,000/200,000 x 100 = 40.00%; PM 30,000/200,000 x 100 = 15.00%; ROCE 30,000/240,000 x 100 = 12.50% (30/240 = one eighth); 40% - 15% = 25 percentage points. All labels, beats and result cards agree, with 2 d.p. results as required.",
+        "Interpretations are not reversed: current and acid-test cover short-term debt, margins measure earning power, inventory is described as modest at 18,000/90,000 = 20%. No current liabilities included in capital employed, no profit/cash conflation.",
+        "Quiz is application/interpretation-based (correct_index 0) and every distractor is internally consistent with the dataset."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "All five Unit 5 shards now pass: overall verdict APPROVED_BY_SYL_AUD. Initial reject vid_u5_04 was regenerated and re-audited: scene 3 now states the right pan is far lighter and that $120,000 of equity (230,000 - 110,000) is still to be added, with levelling deferred to scene 4; scene 6 now states inventory is nearly half of current assets at 48% (24,000/50,000). No blacklist hits, no new misleading analogies, exact 0264 terminology (Statement of Financial Position, Income Statement, hyphenated Acid-Test Ratio) preserved, all arithmetic and AO1-AO4 coverage sound, and word counts, pacing, labels, colours, timing and beats all still pass. Prior approvals of vid_u5_01/02/03/05 are retained unchanged."
+}

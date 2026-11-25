@@ -1,0 +1,649 @@
+{
+  "video_id": "VID_U6_03",
+  "unit_number": 6,
+  "unit_title": "Unit 6: External influences on business activity",
+  "chapter_code": "6.3",
+  "chapter_title": "Business and the international economy",
+  "video_title": "Visualising Globalisation, Exchange Rates and Trade Gates",
+  "target_duration_sec": 260,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Describe globalisation and the parent to subsidiary flows of a multinational",
+    "Calculate and interpret exchange rate conversions and direction of price changes",
+    "Evaluate tariffs and quotas against free trade using numeric border gate examples"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 20,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "One Network, Many Markets",
+      "on_screen_labels": [
+        "Northstar Microchip Imports",
+        "Connected markets",
+        "Trade and capital flows",
+        "One firm, one node"
+      ],
+      "animation_directives": {
+        "layout": "network_graph_of_connected_market_nodes",
+        "elements": [
+          {
+            "type": "network_graph",
+            "id": "network",
+            "label": "Connected market network",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "node",
+            "id": "firm",
+            "label": "Northstar node",
+            "color": "#C00000"
+          },
+          {
+            "type": "animated_flow",
+            "id": "flows",
+            "label": "Trade lines",
+            "color": "#548235"
+          },
+          {
+            "type": "globe_icon",
+            "id": "globe",
+            "label": "World markets",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "zoom_from_globe_into_single_node",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Globe fades in"
+          },
+          {
+            "at_sec": 10,
+            "directive": "Nodes connect with lines"
+          },
+          {
+            "at_sec": 20,
+            "directive": "Trade flows animate"
+          }
+        ]
+      },
+      "voiceover_script": "Meet Northstar Microchip Imports, a British firm buying sensors from abroad. A glowing network links markets. Lines thicken as containers and data cross borders. This is globalisation: worldwide trade and the movement of people and capital between countries. Northstar sits on one small node, but the whole web moves it.",
+      "word_count": 50,
+      "syllabus_concepts_tagged": [
+        "Globalisation",
+        "world markets",
+        "capital flows"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 20,
+      "end_sec": 48,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Globalisation: Opportunity and Threat",
+      "on_screen_labels": [
+        "Better transport and communication",
+        "Free trade agreements",
+        "Buyers in six countries",
+        "Shock travels every line"
+      ],
+      "animation_directives": {
+        "layout": "network_graph_with_opportunity_and_risk_branches",
+        "elements": [
+          {
+            "type": "network_graph",
+            "id": "web",
+            "label": "Market web",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "directional_arrow",
+            "id": "opportunity",
+            "label": "Opportunity arrows",
+            "color": "#548235"
+          },
+          {
+            "type": "directional_arrow",
+            "id": "threat",
+            "label": "Threat arrows",
+            "color": "#C00000"
+          },
+          {
+            "type": "factory_icon",
+            "id": "assembly",
+            "label": "Assembly line",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "pan_across_expanding_and_contracting_branches",
+        "visual_beats": [
+          {
+            "at_sec": 20,
+            "directive": "Transport links brighten"
+          },
+          {
+            "at_sec": 29,
+            "directive": "Buyer nodes light up green"
+          },
+          {
+            "at_sec": 38,
+            "directive": "Rival nodes flash red"
+          },
+          {
+            "at_sec": 48,
+            "directive": "Assembly line pauses"
+          }
+        ]
+      },
+      "voiceover_script": "Globalisation opens markets. Improved transport, faster communication and free trade agreements let Northstar reach buyers in six countries. Brand awareness spreads online. But threats travel with the same links: overseas rivals undercut prices, and a shock in one country travels along every line. The network creates opportunity and vulnerability together. A supplier strike overseas can stop the assembly line here, so managers watch the whole map.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "opportunities of globalisation",
+        "threats of globalisation",
+        "free trade agreements"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 48,
+      "end_sec": 76,
+      "visual_type": "org_chart_morph",
+      "on_screen_title": "Parent to Subsidiary and Back",
+      "on_screen_labels": [
+        "Vantara Devices parent",
+        "Vantara Assembly Works",
+        "$2m capital flows down",
+        "$600,000 profit returns"
+      ],
+      "animation_directives": {
+        "layout": "org_chart_with_bidirectional_capital_flow",
+        "elements": [
+          {
+            "type": "org_chart",
+            "id": "group",
+            "label": "Vantara group chart",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "animated_flow",
+            "id": "capital",
+            "label": "Capital flow down",
+            "color": "#548235"
+          },
+          {
+            "type": "animated_flow",
+            "id": "profit",
+            "label": "Profit repatriation up",
+            "color": "#C00000"
+          },
+          {
+            "type": "worker_tiles",
+            "id": "jobs",
+            "label": "150 host country jobs",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "export_bar",
+            "id": "exports",
+            "label": "Five million export bar",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "follow_capital_down_then_profit_up",
+        "visual_beats": [
+          {
+            "at_sec": 48,
+            "directive": "Parent node appears"
+          },
+          {
+            "at_sec": 57,
+            "directive": "Capital arrow descends"
+          },
+          {
+            "at_sec": 66,
+            "directive": "Subsidiary adds 150 jobs"
+          },
+          {
+            "at_sec": 76,
+            "directive": "Profit arrow ascends"
+          }
+        ]
+      },
+      "voiceover_script": "Now watch Vantara Devices, a multinational with operations in more than one country. Its parent sends two million dollars of capital to Vantara Assembly Works. The subsidiary creates one hundred fifty jobs and earns five million dollars of exports. Six hundred thousand dollars of profit flows back to the parent. Host countries gain investment, jobs and choice, but face competition and profit repatriation and pressure on local firms.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "Multinational Companies (MNCs)",
+        "profit repatriation",
+        "foreign investment"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 76,
+      "end_sec": 104,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Worked Conversion: Dollars and Pounds",
+      "on_screen_labels": [
+        "$1 buys 0.75 pounds",
+        "$400 order costs 300 pounds",
+        "300 pound order costs $400",
+        "Cards flip both ways"
+      ],
+      "animation_directives": {
+        "layout": "currency_conversion_cards_with_substitution_slots",
+        "elements": [
+          {
+            "type": "currency_card",
+            "id": "rate",
+            "label": "Rate card 1 dollar = 0.75 pounds",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "currency_card",
+            "id": "usd",
+            "label": "400 dollar card",
+            "color": "#548235"
+          },
+          {
+            "type": "currency_card",
+            "id": "gbp",
+            "label": "300 pound card",
+            "color": "#C00000"
+          },
+          {
+            "type": "animated_arrow",
+            "id": "convert",
+            "label": "Conversion arrow",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "slide_numbers_into_substitution_slots",
+        "visual_beats": [
+          {
+            "at_sec": 76,
+            "directive": "Rate card slides in"
+          },
+          {
+            "at_sec": 85,
+            "directive": "400 dollar card enters"
+          },
+          {
+            "at_sec": 94,
+            "directive": "Multiply by 0.75 shows 300"
+          },
+          {
+            "at_sec": 104,
+            "directive": "Cards flip to show reverse"
+          }
+        ]
+      },
+      "voiceover_script": "Exchange rates state one currency in terms of another. Here one dollar buys seventy five pence. A British buyer paying four hundred dollars for sensors needs three hundred pounds, because four hundred times nought point seven five equals three hundred. Reverse it: a three hundred pound order costs an American buyer four hundred dollars. Cards animate both directions. Every purchase crosses the rate, so every price changes twice.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "exchange rate",
+        "appreciation",
+        "depreciation",
+        "imports"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 104,
+      "end_sec": 132,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Depreciation Changes Both Prices",
+      "on_screen_labels": [
+        "Dollar depreciates to 0.60 pounds",
+        "Pound appreciates",
+        "Export now costs $500",
+        "Import now costs 240 pounds"
+      ],
+      "animation_directives": {
+        "layout": "two_currency_cards_flipping_with_price_arrows",
+        "elements": [
+          {
+            "type": "currency_card",
+            "id": "new_rate",
+            "label": "New rate card 1 dollar = 0.60 pounds",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "price_arrow",
+            "id": "export_arrow",
+            "label": "Export price arrow up",
+            "color": "#C00000"
+          },
+          {
+            "type": "price_arrow",
+            "id": "import_arrow",
+            "label": "Import price arrow down",
+            "color": "#548235"
+          },
+          {
+            "type": "currency_card",
+            "id": "result",
+            "label": "Result cards 500 and 240",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "flip_rate_card_then_push_price_arrows",
+        "visual_beats": [
+          {
+            "at_sec": 104,
+            "directive": "Rate card flips to 0.60"
+          },
+          {
+            "at_sec": 113,
+            "directive": "Divide 300 by 0.60 shows 500"
+          },
+          {
+            "at_sec": 122,
+            "directive": "Export arrow rises"
+          },
+          {
+            "at_sec": 132,
+            "directive": "Import arrow falls to 240"
+          }
+        ]
+      },
+      "voiceover_script": "Now the dollar depreciates: one dollar buys sixty pence, so the pound appreciates. The same three hundred pound order now costs the American buyer five hundred dollars, because three hundred divided by nought point six is five hundred. British exports are dearer. Meanwhile a four hundred dollar American order costs a British buyer two hundred forty pounds, not three hundred, so imports are cheaper. Northstar gains on costs, but its sales slow.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "Exchange Rate Depreciation",
+        "Exchange Rate Appreciation",
+        "export prices",
+        "import prices"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 132,
+      "end_sec": 160,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "Tariff: The Border Gate Adds a Tax",
+      "on_screen_labels": [
+        "Tariff is a tax on imports",
+        "Ten percent on $400 is $40",
+        "Landed cost $440",
+        "At 0.75 that is 330 pounds"
+      ],
+      "animation_directives": {
+        "layout": "border_gate_with_tax_stamp_and_cost_funnel",
+        "elements": [
+          {
+            "type": "border_gate",
+            "id": "gate",
+            "label": "Tariff border gate",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "tax_stamp",
+            "id": "stamp",
+            "label": "10 percent stamp",
+            "color": "#C00000"
+          },
+          {
+            "type": "funnel_animation",
+            "id": "funnel",
+            "label": "Landed cost funnel",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "cost_tile",
+            "id": "cost",
+            "label": "330 pound cost tile",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "push_component_through_gate_into_cost_tile",
+        "visual_beats": [
+          {
+            "at_sec": 132,
+            "directive": "400 dollar component reaches gate"
+          },
+          {
+            "at_sec": 141,
+            "directive": "Ten percent stamp lands"
+          },
+          {
+            "at_sec": 150,
+            "directive": "Funnel adds 40 dollars"
+          },
+          {
+            "at_sec": 160,
+            "directive": "Cost tile reads 330 pounds"
+          }
+        ]
+      },
+      "voiceover_script": "A tariff is a tax put on imported goods entering the country. Here a border gate adds a ten percent tariff to a four hundred dollar component. That is forty dollars, so the landed cost becomes four hundred forty dollars. At one dollar to seventy five pence, Northstar pays three hundred thirty pounds instead of three hundred. The gate closes on cheap inputs and opens for local rivals.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "Import Tariff",
+        "landed cost",
+        "protection",
+        "import prices"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 160,
+      "end_sec": 188,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "Quota: The Border Gate Limits Quantity",
+      "on_screen_labels": [
+        "Quota limits physical quantity",
+        "12,000 wanted, 8,000 pass",
+        "4,000 unit gap",
+        "Price rises to 330 pounds"
+      ],
+      "animation_directives": {
+        "layout": "border_gate_with_counting_units_and_scarcity_arrow",
+        "elements": [
+          {
+            "type": "border_gate",
+            "id": "gate",
+            "label": "Quota border gate",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "unit_counter",
+            "id": "units",
+            "label": "12,000 to 8,000 counter",
+            "color": "#C00000"
+          },
+          {
+            "type": "scarcity_arrow",
+            "id": "price",
+            "label": "Price up arrow",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "domestic_tile",
+            "id": "local",
+            "label": "Domestic supplier tile",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "count_units_through_gate_then_lift_price",
+        "visual_beats": [
+          {
+            "at_sec": 160,
+            "directive": "Twelve thousand units queue"
+          },
+          {
+            "at_sec": 169,
+            "directive": "Gate closes at eight thousand"
+          },
+          {
+            "at_sec": 178,
+            "directive": "Four thousand gap appears"
+          },
+          {
+            "at_sec": 188,
+            "directive": "Price tile reaches 330"
+          }
+        ]
+      },
+      "voiceover_script": "A quota is a limit on the physical quantity of a product that can be imported. At the border gate, twelve thousand sensors are wanted but only eight thousand pass. The four thousand unit gap pushes the price up from three hundred to three hundred thirty pounds. Domestic producers sell more, while Northstar faces higher costs and less choice. It may switch to local suppliers, or pass the increase to customers.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "Import Quota",
+        "protection",
+        "supply limit",
+        "business costs"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 188,
+      "end_sec": 224,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Free Trade Versus Protection",
+      "on_screen_labels": [
+        "PRO: cheaper inputs and choice",
+        "PRO: wider markets",
+        "CON: jobs lost to competition",
+        "CON: tariffs and retaliation"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_free_trade_left_protection_right",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "free",
+            "label": "Free trade panel",
+            "color": "#548235"
+          },
+          {
+            "type": "split_panel",
+            "id": "protect",
+            "label": "Protection panel",
+            "color": "#C00000"
+          },
+          {
+            "type": "network_graph",
+            "id": "web",
+            "label": "Open market network",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "border_gate",
+            "id": "gate",
+            "label": "Border gate pair",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "swing_between_open_network_and_closed_gates",
+        "visual_beats": [
+          {
+            "at_sec": 188,
+            "directive": "Open network glows green"
+          },
+          {
+            "at_sec": 200,
+            "directive": "Gate pair slams red"
+          },
+          {
+            "at_sec": 212,
+            "directive": "Cost and job tiles compare"
+          },
+          {
+            "at_sec": 224,
+            "directive": "Balance icon settles"
+          }
+        ]
+      },
+      "voiceover_script": "Free trade and protection each have two sides. Free trade gives Northstar cheaper inputs, wider markets and more choice. Because competition is strong, therefore prices fall, so consumers benefit. Yet domestic firms can be squeezed and jobs lost. Protection saves jobs and infant industries, but tariffs raise costs, quotas limit supply and other countries may retaliate. For an importing firm, the balance tilts toward free trade. If the pound appreciates, imports get cheaper anyway, so a tariff hurts less. If the dollar strengthens, protection may look kinder.",
+      "word_count": 87,
+      "syllabus_concepts_tagged": [
+        "free trade",
+        "protection",
+        "tariffs",
+        "quotas",
+        "evaluation"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 224,
+      "end_sec": 260,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Apply It: Recalculate the Bill",
+      "on_screen_labels": [
+        "$1 buys 0.75 pounds",
+        "Then $1 buys 0.60 pounds",
+        "$400 bill in pounds?",
+        "Exports dearer or cheaper?"
+      ],
+      "animation_directives": {
+        "layout": "quiz_panel_with_flipping_currency_cards_and_gate",
+        "elements": [
+          {
+            "type": "currency_card",
+            "id": "card1",
+            "label": "0.75 rate card",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "currency_card",
+            "id": "card2",
+            "label": "0.60 rate card",
+            "color": "#C00000"
+          },
+          {
+            "type": "border_gate",
+            "id": "gate",
+            "label": "Border gate",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "answer_tiles",
+            "id": "answers",
+            "label": "Four answer tiles",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "flip_both_cards_then_reveal_price_arrows",
+        "visual_beats": [
+          {
+            "at_sec": 224,
+            "directive": "Two rate cards appear"
+          },
+          {
+            "at_sec": 236,
+            "directive": "Second card flips to 0.60"
+          },
+          {
+            "at_sec": 248,
+            "directive": "Bill tile changes to 240"
+          },
+          {
+            "at_sec": 260,
+            "directive": "Price arrows settle"
+          }
+        ]
+      },
+      "voiceover_script": "Now apply it. One dollar buys seventy five pence. A British firm owes four hundred dollars to a supplier. Later the dollar depreciates to sixty pence. What does the bill become in pounds, and are its exports dearer or cheaper for American buyers? On screen, two currency cards flip and a border gate opens. Choose, then watch the arrows settle. Two hundred forty pounds is the new bill, so imports are cheaper. A three hundred pound export now costs five hundred dollars, so overseas buyers pay more.",
+      "word_count": 87,
+      "syllabus_concepts_tagged": [
+        "exchange rate",
+        "depreciation",
+        "import prices",
+        "application"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "At $1 = 0.75 pounds a British importing firm owes $400. If the dollar depreciates to $1 = 0.60 pounds, what happens to the bill in pounds and to British exports sold to America?",
+    "options": [
+      "The bill falls to 240 pounds and exports become dearer in dollars",
+      "The bill rises to 500 pounds and exports become cheaper in dollars",
+      "The bill stays at 400 pounds because rates do not affect trade",
+      "The bill falls to 240 pounds and exports become cheaper in dollars"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "The rate card flips from 0.75 to 0.60, the 400 dollar bill tile shrinks from 300 to 240 pounds, and the export arrow rises from 400 to 500 dollars while the import arrow falls."
+  }
+}

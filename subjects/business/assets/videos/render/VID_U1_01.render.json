@@ -1,0 +1,536 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U1_01",
+  "title": "Visualising Needs, Wants, Scarcity and Added Value",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 220,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U1_01.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 26,
+      "visual_type": "animated_scenario_hook",
+      "layout": "split_screen_left_scene_right_labels",
+      "camera_motion": "smooth_zoom_from_workshop_to_choice_point",
+      "title": "Needs, Wants and Scarcity",
+      "labels": [
+        "Need: essential for survival",
+        "Want: not essential for survival",
+        "Unlimited wants, scarce resources",
+        "Cobalt Cove Boards"
+      ],
+      "elements": [
+        {
+          "type": "icon_workshop",
+          "id": "boards",
+          "label": "Cobalt Cove Boards",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "paired_icons",
+          "id": "need_want",
+          "label": "Need versus want",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "resource_pool",
+          "label": "Limited resources",
+          "color": "#C0392B",
+          "from": 10,
+          "to": 3,
+          "suffix": " units"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Show a surfer and a small shaping workshop"
+        },
+        {
+          "at_sec": 8,
+          "directive": "Split the screen into a need icon and a want icon"
+        },
+        {
+          "at_sec": 16,
+          "directive": "Shrink the resource counter and flash the word scarce"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "People have unlimited wants, but resources are scarce. A need is essential for survival. A want is something people would like but do not need to live. At Cobalt Cove Boards, a surfer requests a hand-painted fibreglass deck: a want, not a need. Scarce materials force the workshop to choose which order to take. Business activity produces goods and services to satisfy people's needs and wants.",
+        "words": 66,
+        "wpm": 152.3
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 26,
+      "out": 52,
+      "visual_type": "flow_diagram",
+      "layout": "central_choice_node_with_two_branch_paths",
+      "camera_motion": "smooth_pan_from_choice_node_to_chosen_branch",
+      "title": "Opportunity Cost: The Next Best Alternative",
+      "labels": [
+        "One batch of resin, two possible uses",
+        "Deck: $480",
+        "Tail-pads: $180",
+        "Opportunity cost = $180, not money spent"
+      ],
+      "elements": [
+        {
+          "type": "decision_node",
+          "id": "resin",
+          "label": "One batch of resin",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "product_card",
+          "id": "deck",
+          "label": "Custom deck $480",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "product_card",
+          "id": "pads",
+          "label": "Tail-pads $180",
+          "color": "#16A085"
+        },
+        {
+          "type": "highlight_box",
+          "id": "foregone",
+          "label": "Next best alternative forgone",
+          "color": "#C0392B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 26,
+          "directive": "Display the single resin batch at the centre"
+        },
+        {
+          "at_sec": 34,
+          "directive": "Grow two product cards on the branching paths"
+        },
+        {
+          "at_sec": 42,
+          "directive": "Fade the tail-pads and tag them as forgone"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Opportunity cost is the value of the next best alternative given up when a choice is made. Cobalt Cove Boards has one batch of resin. It can paint a custom deck for four hundred eighty dollars, or make tail-pads for one hundred eighty dollars. Because the resin has one use, choosing the deck means giving up the tail-pads. Therefore its opportunity cost is one hundred eighty dollars.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 52,
+      "out": 78,
+      "visual_type": "org_chart_morph",
+      "layout": "four_column_org_chart_morphing_into_workshop",
+      "camera_motion": "smooth_zoom_out_from_workshop_to_four_factor_chart",
+      "title": "The Four Factors of Production",
+      "labels": [
+        "Land: natural resources",
+        "Labour: human effort",
+        "Capital: man-made resources",
+        "Enterprise: risk-taking organiser"
+      ],
+      "elements": [
+        {
+          "type": "org_node",
+          "id": "land",
+          "label": "Coastal site and sand",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "org_node",
+          "id": "labour",
+          "label": "Shapers and painters",
+          "color": "#7FB3D5"
+        },
+        {
+          "type": "org_node",
+          "id": "capital",
+          "label": "Tools, oven and finance",
+          "color": "#6C3483"
+        },
+        {
+          "type": "org_node",
+          "id": "enterprise",
+          "label": "Owner organises and risks",
+          "color": "#E8A33D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 52,
+          "directive": "Build the four org chart columns one by one"
+        },
+        {
+          "at_sec": 60,
+          "directive": "Drop workshop icons into each factor column"
+        },
+        {
+          "at_sec": 68,
+          "directive": "Merge all four columns into a finished deck"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Businesses combine four factors of production. Land is natural resources, like the coastal site and sand for fibreglass. Labour is human effort, from shapers and painters. Capital is man-made resources: shaping tools, the curing oven and finance invested by owners. Enterprise is the skill and risk-taking ability of the entrepreneur organising the other three. At Cobalt Cove Boards, all four combine to make one deck.",
+        "words": 65,
+        "wpm": 150.0
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 78,
+      "out": 104,
+      "visual_type": "flow_diagram",
+      "layout": "horizontal_production_line_with_four_stations",
+      "camera_motion": "tracking_shot_along_the_production_line",
+      "title": "Specialisation and Division of Labour",
+      "labels": [
+        "Shape, resin, sand, pack",
+        "Output: 4 to 10 decks a week",
+        "Benefit: higher output",
+        "Risk: repetition and dependence"
+      ],
+      "elements": [
+        {
+          "type": "work_station",
+          "id": "shape",
+          "label": "Shaping station",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "work_station",
+          "id": "resin",
+          "label": "Resin station",
+          "color": "#16A085"
+        },
+        {
+          "type": "work_station",
+          "id": "sand",
+          "label": "Sanding station",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "output",
+          "label": "Decks per week",
+          "color": "#2E8B57",
+          "from": 4,
+          "to": 10,
+          "suffix": " decks"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 78,
+          "directive": "Place four workers along a moving production line"
+        },
+        {
+          "at_sec": 86,
+          "directive": "Run the output counter from four to ten decks"
+        },
+        {
+          "at_sec": 94,
+          "directive": "Show one worker slowing to hint at repetition"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Specialisation means workers focus on one task. At Cobalt Cove Boards, one worker shapes each deck, another applies resin, a third sands the finish and a fourth packs the order. Because repetition builds skill and saves time, weekly output rises from four boards to ten. Therefore division of labour raises output. But repetitive work may reduce motivation and create dependence between workers.",
+        "words": 62,
+        "wpm": 143.1
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 104,
+      "out": 134,
+      "visual_type": "formula_substitution",
+      "layout": "formula_panel_left_with_animated_cash_bars_right",
+      "camera_motion": "smooth_zoom_into_the_subtraction_and_result_counter",
+      "title": "Worked Example: Added Value at Cobalt Cove Boards",
+      "labels": [
+        "Selling price: $480",
+        "Bought-in materials: $170",
+        "Added value = $310",
+        "Wages are not deducted"
+      ],
+      "elements": [
+        {
+          "type": "price_bar",
+          "id": "price",
+          "label": "Selling price $480",
+          "color": "#1F6FEB",
+          "from": 0,
+          "to": 480,
+          "prefix": "$"
+        },
+        {
+          "type": "cost_bar",
+          "id": "materials",
+          "label": "Bought-in materials $170",
+          "color": "#C0392B",
+          "from": 0,
+          "to": 170,
+          "prefix": "$"
+        },
+        {
+          "type": "animated_counter",
+          "id": "added",
+          "label": "Added value",
+          "color": "#2E8B57",
+          "from": 0,
+          "to": 310,
+          "prefix": "$"
+        },
+        {
+          "type": "formula_panel",
+          "id": "formula",
+          "label": "Selling price minus bought-in materials",
+          "color": "#0B1F3A"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 104,
+          "directive": "Grow the selling price bar to four hundred eighty"
+        },
+        {
+          "at_sec": 113,
+          "directive": "Overlay the bought-in materials bar at one hundred seventy"
+        },
+        {
+          "at_sec": 123,
+          "directive": "Subtract and reveal the added value counter at three hundred ten"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Added value is the difference between the selling price and the cost of bought-in materials and components. Watch the numbers appear at Cobalt Cove Boards. A custom deck sells for four hundred eighty dollars. The fibreglass, resin and tail-pad kit bought in from suppliers cost one hundred seventy dollars. Subtract bought-in materials only: four hundred eighty minus one hundred seventy equals three hundred ten dollars of added value. Wages are not deducted here.",
+        "words": 73,
+        "wpm": 146.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 134,
+      "out": 160,
+      "visual_type": "interactive_graph_build",
+      "layout": "bar_chart_building_with_five_selectable_levers",
+      "camera_motion": "slow_pan_across_the_rising_bar_chart",
+      "title": "Five Ways to Increase Added Value",
+      "labels": [
+        "Stronger brand image",
+        "Better quality and graphics",
+        "Better service and packaging",
+        "Added value $310 to $360"
+      ],
+      "elements": [
+        {
+          "type": "bar_chart",
+          "id": "value_bars",
+          "label": "Added value bars",
+          "color": "#1F6FEB",
+          "series": [
+            310,
+            360
+          ]
+        },
+        {
+          "type": "lever_panel",
+          "id": "levers",
+          "label": "Five value levers",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "new_price",
+          "label": "Price rises by $50",
+          "color": "#16A085"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 134,
+          "directive": "Light up each of the five levers in turn"
+        },
+        {
+          "at_sec": 142,
+          "directive": "Raise the price bar by fifty dollars"
+        },
+        {
+          "at_sec": 150,
+          "directive": "Grow the added value bar from three hundred ten to three hundred sixty"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The workshop can increase added value in several ways. A stronger brand image lets Cobalt Cove Boards charge more. Better quality and hand-painted resin graphics justify a higher price. Improved customer service and smarter packaging add perceived value. Negotiating a lower material cost widens the gap too. Here a fifty-dollar price rise lifts added value from three hundred ten to three hundred sixty dollars.",
+        "words": 64,
+        "wpm": 147.7
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 160,
+      "out": 190,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_left_green_benefits_right_red_limitations",
+      "camera_motion": "smooth_crossfade_between_the_two_evaluation_panels",
+      "title": "Is High Added Value Always Good News?",
+      "labels": [
+        "Advantage: covers costs and funds growth",
+        "Limitation: not profit",
+        "Wages, rent and energy still to pay",
+        "Judge both sides"
+      ],
+      "elements": [
+        {
+          "type": "benefit_panel",
+          "id": "pro",
+          "label": "Added value covers costs",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "cost_panel",
+          "id": "con",
+          "label": "Added value is not profit",
+          "color": "#C0392B"
+        },
+        {
+          "type": "balance_scale",
+          "id": "judgement",
+          "label": "Weigh both sides",
+          "color": "#E8A33D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 160,
+          "directive": "Fill the green benefit panel first"
+        },
+        {
+          "at_sec": 169,
+          "directive": "Fill the red limitation panel with wage and rent icons"
+        },
+        {
+          "at_sec": 179,
+          "directive": "Tilt the balance scale to show both sides matter"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Is a high added value good news? On one side, yes. Added value covers bought-in costs and leaves money to pay wages and, eventually, fund growth. Because it can be increased by better quality, the workshop can compete without cutting price. On the other side, added value is not profit. Rent, energy, advertising and wages still come out of it. Therefore a large added value can still leave a small profit if running costs are high.",
+        "words": 76,
+        "wpm": 152.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 190,
+      "out": 220,
+      "visual_type": "recap_quiz",
+      "layout": "quiz_panel_with_animated_answer_bar",
+      "camera_motion": "zoom_into_the_correct_option_then_pull_back",
+      "title": "Recap: Calculate and Apply Added Value",
+      "labels": [
+        "Price: $520",
+        "Bought-in materials: $200",
+        "Added value: $320",
+        "Name one way to raise it"
+      ],
+      "elements": [
+        {
+          "type": "quiz_card",
+          "id": "question",
+          "label": "Sells for $520, materials $200",
+          "color": "#0B1F3A"
+        },
+        {
+          "type": "option_row",
+          "id": "options",
+          "label": "Four answer options",
+          "color": "#7FB3D5"
+        },
+        {
+          "type": "animated_counter",
+          "id": "answer",
+          "label": "Added value $320",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 190,
+          "directive": "Display the price and material figures"
+        },
+        {
+          "at_sec": 199,
+          "directive": "Light up the correct option and grow its bar"
+        },
+        {
+          "at_sec": 209,
+          "directive": "Show one lever raising the added value bar again"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Let's check your understanding. Cobalt Cove Boards sells a deck for five hundred twenty dollars and buys in materials worth two hundred dollars. Added value is the selling price minus bought-in materials, so the answer is three hundred twenty dollars. It is not profit, because wages and rent are still paid from it. Which option shows the added value, and name one way to increase it? Choose carefully, then watch the bar animate.",
+        "words": 73,
+        "wpm": 146.0
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Cobalt Cove Boards sells a deck for $520 and buys in materials worth $200. What is its added value?",
+    "options": [
+      "$320",
+      "$520",
+      "$200",
+      "$720"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "A $520 price bar animates in, a $170-high red segment is replaced by a $200 bought-in-materials segment, and the remaining $320 segment lights up green while a small label reminds viewers that wages are not deducted."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

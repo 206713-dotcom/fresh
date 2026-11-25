@@ -1,0 +1,126 @@
+{
+  "auditor_id": "VIS-TECH-AUD-03",
+  "target_unit": 4,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u4_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Earlier approval retained unchanged; this re-audit pass covered only vid_u4_03 and vid_u4_04 as instructed.",
+        "All 9 scenes pass: exact key sets, VID_U4_01, UNVERIFIED, 9 scenes spanning 0-252 s contiguously with durations 24-32 s.",
+        "Word counts recomputed with Python split after edge-punctuation stripping: 57/71/71/72/64/81/71/66/64, all exactly equal to stated word_count; scene rates 2.286-2.571 words/sec, all inside 2.25-2.60.",
+        "All scenes exceed 15 s and carry visual_beats with first beat at scene start, last beat within 1 s of scene end, and consecutive gaps <=15 s; concrete visuals throughout (icon_factory, animated_counter, ratio_panel, waste_icon x7, conveyor x3, CAD/CAM, split panels, partition animation); no text_slide/bullet_list/title_card_only.",
+        "Titles <=12 words, labels <=18 words, uppercase hex colours, 4 quiz options with correct_index 1 = 72; case name 'Riverbend Bicycle Frames' unique across all 25 shards.",
+        "Non-blocking note unchanged: scene 2 says 'output rose' without an explicit prior-month baseline, a missing datum rather than a numeric contradiction."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 1/2 labour productivity = 1,200 frames / 20 workers", "recomputed": "1200 / 20 = 60 frames per worker; matches meter, result tile value 60 and voiceover", "pass": true},
+        {"claim": "Scene 3 labour-intensive ratio: 20 workers, 2 machines", "recomputed": "20 / 2 = 10 workers per machine; matches on-screen label and ratio_panel", "pass": true},
+        {"claim": "Scene 3 capital-intensive ratio: 8 workers, 16 machines", "recomputed": "16 / 8 = 2 machines per worker = 1 worker per 2 machines; matches ratio_panel and voiceover", "pass": true},
+        {"claim": "Scene 5 seven wastes count", "recomputed": "Narration names 7 wastes; 7 waste_icon elements; labels 4 + 3 = 7", "pass": true},
+        {"claim": "Scene 6 batch counts", "recomputed": "On-screen label 'ten red, then ten blue' matches voiceover and beat at 157", "pass": true},
+        {"claim": "Scene 9 quiz application: 1,440 frames with 20 workers", "recomputed": "1440 / 20 = 72 frames per worker; result tile 72, old marker 60, gain +12 (=+20%) consistent", "pass": true},
+        {"claim": "Scene 9 quiz key", "recomputed": "correct_index 1 selects '72 frames per worker', the recomputed answer", "pass": true}
+      ]
+    },
+    "vid_u4_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Earlier approval retained unchanged; this re-audit pass covered only vid_u4_03 and vid_u4_04 as instructed.",
+        "All 9 scenes pass: exact key sets, VID_U4_02, UNVERIFIED, contiguous 0-248 s, durations 20-36 s.",
+        "Word counts recomputed: 59/68/70/71/88/70/67/69/51, exactly matching stated word_count; rates 2.393-2.550 words/sec, all in range.",
+        "Break-even chart geometry independently verified: axes x 0-1000 (tick 100), y 0-6000 (tick 1000); fixed line (0,2000)->(1000,2000), total-cost slope $2/loaf, revenue slope $6/loaf; 2000+2Q=6Q gives Q=500, y=$3,000, matching highlight_intersection and lying within axis maxima.",
+        "Concrete visuals, <=15 s beat gaps, titles/labels within limits, uppercase hex, 4 quiz options with correct_index 1 = 600 loaves; case name 'Stonehaven Bakehouse' unique across all 25 shards."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 2 variable cost at 1,000 loaves", "recomputed": "1000 x $2 = $2,000; matches voiceover and beat at 42", "pass": true},
+        {"claim": "Scene 2 total cost at 1,000 loaves", "recomputed": "$2,000 fixed + $2,000 variable = $4,000; matches counter 2000->4000 and label", "pass": true},
+        {"claim": "Scene 3 LRAC point p1: 400 loaves, TC 3,200, AC 8", "recomputed": "3200 / 400 = 8.00", "pass": true},
+        {"claim": "Scene 3 LRAC point p2: 800 loaves, TC 4,000, AC 5", "recomputed": "4000 / 800 = 5.00", "pass": true},
+        {"claim": "Scene 3 LRAC point p3: 1,200 loaves, TC 5,400, AC 4.5", "recomputed": "5400 / 1200 = 4.50", "pass": true},
+        {"claim": "Scene 3 LRAC point p4: 1,600 loaves, TC 8,800, AC 5.5", "recomputed": "8800 / 1600 = 5.50", "pass": true},
+        {"claim": "Scene 3 U-curve shape", "recomputed": "AC 8.00 -> 5.00 -> 4.50 -> 5.50 falls then rises; beats at 61 and 79 fire on the falling points and the fourth point", "pass": true},
+        {"claim": "Scene 4 contribution per loaf", "recomputed": "P $6 - VC $2 = $4; matches contribution counter and label", "pass": true},
+        {"claim": "Scene 4 break-even output", "recomputed": "FC $2,000 / $4 contribution = 500 loaves; matches BE counter, substitution and marker", "pass": true},
+        {"claim": "Scene 5 fixed-cost line coordinates", "recomputed": "elements and lines both (0,2000)->(1000,2000): constant $2,000; y=2000 within axis max 6000", "pass": true},
+        {"claim": "Scene 5 total-cost line coordinates", "recomputed": "(4000-2000)/(1000-0) = $2 per loaf, matching VC=$2; endpoints within axes", "pass": true},
+        {"claim": "Scene 5 total-revenue line coordinates", "recomputed": "(6000-0)/(1000-0) = $6 per loaf, matching price; endpoint 6000 equals y-axis max", "pass": true},
+        {"claim": "Scene 5 highlight_intersection geometry", "recomputed": "2000 + 2Q = 6Q -> Q=500, y=$3,000; highlight {x:500,y:3000} matches lines and label and lies inside x<=1000, y<=6000", "pass": true},
+        {"claim": "Scene 6 profit at 1,000 loaves", "recomputed": "TR = $6,000; TC = $4,000; profit = $2,000; matches tiles, profit_bar and beat at 171", "pass": true},
+        {"claim": "Scene 7 margin of safety at 700 loaves", "recomputed": "700 - 500 = 200 loaves; matches safety_band width 200", "pass": true},
+        {"claim": "Scene 7 revenue, cost and profit at 700 loaves", "recomputed": "TR = $4,200; TC = $3,400; profit = $800 = 4 x 200; matches beat at 190 and profit_700 tile", "pass": true},
+        {"claim": "Scene 9 new break-even after fixed cost rises to $2,400", "recomputed": "2400 / (6 - 2) = 600 loaves; matches crossing marker, beat at 241 and answer tile", "pass": true},
+        {"claim": "Scene 9 quiz key", "recomputed": "correct_index 1 selects '600 loaves', the recomputed answer", "pass": true}
+      ]
+    },
+    "vid_u4_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Re-audited in full after regeneration; all five gates now pass.",
+        "Prior defect FIXED: scene 9 no longer contains any 'division bar' wording (case-insensitive full-file search returned false).",
+        "Scene 9 visual_beats are now 220/226/231/233: ascending, all inside the scene, gaps 6/5/2 s (<=15 s). The at_sec 231 beat reads exactly 'The x 0.02 multiplier glows between the output tile and the result tile', matching the multiplication '4,000 by 0.02 = 80' and the on-screen label 'Defects = output x 0.02'. The former at_sec 239 beat was removed.",
+        "Scene 9 last beat at 233 leaves a 7 s hold; acceptable because the contract requires only in-scene beats with <=15 s spacing, and camera_motion explicitly says 'hold on the answer tile'.",
+        "Word counts recomputed: 62/69/65/57/72/73/59/72/47, all exactly equal to stated word_count; rates 2.250-2.583 words/sec, all within 2.25-2.60; scene 9 is 47 words / 20 s = 2.350 words/sec as claimed.",
+        "Exact key sets, VID_U4_03, UNVERIFIED, contiguous 0-240 s, 9 scenes with durations 20-32 s; all concrete visual types and elements; titles <=12 words, labels <=18 words, uppercase hex, no blacklist hits; 4 quiz options with correct_index 1 = 80.",
+        "All defect/rework/saving math re-verified: 100 defects, $1,200, 40 defects, $480, $720/week, $36,000 over 50 weeks, 80 quiz answer.",
+        "Case name 'Northgate Medical Devices' unique across all 25 video shards."
+      ],
+      "scene_fixes": [
+        {
+          "scene": 9,
+          "issue": "PRIOR DEFECT - NOW VERIFIED FIXED: beat at_sec 239 said 'The factor 0.02 glows above the division bar', contradicting the multiplication 4,000 x 0.02 = 80 and firing about 8 s after the 0.02 narration.",
+          "fix": "Applied by VID-GEN-04 and confirmed: the division-bar beat was deleted; new beat at_sec 231 reads 'The x 0.02 multiplier glows between the output tile and the result tile'. Beat sequence 220/226/231/233 ascends with gaps 6/5/2 s and no 'division bar' wording remains anywhere in the shard. No further action required."
+        }
+      ],
+      "math_checks": [
+        {"claim": "Scene 1 setup: 5 percent of 2,000 assemblies fail", "recomputed": "0.05 x 2000 = 100 defective units/week; confirmed by scene 5 defect_slice value 100", "pass": true},
+        {"claim": "Scene 4 benchmarking gap", "recomputed": "Northgate 5 percent minus best-practice 1 percent = 4 percentage points; bar at 5 percent and benchmark line at 1 percent with shaded gap", "pass": true},
+        {"claim": "Scene 5 defects before improvement", "recomputed": "2000 x 0.05 = 100 units; matches voiceover, substitution and beat at 114", "pass": true},
+        {"claim": "Scene 5 weekly rework cost before improvement", "recomputed": "100 x $12 = $1,200; matches cost_tile value 1200 and beat at 135", "pass": true},
+        {"claim": "Scene 6 defects after quality assurance", "recomputed": "2000 x 0.02 = 40 units; matches defect_slice value 40 and voiceover", "pass": true},
+        {"claim": "Scene 6 weekly rework cost after QA", "recomputed": "40 x $12 = $480; matches cost_tile value 480 and beat at 146", "pass": true},
+        {"claim": "Scene 6 weekly saving", "recomputed": "$1,200 - $480 = $720; matches saving counter and label", "pass": true},
+        {"claim": "Scene 6 annual saving over 50 weeks", "recomputed": "$720 x 50 = $36,000; matches annual_tile, substitution and beat at 167", "pass": true},
+        {"claim": "Scene 9 quiz application: 4,000 units at 2 percent defects", "recomputed": "4000 x 0.02 = 80 units (up from 40); matches result_tile 80, old_marker 40 and voiceover", "pass": true},
+        {"claim": "Scene 9 quiz key", "recomputed": "correct_index 1 selects '80 units', the recomputed answer", "pass": true}
+      ]
+    },
+    "vid_u4_04.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Re-audited in full after regeneration; all five gates now pass.",
+        "Prior defect FIXED: scene 1 now names six location factors in its on-screen label ('labour, transport, raw materials, power, land and government incentives', 11 words), the factor_icons element reads 'Six location factors including government incentives', the at_sec 16 beat reads 'Six factor icons, including government incentives, orbit each pin', and the voiceover says 'six factor icons, including government incentives'. Six names now match six icons.",
+        "Scene 1 word_count raised 58 -> 61 and recomputed independently: 61 words / 24 s = 2.542 words/sec, inside 2.25-2.60 and exactly equal to the stated word_count.",
+        "Word counts for all scenes recomputed: 61/64/64/72/65/72/64/70/46, all exact; rates 2.250-2.500 words/sec, all in range.",
+        "Exact key sets, VID_U4_04, UNVERIFIED, contiguous 0-248 s, 9 scenes with durations 20-32 s; beats in-scene and <=15 s apart; titles <=12 words, labels <=18 words, uppercase hex, no blacklist hits; 4 quiz options with correct_index 2 = $30,000.",
+        "All site-cost arithmetic re-verified: Site A $480,000 before / $450,000 after incentive; Site B $500,000; $50,000 saving; transport shock +$60,000 -> $510,000 and Site B cheaper by $10,000; larger shock +$20,000 -> $530,000, gap $30,000.",
+        "Case name 'Frostvale Foods' unique across all 25 video shards."
+      ],
+      "scene_fixes": [
+        {
+          "scene": 1,
+          "issue": "PRIOR DEFECT - NOW VERIFIED FIXED: the label listed five factors while the element, beat and voiceover claimed six icons.",
+          "fix": "Applied by VID-GEN-04 and confirmed: added 'government incentives' as the sixth named factor in the on-screen label, element label, at_sec 16 beat and voiceover; word_count updated from 58 to 61 (verified 2.542 words/sec). No further action required."
+        }
+      ],
+      "math_checks": [
+        {"claim": "Scene 1 location-factor count (previously failed)", "recomputed": "On-screen label names 6 factors: labour(1), transport(2), raw materials(3), power(4), land(5), government incentives(6); matches 'Six location factors including government incentives' element, at_sec 16 beat and voiceover", "pass": true},
+        {"claim": "Scene 2 Site A cost inputs", "recomputed": "Labour 300,000 + transport 80,000 + materials 40,000 + utilities 60,000, with 30,000 incentive; matches cost_label values", "pass": true},
+        {"claim": "Scene 4 running total after labour and transport", "recomputed": "300,000 + 80,000 = 380,000; matches label and beat at 80", "pass": true},
+        {"claim": "Scene 4 total before incentive", "recomputed": "380,000 + 40,000 + 60,000 = 480,000; matches running_a counter 0->480000 and beat at 90", "pass": true},
+        {"claim": "Scene 4 Site A annual cost after incentive", "recomputed": "480,000 - 30,000 = $450,000; matches result_tile value 450000 and substitution", "pass": true},
+        {"claim": "Scene 5 Site B annual cost", "recomputed": "360,000 + 20,000 + 70,000 + 50,000 = $500,000; matches running_b counter and substitution", "pass": true},
+        {"claim": "Scene 5 Site A saving today", "recomputed": "$500,000 - $450,000 = $50,000; matches saving_badge value 50000 and label", "pass": true},
+        {"claim": "Scene 6 transport increase", "recomputed": "$140,000 - $80,000 = $60,000; matches on-screen label and beat at 150", "pass": true},
+        {"claim": "Scene 6 Site A total after demand shift", "recomputed": "300,000 + 140,000 + 40,000 + 60,000 - 30,000 = $510,000; matches recalc_a counter 450000->510000 and substitution", "pass": true},
+        {"claim": "Scene 6 new winner and gap", "recomputed": "Site B $500,000 vs Site A $510,000, so Site B is $10,000 cheaper; matches gap_marker value 10000 and voiceover", "pass": true},
+        {"claim": "Scene 9 larger transport shock", "recomputed": "Transport 160,000 instead of 140,000 = +20,000; Site A total 510,000 + 20,000 = $530,000; matches final_total counter and label", "pass": true},
+        {"claim": "Scene 9 gap over Site B", "recomputed": "$530,000 - $500,000 = $30,000; matches gap_marker, answer tile and beat at 241", "pass": true},
+        {"claim": "Scene 9 quiz key", "recomputed": "correct_index 2 selects '$30,000', the recomputed answer", "pass": true}
+      ]
+    }
+  },
+  "summary": "APPROVED_BY_VIS_AUD: all four Unit 4 shards pass. Re-audit of vid_u4_03 and vid_u4_04 confirmed both prior fixes: u4_03 scene 9 now uses the x 0.02 multiplier beat at 231 s with no 'division bar' wording (beats 220/226/231/233, gaps 6/5/2 s), and u4_04 scene 1 now enumerates six location factors consistently in label, element, beat and voiceover with word_count 61 (2.542 words/sec). Earlier approvals for vid_u4_01 and vid_u4_02 retained. 48 math checks all pass; all 36 scenes have exact split()-based word counts, pacing 2.250-2.583 words/sec, contiguous timing, valid schema, uppercase hex, <=15 s beat spacing, concrete visuals, valid quizzes and globally unique case names."
+}

@@ -1,0 +1,658 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U4_01",
+  "title": "Visualising Productivity, Lean Production and Methods",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 252,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U4_01.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 24,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_frame_animation",
+      "camera_motion": "smooth_zoom_from_workshop_floor_to_productivity_meter",
+      "title": "Riverbend's Productivity Puzzle",
+      "labels": [
+        "Riverbend Bicycle Frames",
+        "Output: 1,200 frames this month",
+        "Labour input: 20 workers"
+      ],
+      "elements": [
+        {
+          "type": "icon_factory",
+          "id": "riverbend",
+          "label": "Riverbend Bicycle Frames"
+        },
+        {
+          "type": "animated_counter",
+          "id": "output",
+          "target": "frames_this_month",
+          "from": 0,
+          "to": 1200,
+          "prefix": "",
+          "label": "Frames this month"
+        },
+        {
+          "type": "worker_icons",
+          "id": "workers",
+          "count": 20,
+          "label": "Production workers"
+        },
+        {
+          "type": "productivity_meter",
+          "id": "meter",
+          "label": "Output per worker"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Workshop opens with an empty frame rack"
+        },
+        {
+          "at_sec": 8,
+          "directive": "Frames stack rapidly on the rack as the counter rolls to 1,200"
+        },
+        {
+          "at_sec": 16,
+          "directive": "Twenty worker icons line up and the owner raises a question mark"
+        },
+        {
+          "at_sec": 23,
+          "directive": "A productivity meter rises above the line and holds"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "At Riverbend Bicycle Frames, welders finish 1,200 bicycle frames this month. Twenty production workers made them all. The owner wants one answer: is each worker producing more than last month? Watch frames stack on the rack, workers fade into the background, and a productivity meter rise above the factory floor. That question drives everything in this video.",
+        "words": 57,
+        "wpm": 142.5
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 24,
+      "out": 52,
+      "visual_type": "formula_substitution",
+      "layout": "full_frame_animation",
+      "camera_motion": "smooth_pan_from_formula_panel_into_division_counter",
+      "title": "Labour Productivity = Output / Workers",
+      "labels": [
+        "Total output / number of workers (or worker-hours)",
+        "1,200 frames / 20 workers",
+        "Result: 60 frames per worker"
+      ],
+      "elements": [
+        {
+          "type": "formula_panel",
+          "id": "formula",
+          "text": "Labour productivity = total output / number of workers (or worker-hours)",
+          "label": "0264 definition"
+        },
+        {
+          "type": "animated_counter",
+          "id": "numerator",
+          "from": 0,
+          "to": 1200,
+          "label": "Total output (frames)"
+        },
+        {
+          "type": "worker_icons",
+          "id": "denominator",
+          "count": 20,
+          "label": "Labour input (workers)"
+        },
+        {
+          "type": "result_tile",
+          "id": "result",
+          "value": 60,
+          "label": "Frames per worker"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 24,
+          "directive": "Definition panel slides in from the left"
+        },
+        {
+          "at_sec": 33,
+          "directive": "1,200 frames pour through a funnel into the numerator box"
+        },
+        {
+          "at_sec": 42,
+          "directive": "Twenty worker icons fill the denominator box and a division bar appears"
+        },
+        {
+          "at_sec": 51,
+          "directive": "Result tile flips to 60 frames per worker"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Labour productivity means output divided by labour input. At Riverbend, total output is 1,200 frames and labour input is 20 workers. Divide 1,200 by 20 and the answer is 60 frames per worker. The counter shows 1,200 frames pouring into one side and 20 worker icons lining the other, then sixty frames sliding into a single worker's column. Because output rose while the workforce stayed the same, unit labour cost falls.",
+        "words": 71,
+        "wpm": 152.1
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 52,
+      "out": 80,
+      "visual_type": "split_screen_comparison",
+      "layout": "full_frame_animation",
+      "camera_motion": "split_screen_wipe_then_zoom_into_both_ratios",
+      "title": "Labour-Intensive vs Capital-Intensive",
+      "labels": [
+        "Labour intensive: 20 workers, 2 machines",
+        "Ratio: 10 workers per machine",
+        "Capital intensive: 8 workers, 16 machines"
+      ],
+      "elements": [
+        {
+          "type": "ratio_panel",
+          "id": "labour_intensive",
+          "label": "Labour-intensive workshop",
+          "workers": 20,
+          "machines": 2,
+          "ratio": "10 workers per machine",
+          "color": "#2E5FA3"
+        },
+        {
+          "type": "ratio_panel",
+          "id": "capital_intensive",
+          "label": "Capital-intensive line",
+          "workers": 8,
+          "machines": 16,
+          "ratio": "1 worker per 2 machines",
+          "color": "#D9822B"
+        },
+        {
+          "type": "icon_worker",
+          "id": "worker_tile",
+          "label": "Worker tile"
+        },
+        {
+          "type": "icon_machine_arm",
+          "id": "machine_arm",
+          "label": "Machine arm"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 52,
+          "directive": "Two blank ratio panels appear side by side"
+        },
+        {
+          "at_sec": 61,
+          "directive": "Worker tiles multiply on the labour-intensive side"
+        },
+        {
+          "at_sec": 70,
+          "directive": "Machine arms multiply on the capital-intensive side"
+        },
+        {
+          "at_sec": 79,
+          "directive": "Both ratio labels settle and a comparison brace appears"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Now compare two ways to organise work. In the labour-intensive workshop, 20 workers share 2 machines, a ratio of 10 workers per machine. In the capital-intensive line, 8 workers operate 16 machines, so the ratio is 1 worker per 2 machines. Watch the icons slide: worker tiles multiply on the left, machine arms multiply on the right. Capital intensity can lift output per worker, but each machine must be paid for.",
+        "words": 71,
+        "wpm": 152.1
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 80,
+      "out": 108,
+      "visual_type": "flow_diagram",
+      "layout": "full_frame_animation",
+      "camera_motion": "slow_dolly_along_the_shrinking_stock_pile_then_follow_the_loop",
+      "title": "Lean Production, JIT and Kaizen",
+      "labels": [
+        "Lean: fewer inputs, less waste",
+        "Just in time: stock is delivered when needed",
+        "Kaizen: continuous improvement"
+      ],
+      "elements": [
+        {
+          "type": "stock_pile",
+          "id": "stock",
+          "label": "Tubing inventory",
+          "action": "shrink"
+        },
+        {
+          "type": "delivery_van",
+          "id": "van",
+          "label": "Just-in-time delivery"
+        },
+        {
+          "type": "loop_marker",
+          "id": "kaizen",
+          "label": "Kaizen improvement loop",
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "storage_rack",
+          "id": "rack",
+          "label": "Storage space"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 80,
+          "directive": "Tall stacks of tubing fill the left side of the frame"
+        },
+        {
+          "at_sec": 89,
+          "directive": "Delivery van pulls in exactly as the line calls for parts"
+        },
+        {
+          "at_sec": 98,
+          "directive": "Stock piles melt away and the storage rack empties"
+        },
+        {
+          "at_sec": 107,
+          "directive": "Green kaizen loop turns around the workstation"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Lean production aims to use fewer inputs and cut waste of materials, time and human effort. Riverbend orders tubing just in time, so stock is delivered when needed and storage space shrinks. Kaizen means continuous improvement through eliminating waste, with worker suggestions adjusting the jig each week. Watch stock piles melt, a delivery van sync with the line, and improvement loops turn. Therefore fewer resources are tied up, so unit costs fall.",
+        "words": 72,
+        "wpm": 154.3
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 108,
+      "out": 136,
+      "visual_type": "funnel_animation",
+      "layout": "full_frame_animation",
+      "camera_motion": "rapid_pan_across_seven_icons_then_pull_back_to_a_clean_line",
+      "title": "The Seven Wastes of Lean Production",
+      "labels": [
+        "Seven wastes flash red, then turn green",
+        "Overproduction, waiting, transport, over-processing",
+        "Inventory, motion, defects"
+      ],
+      "elements": [
+        {
+          "type": "waste_icon",
+          "id": "waste_overproduction",
+          "label": "Overproduction",
+          "color": "#C0392B",
+          "fixed_by": "Make to order"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_waiting",
+          "label": "Waiting",
+          "color": "#C0392B",
+          "fixed_by": "Balance the line"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_transport",
+          "label": "Transport",
+          "color": "#C0392B",
+          "fixed_by": "Place tools closer"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_over-processing",
+          "label": "Over-Processing",
+          "color": "#C0392B",
+          "fixed_by": "Simplify the jig"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_inventory",
+          "label": "Inventory",
+          "color": "#C0392B",
+          "fixed_by": "Use just in time"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_motion",
+          "label": "Motion",
+          "color": "#C0392B",
+          "fixed_by": "Improve layout"
+        },
+        {
+          "type": "waste_icon",
+          "id": "waste_defects",
+          "label": "Defects",
+          "color": "#C0392B",
+          "fixed_by": "Check at source"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 108,
+          "directive": "Seven grey waste icons appear in a row"
+        },
+        {
+          "at_sec": 117,
+          "directive": "Each icon flashes red as its waste is named"
+        },
+        {
+          "at_sec": 126,
+          "directive": "A green fix badge replaces each red icon in turn"
+        },
+        {
+          "at_sec": 135,
+          "directive": "The whole row turns green and a value stream strip lights up"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Lean thinking names seven wastes. Overproduction stacks unsold frames; waiting leaves welders idle; transport drags parts across the floor; over-processing polishes hidden joints; inventory piles up; motion means reaching and walking; defects send frames back for rework. Each icon flashes red, then a green lean fix replaces it. Because every waste adds cost without adding value, removing one waste at a time raises productivity.",
+        "words": 64,
+        "wpm": 137.1
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 136,
+      "out": 168,
+      "visual_type": "flow_diagram",
+      "layout": "full_frame_animation",
+      "camera_motion": "tracking_shot_along_three_parallel_lines",
+      "title": "Job, Batch and Flow Production",
+      "labels": [
+        "Job: one bespoke frame",
+        "Batch: ten red, then ten blue",
+        "Flow: continuous high-volume line"
+      ],
+      "elements": [
+        {
+          "type": "conveyor",
+          "id": "job_line",
+          "label": "Job production: one bespoke frame",
+          "color": "#2E5FA3"
+        },
+        {
+          "type": "conveyor",
+          "id": "batch_line",
+          "label": "Batch production: groups of frames",
+          "color": "#D9822B"
+        },
+        {
+          "type": "conveyor",
+          "id": "flow_line",
+          "label": "Flow production: continuous line",
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "product_icon",
+          "id": "frame",
+          "label": "Bicycle frame"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 136,
+          "directive": "Three empty assembly lines fade in side by side"
+        },
+        {
+          "at_sec": 146,
+          "directive": "One custom frame moves alone on the job line"
+        },
+        {
+          "at_sec": 157,
+          "directive": "Ten red then ten blue frames move on the batch line"
+        },
+        {
+          "at_sec": 167,
+          "directive": "A continuous stream of frames flows on the third line"
+        }
+      ],
+      "chart": {
+        "flow_nodes": [
+          "customer order",
+          "job line",
+          "batch line",
+          "flow line",
+          "finished frames"
+        ]
+      },
+      "narration": {
+        "text": "Three production methods suit three orders. Job production makes one bespoke item: a custom frame is measured, cut and welded alone. Batch production makes a quantity of one design, then switches to another: ten red frames, then ten blue. Flow production runs large volumes continuously: frames move down an automated line without stopping. Watch three assembly lines appear side by side, with a single unique frame, labelled groups, and a steady stream. Because volume and variety differ, the right method changes.",
+        "words": 81,
+        "wpm": 151.9
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 168,
+      "out": 196,
+      "visual_type": "flow_diagram",
+      "layout": "full_frame_animation",
+      "camera_motion": "zoom_into_the_screen_then_track_the_file_to_the_machine",
+      "title": "CAD, CAM and Automation",
+      "labels": [
+        "CAD: design on screen",
+        "CAM: computer-controlled machines",
+        "Automation: minimal human control"
+      ],
+      "elements": [
+        {
+          "type": "cad_screen",
+          "id": "cad",
+          "label": "Computer-aided design (CAD)"
+        },
+        {
+          "type": "digital_file",
+          "id": "file",
+          "label": "Design travels as a file"
+        },
+        {
+          "type": "cam_machine",
+          "id": "cam",
+          "label": "Computer-aided manufacturing (CAM)"
+        },
+        {
+          "type": "robot_arm",
+          "id": "robot",
+          "label": "Automation",
+          "color": "#2E5FA3"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 168,
+          "directive": "A frame drawing rotates in three dimensions on a CAD screen"
+        },
+        {
+          "at_sec": 177,
+          "directive": "The drawing compresses into a digital file and flies right"
+        },
+        {
+          "at_sec": 186,
+          "directive": "A CAM machine receives the file and cuts a tube"
+        },
+        {
+          "at_sec": 195,
+          "directive": "A robot arm welds the frame with no worker hands"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Technology changes how the frame is made. Computer-aided design, or CAD, lets engineers draw and modify the frame on screen. Computer-aided manufacturing, or CAM, sends that design to computer-controlled machines that cut and weld it. Automation keeps the line running with minimal human control. Watch the design rotate in three dimensions, travel as a digital file, and become a real frame. Output becomes more consistent, though software failures can stop everything.",
+        "words": 71,
+        "wpm": 152.1
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 196,
+      "out": 224,
+      "visual_type": "evaluation_split",
+      "layout": "full_frame_animation",
+      "camera_motion": "center_split_wipe_with_green_and_amber_panels",
+      "title": "Lean and Technology: Help or Hindrance?",
+      "labels": [
+        "Benefit: lower unit costs",
+        "Risk: supply delays and retraining",
+        "Judgement depends on reliability and skills"
+      ],
+      "elements": [
+        {
+          "type": "split_panel",
+          "id": "pros",
+          "label": "Benefit: lower unit costs",
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "split_panel",
+          "id": "cons",
+          "label": "Risk: supplier delays and retraining",
+          "color": "#D9822B"
+        },
+        {
+          "type": "cost_marker",
+          "id": "cost_down",
+          "label": "Unit cost falls"
+        },
+        {
+          "type": "risk_icon",
+          "id": "risk",
+          "label": "Supply risk"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 196,
+          "directive": "A vertical line splits the screen into two panels"
+        },
+        {
+          "at_sec": 205,
+          "directive": "Green markers show waste and unit cost falling"
+        },
+        {
+          "at_sec": 214,
+          "directive": "Amber icons show a late van and a training invoice"
+        },
+        {
+          "at_sec": 223,
+          "directive": "A balance scale tips toward a conditional judgement"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Does lean production and technology always help? On one side, Riverbend cuts waste, raises output per worker and lowers unit costs. On the other side, just in time leaves no buffer if a supplier is late, and automation needs costly training. Watch a split screen: green cost markers fall on the left, risk icons flash on the right. Benefit: lower costs. Risk: supply delays and retraining.",
+        "words": 66,
+        "wpm": 141.4
+      }
+    },
+    {
+      "scene_number": 9,
+      "in": 224,
+      "out": 252,
+      "visual_type": "recap_quiz",
+      "layout": "full_frame_animation",
+      "camera_motion": "push_in_into_the_dividing_stack_and_hold_on_the_answer_tile",
+      "title": "Apply It: A Higher Output",
+      "labels": [
+        "Output rises to 1,440 frames",
+        "Workers stay at 20",
+        "Divide output by workers"
+      ],
+      "elements": [
+        {
+          "type": "output_stack",
+          "id": "stack",
+          "label": "1,440 frames"
+        },
+        {
+          "type": "partition_animation",
+          "id": "partition",
+          "label": "20 equal worker columns"
+        },
+        {
+          "type": "result_tile",
+          "id": "answer",
+          "value": 72,
+          "label": "Frames per worker"
+        },
+        {
+          "type": "old_marker",
+          "id": "old",
+          "value": 60,
+          "label": "Previous productivity"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 224,
+          "directive": "A taller stack of 1,440 frames slides in"
+        },
+        {
+          "at_sec": 233,
+          "directive": "The stack divides into twenty equal columns"
+        },
+        {
+          "at_sec": 242,
+          "directive": "Each column fills to 72 frames"
+        },
+        {
+          "at_sec": 251,
+          "directive": "The old 60-frame marker fades and the 72 tile glows"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Time to apply the idea. If Riverbend raises output to 1,440 frames with the same 20 workers, what is the labour productivity? Choose the calculation: divide 1,440 by 20, not by 2. The answer is 72 frames per worker, up from 60. Watch the counter divide the stack into twenty columns, then compare the new tile with the old marker to see the gain.",
+        "words": 64,
+        "wpm": 137.1
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Riverbend makes 1,440 frames with 20 workers. What is labour productivity per worker?",
+    "options": [
+      "60 frames per worker",
+      "72 frames per worker",
+      "1,460 frames per worker",
+      "28 frames per worker"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "An animated stack of 1,440 frames splits into 20 equal worker columns; each column fills to 72 frames while a red 60-frame marker slides away."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

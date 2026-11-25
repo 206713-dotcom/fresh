@@ -1,0 +1,70 @@
+{
+  "auditor_id": "SYL-VID-AUD-03",
+  "target_unit": 3,
+  "verdict": "APPROVED_BY_SYL_AUD",
+  "shards": {
+    "vid_u3_01.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: clean across all voiceover_script, on_screen_title, on_screen_labels, animation_directives/element labels, learning objectives and quiz text (case-insensitive scan incl. standalone ARR/CPA). No 0450/A-Level/9609 leakage.",
+        "AO1: exact 0264 wording verified against glossary/lessons — marketing = 'identifying customer wants and satisfying them profitably' (S1); mass market = 'sells to the largest part of the market, often where standardised products are being sold' and niche = 'a small, usually specialised, segment of a much larger market' (S4); market segmentation = 'knowing that different segments exist, then developing and marketing different products for each' (S5); five bases age/income/location/gender/lifecycle (S5); market share shows competitive strength not profitability (S3/S8).",
+        "AO2: named firm Verdant Crunch with numbers and on-screen motion in S1 ($50k budget), S3 ($8m market / $1.6m brand / 20% ring), S4 (mass vs niche carts), S5 (five tiles), S7 (funnel 2m to 400k) and quiz.",
+        "AO3: causal chains present in S2 ('Because household incomes rose, therefore more shoppers wanted premium ingredients, so the firm added a smaller premium line'), S6 and S8.",
+        "AO4: genuine two-sided evaluation scene S8 (mass volume/scale vs heavy spend and price wars; niche focus/less competition vs small volume and fading trend) with split-screen labels and a justified 'start niche, then expand' verdict.",
+        "No misleading analogies: niche is depicted as a small specialised segment with fewer buyers at higher price (S4/S7), never as mass; PLC not present in this shard; no PED coefficient, only conceptual revenue-direction language where relevant.",
+        "Arithmetic checked: 2,000,000 packs x $4 = $8m; 400,000 x $4 = $1.6m; 1.6/8 = 20%; 50,000 extra buyers x $4 = $200,000 added revenue versus $100,000 campaign cost — all internally consistent and correctly narrated.",
+        "Quiz tests application (computing share) with correct_index 1 = 20 percent; visual_explanation describes a concrete ring-chart animation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u3_02.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: clean across all fields (case-insensitive scan incl. standalone ARR/CPA). No 0450/A-Level/9609 leakage.",
+        "AO1: exact 0264 wording verified — market research = 'gathering, analysing and interpreting information about a market' (S1); primary = 'collection and collation of original data via direct contact with potential or existing consumers (field research)' and secondary = 'information that has already been collected and is available for use by others (desk research)' (S2); questionnaire = 'set of questions to be answered as a means of collecting data for primary market research' (S4); sample = 'group of people selected to respond to a primary market research exercise' (S5); accuracy factors sample size/sample bias/question wording/timing/age of data (S6).",
+        "Secondary data is correctly described as already collected by others and used for desk research — never as first-hand. Sources list matches 0264: questionnaires/interviews/focus groups/observation vs competitor websites/government sources/market reports/trade magazines.",
+        "Random vs quota sampling correctly distinguished in S5: random = equal chance, scattered cells; quota = fixed mix by age band (10 per band). No random-as-quota or quota-as-random substitution in the teaching scenes.",
+        "AO2: named firm Lumen Eats, 8,000 workers, 400 replies, 240/96/64 split, 78% loaded result, $1,200 survey vs $200 report, all with on-screen grids and bars.",
+        "AO3: causal chain in S6 ('Because that sample came from one place, therefore it over represented fitness fans, so the lunch estimate looked far too high') and S8.",
+        "AO4: genuine two-sided evaluation in S3 and S8 (primary specific/current but costly/biased; secondary quick/cheap but generic/outdated) with split-screen labels and a justified neutral-survey decision.",
+        "Arithmetic checked: 240/400 = 60%; 240+96+64 = 400; 2/2.6 market context not applicable here; all worked-example fields consistent.",
+        "NON-BLOCKING ADVISORY: the recap quiz stem says 'a neutral quota sample gives 60 percent', whereas S7 voiceover describes the 400-reply sample as a random sample with 'a quota check keeps the age mix even'. The correct answer (60 percent, neutral and even groups) and the teaching point are sound; if the creator wishes to tighten random-vs-quota precision, reword the stem to 'a neutral randomly drawn sample with an checked age mix gives 60 percent'. Not a rejection — the concept is taught correctly in S5.",
+        "Quiz tests application (rejecting loaded-wording data) with correct_index 1 and a concrete two-bar visual_explanation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u3_03.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: clean across all fields (case-insensitive scan incl. standalone ARR/CPA). No PED formula, no elasticity coefficient, no 0450/A-Level/9609 leakage; S5 explicitly states 'no formula is needed here'.",
+        "AO1: exact 0264 wording verified — marketing mix = 'all the activities which go into marketing a product or service, often summarised as the four Ps' (S1); brand image and packaging definitions verbatim from glossary (S2); product life cycle = 'introduction, growth, maturity and decline' (S3); extension strategies = new markets, new uses, adapting product/packaging, increased advertising (S4); cost-plus = 'cost of manufacturing the product plus a profit mark up', competitive = 'in line with competitors to maintain sales and market share', dynamic = changes online with demand (S5); penetration = 'price below rivals to enter a market and gain market share', skimming = 'high price for a new product' (S6); place = 'means by which a product is passed from the producer to the customer' and ecommerce definition verbatim (S7); advertising = 'paid for communication with potential customers about a product to encourage them to buy it' and sales promotions = 'incentives such as special offers, discounts, or reward schemes aimed at consumers to achieve short-term increases in sales' (S8).",
+        "No misleading analogies: PLC stages appear in the correct order introduction -> growth -> maturity -> decline with sales 2k -> 9k -> 14k -> 6k, curve rises/flattens/falls (S3); channel order is producer -> wholesaler -> retailer -> consumer (S7); informative vs persuasive correctly split by factual features vs feeling/status (S8).",
+        "Revenue-direction claims are consistent with each strategy: penetration low price with low line climbing as buyers join; skimming high price starting high then easing; loss leader price dips while store traffic rises. No strategy is shown with a contradicting revenue direction.",
+        "AO2: named firm Auralis Audio / Nimbus One with 20,000 units at $120, PLC unit figures and animated curves/tags/channels.",
+        "AO3: causal chain in S6 ('Because the Nimbus One is premium, therefore skimming recovers costs first, so promotion can follow') and S9.",
+        "AO4: genuine two-sided evaluation in S4, S9 (premium set benefit margin/image vs limit lower volume/higher costs; penetration may grow share but weaken premium story) with split-screen labels and justified 'keep the premium set' verdict.",
+        "Quiz tests application (skimming to recover development costs before rivals) with correct_index 1 and a concrete curve/badge visual_explanation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    },
+    "vid_u3_04.json": {
+      "verdict": "APPROVED_BY_SYL_AUD",
+      "notes": [
+        "BLACKLIST: clean across all fields (case-insensitive scan incl. standalone ARR/CPA). No 0450/A-Level/9609 leakage.",
+        "AO1: exact 0264 wording verified — marketing strategy = 'a plan with a marketing objective and details of the marketing mix that aims to achieve it' (S1); legal controls = 'laws passed by government to protect consumers from faulty goods, unsafe goods and misleading promotion' (S6); overseas entry advantages increase sales/spread risk and disadvantages cultural differences/lack of knowledge/legal requirements (S4); tariff = tax on imports and quota = limit on physical quantity imported (S5).",
+        "Targeting/positioning and customer journey (S2), four-Ps coherence (S3), consumer-protection controls on advertising claims, pricing and labelling (S6), and standardised vs adapted marketing (S8) all align with 0264/lesson copy.",
+        "AO2: named firm Clearleaf Cleaning with numbers and on-screen motion — $2m home revenue + $600k new country (S4), $10 tariff to $12 landed cost and quota gate (S5), $30,000/six weeks and returns 5% to 2% (S7).",
+        "AO3: causal chains in S2, S3, S7 ('Because rules stop rivals making false claims, therefore honest brands look stronger, so customers buy with confidence') and S8.",
+        "AO4: genuine two-sided evaluation in S7 (compliance cost and delay vs trust, fewer returns, protection from unfair rivals) and S8 (standardised low cost/consistent brand vs adapted local fit with added cost) with split-screen labels and a justified blended verdict.",
+        "Arithmetic checked: 600,000/2,000,000 = 30% growth; 2,000,000/2,600,000 = 76.9% ≈ 'about 77 percent'; 10 + 2 = 12 landed cost — all internally consistent and correctly narrated.",
+        "Quiz tests application (local wording rules require adapted labels) with correct_index 1 and a concrete split-screen/verdict-banner visual_explanation."
+      ],
+      "blacklist_hits": [],
+      "scene_fixes": []
+    }
+  },
+  "summary": "All four Unit 3 shards pass the syllabus/accuracy audit. No blacklist terms, no 0450/A-Level leakage, and no PED coefficient calculations anywhere. All AO1 definitions match the exact 0264 glossary/lesson wording; every video has a named firm with numbers and motion (AO2), explicit causal chains (AO3) and a genuinely two-sided evaluation scene with split-screen labels (AO4). No misleading analogies detected: PLC stages are in the correct order, niche markets are not presented as mass, random and quota sampling are correctly distinguished, pricing revenue-direction claims match each strategy, and secondary data is never described as first-hand. All worked-example arithmetic is internally consistent. One non-blocking advisory on vid_u3_02: the recap quiz stem calls the 60%-producing sample a 'quota sample' where the voiceover describes a random sample with an even-age quota check; the concept is taught correctly in scene 5 and the answer is unaffected. Overall verdict: APPROVED_BY_SYL_AUD."
+}

@@ -1,0 +1,659 @@
+{
+  "video_id": "VID_U6_01",
+  "unit_number": 6,
+  "unit_title": "Unit 6: External influences on business activity",
+  "chapter_code": "6.1",
+  "chapter_title": "Economic issues",
+  "video_title": "Visualising the Business Cycle and Policy Levers",
+  "target_duration_sec": 256,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Describe the four stages of the business cycle and their effects on demand, output and employment",
+    "Explain how inflation, unemployment and GDP influence business decisions",
+    "Evaluate fiscal and monetary policy using a concrete bicycle factory scenario"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 20,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "The Cycle Never Stops",
+      "on_screen_labels": [
+        "Growth",
+        "Boom",
+        "Recession",
+        "Slump",
+        "Brambledon Bicycles"
+      ],
+      "animation_directives": {
+        "layout": "center_cycle_loop_with_four_gates",
+        "elements": [
+          {
+            "type": "animated_cycle_loop",
+            "id": "cycle",
+            "label": "Business cycle loop",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "directional_arrow",
+            "id": "arrows",
+            "label": "Arrows advancing around loop",
+            "color": "#C00000"
+          },
+          {
+            "type": "icon_factory",
+            "id": "factory",
+            "label": "Brambledon Bicycles plant",
+            "color": "#548235"
+          },
+          {
+            "type": "stage_gate",
+            "id": "gates",
+            "label": "Four stage gates",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "slow_orbit_around_cycle",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Fade in empty ring"
+          },
+          {
+            "at_sec": 10,
+            "directive": "Arrows begin to orbit"
+          },
+          {
+            "at_sec": 20,
+            "directive": "Four stage gates light up"
+          }
+        ]
+      },
+      "voiceover_script": "Meet Brambledon Bicycles, a mid sized maker of city bikes. A glowing loop turns through growth, boom, recession and slump. Arrows advance around the ring. Watch arrows pass four gates, one for each stage. Each stage shifts demand, output, employment and the goals this firm can pursue.",
+      "word_count": 47,
+      "syllabus_concepts_tagged": [
+        "business cycle",
+        "growth",
+        "boom",
+        "recession",
+        "slump"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 20,
+      "end_sec": 48,
+      "visual_type": "curve_reveal",
+      "on_screen_title": "Four Stages, Four Business Effects",
+      "on_screen_labels": [
+        "Growth: orders rise",
+        "Boom: wages climb",
+        "Recession: spare capacity",
+        "Slump: job losses"
+      ],
+      "animation_directives": {
+        "layout": "cycle_unrolled_into_four_quadrants",
+        "elements": [
+          {
+            "type": "animated_curve",
+            "id": "demand_curve",
+            "label": "Demand through the cycle",
+            "color": "#C00000"
+          },
+          {
+            "type": "workforce_tiles",
+            "id": "jobs",
+            "label": "Employment tiles",
+            "color": "#548235"
+          },
+          {
+            "type": "output_bars",
+            "id": "output",
+            "label": "Output bars",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "directional_arrow",
+            "id": "flow",
+            "label": "Stage to stage arrow",
+            "color": "#BF8F00"
+          }
+        ],
+        "camera_motion": "pan_along_unrolled_curve",
+        "visual_beats": [
+          {
+            "at_sec": 20,
+            "directive": "Unroll the ring into a line"
+          },
+          {
+            "at_sec": 29,
+            "directive": "Demand curve rises then falls"
+          },
+          {
+            "at_sec": 38,
+            "directive": "Workforce tiles add and shrink"
+          },
+          {
+            "at_sec": 48,
+            "directive": "Loop arrow returns to growth"
+          }
+        ]
+      },
+      "voiceover_script": "During growth, orders rise and Brambledon adds shifts. In the boom, demand is strong but wages climb as workers become scarce. Recession brings falling orders and spare capacity. Slump means deep cuts, job losses and a fight for cash. Notice how demand, output and employment all move together around the loop every time. The arrow then returns to growth, so the pattern repeats again and again.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "business cycle stages",
+        "employment",
+        "demand",
+        "output"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 48,
+      "end_sec": 76,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Inflation and Workforce Tiles",
+      "on_screen_labels": [
+        "Inflation: average prices rise",
+        "Index 100 to 105",
+        "Tight labour pushes wages up",
+        "Unemployment weakens demand"
+      ],
+      "animation_directives": {
+        "layout": "index_chart_left_workforce_tiles_right",
+        "elements": [
+          {
+            "type": "animated_counter",
+            "id": "price_index",
+            "label": "Price index",
+            "from_": 100,
+            "to": 105,
+            "color": "#C00000"
+          },
+          {
+            "type": "price_tiles",
+            "id": "prices",
+            "label": "Price tiles",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "workforce_tiles",
+            "id": "workforce",
+            "label": "Workforce tiles",
+            "color": "#548235"
+          },
+          {
+            "type": "purchasing_power_bar",
+            "id": "power",
+            "label": "Purchasing power bar",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "zoom_from_index_chart_to_workforce",
+        "visual_beats": [
+          {
+            "at_sec": 48,
+            "directive": "Index tile climbs from 100"
+          },
+          {
+            "at_sec": 57,
+            "directive": "Price tiles grow"
+          },
+          {
+            "at_sec": 66,
+            "directive": "Workforce tiles thin out"
+          },
+          {
+            "at_sec": 76,
+            "directive": "Purchasing power bar shrinks"
+          }
+        ]
+      },
+      "voiceover_script": "Inflation means the average price level of goods and services rises over time. An index tile climbs from one hundred to one hundred five, so a hundred dollars buys less. Employment supports demand, but tight labour pushes wages up. Unemployment means willing workers cannot find jobs, weakening demand for bikes. Higher material costs squeeze margin unless Brambledon raises prices, which may cost sales in a competitive market.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "inflation",
+        "employment",
+        "unemployment",
+        "purchasing power"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 76,
+      "end_sec": 100,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "GDP: The Output Gauge",
+      "on_screen_labels": [
+        "GDP: total annual output",
+        "Real GDP rises in growth",
+        "Recession: two negative quarters",
+        "Brambledon delays new line"
+      ],
+      "animation_directives": {
+        "layout": "gauge_dial_with_quarter_bars",
+        "elements": [
+          {
+            "type": "animated_gauge",
+            "id": "gdp_gauge",
+            "label": "GDP output gauge",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "quarter_bars",
+            "id": "quarters",
+            "label": "Two consecutive quarters",
+            "color": "#C00000"
+          },
+          {
+            "type": "icon_factory",
+            "id": "plant",
+            "label": "Brambledon frame line",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "push_in_on_gauge_then_pull_back",
+        "visual_beats": [
+          {
+            "at_sec": 76,
+            "directive": "Gauge dial appears"
+          },
+          {
+            "at_sec": 88,
+            "directive": "Quarter bars turn red"
+          },
+          {
+            "at_sec": 100,
+            "directive": "Second negative quarter lights"
+          }
+        ]
+      },
+      "voiceover_script": "Gross domestic product, or GDP, is the total value of output of goods and services in a country in one year. Economic growth is when real GDP increases. A recession is falling GDP, usually two consecutive quarters of negative growth. Brambledon watches these figures before planning stock. If GDP falls for two quarters, the firm delays its new frame line.",
+      "word_count": 60,
+      "syllabus_concepts_tagged": [
+        "Gross Domestic Product (GDP)",
+        "economic growth",
+        "recession"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 100,
+      "end_sec": 128,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Fiscal Policy: Two Tax Levers",
+      "on_screen_labels": [
+        "Fiscal policy: tax and spending",
+        "Corporation tax cuts retained profit",
+        "Income tax cuts disposable income",
+        "Spending can create demand"
+      ],
+      "animation_directives": {
+        "layout": "two_lever_console_with_transmission_arrows",
+        "elements": [
+          {
+            "type": "lever",
+            "id": "corp_tax",
+            "label": "Corporation tax lever",
+            "color": "#C00000"
+          },
+          {
+            "type": "lever",
+            "id": "income_tax",
+            "label": "Income tax lever",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "lever",
+            "id": "gov_spend",
+            "label": "Government spending lever",
+            "color": "#548235"
+          },
+          {
+            "type": "animated_pipe",
+            "id": "pipe",
+            "label": "Transmission to profit and demand",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "profit_tile",
+            "id": "retained",
+            "label": "Retained profit tile",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "track_lefthand_levers_into_outcome_tiles",
+        "visual_beats": [
+          {
+            "at_sec": 100,
+            "directive": "Console levers slide in"
+          },
+          {
+            "at_sec": 109,
+            "directive": "Corporation tax lever lifts"
+          },
+          {
+            "at_sec": 118,
+            "directive": "Pipes feed outcome tiles"
+          },
+          {
+            "at_sec": 128,
+            "directive": "Demand tile responds"
+          }
+        ]
+      },
+      "voiceover_script": "Fiscal policy uses taxation and public spending to influence demand. Corporation tax comes out of retained profit, leaving less for Brambledon to invest. Higher income tax cuts disposable income, so customers buy fewer bikes. More government spending can create orders, or compete for scarce resources and push costs up. A lower tax rate leaves more cash, but the government then collects less to spend on services.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "fiscal policy",
+        "corporation tax",
+        "income tax",
+        "government spending"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 128,
+      "end_sec": 156,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Monetary Policy: The Rate Lever",
+      "on_screen_labels": [
+        "Interest rate 3 percent to 7 percent",
+        "Borrowing costs rise",
+        "Consumer spending falls",
+        "Workshop plans postponed"
+      ],
+      "animation_directives": {
+        "layout": "rate_lever_with_transmission_chain",
+        "elements": [
+          {
+            "type": "lever",
+            "id": "rate",
+            "label": "Interest rate lever",
+            "color": "#C00000"
+          },
+          {
+            "type": "animated_counter",
+            "id": "rate_value",
+            "label": "Rate counter",
+            "from_": 3,
+            "to": 7,
+            "suffix": "%",
+            "color": "#C00000"
+          },
+          {
+            "type": "animated_pipe",
+            "id": "loan_pipe",
+            "label": "Transmission to loan cost",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "icon_factory",
+            "id": "workshop",
+            "label": "New workshop",
+            "color": "#548235"
+          },
+          {
+            "type": "spending_bar",
+            "id": "spending",
+            "label": "Consumer spending bar",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "follow_rate_pulse_through_chain",
+        "visual_beats": [
+          {
+            "at_sec": 128,
+            "directive": "Rate lever moves from 3 to 7"
+          },
+          {
+            "at_sec": 137,
+            "directive": "Loan cost pipe glows"
+          },
+          {
+            "at_sec": 146,
+            "directive": "Workshop icon dims"
+          },
+          {
+            "at_sec": 156,
+            "directive": "Spending bar contracts"
+          }
+        ]
+      },
+      "voiceover_script": "Monetary policy works through interest rates. Brambledon's loan rate rises from three percent to seven percent. Because borrowing costs rise, monthly repayments take more profit, so the firm postpones a new workshop. Customers face dearer credit too, and consumer spending falls. Lower rates would reverse both effects. The transmission runs from the rate, to the loan, to spending, then to orders and to jobs across the supply chain.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "monetary policy",
+        "interest rates",
+        "borrowing costs",
+        "consumer spending"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 156,
+      "end_sec": 188,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Which Lever Matters Most?",
+      "on_screen_labels": [
+        "PRO: lower rates lift demand",
+        "PRO: lower taxes lift profit",
+        "CON: cheap credit fuels inflation",
+        "CON: rate rises make loans dear"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_pro_con_with_vertical_divider",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "pro",
+            "label": "Benefits panel",
+            "color": "#548235"
+          },
+          {
+            "type": "split_panel",
+            "id": "con",
+            "label": "Limitations panel",
+            "color": "#C00000"
+          },
+          {
+            "type": "lever",
+            "id": "rates",
+            "label": "Rate lever",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "balance_icon",
+            "id": "balance",
+            "label": "Policy balance",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "swing_between_two_panels",
+        "visual_beats": [
+          {
+            "at_sec": 156,
+            "directive": "Green pro panel fills"
+          },
+          {
+            "at_sec": 167,
+            "directive": "Red con panel fills"
+          },
+          {
+            "at_sec": 178,
+            "directive": "Rate lever moves both ways"
+          },
+          {
+            "at_sec": 188,
+            "directive": "Balance icon settles"
+          }
+        ]
+      },
+      "voiceover_script": "On one side, lower rates and lower taxes lift demand and profit. Brambledon can hire and expand. On the other side, cheap credit can fuel inflation, and rate rises make loans expensive. Higher taxes reduce profit but fund services that support demand. Which lever matters most depends on whether the problem is weak sales or rising costs. A boom needs cooling, while a slump needs stimulus, so policy must match the stage of the cycle we are in.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "evaluation",
+        "fiscal policy",
+        "monetary policy",
+        "inflation"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 188,
+      "end_sec": 224,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Brambledon Responds to a Downturn",
+      "on_screen_labels": [
+        "Cut overtime, delay expansion",
+        "Change product mix",
+        "Negotiate supplier terms",
+        "Keep training for recovery"
+      ],
+      "animation_directives": {
+        "layout": "factory_with_cost_valves_and_product_mix_funnel",
+        "elements": [
+          {
+            "type": "icon_factory",
+            "id": "plant",
+            "label": "Brambledon plant",
+            "color": "#1F4E79"
+          },
+          {
+            "type": "valve",
+            "id": "costs",
+            "label": "Cost valve",
+            "color": "#C00000"
+          },
+          {
+            "type": "funnel_animation",
+            "id": "mix",
+            "label": "Product mix funnel",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "student_tile",
+            "id": "segment",
+            "label": "Student segment",
+            "color": "#548235"
+          },
+          {
+            "type": "training_tile",
+            "id": "training",
+            "label": "Training tile",
+            "color": "#548235"
+          }
+        ],
+        "camera_motion": "dolly_through_valves_into_funnel",
+        "visual_beats": [
+          {
+            "at_sec": 188,
+            "directive": "Cost valve closes"
+          },
+          {
+            "at_sec": 200,
+            "directive": "Expansion line dims"
+          },
+          {
+            "at_sec": 212,
+            "directive": "Product mix funnel shifts"
+          },
+          {
+            "at_sec": 224,
+            "directive": "Training tile stays lit"
+          }
+        ]
+      },
+      "voiceover_script": "During a downturn Brambledon acts. Because orders fall and cash is tight, therefore it cuts overtime and delays expansion, so it protects cash. It changes product mix toward cheaper commuter bikes, negotiates supplier terms and targets students. Cutting costs preserves the firm, but deep cuts can damage quality and morale. A firm that keeps training may recover faster when growth returns. Stock is reduced, prices are held where possible, and new models are postponed until demand improves. The lesson is to match spending to the stage of the cycle.",
+      "word_count": 89,
+      "syllabus_concepts_tagged": [
+        "downturn response",
+        "product mix",
+        "cost cutting",
+        "evaluation"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 224,
+      "end_sec": 256,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Apply It: Two Levers, One Firm",
+      "on_screen_labels": [
+        "Rates up, income tax down",
+        "Which effect bites first?",
+        "Large loan means dearer repayments",
+        "Choose, then watch the arrows"
+      ],
+      "animation_directives": {
+        "layout": "quiz_panel_with_two_animated_levers",
+        "elements": [
+          {
+            "type": "lever",
+            "id": "rate_lever",
+            "label": "Rate lever",
+            "color": "#C00000"
+          },
+          {
+            "type": "lever",
+            "id": "tax_lever",
+            "label": "Tax lever",
+            "color": "#548235"
+          },
+          {
+            "type": "answer_tiles",
+            "id": "answers",
+            "label": "Four answer tiles",
+            "color": "#BF8F00"
+          },
+          {
+            "type": "animated_arrow",
+            "id": "result",
+            "label": "Result arrow",
+            "color": "#1F4E79"
+          }
+        ],
+        "camera_motion": "hover_over_levers_then_reveal_arrows",
+        "visual_beats": [
+          {
+            "at_sec": 224,
+            "directive": "Both levers appear"
+          },
+          {
+            "at_sec": 235,
+            "directive": "Rate lever rises"
+          },
+          {
+            "at_sec": 246,
+            "directive": "Tax lever falls"
+          },
+          {
+            "at_sec": 256,
+            "directive": "Arrows reveal the answer"
+          }
+        ]
+      },
+      "voiceover_script": "Time to apply this. Imagine interest rates rise and income tax falls at the same time. Which effect hits Brambledon first, and which is more significant for a firm with a large loan? On screen, two levers move in opposite directions. Choose your answer, then watch the arrows show the result. A larger loan means heavier repayments, so the rate rise usually bites harder than extra spending power from tax in the short run for this business.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "interest rates",
+        "income tax",
+        "application",
+        "evaluation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Brambledon has a large loan. Interest rates rise from 3% to 7% while income tax falls. Which effect is most significant first?",
+    "options": [
+      "Dearer loan repayments reduce profit and delay investment",
+      "Lower income tax instantly doubles bicycle sales",
+      "Higher rates make borrowing cheaper for the firm",
+      "Falling income tax removes the need to repay loans"
+    ],
+    "correct_index": 0,
+    "visual_explanation": "The rate lever slides from 3 to 7 and a red repayment pipe widens into the profit tile, while the green tax lever only nudges the spending bar. The loan arrow reaches the workshop before the customer arrow reaches the showroom."
+  }
+}

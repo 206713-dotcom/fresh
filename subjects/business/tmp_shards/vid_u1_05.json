@@ -1,0 +1,546 @@
+{
+  "video_id": "VID_U1_05",
+  "unit_number": 1,
+  "unit_title": "Unit 1: Understanding business activity",
+  "chapter_code": "1.5",
+  "chapter_title": "Business objectives and stakeholder objectives",
+  "video_title": "Visualising SMART Objectives and Stakeholder Conflict",
+  "target_duration_sec": 220,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Explain common business objectives and write a SMART objective",
+    "Identify internal and external stakeholder groups and their aims",
+    "Analyse stakeholder conflict and evaluate CSR against profit"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 26,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Objectives Give a Business Direction",
+      "on_screen_labels": [
+        "Survival, profit, growth, market share",
+        "Corporate social responsibility",
+        "Objectives coordinate decisions",
+        "SMART: specific, measurable, achievable"
+      ],
+      "animation_directives": {
+        "layout": "objective_ladder_with_five_glowing_rungs",
+        "elements": [
+          {
+            "type": "ladder",
+            "id": "ladder",
+            "label": "Objectives ladder",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "rung",
+            "id": "survival",
+            "label": "Survival rung",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "rung",
+            "id": "csr",
+            "label": "CSR rung",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "badge",
+            "id": "smart",
+            "label": "SMART badge",
+            "color": "#6C3483"
+          }
+        ],
+        "camera_motion": "rising_tracking_shot_along_the_objective_ladder",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Light each rung of the objective ladder in turn"
+          },
+          {
+            "at_sec": 8,
+            "directive": "Add the CSR rung at the top"
+          },
+          {
+            "at_sec": 16,
+            "directive": "Stamp the SMART badge onto the ladder"
+          }
+        ]
+      },
+      "voiceover_script": "Business objectives are the aims or targets a business works towards. A new firm may put survival first. An established firm may chase profit, growth or a larger market share. Some also pursue corporate social responsibility, known as CSR. Objectives give direction, coordinate decisions and provide a yardstick for success. A useful objective is SMART: specific, measurable, achievable, relevant and time-bound.",
+      "word_count": 61,
+      "syllabus_concepts_tagged": [
+        "business objectives",
+        "survival",
+        "profit",
+        "growth",
+        "market share",
+        "CSR",
+        "SMART"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 26,
+      "end_sec": 52,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Writing a SMART Objective",
+      "on_screen_labels": [
+        "Specific: patient meal rating",
+        "Measurable: 70% to 85%",
+        "Achievable: train team, two menus",
+        "Time-bound: twelve months"
+      ],
+      "animation_directives": {
+        "layout": "five_smART_filter_cards_feeding_one_goal_bar",
+        "elements": [
+          {
+            "type": "filter_card",
+            "id": "specific",
+            "label": "Specific",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "filter_card",
+            "id": "measurable",
+            "label": "Measurable",
+            "color": "#16A085"
+          },
+          {
+            "type": "filter_card",
+            "id": "timebound",
+            "label": "Time-bound",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "goal_bar",
+            "id": "goal",
+            "label": "Meal satisfaction goal",
+            "color": "#2E8B57",
+            "from": 70,
+            "to": 85,
+            "suffix": "%"
+          }
+        ],
+        "camera_motion": "pan_across_five_filter_cards_then_zoom_into_the_goal_bar",
+        "visual_beats": [
+          {
+            "at_sec": 26,
+            "directive": "Feed the objective through five labelled filter cards"
+          },
+          {
+            "at_sec": 34,
+            "directive": "Raise the satisfaction bar from seventy to eighty-five percent"
+          },
+          {
+            "at_sec": 42,
+            "directive": "Lock in a twelve-month timer"
+          }
+        ]
+      },
+      "voiceover_script": "Wardwell Hospital Catering sets a SMART objective. Specific: improve the patient meal rating on the wards. Measurable: raise satisfaction from seventy percent to eighty-five percent. Achievable: train the kitchen team and add two menu choices. Relevant: better meals support patient recovery and the hospital contract. Time-bound: reach the target within twelve months. Because each part is clear, therefore progress can be tracked.",
+      "word_count": 62,
+      "syllabus_concepts_tagged": [
+        "SMART",
+        "business objectives",
+        "market research"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 52,
+      "end_sec": 78,
+      "visual_type": "org_chart_morph",
+      "on_screen_title": "Internal Stakeholders",
+      "on_screen_labels": [
+        "Owners: profit and stable contract",
+        "Managers: responsibility and bonuses",
+        "Employees: pay and job security",
+        "A stakeholder has a direct interest"
+      ],
+      "animation_directives": {
+        "layout": "internal_org_chart_with_three_aim_bubbles",
+        "elements": [
+          {
+            "type": "owner_node",
+            "id": "owners",
+            "label": "Owners",
+            "color": "#E8A33D"
+          },
+          {
+            "type": "manager_node",
+            "id": "managers",
+            "label": "Managers",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "employee_node",
+            "id": "employees",
+            "label": "Employees",
+            "color": "#16A085"
+          },
+          {
+            "type": "aim_bubbles",
+            "id": "aims",
+            "label": "Three different aims",
+            "color": "#6C3483"
+          }
+        ],
+        "camera_motion": "zoom_from_the_org_chart_into_three_aim_bubbles",
+        "visual_beats": [
+          {
+            "at_sec": 52,
+            "directive": "Draw owners above managers above employees"
+          },
+          {
+            "at_sec": 60,
+            "directive": "Pop a goal bubble beside each group"
+          },
+          {
+            "at_sec": 68,
+            "directive": "Show the manager node balancing two opposing bubbles"
+          }
+        ]
+      },
+      "voiceover_script": "Internal stakeholders work within or own the business. At Wardwell Hospital Catering, the owners want profit and a stable contract. Managers want responsibility and bonuses. Employees want higher pay and job security. Their aims can differ: owners may cut costs while staff want better terms. Because managers sit between both groups, therefore they must balance competing demands. A stakeholder has a direct interest in the firm.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "internal stakeholders",
+        "owners",
+        "managers",
+        "employees",
+        "stakeholder"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 78,
+      "end_sec": 104,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "External Stakeholders",
+      "on_screen_labels": [
+        "Customers: good meals and value",
+        "Supplier: reliable payment",
+        "Lender: repayment",
+        "Government and local community"
+      ],
+      "animation_directives": {
+        "layout": "business_hub_with_five_external_spokes",
+        "elements": [
+          {
+            "type": "hub",
+            "id": "firm",
+            "label": "Wardwell Hospital Catering",
+            "color": "#0B1F3A"
+          },
+          {
+            "type": "spoke",
+            "id": "customers",
+            "label": "Patients as customers",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "spoke",
+            "id": "supplier",
+            "label": "Fenhay Foods supplier",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "spoke",
+            "id": "community",
+            "label": "Government and community",
+            "color": "#E8A33D"
+          }
+        ],
+        "camera_motion": "orbit_camera_around_the_stakeholder_hub",
+        "visual_beats": [
+          {
+            "at_sec": 78,
+            "directive": "Build five spokes around the business hub"
+          },
+          {
+            "at_sec": 86,
+            "directive": "Attach an aim label to each spoke"
+          },
+          {
+            "at_sec": 94,
+            "directive": "Flash two spokes in conflicting colours"
+          }
+        ]
+      },
+      "voiceover_script": "External stakeholders are separate from the business but have a direct interest in it. Patients are customers who want good meals and value. Fenhay Foods, the supplier, wants reliable payment and repeat orders. The lender wants repayment. Government wants tax revenue. The local community wants jobs without noise or traffic. Because each group has a different aim, therefore a decision that helps one may harm another.",
+      "word_count": 66,
+      "syllabus_concepts_tagged": [
+        "external stakeholders",
+        "customers",
+        "suppliers",
+        "lenders",
+        "local community"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 104,
+      "end_sec": 134,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Worked Conflict: A Fifty-Cent Pay Rise",
+      "on_screen_labels": [
+        "40 staff x 40 hours x $0.50 = $800/week",
+        "Staff: valued, better meal quality",
+        "Patients: fewer complaints",
+        "Shareholders: profit falls $800"
+      ],
+      "animation_directives": {
+        "layout": "central_decision_node_with_four_competing_pressure_lines",
+        "elements": [
+          {
+            "type": "decision_node",
+            "id": "decision",
+            "label": "Pay rise decision",
+            "color": "#0B1F3A"
+          },
+          {
+            "type": "pressure_line",
+            "id": "staff",
+            "label": "Employees pull for higher pay",
+            "color": "#16A085"
+          },
+          {
+            "type": "pressure_line",
+            "id": "patients",
+            "label": "Patients pull for quality",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "pressure_line",
+            "id": "owners",
+            "label": "Shareholders pull for profit",
+            "color": "#C0392B"
+          },
+          {
+            "type": "animated_counter",
+            "id": "cost",
+            "label": "Weekly cost $800",
+            "color": "#E8A33D",
+            "from": 0,
+            "to": 800,
+            "prefix": "$"
+          }
+        ],
+        "camera_motion": "zoom_into_the_decision_node_as_pressure_lines_pull",
+        "visual_beats": [
+          {
+            "at_sec": 104,
+            "directive": "Show the forty by forty by fifty cents multiplication"
+          },
+          {
+            "at_sec": 113,
+            "directive": "Run pressure lines from staff, patients and shareholders into the centre"
+          },
+          {
+            "at_sec": 123,
+            "directive": "Tilt the decision node as profit falls by eight hundred dollars"
+          }
+        ]
+      },
+      "voiceover_script": "Here is a conflict map. Wardwell Hospital Catering employs forty kitchen staff. Giving each worker fifty cents more per hour for forty hours costs eight hundred dollars a week. Because staff feel valued, therefore meal quality improves and patients complain less. So the hospital renews the contract. However, profit falls by the same eight hundred dollars, so shareholders want a smaller pay rise. Watch the pressure lines pull in opposite directions around the decision.",
+      "word_count": 74,
+      "syllabus_concepts_tagged": [
+        "stakeholder conflict",
+        "internal stakeholders",
+        "external stakeholders",
+        "profit"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 134,
+      "end_sec": 160,
+      "visual_type": "timeline_animation",
+      "on_screen_title": "Objectives Change as a Firm Matures",
+      "on_screen_labels": [
+        "Start: survival",
+        "Next: growth",
+        "Later: market share",
+        "Driven by the business cycle and competition"
+      ],
+      "animation_directives": {
+        "layout": "objective_ladder_climbing_along_a_business_timeline",
+        "elements": [
+          {
+            "type": "timeline",
+            "id": "stage",
+            "label": "Young firm to mature firm",
+            "color": "#0B1F3A"
+          },
+          {
+            "type": "ladder",
+            "id": "ladder",
+            "label": "Survival to market share",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "cycle_icons",
+            "id": "cycle",
+            "label": "Business cycle and competition",
+            "color": "#E8A33D"
+          }
+        ],
+        "camera_motion": "pan_along_the_timeline_as_the_ladder_climbs",
+        "visual_beats": [
+          {
+            "at_sec": 134,
+            "directive": "Show the young firm covering costs"
+          },
+          {
+            "at_sec": 142,
+            "directive": "Add two hospital sites on the growth step"
+          },
+          {
+            "at_sec": 150,
+            "directive": "Raise the market share rung and cycle the driver icons"
+          }
+        ]
+      },
+      "voiceover_script": "Objectives change as a business matures. Wardwell Hospital Catering began with survival: winning one contract and covering costs. Once cash flow steadied, the objective shifted to growth, adding two more hospital sites. Later it targeted a larger market share. The business cycle, competition and owner values all drive change. Because priorities shift over time, therefore a SMART target set today may be replaced next year.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "survival",
+        "growth",
+        "market share",
+        "business objectives"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 160,
+      "end_sec": 190,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "CSR Versus Short-Term Profit",
+      "on_screen_labels": [
+        "Benefit: reputation and loyalty win contracts",
+        "Benefit: patients value better meals",
+        "Cost: local organic ingredients cost more",
+        "Judge long term against survival"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_left_csr_green_right_profit_red_with_scales",
+        "elements": [
+          {
+            "type": "csr_panel",
+            "id": "csr",
+            "label": "Local sourcing and less waste",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "profit_panel",
+            "id": "profit",
+            "label": "Margins fall this year",
+            "color": "#C0392B"
+          },
+          {
+            "type": "balance_scale",
+            "id": "judgement",
+            "label": "Survival versus long-term growth",
+            "color": "#E8A33D"
+          }
+        ],
+        "camera_motion": "crossfade_between_the_csr_and_profit_panels_then_tilt_the_scales",
+        "visual_beats": [
+          {
+            "at_sec": 160,
+            "directive": "Fill the green CSR panel with local produce and loyalty icons"
+          },
+          {
+            "at_sec": 169,
+            "directive": "Fill the red panel with falling margin bars"
+          },
+          {
+            "at_sec": 179,
+            "directive": "Balance survival against long-term growth on the scale"
+          }
+        ]
+      },
+      "voiceover_script": "Should Wardwell Hospital Catering put corporate social responsibility ahead of short-term profit? On one side, sourcing local organic ingredients and cutting food waste builds a strong reputation. Patients and the hospital trust value it, and loyalty can win more contracts. On the other side, those ingredients cost more, so margins fall this year. Therefore CSR can support long-term growth, but a firm must first earn enough to survive. Both aims matter.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "CSR",
+        "profit",
+        "evaluation",
+        "stakeholder conflict"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 190,
+      "end_sec": 220,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Recap: Objectives and Stakeholder Conflict",
+      "on_screen_labels": [
+        "Two new sites within twelve months",
+        "Growth fits a mature firm",
+        "Lender worries about debt",
+        "Write one SMART version"
+      ],
+      "animation_directives": {
+        "layout": "quiz_card_with_rising_ladder_and_opposing_pressure_lines",
+        "elements": [
+          {
+            "type": "quiz_card",
+            "id": "question",
+            "label": "Add two hospital sites next year",
+            "color": "#0B1F3A"
+          },
+          {
+            "type": "ladder",
+            "id": "ladder",
+            "label": "Objective ladder",
+            "color": "#1F6FEB"
+          },
+          {
+            "type": "pressure_line",
+            "id": "lines",
+            "label": "Stakeholder pressure lines",
+            "color": "#C0392B"
+          }
+        ],
+        "camera_motion": "follow_the_rising_ladder_then_pull_back_to_the_pressure_lines",
+        "visual_beats": [
+          {
+            "at_sec": 190,
+            "directive": "Display the case facts and the question"
+          },
+          {
+            "at_sec": 199,
+            "directive": "Raise the ladder to the growth rung"
+          },
+          {
+            "at_sec": 209,
+            "directive": "Draw lender and staff pressure lines pulling downward"
+          }
+        ]
+      },
+      "voiceover_script": "Final application. Wardwell Hospital Catering has a stable contract and wants to add two hospital sites next year. Which objective leads, and which stakeholder might object? Growth fits a mature firm with steady cash flow. A lender may worry about new debt, and staff may fear extra workload. Write one SMART version of that growth target. Watch the objective ladder rise while the stakeholder lines tug against it.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "growth",
+        "SMART",
+        "stakeholder conflict",
+        "lenders"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Wardwell Hospital Catering will add two hospital sites within twelve months and track sites opened. Which objective type is this?",
+    "options": [
+      "Survival",
+      "Growth set as a SMART objective",
+      "Profit",
+      "Market share only"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "The objective passes through five SMART filter cards, a sites-opened counter rises from zero to two, and a twelve-month timer locks in while a growth label lights up."
+  }
+}

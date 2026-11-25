@@ -1,0 +1,552 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U3_04",
+  "title": "Visualising Marketing Strategy and Legal Controls",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 267,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U3_04.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 35,
+      "visual_type": "animated_scenario_hook",
+      "layout": "globe_left_shipping_boxes_right",
+      "camera_motion": "zoom_from_factory_boxes_out_to_globe",
+      "title": "Clearleaf Cleaning Goes Abroad",
+      "labels": [
+        "Marketing strategy: objective plus mix",
+        "Eco refill sachets",
+        "Three overseas destinations"
+      ],
+      "elements": [
+        {
+          "type": "icon_globe",
+          "id": "globe",
+          "label": "Destination globe",
+          "color": "#123B5E"
+        },
+        {
+          "type": "icon_box",
+          "id": "boxes",
+          "label": "Refill cartons",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "icon_road",
+          "id": "route",
+          "label": "Three export routes",
+          "color": "#F2C14E"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Refill sachets appear on a factory line"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Three routes light up on the globe"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Strategy definition banner slides in"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Clearleaf Cleaning makes eco refill sachets and wants to sell them abroad. A marketing strategy is a plan with a marketing objective and details of the marketing mix that aims to achieve it. On the globe, boxes leave the home country toward three new destinations. The team must pick customers, set a position, align the four Ps, respect local rules and weigh legal controls. This video follows that journey, then compares one global message with adapted local offers. The final call must consider both sides.",
+        "words": 85,
+        "wpm": 145.7
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 35,
+      "out": 68,
+      "visual_type": "funnel_animation",
+      "layout": "audience_funnel_into_journey_path",
+      "camera_motion": "follow_the_funnel_then_travel_the_journey_path",
+      "title": "Targeting, Positioning, Customer Journey",
+      "labels": [
+        "Eco focused households are the target",
+        "Position: affordable and trustworthy",
+        "Awareness to interest to loyalty"
+      ],
+      "elements": [
+        {
+          "type": "funnel",
+          "id": "target",
+          "label": "Household segment funnel",
+          "color": "#123B5E"
+        },
+        {
+          "type": "icon_map",
+          "id": "position",
+          "label": "Positioning dot on map",
+          "color": "#6C5CE7"
+        },
+        {
+          "type": "path",
+          "id": "journey",
+          "label": "Customer journey path",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "icon_heart",
+          "id": "loyalty",
+          "label": "Loyalty end point",
+          "color": "#D64550"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Funnel focuses on the chosen household segment"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Positioning dot settles between affordable and premium"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Journey path lights stage by stage"
+        }
+      ],
+      "chart": {
+        "flow_nodes": [
+          "awareness",
+          "interest",
+          "purchase",
+          "loyalty"
+        ]
+      },
+      "narration": {
+        "text": "Targeting starts with a segment: eco focused households who buy refills each month. Positioning places the brand as affordable and trustworthy, not the cheapest. The customer journey animates as a path: awareness, interest, purchase, then loyalty. At each step the firm places a cue, from a social post to a labelled pack. Because buyers compare refills on the shelf, therefore clear labelling reduces hesitation, so more shoppers reach purchase. Marketing works when the message follows the customer, not the factory.",
+        "words": 80,
+        "wpm": 145.5
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 68,
+      "out": 101,
+      "visual_type": "interactive_graph_build",
+      "layout": "four_tile_puzzle_around_segment",
+      "camera_motion": "push_into_puzzle_as_each_tile_locks",
+      "title": "The Four Ps Snap Together",
+      "labels": [
+        "Product, price, place, promotion fit",
+        "Confusion if price and message clash",
+        "Coherence builds a clear position"
+      ],
+      "elements": [
+        {
+          "type": "puzzle",
+          "id": "mix",
+          "label": "Four Ps fit frame",
+          "color": "#123B5E"
+        },
+        {
+          "type": "tile",
+          "id": "product",
+          "label": "Refill product tile",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "tile",
+          "id": "price",
+          "label": "Fair price tile",
+          "color": "#F2C14E"
+        },
+        {
+          "type": "tile",
+          "id": "place",
+          "label": "Local shop tile",
+          "color": "#6C5CE7"
+        },
+        {
+          "type": "tile",
+          "id": "promo",
+          "label": "Honest promotion tile",
+          "color": "#1B7F7B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Four tiles lock into a frame"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Clashing price and message flash red"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Consistent frame turns green"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Marketing strategy means the four Ps fit together. A refill product, a fair price, local shop distribution and honest promotion form a connected set. The tiles snap into a single frame around the chosen segment. If the price is high while the message says budget, shoppers feel confused. If promotion promises green benefits but packaging wastes plastic, trust falls. Coherence turns a plan into a position. Because each element reinforces the others, therefore the brand sounds consistent, so customers remember it.",
+        "words": 81,
+        "wpm": 147.3
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 101,
+      "out": 134,
+      "visual_type": "animated_scenario_hook",
+      "layout": "map_left_revenue_bars_right",
+      "camera_motion": "pan_from_map_to_growing_revenue_bars",
+      "title": "Overseas Entry By The Numbers",
+      "labels": [
+        "Home revenue $2m",
+        "New country adds $600k",
+        "Dependence falls to about 77 percent"
+      ],
+      "elements": [
+        {
+          "type": "icon_map",
+          "id": "map",
+          "label": "Home and target markets",
+          "color": "#123B5E"
+        },
+        {
+          "type": "bar_chart",
+          "id": "revenue",
+          "label": "Revenue before and after",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "icon_risk",
+          "id": "risk",
+          "label": "Risk spread meter",
+          "color": "#F2C14E"
+        },
+        {
+          "type": "icon_alert",
+          "id": "gaps",
+          "label": "Culture and rules alerts",
+          "color": "#D64550"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Destination country lights on the map"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Revenue bar grows by 600k"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Risk meter splits across two markets"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Entering overseas markets can increase sales and spread risk. Clearleaf Cleaning earns two million dollars at home; a new country adds six hundred thousand, lifting revenue thirty percent and cutting dependence on one market to about seventy seven percent. The map lights up. But cultural differences, lack of knowledge and legal requirements raise difficulty. Customers abroad may prefer bottles, not sachets. Local rules may demand different labels. The gains are real, and so are the costs of learning a new market.",
+        "words": 81,
+        "wpm": 147.3
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 134,
+      "out": 170,
+      "visual_type": "flow_diagram",
+      "layout": "border_gate_with_tariff_coin_and_quota_counter",
+      "camera_motion": "follow_one_cart_through_the_border_gate",
+      "title": "Tariffs, Quotas And Trade Rules",
+      "labels": [
+        "Tariff: tax on imports",
+        "Quota: limit on imported quantity",
+        "Rules can demand extra tests"
+      ],
+      "elements": [
+        {
+          "type": "gate",
+          "id": "border",
+          "label": "Border gate",
+          "color": "#4A5A6A"
+        },
+        {
+          "type": "icon_coin",
+          "id": "tariff",
+          "label": "Two dollar tariff",
+          "color": "#D64550"
+        },
+        {
+          "type": "counter",
+          "id": "quota",
+          "label": "Quota stop counter",
+          "color": "#F2C14E"
+        },
+        {
+          "type": "icon_check",
+          "id": "rules",
+          "label": "Product standards check",
+          "color": "#123B5E"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Tariff coin drops onto the ten dollar cart"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Landed cost counter reaches twelve"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Quota counter stops the next cart"
+        }
+      ],
+      "chart": {
+        "flow_nodes": [
+          "producer",
+          "border gate",
+          "local buyer"
+        ]
+      },
+      "narration": {
+        "text": "Cross border trade can face restrictions. A tariff is a tax on imports: a ten dollar refill gains a two dollar charge, so the landed cost becomes twelve dollars. A quota is a limit on the physical quantity of a product that can be imported, shown by a gate counter that stops at a fixed number. Rules and standards can demand extra tests. These controls protect local producers but raise prices and reduce choice. A firm must price the extra cost into its plan before it enters.",
+        "words": 87,
+        "wpm": 145.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 170,
+      "out": 203,
+      "visual_type": "funnel_animation",
+      "layout": "three_shield_stack_over_product_line",
+      "camera_motion": "raise_shields_one_by_one_over_the_product",
+      "title": "Consumer Protection And Legal Controls",
+      "labels": [
+        "Laws protect from faulty and unsafe goods",
+        "Misleading promotion needs evidence",
+        "Pricing and labelling must be clear"
+      ],
+      "elements": [
+        {
+          "type": "shield",
+          "id": "claims",
+          "label": "Misleading claim shield",
+          "color": "#D64550"
+        },
+        {
+          "type": "shield",
+          "id": "price",
+          "label": "True price shield",
+          "color": "#F2C14E"
+        },
+        {
+          "type": "shield",
+          "id": "label",
+          "label": "Labelling shield",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "icon_box",
+          "id": "pack",
+          "label": "Revised refill pack",
+          "color": "#123B5E"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Claim shield strikes through an unproven phrase"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Price shield adds compulsory charges"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Label shield lists ingredients and origin"
+        }
+      ],
+      "chart": {
+        "flow_nodes": [
+          "misleading promotion",
+          "pricing",
+          "labelling"
+        ]
+      },
+      "narration": {
+        "text": "Legal controls on marketing are laws passed by government to protect consumers from faulty goods, unsafe goods and misleading promotion. Three shields rise. Misleading promotion: a claim of completely safe needs evidence, or it is struck through. Pricing: the shown price must include compulsory charges, so there is no surprise at the till. Labelling: ingredients, origin and instructions must be clear. Consumer protection also covers complaints, safety and returns. Clearleaf rewrites its pack claims before shipping, and the shield stays intact.",
+        "words": 81,
+        "wpm": 147.3
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 203,
+      "out": 234,
+      "visual_type": "split_screen_comparison",
+      "layout": "balance_scale_cost_coin_vs_trust_shield",
+      "camera_motion": "tilt_scale_then_settle_at_balance",
+      "title": "Regulation Costs And Trust",
+      "labels": [
+        "Cost: $30,000 and six weeks",
+        "Benefit: returns fall from 5 to 2 percent",
+        "Rules build trust and deter rivals"
+      ],
+      "elements": [
+        {
+          "type": "balance_scale",
+          "id": "weigh",
+          "label": "Cost and trust scale",
+          "color": "#123B5E"
+        },
+        {
+          "type": "icon_coin",
+          "id": "cost",
+          "label": "Compliance cost coin",
+          "color": "#D64550"
+        },
+        {
+          "type": "icon_shield",
+          "id": "trust",
+          "label": "Trust shield",
+          "color": "#2E8B6B"
+        },
+        {
+          "type": "bar_chart",
+          "id": "returns",
+          "label": "Returns 5 to 2 percent",
+          "color": "#F2C14E"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Cost coin drops and scale tilts"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Returns bar falls from 5 percent to 2 percent, a drop of 3 percentage points"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Trust shield rises and scale settles"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Regulation has two edges. Compliance costs Clearleaf Cleaning thirty thousand dollars and six weeks of checks, which slows a campaign. Yet clear rules build trust, cut returns from five percent to two percent, and protect reputable firms from unfair rivals. The scales balance a cost coin against a trust shield. Because rules stop rivals making false claims, therefore honest brands look stronger, so customers buy with confidence. A short term expense becomes long term protection.",
+        "words": 75,
+        "wpm": 145.2
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 234,
+      "out": 267,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_global_left_local_right_verdict",
+      "camera_motion": "pull_back_from_split_screen_to_verdict_banner",
+      "title": "Standardised Or Adapted Marketing",
+      "labels": [
+        "One message: low cost, consistent brand",
+        "Adapted: fits local habits and rules",
+        "Adapt labels and price, standardise core"
+      ],
+      "elements": [
+        {
+          "type": "icon_globe",
+          "id": "global",
+          "label": "One global message",
+          "color": "#123B5E"
+        },
+        {
+          "type": "icon_map",
+          "id": "local",
+          "label": "Local labels and prices",
+          "color": "#6C5CE7"
+        },
+        {
+          "type": "balance_scale",
+          "id": "weigh",
+          "label": "Cost versus fit scale",
+          "color": "#F2C14E"
+        },
+        {
+          "type": "verdict_banner",
+          "id": "choice",
+          "label": "Adapt only what must change",
+          "color": "#2E8B6B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Global column stacks cost savings"
+        },
+        {
+          "at_sec": 11,
+          "directive": "Local column stacks relevance gains"
+        },
+        {
+          "at_sec": 22,
+          "directive": "Verdict banner highlights the blended plan"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Last decision: standardised or adapted marketing? One global product and message keeps costs low and the brand consistent. Adapting language, pack size and price fits local habits, but every change adds cost and complexity. On the split screen, the left column counts savings; the right column counts relevance. Because refills depend on local words and rules, therefore Clearleaf adapts labels and price, so it standardises the core product only. A smart strategy blends both sides instead of choosing blindly.",
+        "words": 79,
+        "wpm": 143.6
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Clearleaf Cleaning enters a country where shoppers read local labels and rules require local wording. Which approach fits best?",
+    "options": [
+      "A fully standardised message",
+      "Adapted labels and price only",
+      "Ignore the local rules",
+      "Change the logo and nothing else"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A split screen shows one global message on the left and local label tiles on the right, then a verdict banner locks onto the blended plan."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

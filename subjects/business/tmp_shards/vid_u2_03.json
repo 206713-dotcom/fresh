@@ -1,0 +1,570 @@
+{
+  "video_id": "VID_U2_03",
+  "unit_number": 2,
+  "unit_title": "Unit 2: People in business",
+  "chapter_code": "2.3",
+  "chapter_title": "Recruitment, selection and training",
+  "video_title": "Follow the Hire: Funnel, Contract and Training Lanes",
+  "target_duration_sec": 240,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Sequence the recruitment stages from job analysis to offer",
+    "Compare internal and external recruitment and the three training types",
+    "Distinguish dismissal from redundancy and justify a hiring decision with evidence"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 24,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "From 48 Applicants to One Manager",
+      "on_screen_labels": [
+        "Juniper Lane Coffee Roasters",
+        "One regional manager vacancy",
+        "48 applications received"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "icon_cafe",
+            "id": "cafe_chain",
+            "label": "Twelve cafes",
+            "color": "#C8860D"
+          },
+          {
+            "type": "funnel",
+            "id": "hiring_funnel",
+            "label": "Recruitment funnel",
+            "color": "#17365D"
+          },
+          {
+            "type": "animated_counter",
+            "id": "applicant_counter",
+            "label": "Applications",
+            "color": "#2E75B6",
+            "from": 0,
+            "to": 48
+          }
+        ],
+        "camera_motion": "zoom_into_the_top_of_the_funnel",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Show twelve cafe icons across a region"
+          },
+          {
+            "at_sec": 12,
+            "directive": "Forty-eight application cards pour into the funnel"
+          },
+          {
+            "at_sec": 24,
+            "directive": "One vacancy badge pulses at the funnel exit"
+          }
+        ]
+      },
+      "voiceover_script": "Recruitment is the process from identifying that the business needs to employ someone up to the point at which applications have arrived at the business. Juniper Lane Coffee Roasters needs one regional manager. Forty-eight applications land in the inbox. The funnel narrows step by step until one person is hired. Follow each stage and check the evidence.",
+      "word_count": 57,
+      "syllabus_concepts_tagged": [
+        "recruitment",
+        "job analysis",
+        "selection"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 24,
+      "end_sec": 50,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "The Recruitment Funnel",
+      "on_screen_labels": [
+        "Job analysis: record the tasks",
+        "Job description: duties",
+        "Person specification: qualities",
+        "Advertise, forms, shortlist, interview, offer"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "funnel",
+            "id": "stage_funnel",
+            "label": "Eight stage funnel",
+            "color": "#17365D",
+            "stages": 8
+          },
+          {
+            "type": "icon_document",
+            "id": "job_document",
+            "label": "Job analysis and description",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "icon_magnifier",
+            "id": "spec_check",
+            "label": "Person specification",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "follow_the_funnel_downward",
+        "visual_beats": [
+          {
+            "at_sec": 24,
+            "directive": "Job analysis card drops into the funnel top"
+          },
+          {
+            "at_sec": 37,
+            "directive": "Description and person specification cards stack below"
+          },
+          {
+            "at_sec": 50,
+            "directive": "Advert, forms, shortlist, interview and offer slide out in sequence"
+          }
+        ]
+      },
+      "voiceover_script": "The funnel starts with job analysis, which identifies and records the responsibilities and tasks of the job. Next comes a job description outlining duties, and a person specification listing qualifications, experience and personal qualities. The advert goes online. Application forms come in, then shortlisting, interviews, references and an offer. Each stage removes unsuitable candidates. Skip job analysis and a vague advert pulls the wrong people.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "job analysis",
+        "job description",
+        "person specification",
+        "stages in recruitment"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 50,
+      "end_sec": 74,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Internal Versus External Hiring",
+      "on_screen_labels": [
+        "Internal: 12 days, $600 training",
+        "External: 35 days, $2,400 training",
+        "External widens the talent pool"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "hiring_split",
+            "label": "Two hiring routes",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_person",
+            "id": "internal_candidate",
+            "label": "Priya, internal",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "icon_person",
+            "id": "external_candidate",
+            "label": "Mark, external",
+            "color": "#2E75B6"
+          }
+        ],
+        "camera_motion": "alternate_between_the_two_candidate_panels",
+        "visual_beats": [
+          {
+            "at_sec": 50,
+            "directive": "Priya card rises from inside the cafe chain"
+          },
+          {
+            "at_sec": 62,
+            "directive": "Mark card enters from an outside agency"
+          },
+          {
+            "at_sec": 74,
+            "directive": "Cost and time counters compare the two routes"
+          }
+        ]
+      },
+      "voiceover_script": "Internal recruitment fills a vacancy with an existing employee; external recruitment brings someone new. Priya manages a cafe and knows the schedule. Priya can start in twelve days and costs six hundred dollars to train. Mark may bring fresh ideas, but takes thirty-five days and two thousand four hundred dollars. Internal is quicker and cheaper; external widens the talent pool.",
+      "word_count": 60,
+      "syllabus_concepts_tagged": [
+        "internal recruitment",
+        "external recruitment",
+        "advantages and disadvantages"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 74,
+      "end_sec": 100,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Shortlisting Four From Forty-Eight",
+      "on_screen_labels": [
+        "48 CVs to 12 shortlisted",
+        "References and tests to 4 interviews",
+        "Offer matched to person specification"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "flow_nodes",
+            "id": "selection_flow",
+            "label": "Selection stages",
+            "color": "#17365D",
+            "nodes": 4
+          },
+          {
+            "type": "icon_document",
+            "id": "cv_stack",
+            "label": "Forty-eight CVs",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "icon_interview",
+            "id": "interview_panel",
+            "label": "Four interviews",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "track_the_cards_through_each_gate",
+        "visual_beats": [
+          {
+            "at_sec": 74,
+            "directive": "A stack of forty-eight cards passes the first gate"
+          },
+          {
+            "at_sec": 87,
+            "directive": "Twelve cards survive shortlisting and references"
+          },
+          {
+            "at_sec": 100,
+            "directive": "Four reach interviews and one offer card exits"
+          }
+        ]
+      },
+      "voiceover_script": "Selection evaluates candidates against the job. Shortlisting cuts forty-eight CVs to twelve. References and a short aptitude test reduce twelve to four interviews. A panel scores answers against the person specification, not friendliness. One candidate receives the offer. An assessment centre could test planning under pressure, but costs more. The exam tip is simple: match your recommendation to evidence in the case, then justify it.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "selection methods",
+        "shortlisting",
+        "interviews",
+        "person specification"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 100,
+      "end_sec": 124,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Contracts and Legal Controls",
+      "on_screen_labels": [
+        "Contract: duties, hours, holiday, sick pay",
+        "Minimum wage: $11.50 per hour",
+        "Equal opportunities and unfair dismissal"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "icon_contract",
+            "id": "contract",
+            "label": "Employment contract",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_scales",
+            "id": "legal_scales",
+            "label": "Legal controls",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "warning_sign",
+            "id": "unfair_sign",
+            "label": "Unfair dismissal",
+            "color": "#B22222"
+          }
+        ],
+        "camera_motion": "push_into_the_signed_contract",
+        "visual_beats": [
+          {
+            "at_sec": 100,
+            "directive": "A contract page unrolls with four clause icons"
+          },
+          {
+            "at_sec": 112,
+            "directive": "A wage floor line appears at eleven fifty"
+          },
+          {
+            "at_sec": 124,
+            "directive": "Equal opportunity and safety shields slide into place"
+          }
+        ]
+      },
+      "voiceover_script": "An employment contract is a legal agreement between employer and employee listing rights and responsibilities. It states duties, working hours, holiday entitlement and sick pay. Legal controls cover unfair dismissal, discrimination and safety, and set an eleven dollar fifty minimum wage. Equal opportunities rules require fair treatment. These rules raise employer costs but improve fairness and retention.",
+      "word_count": 57,
+      "syllabus_concepts_tagged": [
+        "employment contract",
+        "minimum wage",
+        "discrimination",
+        "unfair dismissal"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 124,
+      "end_sec": 150,
+      "visual_type": "timeline_animation",
+      "on_screen_title": "Three Training Lanes",
+      "on_screen_labels": [
+        "Induction: $200 introduction",
+        "On-the-job: $600 shadowing",
+        "Off-the-job: $2,400 specialist course"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "timeline",
+            "id": "training_lanes",
+            "label": "Three training types",
+            "color": "#17365D",
+            "lanes": 3
+          },
+          {
+            "type": "icon_tour",
+            "id": "induction_icon",
+            "label": "Induction tour",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "icon_shadow",
+            "id": "shadow_icon",
+            "label": "Shadow a barista",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "icon_college",
+            "id": "college_icon",
+            "label": "College course",
+            "color": "#6A4C93"
+          }
+        ],
+        "camera_motion": "travel_down_the_three_training_lanes",
+        "visual_beats": [
+          {
+            "at_sec": 124,
+            "directive": "New starter walks the cafe and meets the team"
+          },
+          {
+            "at_sec": 137,
+            "directive": "Shadowing lane shows a trainee beside an experienced barista"
+          },
+          {
+            "at_sec": 150,
+            "directive": "College lane opens with a two thousand four hundred dollar price tag"
+          }
+        ]
+      },
+      "voiceover_script": "Three training lanes appear. Induction training introduces the business, its customs and colleagues. On-the-job training happens by watching and practising with an experienced worker at the workplace. Off-the-job training takes staff away to specialist trainers. Juniper budgets two hundred dollars for induction, six hundred for shadowing, and two thousand four hundred for a college course. On-the-job is cheap and immediate; off-the-job is broader but expensive.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "induction training",
+        "on-the-job training",
+        "off-the-job training"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 150,
+      "end_sec": 178,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Priya's First Week at Juniper",
+      "on_screen_labels": [
+        "Pay: $14.00 per hour",
+        "Training: $600 not $2,400",
+        "Start: 12 days not 35"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "icon_person",
+            "id": "priya",
+            "label": "Priya the new manager",
+            "color": "#2E8B57"
+          },
+          {
+            "type": "animated_counter",
+            "id": "saving_counter",
+            "label": "Training saving",
+            "color": "#C8860D",
+            "from": 600,
+            "to": 2400
+          },
+          {
+            "type": "checklist",
+            "id": "week_one",
+            "label": "First week checklist",
+            "color": "#17365D"
+          }
+        ],
+        "camera_motion": "follow_priya_through_her_first_week",
+        "visual_beats": [
+          {
+            "at_sec": 150,
+            "directive": "Priya receives the offer at fourteen dollars an hour"
+          },
+          {
+            "at_sec": 164,
+            "directive": "Training cost bars compare six hundred with two thousand four hundred"
+          },
+          {
+            "at_sec": 178,
+            "directive": "Checklist ticks food safety, till system and roasting tour"
+          }
+        ]
+      },
+      "voiceover_script": "Juniper offers the role to Priya at fourteen dollars an hour. Because she already knows the twelve cafes, therefore induction is short, so training costs six hundred dollars instead of two thousand four hundred. The vacancy is filled in twelve days, not thirty-five. Week one covers food safety and the till. Mark would have brought new ideas, but the saving is eighteen hundred dollars and the role opens twenty-three days sooner.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "causal chain",
+        "internal recruitment",
+        "training costs"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 178,
+      "end_sec": 208,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Dismissal, Redundancy and Trade-Offs",
+      "on_screen_labels": [
+        "Redundancy: job no longer needed",
+        "Dismissal: conduct or capability",
+        "Unfair dismissal is illegal"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "evaluation_split",
+            "id": "hire_eval",
+            "label": "Two-sided evaluation",
+            "color": "#17365D"
+          },
+          {
+            "type": "icon_closed_shop",
+            "id": "closure",
+            "label": "Two cafes close",
+            "color": "#B22222"
+          },
+          {
+            "type": "icon_coins",
+            "id": "cost_side",
+            "label": "Cost trade-off",
+            "color": "#C8860D"
+          },
+          {
+            "type": "icon_bulb",
+            "id": "idea_side",
+            "label": "New ideas trade-off",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "alternate_between_the_redundancy_and_hiring_panels",
+        "visual_beats": [
+          {
+            "at_sec": 178,
+            "directive": "A job card moves to a redundancy bin as a cafe closes"
+          },
+          {
+            "at_sec": 193,
+            "directive": "Conduct and capability cards move to a dismissal bin"
+          },
+          {
+            "at_sec": 208,
+            "directive": "Hiring pros and cons appear on the opposite panel"
+          }
+        ]
+      },
+      "voiceover_script": "Now separate dismissal from redundancy. Redundancy happens when a job is no longer needed; dismissal usually follows poor conduct or capability. Unfair dismissal, such as sacking someone for joining a union, is illegal. Two cafes close, so redundant staff receive compensation and retraining. Weigh the internal hire: fast, cheap and motivating, but it limits new ideas. The external hire widens talent, yet costs more and takes longer. Good answers state one benefit, one limitation and a justified choice.",
+      "word_count": 78,
+      "syllabus_concepts_tagged": [
+        "redundancy",
+        "dismissal",
+        "evaluation",
+        "internal recruitment"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 208,
+      "end_sec": 240,
+      "visual_type": "timeline_animation",
+      "on_screen_title": "Turn a Recommendation into Marks",
+      "on_screen_labels": [
+        "Stage, evidence, trade-off",
+        "48 applications to one offer",
+        "Save $1,800 and 23 days"
+      ],
+      "animation_directives": {
+        "layout": "full_width_animated_diagram_with_side_caption",
+        "elements": [
+          {
+            "type": "timeline",
+            "id": "answer_timeline",
+            "label": "Exam answer timeline",
+            "color": "#17365D"
+          },
+          {
+            "type": "funnel",
+            "id": "mini_funnel",
+            "label": "Eight stage recap",
+            "color": "#2E75B6"
+          },
+          {
+            "type": "checkbox",
+            "id": "tradeoff_box",
+            "label": "Trade-off check",
+            "color": "#2E8B57"
+          }
+        ],
+        "camera_motion": "step_through_the_answer_timeline",
+        "visual_beats": [
+          {
+            "at_sec": 208,
+            "directive": "Replay the eight funnel stages as small icons"
+          },
+          {
+            "at_sec": 219,
+            "directive": "Show the contract and three training lanes in brief"
+          },
+          {
+            "at_sec": 229,
+            "directive": "Highlight the saving of eighteen hundred dollars"
+          },
+          {
+            "at_sec": 240,
+            "directive": "Assemble a three part written answer on screen"
+          }
+        ]
+      },
+      "voiceover_script": "Review the whole chain. Job analysis leads to a job description and person specification, then advertising, forms, shortlisting, interviews and an offer. Selection uses CVs, references, tests and assessment centres. Contracts and legal controls protect both sides. Induction, on-the-job and off-the-job training develop skills. Juniper chose Priya, saved eighteen hundred dollars and filled the post twenty-three days early. In your answer, name the stage, apply the case detail, and evaluate the trade-off. That is how a recommendation earns marks.",
+      "word_count": 79,
+      "syllabus_concepts_tagged": [
+        "recruitment process",
+        "selection",
+        "training",
+        "evaluation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Juniper Lane Coffee Roasters closes two cafes and removes four supervisor posts because the roles are no longer needed. What is this called, and what must the business do?",
+    "options": [
+      "Unfair dismissal, because the workers broke no rules and should be reinstated",
+      "Redundancy, because the jobs were eliminated, so fair process and compensation are required",
+      "Resignation, because the employees chose to leave the chain",
+      "Induction training, because new skills are needed for the remaining cafes"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A cafe sign slides shut, the supervisor job card drops into a bin labelled job eliminated, and compensation coins slide to the worker rather than to a misconduct bin."
+  }
+}

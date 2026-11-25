@@ -1,0 +1,648 @@
+{
+  "video_id": "VID_U4_03",
+  "unit_number": 4,
+  "unit_title": "Unit 4: Operations management",
+  "chapter_code": "4.3",
+  "chapter_title": "Achieving quality production",
+  "video_title": "Visualising Quality Control, Assurance and Failure Costs",
+  "target_duration_sec": 240,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Distinguish quality control from quality assurance.",
+    "Explain total quality management, kaizen, quality circles and benchmarking.",
+    "Calculate defect rates and costs of failure.",
+    "Evaluate the costs and benefits of achieving quality."
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 24,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Northgate's Inspection Gate",
+      "on_screen_labels": [
+        "Northgate Medical Devices",
+        "2,000 assemblies checked each week",
+        "About 5 percent fail"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "inspection_gate",
+            "id": "gate",
+            "label": "End-of-line inspection",
+            "color": "#C0392B"
+          },
+          {
+            "type": "product_stream",
+            "id": "assemblies",
+            "count": 2000,
+            "label": "Syringe assemblies"
+          },
+          {
+            "type": "reject_bin",
+            "id": "rejects",
+            "label": "Defective units",
+            "color": "#C0392B"
+          },
+          {
+            "type": "cost_meter",
+            "id": "meter",
+            "label": "Failure cost"
+          }
+        ],
+        "camera_motion": "follow_the_assemblies_to_the_gate_then_pull_back_to_the_cost_meter",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Good assemblies move along a conveyor toward packing"
+          },
+          {
+            "at_sec": 8,
+            "directive": "Red defective units drop through the inspection gate"
+          },
+          {
+            "at_sec": 16,
+            "directive": "A reject bin fills and a cost meter starts ticking"
+          },
+          {
+            "at_sec": 23,
+            "directive": "A manager silhouette asks whether end checks are enough"
+          }
+        ]
+      },
+      "voiceover_script": "At Northgate Medical Devices, a final inspection gate holds back faulty syringe assemblies. Workers check 2,000 units each week, and about 5 percent fail. Each failure costs 12 dollars to rework. The manager wonders whether checking at the end is enough. Watch red defective units drop out at the gate while good units move to packing, and a cost meter tick upward.",
+      "word_count": 62,
+      "syllabus_concepts_tagged": [
+        "quality control",
+        "waste",
+        "cost of failure"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 24,
+      "end_sec": 52,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Quality Control vs Quality Assurance",
+      "on_screen_labels": [
+        "Quality control: check at end of process",
+        "Quality assurance: standards checked at each stage",
+        "Gate catches; loop prevents"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "inspection_gate",
+            "id": "qc_gate",
+            "label": "Quality control: final gate",
+            "color": "#C0392B"
+          },
+          {
+            "type": "quality_loop",
+            "id": "qa_loop",
+            "label": "Quality assurance: stage-by-stage loop",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "split_panel",
+            "id": "qc_panel",
+            "label": "Detect defects",
+            "color": "#C0392B"
+          },
+          {
+            "type": "split_panel",
+            "id": "qa_panel",
+            "label": "Prevent defects",
+            "color": "#1B8A5A"
+          }
+        ],
+        "camera_motion": "split_screen_wipe_from_one_gate_to_a_wrapped_process_loop",
+        "visual_beats": [
+          {
+            "at_sec": 24,
+            "directive": "Left panel shows one inspection gate at the end of the line"
+          },
+          {
+            "at_sec": 33,
+            "directive": "Red units are rejected after all the work is finished"
+          },
+          {
+            "at_sec": 42,
+            "directive": "Right panel shows green check loops at every workstation"
+          },
+          {
+            "at_sec": 51,
+            "directive": "Stage labels light up from components through to packing"
+          }
+        ]
+      },
+      "voiceover_script": "Quality control means checking for quality at the end of the production process. At Northgate the inspection gate rejects bad assemblies, but the waste has already happened. Quality assurance means setting quality standards throughout the process and checking they are reached at each stage. Watch a split screen: on the left, one gate catches defects; on the right, a loop of checks wraps every stage, from components to packing.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "Quality Control",
+        "Quality Assurance",
+        "quality standards"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 52,
+      "end_sec": 80,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "TQM, Kaizen and Quality Circles",
+      "on_screen_labels": [
+        "TQM: quality is everyone's job",
+        "Kaizen loops turn every week",
+        "Quality circles solve defects at source"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "tqm_loop",
+            "id": "tqm",
+            "label": "Total quality management loop",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "loop_marker",
+            "id": "kaizen",
+            "label": "Kaizen continuous improvement",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "quality_circle",
+            "id": "circle",
+            "label": "Quality circle of workers"
+          },
+          {
+            "type": "workstation",
+            "id": "station",
+            "label": "Assembly workstation"
+          }
+        ],
+        "camera_motion": "spiral_out_from_one_workstation_to_the_whole_factory_loop",
+        "visual_beats": [
+          {
+            "at_sec": 52,
+            "directive": "Small green loop indicators spin at three workstations"
+          },
+          {
+            "at_sec": 61,
+            "directive": "A circle of worker icons forms around a defect card"
+          },
+          {
+            "at_sec": 70,
+            "directive": "The loops merge into one large TQM loop around the factory"
+          },
+          {
+            "at_sec": 79,
+            "directive": "Fewer red units travel toward the final gate"
+          }
+        ]
+      },
+      "voiceover_script": "Total quality management makes quality everyone's responsibility. Kaizen means continuous improvement through eliminating waste, so Northgate's teams tweak the assembly jig every week. Quality circles bring workers together to solve defects at their source. Watch small green loop indicators spin at each workstation, then merge into one large TQM loop encircling the whole factory. Because problems are caught early, fewer faulty units reach the gate.",
+      "word_count": 65,
+      "syllabus_concepts_tagged": [
+        "total quality management",
+        "Kaizen",
+        "quality circles"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 80,
+      "end_sec": 104,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Benchmarking Against the Best",
+      "on_screen_labels": [
+        "Industry leader: 1 percent defects",
+        "Northgate starts at 5 percent",
+        "The gap becomes a target"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "comparison_bar",
+            "id": "northgate_bar",
+            "label": "Northgate 5 percent defects",
+            "color": "#7D3C98"
+          },
+          {
+            "type": "benchmark_line",
+            "id": "best_line",
+            "label": "Best in industry 1 percent",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "gap_shade",
+            "id": "gap",
+            "label": "Performance gap",
+            "color": "#D9822B"
+          },
+          {
+            "type": "target_marker",
+            "id": "target",
+            "label": "Improvement target"
+          }
+        ],
+        "camera_motion": "race_two_bars_and_pause_on_the_shaded_gap",
+        "visual_beats": [
+          {
+            "at_sec": 80,
+            "directive": "A grey bar grows to 5 percent and holds"
+          },
+          {
+            "at_sec": 88,
+            "directive": "A green benchmark line draws at 1 percent"
+          },
+          {
+            "at_sec": 96,
+            "directive": "The space between them shades amber"
+          },
+          {
+            "at_sec": 103,
+            "directive": "A target pointer moves from the bar toward the line"
+          }
+        ]
+      },
+      "voiceover_script": "Benchmarking compares Northgate's performance with the best in the industry. The best assembler has a 1 percent defect rate, while Northgate starts at 5 percent. That gap sets a target rather than a guess. Watch two bars race upward: a grey 5 percent bar for Northgate and a green 1 percent benchmark line, with the gap shaded.",
+      "word_count": 57,
+      "syllabus_concepts_tagged": [
+        "benchmarking",
+        "quality improvement"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 104,
+      "end_sec": 136,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Cost of Failure Before Improvement",
+      "on_screen_labels": [
+        "Output: 2,000 units a week",
+        "Defect rate: 5 percent",
+        "Rework cost: $12 each"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "output_counter",
+            "id": "output",
+            "from": 0,
+            "to": 2000,
+            "label": "Weekly output"
+          },
+          {
+            "type": "defect_slice",
+            "id": "defects",
+            "value": 100,
+            "color": "#C0392B",
+            "label": "Defective units"
+          },
+          {
+            "type": "rework_bin",
+            "id": "bin",
+            "label": "Rework bin",
+            "color": "#C0392B"
+          },
+          {
+            "type": "cost_tile",
+            "id": "cost",
+            "value": 1200,
+            "prefix": "$",
+            "label": "Weekly rework cost"
+          }
+        ],
+        "camera_motion": "push_in_from_the_output_counter_to_the_fill_of_the_cost_tile",
+        "visual_beats": [
+          {
+            "at_sec": 104,
+            "directive": "A counter rolls to 2,000 assemblies"
+          },
+          {
+            "at_sec": 114,
+            "directive": "A red slice detaches and reads 100 defective units"
+          },
+          {
+            "at_sec": 125,
+            "directive": "Red units slide into the rework bin one by one"
+          },
+          {
+            "at_sec": 135,
+            "directive": "A 1,200 dollar cost tile flips up beside the bin"
+          }
+        ],
+        "substitution": [
+          "2,000 x 0.05",
+          "=",
+          "100 units",
+          "x $12",
+          "=",
+          "$1,200"
+        ]
+      },
+      "voiceover_script": "Let's calculate the cost of failure before improvement. Northgate makes 2,000 assemblies a week and 5 percent are defective. Multiply 2,000 by 5 percent, which is 2,000 times 0.05, giving 100 defective units. Each one costs 12 dollars to rework. Multiply 100 by 12 and the weekly rework bill is 1,200 dollars. Watch the output counter split, 100 red units slide into a rework bin, and a 1,200 dollar cost tile appear.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "cost of failure",
+        "quality control",
+        "defect rate"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 136,
+      "end_sec": 168,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Cost of Failure After Quality Assurance",
+      "on_screen_labels": [
+        "Defect rate falls to 2 percent",
+        "40 defective units a week",
+        "Saving: $720 per week"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "defect_slice",
+            "id": "new_defects",
+            "value": 40,
+            "color": "#1B8A5A",
+            "label": "Defective units after QA"
+          },
+          {
+            "type": "cost_tile",
+            "id": "new_cost",
+            "value": 480,
+            "prefix": "$",
+            "label": "Weekly rework cost"
+          },
+          {
+            "type": "animated_counter",
+            "id": "saving",
+            "from": 0,
+            "to": 720,
+            "prefix": "$",
+            "label": "Weekly saving"
+          },
+          {
+            "type": "annual_tile",
+            "id": "annual",
+            "value": 36000,
+            "prefix": "$",
+            "label": "Saving over 50 weeks"
+          }
+        ],
+        "camera_motion": "pull_back_from_the_shrinking_bin_to_the_rising_annual_counter",
+        "visual_beats": [
+          {
+            "at_sec": 136,
+            "directive": "The red slice shrinks from 100 to 40 units"
+          },
+          {
+            "at_sec": 146,
+            "directive": "The rework cost tile flips from 1,200 to 480 dollars"
+          },
+          {
+            "at_sec": 157,
+            "directive": "A saving counter climbs to 720 dollars a week"
+          },
+          {
+            "at_sec": 167,
+            "directive": "Fifty week icons march past and the total reaches 36,000 dollars"
+          }
+        ],
+        "substitution": [
+          "(1,200 - 480) x 50",
+          "=",
+          "720 x 50",
+          "=",
+          "$36,000"
+        ]
+      },
+      "voiceover_script": "After quality assurance and kaizen at Northgate, the defect rate falls to just 2 percent. Now 2,000 times 0.02 gives 40 defective units. At 12 dollars each, rework costs 480 dollars a week. That is 1,200 minus 480, a saving of 720 dollars every week. Across 50 working weeks, 720 times 50 equals 36,000 dollars saved. Watch the red bin shrink from 100 to 40 units while the saving counter climbs to 36,000.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "Quality Assurance",
+        "Kaizen",
+        "cost of failure"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 168,
+      "end_sec": 192,
+      "visual_type": "funnel_animation",
+      "on_screen_title": "Where Failure Costs Go",
+      "on_screen_labels": [
+        "Internal failure: scrap and rework",
+        "External failure: returns and goodwill",
+        "Prevention stops defects upstream"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "failure_funnel",
+            "id": "funnel",
+            "label": "Defects funnel"
+          },
+          {
+            "type": "internal_stream",
+            "id": "internal",
+            "label": "Internal failure",
+            "color": "#C0392B"
+          },
+          {
+            "type": "external_stream",
+            "id": "external",
+            "label": "External failure",
+            "color": "#D9822B"
+          },
+          {
+            "type": "prevention_shield",
+            "id": "shield",
+            "label": "Prevention shield",
+            "color": "#1B8A5A"
+          }
+        ],
+        "camera_motion": "dolly_down_the_funnel_then_rise_to_the_green_prevention_shield",
+        "visual_beats": [
+          {
+            "at_sec": 168,
+            "directive": "Defects enter the top of a funnel"
+          },
+          {
+            "at_sec": 176,
+            "directive": "Two streams split into internal red and external amber"
+          },
+          {
+            "at_sec": 184,
+            "directive": "Return boxes and goodwill icons appear on the amber stream"
+          },
+          {
+            "at_sec": 191,
+            "directive": "A green shield at the top blocks units before defects form"
+          }
+        ]
+      },
+      "voiceover_script": "Failure cost is not just rework. Internal failure covers scrap and rework before delivery. External failure covers returns, guarantee claims and lost goodwill after delivery. Prevention and appraisal costs are spent to stop those failures happening. Watch a funnel: defects divide into an internal red stream and an external amber stream, while a green prevention shield blocks units upstream.",
+      "word_count": 59,
+      "syllabus_concepts_tagged": [
+        "cost of failure",
+        "Quality Assurance",
+        "quality standards"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 192,
+      "end_sec": 220,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Does Chasing Zero Defects Pay?",
+      "on_screen_labels": [
+        "Benefit: fewer returns and failures",
+        "Cost: training, equipment and time",
+        "Stage checks may slow output"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "benefits",
+            "label": "Benefit: fewer failures",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "split_panel",
+            "id": "costs",
+            "label": "Cost: training and delays",
+            "color": "#D9822B"
+          },
+          {
+            "type": "saving_bar",
+            "id": "saving",
+            "label": "Weekly saving"
+          },
+          {
+            "type": "delay_icon",
+            "id": "delay",
+            "label": "Slower output"
+          }
+        ],
+        "camera_motion": "center_split_with_rising_green_bars_and_stacking_amber_icons",
+        "visual_beats": [
+          {
+            "at_sec": 192,
+            "directive": "A split screen opens with two empty panels"
+          },
+          {
+            "at_sec": 201,
+            "directive": "Green bars rise as rework and returns fall"
+          },
+          {
+            "at_sec": 210,
+            "directive": "Amber training invoices and clock icons stack on the right"
+          },
+          {
+            "at_sec": 219,
+            "directive": "A balance line settles on a two-sided conclusion"
+          }
+        ]
+      },
+      "voiceover_script": "Does chasing zero defects pay? For Northgate, quality assurance cuts rework, returns and reputation damage, and the weekly saving is clear. Against it, training, new equipment and quality circles cost time and money, and inspection at every stage can slow output. Watch a split screen: green saving bars rise on the left, amber cost and delay icons stack on the right. So the benefit is fewer failures, but the cost is real.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "advantages and disadvantages of quality assurance",
+        "cost of quality",
+        "evaluation"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 220,
+      "end_sec": 240,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Apply It: Output Doubles",
+      "on_screen_labels": [
+        "Output rises to 4,000 units",
+        "Defect rate holds at 2 percent",
+        "Defects = output x 0.02"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "output_counter",
+            "id": "new_output",
+            "from": 2000,
+            "to": 4000,
+            "label": "Weekly output"
+          },
+          {
+            "type": "defect_slice",
+            "id": "new_slice",
+            "value": 80,
+            "color": "#C0392B",
+            "label": "Defective units"
+          },
+          {
+            "type": "result_tile",
+            "id": "answer",
+            "value": 80,
+            "label": "Defective units"
+          },
+          {
+            "type": "old_marker",
+            "id": "old",
+            "value": 40,
+            "label": "Previous defects"
+          }
+        ],
+        "camera_motion": "zoom_into_the_growing_red_slice_then_hold_on_the_answer_tile",
+        "visual_beats": [
+          {
+            "at_sec": 220,
+            "directive": "The output counter doubles from 2,000 to 4,000"
+          },
+          {
+            "at_sec": 226,
+            "directive": "The red defect slice grows wider"
+          },
+          {
+            "at_sec": 231,
+            "directive": "The x 0.02 multiplier glows between the output tile and the result tile"
+          },
+          {
+            "at_sec": 233,
+            "directive": "A tile flips from 40 to 80 defective units"
+          }
+        ]
+      },
+      "voiceover_script": "Apply it. If Northgate's output rises to 4,000 units a week and the 2 percent defect rate holds, how many units are defective? Multiply 4,000 by 0.02 to get 80. Watch the counter duplicate the line, then 80 red units drop into the bin instead of 40.",
+      "word_count": 47,
+      "syllabus_concepts_tagged": [
+        "defect rate",
+        "application"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Northgate raises weekly output to 4,000 units while the defect rate stays at 2 percent. How many units are defective?",
+    "options": [
+      "40 units",
+      "80 units",
+      "200 units",
+      "20 units"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "The output counter doubles from 2,000 to 4,000, the red defect slice grows, and a tile flips from 40 to 80 defective units as 0.02 appears."
+  }
+}

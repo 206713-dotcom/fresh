@@ -1,0 +1,511 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U1_04",
+  "title": "Visualising Ownership, Liability and Business Structures",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 220,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U1_04.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 26,
+      "visual_type": "org_chart_morph",
+      "layout": "org_chart_morphing_through_seven_ownership_nodes",
+      "camera_motion": "smooth_zoom_out_to_reveal_the_full_ownership_chart",
+      "title": "Seven Forms of Business Organisation",
+      "labels": [
+        "Sole trader and partnership",
+        "Private Ltd and public Plc",
+        "Franchise and joint venture",
+        "Public corporation"
+      ],
+      "elements": [
+        {
+          "type": "org_node",
+          "id": "sole",
+          "label": "Sole trader",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "org_node",
+          "id": "ltd",
+          "label": "Ltd and Plc",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "org_node",
+          "id": "franchise",
+          "label": "Franchise and joint venture",
+          "color": "#16A085"
+        },
+        {
+          "type": "org_node",
+          "id": "public",
+          "label": "Public corporation",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Build the ownership chart from a single owner node"
+        },
+        {
+          "at_sec": 8,
+          "directive": "Branch into incorporated and unincorporated forms"
+        },
+        {
+          "at_sec": 16,
+          "directive": "Reveal franchise, joint venture and public corporation nodes"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "There are forms of business organisation. A sole trader is owned and controlled by one person. A partnership has two or more joint owners. A private limited company, or Ltd, has shareholders and limited liability. A public limited company, or Plc, can sell shares to the public. A franchise uses another firm's brand and system. A joint venture shares a project, and a public corporation is state-owned.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 26,
+      "out": 52,
+      "visual_type": "split_screen_comparison",
+      "layout": "split_screen_left_shop_right_personal_savings_warning",
+      "camera_motion": "push_in_from_studio_to_the_personal_savings_jar",
+      "title": "Sole Trader: Full Control, Unlimited Liability",
+      "labels": [
+        "One owner controls the firm",
+        "Keeps all profit",
+        "Unlimited liability",
+        "Personal savings at risk"
+      ],
+      "elements": [
+        {
+          "type": "icon_studio",
+          "id": "studio",
+          "label": "Rillstone Pottery",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "savings_jar",
+          "id": "jar",
+          "label": "Owner's personal savings",
+          "color": "#C0392B"
+        },
+        {
+          "type": "warning_badge",
+          "id": "warning",
+          "label": "No limited liability shield",
+          "color": "#0B1F3A"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 26,
+          "directive": "Show one owner locking the studio door"
+        },
+        {
+          "at_sec": 34,
+          "directive": "Draw a debt line straight into the personal savings jar"
+        },
+        {
+          "at_sec": 42,
+          "directive": "Stamp a red warning: no limited liability shield"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Rillstone Pottery is a sole trader: one owner controls the business and keeps all profit. Decisions are quick. But a sole trader has unlimited liability. The owner can be held responsible for business debts, so personal savings may be at risk. Capital is limited to the owner's own money. Because there is no separate legal identity, therefore limited liability never protects a sole trader.",
+        "words": 64,
+        "wpm": 147.7
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 52,
+      "out": 78,
+      "visual_type": "org_chart_morph",
+      "layout": "two_owner_org_chart_with_shared_kiln_and_debt_paths",
+      "camera_motion": "pan_from_the_two_owners_to_the_shared_kiln_then_to_debt_paths",
+      "title": "Partnership: Shared Skills, Shared Risk",
+      "labels": [
+        "Two or more joint owners",
+        "Fenwick and Rowe Ceramics",
+        "Extra capital and skills",
+        "Usually unlimited liability"
+      ],
+      "elements": [
+        {
+          "type": "owner_node",
+          "id": "owner1",
+          "label": "First partner",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "owner_node",
+          "id": "owner2",
+          "label": "Second partner",
+          "color": "#16A085"
+        },
+        {
+          "type": "shared_asset",
+          "id": "kiln",
+          "label": "Second kiln funded",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "debt_paths",
+          "id": "debts",
+          "label": "Debt reaches both partners",
+          "color": "#C0392B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 52,
+          "directive": "Add a second owner node to the org chart"
+        },
+        {
+          "at_sec": 60,
+          "directive": "Show both owners funding a second kiln"
+        },
+        {
+          "at_sec": 68,
+          "directive": "Send debt paths to both owners and display the agreement"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "A partnership is formed when two or more people agree to jointly own a business. Fenwick and Rowe Ceramics brings extra capital and shared skills, so the studio can buy a second kiln. Partners usually share profit and decisions. Most partnerships still have unlimited liability, so each partner can be held responsible for debts. A partnership agreement sets out profit shares and responsibilities and is always recommended.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 78,
+      "out": 104,
+      "visual_type": "split_screen_comparison",
+      "layout": "split_screen_left_company_shield_right_private_shareholders",
+      "camera_motion": "zoom_into_the_liability_shield_then_out_to_private_shareholders",
+      "title": "Private Limited Company: Ltd",
+      "labels": [
+        "Separate legal identity",
+        "Limited liability: risk only investment",
+        "Shares sold privately",
+        "More paperwork and published accounts"
+      ],
+      "elements": [
+        {
+          "type": "company_shell",
+          "id": "ltd_shell",
+          "label": "Larkspur Crafts Ltd",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "liability_shield",
+          "id": "shield",
+          "label": "Liability capped at investment",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "shareholder_icons",
+          "id": "holders",
+          "label": "Family, friends, investors",
+          "color": "#6C3483"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 78,
+          "directive": "Draw a legal shell around the company"
+        },
+        {
+          "at_sec": 86,
+          "directive": "Stop a debt line at the liability shield"
+        },
+        {
+          "at_sec": 94,
+          "directive": "Show shares passing only to private investors"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Larkspur Crafts Ltd is a private limited company. It has a separate legal identity, so the business itself can own assets. Shareholders enjoy limited liability: they are liable only for the amount they invested. Shares are sold privately to family, friends or specialist investors, not to the public. Because personal savings are protected, therefore owners risk only their investment. The trade-off is more paperwork and published accounts.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 104,
+      "out": 134,
+      "visual_type": "org_chart_morph",
+      "layout": "company_block_expanding_to_public_shareholder_grid",
+      "camera_motion": "pull_back_from_one_owner_to_a_large_shareholder_grid",
+      "title": "Public Limited Company: Plc",
+      "labels": [
+        "Shares sold to the public",
+        "Tradeable on the Stock Exchange",
+        "More capital, more disclosure",
+        "Dividends and possible loss of control"
+      ],
+      "elements": [
+        {
+          "type": "company_block",
+          "id": "plc",
+          "label": "Hearthside Goods Plc",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "shareholder_grid",
+          "id": "public_holders",
+          "label": "Public shareholders",
+          "color": "#7FB3D5"
+        },
+        {
+          "type": "capital_bar",
+          "id": "capital",
+          "label": "Capital raised bar",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "control_meter",
+          "id": "control",
+          "label": "Original owner control",
+          "color": "#C0392B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 104,
+          "directive": "Expand the company block and fill a shareholder grid"
+        },
+        {
+          "at_sec": 113,
+          "directive": "Raise the capital bar"
+        },
+        {
+          "at_sec": 123,
+          "directive": "Lower the original owner control meter and show dividends"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Hearthside Goods Plc is a public limited company. Its shares can be sold to the public and are tradeable on the Stock Exchange. That raises far more capital for new sites and equipment. Shareholders still have limited liability. But the company must disclose more information, and original owners may lose control as new shareholders vote. Profits may be paid out as dividends to shareholders rather than kept for expansion. Growth brings scrutiny as well as funds.",
+        "words": 76,
+        "wpm": 152.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 134,
+      "out": 160,
+      "visual_type": "split_screen_comparison",
+      "layout": "split_screen_left_franchise_outlet_right_shared_project",
+      "camera_motion": "crossfade_between_franchise_outlet_and_joint_project",
+      "title": "Franchises and Joint Ventures",
+      "labels": [
+        "Franchisee pays a fee for brand and system",
+        "Franchisor expands with less capital",
+        "Joint venture shares capital, risk and profit",
+        "Firms remain separate"
+      ],
+      "elements": [
+        {
+          "type": "outlet",
+          "id": "outlet",
+          "label": "Thornfield Market Goods",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "brand_badge",
+          "id": "brand",
+          "label": "Brand, logos and methods",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "project_node",
+          "id": "jv",
+          "label": "Kestrel and Vale Designs",
+          "color": "#16A085"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 134,
+          "directive": "Stamp the outlet with the franchisor brand"
+        },
+        {
+          "at_sec": 142,
+          "directive": "Send a fee back to the franchisor"
+        },
+        {
+          "at_sec": 150,
+          "directive": "Join two separate firms on one shared project node"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Two other forms matter. Thornfield Market Goods is a franchise: the franchisee pays a fee to use an established brand, logos and trading methods. The franchisee gets support and a proven model, but follows rules and gives up independence. The franchisor expands with less capital. Kestrel and Vale Designs is a joint venture: two businesses share capital, risks and profits on one project while remaining separate.",
+        "words": 66,
+        "wpm": 152.3
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 160,
+      "out": 190,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_left_sole_trader_right_limited_company_scales",
+      "camera_motion": "crossfade_between_the_two_structure_panels_then_tilt_the_scale",
+      "title": "Which Structure Suits a Growing Studio?",
+      "labels": [
+        "Sole trader: control and all profit",
+        "Sole trader: unlimited liability risk",
+        "Ltd: limited liability and shareholder funds",
+        "Ltd: administration and less privacy"
+      ],
+      "elements": [
+        {
+          "type": "sole_panel",
+          "id": "sole",
+          "label": "Rillstone Pottery: sole trader",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "ltd_panel",
+          "id": "ltd",
+          "label": "Larkspur Crafts Ltd",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "balance_scale",
+          "id": "decision",
+          "label": "Weigh protection against paperwork",
+          "color": "#0B1F3A"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 160,
+          "directive": "Fill the sole trader panel with control icons then a red risk"
+        },
+        {
+          "at_sec": 169,
+          "directive": "Fill the Ltd panel with a shield and shareholder coins"
+        },
+        {
+          "at_sec": 179,
+          "directive": "Tilt the decision scale and hold both sides in view"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Which structure suits a growing craft studio? On the left, staying a sole trader keeps full control, all profit and simple decisions. However, unlimited liability puts personal savings at risk and capital stays small. On the right, becoming Larkspur Crafts Ltd gives limited liability and access to shareholder funds. The costs are higher administration and less privacy. Because growth needs capital, therefore the company form is safer, so the owner should weigh protection against paperwork.",
+        "words": 75,
+        "wpm": 150.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 190,
+      "out": 220,
+      "visual_type": "recap_quiz",
+      "layout": "quiz_card_with_two_moving_balance_panels",
+      "camera_motion": "zoom_into_the_correct_option_then_show_the_two_panels",
+      "title": "Recap: Recommend a Business Structure",
+      "labels": [
+        "Two owners want limited liability",
+        "Keep shares private",
+        "Raise money for a third shop",
+        "Sole trader keeps control but full risk"
+      ],
+      "elements": [
+        {
+          "type": "quiz_card",
+          "id": "question",
+          "label": "Craft retailer needs capital and protection",
+          "color": "#0B1F3A"
+        },
+        {
+          "type": "option_row",
+          "id": "options",
+          "label": "Four structure options",
+          "color": "#7FB3D5"
+        },
+        {
+          "type": "balance_scale",
+          "id": "panels",
+          "label": "Savings protected versus funds added",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 190,
+          "directive": "Display the case facts and four options"
+        },
+        {
+          "at_sec": 199,
+          "directive": "Light the private limited company option"
+        },
+        {
+          "at_sec": 209,
+          "directive": "Raise the protected savings panel and the shareholder funds panel"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Apply the idea. A craft retailer wants two owners, limited personal risk and money to open a third shop. Should it remain unincorporated or become a company? A private limited company gives separate legal identity and limited liability, while shares stay private. A sole trader would keep control but face unlimited liability. Choose the structure, then watch the two balance panels move: personal savings protected on one side, shareholder funds added on the other.",
+        "words": 74,
+        "wpm": 148.0
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Two craft retailers want limited personal liability and to keep shares away from the public. Which structure suits them?",
+    "options": [
+      "Sole trader",
+      "Partnership",
+      "Private limited company (Ltd)",
+      "Public limited company (Plc)"
+    ],
+    "correct_index": 2,
+    "visual_explanation": "A liability shield appears around a company labelled Ltd while personal savings stay outside it; shares animate only to family and friends, and the Plc public-share grid stays greyed out."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

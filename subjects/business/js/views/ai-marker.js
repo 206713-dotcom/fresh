@@ -1825,6 +1825,62 @@
     if (!salvaged) return null;
     try { return JSON.parse(salvaged); } catch (e) { return null; }
   }
+
+  /* The prompt prefills "{", so generated text usually starts mid-object.
+   * Restore the opening brace, then prefer any balanced object that actually
+   * contains a paragraphs array (the model may emit a smaller object first). */
+  function parseMarkJson(raw) {
+    var s = String(raw == null ? "" : raw)
+      .replace(/<think>[\s\S]*?<\/think>/gi, "")
+      .replace(/<think>[\s\S]*$/gi, "")
+      .trim();
+    if (!s) return null;
+    if (s.charAt(0) !== "{") s = "{" + s;
+    var parsed = extractJsonObject(s);
+    if (parsed && Array.isArray(parsed.paragraphs) && parsed.paragraphs.length) return parsed;
+    var from = s.indexOf("{", 1);
+    var checked = 0;
+    while (from !== -1 && checked < 24) {
+      var candidate = extractJsonObject(s.slice(from));
+      checked++;
+      if (candidate && Array.isArray(candidate.paragraphs) && candidate.paragraphs.length) return candidate;
+      from = s.indexOf("{", from + 1);
+    }
+    return parsed;
+  }
+
+  /* Normalise the Transformers.js output shape to a plain text string. */
+  function generatedTextOf(output) {
+    var text = output && output[0] ? output[0].generated_text : "";
+    if (Array.isArray(text)) {
+      var last = null;
+      for (var i = text.length - 1; i >= 0; i--) {
+        var part = text[i];
+        if (typeof part === "string") { last = { content: part }; break; }
+        if (part && typeof part.content === "string") { last = part; break; }
+        if (part && typeof part.generated_text === "string") { last = { content: part.generated_text }; break; }
+      }
+      text = last ? last.content : "";
+    } else if (text && typeof text === "object") {
+      text = text.content != null ? text.content : (text.generated_text || "");
+    }
+    return String(text == null ? "" : text);
+  }
+
+  /* Some generations return a metadata stub rather than an assessment.
+   * Regenerate a few times before allowing the deterministic fallback. */
+  function generateValidJson(prompt, opts, tries) {
+    return generator(prompt, opts).then(function (out) {
+      var parsed = parseMarkJson(generatedTextOf(out));
+      if (parsed && Array.isArray(parsed.paragraphs) && parsed.paragraphs.length) return out;
+      if (tries <= 1) return out;
+      return generateValidJson(prompt, opts, tries - 1);
+    })["catch"](function (err) {
+      if (tries <= 1) throw err;
+      return generateValidJson(prompt, opts, tries - 1);
+    });
+  }
+
   function computeRecommendedMaxTokens(answer, qtype) {
     var words = String(answer || "").trim().split(/\s+/).filter(Boolean).length;
     var base = qtype === "paper2_12m_b" ? 420 : (qtype === "paper1_8m" || qtype === "paper2_8m_a") ? 360 : 280;
@@ -2040,7 +2096,8 @@
     var initial = Array.from(tok(prompt, { return_tensors: "pt" }).input_ids.data).map(Number);
     var ids = initial.slice();
     var streamer = opts.streamer;
-    var depth = 0, seenOpen = false, done = false;
+    /* The prompt is prefilled with "{", so generation starts one level deep. */
+    var depth = 1, seenOpen = true, done = false;
     return (async function () {
       var decoded = "";
       for (var step = 0; step < maxNew; step++) {
@@ -2163,15 +2220,18 @@
       return null;
     }
     status("Local AI: marking your answer locally…");
-    var maxTokens = Math.min(320, Math.max(180, computeRecommendedMaxTokens(answer, qtype)));
+    /* Manual decoding recomputes the whole prefix each step; keep it short.
+     * The JSON audit fits comfortably in ~200 tokens. */
+    var maxTokens = Math.min(200, Math.max(160, computeRecommendedMaxTokens(answer, qtype)));
+    /* No streamer/stopping_criteria: on WebGPU they can prevent generate()
+     * from resolving even after the final token. The keepalive interval below
+     * handles the watchdog instead. */
     var genOpts = {
       max_new_tokens: maxTokens,
       do_sample: false,
       repetition_penalty: 1.1,
-      return_full_text: false,
-      streamer: streamer
+      return_full_text: false
     };
-    if (stopCriteria) genOpts.stopping_criteria = stopCriteria;
 
     /* One best-effort single-paragraph re-audit per missing substantive segment
      * (webllm.ts:751-802). Bounded to 3 calls and 60 s each; any failure falls
@@ -2201,18 +2261,17 @@
                 skip_prompt: true, skip_special_tokens: true,
                 callback_function: function (token) { if (aiHeartbeat) { try { aiHeartbeat(); } catch (e) {} } }
               });
-              var oneOpts = { max_new_tokens: 180, do_sample: false, repetition_penalty: 1.1, return_full_text: false, streamer: oneStreamer };
-              if (oneCriteria) oneOpts.stopping_criteria = oneCriteria;
+              var oneOpts = { max_new_tokens: 180, do_sample: false, repetition_penalty: 1.1, return_full_text: false };
               var reauditGen;
               try {
-                reauditGen = generator(onePrompt, oneOpts)["catch"](function () {
+                reauditGen = generateValidJson(onePrompt, oneOpts, 3)["catch"](function () {
                   return manualGenerate(generator, onePrompt, oneOpts);
                 });
               } catch (ge) { reauditGen = manualGenerate(generator, onePrompt, oneOpts); }
               return withTimeout(reauditGen, REAUDIT_TIMEOUT_MS, null).then(function (out) {
                 if (expired || !out) return acc;
                 var t = out && out[0] ? out[0].generated_text : "";
-                var parsedOne = extractJsonObject(t) || extractJsonObject("{" + t);
+                var parsedOne = parseMarkJson(t);
                 if (parsedOne && Array.isArray(parsedOne.paragraphs) && parsedOne.paragraphs.length) {
                   var row = parsedOne.paragraphs[0];
                   if (row && typeof row === "object") row.paragraph_number = mi + 1;
@@ -2242,11 +2301,11 @@
         armMarkTimer();
       }, 15000);
       aiHeartbeat = armMarkTimer;
+      /* Native generate() with no streamer/stopping criteria resolves reliably
+       * for this q4 model; manual loop stays only as a fallback on rejection. */
       var generation;
       try {
-        generation = generator(prompt, genOpts)["catch"](function (ge) {
-          // Browser/WebGPU generate() often mismatches ONNX input dtypes;
-          // the manual token loop talks to the model directly instead.
+        generation = generateValidJson(prompt, genOpts, 4)["catch"](function (ge) {
           return manualGenerate(generator, prompt, genOpts);
         });
       } catch (ge) {
@@ -2258,20 +2317,11 @@
       generation.then(function (output) {
         if (expired || settled) return;
         if (!output) { failGeneration("Local AI marking failed (Local AI timed out. Reload the model to try again.) — using the deterministic marker."); return; }
-        var text = output && output[0] ? output[0].generated_text : "";
-        if (Array.isArray(text)) {
-          var last = text[text.length - 1];
-          text = (last && last.content != null) ? last.content : "";
+        var text = generatedTextOf(output);
+        var parsed = parseMarkJson(text);
+        if (parsed) {
+          try { streamFinish(text.charAt(0) === "{" ? text : "{" + text); } catch (e) {}
         }
-        var parsed = extractJsonObject(text);
-        /* The prompt prefills "{", so generation often starts with a quote.
-         * Parsing directly may grab a nested object; prefer the version that
-         * actually contains the paragraphs array. */
-        if (!parsed || !Array.isArray(parsed.paragraphs) || !parsed.paragraphs.length) {
-          var prefixed = extractJsonObject("{" + text);
-          if (prefixed && Array.isArray(prefixed.paragraphs) && prefixed.paragraphs.length) parsed = prefixed;
-        }
-        if (parsed) streamFinish(text.charAt(0) === "{" ? text : "{" + text);
         if (!parsed || !Array.isArray(parsed.paragraphs) || !parsed.paragraphs.length) {
           failGeneration("Local AI marking failed (Local AI returned no usable assessment.) — using the deterministic marker.");
           return;
@@ -2303,10 +2353,12 @@
             });
           }
           cleanupGeneration();
-          streamFinish(text.charAt(0) === "{" ? text : "{" + text);
+          try { streamFinish(text.charAt(0) === "{" ? text : "{" + text); } catch (e) {}
           var result = autoMark(answer, info, paragraphs);
           result.isAiEvaluated = true;
           result.examinerNotes = "[ Local Qwen 3 0.6B + deterministic caps ] " + result.examinerNotes;
+          result.feedback = result.examinerNotes;
+          status("Local AI: answer marked with local AI + deterministic caps.");
           settled = true;
           resolve(result);
         })["catch"](function (err) {

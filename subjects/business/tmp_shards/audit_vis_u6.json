@@ -1,0 +1,67 @@
+{
+  "auditor_id": "VIS-TECH-AUD-01",
+  "target_unit": 6,
+  "verdict": "APPROVED_BY_VIS_AUD",
+  "shards": {
+    "vid_u6_01.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: all 9 scenes use concrete visual primitives (animated_cycle_loop, curve_reveal, interactive_graph_build, gauge_dial, two-lever console, rate transmission chain, evaluation_split, product-mix funnel, quiz levers); no text_slide/bullet_list/title_card_only. Max title 6 words, max label 7 words.",
+        "Gate 2 PASS: recomputed with Python split() after stripping edge punctuation - declared word_count equals actual in all 9 scenes (47/66/67/60/66/68/78/89/77); pacing 2.35-2.50 words/sec; contiguous 0-256 s; visual beats 9-12 s apart; beat directives follow the narration concept order (loop -> arrows -> gates; growth -> boom -> recession -> slump -> return; levers -> transmission).",
+        "Gate 4 PASS: exact top-level and scene key sets, VID_U6_01, status UNVERIFIED, all 38 colours uppercase #RRGGBB, unique element ids, quiz 4 options with correct_index 0 and concrete visual_explanation.",
+        "Gate 5 PASS: 'Brambledon Bicycles' unique across all 25 shards; no recycled script (no duplicate openings or full scripts).",
+        "Advisory only (no fix required): scene 3 beat at 76 s ('Purchasing power bar shrinks') restates the inflation effect rather than the final margin sentence; direction remains correct. Apparent 'ARR' blacklist matches are false positives from the substring 'arr' inside 'arrow(s)'."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 3: index tile climbs 100 to 105, so $100 buys less", "recomputed": "100 x 1.05 = 105 (5% inflation); $100 buys 100/1.05 = 95.24 of the prior basket - direction correct", "pass": true},
+        {"claim": "Scene 4: recession is two consecutive quarters of negative growth and Brambledon delays its frame line", "recomputed": "Two negative quarters matches the quarter-bar beats at 88 s and 100 s; no arithmetic contradiction", "pass": true},
+        {"claim": "Scene 6: loan rate rises from 3% to 7%, raising repayments and postponing the workshop; lower rates reverse both effects", "recomputed": "7 - 3 = 4 percentage points; chain rate up -> repayment up -> profit down -> investment down, reversal correct", "pass": true},
+        {"claim": "Scene 9/quiz: for a firm with a large loan, the 3%->7% rate rise bites before the income-tax fall", "recomputed": "Loan-repayment effect is direct and immediate; demand effect via tax is indirect; correct_index 0", "pass": true}
+      ]
+    },
+    "vid_u6_02.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "RE-AUDIT PASS (regenerated shard): the prior Gate 3 rejection is resolved. Scene 5 now states the 50-week assumption explicitly, so the wage bill reconciles: $2/h x 40 h/week x 120 workers x 50 weeks = $480,000. Recomputed 2 x 40 = 80/worker/week; x 120 = 9,600/week; x 50 = $480,000/year.",
+        "Fix applied by VID-GEN-06 and verified in the file: voiceover now reads '...on forty hour weeks across fifty working weeks...'; on_screen_labels entry is 'Extra wage bill $480,000 over 50 weeks'; element 'bill' label is 'Extra wage bill over 50 weeks'; beat at 111 s is 'Worker tiles multiply across 50 weeks'; word_count updated 77 -> 81. No further scene fixes required.",
+        "Gate 2 RE-CHECK PASS: Python .split() after stripping edge punctuation gives actual counts 48/69/59/68/81/67/85/77/68, all equal declared word_count; scene 5 pacing 81/32 = 2.5312 w/s (151.9 wpm), inside 2.25-2.60 w/s; all scenes within range; scene 5 timing 100-132 s remains contiguous with scenes 4 and 6; beats [100,111,122,132] with gaps 11/11/10 s (<=15 s) and the 111 s beat now coincides with the narrator saying 'across fifty working weeks'.",
+        "Gate 1 RE-CHECK PASS: 'Extra wage bill $480,000 over 50 weeks' is 7 words (<=18), all labels/titles within limits and concrete visual primitives retained.",
+        "Gates 3, 4, 5 RE-CHECK PASS: all other maths unchanged and correct ($550,000 social cost, $320,000 social benefit, $600,000 cocoa cost, $400,000 boycott loss); exact top-level/scene key sets; VID_U6_02; status UNVERIFIED; all 38 colours uppercase #RRGGBB; unique element ids; quiz 4 options with correct_index 0; 'Cocoa Grove Collective' unique across all 25 shards; no recycled script.",
+        "Advisory only (no fix required): scene 2 private treatment cost plus harm from untreated discharge remains a hypothetical comparison; the arithmetic is correct. Apparent 'ARR' blacklist matches are false positives from 'arrow(s)'."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 2: social cost = $150,000 private + $400,000 external = $550,000", "recomputed": "150000 + 400000 = 550000", "pass": true},
+        {"claim": "Scene 3: social benefit = $120,000 private + $200,000 external = $320,000", "recomputed": "120000 + 200000 = 320000", "pass": true},
+        {"claim": "Scene 5: 120 workers x 40 h/week x $2/h over 50 working weeks = $480,000 extra wage bill (FIXED)", "recomputed": "2 x 40 = $80/worker/week; x 120 = $9,600/week; x 50 weeks = $480,000. The regenerated voiceover, label, element label and 111 s beat now state the 50-week period explicitly, so the claim reconciles", "pass": true},
+        {"claim": "Scene 5: certified cocoa $2,100 vs $1,800 a tonne on 2,000 tonnes adds $600,000", "recomputed": "(2100 - 1800) x 2000 = 300 x 2000 = $600,000", "pass": true},
+        {"claim": "Scene 6: 8% of $5,000,000 sales lost = $400,000", "recomputed": "0.08 x 5000000 = $400,000", "pass": true},
+        {"claim": "Scene 9/quiz: $600,000 input saving versus $400,000 boycott loss; reputation/licence justification", "recomputed": "600000 - 400000 = $200,000 short-term net gain from cheap beans; non-financial risk can outweigh it; correct_index 0", "pass": true}
+      ]
+    },
+    "vid_u6_03.json": {
+      "verdict": "APPROVED_BY_VIS_AUD",
+      "notes": [
+        "Gate 1 PASS: all 9 scenes use concrete visuals (network graph, opportunity/threat branches, org-chart bidirectional flows, currency conversion cards, price-arrow cards, tariff border gate/funnel, quota counting gate, split evaluation, quiz cards); max title 7 words, max label 6 words.",
+        "Gate 2 PASS: declared word counts 50/66/68/68/72/68/71/87/87 equal Python .split() actuals; pacing 2.36-2.57 w/s; contiguous 0-260 s; beats 9-12 s apart and ordered with the narration (rate card -> $400 card -> multiplication -> reverse; flip to 0.60 -> division -> export arrow -> import arrow; gate -> stamp -> funnel -> cost tile).",
+        "Gate 3 PASS: every exchange-rate, tariff and quota figure independently recalculated - all directions ($1=0.75 -> $1=0.60 depreciation; pound appreciation; exports dearer; imports cheaper) and arrows match the formulas. No PED coefficient is calculated.",
+        "Gate 4 PASS: exact schema, VID_U6_03, status UNVERIFIED, 37 colours all uppercase #RRGGBB, unique element ids per scene, quiz 4 options with correct_index 0 and concrete visual_explanation.",
+        "Gate 5 PASS: 'Northstar Microchip Imports' and 'Vantara Devices' unique across all 25 shards; no recycled script. Advisory only (no fix required): scene 9 beat at 248 s shows the GBP 240 tile about 1 s before the narrator states it; the visual simply leads the narration and does not contradict it. Apparent 'ARR' blacklist matches are false positives from 'arrow(s)'."
+      ],
+      "scene_fixes": [],
+      "math_checks": [
+        {"claim": "Scene 3: $2m capital flows parent -> subsidiary; $600,000 profit returns; 150 jobs; $5m exports", "recomputed": "Flows and magnitudes are internally consistent; green down-arrow for capital and red up-arrow for repatriation match the narration", "pass": true},
+        {"claim": "Scene 4: $400 x 0.75 = GBP 300", "recomputed": "400 x 0.75 = 300", "pass": true},
+        {"claim": "Scene 4: GBP 300 / 0.75 = $400 (reverse conversion)", "recomputed": "300 / 0.75 = 400", "pass": true},
+        {"claim": "Scene 5: after $1 = GBP 0.60, GBP 300 export costs $500 (dollar depreciation)", "recomputed": "300 / 0.60 = 500; exports dearer in dollars - correct", "pass": true},
+        {"claim": "Scene 5: $400 order costs GBP 240, not GBP 300, so imports cheaper", "recomputed": "400 x 0.60 = 240; pound appreciated against dollar - correct", "pass": true},
+        {"claim": "Scene 6: 10% tariff on $400 = $40; landed cost $440", "recomputed": "0.10 x 400 = 40; 400 + 40 = 440", "pass": true},
+        {"claim": "Scene 6: $440 at $1 = GBP 0.75 costs GBP 330", "recomputed": "440 x 0.75 = 330", "pass": true},
+        {"claim": "Scene 7: 12,000 sensors wanted, 8,000 pass, 4,000 gap, price GBP 300 -> GBP 330", "recomputed": "12000 - 8000 = 4000; (330 - 300)/300 = 10% scarcity price rise - consistent", "pass": true},
+        {"claim": "Scene 9/quiz: $400 bill becomes GBP 240 and GBP 300 export becomes $500 after depreciation", "recomputed": "400 x 0.60 = 240; 300 / 0.60 = 500; correct_index 0", "pass": true}
+      ]
+    }
+  },
+  "summary": "Overall APPROVED_BY_VIS_AUD: all three Unit 6 shards now pass all five gates. RE-AUDIT of the regenerated vid_u6_02.json confirms the Gate 3 fix: scene 5 explicitly states 50 working weeks, and $2/h x 40 h/week x 120 workers x 50 weeks = $480,000 reconciles; word_count is 81 with actual 81 and pacing 81/32 = 2.5312 w/s; the relabelled figure, element label, 111 s beat, schema, colours, labels and quiz all re-check clean. The previously approved verdicts for vid_u6_01 and vid_u6_03 are retained. 19 math checks in total, all 19 pass."
+}

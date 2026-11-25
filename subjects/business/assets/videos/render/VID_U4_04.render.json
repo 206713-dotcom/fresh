@@ -1,0 +1,653 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U4_04",
+  "title": "Visualising Location Decisions with Cost Comparisons",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 248,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U4_04.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 24,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_frame_animation",
+      "camera_motion": "zoom_from_a_wide_map_to_two_pulsing_location_pins",
+      "title": "Frostvale's Two Possible Sites",
+      "labels": [
+        "Frostvale Foods frozen-food plant",
+        "Site A: near the port",
+        "Site B: near the capital",
+        "Manufacturers weigh labour, transport, raw materials, power, land and government incentives"
+      ],
+      "elements": [
+        {
+          "type": "animated_map",
+          "id": "map",
+          "label": "Regional map"
+        },
+        {
+          "type": "map_pin",
+          "id": "pin_a",
+          "label": "Site A near port",
+          "color": "#2E5FA3"
+        },
+        {
+          "type": "map_pin",
+          "id": "pin_b",
+          "label": "Site B near capital",
+          "color": "#D9822B"
+        },
+        {
+          "type": "factor_icons",
+          "id": "factors",
+          "label": "Six location factors including government incentives"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "A regional map fades in with a river and a coastline"
+        },
+        {
+          "at_sec": 8,
+          "directive": "Two pins drop onto the port and the capital"
+        },
+        {
+          "at_sec": 16,
+          "directive": "Six factor icons, including government incentives, orbit each pin"
+        },
+        {
+          "at_sec": 23,
+          "directive": "A plant silhouette appears at each site in turn"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Frostvale Foods is choosing a site for a new frozen-food plant. Two pins glow on the map: one near the port, one near the capital city. The finance team must decide where to build. Watch the map zoom, the two pins pulse, and six factor icons, including government incentives, orbit each location. The decision will mix hard numbers with softer judgements.",
+        "words": 61,
+        "wpm": 152.5
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 24,
+      "out": 52,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_frame_animation",
+      "camera_motion": "drop_each_cost_tile_into_a_column_beside_the_map_pin",
+      "title": "Quantitative Factors Have Price Tags",
+      "labels": [
+        "Labour, transport, materials, utilities",
+        "Government incentives count too",
+        "Site A: $300,000 labour, $80,000 transport"
+      ],
+      "elements": [
+        {
+          "type": "cost_label",
+          "id": "labour",
+          "label": "Labour costs",
+          "value": 300000
+        },
+        {
+          "type": "cost_label",
+          "id": "transport",
+          "label": "Transport to market",
+          "value": 80000
+        },
+        {
+          "type": "cost_label",
+          "id": "materials",
+          "label": "Raw material delivery",
+          "value": 40000
+        },
+        {
+          "type": "cost_label",
+          "id": "utilities",
+          "label": "Utilities",
+          "value": 60000
+        },
+        {
+          "type": "incentive_tile",
+          "id": "incentive",
+          "label": "Government incentive",
+          "value": 30000,
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "total_counter",
+          "id": "counter",
+          "label": "Annual cost total"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 24,
+          "directive": "A blank cost column grows beside the port pin"
+        },
+        {
+          "at_sec": 33,
+          "directive": "Labour and transport tiles drop in with their values"
+        },
+        {
+          "at_sec": 42,
+          "directive": "Materials, utilities and the green incentive tile follow"
+        },
+        {
+          "at_sec": 51,
+          "directive": "The counter starts adding the five tiles"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Quantitative factors can be measured in money. Labour costs, transport to market, raw material delivery, utilities and government incentives all have price tags. At the port site, labour is 300,000 dollars, transport 80,000, materials 40,000 and utilities 60,000, with a 30,000 dollar incentive. Watch each cost label drop into a column and a total counter begin adding them up before any decision is made.",
+        "words": 64,
+        "wpm": 137.1
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 52,
+      "out": 80,
+      "visual_type": "split_screen_comparison",
+      "layout": "full_frame_animation",
+      "camera_motion": "fade_three_translucent_panels_in_beside_the_cost_column",
+      "title": "Qualitative Factors Resist Price Tags",
+      "labels": [
+        "Quality of life attracts skilled staff",
+        "Labour skills affect training time",
+        "Environmental impact affects reputation"
+      ],
+      "elements": [
+        {
+          "type": "quality_of_life_panel",
+          "id": "lifestyle",
+          "label": "Quality of life",
+          "color": "#7D3C98"
+        },
+        {
+          "type": "skills_badge",
+          "id": "skills",
+          "label": "Local labour skills",
+          "color": "#2E5FA3"
+        },
+        {
+          "type": "environment_icon",
+          "id": "river",
+          "label": "Environmental impact",
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "cost_column_ghost",
+          "id": "ghost",
+          "label": "Cost column for comparison"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 52,
+          "directive": "The cost column stays visible on the left"
+        },
+        {
+          "at_sec": 61,
+          "directive": "A lifestyle panel fades in with homes and schools"
+        },
+        {
+          "at_sec": 70,
+          "directive": "A skills badge and a clean river panel appear"
+        },
+        {
+          "at_sec": 79,
+          "directive": "A bracket joins the three panels to the decision"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Qualitative factors are harder to price. Quality of life affects whether skilled engineers want to move. Local labour skills affect training time. Environmental impact affects the plant's reputation and licence to operate. Watch three translucent panels fade in beside the cost column: a lifestyle icon, a skills badge and a green river. These factors cannot be ignored simply because they lack a price tag.",
+        "words": 64,
+        "wpm": 137.1
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 80,
+      "out": 112,
+      "visual_type": "formula_substitution",
+      "layout": "full_frame_animation",
+      "camera_motion": "stack_five_tiles_then_flip_the_green_incentive_downward",
+      "title": "Total Annual Cost at Site A",
+      "labels": [
+        "300,000 + 80,000 = 380,000",
+        "+ 40,000 + 60,000 = 480,000",
+        "480,000 - 30,000 = $450,000"
+      ],
+      "elements": [
+        {
+          "type": "cost_tile_stack",
+          "id": "stack_a",
+          "label": "Site A cost tiles"
+        },
+        {
+          "type": "animated_counter",
+          "id": "running_a",
+          "from": 0,
+          "to": 480000,
+          "prefix": "$",
+          "label": "Before incentive"
+        },
+        {
+          "type": "incentive_tile",
+          "id": "green_tile",
+          "label": "Incentive flips the total down",
+          "value": 30000,
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "result_tile",
+          "id": "total_a",
+          "value": 450000,
+          "prefix": "$",
+          "label": "Site A annual cost"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 80,
+          "directive": "Labour and transport tiles stack to 380,000 dollars"
+        },
+        {
+          "at_sec": 90,
+          "directive": "Materials and utilities push the counter to 480,000"
+        },
+        {
+          "at_sec": 101,
+          "directive": "The green incentive tile flips sign and slides in"
+        },
+        {
+          "at_sec": 111,
+          "directive": "The total settles on 450,000 dollars a year"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Let's total the port site, called Site A, using annual costs. Labour 300,000 dollars plus transport 80,000 gives 380,000. Add raw material delivery of 40,000 to reach 420,000. Add utilities of 60,000 to reach 480,000. Now subtract the government incentive of 30,000, leaving 450,000 dollars a year. Watch five cost tiles stack in the column, with the green incentive tile flipping the total down to 450,000. That is the number to beat.",
+        "words": 72,
+        "wpm": 135.0
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 112,
+      "out": 140,
+      "visual_type": "formula_substitution",
+      "layout": "full_frame_animation",
+      "camera_motion": "rise_with_the_second_column_then_pan_to_the_saving_badge",
+      "title": "Total Annual Cost at Site B",
+      "labels": [
+        "Labour $360,000, transport $20,000",
+        "Materials $70,000, utilities $50,000",
+        "Site A is $50,000 cheaper today"
+      ],
+      "elements": [
+        {
+          "type": "cost_tile_stack",
+          "id": "stack_b",
+          "label": "Site B cost tiles"
+        },
+        {
+          "type": "animated_counter",
+          "id": "running_b",
+          "from": 0,
+          "to": 500000,
+          "prefix": "$",
+          "label": "Site B annual cost"
+        },
+        {
+          "type": "comparison_bar",
+          "id": "compare",
+          "label": "450,000 versus 500,000",
+          "color": "#2E5FA3"
+        },
+        {
+          "type": "saving_badge",
+          "id": "badge",
+          "value": 50000,
+          "prefix": "$",
+          "label": "Site A saving"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 112,
+          "directive": "Four cost tiles stack beside the capital pin"
+        },
+        {
+          "at_sec": 121,
+          "directive": "The counter steps through 380,000 and 450,000 to 500,000"
+        },
+        {
+          "at_sec": 130,
+          "directive": "A second bar rises beside the first column"
+        },
+        {
+          "at_sec": 139,
+          "directive": "A 50,000 dollar saving badge appears on Site A"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Now let us total the city site, called Site B, carefully. Labour 360,000, transport 20,000, materials 70,000 and utilities 50,000, with no incentive. Add them: 360,000 plus 20,000 is 380,000; plus 70,000 is 450,000; plus 50,000 gives 500,000 dollars. Site A is 50,000 dollars cheaper. Watch the second column rise to 500,000, with a 50,000 dollar saving badge on Site A based on today's demand.",
+        "words": 65,
+        "wpm": 139.3
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 140,
+      "out": 172,
+      "visual_type": "formula_substitution",
+      "layout": "full_frame_animation",
+      "camera_motion": "stretch_the_transport_tile_then_swap_the_two_total_icons",
+      "title": "When Demand Shifts, Costs Shift",
+      "labels": [
+        "Site A transport rises to $140,000",
+        "Increase of $60,000",
+        "Site A now costs $510,000"
+      ],
+      "elements": [
+        {
+          "type": "cost_label",
+          "id": "new_transport",
+          "label": "Transport now $140,000",
+          "value": 140000,
+          "color": "#D9822B"
+        },
+        {
+          "type": "animated_counter",
+          "id": "recalc_a",
+          "from": 450000,
+          "to": 510000,
+          "prefix": "$",
+          "label": "Site A recalculated"
+        },
+        {
+          "type": "result_tile",
+          "id": "new_winner",
+          "value": 500000,
+          "prefix": "$",
+          "label": "Site B unchanged"
+        },
+        {
+          "type": "gap_marker",
+          "id": "gap",
+          "value": 10000,
+          "prefix": "$",
+          "label": "Site B cheaper by",
+          "color": "#1B8A5A"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 140,
+          "directive": "The transport tile grows from 80,000 to 140,000 dollars"
+        },
+        {
+          "at_sec": 150,
+          "directive": "The increase badge reads 60,000 dollars"
+        },
+        {
+          "at_sec": 161,
+          "directive": "Site A total rolls from 450,000 to 510,000"
+        },
+        {
+          "at_sec": 171,
+          "directive": "Site B total stays at 500,000 and takes the winning glow"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Now demand shifts toward the capital city. Serving that market from the port becomes costlier: Site A's transport rises from 80,000 to 140,000 dollars, an increase of 60,000. Recalculate Site A: 300,000 plus 140,000 plus 40,000 plus 60,000 minus 30,000 equals 510,000 dollars. Site B stays at 500,000, so it is now 10,000 dollars cheaper. Watch the transport tile grow and the totals swap places as customers move closer to the city.",
+        "words": 72,
+        "wpm": 135.0
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 172,
+      "out": 200,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_frame_animation",
+      "camera_motion": "follow_the_truck_then_pan_across_as_the_pin_slides",
+      "title": "The Chosen Pin Moves With Demand",
+      "labels": [
+        "Buyers cluster near the capital",
+        "Longer routes raise landed cost",
+        "So the cheaper site changes"
+      ],
+      "elements": [
+        {
+          "type": "animated_map",
+          "id": "map2",
+          "label": "Map with demand clusters"
+        },
+        {
+          "type": "demand_cluster",
+          "id": "cluster",
+          "label": "Customers near capital"
+        },
+        {
+          "type": "delivery_truck",
+          "id": "truck",
+          "label": "Longer delivery route"
+        },
+        {
+          "type": "map_pin",
+          "id": "winning_pin",
+          "label": "Chosen site slides to city",
+          "color": "#1B8A5A"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 172,
+          "directive": "Demand dots cluster densely around the capital"
+        },
+        {
+          "at_sec": 181,
+          "directive": "The port pin dims and the city pin brightens"
+        },
+        {
+          "at_sec": 190,
+          "directive": "A truck retraces a longer route from the port"
+        },
+        {
+          "at_sec": 199,
+          "directive": "The chosen pin slides across the map to the city"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The map tells the same story. As buyers cluster in the capital, the port pin dims and the city pin brightens. Because transport cost rises with distance, the landed cost of frozen meals rises; therefore the cheaper site changes; so Frostvale should shift its plant toward the city. Watch a delivery truck retrace a longer route, then the chosen pin slide across the map.",
+        "words": 64,
+        "wpm": 137.1
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 200,
+      "out": 228,
+      "visual_type": "evaluation_split",
+      "layout": "full_frame_animation",
+      "camera_motion": "split_wipe_from_a_cost_bar_to_three_qualitative_panels",
+      "title": "Numbers Guide, But Do Not Settle",
+      "labels": [
+        "City site saves $10,000 a year",
+        "Port may offer cheaper land and skills",
+        "Quality of life and environment matter"
+      ],
+      "elements": [
+        {
+          "type": "split_panel",
+          "id": "cost_side",
+          "label": "Cost saving",
+          "color": "#1B8A5A"
+        },
+        {
+          "type": "split_panel",
+          "id": "soft_side",
+          "label": "Qualitative risks",
+          "color": "#D9822B"
+        },
+        {
+          "type": "saving_badge",
+          "id": "saving",
+          "value": 10000,
+          "prefix": "$",
+          "label": "Annual saving"
+        },
+        {
+          "type": "environment_icon",
+          "id": "env",
+          "label": "Environment and lifestyle",
+          "color": "#7D3C98"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 200,
+          "directive": "A green bar shows the 10,000 dollar annual saving"
+        },
+        {
+          "at_sec": 209,
+          "directive": "Amber panels fade in with land, skills and wage icons"
+        },
+        {
+          "at_sec": 218,
+          "directive": "A river and lifestyle icon join the right panel"
+        },
+        {
+          "at_sec": 227,
+          "directive": "A judgement scale settles between the two sides"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Should Frostvale choose purely on cost? After the demand shift, the city site saves 10,000 dollars a year. Yet the port may offer skilled workers and cheaper land, while the city brings higher wages and tighter rules. Watch a split screen: a green saving badge on one side, amber quality of life and environment icons on the other. So cost guides the choice, but it does not settle it alone.",
+        "words": 70,
+        "wpm": 150.0
+      }
+    },
+    {
+      "scene_number": 9,
+      "in": 228,
+      "out": 248,
+      "visual_type": "recap_quiz",
+      "layout": "full_frame_animation",
+      "camera_motion": "stretch_the_transport_pipe_then_zoom_into_the_widening_gap",
+      "title": "Apply It: A Bigger Transport Shock",
+      "labels": [
+        "Transport now $160,000 at Site A",
+        "Site A total becomes $530,000",
+        "Gap over Site B is $30,000"
+      ],
+      "elements": [
+        {
+          "type": "cost_pipe",
+          "id": "big_transport",
+          "label": "Transport pipe stretches",
+          "color": "#D9822B"
+        },
+        {
+          "type": "animated_counter",
+          "id": "final_total",
+          "from": 510000,
+          "to": 530000,
+          "prefix": "$",
+          "label": "Site A total"
+        },
+        {
+          "type": "gap_marker",
+          "id": "final_gap",
+          "value": 30000,
+          "prefix": "$",
+          "label": "Gap over Site B",
+          "color": "#C0392B"
+        },
+        {
+          "type": "result_tile",
+          "id": "answer",
+          "value": 30000,
+          "prefix": "$",
+          "label": "Difference"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 228,
+          "directive": "The transport pipe stretches by another 20,000 dollars"
+        },
+        {
+          "at_sec": 234,
+          "directive": "The Site A total rolls from 510,000 to 530,000"
+        },
+        {
+          "at_sec": 241,
+          "directive": "A red gap bar grows above the 500,000 dollar column"
+        },
+        {
+          "at_sec": 247,
+          "directive": "A 30,000 dollar answer tile glows"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Apply the idea. If Site A's transport rose to 160,000 dollars instead of 140,000, by how much would its total exceed Site B's? Add 20,000 to 510,000 for 530,000. That is 30,000 above 500,000. Watch the transport tile stretch and the cost gap widen on screen.",
+        "words": 46,
+        "wpm": 138.0
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "With transport at $160,000, Site A's total cost rises to $530,000. How much more is that than Site B's $500,000?",
+    "options": [
+      "$10,000",
+      "$20,000",
+      "$30,000",
+      "$50,000"
+    ],
+    "correct_index": 2,
+    "visual_explanation": "Two cost columns animate side by side; the port column climbs from 510,000 to 530,000 dollars while a red gap bar stretches to 30,000 above the city column."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

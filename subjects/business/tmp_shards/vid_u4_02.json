@@ -1,0 +1,750 @@
+{
+  "video_id": "VID_U4_02",
+  "unit_number": 4,
+  "unit_title": "Unit 4: Operations management",
+  "chapter_code": "4.2",
+  "chapter_title": "Costs, scale of production and break-even analysis",
+  "video_title": "Visualising Break-Even Charts & Margin of Safety",
+  "target_duration_sec": 248,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Classify fixed, variable and total costs.",
+    "Explain economies and diseconomies of scale.",
+    "Construct and interpret a break-even chart and margin of safety.",
+    "Evaluate the limitations of break-even analysis."
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 24,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Stonehaven's Break-Even Question",
+      "on_screen_labels": [
+        "Rent: $2,000 a month",
+        "Flour and energy: $2 per loaf",
+        "Price: $6 per loaf"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "icon_factory",
+            "id": "stonehaven",
+            "label": "Stonehaven Bakehouse"
+          },
+          {
+            "type": "cost_pipe",
+            "id": "fixed_pipe",
+            "label": "Fixed-cost pipe",
+            "color": "#2E5FA3"
+          },
+          {
+            "type": "animated_counter",
+            "id": "fixed_counter",
+            "target": "fixed_cost",
+            "from": 0,
+            "to": 2000,
+            "prefix": "$"
+          },
+          {
+            "type": "chart_ghost",
+            "id": "ghost_chart",
+            "label": "Break-even chart outline"
+          }
+        ],
+        "camera_motion": "smooth_zoom_into_the_cost_breakdown",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Bakery counter opens empty with ovens in the background"
+          },
+          {
+            "at_sec": 8,
+            "directive": "Coins stack up to 2,000 dollars for rent"
+          },
+          {
+            "at_sec": 16,
+            "directive": "A variable-cost pipe begins to fill with each loaf"
+          },
+          {
+            "at_sec": 23,
+            "directive": "A ghost break-even chart fades in at the right"
+          }
+        ]
+      },
+      "voiceover_script": "At Stonehaven Bakehouse, ovens cost 2,000 dollars a month whether they bake one loaf or one thousand. Each loaf uses two dollars of flour and energy. The manager asks: how many loaves must we sell before the bakery stops losing money? Watch coins fill a fixed-cost stack, a variable-cost pipe grow with every loaf, and a break-even line appear.",
+      "word_count": 59,
+      "syllabus_concepts_tagged": [
+        "fixed costs",
+        "variable costs",
+        "break-even output"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 24,
+      "end_sec": 52,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Fixed, Variable and Total Cost Pipes",
+      "on_screen_labels": [
+        "Fixed cost stays $2,000",
+        "Variable cost: $2 each",
+        "At 1,000 loaves, total cost: $4,000"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "cost_pipe",
+            "id": "fixed",
+            "label": "Fixed costs",
+            "value": 2000,
+            "color": "#2E5FA3"
+          },
+          {
+            "type": "cost_pipe",
+            "id": "variable",
+            "label": "Variable costs",
+            "per_unit": 2,
+            "color": "#D9822B"
+          },
+          {
+            "type": "animated_counter",
+            "id": "total",
+            "target": "total_cost",
+            "from": 2000,
+            "to": 4000,
+            "prefix": "$"
+          },
+          {
+            "type": "loaf_icons",
+            "id": "loaves",
+            "count": 1000,
+            "label": "Loaves"
+          }
+        ],
+        "camera_motion": "pan_along_three_horizontal_pipes_then_focus_on_the_total_counter",
+        "visual_beats": [
+          {
+            "at_sec": 24,
+            "directive": "Fixed pipe holds a constant 2,000 dollar level"
+          },
+          {
+            "at_sec": 33,
+            "directive": "Loaves drop into the variable pipe and it rises by 2 dollars each"
+          },
+          {
+            "at_sec": 42,
+            "directive": "At 1,000 loaves the variable pipe reads 2,000 dollars"
+          },
+          {
+            "at_sec": 51,
+            "directive": "Both pipes merge and the total counter lands on 4,000 dollars"
+          }
+        ]
+      },
+      "voiceover_script": "Fixed costs do not vary in the short run with output: rent stays 2,000 dollars. Variable costs rise directly with output: two dollars for every loaf. At 1,000 loaves, variable cost is 1,000 times 2, which equals 2,000 dollars. Total cost is fixed plus variable, so 2,000 plus 2,000 gives 4,000 dollars. Watch the blue pipe hold steady, the orange pipe climb, and the total counter reach 4,000.",
+      "word_count": 68,
+      "syllabus_concepts_tagged": [
+        "fixed costs",
+        "variable costs",
+        "total costs",
+        "average costs"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 52,
+      "end_sec": 80,
+      "visual_type": "curve_reveal",
+      "on_screen_title": "Economies and Diseconomies of Scale",
+      "on_screen_labels": [
+        "Long-run average cost falls, then rises",
+        "Economies: purchasing and technical",
+        "Diseconomies: poor communication"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "u_curve",
+            "id": "lr_ac",
+            "label": "Long-run average cost",
+            "color": "#7D3C98"
+          },
+          {
+            "type": "data_point",
+            "id": "p1",
+            "x": 400,
+            "total_cost": 3200,
+            "average_cost": 8
+          },
+          {
+            "type": "data_point",
+            "id": "p2",
+            "x": 800,
+            "total_cost": 4000,
+            "average_cost": 5
+          },
+          {
+            "type": "data_point",
+            "id": "p3",
+            "x": 1200,
+            "total_cost": 5400,
+            "average_cost": 4.5
+          },
+          {
+            "type": "data_point",
+            "id": "p4",
+            "x": 1600,
+            "total_cost": 8800,
+            "average_cost": 5.5
+          }
+        ],
+        "camera_motion": "trace_the_curve_left_to_right_with_pulses_at_each_data_point",
+        "visual_beats": [
+          {
+            "at_sec": 52,
+            "directive": "Axes appear with output on the horizontal axis"
+          },
+          {
+            "at_sec": 61,
+            "directive": "Three descending points pulse as average cost falls to 4 dollars and 50 cents"
+          },
+          {
+            "at_sec": 70,
+            "directive": "The curve bottoms out and a technical economy label appears"
+          },
+          {
+            "at_sec": 79,
+            "directive": "The fourth point pulses at 5 dollars and 50 cents as communication problems appear"
+          }
+        ]
+      },
+      "voiceover_script": "Long-run average cost often falls, then rises. For a larger bakery, 400 loaves cost 3,200 dollars, so average is 8 dollars. At 800 loaves, total cost is 4,000 dollars, giving 5 dollars average. At 1,200 loaves it is 5,400 dollars, so 4 dollars and 50 cents. But at 1,600 loaves, total cost reaches 8,800 dollars, pushing average back to 5 dollars and 50 cents. Watch the U-curve dip and climb.",
+      "word_count": 70,
+      "syllabus_concepts_tagged": [
+        "economies of scale",
+        "diseconomies of scale",
+        "average costs"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 80,
+      "end_sec": 108,
+      "visual_type": "formula_substitution",
+      "on_screen_title": "Break-Even Output = Fixed Cost / Contribution",
+      "on_screen_labels": [
+        "Price $6 minus variable cost $2",
+        "Contribution: $4 per loaf",
+        "$2,000 / $4 = 500 loaves",
+        "Break-even: total revenue equals total cost"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "formula_panel",
+            "id": "be_formula",
+            "text": "Break-even output = fixed costs / (selling price - variable cost per unit)",
+            "label": "0264 definition"
+          },
+          {
+            "type": "animated_counter",
+            "id": "contribution",
+            "from": 0,
+            "to": 4,
+            "prefix": "$",
+            "label": "Contribution per loaf"
+          },
+          {
+            "type": "animated_counter",
+            "id": "be_result",
+            "from": 0,
+            "to": 500,
+            "label": "Break-even loaves"
+          },
+          {
+            "type": "marker",
+            "id": "axis_marker",
+            "label": "500 on the output axis"
+          }
+        ],
+        "camera_motion": "slow_push_into_the_formula_then_out_to_the_axis_marker",
+        "visual_beats": [
+          {
+            "at_sec": 80,
+            "directive": "The break-even formula drops into the centre"
+          },
+          {
+            "at_sec": 89,
+            "directive": "Price 6 and variable cost 2 slide into the brackets"
+          },
+          {
+            "at_sec": 98,
+            "directive": "The contribution tile flips to 4 dollars per loaf"
+          },
+          {
+            "at_sec": 107,
+            "directive": "2,000 divided by 4 lands on a marker at 500 loaves"
+          }
+        ],
+        "substitution": [
+          "2,000",
+          "/",
+          "(6 - 2)",
+          "=",
+          "500 loaves"
+        ]
+      },
+      "voiceover_script": "Break-even output is fixed costs divided by price minus variable cost per unit. At Stonehaven, price is 6 dollars and variable cost is 2 dollars, so contribution is 4 dollars per loaf. Divide fixed costs of 2,000 by 4 and the answer is 500 loaves. Watch the formula appear, the numbers drop into place, and a glowing marker stop at 500 on the output axis. At that point profit is zero.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "break-even output",
+        "contribution per unit",
+        "fixed costs"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 108,
+      "end_sec": 144,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Building the Full Break-Even Chart",
+      "on_screen_labels": [
+        "Axes: 0 to 1,000 loaves, 0 to $6,000",
+        "Total cost rises from $2,000",
+        "Intersection: 500 loaves, $3,000"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "chart_axes",
+            "id": "axes",
+            "label": "Output and dollars"
+          },
+          {
+            "type": "chart_line",
+            "id": "fixed_cost_line",
+            "label": "Fixed cost",
+            "color": "#2E5FA3",
+            "from": [
+              0,
+              2000
+            ],
+            "to": [
+              1000,
+              2000
+            ]
+          },
+          {
+            "type": "chart_line",
+            "id": "total_cost_line",
+            "label": "Total cost",
+            "color": "#D9822B",
+            "from": [
+              0,
+              2000
+            ],
+            "to": [
+              1000,
+              4000
+            ]
+          },
+          {
+            "type": "chart_line",
+            "id": "total_revenue_line",
+            "label": "Total revenue",
+            "color": "#1B8A5A",
+            "from": [
+              0,
+              0
+            ],
+            "to": [
+              1000,
+              6000
+            ]
+          },
+          {
+            "type": "intersection_marker",
+            "id": "break_even_point",
+            "label": "Break-even point",
+            "color": "#C0392B"
+          }
+        ],
+        "camera_motion": "draw_axes_then_trace_each_line_before_pulsing_the_crossing",
+        "visual_beats": [
+          {
+            "at_sec": 108,
+            "directive": "Horizontal and vertical axes grow from the origin with tick labels"
+          },
+          {
+            "at_sec": 120,
+            "directive": "The blue fixed-cost line draws flat at 2,000 dollars"
+          },
+          {
+            "at_sec": 132,
+            "directive": "Orange total cost reaches 4,000 and green revenue reaches 6,000 at 1,000 loaves"
+          },
+          {
+            "at_sec": 143,
+            "directive": "The crossing pulses red with a label of 500 loaves and 3,000 dollars"
+          }
+        ],
+        "axes": {
+          "x": {
+            "label": "Output (loaves)",
+            "min": 0,
+            "max": 1000,
+            "tick": 100
+          },
+          "y": {
+            "label": "Costs and revenue ($)",
+            "min": 0,
+            "max": 6000,
+            "tick": 1000
+          }
+        },
+        "lines": [
+          {
+            "id": "fixed_cost",
+            "label": "Fixed cost",
+            "color": "#2E5FA3",
+            "from": [
+              0,
+              2000
+            ],
+            "to": [
+              1000,
+              2000
+            ]
+          },
+          {
+            "id": "total_cost",
+            "label": "Total cost",
+            "color": "#D9822B",
+            "from": [
+              0,
+              2000
+            ],
+            "to": [
+              1000,
+              4000
+            ]
+          },
+          {
+            "id": "total_revenue",
+            "label": "Total revenue",
+            "color": "#1B8A5A",
+            "from": [
+              0,
+              0
+            ],
+            "to": [
+              1000,
+              6000
+            ]
+          }
+        ],
+        "highlight_intersection": {
+          "x": 500,
+          "y": 3000,
+          "color": "#C0392B",
+          "label": "Break-even: 500 loaves, $3,000"
+        }
+      },
+      "voiceover_script": "Now build the full break-even chart. The horizontal axis shows output from zero to 1,000 loaves; the vertical axis shows dollars from zero to 6,000. A blue fixed-cost line sits flat at 2,000. An orange total-cost line starts at 2,000 and climbs by 2 dollars per loaf, reaching 4,000 at 1,000 loaves. A green revenue line starts at zero and climbs by 6 dollars per loaf, reaching 6,000. They cross exactly at 500 loaves and 3,000 dollars. Watch each line draw itself, then the crossing point pulse red.",
+      "word_count": 88,
+      "syllabus_concepts_tagged": [
+        "break-even chart",
+        "total revenue",
+        "total costs",
+        "break-even point"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 144,
+      "end_sec": 172,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Reading Profit at 1,000 Loaves",
+      "on_screen_labels": [
+        "Total cost at 1,000: $4,000",
+        "Revenue at 1,000: $6,000",
+        "Profit: $2,000"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "vertical_guide",
+            "id": "guide",
+            "x": 1000,
+            "label": "1,000 loaves"
+          },
+          {
+            "type": "cost_tile",
+            "id": "tc",
+            "value": 4000,
+            "prefix": "$",
+            "label": "Total cost"
+          },
+          {
+            "type": "revenue_tile",
+            "id": "tr",
+            "value": 6000,
+            "prefix": "$",
+            "label": "Total revenue"
+          },
+          {
+            "type": "profit_bar",
+            "id": "profit",
+            "value": 2000,
+            "color": "#1B8A5A",
+            "label": "Profit"
+          }
+        ],
+        "camera_motion": "rise_with_the_vertical_guide_then_zoom_into_the_profit_bar",
+        "visual_beats": [
+          {
+            "at_sec": 144,
+            "directive": "A vertical guide rises at 1,000 loaves"
+          },
+          {
+            "at_sec": 153,
+            "directive": "Orange and green markers meet the guide at 4,000 and 6,000"
+          },
+          {
+            "at_sec": 162,
+            "directive": "The distance between them fills with a green band"
+          },
+          {
+            "at_sec": 171,
+            "directive": "A 2,000 dollar profit tile pops out of the band"
+          }
+        ]
+      },
+      "voiceover_script": "Read the chart at 1,000 loaves. Total cost is 2,000 fixed plus 2,000 variable, giving 4,000 dollars. Total revenue is 1,000 times 6, giving 6,000 dollars. Revenue exceeds cost by 2,000 dollars, so the bakery makes a 2,000 dollar profit. Above 500 loaves it earns a profit; below 500 it makes a loss. Watch a vertical guide rise at 1,000, and a green profit bar grow between the two lines.",
+      "word_count": 70,
+      "syllabus_concepts_tagged": [
+        "total revenue",
+        "profit",
+        "break-even chart"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 172,
+      "end_sec": 200,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Margin of Safety at 700 Loaves",
+      "on_screen_labels": [
+        "Actual output: 700 loaves",
+        "Break-even: 500 loaves",
+        "Margin of safety: 200 loaves",
+        "Margin of safety = actual output - break-even output"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "output_marker",
+            "id": "actual",
+            "x": 700,
+            "label": "Actual output 700"
+          },
+          {
+            "type": "output_marker",
+            "id": "be",
+            "x": 500,
+            "label": "Break-even 500"
+          },
+          {
+            "type": "safety_band",
+            "id": "band",
+            "width": 200,
+            "color": "#1B8A5A",
+            "label": "200-loaf safety band"
+          },
+          {
+            "type": "result_tile",
+            "id": "profit_700",
+            "value": 800,
+            "prefix": "$",
+            "label": "Profit at 700"
+          }
+        ],
+        "camera_motion": "track_leftward_along_the_safety_band_as_it_shrinks",
+        "visual_beats": [
+          {
+            "at_sec": 172,
+            "directive": "A marker appears at 700 loaves on the output axis"
+          },
+          {
+            "at_sec": 181,
+            "directive": "The 500 marker glows and a band stretches between them"
+          },
+          {
+            "at_sec": 190,
+            "directive": "Revenue 4,200 and cost 3,400 appear as paired tiles"
+          },
+          {
+            "at_sec": 199,
+            "directive": "An 800 dollar profit tile settles above the band"
+          }
+        ]
+      },
+      "voiceover_script": "Margin of safety is actual output minus break-even output. Stonehaven expects to sell 700 loaves, so 700 minus 500 equals 200 loaves of safety. Sales could fall by 200 loaves before a loss appears. At 700 loaves, revenue is 4,200 dollars and total cost is 3,400 dollars, leaving 800 dollars profit. Watch the 700 marker move left toward 500, with a 200-loaf safety band shrinking between them.",
+      "word_count": 67,
+      "syllabus_concepts_tagged": [
+        "margin of safety",
+        "break-even output",
+        "profit"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 200,
+      "end_sec": 228,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "How Far Can Break-Even Be Trusted?",
+      "on_screen_labels": [
+        "Useful: shows loss-avoiding output",
+        "Assumes constant costs and prices",
+        "One product and known demand assumed"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "split_panel",
+            "id": "useful",
+            "label": "Useful planning aid",
+            "color": "#1B8A5A"
+          },
+          {
+            "type": "split_panel",
+            "id": "limits",
+            "label": "Simplifying assumptions",
+            "color": "#D9822B"
+          },
+          {
+            "type": "question_icons",
+            "id": "questions",
+            "label": "Uncertain demand"
+          },
+          {
+            "type": "single_product_icon",
+            "id": "one_loaf",
+            "label": "One-product assumption"
+          }
+        ],
+        "camera_motion": "split_wipe_from_a_confident_chart_to_a_questioned_chart",
+        "visual_beats": [
+          {
+            "at_sec": 200,
+            "directive": "A clean break-even chart sits in the left panel"
+          },
+          {
+            "at_sec": 209,
+            "directive": "A green planning tick appears beside the crossing"
+          },
+          {
+            "at_sec": 218,
+            "directive": "Amber question marks multiply over prices, costs and demand in the right panel"
+          },
+          {
+            "at_sec": 227,
+            "directive": "A caption fades in: a planning aid, not a guarantee"
+          }
+        ]
+      },
+      "voiceover_script": "Is break-even useful? It shows the output needed to avoid a loss and the cushion above it. Yet it assumes constant prices and costs, one product, and known demand, while real bakeries sell many lines with uncertain sales. Watch a split screen: green planning gains on the left, amber question marks over fixed assumptions on the right. Because the model simplifies reality, it guides decisions but never guarantees profit.",
+      "word_count": 69,
+      "syllabus_concepts_tagged": [
+        "limitations of break-even analysis",
+        "break-even analysis",
+        "planning"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 228,
+      "end_sec": 248,
+      "visual_type": "recap_quiz",
+      "on_screen_title": "Apply It: Higher Fixed Costs",
+      "on_screen_labels": [
+        "Fixed costs rise to $2,400",
+        "Price $6, variable cost $2",
+        "Contribution stays $4"
+      ],
+      "animation_directives": {
+        "layout": "full_frame_animation",
+        "elements": [
+          {
+            "type": "cost_pipe",
+            "id": "new_fixed",
+            "label": "Fixed cost jumps to $2,400",
+            "color": "#2E5FA3"
+          },
+          {
+            "type": "intersection_marker",
+            "id": "new_be",
+            "label": "New crossing at 600",
+            "color": "#C0392B"
+          },
+          {
+            "type": "old_marker",
+            "id": "old_be",
+            "label": "Old crossing at 500"
+          },
+          {
+            "type": "result_tile",
+            "id": "answer",
+            "value": 600,
+            "label": "Break-even loaves"
+          }
+        ],
+        "camera_motion": "vertical_slide_of_the_fixed_line_then_zoom_on_the_new_crossing",
+        "visual_beats": [
+          {
+            "at_sec": 228,
+            "directive": "The fixed line jumps from 2,000 to 2,400 dollars"
+          },
+          {
+            "at_sec": 234,
+            "directive": "Contribution stays at 4 dollars per loaf"
+          },
+          {
+            "at_sec": 241,
+            "directive": "The crossing slides right from 500 to 600 loaves"
+          },
+          {
+            "at_sec": 247,
+            "directive": "A 600-loaf tile glows as the old marker fades"
+          }
+        ]
+      },
+      "voiceover_script": "If fixed costs rise to 2,400 dollars and price stays 6 dollars with variable cost 2 dollars, what is the new break-even output? Contribution remains 4 dollars, so divide 2,400 by 4. The answer is 600 loaves. Watch the fixed-cost line jump up and the crossing slide from 500 to 600.",
+      "word_count": 51,
+      "syllabus_concepts_tagged": [
+        "break-even output",
+        "application"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Fixed costs rise to $2,400 while price stays $6 and variable cost stays $2. What is the new break-even output?",
+    "options": [
+      "500 loaves",
+      "600 loaves",
+      "400 loaves",
+      "1,200 loaves"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "The blue fixed-cost line jumps from 2,000 to 2,400 dollars; the revenue and total-cost lines now cross at a pulsing marker labelled 600 loaves, with the old 500 marker fading."
+  }
+}

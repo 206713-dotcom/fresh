@@ -1,0 +1,687 @@
+{
+  "video_id": "VID_U3_03",
+  "unit_number": 3,
+  "unit_title": "Unit 3: Marketing",
+  "chapter_code": "3.3",
+  "chapter_title": "The marketing mix",
+  "video_title": "Visualising the Four Ps in Motion",
+  "target_duration_sec": 278,
+  "status": "UNVERIFIED",
+  "learning_objectives": [
+    "Interpret a product life cycle diagram and recommend extension strategies",
+    "Distinguish cost-plus, competitive, penetration, skimming, dynamic and loss leader pricing",
+    "Explain distribution channels and evaluate a coherent four Ps plan"
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_sec": 0,
+      "end_sec": 33,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Nimbus One And The Four Ps",
+      "on_screen_labels": [
+        "Product, Price, Place, Promotion",
+        "Marketing mix: all marketing activities",
+        "20,000 units at $120"
+      ],
+      "animation_directives": {
+        "layout": "product_center_with_orbiting_four_tiles",
+        "elements": [
+          {
+            "type": "icon_product",
+            "id": "headphones",
+            "label": "Nimbus One headphones",
+            "color": "#123B5E"
+          },
+          {
+            "type": "orbit_tile",
+            "id": "product",
+            "label": "Product tile",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "orbit_tile",
+            "id": "price",
+            "label": "Price tile",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "orbit_tile",
+            "id": "place",
+            "label": "Place tile",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "orbit_tile",
+            "id": "promotion",
+            "label": "Promotion tile",
+            "color": "#1B7F7B"
+          }
+        ],
+        "camera_motion": "orbit_camera_around_product_to_four_tiles",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Headphones appear at the centre"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Four Ps orbit into place"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Plan numbers slide beside the product"
+          }
+        ],
+        "orbit_nodes": [
+          "Product",
+          "Price",
+          "Place",
+          "Promotion"
+        ]
+      },
+      "voiceover_script": "Meet Auralis Audio, a premium headphone maker launching the Nimbus One. Four tiles orbit it: Product, Price, Place and Promotion. Marketing mix means all the activities which go into marketing a product or service, often summarised as the four Ps. The plan is twenty thousand units at a one hundred and twenty dollar price, sold online and in shops. Every tile must support the others. Follow the life cycle, pricing, distribution and two kinds of promotion in one journey.",
+      "word_count": 79,
+      "syllabus_concepts_tagged": [
+        "marketing mix",
+        "four Ps",
+        "marketing mix coherence"
+      ]
+    },
+    {
+      "scene_number": 2,
+      "start_sec": 33,
+      "end_sec": 65,
+      "visual_type": "animated_scenario_hook",
+      "on_screen_title": "Product, Brand Image, Packaging",
+      "on_screen_labels": [
+        "Brand image distinguishes rivals products",
+        "Packaging protects and promotes",
+        "New products can win buyers"
+      ],
+      "animation_directives": {
+        "layout": "unboxing_sequence_left_value_tags_right",
+        "elements": [
+          {
+            "type": "icon_box",
+            "id": "pack",
+            "label": "Protective package wrap",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_product",
+            "id": "unit",
+            "label": "Matte headphones",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_badge",
+            "id": "brand",
+            "label": "Brand identity badge",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "icon_price",
+            "id": "value",
+            "label": "Quality signal tag",
+            "color": "#2E8B6B"
+          }
+        ],
+        "camera_motion": "smooth_zoom_into_unboxed_product",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Package wrap closes around the product"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Box opens to reveal matte finish"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Brand badge and quality tag appear"
+          }
+        ]
+      },
+      "voiceover_script": "Product comes first. Brand image is an image or identity given to a product which distinguishes it from competitors brands. Packaging is the physical container or wrapping to protect a product and help in promoting it. The case opens to reveal a matte finish and a brand badge, signalling quality on the shelf. New products can win fresh customers, yet they consume cash and can fail in a crowded market. Good design must serve the chosen buyer.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "brand image",
+        "packaging",
+        "new product development"
+      ]
+    },
+    {
+      "scene_number": 3,
+      "start_sec": 65,
+      "end_sec": 96,
+      "visual_type": "curve_reveal",
+      "on_screen_title": "The Product Life Cycle Curve",
+      "on_screen_labels": [
+        "Introduction, growth, maturity, decline",
+        "2k to 9k to 14k to 6k units",
+        "Read the curve before acting"
+      ],
+      "animation_directives": {
+        "layout": "coordinate_grid_with_revealed_sales_curve",
+        "elements": [
+          {
+            "type": "axes",
+            "id": "graph",
+            "label": "Time and sales axes",
+            "color": "#4A5A6A"
+          },
+          {
+            "type": "curve",
+            "id": "plc",
+            "label": "Life cycle curve",
+            "color": "#123B5E"
+          },
+          {
+            "type": "stage_marker",
+            "id": "stages",
+            "label": "Four stage markers",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_counter",
+            "id": "units",
+            "label": "Unit sales counter",
+            "color": "#2E8B6B"
+          }
+        ],
+        "camera_motion": "trace_curve_from_left_to_right",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Axes and curve outline draw in"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Stage markers appear at four points"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Curve flattens then falls to decline"
+          }
+        ],
+        "axes": [
+          "time",
+          "unit sales"
+        ],
+        "lines": [
+          "product life cycle curve"
+        ],
+        "curve_stages": [
+          {
+            "name": "introduction",
+            "units": 2000
+          },
+          {
+            "name": "growth",
+            "units": 9000
+          },
+          {
+            "name": "maturity",
+            "units": 14000
+          },
+          {
+            "name": "decline",
+            "units": 6000
+          }
+        ]
+      },
+      "voiceover_script": "The product life cycle shows the stages a product passes through: introduction, growth, maturity and decline. A curve draws in. Sales climb from two thousand units in introduction, to nine thousand in growth, to fourteen thousand at maturity, then ease to six thousand in decline. The line rises, flattens, then falls. Each stage needs a different mix: launch spending early, differentiation at maturity, cost control late. Reading the curve tells managers when to act.",
+      "word_count": 74,
+      "syllabus_concepts_tagged": [
+        "product life cycle",
+        "introduction",
+        "growth",
+        "maturity",
+        "decline"
+      ]
+    },
+    {
+      "scene_number": 4,
+      "start_sec": 96,
+      "end_sec": 126,
+      "visual_type": "interactive_graph_build",
+      "on_screen_title": "Extension Strategies Lift The Curve",
+      "on_screen_labels": [
+        "New markets and new uses",
+        "Adapt product or packaging",
+        "More advertising and sales promotion"
+      ],
+      "animation_directives": {
+        "layout": "four_action_tiles_above_secondary_curve",
+        "elements": [
+          {
+            "type": "tile",
+            "id": "markets",
+            "label": "New markets tile",
+            "color": "#123B5E"
+          },
+          {
+            "type": "tile",
+            "id": "uses",
+            "label": "New uses tile",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "tile",
+            "id": "adapt",
+            "label": "Adapted pack tile",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "tile",
+            "id": "ads",
+            "label": "Advertising tile",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "curve",
+            "id": "renew",
+            "label": "Second lift curve",
+            "color": "#1B7F7B"
+          }
+        ],
+        "camera_motion": "follow_each_tile_into_the_second_curve_lift",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Four action tiles drop in sequence"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Gift pack and sports version appear"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Curve bends upward a second time"
+          }
+        ],
+        "lines": [
+          "original curve",
+          "extended curve"
+        ],
+        "highlight_intersection": "second sales lift"
+      },
+      "voiceover_script": "At maturity, extension strategies can lift the curve. Four tiles appear: new markets, new uses, adapting the product or packaging, and increased advertising plus sales promotion. Auralis Audio tries a sports version and a gift pack, and the curve bends upward twice. New markets bring buyers but need research. New uses widen appeal but may confuse the brand. Adapting packaging is cheap but short lived. Choose the extension that fits the segment.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "extension strategies",
+        "new markets",
+        "sales promotion",
+        "evaluation"
+      ]
+    },
+    {
+      "scene_number": 5,
+      "start_sec": 126,
+      "end_sec": 156,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Four Pricing Methods In Motion",
+      "on_screen_labels": [
+        "Cost plus: cost plus mark up",
+        "Competitive: match rivals",
+        "Dynamic and loss leader"
+      ],
+      "animation_directives": {
+        "layout": "four_price_tag_panels_with_revenue_lines",
+        "elements": [
+          {
+            "type": "tag",
+            "id": "costplus",
+            "label": "Cost plus tag",
+            "color": "#123B5E"
+          },
+          {
+            "type": "tag",
+            "id": "competitive",
+            "label": "Competitive tag",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "meter",
+            "id": "dynamic",
+            "label": "Dynamic demand meter",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "tag",
+            "id": "leader",
+            "label": "Loss leader tag",
+            "color": "#D64550"
+          }
+        ],
+        "camera_motion": "pan_across_four_price_tags",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Cost plus and competitive tags settle"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Dynamic tag flickers with demand meter"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Loss leader tag dips and store traffic rises"
+          }
+        ],
+        "split_panels": [
+          "cost plus and competitive",
+          "dynamic and loss leader"
+        ],
+        "lines": [
+          "revenue direction up",
+          "revenue direction down"
+        ]
+      },
+      "voiceover_script": "Cost plus pricing is the cost of manufacturing the product plus a profit mark up. Competitive pricing sets the product in line with rivals to protect market share. Dynamic pricing changes the price online as demand shifts; the tag flickers with a demand meter. A loss leader sells one item cheaply to draw shoppers into the range. Revenue direction lines rise or dip with each method, and no formula is needed here.",
+      "word_count": 72,
+      "syllabus_concepts_tagged": [
+        "cost-plus pricing",
+        "competitive pricing",
+        "dynamic pricing",
+        "loss leader"
+      ]
+    },
+    {
+      "scene_number": 6,
+      "start_sec": 156,
+      "end_sec": 186,
+      "visual_type": "curve_reveal",
+      "on_screen_title": "Penetration Versus Skimming",
+      "on_screen_labels": [
+        "Penetration: low launch price, share",
+        "Skimming: high initial price",
+        "Revenue follows buyer response"
+      ],
+      "animation_directives": {
+        "layout": "two_revealed_curves_with_price_lines",
+        "elements": [
+          {
+            "type": "curve",
+            "id": "penetration",
+            "label": "Low price climbing curve",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "curve",
+            "id": "skimming",
+            "label": "High price easing curve",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "line",
+            "id": "revenue",
+            "label": "Revenue direction cue",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "icon_badge",
+            "id": "premium",
+            "label": "Premium positioning badge",
+            "color": "#123B5E"
+          }
+        ],
+        "camera_motion": "trace_low_curve_then_high_curve",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Low price curve climbs steeply"
+          },
+          {
+            "at_sec": 11,
+            "directive": "High price curve starts high then eases"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Premium badge locks onto the skimming path"
+          }
+        ],
+        "axes": [
+          "time",
+          "sales revenue"
+        ],
+        "lines": [
+          "penetration revenue path",
+          "skimming revenue path"
+        ]
+      },
+      "voiceover_script": "Two launch prices. Penetration pricing sets a price below rivals to enter a market and gain market share; the low line climbs as buyers join. Price skimming sets a high price for a new product; the high line starts high and eases as buyers are served. When price is lower, more buyers may respond, so revenue can grow. Because the Nimbus One is premium, therefore skimming recovers costs first, so promotion can follow.",
+      "word_count": 73,
+      "syllabus_concepts_tagged": [
+        "penetration pricing",
+        "price skimming",
+        "revenue direction",
+        "conceptual demand response"
+      ]
+    },
+    {
+      "scene_number": 7,
+      "start_sec": 186,
+      "end_sec": 218,
+      "visual_type": "flow_diagram",
+      "on_screen_title": "Distribution Routes And Ecommerce",
+      "on_screen_labels": [
+        "Producer to wholesaler to retailer to buyer",
+        "Direct keeps control, indirect widens reach",
+        "Ecommerce adds delivery and returns costs"
+      ],
+      "animation_directives": {
+        "layout": "two_parallel_route_lines_with_moving_product_dots",
+        "elements": [
+          {
+            "type": "flow_node",
+            "id": "producer",
+            "label": "Auralis Audio factory",
+            "color": "#123B5E"
+          },
+          {
+            "type": "flow_node",
+            "id": "wholesaler",
+            "label": "Wholesaler node",
+            "color": "#4A5A6A"
+          },
+          {
+            "type": "flow_node",
+            "id": "retailer",
+            "label": "Retailer node",
+            "color": "#F2C14E"
+          },
+          {
+            "type": "flow_node",
+            "id": "consumer",
+            "label": "Customer node",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_phone",
+            "id": "online",
+            "label": "Online store",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "follow_one_product_dot_down_each_route",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Product dots move along the direct line"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Dots pass through wholesaler and retailer"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Online store icon opens with cost tags"
+          }
+        ],
+        "flow_nodes": [
+          "producer",
+          "wholesaler",
+          "retailer",
+          "consumer"
+        ],
+        "direct_vs_indirect": true
+      },
+      "voiceover_script": "Place is the means by which a product is passed from the producer to the customer. Direct sales run from Auralis Audio straight to buyers online. Indirect routes pass through a wholesaler, then a retailer, then the customer, with an agent. Product dots travel both paths. Ecommerce is the online buying and selling of goods and services using internet linked devices. It widens reach but adds delivery, returns and security costs. Direct keeps control; indirect widens coverage.",
+      "word_count": 77,
+      "syllabus_concepts_tagged": [
+        "distribution channel",
+        "direct distribution",
+        "indirect distribution",
+        "ecommerce"
+      ]
+    },
+    {
+      "scene_number": 8,
+      "start_sec": 218,
+      "end_sec": 249,
+      "visual_type": "split_screen_comparison",
+      "on_screen_title": "Informative, Persuasive, Sales Promotion",
+      "on_screen_labels": [
+        "Informative explains features",
+        "Persuasive builds status and feeling",
+        "Vouchers, offers, rewards, competitions"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_advert_left_offers_right",
+        "elements": [
+          {
+            "type": "icon_info",
+            "id": "inform",
+            "label": "Specification sheet",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_status",
+            "id": "persuade",
+            "label": "Lifestyle image",
+            "color": "#6C5CE7"
+          },
+          {
+            "type": "icon_phone",
+            "id": "social",
+            "label": "Social and email channels",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "coupon",
+            "id": "offers",
+            "label": "Vouchers and discounts",
+            "color": "#F2C14E"
+          }
+        ],
+        "camera_motion": "alternate_between_advert_frames_and_offer_tiles",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Specification sheet fills with features"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Lifestyle frame replaces it"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Voucher and reward tiles pop up"
+          }
+        ],
+        "split_panels": [
+          "informative and persuasive advertising",
+          "sales promotion incentives"
+        ]
+      },
+      "voiceover_script": "Promotion has two parts. Advertising is a paid for communication with potential customers about a product to encourage them to buy it. Informative advertising explains features; persuasive advertising builds feeling and status. Social media, emails, leaflets and billboards show both. Sales promotions are incentives such as special offers, discounts, or reward schemes aimed at consumers to achieve short term increases in sales; vouchers join them. Information builds understanding, persuasion lifts desire, offers trigger action.",
+      "word_count": 74,
+      "syllabus_concepts_tagged": [
+        "advertising",
+        "informative promotion",
+        "persuasive promotion",
+        "sales promotion"
+      ]
+    },
+    {
+      "scene_number": 9,
+      "start_sec": 249,
+      "end_sec": 278,
+      "visual_type": "evaluation_split",
+      "on_screen_title": "Does The Whole Mix Fit",
+      "on_screen_labels": [
+        "Premium set: margin and clear image",
+        "Limit: lower volume, higher costs",
+        "Coherent mix beats clever mismatch"
+      ],
+      "animation_directives": {
+        "layout": "split_screen_four_tile_fit_with_verdict",
+        "elements": [
+          {
+            "type": "puzzle",
+            "id": "fit",
+            "label": "Four Ps fit frame",
+            "color": "#123B5E"
+          },
+          {
+            "type": "icon_label",
+            "id": "plus",
+            "label": "Benefits column",
+            "color": "#2E8B6B"
+          },
+          {
+            "type": "icon_label",
+            "id": "minus",
+            "label": "Limits column",
+            "color": "#D64550"
+          },
+          {
+            "type": "verdict_banner",
+            "id": "choice",
+            "label": "Keep the premium set",
+            "color": "#6C5CE7"
+          }
+        ],
+        "camera_motion": "pull_back_from_fit_frame_to_verdict_banner",
+        "visual_beats": [
+          {
+            "at_sec": 0,
+            "directive": "Four Ps snap into a single frame"
+          },
+          {
+            "at_sec": 11,
+            "directive": "Benefits and limits columns appear"
+          },
+          {
+            "at_sec": 22,
+            "directive": "Verdict banner confirms premium choice"
+          }
+        ],
+        "split_panels": [
+          "premium mix benefits",
+          "premium mix limits"
+        ]
+      },
+      "voiceover_script": "Now judge the whole mix. A premium product with skimming, selective retail and informative promotion supports a high price. The benefit is margin and image; the limit is lower volume and higher selling costs. A penetration price may grow share but weaken the premium story. Because the four Ps must fit together, therefore Auralis Audio keeps the premium set, so every tile reinforces one message. A coherent mix beats a mismatch.",
+      "word_count": 71,
+      "syllabus_concepts_tagged": [
+        "marketing strategy",
+        "marketing mix coherence",
+        "evaluation"
+      ]
+    }
+  ],
+  "end_of_video_recap_quiz": {
+    "question": "Auralis Audio launches a premium headphone with unique sensors and wants to recover development costs before rivals enter. Which price fits best?",
+    "options": [
+      "Penetration pricing",
+      "Price skimming",
+      "Loss leader",
+      "Competitive pricing only"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A high starting price curve eases downward while a low penetration curve climbs, and a premium badge locks onto the high path."
+  }
+}

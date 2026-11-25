@@ -1,0 +1,559 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U2_01",
+  "title": "Visualising Motivation: From Needs to Productivity",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 240,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U2_01.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 24,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "smooth_zoom_into_stitching_line",
+      "title": "Why Do 40 Tops Go Missing Daily?",
+      "labels": [
+        "Kestrel Ridge Sportswear",
+        "Target: 200 tops per day",
+        "Actual: 160 tops per day",
+        "Absence: 12 percent"
+      ],
+      "elements": [
+        {
+          "type": "icon_factory",
+          "id": "sewing_floor",
+          "label": "Sewing line",
+          "color": "#17365D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "output_counter",
+          "label": "Tops per day",
+          "color": "#C8860D",
+          "from": 160,
+          "to": 200
+        },
+        {
+          "type": "icon_absence_chart",
+          "id": "absence_chart",
+          "label": "Absence twelve percent",
+          "color": "#B22222"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Show sewing machines idle and a target board at 200"
+        },
+        {
+          "at_sec": 12,
+          "directive": "Counters reveal 160 actual tops and twelve percent absence"
+        },
+        {
+          "at_sec": 24,
+          "directive": "Manager silhouette asks the motivation question"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Motivation is the reason why employees want to work hard and work effectively for the business. At Kestrel Ridge Sportswear, a sewing line should produce two hundred training tops a day. It manages one hundred and sixty. Absence runs at twelve percent; waste at eight. One question remains. What lifts effort: more pay, or a better job?",
+        "words": 57,
+        "wpm": 142.5
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 24,
+      "out": 50,
+      "visual_type": "interactive_graph_build",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "slow_tilt_up_the_pyramid",
+      "title": "Maslow's Hierarchy Fills From the Base",
+      "labels": [
+        "Physiological: pay and rest",
+        "Safety: contract and safe machines",
+        "Social: team and belonging",
+        "Esteem: praise and status",
+        "Self-actualisation: skill growth"
+      ],
+      "elements": [
+        {
+          "type": "animated_pyramid",
+          "id": "needs_pyramid",
+          "label": "Five need levels",
+          "color": "#17365D",
+          "levels": 5
+        },
+        {
+          "type": "level_highlight",
+          "id": "base_level",
+          "label": "Base fills first",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "upward_arrow",
+          "label": "Progress upward",
+          "color": "#1F7A8C"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 24,
+          "directive": "Outline the empty five-tier pyramid"
+        },
+        {
+          "at_sec": 37,
+          "directive": "Fill physiological then safety then social tiers"
+        },
+        {
+          "at_sec": 50,
+          "directive": "Light esteem and self-actualisation as the upper tiers glow"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Maslow's hierarchy runs from physiological needs through safety, social, esteem and self-actualisation. The pyramid fills from the base. Pay and rest satisfy physiological needs. A contract and safe machines satisfy safety. A team gives social contact. Praise brings esteem. Mastering a skill reaches self-actualisation. Businesses can meet needs at each level, but the order is not rigid, so one reward rarely fits everyone.",
+        "words": 63,
+        "wpm": 145.4
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 50,
+      "out": 74,
+      "visual_type": "flow_diagram",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "pan_along_the_piece_rate_flow",
+      "title": "Taylor: Pay Linked to Output",
+      "labels": [
+        "Time the seam",
+        "Set standard: 20 tops an hour",
+        "Piece rate: $0.40 per top",
+        "160 tops = $64 a day"
+      ],
+      "elements": [
+        {
+          "type": "icon_stopwatch",
+          "id": "stopwatch",
+          "label": "Time and motion study",
+          "color": "#C8860D"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "piece_rate_arrow",
+          "label": "Output to pay",
+          "color": "#2E75B6"
+        },
+        {
+          "type": "animated_counter",
+          "id": "pay_counter",
+          "label": "Daily piece pay",
+          "color": "#2E8B57",
+          "from": 64,
+          "to": 80
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 50,
+          "directive": "Stopwatch times a single seam on the line"
+        },
+        {
+          "at_sec": 62,
+          "directive": "Standard output and forty cent piece rate appear"
+        },
+        {
+          "at_sec": 74,
+          "directive": "Pay counter rises from sixty-four dollars toward eighty"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Taylor linked pay to output through piece rates. A piece rate is an amount paid for each unit of output produced. A stopwatch times one seam; the standard is twenty tops an hour at forty cents each. At one hundred and sixty tops the operator earns sixty-four dollars. Work faster, earn more. Critics say quality can suffer.",
+        "words": 57,
+        "wpm": 142.5
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 74,
+      "out": 100,
+      "visual_type": "split_screen_comparison",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "close_in_on_the_tilting_beam",
+      "title": "Herzberg's Balancing Beam",
+      "labels": [
+        "Hygiene: pay, conditions, security",
+        "Motivators: achievement, responsibility, recognition",
+        "Beam tips when motivators are added"
+      ],
+      "elements": [
+        {
+          "type": "balance_beam",
+          "id": "herzberg_beam",
+          "label": "Hygiene versus motivators",
+          "color": "#6A4C93"
+        },
+        {
+          "type": "icon_coins",
+          "id": "hygiene_pan",
+          "label": "Hygiene pan",
+          "color": "#C8860D"
+        },
+        {
+          "type": "icon_star",
+          "id": "motivator_pan",
+          "label": "Motivator pan",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 74,
+          "directive": "Draw the beam with hygiene factors on the left"
+        },
+        {
+          "at_sec": 87,
+          "directive": "Coins pile up briefly but the beam stays level"
+        },
+        {
+          "at_sec": 100,
+          "directive": "Responsibility and praise tip the right side down"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Herzberg separated hygiene factors from motivators. Hygiene factors include pay, working conditions, security and company policy. They stop dissatisfaction but do not create lasting effort. Motivators include achievement, responsibility, recognition and personal growth. On the balance beam, extra pay lifts the left side briefly; adding responsibility and praise tips the right side down and keeps it there. The beam shows why money alone is not enough.",
+        "words": 66,
+        "wpm": 152.3
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 100,
+      "out": 124,
+      "visual_type": "split_screen_comparison",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "dolly_between_the_two_reward_panels",
+      "title": "Two Reward Routes, One Goal",
+      "labels": [
+        "Financial: time rate, bonus, commission",
+        "Non-financial: rotation, enrichment, praise",
+        "Both aim to raise effort"
+      ],
+      "elements": [
+        {
+          "type": "split_panel",
+          "id": "reward_split",
+          "label": "Two reward routes",
+          "color": "#17365D"
+        },
+        {
+          "type": "icon_wallet",
+          "id": "financial_side",
+          "label": "Financial rewards",
+          "color": "#C8860D"
+        },
+        {
+          "type": "icon_badge",
+          "id": "nonfinancial_side",
+          "label": "Non-financial rewards",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 100,
+          "directive": "Split the screen into financial and non-financial panels"
+        },
+        {
+          "at_sec": 112,
+          "directive": "Coins, bonus slips and commission cards slide left"
+        },
+        {
+          "at_sec": 124,
+          "directive": "Rotation arrows and praise badges slide right"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Financial rewards include time rates, piece rates, salaries, bonuses, commission, profit sharing and fringe benefits. Non-financial methods include job enrichment, job rotation, training, promotion, praise and employee of the month. Financial rewards can boost effort quickly, but may not create lasting commitment. Non-financial methods build responsibility and recognition at low cost. Kestrel Ridge Sportswear now tests both routes.",
+        "words": 58,
+        "wpm": 145.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 124,
+      "out": 150,
+      "visual_type": "flow_diagram",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "track_the_chain_left_to_right",
+      "title": "Because, Therefore, So: The Chain",
+      "labels": [
+        "Because: repetitive seams",
+        "Therefore: rotation and recognition",
+        "So: higher effort and output"
+      ],
+      "elements": [
+        {
+          "type": "flow_nodes",
+          "id": "causal_chain",
+          "label": "Three linked causes",
+          "color": "#17365D",
+          "nodes": 3
+        },
+        {
+          "type": "arrow_flow",
+          "id": "because_arrow",
+          "label": "Because to therefore",
+          "color": "#1F7A8C"
+        },
+        {
+          "type": "arrow_flow",
+          "id": "so_arrow",
+          "label": "Therefore to so",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 124,
+          "directive": "Show an operator stitching one seam repeatedly"
+        },
+        {
+          "at_sec": 137,
+          "directive": "Rotation arrows and a praise board replace the repetition"
+        },
+        {
+          "at_sec": 150,
+          "directive": "Output arrow rises as the third link lights up"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Because every operator stitches the same seam for eight hours, boredom grows and effort falls. Therefore Kestrel introduces job rotation across three stations and a daily praise board. So variety and recognition raise motivation, productivity improves and absence falls. That because, therefore, so chain is the reasoning examiners reward. Notice the mechanism: the job changes, the reward changes, and then the output changes.",
+        "words": 63,
+        "wpm": 145.4
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 150,
+      "out": 176,
+      "visual_type": "animated_scenario_hook",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "sweep_across_the_live_dashboard",
+      "title": "Kestrel's Eight-Week Motivation Trial",
+      "labels": [
+        "Output: 160 to 215 tops",
+        "Absence: 12 to 7 percent",
+        "Waste: 8 to 4 percent",
+        "Bonus: $30 above 200 tops"
+      ],
+      "elements": [
+        {
+          "type": "dashboard",
+          "id": "trial_dashboard",
+          "label": "Eight week results",
+          "color": "#17365D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "output_gain",
+          "label": "Tops per day",
+          "color": "#2E8B57",
+          "from": 160,
+          "to": 215
+        },
+        {
+          "type": "animated_counter",
+          "id": "absence_drop",
+          "label": "Absence percent",
+          "color": "#1F7A8C",
+          "from": 12,
+          "to": 7
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 150,
+          "directive": "Show week zero baselines of 160 tops and twelve percent absence"
+        },
+        {
+          "at_sec": 163,
+          "directive": "Rotation and bonus icons activate from week three"
+        },
+        {
+          "at_sec": 176,
+          "directive": "All counters settle at 215 tops, seven percent and four percent"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Watch the eight-week trial. Output climbs from one hundred and sixty to two hundred and fifteen tops a day. Absence drops from twelve percent to seven percent. Waste falls from eight percent to four percent. Operators who exceed two hundred tops receive a thirty dollar bonus. At forty cents a top, two hundred and fifteen tops earn eighty-six dollars, plus the bonus. Counters move together.",
+        "words": 65,
+        "wpm": 150.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 176,
+      "out": 204,
+      "visual_type": "evaluation_split",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "alternate_focus_between_plus_and_minus_panels",
+      "title": "Which Rewards Actually Last?",
+      "labels": [
+        "Financial plus: fast, measurable",
+        "Financial minus: costly, short-lived",
+        "Non-financial plus: cheap, builds responsibility",
+        "Non-financial minus: slower results"
+      ],
+      "elements": [
+        {
+          "type": "evaluation_split",
+          "id": "reward_eval",
+          "label": "Two-sided evaluation",
+          "color": "#17365D"
+        },
+        {
+          "type": "icon_coins",
+          "id": "pro_side",
+          "label": "Advantages",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "warning_sign",
+          "id": "con_side",
+          "label": "Limitations",
+          "color": "#B22222"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 176,
+          "directive": "List quick effort and easy measurement on the plus side"
+        },
+        {
+          "at_sec": 190,
+          "directive": "Show cost and quality slippage on the minus side"
+        },
+        {
+          "at_sec": 204,
+          "directive": "Contrast low-cost responsibility with slower results"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Financial rewards act fast and are easy to measure, but they are costly and can damage quality. A bonus may push speed while seams fray. Non-financial rewards cost little and build responsibility, but results appear slowly and some workers dislike rotation. The best answer depends on the job and the evidence. For repetitive sewing, rotation plus recognition fits; for a sales team, commission may fit better. Neither method works alone.",
+        "words": 70,
+        "wpm": 150.0
+      }
+    },
+    {
+      "scene_number": 9,
+      "in": 204,
+      "out": 240,
+      "visual_type": "timeline_animation",
+      "layout": "full_width_animated_diagram_with_side_caption",
+      "camera_motion": "step_along_the_three_stage_timeline",
+      "title": "Apply It: Pick One Method",
+      "labels": [
+        "1 Match method to job",
+        "2 Use evidence from data",
+        "3 State one limitation"
+      ],
+      "elements": [
+        {
+          "type": "timeline",
+          "id": "answer_timeline",
+          "label": "Three step answer",
+          "color": "#17365D"
+        },
+        {
+          "type": "icon_document",
+          "id": "evidence_card",
+          "label": "Data evidence",
+          "color": "#C8860D"
+        },
+        {
+          "type": "checkbox",
+          "id": "limitation_box",
+          "label": "Limitation check",
+          "color": "#2E8B57"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 204,
+          "directive": "Replay the pyramid, beam and trial icons in sequence"
+        },
+        {
+          "at_sec": 216,
+          "directive": "Pause on the financial and non-financial trade-off"
+        },
+        {
+          "at_sec": 228,
+          "directive": "Highlight the fifty-five top gain and five point absence fall"
+        },
+        {
+          "at_sec": 240,
+          "directive": "Build a three step exam answer on screen"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Let us recap the chain. Motivation is the reason employees want to work hard. Maslow shows layered needs, Taylor links pay to output, and Herzberg separates hygiene from motivators. Kestrel Ridge Sportswear combined a forty cent piece rate, a thirty dollar bonus, rotation and praise. Output rose by fifty-five tops, absence fell by five percentage points, waste halved. For your answer, match the method to the job, quote one number from the data, and state one limitation. That turns description into evaluation.",
+        "words": 82,
+        "wpm": 136.7
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Kestrel Ridge Sportswear has repetitive sewing, 12 percent absence and 160 of a target 200 tops a day. Which single package best raises both output and attendance, and why?",
+    "options": [
+      "Raise the piece rate only, because higher pay always creates lasting commitment",
+      "Add job rotation and daily praise, because variety and recognition tackle boredom while a bonus rewards extra tops",
+      "Shorten the working week only, because fewer hours always raise total output",
+      "Replace all operators with machines, because automation removes absence immediately"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "The sewing line splits into three stations with rotation arrows; a praise board fills, absence drops from 12 to 7 percent and the output counter climbs to 215 tops."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

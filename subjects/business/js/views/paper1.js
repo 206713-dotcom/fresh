@@ -236,11 +236,11 @@
         : 'mt-2 px-3 py-2 rounded-xl border text-xs flex flex-wrap items-center justify-between gap-2 bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300';
       h += '<div class="' + wrap + '" role="status">' +
         '<span>Downloading ' + AI_MODEL_LABEL + ' weights into browser cache…' +
-          (a.status ? ' ' + esc(a.status) : '') + ' (You can still mark answers immediately!)</span>' +
+          (a.status ? ' ' + esc(a.status) : '') + ' (You can still submit answers for assessment!)</span>' +
         '<span class="font-mono font-bold shrink-0">' + a.percent + '%</span></div>';
     } else if (a.error) {
       h += '<div role="status" class="mt-2 px-3 py-2 rounded-xl border text-xs flex flex-wrap items-center justify-between gap-2 bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300">' +
-        '<span>' + esc(a.status) + ' You can still mark answers immediately with Instant Examiner.</span></div>';
+        '<span>' + esc(a.status) + ' You can still submit answers for assessment.</span></div>';
     }
     return h;
   }
@@ -943,25 +943,7 @@
     if (!found) return;
     var answer = valueOfAnswer(id);
     var det = instantFeedback(found.question, answer);
-    panel.innerHTML = feedbackHtml(det, "Instant Examiner · local keyword & structure checks") +
-      '<div data-ai-slot class="mt-3 text-xs text-slate-500 dark:text-slate-400"></div>';
-    var hook = window.EC.autoMark;
-    if (typeof hook !== "function") return;
-    try {
-      var result = hook({
-        questionId: id, scenarioId: found.scenario.scenario_id, part: found.question.part,
-        unit: found.scenario.unit, markValue: found.question.mark_value,
-        questionText: found.question.question_text, caseStem: found.scenario.scenario_stem,
-        answer: answer, markScheme: found.question.mark_scheme,
-        validAppWords: (found.question.qwen_marking_keys || {}).valid_app_words || [],
-        modelAnswer: found.question.model_answer
-      });
-      if (result && typeof result.then === "function") {
-        result.then(function (r) { updateAiSlot(panel, r); }, function () { /* keep local feedback */ });
-      } else {
-        updateAiSlot(panel, result);
-      }
-    } catch (e) { /* optional hook failed — deterministic feedback stands */ }
+    panel.innerHTML = feedbackHtml(det, "Instant Examiner · local keyword & structure checks");
   }
 
   function updateAiSlot(panel, result) {
@@ -2165,28 +2147,17 @@
 
     html += '<div class="study-answer-actions">';
     html += '<button type="button" class="study-action study-secondary-action" data-action="toggle-ms" data-qid="' + esc(id) + '">View mark scheme</button>';
-    html += '<button type="button" class="study-action study-secondary-action" data-action="toggle-ao" data-qid="' + esc(id) + '">AO highlight</button>';
-    html += '<button type="button" class="study-action study-secondary-action" data-action="toggle-model" data-qid="' + esc(id) + '">Model answer</button>';
-    html += '<button type="button" class="study-action study-secondary-action" data-action="examiner" data-qid="' + esc(id) + '">Instant Examiner</button>';
     if (opts.contextNote) {
       html += '<div class="font-mono text-[11px] text-[var(--muted)]">' + esc(opts.contextNote) + '</div>';
     }
     html += '<button type="button" class="study-action btn-primary" data-action="submit-assessment" data-qid="' + esc(id) + '"' +
       (draft.trim() ? '' : ' disabled') + '>Submit for assessment</button>';
-    html += '<label>Your mark: <select data-action="mark-select" data-qid="' + esc(id) + '" class="boss-filter-select" style="margin-left:4px">' +
-      markOptions(marks, rec) + '</select></label>';
-    html += '<button type="button" class="study-action btn-primary" data-action="save-mark" data-qid="' + esc(id) + '">Save mark</button>';
     html += '</div>';
 
-    html += '<div data-panel="ms" data-qid="' + esc(id) + '" hidden>' + markSchemeHtml(q) + '</div>';
-    html += '<div data-panel="ao" data-qid="' + esc(id) + '" hidden></div>';
-    html += '<div data-panel="model" data-qid="' + esc(id) + '" hidden>' +
-      '<div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs text-slate-700 dark:text-slate-300">' +
+    html += '<div data-panel="ms" data-qid="' + esc(id) + '" hidden>' + markSchemeHtml(q) +
+      '<div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs text-slate-700 dark:text-slate-300 mt-2">' +
       '<strong class="text-emerald-900 dark:text-emerald-300 block mb-1">Exemplar Model Answer:</strong>' +
       '<p class="italic text-slate-800 dark:text-slate-200 leading-relaxed">"' + esc(q.model_answer || "") + '"</p></div></div>';
-    html += '<div data-panel="examiner" data-qid="' + esc(id) + '" hidden></div>';
-    html += '<div class="font-mono text-[11px] text-slate-500 dark:text-slate-400 mt-2" data-marknote="' + esc(id) + '">' +
-      (score != null ? 'Saved mark: ' + score + ' / ' + esc(q.mark_value) : 'Not marked yet') + '</div>';
     html += '</div>';
     return html;
   }

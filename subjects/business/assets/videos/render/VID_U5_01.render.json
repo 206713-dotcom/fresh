@@ -1,0 +1,558 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U5_01",
+  "title": "The Finance Fountain: Needs and Sources",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 240,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U5_01.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 28,
+      "visual_type": "animated_scenario_hook",
+      "layout": "split_screen_left_factory_right_fountain",
+      "camera_motion": "smooth_zoom_from_garage_to_fountain",
+      "title": "Can Finance Fill the Kayak Gap?",
+      "labels": [
+        "Northwater Kayaks Ltd",
+        "Finance: money for expenditure",
+        "Demand is rising"
+      ],
+      "elements": [
+        {
+          "type": "icon_factory",
+          "id": "kayak_shop",
+          "label": "Converted garage workshop",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "finance_fountain",
+          "id": "fountain",
+          "label": "Finance fountain starting to flow",
+          "color": "#E0A229"
+        },
+        {
+          "type": "animated_counter",
+          "id": "orders",
+          "label": "Unfilled orders rising",
+          "color": "#B23A2B"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Show empty garage with order slips piling up"
+        },
+        {
+          "at_sec": 12,
+          "directive": "Fountain basin fills with blue coins"
+        },
+        {
+          "at_sec": 24,
+          "directive": "Label finance with the exact textbook wording"
+        },
+        {
+          "at_sec": 28,
+          "directive": "Coin stream reaches the workshop door"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Meet Northwater Kayaks, a small firm making sea kayaks in a converted garage. Demand is rising, but the owner cannot build more boats with cash alone. Finance is money or capital needed to pay for expenditure and business operations. Without it, orders wait, stock runs short and growth stalls. Watch the finance fountain fill the business, one source at a time, right now, before the summer season.",
+        "words": 67,
+        "wpm": 143.6
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 28,
+      "out": 58,
+      "visual_type": "flow_diagram",
+      "layout": "flow_diagram_five_need_tiles_into_two_lanes",
+      "camera_motion": "smooth_pan_across_two_time_lanes",
+      "title": "Five Reasons a Business Needs Finance",
+      "labels": [
+        "Start-up capital",
+        "Expansion and new technology",
+        "Short-term under one year",
+        "Long-term over one year"
+      ],
+      "elements": [
+        {
+          "type": "flow_tile",
+          "id": "need1",
+          "label": "Start-up capital tile",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "flow_tile",
+          "id": "need2",
+          "label": "Replacing non-current assets tile",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "timeline_bar",
+          "id": "horizon",
+          "label": "Short lane and long lane divider",
+          "color": "#E0A229"
+        },
+        {
+          "type": "flow_link",
+          "id": "flow",
+          "label": "Need tiles flow into two lanes",
+          "color": "#5B3FA8"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 28,
+          "directive": "Five need tiles slide into view"
+        },
+        {
+          "at_sec": 40,
+          "directive": "Stock bills drop into the short lane"
+        },
+        {
+          "at_sec": 52,
+          "directive": "Machine and factory tiles drop into the long lane"
+        },
+        {
+          "at_sec": 58,
+          "directive": "Lane labels lock in place"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Businesses need finance for five clear reasons. Start-up capital pays for essential assets before trading begins. Expansion funds new premises and bigger output. Replacing worn non-current assets keeps production running. New technology raises efficiency and lowers unit costs. Working capital pays day-to-day bills. Match the time period to the source: stock and monthly bills are short-term, repaid within one year; machinery and factory expansion are long-term, repaid over many years.",
+        "words": 70,
+        "wpm": 140.0
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 58,
+      "out": 88,
+      "visual_type": "animated_scenario_hook",
+      "layout": "split_screen_machine_tile_left_stock_tile_right",
+      "camera_motion": "smooth_zoom_into_split_streams",
+      "title": "A $62,000 Funding Need",
+      "labels": [
+        "Moulding machine: $50,000",
+        "Stock: $12,000",
+        "Total need: $62,000"
+      ],
+      "elements": [
+        {
+          "type": "icon_machine",
+          "id": "mould",
+          "label": "Five-year moulding machine $50,000",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "icon_stock",
+          "id": "stock",
+          "label": "Three-month timber and fabric $12,000",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "animated_counter",
+          "id": "need",
+          "label": "Total need $62,000 counting up",
+          "color": "#E0A229"
+        },
+        {
+          "type": "flow_split",
+          "id": "split",
+          "label": "Fountain splits into two streams",
+          "color": "#5B3FA8"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 58,
+          "directive": "Machine price tag counts to fifty thousand"
+        },
+        {
+          "at_sec": 70,
+          "directive": "Stock crate fills with timber and fabric"
+        },
+        {
+          "at_sec": 82,
+          "directive": "Total counter locks at sixty-two thousand"
+        },
+        {
+          "at_sec": 88,
+          "directive": "Two streams separate with clock badges"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Here is Northwater's concrete plan. A new moulding machine costs fifty thousand dollars and will last five years. Extra timber and fabric stock costs twelve thousand dollars and sells within three months. The total need is sixty-two thousand dollars. Because one machine is long-term and the stock is short-term, a single source cannot sensibly fund both. So the finance fountain must divide into two separate streams of different lengths.",
+        "words": 69,
+        "wpm": 138.0
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 88,
+      "out": 118,
+      "visual_type": "funnel_animation",
+      "layout": "funnel_three_tiles_into_internal_reservoir",
+      "camera_motion": "smooth_follow_tiles_into_funnel",
+      "title": "Internal Source Tiles",
+      "labels": [
+        "Owner's savings: $10,000",
+        "Retained profit: $12,000",
+        "Sale of trailer: $3,000",
+        "Internal total: $25,000"
+      ],
+      "elements": [
+        {
+          "type": "source_tile",
+          "id": "savings",
+          "label": "Owner's savings $10,000",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "source_tile",
+          "id": "retained",
+          "label": "Retained profit $12,000",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "source_tile",
+          "id": "asset_sale",
+          "label": "Sale of old trailer $3,000",
+          "color": "#8A4F1A"
+        },
+        {
+          "type": "animated_counter",
+          "id": "internal",
+          "label": "Internal total $25,000",
+          "color": "#E0A229"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 88,
+          "directive": "Three source tiles appear above the funnel"
+        },
+        {
+          "at_sec": 100,
+          "directive": "Savings tile drops and counts ten thousand"
+        },
+        {
+          "at_sec": 112,
+          "directive": "Retained profit and trailer tiles follow"
+        },
+        {
+          "at_sec": 118,
+          "directive": "Reservoir shows twenty-five thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Internal finance comes from within the business or its owners. Three tiles drop into the fountain: ten thousand dollars of the owner's savings, twelve thousand dollars of retained profit, and three thousand dollars from selling an old trailer. That gives twenty-five thousand dollars. Internal finance avoids interest payments and keeps control with the owner. The limit is size: savings are finite, and spending retained profit leaves less cash for emergencies.",
+        "words": 70,
+        "wpm": 140.0
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 118,
+      "out": 148,
+      "visual_type": "flow_diagram",
+      "layout": "flow_diagram_external_tiles_into_business",
+      "camera_motion": "smooth_track_external_coins_into_machine",
+      "title": "External Source Tiles",
+      "labels": [
+        "Five-year loan: $25,000",
+        "Three-month overdraft: $12,000",
+        "External total: $37,000"
+      ],
+      "elements": [
+        {
+          "type": "source_tile",
+          "id": "loan",
+          "label": "Bank loan $25,000 five years",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "source_tile",
+          "id": "overdraft",
+          "label": "Overdraft $12,000 three months",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "source_tile",
+          "id": "shares",
+          "label": "Share issue tile",
+          "color": "#5B3FA8"
+        },
+        {
+          "type": "source_tile",
+          "id": "grant",
+          "label": "Government grant and trade credit tiles",
+          "color": "#E0A229"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 118,
+          "directive": "Loan tile slides along the long blue pipe"
+        },
+        {
+          "at_sec": 130,
+          "directive": "Overdraft tile slides along the short green pipe"
+        },
+        {
+          "at_sec": 142,
+          "directive": "Share grant and credit tiles stack at the side"
+        },
+        {
+          "at_sec": 148,
+          "directive": "Counter confirms thirty-seven thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "External finance comes from sources outside the business. A five-year bank loan supplies twenty-five thousand dollars for the machine. A twelve-thousand-dollar overdraft covers stock for three months. A share issue, a government grant or trade credit are other external tiles. External sources raise large sums quickly, but loans charge interest and must be repaid whether profit rises or falls. An overdraft suits a temporary gap, never a ten-year factory expansion.",
+        "words": 70,
+        "wpm": 140.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 148,
+      "out": 178,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_left_loan_right_shares",
+      "camera_motion": "smooth_swing_between_two_split_panels",
+      "title": "Debt Versus Equity",
+      "labels": [
+        "Debt: control kept, interest due",
+        "Equity: no repayment, control diluted"
+      ],
+      "elements": [
+        {
+          "type": "scale",
+          "id": "debt_side",
+          "label": "Loan side: interest and security",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "scale",
+          "id": "equity_side",
+          "label": "Share side: dividends and dilution",
+          "color": "#5B3FA8"
+        },
+        {
+          "type": "balance_beam",
+          "id": "beam",
+          "label": "Evaluation beam tilting both ways",
+          "color": "#E0A229"
+        },
+        {
+          "type": "icon_owner",
+          "id": "owner",
+          "label": "Founder holding the controlling tile",
+          "color": "#2D6A9F"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 148,
+          "directive": "Loan panel lists predictable interest"
+        },
+        {
+          "at_sec": 160,
+          "directive": "Repayment clock appears even in a weak sales month"
+        },
+        {
+          "at_sec": 172,
+          "directive": "Share panel shows no fixed repayment"
+        },
+        {
+          "at_sec": 178,
+          "directive": "Control tiles shift to new investors"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Compare debt with equity on the split screen. A bank loan keeps ownership with the founder, and interest is predictable. But repayments continue when sales fall, and the machine may be used as security. Issuing shares brings cash with no fixed repayment or interest, and investors share the risk. The cost is dilution: existing owners give up a slice of control and future dividends. Neither source is free; the right choice depends on duration, cost and legal form.",
+        "words": 78,
+        "wpm": 156.0
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 178,
+      "out": 208,
+      "visual_type": "timeline_animation",
+      "layout": "timeline_animation_two_horizontal_bars",
+      "camera_motion": "smooth_travel_along_timeline",
+      "title": "Matching Source to Need",
+      "labels": [
+        "Months 1-3: overdraft repaid",
+        "Years 1-5: loan repaid"
+      ],
+      "elements": [
+        {
+          "type": "timeline_bar",
+          "id": "short_bar",
+          "label": "Three-month stock bar",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "timeline_bar",
+          "id": "long_bar",
+          "label": "Five-year machine bar",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "animated_counter",
+          "id": "total",
+          "label": "Internal $25,000 plus external $37,000",
+          "color": "#E0A229"
+        },
+        {
+          "type": "flow_link",
+          "id": "repay",
+          "label": "Sales coins repay the overdraft",
+          "color": "#5B3FA8"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 178,
+          "directive": "Short bar appears with stock icon"
+        },
+        {
+          "at_sec": 190,
+          "directive": "Long bar appears with machine icon"
+        },
+        {
+          "at_sec": 202,
+          "directive": "Repayment coins travel back along both bars"
+        },
+        {
+          "at_sec": 208,
+          "directive": "Total funding counter locks at sixty-two thousand"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Put the sources on a timeline. In months one to three, the overdraft finances stock and is repaid as kayaks sell. Across years one to five, the bank loan pays for the moulding machine as it earns revenue. Because the stock cycle is short and the machine is long-lived, therefore each source is matched to its purpose, so the business lowers its refinancing risk. The internal twenty-five thousand dollars reduces borrowing, and retained profit stays as a cushion.",
+        "words": 78,
+        "wpm": 156.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 208,
+      "out": 240,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_checklist_pros_and_cons",
+      "camera_motion": "slow_pull_back_to_full_split_screen",
+      "title": "Seven Factors, Two Sides",
+      "labels": [
+        "Size, legal form, amount, duration",
+        "Cost, purpose, existing loans"
+      ],
+      "elements": [
+        {
+          "type": "checklist",
+          "id": "factors",
+          "label": "Seven selection factors",
+          "color": "#2D6A9F"
+        },
+        {
+          "type": "scale",
+          "id": "pros",
+          "label": "Advantages side: speed and flexibility",
+          "color": "#1E7A46"
+        },
+        {
+          "type": "scale",
+          "id": "cons",
+          "label": "Limitations side: interest and dilution",
+          "color": "#B23A2B"
+        },
+        {
+          "type": "icon_company",
+          "id": "sole",
+          "label": "Sole trader cannot sell public shares",
+          "color": "#E0A229"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 208,
+          "directive": "Seven factor chips line up across the top"
+        },
+        {
+          "at_sec": 220,
+          "directive": "Pros panel fills with green tiles"
+        },
+        {
+          "at_sec": 232,
+          "directive": "Cons panel fills with red tiles"
+        },
+        {
+          "at_sec": 240,
+          "directive": "Fountain closes over the balanced decision"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Before choosing, a finance manager checks seven factors: business size, legal form, amount needed, length of time, existing loans, cost and purpose. A sole trader cannot sell shares to the public, so internal cash or a bank loan is realistic. A larger company can issue equity but gives up control. Advantages sit beside limitations: speed against interest, control against dilution, flexibility against repayment. Finance keeps a kayak business afloat only when the source fits the need.",
+        "words": 76,
+        "wpm": 142.5
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Northwater needs $12,000 for timber and fabric that will sell within three months. Which source is most suitable?",
+    "options": [
+      "A five-year bank loan secured on the workshop",
+      "A three-month bank overdraft",
+      "A public share issue",
+      "Selling the moulding machine"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A three-month calendar is placed beside a $12,000 stock crate; the overdraft tile slides in and shrinks as sales coins come back, while the five-year loan tile is crossed out."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}

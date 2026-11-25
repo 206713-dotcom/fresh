@@ -2058,6 +2058,20 @@
     renderAll();
   }
 
+  function showLoading(main) {
+    main.innerHTML = '<style>@keyframes p2-spin{to{transform:rotate(360deg)}}</style>' +
+      '<div class="study-page" role="status" aria-live="polite">' +
+      '<header class="study-hero"><div class="study-hero-content">' +
+      '<p class="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>' +
+      '<h1 class="study-title">Paper 2 <span>Case studies</span></h1>' +
+      '<p class="study-description">Loading the 3,000 case studies and appendices…</p>' +
+      '</div></div>' +
+      '<div class="study-panel" style="display:flex;align-items:center;gap:.75rem;padding:1.25rem">' +
+      '<span aria-hidden="true" style="width:1.5rem;height:1.5rem;border:2px solid currentColor;border-top-color:transparent;border-radius:9999px;display:inline-block;animation:p2-spin .8s linear infinite"></span>' +
+      '<span>Preparing your case-study workspace…</span>' +
+      '</div></div>';
+  }
+
   function showLoadError(main, err) {
     main.innerHTML = '<div class="study-page"><header class="study-hero"><div class="study-hero-content">' +
       '<p class="study-hero-kicker">Cambridge IGCSE Business Studies · 0264</p>' +
@@ -2074,6 +2088,7 @@
       mainEl = main;
       if (timerId) { clearInterval(timerId); timerId = null; }
       bind(main);
+      showLoading(main);
 
       var finished = false, resolveDone = null;
       var donePromise = (typeof Promise === 'function')

@@ -179,7 +179,7 @@
 
     var footer = EC.el('footer', {
       class: 'border-t border-[var(--line,#d4d9cf)] dark:border-neutral-800 bg-[var(--paper,#f6f4ed)] dark:bg-[#0d1613] py-4 px-6 text-center text-xs text-[var(--muted,#4b5c54)] dark:text-neutral-400',
-      html: '<p>EcBiz · IGCSE Business · <a href="./Business.html?open=progress" class="font-semibold underline hover:text-[#8B1E1E]">Progress on this device</a> · <a href="../../privacy.html" class="font-semibold underline hover:text-[#8B1E1E]">Privacy notice</a></p>'
+      html: '<p>EcBiz · IGCSE Business · <strong>Built by Jayden Tan · 11G</strong> · <a href="./Business.html?open=progress" class="font-semibold underline hover:text-[#8B1E1E]">Progress on this device</a> · <a href="../../privacy.html" class="font-semibold underline hover:text-[#8B1E1E]">Privacy notice</a></p>'
     });
     document.body.appendChild(footer);
 

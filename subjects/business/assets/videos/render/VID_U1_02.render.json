@@ -1,0 +1,514 @@
+{
+  "schema_version": "1.0",
+  "video_id": "VID_U1_02",
+  "title": "Visualising Primary, Secondary, Tertiary and Sector Change",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "background": "#0B1220",
+    "palette": {
+      "bg": "#0B1220",
+      "panel": "#111C2E",
+      "ink": "#F8FAFC",
+      "muted": "#94A3B8",
+      "accent": "#38BDF8",
+      "accent2": "#A78BFA",
+      "good": "#10B981",
+      "warn": "#F59E0B",
+      "bad": "#EF4444"
+    }
+  },
+  "duration_sec": 220,
+  "fps": 30,
+  "caption_file": "./assets/videos/captions/VID_U1_02.vtt",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "in": 0,
+      "out": 26,
+      "visual_type": "animated_scenario_hook",
+      "layout": "horizontal_three_stage_goods_flow",
+      "camera_motion": "tracking_shot_along_the_three_stage_flow",
+      "title": "Follow the Goods Through Three Sectors",
+      "labels": [
+        "Primary: raw milk",
+        "Secondary: cheese",
+        "Tertiary: retailing",
+        "Three named firms, one flow line"
+      ],
+      "elements": [
+        {
+          "type": "icon_farm",
+          "id": "farm",
+          "label": "Bramblefield Farms",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "icon_factory",
+          "id": "dairy",
+          "label": "Meadowline Dairy",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "icon_shop",
+          "id": "shop",
+          "label": "Harbourmart Grocers",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "flow_path",
+          "id": "flow",
+          "label": "Goods-flow path",
+          "color": "#7FB3D5"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 0,
+          "directive": "Reveal the farm, dairy and shop in sequence"
+        },
+        {
+          "at_sec": 8,
+          "directive": "Draw a glowing flow path between the three stages"
+        },
+        {
+          "at_sec": 16,
+          "directive": "Label each stage with its sector name"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Every product travels through sectors. Bramblefield Farms gets raw milk from its cows. Meadowline Dairy turns that milk into cheese. Harbourmart Grocers sells the cheese to shoppers. The primary sector extracts natural resources. The secondary sector manufactures goods from those raw materials. The tertiary sector provides services to consumers and other firms. Follow the flow lines: raw milk, processed cheese, then a retail service at the shop.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 2,
+      "in": 26,
+      "out": 52,
+      "visual_type": "flow_diagram",
+      "layout": "farm_to_processor_flow_with_resource_icons",
+      "camera_motion": "gentle_pan_over_grazing_land_then_into_milk_can",
+      "title": "Primary Sector: Extracting Natural Resources",
+      "labels": [
+        "Definition: extract and use Earth's resources",
+        "Bramblefield Farms",
+        "Raw milk supplied to a processor",
+        "Farming, mining, forestry"
+      ],
+      "elements": [
+        {
+          "type": "icon_farm",
+          "id": "farm",
+          "label": "Bramblefield Farms",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "resource_icons",
+          "id": "resources",
+          "label": "Farmland, cows, raw milk",
+          "color": "#F2F6FC"
+        },
+        {
+          "type": "flow_path",
+          "id": "outflow",
+          "label": "Raw milk to processor",
+          "color": "#7FB3D5"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 26,
+          "directive": "Show cows on farmland and a milk can filling"
+        },
+        {
+          "at_sec": 34,
+          "directive": "Send the milk along a flow path to the dairy"
+        },
+        {
+          "at_sec": 42,
+          "directive": "Stamp the card with the word primary"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The primary sector extracts and uses the natural resources of Earth to produce raw materials used by other businesses. Bramblefield Farms operates here. Its cows grazing on farmland supply essential raw milk, and the farm sells that milk to a processor. Because the primary sector supplies food and raw materials, other sectors depend on it. Farming, mining and forestry all belong to this sector.",
+        "words": 64,
+        "wpm": 147.7
+      }
+    },
+    {
+      "scene_number": 3,
+      "in": 52,
+      "out": 78,
+      "visual_type": "flow_diagram",
+      "layout": "input_to_process_to_output_factory_flow",
+      "camera_motion": "smooth_zoom_into_pasteurising_tank_then_out_to_products",
+      "title": "Secondary Sector: Manufacturing Goods",
+      "labels": [
+        "Definition: process raw materials",
+        "Meadowline Dairy",
+        "Milk becomes cheese and yoghurt",
+        "Goods are tangible"
+      ],
+      "elements": [
+        {
+          "type": "icon_factory",
+          "id": "dairy",
+          "label": "Meadowline Dairy",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "process_line",
+          "id": "pasteurise",
+          "label": "Pasteurise and make cheese",
+          "color": "#16A085"
+        },
+        {
+          "type": "product_icons",
+          "id": "output",
+          "label": "Cheese and yoghurt",
+          "color": "#E8A33D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 52,
+          "directive": "Pour raw milk into a processing tank"
+        },
+        {
+          "at_sec": 60,
+          "directive": "Morph the tank output into cheese and yoghurt"
+        },
+        {
+          "at_sec": 68,
+          "directive": "Stamp the card with the word secondary"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The secondary sector manufactures and processes goods using raw materials from the primary sector. Meadowline Dairy receives Bramblefield's raw milk and pasteurises it, then makes cheese and yoghurt. Those are physical, tangible goods that can be touched. Construction and car building are also secondary activity. Because processing adds a usable product, the dairy can sell to retailers for more than the raw milk cost.",
+        "words": 64,
+        "wpm": 147.7
+      }
+    },
+    {
+      "scene_number": 4,
+      "in": 78,
+      "out": 104,
+      "visual_type": "flow_diagram",
+      "layout": "shop_counter_with_service_icons_and_customer_path",
+      "camera_motion": "follow_the_customer_from_door_to_counter",
+      "title": "Tertiary Sector: Providing Services",
+      "labels": [
+        "Definition: services to consumers and firms",
+        "Harbourmart Grocers",
+        "Retailing, banking, transport, teaching",
+        "Services are intangible"
+      ],
+      "elements": [
+        {
+          "type": "icon_shop",
+          "id": "shop",
+          "label": "Harbourmart Grocers",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "service_icons",
+          "id": "services",
+          "label": "Retail, banking, transport",
+          "color": "#6C3483"
+        },
+        {
+          "type": "customer_path",
+          "id": "customer",
+          "label": "Customer journey",
+          "color": "#7FB3D5"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 78,
+          "directive": "Walk a customer into the shop and to the counter"
+        },
+        {
+          "at_sec": 86,
+          "directive": "Float service icons above the counter"
+        },
+        {
+          "at_sec": 94,
+          "directive": "Stamp the card with the word tertiary"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "The tertiary sector provides services to consumers and to other sectors of industry. Harbourmart Grocers retails the cheese made by Meadowline Dairy. Retailing is a service: the shopper gets convenience, not a physical product made there. Banking, insurance, transport and teaching are tertiary too. Services are non-physical and intangible; they cannot be held. Because shoppers want easy access, the retailer creates value by placing goods near them.",
+        "words": 67,
+        "wpm": 154.6
+      }
+    },
+    {
+      "scene_number": 5,
+      "in": 104,
+      "out": 134,
+      "visual_type": "animated_scenario_hook",
+      "layout": "vertical_value_ladder_with_three_glowing_stages",
+      "camera_motion": "rising_tracking_shot_up_the_value_ladder",
+      "title": "Worked Chain: One Kilogram of Cheese",
+      "labels": [
+        "Farm milk: $2.00",
+        "Dairy sells cheese: $3.20",
+        "Shop sells: $4.50",
+        "Value grows at each stage"
+      ],
+      "elements": [
+        {
+          "type": "value_step",
+          "id": "farm_step",
+          "label": "Primary $2.00",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "value_step",
+          "id": "dairy_step",
+          "label": "Secondary $3.20",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "value_step",
+          "id": "shop_step",
+          "label": "Tertiary $4.50",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "animated_counter",
+          "id": "ladder",
+          "label": "Value along the chain",
+          "color": "#16A085",
+          "from": 2,
+          "to": 4.5,
+          "prefix": "$"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 104,
+          "directive": "Light the farm step at two dollars"
+        },
+        {
+          "at_sec": 113,
+          "directive": "Raise the dairy step to three dollars twenty"
+        },
+        {
+          "at_sec": 123,
+          "directive": "Raise the shop step to four dollars fifty and show the gaps"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Follow one kilogram of cheese through the chain. Bramblefield Farms supplies raw milk worth two dollars. Meadowline Dairy pays that, processes the milk and sells the cheese to Harbourmart Grocers for three dollars twenty. The dairy has added one dollar twenty. Because the grocer then sells to a shopper for four dollars fifty, it adds one dollar thirty more. Therefore the same product passes through primary, secondary and tertiary stages, and value grows at each step.",
+        "words": 76,
+        "wpm": 152.0
+      }
+    },
+    {
+      "scene_number": 6,
+      "in": 134,
+      "out": 160,
+      "visual_type": "timeline_animation",
+      "layout": "horizontal_timeline_with_three_employment_bars",
+      "camera_motion": "smooth_pan_across_economic_timeline",
+      "title": "Industrialisation and De-industrialisation",
+      "labels": [
+        "Industrialisation: manufacturing grows",
+        "De-industrialisation: manufacturing declines",
+        "Jobs shift from primary to secondary to tertiary",
+        "Service jobs grow"
+      ],
+      "elements": [
+        {
+          "type": "timeline",
+          "id": "era",
+          "label": "Industrialisation to de-industrialisation",
+          "color": "#0B1F3A"
+        },
+        {
+          "type": "stacked_bars",
+          "id": "employment",
+          "label": "Sector employment mix",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "flow_path",
+          "id": "shift",
+          "label": "Employment shift path",
+          "color": "#16A085"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 134,
+          "directive": "Grow the manufacturing bar during industrialisation"
+        },
+        {
+          "at_sec": 142,
+          "directive": "Shrink the manufacturing bar and expand the service bar"
+        },
+        {
+          "at_sec": 150,
+          "directive": "Slide employment icons toward the tertiary column"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Economies change over time. Industrialisation is the growth of manufacturing, as factories and secondary-sector jobs expand. Meadowline Dairy's grandparent once worked in a large local factory. De-industrialisation occurs when there is a decline in the importance of the secondary, manufacturing sector in a country. Factory jobs fall and service jobs grow. Because incomes rise and demand shifts, therefore employment moves toward tertiary work.",
+        "words": 63,
+        "wpm": 145.4
+      }
+    },
+    {
+      "scene_number": 7,
+      "in": 160,
+      "out": 190,
+      "visual_type": "evaluation_split",
+      "layout": "split_screen_left_private_companies_right_public_services",
+      "camera_motion": "crossfade_between_private_storefront_and_public_service_building",
+      "title": "Private, Public and the Mixed Economy",
+      "labels": [
+        "Mixed economy: both sectors",
+        "Private: aims for profit and efficiency",
+        "Public: essential services, tax funded",
+        "Weigh both sides"
+      ],
+      "elements": [
+        {
+          "type": "private_panel",
+          "id": "private",
+          "label": "Harbourmart Grocers: private sector",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "public_panel",
+          "id": "public",
+          "label": "Public services",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "balance_scale",
+          "id": "balance",
+          "label": "Mixed economy balance",
+          "color": "#E8A33D"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 160,
+          "directive": "Fill the private panel with a competing storefront"
+        },
+        {
+          "at_sec": 169,
+          "directive": "Fill the public panel with an essential service building"
+        },
+        {
+          "at_sec": 179,
+          "directive": "Balance the two halves on a mixed economy scale"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "A mixed economy contains both private and public sectors. The private sector is owned by private individuals and companies aiming for profit. Harbourmart Grocers competes on price and service, which can improve efficiency. However, profit-seeking firms may avoid essential services that are not profitable. The public sector is owned and controlled by government and often provides key services. Therefore a mixed economy balances market choice with essential provision, but taxes must fund it.",
+        "words": 73,
+        "wpm": 146.0
+      }
+    },
+    {
+      "scene_number": 8,
+      "in": 190,
+      "out": 220,
+      "visual_type": "recap_quiz",
+      "layout": "three_sorting_boxes_with_moving_company_blocks",
+      "camera_motion": "follow_each_company_block_into_its_sector_box",
+      "title": "Recap: Classify Each Sector",
+      "labels": [
+        "Farm: primary",
+        "Dairy: secondary",
+        "Grocer: tertiary",
+        "Explain the reason for each"
+      ],
+      "elements": [
+        {
+          "type": "sort_box",
+          "id": "box_p",
+          "label": "Primary box",
+          "color": "#2E8B57"
+        },
+        {
+          "type": "sort_box",
+          "id": "box_s",
+          "label": "Secondary box",
+          "color": "#1F6FEB"
+        },
+        {
+          "type": "sort_box",
+          "id": "box_t",
+          "label": "Tertiary box",
+          "color": "#E8A33D"
+        },
+        {
+          "type": "moving_block",
+          "id": "firms",
+          "label": "Three named firms",
+          "color": "#7FB3D5"
+        }
+      ],
+      "visual_beats": [
+        {
+          "at_sec": 190,
+          "directive": "Show three unlabelled company blocks"
+        },
+        {
+          "at_sec": 199,
+          "directive": "Slide each block into the correct sector box"
+        },
+        {
+          "at_sec": 209,
+          "directive": "Light each flow path and display its reason"
+        }
+      ],
+      "chart": {},
+      "narration": {
+        "text": "Time for an application check. Bramblefield Farms milks cows, Meadowline Dairy bottles and pasteurises the milk, and Harbourmart Grocers sells it. Which sector is each firm in? The farm is primary because it extracts a natural resource. The dairy is secondary because it processes that resource into a good. The grocer is tertiary because it sells a service to shoppers. Watch each block slide into its sector as the flow line lights up.",
+        "words": 73,
+        "wpm": 146.0
+      }
+    }
+  ],
+  "recap_quiz": {
+    "question": "Meadowline Dairy pasteurises raw milk and makes cheese for retailers. Which economic sector is it in?",
+    "options": [
+      "Primary",
+      "Secondary",
+      "Tertiary",
+      "Public sector"
+    ],
+    "correct_index": 1,
+    "visual_explanation": "A raw-milk block enters a processing tank and exits as a cheese block, then the cheese block slides into a labelled Secondary box while the Primary and Tertiary boxes stay dimmed."
+  },
+  "targets": {
+    "browser": "js/views/videos.js :: CanvasSceneRenderer (native, no dependencies)",
+    "remotion": {
+      "entry": "VideoComposition.tsx",
+      "mapping": "each scene -> <Sequence from={in*30} durationInFrames={(out-in)*30}>",
+      "assets": "labels/elements rendered as Remotion primitives; chart.lines -> <Line> with draw_at_sec"
+    },
+    "manim": {
+      "entry": "render_manim.py",
+      "mapping": "each scene -> Scene.play() block; chart.lines -> Axes.plot() with Create animation"
+    },
+    "ffmpeg": {
+      "template": "ffmpeg -f lavfi -i color=c=0x0B1220:s=1280x720:r=30 -t {duration} -vf \"drawtext=... per-scene overlays, subtitles={caption_file}\" -c:v libx264 -pix_fmt yuv420p {output}.mp4",
+      "note": "Requires ffmpeg with libass/drawtext; not bundled in this repository."
+    }
+  }
+}
