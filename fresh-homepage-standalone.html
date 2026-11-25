@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Revision notes and practice across 13 IGCSE subjects.">
+<title>IGCSE study hub | Fresh</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f6f4ed;
+  --ink: #192e28;
+  --muted: #4b5c54;
+  --line: #d4d9cf;
+  --green: #203e32;
+  --white: #fffefa;
+  font-family: system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+button { border: 0; font: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #97532b;
+  outline-offset: 4px;
+}
+[hidden] { display: none !important; }
+.wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+.site-header { border-bottom: 1px solid var(--line); }
+.topbar, .footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.topbar { min-height: 74px; }
+.topbar-button { background: none; color: var(--ink); padding: .5rem 0; font-size: .87rem; font-weight: 650; }
+.topbar-button:hover { text-decoration: underline; }
+.brand { display: inline-flex; align-items: center; gap: .55rem; font-size: 1.12rem; }
+.skip { position: absolute; inset: .5rem auto auto .5rem; padding: .6rem; background: white; transform: translateY(-150%); z-index: 2; }
+.skip:focus { transform: none; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: clamp(2rem, 6vw, 4.8rem);
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: var(--green);
+  color: #fffdf3;
+}
+.eyebrow { margin: 0 0 .8rem; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.hero .eyebrow { color: #dce9ae; }
+h1, h2, h3 { margin: 0; }
+.hero h1, h2 { font-family: Georgia, serif; letter-spacing: -.045em; }
+.hero h1 { font-size: clamp(3.2rem, 7vw, 6.25rem); line-height: .98; }
+.hero em { color: #e4eeb2; font-weight: inherit; }
+.hero-copy > p:not(.eyebrow) { max-width: 35ch; color: #e0e9e2; line-height: 1.65; }
+.button { display: inline-flex; align-items: center; gap: .85rem; padding: .8rem 1.1rem; border-radius: .55rem; background: #e4eeb2; color: #213b30; font-weight: 750; text-decoration: none; }
+.button:hover { background: #f2f7da; text-decoration: underline; }
+.hero-art { position: relative; min-height: 275px; display: grid; place-items: center; }
+.directory { margin-block: 3.5rem 4rem; scroll-margin: 1.5rem; }
+.section-top { display: flex; align-items: end; justify-content: space-between; gap: .75rem; margin-bottom: 1.35rem; }
+h2 { font-size: clamp(2rem, 4vw, 3.35rem); line-height: 1.06; }
+.count, .code { border: 1px solid var(--line); border-radius: 2rem; padding: .3rem .6rem; font-size: .75rem; color: var(--muted); white-space: nowrap; }
+.filters { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 240px); gap: .75rem; margin-bottom: 1.1rem; }
+.filters label { display: grid; gap: .35rem; font-size: .8rem; font-weight: 700; }
+input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; color: inherit; background: var(--white); border: 1px solid var(--line); border-radius: .55rem; padding: .75rem; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; padding: 0; list-style: none; }
+.card { display: flex; background: var(--white); border: 1px solid var(--line); border-radius: .9rem; }
+.card-content { display: flex; flex: 1; flex-direction: column; align-items: start; padding: 1.2rem; border-radius: inherit; }
+.card-top { display: flex; align-items: start; justify-content: space-between; width: 100%; margin-bottom: 1rem; }
+.technology { --tint: #e6e4f8; }
+.science { --tint: #deecd7; }
+.humanities { --tint: #f6e4cf; }
+.business { --tint: #f5e4e8; }
+.symbol { display: grid; place-items: center; min-width: 2.8rem; height: 2.8rem; padding: .3rem; border-radius: .65rem; background: var(--tint); color: var(--ink); font: bold 1.35rem Georgia, serif; }
+.card h3 { font-size: 1.16rem; line-height: 1.25; }
+.card p { margin: .55rem 0 0; color: var(--muted); line-height: 1.5; }
+.footer { border-top: 1px solid var(--line); padding-block: 1.3rem; color: var(--muted); font-size: .85rem; }
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { padding: 2.5rem; }
+}
+@media (max-width: 630px) {
+  .wrap { width: calc(100% - 28px); }
+  .hero { display: block; padding: 1.8rem 1.25rem; margin-top: 1rem; }
+  .hero-art { display: none; }
+  .footer { align-items: start; flex-direction: column; }
+}
+@media (max-width: 430px) {
+  .grid, .filters { grid-template-columns: 1fr; }
+  .topbar-button { font-size: .82rem; }
+}
+
+.fresh-home {
+  --lime: #e4eeb2;
+  --peach: #f6bb83;
+  background: var(--paper);
+  color: var(--ink);
+}
+.fresh-home .site-header { background: var(--white); }
+.fresh-home .topbar { min-height: 70px; }
+.fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
+.fresh-home .brand svg { display: block; }
+.fresh-home .hero {
+  grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr);
+  min-height: 420px;
+  padding: clamp(2.25rem, 5vw, 4.2rem);
+  border-radius: 1.35rem;
+  background: linear-gradient(118deg, #203e32 20%, #294b3d 100%);
+  box-shadow: 0 12px 32px #192e2814;
+}
+.fresh-home .hero-copy { position: relative; z-index: 1; }
+.fresh-home .hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1.2rem;
+  color: #dce9ae;
+}
+.fresh-home .hero .eyebrow span { width: .48rem; height: .48rem; border-radius: 50%; background: var(--lime); }
+.fresh-home h1, .fresh-home h2 { font-family: inherit; font-weight: 800; }
+.fresh-home .hero h1 { font-size: clamp(3.05rem, 6.3vw, 5.45rem); letter-spacing: -.078em; line-height: .96; }
+.fresh-home .hero em { color: var(--lime); font-style: normal; }
+.fresh-home .hero-copy > p:not(.eyebrow) { color: #e0e9e2; margin-block: 1.3rem 1.6rem; }
+.fresh-home .button { background: var(--lime); color: #213b30; padding: .85rem 1.05rem; }
+.fresh-home .button:hover { background: #f2f7da; }
+.fresh-home .hero-art { min-height: 290px; }
+.fresh-home .art-grid {
+  position: absolute;
+  inset: -12% -20% -12% -4%;
+  background-image: linear-gradient(#9bb39b20 1px, transparent 1px), linear-gradient(90deg, #9bb39b20 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse, black 35%, transparent 74%);
+}
+.fresh-home .art-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(80%, 230px);
+  aspect-ratio: 1;
+  border: 1px solid #9bb39b60;
+  border-radius: 2.15rem;
+  background: #486e57;
+  transform: rotate(-11deg);
+  box-shadow: 12px 13px 0 #132c2763, 20px 24px 42px #132c2765;
+}
+.fresh-home .art-tile::before, .fresh-home .art-tile::after { content: ''; position: absolute; height: 10px; border-radius: 2px; transform: skewX(-30deg); }
+.fresh-home .art-tile::before { top: -20px; right: 5px; width: 48px; background: var(--peach); }
+.fresh-home .art-tile::after { left: -26px; bottom: 12px; width: 54px; background: var(--lime); }
+.fresh-home .art-tile svg { display: block; width: 82%; height: auto; border-radius: 25%; }
+.fresh-home .art-index {
+  position: absolute;
+  right: 1%;
+  bottom: 8%;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .62rem .82rem;
+  border-radius: .55rem;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 6px 20px #132c2750;
+}
+.fresh-home .art-index b { font-size: 1.9rem; letter-spacing: -.085em; line-height: 1; }
+.fresh-home .art-index span { font-size: .59rem; font-weight: 800; letter-spacing: .08em; line-height: 1.15; }
+.fresh-home .directory { margin-top: 3rem; }
+.fresh-home .section-top .eyebrow { color: #48634e; }
+.fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
+.fresh-home .count { background: #edf2e7; color: #203e32; font-weight: 700; }
+.fresh-home .filters { gap: .9rem; }
+.fresh-home input, .fresh-home select { min-height: 44px; }
+.fresh-home input::placeholder { color: #4b5c54; }
+.fresh-home .technology { --accent: #76669d; }
+.fresh-home .science { --accent: #627e48; }
+.fresh-home .humanities { --accent: #a17146; }
+.fresh-home .business { --accent: #a16478; }
+.fresh-home .card { border-top: 3px solid var(--accent); box-shadow: 0 3px 12px #192e2808; }
+.fresh-home .card-content { padding: 1.15rem 1.2rem; }
+.fresh-home :focus-visible { outline-color: #97532b; }
+.fresh-home .hero :focus-visible { outline-color: var(--lime); }
+@media (max-width: 630px) {
+  .fresh-home .hero { min-height: 0; padding: 2rem 1.3rem 2.15rem; }
+  .fresh-home .hero h1 { font-size: clamp(2.55rem, 10vw, 3.7rem); }
+  .fresh-home .topbar { min-height: 61px; }
+  .fresh-home .directory { margin-top: 2.25rem; }
+}
+</style>
+</head>
+<body class="fresh-home">
+<button class="skip" type="button" data-jump="main" hidden>Skip to content</button>
+<header class="site-header">
+  <div class="wrap topbar">
+    <span class="brand"><svg width="40" height="40" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#203e32"/>
+  <path fill="#f6efd8" d="M16 18h31l-6 8H25v8h13l-6 8h-7v8h-9z"/>
+  <path fill="#e4eeb2" d="M37 35h12l-8 13H29z"/>
+  <path fill="#f6bb83" d="M46 15h7l-4 6h-7z"/>
+</svg> Fresh</span>
+    <button class="topbar-button" type="button" data-jump="subjects" hidden>All subjects <span aria-hidden="true">↓</span></button>
+  </div>
+</header>
+<main id="main" class="wrap" tabindex="-1">
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
+    <h1>A fresh take<br>on <em>revision.</em></h1>
+    <p>Find clear revision notes and quick practice questions for 13 IGCSE subjects.</p>
+    <button class="button" type="button" data-jump="subjects" hidden>Explore subjects <span aria-hidden="true">↓</span></button>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="art-grid"></div>
+    <div class="art-tile"><svg width="192" height="192" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#203e32"/>
+  <path fill="#f6efd8" d="M16 18h31l-6 8H25v8h13l-6 8h-7v8h-9z"/>
+  <path fill="#e4eeb2" d="M37 35h12l-8 13H29z"/>
+  <path fill="#f6bb83" d="M46 15h7l-4 6h-7z"/>
+</svg></div>
+    <span class="art-index"><b>13</b><span>IGCSE<br>SUBJECTS</span></span>
+  </div>
+</section>
+<section class="directory" id="subjects" aria-labelledby="directory-title" tabindex="-1">
+  <div class="section-top">
+    <div><p class="eyebrow">SUBJECT DIRECTORY</p><h2 id="directory-title">What are you studying?</h2></div>
+    <span class="count" id="count" aria-live="polite">13 subjects</span>
+  </div>
+  <div class="filters" hidden>
+    <label>Search subjects <input type="search" id="search" placeholder="Try biology or 0610"></label>
+    <label>Subject group <select id="group"><option value="">All groups</option><option value="technology">Maths &amp; technology</option><option value="science">Sciences</option><option value="humanities">English &amp; humanities</option><option value="business">Business &amp; economics</option></select></label>
+  </div>
+  <p id="empty" hidden>No subjects match. Try another name, syllabus code or group.</p>
+  <ul class="grid"><li class="card technology" data-group="technology">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">∑</span><span class="code">0580</span></span>
+    <h3>Mathematics</h3>
+    <p>Build confidence with equations, shapes and data.</p>
+  </div>
+</li>
+<li class="card humanities" data-group="humanities">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">Aa</span><span class="code">0500</span></span>
+    <h3>First Language English</h3>
+    <p>Read closely and write with purpose.</p>
+  </div>
+</li>
+<li class="card humanities" data-group="humanities">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">¶</span><span class="code">0475</span></span>
+    <h3>Literature in English</h3>
+    <p>Explore how writers shape meaning in poetry, prose and drama.</p>
+  </div>
+</li>
+<li class="card science" data-group="science">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">✿</span><span class="code">0610</span></span>
+    <h3>Biology</h3>
+    <p>Explore living systems from cells to ecosystems.</p>
+  </div>
+</li>
+<li class="card science" data-group="science">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">⚗</span><span class="code">0620</span></span>
+    <h3>Chemistry</h3>
+    <p>Connect particles, reactions and chemical calculations.</p>
+  </div>
+</li>
+<li class="card science" data-group="science">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">⚡</span><span class="code">0625</span></span>
+    <h3>Physics</h3>
+    <p>Explain motion, energy and electricity with worked examples.</p>
+  </div>
+</li>
+<li class="card technology" data-group="technology">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">‹/›</span><span class="code">0478</span></span>
+    <h3>Computer Science</h3>
+    <p>Practise algorithms, data representation and logic.</p>
+  </div>
+</li>
+<li class="card technology" data-group="technology">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">▣</span><span class="code">0417</span></span>
+    <h3>Information &amp; Communication Technology</h3>
+    <p>Build practical skills with spreadsheets, databases and digital safety.</p>
+  </div>
+</li>
+<li class="card technology" data-group="technology" data-aliases="dt|design and technology|rm revise">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">◇</span><span class="code">0445</span></span>
+    <h3>Design &amp; Technology</h3>
+    <p>Revise Product Design and Resistant Materials with RM Revise.</p>
+  </div>
+</li>
+<li class="card humanities" data-group="humanities">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">△</span><span class="code">0460</span></span>
+    <h3>Geography</h3>
+    <p>Understand landscapes, populations and human activity.</p>
+  </div>
+</li>
+<li class="card humanities" data-group="humanities">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">⌛</span><span class="code">0470</span></span>
+    <h3>History</h3>
+    <p>Build arguments about the past and evaluate historical evidence.</p>
+  </div>
+</li>
+<li class="card business" data-group="business">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">↗</span><span class="code">0455</span></span>
+    <h3>Economics</h3>
+    <p>Think through choices, markets and economic changes.</p>
+  </div>
+</li>
+<li class="card business" data-group="business">
+  <div class="card-content">
+    <span class="card-top"><span class="symbol" aria-hidden="true">◈</span><span class="code">0264</span></span>
+    <h3>Business</h3>
+    <p>Work through business decisions about people, markets and finance.</p>
+  </div>
+</li></ul>
+</section>
+</main>
+<footer class="wrap footer">
+  <span>Fresh · Independent IGCSE revision</span>
+</footer>
+<script>
+const filters = document.querySelector('.filters');
+const search = document.querySelector('#search');
+const group = document.querySelector('#group');
+const count = document.querySelector('#count');
+const empty = document.querySelector('#empty');
+const cards = [...document.querySelectorAll('.card')].map(element => ({
+  element,
+  name: element.querySelector('h3').textContent.toLowerCase(),
+  code: element.querySelector('.code').textContent,
+  aliases: (element.dataset.aliases || '').split('|'),
+}));
+
+function filterSubjects() {
+  const query = search.value.trim().toLowerCase();
+  let visible = 0;
+  for (const { element, name, code, aliases } of cards) {
+    const matchesGroup = !group.value || element.dataset.group === group.value;
+    const matchesSearch = name.includes(query) || code.includes(query)
+      || aliases.some(alias => alias.includes(query))
+      || (element.dataset.group === 'technology' && code === '0417' && 'ict'.includes(query));
+    element.hidden = !(matchesGroup && matchesSearch);
+    if (!element.hidden) visible += 1;
+  }
+  count.textContent = visible === 1 ? '1 subject' : `${visible} subjects`;
+  empty.hidden = visible > 0;
+}
+
+search.addEventListener('input', filterSubjects);
+group.addEventListener('change', filterSubjects);
+filters.hidden = false;
+filterSubjects();
+
+for (const button of document.querySelectorAll('[data-jump]')) {
+  button.addEventListener('click', () => {
+    const target = document.getElementById(button.dataset.jump);
+    target.focus({ preventScroll: true });
+    target.scrollIntoView();
+  });
+  button.hidden = false;
+}
+</script>
+</body>
+</html>
