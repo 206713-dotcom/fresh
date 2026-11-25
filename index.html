@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="home.css">
 <link rel="icon" href="fresh.svg" type="image/svg+xml">
 <script defer src="search.js"></script>
+<script defer src="home.js"></script>
 </head>
 <body class="fresh-home">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,11 +22,6 @@
 </header>
 <main id="main" class="wrap">
 <section class="hero">
-  <div class="hero-glow" aria-hidden="true">
-    <i class="glow glow-lime"></i><i class="glow glow-sage"></i><i class="glow glow-peach"></i>
-    <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i>
-    <i class="streak k1"></i><i class="streak k2"></i>
-  </div>
   <div class="hero-copy">
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
@@ -34,7 +30,6 @@
   </div>
   <div class="hero-art" aria-hidden="true">
     <div class="art-grid"></div>
-    <div class="art-orbit"><i class="orbit-ring outer"></i><i class="orbit-ring inner"></i></div>
     <div class="art-tile"><img src="fresh.svg" width="192" height="192" alt=""></div>
     <span class="art-index"><b>13</b><span>IGCSE<br>SUBJECTS</span></span>
   </div>
@@ -160,107 +155,5 @@
   <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/subjects/">Cambridge subject directory ↗</a>
   <a href="privacy.html">Privacy notice</a>
 </footer>
-<script>
-// Fresh homepage hero: decorative motion only (the logo tile is never moved or covered).
-// 1. Builds one orbit chip per subject card, so the ring always matches the directory.
-// 2. Moves the chips around behind the logo (paused off-screen, in hidden tabs and for reduced motion).
-// 3. Adds a gentle pointer parallax to the background on devices with a mouse or trackpad.
-(() => {
-  const hero = document.querySelector('.fresh-home .hero');
-  const art = hero && hero.querySelector('.hero-art');
-  const orbit = art && art.querySelector('.art-orbit');
-  const ring = orbit && orbit.querySelector('.orbit-ring:not(.outer)');
-  if (!ring) return;
-
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
-
-  const chips = [...document.querySelectorAll('.grid .card')].map(card => {
-    const chip = document.createElement('span');
-    chip.className = `orbit-chip ${card.dataset.group || ''}`;
-    chip.textContent = card.querySelector('.symbol')?.textContent.trim() || '';
-    orbit.append(chip);
-    return chip;
-  });
-  if (!chips.length) return;
-
-  const LAP_MS = 52000;
-  let phase = -Math.PI / 2;
-  let rx = 0, ry = 0, cos = 1, sin = 0;
-
-  function measure() {
-    const tilt = (parseFloat(getComputedStyle(art).getPropertyValue('--orbit-tilt')) || 0) * Math.PI / 180;
-    rx = ring.offsetWidth / 2;
-    ry = ring.offsetHeight / 2;
-    cos = Math.cos(tilt);
-    sin = Math.sin(tilt);
-  }
-
-  function place() {
-    const step = (Math.PI * 2) / chips.length;
-    chips.forEach((chip, i) => {
-      const angle = phase + i * step;
-      const ox = rx * Math.cos(angle);
-      const oy = ry * Math.sin(angle);
-      const depth = (Math.sin(angle) + 1) / 2; // 0 = far side, 1 = near side
-      chip.style.transform = `translate(${(ox * cos - oy * sin).toFixed(1)}px, ${(ox * sin + oy * cos).toFixed(1)}px) scale(${(0.74 + depth * 0.26).toFixed(3)})`;
-      chip.style.opacity = (0.45 + depth * 0.55).toFixed(2);
-      chip.style.zIndex = String(Math.round(depth * 10));
-    });
-  }
-
-  let raf = 0, last = 0, onScreen = true;
-  function frame(now) {
-    if (last) phase += ((now - last) / LAP_MS) * Math.PI * 2;
-    last = now;
-    place();
-    raf = requestAnimationFrame(frame);
-  }
-  function start() {
-    if (raf || reduceMotion.matches || !onScreen || document.hidden) return;
-    last = 0;
-    raf = requestAnimationFrame(frame);
-  }
-  function stop() {
-    cancelAnimationFrame(raf);
-    raf = 0;
-  }
-
-  measure();
-  place();
-  if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); place(); }).observe(art);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => {
-      onScreen = entry.isIntersecting;
-      onScreen ? start() : stop();
-    }).observe(hero);
-  }
-  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-  if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', () => (reduceMotion.matches ? stop() : start()));
-  start();
-
-  let queued = false, mx = 0, my = 0;
-  function applyPointer() {
-    hero.style.setProperty('--mx', mx.toFixed(3));
-    hero.style.setProperty('--my', my.toFixed(3));
-    queued = false;
-  }
-  hero.addEventListener('pointermove', event => {
-    if (!finePointer.matches || reduceMotion.matches) return;
-    const box = hero.getBoundingClientRect();
-    mx = ((event.clientX - box.left) / box.width) * 2 - 1;
-    my = ((event.clientY - box.top) / box.height) * 2 - 1;
-    if (!queued) {
-      queued = true;
-      requestAnimationFrame(applyPointer);
-    }
-  });
-  hero.addEventListener('pointerleave', () => {
-    mx = 0;
-    my = 0;
-    requestAnimationFrame(applyPointer);
-  });
-})();
-</script>
 </body>
 </html>

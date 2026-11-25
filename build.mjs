@@ -15,7 +15,7 @@ mkdirSync(dist, { recursive: true });
 // Root static files
 for (const f of [
   "index.html", "privacy.html", "404.html", "style.css", "home.css",
-  "privacy.css", "privacy.js", "search.js", "fresh.svg",
+  "privacy.css", "privacy.js", "search.js", "home.js", "fresh.svg",
   "CNAME", ".nojekyll", "metadata.json",
 ]) {
   const src = path.join(root, f);
