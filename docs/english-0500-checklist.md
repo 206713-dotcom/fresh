@@ -47,7 +47,7 @@ The branch includes 12 original practice drills with answers or excerpts and six
 
 Run the static build from the repository root with `node build.mjs`. Serve `dist/` over localhost or HTTPS. Run the automated tests with `node --test tests/english-0500.test.mjs`.
 
-Chromium first hit its browser storage quota. A software-WebGPU retest with more temporary storage downloaded the model and entered the marking phase. The feedback UI and stale-response handling passed a separate test with simulated worker output. Examiner agreement remains unmeasured. Examiner calibration requires compatible, authorised anchor scripts and a separate independently teacher-marked evaluation set. The branch bundles original practice material and links to Cambridge resources. It contains no examiner scripts or official candidate marks.
+Chromium first hit its browser storage quota. A software-WebGPU retest with more temporary storage downloaded the model and entered the marking phase. It produced no score within the 135-second test window. The feedback UI and stale-response handling passed a separate test with simulated worker output. Examiner agreement remains unmeasured. Examiner calibration requires compatible, authorised anchor scripts and a separate independently teacher-marked evaluation set. The branch bundles original practice material and links to Cambridge resources. It contains no examiner scripts or official candidate marks.
 
 ## Cambridge references
 
