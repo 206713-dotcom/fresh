@@ -4,14 +4,16 @@
 
 **EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264).** It turns the syllabus into a loop: learn the idea, answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
 
+**Built by Jayden Tan · 11G.**
+
 **Where it stands:** EcBiz has been tested with my classmates and submitted to my school for review. It is not widely used yet, and I am not claiming that it is. It is a real project used by real classmates, still early.
 
 [Source on GitHub (Fresh hub)](https://github.com/206713-dotcom/fresh) · [Report an issue](https://forms.gle/6X2CAR1LkSQGRBx68) · [Run it locally](#run-ecbiz-locally) · [Deploy your own](#deploy-ecbiz)
 
-[![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-typed-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vanilla JS](https://img.shields.io/badge/Frontend-Vanilla_JS-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Static HTML](https://img.shields.io/badge/Site-Static_HTML-0F2042?logo=html5)](index.html)
+[![Canvas visualiser](https://img.shields.io/badge/Visuals-Canvas_2D-38BDF8)](VIDEO_PIPELINE.md)
+[![Local narration](https://img.shields.io/badge/Narration-Local_audio-10B981)](VIDEO_PIPELINE.md)
 [![Transformers.js](https://img.shields.io/badge/AI-Transformers.js_·_WebGPU-FF6F00)](https://huggingface.co/docs/transformers.js)
 [![Local progress](https://img.shields.io/badge/Progress-This_browser-203e32)](#local-progress-and-privacy)
 [![Licence: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](#licence)
@@ -73,22 +75,23 @@ I want to be upfront about how this was actually built, because the person readi
 
 | What | How much | Where it lives |
 |---|---:|---|
-| MCQ drill bank | **12,000** questions (2,000 per section/unit) | `src/lib/data/mcq-bank-section1..6.ts` |
-| Paper 1 scenarios | **6,000** (1,000 per section) | `src/lib/data/paper1-database.json` |
+| MCQ drill bank | **12,000** questions (2,000 per section/unit) | `data/mcq-section1..6.json` |
+| Paper 1 scenarios | **6,000** (1,000 per section) | `data/paper1.json` |
 | Paper 1 structured questions | **24,000** (1,200 legacy sets at 2/4/6/8 = 4,800; 4,800 added sets at 2/2/6/6 = 19,200). Across all 6,000 sets: 10,800 × 2-mark, 1,200 × 4-mark, 10,800 × 6-mark, 1,200 × 8-mark | same |
-| Paper 2 case studies | **3,000** | `src/lib/data/paper2-database.json` |
+| Paper 2 case studies | **3,000** | `data/paper2.json` |
 | Paper 2 structured questions | **24,000** (12,000 × 8-mark, 12,000 × 12-mark) | same |
-| Verified past-paper questions | **189** | `src/lib/data/verified-questions.ts` |
-| Verified past-paper case studies | **31** (20 Paper 1 scenarios, 11 Paper 2 cases) | `src/lib/data/verified-case-studies.ts` |
-| Interactive lessons | **24** across all six sections | `src/lib/data/interactive-lessons.ts` |
-| Granular syllabus statements | **255**, across 61 subtopics and 29 topics | `src/lib/data/detailed-syllabus-0264.ts` |
-| Glossary terms | **275** | `src/lib/data/glossary.ts` |
-| Advantages/disadvantages notes | **165** | `src/lib/data/compare-notes.ts` |
-| Chapter summaries | **6** sections, **28** topic blocks | `src/lib/data/one-page-sheets.ts` |
+| Verified past-paper questions | **189** | `data/verified-questions.json` |
+| Verified past-paper case studies | **31** (20 Paper 1 scenarios, 11 Paper 2 cases) | `data/verified-p1-cases.json, data/verified-p2-cases.json` |
+| Interactive lessons | **24** across all six sections | `data/lessons.json` |
+| Granular syllabus statements | **254**, across 61 subtopics and 29 topics | `data/syllabus-static.json` |
+| Concept-visualization videos | **25** chapters, **213** animated scenes, local narration + WebVTT captions | `data/videos_manifest.json` |
+| Glossary terms | **275** | `data/glossary.json` |
+| Advantages/disadvantages notes | **165** | `data/compare-notes-static.json` |
+| Chapter summaries | **6** sections, **28** topic blocks | `data/one-page-sheets.json` |
 | Mock exam formats | **5** (Full Paper 1 exam, Full Paper 2 exam, Paper 1, Paper 2 full, Paper 2 short) | `js/views/mocks.js` |
-| Achievements | **14** | `src/components/AchievementsModal.tsx` |
-| Themes | **5** (2 free, 3 coin-unlocked) | `src/lib/themes.ts` |
-| Boss encounters | **6** | `src/components/BossBattleArena.tsx` |
+| Achievements | **14** | `js/views/misc.js` |
+| Themes | **5** (2 free, 3 coin-unlocked) | `js/views/misc.js` |
+| Boss encounters | **6** | `js/views/boss.js` |
 
 That is **12,000 multiple-choice questions**, **48,000 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
 
@@ -203,9 +206,9 @@ The two full exams follow the real 0264 format from the official syllabus: Paper
 
 The question banks are the engine. The rest of the platform is the reason students return.
 
-**Progress ledger.** Every evaluated answer is saved with its question, mark, paper, unit, word count, time spent and full AO breakdown. The dashboard shows questions practised, average mark, AO1–AO4 totals, examiner notes and a submission history. The `/dashboard` route gives a signed-in student a compact personal view.
+**Progress ledger.** Every evaluated answer is saved with its question, mark, paper, unit, word count, time spent and full AO breakdown. The dashboard shows questions practised, average mark, AO1–AO4 totals, examiner notes and a submission history. The local progress page gives a compact view of saved work on this device.
 
-**Syllabus checklist.** All 255 statements are browsable and searchable. Rate each one **Hard**, **Moderate** or **Easy**, add a note, reveal the CIE mark scheme, and launch a practice set containing only the points you flagged. The counts for each band update live, so revision becomes a triage decision rather than a vague feeling.
+**Syllabus checklist.** All 254 statements are browsable and searchable. Rate each one **Hard**, **Moderate** or **Easy**, add a note, reveal the CIE mark scheme, and launch a practice set containing only the points you flagged. The counts for each band update live, so revision becomes a triage decision rather than a vague feeling.
 
 **Glossary.** 275 terms with a definition, syllabus reference, example context, exam advice, formula where relevant and a common-mistake warning. Mark terms as mastered to shrink the list.
 
@@ -239,6 +242,15 @@ Question flags are saved in this browser with the question ID, reason, confidenc
 ### 10. Progressive difficulty and spaced repetition (Boss Battle)
 
 Boss Battle questions ramp by stage: early rounds hit definition and recall questions, later stages hit application and analysis. On higher difficulties the timer tightens further. The question pool respects the unit, subsection and focus filters you pick on the setup screen, and previously missed questions are drawn back into the rotation more often — with even more weight the more you miss them — until you answer them correctly.
+
+
+### 11. Watch: the concept-video library
+
+All six units have a short animated video for every chapter - **25 videos**, **213 scenes**, roughly 3-5 minutes each. Abstract syllabus definitions become concrete business simulations: animated cost pipes, break-even crosshairs that find the intersection, tall-to-flat org-chart collapses, recruitment funnels, product-life-cycle curves, cash-flow streams, ratio formula substitutions, business-cycle loops and exchange-rate conversion cards.
+
+Each video is built from a scene-by-scene production package (script, visual directives, narration and recap quiz) and was checked before release against the 2027-2029 syllabus, visual/math accuracy, pacing and schema rules. Only packages that passed both auditor tiers and the deterministic gatekeeper appear in the library.
+
+The player supports play/pause, scene jumps, seeking, captions, a fixed local narration voice and an end-of-video recap quiz. Every lesson in the chapter study view has a **Watch concept video** button, and watched time/completion are stored locally in `ecbiz_video_progress`. Captions are also available as WebVTT files for standard players.
 
 ---
 
@@ -365,7 +377,7 @@ Getting a 0.6B (very small) model to behave like a Cambridge examiner was not on
 
 The first version of the local examiner returned a number. It was not trustworthy. Most of the later work was **subtraction**: removing scoring power from the model, removing the bigger model tier, removing paragraph totals from 12-mark results, removing Application marks from 2-mark definitions, and removing the assumption that a bigger model would fix a marking problem the code should have enforced.
 
-Each fix came from a concrete failure I found while testing: a definition that scored 1/2 despite two correct points, a 12-mark conclusion that showed two different evaluation scores, a repeated case fact earning application twice, a paragraph full of "therefore" with no consequence. I reproduced each one and wrote it into `scripts/test-grading.ts`. The suite now holds **122 checks across 35 numbered cases** — automated checks to make sure updates don't break the grading rules. They cover consequence detection, AO maxima, Level gating, paragraph-isolation clamping, 2-mark pure-knowledge scoring, 12-mark AO4 sync, and the duplicate-paragraph rules.
+Each fix came from a concrete failure I found while testing: a definition that scored 1/2 despite two correct points, a 12-mark conclusion that showed two different evaluation scores, a repeated case fact earning application twice, a paragraph full of "therefore" with no consequence. In the earlier authoring source these became **122 automated checks across 35 numbered cases**, covering consequence detection, AO maxima, Level gating, paragraph-isolation clamping, 2-mark pure-knowledge scoring, 12-mark AO4 sync and duplicate-paragraph rules. The served static site keeps the same marking rules in `js/views/ai-marker.js`.
 
 Those automated checks are the part I am most pleased with. A small model will always be a little unpredictable; the checks are what stop that unpredictability from becoming a marking policy. When I changed the 12-mark UI and removed the AO cards, the checks caught the conclusion-audit inconsistency that would otherwise have shipped.
 
@@ -500,6 +512,7 @@ The `ruleEnforcement` object is what makes the marking explainable: it records t
 Business Studies and Economics save progress in the current browser. Clearing site data or using another browser or device starts a separate study record.
 
 - Business Studies stores answer drafts, submissions, checklist ratings, lessons, quiz history, Boss Battle mistakes, coins and themes in localStorage.
+- Concept-video watch time and completion are stored in `ecbiz_video_progress`. Caption and narration files are served locally; no account or API key is used for playback.
 - Economics stores practice answers and feedback, flashcard positions, checklist tasks, revision activities and game progress in localStorage.
 - Question flags in Business Studies are saved as local notes for the student.
 - The progress page downloads a CSV of submissions, checklist ratings, lesson progress, Boss Battle review and answer drafts. Economics provides its progress CSV on the syllabus checklist page.
@@ -521,6 +534,7 @@ Any records previously uploaded to a Google Sheet require separate removal from 
 - The **large practice banks** are Cambridge-style questions written for revision. They follow the syllabus, command words and mark-scheme shape, but they are not past papers and should not be quoted as official. Most of this bulk content was generated with Gemini using Cambridge model answers as the basis, then structured, checked and edited by me.
 - The **AI examiner** produces practice feedback, not an official grade. It can be harsh, generous or wrong. Use the mark scheme, the model answer and your teacher's judgement.
 - The **lesson, glossary and chapter summary** material is original teaching copy mapped to the 0264 syllabus and the Sixth Edition textbook sequence. It is a study aid, not a replacement for the textbook or your teacher.
+- The **concept videos** are syllabus-checked visual explanations built from the same teaching material. They are a study aid, not official Cambridge content.
 
 The verified archive exists precisely because AI-generated practice should never be confused with a real paper. If you spot an error, use the feedback link at the top of the README.
 
@@ -535,7 +549,7 @@ EcBiz covers the six sections of Cambridge IGCSE Business Studies (0264):
 5. Financial information and decisions
 6. External influences on business activity
 
-The 255 syllabus statements are the scaffold. Not every statement has its own simulation or lesson; the platform is a set of selected learning activities, not a claim of complete outcome-level coverage.
+The 254 syllabus statements are the scaffold. Not every statement has its own simulation or lesson; the platform is a set of selected learning activities, not a claim of complete outcome-level coverage.
 
 ### Copyright
 
@@ -555,7 +569,7 @@ From the repository root:
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Business.html`). Progress is saved in the browser. The previous React version is preserved in `backup/` and in `legacy.html` inside this folder.
+Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Business.html`). Progress is saved in the browser. The previous compiled app is preserved in `legacy.html` inside this folder.
 
 ### Files
 
@@ -566,6 +580,9 @@ Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Busin
 | `js/core.js`, `js/app.js` | Shared helpers and the router/overview — vanilla JavaScript |
 | `js/views/*.js` | One plain JavaScript file per section (quiz, Paper 1, Paper 2, lessons, progress, …) |
 | `data/*.json` | All question banks as static JSON: 12,000 MCQs, 6,000 Paper 1 sets / 24,000 questions, 3,000 Paper 2 cases / 24,000 questions, glossary, lessons, verified archive |
+| `data/videos_manifest.json`, `data/video_audio_index.json` | The 25 approved video packages and the per-scene narration index |
+| `assets/videos/` | Per-scene narration clips, WebVTT captions and render manifests |
+| `js/views/videos.js` | Video library, Canvas scene renderer, audio sync and recap quizzes |
 | `assets/` | Images, local model worker/WASM and the two local PDFs |
 | `legacy.html` | The previous compiled app, kept as a rollback reference |
 
@@ -583,11 +600,11 @@ Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Busin
 
 ## Deploy EcBiz
 
-EcBiz is a static site. Its canonical entry is [gisfresh.me/subjects/business.html](https://gisfresh.me/subjects/business.html), with `subjects/business/Business.html` kept as a legacy entry. Both load the same committed bundle in `subjects/business/assets/`.
+EcBiz is a static site. Its canonical entry is [gisfresh.me/subjects/business.html](https://gisfresh.me/subjects/business.html), with `subjects/business/Business.html` and `subjects/business/index.html` as equivalent entries. All three load the same plain HTML/CSS/JS files and JSON banks.
 
 ### GitHub Pages (live)
 
-1. Commit the static files: `subjects/business.html`, `subjects/business/{Business.html,index.html,404.html,assets/}`, and the compatibility PDFs in `subjects/assets/aistudio/`.
+1. Commit the static files: `subjects/business.html` and the whole `subjects/business/` folder (HTML, CSS, `js/`, `data/`, `assets/`).
 2. GitHub Pages serves from the repo root — no build command, no npm, no Vite.
 3. `node build.mjs` from the repo root optionally assembles a `dist/` mirror of the same files for hosts that need a single output folder.
 
@@ -613,65 +630,15 @@ Fresh/
 │   │   ├── Business.html             # legacy entry (same app)
 │   │   ├── index.html                # legacy entry
 │   │   ├── 404.html
-│   │   └── assets/                   # committed bundle, CSS, worker, WASM, images, PDFs
-│   ├── assets/aistudio/              # compatibility copies of the two local PDFs
+│   │   ├── js/views/videos.js       # video library + Canvas scene renderer
+│   │   ├── data/videos_manifest.json
+│   │   ├── data/video_audio_index.json
+│   │   └── assets/                   # bundle, CSS, worker, WASM, images, PDFs, video audio/captions
 │   └── economics.html / economics/   # the same plain-file format
 └── build.mjs                         # static file assembly (no compiler)
 ```
 
-Optional authoring source (kept for reference; not part of the served site):
-
-```text
-EcBiz/
-├── src/
-│   ├── App.tsx                     # Tab routing, modals, theme, submissions
-│   ├── main.tsx                    # Study app and local progress migration
-│   ├── components/
-│   │   ├── PracticeStudio.tsx      # Paper 1 + verified archive + Paper 2 entry
-│   │   ├── Paper2PracticeView.tsx  # 3,000-case Paper 2 simulator
-│   │   ├── MockExamMode.tsx        # Timed Paper 1 / Paper 2 mocks
-│   │   ├── InteractiveLessonsView.tsx
-│   │   ├── InteractiveLessonCard.tsx
-│   │   ├── WordDropExercise.tsx    # Drag-the-word gap fill
-│   │   ├── DailyQuickQuiz.tsx      # 12,000-question drill + wrong-only
-│   │   ├── DailyWeeklyChallenge.tsx
-│   │   ├── BossBattleArena.tsx     # 2D canvas boss game
-│   │   ├── ProgressDashboard.tsx
-│   │   ├── SyllabusRevisionChecklist.tsx
-│   │   ├── GlossaryView.tsx
-│   │   ├── CompareNotesView.tsx
-│   │   ├── SectionsView.tsx
-│   │   ├── OnePageSheets.tsx
-│   │   ├── DocumentArchive.tsx
-│   │   ├── StudySpace.jsx          # Focus realm, timer, ambient sound
-│   │   ├── AchievementsModal.tsx
-│   │   ├── AvatarCustomizerModal.tsx
-│   │   └── MarkOverrideModal.tsx
-│   ├── lib/
-│   │   ├── engine/
-│   │   │   ├── evaluator.ts        # Rule scans, paragraph-by-paragraph marking, AO4 + Levels
-│   │   │   └── webllm.ts           # Qwen 3 0.6B WebGPU loader, prompt, JSON parser
-│   │   ├── data/
-│   │   │   ├── mcq-bank-section1..6.ts
-│   │   │   ├── paper1-database.json
-│   │   │   ├── paper2-database.json
-│   │   │   ├── verified-questions.ts
-│   │   │   ├── verified-case-studies.ts
-│   │   │   ├── interactive-lessons.ts
-│   │   │   ├── detailed-syllabus-0264.ts
-│   │   │   ├── glossary.ts
-│   │   │   ├── compare-notes.ts
-│   │   │   └── one-page-sheets.ts
-│   │   ├── cookies.ts              # Progress helpers
-│   │   ├── lessons-progress.ts     # Lesson, hint and confidence storage
-│   │   └── themes.ts               # Coin-unlocked themes
-│   └── index.css                   # Design tokens, themes, layout
-├── public/assets/                  # Syllabus and revision documents
-├── scripts/                        # Preview helpers + marking automated checks
-├── vite.config.ts
-├── tsconfig.json
-└── package.json
-```
+The original React/TypeScript authoring source is not included in this repository; the plain static site above is the served app.
 
 ---
 
@@ -681,14 +648,14 @@ EcBiz is checked in layers:
 
 | Gate | What it does |
 |---|---|
-| `npm run lint` | Runs `tsc --noEmit`, catching type errors across components, data and the marking engine |
-| `npm test` | Runs the marking-engine automated checks: 122 checks across 35 numbered cases |
-| `npm run build` | Produces the production bundle and catches bundler/import failures |
+| Static syntax check | `node --check` across all `js/**` files |
+| JSON integrity | Every `data/*.json` and `tmp_shards/*.json` parses cleanly |
 | Browser pass | Every tab, filter, quiz size, lesson, mock format, modal and responsive breakpoint is exercised manually |
+| Video gates | Syllabus audit, visual/math/timing audit and a deterministic Python gatekeeper; 25/25 videos approved, 213/213 narration clips present |
 | Content provenance | Verified questions carry source, verification and mark-scheme status fields |
 | Failure paths | WebGPU unavailable, invalid model JSON, expired sessions, failed Sheet pulls and missing drafts all degrade to a usable state |
 
-The marking engine has real automated checks. `scripts/test-grading.ts` runs headlessly through `tsx` — no browser, no downloaded model weights — because the rules that decide marks live in plain TypeScript code. It covers:
+The earlier React/TypeScript authoring source had headless marking-engine checks (`scripts/test-grading.ts`) covering:
 
 - consequence-chain detection, including single-step versus developed two-step reasons;
 - AO maxima for every paper and mark tier (`AO1:2`, `AO2:3`, `AO3:4`, `AO4:3` on 12-mark questions);
@@ -700,7 +667,7 @@ The marking engine has real automated checks. `scripts/test-grading.ts` runs hea
 
 The checks are not decoration. Several of the fixes described above were caught by them rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the checks were what proved the displayed result still matched the rubric.
 
-To be honest about what is **not** covered yet: there are no automated checks for the Sheet sync conflict policy, the authentication helpers, or the integrity of the 21,000+ question records. Those are the remaining targets on the roadmap.
+That authoring source is not part of the served static site. The served app is verified by the static syntax, JSON integrity, browser and video gates in the table above.
 
 ---
 
@@ -732,7 +699,7 @@ The first local examiner returned marks; this build made them defensible. Each p
 
 ### The classroom build — lessons and local progress
 
-Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary, comparison notes, revision sheets and a verified archive support the study workflow. Progress is saved locally in the current browser.
+Twenty-four interactive lessons, a 254-statement checklist, a 275-term glossary, comparison notes, revision sheets and a verified archive support the study workflow. Progress is saved locally in the current browser.
 
 ---
 
@@ -745,6 +712,7 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
 - [ ] Add exportable progress reports for teachers and parents.
 - [ ] Run a formal accessibility audit and close the gaps.
+- [x] Add a 25-video concept library covering every chapter of Units 1-6.
 - [ ] Add more Paper 2 case studies beyond the current 3,000.
 - [ ] Improve the AI examiner's rubric awareness while keeping the coded marking rules.
 
@@ -757,7 +725,8 @@ Twenty-four interactive lessons, a 255-statement checklist, a 275-term glossary,
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Gemini** — used to generate the bulk practice question banks (MCQs and Paper 1/2-style practice) from Cambridge model answers, which I then checked and edited.
 - **Browser localStorage** — saves study progress on the current device.
-- **React, Vite, TypeScript, Tailwind CSS, Lucide, Motion and canvas-confetti** — the front-end stack.
+- **Local narration and Canvas 2D** - scene-by-scene visual explanations with generated per-scene audio, served from the same static site.
+- **Plain HTML, CSS and vanilla JavaScript** — the served app has no framework or build step; Lucide-style inline SVG icons are used.
 - **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B text decoder.
 - **AI coding tools** — used throughout to help write, refactor and debug the code. I made the product decisions, reviewed the code, and tested it.
 - **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge, the confidence ratings and most of the layout fixes all came from those conversations.
