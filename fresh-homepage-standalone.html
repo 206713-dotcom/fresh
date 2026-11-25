@@ -93,9 +93,20 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   .topbar-button { font-size: .82rem; }
 }
 
+/* =========================================================
+   Fresh homepage
+   1. Page and header
+   2. Hero banner (layout, background, copy, art, motion)
+   3. Subject directory
+   4. Small screens and reduced motion
+   ========================================================= */
+
+/* ---------- 1. Page and header ---------- */
 .fresh-home {
   --lime: #e4eeb2;
   --peach: #f6bb83;
+  --cream: #f6efd8;
+  --sage: #9bb39b;
   background: var(--paper);
   color: var(--ink);
 }
@@ -103,39 +114,247 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .fresh-home .topbar { min-height: 70px; }
 .fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
 .fresh-home .brand svg { display: block; }
+
+/* ---------- 2. Hero banner ---------- */
+
+/* 2a. Layout and surface */
 .fresh-home .hero {
-  grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr);
-  min-height: 420px;
+  --mx: 0;
+  --my: 0;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  min-height: 440px;
   padding: clamp(2.25rem, 5vw, 4.2rem);
   border-radius: 1.35rem;
-  background: linear-gradient(118deg, #203e32 20%, #294b3d 100%);
-  box-shadow: 0 12px 32px #192e2814;
+  background:
+    radial-gradient(120% 95% at 100% 0%, #315c48 0%, transparent 56%),
+    linear-gradient(118deg, #1c392d 12%, #234435 55%, #2b4f3f 100%);
+  box-shadow: inset 0 1px 0 #ffffff17, 0 18px 44px #192e2826, 0 2px 6px #192e2812;
 }
+
+/* 2b. Decorative background: glows, dot texture, sparkles and brand streaks */
+.fresh-home .hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.fresh-home .hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--lime) .8px, transparent 1.25px);
+  background-size: 18px 18px;
+  opacity: .1;
+  mask-image: linear-gradient(100deg, transparent 28%, black 78%);
+}
+.fresh-home .hero-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0 8% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e4eeb266, transparent);
+}
+.fresh-home .glow {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: calc(var(--mx) * -14px) calc(var(--my) * -10px);
+  transition: translate .7s ease-out;
+}
+.fresh-home .glow-lime {
+  top: -48%;
+  right: -14%;
+  width: 62%;
+  background: radial-gradient(closest-side, #e4eeb238, transparent);
+  animation: fresh-drift 16s ease-in-out infinite alternate;
+}
+.fresh-home .glow-sage {
+  top: 8%;
+  left: 26%;
+  width: 52%;
+  background: radial-gradient(closest-side, #6f9b7c30, transparent);
+  animation: fresh-drift 21s ease-in-out -6s infinite alternate-reverse;
+}
+.fresh-home .glow-peach {
+  bottom: -55%;
+  left: -14%;
+  width: 52%;
+  background: radial-gradient(closest-side, #f6bb832b, transparent);
+  animation: fresh-drift 19s ease-in-out -3s infinite alternate;
+}
+.fresh-home .spark {
+  position: absolute;
+  width: var(--size, 12px);
+  aspect-ratio: 1;
+  background: var(--colour, var(--lime));
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  opacity: .7;
+  animation: fresh-twinkle 4.2s ease-in-out var(--delay, 0s) infinite;
+}
+.fresh-home .s1 { top: 13%; left: 47%; --size: 13px; }
+.fresh-home .s2 { top: 74%; left: 43%; --size: 9px; --colour: var(--peach); --delay: -1.4s; }
+.fresh-home .s3 { top: 9%; right: 9%; --size: 10px; --colour: var(--cream); --delay: -2.6s; }
+.fresh-home .s4 { bottom: 9%; right: 36%; --size: 15px; --delay: -.8s; }
+.fresh-home .s5 { top: 45%; right: 3%; --size: 8px; --colour: var(--peach); --delay: -3.3s; }
+.fresh-home .s6 { bottom: 14%; left: 3.5%; --size: 9px; --colour: var(--cream); --delay: -2s; }
+.fresh-home .streak {
+  position: absolute;
+  height: 9px;
+  border-radius: 2px;
+  transform: skewX(-30deg);
+  opacity: .5;
+}
+.fresh-home .k1 { bottom: 7%; left: 49%; width: 56px; background: var(--lime); }
+.fresh-home .k2 { bottom: calc(7% + 15px); left: calc(49% + 28px); width: 26px; background: var(--peach); }
+
+/* 2c. Copy: eyebrow, heading, text and button */
 .fresh-home .hero-copy { position: relative; z-index: 1; }
+.fresh-home .hero-copy > * { animation: fresh-rise .75s cubic-bezier(.2, .7, .2, 1) both; }
+.fresh-home .hero-copy > :nth-child(2) { animation-delay: .08s; }
+.fresh-home .hero-copy > :nth-child(3) { animation-delay: .18s; }
+.fresh-home .hero-copy > :nth-child(4) { animation-delay: .28s; }
 .fresh-home .hero .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: .55rem;
   margin-bottom: 1.2rem;
+  padding: .42rem .8rem .42rem .62rem;
+  border: 1px solid #e4eeb233;
+  border-radius: 2rem;
+  background: #e4eeb210;
   color: #dce9ae;
 }
-.fresh-home .hero .eyebrow span { width: .48rem; height: .48rem; border-radius: 50%; background: var(--lime); }
+.fresh-home .hero .eyebrow span {
+  width: .48rem;
+  height: .48rem;
+  border-radius: 50%;
+  background: var(--lime);
+  animation: fresh-ping 2.6s ease-out infinite;
+}
 .fresh-home h1, .fresh-home h2 { font-family: inherit; font-weight: 800; }
-.fresh-home .hero h1 { font-size: clamp(3.05rem, 6.3vw, 5.45rem); letter-spacing: -.078em; line-height: .96; }
-.fresh-home .hero em { color: var(--lime); font-style: normal; }
+.fresh-home .hero h1 {
+  font-size: clamp(3.05rem, 6.3vw, 5.45rem);
+  letter-spacing: -.078em;
+  line-height: .96;
+  text-shadow: 0 2px 24px #0d1f1a40;
+}
+.fresh-home .hero em {
+  position: relative;
+  display: inline-block;
+  padding-right: .04em;
+  color: var(--lime);
+  font-style: normal;
+}
+/* A soft light passes over "revision." every few seconds */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fresh-home .hero em {
+    background: linear-gradient(100deg, var(--lime) 42%, #fffbe8 50%, var(--lime) 58%) 100% 0 / 260% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    animation: fresh-shimmer 8s ease-in-out 1.6s infinite;
+  }
+}
+/* Hand-drawn peach underline under "revision." */
+.fresh-home .hero em::after {
+  content: '';
+  position: absolute;
+  left: 1%;
+  right: 7%;
+  bottom: -.1em;
+  height: .2em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M4 15C52 6 118 2 196 8' fill='none' stroke='%23f6bb83' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  clip-path: inset(0 100% 0 0);
+  animation: fresh-draw .9s cubic-bezier(.6, 0, .2, 1) .75s forwards;
+}
 .fresh-home .hero-copy > p:not(.eyebrow) { color: #e0e9e2; margin-block: 1.3rem 1.6rem; }
 .fresh-home .button { background: var(--lime); color: #213b30; padding: .85rem 1.05rem; }
 .fresh-home .button:hover { background: #f2f7da; }
-.fresh-home .hero-art { min-height: 290px; }
+.fresh-home .hero .button {
+  box-shadow: inset 0 -2px 0 #c8d78e, 0 8px 22px #0d1f1a45;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.fresh-home .hero .button:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 -2px 0 #c8d78e, 0 12px 28px #0d1f1a5c, 0 0 0 4px #e4eeb229;
+}
+.fresh-home .hero .button > span { display: inline-block; animation: fresh-nudge 2.4s ease-in-out 1.4s infinite; }
+
+/* 2d. Art: grid, halo, subject orbit, logo tile (unchanged) and subject count */
+.fresh-home .hero-art {
+  --orbit-tilt: -12deg;
+  --chip: 2.05rem;
+  min-height: 320px;
+  isolation: isolate;
+  container-type: inline-size;
+}
+.fresh-home .hero-art::before {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 50%;
+  aspect-ratio: 1;
+  margin-top: -38%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #e4eeb22b, #e4eeb20d 60%, transparent);
+  animation: fresh-breathe 6s ease-in-out infinite;
+}
 .fresh-home .art-grid {
   position: absolute;
   inset: -12% -20% -12% -4%;
   background-image: linear-gradient(#9bb39b20 1px, transparent 1px), linear-gradient(90deg, #9bb39b20 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse, black 35%, transparent 74%);
+  translate: calc(var(--mx) * 4px) calc(var(--my) * 3px);
+  transition: translate .7s ease-out;
 }
+/* Orbit of subject chips around the logo. Everything here sits BEHIND the logo
+   tile (z-index 1 < 2), so the logo itself is never covered or changed.
+   The script at the end of this file adds one chip per subject card. */
+.fresh-home .art-orbit { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.fresh-home .orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(calc(100% - var(--chip)), 410px);
+  aspect-ratio: 1.3;
+  border: 1.5px solid #e4eeb24d;
+  border-radius: 50%;
+  translate: -50% -50%;
+  rotate: var(--orbit-tilt);
+}
+.fresh-home .orbit-ring.outer {
+  width: min(calc(100% + 2.5rem), 470px);
+  border: 1px dashed #f6bb8347;
+  animation: fresh-fade 5s ease-in-out infinite alternate;
+}
+.fresh-home .orbit-chip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: var(--chip);
+  height: var(--chip);
+  margin: calc(var(--chip) / -2) 0 0 calc(var(--chip) / -2);
+  border: 1px solid #ffffff80;
+  border-radius: .62rem;
+  background: var(--tint, var(--cream));
+  color: var(--ink);
+  font: bold calc(var(--chip) * .44) / 1 Georgia, serif;
+  box-shadow: 0 6px 16px #0b1c1659;
+  translate: calc(var(--mx) * 9px) calc(var(--my) * 7px);
+  transition: translate .6s ease-out;
+  will-change: transform, opacity;
+}
+/* Logo tile: exactly the original design. Only z-index is added so the orbit can sit behind it. */
 .fresh-home .art-tile {
   position: relative;
+  z-index: 2;
   display: grid;
   place-items: center;
   width: min(80%, 230px);
@@ -152,19 +371,52 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .fresh-home .art-tile svg { display: block; width: 82%; height: auto; border-radius: 25%; }
 .fresh-home .art-index {
   position: absolute;
+  z-index: 5;
   right: 1%;
-  bottom: 8%;
+  bottom: 6%;
   display: flex;
   align-items: center;
   gap: .6rem;
-  padding: .62rem .82rem;
-  border-radius: .55rem;
+  padding: .62rem .82rem .62rem .62rem;
+  border: 1px solid #e4eeb2;
+  border-radius: .7rem;
   background: var(--white);
   color: var(--ink);
-  box-shadow: 0 6px 20px #132c2750;
+  box-shadow: 0 10px 26px #132c2766;
+  translate: calc(var(--mx) * 22px) calc(var(--my) * 16px);
+  transition: translate .45s ease-out;
+  animation: fresh-pop .7s cubic-bezier(.3, 1.5, .5, 1) .5s both, fresh-bob 6s ease-in-out 1.2s infinite;
+}
+.fresh-home .art-index::before {
+  content: '';
+  align-self: stretch;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(var(--lime), var(--peach));
 }
 .fresh-home .art-index b { font-size: 1.9rem; letter-spacing: -.085em; line-height: 1; }
 .fresh-home .art-index span { font-size: .59rem; font-weight: 800; letter-spacing: .08em; line-height: 1.15; }
+
+/* 2e. Motion */
+@keyframes fresh-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes fresh-ping {
+  0% { box-shadow: 0 0 0 0 #e4eeb299; }
+  75%, 100% { box-shadow: 0 0 0 .5rem #e4eeb200; }
+}
+@keyframes fresh-shimmer { 0%, 55% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+@keyframes fresh-draw { to { clip-path: inset(0 0 0 0); } }
+@keyframes fresh-nudge { 0%, 55%, 100% { transform: none; } 28% { transform: translateY(3px); } }
+@keyframes fresh-drift { to { transform: translate(6%, 8%) scale(1.08); } }
+@keyframes fresh-twinkle {
+  0%, 100% { opacity: .15; transform: scale(.55) rotate(0deg); }
+  50% { opacity: .85; transform: scale(1) rotate(45deg); }
+}
+@keyframes fresh-breathe { 0%, 100% { opacity: .75; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.04); } }
+@keyframes fresh-fade { from { opacity: .45; } to { opacity: 1; } }
+@keyframes fresh-pop { from { opacity: 0; transform: scale(.7) translateY(10px); } }
+@keyframes fresh-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* ---------- 3. Subject directory ---------- */
 .fresh-home .directory { margin-top: 3rem; }
 .fresh-home .section-top .eyebrow { color: #48634e; }
 .fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
@@ -180,11 +432,30 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .fresh-home .card-content { padding: 1.15rem 1.2rem; }
 .fresh-home :focus-visible { outline-color: #97532b; }
 .fresh-home .hero :focus-visible { outline-color: var(--lime); }
+
+/* ---------- 4. Small screens and reduced motion ---------- */
+/* When the art column gets narrow, drop the orbit so the logo has room */
+@container (max-width: 330px) {
+  .fresh-home .art-orbit { display: none; }
+}
 @media (max-width: 630px) {
   .fresh-home .hero { min-height: 0; padding: 2rem 1.3rem 2.15rem; }
   .fresh-home .hero h1 { font-size: clamp(2.55rem, 10vw, 3.7rem); }
   .fresh-home .topbar { min-height: 61px; }
   .fresh-home .directory { margin-top: 2.25rem; }
+  .fresh-home .glow-lime { top: -20%; right: -40%; width: 110%; }
+  .fresh-home .glow-peach { bottom: -40%; left: -40%; width: 100%; }
+  .fresh-home .s1 { left: auto; right: 12%; }
+  .fresh-home .s2, .fresh-home .s4 { display: none; }
+  .fresh-home .k1 { left: auto; right: 14%; bottom: 10%; }
+  .fresh-home .k2 { left: auto; right: calc(14% - 6px); bottom: calc(10% + 15px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fresh-home .hero em::after { clip-path: none; }
 }
 </style>
 </head>
@@ -203,6 +474,11 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 </header>
 <main id="main" class="wrap" tabindex="-1">
 <section class="hero">
+  <div class="hero-glow" aria-hidden="true">
+    <i class="glow glow-lime"></i><i class="glow glow-sage"></i><i class="glow glow-peach"></i>
+    <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i>
+    <i class="streak k1"></i><i class="streak k2"></i>
+  </div>
   <div class="hero-copy">
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
@@ -211,6 +487,7 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   </div>
   <div class="hero-art" aria-hidden="true">
     <div class="art-grid"></div>
+    <div class="art-orbit"><i class="orbit-ring outer"></i><i class="orbit-ring inner"></i></div>
     <div class="art-tile"><svg width="192" height="192" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="15" fill="#203e32"/>
   <path fill="#f6efd8" d="M16 18h31l-6 8H25v8h13l-6 8h-7v8h-9z"/>
@@ -367,6 +644,107 @@ for (const button of document.querySelectorAll('[data-jump]')) {
   });
   button.hidden = false;
 }
+
+// Fresh homepage hero: decorative motion only (the logo tile is never moved or covered).
+// 1. Builds one orbit chip per subject card, so the ring always matches the directory.
+// 2. Moves the chips around behind the logo (paused off-screen, in hidden tabs and for reduced motion).
+// 3. Adds a gentle pointer parallax to the background on devices with a mouse or trackpad.
+(() => {
+  const hero = document.querySelector('.fresh-home .hero');
+  const art = hero && hero.querySelector('.hero-art');
+  const orbit = art && art.querySelector('.art-orbit');
+  const ring = orbit && orbit.querySelector('.orbit-ring:not(.outer)');
+  if (!ring) return;
+
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+
+  const chips = [...document.querySelectorAll('.grid .card')].map(card => {
+    const chip = document.createElement('span');
+    chip.className = `orbit-chip ${card.dataset.group || ''}`;
+    chip.textContent = card.querySelector('.symbol')?.textContent.trim() || '';
+    orbit.append(chip);
+    return chip;
+  });
+  if (!chips.length) return;
+
+  const LAP_MS = 52000;
+  let phase = -Math.PI / 2;
+  let rx = 0, ry = 0, cos = 1, sin = 0;
+
+  function measure() {
+    const tilt = (parseFloat(getComputedStyle(art).getPropertyValue('--orbit-tilt')) || 0) * Math.PI / 180;
+    rx = ring.offsetWidth / 2;
+    ry = ring.offsetHeight / 2;
+    cos = Math.cos(tilt);
+    sin = Math.sin(tilt);
+  }
+
+  function place() {
+    const step = (Math.PI * 2) / chips.length;
+    chips.forEach((chip, i) => {
+      const angle = phase + i * step;
+      const ox = rx * Math.cos(angle);
+      const oy = ry * Math.sin(angle);
+      const depth = (Math.sin(angle) + 1) / 2; // 0 = far side, 1 = near side
+      chip.style.transform = `translate(${(ox * cos - oy * sin).toFixed(1)}px, ${(ox * sin + oy * cos).toFixed(1)}px) scale(${(0.74 + depth * 0.26).toFixed(3)})`;
+      chip.style.opacity = (0.45 + depth * 0.55).toFixed(2);
+      chip.style.zIndex = String(Math.round(depth * 10));
+    });
+  }
+
+  let raf = 0, last = 0, onScreen = true;
+  function frame(now) {
+    if (last) phase += ((now - last) / LAP_MS) * Math.PI * 2;
+    last = now;
+    place();
+    raf = requestAnimationFrame(frame);
+  }
+  function start() {
+    if (raf || reduceMotion.matches || !onScreen || document.hidden) return;
+    last = 0;
+    raf = requestAnimationFrame(frame);
+  }
+  function stop() {
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  measure();
+  place();
+  if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); place(); }).observe(art);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      onScreen ? start() : stop();
+    }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', () => (reduceMotion.matches ? stop() : start()));
+  start();
+
+  let queued = false, mx = 0, my = 0;
+  function applyPointer() {
+    hero.style.setProperty('--mx', mx.toFixed(3));
+    hero.style.setProperty('--my', my.toFixed(3));
+    queued = false;
+  }
+  hero.addEventListener('pointermove', event => {
+    if (!finePointer.matches || reduceMotion.matches) return;
+    const box = hero.getBoundingClientRect();
+    mx = ((event.clientX - box.left) / box.width) * 2 - 1;
+    my = ((event.clientY - box.top) / box.height) * 2 - 1;
+    if (!queued) {
+      queued = true;
+      requestAnimationFrame(applyPointer);
+    }
+  });
+  hero.addEventListener('pointerleave', () => {
+    mx = 0;
+    my = 0;
+    requestAnimationFrame(applyPointer);
+  });
+})();
 </script>
 </body>
 </html>
