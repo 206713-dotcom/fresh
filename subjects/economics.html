@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#142f43">
-  <meta name="description" content="An independent revision workspace for Cambridge IGCSE Economics 0455.">
+  <meta name="description" content="Notes, flashcards and exam practice for Cambridge IGCSE Economics 0455.">
   <title>Economics · EcBiz</title>
   <link rel="icon" href="../fresh.svg" type="image/svg+xml">
   <link rel="stylesheet" href="economics/style.css?v=20261118-stats">
@@ -22,13 +22,13 @@
   <script defer src="economics/note-visuals.js"></script>
   <script defer src="economics/syllabus-notes.js"></script>
   <script defer src="economics/syllabus-visuals.js"></script>
-  <script defer src="economics/study-routing.js?v=1"></script>
-  <script defer src="economics/study-improvements.js?v=1"></script>
-  <script defer src="economics/app.js?v=study-improvements"></script>
+  <script defer src="economics/study-routing.js?v=copy-1"></script>
+  <script defer src="economics/study-improvements.js?v=copy-1"></script>
+  <script defer src="economics/app.js?v=copy-1"></script>
   <script defer src="economics/study-tools.js?v=study-improvements"></script>
   <script defer src="economics/mock-workspace.js?v=study-improvements"></script>
   <script defer src="economics/mock-corrections.js?v=study-improvements"></script>
-  <script defer src="economics/revision-lab.js?v=study-improvements"></script>
+  <script defer src="economics/revision-lab.js?v=copy-1"></script>
   <script defer src="economics/progress.js?v=study-improvements"></script>
   <script defer src="economics/topic-search.js?v=1"></script>
   <script type="module" src="economics/progress-export.js?v=1"></script>
@@ -53,7 +53,7 @@
         <a href="economics-games.html#games">Games</a>
       </nav>
       <div class="economics-nav-actions">
-        <button type="button" id="marking-download-open" class="primary" data-ai-download-open aria-haspopup="dialog" aria-controls="marking-download">Download AI</button>
+        <button type="button" id="marking-download-open" class="primary" data-ai-download-open aria-haspopup="dialog" aria-controls="marking-download">Set up marking</button>
         <button type="button" id="topic-search-open" aria-label="Find a topic" aria-haspopup="dialog" aria-keyshortcuts="/">
           <span class="search-icon" aria-hidden="true"></span><span>Find a topic</span>
         </button>
@@ -74,17 +74,17 @@
   </dialog>
   <dialog id="marking-download" aria-labelledby="marking-download-title" aria-describedby="marking-download-description">
     <div class="marking-download-heading">
-      <h2 id="marking-download-title">Local AI marking</h2>
+      <h2 id="marking-download-title">On-device marking</h2>
       <form method="dialog"><button type="submit">Close</button></form>
     </div>
-    <p id="marking-download-description">Download about 506 MiB to set up automatic marking for written Economics answers. Your answers stay on your device. AI marks are provisional.</p>
-    <button type="button" id="marking-download-start" class="primary" aria-describedby="marking-download-status" autofocus>Download local AI</button>
+    <p id="marking-download-description">Download the AI marking model (about 506 MiB) to mark written answers. Your answers stay on your device. AI marks are provisional.</p>
+    <button type="button" id="marking-download-start" class="primary" aria-describedby="marking-download-status" autofocus>Download model</button>
     <p id="marking-download-status" role="status"></p>
   </dialog>
   <div id="local-marking-controls" class="wrap" hidden>
-    <section id="marking-model" aria-label="Local AI marking">
-      <button type="button" class="primary" data-ai-download-open aria-haspopup="dialog" aria-controls="marking-download">Download local AI</button>
-      <p>Set up AI marking before submitting written answers.</p>
+    <section id="marking-model" aria-label="On-device marking">
+      <button type="button" class="primary" data-ai-download-open aria-haspopup="dialog" aria-controls="marking-download">Set up marking</button>
+      <p>Download the model to mark written answers on this device.</p>
     </section>
     <p id="marking-status" class="muted" role="status" hidden></p>
   </div>

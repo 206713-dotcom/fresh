@@ -3,7 +3,6 @@
   'use strict';
   const root = document.getElementById('game-root');
   if (!root) return;
-  const subtitles = {island:'An island shaped by your choices',market:'A live market, in your hands',policy:'Take your seat at the cabinet',trade:'Build a balance across borders',escape:'The archive is waiting to be unlocked'};
   const kinds = {island:'Resource management',market:'Market laboratory',policy:'Economic strategy',trade:'Port simulation',escape:'Archive adventure'};
   let active, view;
   const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
@@ -194,8 +193,6 @@
     document.body.dataset.game=game??'hub';
     document.body.dataset.phase=s?.phase??'hub';
     if(!game){
-      root.querySelector('.hero h1').textContent='The Economics simulations';
-      root.querySelector('.hero p').textContent='Manage resources, test a policy or solve an exam-style puzzle. Each simulation saves your progress in this browser.';
       root.querySelectorAll('article.card').forEach(card=>{const slug=card.querySelector('a')?.getAttribute('href').split('/').pop();if(!art[slug])return;card.dataset.gameCard=slug;card.querySelector('.symbol')?.remove();const preview=document.createElement('div');preview.className='sim-card-art';preview.innerHTML=art[slug](null);card.prepend(preview);const label=document.createElement('p');label.className='sim-card-kind';label.textContent=kinds[slug];card.insertBefore(label,card.querySelector('h2'));});
       return;
     }
@@ -203,7 +200,6 @@
     const frame=document.createElement('section');frame.className='simulation-frame sim-'+game;
     frame.setAttribute('aria-labelledby','simulation-title');
     heading.querySelector('h1').id='simulation-title';
-    if (s.phase==='intro') heading.querySelector('p').textContent=subtitles[game];
     const badge=document.createElement('span');badge.className='sim-mode';badge.textContent=s.phase==='intro'?kinds[game]:s.phase==='finished'?'Session complete':s.mode??(s.committed?'Decision reviewed':'Live simulation');heading.prepend(badge);
     const stage=document.createElement('div');stage.className='sim-stage';stage.innerHTML='<div class="sim-stage-top"><span>'+esc(kinds[game])+'</span><span>'+(s.phase==='playing'?'Round '+s.round+' of '+s.total:'Scene preview')+'</span>'+
       (s.phase==='playing'?'<button type="button" class="sim-jump" data-sim-action="decision">'+(s.committed?'Review decision':'Go to your decision')+'</button>':'')+

@@ -54,7 +54,7 @@ function loadEconomicsMocks() {
 }
 
 function loadEconomicsMarker() {
-  return loadEconomicsScript('local-marker.js?v=study-improvements');
+  return loadEconomicsScript('local-marker.js?v=copy-1');
 }
 
 const mockDataPages = new Set(['revision-test', 'revision-retry', 'revision-corrections']);
@@ -106,12 +106,12 @@ document.addEventListener('click', async event => {
   if (!dialog.open) dialog.showModal();
   if (typeof ecbizMarking !== 'undefined') return;
   download.disabled = true;
-  status.textContent = 'Loading the AI setup…';
+  status.textContent = 'Loading marking settings…';
   try {
     await loadEconomicsMarker();
-    if (status.textContent === 'Loading the AI setup…') status.textContent = '';
+    if (status.textContent === 'Loading marking settings…') status.textContent = '';
     download.disabled = false;
   } catch {
-    status.textContent = 'The AI setup could not be loaded. Close this box and open Download AI again to retry.';
+    status.textContent = 'Marking settings couldn’t load. Close and reopen this window to try again.';
   }
 });
