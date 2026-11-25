@@ -1,5 +1,5 @@
 /* Quilio: the Olympiad section.
-   #olympiad (overview) · #olympiad-competitions · #olympiad-syllabus · #olympiad-practice · #olympiad-p-<id> (one problem) · #olympiad-papers
+   #olympiad (overview) · #olympiad-competitions · #olympiad-syllabus · #olympiad-practice · #olympiad-p-<id> (one problem) · #olympiad-papers (competitions) · #olympiad-papers-<c> (one competition, by year)
    Competition facts were checked against the organisers' own pages in November 2026; dates and rules change, so every
    card links to the organiser. The practice problems are original, written for this site, with full worked solutions.
    Progress is kept in this browser. */
@@ -180,18 +180,18 @@
   }
   const ok = (part, v) => { const a = part.a; if (part.abs != null) return Math.abs(v - a) <= part.abs + 1e-12; return a === 0 ? Math.abs(v) < 1e-9 : Math.abs(v - a) <= Math.abs(a) * ((part.tol || 0.01) + 1e-9); };
   const prog = () => store.get('gc.oly', {});
-  const reviewedParts = id => (prog()[id] || []).length;
-  const drafts = id => store.get('gc.oly.draft', {})[id] || {};
+  const solvedParts = id => (prog()[id] || []).length;
+  const numeric = p => p.p.filter(x => x.a != null).length;
 
   /* ---------------- pages ---------------- */
   const TABS = [['olympiad', 'Overview'], ['olympiad-train', 'Training'], ['olympiad-competitions', 'Competitions'], ['olympiad-syllabus', 'IChO syllabus'], ['olympiad-practice', 'Practice'], ['olympiad-papers', 'Past papers']];
   const TRAINSUB = /^olympiad-(m-|review$|sprint$)/;
-  const head = (h, title, lede) => `<nav class="crumbs" aria-label="Breadcrumb"><a href="#chemistry">Chemistry</a><span>${h === 'olympiad' ? 'Olympiad' : '<a href="#olympiad">Olympiad</a>'}</span>${TRAINSUB.test(h) ? '<span><a href="#olympiad-train">Training</a></span>' : ''}${h.startsWith('olympiad-p-') && (findP(h.slice(11)) || {}).paper ? '<span><a href="#olympiad-papers">Past papers</a></span>' : ''}${h !== 'olympiad' ? `<span>${esc(title)}</span>` : ''}</nav>
+  const head = (h, title, lede) => `<nav class="crumbs" aria-label="Breadcrumb"><a href="#chemistry">Chemistry</a><span>${h === 'olympiad' ? 'Olympiad' : '<a href="#olympiad">Olympiad</a>'}</span>${TRAINSUB.test(h) ? '<span><a href="#olympiad-train">Training</a></span>' : ''}${h.startsWith('olympiad-p-') && (findP(h.slice(11)) || {}).paper ? `<span><a href="#olympiad-papers">Past papers</a></span><span><a href="#olympiad-papers-${findP(h.slice(11)).paper.c}">${esc(ppName(findP(h.slice(11)).paper.c))}</a></span>` : ''}${h.startsWith('olympiad-papers-') ? '<span><a href="#olympiad-papers">Past papers</a></span>' : ''}${h !== 'olympiad' ? `<span>${esc(title)}</span>` : ''}</nav>
     <header class="page-head ol-head"><p class="kicker">${h === 'olympiad-train' || TRAINSUB.test(h) ? 'Olympiad Training' : 'Chemistry Olympiad'}</p><h1>${title}</h1>${lede ? `<p>${lede}</p>` : ''}</header>
-    <nav class="ol-tabs" aria-label="Olympiad">${TABS.map(([k, l]) => `<a href="#${k}" class="${h === k || (k === 'olympiad-practice' && h.startsWith('olympiad-p-') && !(findP(h.slice(11)) || {}).paper) || (k === 'olympiad-papers' && h.startsWith('olympiad-p-') && !!(findP(h.slice(11)) || {}).paper) || (k === 'olympiad-train' && TRAINSUB.test(h)) ? 'is-on' : ''}">${l}</a>`).join('')}</nav>`;
+    <nav class="ol-tabs" aria-label="Olympiad">${TABS.map(([k, l]) => `<a href="#${k}" class="${h === k || (k === 'olympiad-practice' && h.startsWith('olympiad-p-') && !(findP(h.slice(11)) || {}).paper) || (k === 'olympiad-papers' && (h.startsWith('olympiad-papers-') || (h.startsWith('olympiad-p-') && !!(findP(h.slice(11)) || {}).paper))) || (k === 'olympiad-train' && TRAINSUB.test(h)) ? 'is-on' : ''}">${l}</a>`).join('')}</nav>`;
 
   function overview() {
-    const done = P.filter(p => reviewedParts(p.id) >= p.p.length && p.p.length).length;
+    const done = P.filter(p => solvedParts(p.id) >= numeric(p) && numeric(p)).length;
     return `<div class="page ol">${head('olympiad', 'Chemistry beyond the syllabus.', 'The Chemistry Olympiad asks you to use what you know on chemistry you have never seen: a new reaction, an unfamiliar molecule, a page of data. This section shows you the competitions, the syllabus they share, and problems to practise on, with every step worked.')}
       <section class="ol-ladder" aria-label="How the competitions connect">
         <div class="ol-rung"><b>1</b><h3>Warm up</h3><p>C3L6 for Year 12 and below; the USNCO Local Exam for fast multiple-choice practice.</p></div>
@@ -203,8 +203,8 @@
       <div class="ol-grid">
         <a class="ol-card panel" href="#olympiad-competitions"><span class="kicker">${COMPS.length} competitions</span><h2>Competitions</h2><p>Who can enter, what the papers look like, when they run, and where they lead.</p><span class="go">See the competitions ${ARROW}</span></a>
         <a class="ol-card panel" href="#olympiad-syllabus"><span class="kicker">${SYL.length} fields</span><h2>IChO syllabus</h2><p>What every competitor is expected to know, what goes beyond, and where to learn each part on this site.</p><span class="go">Open the syllabus map ${ARROW}</span></a>
-        <a class="ol-card panel" href="#olympiad-practice"><span class="kicker">${P.length} problems · ${done} finished</span><h2>Practice</h2><p>Original olympiad-style problems at three levels, with hints and full worked solutions.</p><span class="go">Start practising ${ARROW}</span></a>
-        <a class="ol-card panel" href="#olympiad-papers"><span class="kicker">${PAPERS.length} papers · ${PAST.length} questions</span><h2>Past papers</h2><p>Real past-paper questions recreated with new numbers, with worked solutions.</p><span class="go">Open the past papers ${ARROW}</span></a>
+        <a class="ol-card panel" href="#olympiad-practice"><span class="kicker">${P.length} problems · ${done} finished</span><h2>Practice</h2><p>Original olympiad-style problems at three levels, each marked as you go, with hints and full worked solutions.</p><span class="go">Start practising ${ARROW}</span></a>
+        <a class="ol-card panel" href="#olympiad-papers"><span class="kicker">${PAPERS.length} papers · ${PAST.length} questions</span><h2>Past papers</h2><p>Real past-paper questions recreated with new numbers, marked as you type, with worked solutions.</p><span class="go">Open the past papers ${ARROW}</span></a>
       </div>
       <section class="ol-sec"><h2>How to prepare</h2>
         <ol class="ol-steps">
@@ -233,38 +233,47 @@
   let filt = { f: '', lv: '' };
   function practice() {
     const list = P.filter(p => (!filt.f || p.f === filt.f) && (!filt.lv || String(p.lv) === filt.lv));
-    return `<div class="page ol">${head('olympiad-practice', 'Practice problems', `${P.length} original problems in the olympiad style, each in several parts. Try each part before revealing the worked or model answer. Every part has a hint and a full worked solution.`)}
+    return `<div class="page ol">${head('olympiad-practice', 'Practice problems', `${P.length} original problems in the olympiad style, each in several parts. Numerical parts are checked as you type; written parts have a model answer to compare with. Every part has a hint and a full worked solution.`)}
       <div class="filterbar ol-filter"><select id="olF" aria-label="Field"><option value="">All fields</option>${FIELDS.map(f => `<option${filt.f === f ? ' selected' : ''}>${esc(f)}</option>`).join('')}</select>
         <div class="seg" role="group" aria-label="Level">${[['', 'All levels'], ['1', 'Entry'], ['2', 'Intermediate'], ['3', 'Advanced']].map(([k, l]) => `<button type="button" data-lv="${k}" class="${filt.lv === k ? 'is-on' : ''}">${l}</button>`).join('')}</div>
         <button type="button" class="btn small" data-random>A random problem</button></div>
-      <div class="ol-probs">${list.map(p => { const n = p.p.length, d = Math.min(n, reviewedParts(p.id)); return `<a class="ol-prob panel${n && d >= n ? ' is-done' : ''}" href="#olympiad-p-${p.id}"><div class="ol-prob-top"><span class="ol-lv l${p.lv}">${LV[p.lv]}</span><span>${esc(p.f)}</span><span>${p.m} min</span></div><h3>${esc(p.t)}</h3><p>${il(short(p.s))}</p><div class="meter"><i style="--v:${n ? Math.round(d / n * 100) : 0}%"></i></div><small>${p.p.length} parts${n ? ` · ${d} of ${n} parts reviewed` : ''}</small></a>`; }).join('') || '<p class="def-wait">No problems match. Try another field or level.</p>'}</div></div>`;
+      <div class="ol-probs">${list.map(p => { const n = numeric(p), d = Math.min(n, solvedParts(p.id)); return `<a class="ol-prob panel${n && d >= n ? ' is-done' : ''}" href="#olympiad-p-${p.id}"><div class="ol-prob-top"><span class="ol-lv l${p.lv}">${LV[p.lv]}</span><span>${esc(p.f)}</span><span>${p.m} min</span></div><h3>${esc(p.t)}</h3><p>${il(short(p.s))}</p><div class="meter"><i style="--v:${n ? Math.round(d / n * 100) : 0}%"></i></div><small>${p.p.length} parts${n ? ` · ${d} of ${n} answers correct` : ''}</small></a>`; }).join('') || '<p class="def-wait">No problems match. Try another field or level.</p>'}</div></div>`;
   }
   function problem(id) {
     const p = findP(id); if (!p) return practice();
-    const list = p.paper ? p.paper.qs.map(q => findP(q.id)) : P, i = list.findIndex(x => x.id === p.id), prev = list[i - 1], next = list[i + 1], got = new Set(prog()[p.id] || []), answers = drafts(p.id);
+    const list = p.paper ? p.paper.qs.map(q => findP(q.id)) : P, i = list.findIndex(x => x.id === p.id), prev = list[i - 1], next = list[i + 1], got = new Set(prog()[p.id] || []);
     return `<div class="page ol">${head('olympiad-p-' + id, p.t, '')}
       <article class="ol-problem panel">${p.paper ? `<p class="ol-src"><b>${esc(pname(p.paper))} · Question ${p.n}</b> · the same chemistry as the original question, with new numbers</p>` : ''}<div class="ol-prob-top"><span class="ol-lv l${p.lv}">${LV[p.lv]}</span><span>${esc(p.f)}</span><span>about ${p.m} min</span><span class="ol-clock" id="olClock">0:00</span></div>
         <div class="ol-stem">${il(p.s)}</div>
-        <ol class="ol-parts">${p.p.map((q, k) => `<li class="ol-part${got.has(k) ? ' is-reviewed' : ''}" data-k="${k}"><p class="ol-q">${il(q.q)}</p>
-          ${q.a != null ? `<div class="q-in"><input type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer to part ${k + 1}" value="${esc(answers[k] || '')}" placeholder="your answer${q.u ? ' in ' + esc(q.u) : ''}">${q.u ? `<span class="ol-unit">${esc(q.u)}</span>` : ''}</div>` : ''}
+        <ol class="ol-parts">${p.p.map((q, k) => `<li class="ol-part${got.has(k) ? ' is-right' : ''}" data-k="${k}"><p class="ol-q">${il(q.q)}</p>
+          ${q.a != null ? `<div class="q-in"><input type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer to part ${k + 1}" placeholder="your answer${q.u ? ' in ' + esc(q.u) : ''}"><button type="button" class="btn small" data-act="check">Check</button>${q.u ? `<span class="ol-unit">${esc(q.u)}</span>` : ''}</div>` : ''}
           <div class="ol-tools"><button type="button" class="chip" data-act="hint">Hint</button><button type="button" class="chip" data-act="sol">${q.a != null ? 'Worked solution' : 'Model answer'}</button></div>
           <div class="fb" hidden></div></li>`).join('')}</ol>
         ${p.lec.length ? `<p class="ol-learn">The chemistry behind it: ${p.lec.map(lec).join(' ')}</p>` : ''}</article>
-      <nav class="lect-nav" aria-label="Problems">${prev ? `<a href="#olympiad-p-${prev.id}"><small>${p.paper ? `Question ${prev.n}` : 'Previous problem'}</small><b>${esc(prev.t)}</b></a>` : '<span></span>'}${next ? `<a href="#olympiad-p-${next.id}"><small>${p.paper ? `Question ${next.n}` : 'Next problem'}</small><b>${esc(next.t)}</b></a>` : p.paper ? `<a href="#olympiad-papers"><small>End of the ${p.paper.y} paper</small><b>All past papers</b></a>` : `<a href="#olympiad-practice"><small>That was the last one</small><b>All problems</b></a>`}</nav></div>`;
+      <nav class="lect-nav" aria-label="Problems">${prev ? `<a href="#olympiad-p-${prev.id}"><small>${p.paper ? `Question ${prev.n}` : 'Previous problem'}</small><b>${esc(prev.t)}</b></a>` : '<span></span>'}${next ? `<a href="#olympiad-p-${next.id}"><small>${p.paper ? `Question ${next.n}` : 'Next problem'}</small><b>${esc(next.t)}</b></a>` : p.paper ? `<a href="#olympiad-papers-${p.paper.c}"><small>End of the ${p.paper.y} paper</small><b>All ${esc(ppName(p.paper.c))} papers</b></a>` : `<a href="#olympiad-practice"><small>That was the last one</small><b>All problems</b></a>`}</nav></div>`;
   }
-  function papers() {
-    const groups = [...new Set(PAPERS.map(pp => pp.comp))];
-    const nQ = PAST.length, nDone = PAST.filter(p => p.p.length && reviewedParts(p.id) >= p.p.length).length;
-    return `<div class="page ol">${head('olympiad-papers', 'Past papers', `Real past-paper questions, recreated: each one keeps the chemistry and the kind of task of the original question, with new wording and new numbers, with worked and model answers for each part. ${nQ} questions so far, ${nDone} reviewed.`)}
-      ${groups.map(g => `<section class="ol-pp-group"><h2>${esc(g)}</h2><div class="ol-pps">${PAPERS.filter(pp => pp.comp === g).map(pp => { const qs = pp.qs.map(q => findP(q.id)), tot = qs.reduce((a, q) => a + q.p.length, 0), got = qs.reduce((a, q) => a + Math.min(q.p.length, reviewedParts(q.id)), 0); return `<article class="ol-pp panel"><header><span class="ol-tag">${esc(pp.round)}</span><h3>${pp.y}</h3><span class="ol-pp-meta">${pp.mins} min · ${qs.length} questions</span></header>
-        <p class="ol-pp-topics">${esc(pp.topics)}</p><div class="meter"><i style="--v:${tot ? Math.round(got / tot * 100) : 0}%"></i></div><small class="ol-pp-score">${got} of ${tot} parts reviewed</small>
-        <ol class="ol-pp-qs">${qs.map(q => `<li class="${q.p.length && reviewedParts(q.id) >= q.p.length ? 'is-done' : ''}"><a href="#olympiad-p-${q.id}"><b>Q${q.n}</b><span>${esc(q.t)}</span><em>${q.p.length} parts · ${q.m} min</em></a></li>`).join('')}</ol>
-        ${pp.skipped ? `<p class="ol-note">${esc(pp.skipped)}</p>` : ''}<a class="btn small" href="#olympiad-p-${qs[0].id}">Start the ${pp.y} paper ${ARROW}</a></article>`; }).join('')}</div></section>`).join('')}
-      <section class="ol-sec"><h2>How to use them</h2>
+  const PPC = { ukcho: ['UK Chemistry Olympiad', 'UKChO', 'Round 1: the UK national paper, two hours of long, data-rich questions.'], c3l6: ['Cambridge Chemistry Challenge', 'C3L6', 'The gentler warm-up for Year 12 and below: the same style as the UKChO, shorter.'], usnco: ['US National Chemistry Olympiad', 'USNCO', 'National exam, Part II: the written problems, quick to set up and wide-ranging.'], icho: ['International Chemistry Olympiad', 'IChO', 'The theory exam of the world final: five hours, the hardest problems here.'] };
+  const ppOrder = [...new Set(PAPERS.map(pp => pp.c))];
+  const ppName = c => (PPC[c] || [c, c])[0];
+  const ppStat = list => { const qs = list.flatMap(pp => pp.qs.map(q => findP(q.id))); const tot = qs.reduce((a, q) => a + numeric(q), 0), got = qs.reduce((a, q) => a + Math.min(numeric(q), solvedParts(q.id)), 0); return { n: qs.length, tot, got }; };
+  const ppHow = `<section class="ol-sec"><h2>How to use them</h2>
         <ol class="ol-steps"><li><b>Sit a whole paper:</b> give yourself the full time and go through the questions in order, as in the real exam. The clock on each question shows the suggested time.</li>
           <li><b>Do every part you can:</b> later parts often do not need the earlier answers, so never stop at the first hard part.</li>
-          <li><b>Try it, then study the solution:</b> every part has a hint and a worked solution or model answer.</li>
-          <li><b>Fill the gaps:</b> each question links to the lectures behind it, and the Training tab has a module for every big topic.</li></ol></section></div>`;
+          <li><b>Check, then study the solution:</b> numerical answers are marked as you type; every part has a hint and a worked solution or model answer.</li>
+          <li><b>Fill the gaps:</b> each question links to the lectures behind it, and the Training tab has a module for every big topic.</li></ol></section>`;
+  function papers(c) {
+    const nQ = PAST.length, nDone = PAST.filter(p => numeric(p) && solvedParts(p.id) >= numeric(p)).length;
+    if (!c || !ppOrder.includes(c)) return `<div class="page ol">${head('olympiad-papers', 'Past papers', `Real past-paper questions, recreated: each one keeps the chemistry and the kind of task of the original question, with new wording and new numbers, so you can work it here and have every answer checked. ${nQ} questions so far, ${nDone} finished. Pick a competition to see its papers by year.`)}
+      <div class="ol-ppc-grid">${ppOrder.map(k => { const list = PAPERS.filter(pp => pp.c === k), ys = list.map(pp => pp.y), st = ppStat(list), d = PPC[k] || [k, k, '']; return `<a class="ol-card ol-ppc panel" href="#olympiad-papers-${k}"><span class="kicker">${list.length} ${list.length === 1 ? 'paper' : 'papers'} · ${Math.min(...ys)}${ys.length > 1 ? '–' + Math.max(...ys) : ''}</span><h2>${esc(d[0])}</h2><p>${esc(d[2])}</p><div class="meter"><i style="--v:${st.tot ? Math.round(st.got / st.tot * 100) : 0}%"></i></div><small class="ol-pp-score">${st.n} questions · ${st.got} of ${st.tot} answers correct</small><span class="go">See the papers ${ARROW}</span></a>`; }).join('')}</div>
+      ${ppHow}</div>`;
+    const list = PAPERS.filter(pp => pp.c === c).sort((a, b) => b.y - a.y), d = PPC[c] || [c, c, ''];
+    return `<div class="page ol">${head('olympiad-papers-' + c, d[0], `${list.length} ${list.length === 1 ? 'paper' : 'papers'}, newest first. ${esc(d[2])}`)}
+      <nav class="ol-years" aria-label="Jump to a year">${list.map(pp => `<a href="#olympiad-papers-${c}" data-year="${pp.y}">${pp.y}</a>`).join('')}</nav>
+      <div class="ol-pps">${list.map(pp => { const qs = pp.qs.map(q => findP(q.id)), st = ppStat([pp]); return `<article class="ol-pp panel" id="pp-${pp.y}"><header><span class="ol-tag">${esc(pp.round)}</span><h3>${pp.y}</h3><span class="ol-pp-meta">${pp.mins} min · ${qs.length} questions</span></header>
+        <p class="ol-pp-topics">${esc(pp.topics)}</p><div class="meter"><i style="--v:${st.tot ? Math.round(st.got / st.tot * 100) : 0}%"></i></div><small class="ol-pp-score">${st.got} of ${st.tot} answers correct</small>
+        <details class="ol-pp-more"><summary>${qs.length} questions</summary><ol class="ol-pp-qs">${qs.map(q => `<li class="${numeric(q) && solvedParts(q.id) >= numeric(q) ? 'is-done' : ''}"><a href="#olympiad-p-${q.id}"><b>Q${q.n}</b><span>${esc(q.t)}</span><em>${q.p.length} parts · ${q.m} min</em></a></li>`).join('')}</ol>
+        ${pp.skipped ? `<p class="ol-note">${esc(pp.skipped)}</p>` : ''}</details><a class="btn small" href="#olympiad-p-${qs[0].id}">Start the ${pp.y} paper ${ARROW}</a></article>`; }).join('')}</div>
+      <p class="ol-back"><a href="#olympiad-papers">← All competitions</a></p></div>`;
   }
 
   /* ---------------- events ---------------- */
@@ -274,29 +283,21 @@
     if (h.startsWith('olympiad-p-')) {
       const id = h.slice(11), p = findP(id); if (!p) return; const t0 = Date.now(), el = $('#olClock');
       clock = setInterval(() => { if (!el.isConnected) { clearInterval(clock); return; } const s = Math.floor((Date.now() - t0) / 1000); el.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); el.classList.toggle('over', s > p.m * 60); }, 1000);
-      view.oninput = e => {
-        if (!e.target.matches('.ol-part input')) return;
-        const all = store.get('gc.oly.draft', {}), answers = all[p.id] || {};
-        answers[e.target.closest('.ol-part').dataset.k] = e.target.value;
-        all[p.id] = answers;
-        store.set('gc.oly.draft', all);
+      const check = li => {
+        const k = +li.dataset.k, q = p.p[k], fb = $('.fb', li), v = num($('input', li).value);
+        if (isNaN(v)) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = 'Type a number, for example 0.238 or 6.1 × 10^5.'; return; }
+        const right = ok(q, v); fb.hidden = false; fb.className = 'fb ' + (right ? 'ok' : 'no');
+        fb.innerHTML = right ? `<b>Correct.</b> ${il(q.w)}` : `<b>Not yet.</b> Check your units and significant figures, or take a hint.`;
+        if (right) { li.classList.add('is-right'); const all = prog(), s = new Set(all[p.id] || []); s.add(k); all[p.id] = [...s]; store.set('gc.oly', all); }
       };
       view.onclick = e => {
-        const b = e.target.closest('[data-act]'); if (!b) return;
-        const li = b.closest('.ol-part'), k = +li.dataset.k, q = p.p[k], fb = $('.fb', li);
-        fb.hidden = false;
-        fb.className = 'fb';
-        if (b.dataset.act === 'hint') {
-          fb.innerHTML = `<b>Hint.</b> ${il(q.h)}`;
-        } else if (b.dataset.act === 'sol') {
-          fb.innerHTML = `<b>${q.a != null ? 'Worked solution' : 'Model answer'}.</b> ${il(q.w)}`;
-          const all = prog(), reviewed = new Set(all[p.id] || []);
-          reviewed.add(k);
-          all[p.id] = [...reviewed];
-          store.set('gc.oly', all);
-          li.classList.add('is-reviewed');
-        }
+        const b = e.target.closest('[data-act]'); if (!b) return; const li = b.closest('.ol-part'), k = +li.dataset.k, q = p.p[k], fb = $('.fb', li);
+        if (b.dataset.act === 'check') check(li);
+        else if (b.dataset.act === 'hint') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Hint.</b> ${il(q.h)}`; }
+        else if (b.dataset.act === 'sol') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>${q.a != null ? 'Worked solution' : 'Model answer'}.</b> ${il(q.w)}`; }
+        else if (b.dataset.act === 'ask' && window.Pauling) { const yours = $('input', li) ? $('input', li).value.trim() : ''; window.Pauling.open({ general: true, say: `I'm working on an olympiad practice problem. Give me a nudge, not the answer.\n\nProblem: ${p.s.replace(/\$/g, '')}\n\nPart ${k + 1}: ${q.q}${yours ? `\n\nMy answer so far: ${yours}` : ''}` }); }
       };
+      view.onkeydown = e => { if (e.key === 'Enter' && e.target.matches('.ol-part input')) { e.preventDefault(); check(e.target.closest('.ol-part')); } };
       return;
     }
     view.onkeydown = null;
@@ -305,15 +306,16 @@
       view.onclick = e => { const b = e.target.closest('[data-lv]'); if (b) { filt.lv = b.dataset.lv; view.innerHTML = practice(); bind(view, h); return; } if (e.target.closest('[data-random]')) { const pool = P.filter(p => (!filt.f || p.f === filt.f) && (!filt.lv || String(p.lv) === filt.lv)); const p = pool[Math.random() * pool.length | 0]; if (p) location.hash = 'olympiad-p-' + p.id; } };
       return;
     }
+    if (h.startsWith('olympiad-papers-')) { view.onclick = e => { const y = e.target.closest('[data-year]'); if (!y) return; e.preventDefault(); const el = document.getElementById('pp-' + y.dataset.year); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }; return; }
     view.onclick = null;
   }
   function render(view, h) {
     clearInterval(clock);
     if (window.Training && window.Training.owns(h)) return window.Training.render(view, h, head);
     document.title = 'Olympiad · Quilio';
-    view.innerHTML = h === 'olympiad-competitions' ? competitions() : h === 'olympiad-syllabus' ? syllabus() : h === 'olympiad-practice' ? practice() : h === 'olympiad-papers' ? papers() : h.startsWith('olympiad-p-') ? problem(h.slice(11)) : overview();
+    view.innerHTML = h === 'olympiad-competitions' ? competitions() : h === 'olympiad-syllabus' ? syllabus() : h === 'olympiad-practice' ? practice() : h === 'olympiad-papers' ? papers() : h.startsWith('olympiad-papers-') ? papers(h.slice(16)) : h.startsWith('olympiad-p-') ? problem(h.slice(11)) : overview();
     bind(view, h);
   }
-  function leave(view) { clearInterval(clock); if (window.Training) window.Training.leave(); if (view) view.onclick = view.onkeydown = view.oninput = null; }
+  function leave(view) { clearInterval(clock); if (window.Training) window.Training.leave(); if (view) view.onclick = view.onkeydown = null; }
   window.Olympiad = { render, leave, P, COMPS, SYL, num, ok, count: P.length };
 })();

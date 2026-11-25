@@ -3,8 +3,8 @@
   'use strict';
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const PHYSICS_URL = '../physics/index.html#coverage-0625';   // Geodesic Physics on Fresh
   const FRESH_HOME = '../../';
-  const PHYSICS_URL = '../physics/index.html#coverage-0625';
   const store = { get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } } };
   const view = $('#view'), bar = $('#bar'), startEl = $('#start');
   let IDX = null, ALL = [], BY = {}, STAGE = {}, TOPIC = {}, SEARCH = [], files = {}, CUR = null, cleanups = [];
@@ -61,7 +61,7 @@
   function inline(s) {
     if (!s) return ''; const math = [];
     s = String(s).replace(/\$([^$]+)\$/g, (m, t) => { math.push(t); return '\u0001' + (math.length - 1) + '\u0002'; });
-    s = esc(s).replace(/\^(δ[+−-]|[−-]?[A-Za-z0-9]+)/g, '<sup>$1</sup>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?![*\w])/g, '$1<em>$2</em>');
+    s = esc(s).replace(/\^\(((?:[^()]|\([^()]*\))*)\)/g, '<sup>$1</sup>').replace(/([A-Za-zΔδ\])])_(?:\{([^{}]+)\}|([A-Za-z0-9]+))/g, (m, a, b, c) => a + '<sub>' + (b || c) + '</sub>').replace(/\^(δ[+−-]|[−-]?[A-Za-z0-9]+)/g, '<sup>$1</sup>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?![*\w])/g, '$1<em>$2</em>');
     return s.replace(/\u0001(\d+)\u0002/g, (m, i) => tex(splitRm(math[+i]), false));
   }
   const plain = s => String(s || '').replace(/\$([^$]+)\$/g, '$1').replace(/\*\*/g, '').replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}_^]/g, '');
@@ -158,7 +158,7 @@
     homeBuilt = true;
     const nT = IDX.stages.reduce((a, s) => a + s.topics.length, 0), nS = ALL.reduce((a, l) => a + l.ns, 0), nQ = ALL.reduce((a, l) => a + l.q, 0);
     host.innerHTML = `
-      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'practice questions'], [Films.count, 'short films'], [16, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
+      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'questions, marked here'], [Films.count, 'short films'], [16, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
       <section class="hm-sec" id="hm-lab"><header><p class="kicker">Live models</p><h2>Do not just read about it. Change it.</h2><p>Every model below is running now. Move a control and watch what the particles do.</p></header>
         <div class="seg" id="hmLabTabs" role="group" aria-label="Choose a live model">${LAB.map((l, i) => `<button type="button" data-lab="${i}">${l[1]}</button>`).join('')}</div>
         <div id="hmFig"></div><p class="hm-note" id="hmFigLink"></p></section>
@@ -171,17 +171,17 @@
           <div class="hm-row"><a class="chip" href="#olympiad-competitions">Competitions</a><a class="chip" href="#olympiad-syllabus">IChO syllabus</a><a class="chip" href="#olympiad-practice">Practice problems</a><a class="chip" href="#olympiad-papers">Past papers</a></div><div class="hm-row"><a class="btn small" href="#olympiad-train">Start training ${ARROW}</a></div></div>
       </section>
       <section class="hm-sec"><header><p class="kicker">Inside every lecture</p><h2>How a lecture works.</h2></header>
-        <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions with worked answers.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
+        <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions, marked here on your device.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
       <section class="hm-sec"><header><p class="kicker">Four stages, one straight path</p><h2>Start where you are.</h2></header><div id="hmResume"></div>
         <div class="hm-stages" id="hmStages"></div></section>
-      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a><a href="${FRESH_HOME}">Fresh homepage</a></footer>`;
+      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">ΦΥΣΙΣ home</a>` : ''}</footer>`;
     host.addEventListener('click', e => {
       const lab = e.target.closest('[data-lab]'); if (lab) { labAt = +lab.dataset.lab; Widgets.clear(); labMount(); Snd.tick(); return; }
       const hm = e.target.closest('[data-hm]'); if (hm) { if (hm.dataset.hm === 'q') hmQuestion(); else hmElement(); Snd.tick(); return; }
       const o = e.target.closest('[data-hmo]'); if (o && hmQ) {
         const q = hmQ.q, pick = +o.dataset.hmo, ok = pick === q.a, fb = $('#hmQ .fb');
-        $$('#hmQ .opts button').forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right');  });
-        fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Answer.</b> ${inline(q.y)} <a href="#${hmQ.L.id}">Read the lecture ${ARROW}</a>`; Snd.tick();
+        $$('#hmQ .opts button').forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
+        fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = `<b>${ok ? 'Correct.' : 'Not quite.'}</b> ${inline(q.y)} <a href="#${hmQ.L.id}">Read the lecture ${ARROW}</a>`; Snd.tick(ok);
       }
     });
     labMount(); hmElement(); hmQuestion(); homeProgress();
@@ -211,7 +211,7 @@
 
   function vAbout() {
     const nT = IDX.stages.reduce((a, s) => a + s.topics.length, 0), nS = ALL.reduce((a, l) => a + l.ns, 0), nQ = ALL.reduce((a, l) => a + l.q, 0);
-    view.innerHTML = `<div class="page">${crumbs([[FRESH_HOME, 'Homepage'], ['', 'About us']])}
+    view.innerHTML = `<div class="page">${crumbs([['#home', 'Homepage'], ['', 'About us']])}
       <header class="page-head"><h1>About us</h1><p>Quilio is a chemistry learning site made by students, for the students in our CCA. The idea: the shortest honest route through the subject, with nothing skipped.</p></header>
       <div class="facts" style="margin-bottom:26px">${[[IDX.stages.length, 'stages, KS3 to A Level'], [nT, 'topics in syllabus order'], [ALL.length, 'lectures'], [nS, 'concepts explained']].map(f => `<div class="fact panel"><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</div>
       <div class="prose">
@@ -221,14 +221,14 @@
         <ul>${IDX.stages.map(s => `<li><a href="#${s.hash}"><strong>${s.label}</strong></a> (${s.years}): ${s.sub}. ${plural(s.topics.length, 'topic')}, ${plural(s.all.length, 'lecture')}.</li>`).join('')}</ul>
         <p>Every stage is a list of numbered topics. Every topic is a list of numbered lectures. Every lecture is a list of numbered concepts. The numbers match the syllabus, so the number in your school notes is the number here.</p>
         <h2>What is inside a lecture</h2>
-        <ul><li><strong>First look:</strong> the whole lecture in a few sentences.</li><li><strong>Notes:</strong> every concept the syllabus asks for, with tables, equations and drawn structures.</li><li><strong>Films:</strong> a short animated film at the top of the lectures marked Film, with captions and a script you can read.</li><li><strong>Live figures:</strong> models you can change, on the lectures marked Live.</li><li><strong>Formulas to know</strong> and <strong>Watch out:</strong> what to memorise and what people get wrong.</li><li><strong>What earns the marks:</strong> the wording that mark schemes reward, with a mode that hides the answers so you can test yourself.</li><li><strong>Check yourself:</strong> ${nQ.toLocaleString('en-GB')} questions across the site, with worked answers.</li></ul>
+        <ul><li><strong>First look:</strong> the whole lecture in a few sentences.</li><li><strong>Notes:</strong> every concept the syllabus asks for, with tables, equations and drawn structures.</li><li><strong>Films:</strong> a short animated film at the top of the lectures marked Film, with captions and a script you can read.</li><li><strong>Live figures:</strong> models you can change, on the lectures marked Live.</li><li><strong>Formulas to know</strong> and <strong>Watch out:</strong> what to memorise and what people get wrong.</li><li><strong>What earns the marks:</strong> the wording that mark schemes reward, with a mode that hides the answers so you can test yourself.</li><li><strong>Check yourself:</strong> ${nQ.toLocaleString('en-GB')} questions across the site, marked on your own device.</li></ul>
         <h2>Honest notes</h2>
-        <ul><li>The IGCSE lectures were checked point by point against the Cambridge IGCSE Chemistry 0620 syllabus for exams in 2026 to 2028. AS and A Level follow Cambridge 9701 for 2025 to 2027. KS3 follows the National Curriculum for England.</li><li>The questions are original, written in the Cambridge style. They are not past-paper questions.</li><li>The drifting specks behind every page are air: 39 nitrogen molecules, 10 oxygen molecules and 1 argon atom, close to the real mix. Carbon dioxide is about 1 molecule in 2400, so you will not see one.</li><li>Your ticks for finished lectures, your practice answers are saved in this browser only. There are no accounts.</li><li>Found a mistake? Tell one of the <a href="#developers">developers</a>.</li></ul>
+        <ul><li>The IGCSE lectures were checked point by point against the Cambridge IGCSE Chemistry 0620 syllabus for exams in 2026 to 2028. AS and A Level follow Cambridge 9701 for 2025 to 2027. KS3 follows the National Curriculum for England.</li><li>The questions are original, written in the Cambridge style. They are not past-paper questions.</li><li>The drifting specks behind every page are air: 39 nitrogen molecules, 10 oxygen molecules and 1 argon atom, close to the real mix. Carbon dioxide is about 1 molecule in 2400, so you will not see one.</li><li>Your ticks for finished lectures are saved in this browser only. There are no accounts.</li><li>Found a mistake? Tell one of the <a href="#developers">developers</a>.</li></ul>
       </div></div>`;
   }
 
   function vDevs() {
-    view.innerHTML = `<div class="page">${crumbs([[FRESH_HOME, 'Homepage'], ['', 'Developers']])}
+    view.innerHTML = `<div class="page">${crumbs([['#home', 'Homepage'], ['', 'Developers']])}
       <header class="page-head"><h1>Developers</h1><p>Geodesic and Quilio are built by two students at Garden International School.</p></header>
       <div class="cols-2" style="margin-bottom:28px">
         <div class="person panel" style="--hue:var(--sun)"><div class="avatar">I</div><h3>Ian Lee</h3><p><strong>Geodesic Physics.</strong> Physics and mathematics, from KS3 to quantum field theory.</p><a class="go" href="${PHYSICS_URL}">Open Geodesic Physics</a></div>
@@ -252,7 +252,7 @@
         <div class="meter"><i style="--v:${pc(d, S.all.length)}%"></i></div>
         <div class="col-stat"><span>${plural(S.topics.length, 'topic')} · ${plural(S.all.length, 'lecture')}</span><span>${d} done</span></div>
         <ol>${S.topics.map(T => `<li><a href="#${T.hash}"><b>${T.n}</b><span>${esc(T.title)}</span><i>${T.lectures.length}</i></a></li>`).join('')}</ol></section>`; }).join('')}</div>
-      <div class="toolrow"><a class="toolcard panel" href="#start"><b>Chemistry home</b><span>Live models, a question, an element on one page.</span></a><a class="toolcard panel" href="#periodic-table"><b>Periodic Table</b><span>All 118 elements. Click one for its numbers, family and electronic configuration.</span></a><a class="toolcard panel" href="#definitions"><b>Definitions</b><span>Every definition from every lecture, in one searchable list.</span></a><a class="toolcard panel" href="#olympiad"><b>Olympiad</b><span>Competitions, the IChO syllabus, practice problems and past papers.</span></a></div>
+      <div class="toolrow"><a class="toolcard panel" href="#start"><b>Chemistry home</b><span>Live models, a question, an element, on one page.</span></a><a class="toolcard panel" href="#periodic-table"><b>Periodic Table</b><span>All 118 elements. Click one for its numbers, family and electronic configuration.</span></a><a class="toolcard panel" href="#definitions"><b>Definitions</b><span>Every definition from every lecture, in one searchable list.</span></a><a class="toolcard panel" href="#olympiad"><b>Olympiad</b><span>Competitions, the IChO syllabus, practice problems and past papers.</span></a></div>
     </div>`;
   }
 
@@ -276,41 +276,11 @@
     stageData(S).then(() => { if (here(T.hash)) $$('[data-secs]', view).forEach(ul => { const l = BY[ul.dataset.secs]; if (l && l.secs && !ul.children.length) ul.innerHTML = l.secs.map(x => `<li>${inline(x)}</li>`).join(''); }); }).catch(() => { });
   }
 
-  function savePractice(question, fields) {
-    const key = 'gc.practice.' + CUR.L.id;
-    const all = store.get(key, {});
-    const id = question.dataset.k + question.dataset.i;
-    all[id] = { ...all[id], ...fields };
-    store.set(key, all);
-  }
-
-  view.addEventListener('input', event => {
-    const input = event.target;
-    const question = input.closest('.q');
-    if (CUR && question && input.matches('input, textarea')) {
-      savePractice(question, { answer: input.value, checked: false });
-    }
-  });
-
-  function restorePractice(id) {
-    const saved = store.get('gc.practice.' + id, {});
-    $$('.quiz .q', view).forEach(question => {
-      const record = saved[question.dataset.k + question.dataset.i];
-      if (!record) return;
-      const input = $('input, textarea', question);
-      if (input && typeof record.answer === 'string') input.value = record.answer;
-      const control = Number.isInteger(record.option)
-        ? $(`[data-o="${record.option}"]`, question)
-        : null;
-      if (control) onQuiz({ target: control }, true);
-    });
-  }
-
   function quizHtml(rec) {
     let h = '';
     rec.c.forEach((q, i) => { h += `<div class="q" data-k="c" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>1 mark</i></div><div class="opts">${q.o.map((o, k) => `<button type="button" data-o="${k}">${inline(o)}</button>`).join('')}</div><div class="fb" hidden></div></div>`; });
-    rec.n.forEach((q, i) => { h += `<div class="q" data-k="n" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><div class="q-in"><input id="qn-${i}" type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer, as a number" placeholder="your answer"><button type="button" class="chip" data-act="work">Show working</button></div><div class="fb" hidden></div></div>`; });
-    rec.q.forEach((q, i) => { h += `<div class="q" data-k="q" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><textarea id="qq-${i}" aria-label="Your answer" placeholder="Write your answer, then compare it with the model."></textarea><div class="q-in"><button type="button" class="chip" data-act="model">Show mark scheme</button></div><div class="fb" hidden></div></div>`; });
+    rec.n.forEach((q, i) => { h += `<div class="q" data-k="n" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><div class="q-in"><input id="qn-${i}" type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer, as a number" placeholder="your answer"><button type="button" class="btn small" data-act="check">Check</button><button type="button" class="chip" data-act="work">Show working</button></div><div class="fb" hidden></div></div>`; });
+    rec.q.forEach((q, i) => { h += `<div class="q" data-k="q" data-i="${i}"><div class="q-top"><p>${inline(q.q)}</p><i>${plural(q.k, 'mark')}</i></div><textarea id="qq-${i}" aria-label="Your answer" placeholder="Write your answer, then have it marked."></textarea><div class="q-in"><button type="button" class="btn small" data-act="mark">Mark my answer</button><button type="button" class="chip" data-act="model">Show mark scheme</button></div><div class="fb" hidden></div></div>`; });
     return h;
   }
 
@@ -318,13 +288,7 @@
     const S = L.stage, T = L.topic, k = S.all.indexOf(L), prev = S.all[k - 1], next = S.all[k + 1]; store.set('gc.last', L.id); CUR = null;
     const side = `<aside class="rail side" aria-label="Lectures in this topic"><div class="rail-box panel"><h4>${S.label} · Topic ${T.n}</h4>${T.lectures.map(l => `<a href="#${l.id}" class="${l === L ? 'is-on' : ''}${done.has(l.id) ? ' is-done' : ''}"><b>${l.code}</b><span>${esc(l.title)}</span></a>`).join('')}<h4 style="margin-top:10px">Go to</h4><a href="#${T.hash}" style="grid-template-columns:1fr">Topic ${T.n} overview</a><a href="#${S.hash}" style="grid-template-columns:1fr">All ${S.label} topics</a></div></aside>`;
     view.innerHTML = `<div class="lecture" style="${hue(S)}">${side}<article class="sheet">${crumbs([['#chemistry', 'Chemistry'], ['#' + S.hash, S.label], ['#' + T.hash, `${T.n} ${T.title}`], ['', L.code]])}
-      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="lecture-preview">
-        <div class="first-look" id="firstLook"><span class="lbl">First look</span><span role="status"><span class="science-spinner" aria-hidden="true"></span> Loading the lecture…</span></div>
-        <div class="lecture-film" id="lectureFilm" hidden></div>
-      </div>
-      <nav class="lecture-actions" id="lectureActions" aria-label="Lecture sections" hidden></nav>
-      <div class="sec-chips" id="lectureJumps" role="group" aria-label="Jump to a concept" hidden></div>
-      </header><div id="lectBody"></div></article>
+      <header class="lect-head" style="margin-top:14px"><div class="lect-tags"><span class="tag">${S.label} ${L.code}</span><span>${L.mins} min read</span><span>${plural(L.ns, 'concept')}</span><span>${plural(L.q, 'question')}</span>${Films.has(L.id) ? '<span class="film-dot">Film</span>' : ''}${Widgets.has(L.id) ? '<span class="live-dot">Live</span>' : ''}</div><h1>${esc(L.title)}</h1><div class="first-look" id="firstLook"><span class="lbl">First look</span>Loading the lecture…</div></header><div id="lectBody"></div></article>
       <aside class="rail toc" aria-label="In this lecture"><div class="rail-box panel" id="tocBox"><h4>In this lecture</h4></div></aside></div>`;
     let rec;
     try { rec = (await stageData(S))[L.id]; } catch (e) { rec = null; }
@@ -332,34 +296,19 @@
     if (!rec) { $('#firstLook').innerHTML = '<span class="lbl">Could not load</span>This lecture did not load. Check your connection and <a href="#' + L.id + '" data-act="retry">try again</a>.'; return; }
     CUR = { L, rec }; window.dispatchEvent(new Event('gc-view'));
     $('#tocBox').innerHTML = '<h4>In this lecture</h4>' + L.secs.map((x, i) => `<a href="#${L.id}" data-sec="${i + 1}"><span>${i + 1}. ${inline(x)}</span></a>`).join('');
-    $('#firstLook').innerHTML = `<span class="lbl">First look</span><p class="first-look-summary">${inline(rec.s)}</p>`;
-    const [firstFilm, ...otherFilms] = Films.of(L.id);
-    if (firstFilm) {
-      const film = $('#lectureFilm');
-      film.hidden = false;
-      film.innerHTML = `<div data-film="${firstFilm}"></div>`;
-    }
-    const jumps = $('#lectureJumps');
-    jumps.innerHTML = L.secs.map((section, i) => `<button type="button" class="chip" data-sec="${i + 1}">${i + 1}. ${esc(plain(section))}</button>`).join('');
-    jumps.hidden = !L.secs.length;
+    $('#firstLook').innerHTML = `<span class="lbl">First look</span>${inline(rec.s)}`;
     const figs = Widgets.list(L.id), isDone = done.has(L.id);
-    const sections = [['lecture-notes', 'Notes']];
-    if (figs.length) sections.push(['lecture-models', 'Live models']);
-    if (L.q) sections.push(['lecture-practice', 'Practice']);
-    const actions = $('#lectureActions');
-    actions.innerHTML = sections.map(([id, label]) => `<a class="chip" href="#${L.id}" data-jump="${id}">${label}</a>`).join('');
-    actions.hidden = false;
     $('#lectBody').innerHTML = `
-      ${otherFilms.map(n => `<div data-film="${n}"></div>`).join('')}
-      ${figs.length ? `<div id="lecture-models">${figs.map(f => `<div class="fig" data-fig="${f}"></div>`).join('')}</div>` : ''}
-      <div class="notes" id="lecture-notes">${blocks(rec.b)}</div>
+      <div class="sec-chips" role="group" aria-label="Jump to a concept">${L.secs.map((s, i) => `<button type="button" class="chip" data-sec="${i + 1}">${i + 1}. ${esc(plain(s))}</button>`).join('')}</div>
+      ${Films.of(L.id).map(n => `<div data-film="${n}"></div>`).join('')}
+      ${figs.map(f => `<div class="fig" data-fig="${f}"></div>`).join('')}
+      <div class="notes">${blocks(rec.b)}</div>
       ${rec.f.length ? `<section class="block"><h2>Formulas to know</h2><div class="formulas">${rec.f.map(f => `<div><span>${tex(f[0], false)}</span><span>${inline(f[1])}</span></div>`).join('')}</div></section>` : ''}
       ${rec.w.length ? `<section class="block"><h2>Watch out</h2><ul class="watch">${rec.w.map(w => `<li>${inline(w)}</li>`).join('')}</ul></section>` : ''}
       ${rec.m.length ? `<section class="block"><h2>What earns the marks <button type="button" class="chip" data-act="test" aria-pressed="false">Test yourself</button></h2><p class="sub">The wording that mark schemes reward. The highlighted words are the ones that score.</p><dl class="ms">${rec.m.map(m => `<div><dt>${inline(m[0])}</dt><dd>${inline(m[1])}</dd></div>`).join('')}</dl></section>` : ''}
-      ${L.q ? `<section class="block" id="lecture-practice"><h2>Check yourself</h2><p class="sub">Try each question, then open the worked answer.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
+      ${L.q ? `<section class="block"><h2>Check yourself</h2><p class="sub">Original questions in the exam style, marked here on your device.</p><div class="quiz">${quizHtml(rec)}</div></section>` : ''}
       <div class="done-row"><p>${isDone ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'}</p><button type="button" class="btn small${isDone ? ' ghost' : ''}" data-act="done">${isDone ? 'Done ✓ (undo)' : 'Mark as done'}</button></div>
       <nav class="lect-nav" aria-label="Lectures">${prev ? `<a href="#${prev.id}"><small>Previous</small><b>${prev.code} · ${esc(prev.title)}</b></a>` : '<span></span>'}${next ? `<a href="#${next.id}"><small>Next</small><b>${next.code} · ${esc(next.title)}</b></a>` : `<a href="#${S.hash}"><small>End of ${S.label}</small><b>Back to all topics</b></a>`}</nav>`;
-    restorePractice(L.id);
     $$('[data-fig]', view).forEach(el => Widgets.mount(el.dataset.fig, el));
     $$('[data-film]', view).forEach(el => cleanups.push(Films.mount(el, el.dataset.film)));
     if (window.IntersectionObserver) {
@@ -383,25 +332,38 @@
     IDX.stages.forEach(S => { const box = $(`[data-defs="${S.id}"]`); if (!box) return; stageData(S).then(() => { if (!here('definitions') || !box.isConnected) return; box.innerHTML = S.all.flatMap(l => (l.defs || []).map(d => `<a class="def-item panel" href="#${l.id}" data-t="${esc((plain(d[0]) + ' ' + plain(d[1])).toLowerCase())}"><b>${inline(d[0])}</b><span>${inline(d[1])}</span><i>${S.label} ${l.code} · ${esc(l.title)}</i></a>`)).join(''); apply(); }).catch(() => { box.innerHTML = '<p class="def-wait">These definitions did not load. Check your connection and open this page again.</p>'; }); });
   }
 
-  /* ---------- worked answers ---------- */
-  function onQuiz(e, restoring = false) {
+  /* ---------- marking ---------- */
+  function num(s) {
+    const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹⁻';
+    s = String(s).replace(/[−–]/g, '-').replace(/,/g, '').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => '^' + [...m].map(c => SUP.indexOf(c) === 10 ? '-' : SUP.indexOf(c)).join('')).replace(/(\d(?:\.\d+)?)\s*[×x*]\s*10\s*\^?\s*\(?(-?\d+)\)?/i, '$1e$2');
+    const m = /-?\d*\.?\d+(e-?\d+)?/i.exec(s); return m ? parseFloat(m[0]) : NaN;
+  }
+  const norm = s => ' ' + String(s).toLowerCase().replace(/[^a-z0-9%]+/g, ' ').trim() + ' ';
+  function hit(text, keys) {
+    if (!keys) return false;
+    return keys.split(' & ').every(grp => { grp = grp.trim(); const neg = grp[0] === '!'; if (neg) grp = grp.slice(1);
+      const any = grp.split('|').some(k => { k = k.trim(); const whole = k[0] === '='; if (whole) k = k.slice(1); const kn = norm(k).trim(); return kn && (whole ? text.includes(' ' + kn + ' ') : text.includes(kn)); });
+      return neg ? !any : any; });
+  }
+  function onQuiz(e) {
     const qEl = e.target.closest('.q'); if (!qEl || !CUR) return false; const kind = qEl.dataset.k, i = +qEl.dataset.i, fb = $('.fb', qEl), rec = CUR.rec;
     const o = e.target.closest('[data-o]'), act = e.target.closest('[data-act]');
     if (kind === 'c' && o) {
-      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a; $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right');  });
-      fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Answer.</b> ${inline(q.y)}`; if (!restoring) { savePractice(qEl, { option: pick }); Snd.tick(); } return true;
+      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a; $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
+      fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = `<b>${ok ? 'Correct.' : 'Not quite.'}</b> ${inline(q.y)}`; Snd.tick(ok); return true;
     }
     if (kind === 'n' && act) {
       const q = rec.n[i], steps = `<ol class="steps">${q.st.map(s => `<li>${inline(s.replace(/^[A-Z]\d\s+/, ''))}</li>`).join('')}</ol>`;
       if (act.dataset.act === 'work') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Working</b>${steps}<b>Answer: ${esc(q.a[0])}</b>`; return true; }
-      return false;
+      const u = num($('input', qEl).value); if (isNaN(u)) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = 'Type a number first, for example 0.25 or 2.4 × 10^3.'; return true; }
+      const ok = q.a.some(a => { const v = num(a); return Math.abs(u - v) <= Math.abs(v) * 0.011 + 1e-12; });
+      fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = ok ? `<b>Correct: ${esc(q.a[0])}.</b> ${plural(q.k, 'mark')}.${steps}` : `<b>Not yet.</b> Check your working and the sign, then try again, or press Show working.`; Snd.tick(ok); return true;
     }
-    if (kind === 'q' && act?.dataset.act === 'model') {
-      const q = rec.q[i];
-      fb.hidden = false;
-      fb.className = 'fb';
-      fb.innerHTML = `<b>Mark scheme</b><ul class="pts">${q.p.map(p => `<li>${inline(p[0])}</li>`).join('')}</ul><p><b>Model answer.</b> ${inline(q.a)}</p>`;
-      return true;
+    if (kind === 'q' && act) {
+      const q = rec.q[i], txt = $('textarea', qEl).value.trim(), model = `<p style="margin-top:8px"><b>Model answer.</b> ${inline(q.a)}</p>`;
+      if (act.dataset.act === 'model' || !txt) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Mark scheme${q.p.length > q.k ? `: any ${q.k} from` : ''}</b><ul class="pts">${q.p.map(p => `<li>${inline(p[0])}</li>`).join('')}</ul>${model}`; return true; }
+      const t = norm(txt), hits = q.p.map(p => hit(t, p[1])), score = Math.min(q.k, hits.filter(Boolean).length);
+      fb.hidden = false; fb.className = 'fb ' + (score === q.k ? 'ok' : score ? '' : 'no'); fb.innerHTML = `<b>${score} out of ${q.k}.</b>${q.p.length > q.k ? ` Any ${q.k} of these points score.` : ''}<ul class="pts">${q.p.map((p, k) => `<li class="${hits[k] ? 'hit' : 'miss'}">${inline(p[0])}</li>`).join('')}</ul>${model}<p style="margin-top:6px;color:var(--ink-3);font-size:14px">Marked by looking for key words, so check your answer against the model as well.</p>`; Snd.tick(score === q.k); return true;
     }
     return false;
   }
@@ -423,17 +385,16 @@
   /* ---------- router ---------- */
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
-    Widgets.clear(); cleanups.forEach(f => { try { f(); } catch (e) { } }); cleanups = []; CUR = null; closeSearch(); Olympiad.leave(view); document.title = 'Quilio Chemistry | Fresh';
+    Widgets.clear(); cleanups.forEach(f => { try { f(); } catch (e) { } }); cleanups = []; CUR = null; closeSearch(); Olympiad.leave(view); if (window.LevelTest) LevelTest.leave(); document.title = 'Quilio';
     if (h === 'enter') { try { history.replaceState(null, '', '#start'); } catch (e) { } }
     window.dispatchEvent(new Event('gc-view'));
     if (!h || h === 'start' || h === 'enter') return startShow();
-    startHide(); let st = null, pending;
-    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h);
-    else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { pending = vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
+    startHide(); let st = null;
+    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view);
+    else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
     $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h === 'rp' ? 'research' : h.startsWith('olympiad') ? 'olympiad' : h)));
     window.scrollTo(0, 0);
-    return pending;
   }
 
   /* ---------- search ---------- */
@@ -488,25 +449,37 @@
     window.addEventListener('resize', () => { size(); draw(0); }); draw(0); if (!still) requestAnimationFrame(frame);
   }
 
+  /* ---------- Homepage menu: a small bar that drops under the Homepage button ---------- */
+  const hpMenu = document.createElement('nav'); hpMenu.className = 'hp-menu'; hpMenu.hidden = true; hpMenu.setAttribute('aria-label', 'Homepage menu');
+  hpMenu.innerHTML = `<a href="${FRESH_HOME}"><b>Fresh</b><span>All subjects</span></a><a href="${window.GEO_HOME || '#home'}"><b>Home</b><span>Physics and Chemistry, side by side</span></a><a href="${PHYSICS_URL}"><b>Geodesic</b><span>The physics site</span></a><a href="#start"><b>Chemistry site</b><span>The chemistry home screen</span></a><a href="#olympiad"><b>Olympiad</b><span>Competitions and practice</span></a><a href="#level-test"><b>Level Test</b><span>30 questions to find where to start</span></a><a href="#about-us"><b>About this site</b><span>How it is organised</span></a><a href="#developers"><b>Developer</b><span>Who builds it</span></a>`;
+  document.body.append(hpMenu);
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.hp');
+    if (!b) { hpMenu.hidden = true; return; }
+    e.preventDefault(); if (!hpMenu.hidden) { hpMenu.hidden = true; return; }
+    const r = b.getBoundingClientRect(); hpMenu.style.left = Math.max(8, r.left) + 'px'; hpMenu.style.top = (r.bottom + 8) + 'px'; hpMenu.hidden = false;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hpMenu.hidden = true; });
+
+  // shown inside the ΦΥΣΙΣ home page's frame: "Home" and the address are the outer page's to change
+  if (window.GEO_EMBED) {
+    const tell = m => { try { window.parent.postMessage(m, location.origin); } catch (e) { } };
+    document.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; const h = a.getAttribute('href') || ''; if (h === window.GEO_HOME) { e.preventDefault(); tell({ gc: 'home' }); } else if (h.startsWith('https://claude.ai/') && !a.target) { e.preventDefault(); try { window.parent.location.href = h; } catch (er) { location.href = h; } } }, true);
+    window.addEventListener('hashchange', () => tell({ gc: 'hash', h: location.hash.slice(1) }));
+  }
   window.GC = { tex, inline, plain, esc, store, done, ALL, BY, cur: () => CUR, stageData, get IDX() { return IDX; } };
 
   /* ---------- boot ---------- */
   async function boot() {
-    const response = await fetch('data/tree.json');
-    if (!response.ok) throw new Error('The lecture index could not load.');
-    IDX = await response.json();
+    try { const r = await fetch('data/tree.json'); if (!r.ok) throw new Error(r.status); IDX = await r.json(); }
+    catch (e) { startEl.hidden = true; view.hidden = false; view.innerHTML = '<div class="page"><div class="panel" style="padding:26px"><h1 style="font-size:28px;margin-bottom:8px">The lecture list did not load</h1><p>Check your connection, then reload the page.</p></div></div>'; window.dispatchEvent(new Event('fresh-science-error')); return; }
     IDX.stages.forEach(S => { STAGE[S.hash] = S; S.all = []; S.topics.forEach(T => { T.stage = S; T.hash = `${S.hash}-t${T.n}`; TOPIC[T.hash] = T; T.lectures.forEach(L => { L.stage = S; L.topic = T; BY[L.id] = L; S.all.push(L); ALL.push(L); SEARCH.push({ L, t: L.title, k: 0, hay: `${L.code} ${L.title} ${S.label}`.toLowerCase() }); }); }); });
     $('#stagePick').innerHTML = IDX.stages.map(S => `<a href="#${S.hash}" style="${hue(S)}"><b>${S.label}</b><i>${S.years}</i><i>${plural(S.all.length, 'lecture')}</i></a>`).join('');
     $('#tabs').innerHTML = IDX.stages.map(S => `<a href="#${S.hash}" style="${hue(S)}">${S.label}</a>`).join('');
-    air();
-    window.addEventListener('hashchange', route);
-    await route();
-    window.dispatchEvent(new Event('fresh-science-ready'));
+    air(); window.addEventListener('hashchange', route); route();
+    window.dispatchEvent(new Event('fresh-science-ready'));   // hides Fresh's loading screen and starts the entrance film
     // fetch the remaining stages quietly, one after another, so that search and the definitions list cover everything
     setTimeout(() => IDX.stages.reduce((p, S) => p.then(() => stageData(S)).catch(() => { }), Promise.resolve()), 1800);
   }
-  boot().catch(error => {
-    console.error(error);
-    window.dispatchEvent(new Event('fresh-science-error'));
-  });
+  boot();
 })();

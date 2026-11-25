@@ -4,11 +4,13 @@
 //   2. Headline       letters of the first words fall into place; the badge counts up
 //   3. Ticker         two tapes of subject names and codes, read from the subject cards
 //   4. Orbit chips    one chip per subject on three tilted 3D orbits around the logo
-//   5. Stage          one WebGL canvas: flowing sky, pointer light, grain and particle rings
-//   6. Loop           one animation frame drives everything; pauses when unseen and
-//                     lowers its own quality when frames run slow
+//   5. Stage          one WebGL canvas: flowing sky, halo, pulses, grid, pointer light, grain and
+//                     particle rings (one layer instead of many see-through ones stacked up)
+//   6. Loop           one animation frame drives everything; pauses when mostly scrolled away
+//                     and lowers its own quality when frames run slow
 //   7. Pointer        parallax, particle push and click ripples
-//   8. Directory      heading, group pills, giant count, card spotlight, tilt and reveal
+//   8. Directory      heading, group pills, giant count, pointer light and card rims (one canvas),
+//                     card tilt and reveal
 //
 // Everything degrades quietly: without WebGL the CSS background stays, and with
 // "reduce motion" switched on a single still frame is drawn.
@@ -46,7 +48,7 @@
   ];
   const CAMERA = 5.5;
   const INTRO_SECONDS = 2.6;
-  const view = { width: 1, height: 1, unit: 230, cx: 0, cy: 0, artX: 0, artY: 0, fadeFrom: -1, fadeTo: 0, stacked: false };
+  const view = { width: 1, height: 1, unit: 230, cx: 0, cy: 0, artX: 0, artY: 0, artW: 0, artH: 0, artCX: 0, artCY: 0, fadeFrom: -1, fadeTo: 0, stacked: false };
   const pointer = { x: -9999, y: -9999, mx: 0, my: 0, sx: 0, sy: 0, lx: 0, ly: 0 };
   const pulse = { x: 0, y: 0, at: -100 };
 
@@ -62,6 +64,10 @@
       view.artY = tile.offsetTop + tile.offsetHeight / 2;
       view.cx = artBox.left - box.left + view.artX;
       view.cy = artBox.top - box.top + view.artY;
+      view.artW = artBox.width;
+      view.artH = artBox.height;
+      view.artCX = artBox.left - box.left + artBox.width / 2;
+      view.artCY = artBox.top - box.top + artBox.height / 2;
     } else {
       view.unit = Math.min(230, box.width * 0.3);
       view.cx = box.width * 0.72;
@@ -153,6 +159,11 @@
     requestAnimationFrame(tick);
   }
 
+  // The light streak across the button lives in its own clipped holder, so the button itself
+  // does not clip and its halo ring can grow outside it (both animate transform and opacity only)
+  const button = hero.querySelector('.hero-copy .button');
+  if (button) make('i', 'button-sheen', button);
+
   // ---------- 3. Ticker ----------
   if (cards.length) {
     const ticker = make('div', 'hero-ticker', hero);
@@ -172,8 +183,6 @@
   // ---------- 4. Orbit chips ----------
   const chips = [];
   if (art && cards.length) {
-    make('i', 'art-pulse', art);
-    make('i', 'art-pulse', art);
     const orbit = make('div', 'art-orbit', art);
     let ringIndex = 0, slot = 0;
     for (const card of cards) {
@@ -276,17 +285,51 @@
       gl_FragColor = vec4(colour, 1.0);
     }`;
 
-  // b) Stretch the sky over the canvas; add the light that follows the pointer and a fine grain
+  // b) Stretch the sky over the canvas and add, in the same pass, what used to be separate page layers:
+  //    the breathing halo and the grid behind the logo, the two pulse rings, the pointer light,
+  //    the shade along the bottom edge and a fine grain. Units: canvas pixels, y measured from the bottom.
   const SHOW_FRAGMENT = `
-    precision mediump float;
+    precision highp float;
     uniform sampler2D uSky;
-    uniform vec2 uRes, uSpot;
-    uniform float uSpotSize, uLevel;
+    uniform vec2 uRes, uSpot, uArtC, uArtHalf, uFrom;
+    uniform float uSpotSize, uLevel, uDpr, uTime, uHalo, uPulseR, uShade, uStill;
+    const vec3 LIME = vec3(0.894, 0.933, 0.698);
+    const vec3 PEACH = vec3(0.965, 0.733, 0.514);
+    const vec3 SAGE = vec3(0.435, 0.608, 0.486);
+    float ease(float x) { return 1.0 - pow(1.0 - clamp(x, 0.0, 1.0), 3.0); }
+    float ring(vec2 p, float t, float delay) {
+      float phase = fract(max(t - delay, 0.0) / 5.4) / 0.7;
+      if (t < delay || phase > 1.0) return 0.0;
+      float e = ease(phase), r = uPulseR * mix(0.7, 3.4, e), width = 0.9 * uDpr;
+      return exp(-pow((length(p) - r) / width, 2.0)) * 0.55 * (1.0 - e);
+    }
     void main() {
-      vec3 colour = texture2D(uSky, gl_FragCoord.xy / uRes).rgb * uLevel;
-      vec2 away = (gl_FragCoord.xy - uSpot) / uSpotSize;
-      colour += vec3(0.894, 0.933, 0.698) * exp(-dot(away, away)) * 0.085;
-      colour += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.035;
+      vec2 px = gl_FragCoord.xy;
+      vec3 colour = texture2D(uSky, px / uRes).rgb * uLevel;
+      vec2 d = px - uArtC;
+
+      // halo: lime fading to sage, breathing over 5.5 s
+      float breath = 0.5 - 0.5 * cos(uTime * 6.2831853 / 5.5);
+      float h = length(d) / (uHalo * mix(0.92, 1.06, breath));
+      float haloA = h < 0.38 ? mix(0.28, 0.10, h / 0.38) : h < 0.62 ? mix(0.10, 0.08, (h - 0.38) / 0.24) : mix(0.08, 0.0, clamp((h - 0.62) / 0.38, 0.0, 1.0));
+      vec3 haloC = h < 0.38 ? LIME : mix(LIME, SAGE, clamp((h - 0.38) / 0.24, 0.0, 1.0));
+      colour = mix(colour, haloC, haloA * mix(0.7, 1.0, breath) * uLevel);
+
+      // grid: 28 px squares, strongest around the logo
+      vec2 cell = mod(px - uFrom, 28.0 * uDpr);
+      float line = max(step(cell.x, uDpr), step(cell.y, uDpr));
+      float fade = 1.0 - smoothstep(0.2, 0.85, length(d / uArtHalf));
+      colour = mix(colour, vec3(0.608, 0.702, 0.608), line * 0.14 * fade);
+
+      // two rings of light leaving the logo, lime then peach
+      float t = uTime * (1.0 - uStill);
+      colour += LIME * ring(d, t, 2.0) + PEACH * ring(d, t, 4.7);
+
+      // pointer light, the shade along the bottom and grain
+      vec2 away = (px - uSpot) / uSpotSize;
+      colour += LIME * exp(-dot(away, away)) * 0.085;
+      colour = mix(colour, vec3(0.059, 0.149, 0.125), clamp(1.0 - px.y / uShade, 0.0, 1.0) * 0.8);
+      colour += (fract(sin(dot(px, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.035;
       gl_FragColor = vec4(colour, 1.0);
     }`;
 
@@ -392,7 +435,7 @@
     const showProgram = createProgram(gl, QUAD_VERTEX, SHOW_FRAGMENT, ['aPos']);
     const dustProgram = createProgram(gl, DUST_VERTEX, DUST_FRAGMENT, ['aSeed', 'aKind']);
     const skyU = uniforms(gl, skyProgram, ['uRes', 'uLogo', 'uPointer', 'uTime', 'uIntro', 'uStacked']);
-    const showU = uniforms(gl, showProgram, ['uSky', 'uRes', 'uSpot', 'uSpotSize', 'uLevel']);
+    const showU = uniforms(gl, showProgram, ['uSky', 'uRes', 'uSpot', 'uSpotSize', 'uLevel', 'uArtC', 'uArtHalf', 'uFrom', 'uDpr', 'uTime', 'uHalo', 'uPulseR', 'uShade', 'uStill']);
     const dustU = uniforms(gl, dustProgram, ['uView', 'uCenter', 'uPointer', 'uTilt', 'uFade', 'uPulse', 'uDpr', 'uTime', 'uUnit', 'uIntro', 'uR', 'uOpen', 'uRoll', 'uSpeed']);
 
     const quad = gl.createBuffer();
@@ -434,6 +477,7 @@
       canvas,
       dpr: 1,
       maxDpr: 1.5,
+      budget: 1.6e6,
       skyScale: 0.5,
       skyBands: 3,
       count,
@@ -441,7 +485,8 @@
       skyHeight: 2,
       band: -1,
       resize() {
-        stage.dpr = Math.min(window.devicePixelRatio || 1, stage.maxDpr);
+        // as sharp as the screen allows, up to about 1.6 million canvas pixels (the sky is soft, so few are needed)
+        stage.dpr = Math.max(0.75, Math.min(window.devicePixelRatio || 1, stage.maxDpr, Math.sqrt(stage.budget / Math.max(1, view.width * view.height))));
         canvas.width = Math.max(2, Math.round(view.width * stage.dpr));
         canvas.height = Math.max(2, Math.round(view.height * stage.dpr));
         stage.skyWidth = Math.max(2, Math.round(view.width * stage.skyScale));
@@ -492,6 +537,17 @@
         gl.uniform2f(showU.uSpot, pointer.x * stage.dpr, canvas.height - pointer.y * stage.dpr);
         gl.uniform1f(showU.uSpotSize, 300 * stage.dpr);
         gl.uniform1f(showU.uLevel, 0.25 + 0.75 * level);
+        const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        const artW = view.artW || view.unit * 1.6, artH = view.artH || view.unit * 1.6;
+        gl.uniform2f(showU.uArtC, view.artCX * stage.dpr, canvas.height - view.artCY * stage.dpr);
+        gl.uniform2f(showU.uArtHalf, artW * 0.8 * stage.dpr, artH * 0.8 * stage.dpr);
+        gl.uniform2f(showU.uFrom, (view.artCX - artW * 0.8) * stage.dpr, canvas.height - (view.artCY + artH * 0.8) * stage.dpr);
+        gl.uniform1f(showU.uDpr, stage.dpr);
+        gl.uniform1f(showU.uTime, time - TIME_OFFSET);
+        gl.uniform1f(showU.uHalo, Math.min(artW * 1.5, 44 * rem) / 2 * stage.dpr);
+        gl.uniform1f(showU.uPulseR, (view.stacked ? 9 : 15) * rem / 2 * stage.dpr);
+        gl.uniform1f(showU.uShade, 9 * rem * stage.dpr);
+        gl.uniform1f(showU.uStill, reduceMotion.matches ? 1 : 0);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
 
         // c) dust
@@ -525,10 +581,17 @@
 
   let stage = null;
   try { stage = createStage(); } catch (error) { stage = null; }
+  // Without WebGL the page keeps its CSS halo, grid and shade; the two pulse rings are added here instead
+  if (!stage && art) {
+    make('i', 'art-pulse', art);
+    make('i', 'art-pulse', art);
+  }
   if (stage) {
+    hero.classList.add('has-stage');
     stage.canvas.addEventListener('webglcontextlost', event => {
       event.preventDefault();
       stage.canvas.classList.remove('is-on');
+      hero.classList.remove('has-stage');
       stage = null;
     });
   }
@@ -554,8 +617,8 @@
 
   // Each step trades a little sharpness for speed; the look stays the same
   const QUALITY_STEPS = [
-    () => { stage.maxDpr = 1.25; stage.skyBands = 4; },
-    () => { stage.maxDpr = 1; stage.skyScale = 0.4; },
+    () => { stage.budget = 1.15e6; stage.skyBands = 4; },
+    () => { stage.budget = 0.85e6; stage.skyScale = 0.4; },
     () => { stage.count = Math.round(stage.count * 0.6); stage.skyBands = 6; },
     () => { stage.skyScale = 0.3; stage.count = Math.round(stage.count * 0.7); },
   ];
@@ -610,9 +673,10 @@
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
-      onScreen = entry.isIntersecting;
+      onScreen = entry.isIntersecting && entry.intersectionRatio >= 0.12;
+      hero.classList.toggle('is-away', !onScreen);
       onScreen ? start() : stop();
-    }).observe(hero);
+    }, { threshold: [0, 0.12] }).observe(hero);
   }
   document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
   if (reduceMotion.addEventListener) {
@@ -738,58 +802,118 @@
     reveal.forEach(node => node.classList.add('in', 'done'));
   }
 
-  // One listener lights every nearby card's border from the pointer and tilts the one underneath.
-  // A soft light also follows the pointer across the whole section.
-  const light = make('div', 'dir-light', directory);
+  // The pointer light and the lit card rims are drawn into one canvas laid over the section,
+  // instead of a large light layer under the cards plus a repainted border on every card.
+  // Only the card under the pointer is tilted, and only it keeps its own CSS rim and glow (they tilt with it).
   const REACH = 380;
-  const lit = new Set();
-  let gridQueued = false, gridX = 0, gridY = 0;
-  function lightCards() {
-    gridQueued = false;
-    const boxes = cards.map(card => (card.hidden ? null : card.getBoundingClientRect()));
-    cards.forEach((card, index) => {
-      const box = boxes[index];
-      if (!box) return;
-      const x = gridX - box.left, y = gridY - box.top;
-      const near = x > -REACH && x < box.width + REACH && y > -REACH && y < box.height + REACH;
-      if (near) {
-        card.style.setProperty('--gx', `${x.toFixed(0)}px`);
-        card.style.setProperty('--gy', `${y.toFixed(0)}px`);
-        lit.add(card);
-      } else if (lit.delete(card)) {
-        card.style.setProperty('--gx', '-999px');
-        card.style.setProperty('--gy', '-999px');
-      }
-      const inside = x >= 0 && x <= box.width && y >= 0 && y <= box.height;
-      if (inside) {
-        card.style.setProperty('--ry', `${((x / box.width - 0.5) * 9).toFixed(2)}deg`);
-        card.style.setProperty('--rx', `${((0.5 - y / box.height) * 9).toFixed(2)}deg`);
-        card.dataset.tilted = '1';
-      } else if (card.dataset.tilted) {
-        delete card.dataset.tilted;
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
-      }
-    });
+  const RIM_FADE = 0.72;
+  const glow = make('canvas', 'dir-glow', directory);
+  const pen = glow.getContext('2d');
+  const tints = new Map();
+  const rem = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  let glowDpr = 1, glowW = 0, glowH = 0, gridQueued = false, gridX = -9999, gridY = -9999, tilted = null, lit = false;
+
+  function sizeGlow() {
+    glowDpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    glowW = innerWidth;
+    glowH = innerHeight;
+    glow.width = Math.round(glowW * glowDpr);
+    glow.height = Math.round(glowH * glowDpr);
   }
-  directory.addEventListener('pointermove', event => {
-    if (!finePointer.matches || reduceMotion.matches) return;
-    gridX = event.clientX;
-    gridY = event.clientY;
-    const box = directory.getBoundingClientRect();
-    light.style.transform = `translate3d(${(gridX - box.left).toFixed(0)}px, ${(gridY - box.top).toFixed(0)}px, 0)`;
-    directory.classList.add('is-lit');
+  const tintOf = card => {
+    if (!tints.has(card)) tints.set(card, getComputedStyle(card).getPropertyValue('--tint').trim() || '#f6efd8');
+    return tints.get(card);
+  };
+  const withAlpha = (colour, alpha) => {
+    const hex = colour.replace('#', '');
+    const full = hex.length === 3 ? [...hex].map(c => c + c).join('') : hex.slice(0, 6);
+    const n = parseInt(full, 16);
+    return `rgba(${n >> 16 & 255}, ${n >> 8 & 255}, ${n & 255}, ${alpha})`;
+  };
+
+  function drawGlow() {
+    gridQueued = false;
+    pen.setTransform(glowDpr, 0, 0, glowDpr, 0, 0);
+    pen.clearRect(0, 0, glowW, glowH);
+    if (!lit) return;
+    // soft lime light around the pointer
+    const light = pen.createRadialGradient(gridX, gridY, 0, gridX, gridY, 23 * rem());
+    light.addColorStop(0, 'rgba(228, 238, 178, 0.11)');
+    light.addColorStop(0.45, 'rgba(228, 238, 178, 0.04)');
+    light.addColorStop(1, 'rgba(228, 238, 178, 0)');
+    pen.fillStyle = light;
+    pen.fillRect(gridX - 23 * rem(), gridY - 23 * rem(), 46 * rem(), 46 * rem());
+    // rims of the cards near the pointer, each in its own group colour
+    const radius = 17 * rem(), corner = 1.3 * rem();
+    for (const card of cards) {
+      if (card.hidden || card === tilted) continue;
+      const box = card.getBoundingClientRect();
+      if (gridX < box.left - REACH || gridX > box.right + REACH || gridY < box.top - REACH || gridY > box.bottom + REACH) continue;
+      if (box.bottom < 0 || box.top > glowH) continue;
+      const tint = tintOf(card);
+      const rim = pen.createRadialGradient(gridX, gridY, 0, gridX, gridY, radius);
+      rim.addColorStop(0, withAlpha(tint, 1));
+      rim.addColorStop(RIM_FADE, withAlpha(tint, 0));
+      pen.strokeStyle = rim;
+      pen.lineWidth = 1.5;
+      pen.beginPath();
+      pen.roundRect(box.left + 0.75, box.top + 0.75, box.width - 1.5, box.height - 1.5, corner);
+      pen.stroke();
+    }
+  }
+  const queueGlow = () => {
     if (!gridQueued) {
       gridQueued = true;
-      requestAnimationFrame(lightCards);
+      requestAnimationFrame(drawGlow);
     }
-  }, { passive: true });
-  directory.addEventListener('pointerleave', () => {
-    directory.classList.remove('is-lit');
-    gridX = gridY = -9999;
-    if (!gridQueued) {
-      gridQueued = true;
-      requestAnimationFrame(lightCards);
+  };
+
+  function tiltCard(card) {
+    if (tilted && tilted !== card) {
+      delete tilted.dataset.tilted;
+      tilted.style.setProperty('--rx', '0deg');
+      tilted.style.setProperty('--ry', '0deg');
     }
-  });
+    tilted = card;
+    if (!card) return;
+    const box = card.getBoundingClientRect();
+    const x = gridX - box.left, y = gridY - box.top;
+    card.dataset.tilted = '1';
+    card.style.setProperty('--gx', `${x.toFixed(0)}px`);
+    card.style.setProperty('--gy', `${y.toFixed(0)}px`);
+    card.style.setProperty('--ry', `${((x / box.width - 0.5) * 9).toFixed(2)}deg`);
+    card.style.setProperty('--rx', `${((0.5 - y / box.height) * 9).toFixed(2)}deg`);
+  }
+
+  if (glow.getContext && pen && typeof pen.roundRect === 'function') {
+    sizeGlow();
+    addEventListener('resize', () => { sizeGlow(); tints.clear(); queueGlow(); });
+    addEventListener('scroll', () => { if (lit) queueGlow(); }, { passive: true });
+    directory.addEventListener('pointermove', event => {
+      if (!finePointer.matches || reduceMotion.matches) return;
+      gridX = event.clientX;
+      gridY = event.clientY;
+      if (!lit) {
+        lit = true;
+        directory.classList.add('is-lit');
+      }
+      tiltCard(event.target.closest && event.target.closest('.grid .card'));
+      queueGlow();
+    }, { passive: true });
+    directory.addEventListener('pointerleave', () => {
+      lit = false;
+      directory.classList.remove('is-lit');
+      tiltCard(null);
+      queueGlow();
+    });
+    // filtering moves cards around, so redraw
+    if (counter) new MutationObserver(queueGlow).observe(counter, { childList: true, characterData: true, subtree: true });
+  } else {
+    glow.remove();
+  }
+
+  // The backdrop glow only drifts while the section is on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => directory.classList.toggle('is-away', !entry.isIntersecting)).observe(directory);
+  }
 })();

@@ -10,7 +10,7 @@
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const il = s => (GC().inline ? GC().inline(s) : esc(s));
-  const md = s => '<p>' + il(s) + '</p>';
+  const md = s => (window.QuilioFormat ? window.QuilioFormat.md(s) : '<p>' + il(s) + '</p>');
   const flat = s => String(s || '').replace(/\$/g, '');
   const M = window.TRAIN_MODS || [], BY = Object.fromEntries(M.map(m => [m.id, m]));
   const DAY = 864e5, LV = { 1: 'Entry', 2: 'Intermediate', 3: 'Advanced' };
@@ -93,7 +93,7 @@
   // one worked step: the working, a chip that opens the concept it uses, and a way to ask for another explanation
   function stepHTML(m, st, ctx) {
     const c = concept(m, st.c);
-    return `<div class="tr-wtext">${il(st.w)}</div><div class="tr-wtools">${c ? `<button type="button" class="chip wrap tr-cc" data-act="peek" data-c="${c.m.id}:${c.i}">Concept: ${esc(c.l.h)}${c.m !== m ? ` · ${esc(c.m.t)}` : ''}</button>` : ''}<button type="button" class="chip" data-act="explain" data-ctx="${esc(ctx)}">Explain this step differently</button></div><div class="tr-peek" hidden></div>`;
+    return `<div class="tr-wtext">${il(st.w)}</div><div class="tr-wtools">${c ? `<button type="button" class="chip wrap tr-cc" data-act="peek" data-c="${c.m.id}:${c.i}">Concept: ${esc(c.l.h)}${c.m !== m ? ` · ${esc(c.m.t)}` : ''}</button>` : ''}</div><div class="tr-peek" hidden></div>`;
   }
   function peek(b) {
     const box = b.closest('.tr-wtools').nextElementSibling, [mid, i] = b.dataset.c.split(':'), mm = BY[mid], l = mm && mm.learn[+i]; if (!l) return;
@@ -101,6 +101,14 @@
     const here = location.hash.slice(1) === 'olympiad-m-' + mid;
     box.innerHTML = `<p class="tr-peek-h">${esc(l.h)}</p><div class="tr-md">${md(l.b)}</div>${here ? '' : `<a class="tr-peek-go" href="#olympiad-m-${mid}">Open ${esc(mm.t)} ${ARROW}</a>`}`;
     box.hidden = false; b.classList.add('is-on');
+  }
+  function explain(m, text) {
+    if (!window.Pauling) return;
+    window.Pauling.open({ general: true, say: `I'm training for the chemistry olympiad (topic: ${m.t}). I don't understand this step:\n\n${flat(text)}\n\nExplain it a different way, ideally with an analogy, one small idea at a time. Then give me one quick question to check I've got it.` });
+  }
+  function nudge(m, r, yours) {
+    if (!window.Pauling) return;
+    window.Pauling.open({ general: true, say: `I'm training for the chemistry olympiad (topic: ${m.t}). Give me a nudge, not the answer.\n\nProblem: ${flat(r.s)}${yours ? `\n\nMy answer so far: ${yours}` : ''}` });
   }
   // mistakes worth naming: a factor of 1000, a sign, a power of ten, a mole ratio, rounding
   function diagnose(r, v) {
@@ -123,6 +131,7 @@
   function home(head) {
     const T = TARGETS[target()], ids = plan(), core = ids.slice(0, T.core), due = dueKeys().length;
     const next = ids.map(id => BY[id]).find(m => mastery(m) < 0.85), coreM = core.reduce((a, id) => a + mastery(BY[id]), 0) / core.length;
+    const best = S.sprints.length ? Math.max(...S.sprints.map(s => Math.round(s.score / s.n * 100))) : null;
     const soon = Object.values(S.rev).filter(r => r.due > Date.now()).sort((a, b) => a.due - b.due)[0];
     let phase = 0;
     return `<div class="page ol tr">${head('olympiad-train', 'Training', 'A complete preparation course, built to be studied, not just read. Every module teaches one big idea, tests it straight away, walks you through a worked example one question at a time, then gives you a ladder of problems with hints and full solutions. What you miss comes back for review until it sticks.')}
@@ -133,7 +142,7 @@
         <a class="tr-tcard panel${due ? ' is-due' : ''}" href="#olympiad-review"><span class="kicker">Review</span><b class="tr-big">${due}</b><p>${due ? `item${due === 1 ? '' : 's'} due now. Clear these first: it takes a few minutes and it is where the remembering happens.` : soon ? `Nothing due. Next review ${when(soon.due)}.` : 'Nothing to review yet. Anything you miss in a module will appear here.'}</p><span class="go">${due ? 'Start review' : 'Open review'} ${ARROW}</span></a>
         ${next ? `<a class="tr-tcard panel" href="#olympiad-m-${next.id}"><span class="kicker">Next up · module ${ids.indexOf(next.id) + 1}</span><h3>${esc(next.t)}</h3><div class="meter"><i style="--v:${pct(mastery(next))}%"></i></div><p>${started(next) ? `${pct(mastery(next))}% there. Pick up where you stopped.` : `About ${next.m} minutes. ${esc(PH[next.ph])}.`}</p><span class="go">${started(next) ? 'Continue' : 'Start'} ${ARROW}</span></a>`
           : `<div class="tr-tcard panel"><span class="kicker">Next up</span><h3>Every module is strong.</h3><p>Keep your reviews going, and move on to full past papers.</p><a class="go" href="#olympiad-papers">Past papers ${ARROW}</a></div>`}
-        <a class="tr-tcard panel" href="#olympiad-sprint"><span class="kicker">Sprint</span><h3>12 questions · 20 minutes</h3><p>Mixed topics against the clock, like a multiple-choice paper. ${S.sprints.length ? `${S.sprints.length} completed.` : 'Review the worked answers at the end.'}</p><span class="go">Start a sprint ${ARROW}</span></a>
+        <a class="tr-tcard panel" href="#olympiad-sprint"><span class="kicker">Sprint</span><h3>12 questions · 20 minutes</h3><p>Mixed topics against the clock, like a multiple-choice paper. ${best != null ? `Your best: ${best}%.` : 'Find out what you really know.'}</p><span class="go">Start a sprint ${ARROW}</span></a>
       </div>
       <section class="tr-plan" aria-label="Your plan"><h2>Your ${esc(T.name)} plan</h2>
         <ol class="tr-rows">${ids.map((id, k) => { const m = BY[id], x = mastery(m), [st, sc] = status(x); const cut = k === T.core ? '<li class="tr-stretch">Stretch: beyond what this competition usually needs</li>' : ''; return `${cut}<li><a class="tr-row panel${k >= T.core ? ' is-stretch' : ''}" href="#olympiad-m-${id}"><b class="tr-n">${String(k + 1).padStart(2, '0')}</b><div class="tr-rmain"><h3>${esc(m.t)}</h3><small><span class="tr-ph p${m.ph}">${esc(PH[m.ph])}</span> ${m.m} min · ${m.learn.length} concepts · worked example · ${m.lad.length}-rung ladder · ${m.cards.length} cards</small></div><div class="tr-rmeter"><div class="meter"><i style="--v:${pct(x)}%"></i></div><span class="tr-st ${sc}">${st}${x > 0 && x < 0.85 ? ` · ${pct(x)}%` : ''}</span></div></a></li>`; }).join('')}</ol></section>
@@ -360,9 +369,9 @@
       return `<div class="page ol tr">${top}<section class="tr-spintro panel"><h2>Set up your sprint</h2>
         <div class="tr-spset"><div><p class="kicker">Length</p><div class="seg" role="group" aria-label="Length">${[12, 24].map(n => `<button type="button" data-n="${n}" class="${spSet.n === n ? 'is-on' : ''}">${n} questions · ${SPLEN[n]} min</button>`).join('')}</div></div>
           <div><p class="kicker">Questions from</p><div class="seg" role="group" aria-label="Scope"><button type="button" data-scope="all" class="${spSet.scope === 'all' ? 'is-on' : ''}">Every module</button><button type="button" data-scope="mine" class="${spSet.scope === 'mine' ? 'is-on' : ''}"${mine < 2 ? ' disabled title="Start at least two modules first"' : ''}>Modules I have started (${mine})</button></div></div></div>
-        <ul class="ol-list"><li>Answer in any order: the numbers at the top jump between questions. Keys 1 to 4 choose an answer; arrow keys move.</li><li>No feedback until the end, as in a real paper. Then every answer is explained.</li></ul>
+        <ul class="ol-list"><li>Answer in any order: the numbers at the top jump between questions. Keys 1 to 4 choose an answer; arrow keys move.</li><li>No feedback until the end, as in a real paper. Then every answer is explained.</li><li>Anything you get wrong goes into your review.</li></ul>
         <button type="button" class="btn" data-act="go">Start the clock ${ARROW}</button></section>
-        ${hist.length ? `<section class="ol-sec"><h2>Your recent sprints</h2><table class="tr-hist"><thead><tr><th>When</th><th>Questions</th><th>Time</th></tr></thead><tbody>${hist.map(s => `<tr><td>${new Date(s.at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</td><td>${s.n}</td><td>${Math.floor(s.sec / 60)}:${String(s.sec % 60).padStart(2, '0')}</td></tr>`).join('')}</tbody></table></section>` : ''}</div>`;
+        ${hist.length ? `<section class="ol-sec"><h2>Your recent sprints</h2><table class="tr-hist"><thead><tr><th>When</th><th>Score</th><th>Time</th></tr></thead><tbody>${hist.map(s => `<tr><td>${new Date(s.at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</td><td>${s.score} / ${s.n} (${Math.round(s.score / s.n * 100)}%)</td><td>${Math.floor(s.sec / 60)}:${String(s.sec % 60).padStart(2, '0')}</td></tr>`).join('')}</tbody></table></section>` : ''}</div>`;
     }
     if (SP.done) return `<div class="page ol tr">${top}${results()}</div>`;
     return `<div class="page ol tr">${top}<section class="tr-sp panel" aria-label="Sprint">${spBody()}</section></div>`;
@@ -371,23 +380,23 @@
     const n = SP.keys.length, it = item(SP.keys[SP.i]), left = Math.max(0, SP.dur - (Date.now() - SP.t0)) / 1000;
     return `<div class="tr-sptop"><span class="tr-spclock" id="spClock">${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, '0')}</span><div class="tr-pal" role="group" aria-label="Questions">${SP.keys.map((k, j) => `<button type="button" data-j="${j}" class="${j === SP.i ? 'is-cur' : ''}${SP.ans[j] != null ? ' is-ans' : ''}" aria-label="Question ${j + 1}${SP.ans[j] != null ? ', answered' : ''}">${j + 1}</button>`).join('')}</div><button type="button" class="btn small ghost" data-act="finish">Finish</button></div>
       <div class="tr-spq"><p class="tr-rk">Question ${SP.i + 1} of ${n}</p><p class="tr-qtext">${il(it.q.q)}</p>${opts(it.q, SP.ords[SP.i], SP.ans[SP.i])}</div>
-      <div class="tr-spnav"><button type="button" class="chip" data-act="prev"${SP.i ? '' : ' disabled'}>Previous</button><span>${SP.ans.filter(a => a != null).length} of ${n} answered</span>${SP.i < n - 1 ? `<button type="button" class="btn small" data-act="nextq">Next ${ARROW}</button>` : '<button type="button" class="btn small" data-act="finish">Finish practice</button>'}</div>`;
+      <div class="tr-spnav"><button type="button" class="chip" data-act="prev"${SP.i ? '' : ' disabled'}>Previous</button><span>${SP.ans.filter(a => a != null).length} of ${n} answered</span>${SP.i < n - 1 ? `<button type="button" class="btn small" data-act="nextq">Next ${ARROW}</button>` : '<button type="button" class="btn small" data-act="finish">Finish and mark</button>'}</div>`;
   }
   function finish() {
     if (!SP || SP.done) return; clearInterval(spClock); SP.done = true; SP.sec = Math.min(Math.round((Date.now() - SP.t0) / 1000), Math.round(SP.dur / 1000));
-    S.sprints.push({ at: Date.now(), n: SP.keys.length, sec: SP.sec });
-    S.sprints = S.sprints.slice(-30);
-    save();
+    SP.score = SP.keys.filter((k, j) => SP.ans[j] === item(k).q.a).length;
+    SP.keys.forEach((k, j) => { const ok = SP.ans[j] === item(k).q.a; if (ok) { S.chk[k] = 1; if (S.rev[k]) schedule(k, 'good'); } else schedule(k, 'again'); });
+    S.sprints.push({ at: Date.now(), n: SP.keys.length, score: SP.score, sec: SP.sec }); S.sprints = S.sprints.slice(-30); save();
   }
   function results() {
-    return `<section class="tr-spres panel"><h2>Sprint complete</h2><p>Review the answers and explanations below.</p>
-      <div class="tr-endgo"><button type="button" class="btn small" data-act="again-sprint">Another sprint</button><a class="btn small ghost" href="#olympiad-train">Your plan</a></div></section>
-      <ol class="tr-spans">${SP.keys.map((key, index) => {
-        const entry = item(key), selected = SP.ans[index];
-        return `<li class="panel"><p class="tr-rk"><a href="#olympiad-m-${entry.m.id}">${esc(entry.m.t)}</a></p><p class="tr-qtext">${il(entry.q.q)}</p>
-        ${selected != null ? `<p class="tr-yours"><span>Your answer</span> ${il(entry.q.o[selected])}</p>` : ''}
-        <p class="tr-correct"><span>Answer</span> ${il(entry.q.o[entry.q.a])}</p><p class="tr-x">${il(entry.q.x)}</p></li>`;
-      }).join('')}</ol>`;
+    const n = SP.keys.length, p = Math.round(SP.score / n * 100), by = {};
+    SP.keys.forEach((k, j) => { const it = item(k), b = by[it.m.id] || (by[it.m.id] = { m: it.m, ok: 0, n: 0 }); b.n++; if (SP.ans[j] === it.q.a) b.ok++; });
+    const msg = p >= 85 ? 'Excellent: that is olympiad pace.' : p >= 65 ? 'Solid. The modules marked below are where your next marks are.' : p >= 40 ? 'A good baseline. Work through the modules below, then sprint again.' : 'This is your starting point. The modules below will move it fast.';
+    return `<section class="tr-spres panel"><p class="kicker">Sprint marked</p><h2><b>${SP.score}</b> / ${n} <span>(${p}%) in ${Math.floor(SP.sec / 60)}:${String(SP.sec % 60).padStart(2, '0')}</span></h2><p>${msg} Every wrong answer is now in your review.</p>
+      <div class="tr-bymod">${Object.values(by).sort((a, b) => a.ok / a.n - b.ok / b.n).map(b => `<a class="chip wrap ${b.ok === b.n ? 'is-good' : 'is-weak'}" href="#olympiad-m-${b.m.id}">${esc(b.m.t)} · ${b.ok}/${b.n}</a>`).join('')}</div>
+      <div class="tr-endgo"><button type="button" class="btn small" data-act="again-sprint">Another sprint</button><a class="btn small ghost" href="#olympiad-review">Review (${dueKeys().length} due)</a><a class="btn small ghost" href="#olympiad-train">Your plan</a></div></section>
+      <ol class="tr-spans">${SP.keys.map((k, j) => { const it = item(k), mine = SP.ans[j], ok = mine === it.q.a; return `<li class="panel ${ok ? 'is-ok' : 'is-no'}"><p class="tr-rk">${ok ? 'Right' : mine == null ? 'Not answered' : 'Wrong'} · <a href="#olympiad-m-${it.m.id}">${esc(it.m.t)}</a></p><p class="tr-qtext">${il(it.q.q)}</p>
+        ${mine != null && !ok ? `<p class="tr-yours"><span>Your answer</span> ${il(it.q.o[mine])}</p>` : ''}<p class="tr-correct"><span>Answer</span> ${il(it.q.o[it.q.a])}</p><p class="tr-x">${il(it.q.x)}</p></li>`; }).join('')}</ol>`;
   }
   function bindSprint(view, head) {
     clearInterval(spClock);
