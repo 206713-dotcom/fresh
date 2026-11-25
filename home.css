@@ -3,12 +3,18 @@
    1. Page and header
    2. Hero banner
       2a. Stage (full-width surface and fallback background)
-      2b. Live layers added by home.js (sky, spotlight, grain, dust)
+      2b. Live layer added by home.js (one canvas: sky, pointer light, grain, dust)
       2c. Copy (eyebrow, heading, text, button)
       2d. Art (halo, pulses, orbit chips, logo tile, subject count)
       2e. Ticker tapes
       2f. Motion
    3. Subject directory
+      3a. Stage (dark full-width scene, backdrop lights)
+      3b. Heading row
+      3c. Search and group filter
+      3d. Subject cards
+      3e. Arrival
+      3f. Footer and focus rings
    4. Small screens and reduced motion
    Colours are the Fresh palette only: greens, lime, peach and cream.
    ========================================================= */
@@ -20,7 +26,7 @@
   --cream: #f6efd8;
   --sage: #9bb39b;
   --deep: #132c27;
-  background: var(--paper);
+  background: #10251f;
   color: var(--ink);
   overflow-x: clip;
 }
@@ -29,9 +35,8 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fffefad9;
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  backdrop-filter: blur(14px) saturate(1.5);
+  background: var(--white);
+  box-shadow: 0 8px 30px #0b1c1640;
 }
 .fresh-home .topbar { min-height: 70px; }
 .fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
@@ -46,8 +51,6 @@
 .fresh-home .hero {
   --mx: 0;
   --my: 0;
-  --px: 70%;
-  --py: 40%;
   width: 100vw;
   min-height: clamp(560px, calc(100svh - 71px), 900px);
   margin: 0 calc(50% - 50vw);
@@ -64,35 +67,19 @@
   box-shadow: none;
 }
 
-/* 2b. Live layers. home.js creates these, so the page works without them. */
-.fresh-home .hero-sky, .fresh-home .hero-dust {
+/* 2b. Live layer. home.js draws the sky, the pointer light, the grain and the particle rings
+   into this single opaque canvas, so the page works (with the background above) without it. */
+.fresh-home .hero-sky {
   position: absolute;
   inset: 0;
+  z-index: -3;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
   pointer-events: none;
 }
-.fresh-home .hero-sky { z-index: -3; opacity: 0; transition: opacity 1.2s ease; }
 .fresh-home .hero-sky.is-on { opacity: 1; }
-.fresh-home .hero-dust { z-index: 3; }
-/* Soft light that follows the pointer */
-.fresh-home .hero-spot {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: radial-gradient(34rem circle at var(--px) var(--py), #e4eeb224, #e4eeb20a 42%, transparent 68%);
-  pointer-events: none;
-}
-/* Fine film grain so gradients never band */
-.fresh-home .hero-grain {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: .16;
-  mix-blend-mode: overlay;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
 /* Bottom edge melts into the ticker */
 .fresh-home .hero::after {
   content: '';
@@ -114,10 +101,8 @@
   padding: .46rem .9rem .46rem .68rem;
   border: 1px solid #e4eeb23d;
   border-radius: 2rem;
-  background: #e4eeb214;
+  background: #e4eeb21f;
   color: #dce9ae;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
   animation: fx-rise .8s cubic-bezier(.2, .7, .2, 1) .1s both;
 }
 .fresh-home .hero .eyebrow span {
@@ -149,15 +134,17 @@
   padding-right: .05em;
   color: var(--lime);
   font-style: normal;
-  filter: blur(0) drop-shadow(0 0 1.6rem #e4eeb250);
   animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both;
 }
-/* Lime, cream and peach light flowing through "revision." */
+/* Lime, cream and peach light flowing through "revision.", with a soft glow painted behind it
+   (a second background layer, so no filter has to be redrawn every frame) */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .fresh-home .hero em {
-    background: linear-gradient(100deg, var(--lime) 0%, #fbfde9 22%, var(--lime) 42%, var(--peach) 62%, var(--lime) 82%, var(--lime) 100%) 0 0 / 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
+    background:
+      linear-gradient(100deg, var(--lime) 0%, #fbfde9 22%, var(--lime) 42%, var(--peach) 62%, var(--lime) 82%, var(--lime) 100%) 0 0 / 300% 100%,
+      radial-gradient(closest-side, #e4eeb238, transparent) 0 0 / 100% 100% no-repeat;
+    -webkit-background-clip: text, border-box;
+    background-clip: text, border-box;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
     animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both, fx-flow 9s linear 2s infinite;
@@ -204,10 +191,10 @@
   position: absolute;
   top: -20%;
   bottom: -20%;
-  left: -60%;
+  left: 0;
   width: 40%;
   background: linear-gradient(100deg, transparent, #ffffffb3, transparent);
-  transform: skewX(-30deg);
+  transform: translateX(-160%) skewX(-30deg);
   animation: fx-sheen 4.5s ease-in-out 2.4s infinite;
 }
 .fresh-home .hero .button > span { display: inline-block; animation: fx-nudge 2.2s ease-in-out 2s infinite; }
@@ -228,8 +215,14 @@
 .fresh-home .hero-actions .python-link span { display: inline-block; transition: transform .25s ease; }
 .fresh-home .hero-actions .python-link:hover span { transform: translateX(4px); }
 
+/* Once the entrance has played, home.js adds .is-settled and the one-off animations are dropped */
+.fresh-home .hero.is-settled h1 .ch,
+.fresh-home .hero.is-settled .hero-copy > p,
+.fresh-home .hero.is-settled .python-link,
+.fresh-home .hero.is-settled .hero-ticker { animation: none; }
+
 /* 2d. Art. The logo tile keeps its original look; everything else is built around it.
-   Depth order inside the banner: far chips (1) < logo tile (2) < dust (3) < near chips (4) < badge and copy (5). */
+   Depth order inside the banner: canvas (behind everything) < far chips (1) < logo tile (2) < near chips (4) < badge and copy (5). */
 .fresh-home .hero-art { min-height: 360px; }
 .fresh-home .hero-art::before {
   content: '';
@@ -379,8 +372,8 @@
 /* 2f. Motion */
 @keyframes fx-rise { from { opacity: 0; transform: translateY(18px); } }
 @keyframes fx-letter { from { opacity: 0; transform: translateY(.55em) rotateX(-85deg) scale(.9); filter: blur(12px); } }
-@keyframes fx-word { from { opacity: 0; transform: translateY(.35em) scale(.94); filter: blur(14px) drop-shadow(0 0 1.6rem #e4eeb200); } }
-@keyframes fx-flow { to { background-position: -300% 0; } }
+@keyframes fx-word { from { opacity: 0; transform: translateY(.35em) scale(.94); filter: blur(14px); } }
+@keyframes fx-flow { to { background-position: -300% 0, 0 0; } }
 @keyframes fx-draw { to { clip-path: inset(0 0 0 0); } }
 @keyframes fx-ping {
   0% { box-shadow: 0 0 12px var(--lime), 0 0 0 0 #e4eeb299; }
@@ -390,7 +383,7 @@
   0% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 0 #e4eeb266; }
   70%, 100% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 .8rem #e4eeb200; }
 }
-@keyframes fx-sheen { 0% { left: -60%; } 30%, 100% { left: 140%; } }
+@keyframes fx-sheen { 30%, 100% { transform: translateX(360%) skewX(-30deg); } }
 @keyframes fx-nudge { 0%, 55%, 100% { transform: none; } 28% { transform: translateY(4px); } }
 @keyframes fx-breathe { 0%, 100% { opacity: .7; scale: .92; } 50% { opacity: 1; scale: 1.06; } }
 @keyframes fx-pulse { 0% { opacity: .55; scale: .7; } 70%, 100% { opacity: 0; scale: 3.4; } }
@@ -399,64 +392,370 @@
 @keyframes fx-marquee { to { transform: translateX(-50%); } }
 
 /* ---------- 3. Subject directory ---------- */
-.fresh-home .directory { margin-top: 3.4rem; scroll-margin-top: 5.6rem; }
-.fresh-home .section-top .eyebrow { color: #48634e; }
-.fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
-.fresh-home .count { background: #edf2e7; color: #203e32; font-weight: 700; }
-.fresh-home .filters { gap: .9rem; }
-.fresh-home input, .fresh-home select { min-height: 44px; }
-.fresh-home input::placeholder { color: #4b5c54; }
+
+/* 3a. Stage: the dark scene carries on under the banner, edge to edge */
+.fresh-home .directory {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  padding: clamp(3.5rem, 7vw, 6rem) max(24px, calc(50vw - 560px)) clamp(4rem, 7vw, 6.5rem);
+  scroll-margin-top: 4.4rem;
+  background: linear-gradient(#0f2620, #132c27 24%, #10251f);
+  color: #fffdf3;
+}
+/* Still backdrop: three soft lights and a faint grid, fading out at both ends */
+.fresh-home .directory::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(44rem 30rem at 92% 6%, #e4eeb21f, transparent 70%),
+    radial-gradient(38rem 30rem at 0% 58%, #f6bb8317, transparent 70%),
+    radial-gradient(54rem 34rem at 62% 100%, #486e574d, transparent 70%),
+    linear-gradient(#9bb39b14 1px, transparent 1px) 50% 0 / 44px 44px,
+    linear-gradient(90deg, #9bb39b14 1px, transparent 1px) 50% 0 / 44px 44px;
+  -webkit-mask-image: linear-gradient(transparent, black 9rem, black calc(100% - 9rem), transparent);
+  mask-image: linear-gradient(transparent, black 9rem, black calc(100% - 9rem), transparent);
+  pointer-events: none;
+}
+/* A slow drifting glow that takes the colour of the chosen subject group */
+.fresh-home .directory::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  z-index: -2;
+  width: 62rem;
+  aspect-ratio: 1.5;
+  margin-left: -31rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--mood, #e4eeb2), transparent);
+  opacity: .1;
+  animation: fx-drift 26s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.fresh-home .directory[data-group="technology"] { --mood: #e6e4f8; }
+.fresh-home .directory[data-group="science"] { --mood: #deecd7; }
+.fresh-home .directory[data-group="humanities"] { --mood: #f6e4cf; }
+.fresh-home .directory[data-group="business"] { --mood: #f5e4e8; }
+/* Light that follows the pointer (home.js moves it) */
+.fresh-home .dir-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 46rem;
+  height: 46rem;
+  margin: -23rem 0 0 -23rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #e4eeb21c, #e4eeb20a 45%, transparent);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+  will-change: transform;
+}
+.fresh-home .directory.is-lit .dir-light { opacity: 1; }
+
+/* 3b. Heading row: eyebrow pill, big heading, live count and its giant outline */
+.fresh-home .section-top { position: relative; align-items: end; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.fresh-home .section-top .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1.1rem;
+  padding: .46rem .9rem .46rem .68rem;
+  border: 1px solid #e4eeb23d;
+  border-radius: 2rem;
+  background: #e4eeb21f;
+  color: #dce9ae;
+}
+.fresh-home .section-top .eyebrow::before {
+  content: '';
+  width: .48rem;
+  height: .48rem;
+  border-radius: 50%;
+  background: var(--peach);
+  box-shadow: 0 0 12px var(--peach);
+}
+.fresh-home h2 {
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  letter-spacing: -.072em;
+  line-height: .98;
+  text-shadow: 0 4px 40px #0b1c1680;
+}
+.fresh-home h2 .word { display: inline-block; }
+.fresh-home h2 .word.glow { color: var(--lime); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fresh-home h2 .word.glow {
+    padding-right: .06em;
+    background: linear-gradient(100deg, var(--lime) 20%, #fbfde9 45%, var(--peach) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+}
+.fresh-home .count {
+  position: relative;
+  padding: .5rem .95rem;
+  border: 0;
+  background: var(--lime);
+  color: #132c27;
+  font-size: .86rem;
+  font-weight: 800;
+  box-shadow: 0 0 2.2rem #e4eeb24d, 0 8px 22px #0b1c1680;
+}
+.fresh-home .count.pop { animation: fx-bump .45s cubic-bezier(.3, 1.6, .5, 1); }
+.fresh-home .dir-ghost {
+  position: absolute;
+  right: -.05em;
+  bottom: -.16em;
+  z-index: -1;
+  color: #e4eeb20f;
+  font-size: clamp(7rem, 19vw, 15rem);
+  font-weight: 850;
+  letter-spacing: -.08em;
+  line-height: .8;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 1.5px #e4eeb242;
+  pointer-events: none;
+}
+.fresh-home .dir-ghost.pop { animation: fx-ghost .6s cubic-bezier(.2, .8, .2, 1); }
+
+/* 3c. Search and group filter */
+.fresh-home .filters { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin-bottom: clamp(1.6rem, 3vw, 2.2rem); }
+.fresh-home .filters label, .fresh-home .group-pills > span {
+  color: #cfe0b0;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.fresh-home .filters label { gap: .6rem; }
+.fresh-home input, .fresh-home select {
+  min-height: 44px;
+  border-color: #e4eeb238;
+  background-color: #ffffff0f;
+  color: #fffdf3;
+}
+.fresh-home select { background-color: #1b382e; letter-spacing: 0; text-transform: none; }
+.fresh-home input {
+  min-height: 62px;
+  padding: .9rem 1.2rem .9rem 3.5rem;
+  border-radius: 1.15rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e4eeb2' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='m20 20-4.6-4.6'/%3E%3C/svg%3E");
+  background-position: 1.2rem 50%;
+  background-size: 1.35rem;
+  background-repeat: no-repeat;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 16px 44px #0b1c1659;
+  color-scheme: dark;
+  transition: border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
+}
+.fresh-home input::placeholder { color: #9bb39b; }
+.fresh-home input:hover { border-color: #e4eeb266; }
+.fresh-home input:focus {
+  border-color: var(--lime);
+  background-color: #ffffff17;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 16px 44px #0b1c1659, 0 0 0 4px #e4eeb229, 0 0 3.2rem #e4eeb22e;
+}
+/* home.js swaps the group <select> for pills; the select stays in the page for search.js */
+.fresh-home.fx .filters .group-native { display: none; }
+.fresh-home .group-pills { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; }
+.fresh-home .group-pills > span { margin-right: .5rem; }
+.fresh-home .group-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .55rem 1.05rem;
+  border: 1px solid #e4eeb238;
+  border-radius: 2rem;
+  background: #ffffff0d;
+  color: #e0e9e2;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s cubic-bezier(.3, 1.6, .5, 1);
+}
+.fresh-home .group-pill::before {
+  content: '';
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--tint, var(--lime));
+  box-shadow: 0 0 10px var(--tint, var(--lime));
+}
+.fresh-home .group-pill:hover { border-color: var(--tint, var(--lime)); transform: translateY(-2px); }
+.fresh-home .group-pill[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--tint, var(--lime));
+  color: #132c27;
+  box-shadow: 0 0 2rem -0.2rem var(--tint, var(--lime)), 0 8px 20px #0b1c1680;
+}
+.fresh-home .group-pill[aria-pressed="true"]::before { background: #132c27; box-shadow: none; }
+.fresh-home #empty {
+  margin: 0 0 1.2rem;
+  padding: 2.2rem 1.4rem;
+  border: 1px dashed #e4eeb24d;
+  border-radius: 1.25rem;
+  background: #ffffff08;
+  color: #cfe0b0;
+  text-align: center;
+}
+
+/* 3d. Subject cards */
 .fresh-home .technology { --accent: #76669d; }
 .fresh-home .science { --accent: #627e48; }
 .fresh-home .humanities { --accent: #a17146; }
 .fresh-home .business { --accent: #a16478; }
+.fresh-home .grid { gap: 1.1rem; margin: 0; perspective: 1600px; }
 .fresh-home .card {
   --rx: 0deg;
   --ry: 0deg;
-  --gx: 50%;
-  --gy: 0%;
+  --lift: 0px;
+  --gx: -999px;
+  --gy: -999px;
   position: relative;
-  border-top: 3px solid var(--accent);
-  box-shadow: 0 3px 12px #192e2808;
-  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+  overflow: hidden;
+  border: 1px solid #e4eeb21c;
+  border-radius: 1.3rem;
+  /* A strip in the group's own colours along the top, over deep green glass */
+  background:
+    linear-gradient(90deg, var(--accent), var(--tint) 50%, var(--accent)) 0 0 / 100% 3px no-repeat,
+    linear-gradient(162deg, #284c3e 0%, #1b382e 46%, #142b24 100%);
+  color: #fffdf3;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 10px 30px #0b1c1659;
+  transform: translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: opacity .3s ease, transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s ease, border-color .4s ease;
 }
-.fresh-home .card:hover { box-shadow: 0 18px 40px #192e2824, 0 0 0 1px var(--accent); }
-/* Glow in the card's own accent colour that follows the pointer */
+/* Border that lights up around the pointer, on every card within reach */
+.fresh-home .card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: radial-gradient(17rem circle at var(--gx) var(--gy), var(--tint), transparent 72%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.fresh-home .directory.is-lit .card::before { opacity: 1; }
+/* Glow inside the card under the pointer */
 .fresh-home .card::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(16rem circle at var(--gx) var(--gy), var(--tint), transparent 70%);
+  background: radial-gradient(19rem circle at var(--gx) var(--gy), var(--tint), transparent 68%);
   opacity: 0;
-  transition: opacity .35s ease;
+  transition: opacity .4s ease;
   pointer-events: none;
 }
-.fresh-home .card:hover::after { opacity: .75; }
-.fresh-home .card > * { position: relative; z-index: 1; }
-.fresh-home .card a { padding: 1.15rem 1.2rem; }
-.fresh-home .card a:hover { box-shadow: none; }
-.fresh-home .card .symbol { transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
-.fresh-home .card:hover .symbol { transform: scale(1.14) rotate(-6deg); }
-.fresh-home .card-link { color: #203e32; }
-.fresh-home .card-link span { display: inline-block; transition: transform .25s ease; }
-.fresh-home .card:hover .card-link span { transform: translateX(4px); }
-/* Cards and the heading rise in as they scroll into view (home.js adds .fx and .in) */
-.fresh-home.fx .section-top, .fresh-home.fx .card {
-  opacity: 0;
-  translate: 0 28px;
-  transition: opacity .7s ease var(--wait, 0s), translate .7s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s),
-    transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+.fresh-home .card:hover, .fresh-home .card:focus-within {
+  --lift: -8px;
+  border-color: #e4eeb247;
+  box-shadow: inset 0 1px 0 #ffffff1f, 0 28px 60px #0b1c16a6, 0 0 3.4rem -0.6rem var(--tint);
 }
-.fresh-home.fx .section-top.in, .fresh-home.fx .card.in { opacity: 1; translate: 0 0; }
-.fresh-home :focus-visible { outline-color: #97532b; }
-.fresh-home .hero :focus-visible { outline-color: var(--lime); }
+.fresh-home .card:hover::after { opacity: .2; }
+/* While one card is under the pointer the others step back */
+.fresh-home .grid:has(.card:hover) .card.done:not(:hover) { opacity: .6; }
+.fresh-home .card > * { position: relative; z-index: 1; }
+.fresh-home .card a { padding: 1.4rem 1.4rem 1.3rem; min-height: 13.2rem; }
+.fresh-home .card a:hover { box-shadow: none; }
+.fresh-home .card a:focus-visible { outline-color: var(--lime); outline-offset: -6px; }
+/* A streak of light crosses each card as it arrives */
+.fresh-home .card > :first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, #ffffff24 50%, transparent 62%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+.fresh-home.fx .card.in > :first-child::after { animation: fx-sweep 1.1s ease-out calc(var(--wait, 0s) + .25s) both; }
+.fresh-home .card .card-top { margin-bottom: 1.25rem; }
+.fresh-home .card .symbol {
+  min-width: 3.1rem;
+  height: 3.1rem;
+  border-radius: .8rem;
+  font-size: 1.45rem;
+  box-shadow: inset 0 0 0 1px #ffffff80, 0 8px 20px #0b1c1680;
+  transition: transform .4s cubic-bezier(.3, 1.6, .5, 1), box-shadow .4s ease;
+}
+.fresh-home .card:hover .symbol { transform: scale(1.14) rotate(-7deg); box-shadow: inset 0 0 0 1px #ffffff80, 0 8px 20px #0b1c1680, 0 0 1.8rem var(--tint); }
+.fresh-home .card .code { border-color: #e4eeb238; background: #ffffff0d; color: #cfe0b0; font-weight: 700; letter-spacing: .04em; }
+.fresh-home .card h3 { font-size: 1.3rem; letter-spacing: -.025em; }
+.fresh-home .card p { color: #c3d1c7; }
+.fresh-home .card-link { color: var(--lime); }
+.fresh-home .card-link span { display: inline-block; transition: transform .25s ease; }
+.fresh-home .card:hover .card-link span { transform: translateX(5px); }
+/* The subject's own symbol as a huge watermark (added by home.js) */
+.fresh-home .card .card-ghost {
+  position: absolute;
+  right: -.06em;
+  bottom: -.3em;
+  z-index: 0;
+  color: var(--tint);
+  font: bold 9.5rem / 1 Georgia, serif;
+  opacity: .075;
+  transform: rotate(-9deg);
+  transition: opacity .45s ease, transform .6s cubic-bezier(.2, .8, .2, 1);
+  pointer-events: none;
+}
+.fresh-home .card:hover .card-ghost { opacity: .2; transform: rotate(-2deg) scale(1.1) translateY(-.08em); }
+
+/* 3e. Arrival: home.js adds .fx, then .in as things scroll into view, then .done */
+.fresh-home.fx .section-top .eyebrow, .fresh-home.fx .section-top .count, .fresh-home.fx .filters, .fresh-home.fx h2 .word {
+  opacity: 0;
+  translate: 0 26px;
+  transition: opacity .8s ease, translate .8s cubic-bezier(.2, .8, .2, 1);
+}
+.fresh-home.fx h2 .word { translate: 0 .5em; transition-delay: calc(.08s + var(--w) * 90ms); }
+.fresh-home.fx .section-top .count { transition-delay: .45s; }
+.fresh-home.fx .filters { transition-delay: .2s; }
+.fresh-home.fx .dir-ghost { opacity: 0; scale: .8; transform-origin: 100% 100%; transition: opacity 1.2s ease .3s, scale 1.2s cubic-bezier(.2, .8, .2, 1) .3s; }
+.fresh-home.fx .section-top.in .eyebrow, .fresh-home.fx .section-top.in .count, .fresh-home.fx .filters.in, .fresh-home.fx .section-top.in h2 .word {
+  opacity: 1;
+  translate: 0 0;
+}
+.fresh-home.fx .section-top.in .dir-ghost { opacity: 1; scale: 1; }
+.fresh-home.fx .card:not(.done) {
+  opacity: 0;
+  translate: 0 64px;
+  rotate: x 18deg;
+  scale: .94;
+  transition: opacity .9s ease var(--wait, 0s), translate .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s),
+    rotate .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s), scale .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s);
+}
+.fresh-home.fx .card.in:not(.done) { opacity: 1; translate: 0 0; rotate: x 0deg; scale: 1; }
+@keyframes fx-drift { from { transform: translate(-16%, -6%) scale(.9); } to { transform: translate(18%, 12%) scale(1.15); } }
+@keyframes fx-bump { 40% { transform: scale(1.18); } }
+@keyframes fx-ghost { from { opacity: .2; transform: translateY(.12em) scale(.92); } }
+@keyframes fx-sweep { to { transform: translateX(110%); } }
+
+/* 3f. Footer and focus rings on the dark page */
+.fresh-home .footer { border-top-color: #e4eeb21f; color: #9bb39b; }
+.fresh-home .footer a:hover { color: var(--lime); }
+.fresh-home :focus-visible { outline-color: var(--lime); }
+.fresh-home .site-header :focus-visible, .fresh-home .skip:focus-visible { outline-color: #97532b; }
 
 /* ---------- 4. Small screens and reduced motion ---------- */
 @media (max-width: 850px) {
-  .fresh-home .hero { padding-inline: max(24px, 4vw); }
+  .fresh-home .hero, .fresh-home .directory { padding-inline: max(24px, 4vw); }
   .fresh-home .orbit-chip { width: 2.1rem; height: 2.1rem; margin: -1.05rem 0 0 -1.05rem; font-size: .95rem; border-radius: .6rem; }
+  .fresh-home .card a { min-height: 12rem; }
 }
 @media (max-width: 630px) {
   /* Phones: logo and orbits on top, copy underneath */
@@ -479,16 +778,23 @@
   .fresh-home .hero .eyebrow { margin-bottom: 1rem; }
   .fresh-home .hero-copy > p:not(.eyebrow) { margin-block: 1.1rem 1.4rem; }
   .fresh-home .topbar { min-height: 61px; }
-  .fresh-home .directory { margin-top: 2.25rem; scroll-margin-top: 4.8rem; }
   .fresh-home .ticker-band { font-size: .68rem; padding: .5rem 0; }
+  .fresh-home .directory { padding: 3rem 1.3rem 3.5rem; scroll-margin-top: 3.9rem; }
+  .fresh-home .section-top { align-items: start; flex-direction: column; }
+  .fresh-home .dir-ghost { top: -.1em; bottom: auto; font-size: 9rem; }
+  .fresh-home input { min-height: 56px; font-size: 1rem; }
+  .fresh-home .card a { min-height: 0; }
+  .fresh-home .card .card-ghost { font-size: 7.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after {
+  .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after,
+  .fresh-home .directory, .fresh-home .directory *, .fresh-home .directory::after, .fresh-home .directory *::before, .fresh-home .directory *::after {
     animation: none !important;
     transition: none !important;
   }
   .fresh-home .hero em::after { clip-path: none; }
   .fresh-home .art-pulse { display: none; }
-  .fresh-home.fx .section-top, .fresh-home.fx .card { opacity: 1; translate: none; transition: none; }
+  .fresh-home.fx .section-top .eyebrow, .fresh-home.fx .section-top .count, .fresh-home.fx .filters, .fresh-home.fx h2 .word,
+  .fresh-home.fx .dir-ghost, .fresh-home.fx .card:not(.done) { opacity: 1; translate: none; rotate: none; scale: none; }
   .fresh-home .card { transform: none; }
 }
