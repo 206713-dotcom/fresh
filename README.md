@@ -17,7 +17,7 @@ Choose a track from Fresh Mathematics. The original quick revision on equations,
 
 ### First Language English (0500)
 
-Build close-reading skills with inference, writer’s effects and summary-writing exercises. [Open First Language English](https://gisfresh.me/subjects/english-language.html)
+Practise the 2027–2029 Reading and Directed Writing & Composition papers with original tasks, timed drafts, self-marking guides and experimental on-device AI feedback. [Open First Language English](https://gisfresh.me/subjects/english-language.html) · [Implementation checklist](docs/english-0500-checklist.md)
 
 ### Literature in English (0475)
 
