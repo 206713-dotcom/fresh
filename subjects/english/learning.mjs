@@ -240,6 +240,19 @@ export function setupLearningTools({ read, write, currentTask }) {
     write('theme',dark ? 'dark' : 'light',null);
   });
 
+  for (const [id,attribute] of [
+    ['study-size','studySize'], ['study-font','studyFont'], ['study-spacing','studySpacing'],
+  ]) {
+    const select = get(id);
+    const saved = read(id);
+    if ([...select.options].some(option => option.value === saved)) select.value = saved;
+    document.documentElement.dataset[attribute] = select.value;
+    select.addEventListener('change', () => {
+      document.documentElement.dataset[attribute] = select.value;
+      write(id,select.value,null);
+    });
+  }
+
   for (const [id,title,exercise] of objectives) {
     const box = document.createElement('input');
     box.type = 'checkbox';

@@ -58,3 +58,13 @@ mark { background:#dce6f1; color:#253449; border-radius:.15rem; }
 .records p { margin:.2rem 0; }
 #objectives > div { display:flex; align-items:baseline; gap:.5rem; margin:.6rem 0; flex-wrap:wrap; }
 #metrics p { margin:.4rem 0; }
+
+.settings { display:flex; flex-wrap:wrap; gap:1rem; margin-top:.8rem; }
+.settings label { display:block; }
+:root[data-study-size="large"] { --study-size:1.2rem; }
+:root[data-study-size="extra"] { --study-size:1.42rem; }
+:root[data-study-font="serif"] { --study-font:Georgia,serif; }
+:root[data-study-font="sans"] { --study-font:system-ui,sans-serif; }
+:root[data-study-spacing="wide"] { --study-spacing:1.95; }
+.source { font-family:var(--study-font,Georgia,serif); font-size:var(--study-size,1.13rem); line-height:var(--study-spacing,1.6); }
+textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--study-size,1rem); line-height:var(--study-spacing,1.6); }

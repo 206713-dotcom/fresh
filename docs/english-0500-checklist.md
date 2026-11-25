@@ -9,7 +9,7 @@
 - [x] Add per-task draft saving, word counts, practice timers, text downloads and review tracking.
 - [x] Add experimental on-device AI feedback using task-specific criteria and best-fit band guidance. Validate mark bounds and require verbatim answer evidence for positive marks.
 - [x] Keep manual review usable when the AI model or WebGPU is unavailable.
-- [x] Add a persistent R1–R5 and W1–W5 confidence checklist with links to exercises, plus a persistent light/dark control.
+- [x] Add a persistent R1–R5 and W1–W5 confidence checklist with links to exercises, plus persistent light/dark mode, text size, typeface and line spacing controls.
 - [x] Add a Reading Lab with exact-phrase highlighting, draft analysis and a personal mistake notebook.
 - [x] Add three compare-and-improve workshop activities for writer’s effects, directed writing and descriptive writing, with persistent drafts and links to practice.
 - [x] Display objective mappings, the practice rubric version and direct specimen mark-scheme links in the practice workspace.
@@ -47,7 +47,7 @@ The branch includes 12 original practice drills with answers or excerpts and six
 
 Run the static build from the repository root with `node build.mjs`. Serve `dist/` over localhost or HTTPS. Run the automated tests with `node --test tests/english-0500.test.mjs`.
 
-The Chromium test environment reached the on-device model download with WebGPU enabled and then hit its browser storage quota. No live inference result or examiner agreement was measured. Examiner calibration requires compatible, authorised anchor scripts and a separate independently teacher-marked evaluation set. The branch bundles original practice material and links to Cambridge resources. It contains no examiner scripts or official candidate marks.
+Chromium first hit its browser storage quota. A software-WebGPU retest with more temporary storage downloaded the model and entered the marking phase. The feedback UI and stale-response handling passed a separate test with simulated worker output. Examiner agreement remains unmeasured. Examiner calibration requires compatible, authorised anchor scripts and a separate independently teacher-marked evaluation set. The branch bundles original practice material and links to Cambridge resources. It contains no examiner scripts or official candidate marks.
 
 ## Cambridge references
 
