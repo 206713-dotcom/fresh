@@ -161,7 +161,7 @@ function flashcardReviewCallout() {
 
 function dailyFlashcards() {
   return '<section class="panel fx-daily-review" id="daily-flashcards"><h1 class="page-title">Daily flashcard review</h1>' +
-    '<p>Due cards come first. When there’s room, add a few new cards to practise.</p>' +
+    '<p>Review due cards first, then study new ones.</p>' +
     link('All flashcard decks','#flashcards','text-link') + '<p data-daily-progress role="status"></p>' +
     '<button type="button" class="flash" hidden></button>' + flashcardRatings() +
     '<p data-daily-status role="status"></p></section>';
@@ -381,7 +381,7 @@ function drawingFeedback(diagram, spec) {
 
 function markReviewReason(result, answer) {
   if (result.reviewNote) return result.reviewNote;
-  if (result.reviewUnavailable || result.modelPlan) return 'The marker could not verify a complete worked example.';
+  if (result.reviewUnavailable || result.modelPlan) return 'See the mark scheme for the points to include.';
   if (result.diagram && result.provisional) return 'Check the visual assessment against the model diagram and mark scheme.';
   if (result.provisional && result.score>0 && !creditedEvidence(answer,result).length) {
     return 'The marker awarded credit without a verifiable quotation from your answer.';

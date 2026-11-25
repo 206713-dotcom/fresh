@@ -30,7 +30,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=14', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=15', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -198,20 +198,20 @@ const ecbizMarking = (() => {
 
   if (!globalThis.WebAssembly || typeof Worker !== 'function') {
     download.setAttribute('aria-disabled', 'true');
-    downloadStatus.textContent = 'This browser does not support on-device AI marking.';
+    downloadStatus.textContent = 'This browser doesn’t support on-device marking.';
   } else {
     download.onclick = async () => {
       if (download.getAttribute('aria-disabled') === 'true') return;
       download.setAttribute('aria-disabled', 'true');
-      download.textContent = 'Downloading local AI…';
+      download.textContent = 'Downloading model…';
       downloadStatus.textContent = 'Preparing download…';
       const report = message => { downloadStatus.textContent = message; };
       try {
         await enqueue(() => evaluate(null, '', undefined, report));
-        download.textContent = 'Local AI ready';
+        download.textContent = 'Marking ready';
         downloadStatus.textContent = 'You can now mark written answers on this device.';
-        for (const opener of downloadOpeners) opener.textContent = 'Local AI ready';
-        setupHint.textContent = 'AI marking is ready for written answers.';
+        for (const opener of downloadOpeners) opener.textContent = 'Marking ready';
+        setupHint.textContent = 'Written answers can now be marked on this device.';
       } catch (error) {
         download.removeAttribute('aria-disabled');
         download.textContent = 'Retry AI download';
@@ -227,7 +227,7 @@ const ecbizMarking = (() => {
     const coaching = result.coaching;
     const evidence = markedEvidence(answer,result);
     const reason = markReviewReason(result,answer);
-    return '<div class="review-summary"><div><span class="review-eyebrow">Answer review</span><h3>Your feedback</h3>' +
+    return '<div class="review-summary"><div><h3>Feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
       '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
@@ -236,11 +236,11 @@ const ecbizMarking = (() => {
       (evidence?'<section class="review-section review-evidence">' + evidence + '</section>':'') +
       '<div class="review-coaching">' + section('What worked', coaching?.strengths, 'review-strengths') +
       section('What to improve', coaching?.gaps, 'review-gaps') + '</div>' +
-      section('How to reach full marks', result.nextStep || coaching?.next, 'review-next') +
-      section(result.diagram ? 'Model diagram instructions' : 'Model response', result.modelResponse, 'review-model') +
-      (result.generatedModelResponse ? '<p class="muted">AI-generated example. Check it against the question’s mark scheme.</p>' : '') +
-      (result.modelPlan ? '<h3>Mark-scheme answer plan</h3><p>The AI could not verify a complete model response. Use these points to build your answer.</p><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
-      (result.reviewUnavailable && !result.modelPlan ? '<p>AI review was unavailable. Use the question’s mark scheme for the required points.</p>' : '') +
+      section('Next step', result.nextStep || coaching?.next, 'review-next') +
+      section(result.diagram ? 'How to draw the diagram' : 'Sample answer', result.modelResponse, 'review-model') +
+      (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') +
+      (result.modelPlan ? '<h3>Answer plan from the mark scheme</h3><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
+      (result.reviewUnavailable && !result.modelPlan ? '<p>Detailed feedback is unavailable. See the mark scheme below.</p>' : '') +
       (coaching || result.modelResponse || result.modelPlan ? '<p><a href="https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf" target="_blank" rel="noopener noreferrer">Cambridge 0455 syllabus</a> · ' +
         '<a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge specimen mark scheme</a></p>' : '');
   }

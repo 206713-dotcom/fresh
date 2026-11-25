@@ -158,7 +158,7 @@ function renderRevisionTool(page, id) {
 function revisionHub() {
   const groups = [
     ['Review the syllabus', [
-      ['▤', 'Cheatsheets and interactive checks', 'Refresh a topic, then test your understanding with instant feedback.', '#revision-topics']
+      ['▤', 'Topic notes and quizzes', 'Read a summary and answer a quiz question.', '#revision-topics']
     ]],
     ['Practise for the exam', [
       ['◩', 'Diagram practice', 'Label axes, shift curves and mark equilibrium.', '#revision-diagrams'],
@@ -173,7 +173,7 @@ function revisionHub() {
     ]]
   ];
   return '<div class="revision-hub"><header class="revision-hero"><div><p class="eyebrow">Cambridge IGCSE · 0455</p>' +
-    '<h1>Revision Tools</h1><p>Review the six syllabus chapters, practise under exam conditions and revisit questions you missed.</p>' +
+    '<h1>Revision tools</h1>' +
     '</div><span class="revision-edition">2027–2029 syllabus</span></header><div class="revision-tool-groups">' +
     groups.map(([title, tools]) => '<section class="revision-tool-group"><h2>' + escapeHtml(title) + '</h2>' +
       tools.map(([symbol, name, description, href]) => '<a class="revision-tool-card" href="' + href + '">' +
@@ -185,14 +185,14 @@ function revisionHub() {
 function revisionTopics(code) {
   const topic = revisionLab.topics.find(item => item.code === code);
   if (!topic) {
-    return revisionHeading('Quick revision', 'Cheatsheets and interactive checks', 'Pick a topic to review and try an application question.') +
+    return revisionHeading('Quick revision', 'Topic notes and quizzes', 'Pick a topic to review and try an application question.') +
       '<div class="revision-collection">' + catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
         revisionLab.topics.filter(item => item.code.startsWith(index + 1 + '.')).map(item =>
           link(item.code + ' · ' + item.title, '#revision-topics/' + item.code, 'coverage-link')).join('') + '</section>').join('') + '</div>';
   }
   const complete = revisionState('topics', {})[code] === true;
   return link('← All topics', '#revision-topics', 'text-link') +
-    revisionHeading('Syllabus topic ' + topic.code, escapeHtml(topic.title), complete ? 'Application check completed' : 'Cheatsheet and application check') +
+    revisionHeading('Syllabus topic ' + topic.code, escapeHtml(topic.title), complete ? 'Application check completed' : 'Topic notes and quiz') +
     '<div class="revision-columns"><article class="panel revision-recap"><h2>Quick recap</h2><p>' + escapeHtml(topic.summary) + '</p><div class="row">' + revisionNotesLinks(code) + '</div></article>' +
     '<form id="revision-topic-form" class="panel"><h2>' + escapeHtml(topic.prompt) + '</h2>' +
     topic.options.map(([option], index) => '<label class="choice"><input required type="radio" name="answer" value="' + index + '"> ' +
@@ -256,7 +256,7 @@ function revisionPapers() {
 function revisionWriting(id) {
   const selected = questions.find(question => question.id === id && !question.options);
   if (!selected) {
-    return revisionHeading('Automatic marking', 'Written-answer review', 'Choose a question to answer and revise with feedback.') +
+    return revisionHeading('Automatic marking', 'Written-answer review', 'Submit an answer to get a mark and feedback.') +
       '<div class="revision-collection">' + catalog.slice(0, 6).map((chapter, index) => '<section class="group"><h2>' + escapeHtml(chapter.title) + '</h2>' +
         [2, 4, 6, 8].map(marks => questions.find(question => question.c === index && question.marks === marks && !question.options))
           .filter(Boolean).map(question => link(question.marks + ' marks · ' + question.q, '#revision-writing/' + question.id, 'coverage-link')).join('') + '</section>').join('') + '</div>';
@@ -373,7 +373,7 @@ function revisionTest() {
     '<div class="row">' + link('View mock exam history', '#revision-history') +
     link('Mock corrections', '#revision-corrections') + '</div>' +
     '<p id="revision-save-status" role="status"></p>' +
-    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Completed mocks appear in Mock Exam History. Paper 2 answers are marked by the local AI after submission.</p>' +
+    '<div class="revision-columns revision-test-columns"><section class="panel revision-mocks"><h2>2027 mock papers</h2><p>Completed mocks appear in Mock Exam History. Paper 2 uses on-device AI marking.</p>' +
     '<div class="mock-picker-grid">' +
     revisionMockPicker('p1', 'Paper 1', '40 marks · 60 minutes', 'Original · Random selection', completed) +
     revisionMockPicker('p2', 'Paper 2', '80 marks · 120 minutes', 'Original · Water and farming in Ardin', completed) +

@@ -26,7 +26,7 @@ async function openModel(report) {
   const cache = await globalThis.caches?.open(cacheName).catch(() => undefined);
   const blobs = [];
   for (const [index, { hash, url }] of parts.entries()) {
-    report('Preparing Economics AI · part ' + (index + 1) + ' of ' + parts.length + '…');
+    report('Downloading the marking model · part ' + (index + 1) + ' of ' + parts.length + '…');
     const cached = await cache?.match(url);
     const response = cached ?? await fetchAsset(url);
     const blob = await response.blob();
@@ -34,7 +34,7 @@ async function openModel(report) {
     const checksum = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
     if (checksum !== hash) {
       await cache?.delete(url);
-      throw new Error('A model file failed verification. Retry the AI download.');
+      throw new Error('A model file failed verification. Try downloading the model again.');
     }
     if (!cached) await cache?.put(url, new Response(blob)).catch(() => {});
     blobs.push(blob);
@@ -327,7 +327,7 @@ async function markDefinition(points, answer, report) {
 
 // Cambridge 0455/02 specimen mark scheme for examination from 2027, Table A (p. 4).
 // https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf
-const discussionMarkError = 'The AI could not verify a mark for this discussion. Your answer is available to retry.';
+const discussionMarkError = 'This discussion couldn’t be marked. Try submitting your answer again.';
 
 async function discussionAssessment(question, answer, criterion, max) {
   const prompt = 'Question: ' + question.prompt +
@@ -643,12 +643,12 @@ async function mark(question, answer, report) {
     grade = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/gi, ''));
   } catch {
     if (semantic?.score) return semantic;
-    throw new Error('The Economics AI did not return a readable mark. Your answer is available to retry.');
+    throw new Error('Marking didn’t finish. Try submitting your answer again.');
   }
   if (!Number.isInteger(grade?.score) || grade.score < 0 || grade.score > question.marks ||
       typeof grade.feedback !== 'string' || !grade.feedback.trim()) {
     if (semantic?.score) return semantic;
-    throw new Error('The Economics AI returned an invalid mark. Your answer is available to retry.');
+    throw new Error('The mark was invalid. Try submitting your answer again.');
   }
   if (semantic?.score > grade.score) return semantic;
   const credits=Array.isArray(grade.credits) ? grade.credits.filter(credit=>
@@ -851,7 +851,7 @@ function acceptedModelResponse(text) {
 export async function review(question, answer, grade, report) {
   const review = { ...grade, diagram: question.diagram, coaching: schemeCoaching(question, grade) };
   review.modelResponse = existingModelResponse(question);
-  report('Preparing mark-scheme feedback and a model response…');
+  report('Preparing feedback and a sample answer…');
   try {
     if (review.modelResponse && (grade.score === 0 || grade.score === question.marks || question.diagram)) return review;
     engine ??= await openModel(report);

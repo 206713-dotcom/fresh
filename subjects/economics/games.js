@@ -2,9 +2,9 @@
 const games = {
   island: ['Scarcity Island','','Feed a settlement, build reserves and decide when to invest in new capacity.','1.2–1.4'],
   market: ['Market Mayhem','','Move curves on a live graph and test the effects of shocks and price controls.','2.2–2.7, 2.10'],
-  policy: ['Policy Panic','','Balance a cabinet’s growth, jobs, inflation and budget objectives across quarters.','4.1–4.7, 5.1–5.2'],
-  trade: ['Trade Tycoon','','Run a port, choose contracts and work out how each shipment affects the current account.','6.1–6.4'],
-  escape: ['Economics Escape Room','','Open clues, decode calculations and assemble chains of reasoning to unlock rooms.','Units 1–6']
+  policy: ['Policy Panic','','Choose policies and track their effects on growth, employment, inflation and the budget.','4.1–4.7, 5.1–5.2'],
+  trade: ['Trade Tycoon','','Choose export contracts and calculate import costs and the trade balance.','6.1–6.4'],
+  escape: ['Economics Escape Room','','Solve questions using clues to unlock each room.','Units 1–6']
 };
 const root = document.querySelector('#game-root');
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
@@ -331,7 +331,7 @@ function checkList(feedback) {
 
 function renderGameContent() {
   if (!activeGame) {
-    root.innerHTML='<div class="hero"><h1>Economics Games</h1><p>Run an island, move markets and solve economic puzzles using fictional scenarios.</p></div><div class="grid">'+
+    root.innerHTML='<div class="hero"><h1>Economics games</h1></div><div class="grid">'+
       Object.entries(games).map(([slug,[name,,description,tag]])=>{
         const records = ['practice','challenge','campaign'].map(mode => [mode,load(slug+'-best-'+mode,null)])
           .filter(([,value]) => value !== null);
