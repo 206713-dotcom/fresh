@@ -11,7 +11,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="../index.html">Fresh</a><a href="../index.html#subjects">All subjects</a></nav></header>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="../index.html">Fresh</a><div class="actions"><a href="../index.html#subjects">All subjects</a><button id="theme" type="button" aria-pressed="false">Dark mode</button></div></nav></header>
 <main id="main" class="wrap">
   <section class="hero">
     <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
@@ -19,6 +19,7 @@
     <p>Practise close reading, develop your writing and review your answers against the skills each question assesses.</p>
     <a class="button" href="#practice">Start practising</a>
   </section>
+  <nav class="jump" aria-label="English Studio"><a href="#course">Course guide</a><a href="#practice">Practice studio</a><a href="#reading-lab">Reading Lab</a><a href="#notebook">Mistake notebook</a><a href="#skills-title">Revision library</a><a href="#syllabus-checklist">Syllabus checklist</a></nav>
   <section class="section" aria-labelledby="course"><p class="eyebrow">Course guide</p><h2 id="course">Know your papers</h2>
     <div class="papers">
       <article><p class="eyebrow">Paper 1 · 2 hours · 80 marks</p><h3>Reading</h3><ol><li>Comprehension · 20</li><li>Summary and attitude · 20</li><li>Short answers and language analysis · 20</li><li>Extended response to reading · 20</li></ol></article>
@@ -28,7 +29,7 @@
     <p class="resources"><a href="https://www.cambridgeinternational.org/Images/718783-2027-2029-syllabus.pdf">Official syllabus</a><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-english-first-language-0500/past-papers/">Specimen papers and mark schemes</a></p>
   </section>
   <section id="practice" class="section" aria-labelledby="work-title">
-    <p class="eyebrow">Practice studio</p><h2 id="work-title">Read, write, revise</h2>
+    <p class="eyebrow">English Studio</p><h2 id="work-title">Read, write, revise</h2>
     <p>Choose an original practice task. Your drafts and completion history stay in this browser.</p>
     <div class="controls"><div><label for="task">Practice task</label><select id="task"></select></div><p id="completion" role="status"></p></div>
     <noscript><p>Enable JavaScript to use the practice workspace.</p></noscript>
@@ -47,7 +48,37 @@
         <p id="mark-status" role="status"></p><div id="feedback" aria-live="polite"></div>
       </article>
     </div>
+    <details id="analysis"><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
     <details id="review"><summary>Self-marking guide and example</summary><div id="criteria"></div><h4>Example response or excerpt</h4><p id="example"></p></details>
+  </section>
+  <section class="section" id="reading-lab" aria-labelledby="lab-title">
+    <p class="eyebrow">Reading Lab</p><h2 id="lab-title">Annotate a passage</h2>
+    <p>Select a paragraph and enter an exact phrase from it. Record what the wording suggests in context.</p>
+    <div class="workspace">
+      <article class="panel"><label for="lab-passage">Original reading passage</label><select id="lab-passage"></select><ol class="source" id="lab-text"></ol></article>
+      <article class="panel">
+        <form id="annotation-form">
+          <label for="annotation-paragraph">Paragraph</label><select id="annotation-paragraph"></select>
+          <label for="annotation-quote">Exact phrase</label><input id="annotation-quote" required maxlength="200">
+          <label for="annotation-note">What does it suggest?</label><textarea id="annotation-note" required rows="3" maxlength="600"></textarea>
+          <div class="actions"><button class="button">Save annotation</button><button type="button" id="annotation-cancel" hidden>Cancel edit</button></div>
+        </form>
+        <p id="annotation-status" role="status"></p><ul id="annotations" class="records"></ul>
+      </article>
+    </div>
+  </section>
+  <section class="section" id="notebook" aria-labelledby="notebook-title">
+    <p class="eyebrow">My progress</p><h2 id="notebook-title">Personal mistake notebook</h2>
+    <p>Save an excerpt and the change you want to make. Mark a note resolved once you have practised the revision.</p>
+    <div class="workspace">
+      <form class="panel" id="notebook-form">
+        <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
+        <label for="mistake-excerpt">Original excerpt</label><textarea id="mistake-excerpt" required maxlength="600" rows="2"></textarea>
+        <label for="mistake-next">What will you change?</label><textarea id="mistake-next" required maxlength="600" rows="2"></textarea>
+        <button class="button">Save mistake</button><p id="notebook-status" role="status"></p>
+      </form>
+      <article class="panel"><h3>Saved mistakes</h3><ul id="mistakes" class="records"></ul></article>
+    </div>
   </section>
   <section class="section" aria-labelledby="skills-title"><p class="eyebrow">Revision library</p><h2 id="skills-title">Common marking priorities</h2>
     <div class="skills">
@@ -58,6 +89,11 @@
       <article><h3>Description</h3><p>Move attention between telling details. A clock, a wet footprint and a light going out can establish a place and a change in atmosphere.</p></article>
       <article><h3>Narrative</h3><p>Build the story around a consequential decision. Develop what the character wants, what stands in their way and what their choice changes.</p></article>
     </div>
+  </section>
+  <section class="section" id="syllabus-checklist" aria-labelledby="checklist-title">
+    <p class="eyebrow">2027–2029 syllabus</p><h2 id="checklist-title">Confidence checklist</h2>
+    <p>Record the objectives you feel ready to apply. Use a practice task to check your confidence.</p>
+    <div id="objectives" class="panel"></div>
   </section>
 </main>
 <footer class="wrap"><span>Fresh · Independent IGCSE revision</span><a href="english-literature.html">Literature in English</a><a href="../privacy.html">Privacy notice</a></footer>

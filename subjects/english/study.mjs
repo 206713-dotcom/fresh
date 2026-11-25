@@ -1,4 +1,5 @@
 import { countWords, papers, tasks } from './practice.mjs';
+import { setupLearningTools, updateMetrics } from './learning.mjs';
 
 const get = id => document.getElementById(id);
 const select = get('task');
@@ -20,13 +21,13 @@ function read(key) {
   catch { return session.get(key); }
 }
 
-function write(key, value) {
+function write(key, value, messageTarget = storage) {
   session.set(key, value);
   try {
     localStorage.setItem(prefix + key, value);
-    storage.textContent = 'Saved on this device';
+    if (messageTarget) messageTarget.textContent = 'Saved on this device';
   } catch {
-    storage.textContent = 'Storage unavailable. Download your draft to keep it.';
+    if (messageTarget) messageTarget.textContent = 'Storage unavailable. Changes last for this session.';
   }
 }
 
@@ -45,6 +46,7 @@ function updateWords() {
   const hint = !target ? '' : target[0] === 0 ? ' · maximum ' + target[1] : ' · target ' + target.join('–');
   get('words').textContent = count + (count === 1 ? ' word' : ' words') + hint;
   get('download').disabled = !editor.value;
+  if (get('analysis').open) updateMetrics(get('metrics'), editor.value);
 }
 
 function updateCompletion() {
@@ -108,6 +110,9 @@ function showTask() {
 }
 
 select.addEventListener('change', showTask);
+get('analysis').addEventListener('toggle', () => {
+  if (get('analysis').open) updateMetrics(get('metrics'), editor.value);
+});
 editor.addEventListener('input', () => {
   write('draft:' + task.id, editor.value);
   updateWords();
@@ -202,4 +207,7 @@ get('mark').addEventListener('click', () => {
   }
 });
 
+const initialTask = new URLSearchParams(location.search).get('task');
+if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
+setupLearningTools({ read, write, currentTask: () => task });

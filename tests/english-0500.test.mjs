@@ -39,3 +39,12 @@ test('mark totals are computed from bounded marks with exact evidence', () => {
   assert.throws(() => validateFeedback({ ...valid, criteria: [] }, task, answer));
   assert.throws(() => validateFeedback({ ...valid, nextStep: '' }, task, answer));
 });
+
+test('draft analysis counts sentences, length bands and case-insensitive repetitions', async () => {
+  const { analyseDraft } = await import('../subjects/english/learning.mjs');
+  const result = analyseDraft('River water rose. The river moved.');
+  assert.deepEqual(result, {
+    words: 6, sentences: 2, average: 3, distribution: [2, 0, 0], distinct: 5, repeated: [['river', 2]],
+  });
+  assert.equal(analyseDraft(' ').sentences, 0);
+});

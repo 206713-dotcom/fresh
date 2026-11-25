@@ -44,6 +44,9 @@ self.onmessage = async ({ data: { task, answer } }) => {
     if (!raw) throw new Error('The model returned no feedback.');
     self.postMessage({ result: validateFeedback(JSON.parse(raw), task, answer) });
   } catch (error) {
-    self.postMessage({ error: error.message });
+    const message = /quota/i.test(error.message)
+      ? 'The browser has too little storage for the model download.'
+      : error.message;
+    self.postMessage({ error: message });
   }
 };
