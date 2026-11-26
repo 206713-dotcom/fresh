@@ -38,6 +38,19 @@ function updateTextSize() {
 }
 updateTextSize();
 $("#type").onclick = () => { saved.large = !saved.large; persist(); updateTextSize(); };
+function applyTheme() {
+  const dark = saved.theme ? saved.theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+  $("#theme").textContent = dark ? "Light" : "Dark";
+  $("#theme").setAttribute("aria-label",dark ? "Switch to light theme" : "Switch to dark theme");
+  $('meta[name="theme-color"]').content = dark ? "#101a29" : "#f6f8fa";
+}
+applyTheme();
+$("#theme").onclick = () => {
+  saved.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  persist();
+  applyTheme();
+};
 $(".progress-link").setAttribute("aria-label","My progress");
 
 const cat = id => categories.find(item => item.id === id);

@@ -39,3 +39,29 @@
 #practice-target{margin-bottom:10px}
 #timer-status:empty,#target-status:empty{display:none}
 @media(max-width:760px){.practice-columns,.text-library{grid-template-columns:1fr}.home-progress .actions{gap:12px}}
+
+.marking-panel{border-top:1px solid var(--line);margin-top:24px;padding-top:18px}
+.marking-panel summary{font-weight:800;font-size:1.15rem;cursor:pointer}
+#mark-result{margin-top:12px;padding:16px;background:var(--paper);border-radius:12px;overflow-wrap:anywhere}
+#mark-status:empty,#self-status:empty{display:none}
+#self-objectives input[type=checkbox]{width:auto;accent-color:#2271c7}
+#self-level{max-width:100%}
+#self-score{max-width:6rem}
+:root[data-theme=dark]{color-scheme:dark;--ink:#edf4ff;--muted:#bdccde;--blue:#abcfff;--line:#40536b;--paper:#101a29;--white:#182638}
+[data-theme=dark] :is(.bar,.iconbtn,.progress-link,.quick a,.card,.panel,.home-progress,footer,dialog,.skip){background:var(--white)}
+[data-theme=dark] :is(.panel input:not([type=radio]),.panel textarea,.panel select,#search,.exam-choice select){background:#111d2c;border-color:#617894;color:var(--ink)}
+[data-theme=dark] :is(.iconbtn:hover,.progress-link:hover,#suggestions a:hover,.type[aria-pressed=true]){background:#304765}
+[data-theme=dark] :is(.secondary,.example,.feedback,.steps span,.timed-question){background:#203652;color:#e2efff;border-color:#536e91}
+[data-theme=dark] .secondary:hover{background:#304765}
+[data-theme=dark] :is(.primary,.timed-modes [aria-current]){background:#a8cdff;color:#10223b;border-color:#a8cdff}
+[data-theme=dark] .primary:hover{background:#c3dfff}
+[data-theme=dark] :is(nav a[aria-current],.panel a:not(.primary,.secondary),.section-head a,.textlink,#suggestions a){color:var(--blue)}
+[data-theme=dark] .hero{background:#203658;border-color:#45638a}
+[data-theme=dark] .hero h1{color:#f1f6ff}
+[data-theme=dark] .hero p{color:#c9d9ee}
+[data-theme=dark] .eyebrow{background:#334e74;color:#e0edff}
+[data-theme=dark] .hero-art{background:radial-gradient(ellipse at center,#345680,transparent 70%)}
+[data-theme=dark] .orbit{border-color:#59779e}
+[data-theme=dark] .spark{color:#96baf0}
+[data-theme=dark] :focus-visible{outline-color:#a5ccff}
+@media(max-width:430px){.nav .tools{gap:3px}.nav .iconbtn,.nav .progress-link{padding-inline:6px;min-width:32px}.nav nav{gap:14px}.nav .brand{white-space:normal}}

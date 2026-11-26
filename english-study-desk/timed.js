@@ -141,6 +141,8 @@ function timedView() {
       <button class="secondary" id="save-target" type="button">Save improvement</button>
       <p id="target-status" role="status"></p>
     </section>
+    ${markingView()}
+    ${selfMarkingView()}
   </section>`;
 }
 
@@ -159,6 +161,7 @@ function wireTimed(section) {
   const mode = $("#practice-mode");
   let cleared = "";
   const editor = $("#timed-answer");
+  const marking = wireMarking(session,editor);
   const select = $("#timed-topic");
   const limit = $("#timer-limit");
   const toggle = $("#timer-toggle");
@@ -178,6 +181,7 @@ function wireTimed(section) {
     try { localStorage.setItem(timedDraftKey, JSON.stringify(timedDrafts)); }
     catch { $("#draft-status").textContent = "Drafts will last until you close or reload this page."; }
     showCount();
+    marking.invalidate();
   }
 
   function showClock() {
@@ -220,6 +224,7 @@ function wireTimed(section) {
     $("#timed-help").open = false;
     $("#question-position").textContent = "Question " + (session.question + 1) + " of " + questions.length;
     editor.value = timedDrafts[draftId()] || "";
+    marking.reset();
     limit.value = String(session.minutes);
     showCount();
     showClock();
