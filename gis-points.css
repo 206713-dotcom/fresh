@@ -23,7 +23,6 @@
   right: max(.85rem, env(safe-area-inset-right));
   z-index: 90;
 }
-[data-gis-points] { display: inline-flex; }
 .gisp-dialog, .gisp-dialog * { box-sizing: border-box; }
 .gisp-dialog {
   width: min(31rem, calc(100% - 2rem));

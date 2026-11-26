@@ -243,6 +243,51 @@
 .fresh-home .hero-actions .python-link span { display: inline-block; transition: transform .25s ease; }
 .fresh-home .hero-actions .python-link:hover span { transform: translateX(4px); }
 
+.fresh-home .home-points {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: .65rem;
+  width: min(100%, 22rem);
+  margin-bottom: 1rem;
+  padding: .65rem .8rem;
+  border: 1px solid #e4eeb25c;
+  border-radius: .85rem;
+  background: #18372d;
+  color: #f6efd8;
+  text-align: left;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.fresh-home .home-points[hidden] { display: none; }
+.fresh-home .home-points:hover {
+  background: #254b3b;
+  border-color: var(--lime);
+}
+.fresh-home .home-points:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+.fresh-home .home-points-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .55rem;
+  background: var(--lime);
+  color: var(--deep);
+  font-size: 1.05rem;
+}
+.fresh-home .home-points-label > span,
+.fresh-home .home-points-label small { display: block; }
+.fresh-home .home-points-label > span { font-size: .95rem; }
+.fresh-home .home-points-label small { margin-top: .22rem; color: #d0e0ce; font-size: .7rem; font-weight: 500; }
+.fresh-home .home-points strong {
+  color: var(--lime);
+  font-size: 1.3rem;
+  font-variant-numeric: tabular-nums;
+}
+.fresh-home .home-points-arrow { color: var(--lime); }
+
 /* Once the entrance has played, home.js adds .is-settled and the one-off animations are dropped */
 .fresh-home .hero.is-settled h1 .ch,
 .fresh-home .hero.is-settled .hero-copy > p,

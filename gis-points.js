@@ -111,13 +111,16 @@
   });
 
   function mount() {
-    const slot = document.querySelector("[data-gis-points]");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "gisp-button" + (slot ? "" : " gisp-floating");
+    let button = document.querySelector("[data-gis-points-trigger]");
+    if (!button) {
+      button = document.createElement("button");
+      button.type = "button";
+      button.className = "gisp-button gisp-floating";
+      button.innerHTML = '<span class="gisp-star" aria-hidden="true">✦</span><strong data-gisp-count>0</strong><span>GIS Points</span>';
+      document.body.append(button);
+    }
     button.setAttribute("aria-haspopup", "dialog");
-    button.innerHTML = '<span class="gisp-star" aria-hidden="true">✦</span><strong>0</strong><span>GIS Points</span>';
-    (slot || document.body).append(button);
+    const balanceLabel = button.querySelector("[data-gisp-count]");
 
     const dialog = document.createElement("dialog");
     dialog.className = "gisp-dialog";
@@ -141,7 +144,7 @@
 
     function render() {
       const state = readWallet();
-      button.querySelector("strong").textContent = format.format(state.balance);
+      balanceLabel.textContent = format.format(state.balance);
       button.setAttribute("aria-label", format.format(state.balance) + " GIS Points. Open activity");
       if (!dialog.open) return;
       dialog.querySelector("[data-gisp-balance]").textContent = format.format(state.balance);
@@ -166,6 +169,7 @@
     dialog.querySelector("[data-gisp-subjects]").addEventListener("click", () => dialog.close());
     window.addEventListener(changeEvent, render);
     render();
+    button.hidden = false;
 
     for (const answer of document.querySelectorAll(".topic[id] .practice details")) {
       const topic = answer.closest(".topic");
