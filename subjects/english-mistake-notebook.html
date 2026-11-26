@@ -29,8 +29,10 @@
     </div>
   </nav>
   <section class="section" id="notebook" aria-labelledby="notebook-title">
-    <p class="eyebrow">My progress</p><h1 id="notebook-title">Mistake Notebook</h1>
-    <p>Save an excerpt and the change you want to make. Mark a note resolved once you have practised the revision.</p>
+    <div class="tool-heading journal-heading">
+      <h1 id="notebook-title">Mistake Notebook</h1>
+      <p>Save an excerpt and the change you want to make. Mark a note resolved after practising the revision.</p>
+    </div>
     <details id="notebook-exercises" hidden>
       <summary>Practice questions</summary>
       <p>Choose an excerpt to revise, then compare your response with an example.</p>
@@ -40,14 +42,23 @@
       <button id="notebook-use-excerpt" type="button">Use excerpt in notebook</button>
       <details id="notebook-example"><summary>Show example revision</summary><p id="notebook-example-text"></p></details>
     </details>
-    <div class="workspace">
+    <div class="workspace journal-workspace">
       <form class="panel" id="notebook-form">
+        <h2>Add a note</h2>
         <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
         <label for="mistake-excerpt">Original excerpt</label><textarea id="mistake-excerpt" required maxlength="600" rows="2"></textarea>
         <label for="mistake-next">What will you change?</label><textarea id="mistake-next" required maxlength="600" rows="2"></textarea>
         <div class="actions"><button class="button">Save mistake</button><button id="notebook-clear" type="button">Clear writing</button></div><p id="notebook-status" role="status"></p>
       </form>
-      <article class="panel"><h3>Saved mistakes</h3><ul id="mistakes" class="records"></ul></article>
+      <section class="journal-entries" aria-labelledby="journal-entries-title">
+        <h2 id="journal-entries-title">Saved notes</h2>
+        <div class="journal-filter">
+          <label for="notebook-filter">Show</label>
+          <select id="notebook-filter"><option value="all">All notes</option><option value="open">To revise</option><option value="resolved">Resolved</option></select>
+        </div>
+        <p id="notebook-count" role="status"></p>
+        <ul id="mistakes" class="records journal-cards"></ul>
+      </section>
     </div>
   </section>
 </main>

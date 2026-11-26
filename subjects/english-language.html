@@ -46,10 +46,13 @@
     <details><summary>Coursework and speaking routes</summary><p>Component 3 can replace Paper 2. The coursework portfolio includes a source-based argumentative, discursive or persuasive assignment (30 marks), description (25) and narrative (25). Optional Component 4 is a separately endorsed individual talk and conversation worth 40 marks.</p></details>
     <p class="resources"><a href="https://www.cambridgeinternational.org/Images/718783-2027-2029-syllabus.pdf">Official syllabus</a><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-english-first-language-0500/past-papers/">Specimen papers and mark schemes</a></p>
   </section>
-  <section id="practice" class="section" aria-labelledby="work-title">
-    <p class="eyebrow">Timed practice</p><h2 id="work-title">Practice Desk</h2>
-    <p>Choose an original practice task. Your drafts and completion history stay in this browser.</p>
-    <div class="desk-bar"><div><label for="task">Practice task</label><select id="task"></select><button id="desk-new-question" type="button">New question</button></div><div class="desk-time"><span>Time remaining</span><span id="timer" role="timer"></span></div></div>
+  <section id="practice" class="section split-desk" aria-labelledby="work-title">
+    <div class="tool-heading desk-heading">
+      <h2 id="work-title">Practice Desk</h2>
+      <p>Read the source and draft your response. Your work is saved in this browser.</p>
+    </div>
+    <div class="desk-task actions"><label for="task">Practice task</label><select id="task"></select><button id="desk-new-question" type="button">New question</button></div>
+    <div class="desk-bar"><div class="desk-time"><span>Time remaining</span><span id="timer" role="timer"></span></div><span id="words"></span></div>
     <p id="completion" role="status"></p>
     <details class="reading-settings" data-exam-help><summary>Reading and writing display</summary>
     <div class="settings">
@@ -62,15 +65,19 @@
     <p id="exam-status" role="status"></p>
     <details id="saved-attempts" data-exam-help><summary>Recent submitted attempts</summary><ul id="attempt-list" class="records"></ul></details>
     <noscript><p>Enable JavaScript to use the practice workspace.</p></noscript>
+    <div class="desk-switch" role="group" aria-label="Practice Desk view" hidden>
+      <button type="button" data-desk-pane="source" aria-pressed="true" aria-controls="desk-source">Source</button>
+      <button type="button" data-desk-pane="write" aria-pressed="false" aria-controls="desk-write">Write</button>
+    </div>
     <div class="workspace desk-workspace">
-      <article class="panel">
+      <article class="panel desk-source" id="desk-source">
         <p class="eyebrow" id="task-meta"></p><h3 id="task-title"></h3><p id="prompt"></p><p class="note" id="task-objectives" data-exam-help></p>
         <div id="source-panel"><h4>Source text</h4><div id="source" class="source"></div></div>
       </article>
-      <article class="panel">
+      <article class="panel desk-write" id="desk-write">
         <label for="response">Your response</label>
         <textarea id="response" rows="11" maxlength="9000" aria-describedby="words storage"></textarea>
-        <div class="controls"><span id="words"></span><span id="storage" role="status"></span></div>
+        <div id="storage" role="status"></div>
         <div class="actions"><button id="desk-clear" type="button">Clear writing</button><button id="timer-toggle" type="button">Start timer</button><button id="timer-reset" type="button">Reset timer</button><button id="download" type="button">Download draft</button></div>
         <div class="actions" data-exam-help><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button><button id="mark-cancel" type="button" hidden>Cancel AI feedback</button></div>
         <p class="note" data-exam-help>AI feedback is an experimental practice estimate. It requires WebGPU and an initial model download. Your response is processed on your device.</p>
