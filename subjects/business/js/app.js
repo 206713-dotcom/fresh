@@ -325,13 +325,21 @@
         mobileLoad.disabled = !!s.loading || !!s.ready;
       }
     }
+    /* Loading the model from the header is an explicit opt-in to local marking:
+     * select the local engine first, otherwise an earlier "Instant Examiner"
+     * selection would silently keep overriding the loaded model. */
+    function loadLocalEngine() {
+      if (!window.EC || !EC.ai) return;
+      if (typeof EC.ai.setMode === 'function') EC.ai.setMode('local');
+      if (typeof EC.ai.load === 'function') EC.ai.load();
+    }
     document.addEventListener('click', function (event) {
       var mobileLoad = event.target.closest && event.target.closest('#mobileAiLoad');
-      if (mobileLoad && window.EC && EC.ai) { event.preventDefault(); EC.ai.load(); return; }
+      if (mobileLoad) { event.preventDefault(); loadLocalEngine(); return; }
       var loadBtn = event.target.closest && event.target.closest('#aiLoadBtn');
-      if (loadBtn && window.EC && EC.ai) {
+      if (loadBtn) {
         event.preventDefault();
-        EC.ai.load();
+        loadLocalEngine();
         return;
       }
     });

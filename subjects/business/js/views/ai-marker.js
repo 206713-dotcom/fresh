@@ -7,10 +7,10 @@
  * Paper 2 level-gated marking and 8-mark band labels) and exposes them as
  * window.EC.autoMark(answer, questionInfo).
  *
- * The optional local model path loads Transformers.js v3 directly from the
- * jsDelivr ESM CDN (no build step, no worker bundle) and runs the q4f16 Qwen 3
- * 0.6B ONNX model with WebGPU, falling back to WASM. It ALWAYS degrades to the
- * deterministic marker if the CDN/model cannot load or generate.
+ * The optional local model path loads a quantized Qwen 3 0.6B GGUF through
+ * llama.cpp/WASM (wllama) from the jsDelivr ESM CDN — no build step, no WebGPU
+ * shader compile, no worker bundle. It ALWAYS degrades to the deterministic
+ * marker if the CDN/model cannot load or generate.
  */
 (function () {
   "use strict";
@@ -1321,6 +1321,9 @@
   var transformersPromise = null;
   var aiReady = false;
   var aiLoading = false;
+  /* Which engine marking calls use. 'instant' forces the deterministic
+   * examiner even when the downloaded model is ready; 'local' uses the model. */
+  var engineMode = "local";
 
   /* Watchdog state. There is no module worker here, so the GPU/ONNX call itself
    * cannot truly be aborted: it runs on the main thread. What we CAN guarantee
@@ -1329,7 +1332,7 @@
   var LOAD_TIMEOUT_MS = 300000;   /* 300 s download / shader-compile budget */
   var MARK_TIMEOUT_MS = 300000;   /* idle timeout between streamed tokens */
   var REAUDIT_TIMEOUT_MS = 240000; /* per-paragraph re-audit budget */
-  var MARK_TOTAL_MS = 600000;      /* absolute cap for one generation */
+  var MARK_TOTAL_MS = 150000;      /* absolute cap for one generation (2.5 min) */
   var aiBusy = false;             /* module-level guard: one generation at a time */
   var loadEpoch = 0;              /* rejects callbacks from a timed-out load */
   var loadTimer = null;
@@ -1368,7 +1371,7 @@
   var aiState = {
     status: "Local AI: not loaded — instant deterministic marker is active.",
     ready: false, loading: false, progress: 0, percent: 0,
-    device: "webgpu", reason: deviceReason()
+    device: "webgpu", reason: deviceReason(), mode: engineMode
   };
   /* Real device detection (§4.4): navigator.deviceMemory + navigator.gpu.
    * The sync label is available immediately; an async adapter probe below
@@ -1398,6 +1401,9 @@
     try {
       if (!navigator.gpu || typeof navigator.gpu.requestAdapter !== "function") return;
       navigator.gpu.requestAdapter().then(function (adapter) {
+        /* GGUF/llama.cpp runs on CPU/WASM; a WebGPU adapter probe must not
+         * overwrite that label with a GPU description. */
+        if (generator && generator.isWllama) return;
         if (!adapter) {
           aiState.reason = "WebGPU hardware adapter unavailable";
           aiState.device = "wasm";
@@ -1417,6 +1423,17 @@
     for (var i = 0; i < aiListeners.length; i++) {
       try { aiListeners[i](aiState); } catch (e) {}
     }
+  }
+
+  /* Called by the Paper 1 / Paper 2 engine toggle. Changing the mode is a
+   * state change only: it must not start a download or a generation. */
+  function setEngineMode(next) {
+    var mode = String(next) === "instant" ? "instant" : "local";
+    if (engineMode === mode) return mode;
+    engineMode = mode;
+    aiState.mode = mode;
+    emitAi();
+    return mode;
   }
 
   function el(id) { return (typeof document !== "undefined") ? document.getElementById(id) : null; }
@@ -1566,6 +1583,104 @@
     return transformersPromise;
   }
 
+  /* ---- GGUF / wllama (llama.cpp WASM) engine, same loader style as Economics ---- *
+   * The quantized GGUF model runs entirely on the CPU through llama.cpp/WASM.
+   * It avoids the 650 MB WebGPU ONNX download and its shader-compile stall, and
+   * the streamed completion is usually quicker on modest hardware.             */
+  var GGUF_BASE = "https://huggingface.co/SemiLunarz/qwen3-0.6b-igcse-0264-gguf/resolve/main/";
+  var WLLAMA_PATH = "https://cdn.jsdelivr.net/npm/@wllama/wllama@3.13.0/esm/";
+  var GGUF_CACHE = "ecbiz-business-qwen3-gguf-v1";
+  var GGUF_CACHED_KEY = "qwen3_gguf_cached_v1";
+
+  function dynamicImport(url) {
+    var fn = new Function("u", "return import(u)");
+    return fn(url);
+  }
+  function ggufFetch(url) {
+    return fetch(url, { cache: "no-store", signal: (typeof AbortSignal !== "undefined" && AbortSignal.timeout) ? AbortSignal.timeout(180000) : undefined })
+      .then(function (r) { if (!r.ok) throw new Error("model download unavailable (" + r.status + ")"); return r; });
+  }
+  function hexSha256(blob) {
+    return blob.arrayBuffer().then(function (buf) { return crypto.subtle.digest("SHA-256", buf); }).then(function (d) {
+      return Array.prototype.map.call(new Uint8Array(d), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+    });
+  }
+  /* Qwen3 ChatML with thinking off: identical to the template the ONNX path used. */
+  function qwenChatPrompt(messages) {
+    var out = "";
+    for (var i = 0; i < messages.length; i++) {
+      out += "<|im_start|>" + messages[i].role + "\n" + String(messages[i].content == null ? "" : messages[i].content) + "<|im_end|>\n";
+    }
+    return out + "<|im_start|>assistant\n<think>\n\n</think>\n\n";
+  }
+
+  var _ggufBlobs = [];
+  function openWllamaGenerator(progressCb, isStale) {
+    var cachePromise = (typeof caches !== "undefined" && caches.open) ? caches.open(GGUF_CACHE)["catch"](function () { return null; }) : Promise.resolve(null);
+    return cachePromise.then(function (cache) {
+      return ggufFetch(GGUF_BASE + "SHA256SUMS").then(function (r) { return r.text(); }).then(function (manifest) {
+        var lines = manifest.trim().split("\n"), parts = [];
+        for (var i = 0; i < lines.length; i++) {
+          var m = /^([a-f0-9]{64})\s+\*?(model\.part-\d{2})$/.exec(lines[i].trim());
+          if (!m || m[2] !== "model.part-" + ("0" + i).slice(-2)) throw new Error("model manifest is incomplete");
+          parts.push({ hash: m[1], url: GGUF_BASE + m[2] });
+        }
+        if (!parts.length) throw new Error("model manifest is empty");
+        var blobs = _ggufBlobs = [], index = 0;
+        function next() {
+          if (index >= parts.length) return Promise.resolve();
+          if (isStale()) return Promise.reject(new Error("load cancelled"));
+          var part = parts[index];
+          return (cache ? cache.match(part.url) : Promise.resolve(null)).then(function (cached) {
+            return (cached ? Promise.resolve(cached) : ggufFetch(part.url)).then(function (resp) {
+              return resp.blob().then(function (blob) {
+                return hexSha256(blob).then(function (sum) {
+                  if (sum !== part.hash) {
+                    if (cache) cache["delete"](part.url);
+                    throw new Error("a model file failed verification");
+                  }
+                  if (!cached && cache) { try { cache.put(part.url, new Response(blob))["catch"](function () {}); } catch (e) {} }
+                  blobs.push(blob);
+                  index++;
+                  progressCb({ status: "gguf_progress", progress: index / parts.length, index: index, total: parts.length });
+                  return next();
+                });
+              });
+            });
+          });
+        }
+        return next();
+      }).then(function () {
+        progressCb({ status: "gguf_loading" });
+        return dynamicImport(WLLAMA_PATH + "index.js");
+      }).then(function (mod) {
+        var engine = new mod.Wllama({ "default": WLLAMA_PATH + "wasm/wllama.wasm" });
+        try { engine.setCompat("default", "firefox_safari"); } catch (e) {}
+        return engine.loadModel([new Blob(_ggufBlobs)], { n_ctx: 4096 }).then(function () { return engine; }, function (err) {
+          try { engine.exit(); } catch (e) {}
+          throw err;
+        });
+      });
+    }).then(function (engine) {
+      var gen = function (prompt, opts) {
+        opts = opts || {};
+        return engine.createCompletion({
+          prompt: String(prompt),
+          max_tokens: opts.max_new_tokens || 200,
+          temperature: 0,
+          penalty_repeat: opts.repetition_penalty || 1.1
+        }).then(function (resp) {
+          var text = resp && resp.choices && resp.choices[0] ? resp.choices[0].text : "";
+          return [{ generated_text: String(text || "") }];
+        });
+      };
+      gen.isWllama = true;
+      gen.engine = engine;
+      gen.tokenizer = { apply_chat_template: function (messages) { return qwenChatPrompt(messages); } };
+      return gen;
+    });
+  }
+
   function createGenerator(tf, device, progressCb) {
     return tf.pipeline("text-generation", MODEL_ID, {
       dtype: "q4",
@@ -1636,7 +1751,7 @@
     var epoch = ++loadEpoch;
     aiLoading = true;
     aiState.loading = true;
-    status("Local AI: loading Transformers.js from CDN…");
+    status("Local AI: loading the local marking model (llama.cpp)…");
     showProgress();
     updateDownloadBanner();
     probeGpuAdapter();
@@ -1662,6 +1777,13 @@
       if (epoch !== loadEpoch) return;
       try {
         if (!p) return;
+        if (p.status === "gguf_progress") {
+          var gp = Math.min(99, Math.round(p.progress * 100));
+          setProgress(gp); aiState.percent = gp; emitAi();
+          status("Local AI: downloading marking model - part " + p.index + " of " + p.total + " (" + gp + "%)...");
+          return;
+        }
+        if (p.status === "gguf_loading") { setProgress(99); status("Local AI: loading the model into memory..."); return; }
         if (p.status === "progress_total" && typeof p.progress === "number") {
           var pct = Math.min(99, Math.round(p.progress * 100));
           var mb = p.total ? " (" + Math.round((p.loaded || 0) / 1048576) + "/" + Math.round(p.total / 1048576) + " MB)" : "";
@@ -1682,37 +1804,21 @@
       } catch (e) {}
     }
 
-    loadTransformers().then(function (tf) {
-      if (epoch !== loadEpoch) return null;
-      /* Pin the cache namespace and base env flags immediately after import,
-       * before pipeline(), so cached ONNX weights from the React build are reused. */
-      try {
-        tf.env.allowLocalModels = false;
-        tf.env.useBrowserCache = true;
-        tf.env.cacheKey = (EC.aiCacheKey ? EC.aiCacheKey() : "transformers-cache-0264-v10");
-      } catch (e) {}
-      return createGenerator(tf, "webgpu", onProgress)["catch"](function () {
-        if (epoch !== loadEpoch) return null;
-        status("Local AI: WebGPU unavailable, retrying with WASM…");
-        aiState.reason = "WebGPU hardware adapter unavailable";
-        aiState.device = "wasm";
-        emitAi(); updateDownloadBanner();
-        setProgress(0);
-        return createGenerator(tf, "wasm", onProgress);
-      });
-    }).then(function (pipe) {
+    openWllamaGenerator(onProgress, function () { return epoch !== loadEpoch; }).then(function (pipe) {
       if (epoch !== loadEpoch || !pipe) return;
       generator = pipe;
       aiReady = true;
       finishLoading();
       aiState.ready = true; aiState.percent = 100; emitAi();
-      try { EC.store.set("qwen3_cached_v2", true); } catch (e) {}
+      aiState.device = "wasm"; aiState.reason = "llama.cpp (CPU/WASM)";
+      try { EC.store.set(GGUF_CACHED_KEY, true); } catch (e) {}
       /* Legacy tier keys must match the original raw localStorage values. */
       try {
         localStorage.setItem("ecbiz_qwen3_cached_tier_v2", "0.6b");
         localStorage.setItem("ecbiz_qwen_preferred_tier", "0.6b");
       } catch (e) {}
       hideProgress();
+      try { console.log("[Local AI] model ready (GGUF via llama.cpp/wllama, CPU/WASM)."); } catch (e) {}
       status("Local AI: Qwen 3 0.6B downloaded and ready — marking can use the local model.");
       enableAiRun();
       resetDownloadButton("Local AI ready");
@@ -2208,11 +2314,11 @@
         stopCriteria = new tfModule.InterruptableStoppingCriteria();
       }
       streamStart();
-      streamer = new tfModule.TextStreamer(generator.tokenizer, {
+      streamer = (tfModule && tfModule.TextStreamer) ? new tfModule.TextStreamer(generator.tokenizer, {
         skip_prompt: true,
         skip_special_tokens: true,
         callback_function: function (token) { streamToken(token); }
-      });
+      }) : null;
     } catch (e) {
       cleanupGeneration();
       streamFail();
@@ -2257,10 +2363,7 @@
               }) + "{";
               var oneCriteria = (tfModule && typeof tfModule.InterruptableStoppingCriteria === "function")
                 ? new tfModule.InterruptableStoppingCriteria() : null;
-              var oneStreamer = new tfModule.TextStreamer(generator.tokenizer, {
-                skip_prompt: true, skip_special_tokens: true,
-                callback_function: function (token) { if (aiHeartbeat) { try { aiHeartbeat(); } catch (e) {} } }
-              });
+              var oneStreamer = null;
               var oneOpts = { max_new_tokens: 180, do_sample: false, repetition_penalty: 1.1, return_full_text: false };
               var reauditGen;
               try {
@@ -2546,30 +2649,63 @@
 
   var deterministicAutoMark = autoMark;
   EC.autoMark = function (answer, questionInfo, aiParagraphs) {
-    var b = answer;
-    if (arguments.length === 1 && b && typeof b === "object" && b.answer !== undefined && aiReady && generator && !aiBusy) {
+    /* Both calling shapes must reach the local model:
+     *   autoMark(payloadObject)             (Paper 1, AI Marker page)
+     *   autoMark(answerText, questionInfo)  (Paper 2)
+     * The old single-object-only check made Paper 2 always fall back to the
+     * deterministic examiner even when the model was loaded and ready. */
+    var b = null;
+    if (answer && typeof answer === "object" && answer.answer !== undefined) {
+      b = answer;
+    } else if (typeof answer === "string" && questionInfo && typeof questionInfo === "object") {
+      var merged = {};
+      for (var k in questionInfo) {
+        if (Object.prototype.hasOwnProperty.call(questionInfo, k)) merged[k] = questionInfo[k];
+      }
+      merged.answer = answer;
+      b = merged;
+    }
+    if (b && engineMode !== "instant" && aiReady && generator && !aiBusy) {
       var info = {
         mark_value: b.markValue != null ? b.markValue : b.mark_value,
         question_text: b.questionText || b.question_text,
-        questionType: b.questionType,
+        questionType: b.questionType || b.question_type || b.qtype,
         paper: b.paper,
         model_answer: b.modelAnswer || b.model_answer,
         mark_scheme: b.markScheme || b.mark_scheme,
-        caseMainStem: b.caseStem || b.caseMainStem || b.scenario_stem,
+        caseMainStem: b.caseStem || b.caseMainStem || b.scenario_stem || b.case_stem,
         qwen_marking_keys: b.qwen_marking_keys,
         validAppWords: b.validAppWords,
         questionId: b.questionId
       };
+      var markStart = Date.now();
+      var banner = document.getElementById("ec-ai-marking-banner");
+      if (!banner && document.body) {
+        banner = document.createElement("div");
+        banner.id = "ec-ai-marking-banner";
+        banner.setAttribute("role", "status");
+        banner.style.cssText = "position:fixed;left:50%;bottom:72px;transform:translateX(-50%);z-index:9999;background:#203e32;color:#fffdf3;padding:10px 16px;border-radius:12px;font:600 13px system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.25);max-width:90vw;text-align:center";
+        document.body.appendChild(banner);
+      }
+      if (banner) banner.textContent = "Local AI is marking your answer... this can take up to 2 minutes, then the Instant Examiner is used if it is not finished.";
+      function hideBanner() {
+        var el = document.getElementById("ec-ai-marking-banner");
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+        try { console.log("[Local AI] marking finished in " + Math.round((Date.now() - markStart) / 1000) + "s, device = " + aiState.device); } catch (e) {}
+      }
       var p = markWithLocalAI(b.answer, info, null);
       if (p && typeof p.then === "function") {
-        return p.then(function (r) { return r || deterministicAutoMark(b); }, function () { return deterministicAutoMark(b); });
+        return p.then(function (r) { hideBanner(); return r || deterministicAutoMark(b); }, function () { hideBanner(); return deterministicAutoMark(b); });
       }
+      hideBanner();
     }
     return deterministicAutoMark.apply(null, arguments);
   };
   EC.ai = {
     /* No-op while busy/loading — a second load or generation cannot be started. */
     load: function () { if (aiBusy || aiLoading) return; loadLocalAI(); },
+    setMode: function (mode) { return setEngineMode(mode); },
+    getMode: function () { return engineMode; },
     isReady: function () { return aiReady; },
     isLoading: function () { return aiLoading; },
     isBusy: function () { return aiBusy; },
@@ -2577,11 +2713,13 @@
     onChange: function (fn) {
       if (typeof fn === "function") { aiListeners.push(fn); try { fn(aiState); } catch (e) {} }
     },
-    reason: deviceReason
+    /* Live reason: llama.cpp/WASM after a GGUF load, device probe otherwise. */
+    reason: function () { return aiState.reason || deviceReason(); }
   };
   /* Original behaviour: a returning user with a cached model saw "AI ready"
    * without clicking anything. */
-  if (window.location.protocol !== "file:" && EC.store && typeof EC.store.get === "function" && EC.store.get("qwen3_cached_v2", false)) {
+  if (window.location.protocol !== "file:" && EC.store && typeof EC.store.get === "function" &&
+      (EC.store.get(GGUF_CACHED_KEY, false) || EC.store.get("qwen3_cached_v2", false))) {
     setTimeout(function () { loadLocalAI(); }, 1200);
   }
   EC.register("ai-marker", { title: "AI Marker", render: renderView });

@@ -670,11 +670,14 @@
      setUseLocalAI(true) plus initializeWebLLM(), never a page navigation. */
   function enableLocalAI(i) {
     state.useLocalAI = true;
+    if (EC.ai && typeof EC.ai.setMode === 'function') EC.ai.setMode('local');
     if (EC.ai && typeof EC.ai.load === 'function') EC.ai.load();
     /* Keep the immediate marking of an existing answer, but only call it a
        Local AI evaluation once the model is actually ready. */
     if (i >= 0 && s(getDraft(i)).trim()) {
-      var aiActive = !!(EC.ai && EC.ai.isReady && EC.ai.isReady());
+      var aiActive = !!(EC.ai && EC.ai.isReady && EC.ai.isReady()) &&
+        !(EC.ai && typeof EC.ai.getMode === 'function' && EC.ai.getMode() === 'instant');
+      state.useLocalAI = aiActive;
       withAutoMark(i, function (r) {
         showExaminer(i, r || localExaminerResult(i), aiActive ? 'Local AI' : 'Instant Examiner');
       });
@@ -683,8 +686,11 @@
   }
 
   function runInstantExaminer(i) {
-    if (!s(getDraft(i)).trim()) return;
+    /* Switching to the instant engine must work even before an answer exists:
+     * it is a mode change, not just a one-off marking action. */
     state.useLocalAI = false;
+    if (EC.ai && typeof EC.ai.setMode === 'function') EC.ai.setMode('instant');
+    if (!s(getDraft(i)).trim()) { renderAll(); return; }
     withAutoMark(i, function (r) { showExaminer(i, r || localExaminerResult(i), 'Instant Examiner'); });
     renderAll();
   }
@@ -700,7 +706,11 @@
       var d = normalizeResult(r || localExaminerResult(i), q);
       state.evaluating[i] = false;
       if (d) {
-        var useLocal = state.useLocalAI && EC.ai && EC.ai.isReady && EC.ai.isReady();
+        /* The shared engine mode is authoritative: after a reload the view-local
+         * flag can still be false even though local marking is selected. */
+        var useLocal = EC.ai && EC.ai.isReady && EC.ai.isReady() &&
+          typeof EC.ai.getMode === 'function' && EC.ai.getMode() === 'local';
+        state.useLocalAI = useLocal;
         d.source = useLocal ? 'Local AI' : 'Cambridge Senior Examiner';
         d.isAiEvaluated = r && !r.local ? !!r.isAiEvaluated : false;
         persistEval(i, withMeta(i, d));
@@ -1353,7 +1363,7 @@
             ? ico(ICON.sparkles, 'w-4 h-4 animate-spin')
             : ico(ICON.sparkles, 'w-4 h-4')) +
           '<span>' + (state.evaluating[i]
-            ? (state.useLocalAI && EC.ai && EC.ai.isReady && EC.ai.isReady() ? 'Assessing with ' + AI_MODEL_LABEL + '…' : 'Assessing with CIE 0264 Examiner…')
+            ? (EC.ai && EC.ai.isReady && EC.ai.isReady() && typeof EC.ai.getMode === 'function' && EC.ai.getMode() === 'local' ? 'Assessing with ' + AI_MODEL_LABEL + '…' : 'Assessing with CIE 0264 Examiner…')
             : (ev ? 'Re-evaluate Response' : 'Submit for Assessment')) + '</span>' +
         '</button>' +
         /* ✏️ Self-Assess / Grade — exact original label / variant, aliases open-self. */
@@ -1420,8 +1430,9 @@
   /* Marking engine controls driven by EC.ai (see js/views/ai-marker.js). */
   function renderEngine() {
     var a = aiInfo();
-    var localPressed = a.ready && state.useLocalAI ? 'true' : 'false';
-    var instantPressed = (!a.ready || !state.useLocalAI) ? 'true' : 'false';
+    var mode = (EC.ai && typeof EC.ai.getMode === 'function' && EC.ai.getMode() === 'instant') ? 'instant' : 'local';
+    var localPressed = mode === 'local' ? 'true' : 'false';
+    var instantPressed = mode === 'instant' ? 'true' : 'false';
     var h = '<div class="study-paper-two-engine" role="group" aria-label="Marking engine">' +
       '<button type="button" class="study-engine-option" aria-pressed="' + localPressed + '" data-act="enable-local-ai" title="' +
         (a.ready ? esc(AI_MODEL_LABEL + ' ready — local marking active') : 'First use downloads ~650 MB') + '"' +

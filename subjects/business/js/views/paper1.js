@@ -217,16 +217,18 @@
 
   function engineHtml() {
     var a = aiInfo();
+    var mode = (EC.ai && typeof EC.ai.getMode === "function" && EC.ai.getMode() === "instant") ? "instant" : "local";
     var h = '<div role="group" aria-label="Marking engine" class="study-engine">' +
       '<button type="button" data-action="enable-local-ai" class="study-engine-option" ' +
-        'aria-pressed="' + (a.ready ? "true" : "false") + '" title="' +
+        'aria-pressed="' + (mode === "local" ? "true" : "false") + '" title="' +
         esc(a.ready ? AI_MODEL_LABEL + " ready — local marking active"
                     : "Load " + AI_MODEL_LABEL + " (~650 MB) in the background") + '"' +
         (a.loading || a.blocked ? ' disabled' : '') + '>' +
         '<span>' + esc(a.label) + '</span>' +
         (a.ready ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500" title="' + esc(AI_MODEL_LABEL + " ready") + '"></span>' : '') +
       '</button>' +
-      '<button type="button" aria-pressed="' + (a.ready ? "false" : "true") + '" class="study-engine-option">Instant Examiner</button>' +
+      '<button type="button" data-action="instant-examiner" aria-pressed="' +
+        (mode === "instant" ? "true" : "false") + '" class="study-engine-option">Instant Examiner</button>' +
       '</div>';
     if (a.loading) {
       /* Sky progress banner from the original PracticeStudio (amber for WASM). */
@@ -2780,9 +2782,14 @@
     } else if (action === "open-sections") {
       EC.navigate("sections");
     } else if (action === "enable-local-ai") {
-      /* Load the model in place — the original loads it in the background
-         rather than navigating away to the AI Marker page. */
+      /* Select the local engine, then load the model in place — the original
+         loads it in the background rather than navigating away to AI Marker. */
+      if (EC.ai && typeof EC.ai.setMode === "function") EC.ai.setMode("local");
       if (EC.ai && typeof EC.ai.load === "function") EC.ai.load();
+      refreshEngine();
+    } else if (action === "instant-examiner") {
+      /* This button had no data-action/handler, so it never switched engines. */
+      if (EC.ai && typeof EC.ai.setMode === "function") EC.ai.setMode("instant");
       refreshEngine();
     } else if (action === "open-ai-marker") {
       /* Kept only for the optional secondary "Open AI Marker ↗" link. */
