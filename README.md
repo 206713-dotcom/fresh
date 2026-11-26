@@ -75,7 +75,9 @@ Geodesic connects worked examples with visual explanations, practical activities
 
 ### Computer Science (0478)
 
-The IGCSE starter page covers binary place values, trace tables and Boolean expressions. Work out the result by hand, then reveal the answer to check each step. [Open Computer Science](https://gisfresh.me/subjects/computer-science.html)
+PyQuest opens directly to the IGCSE 0478 study area. Choose a topic from Paper 1 Computer Systems or Paper 2 Algorithms, Programming and Logic for notes, worked examples and exam-style questions. [Open IGCSE Computer Science](https://gisfresh.me/subjects/pyquest/#igcse)
+
+**Quick revision.** Practise binary place values, trace tables and Boolean expressions with short worked examples. [Open quick practice](https://gisfresh.me/subjects/computer-science.html)
 
 **Python with PyQuest.** Use lessons and challenges to build up from a first program, or open the Code Lab for your own experiments. PyQuest runs code in the browser and can save exercises, test results and code drafts on the device. Use a local profile backup if you want to move that work to a different browser. [Open PyQuest](https://gisfresh.me/subjects/pyquest/)
 
