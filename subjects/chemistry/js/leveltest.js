@@ -159,7 +159,8 @@
   let shown = false;
   function prompt() {
     if (shown || store.get(PROMPT, false) || S.done) return; const h = location.hash.slice(1);
-    if (!['', 'start', 'enter', 'home', 'chemistry'].includes(h) || (window.GCIntro && window.GCIntro.playing) || document.querySelector('.chat.open, .chat[open]')) return;
+    const loading = document.getElementById('science-loading');
+    if (!['', 'start', 'enter', 'home', 'chemistry'].includes(h) || document.documentElement.classList.contains('intro') || (window.GCIntro && window.GCIntro.playing) || (loading && !loading.hidden) || document.querySelector('.chat.open, .chat[open]')) return;
     shown = true; store.set(PROMPT, true);
     const d = document.createElement('div'); d.className = 'lt-pop'; d.innerHTML = `<div class="lt-pop-card panel" role="dialog" aria-modal="true" aria-labelledby="ltPopH"><button type="button" class="lt-pop-x" aria-label="Close" data-x>×</button><p class="kicker">New here?</p><h2 id="ltPopH">Find your level in 30 questions.</h2><p>A short test from KS3 to the Chemistry Olympiad. It tells you where to start on this site and which topics to fix first.</p><div class="lt-pop-cta"><a class="btn" href="#level-test" data-go>Take the Level Test ${ARROW}</a><button type="button" class="btn ghost" data-x>Maybe later</button></div><p class="lt-pop-note">You can find it any time in the menu and on the home screen.</p></div>`;
     const prev = document.activeElement, close = () => { d.classList.remove('is-in'); setTimeout(() => d.remove(), 220); document.removeEventListener('keydown', key); if (prev && prev.focus) try { prev.focus(); } catch (e) { } };
@@ -169,8 +170,11 @@
   }
   const later = ms => setTimeout(prompt, ms);
   window.addEventListener('hashchange', () => { if (!shown) later(900); });
-  if (window.GCIntro && window.GCIntro.playing) window.addEventListener('gc-intro-done', () => later(1400), { once: true });
-  else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => later(1600)); else later(1600);
+  // The entrance film can start after this script has run (on Fresh it waits for the loading screen),
+  // so offer the test whenever the film ends or the page finishes opening, not only once at load.
+  window.addEventListener('gc-intro-done', () => later(1400), { once: true });
+  window.addEventListener('fresh-science-ready', () => later(1600), { once: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => later(1600)); else later(1600);
 
   window.LevelTest = { render, leave, Q, ability, band, BANDS, isRight };
 })();
