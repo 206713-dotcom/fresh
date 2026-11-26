@@ -17,25 +17,36 @@
 <main id="main" class="wrap">
   <div class="planner">
     <nav class="planner-nav" aria-label="English Studio">
-      <p class="planner-name">English Studio</p>
-      <a href="#practice">Practice Desk</a>
-      <a href="#reading-lab">Reading Lab</a>
-      <a href="#workshop">Response workshop</a>
-      <a href="#notebook">Mistake notebook</a>
-      <a href="#skills-title">Revision library</a>
-      <a href="#syllabus-checklist">Syllabus checklist</a>
-      <a href="#course">Course guide</a>
+      <a class="planner-name" href="#planner-title"><img src="../fresh.svg" width="28" height="28" alt=""> English Studio</a>
+      <div class="planner-links">
+        <a class="planner-home" href="#planner-title">Revision plan</a>
+        <a href="#practice">Practice Desk</a>
+        <a href="#reading-lab">Reading Lab</a>
+        <a href="#workshop">Response workshop</a>
+        <a href="#notebook">Mistake notebook</a>
+        <a href="#skills-title">Revision library</a>
+        <a href="#syllabus-checklist">Syllabus checklist</a>
+        <a href="#course">Course guide</a>
+      </div>
+      <div class="planner-progress" hidden>
+        <label for="planner-progress">Practice progress</label>
+        <progress id="planner-progress" value="0" max="1"></progress>
+        <p id="planner-progress-text"></p>
+      </div>
     </nav>
     <section class="planner-content" aria-labelledby="planner-title">
-      <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
-      <h1 id="planner-title">Your English revision plan</h1>
-      <p class="planner-intro">Practise First Language English, compare your answers with worked examples and keep track of what to improve.</p>
+      <div class="planner-heading">
+        <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
+        <h1 id="planner-title">Your English<br>revision plan</h1>
+        <p class="planner-intro">Practise First Language English, compare your answers with worked examples and keep track of what to improve.</p>
+      </div>
       <div class="planner-cards">
-        <a href="#reading-lab"><h3>Reading Lab</h3><p>Highlight a phrase and explain what it suggests.</p></a>
-        <a href="#practice"><h3>Timed practice</h3><p>Read a passage and write a response at the Practice Desk.</p></a>
-        <a href="#notebook"><h3>Mistake notebook</h3><p>Save a mistake and plan how to revise it.</p></a>
+        <a class="planner-reading" href="#reading-lab"><span aria-hidden="true" class="planner-icon icon-book"></span><h3>Reading Lab</h3><p>Highlight a phrase and explain what it suggests.</p></a>
+        <a class="planner-timed" href="#practice"><span aria-hidden="true" class="planner-icon icon-clock"></span><h3>Timed practice</h3><p>Read a passage and write a response at the Practice Desk.</p></a>
+        <a class="planner-notes" href="#notebook"><span aria-hidden="true" class="planner-icon icon-note"></span><h3>Mistake notebook</h3><p>Save a mistake and plan how to revise it.</p></a>
       </div>
       <div class="planner-continue">
+        <span aria-hidden="true" class="planner-icon icon-note"></span>
         <div><h2 id="continue-title">Start practising</h2><p id="continue-detail">Choose an original practice task at the Practice Desk.</p></div>
         <a class="button" id="continue-practice" href="#practice">Open Practice Desk</a>
       </div>
