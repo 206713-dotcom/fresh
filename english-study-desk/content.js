@@ -1,8 +1,8 @@
 const categories = [
-  {id:"reading", title:"Reading", icon:"book", color:"blue", desc:"Analyse language, structure and evidence."},
-  {id:"writing", title:"Writing", icon:"edit", color:"purple", desc:"Shape clear arguments and responses."},
-  {id:"comprehension", title:"Comprehension", icon:"eye", color:"green", desc:"Read for detail, inference and summary."},
-  {id:"grammar", title:"Grammar", icon:"type", color:"amber", desc:"Build accurate sentences and punctuation."}
+  {id:"reading", title:"Close reading", icon:"book", color:"blue", desc:"Analyse language, structure and evidence."},
+  {id:"writing", title:"Literary essays", icon:"edit", color:"purple", desc:"Build interpretations and support them with evidence."},
+  {id:"unseen", title:"Unseen texts", icon:"eye", color:"green", desc:"Build interpretations of unfamiliar poetry and prose."},
+  {id:"drama", title:"Drama", icon:"type", color:"amber", desc:"Analyse dialogue, staging and dramatic irony."}
 ];
 
 const lessons = [
@@ -21,41 +21,31 @@ const lessons = [
    "‘I waited. / The door stayed shut.’ The short opening sentence and the line break leave a beat of silence before the refusal implied by the shut door.",
    "A character says ‘Please stay’ while turning away. What might an audience notice?",
    "The direction creates tension between the invitation and the body language. The audience might read it as embarrassment, fear of rejection or an attempt to hide emotion."],
-  ["writing","audience-purpose","Write for audience and purpose",
-   "Identify who will read the response, what they already know and what you want them to do. Choose a register and arrange your ideas in the order that makes your request easiest to follow.",
-   "A letter to a headteacher might open with the request and its reason. A student magazine article can open with a shared experience that makes the issue matter to its readers.",
-   "Turn ‘We need better buses’ into a specific request for a school leader.",
-   "‘Please trial a later Thursday bus so students in after-school clubs can travel home safely.’ This gives the reader a clearly defined action and rationale."],
-  ["writing","composition","Shape a descriptive or narrative piece",
-   "In description, move the reader’s attention through the scene with selected sensory details. In narrative, give a character a goal and let a setback force a meaningful decision.",
-   "‘The clock clicked above the counter. On the floor, a trail of sugar ended at the locked door.’ The shift in focus turns a familiar setting into a puzzle.",
-   "Write two sentences that move from a wide view of a station to one detail.",
-   "‘The platform stretched into the mist. Beneath the departure board, one red glove lay palm up on the tiles.’"],
-  ["writing","directed-writing","Evaluate ideas in directed writing",
-   "Pick evidence from the source that matters to your audience. Explain its significance, judge how convincing it is, and weave it into your own response in the specified form.",
-   "A source claims a later start improves concentration. You could consider the benefit alongside travel and after-school commitments before recommending a short trial.",
-   "A survey reports that 18 of 20 library users want longer hours. What limitation should you mention?",
-   "The result reflects frequent users in a small sample. A wider survey could check whether students who do not currently use the library would benefit too."],
-  ["comprehension","inference","Find clues and make inferences",
-   "Separate what the passage states from what it implies. Base each inference on a clue and allow for alternative readings when the text is ambiguous.",
-   "‘Noah checked the clock three times and kept his coat on.’ His behaviour suggests he expects to leave soon or is impatient. The text gives no definite reason.",
-   "‘Iris hid her medal in the drawer before her friend arrived.’ What might this suggest?",
-   "Iris may feel awkward about showing off. Hiding the medal before the visit supports that reading, though her exact motive remains open."],
-  ["comprehension","summary","Summarise relevant ideas",
-   "Underline the scope of the task, select distinct relevant points, and combine closely related details. Use your own words where possible, then check that the meaning has stayed accurate.",
-   "‘The paths flooded and the shuttle stopped running’ can become ‘Flooding and the loss of the shuttle made the site difficult to reach.’",
-   "Summarise the barriers to attending: ‘Tickets rose in price, the venue moved away from bus routes, and the posters were blue.’",
-   "‘Higher ticket prices and poorer transport links made attendance harder.’ Poster colour falls outside the question’s focus."],
-  ["grammar","sentence-boundaries","Fix sentence boundaries",
-   "Check whether each part around a comma can stand alone. To join two independent clauses, use a full stop, a semicolon, or an appropriate conjunction.",
-   "‘The bell rang, we packed our bags’ can become ‘When the bell rang, we packed our bags.’",
-   "Repair ‘The lights went out, the crowd fell silent.’",
-   "‘The lights went out, and the crowd fell silent.’ The conjunction connects two complete clauses."],
-  ["grammar","agreement","Keep subjects and verbs in agreement",
-   "Find the subject that controls the verb. A nearby phrase often adds information without changing whether the subject is singular or plural.",
-   "‘The stack of books is on the desk.’ The subject is stack, so the verb is singular.",
-   "Choose the verb in ‘The collection of old letters (was/were) donated on Friday.’",
-   "‘Was’ agrees with the singular subject ‘collection’."]
+  ["writing","essay-structure","Build an argument across an essay",
+   "Turn the question into a claim you can develop. Give each paragraph a distinct role, such as showing how an impression begins, shifts or becomes more complicated.",
+   "An essay about isolation could begin with the speaker’s separation from the group, then examine how the ending makes that isolation feel chosen.",
+   "Plan two paragraphs for a question about a character who appears confident at first but later asks for help.",
+   "First analyse how dialogue presents confidence. Then examine how a later request exposes vulnerability or shows the character learning to trust others."],
+  ["unseen","inference","Find clues and make inferences",
+   "Separate what an unfamiliar text states from what it implies. Test your reading against a second detail and pay attention to how the writer shapes the reader’s view.",
+   "Noah checks the clock three times while keeping his coat on. The repetition draws attention to his impatience or anticipation.",
+   "Iris hides a medal before her friend arrives, then places a photograph of the two of them on the desk. How might the gestures work together?",
+   "The contrast may suggest that Iris values the friendship and feels awkward about displaying an achievement that could come between them."],
+  ["unseen","unseen-shifts","Trace a shift in an unseen text",
+   "Read once for situation and tone. On a second reading, mark a change in imagery, voice or pace. Use your opening paragraph to explain how that change contributes to an interpretation.",
+   "A poem moves from bustling market sounds to the line ‘One stall stood silent’. The narrowing focus turns a lively setting into a reminder of absence.",
+   "A passage moves from long descriptions of a garden to the short sentence ‘Then the latch lifted.’ What changes for the reader?",
+   "The abrupt sentence breaks the descriptive pace and focuses attention on a single action, creating suspense about who is entering."],
+  ["drama","stagecraft","Analyse stage directions and pauses",
+   "Imagine a performance. Ask what the audience sees or hears and how a pause, entrance, movement or prop changes the meaning of a line.",
+   "A character says ‘I’m ready’ while gripping the doorframe. The gesture can make the declaration sound like an effort to persuade herself.",
+   "A character says ‘Take it’ while pulling a letter back. Explain how the staging affects the line.",
+   "The withdrawal contradicts the invitation and can suggest that the character wants to appear willing while still controlling what the other person learns."],
+  ["drama","dramatic-irony","Explain dramatic irony",
+   "Identify the difference between what an audience knows and what a character knows. Explain how that gap changes the audience’s reaction to a particular line or decision.",
+   "The audience sees a character hide the key before another says ‘At least we can still get out.’ The reassurance can heighten tension because the audience knows escape is uncertain.",
+   "An audience knows a letter is forged, but a character immediately trusts it. What might the gap in knowledge make the audience anticipate?",
+   "The audience may anticipate the consequences of the character’s trust, so even an ordinary plan can carry tension."]
 ];
 
 const quizzes = {
@@ -65,19 +55,19 @@ const quizzes = {
     ["Why might a playwright place a pause after a confession?",["To reveal the set design","To prove the speaker forgot a line","To let tension build while the audience waits for a reply"],2,"A deliberate pause can draw attention to the reaction the audience anticipates."]
   ],
   writing:[
-    ["Which opening suits a formal letter requesting a policy change?",["You have to sort this out.","I am writing to request a trial of longer library hours.","Guess what happened today?"],1,"A precise request and courteous tone suit this audience."],
-    ["A source cites one pupil’s experience. Which response evaluates that evidence?",["This illustrates the problem, though a survey would show how widespread it is.","The pupil had a problem.","The source mentions a pupil."],0,"It explains the evidence’s value and its limitation."],
-    ["Which detail creates an atmosphere through sound?",["The room measured six metres.","The room was old.","A loose pane rattled whenever the wind rose."],2,"The movement and sound let the reader experience the room."]
+    ["Which opening offers a literature argument?",["This essay is about the poem.","The changing images of light make hope seem increasingly fragile.","The poem has four stanzas."],1,"The claim interprets an effect and identifies a pattern that the essay can trace."],
+    ["Which sentence connects evidence to a reading?",["The repeated word ‘still’ slows the line and suggests the speaker feels trapped.","The writer uses repetition.","There is a quotation in the second stanza."],0,"It explains how the repeated word shapes pace and meaning."],
+    ["How can a second paragraph develop an argument?",["Copy the first claim.","List every image in the text.","Use a later moment to show how the first impression changes."],2,"A shift gives the essay something new to explain while keeping the same focus."]
   ],
-  comprehension:[
-    ["‘Mina lowered her voice when she saw the sleeping baby.’ What can you infer?",["She wanted to avoid waking the baby.","She had lost her voice.","The baby was hungry."],0,"The timing links the quieter voice to the baby’s sleep."],
-    ["The task asks why a trip was delayed. Which detail belongs?",["The bus had blue seats.","The map showed two rivers.","A bridge closure forced the driver to take a longer route."],2,"The detour directly explains the delay."],
-    ["‘The library was packed by noon.’ Which is the best paraphrase?",["It closed at lunchtime.","It was already very crowded at midday.","Someone moved the books into boxes."],1,"In context, ‘packed’ describes the number of people."]
+  unseen:[
+    ["What is a productive first step with an unfamiliar poem?",["Identify the speaker, situation and initial tone.","Count every adjective.","Choose a theme before reading."],0,"These observations help you build an interpretation grounded in the poem."],
+    ["A passage moves from a bustling street to a silent room. What should you examine?",["Only the length of each paragraph.","Only the meaning of the word room.","How the contrast changes the atmosphere."],2,"The shift in setting and sound can shape how the reader experiences the moment."],
+    ["The final line changes from ‘we’ to ‘I’. What might the shift suggest?",["The speaker has changed the time of day.","The speaker is becoming isolated or asserting independence.","The poem has a regular rhyme scheme."],1,"The move from a group to an individual gives you a specific change to interpret in context."]
   ],
-  grammar:[
-    ["Choose the sentence with correct agreement.",["A list of items were missing.","A list of items was missing.","A list of items are missing."],1,"The singular subject ‘list’ takes ‘was’."],
-    ["Which sentence correctly joins two independent clauses?",["The wind rose, we went inside.","Because the wind rose.","The wind rose, so we went inside."],2,"The conjunction ‘so’ joins the clauses and shows cause and effect."],
-    ["Which sentence makes it clear who crossed the road?",["Crossing the road, Sam noticed the light change.","Crossing the road, the light changed.","Crossing the road, the light was red."],0,"Sam follows the opening phrase and clearly performs the action."]
+  drama:[
+    ["A character says ‘Of course’ after a long pause. What could the pause suggest?",["The scene has ended.","The character hesitates before agreeing.","The audience has already left."],1,"The delay can make apparently direct agreement feel reluctant or uncertain."],
+    ["When is there dramatic irony?",["Two characters disagree openly.","A character repeats an earlier line.","The audience knows a key fact that a character lacks."],2,"The gap in knowledge changes how the audience hears the character’s words."],
+    ["Why might a playwright keep one character by the door?",["Their position can show a wish to leave or distance from the others.","Every actor must stay near a door.","The position proves the character is angry."],0,"The staging offers a visual clue whose interpretation depends on the dialogue and context."]
   ]
 };
 
@@ -86,36 +76,33 @@ const models = [
    "How does the writer present a character’s uncertainty? Use the original ticket example from the literature lesson.",
    "Mara’s confidence is undermined by her handling of the ticket. She insists that she is ready, yet folds it ‘into a square no bigger than a nail’. The careful reduction makes the ticket seem like something she wants to hide, turning an ordinary gesture into a sign of hesitation. When she later smooths it flat, the reversal gives her decision to leave a physical form.",
    "The response develops one interpretation through two moments and explains the effect of precise evidence."],
-  ["Formal letter","0500 · Directed writing",
-   "Write to the headteacher proposing a trial of longer library opening hours.",
-   "Dear Headteacher,\n\nI am writing to propose a four-week trial in which the library stays open until 5 p.m. on Tuesdays. A quiet space after school would give students time to work before late buses depart. Although staffing is a concern, opening on one day would let us record demand and review the cost before committing to a longer schedule. Could the school council help agree the trial dates?\n\nYours faithfully,\nA student representative",
-   "The opening makes a specific request and the middle weighs benefit against a practical constraint."],
-  ["Report","0500 · Directed writing",
-   "Report to the student council on access to after-school study spaces.",
-   "Purpose\nThis report reviews whether students can find a quiet place to study after lessons.\n\nFindings\nThe library closes at 4 p.m., while the late bus leaves at 5 p.m. Students waiting for transport therefore have limited access to desks or computers during the last hour.\n\nRecommendation\nTrial one late opening per week for a month. Record attendance and ask users how the extra hour affected their study.",
-   "Headings let a decision-maker locate the findings and the recommended action quickly."]
+  ["Poetry commentary","0475 · Unseen poetry",
+   "How does the shift from market noise to a silent stall change the mood?",
+   "The market’s noise initially makes the setting feel communal. The final image, ‘One stall stood silent’, narrows the speaker’s attention from the crowd to a single absence. The repeated s sound gives the line a subdued quality, while ‘one’ isolates the stall from the surrounding activity. The ending makes the lively market feel like a place where someone is missing.",
+   "The paragraph connects a structural shift and a sound pattern to the changing mood."],
+  ["Drama response","0475 · Stagecraft",
+   "How does a character’s movement complicate the command ‘Take it’?",
+   "The character offers the letter in words but pulls it back on stage. That change in distance turns ‘Take it’ into an uncertain invitation. An audience can see the hesitation even if the character tries to conceal it with a firm voice. The scene leaves the other character waiting and makes the letter a visible source of tension.",
+   "The paragraph considers how an audience experiences the dialogue and movement together."]
 ];
 
 const glossary = [
   ["Inference","A conclusion drawn from evidence that the writer leaves implicit."],
-  ["Register","The level and style of language chosen for an audience and situation."],
+  ["Tone","The attitude a speaker or narrator conveys through language."],
   ["Imagery","Language that evokes a sensory impression or helps the reader picture an idea."],
   ["Dramatic irony","A moment when the audience knows something a character does not."],
   ["Enjambment","A sentence or phrase that continues past the end of a line of poetry."],
   ["Motif","A recurring image, detail or idea that develops meaning across a text."],
-  ["Independent clause","A group of words with a subject and verb that can stand as a sentence."],
-  ["Paraphrase","A restatement in your own words that preserves the original meaning."]
+  ["Stage directions","Instructions that guide actions, movement or delivery in a play."],
+  ["Narrative perspective","The position from which a story is told and the access it gives to events or thoughts."]
 ];
 
 const cambridge = "https://www.cambridgeinternational.org/";
 const official = {
   lit:cambridge+"programmes-and-qualifications/english-literature-0475/",
-  lang:cambridge+"programmes-and-qualifications/cambridge-igcse-english-first-language-0500/",
   pdfs:[
     ["0475 · 2026 syllabus","697163-2026-syllabus.pdf"],
     ["0475 · 2027 syllabus","721333-2027-syllabus.pdf"],
-    ["0475 · 2028–2030 syllabus","743282-2028-2030-syllabus.pdf"],
-    ["0500 · 2024–2026 syllabus","635230-2024-2026-syllabus.pdf"],
-    ["0500 · 2027–2029 syllabus","718783-2027-2029-syllabus.pdf"]
+    ["0475 · 2028–2030 syllabus","743282-2028-2030-syllabus.pdf"]
   ]
 };

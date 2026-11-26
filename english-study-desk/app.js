@@ -17,6 +17,12 @@ const titles = {home:"Home",syllabus:"Syllabus overview",lessons:"Lessons & stud
 const key = "english-study-desk-v1";
 let saved = {lessons:[],scores:{},large:false,activity:{}};
 try { saved = {...saved,...JSON.parse(localStorage.getItem(key))}; } catch {}
+saved.lessons = saved.lessons.filter(id => lessons.some(item => item[1] === id));
+// The essay quiz has new questions, so its old best score no longer applies.
+if (saved.quizVersion !== 2) {
+  saved.scores = {reading:saved.scores.reading};
+  saved.quizVersion = 2;
+}
 let storageFailed = false;
 function persist() {
   try { localStorage.setItem(key,JSON.stringify(saved)); }
@@ -46,23 +52,14 @@ const panel = (title,body) => '<section class="panel"><h2>'+title+'</h2>'+body+'
 const list = (items,tag="ul") => '<'+tag+'>'+items.map(item=>'<li>'+item+'</li>').join("")+'</'+tag+'>';
 const link = (href,label) => '<a href="'+href+'">'+label+'</a>';
 const download = (file,label) => '<a href="downloads/'+file+'" download>'+label+'</a>';
-const tab = (href,label,active) => '<a class="secondary" href="#'+href+'"'+(active?' aria-current="page"':'')+'>'+label+'</a>';
 
-function syllabus(track) {
-  const language = track === "0500";
-  const tabs = '<div class="tabs" aria-label="Syllabus code">'+tab("syllabus/0475","0475 · Literature",!language)+tab("syllabus/0500","0500 · First Language",language)+'</div>';
-  const overview = language
-    ? panel("First Language English (0500)",'<p>Practise understanding explicit and implicit meaning, selecting evidence, evaluating ideas and writing clearly for a given audience.</p>'+list([
-      '<strong>Paper 1 · Reading.</strong> Work with unseen texts and use evidence to answer comprehension, summary, language analysis and extended response tasks.',
-      '<strong>Paper 2 · Directed Writing and Composition.</strong> Evaluate source ideas in a prescribed form and write a descriptive or narrative composition. From 2027, Question 1(a) introduces a short reading task before directed writing.',
-      '<strong>Component 3 · Coursework Portfolio.</strong> Your school may enter you for coursework in place of Paper 2. Component 4 is the separately endorsed speaking and listening option.'
-    ]))
-    : panel("Literature in English (0475)",'<p>Study your set texts, develop interpretations, analyse writers’ choices and support a personal response with precise evidence.</p><h3>2026 and 2027 exams</h3>'+list([
+function syllabus() {
+  const overview = panel("Literature in English (0475)",'<p>Study your set texts, develop interpretations, analyse writers’ choices and support a personal response with precise evidence.</p><h3>2026 and 2027 exams</h3>'+list([
         '<strong>Paper 1 · Poetry and Prose.</strong> Everyone takes this 90-minute paper and answers one poetry and one prose question.',
         '<strong>Paper 2 · Drama.</strong> One route pairs Paper 1 with this 90-minute paper, which has two drama questions.',
         '<strong>Paper 3 · Drama (Open Text).</strong> Other routes pair Paper 1 with this 45-minute paper, plus either the 75-minute Paper 4 Unseen or Component 5 Coursework.'
       ])+'<h3>2028–2030 exams</h3><p>Everyone takes the open-text Paper 1 (Poetry and Prose). The examined route adds open-text Paper 2 (Drama and Unseen). The coursework route adds Component 3. Check Cambridge’s syllabus updates for what you can bring into the exam.</p>');
-  return tabs + overview + panel("Official syllabus PDFs",list(official.pdfs.filter(([name])=>name.startsWith(language?"0500":"0475")).map(([name,file])=>link(cambridge+"Images/"+file,name+" (PDF)")+" "))+'<p>Choose the year you will sit the exam and check your school’s entry route, set texts and permitted materials. '+link(language?official.lang:official.lit,"View the Cambridge syllabus page and updates")+'.</p>');
+  return overview + panel("Official syllabus PDFs",list(official.pdfs.map(([name,file])=>link(cambridge+"Images/"+file,name+" (PDF)")+" "))+'<p>Choose the year you will sit the exam and check your school’s entry route, set texts and permitted materials. '+link(official.lit,"View the Cambridge syllabus page and updates")+'.</p>');
 }
 
 function lessonView(id) {
@@ -90,21 +87,19 @@ function progress() {
 function resources() {
   return panel("Official Cambridge materials",list([
     link(official.lit+"past-papers/","0475 past papers, mark schemes and specimen materials"),
-    link(official.lang+"past-papers/","0500 past papers, mark schemes and specimen materials"),
     link(official.lit+"endorsed-resources/","0475 endorsed books and resources"),
-    link(official.lang+"endorsed-resources/","0500 endorsed books and resources"),
     link("#syllabus","Syllabus PDFs by exam year")
   ])+'<p>Match the syllabus code, exam series and component on the paper and mark scheme before starting.</p>')+
   panel("Printable downloads",list([
     download("revision-notes.txt","Revision notes"),
-    download("writing-templates.txt","Essay, letter and report templates"),
+    download("writing-templates.txt","Literature response templates"),
     download("revision-timetable.csv","Weekly revision timetable"),
     download("timed-practice.txt","Timed practice prompts")
   ]))+panel("Glossary",'<dl>'+glossary.map(([term,meaning])=>'<dt><strong>'+term+'</strong></dt><dd>'+meaning+'</dd>').join("")+'</dl>');
 }
 
 const descriptions = {
-  syllabus:"Find the assessment route and official syllabus for your qualification and exam year.",
+  syllabus:"Find the assessment route and official syllabus for Literature in English (0475) and your exam year.",
   lessons:"Study a skill, read a worked example and try it yourself.",
   practice:"Answer topic questions and get feedback as soon as you submit.",
   writing:"See how a task becomes a structured response, then use a template to draft your own.",
@@ -117,7 +112,7 @@ const views = {
   syllabus,
   lessons:lessonList,
   practice,
-  writing:() => models.map(([title,track,prompt,model,reason])=>panel(title,'<p><strong>'+track+'</strong></p><p>'+prompt+'</p><div class="example model">'+model+'</div><p>'+reason+'</p>')).join("")+panel("Writing templates",'<p>'+download("writing-templates.txt","Download essay, letter and report templates")+'</p>'),
+  writing:() => models.map(([title,track,prompt,model,reason])=>panel(title,'<p><strong>'+track+'</strong></p><p>'+prompt+'</p><div class="example model">'+model+'</div><p>'+reason+'</p>')).join("")+panel("Writing templates",'<p>'+download("writing-templates.txt","Download literature response templates")+'</p>'),
   strategies:() => panel("Before the exam",list([
     "Confirm your syllabus code, exam year and route. For 0475, check which texts you will answer on and what you can bring into the room.",
     "Practise with one timed task at a time. Mark it with the corresponding Cambridge mark scheme, then rewrite the weakest paragraph.",
@@ -125,13 +120,13 @@ const views = {
   ],"ol"))+panel("During the exam",list([
     "Allocate time using the marks and instructions on your paper. Leave a short window at the end to check for omissions.",
     "For literature, use the question’s focus to shape your argument. Avoid plot retelling and explain how details support your reading.",
-    "For comprehension and summary, answer within the scope of the question. Check that paraphrasing preserves the source meaning.",
-    "For directed writing, identify the audience, purpose and form before starting. Evaluate source claims and avoid copying whole sentences.",
-    "For composition, leave time to correct sentence boundaries, unclear references and accidental tense shifts."
+    "For poetry and prose, explain how a significant word, image or structural shift shapes meaning.",
+    "For drama, consider what an audience sees or hears. Link dialogue and stagecraft to your interpretation.",
+    "For unseen commentary, read twice if time allows. Identify a shift and select details that support your reading."
   ])+'<p>'+download("revision-timetable.csv","Download the revision timetable")+'</p>'),
   resources,
   progress,
-  about:() => panel("About the study desk",'<p>English Study Desk was created as an independent, self-paced resource. Cambridge International provides the official syllabus, specimen papers and mark schemes linked here.</p>')+panel("Share feedback",'<p>Prepare a feedback draft to share with a teacher or the person who gave you this site link.</p><form id="contact"><label>Name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Message<textarea name="message" required></textarea></label><button class="primary" type="submit">Download feedback draft</button><p id="contact-status" role="status"></p></form><p>'+link("https://www.youtube.com/@CambridgeInt","Cambridge International on YouTube")+'</p>')
+  about:() => panel("About the study desk",'<p>English Study Desk was created as an independent, self-paced resource for Literature in English (0475). Cambridge International provides the official syllabus, specimen papers and mark schemes linked here.</p>')+panel("Share feedback",'<p>Prepare a feedback draft to share with a teacher or the person who gave you this site link.</p><form id="contact"><label>Name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Message<textarea name="message" required></textarea></label><button class="primary" type="submit">Download feedback draft</button><p id="contact-status" role="status"></p></form><p>'+link("https://www.youtube.com/@CambridgeInt","Cambridge International on YouTube")+'</p>')
 };
 
 function render() {
@@ -140,7 +135,7 @@ function render() {
   const currentLesson = route === "lesson" ? lesson(sub) : null;
   const category = ["practice","lessons"].includes(route) ? cat(sub) : null;
   const title = currentLesson?.[2] || category?.title || titles[route];
-  document.title = route==="home" ? "English Study Desk | Cambridge IGCSE revision" : title+" | English Study Desk";
+  document.title = route==="home" ? "English Study Desk | Cambridge IGCSE Literature (0475)" : title+" | English Study Desk";
   document.querySelectorAll(".nav nav a").forEach(a=>{
     if (a.hash==="#"+(route==="lesson"?"lessons":route)) a.setAttribute("aria-current","page");
     else a.removeAttribute("aria-current");
@@ -154,7 +149,7 @@ function render() {
     : category ? " / "+link("#"+route,titles[route]) : "";
   if (currentLesson) count("lessonViews");
   $("#page").innerHTML = '<div class="crumb" aria-label="Breadcrumb">'+link("#home","Home")+trail+' / '+title+'</div><h1 class="page-title" tabindex="-1">'+title+'</h1><p class="intro">'+(descriptions[route]||"")+'</p>'+
-    (currentLesson ? lessonView(sub) : views[route](category?.id || (route==="syllabus"?sub:undefined)));
+    (currentLesson ? lessonView(sub) : views[route](category?.id));
   if (currentLesson) $("#complete").onclick = () => {
     saved.lessons.push(sub);
     persist();
@@ -201,7 +196,6 @@ const dialog = $("#search-dialog");
 const index = [
   ...Object.entries(titles).map(([id,title])=>[id,title,descriptions[id]||""]),
   ["syllabus/0475","0475 literature papers","paper 1 poetry prose paper 2 drama unseen coursework"],
-  ["syllabus/0500","0500 first language papers","paper 1 reading paper 2 composition directed writing"],
   ...lessons.map(([id,slug,title,desc])=>["lesson/"+slug,title,id+" "+desc]),
   ...categories.map(c=>["practice/"+c.id,c.title+" quiz",c.desc]),
   ...glossary.map(([term,meaning])=>["resources",term+" · Glossary",meaning])
