@@ -8,3 +8,21 @@
 @media(max-width:650px){.shell{width:calc(100% - 30px)}.hero{grid-template-columns:1fr;margin-top:18px}.hero-copy{padding:24px 20px 4px}.hero-art{min-height:224px}.orbit{width:65%;max-width:285px}.orbit-b{width:80%;max-width:340px}.notebook{scale:.62;transform-origin:left top;left:48%;top:49%}.quote{scale:.7;transform-origin:top left}.pencil{scale:.68;transform-origin:top}.quick{grid-template-columns:1fr;gap:8px;margin-bottom:26px}.cards{gap:8px}.card{padding:12px}.home-progress,.footer{align-items:flex-start;flex-direction:column}.progress-link span:last-child{display:none}.tools{gap:5px}.brand{font-size:.91rem}.section-head{align-items:flex-start}.section-head a{white-space:nowrap}.panel{padding:16px}}
 .model{white-space:pre-line}dt{margin-top:14px}dd{margin:4px 0;color:var(--muted);line-height:1.5}.primary:disabled{opacity:.6;cursor:default}.quick a strong{display:block}
 @media(max-width:380px){.logo{width:30px;height:30px}.brand{gap:5px}.nav{column-gap:4px}.tools .iconbtn,.progress-link{min-width:32px;padding-inline:6px}.section-head{flex-wrap:wrap}}
+
+.timed-workspace{max-width:960px}
+.timed-modes [aria-current]{background:#174e91;color:white;text-decoration:none!important}
+.timed-modes .secondary{text-decoration:none!important}
+.timed-question{margin:18px 0 22px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#f6f9fd}
+.timed-question h2{font-size:1.35rem;line-height:1.35}
+.timed-question details{margin-top:14px}
+.timed-skill{font-weight:700;margin:0 0 6px}
+.timed-editor-head,.timed-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.timed-editor-head label{margin:0}
+#timed-answer{margin:8px 0;min-height:240px;resize:vertical;line-height:1.6}
+.timed-controls .actions{gap:8px}
+.timed-controls label{display:flex;align-items:center;gap:6px;margin:0}
+.timed-controls select{width:auto}
+#timer-display{font-variant-numeric:tabular-nums;font-weight:800;min-width:3.5ch;text-align:center}
+#word-count,.timed-meta,#question-position{color:var(--muted);font-size:.9rem}
+.timed-meta{margin:10px 0 0}
+.timed-meta:empty{display:none}

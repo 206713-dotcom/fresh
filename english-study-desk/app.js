@@ -13,7 +13,7 @@ const icon = name => '<svg viewBox="0 0 24 24" aria-hidden="true">'+icons[name]+
 const $ = selector => document.querySelector(selector);
 document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
 
-const titles = {home:"Home",syllabus:"Syllabus overview",lessons:"Lessons & study guides",practice:"Practice exercises",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
+const titles = {home:"Home",syllabus:"Syllabus overview",lessons:"Lessons & study guides",practice:"Practice exercises",timed:"Timed writing practice",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
 const key = "english-study-desk-v1";
 let saved = {lessons:[],scores:{},large:false,activity:{}};
 try { saved = {...saved,...JSON.parse(localStorage.getItem(key))}; } catch {}
@@ -73,7 +73,7 @@ function lessonList(category) {
   return lessons.filter(l=>l[0]===category).map(l=>panel(l[2],'<p>'+l[3]+'</p><a class="secondary" href="#lesson/'+l[1]+'">'+(saved.lessons.includes(l[1])?"Review lesson":"Open lesson")+'</a>')).join("");
 }
 function practice(category) {
-  if (!category) return categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
+  if (!category) return panel("Writing practice",'<p>Practise a poetry or set-text response with a timer and word counter.</p><div class="actions"><a class="primary" href="#timed/poetry">Poetry skills</a><a class="secondary" href="#timed/texts">Set-text skills</a></div>')+categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
   const questions = quizzes[category];
   return '<form id="quiz" class="panel">'+questions.map(([question,answers],i)=>'<fieldset><legend>'+(i+1)+'. '+question+'</legend>'+answers.map((a,j)=>'<label class="choice"><input type="radio" name="q'+i+'" value="'+j+'" '+(j===0?"required":"")+'> '+a+'</label>').join("")+'<p class="feedback" id="feedback-'+i+'"></p></fieldset>').join("")+'<div class="actions"><button class="primary" type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p id="quiz-result" role="status"></p></form>';
 }
@@ -101,6 +101,7 @@ function resources() {
 const descriptions = {
   syllabus:"Find the assessment route and official syllabus for Literature in English (0475) and your exam year.",
   lessons:"Study a skill, read a worked example and try it yourself.",
+  timed:"Choose a poetry or set-text question and write a timed response. Check your exam-year syllabus for your set texts.",
   practice:"Answer topic questions and get feedback as soon as you submit.",
   writing:"See how a task becomes a structured response, then use a template to draft your own.",
   strategies:"Make a revision plan and practise the decisions you will face under exam conditions.",
@@ -112,6 +113,7 @@ const views = {
   syllabus,
   lessons:lessonList,
   practice,
+  timed:timedView,
   writing:() => models.map(([title,track,prompt,model,reason])=>panel(title,'<p><strong>'+track+'</strong></p><p>'+prompt+'</p><div class="example model">'+model+'</div><p>'+reason+'</p>')).join("")+panel("Writing templates",'<p>'+download("writing-templates.txt","Download literature response templates")+'</p>'),
   strategies:() => panel("Before the exam",list([
     "Confirm your syllabus code, exam year and route. For 0475, check which texts you will answer on and what you can bring into the room.",
@@ -130,6 +132,7 @@ const views = {
 };
 
 function render() {
+  clearInterval(timerInterval);
   const [raw, sub] = location.hash.slice(1).split("/");
   const route = raw === "lesson" && lesson(sub) ? "lesson" : Object.hasOwn(titles,raw) ? raw : "home";
   const currentLesson = route === "lesson" ? lesson(sub) : null;
@@ -137,7 +140,7 @@ function render() {
   const title = currentLesson?.[2] || category?.title || titles[route];
   document.title = route==="home" ? "English Study Desk | Cambridge IGCSE Literature (0475)" : title+" | English Study Desk";
   document.querySelectorAll(".nav nav a").forEach(a=>{
-    if (a.hash==="#"+(route==="lesson"?"lessons":route)) a.setAttribute("aria-current","page");
+    if (a.hash==="#"+(route==="lesson"?"lessons":route==="timed"?"practice":route)) a.setAttribute("aria-current","page");
     else a.removeAttribute("aria-current");
   });
   $("#home").hidden = route !== "home";
@@ -157,6 +160,7 @@ function render() {
     $("#lesson-status").textContent = storageFailed ? "Completed for this session" : "Completed";
   };
   if (route==="practice" && category) wireQuiz(category.id);
+  if (route==="timed") wireTimed(sub);
   if (route==="about") $("#contact").onsubmit = event => {
     event.preventDefault();
     const draft = new FormData(event.target);
@@ -195,6 +199,8 @@ const search = $("#search");
 const dialog = $("#search-dialog");
 const index = [
   ...Object.entries(titles).map(([id,title])=>[id,title,descriptions[id]||""]),
+  ["timed/poetry","Poetry skills writing practice","Unseen poetry imagery sound structure timer word counter"],
+  ["timed/texts","Set-text writing practice","Hullabaloo in the Guava Orchard Pride and Prejudice A Midsummer Night’s Dream"],
   ["syllabus/0475","0475 literature papers","paper 1 poetry prose paper 2 drama unseen coursework"],
   ...lessons.map(([id,slug,title,desc])=>["lesson/"+slug,title,id+" "+desc]),
   ...categories.map(c=>["practice/"+c.id,c.title+" quiz",c.desc]),
