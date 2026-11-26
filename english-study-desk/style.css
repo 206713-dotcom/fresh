@@ -26,3 +26,16 @@
 #word-count,.timed-meta,#question-position{color:var(--muted);font-size:.9rem}
 .timed-meta{margin:10px 0 0}
 .timed-meta:empty{display:none}
+
+.hero-copy{padding-bottom:42px}
+.exam-choice{display:inline-flex;align-items:center;gap:8px}
+.exam-choice select,.panel .exam-choice select{width:auto;padding:8px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink)}
+.text-library{grid-template-columns:repeat(3,minmax(0,1fr))}
+.timed-workspace{max-width:none}
+.practice-columns{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:20px;align-items:start;margin:18px 0}
+.practice-columns .timed-question{margin:0}
+.practice-columns .example,.model{font-family:Georgia,serif}
+#answer-review{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}
+#practice-target{margin-bottom:10px}
+#timer-status:empty,#target-status:empty{display:none}
+@media(max-width:760px){.practice-columns,.text-library{grid-template-columns:1fr}.home-progress .actions{gap:12px}}

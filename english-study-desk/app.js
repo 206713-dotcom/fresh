@@ -13,9 +13,9 @@ const icon = name => '<svg viewBox="0 0 24 24" aria-hidden="true">'+icons[name]+
 const $ = selector => document.querySelector(selector);
 document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
 
-const titles = {home:"Home",syllabus:"Syllabus overview",lessons:"Lessons & study guides",practice:"Practice exercises",timed:"Timed writing practice",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
+const titles = {home:"Home",syllabus:"Exam guide",skills:"Skills",texts:"Set texts",lessons:"Lessons & study guides",practice:"Practice exercises",timed:"Writing practice",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
 const key = "english-study-desk-v1";
-let saved = {lessons:[],scores:{},large:false,activity:{}};
+let saved = {lessons:[],scores:{},large:false,activity:{},examYear:2027};
 try { saved = {...saved,...JSON.parse(localStorage.getItem(key))}; } catch {}
 saved.lessons = saved.lessons.filter(id => lessons.some(item => item[1] === id));
 // The essay quiz has new questions, so its old best score no longer applies.
@@ -46,7 +46,7 @@ const categoryCards = (base) => '<div class="cards">'+categories.map(c => {
   const total = base === 'practice' ? quizzes[c.id].length+' questions' : lessons.filter(l=>l[0]===c.id).length+' lessons';
   return '<a class="card" href="#'+base+'/'+c.id+'"><span class="tile '+c.color+'">'+icon(c.icon)+'</span><h3>'+c.title+'</h3><p>'+c.desc+'</p><small>'+total+'</small></a>';
 }).join("")+'</div>';
-$("#home-cards").outerHTML = categoryCards("lessons");
+$("#home-cards").outerHTML = skillsCards();
 
 const panel = (title,body) => '<section class="panel"><h2>'+title+'</h2>'+body+'</section>';
 const list = (items,tag="ul") => '<'+tag+'>'+items.map(item=>'<li>'+item+'</li>').join("")+'</'+tag+'>';
@@ -54,12 +54,20 @@ const link = (href,label) => '<a href="'+href+'">'+label+'</a>';
 const download = (file,label) => '<a href="downloads/'+file+'" download>'+label+'</a>';
 
 function syllabus() {
-  const overview = panel("Literature in English (0475)",'<p>Study your set texts, develop interpretations, analyse writers’ choices and support a personal response with precise evidence.</p><h3>2026 and 2027 exams</h3>'+list([
-        '<strong>Paper 1 · Poetry and Prose.</strong> Everyone takes this 90-minute paper and answers one poetry and one prose question.',
-        '<strong>Paper 2 · Drama.</strong> One route pairs Paper 1 with this 90-minute paper, which has two drama questions.',
-        '<strong>Paper 3 · Drama (Open Text).</strong> Other routes pair Paper 1 with this 45-minute paper, plus either the 75-minute Paper 4 Unseen or Component 5 Coursework.'
-      ])+'<h3>2028–2030 exams</h3><p>Everyone takes the open-text Paper 1 (Poetry and Prose). The examined route adds open-text Paper 2 (Drama and Unseen). The coursework route adds Component 3. Check Cambridge’s syllabus updates for what you can bring into the exam.</p>');
-  return overview + panel("Official syllabus PDFs",list(official.pdfs.map(([name,file])=>link(cambridge+"Images/"+file,name+" (PDF)")+" "))+'<p>Choose the year you will sit the exam and check your school’s entry route, set texts and permitted materials. '+link(official.lit,"View the Cambridge syllabus page and updates")+'.</p>');
+  const modern = saved.examYear >= 2028;
+  const papers = modern ? [
+    "<strong>Paper 1 · Poetry and Prose.</strong> 90 minutes, 50 marks, open text. Answer one poetry question and one prose essay.",
+    "<strong>Paper 2 · Drama and Unseen.</strong> 120 minutes, 50 marks, open text. Choose a drama passage question or essay and an unseen poem or prose extract.",
+    "<strong>Component 3 · Coursework.</strong> The alternative to Paper 2. Submit one essay comparing complete texts and one comparing poems."
+  ] : [
+    "<strong>Paper 1 · Poetry and Prose.</strong> 90 minutes, 50 marks, closed text. Answer one poetry and one prose question.",
+    "<strong>Paper 2 · Drama.</strong> 90 minutes, 50 marks, closed text. This route has two drama questions on two texts.",
+    "<strong>Paper 3 · Drama (Open Text).</strong> 45 minutes, 25 marks. Your school may pair it with Paper 4 Unseen (75 minutes, 25 marks) or Component 5 Coursework."
+  ];
+  const pdf = official.pdfs[modern ? 2 : saved.examYear === 2026 ? 0 : 1];
+  return panel("Your exam route",examYearPicker()+'<p>Everyone takes Paper 1. Confirm your other components and permitted materials with your school.</p>'+list(papers))+
+    panel("Plan your time",'<p>On the 90-minute Paper 1, a practice split is about 45 minutes per response, including reading, planning and checking. Use the opening minutes to identify the question’s focus and pick evidence.</p><p>Avoid retelling the plot. For example, instead of stopping at “Elizabeth reads Darcy’s letter”, explain how the letter gives him space to challenge the reader’s earlier impression.</p>')+
+    panel("Official Cambridge materials",list([link(cambridge+"Images/"+pdf[1],pdf[0]+" (PDF)"),link(official.lit,"Syllabus updates and permitted materials"),link(official.lit+"past-papers/","Past papers, specimen papers and mark schemes")]));
 }
 
 function lessonView(id) {
@@ -73,14 +81,18 @@ function lessonList(category) {
   return lessons.filter(l=>l[0]===category).map(l=>panel(l[2],'<p>'+l[3]+'</p><a class="secondary" href="#lesson/'+l[1]+'">'+(saved.lessons.includes(l[1])?"Review lesson":"Open lesson")+'</a>')).join("");
 }
 function practice(category) {
-  if (!category) return panel("Writing practice",'<p>Practise a poetry or set-text response with a timer and word counter.</p><div class="actions"><a class="primary" href="#timed/poetry">Poetry skills</a><a class="secondary" href="#timed/texts">Set-text skills</a></div>')+categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
+  if (!category) return panel("Writing practice",'<p>Practise a poetry or set-text response with a timer and word counter.</p><div class="actions"><a class="primary" href="#timed/poetry">Poetry skills</a><a class="secondary" href="#timed/texts">Set-text skills</a><a class="secondary" href="#timed/unseen">Unseen prose</a></div>')+categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
   const questions = quizzes[category];
   return '<form id="quiz" class="panel">'+questions.map(([question,answers],i)=>'<fieldset><legend>'+(i+1)+'. '+question+'</legend>'+answers.map((a,j)=>'<label class="choice"><input type="radio" name="q'+i+'" value="'+j+'" '+(j===0?"required":"")+'> '+a+'</label>').join("")+'<p class="feedback" id="feedback-'+i+'"></p></fieldset>').join("")+'<div class="actions"><button class="primary" type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p id="quiz-result" role="status"></p></form>';
 }
 
 function progress() {
+  const recent = saved.recentPractice;
+  const question = recent && timedTopics[recent.topic]?.questions[recent.question];
+  const practicePanel = panel("Writing review",'<p id="next-improvement"></p>'+(question?'<p>'+link("#timed/"+recent.topic+"/"+recent.question,question.prompt)+'</p>': '<p>'+link("#timed","Try a writing question")+'</p>'));
+
   const count = saved.lessons.length;
-  return panel("Lesson progress",'<p>'+count+' of '+lessons.length+' lessons completed.</p><progress aria-label="Completed lessons" max="'+lessons.length+'" value="'+count+'"></progress>'+ (count?list(saved.lessons.map(id=>lesson(id)).filter(Boolean).map(l=>link("#lesson/"+l[1],l[2]))):'<p><a href="#lessons">Choose a lesson to get started</a>.</p>'))+
+  return practicePanel+panel("Lesson progress",'<p>'+count+' of '+lessons.length+' lessons completed.</p><progress aria-label="Completed lessons" max="'+lessons.length+'" value="'+count+'"></progress>'+ (count?list(saved.lessons.map(id=>lesson(id)).filter(Boolean).map(l=>link("#lesson/"+l[1],l[2]))):'<p><a href="#lessons">Choose a lesson to get started</a>.</p>'))+
     panel("Best quiz scores",list(categories.map(c=>link("#practice/"+c.id,c.title)+" · "+(saved.scores[c.id]===undefined?"Awaiting first attempt":saved.scores[c.id]+" / "+quizzes[c.id].length)))+'<p>'+(storageFailed?"Browser storage is unavailable. Progress will last for this session.":"Progress and study activity are stored in this browser.")+'</p><p>Lessons opened: '+(saved.activity.lessonViews||0)+' · Quizzes submitted: '+(saved.activity.quizSubmissions||0)+'</p>');
 }
 
@@ -111,6 +123,8 @@ const descriptions = {
 };
 const views = {
   syllabus,
+  skills:skillsView,
+  texts:textsView,
   lessons:lessonList,
   practice,
   timed:timedView,
@@ -131,9 +145,16 @@ const views = {
   about:() => panel("About the study desk",'<p>English Study Desk was created as an independent, self-paced resource for Literature in English (0475). Cambridge International provides the official syllabus, specimen papers and mark schemes linked here.</p>')+panel("Share feedback",'<p>Prepare a feedback draft to share with a teacher or the person who gave you this site link.</p><form id="contact"><label>Name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Message<textarea name="message" required></textarea></label><button class="primary" type="submit">Download feedback draft</button><p id="contact-status" role="status"></p></form><p>'+link("https://www.youtube.com/@CambridgeInt","Cambridge International on YouTube")+'</p>')
 };
 
+function updateExamYear(event) {
+  saved.examYear = Number(event.target.value);
+  persist();
+  render();
+  $(location.hash.startsWith("#syllabus") ? "#page .exam-year" : "#home-exam-year .exam-year").focus();
+}
+
 function render() {
   clearInterval(timerInterval);
-  const [raw, sub] = location.hash.slice(1).split("/");
+  const [raw, sub, detail] = location.hash.slice(1).split("/");
   const route = raw === "lesson" && lesson(sub) ? "lesson" : Object.hasOwn(titles,raw) ? raw : "home";
   const currentLesson = route === "lesson" ? lesson(sub) : null;
   const category = ["practice","lessons"].includes(route) ? cat(sub) : null;
@@ -146,13 +167,16 @@ function render() {
   $("#home").hidden = route !== "home";
   $("#page").hidden = route === "home";
   $("#home-progress").textContent = saved.lessons.length ? saved.lessons.length+" of "+lessons.length+" lessons completed." : "Your lesson and quiz progress will appear here.";
+  $("#home-exam-year").innerHTML = examYearPicker();
+  $("#home-exam-year .exam-year").onchange = updateExamYear;
+  updateResume();
   if (route === "home") return;
   const trail = currentLesson
     ? " / "+link("#lessons","Lessons")+" / "+link("#lessons/"+currentLesson[0],cat(currentLesson[0]).title)
     : category ? " / "+link("#"+route,titles[route]) : "";
   if (currentLesson) count("lessonViews");
   $("#page").innerHTML = '<div class="crumb" aria-label="Breadcrumb">'+link("#home","Home")+trail+' / '+title+'</div><h1 class="page-title" tabindex="-1">'+title+'</h1><p class="intro">'+(descriptions[route]||"")+'</p>'+
-    (currentLesson ? lessonView(sub) : views[route](category?.id));
+    (currentLesson ? lessonView(sub) : views[route](["skills","texts"].includes(route) ? sub : category?.id));
   if (currentLesson) $("#complete").onclick = () => {
     saved.lessons.push(sub);
     persist();
@@ -160,7 +184,9 @@ function render() {
     $("#lesson-status").textContent = storageFailed ? "Completed for this session" : "Completed";
   };
   if (route==="practice" && category) wireQuiz(category.id);
-  if (route==="timed") wireTimed(sub);
+  if (route==="timed") wireTimed(detail === undefined ? sub : sub+"/"+detail);
+  if (route==="syllabus") $("#page .exam-year").onchange = updateExamYear;
+  if (route==="progress") $("#next-improvement").textContent = saved.improvement || "Save an improvement after reviewing a response.";
   if (route==="about") $("#contact").onsubmit = event => {
     event.preventDefault();
     const draft = new FormData(event.target);
@@ -199,6 +225,7 @@ const search = $("#search");
 const dialog = $("#search-dialog");
 const index = [
   ...Object.entries(titles).map(([id,title])=>[id,title,descriptions[id]||""]),
+  ...Object.keys(textLibrary).map(id=>["texts/"+id,timedTopics[id].title,textLibrary[id].author]),
   ["timed/poetry","Poetry skills writing practice","Unseen poetry imagery sound structure timer word counter"],
   ["timed/texts","Set-text writing practice","Hullabaloo in the Guava Orchard Pride and Prejudice A Midsummer Night’s Dream"],
   ["syllabus/0475","0475 literature papers","paper 1 poetry prose paper 2 drama unseen coursework"],

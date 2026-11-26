@@ -22,6 +22,13 @@ const timedTopics = {
       }
     ]
   },
+  unseen: {
+    title:"Unseen prose",
+    questions:[
+      {skill:"Narrative perspective",passage:"From the porch, Mae could see the lit kitchen. Her brother was laughing at something she could not hear. She tried her key, then put it away and knocked.",prompt:"How does the writer make an ordinary homecoming seem uncertain?",hint:"Compare what Mae can see with what she cannot hear. Consider why the sequence of actions at the door matters."},
+      {skill:"Pace and suspense",passage:"The museum clock drifted towards six. Lena took her time crossing the gallery, stopping at every frame and label. Then the portrait at the end moved.",prompt:"How does the writer use pace to make the final moment unsettling?",hint:"Compare the slow series of actions with the short final sentence and the change it introduces."}
+    ]
+  },
   hullabaloo: {
     title: "Hullabaloo in the Guava Orchard",
     questions: [
@@ -48,6 +55,33 @@ const timedTopics = {
   }
 };
 
+const timedModels = {
+  poetry:[
+    "The lights ‘blinked’, making the station seem only intermittently visible. The cup and train are both in motion, yet neither brings company. The final ‘black’ turns the train’s departure into the disappearance of the speaker’s last point of interest.",
+    "At first, the plural ‘we’ makes the shouting feel like a shared game. The valley replies with ‘only wind’, which makes their expectation seem misplaced. The shift to ‘I’ makes the quiet ending feel more solitary.",
+    "The short sounds of ‘Tick, tap’ establish a pattern that grows louder in ‘rattled’. The brief sentence ‘It stopped’ breaks that movement. The bird’s single note makes the stillness feel newly audible."
+  ],
+  unseen:[
+    "The lit kitchen suggests warmth, but Mae can see the laughter without hearing its cause. The key gives her a way in, yet the decision to knock makes entering seem like a request. The writer lets a small action carry the uncertainty.",
+    "The leisurely sequence of frames and labels invites the reader to linger with Lena. The short last sentence changes the pace, and the unexpected verb ‘moved’ makes the portrait seem to act on its own."
+  ],
+  hullabaloo:[
+    "The move to the tree makes Sampath’s escape visible. Its distance from the town offers a physical image of freedom. As visitors gather, the tree becomes a place where other people assign him a role, giving the retreat a new set of expectations.",
+    "People read wisdom into Sampath’s remarks because they expect the man in the tree to be wise. Desai lets readers recognise a gap between those readings and the origins of his remarks, making the believers’ certainty part of the joke.",
+    "The monkeys give the orchard’s growing public attention something to turn against. Compare the reactions to the animals and the proposed responses. The escalation shows how little agreement there is about whom the orchard serves."
+  ],
+  pride:[
+    "Darcy’s letter interrupts Elizabeth’s confident reading of events by giving him a sustained account of his own. Her reconsideration matters because the reader has spent so much time close to her judgement. Pemberley tests that revised reading through behaviour.",
+    "The opening gives the search for a husband the authority of a universal truth. The mismatch between that grand claim and the interests of the families creates irony. Charlotte’s practical decisions let Austen explore the pressures behind such claims.",
+    "Lady Catherine’s questioning assumes a right to control Elizabeth’s decisions. Elizabeth answers on her own terms and refuses the undertaking Lady Catherine wants. The dialogue makes authority depend on whether the other speaker agrees to recognise it."
+  ],
+  midsummer:[
+    "The audience sees Puck’s intervention before the lovers can recognise its effects. The actors can make the sudden change in attention exaggerated and immediate. That contrast lets the audience enjoy a mistake that the characters take seriously.",
+    "In Athens, Hermia’s father tries to enlist public authority in a private choice. The forest loosens that authority while exposing the lovers to the fairies’ control. The return to Athens lets the audience measure how those pressures have changed.",
+    "The mechanicals explain devices such as Wall so carefully that the audience notices the effort behind the illusion. The court’s comments add a second performance around the first. Shakespeare lets the tragedy become comedy through its staging and reception."
+  ]
+};
+
 const timedDraftKey = "english-study-desk-timed-drafts";
 let timedDrafts = {};
 try { timedDrafts = JSON.parse(localStorage.getItem(timedDraftKey)) || {}; } catch {}
@@ -56,17 +90,19 @@ const timedSession = {topic:"poetry", question:0, minutes:15, remaining:900, dea
 let timerInterval;
 
 function timedView() {
-  const textOptions = Object.entries(timedTopics).slice(1)
+  const textOptions = Object.entries(timedTopics).filter(([id])=>Object.hasOwn(textLibrary,id))
     .map(([id, topic]) => '<option value="'+id+'">'+topic.title+'</option>').join("");
   return `<section class="panel timed-workspace" aria-label="Writing workspace">
     <div class="actions timed-modes" aria-label="Practice section">
       <a class="secondary" id="poetry-mode" href="#timed/poetry">Poetry skills</a>
+      <a class="secondary" id="unseen-mode" href="#timed/unseen">Unseen prose</a>
       <a class="secondary" id="text-mode" href="#timed/texts">Set-text skills</a>
     </div>
     <label id="text-choice" hidden>Choose a text
       <select id="timed-topic">${textOptions}</select>
     </label>
-    <div class="timed-question">
+    <label>Practice mode <select id="practice-mode"><option value="guided">Guided</option><option value="timed">Timed</option></select></label>
+    <div class="practice-columns"><div class="timed-question">
       <p id="timed-skill" class="timed-skill"></p>
       <div id="timed-passage" class="example model" hidden></div>
       <h2 id="timed-prompt" tabindex="-1"></h2>
@@ -76,14 +112,14 @@ function timedView() {
       </div>
       <details id="timed-help"><summary>Show a planning hint</summary><p id="timed-hint"></p></details>
     </div>
-    <div class="timed-editor-head">
+    <div class="editor-pane"><div class="timed-editor-head">
       <label for="timed-answer"><strong>Your response</strong></label>
       <output id="word-count" for="timed-answer" aria-live="off">0 words</output>
     </div>
     <textarea id="timed-answer" rows="10" aria-describedby="draft-status"></textarea>
     <div class="timed-controls">
-      <div class="actions">
-        <label>Time limit <select id="timer-limit">
+      <div class="actions" id="clock-controls">
+        <label>Practice time <select id="timer-limit">
           <option value="5">5 min</option><option value="10">10 min</option>
           <option value="15">15 min</option><option value="25">25 min</option><option value="45">45 min</option>
         </select></label>
@@ -91,10 +127,20 @@ function timedView() {
         <button id="timer-toggle" class="primary" type="button">Start</button>
         <button id="timer-reset" class="secondary" type="button">Reset timer</button>
       </div>
-      <button id="clear-answer" class="secondary" type="button">Clear text</button>
+      <div class="actions"><button id="undo-answer" class="secondary" type="button" hidden>Undo clear</button><button id="clear-answer" class="secondary" type="button">Clear text</button></div>
     </div>
     <p id="draft-status" class="timed-meta">Drafts are kept per question in this browser.</p>
-    <p id="timer-status" role="status" class="timed-meta"></p>
+    <p id="timer-status" role="status" class="timed-meta"></p></div></div>
+    <button id="review-answer" class="primary" type="button">Review response</button>
+    <section id="answer-review" hidden>
+      <h2 tabindex="-1" id="review-title">Review your response</h2>
+      <ul><li>Did I answer the exact question?</li><li>Did I use precise evidence?</li><li>Did I explain a writer’s choice and its effect?</li><li>Did I develop an interpretation?</li></ul>
+      <h3>Worked paragraph</h3><p class="example" id="review-model"></p>
+      <p>Look for the opening claim, the specific evidence and the explanation of its effect. Compare them with your paragraph.</p>
+      <label for="practice-target">What will you improve next time?</label><input id="practice-target" maxlength="240">
+      <button class="secondary" id="save-target" type="button">Save improvement</button>
+      <p id="target-status" role="status"></p>
+    </section>
   </section>`;
 }
 
@@ -105,8 +151,13 @@ function resetTimedClock() {
 
 function wireTimed(section) {
   const session = timedSession;
-  const target = section === "poetry" ? "poetry" :
-    section === "texts" && session.topic === "poetry" ? "hullabaloo" : session.topic;
+  const [choice,index] = (section || "").split("/");
+  const target = Object.hasOwn(timedTopics,choice) ? choice :
+    choice === "texts" && !Object.hasOwn(textLibrary,session.topic) ? "hullabaloo" : session.topic;
+  const questionIndex = /^\d+$/.test(index) && timedTopics[target].questions[index] ? Number(index) :
+    target === session.topic ? session.question : 0;
+  const mode = $("#practice-mode");
+  let cleared = "";
   const editor = $("#timed-answer");
   const select = $("#timed-topic");
   const limit = $("#timer-limit");
@@ -122,8 +173,8 @@ function wireTimed(section) {
   }
 
   function saveDraft() {
-    if (editor.value) timedDrafts[draftId()] = editor.value;
-    else delete timedDrafts[draftId()];
+    delete timedDrafts[draftId()];
+    if (editor.value.trim()) timedDrafts[draftId()] = editor.value;
     try { localStorage.setItem(timedDraftKey, JSON.stringify(timedDrafts)); }
     catch { $("#draft-status").textContent = "Drafts will last until you close or reload this page."; }
     showCount();
@@ -149,9 +200,17 @@ function wireTimed(section) {
     const questions = timedTopics[session.topic].questions;
     const question = questions[session.question];
     $("#poetry-mode").toggleAttribute("aria-current", poetry);
-    $("#text-mode").toggleAttribute("aria-current", !poetry);
-    $("#text-choice").hidden = poetry;
-    if (!poetry) select.value = session.topic;
+    $("#unseen-mode").toggleAttribute("aria-current", session.topic === "unseen");
+    const setText = Object.hasOwn(textLibrary,session.topic);
+    $("#text-mode").toggleAttribute("aria-current", setText);
+    $("#text-choice").hidden = !setText;
+    if (setText) select.value = session.topic;
+    $("#answer-review").hidden = true;
+    $("#undo-answer").hidden = true;
+    cleared = "";
+    mode.value = session.mode || "guided";
+    $("#clock-controls").hidden = mode.value === "guided";
+    $("#timed-help").hidden = mode.value === "timed";
     $("#timed-skill").textContent = question.skill;
     const passage = $("#timed-passage");
     passage.hidden = !question.passage;
@@ -175,7 +234,44 @@ function wireTimed(section) {
   }
 
   editor.oninput = saveDraft;
-  $("#clear-answer").onclick = () => { editor.value = ""; saveDraft(); editor.focus(); };
+  $("#clear-answer").onclick = () => {
+    cleared = editor.value;
+    editor.value = "";
+    saveDraft();
+    $("#undo-answer").hidden = false;
+    $("#undo-answer").focus();
+  };
+  $("#undo-answer").onclick = () => {
+    editor.value = cleared + (editor.value ? "\n"+editor.value : "");
+    $("#undo-answer").hidden = true;
+    saveDraft();
+    editor.focus();
+  };
+  mode.onchange = () => {
+    session.mode = mode.value;
+    resetTimedClock();
+    status.textContent = "";
+    showQuestion();
+  };
+  $("#review-answer").onclick = () => {
+    if (session.deadline) {
+      showClock();
+      session.deadline = 0;
+      showClock();
+    }
+    $("#review-model").textContent = timedModels[session.topic][session.question];
+    $("#practice-target").value = saved.improvement || "";
+    $("#target-status").textContent = "";
+    $("#answer-review").hidden = false;
+    $("#review-title").focus();
+    saved.recentPractice = {topic:session.topic, question:session.question};
+    persist();
+  };
+  $("#save-target").onclick = () => {
+    saved.improvement = $("#practice-target").value.trim();
+    persist();
+    $("#target-status").textContent = storageFailed ? "Saved for this session." : "Improvement saved.";
+  };
   select.onchange = () => changeQuestion(select.value, 0);
   $("#next-question").onclick = () => {
     const total = timedTopics[session.topic].questions.length;
@@ -203,7 +299,7 @@ function wireTimed(section) {
     showClock();
   };
 
-  if (target !== session.topic) changeQuestion(target, 0);
+  if (target !== session.topic || questionIndex !== session.question) changeQuestion(target, questionIndex);
   else showQuestion();
   timerInterval = setInterval(showClock, 250);
 }
