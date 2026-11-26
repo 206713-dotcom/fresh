@@ -5,13 +5,29 @@ const notesUrl = 'https://www.savemyexams.com/igcse/economics/cie/25/revision-no
 const syllabus = 'https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf';
 const papers = 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-economics-0455/past-papers/';
 const lessons = catalog.flatMap((chapter, index) => chapter.groups.flatMap(group => group.lessons.map(lesson => ({...lesson, chapter:index}))));
-const icons = ['◒','⇄','▦','▥','↗','◎','✎'];
 const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[char]);
 const link = (label, href, cls = 'button') => '<a class="' + cls + '" href="' + escapeHtml(href) + '">' + escapeHtml(label) + '</a>';
 const heading = (label, title, desc) => '<div class="eyebrow">' + label + '</div><h1 class="page-title">' + title + '</h1><p class="muted">' + desc + '</p>';
 const pad = n => String(n).padStart(2,'0');
-function tiles(includeExam) {
-  return '<div class="grid">' + catalog.slice(0,includeExam ? catalog.length : 6).map((c,i) => '<a class="tile" data-chapter-colour="'+i+'" href="#chapter/'+i+'"><span class="icon" aria-hidden="true">'+icons[i]+'</span><div class="tile-copy"><h3>'+escapeHtml(c.title)+'</h3><small>'+ (i<6 ? 'CHAPTER '+pad(i+1) : 'EXAM SKILLS') +' · '+lessons.filter(l=>l.chapter===i).length+' lessons</small></div><span class="arrow" aria-hidden="true">→</span></a>').join('')+'</div>';
+function chapterIcon(index) {
+  const shapes = [
+    'M5 3v17h17M6 6c6 0 11 5 13 13',
+    'M4 3v17h18M7 6l12 11M7 17L19 6',
+    'M4 20V10l6 3V9l6 4V4h4v16zM8 16h1m4 0h1m4 0h1',
+    'M3 9l9-5 9 5zM6 11v6m4-6v6m4-6v6m4-6v6M4 20h16',
+    'M4 4v16h17M8 16l4-4 3 1 5-6m-4 0h4v4',
+    'M3 8h17m-4-4 4 4-4 4M21 16H4m4-4-4 4 4 4',
+    'M7 3h10v18H7zM10 8h4m-4 4h4m-4 4h4'
+  ];
+  return '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+shapes[index]+'"/></svg>';
+}
+
+function tiles() {
+  return '<div class="grid">' + catalog.slice(0, 6).map((chapter,index) =>
+    '<a class="tile" data-chapter-colour="'+index+'" href="#chapter/'+index+'"><span class="icon">'+chapterIcon(index)+'</span>'+
+    '<div class="tile-copy"><h3>'+escapeHtml(chapter.title)+'</h3><small>Chapter '+pad(index+1)+' · '+
+    lessons.filter(lesson=>lesson.chapter===index).length+' lessons</small></div><span class="arrow" aria-hidden="true">→</span></a>'
+  ).join('')+'</div>';
 }
 function overviewIcon(kind) {
   const shapes = {
@@ -25,6 +41,32 @@ function overviewIcon(kind) {
   };
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + shapes[kind] + '</svg>';
 }
+function studyResume() {
+  const items = [];
+  const mock = revisionState('test', null);
+  if (mock && !mock.finished && ['p1', 'p2'].includes(mock.mode)) {
+    items.push(['paper', 'Resume ' + revisionMockLabel(mock.mode, mock.paper), 'Timed mock', '#revision-test']);
+  }
+  const saved = revisionState('last-lesson', null);
+  const lesson = saved && lessons.find(item => item.id === saved.id);
+  if (lesson) {
+    const cards = saved.cards === true && flashcardDecks[lesson.id]?.length;
+    items.push([cards ? 'cards' : 'notes', lesson.title, cards ? 'Resume flashcards' : 'Resume lesson',
+      '#lesson/' + lesson.id + (cards ? '/cards' : '')]);
+  }
+  const hasActivity = items.length > 0;
+  if (!hasActivity) {
+    items.push(['notes', 'Browse topics', 'Lessons and diagrams', '#library'],
+      ['paper', 'Try exam practice', 'Paper 1 and Paper 2 mock papers', '#revision-test']);
+  }
+  return '<aside class="hero-study-plan" aria-labelledby="study-plan-title"><div class="study-plan-heading"><h2 id="study-plan-title">'+
+    (hasActivity ? 'Continue studying' : 'Start studying')+
+    '</h2></div>'+items.map(([icon, title, subtitle, href]) =>
+      '<a href="'+href+'"><span class="focus-icon">'+overviewIcon(icon)+'</span><span><strong>'+escapeHtml(title)+
+      '</strong><small>'+escapeHtml(subtitle)+'</small></span></a>'
+    ).join('')+'</aside>';
+}
+
 function home() {
   const exam = [
     ['paper', 'Paper 1 practice', 'Multiple-choice questions by topic.', '#practice/mcq'],
@@ -33,7 +75,8 @@ function home() {
   const revision = [
     ['notes', 'Lesson library', 'Notes and diagrams for all six chapters.', '#library'],
     ['cards', 'Flashcards', 'Flashcard decks by lesson.', '#flashcards'],
-    ['tools', 'Revision tools', 'Topic quizzes, timed mocks and corrections.', '#revision']
+    ['tools', 'Revision tools', 'Topic quizzes and corrections.', '#revision'],
+    ['progress', 'My progress', 'Saved answers and mock results.', '#progress']
   ];
   const cards = items => items.map(([icon, title, description, href]) => `
     <a class="overview-card" href="${href}">
@@ -45,27 +88,14 @@ function home() {
       <div class="economics-hero-copy">
         <p class="eyebrow">Cambridge IGCSE · Economics 0455</p>
         <h1>Economics revision</h1>
-        <div class="actions">
-          ${link('Start practising', '#practice', 'button hero-primary')}
-          ${link('Explore lessons', '#library', 'button hero-secondary')}
-        </div>
         <div class="hero-facts" aria-label="Study resources">
           <span><strong>6</strong> syllabus chapters</span>
           <span><strong>${lessons.length}</strong> lessons</span>
           <span><strong>2</strong> exam paper formats</span>
         </div>
       </div>
-      <aside class="hero-study-plan" aria-labelledby="study-plan-title">
-        <div class="study-plan-heading"><h2 id="study-plan-title">Quick links</h2></div>
-        <a href="#library"><span class="focus-icon">${overviewIcon('notes')}</span><span><strong>Lessons</strong><small>Read notes by topic</small></span></a>
-        <a href="#practice"><span class="focus-icon">${overviewIcon('writing')}</span><span><strong>Practice questions</strong><small>Browse by topic or mark value</small></span></a>
-        <a href="#revision-checklist"><span class="focus-icon">${overviewIcon('check')}</span><span><strong>Syllabus checklist</strong><small>Tick off completed topics</small></span></a>
-      </aside>
+      ${studyResume()}
     </header>
-    <div class="overview-personal">
-      <a class="progress-overview-link" href="#progress"><span class="overview-icon">${overviewIcon('progress')}</span><span class="overview-card-copy"><strong>My progress</strong><span>See saved answers and mock results.</span></span></a>
-      <a class="checklist-callout" href="#revision-checklist"><span class="overview-icon">${overviewIcon('check')}</span><span class="overview-card-copy"><strong>Syllabus checklist</strong><span>See which topics you’ve covered.</span></span></a>
-    </div>
     <section class="overview-section" aria-labelledby="overview-exam">
       <div class="overview-section-heading"><div><h2 id="overview-exam">Exam practice</h2></div></div>
       <div class="overview-exam-grid">${cards(exam)}</div>
@@ -76,7 +106,7 @@ function home() {
     </section>
     <section class="overview-section overview-chapters" aria-labelledby="overview-chapters">
       <div class="section-head"><div><h2 id="overview-chapters">Syllabus chapters</h2></div>${link('View syllabus coverage', '#syllabus', 'text-link')}</div>
-      ${tiles(false)}
+      ${tiles()}
     </section>`;
 }
 function studyHero(label, title, description, stats, kind) {
@@ -85,7 +115,7 @@ function studyHero(label, title, description, stats, kind) {
 function chapterGallery() {
   return '<div class="chapter-collection">'+catalog.map((c,i)=>{
     const chapterLessons=lessons.filter(l=>l.chapter===i);
-    return '<a class="chapter-cover" href="#chapter/'+i+'" data-chapter-colour="'+i+'"><div class="cover-top"><span class="cover-number">'+(i<6?pad(i+1):'✎')+'</span><span class="cover-arrow" aria-hidden="true">↗</span></div><div><small>'+(i<6?'Chapter '+(i+1):'Exam skills')+'</small><h2>'+escapeHtml(c.title)+'</h2></div><div class="cover-bottom"><span>'+chapterLessons.length+' lessons</span><span>Explore notes →</span></div></a>';
+    return '<a class="chapter-cover" href="#chapter/'+i+'" data-chapter-colour="'+i+'"><div class="cover-top"><span class="cover-number" aria-hidden="true">'+chapterIcon(i)+'</span><span class="cover-arrow" aria-hidden="true">↗</span></div><div><small>'+(i<6?'Chapter '+(i+1):'Exam skills')+'</small><h2>'+escapeHtml(c.title)+'</h2></div><div class="cover-bottom"><span>'+chapterLessons.length+' lessons</span><span>Explore notes →</span></div></a>';
   }).join('')+'</div>';
 }
 function library() {
@@ -206,22 +236,24 @@ function setupDeck(id) {
   update();
 }
 function practicePreset(id, mode) {
-  const match = questions.find(question => id === 'topic' ? question.topic === mode : id === 'question' && question.id === mode);
+  const match = questions.find(question => id === 'topic' || id === 'followup' ? question.topic === mode : id === 'question' && question.id === mode);
   return {
     chapterIndex: match?.c ?? (id && /^[0-5]$/.test(id) ? Number(id) : null),
     paper: id === 'mcq' || id === 'structured' ? id : '',
     topic: match?.topic ?? '',
     questionId: id === 'question' ? match?.id ?? '' : '',
+    followUp: id === 'followup' ? match?.topic ?? '' : '',
   };
 }
 
-function practice(chapterIndex) {
+function practice(chapterIndex, followUp) {
   const expanded = matchMedia('(min-width: 901px)').matches ? ' open' : '';
-  return '<header class="practice-heading"><h1 class="page-title">Practice questions</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a><p id="practice-save-status" role="status">Progress saves in this browser.</p></header><div id="practice-marking"></div>'+
-    '<details class="practice-filters"'+expanded+'><summary>Filter questions</summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
+  return '<header class="practice-heading"><h1 class="page-title">'+(followUp?'Topic follow-up':'Practice questions')+'</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a><p id="practice-save-status" role="status">Progress saves in this browser.</p>'+
+    (followUp ? '<div class="row">'+link('All questions for this topic', '#practice/topic/'+followUp, 'text-link')+' '+link('Mock exam history', '#revision-history', 'text-link')+'</div>' : '')+'</header><div id="practice-marking"></div>'+
+    '<details class="practice-filters"'+(followUp?' hidden':expanded)+'><summary>Filter questions<span id="filter-count"></span></summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
     '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
     '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button></div></details>'+
+    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button><button type="button" id="show-filtered-questions">Show questions</button></div></details>'+
     '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
     '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
 }
@@ -266,7 +298,7 @@ function paintAnswerChoices(form, selected, expected) {
   }
 }
 
-function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId }) {
+function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, followUp }) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
   const topic=document.querySelector('#filter-topic');
@@ -305,7 +337,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
   }
   const filterKey='ecbiz-practice-filters';
   let savedFilters={};
-  const useSavedFilters = !paper && !initialTopic;
+  const useSavedFilters = !paper && !initialTopic && !questionId && !followUp;
   if (useSavedFilters) {
     try {savedFilters=JSON.parse(localStorage.getItem(filterKey) || sessionStorage.getItem(filterKey))||{}} catch {}
   }
@@ -318,13 +350,14 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
   let requestedQuestion = questionId;
   let matches=[];
   const size=20;
+  const followUpMatches = followUp ? followUpQuestions(initialTopic, attempts) : null;
 
   function renderTopics() {
     const topics=new Map(questions.filter(q=>chapter.value===''||q.c===Number(chapter.value)).map(q=>[q.topic,q.topicName]));
     topic.innerHTML='<option value="">All topics</option>'+[...topics].sort(([a],[b])=>a.localeCompare(b,undefined,{numeric:true})).map(([code,name])=>'<option value="'+code+'">'+code+' · '+escapeHtml(name)+'</option>').join('');
   }
   function renderQuestions() {
-    matches=questions.map((q,i)=>({q,i})).filter(({q})=>
+    matches=followUpMatches ?? questions.map((q,i)=>({q,i})).filter(({q})=>
       (chapter.value===''||q.c===Number(chapter.value))&&
       (!topic.value||q.topic===topic.value)&&
       (!type.value||type.value===(q.options?'mcq':'structured'))&&
@@ -341,7 +374,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
     document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
-    context.textContent = topic.value || type.value ? topicLabel + ' · ' + typeLabel : 'Choose a chapter or topic, then pick a question from the list.';
+    context.textContent = followUp ? topicLabel + ' · ' + matches.length + ' follow-up questions' :
+      topic.value || type.value ? topicLabel + ' · ' + typeLabel : 'Choose a chapter or topic, then pick a question from the list.';
+    const activeFilters = [chapter, topic, type, marks, search, questionSet].filter(field => field.value.trim()).length;
+    document.querySelector('#filter-count').textContent = activeFilters ? ' · ' + activeFilters + ' active' : '';
     checklistLink.hidden = !topic.value;
     if (topic.value) checklistLink.href = '#revision-checklist/' + topic.value;
     if (useSavedFilters) {
@@ -359,7 +395,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
           '<div class="answer-composer"><div class="answer-heading"><label for="practice-answer">Your answer</label><span>Written practice</span></div>'+
           '<textarea id="practice-answer" name="answer" maxlength="8000" required aria-describedby="answer-hint" placeholder="Start with your key point, then develop your reasoning…">'+escapeHtml(answer)+'</textarea>'+
           '<div class="answer-footer"><span id="answer-hint">Use clear economic reasoning and relevant examples.</span><span class="answer-count">'+wordCount+' '+(wordCount===1?'word':'words')+'</span></div></div>')+
-        '<button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button><div class="feedback" role="status" '+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
+        '<div class="practice-submit"><span aria-hidden="true">'+q.marks+' '+(q.marks===1?'mark':'marks')+'</span><button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button></div><div class="feedback ecbiz-loading-status" role="status" '+(saved.pending?'data-loading ':'')+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
     const current=matches[page];
     const saved=current && attempts.get(current.i);
@@ -387,6 +423,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
     chapter.value=topic.value=type.value=marks.value=search.value=questionSet.value='';
     renderTopics();
     reset();
+  };
+  document.querySelector('#show-filtered-questions').onclick = event => {
+    event.target.closest('details').open = false;
+    moveTo(page, true);
   };
   function moveTo(position,scroll=false) {
     page=Math.max(0,Math.min(position,matches.length-1));
@@ -448,6 +488,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
       if(!current || attempts.get(index)!==state)return;
       const feedback=current.querySelector('.feedback');
       feedback.hidden=false;
+      feedback.toggleAttribute('data-loading', state.pending);
       feedback.innerHTML=state.feedback;
       if (q.options && state.feedback !== 'Marking your answer…') {
         feedback.dataset.outcome=mcqOutcome(answer, q.answer);
@@ -470,6 +511,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId })
         if ([2,4,6].includes(q.marks) && attempts.get(index) === state) saveWritingVersion(q.id,answer,grade);
         state.feedback = ecbizMarking.feedback(grade,q.marks,answer)+ecbizMarking.scheme(q)+
           '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
+      }
+      if (state.score > 0) {
+        const reward = q.options ? 5 : 10;
+        void window.FreshPoints.earn('Economics', reward, 'Practice question completed', 'question:' + q.id);
       }
       if(q.reference) {
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
@@ -529,7 +574,7 @@ function render(autoMark = true) {
   main.classList.toggle('practice-page',page==='practice');
   main.classList.toggle('learning-page',['library','chapter','lesson','flashcards','flashcard-review','glossary'].includes(page));
   const preset = page === 'practice' ? practicePreset(id, mode) : null;
-  const routes={home,progress:economicsProgress,'progress-weak-topics':economicsProgress,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,'flashcard-review':dailyFlashcards,glossary,practice:()=>practice(preset.chapterIndex),syllabus:syllabusGuide,sources};
+  const routes={home,progress:economicsProgress,'progress-weak-topics':economicsProgress,library,chapter:()=>chapter(Number(id)),lesson:()=>lesson(Number(id),mode==='cards'),flashcards,'flashcard-review':dailyFlashcards,glossary,practice:()=>practice(preset.chapterIndex,preset.followUp),syllabus:syllabusGuide,sources};
   main.innerHTML='<div class="wrap">'+(Object.hasOwn(routes,page)?routes[page]:home)()+'</div>';
   const active = page==='progress-weak-topics' ? 'progress' : ['glossary','flashcard-review'].includes(page) ? 'flashcards' : page === 'chapter' || page === 'lesson' ? (mode === 'cards' ? 'flashcards' : 'library') : page;
   setActiveSection(Object.hasOwn(routes, page) ? active : 'home');
@@ -546,6 +591,10 @@ function render(autoMark = true) {
   const deckChapter=document.querySelector('#deck-chapter');
   if(deckSearch)deckSearch.oninput=deckChapter.onchange=()=>{document.querySelector('#deck-results').innerHTML=deckGallery(deckSearch.value,deckChapter.value)};
   document.querySelectorAll('[data-note-target]').forEach(button=>button.onclick=()=>document.getElementById(button.dataset.noteTarget).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}));
+  if (page === 'lesson' && lessons.some(lesson => lesson.id === Number(id))) {
+    saveRevisionState('last-lesson', {id:Number(id), cards:mode === 'cards'});
+    setupLessonDiagram();
+  }
   setupDeck(page==='glossary'?'glossary':Number(id));
   if (page==='flashcard-review') setupDailyFlashcards();
   if (page === 'practice') {

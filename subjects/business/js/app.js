@@ -98,7 +98,7 @@
               '</button>' +
             '</div>' +
           '</div>' +
-          '<div class="site-coin-balance sticker-badge font-mono text-xs font-bold cursor-default" title="Earn coins by completing Topical and Paper 2 questions"><span>🪙</span><span data-ec-coins>' + EC.coins() + '</span></div>' +
+          '<div class="site-coin-balance sticker-badge font-mono text-xs font-bold cursor-default" title="Shared GIS Points balance"><span>✦</span><span data-ec-coins>' + EC.points() + '</span></div>' +
           '<button class="site-utility-button px-2.5 py-1.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:bg-[#F5F5F4] dark:hover:bg-neutral-800 text-[#57534E] dark:text-neutral-300 transition-colors text-xs font-semibold flex items-center gap-1.5 cursor-pointer" title="Open Focus Realm &amp; Ambient Sounds" aria-label="Study Space" data-overlay="study-space">' + icon('headphones', 16) + '<span class="hidden 2xl:inline">Study Space</span></button>' +
           '<button type="button" class="' + utilBtn + '" title="Scholar Avatar &amp; Costumes" data-overlay="avatar">' + icon('palette', 24, 'w-4 h-4 text-purple-600 dark:text-purple-400') + '</button>' +
           '<button type="button" class="' + utilBtn + '" title="Milestones &amp; Achievements" data-overlay="achievements">' + icon('trophy', 24, 'w-4 h-4 text-amber-500') + '</button>' +
@@ -106,7 +106,7 @@
           '<button type="button" id="mobileNavBtn" class="lg:hidden p-1.5 rounded-lg border border-[#D6D3D1] dark:border-neutral-700 bg-white dark:bg-neutral-900 text-[#1C1917] dark:text-white" aria-expanded="false" aria-label="Open study navigation">' + icon('menu', 24, 'w-5 h-5') + '</button>' +
         '</div></div>' +
       '<nav class="business-nav" aria-label="Business study tools"><div class="business-nav-inner">' +
-        '<a class="business-nav-home" href="../../index.html">' + icon('arrowLeft', 16) + ' Fresh</a>' +
+        '<a class="business-nav-home" href="../../" aria-label="Fresh homepage" title="Fresh homepage">' + icon('arrowLeft', 16) + ' Fresh</a>' +
         '<div class="business-nav-tools">' +
           navBtn('overview', 'layoutGrid', 'Overview') +
           navBtn('progress', 'chartColumn', 'My progress') +
@@ -533,7 +533,7 @@
             '<span><strong>My progress</strong><small>View your marks, skills breakdown, saved answers and CSV download.</small></span>' + icon('arrowRight', 22) + '</button>' +
 
           '<button type="button" class="boss-cta boss-overview-button" data-nav="boss-battle">' + icon('swords', 25) +
-            '<span><strong>Boss Battle</strong><small>Fight with Business questions and earn Study Coins.</small></span>' + icon('arrowRight', 23) + '</button>' +
+            '<span><strong>Boss Battle</strong><small>Fight with Business questions and earn GIS Points.</small></span>' + icon('arrowRight', 23) + '</button>' +
 
           '<section class="business-overview-section" aria-labelledby="business-papers"><h2 id="business-papers">Exam practice</h2><div class="business-overview-papers">' +
             '<button class="business-overview-card business-paper-card" type="button" data-nav="practice"><span class="business-overview-icon">' + icon('fileText', 23) + '</span><span class="business-overview-card-copy"><strong>Paper 1 practice</strong><span>Choose a syllabus topic and work through short, structured questions.</span></span>' + icon('arrowRight', 20, 'business-overview-arrow') + '</button>' +

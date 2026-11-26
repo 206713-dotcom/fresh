@@ -1376,7 +1376,7 @@
       state.evaluationId = id;
       state.lastSubmissionId = "sub-" + Date.now();
       state.lastCoins = 20 + Math.max(5, result.totalScore * 5);
-      if (typeof EC.addCoins === "function") EC.addCoins(state.lastCoins);
+      if (typeof EC.earnPoints === "function") EC.earnPoints(state.lastCoins);
       if (result.percentage >= 70) celebrate({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
       saveSubmissionRecord(found, id, answer, result);
       var prog = qs("#p1-progress");
@@ -1517,7 +1517,7 @@
     h += '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7E5E4] dark:border-neutral-800"><div>' +
       '<div class="flex flex-wrap items-center gap-2">' +
       '<span class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Cambridge Assessment Score Result</span>' +
-      (state.lastCoins ? '<span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 text-[10px] font-bold font-mono border border-amber-500/30 shadow-xs animate-bounce">🪙 +' + num(state.lastCoins, 0) + ' Coins Earned!</span>' : '') +
+      (state.lastCoins ? '<span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 text-[10px] font-bold font-mono border border-amber-500/30 shadow-xs animate-bounce">✦ +' + num(state.lastCoins, 0) + ' GIS Points Earned!</span>' : '') +
       (ov.isOverridden ? '<span class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 text-[10px] font-bold font-mono border border-amber-500/30">⚖️ Manual Override Applied ' + (ov.bodApplied ? '(+BOD)' : '') + '</span>' : '') +
       '</div>' +
       '<h3 class="font-academic-serif text-3xl font-bold text-[#0F2042] dark:text-white mt-1">Score: ' + num(r.totalScore, 0) + ' / ' + num(r.maxMarks, 0) + ' Marks (' + num(r.percentage, 0) + '%)</h3>' +

@@ -16,7 +16,7 @@ mkdirSync(dist, { recursive: true });
 for (const f of [
   "index.html", "privacy.html", "404.html", "style.css", "home.css",
   "privacy.css", "privacy.js", "search.js", "home.js", "fresh.svg",
-  "CNAME", ".nojekyll", "metadata.json",
+  "CNAME", ".nojekyll", "metadata.json", "gis-points.css", "gis-points.js",
 ]) {
   const src = path.join(root, f);
   if (existsSync(src)) cpSync(src, path.join(dist, f));
@@ -27,7 +27,7 @@ const subjectsDir = path.join(root, "subjects");
 const distSubjects = path.join(dist, "subjects");
 mkdirSync(distSubjects, { recursive: true });
 for (const f of readdirSync(subjectsDir)) {
-  if (f.endsWith(".html") || ["science.css", "science-loading.css", "science-loading.js", "study-tracks.css"].includes(f)) {
+  if (f.endsWith(".html") || ["fresh-home-link.css", "science.css", "science-loading.css", "science-loading.js", "study-tracks.css"].includes(f)) {
     cpSync(path.join(subjectsDir, f), path.join(distSubjects, f));
   }
 }
@@ -35,7 +35,7 @@ for (const f of readdirSync(subjectsDir)) {
 // Static subject apps and their lesson data. The plain-file subject
 // folders are copied as-is; subjects/business/ is assembled separately below
 // so its React source/build tooling is never included in dist/.
-for (const subject of ["chemistry", "economics", "english", "physics", "pyquest"]) {
+for (const subject of ["biology", "chemistry", "design-and-technology", "economics", "english", "mathquest", "physics", "pyquest", "vertex-maths"]) {
   const subjectDir = path.join(subjectsDir, subject);
   if (existsSync(subjectDir)) {
     cpSync(subjectDir, path.join(distSubjects, subject), { recursive: true });

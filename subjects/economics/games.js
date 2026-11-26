@@ -523,6 +523,9 @@ root.addEventListener('click',event=>{
         save(scoreKey,Math.max(score,load(scoreKey,0)));
         const modeRecord=activeGame+'-best-'+modeKey(state);
         save(modeRecord,Math.max(score,load(modeRecord,0)));
+        if (score >= 70) {
+          void window.FreshPoints.earn('Economics', 15, 'Game completed with 70% or better', 'game:' + modeRecord);
+        }
       }
       break;
     }

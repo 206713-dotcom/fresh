@@ -1,0 +1,160 @@
+import {check as q, lesson as l} from './model.js';
+
+export const number = [
+  l('number-types','Number types and prime factors','number','core',
+    'Classify numbers, write prime products and find HCFs and LCMs.',
+    ['Integers include negative whole numbers and zero. A rational number can be written as a fraction of integers; an irrational number, such as √2, cannot.', 'A prime has exactly two positive factors. Break a composite number into primes by repeated division. For the HCF keep common prime factors at their smaller powers; for the LCM keep all the prime factors at their largest powers.', 'The reciprocal of a nonzero number is 1 divided by it. Write large numbers in groups of three digits to read their place value.'],
+    ['Find the HCF and LCM of 18 and 24.', '18 = 2 × 3² and 24 = 2³ × 3. The HCF is 2 × 3 = 6. The LCM is 2³ × 3² = 72.'],
+    q('Find the HCF of 36 and 54.','18',['6','9','108'],'36 = 2² × 3² and 54 = 2 × 3³. The shared smaller powers give 2 × 3² = 18.'),
+    [
+      q('Find the LCM of 15 and 18.','90',['3','45','270'],'15 = 3 × 5 and 18 = 2 × 3². Take 2 × 3² × 5.'),
+      q('Which number is irrational?','√7',['√49','−6','0.375'],'7 is not a perfect square. The other three numbers can be written as fractions.'),
+      q('Write 84 as a product of prime factors.','2² × 3 × 7',['2 × 3² × 7', '2² × 3 × 14', '2 × 42'],'Divide 84 by 2 twice to get 21, and split 21 into 3 × 7. Every factor in 2² × 3 × 7 is prime.'),
+      q('What is the reciprocal of −4/7?','−7/4',['7/4', '−4/7', '4/7'],'Swap the numerator and denominator and keep the sign. (−4/7)(−7/4) = 1.'),
+      q('Two lights flash every 18 seconds and 28 seconds. They flash together now. When will they next flash together?','252 seconds',['126 seconds', '504 seconds', '46 seconds'],'Find the LCM. Since 18 = 2 × 3² and 28 = 2² × 7, the largest powers give 2² × 3² × 7 = 252.')
+    ]),
+  l('sets','Sets and Venn diagrams','number','core',
+    'Use two-set notation, complements and Venn diagrams.',
+    ['A ∩ B means in both sets. A ∪ B includes everything in either set, including the overlap. A′ contains everything in the universal set that is outside A.', 'Put the overlap in a Venn diagram first. Subtract it from each set total before filling the outside region. The sum of all regions equals the universal total.'],
+    ['In a class of 30, 14 play tennis, 11 swim and 5 do both. How many do neither?', 'The union has 14 + 11 − 5 = 20 learners. The remaining 30 − 20 = 10 do neither.'],
+    q('n(A) = 17, n(B) = 12 and n(A ∩ B) = 4. Find n(A ∪ B).','25',['29','33','13'],'Add both totals, then subtract the overlap once.'),
+    [
+      q('The universal set has 24 elements. n(A) = 9. Find n(A′).','15',['9','24','33'],'The complement contains the 24 − 9 elements outside A.'),
+      q('A = {2, 4, 6} and B = {1, 4, 5}. Find A ∩ B.','{4}',['{2, 6}','{1, 2, 4, 5, 6}','∅'],'Only 4 belongs to both sets.'),
+      q('A = {1, 3, 5} and B = {3, 5, 7}. Find A ∪ B.','{1, 3, 5, 7}',['{3, 5}', '{1, 7}', '{1, 3, 5}'],'The union includes every distinct element in either set, including 3 and 5 from the overlap.'),
+      q('Of 32 pupils, 16 play chess, 13 play badminton and 6 play both. How many play chess only?','10',['6', '7', '23'],'The 16 chess players include the 6 who play both. Subtract 6 from 16.'),
+      q('Of 40 pupils, 21 read fiction, 18 read comics and 9 read neither. How many read both?','8',['1', '9', '31'],'There are 40 − 9 = 31 in the union. Adding 21 + 18 gives 39 because the readers of both were counted twice, so the overlap is 39 − 31 = 8.')
+    ],['number-types']),
+  l('operations','Signed numbers and operations','number','core',
+    'Compare numbers and evaluate expressions with brackets, powers and signs.',
+    ['Work out brackets first, then powers and roots, then multiplication and division from left to right, then addition and subtraction from left to right.', 'Subtracting a negative is addition. Multiplying or dividing two numbers with the same sign gives a positive result. On a number line, values farther right are greater.', 'The symbols < and > show strict comparisons. The symbols ≤ and ≥ include equality. For example, −3 > −8.'],
+    ['Evaluate 9 − 2 × (−3)².', 'Square −3 to get 9. Multiply 2 × 9 = 18, then subtract to get −9.'],
+    q('Evaluate 5 − 4 × (−2).','13',['−2','−3','8'],'Multiply first to get −8. Then 5 − (−8) = 13.'),
+    [
+      q('Evaluate −3² + 10.','1',['19','−19','7'],'Without brackets, apply the square before the leading minus, so −9 + 10 = 1.'),
+      q('Which comparison is true?','−5 < −2',['−5 > −2','−5 = 5','−2 < −5'],'−5 is farther left than −2 on the number line.'),
+      q('Evaluate (−6) × (−4) − 9.','15',['−33', '33', '−15'],'The two negatives multiply to a positive 24. Then 24 − 9 = 15.'),
+      q('Evaluate 36 ÷ 3 × 2 − 7.','17',['−1', '5', '−12'],'Division and multiplication come before subtraction and have equal priority. Work left to right to get 12 × 2 − 7 = 17.'),
+      q('Evaluate 8 − [3 − (−2)²] × 5.','13',['3', '−27', '45'],'First square −2 to get 4. The bracket is 3 − 4 = −1, so the expression is 8 − (−5) = 13.')
+    ]),
+  l('fractions','Fractions, decimals and percentages','number','core',
+    'Convert between forms and calculate accurately with fractions.',
+    ['For addition and subtraction, use a common denominator. For multiplication, multiply numerators and denominators. For division, multiply by the reciprocal of the divisor.', 'To convert a fraction to a decimal, divide the numerator by the denominator. Multiply a decimal by 100 to write it as a percentage.', 'To change a mixed number to an improper fraction, multiply the whole part by the denominator and add the numerator. Keep the denominator.'],
+    ['Work out 1½ ÷ ¾.', 'Write 1½ as 3/2. Then (3/2) × (4/3) = 2.'],
+    q('Work out 5/6 − 1/4.','7/12',['4/2','4/10','2/3'],'Use denominator 12: 10/12 − 3/12 = 7/12.'),
+    [
+      q('Write 0.085 as a percentage.','8.5%',['0.85%','85%','0.085%'],'Multiply by 100 to convert a decimal to a percentage.'),
+      q('Work out 2/3 ÷ 4/5.','5/6',['8/15','6/5','10/9'],'Multiply 2/3 by the reciprocal 5/4 and simplify.'),
+      q('Write 2⅗ as an improper fraction.','13/5',['10/5', '7/5', '13/3'],'Each whole is 5/5. Two wholes and three fifths give (2 × 5 + 3)/5 = 13/5.'),
+      q('Work out 3/8 + 1/6. Give a simplified fraction.','13/24',['4/14', '4/24', '5/12'],'Use denominator 24. The fractions become 9/24 and 4/24, which add to 13/24.'),
+      q('A bottle contains 2¼ litres. A full cup holds ⅜ litre. How many full cups can you fill?','6',['3', '8', '9'],'Convert 2¼ to 9/4 and divide by 3/8. Multiplying (9/4) × (8/3) gives 6.')
+    ],['operations']),
+  l('powers','Powers, roots and standard form','number','core',
+    'Evaluate powers and roots and express large or small values in standard form.',
+    ['A power counts repeated multiplication. The square root symbol gives the non-negative square root. Cube roots can be negative.', 'Standard form is a × 10ⁿ with 1 ≤ a < 10 and integer n. Small positive numbers use negative powers of ten.', 'Multiply standard-form numbers by multiplying coefficients and adding exponents. To add them, align the powers first. Renormalise the result.'],
+    ['Write (4 × 10⁵)(7 × 10³) in standard form.', 'Multiply to get 28 × 10⁸. Move the decimal point one place left and increase the exponent by 1, giving 2.8 × 10⁹.'],
+    q('Write 0.00072 in standard form.','7.2 × 10⁻⁴',['7.2 × 10⁴','0.72 × 10⁻³','72 × 10⁻⁴'],'Moving the decimal four places right gives 7.2, so multiply by 10⁻⁴ to restore the size.'),
+    [
+      q('Evaluate ∛(−125).','−5',['5','−25','−15'],'(−5)³ = −125.'),
+      q('Calculate (9 × 10⁸) ÷ (3 × 10²).','3 × 10⁶',['3 × 10¹⁰','6 × 10⁶','3 × 10⁴'],'Divide the coefficients and subtract the powers of ten.'),
+      q('Evaluate √121 + ∛(−8).','9',['13', '3', '−9'],'The square root of 121 is 11 and the cube root of −8 is −2. Their sum is 9.'),
+      q('Write 680 000 in standard form.','6.8 × 10⁵',['6.8 × 10⁴', '6.8 × 10⁶', '6.8 × 10⁻⁵'],'The coefficient must be at least 1 and less than 10. Moving the decimal point five places left gives 6.8, so multiply it by 10⁵.'),
+      q('Calculate 3.6 × 10⁵ + 8 × 10⁴. Give your answer in standard form.','4.4 × 10⁵',['11.6 × 10⁵', '3.68 × 10⁵', '4.4 × 10⁹'],'Rewrite 8 × 10⁴ as 0.8 × 10⁵. The two coefficients now add to 4.4 at the same power of ten.')
+    ],['operations']),
+  l('estimation','Rounding, estimation and bounds','number','core',
+    'Round to decimal places or significant figures and write measurement intervals.',
+    ['Decimal places count digits after the decimal point. Significant figures start at the first nonzero digit. For estimates, round each value to a convenient number before working out the result.', 'For a value rounded to the nearest step s, the lower bound is the displayed value minus s/2. The upper bound is the displayed value plus s/2 and is excluded.'],
+    ['A mass is 4.6 kg to the nearest 0.1 kg. Find its interval.', 'Half of 0.1 is 0.05. The true mass m satisfies 4.55 ≤ m < 4.65 kg.'],
+    q('A length is 82 cm to the nearest cm. What is its lower bound?','81.5 cm',['81 cm','82.5 cm','80.5 cm'],'Subtract half of 1 cm from 82 cm.'),
+    [
+      q('Round 0.04786 to 2 significant figures.','0.048',['0.04','0.05','0.047'],'The first two significant digits are 4 and 7. The next digit, 8, rounds the 7 up.'),
+      q('Estimate (39.8 × 6.1) ÷ 2.02 using 1 significant figure.','120',['12','240','80'],'Use 40 × 6 ÷ 2 = 120.'),
+      q('Round 12.386 to two decimal places.','12.39',['12.38', '12.4', '12.386'],'Keep the hundredths place. The next digit is 6, so round the hundredths digit from 8 up to 9.'),
+      q('Estimate 18.7 × 31.4 by rounding both numbers to one significant figure first.','600',['620', '570', '60'],'Round 18.7 to 20 and 31.4 to 30. The estimated product is 20 × 30 = 600.'),
+      q('A volume V is recorded as 250 mL to the nearest 10 mL. Which interval contains all possible actual volumes?','245 ≤ V < 255',['245 < V ≤ 255', '240 ≤ V < 260', '249.5 ≤ V < 250.5'],'Half the rounding step is 5 mL. Include 245 mL, which rounds up to 250 mL. Exclude 255 mL, which rounds up to 260 mL.')
+    ],['operations']),
+  l('ratio','Ratio, proportion and scale','number','core',
+    'Simplify ratios, share quantities and read scale drawings.',
+    ['Convert quantities to the same unit before forming a ratio. When sharing a total, divide it by the sum of the ratio parts.', 'For a scale of 1 : n, multiply the drawing length by n for the real length. Convert units after multiplying.', 'For a unit rate, divide by the quantity to find the amount per one unit. Compare rates in the same units.'],
+    ['Share RM84 in the ratio 2 : 5.', 'There are 7 parts. One part is RM12. The shares are RM24 and RM60.'],
+    q('A map scale is 1 : 50 000. What distance does 3 cm represent?','1.5 km',['0.15 km','15 km','150 km'],'3 × 50 000 = 150 000 cm, or 1.5 km.'),
+    [
+      q('Divide 72 in the ratio 5 : 3. What is the smaller share?','27',['9','24','45'],'One part is 72 ÷ 8 = 9. Multiply 9 by 3.'),
+      q('Simplify 45 cm : 1.5 m.','3 : 10',['30 : 1','1 : 3','9 : 10'],'Convert 1.5 m to 150 cm, then divide both numbers by 15.'),
+      q('A shop sells 6 notebooks for RM15. At the same unit price, what do 10 notebooks cost?','RM25',['RM21', 'RM30', 'RM9'],'One notebook costs RM15 ÷ 6 = RM2.50. Ten cost RM2.50 × 10 = RM25.'),
+      q('A model is built to a scale of 1 : 80. Its real building is 24 m long. How long is the model?','30 cm',['3 cm', '192 cm', '300 cm'],'Convert 24 m to 2400 cm and divide by 80. The model is 30 cm long.'),
+      q('Three classes share 168 books in the ratio 2 : 3 : 7. How many more books does the class with the largest share receive than the class with the smallest share?','70',['42', '98', '28'],'There are 12 parts, so each part is 168 ÷ 12 = 14 books. The largest share exceeds the smallest by 7 − 2 = 5 parts, or 70 books.')
+    ],['fractions']),
+  l('percent-change','Percentages and money','number','core',
+    'Apply percentage multipliers, interest, exchange rates and money calculations.',
+    ['For p% increase multiply by 1 + p/100. For p% decrease multiply by 1 − p/100. To find an original amount, divide the final amount by the multiplier.', 'For repeated compound changes, raise the multiplier to the number of periods. Simple interest is calculated from the starting balance only.', 'For currency conversions, write the exchange rate as an equality. Use the direction of the conversion to decide whether to multiply or divide.'],
+    ['A RM90 jacket is discounted by 20% and then by 10%. Find its final price.', 'Multiply by 0.80 and then by 0.90. The final price is RM64.80, a total reduction of 28%.'],
+    q('A price of RM80 rises by 25%. Find the new price.','RM100',['RM105','RM60','RM95'],'Multiply RM80 by 1.25 to get RM100.'),
+    [
+      q('RM1000 earns compound interest of 5% for 2 years. What is the balance?','RM1102.50',['RM1100','RM1050','RM1025'],'1000 × 1.05² = 1102.50.'),
+      q('The rate is 1 USD = RM4.50. Convert RM90 to US dollars.','USD 20',['USD 405','USD 40.50','USD 2'],'Divide 90 by 4.50 to convert in this direction.'),
+      q('A RM260 bicycle helmet is reduced in price by 15%. What is its sale price?','RM221',['RM39', 'RM245', 'RM299'],'The sale price is 85% of the original. Multiply RM260 by 0.85 to get RM221.'),
+      q('RM2400 is invested for 3 years at 4% simple interest per year. How much interest is earned?','RM288',['RM96', 'RM2688', 'RM299.67'],'Simple interest uses the starting balance each year. One year gives RM2400 × 0.04 = RM96, so three years give RM288.'),
+      q('After a 12% price increase, a desk costs RM336. What was its original price?','RM300',['RM295.68', 'RM376.32', 'RM324'],'The new price is 1.12 times the old price. Divide RM336 by 1.12 to recover RM300.')
+    ],['fractions']),
+  l('rates-time','Rates, time and units','number','core',
+    'Use time formats and calculations with speed and other rates.',
+    ['Speed = distance ÷ time. To find distance, multiply speed by time. Use the same method for other rates, such as the cost per kilogram.', 'There are 60 minutes in one hour. For h hours and m minutes, use h + m/60 hours in calculations with kilometres per hour.', 'To change kilometres per hour to metres per second, divide by 3.6. Read 24-hour clocks by subtracting 12 from hours greater than 12 when converting to afternoon or evening times.'],
+    ['A bus travels 54 km from 14:15 to 15:45. Find its average speed.', 'The journey takes 1 hour 30 minutes = 1.5 h. Speed = 54 ÷ 1.5 = 36 km/h.'],
+    q('A train covers 126 km in 1 hour 45 minutes. Find its average speed.','72 km/h',['84 km/h','86.9 km/h','220.5 km/h'],'1 h 45 min = 1.75 h. Divide 126 by 1.75.'),
+    [
+      q('Convert 54 km/h to m/s.','15 m/s',['5.4 m/s','19.44 m/s','194.4 m/s'],'Divide 54 by 3.6.'),
+      q('A film begins at 22:55 and lasts 1 h 20 min. When does it finish?','00:15 the next day',['23:15','23:55','00:05 the next day'],'Adding 1 hour gives 23:55 and adding 20 minutes crosses midnight.'),
+      q('How long is it from 16:48 to 18:15?','1 h 27 min',['1 h 33 min', '2 h 27 min', '1 h 37 min'],'From 16:48 to 17:00 is 12 minutes. Add 1 hour to 18:00 and 15 more minutes.'),
+      q('A cyclist travels at 18 km/h for 35 minutes. How far do they travel?','10.5 km',['6.3 km', '18.35 km', '31.5 km'],'Convert 35 minutes to 35/60 hours. Multiply 18 km/h by 35/60 h to get 10.5 km.'),
+      q('A runner covers 1.8 km in 4 minutes. What is their average speed in m/s?','7.5 m/s',['0.45 m/s', '27 m/s', '450 m/s'],'Convert to 1800 m and 240 s. Then average speed is 1800 ÷ 240 = 7.5 m/s.')
+    ],['ratio']),
+  l('number-indices','Fractional indices and surds','number','extended',
+    'Apply rational powers and simplify exact roots.',
+    ['For a positive base a, a^(1/n) is the nth root of a and a^(m/n) raises that root to m. A negative exponent gives the reciprocal of the corresponding positive power.', 'To simplify a surd, factor out perfect squares. Combine like surds and rationalise a single surd denominator by multiplying numerator and denominator by that surd.', 'For a binomial denominator such as 2 + √3, multiply top and bottom by the conjugate 2 − √3 to use a difference of two squares.'],
+    ['Simplify 3/√6.', 'Multiply by √6/√6, giving 3√6/6 = √6/2.'],
+    q('Evaluate 27^(−2/3).','1/9',['9','−9','1/3'],'Cube root 27 to get 3, square to get 9, then take the reciprocal.'),
+    [
+      q('Simplify √75 − √12.','3√3',['7√3','√63','5√3'],'√75 = 5√3 and √12 = 2√3, so subtract coefficients.'),
+      q('Rationalise 1/(2 + √3).','2 − √3',['2 + √3','(2 − √3)/7','1 − √3'],'Multiply by (2 − √3)/(2 − √3). The denominator is 4 − 3 = 1.'),
+      q('Evaluate 32^(3/5).','8',['2', '4', '192'],'The fifth root of 32 is 2. Raise 2 to the power 3 to get 8.'),
+      q('Simplify 2√18 + √8.','8√2',['5√2', '2√26', '4√2'],'Use √18 = 3√2 and √8 = 2√2. Then 2 × 3√2 + 2√2 = 8√2.'),
+      q('Rationalise 3/(√7 − 2).','√7 + 2',['√7 − 2', '(√7 + 2)/3', '3(√7 + 2)/11'],'Multiply the top and bottom by √7 + 2. The denominator becomes 7 − 4 = 3, which cancels the numerator’s factor of 3.')
+    ],['powers']),
+  l('recurring','Recurring decimals and three sets','number','extended',
+    'Turn recurring decimals into exact fractions and reason with three-set Venn diagrams.',
+    ['For a repeating decimal, write x as the decimal and multiply to align matching repeating tails. Subtract the equations to eliminate the tails.', 'For three sets, fill the triple overlap first. Pairwise intersection totals include the triple overlap, so subtract it in each pair-only region. Then fill the single-only and outside regions.', 'A ⊆ B means every element of A is in B, allowing equality. The empty set is a subset of every set.'],
+    ['Convert 0.272727… to a fraction.', 'Let x = 0.272727… so 100x = 27.272727…. Subtraction gives 99x = 27, so x = 3/11.'],
+    q('Write 0.16666… as a simplified fraction.','1/6',['1/9','16/99','16/90'],'Subtract 10x = 1.666… from 100x = 16.666… to get 90x = 15.'),
+    [
+      q('n(A ∩ B) = 11 and n(A ∩ B ∩ C) = 4. Find n(A ∩ B ∩ C′).','7',['4','11','15'],'Remove the elements that are also in C.'),
+      q('Write 0.454545… as a simplified fraction.','5/11',['9/20','5/9','45/100'],'99x = 45, so x = 45/99 = 5/11.'),
+      q('Write 0.383838… as a fraction in simplest form.','38/99',['38/100', '38/90', '19/99'],'Let x = 0.383838…. Subtract x from 100x. The repeating tails cancel, leaving 99x = 38.'),
+      q('Which statement is true for A = {2, 4} and B = {2, 4, 6}?','A ⊆ B',['B ⊆ A', '6 ∈ A', 'A ∩ B = ∅'],'Every element of A also belongs to B, so A is a subset of B.'),
+      q('In a group of 40, the three set totals are 18, 16 and 14. The three pairwise intersection totals are 8, 7 and 6, each including the 3 in all three sets. How many are in none of the sets?','10',['13', '16', '7'],'The union is 18 + 16 + 14 − 8 − 7 − 6 + 3 = 30. Adding the triple overlap corrects for its repeated subtraction. The other 10 are outside all three.')
+    ],['fractions','sets']),
+  l('combined-bounds','Calculations with bounds','number','extended',
+    'Find extreme outcomes from rounded values.',
+    ['For positive lengths, the maximum product uses both upper bounds and the minimum uses both lower bounds.', 'For a positive quotient, divide the largest numerator by the smallest denominator for the upper bound. Reverse those choices for the lower bound.', 'For a difference a − b, its upper bound uses upper a and lower b. Consider the signs and endpoint cases when a problem includes negatives.'],
+    ['A rectangle measures 8 cm by 5 cm to the nearest cm. Find the upper bound of its area.', 'Use 8.5 × 5.5 = 46.75 cm². The actual area is below 46.75 cm².'],
+    q('Distance is 60 km to the nearest km and time is 2.0 h to the nearest tenth. Which expression gives the upper bound for speed?','60.5 ÷ 1.95',['59.5 ÷ 2.05','60.5 ÷ 2.05','60 ÷ 2'],'For the greatest quotient, pair the upper distance bound with the lower time bound.'),
+    [
+      q('The sides of a rectangular floor are 5 m and 3 m to the nearest m. Find the lower bound of its area.','11.25 m²',['15 m²','19.25 m²','13.75 m²'],'The minimum uses 4.5 × 2.5.'),
+      q('Two lengths are 15 cm and 7 cm, each to the nearest cm. Find the upper bound of their difference.','9 cm',['7 cm','8 cm','8.5 cm'],'Use the largest first length and smallest second: 15.5 − 6.5 = 9.'),
+      q('A rectangle measures 12 cm by 7 cm, each to the nearest cm. Find the lower bound of its perimeter.','36 cm',['38 cm', '40 cm', '37 cm'],'The lower lengths are 11.5 cm and 6.5 cm. The lower perimeter is 2(11.5 + 6.5) = 36 cm.'),
+      q('Prize weights A and B are recorded as 8.4 kg and 6.2 kg, each to the nearest 0.1 kg. Find the lower bound of A − B.','2.10 kg',['2.20 kg', '2.30 kg', '2.00 kg'],'Use A’s lower bound and B’s upper bound. Subtract 6.25 from 8.35 to get 2.10 kg.'),
+      q('A cyclist travels 46 km in 2.4 h. The distance is rounded to the nearest km and the time to the nearest 0.1 h. Find the lower bound of average speed to two decimal places.','18.57 km/h',['19.35 km/h', '19.79 km/h', '18.96 km/h'],'Divide the smallest distance, 45.5 km, by the largest time, 2.45 h. This gives about 18.5714 km/h.')
+    ],['estimation']),
+  l('growth','Growth, decay and repeated percentages','number','extended',
+    'Model exponential growth and decay and find rates from a multiplier.',
+    ['For steady percentage change, use amount = initial × multiplierⁿ. Use a multiplier less than 1 for decay and greater than 1 for growth.', 'To find the change factor from initial and final amounts over n equal periods, find the nth root of final ÷ initial.', 'Interpret n in the units used for the rate. To reverse repeated changes, divide the final value by the full multiplier power.'],
+    ['A machine loses 20% of its value each year. What fraction of its value remains after 3 years?', 'Use 0.80³ = 0.512. The machine retains 51.2% of its initial value.'],
+    q('A population of 500 grows by 10% each year. Find the population after 2 years.','605',['600','550','610'],'500 × 1.1² = 605.'),
+    [
+      q('An investment grows from RM1000 to RM1210 in 2 years at a constant compound rate. Find the annual rate.','10%',['10.5%','21%','11%'],'√(1210/1000) = 1.1, which means 10% per year.'),
+      q('A value halves each hour. What percentage remains after 3 hours?','12.5%',['25%','6.25%','37.5%'],'(1/2)³ = 1/8 = 12.5%.'),
+      q('A plant is 40 cm tall and grows by 5% each week for 3 weeks. What calculation gives its final height in centimetres?','40 × 1.05³',['40 × 0.05³', '40 × 1.15', '40 × 1.05 × 3'],'The weekly multiplier is 1.05. Apply it repeatedly for the three weeks.'),
+      q('A phone loses 25% of its value each year. After two years it is worth RM675. What was its starting value?','RM1200',['RM900', 'RM1350', 'RM379.69'],'Two years leave 0.75² of the starting value. Divide RM675 by 0.5625 to get RM1200.'),
+      q('A town population falls from 5000 to 3645 in 3 years at a constant percentage rate. What is the percentage decrease each year?','10%',['27.1%', '9.03%', '30%'],'The three-year factor is 3645/5000 = 0.729. Its cube root is 0.9, a 10% decrease per year.')
+    ],['percent-change'])
+];

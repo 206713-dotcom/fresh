@@ -207,22 +207,28 @@
     }
   }
 
-  function coins() {
-    /* Original balance lived under ecbiz_study_coins; keep both in sync. */
-    var legacy = store.get("study_coins", null);
-    if (legacy !== null) return legacy;
-    return store.get("coins", 50);
+  var sharedPoints = window.FreshPoints;
+  function points() { return sharedPoints.balance(); }
+  function earnPoints(n, label, claim) {
+    return sharedPoints.earn("Business", n, label || "Study reward", claim);
   }
-  function addCoins(n) {
-    var next = coins() + n;
-    store.set("study_coins", next);
-    store.set("coins", next);
+  function spendPoints(n, label, purchase) {
+    return sharedPoints.transaction("Business", function (wallet) {
+      var records = purchase ? purchase() : {};
+      if (!records || (n && !wallet.adjust(-n, label))) return false;
+      Object.keys(records).forEach(function (name) { wallet.write("ecbiz_" + name, records[name]); });
+      return true;
+    }).catch(function () { return false; });
+  }
+  window.addEventListener(sharedPoints.changeEvent, function () {
+    var next = points();
     document.querySelectorAll("[data-ec-coins]").forEach(function (node) { node.textContent = next; });
-    try {
-      window.dispatchEvent(new CustomEvent("ecbiz_coins_updated", { detail: { coins: next, delta: n } }));
-    } catch (e) {}
-    return next;
-  }
+    document.querySelectorAll("[data-eb-coins]").forEach(function (node) {
+      var balance = next + " GIS Points";
+      node.textContent = "◎ " + balance;
+      node.setAttribute("aria-label", balance);
+    });
+  });
 
   /* Pinned Transformers.js cache namespace for the 0264 weights. ai-marker.js
    * can call EC.aiCacheKey() (or coerce the helper) to set env.cacheKey so the
@@ -236,6 +242,6 @@
   window.EC = {
     esc: esc, el: el, load: load, store: store, register: register,
     navigate: navigate, render: render, current: current, views: views,
-    coins: coins, addCoins: addCoins, aiCacheKey: aiCacheKey
+    points: points, earnPoints: earnPoints, spendPoints: spendPoints, aiCacheKey: aiCacheKey
   };
 })();

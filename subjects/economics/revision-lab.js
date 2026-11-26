@@ -297,6 +297,8 @@ function setupRevisionWriting(id) {
     const versions = revisionState(key, []);
     const latest = versions.at(-1);
     button.disabled = true;
+    status.classList.add('ecbiz-loading-status');
+    status.setAttribute('data-loading', '');
     status.textContent = 'Marking your answer…';
     try {
       if (latest?.answer !== response || !latest?.grade) {
@@ -311,6 +313,7 @@ function setupRevisionWriting(id) {
     } catch (error) {
       status.textContent = error.message;
     } finally {
+      status.removeAttribute('data-loading');
       button.disabled = false;
     }
   };
@@ -405,6 +408,8 @@ function markRevisionTest(state, status, retry, onlyKey) {
     (onlyKey ? key === onlyKey : !state.grades?.[key]));
   if (!items.length) return;
   const attemptId = state.attemptId;
+  status.classList.add('ecbiz-loading-status');
+  status.setAttribute('data-loading', '');
   status.textContent = 'Marking ' + items.length + ' written answers…';
   retry.disabled = true;
   const reset = status.ownerDocument.querySelector('#revision-test-reset');
@@ -447,6 +452,7 @@ function markRevisionTest(state, status, retry, onlyKey) {
   }
   pendingRevisionTests.get(attemptId).then(markingError => {
     if (!status.isConnected) return;
+    status.removeAttribute('data-loading');
     reset.disabled = false;
     retry.disabled = false;
     if (revisionState('test',null)?.attemptId !== attemptId) return;
@@ -533,7 +539,9 @@ function revisionAttempt(state) {
       link('View mock exam history', '#revision-history') + ' ' + link('Weak topics','#progress-weak-topics') + ' ' +
       (state.mode==='custom'?'':link('Open corrections',mockCorrectionHref({id:state.attemptId || 'previous-'+state.mode}))) +
       (pending ? '<button id="revision-test-retry" type="button">Retry pending marks</button>' : '') : '') +
-    '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
+    '<p id="revision-save-status" role="status"></p>' +
+    (review && state.mode !== 'custom' ? mockFollowUp(mockSummary(state).topics) : '') +
+    '<form id="revision-attempt">' + body +
     (!review ? '<button class="primary">Finish and mark</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
     '</form>' + (review && mock2 ? '<section class="panel"><h2>8-mark discussion bands</h2><p>6–8 for developed analysis of both sides, 3–5 for some developed reasoning with limited depth or balance, 1–2 for relevant undeveloped points, 0 for no creditworthy material.</p></section>' : '');
 }
@@ -1001,6 +1009,9 @@ function setupRevisionChecklist(selectedTopic) {
     const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
     document.querySelector('#revision-save-status').textContent = '';
     saveRevisionState(checklistKey, checked);
+    if (event.target.checked) {
+      void window.FreshPoints.earn('Economics', 5, 'Checklist task completed', 'checklist:' + event.target.value);
+    }
     updateProgress();
     if (event.target.closest('.workbook-topic').hidden) {
       (checklist.querySelector('.workbook-topic:not([hidden]) summary') || filter).focus();

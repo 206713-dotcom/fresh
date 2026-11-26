@@ -1,0 +1,79 @@
+.gisp-button, .gisp-close, .gisp-practice {
+  font: 700 0.83rem/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+.gisp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .6rem .8rem;
+  min-height: 38px;
+  border: 1px solid #a2ddc8;
+  border-radius: 999px;
+  background: #effcf7;
+  color: #133d34;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px #0a272420;
+}
+.gisp-star { color: #087458; font-size: 1.05rem; }
+.gisp-button:hover, .gisp-practice:hover { background: #dff5ec; }
+.gisp-floating {
+  position: fixed;
+  bottom: max(.85rem, env(safe-area-inset-bottom));
+  right: max(.85rem, env(safe-area-inset-right));
+  z-index: 90;
+}
+.gisp-dialog, .gisp-dialog * { box-sizing: border-box; }
+.gisp-dialog {
+  width: min(31rem, calc(100% - 2rem));
+  max-height: min(85dvh, 42rem);
+  margin: auto;
+  padding: 1.35rem;
+  border: 1px solid #c0e2d7;
+  border-radius: 1.15rem;
+  background: #fafefa;
+  color: #142d28;
+  box-shadow: 0 1.1rem 4rem #061c2e4d;
+  font: 400 .9rem/1.5 system-ui, sans-serif;
+  overflow: auto;
+  color-scheme: light;
+}
+.gisp-dialog::backdrop { background: #10272099; }
+.gisp-dialog .gisp-header, .gisp-dialog footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+}
+.gisp-dialog h2, .gisp-dialog h3 { margin: 0; color: #142d28; font-family: inherit; letter-spacing: normal; }
+.gisp-dialog h2 { font-size: 1.45rem; }
+.gisp-dialog h3 { font-size: 1rem; }
+.gisp-dialog p { margin: .9rem 0; color: #3a5a51; }
+.gisp-close {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid #c0e2d7;
+  border-radius: 50%;
+  background: #f3faf6;
+  color: #23433a;
+  font-size: 1.3rem;
+}
+.gisp-balance { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: .9rem; }
+.gisp-balance > div { padding: .75rem; border: 1px solid #d0ebe0; border-radius: .75rem; background: #eaf8f1; }
+.gisp-balance span, .gisp-balance strong, .gisp-dialog small { display: block; }
+.gisp-balance strong { color: #124b38; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.gisp-dialog ol { padding: 0; margin: .45rem 0 0; list-style: none; }
+.gisp-dialog li { display: flex; justify-content: space-between; gap: .6rem; padding: .45rem 0; border-top: 1px solid #dcebe3; }
+.gisp-dialog li small, .gisp-dialog footer { color: #42665b; font-size: .76rem; }
+.gisp-dialog li b, .gisp-dialog footer a { color: #086447; }
+.gisp-dialog li .gisp-debit { color: #913e38; }
+.gisp-dialog footer { margin-top: .75rem; border-top: 1px solid #dcebe3; padding-top: .6rem; }
+.gisp-practice { margin: .45rem 0; padding: .48rem .65rem; border: 1px solid #a2ddc8; border-radius: .45rem; background: #effcf7; color: #134c3b; }
+.gisp-practice:disabled { cursor: default; background: #e7efeb; color: #436157; border-color: #d0e0d8; }
+@media (max-width: 560px) {
+  .gisp-button { min-height: 34px; padding: .4rem .55rem; font-size: .72rem; }
+  .gisp-floating { bottom: max(.55rem, env(safe-area-inset-bottom)); right: max(.55rem, env(safe-area-inset-right)); }
+}

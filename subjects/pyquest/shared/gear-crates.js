@@ -49,7 +49,7 @@ export function authorizeRandomCrate(wallet, crateId, rollInt, {duplicates = fal
   if (!odds.pool.length)
     throw Object.assign(Error('You already own every cosmetic in this crate.'), {status:409});
   if (wallet.coins < odds.crate.cost)
-    throw Object.assign(Error(`You need ${odds.crate.cost-wallet.coins} more PyCoins to open this crate.`), {status:400});
+    throw Object.assign(Error(`You need ${odds.crate.cost-wallet.coins} more GIS Points to open this crate.`), {status:400});
   const roll = rollInt(odds.totalWeight);
   if (!Number.isInteger(roll) || roll < 0 || roll >= odds.totalWeight)
     throw Error('Invalid server random draw.');
@@ -75,7 +75,7 @@ export function authorizeGearSale(wallet, id) {
 
   const soldFor = gearResalePrice(item);
   const coins = wallet.coins + soldFor;
-  if (coins > walletLimit) throw Error('Spend some PyCoins before selling gear. Your wallet holds up to 1,000,000.');
+  if (coins > walletLimit) throw Error('Spend some GIS Points before selling gear. Your wallet holds up to 1,000,000.');
 
   const equipped = {...wallet.equipped};
   quantities[id]--;

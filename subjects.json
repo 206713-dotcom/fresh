@@ -14,11 +14,11 @@
     ["Structure","Track shifts in tone, point of view or pace. Connect a shift to its effect on the reader.","A poem moves from ‘we’ to ‘I’ in its last stanza. Suggest one possible effect.","The shift narrows the focus from a group to one speaker and may highlight isolation."],
     ["Drama","Stage directions guide performance. Consider how a pause, gesture or movement changes the audience’s interpretation.","A character says ‘Of course’ after a long pause. How might the pause change the line?","The delay can suggest reluctance or doubt, making an apparent agreement feel uncertain."]
   ]],
-  ["biology","Biology","0610","Sciences","✿","Explore living systems from cells to ecosystems.",[
+  ["biology","Biology","0610","Sciences","✿","Study cells, genetics and ecology with lessons, flashcards and interactive practicals.",[
     ["Osmosis","Water moves through a partially permeable membrane from higher water potential to lower water potential.","Why might potato pieces gain mass in distilled water?","The water outside has higher water potential than the cell contents. Water enters the cells by osmosis, increasing mass."],
     ["Photosynthesis","Plants use light energy to make sugars from carbon dioxide and water. Oxygen is released.","Why might brighter light stop increasing the photosynthesis rate?","A different factor, such as carbon dioxide concentration or temperature, may limit the rate."],
     ["Inheritance","A dominant allele can affect the phenotype in a heterozygous individual. A Punnett square shows possible offspring genotypes.","For Aa × Aa, what fraction of offspring are expected to have genotype aa?","The possible combinations are AA, Aa, Aa and aa. The expected fraction is 1/4."]
-  ]],
+  ],{"aliases":"fresh biology|biology workspace|practicals|flashcards","label":"Open Fresh Biology"}],
   ["chemistry","Chemistry","0620","Sciences","⚗","Connect particles, reactions and chemical calculations.",[
     ["Ionic bonding","An ionic bond is the electrostatic attraction between oppositely charged ions. Ionic compounds form giant lattices.","Why does molten sodium chloride conduct electricity?","Its ions are free to move and carry charge through the liquid."],
     ["Balancing equations","Change coefficients to conserve the number of atoms of each element. Leave chemical formulae intact.","Balance Mg + O₂ → MgO.","2Mg + O₂ → 2MgO. Both sides have two magnesium and two oxygen atoms."],
@@ -29,17 +29,17 @@
     ["Forces","For a constant mass, the resultant force equals mass × acceleration. Use kilograms, metres per second squared and newtons.","A 4 kg object accelerates at 3 m/s². Find the resultant force.","F = ma = 4 × 3 = 12 N in the direction of acceleration."],
     ["Circuits","Potential difference equals current × resistance. Components in series carry the same current.","A 6 Ω resistor has a 12 V potential difference across it. Find the current.","I = V ÷ R = 12 ÷ 6 = 2 A."]
   ]],
-  ["computer-science","Computer Science","0478","Maths & technology","‹/›","Practise algorithms, data representation and logic, or learn Python with PyQuest.",[
+  ["computer-science","Computer Science","0478","Maths & technology","‹/›","Study the 0478 syllabus with topic notes, worked examples and exam practice in PyQuest.",[
     ["Binary","Each binary place represents a power of two. From the right, the first four place values are 1, 2, 4 and 8.","Convert binary 1011 to decimal.","8 + 0 + 2 + 1 = 11."],
     ["Trace tables","A trace table records how variables change as an algorithm runs. Track one loop iteration at a time.","Start total at 0. Add 2, then 4, then 6 in a loop. List total after each iteration.","The running totals are 2, 6 and 12."],
     ["Boolean logic","An AND operation is true only when both inputs are true. OR is true when at least one input is true. NOT reverses its input.","Evaluate NOT(A AND B) when A is true and B is false.","A AND B is false. NOT false is true."]
-  ],{"aliases":"python|pyquest|coding","label":"Start revising"}],
+  ],{"url":"pyquest/#igcse","aliases":"python|pyquest|coding","label":"Open IGCSE Computer Science"}],
   ["ict","Information & Communication Technology","0417","Maths & technology","▣","Build practical skills with spreadsheets, databases and digital safety.",[
     ["Spreadsheet references","A relative cell reference moves when copied. A dollar sign locks the row or column that follows it.","Copy =B2*$E$1 from C2 down to C3. What does the formula become?","=B3*$E$1. The relative row changes and the fixed reference stays E1."],
     ["Databases","A primary key uniquely identifies a record. Use field types that match how the data will be stored and queried.","Why is a student ID a better primary key than a surname?","Student IDs can be unique, while several students may share a surname."],
     ["Digital security","Phishing uses deceptive messages to make people reveal information or take an unsafe action.","An unexpected email asks you to reset your school password through a link. How can you check it safely?","Go to the school’s known website or ask school IT through a trusted contact method."]
   ]],
-  ["design-and-technology","Design & Technology","0445","Maths & technology","◇","Revise Product Design and Resistant Materials with RM Revise.",[],{"url":"https://penguinplaze.github.io/RM_REVISION/","aliases":"dt|design and technology|rm revise","label":"Open RM Revise"}],
+  ["design-and-technology","Design & Technology","0445","Maths & technology","◇","Revise Product Design and Resistant Materials with RM Revise.",[],{"url":"design-and-technology/","aliases":"dt|design and technology|rm revise","label":"Open RM Revise"}],
   ["geography","Geography","0460","English & humanities","△","Understand landscapes, populations and human activity.",[
     ["Population change","Natural increase is the birth rate minus the death rate. Migration also affects total population change.","A country has 18 births and 7 deaths per 1,000 people per year. Find its rate of natural increase.","18 − 7 = 11 per 1,000 people per year, equivalent to 1.1% per year."],
     ["River processes","Erosion wears material away. Transportation moves it. Deposition occurs when a river can no longer carry some of its load.","Why does sediment often build up on the inside of a meander?","The current is usually slower on the inside bend, so sediment is more likely to be deposited there."],

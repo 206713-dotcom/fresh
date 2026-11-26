@@ -54,13 +54,25 @@ function loadEconomicsMocks() {
 }
 
 function loadEconomicsMarker() {
-  return loadEconomicsScript('local-marker.js?v=verified-credit-1');
+  return loadEconomicsScript('local-marker.js?v=study-layout-1');
 }
 
 const mockDataPages = new Set(['revision-test', 'revision-retry', 'revision-corrections']);
 const progressDataPages = new Set(['progress','progress-weak-topics','revision-review','revision-history']);
 const markerDataPages = new Set(['revision-test', 'revision-retry', 'revision-writing', 'revision-corrections']);
 let economicsRouteRequest = 0;
+const economicsLoadingView = document.querySelector('.ecbiz-route-loading').cloneNode(true);
+const economicsLoadingLabels = {
+  practice: 'Loading practice questions…',
+  progress: 'Loading your progress…',
+  'progress-weak-topics': 'Loading your progress…',
+  'revision-test': 'Loading exam practice…',
+  'revision-retry': 'Loading your question…',
+  'revision-corrections': 'Loading mock corrections…',
+  'revision-history': 'Loading mock history…',
+  'revision-writing': 'Loading written-answer review…',
+  sources: 'Loading sources…'
+};
 
 async function renderEconomicsRoute(focus = false) {
   const version = ++economicsRouteRequest;
@@ -76,7 +88,11 @@ async function renderEconomicsRoute(focus = false) {
   try {
     if (pending.length) {
       main.after(markingControls);
-      main.innerHTML = '<div class="wrap"><p role="status">Loading study tools…</p></div>';
+      markingControls.hidden = true;
+      const loading = economicsLoadingView.cloneNode(true);
+      loading.querySelector('[data-loading-label]').textContent =
+        economicsLoadingLabels[page] || 'Loading revision tools…';
+      main.replaceChildren(loading);
       await Promise.all(pending);
     }
     if (version !== economicsRouteRequest) return;
@@ -106,6 +122,7 @@ document.addEventListener('click', async event => {
   if (!dialog.open) dialog.showModal();
   if (typeof ecbizMarking !== 'undefined') return;
   download.disabled = true;
+  dialog.setAttribute('data-loading', '');
   status.textContent = 'Loading marking settings…';
   try {
     await loadEconomicsMarker();
@@ -113,5 +130,7 @@ document.addEventListener('click', async event => {
     download.disabled = false;
   } catch {
     status.textContent = 'Marking settings couldn’t load. Close and reopen this window to try again.';
+  } finally {
+    dialog.removeAttribute('data-loading');
   }
 });

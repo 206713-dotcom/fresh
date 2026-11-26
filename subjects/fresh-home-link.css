@@ -1,0 +1,24 @@
+a.fresh-home-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: .42rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: .32rem .65rem;
+  border: 1px solid #cad7cd;
+  border-radius: .62rem;
+  background: #fffefa;
+  color: #203e32;
+  font: 700 .78rem/1.2 system-ui, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a.fresh-home-link:hover { background: #eef4e8; }
+a.fresh-home-link:focus-visible { outline: 3px solid #97532b; outline-offset: 3px; }
+.fresh-home-link img { display: block; flex: none; }
+@media (max-width: 540px) {
+  a.fresh-home-link { padding-inline: .45rem; }
+  .fresh-home-link span { display: none; }
+}

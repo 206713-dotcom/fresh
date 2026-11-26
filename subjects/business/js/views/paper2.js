@@ -652,7 +652,7 @@
     if (!state.coinsAwarded[key]) {
       state.coinsAwarded[key] = true;
       EC.store.set(K_COINS, state.coinsAwarded);
-      if (EC.addCoins) EC.addCoins(5);
+      EC.earnPoints(5, "Paper 2 practice completed", "paper2:" + key);
     }
     savePosition();
   }
@@ -1803,7 +1803,7 @@
       originalAiScore: original,
       overrideReason: reason
     };
-    if (prev != null && score > prev && EC.addCoins) EC.addCoins((score - prev) * 5);
+    if (prev != null && score > prev && EC.earnPoints) EC.earnPoints((score - prev) * 5);
     return rec;
   }
 

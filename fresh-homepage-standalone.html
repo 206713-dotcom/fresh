@@ -98,12 +98,18 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
    1. Page and header
    2. Hero banner
       2a. Stage (full-width surface and fallback background)
-      2b. Live layers added by the script at the end of this file (sky, spotlight, grain, dust)
+      2b. Live layer added by the script at the end of this file (one canvas: sky, pointer light, grain, dust)
       2c. Copy (eyebrow, heading, text, button)
       2d. Art (halo, pulses, orbit chips, logo tile, subject count)
       2e. Ticker tapes
       2f. Motion
    3. Subject directory
+      3a. Stage (dark full-width scene, backdrop lights)
+      3b. Heading row
+      3c. Search and group filter
+      3d. Subject cards
+      3e. Arrival
+      3f. Footer and focus rings
    4. Small screens and reduced motion
    Colours are the Fresh palette only: greens, lime, peach and cream.
    ========================================================= */
@@ -115,7 +121,7 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   --cream: #f6efd8;
   --sage: #9bb39b;
   --deep: #132c27;
-  background: var(--paper);
+  background: #10251f;
   color: var(--ink);
   overflow-x: clip;
 }
@@ -124,9 +130,8 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fffefad9;
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  backdrop-filter: blur(14px) saturate(1.5);
+  background: var(--white);
+  box-shadow: 0 8px 30px #0b1c1640;
 }
 .fresh-home .topbar { min-height: 70px; }
 .fresh-home .brand { gap: .62rem; font-size: 1.6rem; font-weight: 850; letter-spacing: -.065em; }
@@ -140,8 +145,6 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .fresh-home .hero {
   --mx: 0;
   --my: 0;
-  --px: 70%;
-  --py: 40%;
   width: 100vw;
   min-height: clamp(560px, calc(100svh - 71px), 900px);
   margin: 0 calc(50% - 50vw);
@@ -158,35 +161,25 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   box-shadow: none;
 }
 
-/* 2b. Live layers. the script at the end of this file creates these, so the page works without them. */
-.fresh-home .hero-sky, .fresh-home .hero-dust {
+/* 2b. Live layer. the script at the end of this file draws the sky, the pointer light, the grain and the particle rings
+   into this single opaque canvas, so the page works (with the background above) without it. */
+.fresh-home .hero-sky {
   position: absolute;
   inset: 0;
+  z-index: -3;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
   pointer-events: none;
 }
-.fresh-home .hero-sky { z-index: -3; opacity: 0; transition: opacity 1.2s ease; }
 .fresh-home .hero-sky.is-on { opacity: 1; }
-.fresh-home .hero-dust { z-index: 3; }
-/* Soft light that follows the pointer */
-.fresh-home .hero-spot {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: radial-gradient(34rem circle at var(--px) var(--py), #e4eeb224, #e4eeb20a 42%, transparent 68%);
-  pointer-events: none;
-}
-/* Fine film grain so gradients never band */
-.fresh-home .hero-grain {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: .16;
-  mix-blend-mode: overlay;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
+/* With the canvas running, it draws the halo, grid, pulses and bottom shade itself */
+.fresh-home .hero.has-stage::after,
+.fresh-home .hero.has-stage .hero-art::before,
+.fresh-home .hero.has-stage .art-grid { display: none; }
+/* Scrolled out of view: hold every animation in the banner */
+.fresh-home .hero.is-away *, .fresh-home .hero.is-away *::before, .fresh-home .hero.is-away *::after { animation-play-state: paused !important; }
 /* Bottom edge melts into the ticker */
 .fresh-home .hero::after {
   content: '';
@@ -208,10 +201,8 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   padding: .46rem .9rem .46rem .68rem;
   border: 1px solid #e4eeb23d;
   border-radius: 2rem;
-  background: #e4eeb214;
+  background: #e4eeb21f;
   color: #dce9ae;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
   animation: fx-rise .8s cubic-bezier(.2, .7, .2, 1) .1s both;
 }
 .fresh-home .hero .eyebrow span {
@@ -219,7 +210,16 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   height: .48rem;
   border-radius: 50%;
   background: var(--lime);
+  position: relative;
   box-shadow: 0 0 12px var(--lime);
+}
+.fresh-home .hero .eyebrow span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--lime);
+  opacity: 0;
   animation: fx-ping 2.4s ease-out infinite;
 }
 .fresh-home h1, .fresh-home h2 { font-family: inherit; font-weight: 800; }
@@ -243,18 +243,20 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   padding-right: .05em;
   color: var(--lime);
   font-style: normal;
-  filter: blur(0) drop-shadow(0 0 1.6rem #e4eeb250);
   animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both;
 }
-/* Lime, cream and peach light flowing through "revision." */
+/* Lime, cream and peach light flowing through "revision.", with a soft glow painted behind it
+   (a second background layer, so no filter has to be redrawn every frame) */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .fresh-home .hero em {
-    background: linear-gradient(100deg, var(--lime) 0%, #fbfde9 22%, var(--lime) 42%, var(--peach) 62%, var(--lime) 82%, var(--lime) 100%) 0 0 / 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
+    background:
+      linear-gradient(100deg, var(--lime) 0%, #fbfde9 22%, var(--lime) 42%, var(--peach) 62%, var(--lime) 82%, var(--lime) 100%) 0 0 / 300% 100%,
+      radial-gradient(closest-side, #e4eeb238, transparent) 0 0 / 100% 100% no-repeat;
+    -webkit-background-clip: text, border-box;
+    background-clip: text, border-box;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
-    animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both, fx-flow 9s linear 2s infinite;
+    animation: fx-word 1.1s cubic-bezier(.2, .8, .2, 1) .85s both, fx-flow 9s steps(270) 2s infinite;
   }
 }
 /* Hand-drawn peach underline */
@@ -280,34 +282,69 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .fresh-home .button:hover { background: #f2f7da; }
 .fresh-home .hero .button {
   position: relative;
-  overflow: hidden;
+  z-index: 0;
   padding: 1rem 1.3rem;
   border-radius: .75rem;
   font-size: 1.02rem;
-  box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 0 #e4eeb266;
+  box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673;
   transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease, background-color .2s ease;
-  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.4s both, fx-halo 3.2s ease-out 2.6s infinite;
+  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.4s both;
 }
+/* Halo: a lime copy of the button behind it that grows and fades */
+.fresh-home .hero .button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--lime);
+  opacity: 0;
+  pointer-events: none;
+  animation: fx-halo 3.2s ease-out 2.6s infinite;
+}
+.fresh-home .hero .button-sheen { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
 .fresh-home .hero .button:hover {
   transform: translateY(-3px) scale(1.03);
   box-shadow: inset 0 -2px 0 #c8d78e, 0 16px 40px #0b1c168c, 0 0 2.6rem #e4eeb259;
 }
 /* A streak of light crosses the button */
-.fresh-home .hero .button::before {
+.fresh-home .hero .button-sheen::before {
   content: '';
   position: absolute;
   top: -20%;
   bottom: -20%;
-  left: -60%;
+  left: 0;
   width: 40%;
   background: linear-gradient(100deg, transparent, #ffffffb3, transparent);
-  transform: skewX(-30deg);
+  transform: translateX(-160%) skewX(-30deg);
   animation: fx-sheen 4.5s ease-in-out 2.4s infinite;
 }
 .fresh-home .hero .button > span { display: inline-block; animation: fx-nudge 2.2s ease-in-out 2s infinite; }
 
+/* Buttons row: Explore subjects plus the optional Python link (added with PyQuest) */
+.fresh-home .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .85rem; }
+.fresh-home .hero-actions .python-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: #f2f7da;
+  font-weight: 700;
+  text-underline-offset: .24em;
+  text-shadow: 0 2px 14px #0b1c16b3;
+  animation: fx-rise .9s cubic-bezier(.2, .7, .2, 1) 1.55s both;
+}
+.fresh-home .hero-actions .python-link span { display: inline-block; transition: transform .25s ease; }
+.fresh-home .hero-actions .python-link:hover span { transform: translateX(4px); }
+
+/* Once the entrance has played, the script at the end of this file adds .is-settled and the one-off animations are dropped */
+.fresh-home .hero.is-settled h1 .ch,
+.fresh-home .hero.is-settled .hero-copy > p,
+.fresh-home .hero.is-settled .python-link,
+.fresh-home .hero.is-settled .hero-ticker { animation: none; }
+
 /* 2d. Art. The logo tile keeps its original look; everything else is built around it.
-   Depth order inside the banner: far chips (1) < logo tile (2) < dust (3) < near chips (4) < badge and copy (5). */
+   Depth order inside the banner: canvas (behind everything) < far chips (1) < logo tile (2) < near chips (4) < badge and copy (5). */
 .fresh-home .hero-art { min-height: 360px; }
 .fresh-home .hero-art::before {
   content: '';
@@ -457,18 +494,12 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 /* 2f. Motion */
 @keyframes fx-rise { from { opacity: 0; transform: translateY(18px); } }
 @keyframes fx-letter { from { opacity: 0; transform: translateY(.55em) rotateX(-85deg) scale(.9); filter: blur(12px); } }
-@keyframes fx-word { from { opacity: 0; transform: translateY(.35em) scale(.94); filter: blur(14px) drop-shadow(0 0 1.6rem #e4eeb200); } }
-@keyframes fx-flow { to { background-position: -300% 0; } }
+@keyframes fx-word { from { opacity: 0; transform: translateY(.35em) scale(.94); filter: blur(14px); } }
+@keyframes fx-flow { to { background-position: -300% 0, 0 0; } }
 @keyframes fx-draw { to { clip-path: inset(0 0 0 0); } }
-@keyframes fx-ping {
-  0% { box-shadow: 0 0 12px var(--lime), 0 0 0 0 #e4eeb299; }
-  75%, 100% { box-shadow: 0 0 12px var(--lime), 0 0 0 .6rem #e4eeb200; }
-}
-@keyframes fx-halo {
-  0% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 0 #e4eeb266; }
-  70%, 100% { box-shadow: inset 0 -2px 0 #c8d78e, 0 10px 30px #0b1c1673, 0 0 0 .8rem #e4eeb200; }
-}
-@keyframes fx-sheen { 0% { left: -60%; } 30%, 100% { left: 140%; } }
+@keyframes fx-ping { 0% { opacity: .6; transform: scale(1); } 75%, 100% { opacity: 0; transform: scale(3.5); } }
+@keyframes fx-halo { 0% { opacity: .4; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.12, 1.45); } }
+@keyframes fx-sheen { 30%, 100% { transform: translateX(360%) skewX(-30deg); } }
 @keyframes fx-nudge { 0%, 55%, 100% { transform: none; } 28% { transform: translateY(4px); } }
 @keyframes fx-breathe { 0%, 100% { opacity: .7; scale: .92; } 50% { opacity: 1; scale: 1.06; } }
 @keyframes fx-pulse { 0% { opacity: .55; scale: .7; } 70%, 100% { opacity: 0; scale: 3.4; } }
@@ -477,60 +508,373 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 @keyframes fx-marquee { to { transform: translateX(-50%); } }
 
 /* ---------- 3. Subject directory ---------- */
-.fresh-home .directory { margin-top: 3.4rem; scroll-margin-top: 5.6rem; }
-.fresh-home .section-top .eyebrow { color: #48634e; }
-.fresh-home h2 { letter-spacing: -.06em; font-size: clamp(1.8rem, 4.4vw, 2.85rem); }
-.fresh-home .count { background: #edf2e7; color: #203e32; font-weight: 700; }
-.fresh-home .filters { gap: .9rem; }
-.fresh-home input, .fresh-home select { min-height: 44px; }
-.fresh-home input::placeholder { color: #4b5c54; }
+
+/* 3a. Stage: the dark scene carries on under the banner, edge to edge */
+.fresh-home .directory {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  padding: clamp(3.5rem, 7vw, 6rem) max(24px, calc(50vw - 560px)) clamp(4rem, 7vw, 6.5rem);
+  scroll-margin-top: 4.4rem;
+  background: linear-gradient(#0f2620, #132c27 24%, #10251f);
+  color: #fffdf3;
+}
+/* Still backdrop: three soft lights and a faint grid, fading out at both ends */
+.fresh-home .directory::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(44rem 30rem at 92% 6%, #e4eeb21f, transparent 70%),
+    radial-gradient(38rem 30rem at 0% 58%, #f6bb8317, transparent 70%),
+    radial-gradient(54rem 34rem at 62% 100%, #486e574d, transparent 70%),
+    linear-gradient(#9bb39b14 1px, transparent 1px) 50% 0 / 44px 44px,
+    linear-gradient(90deg, #9bb39b14 1px, transparent 1px) 50% 0 / 44px 44px;
+  -webkit-mask-image: linear-gradient(transparent, black 9rem, black calc(100% - 9rem), transparent);
+  mask-image: linear-gradient(transparent, black 9rem, black calc(100% - 9rem), transparent);
+  pointer-events: none;
+}
+/* A slow drifting glow that takes the colour of the chosen subject group */
+.fresh-home .directory::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  z-index: -2;
+  width: 62rem;
+  aspect-ratio: 1.5;
+  margin-left: -31rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--mood, #e4eeb2), transparent);
+  opacity: .1;
+  animation: fx-drift 26s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.fresh-home .directory[data-group="technology"] { --mood: #e6e4f8; }
+.fresh-home .directory[data-group="science"] { --mood: #deecd7; }
+.fresh-home .directory[data-group="humanities"] { --mood: #f6e4cf; }
+.fresh-home .directory[data-group="business"] { --mood: #f5e4e8; }
+/* Pointer light and the rims of nearby cards: one canvas over the section, drawn by the script at the end of this file */
+.fresh-home .dir-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+.fresh-home .directory.is-lit .dir-glow { display: block; }
+.fresh-home .directory.is-away::after { animation-play-state: paused; }
+
+/* 3b. Heading row: eyebrow pill, big heading, live count and its giant outline */
+.fresh-home .section-top { position: relative; align-items: end; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.fresh-home .section-top .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: 1.1rem;
+  padding: .46rem .9rem .46rem .68rem;
+  border: 1px solid #e4eeb23d;
+  border-radius: 2rem;
+  background: #e4eeb21f;
+  color: #dce9ae;
+}
+.fresh-home .section-top .eyebrow::before {
+  content: '';
+  width: .48rem;
+  height: .48rem;
+  border-radius: 50%;
+  background: var(--peach);
+  box-shadow: 0 0 12px var(--peach);
+}
+.fresh-home h2 {
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  letter-spacing: -.072em;
+  line-height: .98;
+  text-shadow: 0 4px 40px #0b1c1680;
+}
+.fresh-home h2 .word { display: inline-block; }
+.fresh-home h2 .word.glow { color: var(--lime); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fresh-home h2 .word.glow {
+    padding-right: .06em;
+    background: linear-gradient(100deg, var(--lime) 20%, #fbfde9 45%, var(--peach) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+}
+.fresh-home .count {
+  position: relative;
+  padding: .5rem .95rem;
+  border: 0;
+  background: var(--lime);
+  color: #132c27;
+  font-size: .86rem;
+  font-weight: 800;
+  box-shadow: 0 0 2.2rem #e4eeb24d, 0 8px 22px #0b1c1680;
+}
+.fresh-home .count.pop { animation: fx-bump .45s cubic-bezier(.3, 1.6, .5, 1); }
+.fresh-home .dir-ghost {
+  position: absolute;
+  right: -.05em;
+  bottom: -.16em;
+  z-index: -1;
+  color: #e4eeb20f;
+  font-size: clamp(7rem, 19vw, 15rem);
+  font-weight: 850;
+  letter-spacing: -.08em;
+  line-height: .8;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 1.5px #e4eeb242;
+  pointer-events: none;
+}
+.fresh-home .dir-ghost.pop { animation: fx-ghost .6s cubic-bezier(.2, .8, .2, 1); }
+
+/* 3c. Search and group filter */
+.fresh-home .filters { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin-bottom: clamp(1.6rem, 3vw, 2.2rem); }
+.fresh-home .filters label, .fresh-home .group-pills > span {
+  color: #cfe0b0;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.fresh-home .filters label { gap: .6rem; }
+.fresh-home input, .fresh-home select {
+  min-height: 44px;
+  border-color: #e4eeb238;
+  background-color: #ffffff0f;
+  color: #fffdf3;
+}
+.fresh-home select { background-color: #1b382e; letter-spacing: 0; text-transform: none; }
+.fresh-home input {
+  min-height: 62px;
+  padding: .9rem 1.2rem .9rem 3.5rem;
+  border-radius: 1.15rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e4eeb2' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='m20 20-4.6-4.6'/%3E%3C/svg%3E");
+  background-position: 1.2rem 50%;
+  background-size: 1.35rem;
+  background-repeat: no-repeat;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 16px 44px #0b1c1659;
+  color-scheme: dark;
+  transition: border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
+}
+.fresh-home input::placeholder { color: #9bb39b; }
+.fresh-home input:hover { border-color: #e4eeb266; }
+.fresh-home input:focus {
+  border-color: var(--lime);
+  background-color: #ffffff17;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 16px 44px #0b1c1659, 0 0 0 4px #e4eeb229, 0 0 3.2rem #e4eeb22e;
+}
+/* the script at the end of this file swaps the group <select> for pills; the select stays in the page for search.js */
+.fresh-home.fx .filters .group-native { display: none; }
+.fresh-home .group-pills { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; }
+.fresh-home .group-pills > span { margin-right: .5rem; }
+.fresh-home .group-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .55rem 1.05rem;
+  border: 1px solid #e4eeb238;
+  border-radius: 2rem;
+  background: #ffffff0d;
+  color: #e0e9e2;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s cubic-bezier(.3, 1.6, .5, 1);
+}
+.fresh-home .group-pill::before {
+  content: '';
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--tint, var(--lime));
+  box-shadow: 0 0 10px var(--tint, var(--lime));
+}
+.fresh-home .group-pill:hover { border-color: var(--tint, var(--lime)); transform: translateY(-2px); }
+.fresh-home .group-pill[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--tint, var(--lime));
+  color: #132c27;
+  box-shadow: 0 0 2rem -0.2rem var(--tint, var(--lime)), 0 8px 20px #0b1c1680;
+}
+.fresh-home .group-pill[aria-pressed="true"]::before { background: #132c27; box-shadow: none; }
+.fresh-home #empty {
+  margin: 0 0 1.2rem;
+  padding: 2.2rem 1.4rem;
+  border: 1px dashed #e4eeb24d;
+  border-radius: 1.25rem;
+  background: #ffffff08;
+  color: #cfe0b0;
+  text-align: center;
+}
+
+/* 3d. Subject cards */
 .fresh-home .technology { --accent: #76669d; }
 .fresh-home .science { --accent: #627e48; }
 .fresh-home .humanities { --accent: #a17146; }
 .fresh-home .business { --accent: #a16478; }
+.fresh-home .grid { gap: 1.1rem; margin: 0; perspective: 1600px; }
 .fresh-home .card {
   --rx: 0deg;
   --ry: 0deg;
-  --gx: 50%;
-  --gy: 0%;
+  --lift: 0px;
+  --gx: -999px;
+  --gy: -999px;
   position: relative;
-  border-top: 3px solid var(--accent);
-  box-shadow: 0 3px 12px #192e2808;
-  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+  overflow: hidden;
+  border: 1px solid #e4eeb21c;
+  border-radius: 1.3rem;
+  /* A strip in the group's own colours along the top, over deep green glass */
+  background:
+    linear-gradient(90deg, var(--accent), var(--tint) 50%, var(--accent)) 0 0 / 100% 3px no-repeat,
+    linear-gradient(162deg, #284c3e 0%, #1b382e 46%, #142b24 100%);
+  color: #fffdf3;
+  box-shadow: inset 0 1px 0 #ffffff14, 0 10px 30px #0b1c1659;
+  transform: translateY(var(--lift));
+  transition: opacity .3s ease, transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s ease, border-color .4s ease;
 }
-.fresh-home .card:hover { box-shadow: 0 18px 40px #192e2824, 0 0 0 1px var(--accent); }
-/* Glow in the card's own accent colour that follows the pointer */
-.fresh-home .card::after {
+/* Only the card under the pointer turns in 3D (flat cards share one layer, which is much cheaper) */
+.fresh-home .card[data-tilted] { transform: perspective(900px) translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry)); }
+/* Border lit from the pointer on the card underneath it; the other cards' rims are drawn in .dir-glow */
+.fresh-home .card::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
+  padding: 1.5px;
   border-radius: inherit;
-  background: radial-gradient(16rem circle at var(--gx) var(--gy), var(--tint), transparent 70%);
+  background: radial-gradient(17rem circle at var(--gx) var(--gy), var(--tint), transparent 72%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   opacity: 0;
-  transition: opacity .35s ease;
+  transition: opacity .4s ease;
   pointer-events: none;
 }
-.fresh-home .card:hover::after { opacity: .75; }
-.fresh-home .card > * { position: relative; z-index: 1; }
-.fresh-home .card-content { padding: 1.15rem 1.2rem; }
-.fresh-home .card .symbol { transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
-.fresh-home .card:hover .symbol { transform: scale(1.14) rotate(-6deg); }
-/* Cards and the heading rise in as they scroll into view (the script at the end of this file adds .fx and .in) */
-.fresh-home.fx .section-top, .fresh-home.fx .card {
+.fresh-home .card[data-tilted]::before { opacity: 1; }
+/* Glow inside the card under the pointer: a fixed soft disc moved with transform, so nothing is repainted */
+.fresh-home .card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38rem;
+  height: 38rem;
+  margin: -19rem 0 0 -19rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tint), transparent 68%);
   opacity: 0;
-  translate: 0 28px;
-  transition: opacity .7s ease var(--wait, 0s), translate .7s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s),
-    transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease;
+  transform: translate(var(--gx), var(--gy));
+  transition: opacity .4s ease;
+  pointer-events: none;
 }
-.fresh-home.fx .section-top.in, .fresh-home.fx .card.in { opacity: 1; translate: 0 0; }
-.fresh-home :focus-visible { outline-color: #97532b; }
-.fresh-home .hero :focus-visible { outline-color: var(--lime); }
+.fresh-home .card[data-tilted]::after { will-change: transform; }
+.fresh-home .card:hover, .fresh-home .card:focus-within {
+  --lift: -8px;
+  border-color: #e4eeb247;
+  box-shadow: inset 0 1px 0 #ffffff1f, 0 28px 60px #0b1c16a6, 0 0 3.4rem -0.6rem var(--tint);
+}
+.fresh-home .card:hover::after { opacity: .2; }
+/* While one card is under the pointer the others step back */
+.fresh-home .grid:has(.card:hover) .card.done:not(:hover) { opacity: .6; }
+.fresh-home .card > * { position: relative; z-index: 1; }
+.fresh-home .card .card-content { padding: 1.4rem 1.4rem 1.3rem; min-height: 13.2rem; }
+.fresh-home .card .card-content:hover { box-shadow: none; }
+.fresh-home .card .card-content:focus-visible { outline-color: var(--lime); outline-offset: -6px; }
+/* A streak of light crosses each card as it arrives */
+.fresh-home .card > :first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, #ffffff24 50%, transparent 62%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+.fresh-home.fx .card.in > :first-child::after { animation: fx-sweep 1.1s ease-out calc(var(--wait, 0s) + .25s) both; }
+.fresh-home .card .card-top { margin-bottom: 1.25rem; }
+.fresh-home .card .symbol {
+  min-width: 3.1rem;
+  height: 3.1rem;
+  border-radius: .8rem;
+  font-size: 1.45rem;
+  box-shadow: inset 0 0 0 1px #ffffff80, 0 8px 20px #0b1c1680;
+  transition: transform .4s cubic-bezier(.3, 1.6, .5, 1), box-shadow .4s ease;
+}
+.fresh-home .card:hover .symbol { transform: scale(1.14) rotate(-7deg); box-shadow: inset 0 0 0 1px #ffffff80, 0 8px 20px #0b1c1680, 0 0 1.8rem var(--tint); }
+.fresh-home .card .code { border-color: #e4eeb238; background: #ffffff0d; color: #cfe0b0; font-weight: 700; letter-spacing: .04em; }
+.fresh-home .card h3 { font-size: 1.3rem; letter-spacing: -.025em; }
+.fresh-home .card p { color: #c3d1c7; }
+.fresh-home .card-link { color: var(--lime); }
+.fresh-home .card-link span { display: inline-block; transition: transform .25s ease; }
+.fresh-home .card:hover .card-link span { transform: translateX(5px); }
+/* The subject's own symbol as a huge watermark (added by the script at the end of this file) */
+.fresh-home .card .card-ghost {
+  position: absolute;
+  right: -.06em;
+  bottom: -.3em;
+  z-index: 0;
+  color: var(--tint);
+  font: bold 9.5rem / 1 Georgia, serif;
+  opacity: .075;
+  transform: rotate(-9deg);
+  transition: opacity .45s ease, transform .6s cubic-bezier(.2, .8, .2, 1);
+  pointer-events: none;
+}
+.fresh-home .card:hover .card-ghost { opacity: .2; transform: rotate(-2deg) scale(1.1) translateY(-.08em); }
+
+/* 3e. Arrival: the script at the end of this file adds .fx, then .in as things scroll into view, then .done */
+.fresh-home.fx .section-top .eyebrow, .fresh-home.fx .section-top .count, .fresh-home.fx .filters, .fresh-home.fx h2 .word {
+  opacity: 0;
+  translate: 0 26px;
+  transition: opacity .8s ease, translate .8s cubic-bezier(.2, .8, .2, 1);
+}
+.fresh-home.fx h2 .word { translate: 0 .5em; transition-delay: calc(.08s + var(--w) * 90ms); }
+.fresh-home.fx .section-top .count { transition-delay: .45s; }
+.fresh-home.fx .filters { transition-delay: .2s; }
+.fresh-home.fx .dir-ghost { opacity: 0; scale: .8; transform-origin: 100% 100%; transition: opacity 1.2s ease .3s, scale 1.2s cubic-bezier(.2, .8, .2, 1) .3s; }
+.fresh-home.fx .section-top.in .eyebrow, .fresh-home.fx .section-top.in .count, .fresh-home.fx .filters.in, .fresh-home.fx .section-top.in h2 .word {
+  opacity: 1;
+  translate: 0 0;
+}
+.fresh-home.fx .section-top.in .dir-ghost { opacity: 1; scale: 1; }
+.fresh-home.fx .card:not(.done) {
+  opacity: 0;
+  translate: 0 64px;
+  rotate: x 18deg;
+  scale: .94;
+  transition: opacity .9s ease var(--wait, 0s), translate .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s),
+    rotate .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s), scale .9s cubic-bezier(.2, .8, .2, 1) var(--wait, 0s);
+}
+.fresh-home.fx .card.in:not(.done) { opacity: 1; translate: 0 0; rotate: x 0deg; scale: 1; }
+@keyframes fx-drift { from { transform: translate(-16%, -6%) scale(.9); } to { transform: translate(18%, 12%) scale(1.15); } }
+@keyframes fx-bump { 40% { transform: scale(1.18); } }
+@keyframes fx-ghost { from { opacity: .2; transform: translateY(.12em) scale(.92); } }
+@keyframes fx-sweep { to { transform: translateX(110%); } }
+
+/* 3f. Footer and focus rings on the dark page */
+.fresh-home .footer { border-top-color: #e4eeb21f; color: #9bb39b; }
+.fresh-home .footer a:hover { color: var(--lime); }
+.fresh-home :focus-visible { outline-color: var(--lime); }
+.fresh-home .site-header :focus-visible, .fresh-home .skip:focus-visible { outline-color: #97532b; }
 
 /* ---------- 4. Small screens and reduced motion ---------- */
 @media (max-width: 850px) {
-  .fresh-home .hero { padding-inline: max(24px, 4vw); }
+  .fresh-home .hero, .fresh-home .directory { padding-inline: max(24px, 4vw); }
   .fresh-home .orbit-chip { width: 2.1rem; height: 2.1rem; margin: -1.05rem 0 0 -1.05rem; font-size: .95rem; border-radius: .6rem; }
+  .fresh-home .card .card-content { min-height: 12rem; }
 }
 @media (max-width: 630px) {
   /* Phones: logo and orbits on top, copy underneath */
@@ -553,17 +897,24 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   .fresh-home .hero .eyebrow { margin-bottom: 1rem; }
   .fresh-home .hero-copy > p:not(.eyebrow) { margin-block: 1.1rem 1.4rem; }
   .fresh-home .topbar { min-height: 61px; }
-  .fresh-home .directory { margin-top: 2.25rem; scroll-margin-top: 4.8rem; }
   .fresh-home .ticker-band { font-size: .68rem; padding: .5rem 0; }
+  .fresh-home .directory { padding: 3rem 1.3rem 3.5rem; scroll-margin-top: 3.9rem; }
+  .fresh-home .section-top { align-items: start; flex-direction: column; }
+  .fresh-home .dir-ghost { top: -.1em; bottom: auto; font-size: 9rem; }
+  .fresh-home input { min-height: 56px; font-size: 1rem; }
+  .fresh-home .card .card-content { min-height: 0; }
+  .fresh-home .card .card-ghost { font-size: 7.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after {
+  .fresh-home .hero *, .fresh-home .hero *::before, .fresh-home .hero *::after,
+  .fresh-home .directory, .fresh-home .directory *, .fresh-home .directory::after, .fresh-home .directory *::before, .fresh-home .directory *::after {
     animation: none !important;
     transition: none !important;
   }
   .fresh-home .hero em::after { clip-path: none; }
   .fresh-home .art-pulse { display: none; }
-  .fresh-home.fx .section-top, .fresh-home.fx .card { opacity: 1; translate: none; transition: none; }
+  .fresh-home.fx .section-top .eyebrow, .fresh-home.fx .section-top .count, .fresh-home.fx .filters, .fresh-home.fx h2 .word,
+  .fresh-home.fx .dir-ghost, .fresh-home.fx .card:not(.done) { opacity: 1; translate: none; rotate: none; scale: none; }
   .fresh-home .card { transform: none; }
 }
 </style>
@@ -752,14 +1103,16 @@ for (const button of document.querySelectorAll('[data-jump]')) {
 // Fresh homepage visuals. Decorative only: no page text, link or the logo is changed.
 //
 //   1. Setup          shared state and helpers
-//   2. Headline       letters of the first words fall into place
+//   2. Headline       letters of the first words fall into place; the badge counts up
 //   3. Ticker         two tapes of subject names and codes, read from the subject cards
 //   4. Orbit chips    one chip per subject on three tilted 3D orbits around the logo
-//   5. Sky            WebGL flowing light in the Fresh greens, lime and peach
-//   6. Dust           WebGL particle rings that share the orbits, plus drifting motes
-//   7. Loop           one animation frame drives sky, dust and chips; pauses when unseen
-//   8. Pointer        parallax, spotlight, particle push and click ripples
-//   9. Directory      cards rise in on scroll and tilt towards the pointer
+//   5. Stage          one WebGL canvas: flowing sky, halo, pulses, grid, pointer light, grain and
+//                     particle rings (one layer instead of many see-through ones stacked up)
+//   6. Loop           one animation frame drives everything; pauses when mostly scrolled away
+//                     and lowers its own quality when frames run slow
+//   7. Pointer        parallax, particle push and click ripples
+//   8. Directory      heading, group pills, giant count, pointer light and card rims (one canvas),
+//                     card tilt and reveal
 //
 // Everything degrades quietly: without WebGL the CSS background stays, and with
 // "reduce motion" switched on a single still frame is drawn.
@@ -782,6 +1135,11 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     if (parent) parent.append(node);
     return node;
   };
+  const readable = node => {
+    const clone = node.cloneNode(true);
+    clone.querySelectorAll('br').forEach(lineBreak => lineBreak.replaceWith(' '));
+    return clone.textContent.replace(/\s+/g, ' ').trim();
+  };
   document.body.classList.add('fx');
 
   // Orbits, in units of the logo tile's width. `open` is how far each ring is tipped towards the viewer.
@@ -792,11 +1150,8 @@ for (const button of document.querySelectorAll('[data-jump]')) {
   ];
   const CAMERA = 5.5;
   const INTRO_SECONDS = 2.6;
-  const view = {
-    width: 1, height: 1, unit: 230, cx: 0, cy: 0, artX: 0, artY: 0, fadeFrom: -1, fadeTo: 0,
-    tileHalf: 115, tileAngle: rad(-11), stacked: false,
-  };
-  const pointer = { x: -9999, y: -9999, mx: 0, my: 0, sx: 0, sy: 0 };
+  const view = { width: 1, height: 1, unit: 230, cx: 0, cy: 0, artX: 0, artY: 0, artW: 0, artH: 0, artCX: 0, artCY: 0, fadeFrom: -1, fadeTo: 0, stacked: false };
+  const pointer = { x: -9999, y: -9999, mx: 0, my: 0, sx: 0, sy: 0, lx: 0, ly: 0 };
   const pulse = { x: 0, y: 0, at: -100 };
 
   function measure() {
@@ -807,17 +1162,20 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     if (tile && tile.offsetWidth) {
       const artBox = art.getBoundingClientRect();
       view.unit = tile.offsetWidth;
-      view.tileHalf = tile.offsetWidth / 2;
       view.artX = tile.offsetLeft + tile.offsetWidth / 2;
       view.artY = tile.offsetTop + tile.offsetHeight / 2;
       view.cx = artBox.left - box.left + view.artX;
       view.cy = artBox.top - box.top + view.artY;
+      view.artW = artBox.width;
+      view.artH = artBox.height;
+      view.artCX = artBox.left - box.left + artBox.width / 2;
+      view.artCY = artBox.top - box.top + artBox.height / 2;
     } else {
       view.unit = Math.min(230, box.width * 0.3);
       view.cx = box.width * 0.72;
       view.cy = box.height * 0.45;
     }
-    // Rings fade out before they reach the copy so the words stay easy to read
+    // Rings fade out before they reach the words so the copy stays easy to read
     if (view.stacked || !copy) {
       view.fadeFrom = -2;
       view.fadeTo = -1;
@@ -848,14 +1206,10 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     return t * t * (3 - 2 * t);
   };
 
-  // ---------- 2. Headline ----------
-  const heading = hero.querySelector('h1');
-  if (heading && !reduceMotion.matches) {
-    // Screen readers get the whole sentence in one piece (the line break counts as a space)
-    const spoken = heading.cloneNode(true);
-    spoken.querySelectorAll('br').forEach(lineBreak => lineBreak.replaceWith(' '));
-    heading.setAttribute('aria-label', spoken.textContent.replace(/\s+/g, ' ').trim());
-    let index = 0;
+  // Split a heading's plain words into spans (letters too, when asked) without changing what it says
+  function splitWords(heading, letters) {
+    heading.setAttribute('aria-label', readable(heading));
+    let wordIndex = 0, letterIndex = 0;
     for (const node of [...heading.childNodes]) {
       if (node.nodeType !== Node.TEXT_NODE) {
         if (node.nodeType === Node.ELEMENT_NODE) node.setAttribute('aria-hidden', 'true');
@@ -869,17 +1223,30 @@ for (const button of document.querySelectorAll('[data-jump]')) {
           continue;
         }
         const word = make('span', 'word', piece);
+        word.style.setProperty('--w', wordIndex++);
+        if (!letters) {
+          word.textContent = part;
+          continue;
+        }
         for (const letter of part) {
           const span = make('span', 'ch', word);
           span.textContent = letter;
-          span.style.setProperty('--i', index++);
+          span.style.setProperty('--i', letterIndex++);
         }
       }
       node.replaceWith(piece);
     }
+    return wordIndex;
   }
 
-  // Count the subject badge up to its own number
+  // ---------- 2. Headline ----------
+  const heading = hero.querySelector('h1');
+  if (heading && !reduceMotion.matches) {
+    splitWords(heading, true);
+    // Once the entrance has played, drop the animations so nothing keeps extra layers alive
+    setTimeout(() => hero.classList.add('is-settled'), 4200);
+  }
+
   const badge = art && art.querySelector('.art-index b');
   const total = badge ? parseInt(badge.textContent, 10) : NaN;
   if (badge && total > 0 && !reduceMotion.matches) {
@@ -894,27 +1261,30 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     requestAnimationFrame(tick);
   }
 
+  // The light streak across the button lives in its own clipped holder, so the button itself
+  // does not clip and its halo ring can grow outside it (both animate transform and opacity only)
+  const button = hero.querySelector('.hero-copy .button');
+  if (button) make('i', 'button-sheen', button);
+
   // ---------- 3. Ticker ----------
   if (cards.length) {
     const ticker = make('div', 'hero-ticker', hero);
-    const fill = (className, read) => {
+    const fill = (className, copies, read) => {
       const track = make('div', 'ticker-track', make('div', `ticker-band ${className}`, ticker));
-      for (let copyIndex = 0; copyIndex < 4; copyIndex++) {
+      for (let copyIndex = 0; copyIndex < copies; copyIndex++) {
         for (const card of cards) {
           make('span', '', track).textContent = read(card);
           make('i', '', track);
         }
       }
     };
-    fill('back', card => `${card.querySelector('.code')?.textContent.trim() || ''} ${card.querySelector('.symbol')?.textContent.trim() || ''}`);
-    fill('front', card => card.querySelector('h3')?.textContent.trim() || '');
+    fill('back', 4, card => `${card.querySelector('.code')?.textContent.trim() || ''} ${card.querySelector('.symbol')?.textContent.trim() || ''}`);
+    fill('front', 2, card => card.querySelector('h3')?.textContent.trim() || '');
   }
 
   // ---------- 4. Orbit chips ----------
   const chips = [];
   if (art && cards.length) {
-    make('i', 'art-pulse', art);
-    make('i', 'art-pulse', art);
     const orbit = make('div', 'art-orbit', art);
     let ringIndex = 0, slot = 0;
     for (const card of cards) {
@@ -924,7 +1294,7 @@ for (const button of document.querySelectorAll('[data-jump]')) {
       }
       const node = make('span', `orbit-chip ${card.dataset.group || ''}`, orbit);
       node.textContent = card.querySelector('.symbol')?.textContent.trim() || '';
-      chips.push({ node, ring: ringIndex, slot: slot++ });
+      chips.push({ node, ring: ringIndex, slot: slot++, front: null });
     }
     const perRing = RINGS.map((ring, index) => chips.filter(chip => chip.ring === index).length);
     chips.forEach((chip, order) => {
@@ -944,27 +1314,23 @@ for (const button of document.querySelectorAll('[data-jump]')) {
       const fade = view.fadeFrom < 0 ? 1 : smooth(view.fadeFrom, view.fadeTo, x + view.cx - view.artX);
       chip.node.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) scale(${((0.62 + near * 0.5) * (0.4 + 0.6 * arrive)).toFixed(3)})`;
       chip.node.style.opacity = ((0.38 + near * 0.62) * arrive * fade).toFixed(3);
-      chip.node.style.zIndex = p.z > 0 ? '4' : '1';
+      const front = p.z > 0;
+      if (front !== chip.front) {
+        chip.front = front;
+        chip.node.style.zIndex = front ? '4' : '1';
+      }
     }
   }
 
-  // ---------- 5 and 6. WebGL layers ----------
-  function createProgram(gl, vertexSource, fragmentSource) {
-    const program = gl.createProgram();
-    for (const [type, source] of [[gl.VERTEX_SHADER, vertexSource], [gl.FRAGMENT_SHADER, fragmentSource]]) {
-      const shader = gl.createShader(type);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));
-      gl.attachShader(program, shader);
-    }
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
-    return program;
-  }
-  const uniforms = (gl, program, names) => Object.fromEntries(names.map(name => [name, gl.getUniformLocation(program, name)]));
+  // ---------- 5. Stage ----------
+  // One opaque canvas does all the heavy drawing:
+  //   a) the sky is painted into a small texture, one horizontal band per frame (it moves
+  //      slowly, so nobody can tell) which keeps every frame equally cheap
+  //   b) that texture is stretched over the canvas with the pointer light and film grain added
+  //   c) the particle rings are drawn on top with additive blending
+  const QUAD_VERTEX = 'attribute vec2 aPos; void main() { gl_Position = vec4(aPos, 0.0, 1.0); }';
 
-  // 5. Sky: slow, folded noise coloured only with the Fresh palette, plus rays from behind the logo
+  // a) Sky: slow, folded noise coloured only with the Fresh palette, plus rays from behind the logo
   const SKY_FRAGMENT = `
     precision highp float;
     uniform vec2 uRes, uLogo, uPointer;
@@ -1018,49 +1384,62 @@ for (const button of document.querySelectorAll('[data-jump]')) {
       // Keep the copy side calm and the corners dark
       colour *= mix(0.62, 1.0, mix(smoothstep(0.02, 0.6, uv.x), smoothstep(0.12, 0.62, uv.y), uStacked));
       colour *= 1.0 - 0.55 * dot(uv - 0.5, uv - 0.5);
-      colour *= mix(0.25, 1.0, uIntro);
       gl_FragColor = vec4(colour, 1.0);
     }`;
 
-  function createSky() {
-    const canvas = make('canvas', 'hero-sky');
-    const gl = canvas.getContext('webgl', { alpha: false, antialias: false, powerPreference: 'high-performance' });
-    if (!gl) return null;
-    const program = createProgram(gl, 'attribute vec2 aPos; void main() { gl_Position = vec4(aPos, 0.0, 1.0); }', SKY_FRAGMENT);
-    const u = uniforms(gl, program, ['uRes', 'uLogo', 'uPointer', 'uTime', 'uIntro', 'uStacked']);
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    gl.useProgram(program);
-    const corner = gl.getAttribLocation(program, 'aPos');
-    gl.enableVertexAttribArray(corner);
-    gl.vertexAttribPointer(corner, 2, gl.FLOAT, false, 0, 0);
-    hero.prepend(canvas);
-    const sky = {
-      canvas,
-      scale: 0.5,
-      resize() {
-        canvas.width = Math.max(2, Math.round(view.width * sky.scale));
-        canvas.height = Math.max(2, Math.round(view.height * sky.scale));
-        gl.viewport(0, 0, canvas.width, canvas.height);
-      },
-      draw(time, intro) {
-        gl.uniform2f(u.uRes, canvas.width, canvas.height);
-        gl.uniform2f(u.uLogo, view.cx / view.width, 1 - view.cy / view.height);
-        gl.uniform2f(u.uPointer, 0.5 + pointer.sx * 0.5, 0.5 - pointer.sy * 0.5);
-        gl.uniform1f(u.uTime, time);
-        gl.uniform1f(u.uIntro, intro);
-        gl.uniform1f(u.uStacked, view.stacked ? 1 : 0);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-      },
-    };
-    return sky;
-  }
+  // b) Stretch the sky over the canvas and add, in the same pass, what used to be separate page layers:
+  //    the breathing halo and the grid behind the logo, the two pulse rings, the pointer light,
+  //    the shade along the bottom edge and a fine grain. Units: canvas pixels, y measured from the bottom.
+  const SHOW_FRAGMENT = `
+    precision highp float;
+    uniform sampler2D uSky;
+    uniform vec2 uRes, uSpot, uArtC, uArtHalf, uFrom;
+    uniform float uSpotSize, uLevel, uDpr, uTime, uHalo, uPulseR, uShade, uStill;
+    const vec3 LIME = vec3(0.894, 0.933, 0.698);
+    const vec3 PEACH = vec3(0.965, 0.733, 0.514);
+    const vec3 SAGE = vec3(0.435, 0.608, 0.486);
+    float ease(float x) { return 1.0 - pow(1.0 - clamp(x, 0.0, 1.0), 3.0); }
+    float ring(vec2 p, float t, float delay) {
+      float phase = fract(max(t - delay, 0.0) / 5.4) / 0.7;
+      if (t < delay || phase > 1.0) return 0.0;
+      float e = ease(phase), r = uPulseR * mix(0.7, 3.4, e), width = 0.9 * uDpr;
+      return exp(-pow((length(p) - r) / width, 2.0)) * 0.55 * (1.0 - e);
+    }
+    void main() {
+      vec2 px = gl_FragCoord.xy;
+      vec3 colour = texture2D(uSky, px / uRes).rgb * uLevel;
+      vec2 d = px - uArtC;
 
-  // 6. Dust: every particle is moved on the GPU, so thousands cost almost nothing
+      // halo: lime fading to sage, breathing over 5.5 s
+      float breath = 0.5 - 0.5 * cos(uTime * 6.2831853 / 5.5);
+      float h = length(d) / (uHalo * mix(0.92, 1.06, breath));
+      float haloA = h < 0.38 ? mix(0.28, 0.10, h / 0.38) : h < 0.62 ? mix(0.10, 0.08, (h - 0.38) / 0.24) : mix(0.08, 0.0, clamp((h - 0.62) / 0.38, 0.0, 1.0));
+      vec3 haloC = h < 0.38 ? LIME : mix(LIME, SAGE, clamp((h - 0.38) / 0.24, 0.0, 1.0));
+      colour = mix(colour, haloC, haloA * mix(0.7, 1.0, breath) * uLevel);
+
+      // grid: 28 px squares, strongest around the logo
+      vec2 cell = mod(px - uFrom, 28.0 * uDpr);
+      float line = max(step(cell.x, uDpr), step(cell.y, uDpr));
+      float fade = 1.0 - smoothstep(0.2, 0.85, length(d / uArtHalf));
+      colour = mix(colour, vec3(0.608, 0.702, 0.608), line * 0.14 * fade);
+
+      // two rings of light leaving the logo, lime then peach
+      float t = uTime * (1.0 - uStill);
+      colour += LIME * ring(d, t, 2.0) + PEACH * ring(d, t, 4.7);
+
+      // pointer light, the shade along the bottom and grain
+      vec2 away = (px - uSpot) / uSpotSize;
+      colour += LIME * exp(-dot(away, away)) * 0.085;
+      colour = mix(colour, vec3(0.059, 0.149, 0.125), clamp(1.0 - px.y / uShade, 0.0, 1.0) * 0.8);
+      colour += (fract(sin(dot(px, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.035;
+      gl_FragColor = vec4(colour, 1.0);
+    }`;
+
+  // c) Dust: every particle is moved on the GPU, so thousands cost almost nothing
   const DUST_VERTEX = `
     attribute vec4 aSeed;
     attribute float aKind;
-    uniform vec2 uView, uCenter, uPointer, uTilt, uFade, uTile;
+    uniform vec2 uView, uCenter, uPointer, uTilt, uFade;
     uniform vec3 uPulse;
     uniform float uDpr, uTime, uUnit, uIntro;
     uniform float uR[3], uOpen[3], uRoll[3], uSpeed[3];
@@ -1097,12 +1476,6 @@ for (const button of document.querySelectorAll('[data-jump]')) {
         size = mix(2.0, 5.2, aSeed.x * aSeed.x) * scale * mix(0.7, 1.3, near);
         alpha = arrive * mix(0.45, 1.0, near) * twinkle * mix(0.45, 1.0, wave) * 1.5;
         if (aSeed.w < 0.03) { size *= 5.0; alpha *= 0.2; }
-
-        // The logo tile hides what passes behind it and dims what passes in front
-        vec2 fromTile = pos - uCenter;
-        fromTile = vec2(fromTile.x * cos(uTile.y) + fromTile.y * sin(uTile.y), -fromTile.x * sin(uTile.y) + fromTile.y * cos(uTile.y));
-        float overTile = 1.0 - smoothstep(uTile.x - 6.0, uTile.x + 10.0, max(abs(fromTile.x), abs(fromTile.y)));
-        alpha *= p.z < 0.0 ? 1.0 - overTile : 1.0 - 0.6 * overTile;
         alpha *= uFade.x < 0.0 ? 1.0 : smoothstep(uFade.x, uFade.y, pos.x);
       } else {
         // Motes drifting up through the whole banner
@@ -1136,16 +1509,41 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     varying float vAlpha;
     void main() {
       float edge = 1.0 - smoothstep(0.0, 1.0, length(gl_PointCoord - 0.5) * 2.0);
-      float alpha = edge * edge * vAlpha;
-      gl_FragColor = vec4(vColour * alpha, alpha);
+      gl_FragColor = vec4(vColour * edge * edge * vAlpha, 1.0);
     }`;
 
-  function createDust() {
-    const canvas = make('canvas', 'hero-dust');
-    const gl = canvas.getContext('webgl', { alpha: true, antialias: false, premultipliedAlpha: true });
+  function createProgram(gl, vertexSource, fragmentSource, attributes) {
+    const program = gl.createProgram();
+    for (const [type, source] of [[gl.VERTEX_SHADER, vertexSource], [gl.FRAGMENT_SHADER, fragmentSource]]) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));
+      gl.attachShader(program, shader);
+    }
+    attributes.forEach((name, slot) => gl.bindAttribLocation(program, slot, name));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    return program;
+  }
+  const uniforms = (gl, program, names) => Object.fromEntries(names.map(name => [name, gl.getUniformLocation(program, name)]));
+
+  function createStage() {
+    const canvas = make('canvas', 'hero-sky');
+    const gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false, powerPreference: 'high-performance' });
     if (!gl) return null;
-    const program = createProgram(gl, DUST_VERTEX, DUST_FRAGMENT);
-    const u = uniforms(gl, program, ['uView', 'uCenter', 'uPointer', 'uTilt', 'uFade', 'uTile', 'uPulse', 'uDpr', 'uTime', 'uUnit', 'uIntro', 'uR', 'uOpen', 'uRoll', 'uSpeed']);
+
+    const skyProgram = createProgram(gl, QUAD_VERTEX, SKY_FRAGMENT, ['aPos']);
+    const showProgram = createProgram(gl, QUAD_VERTEX, SHOW_FRAGMENT, ['aPos']);
+    const dustProgram = createProgram(gl, DUST_VERTEX, DUST_FRAGMENT, ['aSeed', 'aKind']);
+    const skyU = uniforms(gl, skyProgram, ['uRes', 'uLogo', 'uPointer', 'uTime', 'uIntro', 'uStacked']);
+    const showU = uniforms(gl, showProgram, ['uSky', 'uRes', 'uSpot', 'uSpotSize', 'uLevel', 'uArtC', 'uArtHalf', 'uFrom', 'uDpr', 'uTime', 'uHalo', 'uPulseR', 'uShade', 'uStill']);
+    const dustU = uniforms(gl, dustProgram, ['uView', 'uCenter', 'uPointer', 'uTilt', 'uFade', 'uPulse', 'uDpr', 'uTime', 'uUnit', 'uIntro', 'uR', 'uOpen', 'uRoll', 'uSpeed']);
+
+    const quad = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+
     const perRing = [3200, 3600, 4000];
     const motes = 900;
     const count = perRing.reduce((sum, value) => sum + value, 0) + motes;
@@ -1155,77 +1553,159 @@ for (const button of document.querySelectorAll('[data-jump]')) {
       for (let i = 0; i < 4; i++) data[cursor++] = Math.random();
       data[cursor++] = kind;
     };
-    // Motes first, so a slow device can simply draw fewer ring particles
+    // Motes first and rings interleaved, so a slow device can simply draw fewer points
     for (let i = 0; i < motes; i++) add(3);
     for (let i = 0; i < Math.max(...perRing); i++) perRing.forEach((amount, kind) => { if (i < amount) add(kind); });
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    const points = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, points);
     gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
-    gl.useProgram(program);
-    const seed = gl.getAttribLocation(program, 'aSeed');
-    const kind = gl.getAttribLocation(program, 'aKind');
-    gl.enableVertexAttribArray(seed);
-    gl.vertexAttribPointer(seed, 4, gl.FLOAT, false, 20, 0);
-    gl.enableVertexAttribArray(kind);
-    gl.vertexAttribPointer(kind, 1, gl.FLOAT, false, 20, 16);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE);
-    gl.clearColor(0, 0, 0, 0);
-    hero.append(canvas);
-    const dust = {
+
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    const target = gl.createFramebuffer();
+
+    const ringR = new Float32Array(RINGS.map(ring => ring.r));
+    const ringOpen = new Float32Array(RINGS.map(ring => rad(ring.open)));
+    const ringSpeed = new Float32Array(RINGS.map(ring => ring.speed));
+    const ringRollNow = new Float32Array(RINGS.length);
+    gl.disable(gl.DEPTH_TEST);
+    hero.prepend(canvas);
+
+    const stage = {
       canvas,
-      count,
       dpr: 1,
+      maxDpr: 1.5,
+      budget: 1.6e6,
+      skyScale: 0.5,
+      skyBands: 3,
+      count,
+      skyWidth: 2,
+      skyHeight: 2,
+      band: -1,
       resize() {
-        dust.dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-        canvas.width = Math.max(2, Math.round(view.width * dust.dpr));
-        canvas.height = Math.max(2, Math.round(view.height * dust.dpr));
-        gl.viewport(0, 0, canvas.width, canvas.height);
+        // as sharp as the screen allows, up to about 1.6 million canvas pixels (the sky is soft, so few are needed)
+        stage.dpr = Math.max(0.75, Math.min(window.devicePixelRatio || 1, stage.maxDpr, Math.sqrt(stage.budget / Math.max(1, view.width * view.height))));
+        canvas.width = Math.max(2, Math.round(view.width * stage.dpr));
+        canvas.height = Math.max(2, Math.round(view.height * stage.dpr));
+        stage.skyWidth = Math.max(2, Math.round(view.width * stage.skyScale));
+        stage.skyHeight = Math.max(2, Math.round(view.height * stage.skyScale));
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, stage.skyWidth, stage.skyHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, target);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        stage.band = -1;
       },
       draw(time, intro, rotX, rotY) {
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.uniform2f(u.uView, view.width, view.height);
-        gl.uniform2f(u.uCenter, view.cx, view.cy);
-        gl.uniform2f(u.uPointer, pointer.x, pointer.y);
-        gl.uniform2f(u.uTilt, rotX, rotY);
-        gl.uniform2f(u.uFade, view.fadeFrom, view.fadeTo);
-        gl.uniform2f(u.uTile, tile && tile.offsetWidth ? view.tileHalf : 0, view.tileAngle);
-        gl.uniform3f(u.uPulse, pulse.x, pulse.y, Math.max(0, time - pulse.at));
-        gl.uniform1f(u.uDpr, dust.dpr);
-        gl.uniform1f(u.uTime, time);
-        gl.uniform1f(u.uUnit, view.unit);
-        gl.uniform1f(u.uIntro, intro);
-        gl.uniform1fv(u.uR, RINGS.map(ring => ring.r));
-        gl.uniform1fv(u.uOpen, RINGS.map(ring => rad(ring.open)));
-        gl.uniform1fv(u.uRoll, RINGS.map((ring, index) => ringRoll(ring, index, time)));
-        gl.uniform1fv(u.uSpeed, RINGS.map(ring => ring.speed));
-        gl.drawArrays(gl.POINTS, 0, dust.count);
+        gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+        gl.enableVertexAttribArray(0);
+        gl.disableVertexAttribArray(1);
+        gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+        gl.disable(gl.BLEND);
+
+        // a) repaint one band of the sky (all of it the first time, or after a resize)
+        const level = easeOut(intro * 1.4);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, target);
+        gl.viewport(0, 0, stage.skyWidth, stage.skyHeight);
+        if (stage.band >= 0) {
+          const from = Math.floor(stage.skyHeight * stage.band / stage.skyBands);
+          const to = Math.ceil(stage.skyHeight * (stage.band + 1) / stage.skyBands);
+          gl.enable(gl.SCISSOR_TEST);
+          gl.scissor(0, from, stage.skyWidth, to - from);
+        }
+        stage.band = (stage.band + 1) % stage.skyBands;
+        gl.useProgram(skyProgram);
+        gl.uniform2f(skyU.uRes, stage.skyWidth, stage.skyHeight);
+        gl.uniform2f(skyU.uLogo, view.cx / view.width, 1 - view.cy / view.height);
+        gl.uniform2f(skyU.uPointer, 0.5 + pointer.lx * 0.5, 0.5 - pointer.ly * 0.5);
+        gl.uniform1f(skyU.uTime, time);
+        gl.uniform1f(skyU.uIntro, level);
+        gl.uniform1f(skyU.uStacked, view.stacked ? 1 : 0);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        gl.disable(gl.SCISSOR_TEST);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+        // b) show it
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.useProgram(showProgram);
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.uniform1i(showU.uSky, 0);
+        gl.uniform2f(showU.uRes, canvas.width, canvas.height);
+        gl.uniform2f(showU.uSpot, pointer.x * stage.dpr, canvas.height - pointer.y * stage.dpr);
+        gl.uniform1f(showU.uSpotSize, 300 * stage.dpr);
+        gl.uniform1f(showU.uLevel, 0.25 + 0.75 * level);
+        const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        const artW = view.artW || view.unit * 1.6, artH = view.artH || view.unit * 1.6;
+        gl.uniform2f(showU.uArtC, view.artCX * stage.dpr, canvas.height - view.artCY * stage.dpr);
+        gl.uniform2f(showU.uArtHalf, artW * 0.8 * stage.dpr, artH * 0.8 * stage.dpr);
+        gl.uniform2f(showU.uFrom, (view.artCX - artW * 0.8) * stage.dpr, canvas.height - (view.artCY + artH * 0.8) * stage.dpr);
+        gl.uniform1f(showU.uDpr, stage.dpr);
+        gl.uniform1f(showU.uTime, time - TIME_OFFSET);
+        gl.uniform1f(showU.uHalo, Math.min(artW * 1.5, 44 * rem) / 2 * stage.dpr);
+        gl.uniform1f(showU.uPulseR, (view.stacked ? 9 : 15) * rem / 2 * stage.dpr);
+        gl.uniform1f(showU.uShade, 9 * rem * stage.dpr);
+        gl.uniform1f(showU.uStill, reduceMotion.matches ? 1 : 0);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+        // c) dust
+        gl.useProgram(dustProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, points);
+        gl.enableVertexAttribArray(1);
+        gl.vertexAttribPointer(0, 4, gl.FLOAT, false, 20, 0);
+        gl.vertexAttribPointer(1, 1, gl.FLOAT, false, 20, 16);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.ONE, gl.ONE);
+        RINGS.forEach((ring, index) => { ringRollNow[index] = ringRoll(ring, index, time); });
+        gl.uniform2f(dustU.uView, view.width, view.height);
+        gl.uniform2f(dustU.uCenter, view.cx, view.cy);
+        gl.uniform2f(dustU.uPointer, pointer.x, pointer.y);
+        gl.uniform2f(dustU.uTilt, rotX, rotY);
+        gl.uniform2f(dustU.uFade, view.fadeFrom, view.fadeTo);
+        gl.uniform3f(dustU.uPulse, pulse.x, pulse.y, Math.max(0, time - pulse.at));
+        gl.uniform1f(dustU.uDpr, stage.dpr);
+        gl.uniform1f(dustU.uTime, time);
+        gl.uniform1f(dustU.uUnit, view.unit);
+        gl.uniform1f(dustU.uIntro, intro);
+        gl.uniform1fv(dustU.uR, ringR);
+        gl.uniform1fv(dustU.uOpen, ringOpen);
+        gl.uniform1fv(dustU.uRoll, ringRollNow);
+        gl.uniform1fv(dustU.uSpeed, ringSpeed);
+        gl.drawArrays(gl.POINTS, 0, stage.count);
       },
     };
-    return dust;
+    return stage;
   }
 
-  let sky = null, dust = null;
-  try { sky = createSky(); } catch (error) { sky = null; }
-  try { dust = createDust(); } catch (error) { dust = null; }
-  make('div', 'hero-spot', hero);
-  make('div', 'hero-grain', hero);
-  for (const layer of [sky, dust]) {
-    if (!layer) continue;
-    layer.canvas.addEventListener('webglcontextlost', event => {
+  let stage = null;
+  try { stage = createStage(); } catch (error) { stage = null; }
+  // Without WebGL the page keeps its CSS halo, grid and shade; the two pulse rings are added here instead
+  if (!stage && art) {
+    make('i', 'art-pulse', art);
+    make('i', 'art-pulse', art);
+  }
+  if (stage) {
+    hero.classList.add('has-stage');
+    stage.canvas.addEventListener('webglcontextlost', event => {
       event.preventDefault();
-      layer.canvas.style.display = 'none';
-      if (layer === sky) sky = null; else dust = null;
+      stage.canvas.classList.remove('is-on');
+      hero.classList.remove('has-stage');
+      stage = null;
     });
   }
 
-  // ---------- 7. Loop ----------
+  // ---------- 6. Loop ----------
   const TIME_OFFSET = 40; // start mid-flow so the first frame already has shape
-  let running = 0, startedAt = 0, lastFrame = 0, onScreen = true, slowFrames = 0, measured = 0;
+  let running = 0, startedAt = 0, lastFrame = 0, onScreen = true;
+  let sampleFrames = 0, sampleTime = 0, slowRuns = 0, quality = 0;
 
   function resize() {
     measure();
-    if (sky) sky.resize();
-    if (dust) dust.resize();
+    if (stage) stage.resize();
   }
 
   function render(seconds) {
@@ -1233,9 +1713,31 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     const time = TIME_OFFSET + seconds;
     const rotX = pointer.sy * -0.16;
     const rotY = pointer.sx * 0.24;
-    if (sky) sky.draw(time, easeOut(intro * 1.4));
-    if (dust) dust.draw(time, intro, rotX, rotY);
+    if (stage) stage.draw(time, intro, rotX, rotY);
     placeChips(time, intro, rotX, rotY);
+  }
+
+  // Each step trades a little sharpness for speed; the look stays the same
+  const QUALITY_STEPS = [
+    () => { stage.budget = 1.15e6; stage.skyBands = 4; },
+    () => { stage.budget = 0.85e6; stage.skyScale = 0.4; },
+    () => { stage.count = Math.round(stage.count * 0.6); stage.skyBands = 6; },
+    () => { stage.skyScale = 0.3; stage.count = Math.round(stage.count * 0.7); },
+  ];
+  // Checked about once a second: two slow seconds in a row move one step down (two steps if very slow)
+  function watchSpeed(delta) {
+    if (!stage || delta > 250) return;
+    sampleFrames++;
+    sampleTime += delta;
+    if (sampleTime < 1000) return;
+    const average = sampleTime / sampleFrames;
+    sampleFrames = sampleTime = 0;
+    slowRuns = average > 21 ? slowRuns + 1 : 0;
+    if (slowRuns < 2 || quality >= QUALITY_STEPS.length) return;
+    QUALITY_STEPS[quality++]();
+    if (average > 34 && quality < QUALITY_STEPS.length) QUALITY_STEPS[quality++]();
+    stage.resize();
+    slowRuns = 0;
   }
 
   function frame(now) {
@@ -1244,78 +1746,62 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     lastFrame = now;
     pointer.sx += (pointer.mx - pointer.sx) * 0.06;
     pointer.sy += (pointer.my - pointer.sy) * 0.06;
+    pointer.lx += (pointer.mx - pointer.lx) * 0.012; // the sky follows the pointer lazily
+    pointer.ly += (pointer.my - pointer.ly) * 0.012;
     render((now - startedAt) / 1000);
-
-    // If the device struggles, lower the sky resolution first, then thin the dust
-    if (delta < 200 && ++measured > 45) {
-      slowFrames += delta > 30 ? 1 : -0.5;
-      slowFrames = Math.max(0, slowFrames);
-      if (slowFrames > 40) {
-        slowFrames = 0;
-        measured = 0;
-        if (sky && sky.scale > 0.26) {
-          sky.scale *= 0.7;
-          sky.resize();
-        } else if (dust && dust.count > 3500) {
-          dust.count = Math.round(dust.count * 0.65);
-        }
-      }
-    }
+    if (now - startedAt > 3000) watchSpeed(delta);
     running = requestAnimationFrame(frame);
   }
   function start() {
     if (running || reduceMotion.matches || !onScreen || document.hidden) return;
     lastFrame = 0;
+    sampleFrames = sampleTime = 0;
     running = requestAnimationFrame(frame);
   }
   function stop() {
     cancelAnimationFrame(running);
     running = 0;
   }
+  const still = () => render(reduceMotion.matches || !startedAt ? 6 : (lastFrame - startedAt) / 1000);
 
   resize();
   render(reduceMotion.matches ? 6 : 0);
-  if (sky) sky.canvas.classList.add('is-on');
+  if (stage) stage.canvas.classList.add('is-on');
   if ('ResizeObserver' in window) {
     new ResizeObserver(() => {
       resize();
-      if (!running) render(reduceMotion.matches ? 6 : (lastFrame - startedAt) / 1000 || 6);
+      if (!running) still();
     }).observe(hero);
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
-      onScreen = entry.isIntersecting;
+      onScreen = entry.isIntersecting && entry.intersectionRatio >= 0.12;
+      hero.classList.toggle('is-away', !onScreen);
       onScreen ? start() : stop();
-    }).observe(hero);
+    }, { threshold: [0, 0.12] }).observe(hero);
   }
   document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
   if (reduceMotion.addEventListener) {
     reduceMotion.addEventListener('change', () => {
       stop();
-      reduceMotion.matches ? render(6) : start();
+      reduceMotion.matches ? still() : start();
     });
   }
   start();
 
-  // ---------- 8. Pointer ----------
-  let pointerQueued = false;
+  // ---------- 7. Pointer ----------
+  let heroBox = null;
+  const forgetBox = () => { heroBox = null; };
+  addEventListener('scroll', forgetBox, { passive: true });
+  addEventListener('resize', forgetBox);
   hero.addEventListener('pointermove', event => {
     if (!finePointer.matches || reduceMotion.matches) return;
-    const box = hero.getBoundingClientRect();
-    pointer.x = event.clientX - box.left;
-    pointer.y = event.clientY - box.top;
-    pointer.mx = (pointer.x / box.width) * 2 - 1;
-    pointer.my = (pointer.y / box.height) * 2 - 1;
-    if (pointerQueued) return;
-    pointerQueued = true;
-    requestAnimationFrame(() => {
-      hero.style.setProperty('--px', `${pointer.x.toFixed(0)}px`);
-      hero.style.setProperty('--py', `${pointer.y.toFixed(0)}px`);
-      hero.style.setProperty('--mx', pointer.mx.toFixed(3));
-      hero.style.setProperty('--my', pointer.my.toFixed(3));
-      pointerQueued = false;
-    });
-  });
+    if (!heroBox) heroBox = hero.getBoundingClientRect();
+    pointer.x = event.clientX - heroBox.left;
+    pointer.y = event.clientY - heroBox.top;
+    pointer.mx = (pointer.x / heroBox.width) * 2 - 1;
+    pointer.my = (pointer.y / heroBox.height) * 2 - 1;
+  }, { passive: true });
   hero.addEventListener('pointerleave', () => {
     pointer.x = pointer.y = -9999;
     pointer.mx = pointer.my = 0;
@@ -1328,39 +1814,209 @@ for (const button of document.querySelectorAll('[data-jump]')) {
     pulse.at = TIME_OFFSET + (performance.now() - startedAt) / 1000;
   });
 
-  // ---------- 9. Directory ----------
-  const sectionTop = document.querySelector('.directory .section-top');
-  const reveal = [sectionTop, ...cards].filter(Boolean);
+  // ---------- 8. Directory ----------
+  const directory = document.querySelector('.fresh-home .directory');
+  const grid = directory && directory.querySelector('.grid');
+  if (!directory || !grid) return;
+  const sectionTop = directory.querySelector('.section-top');
+  const title = directory.querySelector('h2');
+  const counter = directory.querySelector('#count');
+  const groupSelect = directory.querySelector('#group');
+
+  // Heading: words rise one after another, the last one picks up the lime-to-peach light
+  if (title) {
+    const words = splitWords(title, false);
+    const last = title.querySelectorAll('.word')[words - 1];
+    if (last) last.classList.add('glow');
+  }
+
+  // A giant outlined number behind the heading that mirrors the live subject count
+  if (sectionTop && counter) {
+    const ghost = make('span', 'dir-ghost', sectionTop);
+    const mirror = () => {
+      const amount = parseInt(counter.textContent, 10);
+      const text = Number.isFinite(amount) ? String(amount) : '';
+      if (ghost.textContent === text) return;
+      ghost.textContent = text;
+      for (const node of [ghost, counter]) {
+        node.classList.remove('pop');
+        void node.offsetWidth;
+        node.classList.add('pop');
+      }
+    };
+    mirror();
+    new MutationObserver(mirror).observe(counter, { childList: true, characterData: true, subtree: true });
+  }
+
+  // Group filter as glowing pills. They drive the original <select>, which search.js still reads.
+  if (groupSelect && groupSelect.closest('label')) {
+    const nativeLabel = groupSelect.closest('label');
+    const labelText = [...nativeLabel.childNodes].filter(node => node.nodeType === Node.TEXT_NODE).map(node => node.textContent).join(' ').trim();
+    const pills = document.createElement('div');
+    pills.className = 'group-pills';
+    pills.setAttribute('role', 'group');
+    pills.setAttribute('aria-label', labelText);
+    const caption = document.createElement('span');
+    caption.textContent = labelText;
+    caption.setAttribute('aria-hidden', 'true');
+    pills.append(caption);
+    const buttons = [...groupSelect.options].map(option => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `group-pill ${option.value}`;
+      button.textContent = option.textContent;
+      button.setAttribute('aria-pressed', String(option.value === groupSelect.value));
+      button.addEventListener('click', () => {
+        groupSelect.value = option.value;
+        groupSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+      pills.append(button);
+      return button;
+    });
+    groupSelect.addEventListener('change', () => {
+      buttons.forEach((button, index) => button.setAttribute('aria-pressed', String(groupSelect.options[index].value === groupSelect.value)));
+      directory.dataset.group = groupSelect.value;
+    });
+    nativeLabel.classList.add('group-native');
+    nativeLabel.after(pills);
+  }
+
+  // Each card gets its own symbol as a huge watermark (text style, never emoji)
+  for (const card of cards) {
+    const symbol = card.querySelector('.symbol')?.textContent.trim();
+    if (symbol) make('span', 'card-ghost', card).textContent = `${symbol}︎`;
+  }
+
+  // Reveal on scroll: heading first, then cards in a wave
+  const reveal = [sectionTop, directory.querySelector('.filters'), ...cards].filter(Boolean);
   if ('IntersectionObserver' in window && !reduceMotion.matches) {
     const seen = new IntersectionObserver(entries => {
-      const arriving = entries.filter(entry => entry.isIntersecting);
-      arriving.forEach((entry, order) => {
+      entries.filter(entry => entry.isIntersecting).forEach((entry, order) => {
         const node = entry.target;
-        node.style.setProperty('--wait', `${order * 70}ms`);
+        node.style.setProperty('--wait', `${order * 80}ms`);
         node.classList.add('in');
         seen.unobserve(node);
-        setTimeout(() => node.style.removeProperty('--wait'), 900 + order * 70);
+        setTimeout(() => node.classList.add('done'), 1100 + order * 80);
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { rootMargin: '0px 0px -7% 0px' });
     reveal.forEach(node => seen.observe(node));
   } else {
-    reveal.forEach(node => node.classList.add('in'));
+    reveal.forEach(node => node.classList.add('in', 'done'));
   }
-  for (const card of cards) {
-    card.addEventListener('pointermove', event => {
-      if (!finePointer.matches || reduceMotion.matches) return;
+
+  // The pointer light and the lit card rims are drawn into one canvas laid over the section,
+  // instead of a large light layer under the cards plus a repainted border on every card.
+  // Only the card under the pointer is tilted, and only it keeps its own CSS rim and glow (they tilt with it).
+  const REACH = 380;
+  const RIM_FADE = 0.72;
+  const glow = make('canvas', 'dir-glow', directory);
+  const pen = glow.getContext('2d');
+  const tints = new Map();
+  const rem = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  let glowDpr = 1, glowW = 0, glowH = 0, gridQueued = false, gridX = -9999, gridY = -9999, tilted = null, lit = false;
+
+  function sizeGlow() {
+    glowDpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    glowW = innerWidth;
+    glowH = innerHeight;
+    glow.width = Math.round(glowW * glowDpr);
+    glow.height = Math.round(glowH * glowDpr);
+  }
+  const tintOf = card => {
+    if (!tints.has(card)) tints.set(card, getComputedStyle(card).getPropertyValue('--tint').trim() || '#f6efd8');
+    return tints.get(card);
+  };
+  const withAlpha = (colour, alpha) => {
+    const hex = colour.replace('#', '');
+    const full = hex.length === 3 ? [...hex].map(c => c + c).join('') : hex.slice(0, 6);
+    const n = parseInt(full, 16);
+    return `rgba(${n >> 16 & 255}, ${n >> 8 & 255}, ${n & 255}, ${alpha})`;
+  };
+
+  function drawGlow() {
+    gridQueued = false;
+    pen.setTransform(glowDpr, 0, 0, glowDpr, 0, 0);
+    pen.clearRect(0, 0, glowW, glowH);
+    if (!lit) return;
+    // soft lime light around the pointer
+    const light = pen.createRadialGradient(gridX, gridY, 0, gridX, gridY, 23 * rem());
+    light.addColorStop(0, 'rgba(228, 238, 178, 0.11)');
+    light.addColorStop(0.45, 'rgba(228, 238, 178, 0.04)');
+    light.addColorStop(1, 'rgba(228, 238, 178, 0)');
+    pen.fillStyle = light;
+    pen.fillRect(gridX - 23 * rem(), gridY - 23 * rem(), 46 * rem(), 46 * rem());
+    // rims of the cards near the pointer, each in its own group colour
+    const radius = 17 * rem(), corner = 1.3 * rem();
+    for (const card of cards) {
+      if (card.hidden || card === tilted) continue;
       const box = card.getBoundingClientRect();
-      const x = (event.clientX - box.left) / box.width;
-      const y = (event.clientY - box.top) / box.height;
-      card.style.setProperty('--gx', `${(x * 100).toFixed(1)}%`);
-      card.style.setProperty('--gy', `${(y * 100).toFixed(1)}%`);
-      card.style.setProperty('--ry', `${((x - 0.5) * 7).toFixed(2)}deg`);
-      card.style.setProperty('--rx', `${((0.5 - y) * 7).toFixed(2)}deg`);
+      if (gridX < box.left - REACH || gridX > box.right + REACH || gridY < box.top - REACH || gridY > box.bottom + REACH) continue;
+      if (box.bottom < 0 || box.top > glowH) continue;
+      const tint = tintOf(card);
+      const rim = pen.createRadialGradient(gridX, gridY, 0, gridX, gridY, radius);
+      rim.addColorStop(0, withAlpha(tint, 1));
+      rim.addColorStop(RIM_FADE, withAlpha(tint, 0));
+      pen.strokeStyle = rim;
+      pen.lineWidth = 1.5;
+      pen.beginPath();
+      pen.roundRect(box.left + 0.75, box.top + 0.75, box.width - 1.5, box.height - 1.5, corner);
+      pen.stroke();
+    }
+  }
+  const queueGlow = () => {
+    if (!gridQueued) {
+      gridQueued = true;
+      requestAnimationFrame(drawGlow);
+    }
+  };
+
+  function tiltCard(card) {
+    if (tilted && tilted !== card) {
+      delete tilted.dataset.tilted;
+      tilted.style.setProperty('--rx', '0deg');
+      tilted.style.setProperty('--ry', '0deg');
+    }
+    tilted = card;
+    if (!card) return;
+    const box = card.getBoundingClientRect();
+    const x = gridX - box.left, y = gridY - box.top;
+    card.dataset.tilted = '1';
+    card.style.setProperty('--gx', `${x.toFixed(0)}px`);
+    card.style.setProperty('--gy', `${y.toFixed(0)}px`);
+    card.style.setProperty('--ry', `${((x / box.width - 0.5) * 9).toFixed(2)}deg`);
+    card.style.setProperty('--rx', `${((0.5 - y / box.height) * 9).toFixed(2)}deg`);
+  }
+
+  if (glow.getContext && pen && typeof pen.roundRect === 'function') {
+    sizeGlow();
+    addEventListener('resize', () => { sizeGlow(); tints.clear(); queueGlow(); });
+    addEventListener('scroll', () => { if (lit) queueGlow(); }, { passive: true });
+    directory.addEventListener('pointermove', event => {
+      if (!finePointer.matches || reduceMotion.matches) return;
+      gridX = event.clientX;
+      gridY = event.clientY;
+      if (!lit) {
+        lit = true;
+        directory.classList.add('is-lit');
+      }
+      tiltCard(event.target.closest && event.target.closest('.grid .card'));
+      queueGlow();
+    }, { passive: true });
+    directory.addEventListener('pointerleave', () => {
+      lit = false;
+      directory.classList.remove('is-lit');
+      tiltCard(null);
+      queueGlow();
     });
-    card.addEventListener('pointerleave', () => {
-      card.style.setProperty('--rx', '0deg');
-      card.style.setProperty('--ry', '0deg');
-    });
+    // filtering moves cards around, so redraw
+    if (counter) new MutationObserver(queueGlow).observe(counter, { childList: true, characterData: true, subtree: true });
+  } else {
+    glow.remove();
+  }
+
+  // The backdrop glow only drifts while the section is on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => directory.classList.toggle('is-away', !entry.isIntersecting)).observe(directory);
   }
 })();
 </script>
