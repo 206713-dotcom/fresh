@@ -1,6 +1,6 @@
 const textLibrary = {
   hullabaloo:{
-    author:"Kiran Desai", type:"Prose", years:[2027,2028],
+    author:"Kiran Desai", type:"Prose", years:[2026,2027,2028],
     overview:"Sampath escapes everyday life in Shahkot, only to discover that other people can turn his retreat into a public spectacle.",
     characters:"Sampath wants space from the town’s expectations. Mr Chawla sees an opportunity in his son’s reputation. Kulfi approaches the orchard through her fascination with food.",
     themes:"Freedom and expectation, the making of a reputation, and the gap between private desire and public interpretation.",
@@ -10,7 +10,7 @@ const textLibrary = {
     ]
   },
   pride:{
-    author:"Jane Austen", type:"Prose", years:[2027,2028],
+    author:"Jane Austen", type:"Prose", years:[2026,2027,2028],
     overview:"Elizabeth Bennet’s changing judgements of Darcy and others make the novel an inquiry into how people read social behaviour.",
     characters:"Elizabeth is quick to interpret others and capable of reconsidering. Darcy’s reserve affects how people read him. Charlotte Lucas’s choices offer a different perspective on marriage.",
     themes:"First impressions, class and reputation, marriage, and the relationship between judgement and self-knowledge.",
@@ -20,7 +20,7 @@ const textLibrary = {
     ]
   },
   midsummer:{
-    author:"William Shakespeare", type:"Drama", years:[2027],
+    author:"William Shakespeare", type:"Drama", years:[2026,2027],
     overview:"Lovers, fairies and amateur actors cross paths in the forest, where mistakes about love and identity become visible to the audience.",
     characters:"Hermia resists the marriage her father demands. Oberon and Puck intervene in the lovers’ lives. Bottom’s confidence carries the mechanicals’ performance through its mishaps.",
     themes:"Love and perception, authority and freedom, transformation, and the audience’s role in making theatre.",
@@ -66,7 +66,7 @@ function textsView(id) {
 
 function textEligibility(book) {
   const year = saved.examYear;
-  const listed = book.years.includes(year) || (year===2026 && book.type==="Prose");
+  const listed = book.years.includes(year);
   return '<small>'+(listed ? "Listed for "+year : "Study resource · check the "+year+" set-text list")+'</small>';
 }
 
