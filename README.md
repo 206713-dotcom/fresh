@@ -20,7 +20,7 @@ The directory covers **12 subjects**. Some pages offer short worked examples. Th
 | Choose between syllabus maths and competitions | [Fresh Mathematics](https://gisfresh.me/subjects/mathematics.html) |
 | Write and run a Python program | [PyQuest](https://gisfresh.me/subjects/pyquest/) |
 | Draft an exam answer and get feedback | [Business Studies](https://gisfresh.me/subjects/business.html?open=overview) · [Economics](https://gisfresh.me/subjects/economics.html#practice) |
-| Review your shared rewards | **GIS Points** on the [Fresh homepage](https://gisfresh.me/) |
+| Review your shared rewards | **GIS Points** on the [Fresh homepage](https://gisfresh.me/) · [How to earn points](https://gisfresh.me/points.html) |
 
 ## How AI helped
 

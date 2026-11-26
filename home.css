@@ -243,13 +243,27 @@
 .fresh-home .hero-actions .python-link span { display: inline-block; transition: transform .25s ease; }
 .fresh-home .hero-actions .python-link:hover span { transform: translateX(4px); }
 
+.fresh-home .home-points-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .52rem .8rem;
+  margin-bottom: 1rem;
+}
+.fresh-home .home-points-guide {
+  color: #f2f7da;
+  font-size: .84rem;
+  font-weight: 750;
+  text-underline-offset: .26em;
+}
+.fresh-home .home-points-guide:hover { color: var(--lime); }
+.fresh-home .home-points-guide:focus-visible { outline-color: var(--lime); }
 .fresh-home .home-points {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   gap: .65rem;
   width: min(100%, 22rem);
-  margin-bottom: 1rem;
   padding: .65rem .8rem;
   border: 1px solid #e4eeb25c;
   border-radius: .85rem;

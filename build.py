@@ -92,6 +92,7 @@ def home():
     <div class="hero-actions">
       <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
       <a class="python-link" href="subjects/python.html">Practise Python <span aria-hidden="true">→</span></a>
+      <a class="home-points-guide" href="points.html">How to earn points <span aria-hidden="true">→</span></a>
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">

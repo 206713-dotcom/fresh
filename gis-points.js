@@ -172,7 +172,7 @@
         <div><span>Available</span><strong data-gisp-balance>0</strong></div>
         <div><span>Earned on Fresh</span><strong data-gisp-earned>0</strong></div>
       </div>
-      <p>Earn points by completing lessons and practice across Fresh. Use your balance in the subject shops.</p>
+      <p>Earn points across Fresh and use your shared balance in subject shops. <a data-gisp-earn>How to earn GIS Points →</a></p>
       <div class="gisp-views" role="group" aria-label="Points views">
         <button type="button" data-gisp-toggle="subjects" aria-pressed="true" aria-controls="gisp-by-subject">By subject</button>
         <button type="button" data-gisp-toggle="activity" aria-pressed="false" aria-controls="gisp-activity">Recent activity</button>
@@ -192,6 +192,7 @@
       <footer><span>Saved in this browser</span><a data-gisp-subjects>Explore subjects →</a></footer>`;
     document.body.append(dialog);
     dialog.querySelector("[data-gisp-subjects]").href = new URL("#subjects", home);
+    dialog.querySelector("[data-gisp-earn]").href = new URL("points.html#ways-to-earn", home);
 
     const totalsBody = dialog.querySelector("[data-gisp-totals]");
     const totalsCells = subjects.map(([id, name, url, activity]) => {
@@ -254,7 +255,9 @@
     }
 
     button.addEventListener("click", () => { dialog.showModal(); render(); });
-    dialog.querySelector("[data-gisp-subjects]").addEventListener("click", () => dialog.close());
+    for (const link of dialog.querySelectorAll("[data-gisp-subjects], [data-gisp-earn]")) {
+      link.addEventListener("click", () => dialog.close());
+    }
     window.addEventListener(changeEvent, render);
     render();
     button.hidden = false;
