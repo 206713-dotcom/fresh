@@ -1,4 +1,5 @@
 import { countWords, tasks } from './practice.mjs';
+import { labPassages, notebookExercises } from './tool-questions.mjs';
 
 const objectives = [
   ['R1','Understand explicit meanings','comprehension'],
@@ -70,13 +71,31 @@ function storedRecords(read, key) {
 }
 
 export function setupReadingLab(read, write) {
-  const collection = new Map();
-  for (const task of tasks) {
-    if (task.source && ![...collection.values()].some(item => item.source === task.source)) collection.set(task.id, task);
-  }
-  const names = ['The harbour repair workshop','The station library','The river crossing','The evening market debate'];
+  const originals = [
+    ['comprehension', 'The harbour repair workshop'],
+    ['summary', 'The station library'],
+    ['short-language', 'The river crossing'],
+    ['evaluation', 'The evening market debate'],
+  ].map(([id, title]) => ({ id, title, source:tasks.find(task => task.id === id).source }));
+  const collection = new Map([...originals, ...labPassages].map(item => [item.id, item]));
   const selector = get('lab-passage');
-  [...collection.keys()].forEach((id,index) => selector.append(new Option(names[index],id)));
+  selector.append(...Array.from(collection.values(), item => new Option(item.title, item.id)));
+  const questions = get('lab-questions');
+
+  function showQuestions() {
+    const prompts = collection.get(selector.value).questions ?? [];
+    const list = document.createElement('ol');
+    for (const [question, answer] of prompts) {
+      const item = document.createElement('li');
+      const example = document.createElement('details');
+      example.append(element('summary', 'Show example answer'), element('p', answer));
+      item.append(element('p', question), example);
+      list.append(item);
+    }
+    questions.replaceChildren(element('h3', 'Passage questions'), list);
+    questions.hidden = !prompts.length;
+  }
+
   const paragraph = get('annotation-paragraph');
   const quote = get('annotation-quote');
   const note = get('annotation-note');
@@ -159,6 +178,7 @@ export function setupReadingLab(read, write) {
     reset();
     status.textContent = '';
     render();
+    showQuestions();
   });
   cancel.addEventListener('click', reset);
   form.addEventListener('submit', event => {
@@ -176,6 +196,7 @@ export function setupReadingLab(read, write) {
     render();
   });
   render();
+  showQuestions();
 }
 
 export function setupNotebook(read, write, taskId) {
@@ -185,6 +206,35 @@ export function setupNotebook(read, write, taskId) {
   const status = get('notebook-status');
   let records = storedRecords(read,'mistakes');
   select.append(...objectives.map(([id,title]) => new Option(id + ' · ' + title,id)));
+
+  const questions = get('notebook-question');
+  questions.append(...notebookExercises.map((item, index) => new Option(item.title, index)));
+
+  function showQuestion() {
+    const item = notebookExercises[questions.value];
+    get('notebook-example-excerpt').textContent = item.excerpt;
+    get('notebook-question-text').textContent = item.question;
+    get('notebook-example-text').textContent = item.example;
+    get('notebook-example').open = false;
+  }
+
+  questions.addEventListener('change', showQuestion);
+  const useExcerpt = get('notebook-use-excerpt');
+  function updateExcerptButton() {
+    useExcerpt.disabled = Boolean(excerpt.value.trim() || next.value.trim());
+  }
+  excerpt.addEventListener('input', updateExcerptButton);
+  next.addEventListener('input', updateExcerptButton);
+  useExcerpt.addEventListener('click', () => {
+    const item = notebookExercises[questions.value];
+    select.value = item.skill;
+    excerpt.value = item.excerpt;
+    updateExcerptButton();
+    next.focus();
+  });
+  showQuestion();
+  updateExcerptButton();
+  get('notebook-exercises').hidden = false;
 
   function save() {
     write('mistakes',JSON.stringify(records),status);
@@ -221,6 +271,7 @@ export function setupNotebook(read, write, taskId) {
     records.unshift({ id:crypto.randomUUID(), skill:select.value, excerpt:excerpt.value.trim(), next:next.value.trim(), task:taskId, resolved:false });
     excerpt.value = '';
     next.value = '';
+    updateExcerptButton();
     save();
   });
   render();

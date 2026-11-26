@@ -31,6 +31,15 @@
   <section class="section" id="notebook" aria-labelledby="notebook-title">
     <p class="eyebrow">My progress</p><h1 id="notebook-title">Mistake Notebook</h1>
     <p>Save an excerpt and the change you want to make. Mark a note resolved once you have practised the revision.</p>
+    <details id="notebook-exercises" hidden>
+      <summary>Practice questions</summary>
+      <p>Choose an excerpt to revise, then compare your response with an example.</p>
+      <label for="notebook-question">Question</label><select id="notebook-question"></select>
+      <blockquote id="notebook-example-excerpt" class="source"></blockquote>
+      <p id="notebook-question-text"></p>
+      <button id="notebook-use-excerpt" type="button">Use excerpt in notebook</button>
+      <details id="notebook-example"><summary>Show example revision</summary><p id="notebook-example-text"></p></details>
+    </details>
     <div class="workspace">
       <form class="panel" id="notebook-form">
         <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
