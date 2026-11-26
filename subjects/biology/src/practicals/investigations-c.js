@@ -1,0 +1,280 @@
+export const investigationsC = [
+  [
+    "diffusion-concentration",
+    "03",
+    "Diffusion: concentration difference",
+    "How does external concentration affect penetration into indicator agar?",
+    "A steeper concentration gradient increases net diffusion per unit time.",
+    "Concentration / mol dm⁻³",
+    "Penetration depth / mm",
+    [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25
+    ],
+    [
+      1.2,
+      1.8,
+      2.3,
+      2.7,
+      3
+    ],
+    "agar",
+    "Equal indicator agar blocks; ruler; labelled beakers; teacher-prepared dilute solutions; timer.",
+    "Use equal-sized cubes cut from the same indicator agar. Immerse separate cubes in equal solution volumes of different concentrations. Start timers on immersion; remove after 5 min, rinse as instructed and section. Measure the changed outer layer at three points, avoiding corners. Repeat with fresh blocks.",
+    "Cube dimensions, agar composition, temperature, time, volume",
+    "Water-only cube tests background colour change.",
+    "Goggles; teacher prepares solutions and cuts blocks.",
+    "The changed layer thickens as external concentration increases; this is an indicator-reaction proxy for diffusion.",
+    "2.7 mm in 5 min = 0.54 mm/min average penetration rate.",
+    "Depth increases but not in exact proportion to concentration; colour endpoint depends on indicator chemistry.",
+    "Unequal sectioning and diffuse colour boundary: use fixed lighting, multiple measurements and repeat.",
+    "Why measure several points on each section?",
+    [
+      "Boundary may not be uniform",
+      "Mean reduces effect of local variation"
+    ],
+    "Do not equate penetration depth directly to diffusion coefficient."
+  ],
+  [
+    "diffusion-temperature",
+    "03",
+    "Diffusion: temperature",
+    "Investigate temperature and dye spread in agar.",
+    "Higher temperature increases random molecular motion and can increase diffusion.",
+    "Temperature / °C",
+    "Dye spread radius / mm",
+    [
+      10,
+      20,
+      30,
+      40,
+      50
+    ],
+    [
+      3.2,
+      4.1,
+      5,
+      5.7,
+      6.4
+    ],
+    "agar",
+    "Equal agar plates; teacher-prepared food dye; pipette; ruler; water baths or temperature-controlled spaces.",
+    "Equilibrate identical agar plates to each temperature. Add equal dye drops to identical wells. Leave for 15 min at the selected temperature. Measure spread diameter in two perpendicular directions and halve the mean. Repeat with fresh plates.",
+    "Agar thickness and concentration, drop volume and dye concentration, time, well diameter",
+    "Plate with water in well checks colour background.",
+    "Avoid hot equipment; teacher prepares plates; do not ingest lab materials.",
+    "A larger dye radius is expected at higher temperature.",
+    "Diameters 10 and 12 mm give mean 11 mm and radius 5.5 mm.",
+    "A positive relationship is expected over the chosen range; avoid extrapolating to temperatures where agar changes consistency.",
+    "Initial well radius and temperature variation: subtract well radius if reporting penetration from edge; monitor actual plate temperature.",
+    "Explain why temperature may alter diffusion.",
+    [
+      "Higher kinetic energy",
+      "Particles move faster",
+      "Net spread occurs more rapidly"
+    ],
+    "Distinguish random molecular movement from bulk convection."
+  ],
+  [
+    "savr",
+    "03",
+    "Surface area to volume: model cells",
+    "Compare surface-area-to-volume ratio and penetration fraction of different cube sizes.",
+    "Small cubes have more exchange surface per unit volume.",
+    "Cube side / mm",
+    "Surface area : volume / mm⁻¹",
+    [
+      5,
+      10,
+      15,
+      20,
+      30
+    ],
+    [
+      1.2,
+      0.6,
+      0.4,
+      0.3,
+      0.2
+    ],
+    "agar",
+    "Equal-composition model agar cubes; ruler; teacher-prepared indicator solution; timer.",
+    "Measure each cube side before exposure. Calculate surface area 6s² and volume s³. Immerse all in equal conditions for a fixed interval. Teacher sections cubes; measure unpenetrated core and calculate percentage penetrated. Compare the calculated ratio with penetration fraction.",
+    "Temperature, duration, solution, material and cube shape",
+    "Unexposed cube for initial colour.",
+    "Teacher cuts agar and prepares reagent; goggles.",
+    "Ratio falls as cube side rises; smaller cubes have more of their volume reached.",
+    "15 mm cube: SA = 1350 mm²; V = 3375 mm³; SA/V = 0.4 mm⁻¹.",
+    "Ratio follows 6/s, not a straight line. The plotted ratio is calculated, not directly measured.",
+    "Cubes may be irregular; measure all three dimensions and use cuboid formula if needed.",
+    "Explain why large organisms need specialised exchange surfaces.",
+    [
+      "Lower surface area per unit volume as size increases",
+      "Greater diffusion distance",
+      "Diffusion across external surface alone insufficient"
+    ],
+    "Do not confuse total surface area with surface area per unit volume."
+  ],
+  [
+    "potato-length",
+    "03",
+    "Osmosis: potato length changes",
+    "Investigate sucrose concentration and percentage change in cylinder length.",
+    "Higher external sucrose concentration reduces water uptake, causing less elongation or shrinkage.",
+    "Sucrose concentration / mol dm⁻³",
+    "Length change / %",
+    [
+      0,
+      0.15,
+      0.3,
+      0.45,
+      0.6
+    ],
+    [
+      8,
+      4,
+      0,
+      -4,
+      -8
+    ],
+    "beakers",
+    "Potato cylinders; ruler with mm divisions; prepared sucrose solutions; beakers; timer.",
+    "Teacher cuts equal-diameter cylinders of similar length from one potato. Measure each initial length without compressing it. Immerse separately in equal solution volumes for 45 min. Remove and gently blot. Align with ruler and measure final length along the same axis. Repeat each concentration using fresh cylinders.",
+    "Diameter, tissue source, duration, temperature, volume and ruler technique",
+    "Distilled water comparison.",
+    "Teacher handles blades; no ingestion.",
+    "Dilute solution increases length; concentrated solution decreases length.",
+    "40 mm to 42 mm: 2/40 × 100 = +5%.",
+    "A zero crossing estimates the solution concentration at which length is unchanged, not necessarily exact cell sap concentration.",
+    "Small length changes are difficult to measure; longer cylinders, consistent endpoints and repeats improve precision.",
+    "Why calculate percentage length change?",
+    [
+      "Initial lengths may differ",
+      "Allows relative comparison"
+    ],
+    "Use final minus initial, not initial minus final."
+  ],
+  [
+    "osmosis-temperature",
+    "03",
+    "Osmosis: effect of temperature",
+    "Investigate temperature and short-term potato mass gain in dilute solution.",
+    "Moderate warming may increase water transfer rate; tissue damage at excessive temperatures changes the system.",
+    "Temperature / °C",
+    "Mass gain after 20 min / %",
+    [
+      10,
+      20,
+      30,
+      40,
+      50
+    ],
+    [
+      2,
+      3.1,
+      4.2,
+      4.8,
+      3.7
+    ],
+    "beakers",
+    "Equal potato cylinders; balance; water baths; thermometer; dilute solution; timer; towels.",
+    "Equilibrate equal solution volumes at each chosen temperature. Measure initial mass of matched cylinders, immerse for 20 min and record final mass after identical blotting. Use fresh cylinders for repeats. Avoid interpreting temperature effects as equilibrium water potential differences.",
+    "Solution concentration, potato source and dimensions, volume, time, blotting",
+    "Matched cylinder at room temperature; same concentration.",
+    "Teacher handles cutting and warm baths; goggles as appropriate.",
+    "Mass gain may rise at moderate temperatures, then become less predictable if tissue is damaged.",
+    "5.00 g to 5.21 g = 4.2% gain; average rate = 0.21%/min over 20 min.",
+    "Do not assume the trend at long equilibrium times matches initial rate.",
+    "Heating changes membrane properties and water potential; use modest temperatures and measure several time points.",
+    "Why use equal immersion times?",
+    [
+      "Mass change depends on duration",
+      "Allows comparison of temperature effect"
+    ],
+    "A temperature effect on rate does not prove the final equilibrium changes in the same way."
+  ],
+  [
+    "benedict",
+    "04",
+    "Benedict’s test: comparing reducing sugar",
+    "Compare colour changes of known glucose standards and an unknown sample.",
+    "More reducing sugar generally produces a stronger precipitate under fixed heating conditions.",
+    "Glucose standard",
+    "Observed appearance",
+    null,
+    null,
+    "test-tubes",
+    "Benedict’s reagent; labelled tubes; known glucose standards; water bath; teacher-provided unknown; pipettes.",
+    "Use equal aliquots of each standard and unknown. Add identical reagent volumes. Heat all tubes in the same teacher-controlled water bath for the same interval. Cool as directed and compare colours against the standards under consistent lighting. Record each repeat separately.",
+    "Reagent and sample volumes, heating time and temperature, lighting",
+    "Water negative control and known glucose positive control.",
+    "Goggles; hot water handled under supervision; no tasting.",
+    "Blue remains negative; green, yellow, orange or brick-red precipitate indicates reducing sugar.",
+    "Colour categories are semi-quantitative; do not assign exact concentrations without calibration.",
+    "Compare to known standards; a colour observation alone is not a continuous numerical measurement.",
+    "Subjective colour, turbidity and uneven heating; use a standard series and consistent heating.",
+    "A tube turns orange after heating. What can you conclude?",
+    [
+      "Reducing sugar present",
+      "Colour alone cannot establish exact concentration"
+    ],
+    "Include heating in the method; do not call this a test for all sugars."
+  ],
+  [
+    "iodine",
+    "04",
+    "Iodine test for starch",
+    "Identify starch in unknown food samples.",
+    "Starch produces a blue-black complex with iodine solution.",
+    "Food sample",
+    "Iodine observation",
+    null,
+    null,
+    "test-tubes",
+    "Iodine solution; white tile or tubes; equal food extracts; water and starch controls; pipettes.",
+    "Prepare equal aliquots of comparable food extracts. Place on separate labelled white-tile wells or tubes. Add the same amount of iodine to each and compare immediate colour. Repeat with new aliquots, including known positive and negative controls.",
+    "Sample and iodine volume, timing, lighting",
+    "Water and known starch solution.",
+    "Goggles; avoid iodine contact; teacher-approved samples only.",
+    "Starch-containing samples turn blue-black; negative samples remain yellow-brown.",
+    "This is qualitative; percentages cannot be inferred from uncalibrated colour.",
+    "Record colour before giving starch conclusion.",
+    "Food pigmentation can mask colour; use matched blank extract and white background.",
+    "Why include a known starch sample?",
+    [
+      "Confirms iodine reagent works",
+      "Provides positive colour reference"
+    ],
+    "Do not confuse iodine’s yellow-brown negative result with blue-black."
+  ],
+  [
+    "biuret",
+    "04",
+    "Biuret test for protein",
+    "Identify protein in food extracts.",
+    "Peptide bonds give a lilac or purple colour with biuret reagent.",
+    "Food sample",
+    "Biuret observation",
+    null,
+    null,
+    "test-tubes",
+    "Teacher-supplied biuret reagent; equal sample extracts; albumin reference; water control; tubes.",
+    "Label tubes and place equal volumes of extracts in them. Add equal amounts of prepared biuret reagent as instructed by teacher. Mix gently; observe after same time under white light. Repeat with new aliquots.",
+    "Volumes, reagent concentration, observation time",
+    "Water negative and known protein positive controls.",
+    "Goggles; reagent may be alkaline/irritant; teacher handles preparation.",
+    "Protein-containing sample turns lilac; negative remains blue.",
+    "No exact concentration without calibrated colorimetry.",
+    "A table is suitable; not a line graph for separate foods.",
+    "Pigment interference and inconsistent mixing; compare blank samples and repeat.",
+    "A test is lilac. Identify the nutrient and the reagent.",
+    [
+      "Protein",
+      "Biuret reagent"
+    ],
+    "Blue to lilac, not blue-black."
+  ]
+];

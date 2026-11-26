@@ -1,0 +1,35 @@
+name: Biology integration validation
+on:
+  push:
+    branches: [integration/fresh-biology]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'subjects/biology.html'
+      - 'subjects/biology/**'
+      - 'tests/biology/**'
+      - 'build.mjs'
+      - 'build.py'
+      - '.github/workflows/biology-integration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run Biology regression tests against full Fresh checkout
+        run: node --experimental-default-type=module --test tests/biology/*.test.mjs
+      - name: Assemble production Fresh website
+        run: node build.mjs
+      - name: Install browser test tools
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Run full-site Chromium integration smoke test
+        run: node --experimental-default-type=module tests/biology/browser-smoke.mjs
