@@ -125,7 +125,7 @@
   function startHide() { if (filmKill) { filmKill(); filmKill = null; } startEl.hidden = true; bar.hidden = false; view.hidden = false; if (orb) orb.stop(); clearTimeout(orbTimer); }
 
   /* ---------- home: everything the site does, live, under the orbital ---------- */
-  const LAB = [['states', 'States of matter', 'ci-1-1'], ['ph', 'The pH scale', 'ci-7-1'], ['rate', 'Rates of reaction', 'ci-6-2'], ['equilibrium', 'Equilibrium', 'ci-6-3'], ['electrolysis', 'Electrolysis', 'ci-4-1'], ['boltzmann', 'Boltzmann curve', 'ca-8-2']];
+  const LAB = [['states', 'States of matter', 'ci-1-1'], ['ph', 'The pH scale', 'ci-7-1'], ['rate', 'Rates of reaction', 'ci-6-2'], ['equilibrium', 'Equilibrium', 'ci-6-3'], ['electrolysis', 'Electrolysis', 'ci-4-1'], ['boltzmann', 'Boltzmann curve', 'ca-8-2'], ['titration', 'Titration', 'ci-12-2'], ['gas', 'Gas laws', 'ca-4-1'], ['shapes', 'Molecule shapes', 'ca-3-5'], ['lattice', 'Giant structures', 'ci-2-6'], ['cell', 'Cells', 'ca-24-2'], ['nmr', 'NMR', 'ca-37-4']];
   let homeBuilt = false, labAt = 0, hmQ = null, filmAt = 'ionic', filmKill = null;
   function filmMount() {
     const host = $('#hmFilm'); if (!host) return; if (filmKill) filmKill();
@@ -158,10 +158,10 @@
     homeBuilt = true;
     const nT = IDX.stages.reduce((a, s) => a + s.topics.length, 0), nS = ALL.reduce((a, l) => a + l.ns, 0), nQ = ALL.reduce((a, l) => a + l.q, 0);
     host.innerHTML = `
-      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'questions, marked here'], [Films.count, 'short films'], [16, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
+      <section class="hm-strip" aria-label="The site in numbers">${[[ALL.length, 'lectures'], [nT, 'topics, in syllabus order'], [nS, 'concepts explained'], [nQ, 'questions, marked here'], [Films.count, 'short films'], [Widgets.count, 'live models']].map(f => `<div><b>${f[0].toLocaleString('en-GB')}</b><span>${f[1]}</span></div>`).join('')}</section>
       <section class="hm-sec" id="hm-lab"><header><p class="kicker">Live models</p><h2>Do not just read about it. Change it.</h2><p>Every model below is running now. Move a control and watch what the particles do.</p></header>
         <div class="seg" id="hmLabTabs" role="group" aria-label="Choose a live model">${LAB.map((l, i) => `<button type="button" data-lab="${i}">${l[1]}</button>`).join('')}</div>
-        <div id="hmFig"></div><p class="hm-note" id="hmFigLink"></p></section>
+        <div id="hmFig"></div><p class="hm-note" id="hmFigLink"></p><div class="hm-row"><a class="chip" href="#live-models">See all ${Widgets.count} live models ${ARROW}</a></div></section>
       <section class="hm-sec hm-two">
         <div class="hm-card panel"><header><p class="kicker">One question</p><h2>Can you get this one?</h2></header><div id="hmQ"></div><div class="hm-row"><button type="button" class="chip" data-hm="q">Another question</button></div></div>
         <div class="hm-card panel"><header><p class="kicker">One element</p><h2>Meet an element.</h2></header><div id="hmEl" class="hm-el"></div><div class="hm-row"><button type="button" class="chip" data-hm="el">Another element</button><a class="chip" href="#periodic-table">Open the Periodic Table</a></div></div>
@@ -174,7 +174,7 @@
         <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions, marked here on your device.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
       <section class="hm-sec"><header><p class="kicker">Four stages, one straight path</p><h2>Start where you are.</h2></header><div id="hmResume"></div>
         <div class="hm-stages" id="hmStages"></div></section>
-      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">ΦΥΣΙΣ home</a>` : ''}</footer>`;
+      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#live-models">Live models</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Geodesic Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">ΦΥΣΙΣ home</a>` : ''}</footer>`;
     host.addEventListener('click', e => {
       const lab = e.target.closest('[data-lab]'); if (lab) { labAt = +lab.dataset.lab; Widgets.clear(); labMount(); Snd.tick(); return; }
       const hm = e.target.closest('[data-hm]'); if (hm) { if (hm.dataset.hm === 'q') hmQuestion(); else hmElement(); Snd.tick(); return; }
@@ -322,6 +322,24 @@
     PT.mount($('#ptHost'), { wide: true });
   }
 
+  function vModels() {
+    document.title = 'Live models · Quilio';
+    const all = Widgets.all(), groups = [...new Set(all.map(m => m.group))]; let cur = store.get('gc.model', 'titration'); if (!all.some(m => m.name === cur)) cur = all[0].name;
+    view.innerHTML = `<div class="page">${crumbs([['#chemistry', 'Chemistry'], ['', 'Live models']])}<header class="page-head"><h1>Live models</h1><p>All ${all.length} live models on the site in one place. Pick one, change it, and follow the link to the lecture that explains it.</p></header>
+      <div class="lm-pick panel">${groups.map(gr => `<div class="lm-group"><h2>${esc(gr)}</h2><div class="lm-list">${all.filter(m => m.group === gr).map(m => `<button type="button" class="chip" data-model="${m.name}">${esc(m.title)}</button>`).join('')}</div></div>`).join('')}</div>
+      <div id="lmFig"></div><p class="hm-note" id="lmLink"></p></div>`;
+    const show = (name, go) => {
+      cur = name; store.set('gc.model', name); Widgets.clear(); const host = $('#lmFig'); host.innerHTML = '<div></div>'; Widgets.mount(name, host.firstChild);
+      const m = all.find(x => x.name === name), ls = m.lectures.filter(id => BY[id]);
+      $('#lmLink').innerHTML = ls.length ? 'In the lectures: ' + ls.map(id => `<a href="#${id}">${BY[id].stage.label} ${BY[id].code} · ${esc(BY[id].title)}</a>`).join(' · ') : '';
+      $$('[data-model]', view).forEach(b => b.classList.toggle('is-on', b.dataset.model === name));
+      if (go) host.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    const onClick = e => { const b = e.target.closest('[data-model]'); if (b) { show(b.dataset.model, true); Snd.tick(); } };
+    view.addEventListener('click', onClick); cleanups.push(() => view.removeEventListener('click', onClick));
+    show(cur, false);
+  }
+
   function vDefs() {
     const fid = 'defFilter';
     view.innerHTML = `<div class="page">${crumbs([['#chemistry', 'Chemistry'], ['', 'Definitions']])}<header class="page-head"><h1>Definitions</h1><p>Every definition from every lecture. These are the ones worth learning word for word.</p></header>
@@ -379,7 +397,7 @@
     const act = e.target.closest('[data-act]'); if (!act) { const dd = e.target.closest('.ms.is-test dd'); if (dd) dd.classList.add('is-open'); return; }
     if (act.dataset.act === 'retry') { e.preventDefault(); route(); }
     if (act.dataset.act === 'test') { const ms = $('.ms', view), on = !ms.classList.contains('is-test'); ms.classList.toggle('is-test', on); $$('dd', ms).forEach(d => d.classList.remove('is-open')); act.textContent = on ? 'Show all answers' : 'Test yourself'; act.setAttribute('aria-pressed', on); act.classList.toggle('is-on', on); }
-    if (act.dataset.act === 'done' && CUR) { const id = CUR.L.id; if (done.has(id)) done.delete(id); else done.add(id); store.set('gc.done', [...done]); const on = done.has(id); act.textContent = on ? 'Done ✓ (undo)' : 'Mark as done'; act.classList.toggle('ghost', on); act.previousElementSibling.textContent = on ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'; $$('.rail.side a').forEach(a => { if (a.getAttribute('href') === '#' + id) a.classList.toggle('is-done', on); }); Snd.tick(on); }
+    if (act.dataset.act === 'done' && CUR) { const id = CUR.L.id; if (done.has(id)) done.delete(id); else done.add(id); store.set('gc.done', [...done]); const on = done.has(id); if (on) void window.FreshPoints.earn('Chemistry', 10, 'Lecture completed', 'lecture:' + id); act.textContent = on ? 'Done ✓ (undo)' : 'Mark as done'; act.classList.toggle('ghost', on); act.previousElementSibling.textContent = on ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'; $$('.rail.side a').forEach(a => { if (a.getAttribute('href') === '#' + id) a.classList.toggle('is-done', on); }); Snd.tick(on); }
   });
 
   /* ---------- router ---------- */
@@ -390,7 +408,7 @@
     window.dispatchEvent(new Event('gc-view'));
     if (!h || h === 'start' || h === 'enter') return startShow();
     startHide(); let st = null;
-    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view);
+    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'live-models') vModels(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view);
     else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
     $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h.startsWith('olympiad') ? 'olympiad' : h)));

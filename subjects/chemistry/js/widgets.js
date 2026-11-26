@@ -399,14 +399,498 @@
 
   W.ptable = function (root) { const body = frame(root, 'The Periodic Table', ''); PT.mount(body); };
 
+  /* ================= more live models ================= */
+  // drag to turn a 3D scene; it turns by itself slowly when you let go
+  function spin3d(c, h, draw, opt) {
+    const { g, w } = cv(c, h); let yaw = (opt && opt.yaw) || .6, pitch = (opt && opt.pitch) || -.32, drag = null;
+    c.style.cursor = 'grab'; c.style.touchAction = 'pan-y';
+    const S = () => (opt && opt.scale) || Math.min(w, h) / 4.2, D = 9;
+    const proj = (x, y, z) => { const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch); const X = x * cy + z * sy, Z1 = -x * sy + z * cy, Y = y * cp - Z1 * sp, Z = y * sp + Z1 * cp, p = D / (D - Z); return { x: w / 2 + X * S() * p, y: h / 2 - Y * S() * p, z: Z, p }; };
+    c.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, yaw, pitch }; try { c.setPointerCapture(e.pointerId); } catch (er) { } c.style.cursor = 'grabbing'; });
+    c.addEventListener('pointermove', e => { if (!drag) return; yaw = drag.yaw + (e.clientX - drag.x) * .011; pitch = Math.max(-1.45, Math.min(1.45, drag.pitch + (e.clientY - drag.y) * .011)); L.poke(); });
+    const up = () => { drag = null; c.style.cursor = 'grab'; }; c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up);
+    const L = loop(c, (dt, t) => { if (!drag) yaw += dt * .32; g.clearRect(0, 0, w, h); draw(g, w, h, proj, S(), t, dt); });
+    return L;
+  }
+  function shade(g, x, y, r, col, a) { const gr = g.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,' + (.9 * a) + ')'); gr.addColorStop(.35, col); gr.addColorStop(1, col); g.globalAlpha = a; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fillStyle = gr; g.fill(); g.strokeStyle = 'rgba(10,36,64,.35)'; g.lineWidth = 1; g.stroke(); g.globalAlpha = 1; }
+  function axes(g, x0, y0, x1, y1) { g.strokeStyle = INK; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0, y1); g.lineTo(x0, y0); g.lineTo(x1, y0); g.stroke(); }
+  const mn = x => String(x).replace(/-/g, '−');
+  const sup = s => String(s).replace(/[\d+-]/g, d => ({ '+': '⁺', '-': '⁻' }[d] || '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]));
+
+  /* ---------- particles: elements, compounds and mixtures ---------- */
+  W.particles = function (root) {
+    const body = frame(root, 'Element, compound or mixture?', 'Each circle is one atom. Atoms of the same element have the same colour. Bonded atoms move together as one molecule. The particles are drawn far bigger, and far slower, than real ones.');
+    const KIND = {
+      atoms: ['Atoms of one element', 'argon, Ar', 'element', [['Ar', 26]]],
+      mols: ['Molecules of one element', 'oxygen, O₂', 'element', [['O2', 22]]],
+      comp: ['A compound', 'carbon dioxide, CO₂', 'compound', [['CO2', 18]]],
+      mixel: ['A mixture of elements', 'argon and oxygen', 'mixture', [['Ar', 12], ['O2', 12]]],
+      mixc: ['A mixture of a compound and an element', 'carbon dioxide and nitrogen', 'mixture', [['CO2', 10], ['N2', 12]]],
+    };
+    const ATOM = { Ar: ['#b9a7e6', 9], O: ['#e8594d', 7.5], C: ['#3b4552', 8], N: ['#4f8ee8', 7.5] };
+    const SHAPE = { Ar: [['Ar', 0]], O2: [['O', -.8], ['O', .8]], N2: [['N', -.8], ['N', .8]], CO2: [['O', -1.55], ['C', 0], ['O', 1.55]] };
+    body.innerHTML = `<div class="seg" role="group" aria-label="Choose what is in the box">${Object.keys(KIND).map((k, i) => `<button type="button" data-v="${k}"${i ? '' : ' class="is-on"'}>${KIND[k][0]}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 280), read = body.querySelector('.read'); let M = [], kind = 'atoms';
+    function fill() { M = []; for (const [s, n] of KIND[kind][3]) for (let i = 0; i < n; i++) { const a = Math.random() * TAU, v = 30 + Math.random() * 40; M.push({ s, x: 20 + Math.random() * (w - 40), y: 20 + Math.random() * (h - 40), vx: Math.cos(a) * v, vy: Math.sin(a) * v, a: Math.random() * TAU, va: (Math.random() - .5) * 2 }); } }
+    function ui() {
+      const k = KIND[kind], pure = k[2] !== 'mixture';
+      read.innerHTML = `<span>In the box</span><span class="big">${k[2]}</span><span><b>Example:</b> ${k[1]}</span><span><b>Pure substance?</b> ${pure ? 'yes: every particle is the same' : 'no: two kinds of particle'}</span><span>${k[2] === 'element' ? 'An <b>element</b> is made of only one type of atom. It cannot be broken down into anything simpler by a chemical reaction. Some elements are single atoms, others are molecules of two or more of the same atom.' : k[2] === 'compound' ? 'A <b>compound</b> is two or more different elements chemically bonded together, always in the same fixed ratio. Here every molecule has 1 carbon atom and 2 oxygen atoms. Separating them needs a chemical reaction.' : 'A <b>mixture</b> is two or more substances that are not chemically joined. The amounts can be any ratio, each substance keeps its own properties, and they can be separated by physical methods.'}</span>`;
+    }
+    loop(c, dt => {
+      g.clearRect(0, 0, w, h);
+      for (const m of M) {
+        m.x += m.vx * dt; m.y += m.vy * dt; m.a += m.va * dt; const pad = m.s === 'CO2' ? 22 : 16;
+        if (m.x < pad) { m.x = pad; m.vx = Math.abs(m.vx); } if (m.x > w - pad) { m.x = w - pad; m.vx = -Math.abs(m.vx); } if (m.y < pad) { m.y = pad; m.vy = Math.abs(m.vy); } if (m.y > h - pad) { m.y = h - pad; m.vy = -Math.abs(m.vy); }
+        const parts = SHAPE[m.s], ca = Math.cos(m.a), sa = Math.sin(m.a);
+        for (const [e, o] of parts) { const [col, r] = ATOM[e], d = o * 8.5; ball(g, m.x + ca * d, m.y + sa * d, r, col, 'rgba(10,36,64,.35)'); }
+      }
+    });
+    seg(body.querySelector('.seg'), v => { kind = v; fill(); ui(); }); fill(); ui();
+  };
+
+  /* ---------- the gas laws: pV = nRT ---------- */
+  W.gas = function (root) {
+    const body = frame(root, 'Squeeze it, heat it, add more gas', 'An ideal gas: the particles take up no space of their own and do not attract each other. Real gases come closest to this at low pressure and high temperature. Each dot stands for a huge number of real molecules, and the speeds are slowed right down so you can follow them.');
+    const tid = id('t'), vid = id('v'), nid = id('n');
+    body.innerHTML = `<div class="fig-split"><canvas></canvas><div class="ctl"><label for="${tid}"><span>Temperature, T <b></b></span><input id="${tid}" type="range" min="100" max="600" value="300" step="10"></label><label for="${vid}"><span>Volume, V <b></b></span><input id="${vid}" type="range" min="1" max="4" value="2.5" step="0.1"></label><label for="${nid}"><span>Amount of gas, n <b></b></span><input id="${nid}" type="range" min="0.04" max="0.3" value="0.1" step="0.02"></label><div class="read"></div></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 300), [ts, vs, ns] = [...body.querySelectorAll('input')], outs = body.querySelectorAll('label b'), read = body.querySelector('.read');
+    const P = [], top = 26, bot = h - 46, left = 18, maxW = w - 96, flashes = []; let needle = 0;
+    const right = () => left + (+vs.value / 4) * maxW, pk = () => +ns.value * 8.314 * +ts.value / (+vs.value / 1000) / 1000;
+    function sync() { const N = Math.round(+ns.value * 400), R = right(); while (P.length < N) { const a = Math.random() * TAU, f = .55 + Math.random() * .9; P.push({ x: left + 6 + Math.random() * (R - left - 12), y: top + 6 + Math.random() * (bot - top - 12), ux: Math.cos(a) * f, uy: Math.sin(a) * f }); } P.length = N; for (const p of P) if (p.x > R - 4) p.x = left + 4 + Math.random() * (R - left - 8); }
+    function ui() {
+      sync(); const T = +ts.value, V = +vs.value, n = +ns.value, p = pk(); outs[0].textContent = T + ' K'; outs[1].textContent = fmt(V, 1) + ' dm³'; outs[2].textContent = fmt(n) + ' mol';
+      const s = []; if (Math.abs(V - 2.5) > .01) s.push(`<b>Volume ${V < 2.5 ? 'smaller' : 'bigger'}:</b> the particles hit the walls ${V < 2.5 ? 'more' : 'less'} often, so the pressure ${V < 2.5 ? 'rises' : 'falls'}. At constant T and n, pV stays the same (Boyle's law).`); if (T !== 300) s.push(`<b>${T > 300 ? 'Hotter' : 'Colder'}:</b> the particles move ${T > 300 ? 'faster' : 'slower'}, so they hit the walls ${T > 300 ? 'harder and more often' : 'more gently and less often'}. Pressure is proportional to the absolute temperature in kelvin.`); if (Math.abs(n - .1) > .001) s.push(`<b>${n > .1 ? 'More' : 'Less'} gas:</b> ${n > .1 ? 'more' : 'fewer'} particles to hit the walls, so the pressure is proportional to n.`);
+      read.innerHTML = `<span>Pressure</span><span class="big">${sig(p, 3)} kPa</span><span class="eqn">p = nRT ÷ V = ${fmt(n)} × 8.31 × ${T} ÷ ${sig(V / 1000, 3)} m³</span><span>Use SI units: V in m³ (1 dm³ = 10⁻³ m³), T in K, p in Pa.</span>${s.map(x => `<span>${x}</span>`).join('') || '<span>Move a slider. Every change shows up in how often, and how hard, the particles hit the walls.</span>'}`;
+    }
+    loop(c, dt => {
+      const R = right(), sp = 95 * Math.sqrt(+ts.value / 300), p = pk(); needle += (p - needle) * Math.min(1, dt * 4);
+      g.clearRect(0, 0, w, h);
+      g.setLineDash([4, 5]); g.strokeStyle = LINE; g.lineWidth = 1; g.strokeRect(left, top, maxW, bot - top); g.setLineDash([]);
+      g.fillStyle = '#f2f8ff'; g.fillRect(left, top, R - left, bot - top); g.strokeStyle = INK; g.lineWidth = 2.2; g.beginPath(); g.moveTo(R, top); g.lineTo(left, top); g.lineTo(left, bot); g.lineTo(R, bot); g.stroke();
+      g.fillStyle = '#9fb3c8'; rr(g, R - 3, top - 6, 9, bot - top + 12, 3); g.fill(); g.fillStyle = '#c3d1df'; g.fillRect(R + 6, (top + bot) / 2 - 4, w - R - 6 - 40, 8);
+      for (const q of P) {
+        q.x += q.ux * sp * dt; q.y += q.uy * sp * dt;
+        if (q.x < left + 3.5) { q.x = left + 3.5; q.ux = Math.abs(q.ux); flashes.push({ x: left, y: q.y, t: .25, v: 1 }); } if (q.x > R - 3.5) { q.x = R - 3.5; q.ux = -Math.abs(q.ux); flashes.push({ x: R - 3, y: q.y, t: .25, v: 1 }); }
+        if (q.y < top + 3.5) { q.y = top + 3.5; q.uy = Math.abs(q.uy); flashes.push({ x: q.x, y: top, t: .25, v: 0 }); } if (q.y > bot - 3.5) { q.y = bot - 3.5; q.uy = -Math.abs(q.uy); flashes.push({ x: q.x, y: bot, t: .25, v: 0 }); }
+        ball(g, q.x, q.y, 3.4, BLUE);
+      }
+      for (let i = flashes.length - 1; i >= 0; i--) { const f = flashes[i]; f.t -= dt; if (f.t <= 0) { flashes.splice(i, 1); continue; } g.strokeStyle = `rgba(240,154,46,${f.t * 3.2})`; g.lineWidth = 2.5; g.beginPath(); if (f.v) { g.moveTo(f.x, f.y - 5); g.lineTo(f.x, f.y + 5); } else { g.moveTo(f.x - 5, f.y); g.lineTo(f.x + 5, f.y); } g.stroke(); }
+      if (flashes.length > 400) flashes.splice(0, flashes.length - 400);
+      const gx = w - 34, gy = top + 30, gr = 26, a = Math.PI * .8 + Math.min(1, needle / 500) * Math.PI * 1.4;
+      g.beginPath(); g.arc(gx, gy, gr, 0, TAU); g.fillStyle = '#fff'; g.fill(); g.strokeStyle = INK2; g.lineWidth = 1.5; g.stroke();
+      g.strokeStyle = LINE; for (let k = 0; k <= 5; k++) { const b = Math.PI * .8 + k / 5 * Math.PI * 1.4; g.beginPath(); g.moveTo(gx + Math.cos(b) * gr * .78, gy + Math.sin(b) * gr * .78); g.lineTo(gx + Math.cos(b) * gr * .95, gy + Math.sin(b) * gr * .95); g.stroke(); }
+      g.strokeStyle = '#cf4338'; g.lineWidth = 2; g.beginPath(); g.moveTo(gx, gy); g.lineTo(gx + Math.cos(a) * gr * .8, gy + Math.sin(a) * gr * .8); g.stroke();
+      g.font = '400 11px Jost, sans-serif'; g.fillStyle = INK3; g.textAlign = 'center'; g.fillText('0–500 kPa', gx, gy + gr + 14); g.fillText('flashes = hits on the walls', left + maxW / 2, h - 12);
+    });
+    [ts, vs, ns].forEach(s => s.addEventListener('input', ui)); ui();
+  };
+
+  /* ---------- acid-base titration ---------- */
+  W.titration = function (root) {
+    const body = frame(root, 'Run a titration, drop by drop', '25.0 cm³ of acid, 0.100 mol/dm³, in the flask; 0.100 mol/dm³ sodium hydroxide in the burette. The pH is worked out exactly from the equilibrium, with Kₐ = 1.74 × 10⁻⁵ mol/dm³ for ethanoic acid. Indicator colours are drawn as they look in the flask.');
+    const vid = id('v');
+    body.innerHTML = `<div class="fig-split" style="grid-template-columns:minmax(0,1fr)"><canvas></canvas></div><div class="fig-split"><div class="ctl"><div class="seg" role="group" aria-label="Acid"><button type="button" class="is-on" data-v="0">Strong acid: HCl</button><button type="button" data-v="1">Weak acid: CH₃COOH</button></div><div class="seg" role="group" aria-label="Indicator"><button type="button" class="is-on" data-v="mo">Methyl orange</button><button type="button" data-v="ph">Phenolphthalein</button><button type="button" data-v="th">Thymolphthalein</button></div><label for="${vid}"><span>NaOH added <b></b></span><input id="${vid}" type="range" min="0" max="50" value="0" step="0.1"></label></div><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 300), sl = body.querySelector('input'), out = body.querySelector('label b'), read = body.querySelector('.read'), segs = body.querySelectorAll('.seg'); let weak = 0, ind = 'mo';
+    const IND = { mo: ['methyl orange', 3.1, 4.4, p => p < 3.1 ? [230, 60, 50, .9, 'red'] : p < 4.4 ? [240, 140, 40, .9, 'orange'] : [246, 206, 50, .85, 'yellow']], ph: ['phenolphthalein', 8.2, 10, p => p < 8.2 ? [240, 246, 252, .35, 'colourless'] : [232, 70, 160, Math.min(.85, .3 + (p - 8.2) / 2.2), 'pink']], th: ['thymolphthalein', 9.3, 10.5, p => p < 9.3 ? [240, 246, 252, .35, 'colourless'] : [47, 111, 208, Math.min(.85, .3 + (p - 9.3) / 1.6), 'blue']] };
+    function pH(v) { const Vt = 25 + v, Ca = .1 * 25 / Vt, Cb = .1 * v / Vt, Ka = weak ? 1.74e-5 : 1e3; let lo = 0, hi = 14; for (let i = 0; i < 60; i++) { const p = (lo + hi) / 2, x = Math.pow(10, -p), f = x + Cb - 1e-14 / x - Ca * Ka / (Ka + x); if (f > 0) lo = p; else hi = p; } return (lo + hi) / 2; }
+    const gx0 = Math.max(150, w * .3), X = v => gx0 + 30 + v / 50 * (w - gx0 - 46), Y = p => h - 36 - p / 14 * (h - 58);
+    function draw() {
+      const v = +sl.value, p = pH(v), I = IND[ind], col = I[3](p); out.textContent = fmt(v, 1) + ' cm³';
+      g.clearRect(0, 0, w, h); const bx = gx0 * .5, bTop = 24, bBot = 150, bw = 16;
+      g.fillStyle = '#fff'; g.strokeStyle = INK2; g.lineWidth = 1.5; g.fillRect(bx - bw / 2, bTop, bw, bBot - bTop); g.strokeRect(bx - bw / 2, bTop, bw, bBot - bTop);
+      const lvl = bTop + 6 + v / 50 * (bBot - bTop - 12); g.fillStyle = 'rgba(160,200,240,.55)'; g.fillRect(bx - bw / 2 + 1.5, lvl, bw - 3, bBot - lvl);
+      g.strokeStyle = LINE; g.lineWidth = 1; for (let k = 0; k <= 10; k++) { const yy = bTop + 6 + k / 10 * (bBot - bTop - 12); g.beginPath(); g.moveTo(bx - bw / 2, yy); g.lineTo(bx - bw / 2 + (k % 5 ? 5 : 9), yy); g.stroke(); }
+      g.fillStyle = INK2; g.fillRect(bx - 10, bBot, 20, 5); g.fillRect(bx - 2, bBot + 5, 4, 16);
+      const fy = h - 30, fw = Math.min(110, gx0 * .7); g.beginPath(); g.moveTo(bx - 9, bBot + 34); g.lineTo(bx - 9, bBot + 52); g.lineTo(bx - fw / 2, fy); g.lineTo(bx + fw / 2, fy); g.lineTo(bx + 9, bBot + 52); g.lineTo(bx + 9, bBot + 34);
+      g.fillStyle = '#fff'; g.fill(); g.save(); g.clip(); const lt = fy - 34 - v * .5; g.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${col[3]})`; g.fillRect(bx - fw, lt, fw * 2, fy - lt); g.restore(); g.strokeStyle = INK2; g.lineWidth = 1.6; g.stroke();
+      g.font = '400 11.5px Jost, sans-serif'; g.fillStyle = INK3; g.textAlign = 'center'; g.fillText('NaOH(aq)', bx, 14); g.fillText(col[4], bx, h - 12);
+      g.fillStyle = 'rgba(240,154,46,.13)'; g.fillRect(X(0), Y(I[2]), X(50) - X(0), Y(I[1]) - Y(I[2]));
+      g.strokeStyle = LINE; g.lineWidth = 1; g.textAlign = 'right'; g.fillStyle = INK3; for (let q = 0; q <= 14; q += 2) { g.beginPath(); g.moveTo(X(0), Y(q)); g.lineTo(X(50), Y(q)); g.stroke(); g.fillText(q, X(0) - 6, Y(q) + 4); }
+      g.textAlign = 'center'; for (let q = 0; q <= 50; q += 10) g.fillText(q, X(q), Y(0) + 15); g.fillStyle = INK2; g.fillText('volume of NaOH added / cm³', X(25), h - 4); g.save(); g.translate(gx0 + 6, Y(7)); g.rotate(-Math.PI / 2); g.fillText('pH', 0, 0); g.restore();
+      axes(g, X(0), Y(0), X(50), Y(14)); g.setLineDash([4, 4]); g.strokeStyle = INK3; g.beginPath(); g.moveTo(X(25), Y(0)); g.lineTo(X(25), Y(14)); g.stroke(); g.setLineDash([]);
+      g.beginPath(); for (let q = 0; q <= 50; q += .1) { const yy = Y(pH(q)); q ? g.lineTo(X(q), yy) : g.moveTo(X(q), yy); } g.strokeStyle = 'rgba(11,95,202,.22)'; g.lineWidth = 2; g.stroke();
+      g.beginPath(); for (let q = 0; q <= v + 1e-9; q += .1) { const yy = Y(pH(q)); q ? g.lineTo(X(q), yy) : g.moveTo(X(q), yy); } g.strokeStyle = BLUE; g.lineWidth = 3; g.stroke(); ball(g, X(v), Y(p), 5, SUN, INK);
+      g.fillStyle = '#a85d00'; g.textAlign = 'left'; g.fillText(I[0] + ' changes here', X(31), Y(I[2]) - 4);
+      const eqp = pH(25), stage = v < 24.95 ? 'before the end-point: the acid is in excess' : v <= 25.05 ? 'the equivalence point: exactly enough alkali to neutralise the acid' : 'after the end-point: the alkali is in excess';
+      const good = weak ? ind !== 'mo' : true;
+      read.innerHTML = `<span>pH in the flask</span><span class="big">${fmt(p, 2)}</span><span><b>${fmt(v, 1)} cm³ added:</b> ${stage}.</span><span><b>Equivalence point:</b> 25.0 cm³, at pH ${fmt(eqp, 2)}${weak ? ' (above 7: the ethanoate ion is a weak base)' : ''}.</span>${weak ? `<span><b>Half-way, 12.5 cm³:</b> pH = pKₐ = ${fmt(pH(12.5), 2)}. Ethanoic acid and ethanoate ions are in equal amounts here: a buffer.</span>` : ''}<span><b>${I[0]}:</b> ${good ? `a good choice. It changes colour between pH ${I[1]} and ${I[2]}, inside the steep part of the curve.` : `a poor choice here. It changes between pH ${I[1]} and ${I[2]}, well before the steep part, so the colour change comes too early and too gradually.`}</span>`;
+    }
+    seg(segs[0], v => { weak = +v; draw(); }); seg(segs[1], v => { ind = v; draw(); }); sl.addEventListener('input', draw); draw();
+  };
+
+  /* ---------- mass spectra of elements ---------- */
+  W.massspec = function (root) {
+    const body = frame(root, 'Read a mass spectrum', 'Each peak is one isotope, at its mass-to-charge ratio m/z (the ions here have a charge of 1+). The height of a peak is the percentage abundance of that isotope. Isotopic masses are taken as whole numbers.');
+    const SET = { Cl: ['Chlorine', [[35, 75.78], [37, 24.22]]], Br: ['Bromine', [[79, 50.69], [81, 49.31]]], B: ['Boron', [[10, 19.9], [11, 80.1]]], Mg: ['Magnesium', [[24, 78.99], [25, 10.00], [26, 11.01]]], Ne: ['Neon', [[20, 90.48], [21, 0.27], [22, 9.25]]], Cu: ['Copper', [[63, 69.15], [65, 30.85]]], Cl2: ['Chlorine molecules, Cl₂', [[70, 57.43], [72, 36.71], [74, 5.87]]] };
+    const hid = id('h');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Element">${Object.keys(SET).map((k, i) => `<button type="button" data-v="${k}"${i ? '' : ' class="is-on"'}>${k === 'Cl2' ? 'Cl₂' : k}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="ctl"><label for="${hid}" style="display:flex;gap:8px;align-items:center"><input id="${hid}" type="checkbox"> <span>Hide the answer: work it out first</span></label><div class="read"></div></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 280), read = body.querySelector('.read'), cb = body.querySelector('#' + hid); let k = 'Cl';
+    function draw() {
+      const [name, pk] = SET[k], lo = pk[0][0] - 3, hi = pk[pk.length - 1][0] + 3, X = m => 50 + (m - lo) / (hi - lo) * (w - 70), Y = a => h - 38 - a / 100 * (h - 66);
+      g.clearRect(0, 0, w, h); g.font = '400 11.5px Jost, sans-serif'; g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'right';
+      for (let a = 0; a <= 100; a += 20) { g.beginPath(); g.moveTo(X(lo), Y(a)); g.lineTo(X(hi), Y(a)); g.stroke(); g.fillText(a, X(lo) - 6, Y(a) + 4); }
+      g.textAlign = 'center'; for (let m = lo; m <= hi; m++) g.fillText(m, X(m), Y(0) + 15); g.fillStyle = INK2; g.fillText('m/z', X((lo + hi) / 2), h - 6); g.save(); g.translate(14, Y(50)); g.rotate(-Math.PI / 2); g.fillText('abundance / %', 0, 0); g.restore(); axes(g, X(lo), Y(0), X(hi), Y(100));
+      for (const [m, a] of pk) { g.fillStyle = BLUE; g.fillRect(X(m) - 4, Y(a), 8, Y(0) - Y(a)); g.fillStyle = INK; g.fillText(a.toFixed(2) + '%', X(m), Y(a) - 6); }
+      const ar = pk.reduce((s, [m, a]) => s + m * a, 0) / 100, mol = k === 'Cl2', sum = pk.map(([m, a]) => `(${m} × ${a.toFixed(2)})`).join(' + ');
+      read.innerHTML = `<span>${name}</span>${cb.checked ? `<span class="big">${mol ? 'Mᵣ' : 'Aᵣ'} = ?</span><span>Multiply each m/z by its abundance, add them up, then divide by 100. Untick the box to check.</span>` : `<span class="big">${mol ? 'Mᵣ' : 'Aᵣ'} = ${fmt(ar, 2)}</span><span class="eqn">${mol ? 'Mᵣ' : 'Aᵣ'} = [${sum}] ÷ 100</span>`}${mol ? '<span><b>Three peaks for Cl₂:</b> ³⁵Cl–³⁵Cl (70), ³⁵Cl–³⁷Cl (72) and ³⁷Cl–³⁷Cl (74), in the ratio 9 : 6 : 1, because ³⁵Cl is three times as common as ³⁷Cl. The real spectrum also has Cl⁺ peaks at 35 and 37.</span>' : `<span><b>Isotopes</b> are atoms of the same element with the same number of protons but different numbers of neutrons. They have the same chemical properties because they have the same electronic configuration.</span><span>${pk.length} isotope${pk.length > 1 ? 's' : ''}: ${pk.map(([m]) => `${sup(m)}${k}`).join(', ')}.</span>`}`;
+    }
+    seg(body.querySelector('.seg'), v => { k = v; draw(); }); cb.addEventListener('change', draw); draw();
+  };
+
+  /* ---------- periodicity ---------- */
+  W.periodicity = function (root) {
+    const IE = [1312, 2372, 520, 900, 801, 1086, 1402, 1314, 1681, 2081, 496, 738, 578, 787, 1012, 1000, 1251, 1521, 419, 590, 633, 659, 651, 653, 717, 762, 760, 737, 746, 906, 579, 762, 947, 941, 1140, 1351];
+    const P3 = ['Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar'];
+    const MODES = {
+      ie: ['First ionisation energy', 'kJ/mol'], rad: ['Period 3: atomic radius', 'nm'], mp: ['Period 3: melting point', 'K'], en: ['Period 3: electronegativity', 'Pauling scale'],
+    };
+    const DATA = { rad: [.186, .160, .143, .117, .110, .104, .099, null], mp: [371, 922, 933, 1683, 317, 392, 172, 84], en: [.9, 1.2, 1.5, 1.8, 2.1, 2.5, 3.0, null] };
+    const STRUCT = ['giant metallic', 'giant metallic', 'giant metallic', 'giant covalent', 'simple molecular, P₄', 'simple molecular, S₈', 'simple molecular, Cl₂', 'single atoms'];
+    const body = frame(root, 'Patterns across the Periodic Table', 'Ionisation energies from the NIST database. Period 3 radii, melting points and electronegativities as printed in the Cambridge data booklet: metallic radii for Na, Mg and Al, covalent radii for Si to Cl. Point at a bar to read it.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Property">${Object.keys(MODES).map((m, i) => `<button type="button" data-v="${m}"${i ? '' : ' class="is-on"'}>${MODES[m][0]}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 300), read = body.querySelector('.read'); let mode = 'ie', at = 10;
+    const blk = z => [1, 2, 3, 4, 11, 12, 19, 20].includes(z) ? 's' : z >= 21 && z <= 30 ? 'd' : 'p', BCOL = { s: BLUE, p: SUN, d: '#2f9a6b' };
+    function why(z) {
+      const e = PT.EL[z - 1];
+      if ([3, 11, 19].includes(z)) return 'A big drop: the outer electron starts a new shell, further from the nucleus and better shielded by the full shells inside it.';
+      if ([2, 10, 18, 36].includes(z)) return 'A peak: a noble gas. Its outer shell is full, and across the period the nuclear charge has risen while the shielding stayed about the same.';
+      if ([5, 13, 31].includes(z)) return `Lower than ${PT.EL[z - 2].sym}: the electron removed is in a p orbital, which is higher in energy than the s orbital and is shielded by the s electrons.`;
+      if ([8, 16].includes(z)) return `Lower than ${PT.EL[z - 2].sym}: the electron removed is paired with another in the same p orbital. The repulsion between the two paired electrons makes one easier to remove.`;
+      if (z >= 21 && z <= 30) return 'Transition elements: almost flat. Each extra electron goes into the inner 3d subshell, which shields the 4s electrons about as fast as the nuclear charge rises.';
+      return `Higher than ${PT.EL[z - 2].sym}: one more proton in the nucleus, the electron is in the same shell with similar shielding, so it is held more strongly.`;
+    }
+    function draw() {
+      g.clearRect(0, 0, w, h); g.font = '400 11px Jost, sans-serif'; const ie = mode === 'ie', vals = ie ? IE : DATA[mode], n = vals.length, mx = ie ? 2500 : mode === 'rad' ? .2 : mode === 'mp' ? 1800 : 3.5;
+      const x0 = 50, x1 = w - 14, bw = (x1 - x0) / n, Y = v => h - 40 - v / mx * (h - 64);
+      g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'right'; for (let k = 0; k <= 5; k++) { const v = mx * k / 5; g.beginPath(); g.moveTo(x0, Y(v)); g.lineTo(x1, Y(v)); g.stroke(); g.fillText(mode === 'rad' ? v.toFixed(2) : mode === 'en' ? v.toFixed(1) : Math.round(v), x0 - 5, Y(v) + 4); }
+      vals.forEach((v, i) => { if (v === null) return; const z = ie ? i + 1 : 11 + i, x = x0 + i * bw + bw * .14, on = (ie ? z : 11 + i) === at; g.fillStyle = ie ? BCOL[blk(z)] : i < 3 ? BLUE : i === 3 ? '#2f9a6b' : SUN; g.globalAlpha = on ? 1 : .62; g.fillRect(x, Y(v), bw * .72, Y(0) - Y(v)); g.globalAlpha = 1; if (on) { g.strokeStyle = INK; g.lineWidth = 2; g.strokeRect(x, Y(v), bw * .72, Y(0) - Y(v)); }
+        g.fillStyle = on ? INK : INK2; g.textAlign = 'center'; if (!ie || bw > 13 || z % 2) g.fillText(ie ? PT.EL[z - 1].sym : P3[i], x + bw * .36, Y(0) + 14); });
+      if (!ie && vals[7] === null) { g.fillStyle = INK3; g.textAlign = 'center'; g.fillText('–', x0 + 7 * bw + bw / 2, Y(0) - 6); }
+      axes(g, x0, Y(0), x1, Y(mx)); g.fillStyle = INK2; g.textAlign = 'center'; g.fillText(ie ? 'element, in order of proton number' : 'Period 3 element', (x0 + x1) / 2, h - 8); g.save(); g.translate(13, Y(mx / 2)); g.rotate(-Math.PI / 2); g.fillText(MODES[mode][0].replace('Period 3: ', '') + ' / ' + MODES[mode][1], 0, 0); g.restore();
+      if (ie) { g.textAlign = 'left'; [['s block', BLUE], ['p block', SUN], ['d block', '#2f9a6b']].forEach(([t, col], i) => { g.fillStyle = col; g.fillRect(x0 + 10 + i * 70, 12, 10, 10); g.fillStyle = INK2; g.fillText(t, x0 + 24 + i * 70, 21); }); }
+      const z = at, e = PT.EL[z - 1];
+      if (ie) read.innerHTML = `<span>${e.name}, Z = ${z}</span><span class="big">${IE[z - 1]} kJ/mol</span><span class="eqn">${e.sym}(g) → ${e.sym}⁺(g) + e⁻</span><span>${z === 1 ? 'The first element: one electron, held by one proton.' : why(z)}</span>`;
+      else { const i = z - 11, v = DATA[mode][i]; read.innerHTML = `<span>${e.name} · ${STRUCT[i]}</span><span class="big">${v === null ? '–' : (mode === 'rad' ? v.toFixed(3) : v) + ' ' + MODES[mode][1].replace('Pauling scale', '')}</span><span>${mode === 'rad' ? (v === null ? 'Argon forms no bonds, so it has no covalent radius to compare.' : 'Across Period 3 the radius falls: the nuclear charge rises, the outer electrons are in the same shell with similar shielding, so they are pulled in closer.') : mode === 'en' ? (v === null ? 'Argon forms no bonds, so it is not given an electronegativity.' : 'Electronegativity rises across the period: more protons, similar shielding and a smaller radius, so the bonding pair is attracted more strongly.') : i < 3 ? 'Giant metallic lattice: more delocalised electrons per atom and a higher charge on the ion from Na to Al, so stronger metallic bonding and a higher melting point.' : i === 3 ? 'Giant covalent lattice: many strong covalent bonds must be broken, so silicon has by far the highest melting point.' : i < 7 ? 'Simple molecules: only weak intermolecular forces are overcome. S₈ is bigger than P₄, with more electrons, so its London (instantaneous dipole) forces are stronger.' : 'Single atoms or small molecules with very few electrons: the weakest forces of all, so the lowest melting points.'}</span>`; }
+    }
+    c.addEventListener('pointermove', ev => { const r = c.getBoundingClientRect(), n = mode === 'ie' ? 36 : 8, i = Math.floor((ev.clientX - r.left - 50) / ((w - 64) / n)); if (i >= 0 && i < n) { const z = mode === 'ie' ? i + 1 : 11 + i; if (z !== at) { at = z; draw(); } } });
+    seg(body.querySelector('.seg'), v => { mode = v; if (v !== 'ie' && (at < 11 || at > 18)) at = 11; draw(); }); draw();
+  };
+
+  /* ---------- shapes of molecules (VSEPR) ---------- */
+  W.shapes = function (root) {
+    const s3 = Math.sqrt(3) / 2, TET = [[0, 1, 0], [.943, -.333, 0], [-.471, -.333, .816], [-.471, -.333, -.816]];
+    const MOL = {
+      BeCl2: ['BeCl₂', 'Be', 'Cl', [[1, 0, 0], [-1, 0, 0]], [], 'linear', '180°', 2],
+      CO2: ['CO₂', 'C', 'O', [[1, 0, 0], [-1, 0, 0]], [], 'linear', '180°', 2, 2],
+      BF3: ['BF₃', 'B', 'F', [[0, 1, 0], [s3, -.5, 0], [-s3, -.5, 0]], [], 'trigonal planar', '120°', 3],
+      CH4: ['CH₄', 'C', 'H', TET, [], 'tetrahedral', '109.5°', 4],
+      NH3: ['NH₃', 'N', 'H', TET.slice(1).map(v => [v[0] * .95, v[1] - .08, v[2] * .95]), [TET[0]], 'pyramidal', '107°', 3],
+      H2O: ['H₂O', 'O', 'H', [[.9, -.42, 0], [-.9, -.42, 0]], [[0, .55, .82], [0, .55, -.82]], 'non-linear (bent)', '104.5°', 2],
+      PCl5: ['PCl₅', 'P', 'Cl', [[0, 1, 0], [0, -1, 0], [1, 0, 0], [-.5, 0, s3], [-.5, 0, -s3]], [], 'trigonal bipyramidal', '90° and 120°', 5],
+      SF6: ['SF₆', 'S', 'F', [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]], [], 'octahedral', '90°', 6],
+    };
+    const COL = { Be: '#9fb8a8', C: '#3b4552', B: '#f2a5a0', N: '#4f8ee8', O: '#e8594d', P: '#f09a2e', S: '#e8c83a', Cl: '#5dc26b', F: '#a9e07a', H: '#ffffff' };
+    const body = frame(root, 'Shapes of molecules', 'Electron pairs around the central atom repel each other and get as far apart as possible. Lone pairs, drawn as clouds, repel more strongly than bonding pairs. A double bond counts as one region of electrons. Drag the molecule to turn it.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Molecule">${Object.keys(MOL).map((k, i) => `<button type="button" data-v="${k}"${i === 3 ? ' class="is-on"' : ''}>${MOL[k][0]}</button>`).join('')}</div><div class="fig-split"><canvas role="img" aria-label="A 3D model of the molecule. Drag to turn it."></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), read = body.querySelector('.read'); let k = 'CH4';
+    function ui() { const m = MOL[k], lp = m[4].length; read.innerHTML = `<span>${m[0]}</span><span class="big">${m[5]}</span><span><b>Bond angle:</b> ${m[6]}</span><span><b>Around ${m[1]}:</b> ${m[7]} bonding region${m[7] > 1 ? 's' : ''}${m[8] ? ' (double bonds)' : ''}, ${lp} lone pair${lp === 1 ? '' : 's'}.</span><span>${lp ? `Each lone pair repels more than a bonding pair, so it squeezes the bonds closer together: about 2.5° less for each lone pair than the 109.5° of a tetrahedron.` : m[7] === 4 ? 'Four bonding pairs and no lone pairs: the regular tetrahedron, the arrangement with the pairs furthest apart in 3D.' : `${m[7]} regions of electrons, all bonding, spread out as far as possible.`}</span>`; }
+    spin3d(c, 300, (g, w, h, P, S) => {
+      const m = MOL[k], ctr = P(0, 0, 0), items = [];
+      m[3].forEach(v => { const L = m[2] === 'H' ? .85 : 1.05, q = P(v[0] * L, v[1] * L, v[2] * L); items.push({ z: (ctr.z + q.z) / 2 - .01, f: () => { g.strokeStyle = '#7d8b99'; g.lineWidth = 5 * q.p; if (m[8]) { const dx = q.x - ctr.x, dy = q.y - ctr.y, d = Math.hypot(dx, dy) || 1, ox = -dy / d * 4, oy = dx / d * 4; g.lineWidth = 3 * q.p; g.beginPath(); g.moveTo(ctr.x + ox, ctr.y + oy); g.lineTo(q.x + ox, q.y + oy); g.moveTo(ctr.x - ox, ctr.y - oy); g.lineTo(q.x - ox, q.y - oy); g.stroke(); } else { g.beginPath(); g.moveTo(ctr.x, ctr.y); g.lineTo(q.x, q.y); g.stroke(); } } }); items.push({ z: q.z, f: () => shade(g, q.x, q.y, (m[2] === 'H' ? .2 : .3) * S * q.p, COL[m[2]], 1) }); });
+      m[4].forEach(v => { const q = P(v[0] * .62, v[1] * .62, v[2] * .62); items.push({ z: q.z + .05, f: () => { const r = .3 * S * q.p, gr = g.createRadialGradient(q.x, q.y, 0, q.x, q.y, r); gr.addColorStop(0, 'rgba(240,154,46,.55)'); gr.addColorStop(1, 'rgba(240,154,46,0)'); g.fillStyle = gr; g.beginPath(); g.arc(q.x, q.y, r, 0, TAU); g.fill(); ball(g, q.x - 4 * q.p, q.y, 2.6 * q.p, '#a85d00'); ball(g, q.x + 4 * q.p, q.y, 2.6 * q.p, '#a85d00'); } }); });
+      items.push({ z: ctr.z, f: () => shade(g, ctr.x, ctr.y, .36 * S * ctr.p, COL[m[1]], 1) });
+      items.sort((a, b) => a.z - b.z).forEach(it => it.f());
+      g.font = '400 11.5px Jost, sans-serif'; g.fillStyle = INK3; g.textAlign = 'left'; g.fillText('drag to turn', 10, h - 10);
+    }, { scale: 100 });
+    seg(body.querySelector('.seg'), v => { k = v; ui(); }); ui();
+  };
+
+  /* ---------- bond energies ---------- */
+  W.bonds = function (root) {
+    const BE = { 'H–H': 436, 'C–H': 410, 'C–C': 350, 'C=C': 610, 'O=O': 496, 'O–H': 460, 'C=O': 805, 'C≡O': 1077, 'N≡N': 944, 'N–H': 388, 'Cl–Cl': 242, 'H–Cl': 431 };
+    const RX = [
+      ['Methane burns', 'CH₄ + 2O₂ → CO₂ + 2H₂O', [['C–H', 4], ['O=O', 2]], [['C=O', 2], ['O–H', 4]], -802],
+      ['Hydrogen burns', '2H₂ + O₂ → 2H₂O', [['H–H', 2], ['O=O', 1]], [['O–H', 4]], -484],
+      ['H₂ + Cl₂', 'H₂ + Cl₂ → 2HCl', [['H–H', 1], ['Cl–Cl', 1]], [['H–Cl', 2]], -185],
+      ['Haber process', 'N₂ + 3H₂ ⇌ 2NH₃', [['N≡N', 1], ['H–H', 3]], [['N–H', 6]], -92],
+      ['Ethene + H₂', 'C₂H₄ + H₂ → C₂H₆', [['C=C', 1], ['C–H', 4], ['H–H', 1]], [['C–C', 1], ['C–H', 6]], -137],
+      ['Steam reforming', 'CH₄ + H₂O → CO + 3H₂', [['C–H', 4], ['O–H', 2]], [['C≡O', 1], ['H–H', 3]], 206],
+    ];
+    const body = frame(root, 'Break bonds, make bonds', 'Bond energies are averages over many compounds (values from the Cambridge data booklet), so the answer is close to, but not the same as, the measured enthalpy change. Everything here is a gas.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Reaction">${RX.map((r, i) => `<button type="button" data-v="${i}"${i ? '' : ' class="is-on"'}>${r[0]}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 320), read = body.querySelector('.read'); let at = 0;
+    function draw() {
+      const [, eq, br, mk, meas] = RX[at], B = br.reduce((s, [b, n]) => s + BE[b] * n, 0), M = mk.reduce((s, [b, n]) => s + BE[b] * n, 0), dH = B - M;
+      const top = 30, bot = h - 34, lo = Math.min(0, dH), hi = B, Y = e => bot - (e - lo) / (hi - lo) * (bot - top), x0 = 60, x1 = w - 20, xm = (x0 + x1) / 2;
+      g.clearRect(0, 0, w, h); g.font = '400 12px Jost, sans-serif';
+      g.strokeStyle = INK; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x0 - 20, bot + 6); g.lineTo(x0 - 20, top - 8); g.stroke(); g.save(); g.translate(x0 - 30, (top + bot) / 2); g.rotate(-Math.PI / 2); g.fillStyle = INK2; g.textAlign = 'center'; g.fillText('energy', 0, 0); g.restore();
+      const lvl = (y, xa, xb, label, col) => { g.strokeStyle = col; g.lineWidth = 3; g.beginPath(); g.moveTo(xa, y); g.lineTo(xb, y); g.stroke(); g.fillStyle = INK; g.textAlign = 'center'; g.fillText(label, (xa + xb) / 2, y - 7); };
+      const arrow = (x, ya, yb, col, label) => { g.strokeStyle = col; g.fillStyle = col; g.lineWidth = 2.2; g.beginPath(); g.moveTo(x, ya); g.lineTo(x, yb); g.stroke(); const d = yb > ya ? 1 : -1; g.beginPath(); g.moveTo(x, yb); g.lineTo(x - 6, yb - 10 * d); g.lineTo(x + 6, yb - 10 * d); g.closePath(); g.fill(); g.textAlign = 'left'; g.fillText(label, x + 9, (ya + yb) / 2 + 4); };
+      lvl(Y(0), x0, x0 + (x1 - x0) * .32, eq.split(/ → | ⇌ /)[0], INK2); lvl(Y(B), x0 + (x1 - x0) * .25, x0 + (x1 - x0) * .75, 'separate atoms', INK3); lvl(Y(dH), x1 - (x1 - x0) * .32, x1, eq.split(/ → | ⇌ /)[1], INK2);
+      arrow(x0 + (x1 - x0) * .29, Y(0), Y(B) + 3, SUN, `+${B}`); arrow(x1 - (x1 - x0) * .29, Y(B) + 3, Y(dH), BLUE, `−${M}`);
+      g.setLineDash([4, 4]); g.strokeStyle = INK3; g.lineWidth = 1; g.beginPath(); g.moveTo(x0 + (x1 - x0) * .32, Y(0)); g.lineTo(x1 - (x1 - x0) * .32, Y(0)); g.stroke(); g.setLineDash([]);
+      g.fillStyle = dH < 0 ? '#2f7d4f' : '#b3412f'; g.textAlign = 'center'; g.fillText(`ΔH = ${dH > 0 ? '+' : ''}${mn(dH)} kJ/mol`, xm, (Y(0) + Y(dH)) / 2 + (dH < 0 ? 4 : -4));
+      const row = l => l.map(([b, n]) => `${n} × ${b} (${BE[b]})`).join(' + ');
+      read.innerHTML = `<span class="eqn">${eq}</span><span><b>Bonds broken</b> (energy taken in): ${row(br)} = <b>+${B} kJ</b></span><span><b>Bonds made</b> (energy given out): ${row(mk)} = <b>−${M} kJ</b></span><span>ΔH = energy in − energy out</span><span class="big">${dH > 0 ? '+' : ''}${mn(dH)} kJ/mol</span><span>${dH < 0 ? '<b>Exothermic:</b> more energy is given out making the new bonds than is taken in breaking the old ones.' : '<b>Endothermic:</b> more energy is taken in breaking bonds than is given out making new ones.'} Measured value: ${meas > 0 ? '+' : ''}${mn(meas)} kJ/mol.</span>`;
+    }
+    seg(body.querySelector('.seg'), v => { at = +v; draw(); }); draw();
+  };
+
+  /* ---------- orders of reaction ---------- */
+  W.orders = function (root) {
+    const body = frame(root, 'Zero, first and second order', 'A reaction A → products, at constant temperature, so k stays fixed. The left graph is the concentration against time; the right graph is the rate against concentration, which is what tells the orders apart at a glance.');
+    const kid = id('k'), aid = id('a'), K0 = [.01, .03, .05], UNIT = ['mol dm⁻³ s⁻¹', 's⁻¹', 'dm³ mol⁻¹ s⁻¹'];
+    body.innerHTML = `<div class="fig-split" style="grid-template-columns:minmax(0,1fr)"><canvas></canvas></div><div class="fig-split"><div class="ctl"><div class="seg" role="group" aria-label="Order"><button type="button" data-v="0">Zero order</button><button type="button" class="is-on" data-v="1">First order</button><button type="button" data-v="2">Second order</button></div><label for="${kid}"><span>Rate constant, k <b></b></span><input id="${kid}" type="range" min="0.5" max="2" value="1" step="0.1"></label><label for="${aid}"><span>Starting [A] <b></b></span><input id="${aid}" type="range" min="0.4" max="2" value="1.6" step="0.1"></label></div><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 280), [ks, as] = [...body.querySelectorAll('input')], outs = body.querySelectorAll('label b'), read = body.querySelector('.read'); let n = 1;
+    const conc = (t, k, A0) => n === 0 ? Math.max(0, A0 - k * t) : n === 1 ? A0 * Math.exp(-k * t) : A0 / (1 + A0 * k * t);
+    function draw() {
+      const k = K0[n] * +ks.value, A0 = +as.value, half = n === 0 ? A0 / (2 * k) : n === 1 ? Math.LN2 / k : 1 / (k * A0); outs[0].textContent = sig(k, 2) + ' ' + UNIT[n]; outs[1].textContent = fmt(A0, 1) + ' mol/dm³';
+      g.clearRect(0, 0, w, h); g.font = '400 11px Jost, sans-serif'; const mid = w / 2, top = 18, bot = h - 36;
+      const A = { x0: 46, x1: mid - 16 }, B = { x0: mid + 40, x1: w - 14 }, XA = t => A.x0 + t / 100 * (A.x1 - A.x0), YA = v => bot - v / 2 * (bot - top);
+      g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'right'; for (let v = 0; v <= 2; v += .5) { g.beginPath(); g.moveTo(A.x0, YA(v)); g.lineTo(A.x1, YA(v)); g.stroke(); g.fillText(v.toFixed(1), A.x0 - 5, YA(v) + 4); } g.textAlign = 'center'; for (let t = 0; t <= 100; t += 25) g.fillText(t, XA(t), bot + 14);
+      axes(g, A.x0, bot, A.x1, top); g.fillStyle = INK2; g.fillText('time / s', (A.x0 + A.x1) / 2, h - 6); g.save(); g.translate(12, (top + bot) / 2); g.rotate(-Math.PI / 2); g.fillText('[A] / mol dm⁻³', 0, 0); g.restore();
+      if (n === 1) { g.setLineDash([3, 4]); g.strokeStyle = SUN; g.lineWidth = 1.3; for (let j = 1; j <= 3; j++) { const t = half * j; if (t > 100) break; const v = A0 / Math.pow(2, j); g.beginPath(); g.moveTo(A.x0, YA(v)); g.lineTo(XA(t), YA(v)); g.lineTo(XA(t), bot); g.stroke(); } g.setLineDash([]); }
+      g.beginPath(); for (let t = 0; t <= 100; t += .5) { const y = YA(conc(t, k, A0)); t ? g.lineTo(XA(t), y) : g.moveTo(XA(t), y); } g.strokeStyle = BLUE; g.lineWidth = 3; g.stroke();
+      const rmax = K0[n] * 2 * Math.pow(2, n), XB = v => B.x0 + v / 2 * (B.x1 - B.x0), YB = r => bot - r / rmax * (bot - top);
+      g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'center'; for (let v = 0; v <= 2; v += .5) { g.beginPath(); g.moveTo(XB(v), top); g.lineTo(XB(v), bot); g.stroke(); g.fillText(v.toFixed(1), XB(v), bot + 14); }
+      axes(g, B.x0, bot, B.x1, top); g.fillStyle = INK2; g.fillText('[A] / mol dm⁻³', (B.x0 + B.x1) / 2, h - 6); g.save(); g.translate(B.x0 - 14, (top + bot) / 2); g.rotate(-Math.PI / 2); g.fillText('rate', 0, 0); g.restore();
+      g.beginPath(); for (let v = 0; v <= 2; v += .02) { const y = YB(k * Math.pow(v, n)); v ? g.lineTo(XB(v), y) : g.moveTo(XB(v), y); } g.strokeStyle = '#2f9a6b'; g.lineWidth = 3; g.stroke(); ball(g, XB(A0), YB(k * Math.pow(A0, n)), 4.5, SUN, INK);
+      const eq = n === 0 ? 'rate = k' : n === 1 ? 'rate = k[A]' : 'rate = k[A]²';
+      read.innerHTML = `<span class="eqn">${eq}</span><span>Half-life</span><span class="big">${sig(half, 3)} s</span><span><b>Units of k:</b> ${UNIT[n]}</span><span>${n === 0 ? '<b>Zero order:</b> the rate does not depend on [A], so [A] falls in a straight line. Each half-life is half as long as the one before.' : n === 1 ? '<b>First order:</b> double [A] and the rate doubles. The half-life is constant, whatever the starting concentration: t½ = ln 2 ÷ k. The dashed lines mark three equal half-lives.' : '<b>Second order:</b> double [A] and the rate goes up four times. The rate-concentration graph is a curve, and each half-life is twice as long as the one before.'}</span>`;
+    }
+    seg(body.querySelector('.seg'), v => { n = +v; draw(); }); ks.addEventListener('input', draw); as.addEventListener('input', draw); draw();
+  };
+
+  /* ---------- electrochemical cells ---------- */
+  W.cell = function (root) {
+    const HC = {
+      Mg: ['Mg²⁺', 'Mg', 2, -2.38, '#c9d0d8', 'rgba(235,240,246,.9)', 1], Zn: ['Zn²⁺', 'Zn', 2, -0.76, '#aab4c0', 'rgba(235,240,246,.9)', 1], Fe: ['Fe²⁺', 'Fe', 2, -0.44, '#7d8590', 'rgba(205,232,200,.85)', 1],
+      Pb: ['Pb²⁺', 'Pb', 2, -0.13, '#6e7787', 'rgba(235,240,246,.9)', 1], H: ['H⁺', 'H₂', 2, 0, '#d6dbe0', 'rgba(235,240,246,.9)', 2], Cu: ['Cu²⁺', 'Cu', 2, 0.34, '#c97a44', 'rgba(120,175,235,.75)', 1], Ag: ['Ag⁺', 'Ag', 1, 0.80, '#dfe3e8', 'rgba(240,244,248,.9)', 1],
+    };
+    const cid = id('c');
+    const body = frame(root, 'Build an electrochemical cell', 'The left half-cell is standard: 1.00 mol/dm³ at 298 K. Change the concentration of the ion on the right and the Nernst equation gives its new electrode potential. Electrode potentials from the Cambridge data booklet. The hydrogen electrode is platinum with hydrogen gas bubbling over it.');
+    const pick = side => `<div class="seg" role="group" aria-label="${side} half-cell">${Object.keys(HC).map(k => `<button type="button" data-v="${k}"${(side === 'Left' ? 'Zn' : 'Cu') === k ? ' class="is-on"' : ''}>${HC[k][0]}/${HC[k][1]}</button>`).join('')}</div>`;
+    body.innerHTML = `<div class="fig-split" style="grid-template-columns:minmax(0,1fr)"><canvas></canvas></div><div class="fig-split"><div class="ctl"><span style="font-size:13.5px;color:var(--ink-2)">Left half-cell</span>${pick('Left')}<span style="font-size:13.5px;color:var(--ink-2)">Right half-cell</span>${pick('Right')}<label for="${cid}"><span>Concentration of the right-hand ion <b></b></span><input id="${cid}" type="range" min="-3" max="0" value="0" step="0.1"></label></div><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 280), read = body.querySelector('.read'), segs = body.querySelectorAll('.seg'), cs = body.querySelector('input'), out = body.querySelector('label b'); let Lk = 'Zn', Rk = 'Cu', E = 0, posLeft = false; const dots = Array.from({ length: 14 }, (_, i) => i / 14);
+    const nernst = (k, conc) => { const d = HC[k]; return d[3] + 0.059 / d[2] * Math.log10(Math.pow(conc, d[6])); };
+    const lcm = (a, b) => a * b / (a === b ? a : 1), co = (n, s) => (n === 1 ? '' : n) + s;
+    function half(k, m, ox) { const d = HC[k], eN = d[2] * m, el = d[1] === 'H₂' ? 'H₂(g)' : d[1] + '(s)', ion = d[0] + '(aq)'; return ox ? `${co(m, el)} → ${co(d[6] * m, ion)} + ${co(eN, 'e⁻')}` : `${co(d[6] * m, ion)} + ${co(eN, 'e⁻')} → ${co(m, el)}`; }
+    function ui() {
+      const conc = Math.pow(10, +cs.value), EL = HC[Lk][3], ER = nernst(Rk, conc); E = Math.abs(ER - EL); posLeft = EL > ER; out.textContent = sig(conc, 2) + ' mol/dm³';
+      const neg = posLeft ? Rk : Lk, pos = posLeft ? Lk : Rk, z = lcm(HC[neg][2], HC[pos][2]), mN = z / HC[neg][2], mP = z / HC[pos][2];
+      const lhs = [co(mN, HC[neg][1] === 'H₂' ? 'H₂' : HC[neg][1]), co(HC[pos][6] * mP, HC[pos][0])].join(' + '), rhs = [co(HC[neg][6] * mN, HC[neg][0]), co(mP, HC[pos][1])].join(' + ');
+      read.innerHTML = E < .0005 ? `<span>Cell voltage</span><span class="big">0.00 V</span><span>Both electrodes have the same potential, so there is no push on the electrons and no current.</span>` : `<span>Cell voltage, E<sub>cell</sub></span><span class="big">${fmt(E, 2)} V</span><span class="eqn">E<sub>cell</sub> = E(positive) − E(negative) = ${mn(fmt(Math.max(EL, ER), 2))} − (${mn(fmt(Math.min(EL, ER), 2))})</span><span><b>Negative electrode, ${HC[neg][1] === 'H₂' ? 'Pt in H₂' : HC[neg][1]}:</b> oxidation. ${half(neg, 1, true)}</span><span><b>Positive electrode, ${HC[pos][1] === 'H₂' ? 'Pt in H₂' : HC[pos][1]}:</b> reduction. ${half(pos, 1, false)}</span><span><b>Overall:</b> ${lhs} → ${rhs}</span><span>Electrons flow through the wire from the negative to the positive electrode. Ions move through the salt bridge to balance the charge.${Math.abs(+cs.value) > .01 ? ` At ${sig(conc, 2)} mol/dm³, E(${HC[Rk][0]}/${HC[Rk][1]}) = ${HC[Rk][3] >= 0 ? '+' : ''}${mn(fmt(HC[Rk][3], 2))} + (0.059/${HC[Rk][2]}) log(${sig(conc, 2)}${HC[Rk][6] > 1 ? '²' : ''}) = ${mn(fmt(ER, 3))} V.` : ''}</span>`;
+    }
+    loop(c, dt => {
+      g.clearRect(0, 0, w, h); g.font = '400 12px Jost, sans-serif'; const bw = Math.min(150, w * .28), lx = w * .25, rx = w * .75, by = 120, bb = h - 22;
+      [[lx, Lk], [rx, Rk]].forEach(([x, k], i) => { const d = HC[k], conc = i ? Math.pow(10, +cs.value) : 1; g.fillStyle = d[5]; g.globalAlpha = k === 'Cu' && i ? .35 + .65 * Math.pow(conc, .35) : 1; g.fillRect(x - bw / 2 + 2, by + 30, bw - 4, bb - by - 32); g.globalAlpha = 1; g.strokeStyle = INK2; g.lineWidth = 2; g.beginPath(); g.moveTo(x - bw / 2, by); g.lineTo(x - bw / 2, bb); g.lineTo(x + bw / 2, bb); g.lineTo(x + bw / 2, by); g.stroke();
+        g.fillStyle = d[4]; g.strokeStyle = 'rgba(10,36,64,.4)'; g.lineWidth = 1; g.fillRect(x - 9, 56, 18, bb - 66); g.strokeRect(x - 9, 56, 18, bb - 66);
+        if (k === 'H') { for (let j = 0; j < 6; j++) { const t = (performance.now() / 1000 * .6 + j / 6) % 1; ball(g, x + 16 + Math.sin(j * 2) * 4, bb - 14 - t * (bb - by - 50), 3, 'rgba(255,255,255,.9)', 'rgba(10,36,64,.3)'); } }
+        g.fillStyle = INK; g.textAlign = 'center'; g.fillText(`${d[0]}/${d[1]}`, x, bb - 6); const isPos = (i === 0) === posLeft; if (E > .0005) { g.fillStyle = isPos ? '#b3412f' : BLUE; g.font = '500 18px Jost, sans-serif'; g.fillText(isPos ? '+' : '−', x - 22, 70); g.font = '400 12px Jost, sans-serif'; } });
+      g.strokeStyle = '#d9b26a'; g.lineWidth = 16; g.lineCap = 'round'; g.beginPath(); g.moveTo(lx + bw * .28, by + 52); g.lineTo(lx + bw * .28, by - 14); g.lineTo(rx - bw * .28, by - 14); g.lineTo(rx - bw * .28, by + 52); g.stroke(); g.lineCap = 'butt'; g.fillStyle = INK3; g.fillText('salt bridge', w / 2, by - 28);
+      const vy = 30; g.strokeStyle = INK; g.lineWidth = 2; g.beginPath(); g.moveTo(lx, 56); g.lineTo(lx, vy); g.lineTo(rx, vy); g.lineTo(rx, 56); g.stroke();
+      g.fillStyle = '#fff'; rr(g, w / 2 - 36, vy - 18, 72, 36, 8); g.fill(); g.stroke(); g.fillStyle = INK; g.font = '500 16px JetBrains Mono, monospace'; g.fillText(fmt(E, 2) + ' V', w / 2, vy + 6); g.font = '400 12px Jost, sans-serif';
+      if (E > .0005) { const len = (rx - lx) + 2 * (56 - vy), sp = .08 + E * .05; for (let i = 0; i < dots.length; i++) { dots[i] = (dots[i] + dt * sp) % 1; const f = posLeft ? 1 - dots[i] : dots[i]; let s = f * len, x, y; if (s < 56 - vy) { x = lx; y = 56 - s; } else if (s < 56 - vy + rx - lx) { x = lx + s - (56 - vy); y = vy; } else { x = rx; y = vy + s - (56 - vy) - (rx - lx); } if (Math.abs(x - w / 2) < 38 && y === vy) continue; ball(g, x, y, 3.2, '#ffd54a', '#a85d00'); } g.fillStyle = '#a85d00'; g.textAlign = posLeft ? 'right' : 'left'; g.fillText('e⁻ flow ' + (posLeft ? '←' : '→'), posLeft ? w / 2 - 44 : w / 2 + 44, vy - 6); }
+    });
+    seg(segs[0], v => { Lk = v; ui(); }); seg(segs[1], v => { Rk = v; ui(); }); cs.addEventListener('input', ui); ui();
+  };
+
+  /* ---------- proton NMR ---------- */
+  W.nmr = function (root) {
+    const NMR = {
+      ethanol: ['Ethanol', 'CH₃CH₂OH', [[1.2, 3, 2, 'CH₃', 'next to a CH₂: 2 neighbouring H, so n + 1 = 3, a triplet'], [3.7, 2, 3, 'CH₂', 'next to a CH₃: 3 neighbouring H, a quartet. Shifted up by the electronegative O'], [2.6, 1, 0, 'O–H', 'no splitting: the H on O swaps between molecules too fast. Its position varies', 1]]],
+      chloroethane: ['Chloroethane', 'CH₃CH₂Cl', [[1.5, 3, 2, 'CH₃', '2 neighbouring H: a triplet'], [3.6, 2, 3, 'CH₂', '3 neighbouring H: a quartet. Next to Cl, so shifted up']]],
+      dichloro: ['1,1-dichloroethane', 'CH₃CHCl₂', [[2.1, 3, 1, 'CH₃', '1 neighbouring H: a doublet'], [5.9, 1, 3, 'CH', '3 neighbouring H: a quartet. Two Cl atoms pull electron density away, so it is shifted a long way up']]],
+      propanone: ['Propanone', 'CH₃COCH₃', [[2.1, 6, 0, '2 × CH₃', 'both CH₃ groups are the same environment. The neighbouring carbon is C=O, which has no H, so a singlet']]],
+      ester: ['Ethyl ethanoate', 'CH₃COOCH₂CH₃', [[2.0, 3, 0, 'CH₃–C=O', 'next to C=O, which has no H: a singlet'], [4.1, 2, 3, 'O–CH₂', 'next to O, and 3 neighbouring H: a quartet'], [1.3, 3, 2, 'CH₃ (ethyl)', '2 neighbouring H: a triplet']]],
+      acid: ['Ethanoic acid', 'CH₃COOH', [[2.1, 3, 0, 'CH₃', 'next to C=O: a singlet'], [11.5, 1, 0, 'COOH', 'the acid O–H: far downfield, no splitting', 1]]],
+    };
+    const MULT = ['singlet', 'doublet', 'triplet', 'quartet'], did = id('d');
+    const body = frame(root, 'Read a proton NMR spectrum', 'Drawn as at 400 MHz, with the splitting widened so you can count the lines. Shifts are typical values; δ is measured from TMS, the peak at 0. The stepped orange line is the integration trace: the height of each step is in proportion to the number of H atoms in that environment. Point at a peak.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Compound">${Object.keys(NMR).map((k, i) => `<button type="button" data-v="${k}"${i ? '' : ' class="is-on"'}>${NMR[k][0]}</button>`).join('')}</div><div class="fig-split" style="grid-template-columns:minmax(0,1fr)"><canvas></canvas></div><div class="fig-split"><div class="ctl"><label for="${did}" style="display:flex;gap:8px;align-items:center"><input id="${did}" type="checkbox"> <span>Shake with D₂O</span></label><div class="read big-f"></div></div><div class="read info"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 280), [r1, r2] = body.querySelectorAll('.read'), cb = body.querySelector('#' + did); let k = 'ethanol', at = 0;
+    const X = d => 30 + (12.5 - d) / 13 * (w - 50), base = h - 40, J = .07, gam = .013;
+    const pas = n => { let r = [1]; for (let i = 0; i < n; i++) r = r.map((v, j) => v + (r[j - 1] || 0)).concat(1); return r; };
+    const peaks = () => NMR[k][2].filter(p => !(cb.checked && p[5]));
+    function draw() {
+      const P = peaks(), lines = []; P.forEach((p, pi) => { const ps = pas(p[2]), s = ps.reduce((a, b) => a + b, 0); ps.forEach((v, j) => lines.push([p[0] + (j - p[2] / 2) * J, p[1] * v / s, pi])); }); lines.push([0, .7, -1]);
+      const ymax = Math.max(...lines.map(l => l[1])), Hs = (base - 40) / ymax;
+      g.clearRect(0, 0, w, h); g.font = '400 11.5px Jost, sans-serif'; g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'center';
+      for (let d = 0; d <= 12; d++) { g.beginPath(); g.moveTo(X(d), base); g.lineTo(X(d), base + 5); g.stroke(); g.fillText(d, X(d), base + 18); } g.strokeStyle = INK; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X(12.5), base); g.lineTo(X(-.5), base); g.stroke(); g.fillStyle = INK2; g.fillText('chemical shift, δ / ppm', w / 2, h - 6);
+      g.beginPath(); for (let x = X(12.5); x <= X(-.5); x += .5) { const d = 12.5 - (x - 30) / (w - 50) * 13; let y = 0; for (const [dd, a] of lines) y += a * gam * gam / ((d - dd) * (d - dd) + gam * gam); const yy = base - y * Hs; x === X(12.5) ? g.moveTo(x, yy) : g.lineTo(x, yy); } g.strokeStyle = BLUE; g.lineWidth = 1.6; g.stroke();
+      const tot = P.reduce((s, p) => s + p[1], 0), step = 70 / Math.max(1, tot), sorted = [...P].sort((a, b) => b[0] - a[0]); let acc = 0; const iy = base - 10; g.beginPath(); g.moveTo(X(12.5), iy); sorted.forEach(p => { const x0 = X(p[0] + .25), x1 = X(p[0] - .25); g.lineTo(x0, iy - acc); acc += p[1] * step; g.lineTo(x1, iy - acc); }); g.lineTo(X(-.5), iy - acc); g.strokeStyle = SUN; g.lineWidth = 2; g.stroke();
+      P.forEach((p, i) => { const tall = Math.max(...lines.filter(l => l[2] === i).map(l => l[1])) * Hs; g.fillStyle = i === at ? INK : INK3; g.font = (i === at ? '500 ' : '400 ') + '12px Jost, sans-serif'; g.fillText(`${p[1]}H ${MULT[p[2]] || (p[2] + 1) + ' lines'}`, X(p[0]), Math.max(14, base - tall - 8)); if (i === at) { g.fillStyle = 'rgba(240,154,46,.14)'; g.fillRect(X(p[0] + .3), 20, X(p[0] - .3) - X(p[0] + .3), base - 20); } });
+      g.fillStyle = INK3; g.font = '400 11px Jost, sans-serif'; g.fillText('TMS', X(0), base - .7 * Hs - 6);
+      const p = P[at] || P[0];
+      r1.innerHTML = `<span>${NMR[k][0]}</span><span class="big" style="font-size:26px">${NMR[k][1]}</span><span>${P.length} peak${P.length > 1 ? 's' : ''}: ${P.length} different H environment${P.length > 1 ? 's' : ''}.</span>${cb.checked ? `<span>${NMR[k][2].some(q => q[5]) ? '<b>D₂O shake:</b> the O–H proton swaps for deuterium, which does not show up, so that peak disappears. This is how you prove a peak is O–H or N–H.' : 'No O–H or N–H here, so shaking with D₂O changes nothing.'}</span>` : ''}`;
+      r2.innerHTML = p ? `<span>Peak at δ ≈ ${p[0]} ppm</span><span class="big" style="font-size:26px">${p[3]}</span><span><b>${p[1]} H</b> · ${MULT[p[2]]}</span><span>${p[4]}.</span><span>The n + 1 rule: H atoms on the next carbon split a peak into n + 1 lines.</span>` : '';
+    }
+    c.addEventListener('pointermove', ev => { const r = c.getBoundingClientRect(), d = 12.5 - (ev.clientX - r.left - 30) / (w - 50) * 13, P = peaks(); let best = -1, bd = .6; P.forEach((p, i) => { const dd = Math.abs(p[0] - d); if (dd < bd) { bd = dd; best = i; } }); if (best >= 0 && best !== at) { at = best; draw(); } });
+    seg(body.querySelector('.seg'), v => { k = v; at = 0; draw(); }); cb.addEventListener('change', () => { at = 0; draw(); }); draw();
+  };
+
+  /* ---------- infrared spectra ---------- */
+  W.ir = function (root) {
+    const IR = {
+      ethanol: ['Ethanol', 'CH₃CH₂OH', 'alcohol', [[3350, 130, .78, 'O–H (alcohol)'], [2975, 35, .6, 'C–H'], [2890, 25, .35], [1450, 18, .32], [1380, 14, .3], [1090, 16, .5], [1050, 18, .72, 'C–O'], [880, 12, .38]]],
+      acid: ['Ethanoic acid', 'CH₃COOH', 'carboxylic acid', [[3000, 280, .62, 'O–H (acid), very broad'], [1715, 24, .88, 'C=O'], [1410, 16, .4], [1290, 24, .6, 'C–O'], [940, 22, .42], [620, 14, .3]]],
+      propanone: ['Propanone', 'CH₃COCH₃', 'ketone', [[3005, 28, .32, 'C–H'], [1715, 22, .9, 'C=O'], [1420, 14, .4], [1360, 14, .56], [1220, 16, .62], [530, 14, .3]]],
+      ester: ['Ethyl ethanoate', 'CH₃COOCH₂CH₃', 'ester', [[2985, 30, .42, 'C–H'], [1742, 20, .9, 'C=O'], [1375, 12, .45], [1240, 26, .82, 'C–O'], [1050, 20, .6], [940, 12, .3]]],
+      hexane: ['Hexane', 'CH₃(CH₂)₄CH₃', 'alkane', [[2960, 22, .75, 'C–H'], [2875, 22, .6], [1465, 16, .42], [1380, 10, .3], [725, 12, .26]]],
+      nitrile: ['Propanenitrile', 'CH₃CH₂CN', 'nitrile', [[2990, 28, .4, 'C–H'], [2250, 16, .62, 'C≡N'], [1460, 15, .4], [1080, 16, .32], [785, 14, .3]]],
+      amine: ['Propylamine', 'CH₃CH₂CH₂NH₂', 'primary amine', [[3370, 30, .3, 'N–H'], [3290, 30, .28], [2960, 26, .62, 'C–H'], [2875, 22, .45], [1610, 22, .3], [1465, 15, .35], [800, 40, .4]]],
+    };
+    const BANDS = [['O–H, N–H', 3200, 3600], ['C–H', 2850, 3000], ['C≡N', 2200, 2260], ['C=O', 1670, 1750], ['fingerprint', 500, 1500]];
+    const bid = id('b');
+    const body = frame(root, 'Read an infrared spectrum', 'A spectrum built from typical absorption positions, not a measured one. Wavenumbers fall from left to right, as on a real spectrum. Ranges from the Cambridge data booklet: O–H in an alcohol 3200–3600 cm⁻¹, O–H in an acid 2500–3000 cm⁻¹, C=O 1670–1740 cm⁻¹, C–O 1040–1300 cm⁻¹.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Compound">${Object.keys(IR).map((k, i) => `<button type="button" data-v="${k}"${i ? '' : ' class="is-on"'}>${IR[k][0]}</button>`).join('')}</div><div class="fig-split" style="grid-template-columns:minmax(0,1fr)"><canvas></canvas></div><div class="fig-split"><div class="ctl"><label for="${bid}" style="display:flex;gap:8px;align-items:center"><input id="${bid}" type="checkbox" checked> <span>Show the key ranges</span></label></div><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 260), read = body.querySelector('.read'), cb = body.querySelector('#' + bid); let k = 'ethanol';
+    const X = v => 44 + (4000 - v) / 3500 * (w - 60), Y = t => h - 34 - t / 100 * (h - 54);
+    function draw() {
+      const pk = IR[k][3]; g.clearRect(0, 0, w, h); g.font = '400 11px Jost, sans-serif';
+      if (cb.checked) BANDS.forEach(([l, a, b], i) => { g.fillStyle = i === 4 ? 'rgba(10,36,64,.05)' : 'rgba(240,154,46,.13)'; g.fillRect(X(b), Y(100), X(a) - X(b), Y(0) - Y(100)); g.fillStyle = '#a85d00'; g.textAlign = 'center'; g.fillText(l, (X(a) + X(b)) / 2, Y(100) + 12); });
+      g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'right'; for (let t = 0; t <= 100; t += 25) { g.beginPath(); g.moveTo(X(4000), Y(t)); g.lineTo(X(500), Y(t)); g.stroke(); g.fillText(t, X(4000) - 5, Y(t) + 4); }
+      g.textAlign = 'center'; for (let v = 4000; v >= 500; v -= 500) g.fillText(v, X(v), Y(0) + 14); g.fillStyle = INK2; g.fillText('wavenumber / cm⁻¹', w / 2, h - 4); g.save(); g.translate(12, Y(50)); g.rotate(-Math.PI / 2); g.fillText('transmittance / %', 0, 0); g.restore(); axes(g, X(4000), Y(0), X(500), Y(100));
+      g.beginPath(); for (let x = X(4000); x <= X(500); x += .7) { const v = 4000 - (x - 44) / (w - 60) * 3500; let a = 0; for (const [cc, s, d] of pk) a += d * Math.exp(-(v - cc) * (v - cc) / (2 * s * s)); const t = Math.max(3, 96 - 92 * Math.min(1, a) + Math.sin(v * .05) * .6 + (v < 1500 ? (Math.sin(v * .083) + Math.sin(v * .191 + 2) + Math.sin(v * .047 + 1)) * .6 : 0)); x === X(4000) ? g.moveTo(x, Y(t)) : g.lineTo(x, Y(t)); } g.strokeStyle = BLUE; g.lineWidth = 1.8; g.stroke();
+      g.fillStyle = INK; g.textAlign = 'center'; pk.filter(p => p[3]).forEach(([cc, , d, l]) => { const t = 96 - 92 * Math.min(1, d); g.fillText(l.split(' ')[0], X(cc), Math.min(Y(t) + 16, Y(0) - 4)); });
+      read.innerHTML = `<span>${IR[k][0]} · ${IR[k][2]}</span><span class="big" style="font-size:26px">${IR[k][1]}</span>${pk.filter(p => p[3]).map(([cc, , , l]) => `<span><b>${l}:</b> about ${cc} cm⁻¹</span>`).join('')}<span>Bonds absorb infrared at frequencies that match their vibrations, so each dip shows a bond that is present. Below 1500 cm⁻¹ the fingerprint region is unique to each compound: match it to a database to identify it for certain.</span>`;
+    }
+    seg(body.querySelector('.seg'), v => { k = v; draw(); }); cb.addEventListener('change', draw); draw();
+  };
+
+  /* ---------- giant structures ---------- */
+  W.lattice = function (root) {
+    const S = {
+      nacl: ['Sodium chloride', 'giant ionic lattice', [['Bonding', 'strong electrostatic attraction between oppositely charged ions, in all directions'], ['Melting point', 'high, 1074 K: many strong ionic bonds to overcome'], ['Conducts electricity?', 'not as a solid: the ions cannot move. Yes when molten or dissolved'], ['Each ion', 'surrounded by 6 ions of the opposite charge']]],
+      diamond: ['Diamond', 'giant covalent lattice', [['Bonding', 'every carbon atom forms 4 strong covalent bonds, in a tetrahedral arrangement'], ['Melting point', 'very high: all the covalent bonds must be broken'], ['Conducts electricity?', 'no: there are no free electrons or ions'], ['Hardness', 'very hard: used in cutting tools']]],
+      graphite: ['Graphite', 'giant covalent, in layers', [['Bonding', 'each carbon forms 3 covalent bonds in flat hexagonal layers; the fourth electron is delocalised'], ['Between layers', 'weak forces, so the layers slide: soft and slippery, used as a lubricant'], ['Conducts electricity?', 'yes: the delocalised electrons move along the layers'], ['Melting point', 'very high: the covalent bonds in the layers are strong']]],
+      metal: ['A metal', 'giant metallic lattice', [['Bonding', 'attraction between positive ions and a sea of delocalised electrons'], ['Conducts electricity?', 'yes: the delocalised electrons move through the structure'], ['Malleable and ductile', 'layers of ions can slide over each other without breaking the bonding'], ['Melting point', 'usually high: strong metallic bonding']]],
+    };
+    const body = frame(root, 'Turn a giant structure', 'Only a small piece of each lattice is drawn: a real crystal carries on in every direction with billions of particles. Sizes are not to scale. Drag to turn it.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Structure">${Object.keys(S).map((k, i) => `<button type="button" data-v="${k}"${i ? '' : ' class="is-on"'}>${S[k][0]}</button>`).join('')}</div><div class="fig-split"><canvas role="img" aria-label="A 3D model of the structure. Drag to turn it."></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), read = body.querySelector('.read'); let k = 'nacl', A = [], B = [], E = [];
+    function build() {
+      A = []; B = []; E = [];
+      if (k === 'nacl') { for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (let l = -1; l <= 1; l++) A.push({ x: i, y: j, z: l, t: (i + j + l + 3) % 2 ? 'Na' : 'Cl' }); }
+      if (k === 'metal') { for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (let l = -1; l <= 1; l++) A.push({ x: i * 1.05, y: j * 1.05, z: l * 1.05, t: 'M' }); for (let i = 0; i < 46; i++) E.push({ x: (Math.random() - .5) * 2.8, y: (Math.random() - .5) * 2.8, z: (Math.random() - .5) * 2.8, vx: Math.random() - .5, vy: Math.random() - .5, vz: Math.random() - .5 }); }
+      if (k === 'diamond') { const a = 2.6, f = [[0, 0, 0], [0, .5, .5], [.5, 0, .5], [.5, .5, 0]], pts = []; for (const [x, y, z] of f) for (const o of [0, .25]) for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (let l = -1; l <= 1; l++) { const p = [x + o + i, y + o + j, z + o + l]; if (p.every(v => v >= -.01 && v <= 1.01)) pts.push(p); } const seen = new Set(); pts.forEach(p => { const key = p.map(v => v.toFixed(2)).join(); if (!seen.has(key)) { seen.add(key); A.push({ x: (p[0] - .5) * a, y: (p[1] - .5) * a, z: (p[2] - .5) * a, t: 'C' }); } }); }
+      if (k === 'graphite') { const b = .5, s3 = Math.sqrt(3); for (let L = 0; L < 3; L++) { const off = L % 2 ? b : 0; for (let i = -3; i <= 3; i++) for (let j = -3; j <= 3; j++) for (const sub of [0, 1]) { const x = (i + j * .5) * b * s3 + (sub ? b * s3 / 2 : 0), z = j * b * 1.5 + (sub ? b / 2 : 0) + off; if (x * x + z * z < 1.75 * 1.75) A.push({ x, y: (L - 1) * 1.15, z, t: 'C', L }); } } }
+      const bond = k === 'nacl' ? 1.01 : k === 'diamond' ? 2.6 * Math.sqrt(3) / 4 + .02 : k === 'graphite' ? .52 : 0;
+      if (bond) for (let i = 0; i < A.length; i++) for (let j = i + 1; j < A.length; j++) { const d = Math.hypot(A[i].x - A[j].x, A[i].y - A[j].y, A[i].z - A[j].z); if (d < bond && d > .1 && (k !== 'graphite' || A[i].L === A[j].L)) B.push([i, j]); }
+    }
+    function ui() { const s = S[k]; read.innerHTML = `<span>${s[0]}</span><span class="big" style="font-size:26px">${s[1]}</span><dl class="dl">${s[2].map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>`; }
+    spin3d(c, 320, (g, w, h, P, sc, t, dt) => {
+      const Q = A.map(a => P(a.x, a.y, a.z));
+      g.lineWidth = k === 'nacl' ? 1.4 : 3; B.forEach(([i, j]) => { const a = Q[i], b = Q[j], f = .35 + .65 * ((a.z + b.z) / 2 + 2) / 4; g.strokeStyle = k === 'nacl' ? `rgba(10,36,64,${.25 * f})` : `rgba(60,70,82,${.85 * f})`; g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke(); });
+      if (k === 'graphite') { g.setLineDash([3, 5]); g.strokeStyle = 'rgba(240,154,46,.55)'; g.lineWidth = 1.2; [[0, 0], [.85, .3], [-.8, -.4]].forEach(([x, z]) => { const a = P(x, -1.15, z), b = P(x, 1.15, z); g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke(); }); g.setLineDash([]); }
+      if (k === 'metal') E.forEach(e => { e.x += e.vx * dt * 1.4; e.y += e.vy * dt * 1.4; e.z += e.vz * dt * 1.4; ['x', 'y', 'z'].forEach(ax => { if (Math.abs(e[ax]) > 1.45) e['v' + ax] *= -1; }); });
+      const items = A.map((a, i) => ({ z: Q[i].z, i })); if (k === 'metal') E.forEach((e, i) => items.push({ z: P(e.x, e.y, e.z).z + .001, e }));
+      items.sort((a, b) => a.z - b.z).forEach(it => {
+        if (it.e) { const q = P(it.e.x, it.e.y, it.e.z); ball(g, q.x, q.y, 2.6 * q.p, '#ffd54a', '#a85d00'); return; }
+        const a = A[it.i], q = Q[it.i], fog = .55 + .45 * (q.z + 2) / 4;
+        if (a.t === 'Na') shade(g, q.x, q.y, .2 * sc * q.p, '#a98be0', fog); else if (a.t === 'Cl') shade(g, q.x, q.y, .33 * sc * q.p, '#5dc26b', fog); else if (a.t === 'M') { shade(g, q.x, q.y, .3 * sc * q.p, '#b8c4d2', fog); g.fillStyle = INK; g.font = `500 ${Math.round(11 * q.p)}px Jost, sans-serif`; g.textAlign = 'center'; g.fillText('+', q.x, q.y + 4); } else shade(g, q.x, q.y, .13 * sc * q.p, '#4a5563', fog);
+      });
+      g.font = '400 11.5px Jost, sans-serif'; g.fillStyle = INK3; g.textAlign = 'left'; g.fillText(k === 'nacl' ? 'purple: Na⁺ · green: Cl⁻ · drag to turn' : k === 'metal' ? 'grey: positive ions · yellow: delocalised electrons' : k === 'graphite' ? 'orange dashes: weak forces between layers' : 'grey: carbon atoms · drag to turn', 10, h - 10);
+    }, { scale: 66 });
+    seg(body.querySelector('.seg'), v => { k = v; build(); ui(); }); build(); ui();
+  };
+
+  /* ---------- Gibbs free energy ---------- */
+  W.gibbs = function (root) {
+    const PRE = [['CaCO₃ decomposes', 'CaCO₃(s) → CaO(s) + CO₂(g)', 178, 161], ['Haber process', 'N₂(g) + 3H₂(g) → 2NH₃(g)', -92, -199], ['Ice melts', 'H₂O(s) → H₂O(l)', 6, 22], ['Methane burns', 'CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l)', -890, -243]];
+    const hid = id('h'), sid = id('s'), tid = id('t');
+    const body = frame(root, 'Will it go? ΔG = ΔH − TΔS', 'ΔH and ΔS are taken to stay the same at every temperature, which is close enough for most questions. ΔS is in J K⁻¹ mol⁻¹, so divide it by 1000 before using it with ΔH in kJ mol⁻¹. A negative ΔG means the reaction is feasible: it says nothing about how fast it goes.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Reaction">${PRE.map((p, i) => `<button type="button" data-v="${i}"${i ? '' : ' class="is-on"'}>${p[0]}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="ctl"><label for="${hid}"><span>ΔH <b></b></span><input id="${hid}" type="range" min="-900" max="300" value="178" step="1"></label><label for="${sid}"><span>ΔS <b></b></span><input id="${sid}" type="range" min="-300" max="300" value="161" step="1"></label><label for="${tid}"><span>Temperature, T <b></b></span><input id="${tid}" type="range" min="0" max="1500" value="298" step="1"></label><div class="read"></div></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 300), [hs, ss, ts] = [...body.querySelectorAll('input')], outs = body.querySelectorAll('label b'), read = body.querySelector('.read'); let eq = PRE[0][1];
+    function draw() {
+      const H = +hs.value, Sv = +ss.value, T = +ts.value, G = T2 => H - T2 * Sv / 1000, g0 = G(0), g1 = G(1500), lo = Math.min(g0, g1, 0), hi = Math.max(g0, g1, 0), pad = (hi - lo) * .12 || 10, Y = v => 20 + (hi + pad - v) / (hi - lo + 2 * pad) * (h - 56), X = t => 54 + t / 1500 * (w - 70);
+      outs[0].textContent = (H > 0 ? '+' : '') + mn(H) + ' kJ/mol'; outs[1].textContent = (Sv > 0 ? '+' : '') + mn(Sv) + ' J/K/mol'; outs[2].textContent = T + ' K';
+      g.clearRect(0, 0, w, h); g.font = '400 11px Jost, sans-serif';
+      g.fillStyle = 'rgba(47,154,107,.08)'; g.fillRect(X(0), Y(0), X(1500) - X(0), Y(lo - pad) - Y(0)); g.fillStyle = '#2f7d4f'; g.textAlign = 'left'; g.fillText('feasible: ΔG < 0', X(0) + 6, Y(lo - pad) - 6);
+      g.strokeStyle = LINE; g.lineWidth = 1; g.fillStyle = INK3; g.textAlign = 'center'; for (let t = 0; t <= 1500; t += 300) { g.beginPath(); g.moveTo(X(t), 20); g.lineTo(X(t), Y(lo - pad)); g.stroke(); g.fillText(t, X(t), h - 22); }
+      g.strokeStyle = INK; g.lineWidth = 1.3; g.beginPath(); g.moveTo(X(0), Y(0)); g.lineTo(X(1500), Y(0)); g.stroke(); g.textAlign = 'right'; g.fillStyle = INK3; g.fillText('0', X(0) - 5, Y(0) + 4); g.fillText(mn(Math.round(hi + pad * .5)), X(0) - 5, Y(hi + pad * .5) + 4); g.fillText(mn(Math.round(lo - pad * .5)), X(0) - 5, Y(lo - pad * .5) + 4);
+      g.fillStyle = INK2; g.textAlign = 'center'; g.fillText('temperature / K', X(750), h - 6); g.save(); g.translate(13, (20 + h - 36) / 2); g.rotate(-Math.PI / 2); g.fillText('ΔG / kJ mol⁻¹', 0, 0); g.restore();
+      g.strokeStyle = BLUE; g.lineWidth = 3; g.beginPath(); g.moveTo(X(0), Y(g0)); g.lineTo(X(1500), Y(g1)); g.stroke();
+      const Tx = Sv !== 0 ? H * 1000 / Sv : null; if (Tx !== null && Tx > 0 && Tx < 1500) { g.setLineDash([4, 4]); g.strokeStyle = '#a85d00'; g.lineWidth = 1.3; g.beginPath(); g.moveTo(X(Tx), Y(0)); g.lineTo(X(Tx), Y(lo - pad)); g.stroke(); g.setLineDash([]); g.fillStyle = '#a85d00'; g.textAlign = 'left'; g.fillText(`T = ${Math.round(Tx)} K`, X(Tx) + 5, Y(0) - 6); }
+      ball(g, X(T), Y(G(T)), 5.5, SUN, INK);
+      const gv = G(T), cs = H < 0 && Sv > 0 ? 'ΔH negative and ΔS positive: feasible at every temperature.' : H > 0 && Sv < 0 ? 'ΔH positive and ΔS negative: never feasible, at any temperature.' : H > 0 ? `ΔH and ΔS both positive: feasible only above ${Math.round(Tx)} K, where TΔS outweighs ΔH.` : `ΔH and ΔS both negative: feasible only below ${Math.round(Tx)} K.`;
+      read.innerHTML = `<span class="eqn">${eq}</span><span>ΔG at ${T} K</span><span class="big">${gv > 0 ? '+' : ''}${mn(fmt(gv, 1))} kJ/mol</span><span class="eqn">ΔG = ${mn(H)} − ${T} × (${mn(Sv)} ÷ 1000)</span><span><b>${gv < 0 ? 'Feasible' : gv === 0 ? 'At the turning point' : 'Not feasible'}</b> at ${T} K. ${cs}</span>`;
+    }
+    seg(body.querySelector('.seg'), v => { const p = PRE[+v]; eq = p[1]; hs.value = p[2]; ss.value = p[3]; draw(); }); [hs, ss, ts].forEach(s => s.addEventListener('input', () => { eq = 'your reaction'; draw(); })); draw();
+  };
+
+  /* ---------- colour of transition element complexes ---------- */
+  W.complex = function (root) {
+    const PRE = [['[Ti(H₂O)₆]³⁺', 1, 500, 'oct'], ['[Cu(H₂O)₆]²⁺', 9, 690, 'oct'], ['[Cu(NH₃)₄(H₂O)₂]²⁺', 9, 600, 'oct'], ['[Co(H₂O)₆]²⁺', 7, 515, 'oct'], ['[CoCl₄]²⁻', 7, 680, 'tet']];
+    const lid = id('l');
+    const body = frame(root, 'Why are complexes coloured?', 'Ligands split the five d orbitals into two levels. A d electron takes in light whose energy matches the gap ΔE and jumps up. We see the colours that are left. Wavelengths are rounded typical values, and colours on a screen are only a guide.');
+    body.innerHTML = `<div class="seg" role="group" aria-label="Complex">${PRE.map((p, i) => `<button type="button" data-v="${i}"${i ? '' : ' class="is-on"'}>${p[0]}</button>`).join('')}</div><div class="fig-split"><canvas></canvas><div class="ctl"><label for="${lid}"><span>Wavelength absorbed <b></b></span><input id="${lid}" type="range" min="400" max="700" value="500" step="5"></label><div class="read"></div></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 300), sl = body.querySelector('input'), out = body.querySelector('label b'), read = body.querySelector('.read'); let at = 0, nm = 500;
+    function rgb(l) { let r = 0, gg = 0, b = 0; if (l < 440) { r = -(l - 440) / 40; b = 1; } else if (l < 490) { gg = (l - 440) / 50; b = 1; } else if (l < 510) { gg = 1; b = -(l - 510) / 20; } else if (l < 580) { r = (l - 510) / 70; gg = 1; } else if (l < 645) { r = 1; gg = -(l - 645) / 65; } else r = 1; return [r * 255, gg * 255, b * 255].map(Math.round); }
+    const seen = l => rgb(l).map(v => Math.round(255 - v * .82)), css = a => `rgb(${a.join(',')})`;
+    function name(l) { return l < 435 ? 'yellow-green' : l < 480 ? 'yellow or orange' : l < 495 ? 'orange-red' : l < 530 ? 'purple, pink or red-violet' : l < 560 ? 'violet' : l < 590 ? 'violet-blue' : l < 620 ? 'deep blue' : 'blue to turquoise'; }
+    loop(c, (dt, t) => {
+      const p = PRE[at], dN = p[1], tet = p[3] === 'tet', nLo = tet ? 2 : 3, nHi = tet ? 3 : 2, E = 119600 / nm, gap = 40 + (E - 170) / (300 - 170) * 90, half = w * .48;
+      g.clearRect(0, 0, w, h); g.font = '400 12px Jost, sans-serif';
+      const yLo = h - 70, yHi = yLo - gap, bx = 40, bw = 30, cell = (n, i) => half / 2 - n * (bw + 6) / 2 + i * (bw + 6) + 16;
+      const fillE = []; let left = dN; const order = [...Array(nLo).keys()].map(i => ['lo', i]).concat([...Array(nHi).keys()].map(i => ['hi', i])); const occ = { lo: Array(nLo).fill(0), hi: Array(nHi).fill(0) };
+      order.forEach(([lv, i]) => { if (left > 0) { occ[lv][i] = 1; left--; } }); order.forEach(([lv, i]) => { if (left > 0) { occ[lv][i] = 2; left--; } });
+      const ph = (t * .5) % 1, jump = ph > .45, holeHi = occ.hi.findIndex(v => v < 2), fromLo = occ.lo.findIndex(v => v > 0);
+      [['lo', nLo, yLo], ['hi', nHi, yHi]].forEach(([lv, n, y]) => { for (let i = 0; i < n; i++) { const x = cell(n, i); g.strokeStyle = INK; g.lineWidth = 2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + bw, y); g.stroke(); let o = occ[lv][i]; if (jump && lv === 'lo' && i === fromLo) o--; if (jump && lv === 'hi' && i === holeHi) o++; g.strokeStyle = BLUE; g.lineWidth = 2; if (o >= 1) { g.beginPath(); g.moveTo(x + bw * .38, y - 3); g.lineTo(x + bw * .38, y - 22); g.lineTo(x + bw * .38 - 4, y - 16); g.stroke(); } if (o >= 2) { g.beginPath(); g.moveTo(x + bw * .62, y - 22); g.lineTo(x + bw * .62, y - 3); g.lineTo(x + bw * .62 + 4, y - 9); g.stroke(); } } });
+      g.fillStyle = INK3; g.textAlign = 'left'; g.fillText(tet ? 'tetrahedral: 2 lower, 3 upper' : 'octahedral: 3 lower, 2 upper', 16, 18); g.strokeStyle = '#a85d00'; g.lineWidth = 1.3; g.beginPath(); g.moveTo(half - 22, yLo); g.lineTo(half - 22, yHi); g.stroke(); g.fillStyle = '#a85d00'; g.fillText('ΔE', half - 18, (yLo + yHi) / 2 + 4);
+      if (!jump && holeHi >= 0 && fromLo >= 0) { const col = css(rgb(nm)); g.strokeStyle = col; g.lineWidth = 2.4; g.beginPath(); for (let x = 0; x < 70; x++) { const xx = 10 + x + ph * 60, yy = (yLo + yHi) / 2 + Math.sin(x * .45) * 5; x ? g.lineTo(xx, yy) : g.moveTo(xx, yy); } g.stroke(); g.fillStyle = col; g.fillText('light in', 12, (yLo + yHi) / 2 - 10); }
+      g.fillStyle = INK2; g.textAlign = 'center'; g.fillText(`${p[0]} · d${sup(dN)}`, half / 2 + 12, h - 30); g.fillText('d orbitals in the complex', half / 2 + 12, h - 12);
+      const sx = half + 20, sw = w - sx - 16, sy = 34; for (let x = 0; x < sw; x++) { g.fillStyle = css(rgb(400 + x / sw * 300)); g.fillRect(sx + x, sy, 1, 26); }
+      const ax = sx + (nm - 400) / 300 * sw; g.fillStyle = 'rgba(10,36,64,.72)'; g.fillRect(ax - 14, sy - 4, 28, 34); g.fillStyle = '#fff'; g.font = '500 11px Jost, sans-serif'; g.fillText('absorbed', ax, sy + 17); g.font = '400 11px Jost, sans-serif'; g.fillStyle = INK3; g.fillText('400 nm', sx + 18, sy + 44); g.fillText('700 nm', sx + sw - 18, sy + 44); g.fillText('white light in', sx + sw / 2, sy - 10);
+      const tx = sx + sw / 2, ty = sy + 72, th = h - ty - 26; g.fillStyle = css(seen(nm)); g.strokeStyle = '#9fb4c8'; g.lineWidth = 2; g.beginPath(); g.moveTo(tx - 26, ty); g.lineTo(tx - 26, ty + th - 26); g.arc(tx, ty + th - 26, 26, Math.PI, 0, true); g.lineTo(tx + 26, ty); g.fill(); g.stroke(); g.fillStyle = INK2; g.fillText('what we see', tx, h - 8);
+    });
+    function ui() { nm = +sl.value; out.textContent = nm + ' nm'; const E = 119600 / nm; read.innerHTML = `<span>The solution looks</span><span class="big" style="font-size:24px">${name(nm)}</span><span><b>ΔE</b> = hc/λ × N<sub>A</sub> ≈ ${Math.round(E)} kJ/mol for ${nm} nm light.</span><span>A <b>bigger</b> splitting absorbs light of <b>shorter</b> wavelength. Changing the ligand changes ΔE, which is why the colour changes: NH₃ splits the d orbitals more than H₂O does, so copper(II) goes from pale blue to deep blue.</span><span>Zn²⁺ (d¹⁰) and Sc³⁺ (d⁰) have no electron that can jump into a gap, so their compounds are white.</span>`; }
+    seg(body.querySelector('.seg'), v => { at = +v; sl.value = PRE[at][2]; ui(); }); sl.addEventListener('input', ui); sl.value = PRE[0][2]; ui();
+  };
+
+  /* ---------- fractional distillation of crude oil ---------- */
+  W.fractions = function (root) {
+    const F = [['Refinery gas', 'C₁–C₄', 'below 40 °C', 'gas for heating and cooking', '#cfe3f7'], ['Gasoline (petrol)', 'C₅–C₁₀', '40–100 °C', 'fuel for cars', '#f7efb8'], ['Naphtha', 'C₇–C₁₄', '100–150 °C', 'chemical feedstock', '#f3dd8c'], ['Kerosene (paraffin)', 'C₁₀–C₁₆', '150–250 °C', 'jet fuel', '#ebc566'], ['Diesel oil (gas oil)', 'C₁₄–C₂₀', '250–350 °C', 'fuel for diesel engines', '#d9a24a'], ['Fuel oil', 'C₂₀–C₄₀', '350–400 °C', 'fuel for ships and home heating', '#a86d34'], ['Lubricating oil', 'C₂₀–C₅₀', 'above 400 °C', 'lubricants, waxes and polishes', '#7a4a26'], ['Bitumen', 'over C₅₀', 'does not boil: collected as a residue', 'making roads', '#2f2a26']];
+    const body = frame(root, 'Fractional distillation of crude oil', 'Crude oil is heated until most of it boils, then the vapour rises up a column that is hot at the bottom and cool at the top. Each fraction condenses where the column has cooled to its boiling range, and is piped off there. Boiling ranges and chain lengths are approximate: they differ between refineries and books.');
+    body.innerHTML = `<div class="fig-split"><canvas></canvas><div class="read"></div></div>`;
+    const c = body.querySelector('canvas'), { g, w, h } = cv(c, 380), read = body.querySelector('.read'); let at = 1; const V = [];
+    const cx = w * .3, cw = Math.min(110, w * .24), top = 16, bot = h - 46, tray = i => top + 10 + i * (bot - top - 20) / 8;
+    function ui() { const f = F[at]; read.innerHTML = `<span>Fraction ${at + 1} of 8, from the top</span><span class="big" style="font-size:26px">${f[0]}</span><span><b>Carbon atoms per molecule:</b> ${f[1]}</span><span><b>Boiling range:</b> ${f[2]}</span><span><b>Used for:</b> ${f[3]}</span><span><b>Going down the column</b>, the molecules have longer chains, so the intermolecular forces are stronger: higher boiling point, more viscous (thicker), darker, and harder to ignite.</span><span>Click a fraction to read about it.</span>`; }
+    c.addEventListener('click', ev => { const r = c.getBoundingClientRect(), y = ev.clientY - r.top; for (let i = 0; i < 8; i++) if (y >= tray(i) - 6 && y < tray(i) + (bot - top - 20) / 8 - 6) { at = i; ui(); L.poke(); break; } });
+    const L = loop(c, dt => {
+      g.clearRect(0, 0, w, h); g.font = '400 11.5px Jost, sans-serif';
+      const grd = g.createLinearGradient(0, top, 0, bot); grd.addColorStop(0, '#dbeeff'); grd.addColorStop(1, '#ffd2b0'); g.fillStyle = grd; rr(g, cx - cw / 2, top, cw, bot - top, 14); g.fill(); g.strokeStyle = INK2; g.lineWidth = 2; g.stroke();
+      g.fillStyle = INK3; g.textAlign = 'right'; g.fillText('cool', cx - cw / 2 - 8, top + 14); g.fillText('hot', cx - cw / 2 - 8, bot - 6);
+      F.forEach((f, i) => { const y = tray(i); g.strokeStyle = 'rgba(10,36,64,.35)'; g.lineWidth = 1.5; g.beginPath(); g.moveTo(cx - cw / 2 + 6, y); g.lineTo(cx + cw / 2 - 6, y); g.stroke();
+        g.fillStyle = f[4]; g.strokeStyle = i === at ? INK : 'rgba(10,36,64,.3)'; g.lineWidth = i === at ? 2.5 : 1; g.fillRect(cx + cw / 2, y - 4, 26, 8); g.strokeRect(cx + cw / 2, y - 4, 26, 8);
+        g.fillStyle = i === at ? INK : INK2; g.font = (i === at ? '500 ' : '400 ') + '12.5px Jost, sans-serif'; g.textAlign = 'left'; g.fillText(f[0], cx + cw / 2 + 34, y + 4); g.font = '400 11.5px Jost, sans-serif'; });
+      g.fillStyle = '#e8594d'; g.beginPath(); for (let i = 0; i < 3; i++) { const x = cx - 30 + i * 30; g.moveTo(x - 9, h - 6); g.quadraticCurveTo(x, h - 34 - Math.sin(performance.now() / 160 + i) * 4, x + 9, h - 6); } g.fill(); g.fillStyle = INK3; g.textAlign = 'center'; g.textAlign = 'left'; g.fillText('crude oil, heated', cx + 52, h - 12);
+      if (V.length < 70 && Math.random() < dt * 30) { const fi = Math.random() * 8 | 0; V.push({ x: cx + (Math.random() - .5) * (cw - 24), y: bot - 6, f: fi, s: 70 + Math.random() * 50 }); }
+      for (let i = V.length - 1; i >= 0; i--) { const v = V[i], stop = tray(v.f) - 5; if (v.f === 7) { v.y = bot - 10; v.x += (cx + cw / 2 - v.x) * dt * .8; if (v.x > cx + cw / 2 - 12) { V.splice(i, 1); continue; } } else if (v.y > stop) { v.y -= v.s * dt; v.x += Math.sin(v.y * .1 + i) * .3; } else { v.x += 40 * dt; if (v.x > cx + cw / 2 - 6) { V.splice(i, 1); continue; } } ball(g, v.x, v.y, 3, F[v.f][4], 'rgba(10,36,64,.3)'); }
+    });
+    ui();
+  };
+
   // which live figures belong to which lecture
   const MAP = {
-    'k3-1-1': ['states'], 'k3-1-3': ['states'], 'k3-3-3': ['diffusion'], 'k3-3-5': ['chromatography'], 'k3-4-5': ['ph'], 'k3-6-2': ['ptable'], 'k3-7-1': ['reactivity'],
-    'ci-1-1': ['states'], 'ci-1-2': ['diffusion'], 'ci-2-2': ['atom'], 'ci-3-2': ['moles'], 'ci-3-3': ['moles'], 'ci-4-1': ['electrolysis'], 'ci-5-1': ['profile'], 'ci-6-2': ['rate'], 'ci-6-3': ['equilibrium'], 'ci-7-1': ['ph'], 'ci-8-1': ['ptable'], 'ci-9-4': ['reactivity'], 'ci-11-1': ['homologous'], 'ci-11-2': ['homologous'], 'ci-12-3': ['chromatography'], 'ci-12-5': ['iontests'],
-    'ca-1-3': ['orbitals'], 'ca-2-4': ['moles'], 'ca-5-1': ['profile'], 'ca-7-1': ['equilibrium'], 'ca-8-1': ['rate'], 'ca-8-2': ['boltzmann'], 'ca-8-3': ['boltzmann'], 'ca-9-1': ['ptable'], 'ca-13-1': ['homologous'], 'ca-24-1': ['electrolysis'], 'ca-28-1': ['orbitals'],
+    'k3-1-1': ['states'], 'k3-1-2': ['gas'], 'k3-1-3': ['states'], 'k3-2-1': ['particles'], 'k3-2-2': ['particles'], 'k3-3-1': ['particles'], 'k3-3-2': ['particles'], 'k3-3-3': ['diffusion'], 'k3-3-4': ['fractions'], 'k3-3-5': ['chromatography'], 'k3-4-5': ['ph'], 'k3-4-6': ['titration'], 'k3-5-2': ['bonds'], 'k3-6-2': ['ptable'], 'k3-6-3': ['lattice'], 'k3-7-1': ['reactivity'],
+    'ci-1-1': ['states'], 'ci-1-2': ['diffusion'], 'ci-2-1': ['particles'], 'ci-2-2': ['atom'], 'ci-2-3': ['massspec'], 'ci-2-4': ['lattice'], 'ci-2-5': ['shapes'], 'ci-2-6': ['lattice'], 'ci-2-7': ['lattice'], 'ci-3-2': ['moles'], 'ci-3-3': ['moles'], 'ci-4-1': ['electrolysis'], 'ci-5-1': ['profile', 'bonds'], 'ci-6-2': ['rate'], 'ci-6-3': ['equilibrium'], 'ci-7-1': ['ph'], 'ci-8-1': ['ptable'], 'ci-9-4': ['reactivity'], 'ci-11-1': ['homologous'], 'ci-11-2': ['homologous'], 'ci-11-3': ['fractions'], 'ci-12-2': ['titration'], 'ci-12-3': ['chromatography'], 'ci-12-5': ['iontests'],
+    'ca-1-1': ['periodicity'], 'ca-1-2': ['massspec'], 'ca-1-3': ['orbitals'], 'ca-1-4': ['periodicity'], 'ca-2-1': ['massspec'], 'ca-2-4': ['moles'], 'ca-3-2': ['lattice'], 'ca-3-3': ['lattice'], 'ca-3-5': ['shapes'], 'ca-4-1': ['gas'], 'ca-4-2': ['lattice'], 'ca-5-1': ['profile', 'bonds'], 'ca-5-2': ['bonds'], 'ca-6-1': ['cell'], 'ca-7-1': ['equilibrium'], 'ca-7-2': ['titration'], 'ca-8-1': ['rate'], 'ca-8-2': ['boltzmann'], 'ca-8-3': ['boltzmann'], 'ca-9-1': ['periodicity', 'ptable'], 'ca-13-1': ['homologous'], 'ca-13-3': ['shapes'], 'ca-22-1': ['ir'], 'ca-22-2': ['massspec'],
+    'ca-23-3': ['gibbs'], 'ca-23-4': ['gibbs'], 'ca-24-1': ['electrolysis'], 'ca-24-2': ['cell'], 'ca-25-1': ['titration'], 'ca-26-1': ['orders'], 'ca-28-1': ['orbitals'], 'ca-28-3': ['complex'], 'ca-37-4': ['nmr'],
+  };
+  // every live model, for the page that lists them all
+  const NAMES = {
+    particles: ['Elements, compounds and mixtures', 'Particles'], states: ['States of matter', 'Particles'], diffusion: ['Diffusion', 'Particles'], gas: ['The gas laws, pV = nRT', 'Particles'],
+    atom: ['Build an atom', 'Atoms and bonding'], orbitals: ['Atomic orbitals', 'Atoms and bonding'], massspec: ['Mass spectra and isotopes', 'Atoms and bonding'], shapes: ['Shapes of molecules', 'Atoms and bonding'], lattice: ['Giant structures', 'Atoms and bonding'],
+    ptable: ['The Periodic Table', 'The Periodic Table'], periodicity: ['Periodicity and ionisation energy', 'The Periodic Table'], reactivity: ['The reactivity series', 'The Periodic Table'], complex: ['Colours of complexes', 'The Periodic Table'],
+    moles: ['Mole calculator', 'Quantities and energy'], profile: ['Reaction pathway diagrams', 'Quantities and energy'], bonds: ['Bond energies', 'Quantities and energy'], gibbs: ['Gibbs free energy', 'Quantities and energy'],
+    rate: ['Rates of reaction', 'Rates and equilibrium'], boltzmann: ['The Boltzmann distribution', 'Rates and equilibrium'], orders: ['Orders of reaction', 'Rates and equilibrium'], equilibrium: ['The Haber process', 'Rates and equilibrium'],
+    ph: ['The pH scale', 'Acids and electrochemistry'], titration: ['Titration curves', 'Acids and electrochemistry'], electrolysis: ['Electrolysis', 'Acids and electrochemistry'], cell: ['Electrochemical cells', 'Acids and electrochemistry'],
+    homologous: ['Homologous series', 'Organic chemistry and analysis'], fractions: ['Crude oil fractions', 'Organic chemistry and analysis'], chromatography: ['Paper chromatography', 'Organic chemistry and analysis'], iontests: ['Tests for ions and gases', 'Organic chemistry and analysis'], ir: ['Infrared spectra', 'Organic chemistry and analysis'], nmr: ['Proton NMR spectra', 'Organic chemistry and analysis'],
   };
   window.Widgets = {
-    has: lid => !!MAP[lid], list: lid => MAP[lid] || [],
+    has: lid => !!MAP[lid], list: lid => MAP[lid] || [], count: Object.keys(W).length,
+    all: () => Object.keys(NAMES).filter(k => W[k]).map(k => ({ name: k, title: NAMES[k][0], group: NAMES[k][1], lectures: Object.keys(MAP).filter(l => MAP[l].includes(k)) })),
     mount(name, el, opts) { try { W[name](el, opts); } catch (e) { el.remove(); if (window.console) console.error('figure ' + name, e); } },
     clear() { kills.forEach(k => { try { k(); } catch (e) { } }); kills.clear(); },
   };
