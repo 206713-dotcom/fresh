@@ -1,3 +1,4 @@
+import { extraDeskTasks } from './expanded-bank.mjs';
 const harbour = `At six on Saturday, the harbour gates were already open. Volunteers had moved the repair workshop indoors after overnight rain. The new hall was harder to find, so Mina chalked arrows on the pavement. By noon, thirty bicycles had been repaired. She counted the untouched bicycles twice before deciding to keep the doors open another hour.`;
 
 const library = `The old station library extended its opening hours last winter. Students now have somewhere warm to work after school, and weekend shifts suit readers who work late. A small donation paid for improved lighting, which made the quiet room usable after dark. The library lends tablets as well as books, and its volunteers help people complete online forms. Residents with weak internet connections can reserve a desk. The station location means that people can visit without paying for a second bus journey. Book deliveries reach readers with limited mobility. Rather than charging for every activity, the library offers free workshops and lends tools for simple repairs. Its shelves used to crowd the entrance. They have been rearranged, making it easier to move between sections. The manager calls the service “a second front door into the town”. She welcomes higher attendance but worries that the council may assume the volunteers can maintain the service alone.`;
@@ -97,11 +98,11 @@ const objectiveMap = {
 };
 const compositionObjectives = ['W1','W2','W3','W4','W5'];
 
-export const tasks = exercises.map(task => {
+export const tasks = [...exercises, ...extraDeskTasks].map(task => {
   const bands = task.marks === 40 ? compositionBands : bandGuides[task.id] ?? [];
   return {
     ...task,
-    objectives: objectiveMap[task.id] ?? compositionObjectives,
+    objectives: task.objectives ?? objectiveMap[task.id] ?? compositionObjectives,
     criteria: task.criteria.map(([name, max, guidance], index) =>
       [name, max, [guidance, bands[index]].filter(Boolean).join(' ')]),
   };

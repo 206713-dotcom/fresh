@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../gis-points.css?v=3">
 <script src="../gis-points.js?v=5" defer></script>
 <link rel="stylesheet" href="english/study.css">
-<script type="module" src="english/tool-page.mjs"></script>
+<script type="module" src="english/tool-page.mjs?v=question-bank"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -37,6 +37,7 @@
       <summary>Practice questions</summary>
       <p>Choose an excerpt to revise, then compare your response with an example.</p>
       <label for="notebook-question">Question</label><select id="notebook-question"></select> <button id="notebook-new-question" type="button">New question</button>
+      <p class="source" id="notebook-question-source" hidden></p>
       <blockquote id="notebook-example-excerpt" class="source"></blockquote>
       <p id="notebook-question-text"></p>
       <button id="notebook-use-excerpt" type="button">Use excerpt in notebook</button>

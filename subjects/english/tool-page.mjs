@@ -1,5 +1,5 @@
-import { setupNotebook, setupReadingLab, setupStudyDisplay, setupTheme } from './learning.mjs?v=balanced';
-import { tasks } from './practice.mjs';
+import { setupNotebook, setupReadingLab, setupStudyDisplay, setupTheme } from './learning.mjs?v=question-bank';
+import { tasks } from './practice.mjs?v=question-bank';
 import { read, write } from './storage.mjs';
 
 setupTheme(read, write);

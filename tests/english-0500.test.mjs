@@ -11,7 +11,7 @@ test('every practice task has a unique ID, known paper and consistent mark alloc
     assert.ok(task.timing > 0 && task.example && task.prompt);
   }
   assert.deepEqual(tasks.find(task => task.id === 'summary').target, [0, 120]);
-  assert.deepEqual(tasks.filter(task => task.marks === 40).map(task => task.number), ['2', '3', '4', '5']);
+  assert.deepEqual(tasks.filter(task => task.marks === 40 && !task.group).map(task => task.number), ['2', '3', '4', '5']);
 });
 
 test('word counts handle punctuation, contractions and blank drafts', () => {
@@ -75,4 +75,17 @@ test('evaluation reports error and agreement while rejecting leaked passage grou
   });
   assert.throws(() => evaluateMarking({ ...input, calibrationGroups:['test A'] }), /held-out/);
   assert.throws(() => evaluateMarking({ ...input, cases:[{ ...input.cases[0], model:[5] }] }), /criterion marks/);
+});
+
+test('the expanded bank has 400 questions per workspace and valid timed-task links', async () => {
+  const { extraLabPassages, extraNotebookExercises, extraWorkshopCases, extraDeskTasks } =
+    await import('../subjects/english/expanded-bank.mjs');
+  assert.equal(extraLabPassages.reduce((count, item) => count + item.questions.length, 0), 400);
+  const timedIds = new Set(extraDeskTasks.map(task => task.id));
+  assert.equal(timedIds.size, 400);
+  assert.equal(extraNotebookExercises.length, 400);
+  assert.equal(new Set(extraWorkshopCases.map(item => item.id)).size, 400);
+  assert.ok(extraWorkshopCases.every(item => timedIds.has(item.task) && item.source && item.versions.length === 3));
+  assert.ok(extraLabPassages.every(item => item.source && item.questions.every(([question, answer]) => question && answer)));
+  assert.ok(extraNotebookExercises.every(item => item.question && item.context && item.example));
 });

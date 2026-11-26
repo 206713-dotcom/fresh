@@ -1,6 +1,6 @@
-import { chooseDifferent, setupClearWriting, setupNewQuestion } from './question-controls.mjs';
-import { countWords, tasks } from './practice.mjs';
-import { labPassages, notebookExercises } from './tool-questions.mjs';
+import { chooseDifferent, groupedQuestions, setupClearWriting, setupNewQuestion } from './question-controls.mjs?v=question-bank';
+import { countWords, tasks } from './practice.mjs?v=question-bank';
+import { labPassages, notebookExercises } from './tool-questions.mjs?v=question-bank';
 
 const objectives = [
   ['R1','Understand explicit meanings','comprehension'],
@@ -239,12 +239,15 @@ export function setupNotebook(read, write, taskId) {
   select.append(...objectives.map(([id,title]) => new Option(id + ' · ' + title,id)));
 
   const questions = get('notebook-question');
-  questions.append(...notebookExercises.map((item, index) => new Option(item.title, index)));
+  groupedQuestions(questions, notebookExercises, (item, index) => [item.group ?? 'Core exercises', index, item.title]);
 
   function showQuestion() {
     const item = notebookExercises[questions.value];
     get('notebook-example-excerpt').textContent = item.excerpt;
     get('notebook-question-text').textContent = item.question;
+    const source = get('notebook-question-source');
+    source.textContent = item.context ?? '';
+    source.hidden = !item.context;
     get('notebook-example-text').textContent = item.example;
     get('notebook-example').open = false;
   }

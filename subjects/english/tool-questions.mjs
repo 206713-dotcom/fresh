@@ -1,4 +1,6 @@
-export const labPassages = [
+import { extraLabPassages, extraNotebookExercises } from './expanded-bank.mjs';
+
+const originals = [
   {
     id: 'lab-tide-clock', title: 'The tide clock',
     source: 'At six, Mara climbed the iron stairs to the tide clock. The fog had swallowed the end of the pier. A bell sounded from somewhere beyond the railing, then the harbour fell quiet again.\n\nThe clock’s hand was stuck two marks above low tide. Mara tapped the glass, although she knew the fault was behind it. She checked the water against the ladder below. Only the bottom rung was wet.\n\nShe tied a strip of red cloth to the railing and walked back to the ticket office. By the time the first passengers arrived, her handwritten warning was pinned over the timetable.',
@@ -28,7 +30,7 @@ export const labPassages = [
   },
 ];
 
-export const notebookExercises = [
+const notebookOriginals = [
   { skill: 'R2', title: 'Support an inference', excerpt: 'Jules is worried.', question: 'Jules folds the unopened letter and slips it under a plate when footsteps approach. Revise the inference using one of these actions as evidence.', example: 'Jules seems anxious about someone seeing the letter. Hiding it under a plate as the footsteps approach suggests a deliberate attempt to conceal it.' },
   { skill: 'R4', title: 'Explain a word choice', excerpt: '“Nibbled” is personification and creates an image.', question: 'In “the waves nibbled at the steps”, explain what “nibbled” suggests about how the water moves.', example: '“Nibbled” suggests small, repeated bites. The waves reach the steps in brief touches, gradually wearing at the edge.' },
   { skill: 'R5', title: 'Keep a summary selective', excerpt: 'The bus was blue, the windows rattled, the driver waited for a spare tyre and a tree blocked the road.', question: 'Rewrite the sentence to include only why the journey was delayed.', example: 'The bus was delayed while the driver waited for a replacement tyre and by a fallen tree blocking the road.' },
@@ -36,3 +38,6 @@ export const notebookExercises = [
   { skill: 'W4', title: 'Adapt the tone to the audience', excerpt: 'Hi council, this crossing is a total mess and you have to do something.', question: 'Rewrite this opening for a formal letter asking the council to improve a crossing.', example: 'I am writing to request a review of the crossing on Mill Road, where the poor sightline makes it difficult for pedestrians to see approaching traffic.' },
   { skill: 'W5', title: 'Repair a comma splice', excerpt: 'The lights went out, nobody moved.', question: 'Correct the punctuation. How does your choice affect the pace?', example: '“The lights went out. Nobody moved.” The full stop gives each action a distinct beat and emphasises the stillness after the blackout.' },
 ];
+
+export const labPassages = [...originals, ...extraLabPassages];
+export const notebookExercises = [...notebookOriginals, ...extraNotebookExercises];

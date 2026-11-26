@@ -1,4 +1,5 @@
-import { setupClearWriting, setupNewQuestion } from './question-controls.mjs';
+import { extraWorkshopCases } from './expanded-bank.mjs';
+import { groupedQuestions, setupClearWriting, setupNewQuestion } from './question-controls.mjs?v=question-bank';
 const cases = [
   {
     id: 'language', title: 'Writer’s effects',
@@ -79,12 +80,14 @@ const cases = [
   },
 ];
 
+cases.push(...extraWorkshopCases);
+
 export function setupWorkshop(read, write) {
   const get = id => document.getElementById(id);
   const select = get('workshop-skill');
   const draft = get('workshop-draft');
   const status = get('workshop-status');
-  select.append(...cases.map(item => new Option(item.title,item.id)));
+  groupedQuestions(select, cases, item => [item.group ?? 'Core exercises', item.id, item.title]);
 
   const steps = [...document.querySelectorAll('[data-map-step]')];
   function showStep(step, focus = false) {
@@ -107,6 +110,11 @@ export function setupWorkshop(read, write) {
   function show() {
     const item = cases.find(row => row.id === select.value);
     get('workshop-brief').textContent = item.brief;
+    get('map-write').querySelector('[data-workshop-context]').hidden = !item.source;
+    for (const node of document.querySelectorAll('[data-workshop-source]')) {
+      node.textContent = item.source ?? '';
+      node.hidden = !item.source;
+    }
     get('workshop-start').textContent = item.starting;
     get('workshop-pitfall').textContent = item.pitfall;
     get('map-write-brief').textContent = item.brief;

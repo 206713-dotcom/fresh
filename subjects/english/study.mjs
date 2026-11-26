@@ -1,8 +1,8 @@
-import { setupClearWriting, setupNewQuestion } from './question-controls.mjs';
-import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
-import { setupLearningTools, updateMetrics } from './learning.mjs?v=balanced';
+import { groupedQuestions, setupClearWriting, setupNewQuestion } from './question-controls.mjs?v=question-bank';
+import { countWords, papers, rubricVersion, tasks } from './practice.mjs?v=question-bank';
+import { setupLearningTools, updateMetrics } from './learning.mjs?v=question-bank';
 import { read, write as writeStorage } from './storage.mjs';
-import { setupWorkshop } from './workshop.mjs';
+import { setupWorkshop } from './workshop.mjs?v=question-bank';
 import { readAttempt, timeRemaining } from './exam.mjs';
 
 const get = id => document.getElementById(id);
@@ -33,14 +33,11 @@ function redirectLegacyTool() {
   if (page && !examActive()) location.replace(page + location.search);
 }
 
-for (const paper of papers) {
-  const group = document.createElement('optgroup');
-  group.label = paper.title;
-  for (const exercise of tasks.filter(item => item.paper === paper.id)) {
-    group.append(new Option(exercise.number + ' · ' + exercise.title, exercise.id));
-  }
-  select.append(group);
-}
+groupedQuestions(select, tasks, exercise => [
+  exercise.group ?? papers.find(paper => paper.id === exercise.paper).title,
+  exercise.id,
+  exercise.group ? exercise.title : exercise.number + ' · ' + exercise.title,
+]);
 
 function updateWords() {
   const count = countWords(editor.value);
