@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {defaults,valid,schedule,mark,accuracy,eligible,mistakes} from '../../subjects/biology/src/state.js';
+import {topics,lessons,questions,cards} from '../../subjects/biology/src/content.js';
+test('topic and question integrity',()=>{assert.equal(topics.length,21);assert.equal(new Set(topics.map(t=>t.id)).size,21);assert.equal(new Set(questions.map(q=>q.id)).size,questions.length);assert.equal(new Set(cards.map(c=>c.id)).size,cards.length);for(const c of cards){assert.ok(lessons.some(l=>l.id===c.lessonId));assert.ok(c.front&&c.back)}for(const q of questions){assert.ok(lessons.some(l=>l.id===q.lessonId));if(q.type==='mcq'){assert.equal(q.options.length,4);assert.equal(new Set(q.options.map(o=>o.text)).size,4);assert.equal(q.options.filter(o=>o.id===q.correct).length,1)}}});
+test('profile and invalid import',()=>{assert.ok(valid(defaults()));assert.ok(!valid({version:1}))});
+test('review intervals',()=>{assert.equal(schedule(null,'Again',0).due,600000);assert.equal(schedule(null,'Good',0).due,172800000);assert.equal(schedule({days:179},'Easy',0).days,180)});
+test('tier filtering',()=>{assert.ok(!eligible({tier:'supplement'},{tier:'core'}));assert.ok(eligible({tier:'supplement'},{tier:'extended'}))});
+test('marking and pending responses',()=>{const q={type:'mcq',correct:'2',max:1};assert.equal(mark(q,'2'),1);assert.equal(mark(q,'1'),0);assert.equal(mark(q,''),0);assert.equal(mark({type:'numeric',correct:200,tolerance:.01,max:1},'200.001'),1);assert.equal(mark({type:'numeric',correct:200,tolerance:.01,max:1},'Infinity'),0);assert.equal(mark({type:'written',max:3},'answer'),null)});
+test('weighted marks and pending',()=>{const r=accuracy([{submitted:1,items:[{id:'a',max:1},{id:'b',max:3},{id:'c',max:2}],marks:{a:1,b:null,c:1}}]);assert.equal(r.earned,2);assert.equal(r.possible,3);assert.equal(r.pending,3)});
+test('mistakes deduplicate and resolve',()=>{const s=defaults(),a={id:'1',items:[{id:'q',max:1}],marks:{q:0},flags:[]};mistakes(s,a);mistakes(s,a);assert.equal(s.mistakes.q.history.length,1);mistakes(s,{...a,id:'2',marks:{q:1}});assert.ok(s.mistakes.q.resolved)});
+
+import {coverageFor,coverageSummary} from '../../subjects/biology/src/curriculum/coverage.js';
+import {renderLessonVisual} from '../../subjects/biology/src/curriculum/lesson-visuals.js';
+import {mountBiology,biologyNavigation} from '../../subjects/biology/src/index.js';
+import {createBiologyStore,KEY} from '../../subjects/biology/src/state.js';
+test('public entry point and coverage navigation load',()=>{assert.equal(typeof mountBiology,'function');assert.ok(biologyNavigation.some(n=>n.path==='/coverage'))});
+test('enzyme objective checklist is connected and honest',()=>{const rows=coverageFor('t05');assert.equal(rows.length,9);assert.equal(rows.filter(o=>o.tier==='core').length,5);assert.ok(rows.every(o=>o.hasMaterial&&!o.complete));assert.deepEqual(coverageFor('t01'),[]);assert.match(coverageSummary(),/1 of 21 topics/)});
+test('enzyme visual resources resolve',()=>{for(const l of lessons.filter(l=>l.visual))assert.ok(renderLessonVisual(l.visual).length>0,l.id);assert.match(renderLessonVisual('enzyme-curves'),/pH/);assert.match(renderLessonVisual('enzyme-practical'),/0\.020/)});
+test('Biology storage remains isolated and round-trips',()=>{const m=new Map([['fresh-shared','unchanged']]);const storage={getItem:k=>m.get(k),setItem:(k,v)=>m.set(k,v)};const store=createBiologyStore({storage});const s=store.load();s.notes['lesson-t05-ph']='pH notes';assert.ok(store.save(s));assert.equal(store.load().notes['lesson-t05-ph'],'pH notes');assert.equal(m.get('fresh-shared'),'unchanged');assert.ok(m.has(KEY));});

@@ -1,0 +1,5 @@
+import {topic01Batch} from './batch01-classification.js';
+const id=r=>'lesson-t01-batch-'+r[1];
+export const classificationLessons=topic01Batch.map(r=>({id:id(r),topicId:'t01',tier:r[2],refs:r[3],title:r[4],body:r[5],sections:r[6],tips:r[7],minutes:8,review:'draft',mappingStatus:'provisional objective references — exact audit pending'}));
+export const classificationQuestions=topic01Batch.flatMap(r=>{const [stem,...options]=r[8], [written,rubric]=r[9];const base={topicId:'t01',lessonId:id(r),tier:r[2],refs:r[3],review:'draft',difficulty:'standard'};return [{...base,id:'q-'+id(r)+'-mc',type:'mcq',stem,options:options.map((text,i)=>({id:String(i),text})),correct:'0',max:1,ao:'AO1',explanation:options[0]},{...base,id:'q-'+id(r)+'-wr',type:'written',stem:written,max:rubric.length,rubric,ao:'AO2',explanation:rubric.join('. ')+'.'}]});
+export const classificationCards=topic01Batch.flatMap(r=>[{id:'card-'+id(r)+'-1',topicId:'t01',lessonId:id(r),tier:r[2],front:r[8][0],back:r[8][1]},{id:'card-'+id(r)+'-2',topicId:'t01',lessonId:id(r),tier:r[2],front:r[9][0],back:r[9][1].join('; ')}]);

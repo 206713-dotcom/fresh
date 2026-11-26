@@ -1,0 +1,4 @@
+/* Host-side styles apply only to the Biology mount; shared CSS is untouched. */
+.biology-host{width:min(1440px,calc(100% - 28px));margin-inline:auto;padding-block:1rem 4rem}
+#biology-section{margin-top:1rem;--fresh-biology-bg:var(--paper);--fresh-biology-surface:var(--white);--fresh-biology-text:var(--ink);--fresh-biology-muted:var(--muted);--fresh-biology-accent:var(--green);--fresh-biology-border:var(--line);--fresh-biology-font:system-ui,sans-serif}
+#biology-section{min-width:0}

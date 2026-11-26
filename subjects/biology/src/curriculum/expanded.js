@@ -1,0 +1,10 @@
+import {foundationUnits} from './foundation-units.js';
+import {humanUnits} from './human-units.js';
+import {geneticsEcologyUnits} from './genetics-ecology-units.js';
+const visualKeys=new Set(["detail-01-classification","detail-02-cells","detail-03-water-potential","detail-03-active","detail-04-food-tests","detail-06-limiting","detail-07-digestion","detail-09-circulation","detail-11-ventilation","detail-12-respiration","detail-13-nephron","detail-14-nerves","detail-16-flower-fertilisation","detail-17-crosses","detail-19-population","detail-20-eutrophication","detail-21-gm"]);
+const units=[...foundationUnits,...humanUnits,...geneticsEcologyUnits];
+const id=u=>'lesson-t'+u[0]+'-detail-'+u[1];
+const refs=u=>[u[3]];
+export const expandedLessons=units.map(u=>({id:id(u),topicId:'t'+u[0],tier:u[2],refs:refs(u),title:u[4],body:u[5],sections:u[6],tips:u[7],summary:[u[5].split('. ')[0]+'.',...u[7]],minutes:8,review:'draft',mappingStatus:'provisional subtopic reference — exact numbered objective audit pending',visual:visualKeys.has('detail-'+u[0]+'-'+u[1])?'detail-'+u[0]+'-'+u[1]:undefined}));
+export const expandedQuestions=units.flatMap(u=>{const [stem,...options]=u[9];const [written,rubric]=u[8];const base={topicId:'t'+u[0],lessonId:id(u),tier:u[2],refs:refs(u),review:'draft',difficulty:'standard'};return [{...base,id:'q-'+id(u)+'-mc1',type:'mcq',stem,options:options.map((text,i)=>({id:String(i),text})),correct:'0',max:1,ao:'AO1',explanation:u[10][0]},{...base,id:'q-'+id(u)+'-wr1',type:'written',stem:written,max:rubric.length,rubric,ao:'AO2',explanation:rubric.join('. ')+'.'}]});
+export const expandedCards=units.flatMap(u=>[{id:'card-'+id(u)+'-1',topicId:'t'+u[0],lessonId:id(u),tier:u[2],front:u[9][0],back:u[9][1]+' — '+u[10][0]},{id:'card-'+id(u)+'-2',topicId:'t'+u[0],lessonId:id(u),tier:u[2],front:u[8][0],back:u[8][1].join('; ')}]);
