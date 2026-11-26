@@ -32,6 +32,50 @@ const cases = [
       ['Sophisticated', 'A paper cup rolled along the yellow line and rested against a post. The clock clicked. Then the thin hum from the rails deepened, and the cup began to tremble where it lay.', 'Returns to the same visual detail after a change in sound. The tremor suggests the unseen train is close.'],
     ],
   },
+  {
+    id: 'inference-letter', task: 'attitude', title: 'Inference from actions',
+    brief: 'Amir takes his name off the sign-up sheet, then stays beside the door until his friend arrives. What might these actions suggest? Support your inference.',
+    starting: 'Amir is scared and does not want to go.',
+    pitfall: 'The answer gives one confident explanation and ignores Amir’s decision to stay.',
+    versions: [
+      ['Developing', 'Amir is hesitant because he takes his name off the sheet.', 'Supports a basic inference with one action.'],
+      ['Strong', 'Crossing out his name suggests Amir has doubts, but waiting by the door shows he still wants to see what happens.', 'Explains the tension between the two actions.'],
+      ['Sophisticated', 'Amir backs out of committing, but he does not leave. Waiting for his friend suggests his doubts may be about going alone, though the passage does not establish his exact motive.', 'Uses both details and distinguishes an inference from a certainty.'],
+    ],
+  },
+  {
+    id: 'summary-changes', task: 'summary', title: 'Selective summary',
+    brief: 'Summarise how the museum improved access. It painted its doors blue, replaced steep steps with a ramp, added large-print maps and bought two paintings.',
+    starting: 'The museum made changes, including painting its doors and buying artwork.',
+    pitfall: 'The answer leaves out both changes relevant to access.',
+    versions: [
+      ['Developing', 'The museum built a ramp and added large-print maps.', 'Includes the two relevant changes.'],
+      ['Strong', 'The museum made entry easier with a ramp and made its maps easier to read by using larger print.', 'Restates both details and links each to access.'],
+      ['Sophisticated', 'Visitors can enter without using the steep steps and navigate the galleries with maps printed in larger type.', 'Combines the points concisely and explains their practical benefits.'],
+    ],
+  },
+  {
+    id: 'evaluate-survey', task: 'evaluation', title: 'Evaluating evidence',
+    brief: 'A school trialled a later start. Eighteen of twenty survey respondents said they felt more alert. Explain what this evidence can and cannot show.',
+    starting: 'The later start worked because 90 per cent of students were more alert.',
+    pitfall: 'The answer treats self-reports from twenty respondents as a measurement of the whole school.',
+    versions: [
+      ['Developing', 'Most respondents felt more alert, but only twenty answered.', 'Limits the claim to the group surveyed.'],
+      ['Strong', 'Eighteen replies suggest the trial helped some students feel more alert, but the small group may differ from the rest of the school.', 'Separates the observation from a wider inference.'],
+      ['Sophisticated', 'The replies support continuing the trial, but they measure perceived alertness in a small group. A broader survey alongside attendance or punctuality records would give the school a firmer basis for a decision.', 'Weighs the strength of the evidence and identifies what could improve it.'],
+    ],
+  },
+  {
+    id: 'narrative-choice', task: 'narrative', title: 'Narrative turning points',
+    brief: 'Rewrite the moment a runner must choose between finishing a race and helping a rival who has fallen.',
+    starting: 'I stopped to help. I decided that helping was more important than winning.',
+    pitfall: 'The answer reports the decision before the reader can feel what the choice costs.',
+    versions: [
+      ['Developing', 'I could see the finish line, but I stopped when my rival tried and failed to stand.', 'Gives a concrete reason for stopping.'],
+      ['Strong', 'The finish tape was lifting in the wind. Behind me, a shoe scraped twice against the track. I turned and held out a hand.', 'Alternates details from the two choices and shows the decision in action.'],
+      ['Sophisticated', 'One stride more and I could reach the tape. Behind me came a scrape, a pause, then the same scrape. I stepped out of my lane. The cheers went on without me.', 'Uses pacing and sound to dramatise the choice and lets the consequence close the moment.'],
+    ],
+  },
 ];
 
 export function setupWorkshop(read, write) {
@@ -67,7 +111,7 @@ export function setupWorkshop(read, write) {
     get('map-write-brief').textContent = item.brief;
     draft.value = read('workshop:' + item.id) ?? '';
     status.textContent = draft.value ? 'Revision restored' : '';
-    get('workshop-practice').href = '?task=' + item.id + '#practice';
+    get('workshop-practice').href = '?task=' + (item.task ?? item.id) + '#practice';
     get('workshop-versions').replaceChildren(...item.versions.map(([name,text,explanation]) => {
       const article = document.createElement('article');
       for (const [tag,value] of [['h3',name],['p',text],['p',explanation]]) {
