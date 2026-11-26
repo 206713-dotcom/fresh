@@ -10,18 +10,17 @@
   var PROGRESS_KEY = "video_progress"; // stored as ecbiz_video_progress (new key only)
   var PALETTE = {
     bg: "#0B1220", bg2: "#13233A", panel: "#111C2E", ink: "#F8FAFC", muted: "#94A3B8",
-    accent: "#38BDF8", accent2: "#A78BFA", good: "#10B981", warn: "#F59E0B", bad: "#EF4444",
-    glow1: "rgba(56,189,248,0.20)", glow2: "rgba(167,139,250,0.16)"
+    accent: "#38BDF8", accent2: "#A78BFA", good: "#10B981", warn: "#F59E0B", bad: "#EF4444"
   };
   /* Each unit has its own visual identity so the videos don't look like the
      same bland slide deck. Values are applied to PALETTE at frame start. */
   var THEMES = {
-    1: { bg: "#08111F", bg2: "#102B45", panel: "#101D31", ink: "#F8FAFC", muted: "#9FB4CC", accent: "#38BDF8", accent2: "#A78BFA", good: "#34D399", warn: "#FBBF24", bad: "#F87171", glow1: "rgba(56,189,248,0.22)", glow2: "rgba(167,139,250,0.16)" },
-    2: { bg: "#0C1024", bg2: "#231C4A", panel: "#171A34", ink: "#F8FAFC", muted: "#B6B0D6", accent: "#A78BFA", accent2: "#F472B6", good: "#34D399", warn: "#FBBF24", bad: "#FB7185", glow1: "rgba(167,139,250,0.22)", glow2: "rgba(244,114,182,0.15)" },
-    3: { bg: "#06171A", bg2: "#0F3B3A", panel: "#102A2C", ink: "#F0FDFC", muted: "#9BC4C0", accent: "#2DD4BF", accent2: "#60A5FA", good: "#4ADE80", warn: "#FCD34D", bad: "#FB7185", glow1: "rgba(45,212,191,0.22)", glow2: "rgba(96,165,250,0.15)" },
-    4: { bg: "#0D1117", bg2: "#332614", panel: "#1C1A17", ink: "#FFF7ED", muted: "#C2B49C", accent: "#F59E0B", accent2: "#38BDF8", good: "#34D399", warn: "#FCD34D", bad: "#F87171", glow1: "rgba(245,158,11,0.20)", glow2: "rgba(56,189,248,0.13)" },
-    5: { bg: "#04140F", bg2: "#0B3626", panel: "#0E2620", ink: "#ECFDF5", muted: "#A7C9BA", accent: "#34D399", accent2: "#FBBF24", good: "#4ADE80", warn: "#FBBF24", bad: "#FB7185", glow1: "rgba(52,211,153,0.22)", glow2: "rgba(251,191,36,0.14)" },
-    6: { bg: "#100A1F", bg2: "#3A1B33", panel: "#201630", ink: "#FDF4FF", muted: "#CDB4D4", accent: "#E879F9", accent2: "#FB923C", good: "#34D399", warn: "#FCD34D", bad: "#FB7185", glow1: "rgba(232,121,249,0.20)", glow2: "rgba(251,146,60,0.14)" }
+    1: { bg: "#08111F", bg2: "#102B45", panel: "#101D31", ink: "#F8FAFC", muted: "#9FB4CC", accent: "#38BDF8", accent2: "#A78BFA", good: "#34D399", warn: "#FBBF24", bad: "#F87171" },
+    2: { bg: "#0C1024", bg2: "#231C4A", panel: "#171A34", ink: "#F8FAFC", muted: "#B6B0D6", accent: "#A78BFA", accent2: "#F472B6", good: "#34D399", warn: "#FBBF24", bad: "#FB7185" },
+    3: { bg: "#06171A", bg2: "#0F3B3A", panel: "#102A2C", ink: "#F0FDFC", muted: "#9BC4C0", accent: "#2DD4BF", accent2: "#60A5FA", good: "#4ADE80", warn: "#FCD34D", bad: "#FB7185" },
+    4: { bg: "#0D1117", bg2: "#332614", panel: "#1C1A17", ink: "#FFF7ED", muted: "#C2B49C", accent: "#F59E0B", accent2: "#38BDF8", good: "#34D399", warn: "#FCD34D", bad: "#F87171" },
+    5: { bg: "#04140F", bg2: "#0B3626", panel: "#0E2620", ink: "#ECFDF5", muted: "#A7C9BA", accent: "#34D399", accent2: "#FBBF24", good: "#4ADE80", warn: "#FBBF24", bad: "#FB7185" },
+    6: { bg: "#100A1F", bg2: "#3A1B33", panel: "#201630", ink: "#FDF4FF", muted: "#CDB4D4", accent: "#E879F9", accent2: "#FB923C", good: "#34D399", warn: "#FCD34D", bad: "#FB7185" }
   };
   function hexAlpha(hex, a) {
     var h = String(hex || "#ffffff").replace("#", "");
@@ -90,7 +89,7 @@
       ".ecv-close{background:#1e293b;border:1px solid #334155;color:#e2e8f0;border-radius:9px;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}",
       ".ecv-stage{position:relative;background:#000;line-height:0}",
       ".ecv-canvas{width:100%;height:auto;display:block;aspect-ratio:16/9}",
-      ".ecv-caption{position:absolute;left:6%;right:6%;bottom:7%;text-align:center;font-size:clamp(11px,1.35vw,17px);font-weight:650;line-height:1.45;color:#fff;text-shadow:0 2px 6px #000,0 0 18px #000;pointer-events:none}",
+      ".ecv-caption{position:absolute;left:6%;right:6%;bottom:2%;text-align:center;font-size:clamp(11px,1.35vw,17px);font-weight:650;line-height:1.4;color:#fff;text-shadow:0 2px 6px #000;background:rgba(8,13,25,.92);padding:.3em .75em;border-radius:.45em;pointer-events:none}",
       ".ecv-controls{padding:12px 16px 16px;display:flex;flex-direction:column;gap:10px}",
       ".ecv-seek{width:100%;accent-color:#38bdf8;cursor:pointer}",
       ".ecv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}",
@@ -215,392 +214,560 @@
     if (cur) lines.push(cur);
     return lines.slice(0, 4);
   }
-  function labelCards(ctx, labels, x, y, w, p) {
-    if (!labels || !labels.length) return;
-    var per = Math.min(labels.length, 4);
-    var h = 44, gap = 8;
-    for (var i = 0; i < per; i++) {
-      var appear = Math.max(0, Math.min(1, (p * 4 - i) * 3));
-      if (appear <= 0) continue;
-      var yy = y + i * (h + gap);
-      ctx.globalAlpha = appear;
-      ctx.save();
-      ctx.shadowColor = hexAlpha(PALETTE.accent, .28);
-      ctx.shadowBlur = 16;
-      ctx.fillStyle = hexAlpha(PALETTE.panel, .92);
-      ctx.strokeStyle = hexAlpha(PALETTE.accent, .42);
-      ctx.lineWidth = 1;
-      rr(ctx, x, yy, w, h, 9); ctx.fill(); ctx.stroke();
-      ctx.restore();
-      ctx.fillStyle = PALETTE.accent;
-      rr(ctx, x, yy + 6, 4, h - 12, 2); ctx.fill();
-      var lines = wrap(ctx, labels[i], w - 24, 15, 650);
-      lines.slice(0, 2).forEach(function (ln, li) {
-        text(ctx, ln, x + 12, yy + 15 + li * 17, 15, li ? PALETTE.muted : PALETTE.ink, li ? 500 : 750);
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-  function arrow(ctx, x1, y1, x2, y2, color, p) {
-    var mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-    ctx.strokeStyle = color; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
-    var a = Math.atan2(y2 - y1, x2 - x1);
-    ctx.beginPath(); ctx.moveTo(x2, y2);
-    ctx.lineTo(x2 - 12 * Math.cos(a - .5), y2 - 12 * Math.sin(a - .5));
-    ctx.lineTo(x2 - 12 * Math.cos(a + .5), y2 - 12 * Math.sin(a + .5));
-    ctx.closePath(); ctx.fillStyle = color; ctx.fill();
-    var t = (p * 3) % 1;
-    ctx.beginPath(); ctx.arc(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, 6, 0, Math.PI * 2);
-    ctx.fillStyle = PALETTE.warn; ctx.fill();
-    text(ctx, "", mx, my, 1, color);
-  }
-  function node(ctx, x, y, w, h, label, color, active) {
+
+  var EPISODE_ART = {
+    VID_U1_01: ["board", "factory", "box"], VID_U1_02: ["farm", "factory", "shop"],
+    VID_U1_03: ["truck", "box", "chart"], VID_U1_04: ["pottery", "shop", "people"],
+    VID_U1_05: ["target", "people", "chart"], VID_U2_01: ["shirt", "people", "award"],
+    VID_U2_02: ["truck", "people", "network"], VID_U2_03: ["funnel", "document", "people"],
+    VID_U2_04: ["message", "people", "clock"], VID_U3_01: ["package", "shop", "target"],
+    VID_U3_02: ["meal", "pin", "document"], VID_U3_03: ["headphones", "tag", "package"],
+    VID_U3_04: ["globe", "package", "shield"], VID_U4_01: ["bike", "factory", "clock"],
+    VID_U4_02: ["bread", "chart", "coin"], VID_U4_03: ["medical", "shield", "factory"],
+    VID_U4_04: ["pin", "factory", "truck"], VID_U5_01: ["board", "bank", "coin"],
+    VID_U5_02: ["meal", "coin", "calendar"], VID_U5_03: ["document", "coin", "chart"],
+    VID_U5_04: ["scale", "document", "shop"], VID_U5_05: ["book", "chart", "coin"],
+    VID_U6_01: ["bike", "chart", "factory"], VID_U6_02: ["farm", "factory", "globe"],
+    VID_U6_03: ["chip", "globe", "truck"]
+  };
+
+  // Most pictures use a filled silhouette and a second path for the details.
+  var ICON_PATHS = {
+    board: ["M8 55C4 49 11 37 24 24S48 8 56 8C56 16 52 27 39 40S14 59 8 55Z", "M13 51L52 12M19 40L27 44M30 28L36 34"],
+    factory: ["M5 55V30L23 21V32L39 23V34L47 30L50 10H57L60 55Z", "M12 42H18M25 42H31M38 42H44M51 42H54M14 12H28M31 6H40"],
+    farm: ["M8 55V30L24 15L40 30V55ZM45 55V25H58V55Z", "M16 55V38H32V55M17 40L30 53M30 40L17 53M45 25Q52 10 58 25M5 55H61"],
+    truck: ["M5 19H39V46H5ZM39 28H51L60 39V46H39ZM13 47A6 6 0 1 0 25 47A6 6 0 1 0 13 47ZM43 47A6 6 0 1 0 55 47A6 6 0 1 0 43 47Z", "M46 31L53 39H44V31M11 28H31M11 35H24"],
+    box: ["M7 20L32 9L57 20V46L32 57L7 46Z", "M7 20L32 32L57 20M32 32V57M19 14L45 26V37"],
+    shop: ["M9 55V27L15 13H49L55 27V55Z", "M9 29H55M17 13L14 28M26 13L24 28M38 13L40 28M47 13L50 28M17 55V38H29V55M36 37H48V46H36Z"],
+    pottery: ["M18 12H46V19L42 24C57 39 52 56 32 56S7 39 22 24L18 19Z", "M18 19H46M19 36Q32 43 45 36M16 44Q32 53 48 44"],
+    people: ["M22 24A8 8 0 1 0 22 8A8 8 0 1 0 22 24ZM45 31A7 7 0 1 0 45 17A7 7 0 1 0 45 31ZM5 53V44A17 17 0 0 1 39 44V53ZM42 53V44L40 38A13 13 0 0 1 59 50V53Z", ""],
+    target: ["M32 7A25 25 0 1 0 32 57A25 25 0 1 0 32 7Z", "M32 17A15 15 0 1 0 32 47A15 15 0 1 0 32 17ZM32 27A5 5 0 1 0 32 37A5 5 0 1 0 32 27ZM32 32L55 9L61 9M55 9V3"],
+    shirt: ["M18 10L26 8Q32 18 38 8L46 10L60 23L50 34L45 29V56H19V29L14 34L4 23Z", "M25 22H39M32 22V34"],
+    award: ["M19 35L14 58L24 53L30 59L34 37L40 59L46 53L56 58L49 32ZM34 7A18 18 0 1 0 34 43A18 18 0 1 0 34 7Z", "M26 25L32 31L43 19"],
+    network: ["M25 7H39V20H25ZM6 43H20V57H6ZM25 43H39V57H25ZM44 43H58V57H44Z", "M32 20V43M13 43V32H51V43"],
+    funnel: ["M6 10H58L40 34V49L24 57V34Z", "M12 20H52M19 29H45M26 39H38"],
+    document: ["M13 6H41L52 17V58H13Z", "M41 6V18H52M21 27H43M21 36H43M21 45H35"],
+    message: ["M7 10H57V45H33L21 55V45H7Z", "M18 22H46M18 31H40"],
+    clock: ["M32 7A25 25 0 1 0 32 57A25 25 0 1 0 32 7Z", "M32 17V32L42 40M16 32H19M45 32H48M32 45V48"],
+    package: ["M14 7H50L47 15L48 48L51 57H13L16 48L17 15Z", "M16 15H48M16 48H48M23 28Q32 19 41 28Q35 41 23 37Z"],
+    meal: ["M8 48H56Q54 22 32 22Q10 22 8 48ZM5 49H59V56H5Z", "M32 17V22M29 17H35M16 40Q19 31 27 30"],
+    pin: ["M32 6A20 20 0 0 1 52 26C52 38 32 58 32 58S12 38 12 26A20 20 0 0 1 32 6Z", "M32 17A9 9 0 1 0 32 35A9 9 0 1 0 32 17Z"],
+    headphones: ["M9 40V30A23 23 0 0 1 55 30V40M9 33H19V56H11Q5 56 5 50V39Q5 33 9 33ZM45 33H55Q59 33 59 39V50Q59 56 53 56H45Z", "M15 31A17 17 0 0 1 49 31M12 41V49M52 41V49"],
+    tag: ["M7 28L29 7H53V31L31 55Z", "M43 16A4 4 0 1 0 43 24A4 4 0 1 0 43 16ZM21 32L32 43M26 27L37 38"],
+    globe: ["M32 6A26 26 0 1 0 32 58A26 26 0 1 0 32 6Z", "M7 32H57M13 17Q32 26 51 17M13 47Q32 38 51 47M32 6C16 12 16 52 32 58C48 52 48 12 32 6Z"],
+    shield: ["M32 6L54 14V31Q54 47 32 58Q10 47 10 31V14Z", "M21 31L29 39L44 23"],
+    bike: ["M15 34A12 12 0 1 0 15 58A12 12 0 1 0 15 34ZM49 34A12 12 0 1 0 49 58A12 12 0 1 0 49 34Z", "M15 46L24 26L34 46H15L41 28L49 46M41 28L38 18H48M19 25H29"],
+    bread: ["M8 51V31Q3 20 15 15Q30 8 45 15Q60 18 56 31V51Z", "M17 28L24 19M29 28L36 19M41 28L47 21M13 43H51"],
+    medical: ["M11 34L35 10L54 29L30 53Z", "M9 40L22 53M14 48L5 58M34 10L42 4L60 23L54 29M28 18L34 24M21 25L27 31M15 31L21 37"],
+    bank: ["M5 25L32 9L59 25ZM8 51H56V57H8ZM13 26H21V51H13ZM28 26H36V51H28ZM43 26H51V51H43Z", "M30 19H34"],
+    coin: ["M32 8A24 24 0 1 0 32 56A24 24 0 1 0 32 8Z", "M32 15A17 17 0 1 0 32 49A17 17 0 1 0 32 15ZM32 22V42M39 25H29Q23 25 25 31L36 33Q42 37 35 39H25"],
+    calendar: ["M8 13H56V55H8Z", "M8 24H56M20 8V18M44 8V18M18 35H22M30 35H34M42 35H46M18 45H22M30 45H34M42 45H46"],
+    scale: ["M29 14H35V54H29ZM18 54H46V58H18ZM5 34H25Q22 43 15 43Q8 43 5 34ZM39 34H59Q56 43 49 43Q42 43 39 34Z", "M10 15H54M15 15L6 34M15 15L24 34M49 15L40 34M49 15L58 34"],
+    book: ["M5 14Q20 9 32 20Q45 9 59 14V53Q45 47 32 56Q19 47 5 53Z", "M32 20V56M12 26Q21 25 26 30M12 37Q21 36 26 41M38 30Q43 25 52 26M38 41Q43 36 52 37"],
+    chart: ["M14 39H23V53H14ZM28 28H37V53H28ZM42 14H51V53H42Z", "M7 8V54H58M15 31L31 20L44 8H54V18"],
+    chip: ["M13 13H51V51H13Z", "M22 22H42V42H22ZM23 4V13M32 4V13M41 4V13M23 51V60M32 51V60M41 51V60M4 23H13M4 32H13M4 41H13M51 23H60M51 32H60M51 41H60"],
+    gear: ["M27 6H37L40 14L49 13L56 20L54 29L59 34L56 43L47 45L44 54L35 58L28 53L19 56L12 50L13 41L6 37V27L14 23L15 14L23 10Z", "M32 21A11 11 0 1 0 32 43A11 11 0 1 0 32 21Z"]
+  };
+  var iconPaths = {};
+  var ICON_RULES = [
+    [/funnel|filter/, "funnel"], [/warehouse|factory|oven|workshop|plant|kiln|production|station|assembly|weld/, "factory"],
+    [/farm|land:|cocoa|harvest|environment/, "farm"], [/courier|truck|delivery|transport|dispatch|freight/, "truck"],
+    [/carton|box|inventory|stock|materials|component/, "box"], [/store|shop|retail|outlet|franchis/, "shop"],
+    [/scale|trade.off|weigh|balance|judgement/, "scale"], [/people|employee|labour|worker|customer|hire|staff|team|interview|owner|shareholder/, "people"],
+    [/goal|target|objective|aim/, "target"], [/training|qualification|reward|quality/, "award"],
+    [/org_|network|reporting|hierarchy|distribution/, "network"], [/questionnaire|paper|invoice|contract|survey|document|report|record|formula/, "document"],
+    [/communication|message|channel|feedback|advert|promotion/, "message"], [/clock|time|speed|delay/, "clock"],
+    [/product|snack|pack|sachet/, "package"], [/map|location|site|pin/, "pin"], [/price|label|cost|voucher/, "tag"],
+    [/global|world|export|import|tariff|overseas|exchange/, "globe"], [/shield|legal|risk|protect|safety|inspection/, "shield"],
+    [/bank|loan|capital|credit/, "bank"], [/coin|cash|profit|revenue|fund|finance|money|tax|wage/, "coin"],
+    [/calendar|month|forecast/, "calendar"], [/graph|chart|meter|gauge|rise|result|sales|output/, "chart"],
+    [/technology|machine|equipment|process/, "gear"]
+  ];
+
+  function picture(ctx, key, x, y, size, color) {
+    var paths = ICON_PATHS[key];
+    if (!iconPaths[key]) iconPaths[key] = paths.map(function (path) { return new Path2D(path); });
+    var shape = iconPaths[key];
     ctx.save();
-    ctx.shadowColor = hexAlpha(color, active ? .55 : .25);
-    ctx.shadowBlur = active ? 22 : 12;
-    ctx.fillStyle = active ? color : PALETTE.panel;
-    ctx.strokeStyle = color; ctx.lineWidth = 2;
-    rr(ctx, x, y, w, h, 8); ctx.fill(); ctx.stroke();
+    ctx.translate(x, y); ctx.scale(size / 64, size / 64);
+    ctx.fillStyle = hexAlpha(color, .42);
+    ctx.strokeStyle = color; ctx.lineWidth = 2.8;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.fill(shape[0]); ctx.stroke(shape[0]);
+    ctx.strokeStyle = PALETTE.ink; ctx.lineWidth = 2;
+    ctx.stroke(shape[1]);
     ctx.restore();
-    var lines = wrap(ctx, label, w - 12, 12, 700);
-    lines.slice(0, 2).forEach(function (ln, i) {
-      text(ctx, ln, x + w / 2, y + h / 2 + (i - (Math.min(lines.length, 2) - 1) / 2) * 14, 12,
-        active ? "#08111F" : PALETTE.ink, 750, "center");
+  }
+
+  function iconFor(label, fallback) {
+    var rule = ICON_RULES.find(function (entry) { return entry[0].test(String(label).toLowerCase()); });
+    return rule ? rule[1] : fallback;
+  }
+
+  function accentAt(i) {
+    return [PALETTE.accent, PALETTE.accent2, PALETTE.warn, PALETTE.good, PALETTE.bad][i % 5];
+  }
+
+  function words(ctx, label, x, y, w, size, maxLines, align, color) {
+    var lines = wrap(ctx, label, w, size, 750).slice(0, maxLines);
+    lines.forEach(function (line, i) {
+      text(ctx, line, x, y + (i - (lines.length - 1) / 2) * size * 1.15, size, color || PALETTE.ink, 750, align, w);
     });
   }
 
-  /* Layered, slowly moving background: base gradient, drifting light pools,
-     a scene-specific line motif, floating particles and a soft vignette. */
-  function drawBackdrop(ctx, W, H, t, scene) {
-    var g = ctx.createLinearGradient(0, 0, W, H);
+  function panel(ctx, x, y, w, h, color, opacity) {
+    var fill = ctx.createLinearGradient(x, y, x + w, y + h);
+    fill.addColorStop(0, hexAlpha(PALETTE.bg, opacity || .95));
+    fill.addColorStop(1, hexAlpha(PALETTE.panel, opacity || .95));
+    ctx.fillStyle = fill;
+    ctx.strokeStyle = hexAlpha(color, .56); ctx.lineWidth = 1.5;
+    rr(ctx, x, y, w, h, 20); ctx.fill(); ctx.stroke();
+  }
+
+  function reveal(local, index) {
+    return Math.max(.72, Math.min(1, .72 + (local - index * .28) * .38));
+  }
+
+  function pictogram(ctx, label, x, y, w, h, i, art, local, type) {
+    var color = accentAt(i), key = iconFor((type || "") + " " + label, art[i % art.length]);
+    ctx.save();
+    ctx.globalAlpha = reveal(local, i);
+    panel(ctx, x, y, w, h, color);
+    var size = Math.min(68, h * .41);
+    picture(ctx, key, x + (w - size) / 2, y + h * .13, size, color);
+    words(ctx, label, x + w / 2, y + h * .74, w - 24, Math.min(22, w / 8), 3, "center");
+    ctx.restore();
+  }
+
+  function drawBackdrop(ctx, W, H, t, art, scene) {
+    var g = ctx.createLinearGradient(0, H, W, 0);
     g.addColorStop(0, PALETTE.bg);
-    g.addColorStop(.55, PALETTE.bg2);
-    g.addColorStop(1, PALETTE.bg);
+    g.addColorStop(.48, PALETTE.bg2);
+    g.addColorStop(1, PALETTE.panel);
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
-    var pools = [
-      [W * .18 + Math.sin(t * .13) * W * .06, H * .22 + Math.cos(t * .11) * H * .06, W * .46, PALETTE.glow1],
-      [W * .82 + Math.cos(t * .09) * W * .05, H * .78 + Math.sin(t * .12) * H * .05, W * .42, PALETTE.glow2]
-    ];
-    pools.forEach(function (p) {
-      var rg = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], p[2]);
-      rg.addColorStop(0, p[3]);
-      rg.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H);
+    [0, 1, 2].forEach(function (i) {
+      var x = W * [.14, .87, .52][i] + Math.sin(t * .32 + i) * 31;
+      var y = H * [.88, .27, .48][i] + Math.cos(t * .25 + i) * 27;
+      var glow = ctx.createRadialGradient(x, y, 0, x, y, W * .42);
+      glow.addColorStop(0, hexAlpha(accentAt(i + scene.scene_number - 1), [.52, .62, .24][i]));
+      glow.addColorStop(1, "transparent");
+      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
     });
 
     ctx.save();
-    var vt = scene.visual_type || "";
-    if (/chart|graph|curve/.test(vt)) {
-      ctx.strokeStyle = hexAlpha(PALETTE.accent, .07); ctx.lineWidth = 1;
-      for (var i = -H; i < W; i += 64) {
-        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + H, H); ctx.stroke();
-      }
-    } else if (/cycle/.test(vt)) {
-      ctx.strokeStyle = hexAlpha(PALETTE.accent, .08); ctx.lineWidth = 2;
-      for (var r = 130; r < 540; r += 90) {
-        ctx.beginPath(); ctx.arc(W * .72, H * .55, r, 0, Math.PI * 2); ctx.stroke();
-      }
-    } else if (/org|flow|funnel|timeline/.test(vt)) {
-      ctx.strokeStyle = hexAlpha(PALETTE.accent, .055); ctx.lineWidth = 1;
-      for (var y = 90; y < H; y += 56) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-      }
-    } else {
-      ctx.strokeStyle = hexAlpha(PALETTE.accent2, .05); ctx.lineWidth = 2;
-      for (var r2 = 90; r2 < 640; r2 += 110) {
-        ctx.beginPath(); ctx.arc(W * .14, H * .88, r2, 0, Math.PI * 2); ctx.stroke();
-      }
+    ctx.strokeStyle = hexAlpha(PALETTE.ink, .12); ctx.lineWidth = 1;
+    for (var y = 120; y < H; y += 45) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
     }
+    for (var x = -H; x < W; x += 86) {
+      ctx.beginPath(); ctx.moveTo(x, 98); ctx.lineTo(x + H * .54, H); ctx.stroke();
+    }
+    ctx.globalAlpha = .17;
+    picture(ctx, art[1], 8, 426, 232, accentAt(0));
+    picture(ctx, art[2], W - 252, 103, 246, accentAt(1));
     ctx.restore();
 
-    for (var k = 0; k < 26; k++) {
-      var px = ((k * 197 + t * 11 * (1 + k % 3)) % (W + 80)) - 40;
-      var py = H - ((k * 83 + t * (16 + k % 5) * 5) % (H + 80));
-      var a = .05 + .07 * Math.sin(t * 2 + k);
-      ctx.beginPath(); ctx.arc(px, py, 1.3 + (k % 3) * .5, 0, Math.PI * 2);
-      ctx.fillStyle = hexAlpha(PALETTE.ink, Math.max(.025, a)); ctx.fill();
-    }
-
-    var v = ctx.createRadialGradient(W / 2, H / 2, H * .25, W / 2, H / 2, H * .88);
-    v.addColorStop(0, "rgba(0,0,0,0)");
-    v.addColorStop(1, "rgba(0,0,0,0.40)");
-    ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = hexAlpha(PALETTE.bg, .90); ctx.fillRect(0, 0, W, 106);
+    var footer = ctx.createLinearGradient(0, 561, 0, H);
+    footer.addColorStop(0, "transparent"); footer.addColorStop(.67, hexAlpha(PALETTE.bg, .92));
+    footer.addColorStop(1, PALETTE.bg);
+    ctx.fillStyle = footer; ctx.fillRect(0, 561, W, H - 561);
   }
 
-  function drawChart(ctx, scene, local, dur, W, H) {
-    var ad = scene.animation_directives || {};
-    var ax = ad.axes || {}, lines = ad.lines || [];
-    var L = 110, R = W - 60, T = 110, B = H - 90;
-    var xmax = ax.x_max || 1000, ymax = ax.y_max || 6000;
-    ctx.strokeStyle = "#3B506C"; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(L, T); ctx.lineTo(L, B); ctx.lineTo(R, B); ctx.stroke();
-    text(ctx, String(ax.y_label || "Value ($)"), L, T - 18, 14, PALETTE.muted, 650);
-    text(ctx, String(ax.x_label || "Output (units)"), R, B + 26, 14, PALETTE.muted, 650, "right");
-    for (var g = 1; g <= 4; g++) {
-      var gy = B - (B - T) * g / 5;
-      ctx.strokeStyle = "#1E2D43"; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(L, gy); ctx.lineTo(R, gy); ctx.stroke();
-      text(ctx, String(Math.round(ymax * g / 5)), L - 10, gy, 11, PALETTE.muted, 500, "right");
-      var gx = L + (R - L) * g / 5;
-      ctx.beginPath(); ctx.moveTo(gx, T); ctx.lineTo(gx, B); ctx.stroke();
-      text(ctx, String(Math.round(xmax * g / 5)), gx, B + 14, 11, PALETTE.muted, 500, "center");
+  function drawIllustration(ctx, art, x, y, w, h, local, leadIcon) {
+    panel(ctx, x, y, w, h, PALETTE.accent, .72);
+    var cx = x + w * .5, cy = y + h * .49;
+    var r = Math.min(w * .31, h * .43);
+    var light = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 1.3);
+    light.addColorStop(0, hexAlpha(PALETTE.accent, .48)); light.addColorStop(1, "transparent");
+    ctx.fillStyle = light; ctx.fillRect(x + 1, y + 1, w - 2, h - 2);
+    ctx.strokeStyle = hexAlpha(PALETTE.accent2, .52); ctx.lineWidth = 2;
+    ctx.setLineDash([4, 9]);
+    ctx.beginPath(); ctx.ellipse(cx, cy, r * 1.25, r * .78, -.22, 0, Math.PI * 2); ctx.stroke();
+    ctx.setLineDash([]);
+    var size = r * 1.32, bob = Math.sin(local * 1.25) * 5;
+    picture(ctx, leadIcon || art[0], cx - size / 2, cy - size / 2 + bob, size, PALETTE.accent);
+    [1, 2].forEach(function (i) {
+      var satelliteX = cx + (i === 1 ? -r * 1.16 : r * 1.16);
+      var satelliteY = cy + (i === 1 ? r * .42 : -r * .42);
+      var satelliteSize = r * .64;
+      ctx.beginPath(); ctx.arc(satelliteX, satelliteY, satelliteSize * .68, 0, Math.PI * 2);
+      ctx.fillStyle = PALETTE.panel; ctx.fill();
+      ctx.strokeStyle = hexAlpha(accentAt(i), .75); ctx.stroke();
+      picture(ctx, art[i], satelliteX - satelliteSize / 2, satelliteY - satelliteSize / 2, satelliteSize, accentAt(i));
+    });
+  }
+
+  function drawNotes(ctx, labels, x, y, w, h, art, local) {
+    var gap = 9, rows = Math.max(1, labels.length);
+    var row = Math.min(104, (h - gap * (rows - 1)) / rows);
+    var top = y + (h - (row * rows + gap * (rows - 1))) / 2;
+    labels.forEach(function (label, i) {
+      var yy = top + i * (row + gap), color = accentAt(i);
+      ctx.save(); ctx.globalAlpha = reveal(local, i);
+      panel(ctx, x, yy, w, row, color);
+      var size = Math.min(40, row - 12);
+      picture(ctx, iconFor(label, art[i % art.length]), x + 17, yy + (row - size) / 2, size, color);
+      var font = Math.min(22, row / 3.2);
+      words(ctx, label, x + 71, yy + row / 2, w - 87, font, 3, "left");
+      ctx.restore();
+    });
+  }
+
+  function drawFeatures(ctx, labels, ad, art, local, dur) {
+    var elements = ad.elements || [];
+    var lead = /balance_scale/.test(ad.layout || "") ? "scale" : art[0];
+    var satellites = elements.map(function (element) {
+      return iconFor(element.type + " " + (element.label || ""), "");
+    }).filter(Boolean);
+    var sceneArt = Array.from(new Set([lead].concat(satellites, art))).slice(0, 3);
+    drawIllustration(ctx, sceneArt, 49, 127, 650, 444, local);
+    drawNotes(ctx, labels, 726, 134, 503, 430, art, local);
+    var counter = elements.find(function (e) {
+      return e.type === "animated_counter" && typeof e.from === "number" && typeof e.to === "number" && (e.label || e.target);
+    });
+    if (counter) {
+      var val = counter.from + (counter.to - counter.from) * Math.min(1, local / (dur * .65));
+      panel(ctx, 165, 485, 418, 69, PALETTE.warn);
+      var precision = Math.max(String(counter.from).split(".")[1]?.length || 0, String(counter.to).split(".")[1]?.length || 0);
+      text(ctx, (counter.prefix || "") + val.toLocaleString("en", { maximumFractionDigits: precision }) + (counter.suffix || ""),
+        184, 519, 28, PALETTE.warn, 850, "left", 165);
+      words(ctx, counter.label || counter.target, 370, 519, 185, 17, 2, "left");
     }
-    var p = local / dur;
-    lines.forEach(function (ln) {
-      var pts = ln.points || [];
-      if (pts.length < 2) return;
-      var start = ln.draw_at_sec == null ? 2 : Number(ln.draw_at_sec);
-      var frac = Math.max(0, Math.min(1, (local - (start - scene.start_sec)) / Math.max(dur * .35, 1)));
-      if (frac <= 0) return;
-      ctx.strokeStyle = ln.color || PALETTE.accent; ctx.lineWidth = 4; ctx.lineJoin = "round";
-      ctx.beginPath();
-      var last = null;
-      pts.forEach(function (pt, i) {
-        var x = L + (R - L) * (pt[0] / xmax), y = B - (B - T) * (pt[1] / ymax);
-        if (i === 0) ctx.moveTo(x, y);
-        else {
-          var px = L + (R - L) * (pts[i - 1][0] / xmax), py = B - (B - T) * (pts[i - 1][1] / ymax);
-          ctx.lineTo(px + (x - px) * frac, py + (y - py) * frac);
+  }
+
+  function connector(ctx, x1, y1, x2, y2, color, local) {
+    var a = Math.atan2(y2 - y1, x2 - x1);
+    ctx.strokeStyle = color; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+    ctx.lineTo(x2 - 10 * Math.cos(a - .55), y2 - 10 * Math.sin(a - .55));
+    ctx.moveTo(x2, y2); ctx.lineTo(x2 - 10 * Math.cos(a + .55), y2 - 10 * Math.sin(a + .55)); ctx.stroke();
+    var p = (local * .65) % 1;
+    ctx.beginPath(); ctx.arc(x1 + (x2 - x1) * p, y1 + (y2 - y1) * p, 3, 0, Math.PI * 2);
+    ctx.fillStyle = PALETTE.ink; ctx.fill();
+  }
+
+  function drawSequence(ctx, labels, ad, art, local, timeline) {
+    var hasStages = Array.isArray(ad.flow_nodes);
+    var stages = hasStages ? ad.flow_nodes : labels;
+    var n = stages.length;
+    var rowSize = n > 5 ? Math.ceil(n / 2) : n;
+    var gap = 33, w = Math.min(265, (1160 - (rowSize - 1) * gap) / Math.max(1, rowSize));
+    var full = rowSize * w + (rowSize - 1) * gap;
+    var layout = ad.layout || "";
+    var parallel = /parallel/.test(layout) && stages.length > 5;
+    var linked = !parallel && (hasStages || /sequence|route|line|stage|chain|path|timeline|flow|steps/.test(layout));
+    stages.forEach(function (label, i) {
+      var row = Math.floor(i / rowSize);
+      var col = row && !parallel ? rowSize - 1 - i % rowSize : i % rowSize;
+      var x = (1280 - full) / 2 + col * (w + gap), y = n > 5 ? 145 + row * 211 : 216;
+      var h = 144;
+      if (i && i % rowSize && linked) {
+        if (row) connector(ctx, x + w + gap - 4, y + h / 2, x + w + 5, y + h / 2, accentAt(i), local);
+        else connector(ctx, x - gap + 4, y + h / 2, x - 5, y + h / 2, accentAt(i), local);
+      }
+      if (i === rowSize && linked) connector(ctx, x + w / 2, y - 63, x + w / 2, y - 7, accentAt(i), local);
+      pictogram(ctx, label, x, y, w, h, i, art, local);
+      if (timeline) {
+        var mid = x + w / 2;
+        ctx.strokeStyle = hexAlpha(accentAt(i), .7); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(mid, y + h); ctx.lineTo(mid, y + h + 44); ctx.stroke();
+        ctx.beginPath(); ctx.arc(mid, y + h + 44, 9, 0, Math.PI * 2); ctx.fillStyle = accentAt(i); ctx.fill();
+      }
+    });
+    if (timeline && n) {
+      ctx.strokeStyle = hexAlpha(PALETTE.ink, .46); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo((1280 - full + w) / 2, 404); ctx.lineTo((1280 + full - w) / 2, 404); ctx.stroke();
+    }
+    if (hasStages && n <= 5) drawNotes(ctx, labels, 185, 411, 910, 155, art, local);
+    if (parallel) {
+      words(ctx, "Primary research", 640, 123, 500, 20, 1, "center");
+      words(ctx, "Secondary research", 640, 334, 500, 20, 1, "center");
+    }
+  }
+
+  function drawBranches(ctx, labels, ad, art, local) {
+    var root = labels[0], branches = labels.slice(1);
+    var layout = ad.layout || "";
+    var choice = /choice_node/.test(layout);
+    var jobs = /job line/.test(String(ad.flow_nodes));
+    if (choice) branches = labels.slice(1, 3);
+    if (jobs) {
+      root = ad.flow_nodes[0];
+      branches = labels;
+    }
+    var w = Math.min(300, (1160 - (branches.length - 1) * 25) / Math.max(1, branches.length));
+    var left = (1280 - (branches.length * w + (branches.length - 1) * 25)) / 2;
+    branches.forEach(function (label, i) {
+      var x = left + i * (w + 25);
+      connector(ctx, 640, 283, x + w / 2, 348, accentAt(i + 1), local);
+      pictogram(ctx, label, x, 355, w, 152, i + 1, art, local);
+    });
+    pictogram(ctx, root, 475, 130, 330, 150, 0, art, local);
+    if (choice && labels[3]) text(ctx, labels[3], 640, 551, 22, PALETTE.warn, 800, "center", 1120);
+  }
+
+  function drawComparison(ctx, labels, art, local) {
+    var n = labels.length, columns = n > 2 ? n : 2;
+    var w = Math.min(435, (1150 - (columns - 1) * 20) / columns);
+    var left = (1280 - (n * w + (n - 1) * 20)) / 2;
+    labels.forEach(function (label, i) {
+      pictogram(ctx, label, left + i * (w + 20), 201, w, 278, i, art, local);
+    });
+    if (n === 2) {
+      picture(ctx, "scale", 613, 509, 54, PALETTE.warn);
+    }
+  }
+
+  function drawFunnel(ctx, labels, ad, art, local) {
+    var nodes = Array.isArray(ad.flow_nodes) ? ad.flow_nodes : labels;
+    drawIllustration(ctx, art, 808, 145, 419, 397, local, "funnel");
+    var row = Math.min(83, 397 / Math.max(nodes.length, 1));
+    var top = 145 + (397 - row * nodes.length) / 2;
+    nodes.forEach(function (label, i) {
+      var w = 700 - i * 66, x = 413 - w / 2, y = top + i * row, color = accentAt(i);
+      ctx.save(); ctx.globalAlpha = reveal(local, i);
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y);
+      ctx.lineTo(x + w - 25, y + row - 9); ctx.lineTo(x + 25, y + row - 9); ctx.closePath();
+      ctx.fillStyle = hexAlpha(color, .82); ctx.fill();
+      words(ctx, label, 413, y + (row - 9) / 2, w - 70, 21, 2, "center", "#0B1425");
+      ctx.restore();
+    });
+  }
+
+  function drawOrganization(ctx, labels, ad, art, local) {
+    var layout = ad.layout || "";
+    if (/four_column|seven_ownership|two_owner|internal_org/.test(layout)) {
+      drawComparison(ctx, labels, art, local);
+      return;
+    }
+    if (/bidirectional/.test(layout)) {
+      pictogram(ctx, labels[0], 83, 221, 326, 204, 0, art, local, "factory");
+      pictogram(ctx, labels[1], 871, 221, 326, 204, 1, art, local, "factory");
+      connector(ctx, 426, 284, 853, 284, PALETTE.accent, local);
+      connector(ctx, 853, 376, 426, 376, PALETTE.accent2, local);
+      words(ctx, labels[2], 640, 248, 400, 22, 2, "center");
+      words(ctx, labels[3], 640, 414, 400, 22, 2, "center");
+      return;
+    }
+    if ((ad.elements || []).some(function (e) { return e.from_levels === 5 && e.to_levels === 3; })) {
+      [5, 3].forEach(function (levels, i) {
+        var x = i ? 652 : 49, color = accentAt(i);
+        panel(ctx, x, 132, 579, 426, color);
+        words(ctx, labels[i], x + 289, 164, 530, 22, 2, "center");
+        for (var j = 0; j < levels; j++) {
+          var y = 203 + j * (248 / (levels - 1));
+          var span = i ? 8 : 3;
+          var count = j === levels - 1 ? span : 1;
+          for (var k = 0; k < count; k++) {
+            var cx = x + 289 + (k - (count - 1) / 2) * 53;
+            if (j) connector(ctx, x + 289, y - 248 / (levels - 1) + 20, cx, y - 21, color, local);
+            picture(ctx, "people", cx - 20, y - 20, 40, color);
+          }
         }
-        last = [x, y];
       });
-      ctx.stroke();
+      words(ctx, labels[2], 640, 536, 510, 16, 1, "center");
+      return;
+    }
+    drawBranches(ctx, labels, ad, art, local);
+  }
+
+  function drawCycle(ctx, labels, art, local) {
+    var positions = labels.length === 5
+      ? [[640, 192], [1018, 315], [875, 508], [405, 508], [262, 315]]
+      : [[640, 192], [1031, 350], [640, 510], [249, 350]];
+    positions.forEach(function (pos, i) {
+      var next = positions[(i + 1) % positions.length];
+      var dx = next[0] - pos[0], dy = next[1] - pos[1];
+      connector(ctx, pos[0] + dx * .37, pos[1] + dy * .37, next[0] - dx * .37, next[1] - dy * .37, accentAt(i), local);
     });
-    var hi = ad.highlight_intersection;
-    if (hi) {
-      var pulseAt = hi.pulse_at_sec == null ? dur * .7 : Number(hi.pulse_at_sec) - scene.start_sec;
-      var a = Math.max(0, Math.min(1, (local - pulseAt) / 2 + .3));
-      if (a > 0) {
-        var hx = L + (R - L) * (hi.x / xmax), hy = B - (B - T) * (hi.y / ymax);
-        ctx.globalAlpha = a;
-        ctx.strokeStyle = PALETTE.warn; ctx.lineWidth = 2;
-        ctx.setLineDash([6, 5]);
-        ctx.beginPath(); ctx.moveTo(L, hy); ctx.lineTo(hx, hy); ctx.moveTo(hx, B); ctx.lineTo(hx, hy); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.beginPath(); ctx.arc(hx, hy, 9 + Math.sin(local * 4) * 3, 0, Math.PI * 2);
-        ctx.fillStyle = PALETTE.warn; ctx.fill();
-        var lines2 = wrap(ctx, hi.label || "Break-even", 220, 16, 800);
-        ctx.fillStyle = "#1C2A3F"; rr(ctx, hx + 16, hy - 30, 230, 34, 8); ctx.fill();
-        lines2.slice(0, 2).forEach(function (ln, i) { text(ctx, ln, hx + 26, hy - 22 + i * 15, 15, PALETTE.warn, 800); });
-        ctx.globalAlpha = 1;
-      }
-    }
-    labelCards(ctx, scene.on_screen_labels, W - 300, 120, 275, p);
-  }
-
-  function drawElements(ctx, scene, local, dur, W, H) {
-    var els = scene.animation_directives.elements || [];
-    var p = local / dur;
-    var n = Math.min(els.length, 6);
-    for (var i = 0; i < n; i++) {
-      var e = els[i], t = e.type || "card";
-      var x = 80 + (i % 3) * 365, y = 150 + Math.floor(i / 3) * 200;
-      if (t === "animated_counter") {
-        var val = (Number(e.from) || 0) + ((Number(e.to) || 0) - (Number(e.from) || 0)) * Math.min(1, p * 1.5);
-        ctx.fillStyle = PALETTE.panel; ctx.strokeStyle = "#2B4261"; rr(ctx, x, y, 320, 150, 14); ctx.fill(); ctx.stroke();
-        var pre = e.prefix || "", suf = e.suffix || "";
-        text(ctx, pre + Math.round(val).toLocaleString() + suf, x + 160, y + 62, 46, PALETTE.accent, 850, "center");
-        text(ctx, String(e.target || "counter").replace(/_/g, " "), x + 160, y + 112, 14, PALETTE.muted, 650, "center");
-      } else if (t === "coin_flow_arrow") {
-        arrow(ctx, x + 30, y + 75, x + 290, y + 75, PALETTE.good, p);
-        text(ctx, String(e.label || ""), x + 160, y + 40, 16, PALETTE.ink, 750, "center");
-        text(ctx, String(e.from || "") + " → " + String(e.to || ""), x + 160, y + 116, 13, PALETTE.muted, 600, "center");
-      } else if (t === "org_node" || t === "icon_factory" || t === "node") {
-        node(ctx, x, y, 320, 150, e.label || e.id || "Node", [PALETTE.accent, PALETTE.accent2, PALETTE.good][i % 3], p > .35);
-      } else if (t === "flow_node") {
-        node(ctx, x, y, 320, 130, e.label || "Stage", PALETTE.accent, p * n > i);
-        if (i < n - 1) arrow(ctx, x + 320, y + 65, x + 360, y + 65, PALETTE.muted, p);
-      } else if (t === "balance_scale") {
-        var tilt = Math.sin(local * 2) * 3;
-        ctx.strokeStyle = PALETTE.muted; ctx.lineWidth = 4;
-        ctx.beginPath(); ctx.moveTo(x + 160, y + 20); ctx.lineTo(x + 160, y + 120); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x + 40, y + 50 + tilt); ctx.lineTo(x + 280, y + 50 - tilt); ctx.stroke();
-        text(ctx, String(e.label || ""), x + 160, y + 142, 14, PALETTE.ink, 700, "center");
-      } else {
-        node(ctx, x, y, 320, 150, e.label || e.type, [PALETTE.accent, PALETTE.warn][i % 2], p > .4);
-      }
-    }
-  }
-
-  function drawSplit(ctx, scene, local, dur, W, H) {
-    var labels = scene.on_screen_labels || [];
-    var left = labels.slice(0, Math.ceil(labels.length / 2));
-    var right = labels.slice(Math.ceil(labels.length / 2));
-    var p = local / dur;
-    function side(x, color, head, items) {
-      ctx.fillStyle = "#101D30"; ctx.strokeStyle = color; ctx.lineWidth = 2;
-      rr(ctx, x, 120, W / 2 - 60, 420, 16); ctx.fill(); ctx.stroke();
-      text(ctx, head, x + (W / 2 - 60) / 2, 158, 22, color, 850, "center");
-      items.slice(0, 4).forEach(function (it, i) {
-        var a = Math.max(0, Math.min(1, (p * 3 - i) * 2.2));
-        ctx.globalAlpha = a;
-        var lines = wrap(ctx, it, W / 2 - 130, 16, 650);
-        lines.slice(0, 2).forEach(function (ln, j) {
-          text(ctx, "• " + ln, x + 25, 210 + i * 68 + j * 19, 16, PALETTE.ink, 650);
-        });
-        ctx.globalAlpha = 1;
-      });
-    }
-    side(40, PALETTE.accent, "ADVANTAGES / SIDE A", left);
-    side(W / 2 + 20, PALETTE.bad, "LIMITATIONS / SIDE B", right);
-  }
-
-  function drawFunnel(ctx, scene, local, dur, W, H) {
-    var labels = scene.on_screen_labels || [];
-    var n = Math.min(labels.length, 6), p = local / dur;
-    for (var i = 0; i < n; i++) {
-      var a = Math.max(0, Math.min(1, (p * n - i) * 3));
-      if (a <= 0) continue;
-      var w = 720 - i * 95, x = (W - w) / 2, y = 120 + i * 72;
-      ctx.globalAlpha = a;
-      ctx.fillStyle = [PALETTE.accent, PALETTE.accent2, PALETTE.good, PALETTE.warn][i % 4];
-      rr(ctx, x, y, w, 56, 9); ctx.fill();
-      var lines = wrap(ctx, labels[i], w - 24, 16, 750);
-      text(ctx, lines[0] || "", W / 2, y + 28, 16, "#04121f", 800, "center");
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  function drawOrg(ctx, scene, local, dur, W, H) {
-    var labels = scene.on_screen_labels || [];
-    var flat = /flat|delay|wide/i.test(scene.on_screen_title || "") || /flat|delay/i.test(String(scene.visual_type));
-    var levels = flat ? 2 : Math.min(4, Math.max(2, labels.length));
-    var p = Math.min(1, local / Math.max(dur * .6, 1));
-    var baseY = 130;
-    for (var l = 0; l < levels; l++) {
-      var count = flat ? Math.min(4, labels.length) : Math.max(1, Math.round((labels.length || 4) * Math.pow(.62, l)));
-      var y = baseY + l * (flat ? 110 : 95);
-      for (var c = 0; c < count; c++) {
-        var x = W / 2 - (count * 150) / 2 + c * 150;
-        var label = labels[(l + c) % Math.max(labels.length, 1)] || "Manager";
-        node(ctx, x, y, 138, 62, label, l === 0 ? PALETTE.warn : PALETTE.accent, p > l / levels);
-        if (l > 0) ctx.strokeStyle = "#3B506C", ctx.beginPath(), ctx.moveTo(x + 69, y), ctx.lineTo(W / 2, y - 33), ctx.stroke();
-      }
-    }
-    text(ctx, flat ? "FLAT · wide span of control" : "TALL · narrow span of control", W / 2, H - 70, 18, PALETTE.muted, 800, "center");
-  }
-
-  function drawFlow(ctx, scene, local, dur, W, H) {
-    var labels = scene.on_screen_labels || [];
-    var n = Math.min(labels.length, 5), p = local / dur;
-    var y = H / 2 - 30;
-    for (var i = 0; i < n; i++) {
-      var x = 55 + i * ((W - 120) / Math.max(n, 1));
-      node(ctx, x, y, (W - 120) / Math.max(n, 1) - 24, 100, labels[i] || "Stage",
-        [PALETTE.accent, PALETTE.good, PALETTE.warn, PALETTE.accent2][i % 4], p * n > i);
-      if (i < n - 1) arrow(ctx, x + (W - 120) / n - 20, y + 50, x + (W - 120) / n + 2, y + 50, PALETTE.muted, p);
-    }
-  }
-
-  function drawCycle(ctx, scene, local, dur, W, H) {
-    var labels = scene.on_screen_labels || [];
-    var n = Math.max(labels.length, 4), p = local / dur;
-    var cx = W / 2, cy = H / 2 + 10, rx = 350, ry = 190;
-    ctx.strokeStyle = "#2B4261"; ctx.lineWidth = 16;
-    ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2); ctx.stroke();
-    ctx.strokeStyle = PALETTE.accent; ctx.lineWidth = 6;
-    ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * p); ctx.stroke();
-    var names = labels.length ? labels : ["Growth", "Boom", "Recession", "Slump"];
-    names.slice(0, 4).forEach(function (lb, i) {
-      var a = -Math.PI / 2 + i * Math.PI / 2;
-      var x = cx + Math.cos(a) * rx, y = cy + Math.sin(a) * ry;
-      node(ctx, x - 85, y - 28, 170, 56, lb, [PALETTE.good, PALETTE.warn, PALETTE.bad, PALETTE.accent2][i], p > i / 4);
+    picture(ctx, art[0], 572, 282, 136, PALETTE.accent);
+    labels.forEach(function (label, i) {
+      var pos = positions[i];
+      pictogram(ctx, label, pos[0] - 135, pos[1] - 59, 270, 118, i, art, local, "chart");
     });
-    text(ctx, "business cycle", cx, cy, 22, PALETTE.muted, 800, "center");
   }
 
-  function drawCurve(ctx, scene, local, dur, W, H) {
-    var p = local / dur, L = 90, R = W - 70, T = 120, B = H - 90;
-    ctx.strokeStyle = "#3B506C"; ctx.lineWidth = 2;
+  function drawFormula(ctx, labels, ad, art, local) {
+    var eq = Array.isArray(ad.substitution) ? ad.substitution.join(" ") : labels.find(function (label) { return label.includes("="); });
+    if (!eq) {
+      drawNotes(ctx, labels, 478, 130, 747, 434, art, local);
+      drawIllustration(ctx, art, 54, 130, 394, 434, local, "document");
+      return;
+    }
+    panel(ctx, 54, 139, 1172, 145, PALETTE.warn);
+    picture(ctx, "document", 84, 176, 72, PALETTE.warn);
+    words(ctx, eq, 683, 214, 990, eq.length > 60 ? 31 : 42, 2, "center");
+    drawNotes(ctx, labels.filter(function (label) { return label !== eq; }), 166, 297, 948, 273, art, local);
+  }
+
+  function drawPlot(ctx, lines, bounds, labels, art, local, dur, highlight) {
+    var L = 129, R = 786, T = 189, B = 482;
+    var xp = function (x) { return L + (R - L) * (x - bounds.x.min) / (bounds.x.max - bounds.x.min); };
+    var yp = function (y) { return B - (B - T) * (y - bounds.y.min) / (bounds.y.max - bounds.y.min); };
+    panel(ctx, 44, 129, 783, 447, PALETTE.accent);
+    text(ctx, bounds.y.label, L, 155, 19, PALETTE.ink, 750);
+    text(ctx, bounds.x.label, R, 523, 18, PALETTE.ink, 750, "right");
+    ctx.strokeStyle = hexAlpha(PALETTE.ink, .7); ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(L, T); ctx.lineTo(L, B); ctx.lineTo(R, B); ctx.stroke();
-    text(ctx, "Time →", R, B + 24, 14, PALETTE.muted, 650, "right");
-    text(ctx, "Sales / profit", L, T - 18, 14, PALETTE.muted, 650);
-    var pts = [], steps = 100;
-    for (var i = 0; i <= steps; i++) {
-      var x = i / steps;
-      var y = .25 + .55 * Math.exp(-Math.pow((x - .32) / .22, 2)) + .12 * x - .25 * Math.max(0, x - .78) * 4;
-      y = Math.max(.04, Math.min(.95, y));
-      pts.push([L + (R - L) * x, B - (B - T) * y]);
+    [bounds.y, bounds.x].forEach(function (axis, index) {
+      var count = Math.min(10, Math.floor((axis.max - axis.min) / axis.tick));
+      for (var i = 1; i <= count; i++) {
+        var value = axis.min + i * axis.tick, xy = index ? xp(value) : yp(value);
+        ctx.strokeStyle = hexAlpha(PALETTE.ink, .18); ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (index) { ctx.moveTo(xy, T); ctx.lineTo(xy, B); }
+        else { ctx.moveTo(L, xy); ctx.lineTo(R, xy); }
+        ctx.stroke();
+        if (!index || count < 8 || i % 2 === 0) {
+          var tickLabel = axis.categories ? axis.categories[i - 1] : value.toLocaleString("en");
+          text(ctx, tickLabel, index ? xy : L - 11, index ? B + 17 : xy, 14, PALETTE.muted, 650, index ? "center" : "right");
+        }
+      }
+    });
+    if (!bounds.x.categories) text(ctx, String(bounds.x.min), L - 9, B + 16, 14, PALETTE.muted, 650, "right");
+    lines.forEach(function (line, index) {
+      var points = line.points, color = accentAt(index);
+      var fraction = Math.min(1, Math.max(.03, (local / dur - index * .08) * 2.2));
+      var end = fraction * (points.length - 1);
+      ctx.strokeStyle = color; ctx.lineWidth = 5; ctx.lineJoin = "round";
+      ctx.beginPath(); ctx.moveTo(xp(points[0][0]), yp(points[0][1]));
+      for (var j = 1; j < points.length && j - 1 < end; j++) {
+        var start = points[j - 1], stop = points[j], f = Math.min(1, end - j + 1);
+        ctx.lineTo(xp(start[0] + (stop[0] - start[0]) * f), yp(start[1] + (stop[1] - start[1]) * f));
+      }
+      ctx.stroke();
+      ctx.fillStyle = color; ctx.fillRect(L + index * 196, 550, 19, 5);
+      text(ctx, line.label, L + 27 + index * 196, 553, 16, PALETTE.ink, 700, "left", 165);
+    });
+    if (highlight && local / dur > .48) {
+      var hx = xp(highlight.x), hy = yp(highlight.y);
+      ctx.strokeStyle = PALETTE.warn; ctx.lineWidth = 2; ctx.setLineDash([7, 5]);
+      ctx.beginPath(); ctx.moveTo(L, hy); ctx.lineTo(hx, hy); ctx.lineTo(hx, B); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(hx, hy, 8, 0, Math.PI * 2); ctx.fillStyle = PALETTE.warn; ctx.fill();
+      panel(ctx, hx + 15, hy + 10, 272, 35, PALETTE.warn);
+      text(ctx, highlight.label, hx + 25, hy + 28, 16, PALETTE.ink, 800, "left", 252);
     }
-    ctx.strokeStyle = PALETTE.accent2; ctx.lineWidth = 5; ctx.beginPath();
-    var cut = Math.max(2, Math.floor(steps * p));
-    for (var j = 0; j <= cut; j++) j ? ctx.lineTo(pts[j][0], pts[j][1]) : ctx.moveTo(pts[j][0], pts[j][1]);
-    ctx.stroke();
-    var stages = ["Introduction", "Growth", "Maturity", "Decline"];
-    stages.forEach(function (s, i) { text(ctx, s, L + (R - L) * (i + .5) / 4, B + 26, 13, PALETTE.muted, 650, "center"); });
-    labelCards(ctx, scene.on_screen_labels, W - 310, 120, 280, p);
+    drawNotes(ctx, labels, 847, 139, 383, 420, art, local);
   }
 
-  function drawGeneric(ctx, scene, local, dur, W, H) {
-    var p = local / dur;
-    var isFormula = scene.visual_type === "formula_substitution";
-    var labels = scene.on_screen_labels || [];
-    if (isFormula) {
-      var big = labels[0] || "";
-      ctx.fillStyle = "#101D30"; ctx.strokeStyle = PALETTE.accent; ctx.lineWidth = 2;
-      rr(ctx, 90, 140, W - 180, 150, 16); ctx.fill(); ctx.stroke();
-      var lines = wrap(ctx, big, W - 240, 30, 800);
-      lines.slice(0, 2).forEach(function (ln, i) { text(ctx, ln, W / 2, 192 + i * 38, 30, PALETTE.ink, 850, "center"); });
-      labelCards(ctx, labels.slice(1), 140, 330, W - 280, p);
-    } else {
-      drawElements(ctx, scene, local, dur, W, H);
-      labelCards(ctx, labels, W - 300, 120, 275, p);
-    }
+  function drawBars(ctx, series, label, labels, art, local, dur, prefix, suffix) {
+    panel(ctx, 50, 130, 734, 442, PALETTE.accent);
+    words(ctx, label, 417, 166, 664, 22, 2, "center");
+    var max = Math.max.apply(null, series.map(Math.abs)) || 1;
+    var negative = series.some(function (value) { return value < 0; });
+    var base = negative ? 357 : 490;
+    var span = Math.min(200, 645 / series.length);
+    var left = 417 - span * series.length / 2;
+    ctx.strokeStyle = hexAlpha(PALETTE.ink, .46); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(107, base); ctx.lineTo(727, base); ctx.stroke();
+    series.forEach(function (value, i) {
+      var x = left + span * i + span * .18, color = accentAt(i), scale = Math.min(1, local / (dur * .48));
+      var h = Math.abs(value) / max * (negative ? 124 : 258) * scale;
+      var y = value < 0 ? base : base - h;
+      var gradient = ctx.createLinearGradient(x, y, x + span * .64, y + h);
+      gradient.addColorStop(0, color); gradient.addColorStop(1, hexAlpha(color, .45));
+      ctx.fillStyle = gradient;
+      if (h > 0) { rr(ctx, x, y, span * .64, h, 8); ctx.fill(); }
+      text(ctx, (value < 0 ? "−" : "") + (prefix || "") + Math.abs(value).toLocaleString("en") + (suffix || ""), x + span * .32,
+        value < 0 ? y + h + 20 : y - 18, 22, PALETTE.ink, 850, "center", span - 6);
+    });
+    drawNotes(ctx, labels, 810, 139, 420, 420, art, local);
+  }
+
+  function drawMarketShare(ctx, labels, art, local, dur) {
+    panel(ctx, 49, 129, 720, 442, PALETTE.accent);
+    ctx.lineWidth = 63;
+    ctx.strokeStyle = hexAlpha(PALETTE.accent2, .45);
+    ctx.beginPath(); ctx.arc(409, 349, 152, 0, Math.PI * 2); ctx.stroke();
+    var portion = .2 * Math.min(1, local / (dur * .54));
+    ctx.strokeStyle = PALETTE.warn;
+    ctx.beginPath(); ctx.arc(409, 349, 152, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * portion); ctx.stroke();
+    text(ctx, Math.round(portion * 100) + "%", 409, 326, 63, PALETTE.ink, 850, "center");
+    text(ctx, "Market share", 409, 383, 23, PALETTE.warn, 750, "center");
+    drawNotes(ctx, labels, 799, 134, 430, 430, art, local);
+  }
+
+  function drawMarketingMix(ctx, art, local) {
+    var nodes = ["Product", "Price", "Place", "Promotion"];
+    var icons = ["headphones", "tag", "shop", "message"];
+    var positions = [[89, 157], [911, 157], [89, 374], [911, 374]];
+    picture(ctx, art[0], 521, 214, 238, PALETTE.accent);
+    nodes.forEach(function (node, i) {
+      var pos = positions[i], x = pos[0] + (i % 2 ? 0 : 280), y = pos[1] + 70;
+      ctx.strokeStyle = hexAlpha(accentAt(i), .8); ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(i % 2 ? 767 : 513, 335); ctx.stroke();
+      var cardArt = [icons[i]];
+      pictogram(ctx, node, pos[0], pos[1], 280, 140, i, cardArt, local, icons[i]);
+    });
   }
 
   function drawScene(ctx, video, scene, t, W, H) {
-    var local = t - scene.start_sec, dur = Math.max(1, scene.end_sec - scene.start_sec);
-    var p = Math.max(0, Math.min(1, local / dur));
+    var local = Math.max(0, t - scene.start_sec), dur = Math.max(1, scene.end_sec - scene.start_sec);
+    var p = Math.min(1, local / dur);
+    var ad = scene.animation_directives || {}, els = ad.elements || [];
+    var labels = scene.on_screen_labels || [];
+    var art = EPISODE_ART[video.video_id] || ["shop", "chart", "people"];
+    var vt = scene.visual_type || "", layout = ad.layout || "";
     applyTheme(video.unit_number);
-    drawBackdrop(ctx, W, H, t, scene);
+    drawBackdrop(ctx, W, H, t, art, scene);
 
-    /* Soft crossfade as each new scene appears. */
-    ctx.save();
-    ctx.globalAlpha = Math.min(1, Math.max(.25, local / .55));
+    text(ctx, video.chapter_title || ("Chapter " + video.chapter_code), 49, 28, 18, PALETTE.accent, 750, "left", 970);
+    text(ctx, scene.on_screen_title || video.video_title, 49, 66, 34, PALETTE.ink, 850, "left", W - 98);
+    text(ctx, "Scene " + scene.scene_number + " / " + video.scenes.length, W - 49, 28, 16, PALETTE.muted, 700, "right");
+    ctx.fillStyle = hexAlpha(PALETTE.ink, .16); ctx.fillRect(49, 96, W - 98, 4);
+    var progress = ctx.createLinearGradient(49, 0, W - 49, 0);
+    progress.addColorStop(0, PALETTE.accent); progress.addColorStop(1, PALETTE.accent2);
+    ctx.fillStyle = progress; ctx.fillRect(49, 96, (W - 98) * p, 4);
 
-    text(ctx, video.video_id + " · CHAPTER " + video.chapter_code, 46, 27, 12, PALETTE.accent, 800);
-    ctx.save();
-    ctx.shadowColor = hexAlpha(PALETTE.accent, .4); ctx.shadowBlur = 18;
-    text(ctx, scene.on_screen_title || video.video_title, 44, 59, 30, PALETTE.ink, 850);
-    ctx.restore();
-    text(ctx, "Scene " + scene.scene_number + "/" + video.scenes.length,
-      W - 44, 30, 13, PALETTE.muted, 700, "right");
-    ctx.fillStyle = hexAlpha(PALETTE.ink, .10); ctx.fillRect(44, 82, W - 88, 3);
-    var pg = ctx.createLinearGradient(44, 0, W - 44, 0);
-    pg.addColorStop(0, PALETTE.accent); pg.addColorStop(1, PALETTE.accent2);
-    ctx.save();
-    ctx.shadowColor = hexAlpha(PALETTE.accent, .6); ctx.shadowBlur = 12;
-    ctx.fillStyle = pg; ctx.fillRect(44, 82, (W - 88) * p, 3);
-    ctx.restore();
-
-    var vt = scene.visual_type || "";
-    var ad = scene.animation_directives || {};
-    if (ad.chart && (ad.chart.lines || []).length) drawChart(ctx, scene, local, dur, W, H);
-    else if (/org_chart/i.test(vt) || (ad.elements || []).some(function (e) { return e.type === "org_node"; })) drawOrg(ctx, scene, local, dur, W, H);
-    else if (/funnel/i.test(vt)) drawFunnel(ctx, scene, local, dur, W, H);
-    else if (/cycle/i.test(vt)) drawCycle(ctx, scene, local, dur, W, H);
-    else if (/curve/i.test(vt)) drawCurve(ctx, scene, local, dur, W, H);
-    else if (/split|evaluation/i.test(vt)) drawSplit(ctx, scene, local, dur, W, H);
-    else if (/flow|timeline/i.test(vt)) drawFlow(ctx, scene, local, dur, W, H);
-    else if (/balance/i.test(vt)) drawGeneric(ctx, scene, local, dur, W, H);
-    else drawGeneric(ctx, scene, local, dur, W, H);
-
-    var beats = ad.visual_beats || [];
-    var active = null;
-    beats.forEach(function (b) { if (t >= b.at_sec && b.directive) active = b.directive; });
-    if (active) {
-      ctx.save();
-      ctx.shadowColor = hexAlpha(PALETTE.accent, .3); ctx.shadowBlur = 14;
-      ctx.fillStyle = hexAlpha(PALETTE.bg, .88);
-      rr(ctx, 44, H - 54, Math.min(760, W - 90), 34, 8); ctx.fill();
-      ctx.restore();
-      ctx.fillStyle = PALETTE.accent;
-      rr(ctx, 44, H - 54, 4, 34, 2); ctx.fill();
-      text(ctx, "▸ " + active, 58, H - 37, 14, PALETTE.accent, 650);
+    var axes = ad.axes;
+    var detailedLines = (ad.lines || []).filter(function (line) { return Array.isArray(line.from) && Array.isArray(line.to); });
+    var costPoints = els.filter(function (e) { return e.type === "data_point" && typeof e.average_cost === "number"; });
+    var bars = els.find(function (e) { return e.type === "bar_chart" && Array.isArray(e.series) && e.series.every(Number.isFinite); });
+    if (axes && axes.x && axes.y && detailedLines.length) {
+      drawPlot(ctx, detailedLines.map(function (line) { return { label: line.label, points: [line.from, line.to] }; }),
+        axes, labels, art, local, dur, ad.highlight_intersection);
+    } else if (ad.curve_stages) {
+      var stages = ad.curve_stages;
+      var stageNames = stages.map(function (stage) { return stage.name[0].toUpperCase() + stage.name.slice(1); });
+      drawPlot(ctx, [{ label: "Example unit sales", points: stages.map(function (stage, i) { return [i + 1, stage.units]; }) }],
+        { x: { min: 0, max: stages.length, tick: 1, label: "Time", categories: stageNames },
+          y: { min: 0, max: 16000, tick: 4000, label: "Unit sales" } }, labels, art, local, dur);
+    } else if (costPoints.length > 1) {
+      drawPlot(ctx, [{ label: "Long-run average cost", points: costPoints.map(function (e) { return [e.x, e.average_cost]; }) }],
+        { x: { min: 0, max: 1600, tick: 400, label: "Output (loaves)" },
+          y: { min: 0, max: 10, tick: 2, label: "Average cost ($ per loaf)" } }, labels, art, local, dur);
+    } else if (els.some(function (e) { return e.type === "ring_chart"; }) && scene.on_screen_title === "Market Share Ring Builds") {
+      drawMarketShare(ctx, labels, art, local, dur);
+    } else if (bars && bars.series.length) {
+      drawBars(ctx, bars.series, bars.label, labels, art, local, dur, bars.prefix, bars.suffix);
+    } else if (video.video_id === "VID_U5_02" && (scene.scene_number === 3 || scene.scene_number === 4)) {
+      var earlier = scene.scene_number === 3;
+      drawBars(ctx, earlier ? [16000, 11000] : [1000, -4000],
+        earlier ? "Closing balance · Months 1 and 2" : "Closing balance · Months 3 and 4", labels, art, local, dur, "$");
+    } else if (video.video_id === "VID_U3_03" && scene.scene_number === 1) {
+      drawMarketingMix(ctx, art, local);
+      words(ctx, labels[2], 640, 544, 550, 24, 1, "center");
+    } else if (vt === "formula_substitution") {
+      drawFormula(ctx, labels, ad, art, local);
+    } else if (/org_chart/.test(vt)) {
+      drawOrganization(ctx, labels, ad, art, local);
+    } else if (/choice_node/.test(layout) || /job line/.test(String(ad.flow_nodes))) {
+      drawBranches(ctx, labels, ad, art, local);
+    } else if (/funnel/.test(vt)) {
+      drawFunnel(ctx, labels, ad, art, local);
+    } else if (/cycle_unrolled|circular_flow/.test(layout) || (video.video_id === "VID_U6_01" && scene.scene_number === 1)) {
+      var cycleLabels = Array.isArray(ad.flow_nodes) ? ad.flow_nodes : labels.slice(0, 4);
+      drawCycle(ctx, cycleLabels, art, local);
+    } else if (/split|evaluation/.test(vt)) {
+      drawComparison(ctx, labels, art, local);
+    } else if (/flow|timeline/.test(vt)) {
+      drawSequence(ctx, labels, ad, art, local, /timeline/.test(vt));
+    } else {
+      drawFeatures(ctx, labels, ad, art, local, dur);
     }
-    ctx.restore(); /* scene crossfade */
   }
 
   /* ------------------------------------------------------------------ player */
