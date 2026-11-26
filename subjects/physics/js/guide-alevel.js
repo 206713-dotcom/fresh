@@ -1,4 +1,4 @@
-/* Geodesic step-by-step guides, stage alevel (built from src/guide/alevel-*.js) */
+/* Twistor step-by-step guides, stage alevel (built from src/guide/alevel-*.js) */
 WL.gd('al-shm', {
   h: 'A child on a swing, a mass bouncing on a spring, a ruler twanged on a desk, the atoms in a crystal: all of them wobble in the same way when the wobble is small. One equation, a = −ω²x, describes every one of them. Learn it once, and you can predict how long any of them takes to swing back and forth without watching it.',
   s: [

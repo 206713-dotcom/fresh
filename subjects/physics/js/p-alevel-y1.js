@@ -1,4 +1,4 @@
-/* Geodesic — new A-Level and University Year 1 physics topics */
+/* Twistor — new A-Level and University Year 1 physics topics */
 (function () {
   const WL = window.WL, C = WL.C, R = String.raw, lerp = WL.lerp, clamp = WL.clamp;
   const f0 = (x) => x.toFixed(0), f1 = (x) => x.toFixed(1), f2 = (x) => x.toFixed(2), f3 = (x) => x.toFixed(3);

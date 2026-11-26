@@ -1,4 +1,4 @@
-/* Geodesic — the test builder.
+/* Twistor — the test builder.
    #test        choose topics you have learned, the number and kind of questions and a time limit, then sit a timed paper.
                 Nothing is marked until you finish (or the time runs out). Then Einstein marks every answer, you get a score
                 with a breakdown by topic, and each topic's spaced-review schedule moves: weak topics come back sooner.
@@ -55,7 +55,7 @@
   /* ---------- the builder ---------- */
   function topicPicker(sel) {
     const app = A(), nodes = app.nodes, LS = H().LS();
-    const tracks = ['physics', 'maths'].map((tk) => {
+    const tracks = ['physics'].map((tk) => {
       const tr = app.TR[tk], byStage = {};
       tr.order.forEach((id) => { const st = H().stageOf(id); (byStage[st.id] = byStage[st.id] || { st, ids: [] }).ids.push(id); });
       return `<section class="tbtrack"><h3>${esc(tr.name)}</h3>${Object.values(byStage).map(({ st, ids }) => {
@@ -77,7 +77,7 @@
     const cur = D.cur && (D.cur.state === 'running' || D.cur.state === 'ready') ? D.cur : null;
     view.innerHTML = `<section class="tb">
       <header class="tbhead"><p class="prk">Test yourself</p><h1>Build a test</h1>
-        <p class="prlead">Choose the topics you have learned, how many questions and how long. You sit it against the clock with no hints and no marking until the end, like the real thing. Afterwards you can review your saved answers alongside the worked solutions.</p></header>
+        <p class="prlead">Choose the topics you have learned, how many questions and how long. You sit it against the clock with no hints and no marking until the end, like the real thing. Then ${WL.ai ? 'Einstein marks every answer' : 'short answers are checked at once, you tick the mark scheme for the longer ones,'} and the topics you found hard come back to your review list sooner.</p></header>
       ${cur ? `<div class="tbresume"><p><b>${cur.state === 'running' ? 'You have a test in progress.' : 'Your last test is ready to start.'}</b> ${cur.items.length} questions, ${cur.marks} marks${cur.mins ? `, ${cur.mins} minutes` : ''}.</p><button type="button" class="btn primary" data-tgo="${cur.state === 'running' ? 'resume' : 'cover'}">${cur.state === 'running' ? 'Go back to it' : 'Open it'}</button><button type="button" class="btn ghost" data-tdiscard>Discard it</button></div>` : ''}
       ${msg ? `<p class="tbmsg">${esc(msg)}</p>` : ''}
       <div class="tbgrid">
@@ -92,15 +92,16 @@
           <fieldset><legend>Kind</legend><div class="tbchips">${[['mixed', 'Mixed'], ['core', 'Short answers'], ['exam', 'Exam style']].map(([v, l]) => `<label><input type="radio" name="tmix" value="${v}"${o.mix === v ? ' checked' : ''}><span>${l}</span></label>`).join('')}</div></fieldset>
           <fieldset><legend>Time</legend><div class="tbchips">${[['exam', 'Exam timing'], ['custom', 'My own'], ['none', 'Untimed']].map(([v, l]) => `<label><input type="radio" name="ttime" value="${v}"${o.time === v ? ' checked' : ''}><span>${l}</span></label>`).join('')}</div>
             <label class="tbmins"${o.time === 'custom' ? '' : ' hidden'}>Minutes <input type="number" name="tmins" min="1" max="300" value="${o.mins}"></label>
-            <p class="tbnote">Exam timing allows about a minute per mark at GCSE, 1.3 minutes at A-level (the boards range from about 1.2 to 1.5) and 1.8 at university, where papers vary most.</p></fieldset>
+            <p class="tbnote">Exam timing allows about a minute per mark at GCSE, and 1.3 minutes at A-level (the boards range from about 1.2 to 1.5).</p></fieldset>
           <label class="tbck"><input type="checkbox" name="tprac"${o.prac ? ' checked' : ''}> Include required-practical questions</label>
+          ${WL.ai ? `<label class="tbck"><input type="checkbox" name="tfresh"${o.fresh ? ' checked' : ''}> Einstein writes fresh exam questions for this paper, inside the syllabus <small>(up to five; needs the AI)</small></label>` : ''}
           <p class="tbsum" aria-live="polite"></p>
           <button type="button" class="btn primary tbbuild" data-tbuild>Build the test</button>
         </aside>
       </div>
       ${historyHTML(D)}
     </section>`;
-    document.title = 'Build a test · Geodesic';
+    document.title = 'Build a test · Twistor';
     const readOpts = () => ({ n: +($('input[name=tn]:checked', view) || { value: 10 }).value, mix: ($('input[name=tmix]:checked', view) || { value: 'mixed' }).value, time: ($('input[name=ttime]:checked', view) || { value: 'exam' }).value, mins: +$('input[name=tmins]', view).value || 30, prac: $('input[name=tprac]', view).checked, fresh: !!($('input[name=tfresh]', view) || {}).checked });
     const chosen = () => $$('[data-tt]:checked', view).map((x) => x.dataset.tt);
     function summary() {
@@ -121,6 +122,19 @@
     view.onclick = (e) => {
       const t = e.target;
       const q = t.closest('[data-tsel]'); if (q) { const k = q.dataset.tsel, set = new Set(k === 'learned' ? learned : k === 'due' ? due : []); $$('[data-tt]', view).forEach((x) => { x.checked = set.has(x.dataset.tt) && !x.disabled; }); $$('.tbstage', view).forEach((d) => { d.open = $$('[data-tt]:checked', d).length > 0; }); summary(); return; }
+      if (t.closest('[data-tbuild]') && readOpts().fresh && !t.closest('[data-tbuild]').dataset.busy) {
+        const b = t.closest('[data-tbuild]'), o2 = readOpts(), ids = chosen(), want = Math.min(5, Math.ceil(o2.n / 2)), extra = [], sum = $('.tbsum', view); b.dataset.busy = '1'; b.disabled = true;
+        (async () => {
+          for (let k = 0; k < want; k++) {
+            const tid = ids[k % ids.length]; sum.innerHTML = `<span class="spin" aria-hidden="true"></span> Einstein is writing question ${k + 1} of ${want}, on ${esc(A().nodes[tid].title)}…`;
+            try { const it = await A().writeExamQ(tid, false); extra.push({ k: `${tid}|ai|${it.key}`, tid, kind: 'exam', q: it.q, a: it.a || '', pts: it.pts, marks: it.pts.length, fresh: 1 }); } catch (er) { sum.textContent = (er && er.message) || 'The AI could not be reached.'; break; }
+          }
+          const P = buildPaper(Object.assign({ topics: ids, extra }, o2)); delete b.dataset.busy;
+          if (!P.items.length) { renderBuilder(view, 'Those topics have no questions of that kind yet.'); return; }
+          const D2 = load(); D2.cur = P; save(D2); renderCover(view, extra.length < want ? `Einstein wrote ${extra.length} of ${want} fresh questions; the rest come from the question bank.` : ''); window.scrollTo(0, 0);
+        })();
+        return;
+      }
       if (t.closest('[data-tbuild]')) { const o2 = readOpts(), ids = chosen(); const P = buildPaper(Object.assign({ topics: ids }, o2)); if (!P.items.length) { renderBuilder(view, 'Those topics have no questions of that kind yet. Choose more topics or another kind.'); return; } const D2 = load(); D2.cur = P; save(D2); renderCover(view); window.scrollTo(0, 0); return; }
       const go = t.closest('[data-tgo]'); if (go) { const D2 = load(); if (go.dataset.tgo === 'resume') renderSit(view); else renderCover(view); window.scrollTo(0, 0); return; }
       if (t.closest('[data-tdiscard]')) { const D2 = load(); delete D2.cur; save(D2); renderBuilder(view); return; }
@@ -128,8 +142,8 @@
   }
   function historyHTML(D) {
     const L = (D.hist || []).slice().reverse(); if (!L.length) return '';
-    return `<section class="tbhist"><h2 class="prh2">Your tests</h2><table class="rtab tbhtab"><thead><tr><th scope="col">Date</th><th scope="col">Questions</th><th scope="col">Topics</th><th scope="col">Time used</th><th></th></tr></thead><tbody>
-      ${L.map((h) => `<tr><td>${new Date(h.made).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</td><td>${h.n}</td><td>${h.topics}</td><td>${h.used ? mmss(h.used) : '–'}</td><td><a href="#test-${h.id}">Review</a></td></tr>`).join('')}</tbody></table></section>`;
+    return `<section class="tbhist"><h2 class="prh2">Your tests</h2><table class="rtab tbhtab"><thead><tr><th scope="col">Date</th><th scope="col">Questions</th><th scope="col">Topics</th><th scope="col">Score</th><th scope="col">Time used</th><th></th></tr></thead><tbody>
+      ${L.map((h) => `<tr><td>${new Date(h.made).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</td><td>${h.n}</td><td>${h.topics}</td><td><b>${h.pct}%</b> <small>${h.got}/${h.max}</small></td><td>${h.used ? mmss(h.used) : '–'}</td><td><a href="#test-${h.id}">Review</a></td></tr>`).join('')}</tbody></table></section>`;
   }
 
   /* ---------- the cover, the paper, the clock ---------- */
@@ -139,7 +153,7 @@
     view.innerHTML = `<section class="tb tcover">
       <p class="crumbs"><a href="#test">Build a test</a></p>
       <header class="tbhead"><p class="prk">Your paper</p><h1>${P.items.length} questions · ${P.marks} marks</h1>
-        <p class="prlead">${P.mins ? `You have <b>${P.mins} minutes</b>. The clock keeps running if you leave this page, and the paper closes when the time is up.` : 'There is no time limit. Take it as a calm practice paper.'} Answer in full sentences or with working, as in a real exam: the marks are for the steps, not only the answer.</p></header>
+        <p class="prlead">${P.mins ? `You have <b>${P.mins} minutes</b>. The clock keeps running if you leave this page, and the paper is marked when the time is up.` : 'There is no time limit. Take it as a calm practice paper.'} Answer in full sentences or with working, as in a real exam: the marks are for the steps, not only the answer.</p></header>
       ${note ? `<p class="tbmsg">${esc(note)}</p>` : ''}${P.items.some((x) => x.fresh) ? `<p class="tbnote">${P.items.filter((x) => x.fresh).length} of these questions were written by Einstein for this paper, inside the syllabus. AI-written questions can contain mistakes: if one looks wrong, say so in your answer.</p>` : ''}
       <ul class="tcovt">${Object.entries(byT).map(([t, m]) => `<li><span>${esc(app.nodes[t].title)}</span><small>${esc(H().stageOf(t).short)} · ${m} mark${m > 1 ? 's' : ''}</small></li>`).join('')}</ul>
       <div class="pqact"><button type="button" class="btn primary" data-tstart>Start the clock</button><button type="button" class="btn ghost" data-tback>Change the choices</button></div>
@@ -154,16 +168,16 @@
     view.innerHTML = `<section class="tb tsit">
       <header class="tphead"><div><p class="prk">Test in progress</p><b>${P.items.length} questions · ${P.marks} marks</b></div>
         <div class="tpclockw">${P.mins ? `<span class="tpclock" id="tp-clock" aria-live="off">${mmss((P.end - Date.now()) / 1000)}</span><small>left</small>` : '<small>Untimed</small>'}</div>
-        <button type="button" class="btn primary" data-tfinish>Finish practice</button></header>
+        <button type="button" class="btn primary" data-tfinish>Finish and mark</button></header>
       <nav class="tpnav" aria-label="Questions">${P.items.map((x, i) => `<a href="#tq-${i}" data-tq="${i}" class="${(P.ans[i] || '').trim() ? 'done' : ''}${P.flag[i] ? ' flag' : ''}">${i + 1}</a>`).join('')}</nav>
       <ol class="tpqs">${P.items.map((x, i) => `<li class="tpq" id="tq-${i}">
         <header><span class="pqn">${i + 1}</span><span class="tpmeta">${esc(app.nodes[x.tid].title)} · ${KIND[x.kind]}${x.prac ? ': ' + esc(x.prac) : ''}</span><span class="pqm">${x.marks} mark${x.marks > 1 ? 's' : ''}</span><button type="button" class="tpflag" data-tflag="${i}" aria-pressed="${!!P.flag[i]}" title="Flag this question to come back to">Flag</button></header>
         <p class="pqq" data-tid="${esc(x.tid)}">${pr(x.q)}</p>
         <textarea data-ta="${i}" rows="${x.marks > 2 ? 5 : 3}" placeholder="${x.kind === 'core' && x.ans !== 'written' ? 'Your answer, with working and units' : 'Your answer'}" aria-label="Your answer to question ${i + 1}">${esc(P.ans[i] || '')}</textarea></li>`).join('')}</ol>
-      <div class="tpend"><button type="button" class="btn primary" data-tfinish>Finish practice</button><span class="muted">${P.items.filter((_, i) => !(P.ans[i] || '').trim()).length} unanswered</span></div>
+      <div class="tpend"><button type="button" class="btn primary" data-tfinish>Finish and mark</button><span class="muted">${P.items.filter((_, i) => !(P.ans[i] || '').trim()).length} unanswered</span></div>
     </section>`;
     typeset($('.tpqs', view));
-    document.title = 'Test in progress · Geodesic';
+    document.title = 'Test in progress · Twistor';
     let saveT = 0;
     const flush = () => { clearTimeout(saveT); const D2 = load(); if (D2.cur && D2.cur.id === P.id) { D2.cur.ans = P.ans; D2.cur.flag = P.flag; save(D2); } };
     window.removeEventListener('pagehide', WL.tests._flush || (() => {})); WL.tests._flush = flush; window.addEventListener('pagehide', flush);
@@ -175,7 +189,7 @@
       const q = t.closest('[data-tq]'); if (q) { e.preventDefault(); const el = $('#tq-' + q.dataset.tq); el.scrollIntoView({ behavior: WL.reduced ? 'auto' : 'smooth', block: 'start' }); const ta = el.querySelector('textarea'); if (ta) setTimeout(() => ta.focus({ preventScroll: true }), 300); return; }
       const fin = t.closest('[data-tfinish]'); if (fin) {
         const un = P.items.filter((_, i) => !(P.ans[i] || '').trim()).length;
-        if (un && !fin.dataset.armed) { $$('[data-tfinish]', view).forEach((b) => { b.dataset.armed = '1'; b.textContent = `${un} unanswered: press again to finish`; }); setTimeout(() => $$('[data-tfinish]', view).forEach((b) => { delete b.dataset.armed; b.textContent = 'Finish practice'; }), 4000); return; }
+        if (un && !fin.dataset.armed) { $$('[data-tfinish]', view).forEach((b) => { b.dataset.armed = '1'; b.textContent = `${un} unanswered: press again to finish`; }); setTimeout(() => $$('[data-tfinish]', view).forEach((b) => { delete b.dataset.armed; b.textContent = 'Finish and mark'; }), 4000); return; }
         flush(); finish(view, false);
       }
     };
@@ -187,53 +201,89 @@
     }, 1000);
   }
 
-  /* ---------- saved papers and worked answers ---------- */
-  function finish(view, timeUp) {
-    clearInterval(tick);
-    const data = load();
-    const paper = data.cur;
-    if (!paper) return;
-    paper.state = 'done';
-    paper.fin = Date.now();
-    paper.used = paper.start ? Math.round(((paper.end ? Math.min(paper.fin, paper.end) : paper.fin) - paper.start) / 1000) : 0;
-    data.tests ||= {};
-    data.tests[paper.id] = paper;
-    const ids = Object.keys(data.tests).sort();
-    while (ids.length > 15) delete data.tests[ids.shift()];
-    data.hist = (data.hist || []).filter(entry => entry.id !== paper.id && data.tests[entry.id]);
-    data.hist.push({ id: paper.id, made: paper.made, n: paper.items.length, topics: paper.topics.length, used: paper.used });
-    delete data.cur;
-    save(data);
-    history.replaceState(null, '', '#test-' + paper.id);
-    renderResult(view, paper.id, timeUp);
-  }
-
-  function renderResult(view, id, timeUp = false) {
-    const paper = (load().tests || {})[id];
-    if (!paper) {
-      view.innerHTML = '<section class="tb"><h1>That test is not saved here</h1><p><a href="#test">Build a test</a></p></section>';
-      return;
+  /* ---------- marking ---------- */
+  async function markOne(x, ans) {
+    if (!ans || !ans.trim()) return { got: 0, v: 'blank', fb: 'Not answered.' };
+    const topic = A().nodes[x.tid].title + ' (' + H().stageOf(x.tid).name + ')';
+    if (x.kind === 'core') {
+      try {
+        const r = await WL.grade.check({ q: x.q, a: x.a, s: x.s, k: x.keys }, ans, { topic }); const got = r.verdict === 'correct' ? x.marks : r.verdict === 'partial' ? Math.max(1, Math.floor(x.marks / 2)) : 0;
+        /* a practice question missed in a test goes to the mistakes notebook (v6 mistakes.js) */
+        if (WL.mistakes && /\|c\|/.test(x.k)) WL.mistakes.note(x.tid, x.k.split('|').slice(2).join('|'), { v: r.verdict, t: ans.slice(0, 2000), fb: r.feedback || '', note: r.note || '', via: r.via, at: Date.now() }, { q: x.q }, 'test');
+        return { got, v: r.verdict, fb: r.feedback || r.note || '', via: r.via };
+      }
+      catch (e) { return { got: 0, v: 'unmarked', fb: (e && e.message) || 'Could not be checked.', via: 'none' }; }
     }
+    if (!WL.ai) return { got: 0, v: 'unmarked', fb: 'Tick each mark-scheme point your answer makes.', ticks: x.pts.map(() => false), via: 'self' };
+    try {
+      const prompt = `Question (${x.marks} marks): ${x.q}\n\nMark scheme:\n${x.pts.map((p, j) => `${j + 1}. ${p}`).join('\n')}${x.a ? `\nFinal answer: ${x.a}` : ''}\n\nStudent's answer:\n"""\n${ans.slice(0, 3000)}\n"""`;
+      const r = await WL.ai.ask(A().EXSYS, [{ role: 'user', content: prompt }], { json: true });
+      const m = String(r.text || '').match(/\{[\s\S]*\}/); const j = m ? JSON.parse(m[0]) : null;
+      if (!j || !Array.isArray(j.awarded)) throw new Error('The marking could not be read.');
+      const ticks = x.pts.map((_, k) => !!j.awarded[k]), got = Math.min(x.marks, ticks.filter(Boolean).length);
+      return { got, ticks, v: got === x.marks ? 'correct' : got ? 'partial' : 'incorrect', fb: String(j.feedback || '').slice(0, 400), via: WL.ai.label(r.p) };
+    } catch (e) { return { got: 0, v: 'unmarked', fb: ((e && e.message) || 'The AI could not be reached.') + ' Tick the mark scheme yourself.', ticks: x.pts.map(() => false), via: 'none' }; }
+  }
+  const onTest = () => /^#test$/.test(location.hash);
+  async function finish(view, timeUp) {
+    clearInterval(tick);
+    const D = load(), P = D.cur; if (!P) return;
+    P.state = 'marking'; P.fin = Date.now(); P.used = P.start ? Math.round(((P.end ? Math.min(P.fin, P.end) : P.fin) - P.start) / 1000) : 0; save(D);
+    view.innerHTML = `<section class="tb tmark"><h1>${timeUp ? 'Time is up.' : 'Marking your test'}</h1><p class="prlead">${timeUp ? 'Your answers were saved as they were. ' : ''}${WL.ai ? 'Einstein is marking each answer against its mark scheme.' : 'Checking the short answers. Then you tick the mark scheme for the longer ones.'}</p><div class="tmbar"><i style="width:0%"></i></div><p class="tmnow" aria-live="polite"></p></section>`;
+    view.onclick = null; view.oninput = null; window.scrollTo(0, 0);
+    P.res = P.res || {};
+    for (let i = 0; i < P.items.length; i++) {
+      if (P.res[i]) continue;
+      const now = onTest() && $('.tmnow', view); if (now) now.innerHTML = `<span class="spin" aria-hidden="true"></span> Marking question ${i + 1} of ${P.items.length}`;
+      P.res[i] = await markOne(P.items[i], P.ans[i] || '');
+      const bar = onTest() && $('.tmbar i', view); if (bar) bar.style.width = `${(100 * (i + 1)) / P.items.length}%`;
+      const D2 = load(); if (D2.cur && D2.cur.id === P.id) { D2.cur.res = P.res; save(D2); }
+    }
+    complete(P); if (onTest()) { try { history.replaceState(null, '', '#test-' + P.id); } catch (e) {} renderResult(view, P.id); }
+  }
+  function complete(P) {
+    const D = load(); P.state = 'done';
+    P.got = P.items.reduce((s, _, i) => s + ((P.res[i] || {}).got || 0), 0);
+    const byT = {}; P.items.forEach((x, i) => { const b = (byT[x.tid] = byT[x.tid] || { got: 0, max: 0 }); b.got += (P.res[i] || {}).got || 0; b.max += x.marks; });
+    // results feed practice and review: a topic answered well is pushed further out, a weak one comes back soon
+    Object.entries(byT).forEach(([t, b]) => { const f = b.got / b.max; if (f >= 0.75) A().review(t, true); else if (f < 0.5) A().review(t, false); });
+    P.items.forEach((x, i) => { if (x.kind === 'core' && P.res[i] && P.res[i].v !== 'blank' && P.res[i].v !== 'unmarked') A().markP(x.tid, x.k.split('|')[2], P.res[i].v === 'correct'); });
+    P.byT = byT;
+    D.tests = D.tests || {}; D.tests[P.id] = P; const ids = Object.keys(D.tests).sort(); while (ids.length > 15) delete D.tests[ids.shift()];
+    D.hist = (D.hist || []).filter((h) => h.id !== P.id); D.hist.push({ id: P.id, made: P.made, n: P.items.length, topics: P.topics.length, got: P.got, max: P.marks, pct: Math.round((100 * P.got) / P.marks), used: P.used }); D.hist = D.hist.slice(-30);
+    delete D.cur; save(D);
+  }
+  function renderResult(view, id) {
+    const D = load(), P = (D.tests || {})[id]; const app = A();
+    if (!P) { view.innerHTML = `<section class="tb"><h1>That test is not saved here</h1><p><a href="#test">Build a test</a></p></section>`; return; }
+    const pct = Math.round((100 * P.got) / P.marks), rows = Object.entries(P.byT).map(([t, b]) => [t, b, b.got / b.max]).sort((a, b) => a[2] - b[2]);
+    const VV = { correct: ['Full marks', 'y'], partial: ['Some marks', 'p'], incorrect: ['No marks', 'n'], blank: ['Not answered', 'n'], unmarked: ['Not marked', 'p'] };
     view.innerHTML = `<section class="tb tres">
-      <p class="crumbs"><a href="#test">Build a test</a></p>
-      <header class="tbhead"><div><h1>${timeUp ? 'Time is up' : 'Practice complete'}</h1>
-      <p class="prlead">Your answers are saved in this browser. Open the worked answers below to review your practice.</p></div></header>
-      <ol class="tpqs trqs">${paper.items.map((question, i) => `<li class="tpq">
-        <header><span class="pqn">${i + 1}</span><span class="tpmeta">${esc(A().nodes[question.tid].title)} · ${KIND[question.kind]}</span></header>
-        <p class="pqq">${pr(question.q)}</p>
-        <div class="trans"><small>Your answer</small><p>${paper.ans[i] ? esc(paper.ans[i]).replace(/\n/g, '<br>') : '<i>No answer</i>'}</p></div>
-        <details class="trms"><summary>Worked answer</summary>
-          ${question.pts?.length ? `<ol>${question.pts.map(point => `<li>${pr(point)}</li>`).join('')}</ol>` : ''}
-          ${question.a ? `<p><b>Answer</b> ${pr(question.a)}</p>` : ''}
-          ${question.s?.length ? `<ol>${question.s.map(step => `<li>${pr(step)}</li>`).join('')}</ol>` : ''}
-        </details>
-      </li>`).join('')}</ol>
+      <p class="crumbs"><a href="#test">Build a test</a> <span aria-hidden="true">›</span> ${new Date(P.made).toLocaleString(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</p>
+      <header class="tbhead tresh"><div><p class="prk">Your result</p><h1><span class="trpct">${pct}%</span> ${P.got} of ${P.marks} marks</h1>
+        <p class="prlead">${P.items.length} questions on ${P.topics.length} topic${P.topics.length > 1 ? 's' : ''}${P.used ? `, in ${mmss(P.used)}${P.mins ? ` of ${P.mins} minutes` : ''}` : ''}. ${pct >= 80 ? 'Strong: the topics above three quarters move further out in your review schedule.' : pct >= 50 ? 'A solid base with gaps: the weakest topics are first below, and are back in your review list.' : 'Plenty to work on: each topic under half marks is back in your review list for the next few days.'}</p></div></header>
+      <h2 class="prh2">By topic</h2>
+      <ul class="trtopics">${rows.map(([t, b, f]) => `<li><a href="#t-${t}">${esc(app.nodes[t].title)}</a><span class="trbar" style="--f:${Math.round(f * 100)}%"><i></i></span><b>${b.got}/${b.max}</b><small>${f >= 0.75 ? 'review later' : f < 0.5 ? 'back in review' : 'keep practising'}</small></li>`).join('')}</ul>
+      <div class="pqact"><button type="button" class="btn primary" data-tagain>Test the ones I dropped marks on</button><a class="btn ghost" href="#test">Build another test</a></div>
+      <h2 class="prh2">Every answer</h2>
+      <ol class="tpqs trqs">${P.items.map((x, i) => { const r = P.res[i] || {}, [lab, cl] = VV[r.v] || VV.unmarked; return `<li class="tpq">
+        <header><span class="pqn">${i + 1}</span><span class="tpmeta">${esc(app.nodes[x.tid].title)} · ${KIND[x.kind]}</span><span class="trv ${cl}">${lab}</span><span class="pqm"><b>${r.got || 0}</b>/${x.marks}</span></header>
+        <p class="pqq" data-tid="${esc(x.tid)}">${pr(x.q)}</p>
+        <div class="trans"><small>Your answer</small><p>${P.ans[i] ? esc(P.ans[i]).replace(/\n/g, '<br>') : '<i>No answer</i>'}</p></div>
+        ${r.fb ? `<p class="trfb"><b>Einstein:</b> ${pr(r.fb)} ${r.via && r.via !== 'none' ? `<small>${esc(r.via === 'numbers' ? 'checked by number' : r.via === 'keywords' ? 'checked by key words' : 'marked by ' + r.via)}</small>` : ''}</p>` : ''}
+        <details class="trms"><summary>${x.pts ? 'Mark scheme' : 'Model answer'}</summary>${x.pts ? `<ol>${x.pts.map((p, j) => `<li class="${r.ticks && r.ticks[j] ? 'y' : ''}">${pr(p)}</li>`).join('')}</ol>` : ''}${x.a ? `<p><b>Answer</b> ${pr(x.a)}</p>` : ''}${x.s && x.s.length ? `<ol>${x.s.map((p) => `<li>${pr(p)}</li>`).join('')}</ol>` : ''}</details>
+      </li>`; }).join('')}</ol>
     </section>`;
-    typeset(view);
-    document.title = 'Saved practice · Geodesic';
-    view.onclick = null;
-    view.oninput = null;
-    view.onchange = null;
+    typeset(view); document.title = `Test result ${pct}% · Twistor`;
+    view.onclick = (e) => {
+      if (e.target.closest('[data-tagain]')) {
+        const miss = P.items.filter((x, i) => ((P.res[i] || {}).got || 0) < x.marks); if (!miss.length) { e.target.closest('[data-tagain]').textContent = 'Nothing dropped: full marks'; return; }
+        const P2 = { id: Date.now().toString(36), made: Date.now(), topics: [...new Set(miss.map((x) => x.tid))], items: miss, marks: miss.reduce((s, x) => s + x.marks, 0), state: 'ready', ans: {}, flag: {}, opts: P.opts };
+        P2.examMins = Math.ceil(miss.reduce((s, x) => s + x.marks * A().MPM(x.tid), 0)); P2.mins = P.mins ? Math.max(5, P2.examMins) : 0;
+        P2.show = 'cover'; const D2 = load(); D2.cur = P2; save(D2); location.hash = 'test';
+      }
+    };
+    view.oninput = null; view.onchange = null;
   }
 
   WL.pages = WL.pages || {};

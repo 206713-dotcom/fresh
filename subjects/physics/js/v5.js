@@ -1,4 +1,4 @@
-/* Geodesic — sixth layer of behaviour: formulas in running text set in TeX, and narration for the films and live animations.
+/* Twistor — sixth layer of behaviour: formulas in running text set in TeX, and narration for the films and live animations.
    Loaded after manim.js (which it extends) and before app.js (which uses it). */
 (function () {
 "use strict";
@@ -340,7 +340,8 @@ const TX = (() => {
      reading, as the platform asks. Else the browser's own, fed one short piece at a time with watchdogs, because on
      phones its events are unreliable. Else none, and the players show the words for as long as they take to read. */
   const speakT = { start: 0, end: 0, req: 0 };   // when the voice was last asked to speak, started and stopped (read by WL.fs)
-  const ttsGet = () => Promise.resolve(null);
+  let ttsP = null;
+  const ttsGet = () => { if (!ttsP) ttsP = (window.claude && claude.use ? Promise.race([claude.use('tts'), new Promise((r) => setTimeout(() => r(null), 4000))]).catch(() => null) : Promise.resolve(null)); return ttsP; };
   /* text in pieces of at most n characters: at sentence ends where possible, then at a semicolon, comma or space;
      never inside $…$ */
   function pieces(s, n = 190) {
@@ -462,7 +463,7 @@ const TX = (() => {
     }
     /* the browser's voice: one line at a time, in pieces short enough not to be cut off */
     function bVoice() {
-      if (bVoiceC || !window.speechSynthesis) return bVoiceC; const V = speechSynthesis.getVoices().filter(voice => voice.localService) || [];
+      if (bVoiceC || !window.speechSynthesis) return bVoiceC; const V = speechSynthesis.getVoices() || [];
       bVoiceC = V.find((v) => /en-GB/i.test(v.lang) && /Google|Daniel|Serena|Kate|Arthur|Martha/i.test(v.name)) || V.find((v) => /en-GB/i.test(v.lang)) || V.find((v) => /^en/i.test(v.lang)) || null; return bVoiceC;
     }
     if (window.speechSynthesis) try { speechSynthesis.addEventListener('voiceschanged', () => { bVoiceC = null; bVoice(); }); } catch (e) {}

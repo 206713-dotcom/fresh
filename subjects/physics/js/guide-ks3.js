@@ -1,4 +1,4 @@
-/* Geodesic step-by-step guides, stage ks3 (built from src/guide/ks3-*.js) */
+/* Twistor step-by-step guides, stage ks3 (built from src/guide/ks3-*.js) */
 WL.gd('ks3-energy', {
   h: 'Why does a bouncing ball bounce a little lower every time, and why does a phone get warm while it charges? Both come from one rule: energy is never made or destroyed, only moved from place to place, and every time it moves, some of it spreads out as heat.',
   s: [

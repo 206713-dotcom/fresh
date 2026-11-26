@@ -1,4 +1,4 @@
-/* Geodesic: "See it like Feynman" sections, alevel. Original text; see src/v6/fey.js. */
+/* Twistor: "See it like Feynman" sections, alevel. Original text; see src/v6/fey.js. */
 (function () { const WL = window.WL; if (!WL || !WL.fy) return;
 WL.fy('al-ac', [
   'UK mains is called 230 V, yet the voltage swings between about +325 V and −325 V fifty times a second. Why quote 230?',

@@ -1,4 +1,4 @@
-/* Geodesic: "See it like Feynman" sections, gcse. Original text; see src/v6/fey.js. */
+/* Twistor: "See it like Feynman" sections, gcse. Original text; see src/v6/fey.js. */
 (function () { const WL = window.WL; if (!WL || !WL.fy) return;
 WL.fy('gcse-atom', [
   'When Geiger and Marsden fired alpha particles at gold foil thinner than a page, almost all went straight through, but about one in 8000 bounced back. Rutherford compared it to a shell bouncing off tissue paper.',

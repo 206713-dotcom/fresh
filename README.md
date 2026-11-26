@@ -69,7 +69,7 @@ Quilio goes from particle models and the periodic table to bonding, reactions an
 
 ### Physics (0625)
 
-Geodesic connects worked examples with visual explanations, practical activities and a Study area for revision. Start with an IGCSE topic such as motion or circuits, work through a problem and mark the topic understood when you can explain it. The site also has higher-level physics, maths and Olympiad material for students who want to explore further. [Open Geodesic Physics](https://gisfresh.me/subjects/physics.html)
+Twistor connects worked examples with visual explanations, practical activities and a Study area for revision. Start with an IGCSE topic such as motion or circuits, work through a problem and mark the topic understood when you can explain it. It covers physics from Key Stage 3 to A-Level. [Open Twistor Physics](https://gisfresh.me/subjects/physics.html)
 
 **How AI helped.** AI supported the original prototype and its move into Fresh, including testing the entry route, loading experience and local completion state. The Fresh Physics answer checker compares numbers and key ideas in the browser. A worked solution gives students a reference when the checker only picks up part of their reasoning. [Physics answer checker](subjects/physics/js/grade.js)
 

@@ -1,4 +1,4 @@
-/* Geodesic — KS3 and GCSE topics */
+/* Twistor — KS3 and GCSE topics */
 (function () {
   const WL = window.WL, C = WL.C, R = String.raw;
   const f1 = (x) => x.toFixed(1), f2 = (x) => x.toFixed(2);

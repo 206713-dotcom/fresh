@@ -1,4 +1,4 @@
-/* Geodesic — generative stage banners and the home hero scene. */
+/* Twistor — generative stage banners and the home hero scene. */
 (function () {
   const WL = window.WL, C = WL.C;
   WL.banners = {};

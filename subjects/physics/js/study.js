@@ -1,6 +1,6 @@
-/* Geodesic — learning science, applied.
+/* Twistor — learning science, applied.
    WL.study: confidence calibration, exam date (sets the review gaps), and the #science page that explains
-   what the research says, what Geodesic does about it, and where the evidence is weaker than the slogan. */
+   what the research says, what Twistor does about it, and where the evidence is weaker than the slogan. */
 (function () {
   const WL = (window.WL = window.WL || {});
   const uk = (b) => { const A = WL.auth; return b + (A && A.username && !A.isOwner ? ':' + A.username : ''); };
@@ -37,7 +37,7 @@
       cav: 'The 10–20 % rule comes mainly from memory for facts; nobody knows the optimal schedule for physics problem solving precisely.', ref: [1, 2] },
     { t: 'Mix the topics', k: 'Interleaving',
       found: 'Practising several kinds of problem in a mixed order, rather than in blocks, improves learning: a meta-analysis found a moderate overall effect (Hedges’ g = 0.42) and a smaller one for mathematical tasks (g = 0.34). It works best when the categories look alike, which is exactly the situation in physics problems.',
-      here: ['Review rounds mix topics and never put two problems from the same strand next to each other.', 'The olympiad pathway asks for mixed problem sets once a phase is learnt.'],
+      here: ['Review rounds mix topics and never put two problems from the same strand next to each other.'],
       cav: 'The effect varies a lot between studies, and for some materials it disappears. Mixing feels harder and less productive than blocking: that feeling is misleading, but it is real.', ref: [3, 8] },
     { t: 'Guess before you learn', k: 'Pretesting',
       found: 'Answering a question before studying the material, even wrongly, improves memory for that material afterwards. A preregistered meta-analysis found a moderate effect for the questioned content (g = 0.54) but almost no benefit for content that was not asked about.',
@@ -45,7 +45,7 @@
       cav: 'The benefit is specific: a guess helps you learn the answer to that question, not the whole topic.', ref: [5, 6] },
     { t: 'Explain each step to yourself', k: 'Self-explanation',
       found: 'Prompting learners to explain why each step follows produced a medium effect across 69 effect sizes (g = 0.55).',
-      here: ['Every line of every derivation has a “Why?” that stays closed until you have tried to explain it yourself.', 'Einstein will explain any step in your own language, after you have had a go.'],
+      here: ['Every line of every derivation has a “Why?” that stays closed until you have tried to explain it yourself.'].concat(WL.tutor ? ['Einstein will explain any step in your own language, after you have had a go.'] : []),
       cav: 'Explanations you generate can be wrong; check them against the Why? and the derivation.', ref: [4] },
     { t: 'Know what you know', k: 'Calibration',
       found: 'Learners are often confident when wrong, and judge rereading and blocked practice as more effective than they are. Errors made with high confidence are corrected especially well once feedback arrives.',
@@ -53,8 +53,8 @@
       cav: 'Rating confidence takes a second each time; it pays only if you look at your calibration and act on it.', ref: [7, 8] },
     { t: 'Practise the way you will be tested', k: 'Exam-style practice',
       found: 'Memory works best when practice resembles the final test (transfer-appropriate processing). For exams, that means multi-step questions, mark schemes and a clock.',
-      here: ['Practice is split into core questions, which check one idea at a time, and exam-style questions with marks, a mark scheme, a timer, and marking by Einstein.', 'Einstein can write a fresh exam-style question on any topic.'],
-      cav: 'Exam-style questions here are built from each topic’s multi-step problems, or written by an AI; they are not past papers and should be checked like any AI output.', ref: [10] },
+      here: ['Practice is split into core questions, which check one idea at a time, and exam-style questions with marks' + (WL.ai ? ', a mark scheme, a timer, and marking by Einstein.' : ', a mark scheme and a timer.')].concat(WL.ai ? ['Einstein can write a fresh exam-style question on any topic.'] : []),
+      cav: WL.ai ? 'Exam-style questions here are built from each topic’s multi-step problems, or written by an AI; they are not past papers and should be checked like any AI output.' : 'Exam-style questions here are built from each topic’s multi-step problems; they are not past papers.', ref: [10] },
     { t: 'Worked examples first, then fade them', k: 'Worked examples',
       found: 'Beginners learn faster from studying worked examples than from solving problems unaided; as expertise grows the advantage reverses, so support should fade.',
       here: ['Hints reveal a solution one step at a time, so you take only as much help as you need.', 'Notes contain worked examples; practice withdraws them.'],
@@ -76,12 +76,12 @@
     'Kalyuga, S., Ayres, P., Chandler, P., & Sweller, J. (2003). The expertise reversal effect. <i>Educational Psychologist</i>, 38(1), 23–31.'
   ];
   function render(view) {
-    const h = WL.app.h; document.title = 'How Geodesic teaches · Geodesic';
+    const h = WL.app.h; document.title = 'How Twistor teaches · Twistor';
     const cs = study.calibStats(), ed = study.examDate(), edStr = ed ? new Date(ed).toISOString().slice(0, 10) : '';
     const pct = (x) => (x.n ? Math.round((100 * x.r) / x.n) + ' %' : '–');
     const L = h.LS(), inRot = Object.keys(L.u || {}).filter((id) => h.nodes[id]).length, due = Object.keys(L.r || {}).filter((id) => L.u[id] && L.r[id].due <= Date.now()).length;
     view.innerHTML = `<section class="sci-hero">
-        <p class="sci-k">How Geodesic teaches</p>
+        <p class="sci-k">How Twistor teaches</p>
         <h1>We are different.<br>We are maximising your potential.</h1>
         <p class="sci-lede">Not with a slogan: with study methods that controlled experiments keep finding work, built into every page. Here is what the research says, what we do about it, and where the evidence is weaker than it sounds.</p>
       </section>
@@ -99,7 +99,7 @@
       <section class="block"><div class="section-h"><h2>Eight methods, and what we built for each</h2></div>
         <ol class="sci-list">${P.map((p, i) => `<li><div class="sci-h"><span class="sci-n">${i + 1}</span><div><p class="sci-tag">${p.k}</p><h3>${p.t}</h3></div></div>
           <div class="sci-grid"><div><h4>What the research found</h4><p>${p.found} <sup>${p.ref.map((r) => `<a href="#ref-${r + 1}">${r + 1}</a>`).join(',')}</sup></p></div>
-          <div><h4>What Geodesic does</h4><ul>${p.here.map((x) => `<li>${x}</li>`).join('')}</ul></div>
+          <div><h4>What Twistor does</h4><ul>${p.here.map((x) => `<li>${x}</li>`).join('')}</ul></div>
           <div class="sci-cav"><h4>The honest caveat</h4><p>${p.cav}</p></div></div></li>`).join('')}</ol>
       </section>
       <section class="block sci-limits"><h2>What no website can promise</h2>

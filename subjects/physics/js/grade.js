@@ -1,4 +1,4 @@
-/* Geodesic — answer checking for practice problems.
+/* Twistor — answer checking for practice problems.
    1. Numbers: a typed numerical answer is compared with the model answer (2 % tolerance), instantly and offline.
    2. Meaning: written answers go to the AI (Claude on claude.ai, a keyless public AI elsewhere, or the reader's own Gemini key) with the model answer, the worked
       solution and the key ideas. An answer counts as right if its reasoning is right OR if it uses the key ideas correctly.
@@ -66,7 +66,9 @@
     }
     return out;
   }
-  const close = (a, b) => Math.abs(a - b) <= Math.max(0.02 * Math.abs(b), 1e-12);
+  /* within 2% of the expected value. The tolerance is relative only: an absolute floor (1e-12 here until session 26) made every
+     atomic-scale number, and 0, match any expected value below it, so 0 J passed for a photon energy of 3.97 × 10⁻¹⁹ J */
+  const close = (a, b) => (b === 0 ? Math.abs(a) < 1e-12 : Math.abs(a - b) <= 0.02 * Math.abs(b));
   function numberCheck(p, ans) {
     const given = nums(p.q || ''), exp = nums(p.a || '').filter((e) => !given.some((g) => close(g, e)) || Math.abs(e) > 1e3);
     if (!exp.length) return null;
@@ -92,8 +94,54 @@
     return { verdict, cov, found, missing, num, keys: k };
   }
 
+  /* ---------- what went wrong with a number ----------
+     The slips that account for most wrong numbers in physics leave a signature in the ratio of the student's value to the
+     expected one: a power of ten (unit prefix), 2 (a missing ½, radius for diameter), 3.6 (km/h), 60 (minutes), 9.8 (mass
+     for weight), 57.3 (degrees for radians), a reciprocal, a missing square or root. slip() names the ones it recognises. */
+  const nearR = (a, b, tol = 0.02) => Math.abs(a - b) <= tol * Math.abs(b);
+  const TEN = { 1: 'a decimal point in the wrong place', 2: 'cm for m, or a percentage for a fraction', 3: 'a prefix such as milli or kilo (g for kg, mm for m, mA for A, kJ for J, ms for s)', 4: 'cm² for m²', 6: 'a prefix such as micro or mega, or mm² for m², cm³ for m³', 9: 'a prefix such as nano or giga, or mm³ for m³', 12: 'a prefix such as pico or tera' };
+  function slip(g, e) {
+    if (!isFinite(g) || !isFinite(e) || !g || !e) return '';
+    const r = g / e, R = Math.abs(r), out = [], either = (x) => nearR(R, x) || nearR(R, 1 / x);
+    if (nearR(g, -e)) return 'The size is right but the sign is opposite: check which direction you took as positive.';
+    if (nearR(R, 10 / 9.8, 0.003) || nearR(R, 9.8 / 10, 0.003)) return 'Your number differs by exactly the ratio of 10 to 9.8: check which value of g the question asks you to use.';
+    if (nearR(R, 1, 0.1)) return 'Very close, but outside the 2% allowed. Keep three or four significant figures through the working and round only at the end.';
+    if (Math.abs(Math.abs(g - e) - 273.15) <= 0.6) return 'Your number differs from the expected one by 273: kelvin and degrees Celsius have been mixed (T in K = T in °C + 273).';
+    const k = Math.round(Math.log10(R));
+    if (k !== 0 && nearR(R, Math.pow(10, k))) out.push(`Your number is ${k > 0 ? '' : '1/'}10${Math.abs(k) > 1 ? sup(Math.abs(k)) : ''} times the expected one: a power-of-ten slip${TEN[Math.abs(k)] ? ', usually ' + TEN[Math.abs(k)] : ''}. Convert every quantity to its SI unit before substituting.`);
+    if (Math.abs(e) > 0 && !nearR(Math.abs(e), 1, 0.12) && nearR(g, 1 / e)) out.push('Your number is 1 ÷ the expected one: a fraction has gone in upside down (as in T = 1/f, or R = V/I).');
+    if (either(2)) out.push(`Your number is ${R > 1 ? 'twice' : 'half'} the expected one: look for a missing or extra ½ (as in ½mv² and ½at²), a radius used for a diameter, or a there-and-back distance.`);
+    else if (either(4)) out.push(`Your number is ${R > 1 ? '4 times' : 'a quarter of'} the expected one: often a factor of 2 that should, or should not, have been squared.`);
+    else if (either(3.6)) out.push('Your number differs by a factor of 3.6: km/h and m/s have been mixed (divide km/h by 3.6 to get m/s).');
+    else if (either(60)) out.push('Your number differs by a factor of 60: minutes and seconds (or hours and minutes) have been mixed.');
+    else if (either(3600)) out.push('Your number differs by a factor of 3600: hours and seconds have been mixed.');
+    else if (either(9.8) || either(9.81)) out.push('Your number differs by a factor of g (9.8 N/kg): check whether the question wants a mass in kg or a weight in N.');
+    else if (either(180 / Math.PI)) out.push('Your number differs by a factor of 57.3: degrees and radians have been mixed. Check the mode your calculator is in.');
+    else if (either(2 * Math.PI)) out.push('Your number differs by a factor of 2π: frequency f and angular frequency ω = 2πf, or a radius and a circumference, have been mixed.');
+    else if (either(Math.PI)) out.push('Your number differs by a factor of π: check the circle formula used (area πr², circumference 2πr) and whether r is the radius.');
+    if (e > 0 && g > 0 && Math.abs(Math.log(e)) > 0.25) {
+      if (nearR(g, e * e)) out.push('Your number is the square of the expected one: the last step, taking a square root, looks missing.');
+      else if (nearR(g, Math.sqrt(e))) out.push('Your number is the square root of the expected one: a quantity that should be squared was not, or a root was taken that should not be.');
+    }
+    if (out.length) return out.slice(0, 2).join(' Or: ');
+    if (r < 0) return '';
+    return `Your number is ${R > 1 ? 'larger' : 'smaller'} than expected${R > 30 || R < 1 / 30 ? ' by more than a factor of ten: check the units and the powers of ten first' : ''}. Check each value you substituted against the question, with its unit.`;
+  }
+  const sup = (n) => String(n).replace(/\d/g, (d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]);
+  /* the one expected number the answer misses, against the last number the student wrote that matches nothing expected */
+  function diagnose(p, ans) {
+    if (!p || kind(p) !== 'numeric') return '';
+    const given = nums(p.q || ''), exp = nums(p.a || '').filter((e) => !given.some((g) => close(g, e)) || Math.abs(e) > 1e3);
+    if (!exp.length) return '';
+    const got = nums(ans), missed = exp.filter((e) => !got.some((g) => close(g, e)));
+    if (missed.length !== 1) return '';
+    const free = got.filter((g) => !exp.some((e) => close(g, e)));
+    if (!free.length) return '';
+    return slip(free[free.length - 1], missed[0]);
+  }
+
   /* ---------- AI verdict ---------- */
-  const SYS = `You mark one answer on Geodesic, a physics and maths learning site (UK Key Stage 3 to a physics degree).
+  const SYS = `You mark one answer on Twistor, a physics and maths learning site (UK Key Stage 3 to a physics degree).
 Judge meaning, not wording.
 - "correct": the reasoning and result are logically and physically right (any valid method or wording counts), OR the answer states the listed key ideas and uses every one of them correctly in a true statement. A bare list of key words, or key words inside a false statement, is not enough.
 - "partial": on the right track, but an essential idea or step is missing, or there is a small slip.
@@ -121,13 +169,29 @@ ${String(ans).slice(0, 2500)}
     return m ? { verdict: m[1], feedback: s.replace(/[{}"]/g, '').slice(0, 300) } : null;
   }
 
-  async function check(p, ans) {
-    const result = local(p, ans);
-    if (kind(p) === 'numeric' && result.num?.ok && !mixed(p)) {
-      return { verdict: 'correct', found: [], missing: [], via: 'numbers', note: 'Your number matches the model answer.' };
+  /* check(problem, answer, {topic, signal}) → {verdict, feedback, found, missing, via, note} */
+  async function check(p, ans, o = {}) {
+    const L = local(p, ans);
+    if (kind(p) === 'numeric' && L.num && L.num.ok && !mixed(p)) return { verdict: 'correct', found: [], missing: [], via: 'numbers', note: 'Your number matches the model answer.' };
+    const dg = L.num && !L.num.ok ? diagnose(p, ans) : '', withDg = (r) => { if (dg && r.verdict !== 'correct') { r.diag = dg; r.note = dg + (r.note && !/^Checked by key words/.test(r.note) ? ' ' + r.note : ''); } return r; };
+    if (!WL.ai) return withDg(Object.assign({}, L, { via: 'keywords', note: 'Checked by key words.' }));
+    try {
+      const r = await WL.ai.ask(SYS, [{ role: 'user', content: prompt(p, ans, o.topic) }], { json: true, signal: o.signal });
+      const v = parse(r.text);
+      if (!v) throw new Error('unreadable');
+      let verdict = v.verdict, note = '', feedback = v.feedback || '', missing = (v.missing || []).slice(0, 4);
+      const keysCount = L.cov >= 0.75 && L.keys.length >= 2 && (kind(p) !== 'numeric' || (L.num && L.num.ok));
+      if (verdict === 'partial' && keysCount) {      // key ideas all used: counts as right, the AI's remark becomes a tip
+        verdict = 'correct'; note = 'All the key ideas are there, so this counts as correct.'; missing = [];
+        if (feedback) feedback = 'To make it airtight: ' + feedback;
+      }
+      if (v.verdict === 'incorrect' && keysCount) note = 'The key words are there, but the statement they make is not right.';
+      return withDg({ verdict, feedback, found: (v.found || []).slice(0, 4), missing, via: WL.ai.label(r.p), note, score: v.score });
+    } catch (e) {
+      if (e && e.name === 'AbortError') throw e;
+      return withDg(Object.assign({}, L, { via: 'keywords', note: `AI marking was not available (${(e && e.message) || 'no connection'}), so this was checked by key words.`, found: L.found, missing: L.missing }));
     }
-    return { ...result, via: 'keywords', note: 'Checked by key words. Compare with the worked answer.' };
   }
 
-  WL.grade = { check, local, kind, mixed, keyIdeas, nums, numberCheck };
+  WL.grade = { check, local, kind, mixed, keyIdeas, nums, numberCheck, diagnose, slip };
 })();

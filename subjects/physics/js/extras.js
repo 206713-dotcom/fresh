@@ -1,4 +1,4 @@
-/* Geodesic — upgrades for the first 23 topics: self-checks, "try this" prompts, LaTeX overlays, 3D EM wave. */
+/* Twistor — upgrades for the first 23 topics: self-checks, "try this" prompts, LaTeX overlays, 3D EM wave. */
 (function () {
   const WL = window.WL, C = WL.C, T = WL.topics;
   const X = {

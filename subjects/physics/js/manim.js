@@ -1,4 +1,4 @@
-/* Geodesic — a Manim-style animation engine for the browser (v2).
+/* Twistor — a Manim-style animation engine for the browser (v2).
    Logical canvas is spec.W × spec.H (default 960×540).
    Features: LaTeX written with Manim's Write effect (MathJax → canvas paths), 3D camera with shaded
    surfaces, vector fields, flow particles, fading trails, braces, Circumscribe / Flash, chapter timeline,
