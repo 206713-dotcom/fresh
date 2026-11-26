@@ -68,3 +68,8 @@ mark { background:#dce6f1; color:#253449; border-radius:.15rem; }
 :root[data-study-spacing="wide"] { --study-spacing:1.95; }
 .source { font-family:var(--study-font,Georgia,serif); font-size:var(--study-size,1.13rem); line-height:var(--study-spacing,1.6); }
 textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--study-size,1rem); line-height:var(--study-spacing,1.6); }
+
+.brand { display:inline-flex; gap:.5rem; align-items:center; }
+:root[data-exam-active] main > :not(#practice),
+:root[data-exam-active] [data-exam-help] { display:none; }
+[hidden] { display:none !important; }

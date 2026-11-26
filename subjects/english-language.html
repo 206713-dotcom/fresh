@@ -41,10 +41,13 @@
     <p class="eyebrow">English Studio</p><h2 id="work-title">Read, write, revise</h2>
     <p>Choose an original practice task. Your drafts and completion history stay in this browser.</p>
     <div class="controls"><div><label for="task">Practice task</label><select id="task"></select></div><p id="completion" role="status"></p></div>
+    <div class="actions"><button id="exam-start" type="button">Start exam-style attempt</button><button id="exam-submit" type="button" class="button" hidden>Submit attempt</button><button id="exam-return" type="button" hidden>Return to practice draft</button></div>
+    <p id="exam-status" role="status"></p>
+    <details id="saved-attempts" data-exam-help><summary>Recent submitted attempts</summary><ul id="attempt-list" class="records"></ul></details>
     <noscript><p>Enable JavaScript to use the practice workspace.</p></noscript>
     <div class="workspace">
       <article class="panel">
-        <p class="eyebrow" id="task-meta"></p><h3 id="task-title"></h3><p id="prompt"></p><p class="note" id="task-objectives"></p>
+        <p class="eyebrow" id="task-meta"></p><h3 id="task-title"></h3><p id="prompt"></p><p class="note" id="task-objectives" data-exam-help></p>
         <div id="source-panel"><h4>Source text</h4><div id="source" class="source"></div></div>
       </article>
       <article class="panel">
@@ -52,13 +55,13 @@
         <textarea id="response" rows="11" maxlength="9000" aria-describedby="words storage"></textarea>
         <div class="controls"><span id="words"></span><span id="storage" role="status"></span></div>
         <div class="actions"><button id="timer-toggle" type="button">Start timer</button><button id="timer-reset" type="button">Reset timer</button><button id="download" type="button">Download draft</button></div>
-        <div class="actions"><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button></div>
-        <p class="note">AI feedback is an experimental practice estimate. It requires WebGPU and an initial model download. Your response is processed on your device.</p>
+        <div class="actions" data-exam-help><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button><button id="mark-cancel" type="button" hidden>Cancel AI feedback</button></div>
+        <p class="note" data-exam-help>AI feedback is an experimental practice estimate. It requires WebGPU and an initial model download. Your response is processed on your device.</p>
         <p id="mark-status" role="status"></p><div id="feedback" aria-live="polite"></div>
       </article>
     </div>
-    <details id="analysis"><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
-    <details id="review"><summary>Self-marking guide and example</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a><h4>Example response or excerpt</h4><p id="example"></p></details>
+    <details id="analysis" data-exam-help><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
+    <details id="review" data-exam-help><summary>Self-marking guide and example</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a><h4>Example response or excerpt</h4><p id="example"></p></details>
   </section>
   <section class="section" id="reading-lab" aria-labelledby="lab-title">
     <p class="eyebrow">Reading Lab</p><h2 id="lab-title">Annotate a passage</h2>
@@ -102,9 +105,9 @@
   </section>
   <section class="section" aria-labelledby="skills-title"><p class="eyebrow">Revision library</p><h2 id="skills-title">Common marking priorities</h2>
     <div class="skills">
-      <article id="topic-1"><h3>Inference</h3><p>Use a detail as evidence and explain the conclusion it supports. Repeatedly checking a message before sending it can suggest concern about how it will be received.</p></article>
-      <article id="topic-2"><h3>Writer’s effects</h3><p>Explain what a precise choice means in context, then what it suggests. In “the wind clawed at the shutters”, “clawed” evokes an animal trying to break in.</p></article>
-      <article id="topic-3"><h3>Selective summary</h3><p>Group related points and use continuous prose. Combine a leaky roof and broken windows into a single point about poor maintenance if the task asks why attendance fell.</p></article>
+      <article id="topic-1"><h3>Inference</h3><p>Use a detail as evidence and explain the conclusion it supports. Repeatedly checking a message before sending it can suggest concern about how it will be received.</p><p>“Lina reread the message three times before pressing send.” What might this suggest about Lina?</p><details><summary>Reveal example answer</summary><p>Lina may be nervous about how the message will be received. Reading it three times implies she wants to avoid a mistake.</p></details></article>
+      <article id="topic-2"><h3>Writer’s effects</h3><p>Explain what a precise choice means in context, then what it suggests. In “the wind clawed at the shutters”, “clawed” evokes an animal trying to break in.</p><p>What effect does “the wind clawed at the shutters” create?</p><details><summary>Reveal example answer</summary><p>“Clawed” makes the wind seem like an animal attacking the shutters, making the scene threatening.</p></details></article>
+      <article id="topic-3"><h3>Selective summary</h3><p>Group related points and use continuous prose. Combine a leaky roof and broken windows into a single point about poor maintenance if the task asks why attendance fell.</p><p>Summarise why attendance fell. “The hall leaked. Several windows were broken. Members had stopped attending because the room was often cold.”</p><details><summary>Reveal example answer</summary><p>Attendance fell because the poorly maintained hall was often cold.</p></details></article>
       <article><h3>Source evaluation</h3><p>Consider the strengths and limitations of each view. Explain why visitor totals alone may give the council a poor measure of the impact on neighbours.</p></article>
       <article><h3>Description</h3><p>Move attention between telling details. A clock, a wet footprint and a light going out can establish a place and a change in atmosphere.</p></article>
       <article><h3>Narrative</h3><p>Build the story around a consequential decision. Develop what the character wants, what stands in their way and what their choice changes.</p></article>

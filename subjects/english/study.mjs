@@ -1,6 +1,7 @@
 import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
 import { setupLearningTools, updateMetrics } from './learning.mjs';
 import { setupWorkshop } from './workshop.mjs';
+import { readAttempt, timeRemaining } from './exam.mjs';
 
 const get = id => document.getElementById(id);
 const select = get('task');
@@ -16,6 +17,7 @@ let timeout;
 let remaining;
 let deadline;
 let interval;
+let attempt;
 
 function read(key) {
   try { return localStorage.getItem(prefix + key) ?? session.get(key); }
@@ -65,12 +67,15 @@ function stopTimer() {
 }
 
 function updateClock() {
-  if (deadline) remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+  if (deadline) remaining = timeRemaining(deadline);
   const minutes = Math.floor(remaining / 60);
   const seconds = String(remaining % 60).padStart(2, '0');
   get('timer').textContent = remaining ? minutes + ':' + seconds : 'Time’s up';
   get('timer-toggle').disabled = !remaining;
-  if (!remaining) stopTimer();
+  if (!remaining) {
+    stopTimer();
+    if (examActive()) submitAttempt();
+  }
 }
 
 function resetTimer() {
@@ -84,6 +89,7 @@ function cancelFeedback() {
   worker?.terminate();
   worker = undefined;
   get('mark').disabled = false;
+  get('mark-cancel').hidden = true;
   feedback.replaceChildren();
   status.textContent = '';
 }
@@ -98,7 +104,7 @@ function showTask() {
   get('specimen-scheme').href = papers.find(paper => paper.id === task.paper).markScheme;
   get('source-panel').hidden = !task.source;
   get('source').textContent = task.source ?? '';
-  editor.value = read('draft:' + task.id) ?? '';
+  editor.value = attempt?.answer ?? read('draft:' + task.id) ?? '';
   storage.textContent = editor.value ? 'Draft restored' : '';
   get('example').textContent = task.example;
   get('review').open = false;
@@ -111,6 +117,8 @@ function showTask() {
   resetTimer();
   updateWords();
   updateCompletion();
+  showAttempt();
+  showAttemptList();
 }
 
 select.addEventListener('change', showTask);
@@ -118,7 +126,17 @@ get('analysis').addEventListener('toggle', () => {
   if (get('analysis').open) updateMetrics(get('metrics'), editor.value);
 });
 editor.addEventListener('input', () => {
-  write('draft:' + task.id, editor.value);
+  if (examActive()) {
+    if (!timeRemaining(attempt.endsAt)) {
+      editor.value = attempt.answer;
+      submitAttempt();
+      return;
+    }
+    attempt.answer = editor.value;
+    saveAttempt();
+  } else if (!attempt) {
+    write('draft:' + task.id, editor.value);
+  }
   updateWords();
   if (!get('mark').disabled) {
     feedback.replaceChildren();
@@ -155,7 +173,13 @@ function appendText(parent, tag, text) {
   parent.append(item);
 }
 
+get('mark-cancel').addEventListener('click', () => {
+  cancelFeedback();
+  status.textContent = 'Marking cancelled. Your response is still available.';
+  get('mark').focus();
+});
 get('mark').addEventListener('click', () => {
+  if (examActive()) return;
   const answer = editor.value.trim();
   if (!answer) {
     status.textContent = 'Write a response before requesting feedback.';
@@ -168,6 +192,7 @@ get('mark').addEventListener('click', () => {
   }
   const button = get('mark');
   button.disabled = true;
+  get('mark-cancel').hidden = false;
   feedback.replaceChildren();
   status.textContent = 'Starting the on-device marker…';
   const fail = message => {
@@ -188,6 +213,7 @@ get('mark').addEventListener('click', () => {
         return;
       }
       button.disabled = false;
+      get('mark-cancel').hidden = true;
       if (editor.value.trim() !== answer) {
         status.textContent = 'The draft changed during marking. Request feedback on the revised draft.';
         return;
@@ -211,7 +237,95 @@ get('mark').addEventListener('click', () => {
   }
 });
 
-const initialTask = new URLSearchParams(location.search).get('task');
+function examActive() {
+  return attempt?.submittedAt === null;
+}
+
+function saveAttempt() {
+  write('active-attempt', JSON.stringify(attempt));
+}
+
+function showAttempt() {
+  stopTimer();
+  const active = examActive();
+  document.documentElement.toggleAttribute('data-exam-active', active);
+  select.disabled = Boolean(attempt);
+  editor.readOnly = Boolean(attempt && !active);
+  editor.spellcheck = !attempt;
+  editor.setAttribute('autocorrect', attempt ? 'off' : 'on');
+  get('exam-start').hidden = Boolean(attempt);
+  get('exam-submit').hidden = !active;
+  get('exam-return').hidden = !attempt || active;
+  get('timer-toggle').hidden = Boolean(attempt);
+  get('timer-reset').hidden = Boolean(attempt);
+  get('download').hidden = active;
+  get('exam-status').textContent = active
+    ? 'Timed attempt in progress. Submit it to unlock examples and feedback.'
+    : attempt
+      ? 'Attempt submitted. Review your response or return to your saved practice draft.'
+      : 'Exam-style attempts start with a blank answer and a running timer. Your practice draft is kept.';
+  if (active) {
+    deadline = attempt.endsAt;
+    interval = setInterval(updateClock, 250);
+    updateClock();
+  } else if (attempt) {
+    get('timer').textContent = 'Submitted';
+  }
+}
+
+function submitAttempt() {
+  if (!examActive()) return;
+  attempt.submittedAt = Math.min(Date.now(), attempt.endsAt);
+  saveAttempt();
+  write('submitted:' + task.id, JSON.stringify(attempt), null);
+  showAttempt();
+  showAttemptList();
+  get('review').querySelector('summary').focus();
+}
+
+get('exam-start').addEventListener('click', () => {
+  attempt = { task:task.id, answer:'', endsAt:Date.now() + task.timing * 60_000, submittedAt:null };
+  get('analysis').open = false;
+  saveAttempt();
+  showTask();
+  editor.focus();
+});
+get('exam-submit').addEventListener('click', submitAttempt);
+get('exam-return').addEventListener('click', () => {
+  attempt = null;
+  saveAttempt();
+  showTask();
+  select.focus();
+});
+
+function showAttemptList() {
+  const list = get('attempt-list');
+  const saved = tasks.map(item => readAttempt(read('submitted:' + item.id), tasks))
+    .filter(item => item?.submittedAt != null)
+    .sort((a,b) => b.submittedAt - a.submittedAt);
+  list.replaceChildren();
+  if (!saved.length) appendText(list, 'li', 'Completed exam-style attempts will appear here.');
+  for (const item of saved) {
+    const exercise = tasks.find(entry => entry.id === item.task);
+    const row = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = 'Review ' + exercise.title + ' · Question ' + exercise.number;
+    button.addEventListener('click', () => {
+      attempt = item;
+      saveAttempt();
+      select.value = item.task;
+      get('saved-attempts').open = false;
+      showTask();
+      editor.focus();
+    });
+    row.append(button, ' · ' + new Date(item.submittedAt).toLocaleDateString());
+    list.append(row);
+  }
+}
+
+attempt = readAttempt(read('active-attempt'), tasks);
+const initialTask = attempt?.task ?? new URLSearchParams(location.search).get('task');
 if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
 setupLearningTools({ read, write, currentTask: () => task });

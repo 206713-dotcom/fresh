@@ -131,7 +131,7 @@ def subject_page(subject, next_subject):
     if len(subject) > 7 and "url" in subject[7]:
         return
     slug, name, code, group, symbol, description, topics = subject[:7]
-    if slug in {"biology", "chemistry", "computer-science", "economics", "mathematics", "physics"}:
+    if slug in {"biology", "chemistry", "computer-science", "economics", "english-language", "mathematics", "physics"}:
         return
     links = "".join(f'<li><a href="#topic-{index}">{escape(topic[0])}</a></li>'
                     for index, topic in enumerate(topics, 1))

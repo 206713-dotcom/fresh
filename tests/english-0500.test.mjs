@@ -48,3 +48,31 @@ test('draft analysis counts sentences, length bands and case-insensitive repetit
   });
   assert.equal(analyseDraft(' ').sentences, 0);
 });
+
+test('exam attempts recover a valid task and preserve an absolute deadline', async () => {
+  const { readAttempt, timeRemaining } = await import('../subjects/english/exam.mjs');
+  const saved = { task: tasks[0].id, answer: 'An answer.', endsAt: 2000, submittedAt: null };
+  assert.deepEqual(readAttempt(JSON.stringify(saved), tasks), saved);
+  assert.equal(readAttempt('{invalid', tasks), null);
+  assert.equal(readAttempt(JSON.stringify({ ...saved, task: 'missing' }), tasks), null);
+  assert.equal(timeRemaining(saved.endsAt, 1100), 1);
+  assert.equal(timeRemaining(saved.endsAt, 2100), 0);
+});
+
+test('evaluation reports error and agreement while rejecting leaked passage groups', async () => {
+  const { evaluateMarking } = await import('../scripts/evaluate-english-0500.mjs');
+  const { rubricVersion } = await import('../subjects/english/practice.mjs');
+  const input = {
+    rubricVersion, markerVersion:'test model', calibrationGroups:['training'],
+    cases:[
+      { id:'a', task:'comprehension', passageGroup:'test A', reference:'fixture A', human:[4], model:[2], repeat:[2] },
+      { id:'b', task:'comprehension', passageGroup:'test B', reference:'fixture B', human:[3], model:[3], repeat:[4] },
+    ],
+  };
+  assert.deepEqual(evaluateMarking(input).tasks.comprehension, {
+    cases:2, passageGroups:2, exact:1, withinOne:1, withinTwo:2,
+    meanAbsoluteError:1, meanSignedError:-1, repeatCases:2, repeatExact:1,
+  });
+  assert.throws(() => evaluateMarking({ ...input, calibrationGroups:['test A'] }), /held-out/);
+  assert.throws(() => evaluateMarking({ ...input, cases:[{ ...input.cases[0], model:[5] }] }), /criterion marks/);
+});

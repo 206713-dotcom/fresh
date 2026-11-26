@@ -18,9 +18,13 @@
 
 - [x] Build the complete Fresh checkout and smoke-test nine site routes. In Chromium, check learning-tool persistence, dark mode, deep links and layouts at 320, 390 and 1440 pixels.
 
+- [x] Integrate the latest Fresh hub and preserve the existing GIS Points assets, Biology build and original English starter exercises.
+- [x] Add single-task exam-style attempts with a persistent deadline, automatic submission, assistance controls, separate normal drafts and latest-attempt review by task.
+- [x] Add AI cancellation and an offline evaluator for held-out teacher/model comparisons.
+
 ## Pending
 
-- [ ] Finish the plan's sidebar, global search, personalised overview, mobile passage/editor tabs, exam mode, full writing portfolio and draft comparisons.
+- [ ] Finish the plan's sidebar, global search, personalised overview, mobile passage/editor tabs, full writing portfolio and draft comparisons.
 - [ ] Build the examiner case library, Examiner Lab, authorised anchor retrieval, independent rescoring, appeals, feedback history and teacher moderation.
 - [ ] Finish advanced learning tools. The Reading Lab has four original passages and persistent editable annotations. Draft analysis covers counts, sentence-length bands, distinct word ratio and repeated words. The notebook supports manual notes and resolved status. Passage filtering, richer writing analysis, automated error tracking, the personal AI tutor, full-length composition comparisons, adaptive pathways and visual prompts remain pending.
 - [ ] Build school-controlled accounts, peer marking, teacher tools, offline revision, custom mocks and the study planner.
@@ -48,6 +52,10 @@ The branch includes 12 original practice drills with answers or excerpts and six
 Run the static build from the repository root with `node build.mjs`. Serve `dist/` over localhost or HTTPS. Run the automated tests with `node --test tests/english-0500.test.mjs`.
 
 Chromium first hit its browser storage quota. A software-WebGPU retest with more temporary storage downloaded the model and entered the marking phase. It produced no score within the 135-second test window. The feedback UI and stale-response handling passed a separate test with simulated worker output. Examiner agreement remains unmeasured. Examiner calibration requires compatible, authorised anchor scripts and a separate independently teacher-marked evaluation set. The branch bundles original practice material and links to Cambridge resources. It contains no examiner scripts or official candidate marks.
+
+### Running a marking evaluation
+
+Keep authorised scripts and private results outside the public repository. Run `node scripts/evaluate-english-0500.mjs /path/to/private-results.json`. The JSON takes `rubricVersion` from `practice.mjs`, `markerVersion`, a list of `calibrationGroups`, and `cases`. Each case has a unique `id`, a current practice task ID in `task`, a `passageGroup`, a private provenance `reference`, and `human` and `model` arrays in criterion order. An optional `repeat` array holds a second model run. The tool rejects overlaps with calibration groups and scores outside the rubric. It reports per-task exact and near agreement counts, absolute and signed error, and repeat agreement. Fixture results exercise the calculations only.
 
 ## Cambridge references
 
