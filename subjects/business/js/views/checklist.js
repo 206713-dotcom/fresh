@@ -1474,7 +1474,7 @@
       delete state.ratings[id];
     } else {
       state.ratings[id] = value;
-      EC.earnPoints(5, "Checklist topic rated", "checklist:" + id);
+      EC.earnPoints(2, "Checklist topic rated", "checklist:" + id);
     }
     EC.store.set(RATINGS_KEY, state.ratings);
     rerender(false);

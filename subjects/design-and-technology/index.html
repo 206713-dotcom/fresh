@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../../gis-points.css?v=3">
-<script src="../../gis-points.js?v=3"></script>
+<script src="../../gis-points.js?v=5"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RM Revise — IGCSE Design &amp; Technology 0445 (Resistant Materials)</title>
@@ -2712,6 +2712,12 @@ function RMCore(env) {
   var DEF_SET = { coinsPerCorrect: 2, perfectBonus: 10, dailyQuizCap: 8, syllabusCoin: 3, writtenCoin: 1, streakCoin: 5, challengeCoin: 5,
     shopOn: 'true', boardOn: 'true', challengeOn: 'true', allowRename: 'true', banner: '', challengeTitle: 'Winter Pre-Mock Challenge',
     maintenance: 'false', maintenanceMsg: '', signupOpen: 'true', coinMultiplier: 1, multiplierEnds: '', challengeMinutes: 20, bannedWords: '', hall: '[]' };
+  var FRESH_REWARDS = {coinsPerCorrect: 1, perfectBonus: 2, dailyQuizCap: 2, syllabusCoin: 2, writtenCoin: 1, streakCoin: 0, challengeCoin: 1};
+  var FRESH_GOALS = {g_start: 10, g_ticks: 10, g_perfect: 5};
+  function goalReward(goal) {
+    if (!env.local) return num(goal.reward);
+    return FRESH_GOALS[goal.id] ?? Math.min(15, Math.max(0, Math.floor(num(goal.reward))));
+  }
   var DEF_SHOP = [
     ['av_saw','Tenon Saw','avatar','🪚',40,'Sharp start.'],['av_bolt','Nut & Bolt','avatar','🔩',40,'Holding it together.'],['av_wood','Timber','avatar','🪵',60,'Straight-grained.'],
     ['av_gear','Gear','avatar','⚙️',60,'Always turning.'],['av_kit','Toolkit','avatar','🛠️',80,'Ready for anything.'],['av_fire','Forge','avatar','🔥',120,'Red hot.'],
@@ -2742,8 +2748,8 @@ function RMCore(env) {
     if (!rows('shop').length) DEF_SHOP.forEach(function (s) { db.insert('shop', SCHEMA.shop, { id: s[0], name: s[1], type: s[2], value: s[3], price: s[4], active: 'true', desc: s[5] }); });
     if (!rows('goals').length && !find('settings', 'key', 'seeded')) { DEF_GOALS.forEach(function (g) { db.insert('goals', SCHEMA.goals, { id: g[0], title: g[1], metric: g[2], target: g[3], reward: g[4], ends: '', active: 'true' }); }); db.insert('settings', SCHEMA.settings, { key: 'seeded', value: '1' }); }
   }
-  function settings() { var o = {}; Object.keys(DEF_SET).forEach(function (k) { o[k] = DEF_SET[k]; }); rows('settings').forEach(function (r) { o[r.key] = r.value; }); return o; }
-  function mult(st) { var m = Math.min(5, Math.max(1, num(st.coinMultiplier) || 1)); return (st.multiplierEnds && num(st.multiplierEnds) < env.now()) ? 1 : m; }
+  function settings() { var o = {}; Object.keys(DEF_SET).forEach(function (k) { o[k] = DEF_SET[k]; }); rows('settings').forEach(function (r) { o[r.key] = r.value; }); return env.local ? Object.assign(o, FRESH_REWARDS) : o; }
+  function mult(st) { if (env.local) return 1; var m = Math.min(5, Math.max(1, num(st.coinMultiplier) || 1)); return (st.multiplierEnds && num(st.multiplierEnds) < env.now()) ? 1 : m; }
   function badName(n) { var w = String(settings().bannedWords || '').toLowerCase().split(',').map(function (x) { return x.trim(); }).filter(Boolean), l = String(n).toLowerCase().replace(/[^a-z0-9]/g, ''); return w.some(function (x) { return l.indexOf(x.replace(/[^a-z0-9]/g, '')) >= 0 && x.replace(/[^a-z0-9]/g, ''); }); }
   function pubSet(st) { return { shopOn: on(st.shopOn), boardOn: on(st.boardOn), challengeOn: on(st.challengeOn), allowRename: on(st.allowRename), banner: st.banner, challengeTitle: st.challengeTitle, maintenance: on(st.maintenance), maintenanceMsg: st.maintenanceMsg, signupOpen: on(st.signupOpen), multiplier: mult(st), multiplierEnds: num(st.multiplierEnds), challengeMinutes: Math.min(120, Math.max(1, num(st.challengeMinutes) || 20)), hall: J(st.hall, []) }; }
   function isOwner(email) { return (cfg.OWNER_EMAILS || []).map(function (e) { return String(e).toLowerCase(); }).indexOf(email) >= 0; }
@@ -2757,7 +2763,7 @@ function RMCore(env) {
     owned: J(u.owned, []), equipped: J(u.equipped, {}), stats: J(u.stats, {}), chal: J(u.chal, {}), joined: num(u.joined) }; }
   function pub(u) { var s = J(u.stats, {}), c = J(u.chal, {}); return { uid: u.uid, name: u.name, xp: num(u.xp), weekXp: u.weekKey === weekKey(env.now()) ? num(u.weekXp) : 0, streak: num(u.streak), equipped: J(u.equipped, {}),
     ownedCount: J(u.owned, []).length, joined: num(u.joined), chal: c.main || null, stats: { quizzes: num(s.quizzes), correct: num(s.correct), perfect: num(s.perfect), syllabus: num(s.sylHigh), written: num(s.wqHigh), speedBest: num(s.speedBest) } }; }
-  function goalsFor(u) { var g = J(u.goals, {}), now = env.now(); return rows('goals').filter(function (x) { return on(x.active) && (!x.ends || num(x.ends) > now); }).map(function (x) { var p = g[x.id] || {}; return { id: x.id, title: x.title, metric: x.metric, target: num(x.target), reward: num(x.reward), ends: num(x.ends), p: num(p.p), done: !!p.done }; }); }
+  function goalsFor(u) { var g = J(u.goals, {}), now = env.now(); return rows('goals').filter(function (x) { return on(x.active) && (!x.ends || num(x.ends) > now); }).map(function (x) { var p = g[x.id] || {}; return { id: x.id, title: x.title, metric: x.metric, target: num(x.target), reward: goalReward(x), ends: num(x.ends), p: num(p.p), done: !!p.done }; }); }
   function state(u) { var st = settings(); var pr = find('progress', 'email', u.email);
     return { user: self(u), isAdmin: isAdmin(u), progress: pr ? J(pr.data, {}) : {},
       announcements: rows('announcements').filter(function (a) { return on(a.active) && (!a.expires || num(a.expires) > env.now()); }).map(function (a) { return { id: a.id, title: a.title, body: a.body, created: num(a.created), pinned: on(a.pinned), popup: on(a.popup) }; }).sort(function (a, b) { return (b.pinned - a.pinned) || (b.created - a.created); }),
@@ -2818,29 +2824,39 @@ function RMCore(env) {
 
   /* ---------- coins, xp, streaks, goals ---------- */
   function award(u, type, p) { var st = settings(), now = env.now(), today = dayKey(now), s = J(u.stats, {}), g = J(u.goals, {}), gained = 0, notes = [], inc = {};
-    if (s.dayKey !== today) { s.dayKey = today; s.dayQuiz = 0; s.daySpeed = 0; }
+    if (s.dayKey !== today) { s.dayKey = today; s.dayQuiz = 0; s.daySpeed = 0; s.dayWritten = 0; s.studyBonus = false; }
     var streak = num(u.streak), lastDay = u.lastDay;
     if (lastDay !== today) { streak = (lastDay === dayKey(now - 864e5)) ? streak + 1 : 1; lastDay = today; var sb = num(st.streakCoin) * Math.min(streak, 7); if (sb > 0) { gained += sb; notes.push('Day ' + streak + ' streak +' + sb); } }
     if (type === 'quiz') { var total = Math.min(10, Math.max(1, num(p.total))), score = Math.min(total, Math.max(0, num(p.score)));
       s.quizzes = num(s.quizzes) + 1; s.correct = num(s.correct) + score; inc.quizzes = 1; inc.correct = score;
       if (score === total && total >= 10) { s.perfect = num(s.perfect) + 1; inc.perfect = 1; }
       if (num(s.dayQuiz) < num(st.dailyQuizCap)) { s.dayQuiz = num(s.dayQuiz) + 1; var c = score * num(st.coinsPerCorrect) + (score === total && total >= 10 ? num(st.perfectBonus) : 0); gained += c; } else notes.push('Daily quiz coin limit reached – come back tomorrow'); }
-    else if (type === 'speed') { var sc = Math.min(40, Math.max(0, num(p.score))); s.speedBest = Math.max(num(s.speedBest), sc); if (!num(s.daySpeed)) { s.daySpeed = 1; gained += Math.min(30, sc); } }
+    else if (type === 'speed') { var sc = Math.min(40, Math.max(0, num(p.score))); s.speedBest = Math.max(num(s.speedBest), sc); if (!num(s.daySpeed)) { s.daySpeed = 1; gained += Math.min(env.local ? 10 : 30, sc); } }
     else if (type === 'syllabus') { var n = Math.min(60, Math.max(0, num(p.count))), d = n - num(s.sylHigh); if (d > 0) { s.sylHigh = n; gained += d * num(st.syllabusCoin); inc.syllabus = d; } }
-    else if (type === 'lesson') { var nl = Math.min(300, Math.max(0, num(p.count))), dl = nl - num(s.lessonHigh); if (dl > 0) { s.lessonHigh = nl; gained += dl * 4; inc.lessons = dl; } }
-    else if (type === 'written') { var m = Math.min(200, Math.max(0, num(p.marks))), dm = m - num(s.wqHigh); if (dm > 0) { s.wqHigh = m; gained += dm * num(st.writtenCoin); inc.written = dm; } }
+    else if (type === 'lesson') { var nl = Math.min(300, Math.max(0, num(p.count))), dl = nl - num(s.lessonHigh); if (dl > 0) { s.lessonHigh = nl; gained += dl * (env.local ? 10 : 4); inc.lessons = dl; } }
+    else if (type === 'written') { var m = Math.min(200, Math.max(0, num(p.marks))), dm = m - num(s.wqHigh); if (dm > 0) { s.wqHigh = m; var writtenReward = dm * num(st.writtenCoin);
+      if (env.local) {
+        writtenReward = Math.min(writtenReward, Math.max(0, 10 - num(s.dayWritten)));
+        s.dayWritten = num(s.dayWritten) + writtenReward;
+      }
+      gained += writtenReward; inc.written = dm; } }
     else if (type === 'challenge') { if (!on(st.challengeOn)) fail('The challenge is closed right now'); var ch = J(u.chal, {}), tot = Math.min(60, Math.max(1, num(p.total))), scc = Math.min(tot, Math.max(0, num(p.score)));
-      if (!ch.main) { ch.main = { score: scc, total: tot, secs: Math.max(0, num(p.secs)), at: now }; gained += scc * num(st.challengeCoin); inc.challenge = 1; notes.push('Challenge score locked in: ' + scc + '/' + tot); }
+      if (!ch.main) { ch.main = { score: scc, total: tot, secs: Math.max(0, num(p.secs)), at: now }; gained += env.local ? Math.min(20, scc) : scc * num(st.challengeCoin); inc.challenge = 1; notes.push('Challenge score locked in: ' + scc + '/' + tot); }
       else { ch.main.best = Math.max(num(ch.main.best), scc); }
       u.chal = JSON.stringify(ch); }
     else if (type !== 'visit') fail('Unknown event');
     var mu = mult(st); if (mu > 1 && gained > 0) { gained = Math.round(gained * mu); notes.push(mu + '× points bonus!'); }
+    if (env.local && gained > 0 && !s.studyBonus) {
+      s.studyBonus = true;
+      gained += 3;
+      notes.push('First study reward today +3');
+    }
     inc.xp = gained; var rewards = [];
     rows('goals').forEach(function (x) { if (!on(x.active) || (x.ends && num(x.ends) < now)) return; var q = g[x.id] || { p: 0 }; if (q.done) return;
       if (x.metric === 'streak') q.p = streak; else if (inc[x.metric]) q.p = num(q.p) + inc[x.metric]; else if (!g[x.id]) return;
-      if (num(q.p) >= num(x.target)) { q.done = 1; gained += num(x.reward); rewards.push({ title: x.title, reward: num(x.reward) }); } g[x.id] = q; });
+      if (num(q.p) >= num(x.target)) { q.done = 1; var reward = goalReward(x); gained += reward; rewards.push({ title: x.title, reward: reward }); } g[x.id] = q; });
     var wk = weekKey(now), wx = (u.weekKey === wk ? num(u.weekXp) : 0) + gained;
-    if (env.local && gained) env.points.adjust(gained, type === 'visit' ? 'Daily streak' : 'Study reward');
+    if (env.local && gained) env.points.adjust(gained, 'Study reward');
     saveUser(u, { coins: env.local ? '' : num(u.coins) + gained, xp: num(u.xp) + gained, weekXp: wx, weekKey: wk, streak: streak, lastDay: lastDay, lastSeen: now, stats: JSON.stringify(s), goals: JSON.stringify(g), chal: u.chal });
     return { ok: true, gained: gained, notes: notes, rewards: rewards, user: self(u), goals: goalsFor(u) }; }
 
@@ -3098,7 +3114,7 @@ const Classroom={
      if(!g.id||done.includes(g.id))return;
      done.push(g.id);
      if(old(g)&&Number.isSafeInteger(+g.amount)&&+g.amount>0) {
-       void window.FreshPoints.earn('RM Revise',+g.amount,'Class reward','class-gift:'+g.id);
+       void window.FreshPoints.earn('RM Revise',Math.min(20,+g.amount),'Class reward','class-gift:'+g.id);
      }
    });
    if(Object.keys(patch).length)db.update('users','email',u.email,patch);}
@@ -4277,8 +4293,7 @@ PAGES.challenge={t:'Winter Challenge',html:()=>`${head('Community · Challenge',
 const METRICS={lessons:'Learning-path lessons finished',quizzes:'Quizzes completed',correct:'Correct answers',perfect:'Perfect 10/10 quizzes',syllabus:'Syllabus points ticked',written:'Written-question marks',xp:'XP earned',streak:'Day streak reached',challenge:'Challenge completed'};
 const SETGROUPS=[
  ['Switches',{shopOn:['Shop open','bool'],boardOn:['Leaderboard on','bool'],challengeOn:['Challenge open','bool'],allowRename:['Students can change their display name','bool']}],
- ['Wording',{banner:['Banner on the home page','text'],challengeTitle:['Challenge name','text'],challengeMinutes:['Challenge time limit (minutes)','num']}],
- ['Coin rules',{coinsPerCorrect:['Points per correct quiz answer','num'],perfectBonus:['Bonus points for 10/10','num'],dailyQuizCap:['Quizzes per day that earn GIS Points','num'],syllabusCoin:['Points per syllabus tick','num'],writtenCoin:['Points per written mark','num'],streakCoin:['Points per streak day (up to 7)','num'],challengeCoin:['Points per challenge mark','num']}]];
+ ['Wording',{banner:['Banner on the home page','text'],challengeTitle:['Challenge name','text'],challengeMinutes:['Challenge time limit (minutes)','num']}]];
 const COINDEF={coinsPerCorrect:2,perfectBonus:10,dailyQuizCap:8,syllabusCoin:3,writtenCoin:1,streakCoin:5,challengeCoin:5};
 const ADTABS=['Overview','Announcements','Goals','Questions','Shop','Settings','Class board','Resets & gifts','Admins','Publish'];
 const RESETS={week:['Weekly XP','Fresh "this week" board'],xp:['All XP','Wipes everyone\'s total XP (coins kept)'],coins:['GIS Points','Sets everyone\'s GIS Points to 0'],streaks:['Streaks','Sets day streaks to 0'],goals:['Goal progress','Everyone starts the goals again'],challenge:['Challenge score','Lets everyone take the challenge again for a score'],cosmetics:['Cosmetics','Takes back every shop item (no refund)']};

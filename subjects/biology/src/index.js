@@ -1,4 +1,4 @@
 // Public integration entry point for Fresh's Biology section.
-export {mountBiology,biologyNavigation} from './app.js';
+export {mountBiology,biologyNavigation} from './app.js?v=balanced';
 export {createBiologyStore,KEY as BIOLOGY_STORAGE_KEY} from './state.js';
 export {topics,lessons,questions,cards,papers,glossary} from './content.js';

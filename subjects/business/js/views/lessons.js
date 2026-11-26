@@ -1099,7 +1099,7 @@
         state.progress[id] = { rating: rating, completedAt: new Date().toISOString() };
         EC.store.set(PROGRESS_KEY, state.progress);
         if (!existing || !existing.rating) {
-          EC.earnPoints(15, "Lesson completed", "lesson:" + id);
+          EC.earnPoints(10, "Lesson completed", "lesson:" + id);
           fireConfetti();
         }
         draw(); break;

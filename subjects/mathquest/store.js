@@ -1,6 +1,6 @@
 import {ASSESSMENT_VERSION, COURSES, LESSONS, assessmentItems, questionByKey, courseUnits} from './curriculum.js';
 import {itemById, SLOTS} from './game-items.js';
-import {emptyWallet} from './rewards.js';
+import {emptyWallet} from './rewards.js?v=balanced';
 
 export const KEY = 'mathquest.igcse.v1';
 const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};

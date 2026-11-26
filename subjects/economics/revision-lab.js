@@ -230,7 +230,10 @@ function setupRevisionTopic(code) {
       '<li><strong>' + escapeHtml(option) + (index === topic.answer ? ' ✓' : '') + '</strong> — ' + escapeHtml(why) + '</li>').join('') + '</ul>';
     recordTopicCheck('topic-' + code, code, correct);
     recordRevisionMistake('topic-' + code, topic.prompt, '#revision-topics/' + code, !correct);
-    if (correct) saveRevisionState('topics', {...revisionState('topics', {}), [code]: true});
+    if (selected !== '' && correct) {
+      saveRevisionState('topics', {...revisionState('topics', {}), [code]: true});
+      void window.FreshPoints.earn('Economics', 3, 'Topic application check passed', 'topic-check:' + code);
+    }
   };
 }
 
@@ -1010,7 +1013,7 @@ function setupRevisionChecklist(selectedTopic) {
     document.querySelector('#revision-save-status').textContent = '';
     saveRevisionState(checklistKey, checked);
     if (event.target.checked) {
-      void window.FreshPoints.earn('Economics', 5, 'Checklist task completed', 'checklist:' + event.target.value);
+      void window.FreshPoints.earn('Economics', 2, 'Checklist task completed', 'checklist:' + event.target.value);
     }
     updateProgress();
     if (event.target.closest('.workbook-topic').hidden) {

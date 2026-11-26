@@ -1,11 +1,12 @@
+import {rates} from './rewards.js?v=balanced';
 import {allQuestionRefs, courseLessons, courseUnit, courseUnits, questionByKey, unitName, courseLabel} from './curriculum.js';
-import {answerChoices, courseButton} from './views.js';
+import {answerChoices, courseButton} from './views.js?v=balanced';
 import {badge, button, e, empty, icon, link, pageHead, progress, tile} from './ui.js';
 
 export const MODES = {
-  checkpoint:{name:'Topic checkpoint', icon:'test', tone:'mint', coins:35, description:'Answer eight questions and score at least six. Small topics include related skills.'},
-  quest:{name:'Mixed challenge', icon:'flag', tone:'violet', coins:80, description:'Answer eight questions from across your curriculum and score at least six.'},
-  team:{name:'Pair sprint', icon:'pair', tone:'amber', coins:70, description:'Take turns on one device. Each player answers eight questions for a combined score.'}
+  checkpoint:{name:'Topic checkpoint', icon:'test', tone:'mint', coins:rates.checkpoint, description:'Answer eight questions and score at least six. Small topics include related skills.'},
+  quest:{name:'Mixed challenge', icon:'flag', tone:'violet', coins:rates.quest, description:'Answer eight questions from across your curriculum and score at least six.'},
+  team:{name:'Pair sprint', icon:'pair', tone:'amber', coins:rates.team, description:'Take turns on one device. Each player answers eight questions for a combined score.'}
 };
 
 export function createRound(course,mode,unit,seed,reorder) {

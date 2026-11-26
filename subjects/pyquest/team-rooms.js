@@ -1,4 +1,4 @@
-import {awardTeam} from './game-state.js';
+import {awardTeam} from './game-state.js?v=balanced';
 import {localPreview, localRoomsKey, localRoomsFor, mutateLocal, onLocalChange} from './local-preview.js';
 const SDK='https://www.gstatic.com/firebasejs/12.19.0/';
 export const GAME_QUESTIONS={

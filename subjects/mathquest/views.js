@@ -357,7 +357,7 @@ export function lessonView(state,course,id,hints,shuffle,level=courseLevel(cours
       <aside class="lesson-aside">
         <div class="card side-panel">${tile('target','violet')}<h2>Lesson progress</h2>
           ${progress(solved,total,'Practice questions solved')}
-          <p>${solved} of ${total} solved</p>${saved?.complete ? '' : '<p class="lesson-earn">' + icon('coin',17) + ' +25 GIS Points on completion</p>'}
+          <p>${solved} of ${total} solved</p>${saved?.complete ? '' : '<p class="lesson-earn">' + icon('coin',17) + ' +10 base GIS Points on completion</p>'}
           <div class="actions">${hasLessonVisual(id) ? '<a class="btn secondary" href="#lesson-visual" data-scroll="lesson-visual">Explore visual</a>' : ''}
           ${allSolved ? '' : '<a class="btn secondary" href="#practice-questions" data-scroll="practice-questions">Go to practice</a>'}</div>
         </div>
@@ -521,7 +521,7 @@ export function gearView(state,tab,crateId) {
     <section class="collection"><div class="section-head"><div><h2>What’s inside</h2><p>Each rarity comes with a different learning boost.</p></div></div>
       <div class="drop-grid">${pool.map(({item}) => dropCard(item,false)).join('')}</div></section>`}
     <section class="card earn-panel"><div class="inline-head">${tile('coin','amber')}<h2>Earn GIS Points</h2></div>
-      <p>Correct lesson practice gets you 12 GIS Points per question and finishing a lesson gets you 25. Try the practice lab for checkpoint, challenge and pair sprint rewards.</p>
+      <p>A new correct practice question earns 3 GIS Points and finishing a lesson earns 10 before gear bonuses. Try the practice lab for checkpoint, challenge and pair sprint rewards.</p>
       <div class="actions">${link('library','Browse lessons')}${link('practice','Practice lab')}</div></section>`;
 }
 

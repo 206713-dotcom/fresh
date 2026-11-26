@@ -226,7 +226,11 @@
     const rec = Object.assign({}, old, { t: c.querySelector('textarea').value.slice(0, 3000), at: Date.now() }, patch || {});
     saveAns(id, it.key, rec);
     if (rec.ticks) {
-      const got = xScore(it, rec.ticks); c.querySelector('.exscore').innerHTML = `<b>${got}</b> / ${it.marks}`; c.classList.add('marked');
+      const got = xScore(it, rec.ticks);
+      if (got > 0 && it.src !== 'g' && c.querySelector('textarea').value.trim()) {
+        void window.FreshPoints.earn('Physics', 10, 'Exam question marked', 'exam:' + id + ':' + it.key);
+      }
+      c.querySelector('.exscore').innerHTML = `<b>${got}</b> / ${it.marks}`; c.classList.add('marked');
       if (it.src === 'p') markP(id, it.i, got / it.marks >= 0.75);
       examTotal(id); const sc = $('#pscore'); if (sc) sc.innerHTML = scoreLine(id); refreshStudy(id);
     }
@@ -414,7 +418,9 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
     const rc = t.closest('[data-recall]');
     if (rc) {
       const out = rc.querySelector('.recall-out'), txt = rc.querySelector('textarea').value.trim();
-      const tally = () => { const b = $$('[data-rc]', rc), k = b.filter((x) => x.checked).length; rc.querySelector('.recall-score').textContent = `You recalled ${k} of ${b.length} key points.${k < b.length ? ' The unticked ones are the ones to reread, then try again tomorrow.' : ' All of them.'}`; saveAns(id, 'recall', { t: txt.slice(0, 3000), shown: 1, got: b.map((x) => (x.checked ? 1 : 0)), at: Date.now() }); };
+      const tally = () => { const b = $$('[data-rc]', rc), k = b.filter((x) => x.checked).length; rc.querySelector('.recall-score').textContent = `You recalled ${k} of ${b.length} key points.${k < b.length ? ' The unticked ones are the ones to reread, then try again tomorrow.' : ' All of them.'}`; saveAns(id, 'recall', { t: txt.slice(0, 3000), shown: 1, got: b.map((x) => (x.checked ? 1 : 0)), at: Date.now() });
+        if (k > 0 && txt) void window.FreshPoints.earn('Physics', 5, 'Topic recall checked', 'recall:' + id);
+      };
       if (t.closest('[data-recall-go]')) { if (!txt) { rc.querySelector('textarea').focus(); return true; } out.hidden = false; typeset(out); tally(); return true; }
       if (t.closest('[data-recall-skip]')) { out.hidden = false; typeset(out); return true; }
       if (t.matches('[data-rc]')) { tally(); return false; }
@@ -526,7 +532,12 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
   const pMarks = (id) => loadLS().p[id] || {};
   const pScore = (id) => { const m = pMarks(id), k = Object.keys(m); return { tried: k.length, ok: k.filter((x) => m[x] === 1).length }; };
   const pAns = (id) => loadLS().a[id] || {};
-  function saveAns(id, key, rec) { loadLS(); (LS.a[id] = LS.a[id] || {})[key] = rec; touchDay(); saveLS(); }
+  function saveAns(id, key, rec) {
+    loadLS(); (LS.a[id] = LS.a[id] || {})[key] = rec; touchDay(); saveLS();
+    if (/^\d+$/.test(key) && rec.v === 'correct' && /^(numbers|keywords|self)$/.test(rec.via)) {
+      void window.FreshPoints.earn('Physics', 3, 'Correct practice answer', 'question:' + id + ':' + key);
+    }
+  }
   function markP(id, i, ok) { loadLS(); (LS.p[id] = LS.p[id] || {})[i] = ok ? 1 : 0; touchDay(); saveLS(); }
   const isDue = (id) => { const r = loadLS().r[id]; return !!(r && LS.u[id] && r.due <= Date.now()); };
   const dueList = () => Object.keys(loadLS().r).filter((id) => nodes[id] && isDue(id)).sort((a, b) => LS.r[a].due - LS.r[b].due);

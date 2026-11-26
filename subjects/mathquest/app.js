@@ -1,10 +1,10 @@
 import {ASSESSMENT_VERSION, COURSES, LEVELS, LESSONS, assessmentItems, courseLessons, courseLevel, courseUnits, questionByKey, selectedCourse, unitLevel} from './curriculum.js';
 import {current, update, hasStorage, KEY, syncFromStorage, decodeBackup, choices} from './store.js';
-import {award, openCrate, randomInt, sellGear} from './rewards.js';
+import {award, openCrate, randomInt, sellGear} from './rewards.js?v=balanced';
 import {CRATES, SLOTS, gearSellValue, itemById, slotBuff} from './game-items.js';
 import {button, chrome, e, icon, tile} from './ui.js';
-import {homeView, courseDialog, libraryView, libraryResults, lessonView, testView, pathView, gearView, crateDialog, profileView} from './views.js';
-import {arenaView, createRound, markRound, MODES} from './arena.js';
+import {homeView, courseDialog, libraryView, libraryResults, lessonView, testView, pathView, gearView, crateDialog, profileView} from './views.js?v=balanced';
+import {arenaView, createRound, markRound, MODES} from './arena.js?v=balanced';
 import {drawDiagrams} from './diagrams.js';
 import {curveRatios, mountHeroCurve} from './hero-curve.js';
 import {mountLessonVisual} from './lesson-visuals.js';

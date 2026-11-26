@@ -23,13 +23,13 @@ try{
  assert.equal(await page.locator('[data-gisp-count]').count(),1);
  await page.goto(origin+'/subjects/biology.html#/learn/lesson-t05-basics');
  await page.getByRole('button',{name:'Mark as read',exact:true}).click();
- await page.waitForFunction(()=>window.FreshPoints.balance()===5);
+ await page.waitForFunction(()=>window.FreshPoints.balance()===10);
  await page.getByRole('button',{name:'Marked read ✓',exact:true}).click();
  await page.waitForTimeout(150);
- assert.equal(await page.evaluate(()=>window.FreshPoints.balance()),5);
+ assert.equal(await page.evaluate(()=>window.FreshPoints.balance()),10);
  await page.goto(origin+'/subjects/english-language.html');
- await page.waitForFunction(()=>window.FreshPoints?.balance()===5);
- assert.equal(await page.locator('[data-gisp-count]').textContent(),'5');
+ await page.waitForFunction(()=>window.FreshPoints?.balance()===10);
+ assert.equal(await page.locator('[data-gisp-count]').textContent(),'10');
  await page.goto(origin+'/subjects/biology.html#topic-1');
  await page.locator('#biology-section h1').waitFor();
  // Check the unique page-level heading, not the identically named lesson card.

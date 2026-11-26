@@ -1375,8 +1375,9 @@
       state.originalEvaluation = cloneObj(result);
       state.evaluationId = id;
       state.lastSubmissionId = "sub-" + Date.now();
-      state.lastCoins = 20 + Math.max(5, result.totalScore * 5);
-      if (typeof EC.earnPoints === "function") EC.earnPoints(state.lastCoins, "Paper 1 answer marked");
+      var claim = "paper1:" + id;
+      state.lastCoins = result.totalScore > 0 && !EC.claimedPoints(claim) ? 10 : 0;
+      if (state.lastCoins) EC.earnPoints(state.lastCoins, "Paper 1 answer marked", claim);
       if (result.percentage >= 70) celebrate({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
       saveSubmissionRecord(found, id, answer, result);
       var prog = qs("#p1-progress");

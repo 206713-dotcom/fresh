@@ -649,10 +649,10 @@
     EC.store.set(K_SUBS, subs);
     markCompleted(i);
     var key = keyFor(sc.scenario_id, q.number);
-    if (!state.coinsAwarded[key]) {
+    if (!state.coinsAwarded[key] && rec.score > 0) {
       state.coinsAwarded[key] = true;
       EC.store.set(K_COINS, state.coinsAwarded);
-      EC.earnPoints(5, "Paper 2 practice completed", "paper2:" + key);
+      EC.earnPoints(10, "Paper 2 practice completed", "paper2:" + key);
     }
     savePosition();
   }
@@ -1803,7 +1803,6 @@
       originalAiScore: original,
       overrideReason: reason
     };
-    if (prev != null && score > prev && EC.earnPoints) EC.earnPoints((score - prev) * 5, "Paper 2 score improved");
     return rec;
   }
 

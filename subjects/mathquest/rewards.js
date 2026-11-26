@@ -3,8 +3,7 @@ import {authorizeRandomCrate, MAX_PYCOINS} from './shared/gear-crates.js';
 
 export const emptyWallet = () => ({coins:0, bonusXp:0, owned:[], gearCounts:{}, equipped:{}, claimed:[]});
 
-// Original PyQuest reward amounts and equipment multipliers.
-const rates = {lesson:25, quest:80, igcse:12, checkpoint:35, team:70};
+export const rates = {lesson:10, quest:20, igcse:3, checkpoint:15, team:15};
 const coinSlots = {lesson:'body', quest:'back', checkpoint:'aura', team:'hands'};
 
 export function award(wallet, type, id) {

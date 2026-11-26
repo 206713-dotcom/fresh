@@ -1,7 +1,7 @@
 import {CRATES,ITEMS,RARITIES,SLOTS,itemById,slotBuff,checkpointQuestions} from './game-items.js';
-import {gameState} from './game-state.js';
+import {gameState} from './game-state.js?v=balanced';
 import {renderEquippedAvatar,equippedItemsDescription} from './game-avatar.js';
-import {teamState,GAME_QUESTIONS,teamScore} from './team-rooms.js';
+import {teamState,GAME_QUESTIONS,teamScore} from './team-rooms.js?v=balanced';
 import {localPreview,primaryLocalUid} from './local-preview.js';
 import {crateOdds, gearQuantities, gearResalePrice} from './shared/gear-crates.js';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

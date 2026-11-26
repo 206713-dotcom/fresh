@@ -242,6 +242,7 @@
   window.EC = {
     esc: esc, el: el, load: load, store: store, register: register,
     navigate: navigate, render: render, current: current, views: views,
-    points: points, earnPoints: earnPoints, spendPoints: spendPoints, aiCacheKey: aiCacheKey
+    points: points, earnPoints: earnPoints, spendPoints: spendPoints, aiCacheKey: aiCacheKey,
+    claimedPoints: function (claim) { return sharedPoints.hasClaim("Business", claim); }
   };
 })();

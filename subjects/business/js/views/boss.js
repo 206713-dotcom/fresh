@@ -1287,7 +1287,7 @@
 
     } else if (g.state === "victory") {
       var mult = (findById(DIFFICULTIES, g.diff) || DIFFICULTIES[0]).rewardMult;
-      var reward = Math.round((70 + g.stage * 25) * mult);
+      var reward = g.stageReward || 0;
       var scoreGain = Math.round((600 + g.stage * 180) * mult);
       html = '<div class="absolute inset-0 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-white animate-fade-in">' +
         '<div class="text-5xl mb-2 animate-bounce">🏆</div>' +
@@ -1295,7 +1295,7 @@
         '<h3 class="text-2xl sm:text-3xl font-black text-emerald-400 mb-1">' + esc(g.boss.name.toUpperCase()) + ' VANQUISHED!</h3>' +
         '<p class="text-xs text-emerald-200 max-w-md mb-2">Outstanding mastery! You fully drained ' + esc(g.boss.name) + "'s health bar on " + esc((findById(DIFFICULTIES, g.diff) || DIFFICULTIES[0]).label) + ' Tier!</p>' +
         '<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-bold mb-5 shadow-sm">' +
-          '<span>✦ +' + reward + ' GIS Points Awarded</span><span>·</span><span>⭐ +' + scoreGain + ' Score</span></div>' +
+          (reward ? '<span>✦ +' + reward + ' GIS Points</span><span>·</span>' : '') + '<span>⭐ +' + scoreGain + ' Score</span></div>' +
         '<div class="flex flex-wrap items-center justify-center gap-3">' +
           '<button type="button" data-act="ascend" class="px-6 py-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-xl transition transform active:scale-95 cursor-pointer flex items-center gap-2">' +
             '<span>Ascend to Stage ' + (g.stage + 1) + ' (Harder Boss)</span>' + ico("chevron-right", 16) + '</button>' +
@@ -2068,11 +2068,13 @@
       var added = Math.floor(g.tokens / 3);
       g.tokens = g.tokens % 3;
       if (added) { g.lives += added; sCrit(st); }
-      var earned = Math.round(35 * mult);
-      EC.earnPoints(earned, "Boss Battle answer"); syncCoins(st);
+      var claim = "boss-question:" + q.id;
+      var earned = EC.claimedPoints(claim) ? 0 : 3;
+      if (earned) EC.earnPoints(earned, "Boss Battle answer", claim);
+      syncCoins(st);
       g.score += Math.round(300 * mult);
       g.shake = 10; g.flash = 8;
-      text = "You dealt " + damage + " damage and earned " + earned + " coins. " +
+      text = "You dealt " + damage + " damage. " + (earned ? "+" + earned + " GIS Points. " : "") +
         (added ? "You earned an extra life. " : "") + q.explanation;
       action = function () { if (g.bossHp <= 0) finishStage(st); else returnToFight(st); };
       sCrit(st);
@@ -2118,7 +2120,10 @@
     var g = st.game;
     if (!g || g.state === "victory") return;
     var mult = (findById(DIFFICULTIES, g.diff) || DIFFICULTIES[0]).rewardMult;
-    EC.earnPoints(Math.round((70 + g.stage * 25) * mult), "Boss Battle stage cleared"); syncCoins(st);
+    var claim = "boss-stage:" + g.stage;
+    g.stageReward = EC.claimedPoints(claim) ? 0 : 15;
+    if (g.stageReward) EC.earnPoints(g.stageReward, "Boss Battle stage cleared", claim);
+    syncCoins(st);
     g.score += Math.round((600 + g.stage * 180) * mult);
     g.state = "victory"; g.question = null; g.feedback = null;
     clearQuestionTimer(st); stopLoop(st);

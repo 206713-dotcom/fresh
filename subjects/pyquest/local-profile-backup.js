@@ -1,8 +1,8 @@
 import {LESSONS} from './lessons.js';
 import {SLOTS, itemById} from './game-items.js';
-import {emptyWallet} from './shared/pycoin-logic.js';
+import {emptyWallet} from './shared/pycoin-logic.js?v=balanced';
 import {gearQuantities} from './shared/gear-crates.js';
-import {localGameKey, readLocalGame} from './local-game.js';
+import {localGameKey, readLocalGame} from './local-game.js?v=balanced';
 import {levelDraftKey, localTestKey, readDraft} from './level-test.js';
 import {TEST_VERSION, TOTAL, scoreAnswers, studyPlan} from './level-test-questions.js';
 import {characterStyleKey, localRecordKey, readCharacterStyle, readLocal} from './local-preview.js';

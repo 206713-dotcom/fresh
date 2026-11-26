@@ -37,6 +37,8 @@
     return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
   }
 
+  var CHALLENGE_REWARDS = { daily: 10, weekly: 20 };
+
   function todayUTC() { return new Date().toISOString().slice(0, 10); }
 
   function isoWeekKey() {
@@ -494,7 +496,7 @@
       '</div>' +
       '<div class="py-2 font-mono text-[11px] font-semibold tabular-nums text-[var(--surface-muted)]">' +
         (challengeActive
-          ? 'UTC synchronized · +50 daily / +150 weekly coins'
+          ? 'Resets in UTC · +' + CHALLENGE_REWARDS.daily + ' daily / +' + CHALLENGE_REWARDS.weekly + ' weekly GIS Points'
           : filteredPool(st).length.toLocaleString() + ' matching questions') +
       '</div>';
 
@@ -659,13 +661,12 @@
         st.notice = "Mastery progress " + progress.days + "/" + MASTERY_DAYS_REQUIRED +
           " days. Answer it correctly again on a different day to clear it from Wrong Only.";
       }
-      EC.earnPoints(15, "Correct MCQ answer");
+      EC.earnPoints(3, "Correct MCQ answer", "mcq:" + q.id);
     } else {
       st.streak = 0;
       recordIncorrect(q.id);
       st.notice = "Added to Wrong Only. Get it right on " + MASTERY_DAYS_REQUIRED +
         " different days to remove it.";
-      EC.earnPoints(5, "MCQ answer attempted");
     }
 
     st.history.push({
@@ -683,9 +684,9 @@
     } else {
       st.completed = true;
       clearDraft();
-      EC.earnPoints(25, "MCQ drill completed");
       var pct = st.questions.length ? Math.round((st.score / st.questions.length) * 100) : 0;
       if (pct >= 70) {
+        EC.earnPoints(10, "MCQ drill passed", "drill:" + todayUTC());
         celebrate({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
       }
       renderDrill(st);
@@ -1068,9 +1069,9 @@
     st.submitted = true;
     st.selectedOption = option;
     var correct = option === st.challengeQ.correctAnswer;
-    var bonus = correct ? (st.challengeType === "daily" ? 50 : 150) : 0;
+    var bonus = correct ? CHALLENGE_REWARDS[st.challengeType] : 0;
     if (correct) {
-      EC.earnPoints(bonus, st.challengeType === "daily" ? "Daily challenge solved" : "Weekly challenge solved");
+      EC.earnPoints(bonus, st.challengeType === "daily" ? "Daily challenge solved" : "Weekly challenge solved", "challenge:" + st.challengeId);
       celebrate({ particleCount: 85, spread: 68, origin: { y: 0.65 } });
       playTone(st, 1200, 0.15);
     }
@@ -1114,7 +1115,7 @@
 
     var target = st.challengeQ.target;
     var daily = st.challengeType === "daily";
-    var bonus = daily ? 50 : 150;
+    var bonus = CHALLENGE_REWARDS[st.challengeType];
     var record = st.records[st.challengeId];
     var completed = !!record;
     var wasCorrect = !!(record && record.isCorrect);
@@ -1131,9 +1132,9 @@
     out.push('<div class="flex flex-wrap items-center gap-2 shrink-0">');
     out.push('<div role="group" aria-label="Challenge cadence" class="study-engine">' +
       '<button type="button" class="study-engine-option" data-action="challenge-daily" aria-pressed="' + daily + '">' +
-        icon("zap", 13) + '<span>Daily Blitz</span><span class="font-mono text-[10px] opacity-75">+50</span></button>' +
+        icon("zap", 13) + '<span>Daily Blitz</span><span class="font-mono text-[10px] opacity-75">+' + CHALLENGE_REWARDS.daily + '</span></button>' +
       '<button type="button" class="study-engine-option" data-action="challenge-weekly" aria-pressed="' + (!daily) + '">' +
-        icon("award", 13) + '<span>Weekly Master</span><span class="font-mono text-[10px] opacity-75">+150</span></button>' +
+        icon("award", 13) + '<span>Weekly Master</span><span class="font-mono text-[10px] opacity-75">+' + CHALLENGE_REWARDS.weekly + '</span></button>' +
       '</div>');
     var soundTitle = st.sound ? "Mute timer countdown ticks" : "Enable timer countdown ticks";
     out.push('<button type="button" class="study-pager-button" data-action="challenge-sound" title="' + soundTitle +

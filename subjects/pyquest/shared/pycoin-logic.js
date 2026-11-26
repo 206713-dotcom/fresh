@@ -28,7 +28,7 @@ export function itemBonus(equipped,slot){
   return x&&x.slot===slot?x.bonus:0;
 }
 export function coinsFor(type,gear={}){
-  const base={lesson:25,quest:80,quiz:12,igcse:12,checkpoint:35,team:70}[type];
+  const base={lesson:10,quest:20,quiz:3,igcse:3,checkpoint:15,team:15}[type];
   const coinSlot={lesson:'body',quest:'back',checkpoint:'aura',team:'hands'}[type];
   if(base===undefined)throw Error('Unsupported reward');
   return Math.round(base*(1+(coinSlot?itemBonus(gear,coinSlot):0)/100));
@@ -39,6 +39,7 @@ export function calculateRewards(wallet,eligible,maxClaims=2000){
   for(const [type,id] of eligible){
     const token=`${type}:${id}`;
     if(claims.has(token)||claims.size>=maxClaims)continue;
+    if(type==='team'&&[...claims].some(claim=>claim.startsWith('team:')))continue;
     const value=coinsFor(type,wallet.equipped||{});
     if(coins+value>1_000_000)break;
     coins+=value;breakdown[type]+=value;newClaims++;claims.add(token);

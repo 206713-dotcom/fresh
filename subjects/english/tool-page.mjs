@@ -1,4 +1,4 @@
-import { setupNotebook, setupReadingLab, setupStudyDisplay, setupTheme } from './learning.mjs';
+import { setupNotebook, setupReadingLab, setupStudyDisplay, setupTheme } from './learning.mjs?v=balanced';
 import { tasks } from './practice.mjs';
 import { read, write } from './storage.mjs';
 

@@ -1,6 +1,6 @@
 import {checkpointQuestions, itemById} from './game-items.js';
 import {readLocal, localRecordKey, onLocalChange, localRoomsFor} from './local-preview.js';
-import {calculateRewards, eligibleClaims, emptyWallet} from './shared/pycoin-logic.js';
+import {calculateRewards, eligibleClaims, emptyWallet} from './shared/pycoin-logic.js?v=balanced';
 import {authorizeRandomCrate, authorizeGearSale} from './shared/gear-crates.js';
 
 export const localGameKey = uid => 'game:' + uid;

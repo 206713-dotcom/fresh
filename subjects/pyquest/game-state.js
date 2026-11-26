@@ -1,7 +1,7 @@
 import {CRATES,itemById} from './game-items.js';
 import {localPreview} from './local-preview.js';
-import {emptyWallet} from './shared/pycoin-logic.js';
-import {readLocalGame,watchLocalGame,syncLocalRewards,passLocalCheckpoint,openLocalCrate,equipLocalItem,removeLocalEquipment,sellLocalGear} from './local-game.js';
+import {emptyWallet} from './shared/pycoin-logic.js?v=balanced';
+import {readLocalGame,watchLocalGame,syncLocalRewards,passLocalCheckpoint,openLocalCrate,equipLocalItem,removeLocalEquipment,sellLocalGear} from './local-game.js?v=balanced';
 const SDK='https://www.gstatic.com/firebasejs/12.19.0/';
 let api,db,account,unsubscribe,unsubscribeCheckpoints,change=()=>{},generation=0;
 let state={ready:false,error:'',rewardError:'',wallet:null,checkpointsReady:false,checkpointError:'',passedCheckpoints:[]};

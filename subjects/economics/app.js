@@ -513,7 +513,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
           '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
       }
       if (state.score > 0) {
-        const reward = q.options ? 5 : 10;
+        const reward = q.options ? 3 : 10;
         void window.FreshPoints.earn('Economics', reward, 'Practice question completed', 'question:' + q.id);
       }
       if(q.reference) {

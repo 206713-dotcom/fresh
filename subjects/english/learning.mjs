@@ -103,6 +103,9 @@ export function setupReadingLab(read, write) {
     }
     questions.replaceChildren(element('h3', 'Passage questions'), list);
     questions.hidden = !prompts.length;
+    list.querySelectorAll('details').forEach((example, index) => {
+      window.FreshPoints?.mountReview?.(example, 'First Language English', 'reading-lab:' + selector.value + ':' + index);
+    });
   }
 
   const paragraph = get('annotation-paragraph');

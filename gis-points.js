@@ -139,8 +139,41 @@
     return transaction(subject, wallet => wallet.adjust(amount, label, claim)).catch(() => false);
   }
 
+  function mountReview(example, subject, claim) {
+    const label = document.createElement("label");
+    label.className = "gisp-review";
+    const answer = document.createElement("textarea");
+    answer.rows = 3;
+    answer.maxLength = 4000;
+    label.append("Write your response before opening the example", answer);
+    example.before(label);
+    const status = document.createElement("p");
+    status.setAttribute("role", "status");
+    const done = document.createElement("button");
+    done.type = "button";
+    done.className = "gisp-practice";
+    const refresh = () => {
+      done.disabled = window.FreshPoints.hasClaim(subject, claim);
+      done.textContent = done.disabled ? "Response reviewed ✓" : "Mark response reviewed · +10 GIS Points";
+    };
+    done.addEventListener("click", async () => {
+      if (answer.value.trim().split(/\s+/).length < 8) {
+        status.textContent = "Write at least eight words, then compare your response with the example.";
+        answer.focus();
+        return;
+      }
+      done.disabled = true;
+      const awarded = await earn(subject, 10, "Written response reviewed", claim);
+      refresh();
+      status.textContent = awarded ? "You earned 10 GIS Points." : done.disabled ? "Already reviewed." : "Could not save points. Please try again.";
+    });
+    example.addEventListener("toggle", refresh);
+    example.append(done, status);
+    refresh();
+  }
+
   window.FreshPoints = {
-    key, changeEvent, transaction, earn,
+    key, changeEvent, transaction, earn, mountReview,
     balance: () => readWallet().balance,
     hasClaim: (subject, claim) => readWallet().claims.includes(subject + "/" + claim)
   };
@@ -262,7 +295,7 @@
     render();
     button.hidden = false;
 
-    for (const answer of document.querySelectorAll(".topic[id] .practice details")) {
+    for (const answer of document.querySelectorAll(".topic[id] .practice details:not([data-gisp-recap])")) {
       const topic = answer.closest(".topic");
       const claim = location.pathname + "#" + topic.id;
       const subject = document.querySelector("h1")?.textContent || "Quick revision";
@@ -281,6 +314,11 @@
       });
       window.addEventListener(changeEvent, refresh);
       answer.append(done);
+    }
+    for (const recap of document.querySelectorAll(".topic[id] [data-gisp-recap]")) {
+      const topic = recap.closest(".topic");
+      const subject = document.querySelector("h1").textContent;
+      mountReview(recap, subject, "recap:" + topic.id);
     }
     void transaction("Fresh", () => {}).catch(() => {});
   }

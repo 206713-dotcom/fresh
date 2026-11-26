@@ -18,16 +18,16 @@ import {startAnnouncements, stopAnnouncements, announcementState, saveAnnounceme
 import {TOPICS as LEVEL_TOPICS, QUESTIONS as LEVEL_QUESTIONS, TOTAL as LEVEL_TOTAL, studyPriority, studyPlan, scoreAnswers, strengthLabel, diagnosticPlacement, localDiagnosticFeedback} from './level-test-questions.js';
 import {startLevelTest, stopLevelTest, levelTestState, beginLevelTest, finishLevelTest, getAILevelAdvice, readDraft, writeDraft} from './level-test.js';
 import {RARITIES,SLOTS,CRATES,ITEMS,slotBuff,checkpointQuestions} from './game-items.js';
-import {startGame,stopGame,gameState,awardProgress,awardCheckpoint,openCrate,sellGear,equipItem,removeEquipment} from './game-state.js';
-import {avatarHTML,gameShopHTML,checkpointHTML,teamGamesHTML} from './game-ui.js';
+import {startGame,stopGame,gameState,awardProgress,awardCheckpoint,openCrate,sellGear,equipItem,removeEquipment} from './game-state.js?v=balanced';
+import {avatarHTML,gameShopHTML,checkpointHTML,teamGamesHTML} from './game-ui.js?v=balanced';
 import {startDirectory,stopDirectory,directoryState,setDirectoryOptIn,syncDirectoryName} from './student-discovery.js';
-import {startTeams,stopTeams,teamState,createRoom,joinRoomByCode,answerRoom,claimTeamReward} from './team-rooms.js';
+import {startTeams,stopTeams,teamState,createRoom,joinRoomByCode,answerRoom,claimTeamReward} from './team-rooms.js?v=balanced';
 import {startRoster,stopRoster,rosterState,syncStudentStats} from './staff-roster.js';
 import {startStaffChat,stopStaffChat,openStaffChat,staffChatState,sendStaffMessage,reportStaffMessage} from './staff-chat.js';
 import {localPreview,activeLocalProfile,localProfiles,selectLocalProfile,selectTeamProfile,readCharacterStyle,saveCharacterStyle} from './local-preview.js';
 import {
   browserStorageAvailable, createProfileBackup, decodeProfileBackup, maxBackupBytes, progressStorageKey, restoreProfileBackup
-} from './local-profile-backup.js';
+} from './local-profile-backup.js?v=balanced';
 
 const $ = id => document.getElementById(id);
 const escapeHTML = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

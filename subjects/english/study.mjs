@@ -1,6 +1,6 @@
 import { setupClearWriting, setupNewQuestion } from './question-controls.mjs';
 import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
-import { setupLearningTools, updateMetrics } from './learning.mjs';
+import { setupLearningTools, updateMetrics } from './learning.mjs?v=balanced';
 import { read, write as writeStorage } from './storage.mjs';
 import { setupWorkshop } from './workshop.mjs';
 import { readAttempt, timeRemaining } from './exam.mjs';
@@ -169,7 +169,7 @@ get('reviewed').addEventListener('click', () => {
   const reviewed = read('review:' + task.id) !== '1';
   write('review:' + task.id, reviewed ? '1' : '0');
   if (reviewed && editor.value.trim()) {
-    void window.FreshPoints?.earn('First Language English', 5, 'Written response reviewed', 'review:' + task.id);
+    void window.FreshPoints?.earn('First Language English', 10, 'Written response reviewed', 'review:' + task.id);
   }
   updateCompletion();
 });

@@ -360,8 +360,11 @@
   function onQuiz(e) {
     const qEl = e.target.closest('.q'); if (!qEl || !CUR) return false; const kind = qEl.dataset.k, i = +qEl.dataset.i, fb = $('.fb', qEl), rec = CUR.rec;
     const o = e.target.closest('[data-o]'), act = e.target.closest('[data-act]');
+    const reward = (amount, label) => window.FreshPoints.earn('Chemistry', amount, label, 'practice:' + CUR.L.id + ':' + kind + ':' + i);
     if (kind === 'c' && o) {
-      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a; $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
+      const q = rec.c[i], pick = +o.dataset.o, ok = pick === q.a;
+      if (ok) void reward(3, 'Correct quiz answer');
+      $$('.opts button', qEl).forEach((b, k) => { b.disabled = true; if (k === q.a) b.classList.add('is-right'); else if (k === pick) b.classList.add('is-wrong'); });
       fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = `<b>${ok ? 'Correct.' : 'Not quite.'}</b> ${inline(q.y)}`; Snd.tick(ok); return true;
     }
     if (kind === 'n' && act) {
@@ -369,12 +372,14 @@
       if (act.dataset.act === 'work') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Working</b>${steps}<b>Answer: ${esc(q.a[0])}</b>`; return true; }
       const u = num($('input', qEl).value); if (isNaN(u)) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = 'Type a number first, for example 0.25 or 2.4 × 10^3.'; return true; }
       const ok = q.a.some(a => { const v = num(a); return Math.abs(u - v) <= Math.abs(v) * 0.011 + 1e-12; });
+      if (ok) void reward(5, 'Calculation solved');
       fb.hidden = false; fb.className = 'fb ' + (ok ? 'ok' : 'no'); fb.innerHTML = ok ? `<b>Correct: ${esc(q.a[0])}.</b> ${plural(q.k, 'mark')}.${steps}` : `<b>Not yet.</b> Check your working and the sign, then try again, or press Show working.`; Snd.tick(ok); return true;
     }
     if (kind === 'q' && act) {
       const q = rec.q[i], txt = $('textarea', qEl).value.trim(), model = `<p style="margin-top:8px"><b>Model answer.</b> ${inline(q.a)}</p>`;
       if (act.dataset.act === 'model' || !txt) { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Mark scheme${q.p.length > q.k ? `: any ${q.k} from` : ''}</b><ul class="pts">${q.p.map(p => `<li>${inline(p[0])}</li>`).join('')}</ul>${model}`; return true; }
       const t = norm(txt), hits = q.p.map(p => hit(t, p[1])), score = Math.min(q.k, hits.filter(Boolean).length);
+      if (score > 0) void reward(10, 'Written practice marked');
       fb.hidden = false; fb.className = 'fb ' + (score === q.k ? 'ok' : score ? '' : 'no'); fb.innerHTML = `<b>${score} out of ${q.k}.</b>${q.p.length > q.k ? ` Any ${q.k} of these points score.` : ''}<ul class="pts">${q.p.map((p, k) => `<li class="${hits[k] ? 'hit' : 'miss'}">${inline(p[0])}</li>`).join('')}</ul>${model}<p style="margin-top:6px;color:var(--ink-3);font-size:14px">Marked by looking for key words, so check your answer against the model as well.</p>`; Snd.tick(score === q.k); return true;
     }
     return false;

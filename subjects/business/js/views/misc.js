@@ -1818,7 +1818,7 @@
                   '<button type="button" class="p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 text-white/80 hover:text-white border border-white/10 transition active:scale-95 cursor-pointer" data-act="reset" title="Reset Clock">' + ic("reset", 20) + '</button>' +
                 '</div>' +
                 '<div class="mt-8 text-center text-xs text-white/40 flex items-center gap-1.5">' + ic("coins", 14, "text-amber-400/70") +
-                  '<span>Earn 1 Study Coin per active minute • 25 GIS Points &amp; +1 Streak per complete block</span></div>' +
+                  '<span>Finish a focus block of at least 15 minutes to earn 10 GIS Points once per day.</span></div>' +
               '</div>' +
               '<div class="w-full mt-6 flex items-center justify-between p-3.5 rounded-2xl bg-black/20 border border-white/10 backdrop-blur-xl">' +
                 '<div class="flex items-center gap-2">' + ic("music", 16, "text-white/60") +
@@ -2073,16 +2073,17 @@
         st.timeLeft--;
         if (st.mode === "focus") {
           st.elapsed++;
-          if (st.elapsed % 60 === 0) {
-            EC.earnPoints(1, "Focus minute");
-            toast("+1 Study Coin earned for focused study! ✨");
-          }
         }
         if (st.timeLeft <= 0) {
           st.running = false;
           if (ssTimer !== null) { clearInterval(ssTimer); ssTimer = null; }
           if (st.mode === "focus") {
-            EC.earnPoints(25, "Focus session completed");
+            if (st.elapsed >= 15 * 60) {
+              var day = new Date().toISOString().slice(0, 10);
+              EC.earnPoints(10, "Focus session completed", "focus:" + day).then(function (awarded) {
+                if (awarded) toast("+10 GIS Points for focused study!");
+              });
+            }
             st.sessions++;
             st.streak++;
             /* Keep the original key AND the current key in sync, and emit
@@ -2095,7 +2096,7 @@
               }));
             } catch (e) {}
             persist();
-            toast("🎉 Focus Session Complete! +25 GIS Points & Streak increased to " + st.streak + "!");
+            toast("🎉 Focus session complete! Streak increased to " + st.streak + "!");
             st.mode = "break"; st.timeLeft = st.breakMins * 60;
           } else {
             toast("Break finished! Ready to dive back into study?");
@@ -2344,20 +2345,20 @@
                    icon: icon, req: req, current: Math.max(0, Math.min(req, Math.floor(num(current)))) };
         }
         return [
-          def("first_submission", "First Exam Step", "Submit your first Cambridge Paper 1 or Paper 2 question response.", "exam", 30, "✍️", 1, subs.length),
-          def("ao2_keyword_scan", "Context Champion", "Incorporate authentic case study facts to satisfy the strict AO2 application rules.", "exam", 40, "🎯", 1, ao2 ? 1 : 0),
-          def("merit_scholar_70", "Merit Scholar", "Score 70% or higher on any Cambridge examination question response.", "exam", 50, "🏅", 70, highest),
-          def("distinction_full_marks", "Distinction Mastery", "Achieve a perfect 100% full-marks score on any assessment question.", "exam", 75, "🌟", 100, highest),
-          def("submissions_5", "Dedicated Candidate", "Complete 5 or more total question submissions across the revision studio.", "exam", 100, "📚", 5, subs.length),
-          def("submissions_10", "Cambridge Veteran", "Complete 10 or more total verified question responses.", "exam", 150, "🏆", 10, subs.length),
-          def("checklist_5", "Syllabus Triage", "Rate 5 syllabus subpoints (Easy, Moderate, Hard) in the 0264 Checklist.", "syllabus", 35, "📋", 5, ratedCount),
-          def("checklist_15", "Confidence Auditor", "Rate 15 syllabus subpoints to clearly pinpoint your knowledge gaps.", "syllabus", 60, "🔍", 15, ratedCount),
-          def("checklist_25", "Curriculum Cartographer", "Rate 25 syllabus subpoints across Section 1 & Section 2.", "syllabus", 100, "🗺️", 25, ratedCount),
-          def("focus_session_done", "Deep Focus Novice", "Complete at least one timed focus session in the Lo-Fi Study Space.", "focus", 50, "🎧", 1, focusSessions),
-          def("custom_focus_time", "Tailored Pacing", "Use a custom focus duration (e.g. 12m, 13m, 15m) in Study Space.", "focus", 30, "⏱️", 1, customTimer ? 1 : 0),
-          def("boss_battle_init", "Arena Contender", "Enter and fight in the 2D Boss Battle Arena against the Syllabus Overlords.", "combat", 60, "⚔️", 1, boss),
-          def("avatar_stylist", "Cambridge Couturier", "Personalise your student avatar with distinct hairstyles, clothing, or skin tones.", "scholar", 40, "🎨", 1, styled ? 1 : 0),
-          def("mastered_glossary_5", "Terminology Master", "Mark 5 or more key Cambridge business concepts as mastered in the Glossary.", "scholar", 45, "📖", 5, mastered)
+          def("first_submission", "First Exam Step", "Submit your first Cambridge Paper 1 or Paper 2 question response.", "exam", 5, "✍️", 1, subs.length),
+          def("ao2_keyword_scan", "Context Champion", "Incorporate authentic case study facts to satisfy the strict AO2 application rules.", "exam", 5, "🎯", 1, ao2 ? 1 : 0),
+          def("merit_scholar_70", "Merit Scholar", "Score 70% or higher on any Cambridge examination question response.", "exam", 10, "🏅", 70, highest),
+          def("distinction_full_marks", "Distinction Mastery", "Achieve a perfect 100% full-marks score on any assessment question.", "exam", 15, "🌟", 100, highest),
+          def("submissions_5", "Dedicated Candidate", "Complete 5 or more total question submissions across the revision studio.", "exam", 10, "📚", 5, subs.length),
+          def("submissions_10", "Cambridge Veteran", "Complete 10 or more total verified question responses.", "exam", 15, "🏆", 10, subs.length),
+          def("checklist_5", "Syllabus Triage", "Rate 5 syllabus subpoints (Easy, Moderate, Hard) in the 0264 Checklist.", "syllabus", 5, "📋", 5, ratedCount),
+          def("checklist_15", "Confidence Auditor", "Rate 15 syllabus subpoints to clearly pinpoint your knowledge gaps.", "syllabus", 10, "🔍", 15, ratedCount),
+          def("checklist_25", "Curriculum Cartographer", "Rate 25 syllabus subpoints across Section 1 & Section 2.", "syllabus", 15, "🗺️", 25, ratedCount),
+          def("focus_session_done", "Deep Focus Novice", "Complete at least one timed focus session in the Lo-Fi Study Space.", "focus", 5, "🎧", 1, focusSessions),
+          def("custom_focus_time", "Tailored Pacing", "Use a custom focus duration (e.g. 12m, 13m, 15m) in Study Space.", "focus", 5, "⏱️", 1, customTimer ? 1 : 0),
+          def("boss_battle_init", "Arena Contender", "Enter and fight in the 2D Boss Battle Arena against the Syllabus Overlords.", "combat", 5, "⚔️", 1, boss),
+          def("avatar_stylist", "Cambridge Couturier", "Personalise your student avatar with distinct hairstyles, clothing, or skin tones.", "scholar", 5, "🎨", 1, styled ? 1 : 0),
+          def("mastered_glossary_5", "Terminology Master", "Mark 5 or more key Cambridge business concepts as mastered in the Glossary.", "scholar", 5, "📖", 5, mastered)
         ];
       }
       function stateOf(d) {
@@ -2375,7 +2376,7 @@
       function award(d) {
         st.claimed.push(d.id);
         EC.store.set("claimed_achievements", st.claimed);
-        EC.earnPoints(d.reward, "Achievement: " + d.title);
+        EC.earnPoints(d.reward, "Achievement: " + d.title, "achievement:" + d.id);
       }
       function claim(id) {
         var d = null, i;

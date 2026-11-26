@@ -29,7 +29,7 @@ def page(title, description, main, prefix="", script=""):
 <title>{escape(title)} | {brand}</title>
 <link rel="stylesheet" href="{prefix}style.css">
 <link rel="stylesheet" href="{prefix}gis-points.css?v=3">
-<script src="{prefix}gis-points.js?v=3"></script>
+<script src="{prefix}gis-points.js?v=5"></script>
 <link rel="icon" href="{prefix}fresh.svg" type="image/svg+xml">
 {home_assets}{script}
 </head>
