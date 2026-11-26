@@ -2074,7 +2074,7 @@
         if (st.mode === "focus") {
           st.elapsed++;
           if (st.elapsed % 60 === 0) {
-            EC.earnPoints(1);
+            EC.earnPoints(1, "Focus minute");
             toast("+1 Study Coin earned for focused study! ✨");
           }
         }
@@ -2082,7 +2082,7 @@
           st.running = false;
           if (ssTimer !== null) { clearInterval(ssTimer); ssTimer = null; }
           if (st.mode === "focus") {
-            EC.earnPoints(25);
+            EC.earnPoints(25, "Focus session completed");
             st.sessions++;
             st.streak++;
             /* Keep the original key AND the current key in sync, and emit
@@ -2375,7 +2375,7 @@
       function award(d) {
         st.claimed.push(d.id);
         EC.store.set("claimed_achievements", st.claimed);
-        EC.earnPoints(d.reward);
+        EC.earnPoints(d.reward, "Achievement: " + d.title);
       }
       function claim(id) {
         var d = null, i;

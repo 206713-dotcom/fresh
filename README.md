@@ -117,7 +117,7 @@ EcBiz combines revision lessons, a syllabus checklist, multiple-choice practice,
 
 | Feature | How it works |
 | --- | --- |
-| **GIS Points** | One balance across Fresh in the same browser. Earn points by studying and open the homepage card to see the balance and recent activity. Subject shops use that balance. |
+| **GIS Points** | One balance across Fresh in the same browser. Earn points by studying any of the 12 subjects. Open the homepage card to see your balance, what you earned or spent in each subject, and recent activity. Subject shops use that balance. |
 | **Existing rewards** | Saved Business, MathQuest, PyQuest and RM Revise coin balances on Fresh convert to GIS Points once. |
 | **Browser-local progress** | Integrated apps can remember work such as lesson completions, drafts, quiz results and preferences. Use the same browser profile to return to them. |
 | **Progress downloads** | Business and Economics offer CSV exports. Biology, PyQuest, MathQuest and Vertex Maths offer local backups, and RM Revise can create a personal sync link. Subject backups keep study data and gear separate from GIS Points. |

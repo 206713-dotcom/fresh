@@ -65,6 +65,36 @@
 .gisp-balance > div { padding: .75rem; border: 1px solid #d0ebe0; border-radius: .75rem; background: #eaf8f1; }
 .gisp-balance span, .gisp-balance strong, .gisp-dialog small { display: block; }
 .gisp-balance strong { color: #124b38; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.gisp-views { display: flex; gap: .4rem; margin: .9rem 0 .55rem; }
+.gisp-views button {
+  padding: .42rem .68rem;
+  border: 1px solid #c0e2d7;
+  border-radius: .55rem;
+  background: transparent;
+  color: #23433a;
+  font: 700 .78rem/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+.gisp-views button[aria-pressed="true"] { background: #e1f5eb; border-color: #93cbb7; color: #124b38; }
+.gisp-subject-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: inherit;
+  font: inherit;
+  font-size: .82rem;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.gisp-subject-table th, .gisp-subject-table td {
+  border-bottom: 1px solid #dcebe3;
+  padding: .37rem .32rem;
+  vertical-align: top;
+}
+.gisp-subject-table td, .gisp-subject-table thead th:not(:first-child) { text-align: right; }
+.gisp-subject-table thead th, .gisp-subject-table small { color: #42665b; font-size: .73rem; }
+.gisp-subject-table small { font-weight: 400; }
+.gisp-subject-table a { color: #086447; text-underline-offset: .14em; }
+.gisp-dialog .gisp-earlier { font-size: .76rem; margin: .65rem 0; }
 .gisp-dialog ol { padding: 0; margin: .45rem 0 0; list-style: none; }
 .gisp-dialog li { display: flex; justify-content: space-between; gap: .6rem; padding: .45rem 0; border-top: 1px solid #dcebe3; }
 .gisp-dialog li small, .gisp-dialog footer { color: #42665b; font-size: .76rem; }

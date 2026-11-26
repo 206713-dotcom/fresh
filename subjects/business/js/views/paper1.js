@@ -1376,7 +1376,7 @@
       state.evaluationId = id;
       state.lastSubmissionId = "sub-" + Date.now();
       state.lastCoins = 20 + Math.max(5, result.totalScore * 5);
-      if (typeof EC.earnPoints === "function") EC.earnPoints(state.lastCoins);
+      if (typeof EC.earnPoints === "function") EC.earnPoints(state.lastCoins, "Paper 1 answer marked");
       if (result.percentage >= 70) celebrate({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
       saveSubmissionRecord(found, id, answer, result);
       var prog = qs("#p1-progress");

@@ -166,7 +166,11 @@ editor.addEventListener('input', () => {
   }
 });
 get('reviewed').addEventListener('click', () => {
-  write('review:' + task.id, read('review:' + task.id) === '1' ? '0' : '1');
+  const reviewed = read('review:' + task.id) !== '1';
+  write('review:' + task.id, reviewed ? '1' : '0');
+  if (reviewed && editor.value.trim()) {
+    void window.FreshPoints?.earn('First Language English', 5, 'Written response reviewed', 'review:' + task.id);
+  }
   updateCompletion();
 });
 get('timer-toggle').addEventListener('click', () => {

@@ -1803,7 +1803,7 @@
       originalAiScore: original,
       overrideReason: reason
     };
-    if (prev != null && score > prev && EC.earnPoints) EC.earnPoints((score - prev) * 5);
+    if (prev != null && score > prev && EC.earnPoints) EC.earnPoints((score - prev) * 5, "Paper 2 score improved");
     return rec;
   }
 

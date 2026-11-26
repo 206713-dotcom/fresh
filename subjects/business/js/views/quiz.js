@@ -659,13 +659,13 @@
         st.notice = "Mastery progress " + progress.days + "/" + MASTERY_DAYS_REQUIRED +
           " days. Answer it correctly again on a different day to clear it from Wrong Only.";
       }
-      EC.earnPoints(15);
+      EC.earnPoints(15, "Correct MCQ answer");
     } else {
       st.streak = 0;
       recordIncorrect(q.id);
       st.notice = "Added to Wrong Only. Get it right on " + MASTERY_DAYS_REQUIRED +
         " different days to remove it.";
-      EC.earnPoints(5);
+      EC.earnPoints(5, "MCQ answer attempted");
     }
 
     st.history.push({
@@ -683,7 +683,7 @@
     } else {
       st.completed = true;
       clearDraft();
-      EC.earnPoints(25);
+      EC.earnPoints(25, "MCQ drill completed");
       var pct = st.questions.length ? Math.round((st.score / st.questions.length) * 100) : 0;
       if (pct >= 70) {
         celebrate({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
@@ -1070,7 +1070,7 @@
     var correct = option === st.challengeQ.correctAnswer;
     var bonus = correct ? (st.challengeType === "daily" ? 50 : 150) : 0;
     if (correct) {
-      EC.earnPoints(bonus);
+      EC.earnPoints(bonus, st.challengeType === "daily" ? "Daily challenge solved" : "Weekly challenge solved");
       celebrate({ particleCount: 85, spread: 68, origin: { y: 0.65 } });
       playTone(st, 1200, 0.15);
     }
