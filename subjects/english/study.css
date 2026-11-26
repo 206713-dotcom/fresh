@@ -75,23 +75,54 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
 .desk-time #timer { font-size:1.25rem; font-weight:750; }
 .desk-workspace .panel { border-top:.3rem solid var(--green); }
 
-.studio-nav { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.6rem 1.2rem; margin:1rem 0; }
+.studio-nav { display:grid; gap:.55rem; margin:1rem 0; }
 .studio-nav strong { font:700 1.35rem Georgia,serif; }
-.studio-nav > div { display:flex; flex-wrap:wrap; gap:.35rem; }
-.studio-nav a { padding:.35rem .65rem; border-radius:.35rem; color:var(--ink); text-decoration:none; }
-.studio-nav a:hover,.studio-nav a[aria-current] { background:var(--white); text-decoration:underline; }
-.room-hero { display:grid; grid-template-columns:1fr 1fr; min-height:27rem; border:1px solid var(--line); border-radius:1rem; overflow:hidden; background:var(--white); }
-.room-copy { align-self:center; padding:clamp(1.25rem,4vw,3.2rem); }
+.studio-tabs { display:flex; flex-wrap:wrap; gap:.4rem; }
+.studio-tabs a {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:.4rem .7rem;
+  border:1px solid var(--line);
+  border-radius:.5rem;
+  background:var(--white);
+  color:var(--ink);
+  text-decoration:none;
+}
+.studio-tabs a:hover { text-decoration:underline; }
+.studio-tabs a[aria-current] { border-color:var(--green); background:var(--green); color:var(--white); }
+.studio-nav ~ .section { margin-top:1.5rem; }
+.room-hero {
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  align-items:center;
+  min-height:clamp(27rem,50vw,36rem);
+  border:1px solid var(--line);
+  border-radius:1rem;
+  overflow:hidden;
+  background:#132a23;
+  color:#fff;
+}
+.room-photo { position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; object-position:65% center; }
+.room-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg,#10251f 0%,#10251fed 33%,#10251f99 57%,#10251f1a 100%);
+}
+.room-copy { padding:clamp(1.25rem,5vw,4rem); }
 .room-hero h1 { font-size:clamp(2.6rem,5.9vw,5.3rem); }
-.room-copy p:not(.eyebrow) { max-width:32ch; color:var(--muted); }
+.room-copy p:not(.eyebrow) { max-width:32ch; color:#f0f5ed; }
+.room-copy .button { background:#e4eeb2; border-color:#e4eeb2; color:#132a23; }
+.room-copy .button:focus-visible { outline-color:#fff; }
 #continue-detail:empty { display:none; }
 #continue-detail { margin-bottom:0; font-size:.9rem; }
-.room-photo { width:100%; height:100%; min-height:0; object-fit:cover; }
-.room-links { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; margin-top:1rem; }
-.room-links a { padding:.9rem; border:1px solid var(--line); border-radius:.6rem; background:var(--white); color:var(--ink); text-decoration:none; }
-.room-links strong { display:block; font-family:Georgia,serif; font-size:1.2rem; }
-.room-links span { display:block; margin-top:.2rem; color:var(--muted); }
-.room-links a:hover strong { text-decoration:underline; }
+@media(max-width:600px) {
+  .room-hero { align-items:end; min-height:31rem; }
+  .room-hero::before { background:linear-gradient(0deg,#10251f 0%,#10251fed 40%,#10251f33 80%,transparent); }
+}
 #workshop { --map-ink:#492741; --map-bg:#f3eaf2; }
 :root[data-theme="dark"] #workshop { --map-bg:#302535; }
 .map-banner { padding:clamp(1.25rem,4vw,2.8rem); color:#fff; background:var(--map-ink); border-radius:.85rem .85rem 0 0; }
@@ -102,13 +133,3 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
 .map-steps button { width:100%; }
 .map-steps [aria-current] { color:white; background:var(--map-ink); }
 #map-your-draft { overflow-wrap:anywhere; white-space:pre-wrap; }
-main[data-view="room"] > :is(#practice,#workshop),
-main[data-view="desk"] > :not(.studio-nav,#practice),
-main[data-view="skills"] > :not(.studio-nav,#workshop) { display:none; }
-main[data-view="desk"] > #practice,
-main[data-view="skills"] > #workshop { margin-top:1rem; }
-@media(max-width:760px) {
-  .room-hero { grid-template-columns:1fr; min-height:0; }
-  .room-photo { height:clamp(11rem,45vw,20rem); }
-  .room-links { grid-template-columns:repeat(2,minmax(0,1fr)); }
-}

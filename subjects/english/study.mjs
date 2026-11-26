@@ -355,22 +355,24 @@ setupLearningTools({ read, write, currentTask: () => task });
 setupWorkshop(read, write);
 
 function showStudioView() {
-  const hash = location.hash;
-  const view = examActive() || hash === '#practice' ? 'desk' : ['#skills-map', '#workshop'].includes(hash) ? 'skills' : 'room';
-  get('main').dataset.view = view;
-  for (const link of document.querySelectorAll('[data-studio-tab]')) {
-    if (link.dataset.studioTab === view) link.setAttribute('aria-current', 'location');
+  const main = get('main');
+  const panels = Array.from(main.querySelectorAll(':scope > section'));
+  const target = get(location.hash.slice(1));
+  const requested = panels.find(panel => panel.contains(target));
+  const active = examActive() ? get('practice') : requested ?? get('reading-room');
+
+  for (const panel of panels) panel.hidden = panel !== active;
+  for (const link of main.querySelectorAll('.studio-tabs a')) {
+    if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   }
+  return active.contains(target) ? target : null;
 }
 
 window.addEventListener('hashchange', () => {
-  showStudioView();
-  const { view } = get('main').dataset;
-  if (view !== 'room' || location.hash === '#reading-room') {
-    window.scrollTo(0, 0);
-  } else if (location.hash) {
-    get(location.hash.slice(1))?.scrollIntoView();
-  }
+  const target = showStudioView();
+  if (target && !target.matches('main > section')) target.scrollIntoView();
+  else window.scrollTo(0, 0);
 });
-showStudioView();
+const initialTarget = showStudioView();
+if (initialTarget && !initialTarget.matches('main > section')) initialTarget.scrollIntoView();
