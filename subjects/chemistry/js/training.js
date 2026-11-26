@@ -102,14 +102,7 @@
     box.innerHTML = `<p class="tr-peek-h">${esc(l.h)}</p><div class="tr-md">${md(l.b)}</div>${here ? '' : `<a class="tr-peek-go" href="#olympiad-m-${mid}">Open ${esc(mm.t)} ${ARROW}</a>`}`;
     box.hidden = false; b.classList.add('is-on');
   }
-  function explain(m, text) {
-    if (!window.Pauling) return;
-    window.Pauling.open({ general: true, say: `I'm training for the chemistry olympiad (topic: ${m.t}). I don't understand this step:\n\n${flat(text)}\n\nExplain it a different way, ideally with an analogy, one small idea at a time. Then give me one quick question to check I've got it.` });
-  }
-  function nudge(m, r, yours) {
-    if (!window.Pauling) return;
-    window.Pauling.open({ general: true, say: `I'm training for the chemistry olympiad (topic: ${m.t}). Give me a nudge, not the answer.\n\nProblem: ${flat(r.s)}${yours ? `\n\nMy answer so far: ${yours}` : ''}` });
-  }
+
   // mistakes worth naming: a factor of 1000, a sign, a power of ten, a mole ratio, rounding
   function diagnose(r, v) {
     if (r.abs != null || !r.a || !isFinite(v) || !v) return '';
@@ -227,7 +220,6 @@
       }
       const b = e.target.closest('[data-act]'); if (!b) return; const act = b.dataset.act;
       if (act === 'peek') return peek(b);
-      if (act === 'explain') return explain(m, b.dataset.ctx);
       if (act === 'reveal' || act === 'revealall' || act === 'exreset') {
         S.ex[m.id] = act === 'exreset' ? 0 : act === 'revealall' ? m.ex.steps.length : Math.min(m.ex.steps.length, (S.ex[m.id] || 0) + 1); save();
         const body = $('.tr-exbody', view); body.innerHTML = exBody(m); refresh(view, m);
@@ -281,7 +273,6 @@
     }
     if (act === 'sol' || act === 'solnext') return openSol(false);
     if (act === 'solall') return openSol(true);
-    if (act === 'ask') { const inp = $('input, textarea', card); return nudge(m, r, inp ? inp.value.trim() : ''); }
     if (act === 'model') { openSol(true); say('', `<b>Compare honestly.</b> Did you get the answer, for the right reasons? <span class="tr-self"><button type="button" class="chip" data-act="self-ok">Yes, I had it</button><button type="button" class="chip" data-act="self-no">Not quite</button></span>`); return; }
     if (act === 'self-ok' || act === 'self-no') {
       const good = act === 'self-ok'; if (good) { st.ok = true; st.sol = false; } schedule(key, good ? 'good' : 'later'); save(); setPill();
@@ -346,7 +337,6 @@
         if (b.dataset.act === 'self-ok' || b.dataset.act === 'self-no') { const g = b.dataset.act === 'self-ok'; grade(key, g ? 'good' : 'later'); say(g ? 'ok' : '', g ? '<b>Good.</b> It will come back after a longer gap.' : '<b>No problem.</b> It comes back tomorrow.'); nx.hidden = false; $('button', nx).focus(); return; }
       }
       if (b.dataset.act === 'peek') return peek(b);
-      if (b.dataset.act === 'explain') return explain(it.m, b.dataset.ctx);
     };
     view.onkeydown = e => {
       if (e.key === 'Enter' && e.target.matches('.tr-ritem input')) { e.preventDefault(); const c = $('[data-act="check"]', box); if (c) c.click(); }

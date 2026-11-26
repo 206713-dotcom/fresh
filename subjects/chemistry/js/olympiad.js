@@ -295,7 +295,6 @@
         if (b.dataset.act === 'check') check(li);
         else if (b.dataset.act === 'hint') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>Hint.</b> ${il(q.h)}`; }
         else if (b.dataset.act === 'sol') { fb.hidden = false; fb.className = 'fb'; fb.innerHTML = `<b>${q.a != null ? 'Worked solution' : 'Model answer'}.</b> ${il(q.w)}`; }
-        else if (b.dataset.act === 'ask' && window.Pauling) { const yours = $('input', li) ? $('input', li).value.trim() : ''; window.Pauling.open({ general: true, say: `I'm working on an olympiad practice problem. Give me a nudge, not the answer.\n\nProblem: ${p.s.replace(/\$/g, '')}\n\nPart ${k + 1}: ${q.q}${yours ? `\n\nMy answer so far: ${yours}` : ''}` }); }
       };
       view.onkeydown = e => { if (e.key === 'Enter' && e.target.matches('.ol-part input')) { e.preventDefault(); check(e.target.closest('.ol-part')); } };
       return;

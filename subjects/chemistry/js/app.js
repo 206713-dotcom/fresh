@@ -166,7 +166,7 @@
         <div class="hm-card panel"><header><p class="kicker">One question</p><h2>Can you get this one?</h2></header><div id="hmQ"></div><div class="hm-row"><button type="button" class="chip" data-hm="q">Another question</button></div></div>
         <div class="hm-card panel"><header><p class="kicker">One element</p><h2>Meet an element.</h2></header><div id="hmEl" class="hm-el"></div><div class="hm-row"><button type="button" class="chip" data-hm="el">Another element</button><a class="chip" href="#periodic-table">Open the Periodic Table</a></div></div>
       </section>
-      <section class="hm-sec hm-two">
+      <section class="hm-sec">
         <div class="hm-card panel hm-olympiad"><header><p class="kicker">Olympiad</p><h2>Ready for the Chemistry Olympiad?</h2><p>A ${window.Training ? Training.count : 13}-module training course with worked examples, problem ladders and spaced review; the competitions from C3L6 to the IChO; the IChO syllabus mapped onto these lectures; ${Olympiad.count} original problems with worked solutions; and every free past-paper archive.</p></header>
           <div class="hm-row"><a class="chip" href="#olympiad-competitions">Competitions</a><a class="chip" href="#olympiad-syllabus">IChO syllabus</a><a class="chip" href="#olympiad-practice">Practice problems</a><a class="chip" href="#olympiad-papers">Past papers</a></div><div class="hm-row"><a class="btn small" href="#olympiad-train">Start training ${ARROW}</a></div></div>
       </section>
@@ -252,7 +252,7 @@
         <div class="meter"><i style="--v:${pc(d, S.all.length)}%"></i></div>
         <div class="col-stat"><span>${plural(S.topics.length, 'topic')} · ${plural(S.all.length, 'lecture')}</span><span>${d} done</span></div>
         <ol>${S.topics.map(T => `<li><a href="#${T.hash}"><b>${T.n}</b><span>${esc(T.title)}</span><i>${T.lectures.length}</i></a></li>`).join('')}</ol></section>`; }).join('')}</div>
-      <div class="toolrow"><a class="toolcard panel" href="#start"><b>Chemistry home</b><span>Live models, a question, an element, on one page.</span></a><a class="toolcard panel" href="#periodic-table"><b>Periodic Table</b><span>All 118 elements. Click one for its numbers, family and electronic configuration.</span></a><a class="toolcard panel" href="#definitions"><b>Definitions</b><span>Every definition from every lecture, in one searchable list.</span></a><a class="toolcard panel" href="#olympiad"><b>Olympiad</b><span>Competitions, the IChO syllabus, practice problems and past papers.</span></a></div>
+      <div class="toolrow"><a class="toolcard panel" href="#start"><b>Chemistry home</b><span>Live models, a question and an element, on one page.</span></a><a class="toolcard panel" href="#periodic-table"><b>Periodic Table</b><span>All 118 elements. Click one for its numbers, family and electronic configuration.</span></a><a class="toolcard panel" href="#definitions"><b>Definitions</b><span>Every definition from every lecture, in one searchable list.</span></a><a class="toolcard panel" href="#olympiad"><b>Olympiad</b><span>Competitions, the IChO syllabus, practice problems and past papers.</span></a></div>
     </div>`;
   }
 
@@ -393,7 +393,7 @@
     if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view);
     else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
-    $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h === 'rp' ? 'research' : h.startsWith('olympiad') ? 'olympiad' : h)));
+    $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h.startsWith('olympiad') ? 'olympiad' : h)));
     window.scrollTo(0, 0);
   }
 

@@ -1,6 +1,5 @@
 /* Quilio text formatter: markdown with chemistry and maths typeset by KaTeX.
-   This is the formatter from pauling.js, kept on its own because the training course uses it
-   and the AI tutor (Pauling) is not part of the Fresh copy of Quilio. */
+   Taken out of pauling.js (the AI tutor, which this copy does not have) because the training course uses it. */
 (function () {
   'use strict';
   const GC = () => window.GC || {};
