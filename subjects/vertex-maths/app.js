@@ -406,6 +406,8 @@ function recordCompletion(problem, status) {
     progress.completed[problem.id] = { status, time: Date.now() };
   }
   saveProgress();
+  const reward = status === "solved" ? 15 : 5;
+  void window.FreshPoints.earn("Vertex Maths", reward, status === "solved" ? "Problem solved" : "Proof reviewed", status + ":" + problem.id);
   const row = routed.querySelector(`[data-problem="${problem.id}"]`);
   row.querySelector(".problem-list-index").textContent = "✓";
   row.querySelector(".problem-list-track").textContent =

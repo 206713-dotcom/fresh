@@ -9,11 +9,11 @@ export const RARITIES = [
 
 export const SLOTS = [
   {id:'head',label:'Headpiece',bonus:'Hint power',base:1,suffix:' level'},
-  {id:'body',label:'Outfit',bonus:'Lesson PyCoins',base:5,suffix:'%'},
-  {id:'hands',label:'Hand gear',bonus:'Team-game PyCoins',base:5,suffix:'%'},
+  {id:'body',label:'Outfit',bonus:'Lesson GIS Points',base:5,suffix:'%'},
+  {id:'hands',label:'Hand gear',bonus:'Team-game GIS Points',base:5,suffix:'%'},
   {id:'legs',label:'Leg gear',bonus:'Bonus XP',base:10,suffix:'%'},
-  {id:'back',label:'Back gear',bonus:'Quest PyCoins',base:5,suffix:'%'},
-  {id:'aura',label:'Aura',bonus:'Checkpoint PyCoins',base:5,suffix:'%'}
+  {id:'back',label:'Back gear',bonus:'Quest GIS Points',base:5,suffix:'%'},
+  {id:'aura',label:'Aura',bonus:'Checkpoint GIS Points',base:5,suffix:'%'}
 ];
 
 export const CRATES = [

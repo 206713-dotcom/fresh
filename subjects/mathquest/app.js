@@ -197,7 +197,7 @@ async function practiceAnswer(id,i,option) {
     return {coins,completed};
   });
   render(answer === q.answer ? '[data-feedback="' + i + '"]' : '[data-action="lesson-answer"][data-question="' + i + '"][data-option="' + option + '"]');
-  if (result.coins) notify(result.completed ? 'Lesson complete · +' + result.coins + ' PyCoins' : '+' + result.coins + ' PyCoins');
+  if (result.coins) notify(result.completed ? 'Lesson complete · +' + result.coins + ' GIS Points' : '+' + result.coins + ' GIS Points');
 }
 
 async function testAction(action,data) {
@@ -302,7 +302,7 @@ async function roundAction(action,data) {
   });
   if (action === 'leave-round') closeDialog();
   render(action === 'round-answer' ? '[data-action="round-answer"][data-option="' + data.option + '"]' : '#active-question');
-  if (outcome) notify('Practice reward · +' + outcome + ' PyCoins');
+  if (outcome) notify('Practice reward · +' + outcome + ' GIS Points');
 }
 
 async function equip(id,fromReveal) {
@@ -324,16 +324,16 @@ async function sell(id,confirmed) {
     if (!confirmed && wallet.gearCounts[id] === 1) return null;
     const coins = sellGear(wallet,id);
     return {coins,remaining:wallet.gearCounts[id] ?? 0};
-  });
+  }, 'Gear sold');
   if (!result) {
     confirmation('Sell your last ' + item.name + '?',
-      'You’ll receive ' + gearSellValue(item) + ' PyCoins. If the gear is equipped, selling the last copy also removes it from your character.',
+      'You’ll receive ' + gearSellValue(item) + ' GIS Points. If the gear is equipped, selling the last copy also removes it from your character.',
       'confirm-sell-gear','Sell last copy',undefined,'data-gear="' + id + '"');
     return;
   }
   if (confirmed) closeDialog();
   render(result.remaining ? '[data-action="sell-gear"][data-gear="' + id + '"]' : '#gear-collection');
-  notify('Sold ' + item.name + ' · +' + result.coins + ' PyCoins');
+  notify('Sold ' + item.name + ' · +' + result.coins + ' GIS Points');
 }
 
 function refreshLibrary() {
@@ -347,7 +347,9 @@ function refreshLibrary() {
 }
 
 function startBackupDownload() {
-  const file = new Blob([JSON.stringify({app:'MathQuest',data:current()},null,2)],{type:'application/json'});
+  const data = current();
+  delete data.wallet.coins;
+  const file = new Blob([JSON.stringify({app:'MathQuest',data},null,2)],{type:'application/json'});
   const url = URL.createObjectURL(file);
   const a = document.createElement('a');
   a.href=url; a.download='MathQuest-progress.json'; a.click();
@@ -438,7 +440,10 @@ async function act(action,data) {
     case 'restore': {
       if (!pendingBackup) return;
       const restored = pendingBackup;
-      await update(s=>Object.assign(s,restored));
+      await update(s=>{
+        const claimed = [...new Set([...s.wallet.claimed, ...restored.wallet.claimed])];
+        Object.assign(s,restored,{wallet:{...restored.wallet, coins:s.wallet.coins, claimed}});
+      });
       closeDialog();
       render();
       notify('Progress backup restored');
@@ -500,7 +505,7 @@ document.addEventListener('change',async event=>{
     try {
       if (file.size>2_000_000) throw new Error('This backup is too large.');
       pendingBackup=decodeBackup(await file.text());
-      confirmation('Restore this backup?','Restoring replaces MathQuest’s progress and wallet in this browser.','restore','Restore progress');
+      confirmation('Restore this backup?','Restoring replaces MathQuest’s study progress and gear in this browser. Your shared points stay as they are.','restore','Restore progress');
     } catch (error) {
       notify(error instanceof SyntaxError ? 'Choose a valid MathQuest backup file.' : error.message);
     } finally {element.value='';}
@@ -508,7 +513,7 @@ document.addEventListener('change',async event=>{
 });
 
 window.addEventListener('storage',event=>{
-  if (event.key===KEY || event.key===null) {
+  if (event.key===KEY || event.key===window.FreshPoints.key || event.key===null) {
     syncFromStorage();
     if (!dialog.open) render();
   }

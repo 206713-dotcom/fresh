@@ -512,6 +512,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
         state.feedback = ecbizMarking.feedback(grade,q.marks,answer)+ecbizMarking.scheme(q)+
           '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
       }
+      if (state.score > 0) {
+        const reward = q.options ? 5 : 10;
+        void window.FreshPoints.earn('Economics', reward, 'Practice question completed', 'question:' + q.id);
+      }
       if(q.reference) {
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
           escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';

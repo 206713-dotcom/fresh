@@ -67,6 +67,8 @@ Work through Paper 1 questions, Paper 2 case studies and interactive lessons. Tr
 
 ## Progress and privacy
 
+GIS Points are shared across Fresh subjects in the current browser. You can earn them through lessons and practice and spend them in subject shops. Fresh brings over saved Business, MathQuest, PyQuest and RM Revise balances from this browser once. Subject backups keep study data and gear separate from the shared balance.
+
 Business Studies, Economics and PyQuest save progress in the current browser. Business Studies and Economics can export a progress CSV. In PyQuest or MathQuest, use Local profile to download or restore a backup. Vertex Maths has backup tools under My progress. RM Revise offers local sync links. Progress from an old site address can be brought across using those tools.
 
 ## Run Fresh locally

@@ -1,7 +1,6 @@
 import {ASSESSMENT_VERSION, COURSES, LESSONS, assessmentItems, questionByKey, courseUnits} from './curriculum.js';
 import {itemById, SLOTS} from './game-items.js';
 import {emptyWallet} from './rewards.js';
-import {MAX_PYCOINS} from './shared/gear-crates.js';
 
 export const KEY = 'mathquest.igcse.v1';
 const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
@@ -74,7 +73,6 @@ export function clean(raw) {
     }
   }
   const w = object(raw.wallet);
-  state.wallet.coins = int(w.coins,MAX_PYCOINS);
   state.wallet.bonusXp = int(w.bonusXp,1_000_000);
   const legacyOwned = Array.isArray(w.owned) ? w.owned : [];
   const savedCounts = object(w.gearCounts);
@@ -117,29 +115,29 @@ try {
 } catch { storageOK = false; }
 state = read();
 
-export const current = () => state;
+export const current = () => ({
+  ...state,
+  wallet: {...state.wallet, coins: window.FreshPoints.balance()}
+});
 export const hasStorage = () => storageOK;
 
-export function update(mutator) {
-  const apply = () => {
-    const next = structuredClone(storageOK ? read() : state);
+export async function update(mutator, label) {
+  const {next, result} = await window.FreshPoints.transaction('MathQuest', points => {
+    const next = structuredClone(read());
+    const balance = points.balance();
+    next.wallet.coins = balance;
     const result = mutator(next);
-    state = next;
-    try {
-      localStorage.setItem(KEY,JSON.stringify(next));
-      storageOK = true;
-    } catch { storageOK = false; }
-    return result;
-  };
-  if (!navigator.locks) return Promise.resolve().then(apply);
-  let entered = false;
-  return navigator.locks.request(KEY, () => {
-    entered = true;
-    return apply();
-  }).catch(error => {
-    if (!entered && ['SecurityError','NotSupportedError'].includes(error.name)) return apply();
-    throw error;
+    const delta = next.wallet.coins - balance;
+    if (delta && !points.adjust(delta, label ?? (delta > 0 ? 'Study reward' : 'Gear purchase'))) {
+      throw new Error('The shared GIS Points balance could not be updated.');
+    }
+    delete next.wallet.coins;
+    points.write(KEY, next);
+    return {next, result};
   });
+  state = next;
+  storageOK = true;
+  return result;
 }
 
 export function syncFromStorage() {

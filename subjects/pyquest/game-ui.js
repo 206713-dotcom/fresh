@@ -53,29 +53,29 @@ function collectionHTML(wallet, quantities) {
           <div class="collection-actions">
             <button type="button" class="btn btn-quiet" data-equip="${e(id)}" ${equipped ? 'disabled' : ''}>${equipped ? 'Equipped' : 'Equip'}</button>
             ${localPreview ? `<button type="button" class="btn btn-light" id="sell-${e(id)}" data-sell-gear="${e(id)}"
-              aria-label="${e(sellLabel)} ${e(item.name)} for ${price} PyCoins">${e(sellLabel)} · ${price} PyCoins</button>` : ''}
+              aria-label="${e(sellLabel)} ${e(item.name)} for ${price} GIS Points">${e(sellLabel)} · ${price} GIS Points</button>` : ''}
           </div>
         </article>`;
       }).join('')}
-    </div>` : '<p class="muted">Your first gear is waiting. Earn PyCoins from lessons, tests and team games, then open a crate.</p>'}
+    </div>` : '<p class="muted">Your first gear is waiting. Earn GIS Points from lessons, tests and team games, then open a crate.</p>'}
   </section>`;
 }
 
 export function gameShopHTML(tab = 'closet', crateId = 'helmet', style = 'boy') {
   const s=gameState();const w=s.wallet||{coins:0,owned:[],equipped:{},claimed:[],bonusXp:0};
-  if(s.error)return `<div class="panel"><h2>PyCoins unavailable</h2><p class="feedback bad">${e(s.error)}</p></div>`;
+  if(s.error)return `<div class="panel"><h2>GIS Points unavailable</h2><p class="feedback bad">${e(s.error)}</p></div>`;
   const quantities = gearQuantities(w);
   const crate = CRATES.find(c => c.id === crateId) || CRATES[0];
-  return `<div class="page-head"><div><h1>Game Zone</h1><p>Open crates with earned PyCoins, equip your character, or play a two-person quiz.</p></div><span class="coin-pill">${Number(w.coins||0).toLocaleString()} PyCoins</span></div>
-    ${localPreview?'':'<div class="coin-sync-actions"><button type="button" class="btn btn-primary" data-sync-coins="1">Sync earned PyCoins</button><span class="muted">Each completed activity earns PyCoins once.</span></div>'}
-    ${s.rewardError?`<div class="feedback bad coin-reward-warning">PyCoins aren't syncing yet: ${e(s.rewardError)} <strong>Your lesson progress is still saved.</strong></div>`:''}
+  return `<div class="page-head"><div><h1>Game Zone</h1><p>Open crates with earned GIS Points, equip your character, or play a two-person quiz.</p></div><span class="coin-pill">${Number(w.coins||0).toLocaleString()} GIS Points</span></div>
+    ${localPreview?'':'<div class="coin-sync-actions"><button type="button" class="btn btn-primary" data-sync-coins="1">Sync earned GIS Points</button><span class="muted">Each completed activity earns GIS Points once.</span></div>'}
+    ${s.rewardError?`<div class="feedback bad coin-reward-warning">GIS Points aren't syncing yet: ${e(s.rewardError)} <strong>Your lesson progress is still saved.</strong></div>`:''}
     <div class="game-tabs" role="group" aria-label="Game Zone sections"><button type="button" data-game-tab="closet" aria-pressed="${tab==='closet'}" class="${tab==='closet'?'selected':''}">My character</button><button type="button" data-game-tab="crates" aria-pressed="${tab==='crates'}" class="${tab==='crates'?'selected':''}">Cosmetic crates</button><button type="button" data-game-tab="teams" aria-pressed="${tab==='teams'}" class="${tab==='teams'?'selected':''}">Team games</button></div>
     ${tab==='teams'?'':tab==='crates'?shopCrates(crate, quantities, w):`<div class="game-dashboard"><section class="game-hero-card modern">
       <div class="game-hero-copy">
         <h2>Your character</h2>
         <p>Equip items from your collection to change your look and earn bonuses on future activities.</p>
         ${characterStyles(style)}
-        <div class="game-wallet"><strong>${Number(w.coins||0)} <small>PyCoins</small></strong><strong>+${Number(w.bonusXp||0)} <small>Gear XP</small></strong></div>
+        <div class="game-wallet"><strong>${Number(w.coins||0)} <small>GIS Points</small></strong><strong>+${Number(w.bonusXp||0)} <small>Gear XP</small></strong></div>
         <button type="button" class="btn btn-primary" data-game-tab="crates">Browse crates</button>
       </div>
       ${avatarHTML(w, style)}
@@ -95,10 +95,10 @@ function shopCrates(crate, quantities, w) {
   const odds = crateOdds(crate.id, localPreview ? [] : Object.keys(quantities));
   const canAfford=Number(w.coins||0)>=crate.cost;
   const allOwned=odds.pool.length===0;
-  return `<section class="crate-intro"><h2>Random cosmetic crates</h2><p>Choose a category and open a crate for one of six items.${localPreview ? ' You can collect multiple copies and sell them for PyCoins from My character.' : ' PyCoins are earned through learning.'}</p></section>
+  return `<section class="crate-intro"><h2>Random cosmetic crates</h2><p>Choose a category and open a crate for one of six items.${localPreview ? ' You can collect multiple copies and sell them for GIS Points from My character.' : ' GIS Points are earned through learning.'}</p></section>
   <div class="crate-nav">${CRATES.map(c=>`<button class="crate-chip ${c.id===crate.id?'selected':''}" data-crate="${e(c.id)}"><img class="crate-chip-picture" src="assets/cosmetics/crate-${e(c.theme)}.png" alt="" loading="lazy">${e(c.name)}</button>`).join('')}</div>
   <section class="crate-banner crate-${crate.theme}"><img class="crate-giant-picture" src="assets/cosmetics/crate-${e(crate.theme)}.png" alt="${e(crate.name)} illustration"><div><h2>${e(crate.name)}</h2><p>${e(crate.desc)}</p>
-  <div class="crate-cost-line"><span>${crate.cost} PyCoins per opening</span><button type="button" class="btn btn-primary" data-open-crate="${e(crate.id)}" ${allOwned||!canAfford?'disabled':''}>${allOwned?'All items collected':canAfford?'Open random crate':`Need ${crate.cost-Number(w.coins||0)} more PyCoins`}</button></div>
+  <div class="crate-cost-line"><span>${crate.cost} GIS Points per opening</span><button type="button" class="btn btn-primary" data-open-crate="${e(crate.id)}" ${allOwned||!canAfford?'disabled':''}>${allOwned?'All items collected':canAfford?'Open random crate':`Need ${crate.cost-Number(w.coins||0)} more GIS Points`}</button></div>
   </div></section>
   <section class="panel crate-prob-panel"><div><h3>Rarity chances</h3><p class="muted">${localPreview
     ? 'Every opening uses these odds, including when you already own gear from this crate.'
@@ -150,7 +150,7 @@ function teamRoomHTML(room,user){const questions=GAME_QUESTIONS[room.mode]||[];c
   const claimed=(gameState().wallet?.claimed||[]).includes('team:'+room.id);
   return `<section class="panel team-stage"><div class="section-head"><div><h2>${room.mode==='python'?'Python Sprint':'IGCSE Blitz'}</h2><p>Both players answer eight questions. Team score = combined correct answers.</p></div><span class="coin-pill">Room code ${e(room.joinCode||room.id)}</span></div>
    ${room.status==='waiting'?`<div class="team-wait"><h3>Waiting for another player</h3><p>Share this join code: <strong class="join-code-big">${e(room.joinCode||room.id)}</strong></p></div>`:''}
-   ${room.status==='done'?`<div class="team-complete"><h3>Team game complete</h3><p>Combined score: <strong>${myScore+theirScore}/${questions.length*2}</strong></p><button class="btn btn-primary" data-team-claim="${e(room.id)}" ${claimed?'disabled':''}>${claimed?'PyCoins claimed':'Claim team-game PyCoins'}</button></div>`:''}
+   ${room.status==='done'?`<div class="team-complete"><h3>Team game complete</h3><p>Combined score: <strong>${myScore+theirScore}/${questions.length*2}</strong></p><button class="btn btn-primary" data-team-claim="${e(room.id)}" ${claimed?'disabled':''}>${claimed?'GIS Points claimed':'Claim team-game GIS Points'}</button></div>`:''}
    ${room.status==='playing'?(canPlay?`<p class="team-progress">Your question ${mine.length+1}/${questions.length} · Partner answered ${them.length}/${questions.length}</p><h3>${e(q.q)}</h3><div class="team-options">${q.a.map((v,i)=>`<button type="button" data-team-answer="${e(room.id)}:${mine.length}:${i}">${String.fromCharCode(65+i)} · ${e(v)}</button>`).join('')}</div>`:`<div class="team-wait"><h3>Your questions are done</h3><p>Waiting for your partner (${them.length}/${questions.length}).</p></div>`):''}
    ${mine.length>0?`<p class="muted fineprint">Last answer: ${mine[mine.length-1]===questions[mine.length-1]?.right?'Correct':'Hint: '+e(questions[mine.length-1]?.why||'Keep practicing.')}</p>`:''}</section>`;
 }

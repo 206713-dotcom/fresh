@@ -379,7 +379,7 @@
     const act = e.target.closest('[data-act]'); if (!act) { const dd = e.target.closest('.ms.is-test dd'); if (dd) dd.classList.add('is-open'); return; }
     if (act.dataset.act === 'retry') { e.preventDefault(); route(); }
     if (act.dataset.act === 'test') { const ms = $('.ms', view), on = !ms.classList.contains('is-test'); ms.classList.toggle('is-test', on); $$('dd', ms).forEach(d => d.classList.remove('is-open')); act.textContent = on ? 'Show all answers' : 'Test yourself'; act.setAttribute('aria-pressed', on); act.classList.toggle('is-on', on); }
-    if (act.dataset.act === 'done' && CUR) { const id = CUR.L.id; if (done.has(id)) done.delete(id); else done.add(id); store.set('gc.done', [...done]); const on = done.has(id); act.textContent = on ? 'Done ✓ (undo)' : 'Mark as done'; act.classList.toggle('ghost', on); act.previousElementSibling.textContent = on ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'; $$('.rail.side a').forEach(a => { if (a.getAttribute('href') === '#' + id) a.classList.toggle('is-done', on); }); Snd.tick(on); }
+    if (act.dataset.act === 'done' && CUR) { const id = CUR.L.id; if (done.has(id)) done.delete(id); else done.add(id); store.set('gc.done', [...done]); const on = done.has(id); if (on) void window.FreshPoints.earn('Chemistry', 10, 'Lecture completed', 'lecture:' + id); act.textContent = on ? 'Done ✓ (undo)' : 'Mark as done'; act.classList.toggle('ghost', on); act.previousElementSibling.textContent = on ? 'You have finished this lecture.' : 'Read it, tried the questions, understood it?'; $$('.rail.side a').forEach(a => { if (a.getAttribute('href') === '#' + id) a.classList.toggle('is-done', on); }); Snd.tick(on); }
   });
 
   /* ---------- router ---------- */

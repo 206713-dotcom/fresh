@@ -521,6 +521,7 @@ Reply with JSON only: {"questions":[{"q":"…","a":"…","s":["…","…"],"k":[
     loadLS();
     if (on) { LS.u[id] = Date.now(); LS.r[id] = { i: 0, due: Date.now() + (WL.study ? WL.study.gap(GAPS[0]) : GAPS[0]) * DAY }; } else { delete LS.u[id]; delete LS.r[id]; }
     touchDay(); saveLS();
+    if (on) void window.FreshPoints.earn('Physics', 10, 'Topic completed', 'topic:' + id);
   }
   const pMarks = (id) => loadLS().p[id] || {};
   const pScore = (id) => { const m = pMarks(id), k = Object.keys(m); return { tried: k.length, ok: k.filter((x) => m[x] === 1).length }; };

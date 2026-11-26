@@ -43,7 +43,8 @@ function backupProgress(progress) {
 function backupGame(game) {
   const saved = game.wallet;
   const wallet = emptyWallet();
-  wallet.coins = Math.min(count(saved.coins), 1_000_000);
+  // The shared GIS Points balance is separate from a Python profile backup.
+  delete wallet.coins;
   wallet.bonusXp = count(saved.bonusXp);
   wallet.quantities = gearQuantities(saved);
   wallet.owned = Object.keys(wallet.quantities);
@@ -131,13 +132,17 @@ function replaceRecords(entries) {
 export function restoreProfileBackup(uid, backup, normalizedProgress) {
   const gameKey = localRecordKey(localGameKey(uid));
   const testKey = localRecordKey(localTestKey(uid));
-  const apply = () => replaceRecords([
-    [progressStorageKey(uid), normalizedProgress],
-    [gameKey, backup.game],
-    [testKey, backup.levelTest ? {attempt: backup.levelTest} : null],
-    [levelDraftKey(uid), backup.levelDraft.some(validAnswer) ? backup.levelDraft : null],
-    [localRecordKey(characterStyleKey(uid)), backup.characterStyle]
-  ]);
+  const apply = () => {
+    const savedClaims = readLocalGame(uid).wallet.claimed;
+    const wallet = {...backup.game.wallet, claimed: [...new Set([...savedClaims, ...backup.game.wallet.claimed])]};
+    return replaceRecords([
+      [progressStorageKey(uid), normalizedProgress],
+      [gameKey, {...backup.game, wallet}],
+      [testKey, backup.levelTest ? {attempt: backup.levelTest} : null],
+      [levelDraftKey(uid), backup.levelDraft.some(validAnswer) ? backup.levelDraft : null],
+      [localRecordKey(characterStyleKey(uid)), backup.characterStyle]
+    ]);
+  };
   return navigator.locks
     ? navigator.locks.request(gameKey, () => navigator.locks.request(testKey, apply))
     : Promise.resolve().then(apply);

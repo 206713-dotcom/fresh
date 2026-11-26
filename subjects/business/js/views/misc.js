@@ -1660,7 +1660,7 @@
       }
       function statusText() {
         if (st.running) return st.mode === "focus"
-          ? "Studying (" + st.focus + "m session) • Earning Coins" : "Recharging...";
+          ? "Studying (" + st.focus + "m session) • Earning GIS Points" : "Recharging...";
         return "Ready to Focus (" + (st.mode === "focus" ? st.focus : st.breakMins) + "m session)";
       }
       function toastHtml() {
@@ -1701,9 +1701,9 @@
                 (equipped ? "bg-white/20 text-white/70 cursor-default" : t.button) + '">' +
                 (equipped ? "Equipped" : "Equip Theme") + '</button>'
             : '<button type="button" data-act="buytheme" data-id="' + id + '"' +
-                (EC.coins() < t.price ? ' disabled' : '') + ' class="w-full py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 ' +
-                (EC.coins() >= t.price ? t.button : "bg-white/5 text-white/30 border border-white/5 cursor-not-allowed") + '">' +
-                ic("lock", 12) + '<span>' + t.price + ' Coins</span></button>';
+                (EC.points() < t.price ? ' disabled' : '') + ' class="w-full py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 ' +
+                (EC.points() >= t.price ? t.button : "bg-white/5 text-white/30 border border-white/5 cursor-not-allowed") + '">' +
+                ic("lock", 12) + '<span>' + t.price + ' GIS Points</span></button>';
           return '<div class="p-4 rounded-2xl border flex flex-col justify-between transition-all ' +
             (equipped ? t.accentBorder + " bg-white/10 shadow-lg" : "border-white/10 bg-black/25 hover:border-white/20") + '">' +
             '<div><div class="flex items-center justify-between mb-2"><span class="font-bold text-sm tracking-tight">' + h(t.name) + '</span>' +
@@ -1716,9 +1716,9 @@
             '<div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2">' +
               ic("bag", 20, "text-purple-400") + '<h3 class="font-bold text-lg">Decoration Store</h3></div>' +
               '<div class="flex items-center gap-3"><div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-semibold text-xs">' +
-                ic("coins", 14, "text-amber-400") + '<span>' + EC.coins() + ' Coins Available</span></div>' +
+                ic("coins", 14, "text-amber-400") + '<span>' + EC.points() + ' GIS Points Available</span></div>' +
               '<button type="button" data-act="closeshop" class="text-white/50 hover:text-white text-xs px-2.5 py-1 rounded-xl bg-white/10">Close</button></div></div>' +
-            '<p class="text-xs text-white/60 mb-6">Use your hard-earned study coins to unlock aesthetic study room environments inspired by Roblox lo-fi spaces.</p>' +
+            '<p class="text-xs text-white/60 mb-6">Use your hard-earned GIS Points to unlock aesthetic study room environments inspired by Roblox lo-fi spaces.</p>' +
             '<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">' + cards + '</div>' +
           '</div></div>';
       }
@@ -1763,12 +1763,12 @@
                 '<p class="' + CLS.ss.brandSub + '">Aesthetic Roblox-inspired focus realm</p></div></div>' +
             '<div class="flex items-center gap-2 sm:gap-3">' +
               '<div class="' + CLS.ss.badge + ' ' + CLS.ss.coins + '">' + ic("coins", 16) +
-                '<span data-ss-coins>' + EC.coins() + '</span><span class="text-[10px] opacity-60 hidden sm:inline">Coins</span></div>' +
+                '<span data-ss-coins>' + EC.points() + '</span><span class="text-[10px] opacity-60 hidden sm:inline">GIS Points</span></div>' +
               '<div class="' + CLS.ss.badge + ' ' + CLS.ss.streak + '">' + ic("flame", 16) +
                 '<span data-ss-streak>' + st.streak + '</span><span class="text-[10px] opacity-60 hidden sm:inline">Day Streak</span></div>' +
               '<button type="button" class="' + CLS.ss.ghostBtn + '" data-act="shop" title="Cosmetics Shop">' + ic("bag", 16, "text-purple-300") +
                 '<span class="hidden sm:inline">Shop</span></button>' +
-              '<button type="button" class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold transition active:scale-95 cursor-pointer shadow-xs" data-act="achievements" title="View Achievements &amp; Claim Bonus Study Coins">' +
+              '<button type="button" class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold transition active:scale-95 cursor-pointer shadow-xs" data-act="achievements" title="View Achievements &amp; Claim Bonus GIS Points">' +
                 ic("trophy", 16, "text-amber-400") + '<span class="hidden sm:inline">Achievements</span></button>' +
               '<button type="button" class="p-2 rounded-2xl border transition active:scale-95 cursor-pointer ' +
                 (ssAudio.anyActive() ? "bg-indigo-600/30 border-indigo-400 text-indigo-300" : "bg-white/10 hover:bg-white/15 border-white/15 text-white/80") +
@@ -1818,7 +1818,7 @@
                   '<button type="button" class="p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 text-white/80 hover:text-white border border-white/10 transition active:scale-95 cursor-pointer" data-act="reset" title="Reset Clock">' + ic("reset", 20) + '</button>' +
                 '</div>' +
                 '<div class="mt-8 text-center text-xs text-white/40 flex items-center gap-1.5">' + ic("coins", 14, "text-amber-400/70") +
-                  '<span>Earn 1 Study Coin per active minute • 25 Coins &amp; +1 Streak per complete block</span></div>' +
+                  '<span>Earn 1 Study Coin per active minute • 25 GIS Points &amp; +1 Streak per complete block</span></div>' +
               '</div>' +
               '<div class="w-full mt-6 flex items-center justify-between p-3.5 rounded-2xl bg-black/20 border border-white/10 backdrop-blur-xl">' +
                 '<div class="flex items-center gap-2">' + ic("music", 16, "text-white/60") +
@@ -1870,7 +1870,7 @@
             (st.running ? "bg-emerald-500 hover:bg-emerald-400 text-white" : "bg-white/10 hover:bg-white/20 text-white/90") + '" title="' + (st.running ? "Pause" : "Start Focus") + '">' +
             ic(st.running ? "pause" : "play", 11, "fill-current" + (st.running ? "" : " ml-0.5")) + '</button>' +
           '<button type="button" data-act="ghost" class="w-6 h-6 rounded-full bg-white/5 hover:bg-white/20 text-white/60 hover:text-amber-300 flex items-center justify-center transition active:scale-90 cursor-pointer" title="Ghost Mode (Fairly transparent, numbers stay visible)">' + ic("ghost", 12) + '</button>' +
-          '<button type="button" data-act="mini-compact" class="w-6 h-6 rounded-full bg-white/5 hover:bg-white/20 text-white/60 hover:text-white flex items-center justify-center transition active:scale-90 cursor-pointer" title="Switch to Card view (with coins &amp; streak)">' + ic("maximize", 11) + '</button>' +
+          '<button type="button" data-act="mini-compact" class="w-6 h-6 rounded-full bg-white/5 hover:bg-white/20 text-white/60 hover:text-white flex items-center justify-center transition active:scale-90 cursor-pointer" title="Switch to Card view (with points &amp; streak)">' + ic("maximize", 11) + '</button>' +
           '<button type="button" data-act="expand" class="px-2 py-0.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold shadow-sm transition active:scale-90 cursor-pointer" title="Open Fullscreen Study Realm">' + ic("external", 11) +
             '<span class="hidden sm:inline">Max</span></button>' +
           '<button type="button" data-act="close-widget" class="w-5 h-5 rounded-full text-white/50 hover:text-white hover:bg-white/10 flex items-center justify-center transition active:scale-90 cursor-pointer" title="Close Widget" aria-label="Close Widget">' + ic("x", 12) + '</button></div>';
@@ -1904,7 +1904,7 @@
             '<div data-act="expand" class="cursor-pointer group flex flex-col" title="Click to view full room">' +
               '<div class="text-2xl font-black font-mono tracking-tight tabular-nums text-transparent bg-clip-text bg-gradient-to-b from-white to-white/80 group-hover:opacity-80 transition" data-ss-digits>' + fmtTime(st.timeLeft) + '</div>' +
               '<div class="flex items-center gap-2 text-[10px] text-white/50"><span class="flex items-center gap-1 text-amber-300 font-semibold">' + ic("coins", 12, "text-amber-400") +
-                '<span data-ss-coins>' + EC.coins() + '</span></span><span>•</span>' +
+                '<span data-ss-coins>' + EC.points() + '</span></span><span>•</span>' +
                 '<span class="flex items-center gap-1 text-orange-300 font-semibold">' + ic("flame", 12, "text-orange-400") +
                 '<span data-ss-streak-mini>' + st.streak + 'd</span></span></div></div>' +
             '<div class="flex items-center gap-1.5">' +
@@ -1954,7 +1954,7 @@
         nodes = area.querySelectorAll("[data-ss-status]");
         for (i = 0; i < nodes.length; i++) nodes[i].textContent = statusText();
         var coinNode = area.querySelector("[data-ss-coins]");
-        if (coinNode) coinNode.textContent = EC.coins();
+        if (coinNode) coinNode.textContent = EC.points();
         var streakNode = area.querySelector("[data-ss-streak]");
         if (streakNode) streakNode.textContent = st.streak;
         streakNode = area.querySelector("[data-ss-streak-mini]");
@@ -2013,7 +2013,7 @@
           : "Ghost Mode OFF: Normal visibility restored", st.ghost ? 3000 : 2000);
         persist(); draw();
       }
-      function buyTheme(id) {
+      async function buyTheme(id) {
         if (!has(SS_THEMES, id)) return;
         var t = SS_THEMES[id];
         if (st.unlocked.indexOf(id) >= 0) {
@@ -2021,16 +2021,17 @@
           EC.store.set("study_active_theme", id);
           toast("Equipped " + t.name + "!");
         } else {
-          var balance = EC.coins();
+          var balance = EC.points();
           if (balance < t.price) {
-            toast("Need " + (t.price - balance) + " more Study Coins to unlock this theme!");
+            toast("Need " + (t.price - balance) + " more GIS Points to unlock this theme!");
             return;
           }
-          EC.addCoins(-t.price);
-          st.unlocked.push(id);
+          if (!await EC.spendPoints(t.price, "Study space theme", function () {
+            var owned = EC.store.get("study_themes", st.unlocked);
+            return owned.indexOf(id) === -1 && {study_themes: owned.concat(id), study_active_theme: id};
+          })) return;
+          st.unlocked = EC.store.get("study_themes", st.unlocked);
           st.activeTheme = id;
-          EC.store.set("study_themes", st.unlocked);
-          EC.store.set("study_active_theme", id);
           toast("Unlocked and equipped " + t.name + "! 🎉");
         }
         persist(); draw();
@@ -2073,7 +2074,7 @@
         if (st.mode === "focus") {
           st.elapsed++;
           if (st.elapsed % 60 === 0) {
-            EC.addCoins(1);
+            EC.earnPoints(1);
             toast("+1 Study Coin earned for focused study! ✨");
           }
         }
@@ -2081,7 +2082,7 @@
           st.running = false;
           if (ssTimer !== null) { clearInterval(ssTimer); ssTimer = null; }
           if (st.mode === "focus") {
-            EC.addCoins(25);
+            EC.earnPoints(25);
             st.sessions++;
             st.streak++;
             /* Keep the original key AND the current key in sync, and emit
@@ -2094,7 +2095,7 @@
               }));
             } catch (e) {}
             persist();
-            toast("🎉 Focus Session Complete! +25 Coins & Streak increased to " + st.streak + "!");
+            toast("🎉 Focus Session Complete! +25 GIS Points & Streak increased to " + st.streak + "!");
             st.mode = "break"; st.timeLeft = st.breakMins * 60;
           } else {
             toast("Break finished! Ready to dive back into study?");
@@ -2272,10 +2273,10 @@
             '<div><div class="flex items-center gap-2 flex-wrap">' +
               '<h1 id="achievements-modal-title" class="' + CLS.achTitle + '">Achievements &amp; Milestones</h1>' +
               '<span id="ms-ach-ready-badge"></span></div>' +
-              '<p class="' + CLS.achTitleSub + '">Accomplish study targets to claim bonus Study Coins for cosmetics &amp; themes.</p></div></div>' +
+              '<p class="' + CLS.achTitleSub + '">Accomplish study targets to claim bonus GIS Points for cosmetics &amp; themes.</p></div></div>' +
             '<div class="flex items-center gap-3">' +
-              '<div class="' + CLS.achCoins + '"><span>🪙</span><span id="ms-ach-coins">' + h(EC.coins()) + '</span>' +
-                '<span class="text-[10px] text-amber-600/70 hidden sm:inline">Coins</span></div>' +
+              '<div class="' + CLS.achCoins + '"><span>✦</span><span id="ms-ach-coins">' + h(EC.points()) + '</span>' +
+                '<span class="text-[10px] text-amber-600/70 hidden sm:inline">GIS Points</span></div>' +
               '<button type="button" class="p-2 rounded-xl text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition cursor-pointer" data-act="close" title="Close Achievements" aria-label="Close Achievements">' +
                 ic("x", 20) + '</button></div></div>' +
           '<div id="ms-ach-toast"></div>' +
@@ -2374,7 +2375,7 @@
       function award(d) {
         st.claimed.push(d.id);
         EC.store.set("claimed_achievements", st.claimed);
-        EC.addCoins(d.reward);
+        EC.earnPoints(d.reward);
       }
       function claim(id) {
         var d = null, i;
@@ -2400,10 +2401,10 @@
         toastBox.innerHTML = '<div class="' + CLS.achToast + '"><div class="flex items-center gap-2">' +
           ic("sparkles", 16, "text-emerald-500") +
           '<span>Claimed reward for <strong class="font-bold">' + h(st.toast.title) + '</strong>!</span></div>' +
-          '<span class="font-mono font-bold text-amber-600 dark:text-amber-400">+' + h(st.toast.coins) + ' Coins 🪙</span></div>';
+          '<span class="font-mono font-bold text-amber-600 dark:text-amber-400">+' + h(st.toast.coins) + ' GIS Points ✦</span></div>';
       }
       function draw() {
-        coinNode.textContent = EC.coins();
+        coinNode.textContent = EC.points();
         var countNode = root.querySelector("#ms-ach-count");
         if (countNode) countNode.textContent = st.claimed.length;
         var totalNode = root.querySelector("#ms-ach-total");
@@ -2447,7 +2448,7 @@
           var pct = Math.min(100, Math.round(d.current / d.req * 100));
           var bar = s.claimable ? CLS.achBarReady : (s.claimed ? CLS.achBarClaimed : CLS.achBarFill);
           var card = s.claimable ? CLS.achCardReady : (s.claimed ? CLS.achCardClaimed : CLS.achCardOff);
-          var reward = '<span class="' + CLS.achReward + '">+' + d.reward + ' Coins</span>';
+          var reward = '<span class="' + CLS.achReward + '">+' + d.reward + ' GIS Points</span>';
           var iconBg = s.claimed
             ? "bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
             : s.claimable ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-600"
@@ -2456,7 +2457,7 @@
             ? '<span class="' + CLS.achClaimed + '">' + ic("check", 14, "text-emerald-500") + '<span>Claimed</span></span>'
             : s.claimable
             ? '<button type="button" class="' + CLS.achClaimBtn + '" data-act="claim" data-id="' + h(d.id) + '">' + ic("sparkles", 14) +
-              '<span>Claim +' + d.reward + ' 🪙</span></button>'
+              '<span>Claim +' + d.reward + ' ✦</span></button>'
             : '<span class="' + CLS.achLocked + '">' + ic("lock", 12, "opacity-60") + '<span>' + pct + '% Done</span></span>';
           return '<div class="' + CLS.achCard + ' ' + card + '">' +
             '<div class="' + CLS.achRow + '"><div class="' + CLS.achIcon + ' ' + iconBg + '">' + h(d.icon) + '</div>' +
@@ -2771,7 +2772,7 @@
         return '<span class="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">Common</span>';
       }
       function itemHtml(item, cat) {
-        var eq = equippedId(cat) === item[0], un = unlocked(item), afford = EC.coins() >= item[3];
+        var eq = equippedId(cat) === item[0], un = unlocked(item), afford = EC.points() >= item[3];
         var isSkin = cat === "skin";
         var action = eq
           ? '<span class="' + CLS.avEquippedLbl + '">' + ic("check", 14) + ' Equipped</span>'
@@ -2779,9 +2780,9 @@
           ? '<button type="button" class="' + CLS.avEquipBtn + '" data-act="equip" data-cat="' + cat + '" data-id="' + h(item[0]) + '">Equip</button>'
           : '<button type="button" class="' + CLS.avBuyBtn + (afford ? "" : " " + CLS.avBuyOff) + '" data-act="buy" data-cat="' + cat +
             '" data-id="' + h(item[0]) + '"' + (afford ? "" : " disabled") + '>' + ic("lock", 12) +
-            '<span>' + (isSkin ? item[3] + " 🪙" : "Unlock " + item[3] + " 🪙") + '</span></button>';
+            '<span>' + (isSkin ? item[3] + " ✦" : "Unlock " + item[3] + " ✦") + '</span></button>';
         var badge = rarityBadge(item[6]);
-        var costLine = item[3] === 0 ? (isSkin ? "" : "Starter Default") : (isSkin ? "" : item[3] + " Coins");
+        var costLine = item[3] === 0 ? (isSkin ? "" : "Starter Default") : (isSkin ? "" : item[3] + " GIS Points");
         return '<div class="' + CLS.avCard + ' ' + (eq ? CLS.avCardOn : CLS.avCardOff) + '"><div>' +
           (isSkin
             ? '<div class="flex items-center gap-3 mb-2"><span class="' + CLS.avSwatch + '" style="background:' + h(item[2]) + '"></span>' +
@@ -2792,7 +2793,7 @@
               '<div class="' + CLS.avItemName + '">' + h(item[1]) + '</div>' +
               '<p class="' + CLS.avItemDesc + ' mt-1">' + h(item[5] || "") + '</p>') +
           '</div><div class="' + CLS.avCardFoot + '">' +
-            '<span class="' + CLS.avCost + '">' + (item[3] === 0 ? "Free" : (isSkin ? "🪙 " + item[3] : "🪙 " + item[3])) + '</span>' +
+            '<span class="' + CLS.avCost + '">' + (item[3] === 0 ? "Free" : (isSkin ? "✦ " + item[3] : "✦ " + item[3])) + '</span>' +
             (costLine ? '<span class="text-[11px] font-mono text-neutral-500 mr-auto">' + costLine + '</span>' : '') +
             action + '</div></div>';
       }
@@ -2804,7 +2805,7 @@
               '<div><div class="flex items-center gap-2"><h1 id="avatar-modal-title" class="' + CLS.avTitle + '">Scholar Avatar Studio</h1>' +
                 '<span class="' + CLS.avTag + '">Customization</span></div>' +
                 '<p class="' + CLS.avSub + '">Unlock hairstyle, clothing, slacks, and shoes using study points earned across all questions!</p></div></div>' +
-            '<div class="flex items-center gap-3"><div class="' + CLS.avCoins + '"><span>🪙</span><span>' + EC.coins() + ' Coins</span></div>' +
+            '<div class="flex items-center gap-3"><div class="' + CLS.avCoins + '"><span>✦</span><span>' + EC.points() + ' GIS Points</span></div>' +
               '<button type="button" class="' + CLS.avRandom + '" data-act="randomize" title="Randomize from unlocked wardrobe">' + ic("wand", 14, "text-indigo-500") +
                 '<span class="hidden sm:inline">Randomize</span></button>' +
               '<button type="button" class="p-1.5 rounded-xl text-neutral-400 hover:text-neutral-700 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition cursor-pointer" data-act="close" aria-label="Close Avatar Studio" title="Close Avatar Studio">' + ic("x", 20) + '</button></div>' +
@@ -2865,7 +2866,7 @@
         st.custom[{ skin: "skinToneId", hair: "hairId", top: "topId", bottom: "bottomId", shoe: "shoeId" }[cat]] = id;
         save(); toast("Avatar updated!");
       }
-      root.addEventListener("click", function (event) {
+      root.addEventListener("click", async function (event) {
         var btn = actionNode(root, event);
         if (!btn) return;
         var act = btn.getAttribute("data-act"), cat = btn.getAttribute("data-cat"), id = btn.getAttribute("data-id");
@@ -2875,10 +2876,16 @@
         else if (act === "buy") {
           var item = byId(listFor(cat), id);
           if (!item || unlocked(item)) return;
-          if (EC.coins() < item[3]) { toast("Need " + (item[3] - EC.coins()) + " more coins."); return; }
-          EC.addCoins(-item[3]);
-          st.custom.unlockedItems.push(item[0]);
-          pick(cat, id);
+          if (EC.points() < item[3]) { toast("Need " + (item[3] - EC.points()) + " more GIS Points."); return; }
+          if (!await EC.spendPoints(item[3], "Avatar cosmetic", function () {
+            var current = EC.store.get("avatar_customization", st.custom) || st.custom;
+            var owned = Array.isArray(current.unlockedItems) ? current.unlockedItems : [];
+            if (owned.indexOf(id) !== -1) return false;
+            var updated = Object.assign({}, current, {unlockedItems: owned.concat(id)});
+            updated[{ skin: "skinToneId", hair: "hairId", top: "topId", bottom: "bottomId", shoe: "shoeId" }[cat]] = id;
+            return {avatar_customization: updated};
+          })) return;
+          st.custom = EC.store.get("avatar_customization", st.custom);
           st.toast = "Unlocked and equipped " + item[1] + "!";
           draw();
         } else if (act === "randomize") {
@@ -2981,25 +2988,25 @@
   }
   applyTheme(currentThemeId());
   function themeShopTitle() { return "Theme shop — " + themeById(currentThemeId()).name; }
-  function themePick(id) {
+  async function themePick(id) {
     var theme = themeById(id), unlocked = unlockedThemes();
     if (unlocked.indexOf(id) >= 0) {
       applyTheme(id);
       return { ok: true, msg: theme.name + " theme applied." };
     }
-    var balance = EC.coins();
+    var balance = EC.points();
     if (balance < theme.price) {
-      return { ok: false, msg: "Need " + (theme.price - balance) + " more Study Coins to unlock " + theme.name + "!" };
+      return { ok: false, msg: "Need " + (theme.price - balance) + " more GIS Points to unlock " + theme.name + "!" };
     }
-    EC.addCoins(-theme.price);
-    var list = unlockedThemes();
-    list.push(id);
-    EC.store.set("unlocked_themes", list);
+    if (!await EC.spendPoints(theme.price, "Site theme", function () {
+      var list = unlockedThemes();
+      return list.indexOf(id) === -1 && {unlocked_themes: list.concat(id), theme: id};
+    })) return { ok: false, msg: "Could not buy this theme. Check your GIS Points balance." };
     applyTheme(id);
     return { ok: true, msg: "Unlocked and applied " + theme.name + "! 🎉" };
   }
   function themeMenuHtml(notice, extraClass) {
-    var active = currentThemeId(), unlocked = unlockedThemes(), balance = EC.coins();
+    var active = currentThemeId(), unlocked = unlockedThemes(), balance = EC.points();
     var items = THEMES.map(function (t) {
       var owned = unlocked.indexOf(t.id) >= 0, isActive = active === t.id, afford = balance >= t.price;
       var priceCls = isActive ? "text-emerald-700 dark:text-emerald-400"
@@ -3016,11 +3023,11 @@
           (isActive ? ic("check", 12, "shrink-0 text-emerald-600 dark:text-emerald-400") : '') + '</span>' +
           '<span class="' + CLS.themeBlurb + '">' + h(t.blurb) + '</span></span>' +
         '<span class="' + CLS.themePrice + ' ' + priceCls + '">' +
-          (isActive ? "Active" : owned ? "Owned" : "🪙 " + t.price) + '</span></button>';
+          (isActive ? "Active" : owned ? "Owned" : "✦ " + t.price) + '</span></button>';
     }).join("");
     return '<div role="menu" class="' + (extraClass || CLS.themeShop) + '">' +
       '<div class="' + CLS.themeShopHead + '"><span class="' + CLS.themeShopLbl + '">Theme shop</span>' +
-        '<span class="text-[11px] font-bold text-[#57534E] dark:text-neutral-300">🪙 ' + balance + '</span></div>' +
+        '<span class="text-[11px] font-bold text-[#57534E] dark:text-neutral-300">✦ ' + balance + '</span></div>' +
       '<div class="' + CLS.themeList + '">' + items + '</div>' +
       (notice ? '<p role="status" class="px-2 pt-1.5 text-[10px] font-semibold leading-snug text-amber-700 dark:text-amber-300">' + h(notice) + '</p>' : '') +
       '<p class="' + CLS.themeNote + '">Theme unlocks are saved in this browser alongside your progress.</p></div>';
@@ -3035,23 +3042,23 @@
         '<div class="' + CLS.pageHeading + '"><div>' +
           '<p class="' + CLS.eyebrowBlue + '">Personalise your study space</p>' +
           '<h1 class="' + CLS.title + '">Themes</h1>' +
-          '<p class="' + CLS.desc + '">The two base themes are free. Unlock the rest with Study Coins earned from practice. ' +
+          '<p class="' + CLS.desc + '">The two base themes are free. Unlock the rest with GIS Points earned from practice. ' +
           'Your choice is saved on this device.</p></div>' +
-          '<div class="flex items-center gap-3"><div class="' + CLS.themeCoins + '"><span>🪙</span>' +
-            '<span id="ms-themes-coins">' + h(EC.coins()) + '</span></div></div></div>' +
+          '<div class="flex items-center gap-3"><div class="' + CLS.themeCoins + '"><span>✦</span>' +
+            '<span id="ms-themes-coins">' + h(EC.points()) + '</span></div></div></div>' +
         '<div id="ms-themes-body" class="mx-auto w-full max-w-md"></div>' +
         '<div id="ms-themes-toast"></div>';
       root.appendChild(body);
       var toastBox = root.querySelector("#ms-themes-toast");
       function draw() {
         var coinNode = root.querySelector("#ms-themes-coins");
-        if (coinNode) coinNode.textContent = EC.coins();
+        if (coinNode) coinNode.textContent = EC.points();
         body.innerHTML = themeMenuHtml("");
       }
-      root.addEventListener("click", function (event) {
+      root.addEventListener("click", async function (event) {
         var btn = actionNode(root, event);
         if (!btn) return;
-        var result = themePick(btn.getAttribute("data-id"));
+        var result = await themePick(btn.getAttribute("data-id"));
         var cls = result.ok
           ? "mx-auto w-full max-w-md mt-3 rounded-xl border border-[var(--sheet-sage-line)] bg-[var(--sheet-sage)] px-3 py-2 text-xs font-semibold text-[var(--green)]"
           : "mx-auto w-full max-w-md mt-3 rounded-xl border border-rose-300 bg-rose-50 dark:bg-rose-950/30 px-3 py-2 text-xs font-semibold text-rose-700 dark:text-rose-300";
@@ -3082,8 +3089,8 @@
         (open ? themeMenuHtml(notice, dropdownCls) : "");
     }
     function draw() { if (!destroyed) container.innerHTML = html(); }
-    function pick(id) {
-      var result = themePick(id);
+    async function pick(id) {
+      var result = await themePick(id);
       notice = result.msg;
       if (result.ok && !/applied/.test(result.msg)) open = false;
       draw();

@@ -25,7 +25,7 @@ export function authorizeRandomCrate(wallet, crateId, rollInt) {
   const odds = crateOdds(crateId);
   if (!odds) throw Object.assign(Error('Unknown crate.'), {status:400});
   if (wallet.coins < odds.crate.cost)
-    throw Object.assign(Error(`You need ${odds.crate.cost-wallet.coins} more PyCoins to open this crate.`), {status:400});
+    throw Object.assign(Error(`You need ${odds.crate.cost-wallet.coins} more GIS Points to open this crate.`), {status:400});
   const roll = rollInt(odds.totalWeight);
   if (!Number.isInteger(roll) || roll < 0 || roll >= odds.totalWeight)
     throw Error('Invalid random draw.');

@@ -280,6 +280,7 @@ function bindLesson(skill) {
     }
     saveProgress();
     const done = Boolean(progress.lessons[skill]);
+    if (done) void window.FreshPoints.earn("Vertex Maths", 10, "Lesson completed", "lesson:" + skill);
     complete.textContent = done ? "Mark incomplete" : "Mark lesson complete";
     feedback.textContent = done ? "Lesson completed." : "Lesson marked incomplete.";
   });

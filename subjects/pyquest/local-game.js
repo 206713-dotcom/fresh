@@ -1,5 +1,5 @@
 import {checkpointQuestions, itemById} from './game-items.js';
-import {readLocal, mutateLocal, onLocalChange, localRoomsFor} from './local-preview.js';
+import {readLocal, localRecordKey, onLocalChange, localRoomsFor} from './local-preview.js';
 import {calculateRewards, eligibleClaims, emptyWallet} from './shared/pycoin-logic.js';
 import {authorizeRandomCrate, authorizeGearSale} from './shared/gear-crates.js';
 
@@ -7,11 +7,39 @@ export const localGameKey = uid => 'game:' + uid;
 const emptyGame = () => ({wallet: emptyWallet(), passedCheckpoints: []});
 
 export function readLocalGame(uid) {
-  return readLocal(localGameKey(uid), emptyGame());
+  const game = readLocal(localGameKey(uid), emptyGame());
+  game.wallet.coins = window.FreshPoints.balance();
+  return game;
 }
 
 export function watchLocalGame(uid, onChange) {
-  return onLocalChange(localGameKey(uid), onChange);
+  const stop = onLocalChange(localGameKey(uid), onChange);
+  const listen = event => {
+    if (event.key === window.FreshPoints.key) onChange();
+  };
+  window.addEventListener('storage', listen);
+  return () => {
+    stop();
+    window.removeEventListener('storage', listen);
+  };
+}
+
+function mutateGame(uid, mutate, label) {
+  const gameKey = localRecordKey(localGameKey(uid));
+  const apply = () => window.FreshPoints.transaction('PyQuest', points => {
+    const game = readLocalGame(uid);
+    const balance = points.balance();
+    game.wallet.coins = balance;
+    const output = mutate(game);
+    const delta = game.wallet.coins - balance;
+    if (delta && !points.adjust(delta, label ?? (delta > 0 ? 'Study reward' : 'Gear purchase'))) {
+      throw new Error('The shared GIS Points balance could not be updated.');
+    }
+    delete game.wallet.coins;
+    points.write(gameKey, game);
+    return output;
+  });
+  return navigator.locks ? navigator.locks.request(gameKey, apply) : apply();
 }
 
 function applyRewards(game, uid, progress) {
@@ -24,7 +52,7 @@ function applyRewards(game, uid, progress) {
 }
 
 export function syncLocalRewards(uid, progress) {
-  return mutateLocal(localGameKey(uid), emptyGame(), game => applyRewards(game, uid, progress()));
+  return mutateGame(uid, game => applyRewards(game, uid, progress()));
 }
 
 export function passLocalCheckpoint(uid, group, answers, progress) {
@@ -32,7 +60,7 @@ export function passLocalCheckpoint(uid, group, answers, progress) {
   if (questions.filter((question, index) => question.correct === answers[index]).length < 6) {
     throw Error('Score at least 6/8 to unlock the next group.');
   }
-  return mutateLocal(localGameKey(uid), emptyGame(), game => {
+  return mutateGame(uid, game => {
     if (game.passedCheckpoints.includes(group)) return {coinsAwarded: false, alreadyPassed: true};
     game.passedCheckpoints.push(group);
     const rewards = applyRewards(game, uid, progress());
@@ -50,7 +78,7 @@ function randomInt(max) {
 }
 
 export function openLocalCrate(uid, crateId) {
-  return mutateLocal(localGameKey(uid), emptyGame(), game => {
+  return mutateGame(uid, game => {
     const {item, spent, coins, owned, quantities, quantity} = authorizeRandomCrate(
       game.wallet, crateId, randomInt, {duplicates: true}
     );
@@ -60,23 +88,23 @@ export function openLocalCrate(uid, crateId) {
 }
 
 export function sellLocalGear(uid, id) {
-  return mutateLocal(localGameKey(uid), emptyGame(), ({wallet}) => {
+  return mutateGame(uid, ({wallet}) => {
     const {item, soldFor, coins, owned, quantities, equipped} = authorizeGearSale(wallet, id);
     Object.assign(wallet, {coins, owned, quantities, equipped});
     return {item, soldFor, remaining: quantities[id] ?? 0};
-  });
+  }, 'Gear sold');
 }
 
 export function equipLocalItem(uid, id) {
   const item = itemById(id);
-  return mutateLocal(localGameKey(uid), emptyGame(), ({wallet}) => {
+  return mutateGame(uid, ({wallet}) => {
     if (!wallet.owned.includes(id)) throw Error('Open this item first.');
     wallet.equipped[item.slot] = item.id;
   });
 }
 
 export function removeLocalEquipment(uid, slot) {
-  return mutateLocal(localGameKey(uid), emptyGame(), ({wallet}) => {
+  return mutateGame(uid, ({wallet}) => {
     delete wallet.equipped[slot];
   });
 }

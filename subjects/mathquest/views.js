@@ -345,7 +345,7 @@ export function lessonView(state,course,id,hints,shuffle,level=courseLevel(cours
             const options = shuffle(q,id + ':' + i);
             const shown = hints[id + ':' + i] ?? 0;
             const maxHints = Math.min(l.method.length,1 + gearHints);
-            return `<div class="card practice-question"><div class="question-top">${badge('Question ' + (i+1) + ' of ' + total,'neutral')}${badge(attempt?.solved ? 'Solved' : '+12 PyCoins',attempt?.solved ? 'mint' : 'amber')}</div>
+            return `<div class="card practice-question"><div class="question-top">${badge('Question ' + (i+1) + ' of ' + total,'neutral')}${badge(attempt?.solved ? 'Solved' : '+12 GIS Points',attempt?.solved ? 'mint' : 'amber')}</div>
             <h3>${e(q.prompt)}</h3>${answerChoices(options,attempt?.last,'lesson-answer','data-question="' + i + '"',attempt?.solved ? {answer:q.answer,locked:true} : attempt ? {answer:null} : null)}
             ${attempt ? '<div class="answer-feedback ' + (attempt.solved ? 'good' : 'retry') + '" role="status" tabindex="-1" data-feedback="' + i + '">' + icon(attempt.solved ? 'check' : 'bulb',19) + '<span>' + (attempt.solved ? e(q.why) : 'Try again. Check the worked example or use a hint.') + '</span></div>' : ''}
             ${shown ? '<div class="shown-hints">' + l.method.slice(0,shown).map(h => '<p>' + e(h) + '</p>').join('') + '</div>' : ''}
@@ -357,7 +357,7 @@ export function lessonView(state,course,id,hints,shuffle,level=courseLevel(cours
       <aside class="lesson-aside">
         <div class="card side-panel">${tile('target','violet')}<h2>Lesson progress</h2>
           ${progress(solved,total,'Practice questions solved')}
-          <p>${solved} of ${total} solved</p>${saved?.complete ? '' : '<p class="lesson-earn">' + icon('coin',17) + ' +25 PyCoins on completion</p>'}
+          <p>${solved} of ${total} solved</p>${saved?.complete ? '' : '<p class="lesson-earn">' + icon('coin',17) + ' +25 GIS Points on completion</p>'}
           <div class="actions">${hasLessonVisual(id) ? '<a class="btn secondary" href="#lesson-visual" data-scroll="lesson-visual">Explore visual</a>' : ''}
           ${allSolved ? '' : '<a class="btn secondary" href="#practice-questions" data-scroll="practice-questions">Go to practice</a>'}</div>
         </div>
@@ -491,25 +491,25 @@ export function gearView(state,tab,crateId) {
       <h3>${e(item.name)}</h3><p>${e(rewardText(item))}</p>
       ${manage ? `<div class="gear-card-actions">
         ${equipped ? badge('Equipped','mint') : button('equip','Equip','secondary','data-item="' + item.id + '" aria-label="Equip ' + e(item.name) + '"')}
-        ${sellValue > 0 ? button('sell-gear','Sell for ' + sellValue + ' PyCoins','text-button','data-gear="' + item.id + '" aria-label="Sell one copy of ' + e(item.name) + ' for ' + sellValue + ' PyCoins"') : ''}
+        ${sellValue > 0 ? button('sell-gear','Sell for ' + sellValue + ' GIS Points','text-button','data-gear="' + item.id + '" aria-label="Sell one copy of ' + e(item.name) + ' for ' + sellValue + ' GIS Points"') : ''}
       </div>` : ''}
     </article>`;
   };
-  return `${pageHead('','Gear shop','Open PyQuest crates, collect gear and sell copies for PyCoins.',coinLabel(wallet.coins))}
+  return `${pageHead('','Gear shop','Open PyQuest crates, collect gear and sell copies for GIS Points.',coinLabel(wallet.coins))}
     <div class="tabs" role="group" aria-label="Gear shop sections">${['crates','closet'].map(id=>'<button type="button" class="' + (tab === id ? 'active' : '') + '" data-action="gear-tab" data-tab="' + id + '" aria-pressed="' + (tab === id) + '">' + icon(id === 'crates' ? 'box' : 'person',17) + (id === 'crates' ? 'Cosmetic crates' : 'My character') + '</button>').join('')}</div>
     ${tab === 'closet' ? `<section class="closet-layout">
       <div class="avatar-card"><div><h2>My character</h2><p>${collectedStyles} of ${ITEMS.length} crate styles collected</p></div>${renderEquippedAvatar(wallet,'mathquest')}</div>
       <div class="card equipment"><h2>Equipped gear</h2>${slots}</div>
     </section><section class="collection"><div class="section-head"><div><h2 id="gear-collection" tabindex="-1">My collection</h2><p>${copyLabel(totalCopies)} in your collection. Equip an item or sell one copy at a time.</p></div></div>
-      ${collection.length ? '<div class="drop-grid">' + collection.map(item => dropCard(item,true)).join('') + '</div>' : empty('gift','Your collection is empty','Earn PyCoins from practice and spend them on your first crate.',button('gear-tab','Browse crates','primary','data-tab="crates"'))}</section>` : `
+      ${collection.length ? '<div class="drop-grid">' + collection.map(item => dropCard(item,true)).join('') + '</div>' : empty('gift','Your collection is empty','Earn GIS Points from practice and spend them on your first crate.',button('gear-tab','Browse crates','primary','data-tab="crates"'))}</section>` : `
     <div class="crate-picker" role="group" aria-label="Crate category">${CRATES.map(c=>`<button type="button" class="crate-option ${c.id === crateId ? 'active' : ''}" data-action="crate" data-crate="${c.id}" aria-pressed="${c.id === crateId}"><img src="${asset(`assets/cosmetics/crate-${c.theme}.png`)}" alt="" loading="lazy"><span>${e(c.name.replace(' Crate',''))}</span></button>`).join('')}</div>
     <div class="shop-layout">
       <section class="crate-feature crate-${crate.theme}">
         <div class="crate-photo"><img src="${asset(`assets/cosmetics/crate-${crate.theme}.png`)}" alt=""></div>
         <div><h2>${e(crate.name)}</h2><p>${e(crate.desc)}</p>
         <div class="crate-inventory">${crateStyles} of ${pool.length} styles collected</div>
-        <div class="actions">${button('open-crate','Open for ' + crate.cost + ' PyCoins','hero-button',wallet.coins < crate.cost ? 'disabled' : '')}</div>
-        ${wallet.coins < crate.cost ? '<p class="cost-note">Earn ' + (crate.cost - wallet.coins) + ' more PyCoins to open it.</p>' : ''}
+        <div class="actions">${button('open-crate','Open for ' + crate.cost + ' GIS Points','hero-button',wallet.coins < crate.cost ? 'disabled' : '')}</div>
+        ${wallet.coins < crate.cost ? '<p class="cost-note">Earn ' + (crate.cost - wallet.coins) + ' more GIS Points to open it.</p>' : ''}
         </div></section>
       <section class="card odds-panel"><h2>Drop chances</h2><p>Each opening can give you another copy. The odds stay the same as your collection grows.</p>
         ${RARITIES.map(rarity => {
@@ -520,8 +520,8 @@ export function gearView(state,tab,crateId) {
     </div>
     <section class="collection"><div class="section-head"><div><h2>What’s inside</h2><p>Each rarity comes with a different learning boost.</p></div></div>
       <div class="drop-grid">${pool.map(({item}) => dropCard(item,false)).join('')}</div></section>`}
-    <section class="card earn-panel"><div class="inline-head">${tile('coin','amber')}<h2>Earn PyCoins</h2></div>
-      <p>Correct lesson practice gets you 12 coins per question and finishing a lesson gets you 25. Try the practice lab for checkpoint, challenge and pair sprint rewards.</p>
+    <section class="card earn-panel"><div class="inline-head">${tile('coin','amber')}<h2>Earn GIS Points</h2></div>
+      <p>Correct lesson practice gets you 12 GIS Points per question and finishing a lesson gets you 25. Try the practice lab for checkpoint, challenge and pair sprint rewards.</p>
       <div class="actions">${link('library','Browse lessons')}${link('practice','Practice lab')}</div></section>`;
 }
 
@@ -536,7 +536,7 @@ export function profileView(state,course,storage) {
     <div class="profile-grid">
       <section class="card side-panel">${tile('layers','violet')}<h2>Curriculum</h2><p>${course ? e(course.label + ' · ' + courseLabel(course)) : 'Choose an exam code and study track.'}</p>${button('course',course ? 'Change curriculum' : 'Choose curriculum','secondary')}</section>
       <section class="card side-panel">${tile('shield','mint')}<h2>${storage ? 'Saved in this browser' : 'Browser storage is unavailable'}</h2>
-        <p>${storage ? 'Your test answers, lesson records, PyCoins and gear collection stay in this browser. Download a backup to move to another browser or restore progress later.' : 'Progress is available for this session. Download a backup before closing the page.'}</p>
+        <p>${storage ? 'Download your test answers, lesson records and gear collection. GIS Points stay in this browser.' : 'Progress is available for this session. Download a backup before closing the page.'}</p>
         <div class="actions">${button('export','Download backup','primary')}${button('import','Restore backup','secondary')}</div>
         <input type="file" id="backup-input" accept=".json,application/json" hidden></section>
     </div>

@@ -445,7 +445,7 @@
       '<p class="mx-auto mt-5 max-w-3xl text-center text-[11px] leading-relaxed text-[var(--muted,#4b5c54)] dark:text-neutral-500">' +
         'Active recall questions align with Cambridge IGCSE Business Studies (0264). Wrong Only ' +
         'mistakes are cleared after ' + MASTERY_DAYS_REQUIRED + ' correct answers on different days. Boss ' +
-        'Battle mistakes are saved to the review page. Progress and Study Coins stay in this browser.' +
+        'Battle mistakes are saved to the review page. Progress and GIS Points stay in this browser.' +
       '</p>';
 
     st.content = root.querySelector("#qz-content");
@@ -659,13 +659,13 @@
         st.notice = "Mastery progress " + progress.days + "/" + MASTERY_DAYS_REQUIRED +
           " days. Answer it correctly again on a different day to clear it from Wrong Only.";
       }
-      EC.addCoins(15);
+      EC.earnPoints(15);
     } else {
       st.streak = 0;
       recordIncorrect(q.id);
       st.notice = "Added to Wrong Only. Get it right on " + MASTERY_DAYS_REQUIRED +
         " different days to remove it.";
-      EC.addCoins(5);
+      EC.earnPoints(5);
     }
 
     st.history.push({
@@ -683,7 +683,7 @@
     } else {
       st.completed = true;
       clearDraft();
-      EC.addCoins(25);
+      EC.earnPoints(25);
       var pct = st.questions.length ? Math.round((st.score / st.questions.length) * 100) : 0;
       if (pct >= 70) {
         celebrate({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
@@ -1070,7 +1070,7 @@
     var correct = option === st.challengeQ.correctAnswer;
     var bonus = correct ? (st.challengeType === "daily" ? 50 : 150) : 0;
     if (correct) {
-      EC.addCoins(bonus);
+      EC.earnPoints(bonus);
       celebrate({ particleCount: 85, spread: 68, origin: { y: 0.65 } });
       playTone(st, 1200, 0.15);
     }
@@ -1127,7 +1127,7 @@
       '<h2 class="study-panel-title text-[var(--surface-text)] mt-0.5">Daily &amp; Weekly Timed Challenge</h2>' +
       '<p class="mt-1 font-mono text-[11px] text-[var(--surface-muted)] tabular-nums">' +
         (daily ? "Date: " + esc(todayUTC()) : "Week: " + esc(isoWeekKey())) +
-        ' · ' + esc(target.chapter) + ' · +' + bonus + ' Study Coins</p></div>');
+        ' · ' + esc(target.chapter) + ' · +' + bonus + ' GIS Points</p></div>');
     out.push('<div class="flex flex-wrap items-center gap-2 shrink-0">');
     out.push('<div role="group" aria-label="Challenge cadence" class="study-engine">' +
       '<button type="button" class="study-engine-option" data-action="challenge-daily" aria-pressed="' + daily + '">' +
@@ -1153,7 +1153,7 @@
             (daily ? "Today's Global Blitz Challenge" : "This Week's Master Challenge") + '</h3>' +
           '<p class="mt-2.5 text-xs sm:text-sm leading-relaxed opacity-90">Every student worldwide receives this exact ' +
             esc(target.chapter) + ' question. Once you reveal it, you have <strong>exactly 60 seconds</strong> to pick the verified ' +
-            'Cambridge mark scheme answer for <span class="font-mono font-semibold">+' + bonus + ' coins</span>.</p>' +
+            'Cambridge mark scheme answer for <span class="font-mono font-semibold">+' + bonus + ' GIS Points</span>.</p>' +
           '<div class="mt-6"><button type="button" class="study-action btn-primary whitespace-nowrap" data-action="challenge-reveal">' +
             icon("zap", 16) + '<span>Reveal Question &amp; Start 60s Clock</span>' + icon("arrowRight", 16) +
           '</button></div>' +
@@ -1174,7 +1174,7 @@
               '<p class="mt-1 text-xs text-[var(--surface-muted)] tabular-nums">' +
                 (wasCorrect
                   ? "Answered with " + esc(record.timeRemainingSeconds) + "s remaining · +" +
-                    esc(record.bonusCoinsEarned) + " Study Coins credited"
+                    esc(record.bonusCoinsEarned) + " GIS Points credited"
                   : "Time expired or a distractor was selected. Inspect the official Cambridge mark scheme below.") +
               '</p></div></div>' +
           '<button type="button" class="study-action btn-primary whitespace-nowrap shrink-0 self-start sm:self-center" data-action="challenge-review">' +
@@ -1251,7 +1251,7 @@
           '<div class="flex flex-wrap items-center justify-between gap-3 pt-1">' +
             '<div class="flex flex-wrap items-center gap-2">' +
               '<button type="button" class="study-action btn-primary whitespace-nowrap" data-action="open-study-space">' +
-                icon("headphones", 15) + '<span>Spend Coins in Study Space</span></button>' +
+                icon("headphones", 15) + '<span>Spend GIS Points in Study Space</span></button>' +
               '<button type="button" class="study-action study-secondary-action whitespace-nowrap" data-action="open-practice">' +
                 '<span>More Practice Questions</span>' + icon("arrowRight", 15) + '</button>' +
             '</div>' +

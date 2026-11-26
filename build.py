@@ -28,6 +28,8 @@ def page(title, description, main, prefix="", script=""):
 <meta name="description" content="{escape(description)}">
 <title>{escape(title)} | {brand}</title>
 <link rel="stylesheet" href="{prefix}style.css">
+<link rel="stylesheet" href="{prefix}gis-points.css">
+<script src="{prefix}gis-points.js"></script>
 <link rel="icon" href="{prefix}fresh.svg" type="image/svg+xml">
 {home_assets}{script}
 </head>

@@ -258,7 +258,7 @@
       out.push(bullets([
         "My progress shows questions attempted, average mark, AO1–AO4 totals, examiner notes and submission history. You can clear submissions there.",
         "Export progress downloads your local records as a CSV from this browser, including submissions, checklist ratings, lessons, quiz history and settings.",
-        "Study Coins are earned across quizzes, lessons, challenges and the game; themes are CSS-variable swaps, some unlocked with coins.",
+        "GIS Points are earned across quizzes, lessons, challenges and the game; themes are CSS-variable swaps, some unlocked with GIS Points.",
         "The dashboard, sign-in and sign-up links all open the same local progress page — no account is involved."
       ]));
 

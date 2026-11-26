@@ -653,7 +653,7 @@
     return '<header class="boss-topbar">' +
       '<button type="button" class="boss-quiet" data-act="lobby">' + ico("arrow-left", 16) + '<span>Business overview</span></button>' +
       '<div class="boss-topbar-actions">' +
-        '<span class="boss-coins" data-eb-coins aria-label="' + esc(EC.coins()) + ' study coins">◎ ' + esc(EC.coins()) + ' coins</span>' +
+        '<span class="boss-coins" data-eb-coins aria-label="' + esc(EC.points()) + ' GIS Points">◎ ' + esc(EC.points()) + ' GIS Points</span>' +
         '<button type="button" class="boss-quiet" data-act="sound" aria-label="' + (st.sound ? "Mute game audio" : "Unmute game audio") + '">' + soundIcon(st) + '<span class="sr-only">' + (st.sound ? "Sound on" : "Muted") + '</span></button>' +
         (inBattle ? '' : '<button type="button" class="boss-quiet" data-act="shop">' + ico("shopping-bag", 16) + '<span>' + (shopActive ? "Battle lobby" : "Armour shop") + '</span></button>') +
         (inBattle ? '' : '<button type="button" class="boss-quiet" data-act="review">' + ico("clipboard-list", 16) + '<span>Review mistakes (' + reviewList().length + ')</span></button>') +
@@ -662,7 +662,11 @@
 
   function syncCoins(st) {
     var nodes = st.root.querySelectorAll("[data-eb-coins]"), i;
-    for (i = 0; i < nodes.length; i++) nodes[i].textContent = "◎ " + EC.coins() + " coins";
+    var balance = EC.points() + " GIS Points";
+    for (i = 0; i < nodes.length; i++) {
+      nodes[i].textContent = "◎ " + balance;
+      nodes[i].setAttribute("aria-label", balance);
+    }
   }
 
   function selectedBoss(st) {
@@ -708,7 +712,7 @@
     out.push('<section class="boss-lobby-hero" aria-labelledby="boss-lobby-title"><div class="boss-hero-copy">' +
       '<p>IGCSE BUSINESS</p>' +
       '<h1 id="boss-lobby-title">Boss Battle</h1>' +
-      '<div>Dodge attacks and answer Business questions to deal damage and earn Study Coins.</div>' +
+      '<div>Dodge attacks and answer Business questions to deal damage and earn GIS Points.</div>' +
       '<button type="button" class="boss-cta" data-act="start">' + ico("swords", 20) + ' Start battle ' + ico("arrow-right", 19) + '</button>' +
       '</div></section>');
 
@@ -954,8 +958,8 @@
         '<span>' + (flying ? 'FLYING (' + Math.max(0, (g.jetpackEnd - now()) / 1000).toFixed(1) + 's)'
           : cool > 0 ? 'Cooldown (' + cool + 's)' : '🚀 JETPACK (Hold Space)') + '</span></button>';
     } else {
-      jet = '<button type="button" data-act="buyjet" class="py-3 bg-gradient-to-r from-cyan-950 via-neutral-900 to-blue-950 hover:bg-cyan-900/60 border border-cyan-500/40 text-cyan-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-sm" title="Purchase Quantum Jetpack for ' + JETPACK_COST + ' Coins">' +
-        ico("rocket", 14, "text-cyan-400") + '<span>Get Jetpack (' + JETPACK_COST + '🪙)</span></button>';
+      jet = '<button type="button" data-act="buyjet" class="py-3 bg-gradient-to-r from-cyan-950 via-neutral-900 to-blue-950 hover:bg-cyan-900/60 border border-cyan-500/40 text-cyan-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shadow-sm" title="Purchase Quantum Jetpack for ' + JETPACK_COST + ' GIS Points">' +
+        ico("rocket", 14, "text-cyan-400") + '<span>Get Jetpack (' + JETPACK_COST + '✦)</span></button>';
     }
     return '<div class="boss-controls" role="group" aria-label="Combat controls">' +
       '<button type="button" data-act="jump" class="py-3 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-neutral-700 cursor-pointer active:scale-95 shadow-sm" title="Tap or Space to Jump · Hold or Long Press for Jetpack 🚀"><span>Jump</span><kbd>Space</kbd></button>' +
@@ -1050,7 +1054,7 @@
         '<div class="w-32 h-2.5 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden border border-neutral-300 dark:border-neutral-700">' +
           '<div class="h-full bg-emerald-500 transition-all duration-300" style="width:' + hpPct + '%"></div></div>' +
         '<div class="flex items-center gap-2 font-mono"><span>Ammo: ' + g.ammo + '/' + g.maxAmmo + '</span>' +
-          (g.ammo <= 4 ? '<button type="button" data-act="refill" class="px-2 py-0.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-bold cursor-pointer">Refill 15🪙</button>' : '') +
+          (g.ammo <= 4 ? '<button type="button" data-act="refill" class="px-2 py-0.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-bold cursor-pointer">Refill 15✦</button>' : '') +
         '</div>' +
         '<div class="boss-player-lives">' + ico("heart", 16) + ' ' + g.lives + ' ' + (g.lives === 1 ? 'extra life' : 'extra lives') + ' · ' + g.tokens + '/3 tokens</div>' +
       '</div></div>');
@@ -1291,12 +1295,12 @@
         '<h3 class="text-2xl sm:text-3xl font-black text-emerald-400 mb-1">' + esc(g.boss.name.toUpperCase()) + ' VANQUISHED!</h3>' +
         '<p class="text-xs text-emerald-200 max-w-md mb-2">Outstanding mastery! You fully drained ' + esc(g.boss.name) + "'s health bar on " + esc((findById(DIFFICULTIES, g.diff) || DIFFICULTIES[0]).label) + ' Tier!</p>' +
         '<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-bold mb-5 shadow-sm">' +
-          '<span>🪙 +' + reward + ' Coins Awarded</span><span>·</span><span>⭐ +' + scoreGain + ' Score</span></div>' +
+          '<span>✦ +' + reward + ' GIS Points Awarded</span><span>·</span><span>⭐ +' + scoreGain + ' Score</span></div>' +
         '<div class="flex flex-wrap items-center justify-center gap-3">' +
           '<button type="button" data-act="ascend" class="px-6 py-3 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-xl transition transform active:scale-95 cursor-pointer flex items-center gap-2">' +
             '<span>Ascend to Stage ' + (g.stage + 1) + ' (Harder Boss)</span>' + ico("chevron-right", 16) + '</button>' +
           '<button type="button" data-act="retry" class="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-bold text-xs rounded-xl transition cursor-pointer">↺ Replay Stage ' + g.stage + '</button>' +
-          '<button type="button" data-act="wardrobe" class="px-4 py-2.5 bg-white text-black hover:bg-neutral-200 font-bold text-xs rounded-xl transition cursor-pointer">Spend Coins in Wardrobe 🎨</button>' +
+          '<button type="button" data-act="wardrobe" class="px-4 py-2.5 bg-white text-black hover:bg-neutral-200 font-bold text-xs rounded-xl transition cursor-pointer">Spend GIS Points in Wardrobe 🎨</button>' +
         '</div></div>';
     }
 
@@ -1408,11 +1412,10 @@
     sShoot(st);
     renderHud(st);
   }
-  function handleRefill(st) {
+  async function handleRefill(st) {
     var g = st.game;
     if (!g || (g.state !== "playing" && g.state !== "question")) return;
-    if (EC.coins() >= 15) {
-      EC.addCoins(-15);
+    if (await EC.spendPoints(15, "Boss Battle refill")) {
       g.ammo = g.maxAmmo;
       g.playerHp = Math.min(g.maxPlayerHp, g.playerHp + 25);
       sCrit(st);
@@ -1428,7 +1431,7 @@
   function handleJetpack(st) {
     var g = st.game;
     if (!g || g.state !== "playing") return;
-    if (!hasJetpack()) { addFloat(st, "Unlock Jetpack in Armour Shop! (" + JETPACK_COST + "🪙)", 150, 100, "#fbbf24"); return; }
+    if (!hasJetpack()) { addFloat(st, "Unlock Jetpack in Armour Shop! (" + JETPACK_COST + "✦)", 150, 100, "#fbbf24"); return; }
     if (g.jetpackActive) return;
     if (now() < g.jetpackCooldownEnd) {
       var secLeft = Math.ceil((g.jetpackCooldownEnd - now()) / 1000);
@@ -1552,7 +1555,7 @@
     if (g.holdStart && !g.holdTriggered && t - g.holdStart >= 260) {
       g.holdTriggered = true;
       if (hasJetpack()) handleJetpack(st);
-      else addFloat(st, "🚀 Hold to Fly! Get Jetpack in Shop (" + JETPACK_COST + "🪙)", p.x, p.y - 25, "#fbbf24");
+      else addFloat(st, "🚀 Hold to Fly! Get Jetpack in Shop (" + JETPACK_COST + "✦)", p.x, p.y - 25, "#fbbf24");
     }
     if (flying) {
       if (p.y > 72) p.vy = Math.max(-5.5, p.vy - 1.2 * dt);
@@ -2066,7 +2069,7 @@
       g.tokens = g.tokens % 3;
       if (added) { g.lives += added; sCrit(st); }
       var earned = Math.round(35 * mult);
-      EC.addCoins(earned); syncCoins(st);
+      EC.earnPoints(earned, "Boss Battle answer"); syncCoins(st);
       g.score += Math.round(300 * mult);
       g.shake = 10; g.flash = 8;
       text = "You dealt " + damage + " damage and earned " + earned + " coins. " +
@@ -2115,7 +2118,7 @@
     var g = st.game;
     if (!g || g.state === "victory") return;
     var mult = (findById(DIFFICULTIES, g.diff) || DIFFICULTIES[0]).rewardMult;
-    EC.addCoins(Math.round((70 + g.stage * 25) * mult)); syncCoins(st);
+    EC.earnPoints(Math.round((70 + g.stage * 25) * mult), "Boss Battle stage cleared"); syncCoins(st);
     g.score += Math.round((600 + g.stage * 180) * mult);
     g.state = "victory"; g.question = null; g.feedback = null;
     clearQuestionTimer(st); stopLoop(st);
@@ -2154,7 +2157,7 @@
     EC.navigate("avatar");
   }
 
-  function handleAction(st, act, node, e) {
+  async function handleAction(st, act, node, e) {
     var g = st.game, id = node.getAttribute("data-id");
     switch (act) {
       case "lobby": showScreen(st, "lobby"); return;
@@ -2205,12 +2208,14 @@
       case "refill": handleRefill(st); return;
       case "jetpack": handleJetpack(st); return;
       case "buyjet":
-        if (EC.coins() < JETPACK_COST) {
-          addFloat(st, "Need " + JETPACK_COST + " Coins! (You have " + EC.coins() + ")", 150, 100, "#ef4444");
+        if (EC.points() < JETPACK_COST) {
+          addFloat(st, "Need " + JETPACK_COST + " GIS Points! (You have " + EC.points() + ")", 150, 100, "#ef4444");
           return;
         }
-        EC.addCoins(-JETPACK_COST); syncCoins(st);
-        EC.store.set("jetpack_unlocked", true);
+        if (!await EC.spendPoints(JETPACK_COST, "Boss Battle jetpack", function () {
+          return EC.store.get("jetpack_unlocked", false) ? false : {jetpack_unlocked: true};
+        })) return;
+        syncCoins(st);
         sCrit(st);
         node.textContent = "🚀 Jetpack Unlocked!"; node.disabled = true;
         addFloat(st, "🚀 QUANTUM JETPACK UNLOCKED! Press Shift / W to Fly!", 100, 120, "#06b6d4");
@@ -2221,9 +2226,12 @@
       case "equipchar": EC.store.set("char_id", id); sJump(st); renderShop(st); return;
       case "upammo": shopUpgradeAmmo(st); return;
       case "shoprefill":
-        if (EC.coins() >= 15 && shopAmmo(st) < getMaxAmmo()) {
-          EC.addCoins(-15); syncCoins(st);
-          setShopAmmo(st, getMaxAmmo());
+        if (EC.points() >= 15 && shopAmmo(st) < getMaxAmmo()) {
+          if (!await EC.spendPoints(15, "Boss Battle ammo refill", function () {
+            return shopAmmo(st) < getMaxAmmo() && {boss_ammo: getMaxAmmo()};
+          })) return;
+          syncCoins(st);
+          if (st.game) st.game.ammo = getMaxAmmo();
           sCrit(st);
         }
         renderShop(st); return;
@@ -2262,31 +2270,34 @@
     var list = EC.store.get(key, fallback);
     return Array.isArray(list) ? list : fallback.slice();
   }
-  function shopBuyArmour(st, id) {
-    var item = findById(ARMOUR, id), list = unlockedList("unlocked_armour", ["starter"]);
-    if (!item || list.indexOf(id) !== -1 || EC.coins() < item.cost) return;
-    EC.addCoins(-item.cost); syncCoins(st);
-    list.push(id); EC.store.set("unlocked_armour", list);
-    EC.store.set("armour_id", id);
+  async function shopBuyArmour(st, id) {
+    var item = findById(ARMOUR, id);
+    if (!item || !await EC.spendPoints(item.cost, "Boss Battle armour", function () {
+      var list = unlockedList("unlocked_armour", ["starter"]);
+      return list.indexOf(id) === -1 && {unlocked_armour: list.concat(id), armour_id: id};
+    })) return;
+    syncCoins(st);
     sCrit(st);
     renderShop(st);
   }
-  function shopBuyChar(st, id) {
-    var item = findById(CHARACTERS, id), list = unlockedList("unlocked_chars", ["custom", "dino"]);
-    if (!item || list.indexOf(id) !== -1 || EC.coins() < item.cost) return;
-    EC.addCoins(-item.cost); syncCoins(st);
-    list.push(id); EC.store.set("unlocked_chars", list);
-    EC.store.set("char_id", id);
+  async function shopBuyChar(st, id) {
+    var item = findById(CHARACTERS, id);
+    if (!item || !await EC.spendPoints(item.cost, "Boss Battle character", function () {
+      var list = unlockedList("unlocked_chars", ["custom", "dino"]);
+      return list.indexOf(id) === -1 && {unlocked_chars: list.concat(id), char_id: id};
+    })) return;
+    syncCoins(st);
     sCrit(st);
     renderShop(st);
   }
-  function shopUpgradeAmmo(st) {
+  async function shopUpgradeAmmo(st) {
     var next = null, i;
     for (i = 0; i < AMMO_LADDER.length; i++) if (AMMO_LADDER[i].from === getMaxAmmo()) next = AMMO_LADDER[i];
-    if (!next || EC.coins() < next.cost) return;
-    EC.addCoins(-next.cost); syncCoins(st);
-    EC.store.set("boss_max_ammo", next.to);
-    setShopAmmo(st, next.to);
+    if (!next || !await EC.spendPoints(next.cost, "Boss Battle ammo upgrade", function () {
+      return getMaxAmmo() === next.from && {boss_max_ammo: next.to, boss_ammo: next.to};
+    })) return;
+    syncCoins(st);
+    if (st.game) st.game.ammo = next.to;
     sCrit(st);
     renderShop(st);
   }
@@ -2304,7 +2315,7 @@
     out.push('<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-xl space-y-6 animate-fade-in">' +
       '<div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4"><div>' +
         '<h2 class="text-xl font-bold text-neutral-900 dark:text-white flex items-center gap-2"><span>🛒 Armour &amp; Mods Upgrades</span>' +
-        '<span class="text-xs bg-amber-500/20 text-amber-600 dark:text-amber-300 px-2.5 py-0.5 rounded-full font-mono">Balance: ' + esc(EC.coins()) + ' Coins</span></h2>' +
+        '<span class="text-xs bg-amber-500/20 text-amber-600 dark:text-amber-300 px-2.5 py-0.5 rounded-full font-mono">Balance: ' + esc(EC.points()) + ' GIS Points</span></h2>' +
         '<p class="text-xs text-neutral-500 dark:text-neutral-400">Better armour reduces hit damage taken from boss strikes and moving projectiles.</p>' +
       '</div><button type="button" data-act="lobby" class="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white cursor-pointer">Exit Shop</button></div>');
 
@@ -2325,10 +2336,10 @@
       out.push('<div class="mt-4 pt-3 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">');
       if (equipped) out.push('<span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">✓ Equipped</span>');
       else if (owned) out.push('<button type="button" data-act="equiparmour" data-id="' + a.id + '" class="px-3 py-1 bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-xs font-semibold rounded-lg text-neutral-900 dark:text-white transition cursor-pointer">Equip</button>');
-      else out.push('<button type="button" data-act="buyarmour" data-id="' + a.id + '"' + (EC.coins() < a.cost ? ' disabled' : '') +
+      else out.push('<button type="button" data-act="buyarmour" data-id="' + a.id + '"' + (EC.points() < a.cost ? ' disabled' : '') +
         ' class="px-3 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer ' +
-        (EC.coins() >= a.cost ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs' : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed') +
-        '"><span>Buy for ' + a.cost + ' 🪙</span></button>');
+        (EC.points() >= a.cost ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs' : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed') +
+        '"><span>Buy for ' + a.cost + ' ✦</span></button>');
       out.push('</div></div>');
     }
     out.push('</div></div>');
@@ -2349,10 +2360,10 @@
         '</div><div class="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">');
       if (eq) out.push('<span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">✓ Equipped</span>');
       else if (owns) out.push('<button type="button" data-act="equipchar" data-id="' + c.id + '" class="px-3 py-1 bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-xs font-semibold rounded-lg text-neutral-900 dark:text-white transition cursor-pointer">Equip</button>');
-      else out.push('<button type="button" data-act="buychar" data-id="' + c.id + '"' + (EC.coins() < c.cost ? ' disabled' : '') +
+      else out.push('<button type="button" data-act="buychar" data-id="' + c.id + '"' + (EC.points() < c.cost ? ' disabled' : '') +
         ' class="px-3 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer ' +
-        (EC.coins() >= c.cost ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs' : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed') +
-        '"><span>Buy for ' + c.cost + ' 🪙</span></button>');
+        (EC.points() >= c.cost ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-xs' : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed') +
+        '"><span>Buy for ' + c.cost + ' ✦</span></button>');
       out.push('</div></div>');
     }
     out.push('</div></div>');
@@ -2363,14 +2374,14 @@
         '<div class="font-bold text-sm text-neutral-900 dark:text-white flex items-center gap-2"><span>Expanded Ammo Bandolier</span>' +
         '<span class="text-xs bg-sky-500/20 text-sky-600 dark:text-sky-300 px-2 py-0.5 rounded-full font-mono">Current: ' + maxAmmo + ' Max</span></div>' +
         '<p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Increases maximum carried ink darts. Upgrades climb to 100 (+15 each tier, prices rise).</p>' +
-      '</div><button type="button" data-act="upammo"' + (!nextAmmo || EC.coins() < nextAmmo.cost ? ' disabled' : '') +
+      '</div><button type="button" data-act="upammo"' + (!nextAmmo || EC.points() < nextAmmo.cost ? ' disabled' : '') +
         ' class="px-4 py-2 bg-sky-600 hover:bg-sky-700 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shrink-0 ml-4 cursor-pointer">' +
-        (nextAmmo ? 'Upgrade (+' + (nextAmmo.to - nextAmmo.from) + ') · ' + nextAmmo.cost + ' 🪙' : 'Maxed out · 100 🎉') + '</button></div>' +
+        (nextAmmo ? 'Upgrade (+' + (nextAmmo.to - nextAmmo.from) + ') · ' + nextAmmo.cost + ' ✦' : 'Maxed out · 100 🎉') + '</button></div>' +
       '<div class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 flex items-center justify-between"><div>' +
         '<div class="font-bold text-sm text-neutral-900 dark:text-white">Emergency Full Ammo Refill</div>' +
         '<p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Refill all ' + maxAmmo + ' ammo immediately for battle.</p>' +
-      '</div><button type="button" data-act="shoprefill"' + (EC.coins() < 15 || shopAmmo(st) >= maxAmmo ? ' disabled' : '') +
-        ' class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shrink-0 ml-4 cursor-pointer">Refill Ammo · 15 🪙</button></div>' +
+      '</div><button type="button" data-act="shoprefill"' + (EC.points() < 15 || shopAmmo(st) >= maxAmmo ? ' disabled' : '') +
+        ' class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shrink-0 ml-4 cursor-pointer">Refill Ammo · 15 ✦</button></div>' +
       '</div></div>');
 
     out.push('<div class="space-y-3 pt-2"><h3 class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center gap-2">' +
@@ -2383,8 +2394,8 @@
         '</div></div><div class="shrink-0 flex items-center">' +
         (hasJetpack()
           ? '<span class="px-4 py-2 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-xs">✓ Unlocked &amp; Equipped</span>'
-          : '<button type="button" data-act="buyjet"' + (EC.coins() < JETPACK_COST ? ' disabled' : '') +
-            ' class="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shadow-lg cursor-pointer">Buy Jetpack · ' + JETPACK_COST + ' 🪙</button>') +
+          : '<button type="button" data-act="buyjet"' + (EC.points() < JETPACK_COST ? ' disabled' : '') +
+            ' class="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:opacity-40 text-white rounded-xl text-xs font-bold transition shadow-lg cursor-pointer">Buy Jetpack · ' + JETPACK_COST + ' ✦</button>') +
         '</div></div></div></div>');
 
     st.content.innerHTML = out.join("");

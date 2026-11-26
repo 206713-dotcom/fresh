@@ -27,14 +27,14 @@ export function markRound(round) {
 }
 
 export function arenaView(state,course,unit,shuffle) {
-  if (!course) return `${pageHead('','Practice lab','Test yourself and earn PyCoins.')}${empty('flask','Choose your curriculum','The practice lab draws questions from the syllabus you select.',courseButton('Choose curriculum'))}`;
+  if (!course) return `${pageHead('','Practice lab','Test yourself and earn GIS Points.')}${empty('flask','Choose your curriculum','The practice lab draws questions from the syllabus you select.',courseButton('Choose curriculum'))}`;
   const round = state.rounds[course.id];
-  const head = actions => pageHead(e(courseLabel(course)),'Practice lab','Check your skills and earn PyCoins.',actions);
+  const head = actions => pageHead(e(courseLabel(course)),'Practice lab','Check your skills and earn GIS Points.',actions);
   if (!round) {
     return `${head('')}<div class="practice-picker">
       ${Object.entries(MODES).map(([id,mode])=>`<section class="mode-card card">${tile(mode.icon,mode.tone,24)}<h2>${mode.name}</h2><p>${mode.description}</p>
         ${id==='checkpoint' ? '<label class="field-label" for="practice-topic">Choose a topic</label><div class="select-wrap"><select id="practice-topic">' + courseUnits(course).map(topic=> '<option value="' + topic + '"' + (topic===unit ? ' selected' : '') + '>' + e(unitName(course,topic)) + '</option>').join('') + '</select>' + icon('down',16) + '</div>' : ''}
-        <div class="mode-foot">${badge('+' + mode.coins + ' PyCoins','amber')}${button('start-round','Start ' + mode.name.toLowerCase(),'primary','data-mode="' + id + '"')}</div>
+        <div class="mode-foot">${badge('+' + mode.coins + ' GIS Points','amber')}${button('start-round','Start ' + mode.name.toLowerCase(),'primary','data-mode="' + id + '"')}</div>
       </section>`).join('')}</div>
       <p class="quiet-text">Earn a checkpoint reward once per topic and a mixed challenge or pair sprint reward once per curriculum. Replay any round for practice.</p>`;
   }
@@ -47,7 +47,7 @@ export function arenaView(state,course,unit,shuffle) {
     const teamScore = marks.slice(0,8).filter(Boolean).length;
     return `${head(button('leave-round','All practice modes','secondary'))}
       <section class="card round-result"><div>${tile(passed ? 'check' : 'target',passed ? 'mint' : 'amber',26)}<h2>${e(title)} complete</h2>
-        <p>${passed ? round.reward ? 'You earned ' + round.reward + ' PyCoins.' : 'You’ve already claimed this reward.' : 'Review the answers and try again when you’re ready.'}</p>
+        <p>${passed ? round.reward ? 'You earned ' + round.reward + ' GIS Points.' : 'You’ve already claimed this reward.' : 'Review the answers and try again when you’re ready.'}</p>
         ${round.mode === 'team' ? '<p>Player 1: ' + teamScore + '/8 · Player 2: ' + (score-teamScore) + '/8</p>' : ''}
         <div class="actions">${button('leave-round','Try another round')}${link('gear','Gear shop')}</div></div>
         <div class="round-score"><strong>${score}/${marks.length}</strong><span>correct</span></div>

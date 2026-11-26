@@ -38,7 +38,7 @@ export function sellGear(wallet, id) {
   const count = wallet.gearCounts[id];
   if (!item || !count) throw new Error('You don’t own a copy of this item.');
   const value = gearSellValue(item);
-  if (wallet.coins + value > MAX_PYCOINS) throw new Error('Spend some PyCoins before selling this item.');
+  if (wallet.coins + value > MAX_PYCOINS) throw new Error('Spend some GIS Points before selling this item.');
   wallet.coins += value;
   if (count > 1) {
     wallet.gearCounts[id] = count - 1;

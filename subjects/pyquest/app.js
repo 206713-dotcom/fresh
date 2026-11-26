@@ -366,7 +366,7 @@ function savedPlacement(){
   const attempt=levelTestState().attempt;
   if(attempt?.status!=='completed'||attempt.version!==1)return null;
   // Recalculate from the saved ANSWERS, not a client-submitted score field.
-  // Diagnostic placement is navigation only: never pay XP/PyCoins for it.
+  // Diagnostic placement is navigation only: never pay XP/GIS Points for it.
   try{return diagnosticPlacement(scoreAnswers(attempt.answers).scores);}catch{return null;}
 }
 function checkpointSkipped(group){return !!savedPlacement() && group<savedPlacement().skippedCheckpoints;}
@@ -492,7 +492,7 @@ function render(){
   <aside class="sidebar"><a class="logo" href="#${rootPage}" data-nav="${rootPage}"><img class="school-logo" src="assets/garden-international-school-logo.png" alt="">PyQuest</a>
     <nav class="nav" aria-label="Main navigation">${menuHTML}</nav>
     <div class="side-bottom"><a class="fresh-python-back" href="../../">← Fresh home</a><br>Garden International School</div></aside>
-  <main class="main"><header class="top"><span class="workspace-location">${section}</span><a href="#${rootPage}" data-nav="${rootPage}" class="top-title"><img class="top-mini-logo" src="assets/garden-international-school-logo.png" alt="">PyQuest</a><div class="top-right">${adminRole?'<span class="tag">Approved admin</span>':`<span id="sync-status" class="sync-status ${cloudStatus}" role="status" aria-live="polite">${statusLabel()}</span>${cloudStatus==='error'?'<button type="button" class="retry-sync" data-action="retry-sync">Retry</button>':''}`}${adminRole?'':`<div class="xp" id="xp-total">${data.xp+Number(gameState().wallet?.bonusXp||0)} XP</div><div class="xp coins-top" id="coin-total">${Number(gameState().wallet?.coins||0)} <span>PyCoins</span></div>`}${authUI()}</div></header>
+  <main class="main"><header class="top"><span class="workspace-location">${section}</span><a href="#${rootPage}" data-nav="${rootPage}" class="top-title"><img class="top-mini-logo" src="assets/garden-international-school-logo.png" alt="">PyQuest</a><div class="top-right">${adminRole?'<span class="tag">Approved admin</span>':`<span id="sync-status" class="sync-status ${cloudStatus}" role="status" aria-live="polite">${statusLabel()}</span>${cloudStatus==='error'?'<button type="button" class="retry-sync" data-action="retry-sync">Retry</button>':''}`}${adminRole?'':`<div class="xp" id="xp-total">${data.xp+Number(gameState().wallet?.bonusXp||0)} XP</div><div class="xp coins-top" id="coin-total">${Number(gameState().wallet?.coins||0)} <span>GIS Points</span></div>`}${authUI()}</div></header>
   <div class="page page-${page}"><a class="fresh-python-back fresh-python-back-mobile" href="../../">← Fresh home</a>${page==='admin'?adminView():page==='account'?accountView():page==='help'?helpView():page==='game'?gameZoneView():page==='staff'?staffChatStudentView():page==='checkpoint'?checkpointHTML(checkpointGroup,LESSONS,checkpointAnswers,checkpointFeedback):page==='announcements'?announcementsView():page==='home'?homeView():page==='learn'?learnView():page==='lesson'?lessonView():page==='quests'?questsView():page==='leaderboard'?leaderboardView():page==='leveltest'?levelTestView():page==='quest'?questView():page==='lab'?labView():page==='quiz'?quizView():page==='igcse'?igcseView():friendsView()}</div></main>
   </div><nav class="mobile-bar" aria-label="Mobile navigation">${menus.filter(([id])=>primary.has(id)).map(item=>navButton(...item)).join('')}${more.length?`<details class="mobile-more"><summary class="${more.some(([id])=>id===activeSection())?'active':''}"><span aria-hidden="true">···</span><span>More</span></summary><div class="mobile-more-menu">${more.map(item=>navButton(...item)).join('')}</div></details>`:''}</nav>`;
 }
@@ -667,7 +667,7 @@ function levelResultsView(attempt,t){
     <section class="panel level-placement"><span class="level-eyebrow">YOUR RECOMMENDED STARTING POINT</span>
       <h2>Lesson ${placement.index+1}: ${escapeHTML(recommended.title)}</h2>
       <p>Based on your answers, you can start here. <strong>Lessons 1–${placement.index+1} are accessible now.</strong> ${placement.skippedCheckpoints?`The first ${placement.skippedCheckpoints} checkpoints are waived for access.`:'Start with Lesson 1; no checkpoint is required yet.'}</p>
-      <p class="fineprint muted">Earlier lessons are unlocked for revision, but they are not marked complete and do not give XP or PyCoins. From this starting point onward, ordinary four-lesson checkpoints apply.</p>
+      <p class="fineprint muted">Earlier lessons are unlocked for revision, but they are not marked complete and do not give XP or GIS Points. From this starting point onward, ordinary four-lesson checkpoints apply.</p>
       <button type="button" class="btn btn-primary" data-level-lesson="${escapeHTML(recommended.id)}">Start Lesson ${placement.index+1} →</button>
       <button type="button" class="btn btn-light" data-nav="learn">View all lessons</button>
     </section>
@@ -1042,7 +1042,7 @@ function localProfileView() {
     <section class="panel local-profile-card">
       <h2>${storage ? 'Saved in this browser' : 'Browser storage is unavailable'}</h2>
       <p>${storage
-        ? 'Your lessons, code drafts, test answers, PyCoins and gear stay in this browser. Download a backup to move your progress to another browser.'
+        ? 'Download your lessons, code drafts, test answers and gear. GIS Points stay in this browser.'
         : 'Download a backup of your progress before you close this tab.'}</p>
       <div class="local-profile-actions">
         <button class="btn btn-primary" type="button" data-action="download-profile-backup">Download backup</button>
@@ -1088,7 +1088,7 @@ async function importProfileBackup(file, profile) {
     throw error;
   }
   if (user?.uid !== profile.uid || page !== 'account') return;
-  if (!window.confirm('Restore this backup? It will replace the progress, PyCoins and gear saved for this profile.')) return;
+  if (!window.confirm('Restore this backup? It will replace this profile’s progress and gear. Your shared GIS Points stay as they are.')) return;
   await restoreProfileBackup(profile.uid, backup, normalize(backup.progress));
   if (user?.uid === profile.uid) {
     startLocalStudent(profile);
@@ -1513,17 +1513,17 @@ document.addEventListener('click',event=>{
   const choice=event.target.closest('[data-choice]');if(choice&&!quizChecked){quizChoice=Number(choice.dataset.choice);render();return;}
   const gameTabButton=event.target.closest('[data-game-tab]');if(gameTabButton){showGameTab(gameTabButton.dataset.gameTab);return;}
   const crateButton=event.target.closest('[data-crate]');if(crateButton){selectedCrate=crateButton.dataset.crate;showGameTab('crates');return;}
-  const syncCoinsButton=event.target.closest('[data-sync-coins]');if(syncCoinsButton){void socialAction(async()=>{const result=await awardProgress();notify(result.added?`You earned ${result.added} PyCoins!`:'All your PyCoins are up to date.');});return;}
+  const syncCoinsButton=event.target.closest('[data-sync-coins]');if(syncCoinsButton){void socialAction(async()=>{const result=await awardProgress();notify(result.added?`You earned ${result.added} GIS Points!`:'All your GIS Points are up to date.');});return;}
   const openCrateButton = event.target.closest('[data-open-crate]');
   if (openCrateButton) {
     const crate = CRATES.find(c => c.id === openCrateButton.dataset.openCrate);
-    if (!crate || openCrateButton.disabled || !confirm(`Open ${crate.name} for ${crate.cost} PyCoins?`)) return;
+    if (!crate || openCrateButton.disabled || !confirm(`Open ${crate.name} for ${crate.cost} GIS Points?`)) return;
     openCrateButton.disabled = true;
     void socialAction(async () => {
       try {
         const result = await openCrate(crate.id);
         const copies = result.quantity > 1 ? ` You now have ${result.quantity.toLocaleString()} copies.` : '';
-        notify(`You got ${result.item.name} (${result.item.rarity}) for ${result.spent} PyCoins!${copies}`);
+        notify(`You got ${result.item.name} (${result.item.rarity}) for ${result.spent} GIS Points!${copies}`);
       } finally {
         openCrateButton.disabled = false;
       }
@@ -1539,7 +1539,7 @@ document.addEventListener('click',event=>{
       try {
         const sale = await sellGear(sellButton.dataset.sellGear);
         if (user?.uid !== uid) return;
-        notify(`Sold one ${sale.item.name} for ${sale.soldFor} PyCoins.`);
+        notify(`Sold one ${sale.item.name} for ${sale.soldFor} GIS Points.`);
         if (restoreFocus && page === 'game' && gameTab === 'closet') {
           ($(sellButton.id) ?? $('collection-title'))?.focus({preventScroll: true});
         }

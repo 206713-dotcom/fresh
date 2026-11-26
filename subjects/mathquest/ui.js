@@ -45,7 +45,7 @@ export const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':
 export const badge = (label,tone='neutral') => '<span class="badge ' + tone + '">' + e(label) + '</span>';
 export const tile = (name,tone,size=21) => '<span class="icon-tile ' + tone + '">' + icon(name,size) + '</span>';
 export const progress = (done,total,label='Progress') => '<progress class="progress" value="' + done + '" max="' + (total || 1) + '" aria-label="' + e(label) + '"></progress>';
-export const coinLabel = value => '<span class="coin-label">' + icon('coin',17) + '<strong>' + Number(value).toLocaleString() + '</strong> PyCoins</span>';
+export const coinLabel = value => '<span class="coin-label">' + icon('coin',17) + '<strong>' + Number(value).toLocaleString() + '</strong> GIS Points</span>';
 export const empty = (symbol,title,text,actions) => '<div class="empty card">' + tile(symbol,'violet',25) + '<h2>' + title + '</h2><p>' + text + '</p><div class="actions">' + actions + '</div></div>';
 export const button = (action,label,kind='primary',attributes='') => '<button type="button" class="btn ' + kind + '" data-action="' + action + '" ' + attributes + '>' + label + '</button>';
 export const link = (to,label,kind='secondary') => '<a class="btn ' + kind + '" href="#' + to + '">' + label + '</a>';
@@ -87,6 +87,6 @@ export function chrome(route,state,saved) {
       <span class="crumb-home">Workspace</span><span class="crumb-divider">${icon('chevron',13)}</span><strong>${navName(route)}</strong></div>
     <div class="top-actions"><a class="fresh-home-link" href="../../" aria-label="Fresh homepage" title="Fresh homepage"><img src="../../fresh.svg" width="22" height="22" alt=""><span>Fresh home</span></a><a class="help-link" href="#website-help" data-scroll="website-help">Help</a>
       <a href="#profile" class="save-status ${saved ? '' : 'unsaved'}" aria-label="${saved ? 'Saved locally' : 'Saving unavailable'}. Open local profile">${icon('shield',17)}<span>${saved ? 'Saved locally' : 'Saving unavailable'}</span></a>
-      <a href="#gear" class="wallet-link" aria-label="${state.wallet.coins} PyCoins, open gear shop">${coinLabel(state.wallet.coins)}</a></div>`;
+      <a href="#gear" class="wallet-link" aria-label="${state.wallet.coins} GIS Points, open gear shop">${coinLabel(state.wallet.coins)}</a></div>`;
   return {sidebar,topbar};
 }

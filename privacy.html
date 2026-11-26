@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="gis-points.css">
+<script src="gis-points.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="How Fresh handles student work, browser storage and external services, with a technical summary for schools.">
@@ -47,9 +49,10 @@
         <section aria-labelledby="progress">
           <h2 id="progress">Student work and browser storage</h2>
           <ul class="privacy-list">
-            <li><strong>Business Studies.</strong> The browser can keep answer drafts, submissions and marks, lesson and checklist progress, missed questions, coins and theme settings.</li>
+            <li><strong>Business Studies.</strong> The browser can keep answer drafts, submissions and marks, lesson and checklist progress, missed questions and theme settings.</li>
             <li><strong>Economics.</strong> The browser can keep practice answers and feedback, mock-exam work including saved diagrams, checklist progress, the last card in each flashcard deck and game progress.</li>
             <li><strong>PyQuest.</strong> The browser can keep Python drafts, lesson and quiz progress, level-test results and game progress. The Code Lab runs your Python in your browser.</li>
+            <li><strong>GIS Points.</strong> A single balance, recent activity and records of completed rewards are saved in this browser across all Fresh subjects. These are in-site revision rewards.</li>
             <li><strong>MathQuest, Vertex Maths and RM Revise.</strong> The browser can keep practice results, lesson progress and revision settings. MathQuest and RM Revise also keep local game progress.</li>
           </ul>
           <p>Fresh uses this information to restore your work, show progress and offer review activities. It stays in the same browser profile. Fresh has no current Google Sheets sync or central store for student submissions.</p>
@@ -64,7 +67,7 @@
           <h2 id="controls">Download or remove saved work</h2>
           <p>Open <strong>My progress</strong> in either subject and choose <strong>Export progress CSV</strong>. The spreadsheet-readable file can include drafts, submitted answers, marks, feedback and other progress. Fresh creates the file in your browser. If you send it to a teacher or open it in a cloud spreadsheet, that sharing happens separately.</p>
           <p>In PyQuest, open <strong>Local profile</strong> to download or restore a backup. It can include progress, code drafts and game data. The file is created and read in your browser.</p>
-          <p>MathQuest and Vertex Maths provide local backup tools. RM Revise can encode your progress in a personal sync link. Share a backup or sync link only with someone you want to see your progress.</p>
+          <p>MathQuest and Vertex Maths provide local backup tools. RM Revise can encode your progress in a personal sync link. The shared GIS Points balance stays in the current browser when you export or restore a subject backup. Share a backup or sync link only with someone you want to see your progress.</p>
           <p>To remove saved data, first export any work you want to keep. Then open your browser’s site data settings, find <strong>gisfresh.me</strong> and clear its site data. This can clear progress, preferences and cached files for Fresh’s apps. Downloads and copies you have shared must be managed separately.</p>
         </section>
         <section aria-labelledby="services">

@@ -297,7 +297,7 @@
   function buildCsv(data) {
     var rows = [
       ['Subject', 'Activity', 'Item', 'Status', 'Answer', 'Details', 'Updated at'],
-      ['Business Studies', 'Study Coins', 'Balance', String(EC.coins ? EC.coins() : ''), '', '', ''],
+      ['Fresh', 'GIS Points', 'Balance', String(EC.points ? EC.points() : ''), '', '', ''],
       ['Business Studies', 'Quick Quiz', 'MCQs completed', readRaw('ecbiz_mcq_completed') || '0', '', '', '']
     ];
 

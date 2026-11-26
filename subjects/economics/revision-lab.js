@@ -1009,6 +1009,9 @@ function setupRevisionChecklist(selectedTopic) {
     const checked = [...checklist.querySelectorAll('input:checked')].map(input => input.value);
     document.querySelector('#revision-save-status').textContent = '';
     saveRevisionState(checklistKey, checked);
+    if (event.target.checked) {
+      void window.FreshPoints.earn('Economics', 5, 'Checklist task completed', 'checklist:' + event.target.value);
+    }
     updateProgress();
     if (event.target.closest('.workbook-topic').hidden) {
       (checklist.querySelector('.workbook-topic:not([hidden]) summary') || filter).focus();

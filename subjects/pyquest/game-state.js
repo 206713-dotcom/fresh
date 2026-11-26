@@ -34,7 +34,7 @@ export async function startGame(user,onChange,progress){stopGame();account=user;
     unsubscribeCheckpoints=api.onSnapshot(api.collection(db,'checkpointPasses',user.uid,'groups'),snap=>{if(epoch!==generation)return;state.passedCheckpoints=snap.docs.filter(d=>/^g(?:[0-9]|1[0-5])$/.test(d.id)).map(d=>Number(d.id.slice(1)));state.checkpointsReady=true;state.checkpointError='';emit();},e=>{if(epoch!==generation)return;state.checkpointError=e.message;state.checkpointsReady=false;emit();});
   }catch(e){state.error=e.message;emit();}
 }
-function requireReady(){if(!account||(!localPreview&&!api))throw Error('Choose a profile to save PyCoins.');}
+function requireReady(){if(!account||(!localPreview&&!api))throw Error('Choose a local profile to save your game progress.');}
 async function rewardRequest(payload){
   requireReady();
   const [app,authSdk]=await Promise.all([import(SDK+'firebase-app.js'),import(SDK+'firebase-auth.js')]);
