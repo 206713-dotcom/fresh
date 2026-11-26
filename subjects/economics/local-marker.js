@@ -231,26 +231,32 @@ const ecbizMarking = (() => {
     const coaching = result.coaching;
     const evidence = markedEvidence(answer,result);
     const reason = markReviewReason(result,answer);
+    const next = result.score < marks ? result.nextStep || coaching?.gaps || coaching?.next : '';
+    const disclosure = (title, body) => body ? '<details class="review-disclosure"><summary>' + title +
+      '</summary>' + body + '</details>' : '';
+    const model = result.modelResponse ? paragraphs(result.modelResponse) +
+      (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') : '';
+    const additionalStep = [result.nextStep, coaching?.next].find(step => step && step !== next);
+    const coachingDetails = section('What worked', coaching?.strengths, 'review-strengths') +
+      (coaching?.gaps !== next ? section('What to improve', coaching?.gaps, 'review-gaps') : '') +
+      section('Next step', additionalStep, 'review-next');
     return '<div class="review-summary"><div><h3>Feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
       '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
-      '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>' +
+      (next ? section('Focus next', next, 'review-next') : '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>') +
       (reason?'<p class="mark-review-flag"><strong>Review recommended.</strong> '+escapeHtml(reason)+'</p>':'') +
-      (evidence?'<section class="review-section review-evidence">' + evidence + '</section>':'') +
-      '<div class="review-coaching">' + section('What worked', coaching?.strengths, 'review-strengths') +
-      section('What to improve', coaching?.gaps, 'review-gaps') + '</div>' +
-      section('Next step', result.nextStep || coaching?.next, 'review-next') +
-      section(result.diagram ? 'How to draw the diagram' : 'Sample answer', result.modelResponse, 'review-model') +
-      (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') +
-      (result.modelPlan ? '<h3>Answer plan from the mark scheme</h3><div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
-      (result.reviewUnavailable && !result.modelPlan ? '<p>Detailed feedback is unavailable. See the mark scheme below.</p>' : '') +
-      (coaching || result.modelResponse || result.modelPlan ? '<p><a href="https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf" target="_blank" rel="noopener noreferrer">Cambridge 0455 syllabus</a> · ' +
-        '<a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge specimen mark scheme</a></p>' : '');
+      disclosure('Marking breakdown', (next ? '<p>' + escapeHtml(result.feedback) + '</p>' : '') +
+        (evidence ? '<div class="review-section review-evidence">' + evidence + '</div>' : '') + coachingDetails +
+        (coaching || result.modelResponse || result.modelPlan ? '<p><a href="https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf" target="_blank" rel="noopener noreferrer">Cambridge 0455 syllabus</a> · ' +
+        '<a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge specimen mark scheme</a></p>' : '')) +
+      disclosure(result.diagram ? 'How to draw the diagram' : 'Sample answer', model) +
+      disclosure('Answer plan from the mark scheme', result.modelPlan ? '<div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
+      (result.reviewUnavailable && !result.modelPlan ? '<p>Detailed feedback is unavailable. See the mark scheme below.</p>' : '');
   }
 
   function scheme(prompt) {
-    return '<details><summary>View mark scheme</summary><div class="mark-scheme">' +
+    return '<details class="review-disclosure"><summary>Mark scheme</summary><div class="mark-scheme">' +
       escapeHtml(prompt.scheme) + '</div>' +
       (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</details>';
   }

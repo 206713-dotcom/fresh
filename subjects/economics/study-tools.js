@@ -66,6 +66,30 @@ function archiveMock(state) {
   return saveRevisionState('mock-history', retainMockHistory([snapshot, ...mockHistory().filter(item => item.id !== snapshot.id)]));
 }
 
+function followUpQuestions(topic, attempts) {
+  const mock = revisionState('test', null);
+  const mockIds = new Set(mock?.finished && mock.mode === 'p1' ? mock.ids : []);
+  const items = questions.flatMap((q,i) => q.topic === topic && q.options ? [{q,i}] : []);
+  const priority = ({q,i}) => Number(attempts.has(i)) + 2 * Number(mockIds.has(q.id));
+  items.sort((a,b) => priority(a) - priority(b));
+  return distinctQuestionPatterns(items, item => item.q).slice(0,5);
+}
+
+function mockFollowUp(topics) {
+  const targets = Object.entries(topics).filter(([,row]) => row.max > row.earned)
+    .sort((a,b) => (b[1].max-b[1].earned)-(a[1].max-a[1].earned)).slice(0,2);
+  if (!targets.length) return '';
+  return '<section class="panel mock-follow-up"><h2>What to revise next</h2><ul>'+targets.map(([code,row]) => {
+    const title = studyTopicName(code);
+    const lesson = syllabusTopicLessons(code)[0];
+    const practice = questions.some(q => q.topic === code && q.options);
+    return '<li><div><strong>'+escapeHtml(title)+'</strong><p>'+row.earned+' of '+row.max+' marks earned'+
+      (row.pending ? ' so far' : '')+'</p></div><div class="row">'+
+      link(lesson ? 'Review lesson' : 'Review topic', lesson ? '#lesson/'+lesson.id : '#revision-topics/'+code)+
+      (practice ? link('Follow-up questions','#practice/followup/'+code,'button primary') : '')+'</div></li>';
+  }).join('')+'</ul></section>';
+}
+
 function mockHistoryView() {
   const history = mockHistory();
   return revisionHeading('Exam practice','Mock exam history','Review your submitted mocks saved in this browser.') +
@@ -77,7 +101,7 @@ function mockHistoryView() {
       const summary = item.max===item.pending ? 'Awaiting marks' : item.score+'/'+(item.max-item.pending)+(item.pending?' marked so far':'');
       return '<details class="panel mock-history-entry"><summary><strong>'+revisionMockLabel(item.mode,item.paper)+'</strong> · '+
         escapeHtml(date)+' · '+summary+(item.pending?' · '+item.pending+' marks pending':'')+
-        '</summary><h2>Marks by topic</h2><ul>'+topicRows.map(([code,row])=>'<li>'+escapeHtml(studyTopicName(code))+' · '+score(row)+' '+
+        '</summary>'+mockFollowUp(item.topics)+'<h2>Marks by topic</h2><ul>'+topicRows.map(([code,row])=>'<li>'+escapeHtml(studyTopicName(code))+' · '+score(row)+' '+
           link('Practise this topic','#practice/topic/'+code,'text-link')+'</li>').join('')+
         '</ul><h2>Marks by question type</h2><ul>'+types.map(([type,row])=>'<li>'+type+'-mark questions · '+score(row)+'</li>').join('')+'</ul>'+link('Open corrections',mockCorrectionHref(item),'text-link')+'</details>';
     }).join('') : '<p class="panel">Finished Paper 1 and Paper 2 mocks will appear here.</p>')+

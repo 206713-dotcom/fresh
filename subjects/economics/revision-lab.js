@@ -539,7 +539,9 @@ function revisionAttempt(state) {
       link('View mock exam history', '#revision-history') + ' ' + link('Weak topics','#progress-weak-topics') + ' ' +
       (state.mode==='custom'?'':link('Open corrections',mockCorrectionHref({id:state.attemptId || 'previous-'+state.mode}))) +
       (pending ? '<button id="revision-test-retry" type="button">Retry pending marks</button>' : '') : '') +
-    '<p id="revision-save-status" role="status"></p><form id="revision-attempt">' + body +
+    '<p id="revision-save-status" role="status"></p>' +
+    (review && state.mode !== 'custom' ? mockFollowUp(mockSummary(state).topics) : '') +
+    '<form id="revision-attempt">' + body +
     (!review ? '<button class="primary">Finish and mark</button><button id="revision-test-reset" type="button">Discard attempt</button>' : '') +
     '</form>' + (review && mock2 ? '<section class="panel"><h2>8-mark discussion bands</h2><p>6–8 for developed analysis of both sides, 3–5 for some developed reasoning with limited depth or balance, 1–2 for relevant undeveloped points, 0 for no creditworthy material.</p></section>' : '');
 }
