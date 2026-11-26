@@ -32,13 +32,13 @@
     <p class="eyebrow">First Language English</p><h1 id="lab-title">Reading Lab</h1>
     <p>Select a paragraph and enter an exact phrase from it. Record what the wording suggests in context.</p>
     <div class="workspace">
-      <article class="panel"><label for="lab-passage">Original reading passage</label><select id="lab-passage"></select><ol class="source" id="lab-text"></ol><div id="lab-questions" hidden></div></article>
+      <article class="panel"><label for="lab-passage">Original reading passage</label><select id="lab-passage"></select> <button id="lab-new-question" type="button">New question</button><ol class="source" id="lab-text"></ol><div id="lab-questions" hidden></div></article>
       <article class="panel">
         <form id="annotation-form">
           <label for="annotation-paragraph">Paragraph</label><select id="annotation-paragraph"></select>
           <label for="annotation-quote">Exact phrase</label><input id="annotation-quote" required maxlength="200">
           <label for="annotation-note">What does it suggest?</label><textarea id="annotation-note" required rows="3" maxlength="600"></textarea>
-          <div class="actions"><button class="button">Save annotation</button><button type="button" id="annotation-cancel" hidden>Cancel edit</button></div>
+          <div class="actions"><button class="button">Save annotation</button><button id="lab-clear" type="button">Clear writing</button><button type="button" id="annotation-cancel" hidden>Cancel edit</button></div>
         </form>
         <p id="annotation-status" role="status"></p><ul id="annotations" class="records"></ul>
       </article>

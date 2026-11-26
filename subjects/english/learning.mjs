@@ -1,3 +1,4 @@
+import { chooseDifferent, setupClearWriting, setupNewQuestion } from './question-controls.mjs';
 import { countWords, tasks } from './practice.mjs';
 import { labPassages, notebookExercises } from './tool-questions.mjs';
 
@@ -81,15 +82,23 @@ export function setupReadingLab(read, write) {
   const selector = get('lab-passage');
   selector.append(...Array.from(collection.values(), item => new Option(item.title, item.id)));
   const questions = get('lab-questions');
+  const questionPool = labPassages.flatMap(item => item.questions.map((_, index) => ({ passage:item.id, index })));
+  let currentQuestion;
+  let currentPassage = selector.value;
 
   function showQuestions() {
     const prompts = collection.get(selector.value).questions ?? [];
     const list = document.createElement('ol');
-    for (const [question, answer] of prompts) {
+    for (const [index, [question, answer]] of prompts.entries()) {
       const item = document.createElement('li');
       const example = document.createElement('details');
       example.append(element('summary', 'Show example answer'), element('p', answer));
-      item.append(element('p', question), example);
+      const prompt = element('p', question);
+      if (currentQuestion?.index === index && currentQuestion.passage === selector.value) {
+        prompt.tabIndex = -1;
+        prompt.className = 'lab-current-question';
+      }
+      item.append(prompt, example);
       list.append(item);
     }
     questions.replaceChildren(element('h3', 'Passage questions'), list);
@@ -174,12 +183,31 @@ export function setupReadingLab(read, write) {
       quote.value = selected;
     }
   });
-  selector.addEventListener('change', () => {
+  function changePassage(id) {
+    selector.value = currentPassage;
+    if (id === currentPassage) return true;
+    if ((quote.value || note.value) && !window.confirm('Switch passages and discard this unsaved annotation?')) return false;
+    selector.value = id;
+    currentPassage = id;
     reset();
     status.textContent = '';
     render();
+    return true;
+  }
+
+  selector.addEventListener('change', () => {
+    if (!changePassage(selector.value)) return;
+    currentQuestion = undefined;
     showQuestions();
   });
+  get('lab-new-question').addEventListener('click', () => {
+    const next = chooseDifferent(questionPool, currentQuestion);
+    if (!next || !changePassage(next.passage)) return;
+    currentQuestion = next;
+    showQuestions();
+    questions.querySelector('.lab-current-question').focus();
+  });
+  setupClearWriting(get('lab-clear'), [quote, note]);
   cancel.addEventListener('click', reset);
   form.addEventListener('submit', event => {
     event.preventDefault();
@@ -219,6 +247,8 @@ export function setupNotebook(read, write, taskId) {
   }
 
   questions.addEventListener('change', showQuestion);
+  setupNewQuestion(get('notebook-new-question'), questions);
+  setupClearWriting(get('notebook-clear'), [excerpt, next]);
   const useExcerpt = get('notebook-use-excerpt');
   function updateExcerptButton() {
     useExcerpt.disabled = Boolean(excerpt.value.trim() || next.value.trim());

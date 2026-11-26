@@ -34,7 +34,7 @@
     <details id="notebook-exercises" hidden>
       <summary>Practice questions</summary>
       <p>Choose an excerpt to revise, then compare your response with an example.</p>
-      <label for="notebook-question">Question</label><select id="notebook-question"></select>
+      <label for="notebook-question">Question</label><select id="notebook-question"></select> <button id="notebook-new-question" type="button">New question</button>
       <blockquote id="notebook-example-excerpt" class="source"></blockquote>
       <p id="notebook-question-text"></p>
       <button id="notebook-use-excerpt" type="button">Use excerpt in notebook</button>
@@ -45,7 +45,7 @@
         <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
         <label for="mistake-excerpt">Original excerpt</label><textarea id="mistake-excerpt" required maxlength="600" rows="2"></textarea>
         <label for="mistake-next">What will you change?</label><textarea id="mistake-next" required maxlength="600" rows="2"></textarea>
-        <button class="button">Save mistake</button><p id="notebook-status" role="status"></p>
+        <div class="actions"><button class="button">Save mistake</button><button id="notebook-clear" type="button">Clear writing</button></div><p id="notebook-status" role="status"></p>
       </form>
       <article class="panel"><h3>Saved mistakes</h3><ul id="mistakes" class="records"></ul></article>
     </div>

@@ -1,3 +1,4 @@
+import { setupClearWriting, setupNewQuestion } from './question-controls.mjs';
 import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
 import { setupLearningTools, updateMetrics } from './learning.mjs';
 import { read, write as writeStorage } from './storage.mjs';
@@ -139,6 +140,8 @@ select.addEventListener('change', () => {
   write('last-practice', select.value, null);
   showTask();
 });
+setupNewQuestion(get('desk-new-question'), select);
+setupClearWriting(get('desk-clear'), [editor]);
 get('analysis').addEventListener('toggle', () => {
   if (get('analysis').open) updateMetrics(get('metrics'), editor.value);
 });
@@ -270,7 +273,9 @@ function showAttempt() {
   document.documentElement.toggleAttribute('data-exam-active', active);
   showStudioView();
   select.disabled = Boolean(attempt);
+  get('desk-new-question').disabled = select.disabled;
   editor.readOnly = Boolean(attempt && !active);
+  get('desk-clear').disabled = editor.readOnly;
   editor.spellcheck = !attempt;
   editor.setAttribute('autocorrect', attempt ? 'off' : 'on');
   get('exam-start').hidden = Boolean(attempt);

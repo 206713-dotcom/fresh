@@ -1,3 +1,4 @@
+import { setupClearWriting, setupNewQuestion } from './question-controls.mjs';
 const cases = [
   {
     id: 'language', title: 'Writer’s effects',
@@ -125,6 +126,8 @@ export function setupWorkshop(read, write) {
   }
 
   select.addEventListener('change', show);
+  setupNewQuestion(get('workshop-new-question'), select);
+  setupClearWriting(get('workshop-clear'), [draft]);
   draft.addEventListener('input', () => write('workshop:' + select.value,draft.value,status));
   show();
 }

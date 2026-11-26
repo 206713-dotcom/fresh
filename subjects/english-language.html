@@ -49,7 +49,7 @@
   <section id="practice" class="section" aria-labelledby="work-title">
     <p class="eyebrow">Timed practice</p><h2 id="work-title">Practice Desk</h2>
     <p>Choose an original practice task. Your drafts and completion history stay in this browser.</p>
-    <div class="desk-bar"><div><label for="task">Practice task</label><select id="task"></select></div><div class="desk-time"><span>Time remaining</span><span id="timer" role="timer"></span></div></div>
+    <div class="desk-bar"><div><label for="task">Practice task</label><select id="task"></select><button id="desk-new-question" type="button">New question</button></div><div class="desk-time"><span>Time remaining</span><span id="timer" role="timer"></span></div></div>
     <p id="completion" role="status"></p>
     <details class="reading-settings" data-exam-help><summary>Reading and writing display</summary>
     <div class="settings">
@@ -71,7 +71,7 @@
         <label for="response">Your response</label>
         <textarea id="response" rows="11" maxlength="9000" aria-describedby="words storage"></textarea>
         <div class="controls"><span id="words"></span><span id="storage" role="status"></span></div>
-        <div class="actions"><button id="timer-toggle" type="button">Start timer</button><button id="timer-reset" type="button">Reset timer</button><button id="download" type="button">Download draft</button></div>
+        <div class="actions"><button id="desk-clear" type="button">Clear writing</button><button id="timer-toggle" type="button">Start timer</button><button id="timer-reset" type="button">Reset timer</button><button id="download" type="button">Download draft</button></div>
         <div class="actions" data-exam-help><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button><button id="mark-cancel" type="button" hidden>Cancel AI feedback</button></div>
         <p class="note" data-exam-help>AI feedback is an experimental practice estimate. It requires WebGPU and an initial model download. Your response is processed on your device.</p>
         <p id="mark-status" role="status"></p><div id="feedback" aria-live="polite"></div>
@@ -83,14 +83,14 @@
   <section class="section" id="workshop" aria-labelledby="skills-map">
     <div class="map-banner"><h2 id="skills-map">Skills Map</h2><p>Practise a skill, write your own response and compare three worked examples.</p></div>
     <div class="map-body">
-      <label for="workshop-skill">Choose a skill</label><select id="workshop-skill"></select>
+      <label for="workshop-skill">Choose a skill</label><div class="actions"><select id="workshop-skill"></select><button id="workshop-new-question" type="button">New question</button></div>
       <ol class="map-steps" aria-label="Workshop steps">
         <li><button type="button" data-map-step="read">Read</button></li>
         <li><button type="button" data-map-step="write">Write</button></li>
         <li><button type="button" data-map-step="compare">Compare</button></li>
       </ol>
       <article class="panel" id="map-read"><h3 tabindex="-1">Read the task</h3><p id="workshop-brief"></p><h4>Starting response</h4><p id="workshop-start" class="source"></p><p id="workshop-pitfall"></p></article>
-      <article class="panel" id="map-write" hidden><h3 tabindex="-1">Write your revision</h3><p id="map-write-brief"></p><label for="workshop-draft">Your response</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><p id="workshop-status" role="status"></p></article>
+      <article class="panel" id="map-write" hidden><h3 tabindex="-1">Write your revision</h3><p id="map-write-brief"></p><label for="workshop-draft">Your response</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><div class="actions"><button id="workshop-clear" type="button">Clear writing</button></div><p id="workshop-status" role="status"></p></article>
       <section class="panel" id="map-compare" hidden><h3 tabindex="-1">Compare worked examples</h3><p id="map-your-draft"></p><div class="skills" id="workshop-versions"></div><a id="workshop-practice" href="#practice">Try the related timed task</a></section>
     </div>
   </section>
