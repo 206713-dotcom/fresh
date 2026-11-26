@@ -1,5 +1,6 @@
 import { countWords, papers, rubricVersion, tasks } from './practice.mjs';
 import { setupLearningTools, updateMetrics } from './learning.mjs';
+import { read, write as writeStorage } from './storage.mjs';
 import { setupWorkshop } from './workshop.mjs';
 import { readAttempt, timeRemaining } from './exam.mjs';
 
@@ -9,8 +10,6 @@ const editor = get('response');
 const feedback = get('feedback');
 const status = get('mark-status');
 const storage = get('storage');
-const prefix = 'fresh-english-0500:';
-const session = new Map();
 let task;
 let worker;
 let timeout;
@@ -19,19 +18,18 @@ let deadline;
 let interval;
 let attempt;
 
-function read(key) {
-  try { return localStorage.getItem(prefix + key) ?? session.get(key); }
-  catch { return session.get(key); }
+function write(key, value, messageTarget = storage) {
+  writeStorage(key, value, messageTarget);
 }
 
-function write(key, value, messageTarget = storage) {
-  session.set(key, value);
-  try {
-    localStorage.setItem(prefix + key, value);
-    if (messageTarget) messageTarget.textContent = 'Saved on this device';
-  } catch {
-    if (messageTarget) messageTarget.textContent = 'Storage unavailable. Changes last for this session.';
-  }
+const legacyToolPages = {
+  '#reading-lab': 'english-reading-lab.html',
+  '#notebook': 'english-mistake-notebook.html',
+};
+
+function redirectLegacyTool() {
+  const page = legacyToolPages[location.hash];
+  if (page && !examActive()) location.replace(page + location.search);
 }
 
 for (const paper of papers) {
@@ -96,6 +94,7 @@ function cancelFeedback() {
 
 function showTask() {
   task = tasks.find(item => item.id === select.value) ?? tasks[0];
+  get('notebook-link').search = new URLSearchParams({ task:task.id });
   get('task-title').textContent = task.title;
   get('task-meta').textContent = (task.paper === 'p1' ? 'Paper 1' : 'Paper 2') + ' · Question ' + task.number + ' · ' + task.marks + ' practice marks';
   get('prompt').textContent = task.prompt;
@@ -348,29 +347,33 @@ function showAttemptList() {
 }
 
 attempt = readAttempt(read('active-attempt'), tasks);
+redirectLegacyTool();
 const initialTask = attempt?.task ?? new URLSearchParams(location.search).get('task');
 if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
-setupLearningTools({ read, write, currentTask: () => task });
+setupLearningTools({ read, write });
 setupWorkshop(read, write);
 
 function showStudioView() {
-  const hash = location.hash;
-  const view = examActive() || hash === '#practice' ? 'desk' : ['#skills-map', '#workshop'].includes(hash) ? 'skills' : 'room';
-  get('main').dataset.view = view;
-  for (const link of document.querySelectorAll('[data-studio-tab]')) {
-    if (link.dataset.studioTab === view) link.setAttribute('aria-current', 'location');
+  const main = get('main');
+  const panels = Array.from(main.querySelectorAll(':scope > section'));
+  const target = get(location.hash.slice(1));
+  const requested = panels.find(panel => panel.contains(target));
+  const active = examActive() ? get('practice') : requested ?? get('reading-room');
+
+  for (const panel of panels) panel.hidden = panel !== active;
+  for (const link of main.querySelectorAll('.studio-tabs a')) {
+    if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   }
+  return active.contains(target) ? target : null;
 }
 
 window.addEventListener('hashchange', () => {
-  showStudioView();
-  const { view } = get('main').dataset;
-  if (view !== 'room' || location.hash === '#reading-room') {
-    window.scrollTo(0, 0);
-  } else if (location.hash) {
-    get(location.hash.slice(1))?.scrollIntoView();
-  }
+  redirectLegacyTool();
+  const target = showStudioView();
+  if (target && !target.matches('main > section')) target.scrollIntoView();
+  else window.scrollTo(0, 0);
 });
-showStudioView();
+const initialTarget = showStudioView();
+if (initialTarget && !initialTarget.matches('main > section')) initialTarget.scrollIntoView();

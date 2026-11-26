@@ -17,25 +17,28 @@
 <main id="main" class="wrap">
   <nav class="studio-nav" aria-label="English Studio" data-exam-help>
     <strong>English Studio</strong>
-    <div><a href="#reading-room" data-studio-tab="room">Reading Room</a><a href="#practice" data-studio-tab="desk">Practice Desk</a><a href="#skills-map" data-studio-tab="skills">Skills Map</a></div>
+    <div class="studio-tabs">
+      <a href="#reading-room">Reading Room</a>
+      <a href="#practice">Practice Desk</a>
+      <a href="english-reading-lab.html">Reading Lab</a>
+      <a href="#workshop">Skills Map</a>
+      <a id="notebook-link" href="english-mistake-notebook.html">Mistake Notebook</a>
+      <a href="#syllabus-checklist">Syllabus Checklist</a>
+      <a href="#course-guide">Course Guide</a>
+      <a href="#revision-library">Revision Library</a>
+    </div>
   </nav>
   <section id="reading-room" class="room-hero" aria-labelledby="room-title">
     <div class="room-copy">
       <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
-      <h1 id="room-title">Read closely.<br>Write precisely.</h1>
+      <h1 id="room-title">Read closely.<br><span>Write precisely.</span></h1>
       <p>First Language English revision, timed practice and worked examples.</p>
       <a class="button" id="continue-practice" href="#practice">Open Practice Desk</a>
       <p id="continue-detail"></p>
     </div>
-    <img class="room-photo" src="english/reading-room.webp" width="1080" height="760" alt="A stone bridge arching over a woodland river">
+    <img class="room-photo" src="english/reading-room.webp" width="1600" height="900" alt="A stone bridge arching over a woodland river">
   </section>
-  <div class="room-links">
-    <a href="#reading-lab"><strong>Reading Lab</strong><span>Annotate a passage</span></a>
-    <a href="#skills-map"><strong>Skills Map</strong><span>Read, write and compare</span></a>
-    <a href="#notebook"><strong>Mistake notebook</strong><span>Record what to improve</span></a>
-    <a href="#syllabus-checklist"><strong>Syllabus checklist</strong><span>Review what you can do</span></a>
-  </div>
-  <section class="section" aria-labelledby="course"><p class="eyebrow">Course guide</p><h2 id="course">Know your papers</h2>
+  <section class="section" id="course-guide" aria-labelledby="course"><p class="eyebrow">Course guide</p><h2 id="course">Know your papers</h2>
     <div class="papers">
       <article><p class="eyebrow">Paper 1 · 2 hours · 80 marks</p><h3>Reading</h3><ol><li>Comprehension · 20</li><li>Summary and attitude · 20</li><li>Short answers and language analysis · 20</li><li>Extended response to reading · 20</li></ol></article>
       <article><p class="eyebrow">Paper 2 · 2 hours · 80 marks</p><h3>Directed Writing &amp; Composition</h3><ol><li>Directed Writing · 40</li><li>Composition · 40</li></ol><p>Choose one of two descriptive or two narrative titles for composition.</p></article>
@@ -77,22 +80,6 @@
     <details id="analysis" data-exam-help><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
     <details id="review" data-exam-help><summary>Self-marking guide and example</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a><h4>Example response or excerpt</h4><p id="example"></p></details>
   </section>
-  <section class="section" id="reading-lab" aria-labelledby="lab-title">
-    <p class="eyebrow">Reading Lab</p><h2 id="lab-title">Annotate a passage</h2>
-    <p>Select a paragraph and enter an exact phrase from it. Record what the wording suggests in context.</p>
-    <div class="workspace">
-      <article class="panel"><label for="lab-passage">Original reading passage</label><select id="lab-passage"></select><ol class="source" id="lab-text"></ol></article>
-      <article class="panel">
-        <form id="annotation-form">
-          <label for="annotation-paragraph">Paragraph</label><select id="annotation-paragraph"></select>
-          <label for="annotation-quote">Exact phrase</label><input id="annotation-quote" required maxlength="200">
-          <label for="annotation-note">What does it suggest?</label><textarea id="annotation-note" required rows="3" maxlength="600"></textarea>
-          <div class="actions"><button class="button">Save annotation</button><button type="button" id="annotation-cancel" hidden>Cancel edit</button></div>
-        </form>
-        <p id="annotation-status" role="status"></p><ul id="annotations" class="records"></ul>
-      </article>
-    </div>
-  </section>
   <section class="section" id="workshop" aria-labelledby="skills-map">
     <div class="map-banner"><h2 id="skills-map">Skills Map</h2><p>Practise a skill, write your own response and compare three worked examples.</p></div>
     <div class="map-body">
@@ -107,20 +94,7 @@
       <section class="panel" id="map-compare" hidden><h3 tabindex="-1">Compare worked examples</h3><p id="map-your-draft"></p><div class="skills" id="workshop-versions"></div><a id="workshop-practice" href="#practice">Try the related timed task</a></section>
     </div>
   </section>
-  <section class="section" id="notebook" aria-labelledby="notebook-title">
-    <p class="eyebrow">My progress</p><h2 id="notebook-title">Personal mistake notebook</h2>
-    <p>Save an excerpt and the change you want to make. Mark a note resolved once you have practised the revision.</p>
-    <div class="workspace">
-      <form class="panel" id="notebook-form">
-        <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
-        <label for="mistake-excerpt">Original excerpt</label><textarea id="mistake-excerpt" required maxlength="600" rows="2"></textarea>
-        <label for="mistake-next">What will you change?</label><textarea id="mistake-next" required maxlength="600" rows="2"></textarea>
-        <button class="button">Save mistake</button><p id="notebook-status" role="status"></p>
-      </form>
-      <article class="panel"><h3>Saved mistakes</h3><ul id="mistakes" class="records"></ul></article>
-    </div>
-  </section>
-  <section class="section" aria-labelledby="skills-title"><p class="eyebrow">Revision library</p><h2 id="skills-title">Common marking priorities</h2>
+  <section class="section" id="revision-library" aria-labelledby="skills-title"><p class="eyebrow">Revision library</p><h2 id="skills-title">Common marking priorities</h2>
     <div class="skills">
       <article id="topic-1"><h3>Inference</h3><p>Use a detail as evidence and explain the conclusion it supports. Repeatedly checking a message before sending it can suggest concern about how it will be received.</p><p>“Lina reread the message three times before pressing send.” What might this suggest about Lina?</p><details><summary>Reveal example answer</summary><p>Lina may be nervous about how the message will be received. Reading it three times implies she wants to avoid a mistake.</p></details></article>
       <article id="topic-2"><h3>Writer’s effects</h3><p>Explain what a precise choice means in context, then what it suggests. In “the wind clawed at the shutters”, “clawed” evokes an animal trying to break in.</p><p>What effect does “the wind clawed at the shutters” create?</p><details><summary>Reveal example answer</summary><p>“Clawed” makes the wind seem like an animal attacking the shutters, making the scene threatening.</p></details></article>
