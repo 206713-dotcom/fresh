@@ -16,8 +16,7 @@ function filterSubjects() {
   for (const { element, name, code, aliases } of cards) {
     const matchesGroup = !group.value || element.dataset.group === group.value;
     const matchesSearch = name.includes(query) || code.includes(query)
-      || aliases.some(alias => alias.includes(query))
-      || (element.dataset.group === 'technology' && code === '0417' && 'ict'.includes(query));
+      || aliases.some(alias => alias.includes(query));
     element.hidden = !(matchesGroup && matchesSearch);
     if (!element.hidden) visible += 1;
   }

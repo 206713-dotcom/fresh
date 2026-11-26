@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Revision notes and practice across 13 IGCSE subjects.">
+<meta name="description" content="Revision notes and practice across 12 IGCSE subjects.">
 <title>IGCSE study hub | Fresh</title>
 <style>
 :root {
@@ -937,7 +937,7 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   <div class="hero-copy">
     <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
     <h1>A fresh take<br>on <em>revision.</em></h1>
-    <p>Find clear revision notes and quick practice questions for 13 IGCSE subjects.</p>
+    <p>Find clear revision notes and quick practice questions for 12 IGCSE subjects.</p>
     <button class="button" type="button" data-jump="subjects" hidden>Explore subjects <span aria-hidden="true">↓</span></button>
   </div>
   <div class="hero-art" aria-hidden="true">
@@ -948,13 +948,13 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
   <path fill="#e4eeb2" d="M37 35h12l-8 13H29z"/>
   <path fill="#f6bb83" d="M46 15h7l-4 6h-7z"/>
 </svg></div>
-    <span class="art-index"><b>13</b><span>IGCSE<br>SUBJECTS</span></span>
+    <span class="art-index"><b>12</b><span>IGCSE<br>SUBJECTS</span></span>
   </div>
 </section>
 <section class="directory" id="subjects" aria-labelledby="directory-title" tabindex="-1">
   <div class="section-top">
     <div><p class="eyebrow">SUBJECT DIRECTORY</p><h2 id="directory-title">What are you studying?</h2></div>
-    <span class="count" id="count" aria-live="polite">13 subjects</span>
+    <span class="count" id="count" aria-live="polite">12 subjects</span>
   </div>
   <div class="filters" hidden>
     <label>Search subjects <input type="search" id="search" placeholder="Try biology or 0610"></label>
@@ -1008,13 +1008,6 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
     <span class="card-top"><span class="symbol" aria-hidden="true">‹/›</span><span class="code">0478</span></span>
     <h3>Computer Science</h3>
     <p>Practise algorithms, data representation and logic.</p>
-  </div>
-</li>
-<li class="card technology" data-group="technology">
-  <div class="card-content">
-    <span class="card-top"><span class="symbol" aria-hidden="true">▣</span><span class="code">0417</span></span>
-    <h3>Information &amp; Communication Technology</h3>
-    <p>Build practical skills with spreadsheets, databases and digital safety.</p>
   </div>
 </li>
 <li class="card technology" data-group="technology" data-aliases="dt|design and technology|rm revise">
@@ -1076,8 +1069,7 @@ function filterSubjects() {
   for (const { element, name, code, aliases } of cards) {
     const matchesGroup = !group.value || element.dataset.group === group.value;
     const matchesSearch = name.includes(query) || code.includes(query)
-      || aliases.some(alias => alias.includes(query))
-      || (element.dataset.group === 'technology' && code === '0417' && 'ict'.includes(query));
+      || aliases.some(alias => alias.includes(query));
     element.hidden = !(matchesGroup && matchesSearch);
     if (!element.hidden) visible += 1;
   }

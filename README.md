@@ -8,7 +8,7 @@
 
 Revision can involve finding notes in one place, looking for practice in another, and keeping track of what you have already understood somewhere else. Fresh brings those steps together. Students contribute the subjects they know, and the hub gives each project a place alongside the others. Our aim is for someone to find a topic and start practising without setting up an account.
 
-The directory covers **13 subjects**. Some pages offer short worked examples. The larger subject workspaces also have tools like flashcards, practicals, exam practice and revision planning. You can return to the main Fresh homepage from a subject and use the same GIS Points balance while you study.
+The directory covers **12 subjects**. Some pages offer short worked examples. The larger subject workspaces also have tools like flashcards, practicals, exam practice and revision planning. You can return to the main Fresh homepage from a subject and use the same GIS Points balance while you study.
 
 ## Start here
 
@@ -30,7 +30,7 @@ Business Studies and Economics also offer **AI feedback for written exam practic
 
 ## Subjects
 
-[Mathematics](#mathematics-0580) · [First Language English](#first-language-english-0500) · [Literature in English](#literature-in-english-0475) · [Biology](#biology-0610) · [Chemistry](#chemistry-0620) · [Physics](#physics-0625) · [Computer Science](#computer-science-0478) · [ICT](#information-and-communication-technology-0417) · [Design and Technology](#design-and-technology-0445) · [Geography](#geography-0460) · [History](#history-0470) · [Economics](#economics-0455) · [Business Studies](#business-studies-0264)
+[Mathematics](#mathematics-0580) · [First Language English](#first-language-english-0500) · [Literature in English](#literature-in-english-0475) · [Biology](#biology-0610) · [Chemistry](#chemistry-0620) · [Physics](#physics-0625) · [Computer Science](#computer-science-0478) · [Design and Technology](#design-and-technology-0445) · [Geography](#geography-0460) · [History](#history-0470) · [Economics](#economics-0455) · [Business Studies](#business-studies-0264)
 
 ### Mathematics (0580)
 
@@ -82,12 +82,6 @@ PyQuest opens directly to the IGCSE 0478 study area. Choose a topic from Paper 1
 **Python with PyQuest.** Use lessons and challenges to build up from a first program, or open the Code Lab for your own experiments. PyQuest runs code in the browser and can save exercises, test results and code drafts on the device. Use a local profile backup if you want to move that work to a different browser. [Open PyQuest](https://gisfresh.me/subjects/pyquest/)
 
 **How AI helped.** AI helped draft the starter exercises that link concepts to a checkable result, including tracing a running total across a loop. For the contributed PyQuest app, it helped adapt the navigation, keep the Fresh release browser-local and connect completed coding lessons and game rewards to GIS Points. PyQuest was created by [`linze933-spec`](https://github.com/linze933-spec).
-
-### Information and Communication Technology (0417)
-
-Practise spreadsheet references, database keys and digital safety. Try copying a formula with both relative and fixed references, explain why a primary key must be unique, and decide what to do with a suspicious password-reset message. [Open ICT](https://gisfresh.me/subjects/ict.html)
-
-**How AI helped.** AI helped shape the starter notes into practical questions. The spreadsheet prompt asks students to predict which part of a formula moves when it is copied. The answer shows the new formula and the reason, so students can check their understanding of absolute references.
 
 ### Design and Technology (0445)
 
