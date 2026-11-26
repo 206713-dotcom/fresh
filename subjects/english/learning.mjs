@@ -174,14 +174,14 @@ export function setupReadingLab(read, write) {
     }));
   }
 
-  passage.addEventListener('pointerup', () => {
+  document.addEventListener('selectionchange', () => {
     const selection = document.getSelection();
     const anchor = selection?.anchorNode;
     const focus = selection?.focusNode;
     if (!anchor || !focus) return;
     const row = (anchor.parentElement)?.closest('li');
     const selected = selection.toString().trim();
-    if (row?.parentElement === passage && row.contains(focus) && selected && selected.length <= 200) {
+    if (editing === undefined && row?.parentElement === passage && row.contains(focus) && selected && selected.length <= 200) {
       paragraph.value = Array.from(passage.children).indexOf(row);
       quote.value = selected;
     }
@@ -274,8 +274,13 @@ export function setupNotebook(read, write, taskId) {
     render();
   }
 
+  const filter = get('notebook-filter');
+  filter.addEventListener('change', render);
+
   function render() {
-    get('mistakes').replaceChildren(...(records.length ? records.map(item => {
+    const visible = records.filter(item => filter.value === 'all' || item.resolved === (filter.value === 'resolved'));
+    get('notebook-count').textContent = visible.length + (visible.length === 1 ? ' note' : ' notes');
+    get('mistakes').replaceChildren(...(visible.length ? visible.map(item => {
       const row = document.createElement('li');
       const objective = objectives.find(([id]) => id === item.skill);
       const task = tasks.find(entry => entry.id === item.task);
@@ -286,13 +291,32 @@ export function setupNotebook(read, write, taskId) {
       buttons.append(action(item.resolved ? 'Reopen note' : 'Mark as resolved', () => {
         item.resolved = !item.resolved;
         save();
+        filter.focus();
       }), action('Delete note', () => {
         records = records.filter(record => record.id !== item.id);
         save();
+        filter.focus();
       }));
-      row.append(element('strong',item.skill + (item.resolved ? ' · Resolved' : ' · To revise')),element('p',item.excerpt),element('p',item.next),element('p','Practice task when saved · ' + task.title),link,buttons);
+      const state = element('span',item.resolved ? 'Resolved' : 'To revise');
+      state.className = 'journal-state';
+      state.dataset.resolved = String(item.resolved);
+      const header = document.createElement('div');
+      header.className = 'journal-card-heading';
+      header.append(element('h3',objective[1]),state);
+      const original = document.createElement('blockquote');
+      original.textContent = item.excerpt;
+      const comparison = document.createElement('div');
+      comparison.className = 'journal-comparison';
+      for (const [label, text] of [['Original excerpt', original], ['What I’ll change', element('p',item.next)]]) {
+        const column = document.createElement('div');
+        column.append(element('strong',label),text);
+        comparison.append(column);
+      }
+      const taskContext = element('p','Practice task when saved · ' + task.title);
+      taskContext.className = 'note';
+      row.append(header,comparison,taskContext,link,buttons);
       return row;
-    }) : [element('li','Saved notes will appear here.')]));
+    }) : [element('li',filter.value === 'all' ? 'Saved notes will appear here.' : 'No notes match this filter.')]));
   }
 
   get('notebook-form').addEventListener('submit', event => {

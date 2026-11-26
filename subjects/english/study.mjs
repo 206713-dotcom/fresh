@@ -93,6 +93,28 @@ function cancelFeedback() {
   status.textContent = '';
 }
 
+const deskWorkspace = document.querySelector('.desk-workspace');
+const deskSwitch = document.querySelector('.desk-switch');
+const deskButtons = [...deskSwitch.querySelectorAll('button')];
+
+function showDeskPane(pane) {
+  deskWorkspace.dataset.pane = pane;
+  for (const button of deskButtons) {
+    button.setAttribute('aria-pressed', String(button.dataset.deskPane === pane));
+  }
+}
+
+for (const button of deskButtons) {
+  button.addEventListener('click', () => showDeskPane(button.dataset.deskPane));
+}
+showDeskPane('source');
+deskSwitch.hidden = false;
+
+function focusDeskEditor() {
+  showDeskPane('write');
+  editor.focus();
+}
+
 function showTask() {
   task = tasks.find(item => item.id === select.value) ?? tasks[0];
   get('notebook-link').search = new URLSearchParams({ task:task.id });
@@ -209,7 +231,7 @@ get('mark').addEventListener('click', () => {
   const answer = editor.value.trim();
   if (!answer) {
     status.textContent = 'Write a response before requesting feedback.';
-    editor.focus();
+    focusDeskEditor();
     return;
   }
   if (!navigator.gpu) {
@@ -319,7 +341,7 @@ get('exam-start').addEventListener('click', () => {
   get('analysis').open = false;
   saveAttempt();
   showTask();
-  editor.focus();
+  focusDeskEditor();
 });
 get('exam-submit').addEventListener('click', submitAttempt);
 get('exam-return').addEventListener('click', () => {
@@ -348,7 +370,7 @@ function showAttemptList() {
       select.value = item.task;
       get('saved-attempts').open = false;
       showTask();
-      editor.focus();
+      focusDeskEditor();
     });
     row.append(button, ' · ' + new Date(item.submittedAt).toLocaleDateString());
     list.append(row);
