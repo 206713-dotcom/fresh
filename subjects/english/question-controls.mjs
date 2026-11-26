@@ -1,3 +1,17 @@
+export function groupedQuestions(select, items, describe) {
+  const groups = new Map();
+  for (const [index, item] of items.entries()) {
+    const [label, value, title] = describe(item, index);
+    if (!groups.has(label)) {
+      const group = document.createElement('optgroup');
+      group.label = label;
+      groups.set(label, group);
+      select.append(group);
+    }
+    groups.get(label).append(new Option(title, value));
+  }
+}
+
 export function chooseDifferent(items, current) {
   const choices = items.filter(item => item !== current);
   return choices[Math.floor(Math.random() * choices.length)];

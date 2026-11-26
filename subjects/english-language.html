@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../gis-points.css?v=3">
 <script src="../gis-points.js?v=5" defer></script>
 <link rel="stylesheet" href="english/study.css">
-<script type="module" src="english/study.mjs?v=balanced"></script>
+<script type="module" src="english/study.mjs?v=question-bank"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -96,8 +96,8 @@
         <li><button type="button" data-map-step="write">Write</button></li>
         <li><button type="button" data-map-step="compare">Compare</button></li>
       </ol>
-      <article class="panel" id="map-read"><h3 tabindex="-1">Read the task</h3><p id="workshop-brief"></p><h4>Starting response</h4><p id="workshop-start" class="source"></p><p id="workshop-pitfall"></p></article>
-      <article class="panel" id="map-write" hidden><h3 tabindex="-1">Write your revision</h3><p id="map-write-brief"></p><label for="workshop-draft">Your response</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><div class="actions"><button id="workshop-clear" type="button">Clear writing</button></div><p id="workshop-status" role="status"></p></article>
+      <article class="panel" id="map-read"><h3 tabindex="-1">Read the task</h3><p id="workshop-brief"></p><p class="source" data-workshop-source hidden></p><h4>Starting response</h4><p id="workshop-start" class="source"></p><p id="workshop-pitfall"></p></article>
+      <article class="panel" id="map-write" hidden><h3 tabindex="-1">Write your revision</h3><p id="map-write-brief"></p><details data-workshop-context><summary>Read the passage</summary><p class="source" data-workshop-source hidden></p></details><label for="workshop-draft">Your response</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><div class="actions"><button id="workshop-clear" type="button">Clear writing</button></div><p id="workshop-status" role="status"></p></article>
       <section class="panel" id="map-compare" hidden><h3 tabindex="-1">Compare worked examples</h3><p id="map-your-draft"></p><div class="skills" id="workshop-versions"></div><a id="workshop-practice" href="#practice">Try the related timed task</a></section>
     </div>
   </section>
