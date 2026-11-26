@@ -69,7 +69,7 @@ function storedRecords(read, key) {
   }
 }
 
-function setupReadingLab(read, write) {
+export function setupReadingLab(read, write) {
   const collection = new Map();
   for (const task of tasks) {
     if (task.source && ![...collection.values()].some(item => item.source === task.source)) collection.set(task.id, task);
@@ -178,7 +178,7 @@ function setupReadingLab(read, write) {
   render();
 }
 
-function setupNotebook(read, write, currentTask) {
+export function setupNotebook(read, write, taskId) {
   const select = get('mistake-skill');
   const excerpt = get('mistake-excerpt');
   const next = get('mistake-next');
@@ -197,7 +197,7 @@ function setupNotebook(read, write, currentTask) {
       const objective = objectives.find(([id]) => id === item.skill);
       const task = tasks.find(entry => entry.id === item.task);
       const link = element('a','Practise this skill');
-      link.href = '?task=' + encodeURIComponent(objective[2]) + '#practice';
+      link.href = 'english-language.html?task=' + encodeURIComponent(objective[2]) + '#practice';
       const buttons = document.createElement('div');
       buttons.className = 'actions';
       buttons.append(action(item.resolved ? 'Reopen note' : 'Mark as resolved', () => {
@@ -218,7 +218,7 @@ function setupNotebook(read, write, currentTask) {
       status.textContent = 'Enter an excerpt and a revision step.';
       return;
     }
-    records.unshift({ id:crypto.randomUUID(), skill:select.value, excerpt:excerpt.value.trim(), next:next.value.trim(), task:currentTask().id, resolved:false });
+    records.unshift({ id:crypto.randomUUID(), skill:select.value, excerpt:excerpt.value.trim(), next:next.value.trim(), task:taskId, resolved:false });
     excerpt.value = '';
     next.value = '';
     save();
@@ -226,7 +226,7 @@ function setupNotebook(read, write, currentTask) {
   render();
 }
 
-export function setupLearningTools({ read, write, currentTask }) {
+export function setupTheme(read, write) {
   const theme = get('theme');
   function setTheme(dark) {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
@@ -239,12 +239,18 @@ export function setupLearningTools({ read, write, currentTask }) {
     setTheme(dark);
     write('theme',dark ? 'dark' : 'light',null);
   });
+}
 
+export function setupStudyDisplay(read, write) {
   for (const [id,attribute] of [
     ['study-size','studySize'], ['study-font','studyFont'], ['study-spacing','studySpacing'],
   ]) {
     const select = get(id);
     const saved = read(id);
+    if (!select) {
+      if (saved) document.documentElement.dataset[attribute] = saved;
+      continue;
+    }
     if ([...select.options].some(option => option.value === saved)) select.value = saved;
     document.documentElement.dataset[attribute] = select.value;
     select.addEventListener('change', () => {
@@ -252,6 +258,11 @@ export function setupLearningTools({ read, write, currentTask }) {
       write(id,select.value,null);
     });
   }
+}
+
+export function setupLearningTools({ read, write }) {
+  setupTheme(read, write);
+  setupStudyDisplay(read, write);
 
   for (const [id,title,exercise] of objectives) {
     const box = document.createElement('input');
@@ -268,7 +279,4 @@ export function setupLearningTools({ read, write, currentTask }) {
     row.append(box,label,link);
     get('objectives').append(row);
   }
-
-  setupReadingLab(read,write);
-  setupNotebook(read,write,currentTask);
 }

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Save mistakes and track your revisions for Cambridge IGCSE First Language English.">
+<title>Mistake Notebook | Fresh English</title>
+<link rel="icon" href="../fresh.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../gis-points.css">
+<script src="../gis-points.js" defer></script>
+<link rel="stylesheet" href="english/study.css">
+<script type="module" src="english/tool-page.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="../index.html" aria-label="Fresh homepage"><img src="../fresh.svg" width="34" height="34" alt=""> Fresh</a><div class="actions"><a href="../index.html#subjects">All subjects</a><button id="theme" type="button" aria-pressed="false">Dark mode</button></div></nav></header>
+<main id="main" class="wrap">
+  <nav class="studio-nav" aria-label="English Studio">
+    <strong>English Studio</strong>
+    <div class="studio-tabs">
+      <a href="english-language.html#reading-room">Reading Room</a>
+      <a href="english-language.html#practice">Practice Desk</a>
+      <a href="english-reading-lab.html">Reading Lab</a>
+      <a href="english-language.html#workshop">Skills Map</a>
+      <a href="english-mistake-notebook.html" aria-current="page">Mistake Notebook</a>
+      <a href="english-language.html#syllabus-checklist">Syllabus Checklist</a>
+      <a href="english-language.html#course-guide">Course Guide</a>
+      <a href="english-language.html#revision-library">Revision Library</a>
+    </div>
+  </nav>
+  <section class="section" id="notebook" aria-labelledby="notebook-title">
+    <p class="eyebrow">My progress</p><h1 id="notebook-title">Mistake Notebook</h1>
+    <p>Save an excerpt and the change you want to make. Mark a note resolved once you have practised the revision.</p>
+    <div class="workspace">
+      <form class="panel" id="notebook-form">
+        <label for="mistake-skill">Skill</label><select id="mistake-skill"></select>
+        <label for="mistake-excerpt">Original excerpt</label><textarea id="mistake-excerpt" required maxlength="600" rows="2"></textarea>
+        <label for="mistake-next">What will you change?</label><textarea id="mistake-next" required maxlength="600" rows="2"></textarea>
+        <button class="button">Save mistake</button><p id="notebook-status" role="status"></p>
+      </form>
+      <article class="panel"><h3>Saved mistakes</h3><ul id="mistakes" class="records"></ul></article>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><span>Fresh · Independent IGCSE revision</span><a href="english-literature.html">Literature in English</a><a href="../privacy.html">Privacy notice</a></footer>
+</body>
+</html>

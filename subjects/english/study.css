@@ -92,6 +92,7 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
 .studio-tabs a:hover { text-decoration:underline; }
 .studio-tabs a[aria-current] { border-color:var(--green); background:var(--green); color:var(--white); }
 .studio-nav ~ .section { margin-top:1.5rem; }
+.studio-nav ~ .section h1 { font-size:clamp(2.45rem,6vw,4.5rem); }
 .room-hero {
   position:relative;
   isolation:isolate;
@@ -110,10 +111,21 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
   position:absolute;
   inset:0;
   z-index:-1;
-  background:linear-gradient(90deg,#10251f 0%,#10251fed 33%,#10251f99 57%,#10251f1a 100%);
+  background:linear-gradient(90deg,#0d241e 0%,#10251fe0 29%,#10251f75 57%,#10251f12 100%);
 }
 .room-copy { padding:clamp(1.25rem,5vw,4rem); }
 .room-hero h1 { font-size:clamp(2.6rem,5.9vw,5.3rem); }
+.room-hero h1 span { color:#efd5a1; }
+@supports (background-clip:text) {
+  .room-hero h1 span {
+    background:linear-gradient(100deg,#fff5d9 4%,#e1ebba 47%,#f4c27f 95%);
+    background-clip:text;
+    color:transparent;
+  }
+}
+@media (forced-colors:active) {
+  .room-hero h1 span { background:none; color:CanvasText; }
+}
 .room-copy p:not(.eyebrow) { max-width:32ch; color:#f0f5ed; }
 .room-copy .button { background:#e4eeb2; border-color:#e4eeb2; color:#132a23; }
 .room-copy .button:focus-visible { outline-color:#fff; }
