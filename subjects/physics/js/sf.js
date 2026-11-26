@@ -1,4 +1,4 @@
-/* Geodesic special-function library (double precision; checked against SciPy, see test notes in PLAN.md).
+/* Twistor special-function library (double precision; checked against SciPy, see test notes in PLAN.md).
    WL.sf.{gamma,lgamma,beta,erf,erfc,besselJ,besselJzeros,sphJ,legendreP,assocP,Ylm,hermiteH,hoPsi,laguerre,Rnl,airyAi,airyBi,
           hyp2f1,hyp1f1,agm,ellipK,ellipE,ellipF,jacobi,zeta,polylog,bisect,zeros} */
 (function () {

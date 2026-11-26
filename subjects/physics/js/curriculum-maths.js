@@ -1,4 +1,4 @@
-/* Geodesic — maths track, stage identities and physics ↔ maths links. */
+/* Twistor — maths track, stage identities and physics ↔ maths links. */
 (function () {
   const WL = window.WL;
 
@@ -81,7 +81,7 @@
     M('m-elliptic', 'msf', 'K', 'Elliptic Integrals & the Exact Pendulum', 'The period of a pendulum at any amplitude, and the perimeter of an ellipse.', ['K(k) and E(k)', 'Period vs amplitude', 'The AGM']),
     M('m-jacobi', 'msf', 'K', 'Jacobi Elliptic Functions', 'sn, cn, dn: trigonometry for the nonlinear pendulum, periodic in two directions.', ['Inverting the elliptic integral', 'Double periodicity', 'The pendulum solved exactly']),
     M('m-zeta', 'msf', 'P', 'Zeta Function & Bose/Fermi Integrals', 'Sums like 1 + 1/2⁴ + 1/3⁴ + … that set black-body radiation and Bose condensation.', ['ζ(s) = Σ n^{−s}', 'Bose & Fermi integrals', 'Analytic continuation']),
-    M('m-diffgeo', 'm4', 'G', 'Manifolds, Metrics & Curvature', 'Carry an arrow round a triangle on a sphere and it comes back turned.', ['Metric on a sphere', 'Geodesics', 'Holonomy & Gauss–Bonnet']),
+    M('m-diffgeo', 'm4', 'G', 'Manifolds, Metrics & Curvature', 'Carry an arrow round a triangle on a sphere and it comes back turned.', ['Metric on a sphere', 'Twistors', 'Holonomy & Gauss–Bonnet']),
     M('m-groups', 'm4', 'G', 'Groups & Lie Algebras', 'Rotations don’t commute; their generators obey [Jₓ, J_y] = iJ_z.', ['Group axioms', 'Generators', 'SU(2) covers SO(3) twice']),
     M('m-path-integral', 'm4', 'K', 'Path Integrals & Stationary Phase', 'Add a phase for every path: all but the classical one cancel.', ['Time slicing', 'Gaussian integrals', 'Stationary phase']),
     M('m-asymptotics', 'm4', 'P', 'Asymptotic Series & Laplace’s Method', 'Approximations that get better as a parameter grows, even when the series diverges.', ['Laplace’s method', 'Stirling from Γ(n+1)', 'Optimal truncation'])

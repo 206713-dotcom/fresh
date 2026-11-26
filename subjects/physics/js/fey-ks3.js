@@ -1,4 +1,4 @@
-/* Geodesic: "See it like Feynman" sections, ks3. Original text; see src/v6/fey.js. */
+/* Twistor: "See it like Feynman" sections, ks3. Original text; see src/v6/fey.js. */
 (function () { const WL = window.WL; if (!WL || !WL.fy) return;
 WL.fy('ks3-circuits', [
   'Flick a switch and the lamp lights at once, yet the electrons in the wire drift at well under a millimetre a second. How can the light come on instantly?',

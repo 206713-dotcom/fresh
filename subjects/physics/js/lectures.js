@@ -1,4 +1,4 @@
-/* Geodesic lectures — long narrated films drawn live with the Manim-style engine (js/manim.js).
+/* Twistor lectures — long narrated films drawn live with the Manim-style engine (js/manim.js).
    A lecture is chapters → scenes → beats. A beat is a sentence or two of narration, or a number (a silent
    pause in seconds), or [text, extra seconds]. A beat's length comes from its word count; if the voice runs
    longer than its beat, the staged animation holds (waits) while ambient motion keeps moving.

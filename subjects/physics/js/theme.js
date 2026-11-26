@@ -1,8 +1,9 @@
-/* Geodesic — light / dark theme switch. Light (paper) is the default; the choice is kept in this browser only. */
+/* Twistor — light / dark theme switch. Light (paper) is the default; the choice is kept in this browser only. */
 (function () {
   const KEY = 'wl-theme', root = document.documentElement;
   let saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved !== 'dark') root.dataset.theme = 'light';
+  const def = window.WL_THEME_DEFAULT === 'dark' ? 'dark' : 'light';   // an edition can start dark (Twistor does)
+  if ((saved || def) !== 'dark') root.dataset.theme = 'light';
   function sync(btn) {
     const light = root.dataset.theme === 'light';
     btn.setAttribute('aria-pressed', String(light));

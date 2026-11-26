@@ -1,4 +1,4 @@
-/* Geodesic — full curriculum map (2026-11 audit).
+/* Twistor — full curriculum map (2026-11 audit).
    Every point of the official Cambridge syllabuses (Lower Secondary Science 0893, IGCSE Physics 0625, AS & A Level Physics 9702,
    IGCSE Mathematics 0580, AS & A Level Mathematics 9709, Further Mathematics 9231) and the core physics/maths courses at
    MIT, Caltech and Stanford maps to a topic below. Topics without full content yet are outlines (stub: true). */
@@ -186,7 +186,7 @@
     ['y4-topological', 'Berry Phase & Topological Matter', 'Geometric phases, Chern numbers, Thouless pumps and topological insulators.', ['Berry phase', 'Chern number', 'Thouless pump', 'Topological insulators']]
   ]);
   add('y4', 'S', [
-    ['y4-gr', 'Metric, Geodesics & Einstein’s Equations', 'Curved spacetime, the geodesic equation, curvature and the field equations.', ['Metric tensor', 'Geodesic equation', 'Riemann curvature', 'Einstein field equations']],
+    ['y4-gr', 'Metric, Twistors & Einstein’s Equations', 'Curved spacetime, the geodesic equation, curvature and the field equations.', ['Metric tensor', 'Twistor equation', 'Riemann curvature', 'Einstein field equations']],
     ['y4-gravitational-waves', 'Gravitational Waves', 'Linearised gravity, wave polarisations and what LIGO measures.', ['Linearised Einstein equations', 'Polarisations', 'Quadrupole formula', 'Detection']],
     ['y4-early-universe', 'Inflation, Nucleosynthesis & the CMB', 'The first minutes of the universe and the light left over from it.', ['Horizon and flatness problems', 'Inflation', 'Big Bang nucleosynthesis', 'CMB anisotropies']]
   ]);

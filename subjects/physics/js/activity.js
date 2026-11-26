@@ -1,4 +1,4 @@
-/* Geodesic — your activity, part 2 (loaded on demand): the #activity page. For this week, month or year (and the ones
+/* Twistor — your activity, part 2 (loaded on demand): the #activity page. For this week, month or year (and the ones
    before), it shows how long the site was in active use and where, what was achieved (topics learned, answers checked
    and how many were right, tests, mock papers, olympiad and competition problems, lectures, Feynman chapters,
    practicals, investigations), all-time records, and a brief AI summary of the period. The summary is sent only these
@@ -146,7 +146,7 @@
       ${tile('Days active', `${U.days.size}<small> of ${P.current ? P.elapsed : P.days}</small>`, P.current ? `${P.days - P.elapsed} day${P.days - P.elapsed === 1 ? '' : 's'} left` : '')}
       ${tile('Topics learned', String(A.learned.length), A.learned.length ? `${A.phys} physics, ${A.maths} maths` : delta(A.learned.length, A0.learned.length, String, P.word))}
       ${tile('Answers checked', String(A.q), A.q ? `${pct(A.acc)} right` : '')}
-      ${tile('AI requests', String(U.ai), U.ai ? `most in ${esc(areaName(top1(U.ais)))}` : '')}
+      ${WL.ai ? tile('AI requests', String(U.ai), U.ai ? `most in ${esc(areaName(top1(U.ais)))}` : '') : ''}
       ${tile('Streak', `${K.cur}<small> day${K.cur === 1 ? '' : 's'}</small>`, `best ${K.best}`)}
     </div>`;
   }
@@ -188,17 +188,17 @@
   function recordsHTML(R, K) {
     const r = (l, v) => `<div class="act-rec"><span>${l}</span><b>${v}</b></div>`;
     return `<div class="act-recs">
-      ${r('Physics topics learned', `${R.phys}<small> of ${R.physAll}</small>`)}${r('Maths topics learned', `${R.maths}<small> of ${R.mathsAll}</small>`)}
+      ${r('Physics topics learned', `${R.phys}<small> of ${R.physAll}</small>`)}
       ${r('Practice answers checked', R.q ? `${R.q}<small> ${pct(R.acc)} right</small>` : '0')}${r('Timed tests', R.tests ? `${R.tests}<small> best ${R.testBest}%</small>` : '0')}
-      ${r('Competition problems solved', R.comp)}${r('Mock papers', R.mocks ? `${R.mocks}<small> best ${R.mockBest.score} of ${R.mockBest.max}</small>` : '0')}
-      ${r('Olympiad parts solved', R.olyp)}${r('Lectures watched', R.lec)}${r('Feynman chapters read', R.fey)}${r('Practicals started', R.prac)}
-      ${r('Investigations', R.inv ? `${R.inv}<small> ${R.invDone} written up</small>` : '0')}${r('Days studied', K.days)}${r('Longest streak', `${K.best}<small> day${K.best === 1 ? '' : 's'}</small>`)}
+      
+      ${WL.olyp ? r('Olympiad parts solved', R.olyp) : ''}${r('Lectures watched', R.lec)}${r('Feynman chapters read', R.fey)}${r('Practicals started', R.prac)}
+      ${r('Days studied', K.days)}${r('Longest streak', `${K.best}<small> day${K.best === 1 ? '' : 's'}</small>`)}
       ${r('Active time recorded', `${esc(hm(R.time))}<small> since ${new Date(R.since).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}</small>`)}
     </div>`;
   }
 
   /* ---------- the AI summary ---------- */
-  const SYS = `You write a brief summary of one student's activity on Geodesic, an educational physics and maths website, for the period named in the data. Use only the numbers and names in the data; never invent or estimate others. Write three or four short sentences of plain prose, addressed to the student as "you": what they spent most of their time on; their main achievement; one pattern worth noticing, such as their accuracy, how regularly they studied, or a change from the previous period; and one concrete suggestion for the next period that follows from the data. If the period is still in progress, say "so far". If there was little or no activity, say so plainly and suggest one small first step. Praise only what the numbers show, without exaggeration. No headings, lists or emoji. Reply in English.`;
+  const SYS = `You write a brief summary of one student's activity on Twistor, an educational physics and maths website, for the period named in the data. Use only the numbers and names in the data; never invent or estimate others. Write three or four short sentences of plain prose, addressed to the student as "you": what they spent most of their time on; their main achievement; one pattern worth noticing, such as their accuracy, how regularly they studied, or a change from the previous period; and one concrete suggestion for the next period that follows from the data. If the period is still in progress, say "so far". If there was little or no activity, say so plainly and suggest one small first step. Praise only what the numbers show, without exaggeration. No headings, lists or emoji. Reply in English.`;
   function payload(P, U, A, U0, A0, K) {
     const mins = (s) => Math.round(s / 60), byArea = {}; Object.entries(U.a).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => { if (v >= 60) byArea[areaName(k)] = mins(v); });
     const ach = {}; [['topicsLearned', A.learned.length], ['practiceAnswersChecked', A.q], ['examAnswersMarked', A.exam], ['studySteps', A.study], ['timedTests', A.tests], ['competitionProblemsSolved', A.comp], ['mockPapers', A.mocks], ['olympiadPartsSolved', A.olyp], ['lecturesWatched', A.lec], ['feynmanChapters', A.fey], ['practicalsStarted', A.prac], ['investigationsStarted', A.invStart], ['investigationsWrittenUp', A.invDone], ['advancedLessonsStarted', A.advStart], ['advancedLessonsFinished', A.advDone], ['advancedChecksAnswered', A.advChecks]].forEach(([k, v]) => { if (v) ach[k] = v; });
@@ -232,7 +232,7 @@
     const s = X().st(), c = s.sum[P.key], data = payload(P, U, A, U0, A0, K), sig = JSON.stringify([data.usage, data.achievements]);
     const show = (e) => {
       box.innerHTML = `<div class="act-sh"><h2>Your ${P.word}${P.current ? ' so far' : ''}, in brief</h2>${e && !sumBusy ? `<button type="button" class="linkbtn" data-sum-new>Write it again</button>` : ''}</div>
-        ${e ? `<div class="act-st">${md(e.text)}</div><p class="act-sm">${e.local ? 'Written by the page, because the AI could not answer.' : `Written by ${esc(e.who || 'the AI')} from your numbers only`} · ${new Date(e.at).toLocaleString(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}${e.sig !== sig ? ' · your numbers have changed since' : ''}</p>` : `<p class="act-st muted">${sumBusy ? '<span class="dots"><i></i><i></i><i></i></span> Writing your summary' : 'No summary yet.'}</p>`}`;
+        ${e ? `<div class="act-st">${md(e.text)}</div><p class="act-sm">${e.local ? (WL.ai ? 'Written by the page, because the AI could not answer.' : 'Written by the page from your own records.') : `Written by ${esc(e.who || 'the AI')} from your numbers only`} · ${new Date(e.at).toLocaleString(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}${e.sig !== sig ? ' · your numbers have changed since' : ''}</p>` : `<p class="act-st muted">${sumBusy ? '<span class="dots"><i></i><i></i><i></i></span> Writing your summary' : 'No summary yet.'}</p>`}`;
       typeset(box);
     };
     const empty = !U.t && !U.n && !A.learned.length && !A.q && !A.tests && !A.mocks && !A.advStart;
@@ -270,7 +270,7 @@
     view.innerHTML = `<section class="act">
       <header class="act-head">
         <h1>Your activity</h1>
-        <p class="act-lede">How you have used Geodesic and what you have achieved. It is kept in this browser, for this account.</p>
+        <p class="act-lede">How you have used Twistor and what you have achieved. It is kept in this browser${WL.auth ? ', for this account' : ''}.</p>
         ${quotaLine()}
         <div class="act-ctl"><div class="act-tabs" role="tablist" aria-label="Period">${Object.keys(KIND).map((k) => `<button type="button" role="tab" aria-selected="${k === kind}" data-kind="${k}">This ${k}</button>`).join('')}</div>
           <div class="act-nav"><button type="button" class="hbtn" data-shift="-1" aria-label="Previous ${P.word}">‹</button><span class="act-range">${esc(P.label)}</span><button type="button" class="hbtn" data-shift="1" aria-label="Next ${P.word}"${off >= 0 ? ' disabled' : ''}>›</button></div></div>
@@ -284,7 +284,7 @@
       </div>
       ${topicsHTML(U)}
       <section class="act-sec"><h2>Your records</h2>${recordsHTML(R, K)}</section>
-      <p class="act-note">Time counts while the page is open and in use, or while a film or narration plays. The summary is written by the AI from the numbers on this page and the names of topics, never your name or account. Everything here stays in this browser. <button type="button" class="linkbtn" data-act-clear>Clear the activity record</button></p>
+      <p class="act-note">Time counts while the page is open and in use, or while a film or narration plays. ${WL.ai ? 'The summary is written by the AI from the numbers on this page and the names of topics, never your name or account.' : 'The summary is written by the page itself from these numbers.'} Everything here stays in this browser. <button type="button" class="linkbtn" data-act-clear>Clear the activity record</button></p>
     </section>`;
     typeset(view);
     summary(view, P, U, A, U0, A0, K, false);
@@ -307,9 +307,9 @@
       if ((el = at('[data-kind]'))) { kind = el.dataset.kind; off = 0; render(view); return; }
       if ((el = at('[data-shift]'))) { off = Math.min(0, off + +el.dataset.shift); render(view); return; }
       if (at('[data-sum-new]')) { summary(view, P, U, A, U0, A0, K, true); return; }
-      if (at('[data-act-clear]')) { if (confirm('Clear the record of your activity (time, pages and AI requests) and the summaries? Your progress, answers and tests are kept.')) { X().mutate((o) => { o.d = {}; o.sum = {}; o.since = Date.now(); }); render(view); } return; }
+      if (at('[data-act-clear]')) { if (confirm('Clear the record of your activity (time, pages' + (WL.ai ? ' and AI requests' : '') + ') and the summaries? Your progress, answers and tests are kept.')) { X().mutate((o) => { o.d = {}; o.sum = {}; o.since = Date.now(); }); render(view); } return; }
     };
   }
-  WL.actPage = (view) => { document.body.dataset.page = 'activity'; document.title = 'Your activity · Geodesic'; render(view); };
+  WL.actPage = (view) => { document.body.dataset.page = 'activity'; document.title = 'Your activity · Twistor'; render(view); };
   WL.actPage.period = period; WL.actPage.usage = usage; WL.actPage.achieved = achieved; WL.actPage.streaks = streaks; WL.actPage.payload = payload; WL.actPage.localSummary = localSummary;
 })();

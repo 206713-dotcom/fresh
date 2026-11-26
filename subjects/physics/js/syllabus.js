@@ -1,5 +1,5 @@
-/* Geodesic — syllabus coverage map. Objectives are short paraphrases (not the official wording) of the published syllabuses,
-   each mapped to the Geodesic topic that teaches it. Official documents are linked; always check them for exam wording. */
+/* Twistor — syllabus coverage map. Objectives are short paraphrases (not the official wording) of the published syllabuses,
+   each mapped to the Twistor topic that teaches it. Official documents are linked; always check them for exam wording. */
 (function () {
   const WL = window.WL;
   WL.syllabi = [

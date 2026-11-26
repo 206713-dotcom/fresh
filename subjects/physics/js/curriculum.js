@@ -1,4 +1,4 @@
-/* Geodesic — roadmap: stages, strands, nodes, maths needed. */
+/* Twistor — roadmap: stages, strands, nodes, maths needed. */
 (function () {
   const WL = (window.WL = window.WL || {});
 

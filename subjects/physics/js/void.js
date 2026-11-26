@@ -1,4 +1,4 @@
-/* Geodesic: the background void (static stars + a faint spacetime horizon) and the home hero's two galaxies passing. */
+/* Twistor: the background void (static stars + a faint spacetime horizon) and the home hero's two galaxies passing. */
 (function () {
   const WL = (window.WL = window.WL || {});
   const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -11,12 +11,6 @@
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5), W = innerWidth, H = innerHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     const c = cv.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
-    const hy = H * 0.64, vx = W * 0.5;
-    c.lineWidth = 1;
-    for (let k = -30; k <= 30; k++) { c.strokeStyle = `rgba(124,170,255,${(0.055 * (1 - Math.abs(k) / 32)).toFixed(3)})`; c.beginPath(); c.moveTo(vx + k * 5, hy); c.lineTo(vx + k * W * 0.075, H + 4); c.stroke(); }
-    for (let j = 1; j <= 16; j++) { const t = Math.pow(j / 16, 2.3), y = hy + (H - hy) * t; c.strokeStyle = `rgba(124,170,255,${(0.012 + 0.05 * t).toFixed(3)})`; c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
-    const g = c.createLinearGradient(0, hy - 10, 0, hy + 140); g.addColorStop(0, 'rgba(3,6,13,1)'); g.addColorStop(1, 'rgba(3,6,13,0)');
-    c.fillStyle = g; c.fillRect(0, hy - 10, W, 150);
     const r = rng(11), n = Math.round((W * H) / 4600);
     for (let i = 0; i < n; i++) {
       const x = r() * W, y = r() * H * 0.98, m = Math.pow(r(), 3.2), a = 0.12 + 0.6 * m, s = 0.35 + 1.15 * m, w = r();

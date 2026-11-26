@@ -1,4 +1,4 @@
-/* Geodesic step-by-step guides, stage gcse (built from src/guide/gcse-*.js) */
+/* Twistor step-by-step guides, stage gcse (built from src/guide/gcse-*.js) */
 WL.gd('gcse-forces', {
   h: 'Push an empty supermarket trolley and it shoots forward; push a full one just as hard and it creeps. Hang one bag on a spring and it stretches a little; hang two and it stretches twice as far. This topic turns those two everyday facts into two rules, F = kx for springs and F = ma for motion, and shows where each rule stops working.',
   s: [

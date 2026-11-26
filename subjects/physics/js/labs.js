@@ -1,4 +1,4 @@
-/* Geodesic — required practicals.
+/* Twistor — required practicals.
    AQA GCSE Physics (8463) required practicals 1–10 and AQA A-level Physics (7408) required practicals 1–12,
    as virtual experiments. You handle the apparatus on a dark bench, record readings into a results table,
    choose what to plot, fit a line and get a result with its uncertainty. Then come practical exam questions
@@ -291,7 +291,7 @@ function Bench(host, part, P) {
       <dl class="bench-read"></dl>
       <p class="bench-msg" role="status" aria-live="polite"></p>
       <form class="bench-an" hidden></form>
-      <button type="button" class="btn primary bench-rec" data-b="rec">Record this reading</button>
+      <div class="bench-recrow"><button type="button" class="btn primary bench-rec" data-b="rec" aria-keyshortcuts="R">Record this reading<kbd aria-hidden="true">R</kbd></button><button type="button" class="btn small ghost bench-undo" data-undo aria-keyshortcuts="U" title="Remove the last reading (U)">Undo</button></div>
       <p class="bench-hint">${esc(sim.recHint || 'Each press adds one row to your results table.')}</p>
     </div></div>`;
   const cv = $('canvas', host), g = cv.getContext('2d'), ctl = $('.bench-ctl', host), rd = $('.bench-read', host), msg = $('.bench-msg', host);
@@ -396,7 +396,7 @@ function Bench(host, part, P) {
     raf = requestAnimationFrame(frame);
   }
   buildControls(); readouts(); raf = requestAnimationFrame(frame);
-  cv.addEventListener('keydown', (e) => { if (e.key === 'r' || e.key === 'R') record(); });
+  cv.addEventListener('keydown', (e) => { if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); record(); } });   // the page-level R key skips handled events
   return { S, destroy() { alive = false; cancelAnimationFrame(raf); clearTimeout(msgT); }, record, askAnalog };
 }
 /* one still frame of a bench, for the list of practicals */
@@ -610,7 +610,7 @@ function renderHub(view) {
     <header class="prhero"><div>
       <p class="prk">GCSE and A-level physics · AQA</p>
       <h1>Required practicals</h1>
-      <p class="prlead">Every required practical as an experiment you run yourself. Set up the apparatus, read the scales, record your results, choose the graph and find the answer. Then answer the exam questions on it and write it up: Einstein marks both against a mark scheme and gives you a score.</p>
+      <p class="prlead">Every required practical as an experiment you run yourself. Set up the apparatus, read the scales, record your results, choose the graph and find the answer. Then answer the exam questions on it and write it up: ${WL.ai ? 'Einstein marks both against a mark scheme and gives you a score' : 'you mark both against the mark schemes and get a score'}.</p>
       <p class="prmeta">${done ? `${done} of ${PRACS.length} practicals scored.` : `${PRACS.length} practicals. Start with any one.`}</p></div>
       <canvas class="prherocv" data-still="${(byId('g8') || PRACS[0]).id}" aria-hidden="true"></canvas>
     </header>
@@ -619,7 +619,7 @@ function renderHub(view) {
     <aside class="prhonest"><h3>What a simulation can and cannot do</h3>
       <p>Each bench is a physical model of the real apparatus, faults included: heat escapes, clips add resistance, scales have zero errors, your reactions are slow and Geiger counters miss counts. That lets you practise the method, the readings, the analysis and the evaluation, which is what the written papers test. It does not replace handling the real thing: the A-level practical endorsement (CPAC) and real exam questions about technique assume you have done these experiments with your own hands.</p></aside>
   </section>`;
-  document.title = 'Required practicals · Geodesic';
+  document.title = 'Required practicals · Twistor';
   const cvs = $$('canvas[data-still]', view); let k = 0;
   const later = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 250 }) : setTimeout(fn, 30));
   const next = () => { if (k >= cvs.length || !cvs[k].isConnected) return; const cv = cvs[k++], p = byId(cv.dataset.still); try { still(cv, p.parts[0], 11 + p.n); } catch (e) {} later(next); };
@@ -628,6 +628,7 @@ function renderHub(view) {
 
 /* one practical */
 let CUR = null; // { p, rec, benches, tab, part }
+const PRAC_L = { keys: null, place: null, touch: false, touched: 0 };   // page-level listeners of the open practical
 function planHTML(p) {
   const li = (a) => a.map((x) => `<li>${pr(x)}</li>`).join('');
   return `<div class="prplan">
@@ -658,16 +659,19 @@ function labHTML(p, rec) {
   ${p.parts.map((pt, i) => `<div class="prpart" data-part="${pt.key}"${i ? ' hidden' : ''}>
     ${pt.intro ? `<p class="prtext prpi">${pr(pt.intro)}</p>` : ''}
     <div class="benchhost" data-bh="${pt.key}"></div>
+    <div class="prbook prpart" data-part="${pt.key}" data-book="${pt.key}"${i ? ' hidden' : ''}>
     <h2 class="prh2">Results</h2>
     <div class="rtabwrap" data-rt="${pt.key}"></div>
     <div class="rtools"><button type="button" class="btn small ghost" data-clear="${pt.key}">Clear the table</button><button type="button" class="btn small ghost" data-new="${pt.key}" title="A new sample with new hidden values, and an empty table">New sample</button></div>
     <h2 class="prh2">${pt.stat ? 'Mean value' : 'Analysis'}</h2>
     <div class="ana" data-ana="${pt.key}"></div>
+    </div>
   </div>`).join('')}
   </div>
   <aside class="prsheet" aria-label="Worksheet">
     <div class="shtop"><h2>Worksheet</h2><p class="shsum" data-shsum></p><button type="button" class="shtog" data-shtoggle aria-expanded="false"><span class="vh">Show the worksheet</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 10l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     <div class="shbody">
+      <div class="prbookslot"></div>
       <div data-sheet></div>
       <section class="shqs"><h3 class="shh3">Exam questions</h3>${qHTML(p, rec)}</section>
     </div>
@@ -764,17 +768,17 @@ function anaHTML(p, part, ps, D, S) {
 }
 function qHTML(p, rec) {
   const qd = rec.q || {};
-  return `<p class="prtext">In the style of the written papers. Try things on the apparatus while you answer, then press Mark: Einstein ticks the mark-scheme points it finds in your answer. You can change any tick.</p>
+  return `<p class="prtext">In the style of the written papers. Try things on the apparatus while you answer, then ${WL.ai ? 'press Mark: Einstein ticks the mark-scheme points it finds in your answer. You can change any tick.' : 'open the mark scheme and tick each point your answer makes. Be strict: a point counts only if your answer says it.'}</p>
   <div class="pqs">${p.qs.map((q, i) => { const r = qd[i] || {}, got = r.ticks ? r.ticks.filter(Boolean).length : null;
     return `<div class="pq${got != null ? ' marked' : ''}" data-q="${i}">
       <header><span class="pqn">${i + 1}</span><span class="pqm">${q.m} mark${q.m > 1 ? 's' : ''}</span>${got != null ? `<span class="pqsc"><b>${got}</b>/${q.m}</span>` : ''}</header>
       <p class="pqq" data-tid="${esc((p.topics || [])[0] || '')}">${pr(q.q)}</p>
       <textarea data-qa="${i}" rows="${q.m > 3 ? 5 : 3}" placeholder="Your answer" aria-label="Your answer to question ${i + 1}">${esc(r.a || '')}</textarea>
-      <div class="pqact"><button type="button" class="btn small primary" data-qmark="${i}">Mark with Einstein</button><button type="button" class="btn small ghost" data-qms="${i}" aria-expanded="false">Mark scheme</button></div>
+      <div class="pqact">${WL.ai ? `<button type="button" class="btn small primary" data-qmark="${i}">Mark with Einstein</button>` : ''}<button type="button" class="btn small ${WL.ai ? 'ghost' : 'primary'}" data-qms="${i}" aria-expanded="false">Mark scheme</button></div>
       <div class="pqfb">${r.fb ? `<p><b>Einstein:</b> ${pr(r.fb)} <small>${esc(r.via || '')}</small></p>` : ''}</div>
       <ol class="pqms" hidden>${q.pts.map((pt, j) => `<li><label><input type="checkbox" data-qt="${i}:${j}"${r.ticks && r.ticks[j] ? ' checked' : ''}> <span>${pr(pt)}</span></label></li>`).join('')}${q.a ? `<li class="pqa">Answer: ${pr(q.a)}</li>` : ''}</ol>
     </div>`; }).join('')}</div>
-  <p class="pqall"><button type="button" class="btn" data-qall>Mark every answered question</button> <span class="muted" data-qall-msg></span></p>`;
+  ${WL.ai ? '<p class="pqall"><button type="button" class="btn" data-qall>Mark every answered question</button> <span class="muted" data-qall-msg></span></p>' : ''}`;
 }
 function ring(v, label, sub) { return `<div class="sring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="19" class="sr0"/><circle cx="22" cy="22" r="19" class="sr1" style="stroke-dasharray:${(v == null ? 0 : v / 100) * 119.4} 119.4"/></svg><b>${v == null ? '–' : v + '%'}</b><span>${esc(label)}</span><small>${esc(sub)}</small></div>`; }
 function repHTML(p, rec) {
@@ -787,10 +791,17 @@ function repHTML(p, rec) {
   </div>
   <h2 class="prh2">Write-up</h2>
   <p class="prtext">${pr(p.wr)}</p>
-  <p class="muted wrnote">Use your own numbers. Einstein reads your results and graph with your write-up, so it can check that what you claim is what you found.</p>
+  <p class="muted wrnote">Use your own numbers. ${WL.ai ? 'Einstein reads your results and graph with your write-up, so it can check that what you claim is what you found.' : 'A claim counts only if your results and graph show it.'}</p>
   <textarea class="wrta" data-wr rows="9" placeholder="Conclusion: …&#10;Evaluation: …" aria-label="Your write-up">${esc(w.a || '')}</textarea>
-  <div class="pqact"><button type="button" class="btn primary" data-wmark>Mark my write-up</button></div>
+  ${WL.ai ? '<div class="pqact"><button type="button" class="btn primary" data-wmark>Mark my write-up</button></div>' : selfWr(w)}
   <div class="wrfb">${w.fb ? wrFb(w) : ''}</div>`;
+}
+/* without the AI: the write-up is graded by the learner against the levels used for 6-mark extended answers */
+const WR_LV = [[5, 6, 'A full write-up', 'States the result with its unit and an uncertainty, compares it with the expected value, names the largest source of error and says which way it pushed the result, and suggests a specific improvement.'],
+  [3, 4, 'A sound write-up', 'States the result with its unit, gives some evaluation of the errors, and suggests a general improvement.'],
+  [1, 2, 'A start', 'Says what was found, with little or no evaluation.']];
+function selfWr(w) {
+  return `<fieldset class="wrself"><legend>Mark your write-up against these levels</legend>${WR_LV.map(([lo, hi, name, d]) => `<div class="wrlv"><p><b>${name}</b> <small>${lo}–${hi} marks</small></p><p>${d}</p><div class="wrmk">${[lo, hi].map((m) => `<label><input type="radio" name="wrself" value="${m}"${w.mark === m ? ' checked' : ''} data-wself> ${m}</label>`).join('')}</div></div>`).join('')}<label class="wrzero"><input type="radio" name="wrself" value="0"${w.mark === 0 ? ' checked' : ''} data-wself> 0: nothing yet worth a mark</label></fieldset>`;
 }
 const wrFb = (w) => `<p><b>${w.mark}/6</b>, level ${w.lvl}. ${pr(w.good || '')}</p>${w.fb ? `<p><b>Next mark:</b> ${pr(w.fb)}</p>` : ''}<p><small>${esc(w.via || '')}</small></p>`;
 function dataSummary(p, rec) {
@@ -827,7 +838,7 @@ function renderPrac(view, id) {
     <section id="pt-rep" role="tabpanel" aria-labelledby="ptab-rep" hidden>${repHTML(p, rec)}</section>
     <nav class="prnext">${(() => { const i = PRACS.indexOf(p), a = PRACS[i - 1], b = PRACS[i + 1]; return `${a ? `<a href="#prac-${a.id}">‹ ${esc(LV[a.lv].short)} RP ${a.n}: ${esc(a.title)}</a>` : '<span></span>'}${b ? `<a href="#prac-${b.id}">${esc(LV[b.lv].short)} RP ${b.n}: ${esc(b.title)} ›</a>` : ''}`; })()}</nav>
   </article>`;
-  document.title = `${p.title} · Required practical · Geodesic`;
+  document.title = `${p.title} · Required practical · Twistor`;
   const persist = () => { rec.tab = CUR.tab; saveRec(id, rec); };
   const benchOf = (key) => CUR.benches[key];
   const Sof = (part) => (benchOf(part.key) ? benchOf(part.key).S : headless(part, seedOf(rec, part)));
@@ -835,7 +846,7 @@ function renderPrac(view, id) {
     if (k === 'q') k = 'lab';
     CUR.tab = k; $$('.prtabs [role=tab]', view).forEach((b) => b.setAttribute('aria-selected', b.dataset.pt === k));
     ['plan', 'lab', 'rep'].forEach((x) => { $('#pt-' + x, view).hidden = x !== k; });
-    if (k === 'lab') showPart(CUR.part);
+    if (k === 'lab') { showPart(CUR.part); placeBooks(); }
     if (k === 'rep') { $('#pt-rep', view).innerHTML = repHTML(p, rec); typeset($('#pt-rep', view)); }
     persist();
   }
@@ -867,10 +878,45 @@ function renderPrac(view, id) {
     const el = $('[data-shsum]', view); if (!el) return; const sc = scoreOf(p, rec);
     el.innerHTML = `${tq ? `<span><b>${tq.score}</b>/10 technique</span>` : ''}<span><b>${sc.qGot}</b>/${sc.qMax} on questions</span>`;
   }
+  /* wide screens: results and analysis sit in the lab book beside the bench, so a reading shows up at once without scrolling;
+     narrow screens: they follow the bench, and the worksheet is the drawer at the bottom */
+  const WIDE = window.matchMedia('(min-width: 1100px)');
+  function placeBooks() {
+    const slot = $('.prbookslot', view), wide = WIDE.matches;
+    $$('[data-book]', view).forEach((bk) => { const home = $(`.prpart[data-part="${bk.dataset.book}"]:not(.prbook)`, view); const to = wide ? slot : home; if (to && bk.parentNode !== to) to.appendChild(bk); });
+    const h = $('.shtop h2', view); if (h) h.textContent = wide ? 'Lab book' : 'Worksheet';
+    const sh = $('.prsheet', view); if (sh) sh.classList.toggle('book', wide);
+  }
+  /* one set of page-level listeners at a time: #view stays in the document from page to page */
+  if (PRAC_L.place) WIDE.removeEventListener('change', PRAC_L.place);
+  PRAC_L.place = placeBooks; WIDE.addEventListener('change', placeBooks);
+  if (!PRAC_L.touch) { PRAC_L.touch = true; ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach((ev) => view.addEventListener(ev, (e) => { if (e.target.closest && e.target.closest('.prsheet')) PRAC_L.touched = Date.now(); }, { passive: true })); }
+  const sheetEl = () => $('.prsheet', view);
+  function undoLast() {
+    const part = partByKey(CUR.part), ps = partRec(rec, part.key), b = benchOf(part.key);
+    if (!ps.rows.length) { if (b) b.S.say('There is no reading to remove.'); return; }
+    ps.rows.pop(); refresh(part); if (b) b.S.say(`Removed reading ${ps.rows.length + 1}.`, true);
+  }
+  const KEYS = (e) => {
+    if (!/^#prac-/.test(location.hash) || CUR.tab !== 'lab' || e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+    const tg = e.target; if (tg && (/^(INPUT|TEXTAREA|SELECT)$/.test(tg.tagName) || tg.isContentEditable)) return;
+    const k = e.key.toLowerCase(), b = benchOf(CUR.part);
+    if (k === 'r' && b) { e.preventDefault(); b.record(); }
+    else if (k === 'u') { e.preventDefault(); undoLast(); }
+  };
+  if (PRAC_L.keys) document.removeEventListener('keydown', PRAC_L.keys);
+  PRAC_L.keys = KEYS; document.addEventListener('keydown', KEYS);
   function addRow(part, row, S) {
     const ps = partRec(rec, part.key); ps.rows.push(row); if (ps.rows.length > 200) ps.rows.shift();
     refresh(part);
     const sc = $(`[data-rt="${part.key}"] .rtabscroll`, view); if (sc) sc.scrollTop = sc.scrollHeight;
+    const tr = $(`[data-rt="${part.key}"] tbody tr:last-child`, view); if (tr) tr.classList.add('new');
+    /* in the lab book, bring the new row into view unless the learner is reading further down right now */
+    const sh = sheetEl(), wrap = $(`[data-rt="${part.key}"]`, view);
+    if (sh && wrap && sh.classList.contains('book') && Date.now() - (PRAC_L.touched || 0) > 4000) {
+      const a = sh.getBoundingClientRect(), w = wrap.getBoundingClientRect();
+      if (w.bottom > a.bottom || w.top < a.top) sh.scrollTo({ top: Math.max(0, sh.scrollTop + w.top - a.top - 12), behavior: WL.reduced ? 'auto' : 'smooth' });
+    }
     const an = part.cols.filter((c) => c.an), n = ps.rows.length, b = benchOf(part.key);
     if (an.length && b) b.askAnalog(an, n, (vals) => {
       const r = ps.rows[n - 1]; if (!r) return null; Object.assign(r, vals); refresh(part);
@@ -885,6 +931,7 @@ function renderPrac(view, id) {
     const tb = t.closest('[data-pt]'); if (tb) { showTab(tb.dataset.pt); if (tb.closest('.prgo')) window.scrollTo({ top: 0, behavior: WL.reduced ? 'auto' : 'smooth' }); return; }
     const pp = t.closest('[data-pp]'); if (pp) { showPart(pp.dataset.pp); persist(); return; }
     const tg = t.closest('[data-shtoggle], .shtop h2'); if (tg && window.matchMedia('(max-width: 1099px)').matches) { const sh = $('.prsheet', view), open = !sh.classList.contains('open'); sh.classList.toggle('open', open); $('[data-shtoggle]', view).setAttribute('aria-expanded', open); return; }
+    if (t.closest('[data-undo]')) { undoLast(); return; }
     const del = t.closest('[data-del]'); if (del) { const part = partByKey(CUR.part), ps = partRec(rec, part.key); ps.rows.splice(+del.dataset.del, 1); refresh(part); return; }
     const cl = t.closest('[data-clear]'); if (cl) { const part = partByKey(cl.dataset.clear), ps = partRec(rec, part.key); if (!ps.rows.length) return; if (cl.dataset.armed) { ps.rows = []; ps.plot = null; ps.last = null; delete cl.dataset.armed; cl.textContent = 'Clear the table'; refresh(part); } else { cl.dataset.armed = '1'; cl.textContent = 'Press again to clear every reading'; setTimeout(() => { if (cl.isConnected) { delete cl.dataset.armed; cl.textContent = 'Clear the table'; } }, 3500); } return; }
     const nw = t.closest('[data-new]'); if (nw) { const part = partByKey(nw.dataset.new); if (!nw.dataset.armed) { nw.dataset.armed = '1'; nw.textContent = 'Press again: new hidden values and an empty table'; setTimeout(() => { if (nw.isConnected) { delete nw.dataset.armed; nw.textContent = 'New sample'; } }, 3500); return; }
@@ -921,6 +968,7 @@ function renderPrac(view, id) {
   view.onchange = (e) => {
     const t = e.target;
     if (t.matches('[data-ar]')) { const part = partByKey(CUR.part), ps = partRec(rec, part.key), r = ps.rows[+t.dataset.ar]; if (!r) return; const v = parseFloat(String(t.value).replace(',', '.').replace('−', '-')); r[t.dataset.ak] = isFinite(v) ? v : null; const next = +t.dataset.ar + 1; refresh(part); const nx = $(`[data-rt="${part.key}"] input[data-ar="${next}"]`, view); if (nx && nx.value === '') nx.focus({ preventScroll: true }); return; }
+    if (t.matches('[data-wself]')) { rec.w = Object.assign(rec.w || {}, { a: (($('[data-wr]', view) || {}).value || (rec.w || {}).a || ''), mark: +t.value, lvl: +t.value >= 5 ? 3 : +t.value >= 3 ? 2 : +t.value ? 1 : 0, via: 'self' }); persist(); const ro = $('.score', view); if (ro) { const tmp = document.createElement('div'); tmp.innerHTML = repHTML(p, rec); const nw = tmp.querySelector('.score'); if (nw) ro.replaceWith(nw); } return; }
     if (t.matches('[data-qt]')) { const [i, j] = t.dataset.qt.split(':').map(Number), q = p.qs[i]; rec.q = rec.q || {}; const r = (rec.q[i] = rec.q[i] || {}); r.ticks = r.ticks || q.pts.map(() => false); r.ticks[j] = t.checked; persist(); const sc = $(`.pq[data-q="${i}"] header`, view); const got = r.ticks.filter(Boolean).length; let b = sc.querySelector('.pqsc'); if (!b) { b = document.createElement('span'); b.className = 'pqsc'; sc.appendChild(b); } b.innerHTML = `<b>${got}</b>/${q.m}`; return; }
   };
   async function markQ(i) {
@@ -984,12 +1032,13 @@ SIMS.shc = {
     S.cf = { al: gauss(S.R), cu: gauss(S.R), fe: gauss(S.R) }; S.Troom = 19 + 3 * S.R(); S.Rh = 2.9 + 0.2 * S.R(); S.V = 11.8 + 0.3 * S.R();
     S.m = 1.000; S.mat = S.mat || 'al'; S.ins = false; S.oil = false; S.inHole = false; S.on = false; S.started = false; this.fresh(S); S.tx = 585; S.ty = 150; S.nT = 0; S.nTt = 0;
   },
-  fresh(S) { S.cTrue = SHC_MAT[S.mat][1] * (1 + 0.012 * S.cf[S.mat]); S.Tb = S.Th = S.Tt = S.Troom; S.E = 0; S.clock = 0; S.started = false; },
+  fresh(S) { S.cTrue = SHC_MAT[S.mat][1] * (1 + 0.012 * S.cf[S.mat]); S.Tb = S.Th = S.Tt = S.Troom; S.E = 0; S.clock = 0; S.started = false; S.last = -1; },
   pose(S) { S.inHole = true; S.oil = true; S.on = true; S.Tb = 31; S.Th = 52; S.Tt = 30.6; S.E = 21600; S.clock = 450; S.tx = 400; S.ty = 164; },
   Gl: (S) => (S.ins ? 0.12 : 0.6),
   step(S, dt) {
     const P = S.on ? (S.V * S.V) / S.Rh : 0;
     S.E += P * dt; if (S.started) S.clock += dt;
+    if (S.auto && S.started) { const k = Math.floor(S.clock / 60 + 1e-9); if (k > S.last && S.clock <= 1200) { S.last = k; S.snap = this.record(S); S.want = true; } }   // a reading taken on each whole minute (the frame records it), for 20 minutes
     const Ch = 30, Ghb = 2.2;
     S.Th += (dt * (P - Ghb * (S.Th - S.Tb) - 0.02 * (S.Th - S.Troom))) / Ch;
     S.Tb += (dt * (Ghb * (S.Th - S.Tb) - this.Gl(S) * (S.Tb - S.Troom))) / (S.m * S.cTrue);
@@ -1043,12 +1092,13 @@ SIMS.shc = {
   controls: (S) => [
     { k: 'mat', type: 'select', label: 'Block', opts: [['al', 'Aluminium'], ['cu', 'Copper'], ['fe', 'Steel']], get: (S) => S.mat, set: (S, v) => { S.mat = v; SIMS.shc.fresh(S); S.say('A new block, at room temperature. Start a new set of readings.', true); }, lock: (S) => S.on },
     { k: 'ins', type: 'check', label: 'Insulation round the block', get: (S) => S.ins, set: (S, v) => { S.ins = v; } },
+    { k: 'auto', type: 'check', label: 'Record automatically every minute', get: (S) => !!S.auto, set: (S, v) => { S.auto = v; S.last = S.started && S.clock >= 1 ? Math.floor(S.clock / 60 + 1e-9) : -1; } },
     { k: 'oil', type: 'button', label: (S) => (S.oil ? 'Oil is in the hole' : 'Put a drop of oil in the hole'), act: (S) => { S.oil = true; }, lock: (S) => S.oil },
     { k: 'th', type: 'button', label: (S) => (S.inHole ? 'Take the thermometer out' : 'Put the thermometer in the hole'), act: (S) => { S.inHole = !S.inHole; SIMS.shc.place(S); } },
     { k: 'on', type: 'button', label: (S) => (S.on ? 'Switch the heater off' : 'Switch the heater on'), act: (S) => SIMS.shc.toggle(S) }
   ],
   readouts: (S) => [['Energy from the joulemeter', `${Math.round(S.E)} J`], ['Thermometer', S.inHole ? `${fx(quant(S.Tt + S.nT, 0.1), 1)} °C` : `${fx(quant(S.Tt + S.nT, 0.1), 1)} °C, in the air`], ['Time', `${Math.round(S.clock)} s`], ['Heater', S.on ? 'on' : 'off']],
-  record(S) { if (!S.inHole) return 'The thermometer is reading the air. Put it in the hole in the block first.'; return { t: Math.round(S.clock), E: Math.round(S.E), th: +fx(quant(S.Tt + S.nT, 0.1), 1), _f: { oil: S.oil, ins: S.ins, mat: S.mat } }; },
+  record(S) { if (S.snap != null) { const r = S.snap; S.snap = null; return r; } if (!S.inHole) return 'The thermometer is reading the air. Put it in the hole in the block first.'; return { t: Math.round(S.clock), E: Math.round(S.E), th: +fx(quant(S.Tt + S.nT, 0.1), 1), _f: { oil: S.oil, ins: S.ins, mat: S.mat } }; },
   checks(S, D) { const f = D.filter((r) => r._f); return f.length ? [['Oil round the thermometer', f.every((r) => r._f.oil), 'Without oil the air gap makes the thermometer lag behind the block.'], ['Block insulated', f.every((r) => r._f.ins), 'Without insulation, more of the energy heats the room instead of the block.'], ['One block for the whole table', new Set(f.map((r) => r._f.mat)).size === 1, 'Mixing blocks in one table mixes two different lines.']] : []; }
 };
 
