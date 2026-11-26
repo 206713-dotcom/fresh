@@ -117,15 +117,36 @@ function showTask() {
   resetTimer();
   updateWords();
   updateCompletion();
+  updateContinue();
   showAttempt();
   showAttemptList();
 }
 
-select.addEventListener('change', showTask);
+function updateContinue() {
+  const previous = tasks.find(item => item.id === read('last-practice'));
+  if (!previous) return;
+  get('continue-title').textContent = 'Continue practice';
+  get('continue-detail').textContent = previous.title + ' · Question ' + previous.number;
+  get('continue-practice').textContent = 'Resume task';
+}
+
+get('continue-practice').addEventListener('click', () => {
+  const previous = tasks.find(item => item.id === read('last-practice'));
+  if (previous && !attempt && previous.id !== task.id) {
+    select.value = previous.id;
+    showTask();
+  }
+});
+select.addEventListener('change', () => {
+  write('last-practice', select.value, null);
+  showTask();
+});
 get('analysis').addEventListener('toggle', () => {
   if (get('analysis').open) updateMetrics(get('metrics'), editor.value);
 });
 editor.addEventListener('input', () => {
+  write('last-practice', task.id, null);
+  updateContinue();
   if (examActive()) {
     if (!timeRemaining(attempt.endsAt)) {
       editor.value = attempt.answer;
@@ -284,6 +305,7 @@ function submitAttempt() {
 }
 
 get('exam-start').addEventListener('click', () => {
+  write('last-practice', task.id, null);
   attempt = { task:task.id, answer:'', endsAt:Date.now() + task.timing * 60_000, submittedAt:null };
   get('analysis').open = false;
   saveAttempt();
