@@ -57,7 +57,12 @@ function updateCompletion() {
   get('reviewed').setAttribute('aria-pressed', String(reviewed));
   get('reviewed').textContent = reviewed ? 'Undo reviewed status' : 'Mark as reviewed';
   const total = tasks.filter(item => read('review:' + item.id) === '1').length;
-  get('completion').textContent = total + ' of ' + tasks.length + ' tasks reviewed';
+  const progress = get('planner-progress');
+  progress.max = tasks.length;
+  progress.value = total;
+  progress.parentElement.hidden = false;
+  get('planner-progress-text').textContent = total + ' of ' + tasks.length + ' tasks reviewed';
+  get('completion').textContent = get('planner-progress-text').textContent;
 }
 
 function stopTimer() {
