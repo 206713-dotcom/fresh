@@ -743,3 +743,8 @@ html.qpt-dock .bar .tabs, html.qpt-dock .bar .search, html.qpt-dock .bar .tool s
 /* ---------- all simulations on one page ---------- */
 .sim-sec { margin-top: 34px; } .sim-h { font: 400 clamp(26px, 3vw, 34px)/1.15 var(--display); letter-spacing: -.01em; margin: 0 0 4px; color: var(--ink); }
 .sim-item { scroll-margin-top: 90px; } .sim-item .fig { margin-top: 16px; } .sim-item .hm-note { margin-top: 8px; }
+
+/* ---------- credit on the start screen ---------- */
+.made-by { display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 13px; border-radius: 999px; background: rgba(255, 255, 255, .42); border: 1px solid rgba(255, 255, 255, .7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: #1b3a5c; font: 400 13px/1 var(--display); letter-spacing: .02em; white-space: nowrap; }
+.made-by b { font-weight: 500; color: #06203c; }
+@media (max-width: 620px) { .start-top { flex-wrap: wrap; row-gap: 8px; } .made-by { order: 99; height: 26px; padding: 0 10px; font-size: 11.5px; } }

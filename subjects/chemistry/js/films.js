@@ -422,13 +422,45 @@
   const SAY = [[/Eₐ/g, 'E A'], [/ΔH/g, 'delta H'], [/ΔG/g, 'delta G'], [/ΔS/g, 'delta S'], [/δ\+/g, 'delta plus'], [/δ−/g, 'delta minus'], [/²⁺/g, ' two plus'], [/²⁻/g, ' two minus'], [/⁺/g, ' plus'], [/⁻/g, ' minus'], [/→/g, ' gives '], [/⇌/g, ' in equilibrium with '], [/°C/g, ' degrees Celsius'], [/°/g, ' degrees'], [/×/g, ' times '], [/÷/g, ' divided by '], [/SN2/g, 'S N 2'], [/Aᵣ/g, 'A R'], [/[₀-₉]/g, m => String(m.charCodeAt(0) - 8320)], [/–/g, ' '], [/•/g, ' radical'], [/π/g, 'pi'], [/σ/g, 'sigma'], [/pH/g, 'P H'], [/Ka\b/g, 'K A'], [/½/g, 'half '], [/“|”/g, '']];
   const say = t => SAY.reduce((s, r) => s.replace(r[0], r[1]), String(t));
   let voiceP = null, activeStop = null;
-  function getVoice() {
+  function baseVoice() {
     if (voiceP) return voiceP;
     return (voiceP = (async () => {
       const localVoice = window.speechSynthesis?.getVoices().find(voice => voice.localService && voice.lang.startsWith('en'));
       if (localVoice && window.SpeechSynthesisUtterance) return { kind: 'browser voice', speak: (s, r) => new Promise((ok, no) => { try { const u = new SpeechSynthesisUtterance(s); u.voice = localVoice; u.lang = localVoice.lang; u.rate = r; u.onend = ok; u.onerror = no; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) { no(e); } }), stop: () => { try { speechSynthesis.cancel(); } catch (e) { } } };
       return null;
     })());
+  }
+  // recorded AI narration: one audio file per film, with the start and end of each scene's line in FILM_AUDIO
+  function recorded() {
+    const M = window.FILM_AUDIO; if (!M || !window.Audio) return null;
+    let a = null, cur = '', raf = 0, end = null, r = 1;
+    const el = n => { if (cur !== n || !a) { if (a) { try { a.pause(); } catch (e) { } } a = new Audio('audio/films/' + n + '.mp3'); a.preload = 'auto'; cur = n; } return a; };
+    const finish = () => { cancelAnimationFrame(raf); const e = end; end = null; if (e) e(); };
+    const stop = () => { if (a) { try { a.pause(); } catch (e) { } } finish(); };
+    return {
+      has: (n, i) => !!(M[n] && M[n][i]),
+      prime: n => { const x = el(n); if (x.dataset.ok) return; x.dataset.ok = '1'; x.muted = true; let p = null; try { p = x.play(); } catch (e) { } if (p && p.then) p.then(() => { if (!end) x.pause(); x.muted = false; }, () => { x.muted = false; }); else x.muted = false; },
+      rate: v => { r = v; if (a) a.playbackRate = v; },
+      speak: (v, n, i) => new Promise((ok, no) => {
+        const m = M[n][i], x = el(n); stop(); r = v; end = ok;
+        const fail = err => { if (end === ok) { end = null; no(err); } };
+        const go = () => {
+          if (end !== ok) return; try { x.currentTime = m[0]; } catch (e) { } x.muted = false; x.playbackRate = r; try { x.preservesPitch = true; } catch (e) { }
+          const watch = () => { if (end !== ok) return; if (x.currentTime >= m[1] || x.ended) { x.pause(); finish(); } else raf = requestAnimationFrame(watch); };
+          let p = null; try { p = x.play(); } catch (e) { return fail(e); } (p && p.then ? p : Promise.resolve()).then(watch, fail);
+        };
+        if (x.readyState >= 1) go(); else { x.addEventListener('loadedmetadata', go, { once: true }); x.addEventListener('error', () => fail(new Error('audio')), { once: true }); }
+      }),
+      stop,
+    };
+  }
+  let recP = null;
+  function getVoice() {
+    if (recP) return recP;
+    return (recP = baseVoice().catch(() => null).then(fb => {
+      const rec = recorded(); if (!rec) return fb;
+      return { kind: 'recorded AI voice', rec, speak: (s, r, n, i) => rec.has(n, i) ? rec.speak(r, n, i).catch(() => fb ? fb.speak(s, r) : null) : fb ? fb.speak(s, r) : Promise.resolve(), stop: () => { rec.stop(); if (fb) fb.stop(); } };
+    }));
   }
   let narr = true; try { narr = localStorage.getItem('gc.film.voice') !== 'off'; } catch (e) { }
 
@@ -463,18 +495,18 @@
       const i = sceneAt(T), end = f.scenes[i].t0 + f.scenes[i][0];
       if (narr && voice && spoken !== i) {   // each scene's caption is read as the scene starts; the scene waits for the voice to finish
         spoken = i; speaking = true; spokeAt = now; const my = ++token, done = () => { if (my === token) speaking = false; };
-        try { voice.speak(say(f.scenes[i][1]), rate).then(done, done); } catch (e) { speaking = false; }
+        try { voice.speak(say(f.scenes[i][1]), rate, name, i).then(done, done); } catch (e) { speaking = false; }
       }
       if (speaking && now - spokeAt > 40000) speaking = false;
       if (speaking && T + dt * rate >= end - 0.04) { hold += dt * rate; T = Math.max(T, end - 0.04); draw(); raf = requestAnimationFrame(tick); return; }
       T += dt * rate; if (T >= f.dur) { T = f.dur; set(false); big.hidden = false; big.setAttribute('aria-label', 'Play the film again'); draw(); return; } draw(); raf = requestAnimationFrame(tick);
     }
-    function set(on) { playing = on; if (on) { if (activeStop && activeStop !== stopMe) activeStop(); activeStop = stopMe; } else hush(); pp.textContent = on ? '❚❚' : '▶'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); if (on) { if (T >= f.dur - 0.05) T = 0; big.hidden = true; last = performance.now(); raf = requestAnimationFrame(tick); } else cancelAnimationFrame(raf); }
+    function set(on) { playing = on; if (on && narr && voice && voice.rec) voice.rec.prime(name); if (on) { if (activeStop && activeStop !== stopMe) activeStop(); activeStop = stopMe; } else hush(); pp.textContent = on ? '❚❚' : '▶'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); if (on) { if (T >= f.dur - 0.05) T = 0; big.hidden = true; last = performance.now(); raf = requestAnimationFrame(tick); } else cancelAnimationFrame(raf); }
     function stopMe() { if (playing) set(false); }
     voiceB.addEventListener('click', () => { narr = !narr; try { localStorage.setItem('gc.film.voice', narr ? 'on' : 'off'); } catch (e) { } voiceB.setAttribute('aria-pressed', narr); voiceB.textContent = 'Voice: ' + (narr ? 'on' : 'off'); if (!narr) hush(); });
     big.addEventListener('click', () => set(true)); pp.addEventListener('click', () => set(!playing)); c.addEventListener('click', () => set(!playing));
     bar.addEventListener('input', () => { T = +bar.value; big.hidden = true; hush(); draw(); });
-    rateB.addEventListener('click', () => { rate = rate === 1 ? 1.5 : rate === 1.5 ? 0.75 : 1; rateB.textContent = rate + '×'; });
+    rateB.addEventListener('click', () => { rate = rate === 1 ? 1.5 : rate === 1.5 ? 0.75 : 1; rateB.textContent = rate + '×'; if (voice && voice.rec) voice.rec.rate(rate); });
     const onVis = () => { if (document.hidden && playing) set(false); }; document.addEventListener('visibilitychange', onVis);
     let io = null; if (window.IntersectionObserver) { io = new IntersectionObserver(es => { es.forEach(e => { if (!e.isIntersecting && playing) set(false); }); }); io.observe(c); }
     let ro = null; if (window.ResizeObserver) { ro = new ResizeObserver(() => { if (!playing) draw(); }); ro.observe(c); }
