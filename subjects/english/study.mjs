@@ -57,12 +57,7 @@ function updateCompletion() {
   get('reviewed').setAttribute('aria-pressed', String(reviewed));
   get('reviewed').textContent = reviewed ? 'Undo reviewed status' : 'Mark as reviewed';
   const total = tasks.filter(item => read('review:' + item.id) === '1').length;
-  const progress = get('planner-progress');
-  progress.max = tasks.length;
-  progress.value = total;
-  progress.parentElement.hidden = false;
-  get('planner-progress-text').textContent = total + ' of ' + tasks.length + ' tasks reviewed';
-  get('completion').textContent = get('planner-progress-text').textContent;
+  get('completion').textContent = total + ' of ' + tasks.length + ' tasks reviewed';
 }
 
 function stopTimer() {
@@ -130,9 +125,8 @@ function showTask() {
 function updateContinue() {
   const previous = tasks.find(item => item.id === read('last-practice'));
   if (!previous) return;
-  get('continue-title').textContent = 'Continue practice';
   get('continue-detail').textContent = previous.title + ' · Question ' + previous.number;
-  get('continue-practice').textContent = 'Resume task';
+  get('continue-practice').textContent = 'Resume practice';
 }
 
 get('continue-practice').addEventListener('click', () => {
@@ -275,6 +269,7 @@ function showAttempt() {
   stopTimer();
   const active = examActive();
   document.documentElement.toggleAttribute('data-exam-active', active);
+  showStudioView();
   select.disabled = Boolean(attempt);
   editor.readOnly = Boolean(attempt && !active);
   editor.spellcheck = !attempt;
@@ -302,6 +297,7 @@ function showAttempt() {
 function submitAttempt() {
   if (!examActive()) return;
   attempt.submittedAt = Math.min(Date.now(), attempt.endsAt);
+  if (location.hash !== '#practice') history.replaceState(null, '', '#practice');
   saveAttempt();
   write('submitted:' + task.id, JSON.stringify(attempt), null);
   showAttempt();
@@ -357,3 +353,24 @@ if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
 setupLearningTools({ read, write, currentTask: () => task });
 setupWorkshop(read, write);
+
+function showStudioView() {
+  const hash = location.hash;
+  const view = examActive() || hash === '#practice' ? 'desk' : ['#skills-map', '#workshop'].includes(hash) ? 'skills' : 'room';
+  get('main').dataset.view = view;
+  for (const link of document.querySelectorAll('[data-studio-tab]')) {
+    if (link.dataset.studioTab === view) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  }
+}
+
+window.addEventListener('hashchange', () => {
+  showStudioView();
+  const { view } = get('main').dataset;
+  if (view !== 'room' || location.hash === '#reading-room') {
+    window.scrollTo(0, 0);
+  } else if (location.hash) {
+    get(location.hash.slice(1))?.scrollIntoView();
+  }
+});
+showStudioView();

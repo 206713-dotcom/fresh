@@ -41,12 +41,30 @@ export function setupWorkshop(read, write) {
   const status = get('workshop-status');
   select.append(...cases.map(item => new Option(item.title,item.id)));
 
+  const steps = [...document.querySelectorAll('[data-map-step]')];
+  function showStep(step, focus = false) {
+    for (const button of steps) {
+      const current = button.dataset.mapStep === step;
+      if (current) button.setAttribute('aria-current','step');
+      else button.removeAttribute('aria-current');
+      get('map-' + button.dataset.mapStep).hidden = !current;
+    }
+    if (step === 'compare') {
+      get('map-your-draft').textContent = draft.value.trim() ? 'Your revision: ' + draft.value.trim() : 'Write a revision to compare it here.';
+    }
+    if (focus) get('map-' + step).querySelector('h3').focus();
+  }
+
+  for (const button of steps) {
+    button.addEventListener('click', () => showStep(button.dataset.mapStep, true));
+  }
+
   function show() {
     const item = cases.find(row => row.id === select.value);
     get('workshop-brief').textContent = item.brief;
     get('workshop-start').textContent = item.starting;
     get('workshop-pitfall').textContent = item.pitfall;
-    get('workshop-reveal').open = false;
+    get('map-write-brief').textContent = item.brief;
     draft.value = read('workshop:' + item.id) ?? '';
     status.textContent = draft.value ? 'Revision restored' : '';
     get('workshop-practice').href = '?task=' + item.id + '#practice';
@@ -59,6 +77,7 @@ export function setupWorkshop(read, write) {
       }
       return article;
     }));
+    showStep('read');
   }
 
   select.addEventListener('change', show);
