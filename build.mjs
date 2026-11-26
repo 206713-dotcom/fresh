@@ -35,7 +35,7 @@ for (const f of readdirSync(subjectsDir)) {
 // Static subject apps and their lesson data. The plain-file subject
 // folders are copied as-is; subjects/business/ is assembled separately below
 // so its React source/build tooling is never included in dist/.
-for (const subject of ["biology", "chemistry", "design-and-technology", "economics", "mathquest", "physics", "pyquest", "vertex-maths"]) {
+for (const subject of ["biology", "chemistry", "design-and-technology", "economics", "english", "mathquest", "physics", "pyquest", "vertex-maths"]) {
   const subjectDir = path.join(subjectsDir, subject);
   if (existsSync(subjectDir)) {
     cpSync(subjectDir, path.join(distSubjects, subject), { recursive: true });

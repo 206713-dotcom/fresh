@@ -43,9 +43,9 @@ The Maths page has worked examples for linear equations, right-angled trigonomet
 
 ### First Language English (0500)
 
-Practise three skills in short exercises. In inference, explain what a detail suggests. In writer’s effects, pick the specific word doing the work. In summary writing, compress the relevant points into a clear sentence. Try your explanation before revealing the example response. [Open First Language English](https://gisfresh.me/subjects/english-language.html)
+English Studio provides original practice aligned to the Cambridge 2027–2029 written papers. Work with source passages, write timed responses, compare examples and track skills in a browser-based workspace. [Open First Language English](https://gisfresh.me/subjects/english-language.html) · [Implementation checklist](docs/english-0500-checklist.md)
 
-**How AI helped.** The original AI-assisted starter page paired short, original text prompts with model responses. The inference exercise asks what repeatedly rereading a message suggests, so a student can practise linking a conclusion to evidence in one sentence. The sample responses give students a way to compare their reasoning with an example.
+**How AI helps.** The experimental on-device marker uses task-specific criteria and checks that quoted feedback comes from the student’s answer. A self-marking guide is available for each task. Examiner agreement is still unmeasured.
 
 ### Literature in English (0475)
 
