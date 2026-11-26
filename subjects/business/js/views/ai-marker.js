@@ -2544,7 +2544,29 @@
   /* Public API                                                        */
   /* ================================================================ */
 
-  EC.autoMark = autoMark;
+  var deterministicAutoMark = autoMark;
+  EC.autoMark = function (answer, questionInfo, aiParagraphs) {
+    var b = answer;
+    if (arguments.length === 1 && b && typeof b === "object" && b.answer !== undefined && aiReady && generator && !aiBusy) {
+      var info = {
+        mark_value: b.markValue != null ? b.markValue : b.mark_value,
+        question_text: b.questionText || b.question_text,
+        questionType: b.questionType,
+        paper: b.paper,
+        model_answer: b.modelAnswer || b.model_answer,
+        mark_scheme: b.markScheme || b.mark_scheme,
+        caseMainStem: b.caseStem || b.caseMainStem || b.scenario_stem,
+        qwen_marking_keys: b.qwen_marking_keys,
+        validAppWords: b.validAppWords,
+        questionId: b.questionId
+      };
+      var p = markWithLocalAI(b.answer, info, null);
+      if (p && typeof p.then === "function") {
+        return p.then(function (r) { return r || deterministicAutoMark(b); }, function () { return deterministicAutoMark(b); });
+      }
+    }
+    return deterministicAutoMark.apply(null, arguments);
+  };
   EC.ai = {
     /* No-op while busy/loading — a second load or generation cannot be started. */
     load: function () { if (aiBusy || aiLoading) return; loadLocalAI(); },
