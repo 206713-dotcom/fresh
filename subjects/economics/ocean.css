@@ -178,7 +178,7 @@ input:not([type='checkbox']):not([type='radio']):not([type='range']), select, te
 .study-search input, .chapter-select select, .practice-filters select,
 .revision-workspace :is(textarea, select, input[type='number']),
 #topic-search-input, main .field textarea, .question-work .answer-composer { border-color: #6e8593; }
-.primary:hover:not(:disabled), .question-work form > button.primary:hover:not(:disabled) { color: #fff; }
+.primary:hover:not(:disabled), .practice-submit > button.primary:hover:not(:disabled) { color: #fff; }
 .deck-progress { background: #e2eaf0; }
 .deck-progress span { background: #248367; }
 .syllabus-table { font-size: .9375rem; }

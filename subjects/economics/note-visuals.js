@@ -53,8 +53,10 @@ const marketCurves = {
   sLeft:[62,148,231,58,'S₁']
 };
 
-function drawMarket(id) {
-  const [vertical,horizontal,curves,note] = marketFigures[id];
+function drawMarket(id, shifted = true) {
+  const [vertical,horizontal,allCurves,caption] = marketFigures[id];
+  const curves = shifted ? allCurves : allCurves.filter(key => key.length === 1);
+  const note = shifted ? caption : 'E shows the original equilibrium, where demand and supply intersect.';
   const lines = curves.map(key=>{
     const [x1,y1,x2,y2,label] = marketCurves[key];
     const color = key.startsWith('d') ? '#304eb0' : '#a34920';
@@ -76,9 +78,33 @@ function drawMarket(id) {
   return '<figure><svg class="figure" viewBox="0 0 380 245" role="img" aria-label="'+escapeHtml(note)+'"><path d="M54 36v159h300" stroke="#394d80" stroke-width="2" fill="none"/><text x="48" y="25">'+vertical+'</text><text x="216" y="231">'+horizontal+'</text>'+lines+markers+'</svg><figcaption><strong>Reading the diagram</strong><p>'+escapeHtml(note)+'</p></figcaption></figure>';
 }
 
+const lessonMarketToggles = {
+  2880: 'Show the rise in demand',
+  2889: 'Show the effect of the tax',
+  2897: 'Show the rise in labour demand',
+  2946: 'Show the rise in currency demand'
+};
+
+function setupLessonDiagram() {
+  const button = document.querySelector('[data-market-shift]');
+  if (!button) return;
+  const figure = document.getElementById(button.getAttribute('aria-controls'));
+  button.onclick = () => {
+    const shifted = button.getAttribute('aria-pressed') !== 'true';
+    button.setAttribute('aria-pressed', String(shifted));
+    figure.innerHTML = drawMarket(Number(button.dataset.marketShift), shifted);
+  };
+}
+
 function lessonVisual(id) {
   if ([2871,2872].includes(id)) return diagram(id===2872);
-  if (marketFigures[id]) return drawMarket(id);
+  if (marketFigures[id]) {
+    const toggle = lessonMarketToggles[id];
+    if (!toggle) return drawMarket(id);
+    return '<div class="lesson-market-comparison"><button type="button" class="lesson-market-toggle" data-market-shift="'+id+
+      '" aria-controls="lesson-market-figure" aria-pressed="false">'+toggle+
+      '</button><div id="lesson-market-figure" aria-live="polite">'+drawMarket(id,false)+'</div></div>';
+  }
   if (id===2905) {
     return '<figure><svg class="figure" viewBox="0 0 380 225" role="img" aria-label="Average cost falls as output grows, reaches a low point, and then rises."><path d="M54 35v153h285" stroke="#394d80" stroke-width="2" fill="none"/><path d="M72 65C112 195 235 193 310 67" stroke="#304eb0" stroke-width="3" fill="none"/><text x="48" y="24">Average cost</text><text x="290" y="210">Output</text><text x="312" y="64">AC</text></svg><figcaption>As output rises, average cost falls with economies of scale and can rise with diseconomies of scale.</figcaption></figure>';
   }
