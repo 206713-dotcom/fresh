@@ -264,21 +264,18 @@ function practice(chapterIndex, followUp) {
     </header>
     <section class="practice-filter-pane" aria-label="Practice filters"${followUp?' hidden':''}>
       <label class="field practice-search-field">Search questions<input type="search" id="filter-search" placeholder="Wording, topic or question ID"></label>
-      <details class="practice-filters">
-        <summary>More filters <span id="filter-count"></span></summary>
-        <div class="practice-filter-fields">
-          <label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
-          <label class="field">Topic<select id="filter-topic"></select></label>
-          <div class="practice-mark-field" role="group" aria-label="Marks">
-            <span>Marks</span>
-            <div class="practice-mark-options">
-              ${['',1,2,4,6,8].map(mark=>'<button type="button" data-practice-mark="'+mark+'"'+(mark?' aria-label="'+mark+(mark===1?' mark':' marks')+'"':'')+'>'+(mark || 'Any')+'</button>').join('')}
-            </div>
+      <div class="practice-filter-fields">
+        <label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
+        <label class="field">Topic<select id="filter-topic"></select></label>
+        <div class="practice-mark-field" role="group" aria-label="Marks">
+          <span>Marks</span>
+          <div class="practice-mark-options">
+            ${['',1,2,4,6,8].map(mark=>'<button type="button" data-practice-mark="'+mark+'"'+(mark?' aria-label="'+mark+(mark===1?' mark':' marks')+'"':'')+'>'+(mark || 'Any')+'</button>').join('')}
           </div>
-          <label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
-          <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
         </div>
-      </details>
+        <label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
+        <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
+      </div>
       <div id="practice-active-filters" hidden>
         <div class="practice-filter-heading"><strong>Active filters</strong><button type="button" id="clear-filters">Clear all</button></div>
         <div id="practice-filter-chips"></div>
@@ -434,7 +431,6 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
       ['marks', markValue && markValue + (markValue === '1' ? ' mark' : ' marks')],
       ['set', selectLabel(questionSet)]
     ].filter(([,label]) => label);
-    document.querySelector('#filter-count').textContent = removable.length || '';
     const chips = [
       ['search', search.value.trim()],
       ['paper', paperType && (paperType === 'mcq' ? 'Paper 1' : 'Paper 2')],
@@ -566,10 +562,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     clearFilters();
     target.closest('.question-work').focus();
   };
-  document.querySelector('#show-filtered-questions').onclick = event => {
-    event.target.closest('details').open = false;
-    moveTo(page, true);
-  };
+  document.querySelector('#show-filtered-questions').onclick = () => moveTo(page, true);
   function moveTo(position,scroll=false) {
     page=Math.max(0,Math.min(Math.trunc(position),matches.length-1));
     renderQuestions();
