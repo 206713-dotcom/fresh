@@ -1,10 +1,5 @@
 .history-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 2rem;
   padding: clamp(1.5rem, 5vw, 4rem);
-  background: #172b3a;
   color: #faf6ee;
   border-radius: 1.5rem;
 }
@@ -19,14 +14,6 @@
   letter-spacing: .1em;
   color: #f4d49d !important;
   text-transform: uppercase;
-}
-.history-years {
-  display: grid;
-  gap: .75rem;
-  padding-left: 2rem;
-  border-left: 1px solid #aa895a;
-  font: 1.8rem Georgia, serif;
-  color: #f4d49d;
 }
 .history-action {
   display: inline-block;
@@ -96,8 +83,7 @@
   outline-offset: 3px;
 }
 @media (max-width: 680px) {
-  .history-dashboard, .history-grid, .history-hero { grid-template-columns: 1fr; }
-  .history-years { display: none; }
+  .history-dashboard, .history-grid { grid-template-columns: 1fr; }
 }
 .history-writing select {
   width: 100%;
@@ -141,4 +127,53 @@
 
 @media (max-width: 850px) {
   .history-nav { order: 1; flex-basis: 100%; margin-top: .5rem; }
+}
+
+.history-hero {
+  position: relative;
+  display: flex;
+  min-height: 28rem;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 3.5rem;
+  background: #131d24;
+}
+.history-hero::before {
+  position: absolute;
+  inset: 0 0 0 28%;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(0deg, #131d24d9, transparent 35%),
+    linear-gradient(90deg, #131d24 0%, #131d24a8 26%, #131d2420 55%, transparent 100%),
+    url("history-napoleon.webp") center 37% / cover no-repeat;
+}
+.history-hero h1 { font-size: clamp(3rem, 7vw, 6rem); }
+.history-art-credit {
+  position: absolute;
+  right: 1.2rem;
+  bottom: .9rem;
+  max-width: calc(100% - 2.4rem);
+  color: #faf6ee;
+  font-size: .82rem;
+}
+.history-marking {
+  margin: .75rem 0;
+  border-top: 1px solid #ddd0b9;
+  padding-top: .75rem;
+}
+.history-quiz-form { display: grid; gap: 1rem; max-width: 45rem; }
+.history-quiz-form fieldset { margin: 0; min-width: 0; }
+.history-quiz-form legend { font-weight: 700; padding-inline: .35rem; }
+.history-quiz-form .history-correct { border-color: #245b57; }
+.history-quiz-form .history-missed { border-color: #983c21; }
+@media (max-width: 680px) {
+  .history-hero { align-items: end; min-height: 29rem; }
+  .history-hero::before {
+    inset: 0;
+    background:
+      linear-gradient(0deg, #131d24 6%, #131d24f5 29%, #131d247a 60%, transparent 92%),
+      url("history-napoleon.webp") center 29% / cover no-repeat;
+  }
 }
