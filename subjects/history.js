@@ -43,12 +43,16 @@ function reveal(label, text) {
 }
 
 function openTopic(id) {
+  if (location.hash !== '#history-topic-' + id) {
+    location.hash = 'history-topic-' + id;
+    return;
+  }
   search.value = '';
   renderTopics(id);
   const card = byId('history-topic-' + id);
   if (!card) return;
   card.open = true;
-  location.hash = card.id;
+  showView('history-topics');
   card.scrollIntoView();
   card.querySelector('summary').focus({ preventScroll: true });
 }
@@ -299,4 +303,29 @@ form.addEventListener('submit', (event) => {
 });
 search.addEventListener('input', renderTopics);
 renderCourse();
-if (location.hash.startsWith('#history-topic-')) openTopic(location.hash.slice(15));
+const views = [...document.querySelectorAll('.history-view')];
+const tabs = [...document.querySelectorAll('.history-nav a')];
+
+function showView(id) {
+  for (const view of views) view.hidden = view.id !== id;
+  for (const tab of tabs) {
+    if (tab.hash === '#' + id) tab.setAttribute('aria-current', 'page');
+    else tab.removeAttribute('aria-current');
+  }
+}
+
+function navigate() {
+  const id = location.hash.slice(1);
+  if (id.startsWith('history-topic-') && allTopics.some(([topic]) => id === 'history-topic-' + topic)) {
+    openTopic(id.slice(14));
+    return;
+  }
+  const target = byId(id);
+  const view = target?.closest('.history-view');
+  showView(view?.id || 'history-home');
+  if (target === view && view) window.scrollTo(0, 0);
+  else if (view) target.scrollIntoView();
+}
+
+window.addEventListener('hashchange', navigate);
+navigate();
