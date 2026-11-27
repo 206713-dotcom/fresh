@@ -30,7 +30,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=18', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=19', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -171,7 +171,10 @@ const ecbizMarking = (() => {
       return Promise.reject(new Error('Check the question, answer length or diagram and try again.'));
     }
     const listedGrade = !image && gradeListedItems(question, response);
-    if (listedGrade) return Promise.resolve(listedGrade);
+    if (listedGrade) {
+      const checked = gradeListedItems(question, listedGrade.modelResponse);
+      return Promise.resolve({...listedGrade, modelResponseVerified:checked?.score === question.marks});
+    }
     const key = JSON.stringify([id, response, image]);
     if (!pending.has(key)) {
       report?.('Waiting for the on-device marker…');
@@ -256,8 +259,6 @@ const ecbizMarking = (() => {
     const overview = allCreditQuoted && /^Credited:/i.test(result.feedback)
       ? '' : uniqueNotes(result.feedback);
     const strengths = evidence ? '' : uniqueNotes(coaching?.strengths);
-    const model = result.modelResponse ? paragraphs(result.modelResponse) +
-      (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') : '';
     const plan = result.modelPlan && feedbackTextKey(result.modelPlan) !== feedbackTextKey(shownScheme) ? result.modelPlan : '';
     const reason = markReviewReason(result,answer);
     const reviewFlag = reason && (result.reviewNote || reason !== 'See the mark scheme for the points to include.') &&
@@ -274,8 +275,24 @@ const ecbizMarking = (() => {
       disclosure('Marking breakdown', (overview ? paragraphs(overview) : '') +
         (evidence ? '<div class="review-section review-evidence">' + evidence + '</div>' : '') +
         (strengths ? '<h4>What worked</h4>' + paragraphs(strengths) : '')) +
-      disclosure(result.diagram ? 'How to draw the diagram' : 'Sample answer', model) +
       disclosure('Answer plan from the mark scheme', plan ? '<div class="mark-scheme">' + escapeHtml(plan) + '</div>' : '');
+  }
+
+  function modelAnswer(result, marks) {
+    if (!result) return '';
+    const verified = result.modelResponseVerified === true && !result.diagram;
+    const guidance = result.diagram && result.modelResponse;
+    if (!result.modelResponse || (!guidance && !verified)) {
+      return result.reviewUnavailable && !result.diagram
+        ? '<p class="muted">A full-mark model response could not be verified. Use the mark scheme to review the required points.</p>' : '';
+    }
+    const title = guidance ? 'How to draw the diagram' : 'Model response';
+    const note = verified ? '<p><strong>Checked by the Economics marker · ' +
+      escapeHtml(marks) + ' / ' + escapeHtml(marks) + '</strong></p>' : '';
+    const paragraphs = result.modelResponse.split(/\n\s*\n/).map(part =>
+      '<p>' + escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
+    return '<details class="review-disclosure" open><summary>' + title +
+      '</summary><div class="review-disclosure-body">' + note + paragraphs + '</div></details>';
   }
 
   function scheme(prompt) {
@@ -284,6 +301,6 @@ const ecbizMarking = (() => {
       (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</div></details>';
   }
 
-  return { grade, feedback, scheme, reviewReason:markReviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
+  return { grade, feedback, scheme, modelAnswer, reviewReason:markReviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
 })();
 
