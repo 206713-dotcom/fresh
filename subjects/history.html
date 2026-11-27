@@ -6,8 +6,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
-<title>History | Fresh</title>
+<title>IGCSE History 0470 Studyroom | Fresh</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="history.css">
+<script type="module" src="history.js"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
 </head>
@@ -21,18 +23,75 @@
 </header>
 <main id="main" class="wrap">
 <a class="back" href="../index.html#subjects">← All subjects</a>
-<section class="subject-hero humanities">
-  <div><p class="eyebrow">English &amp; humanities · CAMBRIDGE 0470</p>
-  <h1>History</h1><p>Build arguments about the past and evaluate historical evidence.</p></div>
-  <span class="symbol" aria-hidden="true">⌛</span>
+<section class="history-hero" id="history-home">
+  <div>
+    <p class="history-kicker">Cambridge IGCSE · 0470</p>
+    <h1>History Studyroom</h1>
+    <p>Explore the events, weigh the evidence, and practise writing historical arguments.</p>
+    <a class="history-action" id="history-resume" href="#history-topics">Explore topics</a>
+  </div>
+  <div class="history-years" aria-hidden="true"><span>1848</span><span>1919</span><span>1989</span></div>
 </section>
+
+<nav class="history-nav" aria-label="History studyroom">
+  <a href="#history-home">Home</a>
+  <a href="#history-topics">Topics</a>
+  <a href="#history-practice">Exam Practice</a>
+  <a href="#history-review">Review</a>
+</nav>
+
+<div class="history-dashboard">
+  <section class="history-panel">
+    <h2>Your course</h2>
+    <p id="history-course">Choose the course your school teaches.</p>
+    <details id="history-settings">
+      <summary>Course settings</summary>
+      <form id="history-form">
+        <label>Exam year<select name="year"><option value="">Choose year</option><option>2027</option><option>2028</option><option value="other">Another year</option></select></label>
+        <label>Exam series<select name="series"><option value="">Choose series</option><option>March (India only)</option><option>June</option><option>November</option></select></label>
+        <label>Core option<select name="core"><option value="">Choose option</option><option value="A">A · Nineteenth century</option><option value="B">B · Twentieth century</option></select></label>
+        <label>Depth study<select name="depth"><option value="">Choose depth study</option><option value="ww1">First World War</option><option value="germany">Germany</option><option value="russia">Russia</option><option value="usa">United States</option><option value="ww2">Second World War</option></select></label>
+        <label>Assessment route<select name="route"><option value="">Choose route</option><option value="3">Component 3 · Coursework</option><option value="4">Paper 4 · Alternative to Coursework</option></select></label>
+        <button class="history-action">Save course</button>
+      </form>
+    </details>
+  </section>
+  <section class="history-panel history-focus">
+    <h2>Your Paper 2 focus</h2>
+    <p id="history-focus">Select your exam year, series, and Core option.</p>
+    <a href="#history-practice">Open source practice</a>
+  </section>
+</div>
+
+<section class="history-section" id="history-topics">
+  <h2>Topics</h2>
+  <p>Open a topic for a revision summary, a recall check, and a writing prompt.</p>
+  <label class="history-search">Search topics, events, and people
+    <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
+  </label>
+  <div id="history-topic-list"></div>
+</section>
+<section class="history-section" id="history-practice">
+  <h2>Exam practice</h2>
+  <p>Practise with original questions, then compare your answer with the guidance.</p>
+  <div id="history-practice-list"></div>
+  <p><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/past-papers/">Cambridge past papers and specimen materials</a></p>
+</section>
+<section class="history-section" id="history-review">
+  <h2>Review</h2>
+  <p id="history-progress"></p>
+  <ul id="history-review-list"></ul>
+  <p>Progress and drafts are stored in this browser.</p>
+  <p id="history-status" role="status"></p>
+</section>
+<noscript><p>Enable JavaScript to use the studyroom tools. The revision exercises below are available now.</p></noscript>
 <div class="study-layout">
   <nav class="contents" aria-label="On this page">
     <p class="eyebrow">ON THIS PAGE</p><ol><li><a href="#topic-1">Causes</a></li><li><a href="#topic-2">Source evaluation</a></li><li><a href="#topic-3">Comparing explanations</a></li></ol>
-    <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/subjects/">Find your syllabus ↗</a>
+    <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/">Find your syllabus ↗</a>
   </nav>
   <section class="study" aria-labelledby="revision">
-    <h2 id="revision">Revision notes</h2>
+    <h2 id="revision">Historical skills exercises</h2>
     <p>Try each question before revealing the answer. Check your exam-year syllabus for the full topic list.</p>
     <article class="topic" id="topic-1">
   <p class="eyebrow">TOPIC 01</p>
@@ -73,7 +132,7 @@
 </main>
 <footer class="wrap footer">
   <span>Fresh · Independent IGCSE revision</span>
-  <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/subjects/">Cambridge subject directory ↗</a>
+  <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/">Cambridge History syllabus</a>
   <a href="../privacy.html">Privacy notice</a>
 </footer>
 </body>
