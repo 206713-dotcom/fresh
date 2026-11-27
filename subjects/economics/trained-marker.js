@@ -661,6 +661,24 @@ async function markDiscussion(question, answer, report) {
   };
 }
 
+function exactModelDefinition(question, answer) {
+  const definition = /^\s*Define\s+(.+?)\s*\.?\s*(?:\[2\])?\s*$/i.exec(question.prompt);
+  if (question.marks !== 2 || !definition) return;
+  const header = 'Maximum 2 marks. Credit the specific components below.';
+  if (!question.scheme.startsWith(header + '\n')) return;
+  const prefix = normalizePoint(definition[1]) + ' is ';
+  const clause = normalizePoint(answer);
+  if (!clause.startsWith(prefix)) return;
+  const routes = question.scheme.split('\n').filter(line => line.startsWith('• '))
+    .map(line => line.slice(2).split(';').map(part => /^(.*?)\s*\(1\)\.?$/.exec(part.trim())?.[1]));
+  for (const points of routes) {
+    if (points.length !== question.marks || points.some(point => !point)) continue;
+    if (new Set(exactEvidence(points, clause.slice(prefix.length), true)).size === points.length) {
+      return pointResult(points, '', answer);
+    }
+  }
+}
+
 async function mark(question, answer, report, checkingModel = false) {
   if (question?.marks === 8) {
     engine ??= await openModel(report);
@@ -669,6 +687,10 @@ async function mark(question, answer, report, checkingModel = false) {
   if (!question) {
     engine ??= await openModel(report);
     return;
+  }
+  if (checkingModel) {
+    const exactDefinition = exactModelDefinition(question, answer);
+    if (exactDefinition) return exactDefinition;
   }
   const points = independentDefinitionPoints(question);
   if (points) {
