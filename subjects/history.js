@@ -14,6 +14,7 @@ const state = { course: {}, completed: {}, review: {}, drafts: {}, last: '', ...
 const settings = byId('history-settings');
 const form = byId('history-form');
 const search = byId('history-search');
+const practiceLinks = [...document.querySelectorAll('.history-practice-nav a')];
 const allTopics = [...core.A, ...core.B, ...Object.values(depths)];
 
 function save() {
@@ -402,9 +403,14 @@ function renderCourse() {
   byId('history-focus').textContent = focus ? focus[1] : year === 'other'
     ? 'Use Cambridge’s syllabus for your exam year to check the prescribed topic.'
     : 'Select your exam year, series, and Core option.';
-  byId('history-focus').nextElementSibling.href = '#history-paper-2';
   renderTopics();
   renderPractice(focus);
+  const coursework = route === '3';
+  byId('history-studio-route').href = coursework ? '#history-coursework' : '#history-paper-4';
+  byId('history-studio-route-title').textContent = coursework ? 'Coursework' : 'Paper 4';
+  byId('history-studio-route-description').textContent = coursework ? 'Research log and checklist' : 'Depth-study practice';
+  byId('history-studio-route-time').hidden = coursework;
+  selectPracticePaper(location.hash.slice(1));
   renderQuiz();
   renderResume();
   renderReview();
@@ -432,18 +438,39 @@ function showView(id) {
   }
 }
 
+function selectPracticePaper(id) {
+  const papers = [...byId('history-practice-list').querySelectorAll('article')];
+  const selected = papers.find((paper) => paper.id === id);
+  const currentHash = selected ? '#' + selected.id : '#history-practice';
+  for (const paper of papers) paper.hidden = Boolean(selected && paper !== selected);
+  for (const link of practiceLinks) {
+    link.hidden = link.hash !== '#history-practice' && !papers.some((paper) => '#' + paper.id === link.hash);
+    if (link.hash === currentHash) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  }
+  return selected;
+}
+
 function navigate() {
   const id = location.hash.slice(1);
   if (id.startsWith('history-topic-') && allTopics.some(([topic]) => id === 'history-topic-' + topic)) {
     openTopic(id.slice(14));
     return;
   }
-  const target = byId(id);
+  const paper = selectPracticePaper(id);
+  const unavailablePaper = !paper && practiceLinks.some((link) => link.hash === '#' + id);
+  const target = byId(unavailablePaper ? 'history-practice' : id);
   const view = target?.closest('.history-view');
   showView(view?.id || 'history-home');
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
 }
 
+document.querySelector('.skip').addEventListener('click', (event) => {
+  event.preventDefault();
+  const main = byId('main');
+  main.focus({ preventScroll: true });
+  main.scrollIntoView();
+});
 window.addEventListener('hashchange', navigate);
 navigate();
