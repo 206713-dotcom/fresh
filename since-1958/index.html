@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Since 1958: Beyond</title>
+<meta name="description" content="Travel through NASA's history in a real-scale Solar System and visit the hardware it left on the Moon and Mars.">
+<meta name="ai-disclosure" content="The code of this site, including its procedural artwork, hand-built 3D models and animated films, was written with help from an AI assistant (Claude, by Anthropic). No AI image, video or audio generator was used. Facts were checked against NASA sources.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23cfd7e3%22/%3E%3Cpath d=%22M16 4a12 12 0 0 1 0 24a9 12 0 0 0 0-24z%22 fill=%22%2303050a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Cinzel:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="3D view of the Earth, Moon, Mars and Sun"></canvas>
+<div id="overlay" aria-hidden="false"></div>
+<button id="kscPin" hidden title="Enter the exhibition hall">Kennedy Space Center<small>Exhibition hall</small></button>
+
+<div id="photobar" hidden>
+  <span>Drag to look around · scroll to zoom</span>
+  <button id="phStand">Stand on the ground</button>
+  <button id="phEarth">Find Earth</button>
+  <button id="phSun">Find the Sun</button>
+  <button id="phHide">Hide buttons (H)</button>
+  <button id="phDone">Done</button>
+</div>
+<div id="filmAsk" hidden><div class="fa-box"><p class="fa-k">Launch</p><h3 id="faTitle"></h3><p id="faText"></p><div class="fa-row"><button id="faYes">▶︎ Watch the film</button><button id="faNo" title="Skip ( Tab )">Skip, keep going</button></div></div></div>
+<div id="drivebar" hidden>
+  <button id="dvPlay" title="Play or pause">⏸︎</button>
+  <input id="dvSlider" type="range" min="0" max="1000" value="0" aria-label="Position along the route">
+  <b id="dvInfo"></b>
+  <button id="dvSpeed" title="Speed">1×</button>
+  <button id="dvStop">Stop</button>
+</div>
+<div id="walkbar" hidden>
+  <span><b>W A S D</b> walk · <b>Space</b> jump · <b>Shift</b> run · drag to look · <b>Z X</b> zoom · <b>H</b> hide</span>
+  <button id="wkSlow" title="Slower ( - )">◀︎◀︎</button><b id="wkSpeed">1× real speed</b><button id="wkFast" title="Faster ( + )">▶︎▶︎</button>
+  <button id="wkEarth">Find Earth</button>
+  <button id="wkZoomOut" title="Zoom out ( X )">−</button><button id="wkZoomIn" title="Zoom in ( Z )">+</button>
+  <button id="wkDone">Stop walking (Esc)</button>
+</div>
+<header id="brand">
+  <h1>Since 1958: Beyond<span class="by">by Concinendial</span></h1>
+  <p>NASA hardware on the Moon and Mars, and the probes that never came back</p>
+</header>
+
+<nav id="tools" aria-label="Go to a world or a probe, and choose what to show">
+  <button id="menuBtn" class="tool" aria-expanded="false" aria-label="Menu" title="Menu"></button>
+  <button id="goIntro" class="tool" title="Back to the very beginning: the opening screen">↺ Restart</button>
+  <button id="goHome" class="tool" title="Back to the starting view at Earth">Home</button>
+  <button id="goBtn" class="tool" aria-haspopup="true" aria-expanded="false">Go to…</button>
+  <button id="goTour" class="tool tour" hidden>Start here</button>
+  <button id="goNews" class="tool news" title="The biggest moments, told as news stories with photos">News</button>
+  <button id="goMuseum" class="tool museum" title="Every machine in one hall, part by part">Exhibition</button>
+  <a id="goBeyond" class="tool museum beyond" href="universe/" title="Leave the Solar System: every galaxy within 30 Mpc, a supernova and a black hole merger">Galaxies</a>
+  <button id="lyMusic" class="tool" aria-pressed="true" title="Calm space music, made live by your browser">Music</button>
+  <span id="moreBox">
+    <button id="lyOrbits" class="tool" aria-pressed="false" title="Draw the orbits of the planets and the Moon">Orbits</button>
+    <button id="lyPaths" class="tool" aria-pressed="false" title="Draw the flight paths of the probes">Probe paths</button>
+    <button id="lyLabels" class="tool" aria-pressed="true" title="Show or hide the name labels">Labels</button>
+    <button id="lyHD" class="tool" aria-pressed="false" title="Sharpest maps of Earth, Moon and Mars. Needs a strong graphics card.">8K maps</button>
+    <button id="lyPhoto" class="tool" aria-pressed="false" title="Free camera for screenshots: look anywhere, even up at the sky">Photo mode</button>
+    <button id="lyHide" class="tool" title="Hide every button and leave only the view ( H ). Press Show UI to bring them back">Hide UI</button>
+    <button id="goLearned" class="tool" title="What our team learned while making Since 1958">What we learned</button>
+    <button id="goDevs" class="tool" title="Who made Since 1958">Developers</button>
+    <button id="goAbout" class="tool" title="What is real data, what is simplified, what is an illustration, and where everything comes from">What is real?</button>
+  </span>
+  <div id="gomenu" class="instrument" hidden>
+    <h3>Worlds</h3><div id="goWorlds" class="gogrid"></div>
+    <h3>Probes in flight</h3><div id="goProbes" class="gogrid"></div>
+  </div>
+</nav>
+
+<div id="devCard" hidden><div class="dv-box instrument" role="dialog" aria-modal="true" aria-labelledby="dvTitle">
+  <button class="dv-x" aria-label="Close" title="Close ( Esc )">✕</button>
+  <p class="dv-k">Team Concinendial</p><h3 id="dvTitle">Developers</h3>
+  <ol class="dv-list">
+    <li><b>Semin Cheon</b><span>Managing Head · Garden International School · 10M</span></li>
+    <li><b>Ian Lee</b><span>Team Leader · Garden International School · 10M</span></li>
+    <li><b>Junyi Chai</b><span>Advisor for mobile experience · Garden International School · 11W</span></li>
+  </ol>
+</div></div>
+<section id="alerts" aria-live="polite" aria-label="Mars notifications"></section>
+
+<div id="caption" aria-live="polite"><span id="capSmall"></span><strong id="capBig"></strong></div>
+<div id="ride" class="instrument"><span id="rideTxt"></span><button id="rideLeave" class="btn">Back to Earth</button></div>
+
+<aside id="right">
+  <div id="clock" class="instrument" aria-label="Simulation clock">
+    <div class="date">
+      <button id="yr" class="yr" aria-haspopup="listbox" aria-label="Change year">1958</button>
+      <div class="md">
+        <button id="mon" aria-haspopup="listbox" aria-label="Change month">Oct</button>
+        <button id="day" aria-haspopup="listbox" aria-label="Change day">1</button>
+        <span id="hm" class="hm">12:00</span><span class="utc">UTC</span>
+      </div>
+    </div>
+    <div class="controls" role="group" aria-label="Time controls">
+      <button id="prevEv" class="ic" aria-label="Replay previous event" title="Previous event">
+        <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button id="slower" class="ic" aria-label="Slower" title="Slower">
+        <svg viewBox="0 0 24 24"><path d="M11 6v12l-8-6zM21 6v12l-8-6z"/></svg></button>
+      <button id="play" class="ic play" aria-label="Pause" title="Pause (space)">
+        <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></button>
+      <button id="faster" class="ic" aria-label="Faster" title="Faster">
+        <svg viewBox="0 0 24 24"><path d="M3 6v12l8-6zM13 6v12l8-6z"/></svg></button>
+      <button id="nextEv" class="ic" aria-label="Jump to next event" title="Next event (N)">
+        <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+    </div>
+    <div class="speed"><span id="speedLabel">30 min / s</span><span id="speedNote"></span></div>
+    <button id="next" class="next" aria-label="Jump to the next event"></button>
+    <label class="toggle"><input type="checkbox" id="autoslow" checked> Slow down before events</label>
+    <label class="toggle"><input type="checkbox" id="autofly" checked> Fly to each landing and play its scene</label>
+  </div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="panel" hidden></div>
+</aside>
+
+<button id="tlToggle" class="tool" aria-expanded="false" aria-controls="evlist" title="Show every event by name">Events</button>
+<button id="objFind" class="tool" aria-expanded="false" aria-controls="objSearch" title="Find any machine by name: see it in 3D and read its story">🔍 Find</button>
+<div id="objSearch" class="instrument" hidden role="dialog" aria-label="Find a machine"></div>
+<footer id="timeline" aria-label="Timeline of events"></footer>
+<div id="evlist" class="instrument" hidden></div>
+
+<div id="hint" hidden>Drag to look around, scroll to zoom. Click the Moon or Mars to see what NASA left there, or use "Go to…" for the planets and probes.</div>
+
+<div id="intro">
+  <div class="intro-inner">
+    <h2>Since 1958</h2>
+    <p class="i-prob"><span class="sr">Most of the machines we sent into space never came home.</span><span class="i-type" aria-hidden="true"></span><i class="i-caret" aria-hidden="true"></i></p>
+    <div class="i-stats">
+      <div><b data-n="moon">0</b><span>sites on the Moon</span></div>
+      <div><b data-n="mars">0</b><span>sites on Mars</span></div>
+      <div><b data-n="probes">0</b><span>probes in space</span></div>
+    </div>
+    <p class="i-why">Their stories are scattered across technical archives. Here you watch each one arrive, see the day it fell silent, and walk to where it rests today.</p>
+    <button id="begin" class="primary">Start exploring</button>
+    <p class="fine">Made for curious people from about age 10 up. New here? Press Start: a short, hands-on guide opens by itself. Open it again any time with <b>Start guidance</b>.</p>
+    <p class="fine">Positions of the Sun, the planets and the Moon are computed for every moment, at true scale. Probe flight paths are simplified.</p>
+  </div>
+</div>
+
+<div id="tour" hidden></div>
+<div id="about" hidden></div>
+<div id="museum" hidden></div>
+<div id="viewer" hidden></div>
+<div id="echo" hidden></div>
+<div id="showcase" hidden></div>
+
+<div id="loading" role="status">Loading the Solar System…</div>
+
+<script>
+// Safety net. After an update, a browser can keep an old copy of one code file next to new copies
+// of the others; the pieces then no longer fit and the 3D view never starts. If that happens,
+// fetch every code file fresh (bypassing the cache) and reload once. If it still fails, say why.
+(function () {
+  var FILES = ['data/equipment.js','js/ui/opening.js','data/achievements.js','js/ui/learned.js','js/ui/voyagermsg.js','js/ui/joystick.js','data/leftbehind.js','js/ui/leftbehind.js','js/ui/clips.js','data/news.js','data/events.js','data/probes.js','js/audio/ambient.js','js/camera/flight.js','js/camera/rig.js','js/camera/targets.js','js/config.js','js/main.js','js/scene/bodies.js','js/scene/models.js','js/scene/probes.js','js/scene/scenes.js','js/scene/shaders.js','js/scene/voyager.js','js/scene/site.js','js/sim/clock.js','js/sim/ephemeris.js','js/ui/alerts.js','js/ui/clockui.js','js/ui/echo.js','js/ui/showcase.js','js/ui/shows.js','js/scene/webb.js','js/scene/sky.js','js/ui/perf.js','js/ui/clockui.js','js/ui/museum.js','js/scene/bodies.js','js/config.js','js/scene/saturnv.js','js/scene/edl.js','js/ui/apollo11.js','js/ui/missionfilm.js','css/style.css','js/ui/cine.js','js/ui/guide.js','js/ui/tutorial.js','js/ui/eventlist.js','js/ui/format.js','js/ui/indicators.js','js/ui/museum.js','js/ui/objectviewer.js','js/ui/panel.js','js/ui/timeline.js','js/ui/wheel.js','css/style.css','index.html'];
+  var done = false;
+  function started() { return window.__frames > 0; }
+  function repair(why) {
+    if (done || started()) return; done = true;
+    var el = document.getElementById('loading'), tried = false;
+    try { tried = sessionStorage.getItem('anf-repair') === '1'; } catch (e) {}
+    if (tried) { if (el) el.textContent = 'The 3D view could not start (' + why + '). Press Cmd+Shift+R (Ctrl+Shift+R on Windows) to reload.'; return; }
+    try { sessionStorage.setItem('anf-repair', '1'); } catch (e) {}
+    if (el) el.textContent = 'Updating to the newest version…';
+    Promise.all(FILES.map(function (u) { return fetch(u, { cache: 'reload' }).catch(function () {}); })).then(function () { location.reload(); });
+  }
+  window.addEventListener('error', function (e) { if (!started()) repair(e && e.message ? e.message : 'a file did not load'); }, true);
+  window.addEventListener('unhandledrejection', function (e) { if (!started()) repair(String(e && e.reason && e.reason.message || e.reason || 'error')); });
+  setTimeout(function () { if (!started()) repair('it took too long'); }, 45000);
+  window.addEventListener('load', function () { setTimeout(function () { if (started()) { try { sessionStorage.removeItem('anf-repair'); } catch (e) {} } }, 8000); });
+})();
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

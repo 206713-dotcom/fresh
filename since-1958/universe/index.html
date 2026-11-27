@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fly through the real galaxies within 30 megaparsecs of Earth, each at its measured distance, and watch a supernova and a black hole merger.">
+<meta name="theme-color" content="#04060a">
+<title>The galaxies · Since 1958: Beyond</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2212%22 fill=%22%23cfd7e3%22/%3E%3Cpath d=%22M16 4a12 12 0 0 1 0 24a9 12 0 0 0 0-24z%22 fill=%22%2303050a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/universe.css">
+<script type="importmap">
+{ "imports": { "three": "../vendor/three/three.module.js", "three/addons/": "../vendor/three/addons/" } }
+</script>
+</head>
+<body class="universe">
+<canvas id="view" aria-label="Interactive 3D map of the galaxies within 30 megaparsecs. Drag to look around, scroll or pinch to zoom."></canvas>
+<div id="labels" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="back" href="../" title="Back to the Moon, Mars and the probes"><span aria-hidden="true">←</span><b>Since 1958: Beyond</b></a>
+  <p class="title"><span class="title-app">The galaxies</span><span class="title-sub">Every galaxy within 30 Mpc</span></p>
+  <div class="tools" role="toolbar" aria-label="View options">
+    <button type="button" class="tool" id="btn-guides" aria-pressed="true" title="Distance rings and names (G)"><span class="tool-text">Guides</span></button>
+    <button type="button" class="tool" id="btn-panel" aria-pressed="false" aria-controls="panel" title="Facts and exam notes (I)"><span class="tool-text">Study</span></button>
+    <label class="tool tool-select" title="Graphics quality">
+      <span class="visually-hidden">Graphics quality</span>
+      <select id="quality">
+        <option value="auto">Auto quality</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="ultra">Ultra</option>
+      </select>
+    </label>
+    <button type="button" class="tool tool-icon" id="btn-full" aria-label="Full screen" title="Full screen (F)">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M3 8V3h5M12 3h5v5M17 12v5h-5M8 17H3v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<p class="scale-note" id="scale-note" hidden></p>
+<p class="hint" id="hint" aria-hidden="true"></p>
+<p class="hover-tip" id="hover-tip" hidden></p>
+
+<aside class="panel is-hidden" id="panel" aria-label="About this galaxy">
+  <button type="button" class="panel-grip" id="panel-close"><span class="visually-hidden">Close</span></button>
+  <div class="panel-head">
+    <p class="kicker" id="p-kicker"></p>
+    <h1 id="p-name"></h1>
+    <p class="tagline" id="p-tagline"></p>
+  </div>
+  <div class="live" id="p-live"></div>
+  <div class="panel-body" id="panel-body">
+    <section>
+      <h2>Facts</h2>
+      <dl class="facts" id="p-facts"></dl>
+    </section>
+    <section>
+      <h2>The science</h2>
+      <ul class="exam" id="p-exam"></ul>
+    </section>
+    <section>
+      <h2>Work it out</h2>
+      <div id="p-work"></div>
+    </section>
+    <section>
+      <h2>What is real here</h2>
+      <ul class="exam" id="p-real"></ul>
+    </section>
+    <p class="sources">Galaxies: Karachentsev, Makarov &amp; Kaisina, Updated Nearby Galaxy Catalog (Local Volume Galaxy database); Tully, Courtois &amp; Sorce, Cosmicflows-3; HyperLEDA. Black hole merger numbers: LIGO and Virgo, GW150914. Background stars: Hipparcos catalogue.</p>
+  </div>
+</aside>
+
+<nav class="dock" id="dock" aria-label="Fly to"></nav>
+
+<section class="clock reach" id="reach" aria-label="How far to show">
+  <div class="clock-read">
+    <p class="clock-date" id="r-count">&nbsp;</p>
+    <p class="clock-time" id="r-sub">&nbsp;</p>
+  </div>
+  <div class="clock-row">
+    <label class="speed">
+      <span class="speed-label" id="r-label">Out to 30 Mpc</span>
+      <input type="range" id="r-range" min="1" max="30" step="1" value="30" aria-label="Show galaxies out to this distance in megaparsecs">
+    </label>
+  </div>
+  <div class="reach-events">
+    <button type="button" class="now ev-btn" id="ev-supernova" title="A Type Ia supernova in this galaxy">Supernova</button>
+    <button type="button" class="now ev-btn" id="ev-merger" title="Two black holes spiral together and merge">Black hole merger</button>
+  </div>
+</section>
+
+<section class="event" id="event" hidden aria-live="polite">
+  <button type="button" class="panel-grip" id="event-close"><span class="visually-hidden">Close</span></button>
+  <p class="kicker" id="e-kicker"></p>
+  <h2 id="e-title"></h2>
+  <p class="event-note" id="e-note"></p>
+  <div class="live event-live" id="e-live"></div>
+  <canvas class="event-plot" id="e-plot" width="640" height="200"></canvas>
+  <p class="event-caption" id="e-caption"></p>
+  <div class="event-row">
+    <button type="button" class="now" id="event-replay">Replay</button>
+    <button type="button" class="now" id="event-done">Back to the map</button>
+  </div>
+</section>
+
+<div class="intro" id="intro">
+  <div class="intro-inner">
+    <p class="intro-kicker">Since 1958: Beyond</p>
+    <p class="intro-title">Beyond the Solar System</p>
+    <p class="intro-sub" id="intro-status">Placing the galaxies…</p>
+    <div class="intro-bar"><i id="intro-bar"></i></div>
+  </div>
+</div>
+
+<div class="fallback" id="fallback" hidden>
+  <div>
+    <h1>This view needs WebGL 2</h1>
+    <p>Your browser or device could not start the 3D graphics. Try the latest Chrome, Edge, Safari or Firefox, or turn on hardware acceleration in your browser settings.</p>
+    <a href="../">Back to Since 1958</a>
+  </div>
+</div>
+<noscript><div class="fallback"><div><h1>Since 1958 needs JavaScript</h1><p>Turn JavaScript on to explore the galaxies.</p><a href="../">Back to Since 1958</a></div></div></noscript>
+
+<script type="module" src="js/universe/main.js"></script>
+</body>
+</html>
