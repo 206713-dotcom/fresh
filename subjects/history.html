@@ -8,12 +8,12 @@
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
 <title>IGCSE History 0470 Studyroom | Fresh</title>
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="history.css">
-<script type="module" src="history.js"></script>
+<link rel="stylesheet" href="history.css?v=exam-studio">
+<script type="module" src="history.js?v=exam-studio"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
 </head>
-<body>
+<body class="history-studio">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap history-header">
@@ -31,14 +31,36 @@
 </header>
 <main id="main" class="wrap" tabindex="-1">
 <section id="history-home" class="history-view" aria-labelledby="history-title">
-<div class="history-hero">
+<header class="history-studio-intro">
   <div>
-    <p class="history-kicker">Cambridge IGCSE · 0470</p>
-    <h1 id="history-title">History<br>Studyroom</h1>
-    <p>Explore the events, weigh the evidence, and practise writing historical arguments.</p>
-    <a class="history-action" id="history-resume" href="#history-topics">Explore topics</a>
+    <p class="history-kicker">Cambridge IGCSE History · 0470</p>
+    <h1 id="history-title">Exam Studio</h1>
   </div>
-  <a class="history-art-credit" href="https://commons.wikimedia.org/wiki/File:David_-_Napoleon_crossing_the_Alps_-_Malmaison1.jpg">Napoleon Crossing the Alps · Jacques-Louis David</a>
+  <div class="history-studio-actions">
+    <a class="history-action history-action-secondary" id="history-resume" href="#history-topics">Explore topics</a>
+    <a class="history-action history-action-secondary" href="#history-review">Review your work</a>
+  </div>
+</header>
+<div class="history-studio-workbench">
+  <section class="history-studio-papers history-panel" aria-labelledby="history-studio-papers-title">
+    <h2 id="history-studio-papers-title">Choose a paper</h2>
+    <nav class="history-studio-paper-links" aria-label="History exam papers">
+      <a href="#history-paper-1"><strong>Paper 1</strong><span>Structured questions<small>2 hours · 60 marks</small></span></a>
+      <a href="#history-paper-2"><strong>Paper 2</strong><span>Document questions<small>1 hour 45 minutes · 40 marks</small></span></a>
+      <a id="history-studio-route" href="#history-paper-4">
+        <strong id="history-studio-route-title">Paper 4</strong>
+        <span><span id="history-studio-route-description">Depth-study practice</span><small id="history-studio-route-time">1 hour · 40 marks</small></span>
+      </a>
+    </nav>
+  </section>
+  <section class="history-studio-source" aria-labelledby="history-studio-source-title">
+    <h2 id="history-studio-source-title">Paper 2 source practice</h2>
+    <figure>
+      <blockquote>“The world must be made safe for democracy.”</blockquote>
+      <figcaption>Woodrow Wilson · Address to Congress · 2 April 1917</figcaption>
+    </figure>
+    <a class="history-action" href="#history-paper-2">Read the source and answer</a>
+  </section>
 </div>
 
 <div class="history-dashboard">
@@ -60,7 +82,7 @@
   <section class="history-panel history-focus">
     <h2>Your Paper 2 focus</h2>
     <p id="history-focus">Select your exam year, series, and Core option.</p>
-    <a href="#history-practice">Open source practice</a>
+    <a class="history-action history-action-secondary" href="#history-paper-2">Open source practice</a>
   </section>
 </div>
 
@@ -84,6 +106,13 @@
 <section class="history-section history-view" id="history-practice">
   <h2>Exam practice</h2>
   <p>Practise with original questions, then compare your answer with the guidance.</p>
+  <nav class="history-studio-actions history-practice-nav" aria-label="Choose a history practice paper">
+    <a class="history-action history-action-secondary" href="#history-practice">All papers</a>
+    <a class="history-action history-action-secondary" href="#history-paper-1">Paper 1</a>
+    <a class="history-action history-action-secondary" href="#history-paper-2">Paper 2</a>
+    <a class="history-action history-action-secondary" href="#history-paper-4">Paper 4</a>
+    <a class="history-action history-action-secondary" href="#history-coursework">Coursework</a>
+  </nav>
   <div id="history-practice-list"></div>
   <p><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/past-papers/">Cambridge past papers and specimen materials</a></p>
 </section>
