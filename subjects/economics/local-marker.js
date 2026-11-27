@@ -30,7 +30,7 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=17', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=18', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
@@ -44,6 +44,7 @@ const ecbizMarking = (() => {
       return await operation(marker);
     } finally {
       if (marker.isModelReady()) showMarkingReady();
+      else if (economicsModelState === 'downloaded') void checkEconomicsModelAvailability();
     }
   }
 
@@ -199,8 +200,6 @@ const ecbizMarking = (() => {
   const download = document.querySelector('#marking-download-start');
   const downloadDialog = download.closest('dialog');
   const downloadStatus = document.querySelector('#marking-download-status');
-  const navigationButton = document.querySelector('#marking-download-open');
-  const setupBanner = document.querySelector('#marking-model');
   download.disabled = false;
   downloadStatus.textContent = '';
 
@@ -208,8 +207,7 @@ const ecbizMarking = (() => {
     download.setAttribute('aria-disabled', 'true');
     download.textContent = 'Marking ready';
     downloadStatus.textContent = 'You can now mark written answers on this device.';
-    navigationButton.textContent = 'Marking ready';
-    setupBanner.hidden = true;
+    showEconomicsModelState('ready');
   }
 
   if (!globalThis.WebAssembly || typeof Worker !== 'function') {

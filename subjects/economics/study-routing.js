@@ -54,7 +54,7 @@ function loadEconomicsMocks() {
 }
 
 function loadEconomicsMarker() {
-  return loadEconomicsScript('local-marker.js?v=ready-banner-1');
+  return loadEconomicsScript('local-marker.js?v=cached-model-1');
 }
 
 const mockDataPages = new Set(['revision-test', 'revision-retry', 'revision-corrections']);
@@ -114,13 +114,47 @@ async function renderEconomicsRoute(focus = false) {
   }
 }
 
+let economicsModelState = 'checking';
+
+function showEconomicsModelState(state) {
+  economicsModelState = state;
+  const button = document.querySelector('#marking-download-open');
+  const banner = document.querySelector('#marking-model');
+  const download = document.querySelector('#marking-download-start');
+  const description = document.querySelector('#marking-download-description');
+  const content = {
+    missing: ['Set up marking', 'Download the AI marking model (about 506 MiB) to mark written answers.'],
+    downloaded: ['Model downloaded', 'The model is already downloaded in this browser. It loads when you mark a written answer.'],
+    ready: ['Marking ready', 'The model is ready to mark written answers.']
+  };
+  const [label, message] = content[state];
+  button.textContent = label;
+  banner.hidden = download.hidden = state !== 'missing';
+  description.textContent = message + ' Your answers stay on your device. AI marks are provisional.';
+}
+
+async function checkEconomicsModelAvailability() {
+  let cached = false;
+  try {
+    const moduleURL = new URL('economics/marking-model-cache.js?v=1', document.baseURI);
+    const { hasCachedEconomicsModel } = await import(moduleURL.href);
+    cached = await hasCachedEconomicsModel();
+  } catch {
+    // Keep setup available if this browser cannot inspect its cache.
+  }
+  if (economicsModelState !== 'ready') showEconomicsModelState(cached ? 'downloaded' : 'missing');
+}
+
+const initialEconomicsModelCheck = checkEconomicsModelAvailability();
+
 document.addEventListener('click', async event => {
   if (!event.target.closest('[data-ai-download-open]')) return;
   const dialog = document.querySelector('#marking-download');
   const download = document.querySelector('#marking-download-start');
   const status = document.querySelector('#marking-download-status');
   if (!dialog.open) dialog.showModal();
-  if (typeof ecbizMarking !== 'undefined') return;
+  await initialEconomicsModelCheck;
+  if (economicsModelState !== 'missing' || typeof ecbizMarking !== 'undefined') return;
   download.disabled = true;
   dialog.setAttribute('data-loading', '');
   status.textContent = 'Loading marking settings…';
