@@ -174,7 +174,7 @@
         <ol class="hm-how">${[['First look', 'The whole lecture in a few sentences, before any detail.'], ['Notes', 'Every concept the syllabus asks for, numbered the way your syllabus numbers it.'], ['Live figure', 'A model you can change, on the lectures marked Live.'], ['What earns the marks', 'The wording mark schemes reward, with a mode that hides the answers.'], ['Check yourself', 'Original exam-style questions, marked here on your device.']].map((x, i) => `<li><b>${i + 1}</b><h3>${x[0]}</h3><p>${x[1]}</p></li>`).join('')}</ol></section>
       <section class="hm-sec"><header><p class="kicker">Four stages, one straight path</p><h2>Start where you are.</h2></header><div id="hmResume"></div>
         <div class="hm-stages" id="hmStages"></div></section>
-      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#simulations">Simulations</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Twistor Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">ΦΥΣΙΣ home</a>` : ''}</footer>`;
+      <footer class="hm-foot"><a href="#chemistry">All lectures</a><a href="#periodic-table">Periodic Table</a><a href="#simulations">Simulations</a><a href="#record">Your record</a><a href="#definitions">Definitions</a><a href="#olympiad">Olympiad</a><a href="#about-us">About this site</a><a href="#developers">Developers</a><a href="${PHYSICS_URL}">Twistor Physics</a>${window.GEO_HOME ? `<a href="${window.GEO_HOME}">ΦΥΣΙΣ home</a>` : ''}</footer>`;
     host.addEventListener('click', e => {
       const lab = e.target.closest('[data-lab]'); if (lab) { labAt = +lab.dataset.lab; Widgets.clear(); labMount(); Snd.tick(); return; }
       const hm = e.target.closest('[data-hm]'); if (hm) { if (hm.dataset.hm === 'q') hmQuestion(); else hmElement(); Snd.tick(); return; }
@@ -407,7 +407,7 @@
     window.dispatchEvent(new Event('gc-view'));
     if (!h || h === 'start' || h === 'enter') return startShow();
     startHide(); let st = null;
-    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'simulations' || h === 'live-models') vModels(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view);
+    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'simulations' || h === 'live-models') vModels(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view); else if (h === 'record' && window.Revise) Revise.page(view);
     else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
     $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h.startsWith('olympiad') ? 'olympiad' : h)));
@@ -484,7 +484,7 @@
     document.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; const h = a.getAttribute('href') || ''; if (h === window.GEO_HOME) { e.preventDefault(); tell({ gc: 'home' }); } else if (h.startsWith('https://claude.ai/') && !a.target) { e.preventDefault(); try { window.parent.location.href = h; } catch (er) { location.href = h; } } }, true);
     window.addEventListener('hashchange', () => tell({ gc: 'hash', h: location.hash.slice(1) }));
   }
-  window.GC = { tex, inline, plain, esc, store, done, ALL, BY, cur: () => CUR, stageData, get IDX() { return IDX; } };
+  window.GC = { num, norm, hit, plural, tex, inline, plain, esc, store, done, ALL, BY, cur: () => CUR, stageData, get IDX() { return IDX; } };
 
   /* ---------- boot ---------- */
   async function boot() {
