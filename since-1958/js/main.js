@@ -1187,7 +1187,7 @@ function applyViewShift() {
 window.addEventListener('resize', resize);
 resize();
 
-let last = performance.now(), uiT = 0, panelT = 0, frames = 0;
+let last = performance.now(), uiT = 0, panelT = 0, frames = 0, warm = 0;
 // Adaptive resolution: if the last second averaged under 32 fps, render fewer pixels (never during a flight).
 let fpsT = 0, fpsN = 0, slowRuns = 0;
 // Shadows look the same whether the shadow map is redrawn every frame or only when something
@@ -1214,13 +1214,24 @@ function adaptResolution(dt) {
   // Slow frames: give the picture a little fewer real pixels, one step at a time, never below
   // about half the budget. This is counted in real screen pixels, so browser zoom cannot make
   // it blurry the way the old fixed ratio did.
-  slowRuns = fps < 30 ? slowRuns + 1 : 0;
-  if (slowRuns >= 3 && budgetScale > 0.52) {
-    slowRuns = 0;
-    budgetScale = Math.max(0.5, budgetScale * 0.8);
+  // It used to wait for three seconds under 30 frames a second, and never gave the pixels back. Now it steps
+  // down after two seconds under 45, and after five smooth seconds it tries one step back up. If that step
+  // brings the stutter back, the level that failed is remembered and not tried again for a while.
+  slowRuns = fps < 45 ? slowRuns + 1 : 0;
+  fastRuns = fps > 57 ? fastRuns + 1 : 0;
+  if (slowRuns >= 2 && budgetScale > 0.52) {
+    slowRuns = 0; fastRuns = 0;
+    if (raisedAt && performance.now() - raisedAt < 8000) { ceilScale = Math.min(ceilScale, budgetScale * 0.9); ceilT = performance.now(); }
+    budgetScale = Math.max(0.5, budgetScale * 0.85);
     resize();
+  } else if (fastRuns >= 5 && budgetScale < 1 && !rig.flying) {
+    fastRuns = 0;
+    if (performance.now() - ceilT > 90000) ceilScale = 1;             // conditions change (another tab closed, a lighter scene): try again later
+    const next = Math.min(1, budgetScale / 0.85);
+    if (next <= ceilScale + 1e-3) { budgetScale = next; raisedAt = performance.now(); resize(); }
   }
 }
+let fastRuns = 0, raisedAt = 0, ceilScale = 1, ceilT = 0;
 // on a touch screen: a thumb joystick wherever a keyboard would walk (the exhibition, and walking at a landing site)
 const joy = setupJoystick();
 function joyFor() {
@@ -1285,7 +1296,10 @@ function frame(now) {
   updateKscPin(); SEC('pin');
   const tD = performance.now();
   perf.gpuBegin(renderer);
-  if (!viewer.isOpen && !museum.isOpen && !anyFilm()) renderer.render(scene, camera);     // the object viewer has the screen: no need to draw behind it
+  // The very first picture needs every shader built. Done inside render() that freezes the page for a moment,
+  // so it is asked for ahead of time, in the background, and drawing starts when it is ready (or after 4 s).
+  if (!warm) { warm = 1; const go = () => { warm = 2; }; try { renderer.compileAsync(scene, camera).then(go, go); } catch (e) { go(); } setTimeout(go, 4000); }
+  if (warm === 2 && !viewer.isOpen && !museum.isOpen && !anyFilm()) renderer.render(scene, camera);     // the object viewer has the screen: no need to draw behind it
   perf.gpuEnd(renderer); SEC('render');
   perf.cpu(tD - tJ, performance.now() - tD);
   window.__frames = ++frames;

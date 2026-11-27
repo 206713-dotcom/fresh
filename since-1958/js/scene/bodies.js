@@ -210,10 +210,22 @@ function ringTexture() {
   return t;
 }
 
+// The maps every world starts with. A JPEG handed straight to the graphics card is unpacked on the page's own
+// thread at that moment, which freezes the picture; so each one is unpacked in the background first
+// (createImageBitmap), exactly as the sharp maps further down already are. Older browsers load the plain way.
 function loadTex(loader, url, srgb = true) {
-  const t = loader.load(url);
-  t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-  t.anisotropy = 16;
+  const finish = (t) => { t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.anisotropy = 16; return t; };
+  if (typeof createImageBitmap !== 'function' || typeof fetch !== 'function') return finish(loader.load(url));
+  const t = finish(new THREE.Texture()), m = loader.manager;
+  t.flipY = false;                                      // the bitmap is already turned the right way up
+  m.itemStart(url);
+  fetch(url).then((r) => { if (!r.ok) throw new Error(r.status); return r.blob(); })
+    .then((b) => createImageBitmap(b, { imageOrientation: 'flipY', premultiplyAlpha: 'none', colorSpaceConversion: 'none' }))
+    .then((bmp) => { t.image = bmp; t.needsUpdate = true; m.itemEnd(url); })
+    .catch(() => {
+      new THREE.TextureLoader().load(url, (x) => { t.image = x.image; t.flipY = true; t.needsUpdate = true; m.itemEnd(url); },
+        undefined, () => { m.itemError(url); m.itemEnd(url); });
+    });
   return t;
 }
 

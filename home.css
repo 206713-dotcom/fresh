@@ -442,8 +442,8 @@
   color: #203e32;
   box-shadow: 0 12px 34px #0b1c1699;
 }
-.fresh-home .ticker-track { display: inline-flex; align-items: center; animation: fx-marquee 46s linear infinite; }
-.fresh-home .ticker-band.back .ticker-track { animation-duration: 64s; animation-direction: reverse; }
+/* The tapes stay still: only their slant and the names remain */
+.fresh-home .ticker-track { display: inline-flex; align-items: center; }
 .fresh-home .ticker-track span { padding-inline: 1.15rem; }
 /* The separator is the slanted bar from the logo */
 .fresh-home .ticker-track i {
@@ -1249,3 +1249,7 @@
 @media (prefers-reduced-motion: reduce) {
   .fresh-home .space-cta, .fresh-home .space-cta *, .fresh-home .space-cta::before, .fresh-home .space-cta::after { animation: none !important; transition: none !important; }
 }
+
+/* Nothing in the Since 1958 band moves while it is off screen */
+.fresh-home .s58.is-away, .fresh-home .s58.is-away *, .fresh-home .s58.is-away *::before, .fresh-home .s58.is-away *::after { animation-play-state: paused !important; }
+.fresh-home .space-cta.is-away, .fresh-home .space-cta.is-away *, .fresh-home .space-cta.is-away::before, .fresh-home .space-cta.is-away::after { animation-play-state: paused !important; }

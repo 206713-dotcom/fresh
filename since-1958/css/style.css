@@ -1381,3 +1381,17 @@ body.shot > #opening { visibility: visible !important; }
 }
 /* the name's second line in the opening film */
 #opening .op-title h1 em { display: block; margin-top: .12em; font-style: normal; font-size: .4em; letter-spacing: .42em; padding-left: .42em; text-transform: uppercase; color: #c9b8ff; }
+
+/* ---- the way back to the Fresh homepage: always in the top-left corner, in Fresh's own colours */
+#goFresh { position: fixed; top: 14px; left: 20px; z-index: 34; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 13px 0 7px;
+  border-radius: 12px; border: 1px solid rgba(228, 238, 178, 0.35); background: rgba(19, 44, 39, 0.9); color: #f6efd8; text-decoration: none;
+  font-family: system-ui, sans-serif; font-size: 14.5px; font-weight: 800; letter-spacing: -0.03em;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45); transition: border-color .2s, transform .2s, background .2s; }
+#goFresh svg { display: block; border-radius: 7px; }
+#goFresh:hover { border-color: #e4eeb2; background: #1b3d33; transform: translateY(-1px); }
+#brand { left: 118px; }
+@media (max-width: 760px) {
+  #goFresh { top: 7px; left: 10px; height: 34px; padding: 0 5px; border-radius: 10px; }
+  #goFresh span { display: none; }
+  #brand { left: 54px; }
+}

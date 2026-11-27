@@ -25,6 +25,7 @@ function albedoSampler(tex) {
   const c = document.createElement('canvas');
   c.width = img.width; c.height = img.height;
   const g = c.getContext('2d', { willReadFrequently: true });
+  if (tex.flipY === false) { g.translate(0, c.height); g.scale(1, -1); }   // maps unpacked in the background arrive upside down (see loadTex in bodies.js)
   g.drawImage(img, 0, 0);
   const { data, width: w, height: h } = g.getImageData(0, 0, c.width, c.height);
   const px = (x, y, k) => data[((y * w) + x) * 4 + k] / 255;

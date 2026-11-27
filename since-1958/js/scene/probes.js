@@ -177,8 +177,10 @@ export class ProbeFleet {
       eph[def.id] = st;
 
       const group = new THREE.Group(); group.frustumCulled = false;
-      const model = buildModel(def.model); model.scale.setScalar(0.001);    // metres -> km
-      group.add(model); scene.add(group);
+      // The spacecraft model is only fetched and built when the camera heads for this probe or comes within
+      // 20,000 km of it (see update). From farther away it is far smaller than a pixel, so nothing is lost,
+      // and the page no longer downloads every probe's model before it can start.
+      scene.add(group);
 
       // flight path: dense near launch, sparse far out
       const tEnd = def.l2 ? Date.parse(def.l2.arrive) : orbit ? orbit.fromMs : Date.UTC(2035, 11, 31), N = 1600;
@@ -200,6 +202,9 @@ export class ProbeFleet {
     for (const p of this.list) {
       p.group.visible = p.st.active;
       if (p.st.active) { rig.toRender(p.st.pos, p.group.position); p.group.quaternion.copy(rig.qv).multiply(p.st.quat); }
+      if (!p.built && p.st.active && (rig.bodyId === p.def.id || rig.camWorld.distanceToSquared(p.st.pos) < 4e8)) {
+        p.built = true; const model = buildModel(p.def.model); model.scale.setScalar(0.001); p.group.add(model);    // metres -> km
+      }
       // a little life: the Pioneers really spin (about 5 turns a minute, around the dish axis, to stay steady);
       // the others hold their aim and drift very slightly inside it, as real spacecraft do
       const m = p.st.active && p.group.children[0];

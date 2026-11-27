@@ -1250,19 +1250,25 @@ void main(){
   const resize = () => { sizeSky(); sizeArt(); frame(performance.now(), true); };
   addEventListener('resize', () => { clearTimeout(resize.t); resize.t = setTimeout(resize, 120); });
 
+  // Two watchers: one gets the maps loading a little before the band scrolls in, the other
+  // stops every moving thing (canvas frames and CSS animations) the moment it leaves the screen.
+  band.classList.add('is-away');
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !prog) { setupGL(); resize(); }
+  }, { rootMargin: '300px 0px' }) : null;
+  const io2 = io ? new IntersectionObserver(([e]) => {
     visible = e.isIntersecting;
+    band.classList.toggle('is-away', !visible);
     if (visible) {
-      if (!prog) { setupGL(); resize(); }
       if (!band.classList.contains('is-in')) {
         band.classList.add('is-in');
         if (!reduce.matches) countStart = performance.now();
       }
       start();
     }
-  }, { rootMargin: '200px 0px' }) : null;
-  if (io) io.observe(band);
-  else { visible = true; setupGL(); resize(); band.classList.add('is-in'); start(); }
+  }) : null;
+  if (io) { io.observe(band); io2.observe(band); }
+  else { visible = true; band.classList.remove('is-away'); setupGL(); resize(); band.classList.add('is-in'); start(); }
   document.addEventListener('visibilitychange', start);
   if (reduce.addEventListener) reduce.addEventListener('change', () => { start(); frame(performance.now(), true); });
 
@@ -1383,7 +1389,7 @@ void main(){
   });
   cta.addEventListener('focus', () => { target = 0.9; });
   cta.addEventListener('blur', () => { target = 0.06; });
-  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { on = e.isIntersecting; start(); }).observe(cta);
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { on = e.isIntersecting; cta.classList.toggle('is-away', !on); start(); }).observe(cta);
   document.addEventListener('visibilitychange', () => { on = !document.hidden; start(); });
   start();
 })();
