@@ -247,16 +247,61 @@ function practicePreset(id, mode) {
 }
 
 function practice(chapterIndex, followUp) {
-  const expanded = matchMedia('(min-width: 901px)').matches ? ' open' : '';
-  return '<header class="practice-heading"><h1 class="page-title">'+(followUp?'Topic follow-up':'Practice questions')+'</h1><p id="practice-context" class="muted"></p><a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a><p id="practice-save-status" role="status">Progress saves in this browser.</p>'+
-    (followUp ? '<div class="row">'+link('All questions for this topic', '#practice/topic/'+followUp, 'text-link')+' '+link('Mock exam history', '#revision-history', 'text-link')+'</div>' : '')+'</header><div id="practice-marking"></div>'+
-    '<details class="practice-filters"'+(followUp?' hidden':expanded)+'><summary>Filter questions<span id="filter-count"></span></summary><div class="row"><label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>'+catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')+'</select></label>'+
-    '<label class="field">Topic<select id="filter-topic"></select></label><label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>'+
-    '<label class="field">Marks<select id="filter-marks"><option value="">All marks</option>'+[1,2,4,6,8].map(m=>'<option value="'+m+'">'+m+'</option>').join('')+'</select></label></div>'+
-    '<div class="row"><label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label><label class="field question-search">Find a question<input type="search" id="filter-search" placeholder="Search wording, topic or question ID"></label><button type="button" id="clear-filters">Clear filters</button><button type="button" id="show-filtered-questions">Show questions</button></div></details>'+
-    '<div class="practice-workspace"><details class="question-browser"'+expanded+'><summary>Browse questions <span id="question-count" aria-live="polite"></span></summary><p id="question-scope" class="eyebrow"></p><nav id="question-list" aria-label="Questions"></nav><div class="row navigator-pages" id="list-pages"></div></details>'+
-    '<section class="question-work" tabindex="-1" aria-label="Selected question"><div class="question-toolbar" id="question-pages"></div><div id="questions"></div></section></div>';
+  const browserOpen = matchMedia('(min-width: 901px)').matches ? ' open' : '';
+  return `
+    <header class="practice-heading">
+      <div>
+        <h1 class="page-title">${followUp?'Topic follow-up':'Practice questions'}</h1>
+        <p id="practice-context"></p>
+        <a id="practice-checklist" class="text-link" hidden>Open topic checklist →</a>
+        ${followUp ? '<div class="row">'+link('All questions for this topic', '#practice/topic/'+followUp, 'text-link')+' '+link('Mock exam history', '#revision-history', 'text-link')+'</div>' : ''}
+      </div>
+      ${followUp ? '' : `<div class="practice-papers" role="group" aria-label="Question type">
+        <button type="button" data-practice-paper="">All questions</button>
+        <button type="button" data-practice-paper="mcq">Paper 1</button>
+        <button type="button" data-practice-paper="structured">Paper 2</button>
+      </div>`}
+    </header>
+    <div id="practice-marking"></div>
+    <div class="practice-workspace">
+      <aside class="practice-rail" aria-label="Find a question">
+        <details class="practice-filters"${followUp?' hidden':''}>
+          <summary>Filters <span id="filter-count"></span></summary>
+          <div class="practice-filter-fields">
+            <label class="field practice-filter-wide">Find a question<input type="search" id="filter-search" placeholder="Wording, topic or question ID"></label>
+            <label class="field practice-filter-wide">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
+            <label class="field practice-filter-wide">Topic<select id="filter-topic"></select></label>
+            <label class="field">Question type<select id="filter-type"><option value="">All types</option><option value="mcq">MCQ · Paper 1</option><option value="structured">Structured · Paper 2</option></select></label>
+            <label class="field">Marks<select id="filter-marks"><option value="">All marks</option>${[1,2,4,6,8].map(mark=>'<option value="'+mark+'">'+mark+'</option>').join('')}</select></label>
+            <label class="field practice-filter-wide">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
+            <div class="practice-filter-actions practice-filter-wide">
+              <button type="button" id="clear-filters">Clear</button>
+              <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
+            </div>
+          </div>
+        </details>
+        <details class="question-browser"${browserOpen}>
+          <summary>Browse questions <span id="question-count" aria-live="polite"></span></summary>
+          <nav id="question-list" aria-label="Questions"></nav>
+          <div class="row navigator-pages" id="list-pages">
+            <button type="button" data-list-page="-1" aria-label="Previous set of questions">←</button>
+            <small id="question-list-range"></small>
+            <button type="button" data-list-page="1" aria-label="Next set of questions">→</button>
+          </div>
+        </details>
+      </aside>
+      <section class="question-work" tabindex="-1" aria-label="Selected question">
+        <div class="question-toolbar" id="question-pages" role="group" aria-label="Question navigation" hidden>
+          <button type="button" data-page="-1" aria-label="Previous question"><span aria-hidden="true">←</span> <span>Previous</span></button>
+          <label class="jump-label">Question <input id="question-jump" type="number" aria-label="Go to question number" inputmode="numeric" min="1" step="1"> <span id="question-total"></span></label>
+          <button type="button" data-page="1" aria-label="Next question"><span>Next</span> <span aria-hidden="true">→</span></button>
+        </div>
+        <div id="questions"></div>
+        <p id="practice-save-status" role="status">Progress saves in this browser.</p>
+      </section>
+    </div>`;
 }
+
 function readPracticeAnswers() {
   try {
     const saved = JSON.parse(localStorage.getItem('ecbiz-economics-practice-answers') || '{}');
@@ -311,6 +356,9 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   const questionSet=document.querySelector('#filter-set');
   const list=document.querySelector('#question-list');
   const listPages=document.querySelector('#list-pages');
+  const listRange = document.querySelector('#question-list-range');
+  const jump = document.querySelector('#question-jump');
+  const paperButtons = document.querySelectorAll('[data-practice-paper]');
   const context = document.querySelector('#practice-context');
   const checklistLink = document.querySelector('#practice-checklist');
   const saveStatus = document.querySelector('#practice-save-status');
@@ -349,6 +397,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
   let requestedQuestion = questionId;
   let matches=[];
+  let browseStart = 0;
   const size=20;
   const followUpMatches = followUp ? followUpQuestions(initialTopic, attempts) : null;
 
@@ -373,29 +422,36 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     document.querySelector('#question-count').textContent=matches.length+' matching questions';
     const topicLabel=topic.value?topic.selectedOptions[0].textContent:'All topics';
     const typeLabel=type.value==='mcq'?'MCQs':type.value==='structured'?'Structured questions':'All types';
-    document.querySelector('#question-scope').textContent=topicLabel+' · '+typeLabel;
     context.textContent = followUp ? topicLabel + ' · ' + matches.length + ' follow-up questions' :
       topic.value || type.value ? topicLabel + ' · ' + typeLabel : 'Choose a chapter or topic, then pick a question from the list.';
     const activeFilters = [chapter, topic, type, marks, search, questionSet].filter(field => field.value.trim()).length;
+    for (const button of paperButtons) button.setAttribute('aria-pressed', String(button.dataset.practicePaper === type.value));
     document.querySelector('#filter-count').textContent = activeFilters ? ' · ' + activeFilters + ' active' : '';
     checklistLink.hidden = !topic.value;
     if (topic.value) checklistLink.href = '#revision-checklist/' + topic.value;
     if (useSavedFilters) {
       try {localStorage.setItem(filterKey,JSON.stringify({chapter:chapter.value,topic:topic.value,type:type.value,marks:marks.value,search:search.value,questionSet:questionSet.value,page}))} catch {}
     }
+    browseStart = Math.floor(page / size) * size;
     renderNavigator();
     target.innerHTML=matches.slice(page,page+1).map(({q,i})=>{
       const saved=attempts.get(i)||{};
       const answer=saved.answer||'';
       const wordCount=answer.trim()?answer.trim().split(/\s+/).length:0;
-      return '<form class="panel" data-question="'+i+'"><div class="eyebrow">Chapter '+(q.c+1)+' · '+q.topic+' · '+q.marks+' '+(q.marks===1?'mark':'marks')+'</div><p class="question-id">'+escapeHtml(q.id)+'</p>'+
+      const markLabel = q.marks + (q.marks === 1 ? ' mark' : ' marks');
+      return '<form class="panel practice-question" aria-labelledby="practice-question-title" data-question="'+i+'"><div class="practice-question-meta"><div>'+
+        '<p class="eyebrow">Chapter '+(q.c+1)+' · '+escapeHtml(q.topic)+'</p><p class="question-id">'+escapeHtml(q.id)+'</p></div>'+
+        '<strong class="practice-marks">'+markLabel+'</strong></div>'+
         (q.case?'<div class="case-study"><strong>Case study</strong><p>'+escapeHtml(q.case)+'</p></div>':'')+
-        '<h2>'+escapeHtml(q.q)+'</h2>'+
-        (q.options?q.options.map((option,j)=>'<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+' required><strong>'+String.fromCharCode(65+j)+'.</strong> '+escapeHtml(option)+'</label>').join(''):
+        '<h2 id="practice-question-title">'+escapeHtml(q.q)+'</h2>'+
+        (q.options?'<div class="practice-choices">'+q.options.map((option,j)=>
+          '<label class="choice"><input type="radio" name="answer" value="'+j+'" '+(answer===String(j)?'checked':'')+
+          ' required><strong class="practice-choice-letter">'+String.fromCharCode(65+j)+'.</strong><span>'+escapeHtml(option)+'</span></label>'
+        ).join('')+'</div>':
           '<div class="answer-composer"><div class="answer-heading"><label for="practice-answer">Your answer</label><span>Written practice</span></div>'+
           '<textarea id="practice-answer" name="answer" maxlength="8000" required aria-describedby="answer-hint" placeholder="Start with your key point, then develop your reasoning…">'+escapeHtml(answer)+'</textarea>'+
           '<div class="answer-footer"><span id="answer-hint">Use clear economic reasoning and relevant examples.</span><span class="answer-count">'+wordCount+' '+(wordCount===1?'word':'words')+'</span></div></div>')+
-        '<div class="practice-submit"><span aria-hidden="true">'+q.marks+' '+(q.marks===1?'mark':'marks')+'</span><button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button></div><div class="feedback ecbiz-loading-status" role="status" '+(saved.pending?'data-loading ':'')+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
+        '<div class="practice-submit"><span aria-hidden="true">'+markLabel+'</span><button class="primary" '+(saved.pending?'disabled':'')+'>'+(q.options?'Check answer':'Mark my answer')+'</button></div><div class="feedback ecbiz-loading-status" role="status" '+(saved.pending?'data-loading ':'')+(saved.feedback?'':'hidden')+'>'+(saved.feedback||'')+'</div></form>';
     }).join('');
     const current=matches[page];
     const saved=current && attempts.get(current.i);
@@ -403,14 +459,30 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
       paintAnswerChoices(target, saved.answer, current.q.answer);
       target.querySelector('.feedback').dataset.outcome = mcqOutcome(saved.answer, current.q.answer);
     }
-    pages.innerHTML=matches.length?'<button type="button" data-page="-1" '+(page===0?'disabled':'')+'>← Previous</button><label class="jump-label">Question <input id="question-jump" aria-label="Go to question number" type="number" min="1" max="'+matches.length+'" value="'+(page+1)+'"> of '+matches.length+'</label><button type="button" data-page="1" '+(page===matches.length-1?'disabled':'')+'>Next →</button>':'';
-    if(!matches.length)target.innerHTML='<div class="panel"><h2>No matching questions</h2><p>Try a broader search or clear the filters.</p></div>';
+    pages.hidden = !matches.length;
+    jump.max = String(matches.length);
+    jump.value = String(page + 1);
+    document.querySelector('#question-total').textContent = 'of ' + matches.length;
+    pages.querySelector('[data-page="-1"]').disabled = page === 0;
+    pages.querySelector('[data-page="1"]').disabled = page >= matches.length - 1;
+    if (!matches.length) target.innerHTML = '<div class="panel practice-empty"><h2>No matching questions</h2>' +
+      (followUp ? '<p>There are no follow-up questions for this topic.</p>' :
+        '<p>Try a broader search or clear the filters.</p><button type="button" data-clear-practice>Clear filters</button>') + '</div>';
   }
   function renderNavigator() {
-    const start=Math.floor(page/size)*size;
-    list.innerHTML=matches.slice(start,start+size).map(({q,i},offset)=>
-      '<button type="button" data-question-position="'+(start+offset)+'" '+(start+offset===page?'aria-current="step"':'')+'><span class="question-number">'+(start+offset+1)+'</span><span><strong>'+escapeHtml(q.q)+'</strong><small>Ch '+(q.c+1)+' · '+q.topic+' · '+(q.options?'MCQ':q.marks+' marks')+(attempts.get(i)?.answer?' · ● Started':'')+'</small></span></button>').join('');
-    listPages.innerHTML=matches.length>size?'<button type="button" data-list-page="-1" '+(start===0?'disabled':'')+'>← List</button><small>'+(start+1)+'–'+Math.min(start+size,matches.length)+'</small><button type="button" data-list-page="1" '+(start+size>=matches.length?'disabled':'')+'>List →</button>':'';
+    list.innerHTML = matches.slice(browseStart,browseStart+size).map(({q,i},offset) => {
+      const position = browseStart + offset;
+      const attempt = attempts.get(i);
+      const state = attempt?.pending ? 'Marking…' : typeof attempt?.score === 'number' ? 'Marked' : attempt?.answer ? 'Started' : '';
+      return '<button type="button" data-question-position="'+position+'" '+(position===page?'aria-current="step"':'')+
+        '><span class="question-number">'+(position+1)+'</span><span><strong>'+escapeHtml(q.q)+'</strong><small>Ch '+(q.c+1)+
+        ' · '+escapeHtml(q.topic)+' · '+(q.options?'MCQ':q.marks+' marks')+(state?' · '+state:'')+'</small></span></button>';
+    }).join('');
+    listPages.hidden = matches.length <= size;
+    listPages.querySelector('[data-list-page="-1"]').disabled = browseStart === 0;
+    listPages.querySelector('[data-list-page="1"]').disabled = browseStart + size >= matches.length;
+    listRange.textContent = (browseStart + 1) + '–' +
+      Math.min(browseStart + size, matches.length) + ' of ' + matches.length;
   }
   function reset() {page=0;renderQuestions()}
   renderTopics();
@@ -419,17 +491,28 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   chapter.onchange=()=>{renderTopics();reset()};
   topic.onchange=type.onchange=marks.onchange=questionSet.onchange=reset;
   search.oninput=reset;
-  document.querySelector('#clear-filters').onclick=()=>{
+  for (const button of paperButtons) button.onclick = () => {
+    type.value = button.dataset.practicePaper;
+    if ((type.value === 'mcq' && marks.value !== '1') || (type.value === 'structured' && marks.value === '1')) marks.value = '';
+    reset();
+  };
+  function clearFilters() {
     chapter.value=topic.value=type.value=marks.value=search.value=questionSet.value='';
     renderTopics();
     reset();
+  }
+  document.querySelector('#clear-filters').onclick = clearFilters;
+  target.onclick = event => {
+    if (!event.target.closest('[data-clear-practice]')) return;
+    clearFilters();
+    target.closest('.question-work').focus();
   };
   document.querySelector('#show-filtered-questions').onclick = event => {
     event.target.closest('details').open = false;
     moveTo(page, true);
   };
   function moveTo(position,scroll=false) {
-    page=Math.max(0,Math.min(position,matches.length-1));
+    page=Math.max(0,Math.min(Math.trunc(position),matches.length-1));
     renderQuestions();
     if (scroll) {
       const work = target.closest('.question-work');
@@ -442,18 +525,21 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     if (!button) return;
     const compact = window.innerWidth < 901;
     if (compact) list.closest('details').open = false;
-    moveTo(Number(button.dataset.questionPosition), compact || event.detail === 0);
+    moveTo(Number(button.dataset.questionPosition), true);
   };
   listPages.onclick=event=>{
     const button=event.target.closest('[data-list-page]');
-    if(button)moveTo(Math.floor(page/size)*size+Number(button.dataset.listPage)*size);
+    if (!button) return;
+    browseStart += Number(button.dataset.listPage) * size;
+    renderNavigator();
+    list.scrollTop = 0;
   };
   pages.onclick=event=>{
     const button=event.target.closest('[data-page]');
     if(button)moveTo(page+Number(button.dataset.page));
   };
   pages.onchange=event=>{
-    if(event.target.id==='question-jump'&&event.target.value)moveTo(Number(event.target.value)-1);
+    if (event.target === jump) moveTo(jump.value ? Number(jump.value)-1 : page);
   };
   target.oninput=event=>{
     const form=event.target.closest('form');
