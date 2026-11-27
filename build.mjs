@@ -14,7 +14,7 @@ mkdirSync(dist, { recursive: true });
 
 // Root static files
 for (const f of [
-  "index.html", "privacy.html", "points.html", "points.css", "404.html", "style.css", "home.css",
+  "index.html", "privacy.html", "contacts.html", "points.html", "points.css", "404.html", "style.css", "home.css",
   "privacy.css", "privacy.js", "search.js", "home.js", "fresh.svg",
   "CNAME", ".nojekyll", "metadata.json", "gis-points.css", "gis-points.js",
 ]) {

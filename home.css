@@ -830,7 +830,9 @@
 @keyframes fx-sweep { to { transform: translateX(110%); } }
 
 /* 3f. Footer and focus rings on the dark page */
-.fresh-home .footer { border-top-color: #e4eeb21f; color: #9bb39b; }
+.fresh-home .footer { border-top-color: #e4eeb21f; color: #9bb39b; flex-wrap: wrap; }
+.fresh-home .home-contacts { display: grid; gap: .3rem; min-width: 0; font-style: normal; overflow-wrap: anywhere; }
+.fresh-home .home-contacts strong { color: var(--lime); }
 .fresh-home .footer a:hover { color: var(--lime); }
 .fresh-home :focus-visible { outline-color: var(--lime); }
 .fresh-home .site-header :focus-visible, .fresh-home .skip:focus-visible { outline-color: #97532b; }

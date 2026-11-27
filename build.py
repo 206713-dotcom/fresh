@@ -13,6 +13,15 @@ GROUPS = {
 }
 
 
+HOME_CONTACTS = """  <address class="home-contacts" id="contact" aria-labelledby="contact-title">
+    <strong id="contact-title">General contacts</strong>
+    <a href="mailto:206713@gardenschool.edu.my">Junyi · 206713@gardenschool.edu.my</a>
+    <a href="mailto:206058@gardenschool.edu.my">Lucas · 206058@gardenschool.edu.my</a>
+    <a href="contacts.html#subjects">Subject contacts <span aria-hidden="true">→</span></a>
+  </address>
+"""
+
+
 def page(title, description, main, prefix="", script=""):
     is_home = not prefix
     brand = "Fresh"
@@ -20,6 +29,7 @@ def page(title, description, main, prefix="", script=""):
     mark = f'<img src="{prefix}fresh.svg" width="{logo_size}" height="{logo_size}" alt="">'
     home_assets = '<link rel="stylesheet" href="home.css">\n' if is_home else ""
     body = '<body class="fresh-home">' if is_home else '<body>'
+    contacts = HOME_CONTACTS if is_home else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -46,7 +56,7 @@ def page(title, description, main, prefix="", script=""):
   <span>{brand} · Independent IGCSE revision</span>
   <a href="{CAMBRIDGE}">Cambridge subject directory ↗</a>
   <a href="{prefix}privacy.html">Privacy notice</a>
-</footer>
+{contacts}</footer>
 </body>
 </html>
 """
