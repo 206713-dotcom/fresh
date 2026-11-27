@@ -8,35 +8,67 @@
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../gis-points.css?v=3">
 <script src="../gis-points.js?v=5" defer></script>
-<link rel="stylesheet" href="english/study.css">
-<script type="module" src="english/study.mjs?v=question-bank"></script>
+<link rel="stylesheet" href="english/study.css?v=studio-home">
+<script type="module" src="english/study.mjs?v=studio-home"></script>
 </head>
-<body>
+<body class="language-studio">
 <a class="skip" href="#main">Skip to content</a>
-<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="../index.html" aria-label="Fresh homepage"><img src="../fresh.svg" width="34" height="34" alt=""> Fresh</a><div class="actions"><a href="../index.html#subjects">All subjects</a><button id="theme" type="button" aria-pressed="false">Dark mode</button></div></nav></header>
-<main id="main" class="wrap">
-  <nav class="studio-nav" aria-label="English Studio" data-exam-help>
-    <strong>English Studio</strong>
-    <div class="studio-tabs">
-      <a href="#reading-room">Reading Room</a>
-      <a href="#practice">Practice Desk</a>
+<header class="studio-header">
+  <div class="wrap studio-header-inner">
+    <a class="brand" href="#reading-room"><img src="../fresh.svg" width="34" height="34" alt=""> English Studio</a>
+    <nav class="studio-header-nav studio-tabs" aria-label="Main navigation" data-exam-help>
+      <a href="#reading-room">Home</a>
+      <a href="#workshop">Skills</a>
+      <a href="#practice">Practice</a>
       <a href="english-reading-lab.html">Reading Lab</a>
-      <a href="#workshop">Skills Map</a>
-      <a id="notebook-link" href="english-mistake-notebook.html">Mistake Notebook</a>
-      <a href="#syllabus-checklist">Syllabus Checklist</a>
-      <a href="#course-guide">Course Guide</a>
-      <a href="#revision-library">Revision Library</a>
+      <a href="#course-guide">Exam guide</a>
+      <a id="notebook-link" data-studio-notebook href="english-mistake-notebook.html">Notebook</a>
+    </nav>
+    <div class="studio-header-tools">
+      <a href="../index.html#subjects" data-exam-help>All subjects</a>
+      <button id="theme" type="button" aria-pressed="false">Dark mode</button>
     </div>
-  </nav>
-  <section id="reading-room" class="room-hero" aria-labelledby="room-title">
-    <div class="room-copy">
-      <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
-      <h1 id="room-title">Read closely.<br><span>Write precisely.</span></h1>
-      <p>First Language English revision, timed practice and worked examples.</p>
-      <a class="button" id="continue-practice" href="#practice">Open Practice Desk</a>
-      <p id="continue-detail"></p>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <section id="reading-room" class="studio-home" aria-labelledby="room-title">
+    <div class="room-hero">
+      <div class="room-copy">
+        <p class="eyebrow">Cambridge IGCSE · 0500 · 2027–2029</p>
+        <h1 id="room-title">Read closely.<br><span>Write precisely.</span></h1>
+        <p>First Language English revision, timed practice and worked examples.</p>
+        <a class="button" id="continue-practice" href="#practice">Open Practice Desk</a>
+        <p id="continue-detail"></p>
+      </div>
+      <img class="room-photo" src="english/reading-room.webp" width="1600" height="900" alt="A stone bridge arching over a woodland river">
     </div>
-    <img class="room-photo" src="english/reading-room.webp" width="1600" height="900" alt="A stone bridge arching over a woodland river">
+    <section class="studio-continue" aria-labelledby="continue-title">
+      <div>
+        <h2 id="continue-title">Continue studying</h2>
+        <p id="home-practice-detail">Choose a task from the Practice Desk.</p>
+        <p id="home-completion"></p>
+      </div>
+      <a class="button" id="home-resume-practice" href="#practice">Start practising</a>
+    </section>
+
+    <nav class="studio-quick" aria-label="Quick links">
+      <a class="studio-card" href="#course-guide"><span class="studio-tile blue" aria-hidden="true">▤</span><span><strong>Exam guide</strong><small>Paper structure and mark schemes</small></span></a>
+      <a class="studio-card" href="#syllabus-checklist"><span class="studio-tile green" aria-hidden="true">✓</span><span><strong>Syllabus checklist</strong><small>Track your confidence by objective</small></span></a>
+      <a class="studio-card" data-studio-notebook href="english-mistake-notebook.html"><span class="studio-tile purple" aria-hidden="true">▣</span><span><strong>Mistake Notebook</strong><small>Review feedback and recurring errors</small></span></a>
+    </nav>
+
+    <section class="studio-library" aria-labelledby="library-home-title">
+      <div class="studio-section-heading">
+        <h2 id="library-home-title">Explore the study library</h2>
+        <a href="#revision-library">Revision library</a>
+      </div>
+      <div class="studio-paths">
+        <a class="studio-card" href="english-reading-lab.html"><span class="studio-tile blue" aria-hidden="true">¶</span><h3>Reading Lab</h3><p>Practise inference, close reading and picking out evidence.</p></a>
+        <a class="studio-card" href="#practice"><span class="studio-tile purple" aria-hidden="true">✎</span><h3>Practice Desk</h3><p>Write timed responses and review them against the criteria.</p></a>
+        <a class="studio-card" href="#workshop"><span class="studio-tile green" aria-hidden="true">◇</span><h3>Skills Map</h3><p>Try a skill and compare your response with worked examples.</p></a>
+        <a class="studio-card" href="#revision-library"><span class="studio-tile amber" aria-hidden="true">▤</span><h3>Revision guides</h3><p>Review summary, writer’s effects, source evaluation and composition.</p></a>
+      </div>
+    </section>
   </section>
   <section class="section" id="course-guide" aria-labelledby="course"><p class="eyebrow">Course guide</p><h2 id="course">Know your papers</h2>
     <div class="papers">

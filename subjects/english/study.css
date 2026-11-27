@@ -237,3 +237,101 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
 @media (max-width:450px) {
   .journal-comparison { grid-template-columns:minmax(0,1fr); }
 }
+
+/* English Studio homepage and navigation */
+.language-studio {
+  --studio-surface:#fff;
+  --studio-text:#13273d;
+  --studio-muted:#4f6278;
+  --studio-border:#dce5ef;
+  --studio-accent:#174e91;
+  --studio-on-accent:#fff;
+  --studio-hover:#edf4fd;
+}
+:root[data-theme="dark"] .language-studio {
+  --studio-surface:#22303e;
+  --studio-text:#edf4ff;
+  --studio-muted:#bdccde;
+  --studio-border:#4e5e6d;
+  --studio-accent:#a8cdff;
+  --studio-on-accent:#10223b;
+  --studio-hover:#2d425a;
+}
+.studio-header {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:var(--studio-surface);
+  border-color:var(--studio-border);
+}
+.studio-header-inner {
+  min-height:4.5rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.5rem 1rem;
+  padding-block:.5rem;
+}
+.studio-header .brand { color:var(--studio-text); font-size:1.06rem; white-space:nowrap; }
+.studio-header .studio-header-nav { margin:0; padding:0; justify-content:flex-start; flex-wrap:nowrap; }
+.studio-header-nav a {
+  background:transparent;
+  color:var(--studio-muted);
+  border:none;
+  border-radius:0;
+  font-size:.9rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+.studio-header-nav a[aria-current] {
+  color:var(--studio-accent);
+  background:transparent;
+  box-shadow:inset 0 -2px var(--studio-accent);
+}
+.studio-header-tools { display:flex; align-items:center; gap:.65rem; font-size:.88rem; }
+.studio-header-tools a { color:var(--studio-accent); font-weight:700; }
+.studio-header-tools button { color:var(--studio-text); min-height:2.5rem; }
+.studio-home { padding:2rem 0 3rem; color:var(--studio-text); }
+.studio-continue,.studio-card {
+  background:var(--studio-surface);
+  border:1px solid var(--studio-border);
+  border-radius:.9rem;
+}
+.studio-continue { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem; padding:1rem 1.35rem; }
+.studio-home :is(.studio-continue,.studio-section-heading) h2 { font:800 1.4rem/1.25 system-ui,sans-serif; letter-spacing:-.035em; }
+.studio-continue p { margin:.2rem 0 0; color:var(--studio-muted); }
+#home-completion { font-size:.88rem; }
+#home-completion:empty { display:none; }
+.studio-continue .button { background:var(--studio-accent); color:var(--studio-on-accent); border-color:var(--studio-accent); min-height:2.75rem; }
+.studio-quick,.studio-paths { display:grid; gap:.85rem; }
+.studio-quick { grid-template-columns:repeat(3,minmax(0,1fr)); margin:1rem 0 2.25rem; }
+.studio-paths { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.studio-card { display:block; padding:1rem; color:var(--studio-text); text-decoration:none; }
+.studio-card:hover { border-color:var(--studio-accent); background:var(--studio-hover); }
+.studio-quick .studio-card { display:flex; align-items:center; gap:.75rem; }
+.studio-card small { display:block; color:var(--studio-muted); font-size:.86rem; }
+.studio-card h3 { margin:.6rem 0 .25rem; font:750 1.075rem/1.25 system-ui,sans-serif; }
+.studio-card p { margin:0; color:var(--studio-muted); font-size:.95rem; }
+.studio-tile { width:2.55rem; height:2.55rem; border-radius:.6rem; display:grid; place-items:center; flex:none; font-size:1.25rem; }
+.studio-tile.blue { background:#e3efff; color:#1f5aa2; }
+.studio-tile.purple { background:#ede9ff; color:#59419d; }
+.studio-tile.green { background:#e2f3ec; color:#24694f; }
+.studio-tile.amber { background:#faefd8; color:#805014; }
+.studio-section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:.8rem; }
+.studio-section-heading a { color:var(--studio-accent); font-weight:700; }
+@media (max-width:1000px) {
+  .studio-header .studio-header-nav { order:3; width:100%; overflow:auto; margin:0; }
+  .studio-paths { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:650px) {
+  .studio-home { padding-top:1rem; }
+  .studio-quick { grid-template-columns:1fr; }
+  .studio-header-tools { gap:.4rem; }
+  .studio-header-nav a { padding-inline:.55rem; }
+}
+@media (max-width:370px) {
+  .studio-paths { grid-template-columns:1fr; }
+}
+.language-studio .skip { z-index:6; color:var(--studio-accent); background:var(--studio-surface); }
+.language-studio main :target { scroll-margin-top:8rem; }

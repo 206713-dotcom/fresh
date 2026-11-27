@@ -53,7 +53,9 @@ function updateCompletion() {
   get('reviewed').setAttribute('aria-pressed', String(reviewed));
   get('reviewed').textContent = reviewed ? 'Undo reviewed status' : 'Mark as reviewed';
   const total = tasks.filter(item => read('review:' + item.id) === '1').length;
-  get('completion').textContent = total + ' of ' + tasks.length + ' tasks reviewed';
+  const summary = total + ' of ' + tasks.length + ' tasks reviewed';
+  get('completion').textContent = summary;
+  get('home-completion').textContent = summary;
 }
 
 function stopTimer() {
@@ -114,7 +116,8 @@ function focusDeskEditor() {
 
 function showTask() {
   task = tasks.find(item => item.id === select.value) ?? tasks[0];
-  get('notebook-link').search = new URLSearchParams({ task:task.id });
+  const notebookQuery = new URLSearchParams({ task:task.id });
+  for (const link of document.querySelectorAll('[data-studio-notebook]')) link.search = notebookQuery;
   get('task-title').textContent = task.title;
   get('task-meta').textContent = (task.paper === 'p1' ? 'Paper 1' : 'Paper 2') + ' · Question ' + task.number + ' · ' + task.marks + ' practice marks';
   get('prompt').textContent = task.prompt;
@@ -144,17 +147,22 @@ function showTask() {
 function updateContinue() {
   const previous = tasks.find(item => item.id === read('last-practice'));
   if (!previous) return;
-  get('continue-detail').textContent = previous.title + ' · Question ' + previous.number;
+  const title = previous.title + ' · Question ' + previous.number;
+  get('continue-detail').textContent = title;
+  get('home-practice-detail').textContent = title;
+  get('home-resume-practice').textContent = 'Resume practice';
   get('continue-practice').textContent = 'Resume practice';
 }
 
-get('continue-practice').addEventListener('click', () => {
+function resumePractice() {
   const previous = tasks.find(item => item.id === read('last-practice'));
   if (previous && !attempt && previous.id !== task.id) {
     select.value = previous.id;
     showTask();
   }
-});
+}
+get('continue-practice').addEventListener('click', resumePractice);
+get('home-resume-practice').addEventListener('click', resumePractice);
 select.addEventListener('change', () => {
   write('last-practice', select.value, null);
   showTask();
@@ -390,8 +398,8 @@ function showStudioView() {
   const active = examActive() ? get('practice') : requested ?? get('reading-room');
 
   for (const panel of panels) panel.hidden = panel !== active;
-  for (const link of main.querySelectorAll('.studio-tabs a')) {
-    if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+  for (const link of document.querySelectorAll('.studio-header-nav a')) {
+    if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
   return active.contains(target) ? target : null;
