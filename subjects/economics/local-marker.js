@@ -233,38 +233,49 @@ const ecbizMarking = (() => {
     };
   }
 
-  function feedback(result, marks, answer) {
+  function feedback(result, marks, answer, shownScheme = '') {
     const paragraphs = value => value.split(/\n\s*\n/).map(part => '<p>' +
       escapeHtml(part).replace(/\n/g, '<br>') + '</p>').join('');
-    const section = (title, value, kind = '') => value ? '<section class="review-section ' + kind + '"><h3>' + title + '</h3>' + paragraphs(value) + '</section>' : '';
-    const coaching = result.coaching;
-    const evidence = markedEvidence(answer,result);
-    const reason = markReviewReason(result,answer);
-    const next = result.score < marks ? result.nextStep || coaching?.gaps || coaching?.next : '';
     const disclosure = (title, body) => body ? '<details class="review-disclosure" open><summary>' + title +
       '</summary><div class="review-disclosure-body">' + body + '</div></details>' : '';
+    const coaching = result.coaching;
+    const evidence = markedEvidence(answer,result);
+    const seen = new Set();
+    function uniqueNotes(...values) {
+      return values.map(value => (value || '').split(/(?<=[.!?])\s+(?=[A-Z])|\n+/)
+        .map(line => line.trim()).filter(line => {
+          const key = feedbackTextKey(line);
+          if (!key || seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        }).join(' ')).filter(Boolean).join('\n\n');
+    }
+    const next = result.score < marks
+      ? uniqueNotes(result.nextStep, coaching?.gaps, genericFeedbackAdvice.test(coaching?.next || '') ? '' : coaching?.next) : '';
+    const allCreditQuoted = evidence && result.credits?.length === creditedEvidence(answer,result).length;
+    const overview = allCreditQuoted && /^Credited:/i.test(result.feedback)
+      ? '' : uniqueNotes(result.feedback);
+    const strengths = evidence ? '' : uniqueNotes(coaching?.strengths);
     const model = result.modelResponse ? paragraphs(result.modelResponse) +
       (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') : '';
-    const additionalStep = [result.nextStep, coaching?.next].find(step => step && step !== next);
-    const coachingDetails = section('What worked', coaching?.strengths, 'review-strengths') +
-      (coaching?.gaps !== next ? section('What to improve', coaching?.gaps, 'review-gaps') : '') +
-      section('Next step', additionalStep, 'review-next');
+    const plan = result.modelPlan && feedbackTextKey(result.modelPlan) !== feedbackTextKey(shownScheme) ? result.modelPlan : '';
+    const reason = markReviewReason(result,answer);
+    const reviewFlag = reason && (result.reviewNote || reason !== 'See the mark scheme for the points to include.') &&
+      uniqueNotes(reason);
     const scoreBar = Number.isInteger(result.score) && Number.isInteger(marks) && marks > 0 && result.score >= 0 && result.score <= marks
       ? '<progress class="review-score-bar" value="' + result.score + '" max="' + marks + '" aria-hidden="true"></progress>' : '';
-    return '<div class="review-summary"><div class="review-heading"><h3>Feedback</h3>' +
+    return '<div class="review-summary" data-feedback-layout="tidy"><div class="review-heading"><h3>Feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
       '</div><div class="review-score"><div class="review-score-line"><strong>' + escapeHtml(result.score) +
       '<span> / ' + escapeHtml(marks) + '</span></strong><span>marks</span></div>' + scoreBar + '</div></div>' +
-      (next ? section('Focus next', next, 'review-next review-focus') : '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>') +
-      (reason?'<p class="mark-review-flag"><strong>Review recommended.</strong> '+escapeHtml(reason)+'</p>':'') +
-      disclosure('Marking breakdown', (next ? '<p>' + escapeHtml(result.feedback) + '</p>' : '') +
-        (evidence ? '<div class="review-section review-evidence">' + evidence + '</div>' : '') + coachingDetails +
-        (coaching || result.modelResponse || result.modelPlan ? '<p><a href="https://www.cambridgeinternational.org/Images/718148-2027-2029-syllabus.pdf" target="_blank" rel="noopener noreferrer">Cambridge 0455 syllabus</a> · ' +
-        '<a href="https://www.cambridgeinternational.org/Images/718805-2027-specimen-paper-2-mark-scheme.pdf" target="_blank" rel="noopener noreferrer">Cambridge specimen mark scheme</a></p>' : '')) +
+      (next ? '<section class="review-section review-next review-focus"><h3>Focus next</h3>' + paragraphs(next) + '</section>' : '') +
+      (reviewFlag ? '<p class="mark-review-flag"><strong>Review recommended.</strong> ' + escapeHtml(reviewFlag) + '</p>' : '') +
+      disclosure('Marking breakdown', (overview ? paragraphs(overview) : '') +
+        (evidence ? '<div class="review-section review-evidence">' + evidence + '</div>' : '') +
+        (strengths ? '<h4>What worked</h4>' + paragraphs(strengths) : '')) +
       disclosure(result.diagram ? 'How to draw the diagram' : 'Sample answer', model) +
-      disclosure('Answer plan from the mark scheme', result.modelPlan ? '<div class="mark-scheme">' + escapeHtml(result.modelPlan) + '</div>' : '') +
-      (result.reviewUnavailable && !result.modelPlan ? '<p>Detailed feedback is unavailable. See the mark scheme below.</p>' : '');
+      disclosure('Answer plan from the mark scheme', plan ? '<div class="mark-scheme">' + escapeHtml(plan) + '</div>' : '');
   }
 
   function scheme(prompt) {

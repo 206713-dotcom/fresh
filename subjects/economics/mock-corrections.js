@@ -56,7 +56,7 @@ function mockCorrectionComparison(item,q,updated) {
   const column=(title,submission,mark,grade,diagram,image)=>'<section><h3>'+title+' · '+mark+'</h3>'+
     answer(submission)+(diagram||image?'<img class="correction-diagram" alt="'+title+' diagram" src="'+
       escapeHtml(image||ecBizDiagramImage(diagram))+'">':'')+
-    (grade?ecbizMarking.feedback({...grade,modelResponse:grade.modelResponse||q.model,diagram:q.diagram},q.marks,submission):'')+'</section>';
+    (grade?ecbizMarking.feedback({...grade,modelResponse:grade.modelResponse||q.model,diagram:q.diagram},q.marks,submission,q.scheme):'')+'</section>';
   return '<div class="corrections-compare">'+column('Original',item.answer,score,original,item.drawing,item.image) +
     (updated?.grade ? column('Your correction',updated.answer,updated.grade.score+'/'+q.marks,updated.grade,updated.drawing) : '') + '</div>';
 }

@@ -348,6 +348,43 @@ function paintAnswerChoices(form, selected, expected) {
   }
 }
 
+const genericFeedbackAdvice = /Use the question’s mark scheme to identify the relevant points and the links you need to explain\./i;
+const feedbackTextKey = text => String(text ?? '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/[.!?]+$/, '');
+
+function tidySavedPracticeFeedback(feedback) {
+  if (feedback.querySelector('[data-feedback-layout="tidy"]')) return;
+  const panels = [...feedback.querySelectorAll('details.review-disclosure')];
+  const panel = title => panels.find(item => item.querySelector('summary')?.textContent === title);
+  const breakdown = panel('Marking breakdown');
+  const plan = panel('Answer plan from the mark scheme');
+  const scheme = panel('Mark scheme');
+  const schemeText = feedbackTextKey(scheme?.querySelector('.mark-scheme')?.textContent);
+  if (plan && schemeText && feedbackTextKey(plan.querySelector('.mark-scheme')?.textContent) === schemeText) plan.remove();
+  const flag = feedback.querySelector('.mark-review-flag');
+  if (scheme && feedbackTextKey(flag?.textContent) === 'review recommended. see the mark scheme for the points to include') flag.remove();
+  if (scheme) {
+    for (const note of feedback.querySelectorAll(':scope > p')) {
+      if (feedbackTextKey(note.textContent) === 'detailed feedback is unavailable. see the mark scheme below') note.remove();
+    }
+  }
+  if (!breakdown) return;
+  const seen = new Set([...feedback.querySelectorAll('.review-focus p, .review-overview')]
+    .map(item => feedbackTextKey(item.textContent)));
+  for (const item of breakdown.querySelectorAll('.review-disclosure-body > p, .review-coaching p')) {
+    const key = feedbackTextKey(item.textContent);
+    if (seen.has(key) || genericFeedbackAdvice.test(item.textContent) ||
+        item.querySelector('a[href$="718148-2027-2029-syllabus.pdf"]') ||
+        (item.closest('.review-strengths') && breakdown.querySelector('.review-evidence'))) {
+      item.remove();
+    } else seen.add(key);
+  }
+  for (const section of breakdown.querySelectorAll('.review-coaching .review-section')) {
+    if (!section.querySelector('p')) section.remove();
+  }
+  const body = breakdown.querySelector('.review-disclosure-body');
+  if (body && !body.textContent.trim()) breakdown.remove();
+}
+
 function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, followUp }) {
   const chapter=document.querySelector('#filter-chapter');
   if (!chapter) return;
@@ -478,7 +515,9 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
       paintAnswerChoices(target, saved.answer, current.q.answer);
       target.querySelector('.feedback').dataset.outcome = mcqOutcome(saved.answer, current.q.answer);
     } else if (saved?.feedback) {
-      for (const panel of target.querySelectorAll('.feedback details')) panel.open = true;
+      const feedback = target.querySelector('.feedback');
+      tidySavedPracticeFeedback(feedback);
+      for (const panel of feedback.querySelectorAll('details')) panel.open = true;
     }
     pages.hidden = !matches.length;
     jump.max = String(matches.length);
@@ -639,7 +678,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
         });
         state.score = grade.score;
         if ([2,4,6].includes(q.marks) && attempts.get(index) === state) saveWritingVersion(q.id,answer,grade);
-        state.feedback = ecbizMarking.feedback(grade,q.marks,answer)+ecbizMarking.scheme(q)+
+        state.feedback = ecbizMarking.feedback(grade,q.marks,answer,q.scheme)+ecbizMarking.scheme(q)+
           '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
       }
       if (state.score > 0) {

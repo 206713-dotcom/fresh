@@ -276,10 +276,10 @@ function revisionWriting(id) {
 function revisionWritingGuide(question, versions) {
   const renderVersion = (version, index) => {
     const answer = typeof version === 'string' ? version : version.answer;
-    const title = 'Version ' + (index + 1) + (version.grade ? ' · ' + version.grade.score + '/' + question.marks : '');
+    const title = 'Version ' + (index + 1);
     return '<article class="writing-version"><h4>' + title + '</h4><details><summary>Submitted answer</summary><p class="mark-scheme">' +
       escapeHtml(answer) + '</p></details>' +
-      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks, answer) + '</div>' : '') + '</article>';
+      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks, answer, question.scheme) + '</div>' : '') + '</article>';
   };
   const recent = versions.slice(-2).map((version,index)=>renderVersion(version,versions.length-Math.min(versions.length,2)+index)).join('');
   const earlier = versions.slice(0,-2).map((version,index)=>'<details><summary>Version '+(index+1)+'</summary>'+renderVersion(version,index)+'</details>').join('');
@@ -487,7 +487,7 @@ function revisionAttempt(state) {
     const retry=hasMockResponse(state,key) && (!grade || error || ecbizMarking.reviewReason(grade,state.answers[key]));
     return '<div class="feedback"' + (outcome ? ' data-outcome="' + outcome + '"' : '') + '>' +
       (outcome ? outcomeBadge(outcome, label) : '') + (isPending(key) ? '<p>' + escapeHtml(error || 'Awaiting marking.') + '</p>' :
-        ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key]) +
+        ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key], scheme) +
         (error?'<p>'+escapeHtml(error)+'</p>':'')) + ecbizMarking.scheme({scheme}) +
       (diagram ? '' : answerComparisonLink(max)) +
       (retry?'<button type="button" data-retry-mock-part="' + escapeHtml(key) + '">Retry marking this answer</button>':'') + '</div>';
