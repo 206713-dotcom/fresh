@@ -264,7 +264,7 @@ function practice(chapterIndex, followUp) {
     </header>
     <section class="practice-filter-pane" aria-label="Practice filters"${followUp?' hidden':''}>
       <label class="field practice-search-field">Search questions<input type="search" id="filter-search" placeholder="Wording, topic or question ID"></label>
-      <div class="practice-filter-fields" aria-label="Choose one filter at a time" role="group">
+      <div class="practice-filter-fields">
         <label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
         <label class="field">Topic<select id="filter-topic"></select></label>
         <div class="practice-mark-field" role="group" aria-label="Marks">
@@ -277,7 +277,7 @@ function practice(chapterIndex, followUp) {
         <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
       </div>
       <div id="practice-active-filters" hidden>
-        <div class="practice-filter-heading"><strong>Active filter</strong><button type="button" id="clear-filters">Clear filter</button></div>
+        <div class="practice-filter-heading"><strong>Active filters</strong><button type="button" id="clear-filters">Clear all</button></div>
         <div id="practice-filter-chips"></div>
       </div>
     </section>
@@ -397,19 +397,14 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     try {savedFilters=JSON.parse(localStorage.getItem(filterKey) || sessionStorage.getItem(filterKey))||{}} catch {}
   }
   const filterFields = {chapter, topic, search, set:questionSet};
-  let activeFilter = '';
-  let paperType = '';
-  let markValue = '';
-
-  function applyFilter(kind, value) {
-    for (const [key, field] of Object.entries(filterFields)) {
-      const next = key === kind ? value : '';
-      if (field.value !== next) field.value = next;
-    }
-    paperType = kind === 'paper' ? value : '';
-    markValue = kind === 'marks' ? value : '';
-    activeFilter = value ? kind : '';
-  }
+  const savedPaper = paper || savedFilters.type;
+  let paperType = ['mcq','structured'].includes(savedPaper) ? savedPaper : '';
+  const compatibleMark = mark => !mark || !paperType || (mark === '1') === (paperType === 'mcq');
+  let markValue = ['1','2','4','6','8'].includes(savedFilters.marks) && compatibleMark(savedFilters.marks)
+    ? savedFilters.marks : '';
+  if (chapterIndex === null && /^[0-5]$/.test(savedFilters.chapter)) chapter.value = String(savedFilters.chapter);
+  search.value = typeof savedFilters.search === 'string' ? savedFilters.search : '';
+  questionSet.value = ['mixed','exam'].includes(savedFilters.questionSet) ? savedFilters.questionSet : '';
 
   let page=Number.isInteger(savedFilters.page)?savedFilters.page:0;
   let requestedQuestion = questionId;
@@ -419,8 +414,10 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   const followUpMatches = followUp ? followUpQuestions(initialTopic, attempts) : null;
 
   function renderTopics() {
-    const topics=new Map(questions.map(q=>[q.topic,q.topicName]));
+    const selected = topic.value;
+    const topics=new Map(questions.filter(q=>chapter.value===''||q.c===Number(chapter.value)).map(q=>[q.topic,q.topicName]));
     topic.innerHTML='<option value="">All topics</option>'+[...topics].sort(([a],[b])=>a.localeCompare(b,undefined,{numeric:true})).map(([code,name])=>'<option value="'+code+'">'+code+' · '+escapeHtml(name)+'</option>').join('');
+    topic.value = topics.has(selected) ? selected : '';
   }
   function renderFilters() {
     for (const button of paperButtons) {
@@ -429,6 +426,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     for (const button of markButtons) {
       const mark = button.dataset.practiceMark;
       button.setAttribute('aria-pressed', String(mark === markValue));
+      button.disabled = !compatibleMark(mark);
     }
     const selectLabel = field => field.value ? field.selectedOptions[0]?.textContent : '';
     const removable = [
@@ -532,29 +530,25 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   }
   function reset() {page=0;renderQuestions()}
   renderTopics();
-  const restored = [
-    ['search', typeof savedFilters.search === 'string' ? savedFilters.search.trim() : ''],
-    ['topic', [...topic.options].some(option => option.value === savedFilters.topic) ? savedFilters.topic : ''],
-    ['marks', ['1','2','4','6','8'].includes(savedFilters.marks) ? savedFilters.marks : ''],
-    ['chapter', /^[0-5]$/.test(savedFilters.chapter) ? String(savedFilters.chapter) : ''],
-    ['paper', ['mcq','structured'].includes(savedFilters.type) ? savedFilters.type : ''],
-    ['set', ['mixed','exam'].includes(savedFilters.questionSet) ? savedFilters.questionSet : '']
-  ].filter(([,value]) => value);
-  if (initialTopic) applyFilter('topic', initialTopic);
-  else if (paper) applyFilter('paper', paper);
-  else if (chapterIndex !== null) applyFilter('chapter', String(chapterIndex));
-  else if (restored.length) {
-    applyFilter(...restored[0]);
-    if (restored.length > 1) page = 0;
-  }
+  const selectedTopic = initialTopic || savedFilters.topic;
+  if ([...topic.options].some(option => option.value === selectedTopic)) topic.value = selectedTopic;
 
   function chooseFilter(kind, value) {
-    if (!value && activeFilter !== kind) return;
-    applyFilter(kind, value);
+    if (kind === 'paper') {
+      paperType = value;
+      if (!compatibleMark(markValue)) markValue = '';
+    } else if (kind === 'marks') {
+      if (!compatibleMark(value)) return;
+      markValue = value;
+    } else {
+      const field = filterFields[kind];
+      if (field.value !== value) field.value = value;
+    }
+    if (kind === 'chapter') renderTopics();
     reset();
   }
   for (const [kind,field] of Object.entries(filterFields)) {
-    field[kind === 'search' ? 'oninput' : 'onchange'] = () => chooseFilter(kind, kind === 'search' && !field.value.trim() ? '' : field.value);
+    field[kind === 'search' ? 'oninput' : 'onchange'] = () => chooseFilter(kind, field.value);
   }
   for (const button of paperButtons) {
     button.onclick = () => chooseFilter('paper', button.dataset.practicePaper);
@@ -563,7 +557,9 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     button.onclick = () => chooseFilter('marks', button.dataset.practiceMark);
   }
   function clearFilters() {
-    applyFilter('', '');
+    for (const field of Object.values(filterFields)) field.value = '';
+    paperType=markValue='';
+    renderTopics();
     reset();
   }
   document.querySelector('#clear-filters').onclick = () => {
@@ -573,8 +569,8 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   filterChips.onclick = event => {
     const removed = event.target.closest('[data-remove-filter]');
     if (!removed) return;
-    clearFilters();
-    search.focus();
+    chooseFilter(removed.dataset.removeFilter, '');
+    (filterChips.querySelector('button') || search).focus();
   };
   target.onclick = event => {
     if (!event.target.closest('[data-clear-practice]')) return;
