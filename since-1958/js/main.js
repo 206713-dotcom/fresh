@@ -254,6 +254,7 @@ $('goLearned').addEventListener('click', () => { if (window.__menu) window.__men
 {
   const card = $('devCard'), show = (on) => { card.hidden = !on; };
   $('goDevs').addEventListener('click', () => { if (window.__menu) window.__menu(false); show(true); });
+  $('brandDevs').addEventListener('click', () => { if (window.__menu) window.__menu(false); show(true); });
   card.addEventListener('click', (e) => { if (e.target === card || e.target.closest('.dv-x')) show(false); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !card.hidden) { e.stopPropagation(); show(false); } }, true);
 }
