@@ -242,18 +242,21 @@ const ecbizMarking = (() => {
     const reason = markReviewReason(result,answer);
     const next = result.score < marks ? result.nextStep || coaching?.gaps || coaching?.next : '';
     const disclosure = (title, body) => body ? '<details class="review-disclosure"><summary>' + title +
-      '</summary>' + body + '</details>' : '';
+      '</summary><div class="review-disclosure-body">' + body + '</div></details>' : '';
     const model = result.modelResponse ? paragraphs(result.modelResponse) +
       (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') : '';
     const additionalStep = [result.nextStep, coaching?.next].find(step => step && step !== next);
     const coachingDetails = section('What worked', coaching?.strengths, 'review-strengths') +
       (coaching?.gaps !== next ? section('What to improve', coaching?.gaps, 'review-gaps') : '') +
       section('Next step', additionalStep, 'review-next');
-    return '<div class="review-summary"><div><h3>Feedback</h3>' +
+    const scoreBar = Number.isInteger(result.score) && Number.isInteger(marks) && marks > 0 && result.score >= 0 && result.score <= marks
+      ? '<progress class="review-score-bar" value="' + result.score + '" max="' + marks + '" aria-hidden="true"></progress>' : '';
+    return '<div class="review-summary"><div class="review-heading"><h3>Feedback</h3>' +
       (result.provisional ? '<span class="review-status">Provisional AI mark</span>' : '') +
       (result.band && result.band !== 'point-based' ? '<span class="review-status">Band ' + escapeHtml(result.band) + '</span>' : '') +
-      '</div><div class="review-score"><strong>' + result.score + '<span> / ' + marks + '</span></strong><span>marks</span></div></div>' +
-      (next ? section('Focus next', next, 'review-next') : '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>') +
+      '</div><div class="review-score"><div class="review-score-line"><strong>' + escapeHtml(result.score) +
+      '<span> / ' + escapeHtml(marks) + '</span></strong><span>marks</span></div>' + scoreBar + '</div></div>' +
+      (next ? section('Focus next', next, 'review-next review-focus') : '<p class="review-overview">' + escapeHtml(result.feedback) + '</p>') +
       (reason?'<p class="mark-review-flag"><strong>Review recommended.</strong> '+escapeHtml(reason)+'</p>':'') +
       disclosure('Marking breakdown', (next ? '<p>' + escapeHtml(result.feedback) + '</p>' : '') +
         (evidence ? '<div class="review-section review-evidence">' + evidence + '</div>' : '') + coachingDetails +
@@ -265,9 +268,9 @@ const ecbizMarking = (() => {
   }
 
   function scheme(prompt) {
-    return '<details class="review-disclosure"><summary>Mark scheme</summary><div class="mark-scheme">' +
+    return '<details class="review-disclosure"><summary>Mark scheme</summary><div class="review-disclosure-body"><div class="mark-scheme">' +
       escapeHtml(prompt.scheme) + '</div>' +
-      (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</details>';
+      (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</div></details>';
   }
 
   return { grade, feedback, scheme, reviewReason:markReviewReason, blank: { score: 0, feedback: 'No answer submitted.' } };
