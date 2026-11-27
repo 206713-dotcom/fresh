@@ -274,11 +274,10 @@ function practice(chapterIndex, followUp) {
           </div>
         </div>
         <label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
-        <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
-      </div>
-      <div id="practice-active-filters" hidden>
-        <div class="practice-filter-heading"><strong>Active filters</strong><button type="button" id="clear-filters">Clear all</button></div>
-        <div id="practice-filter-chips"></div>
+        <div class="practice-filter-actions">
+          <button type="button" id="clear-filters">Clear all</button>
+          <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
+        </div>
       </div>
     </section>
     <div id="practice-marking"></div>
@@ -364,8 +363,6 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   const jump = document.querySelector('#question-jump');
   const paperButtons = document.querySelectorAll('[data-practice-paper]');
   const markButtons = document.querySelectorAll('[data-practice-mark]');
-  const activeFilters = document.querySelector('#practice-active-filters');
-  const filterChips = document.querySelector('#practice-filter-chips');
   const context = document.querySelector('#practice-context');
   const checklistLink = document.querySelector('#practice-checklist');
   const saveStatus = document.querySelector('#practice-save-status');
@@ -428,23 +425,6 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
       button.setAttribute('aria-pressed', String(mark === markValue));
       button.disabled = !compatibleMark(mark);
     }
-    const selectLabel = field => field.value ? field.selectedOptions[0]?.textContent : '';
-    const removable = [
-      ['chapter', selectLabel(chapter)],
-      ['topic', selectLabel(topic)],
-      ['marks', markValue && markValue + (markValue === '1' ? ' mark' : ' marks')],
-      ['set', selectLabel(questionSet)]
-    ].filter(([,label]) => label);
-    const chips = [
-      ['search', search.value.trim()],
-      ['paper', paperType && (paperType === 'mcq' ? 'Paper 1' : 'Paper 2')],
-      ...removable
-    ].filter(([,label]) => label);
-    activeFilters.hidden = !chips.length;
-    filterChips.innerHTML = chips.map(([key,label]) =>
-      '<button type="button" data-remove-filter="'+key+'" aria-label="Remove '+escapeHtml(label)+' filter"><span>'+
-      escapeHtml(label)+'</span><span aria-hidden="true">×</span></button>'
-    ).join('');
   }
 
   function renderQuestions() {
@@ -565,12 +545,6 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
   document.querySelector('#clear-filters').onclick = () => {
     clearFilters();
     search.focus();
-  };
-  filterChips.onclick = event => {
-    const removed = event.target.closest('[data-remove-filter]');
-    if (!removed) return;
-    chooseFilter(removed.dataset.removeFilter, '');
-    (filterChips.querySelector('button') || search).focus();
   };
   target.onclick = event => {
     if (!event.target.closest('[data-clear-practice]')) return;
