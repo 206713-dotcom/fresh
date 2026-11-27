@@ -154,6 +154,11 @@
 }
 
 .practice-filter-pane:not([hidden]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(9rem, 14rem);
+  align-items: end;
+  gap: 0.65rem;
+  margin-top: 1rem;
   padding: 0.85rem;
   border: 1px solid #d5e4e3;
   border-radius: 0.95rem;
@@ -168,9 +173,15 @@
 }
 
 .practice-filter-pane .practice-filters {
-  margin-top: 0.65rem;
-  padding-block: 0.25rem;
+  margin: 0;
+  padding: 0 0.85rem;
   box-shadow: none;
+}
+
+.practice-filter-pane .practice-filters[open],
+.practice-filter-pane:has(.practice-filters[open]) .practice-search-field,
+#practice-active-filters:not([hidden]) {
+  grid-column: 1 / -1;
 }
 
 .practice-filter-pane .practice-filters summary {
@@ -206,9 +217,16 @@
 
 .practice-filter-fields {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  align-items: start;
   gap: 0.7rem;
-  padding: 0.45rem 0 0.65rem;
+  padding: 0.65rem 0;
   border-top: 1px solid var(--line);
+}
+
+#show-filtered-questions {
+  grid-column: 1 / -1;
+  justify-self: end;
 }
 
 .practice-filter-fields .field,
@@ -255,10 +273,6 @@
 
 .practice-mark-options button:disabled {
   opacity: 0.42;
-}
-
-#practice-active-filters:not([hidden]) {
-  margin-top: 0.6rem;
 }
 
 .practice-filter-heading,
@@ -498,6 +512,7 @@
 }
 
 @media (max-width: 480px) {
+  .practice-filter-pane:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
   .practice-papers { width: 100%; }
   .practice-papers button { flex: 1 1 auto; padding-inline: 0.35rem; }
   .question-toolbar button { padding-inline: 0.65rem; }
