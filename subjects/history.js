@@ -1,4 +1,6 @@
 import { core, depths, prescribed } from './history-content.js';
+import { modelAnswers, questions } from './history-practice.js';
+import { markHistory } from './history-marker.js';
 
 const byId = (id) => document.getElementById(id);
 const storageKey = 'fresh.history.0470.v1';
@@ -188,7 +190,7 @@ function renderTopics(revealId) {
       if (id === 'versailles') versaillesLesson(card);
       else card.append(reveal('Recall check', 'From memory, explain one event or idea in the summary. Then reread it and add one specific detail.'));
       card.append(element('h4', 'Build an argument'), element('p', question),
-        reveal('Show planning guidance', advice));
+        reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
       const completed = action(state.completed[id] ? 'Studied · undo' : 'Mark as studied', () => {
         if (state.completed[id]) delete state.completed[id];
         else state.completed[id] = true;
@@ -204,6 +206,120 @@ function renderTopics(revealId) {
     }
     output.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
   }
+}
+
+function markedWriting(id, label, question, guidance, example, source) {
+  const draft = writing(id, label);
+  const input = draft.querySelector('textarea');
+  const feedback = element('div', '', 'history-marking');
+  const status = element('p');
+  status.setAttribute('role', 'status');
+  const results = element('div');
+  const criteria = source
+    ? [['Use of source evidence', 4], ['Evaluation of usefulness and context', 6]]
+    : [['Accurate and relevant historical evidence', 4], ['Explanation and direct response to the question', 6]];
+  const mark = action('AI mark my answer', async () => {
+    const answer = input.value.trim();
+    results.replaceChildren();
+    if (!answer || answer.length > 10000) {
+      status.textContent = answer ? 'Keep your answer under 10,000 characters for AI marking.' : 'Write an answer first.';
+      return;
+    }
+    mark.disabled = true;
+    status.textContent = 'Starting the on-device marker…';
+    try {
+      const result = await markHistory({
+        subject: 'history', prompt: question, source, criteria, target: guidance, example
+      }, answer, (message) => { status.textContent = message; });
+      if (input.value.trim() !== answer) {
+        status.textContent = 'Your draft changed during marking. Submit the revised draft for feedback.';
+        return;
+      }
+      status.textContent = 'AI practice estimate · ' + result.total + '/10';
+      for (const item of result.criteria) {
+        results.append(element('p', item.name + ' · ' + item.mark + '/' + item.max + '. ' + item.comment));
+        if (item.evidence) results.append(element('blockquote', item.evidence));
+      }
+      results.append(element('p', 'Next step: ' + result.nextStep));
+    } catch (error) {
+      status.textContent = error.message;
+    } finally {
+      mark.disabled = false;
+    }
+  });
+  input.addEventListener('input', () => {
+    results.replaceChildren();
+    if (!mark.disabled) status.textContent = '';
+  });
+  feedback.append(mark, element('p', 'Uses a model on your device. The first use downloads the model and requires WebGPU. Scores use a 10-point practice rubric.'), status, results);
+  return [draft, feedback, reveal('Show planning guidance', guidance), reveal('Show model answer', example)];
+}
+
+function renderQuiz() {
+  const output = byId('history-quiz-list');
+  const option = state.course.core;
+  const depth = state.course.depth;
+  const included = new Set([...(core[option] || [...core.A, ...core.B]), ...(depth ? [depths[depth]] : Object.values(depths))]
+    .map(([id]) => id));
+  const quiz = element('form', '', 'history-quiz-form');
+  const score = element('p');
+  score.setAttribute('role', 'status');
+  const cards = questions.filter(([id]) => included.has(id)).map(([id, question, choices, correct, explanation]) => {
+    const fieldset = element('fieldset', '', 'history-card');
+    fieldset.append(element('legend', question));
+    for (const [index, choice] of choices.entries()) {
+      const label = element('label');
+      const radio = element('input');
+      radio.type = 'radio';
+      radio.name = id;
+      radio.value = String(index);
+      radio.required = true;
+      label.append(radio, ' ' + choice);
+      fieldset.append(label);
+    }
+    const feedback = element('p');
+    feedback.hidden = true;
+    fieldset.append(feedback);
+    quiz.append(fieldset);
+    return { id, correct, explanation, fieldset, feedback };
+  });
+  const submit = element('button', 'Check answers', 'history-action');
+  const reset = action('Try again', () => {
+    quiz.reset();
+    score.textContent = '';
+    for (const { fieldset, feedback } of cards) {
+      fieldset.disabled = false;
+      fieldset.classList.remove('history-correct', 'history-missed');
+      feedback.hidden = true;
+    }
+    submit.hidden = false;
+    reset.hidden = true;
+    quiz.querySelector('input')?.focus();
+  });
+  reset.hidden = true;
+  quiz.append(submit, score, reset);
+  quiz.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const answers = new FormData(quiz);
+    let correctCount = 0;
+    for (const { id, correct, explanation, fieldset, feedback } of cards) {
+      const isCorrect = answers.get(id) === String(correct);
+      if (isCorrect) correctCount++;
+      else state.review['topic-' + id] = allTopics.find(([topic]) => topic === id)[1];
+      fieldset.disabled = true;
+      fieldset.classList.add(isCorrect ? 'history-correct' : 'history-missed');
+      feedback.textContent = (isCorrect ? 'Correct. ' : 'Incorrect. ') + explanation;
+      feedback.hidden = false;
+    }
+    score.textContent = correctCount + '/' + cards.length + ' correct';
+    submit.hidden = true;
+    reset.hidden = false;
+    reset.focus();
+    renderTopics();
+    renderReview();
+    save();
+  });
+  output.replaceChildren(quiz);
 }
 
 function practiceCard(id, title, description) {
@@ -232,8 +348,8 @@ function renderPractice(focus) {
   topicSelect.value = practiceTopics.some(([id]) => id === state.practiceTopic) ? state.practiceTopic : practiceTopics[0][0];
   function updatePrompt() {
     const [id, , , question, guidance] = practiceTopics.find(([id]) => id === topicSelect.value);
-    prompt.replaceChildren(element('p', question), writing('paper-1-' + id, 'Your answer'),
-      reveal('Show planning guidance', guidance));
+    prompt.replaceChildren(element('p', question),
+      ...markedWriting('paper-1-' + id, 'Your answer', question, guidance, modelAnswers[id]));
   }
   topicSelect.addEventListener('change', () => {
     state.practiceTopic = topicSelect.value;
@@ -248,10 +364,11 @@ function renderPractice(focus) {
   const paper2 = practiceCard('paper-2', 'Paper 2 · Document questions', '1 hour 45 minutes · 40 marks. Try this standalone Versailles source drill.');
   if (focus) paper2.append(element('p', 'Your prescribed topic: ' + focus[1] + '.'));
   const source = element('blockquote', 'The world must be made safe for democracy. Its peace must be planted upon the tested foundations of political liberty.');
-  paper2.append(source, element('p', 'Woodrow Wilson, address to the US Congress asking for a declaration of war, 2 April 1917.'),
-    element('p', 'How useful is this speech for understanding US aims before the Paris Peace Conference? Use the wording and the occasion.'),
-    writing('paper-2-versailles', 'Your answer'),
-    reveal('Show planning guidance', '“Political liberty” helps identify a principle Wilson publicly promoted. The speech was intended to win support for entering the war in 1917, so compare it with his 1919 negotiating positions before drawing conclusions about the treaty.'),
+  const provenance = 'Woodrow Wilson, address to the US Congress asking for a declaration of war, 2 April 1917.';
+  const sourceQuestion = 'How useful is this speech for understanding US aims before the Paris Peace Conference? Use the wording and the occasion.';
+  const sourceGuidance = 'Explain what the wording reveals, why Wilson made the speech in 1917, and what it can tell us about his later negotiating aims.';
+  paper2.append(source, element('p', provenance), element('p', sourceQuestion),
+    ...markedWriting('paper-2-versailles', 'Your answer', sourceQuestion, sourceGuidance, modelAnswers.source, provenance + '\n' + source.textContent),
     flagButton('paper-2', 'Paper 2 source practice'));
   grid.append(paper2);
 
@@ -259,7 +376,7 @@ function renderPractice(focus) {
     const paper4 = practiceCard('paper-4', 'Paper 4 · Alternative to Coursework', '1 hour · 40 marks. Practise a structured account followed by an assessment of significance.');
     if (depth) {
       paper4.append(element('h4', depth[1]), element('p', depth[3]),
-        writing('paper-4-' + depth[0], 'Your plan or answer'), reveal('Show planning guidance', depth[4]),
+        ...markedWriting('paper-4-' + depth[0], 'Your plan or answer', depth[3], depth[4], modelAnswers[depth[0]]),
         flagButton('paper-4', 'Paper 4 depth-study practice'));
     } else paper4.append(element('p', 'Choose a depth study in Course settings to see the writing prompt.'));
     grid.append(paper4);
@@ -288,6 +405,7 @@ function renderCourse() {
   byId('history-focus').nextElementSibling.href = '#history-paper-2';
   renderTopics();
   renderPractice(focus);
+  renderQuiz();
   renderResume();
   renderReview();
 }
