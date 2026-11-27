@@ -308,6 +308,54 @@
     return [PALETTE.accent, PALETTE.accent2, PALETTE.warn, PALETTE.good, PALETTE.bad][i % 5];
   }
 
+  /* ------------------------------------------------------- cinematic layer
+     Backdrop style is derived from the scene number but interpolated over
+     time, so neighbouring scenes drift into one another instead of cutting.
+     Everything here is precomputed once; the frame loop allocates nothing. */
+  var REDUCED_MOTION = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var PARTICLES = (function () {
+    var list = [], seed = 20240617;
+    function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    for (var i = 0; i < 48; i++) {
+      var alpha = .10 + rnd() * .15;
+      list.push({
+        x: rnd(), y: rnd(), r: 1 + rnd() * 2.2, sp: .22 + rnd() * .5,
+        ph: rnd() * 6.283, dx: 5 + rnd() * 17, vy: .0016 + rnd() * .003,
+        col: "rgba(255,255,255," + alpha.toFixed(3) + ")"
+      });
+    }
+    return list;
+  })();
+  var BACKDROP_STYLES = [
+    { ax: 0, ay: .2, gx: [.14, .86, .52], gy: [.86, .24, .5] },
+    { ax: .35, ay: .75, gx: [.78, .18, .46], gy: [.3, .82, .6] },
+    { ax: .7, ay: .1, gx: [.24, .9, .6], gy: [.68, .18, .42] },
+    { ax: 1.05, ay: .55, gx: [.88, .3, .5], gy: [.22, .78, .56] },
+    { ax: 1.4, ay: .9, gx: [.16, .72, .48], gy: [.75, .32, .28] },
+    { ax: 1.75, ay: .3, gx: [.6, .12, .82], gy: [.44, .88, .68] }
+  ];
+  var dotPattern = null;
+  function getDotPattern(ctx) {
+    if (dotPattern !== null) return dotPattern;
+    var c = document.createElement("canvas"); c.width = c.height = 44;
+    var g = c.getContext("2d");
+    g.fillStyle = "rgba(255,255,255,.85)";
+    g.beginPath(); g.arc(2, 2, 1, 0, 6.283); g.fill();
+    dotPattern = ctx.createPattern(c, "repeat");
+    return dotPattern;
+  }
+  function activeTerm(scene, t) {
+    var labels = scene.on_screen_labels || [];
+    if (!labels.length) return "";
+    var spoken = String(captionChunk(scene, t) || "").toLowerCase();
+    for (var i = 0; i < labels.length; i++) {
+      var l = String(labels[i]).toLowerCase().replace(/^(the|a|an)\s+/, "");
+      var key = l.split(/\s+/).slice(0, 2).join(" ");
+      if (key.length > 4 && spoken.indexOf(key.slice(0, 10)) >= 0) return String(labels[i]);
+    }
+    return "";
+  }
+
   function words(ctx, label, x, y, w, size, maxLines, align, color) {
     var lines = wrap(ctx, label, w, size, 750).slice(0, maxLines);
     lines.forEach(function (line, i) {
@@ -340,35 +388,53 @@
   }
 
   function drawBackdrop(ctx, W, H, t, art, scene) {
-    var g = ctx.createLinearGradient(0, H, W, 0);
-    g.addColorStop(0, PALETTE.bg);
-    g.addColorStop(.48, PALETTE.bg2);
-    g.addColorStop(1, PALETTE.panel);
+    var local = Math.max(0, t - scene.start_sec);
+    var dur = Math.max(1, scene.end_sec - scene.start_sec);
+    var seed = (scene.scene_number - 1) + Math.min(.4, (local / dur) * .4) + (REDUCED_MOTION ? 0 : t * .006);
+    var base = Math.floor(seed) % BACKDROP_STYLES.length;
+    var next = (base + 1) % BACKDROP_STYLES.length;
+    var m = ease(seed - Math.floor(seed));
+    var A = BACKDROP_STYLES[base], B = BACKDROP_STYLES[next];
+    var ang = A.ax + (B.ax - A.ax) * m;
+    var g = ctx.createLinearGradient(W * (1 - Math.cos(ang)) / 2, H * (1 - Math.sin(ang)) / 2,
+      W * (1 + Math.cos(ang)) / 2, H * (1 + Math.sin(ang)) / 2);
+    g.addColorStop(0, PALETTE.bg); g.addColorStop(.52, PALETTE.bg2); g.addColorStop(1, PALETTE.panel);
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
-    [0, 1, 2].forEach(function (i) {
-      var x = W * [.14, .87, .52][i] + Math.sin(t * .32 + i) * 31;
-      var y = H * [.88, .27, .48][i] + Math.cos(t * .25 + i) * 27;
-      var glow = ctx.createRadialGradient(x, y, 0, x, y, W * .42);
-      glow.addColorStop(0, hexAlpha(accentAt(i + scene.scene_number - 1), [.52, .62, .24][i]));
+    var lead = base % 2 === 0 ? PALETTE.accent : PALETTE.accent2;
+    var alt = base % 2 === 0 ? PALETTE.accent2 : PALETTE.accent;
+    var drift = REDUCED_MOTION ? 0 : t;
+    for (var i = 0; i < 3; i++) {
+      var bx = W * (A.gx[i] + (B.gx[i] - A.gx[i]) * m);
+      var by = H * (A.gy[i] + (B.gy[i] - A.gy[i]) * m);
+      var x = bx + Math.sin(drift * .09 + i * 2.1) * W * .035;
+      var y = by + Math.cos(drift * .07 + i * 1.7) * H * .05;
+      var rad = W * (.36 + (i === 1 ? .1 : 0));
+      var glow = ctx.createRadialGradient(x, y, 0, x, y, rad);
+      glow.addColorStop(0, hexAlpha(lead, (.26 + (i === 1 ? .11 : 0)) * (1 - m * .3)));
+      glow.addColorStop(.45, hexAlpha(alt, .09 * m));
       glow.addColorStop(1, "transparent");
       ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
-    });
+    }
+
+    var pat = getDotPattern(ctx);
+    if (pat) { ctx.save(); ctx.globalAlpha = .05; ctx.fillStyle = pat; ctx.fillRect(0, 0, W, H); ctx.restore(); }
+    if (!REDUCED_MOTION) {
+      for (var q = 0; q < PARTICLES.length; q++) {
+        var p = PARTICLES[q];
+        var px = (((p.x + Math.sin(drift * p.sp + p.ph) * p.dx / W) % 1) + 1) % 1 * W;
+        var py = (((p.y + drift * p.vy + Math.cos(drift * p.sp * .7 + p.ph) * .012) % 1) + 1) % 1 * H;
+        ctx.fillStyle = p.col; ctx.beginPath(); ctx.arc(px, py, p.r, 0, 6.283); ctx.fill();
+      }
+    }
 
     ctx.save();
-    ctx.strokeStyle = hexAlpha(PALETTE.ink, .12); ctx.lineWidth = 1;
-    for (var y = 120; y < H; y += 45) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-    for (var x = -H; x < W; x += 86) {
-      ctx.beginPath(); ctx.moveTo(x, 98); ctx.lineTo(x + H * .54, H); ctx.stroke();
-    }
-    ctx.globalAlpha = .17;
+    ctx.globalAlpha = .10;
     picture(ctx, art[1], 8, 426, 232, accentAt(0));
     picture(ctx, art[2], W - 252, 103, 246, accentAt(1));
     ctx.restore();
 
-    ctx.fillStyle = hexAlpha(PALETTE.bg, .90); ctx.fillRect(0, 0, W, 106);
+    ctx.fillStyle = hexAlpha(PALETTE.bg, .9); ctx.fillRect(0, 0, W, 106);
     var footer = ctx.createLinearGradient(0, 561, 0, H);
     footer.addColorStop(0, "transparent"); footer.addColorStop(.67, hexAlpha(PALETTE.bg, .92));
     footer.addColorStop(1, PALETTE.bg);
@@ -1573,14 +1639,12 @@
     applyTheme(video.unit_number);
     drawBackdrop(ctx, W, H, t, art, scene);
 
-    text(ctx, video.chapter_title || ("Chapter " + video.chapter_code), 49, 28, 18, PALETTE.accent, 750, "left", 970);
-    text(ctx, scene.on_screen_title || video.video_title, 49, 66, 34, PALETTE.ink, 850, "left", W - 98);
-    text(ctx, "Scene " + scene.scene_number + " / " + video.scenes.length, W - 49, 28, 16, PALETTE.muted, 700, "right");
-    ctx.fillStyle = hexAlpha(PALETTE.ink, .16); ctx.fillRect(49, 96, W - 98, 4);
-    var progress = ctx.createLinearGradient(49, 0, W - 49, 0);
-    progress.addColorStop(0, PALETTE.accent); progress.addColorStop(1, PALETTE.accent2);
-    ctx.fillStyle = progress; ctx.fillRect(49, 96, (W - 98) * p, 4);
-    if (drawTeachScene(ctx, video, scene, p, W, H)) return;
+    /* The slow camera push-in is limited to the diagram layer. */
+    var zoom = REDUCED_MOTION ? 1 : 1 + .05 * p;
+    ctx.save();
+    if (zoom !== 1) { ctx.translate(W / 2, H / 2); ctx.scale(zoom, zoom); ctx.translate(-W / 2, -H / 2); }
+    var taught = drawTeachScene(ctx, video, scene, p, W, H);
+    if (!taught) {
 
     var axes = ad.axes;
     var detailedLines = (ad.lines || []).filter(function (line) { return Array.isArray(line.from) && Array.isArray(line.to); });
@@ -1628,6 +1692,54 @@
     } else {
       drawFeatures(ctx, labels, ad, art, local, dur);
     }
+    }
+    ctx.restore();
+
+    var reveal = REDUCED_MOTION ? 1 : ease(Math.min(1, local / .45));
+    ctx.save();
+    ctx.globalAlpha = reveal;
+    ctx.translate(0, (1 - reveal) * 16);
+    text(ctx, video.chapter_title || ("Chapter " + video.chapter_code), 49, 28, 18, PALETTE.accent, 750, "left", 970);
+    text(ctx, scene.on_screen_title || video.video_title, 49, 66, 42, PALETTE.ink, 850, "left", W - 98);
+    ctx.restore();
+    text(ctx, "Scene " + scene.scene_number + " / " + video.scenes.length, W - 49, 28, 16, PALETTE.muted, 700, "right");
+    ctx.fillStyle = hexAlpha(PALETTE.ink, .16); ctx.fillRect(49, 106, W - 98, 4);
+    var progress = ctx.createLinearGradient(49, 0, W - 49, 0);
+    progress.addColorStop(0, PALETTE.accent); progress.addColorStop(1, PALETTE.accent2);
+    ctx.fillStyle = progress; ctx.fillRect(49, 106, (W - 98) * p, 4);
+    drawTermGlow(ctx, scene, t);
+  }
+
+  function drawTermGlow(ctx, scene, t) {
+    if (!activeTerm(scene, t)) return;
+    var g = ctx.createRadialGradient(50, 66, 0, 50, 66, 320);
+    g.addColorStop(0, hexAlpha(PALETTE.accent, .13));
+    g.addColorStop(1, "transparent");
+    ctx.save(); ctx.fillStyle = g; ctx.fillRect(0, 16, 470, 102); ctx.restore();
+  }
+
+  function drawEndCard(ctx, video, W, H, elapsed) {
+    applyTheme(video.unit_number);
+    var g = ctx.createLinearGradient(0, H, W, 0);
+    g.addColorStop(0, PALETTE.bg); g.addColorStop(.55, PALETTE.bg2); g.addColorStop(1, PALETTE.panel);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    if (!REDUCED_MOTION) {
+      var glow = ctx.createRadialGradient(W * .78, H * .2, 0, W * .78, H * .2, W * .5);
+      glow.addColorStop(0, hexAlpha(PALETTE.accent, .18)); glow.addColorStop(1, "transparent");
+      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    }
+    var a = REDUCED_MOTION ? 1 : ease(Math.min(1, elapsed / .5));
+    var lines = wrap(ctx, video.video_title, W - 200, 44, 850).slice(0, 2);
+    ctx.save(); ctx.globalAlpha = a; ctx.translate(0, (1 - a) * 14);
+    lines.forEach(function (line, i) {
+      text(ctx, line, W / 2, 48 + (i - (lines.length - 1) / 2) * 48, 44, PALETTE.ink, 850, "center", W - 200);
+    });
+    ctx.restore();
+    var lw = (W - 360) * (REDUCED_MOTION ? 1 : ease(Math.min(1, Math.max(0, (elapsed - .3) / .5))));
+    var lg = ctx.createLinearGradient(180, 0, W - 180, 0);
+    lg.addColorStop(0, PALETTE.accent); lg.addColorStop(1, PALETTE.accent2);
+    ctx.fillStyle = lg; ctx.fillRect(180, 130, lw, 3);
+    text(ctx, "Recap questions next", W / 2, 160, 17, PALETTE.muted, 700, "center");
   }
 
   /* ------------------------------------------------------------------ player */
@@ -1781,17 +1893,48 @@
     document.body.style.overflow = "hidden";
 
     var canvas = $(".ecv-canvas", overlay), ctx = canvas.getContext("2d");
+    /* One reusable frame buffer for scene crossfades — allocated once. */
+    var snapshot = document.createElement("canvas");
+    snapshot.width = canvas.width; snapshot.height = canvas.height;
+    var sctx = snapshot.getContext("2d");
     var caption = $(".ecv-caption", overlay), seek = $(".ecv-seek", overlay);
     var timeEl = $(".ecv-time", overlay), quizEl = $(".ecv-quiz", overlay);
     var audioEl = $(".ecv-audio", overlay);
     var playBtn = $('[data-action="play"]', overlay);
-    var player = { video: video, overlay: overlay, t: 0, playing: false, last: 0, sceneNo: 0, quizShown: false };
+    var player = { video: video, overlay: overlay, t: 0, playing: false, last: 0, sceneNo: 0, quizShown: false, fadeStart: 0, endStart: 0 };
     state.player = player;
 
     function fmt(s) { return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(Math.floor(s % 60)).padStart(2, "0"); }
     function paint() {
       var sc = sceneAt(video, player.t);
-      drawScene(ctx, video, sc, player.t, canvas.width, canvas.height);
+      if (player.t >= video.target_duration_sec - .001) {
+        if (!player.endStart) player.endStart = performance.now();
+        drawEndCard(ctx, video, canvas.width, canvas.height, (performance.now() - player.endStart) / 1000);
+        player.fadeStart = 0;
+      } else {
+        player.endStart = 0;
+        if (sc.scene_number !== player.sceneNo && player.sceneNo > 0 && player.t > 0) {
+          sctx.clearRect(0, 0, snapshot.width, snapshot.height);
+          sctx.drawImage(canvas, 0, 0);
+          player.fadeStart = performance.now();
+        }
+        drawScene(ctx, video, sc, player.t, canvas.width, canvas.height);
+        if (player.fadeStart) {
+          var a = (performance.now() - player.fadeStart) / 500;
+          if (a >= 1) player.fadeStart = 0;
+          else {
+            a = ease(a);
+            var z = REDUCED_MOTION ? 1 : 1 + .04 * a;
+            ctx.save();
+            ctx.globalAlpha = 1 - a;
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.scale(z, z);
+            ctx.translate(-canvas.width / 2, -canvas.height / 2);
+            ctx.drawImage(snapshot, 0, 0);
+            ctx.restore();
+          }
+        }
+      }
       caption.textContent = state.captionsOn ? captionChunk(sc, player.t) : "";
       caption.hidden = !state.captionsOn;
       seek.value = String(Math.min(video.target_duration_sec, Math.floor(player.t)));
@@ -1820,6 +1963,13 @@
         playBtn.textContent = "▶ Play";
         saveProgress(video, player.t, true);
         paint(); showQuiz();
+        var endFrames = 0;
+        function endFrame() {
+          if (!state.player || state.player !== player || endFrames++ > 70) return;
+          drawEndCard(ctx, video, canvas.width, canvas.height, (performance.now() - player.endStart) / 1000);
+          requestAnimationFrame(endFrame);
+        }
+        requestAnimationFrame(endFrame);
         return;
       }
       paint();
