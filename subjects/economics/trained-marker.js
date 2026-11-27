@@ -5,6 +5,8 @@ const instructions = 'Mark the IGCSE Economics answer using the supplied rubric.
 
 let engine;
 
+export const isModelReady = () => Boolean(engine);
+
 async function fetchAsset(url) {
   const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(180000) });
   if (!response.ok) throw new Error('The Economics model download is unavailable. Try again later.');
