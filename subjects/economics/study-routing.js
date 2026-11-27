@@ -54,7 +54,7 @@ function loadEconomicsMocks() {
 }
 
 function loadEconomicsMarker() {
-  return loadEconomicsScript('local-marker.js?v=verified-model-answer-1');
+  return loadEconomicsScript('local-marker.js?v=verified-model-answer-2');
 }
 
 const mockDataPages = new Set(['revision-test', 'revision-retry', 'revision-corrections']);

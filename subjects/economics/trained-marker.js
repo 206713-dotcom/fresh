@@ -661,19 +661,48 @@ async function markDiscussion(question, answer, report) {
   };
 }
 
+async function markDiscussionModel(question, answer) {
+  const paragraphs = answer.split(/\n\s*\n/).map(part => part.trim()).filter(Boolean);
+  const contrast = paragraphs.findIndex(part => /^(?:however|on the other hand|in contrast|conversely|against this)\b/i.test(part));
+  const feedback = 'Develop each side with economic reasoning and end with a justified judgement.';
+  if (contrast < 1 || contrast >= paragraphs.length - 1 || !isDevelopedModelDiscussion(answer)) {
+    return {score:0, feedback};
+  }
+  const criteria = [
+    ['the case supporting the proposition or measure in the question', paragraphs.slice(0, contrast).join('\n\n')],
+    ['the case opposing the proposition or explaining limitations of the measure', paragraphs.slice(contrast, -1).join('\n\n')]
+  ];
+  let score = 0;
+  for (const [side, evidence] of criteria) {
+    score += await discussionAssessment(question, evidence,
+      'Assess this paragraph for ' + side + '. Award 3 for a relevant economic argument with developed reasoning or a significant condition, ' +
+      '2 for one explained link, 1 for an undeveloped assertion, and 0 for no valid argument. Mark scheme: ' + question.scheme, 3, true);
+  }
+  const judgement = await discussionAssessment(question, paragraphs.at(-1),
+    'Award 2 for a relevant conclusion with a specific reason or condition explaining what to give most weight to, ' +
+    '1 for a relevant unsupported conclusion, or 0 for none. Mark scheme: ' + question.scheme, 2, true);
+  return {score:score + judgement, feedback};
+}
+
 function exactModelDefinition(question, answer) {
   const definition = /^\s*Define\s+(.+?)\s*\.?\s*(?:\[2\])?\s*$/i.exec(question.prompt);
   if (question.marks !== 2 || !definition) return;
   const header = 'Maximum 2 marks. Credit the specific components below.';
   if (!question.scheme.startsWith(header + '\n')) return;
-  const prefix = normalizePoint(definition[1]) + ' is ';
-  const clause = normalizePoint(answer);
-  if (!clause.startsWith(prefix)) return;
+  const term = normalizePoint(definition[1]);
+  let clause = normalizePoint(answer);
+  if (!clause.startsWith(term + ' ')) return;
+  const opening = /^(?:is(?: defined as)?|means|measures|refers to)\s+/.exec(clause.slice(term.length + 1));
+  if (!opening) return;
+  clause = clause.slice(term.length + 1 + opening[0].length);
   const routes = question.scheme.split('\n').filter(line => line.startsWith('• '))
     .map(line => line.slice(2).split(';').map(part => /^(.*?)\s*\(1\)\.?$/.exec(part.trim())?.[1]));
   for (const points of routes) {
     if (points.length !== question.marks || points.some(point => !point)) continue;
-    if (new Set(exactEvidence(points, clause.slice(prefix.length), true)).size === points.length) {
+    const match = exactEvidence(points, clause, true);
+    const withoutArticle = clause.replace(/^(?:a|an|the) /, '');
+    if (new Set(match).size === points.length ||
+        new Set(exactEvidence(points, withoutArticle, true)).size === points.length) {
       return pointResult(points, '', answer);
     }
   }
@@ -682,6 +711,10 @@ function exactModelDefinition(question, answer) {
 async function mark(question, answer, report, checkingModel = false) {
   if (question?.marks === 8) {
     engine ??= await openModel(report);
+    if (checkingModel) {
+      const model = await markDiscussionModel(question, answer);
+      if (model.score === question.marks) return model;
+    }
     return markDiscussion(question, answer, report);
   }
   if (!question) {
@@ -691,6 +724,8 @@ async function mark(question, answer, report, checkingModel = false) {
   if (checkingModel) {
     const exactDefinition = exactModelDefinition(question, answer);
     if (exactDefinition) return exactDefinition;
+    const fromScheme = linkedModelFromScheme(question);
+    if (fromScheme?.answer === answer) return fromScheme.grade;
   }
   const points = independentDefinitionPoints(question);
   if (points) {
@@ -820,24 +855,33 @@ const checkedModelResponses = [
     'Flood defences can reduce expected damage to homes and businesses. Firms may lose fewer days of production when floods occur, keeping more people in work and reducing repair costs for residents. These benefits may extend to people living beyond the site itself.\n\nUsing the land for flood defences has an opportunity cost. Housing on the site could increase local supply and help meet unmet demand, easing pressure on rents. Construction can also provide jobs, and housing near workplaces can help workers move closer to available jobs.\n\nThe government should prioritise defences if floods are frequent or severe and the land is particularly suitable for protection. If the flood risk is low, housing is scarce and the same protection can be provided elsewhere, housing is likely to offer the greater benefit.']
 ];
 
-function analyticalParagraph(steps) {
-  return steps.map((step, index) => {
-    const text = step.replace(/\s*\(\d+\)/g, '').trim().replace(/[.;]+$/, '');
-    if (!index) return text[0].toUpperCase() + text.slice(1) + '.';
-    const link = index === 1 ? 'As a result, ' : 'This means that ';
-    const lowerFirst = /^[A-Z][a-z]/.test(text) && !/^(?:A|An|The)\s+[A-Z]/.test(text);
-    return link + (lowerFirst ? text[0].toLowerCase() + text.slice(1) : text) + '.';
-  }).join(' ');
-}
+function linkedModelFromScheme(question) {
+  if (![4, 6].includes(question.marks)) return;
+  const spec = matchingSchemeRoutes(question);
+  if (!spec) return;
 
-function linkedSixMarkResponse(question) {
-  if (question.marks !== 6 || !/^(?:Maximum|Award up to) 6 marks\b/i.test(question.scheme)) return;
-  const routes = question.scheme.split('\n')
-    .filter(line => /^\s*(?:\d+\.|•)\s+/.test(line))
-    .map(line => line.replace(/^\s*(?:\d+\.|•)\s+/, '').split(/\s*→\s*/))
-    .filter(steps => steps.length >= 3 && steps.every(step => step.trim()));
-  if (routes.length < 2) return;
-  return routes.slice(0, 2).map(steps => analyticalParagraph(steps.slice(0, 3))).join('\n\n');
+  const routes = [];
+  let grade;
+  for (const route of spec.routes) {
+    const evidence = [...routes, route].map(points => points.join('; ')).join('\n');
+    const candidate = exactRouteGrade(question, evidence, spec);
+    if (candidate && candidate.score > (grade?.score ?? 0)) {
+      routes.push(route);
+      grade = candidate;
+    }
+    if (grade?.score === question.marks) break;
+  }
+  if (grade?.score !== question.marks) return;
+
+  const paragraphs = routes.map(points => {
+    const taggedSentence = question.scheme.split(/(?<=\.)\s+/)
+      .find(sentence => markedPoints(sentence.replace(/(?<=\(1\));/g, '')).join('\n') === points.join('\n'));
+    if (taggedSentence) return taggedSentence.replace(/\s*\(1\)/g, '');
+    const [start, ...links] = points;
+    return start[0].toUpperCase() + start.slice(1) + ': ' + links.map(link =>
+      link[0].toUpperCase() + link.slice(1).replace(/[.;]+$/, '') + '.').join(' ');
+  });
+  return {answer:paragraphs.join('\n\n'),grade};
 }
 
 const extendedModelResponses = [
@@ -866,6 +910,8 @@ const extendedModelResponses = [
 ];
 
 const developedDiscussions = [
+  [/^Discuss whether real GDP per head is a good measure for comparing living standards between countries/i, /inequality/i,
+    'Real GDP per head is useful for comparing material living standards because it measures output per person at constant prices. Dividing by population makes comparisons between countries of different sizes more meaningful. Adjusting for inflation makes changes in output easier to distinguish from price rises. Where higher real output per person results in higher household incomes or more funding for essential services, people may be able to afford more goods and services.\n\nHowever, real GDP per head is an average. If most extra income goes to a small group, the figure can rise even while many households cannot afford basic goods. Prices also differ across countries, so GDP converted at market exchange rates may give a misleading picture of what incomes can actually buy. GDP also leaves out aspects of living standards such as unpaid work and environmental quality.\n\nOverall, real GDP per head is useful for material comparisons, especially when adjusted for differences in purchasing power. Where income is unequal, it should be read alongside income distribution and measures such as the HDI, which also considers health and education. Those extra indicators matter most when countries with similar real GDP per head have sharply different life expectancy or access to education.'],
   [/^Discuss whether workers (?:would )?benefit from working longer hours/i, /leisure|fatigue/i,
     'Working longer hours can increase a worker’s earnings if each extra hour is paid. An overtime premium increases the financial gain further. The worker may have more disposable income to spend on goods and services, raising their material standard of living, or to save for future expenses. Extra time on the job can also build experience. If that experience improves the worker’s skills, it can increase their chances of promotion and higher future pay.\n\nHowever, the opportunity cost of working longer is the next-best use of that time. A worker who gives up time with their family or time for rest may experience a fall in their non-material standard of living even if their income rises. The more the worker values that time, the larger the loss.\n\nVery long shifts can also cause fatigue. In a physically demanding job, tiredness may increase the risk of accidents or illness. Fatigue can lower output per hour and increase mistakes, undermining career prospects instead of improving them. The health cost of repeated overtime can therefore outweigh the additional pay.\n\nOn balance, voluntary overtime at a good rate is more likely to benefit a worker who needs the extra income and can work safely. Compulsory or unpaid overtime gives the worker less or no financial gain to offset the loss of leisure. The decision depends on the gain from the extra hours compared with the value of the time and health the worker may sacrifice.'],
   [/^Discuss whether the benefits of a decision to prioritise essential water infrastructure/i, /waterborne illness/i,
@@ -912,10 +958,6 @@ function existingModelResponse(question) {
   const examples = question.marks === 8 ? developedDiscussions : extendedModelResponses;
   const match = examples.find(([prompt, scheme]) => prompt.test(question.prompt) && scheme.test(question.scheme));
   if (match) return match[2];
-  if (question.marks === 6) {
-    const linked = linkedSixMarkResponse(question);
-    if (linked) return linked;
-  }
   const checked = checkedModelResponses.find(([prompt, scheme]) =>
     prompt.test(question.prompt) && scheme.test(question.scheme))?.[2];
   return question.marks !== 8 || (checked && isDevelopedModelDiscussion(checked)) ? checked : undefined;
@@ -967,17 +1009,27 @@ async function passesModelRubric(question, answer) {
 async function verifiedModelAnswer(question, report) {
   const cached = verifiedModelAnswers.get(question);
   if (cached) return cached;
+  const linked = linkedModelFromScheme(question);
+  if (linked) {
+    report('Checking the model response against the mark scheme…');
+    const response = {modelResponse:linked.answer, modelResponseVerified:true};
+    verifiedModelAnswers.set(question, response);
+    return response;
+  }
   engine ??= await openModel(report);
   const write = 'You are answering a Cambridge IGCSE Economics exam question. Write only the answer in your own words, ' +
-    'using the examiner guidance to earn full marks. Start with the economics. Use complete sentences and show any required workings. ' +
+    'using the scoring notes to earn full marks. State the economic reasoning as your own answer in complete sentences. Show any required workings. ' +
     'Use any required source data. ' +
     (question.marks === 8
       ? 'Develop arguments on both sides with distinct causal links. End with a justified judgement about when one side is stronger and why.'
       : 'Match the depth and number of points to the marks and the command word.');
   const definition = /^\s*Define\b/i.test(question.prompt);
   const writingExample = definition ? [
-    {role:'user', content:'Exam question: Define productivity.\nMarks available: 2\nExaminer guidance: Output (1) per unit of input (1).\nWrite the exam answer:'},
+    {role:'user', content:'Exam question: Define productivity.\nMarks available: 2\nScoring notes: Output (1) per unit of input (1).\nWrite the exam answer:'},
     {role:'assistant', content:'Productivity is the amount of output produced per unit of input.'}
+  ] : question.marks === 8 ? [
+    {role:'user', content:'Exam question: Discuss whether workers benefit from longer hours.\nMarks available: 8\nScoring notes: Earnings and skills versus health and the opportunity cost of leisure. Give a judgement.\nWrite the exam answer:'},
+    {role:'assistant', content:hoursModelResponse}
   ] : undefined;
   let draft = existingModelResponse(question);
   let previous;
@@ -986,7 +1038,7 @@ async function verifiedModelAnswer(question, report) {
       report(attempt === 1 ? 'Writing a model response…' : 'Revising the model response…');
       const prompt = 'Exam question: ' + question.prompt + '\nMarks available: ' + question.marks +
         (question.context ? '\nSource: ' + question.context : '') +
-        '\nExaminer guidance:\n' + question.scheme + (question.note ? '\n' + question.note : '') +
+        '\nScoring notes:\n' + question.scheme + (question.note ? '\n' + question.note : '') +
         (previous?.feedback ? '\nPrevious draft: ' + previous.answer + '\nFix this issue: ' + previous.feedback : '') +
         '\nWrite the exam answer:';
       draft = await generateReviewText(write, prompt, question.marks === 8 ? 520 : question.marks === 6 ? 320 : 200, writingExample);
