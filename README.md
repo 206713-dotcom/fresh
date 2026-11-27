@@ -21,7 +21,7 @@ The directory covers **12 subjects**. Some pages offer short worked examples. Th
 | Write and run a Python program | [PyQuest](https://gisfresh.me/subjects/pyquest/) |
 | Draft an exam answer and get feedback | [Business Studies](https://gisfresh.me/subjects/business.html?open=overview) · [Economics](https://gisfresh.me/subjects/economics.html#practice) |
 | Review your shared rewards | **GIS Points** on the [Fresh homepage](https://gisfresh.me/) · [How to earn points](https://gisfresh.me/points.html) |
-| Get in touch with Junyi or Lucas | [General contacts](https://gisfresh.me/#contact) · [Subject contacts](https://gisfresh.me/contacts.html#subjects) |
+| Learn about Fresh or get in touch | [About Us & Contacts](https://gisfresh.me/contacts.html) · [Subject contacts](https://gisfresh.me/contacts.html#subjects) |
 
 ## How AI helped
 

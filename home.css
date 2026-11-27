@@ -843,6 +843,16 @@
   .fresh-home .orbit-chip { width: 2.1rem; height: 2.1rem; margin: -1.05rem 0 0 -1.05rem; font-size: .95rem; border-radius: .6rem; }
   .fresh-home .card a { min-height: 12rem; }
 }
+@media (max-width: 520px) {
+  .fresh-home .topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: .4rem 1rem;
+    padding-block: .55rem;
+  }
+  .fresh-home .topbar > :nth-child(2) { margin-left: 0; }
+  .fresh-home .topbar > a:nth-child(even) { justify-self: end; text-align: right; }
+}
 @media (max-width: 630px) {
   /* Phones: logo and orbits on top, copy underneath */
   .fresh-home .hero {

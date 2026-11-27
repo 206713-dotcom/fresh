@@ -97,6 +97,17 @@ input, select { width: 100%; min-width: 0; font: inherit; font-weight: 450; colo
 .topic h3 { font-size: 1.4rem; }
 .practice { padding: 1rem; background: #edf2e7; border-radius: .55rem; }
 .practice p { margin: .35rem 0 .6rem; }
+.about-jumps { display: flex; flex-wrap: wrap; gap: .55rem 1rem; margin-top: 1.1rem; font-weight: 650; }
+.about-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1.5rem; align-items: start; margin-top: 2rem; }
+.about-contact address { display: grid; gap: .5rem; font-style: normal; overflow-wrap: anywhere; }
+.about-contact h2 { margin: 0 0 .55rem; }
+.fresh-timeline { list-style: none; margin: 1.4rem 0 0 .4rem; padding: 0 0 0 1.35rem; border-left: 2px solid var(--line); }
+.fresh-timeline li { position: relative; padding-bottom: 1.4rem; }
+.fresh-timeline li:last-child { padding-bottom: 0; }
+.fresh-timeline li::before { content: ""; position: absolute; top: .35rem; left: -1.75rem; width: .65rem; height: .65rem; border-radius: 50%; background: var(--green); }
+.fresh-timeline time { color: var(--muted); font-size: .86rem; font-weight: 650; }
+.fresh-timeline h3 { margin: .22rem 0 .25rem; }
+.fresh-timeline p { max-width: 64ch; margin: 0; line-height: 1.55; }
 details p { margin: .55rem 0 0 !important; }
 summary { cursor: pointer; font-weight: 700; width: fit-content; }
 .next { margin-top: 1.4rem; }

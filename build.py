@@ -30,6 +30,11 @@ def page(title, description, main, prefix="", script=""):
     home_assets = '<link rel="stylesheet" href="home.css">\n' if is_home else ""
     body = '<body class="fresh-home">' if is_home else '<body>'
     contacts = HOME_CONTACTS if is_home else ""
+    home_links = (
+        '    <a href="contacts.html">About Us &amp; Contacts</a>\n'
+        '    <a href="subjects/science.html">Science hub</a>\n'
+        if is_home else ""
+    )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -48,7 +53,7 @@ def page(title, description, main, prefix="", script=""):
 <header class="site-header">
   <nav class="wrap topbar" aria-label="Main navigation">
     <a class="brand" href="{prefix or './'}" aria-label="Fresh homepage">{mark} {brand}</a>
-    <a href="{prefix}index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
+{home_links}    <a href="{prefix}index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
 <main id="main" class="wrap">{main}</main>
