@@ -2,11 +2,13 @@
 
 ### Cambridge IGCSE Business Studies, practised properly.
 
-**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264).** It turns the syllabus into a loop: learn the idea, answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
+**EcBiz is an independent, student-built revision platform for Cambridge IGCSE Business Studies (0264).** It turns the syllabus into a loop: learn the idea — in an interactive lesson or a short animated concept video — answer the command word, get marked against the assessment objectives, find the gap, and come back to it later.
 
 **Built by Jayden Tan · 11G.**
 
 **Where it stands:** EcBiz has been tested with my classmates and submitted to my school for review. It is not widely used yet, and I am not claiming that it is. It is a real project used by real classmates, still early.
+
+*README last reviewed: 27 November 2026 — describes the static, zero-build app, the 25-video library and the CPU/WASM local AI path.*
 
 [Source on GitHub (Fresh hub)](https://github.com/206713-dotcom/fresh) · [Report an issue](https://forms.gle/6X2CAR1LkSQGRBx68) · [Run it locally](#run-ecbiz-locally) · [Deploy your own](#deploy-ecbiz)
 
@@ -14,7 +16,8 @@
 [![Static HTML](https://img.shields.io/badge/Site-Static_HTML-0F2042?logo=html5)](index.html)
 [![Canvas visualiser](https://img.shields.io/badge/Visuals-Canvas_2D-38BDF8)](VIDEO_PIPELINE.md)
 [![Local narration](https://img.shields.io/badge/Narration-Local_audio-10B981)](VIDEO_PIPELINE.md)
-[![Transformers.js](https://img.shields.io/badge/AI-Transformers.js_·_WebGPU-FF6F00)](https://huggingface.co/docs/transformers.js)
+[![Concept videos](https://img.shields.io/badge/Videos-25_films_·_213_scenes-7C3AED)](#concept-videos)
+[![Local AI](https://img.shields.io/badge/AI-Qwen_3_0.6B_·_CPU%2FWASM-FF6F00)](js/views/ai-marker.js)
 [![Local progress](https://img.shields.io/badge/Progress-This_browser-203e32)](#local-progress-and-privacy)
 [![Licence: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](#licence)
 
@@ -29,18 +32,19 @@
 3. [By the numbers](#by-the-numbers)
 4. [What is inside](#what-is-inside)
 5. [How the marking works](#how-the-marking-works)
-6. [Architecture](#architecture)
-7. [Data model](#data-model)
-8. [Local progress and privacy](#local-progress-and-privacy)
-9. [Content and accuracy](#content-and-accuracy)
-10. [Run EcBiz locally](#run-ecbiz-locally)
-11. [Deploy EcBiz](#deploy-ecbiz)
-12. [Project structure](#project-structure)
-13. [Quality and verification](#quality-and-verification)
-14. [How this grew](#how-this-grew)
-15. [Roadmap](#roadmap)
-16. [Credits](#credits)
-17. [Licence](#licence)
+6. [Concept videos](#concept-videos)
+7. [Architecture](#architecture)
+8. [Data model](#data-model)
+9. [Local progress and privacy](#local-progress-and-privacy)
+10. [Content and accuracy](#content-and-accuracy)
+11. [Run EcBiz locally](#run-ecbiz-locally)
+12. [Deploy EcBiz](#deploy-ecbiz)
+13. [Project structure](#project-structure)
+14. [Quality and verification](#quality-and-verification)
+15. [How this grew](#how-this-grew)
+16. [Roadmap](#roadmap)
+17. [Credits](#credits)
+18. [Licence](#licence)
 
 ---
 
@@ -65,7 +69,7 @@ I want to be upfront about how this was actually built, because the person readi
 
 - **I designed, built, tested and maintain EcBiz, working with AI coding tools.** I am not pretending this was typed out entirely by hand, and I am not pretending the AI did my thinking for me either. The product decisions, the feature design, the layout, the marking logic and the testing were mine. The code was written with AI assistants that I prompted, reviewed, ran and debugged.
 - **The practice question bank was generated with Gemini, using Cambridge model answers as the source material.** The questions follow the syllabus and the mark-scheme shape, but they are practice questions, not past papers. I checked and edited them, but they are not official Cambridge documents.
-- **What I personally focused on:** designing the features, fixing confusing layouts based on feedback from my classmates, and testing the AI marker against Cambridge marking criteria until it scored fairly. The local AI grader went through many rounds of me marking test answers, comparing its mark to the real mark scheme, finding where it was wrong, and fixing the rules.
+- **What I personally focused on:** designing the features, fixing confusing layouts based on feedback from my classmates, and testing the AI marker against Cambridge marking criteria until it scored fairly. The local AI grader went through many rounds of me marking test answers, comparing its mark to the real mark scheme, finding where it was wrong, and fixing the rules. The video scripts and scene packages were likewise checked against the 0264 syllabus, the maths and the pacing before release.
 - **What I can confidently explain in person:** every feature listed below, why it exists, how marking works in plain English, where the content came from, what the app does well, and what it does badly. If you ask me something deeper than that, the honest answer is "the AI helped with that part and I tested it" — which is the whole point of testing it.
 - **Testing so far:** EcBiz has been used and tested by my classmates, and it has been submitted to my school for review. It does not have widespread adoption, a user base, or official endorsement. The feedback link at the top is a real way to report mistakes.
 
@@ -84,18 +88,21 @@ I want to be upfront about how this was actually built, because the person readi
 | Verified past-paper case studies | **31** (20 Paper 1 scenarios, 11 Paper 2 cases) | `data/verified-p1-cases.json, data/verified-p2-cases.json` |
 | Interactive lessons | **24** across all six sections | `data/lessons.json` |
 | Granular syllabus statements | **254**, across 61 subtopics and 29 topics | `data/syllabus-static.json` |
-| Concept-visualization videos | **25** chapters, **213** animated scenes, local narration + WebVTT captions | `data/videos_manifest.json` |
+| Concept-visualization videos | **25** videos covering **6 units / 25 chapters**, **213** animated scenes, 3 min 40 s – 4 min 38 s each (~102 min in total), local narration + WebVTT captions | `data/videos_manifest.json` |
+| Video assets | **213** local narration WAV clips, **25** WebVTT caption files, **25** render manifests | `assets/videos/`, `data/video_audio_index.json`, `data/video_captions_index.json` |
 | Glossary terms | **275** | `data/glossary.json` |
 | Advantages/disadvantages notes | **165** | `data/compare-notes-static.json` |
-| Chapter summaries | **6** sections, **28** topic blocks | `data/one-page-sheets.json` |
+| Revision summaries | **29** | `data/revision-summaries.json` |
+| Chapter summaries | **6** sheets, **28** topic blocks | `data/one-page-sheets.json` |
+| Precompressed data files | **26** gzip files — roughly 82 MB → 19 MB transferred | `data/gz/*.json.gz`, `js/fast-load.js` |
 | Mock exam formats | **5** (Full Paper 1 exam, Full Paper 2 exam, Paper 1, Paper 2 full, Paper 2 short) | `js/views/mocks.js` |
 | Achievements | **14** | `js/views/misc.js` |
 | Themes | **5** (2 free, 3 coin-unlocked) | `js/views/misc.js` |
 | Boss encounters | **6** | `js/views/boss.js` |
 
-That is **12,000 multiple-choice questions**, **48,000 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
+That is **12,000 multiple-choice questions**, **48,000 structured Paper 1 and Paper 2 questions**, a separate **189-question verified archive**, **25 narrated concept videos**, and enough lesson, glossary and revision material to cover the whole course without opening a second tab.
 
-One honest caveat: the large practice banks were generated with AI (Gemini) using Cambridge model answers as the basis, then checked and edited by me. They are built to *match* the syllabus, not to be official material. The separate verified archive (see section 5 below) is the part of the app built from inspected Cambridge past papers.
+One honest caveat: the large practice banks were generated with AI (Gemini) using Cambridge model answers as the basis, then checked and edited by me. They are built to *match* the syllabus, not to be official material. The separate verified archive (see *What is inside*, item 5) is the part of the app built from inspected Cambridge past papers.
 
 ---
 
@@ -151,7 +158,7 @@ For every question you get:
 - a model answer;
 - a live timer and a locally auto-saved draft, so a closed tab does not lose the paragraph you were midway through;
 - bookmarks for questions you want to revisit;
-- a choice of marking engine: **Instant** (works on any computer, no download) or **Qwen 3 0.6B** (a small AI model that runs locally in the browser, gives more nuanced feedback).
+- a choice of marking engine: **Instant** (works on any computer, no download) or **Qwen 3 0.6B** (a small AI model that runs on your device through llama.cpp/WASM — no WebGPU or API key needed — and gives more nuanced feedback).
 
 The marking rules are deliberately strict. If the question needs you to apply to the case and your answer mentions none of the case's application keywords, your Application (AO2) mark is capped at zero. If an 8-mark evaluation question contains no evaluation language, your AO4 mark is capped at zero. The reasoning is shown in the feedback, so the cap teaches the rule instead of feeling random.
 
@@ -171,7 +178,7 @@ That is **24,000 questions** in total — twelve thousand 8-mark and twelve thou
 
 For 12 marks, the result screen shows the Level badge, the mark out of 12 and short qualitative tags per paragraph ("Knowledge & Context Shown", "Needs Consequence Chain", "Basic Judgement — Weigh Trade-offs"). It does not show an AO1–AO4 card grid or per-paragraph marks, because those would imply a points-based scheme that the question does not use. Numeric per-paragraph marks only appear on the 4-, 6- and 8-mark questions, where they are the correct model.
 
-You can move sequentially, jump to a set by number, or pick a random case. Answers can be marked by the local model or by the built-in Instant examiner. A manual override modal records the original AI score, the new score, the reason and whether benefit of the doubt was applied, so a class discussion can correct a mark without erasing what the machine said.
+You can move sequentially, jump to a set by number, or pick a random case. Answers can be marked by the local Qwen model (CPU/WASM) or by the built-in Instant examiner. A manual override modal records the original AI score, the new score, the reason and whether benefit of the doubt was applied, so a class discussion can correct a mark without erasing what the machine said.
 
 ### 5. Verify: the official past-paper archive
 
@@ -222,7 +229,7 @@ The question banks are the engine. The rest of the platform is the reason studen
 
 - **Study Coins** are earned across quizzes, lessons, challenges and the game.
 - **Themes** are pure CSS-variable swaps: Daylight and Midnight are free; Vintage Scholar, Blueprint and Sakura are bought with coins.
-- **Avatar customiser** includes 7 skin tones and 15 options each for hair, tops, bottoms and shoes.
+- **Avatar customiser** includes 9 skin tones and 15 options each for hair, tops, bottoms and shoes.
 - **Study Space** is a draggable focus widget with a Pomodoro timer, custom durations, ambient sound mixing and a "ghost mode" that keeps the numbers visible while fading the panel.
 - **Achievements** include 14 milestones for first submissions, context mastery, high marks, syllabus triage, focus sessions and glossary work.
 - **Boss Battle Arena** is a 2D canvas game with six business-themed bosses. It includes unit, subsection and focus filters (all subjects, wrong-only, definitions, calculations, application), spaced repetition that weights previously missed questions, armour tiers with real effects, extra lives, a shop with 9 character skins, 7 armour tiers up to Grandmaster Mantle, coin upgrades up to 100-ammo capacity, and distinct hair styles that render in-game. The top nav always has an **MCQ** entry for the 12,000-question drill.
@@ -244,13 +251,7 @@ Question flags are saved in this browser with the question ID, reason, confidenc
 Boss Battle questions ramp by stage: early rounds hit definition and recall questions, later stages hit application and analysis. On higher difficulties the timer tightens further. The question pool respects the unit, subsection and focus filters you pick on the setup screen, and previously missed questions are drawn back into the rotation more often — with even more weight the more you miss them — until you answer them correctly.
 
 
-### 11. Watch: the concept-video library
-
-All six units have a short animated video for every chapter - **25 videos**, **213 scenes**, roughly 3-5 minutes each. Abstract syllabus definitions become concrete business simulations: animated cost pipes, break-even crosshairs that find the intersection, tall-to-flat org-chart collapses, recruitment funnels, product-life-cycle curves, cash-flow streams, ratio formula substitutions, business-cycle loops and exchange-rate conversion cards.
-
-Each video is built from a scene-by-scene production package (script, visual directives, narration and recap quiz) and was checked before release against the 2027-2029 syllabus, visual/math accuracy, pacing and schema rules. Only packages that passed both auditor tiers and the deterministic gatekeeper appear in the library.
-
-The player supports play/pause, scene jumps, seeking, captions, a fixed local narration voice and an end-of-video recap quiz. Every lesson in the chapter study view has a **Watch concept video** button, and watched time/completion are stored locally in `ecbiz_video_progress`. Captions are also available as WebVTT files for standard players.
+The concept-video library has its own [Concept videos](#concept-videos) section below.
 
 ---
 
@@ -278,13 +279,13 @@ Student answer
       │
       ▼
 ┌───────────────────────────────────────────────┐
-│ 2. Local Qwen 3 0.6B (Transformers.js)      │
+│ 2. Local Qwen 3 0.6B (llama.cpp / WASM)       │
 │    temperature 0.0 · adaptive token budget    │
 │    strict JSON schema · per-paragraph audit   │
 │    diagnostics only — no score arithmetic     │
 └───────────────────────────────────────────────┘
       │
-      ├── WebGPU unavailable / invalid JSON
+      ├── Model unavailable / invalid JSON
       ▼
 ┌───────────────────────────────────────────────┐
 │ 3. Instant (built-in) examiner                │
@@ -303,7 +304,7 @@ Why this shape?
 
 - **The rules are visible.** A student can see *why* AO2 was capped: the answer did not mention the case. That is a teachable moment, not a mystery.
 - **The model is kept on a tight leash.** It gets the question, mark scheme and rubric, and it returns a strict shape. If it returns invalid JSON, the app does not guess; it falls back to the built-in examiner.
-- **The fallback always works.** If the computer does not support WebGPU, the app still marks. The UI tells you which engine is active.
+- **The fallback always works.** If the local model cannot download, load or generate (including on machines without WebGPU), the app still marks with the Instant examiner. The UI tells you which engine is active.
 - **The human stays in charge.** Manual overrides preserve the original AI score and the reason, so a teacher or student can correct a harsh or generous result without destroying the record.
 
 ### What the local model is actually allowed to decide
@@ -326,15 +327,15 @@ Getting a 0.6B (very small) model to behave like a Cambridge examiner was not on
 
 **The problem.** External APIs meant server cost, rate limits and keys that could be exposed. Supporting a second, larger model also doubled the download and added memory pressure — and in practice the bigger model did not remove the need for the coded marking rules, it just hid their absence behind a heavier download.
 
-**What I changed.** I built a zero-API-key WebGPU pipeline on `@huggingface/transformers`, removed the larger 2B model completely, and standardised on **Qwen 3 0.6B**. The fine-tuned 16-bit weights live in `SemiLunarz/qwen3-0.6b-igcse-0264-v2` (`model.safetensors`, ~1.19 GB); the browser uses the int4 Transformers.js export in `SemiLunarz/qwen3-0.6b-igcse-0264-onnx` (`onnx/model_q4f16.onnx`, ~650 MB). The model loads through the `text-generation` pipeline (`dtype: 'q4f16'`, `device: 'webgpu'`) with `enable_thinking: false`, weight caching is enabled with `env.useBrowserCache = true`, and the worker pins a versioned `env.cacheKey` so replacing the weights forces a fresh download. The worker fetches the repo's `chat_template.jinja` at load time and installs it on the tokenizer, so `apply_chat_template` renders the exact Qwen3 non-thinking prefix (Transformers.js does not read a standalone `chat_template.jinja` on its own). Devices without WebGPU fall back to the built-in Instant examiner instead of showing a dead end.
+**What I changed.** I built a zero-API-key local pipeline and standardised on **Qwen 3 0.6B**. The served default is a quantised GGUF build from `SemiLunarz/qwen3-0.6b-igcse-0264-gguf`, loaded in the browser through `@wllama/wllama` (llama.cpp compiled to WASM) from the jsDelivr ESM CDN. The loader fetches the repo's `SHA256SUMS`, verifies and caches each shard with the Cache API under `ecbiz-business-qwen3-gguf-v1`, reports progress part by part, and has a 300-second watchdog; a background banner keeps the Instant examiner available throughout the download. The exact Qwen3 non-thinking chat template is fetched from the repo, with a verbatim inline fallback if that request fails. A Transformers.js int4 ONNX/WebGPU loader (~650 MB) is still present in the same file as an alternative path, but the default CPU/WASM path needs no WebGPU, no shader compile and no worker bundle. If the CDN or model cannot load or generate, the deterministic Instant examiner takes over.
 
-**Why it mattered.** One model means one browser download (~650 MB), one versioned cache key and one behaviour to test. The app has to earn its accuracy in code instead of buying it with a bigger download — which turned out to be the more reliable design anyway.
+**Why it mattered.** One small model, one verified cache and one behaviour to test — and the local marker now works on machines that have no WebGPU at all. The app still has to earn its accuracy in code instead of buying it with a bigger download; moving the model to CPU/WASM did not change any of the coded marking rules.
 
 #### 2. The small model kept muddling the maths
 
 **The problem.** Asking a 0.6B model to score AO1–AO4 *and* add up the marks in one pass produced erratic totals. Qwen 3 0.6B's default `<think>...</think>` blocks also ate the token budget before the JSON was finished, and the model regularly made small addition errors that turned a fair paragraph into a wrong final score.
 
-**What I changed.** I disabled thinking mode (`enable_thinking: false`), added a step to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. Then I removed all of the adding-up from the AI: the model returns per-paragraph judgements, and the TypeScript code computes every subtotal, AO total and Level band. The token budget is now adaptive (roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
+**What I changed.** I disabled thinking mode (`enable_thinking: false`), added a step to strip any stray reasoning tags before `JSON.parse()`, and locked generation to `temperature: 0.0`. Then I removed all of the adding-up from the AI: the model returns per-paragraph judgements, and the app code computes every subtotal, AO total and Level band. The token budget is now adaptive (roughly 460–1,150 tokens) instead of a fixed number that truncated longer answers.
 
 **Why it mattered.** The same answer now produces the same mark far more often. It also fixed a subtler bug: the model could "award" a mark the rubric did not contain. Because the maxima live in code, a hallucinated sixth mark on a 4-mark question is now impossible.
 
@@ -381,17 +382,65 @@ Each fix came from a concrete failure I found while testing: a definition that s
 
 Those automated checks are the part I am most pleased with. A small model will always be a little unpredictable; the checks are what stop that unpredictability from becoming a marking policy. When I changed the 12-mark UI and removed the AO cards, the checks caught the conclusion-audit inconsistency that would otherwise have shipped.
 
-The model runs on the student's device. Once the weights are cached, essay text is not uploaded by the app. The first download is large, so the UI treats it as an explicit action and caches the result.
+The model runs on the student's device. Once the GGUF shards are cached in the browser, essay text is not uploaded by the app. The first download is large, so the UI treats it as an explicit action, shows per-part progress and caches the result.
 
 One more honest note: the AI marker is a practice tool, not an examiner. It can be harsh, generous or just wrong. Use the mark scheme, the model answer and your teacher's judgement.
 
 ---
 
+## Concept videos
+
+All six units have a short animated video for each of the **25 chapters** — **25 videos**, **213 scenes**, **3 min 40 s to 4 min 38 s each** (about **102 minutes** in total). Abstract syllabus definitions become concrete business simulations: animated cost pipes, break-even crosshairs that find the intersection, tall-to-flat org-chart collapses, recruitment funnels, product-life-cycle curves, cash-flow streams, ratio formula substitutions, business-cycle loops and exchange-rate conversion cards.
+
+### What the library looks like
+
+The **Videos** entry in the top navigation (and **Concept videos (25)** in the mobile menu) opens a library grouped by unit, with chips for **All 6 units** and **Unit 1–6**. Each card shows the video ID and chapter code, duration, scene count, a learning objective, three tagged syllabus concepts, and a **Watch concept video** button that becomes **Rewatch concept video** once completed. A live counter shows how many videos you have finished on this device. A chapter study lesson also gets a **Watch concept video** button injected into it, and `?open=videos&id=VID_U1_01` opens a specific video directly.
+
+### The player
+
+The player draws every scene on a 1280×720 **Canvas 2D** canvas from the JSON timeline — there is no bundled MP4. Each unit has its own visual theme (colour palette, drifting light pools, scene motifs and crossfades). The controls are:
+
+- play/pause and restart;
+- clickable **scene markers** for scene jumps, plus a seek bar across the whole timeline;
+- **CC Captions** — on-screen captions pulled from the narration script, with matching WebVTT files for standard players;
+- **Voiceover** — a `VOICE · ON` badge shows the state. Each of the 213 scenes has a locally generated WAV narration clip, time-fitted to its scene; if a clip is missing, the browser's Web Speech API quietly reads the script instead. There is no voice picker;
+- an **end-of-video recap quiz** with four options and a visual explanation, followed by an end card.
+
+Watched seconds, the completed flag and the last scene are saved in `ecbiz_video_progress` in this browser. Captions and narration are served from the same static site — no account or API key is needed for playback.
+
+### How the videos were made and checked
+
+Each video is a scene-by-scene production package: script, on-screen labels, visual directives, narration and a recap quiz. A three-tier pipeline produced them:
+
+| Tier | Role |
+|---|---|
+| Tier 1 — 6 unit creators | Write 25 isolated shards (`tmp_shards/vid_u*.json`), never approving their own work |
+| Tier 2A — syllabus auditors | Check 0264 terminology, blacklist leaks, AO coverage and misleading analogies |
+| Tier 2B — visual/technical auditors | Check visual density, pacing, arithmetic, schema and global uniqueness |
+| Tier 3 — gatekeeper | Validate, merge, compile captions/render manifests and set `APPROVED` |
+
+The result: **25/25 approved, 0 rejected**, **213/213 narration clips present**, **25 WebVTT caption files** and **25 platform-neutral render manifests** (Canvas / Remotion / Manim / FFmpeg mappings). No MP4 encoder is bundled; encoding is delegated to those render manifests. The full rebuild sequence and file contract are in [VIDEO_PIPELINE.md](VIDEO_PIPELINE.md).
+
+### Where the video files live
+
+| Path | What it is |
+|---|---|
+| `data/videos_manifest.json` | The 25 approved video packages (scenes, scripts, objectives, quizzes, audits) |
+| `data/video_validation_report.json` | Per-shard gatekeeper verdicts and mechanical repairs |
+| `data/video_audio_index.json` | Per-scene WAV clip lookup and timing |
+| `data/video_captions_index.json` | Caption, render-manifest and duration lookup |
+| `assets/videos/audio/VID_U*/` | 213 local narration clips |
+| `assets/videos/captions/`, `assets/videos/render/` | 25 WebVTT files and 25 render manifests |
+| `js/views/videos.js` | Library UI, Canvas runtime, narration sync and recap quizzes |
+| `tools/video_gatekeeper.py`, `tools/video_render.py`, `tools/video_voice.py` | Production and verification scripts |
+
+---
+
 ## Architecture
 
-The React study interface saves drafts, submissions, checklist ratings, lessons, coins and themes directly to the current browser's localStorage. The AI model is downloaded to the browser and marks answers on the device.
+EcBiz is a **plain static site**: `js/core.js` provides a tiny router and a namespaced `EC.store` wrapper around localStorage, and each view is an ordinary JavaScript file in `js/views/`. The JSON banks are fetched at runtime; `js/fast-load.js` (enabled in `Business.html` and `index.html`) transparently loads precompressed `.gz` copies and falls back to plain JSON, cutting roughly 82 MB of transfer to about 19 MB. The optional local marker runs Qwen 3 0.6B through llama.cpp/WASM on the device; the video library renders its scenes on a Canvas from JSON and plays locally generated audio.
 
-Students can open the site and begin studying immediately. Returning to the same browser and device restores saved work.
+No framework, no bundler, no install and no build step are needed. Students can open the site and begin studying immediately; returning to the same browser and device restores saved work. The older compiled React app is preserved in `legacy.html` as a rollback reference only.
 
 ---
 
@@ -462,6 +511,48 @@ interface Paper2Scenario {
 }
 ```
 
+### Concept video
+
+```ts
+interface VideoModule {
+  video_id: string;              // e.g. "VID_U1_01"
+  unit_number: number;           // 1..6
+  chapter_code: string;          // e.g. "1.1"
+  video_title: string;
+  target_duration_sec: number;   // 220..278
+  status: "APPROVED";
+  learning_objectives: string[];
+  scenes: VideoScene[];          // 8 or 9 scenes per video
+  end_of_video_recap_quiz: {
+    question: string;
+    options: string[];
+    correct_index: number;
+    visual_explanation: string;
+  };
+  audits: { syllabus: string; visual_math_render: string; gatekeeper: string };
+}
+
+interface VideoScene {
+  scene_number: number;
+  start_sec: number;
+  end_sec: number;
+  visual_type: string;           // e.g. "formula_substitution", "evaluation_split"
+  on_screen_title: string;
+  on_screen_labels: string[];
+  animation_directives: {
+    layout: string;
+    elements: string;
+    camera_motion: string;
+    visual_beats: string;
+  };
+  voiceover_script: string;
+  word_count: number;
+  syllabus_concepts_tagged: string[];
+}
+```
+
+The audio index is a separate lookup: `data/video_audio_index.json` maps each `video_id` to per-scene `{ file, scene_start, scene_end, words, duration }` clip records under `assets/videos/audio/`.
+
 ### Evaluation
 
 ```ts
@@ -517,7 +608,7 @@ Business Studies and Economics save progress in the current browser. Clearing si
 - Question flags in Business Studies are saved as local notes for the student.
 - The progress page downloads a CSV of submissions, checklist ratings, lesson progress, Boss Battle review and answer drafts. Economics provides its progress CSV on the syllabus checklist page.
 - The Business app migrates earlier progress cookies to localStorage and removes old session credentials from browser storage.
-- AI marking runs on the device. Model downloads require an internet connection.
+- AI marking runs on the device. The optional Qwen 3 0.6B GGUF shards are downloaded from Hugging Face through the jsDelivr ESM loader, checked against `SHA256SUMS` and cached in the browser's Cache API; downloads need an internet connection but no account or API key.
 - The site is hosted on GitHub Pages at [gisfresh.me](https://gisfresh.me/).
 
 The former account screens and Google Sheets connection have been removed. Visiting an old sign-in, sign-up or dashboard query link opens the local progress page.
@@ -534,7 +625,7 @@ Any records previously uploaded to a Google Sheet require separate removal from 
 - The **large practice banks** are Cambridge-style questions written for revision. They follow the syllabus, command words and mark-scheme shape, but they are not past papers and should not be quoted as official. Most of this bulk content was generated with Gemini using Cambridge model answers as the basis, then structured, checked and edited by me.
 - The **AI examiner** produces practice feedback, not an official grade. It can be harsh, generous or wrong. Use the mark scheme, the model answer and your teacher's judgement.
 - The **lesson, glossary and chapter summary** material is original teaching copy mapped to the 0264 syllabus and the Sixth Edition textbook sequence. It is a study aid, not a replacement for the textbook or your teacher.
-- The **concept videos** are syllabus-checked visual explanations built from the same teaching material. They are a study aid, not official Cambridge content.
+- The **concept videos** are syllabus-checked visual explanations built from the same teaching material. All 25 packages passed the syllabus audit, the visual/math audit and the deterministic gatekeeper. They are a study aid, not official Cambridge content, and no MP4 files are bundled — the player renders each scene live on a Canvas.
 
 The verified archive exists precisely because AI-generated practice should never be confused with a real paper. If you spot an error, use the feedback link at the top of the README.
 
@@ -580,21 +671,26 @@ Open `http://localhost:8000/subjects/business.html` (or `subjects/business/Busin
 | `js/core.js`, `js/app.js` | Shared helpers and the router/overview — vanilla JavaScript |
 | `js/views/*.js` | One plain JavaScript file per section (quiz, Paper 1, Paper 2, lessons, progress, …) |
 | `data/*.json` | All question banks as static JSON: 12,000 MCQs, 6,000 Paper 1 sets / 24,000 questions, 3,000 Paper 2 cases / 24,000 questions, glossary, lessons, verified archive |
-| `data/videos_manifest.json`, `data/video_audio_index.json` | The 25 approved video packages and the per-scene narration index |
-| `assets/videos/` | Per-scene narration clips, WebVTT captions and render manifests |
+| `data/videos_manifest.json`, `data/video_audio_index.json`, `data/video_captions_index.json`, `data/video_validation_report.json` | The 25 approved video packages, 213 narration clips, caption/render lookup and gatekeeper results |
+| `assets/videos/` | Per-scene narration WAV clips, WebVTT captions and render manifests |
 | `js/views/videos.js` | Video library, Canvas scene renderer, audio sync and recap quizzes |
+| `js/fast-load.js`, `data/gz/*.json.gz` | Enabled gzip loader for the data banks and 26 precompressed JSON files (~82 MB → ~19 MB) |
+| `js/views/ai-marker.js` | Instant examiner plus the optional Qwen 3 0.6B local GGUF/WASM model |
+| `tools/` | Video gatekeeper, caption/render compiler, narration synthesis and data compression scripts (see [VIDEO_PIPELINE.md](VIDEO_PIPELINE.md) and [FAST-LOAD.md](FAST-LOAD.md)) |
+| `tests/business-marking-engine.test.mjs` | Headless checks for the local engine and Instant fallback |
 | `assets/` | Images, local model worker/WASM and the two local PDFs |
 | `legacy.html` | The previous compiled app, kept as a rollback reference |
 
-`node ../../build.mjs` optionally assembles a `dist/` mirror of these plain files; it only copies files and compiles nothing.
+`node ../../build.mjs` optionally assembles a `dist/` mirror of these plain files; it only copies files and compiles nothing. Serve over `http://localhost:8000` or HTTPS — `file://` cannot fetch the JSON banks.
 
 ### First run
 
 1. Open `http://localhost:8000/subjects/business.html`.
-2. Start with **Interactive Lessons** if you are learning a topic for the first time.
+2. Start with **Interactive Lessons** if you are learning a topic for the first time, or open **Videos** for a narrated animation of the same chapter.
 3. Use **Topical Questions** for Paper 1 and **Paper 2** for case-study writing.
 4. Use **Quick Quiz** for fast retrieval and **Mock Exam** when you want the clock on.
-5. Refresh the page to check that your progress is restored in the same browser.
+5. Try **Local AI** on a written answer if you want the optional on-device marker; the Instant examiner works without it.
+6. Refresh the page to check that your progress, including watched videos, is restored in the same browser.
 
 ---
 
@@ -604,15 +700,15 @@ EcBiz is a static site. Its canonical entry is [gisfresh.me/subjects/business.ht
 
 ### GitHub Pages (live)
 
-1. Commit the static files: `subjects/business.html` and the whole `subjects/business/` folder (HTML, CSS, `js/`, `data/`, `assets/`).
+1. Commit the static files: `subjects/business.html` and the whole `subjects/business/` folder (HTML, CSS, `js/`, `data/`, `data/gz/`, `assets/`, `tools/`).
 2. GitHub Pages serves from the repo root — no build command, no npm, no Vite.
 3. `node build.mjs` from the repo root optionally assembles a `dist/` mirror of the same files for hosts that need a single output folder.
 
-If you rebuild the authoring source, stage the **new** content-hashed `assets/main-*.js` and the deletion of the old one, or the entry pages will point to a file that is no longer there.
+Keep `data/gz/` in sync with `data/*.json` — regenerate it with `node subjects/business/tools/compress-data.mjs` after any bank change. `fast-load.js` falls back to plain JSON if a compressed file is missing, so a stale mirror still works, just more slowly. The content-hashed `assets/main-*.js` files belong to `legacy.html` only; the live entries load the plain `js/` files directly.
 
 ### Any static host
 
-Upload the Fresh repo (or `subjects/` plus the root `fresh.svg`). Asset references in the entry pages are relative (`./business/assets/…`) and work under any path on any domain. Deep links like `?open=dashboard` work because the app reads query parameters, not browser routes.
+Upload the Fresh repo (or `subjects/` plus the root `fresh.svg`). Asset references in the entry pages are relative (`./business/assets/…`) and work under any path on any domain. Deep links like `?open=dashboard`, `?open=videos` and `?open=videos&id=VID_U1_01` work because the app reads query parameters, not browser routes. The `.gz` files are decompressed in the browser with `DecompressionStream`, so no special server configuration is needed and plain `python -m http.server` works; browsers without that API fall back to plain JSON.
 
 The app uses Google Fonts for typography. If you need a fully self-contained deployment, vendor the fonts locally and update the entry pages.
 
@@ -627,18 +723,30 @@ Fresh/
 ├── subjects/
 │   ├── business.html                 # canonical no-build entry
 │   ├── business/
-│   │   ├── Business.html             # legacy entry (same app)
-│   │   ├── index.html                # legacy entry
+│   │   ├── Business.html, index.html # equivalent live entries
+│   │   ├── legacy.html               # previous compiled app (rollback only)
 │   │   ├── 404.html
-│   │   ├── js/views/videos.js       # video library + Canvas scene renderer
-│   │   ├── data/videos_manifest.json
-│   │   ├── data/video_audio_index.json
-│   │   └── assets/                   # bundle, CSS, worker, WASM, images, PDFs, video audio/captions
+│   │   ├── js/
+│   │   │   ├── core.js, app.js       # router, store and overview
+│   │   │   ├── fast-load.js          # gzip data loader with plain-JSON fallback
+│   │   │   └── views/*.js            # one file per view, incl. videos.js + ai-marker.js
+│   │   ├── data/
+│   │   │   ├── *.json                # question banks, lessons, glossary, video manifest/indices
+│   │   │   └── gz/*.json.gz          # precompressed copies for fast-load
+│   │   ├── assets/
+│   │   │   ├── videos/audio/         # 213 narration WAV clips
+│   │   │   ├── videos/captions/      # 25 WebVTT files
+│   │   │   ├── videos/render/        # 25 render manifests
+│   │   │   └── …                     # images, worker, WASM, two local PDFs
+│   │   ├── tools/                    # video pipeline + data compression scripts
+│   │   ├── tests/                    # headless marking-engine checks
+│   │   ├── VIDEO_PIPELINE.md, FAST-LOAD.md
+│   │   └── PARITY-AUDIT-MASTER-v2.md
 │   └── economics.html / economics/   # the same plain-file format
 └── build.mjs                         # static file assembly (no compiler)
 ```
 
-The original React/TypeScript authoring source is not included in this repository; the plain static site above is the served app.
+The original React/TypeScript authoring source and the audit snapshots are not part of the served app; the plain static site above is what runs at [gisfresh.me/subjects/business.html](https://gisfresh.me/subjects/business.html).
 
 ---
 
@@ -651,11 +759,13 @@ EcBiz is checked in layers:
 | Static syntax check | `node --check` across all `js/**` files |
 | JSON integrity | Every `data/*.json` and `tmp_shards/*.json` parses cleanly |
 | Browser pass | Every tab, filter, quiz size, lesson, mock format, modal and responsive breakpoint is exercised manually |
-| Video gates | Syllabus audit, visual/math/timing audit and a deterministic Python gatekeeper; 25/25 videos approved, 213/213 narration clips present |
+| Video gates | Syllabus audit, visual/math/timing audit and a deterministic Python gatekeeper; 25/25 videos approved, 213/213 narration clips, 25 captions and 25 render manifests present |
+| Local AI tests | `node --test tests/business-marking-engine.test.mjs` — 4 headless tests covering real `autoMark` calls, engine-mode toggling and the Paper 1 / Paper 2 / header / mobile wiring |
+| Fast-load | 26 precompressed copies live in `data/gz/` for the runtime banks; the loader falls back to plain JSON when a browser lacks `DecompressionStream` or a compressed file is missing |
 | Content provenance | Verified questions carry source, verification and mark-scheme status fields |
-| Failure paths | WebGPU unavailable, invalid model JSON, expired sessions, failed Sheet pulls and missing drafts all degrade to a usable state |
+| Failure paths | Local model unavailable (offline/CDN failure/timeout), invalid model JSON, a missing narration clip, expired sessions and missing drafts all degrade to a usable state |
 
-The earlier React/TypeScript authoring source had headless marking-engine checks (`scripts/test-grading.ts`) covering:
+The earlier React/TypeScript authoring source had a larger headless suite (`scripts/test-grading.ts`) covering:
 
 - consequence-chain detection, including single-step versus developed two-step reasons;
 - AO maxima for every paper and mark tier (`AO1:2`, `AO2:3`, `AO3:4`, `AO4:3` on 12-mark questions);
@@ -667,7 +777,7 @@ The earlier React/TypeScript authoring source had headless marking-engine checks
 
 The checks are not decoration. Several of the fixes described above were caught by them rather than by reading the UI: a conclusion badge that disagreed with the gated AO4 score, a 12-mark total that drifted from the Level, and a 2-mark question that leaked Application marks. When I changed the 12-mark results layout, the checks were what proved the displayed result still matched the rubric.
 
-That authoring source is not part of the served static site. The served app is verified by the static syntax, JSON integrity, browser and video gates in the table above.
+That authoring suite is not part of the served static site. The served app is covered by the four current headless tests plus the static syntax, JSON integrity, fast-load, browser and video gates in the table above.
 
 ---
 
@@ -691,7 +801,7 @@ The platform grew a written-answer studio: 1,200 Paper 1 scenario sets, 100 Pape
 
 ### The feedback build — AO rules and a local examiner
 
-The marking engine was rebuilt around AO1–AO4. Keyword scans written in code enforce application and evaluation before the model sees the answer. A local Qwen model through Transformers.js provides paragraph-level interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
+The marking engine was rebuilt around AO1–AO4. Keyword scans written in code enforce application and evaluation before the model sees the answer. A local Qwen model provides paragraph-level interpretation with a strict JSON schema and a fallback examiner. Manual overrides with an audit trail keep the human in the loop.
 
 ### The examiner-hardening build — paragraph-by-paragraph marking and coded Levels
 
@@ -701,18 +811,31 @@ The first local examiner returned marks; this build made them defensible. Each p
 
 Twenty-four interactive lessons, a 254-statement checklist, a 275-term glossary, comparison notes, revision sheets and a verified archive support the study workflow. Progress is saved locally in the current browser.
 
+### The zero-build rewrite — a plain static site
+
+The React/TypeScript app was replaced by plain HTML, CSS, JavaScript and JSON: no framework, bundler, install or build step. The rewrite was checked against the saved original in two parity audits (`PARITY-AUDIT-MASTER.md` and `PARITY-AUDIT-MASTER-v2.md`), no question bank or document was lost, and an enabled gzip loader cut the initial data transfer from roughly 82 MB to 19 MB.
+
+### The video build — 25 animated concept videos
+
+A three-tier production pipeline wrote, audited and merged 25 scene-by-scene video packages covering all 25 chapters of Units 1–6. A Canvas player renders 213 animated scenes with 213 locally generated narration clips and captions, an end-of-video recap quiz and per-unit visual themes. Watch buttons were added to the library and to chapter study lessons, with completion stored in the same browser.
+
+### The CPU/WASM marker build
+
+The optional local examiner moved to a quantised Qwen 3 0.6B GGUF model running through llama.cpp/WASM, with verified, cached shards and a background download banner. The local path no longer depends on WebGPU, and the Instant examiner remains the always-available fallback.
+
 ---
 
 ## Roadmap
 
-- [x] Add automated checks for the marking rules, AO caps and Level gating (`npm test`).
+- [x] Add automated checks for the marking rules, AO caps and Level gating (`node --test tests/business-marking-engine.test.mjs`).
 - [ ] Extend automated coverage to local persistence, the fallback examiner and content integrity.
 - [x] Add a review workflow for flagging and correcting a question from inside the app.
 - [ ] Add teacher authoring or CSV import for school-specific questions.
 - [ ] Vendor the fonts and add optional offline caching for low-connectivity classrooms.
 - [ ] Add exportable progress reports for teachers and parents.
 - [ ] Run a formal accessibility audit and close the gaps.
-- [x] Add a 25-video concept library covering every chapter of Units 1-6.
+- [x] Add a 25-video concept library covering all 25 chapters of Units 1–6, with 213 local narration clips and captions.
+- [x] Move the optional local marker to a CPU/WASM GGUF path so it works without WebGPU.
 - [ ] Add more Paper 2 case studies beyond the current 3,000.
 - [ ] Improve the AI examiner's rubric awareness while keeping the coded marking rules.
 
@@ -724,10 +847,10 @@ Twenty-four interactive lessons, a 254-statement checklist, a 275-term glossary,
 - **Borrington & Stimpson, *Cambridge IGCSE & O Level Business*, Sixth Edition** — chapter sequence used to organise the 24 lessons.
 - **Cambridge International and PapaCambridge** — official specimen papers, mark schemes and syllabus documents linked from the archive.
 - **Google Gemini** — used to generate the bulk practice question banks (MCQs and Paper 1/2-style practice) from Cambridge model answers, which I then checked and edited.
-- **Browser localStorage** — saves study progress on the current device.
-- **Local narration and Canvas 2D** - scene-by-scene visual explanations with generated per-scene audio, served from the same static site.
+- **Browser localStorage** — saves study progress and video watch time on the current device.
+- **Local narration and Canvas 2D** — 25 scene-by-scene visual explanations with 213 generated per-scene audio clips, WebVTT captions and render manifests, served from the same static site.
 - **Plain HTML, CSS and vanilla JavaScript** — the served app has no framework or build step; Lucide-style inline SVG icons are used.
-- **Transformers.js, WebGPU and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B text decoder.
+- **Transformers.js/WebGPU, llama.cpp/WASM (wllama) and the Qwen model family** — local, in-browser paragraph interpretation with a single Qwen 3 0.6B decoder; the served default is the verified GGUF build on CPU/WASM.
 - **AI coding tools** — used throughout to help write, refactor and debug the code. I made the product decisions, reviewed the code, and tested it.
 - **Every classmate who tested an early build** and told me what was confusing. The Wrong Only mode, the 60-second challenge, the confidence ratings and most of the layout fixes all came from those conversations.
 
