@@ -45,10 +45,10 @@
 .history-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem 1.4rem;
-  margin: 1rem 0 1.5rem;
+  gap: .25rem;
+  margin: 0;
 }
-.history-nav a { padding: .5rem .15rem; font-weight: 700; }
+.history-nav a { font-weight: 700; }
 .history-dashboard, .history-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -107,4 +107,38 @@
   background: white;
   color: #172b3a;
   font: inherit;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 1.25rem;
+  min-height: 4.5rem;
+  padding-block: .6rem;
+}
+.history-header .brand, .history-subjects { text-decoration: none; }
+.history-nav a {
+  border-radius: .55rem;
+  padding: .5rem .75rem;
+  text-decoration: none;
+}
+.history-nav a:hover { text-decoration: underline; }
+.history-nav a[aria-current="page"] { background: #245b57; color: white; }
+.history-view { margin-block: 1.5rem 2.5rem; }
+.history-view > .history-dashboard { margin-top: 1rem; }
+.history-quick {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.history-quick a { display: grid; gap: .3rem; text-decoration: none; }
+.history-quick a:hover { border-color: #245b57; }
+.history-quick a:hover strong { text-decoration: underline; }
+.history-quick span { line-height: 1.4; }
+
+@media (max-width: 850px) {
+  .history-nav { order: 1; flex-basis: 100%; margin-top: .5rem; }
 }

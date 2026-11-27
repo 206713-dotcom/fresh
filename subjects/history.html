@@ -16,29 +16,29 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <nav class="wrap topbar" aria-label="Main navigation">
-    <a class="brand" href="../" aria-label="Fresh homepage"><img src="../fresh.svg" width="34" height="34" alt=""> Fresh</a>
-    <a href="../index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
-  </nav>
+  <div class="wrap history-header">
+    <a class="brand" href="#history-home"><img src="../fresh.svg" width="34" height="34" alt=""> History Studyroom</a>
+    <nav class="history-nav" aria-label="History studyroom">
+      <a href="#history-home">Home</a>
+      <a href="#history-topics">Topics</a>
+      <a href="#history-skills">Skills</a>
+      <a href="#history-practice">Exam Practice</a>
+      <a href="#history-review">Review</a>
+    </nav>
+    <a class="history-subjects" href="../index.html#subjects">All subjects</a>
+  </div>
 </header>
-<main id="main" class="wrap">
-<a class="back" href="../index.html#subjects">← All subjects</a>
-<section class="history-hero" id="history-home">
+<main id="main" class="wrap" tabindex="-1">
+<section id="history-home" class="history-view" aria-labelledby="history-title">
+<div class="history-hero">
   <div>
     <p class="history-kicker">Cambridge IGCSE · 0470</p>
-    <h1>History Studyroom</h1>
+    <h1 id="history-title">History Studyroom</h1>
     <p>Explore the events, weigh the evidence, and practise writing historical arguments.</p>
     <a class="history-action" id="history-resume" href="#history-topics">Explore topics</a>
   </div>
   <div class="history-years" aria-hidden="true"><span>1848</span><span>1919</span><span>1989</span></div>
-</section>
-
-<nav class="history-nav" aria-label="History studyroom">
-  <a href="#history-home">Home</a>
-  <a href="#history-topics">Topics</a>
-  <a href="#history-practice">Exam Practice</a>
-  <a href="#history-review">Review</a>
-</nav>
+</div>
 
 <div class="history-dashboard">
   <section class="history-panel">
@@ -63,7 +63,15 @@
   </section>
 </div>
 
-<section class="history-section" id="history-topics">
+<nav class="history-quick" aria-label="Study shortcuts">
+  <a class="history-panel" href="#history-topics"><strong>Browse topics</strong><span>Find a Core topic or depth study.</span></a>
+  <a class="history-panel" href="#history-skills"><strong>Practise historical skills</strong><span>Work on causes, sources, and explanations.</span></a>
+  <a class="history-panel" href="#history-practice"><strong>Open exam practice</strong><span>Draft answers to original questions.</span></a>
+  <a class="history-panel" href="#history-review"><strong>Review your work</strong><span>Revisit flagged topics and questions.</span></a>
+</nav>
+</section>
+
+<section class="history-section history-view" id="history-topics">
   <h2>Topics</h2>
   <p>Open a topic for a revision summary, a recall check, and a writing prompt.</p>
   <label class="history-search">Search topics, events, and people
@@ -71,20 +79,20 @@
   </label>
   <div id="history-topic-list"></div>
 </section>
-<section class="history-section" id="history-practice">
+<section class="history-section history-view" id="history-practice">
   <h2>Exam practice</h2>
   <p>Practise with original questions, then compare your answer with the guidance.</p>
   <div id="history-practice-list"></div>
   <p><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/past-papers/">Cambridge past papers and specimen materials</a></p>
 </section>
-<section class="history-section" id="history-review">
+<section class="history-section history-view" id="history-review">
   <h2>Review</h2>
   <p id="history-progress"></p>
   <ul id="history-review-list"></ul>
   <p>Progress and drafts are stored in this browser.</p>
-  <p id="history-status" role="status"></p>
 </section>
 <noscript><p>Enable JavaScript to use the studyroom tools. The revision exercises below are available now.</p></noscript>
+<section class="history-view history-section" id="history-skills" aria-labelledby="revision">
 <div class="study-layout">
   <nav class="contents" aria-label="On this page">
     <p class="eyebrow">ON THIS PAGE</p><ol><li><a href="#topic-1">Causes</a></li><li><a href="#topic-2">Source evaluation</a></li><li><a href="#topic-3">Comparing explanations</a></li></ol>
@@ -129,6 +137,8 @@
     <a class="button next" href="economics.html">Next subject · Economics <span aria-hidden="true">→</span></a>
   </section>
 </div>
+</section>
+<p id="history-status" role="status"></p>
 </main>
 <footer class="wrap footer">
   <span>Fresh · Independent IGCSE revision</span>
