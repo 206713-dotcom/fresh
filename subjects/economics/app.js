@@ -477,6 +477,8 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     if (current?.q.options && saved?.feedback) {
       paintAnswerChoices(target, saved.answer, current.q.answer);
       target.querySelector('.feedback').dataset.outcome = mcqOutcome(saved.answer, current.q.answer);
+    } else if (saved?.feedback) {
+      for (const panel of target.querySelectorAll('.feedback details')) panel.open = true;
     }
     pages.hidden = !matches.length;
     jump.max = String(matches.length);
