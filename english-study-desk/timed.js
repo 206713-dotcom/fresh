@@ -95,6 +95,7 @@ function timedView() {
   return `<section class="panel timed-workspace" aria-label="Writing workspace">
     <div class="actions timed-modes" aria-label="Practice section">
       <a class="secondary" id="poetry-mode" href="#timed/poetry">Poetry skills</a>
+      <a class="secondary" id="anthology-mode" href="#anthology">Songs of Ourselves</a>
       <a class="secondary" id="unseen-mode" href="#timed/unseen">Unseen prose</a>
       <a class="secondary" id="text-mode" href="#timed/texts">Set-text skills</a>
     </div>
@@ -103,6 +104,7 @@ function timedView() {
     </label>
     <label>Practice mode <select id="practice-mode"><option value="guided">Guided</option><option value="timed">Timed</option></select></label>
     <div class="practice-columns"><div class="timed-question">
+      <p id="timed-poem" hidden></p>
       <p id="timed-skill" class="timed-skill"></p>
       <div id="timed-passage" class="example model" hidden></div>
       <h2 id="timed-prompt" tabindex="-1"></h2>
@@ -131,11 +133,11 @@ function timedView() {
     </div>
     <p id="draft-status" class="timed-meta">Drafts are kept per question in this browser.</p>
     <p id="timer-status" role="status" class="timed-meta"></p></div></div>
-    <button id="review-answer" class="primary" type="button">Review response</button>
+    <button id="review-answer" class="primary" type="button">Finish writing and review</button>
     <section id="answer-review" hidden>
       <h2 tabindex="-1" id="review-title">Review your response</h2>
       <ul><li>Did I answer the exact question?</li><li>Did I use precise evidence?</li><li>Did I explain a writer’s choice and its effect?</li><li>Did I develop an interpretation?</li></ul>
-      <h3>Worked paragraph</h3><p class="example" id="review-model"></p>
+      <h3 id="review-model-title">Worked paragraph</h3><p class="example" id="review-model"></p>
       <p>Look for the opening claim, the specific evidence and the explanation of its effect. Compare them with your paragraph.</p>
       <label for="practice-target">What will you improve next time?</label><input id="practice-target" maxlength="240">
       <button class="secondary" id="save-target" type="button">Save improvement</button>
@@ -216,6 +218,9 @@ function wireTimed(section) {
     $("#clock-controls").hidden = mode.value === "guided";
     $("#timed-help").hidden = mode.value === "timed";
     $("#timed-skill").textContent = question.skill;
+    $("#timed-poem").hidden = !question.text;
+    $("#timed-poem").textContent = question.text ? "Open your anthology to "+question.text+"." : "";
+    $("#anthology-mode").toggleAttribute("aria-current",Boolean(question.text));
     const passage = $("#timed-passage");
     passage.hidden = !question.passage;
     passage.textContent = question.passage || "";
@@ -264,7 +269,9 @@ function wireTimed(section) {
       session.deadline = 0;
       showClock();
     }
-    $("#review-model").textContent = timedModels[session.topic][session.question];
+    const model = timedModels[session.topic]?.[session.question];
+    $("#review-model-title").textContent = model ? "Worked paragraph" : "Review your analysis";
+    $("#review-model").textContent = model || timedTopics[session.topic].questions[session.question].hint;
     $("#practice-target").value = saved.improvement || "";
     $("#target-status").textContent = "";
     $("#answer-review").hidden = false;

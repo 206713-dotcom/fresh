@@ -36,11 +36,13 @@ function markingView() {
   return `<section class="marking-panel" aria-labelledby="ai-mark-title">
     <h2 id="ai-mark-title">AI marking</h2>
     <p>Get feedback on the four assessment objectives. Full responses can receive an estimated practice mark out of 25. Use the feedback alongside the Cambridge rubric and your teacher’s judgement.</p>
-    <label>Response type <select id="mark-format"><option value="paragraph">Paragraph drill</option><option value="essay">Full exam response</option></select></label>
+    <label>Response type <select id="mark-format"><option value="essay">Full exam response · estimate out of 25</option><option value="paragraph">Paragraph drill · feedback only</option></select></label>
     <p>The first use downloads a model of about 1.1 GB. Marking runs on this device and your writing stays in this browser.</p>
     <button class="primary" id="mark-response" type="button">Mark with AI</button>
+    <button class="secondary" id="generate-model" type="button">Generate model answer</button>
     <p id="mark-status" role="status"></p>
     <div id="mark-result" hidden></div>
+    <section id="generated-model" hidden aria-labelledby="model-title"><h3 id="model-title">AI-generated model answer</h3><p>Compare its argument and evidence with your own. Check textual details against your copy.</p><div id="generated-model-text" class="example model"></div></section>
   </section>`;
 }
 
@@ -96,12 +98,21 @@ function examinerPrompt({topic,question,draft,bands,essay}) {
     "Give one specific actionable revision step. Output only a JSON object with keys level, placement, ao1, ao2, ao3, ao4, next. Each ao value is an object with keys feedback and quote."
   ];
   const context = {
-    text:bank.title, question:item.prompt, passage:item.passage || null, referenceNotes:item.hint,
+    text:item.text || bank.title, question:item.prompt, passage:item.passage || null, referenceNotes:item.hint,
     objectives:markingObjectives.map(([id,title,tip])=>id+" "+title+" "+tip),
     levels:bands.map(([low,high,label],level)=>({level,low,high,label})), studentResponse:draft
   };
   const payload = JSON.stringify(context).replaceAll("<","\\u003c");
   return "<|im_start|>system\n"+instructions.join("\n")+"<|im_end|>\n<|im_start|>user\n"+payload+"<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n";
+}
+
+function modelAnswerPrompt(topic,question,essay) {
+  const bank = timedTopics[topic];
+  const item = bank.questions[question];
+  const context = JSON.stringify({text:item.text || bank.title,question:item.prompt,passage:item.passage || null,planningNotes:item.hint});
+  const length = essay ? "Write a complete 0475 literature response in about 220–300 words, with a thesis and developed analytical paragraphs." :
+    "Write one developed analytical paragraph in about 90–120 words.";
+  return "<|im_start|>system\n"+length+" Answer the exact question. Connect specific evidence to analysis of language, structure or form and develop an interpretation. Quote only brief wording present in the supplied passage. If there is no passage, paraphrase confidently known details and avoid inventing quotations, line numbers or events. Output only the answer in plain text with paragraph breaks.<|im_end|>\n<|im_start|>user\n"+context+"<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n";
 }
 
 function parseMarking(text,draft,bands,essay) {
@@ -132,6 +143,8 @@ function wireMarking(session,editor) {
   const status = $("#mark-status");
   const result = $("#mark-result");
   const format = $("#mark-format");
+  const modelButton = $("#generate-model");
+  const model = $("#generated-model");
   const selfLevel = $("#self-level");
   const selfScore = $("#self-score");
   const checks = [...$("#self-objectives").querySelectorAll("input")];
@@ -143,7 +156,8 @@ function wireMarking(session,editor) {
     result.hidden = true;
     result.replaceChildren();
     status.textContent = "";
-    button.disabled = markingBusy || !editor.value.trim();
+    model.hidden = true;
+    button.disabled = modelButton.disabled = markingBusy || !editor.value.trim();
   }
 
   function syncScores(selected) {
@@ -180,10 +194,10 @@ function wireMarking(session,editor) {
     selfStatus.textContent = "Self-mark: "+selfScore.value+"/25. "+(storageFailed?"Saved for this session.":"Saved in this browser.");
   };
   format.onchange = invalidate;
-  button.onclick = async () => {
+  async function runAI(generateModel) {
     if (markingBusy || !editor.value.trim()) return;
     const draft = editor.value.trim();
-    if (draft.length > 6500) {
+    if (!generateModel && draft.length > 6500) {
       status.textContent = "Use a response of up to 6,500 characters for local marking.";
       return;
     }
@@ -194,22 +208,37 @@ function wireMarking(session,editor) {
     const {bands} = markingScheme(saved.examYear,topic);
     const essay = format.value === "essay";
     markingBusy = true;
-    button.disabled = true;
-    result.hidden = true;
+    button.disabled = modelButton.disabled = true;
+    if (generateModel) model.hidden = true;
+    else result.hidden = true;
     report("Preparing the local AI model…");
     try {
       const engine = await loadMarker(report);
       if (!current()) return;
-      report("Reading your response…");
+      report(generateModel ? "Writing a model answer…" : "Reading your response…");
       const response = await engine.createCompletion({
-        prompt:examinerPrompt({topic,question,draft,bands,essay}),
-        max_tokens:600,temperature:0,penalty_repeat:1.05
+        prompt:generateModel ? modelAnswerPrompt(topic,question,essay) : examinerPrompt({topic,question,draft,bands,essay}),
+        max_tokens:generateModel ? 520 : 600,temperature:0,penalty_repeat:1.05
       });
       if (!current()) return;
-      const feedback = parseMarking(response.choices[0].text,draft,bands,essay);
+      const output = response.choices[0].text.trim();
+      if (generateModel) {
+        if (!output) throw new Error("The model returned an empty answer.");
+        $("#generated-model-text").textContent = output;
+        model.hidden = false;
+        report("Model answer ready.");
+        return;
+      }
+      const feedback = parseMarking(output,draft,bands,essay);
       const heading = document.createElement("h3");
       heading.textContent = essay ? "Estimated practice mark: "+feedback.score+"/25 · Level "+feedback.level : "Feedback on your paragraph";
       result.replaceChildren(heading);
+      if (essay) {
+        const [low,high] = bands[feedback.level];
+        const range = document.createElement("p");
+        range.textContent = "Estimated exam band: "+(low===high ? low : low+"–"+high)+"/25. A Cambridge examiner may award a different mark.";
+        result.append(range);
+      }
       for (const {id,title,quote,feedback:note} of feedback.findings) {
         const line = document.createElement("p");
         line.textContent = id+" · "+title+": "+note+(quote?" Evidence from your draft: “"+quote+"”":"");
@@ -222,12 +251,14 @@ function wireMarking(session,editor) {
       report("AI feedback ready.");
     } catch (error) {
       console.warn("Local literature marking could not finish",error);
-      report("AI feedback could not be verified or completed. Retry, or use self-marking below.");
+      report(generateModel ? "The model answer could not be generated. Try again." : "AI feedback could not be verified or completed. Retry, or use self-marking below.");
     } finally {
       markingBusy = false;
       const activeButton = $("#mark-response");
-      if (activeButton) activeButton.disabled = !$("#timed-answer").value.trim();
+      if (activeButton) activeButton.disabled = $("#generate-model").disabled = !$("#timed-answer").value.trim();
     }
-  };
+  }
+  button.onclick = () => runAI(false);
+  modelButton.onclick = () => runAI(true);
   return {reset,invalidate};
 }

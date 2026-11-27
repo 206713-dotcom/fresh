@@ -13,7 +13,7 @@ const icon = name => '<svg viewBox="0 0 24 24" aria-hidden="true">'+icons[name]+
 const $ = selector => document.querySelector(selector);
 document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
 
-const titles = {home:"Home",syllabus:"Exam guide",skills:"Skills",texts:"Set texts",lessons:"Lessons & study guides",practice:"Practice exercises",timed:"Writing practice",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
+const titles = {home:"Home",syllabus:"Exam guide",skills:"Skills",texts:"Set texts",lessons:"Lessons & study guides",practice:"Practice exercises",mcq:"Multiple-choice practice",anthology:"Songs of Ourselves",timed:"Writing practice",writing:"Writing help & samples",strategies:"Exam strategies",resources:"Resources & downloads",about:"About & contact",progress:"My progress"};
 const key = "english-study-desk-v1";
 let saved = {lessons:[],scores:{},large:false,activity:{},examYear:2027};
 try { saved = {...saved,...JSON.parse(localStorage.getItem(key))}; } catch {}
@@ -94,8 +94,11 @@ function lessonList(category) {
   return lessons.filter(l=>l[0]===category).map(l=>panel(l[2],'<p>'+l[3]+'</p><a class="secondary" href="#lesson/'+l[1]+'">'+(saved.lessons.includes(l[1])?"Review lesson":"Open lesson")+'</a>')).join("");
 }
 function practice(category) {
-  if (!category) return panel("Writing practice",'<p>Practise a poetry or set-text response with a timer and word counter.</p><div class="actions"><a class="primary" href="#timed/poetry">Poetry skills</a><a class="secondary" href="#timed/texts">Set-text skills</a><a class="secondary" href="#timed/unseen">Unseen prose</a></div>')+categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
-  const questions = quizzes[category];
+  if (!category) return panel("Writing practice",'<p>Practise a poetry or set-text response with a timer and word counter.</p><div class="actions"><a class="primary" href="#timed/poetry">Poetry skills</a><a class="secondary" href="#timed/texts">Set-text skills</a><a class="secondary" href="#timed/unseen">Unseen prose</a><a class="secondary" href="#anthology">Songs of Ourselves</a><a class="secondary" href="#mcq">Multiple-choice practice</a></div>')+categoryCards("practice")+panel("Exam-style practice",'<p>Start with a topic quiz, then apply the skill to an original timed prompt or a Cambridge paper from your exam series.</p>'+list([download("timed-practice.txt","Timed practice prompts by topic"),link("#resources","Official past papers and mark schemes")]));
+  return quizForm(quizzes[category]);
+}
+
+function quizForm(questions) {
   return '<form id="quiz" class="panel">'+questions.map(([question,answers],i)=>'<fieldset><legend>'+(i+1)+'. '+question+'</legend>'+answers.map((a,j)=>'<label class="choice"><input type="radio" name="q'+i+'" value="'+j+'" '+(j===0?"required":"")+'> '+a+'</label>').join("")+'<p class="feedback" id="feedback-'+i+'"></p></fieldset>').join("")+'<div class="actions"><button class="primary" type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p id="quiz-result" role="status"></p></form>';
 }
 
@@ -105,7 +108,10 @@ function progress() {
   const practicePanel = panel("Writing review",'<p id="next-improvement"></p>'+(question?'<p>'+link("#timed/"+recent.topic+"/"+recent.question,question.prompt)+'</p>': '<p>'+link("#timed","Try a writing question")+'</p>'));
 
   const count = saved.lessons.length;
-  return practicePanel+panel("Lesson progress",'<p>'+count+' of '+lessons.length+' lessons completed.</p><progress aria-label="Completed lessons" max="'+lessons.length+'" value="'+count+'"></progress>'+ (count?list(saved.lessons.map(id=>lesson(id)).filter(Boolean).map(l=>link("#lesson/"+l[1],l[2]))):'<p><a href="#lessons">Choose a lesson to get started</a>.</p>'))+
+  const recallScores = Object.entries(recallTopics).filter(([id])=>saved.scores["recall/"+id]!==undefined);
+  const recallPanel = recallScores.length ? panel("Text and poetry recall scores",list(recallScores.map(([id,topic])=>
+    link("#mcq/"+id,topic.title)+" · "+saved.scores["recall/"+id]+" / "+topic.questions.length))) : "";
+  return practicePanel+recallPanel+panel("Lesson progress",'<p>'+count+' of '+lessons.length+' lessons completed.</p><progress aria-label="Completed lessons" max="'+lessons.length+'" value="'+count+'"></progress>'+ (count?list(saved.lessons.map(id=>lesson(id)).filter(Boolean).map(l=>link("#lesson/"+l[1],l[2]))):'<p><a href="#lessons">Choose a lesson to get started</a>.</p>'))+
     panel("Best quiz scores",list(categories.map(c=>link("#practice/"+c.id,c.title)+" · "+(saved.scores[c.id]===undefined?"Awaiting first attempt":saved.scores[c.id]+" / "+quizzes[c.id].length)))+'<p>'+(storageFailed?"Browser storage is unavailable. Progress will last for this session.":"Progress and study activity are stored in this browser.")+'</p><p>Lessons opened: '+(saved.activity.lessonViews||0)+' · Quizzes submitted: '+(saved.activity.quizSubmissions||0)+'</p>');
 }
 
@@ -136,6 +142,8 @@ const descriptions = {
 };
 const views = {
   syllabus,
+  anthology:anthologyView,
+  mcq:mcqView,
   skills:skillsView,
   texts:textsView,
   lessons:lessonList,
@@ -162,7 +170,7 @@ function updateExamYear(event) {
   saved.examYear = Number(event.target.value);
   persist();
   render();
-  $(location.hash.startsWith("#syllabus") ? "#page .exam-year" : "#home-exam-year .exam-year").focus();
+  $(/^#(?:syllabus|anthology)/.test(location.hash) ? "#page .exam-year" : "#home-exam-year .exam-year").focus();
 }
 
 function render() {
@@ -189,7 +197,7 @@ function render() {
     : category ? " / "+link("#"+route,titles[route]) : "";
   if (currentLesson) count("lessonViews");
   $("#page").innerHTML = '<div class="crumb" aria-label="Breadcrumb">'+link("#home","Home")+trail+' / '+title+'</div><h1 class="page-title" tabindex="-1">'+title+'</h1><p class="intro">'+(descriptions[route]||"")+'</p>'+
-    (currentLesson ? lessonView(sub) : views[route](["skills","texts"].includes(route) ? sub : category?.id));
+    (currentLesson ? lessonView(sub) : views[route](["skills","texts","mcq"].includes(route) ? sub : category?.id));
   if (currentLesson) $("#complete").onclick = () => {
     saved.lessons.push(sub);
     persist();
@@ -197,8 +205,9 @@ function render() {
     $("#lesson-status").textContent = storageFailed ? "Completed for this session" : "Completed";
   };
   if (route==="practice" && category) wireQuiz(category.id);
+  if (route==="mcq" && Object.hasOwn(recallTopics,sub)) wireQuiz("recall/"+sub,recallTopics[sub].questions);
   if (route==="timed") wireTimed(detail === undefined ? sub : sub+"/"+detail);
-  if (route==="syllabus") $("#page .exam-year").onchange = updateExamYear;
+  if (route==="syllabus" || route==="anthology") $("#page .exam-year").onchange = updateExamYear;
   if (route==="progress") $("#next-improvement").textContent = saved.improvement || "Save an improvement after reviewing a response.";
   if (route==="about") $("#contact").onsubmit = event => {
     event.preventDefault();
@@ -213,15 +222,15 @@ function render() {
     $("#contact-status").textContent = "Feedback draft prepared.";
   };
 }
-function wireQuiz(category) {
+function wireQuiz(category,questions = quizzes[category]) {
   const form = $("#quiz");
-  const questions = quizzes[category];
   form.onsubmit = event => {
     event.preventDefault();
     const answers = new FormData(form);
     let score = 0;
     questions.forEach(([,options,correct,explanation],i)=>{
-      const right = Number(answers.get("q"+i)) === correct;
+      const answer = answers.get("q"+i);
+      const right = answer !== null && Number(answer) === correct;
       score += Number(right);
       $("#feedback-"+i).textContent = (right?"Correct. ":"Answer: "+options[correct]+" ") + explanation;
     });
@@ -239,6 +248,8 @@ const dialog = $("#search-dialog");
 const index = [
   ...Object.entries(titles).map(([id,title])=>[id,title,descriptions[id]||""]),
   ...Object.keys(textLibrary).map(id=>["texts/"+id,timedTopics[id].title,textLibrary[id].author]),
+  ...Object.entries(anthologySets).flatMap(([id,set])=>set.poems.map(([author,title],i)=>["timed/"+id+"/"+i,title,author+" Songs of Ourselves "+set.title])),
+  ...Object.entries(recallTopics).map(([id,topic])=>["mcq/"+id,topic.title+" quiz","MCQ recall multiple choice"]),
   ["timed/poetry","Poetry skills writing practice","Unseen poetry imagery sound structure timer word counter"],
   ["timed/texts","Set-text writing practice","Hullabaloo in the Guava Orchard Pride and Prejudice A Midsummer Night’s Dream"],
   ["syllabus/0475","0475 literature papers","paper 1 poetry prose paper 2 drama unseen coursework"],

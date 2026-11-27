@@ -65,3 +65,8 @@
 [data-theme=dark] .spark{color:#96baf0}
 [data-theme=dark] :focus-visible{outline-color:#a5ccff}
 @media(max-width:430px){.nav .tools{gap:3px}.nav .iconbtn,.nav .progress-link{padding-inline:6px;min-width:32px}.nav nav{gap:14px}.nav .brand{white-space:normal}}
+.poem-list li{padding-block:5px}
+.poem-list span{color:var(--muted)}
+.recall-cards{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}
+#generated-model{margin-top:18px}
+@media(max-width:1120px){.nav{flex-wrap:wrap;gap:8px;padding:10px 0}.nav nav{order:3;width:100%;gap:18px;overflow:auto}.nav nav a{white-space:nowrap}}
