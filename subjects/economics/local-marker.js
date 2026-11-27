@@ -241,7 +241,7 @@ const ecbizMarking = (() => {
     const evidence = markedEvidence(answer,result);
     const reason = markReviewReason(result,answer);
     const next = result.score < marks ? result.nextStep || coaching?.gaps || coaching?.next : '';
-    const disclosure = (title, body) => body ? '<details class="review-disclosure"><summary>' + title +
+    const disclosure = (title, body) => body ? '<details class="review-disclosure" open><summary>' + title +
       '</summary><div class="review-disclosure-body">' + body + '</div></details>' : '';
     const model = result.modelResponse ? paragraphs(result.modelResponse) +
       (result.generatedModelResponse ? '<p class="muted">AI-generated sample answer.</p>' : '') : '';
@@ -268,7 +268,7 @@ const ecbizMarking = (() => {
   }
 
   function scheme(prompt) {
-    return '<details class="review-disclosure"><summary>Mark scheme</summary><div class="review-disclosure-body"><div class="mark-scheme">' +
+    return '<details class="review-disclosure" open><summary>Mark scheme</summary><div class="review-disclosure-body"><div class="mark-scheme">' +
       escapeHtml(prompt.scheme) + '</div>' +
       (prompt.note ? '<p>' + escapeHtml(prompt.note) + '</p>' : '') + '</div></details>';
   }
