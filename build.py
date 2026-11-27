@@ -17,8 +17,7 @@ HOME_CONTACTS = """  <address class="home-contacts" id="contact" aria-labelledby
     <strong id="contact-title">Team &amp; general contacts</strong>
     <a href="mailto:206713@gardenschool.edu.my">Junyi · 206713@gardenschool.edu.my</a>
     <a href="mailto:206058@gardenschool.edu.my">Lucas · 206058@gardenschool.edu.my</a>
-    <a href="contacts.html#contact">Jeremy · Chief Technology Officer</a>
-    <a href="contacts.html#contact">Jayden · AI Manager</a>
+    <a href="contacts.html#contact">Meet the team <span aria-hidden="true">→</span></a>
     <a href="contacts.html#subjects">Subject contacts <span aria-hidden="true">→</span></a>
   </address>
 """
