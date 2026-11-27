@@ -16,7 +16,7 @@ const schema = {
 
 let engine;
 let ready = false;
-self.onmessage = async ({ data: { task, answer } }) => {
+self.onmessage = async ({ data: { task, answer, mode } }) => {
   const progress = message => self.postMessage({ progress: message });
   try {
     if (!ready) {
@@ -29,6 +29,21 @@ self.onmessage = async ({ data: { task, answer } }) => {
       });
       await engine.reload('Qwen2.5-3B-Instruct-' + precision + '-MLC', { context_window_size: 8192 });
       ready = true;
+    }
+    if (mode === 'example') {
+      progress('Writing a model answer on this device…');
+      const {prompt,source,criteria,target,example} = task;
+      const completion = await engine.chat.completions.create({
+        messages: [
+          {role:'system',content:'Write a complete model answer to the exact Cambridge IGCSE 0500 practice task. Follow its length, form, audience, subquestions and register. For a reading task, base the answer on the supplied source and never invent quotations or facts. The provided example may be an excerpt. Use it for orientation and complete the whole task in your own words. Return the answer only.'},
+          {role:'user',content:JSON.stringify({prompt,source,criteria,target,example})},
+        ],
+        temperature:0.25,max_tokens:1050,
+      });
+      const modelAnswer = completion.choices[0]?.message.content?.trim();
+      if (!modelAnswer) throw new Error('The model returned no answer.');
+      self.postMessage({modelAnswer});
+      return;
     }
     progress('Reviewing your response on this device…');
     const { prompt, source, criteria, target } = task;

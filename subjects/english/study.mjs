@@ -3,6 +3,7 @@ import { countWords, papers, rubricVersion, tasks } from './practice.mjs?v=quest
 import { setupLearningTools, updateMetrics } from './learning.mjs?v=question-bank';
 import { read, write as writeStorage } from './storage.mjs';
 import { setupWorkshop } from './workshop.mjs?v=question-bank';
+import { setupTechniqueQuiz } from './technique-quiz.mjs?v=technique1';
 import { readAttempt, timeRemaining } from './exam.mjs';
 
 const get = id => document.getElementById(id);
@@ -87,7 +88,10 @@ function cancelFeedback() {
   worker?.terminate();
   worker = undefined;
   get('mark').disabled = false;
+  get('generate-example').disabled = false;
   get('mark-cancel').hidden = true;
+  get('example-cancel').hidden = true;
+  get('example-status').textContent = '';
   feedback.replaceChildren();
   status.textContent = '';
 }
@@ -129,6 +133,13 @@ function showTask() {
   editor.value = attempt?.answer ?? read('draft:' + task.id) ?? '';
   storage.textContent = editor.value ? 'Draft restored' : '';
   get('example').textContent = task.example;
+  const minWords = task.target?.[0];
+  get('example-note').textContent = minWords && countWords(task.example) < minWords
+    ? 'Worked excerpt for this question. Generate another answer for a full response.'
+    : 'Worked example for this question.';
+  get('example-ai').replaceChildren();
+  get('model-answer').open = false;
+  get('show-example').setAttribute('aria-expanded','false');
   get('review').open = false;
   get('criteria').replaceChildren(...task.criteria.map(([name, max, guidance]) => {
     const text = document.createElement('p');
@@ -231,64 +242,94 @@ get('mark-cancel').addEventListener('click', () => {
   status.textContent = 'Marking cancelled. Your response is still available.';
   get('mark').focus();
 });
-get('mark').addEventListener('click', () => {
+const modelDetails = get('model-answer');
+const showModel = get('show-example');
+showModel.addEventListener('click',()=>{
   if (examActive()) return;
-  const answer = editor.value.trim();
-  if (!answer) {
-    status.textContent = 'Write a response before requesting feedback.';
+  modelDetails.open = true;
+  modelDetails.querySelector('summary').focus();
+});
+modelDetails.addEventListener('toggle',()=>showModel.setAttribute('aria-expanded',String(modelDetails.open)));
+get('example-cancel').addEventListener('click',()=>{
+  cancelFeedback();
+  get('example-status').textContent = 'Model answer request cancelled.';
+  get('generate-example').focus();
+});
+
+function requestAI(mode) {
+  if (examActive() || get('mark').disabled) return;
+  const generating = mode === 'example';
+  const notice = generating ? get('example-status') : status;
+  const answer = generating ? '' : editor.value.trim();
+  if (!generating && !answer) {
+    notice.textContent = 'Write a response before requesting feedback.';
     focusDeskEditor();
     return;
   }
   if (!navigator.gpu) {
-    status.textContent = 'WebGPU is unavailable in this browser. The self-marking guide is available below.';
+    notice.textContent = 'WebGPU is unavailable in this browser. Use the worked example or try a compatible device.';
     return;
   }
-  const button = get('mark');
-  button.disabled = true;
-  get('mark-cancel').hidden = false;
-  feedback.replaceChildren();
-  status.textContent = 'Starting the on-device marker…';
+  const markButton = get('mark');
+  const generateButton = get('generate-example');
+  const stop = get(generating ? 'example-cancel' : 'mark-cancel');
+  markButton.disabled = generateButton.disabled = true;
+  stop.hidden = false;
+  const destination = generating ? get('example-ai') : feedback;
+  destination.replaceChildren();
+  notice.textContent = 'Starting the on-device model…';
   const fail = message => {
     cancelFeedback();
-    status.textContent = message + ' You can use the self-marking guide or try again.';
+    notice.textContent = message + ' The worked example is still available.';
   };
   try {
-    worker ??= new Worker(new URL('./marker-worker.mjs', import.meta.url), { type: 'module' });
-    worker.onerror = () => fail('The marking engine could not load.');
+    worker ??= new Worker(new URL('./marker-worker.mjs?v=technique1', import.meta.url), { type: 'module' });
+    worker.onerror = () => fail('The model could not load.');
     worker.onmessage = ({ data }) => {
       if (data.progress) {
-        status.textContent = data.progress;
+        notice.textContent = data.progress;
         return;
       }
       clearTimeout(timeout);
-      if (data.error) {
-        fail(data.error);
+      if (data.error || (generating ? !data.modelAnswer : !data.result)) {
+        fail(data.error || 'The model returned no response.');
         return;
       }
-      button.disabled = false;
-      get('mark-cancel').hidden = true;
+      markButton.disabled = generateButton.disabled = false;
+      stop.hidden = true;
+      if (generating) {
+        notice.textContent = 'Model answer ready.';
+        appendText(destination, 'h4', 'AI-generated model answer');
+        const text = document.createElement('p');
+        text.className = 'model-prose';
+        text.textContent = data.modelAnswer;
+        destination.append(text);
+        return;
+      }
       if (editor.value.trim() !== answer) {
-        status.textContent = 'The draft changed during marking. Request feedback on the revised draft.';
+        notice.textContent = 'The draft changed during marking. Request feedback on the revised draft.';
         return;
       }
-      const { total, criteria, nextStep } = data.result;
-      status.textContent = '';
-      appendText(feedback, 'h4', 'Estimated practice mark · ' + total + '/' + task.marks);
-      for (const { name, max, mark, evidence, comment } of criteria) {
+      const {total,criteria,nextStep} = data.result;
+      notice.textContent = '';
+      appendText(destination, 'h4', 'Estimated practice mark · ' + total + '/' + task.marks);
+      for (const {name,max,mark,evidence,comment} of criteria) {
         const item = document.createElement('section');
-        appendText(item, 'strong', name + ' · ' + mark + '/' + max);
-        appendText(item, 'p', comment);
-        if (evidence) appendText(item, 'blockquote', evidence);
-        feedback.append(item);
+        appendText(item,'strong',name+' · '+mark+'/'+max);
+        appendText(item,'p',comment);
+        if (evidence) appendText(item,'blockquote',evidence);
+        destination.append(item);
       }
-      appendText(feedback, 'p', 'Next step · ' + nextStep);
+      appendText(destination,'p','Next step · '+nextStep);
     };
-    timeout = setTimeout(() => fail('The marker timed out.'), 300000);
-    worker.postMessage({ task, answer });
+    timeout = setTimeout(()=>fail('The model timed out.'),300000);
+    worker.postMessage({task,answer,mode});
   } catch {
-    fail('The marking engine could not start.');
+    fail('The model could not start.');
   }
-});
+}
+get('mark').addEventListener('click',()=>requestAI('mark'));
+get('generate-example').addEventListener('click',()=>requestAI('example'));
 
 function examActive() {
   return attempt?.submittedAt === null;
@@ -389,6 +430,7 @@ if (tasks.some(item => item.id === initialTask)) select.value = initialTask;
 showTask();
 setupLearningTools({ read, write });
 setupWorkshop(read, write);
+setupTechniqueQuiz({read,write});
 
 function showStudioView() {
   const main = get('main');

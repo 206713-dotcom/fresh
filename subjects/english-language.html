@@ -8,8 +8,8 @@
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../gis-points.css?v=3">
 <script src="../gis-points.js?v=5" defer></script>
-<link rel="stylesheet" href="english/study.css?v=studio-home">
-<script type="module" src="english/study.mjs?v=studio-home"></script>
+<link rel="stylesheet" href="english/study.css?v=technique1">
+<script type="module" src="english/study.mjs?v=technique1"></script>
 </head>
 <body class="language-studio">
 <a class="skip" href="#main">Skip to content</a>
@@ -20,6 +20,7 @@
       <a href="#reading-room">Home</a>
       <a href="#workshop">Skills</a>
       <a href="#practice">Practice</a>
+      <a href="#technique-quiz">Quizzes</a>
       <a href="english-reading-lab.html">Reading Lab</a>
       <a href="#course-guide">Exam guide</a>
       <a id="notebook-link" data-studio-notebook href="english-mistake-notebook.html">Notebook</a>
@@ -60,7 +61,7 @@
     <section class="studio-library" aria-labelledby="library-home-title">
       <div class="studio-section-heading">
         <h2 id="library-home-title">Explore the study library</h2>
-        <a href="#revision-library">Revision library</a>
+        <div class="studio-library-links"><a href="#technique-quiz">Technique quizzes</a><a href="#revision-library">Revision library</a></div>
       </div>
       <div class="studio-paths">
         <a class="studio-card" href="english-reading-lab.html"><span class="studio-tile blue" aria-hidden="true">¶</span><h3>Reading Lab</h3><p>Practise inference, close reading and picking out evidence.</p></a>
@@ -111,13 +112,20 @@
         <textarea id="response" rows="11" maxlength="9000" aria-describedby="words storage"></textarea>
         <div id="storage" role="status"></div>
         <div class="actions"><button id="desk-clear" type="button">Clear writing</button><button id="timer-toggle" type="button">Start timer</button><button id="timer-reset" type="button">Reset timer</button><button id="download" type="button">Download draft</button></div>
-        <div class="actions" data-exam-help><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button><button id="mark-cancel" type="button" hidden>Cancel AI feedback</button></div>
+        <div class="actions" data-exam-help><button id="show-example" type="button" aria-controls="model-answer" aria-expanded="false">Show model answer</button><button id="reviewed" type="button" aria-pressed="false">Mark as reviewed</button><button id="mark" type="button" class="button">Get AI feedback</button><button id="mark-cancel" type="button" hidden>Cancel AI feedback</button></div>
         <p class="note" data-exam-help>AI feedback is an experimental practice estimate. It requires WebGPU and an initial model download. Your response is processed on your device.</p>
         <p id="mark-status" role="status"></p><div id="feedback" aria-live="polite"></div>
       </article>
     </div>
     <details id="analysis" data-exam-help><summary>Draft analysis</summary><p>Average sentence length and distinct words describe your draft. Use them to guide revision alongside the rubric.</p><div id="metrics"></div></details>
-    <details id="review" data-exam-help><summary>Self-marking guide and example</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a><h4>Example response or excerpt</h4><p id="example"></p></details>
+    <details id="model-answer" data-exam-help>
+      <summary>Model answer</summary>
+      <p id="example-note" class="note"></p><p id="example"></p>
+      <div class="actions"><button id="generate-example" type="button">Generate another model answer</button><button id="example-cancel" type="button" hidden>Cancel generation</button></div>
+      <p class="note">Generated examples use the on-device AI and require WebGPU and a model download.</p>
+      <p id="example-status" role="status"></p><div id="example-ai"></div>
+    </details>
+    <details id="review" data-exam-help><summary>Self-marking guide</summary><div id="criteria"></div><p class="note" id="rubric-version"></p><a id="specimen-scheme">Cambridge specimen mark scheme</a></details>
   </section>
   <section class="section" id="workshop" aria-labelledby="skills-map">
     <div class="map-banner"><h2 id="skills-map">Skills Map</h2><p>Practise a skill, write your own response and compare three worked examples.</p></div>
@@ -132,6 +140,16 @@
       <article class="panel" id="map-write" hidden><h3 tabindex="-1">Write your revision</h3><p id="map-write-brief"></p><details data-workshop-context><summary>Read the passage</summary><p class="source" data-workshop-source hidden></p></details><label for="workshop-draft">Your response</label><textarea id="workshop-draft" rows="6" maxlength="4000"></textarea><div class="actions"><button id="workshop-clear" type="button">Clear writing</button></div><p id="workshop-status" role="status"></p></article>
       <section class="panel" id="map-compare" hidden><h3 tabindex="-1">Compare worked examples</h3><p id="map-your-draft"></p><div class="skills" id="workshop-versions"></div><a id="workshop-practice" href="#practice">Try the related timed task</a></section>
     </div>
+  </section>
+  <section class="section" id="technique-quiz" aria-labelledby="quiz-title">
+    <h2 id="quiz-title">0500 technique quizzes</h2>
+    <p>Choose a skill, answer the questions and check the reasons behind each answer.</p>
+    <div class="actions"><label for="quiz-topic">Quiz topic</label><select id="quiz-topic"></select></div>
+    <form id="technique-form" class="panel">
+      <div id="technique-questions"></div>
+      <div class="actions"><button class="button" type="submit">Check answers</button><button type="reset">Try again</button><a id="quiz-to-practice" href="#practice">Try a related written task</a></div>
+      <p id="quiz-score" role="status"></p>
+    </form>
   </section>
   <section class="section" id="revision-library" aria-labelledby="skills-title"><p class="eyebrow">Revision library</p><h2 id="skills-title">Common marking priorities</h2>
     <div class="skills">
@@ -149,6 +167,17 @@
     <div id="objectives" class="panel"></div>
   </section>
 </main>
-<footer class="wrap"><span>Fresh · Independent IGCSE revision</span><a href="english-literature.html">Literature in English</a><a href="../privacy.html">Privacy notice</a></footer>
+<footer class="wrap studio-footer" data-exam-help>
+  <div><strong>English Studio</strong><p>Cambridge IGCSE First Language English · 0500</p></div>
+  <nav aria-label="English Studio footer navigation">
+    <a href="#reading-room">Studio home</a><a href="#practice">Practice Desk</a>
+    <a href="#technique-quiz">Technique quizzes</a><a href="#workshop">Skills Map</a>
+    <a href="english-reading-lab.html">Reading Lab</a><a href="english-mistake-notebook.html">Mistake Notebook</a>
+    <a href="#course-guide">Exam guide</a><a href="#revision-library">Revision library</a>
+    <a href="#syllabus-checklist">Syllabus checklist</a>
+    <a href="../index.html#subjects">All subjects</a><a href="english-literature.html">Literature in English</a>
+    <a href="../privacy.html">Privacy notice</a>
+  </nav>
+</footer>
 </body>
 </html>
