@@ -279,7 +279,8 @@ function revisionWritingGuide(question, versions) {
     const title = 'Version ' + (index + 1);
     return '<article class="writing-version"><h4>' + title + '</h4><details><summary>Submitted answer</summary><p class="mark-scheme">' +
       escapeHtml(answer) + '</p></details>' +
-      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks, answer, question.scheme) + '</div>' : '') + '</article>';
+      (version.grade ? '<div class="feedback">' + ecbizMarking.feedback(version.grade, question.marks, answer, question.scheme) +
+        ecbizMarking.modelAnswer(version.grade, question.marks) + '</div>' : '') + '</article>';
   };
   const recent = versions.slice(-2).map((version,index)=>renderVersion(version,versions.length-Math.min(versions.length,2)+index)).join('');
   const earlier = versions.slice(0,-2).map((version,index)=>'<details><summary>Version '+(index+1)+'</summary>'+renderVersion(version,index)+'</details>').join('');
@@ -490,7 +491,8 @@ function revisionAttempt(state) {
         ecbizMarking.feedback(grade ?? {...ecbizMarking.blank, modelResponse:model, diagram}, max, state.answers[key], scheme) +
         (error?'<p>'+escapeHtml(error)+'</p>':'')) + ecbizMarking.scheme({scheme}) +
       (diagram ? '' : answerComparisonLink(max)) +
-      (retry?'<button type="button" data-retry-mock-part="' + escapeHtml(key) + '">Retry marking this answer</button>':'') + '</div>';
+      (retry?'<button type="button" data-retry-mock-part="' + escapeHtml(key) + '">Retry marking this answer</button>':'') +
+      (!isPending(key) ? ecbizMarking.modelAnswer(grade ?? {diagram, modelResponse:model}, max) : '') + '</div>';
   };
   const input = (id, value) => '<label class="field">Your answer<textarea maxlength="8000" name="' + escapeHtml(id) + '"' +
     (review ? ' readonly' : '') + '>' + escapeHtml(value ?? '') + '</textarea></label>';

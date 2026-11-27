@@ -667,6 +667,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     };
     showFeedback();
     try {
+      let modelAnswer = '';
       if (q.options) {
         state.score = Number(answer === String(q.answer));
         state.feedback = outcomeBadge(mcqOutcome(answer, q.answer))+'<h3>Feedback</h3><p>'+escapeHtml(q.why)+'</p><h3>Correct answer</h3><p>'+escapeHtml(q.options[q.answer])+'</p>';
@@ -680,6 +681,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
         if ([2,4,6].includes(q.marks) && attempts.get(index) === state) saveWritingVersion(q.id,answer,grade);
         state.feedback = ecbizMarking.feedback(grade,q.marks,answer,q.scheme)+ecbizMarking.scheme(q)+
           '<div class="row">'+link('Revise this answer and compare versions','#revision-writing/'+q.id)+answerComparisonLink(q.marks)+'</div>';
+        modelAnswer = ecbizMarking.modelAnswer(grade,q.marks);
       }
       if (state.score > 0) {
         const reward = q.options ? 3 : 10;
@@ -689,6 +691,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
         state.feedback+='<p class="muted">Exam-style reference: <a target="_blank" rel="noopener noreferrer" href="'+
           escapeHtml(q.reference.url)+'">'+escapeHtml(q.reference.label)+'</a></p>';
       }
+      state.feedback += modelAnswer;
     } catch(error) {
       state.feedback='<p>'+escapeHtml(error.message)+'</p>';
     } finally {
