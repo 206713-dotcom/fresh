@@ -262,31 +262,31 @@ function practice(chapterIndex, followUp) {
         <button type="button" data-practice-paper="structured">Paper 2</button>
       </div>`}
     </header>
+    <section class="practice-filter-pane" aria-label="Practice filters"${followUp?' hidden':''}>
+      <label class="field practice-search-field">Search questions<input type="search" id="filter-search" placeholder="Wording, topic or question ID"></label>
+      <details class="practice-filters">
+        <summary>More filters <span id="filter-count"></span></summary>
+        <div class="practice-filter-fields">
+          <label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
+          <label class="field">Topic<select id="filter-topic"></select></label>
+          <div class="practice-mark-field" role="group" aria-label="Marks">
+            <span>Marks</span>
+            <div class="practice-mark-options">
+              ${['',1,2,4,6,8].map(mark=>'<button type="button" data-practice-mark="'+mark+'"'+(mark?' aria-label="'+mark+(mark===1?' mark':' marks')+'"':'')+'>'+(mark || 'Any')+'</button>').join('')}
+            </div>
+          </div>
+          <label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
+          <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
+        </div>
+      </details>
+      <div id="practice-active-filters" hidden>
+        <div class="practice-filter-heading"><strong>Active filters</strong><button type="button" id="clear-filters">Clear all</button></div>
+        <div id="practice-filter-chips"></div>
+      </div>
+    </section>
     <div id="practice-marking"></div>
     <div class="practice-workspace">
       <aside class="practice-rail" aria-label="Find a question">
-        <div class="practice-filter-pane"${followUp?' hidden':''}>
-          <label class="field practice-search-field">Search questions<input type="search" id="filter-search" placeholder="Wording, topic or question ID"></label>
-          <div id="practice-active-filters" hidden>
-            <div class="practice-filter-heading"><strong>Active filters</strong><button type="button" id="clear-filters">Clear all</button></div>
-            <div id="practice-filter-chips"></div>
-          </div>
-          <details class="practice-filters">
-            <summary>More filters <span id="filter-count"></span></summary>
-            <div class="practice-filter-fields">
-              <label class="field">Chapter<select id="filter-chapter"><option value="">All chapters</option>${catalog.slice(0,6).map((chapter,i)=>'<option value="'+i+'" '+(chapterIndex===i?'selected':'')+'>'+escapeHtml(chapter.title)+'</option>').join('')}</select></label>
-              <label class="field">Topic<select id="filter-topic"></select></label>
-              <div class="practice-mark-field" role="group" aria-label="Marks">
-                <span>Marks</span>
-                <div class="practice-mark-options">
-                  ${['',1,2,4,6,8].map(mark=>'<button type="button" data-practice-mark="'+mark+'"'+(mark?' aria-label="'+mark+(mark===1?' mark':' marks')+'"':'')+'>'+(mark || 'Any')+'</button>').join('')}
-                </div>
-              </div>
-              <label class="field">Question set<select id="filter-set"><option value="">All questions</option><option value="mixed">Mixed question patterns</option><option value="exam">2027 exam-style set</option></select></label>
-              <button type="button" id="show-filtered-questions" class="primary">Show questions</button>
-            </div>
-          </details>
-        </div>
         <details class="question-browser"${browserOpen}>
           <summary>Browse questions <span id="question-count" aria-live="polite"></span></summary>
           <nav id="question-list" aria-label="Questions"></nav>
