@@ -16,7 +16,7 @@ mkdirSync(dist, { recursive: true });
 for (const f of [
   "index.html", "privacy.html", "contacts.html", "points.html", "points.css", "404.html", "style.css", "home.css",
   "privacy.css", "privacy.js", "search.js", "home.js", "fresh.svg",
-  "CNAME", ".nojekyll", "metadata.json", "gis-points.css", "gis-points.js",
+  "CNAME", ".nojekyll", "metadata.json", "gis-points.css", "gis-points.js", "fresh-back.js",
 ]) {
   const src = path.join(root, f);
   if (existsSync(src)) cpSync(src, path.join(dist, f));
