@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../../gis-points.css?v=3">
+<script src="../../gis-points.js?v=5"></script>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="../../fresh.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quilio Chemistry | Fresh</title>
+<link rel="stylesheet" href="fonts.css?v=quilio-2711">
+<link rel="stylesheet" href="katex-core.css">
+<link rel="stylesheet" href="app.css?v=quilio-2711">
+<script>
+/* The entrance film plays when you open Chemistry from Fresh (#enter), or on the first visit of a session with no address. */
+(function () { var h = location.hash.slice(1), seen = false, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { seen = !!sessionStorage.getItem('gc.intro'); } catch (e) {}
+  if (!still && (h === 'enter' || (!h && !seen))) document.documentElement.classList.add('intro'); })();
+</script>
+<link rel="stylesheet" href="../science-loading.css?v=1">
+</head>
+<body>
+<div class="science-loading" id="science-loading" data-subject="Chemistry">
+  <div>
+    <span class="science-spinner" aria-hidden="true"></span>
+    <h1>Opening Chemistry</h1>
+    <p role="status">Loading lessons and study tools…</p>
+    <div class="science-loading-actions" hidden>
+      <button type="button">Try again</button>
+      <a href="../../">Back to Fresh</a>
+    </div>
+  </div>
+</div>
+<noscript><style>#science-loading { display: none; }</style><p>Enable JavaScript to use Chemistry. <a href="../../">Back to Fresh</a></p></noscript>
+<script src="../science-loading.js?v=1"></script>
+<div id="intro" aria-hidden="true"><div id="introSky"></div><canvas id="introGL"></canvas><p id="introCap"><b></b><span></span></p><div id="introFlash"></div><button type="button" id="introSkip" tabindex="-1">Skip</button></div>
+<canvas id="air" aria-hidden="true"></canvas>
+
+<section class="start" id="start" aria-label="Chemistry home">
+ <div class="hero">
+  <canvas id="orb" role="img" aria-label="A turning model of an atomic orbital, drawn as a cloud of dots. Drag to turn it."></canvas>
+  <div class="start-top">
+    <a class="hp" href="#home" title="Chemistry, Physics, About us and Developers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.8V20h12V9.8"/></svg>Homepage</a>
+    <a class="brand" href="#start"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.6" stroke="#0a2440" stroke-width="1.6"/><path d="M4.6 20.5c6.2-9.4 15.2-12.6 23.4-9.2" stroke="#f09a2e" stroke-width="2.1" stroke-linecap="round"/><path d="M6.4 24.4c6.8-7.3 13.9-9.4 20.6-8.3" stroke="#1673dc" stroke-width="2.1" stroke-linecap="round"/></svg>Quilio <small>Chemistry</small></a>
+    <span class="made-by">Made by <b>Semin Cheon</b></span>
+    <span class="grow" style="flex:1"></span>
+    <a class="tool on-sky" href="#chemistry">Lectures</a>
+    <a class="tool on-sky" href="#olympiad">Olympiad</a>
+    <button class="icon-btn snd" type="button" aria-pressed="false" aria-label="Sound" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></button>
+  </div>
+  <div class="start-main">
+    <div class="start-copy">
+      <p class="eyebrow">Chemistry · from KS3 to A Level</p>
+      <h1>Understand chemistry from the atom up.</h1>
+      <p class="lede">Every concept in order. Every reaction explained. Every mark accounted for.</p>
+      <nav class="stage-pick" id="stagePick" aria-label="Choose your stage"></nav>
+      <div class="start-cta">
+        <a class="btn" href="#chemistry">Start learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ghost" href="#level-test">Level Test</a>
+        <a class="btn ghost" href="#periodic-table">Periodic Table</a>
+      </div>
+    </div>
+  </div>
+  <div class="start-foot">
+    <details class="live-note">
+      <summary>Live model: what you are looking at</summary>
+      <div>
+        <p>An atomic orbital, drawn live. Each dot is one place where the electron could be found. The <span id="orbN">24,000</span> dots are picked at random from |ψ|², the probability density of the electron in a hydrogen atom, so the cloud is densest where the electron is most likely to be.</p>
+        <p>Colour shows the sign of the wavefunction ψ: blue where it is positive, orange where it is negative. Where the two colours meet there is a node, and the electron is never found there. Drag to turn the atom. Pick another orbital and the same dots rearrange.</p>
+        <p>Honest caveats: these are the orbitals of hydrogen, which has one electron. In bigger atoms the shapes stay similar but the sizes and energies change. A real orbital has no edge, it just fades out: textbooks draw the surface that holds about 90% of the cloud. The turning is only the camera. The electron is not going round like a planet.</p>
+      </div>
+    </details>
+    <div class="orb-ctl">
+      <p class="orb-name" id="orbName" aria-live="polite"></p>
+      <div class="orb-chips" id="orbChips" role="group" aria-label="Choose an orbital"></div>
+      <p class="orb-key"><span><i style="background:#093c99"></i>ψ positive</span><span><i style="background:#ed6e0f"></i>ψ negative</span><span>drag to turn</span></p>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#start" data-jump="homeMore">Try a live model and a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+ </div>
+ <div class="home-more" id="homeMore"></div>
+</section>
+
+<header class="bar" id="bar" hidden>
+  <a class="hp" href="#home" title="Chemistry, Physics, About us and Developers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.8V20h12V9.8"/></svg>Homepage</a>
+  <a class="brand" href="#start"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.6" stroke="#0a2440" stroke-width="1.6"/><path d="M4.6 20.5c6.2-9.4 15.2-12.6 23.4-9.2" stroke="#f09a2e" stroke-width="2.1" stroke-linecap="round"/><path d="M6.4 24.4c6.8-7.3 13.9-9.4 20.6-8.3" stroke="#1673dc" stroke-width="2.1" stroke-linecap="round"/></svg>Quilio <small>Chemistry</small></a>
+  <nav class="tabs" id="tabs" aria-label="Stages"></nav>
+  <span class="grow"></span>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+    <input id="q" type="search" placeholder="Search lectures and concepts" autocomplete="off" aria-label="Search lectures and concepts">
+    <div class="results" id="results" hidden></div>
+  </div>
+  <a class="tool" href="#periodic-table" data-tool="periodic-table" title="Periodic Table" aria-label="Periodic Table"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4.5" width="4.4" height="4.4" rx="1"/><rect x="16.1" y="4.5" width="4.4" height="4.4" rx="1"/><rect x="3.5" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="9.8" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="16.1" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="3.5" y="17.1" width="4.4" height="3.4" rx="1"/><rect x="9.8" y="17.1" width="4.4" height="3.4" rx="1"/><rect x="16.1" y="17.1" width="4.4" height="3.4" rx="1"/></svg><span>Periodic Table</span></a>
+  <a class="tool" href="#simulations" data-tool="simulations" title="Simulations" aria-label="Simulations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5"/><path d="M10.5 3.5v5.2L5.2 17.6a2 2 0 0 0 1.7 2.9h10.2a2 2 0 0 0 1.7-2.9l-5.3-8.9V3.5"/><path d="M7.6 14.5h8.8"/></svg><span>Simulations</span></a>
+  <a class="tool" href="#record" data-tool="record" title="Your record" aria-label="Your record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg><span>Record</span></a>
+  <a class="tool" href="#olympiad" data-tool="olympiad" title="Olympiad" aria-label="Olympiad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h10v4.2a5 5 0 0 1-10 0z"/><path d="M7 6.5H4.5a3 3 0 0 0 3 3.5M17 6.5h2.5a3 3 0 0 1-3 3.5M12 13.7v3.3M8.5 20h7M9.5 17h5v3h-5z"/></svg><span>Olympiad</span></a>
+  <a class="tool" href="#definitions" data-tool="definitions" title="Definitions" aria-label="Definitions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h4"/></svg><span>Definitions</span></a>
+  <button class="icon-btn snd" type="button" aria-pressed="false" aria-label="Sound" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></button>
+</header>
+
+<main id="view" tabindex="-1" hidden></main>
+
+<script src="js/orbital.js?v=quilio-2711"></script>
+<script src="js/intro.js?v=quilio-2711"></script>
+<script src="js/katex.min.js?v=quilio-2711"></script>
+<script src="js/parse.js?v=quilio-2711"></script>
+<script src="js/ptable.js?v=quilio-2711"></script>
+<script src="js/widgets.js?v=quilio-2711"></script>
+<script src="js/narration.js?v=quilio-2711"></script>
+<script src="js/films.js?v=quilio-2711"></script>
+<script src="js/format.js?v=quilio-2711"></script>
+<script src="js/pastpapers.js?v=quilio-2711"></script>
+<script src="js/olympiad.js?v=quilio-2711"></script>
+<script src="js/train-data.js?v=quilio-2711"></script>
+<script src="js/training.js?v=quilio-2711"></script>
+<script src="js/leveltest.js?v=quilio-2711"></script>
+<script src="js/app.js?v=balanced-2711"></script>
+<script src="js/qpt.js?v=quilio-2711"></script>
+<script src="js/revise.js?v=quilio-2711"></script>
+<script src="../../fresh-back.js" defer></script>
+</body>
+</html>

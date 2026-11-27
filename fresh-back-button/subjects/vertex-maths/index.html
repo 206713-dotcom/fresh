@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../../gis-points.css?v=3">
+<script src="../../gis-points.js?v=5"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Train for AMC, AIME, UKMT and the International Mathematical Olympiad with video lessons, interactive visuals and practice problems.">
+  <meta name="theme-color" content="#f7f8f2">
+  <meta property="og:title" content="Vertex Maths · Competition maths practice">
+  <meta property="og:description" content="Follow a learning path with video lessons, contest problems and olympiad proofs.">
+  <meta property="og:url" content="https://gisfresh.me/subjects/vertex-maths/">
+  <link rel="canonical" href="https://gisfresh.me/subjects/vertex-maths/">
+  <meta property="og:image" content="https://gisfresh.me/subjects/vertex-maths/assets/orbital-diagram.jpg">
+  <title>Vertex Maths · Competition maths practice</title>
+  <link rel="icon" href="assets/vertex.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../fresh-home-link.css">
+  <script defer src="extra-problems.js"></script>
+  <script defer src="problems.js"></script>
+  <script defer src="learn.js"></script>
+  <script defer src="lab-diagrams.js"></script>
+  <script defer src="lab.js"></script>
+  <script defer src="local-saves.js"></script>
+  <script defer src="app.js?v=balanced"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="#home" aria-label="Vertex Maths home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Vertex<span class="brand-space"> Maths</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#competitions" data-nav="competitions">Competitions</a>
+        <a href="#learn" data-nav="learn">Learn</a>
+        <a href="#lab" data-nav="lab" aria-label="Maths Lab">Lab</a>
+        <a href="#practice" data-nav="practice">Practice</a>
+        <a href="#imo" data-nav="imo">IMO Prep</a>
+      </nav>
+      <div class="header-actions">
+        <a class="fresh-home-link" href="../../" aria-label="Fresh homepage" title="Fresh homepage"><img src="../../fresh.svg" width="22" height="22" alt=""><span>Fresh home</span></a>
+        <a class="button button-small progress-link" href="#progress" data-nav="progress">
+          <span class="progress-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>My progress</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="home-page">
+      <section class="shell hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow"><span aria-hidden="true">✦</span> COMPETITION MATHS</p>
+          <h1 id="hero-title">Think like a<br><em>problem solver.</em></h1>
+          <p class="hero-intro">Train for AMC, AIME, UKMT and the International Mathematical Olympiad with video lessons, worked examples and practice problems.</p>
+          <div class="actions hero-actions">
+            <a class="button button-accent" href="#learn">Start learning</a>
+            <a class="button button-ghost" href="#competitions">Explore competitions</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="assets/orbital-diagram.jpg" width="1050" height="1050" alt="" fetchpriority="high">
+        </div>
+      </section>
+
+      <section class="shell directory" id="competitions" aria-labelledby="directory-title">
+        <div class="section-head">
+          <div>
+            <h2 id="directory-title" tabindex="-1">Explore competitions</h2>
+            <p>Find your contest, see its format and start practising.</p>
+          </div>
+          <div class="segment" id="contest-filters" aria-label="Filter competitions by region" role="group">
+            <button type="button" data-region="All" aria-pressed="true">All</button>
+            <button type="button" data-region="US" aria-pressed="false">US</button>
+            <button type="button" data-region="UK" aria-pressed="false">UK</button>
+            <button type="button" data-region="International" aria-pressed="false">International</button>
+            <button type="button" data-region="Other" aria-pressed="false">Canada &amp; Australia</button>
+          </div>
+        </div>
+        <p class="sr-only" id="contest-filter-status" role="status"></p>
+        <div class="contest-grid" id="contest-grid"></div>
+        <noscript><p>Enable JavaScript to open the learning path, contest directory and practice problems.</p></noscript>
+      </section>
+
+      <div class="shell home-features">
+        <section class="feature feature-imo" aria-labelledby="home-imo-title">
+          <div class="feature-copy">
+            <p class="eyebrow"><span aria-hidden="true">✦</span> IMO PREP</p>
+            <h2 id="home-imo-title">Learn to write a proof.</h2>
+            <p>Build techniques in algebra, combinatorics, geometry and number theory before taking on official IMO papers.</p>
+            <a class="button button-accent" href="#imo">Explore IMO prep</a>
+          </div>
+          <span class="feature-symbol" aria-hidden="true">△</span>
+        </section>
+
+        <section class="feature feature-problem" aria-labelledby="featured-title">
+          <p class="eyebrow">FEATURED PROBLEM <span class="eyebrow-divider"></span> AIME</p>
+          <h2 id="featured-title">Digits and divisibility</h2>
+          <p>How many three-digit positive integers are divisible by 7 and have a digit sum divisible by 3?</p>
+          <a class="button button-outline" href="#practice/aime?problem=aime-multiples">Try this problem</a>
+        </section>
+      </div>
+    </div>
+    <div id="routed-page" hidden></div>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#home" aria-label="Vertex Maths home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Vertex<span class="brand-space"> Maths</span></span>
+      </a>
+      <div class="footer-copy">
+        <p>Practice problems with worked solutions. Official resources on each contest page.</p>
+        <p class="footer-contact">If you have any problems with the website, <strong>email Linze Li</strong>.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="#competitions">Competitions</a>
+        <a href="#learn">Learn</a>
+        <a href="#lab">Maths Lab</a>
+        <a href="#practice">Practice</a>
+        <a href="#imo">IMO Prep</a>
+      </nav>
+    </div>
+  </footer>
+<script src="../../fresh-back.js" defer></script>
+</body>
+</html>
