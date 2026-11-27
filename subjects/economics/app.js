@@ -286,7 +286,9 @@ function practice(chapterIndex, followUp) {
       <aside class="practice-rail" aria-label="Find a question">
         <details class="question-browser"${browserOpen}>
           <summary>Browse questions <span id="question-count" aria-live="polite"></span></summary>
+          <label class="question-title-toggle"><input type="checkbox" id="question-title-view"> Show question titles</label>
           <nav id="question-list" aria-label="Questions"></nav>
+          <div class="question-list-legend" aria-hidden="true"><span><b>•</b> Started</span><span><b>✓</b> Marked</span></div>
           <div class="row navigator-pages" id="list-pages">
             <button type="button" data-list-page="-1" aria-label="Previous set of questions">←</button>
             <small id="question-list-range"></small>
@@ -508,10 +510,15 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     list.innerHTML = matches.slice(browseStart,browseStart+size).map(({q,i},offset) => {
       const position = browseStart + offset;
       const attempt = attempts.get(i);
-      const state = attempt?.pending ? 'Marking…' : typeof attempt?.score === 'number' ? 'Marked' : attempt?.answer ? 'Started' : '';
-      return '<button type="button" data-question-position="'+position+'" '+(position===page?'aria-current="step"':'')+
-        '><span class="question-number">'+(position+1)+'</span><span><strong>'+escapeHtml(q.q)+'</strong><small>Ch '+(q.c+1)+
-        ' · '+escapeHtml(q.topic)+' · '+(q.options?'MCQ':q.marks+' marks')+(state?' · '+state:'')+'</small></span></button>';
+      const state = attempt?.pending ? 'Marking' : typeof attempt?.score === 'number' ? 'Marked' : attempt?.answer ? 'Started' : '';
+      const marker = {Started:'•', Marking:'…', Marked:'✓'}[state] || '';
+      const metadata = 'Chapter '+(q.c+1)+' · '+q.topic+' · '+(q.options?'MCQ':q.marks+' marks');
+      const title = (position+1)+'. '+q.q+' · '+metadata+(state?' · '+state:'');
+      return '<button type="button" data-question-position="'+position+'" data-practice-state="'+state+'" '+
+        (position===page?'aria-current="step" ':'')+'aria-label="'+escapeHtml(title)+'" title="'+escapeHtml(title)+'">'+
+        '<span class="question-number">'+(position+1)+'</span>'+
+        '<span class="question-list-copy"><strong>'+escapeHtml(q.q)+'</strong><small>'+escapeHtml(metadata)+'</small></span>'+
+        (marker?'<span class="question-list-state" aria-hidden="true">'+marker+'</span>':'')+'</button>';
     }).join('');
     listPages.hidden = matches.length <= size;
     listPages.querySelector('[data-list-page="-1"]').disabled = browseStart === 0;
@@ -621,6 +628,7 @@ function setupPractice({ chapterIndex, paper, topic: initialTopic, questionId, f
     const state={answer,pending:!q.options,feedback:'Marking your answer…'};
     attempts.set(index,state);
     saveAttempt(index, state);
+    renderNavigator();
     const showFeedback=()=>{
       const current=target.querySelector('form[data-question="'+index+'"]');
       if(!current || attempts.get(index)!==state)return;
