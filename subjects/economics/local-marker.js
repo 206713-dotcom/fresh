@@ -30,13 +30,22 @@ const ecbizMarking = (() => {
   }
 
   const status = document.querySelector('#marking-status');
-  const trainedMarkerURL = new URL('trained-marker.js?v=16', document.currentScript.src);
+  const trainedMarkerURL = new URL('trained-marker.js?v=17', document.currentScript.src);
   const workerURL = new URL('local-marker-worker.js', document.currentScript.src);
   const pending = new Map();
   let queue = Promise.resolve();
   let worker;
   let task;
   let nextId = 0;
+
+  async function withTextMarker(operation) {
+    const marker = await import(trainedMarkerURL);
+    try {
+      return await operation(marker);
+    } finally {
+      if (marker.isModelReady()) showMarkingReady();
+    }
+  }
 
   async function evaluate(question, answer, image, report) {
     if (!image) {
@@ -49,8 +58,7 @@ const ecbizMarking = (() => {
       };
       progress(question ? 'Starting the on-device marker…' : 'Preparing model download…');
       try {
-        const marker = await import(trainedMarkerURL);
-        return await marker.evaluate(question, answer, progress);
+        return await withTextMarker(marker => marker.evaluate(question, answer, progress));
       } finally {
         if (question) {
           status.hidden = true;
@@ -170,8 +178,7 @@ const ecbizMarking = (() => {
         const result = await evaluate(question, response, image, report);
         if (!image) return result;
         try {
-          const marker = await import(trainedMarkerURL);
-          return await marker.review(question, '', result, message => report?.(message));
+          return await withTextMarker(marker => marker.review(question, '', result, message => report?.(message)));
         } catch {
           return { ...result, reviewUnavailable: true };
         }
@@ -192,10 +199,18 @@ const ecbizMarking = (() => {
   const download = document.querySelector('#marking-download-start');
   const downloadDialog = download.closest('dialog');
   const downloadStatus = document.querySelector('#marking-download-status');
-  const downloadOpeners = document.querySelectorAll('[data-ai-download-open]');
-  const setupHint = document.querySelector('#marking-model p');
+  const navigationButton = document.querySelector('#marking-download-open');
+  const setupBanner = document.querySelector('#marking-model');
   download.disabled = false;
   downloadStatus.textContent = '';
+
+  function showMarkingReady() {
+    download.setAttribute('aria-disabled', 'true');
+    download.textContent = 'Marking ready';
+    downloadStatus.textContent = 'You can now mark written answers on this device.';
+    navigationButton.textContent = 'Marking ready';
+    setupBanner.hidden = true;
+  }
 
   if (!globalThis.WebAssembly || typeof Worker !== 'function') {
     download.setAttribute('aria-disabled', 'true');
@@ -210,10 +225,6 @@ const ecbizMarking = (() => {
       const report = message => { downloadStatus.textContent = message; };
       try {
         await enqueue(() => evaluate(null, '', undefined, report));
-        download.textContent = 'Marking ready';
-        downloadStatus.textContent = 'You can now mark written answers on this device.';
-        for (const opener of downloadOpeners) opener.textContent = 'Marking ready';
-        setupHint.textContent = 'Written answers can now be marked on this device.';
       } catch (error) {
         download.removeAttribute('aria-disabled');
         download.textContent = 'Retry AI download';
