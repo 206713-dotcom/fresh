@@ -368,12 +368,12 @@
 .history-gallery .history-section > p > a,
 .history-gallery #history-review-list li,
 .history-gallery #history-review-list a { color: var(--gallery-ink); }
-.history-gallery :is(.history-section > h2, .study > h2) {
+.history-gallery .history-section > h2 {
   font-size: clamp(2rem, 5vw, 3.35rem);
   line-height: 1.12;
   margin-bottom: .75rem;
 }
-.history-gallery :is(.history-section, .study) > p {
+.history-gallery .history-section > p {
   max-width: 68ch;
   margin: 0 0 1.5rem;
 }
@@ -526,29 +526,10 @@
 /* Pair the History-specific surfaces with their text instead of inheriting Fresh’s light theme. */
 #history-practice { --gallery-card: var(--gallery-slate); }
 #history-review { --gallery-card: var(--gallery-clay); }
-.history-gallery .study > h2 { color: var(--gallery-ink); }
-.history-gallery :is(.study > p, .topic p, .history-quick span, .gallery-paper-links small) {
+.history-gallery :is(.history-quick span, .gallery-paper-links small) {
   color: var(--gallery-muted);
 }
-.history-gallery :is(.contents, .topic, .practice) {
-  color: var(--gallery-ink);
-  background: var(--gallery-slate);
-  border-color: var(--gallery-card-line);
-}
-.history-gallery .practice { background: var(--gallery-inset); }
-.history-gallery .study-layout { margin-block: 0; gap: clamp(1.5rem, 4vw, 3rem); }
-.history-gallery .contents { top: var(--gallery-nav-offset); }
-.history-gallery .contents li + li { margin-top: .3rem; }
-.history-gallery .study .topic {
-  margin-top: var(--gallery-grid-gap);
-  padding: var(--gallery-card-padding);
-}
-.history-gallery .study .topic > .eyebrow { margin: 0 0 .55rem; }
-.history-gallery .study .topic > h3 + p { margin-top: .6rem; }
-.history-gallery .study .practice { padding: clamp(1rem, 2vw, 1.4rem); }
-.history-gallery .study .practice + .practice { margin-top: 1rem; }
-.history-gallery .study .practice :is(textarea, label) { display: block; margin-top: .55rem; }
-.history-gallery :is(.contents a, .history-section > p > a, #history-review-list a) {
+.history-gallery :is(.history-section > p > a, #history-review-list a) {
   color: var(--gallery-accent);
 }
 .history-gallery .gallery-source { --gallery-card: var(--gallery-slate); }
@@ -609,7 +590,7 @@
 }
 .gallery-primary .gallery-icon { color: inherit; }
 .history-quick .gallery-icon { width: 1.4rem; height: 1.4rem; margin-bottom: .15rem; }
-.history-gallery :is(.history-section, .study) > h2:has(> .gallery-icon) {
+.history-gallery .history-section > h2:has(> .gallery-icon) {
   display: flex;
   align-items: center;
   gap: clamp(.6rem, 1.5vw, 1rem);
@@ -733,7 +714,7 @@
   background: #111b1d66;
 }
 
-.history-gallery :is(.history-section, .study) > h2:has(> .gallery-icon) {
+.history-gallery .history-section > h2:has(> .gallery-icon) {
   padding-bottom: .95rem;
   border-bottom: 1px solid var(--gallery-line);
 }
@@ -812,7 +793,7 @@
   border-radius: .65rem;
   background: linear-gradient(118deg, #263c37, #1c2b30);
 }
-#history-topics-title {
+.history-topic-intro .history-index-title {
   color: var(--gallery-ink);
   font-size: clamp(2.5rem, 6vw, 4.4rem);
   line-height: 1;
@@ -825,18 +806,20 @@
 .history-topic-intro .history-search { margin: 0; }
 .history-topic-intro .history-search input { background: #142125; font-weight: 400; }
 
-.history-topic-group {
+:is(.history-topic-group, .history-skills-grid > li, .history-skill-exercise) {
   --topic-art: #28554e;
   --topic-ink: #203d34;
   --topic-highlight: #b5e1cf;
+}
+.history-topic-group {
   margin-top: clamp(2.15rem, 5vw, 3.6rem);
 }
-.history-topic-group[data-group="b"] {
+:is(.history-topic-group[data-group="b"], [data-skill="sources"]) {
   --topic-art: #39496d;
   --topic-ink: #2d4163;
   --topic-highlight: #c4d2f2;
 }
-.history-topic-group[data-group="depth"] {
+:is(.history-topic-group[data-group="depth"], [data-skill="comparison"]) {
   --topic-art: #724538;
   --topic-ink: #653c31;
   --topic-highlight: #f5c1a7;
@@ -922,4 +905,77 @@
 @media (max-width: 760px) {
   .history-topic-intro, .history-topic-grid { grid-template-columns: minmax(0, 1fr); }
   .history-gallery a.history-topic-button { min-height: 0; }
+}
+
+.history-skills-intro .gallery-button { justify-self: end; }
+.history-skills-grid {
+  margin: var(--gallery-grid-gap) 0 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.history-gallery .history-skills-grid .history-topic-button {
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+}
+.history-skills-grid .history-topic-art {
+  min-height: 5.2rem;
+  place-items: center start;
+  padding-inline: 1.25rem;
+  border-inline-end: 0;
+  border-bottom: 1px solid #111b1d5c;
+}
+.history-skills-grid .history-topic-art .gallery-icon { width: 2.9rem; height: 2.9rem; }
+
+.history-skills-exercises { margin-top: clamp(1.75rem, 4vw, 3rem); }
+.history-gallery .history-skill-exercise {
+  margin: 0 0 var(--gallery-grid-gap);
+  padding: var(--gallery-card-padding);
+  background: #f1e9d8;
+  border: 1px solid #b9ac94;
+  border-inline-start: .3rem solid var(--topic-art);
+  color: #252e2a;
+  box-shadow: 0 .35rem .9rem #0003;
+}
+.history-skill-exercise h3 {
+  color: var(--topic-ink);
+  font: bold clamp(1.45rem, 3vw, 2rem)/1.18 Georgia, serif;
+}
+.history-gallery .history-skill-exercise p { color: #39433d; }
+.history-skill-exercise > p { margin: .65rem 0 1.15rem; }
+.history-skill-practice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: .85rem;
+}
+.history-skill-practice .practice {
+  min-width: 0;
+  border: 1px solid #bcb49f;
+  background: #faf5e9;
+}
+.history-skill-practice h4 {
+  margin: 0;
+  color: var(--topic-ink);
+  font-size: 1rem;
+}
+.history-skill-practice .practice p { margin-block: .45rem .7rem; }
+.history-skill-practice summary { color: var(--topic-ink); }
+.history-skill-practice textarea { max-width: 100%; }
+.history-skill-exercise :focus-visible { outline-color: var(--topic-ink); }
+.history-skills-links { margin-top: 1.5rem; }
+
+@media (max-width: 760px) {
+  .history-skills-intro .gallery-button { justify-self: start; }
+  .history-skills-grid, .history-skill-practice { grid-template-columns: minmax(0, 1fr); }
+  .history-gallery .history-skills-grid .history-topic-button {
+    grid-template: auto / clamp(4.35rem, 10vw, 8.5rem) minmax(0, 1fr);
+  }
+  .history-skills-grid .history-topic-art {
+    min-height: 0;
+    place-items: center;
+    padding: 0;
+    border-inline-end: 1px solid #111b1d5c;
+    border-bottom: 0;
+  }
+  .history-skills-grid .history-topic-art .gallery-icon { width: 2.3rem; height: 2.3rem; }
 }
