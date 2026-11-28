@@ -1078,3 +1078,93 @@
     align-items: start;
   }
 }
+
+#history-notes .history-notes-back {
+  min-height: 44px;
+  padding: .65rem .9rem;
+  border-color: #a08a6e;
+  background: #2d3837;
+  color: #fff4df;
+  text-align: start;
+}
+
+.history-notes-card .history-topic-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: .6rem;
+  margin-block: 1rem 1.25rem;
+}
+
+.history-notes-card :is(.history-topic-tools .gallery-button, .history-notes-actions .gallery-button, .history-action) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  min-height: 44px;
+  padding: .6rem .8rem;
+  border: 1px solid #577166;
+  background: #fbf8ef;
+  color: #25463a;
+  font-size: .95rem;
+  line-height: 1.35;
+  text-align: start;
+}
+
+.history-notes-card .history-topic-tools .gallery-button {
+  background: #e1eadf;
+}
+
+.history-notes-card .history-notes-arrow {
+  flex: none;
+  font-size: 1.1em;
+}
+
+.history-notes-card :is(.history-topic-tools .gallery-button, .history-notes-actions .gallery-button, .history-action):hover {
+  border-color: #25463a;
+  background: #ceded1;
+  filter: none;
+  box-shadow: none;
+}
+
+.history-notes-card .history-action[aria-pressed="true"] {
+  background: #345247;
+  color: #fffaf0;
+}
+
+.history-notes-card .history-action[aria-pressed="true"]:hover {
+  background: #234137;
+  color: #fffaf0;
+}
+
+.history-notes-card .history-notes-contents ol { padding-inline-start: 1.7rem; }
+.history-notes-card .history-notes-contents li::marker { color: #634b31; font-weight: 700; }
+.history-notes-card .history-notes-contents li + li { margin-top: .25rem; }
+.history-notes-card .history-notes-contents a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem .65rem;
+  border-radius: .4rem;
+  color: #25463a;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+.history-notes-card .history-notes-contents a:is(:hover, [aria-current="location"]) {
+  background: #e1eadf;
+}
+
+.history-notes-card details {
+  padding: 0;
+  background: #fbf8ef;
+}
+.history-notes-card summary {
+  align-content: center;
+  min-height: 44px;
+  padding: .55rem .8rem;
+}
+.history-notes-card details[open] summary {
+  border-bottom: 1px solid #c9b99d;
+}
+.history-notes-card details > p { margin: .7rem .8rem; }
+.history-notes-card :is(a, button, summary, select):focus-visible { outline-color: #25463a; }

@@ -77,11 +77,23 @@ function matchingText(value) {
 function toolLinks(topic, current) {
   const nav = element('nav', '', 'history-section-links history-topic-tools');
   nav.setAttribute('aria-label', 'More ways to study ' + topicTitles[topic]);
-  for (const [view, label] of [['notes', 'Notes'], ['flashcards', 'Flashcards'], ['paper-1', 'Structured questions'], ['quiz', 'MCQs']]) {
+  const fromNotes = current === 'notes';
+  const destinations = [
+    ['notes', 'Notes'],
+    ['flashcards', fromNotes ? 'Review flashcards' : 'Flashcards'],
+    ['paper-1', fromNotes ? 'Practise written answers' : 'Structured questions'],
+    ['quiz', fromNotes ? 'Take an MCQ quiz' : 'MCQs']
+  ];
+  for (const [view, label] of destinations) {
     if (view === current) continue;
     const href = view === 'notes' ? '#history-topic-' + topic : '#history-' + view + '/' + topic;
     const anchor = link(label, href, 'gallery-button');
     anchor.setAttribute('aria-label', label + ' for ' + topicTitles[topic]);
+    if (fromNotes) {
+      const arrow = element('span', '→', 'history-notes-arrow');
+      arrow.setAttribute('aria-hidden', 'true');
+      anchor.append(arrow);
+    }
     nav.append(anchor);
   }
   return nav;
@@ -191,7 +203,7 @@ function openTopic(id, sectionId = '') {
     const actions = element('div', '', 'history-notes-actions');
     actions.append(studiedButton(id));
     if (id !== 'versailles') actions.append(flagButton('topic-' + id, title));
-    actions.append(link('Back to topic overview', '#history-topic-' + id, 'gallery-button'));
+    actions.append(link('Back to top of notes', '#history-topic-' + id, 'gallery-button'));
     notes.append(actions);
   }
   if (state.last !== id) {
@@ -201,6 +213,10 @@ function openTopic(id, sectionId = '') {
   }
   showView('history-notes');
   const target = sectionId && byId('history-note-' + sectionId);
+  for (const shortcut of notes.querySelectorAll('.history-notes-contents a')) {
+    if (target && shortcut.hash === hash) shortcut.setAttribute('aria-current', 'location');
+    else shortcut.removeAttribute('aria-current');
+  }
   if (target) target.scrollIntoView({ block: 'start' });
   else window.scrollTo(0, 0);
   (target || heading).focus({ preventScroll: true });
