@@ -8,7 +8,7 @@
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
 <title>The Gallery · IGCSE History 0470 | Fresh</title>
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="history.css?v=history-review-background">
+<link rel="stylesheet" href="history.css?v=history-gallery-polish">
 <script type="module" src="history.js?v=history-topic-notes"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
@@ -50,14 +50,19 @@
         <a class="gallery-button" href="#history-topics"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-topics"></use></svg><span>Browse all topics</span></a>
       </div>
     </div>
-    <div class="gallery-pedestal">
-      <svg class="art" viewBox="0 0 400 230" role="img" aria-label="Stylized treaty illustration" xmlns="http://www.w3.org/2000/svg"><path d="M20 20h360v190H20z" fill="none" stroke="#e4cda4" opacity=".18"/><path d="M29 29h342v172H29z" fill="none" stroke="#e4cda4" opacity=".12"/><path d="M53 196h294M77 185h246M85 169h230M102 102h196v66H102z" fill="#384643" stroke="#e4cda4" stroke-width="2"/><path d="M90 103l110-57 110 57z" fill="#c89d67" stroke="#e4cda4" stroke-width="2"/><path d="M120 113v47m40-47v47m40-47v47m40-47v47m40-47v47" stroke="#e4cda4" stroke-width="12"/><path d="M181 79h38" stroke="#e4cda4" stroke-width="3"/><circle cx="200" cy="75" r="5" fill="#e4cda4"/><path d="M40 198h320" stroke="#e4cda4" stroke-width="2"/><path d="M260 39l55-10 9 56-55 10z" fill="#6b5f48" stroke="#e4cda4" stroke-width="1.5"/><path d="M272 48l38-7m-36 15 38-7m-36 15 25-5" stroke="#e4cda4" stroke-width="1.6"/><circle cx="308" cy="74" r="8" fill="#c89d67"/></svg>
-      <div class="gallery-caption"><span>FIG. 01 / THE PEACE SETTLEMENT</span><span>ILLUSTRATION</span></div>
-    </div>
+    <figure class="gallery-pedestal">
+      <div class="gallery-archive-frame">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/The_Big_Four.jpg/960px-The_Big_Four.jpg" width="960" height="695" alt="Lloyd George, Orlando, Clemenceau and Wilson standing together at the Paris Peace Conference" fetchpriority="high" referrerpolicy="no-referrer">
+      </div>
+      <figcaption class="gallery-caption">
+        <span><strong>The Paris Peace Conference</strong><small>27 May 1919</small></span>
+        <a href="https://commons.wikimedia.org/wiki/File:The_Big_Four.jpg">Bain News Service / Library of Congress</a>
+      </figcaption>
+      <div hidden><svg class="art" viewBox="0 0 400 230" role="img" aria-label="Stylized treaty illustration" xmlns="http://www.w3.org/2000/svg"><path d="M20 20h360v190H20z" fill="none" stroke="#e4cda4" opacity=".18"/><path d="M29 29h342v172H29z" fill="none" stroke="#e4cda4" opacity=".12"/><path d="M53 196h294M77 185h246M85 169h230M102 102h196v66H102z" fill="#384643" stroke="#e4cda4" stroke-width="2"/><path d="M90 103l110-57 110 57z" fill="#c89d67" stroke="#e4cda4" stroke-width="2"/><path d="M120 113v47m40-47v47m40-47v47m40-47v47m40-47v47" stroke="#e4cda4" stroke-width="12"/><path d="M181 79h38" stroke="#e4cda4" stroke-width="3"/><circle cx="200" cy="75" r="5" fill="#e4cda4"/><path d="M40 198h320" stroke="#e4cda4" stroke-width="2"/><path d="M260 39l55-10 9 56-55 10z" fill="#6b5f48" stroke="#e4cda4" stroke-width="1.5"/><path d="M272 48l38-7m-36 15 38-7m-36 15 25-5" stroke="#e4cda4" stroke-width="1.6"/><circle cx="308" cy="74" r="8" fill="#c89d67"/></svg></div>
+    </figure>
   </div>
   <div class="gallery-sectionhead">
     <h2>Explore the collection</h2>
-    <span class="gallery-eyebrow">Three themed rooms</span>
   </div>
   <div class="gallery-collection">
     <a class="gallery-exhibit" data-exhibit href="#history-topic-league">
@@ -171,9 +176,12 @@
 </section>
 <section class="history-section history-view" id="history-review">
   <h2><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-review"></use></svg><span>Review</span></h2>
-  <p id="history-progress"></p>
-  <ul id="history-review-list"></ul>
-  <p>Progress and drafts are stored in this browser.</p>
+  <div class="history-review-panel">
+    <p id="history-progress"></p>
+    <h3>Flagged for review</h3>
+    <ul id="history-review-list"></ul>
+    <p class="history-review-storage">Progress and drafts are stored in this browser.</p>
+  </div>
   <nav class="history-section-links" aria-label="Review tools">
     <a class="gallery-button" href="#history-settings">Course settings</a>
     <a class="gallery-button" href="#history-topics">Explore topics</a>
