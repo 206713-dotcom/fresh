@@ -8,8 +8,8 @@
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
 <title>The Gallery · IGCSE History 0470 | Fresh</title>
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="history.css?v=history-syllabus-2027">
-<script type="module" src="history.js?v=history-syllabus-2027"></script>
+<link rel="stylesheet" href="history.css?v=history-study-navigation">
+<script type="module" src="history.js?v=history-study-navigation"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
 </head>
@@ -38,6 +38,7 @@
       <a href="#history-topics"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-topics"></use></svg><span>Topics</span></a>
       <a href="#history-skills"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-skills"></use></svg><span>Skills</span></a>
       <a href="#history-practice"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-practice"></use></svg><span>Exam practice</span></a>
+      <a href="#history-flashcards"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-topics"></use></svg><span>Flashcards</span></a>
       <a href="#history-quiz"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-quiz"></use></svg><span>MCQs</span></a>
       <a href="#history-review"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-review"></use></svg><span>Review</span></a>
     </nav>
@@ -146,12 +147,24 @@
   <div class="history-topic-intro">
     <div>
       <h2 id="history-topics-title" class="history-index-title" tabindex="-1">Topics</h2>
-      <p>Browse the Core options and depth studies, then open a topic to read its revision notes.</p>
+      <p>Choose a topic or search the notes by event, person or keyword.</p>
     </div>
-    <label class="history-search" for="history-search">Search topics, events, and people
-      <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
-    </label>
+    <div class="history-topic-controls">
+      <label class="history-writing" for="history-topic-scope">Topic group
+        <select id="history-topic-scope">
+          <option value="course">My course</option>
+          <option value="all">All topics</option>
+          <option value="a">Core option A</option>
+          <option value="b">Core option B</option>
+          <option value="depth">Depth studies</option>
+        </select>
+      </label>
+      <label class="history-search" for="history-search">Search notes
+        <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
+      </label>
+    </div>
   </div>
+  <p id="history-topic-count" role="status"></p>
   <div id="history-topic-list"></div>
 </section>
 <section class="history-section history-view" id="history-notes" aria-labelledby="history-notes-title" hidden>
@@ -202,11 +215,8 @@
   </nav>
 </section>
 <section class="history-section history-view" id="history-flashcards" aria-labelledby="history-flashcards-title" hidden>
-  <h2 id="history-flashcards-title">Flashcards</h2>
+  <h2 id="history-flashcards-title"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-topics"></use></svg><span>Flashcards</span></h2>
   <div id="history-flashcards-list"></div>
-  <nav class="history-section-links" aria-label="Flashcard links">
-    <a class="gallery-button" href="#history-review">Back to Review</a>
-  </nav>
 </section>
 <noscript><p>Enable JavaScript to use the studyroom tools. The revision exercises below are available now.</p></noscript>
 <section class="history-view history-section" id="history-skills" aria-labelledby="revision">

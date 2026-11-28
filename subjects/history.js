@@ -13,12 +13,18 @@ try {
 } catch {
   // Study tools remain usable when browser storage is unavailable.
 }
-const state = { course: {}, completed: {}, review: {}, drafts: {}, mockRuns: {}, last: '', ...stored };
+const state = { course: {}, completed: {}, review: {}, drafts: {}, mockRuns: {}, flashcardProgress: {}, practiceSelections: {}, last: '', ...stored };
 const settings = byId('history-settings');
 const form = byId('history-form');
 const search = byId('history-search');
+const topicScope = byId('history-topic-scope');
 const practiceLinks = [...document.querySelectorAll('.history-practice-nav a')];
-const allTopics = [...core.A, ...core.B, ...Object.values(depths)];
+const topicGroups = [
+  ['a', 'Core option A', core.A],
+  ['b', 'Core option B', core.B],
+  ['depth', 'Depth studies', Object.values(depths)]
+];
+const allTopics = topicGroups.flatMap(([, , topics]) => topics);
 const topicTitles = Object.fromEntries(allTopics.map(([id, title]) => [id, title]));
 const allQuestions = [...recallQuestions, ...questions];
 
@@ -33,17 +39,58 @@ function link(text, href, className) {
   return anchor;
 }
 
-function topicSelector(topics, label, selected) {
+function topicSelector(topics, label, selected, groups = []) {
   const field = element('label', label, 'history-writing');
   const select = element('select');
-  for (const [id, name] of topics) {
-    const option = element('option', name);
-    option.value = id;
-    select.append(option);
+  addOptions(select, topics);
+  for (const [name, entries] of groups) {
+    if (!entries.length) continue;
+    const group = element('optgroup');
+    group.label = name;
+    addOptions(group, entries);
+    select.append(group);
   }
-  if (topics.some(([id]) => id === selected)) select.value = selected;
+  if ([...select.options].some((option) => option.value === selected)) select.value = selected;
   field.append(select);
   return { field, select };
+}
+
+function addOptions(container, entries) {
+  for (const [id, name] of entries) {
+    const option = element('option', name);
+    option.value = id;
+    container.append(option);
+  }
+}
+
+function groupedTopicSelector(label, selected, first = []) {
+  const courseIds = new Set(courseTopics().map(([id]) => id));
+  const groups = topicGroups.map(([, name, topics]) => [name, topics.filter(([id]) => courseIds.has(id))]);
+  const other = allTopics.filter(([id]) => !courseIds.has(id));
+  return topicSelector(first, label, selected, [...groups, ['Other syllabus topics', other]]);
+}
+
+function matchingText(value) {
+  return value.normalize('NFD').replace(/\p{M}/gu, '').replace(/[’‘]/g, "'").trim().toLowerCase();
+}
+
+function toolLinks(topic, current) {
+  const nav = element('nav', '', 'history-section-links history-topic-tools');
+  nav.setAttribute('aria-label', 'More ways to study ' + topicTitles[topic]);
+  for (const [view, label] of [['notes', 'Notes'], ['flashcards', 'Flashcards'], ['paper-1', 'Structured questions'], ['quiz', 'MCQs']]) {
+    if (view === current) continue;
+    const href = view === 'notes' ? '#history-topic-' + topic : '#history-' + view + '/' + topic;
+    const anchor = link(label, href, 'gallery-button');
+    anchor.setAttribute('aria-label', label + ' for ' + topicTitles[topic]);
+    nav.append(anchor);
+  }
+  return nav;
+}
+
+function rememberToolTopic(view, topic) {
+  const [route] = location.hash.slice(1).split('/');
+  if (route !== view) return;
+  window.history.replaceState(null, '', '#' + view + (topic === 'all' ? '' : '/' + topic));
 }
 
 const topicPreviews = {
@@ -95,57 +142,68 @@ function reveal(label, text) {
   return details;
 }
 
-function openTopic(id) {
-  if (location.hash !== '#history-topic-' + id) {
-    location.hash = 'history-topic-' + id;
+function openTopic(id, sectionId = '') {
+  const hash = '#history-topic-' + id + (sectionId ? '/' + sectionId : '');
+  if (location.hash !== hash) {
+    location.hash = hash;
     return;
   }
   const [, title, overview, question, advice] = allTopics.find(([topic]) => id === topic);
   const heading = byId('history-notes-title');
   const notes = byId('history-notes-content');
-  heading.textContent = title;
-  notes.replaceChildren(element('p', overview));
-  const cards = link('Study flashcards', '#history-flashcards', 'gallery-button');
-  cards.addEventListener('click', () => renderFlashcards(id));
-  const exam = link('Practise this topic', '#history-paper-1', 'gallery-button');
-  exam.addEventListener('click', () => {
-    const topicSelect = byId('history-practice-topic');
-    if (!topicSelect.querySelector('option[value="' + id + '"]')) {
-      const option = element('option', title);
-      option.value = id;
-      topicSelect.append(option);
+  if (notes.dataset.topic !== id) {
+    notes.dataset.topic = id;
+    heading.textContent = title;
+    const { field, select } = groupedTopicSelector('Open another topic', id);
+    select.addEventListener('change', () => openTopic(select.value));
+    const contents = element('nav', '', 'history-notes-contents');
+    contents.setAttribute('aria-label', 'Sections in this topic');
+    const list = element('ol');
+    for (const [index, section] of studyTopics[id].entries()) {
+      const item = element('li');
+      item.append(link(section.title, '#history-topic-' + id + '/section-' + (index + 1)));
+      list.append(item);
     }
-    topicSelect.value = id;
-    topicSelect.dispatchEvent(new Event('change'));
-  });
-  const tools = element('div', '', 'history-section-links');
-  tools.append(cards, exam);
-  notes.append(tools);
-  for (const { title: sectionTitle, facts } of studyTopics[id]) {
-    const section = element('section', '', 'history-note-section');
-    section.append(element('h3', sectionTitle));
-    const evidence = element('dl');
-    for (const { answer, explanation } of facts) {
-      evidence.append(element('dt', answer), element('dd', explanation));
+    const argumentLink = element('li');
+    argumentLink.append(link('Build an argument', '#history-topic-' + id + '/argument'));
+    list.append(argumentLink);
+    contents.append(element('strong', 'In this topic'), list);
+    notes.replaceChildren(element('p', overview), toolLinks(id, 'notes'), field, contents);
+    for (const [index, { title: sectionTitle, facts }] of studyTopics[id].entries()) {
+      const section = element('section', '', 'history-note-section');
+      const subheading = element('h3', sectionTitle);
+      subheading.id = 'history-note-section-' + (index + 1);
+      subheading.tabIndex = -1;
+      section.append(subheading);
+      const evidence = element('dl');
+      for (const { answer, explanation } of facts) {
+        evidence.append(element('dt', answer), element('dd', explanation));
+      }
+      section.append(evidence);
+      notes.append(section);
     }
-    section.append(evidence);
-    notes.append(section);
+    if (id === 'versailles') versaillesLesson(notes);
+    const argument = element('h3', 'Build an argument');
+    argument.id = 'history-note-argument';
+    argument.tabIndex = -1;
+    notes.append(argument, element('p', question),
+      reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
+    const actions = element('div', '', 'history-notes-actions');
+    actions.append(studiedButton(id));
+    if (id !== 'versailles') actions.append(flagButton('topic-' + id, title));
+    actions.append(link('Back to topic overview', '#history-topic-' + id, 'gallery-button'));
+    notes.append(actions);
   }
-  if (id === 'versailles') versaillesLesson(notes);
-  notes.append(element('h3', 'Build an argument'), element('p', question),
-    reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
-  const actions = element('div', '', 'history-notes-actions');
-  actions.append(studiedButton(id));
-  if (id !== 'versailles') actions.append(flagButton('topic-' + id, title));
-  notes.append(actions);
   if (state.last !== id) {
     state.last = id;
     renderResume();
     save();
   }
   showView('history-notes');
-  window.scrollTo(0, 0);
-  heading.focus({ preventScroll: true });
+  const target = sectionId && byId('history-note-' + sectionId);
+  if (target) target.scrollIntoView({ block: 'start' });
+  else window.scrollTo(0, 0);
+  (target || heading).focus({ preventScroll: true });
 }
 
 function renderReview() {
@@ -283,31 +341,38 @@ function topicCard(id, title) {
 
 function renderTopics() {
   const output = byId('history-topic-list');
-  const query = search.value.trim().toLowerCase();
+  const query = matchingText(search.value);
+  const selected = topicScope.value;
+  const courseIds = new Set(courseTopics().map(([id]) => id));
   output.replaceChildren();
-  const groups = query ? [['search', 'Search results', allTopics]] : [
-    ...Object.entries(core).filter(([option]) => !state.course.core || option === state.course.core)
-      .map(([option, topics]) => [option.toLowerCase(), 'Core option ' + option, topics]),
-    ['depth', 'Depth studies', depths[state.course.depth] ? [depths[state.course.depth]] : Object.values(depths)]
-  ];
-  for (const [key, name, topics] of groups) {
+  let count = 0;
+  for (const [key, name, topics] of topicGroups) {
+    if (['a', 'b', 'depth'].includes(selected) && key !== selected) continue;
+    const grid = element('ul', '', 'history-topic-grid');
+    for (const [id, title, overview] of topics) {
+      if (selected === 'course' && !courseIds.has(id)) continue;
+      if (query) {
+        const text = [title, topicPreviews[id]?.[1], overview];
+        for (const { title: section, facts } of studyTopics[id]) {
+          text.push(section, ...facts.flatMap(({ answer, explanation }) => [answer, explanation]));
+        }
+        const haystack = matchingText(text.join(' '));
+        if (!query.split(/\s+/).every((term) => haystack.includes(term))) continue;
+      }
+      grid.append(topicCard(id, title));
+      count++;
+    }
+    if (!grid.childElementCount) continue;
     const section = element('section', '', 'history-topic-group');
     section.dataset.group = key;
     const heading = element('h3', name);
     heading.id = 'history-topic-group-' + key;
     section.setAttribute('aria-labelledby', heading.id);
-    section.append(heading);
-    const grid = element('ul', '', 'history-topic-grid');
-    for (const [id, title, overview, question, advice] of topics) {
-      const preview = topicPreviews[id]?.[1];
-      const notes = query ? studyTopics[id].flatMap(({ title, facts }) =>
-        [title, ...facts.flatMap(({ answer, explanation }) => [answer, explanation])]) : [];
-      if (![title, preview, overview, question, advice, ...notes].join(' ').toLowerCase().includes(query)) continue;
-      grid.append(topicCard(id, title));
-    }
-    section.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
+    section.append(heading, grid);
     output.append(section);
   }
+  byId('history-topic-count').textContent = count === 1 ? '1 topic' : count + ' topics';
+  if (!count) output.append(element('p', 'No matching topics. Try another search or choose a different topic group.'));
 }
 
 function studiedButton(id) {
@@ -373,12 +438,13 @@ function markedWriting(id, label, question, guidance, example, source) {
   return [draft, feedback, reveal('Show planning guidance', guidance), reveal('Show model answer', example)];
 }
 
-function renderFlashcards(selected = state.flashcardTopic) {
-  const topics = courseTopics();
-  if (selected && studyTopics[selected] && !topics.some(([id]) => id === selected)) {
-    topics.push(allTopics.find(([id]) => id === selected));
-  }
-  const { field, select } = topicSelector(topics, 'Flashcard topic', selected);
+function renderFlashcards() {
+  const { field, select } = groupedTopicSelector('Flashcard topic', state.flashcardTopic);
+  select.id = 'history-flashcard-topic';
+  const { field: sectionField, select: sectionSelect } = topicSelector([], 'Section');
+  const { field: jumpField, select: jumpSelect } = topicSelector([], 'Jump to a card');
+  const filters = element('div', '', 'history-study-filters');
+  filters.append(field, sectionField);
   const panel = element('section', '', 'history-card history-study-panel');
   const position = element('p');
   position.setAttribute('role', 'status');
@@ -387,6 +453,7 @@ function renderFlashcards(selected = state.flashcardTopic) {
   const answer = element('div');
   answer.id = 'history-flashcard-answer';
   const controls = element('div', '', 'history-section-links');
+  const related = element('div', '', 'history-study-related');
   let facts = [];
   let index = 0;
   const previous = action('Previous', () => move(-1));
@@ -398,7 +465,7 @@ function renderFlashcards(selected = state.flashcardTopic) {
   });
   flip.setAttribute('aria-controls', answer.id);
   controls.append(previous, flip, next);
-  panel.append(position, sectionTitle, prompt, answer, controls);
+  panel.append(position, sectionTitle, prompt, answer, controls, jumpField);
 
   function renderCard() {
     const fact = facts[index];
@@ -409,42 +476,69 @@ function renderFlashcards(selected = state.flashcardTopic) {
     answer.hidden = true;
     flip.textContent = 'Show answer';
     flip.setAttribute('aria-expanded', 'false');
+    jumpSelect.value = String(index);
     previous.disabled = index === 0;
     next.disabled = index === facts.length - 1;
   }
 
+  function progress() {
+    return state.flashcardProgress[select.value] ??= { section: 'all', cards: {} };
+  }
+
   function move(offset) {
     index += offset;
+    progress().cards[sectionSelect.value] = index;
     renderCard();
-    if (next.disabled && offset > 0 || previous.disabled && offset < 0) flip.focus();
+    save();
+    if ((next.disabled && offset > 0) || (previous.disabled && offset < 0)) flip.focus();
+  }
+
+  function loadSection() {
+    const sections = studyTopics[select.value];
+    const current = sectionSelect.value;
+    facts = (current === 'all' ? sections : [sections[Number(current)]])
+      .flatMap(({ title, facts }) => facts.map((fact) => ({ ...fact, title })));
+    index = Math.min(progress().cards[current] ?? 0, facts.length - 1);
+    jumpSelect.replaceChildren();
+    addOptions(jumpSelect, facts.map((fact, number) => [String(number), (number + 1) + '. ' + fact.prompt]));
+    renderCard();
   }
 
   function loadDeck() {
     state.flashcardTopic = select.value;
-    facts = studyTopics[select.value].flatMap(({ title, facts }) => facts.map((fact) => ({ ...fact, title })));
-    index = 0;
-    renderCard();
+    sectionSelect.replaceChildren();
+    addOptions(sectionSelect, [['all', 'All sections'], ...studyTopics[select.value].map(({ title }, index) => [String(index), title])]);
+    sectionSelect.value = progress().section;
+    loadSection();
+    related.replaceChildren(toolLinks(select.value, 'flashcards'));
   }
 
   select.addEventListener('change', () => {
     loadDeck();
+    rememberToolTopic('history-flashcards', select.value);
     save();
   });
-  const notes = link('Read topic notes', '#history-topic-' + select.value, 'gallery-button');
-  select.addEventListener('change', () => { notes.href = '#history-topic-' + select.value; });
+  sectionSelect.addEventListener('change', () => {
+    progress().section = sectionSelect.value;
+    loadSection();
+    save();
+  });
+  jumpSelect.addEventListener('change', () => move(Number(jumpSelect.value) - index));
   loadDeck();
-  byId('history-flashcards-list').replaceChildren(field, panel, notes);
+  byId('history-flashcards-list').replaceChildren(filters, related, panel);
 }
 
 function renderQuiz() {
   const output = byId('history-quiz-list');
   const topics = courseTopics();
-  const { field, select } = topicSelector([['all', 'All course topics'], ...topics], 'Quiz topic', state.quizTopic);
+  const { field, select } = groupedTopicSelector('Quiz topic', state.quizTopic, [['all', 'All course topics']]);
+  select.id = 'history-quiz-topic';
   const { field: setField, select: setSelect } = topicSelector([], 'Question set');
   const controls = element('div', '', 'history-study-filters');
   controls.append(field, setField);
   const body = element('div');
-  output.replaceChildren(controls, body);
+  const related = element('div', '', 'history-study-related');
+  output.replaceChildren(controls, related, body);
   const setSize = 10;
   let bank = [];
 
@@ -456,7 +550,8 @@ function renderQuiz() {
     const cards = bank.slice(start, start + setSize).map(([id, question, choices, correct, explanation], index) => {
       const fieldset = element('fieldset', '', 'history-card');
       const name = 'quiz-question-' + (start + index + 1);
-      fieldset.append(element('legend', question));
+      fieldset.append(element('legend', (start + index + 1) + '. ' + question));
+      if (select.value === 'all') fieldset.append(element('p', topicTitles[id], 'history-study-label'));
       for (const [choiceIndex, choice] of choices.entries()) {
         const label = element('label');
         const radio = element('input');
@@ -487,14 +582,17 @@ function renderQuiz() {
       quiz.querySelector('input').focus();
     });
     reset.hidden = true;
-    const next = action('Next set', () => {
-      setSelect.selectedIndex++;
+    function moveSet(offset) {
+      setSelect.selectedIndex += offset;
       renderSet();
       setSelect.focus();
-    });
-    next.hidden = true;
+    }
+    const previous = action('Previous set', () => moveSet(-1));
+    const next = action('Next set', () => moveSet(1));
+    previous.disabled = setSelect.selectedIndex === 0;
+    next.disabled = setSelect.selectedIndex === setSelect.options.length - 1;
     const actions = element('div', '', 'history-section-links');
-    actions.append(submit, reset, next);
+    actions.append(submit, reset, previous, next);
     quiz.append(actions, score);
     quiz.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -512,7 +610,6 @@ function renderQuiz() {
       score.textContent = correctCount + '/' + cards.length + ' correct';
       submit.hidden = true;
       reset.hidden = false;
-      next.hidden = setSelect.selectedIndex === setSelect.options.length - 1;
       reset.focus();
       renderReview();
       save();
@@ -530,11 +627,13 @@ function renderQuiz() {
       option.value = String(start / setSize);
       setSelect.append(option);
     }
+    related.replaceChildren(select.value === 'all' ? link('Browse topic notes', '#history-topics', 'gallery-button') : toolLinks(select.value, 'quiz'));
     renderSet();
   }
 
   select.addEventListener('change', () => {
     updateTopic();
+    rememberToolTopic('history-quiz', select.value);
     save();
   });
   setSelect.addEventListener('change', renderSet);
@@ -552,66 +651,132 @@ function renderPractice(focus) {
   const output = byId('history-practice-list');
   output.replaceChildren();
   const depth = depths[state.course.depth];
-  const practiceTopics = courseTopics();
-  if (state.practiceTopic && studyTopics[state.practiceTopic] && !practiceTopics.some(([id]) => id === state.practiceTopic)) {
-    practiceTopics.push(allTopics.find(([id]) => id === state.practiceTopic));
-  }
   const grid = element('div', '', 'history-grid');
 
-  const paper1 = practiceCard('paper-1', 'Paper 1 · Structured questions', '2 hours · 60 marks. Practise describing, explaining and evaluating.');
-  const { field: topicLabel, select: topicSelect } = topicSelector(practiceTopics, 'Practice topic', state.practiceTopic);
+  const paper1 = practiceCard('paper-1', 'Paper 1 · Structured questions', '2 hours · 60 marks. Choose a topic and question to practise.');
+  const { field: topicLabel, select: topicSelect } = groupedTopicSelector('Practice topic', state.practiceTopic);
   topicSelect.id = 'history-practice-topic';
-  const { field: taskLabel, select: taskSelect } = topicSelector([], 'Question');
-  const prompt = element('div');
+  const { field: marksLabel, select: marksSelect } = topicSelector([
+    ['all', 'Any mark value'], ['4', '4 marks · Describe'], ['6', '6 marks · Explain'],
+    ['10', '10 marks · Evaluate'], ['ai', 'Writing drill with AI feedback']
+  ], 'Question type');
+  const searchLabel = element('label', 'Search questions in this topic', 'history-writing');
+  const questionSearch = element('input');
+  questionSearch.type = 'search';
+  questionSearch.placeholder = 'Try reparations or migration';
+  searchLabel.append(questionSearch);
+  const filters = element('div', '', 'history-study-filters');
+  filters.append(topicLabel, marksLabel, searchLabel);
+
+  const browser = element('div', '', 'history-question-browser');
+  const results = element('div', '', 'history-question-results');
+  const count = element('p', '', 'history-question-count');
+  count.setAttribute('role', 'status');
+  const list = element('div', '', 'history-question-list');
+  results.append(count, list);
+  const prompt = element('section', '', 'history-question-workspace');
+  prompt.setAttribute('aria-label', 'Write your answer');
+  browser.append(results, prompt);
+  const related = element('div', '', 'history-study-related');
   const markAdvice = {
     4: 'Describe the requested features using distinct, relevant historical details.',
     6: 'Explain how or why the factors mattered. Develop each link with specific evidence.',
     10: 'Explain different sides with evidence, then justify your overall judgement.'
   };
-  let parts = [];
+  let entries = [];
 
-  function updatePrompt() {
-    const id = topicSelect.value;
-    if (taskSelect.value === 'ai') {
-      const [, , , question, guidance] = allTopics.find(([key]) => key === id);
-      prompt.replaceChildren(element('p', question),
-        ...markedWriting('paper-1-' + id, 'Your answer', question, guidance, modelAnswers[id]));
-      return;
-    }
-    const { marks, prompt: question, guidance } = parts[Number(taskSelect.value)];
-    prompt.replaceChildren(element('p', question + ' [' + marks + ']'),
-      writing('structured-' + id + '-' + taskSelect.value, 'Your answer'),
-      reveal('Show marking guidance', markAdvice[marks] + ' ' + guidance));
+  function questionMeta(entry) {
+    return [entry.marks && entry.marks + ' marks', state.drafts[entry.draftId]?.trim() && 'Saved draft'].filter(Boolean).join(' · ');
   }
 
-  function updateQuestions() {
-    parts = [];
-    taskSelect.replaceChildren();
-    for (const { title, parts: topicParts } of studyTopics[topicSelect.value]) {
-      const group = element('optgroup');
-      group.label = title;
-      for (const part of topicParts) {
-        const option = element('option', (parts.length + 1) + '. ' + part.prompt + ' [' + part.marks + ']');
-        option.value = String(parts.length);
-        parts.push(part);
-        group.append(option);
-      }
-      taskSelect.append(group);
+  function showQuestion(entry, focusHeading = false) {
+    const id = topicSelect.value;
+    state.practiceSelections[id] = entry.key;
+    prompt.dataset.key = id + '/' + entry.key;
+    const heading = element('h4', entry.prompt);
+    heading.tabIndex = -1;
+    prompt.replaceChildren(element('p', entry.section + (entry.marks ? ' · ' + entry.marks + ' marks' : ''), 'history-study-label'), heading);
+    if (entry.marks) {
+      prompt.append(writing(entry.draftId, 'Your answer'),
+        reveal('Show marking guidance', markAdvice[entry.marks] + ' ' + entry.guidance));
+    } else {
+      prompt.append(...markedWriting(entry.draftId, 'Your answer', entry.prompt, entry.guidance, modelAnswers[id]));
     }
-    const original = element('option', 'Writing drill with AI feedback');
-    original.value = 'ai';
-    taskSelect.append(original);
-    updatePrompt();
+    for (const button of list.querySelectorAll('button')) {
+      if (button.dataset.key === entry.key) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    }
+    prompt.querySelector('textarea').addEventListener('input', () => {
+      const active = list.querySelectorAll('button');
+      const button = [...active].find((button) => button.dataset.key === entry.key);
+      if (button) button.querySelector('small').textContent = questionMeta(entry);
+    });
+    if (focusHeading) {
+      heading.scrollIntoView({ block: 'nearest' });
+      heading.focus({ preventScroll: true });
+    }
+  }
+
+  function showMatches() {
+    const id = topicSelect.value;
+    const query = matchingText(questionSearch.value);
+    const type = marksSelect.value;
+    list.replaceChildren();
+    const matches = entries.filter(({ key, marks, prompt, section }) =>
+      (type === 'all' || (type === 'ai' ? key === 'ai' : type === String(marks))) &&
+      matchingText(prompt + ' ' + section).includes(query));
+    count.textContent = matches.length === 1 ? '1 question' : matches.length + ' questions';
+    let group;
+    for (const entry of matches) {
+      if (group?.dataset.section !== entry.section) {
+        group = element('section', '', 'history-question-group');
+        group.dataset.section = entry.section;
+        group.append(element('h4', entry.section));
+        list.append(group);
+      }
+      const button = action('', () => {
+        showQuestion(entry, true);
+        save();
+      });
+      button.className = 'history-question-choice';
+      button.dataset.key = entry.key;
+      button.append(element('span', entry.prompt),
+        element('small', questionMeta(entry)));
+      group.append(button);
+    }
+    if (!matches.length) list.append(element('p', 'No questions match. Try another search or question type.'));
+    const selected = matches.find(({ key }) => key === state.practiceSelections[id]);
+    if (selected) {
+      if (prompt.dataset.key !== id + '/' + selected.key) showQuestion(selected);
+      [...list.querySelectorAll('button')].find((button) => button.dataset.key === selected.key)?.setAttribute('aria-current', 'true');
+    } else {
+      prompt.dataset.key = '';
+      prompt.replaceChildren(element('p', 'Choose a question to open its answer box and marking guidance.'));
+    }
+  }
+
+  function updateTopic() {
+    const id = topicSelect.value;
+    state.practiceTopic = id;
+    entries = studyTopics[id].flatMap(({ title: section, parts }) => parts.map((part) => ({ ...part, section })))
+      .map((part, index) => ({ ...part, key: String(index), draftId: 'structured-' + id + '-' + index }));
+    const [, , , question, guidance] = allTopics.find(([key]) => key === id);
+    entries.push({ section: 'Writing drill with AI feedback', key: 'ai', prompt: question, guidance, draftId: 'paper-1-' + id });
+    related.replaceChildren(toolLinks(id, 'paper-1'));
+    showMatches();
   }
 
   topicSelect.addEventListener('change', () => {
-    state.practiceTopic = topicSelect.value;
-    updateQuestions();
+    questionSearch.value = '';
+    marksSelect.value = 'all';
+    updateTopic();
+    rememberToolTopic('history-paper-1', topicSelect.value);
     save();
   });
-  taskSelect.addEventListener('change', updatePrompt);
-  updateQuestions();
-  paper1.append(topicLabel, taskLabel, prompt, flagButton('paper-1', 'Paper 1 writing practice'));
+  marksSelect.addEventListener('change', showMatches);
+  questionSearch.addEventListener('input', showMatches);
+  updateTopic();
+  paper1.append(filters, related, browser, flagButton('paper-1', 'Paper 1 writing practice'));
   grid.append(paper1);
 
   const paper2 = practiceCard('paper-2', 'Paper 2 · Document questions', '1 hour 45 minutes · 40 marks. Try this standalone Versailles source drill.');
@@ -667,6 +832,7 @@ function renderCourse() {
   byId('history-focus').textContent = focus ? focus[1] : year === 'other'
     ? 'Use Cambridge’s syllabus for your exam year to check the prescribed topic.'
     : 'Select your exam year, series, and Core option.';
+  delete byId('history-notes-content').dataset.topic;
   renderTopics();
   renderPractice(focus);
   const coursework = route === '3';
@@ -674,7 +840,7 @@ function renderCourse() {
   byId('gallery-route-title').textContent = coursework ? 'Coursework' : 'Paper 4';
   byId('gallery-route-description').textContent = coursework ? 'Research log and checklist' : 'Depth-study practice';
   byId('gallery-route-time').hidden = coursework;
-  selectPracticePaper(location.hash.slice(1));
+  selectPracticePaper(location.hash.slice(1).split('/')[0]);
   renderQuiz();
   renderFlashcards();
   renderResume();
@@ -691,13 +857,14 @@ form.addEventListener('submit', (event) => {
   settings.querySelector('summary').focus();
 });
 search.addEventListener('input', renderTopics);
+topicScope.addEventListener('change', renderTopics);
 renderCourse();
 const views = [...document.querySelectorAll('.history-view')];
 const tabs = [...document.querySelectorAll('.history-nav a')];
 
 function showView(id) {
   for (const view of views) view.hidden = view.id !== id;
-  const tabId = id === 'history-notes' ? 'history-topics' : id === 'history-flashcards' ? 'history-review' : id;
+  const tabId = id === 'history-notes' ? 'history-topics' : id;
   for (const tab of tabs) {
     if (tab.hash === '#' + tabId) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
@@ -708,6 +875,7 @@ function selectPracticePaper(id) {
   const papers = [...byId('history-practice-list').querySelectorAll('.history-grid > article')];
   const selected = papers.find((paper) => paper.id === id);
   const currentHash = selected ? '#' + selected.id : '#history-practice';
+  byId('history-practice-list').classList.toggle('history-single-paper', Boolean(selected));
   for (const paper of papers) paper.hidden = Boolean(selected && paper !== selected);
   for (const link of practiceLinks) {
     link.hidden = link.hash !== '#history-practice' && !papers.some((paper) => '#' + paper.id === link.hash);
@@ -718,10 +886,22 @@ function selectPracticePaper(id) {
 }
 
 function navigate() {
-  const id = location.hash.slice(1);
-  if (id.startsWith('history-topic-') && allTopics.some(([topic]) => id === 'history-topic-' + topic)) {
-    openTopic(id.slice(14));
+  const [id, detail] = location.hash.slice(1).split('/');
+  if (id.startsWith('history-topic-') && Object.hasOwn(topicTitles, id.slice(14))) {
+    openTopic(id.slice(14), detail);
     return;
+  }
+  const selectors = {
+    'history-paper-1': 'history-practice-topic',
+    'history-flashcards': 'history-flashcard-topic',
+    'history-quiz': 'history-quiz-topic'
+  };
+  if (Object.hasOwn(selectors, id) && Object.hasOwn(topicTitles, detail)) {
+    const select = byId(selectors[id]);
+    if (select.value !== detail) {
+      select.value = detail;
+      select.dispatchEvent(new Event('change'));
+    }
   }
   const leavingNotes = !byId('history-notes').hidden;
   const paper = selectPracticePaper(id);
@@ -737,6 +917,11 @@ function navigate() {
   if (leavingNotes && target?.id === 'history-topics') byId('history-topics-title').focus({ preventScroll: true });
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
+  if (Object.hasOwn(selectors, id) && view) {
+    const heading = target.querySelector(id === 'history-paper-1' ? 'h3' : 'h2');
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+  }
 }
 
 const exhibitDialog = byId('history-exhibit-dialog');
