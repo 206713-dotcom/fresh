@@ -183,8 +183,10 @@
   min-width: 0;
 }
 .gallery-links a, .gallery-nav-settings {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
   min-height: 2.65rem;
   padding: .35rem .65rem;
   border: 1px solid transparent;
@@ -215,7 +217,7 @@
   gap: .55rem;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1020px) {
   .history-gallery { --gallery-nav-offset: 7rem; }
   .gallery-nav-inner { grid-template-columns: minmax(0, 1fr) auto; }
   .gallery-links {
@@ -227,9 +229,14 @@
   .gallery-nav-settings { grid-column: 2; grid-row: 1; }
 }
 @media (max-width: 560px) {
-  .history-gallery { --gallery-nav-offset: 10rem; }
+  .history-gallery { --gallery-nav-offset: 11rem; }
   .gallery-links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .gallery-links a { font-size: .875rem; padding-inline: .3rem; }
+  .gallery-links a {
+    flex-direction: column;
+    gap: .2rem;
+    font-size: .875rem;
+    padding-inline: .3rem;
+  }
 }
 @media (max-height: 500px) {
   .history-gallery { --gallery-nav-offset: 1rem; }
@@ -620,4 +627,44 @@
 @media (max-width: 540px) {
   .history-topic-grid, .gallery-collection { grid-template-columns: minmax(0, 1fr); }
   .history-topic-grid { grid-auto-rows: auto; }
+}
+
+.gallery-icon-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gallery-icon {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--gallery-accent);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gallery-nav .gallery-icon { width: .95rem; height: .95rem; }
+.gallery-hero-actions .gallery-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.gallery-primary .gallery-icon { color: inherit; }
+.history-quick .gallery-icon { width: 1.4rem; height: 1.4rem; margin-bottom: .15rem; }
+.history-gallery :is(.history-section, .study) > h2:has(> .gallery-icon) {
+  display: flex;
+  align-items: center;
+  gap: clamp(.6rem, 1.5vw, 1rem);
+}
+.history-gallery h2 > .gallery-icon {
+  width: .7em;
+  height: .7em;
+  padding: .09em;
+  border: 1px solid var(--gallery-card-line);
+  border-radius: .16em;
+  background: var(--gallery-teal);
 }
