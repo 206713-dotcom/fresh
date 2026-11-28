@@ -17,6 +17,27 @@ const search = byId('history-search');
 const practiceLinks = [...document.querySelectorAll('.history-practice-nav a')];
 const allTopics = [...core.A, ...core.B, ...Object.values(depths)];
 
+const topicPreviews = {
+  revolutions: ['movement', 'Reform, rebellion and the conservative response'],
+  italy: ['territory', 'Piedmont, Garibaldi and the unification of Italy'],
+  'german-unification': ['territory', 'Prussia and the creation of the German Empire'],
+  'civil-war': ['rivalry', 'Slavery, secession and the fight to preserve the Union'],
+  empires: ['globe', 'Imperial rivalry, expansion and resistance'],
+  'ww1-origins': ['rivalry', 'Alliances, Balkan tensions and the July Crisis'],
+  versailles: ['settlement', 'The peacemakers’ aims and the terms imposed on Germany'],
+  league: ['globe', 'Collective security, diplomacy and the limits of sanctions'],
+  'outbreak-1939': ['rivalry', 'Appeasement, German expansion and the invasion of Poland'],
+  'cold-war': ['rivalry', 'The wartime alliance breaks down over Europe'],
+  containment: ['globe', 'US policy in Korea, Cuba and Vietnam'],
+  'eastern-europe': ['movement', 'Soviet control, resistance and reform'],
+  ww1: ['territory', 'Trench warfare, global fronts and the armistice'],
+  germany: ['movement', 'From the Weimar Republic to dictatorship and war'],
+  russia: ['movement', 'Revolution, civil war and Stalin’s rule'],
+  usa: ['economy', 'The boom, the Great Depression and the New Deal'],
+  ww2: ['territory', 'Turning points, occupation and Allied victory'],
+};
+
+
 function save() {
   try {
     localStorage.setItem(storageKey, JSON.stringify(state));
@@ -173,27 +194,63 @@ function renderResume() {
   } : null;
 }
 
+function topicCard(id, title) {
+  const [icon, preview] = topicPreviews[id] || ['topics', ''];
+  const item = element('li');
+  const link = element('a', '', 'history-topic-button');
+  link.href = '#history-topic-' + id;
+  const artwork = element('span', '', 'history-topic-art');
+  artwork.setAttribute('aria-hidden', 'true');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  svg.setAttribute('class', 'gallery-icon');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('focusable', 'false');
+  use.setAttribute('href', '#gallery-icon-' + icon);
+  svg.append(use);
+  artwork.append(svg);
+
+  const label = element('span', title, 'history-topic-title');
+  label.id = 'history-topic-label-' + id;
+  link.setAttribute('aria-labelledby', label.id);
+  const description = element('span', preview, 'history-topic-preview');
+  description.id = 'history-topic-preview-' + id;
+  if (preview) link.setAttribute('aria-describedby', description.id);
+  const caption = element('span', '', 'history-topic-caption');
+  const cue = element('span', 'Read notes', 'history-topic-cue');
+  cue.setAttribute('aria-hidden', 'true');
+  caption.append(label);
+  if (preview) caption.append(description);
+  caption.append(cue);
+  link.append(artwork, caption);
+  item.append(link);
+  return item;
+}
+
 function renderTopics() {
   const output = byId('history-topic-list');
   const query = search.value.trim().toLowerCase();
   output.replaceChildren();
-  const groups = query ? [['Search results', allTopics]] : [
+  const groups = query ? [['search', 'Search results', allTopics]] : [
     ...Object.entries(core).filter(([option]) => !state.course.core || option === state.course.core)
-      .map(([option, topics]) => ['Core option ' + option, topics]),
-    ['Depth studies', depths[state.course.depth] ? [depths[state.course.depth]] : Object.values(depths)]
+      .map(([option, topics]) => [option.toLowerCase(), 'Core option ' + option, topics]),
+    ['depth', 'Depth studies', depths[state.course.depth] ? [depths[state.course.depth]] : Object.values(depths)]
   ];
-  for (const [name, topics] of groups) {
-    output.append(element('h3', name));
+  for (const [key, name, topics] of groups) {
+    const section = element('section', '', 'history-topic-group');
+    section.dataset.group = key;
+    const heading = element('h3', name);
+    heading.id = 'history-topic-group-' + key;
+    section.setAttribute('aria-labelledby', heading.id);
+    section.append(heading);
     const grid = element('ul', '', 'history-topic-grid');
     for (const [id, title, overview, question, advice] of topics) {
-      if (![title, overview, question, advice].join(' ').toLowerCase().includes(query)) continue;
-      const item = element('li');
-      const link = element('a', title, 'history-topic-button');
-      link.href = '#history-topic-' + id;
-      item.append(link);
-      grid.append(item);
+      const preview = topicPreviews[id]?.[1];
+      if (![title, preview, overview, question, advice].join(' ').toLowerCase().includes(query)) continue;
+      grid.append(topicCard(id, title));
     }
-    output.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
+    section.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
+    output.append(section);
   }
 }
 
