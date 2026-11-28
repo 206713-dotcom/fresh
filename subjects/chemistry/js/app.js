@@ -488,7 +488,7 @@
 
   /* ---------- boot ---------- */
   async function boot() {
-    try { const r = await fetch('data/tree.json?v=bank3'); if (!r.ok) throw new Error(r.status); IDX = await r.json(); }
+    try { const r = await fetch('data/tree.json?v=bank2'); if (!r.ok) throw new Error(r.status); IDX = await r.json(); }
     catch (e) { startEl.hidden = true; view.hidden = false; view.innerHTML = '<div class="page"><div class="panel" style="padding:26px"><h1 style="font-size:28px;margin-bottom:8px">The lecture list did not load</h1><p>Check your connection, then reload the page.</p></div></div>'; window.dispatchEvent(new Event('fresh-science-error')); return; }
     IDX.stages.forEach(S => { STAGE[S.hash] = S; S.all = []; S.topics.forEach(T => { T.stage = S; T.hash = `${S.hash}-t${T.n}`; TOPIC[T.hash] = T; T.lectures.forEach(L => { L.stage = S; L.topic = T; BY[L.id] = L; S.all.push(L); ALL.push(L); SEARCH.push({ L, t: L.title, k: 0, hay: `${L.code} ${L.title} ${S.label}`.toLowerCase() }); }); }); });
     $('#stagePick').innerHTML = IDX.stages.map(S => `<a href="#${S.hash}" style="${hue(S)}"><b>${S.label}</b><i>${S.years}</i><i>${plural(S.all.length, 'lecture')}</i></a>`).join('');
