@@ -1,0 +1,219 @@
+/* Fresh Biology visuals (loaded into the Biology shadow root by fx.js).
+   Every rule starts from .fx-stage, the element fx.js adds, so without fx.js nothing here applies.
+   Colours are Fresh's own: deep green, cream, lime and peach. */
+
+/* ---------- Stage: the dark, living band behind the top of every screen ---------- */
+.fx-stage {
+  --cream: #f6efd8; --lime: #e4eeb2; --peach: #f6bb83; --deep: #0d211b;
+  position: absolute; z-index: 0; top: 0; left: 50%; width: 100vw; height: 220px; transform: translateX(-50%);
+  overflow: hidden; border-radius: 0 0 34px 34px;
+  background: radial-gradient(70rem 30rem at 78% 30%, #1d4a3a, transparent 70%), linear-gradient(#10251f, #0b1c17);
+  box-shadow: 0 24px 60px -30px #0b1c17cc;
+  pointer-events: none;
+}
+.fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.fx-stage.fx-still .fx-canvas { display: none; }
+.fx-stage::after {            /* thin lime horizon along the bottom edge */
+  content: ''; position: absolute; inset: auto 0 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #e4eeb255 30%, #f6bb8355 70%, transparent);
+}
+
+/* Chips: topic names on orbits round the helix */
+.fx-chips { position: absolute; inset: 0; }
+.fx-chips[hidden] { display: none; }
+.fx-chip {
+  position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: .45rem;
+  padding: .32rem .7rem .32rem .4rem; border-radius: 999px; white-space: nowrap; pointer-events: auto;
+  border: 1px solid #f6efd826; background: #0b1c17d9; color: var(--cream); text-decoration: none;
+  font: 700 .72rem/1 Inter, system-ui, sans-serif; will-change: transform, opacity;
+  box-shadow: 0 8px 22px #0007; transition: border-color .2s, background .2s;
+}
+.fx-chip b { display: grid; place-items: center; min-width: 1.5rem; height: 1.5rem; border-radius: 999px; background: var(--lime); color: #10251f; font-size: .66rem; font-weight: 800; }
+.fx-chip:nth-child(3n) b { background: var(--peach); }
+.fx-chip:hover { border-color: var(--lime); background: #14362c; }
+.fx-stage:not([data-mode=dash]) .fx-chips, .fx-stage:not([data-mode=dash]) .fx-tapes { display: none; }
+
+/* Tapes: two slanted bands of topic names, still, like the homepage's */
+.fx-tapes { position: absolute; inset: auto 0 0; height: 96px; }
+.fx-tape { position: absolute; left: -4%; width: 108%; overflow: hidden; white-space: nowrap; padding: .5rem 0; }
+.fx-tape.back { bottom: 34px; rotate: -1.6deg; background: #e4eeb214; border-block: 1px solid #e4eeb226; color: #e4eeb299; }
+.fx-tape.front { bottom: 12px; rotate: 1.2deg; background: var(--lime); color: #10251f; box-shadow: 0 10px 30px #0006; }
+.fx-tape-track { display: inline-flex; align-items: center; }
+.fx-tape.back .fx-tape-track { translate: -9rem 0; }
+.fx-tape-word { padding: 0 1rem; font: 800 .74rem/1 Inter, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.fx-tape-dot { width: .32rem; height: .32rem; border-radius: 50%; background: currentColor; opacity: .55; }
+
+/* ---------- The app sits on top of the stage ---------- */
+.fx-stage ~ .bio-root {
+  position: relative; z-index: 1;
+  background: linear-gradient(to bottom, transparent calc(var(--fx-h, 220px) - 1px), var(--bg) var(--fx-h, 220px));
+}
+.fx-stage ~ .bio-root[data-theme=light], .fx-stage ~ .bio-root:not([data-theme=dark]) { background: none; }
+
+/* Menu: one row of glass pills with a highlight that slides to the open tab */
+.fx-stage ~ .bio-root.embedded.local-nav .side { background: none; padding: 14px 4px 0; }
+.fx-stage ~ .bio-root.embedded.local-nav .nav {
+  position: relative; flex-wrap: nowrap; gap: 2px; padding: 5px; overflow-x: auto; scrollbar-width: none;
+  border: 1px solid #f6efd81f; border-radius: 16px; background: #0b1c17b3;
+}
+.fx-stage ~ .bio-root .nav::-webkit-scrollbar { display: none; }
+.fx-stage ~ .bio-root.embedded.local-nav .nav a {
+  position: relative; z-index: 1; flex: none; min-height: 40px; padding: 8px 10px; gap: 7px; border-radius: 11px;
+  color: #f6efd8b8; font-size: .82rem; background: none; transition: color .25s;
+}
+.fx-stage ~ .bio-root.embedded.local-nav .nav a:hover { color: #f6efd8; background: #f6efd80f; }
+.fx-stage ~ .bio-root.embedded.local-nav .nav a.active { color: #10251f; background: none; }
+.fx-stage ~ .bio-root .nav svg { width: 16px; height: 16px; }
+.fx-pill {
+  position: absolute; left: 0; top: 0; z-index: 0; border-radius: 11px; opacity: 0;
+  background: linear-gradient(135deg, #e4eeb2, #cfe08f); box-shadow: 0 6px 18px #e4eeb233;
+  transition: transform .45s cubic-bezier(.2, .9, .3, 1.15), width .45s cubic-bezier(.2, .9, .3, 1.15), opacity .2s;
+}
+
+/* Title row */
+.fx-stage ~ .bio-root.embedded .main > header {
+  height: auto; min-height: 60px; padding: 12px 20px 4px; border: 0; background: none; color: #f6efd8;
+}
+.fx-stage ~ .bio-root .main > header strong { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #e4eeb2cc; }
+.fx-stage ~ .bio-root .main > header button, .fx-stage ~ .bio-root .main > header select {
+  min-height: 38px; padding: 6px 13px; border-radius: 11px; border: 1px solid #f6efd826; background: #0b1c1799; color: #f6efd8; font-size: .84rem;
+}
+.fx-stage ~ .bio-root .main > header button:hover, .fx-stage ~ .bio-root .main > header select:hover { border-color: #e4eeb2; }
+.fx-stage ~ .bio-root .main > header option { color: #172c28; }
+
+/* Text that sits on the stage */
+.fx-stage ~ .bio-root .fx-ink { color: #f6efd8; }
+.fx-stage ~ .bio-root .fx-ink.eyebrow, .fx-stage ~ .bio-root .fx-ink .eyebrow { color: #e4eeb2; }
+.fx-stage ~ .bio-root p.fx-ink, .fx-stage ~ .bio-root .fx-ink.muted, .fx-stage ~ .bio-root small.fx-ink { color: #f6efd8b3; }
+.fx-stage ~ .bio-root h1.fx-ink { font-size: clamp(2rem, 4.4vw, 3.5rem); line-height: 1.02; letter-spacing: -.05em; font-weight: 850; margin: 10px 0 12px; text-wrap: balance; }
+.fx-stage ~ .bio-root .fx-ink.btn, .fx-stage ~ .bio-root button.fx-ink, .fx-stage ~ .bio-root .fx-ink > .btn:not(.primary), .fx-stage ~ .bio-root a.fx-ink:not(.card) {
+  border-color: #f6efd833; background: #0b1c1799; color: #f6efd8;
+}
+.fx-word { display: inline-block; white-space: nowrap; }
+.fx-letter { display: inline-block; animation: fx-letter .7s cubic-bezier(.2, .8, .2, 1) calc(var(--i) * 28ms) both; }
+
+/* Whatever follows the stage starts clear of it */
+.fx-stage ~ .bio-root .fx-after { margin-top: 66px; }
+.fx-stage ~ .bio-root main :is(button, a.btn).fx-ink { margin-bottom: 14px; }
+.fx-stage ~ .bio-root.fx-dash .fx-after { margin-top: 186px; }
+.fx-stage ~ .bio-root .fx-ink-end { margin-bottom: 0; }
+
+/* ---------- Dashboard: tall stage, opening panel on glass, statistics on glass ---------- */
+.fx-stage ~ .bio-root.fx-dash h1.fx-ink { font-size: clamp(2.6rem, 6.4vw, 5.2rem); line-height: .94; letter-spacing: -.06em; margin-bottom: 16px; }
+.fx-stage ~ .bio-root.fx-dash h1.fx-ink + p { font-size: 1.08rem; margin-bottom: 22px; }
+.fx-stage ~ .bio-root.fx-dash .hero {
+  position: relative; overflow: hidden; border: 1px solid #f6efd824; border-radius: 22px; padding: 26px 28px;
+  background: linear-gradient(135deg, #f6efd814, #f6efd808); box-shadow: 0 20px 50px -24px #000a, inset 0 1px 0 #ffffff14;
+}
+.fx-stage ~ .bio-root.fx-dash .hero > svg { display: none; }
+.fx-stage ~ .bio-root.fx-dash .hero .pill { border-color: #e4eeb24d; color: #e4eeb2; background: #e4eeb20f; }
+.fx-stage ~ .bio-root.fx-dash .hero h2 { color: #f6efd8; font-size: 1.6rem; }
+.fx-stage ~ .bio-root.fx-dash .hero p { color: #f6efd8b8; }
+.fx-stage ~ .bio-root.fx-dash .hero .btn.primary {
+  position: relative; overflow: hidden; min-height: 50px; padding: 12px 22px; border: 0; border-radius: 999px;
+  background: linear-gradient(135deg, #e4eeb2, #c9dc86); color: #10251f; font-weight: 800; box-shadow: 0 10px 30px #e4eeb240;
+  transition: transform .3s cubic-bezier(.2, .9, .3, 1.3), box-shadow .3s;
+}
+.fx-stage ~ .bio-root.fx-dash .hero .btn.primary::after {
+  content: ''; position: absolute; inset: -40% auto -40% -40%; width: 35%; background: linear-gradient(90deg, transparent, #ffffff8c, transparent);
+  transform: skewX(-20deg) translateX(-150%); animation: fx-sheen 4.2s ease-in-out 1.2s infinite;
+}
+.fx-stage ~ .bio-root.fx-dash .hero .btn.primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 14px 36px #e4eeb266; }
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink > .card {
+  border-color: #f6efd821; background: #0b1c17b8; color: #f6efd8; box-shadow: inset 0 1px 0 #ffffff12;
+}
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink h3 { color: #f6efd8b8; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink .stat { font-size: clamp(2rem, 3.6vw, 2.9rem); color: #f6efd8; }
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink > .card:nth-child(2) .stat { color: #f6bb83; }
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink > .card:nth-child(3) .stat { color: #e4eeb2; }
+.fx-stage ~ .bio-root.fx-dash .grid.fx-ink small { color: #f6efd88c; }
+@media (min-width: 900px) {
+  .fx-stage ~ .bio-root.fx-dash main > .eyebrow, .fx-stage ~ .bio-root.fx-dash main > h1, .fx-stage ~ .bio-root.fx-dash main > h1 + p, .fx-stage ~ .bio-root.fx-dash main > .hero { max-width: min(640px, 52%); }
+  .fx-stage ~ .bio-root.fx-dash main > .eyebrow { margin-top: 22px; }
+  .fx-stage ~ .bio-root.fx-dash main > .grid.fx-ink { margin-top: 34px; }
+}
+
+/* ---------- Cards everywhere: depth, a light that follows the pointer, a tilt on the ones that are links ---------- */
+.fx-stage ~ .bio-root .card {
+  position: relative; border-radius: 18px;
+  box-shadow: 0 1px 0 #ffffffb3 inset, 0 10px 28px -18px #17302799;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s, border-color .25s;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+.fx-stage ~ .bio-root[data-theme=dark] .card { box-shadow: 0 1px 0 #ffffff0f inset, 0 14px 30px -18px #000c; }
+.fx-stage ~ .bio-root .card::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), #e4eeb259, transparent 65%);
+}
+.fx-stage ~ .bio-root[data-theme=dark] .card::before { background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), #e4eeb21f, transparent 65%); }
+.fx-stage ~ .bio-root .card.fx-lit::before { opacity: 1; }
+.fx-stage ~ .bio-root .card.fx-lit { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.fx-stage ~ .bio-root a.card.fx-lit { box-shadow: 0 1px 0 #ffffffb3 inset, 0 26px 44px -22px #173027b3; }
+.fx-stage ~ .bio-root .card > * { position: relative; }
+
+/* Topic cards: each topic has its own colour and glyph */
+.fx-stage ~ .bio-root a.card.topic {
+  --c: hsl(var(--h, 152) 46% 34%); overflow: hidden;
+  background: linear-gradient(150deg, hsl(var(--h, 152) 60% 96%), var(--surface) 58%);
+  border-color: hsl(var(--h, 152) 35% 84%);
+}
+.fx-stage ~ .bio-root[data-theme=dark] a.card.topic {
+  --c: hsl(var(--h, 152) 62% 74%);
+  background: linear-gradient(150deg, hsl(var(--h, 152) 40% 17%), var(--surface) 62%); border-color: hsl(var(--h, 152) 26% 26%);
+}
+.fx-stage ~ .bio-root a.card.topic .num {
+  display: inline-grid; place-items: center; min-width: 2.7rem; height: 2.7rem; padding: 0 .5rem; border-radius: 14px;
+  font-size: 1.05rem; color: #fff; background: linear-gradient(135deg, hsl(var(--h, 152) 52% 40%), hsl(var(--h, 152) 60% 28%));
+  box-shadow: 0 8px 18px -8px hsl(var(--h, 152) 60% 30%);
+}
+.fx-stage ~ .bio-root a.card.topic .progress { background: hsl(var(--h, 152) 30% 88%); }
+.fx-stage ~ .bio-root[data-theme=dark] a.card.topic .progress { background: hsl(var(--h, 152) 20% 24%); }
+.fx-stage ~ .bio-root a.card.topic .progress span { background: linear-gradient(90deg, hsl(var(--h, 152) 55% 42%), hsl(var(--h, 152) 65% 58%)); }
+.fx-stage ~ .bio-root a.card.topic.fx-lit { border-color: var(--c); }
+.fx-glyph {
+  position: absolute !important; right: -14px; top: -14px; width: 118px; height: 118px; color: var(--c); opacity: .13; pointer-events: none;
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1), opacity .4s;
+}
+.fx-glyph svg { width: 100%; height: 100%; display: block; }
+.fx-stage ~ .bio-root a.card.topic.fx-lit .fx-glyph { opacity: .3; transform: rotate(-8deg) scale(1.1); }
+
+/* Buttons and inputs: a little more life */
+.fx-stage ~ .bio-root .btn, .fx-stage ~ .bio-root button { border-radius: 12px; transition: transform .2s, border-color .2s, background .2s, box-shadow .2s; }
+.fx-stage ~ .bio-root main .btn:not(.fx-ink):hover, .fx-stage ~ .bio-root main button:not(.fx-ink):hover { transform: translateY(-1px); box-shadow: 0 8px 18px -12px #173027; }
+.fx-stage ~ .bio-root .progress span { transition: width .8s cubic-bezier(.2, .8, .2, 1); }
+.fx-stage ~ .bio-root.embedded .wrap { padding-top: 6px; }
+
+/* ---------- Arriving on a screen: things rise in, one after another ---------- */
+.fx-stage[data-enter] ~ .bio-root main > *:not(#storage) { animation: fx-rise .6s cubic-bezier(.2, .7, .2, 1) both; }
+.fx-stage[data-enter] ~ .bio-root main > :nth-child(3) { animation-delay: .04s; }
+.fx-stage[data-enter] ~ .bio-root main > :nth-child(4) { animation-delay: .09s; }
+.fx-stage[data-enter] ~ .bio-root main > :nth-child(5) { animation-delay: .14s; }
+.fx-stage[data-enter] ~ .bio-root main > :nth-child(6) { animation-delay: .19s; }
+.fx-stage[data-enter] ~ .bio-root main > :nth-child(n+7) { animation-delay: .24s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > *, .fx-stage[data-enter] ~ .bio-root main .stack > .card { animation: fx-rise .6s cubic-bezier(.2, .7, .2, 1) both; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(1) { animation-delay: .12s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(2) { animation-delay: .18s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(3) { animation-delay: .24s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(4) { animation-delay: .30s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(5) { animation-delay: .36s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(6) { animation-delay: .42s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(n+7) { animation-delay: .48s; }
+.fx-stage[data-enter] ~ .bio-root main .grid > :nth-child(n+13), .fx-stage[data-enter] ~ .bio-root main .stack > .card:nth-child(n+7) { animation: none; }
+@keyframes fx-rise { from { opacity: 0; translate: 0 18px; } }
+@keyframes fx-letter { from { opacity: 0; transform: translateY(.5em) rotateX(-80deg); } }
+@keyframes fx-sheen { 0%, 60% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(520%); } }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 899px) {
+  .fx-stage { border-radius: 0 0 22px 22px; }
+  .fx-stage ~ .bio-root.embedded .main > header { padding: 10px 8px 0; }
+  .fx-stage ~ .bio-root.embedded.local-nav .side { padding: 10px 0 0; }
+  .fx-tapes { height: 78px; }
+  .fx-tape-word { font-size: .64rem; padding: 0 .7rem; }
+  .fx-glyph { width: 92px; height: 92px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-stage, .fx-pill, .fx-stage ~ .bio-root .card { transition: none !important; }
+  .fx-letter, .fx-stage ~ .bio-root * { animation: none !important; }
+}
+@media print { .fx-stage { display: none; } .fx-stage ~ .bio-root .fx-ink { color: inherit !important; } }
