@@ -192,21 +192,29 @@ function renderTopics(revealId) {
       else card.append(reveal('Recall check', 'From memory, explain one event or idea in the summary. Then reread it and add one specific detail.'));
       card.append(element('h4', 'Build an argument'), element('p', question),
         reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
-      const completed = action(state.completed[id] ? 'Studied · undo' : 'Mark as studied', () => {
-        if (state.completed[id]) delete state.completed[id];
-        else state.completed[id] = true;
-        completed.textContent = state.completed[id] ? 'Studied · undo' : 'Mark as studied';
-        completed.setAttribute('aria-pressed', String(Boolean(state.completed[id])));
-        renderReview();
-        save();
-      });
-      completed.setAttribute('aria-pressed', String(Boolean(state.completed[id])));
-      card.append(completed);
+      card.append(studiedButton(id));
       if (id !== 'versailles') card.append(flagButton('topic-' + id, title));
       grid.append(card);
     }
     output.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
   }
+}
+
+function studiedButton(id, onChange) {
+  const button = action('', () => {
+    if (state.completed[id]) delete state.completed[id];
+    else state.completed[id] = true;
+    update();
+    renderReview();
+    save();
+    onChange?.();
+  });
+  function update() {
+    button.textContent = state.completed[id] ? 'Studied · undo' : 'Mark as studied';
+    button.setAttribute('aria-pressed', String(Boolean(state.completed[id])));
+  }
+  update();
+  return button;
 }
 
 function markedWriting(id, label, question, guidance, example, source) {
@@ -405,11 +413,6 @@ function renderCourse() {
     : 'Select your exam year, series, and Core option.';
   renderTopics();
   renderPractice(focus);
-  const coursework = route === '3';
-  byId('history-studio-route').href = coursework ? '#history-coursework' : '#history-paper-4';
-  byId('history-studio-route-title').textContent = coursework ? 'Coursework' : 'Paper 4';
-  byId('history-studio-route-description').textContent = coursework ? 'Research log and checklist' : 'Depth-study practice';
-  byId('history-studio-route-time').hidden = coursework;
   selectPracticePaper(location.hash.slice(1));
   renderQuiz();
   renderResume();
@@ -433,7 +436,8 @@ const tabs = [...document.querySelectorAll('.history-nav a')];
 function showView(id) {
   for (const view of views) view.hidden = view.id !== id;
   for (const tab of tabs) {
-    if (tab.hash === '#' + id) tab.setAttribute('aria-current', 'page');
+    const destination = id === 'history-practice' ? '#history-paper-2' : '#' + id;
+    if (tab.hash === destination) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
   }
 }
@@ -464,6 +468,35 @@ function navigate() {
   showView(view?.id || 'history-home');
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
+}
+
+const exhibitDialog = byId('history-exhibit-dialog');
+for (const exhibit of document.querySelectorAll('[data-exhibit]')) {
+  exhibit.addEventListener('click', (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof exhibitDialog.showModal !== 'function') return;
+    const topic = allTopics.find(([id]) => exhibit.hash === '#history-topic-' + id);
+    if (!topic) return;
+    event.preventDefault();
+    const [id, title, overview, question] = topic;
+    const content = byId('history-exhibit-content');
+    const heading = element('h2', exhibit.querySelector('h3')?.textContent || title);
+    heading.id = 'history-exhibit-title';
+    const illustration = (exhibit.querySelector('svg') || document.querySelector('.gallery-pedestal svg')).cloneNode(true);
+    const art = element('div', '', 'gallery-dialog-art');
+    art.append(illustration);
+    const lesson = element('a', 'Open full lesson', 'history-action');
+    lesson.href = exhibit.hash;
+    lesson.addEventListener('click', (lessonEvent) => {
+      if (lessonEvent.metaKey || lessonEvent.ctrlKey || lessonEvent.shiftKey || lessonEvent.altKey) return;
+      lessonEvent.preventDefault();
+      exhibitDialog.close();
+      openTopic(id);
+    });
+    const label = element('span', exhibit.querySelector('small')?.textContent || '1919 / Peace settlements', 'gallery-eyebrow');
+    content.replaceChildren(label, heading, art, element('p', overview),
+      element('p', question), studiedButton(id, renderTopics), lesson);
+    exhibitDialog.showModal();
+  });
 }
 
 document.querySelector('.skip').addEventListener('click', (event) => {
