@@ -32,7 +32,7 @@
     const lines = String(text).replace(/\r\n?/g, '\n').split('\n'); let cur = null, i = 0, lastQ = null, m;
     while (i < lines.length) {
       const L = lines[i];
-      if ((m = /^==\+?\s+(\S+)/.exec(L))) { cur = G[m[1]] || (G[m[1]] = { id: m[1], s: '', b: [], f: [], w: [], m: [], c: [], n: [], q: [] }); lastQ = null; i++; continue; }
+      if ((m = /^==\+?\s+(\S+)/.exec(L))) { cur = G[m[1]] || (G[m[1]] = { id: m[1], s: '', b: [], f: [], w: [], m: [], c: [], n: [], q: [] }); if (L[2] === '+' && !cur.base) cur.base = { c: cur.c.length, n: cur.n.length, q: cur.q.length }; lastQ = null; i++; continue; }
       if (!cur) { i++; continue; }
       if (L.trim() === '<<<') { const body = []; i++; while (i < lines.length && lines[i].trim() !== '>>>') { body.push(lines[i]); i++; } i++; cur.b = cur.b.concat(parseNotes(body, cur.id, warn)); continue; }
       if (L.startsWith('S: ')) cur.s = L.slice(3).trim();

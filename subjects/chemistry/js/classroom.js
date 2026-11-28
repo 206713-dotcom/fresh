@@ -171,6 +171,7 @@
     const prof = store.get('gc.teach.me', {});
     v.innerHTML = `<div class="page cr teach">${crumbs(['For teachers'])}${teachNav('teach')}
       <header class="page-head"><p class="kicker">For teachers · no sign-up</p><h1>Set homework in three steps</h1><p>Pick the lectures, choose the questions, and send one link. Students answer on any device and hand back a code; paste the codes into <a href="#teach-results">Class results</a> to see the whole class.</p></header>
+      ${tutBtn(0, 'How to choose questions, send the link on Google Classroom, collect the codes and read the results. Every click explained.')}
       <ol class="t-steps">
         <li class="panel t-step"><h2><i>1</i>Choose the lectures</h2>
           <div class="filterbar"><input id="tSearch" type="search" placeholder="Search lectures" aria-label="Search lectures" autocomplete="off" value="${esc(T.q)}">${STAGE_ORDER().map(S => `<button type="button" class="chip${T.stage === S.id ? ' is-on' : ''}" data-t="stage" data-v="${S.id}">${S.label}</button>`).join('')}</div>
@@ -187,6 +188,7 @@
       ${myHW().length ? `<section class="t-mine"><h2>Homework you have set</h2><p class="sub">Saved in this browser.</p><div class="t-mine-list">${myHW().slice().reverse().map(h => `<div class="panel t-mine-row"><div><b>${esc(h.P.t)}</b><small>${h.P.cl ? esc(h.P.cl) + ' · ' : ''}${plural(h.P.it.length, 'question')}${h.P.due ? ' · due ' + fmtDay(h.P.due) : ''}</small></div><button type="button" class="chip" data-t="copylink" data-id="${h.P.id}">Copy link</button><a class="chip" href="#teach-results" data-t="results" data-id="${h.P.id}">Results</a><button type="button" class="chip" data-t="print" data-id="${h.P.id}">Print</button></div>`).join('')}</div></section>` : ''}
       <details class="panel t-help"><summary>How does it work without accounts?</summary><p>The homework link holds the whole homework, so there is nothing to set up. When a student finishes, Quilio gives them a completion code that holds their answers and time. They hand the code in (a private comment on the Google Classroom assignment works well). You paste all the codes into <b>Class results</b>, and Quilio shows the class at a glance and every question's results. Nothing is stored on a server. The code is checked for tampering, but it is not exam-proof security: use it for homework, not for tests that count.</p></details></div>`;
     renderLec(); await renderQ();
+    if (!store.get('gc.tut.auto', 0)) { store.set('gc.tut.auto', 1); setTimeout(() => { if (location.hash === '#teach' && !$('.tut')) openTut(0); }, 600); }
   }
   function renderLec() {
     const box = $('#tLec'); if (!box) return; const q = T.q.trim().toLowerCase();
@@ -240,6 +242,7 @@
     const mine = myHW(), saved = store.get('gc.teach.codes', '');
     v.innerHTML = `<div class="page cr teach">${crumbs(['For teachers', 'Class results'])}${teachNav('teach-results')}
       <header class="page-head"><p class="kicker">For teachers</p><h1>Class results</h1><p>Paste every completion code your students handed in. You can paste a whole column from a spreadsheet or all the Classroom comments at once: Quilio finds the codes in the text.</p></header>
+      ${tutBtn(6, 'How to collect the codes from Google Classroom or a Google Form, and what every part of the results means.')}
       <div class="panel t-paste"><textarea id="rsIn" placeholder="Paste the codes here (they start with QH1.)" spellcheck="false">${esc(saved)}</textarea><div class="t-paste-row"><button type="button" class="btn" data-r="go">Show the results ${ARROW}</button><button type="button" class="chip" data-r="clear">Clear</button><span id="rsMsg" class="t-msg"></span></div></div>
       <div id="rsOut"></div></div>`;
     if (saved) showResults();
@@ -343,6 +346,139 @@
   }
   new MutationObserver(ms => { ms.forEach(m => { const fb = m.target.nodeType === 1 && (m.target.classList.contains('fb') ? m.target : null); if (fb) enhance(fb); }); })
     .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class'] });
+
+
+  /* =====================================================================
+     "ARE YOU A TEACHER?" NUDGE on the start screen
+     ===================================================================== */
+  function nudge() {
+    const old = $('.t-nudge'); if (old) old.remove(); $$('.start-top .tool[href="#teach"]').forEach(b => b.classList.remove('is-nudge'));
+    const h = location.hash.slice(1); if (h && h !== 'start') return;
+    const snooze = store.get('gc.tnudge', 0); if (snooze === 'done' || Date.now() < snooze) return;
+    const btn = $('.start-top .tool[href="#teach"]'), top = btn && btn.closest('.start-top'); if (!btn || !btn.offsetParent) return;
+    if (html.classList.contains('intro') || (window.GCIntro && window.GCIntro.playing) || $('.rv') || $('.lt-pop') || $('.tut') || $('#science-loading:not([hidden])')) { if (++nudgeTries < 40) nudgeLater(2500); return; }
+    const r = btn.getBoundingClientRect(), R = top.getBoundingClientRect(), W = Math.min(290, R.width - 24), left = Math.max(12, r.right - R.left - W);
+    const n = document.createElement('div'); n.className = 't-nudge'; n.setAttribute('role', 'dialog'); n.setAttribute('aria-label', 'For teachers');
+    const tip = Math.max(10, Math.min(W - 24, W - (r.left + r.width / 2 - R.left - left) - 7));
+    n.style.cssText = `left:${left}px;top:${r.bottom - R.top + 14}px;width:${W}px;--tip:${tip}px`;
+    n.innerHTML = `<button type="button" class="x" aria-label="Close" data-n="x">×</button><span class="k">Are you a teacher?</span><b>Set homework in 2 minutes 👩‍🏫</b>
+      <p>Pick lectures, send one link through Google Classroom, and see every student's answers, question by question. Free, no sign-up.</p>
+      <div class="row"><a class="go" href="#teach" data-n="go">Try it now ${ARROW}</a><button type="button" class="later" data-n="later">Not now</button></div>`;
+    top.appendChild(n); btn.classList.add('is-nudge');
+    n.addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (!b) return; const a = b.dataset.n;
+      store.set('gc.tnudge', a === 'go' ? 'done' : Date.now() + (a === 'x' ? 3 : 1) * 86400000); n.remove(); btn.classList.remove('is-nudge'); });
+  }
+  let nudgeT = 0, nudgeTries = 0; const nudgeLater = ms => { clearTimeout(nudgeT); nudgeT = setTimeout(nudge, ms); };
+  window.addEventListener('gc-view', () => { const n = $('.t-nudge'); if (n && location.hash.slice(1) && location.hash.slice(1) !== 'start') n.remove(); nudgeLater(2600); });
+  window.addEventListener('gc-intro-done', () => nudgeLater(2600)); window.addEventListener('resize', () => { if ($('.t-nudge')) nudgeLater(200); }); nudgeLater(3200);
+
+  /* =====================================================================
+     THE TEACHER TUTORIAL
+     ===================================================================== */
+  const ui = s => `<span class="ui">${s}</span>`, uil = s => `<span class="ui l">${s}</span>`;
+  const SAY = 'Do the questions in the link. When you finish, Quilio gives you a completion code starting with QH1. Copy it and paste it as a private comment on this assignment. Your first try is what counts.';
+  const TUT = [
+    { t: 'What this does', h: `<h3>Homework in one link, results in one paste</h3><p class="lead">Quilio's teacher tools let you set homework from any lecture, send it as a single link, and see how every student did on every question. There are no accounts, no class lists to type in and nothing to install. It works on laptops, tablets and phones.</p>
+      <div class="tut-mock"><div class="tut-flow"><div><span>📚</span><b>1. You pick</b>lectures and questions</div><div><span>🔗</span><b>2. One link</b>made for you</div><div><span>🧑‍🎓</span><b>3. Students answer</b>marked instantly, with mark-scheme feedback</div><div><span>🧾</span><b>4. They hand in a code</b>a private comment on Classroom</div><div><span>📊</span><b>5. You paste the codes</b>class results, question by question</div></div></div>
+      <h4>What you get at the end</h4><ul class="tips"><li>Every student's score and time, and who handed in late.</li><li>A grid showing every student × every question, with the option each student picked in multiple choice.</li><li>The most common wrong answer for each question, so you know which misconception to tackle.</li><li>The lectures to reteach first, and a CSV for your markbook.</li></ul>
+      <p class="lead" style="margin-top:14px">The whole tour takes about 4 minutes. Use <kbd>→</kbd> and <kbd>←</kbd> on your keyboard, or the buttons below.</p>` },
+    { t: 'Step 1: choose lectures', show: '.t-step:nth-child(1)', h: `<h3>Step 1 · Choose the lectures</h3><p class="lead">Tell Quilio which part of the course the homework is on. You can choose one lecture or several, from any stage.</p>
+      <div class="tut-mock tut-mini"><div class="row"><span class="f">Search lectures</span><span class="c">KS3</span><span class="c on">IGCSE</span><span class="c">AS Level</span><span class="c">A Level</span></div>
+        <div class="tick"><i class="on"></i><span><b>2.4</b> Ions and ionic bonds</span><small>22 questions</small></div><div class="tick"><i></i><span><b>2.5</b> Simple molecules and covalent bonds</span><small>21 questions</small></div></div>
+      <ol class="do"><li>Click a stage chip (${uil('KS3')} ${ui('IGCSE')} ${uil('AS Level')} ${uil('A Level')}) to list its topics. IGCSE is chosen for you.</li>
+        <li>Open a topic by clicking its name, then tick the lectures you taught. The number on the right is how many questions that lecture has.</li>
+        <li>Or type in <b>Search lectures</b> (for example <i>electrolysis</i> or <i>moles</i>): it searches every stage at once.</li>
+        <li>Everything you tick is listed under the box as chips, like ${uil('IGCSE 2.4 ×')}. Click a chip to remove that lecture.</li></ol>
+      <ul class="tips"><li>Mixing stages is fine: for a recap, tick a KS3 lecture and the IGCSE lecture that builds on it.</li><li>For an end-of-topic homework, tick every lecture in the topic.</li></ul>` },
+    { t: 'Step 2: choose questions', show: '.t-step:nth-child(2)', h: `<h3>Step 2 · Choose the questions</h3><p class="lead">There are two ways. Most teachers use the first one.</p>
+      <h4>A · ${ui('Let Quilio pick a mix')} (the default)</h4>
+      <ol class="do"><li>Choose <b>How many questions?</b> (5 to 30, or all of them). About 2–3 minutes per question is a good guide: 10 questions ≈ 25 minutes.</li>
+        <li>Quilio shares the questions out evenly across your lectures and mixes the types: multiple choice, calculations, written answers and Level Test questions.</li>
+        <li>The questions are chosen <b>once</b>, when you make the link, so every student gets exactly the same homework.</li></ol>
+      <h4>B · ${uil('Pick them myself')}</h4>
+      <ol class="do"><li>Every question for your lectures is listed, with its type and marks (for example ${uil('Written · 3 marks')}).</li>
+        <li>Tick the ones you want. The counter at the top shows how many you have chosen.</li>
+        <li>They appear in the order you ticked them.</li></ol>
+      <h4>The kinds of question</h4><ul class="tips"><li><b>Multiple choice</b>: 1 mark. Quilio records which option each student chose, so you can see the popular wrong answer.</li><li><b>Calculation</b>: students type a number; units and rounding are handled. They can open the worked solution, which is recorded as 👁.</li><li><b>Written</b>: marked against the mark scheme's key points, with the examiner's key words shown afterwards. Treat the mark as a guide.</li></ul>` },
+    { t: 'Step 3: name and send', show: '.t-step:nth-child(3)', h: `<h3>Step 3 · Name it and make the link</h3>
+      <ol class="do"><li><b>Title</b>: leave it empty and Quilio names it from the lectures (for example <i>IGCSE 2.4 to 2.5 homework</i>), or type your own.</li>
+        <li><b>Class</b> (for example <i>10M</i>) and <b>Your name</b> (for example <i>Mr Lee</i>): students see these at the top. Quilio remembers them for next time.</li>
+        <li><b>Due date</b>: optional. Students see a "Due Fri 5 Dec" badge, and anyone who finishes after that date is marked <i>late</i> in your results.</li>
+        <li>Click ${ui('Make the homework link →')}. A green box appears with your link.</li></ol>
+      <h4>The four buttons in the green box</h4><ol class="do"><li>${ui('Copy link')}: copies the link, ready to paste anywhere.</li><li>${uil('Share to Google Classroom')}: opens Classroom with the link already attached (next step).</li><li>${uil('Preview as a student')}: opens exactly what your students will see. Try a question!</li><li>${uil('Print a paper copy')}: a worksheet with answer lines and a mark scheme at the back.</li></ol>
+      <ul class="tips"><li>Every homework you make is saved under <b>Homework you have set</b> at the bottom of this page, so you can copy the link again later. This list is kept in this browser, so use the same computer and browser.</li></ul>` },
+    { t: 'Sending it on Google Classroom', h: `<h3>Sending it through Google Classroom</h3><p class="lead">The easiest way is the ${uil('Share to Google Classroom')} button.</p>
+      <ol class="do"><li>Click ${uil('Share to Google Classroom')}. Classroom opens in a new tab (sign in with your school account if asked).</li>
+        <li>Choose your <b>class</b>, then choose <b>Create assignment</b>.</li>
+        <li>The Quilio link is already attached. Paste the student instructions below into the description, set the due date and points if you want, then click <b>Assign</b>.</li></ol>
+      <div class="say"><b>Instructions to paste for students:</b><span>${esc(SAY)}</span><button type="button" class="btn small" data-tut="copysay">Copy these instructions</button></div>
+      <h4>Prefer to do it by hand?</h4><ol class="do"><li>Click ${ui('Copy link')}.</li><li>In Classroom, create an assignment, click <b>Add → Link</b>, paste the link, and add the instructions above.</li></ol>
+      <ul class="tips"><li>You can send the same link by email, Teams or a QR code on the board: anything that opens a web page works.</li></ul>` },
+    { t: 'What students see', h: `<h3>What your students see</h3><p class="lead">The link opens a homework page with your title, class, name and due date at the top, and a progress bar that fills as they go.</p>
+      <ol class="do"><li>They answer each question on the page. Each answer is marked straight away, with an explanation.</li>
+        <li><b>Only their first try counts.</b> They can keep trying afterwards to learn, but their score is already saved. Under each question it says "First try saved: 2 of 3 marks".</li>
+        <li>Written answers show the key words examiners look for, and which words in their own answer scored.</li>
+        <li>When every question is answered, they see their score and time, type their name, and click ${ui('Get my completion code')}.</li>
+        <li>They copy the code and hand it in as a private comment on your assignment.</li></ol>
+      <div class="tut-mock tut-mini"><b style="font:500 14px var(--display)">A completion code looks like this:</b><div class="code">QH1.eyJoIjoiN3RrMm…fQ.8c2e</div></div>
+      <ul class="tips"><li>No login and nothing to install. It works on a phone.</li><li>Every question they got wrong goes into their <b>Mistakes notebook</b> (Tracker → Mistakes notebook), ready to try again later.</li><li>If they close the page halfway, their answers are kept: opening the link again on the same device carries on where they stopped.</li></ul>` },
+    { t: 'Collecting the codes', h: `<h3>Collecting the codes</h3><p class="lead">You need the codes in one place so you can paste them into Quilio. Pick whichever is easiest for you.</p>
+      <h4>Way 1 · Private comments (simplest)</h4><ol class="do"><li>Open the assignment in Classroom and go to <b>Student work</b>.</li><li>Each student's private comment contains their code. Select and copy the comments; you can copy a whole block of text at once.</li><li>Paste everything into <b>Class results</b>. Quilio picks out the codes and ignores the other text.</li></ol>
+      <h4>Way 2 · A Google Form (fastest for big classes)</h4><ol class="do"><li>Make a Google Form with one short-answer question: "Paste your completion code".</li><li>Put the form link in the assignment and ask students to submit their code there.</li><li>Open the form's responses in Google Sheets, select the column of codes, copy, and paste it into <b>Class results</b>.</li></ol>
+      <ul class="tips"><li>Each code already contains the student's name, so you do not need to match codes to names.</li><li>If a student sends two codes, Quilio keeps their latest one.</li><li>You can paste codes from several different homeworks together: Quilio sorts them and lets you switch between them.</li></ul>` },
+    { t: 'Reading the results', show: '.t-paste', h: `<h3>Reading the results</h3><ol class="do"><li>Go to ${uil('2 · Class results')} (the tab at the top of this page).</li><li>Paste the codes into the big box and click ${ui('Show the results →')}. Quilio remembers what you pasted, so you can come back later.</li></ol>
+      <h4>What each part tells you</h4>
+      <div class="tut-mock tut-mini"><div class="g"><span></span><span style="font-weight:500">Q1</span><span style="font-weight:500">Q2</span><span style="font-weight:500">Q3</span><span style="font-weight:500">Q4</span><span style="font-weight:500">Q5</span>
+        <span style="justify-content:start">Semin</span><span class="c-ok">✓</span><span class="c-no">B</span><span class="c-ok">✓</span><span class="c-part">1/3</span><span class="c-ok">✓</span>
+        <span style="justify-content:start">Ian</span><span class="c-ok">✓</span><span class="c-no">B</span><span class="c-s">👁</span><span class="c-ok">✓</span><span class="c-no">✗</span></div></div>
+      <ul class="tips"><li><b>The cards at the top</b>: how many handed in, the class average, the typical time and how many were late.</li>
+        <li><b>Reteach first</b>: the three lectures the class found hardest, with a link straight to each lecture to use in class.</li>
+        <li><b>The grid</b>: ✓ right first time · a letter = the wrong option they chose · 1/3 = some of the marks · 👁 = opened the worked answer before answering · – = skipped. Sort it A–Z, highest first or lowest first. Click a Q number to jump to that question.</li>
+        <li><b>Question by question</b>: how many students chose each option. The correct answer is green; the most popular wrong answer is red, with a note. Sort by ${uil('Hardest first')} to plan your next lesson.</li>
+        <li>${uil('Download CSV')} gives you a spreadsheet of every score for your markbook.</li></ul>
+      <ul class="tips warn"><li>If a code was changed by hand, Quilio says so and leaves it out.</li></ul>` },
+    { t: 'Using it in lessons', h: `<h3>Ideas for using it in lessons</h3><ul class="tips">
+      <li><b>Do Now:</b> set 5 questions on last lesson's lecture, put the link on the board as a QR code, and review the grid together after 10 minutes.</li>
+      <li><b>Exit ticket:</b> 3 questions at the end of a lesson. Paste the codes before the next lesson and start with the most common wrong answer.</li>
+      <li><b>Before a test:</b> tick every lecture in the topic and choose 20 questions; use ${uil('Reteach first')} to plan the revision lesson.</li>
+      <li><b>Different groups:</b> make two links from the same lectures, one with ${uil('Let Quilio pick a mix')} and 8 questions, one with hand-picked written questions for stretch.</li>
+      <li><b>No devices?</b> Use ${uil('Print a paper copy')}: a worksheet with answer lines, with the mark scheme on the last page for you.</li>
+      <li><b>Chem Lab Bench:</b> open the virtual lab from Quilio's start screen to demonstrate reactions you cannot do in class, such as sodium in water or electrolysis.</li></ul>` },
+    { t: 'Questions and limits', h: `<h3>Good to know</h3><ul class="tips">
+      <li><b>Where is the data?</b> Nowhere but the devices. Quilio has no server: the link carries the homework and the code carries the results. Nothing about your students is uploaded or stored by Quilio.</li>
+      <li><b>Can I see results without codes?</b> No. Because nothing is uploaded, the codes are how the results reach you.</li>
+      <li><b>Can I use another computer?</b> Your links work anywhere. The <b>Homework you have set</b> list and the codes you pasted are kept in the browser you used, so copy your links somewhere safe too.</li>
+      <li><b>Can a student cheat?</b> Codes are checked, and hand-edited ones are rejected, but this is not exam security. A student could ask a friend for answers or redo the homework on another device. Use it for homework and practice, not for tests that count.</li>
+      <li><b>Can I change a homework after sending it?</b> No: make a new link. The old one keeps working.</li>
+      <li><b>Which questions are there?</b> Every Quilio lecture has exam-style questions in the Cambridge style, plus the Level Test questions, from KS3 to A Level.</li></ul>
+      <p class="lead" style="margin-top:16px">You are ready. Close this tour and start with step 1. 🎉</p>` }
+  ];
+  let tutAt = 0;
+  function openTut(at) {
+    tutAt = at || 0; const done = new Set(store.get('gc.tut.seen', []));
+    const d = document.createElement('div'); d.className = 'tut'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-label', 'Teacher tutorial');
+    d.innerHTML = `<div class="tut-box"><nav class="tut-side"><h2><small>Teacher tutorial</small>How to use Quilio with your class</h2>${TUT.map((c, k) => `<button type="button" data-tut="go" data-k="${k}"><i>${k + 1}</i>${esc(c.t)}</button>`).join('')}</nav>
+      <div class="tut-main"><div class="tut-top"><span class="n"></span><span class="bar"><i></i></span><button type="button" class="tut-x" data-tut="close" aria-label="Close the tutorial">×</button></div><div class="tut-body" tabindex="-1"></div>
+      <div class="tut-foot"><button type="button" class="btn small ghost show" data-tut="show">Show me on the page</button><span class="grow"></span><button type="button" class="btn small ghost" data-tut="prev">← Back</button><button type="button" class="btn small" data-tut="next">Next →</button></div></div></div>`;
+    document.body.appendChild(d); html.style.overflow = 'hidden';
+    const draw = () => { const c = TUT[tutAt]; done.add(tutAt); store.set('gc.tut.seen', [...done]);
+      $('.tut-body', d).innerHTML = c.h; $('.tut-body', d).scrollTop = 0; $('.tut-top .n', d).textContent = `${tutAt + 1} of ${TUT.length}`; $('.tut-top .bar i', d).style.width = ((tutAt + 1) / TUT.length * 100) + '%';
+      $$('.tut-side button', d).forEach((b, k) => { b.classList.toggle('is-on', k === tutAt); b.classList.toggle('is-done', done.has(k) && k !== tutAt); });
+      $('[data-tut="prev"]', d).disabled = tutAt === 0; $('[data-tut="next"]', d).textContent = tutAt === TUT.length - 1 ? 'Start setting homework ✓' : 'Next →';
+      const sh = $('[data-tut="show"]', d); sh.hidden = !(c.show && $(c.show)); };
+    const close = () => { d.remove(); html.style.overflow = ''; document.removeEventListener('keydown', key); };
+    const key = e => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight' && tutAt < TUT.length - 1) { tutAt++; draw(); } else if (e.key === 'ArrowLeft' && tutAt > 0) { tutAt--; draw(); } };
+    document.addEventListener('keydown', key);
+    d.addEventListener('click', e => { if (e.target === d) return close(); const b = e.target.closest('[data-tut]'); if (!b) return; const a = b.dataset.tut;
+      if (a === 'close') close(); else if (a === 'go') { tutAt = +b.dataset.k; draw(); } else if (a === 'prev') { tutAt = Math.max(0, tutAt - 1); draw(); }
+      else if (a === 'next') { if (tutAt < TUT.length - 1) { tutAt++; draw(); } else { close(); if (location.hash !== '#teach') location.hash = 'teach'; else spot('.t-step'); } }
+      else if (a === 'copysay') copy(SAY, b);
+      else if (a === 'show') { const sel = TUT[tutAt].show; close(); spot(sel); } });
+    draw(); $('.tut-body', d).focus();
+  }
+  function spot(sel) { const el = $(sel); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.classList.remove('t-spot'); void el.offsetWidth; el.classList.add('t-spot'); setTimeout(() => el.classList.remove('t-spot'), 4000); }
+  const tutBtn = (at, sub) => `<button type="button" class="t-tut-btn" data-tutopen="${at || 0}"><span class="pl"><svg viewBox="0 0 24 24" fill="#0a2440" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg></span><span class="tx"><small>New here? Start with this</small><b>Watch the step-by-step tutorial</b><span>${sub}</span></span><span class="dur">10 short steps · 4 min</span></button>`;
+  document.addEventListener('click', e => { const b = e.target.closest('[data-tutopen]'); if (b) openTut(+b.dataset.tutopen); });
 
   window.Classroom = { teach: (v, h) => h === 'teach-results' ? vResults(v) : vTeach(v), hw: vHW, mistakes: vMistakes, leave: () => { HW = null; } };
   // the router may have run before this file loaded: if the address is one of these pages, show it now

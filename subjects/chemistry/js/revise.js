@@ -262,7 +262,10 @@
     const order = ['ks3', 'igcse', 'as', 'a2'], dist = l => Math.abs(order.indexOf(l.stage.id) - order.indexOf(S.id));
     const other = kin.slice().sort((a, b) => dist(a) - dist(b)).flatMap(l => itemsOf(l, (G[l.stage.id] || {})[l.id]).slice(0, 2)).slice(0, Math.max(6, 16 - topic.length));
     const ids = new Set([L.id].concat(sibs.map(l => l.id))), lt = ltItems().filter(x => ids.has(x.src)).slice(0, 5);
+    const rec = G[S.id][L.id], own = rec && rec.base ? itemsOf(L, rec).filter(it => it.i >= rec.base[it.k]) : [];
+    const mixed = []; { const by = { c: own.filter(x => x.k === 'c'), n: own.filter(x => x.k === 'n'), q: own.filter(x => x.k === 'q') }; while (mixed.length < own.length) ['c', 'c', 'n', 'q'].forEach(k => { if (by[k].length) mixed.push(by[k].shift()); }); }
     const groups = [];
+    if (mixed.length) groups.push({ short: 'exam practice', h: `Exam practice: ${L.title}`, sub: 'Past-paper style questions on this lecture: multiple choice, calculations and written answers, marked here on your device.', q: mixed });
     if (direct.length) groups.push({ short: 'past papers', h: 'From past papers', sub: 'Real olympiad questions on this lecture, remade with new numbers. Easiest first.', pp: direct });
     if (topic.length) groups.push({ short: 'this topic', h: `More from Topic ${T.n}: ${T.title}`, sub: 'Exam-style questions from the other lectures in this topic, marked here on your device.', q: topic });
     if (lt.length) groups.push({ short: 'Level Test', h: 'Level Test questions', sub: 'The Level Test questions that check this topic.', q: lt });
