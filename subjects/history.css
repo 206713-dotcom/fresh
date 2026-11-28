@@ -289,3 +289,66 @@
   .gallery-foot { padding: 16px 20px; }
   .gallery-sectionhead { align-items: start; }
 }
+
+.gallery-studyroom {
+  margin-top: clamp(36px, 6vw, 72px);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--gallery-line);
+}
+.gallery-studyroom .gallery-sectionhead { margin-top: 0; }
+.history-quick {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: .75rem;
+}
+.history-quick a {
+  display: grid;
+  align-content: start;
+  gap: .35rem;
+  text-decoration: none;
+}
+.gallery-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.gallery-studyroom .history-panel,
+.gallery-studyroom .gallery-source {
+  min-width: 0;
+  background: #292f30;
+  border-color: var(--gallery-line);
+  color: var(--gallery-ink);
+  border-radius: 4px;
+}
+.gallery-studyroom .history-quick a:hover, .gallery-paper-links a:hover {
+  border-color: var(--gallery-accent);
+  text-decoration: none;
+}
+.gallery-studyroom .history-panel h2, .gallery-studyroom .gallery-source h2 {
+  color: inherit;
+  margin: 0 0 .7rem;
+  font: normal clamp(1.25rem, 2.5vw, 1.7rem)/1.2 Georgia, serif;
+}
+.gallery-source { border: 1px solid var(--gallery-line); padding: 1.25rem; align-content: center; }
+.gallery-source figure { margin: .7rem 0 1rem; }
+.gallery-source blockquote { margin: 0 0 .55rem; font: italic clamp(1.55rem, 3vw, 2.25rem)/1.17 Georgia, serif; }
+.gallery-source figcaption { font-size: .9rem; color: #e4cda4; }
+.gallery-paper-links { display: grid; gap: .45rem; }
+.gallery-paper-links a {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: .55rem;
+  padding: .55rem .7rem;
+  background: var(--gallery-bg);
+  border: 1px solid var(--gallery-line);
+  border-radius: 4px;
+  color: var(--gallery-ink);
+  text-decoration: none;
+}
+.gallery-paper-links strong { color: var(--gallery-accent); overflow-wrap: anywhere; }
+.gallery-paper-links small { display: block; opacity: .8; }
+.gallery-studyroom .history-action { background: var(--gallery-accent); color: #201a13; }
+@media (max-width: 700px) {
+  .gallery-workbench { grid-template-columns: minmax(0, 1fr); }
+}
