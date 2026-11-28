@@ -141,6 +141,10 @@
   --gallery-grid-gap: clamp(1rem, 2vw, 1.5rem);
   --gallery-card-padding: clamp(1.1rem, 2.6vw, 1.75rem);
   --gallery-content-width: 76rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background:
     radial-gradient(ellipse at 0 22rem, #20332f 0%, transparent 42rem),
@@ -149,6 +153,8 @@
   color: var(--gallery-ink);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.history-gallery > #main { flex: 1 0 auto; }
 
 .gallery-nav {
   position: sticky;
