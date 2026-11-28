@@ -291,6 +291,28 @@ textarea { font-family:var(--study-font,system-ui,sans-serif); font-size:var(--s
 }
 .studio-header-tools { display:flex; align-items:center; gap:.65rem; font-size:.88rem; }
 .studio-header-tools a { color:var(--studio-accent); font-weight:700; }
+:root:not([data-theme="dark"]) .studio-header-tools .return-to-fresh {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:2.5rem;
+  padding:.45rem .95rem;
+  border:1px solid #174e91;
+  border-radius:999px;
+  background:#174e91 linear-gradient(130deg,#245da1,#153d70);
+  color:#fff;
+  box-shadow:0 2px 5px #153d7026;
+  line-height:1.2;
+  white-space:nowrap;
+}
+:root:not([data-theme="dark"]) .studio-header-tools .return-to-fresh:hover {
+  background:#153d70;
+  box-shadow:0 3px 8px #153d7040;
+}
+:root:not([data-theme="dark"]) .studio-header-tools .return-to-fresh:focus-visible {
+  outline:2px solid #174e91;
+  outline-offset:3px;
+}
 .studio-header-tools button { color:var(--studio-text); min-height:2.5rem; }
 .studio-home { padding:2rem 0 3rem; color:var(--studio-text); }
 .studio-continue,.studio-card {
