@@ -7,7 +7,7 @@ export function markHistory(task, answer, onProgress) {
     return Promise.reject(new Error('AI marking needs a browser and device with WebGPU. Compare your draft with the model answer below.'));
   }
   return new Promise((resolve, reject) => {
-    worker ??= new Worker(new URL('./english/marker-worker.mjs?v=history1', import.meta.url), { type: 'module' });
+    worker ??= new Worker(new URL('./english/marker-worker.mjs?v=practice2', import.meta.url), { type: 'module' });
     pending = true;
     function finish(error, result) {
       clearTimeout(timeout);

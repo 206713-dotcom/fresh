@@ -1,0 +1,58 @@
+a.cs-fresh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 3rem;
+  padding: .6rem 1rem;
+  border: 1px solid #6b957e;
+  border-radius: .85rem;
+  background: linear-gradient(135deg, #244d3d, #18382d);
+  color: #fff;
+  box-shadow: 0 3px 9px #18382d35;
+  font-size: .95rem;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a.cs-fresh-link:hover { background: #32634d; text-decoration: none; }
+.cs-fresh-link:focus-visible, .cs-practice :focus-visible { outline: 3px solid #b66e25; outline-offset: 3px; }
+body:has(.page-igcse) #fresh-back { visibility: hidden; }
+.cs-exam-links, .cs-tabs, .cs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem;
+}
+.cs-exam-links { margin-block: .75rem 1rem; }
+.cs-practice { padding-block: 1.5rem 3rem; }
+.cs-hero {
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: 1.2rem;
+  background: radial-gradient(ellipse at top right, #38725a, #172f29 65%);
+  color: #fff;
+}
+.cs-hero h1 { margin: .35rem 0; font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -.04em; }
+.cs-hero p { margin: .4rem 0; }
+.cs-tabs { margin-block: 1rem; }
+.cs-tabs a, .cs-action {
+  border: 1px solid #8da696;
+  border-radius: .65rem;
+  background: #eef6ef;
+  color: #203e32;
+  padding: .6rem .85rem;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+}
+.cs-tabs [aria-current], .cs-action { background: #244d3d; color: white; cursor: pointer; }
+.cs-action:disabled { opacity: .65; cursor: wait; }
+.cs-card { padding: clamp(1rem, 3vw, 2rem); border: 1px solid #d4d9cf; border-radius: 1rem; background: #fffefa; }
+.cs-card h2 { margin-top: 0; }
+.cs-card label { display: block; font-weight: 650; }
+.cs-card :is(select, input, textarea) { display: block; max-width: 100%; padding: .65rem; margin: .35rem 0 1rem; border: 1px solid #85998c; border-radius: .5rem; background: white; color: #192e28; font: inherit; }
+.cs-card textarea { width: 100%; min-height: 12rem; resize: vertical; }
+.cs-card :is(pre, textarea.cs-code) { font-family: ui-monospace, monospace; }
+.cs-card pre { overflow: auto; padding: 1rem; border-radius: .6rem; background: #edf3ec; }
+.cs-card summary { cursor: pointer; font-weight: 700; }
+.cs-card details { margin-top: 1rem; }
+body:has(.page-igcse) .side-bottom .fresh-python-back { display: none; }
