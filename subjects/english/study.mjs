@@ -1,6 +1,6 @@
 import { groupedQuestions, setupClearWriting, setupNewQuestion } from './question-controls.mjs?v=question-bank';
 import { countWords, papers, rubricVersion, tasks } from './practice.mjs?v=question-bank';
-import { setupLearningTools, updateMetrics } from './learning.mjs?v=question-bank';
+import { setupLearningTools, updateMetrics } from './learning.mjs?v=studio-light';
 import { read, write as writeStorage } from './storage.mjs';
 import { setupWorkshop } from './workshop.mjs?v=question-bank';
 import { setupTechniqueQuiz } from './technique-quiz.mjs?v=technique1';

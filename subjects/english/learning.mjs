@@ -344,7 +344,7 @@ export function setupTheme(read, write) {
     theme.setAttribute('aria-pressed',String(dark));
     theme.textContent = dark ? 'Light mode' : 'Dark mode';
   }
-  setTheme((read('theme') ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark');
+  setTheme(read('theme') === 'dark');
   theme.addEventListener('click', () => {
     const dark = theme.getAttribute('aria-pressed') !== 'true';
     setTheme(dark);
