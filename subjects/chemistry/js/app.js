@@ -407,10 +407,10 @@
     window.dispatchEvent(new Event('gc-view'));
     if (!h || h === 'start' || h === 'enter') return startShow();
     startHide(); let st = null;
-    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'simulations' || h === 'live-models') vModels(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view); else if (h === 'record' && window.Revise) Revise.page(view);
+    if (h === 'home') vHub(); else if (h === 'chemistry') vChem(); else if (h === 'about-us') vAbout(); else if (h === 'developers') vDevs(); else if (h === 'periodic-table') vPT(); else if (h === 'simulations' || h === 'live-models') vModels(); else if (h === 'definitions') vDefs(); else if (h.startsWith('olympiad')) Olympiad.render(view, h); else if (h === 'level-test' && window.LevelTest) LevelTest.render(view); else if (h === 'record' && window.Revise) Revise.page(view); else if (h === 'mistakes' && window.Classroom) Classroom.mistakes(view); else if ((h === 'teach' || h === 'teach-results') && window.Classroom) Classroom.teach(view, h); else if (h.startsWith('hw=') && window.Classroom) Classroom.hw(view, h.slice(3));
     else if (STAGE[h]) { vStage(STAGE[h]); st = h; } else if (TOPIC[h]) { vTopic(TOPIC[h]); st = TOPIC[h].stage.hash; } else if (BY[h]) { vLecture(BY[h]); st = BY[h].stage.hash; } else vChem();
     $$('#tabs a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + st));
-    $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h.startsWith('olympiad') ? 'olympiad' : h)));
+    $$('.bar .tool[data-tool]').forEach(a => a.classList.toggle('is-on', a.dataset.tool === (h.startsWith('olympiad') ? 'olympiad' : h === 'mistakes' ? 'record' : h.startsWith('teach') ? 'teach' : h)));
     window.scrollTo(0, 0);
   }
 

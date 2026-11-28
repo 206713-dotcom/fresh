@@ -42,7 +42,7 @@
   }, 5000);
   function answer(id, key, ok) {
     if (cur && cur.id === id) count(); const e = touch(id), p = e.q[key] || [0, 0, 0];
-    e.q[key] = [ok ? 1 : 0, p[1] + 1, Date.now()]; act('q', id, ok ? 1 : 0); save();
+    e.q[key] = [ok ? 1 : 0, p[1] + 1, Date.now(), (p[3] || (p[1] && !p[0] ? 1 : 0)) + (ok ? 0 : 1)]; act('q', id, ok ? 1 : 0); save(); window.dispatchEvent(new CustomEvent('gc-answer', { detail: { id, key, ok } }));
   }
   window.addEventListener('gc-view', () => {
     const c = GC.cur(); cur = c ? { id: c.L.id, sec: 0, counted: false } : null;
@@ -160,7 +160,7 @@
   let tried = false;
   async function welcome() {
     if (tried || M || !GC.IDX) return; const loading = document.getElementById('science-loading'), h = location.hash.slice(1);
-    if (html.classList.contains('intro') || (window.GCIntro && window.GCIntro.playing) || (loading && !loading.hidden) || $('.lt-pop') || h === 'level-test' || h === 'record') return;
+    if (html.classList.contains('intro') || (window.GCIntro && window.GCIntro.playing) || (loading && !loading.hidden) || $('.lt-pop') || h === 'level-test' || h === 'record' || h === 'mistakes' || h.startsWith('hw=') || h.startsWith('teach')) return;
     tried = true; let seen = false; try { seen = sessionStorage.getItem('gc.rv') === '1'; sessionStorage.setItem('gc.rv', '1'); } catch (e) { }
     const ids = recent([...BEFORE], 3); if (seen || !ids.length) return;
     html.classList.add('rv-pending');
@@ -194,7 +194,7 @@
         <button type="button" class="chip" data-rv="revise" data-id="${id}">Revise</button></div>`;
     };
     v.innerHTML = `<div class="page rec"><nav class="crumbs" aria-label="Breadcrumb"><a href="#chemistry">Chemistry</a><span>Your record</span></nav>
-      <header class="page-head"><p class="kicker">Saved in this browser only</p><h1>Your record</h1><p>Every lecture you study is saved here. The next time you open Quilio, it asks you a few questions on what you studied last time.</p></header>
+      ${window.GCNav ? GCNav('record') : ''}<header class="page-head"><p class="kicker">Saved in this browser only</p><h1>Your record</h1><p>Every lecture you study is saved here. The next time you open Quilio, it asks you a few questions on what you studied last time.</p></header>
       ${ids.length ? `<div class="rec-stats"><div class="panel"><b>${ids.length}</b><span>${ids.length === 1 ? 'lecture' : 'lectures'} studied</span></div><div class="panel"><b>${asked}</b><span>${asked === 1 ? 'question' : 'questions'} answered</span></div><div class="panel"><b>${asked ? Math.round(right / asked * 100) + '%' : '–'}</b><span>correct, last try</span></div><div class="panel"><b>${streak}</b><span>${streak === 1 ? 'day' : 'days'} in a row</span></div><div class="panel"><b>${secs < 3600 ? Math.round(secs / 60) : (secs / 3600).toFixed(1)}</b><span>${secs < 3600 ? 'minutes' : 'hours'} of study</span></div></div>
       ${tracker(today)}
       <div class="rec-go"><button type="button" class="btn" data-rv="revise-all">Revise now ${ARROW}</button><span>Five questions from what you studied most recently.</span></div>
@@ -287,5 +287,5 @@
     const top = list.getBoundingClientRect().top; if (top > innerHeight * .7) window.scrollBy({ top: top - innerHeight * .45, behavior: 'smooth' });
   }
 
-  window.Revise = { page, open: ids => reviseNow(ids && ids.length ? ids : recent(Object.keys(R.L), 3)), welcome: () => { tried = false; try { sessionStorage.removeItem('gc.rv'); } catch (e) { } return welcome(); }, record: () => R };
+  window.Revise = { card, itemsOf, ltItems, item: el => REG.get(el.dataset.src + '|' + el.dataset.k + '|' + el.dataset.i), page, open: ids => reviseNow(ids && ids.length ? ids : recent(Object.keys(R.L), 3)), welcome: () => { tried = false; try { sessionStorage.removeItem('gc.rv'); } catch (e) { } return welcome(); }, record: () => R };
 })();
