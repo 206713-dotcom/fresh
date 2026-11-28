@@ -56,3 +56,22 @@ body:has(.page-igcse) #fresh-back { visibility: hidden; }
 .cs-card summary { cursor: pointer; font-weight: 700; }
 .cs-card details { margin-top: 1rem; }
 body:has(.page-igcse) .side-bottom .fresh-python-back { display: none; }
+
+.cs-table { overflow-x: auto; margin-block: 1rem; }
+.cs-table table { border-collapse: collapse; min-width: min(100%, 22rem); }
+.cs-table :is(th, td) { border: 1px solid #bbcbbf; padding: .5rem .75rem; text-align: left; }
+.cs-table th { background: #edf3ec; }
+.cs-table input { width: 4rem; margin: 0; }
+.cs-card [aria-invalid="true"] { border: 2px solid #a14728; background: #fff2ee; }
+.cs-flowchart { display: grid; gap: 1.15rem; justify-items: center; list-style: none; padding: 0; }
+.cs-flowchart li { position: relative; padding: .65rem 1rem; border: 1px solid #8da696; background: #edf3ec; text-align: center; max-width: 100%; }
+.cs-flowchart li + li::before { content: "↓"; position: absolute; top: -1.25rem; left: 50%; transform: translateX(-50%); }
+.cs-flowchart select { margin: .4rem auto 0; }
+.cs-flowchart .cs-flow-terminal { border-radius: 2rem; }
+.cs-flowchart .cs-flow-io { border-radius: 0 1.15rem; }
+.cs-flowchart .cs-flow-decision { border: 2px dashed #45765a; }
+.cs-flowchart { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 44rem; margin-inline: auto; }
+.cs-flowchart li { grid-column: 1 / -1; }
+.cs-flowchart .cs-flow-branch { grid-column: auto; width: 100%; }
+.cs-flowchart .cs-flow-branch select { width: 100%; }
+.cs-flowchart .cs-flow-branch + .cs-flow-terminal::before { content: none; }

@@ -1,4 +1,6 @@
 import { drills, scenarios, writtenQuestions } from './questions.mjs';
+import { pythonModels } from './python-models.mjs';
+import { tables, flowcharts, sql, books } from './skills.mjs';
 import { markHistory as markAnswer } from '../../history-marker.js';
 
 const get = (id) => document.getElementById(id);
@@ -93,10 +95,11 @@ function renderDrills() {
   render();
 }
 
-function questionView(task, coding) {
+function questionView(task, coding, language) {
   const view = node('article');
-  const draft = editor(coding ? 'Your solution' : 'Your answer', 'fresh:0478:' + task.id);
+  const draft = editor(coding ? 'Your solution' : 'Your answer', 'fresh:0478:' + task.id + (language === 'Python' ? ':python' : ''));
   if (coding) draft.input.className = 'cs-code';
+  const model = language === 'Python' ? pythonModels[task.id] : task.model;
   const mark = button('AI mark my answer');
   const status = node('p');
   status.setAttribute('role', 'status');
@@ -119,7 +122,7 @@ function questionView(task, coding) {
     try {
       const result = await markAnswer({
         subject: 'computer-science', prompt: task.prompt, criteria: task.criteria,
-        example: task.model, target: coding ? 'Scenario algorithm for Paper 2.' : 'Extended written answer.'
+        example: model, target: coding ? 'Paper 2 scenario algorithm written in ' + language + '.' : 'Extended written answer.'
       }, answer, (message) => { status.textContent = message; });
       if (draft.input.value.trim() !== answer) {
         status.textContent = 'Your draft changed during marking. Submit it again for updated feedback.';
@@ -139,7 +142,7 @@ function questionView(task, coding) {
   });
   view.append(node('h3', task.title + ' · ' + task.marks + ' marks'), node('p', task.prompt),
     draft.wrapper, mark, node('p', 'AI marking requires WebGPU and downloads a model on first use. Your draft is marked on your device.'),
-    status, results, details('Show model answer', node(coding ? 'pre' : 'p', task.model)),
+    status, results, details(coding ? 'Show ' + language + ' model answer' : 'Show model answer', node(coding ? 'pre' : 'p', model)),
     details('Show practice rubric', rubric));
   return view;
 }
@@ -148,13 +151,128 @@ function mountQuestions(id, label, bank, coding) {
   const { wrapper, select } = selectControl(label, bank.map((task, index) =>
     [index, task.title]));
   const body = node('div');
+  const language = coding ? selectControl('Answer language', [['Pseudocode', 'Pseudocode'], ['Python', 'Python']]) : null;
   function render() {
-    body.replaceChildren(questionView(bank[Number(select.value)], coding));
+    body.replaceChildren(questionView(bank[Number(select.value)], coding, language?.select.value));
+  }
+  if (language) {
+    language.select.addEventListener('change', render);
   }
   select.addEventListener('change', render);
-  get(id).append(wrapper, body);
+  const output = get(id);
+  output.append(wrapper);
+  if (language) output.append(language.wrapper);
+  output.append(body);
   render();
 }
+
+function dataTable(headers, rows, cellContent = (value) => String(value)) {
+  const table = node('table');
+  const head = node('thead');
+  const headings = node('tr');
+  for (const header of headers) {
+    const cell = node('th', header);
+    cell.scope = 'col';
+    headings.append(cell);
+  }
+  head.append(headings);
+  const body = node('tbody');
+  rows.forEach((row, rowIndex) => {
+    const tr = node('tr');
+    row.forEach((value, column) => {
+      const cell = node('td');
+      cell.append(cellContent(value, rowIndex, column));
+      tr.append(cell);
+    });
+    body.append(tr);
+  });
+  table.append(head, body);
+  const scroll = node('div');
+  scroll.className = 'cs-table';
+  scroll.append(table);
+  return scroll;
+}
+
+function skillsDrill(id, bank, title, render) {
+  const { wrapper, select } = selectControl(title, bank.map((item, index) => [index, item.title ?? item[0]]));
+  const body = node('div');
+  get(id + '-exercises').append(wrapper, body);
+  function update() {
+    body.replaceChildren(...render(bank[Number(select.value)], Number(select.value)));
+  }
+  select.addEventListener('change', update);
+  update();
+}
+
+function checkAnswers(entries) {
+  const check = button('Check answers');
+  const status = node('p');
+  status.setAttribute('role', 'status');
+  check.addEventListener('click', () => {
+    let correct = 0;
+    for (const [input, expected] of entries) {
+      const matches = input.value.trim() === String(expected);
+      if (matches) correct++;
+      if (matches) input.removeAttribute('aria-invalid');
+      else input.setAttribute('aria-invalid', 'true');
+    }
+    status.textContent = correct + ' of ' + entries.length + ' correct.' +
+      (correct === entries.length ? '' : ' Recheck the highlighted answers.');
+  });
+  return [check, status];
+}
+
+for (const [id, bank] of Object.entries(tables)) {
+  skillsDrill(id, bank, 'Exercise', ([, prompt, code, headers, rows, explanation]) => {
+    const entries = [];
+    const table = dataTable(headers, rows, (value, row, column) => {
+      const heading = headers[column];
+      const trace = id === 'trace-tables';
+      if (trace ? heading === 'I' : !['X', 'Q'].includes(heading)) return String(value);
+      const input = node('input');
+      input.inputMode = 'numeric';
+      input.setAttribute('aria-label', heading + ', row ' + (row + 1));
+      entries.push([input, value]);
+      return input;
+    });
+    const worked = node('div');
+    worked.append(dataTable(headers, rows), node('p', explanation));
+    return [node('p', prompt), node('pre', code), table, ...checkAnswers(entries), details('Show completed table', worked)];
+  });
+}
+
+skillsDrill('flowcharts', flowcharts, 'Exercise', ({ prompt, steps, explanation }) => {
+  const chart = node('ol');
+  chart.className = 'cs-flowchart';
+  const entries = [];
+  for (const [label, shape, choices] of steps) {
+    const step = node('li');
+    step.className = 'cs-flow-' + shape;
+    if (label.endsWith(' branch')) step.classList.add('cs-flow-branch');
+    if (choices) {
+      const options = choices.map((answer, index) => [String(index), answer]);
+      if (label === 'Yes branch') options.reverse();
+      const { wrapper, select } = selectControl(label, [['', 'Choose a step'], ...options]);
+      step.append(wrapper);
+      entries.push([select, '0']);
+    } else step.append(node('span', label));
+    chart.append(step);
+  }
+  const worked = node('ol');
+  for (const [label, , choices] of steps) worked.append(node('li', choices ? label + ' · ' + choices[0] : label));
+  const solution = node('div');
+  solution.append(worked, node('p', explanation));
+  return [node('p', prompt), chart, ...checkAnswers(entries), details('Show worked flowchart', solution)];
+});
+
+skillsDrill('sql', sql, 'Exercise', ([, prompt, query, headers, rows], index) => {
+  const draft = editor('Your SQL query', 'fresh:0478:sql:' + index);
+  draft.input.className = 'cs-code';
+  const worked = node('div');
+  worked.append(node('pre', query), node('h3', 'Expected output'), dataTable(headers, rows));
+  return [node('p', prompt), node('h3', 'Books table'), dataTable(['Title', 'Category', 'Price'], books),
+    draft.wrapper, details('Show model query and expected output', worked)];
+});
 
 const tabs = [...document.querySelectorAll('.cs-tabs a')];
 function showSection() {
