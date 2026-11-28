@@ -23,6 +23,10 @@
   let R = read();
   const BEFORE = new Set(Object.keys(R.L));   // what had been studied before this visit began
   const save = () => store.set(KEY, R);
+  // activity tracker: R.dm[day] = seconds studied, R.dq[day] = [answered, correct], R.log = [time, kind, lecture id, extra]
+  function act(kind, id, x) { const t = Date.now(), d = dayOf(t); if (!R.log) R.log = []; if (kind === 'q') { R.dq = R.dq || {}; const v = R.dq[d] || [0, 0]; v[0]++; if (x) v[1]++; R.dq[d] = v; }
+    const last = R.log[R.log.length - 1]; if (kind === 'open' && last && last[1] === 'open' && last[2] === id && t - last[0] < 36e5) return; R.log.push([t, kind, id || '', x == null ? '' : x]); if (R.log.length > 500) R.log.splice(0, R.log.length - 500); }
+  const tick = s => { const d = dayOf(Date.now()); R.dm = R.dm || {}; R.dm[d] = (R.dm[d] || 0) + s; };
   function touch(id, visit) {
     const t = Date.now(); let e = R.L[id]; if (!e) e = R.L[id] = { a: t, t, n: 0, s: 0, q: {} };
     e.t = t; if (visit) e.n++; const d = dayOf(t); if (R.days[R.days.length - 1] !== d) { R.days.push(d); if (R.days.length > 400) R.days.shift(); }
@@ -31,14 +35,14 @@
   // a lecture counts as studied after ten seconds on it, or as soon as a question is answered or it is marked as done
   let cur = null, lastAct = Date.now();
   ['pointerdown', 'keydown', 'scroll', 'pointermove'].forEach(ev => window.addEventListener(ev, () => { lastAct = Date.now(); }, { passive: true, capture: true }));
-  function count() { if (!cur || cur.counted) return; cur.counted = true; const e = touch(cur.id, true); e.s += cur.sec; save(); }
+  function count() { if (!cur || cur.counted) return; cur.counted = true; const e = touch(cur.id, true); e.s += cur.sec; tick(cur.sec); act('open', cur.id); save(); }
   setInterval(() => {
     if (!cur || document.hidden || M || Date.now() - lastAct > 120000) return;
-    cur.sec += 5; if (!cur.counted) { if (cur.sec >= 10) count(); } else { touch(cur.id).s += 5; save(); }
+    cur.sec += 5; if (!cur.counted) { if (cur.sec >= 10) count(); } else { touch(cur.id).s += 5; tick(5); save(); }
   }, 5000);
   function answer(id, key, ok) {
     if (cur && cur.id === id) count(); const e = touch(id), p = e.q[key] || [0, 0, 0];
-    e.q[key] = [ok ? 1 : 0, p[1] + 1, Date.now()]; save();
+    e.q[key] = [ok ? 1 : 0, p[1] + 1, Date.now()]; act('q', id, ok ? 1 : 0); save();
   }
   window.addEventListener('gc-view', () => {
     const c = GC.cur(); cur = c ? { id: c.L.id, sec: 0, counted: false } : null;
@@ -47,7 +51,7 @@
   // answers in a lecture's own questions: app.js marks them, and this reads the result off the page afterwards
   view.addEventListener('click', e => {
     const c = GC.cur(); if (!c) return;
-    if (e.target.closest('[data-act="done"]')) { count(); return; }
+    if (e.target.closest('[data-act="done"]')) { count(); if (!GC.done.has(c.L.id)) { act('done', c.L.id); save(); } return; }
     const el = e.target.closest('.quiz .q'); if (!el || el.dataset.src) return; const fb = $('.fb', el); if (!fb || fb.hidden) return;
     const k = el.dataset.k, act = e.target.closest('[data-act]'), hasOk = fb.classList.contains('ok'), hasNo = fb.classList.contains('no'); let ok = null;
     if (k === 'c' && e.target.closest('[data-o]')) ok = hasOk;
@@ -136,7 +140,7 @@
       if (done.length === qs.length) {
         const miss = [...new Set(qs.filter(q => q.dataset.res !== '1').map(q => q.dataset.src))].map(id => GC.BY[id]), end = $('.rv-end', d), all = right.length === qs.length;
         end.hidden = false; end.innerHTML = `<p class="rv-end-big">${right.length} out of ${qs.length}</p><p>${all ? 'All correct. It has stuck.' : right.length >= qs.length / 2 ? 'Most of it has stuck.' : 'This needs another look.'}${miss.length ? ' Worth reading again: ' + miss.map(L => `<a href="#${L.id}">${L.stage.label} ${L.code} ${esc(L.title)}</a>`).join(', ') + '.' : ''}</p><p class="rv-end-x">Press × at the top to carry on.</p>`;
-        x.classList.add('is-go');
+        x.classList.add('is-go'); if (!d.dataset.logged) { d.dataset.logged = '1'; act('rv', '', right.length + '/' + qs.length); save(); }
       }
     };
     const close = () => {
@@ -192,16 +196,42 @@
     v.innerHTML = `<div class="page rec"><nav class="crumbs" aria-label="Breadcrumb"><a href="#chemistry">Chemistry</a><span>Your record</span></nav>
       <header class="page-head"><p class="kicker">Saved in this browser only</p><h1>Your record</h1><p>Every lecture you study is saved here. The next time you open Quilio, it asks you a few questions on what you studied last time.</p></header>
       ${ids.length ? `<div class="rec-stats"><div class="panel"><b>${ids.length}</b><span>${ids.length === 1 ? 'lecture' : 'lectures'} studied</span></div><div class="panel"><b>${asked}</b><span>${asked === 1 ? 'question' : 'questions'} answered</span></div><div class="panel"><b>${asked ? Math.round(right / asked * 100) + '%' : '–'}</b><span>correct, last try</span></div><div class="panel"><b>${streak}</b><span>${streak === 1 ? 'day' : 'days'} in a row</span></div><div class="panel"><b>${secs < 3600 ? Math.round(secs / 60) : (secs / 3600).toFixed(1)}</b><span>${secs < 3600 ? 'minutes' : 'hours'} of study</span></div></div>
+      ${tracker(today)}
       <div class="rec-go"><button type="button" class="btn" data-rv="revise-all">Revise now ${ARROW}</button><span>Five questions from what you studied most recently.</span></div>
       ${groups.map(g => `<section class="rec-day"><h2>${label(g.d)}</h2>${g.ids.map(row).join('')}</section>`).join('')}
       <div class="rec-clear"><button type="button" class="chip" data-rv="clear">Clear my record</button></div>`
       : `<div class="panel rec-empty"><h2>Nothing here yet</h2><p>Open any lecture. Once you have spent a little time on it, answered a question or marked it as done, it is saved here.</p><a class="btn" href="#chemistry">Go to the lectures ${ARROW}</a></div>`}</div>`;
   }
+  /* ---------- the activity tracker on the record page ---------- */
+  function tracker(today) {
+    const dm = R.dm || {}, dq = R.dq || {}, log = R.log || [], DAY = 864e5, now = new Date(today + 'T12:00:00').getTime();
+    // heatmap: the last 26 weeks, one column per week, Monday at the top
+    const dow = (new Date(now).getDay() + 6) % 7, start = now - (25 * 7 + dow) * DAY, cells = [], months = [];
+    let lastM = -1, best = 0;
+    for (let w = 0; w < 26; w++) for (let k = 0; k < 7; k++) { const t = start + (w * 7 + k) * DAY, d = dayOf(t), q = dq[d] || [0, 0], v = (dm[d] || 0) + q[0] * 30; best = Math.max(best, v); cells.push({ d, t, v, s: dm[d] || 0, q, fut: t > now }); if (k === 0) { const m = new Date(t).getMonth(); if (m !== lastM) { months.push([w, new Date(t).toLocaleDateString('en-GB', { month: 'short' })]); lastM = m; } } }
+    const lvl = v => !v ? 0 : v < 300 ? 1 : v < 900 ? 2 : v < 1800 ? 3 : 4;
+    const tip = c => `${new Date(c.t).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}: ${c.s ? Math.max(1, Math.round(c.s / 60)) + ' min' : 'no study'}${c.q[0] ? `, ${c.q[0]} answered (${c.q[1]} correct)` : ''}`;
+    const heat = `<div class="trk-heat" role="img" aria-label="Study activity over the last 26 weeks"><div class="trk-months">${months.map(([w, m]) => `<span style="grid-column:${w + 1}">${m}</span>`).join('')}</div><div class="trk-days"><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span></span></div><div class="trk-grid">${cells.map(c => `<i class="l${c.fut ? 'x' : lvl(c.v)}${c.d === today ? ' is-today' : ''}" title="${esc(tip(c))}"></i>`).join('')}</div></div>
+      <div class="trk-key"><span>Less</span>${[0, 1, 2, 3, 4].map(n => `<i class="l${n}"></i>`).join('')}<span>More</span></div>`;
+    // the last 14 days: minutes as bars, questions answered as a dot count
+    const days14 = Array.from({ length: 14 }, (_, i) => { const t = now - (13 - i) * DAY, d = dayOf(t); return { t, d, m: Math.round((dm[d] || 0) / 60), q: (dq[d] || [0, 0]) }; }), top = Math.max(10, ...days14.map(x => x.m));
+    const bars = `<div class="trk-bars">${days14.map(x => `<div class="trk-bar${x.d === today ? ' is-today' : ''}" title="${esc(`${x.m} min · ${x.q[0]} questions, ${x.q[1]} correct`)}"><b>${x.m || ''}</b><span style="height:${Math.max(x.m ? 4 : 0, x.m / top * 100)}%"></span><em>${x.q[0] ? x.q[0] + 'q' : ''}</em><small>${new Date(x.t).toLocaleDateString('en-GB', { weekday: 'narrow' })}<br>${new Date(x.t).getDate()}</small></div>`).join('')}</div>`;
+    const wk = days14.slice(7), wkM = wk.reduce((a, x) => a + x.m, 0), wkQ = wk.reduce((a, x) => a + x.q[0], 0), wkR = wk.reduce((a, x) => a + x.q[1], 0), pw = days14.slice(0, 7).reduce((a, x) => a + x.m, 0);
+    // the activity feed
+    const name = id => { const L = GC.BY[id]; return L ? `<a href="#${id}">${L.stage.label} ${L.code} · ${esc(L.title)}</a>` : ''; };
+    const KIND = { open: ['📖', id => `Studied ${name(id)}`], q: ['✏️', (id, x) => `${x === 1 ? '<b class="ok">Correct</b>' : '<b class="no">Wrong</b>'} answer in ${name(id)}`], done: ['✅', id => `Marked ${name(id)} as done`], rv: ['🔁', (id, x) => `Finished a revision round: <b>${esc(x)}</b> correct`], more: ['➕', id => `Opened more example questions in ${name(id)}`] };
+    const feed = log.slice().reverse().filter(e => KIND[e[1]] && (!e[2] || GC.BY[e[2]])), shown = []; let lastD = '';
+    feed.slice(0, 60).forEach(e => { const d = dayOf(e[0]); if (d !== lastD) { shown.push(`<li class="trk-fday">${d === today ? 'Today' : d === dayOf(now - DAY) ? 'Yesterday' : new Date(e[0]).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}</li>`); lastD = d; }
+      shown.push(`<li><time>${new Date(e[0]).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</time><span class="trk-ic" aria-hidden="true">${KIND[e[1]][0]}</span><span>${KIND[e[1]][1](e[2], e[3])}</span></li>`); });
+    return `<section class="trk"><div class="trk-head"><h2>Activity tracker</h2><p>${wkM ? `This week: <b>${wkM} min</b> of study${pw ? ` (${wkM >= pw ? '+' : '−'}${Math.abs(wkM - pw)} min on last week)` : ''}, <b>${wkQ}</b> ${wkQ === 1 ? 'question' : 'questions'} answered${wkQ ? `, ${Math.round(wkR / wkQ * 100)}% correct` : ''}.` : 'Nothing yet this week. Open a lecture to start the tracker.'}</p></div>
+      <div class="trk-cards"><div class="panel trk-card"><h3>Every study day</h3>${heat}</div><div class="panel trk-card"><h3>The last 14 days <small>minutes per day</small></h3>${bars}</div></div>
+      <div class="panel trk-card"><h3>Timeline</h3>${shown.length ? `<ol class="trk-feed">${shown.join('')}</ol>${feed.length > 60 ? `<p class="trk-more">Showing the latest 60 of ${feed.length} entries.</p>` : ''}` : '<p class="trk-none">Your activity appears here as you study: lectures opened, answers, revision rounds.</p>'}</div></section>`;
+  }
   view.addEventListener('click', async e => {
     const b = e.target.closest('[data-rv]'); if (!b || b.closest('.q[data-src]')) return; const a = b.dataset.rv;
     if (a === 'revise-all') { if (!(await reviseNow(recent(Object.keys(R.L), 3)))) b.nextElementSibling.textContent = 'There are no questions for these lectures yet.'; }
     else if (a === 'revise') { const L = GC.BY[b.dataset.id]; if (!(await reviseNow([L.id], `Questions on ${L.stage.label} ${L.code}, ${L.title}.`))) b.textContent = 'No questions'; }
-    else if (a === 'clear') { if (b.dataset.sure) { R = { v: 1, L: {}, days: [] }; BEFORE.clear(); save(); page(view); } else { b.dataset.sure = '1'; b.textContent = 'Press again to clear everything'; b.classList.add('is-warn'); setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.textContent = 'Clear my record'; b.classList.remove('is-warn'); } }, 4000); } }
+    else if (a === 'clear') { if (b.dataset.sure) { R = { v: 1, L: {}, days: [], dm: {}, dq: {}, log: [] }; BEFORE.clear(); save(); page(view); } else { b.dataset.sure = '1'; b.textContent = 'Press again to clear everything'; b.classList.add('is-warn'); setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.textContent = 'Clear my record'; b.classList.remove('is-warn'); } }, 4000); } }
     else if (a === 'more') toggleMore(b);
     else if (a === 'pp-h' || a === 'pp-w') { const li = b.closest('li'), p = (PP.get(b.closest('.pp').dataset.pp) || { p: [] }).p[+b.dataset.k], fb = $('.fb', li); if (!p) return; const on = fb.dataset.on === a; fb.hidden = on; fb.dataset.on = on ? '' : a; fb.className = 'fb' + (a === 'pp-w' ? ' ok' : ''); fb.innerHTML = a === 'pp-h' ? `<b>Hint.</b> ${il(p.h)}` : `<b>Answer.</b> ${il(p.w)}`; }
   });
@@ -253,7 +283,7 @@
     if (!open) { list.hidden = true; return; }
     let i = 0; const cas = h => h.replace(/^<(\w+) class="/, (m, tag) => `<${tag} style="--i:${i++}" class="cas `);
     list.innerHTML = MORE.groups.map(g => cas(`<div class="more-h"><h3>${esc(g.h)}</h3><p>${esc(g.sub)}</p></div>`) + (g.pp ? g.pp.map(x => cas(ppCard(x))).join('') : `<div class="quiz">${g.q.map(it => cas(card(it))).join('')}</div>`)).join('');
-    list.hidden = false; const c = GC.cur(); if (c) { cur && cur.id === c.L.id && count(); }
+    list.hidden = false; const c = GC.cur(); if (c) { act('more', c.L.id); save(); } if (c) { cur && cur.id === c.L.id && count(); }
     const top = list.getBoundingClientRect().top; if (top > innerHeight * .7) window.scrollBy({ top: top - innerHeight * .45, behavior: 'smooth' });
   }
 
