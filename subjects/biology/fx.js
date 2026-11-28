@@ -14,7 +14,7 @@
 // One animation frame drives everything. It stops when the stage is off screen or the tab is
 // hidden, lowers its own resolution when frames run slow, and draws a single still frame when
 // "reduce motion" is on. Without WebGL the dark stage is simply a still gradient.
-import { topics } from './src/content.js';
+import { topics, lessons, questions, cards } from './src/content.js';
 
 const host = document.querySelector('#biology-section');
 if (host) whenReady(start);
@@ -42,7 +42,7 @@ function start() {
   document.head.append(pageStyle);
   const sheet = document.createElement('link');
   sheet.rel = 'stylesheet';
-  sheet.href = new URL('./fx.css?v=1', import.meta.url).href;
+  sheet.href = new URL('./fx.css?v=2', import.meta.url).href;
   root.insertBefore(sheet, app);
 
   // ---------------------------------------------------------------- 1. Stage
@@ -305,10 +305,75 @@ void main(){
     globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-9 9h18M12 3c2.500 2.500 3.800 5.500 3.800 9S14.500 18.500 12 21c-2.500-2.500-3.800-5.500-3.800-9S9.500 5.500 12 3Z',
   };
   const TOPIC_LOOK = ['tree', 'cell', 'swap', 'hex', 'hex', 'leaf', 'drop', 'leaf', 'heart', 'shield', 'lungs', 'bolt', 'drop', 'bolt', 'pill', 'dna', 'dna', 'tree', 'globe', 'globe', 'dna'];
-  const HUES = [152, 76, 174, 28, 265, 204];
+  // ---------- what each tool is for (used by the launcher, the search box and the step strips) ----------
+const TOOL_GROUPS = [
+  ['Learn', 152, [
+    ['/topics', 'Topics & lessons', 'Read the notes topic by topic', `${topics.length} topics · ${lessons.length} lessons`],
+    ['/diagrams', 'Diagrams', 'Labelled drawings you can hide and recall', ''],
+    ['/glossary', 'Glossary & calculators', 'Key terms, command words, magnification and % change', ''],
+  ]],
+  ['Test yourself', 205, [
+    ['/practice', 'Practice questions', 'Build a set by topic, type and difficulty', `${questions.length} questions`],
+    ['/flashcards', 'Flashcards', 'Recall, flip, rate — cards come back when due', `${cards.length} cards`],
+    ['/practicals', 'Practicals', 'Investigations, virtual lab and Paper 6 practice', ''],
+    ['/exams', 'Exams', 'Timed mini mocks for each paper', ''],
+  ]],
+  ['Track', 32, [
+    ['/progress', 'Progress', 'Lessons read, accuracy and past attempts', ''],
+    ['/mistakes', 'Mistakes', 'Every wrong answer, ready to retry', ''],
+    ['/planner', 'Planner', 'Exam date, daily minutes and today’s tasks', ''],
+  ]],
+  ['Set up', 268, [
+    ['/settings', 'Settings', 'Core or Extended, Paper 5 or 6, backup your data', ''],
+    ['/coverage', 'Syllabus coverage', 'Which objectives the notes cover so far', ''],
+    ['/about', 'About', 'What is in Fresh Biology and how to report an error', ''],
+  ]],
+];
+const HOW = {
+  practice: ['Choose a topic, question type and difficulty.', 'Test mode marks everything at the end. Learn mode lets you reveal feedback on each question.', 'Anything you get wrong is saved in Mistakes so you can retry it.'],
+  flashcards: ['Say the answer in your head first.', 'Click the card (or press Space on it) to flip.', 'Rate it: Again brings it straight back; Hard, Good and Easy push the next review further away.'],
+  exams: ['Pick the paper you sit — the list follows your Core or Extended route.', 'A mini mock is timed and submits itself when the clock runs out.', 'Written answers are self-marked against the mark scheme afterwards.'],
+  mistakes: ['Choose why it went wrong and write a short reflection.', 'Retry the question without seeing the answer.', 'Mark it resolved once you can get it right.'],
+  planner: ['Set your exam date and how many minutes you have each day.', 'Generate today’s plan.', 'Tick tasks off as you finish; edit any task to fit your day.'],
+  diagrams: ['Pick a diagram.', 'Study the labels.', 'Hide the labels and recall each one.'],
+  practicals: ['Experiment Library: every investigation with method, sample data and exam practice.', 'Virtual Laboratory: take simulated readings and record your own results.', 'Paper 6 Question Bank and Timed Mocks: written practice you self-mark.'],
+  progress: ['Lessons count when you press “Mark as read”.', 'Accuracy uses marked questions only; written answers stay pending until you self-mark.', 'Open any past attempt to review it.'],
+  settings: ['Route changes which lessons and questions you see.', 'Everything is saved in this browser only.', 'Export a backup before clearing browser data or switching device.'],
+};
+
+const HUES = [152, 76, 174, 28, 265, 204];
   const svg = path => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${path.replace(/(\d)00(?=\D|$)/g, '$1')}"/></svg>`;
 
   let lastRoute = null, working = false, queued = false;
+
+  let lastSide = '';
+  const toolIcon = path => app.querySelector(`.side .nav a[data-bio-route="${path}"] svg`)?.outerHTML || '';
+  // search also finds the tools themselves, not only lessons and terms
+  const enrichSearch = () => {
+    const box = app.querySelector('#search-results'), input = app.querySelector('#search-input');
+    if (!box || !input || box.querySelector('.fx-hit, .fx-sep')) return;
+    const q = input.value.trim().toLowerCase();
+    const hits = TOOL_GROUPS.flatMap(g => g[2]).filter(t => !q || (t[1] + ' ' + t[2]).toLowerCase().includes(q));
+    if (!hits.length) return;
+    working = true;
+    if (box.firstElementChild?.tagName === 'P' && !box.querySelector('a')) box.textContent = '';
+    const had = box.children.length;
+    const frag = document.createDocumentFragment();
+    make('div', 'fx-sep', frag).textContent = 'Tools';
+    for (const [path, title, text] of hits) {
+      const a = make('a', 'btn fx-hit', frag);
+      a.href = '#' + path;
+      a.innerHTML = `<i>${toolIcon(path)}</i>${title}<small>${text}</small>`;
+    }
+    if (had) make('div', 'fx-sep', frag).textContent = 'Lessons and terms';
+    for (const n of frag.children) n.removeAttribute('aria-hidden');
+    box.prepend(frag);
+    working = false;
+  };
+  app.addEventListener('input', ev => { if (ev.target.id === 'search-input') enrichSearch(); });
+  app.addEventListener('click', ev => { if (ev.target.closest('[data-action="search"]')) setTimeout(enrichSearch, 0); });
+  addEventListener('keydown', ev => { if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === 'k') setTimeout(enrichSearch, 30); });
+
   function dress() {
     queued = false;
     working = true;
@@ -370,6 +435,94 @@ void main(){
       make('span', 'fx-glyph', card).innerHTML = svg(GLYPH[TOPIC_LOOK[n - 1] || 'cell']);
     }
 
+
+    // ---------- below the stage ----------
+    const seg = route.replace(/^#\/?/, '').split('/');
+    const page = seg[0] || 'dash';
+    app.dataset.page = page;
+
+    // forms: label + control pairs become fields that can sit side by side
+    for (const label of main.querySelectorAll('label[for]')) {
+      const ctl = label.nextElementSibling;
+      if (!ctl || ctl.id !== label.htmlFor || !ctl.matches('input, select, textarea') || label.parentElement.classList.contains('fx-field')) continue;
+      const field = document.createElement('div');
+      field.className = 'fx-field';
+      label.before(field);
+      field.append(label, ctl);
+    }
+    for (const f of main.querySelectorAll('.fx-field:not(.fx-unit)')) {      // a unit picker belongs beside its number
+      const unit = f.nextElementSibling;
+      if (unit && unit.matches('select') && !main.querySelector(`label[for="${unit.id}"]`)) { f.append(unit); f.classList.add('fx-unit'); }
+    }
+    for (const box of new Set([...main.querySelectorAll('.fx-field')].map(f => f.parentElement))) {
+      if (box.querySelectorAll(':scope > .fx-field').length > 1) box.classList.add('fx-form');
+    }
+
+    // results: show at a glance how each answer went
+    if (page === 'results' || page === 'session') {
+      for (const el of main.querySelectorAll('.card p, .card strong')) {
+        if (el.children.length && el.firstElementChild.tagName !== 'STRONG') continue;
+        const m = /^(\d+|Pending) \/ (\d+)$/.exec(el.textContent.trim());
+        const card = m && el.closest('.card');
+        if (!card || card.dataset.fxMark) continue;
+        card.dataset.fxMark = '1';
+        card.classList.add(m[1] === 'Pending' ? 'fx-pending' : +m[1] >= +m[2] ? 'fx-right' : +m[1] > 0 ? 'fx-pending' : 'fx-wrong');
+        (el.tagName === 'P' ? el : el.parentElement).classList.add('fx-mark');
+      }
+    }
+
+    // flashcard: the answer side looks different, and turning it over is a flip
+    const big = main.querySelector('button.bigcard');
+    if (big) {
+      const side = /^\s*ANSWER/i.test(big.textContent) ? 'a' : 'q';
+      big.classList.toggle('fx-answer', side === 'a');
+      if (lastSide && lastSide !== side && !entering && !reduce.matches) big.classList.add('fx-flip');
+      lastSide = side;
+    } else lastSide = '';
+
+    // practicals: the row of sections becomes a tab bar with the open one marked
+    if (page === 'practicals') {
+      const row = [...main.querySelectorAll('.row')].find(r => r.querySelector('a[data-bio-route^="/practicals"]') && r.children.length > 4);
+      if (row) {
+        row.classList.add('fx-tabs');
+        const here = '/' + seg.join('/').replace(/\/$/, '');
+        let on = [...row.children].find(a => (a.dataset.bioRoute || '').replace(/\/$/, '') === here);
+        if (!on) on = row.firstElementChild;
+        on.classList.add('fx-on');
+      }
+    }
+
+    // three short steps under the title of each tool's front page
+    const afterEl = main.querySelector('.fx-after');
+    if (HOW[page] && !seg[1] && afterEl && !main.querySelector('.fx-how-wrap')) {
+      const how = document.createElement('details');
+      how.className = 'fx-how-wrap fx-after';
+      how.open = innerWidth > 640;             // on a phone the steps stay folded until asked for
+      how.innerHTML = '<summary>How this works</summary><div class="fx-how">' + HOW[page].map((t, i) => `<div><b>${i + 1}</b><span>${t}</span></div>`).join('') + '</div>';
+      afterEl.classList.remove('fx-after');
+      afterEl.before(how);
+    }
+
+    // every tool in one place: on the dashboard and on the "more" page
+    if ((dash || page === 'more') && !main.querySelector('.fx-launch')) {
+      const tools = app.querySelector('.card .stack a[data-bio-route="/mistakes"]');
+      const open = tools ? +(/\((\d+)\)/.exec(tools.textContent) || [])[1] || 0 : 0;
+      const dueCard = dash && main.querySelector(':scope > .grid.fx-ink > .card:nth-child(3) .stat');
+      const due = dueCard ? parseInt(dueCard.textContent, 10) || 0 : 0;
+      const sec = document.createElement('section');
+      sec.className = 'fx-launch';
+      sec.innerHTML = '<h2>Everything in Biology</h2><p>Every tool, and what it is for.</p><div class="fx-launch-groups">' + TOOL_GROUPS.map(([name, hue, items]) =>
+        `<div class="fx-group" style="--gh:${hue}"><h3>${name}</h3>` + items.map(([path, title, text, meta]) => {
+          let badge = meta ? `<em>${meta}</em>` : '';
+          if (path === '/mistakes' && open) badge = `<em class="fx-hot">${open} to review</em>`;
+          if (path === '/flashcards' && due) badge = `<em class="fx-hot">${due} due</em>`;
+          return `<a class="fx-tool" href="#${path}"><i>${toolIcon(path)}</i><strong>${title}</strong><span>${text}</span>${badge}</a>`;
+        }).join('') + '</div>').join('') + '</div>';
+      const anchor = dash ? main.querySelector(':scope > .grid.fx-ink + *') : main.querySelector(':scope > .stack');
+      if (anchor) anchor.after(sec); else main.append(sec);
+    }
+
+    for (const a of app.querySelectorAll('.side .nav a')) if (!a.title) a.title = a.textContent.trim();
     placePill(true);
     working = false;
     layout();
