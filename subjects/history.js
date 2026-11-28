@@ -441,8 +441,7 @@ const tabs = [...document.querySelectorAll('.history-nav a')];
 function showView(id) {
   for (const view of views) view.hidden = view.id !== id;
   for (const tab of tabs) {
-    const destination = id === 'history-practice' ? '#history-paper-2' : '#' + id;
-    if (tab.hash === destination) tab.setAttribute('aria-current', 'page');
+    if (tab.hash === '#' + id) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
   }
 }
@@ -471,7 +470,10 @@ function navigate() {
   const target = byId(unavailablePaper ? 'history-practice' : id);
   const view = target?.closest('.history-view');
   showView(view?.id || 'history-home');
-  if (target === settings) settings.open = true;
+  if (target === settings) {
+    settings.open = true;
+    settings.querySelector('summary').focus({ preventScroll: true });
+  }
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
 }
@@ -510,6 +512,12 @@ document.querySelector('.skip').addEventListener('click', (event) => {
   const main = byId('main');
   main.focus({ preventScroll: true });
   main.scrollIntoView();
+});
+document.querySelector('.gallery-nav-settings').addEventListener('click', (event) => {
+  if (location.hash === '#history-settings' && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+    event.preventDefault();
+    navigate();
+  }
 });
 window.addEventListener('hashchange', navigate);
 navigate();
