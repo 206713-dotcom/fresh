@@ -42,7 +42,7 @@ function start() {
   document.head.append(pageStyle);
   const sheet = document.createElement('link');
   sheet.rel = 'stylesheet';
-  sheet.href = new URL('./fx.css?v=2', import.meta.url).href;
+  sheet.href = new URL('./fx.css?v=3', import.meta.url).href;
   root.insertBefore(sheet, app);
 
   // ---------------------------------------------------------------- 1. Stage

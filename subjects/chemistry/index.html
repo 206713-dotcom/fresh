@@ -1,222 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="gis-points.css?v=3">
-<script src="gis-points.js?v=5"></script>
+<link rel="stylesheet" href="../../gis-points.css?v=3">
+<script src="../../gis-points.js?v=5"></script>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="../../fresh.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Revision notes and practice across 12 IGCSE subjects.">
-<title>IGCSE study hub | Fresh</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="home.css?v=10">
-<link rel="icon" href="fresh.svg" type="image/svg+xml">
-<script defer src="search.js"></script>
-<script defer src="home.js?v=7"></script>
+<title>Quilio Chemistry | Fresh</title>
+<link rel="stylesheet" href="fonts.css?v=quilio-2711">
+<link rel="stylesheet" href="katex-core.css">
+<link rel="stylesheet" href="app.css?v=quilio-2811">
+<script>
+/* The entrance film plays when you open Chemistry from Fresh (#enter), or on the first visit of a session with no address. */
+(function () { var h = location.hash.slice(1), seen = false, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { seen = !!sessionStorage.getItem('gc.intro'); } catch (e) {}
+  if (!still && (h === 'enter' || (!h && !seen))) document.documentElement.classList.add('intro'); })();
+</script>
+<link rel="stylesheet" href="../science-loading.css?v=1">
 </head>
-<body class="fresh-home">
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap topbar" aria-label="Main navigation">
-    <a class="brand" href="index.html"><img src="fresh.svg" width="40" height="40" alt=""> Fresh</a>
-    <a href="contacts.html">About Us &amp; Contacts</a>
-    <a href="subjects/science.html">Science hub</a>
-    <a href="index.html#subjects">All subjects <span aria-hidden="true">↗</span></a>
-  </nav>
-</header>
-<main id="main" class="wrap">
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow"><span></span> THE IGCSE STUDY HUB</p>
-    <h1>A fresh take<br>on <em>revision.</em></h1>
-    <p>Find clear revision notes and quick practice questions for 12 IGCSE subjects.</p>
-    <div class="home-points-area">
-      <button class="gisp-button home-points" type="button" data-gis-points-trigger hidden>
-        <span class="home-points-icon" aria-hidden="true">✦</span>
-        <span class="home-points-label">
-          <span>GIS Points</span>
-          <small>View your activity</small>
-        </span>
-        <strong data-gisp-count>0</strong>
-        <span class="home-points-arrow" aria-hidden="true">↗</span>
-      </button>
-      <a class="home-points-guide" href="points.html">How to earn points <span aria-hidden="true">→</span></a>
+<body>
+<div class="science-loading" id="science-loading" data-subject="Chemistry">
+  <div>
+    <span class="science-spinner" aria-hidden="true"></span>
+    <h1>Opening Chemistry</h1>
+    <p role="status">Loading lessons and study tools…</p>
+    <div class="science-loading-actions" hidden>
+      <button type="button">Try again</button>
+      <a href="../../">Back to Fresh</a>
     </div>
-    <div class="hero-actions">
-      <a class="button" href="#subjects">Explore subjects <span aria-hidden="true">↓</span></a>
-      <a class="python-link" href="subjects/python.html">Practise Python <span aria-hidden="true">→</span></a>
-    </div>
-    <a class="space-cta" href="since-1958/" data-space-warp aria-label="Explore space: open Since 1958: Beyond">
-      <canvas class="space-cta-sky" aria-hidden="true"></canvas>
-      <span class="space-cta-nebula" aria-hidden="true"></span>
-      <span class="space-cta-world" aria-hidden="true"><span class="space-cta-planet"></span><span class="space-cta-moon"></span></span>
-      <span class="space-cta-text"><small>Since 1958: Beyond</small><b>Explore space</b></span>
-      <span class="space-cta-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </a>
   </div>
-  <div class="hero-art" aria-hidden="true">
-    <div class="art-grid"></div>
-    <div class="art-tile"><img src="fresh.svg" width="192" height="192" alt=""></div>
-    <span class="art-index"><b>12</b><span>IGCSE<br>SUBJECTS</span></span>
+</div>
+<noscript><style>#science-loading { display: none; }</style><p>Enable JavaScript to use Chemistry. <a href="../../">Back to Fresh</a></p></noscript>
+<script src="../science-loading.js?v=1"></script>
+<div id="intro" aria-hidden="true"><div id="introSky"></div><canvas id="introGL"></canvas><p id="introCap"><b></b><span></span></p><div id="introFlash"></div><button type="button" id="introSkip" tabindex="-1">Skip</button></div>
+<canvas id="air" aria-hidden="true"></canvas>
+
+<section class="start" id="start" aria-label="Chemistry home">
+ <div class="hero">
+  <canvas id="orb" role="img" aria-label="A turning model of an atomic orbital, drawn as a cloud of dots. Drag to turn it."></canvas>
+  <div class="start-top">
+    <a class="hp" href="#home" title="Chemistry, Physics, About us and Developers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.8V20h12V9.8"/></svg>Homepage</a>
+    <a class="brand" href="#start"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.6" stroke="#0a2440" stroke-width="1.6"/><path d="M4.6 20.5c6.2-9.4 15.2-12.6 23.4-9.2" stroke="#f09a2e" stroke-width="2.1" stroke-linecap="round"/><path d="M6.4 24.4c6.8-7.3 13.9-9.4 20.6-8.3" stroke="#1673dc" stroke-width="2.1" stroke-linecap="round"/></svg>Quilio <small>Chemistry</small></a>
+    <span class="made-by">Made by <b>Semin Cheon</b></span>
+    <span class="grow" style="flex:1"></span>
+    <a class="tool on-sky" href="#chemistry">Lectures</a>
+    <a class="tool on-sky" href="#olympiad">Olympiad</a>
+    <button class="icon-btn snd" type="button" aria-pressed="false" aria-label="Sound" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></button>
   </div>
-</section>
-<section class="directory" id="subjects" aria-labelledby="directory-title">
-  <div class="section-top">
-    <div><p class="eyebrow">SUBJECT DIRECTORY</p><h2 id="directory-title">What are you studying?</h2></div>
-    <span class="count" id="count" aria-live="polite">12 subjects</span>
-  </div>
-  <div class="filters" hidden>
-    <label>Search subjects <input type="search" id="search" placeholder="Try biology or 0610"></label>
-    <label>Subject group <select id="group"><option value="">All groups</option><option value="technology">Maths &amp; technology</option><option value="science">Sciences</option><option value="humanities">English &amp; humanities</option><option value="business">Business &amp; economics</option></select></label>
-  </div>
-  <p id="empty" hidden>No subjects match. Try another name, syllabus code or group.</p>
-  <ul class="grid"><li class="card technology" data-group="technology" data-aliases="maths|igcse maths|mathquest|competition maths|vertex maths|olympiad">
-  <a href="subjects/mathematics.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">∑</span><span class="code">0580</span></span>
-    <h3>Mathematics</h3>
-    <p>Choose IGCSE revision or competition maths practice.</p>
-    <span class="card-link">Explore maths <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card humanities" data-group="humanities">
-  <a href="subjects/english-language.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">Aa</span><span class="code">0500</span></span>
-    <h3>First Language English</h3>
-    <p>Read closely and write with purpose.</p>
-    <span class="card-link">Open English Studio <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card humanities" data-group="humanities">
-  <a href="english-study-desk/index.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">¶</span><span class="code">0475</span></span>
-    <h3>Literature in English</h3>
-    <p>Explore how writers shape meaning in poetry, prose and drama.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card science" data-group="science" data-aliases="fresh biology|biology workspace|practicals|flashcards">
-  <a href="subjects/biology.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">✿</span><span class="code">0610</span></span>
-    <h3>Biology</h3>
-    <p>Study cells, genetics and ecology with lessons, flashcards and interactive practicals.</p>
-    <span class="card-link">Open Fresh Biology <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card science" data-group="science">
-  <a href="subjects/chemistry.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">⚗</span><span class="code">0620</span></span>
-    <h3>Chemistry</h3>
-    <p>Connect particles, reactions and chemical calculations.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card science" data-group="science">
-  <a href="subjects/physics.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">⚡</span><span class="code">0625</span></span>
-    <h3>Physics</h3>
-    <p>Explain motion, energy and electricity with worked examples.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card technology" data-group="technology" data-aliases="python|pyquest|coding">
-  <a href="subjects/pyquest/#igcse">
-    <span class="card-top"><span class="symbol" aria-hidden="true">‹/›</span><span class="code">0478</span></span>
-    <h3>Computer Science</h3>
-    <p>Study the 0478 syllabus with topic notes, worked examples and exam practice in PyQuest.</p>
-    <span class="card-link">Open IGCSE Computer Science <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card technology" data-group="technology" data-aliases="dt|design and technology|rm revise">
-  <a href="subjects/design-and-technology/">
-    <span class="card-top"><span class="symbol" aria-hidden="true">◇</span><span class="code">0445</span></span>
-    <h3>Design &amp; Technology</h3>
-    <p>Revise Product Design and Resistant Materials with RM Revise.</p>
-    <span class="card-link">Open RM Revise <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card humanities" data-group="humanities">
-  <a href="subjects/geography.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">△</span><span class="code">0460</span></span>
-    <h3>Geography</h3>
-    <p>Understand landscapes, populations and human activity.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card humanities" data-group="humanities">
-  <a href="subjects/history.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">⌛</span><span class="code">0470</span></span>
-    <h3>History</h3>
-    <p>Build arguments about the past and evaluate historical evidence.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card business" data-group="business">
-  <a href="subjects/economics.html">
-    <span class="card-top"><span class="symbol" aria-hidden="true">↗</span><span class="code">0455</span></span>
-    <h3>Economics</h3>
-    <p>Think through choices, markets and economic changes.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li>
-<li class="card business" data-group="business">
-  <a href="subjects/business.html?open=overview">
-    <span class="card-top"><span class="symbol" aria-hidden="true">◈</span><span class="code">0264</span></span>
-    <h3>Business</h3>
-    <p>Work through business decisions about people, markets and finance.</p>
-    <span class="card-link">Start revising <span aria-hidden="true">→</span></span>
-  </a>
-</li></ul>
-</section>
-<section class="s58" id="since-1958" aria-labelledby="s58-title">
-  <canvas class="s58-sky" aria-hidden="true"></canvas>
-  <div class="s58-inner">
-    <div class="s58-copy">
-      <p class="s58-eyebrow"><span class="s58-live" aria-hidden="true"></span> Interactive 3D · Space history</p>
-      <h2 class="s58-title" id="s58-title"><span class="s58-since">Since</span> <span class="s58-num">1958:</span><span class="s58-beyond">Beyond</span></h2>
-      <p class="s58-devs"><span>Made by</span> <b>Semin Cheon</b> <i aria-hidden="true"></i> <b>Ian Lee</b></p>
-      <p class="s58-lede">Every machine NASA left on the Moon, on Mars and in deep space, placed where it really is today. Watch each one land, walk right up to it, write to Voyager&nbsp;1, then leave the Solar System for 2,478 real galaxies.</p>
-      <ul class="s58-stats">
-        <li><b data-s58-count="13">13</b><span>sites on the Moon</span></li>
-        <li><b data-s58-count="11">11</b><span>sites on Mars</span></li>
-        <li><b data-s58-count="11">11</b><span>probes in space</span></li>
-      </ul>
-      <div class="s58-clock" aria-hidden="true">
-        <div class="s58-readout"><b data-s58-year>1958</b><span data-s58-event>NASA is founded</span></div>
-        <div class="s58-track"><span class="s58-fill"></span><span class="s58-cursor"></span></div>
-        <div class="s58-ends"><span>1958</span><span data-s58-now>Today</span></div>
+  <div class="start-main">
+    <div class="start-copy">
+      <p class="eyebrow">Chemistry · from KS3 to A Level</p>
+      <h1>Understand chemistry from the atom up.</h1>
+      <p class="lede">Every concept in order. Every reaction explained. Every mark accounted for.</p>
+      <nav class="stage-pick" id="stagePick" aria-label="Choose your stage"></nav>
+      <div class="start-cta">
+        <a class="btn" href="#chemistry">Start learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ghost" href="#level-test">Level Test</a>
+        <a class="btn ghost" href="#periodic-table">Periodic Table</a>
       </div>
-      <a class="s58-launch" href="since-1958/" data-s58-launch>
-        <span class="s58-launch-ring" aria-hidden="true"></span>
-        <span class="s58-launch-core">
-          <span class="s58-launch-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="30" height="30"><path class="s58-flame" d="M10.6 21.4c-2.6.6-4.4 2.9-4.6 6.6 3.7-.2 6-2 6.6-4.6z"/><path d="M22.9 3.2c-5.7.6-10 4.3-12.4 10.4l-4 .9-2.2 3.3 4.8.5 4.8 4.8.5 4.8 3.3-2.2.9-4c6.1-2.4 9.8-6.7 10.4-12.4.1-1.6-.2-3.7-.6-5.5-1.8-.4-3.9-.7-5.5-.6z" fill="currentColor"/><circle cx="20.4" cy="11.6" r="2.6" class="s58-window"/></svg>
-          </span>
-          <span class="s58-launch-text"><b>Launch Since 1958: Beyond</b><small>Opens the full 3D experience</small></span>
-          <span class="s58-launch-arrow" aria-hidden="true">→</span>
-        </span>
-      </a>
-    </div>
-    <div class="s58-art" aria-hidden="true">
-      <div class="s58-halo"></div>
-      <canvas class="s58-globe"></canvas>
-      <canvas class="s58-fx"></canvas>
-      <span class="s58-tag" style="--x:8%;--y:16%;--d:0s"><i></i>Apollo 11 <em>1969</em></span>
-      <span class="s58-tag" style="--x:70%;--y:6%;--d:-2.4s"><i></i>Voyager 1 <em>1977</em></span>
-      <span class="s58-tag" style="--x:62%;--y:86%;--d:-4.1s"><i></i>Perseverance <em>2021</em></span>
     </div>
   </div>
+  <div class="start-foot">
+    <details class="live-note">
+      <summary>Live model: what you are looking at</summary>
+      <div>
+        <p>An atomic orbital, drawn live. Each dot is one place where the electron could be found. The <span id="orbN">24,000</span> dots are picked at random from |ψ|², the probability density of the electron in a hydrogen atom, so the cloud is densest where the electron is most likely to be.</p>
+        <p>Colour shows the sign of the wavefunction ψ: blue where it is positive, orange where it is negative. Where the two colours meet there is a node, and the electron is never found there. Drag to turn the atom. Pick another orbital and the same dots rearrange.</p>
+        <p>Honest caveats: these are the orbitals of hydrogen, which has one electron. In bigger atoms the shapes stay similar but the sizes and energies change. A real orbital has no edge, it just fades out: textbooks draw the surface that holds about 90% of the cloud. The turning is only the camera. The electron is not going round like a planet.</p>
+      </div>
+    </details>
+    <div class="orb-ctl">
+      <p class="orb-name" id="orbName" aria-live="polite"></p>
+      <div class="orb-chips" id="orbChips" role="group" aria-label="Choose an orbital"></div>
+      <p class="orb-key"><span><i style="background:#093c99"></i>ψ positive</span><span><i style="background:#ed6e0f"></i>ψ negative</span><span>drag to turn</span></p>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#start" data-jump="homeMore">Try a live model and a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+ </div>
+ <div class="home-more" id="homeMore"></div>
 </section>
-</main>
-<footer class="wrap footer">
-  <span>Fresh · Independent IGCSE revision</span>
-  <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-igcse/subjects/">Cambridge subject directory ↗</a>
-  <a href="privacy.html">Privacy notice</a>
-  <address class="home-contacts" id="contact" aria-labelledby="contact-title">
-    <strong id="contact-title">Team &amp; general contacts</strong>
-    <a href="mailto:206713@gardenschool.edu.my">Junyi · 206713@gardenschool.edu.my</a>
-    <a href="mailto:206058@gardenschool.edu.my">Lucas · 206058@gardenschool.edu.my</a>
-    <a href="contacts.html#contact">Meet the team <span aria-hidden="true">→</span></a>
-    <a href="contacts.html#subjects">Subject contacts <span aria-hidden="true">→</span></a>
-  </address>
-</footer>
+
+<header class="bar" id="bar" hidden>
+  <a class="hp" href="#home" title="Chemistry, Physics, About us and Developers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.8V20h12V9.8"/></svg>Homepage</a>
+  <a class="brand" href="#start"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.6" stroke="#0a2440" stroke-width="1.6"/><path d="M4.6 20.5c6.2-9.4 15.2-12.6 23.4-9.2" stroke="#f09a2e" stroke-width="2.1" stroke-linecap="round"/><path d="M6.4 24.4c6.8-7.3 13.9-9.4 20.6-8.3" stroke="#1673dc" stroke-width="2.1" stroke-linecap="round"/></svg>Quilio <small>Chemistry</small></a>
+  <nav class="tabs" id="tabs" aria-label="Stages"></nav>
+  <span class="grow"></span>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+    <input id="q" type="search" placeholder="Search lectures and concepts" autocomplete="off" aria-label="Search lectures and concepts">
+    <div class="results" id="results" hidden></div>
+  </div>
+  <a class="tool" href="#periodic-table" data-tool="periodic-table" title="Periodic Table" aria-label="Periodic Table"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4.5" width="4.4" height="4.4" rx="1"/><rect x="16.1" y="4.5" width="4.4" height="4.4" rx="1"/><rect x="3.5" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="9.8" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="16.1" y="10.8" width="4.4" height="4.4" rx="1"/><rect x="3.5" y="17.1" width="4.4" height="3.4" rx="1"/><rect x="9.8" y="17.1" width="4.4" height="3.4" rx="1"/><rect x="16.1" y="17.1" width="4.4" height="3.4" rx="1"/></svg><span>Periodic Table</span></a>
+  <a class="tool" href="#simulations" data-tool="simulations" title="Simulations" aria-label="Simulations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5"/><path d="M10.5 3.5v5.2L5.2 17.6a2 2 0 0 0 1.7 2.9h10.2a2 2 0 0 0 1.7-2.9l-5.3-8.9V3.5"/><path d="M7.6 14.5h8.8"/></svg><span>Simulations</span></a>
+  <a class="tool" href="#record" data-tool="record" title="Your record" aria-label="Your record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg><span>Record</span></a>
+  <a class="tool" href="#olympiad" data-tool="olympiad" title="Olympiad" aria-label="Olympiad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h10v4.2a5 5 0 0 1-10 0z"/><path d="M7 6.5H4.5a3 3 0 0 0 3 3.5M17 6.5h2.5a3 3 0 0 1-3 3.5M12 13.7v3.3M8.5 20h7M9.5 17h5v3h-5z"/></svg><span>Olympiad</span></a>
+  <a class="tool" href="#definitions" data-tool="definitions" title="Definitions" aria-label="Definitions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h4"/></svg><span>Definitions</span></a>
+  <button class="icon-btn snd" type="button" aria-pressed="false" aria-label="Sound" title="Sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></button>
+</header>
+
+<main id="view" tabindex="-1" hidden></main>
+
+<script src="js/orbital.js?v=quilio-2711"></script>
+<script src="js/intro.js?v=quilio-2711"></script>
+<script src="js/katex.min.js?v=quilio-2711"></script>
+<script src="js/parse.js?v=quilio-2711"></script>
+<script src="js/ptable.js?v=quilio-2711"></script>
+<script src="js/widgets.js?v=quilio-2711"></script>
+<script src="js/narration.js?v=quilio-2711"></script>
+<script src="js/films.js?v=quilio-2711"></script>
+<script src="js/format.js?v=quilio-2711"></script>
+<script src="js/pastpapers.js?v=quilio-2711"></script>
+<script src="js/olympiad.js?v=quilio-2711"></script>
+<script src="js/train-data.js?v=quilio-2711"></script>
+<script src="js/training.js?v=quilio-2711"></script>
+<script src="js/leveltest.js?v=quilio-2711"></script>
+<script src="js/app.js?v=balanced-2711"></script>
+<script src="js/qpt.js?v=quilio-2711"></script>
+<script src="js/revise.js?v=quilio-2811"></script>
+<script src="../../fresh-back.js" defer></script>
 </body>
 </html>

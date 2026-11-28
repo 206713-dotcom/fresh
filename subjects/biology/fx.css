@@ -487,3 +487,29 @@
   .fx-letter, .fx-stage ~ .bio-root * { animation: none !important; }
 }
 @media print { .fx-stage { display: none; } .fx-stage ~ .bio-root .fx-ink { color: inherit !important; } }
+
+/* ---------- GIS year plan (Learn) ---------- */
+.fx-stage ~ .bio-root .gis-years { padding: 5px; width: fit-content; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); box-shadow: 0 10px 26px -20px #173027; }
+.fx-stage ~ .bio-root .gis-years button { border: 0; background: none; min-height: 40px; padding: 8px 20px; color: var(--muted); }
+.fx-stage ~ .bio-root .gis-years button.primary { color: #f6efd8; background: linear-gradient(135deg, #1d7d60, #10513e); }
+.fx-stage ~ .bio-root[data-theme=dark] .gis-years button.primary { color: #10251f; background: linear-gradient(135deg, #e4eeb2, #c9dc86); }
+.fx-stage ~ .bio-root .gis-term { position: relative; padding-left: 26px; margin-top: 8px; }
+.fx-stage ~ .bio-root .gis-term::before { content: ''; position: absolute; left: 8px; top: 34px; bottom: 6px; width: 2px; border-radius: 2px; background: linear-gradient(var(--fx-green), transparent); }
+.fx-stage ~ .bio-root .gis-term > h2 { position: relative; font-size: 1.25rem; letter-spacing: -.02em; }
+.fx-stage ~ .bio-root .gis-term > h2::before { content: ''; position: absolute; left: -24px; top: .3em; width: 14px; height: 14px; border-radius: 50%; background: var(--fx-lime); border: 3px solid var(--fx-green); }
+.fx-stage ~ .bio-root .gis-lessons { list-style: none; padding: 0; counter-reset: gl; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+.fx-stage ~ .bio-root .gis-lessons li { counter-increment: gl; display: grid; grid-template-columns: auto 1fr; gap: 0 10px; align-items: start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); transition: border-color .2s, transform .2s; }
+.fx-stage ~ .bio-root .gis-lessons li:hover { border-color: var(--fx-green); transform: translateY(-1px); }
+.fx-stage ~ .bio-root .gis-lessons li::before { content: counter(gl); grid-row: span 2; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; background: var(--fx-deep); color: var(--fx-lime); font-size: .78rem; font-weight: 800; }
+.fx-stage ~ .bio-root .gis-lessons li.read::before { content: '✓'; background: var(--fx-green); color: #fff; }
+.fx-stage ~ .bio-root .gis-lessons li a { color: var(--ink); text-decoration: none; }
+.fx-stage ~ .bio-root .gis-lessons li a::after { content: ''; position: absolute; inset: 0; }
+.fx-stage ~ .bio-root .gis-lessons li { position: relative; }
+.fx-stage ~ .bio-root .gis-lessons li.read a::after { content: ''; }
+.fx-stage ~ .bio-root .lesson-section.ext { border-left: 4px solid #8b6bc4; padding-left: 14px; border-radius: 4px; }
+.fx-stage ~ .bio-root .lesson-section .pill { font-size: .7rem; padding: 2px 8px; margin-left: 6px; color: #5b3f94; background: #8b6bc41f; border-color: #8b6bc455; }
+.fx-stage ~ .bio-root[data-theme=dark] .lesson-section .pill { color: #cdb8f2; }
+.fx-stage ~ .bio-root .gis-mistakes { padding-left: 0; list-style: none; }
+.fx-stage ~ .bio-root .gis-mistakes li { position: relative; padding: 8px 12px 8px 34px; margin: 6px 0; border-radius: 12px; background: #d9623b12; color: var(--ink); }
+.fx-stage ~ .bio-root .gis-mistakes li::before { content: '✗'; position: absolute; left: 12px; top: 8px; color: #d9623b; font-weight: 800; }
+.fx-stage ~ .bio-root .gis-diagram text { font-family: Inter, system-ui, sans-serif; }
