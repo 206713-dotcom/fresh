@@ -8,8 +8,8 @@
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
 <title>The Gallery · IGCSE History 0470 | Fresh</title>
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="history.css?v=history-gallery-polish">
-<script type="module" src="history.js?v=history-topic-notes"></script>
+<link rel="stylesheet" href="history.css?v=history-topics-index">
+<script type="module" src="history.js?v=history-topics-index"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
 </head>
@@ -21,6 +21,12 @@
   <symbol id="gallery-icon-practice" viewBox="0 0 24 24"><path d="M13 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9l-6-6Zm0 0v6h6M8 13h8m-8 4h6"></path></symbol>
   <symbol id="gallery-icon-quiz" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="m8 12 2.5 2.5L16 9"></path></symbol>
   <symbol id="gallery-icon-review" viewBox="0 0 24 24"><path d="M6 5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v15l-6-4-6 4V5Z"></path></symbol>
+  <symbol id="gallery-icon-movement" viewBox="0 0 24 24"><path d="M3 20h18M5 16l5-5 4 2 5-8m-5 0h5v5"></path></symbol>
+  <symbol id="gallery-icon-territory" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15"></path></symbol>
+  <symbol id="gallery-icon-rivalry" viewBox="0 0 24 24"><path d="M4 8h16m-4-4 4 4-4 4m4 4H4m4-4-4 4 4 4"></path></symbol>
+  <symbol id="gallery-icon-globe" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 0c-4 4-4 14 0 18m0-18c4 4 4 14 0 18M3 12h18"></path></symbol>
+  <symbol id="gallery-icon-settlement" viewBox="0 0 24 24"><path d="M6 7V5a2 2 0 0 1 2-2h10v14H8a2 2 0 1 0 0 4h10v-4M6 7v12M10 7h4m-4 4h4"></path></symbol>
+  <symbol id="gallery-icon-economy" viewBox="0 0 24 24"><path d="M4 4v16h16m-13-5 4-5 4 3 5-7m-4 0h4v4"></path></symbol>
   <symbol id="gallery-icon-settings" viewBox="0 0 24 24"><path d="M4 7h7m4 0h5M4 17h3m4 0h9"></path><circle cx="13" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></symbol>
 </svg>
 <a class="skip" href="#main">Skip to content</a>
@@ -137,11 +143,15 @@
 </section>
 
 <section class="history-section history-view" id="history-topics">
-  <h2 id="history-topics-title" tabindex="-1"><svg class="gallery-icon" aria-hidden="true" focusable="false"><use href="#gallery-icon-topics"></use></svg><span>Topics</span></h2>
-  <p>Choose a topic to open its revision notes.</p>
-  <label class="history-search">Search topics, events, and people
-    <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
-  </label>
+  <div class="history-topic-intro">
+    <div>
+      <h2 id="history-topics-title" tabindex="-1">Topics</h2>
+      <p>Browse the Core options and depth studies, then open a topic to read its revision notes.</p>
+    </div>
+    <label class="history-search" for="history-search">Search topics, events, and people
+      <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
+    </label>
+  </div>
   <div id="history-topic-list"></div>
 </section>
 <section class="history-section history-view" id="history-notes" aria-labelledby="history-notes-title" hidden>
