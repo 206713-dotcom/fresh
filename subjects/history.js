@@ -152,7 +152,7 @@ function versaillesLesson(card) {
 function renderResume() {
   const last = allTopics.find(([id]) => id === state.last);
   const link = byId('history-resume');
-  link.textContent = last ? 'Resume ' + last[1] : 'Explore topics';
+  byId('history-resume-label').textContent = last ? 'Resume ' + last[1] : 'Browse topics';
   link.href = last ? '#history-topic-' + last[0] : '#history-topics';
   link.onclick = last ? (event) => {
     event.preventDefault();
@@ -413,6 +413,11 @@ function renderCourse() {
     : 'Select your exam year, series, and Core option.';
   renderTopics();
   renderPractice(focus);
+  const coursework = route === '3';
+  byId('gallery-route').href = coursework ? '#history-coursework' : '#history-paper-4';
+  byId('gallery-route-title').textContent = coursework ? 'Coursework' : 'Paper 4';
+  byId('gallery-route-description').textContent = coursework ? 'Research log and checklist' : 'Depth-study practice';
+  byId('gallery-route-time').hidden = coursework;
   selectPracticePaper(location.hash.slice(1));
   renderQuiz();
   renderResume();
@@ -466,6 +471,7 @@ function navigate() {
   const target = byId(unavailablePaper ? 'history-practice' : id);
   const view = target?.closest('.history-view');
   showView(view?.id || 'history-home');
+  if (target === settings) settings.open = true;
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
 }
