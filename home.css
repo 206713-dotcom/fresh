@@ -1257,3 +1257,12 @@
 /* Nothing in the Since 1958 band moves while it is off screen */
 .fresh-home .s58.is-away, .fresh-home .s58.is-away *, .fresh-home .s58.is-away *::before, .fresh-home .s58.is-away *::after { animation-play-state: paused !important; }
 .fresh-home .space-cta.is-away, .fresh-home .space-cta.is-away *, .fresh-home .space-cta.is-away::before, .fresh-home .space-cta.is-away::after { animation-play-state: paused !important; }
+
+/* ---- Since 1958 band, lighter to draw: no live blurs (they are recomputed every frame while
+   anything near them moves); the same glows are drawn with plain gradients and shadows instead. */
+.fresh-home .s58-eyebrow { backdrop-filter: none; background: #142a22e6; }
+.fresh-home .s58-num { filter: none; }
+.fresh-home .s58-halo { filter: none; background: radial-gradient(closest-side, #e4eeb21a, #e4eeb20a 60%, transparent); }
+.fresh-home .s58-tag { backdrop-filter: none; background: #07110ef0; }
+.fresh-home .s58-launch-ring::after { filter: none; animation: none; background: none; inset: -2px; box-shadow: 0 0 22px 2px #e4eeb255, 0 0 40px 6px #f6bb8326; }
+.fresh-home .s58-launch:hover .s58-launch-ring::after { inset: -2px; box-shadow: 0 0 28px 4px #e4eeb288, 0 0 54px 10px #f6bb8340; }

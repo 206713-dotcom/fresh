@@ -796,7 +796,7 @@
         seen.unobserve(node);
         setTimeout(() => node.classList.add('done'), 1100 + order * 80);
       });
-    }, { rootMargin: '0px 0px -7% 0px' });
+    }, { rootMargin: '0px 0px 12% 0px' });   // starts just before a card scrolls in, so it is ready as it arrives
     reveal.forEach(node => seen.observe(node));
   } else {
     reveal.forEach(node => node.classList.add('in', 'done'));
@@ -936,12 +936,13 @@
   // ---------------------------------------------------------------- stars
   const sky = band.querySelector('.s58-sky');
   const sg = sky.getContext('2d');
-  let stars = [];
+  let stars = [], skyGrad = null;
   const sizeSky = () => {
-    const r = band.getBoundingClientRect(), d = DPR();
+    const r = band.getBoundingClientRect(), d = 1;           // the starfield is soft anyway: one canvas pixel per CSS pixel
+    skyGrad = null;
     sky.width = Math.round(r.width * d);
     sky.height = Math.round(r.height * d);
-    const n = Math.round(Math.min(900, r.width * r.height / 1400));
+    const n = Math.round(Math.min(480, r.width * r.height / 2600));
     let seed = 7;
     const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
     stars = Array.from({ length: n }, () => {
@@ -949,7 +950,7 @@
       const tint = rnd();
       return {
         x: rnd(), y: rnd(), z: 0.25 + rnd() * 0.75,
-        r: (0.35 + m * 1.6) * d, a: 0.25 + m * 0.75,
+        r: (0.35 + m * 1.6) * d * 1.2, a: 0.25 + m * 0.75,
         c: tint < 0.12 ? '246,187,131' : tint < 0.25 ? '228,238,178' : '246,239,216',
         tw: rnd() * 6.28, sp: 0.6 + rnd() * 2.2,
       };
@@ -959,11 +960,13 @@
     const W = sky.width, H = sky.height;
     sg.clearRect(0, 0, W, H);
     // a faint band of Milky Way across the top corner
-    const mw = sg.createLinearGradient(W * 0.1, 0, W * 0.75, H);
+    const mw = skyGrad || (skyGrad = sg.createLinearGradient(W * 0.1, 0, W * 0.75, H));
+    if (!mw.done) {
     mw.addColorStop(0, 'rgba(246,239,216,0)');
     mw.addColorStop(0.45, 'rgba(228,238,178,0.035)');
     mw.addColorStop(0.55, 'rgba(246,187,131,0.03)');
     mw.addColorStop(1, 'rgba(246,239,216,0)');
+    mw.done = true; }
     sg.fillStyle = mw;
     sg.fillRect(0, 0, W, H);
     for (const s of stars) {
@@ -974,7 +977,7 @@
       sg.beginPath();
       sg.arc(x, y, s.r, 0, 6.2832);
       sg.fill();
-      if (s.r > 1.5 * DPR()) {                                  // the brightest get a soft cross
+      if (s.r > 1.8) {                                  // the brightest get a soft cross
         sg.fillStyle = `rgba(${s.c},${(a * 0.18).toFixed(3)})`;
         sg.fillRect(x - s.r * 5, y - 0.5, s.r * 10, 1);
         sg.fillRect(x - 0.5, y - s.r * 5, 1, s.r * 10);
@@ -1053,12 +1056,11 @@ void main(){
     const t = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, t);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([40, 40, 40, 255]));
-    const img = new Image();
-    img.decoding = 'async';
-    img.onload = () => {
+    const upload = (img, flip) => {
       gl.bindTexture(gl.TEXTURE_2D, t);
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, flip);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
       gl.generateMipmap(gl.TEXTURE_2D);                       // every map here is a power of two wide and high
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
@@ -1069,7 +1071,11 @@ void main(){
       onload && onload(t);
       if (!visible) frame(performance.now(), true);
     };
-    img.src = src;
+    // The JPEG is unpacked in the background (createImageBitmap) so scrolling never stalls on it.
+    const plain = () => { const img = new Image(); img.decoding = 'async'; img.onload = () => upload(img, true); img.src = src; };
+    if (typeof createImageBitmap === 'function') {
+      fetch(src).then(r => r.blob()).then(b => createImageBitmap(b, { imageOrientation: 'flipY' })).then(bmp => upload(bmp, false)).catch(plain);
+    } else plain();
     return t;
   };
   const setupGL = () => {
@@ -1097,18 +1103,14 @@ void main(){
     gl.uniform1i(U.uCloud, 1);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    texMoon = texture(TEX + 'moon.jpg', () => {
-      ready |= 1;
-      // a sharper Moon once the small one is up
-      const big = texture(TEX + 'moon_4k.jpg', () => { texMoon = big; });
-    });
+    texMoon = texture(TEX + 'moon.jpg', () => { ready |= 1; });
     texEarth = texture(TEX + 'earth_day.jpg', () => { ready |= 2; });
     texCloud = texture(TEX + 'earth_clouds.jpg');
     art.classList.add('has-gl');
     return true;
   };
   const sizeArt = () => {
-    const r = art.getBoundingClientRect(), d = DPR();
+    const r = art.getBoundingClientRect(), d = Math.min(DPR(), 1.25);
     for (const c of [globe, fx]) { c.width = Math.round(r.width * d); c.height = Math.round(r.height * d); }
     if (gl) gl.viewport(0, 0, globe.width, globe.height);
   };
@@ -1217,8 +1219,14 @@ void main(){
 
   // ---------------------------------------------------------------- loop
   let raf = 0, t0 = 0, px = 0, py = 0, tpx = 0, tpy = 0;
+  // The band draws at about 30 frames a second, and holds its last picture while the page is being
+  // scrolled, so scrolling past it stays smooth.
+  let lastDraw = 0, scrollingUntil = 0;
+  addEventListener('scroll', () => { scrollingUntil = performance.now() + 180; }, { passive: true });
   function frame(now, once) {
     if (!once) raf = visible && !document.hidden && !reduce.matches ? requestAnimationFrame(frame) : 0;
+    if (!once && (now - lastDraw < 31 || now < scrollingUntil)) return;
+    lastDraw = now;
     if (!t0) t0 = now;
     const t = reduce.matches ? 40 : (now - t0) / 1000;
     px += (tpx - px) * 0.06;
