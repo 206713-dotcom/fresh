@@ -10,7 +10,7 @@
 <title>Quilio Chemistry | Fresh</title>
 <link rel="stylesheet" href="fonts.css?v=quilio-2711">
 <link rel="stylesheet" href="katex-core.css">
-<link rel="stylesheet" href="app.css?v=quilio-2811">
+<link rel="stylesheet" href="app.css?v=quilio-2811-lab">
 <script>
 /* The entrance film plays when you open Chemistry from Fresh (#enter), or on the first visit of a session with no address. */
 (function () { var h = location.hash.slice(1), seen = false, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -60,6 +60,23 @@
         <a class="btn ghost" href="#periodic-table">Periodic Table</a>
       </div>
     </div>
+    <a class="lab-card" href="lab/" aria-label="Open Chem Lab Bench, the virtual chemistry lab">
+      <span class="lab-art" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="56" fill="url(#labGlow)"/>
+        <defs><radialGradient id="labGlow"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#cfe3f8" stop-opacity="0"/></radialGradient>
+          <clipPath id="labFlask"><path d="M50 26h20v24l20 36a8 8 0 0 1-7 12H37a8 8 0 0 1-7-12l20-36z"/></clipPath></defs>
+        <g clip-path="url(#labFlask)"><rect class="lab-liq" x="20" y="66" width="80" height="40" fill="#1673dc" opacity=".8"/><path class="lab-wave" d="M10 66q10-5 20 0t20 0 20 0 20 0 20 0 20 0v6H10z" fill="#3d8fe6"/>
+          <circle class="lab-b b1" cx="52" cy="92" r="2.6" fill="#fff"/><circle class="lab-b b2" cx="62" cy="96" r="2" fill="#fff"/><circle class="lab-b b3" cx="70" cy="90" r="2.2" fill="#fff"/></g>
+        <path d="M50 26h20v24l20 36a8 8 0 0 1-7 12H37a8 8 0 0 1-7-12l20-36z" stroke="#0a2440" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M46 26h28" stroke="#0a2440" stroke-width="2.4" stroke-linecap="round"/>
+        <circle class="lab-p p1" cx="60" cy="20" r="3" fill="#f09a2e"/><circle class="lab-p p2" cx="67" cy="13" r="2.2" fill="#f09a2e"/></svg></span>
+      <span class="lab-txt">
+        <span class="lab-kick">Virtual lab · IGCSE to AS Level</span>
+        <b>Chem Lab Bench</b>
+        <span class="lab-sub">Real apparatus, real reactions. Mix, heat, test gases and run electrolysis.</span>
+        <span class="lab-go">Open the lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
+    </a>
   </div>
   <div class="start-foot">
     <details class="live-note">
