@@ -50,14 +50,27 @@ function openTopic(id) {
     location.hash = 'history-topic-' + id;
     return;
   }
-  search.value = '';
-  renderTopics(id);
-  const card = byId('history-topic-' + id);
-  if (!card) return;
-  card.open = true;
-  showView('history-topics');
-  card.scrollIntoView();
-  card.querySelector('summary').focus({ preventScroll: true });
+  const [, title, overview, question, advice] = allTopics.find(([topic]) => id === topic);
+  const heading = byId('history-notes-title');
+  const notes = byId('history-notes-content');
+  heading.textContent = title;
+  notes.replaceChildren(element('p', overview));
+  if (id === 'versailles') versaillesLesson(notes);
+  else notes.append(reveal('Recall check', 'From memory, explain one event or idea in the summary. Then reread it and add one specific detail.'));
+  notes.append(element('h3', 'Build an argument'), element('p', question),
+    reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
+  const actions = element('div', '', 'history-notes-actions');
+  actions.append(studiedButton(id));
+  if (id !== 'versailles') actions.append(flagButton('topic-' + id, title));
+  notes.append(actions);
+  if (state.last !== id) {
+    state.last = id;
+    renderResume();
+    save();
+  }
+  showView('history-notes');
+  window.scrollTo(0, 0);
+  heading.focus({ preventScroll: true });
 }
 
 function renderReview() {
@@ -111,14 +124,14 @@ function writing(id, labelText) {
 }
 
 function versaillesLesson(card) {
-  card.append(element('h4', 'From armistice to treaty'));
+  card.append(element('h3', 'From armistice to treaty'));
   const timeline = element('ol');
   for (const event of [
     'November 1918 · The Armistice ended fighting on the Western Front.',
     'January 1919 · The Paris Peace Conference opened.',
     'June 1919 · Germany signed the Treaty of Versailles.'
   ]) timeline.append(element('li', event));
-  card.append(timeline, element('h4', 'Evidence to use'));
+  card.append(timeline, element('h3', 'Evidence to use'));
   const evidence = element('ul');
   for (const fact of [
     'Germany’s army was limited to 100,000 men. France could point to this limit as protection against a renewed attack.',
@@ -160,54 +173,37 @@ function renderResume() {
   } : null;
 }
 
-function renderTopics(revealId) {
+function renderTopics() {
   const output = byId('history-topic-list');
   const query = search.value.trim().toLowerCase();
-  const opened = new Set([...output.querySelectorAll('[open]')].map((node) => node.id));
   output.replaceChildren();
   const groups = query ? [['Search results', allTopics]] : [
     ...Object.entries(core).filter(([option]) => !state.course.core || option === state.course.core)
       .map(([option, topics]) => ['Core option ' + option, topics]),
     ['Depth studies', depths[state.course.depth] ? [depths[state.course.depth]] : Object.values(depths)]
   ];
-  if (typeof revealId === 'string' && !groups.some(([, topics]) => topics.some(([id]) => id === revealId))) {
-    groups.push(['Saved topic', allTopics.filter(([id]) => id === revealId)]);
-  }
   for (const [name, topics] of groups) {
     output.append(element('h3', name));
-    const grid = element('div', '', 'history-grid');
+    const grid = element('ul', '', 'history-topic-grid');
     for (const [id, title, overview, question, advice] of topics) {
       if (![title, overview, question, advice].join(' ').toLowerCase().includes(query)) continue;
-      const card = element('details', '', 'history-card');
-      card.id = 'history-topic-' + id;
-      card.open = opened.has(card.id);
-      card.addEventListener('toggle', () => {
-        if (!card.open || !card.isConnected) return;
-        state.last = id;
-        renderResume();
-        save();
-      });
-      card.append(element('summary', title), element('p', overview));
-      if (id === 'versailles') versaillesLesson(card);
-      else card.append(reveal('Recall check', 'From memory, explain one event or idea in the summary. Then reread it and add one specific detail.'));
-      card.append(element('h4', 'Build an argument'), element('p', question),
-        reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
-      card.append(studiedButton(id));
-      if (id !== 'versailles') card.append(flagButton('topic-' + id, title));
-      grid.append(card);
+      const item = element('li');
+      const link = element('a', title, 'history-topic-button');
+      link.href = '#history-topic-' + id;
+      item.append(link);
+      grid.append(item);
     }
     output.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
   }
 }
 
-function studiedButton(id, onChange) {
+function studiedButton(id) {
   const button = action('', () => {
     if (state.completed[id]) delete state.completed[id];
     else state.completed[id] = true;
     update();
     renderReview();
     save();
-    onChange?.();
   });
   function update() {
     button.textContent = state.completed[id] ? 'Studied · undo' : 'Mark as studied';
@@ -324,7 +320,6 @@ function renderQuiz() {
     submit.hidden = true;
     reset.hidden = false;
     reset.focus();
-    renderTopics();
     renderReview();
     save();
   });
@@ -440,8 +435,9 @@ const tabs = [...document.querySelectorAll('.history-nav a')];
 
 function showView(id) {
   for (const view of views) view.hidden = view.id !== id;
+  const tabId = id === 'history-notes' ? 'history-topics' : id;
   for (const tab of tabs) {
-    if (tab.hash === '#' + id) tab.setAttribute('aria-current', 'page');
+    if (tab.hash === '#' + tabId) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
   }
 }
@@ -465,15 +461,18 @@ function navigate() {
     openTopic(id.slice(14));
     return;
   }
+  const leavingNotes = !byId('history-notes').hidden;
   const paper = selectPracticePaper(id);
   const unavailablePaper = !paper && practiceLinks.some((link) => link.hash === '#' + id);
-  const target = byId(unavailablePaper ? 'history-practice' : id);
+  const targetId = id === 'history-notes' ? 'history-topics' : id;
+  const target = byId(unavailablePaper ? 'history-practice' : targetId);
   const view = target?.closest('.history-view');
   showView(view?.id || 'history-home');
   if (target === settings) {
     settings.open = true;
     settings.querySelector('summary').focus({ preventScroll: true });
   }
+  if (leavingNotes && target?.id === 'history-topics') byId('history-topics-title').focus({ preventScroll: true });
   if (target === view && view) window.scrollTo(0, 0);
   else if (view) target.scrollIntoView();
 }
@@ -502,7 +501,7 @@ for (const exhibit of document.querySelectorAll('[data-exhibit]')) {
     });
     const label = element('span', exhibit.querySelector('small')?.textContent || '1919 / Peace settlements', 'gallery-eyebrow');
     content.replaceChildren(label, heading, art, element('p', overview),
-      element('p', question), studiedButton(id, renderTopics), lesson);
+      element('p', question), studiedButton(id), lesson);
     exhibitDialog.showModal();
   });
 }
