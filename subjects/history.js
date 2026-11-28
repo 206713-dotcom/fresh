@@ -1,6 +1,9 @@
 import { core, depths, prescribed } from './history-content.js';
 import { modelAnswers, questions } from './history-practice.js';
 import { markHistory } from './history-marker.js';
+import { recallQuestions, studyTopics } from './history-study.js?v=2027';
+import { paperOneMocks, paperTwoMocks, paperFourMocks } from './history-mocks.js?v=2027';
+import { renderMockExams } from './history-mock-view.js?v=2027';
 
 const byId = (id) => document.getElementById(id);
 const storageKey = 'fresh.history.0470.v1';
@@ -10,12 +13,38 @@ try {
 } catch {
   // Study tools remain usable when browser storage is unavailable.
 }
-const state = { course: {}, completed: {}, review: {}, drafts: {}, last: '', ...stored };
+const state = { course: {}, completed: {}, review: {}, drafts: {}, mockRuns: {}, last: '', ...stored };
 const settings = byId('history-settings');
 const form = byId('history-form');
 const search = byId('history-search');
 const practiceLinks = [...document.querySelectorAll('.history-practice-nav a')];
 const allTopics = [...core.A, ...core.B, ...Object.values(depths)];
+const topicTitles = Object.fromEntries(allTopics.map(([id, title]) => [id, title]));
+const allQuestions = [...recallQuestions, ...questions];
+
+function courseTopics() {
+  const { core: option, depth } = state.course;
+  return [...(core[option] || [...core.A, ...core.B]), ...(depths[depth] ? [depths[depth]] : Object.values(depths))];
+}
+
+function link(text, href, className) {
+  const anchor = element('a', text, className);
+  anchor.href = href;
+  return anchor;
+}
+
+function topicSelector(topics, label, selected) {
+  const field = element('label', label, 'history-writing');
+  const select = element('select');
+  for (const [id, name] of topics) {
+    const option = element('option', name);
+    option.value = id;
+    select.append(option);
+  }
+  if (topics.some(([id]) => id === selected)) select.value = selected;
+  field.append(select);
+  return { field, select };
+}
 
 const topicPreviews = {
   revolutions: ['movement', 'Reform, rebellion and the conservative response'],
@@ -76,8 +105,33 @@ function openTopic(id) {
   const notes = byId('history-notes-content');
   heading.textContent = title;
   notes.replaceChildren(element('p', overview));
+  const cards = link('Study flashcards', '#history-flashcards', 'gallery-button');
+  cards.addEventListener('click', () => renderFlashcards(id));
+  const exam = link('Practise this topic', '#history-paper-1', 'gallery-button');
+  exam.addEventListener('click', () => {
+    const topicSelect = byId('history-practice-topic');
+    if (!topicSelect.querySelector('option[value="' + id + '"]')) {
+      const option = element('option', title);
+      option.value = id;
+      topicSelect.append(option);
+    }
+    topicSelect.value = id;
+    topicSelect.dispatchEvent(new Event('change'));
+  });
+  const tools = element('div', '', 'history-section-links');
+  tools.append(cards, exam);
+  notes.append(tools);
+  for (const { title: sectionTitle, facts } of studyTopics[id]) {
+    const section = element('section', '', 'history-note-section');
+    section.append(element('h3', sectionTitle));
+    const evidence = element('dl');
+    for (const { answer, explanation } of facts) {
+      evidence.append(element('dt', answer), element('dd', explanation));
+    }
+    section.append(evidence);
+    notes.append(section);
+  }
   if (id === 'versailles') versaillesLesson(notes);
-  else notes.append(reveal('Recall check', 'From memory, explain one event or idea in the summary. Then reread it and add one specific detail.'));
   notes.append(element('h3', 'Build an argument'), element('p', question),
     reveal('Show planning guidance', advice), reveal('Show model answer', modelAnswers[id]));
   const actions = element('div', '', 'history-notes-actions');
@@ -246,7 +300,9 @@ function renderTopics() {
     const grid = element('ul', '', 'history-topic-grid');
     for (const [id, title, overview, question, advice] of topics) {
       const preview = topicPreviews[id]?.[1];
-      if (![title, preview, overview, question, advice].join(' ').toLowerCase().includes(query)) continue;
+      const notes = query ? studyTopics[id].flatMap(({ title, facts }) =>
+        [title, ...facts.flatMap(({ answer, explanation }) => [answer, explanation])]) : [];
+      if (![title, preview, overview, question, advice, ...notes].join(' ').toLowerCase().includes(query)) continue;
       grid.append(topicCard(id, title));
     }
     section.append(grid.childElementCount ? grid : element('p', 'No matching topics. Try a different search.'));
@@ -317,70 +373,172 @@ function markedWriting(id, label, question, guidance, example, source) {
   return [draft, feedback, reveal('Show planning guidance', guidance), reveal('Show model answer', example)];
 }
 
-function renderQuiz() {
-  const output = byId('history-quiz-list');
-  const option = state.course.core;
-  const depth = state.course.depth;
-  const included = new Set([...(core[option] || [...core.A, ...core.B]), ...(depth ? [depths[depth]] : Object.values(depths))]
-    .map(([id]) => id));
-  const quiz = element('form', '', 'history-quiz-form');
-  const score = element('p');
-  score.setAttribute('role', 'status');
-  const cards = questions.filter(([id]) => included.has(id)).map(([id, question, choices, correct, explanation]) => {
-    const fieldset = element('fieldset', '', 'history-card');
-    fieldset.append(element('legend', question));
-    for (const [index, choice] of choices.entries()) {
-      const label = element('label');
-      const radio = element('input');
-      radio.type = 'radio';
-      radio.name = id;
-      radio.value = String(index);
-      radio.required = true;
-      label.append(radio, ' ' + choice);
-      fieldset.append(label);
-    }
-    const feedback = element('p');
-    feedback.hidden = true;
-    fieldset.append(feedback);
-    quiz.append(fieldset);
-    return { id, correct, explanation, fieldset, feedback };
+function renderFlashcards(selected = state.flashcardTopic) {
+  const topics = courseTopics();
+  if (selected && studyTopics[selected] && !topics.some(([id]) => id === selected)) {
+    topics.push(allTopics.find(([id]) => id === selected));
+  }
+  const { field, select } = topicSelector(topics, 'Flashcard topic', selected);
+  const panel = element('section', '', 'history-card history-study-panel');
+  const position = element('p');
+  position.setAttribute('role', 'status');
+  const sectionTitle = element('p', '', 'history-study-label');
+  const prompt = element('h3');
+  const answer = element('div');
+  answer.id = 'history-flashcard-answer';
+  const controls = element('div', '', 'history-section-links');
+  let facts = [];
+  let index = 0;
+  const previous = action('Previous', () => move(-1));
+  const next = action('Next', () => move(1));
+  const flip = action('Show answer', () => {
+    answer.hidden = !answer.hidden;
+    flip.textContent = answer.hidden ? 'Show answer' : 'Hide answer';
+    flip.setAttribute('aria-expanded', String(!answer.hidden));
   });
-  const submit = element('button', 'Check answers', 'history-action');
-  const reset = action('Try again', () => {
-    quiz.reset();
-    score.textContent = '';
-    for (const { fieldset, feedback } of cards) {
-      fieldset.disabled = false;
-      fieldset.classList.remove('history-correct', 'history-missed');
-      feedback.hidden = true;
-    }
-    submit.hidden = false;
-    reset.hidden = true;
-    quiz.querySelector('input')?.focus();
-  });
-  reset.hidden = true;
-  quiz.append(submit, score, reset);
-  quiz.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const answers = new FormData(quiz);
-    let correctCount = 0;
-    for (const { id, correct, explanation, fieldset, feedback } of cards) {
-      const isCorrect = answers.get(id) === String(correct);
-      if (isCorrect) correctCount++;
-      else state.review['topic-' + id] = allTopics.find(([topic]) => topic === id)[1];
-      fieldset.disabled = true;
-      fieldset.classList.add(isCorrect ? 'history-correct' : 'history-missed');
-      feedback.textContent = (isCorrect ? 'Correct. ' : 'Incorrect. ') + explanation;
-      feedback.hidden = false;
-    }
-    score.textContent = correctCount + '/' + cards.length + ' correct';
-    submit.hidden = true;
-    reset.hidden = false;
-    reset.focus();
-    renderReview();
+  flip.setAttribute('aria-controls', answer.id);
+  controls.append(previous, flip, next);
+  panel.append(position, sectionTitle, prompt, answer, controls);
+
+  function renderCard() {
+    const fact = facts[index];
+    position.textContent = 'Card ' + (index + 1) + ' of ' + facts.length;
+    sectionTitle.textContent = fact.title;
+    prompt.textContent = fact.prompt;
+    answer.replaceChildren(element('strong', fact.answer), element('p', fact.explanation));
+    answer.hidden = true;
+    flip.textContent = 'Show answer';
+    flip.setAttribute('aria-expanded', 'false');
+    previous.disabled = index === 0;
+    next.disabled = index === facts.length - 1;
+  }
+
+  function move(offset) {
+    index += offset;
+    renderCard();
+    if (next.disabled && offset > 0 || previous.disabled && offset < 0) flip.focus();
+  }
+
+  function loadDeck() {
+    state.flashcardTopic = select.value;
+    facts = studyTopics[select.value].flatMap(({ title, facts }) => facts.map((fact) => ({ ...fact, title })));
+    index = 0;
+    renderCard();
+  }
+
+  select.addEventListener('change', () => {
+    loadDeck();
     save();
   });
-  output.replaceChildren(quiz);
+  const notes = link('Read topic notes', '#history-topic-' + select.value, 'gallery-button');
+  select.addEventListener('change', () => { notes.href = '#history-topic-' + select.value; });
+  loadDeck();
+  byId('history-flashcards-list').replaceChildren(field, panel, notes);
+}
+
+function renderQuiz() {
+  const output = byId('history-quiz-list');
+  const topics = courseTopics();
+  const { field, select } = topicSelector([['all', 'All course topics'], ...topics], 'Quiz topic', state.quizTopic);
+  const { field: setField, select: setSelect } = topicSelector([], 'Question set');
+  const controls = element('div', '', 'history-study-filters');
+  controls.append(field, setField);
+  const body = element('div');
+  output.replaceChildren(controls, body);
+  const setSize = 10;
+  let bank = [];
+
+  function renderSet() {
+    const start = Number(setSelect.value) * setSize;
+    const quiz = element('form', '', 'history-quiz-form');
+    const score = element('p');
+    score.setAttribute('role', 'status');
+    const cards = bank.slice(start, start + setSize).map(([id, question, choices, correct, explanation], index) => {
+      const fieldset = element('fieldset', '', 'history-card');
+      const name = 'quiz-question-' + (start + index + 1);
+      fieldset.append(element('legend', question));
+      for (const [choiceIndex, choice] of choices.entries()) {
+        const label = element('label');
+        const radio = element('input');
+        radio.type = 'radio';
+        radio.name = name;
+        radio.value = String(choiceIndex);
+        radio.required = true;
+        label.append(radio, ' ' + choice);
+        fieldset.append(label);
+      }
+      const feedback = element('p');
+      feedback.hidden = true;
+      fieldset.append(feedback);
+      quiz.append(fieldset);
+      return { id, name, choices, correct, explanation, fieldset, feedback };
+    });
+    const submit = element('button', 'Check answers', 'history-action');
+    const reset = action('Try again', () => {
+      quiz.reset();
+      score.textContent = '';
+      for (const { fieldset, feedback } of cards) {
+        fieldset.disabled = false;
+        fieldset.classList.remove('history-correct', 'history-missed');
+        feedback.hidden = true;
+      }
+      submit.hidden = false;
+      reset.hidden = true;
+      quiz.querySelector('input').focus();
+    });
+    reset.hidden = true;
+    const next = action('Next set', () => {
+      setSelect.selectedIndex++;
+      renderSet();
+      setSelect.focus();
+    });
+    next.hidden = true;
+    const actions = element('div', '', 'history-section-links');
+    actions.append(submit, reset, next);
+    quiz.append(actions, score);
+    quiz.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const answers = new FormData(quiz);
+      let correctCount = 0;
+      for (const { id, name, choices, correct, explanation, fieldset, feedback } of cards) {
+        const isCorrect = answers.get(name) === String(correct);
+        if (isCorrect) correctCount++;
+        else state.review['topic-' + id] = topicTitles[id];
+        fieldset.disabled = true;
+        fieldset.classList.add(isCorrect ? 'history-correct' : 'history-missed');
+        feedback.textContent = (isCorrect ? 'Correct. ' : 'Correct answer: ' + choices[correct] + '. ') + explanation;
+        feedback.hidden = false;
+      }
+      score.textContent = correctCount + '/' + cards.length + ' correct';
+      submit.hidden = true;
+      reset.hidden = false;
+      next.hidden = setSelect.selectedIndex === setSelect.options.length - 1;
+      reset.focus();
+      renderReview();
+      save();
+    });
+    body.replaceChildren(quiz);
+  }
+
+  function updateTopic() {
+    state.quizTopic = select.value;
+    const included = new Set(select.value === 'all' ? topics.map(([id]) => id) : [select.value]);
+    bank = allQuestions.filter(([id]) => included.has(id));
+    setSelect.replaceChildren();
+    for (let start = 0; start < bank.length; start += setSize) {
+      const option = element('option', 'Questions ' + (start + 1) + '–' + Math.min(start + setSize, bank.length) + ' of ' + bank.length);
+      option.value = String(start / setSize);
+      setSelect.append(option);
+    }
+    renderSet();
+  }
+
+  select.addEventListener('change', () => {
+    updateTopic();
+    save();
+  });
+  setSelect.addEventListener('change', renderSet);
+  updateTopic();
 }
 
 function practiceCard(id, title, description) {
@@ -394,32 +552,66 @@ function renderPractice(focus) {
   const output = byId('history-practice-list');
   output.replaceChildren();
   const depth = depths[state.course.depth];
-  const practiceTopics = [...(core[state.course.core] || [...core.A, ...core.B]), ...(depth ? [depth] : [])];
+  const practiceTopics = courseTopics();
+  if (state.practiceTopic && studyTopics[state.practiceTopic] && !practiceTopics.some(([id]) => id === state.practiceTopic)) {
+    practiceTopics.push(allTopics.find(([id]) => id === state.practiceTopic));
+  }
   const grid = element('div', '', 'history-grid');
 
   const paper1 = practiceCard('paper-1', 'Paper 1 · Structured questions', '2 hours · 60 marks. Practise describing, explaining and evaluating.');
-  const topicLabel = element('label', 'Practice topic', 'history-writing');
-  const topicSelect = element('select');
+  const { field: topicLabel, select: topicSelect } = topicSelector(practiceTopics, 'Practice topic', state.practiceTopic);
+  topicSelect.id = 'history-practice-topic';
+  const { field: taskLabel, select: taskSelect } = topicSelector([], 'Question');
   const prompt = element('div');
-  for (const [id, title] of practiceTopics) {
-    const option = element('option', title);
-    option.value = id;
-    topicSelect.append(option);
-  }
-  topicSelect.value = practiceTopics.some(([id]) => id === state.practiceTopic) ? state.practiceTopic : practiceTopics[0][0];
+  const markAdvice = {
+    4: 'Describe the requested features using distinct, relevant historical details.',
+    6: 'Explain how or why the factors mattered. Develop each link with specific evidence.',
+    10: 'Explain different sides with evidence, then justify your overall judgement.'
+  };
+  let parts = [];
+
   function updatePrompt() {
-    const [id, , , question, guidance] = practiceTopics.find(([id]) => id === topicSelect.value);
-    prompt.replaceChildren(element('p', question),
-      ...markedWriting('paper-1-' + id, 'Your answer', question, guidance, modelAnswers[id]));
+    const id = topicSelect.value;
+    if (taskSelect.value === 'ai') {
+      const [, , , question, guidance] = allTopics.find(([key]) => key === id);
+      prompt.replaceChildren(element('p', question),
+        ...markedWriting('paper-1-' + id, 'Your answer', question, guidance, modelAnswers[id]));
+      return;
+    }
+    const { marks, prompt: question, guidance } = parts[Number(taskSelect.value)];
+    prompt.replaceChildren(element('p', question + ' [' + marks + ']'),
+      writing('structured-' + id + '-' + taskSelect.value, 'Your answer'),
+      reveal('Show marking guidance', markAdvice[marks] + ' ' + guidance));
   }
+
+  function updateQuestions() {
+    parts = [];
+    taskSelect.replaceChildren();
+    for (const { title, parts: topicParts } of studyTopics[topicSelect.value]) {
+      const group = element('optgroup');
+      group.label = title;
+      for (const part of topicParts) {
+        const option = element('option', (parts.length + 1) + '. ' + part.prompt + ' [' + part.marks + ']');
+        option.value = String(parts.length);
+        parts.push(part);
+        group.append(option);
+      }
+      taskSelect.append(group);
+    }
+    const original = element('option', 'Writing drill with AI feedback');
+    original.value = 'ai';
+    taskSelect.append(original);
+    updatePrompt();
+  }
+
   topicSelect.addEventListener('change', () => {
     state.practiceTopic = topicSelect.value;
-    updatePrompt();
+    updateQuestions();
     save();
   });
-  topicLabel.append(topicSelect);
-  updatePrompt();
-  paper1.append(topicLabel, prompt, flagButton('paper-1', 'Paper 1 writing practice'));
+  taskSelect.addEventListener('change', updatePrompt);
+  updateQuestions();
+  paper1.append(topicLabel, taskLabel, prompt, flagButton('paper-1', 'Paper 1 writing practice'));
   grid.append(paper1);
 
   const paper2 = practiceCard('paper-2', 'Paper 2 · Document questions', '1 hour 45 minutes · 40 marks. Try this standalone Versailles source drill.');
@@ -450,6 +642,18 @@ function renderPractice(focus) {
       flagButton('coursework', 'Coursework research log'));
     grid.append(coursework);
   }
+  const mocks = practiceCard('mocks', 'Mock exams', 'Original Cambridge-style papers with a timer and marking guidance.');
+  const exams = [...paperOneMocks, ...paperTwoMocks, ...(state.course.route === '3' ? [] : paperFourMocks)];
+  mocks.append(renderMockExams(exams, state, { element, action, link, reveal, save, topicSelector, writing }));
+  const resources = element('nav', '', 'history-section-links');
+  resources.setAttribute('aria-label', 'History teaching and exam references');
+  resources.append(
+    link('Cambridge 2027–2028 syllabus', 'https://www.cambridgeinternational.org/Images/721327-2027-2028-syllabus.pdf'),
+    link('Cambridge past papers', 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-history-0470/past-papers/'),
+    link('Save My Exams revision notes', 'https://www.savemyexams.com/igcse/history/cie/18/revision-notes/')
+  );
+  mocks.append(resources);
+  grid.append(mocks);
   output.append(grid);
 }
 
@@ -472,6 +676,7 @@ function renderCourse() {
   byId('gallery-route-time').hidden = coursework;
   selectPracticePaper(location.hash.slice(1));
   renderQuiz();
+  renderFlashcards();
   renderResume();
   renderReview();
 }
@@ -492,7 +697,7 @@ const tabs = [...document.querySelectorAll('.history-nav a')];
 
 function showView(id) {
   for (const view of views) view.hidden = view.id !== id;
-  const tabId = id === 'history-notes' ? 'history-topics' : id;
+  const tabId = id === 'history-notes' ? 'history-topics' : id === 'history-flashcards' ? 'history-review' : id;
   for (const tab of tabs) {
     if (tab.hash === '#' + tabId) tab.setAttribute('aria-current', 'page');
     else tab.removeAttribute('aria-current');
@@ -500,7 +705,7 @@ function showView(id) {
 }
 
 function selectPracticePaper(id) {
-  const papers = [...byId('history-practice-list').querySelectorAll('article')];
+  const papers = [...byId('history-practice-list').querySelectorAll('.history-grid > article')];
   const selected = papers.find((paper) => paper.id === id);
   const currentHash = selected ? '#' + selected.id : '#history-practice';
   for (const paper of papers) paper.hidden = Boolean(selected && paper !== selected);

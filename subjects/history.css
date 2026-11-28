@@ -979,3 +979,28 @@
   }
   .history-skills-grid .history-topic-art .gallery-icon { width: 2.3rem; height: 2.3rem; }
 }
+
+.history-note-section dl { display: grid; gap: .4rem; }
+.history-note-section dt { font-weight: 700; }
+.history-note-section dd { margin: 0 0 .65rem; }
+
+.history-study-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 0 1rem;
+  max-width: 52rem;
+}
+.history-study-panel { max-width: 52rem; margin-bottom: 1rem; }
+.history-study-label { color: var(--gallery-muted); }
+
+.history-gallery .history-action:disabled { cursor: default; opacity: .55; }
+#history-mocks { grid-column: 1 / -1; }
+.history-mock-player > label { max-width: 34rem; }
+.history-mock-player time { font-variant-numeric: tabular-nums; }
+.history-mock-section { margin-block: .75rem; padding: .75rem; border: 1px solid var(--gallery-card-line); }
+.history-mock-question + .history-mock-question { margin-top: 1.4rem; border-top: 1px solid var(--gallery-card-line); }
+.history-mock-choice { display: flex; align-items: center; gap: .5rem; }
+.history-mock-parts { padding-inline-start: 1.6rem; }
+.history-mock-sources figure { margin-inline: 0; }
+
+.history-gallery :is(.history-writing, .history-mock-player .history-section-links)[hidden] { display: none; }
