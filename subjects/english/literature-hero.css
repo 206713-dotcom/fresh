@@ -1,0 +1,81 @@
+.literature-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(23rem, 39vw, 30rem);
+  background: #281923;
+  color: #fff6ed;
+}
+
+.literature-hero .literature-hero-copy { max-width: 36rem; }
+.literature-hero h1 { max-width: 12ch; color: #ffe5bf; }
+
+.literature-hero .room-photos,
+.literature-hero .room-photo,
+.literature-hero::before {
+  position: absolute;
+  inset: 0;
+}
+
+.literature-hero .room-photos { z-index: -2; }
+
+.literature-hero .room-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  opacity: 0;
+  transition: opacity 0s .8s;
+}
+
+.literature-hero .room-photo.is-current {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+.literature-hero::before {
+  content: "";
+  z-index: -1;
+  background: linear-gradient(90deg, #281923 0%, #281923f2 31%, #281923aa 55%, #28192322 100%);
+}
+
+.literature-hero .room-rotation {
+  position: absolute;
+  inset: 1rem 1rem auto auto;
+  min-height: 44px;
+  padding: .45rem .75rem;
+  border: 1px solid #c7a594;
+  border-radius: .45rem;
+  background: #281923;
+  color: #fff6ed;
+  font: 650 .875rem system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.literature-hero .room-rotation:focus-visible {
+  outline: 3px solid #ffe5bf;
+  outline-offset: 3px;
+}
+
+@media (max-width: 630px) {
+  .literature-hero {
+    min-height: 25rem;
+    align-items: flex-end;
+    padding-top: 5rem;
+  }
+
+  .literature-hero::before {
+    background: linear-gradient(0deg, #281923 0%, #281923f2 33%, #2819237a 66%, #28192322 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .literature-hero .room-photo,
+  .literature-hero .room-photo.is-current { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .literature-hero .room-photos,
+  .literature-hero .room-rotation { display: none; }
+}
