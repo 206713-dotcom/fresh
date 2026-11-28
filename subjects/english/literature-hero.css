@@ -1,14 +1,19 @@
-.literature-hero {
+.hero.literature-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(23rem, 39vw, 30rem);
+  min-height: clamp(24rem, 39vw, 30rem);
+  align-items: center;
+  grid-template-columns: minmax(0, 38rem);
+  padding-top: 3.5rem;
+  border-color: #48313e;
   background: #281923;
   color: #fff6ed;
 }
 
-.literature-hero .literature-hero-copy { max-width: 36rem; }
-.literature-hero h1 { max-width: 12ch; color: #ffe5bf; }
+.hero.literature-hero h1 { color: #ffe5bf; }
+.hero.literature-hero p { color: #fff6ed; }
+.literature-hero .eyebrow { background: #48313e; color: #ffe5bf; }
 
 .literature-hero .room-photos,
 .literature-hero .room-photo,
@@ -58,12 +63,14 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 630px) {
-  .literature-hero {
-    min-height: 25rem;
-    align-items: flex-end;
-    padding-top: 5rem;
+@media (max-width: 650px) {
+  .hero.literature-hero {
+    min-height: 33rem;
+    align-items: end;
+    padding-top: 9rem;
   }
+
+  .literature-hero .hero-copy { padding-bottom: 24px; }
 
   .literature-hero::before {
     background: linear-gradient(0deg, #281923 0%, #281923f2 33%, #2819237a 66%, #28192322 100%);

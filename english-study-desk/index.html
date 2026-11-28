@@ -14,6 +14,8 @@
 <script src="revision.js?v=revision1" defer></script>
 <script src="app.js?v=revision1" defer></script>
 <link rel="stylesheet" href="../subjects/english/return-to-fresh.css">
+<link rel="stylesheet" href="../subjects/english/literature-hero.css?v=study-desk">
+<script type="module" src="../subjects/english/room-hero.mjs"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -24,9 +26,16 @@
 </div></header>
 <main id="main" class="shell" tabindex="-1">
 <div id="home">
-<section class="hero">
-<div class="hero-copy"><span class="eyebrow">CAMBRIDGE IGCSE · 0475</span><h1>Study Literature<br>in English.</h1><p>Explore how writers shape meaning in poems, novels and plays. Then try a question and review your response.</p><div class="actions"><a class="primary" href="#practice">Start practising</a><a class="secondary" href="#texts">Browse set texts</a></div></div>
-<div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="spark s1">✦</div><div class="spark s2">✧</div><div class="spark s3">✦</div><div class="notebook"><div class="notebook-top"><span data-icon="book"></span> STUDY NOTES</div><div class="notebook-title">Read. Think.<br>Write.</div><i></i><i></i><i></i></div><div class="quote">“</div><div class="pencil"></div></div>
+<section class="hero literature-hero" aria-labelledby="literature-title">
+<div class="hero-copy"><span class="eyebrow">CAMBRIDGE IGCSE · 0475</span><h1 id="literature-title">Study Literature<br>in English.</h1><p>Explore how writers shape meaning in poems, novels and plays. Then try a question and review your response.</p><div class="actions"><a class="primary" href="#practice">Start practising</a><a class="secondary" href="#texts">Browse set texts</a></div></div>
+<div class="room-photos" aria-hidden="true">
+  <img class="room-photo is-current" src="../subjects/english/literature-bookshop.webp" width="1600" height="900" alt="">
+  <img class="room-photo" data-src="../subjects/english/literature-courtyard.webp" width="1600" height="900" alt="">
+  <img class="room-photo" data-src="../subjects/english/literature-archive.webp" width="1600" height="900" alt="">
+  <img class="room-photo" data-src="../subjects/english/literature-open-mic.webp" width="1600" height="900" alt="">
+  <img class="room-photo" data-src="../subjects/english/literature-train.webp" width="1600" height="900" alt="">
+</div>
+<button class="room-rotation" type="button" hidden>Pause images</button>
 </section>
 <section class="home-progress"><div><h2>Continue studying</h2><p id="home-progress"></p></div><div class="actions"><a id="resume-study" class="primary" href="#timed/poetry">Try a poetry question</a><span id="home-exam-year"></span></div></section>
 <section class="quick" aria-label="Quick links">
