@@ -8,8 +8,9 @@
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../gis-points.css?v=3">
 <script src="../gis-points.js?v=5" defer></script>
-<link rel="stylesheet" href="english/study.css?v=studio-light">
+<link rel="stylesheet" href="english/study.css?v=hero-rotation">
 <script type="module" src="english/study.mjs?v=studio-light"></script>
+<script type="module" src="english/room-hero.mjs"></script>
 </head>
 <body class="language-studio">
 <a class="skip" href="#main">Skip to content</a>
@@ -41,7 +42,12 @@
         <a class="button" id="continue-practice" href="#practice">Open Practice Desk</a>
         <p id="continue-detail"></p>
       </div>
-      <img class="room-photo" src="english/reading-room.webp" width="1600" height="900" alt="A stone bridge arching over a woodland river">
+      <div class="room-photos" aria-hidden="true">
+        <img class="room-photo is-current" src="english/reading-room.webp" width="1600" height="900" alt="">
+        <img class="room-photo" data-src="english/woodland-path.webp" width="1600" height="900" alt="">
+        <img class="room-photo" data-src="english/quiet-lake.webp" width="1600" height="900" alt="">
+      </div>
+      <button class="room-rotation" type="button" hidden>Pause images</button>
     </div>
     <section class="studio-continue" aria-labelledby="continue-title">
       <div>
