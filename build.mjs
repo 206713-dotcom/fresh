@@ -42,6 +42,12 @@ for (const subject of ["astronomy", "biology", "chemistry", "design-and-technolo
   }
 }
 
+// The Literature card opens the standalone English Study Desk.
+const englishStudyDesk = path.join(root, "english-study-desk");
+if (existsSync(englishStudyDesk)) {
+  cpSync(englishStudyDesk, path.join(dist, "english-study-desk"), { recursive: true });
+}
+
 // since-1958/ — the Since 1958 3D experience (a copy of the team's project), opened from the homepage
 const since1958 = path.join(root, "since-1958");
 if (existsSync(since1958)) {
