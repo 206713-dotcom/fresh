@@ -8,8 +8,8 @@
 <meta name="description" content="Build arguments about the past and evaluate historical evidence.">
 <title>The Gallery · IGCSE History 0470 | Fresh</title>
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="history.css?v=gallery-colour-2">
-<script type="module" src="history.js?v=gallery-navigation"></script>
+<link rel="stylesheet" href="history.css?v=history-topic-notes">
+<script type="module" src="history.js?v=history-topic-notes"></script>
 <link rel="icon" href="../fresh.svg" type="image/svg+xml">
 
 </head>
@@ -123,12 +123,19 @@
 </section>
 
 <section class="history-section history-view" id="history-topics">
-  <h2>Topics</h2>
-  <p>Open a topic for a revision summary, a recall check, and a writing prompt.</p>
+  <h2 id="history-topics-title" tabindex="-1">Topics</h2>
+  <p>Choose a topic to open its revision notes.</p>
   <label class="history-search">Search topics, events, and people
     <input type="search" id="history-search" placeholder="Try Versailles or Berlin">
   </label>
   <div id="history-topic-list"></div>
+</section>
+<section class="history-section history-view" id="history-notes" aria-labelledby="history-notes-title" hidden>
+  <a class="gallery-button history-notes-back" href="#history-topics"><span aria-hidden="true">←</span> Back to topics</a>
+  <article class="history-card history-notes-card">
+    <h2 id="history-notes-title" tabindex="-1"></h2>
+    <div id="history-notes-content"></div>
+  </article>
 </section>
 <section class="history-section history-view" id="history-practice">
   <h2>Exam practice</h2>
